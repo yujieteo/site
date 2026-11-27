@@ -2297,6 +2297,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Branch partitions survive Galois action
+
+**Remember:** Galois can move the points but not their local degrees.
+
+*True by definition. Confidence: medium.* MSC 11G32 (Arithmetic aspects of dessins d'enfants, Bely? theory), 14H57. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A dessin is a connected graph with alternating black and white vertices drawn on an oriented surface with disk faces. Its algebraic model is a cover of the sphere branched only over 0, 1 and ∞. At each of these values, list the local covering degrees with multiplicity.
+
+**Problem.** Applying an automorphism of the algebraic numbers over ℚ preserves each of the three lists.
+
+**How the definition helps.** The algebraic model expresses a local degree as the order of a zero or pole. In our own argument, applying a field automorphism preserves that order and fixes each of the three target values. The correspondence with graphs identifies these local degrees with vertex degrees and face boundary lengths measured in pairs of edges.
+
+**Wikipedia:** [Dessin d'enfant](https://en.wikipedia.org/wiki/Dessin_d%27enfant). It says: “A vertex in a dessin has a graph-theoretic degree, the number of incident edges, that equals its degree as a critical point of the Belyi function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subgroup cores regularize dessins
+
+**Remember:** Intersect all conjugates to get a canonical normal cover.
+
+*True by definition. Confidence: medium.* MSC 11G32 (Arithmetic aspects of dessins d'enfants, Bely? theory), 14H57. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A connected dessin is a cover of the sphere branched only over 0, 1 and ∞. After removing those values it corresponds to an open subgroup H of the geometric fundamental group, determined up to conjugation. Its core is the intersection of all conjugates of H.
+
+**Problem.** Taking the smallest regular cover dominating a dessin commutes with every automorphism of the algebraic numbers over ℚ. A regular cover has symmetries acting transitively on its sheets.
+
+**How the definition helps.** Our own explanation describes the regular cover by an intersection, so applying an automorphism commutes with its construction. The core is the largest normal subgroup inside H. The covering correspondence reverses inclusion, identifying the core with the smallest regular cover above the dessin. Conjugation fixes the core, so the choice of subgroup representative disappears.
+
+**Wikipedia:** [Dessin d'enfant](https://en.wikipedia.org/wiki/Dessin_d%27enfant). It says: “Any two Belyi pairs (X,f) that lead to combinatorially equivalent dessins d'enfants are biholomorphic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ample heights detect torsion
 
 **Remember:** An ample height cannot ignore a whole direction of an abelian variety.
@@ -2401,6 +2433,24 @@
 
 - [André Néron, Quasi-fonctions et hauteurs sur les variétés abéliennes (1965)](https://doi.org/10.2307/1970644)
 - [Joseph H. Silverman, The Arithmetic of Elliptic Curves, Chapter VIII (2009)](https://doi.org/10.1007/978-0-387-09494-6)
+
+### Ordered integrals split at junctions
+
+**Remember:** A path junction cuts the sequence of integration times once.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Along a piecewise smooth path, write each integration form as fᵢ(t) dt in the path parameter. For polylogarithms the forms are dz/(z − a), where a is a puncture. Integrate f₁(t₁) ⋯ fₙ(tₙ) over 0 &lt; t₁ &lt; ⋯ &lt; tₙ &lt; 1, using ordinary volume in these parameters.
+
+**Problem.** Let two paths meet end to end and avoid the poles. Sum over all cuts of the word, multiplying the prefix integral on the first path by the suffix integral on the second. This sum gives the integral on the joined path, with empty integrals equal to one.
+
+**How the definition helps.** In our own explanation, the ordered integration times can cross the path junction only once. Fixing how many times fall before the junction splits the integration region into a product of two regions. Summing their integrals gives the formula. An endpoint series has no visible junction. Using the integral formula for a polylogarithm given by a series requires identifying the two descriptions.
+
+**Paper or page:** [Duality on symmetric multiple polylogarithms](https://arxiv.org/abs/2411.08711). It says: “(Path composition formula) $\\displaystyle I<sub>\\gamma \\cdot \\gamma '</sub>(e\_{a<sub>1</sub>}\\cdots e\_{a<sub>k</sub>})=\\sum <sub>i=0</sub><sup>k</sup>I<sub>\\gamma </sub>(e\_{a<sub>1</sub>}\\cdots e\_{a<sub>i</sub>})I<sub>\\gamma '</sub>(e\_{a<sub>i+1</sub>}\\cdots e\_{a<sub>k</sub>})$.”
+
+**Sources:**
+
+- [Duality on symmetric multiple polylogarithms](https://arxiv.org/abs/2411.08711)
 
 ### Discriminant forms classify even overlattices
 
@@ -2769,6 +2819,46 @@
 - [Masataka Satoh, Generalized quasi-shuffle products, arXiv:2303.12386 (2023)](https://arxiv.org/abs/2303.12386)
 - [Michael E. Hoffman, The Algebra of Multiple Harmonic Series, Journal of Algebra (1997)](https://doi.org/10.1006/jabr.1997.7127)
 
+### Word integrals make shuffles multiplicative
+
+**Remember:** Multiplying ordered integrals interleaves their variables.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An index lists the exponents in a sum of reciprocal powers over strictly decreasing positive integers. Encode each exponent s by s − 1 zeros followed by a one. In decreasing time order, integrate dt/t for zero and dt/(1 − t) for one between zero and one. Shuffling sums all interleavings that preserve the order within each word, counting repeated results separately.
+
+**Problem.** Take two words that start with zero and end with one. The sum of their shuffle integrals equals the product of their multiple zeta values.
+
+**How the definition helps.** The integral assigns one region of the product domain to each shuffle. In our own proof, order all the variables together and discard the diagonals, which have measure zero. Each interleaving gives the integral of the shuffled word. The work lies in proving the integral represents the original nested sum.
+
+**Wikipedia:** [Multiple zeta function](https://en.wikipedia.org/wiki/Multiple_zeta_function). It says: “This result is extremely useful due to a well-known result regarding products of iterated integrals”
+
+**Paper or page:** [Discrete iterated integrals and cyclic sum formulas](https://arxiv.org/abs/2404.16161v2). It says: “(Shuffle product formula) Iγ(xγ; w ⧢ w′; yγ) = Iγ(xγ; w; yγ)Iγ(xγ; w′; yγ).”
+
+**Sources:**
+
+- [Discrete iterated integrals and cyclic sum formulas](https://arxiv.org/abs/2404.16161v2)
+
+### Word reflection gives zeta duality
+
+**Remember:** Reverse the word and swap its letters without changing the value.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Start with positive exponents s₁,…,sᵣ with s₁ ≥ 2. Encode each exponent s by s − 1 zeros followed by a one. In decreasing time order between one and zero, integrate dt/t for zero and dt/(1 − t) for one. Reverse the word and exchange zero and one to get the dual index.
+
+**Problem.** Sum the products of reciprocal powers with these exponents over strictly decreasing positive integers. The dual index gives the same sum.
+
+**How the definition helps.** The integral turns duality into a reflection of the integration domain. In our own proof, reverse the variable order and replace each t by 1 − t. This swaps both forms and keeps the ordered domain. The comparison that carries the work identifies the word integral with the nested series.
+
+**Wikipedia:** [Multiple zeta function](https://en.wikipedia.org/wiki/Multiple_zeta_function). It says: “it is possible to express colored multiple zeta values (and thus their special cases) as certain multivariable integrals.”
+
+**Paper or page:** [Proving dualities for qMZVs with connected sums](https://arxiv.org/abs/2111.00058v1). It says: “For every admissible index k, we have ζ(k) = ζ(k∨).”
+
+**Sources:**
+
+- [Discrete iterated integrals and cyclic sum formulas](https://arxiv.org/abs/2404.16161v2)
+
 ### Hurwitz zeta cancels character poles
 
 **Remember:** All residue classes have the same pole, so a zero character sum cancels it.
@@ -3105,6 +3195,24 @@
 **Wikipedia:** [Algebraic integer](https://en.wikipedia.org/wiki/Algebraic_integer), [Quadratic integer](https://en.wikipedia.org/wiki/Quadratic_integer). It says: “In contrast, Z\[√−3\] is not even a Dedekind domain.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Torus quotients preserve Mahler measure
+
+**Remember:** A surjective torus map carries uniform probability to uniform probability.
+
+*True by definition.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The logarithmic Mahler measure m(P) averages log\|P\| over independent, uniformly distributed unit complex numbers. A Laurent polynomial allows negative integer exponents. A monomial map replaces each variable by a product of integer powers of the new variables.
+
+**Problem.** Let q map one product of unit circles onto another by monomials. Then m(P ∘ q) = m(P) for every nonzero Laurent polynomial P.
+
+**How the definition helps.** In our own argument, the averaging definition makes invariance a change of variables. Every rotation of the target lifts through q, so the image probability is uniform. Jensen’s formula connects this integral with the usual one-variable formula in roots. The remaining input is that log\|P\| is integrable even near the zeros of P.
+
+**Paper or page:** [General Boyd-Lawton Theorems with Multivariable Limits](https://arxiv.org/abs/2508.05910). It says: “In other words, suppose that\~ $q<sub>A</sub> \\colon {\\mathbb {T}}<sup>m</sup> \\to {\\mathbb {T}}<sup>n$</sup> is surjective. Then\\\[  \\int \_{{\\mathbb {T}}<sup>n</sup>} g \\,  d \\tau <sub>n</sub> \\;  = \\;  \\int \_{{\\mathbb {T}}<sup>m}</sup> g \\circ q<sub>A</sub> \\,  d \\tau \_m \\, .  \\\]”
+
+**Sources:**
+
+- [General Boyd-Lawton Theorems with Multivariable Limits, Corollary 5.2](https://arxiv.org/abs/2508.05910)
 
 ### Regular primes are the primes where Kummer's proof of Fermat works
 
@@ -3556,6 +3664,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Finite-place logarithms absorb missing zeta factors
+
+**Remember:** Finite-place logarithms account for the deleted Euler factors at zero.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let S contain every infinite place of a number field and finitely many finite primes. An S-unit is a field element with valuation zero outside S at every finite prime. Tabulate the logarithmic absolute values at S of a basis of S-units modulo roots of unity, doubling the logarithm at each complex place. Delete one row and call the absolute determinant R(S).
+
+**Problem.** The S-zeta function omits prime factors at S. Its first nonzero Taylor coefficient at zero equals −h(S)R(S)/w. Here w counts roots of unity and h(S) counts ideal classes after allowing denominators at the finite primes in S.
+
+**How the definition helps.** The finite-prime rows incorporate the logarithms from the omitted zeta factors into one regulator, in our own calculation. The row at a prime with residue field of size q records valuations multiplied by −log q. The valuation vectors have index equal to the number of ordinary ideal classes generated by the omitted primes. In the determinant this index cancels the corresponding decrease in the class number. The ordinary analytic class number formula supplies the starting identity.
+
+**Paper or page:** [Special values of L-functions on regular arithmetic schemes of dimension 1](https://arxiv.org/abs/2108.00811). It says: “We obtain from the analytic class number formula for the S-zeta function of K (the arithmetic zeta function of U)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma factors cancel trivial zeta zeros
+
+**Remember:** Reflection moves negative integers into the region where the prime product converges.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a number field F with discriminant D, start with \|D\| raised to s/2 times its Dedekind zeta function. For each real embedding multiply by π raised to −s/2 times Γ(s/2), where Γ is Euler’s gamma function. For each conjugate pair of nonreal embeddings multiply by (2π) raised to −s times Γ(s). Call the resulting function Λ.
+
+**Problem.** The completed function satisfies Λ(s) = Λ(1−s). In particular it is finite and nonzero at every negative integer, although the Riemann zeta function vanishes at −2.
+
+**How the definition helps.** Completion puts all gamma factors inside one function, so the functional equation becomes a reflection, in our own explanation. Proving that equation is the analytic work. Reflection sends each negative integer to a real number greater than one. There the convergent product over primes and the gamma factors are all nonzero and finite.
+
+**Wikipedia:** [Dedekind zeta function](https://en.wikipedia.org/wiki/Dedekind_zeta_function). It says: “The functional equation for the Dedekind zeta function implies a set of trivial zeroes which cancel poles of the gamma factors in the equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Integrating over ideles proves Hecke's functional equation by Poisson summation
 
 **Remember:** One Poisson summation on the adeles gives every Hecke functional equation.
@@ -3569,6 +3709,40 @@
 **How the definition helps.** The zeta integral turns the L-function into an integral over a group, and there Poisson summation applies directly. Inside the adeles, the number field is a discrete subgroup with compact quotient (our own). The local factor at each place, including the Gamma factor at infinite places, comes from one local integral (our own). The page calls Tate's work an elegant and powerful reformulation of Hecke's work. Hecke had used theta series for a lattice in the ring of integers. Iwasawa found the same method independently. What stays hard is computing the local integrals at ramified places (our own).
 
 **Wikipedia:** [Tate's thesis](https://en.wikipedia.org/wiki/Tate%27s_thesis). It says: “Using harmonic analysis, more precisely the Poisson summation formula, he proved the functional equation and meromorphic continuation of the zeta integral and the Hecke L-function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nontrivial monomial characters give entire L-functions
+
+**Remember:** Induce nontrivial characters and no zeta pole appears.
+
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let G be the Galois group of a finite Galois extension of number fields. A one-dimensional character assigns a nonzero complex scalar to each group element and preserves multiplication. Induce such a character from a subgroup to G by taking a copy of its line for each coset. Form direct sums using only characters that are nontrivial on their inducing subgroup.
+
+**Problem.** The Artin L-function of this direct sum is entire, meaning holomorphic on the whole complex plane.
+
+**How the definition helps.** Excluding trivial characters removes the zeta factors that can have poles, in our own explanation. Artin’s induction formula converts each summand into a one-dimensional L-function over the field fixed by its subgroup. Hecke’s theorem makes each nontrivial factor entire. A trivial character instead gives that field’s zeta function, which has a pole at one.
+
+**Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “this meromorphic continuation is entire if ρ is a direct sum of inductions of non-trivial abelian characters on subgroups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Permutation representations factor intermediate zeta functions
+
+**Remember:** A fixed field becomes a permutation representation.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L/K be a finite Galois extension of number fields with group G. For a subgroup H, let E be the field that H fixes. Give a complex vector space one basis vector per left coset of H. Let G act by permuting this basis.
+
+**Problem.** The Dedekind zeta function of E equals the Artin L-function of this representation over K. Decomposing the representation into irreducible pieces factors the zeta function, with one factor per piece.
+
+**How the definition helps.** The coset basis encodes all embeddings of E at once, in our own explanation. Its representation is the one induced from the trivial representation of H. Artin’s induction formula identifies their L-functions over K and E respectively. The trivial representation over E has the zeta function of E, and direct sums give products.
+
+**Wikipedia:** [Dedekind zeta function](https://en.wikipedia.org/wiki/Dedekind_zeta_function). It says: “Without the assumption that the extension is Galois, the formula becomes more complicated, but is also possible to obtain a similar factorization using the normal closure of the larger field and induced representations.”
+
+**Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “Then for any finite-dimensional complex representation ρ of H, we have an induction formula:”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -3605,6 +3779,24 @@
 **Sources:**
 
 - [Jürgen Neukirch, Algebraic Number Theory, Chapter VII, §10 (1999)](https://doi.org/10.1007/978-3-662-03983-0)
+
+### Virtual characters give meromorphic continuation
+
+**Remember:** Allow subtraction of characters and division of L-functions.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let G be the group of a finite Galois extension of number fields. A virtual character is a formal difference of characters of finite-dimensional complex representations of G. Assign it the quotient of their Artin L-functions.
+
+**Problem.** The Artin L-function of every virtual character extends meromorphically to the whole plane, so its only possible singularities are poles.
+
+**How the definition helps.** The quotient rule turns Brauer’s integer coefficients into numerator and denominator factors, in our own explanation. Direct sums give products, so equivalent differences define the same quotient. Brauer’s induction theorem writes every character as an integer combination of characters induced from one-dimensional subgroup characters. Artin’s induction formula identifies their factors with one-dimensional L-functions over intermediate fields. Hecke’s continuation theorem makes these factors meromorphic.
+
+**nLab:** [Artin L-function](https://ncatlab.org/nlab/show/Artin+L-function). It says: “Then the corresponding Artin L-functions are equal:”
+
+**Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “The Artin L-function L(𝒪Ｆ,ρ,s) of any complex Galois representation ρ of G extends to a meromorphic function on the complex plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Adele rings extend by tensoring
 
@@ -3775,6 +3967,25 @@
 **Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “For an arbitrary domain one may define the Picard group Pic(R) as the group of invertible fractional ideals Inv(R) modulo the subgroup of principal fractional ideals.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Rationalization removes closed-point contributions
+
+**Remember:** Finite residue K-groups disappear when you tensor with the rationals.
+
+*Rules out counterexamples.* MSC 11R70 (\\(K\\)-theory of global fields), 19D50. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Define the rational K-group of a ring in degree n by tensoring its integral K-group with ℚ. This kills every element of finite order.
+
+**Problem.** Let A be the ring of integers of a number field and S any set of rational primes. Inverting S preserves all rational K-groups in degrees n ≥ 2.
+
+**How the definition helps.** Passing from integral to rational K-groups kills the terms at the removed primes that could obstruct the isomorphism, in our own proof. Quillen’s localization theorem compares the two rings through the K-groups of their residue fields, the quotients by the removed prime ideals. The adjacent residue groups have degrees n and n − 1. Quillen proved both finite in positive degrees. For infinite S, take the direct limit over finite subsets. In our own integral counterexample, the units −1 and 3 define a K₂ symbol after inverting 3 in ℤ. Its boundary at 3 is −1 modulo 3, so the symbol cannot come from ℤ.
+
+**Wikipedia:** [Algebraic K-theory](https://en.wikipedia.org/wiki/Algebraic_K-theory). It says: “then there is a long exact sequence”
+
+**Sources:**
+
+- [Daniel Quillen, Higher algebraic K-theory I (1973)](https://doi.org/10.1007/BFb0067053)
+- [Daniel Quillen, On the cohomology and K-theory of the general linear groups over a finite field (1972)](https://doi.org/10.2307/1970825)
 
 ### Defining ramification index as a group index makes ramification indices multiply
 
@@ -4623,6 +4834,24 @@
 - [C. L. Siegel, Über die analytische Theorie der quadratischen Formen, Ann. of Math. 36 (1935) 527–606](https://doi.org/10.2307/1968644)
 - [J. H. Conway and N. J. A. Sloane, Low-dimensional lattices. IV. The mass formula, Proc. Roy. Soc. London A 419 (1988)](https://doi.org/10.1098/rspa.1988.0107)
 
+### Relative completion retains modular monodromy
+
+**Remember:** Keep the reductive quotient before completing.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F06 (Structure of modular groups and generalizations; arithmetic groups), 20G30. arXiv math.NT. Level 4: research.
+
+**Definition.** A unipotent matrix has all eigenvalues one. Ordinary rational unipotent completion collects all homomorphisms to unipotent algebraic groups over ℚ in one universal group. Relative completion starts with a homomorphism whose image is dense for polynomial equations in a reductive group R. It collects lifts to extensions of R by unipotent groups, taking their inverse limit.
+
+**Problem.** The ordinary rational unipotent completion of the modular group SL₂(ℤ) is trivial. Its completion relative to the standard inclusion surjects onto the algebraic group SL₂ over ℚ.
+
+**How the definition helps.** Fixing the target SL₂ keeps a quotient that ordinary unipotent completion loses (our own). The upper and lower triangular elementary integer matrices are dense in the two one-parameter subgroups they belong to (our own). These subgroups generate SL₂, so relative completion has the required dense starting map (our own). The modular group has finite abelianization and hence no nonzero rational additive character (our own). Any nontrivial unipotent image would yield such a character from the smallest algebraic group containing it (our own).
+
+**nLab:** [Malcev completion](https://ncatlab.org/nlab/show/Malcev+completion). It says: “Mal'cev completion is a left adjoint functor to the embedding of the category of uniquely divisible nilpotent groups into the category of nilpotent groups.”
+
+**Sources:**
+
+- [Richard Hain, The Hodge-de Rham Theory of Modular Groups](https://doi.org/10.1017/cbo9781316387887.019)
+
 ### Big theta quotients detect pairs
 
 **Remember:** Take the largest quotient with the desired first action.
@@ -5045,6 +5274,24 @@
 
 - [Santiago Arango-Piñeros, Deewang Bhamidipati, Soumya Sankar, Frobenius distributions of low dimensional abelian varieties over finite fields, International Mathematics Research Notices 2024, no. 16, 11989-12020, arXiv:2306.02237](https://arxiv.org/abs/2306.02237)
 
+### Regular dessins descend to moduli fields
+
+**Remember:** A regular cover can move any chosen sheet to any other.
+
+*Makes the theorem clean to state or prove.* MSC 11G32 (Arithmetic aspects of dessins d'enfants, Bely? theory), 14H57. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A dessin is a connected cover of the sphere branched only over 0, 1 and ∞. Call it regular if its symmetries over the sphere act transitively on each unbranched fiber. Its field of moduli consists of the algebraic numbers fixed by every Galois automorphism preserving its isomorphism class.
+
+**Problem.** Every regular dessin admits defining equations over its field of moduli.
+
+**How the definition helps.** Regularity lets a marked sheet select exactly one isomorphism from each conjugate cover. In our own argument, mark a point above the rational value 2. A symmetry fixing that point fixes every sheet by continuation, so the adjustment is unique. Uniqueness makes the chosen isomorphisms compatible with composition. Galois descent then gives equations over the field of moduli.
+
+**Wikipedia:** [Dessin d'enfant](https://en.wikipedia.org/wiki/Dessin_d%27enfant). It says: “Due to the Galois correspondence between subgroups of Γ and algebraic number fields, the stabilizer corresponds to a field, the field of moduli of the dessin.”
+
+**Sources:**
+
+- [Marston Conder, Gareth Jones, Manfred Streit and Jürgen Wolfart, Galois actions on regular dessins of small genera, Proposition 1 (2013)](https://www.math.uni-frankfurt.de/~wolfart/Artikel/CoJoStWo.pdf)
+
 ### Invariant metrics scale heights exactly
 
 **Remember:** An invariant metric turns pullback into exact multiplication of heights.
@@ -5060,6 +5307,462 @@
 **Paper or page:** [Specialization of canonical heights on abelian varieties](https://arxiv.org/abs/2110.07664v1). It says: “In particular, there exists a canonical height”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Alternating Kummer products give symmetric powers
+
+**Remember:** Alternating the relative product makes the Kummer tensors symmetric.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Work over the rational affine line with 0 and 1 removed, using coordinate z. The Kummer motive K records degree-one cohomology of the multiplicative line relative to the points 1 and 1/z. Take degree-n relative cohomology of its n-fold product, marking every face where a coordinate equals either point. Select the part where exchanging two coordinates acts by minus one.
+
+**Problem.** This part of the relative cohomology motive is the symmetric tensor power Symⁿ(K).
+
+**How the definition helps.** In our own explanation, selecting the sign cancels the sign already contributed by exchanging two degree-one cohomology factors. The relative product theorem identifies the whole group with a tensor power and explains this extra sign. The selected part therefore corresponds to symmetric tensors. This realizes the abstract symmetric power by an explicit product of marked lines.
+
+**Paper or page:** [A construction of the polylogarithm motive](https://arxiv.org/abs/2305.00789), [A construction of the polylogarithm motive](https://arxiv.org/abs/2305.00789). It says: “𝒦⊗ⁿ ≃ 𝒞ₙ ⊗ sgnₙ”
+
+**Sources:**
+
+- [A construction of the polylogarithm motive](https://arxiv.org/abs/2305.00789)
+
+### Clean polylogarithms erase product terms
+
+**Remember:** Project away products before taking a single-valued period.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Represent a multiple polylogarithm by its formal iterated integral, with weight equal to the number of integrations. Take its de Rham image, which retains its algebraic differential data. Apply the Dynkin projection, a linear operator whose kernel in positive weight consists of sums of products of positive-weight elements. Evaluate the single-valued period and take its real part in odd weight or its imaginary part in even weight.
+
+**Problem.** Suppose a rational linear combination of formal integrals of the same positive weight equals a sum of products of positive-weight elements. The corresponding clean functions then sum to zero with the same coefficients.
+
+**How the definition helps.** The projection kills the entire sum before numerical evaluation. Our own comparison is with ordinary single-valued evaluation, which preserves multiplication and can retain nonzero products. The substantive step identifies the kernel of the Dynkin projection.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344), [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344). It says: “The kernel of Π is generated by all non-trivial products”
+
+**Sources:**
+
+- [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344)
+
+### Clean polylogarithms reverse interior letters
+
+**Remember:** After products vanish, reversal preserves odd lengths and negates even lengths.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Write a multiple polylogarithm as an iterated integral, specified by two endpoints and an ordered list of interior letters. Its clean version projects its algebraic differential data onto representatives modulo products of positive weights. Evaluate the resulting single-valued period, taking its real part for odd length and its imaginary part for even length.
+
+**Problem.** In a clean iterated integral of length n &gt; 0, reversing the interior letters multiplies it by (−1)ⁿ⁺¹ without exchanging endpoints.
+
+**How the definition helps.** In our own explanation, the clean projection kills the product terms that occur when reversing an ordinary integral’s letters. The shuffle identity interleaves lists to express products of integrals. Its reversal formula pairs the original word with its signed reversal and adds products from all nonempty proper cuts. Only the two uncut words survive. The proof uses the shuffle identity and the kernel theorem for the projection.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344). It says: “Iᶜˢᵛ(x₀; xₙ, …, x₁; xₙ₊₁) = (−1)ⁿ⁺¹ Iᶜˢᵛ(x₀; x₁, …, xₙ; xₙ₊₁).”
+
+**Sources:**
+
+- [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344)
+
+### Clean projection gives tetralogarithm reduction
+
+**Remember:** Remove all products, then fix the constant on real inputs.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT. Level 4: research.
+
+**Definition.** Write I₃,₁(x,y) for the nested integral from 0 to 1 with successive poles x,0,0,y, using the paper’s clean evaluation. This evaluation first projects formal integrals of weight four along products of integrals of smaller weight. It then takes the imaginary part of their single-valued evaluation. Write L₄ for the same evaluation of the fourth polylogarithm.
+
+**Problem.** For x,y∉{0,1}, with y∉{x,1−x} and all displayed arguments of L₄ outside {0,1}, I₃,₁(1−x,y)+I₃,₁(x,y)=L₄((1−x)/(1−y))−L₄((1−y)/x)−3L₄(y/(1−x))−3L₄(y/x)+L₄(y/(y−1))−L₄((1−x)y/(x(1−y)))/2−L₄(xy/((1−x)(1−y)))/2+L₄((1−y)y/((1−x)x))/2.
+
+**How the definition helps.** The clean projection removes the lower-weight products and taking the imaginary part fixes the constant on real inputs. The work goes into Gangl’s matching of the symbols, which record the successive logarithmic differentials, modulo products.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “This constant must be 0 since each side vanishes on the real line, as we take the imaginary part in the definition of the functions.”
+
+**Sources:**
+
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://arxiv.org/abs/2104.04344v2)
+
+### Cobrackets rule out classical tetralogarithms
+
+**Remember:** A nonzero two-by-two split rules out a classical expression.
+
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Give each polylogarithm symbol a weight equal to its tensor length. Quotient positive-weight symbols by sums of products of positive-weight symbols. For a weight-four symbol, split after its second position and subtract the result with the two halves exchanged. Take both halves modulo products to obtain the weight-(2,2) cobracket.
+
+**Problem.** The weight-(2,2) cobracket vanishes on every rational sum of classical tetralogarithm symbols modulo products. Thus a nonzero value rules out any such expression.
+
+**How the definition helps.** In our own explanation, this test selects the split where the classical tetralogarithm has a repeated logarithm in its second half. That two-letter tensor is half the shuffle square of the logarithm, so it vanishes modulo products. Linearity gives the same result for any rational sum. Applying this obstruction to a particular function requires computing its cobracket.
+
+**Paper or page:** [Cluster Polylogarithms I: Quadrangular Polylogarithms](https://arxiv.org/abs/2208.01564). It says: “For $k\\geq 2$ iterated truncated coproduct $\\overline{\\Delta }<sup>\[k-1\]</sup>$ vanishes on $\\mathcal{D}<sub>k-1</sub>\\mathcal{L}\_\\bullet (\\mathrm{F})$”
+
+**Sources:**
+
+- [Cluster Polylogarithms I: Quadrangular Polylogarithms](https://arxiv.org/abs/2208.01564)
+
+### Divisor differences compare elliptic regulators
+
+**Remember:** Equal divisor differences give equal regulator periods without integrating twice.
+
+*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** On an elliptic curve, the divisor of a function lists its zeros and poles with signed multiplicities. The diamond product replaces a pair of points P and Q by their group difference P−Q, multiplying their multiplicities. Add the results and impose \[−P\] = −\[P\].
+
+**Problem.** Take two pairs of rational functions on the same elliptic curve over ℚ, with rational zeros and poles. Assume their symbols extend across every point, so their regulator integrals give periods on the complete curve. Equal diamond products give equal regulator periods on the same generator reversed by complex conjugation.
+
+**How the definition helps.** In our own comparison, the diamond product turns two period calculations into one equality between formal sums of points. Bloch’s formula evaluates each period by applying the same real-valued function, the elliptic dilogarithm, to that sum. The elliptic dilogarithm changes sign under negation, so it respects the imposed relation. The formula supplies the link with integration.
+
+**Paper or page:** [A shifted Mahler measure identity for Boyd's family](https://arxiv.org/abs/2202.09974). It says: “r<sub>E</sub>(\\{ f,g\\} )\[\\gamma \]=D<sup>E</sup>((f)\\diamond (g)), \\end{align\*}where $\[\\gamma \]$ is a generator of $H<sub>1</sub>(E,\\mathbb {Z})<sup>-$</sup>.”
+
+**Sources:**
+
+- [A shifted Mahler measure identity for Boyd's family, Lemma 2.1](https://arxiv.org/abs/2202.09974)
+
+### Five-term relations give a regulator
+
+**Remember:** The five-term identity lets the dilogarithm act on classes of symbols.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT. Level 4: research.
+
+**Definition.** For a subfield F of ℂ, start with formal integer sums of symbols \[x\], where x belongs to F and differs from 0 and 1. For distinct such x and y impose \[x\]−\[y\]+\[y/x\]−\[(1−x⁻¹)/(1−y⁻¹)\]+\[(1−x)/(1−y)\]=0. The resulting quotient is the pre-Bloch group.
+
+**Problem.** The Bloch–Wigner dilogarithm D gives a homomorphism \[x\] ↦ D(x) from the pre-Bloch group to ℝ.
+
+**How the definition helps.** Our own explanation uses the quotient to replace checking every change of representative with checking one family of relations. The analytic five-term identity says exactly that D sends each defining relation to zero.
+
+**nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “The Bloch–Wigner dilogarithm is defined by D(z) ≔ Im(Li₂(z)) + arg(1−z) log\|z\|.”
+
+**Sources:**
+
+- [Don Zagier, Polylogarithms, Dedekind zeta functions, and the algebraic K-theory of fields (1990)](https://people.mpim-bonn.mpg.de/zagier/files/scanned/PolylogsDedekindZetaAndKTheory/fulltext.pdf)
+
+### Integrable symbols exclude path dependence
+
+**Remember:** Adjacent wedge tests remove the local obstruction to path independence.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.AG. Level 4: research.
+
+**Definition.** On a smooth complex variety, remove the zeros and poles of the rational functions under consideration. Represent each function f by the differential form df/f, and represent ordered lists of these forms by tensors. For each adjacent pair, replace its two forms by their exterior product, leaving the other positions intact. A sum of tensors is integrable when every such replacement gives zero after summing.
+
+**Problem.** An integrable tensor gives a homotopy-invariant linear combination of logarithmic iterated integrals. Homotopies fix both endpoints and stay in the open variety.
+
+**How the definition helps.** In our own explanation, integrability kills the adjacent exterior products in Chen’s formula for changing the path of integration. Each form df/f is closed, so the formula has no terms from differentiating individual forms. Our own example uses the form dx/x followed by dy/y on pairs of nonzero complex numbers. From (1,1) to (2,2), moving first in x gives (log 2)². Moving first in y gives zero, although the two paths are homotopic with endpoints fixed.
+
+**nLab:** [iterated integral](https://ncatlab.org/nlab/show/iterated+integral), [polylogarithm](https://ncatlab.org/nlab/show/polylogarithm). It says: “Iterated integrals include nested integration of differential forms”
+
+**Sources:**
+
+- [A. B. Goncharov, A simple construction of Grassmannian polylogarithms](https://doi.org/10.1016/j.aim.2013.03.018)
+
+### Matrix inversion gives the antipode
+
+**Remember:** The antipode inverts the whole variation matrix.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Arrange the formal coefficients of multiple polylogarithms in their triangular variation matrix V, with ones on the diagonal. Write W for its transpose. The coproduct splits Wᵢⱼ into the sum of Wᵢₖ ⊗ Wₖⱼ over intermediate indices k.
+
+**Problem.** The antipode, the operation undoing a coproduct under multiplication, sends V entry by entry to V⁻¹.
+
+**How the definition helps.** In our own explanation, the matrix definition turns the antipode identity into ordinary matrix multiplication. For W the identity reads S(W)W = I, where I is the identity matrix. Transposing gives the formula for V because the coefficients commute. This replaces a separate recursive calculation for each coefficient. The substantive theorem gives the stated coproduct of W.
+
+**Paper or page:** [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337), [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337). It says: “The antipode satisfies S(V) = V⁻¹.”
+
+**Sources:**
+
+- [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337)
+
+### Multiplication identifies torsion logarithm fibers
+
+**Remember:** Multiplication sends torsion to zero and rescales each graded piece invertibly.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let π be the fundamental group of a complex elliptic curve at zero. In its rational group ring, let I be the ideal of sums whose coefficients add to zero. Keep terms through degree n by taking the quotient by Iⁿ⁺¹. The pointed logarithm system transports this vector space along loops by group multiplication and marks the element 1 at zero.
+
+**Problem.** For N ≥ 1, multiplication by N identifies this system with its pullback, whose fiber at P is the original fiber at NP. Thus every point killed by N has a canonical identification of its fiber with the fiber at zero.
+
+**How the definition helps.** In our own argument, the group-ring model turns comparison of two systems of differential equations into a substitution on loops. Send each group element to its Nth power and extend linearly. This map preserves the marked element and respects transport because multiplication by N induces that power map on π. Modulo terms of higher degree, substitution multiplies degree k by the kth power of N. These scalars are invertible over ℚ, so the map on each truncated ring is invertible. Sprang’s comparison with logarithm bundles connects this description to differential equations.
+
+**nLab:** [Poincaré line bundle](https://ncatlab.org/nlab/show/Poincar%C3%A9+line+bundle). It says: “The canonical line bundle on the product of an abelian group (abelian variety) and its dual Picard scheme.”
+
+**Sources:**
+
+- [Sprang, The algebraic de Rham realization of the elliptic polylogarithm via the Poincaré bundle, Sections 2 and 4](https://doi.org/10.2140/ant.2020.14.545)
+
+### Nested cuts make coproducts coassociative
+
+**Remember:** Two cuts give the same nested lists whichever cut comes first.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Represent an iterated integral by a word listing its integration forms between two endpoints. Define its coproduct, a rule giving pairs of factors, by summing over all subsequences of interior letters. The first factor keeps the selected letters. The second multiplies the integrals between successive selected positions, counting both endpoints as boundaries.
+
+**Problem.** Splitting the first factor again gives the same three-factor sum as splitting the second factor again.
+
+**How the definition helps.** In our own explanation, both expansions list exactly the same pairs of nested subsequences. One expansion chooses the larger subsequence first. The other chooses the smaller subsequence first, then selects additional letters in each gap. The comparison with the coproduct defined by periods still requires the theorem identifying it with the cut formula.
+
+**Paper or page:** [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337). It says: “Goncharov’s coproduct is coassociative.”
+
+**Sources:**
+
+- [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337)
+
+### Nonzero boundaries exclude Bloch classes
+
+**Remember:** Only boundary-zero dilogarithm symbols represent classes in rational indecomposable K₃.
+
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** For an infinite field F, form rational sums of symbols \[x\] with x ≠ 0,1. Impose the alternating relation among the five cross-ratios obtained by deleting one of five distinct projective points. This gives the rational pre-Bloch group. Its Bloch subgroup consists of sums with zero boundary under \[x\] ↦ x ∧ (1 − x), using the rational exterior square of F×.
+
+**Problem.** Suslin identifies the rational Bloch group with indecomposable K₃ of F over ℚ. Here indecomposable means taking the quotient by the image of Milnor K₃, the subgroup generated by triple products of units.
+
+**How the definition helps.** In our own example, the boundary test removes a symbol that cannot be the image of an indecomposable K₃ class. For \[t\] over ℚ(t), take orders of vanishing at 0 and 1. They send t and 1 − t to the two standard basis vectors, so their wedge is nonzero. Combinations with cancelling boundaries still qualify. Suslin’s exact sequence proves that every qualifying class comes from K₃ and that the kernel there is torsion.
+
+**Wikipedia:** [Bloch group](https://en.wikipedia.org/wiki/Bloch_group). It says: “0 \\rightarrow \\operatorname{Tor}(K<sup>\*</sup>, K<sup>\*</sup>)<sup>\\sim</sup> \\rightarrow \\operatorname{K}<sub>3</sub>(K)<sub>ind</sub> \\rightarrow \\operatorname{B}<sub>2</sub>(K) \\rightarrow 0”
+
+**Sources:**
+
+- [A. A. Suslin, K₃ of a field, and the Bloch group](https://www.mathnet.ru/eng/tm1914)
+
+### Orbit sums descend to elliptic curves
+
+**Remember:** Changing the representative only shifts the sum.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT, math.CA. Level 4: research.
+
+**Definition.** Fix q with 0&lt;\|q\|&lt;1. The complex elliptic curve E identifies nonzero numbers x and qx. Define its elliptic dilogarithm at x by summing the Bloch–Wigner dilogarithm D(qᵏx) over all integers k, using D(1)=0.
+
+**Problem.** The orbit sum is absolutely convergent and gives a well-defined function on E. It also changes sign under x ↦ 1/x.
+
+**How the definition helps.** Our own explanation sums over all representatives because the ordinary dilogarithm D(x) can depend on the choice of x. Multiplying x by q only shifts the summation index. Replacing k by −k and using D(1/z)=−D(z) gives the sign under inversion. Absolute convergence follows from D(z)=O(\|z\|(1+\|log\|z\|\|)) near zero and inversion for the other tail.
+
+**Paper or page:** [A shifted Mahler measure identity for Boyd's family](https://arxiv.org/abs/2202.09974v1). It says: “The elliptic dilogarithm Dᴱ extends by linearity to a map from ℤ\[E(ℚ)\]⁻ to ℂ.”
+
+**Sources:**
+
+- [Don Zagier, The Bloch–Wigner–Ramakrishnan polylogarithm function (1990)](https://people.mpim-bonn.mpg.de/zagier/files/doi/10.1007/BF01453591/fulltext.pdf)
+- [Quanli Yang, Hang Liu and Guoping Tang, A shifted Mahler measure identity for Boyd's family (2022)](https://arxiv.org/abs/2202.09974v1)
+
+### Orbit sums give elliptic doubling
+
+**Remember:** Group even and odd orbit indices after pairing opposite roots.
+
+*True by definition. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14H52. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Represent a complex elliptic curve by nonzero complex numbers modulo multiplication by powers of q, with 0 &lt; \|q\| &lt; 1. Write D for the Bloch–Wigner dilogarithm, the real function Im Li₂(z) + arg(1−z) log\|z\|, extended continuously at 0 and 1. Here Li₂ continues the power series with coefficient 1/k² in degree k. Define Dᴱ(\[z\]) by summing D(qⁿz) over all integers n.
+
+**Problem.** For every P ∈ E, twice the sum of Dᴱ(Q) over the four points with 2Q = P equals Dᴱ(P).
+
+**How the definition helps.** In our own argument, summing over representatives makes doubling an identity between two parts of one series. Choose w with w² = z. The four lifts have representatives w, −w, √q w and −√q w. Apply D(v²) = 2(D(v) + D(−v)) to each pair at each index. The first pair gives even indices and the second gives odd indices. Absolute convergence justifies regrouping, and the ordinary doubling formula supplies the analytic input.
+
+**nLab:** [Feynman diagram](https://ncatlab.org/nlab/show/Feynman+diagram). It says: “Spencer Bloch, Pierre Vanhove, The elliptic dilogarithm for the sunset graph, IHES preprint P-13-24, pdf”
+
+**Sources:**
+
+- [Bloch and Vanhove, The elliptic dilogarithm for the sunset graph, Appendix A](https://www.math.uchicago.edu/~bloch/mysunset/sunset.pdf)
+
+### Path truncation makes monodromy unipotent
+
+**Remember:** Loop differences become nilpotent when long products vanish.
+
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Delete 0, 1 and ∞ from the complex projective line and use a tangent direction at 0 as base point. In the rational algebra of loops up to homotopy, let J be the ideal generated by differences γ − 1. Complete this algebra by allowing infinite series in J. Hain models the finite polylogarithm space by a quotient in which all sufficiently long products of these differences vanish.
+
+**Problem.** Continuing the finite polylogarithm system around any loop gives a unipotent operator M. This means that some power of M − I is zero.
+
+**How the definition helps.** In our own explanation, truncating the path algebra forces repeated loop differences to vanish. Acting by M − I multiplies on the right by the corresponding loop difference. In the full completion, a loop around 0 maps to a generator of an infinite cyclic group. Its difference from one has nonzero powers of every order in the completed cyclic group algebra. Hain’s comparison identifies the quotient action with continuation of polylogarithms.
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950), [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950). It says: “It has unipotent monodromy at each point of {0,1,∞}.”
+
+**Sources:**
+
+- [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950)
+- [R. Hain, Classical polylogarithms](https://doi.org/10.1090/pspum/055.2/1265550)
+
+### Projecting products makes relations exact
+
+**Remember:** Project away products before you evaluate the periods.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT. Level 4: research.
+
+**Definition.** Represent a polylogarithm by its formal integral before evaluating it as a function. The number of integrations gives its weight. In the associated de Rham algebra of formal integrals, apply the authors’ projection Π, whose kernel consists of sums of positive-weight products. Evaluate the result as a single-valued function, taking its real part in odd weight and its imaginary part in even weight.
+
+**Problem.** Suppose a rational sum of formal polylogarithms of one weight equals a sum of products of positive weights. Its clean single-valued evaluation is zero.
+
+**How the definition helps.** The projection kills products before the ordinary single-valued evaluation can give them nonzero values. Proposition 2.4 identifies its kernel. Our own explanation then uses linearity to pass from individual products to any sum of products.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “The kernel of Π is generated by all non-trivial products”
+
+**Sources:**
+
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://arxiv.org/abs/2104.04344v2)
+
+### Rational Bloch regulators are injective
+
+**Remember:** Rational coefficients remove classes that every real regulator must kill.
+
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT. Level 4: research.
+
+**Definition.** Let F be a number field, a finite extension of ℚ. Form rational sums of symbols \[x\] for x in F other than 0 and 1, subject to the dilogarithm’s five-term relations. The rational Bloch group consists of classes with Σa\[x\] mapping to zero under \[x\] ↦ x ∧ (1−x). Here ∧ denotes the alternating product on the multiplicative group of F with rational coefficients.
+
+**Problem.** Choose one embedding σ from each conjugate pair of nonreal embeddings of F. Evaluating the Bloch–Wigner dilogarithm D gives an injective map with coordinates ΣaD(σ(x)).
+
+**How the definition helps.** Rational coefficients remove elements of finite order, which every homomorphism to a real vector space kills. Our own explanation uses Borel’s regulator theorem to establish injectivity after this step. The comparison with the dilogarithm regulator identifies its coordinates.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Now the point is that restricted to the Bloch group proper the Borel regulator is injective.”
+
+**Sources:**
+
+- [Don Zagier, Polylogarithms, Dedekind zeta functions, and the algebraic K-theory of fields (1990)](https://people.mpim-bonn.mpg.de/zagier/files/scanned/PolylogsDedekindZetaAndKTheory/fulltext.pdf)
+- [A. A. Suslin, K₃ of a field, and the Bloch group (1990)](https://www.mathnet.ru/eng/tm1914)
+
+### Regulator forms kill Steinberg relations
+
+**Remember:** The dilogarithm turns the Steinberg relation into an exact differential.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** On a smooth complex curve, take rational functions f and g without zeros or poles on an open set U. Set η(f,g) = log\|f\| d arg g − log\|g\| d arg f, where d arg records angular change. A Steinberg symbol {f,g} turns multiplication in either entry into addition and satisfies {f,1−f} = 0 whenever both entries qualify.
+
+**Problem.** Sending {f,g} to the class of η(f,g) gives a well-defined map. The target identifies closed real differential forms on U whenever their difference is the differential of a single-valued function.
+
+**How the definition helps.** In our own explanation, passing to classes checks all closed-path integrals at once. Roy proves that η is closed and turns multiplication into addition in each entry. He also identifies η(f,1−f) as the differential of the single-valued Bloch–Wigner dilogarithm D(f). Its class therefore vanishes, exactly as the Steinberg relation requires.
+
+**Paper or page:** [Generalized Mahler measures of Laurent polynomials](https://arxiv.org/abs/2308.04601). It says: “\\eta \\left(x, 1-x\\right) = d D\\left(x\\right).”
+
+**Sources:**
+
+- [Generalized Mahler measures of Laurent polynomials, Lemma 2.1](https://arxiv.org/abs/2308.04601)
+
+### Residues identify elliptic polylogarithms
+
+**Remember:** Once the residue is fixed, there is no class left to add.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** On a complex elliptic curve, remove the D² points killed by multiplication by an integer D ≥ 2. Use the logarithm system of coefficients, which transports truncated power series in two loop variables along paths. At each removed point the residue measures the local cohomology class around that puncture. Define the elliptic polylogarithm as the compatible sequence of degree-one classes with scalar residue D²−1 at zero and −1 at every other puncture.
+
+**Problem.** Use the canonical splitting at each removed point given by multiplication by D. The specified residues have zero components in all positive degrees of the coefficient series. A sequence agreeing under each truncation equals the polylogarithm exactly when it has these residues.
+
+**How the definition helps.** In our own explanation, defining the class by residues replaces comparison of global representatives by local calculations at finitely many points. Sprang’s exact sequence shows that residues determine the class after taking all truncations together. It also shows that the specified residues occur, since their scalar components sum to zero. Sprang computes these residues for explicit differential forms from the Poincaré line bundle, proving that they represent the polylogarithm.
+
+**nLab:** [Poincaré line bundle](https://ncatlab.org/nlab/show/Poincar%C3%A9+line+bundle). It says: “The canonical line bundle on the product of an abelian group (abelian variety) and its dual Picard scheme.”
+
+**Sources:**
+
+- [Sprang, The algebraic de Rham realization of the elliptic polylogarithm via the Poincaré bundle, Definition 3.2 and Theorem 5.8](https://doi.org/10.2140/ant.2020.14.545)
+
+### Steinberg symbols yield elliptic identities
+
+**Remember:** One Steinberg relation gives a whole sum of elliptic dilogarithm values.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** For a rational function f, its divisor div(f) lists its zeros and poles with signed multiplicities. The diamond product ⋄ replaces each pair of divisor points P,Q by P−Q and multiplies their multiplicities. Add the results, with a point and its negative carrying opposite signs. A Steinberg symbol {f,g} is additive under multiplication in either entry and obeys {f,1−f} = 0.
+
+**Problem.** Take a nonconstant rational function f on an elliptic curve over ℚ. Assume its zeros, its poles and all points where f equals one are rational. Applying the elliptic dilogarithm linearly to div(f) ⋄ div(1−f) gives zero.
+
+**How the definition helps.** In our own proof, the symbol definition replaces a sum of special function values with one defining relation. Bloch’s formula identifies that sum with the regulator of {f,1−f}, a period integral depending additively on the symbol. The defining relation makes the symbol zero, and its period therefore vanishes.
+
+**Paper or page:** [A shifted Mahler measure identity for Boyd's family](https://arxiv.org/abs/2202.09974). It says: “r<sub>E</sub>(\\{ f,g\\} )\[\\gamma \]=D<sup>E</sup>((f)\\diamond (g)), \\end{align\*}where $\[\\gamma \]$ is a generator of $H<sub>1</sub>(E,\\mathbb {Z})<sup>-$</sup>.”
+
+**Sources:**
+
+- [A shifted Mahler measure identity for Boyd's family, Lemma 2.1](https://arxiv.org/abs/2202.09974)
+- [Yang, Liu and Tang, A Mahler Measure Identity Involving a Genus 2 Family, Section 1](https://ccj.pku.edu.cn/Article/DownLoad?id=364490499&type=ArticleFile)
+
+### Three terms compute next-to-Milnor cohomology
+
+**Remember:** Next to Milnor degree, only three terms affect the answer.
+
+*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19E15. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let F have characteristic zero and let m ≥ 3. Write V for the rational vector space obtained from the multiplicative group of F. In Goncharov’s complex, degree m − 1 consists of dilogarithm symbols \[x\]₂ tensored with exterior products of m − 2 elements of V. The outgoing map replaces \[x\]₂ by (1 − x) ∧ x.
+
+**Problem.** Take the kernel of this map and divide by the incoming relations \[x\]₂ ⊗ (x ∧ α), with α in Λᵐ⁻³V. The resulting space computes rational motivic cohomology of F in degree m − 1 and weight m, a group also defined using algebraic cycles.
+
+**How the definition helps.** In our own explanation, the symbol complex reduces this description to one kernel and one family of boundaries. Each incoming relation is the image of a trilogarithm symbol tensored with α. Computing cohomology here needs only these two arrows. Identifying the answer with the group defined using algebraic cycles requires Bolbachan’s comparison theorem.
+
+**Wikipedia:** [Goncharov conjecture](https://en.wikipedia.org/wiki/Goncharov_conjecture). It says: “Goncharov defined the following complex called Γ(F,n) placed in degrees \[1,n\]”
+
+**Paper or page:** [On Goncharov's conjecture in next to Milnor degree](https://arxiv.org/abs/2404.06271). It says: “is true when i = m − 1 and m ∈ ℤ, m ≥ 2.”
+
+**Sources:**
+
+- [On Goncharov's conjecture in next to Milnor degree](https://arxiv.org/abs/2404.06271)
+
+### Top polylogarithm cohomology gives Milnor K-theory
+
+**Remember:** The last differential lists exactly the relations of Milnor K-theory.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let F be an infinite field and let V be its multiplicative group with rational coefficients. Goncharov’s weight-m complex ends in ΛᵐV, the space of alternating products of m entries. The preceding term uses dilogarithm symbols \[x\] for x outside {0,1}, subject to five-term relations. Its differential sends \[x\] ⊗ α to (1 − x) ∧ x ∧ α.
+
+**Problem.** For m ≥ 2, the top cohomology of this complex is the rational Milnor K-group of F in degree m.
+
+**How the definition helps.** In our own explanation, the last differential lists exactly the relations in the exterior-power presentation of rational Milnor K-theory. Top cohomology takes the quotient by its image. In the usual tensor presentation one must also derive alternation from the Steinberg relations, which kill adjacent entries x and 1 − x. Defining the complex requires checking that its differential respects the five-term relations. This computation uses no conjecture about the other degrees.
+
+**Wikipedia:** [Goncharov conjecture](https://en.wikipedia.org/wiki/Goncharov_conjecture). It says: “Goncharov defined the following complex called Γ(F,n) placed in degrees \[1,n\]”
+
+**Sources:**
+
+- [A. B. Goncharov, Geometry of configurations, polylogarithms, and motivic cohomology](https://doi.org/10.1006/aima.1995.1045)
+
+### Truncated cuts vanish in lower depth
+
+**Remember:** A surviving cut needs one depth letter in every factor.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Represent formal multiple polylogarithms by iterated integrals modulo products. Depth at most d means a linear combination of words with at most d nonzero interior letters. The cobracket splits a class into two factors with signs. Truncate it by deleting every split with a weight-one factor, then iterate to obtain k factors.
+
+**Problem.** For k ≥ 2, this k-factor operation vanishes on classes of depth at most k − 1. On depth k its value therefore depends only on the class modulo lower depth.
+
+**How the definition helps.** In our own explanation, truncation removes the pure logarithm factors that could survive a cut without using a depth letter. The cut formula bounds the total depth of the factors by the original depth. After truncation each surviving factor needs depth at least one. Producing k factors would require depth at least k. The substantive input is the depth bound for the ordinary cut formula.
+
+**Paper or page:** [Cluster Polylogarithms I: Quadrangular Polylogarithms](https://arxiv.org/abs/2208.01564). It says: “For $k\\geq 2$ iterated truncated coproduct $\\overline{\\Delta }<sup>\[k-1\]</sup>$ vanishes on $\\mathcal{D}<sub>k-1</sub>\\mathcal{L}\_\\bullet (\\mathrm{F})$”
+
+**Sources:**
+
+- [Cluster Polylogarithms I: Quadrangular Polylogarithms](https://arxiv.org/abs/2208.01564)
+
+### Weight frames split the dilogarithm
+
+**Remember:** The dilogarithm has just one intermediate weight to cut.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Represent the dilogarithm by its period matrix, a triangular matrix encoding the integral and its lower-weight logarithms. Frames specify the generators at the bottom and top weights. The reduced coproduct splits a frame at each intermediate weight, pairing a basis with its dual.
+
+**Problem.** For z ∈ ℂ outside {0,1}, the reduced coproduct is log(1 − z) ⊗ log z. Each logarithm represents a class modulo 2πiℤ in the integral normalization.
+
+**How the definition helps.** In our own explanation, framing makes the single intermediate basis vector supply the only term. Reading the two adjacent entries in units of their diagonal periods gives log(1 − z) and log z. The scalar dilogarithm alone does not record both entries. Constructing the period matrix and proving basis independence supply the substantive work.
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950), [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950). It says: “log(1 − z) ⊗ log(z)”
+
+**Sources:**
+
+- [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950)
+
+### Weight-one symbols multiply by shuffling
+
+**Remember:** The symbol shuffles the lists of weight-one entries.
+
+*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Give each formal polylogarithm its weight, the number of integrations, and give scalars weight zero. The coproduct splits an expression into pairs and preserves multiplication. For weight n, define the symbol by splitting into n factors and retaining only terms of weight one in every position. Multiply symbols by summing all interleavings that preserve each list’s order.
+
+**Problem.** The symbol of a product equals the shuffle product of the two symbols.
+
+**How the definition helps.** In our own explanation, each weight-one position in a product must get its positive weight from exactly one input. The other input contributes a scalar there. Choosing the positions of the first input gives exactly the interleavings. Working directly with functions requires their product identities. The symbol calculation uses the theorem giving their multiplicative coproduct.
+
+**Paper or page:** [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337). It says: “Δ₁,…,₁ is a morphism of graded Hopf algebras.”
+
+**Sources:**
+
+- [Hopf algebras of multiple polylogarithms, and holomorphic 1-forms](https://arxiv.org/abs/2211.08337)
 
 ### Counting primitive lattice flags proves Manin’s conjecture for flag varieties over ℚ
 
@@ -5145,6 +5848,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Period torsors bound transcendence degree
+
+**Remember:** The group dimension caps the number of independent periods.
+
+*True by definition.* MSC 11J81 (Transcendence (general theory)), 14C15, 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A motive packages cohomology of algebraic varieties. For a Nori motive over ℚ, compare its cohomology from differential forms with its rational topological cohomology. Allow comparisons that preserve maps and tensor operations throughout the category generated by the motive. They form a torsor, a space on which the comparison symmetries act freely and transitively after extending scalars.
+
+**Problem.** The number of algebraically independent entries of the actual comparison matrix is at most the dimension of the motivic Galois group of the motive.
+
+**How the definition helps.** The torsor presents the period integrals as values of coordinate functions at a single complex point. In our own argument, their transcendence degree cannot exceed the dimension of the space containing that point. Tensor reconstruction identifies the comparison space as a torsor for the motivic Galois group, so the two dimensions agree.
+
+**Paper or page:** [Functional Transcendence of Periods and the Geometric André–Grothendieck Period Conjecture](https://arxiv.org/abs/2208.05182v2). It says: “The scheme Spec ℙ̃(k) is naturally a torsor for the motivic Galois group Gₘₒₜ(k, γ) base-changed to k.”
+
+**Sources:**
+
+- [Huber and Müller-Stach, Periods and Nori Motives](https://link.springer.com/book/10.1007/978-3-319-50926-6)
+
+### Quotients bound p-adic period fields
+
+**Remember:** Subtract the symmetry that fixes the embedded classes.
+
+*True by definition.* MSC 11J81 (Transcendence (general theory)), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take a pure motive M over the algebraic numbers in Ancona and Fratila’s graded category, with good reduction at a chosen prime above p. Good reduction allows specialization to characteristic p. The period space parametrizes embeddings of algebraic cycle classes after specialization into cohomology computed from differential forms before specialization. These embeddings must respect maps and tensor products throughout the category generated by M.
+
+**Problem.** The transcendence degree of André’s p-adic periods over ℚ̄ is at most dim GdR − dim Gcrys. These groups describe tensor symmetries of de Rham cohomology before reduction and crystalline cohomology after reduction.
+
+**How the definition helps.** The period space makes the numerical periods values of algebraic functions at the comparison point. In our own argument, no point can yield more algebraically independent coordinates than the dimension of its space. The homogeneous-space theorem computes that dimension by subtracting the dimension of the stabilizer Gcrys from that of the acting group GdR.
+
+**Paper or page:** [Algebraic classes in mixed characteristic and André's p-adic periods](https://arxiv.org/abs/2207.09213v2). It says: “trdegℚ̄ 𝒫ₚ(M) ≤ trdegℚ̄ 𝒫ₚ(⟨M⟩) ≤ dim GdR(M) − dim Gcrys(M).”
+
+**Sources:**
+
+- [Giuseppe Ancona, Dragos Fratila, Algebraic classes in mixed characteristic and André's p-adic periods](https://arxiv.org/abs/2207.09213v2)
+
+### Relative periods isolate moving relations
+
+**Remember:** Fix the constant motives before testing relations among moving periods.
+
+*Makes the theorem clean to state or prove.* MSC 11J81 (Transcendence (general theory)), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let k be a finitely generated field over ℂ. Choose a real analytic arc extending past both endpoints on a model of k and lying in no proper algebraic subset. Compare cohomology from differential forms with cohomology from topology, requiring compatibility with maps and tensor products. The relative formal period ring consists of algebraic functions on comparisons that agree with the usual comparison on objects defined over ℂ.
+
+**Problem.** Evaluation identifies the relative formal period ring with the ring of analytic period germs. A germ records a function only near the chosen arc point.
+
+**How the definition helps.** Fixing the constant comparisons lets injectivity express exactly which relations hold among the varying periods, in our own interpretation. A formal relation holds whenever its evaluation vanishes. Bakker and Tsimerman prove injectivity using their functional transcendence theorem.
+
+**Paper or page:** [Functional Transcendence of Periods and the Geometric André–Grothendieck Period Conjecture](https://arxiv.org/abs/2208.05182v2). It says: “The relative period ring ℙ̃(k/ℂ) is an integral domain, and the evaluation map evₖ is an isomorphism.”
+
+**Sources:**
+
+- [Ben Bakker, Jacob Tsimerman, Functional Transcendence of Periods and the Geometric André–Grothendieck Period Conjecture](https://arxiv.org/abs/2208.05182v2)
+
 ### Counting only reduced fractions frees multiplicative Khintchine from monotonicity
 
 **Remember:** Count each rational point once, and monotonicity is no longer needed.
@@ -5220,6 +5977,80 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coproduct stabilizers give double shuffle groups
+
+**Remember:** Symmetries of one coproduct compose and invert.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.QA, math.NT. Level 4: research.
+
+**Definition.** The double shuffle equations express the multiplication rules for multiple zeta sums and their integral representations. On the harmonic module, the coproduct records the coefficients in the product of sums, including mergers of equal summation indices. Use the corrected Ihara action, the action of series on this coproduct by change of coordinates. Inside the theorem’s subgroup 𝒢, take all series whose action fixes the coproduct.
+
+**Problem.** The normalized double shuffle solutions with parameter zero form a group under Ihara multiplication.
+
+**How the definition helps.** The stabilizer description makes closure follow from composition of transformations. In our own proof, transformations fixing the coproduct still fix it after composition or inversion. These operations also preserve the subgroup 𝒢. The identification theorem proves that the intersection of that subgroup with the stabilizer equals the normalized solutions.
+
+**Paper or page:** [Double shuffle Lie algebra and special derivations](https://arxiv.org/abs/2505.02265v1). It says: “DMR₀(k) = Stab(Δ̂ᴹ,ᴰᴿ)(k) ∩ 𝒢”
+
+**Sources:**
+
+- [Double shuffle Lie algebra and special derivations](https://arxiv.org/abs/2505.02265v1)
+
+### Counting threes lowers coaction level
+
+**Remember:** An odd cut changes the parity of the number of threes.
+
+*Makes the theorem clean to state or prove.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** Encode each 2 by 10 and each 3 by 100, then join these blocks into a word. Its weight is its length, and its level counts blocks of type 100. Let Fₗ be the rational span of words of level at most l, with F₋₁ = 0. The operator Dₘ cuts out m consecutive letters and records the cut separately, discarding products in its first factor.
+
+**Problem.** For odd m ≥ 3, Dₘ sends Fₗ into tensors whose second factors belong to Fₗ₋₁.
+
+**How the definition helps.** Counting threes makes a decrease in level visible after an odd cut. The cut formula shows that surviving words still use the two allowed blocks and have no more threes than before. In our own count, weight equals twice the number of blocks plus the number of threes. Removing an odd number of letters changes the parity of the number of threes, so that number decreases.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “For all ℓ,r ∈ ℕ we have D₂ᵣ₊₁(Fℓ ℬ₂,₃) ⊆ ℒ₂ᵣ₊₁ ⊗ Fℓ₋₁ ℬ₂,₃.”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ, Annals of Mathematics 175 (2012), 949–976](https://annals.math.princeton.edu/2012/175-2/p10)
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
+### Cyclotomic words give Fibonacci dimensions
+
+**Remember:** Counting weighted words gives the dimensions without counting relations among integrals.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values), 11G55. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix a primitive sixth root ζ and use repeated integrals with letters 0, 1 and ζ. Their motivic versions retain the algebraic data of integration, and weight counts the number of integrations. The f-alphabet describes their rational vector space using words with one letter of each weight from two onward. Multiply each word by any nonnegative power of the weight-one generator representing 2πi.
+
+**Problem.** The dimensions at weights zero and one are both one. Each subsequent dimension is the sum of the previous two.
+
+**How the definition helps.** Word coordinates turn the dimension problem into counting sequences with a given total weight. In our own count, the letters have generating series t²/(1−t). Summing over all word lengths gives (1−t)/(1−t−t²). The independent powers of 2πi supply the factor 1/(1−t). Deligne’s basis theorem justifies replacing relations between integrals by this word count.
+
+**Paper or page:** [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2), [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “If N ∈ {2, 6} then d₍N,n₎ is the Fibonacci sequence”
+
+**Sources:**
+
+- [Pierre Deligne, Le groupe fondamental unipotent motivique de 𝔾ₘ − μₙ, pour N = 2, 3, 4, 6 ou 8](https://doi.org/10.1007/s10240-010-0027-6)
+- [Erik Panzer and Oliver Schnetz, The Galois coaction on φ⁴ periods](https://doi.org/10.4310/cntp.2017.v11.n3.a3)
+
+### Depth quotients expose parity vanishing
+
+**Remember:** Opposite weight and depth parity leaves only products and shallower terms.
+
+*Makes the theorem clean to state or prove.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** A multiple zeta value has depth equal to the number of exponents and weight equal to their sum. Fix weight w and depth r ≥ 2. In the space spanned by values of weight w and depth at most r, identify elements whose difference is a polynomial in shallower values.
+
+**Problem.** A convergent multiple zeta value of weight w and depth r ≥ 2 represents zero in this quotient whenever w + r is odd.
+
+**How the definition helps.** The quotient turns reduction to a polynomial in shallower values into vanishing of one class. In our own description, each term that the parity theorem produces already lies in the algebra we divide out. The parity theorem supplies the reduction itself.
+
+**Paper or page:** [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “if $n<sub>d</sub>+\\ldots+n<sub>1</sub>+d$ is odd.”
+
+**Sources:**
+
+- [Erik Panzer, The parity theorem for multiple polylogarithms](https://doi.org/10.1016/j.jnt.2016.08.004)
+
 ### Differentiation extends the shuffle algebra to all integers
 
 **Remember:** Use the derivation, the inverse of integration, to build the larger shuffle algebra.
@@ -5238,6 +6069,188 @@
 
 - [Li Guo, Wenchuan Hu, Hongyu Xiang, Bin Zhang, Extended Shuffle Product for Multiple Zeta Values, arXiv:2411.08536 (2025)](https://arxiv.org/abs/2411.08536)
 
+### Double shuffle coordinates are polynomial
+
+**Remember:** One polynomial family of solutions identifies each fiber with the group at zero.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.QA. Level 4: research.
+
+**Definition.** Formal multiple zeta values retain the multiplication equations from nested sums and integrals, extended to divergent indices by regularization. View their algebra as the ring of polynomial functions on the space of solutions. The function ζᶠ(2) gives the parameter λ. At λ = 0 the solutions form a group built from unipotent matrix groups, whose elements have all eigenvalues equal to one.
+
+**Problem.** The formal multiple zeta algebra over ℚ is a polynomial algebra, without assuming completeness of the relations for numerical values.
+
+**How the definition helps.** The coordinate ring description lets group coordinates replace the original list of equations. Racinet’s theorem supplies a solution depending polynomially on the parameter. His group action carries that solution to every other solution at the same parameter in exactly one way. In our own explanation, this identifies the solution space with the parameter line times the group at zero. In each finite degree the exponential gives polynomial coordinates from the Lie algebra, the vector space tangent to the group at its identity. These coordinates extend compatibly through the degrees.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “The algebra 𝒵ᶠ of formal multiple zeta values is a free polynomial algebra.”
+
+**Sources:**
+
+- [Georges Racinet, Doubles mélanges des polylogarithmes multiples aux racines de l’unité](https://doi.org/10.1007/s102400200004)
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
+### Endpoint labels prevent forest integral divergence
+
+**Remember:** Each total order of the vertices gives one word integral.
+
+*Rules out counterexamples.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** Let a nonempty finite rooted forest order its vertices with each root above its descendants. Label vertices by 0 or 1, with minimal vertices labelled 1 and maximal vertices labelled 0. Integrate over times in (0,1) increasing along the order, using dt/t for 0 and dt/(1 − t) for 1.
+
+**Problem.** The resulting integral converges and is a finite sum of ordinary multiple zeta values, counted with multiplicity.
+
+**How the definition helps.** The endpoint labels rule out the divergent two-vertex chain with both labels 1. In our own proof, sort the times to split the forest domain into total orders consistent with the forest order. In each piece the form at the largest time is dt/t and the form at the smallest time is dt/(1 − t). Each piece is therefore a convergent multiple zeta integral. The comparison between word integrals and nested sums carries the work of identifying these pieces as ordinary multiple zeta values.
+
+**Paper or page:** [Generalisations of multiple zeta values to rooted forests](https://arxiv.org/abs/2202.00611v4). It says: “The flattening map fl maps convergent forests to convergent words”
+
+**Sources:**
+
+- [Generalisations of multiple zeta values to rooted forests](https://arxiv.org/abs/2202.00611v4)
+
+### First-letter deletion isolates the kernel
+
+**Remember:** First-letter deletion detects every word unless its first letter uses the whole weight.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** Motivic multiple zeta values are algebraic symbols for nested zeta integrals that retain information about changes of integration data. Brown represents them by words with one letter for each odd weight from three upwards, together with powers of a commuting variable f₂. Word multiplication sums all order-preserving interleavings. For each odd letter, its deletion operator removes that initial letter when present and gives zero otherwise.
+
+**Problem.** At weight N ≥ 2, the operators for odd letters of weight below N have a one-dimensional common kernel. The single motivic zeta value ζᵐ(N) spans it.
+
+**How the definition helps.** The word model turns the kernel into a count of words that no deletion can detect. In our own proof, monomials beginning with a fixed letter have distinct remainders, so their coefficients cannot cancel. Only the single weight-N letter for odd N, or the power of f₂ for even N, remains. The work lies in identifying the motivic coaction with the shuffle model and normalizing the single zeta values.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “\\ker(D<sub>&lt;N</sub>) \\cap \\mathcal{U}<sup>\\mathsf{f}<sub>N</sub></sup> = \\mathbb{Q} \\,s<sub>N</sub>.”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ, Annals of Mathematics 175 (2012), 949–976](https://annals.math.princeton.edu/2012/175-2/p10)
+
+### Formal zeta symbols parametrize solutions
+
+**Remember:** The quotient records the relations that every solution must satisfy.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.QA. Level 4: research.
+
+**Definition.** A shuffle product sums the interleavings of two words that preserve their internal orders. Start with the rational shuffle algebra on two letters and set each one-letter word to zero. Impose the regularized double shuffle relations, which compare integral and series multiplication after assigning polynomial values to divergent indices. Write ζᶠ(w) for the resulting class of w.
+
+**Problem.** For every commutative ℚ-algebra R, maps of ℚ-algebras into R from this quotient correspond to normalized double shuffle solutions over R. Imposing ζᶠ(2) = λ selects the solutions with parameter λ.
+
+**How the definition helps.** The quotient represents solutions without requiring numerical linear independence. In our own proof, a map from the quotient is exactly a shuffle evaluation that kills the regularized relations. The work lies in Racinet’s comparison with the series conditions, including the correction to the stuffle series. The numerical algebra is a quotient and is not known to coincide with this formal algebra.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “the algebra 𝒵ᶠ of formal multiple zeta values.”
+
+**Sources:**
+
+- [Georges Racinet, Doubles mélanges des polylogarithmes multiples aux racines de l’unité](https://doi.org/10.1007/s102400200004)
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
+### Missing barred ones kill weight-one cuts
+
+**Remember:** Without a barred one, no nonzero weight-one cut survives.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** An Euler sum is a multiple zeta sum whose term includes εᵢ raised to the summation integer at position i, with εᵢ = ±1. A bar marks an exponent with εᵢ = −1. In increasing summation order, encode exponent m at position i by εᵢ⋯εᵣ followed by m − 1 zeros. The motivic version records this integral word before numerical evaluation.
+
+**Problem.** Let D₁ sum the one-letter cuts of the word, recording each cut separately from its remainder. For convergent motivic Euler sums without a barred 1, D₁ gives zero.
+
+**How the definition helps.** The integral word shows exactly where a one-letter cut could produce a nonzero logarithm. In our own argument, the endpoint rules require two neighboring nonzero signs of opposite sign for such a cut. Adjacent sign letters occur only when the first belongs to an exponent of size one. Their ratio is its sign, so opposite signs require a barred one. The same argument includes the final endpoint 1. The substantive inputs are the cut formula and its endpoint rules.
+
+**Paper or page:** [On Some Unramified Families of Motivic Euler Sums](https://arxiv.org/abs/2309.06925v3). It says: “If 1̅ does not appear in s then D₁ζₐᵐ(s) = 0”
+
+**Sources:**
+
+- [On Some Unramified Families of Motivic Euler Sums](https://arxiv.org/abs/2309.06925v3)
+
+### Odd single zeta values have a two-term coaction
+
+**Remember:** One letter 1 leaves no nontrivial proper coaction term.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** Formal multiple zeta values are symbols subject to the product identities from sums and integrals, including their extensions to divergent indices. Encode the single value ζᶠ(k) by a one followed by k − 1 zeros, with initial endpoint zero and final endpoint one. Its coaction Δ sums over retained subwords and records the intervening blocks in a separate factor. Write a for the map setting ζᶠ(2) to zero in that factor.
+
+**Problem.** For odd k ≥ 3, Δζᶠ(k) = a(ζᶠ(k)) ⊗ 1 + 1 ⊗ ζᶠ(k).
+
+**How the definition helps.** The integral word has only one nonzero letter, so every proper, nonempty cut contributes zero. In our own check, an omitted block containing the one starts at the beginning. Unless it covers the entire word, its two endpoints are zero. Every other nonempty omitted block consists of zeros. The regularized endpoint rules give zero in both cases. The substantial input is the theorem giving the coaction by cuts of the word.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “ΔGon(ζᶠ(2n+1)) = a(ζᶠ(2n+1)) ⊗ 1 + 1 ⊗ ζᶠ(2n+1).”
+
+**Sources:**
+
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
+### Parity alphabets locate ordinary zeta values
+
+**Remember:** With the parity basis, ordinary zeta values occupy the odd-letter words.
+
+*Makes the theorem clean to state or prove.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values), 11G55. arXiv math.NT. Level 4: research.
+
+**Definition.** At level N, cyclotomic multiple zeta values use repeated integrals with letters 0, 1 and a primitive Nth root of unity. Their motivic versions retain the algebraic data of integration. The parity basis chooses real or purely imaginary generators by combining Deligne’s generators with their complex conjugates. The corresponding f-alphabet assigns word coordinates, graded by weight, the number of integrations.
+
+**Problem.** For N equal to 2, 3, 4 or 6, the ordinary motivic multiple zeta values use only the letters of odd weight at least three. Their algebra is exactly the rational span of these words multiplied by even powers of 2πi.
+
+**How the definition helps.** The parity basis makes membership in the ordinary algebra a test on words. The ordinary algebra uses only the integration letters zero and one. Panzer and Schnetz prove that the parity coordinates respect conjugation and identify precisely the stated subalgebra. In our own reading, this comparison theorem does the work of excluding all the other letters.
+
+**Paper or page:** [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2), [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “be the sub-algebra of words in letters of odd weights ≥ 3 times even powers of 2πi.”
+
+**Sources:**
+
+- [Erik Panzer and Oliver Schnetz, The Galois coaction on φ⁴ periods](https://doi.org/10.4310/cntp.2017.v11.n3.a3)
+
+### Path reversal gives zeta duality
+
+**Remember:** Read the path backward and swap the two endpoints.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A motivic multiple zeta value records a nested integral together with its algebraic path data. Encode its successive differential forms by 0 for dt/t and 1 for dt/(1 − t), reading from the innermost integral outward. Words beginning with 1 and ending with 0 converge along the interval from 0 to 1. Reverse the word and exchange 0 with 1 to form its dual.
+
+**Problem.** A convergent word and its dual give the same motivic multiple zeta value.
+
+**How the definition helps.** Our own explanation uses the path description to replace a nested-sum identity by a symmetry of the interval. Reversing the path reverses the word and contributes one minus sign per letter. Substituting t ↦ 1 − t exchanges the letters and contributes the same signs again. The two operations restore the original endpoints and their standard tangent directions. Brown’s motivic integral identities justify both operations before numerical evaluation.
+
+**nLab:** [iterated integral](https://ncatlab.org/nlab/show/iterated+integral). It says: “Iterated integrals include nested integration of differential forms of the kind as it appears in the formulation of parallel transport”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ (2012)](https://annals.math.princeton.edu/2012/175-2/p10)
+
+### Projected coactions give derivations
+
+**Remember:** Keep one positive-weight factor and discard products of two.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Motivic multiple zeta values are algebraic versions of nested sums that retain information about their symmetries. Their coaction Δ records these symmetries in a left factor A and keeps the values in a right factor H. For r &gt; 0, define D by taking left weight r and discarding products of two positive-weight left factors.
+
+**Problem.** The projected map satisfies the product rule D(uv) = (1 ⊗ u)D(v) + (1 ⊗ v)D(u).
+
+**How the definition helps.** Our own explanation is that the projection removes exactly the mixed positive-weight terms from the product Δ(u)Δ(v). This avoids checking the product rule on individual words. The weight-zero terms are 1 ⊗ u and 1 ⊗ v. Brown constructs the motivic coaction and proves that it respects products. The quoted lemma gives the analogous product rule in the formal word algebra.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630). It says: “is a derivation with respect to ∗”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ (2012)](https://annals.math.princeton.edu/2012/175-2/p10)
+
+### Projection removes single-valued period products
+
+**Remember:** Project first and products drop out of the relation.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values), 33B30. arXiv math.NT. Level 4: research.
+
+**Definition.** Motivic multiple polylogarithms are formal versions of iterated integrals that retain their algebraic relations. Their de Rham versions form a graded algebra, with a coproduct that splits expressions into tensor factors. In degree n &gt; 0, the clean projector applies the Hopf inverse to the first factor and multiplies the second by its degree. It then multiplies the factors, sums the terms and divides by n.
+
+**Problem.** If a rational linear combination of motivic multiple polylogarithms equals a sum of products of positive weights, its clean single-valued combination vanishes.
+
+**How the definition helps.** The clean definition projects away products before evaluating, so product terms in the original identity contribute zero (our own). Ordinary single-valued evaluation can retain such products (our own). The projector kills them because the degree operator satisfies the product rule and the Hopf inverse cancels the coproduct on positive degrees (our own). The construction then applies single-valued evaluation and selects the real or imaginary part prescribed by the weight (our own).
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344). It says: “for every linear combination of motivic MPL’s that can be reduced to products,”
+
+**Sources:**
+
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://doi.org/10.3842/sigma.2021.107)
+
 ### Regularizing divergent Hurwitz-type multiple zeta values lets their two products be compared
 
 **Remember:** Keep the divergent part as a variable, then compare the polynomials.
@@ -5255,6 +6268,97 @@
 **Sources:**
 
 - [Jia Li, Jianqiang Zhao, Regularized double shuffle relations of μ-multiple Hurwitz zeta values, arXiv:2402.11689v1 (2024)](https://arxiv.org/abs/2402.11689v1)
+
+### Separate regularizations avoid incompatible values
+
+**Remember:** The two products need different values for the first divergent pair.
+
+*Rules out counterexamples.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** An index lists the exponents in a multiple zeta sum over decreasing positive integers. Shuffle interleaves the integral words encoding two indices, preserving their internal orders. Stuffle interleaves the index entries and also allows an entry from each index to merge by addition. For each product separately, extend convergent zeta values multiplicatively and assign the variable T to (1).
+
+**Problem.** Both extensions exist uniquely. They give T²/2 and (T² − ζ(2))/2 respectively for the index (1,1), so one extension cannot preserve both products.
+
+**How the definition helps.** Separate extensions allow the two products to assign different values to the divergent index (1,1). In our own calculation, shuffling (1) with itself yields two copies of (1,1). Stuffling adds the merged index (2), which has nonzero value. Existence and uniqueness use the polynomial description of each index algebra over its convergent part.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “Let T be a commutative variable and extend the stuffle product ∗ by ℚ\[T\]-linearity”
+
+**Sources:**
+
+- [K. Ihara, M. Kaneko and D. Zagier, Derivation and double shuffle relations for multiple zeta values](https://doi.org/10.1112/s0010437x0500182x)
+
+### Stable ideals preserve the coaction
+
+**Remember:** Impose only period relations that remain relations under the coaction.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Use words in two letters to represent repeated integrals from 0 to 1, with endpoint divergences removed using the standard tangent directions. Multiply words by summing their order-preserving interleavings. The period map evaluates these words as numbers. Divide by the largest graded ideal of numerical relations preserved by the motivic coaction, which records algebraic symmetries of the integrals.
+
+**Problem.** The quotient carries both the coaction and the map to numerical periods.
+
+**How the definition helps.** Our own explanation is that stable relations let the coaction pass to the quotient. Requiring numerical vanishing also preserves evaluation. The sum of all eligible ideals is still eligible, so a largest one exists. Brown constructs the coaction before imposing these relations.
+
+**nLab:** [motivic multiple zeta values](https://ncatlab.org/nlab/show/motivic+multiple+zeta+values). It says: “The intricate combinatorics of these becomes often more tractable when re-expressing them as motivic multiple zeta values”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ (2012)](https://annals.math.princeton.edu/2012/175-2/p10)
+- [Pierre Deligne and Alexander Goncharov, Groupes fondamentaux motiviques de Tate mixte (2005)](https://numdam.org/articles/10.1016/j.ansens.2004.11.001/)
+
+### Symmetric zeta sums lose their parameter
+
+**Remember:** Reversal makes the common regularization shift cancel.
+
+*True by definition. Confidence: medium.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT. Level 4: research.
+
+**Definition.** Use descending summation indices. Harmonic regularization assigns polynomials to divergent multiple zeta sums and sends the single index (1) to its parameter. At each split, evaluate the reversed prefix at T + πi/2 and the suffix at T − πi/2. Multiply these values, negate the product if the prefix has odd weight (sum of entries), and sum over all splits.
+
+**Problem.** This signed sum is independent of T.
+
+**How the definition helps.** The signed reversal cancels a common change in the two parameters. In our own explanation, collect the evaluations as coefficients of words in a series, with y the letter for index 1. Harmonic regularization makes a parameter increase h multiply this series on the left by exp(hy). Signed reversal moves the multiplier to the right and changes it to exp(−hy). The two factors then cancel between the reversed and ordinary series. The cited theorem gives this independence in degree zero of its deformation variable.
+
+**Paper or page:** [Supercongruences of multiple harmonic q-sums and generalized finite/symmetric multiple zeta values](https://arxiv.org/abs/2012.07067v2). It says: “does not depend on T”
+
+**Sources:**
+
+- [Supercongruences of multiple harmonic q-sums and generalized finite/symmetric multiple zeta values](https://arxiv.org/abs/2012.07067v2)
+
+### Top-depth stuffle becomes shuffle
+
+**Remember:** At greatest depth, no letters have merged.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.QA. Level 4: research.
+
+**Definition.** Represent a list of zeta exponents by a word on positive integers. Its depth is its length. The stuffle product interleaves two words and also allows a letter from each to merge by adding their indices. In the associated graded algebra, multiply words of lengths m and n by keeping only output words of length m + n.
+
+**Problem.** The associated graded algebra of the stuffle word algebra for this filtration is the shuffle algebra on the same alphabet.
+
+**How the definition helps.** Keeping only the longest terms removes every merge from the product. In our own proof, a merge takes two input letters and produces one output letter. Exactly the interleavings have length equal to the sum of the input lengths. The cited theorem treats a larger alphabet whose positive-index letters give this product.
+
+**Paper or page:** [An extension of the linearized double shuffle Lie algebra](https://arxiv.org/abs/2508.05024v1). It says: “grᴅ ∘ ∗ᵦ = ⧢”
+
+**Sources:**
+
+- [An extension of the linearized double shuffle Lie algebra](https://arxiv.org/abs/2508.05024v1)
+
+### Word weights count motivic dimensions
+
+**Remember:** Odd letters form arbitrary words, and the even variable contributes its own powers.
+
+*True by definition.* MSC 11M32 (Multiple Dirichlet series and zeta functions and multizeta values). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Motivic multiple zeta values are algebraic versions of nested sums, graded by the sum of their exponents. Brown gives a model with one letter in each odd weight starting at three and an independent polynomial variable of weight two. A basis consists of every ordered word, including the empty word, times each power of that variable.
+
+**Problem.** The series whose coefficient of tⁿ counts the dimension in weight n equals 1 ∕ (1 − t² − t³).
+
+**How the definition helps.** The word model turns a dimension question about relations among motivic values into a count of basis elements. In our own calculation, the single-letter series is L = t³ ∕ (1 − t²). Summing over word lengths gives 1 ∕ (1 − L). Multiplying by 1 ∕ (1 − t²) counts the independent powers and gives the stated series. Brown proves the model exists, although the choice of odd letters is not canonical.
+
+**nLab:** [motivic multiple zeta values](https://ncatlab.org/nlab/show/motivic+multiple+zeta+values). It says: “The intricate combinatorics of these becomes often more tractable when re-expressing them as motivic multiple zeta values”
+
+**Sources:**
+
+- [Francis Brown, Mixed Tate motives over ℤ (2012)](https://annals.math.princeton.edu/2012/175-2/p10)
 
 ### Selberg factors telescope to Ruelle
 
@@ -5454,6 +6558,190 @@
 
 - [W. N. Bailey, Identities of the Rogers-Ramanujan Type](https://doi.org/10.1112/plms/s2-50.1.1)
 
+### Centered Blaschke products preserve Mahler measure
+
+**Remember:** The image of uniform boundary measure stays uniform if the center stays fixed.
+
+*Rules out counterexamples.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** A finite Blaschke product B multiplies factors (z − a)/(1 − āz), with \|a\| &lt; 1, by a constant of modulus one. Require B(0) = 0. The logarithmic Mahler measure m(P) averages log\|P\| over independent uniform points on the unit circle.
+
+**Problem.** For every nonzero complex polynomial P(x,y), replacing x by B(x) preserves m(P). Here y denotes any number of additional variables.
+
+**How the definition helps.** In our own proof, fixing zero preserves the circle average of every continuous function. Extend the function harmonically to the disk and compose with B. The composition is harmonic and has the same value at zero, which gives the same boundary average. Equality of the resulting measures also gives equality for the integrable logarithm. Our own example B(z) = (z + ½)/(1 + z/2) moves zero to ½. For P(z) = z − 2 the average changes from log 2 to log(3/2).
+
+**Paper or page:** [An invariant property of Mahler measure](https://arxiv.org/abs/2211.00125). It says: “We denote by $\\widetilde{P}$ the rational function obtained by replacing $x$ by $f(x)/g(x)$ in $P$. Then\\\[  \\mathrm{m}(P)=\\mathrm{m}(\\widetilde{P}).  \\\]”
+
+**Sources:**
+
+- [An invariant property of Mahler measure, Theorem 1](https://arxiv.org/abs/2211.00125)
+
+### Constant terms count lattice walks
+
+**Remember:** The constant coefficient keeps exactly the walks that return to the origin.
+
+*True by definition.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** Work over ℂₚ, the completed algebraic closure of the p-adic numbers. Put S = x + x⁻¹ + y + y⁻¹ and choose \|c\|ₚ &gt; 1. Compute the p-adic Mahler measure of c + S from the constant coefficient of logₚ c + logₚ(1 + S/c). The logarithm series converges under this strict inequality.
+
+**Problem.** Let Bⱼ be the binomial coefficient counting subsets of size j in a set of size 2j. For j ≥ 1 put aⱼ = Bⱼ²/(2j(cʲ)²). The measure equals logₚ c minus the sum of all aⱼ.
+
+**How the definition helps.** In our own calculation, taking the constant coefficient selects exactly the walks that return to their starting point. Each factor of S contributes one horizontal or vertical unit step. The coordinates u+v and u−v turn each step from (u,v) into independent choices of increments +1 or −1. Returning after 2j steps requires j positive increments in each coordinate, giving Bⱼ² walks. No walk returns after an odd number of steps. Katagiri’s comparison with averages over roots of unity justifies using the constant coefficient.
+
+**Paper or page:** [A note on p-adic higher Mahler measures](https://arxiv.org/abs/2408.05724). It says: “m<sub>p</sub>(f)=\\log \_p c -\\frac{2}{c<sup>2}</sup> {}<sub>4F</sub><sub>3</sub>\\left(\\frac{3}{2}, \\frac{3}{2}, 1, 1 ; 2, 2, 2 ; \\frac{16}{c<sup>2}\\right</sup>).”
+
+**Sources:**
+
+- [A note on p-adic higher Mahler measures, Proposition 3.6](https://arxiv.org/abs/2408.05724)
+
+### Constant terms preserve p-adic measures
+
+**Remember:** An injective exponent map cannot turn a nonconstant monomial into a constant.
+
+*True by definition.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** Work over ℂₚ, the completed algebraic closure of the p-adic numbers. Assume f has no zeros when every coordinate has p-adic absolute value one. Factor f as atᵘ(1 + g), where atᵘ is a monomial and every coefficient of g has p-adic absolute value below one. Compute its kth measure as the constant coefficient of the kth power of logₚ a + logₚ(1 + g).
+
+**Problem.** For k ≥ 1, every square integer monomial substitution with nonzero determinant preserves the k-th p-adic Mahler measure.
+
+**How the definition helps.** In our own argument, the constant coefficient survives because the substitution sends only exponent zero to zero. Substitution respects the convergent logarithm series and its powers. Katagiri’s comparison with averages over roots of unity justifies the constant-coefficient formula. Those averages use orders coprime to p.
+
+**Paper or page:** [A note on p-adic higher Mahler measures](https://arxiv.org/abs/2408.05724). It says: “For any $n \\times n$ matrix $S \\in M<sub>n</sub>(\\mathbb {Z}) \\cap {\\rm GL}n(\\mathbb {Q})$, we have $m{p, k}(f(t<sup>S</sup>))=m<sub>p, k</sub>(f(t))$.”
+
+**Sources:**
+
+- [A note on p-adic higher Mahler measures, Proposition 2.7](https://arxiv.org/abs/2408.05724)
+
+### Cyclotomic factors characterize zero measure
+
+**Remember:** One monomial pulls ordinary cyclotomy onto the whole torus.
+
+*Makes the theorem clean to state or prove.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** A cyclotomic polynomial is the monic polynomial with simple roots at all complex numbers of a given exact multiplicative order. Substitute any nonconstant monomial with integer exponents into a cyclotomic polynomial to get an extended cyclotomic factor. Integer Laurent polynomials allow negative exponents, and their invertible elements are precisely the signed monomials.
+
+**Problem.** A nonzero Laurent polynomial over ℤ has logarithmic Mahler measure zero exactly when it is a product of these factors and a unit.
+
+**How the definition helps.** In our own explanation, substitution into a single monomial describes all the factors in Boyd’s theorem in any number of variables. A nonconstant monomial of independent uniform circle variables is itself uniform on the circle. Jensen’s formula therefore gives every such factor logarithmic Mahler measure zero. Boyd proves the converse for integer polynomials. Multiplication by a monomial clears negative exponents without changing the circle average of log\|P\|.
+
+**Wikipedia:** [Mahler measure](https://en.wikipedia.org/wiki/Mahler_measure). It says: “Then M(F)=1 if and only if F is an element of Kₙ.”
+
+**Sources:**
+
+- [Boyd, Kronecker’s theorem and Lehmer’s problem for polynomials in several variables](https://doi.org/10.1016/0022-314X(81)90033-0)
+
+### Dilogarithms evaluate triangular Mahler measure
+
+**Remember:** An exact regulator form makes the endpoints carry the whole integral.
+
+*True by definition.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure), 11G55. arXiv math.NT. Level 4: research.
+
+**Definition.** For \|z\| &lt; 1, define Li₂(z) by the power series with coefficient 1/n² in degree n ≥ 1. The Bloch–Wigner dilogarithm D(z) adds arg(1−z) log\|z\| to the imaginary part of Li₂(z). Extend D continuously to the closed disk, including zero.
+
+**Problem.** The uniform circle average of log\|1 + x + y\| over x and y equals D(exp(πi/3))/π. This average is the logarithmic Mahler measure.
+
+**How the definition helps.** In our own calculation, the correction in D makes the integral along the root arc depend only on its endpoints. Jensen’s formula selects y = −1−x with \|y\| ≥ 1 and x running counterclockwise from exp(−2πi/3) to exp(2πi/3). On this arc the differential of D(−x) equals −log\|1+x\| times the change in the angle of x. The endpoint values have opposite signs, so their difference gives the stated average after division by −2π. Roy’s differential identity justifies the endpoint calculation.
+
+**Wikipedia:** [Mahler measure](https://en.wikipedia.org/wiki/Mahler_measure). It says: “m(1+x+y)=3√3/(4π) L(χ₋₃,2)”
+
+**Paper or page:** [Generalized Mahler measures of Laurent polynomials](https://arxiv.org/abs/2308.04601). It says: “\\eta \\left(x, 1-x\\right) = d D\\left(x\\right).”
+
+**Sources:**
+
+- [Generalized Mahler measures of Laurent polynomials, Lemma 2.1](https://arxiv.org/abs/2308.04601)
+- [Smyth, On measures of polynomials in several variables](https://doi.org/10.1017/S0004972700006894)
+
+### Dominant coefficients exclude p-adic zeros
+
+**Remember:** One strictly largest term cannot cancel on the p-adic unit torus.
+
+*Rules out counterexamples.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** Use ℂₚ, the completed algebraic closure of the p-adic numbers. A Laurent polynomial allows negative integer exponents. Call one coefficient dominant if its p-adic absolute value strictly exceeds every other coefficient’s absolute value. The unit torus consists of points whose coordinates all have absolute value one.
+
+**Problem.** A nonzero Laurent polynomial has no zero on this torus exactly when it has a dominant coefficient.
+
+**How the definition helps.** In our own explanation, the largest term stays strictly larger than every other term throughout the torus. The p-adic triangle inequality then prevents cancellation. The converse uses the lemma’s factorization into a monomial times one plus a polynomial with coefficients smaller than one in absolute value. Our own example 1 − t has tied coefficients and vanishes at t = 1.
+
+**Paper or page:** [A note on p-adic higher Mahler measures](https://arxiv.org/abs/2408.05724). It says: “Then $f$ does not vanish in any point of $T<sub>p</sub><sup>n$</sup> if and only if we have\\begin{align}  f(t<sub>1</sub>, \\cdots , t<sub>n</sub>)=at<sub>1</sub><sup>l<sub>1</sub></sup>\\cdots t<sub>n</sub><sup>l<sub>n</sub></sup>(1+g(t<sub>1</sub>, \\cdots , t<sub>n</sub>)) \\end{align}for some $a \\in \\mathbb {C}<sub>p</sub><sup>\\times </sup>, (l<sub>1</sub>, \\cdots , l<sub>n</sub>) \\in \\mathbb {Z}<sup>n$</sup> and $g \\in \\mathfrak {m}<sub>p</sub>\[t<sub>1</sub><sup>\\pm 1</sup>, \\dots ,t<sub>n</sub><sup>\\pm 1</sup>\]$.”
+
+**Sources:**
+
+- [A note on p-adic higher Mahler measures, Lemma 2.5](https://arxiv.org/abs/2408.05724)
+
+### Exact symbols give boundary integrals
+
+**Remember:** Each term supplies a primitive, so only the boundary remains to integrate.
+
+*Makes the theorem clean to state or prove.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure), 11G55. arXiv math.NT. Level 4: research.
+
+**Definition.** For a polynomial P(x,y,z), work where its zero surface is smooth and all functions below have neither zeros nor poles. Form alternating products of nonzero rational functions, writing their multiplication as addition and allowing rational coefficients. Require x ∧ y ∧ z to be a finite sum of terms f ∧ (1−f) ∧ g with rational coefficients.
+
+**Problem.** Over \|x\| = \|y\| = 1, collect the roots with \|z\| ≥ 1, counting multiplicities and orienting by the angles θ, φ of x,y. Assume they form a piecewise smooth chain Γ in this open set, including its boundary. Then the logarithmic Mahler measure minus that of the leading coefficient in z equals a boundary integral.
+
+**How the definition helps.** In our own explanation, the decomposition gives a primitive for each term, so their sum replaces an integral over Γ with one over its boundary. Here a primitive is a one-form β whose differential on Γ equals log\|z\| dθ ∧ dφ. Jensen’s formula identifies the integral of this differential, divided by (2π)², with the stated difference of logarithmic circle averages. Stokes’ theorem now gives the integral of β along the oriented boundary, with the same factor. Trieu’s regulator identities supply the primitives, and finding the decomposition still takes work.
+
+**Paper or page:** [The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893). It says: “\\mathrm{m}(P) - \\mathrm{m}(\\tilde P) = \\dfrac {(-1)<sup>n-1</sup>}{(2\\pi i)<sup>n-1</sup>} \\int <sub>\\partial \\Gamma </sub> \\rho (\\xi ).”
+
+**Sources:**
+
+- [The Mahler measure of exact polynomials and special L-values of K3 surfaces, Theorem 1.11](https://arxiv.org/abs/2412.00893)
+
+### Exterior roots give regulator integrals
+
+**Remember:** Jensen keeps the exterior roots, and the regulator form reads their logarithms.
+
+*Makes the theorem clean to state or prove.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure), 19F27. arXiv math.NT. Level 4: research.
+
+**Definition.** Let P(x,y) = 0 define an elliptic curve, and let P\* be the leading coefficient in y. As x travels counterclockwise around the unit circle, follow the roots y outside that circle, counting multiplicities. Together these oriented paths form γ.
+
+**Problem.** Assume γ consists of finitely many smooth paths on the curve. Write m(P) for the average of log\|P\| with both variables uniform on the unit circle. Then m(P) − m(P\*) equals −1/(2π) times the integral along γ of η = log\|x\| d arg y − log\|y\| d arg x.
+
+**How the definition helps.** In our own explanation, the path selects exactly the root terms in Jensen’s formula for the circle average in y. On γ, log\|x\| vanishes, leaving only −log\|y\| times the angular change of x. Integrating this expression gives the stated sign and factor.
+
+**Paper or page:** [Determinants of Mahler measures and special values of L-functions](https://arxiv.org/abs/2409.14714). It says: “m(P) − m(P\*) = −1/(2π) ∫γₚ η(x,y).”
+
+**Sources:**
+
+- [Determinants of Mahler measures and special values of L-functions, Theorem 2.1](https://arxiv.org/abs/2409.14714)
+
+### Short relation bounds imply equidistribution
+
+**Remember:** Every fixed nonconstant character disappears from the average once the height is large enough.
+
+*Makes the theorem clean to state or prove.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure). arXiv math.NT. Level 4: research.
+
+**Definition.** A monomial map between products of unit circles replaces each variable by a product of integer powers. Its Boyd height is the smallest maximum absolute coordinate among nonzero exponent vectors whose monomials become constant. Set the height to infinity when no such vector exists.
+
+**Problem.** Fix the target and let the Boyd heights tend to infinity. Then the source averages of each continuous target function composed with these maps approach its uniform target average. The same conclusion holds for log\|P\| for each fixed nonzero Laurent polynomial P, giving convergence of logarithmic Mahler measures.
+
+**How the definition helps.** In our own argument, the height bound ensures that every fixed nonconstant monomial eventually stays nonconstant. Its uniform average is then zero. Finite sums of monomials approximate every continuous function on the target uniformly. For log\|P\| the Boyd–Lawton theorem also controls the contribution near zeros, where uniform approximation fails.
+
+**Paper or page:** [General Boyd-Lawton Theorems with Multivariable Limits](https://arxiv.org/abs/2508.05910). It says: “If $g\\colon {\\mathbb {T}}<sup>n\\to</sup> {\\mathbb {C}}$ is continuous, then\\\[  \\int \_{{\\mathbb {T}}<sup>n</sup>} g \\,  d \\tau <sub>n</sub> \\;  = \\;  \\lim <sub>\\mu \\left( q<sub>A</sub> \\right)\\to \\infty </sub>\\;  \\int \_{{\\mathbb {T}}<sup>m}</sup> g \\circ q<sub>A</sub> \\;  d \\tau \_m,  \\\]”
+
+**Sources:**
+
+- [General Boyd-Lawton Theorems with Multivariable Limits, Corollary 6.1](https://arxiv.org/abs/2508.05910)
+
+### Tempered faces prevent tame obstructions
+
+**Remember:** Cyclotomic edge roots make every boundary tame symbol torsion.
+
+*Rules out counterexamples.* MSC 11R06 (PV-numbers and generalizations; other special algebraic numbers; Mahler measure), 19D45. arXiv math.NT. Level 4: research.
+
+**Definition.** For a polynomial allowing negative exponents in two variables, take the convex hull of its exponent vectors. Along each edge, list its coefficients in successive lattice positions, including zeros at missing positions. Use that list as coefficients of a one-variable polynomial. Call the original polynomial tempered if every nonzero root of every edge polynomial is a root of unity.
+
+**Problem.** Take an irreducible tempered polynomial over ℚ whose exponent polygon has positive area. On its smooth complete curve, every tame symbol of the coordinate functions x and y is a root of unity. Thus their symbol has no boundary obstruction after allowing rational coefficients.
+
+**How the definition helps.** In our own explanation, an edge root gives the leading boundary value needed to compute the tame symbol. At a curve point, write x = tᵐa and y = tⁿb using a local coordinate t and nonvanishing factors a,b. The tame symbol there is (−1)ᵐⁿaⁿ/bᵐ evaluated at the point. If either order is nonzero, the terms of least order in the polynomial lie on one edge. Their cancellation makes the tame symbol a signed integer power of an edge root. Our own example x + y + 2 has tame symbol −1/2 at x = 0.
+
+**Paper or page:** [A shifted Mahler measure identity for Boyd's family](https://arxiv.org/abs/2202.09974). It says: “Qₖ(x,y) and Qₖ(x−1,y) are tempered polynomials.”
+
+**Sources:**
+
+- [A shifted Mahler measure identity for Boyd's family, Lemma 3.1](https://arxiv.org/abs/2202.09974)
+- [Yang, Liu and Tang, A Mahler Measure Identity Involving a Genus 2 Family, Section 1](https://ccj.pku.edu.cn/Article/DownLoad?id=364490499&type=ArticleFile)
+
 ### Monic polynomials are Hermite equivalent exactly when their rings ℤ\[X\]∕(f) are isomorphic
 
 **Remember:** For monic polynomials, compare the rings, not the norm forms.
@@ -5616,6 +6904,61 @@
 
 - [CM Elliptic Curves: Volcanoes, Reality and Applications (Corollary 4.4)](https://arxiv.org/abs/2212.13316v1)
 
+### Degree-zero divisors read Stark ranks
+
+**Remember:** Taking degree zero subtracts one trivial character.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** Let H/F be a finite abelian extension of number fields with group G. Let S be a finite set of places of F containing all infinite places and all ramified primes. Take one complex basis vector for each place of H above S, with G permuting those vectors. Let X consist of the vectors whose coefficients sum to zero.
+
+**Problem.** For a complex character χ of G, omit the finite prime factors at S from its Artin L-function. Its order of vanishing at zero equals the number of copies of χ in X.
+
+**How the definition helps.** The zero-sum condition supplies the single correction needed for the trivial character, in our own count. Each place in S contributes one orbit of basis vectors. This orbit contributes χ exactly when χ is trivial on the subgroup fixing one place above it. Passing to X removes one copy of the trivial character. The functional equation and nonvanishing at one give the infinite-place contributions. Removing the finite factors adds the remaining contributions.
+
+**Paper or page:** [Borel's rank theorem for Artin L-functions](https://arxiv.org/abs/2209.10044). It says: “Consider the Artin L-function L(s,ρ) attached to a Galois representation”
+
+**Sources:**
+
+- [Karl Rubin, A Stark conjecture over ℤ for abelian L-functions with multiple zeros (1996)](https://aif.centre-mersenne.org/articles/10.5802/aif.1505/)
+
+### Primitive characters isolate a zeta quotient
+
+**Remember:** Exclude each prime-order subgroup from the character kernel.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** Let E/F be a cyclic extension of number fields of degree m. Call a complex character of its Galois group primitive if its kernel is trivial. For each divisor d of m, write E(d) for the field fixed by the subgroup of order d.
+
+**Problem.** Multiply the Artin L-functions of all primitive characters. The result is the product over d dividing m of the Dedekind zeta functions of E(d), each raised to μ(d). Here μ(d) vanishes on multiples of prime squares and otherwise equals (−1) raised to the number of distinct prime factors of d.
+
+**How the definition helps.** The kernel condition selects the desired factors by inclusion-exclusion, in our own explanation. A nontrivial kernel contains a subgroup of prime order. Characters trivial on the subgroup of order d give exactly the characters of its quotient. Their L-functions multiply to the zeta function of E(d) by Artin’s factorization theorem.
+
+**Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “Let χ : Gal(F′/F) ↪︎ ℂ× be a primitive (injective) character.”
+
+**Sources:**
+
+- [Elden Elmanto and Ningchuan Zhang, Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578)
+
+### Smoothing clears Stickelberger denominators
+
+**Remember:** Smoothing multiplies by factors that clear denominators.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** Let H/F be a finite abelian extension with F totally real and H a totally imaginary quadratic extension of a totally real field. Choose a finite set S containing all infinite and ramified places. The Stickelberger element has value L(S,χ⁻¹,0) at each character χ, omitting factors at S. Smooth it at primes v in a disjoint finite set T by multiplying by 1−Nv·σᵥ⁻¹ for each v.
+
+**Problem.** Here Nv counts residue field elements and σᵥ is the automorphism inducing the Nv-th power map on residues. Suppose only the identity root of unity in H reduces to one at every prime above T. The smoothed element then has integer coefficients in the basis of Galois automorphisms.
+
+**How the definition helps.** Smoothing excludes fractional coefficients that already occur for the Gaussian rationals, in our own example. For ℚ(i)/ℚ take S to consist of infinity and 2. The trivial character value is zero and the nontrivial value is one half. The unsmoothed element is therefore (1−c)/4, where c is complex conjugation. Integrality after smoothing uses the theorem of Deligne and Ribet and of Cassou-Noguès.
+
+**Paper or page:** [Two encounters with the p-adic Stark conjecture](https://arxiv.org/abs/2303.03299). It says: “The Brumer–Stark conjecture holds over ℤ\[1/2\].”
+
+**Sources:**
+
+- [Samit Dasgupta and Mahesh Kakde, On the Brumer–Stark conjecture (2023)](https://annals.math.princeton.edu/2023/197-1/p05)
+- [Karl Rubin, A Stark conjecture over ℤ for abelian L-functions with multiple zeros (1996)](https://aif.centre-mersenne.org/articles/10.5802/aif.1505/)
+
 ### Normalized Haar measure gives Riemann–Roch from Poisson summation
 
 **Remember:** Choose the measure's constant well, and Riemann–Roch falls out of Poisson summation.
@@ -5633,6 +6976,24 @@
 **Sources:**
 
 - [Weronika Czerniawska, Harmonic analysis approach to the relative Riemann-Roch theorem on global fields, arXiv:2208.10424 (2024)](https://arxiv.org/abs/2208.10424)
+
+### Odd torsion removes norm obstructions
+
+**Remember:** Odd torsion cannot see an obstruction of order two.
+
+*Rules out counterexamples.* MSC 11R70 (\\(K\\)-theory of global fields), 19D50. arXiv math.KT. Level 4: research.
+
+**Definition.** For a finite extension L/F of number fields, viewing each L-vector space as an F-vector space gives a map on K-groups called the norm. The p-primary torsion subgroup consists of elements killed by some power of the prime p.
+
+**Problem.** For i ≥ 1 and odd p, the norm in degree 2i maps onto the p-primary torsion of F from that of L. For ℚ(i) over ℚ, surjectivity fails on the 2-primary torsion in degree two.
+
+**How the definition helps.** Restricting to odd-primary torsion removes the obstruction at real embeddings, in our own explanation. Lim proves the surjectivity statement. In our own example, the product symbol {−1,−1} formed from two negative units in K₂(ℚ) has order two and remains nonzero over ℝ. The norm from ℂ gives zero under the real sign symbol, so this class cannot come from ℚ(i).
+
+**Paper or page:** [Norm principle for even K-groups of number fields](https://arxiv.org/abs/2109.06482). It says: “is surjective for every odd prime p.”
+
+**Sources:**
+
+- [Meng Fai Lim, Norm Principle for Even K-groups of Number Fields](https://doi.org/10.1007/s40840-022-01413-x)
 
 ### Exceptional local field extensions give the ramification bound for exceptional covers
 

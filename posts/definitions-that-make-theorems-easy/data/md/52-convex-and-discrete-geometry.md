@@ -1007,6 +1007,25 @@ a parallelogram.”
 
 - [David Gale, Neighborly and cyclic polytopes (1963)](https://doi.org/10.1090/pspum/007/0152944)
 
+### Truncation regularizes ideal edge lengths
+
+**Remember:** Moving one horosphere shifts three lengths by the same amount.
+
+*True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)), 51M10. arXiv math.GT. Level 3: graduate.
+
+**Definition.** An ideal tetrahedron has its vertices at infinity in hyperbolic three-space. Cut off each vertex with a small horosphere, a surface perpendicular to the geodesics ending at that vertex. Sum the remaining length of each original edge tensored with its dihedral angle, the angle between the adjacent faces, modulo πℚ.
+
+**Problem.** With disjoint truncations, each cutting off just one vertex, the resulting tensor in ℝ ⊗ (ℝ/πℚ) is independent of the horospheres.
+
+**How the definition helps.** Truncation replaces the infinite lengths with finite ones whose changes cancel in the angle quotient. Moving one horosphere changes all three adjacent lengths by the same amount. Their angles form a Euclidean triangle on the horosphere and sum to π. The total change therefore vanishes, extending the usual finite-edge formula to ideal vertices.
+
+**Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “The result does not depend on the choice of horospheres for the truncation, as long as each one cuts off only a single vertex of the given polyhedron.”
+
+**Sources:**
+
+- [David Coulson, Oliver A. Goodman, Craig D. Hodgson and Walter D. Neumann, Computing arithmetic invariants of 3-manifolds (2000)](https://doi.org/10.1080/10586458.2000.10504641)
+- [Alexander Goncharov, Volumes of hyperbolic manifolds and mixed Tate motives (1999)](https://doi.org/10.1090/S0894-0347-99-00293-3)
+
 ### Lifted energy selects Delaunay triangulations
 
 **Remember:** The lowest lifted surface gives the least energy.
@@ -1206,6 +1225,24 @@ a parallelogram.”
 
 - [B. Grünbaum, Are your polyhedra the same as my polyhedra?, in Discrete and Computational Geometry, Algorithms and Combinatorics 25, Springer (2003) 461–488](https://doi.org/10.1007/978-3-642-55566-4_21)
 
+### Cobar signs cancel repeated Dehn maps
+
+**Remember:** Splitting twice gives the same face flag with opposite signs.
+
+*True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)), 19E99. arXiv math.KT, math.GT. Level 4: research.
+
+**Definition.** A scissors group records polyhedra subject to cutting and reassembly. The reduced Dehn map splits a simplex into a sum of tensors pairing a proper face with its spherical link of perpendicular directions. Start with a hyperbolic factor followed by spherical factors. Apply the splitting map to each factor in turn and take the alternating sum, called the cobar differential.
+
+**Problem.** In Goncharov’s hyperbolic Dehn complex, applying two successive differentials gives zero.
+
+**How the definition helps.** The alternating signs pair each two-step splitting with an equal term of opposite sign (our own). Splittings of different factors commute. Within one factor, choosing two nested faces gives the same tensor in either order. This identity is coassociativity. Goncharov identifies the geometric Dehn complex with this algebraic cobar construction, which supplies the comparison with the face-by-face calculation.
+
+**Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “This algebraic view of the Dehn invariant can be extended to higher dimensions”
+
+**Sources:**
+
+- [Alexander Goncharov, Volumes of hyperbolic manifolds and mixed Tate motives (1999)](https://doi.org/10.1090/S0894-0347-99-00293-3)
+
 ### Polytope logarithms linearize dilation
 
 **Remember:** Minkowski addition becomes multiplication, so dilation becomes multiplication inside the logarithm.
@@ -1224,6 +1261,24 @@ a parallelogram.”
 
 - [A pithy look at the Polytope Algebra, Theorem 4.13](https://arxiv.org/abs/2111.02820v1)
 - [P. McMullen, The polytope algebra (1989)](https://doi.org/10.1016/0001-8708(89)90029-7)
+
+### Spherical links cancel Dehn invariants
+
+**Remember:** The links around an interior face assemble to a sphere.
+
+*True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)), 51M10. arXiv math.GT. Level 4: research.
+
+**Definition.** A scissors group adds polyhedra subject to cutting and reassembly by isometries. For each face of dimension 1 through n−2 in a hyperbolic n-simplex, take the inward unit directions perpendicular to that face. These directions form a spherical polyhedron, the link. Goncharov’s generalized Dehn invariant sums each face tensored with its link, in angular groups where a whole sphere represents zero.
+
+**Problem.** For a closed oriented hyperbolic manifold of odd dimension, the sum of the simplex classes in a geodesic triangulation has zero generalized Dehn invariant.
+
+**How the definition helps.** Grouping terms by face makes the cancellation visible because its links tile a whole sphere. Each simplex incident to that face contributes its sector of normal directions. A closed manifold has no boundary faces, so every such sum vanishes. In dimension three the links record the usual edge angles. Goncharov’s construction shows that the face-and-link sum respects cutting relations.
+
+**Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “This algebraic view of the Dehn invariant can be extended to higher dimensions”
+
+**Sources:**
+
+- [Alexander Goncharov, Volumes of hyperbolic manifolds and mixed Tate motives (1999)](https://doi.org/10.1090/S0894-0347-99-00293-3)
 
 ### Polarity swaps lattice extremal directions
 

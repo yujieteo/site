@@ -777,6 +777,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Tetrahedron volumes descend to Bloch groups
+
+**Remember:** Volume sums survive the five-term relation.
+
+*True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 3: graduate.
+
+**Definition.** An ideal tetrahedron has all four vertices at infinity in hyperbolic space. Its shape z is the fourth vertex after moving the first three to 0, ∞, 1 by a fractional linear transformation. Form the rational vector space on shapes, imposing the alternating boundary relation for each ordered set of five distinct vertices. This quotient is the rational pre-Bloch group.
+
+**Problem.** Sending each shape to its signed volume defines a linear map to ℝ. For an oriented complete cusped hyperbolic three-manifold of finite volume, this map sends its Bloch class to its volume.
+
+**How the definition helps.** Geometric additivity verifies the quotient relation without proving a five-term identity for a special function (our own). A flat tetrahedron contributes zero. The Bloch–Wigner dilogarithm is the function D giving this signed volume from the shape. Summing over a triangulation gives the manifold’s volume (our own). The Bloch invariant theorem identifies that sum of shapes with a class independent of the triangulation.
+
+**Paper or page:** [The Andersen-Kashaev volume conjecture for FAMED geometric triangulations](https://arxiv.org/abs/2410.10776v1). It says: “Let T be an ideal tetrahedron in ℍ³ with complex shape structure z. Then, its volume is given by Vol(T) = D(z) = D((z − 1)/z) = D(1/(1 − z)).”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+- [Fathi Ben Aribi and Ka Ho Wong, The Andersen-Kashaev volume conjecture for FAMED geometric triangulations (2024), ideal tetrahedron volume proposition](https://arxiv.org/abs/2410.10776v1)
+
 ### Asking for the fewest tori makes a graph manifold's structure unique
 
 **Remember:** Use as few tori as you can, and the cut is canonical.
@@ -2232,6 +2251,42 @@
 - [M. Song, Homology cobordism group of homology cylinders and invariants related to lower central series, arXiv:2012.13165 (2020)](https://arxiv.org/abs/2012.13165)
 - [Garoufalidis, Levine, Tree-level invariants of three-manifolds, Massey products and the Johnson homomorphism, Proc. Sympos. Pure Math. 73 (2005)](https://doi.org/10.1090/pspum/073/2131016)
 
+### Flattened Rogers values give complex volume
+
+**Remember:** Flatten the tetrahedra before adding their Rogers values.
+
+*Makes the theorem clean to state or prove.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 33B30, 11G55. arXiv math.GT, math.NT. Level 4: research.
+
+**Definition.** A flattening records log z+pπi and −log(1−z)+qπi for a tetrahedron of complex shape z, with integer branch indices p,q. The third edge logarithm makes the sum zero, and opposite edges share a logarithm. A strong flattening cancels signed logarithms around edges and along closed normal paths around each vertex. Such paths cross faces away from edges, and branch shifts must also have even total parity along every closed normal path.
+
+**Problem.** Use an ordered ideal triangulation of an oriented complete finite-volume cusped hyperbolic three-manifold, with tetrahedron shapes from the complete structure and a strong flattening. Sum Li₂(z)+log(z)log(1−z)/2+πi(p log(1−z)+q log z)/2−π²/6 with each tetrahedron’s orientation sign. Modulo π²ℤ, the result equals i times the volume minus the Chern–Simons invariant in Neumann’s convention.
+
+**How the definition helps.** In our own terms, the branch indices let the complex invariant be written as one sum over tetrahedra. In our own terms, the lifted five-term relation respects changes in the decomposition. In our own terms, the work lies in finding strong flattenings and identifying the resulting sum with the Cheeger–Chern–Simons class.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “when applied to a fundamental class \[X\] of a hyperbolic 3-manifold according to the above, then it yields its complex volume”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://msp.org/gt/2004/8-1/gt-v8-n1-p10-p.pdf)
+
+### Transfer removes spurious two-torsion
+
+**Remember:** The transfer relation makes the two branch changes independent.
+
+*Rules out counterexamples.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 11G55, 33B30. arXiv math.GT, math.NT. Level 4: research.
+
+**Definition.** Start with symbols \[z,p,q\], where z is a complex tetrahedron shape outside {0,1} and p,q are integer logarithm branch indices. Impose the five-term relations from five tetrahedra whose signed edge logarithms cancel at every edge. Neumann’s extended pre-Bloch group also imposes \[z,p,q\]+\[z,r,s\]=\[z,p,s\]+\[z,r,q\]. This last equality is the transfer relation.
+
+**Problem.** The map from Neumann’s group with only the lifted five-term relations to the extended pre-Bloch group has kernel cyclic of order two. Its generator is \[z,1,1\]+\[z,0,0\]−\[z,1,0\]−\[z,0,1\], independent of z.
+
+**How the definition helps.** In our own terms, the transfer relation kills the mixed difference of the two branch changes. In our own terms, without it the mixed difference at p = q = 1 is a nonzero class of order two. In our own terms, Neumann’s Proposition 7.2 shows all transfer relations generate exactly that class.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭ PSL(2,ℂ), ℤ) itself is also called the extended Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://msp.org/gt/2004/8-1/gt-v8-n1-p10-p.pdf)
+
 ### Twisted Alexander polynomials detect fibred 3-manifolds where the ordinary one fails
 
 **Remember:** One polynomial can be fooled; all the twisted ones together cannot.
@@ -2249,6 +2304,63 @@
 **Sources:**
 
 - [S. Friedl, S. Vidussi, Twisted Alexander polynomials detect fibered 3-manifolds, Ann. of Math. (2) 173 (2011) 1587-1643, arXiv:0805.1234](https://arxiv.org/abs/0805.1234)
+
+### Antisymmetric classes forget orientation
+
+**Remember:** Reverse orientation and conjugate, and the antisymmetric part stays put.
+
+*Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** For an oriented complete cusped hyperbolic three-manifold of finite volume, let β be its rational Bloch invariant. Compute β by adding signed tetrahedron shapes from a triangulation with vertices at infinity. Complex conjugation acts on each shape and hence on β. Set β⁻ equal to half the difference between β and its conjugate.
+
+**Problem.** Reversing the orientation preserves β⁻. This part of the Bloch invariant gives the class for cutting and reassembling polyhedra when reflections are allowed.
+
+**How the definition helps.** Taking the half-difference cancels the two effects of orientation reversal (our own). Reversal changes the sign of the fundamental class and conjugates each shape, taking β to minus its conjugate (our own). Identifying the result with the geometric cutting invariant requires the scissors congruence theorem of Dupont and Sah (our own).
+
+**nLab:** [scissors congruence](https://ncatlab.org/nlab/show/scissors+congruence). It says: “The scissors congruence group 𝒫(X, G) where G is a subgroup of the group of isometries of X, is the free abelian group on symbols \[P\], for all polytopes in X modulo the relations”
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950v1). It says: “The element ∑ᵢ\[zᵢ\] of ℬ(ℂ) is independent of the choice of ideal triangulation of M; we denote it by β(M).”
+
+**Sources:**
+
+- [Walter D. Neumann, Realizing arithmetic invariants of hyperbolic 3-manifolds (2011)](https://doi.org/10.1090/conm/541/10687)
+- [Walter D. Neumann and Jun Yang, Bloch invariants of hyperbolic 3-manifolds (1999)](https://doi.org/10.1215/S0012-7094-99-09602-3)
+
+### Conjugate volumes classify scissors classes
+
+**Remember:** One volume becomes a vector that tests scissors equivalence.
+
+*Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45, 19F27. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** For each manifold, its invariant trace field is generated over ℚ by the squared traces of matrices representing its hyperbolic holonomy. Choose a common number field K containing both trace fields and closed under complex conjugation. Each embedding of K into ℂ sends the manifold’s rational Bloch class to a class with a signed volume. Take one volume per conjugate pair of nonreal embeddings, using the same choices for both manifolds, to form the Borel regulator vector.
+
+**Problem.** Suppose every embedding of K ∩ ℝ into ℂ has real image. Two complete oriented hyperbolic three-manifolds of finite volume are stably scissors congruent exactly when their vectors agree. Stable scissors congruence permits adding the same polyhedron to both manifolds before cutting and reassembling polyhedral pieces.
+
+**How the definition helps.** The vector records the volume at every complex place, so Neumann’s comparison becomes an equality test (our own). His theorem identifies stable scissors congruence with the vector difference coming from a Bloch class over K ∩ ℝ. Borel’s rank theorem gives that totally real field a rational Bloch group of rank zero. Thus the only possible difference is zero (our own).
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Now the point is that restricted to the Bloch group proper the Borel regulator is injective.”
+
+**Sources:**
+
+- [Walter D. Neumann, Realizing arithmetic invariants of hyperbolic 3-manifolds (2011)](https://doi.org/10.1090/conm/541/10687)
+
+### Extended classes retain Chern–Simons torsion
+
+**Remember:** The torsion forgotten by volume can still change Chern–Simons.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 57R20. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** The extended complex Bloch group is the third integral homology of PSL(2, ℂ), the group of fractional linear transformations with the discrete topology. Passing to the ordinary Bloch group kills its subgroup ℚ/ℤ of finite-order elements.
+
+**Problem.** The Cheeger–Chern–Simons class assigns an additive complex value modulo π²ℤ to each extended Bloch class. This assignment cannot descend to the ordinary Bloch group.
+
+**How the definition helps.** Keeping the finite-order elements preserves a value that the ordinary quotient loses (our own). Neumann identifies the evaluation with a logarithmic dilogarithm formula. That formula takes the element of order two to π²/2 modulo π²ℤ. Any map through the ordinary group would send that element to zero (our own).
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “There is a group homomorphism ĉ : H₃(♭PSL(2, ℂ), ℤ) → ℂ/π²ℤ”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
 
 ### Finite volume gives hyperbolic rigidity
 
@@ -2270,6 +2382,114 @@
 
 - [Gopal Prasad, Strong rigidity of Q-rank 1 lattices (1973).](https://doi.org/10.1007/bf01418789)
 
+### Five-term relations absorb retriangulation
+
+**Remember:** The two sides of the move are one five-term boundary.
+
+*True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** An ideal tetrahedron has four vertices on the sphere at infinity in hyperbolic space. Its ordered shape z is the fourth vertex after a fractional linear transformation sends the first three to 0, ∞, 1. Form the rational vector space on shape symbols \[z\]. For five distinct ordered vertices, set the alternating sum obtained by deleting each vertex to zero.
+
+**Problem.** A bipyramid with five distinct vertices at infinity splits into either two or three tetrahedra. With the induced vertex orders and orientation signs, both subdivisions give the same sum in this space, the rational pre-Bloch group.
+
+**How the definition helps.** The five-term relation equates the two sums without any volume calculation (our own). The geometric step identifies the two subdivisions with the two sides of the same signed boundary (our own).
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950v1). It says: “The element ∑ᵢ\[zᵢ\] of ℬ(ℂ) is independent of the choice of ideal triangulation of M”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+
+### Flattenings linearize local edge equations
+
+**Remember:** Keep the integer shifts and solve linear equations.
+
+*Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 19E99. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** An ideal tetrahedron has four vertices at infinity and a complex shape z determined by their cross-ratio. A flattening assigns logarithms of z, 1/(1−z), and 1−1/z to opposite edge pairs, allowing shifts by multiples of πi. Choose the shifts so the three values sum to zero.
+
+**Problem.** Five distinct ordered points at infinity give five tetrahedra by deleting one point at a time. Flatten any three so their signed logarithms sum to zero at their common edge. Exactly one choice on the remaining two gives zero signed sum at every edge.
+
+**How the definition helps.** Using shifted logarithms turns compatibility around each edge into a linear equation in integers (our own). Neumann solves these equations in Lemma 3.5. The single equation on the first three tetrahedra is sufficient, and the remaining equations determine both missing flattenings.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭PSL(2, ℂ), ℤ) itself is also called the extended Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+
+### Holonomy classes scale under covers
+
+**Remember:** A degree counts the copies of the fundamental class.
+
+*True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 19D55. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** For a closed oriented hyperbolic three-manifold M, holonomy records how loops act by isometries of hyperbolic space. Push its fundamental class, the homology class representing its orientation, into the third integral homology of the discrete isometry group PSL(2, ℂ). Quotient by the elements of finite order to obtain the ordinary Bloch class β(M).
+
+**Problem.** If N → M is an orientation-preserving covering of degree d between closed oriented hyperbolic three-manifolds with the lifted metric, then β(N) = dβ(M).
+
+**How the definition helps.** Defining β by pushing forward the orientation class makes the covering formula follow from composition (our own). A covering of degree d sends the upstairs orientation class to d copies downstairs. The upstairs holonomy factors through the downstairs holonomy. The Bloch–Wigner theorem identifies the resulting quotient with the usual group defined by tetrahedron symbols (our own).
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “The fundamental class of a hyperbolic 3-manifold X canonically gives an element in the Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+
+### Log shifts absorb Rogers monodromy
+
+**Remember:** Carry the logarithm shifts with the shape.
+
+*Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 33B30. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** The Rogers dilogarithm is R(z) = Li₂(z) + log(z)log(1−z)/2, where Li₂ continues the series ∑ zⁿ/n² from the unit disk. For z outside {0, 1}, record integer shifts p, q for log z and −log(1−z) in units of πi. On these branches use the corrected value R(z) + πi(p log(1−z) + q log z)/2 − π²/6.
+
+**Problem.** The corrected value is single-valued modulo π²ℤ on Neumann’s logarithm cover of ℂ minus 0 and 1.
+
+**How the definition helps.** Recording branch changes lets the corrected formula assign one value modulo π² to each point of the cover (our own). Going counterclockwise around zero increases p by two and leaves a discrepancy of −qπ². Going clockwise around one increases q by two and leaves a discrepancy of pπ². Neumann computes both changes by continuing the dilogarithm around the loops.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “This is called the Cheeger-Simons class.”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+
+### Mapping tori explain mutation invariance
+
+**Remember:** The mapping torus changes only the torsion information.
+
+*True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 19D55. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** Holonomy represents loops of a closed oriented hyperbolic three-manifold by isometries in the discrete group PSL(2, ℂ). Send the manifold’s orientation class into the third integral homology of that group. Define its ordinary Bloch class by quotienting out all elements of finite order.
+
+**Problem.** Cut along an essential embedded two-sided surface and reglue by a finite-order isometry of its neighborhood that preserves orientation and sides. This generalized mutation preserves the ordinary Bloch class.
+
+**How the definition helps.** The quotient discards precisely the finite-order difference produced by the cut and regluing (our own). Neumann expresses that difference as the class of the mapping torus, formed by joining the ends of a surface cylinder using the symmetry. A finite cover is a surface times a circle, and its holonomy kills the circle. Its class therefore vanishes, so the original difference has finite order. The Bloch–Wigner theorem compares this homological quotient with the group defined by tetrahedron shapes (our own).
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “The fundamental class of a hyperbolic 3-manifold X canonically gives an element in the Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Realizing arithmetic invariants of hyperbolic 3-manifolds (2011)](https://doi.org/10.1090/conm/541/10687)
+
+### Meridian flattenings remove filling corrections
+
+**Remember:** Flatten the filled meridian before summing tetrahedra.
+
+*Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds). arXiv math.GT. Level 4: research.
+
+**Definition.** Dehn filling replaces a torus end of a three-manifold by a solid torus. A flattening shifts tetrahedron shape logarithms by integer multiples of πi. Require zero signed log sums around edges and along closed normal paths near unfilled ends, and zero parity along every closed normal path. Such paths cross faces away from vertices, and parity counts the signed shifts modulo two.
+
+**Problem.** At each filled end, also require zero log sum along normal loops that contract in the added solid torus. For Neumann’s degree-one triangulation of a hyperbolic filling, these flattenings exist. Their signed tetrahedron sum gives the filled manifold’s extended Bloch class.
+
+**How the definition helps.** A meridian bounds a disk in the added torus, so the new condition absorbs the filling correction into the tetrahedron sum (our own). Transporting the old flattenings through filling leaves a meridian sum of 2πi and requires a separate term for the central geodesic. Neumann’s Theorem 14.7 constructs the adjusted flattenings and identifies their sum with the manifold’s class.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭PSL(2, ℂ), ℤ) itself is also called the extended Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+
 ### Pseudo-Anosov gluing gives hyperbolic bundles
 
 **Remember:** Pseudo-Anosov gluing gives a mapping torus a hyperbolic metric.
@@ -2285,6 +2505,79 @@
 **Paper or page:** [Cusp geometry of fibered 3-manifolds](https://arxiv.org/abs/1108.5748v2). It says: “For every orientation-preserving, pseudo-Anosov homeomorphism φ : F → F, the mapping torus Mφ is a hyperbolic 3–manifold”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Relative classes record cusp boundaries
+
+**Remember:** The ideal end contributes a boundary in group homology.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 20J06. arXiv math.GT. Level 4: research.
+
+**Definition.** Truncate the single torus end of a complete oriented hyperbolic three-manifold of finite volume to obtain a compact core with boundary. Its holonomy represents loops in the discrete isometry group G = PSL(2, ℂ). Choose coordinates so boundary loops act by translations in P = (ℂ, +). Map the core’s relative orientation class into H₃(G, P), the integral homology that permits boundaries in P.
+
+**Problem.** For an oriented basis of torus loops with translations a and b, the boundary of this class is a ∧ b. In the figure-eight knot complement this boundary is nonzero, so the class cannot come from absolute homology H₃(G).
+
+**How the definition helps.** Relative homology retains the torus boundary, which an absolute cycle must lose (our own). The boundary map takes the core to its oriented torus. In the second homology of the translation group this torus gives a ∧ b over ℤ. The two translations span a lattice in ℂ, so their exterior product is nonzero (our own).
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “The fundamental class of a hyperbolic 3-manifold X canonically gives an element in the Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
+- [Christian K. Zickert, The volume and Chern–Simons invariant of a representation (2009)](https://doi.org/10.1215/00127094-2009-058)
+
+### The projective modulus fits mutation
+
+**Remember:** An order-two mutation needs an order-two jump.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 57R20. arXiv math.GT. Level 4: research.
+
+**Definition.** For an oriented complete cusped hyperbolic three-manifold of finite volume, the projective Chern–Simons invariant takes real values modulo π². It comes from evaluating a characteristic class on the projective holonomy, the isometries representing loops in the manifold.
+
+**Problem.** Cut along an essential embedded thrice-punctured sphere and reglue by the mutation involution, a symmetry of order two. The invariant changes by π²/2 modulo π². Neither lift of this change modulo 2π² has order two.
+
+**How the definition helps.** The modulus π² allows the jump to have the same order as the mutation (our own). In the larger quotient, doubling either lift gives π² modulo 2π². Neumann proves the mutation formula and exhibits the jump using the two orientations of the Whitehead link complement.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “This is called the Cheeger-Simons class.”
+
+**Sources:**
+
+- [Walter D. Neumann, Realizing arithmetic invariants of hyperbolic 3-manifolds (2011)](https://doi.org/10.1090/conm/541/10687)
+
+### Trace fields fix conjugate volumes
+
+**Remember:** An embedding of the smaller field already fixes the answer.
+
+*True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 19F27. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** For a complete oriented cusped hyperbolic three-manifold of finite volume, holonomy represents loops by projective complex matrices. Their squared traces, computed using determinant-one representatives, generate the invariant trace field k over ℚ. Represent the rational Bloch invariant, the signed sum of tetrahedron shapes, over k.
+
+**Problem.** Fix an embedding of k into ℂ. Every extension to a field containing k and the shapes gives the same signed volume for the embedded class.
+
+**How the definition helps.** Using a class over k makes agreement of extensions immediate, since they agree on every element of k (our own). In the usual shape formula, individual tetrahedra can require a larger field. The descent theorem places their total class over k. Applying the same volume function to this common image gives the result (our own).
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950v1). It says: “Moreover, the image of β(M) in ℬ(ℂ) ⊗ ℚ lies in ℬ(k(M)) ⊗ ℚ.”
+
+**Sources:**
+
+- [Dong Uk Lee, Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties (2025), Theorem 2.4.1](https://arxiv.org/abs/2502.11950v1)
+
+### Transfer kills spurious two-torsion
+
+**Remember:** Independent logarithm shifts should have no mixed difference.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 19D55. arXiv math.GT, math.KT. Level 4: research.
+
+**Definition.** A flattened tetrahedron records its complex shape z and integers p, q that shift two shape logarithms by multiples of πi. The extended pre-Bloch group adds these symbols and imposes the five-tetrahedron relations with matching logarithms around each edge. The transfer relation allows two symbols with the same shape to exchange their second shifts without changing their sum.
+
+**Problem.** In Neumann’s projective extended pre-Bloch group, omitting transfer adds a cyclic summand of order two. Its generator is \[z;1,1\] + \[z;0,0\] − \[z;1,0\] − \[z;0,1\].
+
+**How the definition helps.** Exchanging the second shifts in the first two terms makes the displayed difference zero (our own). Without transfer, the product pq modulo two detects this difference. Neumann proves that it generates exactly the extra summand.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭PSL(2, ℂ), ℤ) itself is also called the extended Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
 
 ### Trisections give every smooth 4-manifold a surface picture, unique up to stabilization
 

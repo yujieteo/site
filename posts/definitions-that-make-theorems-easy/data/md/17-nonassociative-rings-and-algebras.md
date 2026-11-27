@@ -894,6 +894,42 @@
 
 - [H. Albuquerque, S. Majid, Quasialgebra structure of the octonions, J. Algebra 220 (1999) 188–224](https://doi.org/10.1006/jabr.1998.7850)
 
+### Ihara brackets inherit Jacobi
+
+**Remember:** Take commutators of derivations together with their conjugating elements.
+
+*True by definition.* MSC 17B01 (Identities, free Lie (super)algebras), 11M32. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** In the free Lie algebra on x and y, let D(a) be the derivation sending x to zero and y to \[y,a\]. A derivation obeys the product rule for brackets. Pair each a with D(a) in the Lie algebra combining elements with derivations acting on them.
+
+**Problem.** The Ihara bracket {a,b} = \[a,b\] + D(a)b − D(b)a satisfies the Jacobi identity.
+
+**How the definition helps.** Our own construction realizes the formula as a bracket of pairs, so it inherits Jacobi without expanding a triple bracket. Checking the two generators gives \[D(a),D(b)\] = D({a,b}). This identity proves that the pairs are closed under the bracket.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630). It says: “The pair (𝔣₂, {−,−}) is a Lie algebra.”
+
+**Sources:**
+
+- [Annika Burmester, Niclas Confurius and Ulf Kühn, AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630)
+
+### Paired derivations prove Ihara Jacobi
+
+**Remember:** Pair each Lie element with the derivation it determines.
+
+*True by definition.* MSC 17B01 (Identities, free Lie (super)algebras), 11M32. arXiv math.QA, math.NT. Level 4: research.
+
+**Definition.** Let L be the free Lie algebra on x and y, generated using brackets subject only to the Lie identities. A derivation acts on a bracket by acting on each input in turn and adding. For f in L define dᶠ by dᶠ(x) = 0 and dᶠ(y) = \[y,f\]. Set {f,g} = \[f,g\] + dᶠ(g) − dᵍ(f), the Ihara bracket.
+
+**Problem.** The Ihara bracket satisfies the Jacobi identity.
+
+**How the definition helps.** The bracket is the first coordinate of the ordinary Lie bracket on pairs of Lie elements and derivations. In our own proof, the generator calculation gives \[dᶠ,dᵍ\] = d of the Ihara bracket. Thus the pairs (f,dᶠ) form a subalgebra of the semidirect product, which combines the Lie algebra with its derivations. The generator calculation carries the work that a direct Jacobi expansion would repeat.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “The pair (𝔣₂, {−,−}) is a Lie algebra.”
+
+**Sources:**
+
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
 ### Category O keeps Verma modules while staying abelian and Noetherian
 
 **Remember:** Big enough for Verma modules, small enough to be abelian.
@@ -930,6 +966,42 @@
 **Sources:**
 
 - [Maria Gorelik, Vladimir Hinich, Vera Serganova, Root groupoid and related Lie superalgebras, arXiv:2209.06253 (2024)](https://arxiv.org/abs/2209.06253v4)
+
+### The five-cycle gives associator reversal
+
+**Remember:** Forgetting one vertex leaves only the two reversed factors.
+
+*True by definition.* MSC 17B37 (Quantum groups (quantized enveloping algebras) and related deformations). arXiv math.QA. Level 4: research.
+
+**Definition.** Over a field of characteristic zero, take a series Φ in two noncommuting letters whose value becomes one when the letters commute. Require Φ to be group-like, meaning its coproduct equals Φ ⊗ Φ when each letter splits as x ⊗ 1 + 1 ⊗ x. Use symmetric generators tᵢⱼ on distinct vertices with zero sum at each vertex and commuting generators on disjoint pairs. The five-cycle equation reads Φ(t₁₂,t₂₃)Φ(t₃₄,t₄₅)Φ(t₅₁,t₁₂)Φ(t₂₃,t₃₄)Φ(t₄₅,t₅₁) = 1.
+
+**Problem.** Every such solution satisfies Φ(x,y)Φ(y,x) = 1.
+
+**How the definition helps.** The five-cycle equation gives reversal by forgetting vertex five. In our own calculation, set its generators to zero and send t₁₂ and t₂₃ to x and y. The remaining vertex sums force t₃₄ to x. Each factor with a zero argument is one because a single letter commutes with itself. Only Φ(x,y) and Φ(y,x) survive. Furusho proves the equivalence with the original pentagon equation.
+
+**nLab:** [Drinfeld associator](https://ncatlab.org/nlab/show/Drinfeld+associator). It says: “The pentagon equation”
+
+**Sources:**
+
+- [Hidekazu Furusho, Pentagon and hexagon equations, Annals of Mathematics 171 (2010), 545–556](https://annals.math.princeton.edu/2010/171-1/p13)
+
+### Torsors give rational associators
+
+**Remember:** The torsor passes from a complex solution to a rational one.
+
+*Makes the theorem clean to state or prove.* MSC 17B37 (Quantum groups (quantized enveloping algebras) and related deformations). arXiv math.QA. Level 4: research.
+
+**Definition.** An associator is a formal series in two noncommuting letters satisfying Drinfeld’s equations for consistent changes of parentheses and crossings. Fix a nonzero rational value μ for the crossing parameter. The solutions form a torsor, a space where exactly one group element carries any chosen point to any other. The acting group is built degree by degree from groups of upper triangular matrices with ones on the diagonal.
+
+**Problem.** A Drinfeld associator over ℚ exists for each nonzero rational μ.
+
+**How the definition helps.** The torsor description reduces rational existence to lifting points one degree at a time. Drinfeld constructs a complex solution by integration, and rescaling the letters gives the required parameter. His torsor theorem identifies the groups controlling successive lifts. In our own explanation, each lifting problem is a torsor under a rational vector group. Such a torsor has a rational point. Compatible lifts in all degrees give the rational series.
+
+**nLab:** [Drinfeld associator](https://ncatlab.org/nlab/show/Drinfeld+associator). It says: “An explicit associator over ℂ was constructed by Drinfeld from the monodromy of a universal version of the Knizhnik-Zamolodchikov equation.”
+
+**Sources:**
+
+- [Dror Bar-Natan, On associators and the Grothendieck–Teichmuller group I](https://www.math.toronto.edu/drorbn/papers/GT1/GT1.pdf)
 
 ### Graphs differentiate Rota–Baxter operators
 

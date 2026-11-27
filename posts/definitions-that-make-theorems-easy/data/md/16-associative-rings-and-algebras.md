@@ -419,6 +419,24 @@
 
 - [Jeremy Rickard, Morita Theory for Derived Categories](https://doi.org/10.1112/jlms/s2-39.3.436)
 
+### Centralizers split group-ring Hochschild homology
+
+**Remember:** Components are conjugacy classes, and the loops in each component are centralizers.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 55P35. arXiv math.AT. Level 3: graduate.
+
+**Definition.** For a discrete group G, form a category with one object for each group element. An arrow from g to h is a group element a satisfying aga⁻¹ = h. Model the Hochschild chains of the group algebra k\[G\] by strings of composable arrows, with coefficients in k.
+
+**Problem.** For a commutative ring k, Hochschild homology of k\[G\] splits as a direct sum indexed by conjugacy classes. The summand of g is the group homology over k of its centralizer, the subgroup commuting with g.
+
+**How the definition helps.** The arrow model separates conjugacy classes because arrows exist only between conjugate elements (our own). Each component reduces to one object whose automorphisms form its centralizer (our own). Taking chains of these components gives the direct sum (our own). The comparison with ordinary Hochschild chains rewrites a cyclic list using its product and successive conjugating elements (our own).
+
+**nLab:** [free loop space of classifying space](https://ncatlab.org/nlab/show/free+loop+space+of+classifying+space). It says: “the homotopy quotient of the conjugation ∞-action”
+
+**Sources:**
+
+- [Dan Burghelea, The cyclic homology of the group rings](https://doi.org/10.1007/BF02567420)
+
 ### Pseudo-inverses make commutative von Neumann regular rings a variety
 
 **Remember:** Ask the inverse to be regular too, and it becomes unique.
@@ -1157,6 +1175,24 @@
 
 - [Alex Martsinkovsky, The defect, the Malgrange functor, and linear control systems, arXiv:2403.13520 (2024)](https://arxiv.org/abs/2403.13520v1)
 
+### Averaging computes reflexive homology
+
+**Remember:** When two is invertible, reflection averaging kills the higher derived coinvariants.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 19D55. arXiv math.AT. Level 4: research.
+
+**Definition.** A reflexive module is a simplicial module with compatible reversals of the vertex orders. Its associated Hochschild chain complex has a reflection that includes the signs for reversing order. Model reflexive homology by derived coinvariants, which impose the reflection relation while retaining its higher homological information.
+
+**Problem.** Over a commutative ring in which two is invertible, reflexive homology equals the coinvariants of Hochschild homology. Coinvariants identify every class with its reflection.
+
+**How the definition helps.** Averaging a class with its reflection identifies coinvariants with the image of an averaging projection (our own). Taking this image preserves exact sequences, so ordinary coinvariants compute derived coinvariants and commute with homology (our own). Graves identifies the derived coinvariant model with the original definition using functors on the reflexive category.
+
+**Paper or page:** [Reflexive homology](https://arxiv.org/abs/2204.07985v3). It says: “The reflexive homology HR⋆(F) is naturally isomorphic to the hyperhomology of the group C₂ with coefficients in the Hochschild complex C⋆(F).”
+
+**Sources:**
+
+- [Daniel Graves, Reflexive homology](https://arxiv.org/abs/2204.07985v3)
+
 ### Circle gluing computes Hochschild chains
 
 **Remember:** Close the line into a circle to add the cyclic face.
@@ -1174,6 +1210,24 @@
 **Sources:**
 
 - [Owen Gwilliam, Brian R. Williams, Holomorphic field theories and higher algebra](https://arxiv.org/abs/2508.07443v1)
+
+### Dihedral homology retains loop reflections
+
+**Remember:** After taking rotation orbits, the quotient group still acts by reflection.
+
+*Makes the theorem clean to state or prove.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 55P35. arXiv math.AT. Level 4: research.
+
+**Definition.** A dihedral chain model keeps both rotations of cyclic lists and reflections reversing their order. An algebra involution reverses products and supplies the reflection on its lists. Negative dihedral homology uses homotopy fixed points, which retain the coherent identifications for both symmetries.
+
+**Problem.** Let X be simply connected, with homology finite-dimensional in each degree over a field k. Give its singular cochains the signed involution that reverses simplex vertices. Their negative dihedral homology computes the cohomology of the homotopy quotient of free loops by the orthogonal group O(2).
+
+**How the definition helps.** Keeping reflections makes the model record every symmetry of the circle that parametrizes a loop (our own). Rotations form a normal subgroup of O(2), and the quotient acts by reflection (our own). Taking homotopy orbits therefore accounts for both symmetries, even on loops with stabilizers (our own). Ungheretti proves that the dihedral cochain model agrees with free-loop cochains with these actions (our own).
+
+**nLab:** [dihedral homology](https://ncatlab.org/nlab/show/dihedral+homology). It says: “so dihedral homology is the cohomology of free loop spaces modulo the O(2)-action on loops”
+
+**Sources:**
+
+- [Massimiliano Ungheretti, Free loop spaces and dihedral homology](https://www.math.ku.dk/bibliotek/arkivet/phd-theses/phd16mu.pdf)
 
 ### Green sequences filter modules
 
@@ -1423,6 +1477,26 @@
 
 - [Mateusz Stroiński and Tony Zorman, Reconstruction of module categories in the infinite and non-rigid settings, arXiv:2409.00793 (2024)](https://arxiv.org/abs/2409.00793)
 
+### Associator logarithms are Lie series
+
+**Remember:** Group-like multiplication becomes primitive addition under the logarithm.
+
+*True by definition.* MSC 16T05 (Hopf algebras and their applications), 17B01. arXiv math.QA. Level 4: research.
+
+**Definition.** Work with formal series in two noncommuting letters over a field of characteristic zero. Define the coproduct Δ by multiplication and by Δa = a ⊗ 1 + 1 ⊗ a for each letter a. A series Φ is group-like if its constant term is one and ΔΦ = Φ ⊗ Φ. Drinfeld’s equations for associators require this property.
+
+**Problem.** The formal logarithm of an associator is a Lie series, a degree-by-degree sum of iterated brackets of the two letters.
+
+**How the definition helps.** The group-like equation splits the coproduct of the logarithm into two summands. In our own proof, take the logarithm of the product of the commuting factors Φ ⊗ 1 and 1 ⊗ Φ. This gives Δ(log Φ) = log Φ ⊗ 1 + 1 ⊗ log Φ. The remaining theorem identifies exactly the series satisfying this additive equation with Lie series.
+
+**nLab:** [Drinfeld associator](https://ncatlab.org/nlab/show/Drinfeld+associator). It says: “is a grouplike element”
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “\\Prim(\\widehat{H}) &amp;\\xrightarrow{\\sim} \\operatorname{Grp}(\\widehat{H})”
+
+**Sources:**
+
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
 ### Defining Nichols algebras by a maximal ideal forbids primitives above degree one
 
 **Remember:** A new higher primitive would give a larger ideal to remove.
@@ -1438,6 +1512,24 @@
 **Paper or page:** [Eight classes of new Hopf algebras of dimension 128 without the Chevalley property](https://arxiv.org/abs/1701.01991v1). It says: “R(0) = k, R(1) = V, R(1) generates the algebra R, P(R) = V.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Dual coproducts encode product identities
+
+**Remember:** One tensor coefficient holds one product identity.
+
+*True by definition.* MSC 16T05 (Hopf algebras and their applications), 11M32. arXiv math.QA, math.NT. Level 4: research.
+
+**Definition.** Shuffle interleaves two words in all ways that preserve their internal orders. Stuffle also permits letters from different words to merge by adding their indices. For either product ∗, define ΔF by taking its coefficient at u ⊗ v from the coefficients of F evaluated on u ∗ v. Let the coefficient of each word in F be its assigned value.
+
+**Problem.** Over a commutative ℚ-algebra, a linear evaluation with empty-word value 1 preserves ∗ exactly when ΔF = F ⊗ F.
+
+**How the definition helps.** The dual coproduct puts every product identity in one coefficient of ΔF. In our own proof, compare the coefficient of u ⊗ v on both sides. The work for multiple zeta values lies in finding the right coproduct and proving the shuffle or stuffle identity for the evaluation.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “Δ∗◇(Genφ(𝒜)) = Genφ(𝒜) ⊗ Genφ(𝒜).”
+
+**Sources:**
+
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
 
 ### Quasi-Hopf algebras describe monoidal categories with a nontrivial associator
 
@@ -1457,6 +1549,24 @@
 
 - [Vladimir Drinfeld, Quasi-Hopf algebras, Algebra i Analiz 1:6 (1989) 114–148 (English: Leningrad Math. J. 1 (1990) 1419–1457)](http://www.mathnet.ru/php/getFT.phtml?jrnid=aa&paperid=53&what=fullt&option_lang=rus) (link not checked)
 - [Toshitake Kohno, Monodromy representations of braid groups and Yang-Baxter equations, Ann. Inst. Fourier 37 (1987) 139–160](http://www.numdam.org/item?id=AIF_1987__37_4_139_0)
+
+### Removing products gives Leibniz
+
+**Remember:** Discard left-hand products and the coaction becomes a derivation.
+
+*True by definition.* MSC 16T05 (Hopf algebras and their applications), 11M32. arXiv math.QA, math.NT. Level 4: research.
+
+**Definition.** Use a connected graded Hopf algebra H over ℚ, such as the algebra for the unipotent part of formal multiple zeta values. Its weight-zero space consists of scalars, and its coproduct Δ splits elements into two factors while preserving multiplication. Project the left factor onto weight m modulo sums of products of positive weights. Call the resulting map D.
+
+**Problem.** For each m &gt; 0, D(ab) = D(a)(1 ⊗ b) + (1 ⊗ a)D(b).
+
+**How the definition helps.** Projecting the coproduct removes precisely the cross terms that would spoil the product rule. In our own proof, expand Δ(a)Δ(b). Its left factor survives only when exactly one input supplies positive weight there. The weight-zero terms of the two coproducts are 1 ⊗ a and 1 ⊗ b. The Hopf algebra construction supplies the multiplicative coproduct.
+
+**Paper or page:** [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1). It says: “is a derivation with respect to ∗”
+
+**Sources:**
+
+- [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
 
 ### Quasitriangular Hopf algebras give solutions of the Yang–Baxter equation
 

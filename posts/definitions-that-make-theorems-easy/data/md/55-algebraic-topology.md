@@ -1983,6 +1983,24 @@
 
 - [Paul G. Goerss, Topological modular forms (after Hopkins, Miller, and Lurie), Séminaire Bourbaki, 2009, arXiv:0910.5130](https://arxiv.org/abs/0910.5130)
 
+### Cofinal completion changes only components
+
+**Remember:** Adding missing summands can add components without changing higher homotopy.
+
+*Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology), 19D23. arXiv math.KT, math.AT. Level 4: research.
+
+**Definition.** Consider spaces with addition that is associative and commutative up to coherent homotopy. An inclusion of whole components is cofinal if every target component has a summand one can add to reach the source. Group completion freely adjoins additive inverses.
+
+**Problem.** After group completion, a cofinal inclusion gives an injection on components and isomorphisms on all higher homotopy groups.
+
+**How the definition helps.** In our own explanation, the complement condition says exactly how addition can move any target component into the source. Lehner’s cofinality theorem proves the assertion about homotopy groups. For our own example, take finitely generated projective modules over a unital ring, with isomorphisms as paths and direct sum as addition. The free modules give a cofinal inclusion because every finitely generated projective module is a direct summand of a finite free module.
+
+**Paper or page:** [Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118). It says: “is injective in degree 0 and an isomorphism for i &gt; 0.”
+
+**Sources:**
+
+- [Georg Lehner, Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118)
+
 ### Group-like fixed points recognize equivariant V-fold loop spaces
 
 **Remember:** Ask group-like fixed points only where Vᴴ has room to loop.
@@ -2019,6 +2037,24 @@
 **Sources:**
 
 - [Nicholas J. Kuhn, Applications of the circle product with a right Com-module to the theory of commutative ring spectra, arXiv:2410.05104 (2024)](https://arxiv.org/abs/2410.05104)
+
+### Stable automorphisms recover completion loops
+
+**Remember:** Loops of formal differences come from stabilized automorphisms.
+
+*Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** An Eₙ-monoid is a space with multiplication operations parametrized by configurations of little n-dimensional cubes. Its action category has points as objects. An arrow from x to y gives a multiplier k and a path from kx to y, with higher homotopies retained.
+
+**Problem.** Let n ≥ 2, and let Xᵍᵖ denote the space obtained by freely adjoining inverses to X. The loop space at its unit is the colimit of the loop groups at points of X over the action category. This colimit combines the groups up to homotopy and retains their multiplication.
+
+**How the definition helps.** In our own explanation, the action category specifies how to compare loops at different points. Multiply a loop at x by k and transport it along the chosen path to y. Lehner’s theorem identifies the universal group built from these comparisons with the loops on Xᵍᵖ.
+
+**Paper or page:** [Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118). It says: “There is a natural equivalence of E₁-groups ΩXᵍᵖ ≃ colimₓ∈𝐄𝐗 Aut(x) where the colimit is taken in the ∞-category of E₁-groups.”
+
+**Sources:**
+
+- [Georg Lehner, Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118)
 
 ### Transfer systems classify N∞ operads up to homotopy
 
@@ -2076,6 +2112,24 @@
 
 - [Yves Félix, Steve Halperin, Enriched Differential Lie Algebras in Topology, arXiv:2208.12171 (2022)](https://arxiv.org/abs/2208.12171)
 
+### Equivariant suspensions give group completions
+
+**Remember:** Free algebra then completion is the same free object among loops.
+
+*True by definition.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P48. arXiv math.AT. Level 4: research.
+
+**Definition.** Let a finite group G act linearly by isometries on a finite-dimensional real space V. Configurations of disjoint little disks in V specify multiplication operations compatible with this action. Call such an algebra grouplike if its H-fixed components form a group for every subgroup H with a nonzero fixed vector in V. Group completion is the universal map to a grouplike algebra.
+
+**Problem.** For any based G-space X, the group completion of the free little V-disks algebra on X is equivalent to ΩⱽΣⱽX. Suspension takes the smash product with the one-point compactification of V. Looping takes based maps from that same sphere.
+
+**How the definition helps.** In our own argument, freely adjoining operations and then freely adjoining inverses gives the free grouplike algebra on X. Juran’s recognition theorem identifies grouplike algebras with the appropriate based G-spaces via V-fold looping. Under that equivalence, the suspension and looping adjunction gives ΩⱽΣⱽX the same universal property. Recognition supplies the comparison needed to identify the two constructions.
+
+**Paper or page:** [A genuine equivariant recognition principle for finite groups](https://arxiv.org/abs/2508.04421). It says: “exhibits the target as the group completion of the source.”
+
+**Sources:**
+
+- [Branko Juran, A genuine equivariant recognition principle for finite groups](https://arxiv.org/abs/2508.04421)
+
 ### Homotopy fixed points defined by Kan extension compose in stages
 
 **Remember:** Factoring the map to a point lets us take fixed points twice.
@@ -2091,6 +2145,42 @@
 **nLab:** [homotopy fixed point](https://ncatlab.org/nlab/show/homotopy+fixed+point). It says: “Generally, for G an ∞-group and X equipped with an ∞-action, then the homotopy fixed points is the base change along/dependent product over the delooping 𝐁G”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Periodic K-theory breaks Tate vanishing
+
+**Remember:** Periodicity leaves nonzero homotopy groups arbitrarily far below zero.
+
+*Rules out counterexamples.* MSC 55P91 (Equivariant homotopy theory in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A spectrum is bounded below if its homotopy groups vanish in all sufficiently negative degrees. Homotopy orbits and homotopy fixed points are the derived forms of orbits and fixed points. For a finite group action, the Tate spectrum is the cofiber of the norm map between them.
+
+**Problem.** Let a cyclic group of order p² act on a bounded-below spectrum, where p is prime. Take homotopy orbits under the subgroup of order p, then take the Tate spectrum for the quotient group. The result vanishes.
+
+**How the definition helps.** The lower bound excludes periodic complex K-theory, whose even homotopy groups are nonzero in arbitrarily negative degrees (our own). Nikolaus and Scholze prove vanishing under the lower bound in their Tate orbit lemma (our own). They also calculate that periodic complex K-theory with trivial action fails the lemma at every prime (our own).
+
+**nLab:** [Tate spectrum](https://ncatlab.org/nlab/show/Tate+spectrum). It says: “the homotopy cofiber Xᵗᴳ of the norm map is called the Tate construction”
+
+**Sources:**
+
+- [Thomas Nikolaus and Peter Scholze, On topological cyclic homology](https://people.mpim-bonn.mpg.de/scholze/CyclotomicSpectra.pdf)
+
+### Prime Tate powers preserve sums
+
+**Remember:** Nonconstant words of prime length have free rotation orbits.
+
+*Rules out counterexamples.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P43. arXiv math.AT. Level 4: research.
+
+**Definition.** The smash product is the tensor product of spectra, which represent stable homotopy types. Form the m-fold smash power and let cyclic rotations permute its factors. Take the Tate spectrum, the cofiber of the norm map from homotopy orbits to homotopy fixed points.
+
+**Problem.** For prime m this operation preserves finite direct sums. For m = 4 it fails even on the sum of two sphere spectra, the units for the smash product.
+
+**How the definition helps.** Prime length forces every nonconstant word in the summand labels to have a free rotation orbit (our own). Each such orbit gives a freely permuted sum, whose norm is an equivalence and whose Tate spectrum vanishes (our own). At length four, the alternating word has stabilizer of order two (our own). Its orbit contributes the order-two Tate spectrum of the sphere by induction from this stabilizer (our own). The proved Segal conjecture for this group implies that this contribution is nonzero (our own).
+
+**nLab:** [Tate spectrum](https://ncatlab.org/nlab/show/Tate+spectrum). It says: “Tate spectra for cyclic groups play a role in the characterization of cyclotomic spectra.”
+
+**Sources:**
+
+- [Thomas Nikolaus and Peter Scholze, On topological cyclic homology](https://people.mpim-bonn.mpg.de/scholze/CyclotomicSpectra.pdf)
 
 ### Cartan principal bundles give a clean form of Palais's local triviality theorem
 

@@ -4087,6 +4087,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bounded phase gives definable volumes
+
+**Remember:** A bounded phase needs only a restricted sine.
+
+*Makes the theorem clean to state or prove.* MSC 03C64 (Model theory of ordered structures; o-minimality), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Integrate exp(−f)ω over a closed set G in complex affine space given by real polynomial conditions over ℚ. Orient its smooth part outside a lower-dimensional subset. Take f and ω rational over ℚ and regular on G, with the degree of ω equal to the real dimension of G. Require f to have compact preimages of compact sets on G, bounded imaginary part, and real part bounded below.
+
+**Problem.** The real and imaginary parts of each such integral are, up to sign, volumes of compact sets. Formulas defining those sets use ordered real field operations, the exponential, and sine on \[0,1\], without extra real constants.
+
+**How the definition helps.** A bounded imaginary part lets restricted sine describe the oscillation of the exponential weight. In our own explanation, angle addition expresses sine and cosine on any fixed bounded interval using sine on \[0,1\]. The volume theorem turns the resulting signed integrals into volumes of compact sets.
+
+**Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “Permitting the integrand Q to be the product of an algebraic function and the exponential of an algebraic function”
+
+**Sources:**
+
+- [Commelin, Habegger and Huber, Exponential periods and o-minimality](https://aif.centre-mersenne.org/articles/10.5802/aif.3801/)
+
 ### The many definitions of definable compactness agree in o-minimal structures
 
 **Remember:** In o-minimal geometry, curves, types and closed families give one compactness.

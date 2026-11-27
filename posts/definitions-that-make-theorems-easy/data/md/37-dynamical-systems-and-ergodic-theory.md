@@ -1214,6 +1214,24 @@
 
 - [Robert Bland, An embedding theorem for subshifts over amenable groups with the comparison property, Lemma 2.20](https://doi.org/10.1017/etds.2024.21)
 
+### Presentation determinants give algebraic entropy
+
+**Remember:** Local lengths become exponents, and the logarithmic measure adds their contributions.
+
+*Makes the theorem clean to state or prove.* MSC 37B40 (Topological entropy), 11R06. arXiv math.DS, math.NT. Level 4: research.
+
+**Definition.** Let R consist of integer polynomials in several variables, allowing negative exponents. For a finitely generated torsion R-module M, examine each irreducible factor p after allowing all elements coprime to p as denominators. The resulting module has finite length, the number of simple quotients in a composition series. The characteristic element multiplies the factors p raised to these lengths, up to a signed monomial.
+
+**Problem.** Let M be the quotient of Rⁿ by the image of a square matrix A with nonzero determinant. Multiplication by the variables induces commuting transformations on the group of circle-valued characters of M. Their topological entropy, the exponential growth rate of distinguishable orbit patterns per lattice site, equals the uniform circle average of log\|det A\|.
+
+**How the definition helps.** In our own explanation, the characteristic element packages the contributions from all irreducible factors into one polynomial. Diagonalizing A after allowing denominators coprime to p identifies the local length with the exponent of p in det A. The entropy addition theorem and the computation for prime quotients supply the dynamical part. Logarithmic Mahler measure turns the resulting product into the required sum.
+
+**Wikipedia:** [Mahler measure](https://en.wikipedia.org/wiki/Mahler_measure). It says: “the entropy of the action is expressed as a sum of logarithmic Mahler measures over the generators of the principal associated prime ideals of the module.”
+
+**Sources:**
+
+- [Lind, Schmidt and Ward, Mahler measure and entropy for commuting automorphisms of compact groups](https://doi.org/10.1007/BF01231517)
+
 ### Shifts on orbit sequences define metric mean dimension for discontinuous maps
 
 **Remember:** Move along recorded orbits, even when the map itself jumps.

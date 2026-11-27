@@ -915,6 +915,27 @@
 
 - [M. Sato, Cyōkansū no riron (Theory of Hyperfunctions), Sūgaku 10 (1958), no. 1, 1–27](https://doi.org/10.11429/sugaku1947.10.1)
 
+### Logarithmic radii give integer slopes
+
+**Remember:** Off the amoeba, each logarithmic slope counts turns around zero.
+
+*Rules out counterexamples.* MSC 32A60 (Zero sets of holomorphic functions of several complex variables), 11R06. arXiv math.AG. Level 4: research.
+
+**Definition.** For a nonzero complex polynomial P, fix the logarithms r of the coordinate moduli and let each angle vary independently. The Ronkin function averages log\|P\| over these angles with uniform probability. The amoeba consists of those vectors r for which some choice of angles gives P = 0.
+
+**Problem.** On each connected component of the complement of the amoeba of a nonzero polynomial, its Ronkin function is affine with integral gradient.
+
+**How the definition helps.** In our own argument, using logarithmic radii turns each derivative outside the amoeba into a winding number. This integer counts turns around zero as one coordinate travels around its circle with the others fixed. The argument principle gives the derivative after averaging over that coordinate. The integer varies continuously with the remaining angles and radii, so it stays constant on each component. For example, 1 + x gives max(0,r), with a change of slope at zero.
+
+**Wikipedia:** [Amoeba (mathematics)](https://en.wikipedia.org/wiki/Amoeba_%28mathematics%29). It says: “The Ronkin function is convex and affine on each connected component of the complement of the amoeba of p(z).”
+
+**Paper or page:** [Generalized Mahler measures of Laurent polynomials](https://arxiv.org/abs/2308.04601). It says: “Let $k \\notin \\mathcal{K}\_{\\mathfrak {a}}.$ Then $\\varrho \_{\\mathfrak {a}, k}<sup>j</sup> (x<sub>1</sub>, \\dots , \\widehat{x<sub>j</sub>}, \\dots , x<sub>n</sub>)$ is constant for all $(x<sub>1</sub>, \\dots , \\widehat{x<sub>j</sub>}, \\dots , x<sub>n</sub>) \\in \\mathbb {T}\_{a<sub>1</sub>, \\dots , \\widehat{a<sub>j</sub>}, \\dots , a<sub>n</sub>}<sup>n-1</sup>.$”
+
+**Sources:**
+
+- [Generalized Mahler measures of Laurent polynomials, Proposition 7.2](https://arxiv.org/abs/2308.04601)
+- [Amoeba (mathematics), Ronkin function](https://en.wikipedia.org/wiki/Amoeba_(mathematics)#Ronkin_function)
+
 ### Proper maps preserve sheaf coherence
 
 **Remember:** Over a point, coherence means finite dimension.
@@ -969,6 +990,42 @@
 
 - [J. P. Pridham, A differential graded model for derived analytic geometry (2020), Proposition 1.13](https://doi.org/10.1016/j.aim.2019.106922)
 - [Alexei Yu. Pirkovskii, Holomorphically finitely generated algebras (2015), Theorem 3.23](https://doi.org/10.4171/jncg/192)
+
+### Tangential polylogarithm periods give zeta values
+
+**Remember:** At one, only the first coordinate needs its logarithm removed.
+
+*Makes the theorem clean to state or prove.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations), 14D07, 33B30. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Set f₀ = 1 and choose functions f₁ through fₙ vanishing at zero, with n ≥ 2. Require df₁ = dz/(1 − z) and dfₖ = fₖ₋₁ dz/z for 2 ≤ k ≤ n. At a singular endpoint, a tangential value uses the approach direction to fix the logarithm and removes the resulting logarithmic factor.
+
+**Problem.** For transport along the real interval from 0 to 1 with inward endpoint tangents, entries 2 through n are ζ(2) through ζ(n). Here ζ(k) is the sum of reciprocal kth powers of the positive integers.
+
+**How the definition helps.** The tangential value defines the whole endpoint vector even though its first varying entry diverges (our own). Near 1 only the first differential equation has a pole, and its residue correction affects only f₁ (our own). For k ≥ 2 the power series for fₖ sums zʲ/jᵏ over positive j, giving ζ(k) at one (our own). Hain identifies these entries as periods, the comparison numbers for the limiting Hodge structure.
+
+**Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950). It says: “has ζ(2),⋯,ζ(n) as periods”
+
+**Sources:**
+
+- [Richard Hain, Classical polylogarithms (1994)](https://doi.org/10.1090/pspum/055.2/1265550)
+
+### Unipotent canonical extensions preserve tensors
+
+**Remember:** Two nilpotent residues add to a nilpotent tensor residue.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations), 14D07. arXiv math.AG. Level 4: research.
+
+**Definition.** Consider a flat bundle from a variation of Hodge structure on a punctured disk. A flat bundle transports vectors along paths, and transport around the puncture is its monodromy. Deligne’s canonical extension allows a simple pole and requires the pole coefficient, called the residue, to have eigenvalues with real parts in \[0, 1). Unipotent monodromy means that the loop operator minus the identity is nilpotent, so some power vanishes.
+
+**Problem.** If both bundles have unipotent monodromy, their canonical extensions tensor to the canonical extension of their tensor product.
+
+**How the definition helps.** Unipotence keeps the tensor residue within the defining range because both individual residues are nilpotent (our own). On the tensor product they act on separate factors, so they commute and their sum is nilpotent (our own). Deligne’s uniqueness theorem identifies the resulting extension (our own). Two rank-one bundles with residues one half each give tensor residue one, while the canonical extension of their product has residue zero (our own).
+
+**Paper or page:** [Variation of mixed Hodge structure and its applications](https://arxiv.org/abs/2304.00672). It says: “where ˡ(·) stands for the lower canonical extension as before.”
+
+**Sources:**
+
+- [Pierre Deligne, Équations différentielles à points singuliers réguliers (1970)](https://doi.org/10.1007/BFb0061194)
 
 ### Unchanged functions force connected fibers
 

@@ -526,6 +526,167 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A strip fixes polylogarithm inversion
+
+**Remember:** Choose one logarithm before evaluating its Bernoulli polynomial.
+
+*Rules out counterexamples.* MSC 33B30 (Higher logarithm functions), 11M35. arXiv math.CA, math.NT. Level 3: graduate.
+
+**Definition.** For Jonquière’s inversion write z = exp(2πix) with 0 &lt; Re x &lt; 1. This chooses one logarithmic coordinate for every z outside the nonnegative real axis. Use the principal branches of the two polylogarithms.
+
+**Problem.** Let n≥1 be an integer and Bₙ the nth Bernoulli polynomial. Then Liₙ(z)+(−1)ⁿLiₙ(1/z)=−(2πi)ⁿBₙ(x)/n!.
+
+**How the definition helps.** In our own terms, fixing the coordinate makes the Bernoulli expression agree with the principal branches. In our own terms, x = 1/4 and x = 5/4 give the same z, but their quadratic Bernoulli values differ by 1/2. In our own terms, the work is the Hurwitz zeta functional equation and its specialization at 1−n.
+
+**Wikipedia:** [Polylogarithm](https://en.wikipedia.org/wiki/Polylogarithm). It says: “For positive integer polylogarithm orders s, the Hurwitz zeta function ζ(1−s, x) reduces to Bernoulli polynomials, ζ(1−n, x) = −Bₙ(x) / n”
+
+**Sources:**
+
+- [Alfred Jonquière, Note sur la série (1889), pp. 142–152](https://www.numdam.org/item/BSMF_1889__17__142_1/)
+
+### Clausen values give tetrahedron volumes
+
+**Remember:** Three angles turn a complex shape into three values on the circle.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 51M10. arXiv math.CA, math.GT. Level 3: graduate.
+
+**Definition.** An ideal hyperbolic tetrahedron has all four vertices on the boundary at infinity. Define Λ(θ) as the integral of −log\|2 sin t\| from 0 to θ. The volume formula adds Λ at the three angles between faces meeting at one vertex.
+
+**Problem.** For Im z&gt;0, let α, β and γ be the arguments of z, 1/(1−z) and 1−1/z. The Bloch–Wigner dilogarithm satisfies 2D(z)=D(exp(2iα))+D(exp(2iβ))+D(exp(2iγ)).
+
+**How the definition helps.** In our own terms, the angle formula already writes the volume as three real functions of one angle each. The Fourier series of Λ gives 2Λ(θ) = D(exp(2iθ)). In our own terms, the remaining work is the hyperbolic volume formula in angle coordinates.
+
+**Wikipedia:** [Clausen function](https://en.wikipedia.org/wiki/Clausen_function). It says: “The Lobachevsky function Λ or Л is essentially the same function with a change of variable”
+
+**Sources:**
+
+- [Don Zagier, The Dilogarithm Function (2007)](https://maths.dur.ac.uk/users/herbert.gangl/dilog.pdf)
+
+### Dilogarithms control Euler product asymptotics
+
+**Remember:** The logarithm of the product is a sum for the dilogarithm integral.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 33D05. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For 0 &lt; a &lt; 1 define Li₂(a) by the integral of −log(1−u)/u from 0 to a. Substitution u = a exp(−t) gives the integral of −log(1−a exp(−t)) over t ≥ 0.
+
+**Problem.** As h tends to zero through positive values, the product of 1−a exp(−kh) over integers k ≥ 0 is asymptotic to √(1−a) exp(−Li₂(a)/h).
+
+**How the definition helps.** In our own proof, the integral definition identifies the leading term of the logarithm directly, without expanding the dilogarithm in powers of a. The Euler–Maclaurin summation formula adds half the endpoint value log(1−a). Its remainder is O(h) because the integrand has an integrable second derivative. Exponentiating gives the stated equivalent.
+
+**Paper or page:** [Evaluation of beta integrals of Ramanujan type and integral representations for bilateral hypergeometric series](https://arxiv.org/abs/2411.03574v1). It says: “Let a ∈ ℂ ∖ \[1,∞). Then (a;q)∞ ∼ (1−a)¹⁄² exp(−u⁻¹ Li(a)), where Li denotes the dilogarithm function”
+
+**Sources:**
+
+- [Howard Cohl and Hans Volkmer, Evaluation of beta integrals of Ramanujan type and integral representations for bilateral hypergeometric series (2024)](https://arxiv.org/abs/2411.03574v1)
+
+### Equal angles maximize dilogarithm volume
+
+**Remember:** Equal angles give the largest ideal tetrahedron.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 51M10. arXiv math.CA, math.GT. Level 3: graduate.
+
+**Definition.** An ideal tetrahedron has its vertices on the boundary of hyperbolic space. Describe its shape by the three angles between faces meeting at one vertex. These positive angles sum to π. Its volume is Λ(α)+Λ(β)+Λ(γ), where Λ(θ) integrates −log\|2 sin t\| from 0 to θ.
+
+**Problem.** The Bloch–Wigner dilogarithm D, which gives signed volume at complex shape z, has a unique maximum on the upper half-plane at z=(1+i√3)/2.
+
+**How the definition helps.** Our own proof uses the angle formula to replace a complex maximization by a real one with a single linear constraint. The boundary has volume zero since Λ(π−θ)=−Λ(θ). At an interior maximum the three sines agree. Supplementary angles would leave no room for the third, so each angle equals π/3. The volume formula identifies this maximum with the maximum of D.
+
+**Paper or page:** [The Andersen-Kashaev volume conjecture for FAMED geometric triangulations](https://arxiv.org/abs/2410.10776v1). It says: “Let T be an ideal tetrahedron in ℍ³ with complex shape structure z. Then, its volume is given by Vol(T) = D(z)”
+
+**Sources:**
+
+- [Don Zagier, The Dilogarithm Function (2007)](https://maths.dur.ac.uk/users/herbert.gangl/dilog.pdf)
+
+### Gamma normalization removes order poles
+
+**Remember:** The zeros of reciprocal gamma cancel the Mellin poles.
+
+*True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix z outside the real interval \[1,∞). For Re s&gt;0, integrate tˢ⁻¹z/(exp(t)−z) over t&gt;0 and divide by the gamma function Γ(s). This defines Liₛ(z) and agrees with its power series for \|z\|&lt;1.
+
+**Problem.** For each z outside \[1,∞), Li of order s at z is an entire function of s.
+
+**How the definition helps.** In our own terms, dividing by gamma cancels the only possible poles of the Mellin integral. In our own terms, subtract successively more Taylor terms of z/(exp(t)−z) at zero to continue the integral. In our own terms, the subtracted monomials give simple poles only at the nonpositive integers, where 1/Γ has simple zeros.
+
+**Wikipedia:** [Polylogarithm](https://en.wikipedia.org/wiki/Polylogarithm). It says: “This converges for Re(s) &gt; 0 and all z except for z real and ≥ 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matching parity recovers Dirichlet values
+
+**Remember:** Match the character parity to the retained part of the polylogarithm.
+
+*Rules out counterexamples. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11M06. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** On the unit circle, define Pₙ(z) as the real part of Liₙ(z) for odd n and its imaginary part for even n. Here Liₙ denotes the polylogarithm of order n. Set c=1 for odd n and c=i for even n.
+
+**Problem.** Let χ be a primitive Dirichlet character modulo N, a multiplicative character that comes from no smaller modulus, with χ(−1)=(−1)ⁿ⁻¹ and n≥2. Then cΣχ̄(a)Pₙ(exp(2πia/N))=τL(n,χ), where τ=Σχ̄(a)exp(2πia/N) and both sums run over residues modulo N. Here L(n,χ) sums χ(k)/kⁿ over positive integers k.
+
+**How the definition helps.** In our own terms, pairing a with −a leaves just the part selected by P. In our own terms, the Gauss-sum identity evaluates the full polylogarithm sum after its series is expanded. In our own terms, at weight three the odd character modulo four gives zero on the left, although its L-value is positive.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “where Clₙ(α) ≔ ℜₙ(Liₙ(eⁱᵅ)) denotes the Clausen function.”
+
+**Sources:**
+
+- [Don Zagier, Polylogarithms, Dedekind zeta functions, and the algebraic K-theory of fields (1990)](https://people.mpim-bonn.mpg.de/zagier/files/scanned/PolylogsDedekindZetaAndKTheory/fulltext.pdf)
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://arxiv.org/abs/2104.04344v2)
+
+### Nested integrals expose branch changes
+
+**Remember:** Each extra integration adds one power of log z.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Start with Li₁(z)=−log(1−z) near zero. For n&gt;1, define Liₙ(z) by integrating Liₙ₋₁(t)dt/t from 0 to z. Continuing the integral along a path chooses a branch.
+
+**Problem.** Start at 1/2 on the principal branch and follow the circle centered at 1 through 1/2 once counterclockwise. Near the starting point, Liₙ changes by −2πi(log z)ⁿ⁻¹/(n−1)! for every integer n≥1, with the principal logarithm.
+
+**How the definition helps.** In our own terms, the integral definition turns the logarithm jump into a recursion for all higher jumps. In our own terms, their derivatives satisfy the same recursion with factor dz/z, starting from the jump −2πi. In our own terms, the small-circle limit at 1 fixes each integration constant for n&gt;1. In our own terms, termwise integration compares the path definition with the power series on the first sheet.
+
+**nLab:** [iterated integral](https://ncatlab.org/nlab/show/iterated+integral). It says: “expression involving nested integrals”
+
+**Sources:**
+
+- [Richard M. Hain, Classical Polylogarithms (1994)](https://doi.org/10.1090/pspum/055.2/1265550)
+
+### Ordered simplices give shuffle products
+
+**Remember:** Sort the combined times and keep each word in order.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 11M32. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A multiple polylogarithm can be written as repeated integration of forms dz/(z − a) along one path. Integrate their product over increasing times, one time for each letter a. A shuffle interleaves two letter sequences while preserving their internal orders.
+
+**Problem.** For a piecewise smooth path avoiding the poles, the product of two such integrals equals the sum over their shuffles.
+
+**How the definition helps.** The ordered times turn multiplication into a partition of the integration domain (our own). In the nested integral formula, each letter supplies another integration limit (our own). Fubini’s theorem combines the two domains, and sorting their times gives one region per shuffle, apart from boundaries of measure zero (our own).
+
+**Paper or page:** [Duality on symmetric multiple polylogarithms](https://arxiv.org/abs/2411.08711). It says: “(Shuffle product formula) Iγ(w ⧢ w′) = Iγ(w)Iγ(w′).”
+
+**Sources:**
+
+- [Kuo-Tsai Chen, Iterated path integrals (1977)](https://doi.org/10.1090/S0002-9904-1977-14320-6)
+
+### Tetrahedron volume proves five-term cancellation
+
+**Remember:** Five tetrahedra cancel in the oriented boundary of a simplex.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 51M10. arXiv math.CA, math.GT. Level 3: graduate.
+
+**Definition.** For a tetrahedron in hyperbolic space, “ideal” means that all four vertices lie on the boundary at infinity. Define D(z) as the signed volume with ordered vertices ∞,0,1,z, taking D(z)=0 for real z. For any four distinct boundary points, their shape is the fourth coordinate after a fractional linear transformation sends the first three to ∞,0,1.
+
+**Problem.** Take five distinct ordered points on the boundary at infinity. Omit each point in turn and evaluate D at the shape of the remaining tetrahedron. The alternating sum is zero.
+
+**How the definition helps.** Our own proof uses signed volume so that tetrahedra sharing a face contribute opposite signs there. Cone each oriented face to the same interior point. Every face occurs twice and its two cone volumes cancel. The volume formula identifies this geometric definition with the analytic Bloch–Wigner dilogarithm.
+
+**Paper or page:** [The Andersen-Kashaev volume conjecture for FAMED geometric triangulations](https://arxiv.org/abs/2410.10776v1). It says: “Let T be an ideal tetrahedron in ℍ³ with complex shape structure z. Then, its volume is given by Vol(T) = D(z) = D((z−1)/z) = D(1/(1−z)).”
+
+**Sources:**
+
+- [Don Zagier, The Dilogarithm Function (2007)](https://maths.dur.ac.uk/users/herbert.gangl/dilog.pdf)
+
 ### The dilogarithm correction cancels its jump
 
 **Remember:** Add the argument term to cancel the imaginary jump on the cut.
@@ -959,6 +1120,177 @@
 **Sources:**
 
 - [Peter Reinhard Hansen and Chen Tong, A Unifying Integral Representation of the Gamma Function and Its Reciprocal, Theorem 1](https://arxiv.org/abs/2506.12112v1)
+
+### Bernoulli corrections preserve distribution
+
+**Remember:** The logarithm scales with the weight lost by the polylogarithm.
+
+*True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.CA, math.NT. Level 4: research.
+
+**Definition.** Write Liⱼ for the polylogarithm of order j, and Bₖ for the Bernoulli numbers with B₁=−1/2. For 0≤k&lt;n, sum (2 log\|z\|)ᵏBₖLiₙ₋ₖ(z) divided by k factorial to form the expression for Pₙ(z). Keep the real part for odd n and the imaginary part for even n. Use the continuous extension at exceptional arguments.
+
+**Problem.** For integers n,m≥2 and nonzero complex z, Pₙ(zᵐ) equals mⁿ⁻¹ times the sum of Pₙ(ωz) over all mth roots of unity ω.
+
+**How the definition helps.** In our own terms, each logarithm factor scales by m, compensating for the one unit of polylogarithm order it replaces. In our own terms, apply the roots-of-unity filter to the series for each order inside the disk. In our own terms, establishing real-analytic single-valued continuation is the work that extends the result outside the disk.
+
+**nLab:** [polylogarithm](https://ncatlab.org/nlab/show/polylogarithm). It says: “Polylogarithms Liₙ(x) generalize dilogarithms.”
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “For any $x\\in \\mathbb {C}\\setminus \\{ 0,1\\} $ and any $n\\in \\mathbb {Z}<sub>&gt;1</sub>$, we have\\begin{gather\*}  I<sup>{\\mathrm{csv}}<sub>n</sub></sup>(x) = 2 (-1)<sup>n</sup> \\Bigg\[P<sub>n</sub>(x) +\\frac{1}{n}\\sum <sub>k=1</sub><sup>\\lceil n/2\\rceil -1</sup>(n-2k-1) \\frac{\\log <sup>2k</sup>\|x\|<sup>2}{</sup>(2k+1)!} P<sub>n-2k</sub>(x)\\Bigg\]. \\end{gather\*}”
+
+**Sources:**
+
+- [Don Zagier, Polylogarithms, Dedekind zeta functions, and the algebraic K-theory of fields (1990)](https://people.mpim-bonn.mpg.de/zagier/files/scanned/PolylogsDedekindZetaAndKTheory/fulltext.pdf)
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://arxiv.org/abs/2104.04344v2)
+
+### Clean polylogarithms give Clausen values
+
+**Remember:** On the unit circle the logarithmic corrections all vanish.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.NT, math.CA. Level 4: research.
+
+**Definition.** Write J(n,z) for the ordinary single-valued evaluation of the integral representing −Liₙ(1/z), where Liₙ is the order-n polylogarithm. For n&gt;1, form J(n,z)+log(\|z\|²)J(n−1,z)/n. Its real part for odd n, or imaginary part for even n, gives the clean value.
+
+**Problem.** At a root of unity z=exp(iθ) other than 1, the clean value equals 2(−1)ⁿClₙ(θ). Here Clₙ(θ) takes the real part of Liₙ(z) for odd n and the imaginary part for even n.
+
+**How the definition helps.** In our own terms, the clean correction is zero on the unit circle because log of \|z\|² is zero. The remaining parity part is the Clausen value after the depth-one single-valued period is evaluated. In our own terms, the work lies in deriving the logarithmic correction from the projection that kills products.
+
+**Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “Then Iₙᶜˢᵛ(ξ(N)ᵃ) = 2(−1)ⁿ Clₙ(2πa/N)”
+
+**Sources:**
+
+- [Steven Charlton, Claude Duhr and Herbert Gangl, Clean Single-Valued Polylogarithms (2021)](https://arxiv.org/abs/2104.04344v2)
+
+### Cross ratios organize fiber identities
+
+**Remember:** Put the four fibers in cross-ratio order before summing their values.
+
+*Makes the theorem clean to state or prove.* MSC 33B30 (Higher logarithm functions), 39B32. arXiv math.CA. Level 4: research.
+
+**Definition.** For four distinct points a,b,c,d on the complex sphere, their cross ratio is (a−c)(b−d)/((a−d)(b−c)). Take a limit if one point is infinity. Define V(a,b,c,d) by evaluating the Bloch–Wigner dilogarithm at this ratio.
+
+**Problem.** Let φ be a rational map of degree n≥1 and take distinct target points A,B,C,D. Fix any a with φ(a)=A. Summing V(a,b,c,d) over all preimages of B,C,D, counted with multiplicity, gives nV(A,B,C,D).
+
+**How the definition helps.** Our own explanation uses the four-point function to write one formula for every choice of target points, including infinity. Gangl’s Theorem 2.1 gives the identity. The cross ratio supplies its arguments, while the generalized dilogarithm equation supplies the equality.
+
+**nLab:** [cross ratio](https://ncatlab.org/nlab/show/cross+ratio). It says: “The cross ratio (A,B;C,D) is then the image of D under this isomorphism.”
+
+**Sources:**
+
+- [Herbert Gangl, Functional equations for higher logarithms (2003)](https://maths.dur.ac.uk/users/herbert.gangl/feq_polylogs.pdf)
+- [Don Zagier, The Dilogarithm Function (2007)](https://maths.dur.ac.uk/users/herbert.gangl/dilog.pdf)
+
+### Dilogarithm endpoints give Mahler measure
+
+**Remember:** Use a dilogarithm primitive at the ends of the arc.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 11R06. arXiv math.NT, math.CA. Level 4: research.
+
+**Definition.** On the unit circle define D(exp(iθ)) by integrating −log\|1−exp(it)\| from 0 to θ. This integral agrees with the Bloch–Wigner dilogarithm on the circle.
+
+**Problem.** The logarithmic Mahler measure of 1+x+y, the mean of log\|1+x+y\| on the unit torus, is D(exp(iπ/3))/π.
+
+**How the definition helps.** In our own derivation, the integral definition of D evaluates an entire arc from its endpoints. Jensen’s formula averages over y first, leaving the circle average of max(0,log\|1+x\|). Only the arc between arguments −2π/3 and 2π/3 contributes. Substituting −x gives endpoint arguments π/3 and 5π/3, whose dilogarithms have opposite signs. The Fourier series identifies this integral definition with the analytic dilogarithm.
+
+**Wikipedia:** [Mahler measure](https://en.wikipedia.org/wiki/Mahler_measure). It says: “m(1+x+y) = 3√3/(4π) L(χ₋₃,2)”
+
+**Sources:**
+
+- [Chris Smyth, Appendix 1 in David W. Boyd, Speculations concerning the range of Mahler’s measure (1981)](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S000843950006570X)
+- [David W. Boyd and Fernando Rodriguez-Villegas, Mahler’s Measure and the Dilogarithm (I) (2002)](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/85ADE50E3B3E825FDF7B5D9C174E44FC/S0008414X00028728a.pdf/mahleras_measure_and_the_dilogarithm_i.pdf)
+
+### Exterior products test dilogarithm identities
+
+**Remember:** Cancel exterior products before integrating any dilogarithm.
+
+*True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 39B32, 11G55. arXiv math.CA, math.NT. Level 4: research.
+
+**Definition.** For a rational function f on a smooth complex curve X, use the exterior product (1−f) ∧ f in Λ²ℂ(X)×. This is the alternating bilinear product of nonzero functions, using multiplication in each input. Extend the assignment to integer sums of symbols for f other than 0 and 1.
+
+**Problem.** Write D for the Bloch–Wigner dilogarithm. If Σaⱼ(1−fⱼ) ∧ fⱼ=0, then ΣaⱼD(fⱼ) is constant on each connected open set avoiding zeros, poles and values of one.
+
+**How the definition helps.** Our own proof encodes the derivative in an alternating product, so a formal cancellation forces a constant sum. Send u ∧ v to log\|u\| d arg v−log\|v\| d arg u. Differentiating the analytic Bloch–Wigner formula shows that (1−f) ∧ f maps to −dD(f).
+
+**nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “The Bloch–Wigner dilogarithm is defined by D(z) ≔ Im(Li₂(z)) + arg(1−z) log\|z\|.”
+
+**Sources:**
+
+- [Don Zagier, The Dilogarithm Function (2007)](https://maths.dur.ac.uk/users/herbert.gangl/dilog.pdf)
+
+### Logarithm sheets resolve Rogers monodromy
+
+**Remember:** Keep the logarithm sheets and take the value modulo π².
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 11G55, 57K31. arXiv math.CA, math.GT. Level 4: research.
+
+**Definition.** Write log for the principal logarithm and Li₂ for the ordinary dilogarithm. For z outside {0,1}, follow log z+pπi and −log(1−z)+qπi continuously across their cuts, using integer indices p,q. On each sheet set R=Li₂(z)+log(z)log(1−z)/2+πi(p log(1−z)+q log z)/2−π²/6.
+
+**Problem.** The formula for R defines a single-valued function on this logarithm cover with values in ℂ/π²ℤ.
+
+**How the definition helps.** Keeping both branch indices lets the correction compensate for the jumps of the ordinary Rogers dilogarithm. Neumann checks each cut separately. The remaining changes are multiples of π², which represent zero in the stated quotient.
+
+**nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭ PSL(2,ℂ), ℤ) itself is also called the extended Bloch group”
+
+**Sources:**
+
+- [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://msp.org/gt/2004/8-1/gt-v8-n1-p10-p.pdf)
+
+### Rogers complements simplify cluster sums
+
+**Remember:** A negative tropical sign chooses the complementary argument.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 13F60. arXiv math.CA. Level 4: research.
+
+**Definition.** The Rogers dilogarithm is L(u)=Li₂(u)+log(u)log(1−u)/2 for 0&lt;u&lt;1. Consider cluster mutations, the standard updates of a skew-symmetric integer matrix and its coefficient variables. At each step put u=y/(1+y) for the updated coefficient’s value y before mutation, evaluated at positive initial values. Compute its tropical monomial by replacing addition with coordinatewise minimum of exponent vectors.
+
+**Problem.** Suppose the updates return the initial matrix and formal coefficient variables up to the same permutation. Call a step negative when its tropical monomial has nonpositive exponents and at least one negative exponent. Summing L(u) at the other steps and −L(1−u) at negative steps gives zero.
+
+**How the definition helps.** The Rogers normalization turns complementary arguments into a constant sum, L(u)+L(1−u)=π²/6. Each negative step therefore subtracts π²/6 from the unsigned sum. The periodic mutation theorem evaluates that unsigned sum as π²/6 times the number of negative steps.
+
+**nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “the Bloch group, CFT, Liouville gravity, hyperbolic geometry and cluster transformations”
+
+**Wikipedia:** [Dilogarithm](https://en.wikipedia.org/wiki/Dilogarithm). It says: “Abel's functional equation or five-term relation”
+
+**Sources:**
+
+- [Rinat M. Kashaev and Tomoki Nakanishi, Classical and Quantum Dilogarithm Identities (2011)](https://sigma-journal.com/2011/102/)
+
+### Rogers coordinates telescope a series
+
+**Remember:** Each pair passes two terms of the pentagon to the next pair.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions), 39B32. arXiv math.CA, math.NT. Level 4: research.
+
+**Definition.** Put L(t)=Li₂(t)+log(t)log(1−t)/2 for 0&lt;t&lt;1, where Li₂ is the ordinary dilogarithm. Start with (x₀,y₀)=(a,b) for 0&lt;b&lt;a&lt;1. Replace the two separate closed formulas by the update (x,y) ↦ (x(1−y)/(1−xy),y(1−x)/(1−xy)).
+
+**Problem.** The sum of L(xₙyₙ) over integers n≥0 is L(a)+L(b)−L((a−b)/(1−b)).
+
+**How the definition helps.** The pair update uses exactly the two arguments that carry over in Rogers’s five-term relation. In our own terms, their values cancel between consecutive equations. In our own terms, solving the recurrence gives xₙ→(a−b)/(1−b) and yₙ→0, which fixes the last term.
+
+**Wikipedia:** [Dilogarithm](https://en.wikipedia.org/wiki/Dilogarithm). It says: “L(x)+L(y)=L(xy)+L(x(1−y)/(1−xy))+L(y(1−x)/(1−xy)).”
+
+**Paper or page:** [A Dilogarithm Series and a Generalization of a Theorem of Bridgeman](https://arxiv.org/abs/2410.21619v2). It says: “The terms xₙ and yₙ satisfy the recurrence relations xₙ₊₁ = xₙ(1−yₙ)/(1−xₙyₙ), and yₙ₊₁ = yₙ(1−xₙ)/(1−xₙyₙ).”
+
+**Sources:**
+
+- [Chance Sanford, A Dilogarithm Series and a Generalization of a Theorem of Bridgeman (Integers, 2025)](https://arxiv.org/abs/2410.21619v2)
+
+### Trilogarithm corrections make sums constant
+
+**Remember:** The corrected trilogarithm leaves just a constant in the three-term sum.
+
+*True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.CA, math.NT. Level 4: research.
+
+**Definition.** Let A=log\|z\| and B=log\|1−z\|. Write Li₂ and Li₃ for the classical polylogarithms of orders two and three. Define P₃(z)=Re Li₃(z)−A Re Li₂(z)−A²B/3 and use its real-analytic extension across the cut.
+
+**Problem.** For z ∉ {0,1}, P₃(z)+P₃(1−z)+P₃(1−1/z)=ζ(3).
+
+**How the definition helps.** In our own proof, the correction gives a differential whose three transformed copies cancel. Write D for the Bloch–Wigner dilogarithm. Differentiation gives dP₃=−D(z)d arg z+(A/3)(B dA−A dB). The symmetries of D cancel the angle terms. The coefficients of the remaining alternating form sum to zero. Single-valued continuation and the inversion formula P₃(1/z)=P₃(z) allow evaluation at the limit z→0, giving ζ(3).
+
+**nLab:** [polylogarithm](https://ncatlab.org/nlab/show/polylogarithm). It says: “Polylogarithms Liₙ(x) generalize dilogarithms.”
+
+**Sources:**
+
+- [Don Zagier, Polylogarithms, Dedekind zeta functions, and the algebraic K-theory of fields (1990)](https://people.mpim-bonn.mpg.de/zagier/files/scanned/PolylogsDedekindZetaAndKTheory/fulltext.pdf)
 
 ### Normalized convolution joins parameters
 

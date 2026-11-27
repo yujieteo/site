@@ -899,6 +899,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Projective gauges allow partial sums
+
+**Remember:** Each allowed normalization selects one point on every positive ray.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Treat positive parameter vectors that differ by a common scale as one ray. In n variables, let f have degree −n under scaling. Insert the radial vector x into the first slot of the coordinate volume form to obtain ω. Use fω as the Feynman integrand on rays.
+
+**Problem.** For an absolutely convergent integral, choose any nonempty subset of the parameters and set their sum to one. With the orientation induced from the rays, integration gives the same value for every subset.
+
+**How the definition helps.** Integration on rays turns each normalization into a choice of representative. In our own proof, fω is scale invariant and vanishes whenever one argument is radial. It therefore defines a form on rays, and each normalization picks one point per ray. The comparison with the usual simplex formula comes from setting the sum of all parameters to one.
+
+**Wikipedia:** [Feynman parametrization](https://en.wikipedia.org/wiki/Feynman_parametrization). It says: “the sum in the Dirac delta function can be reduced to a subset of Feynman parameters.”
+
+**Sources:**
+
+- [Hung Cheng and Tai Tsun Wu, Expanding Protons: Scattering at High Energies](https://openlibrary.org/works/OL5274534W)
+
 ### Wick ordering removes self-contractions
 
 **Remember:** Subtract each vertex variance before expanding the joint exponential.
@@ -1984,6 +2002,101 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Yvain Bruned and Yingtong Hou, Renormalising Feynman diagrams with multi-indices](https://arxiv.org/abs/2501.08151v3)
 
+### Affine frames close under coaction
+
+**Remember:** Keep the cycle fixed and let every de Rham class vary.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 14C30. arXiv hep-th, math.NT. Level 4: research.
+
+**Definition.** Use the affine construction of a graph integral, which represents the integration simplex and algebraic differential forms in one cohomology space. Here cohomology records integration classes relative to the boundary of the simplex. Fix integration over the simplex and let the differential form range over all classes. The resulting formal integrals span the graph’s affine motivic period space.
+
+**Problem.** The motivic Galois coaction records algebraic symmetries by expanding a formal integral into pairs of coefficients and periods. Consider a scalar graph with logarithmic overall divergence and no divergent proper subgraph. Every period in the coaction on its affine motivic period space can be taken from that same space.
+
+**How the definition helps.** Allowing every form class makes the space closed under the replacements in the coaction formula. In our own explanation, expanding in a basis changes the form class while keeping the simplex fixed. A space generated only by the original integrand need not contain these terms. The affine construction supplies the geometric realization of the additional periods.
+
+**Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2). It says: “The Galois group acts on 𝒫ₐᵐ(G), that is Δ(𝒫ₐᵐ(G)) ⊆ 𝒫ᵈᴿ ⊗ 𝒫ₐᵐ(G).”
+
+**Sources:**
+
+- [Francis Brown, Feynman amplitudes, coaction principle, and cosmic Galois group](https://doi.org/10.4310/cntp.2017.v11.n3.a1)
+- [Claudia Rella, An Introduction to Motivic Feynman Integrals](https://doi.org/10.3842/sigma.2021.032)
+
+### Blow-ups frame Feynman periods
+
+**Remember:** Separate the simplex from the poles before pairing it with the form.
+
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 14C30. arXiv hep-th, math.NT. Level 4: research.
+
+**Definition.** A blow-up replaces a subspace by the directions approaching it. Blow up projective edge space along the coordinate subspaces specified by the graph polynomial. Remove the transformed zero set of that polynomial and retain the lifted coordinate boundary. The lifted integrand and simplex specify a relative period, an integral whose domain may end on that boundary.
+
+**Problem.** Suppose the graph has twice as many edges as independent cycles, with strictly more than twice as many in every nonempty proper edge subset. Its projective Feynman integral equals this relative period.
+
+**How the definition helps.** In our own description, the relative period records both the integrand and its allowed boundary. Rella’s blow-up theorem keeps the lifted simplex away from the transformed pole set. It also rules out poles along the new divisors. In our own argument, changing variables on the simplex interior now identifies the two integrals.
+
+**nLab:** [period](https://ncatlab.org/nlab/show/period). It says: “The period of a closed differential form”
+
+**Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2). It says: “The pulled-back differential ω̂ɢ = π\* ωɢ has no poles along the exceptional divisors associated to the blow ups.”
+
+**Sources:**
+
+- [Claudia Rella, An Introduction to Motivic Feynman Integrals](https://doi.org/10.3842/sigma.2021.032)
+- [Francis Brown, Feynman amplitudes, coaction principle, and cosmic Galois group](https://doi.org/10.4310/cntp.2017.v11.n3.a1)
+
+### Completed graphs fix point-count residues
+
+**Remember:** Use the completed graph to compute the point count residue of any deletion.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math.CO. Level 4: research.
+
+**Definition.** The graph polynomial sums products of edge variables outside spanning trees. For a connected graph with at least three vertices, count its zeros over the field of p elements. Divide that count by p² and reduce modulo p to obtain c₂. For a 2k-regular graph, the Martin invariant counts partitions into k spanning trees after deleting any vertex.
+
+**Problem.** Let G be a connected loopless four-regular graph with at least six vertices, and let p be prime. The c₂ residues of all connected vertex deletions agree.
+
+**How the definition helps.** The completed graph supplies one integer for every deletion. Replace each edge of G by p−1 parallel edges. Panzer and Yeats prove that the Martin invariant of this graph, divided by 3p, gives the required residue modulo p. Their tree-partition theorem establishes that the count itself is independent of the vertex.
+
+**Paper or page:** [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2), [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2), [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2). It says: “For all primes p and any two vertices v,w of a 4-regular graph G, we have c₂⁽ᵖ⁾(G ∖ v) ≡ c₂⁽ᵖ⁾(G ∖ w) mod p.”
+
+**Sources:**
+
+- [Erik Panzer and Karen Yeats, Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://doi.org/10.5070/c65165021)
+
+### Completion removes the chosen vertex
+
+**Remember:** The added vertex need not be the one you remove.
+
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Start with a massless four-dimensional φ⁴ diagram, whose interaction vertices each meet four edge ends. Its period is the integral left after removing the overall scale. Assume twice the cycle count equals the edge count, with strict edge excess over twice the cycle count for every nonempty proper edge subset. Complete the diagram by joining its four external ends to one new vertex.
+
+**Problem.** Deleting any vertex of the completion gives a diagram satisfying the same edge conditions. Every deletion gives the same period.
+
+**How the definition helps.** Completion turns a family of integral identities into one statement about an unmarked graph. In our own explanation, inversion of position coordinates changes which vertex lies at infinity. The completion theorem proves that this change preserves the integral.
+
+**Paper or page:** [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “Then Ḡ ∖ v₁ and Ḡ ∖ v₂ are primitive log-divergent φ⁴ graphs with equal period,”
+
+**Sources:**
+
+- [Oliver Schnetz, Quantum periods: A census of φ⁴-transcendentals](https://doi.org/10.4310/cntp.2010.v4.n1.a1)
+- [Erik Panzer and Oliver Schnetz, The Galois coaction on φ⁴ periods](https://doi.org/10.4310/cntp.2017.v11.n3.a3)
+
+### Cuts force Dodgson minors to vanish
+
+**Remember:** A cut leaves dependent vertex columns in the remaining matrix.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Orient a connected graph and omit one vertex column from its signed edge-by-vertex incidence matrix B. Form a block matrix with diagonal edge weights and a zero vertex block on its diagonal. Use B and −Bᵀ for the other blocks. A Dodgson polynomial is its signed determinant after deleting equally many edge rows and columns and setting specified surviving weights to zero.
+
+**Problem.** If the deleted edge rows index a cut, meaning their removal disconnects the graph, the Dodgson polynomial vanishes.
+
+**How the definition helps.** The determinant definition exposes a column dependence that a spanning-forest expansion hides. In our own proof, choose a remaining component away from the omitted vertex. Its vertex columns sum to zero because every surviving edge has both ends inside or both outside that component. The all-minors matrix-tree theorem supplies the comparison with forest sums.
+
+**Paper or page:** [Geometries in perturbative quantum field theory](https://arxiv.org/abs/1905.08083v3). It says: “If I cuts G or K ∖ IJ contains a cycle”
+
+**Sources:**
+
+- [Oliver Schnetz, Geometries in perturbative quantum field theory](https://doi.org/10.4310/cntp.2021.v15.n4.a2)
+
 ### Face tests bound sector denominators
 
 **Remember:** Testing every face detects cancellations near the boundary.
@@ -2001,6 +2114,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
+
+### Graph minors inherit Dodgson identities
+
+**Remember:** Identities for matrix minors become identities for graph polynomials.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Form the graph matrix with diagonal edge weights, a zero vertex block, and opposite transposed incidence blocks recording the oriented edge ends. Omit one vertex from the incidence blocks. A Dodgson polynomial is a signed determinant after deleting equally many edge rows and columns and setting selected weights to zero.
+
+**Problem.** Take the surviving matrix X and two distinct surviving edge labels e and f present among both rows and columns. Set both weights to zero and order the selected rows and columns last, in the order e,f. Then det(X) times its double-deletion minor equals the product of the two principal deletion minors minus the product of the two cross minors.
+
+**How the definition helps.** The determinant definition turns the graph identity into the Desnanot–Jacobi identity for a single matrix. Each single deletion removes one selected row and one selected column. Principal deletions use matching labels, while cross deletions use different labels. In our own explanation, the remaining work is matching the ordering signs when writing each minor as a Dodgson polynomial. A forest-sum definition would require a separate comparison with determinants.
+
+**Paper or page:** [Geometries in perturbative quantum field theory](https://arxiv.org/abs/1905.08083v3). It says: “where every Dodgson is evaluated at the graph G.”
+
+**Sources:**
+
+- [Oliver Schnetz, Geometries in perturbative quantum field theory](https://doi.org/10.4310/cntp.2021.v15.n4.a2)
 
 ### Nonexceptional momenta preserve forest monomials
 
@@ -2020,6 +2151,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
 
+### Planar duals keep their periods
+
+**Remember:** Passing to the planar dual swaps tree edges with their complements.
+
+*True by definition.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A spanning tree connects all vertices without a cycle. Define the first Symanzik polynomial Ψ by summing the product of weights outside each spanning tree. For a logarithmically divergent graph, its projective period integrates 1/Ψ² over positive edge weights with one weight fixed at one. Here logarithmic divergence means that the edge count equals twice the number of independent cycles.
+
+**Problem.** A connected plane graph satisfying this count and having an absolutely convergent period has the same period as its plane dual. The dual has one vertex per face and one edge crossing each original edge.
+
+**How the definition helps.** The tree formula makes duality a change of integration variables. In our own proof, tree complements are exactly the dual spanning trees. Substituting reciprocal weights therefore gives the dual polynomial divided by the product of all weights. The change of volume cancels the square of that product in the integral. The comparison with the original momentum integral uses the projective parameter formula.
+
+**Paper or page:** [Invariant Differential Forms on Complexes of Graphs and Feynman Integrals](https://arxiv.org/abs/2101.04419v4). It says: “where the sum is over all spanning trees T ⊂ G.”
+
+**Sources:**
+
+- [Oliver Schnetz, Quantum periods: A census of φ⁴-transcendentals](https://doi.org/10.4310/cntp.2010.v4.n1.a1)
+- [Francis Brown, Invariant Differential Forms on Complexes of Graphs and Feynman Integrals](https://doi.org/10.3842/sigma.2021.103)
+
 ### Primitive graphs have convergent periods
 
 **Remember:** Remove the overall scale, but also forbid divergent subgraphs.
@@ -2037,6 +2187,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Claudia Rella, An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2)
+
+### Subgraph powers test convergence
+
+**Remember:** Subtract the whole-graph power only for subgraphs carrying all masses and momenta.
+
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** For an edge set S, add its propagator exponents, the powers of its denominator factors in the momentum integral. Subtract D/2 times its number of independent cycles, where D is the dimension, and call the result ω(S). If S contains all massive edges and one component contains all external momentum insertions, subtract ω(G) as well. Call the result the corrected power of S.
+
+**Problem.** Take a connected scalar diagram with positive real propagator exponents and Euclidean momenta. Assume no proper nonempty subset of nonzero incoming momenta sums to zero and the second Symanzik polynomial is nonzero. Its projective parameter integral converges if every nonempty proper edge set has positive corrected power.
+
+**How the definition helps.** The corrected power gives the exponent that tests convergence when a group of edge parameters approaches zero together. In our own explanation, order the parameters by size and rescale successive groups using ratios between zero and one. Each resulting endpoint integral has the form ∫₀¹ tʳ⁻¹ dt with r equal to a corrected power, up to bounded factors. Borinsky’s polynomial bounds and sector decomposition justify this reduction. Removing the single overall scale gives the projective integral tested here.
+
+**Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2), [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “A facet presentation of these polytopes is given by the supermodular functions”
+
+**Sources:**
+
+- [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://doi.org/10.4171/aihpd/158)
 
 ### Tree complements expose leading scaling
 
@@ -2056,6 +2224,62 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
 - [Spencer Bloch, Hélène Esnault and Dirk Kreimer, On Motives Associated to Graph Polynomials (2006)](https://doi.org/10.1007/s00220-006-0040-2)
+
+### Triangle cuts factor periods
+
+**Remember:** A separating triple becomes the shared triangle of the two factors.
+
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Complete a massless four-dimensional φ⁴ diagram by joining its four external ends at a new vertex. Call the completion primitive when a vertex deletion satisfies two edge counts. Its edge count equals twice its independent cycle count, and every nonempty proper edge subset has more edges than twice its independent cycle count. The period is the scale-free integral of a vertex deletion.
+
+**Problem.** Suppose removing three vertices disconnects a completed primitive graph. Its two factors each retain those vertices and restore the triangle between them. The original period equals the product of their periods.
+
+**How the definition helps.** Restoring the triangle identifies the two graphs whose integrals occur in the product. The cited theorem proves the decomposition and factorization. In our own explanation, fix the three common positions at zero, a unit vector, and infinity. The remaining variables then integrate independently on each side.
+
+**Paper or page:** [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “Its period is the product”
+
+**Sources:**
+
+- [Oliver Schnetz, Quantum periods: A census of φ⁴-transcendentals](https://doi.org/10.4310/cntp.2010.v4.n1.a1)
+- [Erik Panzer and Oliver Schnetz, The Galois coaction on φ⁴ periods](https://doi.org/10.4310/cntp.2017.v11.n3.a3)
+
+### Two-point momenta identify two vertices
+
+**Remember:** Only forests that separate the two external vertices carry momentum.
+
+*True by definition. Confidence: medium.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A spanning forest with two trees covers every vertex and has two connected components without cycles. For a massless diagram, define its second Symanzik polynomial by summing over these forests. Each term multiplies the weights outside the forest by the squared Euclidean norm of the total external momentum in one component.
+
+**Problem.** Let a connected massless diagram have external momenta p and −p at two distinct vertices and zero elsewhere. Identify these vertices. The original second polynomial equals ‖p‖² times the first Symanzik polynomial of the resulting graph.
+
+**How the definition helps.** The forest formula makes the two momentum insertions select precisely the trees of the identified graph. In our own proof, only separating forests have nonzero momentum factor when p is nonzero. Identifying the marked vertices gives a bijection from separating forests to spanning trees, preserving every omitted edge. The first polynomial sums the products of the omitted weights. Both sides vanish when p is zero. Deriving the forest formula from the momentum integral supplies the comparison with the original definition.
+
+**Paper or page:** [Invariant Differential Forms on Complexes of Graphs and Feynman Integrals](https://arxiv.org/abs/2101.04419v4). It says: “the sum is over all spanning trees T ⊂ G.”
+
+**Sources:**
+
+- [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://doi.org/10.4171/aihpd/158)
+
+### Weight bounds forbid a final letter
+
+**Remember:** A final letter is what remains when the coaction removes its prefix.
+
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 11M32. arXiv hep-th, math.NT. Level 4: research.
+
+**Definition.** A motivic period records algebraic data defining an integral as well as its value. The level-six f-alphabet represents such cyclotomic periods by weighted words and powers of 2πi. Cyclotomic periods here use repeated integrals at sixth roots of unity. The coaction, which records algebraic symmetries of periods, cuts these words into prefixes and suffixes.
+
+**Problem.** Consider a primitive massless φ⁴ period, the scale-free integral of a four-valent graph with no divergent proper subgraph. If its motivic period belongs to the level-six algebra, no word ends in the weight-two letter f₂⁶.
+
+**How the definition helps.** The alphabet expresses a symmetry restriction as a ban on one final letter. That letter represents the dilogarithm at a primitive sixth root, up to the chosen normalization and powers of 2πi. The small graphs theorem excludes this dilogarithm among the period’s conjugates, the components exposed by the coaction.
+
+**Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2), [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “In other words, f₂⁶ cannot appear as the right-most letter in the f-alphabet representation.”
+
+**Sources:**
+
+- [Francis Brown, Feynman amplitudes, coaction principle, and cosmic Galois group](https://doi.org/10.4310/cntp.2017.v11.n3.a1)
+- [Erik Panzer and Oliver Schnetz, The Galois coaction on φ⁴ periods](https://doi.org/10.4310/cntp.2017.v11.n3.a3)
 
 ### Causal embeddings preserve Hadamard kernels
 

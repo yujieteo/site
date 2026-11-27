@@ -2315,6 +2315,24 @@
 
 - [M. Richard Sayanagi, Power Series Rings over Zero-Dimensional Rings, arXiv:2510.07496 (2025)](https://arxiv.org/abs/2510.07496v1)
 
+### Verschiebung substitution is injective
+
+**Remember:** Substitution moves each coefficient to a distinct degree and loses none of them.
+
+*True by definition.* MSC 13F35 (Witt vectors and related rings), 19D50. arXiv math.KT. Level 4: research.
+
+**Definition.** The additive group of length-m big Witt vectors has a model using series with constant term one, modulo tᵐ⁺¹. Witt addition multiplies series. For positive integers m and n, the Verschiebung to length nm substitutes tⁿ for t.
+
+**Problem.** The Verschiebung is injective over every commutative ring. For a perfect field k of positive characteristic, the relative K-groups of k\[x\]/(xⁿ) for the ideal (x) vanish in positive even degrees. Perfect means that raising elements to the characteristic power is bijective.
+
+**How the definition helps.** Substitution preserves each input coefficient at a distinct degree within the longer truncation (our own). This proves injectivity directly in the series model, once it has been identified with Witt coordinates (our own). Hesselholt and Madsen’s exact sequence identifies each positive even relative K-group with such a kernel (our own).
+
+**nLab:** [ring of Witt vectors](https://ncatlab.org/nlab/show/ring+of+Witt+vectors). It says: “In components, a Witt vector is an infinite sequence of elements of a given commutative ring k.”
+
+**Sources:**
+
+- [Lars Hesselholt and Ib Madsen, Cyclic polytopes and the K-theory of truncated polynomial algebras](https://www.math.nagoya-u.ac.jp/~larsh/papers/007/polytope.pdf)
+
 ### For absolute-valued Huber rings, topological simplicity means the completion is a field
 
 **Remember:** A dense ideal contains elements close to one.

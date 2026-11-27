@@ -1931,6 +1931,24 @@
 
 - [P. Ghez, R. Lima, J. E. Roberts, W\*-categories, Pacific Journal of Mathematics 120 (1985) 79–109](https://doi.org/10.2140/pjm.1985.120.79)
 
+### Trace logarithms recover Mahler measure
+
+**Remember:** Fourier turns convolution into multiplication and the trace into a torus average.
+
+*True by definition.* MSC 46L10 (General theory of von Neumann algebras), 11R06. arXiv math.OA, math.NT. Level 4: research.
+
+**Definition.** For a complex matrix, the logarithm of its normalized absolute determinant averages the logarithms of its singular values. The Fuglede–Kadison determinant uses a normalized trace τ to extend this average to operators. Put \|T\| = √(T\* T), the positive square root. Define Δ(T) as the limit of exp(τ(log(\|T\| + εI))) as positive ε tends to zero.
+
+**Problem.** Let P be a nonzero Laurent polynomial, which allows negative integer exponents. Replace each variable by its coordinate shift on square-summable sequences on ℤⁿ to obtain T. For the trace given by the diagonal entry at the origin, Δ(T) equals exp(m(P)), where m(P) averages log\|P\| over unit circles.
+
+**How the definition helps.** In our own calculation, the trace definition becomes the uniform circle average after Fourier transformation. Each shift becomes multiplication by a circle coordinate, so \|T\| becomes multiplication by \|P\|. The trace then integrates log(\|P\| + ε) over the torus. Monotone convergence and integrability of log\|P\| justify the limit at zeros.
+
+**Wikipedia:** [Fuglede−Kadison determinant](https://en.wikipedia.org/wiki/Fuglede%E2%88%92Kadison_determinant). It says: “Then the Fuglede−Kadison determinant of X is defined as Δ(X) ≔ exp τ(log (X\*X)¹⁄²),”
+
+**Sources:**
+
+- [Deninger, Mahler measures and Fuglede-Kadison determinants](https://noah.nrw/ulbmshsnoah/download/pdf/4297304)
+
 ### Eigenstates make every spectral value of a self-adjoint element an eigenvalue
 
 **Remember:** Use states instead of vectors, and every spectral value becomes an eigenvalue.

@@ -4457,6 +4457,25 @@
 
 - [Peter Scholze, Lectures on condensed mathematics, 2019 (lecture notes, Lectures IX–XI)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
 
+### Flags determine their Waldhausen quotients
+
+**Remember:** A flag determines its quotient data up to unique compatible isomorphism.
+
+*True by definition.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+
+**Definition.** In Waldhausen’s S-construction, an n-step diagram records a chain of cofibrations from zero with its quotients. A cofibration is a chosen type of inclusion. Each quotient is the pushout that collapses an earlier object to zero.
+
+**Problem.** The functor from the groupoid of n-step Waldhausen diagrams to the groupoid of n-step cofibration flags is an equivalence. In both groupoids use only isomorphisms as maps.
+
+**How the definition helps.** Each quotient in the full diagram is a pushout, so the bare chain determines it up to unique compatible isomorphism. Here the pushout identifies the earlier object with zero. In our own proof, its universal property extends every isomorphism of chains uniquely to the full diagrams. This comparison holds for each fixed chain length. The full diagrams also record the quotients needed to remove the first step of a chain.
+
+**Paper or page:** [2-Segal maps associated to a category with cofibrations](https://arxiv.org/abs/2405.11561). It says: “The functor μₙ : iSₙ𝒞 → Mₙ𝒞 which sends A to A₀,₁ ↣ A₀,₂ ↣ ⋯ ↣ A₀,ₙ is an equivalence.”
+
+**Sources:**
+
+- [Friedhelm Waldhausen, Algebraic K-theory of spaces (1985)](https://doi.org/10.1007/BFb0074449)
+- [Tanner Nathan Carawan, 2-Segal maps associated to a category with cofibrations](https://arxiv.org/abs/2405.11561)
+
 ### K-theory is the universal additive invariant
 
 **Remember:** K-theory is what the universal additive invariant sees when the sphere probes it.
@@ -4474,6 +4493,43 @@
 **Sources:**
 
 - [Andrew Blumberg, David Gepner, Gonçalo Tabuada, A universal characterization of higher algebraic K-theory, Geom. Topol. 17 (2013) 733–838, arXiv:1001.2282](https://arxiv.org/abs/1001.2282)
+
+### Mapping cones turn arrows into K-theory objects
+
+**Remember:** A square counts as an equivalence when its cone map does.
+
+*Makes the theorem clean to state or prove.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+
+**Definition.** Use Schlichting’s exact categories with forms, which specify short exact sequences, a duality and quadratic form data. They also specify weak equivalences, the maps one treats as invertible. Assume a strong symmetric cone, Schlichting’s compatible choice of cone and path constructions for this duality. For arrows as objects, treat a commuting square as a weak equivalence precisely when it gives a weak equivalence on mapping cones.
+
+**Problem.** The cone functor induces a homotopy equivalence from the K-theory of this arrow category to the K-theory of the original category.
+
+**How the definition helps.** Testing squares on their cones makes the cone functor preserve the chosen weak equivalences by definition. A mapping cone records the homotopy quotient of the target by the given arrow. Schlichting proves that taking cones induces an equivalence on K-theory. Its inverse sends each object to the arrow from zero to that object.
+
+**Paper or page:** [Higher K-theory of forms II. From exact categories to chain complexes](https://arxiv.org/abs/2411.08746). It says: “induces an equivalence of K-theory spaces with inverse given by”
+
+**Sources:**
+
+- [Marco Schlichting, Higher K-theory of forms II. From exact categories to chain complexes](https://arxiv.org/abs/2411.08746)
+
+### Retaining gluing maps distinguishes Waldhausen flags
+
+**Remember:** Keep the shared-edge isomorphism when gluing quotient flags.
+
+*Rules out counterexamples.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+
+**Definition.** A three-step flag is a chain of subobjects 0 ⊂ A ⊂ B ⊂ X, with equality allowed. Waldhausen’s construction records the subobjects, their quotients and all compatible isomorphisms. To glue quotient diagrams, specify an isomorphism between their copies of the common object.
+
+**Problem.** In an abelian category, the inclusion A ⊂ X and the inclusion B/A ⊂ X/A determine the flag once their copies of X/A are identified. Their separate isomorphism classes can agree for different flags.
+
+**How the definition helps.** In our own proof, the matching isomorphism locates the subobject whose inverse image in X recovers B. For our own example, set R = ℤ/4ℤ, k = ℤ/2ℤ, X = R ⊕ k and A = 2R ⊕ 0. Then X/A is a two-dimensional vector space over k. Its two coordinate lines are isomorphic as subobjects after exchanging coordinates. Their inverse images are R ⊕ 0 and 2R ⊕ k. Only the first has an element of order four, so the flags differ.
+
+**Paper or page:** [2-Segal maps associated to a category with cofibrations](https://arxiv.org/abs/2405.11561). It says: “where the squares are pushouts and the right square is a pullback.”
+
+**Sources:**
+
+- [Friedhelm Waldhausen, Algebraic K-theory of spaces (1985)](https://doi.org/10.1007/BFb0074449)
+- [Tanner Nathan Carawan, 2-Segal maps associated to a category with cofibrations](https://arxiv.org/abs/2405.11561)
 
 ### Differential graded C∞-rings make the Poincaré lemma formal
 
