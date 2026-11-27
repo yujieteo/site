@@ -517,6 +517,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Flat differential classes are homotopy invariant
+
+**Remember:** Without curvature, smooth homotopies cannot change a differential class.
+
+*Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 53C08. arXiv math.AT, math.DG. Level 3: graduate.
+
+**Definition.** A differential cohomology class has a closed differential form called its curvature. The class is flat when this form vanishes.
+
+**Problem.** Smoothly homotopic maps give the same pullback on flat differential classes. They can give different pullbacks on classes with nonzero curvature.
+
+**How the definition helps.** The homotopy formula expresses the endpoint difference using the integral of curvature along the homotopy, which vanishes for flat classes (our own). In ordinary degree one, classes are smooth functions with values in ℝ/ℤ (our own). The function t ↦ t mod ℤ on ℝ distinguishes evaluation at 0 from evaluation at ½ (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “(i.e. flat cohomology) is a homotopy invariant functor.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
 ### Generalized cohomology drops only the dimension axiom
 
 **Remember:** Keep homotopy invariance, exactness and excision; let the point have any coefficients.
@@ -2634,6 +2653,134 @@
 
 - [Spencer Cattalani, Aleksey Zinger, Pseudocycles for Borel-Moore Homology, arXiv:2209.10036 (2022)](https://arxiv.org/abs/2209.10036)
 
+### Bordism holonomy forces integral periods
+
+**Remember:** On a closed bordism, the holonomy difference vanishes and the integral is an integer.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N22. arXiv math.AT. Level 4: research.
+
+**Definition.** A bordism joins structured manifolds as boundary pieces of a manifold one dimension higher. In the differential Anderson dual model, a cocycle pairs a closed form with an additive rule assigning values modulo integers to cycles. On each bordism, the rule evaluated on its boundary equals the integral determined by the form and the tangential structure, modulo integers.
+
+**Problem.** On closed manifolds, these integrals give an integer-valued homomorphism on the bordism group for the chosen tangential structure.
+
+**How the definition helps.** The boundary rule forces the integral on a closed manifold to vanish modulo integers because its boundary is empty (our own). Thus the model encodes integrality through boundary values instead of testing every period separately (our own). The Chern–Weil construction makes the integrand a closed form from a connection, so Stokes’ theorem gives bordism invariance (our own).
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270). It says: “induces a ℤ-valued homomorphism cw(ω) : Ω∗ᴳ(X, Y) → ℤ.”
+
+**Sources:**
+
+- [Yamashita and Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFT’s, I, Lemma 4.77](https://arxiv.org/abs/2106.09270)
+
+### Circle suspension preserves underlying theory
+
+**Remember:** Reduced circle evaluation shifts down once, and suspension shifts back up.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** For a sheaf of spectra F on manifolds, reduced circle evaluation takes data on S¹ × M together with a trivialization on the basepoint slice. Geometric suspension shifts this reduced spectrum up by one degree.
+
+**Problem.** Geometric suspension preserves the underlying cohomology theory of a differential refinement, obtained by forcing homotopic maps to act alike.
+
+**How the definition helps.** Removing the basepoint contribution leaves a loop in the underlying theory, and the degree shift cancels that loop (our own). Bunke, Nikolaus and Völkl prove that taking the invariant approximation commutes with reduced circle evaluation (our own).
+
+**nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Cofiber curvature gives homotopy formulas
+
+**Remember:** The difference of endpoint restrictions passes through curvature and lands in deformations.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns spectra to manifolds with gluing on open covers. Define curvature data by quotienting out the constant sheaf built from the value at a point, keeping homotopy information. Deformations form the fiber over zero of the map to the approximation that makes homotopic maps act alike.
+
+**Problem.** For data on M × \[0,1\], the difference of endpoint restrictions factors naturally through curvature data on the cylinder and then through deformations on M.
+
+**How the definition helps.** The endpoints agree up to homotopy on the constant part, so their difference factors through curvature (our own). They also agree after passage to the invariant approximation, so the result lifts to deformations (our own). Bunke, Nikolaus and Völkl construct compatible homotopies for these two steps in Theorem 3.2 (our own).
+
+**nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “every smooth spectrum sits in a hexagonal differential cohomology diagram”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Curvature and topology reconstruct smooth spectra
+
+**Remember:** A smooth spectrum glues its curvature data to its underlying topology.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns spectra to manifolds and allows compatible local data to glue. Its flat part is the constant sheaf built from its value at a point. Its curvature target is the cofiber, the quotient by that flat part that keeps homotopy information.
+
+**Problem.** A smooth spectrum can be reconstructed from its curvature target and its homotopy-invariant approximation. Reconstruction matches their images in the homotopy-invariant approximation of the curvature target, including a path witnessing each match.
+
+**How the definition helps.** Quotienting by the flat part gives both comparison maps the same fiber, which makes their square a homotopy pullback (our own). The approximation forces homotopic maps to act alike and preserves fiber sequences (our own). It therefore leaves the already invariant flat part unchanged (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “where both rows are homotopy fiber sequences.”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Filtering fixes curvature along paths
+
+**Remember:** With no simplex direction, closed curvature cannot change along a simplex.
+
+*Rules out counterexamples. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** The differential function complex describes families of cocycles on a manifold M with a simplex as parameter space. At filtration zero, the closed curvature form vanishes whenever one input points along the simplex.
+
+**Problem.** Curvature is constant on each connected component of the filtration-zero complex. In the unrestricted complex, a path can join distinct curvatures.
+
+**How the definition helps.** The restriction removes all parameter differentials, so closedness forces the remaining coefficients to be constant along the simplex (our own). Without the restriction, the exact form d(tf) on M × \[0,1\] joins zero to df for any nonconstant smooth function f (our own). The function tf modulo integers gives the corresponding family of degree-one differential classes (our own).
+
+**nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “the sub-simplicial set of differential forms that vanish when evaluated on more than s vector fields tangent to the simplex;”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Hodge pullbacks give generalized Jacobians
+
+**Remember:** Matching determines the image, and paths account for the kernel one degree lower.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** Take a connective spectrum E with finitely generated homotopy groups and only even homotopy groups over ℚ. Here connective means its negative homotopy groups vanish. Its weight-p Hodge pullback matches E-classes after weighted complexification with forms of holomorphic degree at least p+j for each coefficient degree 2j.
+
+**Problem.** On a compact Kähler manifold, degree-2p Hodge-filtered classes map onto precisely the E-classes whose complex images belong to this filtration. The kernel is degree-(2p−1) complexified E-cohomology modulo the sum of the filtered subgroup and the image of E-cohomology.
+
+**How the definition helps.** The matching condition gives the image, while the freedom to choose a matching path gives the kernel one degree lower (our own). The pullback exact sequence computes this quotient (our own). Hodge decomposition for compact Kähler manifolds identifies filtered cohomology with a subgroup of complex cohomology (our own).
+
+**nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “the Hodge-filtered variant pairs instead with the Hodge filtered E• ⊗ ℂ-valued Dolbeault complexes”
+
+**Sources:**
+
+- [Hopkins and Quick, Hodge filtered complex bordism, §4](https://doi.org/10.1112/jtopol/jtu021)
+
+### Hodge pullbacks recover Deligne cohomology
+
+**Remember:** Quotienting out the retained forms leaves the Deligne complex.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** On a complex manifold, the weight-p Hodge pullback matches the lattice (2πi)ᵖℤ with holomorphic forms of degrees at least p. It compares both inside the full holomorphic form complex and keeps the matching homotopies.
+
+**Problem.** For positive integers p, this pullback computes analytic Deligne cohomology in every degree. Its usual defining complex starts with the lattice and continues through holomorphic forms of degrees zero to p−1.
+
+**How the definition helps.** Taking the quotient by the retained forms leaves exactly the degrees below p (our own). The pullback is then the homotopy fiber of the map from the lattice to that quotient, giving the usual Deligne complex (our own). The holomorphic de Rham theorem identifies the full form complex with complex coefficients (our own).
+
+**nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “reproduces the Deligne complex in its original form”
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “An alternative definition of this complex is given as the homotopy limit”
+
+**Sources:**
+
+- [Hopkins and Quick, Hodge filtered complex bordism, §4](https://doi.org/10.1112/jtopol/jtu021)
+
 ### In a cohesive ∞-topos, every differential cohomology theory has the hexagon
 
 **Remember:** Cohesion builds the hexagon in for you.
@@ -2653,6 +2800,299 @@
 - [Ulrich Bunke, Thomas Nikolaus, Michael Völkl, Differential cohomology theories as sheaves of spectra, J. Homotopy Relat. Struct. 11 (2016) 1–66, arXiv:1311.3188](https://arxiv.org/abs/1311.3188)
 - [James Simons, Dennis Sullivan, Axiomatic Characterization of Ordinary Differential Cohomology, J. Topology 1 (2008) 45–56, arXiv:math/0701077](https://arxiv.org/abs/math/0701077)
 - [M. J. Hopkins, I. M. Singer, Quadratic functions in geometry, topology, and M-theory, J. Differential Geom. 70 (2005) 329–452, arXiv:math/0211216](https://arxiv.org/abs/math/0211216)
+
+### Looping lowers both filtration indices
+
+**Remember:** Looping lowers the cohomology degree and the allowed simplex degree together.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A differential function complex describes families of cocycles with a simplex as parameter space. Filtration s allows a curvature form to use at most s directions along the simplex. Take compatible real cocycles on an Ω-spectrum, a sequence of spaces in which each space represents based loops in the next.
+
+**Problem.** For n ≥ 1 and s ≥ 0, the degree-(n−1) complex at filtration s is weakly equivalent to loops on degree n at filtration s+1.
+
+**How the definition helps.** A loop adds one parameter direction, which the extra filtration step allows (our own). Hopkins and Singer prove that the comparison induces isomorphisms on all homotopy groups by analyzing the filtered forms (our own).
+
+**nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “identifying the loop space object (at the canonical base point) of the differential function complex of Eₙ at filtration level s+1 with that differential function complex of Eₙ₋₁ at filtration level s.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Matching classes and curvature lift
+
+**Remember:** Agreement in real cohomology guarantees a path between representatives.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** For a generalized cohomology theory E, a Hopkins–Singer cocycle records a representative of an E-class and a closed differential form. It also records a path joining their images in the space representing real cohomology with the real coefficients of E.
+
+**Problem.** On a smooth manifold, an E-class and a closed form lift together to a differential E-class whenever their real classes agree.
+
+**How the definition helps.** The definition asks for a path, and equality of real classes puts the two representatives in the same path component (our own). In the cochain description this amounts to finding a real cochain whose coboundary is their difference (our own). The de Rham comparison sends the form to its real representative by integration (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “A standard definition of differential cohomology is in terms of a homotopy pullback of a generalized (Eilenberg-Steenrod) cohomology theory with the complex of differential forms over real cohomology:”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Paths retain flat information
+
+**Remember:** Two zero classes can still be joined by a nontrivial path.
+
+*True by definition. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** The Hopkins–Singer construction pairs a representative of a generalized cohomology class with a closed form. Its homotopy pullback also records a path between their real representatives, which a pullback of groups discards.
+
+**Problem.** Classes with both entries zero form a quotient of degree-(n−1) cohomology with the graded real coefficients of E. The denominator is the real image of E-cohomology in degree n−1.
+
+**How the definition helps.** With both entries zero, a comparison path becomes a loop based at zero (our own). Such loops represent real cohomology one degree lower (our own). The pullback exact sequence identifies loops differing by the real image of an E-class (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “The characterization/construction of differential cohomology via homotopy fiber products (of mapping spectra with differential form data)”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Purity preserves curvature data
+
+**Remember:** Only data that vanish on a point can serve as pure curvature.
+
+*Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A sheaf of spectra assigns spectra to manifolds with gluing on open covers. It is pure if its value at a point is zero, and its invariant approximation forces homotopic maps to act alike. A homotopy pullback matches two inputs over a common target and remembers the matching paths.
+
+**Problem.** The homotopy pullback of a pure sheaf P and a constant sheaf over the invariant approximation of P defines a differential theory. Its curvature data recover P.
+
+**How the definition helps.** Removing the constant part preserves this pullback, kills both invariant entries and leaves the pure input P intact (our own). Proposition 3.5 identifies the resulting quotient with the curvature data (our own). If P is nonzero and constant, matching it against zero instead gives zero curvature data (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “♭-anti-modal types are called "pure”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Smooth spectra give Mayer–Vietoris sequences
+
+**Remember:** Glue the spectra first, then take homotopy groups.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N30. arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns each manifold a spectrum, an object representing groups in successive degrees. Its sheaf condition reconstructs global data from local data together with homotopies matching them on overlaps.
+
+**Problem.** For a cover by two open sets, the homotopy groups form a long exact sequence relating the manifold, the two sets and their intersection.
+
+**How the definition helps.** The sheaf condition already expresses global sections as pairs of local sections with a path matching their restrictions (our own). For spectra, this identifies global sections with the fiber of the difference of restrictions (our own). Taking homotopy groups gives exactness in every degree (our own). A model defined by geometric cocycles must first prove the gluing condition (our own).
+
+**nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “A sheaf of spectra on the site of all smooth manifolds may be thought of as a spectrum equipped with generalized smooth structure,”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### The curvature fiber gives flat coefficients
+
+**Remember:** For flat classes, take the fiber of realification.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** In degree n, the Hopkins–Singer construction matches E-cohomology with real differential forms and discards form degrees below n, counting coefficient degrees. Curvature sends a differential class to its closed form. A flat class has zero curvature.
+
+**Problem.** On a smooth manifold, flat differential E-classes of degree n form the E-cohomology group with ℝ/ℤ coefficients in degree n−1.
+
+**How the definition helps.** Setting curvature to zero in the defining pullback leaves the fiber of the map from E to its real version (our own). This fiber records a class and a path from its real image to zero (our own). The cutoff leaves no degree-(n−1) form classes, so this fiber computes the kernel (our own). In spectra, the fiber is the degree shift of the quotient defining ℝ/ℤ coefficients (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “Moreover Ê(flat)⁎ = E ℝ/ℤ•⁻¹.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### The pullback lifts circle integration
+
+**Remember:** Integrate both inputs and carry their comparison along.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A Hopkins–Singer cocycle records a topological cocycle, a closed form and a path matching their real representatives. In degree n the construction discards forms below total degree n.
+
+**Problem.** Integrating around the oriented circle gives a natural map from degree n on S¹ × M to degree n−1 on M. It respects both curvature and the underlying topological class.
+
+**How the definition helps.** Matching paths let circle integration on forms and topological suspension define a single operation on differential classes (our own). The comparison must identify the two operations on real representatives up to a specified homotopy, and integration lowers the form cutoff by one (our own).
+
+**nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “General discussion of fiber integration for Hopkins-Singer coefficients is in (HopkinsSinger, section 4.10) and for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Bordism corrections preserve curvature
+
+**Remember:** When a cycle bounds, its boundary current already has a primitive.
+
+*True by definition. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** In smooth complex cobordism, a cycle map carries a connection on its stable complex normal bundle. Pushing its characteristic form forward gives a current T, a form with distribution coefficients. A corrected cycle includes a current α such that its curvature T − dα is smooth.
+
+**Problem.** Curvature depends only on the smooth complex cobordism class of a corrected cycle.
+
+**How the definition helps.** The geometric boundary and its correcting current contribute opposite terms to curvature (our own). A cycle map alone gives a current that can be singular (our own). Stokes’ theorem identifies the boundary current with the derivative of the bordism current (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
+
+### Bordism pushforward uses pullback cycles
+
+**Remember:** Send a character forward by pulling its test cycles back.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A bordism character assigns values modulo integers to closed manifolds mapped into a space. Across a bordism, the change equals the integral of its curvature with the prescribed characteristic forms. Pushing a character forward evaluates it on inverse images of test manifolds and integrates its curvature along the fibers with those weights.
+
+**Problem.** For a proper submersion with compatible geometric orientation, this construction lifts the topological pushforward on the Anderson dual of bordism. This dual theory pairs cohomology classes with bordism cycles.
+
+**How the definition helps.** The inverse image of a test manifold is the same manifold after forgetting the connections (our own). The proof checks the boundary rule and identifies this geometric operation with the topological pushforward (our own).
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “refines the topological pushforward map”
+
+**Sources:**
+
+- [Mayuko Yamashita and Kazuya Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3)
+
+### Bott orientations give holomorphic pushforwards
+
+**Remember:** The holomorphic normal data supply the orientation without a choice.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** For a holomorphic map, its virtual normal bundle is the pulled-back target tangent bundle minus the source tangent bundle. Its Bott orientation uses connections whose antiholomorphic parts give the prescribed holomorphic structures. The orientation identifies choices that differ by the allowed filtered and exact form corrections.
+
+**Problem.** A proper holomorphic map between complex manifolds canonically pushes forward Hodge-filtered complex cobordism classes. If d is target dimension minus source dimension over ℂ, the degree increases by 2d and the filtration index by d.
+
+**How the definition helps.** The holomorphic bundles supply the orientation required for the pushforward (our own). The proof shows that changing compatible connections preserves the orientation and uses distribution-valued forms to treat embeddings as well as submersions (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “On Umkehr maps in this context:”
+
+**Sources:**
+
+- [Knut Bjarte Haus and Gereon Quick, Geometric pushforward in Hodge filtered complex cobordism and secondary invariants (2024)](https://gereonq.folk.ntnu.no/GeometricAJ_Documenta.pdf)
+
+### Eta invariants fit one anomaly character
+
+**Remember:** The eta phase and its local index form belong to one class.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A differential spin-c bordism character pairs a curvature form with a phase on closed manifolds carrying spin-c geometry, the structure defining their complex Dirac operators. Across a bordism, a manifold joining two such backgrounds, the phase change equals the curvature integral modulo integers.
+
+**Problem.** For a Hermitian bundle with unitary connection, the reduced eta phase and its local index form represent the spin-c index image in differential Anderson duality.
+
+**How the definition helps.** The character lets one specify that image by giving its form and its values on closed backgrounds. The form is the degree 2k part of the Chern character times the Todd form, two polynomials in the bundle and tangent curvatures. The phase on a (2k−1)-manifold measures the twisted Dirac operator’s spectral asymmetry, including half its kernel dimension, modulo integers. In our own explanation, the boundary index theorem gives compatibility, while Proposition 3.52 identifies the resulting class.
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2). It says: “((\\mathrm{Ch}(\\nabla ^W)\\otimes \\mathrm{Todd})\|<sub>2k</sub>, \\bar{\\eta }<sub>\\nabla ^W</sub>)= \\Phi \_{\\mathrm{ABS}}(\[W, h<sup>E</sup>, \\nabla ^E, 0\]\\otimes \\gamma \_K).”
+
+**Sources:**
+
+- [Mayuko Yamashita, Differential models for the Anderson dual to bordism theories and invertible QFTs, II](https://arxiv.org/abs/2110.14828v2)
+
+### Eta invariants realize spinᶜ orientations
+
+**Remember:** A Dirac spectral invariant supplies the evaluation part of the orientation.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15, 58J20. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A spinᶜ structure lifts oriented frames to a group combining spin rotations and circle phases. In degree 2k, a differential bordism character assigns values modulo integers to closed spinᶜ manifolds of dimension 2k−1 mapped into the base. On a boundary it integrates a curvature form using the spinᶜ connection.
+
+**Problem.** For a Hermitian bundle with compatible connection, the differential Atiyah–Bott–Shapiro pairing uses the total degree-2k part of the Chern character times the Todd series. Its evaluation is the twisted Dirac operator’s reduced eta invariant, a measure of spectral asymmetry that includes the kernel contribution.
+
+**How the definition helps.** The character describes the pairing by one curvature formula and one rule for evaluating cycles (our own). The index theorem for manifolds with boundary relates these formulas modulo integers (our own). Identifying the resulting character with the pairing requires the differential orientation theorem (our own).
+
+**Wikipedia:** [Atiyah–Bott–Shapiro orientation](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott%E2%80%93Shapiro_orientation). It says: “These represent the Â genus and the Todd genus.”
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2). It says: “(Ch(∇ᵂ) ⊗ Todd)\|₂ₖ”
+
+**Sources:**
+
+- [Mayuko Yamashita, Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2)
+
+### Flat anomaly characters give the extension group
+
+**Remember:** A topologically nontrivial flat phase does not lift to a real character.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Fix a tangential structure, meaning a chosen type of structure on tangent bundles. Let B be the group of closed (n−1)-dimensional backgrounds modulo boundaries with that structure. A flat character assigns additive values in ℝ/ℤ to B.
+
+**Problem.** Flat characters give a subgroup of the degree n topological Anderson dual naturally isomorphic to Ext¹(B, ℤ). This group classifies abelian extensions of B by ℤ.
+
+**How the definition helps.** The character model identifies the kernel of the map from flat characters to topological classes with phases that lift to real characters. In our own derivation, the coefficient sequence ℤ → ℝ → ℝ/ℤ identifies the quotient with Ext¹ because ℝ is divisible. Comparing the character model with the spectrum definition of Anderson duality takes a separate theorem.
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “\\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R})\\to \\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R}/\\mathbb {Z}) \\xrightarrow {p} (I\\Omega ^G\_{\\mathrm{dR}})<sup>n</sup>(X, Y)”
+
+**Sources:**
+
+- [Mayuko Yamashita and Kazuya Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFTs, I](https://arxiv.org/abs/2106.09270v3)
+
+### Gerbe isomorphisms transport spinᶜ bordism
+
+**Remember:** Change the twist by tensoring the cycle’s module.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe describes a twist by local line bundles and rules for multiplying them on overlaps. A twisted spinᶜ cycle uses local spinor bundles that glue according to these rules. Their endomorphisms carry the prescribed tangent Clifford action, which encodes the metric, with its connection.
+
+**Problem.** A connection-preserving stable isomorphism of gerbes gives an isomorphism between their differential spinᶜ bordism groups. It preserves the maps relating cycles to forms and underlying bordism classes.
+
+**How the definition helps.** The line bundle describing the change of twist acts directly on the local spinors (our own). Tensoring with its inverse changes the twist while preserving endomorphisms. Tensoring back reverses the operation. The proof checks that the new local bundles glue and their characteristic forms agree.
+
+**Paper or page:** [Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map](https://arxiv.org/abs/2510.27286v1). It says: “If (K, ∇ᴷ) is a differential stable isomorphism of bundle gerbes”
+
+**Sources:**
+
+- [Fei Han and Yuanchu Li, Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map](https://arxiv.org/abs/2510.27286v1)
+- [Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map, Proposition 4.7](https://bpb-us-w2.wpmucdn.com/blog.nus.edu.sg/dist/4/12585/files/2025/11/2510.27286v1.pdf)
+
+### Hodge cobordism gives Abel–Jacobi invariants
+
+**Remember:** A vanished topological class can still leave a comparison class.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14C30. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Hodge-filtered complex cobordism records a topological cobordism class, a differential form and a comparison between their complex cohomology classes. In coefficient degree 2j, filtration p requires at least p + j holomorphic differentials in each term of the form.
+
+**Problem.** On a smooth projective complex variety, a codimension-p algebraic cobordism class that vanishes in topological complex cobordism has an Abel–Jacobi invariant. Its target is complexified cobordism in degree 2p−1 modulo the integral image and the shifted filtration p.
+
+**How the definition helps.** The comparison retains a class in the quotient even when the topological class vanishes (our own). The proof constructs the filtered cycle map from algebraic cobordism and identifies its topologically trivial values with elements of this quotient (our own).
+
+**nLab:** [Center for Quantum and Topological Systems](https://ncatlab.org/nlab/show/Center+for+Quantum+and+Topological+Systems). It says: “This allows us to give a concrete description of an Abel-Jacobi type secondary invariant for topologically trivial cobordism cycles.”
+
+**Sources:**
+
+- [Gereon Quick, An Abel-Jacobi invariant for cobordant cycles (2016)](https://gereonq.folk.ntnu.no/AbelJacobi_Documenta.pdf)
+- [Michael J. Hopkins and Gereon Quick, Hodge filtered complex bordism (2015)](https://doi.org/10.1112/jtopol/jtu021)
+
+### Landweber base change preserves differential exactness
+
+**Remember:** Tensor the smooth theory and its structure maps together.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Let R be a graded algebra over the coefficient ring of complex cobordism. Landweber exactness means that tensoring with R preserves exact sequences of modules carrying the standard cobordism coaction. This coaction records how cobordism operations act.
+
+**Problem.** On compact smooth manifolds, tensoring smooth complex cobordism with R gives a multiplicative differential extension of the corresponding cohomology theory when R is Landweber exact.
+
+**How the definition helps.** One change of coefficients transports both geometric classes and their differential forms (our own). The proof uses Landweber exactness on the underlying cobordism groups to preserve the differential extension sequence (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “By tensoring with a Landweber exact ring, this induces various other differential cohomology theories, such as differential elliptic cohomology.”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
 
 ### Landweber exact vₙ-periodic theories all have the Bousfield class of E(n)
 
@@ -2746,6 +3186,24 @@
 **Sources:**
 
 - [P. G. Goerss, M. J. Hopkins, Moduli spaces of commutative ring spectra, in Structured Ring Spectra, Cambridge University Press (2004)](https://doi.org/10.1017/cbo9780511529955.009)
+
+### Transversality allows correction current pullback
+
+**Remember:** Keep singular directions away from the pullback map’s normal directions.
+
+*Rules out counterexamples. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77, 58A25. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A smooth cobordism cycle includes a map and a correcting current, a differential form with distribution coefficients. Choose the current so its singular directions annihilate the derivative of the cycle map at some point over their base point. These singular directions form its wavefront set.
+
+**Problem.** Every smooth map transverse to the cycle map can pull back the chosen correcting current.
+
+**How the definition helps.** Transversality keeps singular directions away from covectors that annihilate the derivative of the pullback map (our own). The distribution pullback theorem then applies (our own). A step function at its jump illustrates why arbitrary currents lack a canonical restriction (our own). The paper constructs the required representative by changing the current by an exact current.
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
 
 ### Ephemeral modules are exactly those at interleaving distance zero
 

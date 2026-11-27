@@ -2745,6 +2745,339 @@
 - [Timothy Killingback, World-sheet anomalies and loop geometry, Nuclear Physics B 288 (1987) 578–588](https://doi.org/10.1016/0550-3213(87)90229-X)
 - [Hisham Sati, Urs Schreiber, Jim Stasheff, Twisted differential String and Fivebrane structures, Comm. Math. Phys. 315 (2012), arXiv:0910.4001](https://arxiv.org/abs/0910.4001)
 
+### Fusion recovers string structures from loops
+
+**Remember:** Fusion remembers how loops were cut into paths.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A loop spin structure lifts the bundle of spin frames along loops through a central circle extension of the loop group. A fusion structure multiplies the circle fibers for paired frame paths with common endpoints, cancelling their shared path. This multiplication is smooth, associative and compatible with the lifted group action.
+
+**Problem.** Let M be a spin manifold of dimension three or at least five. Its free loop space admits a fusion spin structure exactly when M admits a string structure, a trivialization of half its first Pontryagin class.
+
+**How the definition helps.** Fusion supplies the path gluing needed to reconstruct the string obstruction from loops (our own). Without fusion, even a spin bundle with nonzero half-Pontryagin class can have a spin loop bundle. Waldorf proves the reconstruction theorem.
+
+**nLab:** [From String structures to Spin structures on loop spaces](https://ncatlab.org/nlab/show/From+String+structures+to+Spin+structures+on+loop+spaces). It says: “what Waldorf calls a fusion extension of ℒSpin.”
+
+**Sources:**
+
+- [Konrad Waldorf, Spin structures on loop spaces that characterize string manifolds (2016)](https://msp.org/agt/2016/16-2/agt-v16-n2-p02-s.pdf)
+
+### String trivializations integrate Chern–Simons holonomy
+
+**Remember:** Integrate the global connection form to compute holonomy.
+
+*True by definition. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A spin connection determines a higher circle bundle representing the differential class of half the first Pontryagin class. A geometric string structure identifies this bundle, with its connection, with the trivial bundle carrying a global 3-form H. The differential class assigns a value modulo integers to each closed integral 3-cycle.
+
+**Problem.** On every smooth integral 3-cycle, the differential half-Pontryagin class evaluates to the integral of H modulo integers.
+
+**How the definition helps.** In the chosen trivialization, integration of H gives the value on the cycle directly (our own). A purely topological trivialization supplies no such connection form (our own). Comparing higher circle bundles with differential characters identifies this value with the original holonomy (our own).
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “a choice of equivalence λ of the Chern-Simons circle 3-bundle with connection”
+
+**Sources:**
+
+- [Konrad Waldorf, String connections and Chern-Simons theory (2013)](https://doi.org/10.1090/S0002-9947-2013-05816-3)
+
+### Inertia makes holonomy flat
+
+**Remember:** A constant base loop contributes no tangent to the curvature integral.
+
+*Makes the theorem clean to state or prove.* MSC 57R18 (Topology and geometry of orbifolds), 81T30. arXiv math.DG, hep-th. Level 4: research.
+
+**Definition.** A gerbe is a geometric representative of a degree-three class. Integrating a gerbe with connection around each loop gives a holonomy line with connection on loop space. The inertia orbifold keeps loops that stay at one point in a local chart and may close by a symmetry.
+
+**Problem.** The holonomy line of an orbifold gerbe has flat connection on the inertia orbifold, even when the gerbe has nonzero curvature.
+
+**How the definition helps.** On these loops the circle tangent maps to zero, so integrating the gerbe curvature around the circle gives zero (our own). This uses the curvature formula for the holonomy line constructed by Lupercio and Uribe (our own). The closing symmetry can still act on the flat line (our own).
+
+**nLab:** [inner local system](https://ncatlab.org/nlab/show/inner+local+system). It says: “is a family of local systems (in fact flat connections with coefficients in U(1)) on loci with non-trivial automorphisms”
+
+**Sources:**
+
+- [Ernesto Lupercio and Bernardo Uribe, Holonomy for gerbes over orbifolds (2006), §5](https://doi.org/10.1016/j.geomphys.2005.08.006)
+- [Ernesto Lupercio and Bernardo Uribe, An introduction to gerbes on orbifolds (2004), §§3–4](https://doi.org/10.5802/ambp.190)
+
+### Angular forms compute secondary Euler numbers
+
+**Remember:** Lift the fundamental cycle and integrate the angular form.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Use the canonical angular form determined by the metric connection on an oriented even-rank bundle. It integrates to one on each oriented unit sphere and its derivative is the pulled-back Euler form in the convention used here.
+
+**Problem.** For a rank-2n bundle over a closed oriented (2n−1)-manifold, the differential Euler number equals the angular form integrated along any unit section, modulo integers.
+
+**How the definition helps.** A section lifts the fundamental cycle exactly, so the sphere-bundle formula for the Euler character needs no correction chain. Our own explanation replaces the universal character with this lift formula. Cheeger and Simons prove agreement and show that changing the lift changes the integral by an integer.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed, and now itself represents a cohomology class, in one degree lower.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §3](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Antipodes force flat Euler two-torsion
+
+**Remember:** Antipodes negate the fiber form without changing the base cycle.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat oriented Euclidean bundle, extend the normalized volume form of its unit spheres by zero on horizontal directions. Define the flat Euler class by integrating this form modulo integers on homology classes lifting cycles from the base.
+
+**Problem.** For every flat oriented Euclidean bundle of odd rank at least three, twice the flat Euler class is zero.
+
+**How the definition helps.** The antipodal map negates the sphere form while preserving the projected cycle. Our own summary uses the sphere integral in place of a calculation with universal characteristic classes. The homology sequence makes the value independent of the lift, so it equals its negative.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed, and now itself represents a cohomology class, in one degree lower.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 8.12](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Bott characters retain normal torsion
+
+**Remember:** Zero curvature leaves room for torsion in the integral class.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A flat differential character assigns values modulo integers to homology classes. Its integral characteristic class is, up to sign, the coboundary of a real lift of those values.
+
+**Problem.** A smooth codimension-two foliation can have a normal plane bundle whose squared first Pontryagin class is nonzero integrally, although its adapted curvature form vanishes.
+
+**How the definition helps.** The flat character retains torsion through the coboundary of its real lift. Our own example takes a flat complex line with generating order-three holonomy over the standard nine-dimensional lens space with fundamental group of order three. Its horizontal leaves have that line as their normal bundle along the zero section. There the squared Pontryagin class equals the fourth power of the first Chern class, a generator of the integral degree-eight cohomology group ℤ/3.
+
+**Paper or page:** [Characteristic classes for flat Diff(M)-foliations](https://arxiv.org/abs/2311.09160). It says: “is injective for all ℓ ≥ 0.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 7.4 and Corollary 7.5](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+- [Steven Hurder, Characteristic classes for flat Diff(M)-foliations](https://arxiv.org/abs/2311.09160)
+
+### Determinants give first flat Chern classes
+
+**Remember:** Take the determinant before taking the logarithm.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat complex bundle, define its first differential Chern class using the determinant line, the top exterior power of the bundle. On that line the class measures the logarithm of parallel transport around loops, divided by 2πi, modulo integers.
+
+**Problem.** The first differential Chern class on a loop equals the logarithm of the determinant of its transport matrix, divided by 2πi, modulo integers.
+
+**How the definition helps.** Transport on the top exterior power acts by the determinant. Our own explanation replaces evaluation of the universal differential class with transport on a line. Proposition 4.4 identifies these descriptions with the stated sign.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “\\widehat{c}<sub>\\rho ,1</sub>(\\bar{\\nu })=\\widehat{c}<sub>\\det (\\rho ),1</sub>(\\bar{\\nu })=\\frac{1}{2\\pi i}\\log (\\det (\\rho )\_{\\mathrm{Ab}}(\\bar{\\nu }))”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §4 and §8](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### Differential Euler classes multiply
+
+**Remember:** Multiply the Euler forms and the integral classes together.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Euler class assigns values modulo integers to cycles of dimension one below the rank of an oriented Euclidean bundle with metric connection. It is the unique natural refinement with Euler curvature form and integral Euler class.
+
+**Problem.** For two such bundles of positive even rank, the differential Euler class of their oriented direct sum with the sum connection equals the product.
+
+**How the definition helps.** Natural uniqueness reduces the product formula to checking its curvature and integral class. Both multiply under direct sums. Our own summary uses the universal pair of bundles to apply uniqueness, avoiding a calculation on individual cycles.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “the Cheeger-Simons homomorphism refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 3.6](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Differential normal classes bound conformal immersions
+
+**Remember:** An immersion replaces the inverse tangent class with a normal class.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Form the total differential Chern class of the complexified tangent bundle using the metric connection with zero torsion. Invert this sum in the ring of differential characters. Its degree-4i component, multiplied by (−1)ⁱ, is the inverse differential Pontryagin class of index i.
+
+**Problem.** If a Riemannian manifold admits a conformal immersion into Euclidean space of codimension k, its inverse differential Pontryagin classes vanish for 2i &gt; k.
+
+**How the definition helps.** Inversion expresses the obstruction using only the tangent bundle. For the induced metric, Cheeger and Simons identify the inverse class with the corresponding normal class. The complexified normal bundle has rank k, so its Chern classes above index k vanish. Our own summary then uses conformal invariance to recover the given metric.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “Using refined Chern-Weil theory the notions of curvature characteristic forms and their Chern-Simons forms are unified into the notion of cocycles in ordinary differential cohomology.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 6.2 and §5](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Exact transgression preserves differential Chern classes
+
+**Remember:** Exact Chern character transgression leaves all differential Chern classes unchanged.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A structured Hermitian bundle identifies unitary connections when their Chern character transgression is exact. This odd form integrates the Chern character curvature along a path between the connections.
+
+**Problem.** Over a compact smooth manifold, each differential Chern class depends only on the structured Hermitian bundle. It extends to formal differences of such bundles in differential K-theory.
+
+**How the definition helps.** The equivalence relation kills exactly the change measured by the Chern character transgression. Our own summary uses the polynomial relations between Chern forms and Chern character forms to obtain exact transgressions for each Chern class. The connection-change formula gives equality, and Ho uses the direct sum formula to pass to formal differences.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “two connections on a vector bundle are taken to be the same representative of a differential K-cocycle if they are related by a concordance such that the corresponding Chern-Simons form is exact.”
+
+**Sources:**
+
+- [Man-Ho Ho, On differential characteristic classes (2015), §3.2](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/40022D852E2A3F395D25C626125F268C/S1446788714000627a.pdf/on_differential_characteristic_classes.pdf)
+
+### Flat determinants detect trivial bundles
+
+**Remember:** No rational first cohomology means the determinant cannot hide.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The first secondary Chern class of a flat complex bundle measures determinant transport around loops by its logarithm divided by 2πi, modulo integers. The coboundary of a complex lift recovers the integral first Chern class up to sign.
+
+**Problem.** On a closed oriented rational homology three-sphere, a flat complex bundle is topologically trivial exactly when every loop has determinant transport one. Here the base has the rational homology of the three-sphere.
+
+**How the definition helps.** Vanishing first complex cohomology makes the coboundary map injective, so determinant transport detects the integral first Chern class. That class and the rank classify complex bundles in dimension three. Our own counterexample on S¹ × S² gives a trivial line nontrivial transport around the circle.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “The representation ρ is topologically trivial if and only if cᵨ,₁ = 0, if and only if ĉᵨ,₁ = 0.”
+
+**Sources:**
+
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### Godbillon–Vey numbers obstruct foliated cobordism
+
+**Remember:** Integrate the secondary form on the boundary of the cobordism.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A cooriented codimension-one foliation has tangent planes given by the kernel of a global one-form α without zeros. Choose β with dα = β ∧ α. The Godbillon–Vey number on a closed oriented three-manifold is the integral of β ∧ dβ.
+
+**Problem.** Thurston constructed foliations of the three-sphere with every real Godbillon–Vey number. Different numbers rule out a cooriented foliated cobordism, an oriented interpolating manifold whose foliation restricts to the two given foliations.
+
+**How the definition helps.** The number integrates a closed form that extends across any such cobordism. Stokes’ theorem gives equal boundary integrals with the two ends given their original orientations. Our own summary uses independence of α and β for the invariant and Thurston’s construction for the range.
+
+**Wikipedia:** [William Thurston](https://en.wikipedia.org/wiki/William_Thurston). It says: “whose Godbillon–Vey invariants (after Claude Godbillon and Jacques Vey) take every real value.”
+
+**Sources:**
+
+- [William Thurston, Noncobordant foliations of S³ (1972)](https://doi.org/10.1090/S0002-9904-1972-12975-6)
+
+### Integral lifts distinguish identical curvatures
+
+**Remember:** Curvature cannot see which torsion class you added.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A Cheeger–Simons characteristic class assigns values modulo integers to cycles. Its definition pairs a polynomial in the curvature with an integral class that the polynomial represents over the reals.
+
+**Problem.** For the cyclic group of order two, the zero polynomial admits two distinct natural differential characteristic classes of degree two.
+
+**How the definition helps.** The integral class distinguishes choices that give the same curvature. In our own example, the group’s classifying space has two integral degree-two classes, both zero over the reals. The Cheeger–Simons theorem supplies a natural differential class for each pair.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “the Cheeger-Simons homomorphism refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 2.2](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Mapping tori give Chern–Simons holonomy
+
+**Remember:** One loop of surfaces sweeps out one three-cycle.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08, 58J28. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A degree-four differential character assigns numbers modulo integers to three-cycles. For a smooth family of closed oriented surfaces, integrate this character over the fibers to define the Chern–Simons line with connection on the base.
+
+**Problem.** Parallel transport around a loop in the base equals exp(2πi h), where h is the original character evaluated on the surface family over that loop.
+
+**How the definition helps.** Fiber integration evaluates the character on the three-manifold swept out by the surfaces. Our own explanation uses this in place of constructing transport by gluing local line trivializations. The three-manifold is the mapping torus, obtained by joining the ends of the surface family around the loop.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “is the partial higher holonomy operation for circle n-bundles with connection”
+
+**Sources:**
+
+- [Daniel Freed, Classical Chern–Simons Theory, Part 2 (2002)](https://www.ma.utexas.edu/users/dafr/cs2.pdf)
+
+### Trivializations recover Chern–Simons integrals
+
+**Remember:** Use the tautological frame upstairs and your chosen frame downstairs.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Each point of a principal bundle picks a frame for the bundle pulled back to its total space. In this frame the Chern–Simons form compares the given connection with the trivial connection.
+
+**Problem.** On the total space, the differential characteristic class evaluates on cycles by integrating this Chern–Simons form modulo integers. A global section gives the same formula on the base.
+
+**How the definition helps.** The chosen frame makes the reference connection trivial, so its positive-degree characteristic class vanishes. Our own explanation uses the connection-change formula to replace a universal class calculation with a single integral.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “Using refined Chern-Weil theory the notions of curvature characteristic forms and their Chern-Simons forms are unified into the notion of cocycles in ordinary differential cohomology.”
+
+**Wikipedia:** [Chern–Simons form](https://en.wikipedia.org/wiki/Chern%E2%80%93Simons_form). It says: “The right-hand side of this equation is proportional to the k-th Chern character of the connection A.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Propositions 2.8–2.9](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Truncation closes mixed foliation forms
+
+**Remember:** The differential hits a polynomial that the algebra has already discarded.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The truncated Weil algebra for codimension q sets curvature polynomials of form degree above 2q equal to zero. Its closed generators cᵢ have degree 2i, and its odd generators satisfy dyᵢ = cᵢ.
+
+**Problem.** For a smooth foliation with a framed normal bundle, a polynomial c of degree at most 2q gives a secondary class whenever degree(cᵢc) exceeds 2q. The class is represented in the algebra by yᵢc.
+
+**How the definition helps.** Truncation sets the derivative cᵢc of yᵢc equal to zero. Our own calculation replaces a derivative on the manifold with multiplication in the algebra. Bott vanishing justifies the cutoff, and the characteristic map takes the resulting class to the manifold using the chosen normal frame.
+
+**nLab:** [Bott connection](https://ncatlab.org/nlab/show/Bott+connection). It says: “for any connection on the (co)normal bundle and defined on all vector fields on X which restricts to the above along leaves”
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “of graded degree $deg(c<sub>J</sub>) &gt; 2q$, the Chern form $c<sub>J</sub>(\\Omega ({\\nabla ^{{\\mathcal F}}}))$ is identically zero.”
+
+**Sources:**
+
+- [Raoul Bott, On characteristic classes in the framework of Gelfand–Fuks cohomology (1976)](https://www.numdam.org/item/AST_1976__32-33__113_0/)
+- [Steven Hurder, Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371)
+
+### Universal flat classes live on discrete groups
+
+**Remember:** Classify the locally constant transitions, not just the underlying bundle.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R40. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A flat principal bundle has transition functions that are locally constant. Its classifying map therefore takes values in the classifying space of the structure group with the discrete topology.
+
+**Problem.** Choose a positive-degree integral characteristic class and a curvature polynomial representing it over the reals. One universal secondary class then gives every flat bundle’s secondary class by pullback.
+
+**How the definition helps.** The discrete topology retains the locally constant transition functions and hence the flat bundle itself. Our own summary uses naturality after Cheeger and Simons construct the universal class with coefficients in ℝ/ℤ.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “in particular if the curvature characteristic form vanishes so that the corresponding Chern-Simons form becomes closed”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §8](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Universal foliation classes pull back
+
+**Remember:** Pull back one class from the space of framed transverse data.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30, 55R40. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A framed Haefliger structure records local transverse coordinate changes near points, together with a basis of the normal bundle varying smoothly over the manifold. Its classifying map records these data up to extension over an interval.
+
+**Problem.** Every secondary class from the truncated Weil algebra of a framed foliation comes by pullback from the framed Haefliger classifying space.
+
+**How the definition helps.** The classifying space puts the transverse data for all framed foliations in one place. The truncated Weil algebra records curvature polynomials and their primitives, subject to the codimension bound. Our own summary uses the universal characteristic map of Theorem 3.2 to obtain the pullback formula.
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “There is a well-defined universal characteristic map”
+
+**Sources:**
+
+- [Raoul Bott and André Haefliger, On characteristic classes of Γ-foliations (1972)](https://doi.org/10.1090/S0002-9904-1972-13101-X)
+- [Steven Hurder, Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371)
+
 ### In cohesive higher geometry every foliation is simple
 
 **Remember:** Let the leaf space be a stack, and every foliation becomes a submersion.

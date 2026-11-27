@@ -1498,6 +1498,24 @@
 
 - [Kai Behrend, Ping Xu, Differentiable stacks and gerbes, J. Symplectic Geom. 9 (2011) 285–341, arXiv:math/0605694](https://arxiv.org/abs/math/0605694)
 
+### Loop transport takes values in a quotient group
+
+**Remember:** Labels joined by an arrow give the same transport class.
+
+*True by definition.* MSC 58H05 (Pseudogroups and differentiable groupoids), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A strict Lie 2-group can be described by a boundary homomorphism ∂ from H to G and a compatible G-action on H. Its objects are elements g of G, and each h gives an arrow from g to ∂(h)g. Transport identifies maps of a bundle fiber when a natural isomorphism relates them.
+
+**Problem.** For a quasi-principal 2-bundle with strict connection over a Lie groupoid, choosing a fiber object identifies thin loop transport values with elements of G/∂(H).
+
+**How the definition helps.** Two labels in G describe isomorphic transports exactly when an arrow joins them. Their cosets modulo ∂(H) therefore agree. In our own comparison, retaining the transport maps themselves would also retain the arrows between labels. The transport theorem constructs these maps for paths in the groupoid, modulo deformations that sweep out no area.
+
+**Paper or page:** [Parallel transport on a Lie 2-group bundle over a Lie groupoid along Haefliger paths](https://arxiv.org/abs/2309.05355v1). It says: “the group Aut̅(𝔼) is isomorphic to the quotient group G/τ(H).”
+
+**Sources:**
+
+- [Chatterjee and Chaudhuri, Parallel transport on a Lie 2-group bundle over a Lie groupoid along Haefliger paths, Proposition 5.17](https://arxiv.org/abs/2309.05355v1)
+
 ### Stacky Lie groupoids make Lie's third theorem true for Lie algebroids
 
 **Remember:** If the quotient is not a manifold, keep it as a stack.
@@ -1661,6 +1679,24 @@
 
 - [Daniel Berwick-Evans, The families analytic index for 1∣1-dimensional Euclidean field theories (2023)](https://arxiv.org/abs/2303.09207v1)
 
+### Spectral sections require zero index
+
+**Remember:** Allow changes near zero, but keep the signs far from zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30. arXiv math.DG. Level 4: research.
+
+**Definition.** A spectral section is a smooth family of orthogonal projections. Above a common spectral cutoff it keeps every eigenvector, and below the negative cutoff it discards every eigenvector. Between the cutoffs the projection can vary.
+
+**Problem.** Over a compact base, a smooth Dirac family on closed odd-dimensional spin fibers admits a spectral section exactly when its odd family index vanishes.
+
+**How the definition helps.** The adjustable middle band lets a smooth projection pass through individual zero crossings (our own explanation). Melrose and Piazza prove that vanishing of the index in K¹, the group classifying odd index families, suffices for a global choice.
+
+**nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “the change of spectrum of an operator as that operator continuously varies with a parameter.”
+
+**Sources:**
+
+- [Melrose and Piazza, Families of Dirac operators, boundaries and the b-calculus (1997)](https://math.mit.edu/~rbm/papers/fdobbc.abstract/fdobbc.abstract.html)
+
 ### The heat supertrace counts index
 
 **Remember:** Subtract the odd trace and every positive eigenvalue cancels.
@@ -1717,6 +1753,132 @@
 
 - [M. F. Atiyah, Elliptic operators, discrete groups and von Neumann algebras, Astérisque 32–33 (1976) 43–72](https://mathscinet.ams.org/mathscinet-getitem?mr=0420729)
 
+### Boundary eta varies covariantly
+
+**Remember:** Differentiate the eta section with the connection on its boundary line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math-ph. Level 4: research.
+
+**Definition.** For a compact odd-dimensional spin manifold with product metric near its boundary, write ξ for half the sum of eta and the kernel dimension. A spectral boundary condition gives a scalar exp(2πiξ). Changing that condition changes the frame, so the intrinsic phase τ belongs to the inverse boundary determinant line.
+
+**Problem.** In a smooth geometric family, the covariant derivative of τ equals 2πiωτ. The one-form ω is the degree-one part of the fiber integral of Â, the curvature polynomial of the vertical tangent bundle.
+
+**How the definition helps.** The connection differentiates the phase while accounting for changes of frame (our own explanation). The Dai–Freed variation theorem computes that derivative for the natural Bismut–Freed connection.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “In fact, this is a smooth section of the determinant line bundle as X varies.”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+
+### Boundary zero modes affect the index
+
+**Remember:** The boundary projection excludes zero modes, so the correction counts them.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The boundary Dirac operator has an eta invariant η, its regularized count of positive eigenvalues minus negative ones. Its reduced eta invariant ξ = (η + dim ker D)/2 also counts zero modes.
+
+**Problem.** On a compact even-dimensional spin manifold with product metric near the boundary, impose the boundary condition that excludes all nonnegative modes. The chiral Dirac index equals the integral of the Â curvature form minus ξ.
+
+**How the definition helps.** The kernel term counts the zero modes excluded by the boundary condition (our own explanation). On a product cylinder the two signed eta contributions cancel, but together the kernel terms subtract one full cross-sectional kernel dimension. The Atiyah–Patodi–Singer index theorem proves the formula.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “regularized number of positive minus negative eigenvalues of D.”
+
+**Sources:**
+
+- [Atiyah, Patodi and Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Corrected eta forms compose
+
+**Remember:** Correct the connection, then integrate the inner eta form.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For an odd-dimensional spin family, identify eta forms whose difference represents the Chern character of a K⁰ class, allowing exact differences. For a composite family, first subtract the integral of the transgression form comparing its vertical connection with the split connection. This form measures the change in the Â curvature polynomial.
+
+**Problem.** For closed odd inner and even outer spin fibers, assume the inner Dirac operators are invertible and the composite kernels form a bundle. The corrected untwisted composite eta class equals the outer fiber integral of the inner eta form times the outer Â form.
+
+**How the definition helps.** Subtraction absorbs the connection change, and the quotient absorbs the index class (our own explanation). Liu’s composition theorem supplies both terms before these operations. Inner invertibility removes the kernel contribution.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “such that modulo exact forms on B”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
+### Determinants isolate secondary eta invariants
+
+**Remember:** After rank correction, subtract the spectral contribution of the determinant line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 57R20. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat unitary bundle, twist the spin Dirac operator by that bundle. Its reduced eta invariant is half the regularized imbalance of positive and negative eigenvalues plus half the kernel dimension. The rank correction subtracts the bundle rank times the untwisted reduced eta invariant.
+
+**Problem.** Let the base be a closed oriented spin three-manifold with the rational homology of a sphere. Modulo integers, the second secondary Chern number equals the bundle’s rank-corrected invariant minus that of its determinant line.
+
+**How the definition helps.** The rank corrections cancel trivial summands, and subtracting the determinant cancels the first Chern class. Our own explanation applies the index comparison for this formal difference of bundles. The cited theorem identifies the remaining spectral difference with the second secondary Chern number in its sign convention.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “ĉᵨ,₂(\[L\]) = ξ̃ᵨ(D) − ξ̃det(ρ)(D).”
+
+**Sources:**
+
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### End-periodic eta forms recover invariants
+
+**Remember:** The form keeps the periodic correction and its family variation together.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** On a manifold with a repeating end, the Fourier–Laplace transform replaces translation by one period with a complex phase. Taylor’s end-periodic eta form integrates the transformed family heat expression over these phases and positive times, retaining differential forms on the base.
+
+**Problem.** For end-periodic Dirac families with closed range and finite-dimensional kernel and cokernel, the degree-zero component equals the end-periodic eta invariant on each fiber.
+
+**How the definition helps.** Degree zero discards all differentiation across the base and leaves the single-fiber heat expression (our own explanation). Taylor proves convergence and compares this expression with the earlier scalar definition.
+
+**Paper or page:** [An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1). It says: “is the fiberwise end-periodic eta invariant”
+
+**Sources:**
+
+- [Alex R. Taylor, An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1)
+
+### Eta forms give adiabatic limits
+
+**Remember:** The eta form stores what remains after stretching the base.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The Bismut–Cheeger eta form records spectral asymmetry for a family of spin Dirac operators. It integrates a heat trace over positive times using a superconnection, an operator combining differentiation along fibers and across the base.
+
+**Problem.** For a spin fibration of closed manifolds with odd-dimensional total space and invertible fiber operators, the reduced eta invariant has a limit. As the base metric stretches, the limit equals the base integral of the eta form times Â, the base curvature polynomial.
+
+**How the definition helps.** The eta form collects the fiber contributions into one integrand (our own explanation). Invertibility removes the kernel term and the integer remainder in the adiabatic limit theorem. The theorem supplies the estimates needed to take the limit.
+
+**Paper or page:** [Eta Form and Spectral Sequence for the Composition of Fibrations](https://arxiv.org/abs/2305.19637v1). It says: “is invertible, then R = 0;”
+
+**Sources:**
+
+- [Bismut and Cheeger, η-invariants and their adiabatic limits (1989)](https://doi.org/10.1090/S0894-0347-1989-0966608-3)
+
+### Eta measures the signature defect
+
+**Remember:** Signed spectral asymmetry supplies the missing boundary term.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For the odd signature operator on even-degree boundary forms, sum sign(λ)/\|λ\|ˢ over its nonzero eigenvalues, counting multiplicities. Its eta invariant η is the value at zero after analytic continuation.
+
+**Problem.** For a compact oriented Riemannian 4k-manifold with product metric near its boundary, the signature of its intersection form equals ∫ L − η. Here L is the Hirzebruch form computed from curvature.
+
+**How the definition helps.** Eta packages the imbalance between positive and negative boundary eigenvalues into one number (our own explanation). The Atiyah–Patodi–Singer theorem identifies that number with the difference between the curvature integral and the signature.
+
+**Wikipedia:** [Eta invariant](https://en.wikipedia.org/wiki/Eta_invariant). It says: “who used it to extend the Hirzebruch signature theorem to manifolds with boundary.”
+
+**Sources:**
+
+- [Atiyah, Patodi and Singer, Spectral asymmetry and Riemannian Geometry. I (1975), Theorem 4.14](https://doi.org/10.1017/S0305004100049410)
+
 ### Eta phases sew along determinant lines
 
 **Remember:** On a manifold with boundary, the phase lives in a line.
@@ -1734,6 +1896,26 @@
 **Sources:**
 
 - [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Eta winding counts spectral flow
+
+**Remember:** The phase hides each jump, but its winding remembers their sum.
+
+*True by definition. Confidence: medium.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The eta phase of a self-adjoint Dirac operator is exp(2πiξ), where ξ is half the regularized signed eigenvalue count plus half the kernel dimension. This gives a circle-valued invariant even when ξ jumps.
+
+**Problem.** For a smooth loop of such operators on a closed odd-dimensional manifold with only simple transverse crossings, the phase winding equals minus the spectral flow. Spectral flow counts upward zero crossings positively and downward crossings negatively.
+
+**How the definition helps.** Passing to the circle turns integer jumps into a winding count (our own explanation). Each upward crossing raises ξ by one, so a continuous real lift subtracts one there. The endpoint spectra agree, leaving minus the total signed crossing count as the change in the lift.
+
+**nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “the change of spectrum of an operator as that operator continuously varies with a parameter.”
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “is the spectral flow between D₀ and D₁.”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
 
 ### Free symmetries simplify eta variation
 
@@ -1753,6 +1935,62 @@
 
 - [Peter Hochs and Aquerman Yanes, Equivariant spectral flow for families of Dirac-type operators (2025)](https://doi.org/10.2140/akt.2025.10.189)
 
+### Grading makes eta forms subtract
+
+**Remember:** Reversing the grading reverses the supertrace.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A graded twisting bundle has positive and negative parts, and its connection preserves both. The eta form measures spectral asymmetry using a signed trace, the positive trace minus the negative trace. In the family twisted by the negative part, one reverses the grading.
+
+**Problem.** For closed even-dimensional Spinᶜ fibers with compatible metrics and connections, the graded eta form equals η(E⁺) − η(E⁻), modulo exact forms. The finite bundles representing the two indices combine with the second grading reversed.
+
+**How the definition helps.** Using the signed trace instead of the ordinary trace makes reversal change the sign (our own). Ho constructs compatible finite-dimensional representatives so the two terms split before integration.
+
+**Paper or page:** [An extended variational formula for the Bismut-Cheeger eta form and its applications](https://arxiv.org/abs/2209.00502). It says: “denotes the ℤ₂-graded complex vector bundle with the opposite grading of”
+
+**Sources:**
+
+- [Man-Ho Ho, An extended variational formula for the Bismut-Cheeger eta form and its applications, Theorem 1.2](https://arxiv.org/abs/2209.00502)
+
+### Odd indices over points record eta
+
+**Remember:** An odd index can record a spectral phase instead of a rank.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** The odd differential analytic index over a point takes values in ℝ/ℤ, real numbers modulo integers. It uses a circle product to turn the family into an even-dimensional one. The reduced eta invariant halves the sum of the regularized spectral asymmetry and the kernel dimension.
+
+**Problem.** For a closed odd-dimensional Riemannian Spinᶜ manifold, the index of a Hermitian bundle with unitary connection equals the reduced eta invariant modulo integers. The Dirac operator uses the chosen Spinᶜ connection, and the input has zero auxiliary form.
+
+**How the definition helps.** The differential index has a target that retains the fractional part of the spectral invariant (our own). Freed and Lott identify it by computing parallel transport around the extra circle and taking a limit that stretches the base metric.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Wikipedia:** [Eta invariant](https://en.wikipedia.org/wiki/Eta_invariant). It says: “the eta invariant of a self-adjoint elliptic differential operator on a compact manifold is formally the number of positive eigenvalues minus the number of negative eigenvalues.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Corollary 9.39](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Quotients remove eta perturbation dependence
+
+**Remember:** The quotient absorbs the Chern character of higher spectral flow.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** An invertible smoothing perturbation adds an operator with smooth kernel to remove zero eigenvalues from a Dirac family. Identify two resulting eta forms if their difference is closed and represents the Chern character of a K¹ class. This character assigns an odd cohomology class to a family of unitary matrices.
+
+**Problem.** For a closed even-dimensional geometric Dirac family with fixed geometry and zero family index, every admissible invertible perturbation gives the same quotient class.
+
+**How the definition helps.** The quotient kills the ambiguity that remains for ordinary eta forms (our own explanation). Liu’s variation formula identifies the difference modulo exact forms with the Chern character of higher spectral flow, the K¹ class comparing the perturbations.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “For any g ∈ G, modulo exact forms on B, we have”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
 ### Reduced eta stays smooth
 
 **Remember:** The kernel term makes a zero mode agree with either sign in the phase.
@@ -1770,6 +2008,42 @@
 **Sources:**
 
 - [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Reducing eta removes spectral flow
+
+**Remember:** Reducing modulo integers erases the count of eigenvalues crossing zero.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For a self-adjoint Dirac operator D, let η be its regularized count of positive eigenvalues minus negative ones. Its reduced eta invariant is ξ = (η + dim ker D)/2. Take its value modulo integers.
+
+**Problem.** Along a smooth path of metrics and unitary connections on a closed odd-dimensional spin manifold, the change in ξ equals the cylinder integral modulo integers. The integrand is the product of the Â and Chern character forms computed from curvature, using product data near both ends.
+
+**How the definition helps.** Reduction modulo integers discards spectral flow, the signed count of eigenvalues crossing zero (our own explanation). The Atiyah–Patodi–Singer variation formula identifies the remaining term with the curvature integral.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “The difference of two reduced eta invariants”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
+### Tamed families represent eta form classes
+
+**Remember:** Pair the families only when their eta form accounts for the change.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A geometric cycle consists of a family of Dirac operators and a differential form modulo exact forms. A taming adds smoothing operators to make the family invertible, and its eta form measures the resulting spectral asymmetry. Two cycles pair when a taming of their difference has eta form equal to the difference of their forms.
+
+**Problem.** A tamed family with zero auxiliary form equals the empty family with auxiliary form −η in differential K-theory. Here η denotes the chosen taming’s eta form.
+
+**How the definition helps.** Pairing by the eta form lets the empty family represent the original family with a single form correction (our own). The required difference of forms is exactly the eta form of the given taming. The work lies in proving that the relation generated by pairing models differential K-theory.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definitions 2.7 and 2.10 and equation (6)](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
 
 ### Half spectral flow retains parity
 
@@ -1806,6 +2080,24 @@
 **Sources:**
 
 - [Johnny Lim and Hang Wang, Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary (2022)](https://doi.org/10.1007/s00209-022-03091-8)
+
+### Nonzero spectral flow prevents taming
+
+**Remember:** An invertible loop has no eigenvalues crossing zero.
+
+*Rules out counterexamples.* MSC 58J30 (Spectral flows), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A taming adds operators with smooth integral kernels to a family of self-adjoint Dirac operators, making every member invertible. Spectral flow counts eigenvalues crossing zero around a loop, with a sign for the direction.
+
+**Problem.** A smooth loop of Dirac operators on closed odd-dimensional fibers with nonzero spectral flow admits no taming.
+
+**How the definition helps.** A tamed loop has no zero crossings, and adding the perturbations continuously preserves spectral flow (our own). For example, take the circle Dirac operators with eigenvalues n + t for integers n. Increasing t by one identifies the endpoints by shifting the eigenvectors and gives spectral flow one.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Section 2.2.2](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
 
 ### Spectral flow adds across joins
 
@@ -1879,6 +2171,62 @@
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
 
+### Bounding spin removes holonomy signs
+
+**Remember:** Use the bounding circle to read holonomy without an index sign.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** The bounding spin structure on a circle extends across a disk. It makes spinor fields change sign after one turn. Use it on the base circle when pulling a family of spin Dirac operators back around a loop.
+
+**Problem.** For closed even-dimensional spin fibers, transport around the loop in the inverse determinant line equals the limiting phase exp(2πiξ) as the circle stretches. Here ξ is half the regularized signed eigenvalue count plus half the kernel dimension on the total space.
+
+**How the definition helps.** The bounding spin structure includes the sign otherwise supplied by the parity of the fiber index (our own explanation). For a constant family with one positive point as fiber, periodic spinors give phase −1 and antiperiodic spinors give 1. Dai and Freed identify the latter convention with holonomy.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “were used by Bismut and Freed to compute the holonomy of certain determinant line bundles of Dirac operators”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+- [Bismut and Freed, The analysis of elliptic families II (1986), Theorem 3.16](https://doi.org/10.1007/BF01206955)
+
+### Cusp subtraction regularizes analytic torsion
+
+**Remember:** Subtract the model heat trace before taking the zeta determinant.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** Regularize the heat trace by removing zero modes and subtracting one third of the thrice-punctured sphere’s contribution per cusp before integration. Let ζ be the continued Mellin transform of this trace, normalized by the gamma function. Finski’s torsion is exp(−ζ′(0)/2) times one cube root of the model’s Takhtajan–Zograf torsion per cusp.
+
+**Problem.** For the trivial line on a complete finite-area hyperbolic surface with cusps and scalar curvature −1, Finski’s torsion equals the Takhtajan–Zograf torsion from closed geodesics.
+
+**How the definition helps.** Matching each cusp to a model removes the divergence that prevents an ordinary heat trace (our own explanation). Finski proves continuation of the resulting zeta function and identifies the normalized value with the geodesic formula.
+
+**Paper or page:** [Quillen metric for singular families of Riemann surfaces with cusps and compact perturbation theorem](https://arxiv.org/abs/1911.09087v1). It says: “our definition of the analytic torsion is compatible with the definition of Takhtajan-Zograf.”
+
+**Sources:**
+
+- [Siarhei Finski, Quillen metric for singular families of Riemann surfaces with cusps and compact perturbation theorem](https://arxiv.org/abs/1911.09087v1)
+- [Finski, Quillen metric theory for surfaces with cusps](https://proceedings.centre-mersenne.org/item/10.5802/tsg.372.pdf)
+
+### Cylinder eta gives parallel transport
+
+**Remember:** The cylinder phase maps the initial line to the final line.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** Pull a spin family back along a path and form its cylinder. The exponentiated reduced eta invariant of this cylinder is a linear map between the inverse determinant lines at its two ends. Reduced eta is half the regularized signed eigenvalue count plus half the kernel dimension.
+
+**Problem.** For a smooth geometric family of closed even-dimensional spin manifolds, the cylinder map tends to Bismut–Freed parallel transport as the path metric stretches. The path is constant near its ends.
+
+**How the definition helps.** The two boundary factors give the eta invariant the source and target of a transport map (our own explanation). Dai and Freed use gluing to compose these maps and variation to identify their limiting connection.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “These sections, given by the exponentiated eta invariant, satisfy the sewing law.”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+
 ### Determinant sections detect noninvertibility
 
 **Remember:** A finite determinant tells where its infinite-dimensional operator fails to invert.
@@ -1896,6 +2244,132 @@
 **Sources:**
 
 - [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### Local forms give determinant curvature
+
+**Remember:** The connection selects a curvature form within its cohomology class.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** On the inverse determinant line of a spin Dirac family, use the dual Bismut–Freed connection. It differentiates sections using the low eigenspaces and a regularized contribution from the rest of the spectrum.
+
+**Problem.** For closed even-dimensional spin fibers, i/(2π) times the curvature of this connection equals the degree-two part of the fiber integral of Â. The form Â is a polynomial in the curvature along the fibers.
+
+**How the definition helps.** Choosing the connection specifies a particular curvature form within the first Chern class (our own explanation). The Bismut–Freed local index calculation identifies that form.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “the agreement of this prediction with the curvature form was proven by Bismut and Freed.”
+
+**Sources:**
+
+- [Bismut and Freed, The analysis of elliptic families II (1986), Theorem 1.21](https://doi.org/10.1007/BF01206955)
+
+### Odd genera give self-dual torsion
+
+**Remember:** Duality preserves odd coefficients and negates even ones.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** A generalized analytic torsion theory assigns metric corrections to direct images of complexes of vector bundles. Its additive genus is the real power series that measures its difference from homogeneous torsion, the reference theory. The classification theorem identifies each such theory with exactly one series.
+
+**Problem.** A generalized analytic torsion theory agrees with its dual exactly when its additive genus is odd, including the requirement that its constant term vanish.
+
+**How the definition helps.** The genus turns comparison with the dual theory into the power series identity S(x) = −S(−x) (our own). This identity forces exactly the even coefficients to vanish (our own). The substantive steps classify the theories and compute the action of duality on their genera (our own).
+
+**Paper or page:** [Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2). It says: “is self-dual if and only if aₙ = 0 for n even.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, G. Freixas i Montplet and R. Litcanu, Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2)
+
+### Pfaffian patching gives square roots
+
+**Remember:** Glue with Pfaffians before squaring the transition maps.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** Below a positive gap in the squared Dirac spectrum, take the dual top exterior power of the positive-chirality space, one of the two spinor components. Join these local lines using the Pfaffian of each intervening skew block. The Pfaffian is the normalized top wedge power of its alternating form.
+
+**Problem.** For spin fibers of dimension 8k + 2 with real twisting bundle, the resulting Pfaffian line squares canonically to the determinant line. In index zero, its canonical section squares to the determinant section.
+
+**How the definition helps.** Squaring each Pfaffian gives the determinant used to join the ordinary determinant lines (our own explanation). The real structure supplies the skew blocks, and Freed proves that their local identifications agree on overlaps.
+
+**nLab:** [Pfaffian line bundle](https://ncatlab.org/nlab/show/Pfaffian+line+bundle). It says: “this has a canonical square root line bundle, the Pfaffian line bundle.”
+
+**Sources:**
+
+- [Freed, On determinant line bundles (1987), §3](https://abel.math.harvard.edu/~dafr/detsur.pdf)
+
+### Quaternionic eta retains holonomy signs
+
+**Remember:** A quaternionic crossing changes reduced eta by an even integer.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** For a Dirac operator with quaternionic symmetry, every eigenvalue has even complex multiplicity. Keep ξ, half the sum of the regularized signed eigenvalue count and the kernel dimension, modulo even integers.
+
+**Problem.** For closed spin fibers of dimension 8k + 2 with real twisting bundle, transport around a loop in the Pfaffian line equals the limiting exp(−πiξ). Compute ξ on the total space as the base circle stretches, using the spin structure that extends across a disk.
+
+**How the definition helps.** Keeping ξ modulo even integers makes the square-root phase single-valued (our own explanation). Quaternionic crossings change ξ by an even integer. Freed’s holonomy theorem identifies the resulting sign with transport in the canonical square root of the determinant line.
+
+**nLab:** [Pfaffian line bundle](https://ncatlab.org/nlab/show/Pfaffian+line+bundle). It says: “this has a canonical square root line bundle, the Pfaffian line bundle.”
+
+**Sources:**
+
+- [Freed, On determinant line bundles (1987), §3](https://abel.math.harvard.edu/~dafr/detsur.pdf)
+
+### Quillen norms survive kernel jumps
+
+**Remember:** The missing eigenvalues in one factor appear in the other.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** The determinant line of D pairs the dual top exterior power of its kernel with the top exterior power of its cokernel. The Quillen norm multiplies their induced norm by the square root of the regularized product of positive eigenvalues of D∗D.
+
+**Problem.** For smoothly varying Dolbeault operators on a fixed compact Riemann surface with fixed Hermitian data, the Quillen norm stays smooth when the kernel dimension changes.
+
+**How the definition helps.** The correction cancels the singular factor in the uncorrected norm (our own explanation). For multiplication by z on ℂ, a smooth constant frame has uncorrected norm 1/\|z\| away from zero. The correction contributes \|z\|, and Quillen proves smoothness of the remaining spectral product in the general case.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “does not define a smooth Hermitian metric.”
+
+**Sources:**
+
+- [Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### String structures trivialize surface Pfaffians
+
+**Remember:** Integrate the trivialization over the surface to trivialize the line.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** A geometric string structure trivializes the differential half Pontryagin class of a spin bundle. This choice includes a three-form H whose derivative is the curvature form representing that class.
+
+**Problem.** Consider a geometric family of closed spin surfaces with a spin twisting bundle of rank at least three. A geometric string structure on that bundle gives a unit section of the relative Pfaffian line.
+
+**How the definition helps.** Integrating the chosen trivialization along each surface gives a trivialization on the base (our own explanation). Bunke identifies the resulting line with the relative Pfaffian line, which compares the twisted Dirac family with the trivial twist of equal rank.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “is the trivialization of this class refined to ordinary differential cohomology”
+
+**Sources:**
+
+- [Bunke, String Structures and Trivialisations of a Pfaffian Line Bundle (2011)](https://doi.org/10.1007/s00220-011-1348-0)
+
+### Torsion corrects the harmonic norm
+
+**Remember:** The torsion cancels the length in the harmonic norm.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** On the determinant line of cohomology, take the top exterior powers in even degrees and their duals in odd degrees. The Ray–Singer norm divides the norm of harmonic representatives by analytic torsion, a weighted product of regularized Laplacian determinants.
+
+**Problem.** For a closed oriented Riemannian manifold with unitary flat coefficients, the Ray–Singer norm equals the Reidemeister norm computed from cellular cochains.
+
+**How the definition helps.** Analytic torsion cancels the metric dependence of harmonic representatives (our own explanation). On a circle of length L with trivial coefficients, the integral cohomology basis gives harmonic determinant norm L and analytic torsion L. The Cheeger–Müller theorem proves the equality in general.
+
+**Wikipedia:** [Analytic torsion](https://en.wikipedia.org/wiki/Analytic_torsion). It says: “This Cheeger–Müller theorem (that the two notions of torsion are equivalent)”
+
+**Sources:**
+
+- [Cheeger, Analytic Torsion and the Heat Equation (1979)](https://doi.org/10.2307/1971113)
 
 ### Zeta regularization defines the determinant of a Laplacian
 

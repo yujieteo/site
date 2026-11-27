@@ -2326,6 +2326,24 @@
 
 - [Dong Uk Lee, Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties, Theorem 4.2.4 (2025)](https://arxiv.org/abs/2502.11950v1)
 
+### Real unit regulators are logarithms
+
+**Remember:** The real projection forgets the argument of a unit.
+
+*True by definition.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 4: research.
+
+**Definition.** An algebraic unit is a regular function with a regular inverse. Its weight one regulator class uses local logarithms, whose differences are integral multiples of 2πi. The real Deligne model projects their values modulo the imaginary line 2πiℝ.
+
+**Problem.** For a smooth complex quasi-projective variety, the real Beilinson regulator sends an algebraic unit f to the real function log\|f\|.
+
+**How the definition helps.** Projection takes the real part, which equals log\|f\| for every branch (our own). This replaces gluing branch choices by a single global function (our own). The comparison with Deligne–Beilinson cohomology uses the logarithmic pole condition on df/f at the boundary (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “designed to be a target for the Beilinson regulator from motivic cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, Proposition 2.12 and sections 2.15–2.17](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
 ### Reduced ranks give twisted coefficients
 
 **Remember:** Use the ranks the twisted modules actually have as coefficients.
@@ -3671,6 +3689,187 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Character averaging gives nondegenerate pairings
+
+**Remember:** Averaging pairs each irreducible character with its dual.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** For a point with finite symmetry group G, even differential K-classes are virtual characters, the integer combinations of irreducible representation traces. Odd classes are complex functions constant on conjugacy classes, modulo virtual characters. The intersection pairing averages the product of the two functions over G and reduces modulo integers.
+
+**Problem.** This intersection pairing takes values in ℂ/ℤ and detects every nonzero class on either side.
+
+**How the definition helps.** Averaging pairs each irreducible character with its dual with value one and all others with zero (our own). Thus an odd representative pairs integrally with every even class exactly when all its character coefficients are integers (our own). Any nonzero even coefficient can likewise be detected by scaling the dual character (our own). The calculation uses the identification of differential classes with these character groups (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “the disjoint union of fixed loci”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Chern–Simons relations cancel stabilization changes
+
+**Remember:** Changing a finite index bundle changes its eta form by the compensating transgression.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A differential K-cycle combines a Hermitian bundle with unitary connection and an odd form modulo exact forms. Its equivalence relation allows adding matching auxiliary bundles. When the connections then differ, the odd forms must compensate by the Chern–Simons form, which measures that change.
+
+**Problem.** Consider a family of closed even-dimensional Spinᶜ fibers with metrics and compatible connections defining its Dirac operators. Any two finite bundle additions making the positive operators surjective give the same differential analytic index.
+
+**How the definition helps.** Comparing the corrected cycles instead of their kernel bundles lets the change in the spectral correction cancel the connection change (our own). Ho proves that the stabilized kernel bundles are isomorphic and that their eta forms differ by precisely the required Chern–Simons form modulo exact forms.
+
+**Paper or page:** [Local index theory and ℤ/kℤ K-theory](https://arxiv.org/abs/2410.16399). It says: “Then there exists a ℤ₂-graded morphism”
+
+**Sources:**
+
+- [Man-Ho Ho, Local index theory and ℤ/kℤ K-theory, Proposition 5.1](https://arxiv.org/abs/2410.16399)
+
+### Circle integration excludes exotic addition
+
+**Remember:** Circle integration ties the odd-degree addition to the even-degree theory.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth extension of complex K-theory adds curvature forms and classes represented by forms to the usual theory of complex vector bundles. Circle integration lowers degree by one and commutes with these maps and the underlying K-class. It vanishes on classes pulled back from the base and changes sign under circle reversal.
+
+**Problem.** Any two such extensions on smooth manifolds admit a unique natural isomorphism preserving the structure maps and circle integration. Without circle integration, nonisomorphic extensions exist.
+
+**How the definition helps.** Circle integration recovers odd classes from even classes on the circle product, forcing the comparison in odd degrees (our own). Bunke and Schick prove uniqueness in even degrees using approximations by smooth manifolds (our own). They also construct a different addition in odd degree when integration is omitted (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “If we don't require compatibility with S¹-integration, then there are "exotic" abelian group structures on K̂¹.”
+
+**Sources:**
+
+- [Bunke and Schick, Uniqueness of smooth extensions of generalized cohomology theories, Theorems 3.3 and 6.2](https://doi.org/10.1112/jtopol/jtq002)
+
+### Clifford cycles refine spin indices
+
+**Remember:** Keep the index modules and their characteristic form together.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R15. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A differential Clifford cycle records local spaces of spinors, on which vectors act according to the metric. Compatible connections with higher differential forms and a correcting form record how those spaces vary. Local spaces can include all eigenvectors below a chosen energy cutoff.
+
+**Problem.** For a proper smooth family of closed Riemannian spin manifolds of dimension n, a real metric bundle with compatible connection gives a differential Clifford cycle. Its class in degree −n of differential real K-theory lifts the real family index.
+
+**How the definition helps.** Local energy cutoffs give vector bundles even where the Dirac kernels change dimension (our own). The proof compares different cutoffs and shows that forgetting the form data recovers the real index (our own).
+
+**Paper or page:** [The families Clifford index and differential KO-theory](https://arxiv.org/abs/2303.09091v1). It says: “The families Clifford index determines a degree −n differential cocycle”
+
+**Sources:**
+
+- [Daniel Berwick-Evans, The families Clifford index and differential KO-theory](https://arxiv.org/abs/2303.09091v1)
+
+### Composite orientations make pushforwards compose
+
+**Remember:** The composite orientation records the change from split to composite geometry.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation chooses fiber geometry defining Dirac operators and an odd correction form. The composite orientation combines the two fiber geometries and weights their corrections with the corresponding Todd forms, characteristic forms of the fiber connections. A further odd form accounts for changing the split connection to the composite connection.
+
+**Problem.** For composable proper submersions of compact manifolds with closed fibers, the two differential K-theory pushforwards compose to the pushforward for the composite orientation.
+
+**How the definition helps.** Building the connection change into the orientation puts both ways of integrating into one composition law (our own). Bunke and Schick prove it by rescaling the fiber metric and comparing the resulting families.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definition 3.21 and Theorem 3.23](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Connections absorb odd form corrections
+
+**Remember:** A connection on a trivial bundle can store an odd form correction.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A structured bundle carries a connection up to changes whose Chern–Simons form is exact. This odd form measures how the characteristic forms of two connections differ. The structured bundle model represents differential K-classes by formal differences of these bundles.
+
+**Problem.** On a compact smooth manifold, every degree-zero differential K-class with complex connections and complex forms admits a representative with zero auxiliary form.
+
+**How the definition helps.** Using connection differences in place of auxiliary forms builds form corrections into the representatives (our own). The substantive step is the Simons–Sullivan realization theorem. It realizes each odd form, modulo exact forms and odd Chern characters, by connections on a trivial bundle.
+
+**nLab:** [Simons-Sullivan structured bundle](https://ncatlab.org/nlab/show/Simons-Sullivan+structured+bundle). It says: “such that the corresponding Grothendieck group is a model for differential K-theory.”
+
+**Sources:**
+
+- [James Simons and Dennis Sullivan, Structured vector bundles define differential K-theory, Proposition 2.6](https://www.claymath.org/library/proceedings/cmip011c.pdf)
+
+### Curvature distinguishes orbifold representations
+
+**Remember:** A character records the trace of every symmetry.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** For a finite group acting on a point, orbifold K-curvature records one number per conjugacy class of group elements. For a virtual representation, a formal difference of representations, this number is the difference of their traces.
+
+**Problem.** Orbifold curvature distinguishes all even differential K-classes of a point with finite symmetry.
+
+**How the definition helps.** Recording every trace gives the full character, which determines a virtual representation (our own). For the group of order two, the sign and trivial representations have equal dimension and opposite traces at the nonidentity element (our own). The differential K-theory exact sequence identifies the even group with virtual representations (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “of the disjoint union of fixed loci”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+- [Richard J. Szabo and Alessandro Valentino, Ramond-Ramond Fields, Fractional Branes and Orbifold Differential K-Theory (2010)](https://doi.org/10.1007/s00220-009-0975-1)
+
+### Determinants retain form corrections
+
+**Remember:** An exact change in the form only changes the gauge.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A degree-zero Freed–Lott representative combines a Hermitian bundle with unitary connection and an odd differential form modulo exact forms. Its differential determinant takes the top exterior power and subtracts 2πi times the one-form component from the induced connection.
+
+**Problem.** The differential determinant sends sums of differential K-classes to tensor products of lines with connection. Its value up to connection-preserving isomorphism depends only on the class.
+
+**How the definition helps.** Correcting the ordinary determinant connection cancels the change allowed in the representative (our own). The degree-one Chern–Simons form measures this change by the trace of the connection difference. Changing the correction by an exact form gives an isomorphic connection.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “line bundle with connection that refines the first Chern-class to ordinary differential cohomology.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Section 8.1](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Differential Todd classes package Riemann–Roch
+
+**Remember:** Put the Todd correction into integration before comparing Chern characters.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L10. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation of a family of closed fibers includes a connection on its Spinᶜ structure and an odd correction form σ. Its differential Todd class combines the characteristic class of that connection with the negative of the differential cohomology class defined by σ. Todd-corrected integration multiplies by this class before integrating along the fibers.
+
+**Problem.** For a smoothly K-oriented proper submersion of compact manifolds, the differential Chern character carries the K-theory pushforward to Todd-corrected integration in rational differential cohomology. This character expresses differential K-classes in cohomology with rational coefficients.
+
+**How the definition helps.** The corrected integral packages the orientation terms into a single map for the Riemann–Roch formula (our own). The ordinary and local index theorems identify the underlying class and curvature. Bunke and Schick still have to show the remaining zero-curvature difference vanishes.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Lemma 6.17 and Theorem 6.19](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Eta corrections restore index curvature
+
+**Remember:** The derivative of the eta form supplies the missing curvature.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** For a family of Dirac operators, the differential analytic index refines the difference of its positive and negative kernel bundles. Freed and Lott add an odd differential form, the eta form, to the integrated input correction. Its derivative measures the curvature missing from the kernel bundles.
+
+**Problem.** Consider closed even-dimensional fibers with a metric and a Spinᶜ connection, the geometry defining the Dirac operators. If their kernels form bundles, index curvature equals input curvature integrated over each fiber with its Todd characteristic form.
+
+**How the definition helps.** Adding the eta form supplies exactly the term missing from the kernel formula (our own). The local families index theorem computes its derivative. Taking the exterior derivative of the integrated input correction supplies the remaining term.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Definition 3.12 and Lemma 3.14](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
 ### Exact connection changes preserve curvature
 
 **Remember:** An exact change contributes zero after differentiation.
@@ -3686,6 +3885,79 @@
 **nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “the equivalence relation that identifies two connections ∇ and ∇′ if their Chern-Simons form CS(∇,∇′) is exact.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Exact transgression distinguishes flat connections
+
+**Remember:** Equal curvature does not imply exact transgression.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A structured bundle is a complex vector bundle with a connection considered up to a specific equivalence. Two connections on the same bundle are equivalent when their Chern–Simons difference form is exact. One obtains this form by integrating the Chern character along a path of connections.
+
+**Problem.** On the trivial line over a circle, flat unitary connections with different holonomy give distinct structured bundles. Holonomy is the phase acquired by transporting a vector once around the circle.
+
+**How the definition helps.** Exactness forces the integral of the normalized difference form around the circle to vanish (our own). Modulo integers, this integral measures the ratio of the two holonomies as an angle in ℝ/ℤ (our own). Changing the trivialization can shift the integral only by an integer (our own). Simons and Sullivan show that changing the path changes the difference form only by an exact form (our own).
+
+**nLab:** [Simons-Sullivan structured bundle](https://ncatlab.org/nlab/show/Simons-Sullivan+structured+bundle). It says: “The equivalence relation divided out is relation by a concordance such that the corresponding Chern-Simons form is exact.”
+
+**Sources:**
+
+- [Simons and Sullivan, Structured vector bundles define differential K-theory](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/Simons-Sullivan.pdf)
+
+### Fiber pairing prevents zero transforms
+
+**Remember:** The matching line must pair the two fibers.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** A geometric T-duality correspondence matches two torus bundles and their twists, the geometric data that modify K-theory. After trivializing the twists on dual fibers, the matching line bundle must pair their two integer lattices by evaluation.
+
+**Problem.** For a geometric T-duality correspondence, pulling back, matching twists, and integrating over the other projection gives an isomorphism of twisted K-groups.
+
+**How the definition helps.** The required fiber pairing rules out a matching that kills the unit (our own). On two untwisted circles, the identity matching integrates the unit to zero (our own). Proving invertibility for the prescribed pairing uses the topological T-duality theorem (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “of twisted K-theory groups is an isomorphism.”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
+### Flat lines change twist identifications
+
+**Remember:** Zero twist does not mean every twist isomorphism acts as identity.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C08. arXiv math.KT. Level 4: research.
+
+**Definition.** In the gerbe model of twisted differential K-theory, a twist includes its isomorphisms. Even the trivial gerbe, which represents the zero twist, has symmetries given by flat lines, meaning lines with zero curvature.
+
+**Problem.** A symmetry of the zero twist can act nontrivially on differential K-theory of the circle.
+
+**How the definition helps.** Remembering twist isomorphisms retains their action by tensor product (our own). A flat line whose parallel transport around the circle equals −1 sends the unit to a line with different holonomy (our own). Passing only to the degree-three class of the twist loses this action (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the combination of differential K-theory and twisted K-theory.”
+
+**Sources:**
+
+- [Fabio Ferrari Ruffino and Juan Carlos Rocha Barriga, Twisted differential K-characters and D-branes (2020)](https://doi.org/10.1016/j.nuclphysb.2020.115169)
+- [Byungdo Park, Geometric models of twisted differential K-theory I (2018)](https://doi.org/10.1007/s40062-017-0177-z)
+
+### Flat pushforwards forget refinements
+
+**Remember:** Flat classes keep the topological orientation and forget its differential choices.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** A flat differential K-class has zero curvature. A differential K-orientation adds geometric choices, including a connection, to a topological complex spin orientation so that one can integrate differential K-classes.
+
+**Problem.** On a closed manifold with a finite group action, the equivariant integral of a flat differential K-class depends only on the underlying equivariant K-orientation.
+
+**How the definition helps.** Zero curvature makes the change in the integral along a path of refinements vanish (our own). Bunke and Schick obtain independence from the homotopy formula for differential integration. General classes can retain the geometric choices (our own).
+
+**nLab:** [flat K-theory](https://ncatlab.org/nlab/show/flat+K-theory). It says: “the restriction (namely the homotopy pullback) of differential K-theory (any version of it) to vanishing generalized-curvature.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
 
 ### Fredholm sections allow nontorsion twists
 
@@ -3704,3 +3976,276 @@
 **Sources:**
 
 - [Michael Atiyah and Graeme Segal, Twisted K-theory and cohomology (2006)](https://doi.org/10.1142/9789812772688_0002)
+
+### Global sections recover differential K-theory
+
+**Remember:** Taking sections carries the connection and its transgression together.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A differential K-cycle for an algebra combines a projective module, a connection and an odd differential form. The module is a direct summand of a finite free module. Changing its connection changes the form by integrating the Chern character, a characteristic form, along the connection path.
+
+**Problem.** For a compact smooth manifold X, taking sections identifies degree-zero differential K-theory of complex bundles with the module group of smooth complex functions on X. Both models use complex connections and complex differential forms.
+
+**How the definition helps.** Defining the module relation by the same connection integral ensures that taking sections preserves the entire cycle relation (our own). The differential Serre–Swan theorem identifies bundles with connection and projective modules with connection. The proof also matches the normalizations of their characteristic forms.
+
+**Paper or page:** [Noncommutative Differential K-theory](https://arxiv.org/abs/2106.12073). It says: “which is an isomorphism of abelian groups natural in X.”
+
+**Sources:**
+
+- [Byungdo Park, Arthur J. Parzygnat, Corbett Redden and Augusto Stoffel, Noncommutative Differential K-theory, Theorem 4.31](https://arxiv.org/abs/2106.12073)
+
+### Invariant curvature removes T-duality kernels
+
+**Remember:** Invariant curvature survives averaging along the torus.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A twisted differential K-class on a torus bundle is geometrically invariant when translations along the fibers preserve its curvature form. T-duality exchanges a torus bundle with its dual by pulling classes to their common fiber product, changing the twist and integrating over the original torus.
+
+**Problem.** For a differential T-duality pair of principal torus bundles, T-duality identifies the geometrically invariant subgroups, shifting degree by the fiber dimension. On the full groups it can have a kernel.
+
+**How the definition helps.** Requiring invariant curvature excludes variations that fiber integration averages away (our own). On the standard dual circle pair, a nonconstant function of mean zero gives a class with nonzero curvature but zero transform (our own). The general isomorphism uses topological T-duality and the corresponding isomorphism on invariant forms.
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “this setup naturally induces the T-duality operation as an isomorphism on twisted differential K-theory.”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-Duality and Differential K-Theory (2014)](https://doi.org/10.1142/S0219199713500144)
+
+### Odd classes are character quotients
+
+**Remember:** Identify two class functions when their difference is a virtual character.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** In complex orbifold differential K-theory, curvature and auxiliary forms live on the inertia orbifold, which records points together with their symmetries. For a point with finite symmetry group G, degree-zero forms are complex functions constant on conjugacy classes of G.
+
+**Problem.** The odd differential K-group of this point is the additive group of these functions modulo virtual characters, the integer combinations of representation traces.
+
+**How the definition helps.** Using the inertia orbifold supplies one coordinate per conjugacy class (our own). In the differential K-theory exact sequence, odd topological K-theory vanishes and the even character map sends representations to their traces (our own). This computes the quotient without comparing geometric cycles individually (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “is the ordinary cohomology of the quotient space”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Orbifold bordisms produce forms
+
+**Remember:** A bounding family leaves a differential form in its boundary class.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** In orbifold differential K-theory a cycle pairs a family of Dirac operators with a differential form on points equipped with symmetries. Write \[E,ρ\] for its class and ∅ for the empty family.
+
+**Problem.** If E bounds a geometric family W with product geometry near the boundary, then \[E,0\] equals \[∅,Ω(W)\]. Here Ω(W) is the local index form obtained by integrating the index density along the fibers of W.
+
+**How the definition helps.** The form in the cycle can record the boundary contribution after the topological index vanishes (our own). The family index theorem with boundary identifies that contribution with Ω(W) (our own).
+
+**nLab:** [orbifold differential K-theory](https://ncatlab.org/nlab/show/orbifold+differential+K-theory). It says: “hence enhancement of orbifold K-theory to differential cohomology.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Orientation twists permit K-theory pushforwards
+
+**Remember:** The normal bundle supplies the twist needed for integration.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** For an embedding with oriented normal bundle N, its orientation twist is the integral class W₃(N) obstructing a complex spin structure. Twisted K-theory allows this class to enter the coefficients used for vector bundle classes.
+
+**Problem.** For a smooth embedding of closed manifolds with oriented normal bundle, the twisted K-theory pushforward accepts the restricted target twist plus W₃(N). Its degree shift is the codimension modulo two.
+
+**How the definition helps.** The orientation twist supplies the coefficients required by the Thom class, which implements integration across normal fibers (our own). The twisted Thom isomorphism is the substantive theorem (our own). Extending from the normal neighborhood then gives the pushforward (our own).
+
+**nLab:** [Freed-Witten anomaly](https://ncatlab.org/nlab/show/Freed-Witten+anomaly). It says: “Postcomposition with this map in KK-theory now yields a map from the i⁎χ ⊗ W₃(NQ)-twisted K-theory of Q to the χ-twisted K-theory of X”
+
+**Sources:**
+
+- [Alan L. Carey and Bai-Ling Wang, Thom isomorphism and push-forward map in twisted K-theory (2008)](https://doi.org/10.1017/is007011015jkt011)
+
+### Pulled-back orientations give base change
+
+**Remember:** Pull back the geometry before or after forming the index family.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A geometric family represents a differential K-class by a smoothly varying family of Dirac operators and a differential form. Pulling back its smooth K-orientation transports the fiber geometry and its correcting form to the new base.
+
+**Problem.** For a smoothly K-oriented proper submersion with closed fibers between compact manifolds, forming the differential K-theory pushforward commutes with smooth pullback between compact bases.
+
+**How the definition helps.** Pulling back the full orientation gives the same geometry and form over each new base point (our own). Fiber integration commutes with pullback. The work lies in defining the corrected index on classes, where different families can represent the same class.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Lemmas 3.10 and 3.20](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Sign transport kills constant curvature
+
+**Remember:** A constant carried around the circle must return with the opposite sign.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** For the nontrivial degree-one twist of real K-theory on the circle, curvature takes values in a flat real line. Its parallel transport around the circle multiplies every value by −1.
+
+**Problem.** The degree-zero curvature component of every degree-zero differential real K-class with this twist vanishes.
+
+**How the definition helps.** A closed zero-form with these coefficients must return to its starting value after parallel transport (our own). Only zero equals its negative (our own). Ordinary real coefficients would allow the constant curvature component of the untwisted unit (our own). The input from twisted real K-theory is the identification of the coefficient line (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “More detailed discussion of twisted differential K-theory for KU/KO and its application to K-theory classification of D-brane charge”
+
+**Sources:**
+
+- [Daniel Grady and Hisham Sati, Twisted differential KO-theory (2026)](https://doi.org/10.2140/tunis.2026.8.265)
+
+### Smooth orientations fix pushforward curvature
+
+**Remember:** The correction cancels the change in the Todd form.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation chooses geometry defining a Dirac operator along each fiber and an odd form σ modulo exact forms. Its Todd form T is the characteristic form computed from that geometry. Equivalent choices change σ by a form whose derivative equals the change in T.
+
+**Problem.** For a smoothly K-oriented proper family of closed fibers, T − dσ depends only on the orientation. Integrating input curvature against this weight gives the curvature of the differential K-theory pushforward, the index on the base.
+
+**How the definition helps.** The correction to the geometric Todd form cancels its dependence on the chosen connection (our own). The transgression formula computes the change in T. The local families index formula gives the asserted curvature.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definition 3.5 and Lemmas 3.16–3.17](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Spectra glue twisted classes
+
+**Remember:** Glue the spectra first, then take classes.
+
+*True by definition. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** A sheaf of spectra records local cohomology data together with their homotopies, which are continuous identifications. For a fixed differential K-twist, its differential function spectrum matches twisted topological K-data with differential forms through their common real cohomology model.
+
+**Problem.** On a smooth manifold covered by two open sets, twisted differential K-classes agreeing on the intersection extend to a class on the union.
+
+**How the definition helps.** The sheaf description turns global data into two local representatives and a homotopy identifying their restrictions (our own). Equality of the restricted classes supplies such a homotopy, although its choice can affect the extension (our own). Compared with gluing geometric cycles, the work lies in proving the spectrum satisfies this gluing rule (our own).
+
+**nLab:** [twisted differential cohomology](https://ncatlab.org/nlab/show/twisted+differential+cohomology). It says: “may be understood as sheaves of parametrized spectra”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Nikolaus, Twisted differential cohomology (2019)](https://doi.org/10.2140/agt.2019.19.1631)
+
+### Stabilization handles jumping kernels
+
+**Remember:** Stabilize the operator family instead of trying to bundle its kernels.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** Stabilizing a Dirac family means choosing finite-dimensional source and target bundles so the operator is invertible on their complements. Their formal difference replaces the difference of kernels. An eta form records the corresponding correction from the spectrum.
+
+**Problem.** For a smooth family of closed even-dimensional Spinᶜ manifolds over a compact base, the differential analytic index exists even when kernel dimensions jump. The family carries metrics and compatible connections defining its Dirac operators.
+
+**How the definition helps.** The finite bundles vary smoothly even where the kernel dimension changes (our own). Freed and Lott prove these bundles exist and that the resulting class is independent of the choice. When the kernels form bundles, their formula recovers the kernel index.
+
+**Paper or page:** [An extended variational formula for the Bismut-Cheeger eta form and its applications](https://arxiv.org/abs/2209.00502). It says: “is a well defined group homomorphism.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Lemma 7.13, Definition 7.27 and Corollary 7.36](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+- [Man-Ho Ho, An extended variational formula for the Bismut-Cheeger eta form and its applications, Proposition 1.2](https://arxiv.org/abs/2209.00502)
+
+### Structured bundles give tensor multiplication
+
+**Remember:** Tensoring multiplies a connection difference by a closed Chern character form.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N15. arXiv math.AT. Level 4: research.
+
+**Definition.** A structured bundle identifies connections on a complex bundle when their Chern–Simons difference form is exact. This form integrates the Chern character along a path of connections. The Simons–Sullivan group consists of formal differences of structured bundles under direct sum.
+
+**Problem.** Tensor product induces a multiplication on the Simons–Sullivan group, making it a model of the differential K-theory ring in degree zero.
+
+**How the definition helps.** Tensoring a connection path with a fixed bundle multiplies its difference form by the fixed connection’s closed Chern character form (our own). Multiplying an exact form by a closed form preserves exactness, so the product respects the equivalence relation (our own). Distributivity then extends multiplication to formal differences (our own).
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “Under direct sum and tensor product of vector bundles, this becomes a commutatve rig.”
+
+**Sources:**
+
+- [Simons and Sullivan, Structured vector bundles define differential K-theory](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/Simons-Sullivan.pdf)
+
+### Suspension transfers the index theorem
+
+**Remember:** Suspend and desuspend in the same way for both indices.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** Freed and Lott define the odd differential K-theory index by suspension, which turns an odd class into an even class on a circle product. They take the even index there and then integrate out the circle to return to odd degree.
+
+**Problem.** For a proper smooth family of closed even-dimensional fibers, the odd analytic and topological indices agree. The fibers carry metrics and Spinᶜ connections defining the family of Dirac operators.
+
+**How the definition helps.** Defining both odd indices through the same circle operations reduces their comparison to the even index theorem (our own). Freed and Lott prove equality in even degree and construct the two circle operations.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Section 9.25](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Tensor products add twists
+
+**Remember:** Multiply the classes by tensoring the twists.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** A differential K-twist specifies how both topological K-theory and its differential forms vary locally, with a comparison over the reals. Tensor product combines two twists by tensoring both kinds of data and their comparisons.
+
+**Problem.** For degree-three differential twists, multiplication of differential K-classes lands in the sum of their twists. The curvature of their product is the wedge product of their curvatures.
+
+**How the definition helps.** Tensor product combines the two comparisons, so the product of the forms represents the product of the underlying classes (our own). This identifies the target even when a single twisted group has no internal multiplication (our own). Constructing the compatible product maps is the substantive step in the spectrum model (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the combination of differential K-theory and twisted K-theory.”
+
+**Wikipedia:** [Twisted K-theory](https://en.wikipedia.org/wiki/Twisted_K-theory). It says: “the product of an element of K-theory with twist H with an element of K-theory with twist H′ is an element of K-theory twisted by H+H′.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Nikolaus, Twisted differential cohomology (2019)](https://doi.org/10.2140/agt.2019.19.1631)
+
+### Topological indices determine analytic determinants
+
+**Remember:** Take the determinant after computing the index without spectral analysis.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** The differential determinant of a virtual bundle takes the quotient of its two determinant lines. It uses the induced connection shifted by the degree-one part of the differential K-class’s form correction, with factor −2πi.
+
+**Problem.** For a compact geometric family of twisted Spinᶜ Dirac operators on closed even-dimensional fibers, the differential topological index determines the analytic determinant line. After periodicity shifts the index to degree zero, its differential determinant is the dual of the Bismut–Freed line with connection.
+
+**How the definition helps.** Using the differential determinant preserves the connection when the analytic index is replaced by the topological index (our own). The families index theorem identifies the two differential K-classes. Freed and Lott also identify the analytic index determinant with the dual spectral line.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “line bundle with connection that refines the first Chern-class to ordinary differential cohomology.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Theorem 7.42 and Proposition 8.3](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Topological orientations miss differential indices
+
+**Remember:** The odd form in an orientation can change the index without changing its topology.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation supplements the geometry of a family of Dirac operators with an odd differential form σ modulo exact forms. Its pushforward assigns a differential K-class on the base to each class on the total space.
+
+**Problem.** On an oriented circle over a point, keep the metric, Spinᶜ structure and connection fixed. Two orientation forms differing by a one-form of integral ½ give different pushforwards of the unit class.
+
+**How the definition helps.** The orientation retains σ, whose integral contributes directly to the index of the unit (our own). The curvature of the unit is 1, so increasing the integral of σ by ½ changes the index by −½ in ℝ/ℤ. This uses the pushforward formula and the calculation of odd differential K-theory on a point.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Sections 3.1.10 and 3.2.2 and Lemma 5.1](https://www.numdam.org/item/AST_2009__328__45_0.pdf)

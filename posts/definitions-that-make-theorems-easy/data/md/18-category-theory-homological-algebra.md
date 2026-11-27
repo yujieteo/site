@@ -2117,6 +2117,24 @@
 
 - [The Stacks Project, Sites Modules, Lemma 18.36.1.](https://stacks.math.columbia.edu/tag/04EN)
 
+### Stable isomorphism ignores cover refinements
+
+**Remember:** Compare the gerbes after both covers have been pulled back.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 3: graduate.
+
+**Definition.** A bundle gerbe assigns a line to each pair of lifts of one point, with associative multiplication along triples. A stable isomorphism compares two presentations by a line bundle on pairs consisting of one lift from each presentation. Its fibers identify the two line systems compatibly with multiplication.
+
+**Problem.** Refining the cover of a bundle gerbe gives a stably isomorphic presentation.
+
+**How the definition helps.** The comparison line already exists between each old lift and the image of each new lift. In our own proof, multiplying gerbe lines gives the required identifications, and associativity gives their compatibility. An isomorphism of covers would be too restrictive, since even covers of a point can have different sizes.
+
+**nLab:** [bundle gerbe](https://ncatlab.org/nlab/show/bundle+gerbe). It says: “by refining, if necessary, the surjective submersion Y by a good open cover”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+
 ### Tensor products characterized by bilinear maps commute with sheafification
 
 **Remember:** Maps out of a tensor product are bilinear maps.
@@ -6003,6 +6021,44 @@
 - [Thomas Nikolaus, Urs Schreiber, Danny Stevenson, Principal ∞-bundles – General theory, J. Homotopy Relat. Struct. 10 (2015) 749–801, arXiv:1207.0248](https://arxiv.org/abs/1207.0248)
 - [Takashi Karube, On the local cross-sections in locally compact groups, J. Math. Soc. Japan 10 (1958) 343–347](https://doi.org/10.2969/jmsj/01040343)
 
+### Classifying maps pull 2-bundles back
+
+**Remember:** Pull back the bundle by precomposing its classifying map.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A principal 2-bundle is locally a copy of a smooth group with invertible arrows between its elements. Its classifying stack BG collects these bundles and their symmetries. A map to BG describes a bundle by pulling back the universal bundle, retaining the identifications in the pullback.
+
+**Problem.** If X → BG classifies a principal 2-bundle, the composite Y → X → BG classifies its pullback to Y.
+
+**How the definition helps.** Two successive pullbacks of the universal bundle give the pullback along the composite. In our own comparison, a description by transition maps requires pulling back their compatibility isomorphisms as well. The classification theorem identifies those local data with maps to BG.
+
+**nLab:** [principal 2-bundle](https://ncatlab.org/nlab/show/principal+2-bundle). It says: “This says that principal 2-bundles are classified by Cech cohomology with coefficients in deloopings of (sheaves of) 2-groups.”
+
+**Paper or page:** [Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1). It says: “is a principal 𝒢-2-bundle over 𝒵”
+
+**Sources:**
+
+- [Caviglia, Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1)
+
+### Coherent actions descend gerbes
+
+**Remember:** The group element is the difference between two lifts.
+
+*Rules out counterexamples.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe assigns lines to pairs of local lifts of a point and multiplies those lines on triples. A weak group action identifies the gerbe with its translates in smooth families. Its comparison maps identify successive translations with their product and agree on triples.
+
+**Problem.** On a principal group bundle, a gerbe with a weak action comes from a gerbe on the quotient, up to equivalence.
+
+**How the definition helps.** Each pair in one fiber differs by a unique group element, so the comparison maps give the gluing rules. The descent theorem proves these rules produce a gerbe on the quotient. In our own example, every translation of the three-sphere group SU(2) preserves the gerbe classified by a generator of its third integral cohomology. That class cannot come from the quotient point.
+
+**Paper or page:** [Equivariant bundle gerbes](https://arxiv.org/abs/1506.07931). It says: “Let M → N be a principal G-bundle. If 𝒢 is a bundle gerbe on M acted on weakly by G then 𝒢 descends to a bundle gerbe on N”
+
+**Sources:**
+
+- [M. K. Murray, D. M. Roberts, D. Stevenson and R. F. Vozzo, Equivariant bundle gerbes](https://arxiv.org/abs/1506.07931)
+
 ### Condensed epimorphisms let Hochschild–Serre hold for topological group extensions
 
 **Remember:** Ask compact families to lift, and the spectral sequence for subgroups works.
@@ -6038,6 +6094,42 @@
 **Sources:**
 
 - [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+
+### Connected bands preserve loop gerbes
+
+**Remember:** Connected groups have no nontrivial bundle types on a circle.
+
+*Rules out counterexamples.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A smooth gerbe locally has objects, any two of which are locally isomorphic. Its abelian band is the bundle of commutative groups of automorphisms of those objects. Its loop stack records smooth families of maps from the circle into the gerbe, together with isomorphisms between those maps.
+
+**Problem.** For a finite-dimensional abelian gerbe on a finite-dimensional manifold, a locally trivial band of connected Lie groups ensures the loop stack is a gerbe. Its base is the free loop space, and its band consists of smooth sections of the original band along each loop.
+
+**How the definition helps.** Connected fibers allow local isomorphisms along a loop to join up around the circle. The theorem proves smooth local existence and comparison for families of loops. In our own counterexample, take the gerbe of principal two-element group bundles over a point. Its loops include both double covers of the circle, which are not isomorphic.
+
+**Paper or page:** [Smooth loop stacks of differentiable stacks and gerbes](https://arxiv.org/abs/1602.07973). It says: “Then 𝕃X is an abelian L𝒜-gerbe on LM.”
+
+**Sources:**
+
+- [D. M. Roberts and R. F. Vozzo, Smooth loop stacks of differentiable stacks and gerbes](https://arxiv.org/abs/1602.07973)
+
+### Equivariance splits gerbe symmetries
+
+**Remember:** A coherent lift of every group element gives a splitting.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe describes local lines and their multiplication on overlaps. Its symmetry over a group element identifies the gerbe with its translate. The smooth symmetry 2-group keeps these identifications in smooth families, together with the isomorphisms between them.
+
+**Problem.** For a connected Lie group acting smoothly on the base, the gerbe admits a compatible action exactly when its symmetry 2-group splits over the group.
+
+**How the definition helps.** A splitting chooses a symmetry over each group element and supplies compatible isomorphisms for products, precisely the data of a group action on the gerbe. A splitting here varies smoothly over the group. Our own comparison replaces separate multiplication diagrams with a single map of smooth 2-groups. The theorem constructs the smooth extension in which this map takes values.
+
+**Paper or page:** [Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395). It says: “The gerbe 𝒢 admits a G-equivariant structure if and only if there exists a morphism G̲ ⟶ Sym<sub>G</sub>(𝒢) of smooth 2-groups which splits the extension”
+
+**Sources:**
+
+- [S. Bunk, L. Müller and R. J. Szabo, Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395)
 
 ### Fréchet complexes are condensed-exact exactly when algebraically exact
 
@@ -6146,6 +6238,24 @@
 **nLab:** [smooth infinity-stack](https://ncatlab.org/nlab/show/smooth+infinity-stack). It says: “But restricted to the site CartSp the simplicial sheaf BG does satisfy descent: there is up to isomorphism only a single G-bundle on ℝⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Principal 2-bundles let quotient families glue
+
+**Remember:** A quotient family remembers the torsor, not just the orbit.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** Let a smooth 2-group G act on a stack X, which records objects and their isomorphisms over manifolds. A quotient family is a locally trivial principal G 2-bundle together with a map to X that respects the action. Local triviality means the bundle is locally a copy of G over the base.
+
+**Problem.** These quotient families form a 2-stack on smooth manifolds. Compatible local families, maps and isomorphisms between maps glue over open covers.
+
+**How the definition helps.** A family carries the transition isomorphisms and their compatibility on triple overlaps. In our own smooth-site argument these data glue the principal 2-bundle, and descent in X glues its map. Describing a quotient by pointwise orbits loses those gluing maps. The proof uses effective descent for bundles, which constructs a global bundle from compatible local pieces.
+
+**Paper or page:** [Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1). It says: “Then the quotient pre-2-stack \[𝒳/𝒢\] is a 2-stack.”
+
+**Sources:**
+
+- [Caviglia, Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1)
 
 ### Probing by compact spaces makes the pyknotic embedding preserve limits
 
@@ -8335,6 +8445,25 @@
 
 - [Kathryn Hess and Nima Rasekh, Shadows are Bicategorical Traces, arXiv:2109.02144 (2021)](https://arxiv.org/abs/2109.02144)
 
+### Coherent multiplication permits a free-loop String model
+
+**Remember:** Move the product through an equivalence instead of forcing strict laws.
+
+*Makes the theorem clean to state or prove.* MSC 18N10 (2-categories, bicategories, double categories). arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A coherent Lie 2-group has smooth objects and invertible arrows. Multiplication, the unit and inverses obey the group laws through specified isomorphisms satisfying compatibility equations.
+
+**Problem.** For compact, simple, simply connected G, a coherent model of its 3-connected cover String(G) uses the basic circle extension of the free loop group. This extension is the space of arrows starting at the unit, which no strict Lie 2-group model can have here.
+
+**How the definition helps.** Allowing coherent isomorphisms lets one transfer multiplication along an equivalence with the based-loop model. The construction requires a smooth equivalence and explicit compatibility maps. A strict model would require the group laws to hold as equalities.
+
+**Paper or page:** [Quasi-periodic paths and a string 2-group model from the free loop group](https://arxiv.org/abs/1702.01514v2). It says: “there does not exist a strict Lie 2-group model for the string group of G that has L̂G as source-fibre.”
+
+**Sources:**
+
+- [Murray, Roberts and Wockel, Quasi-Periodic Paths and a String 2-Group Model from the Free Loop Group](https://doi.org/10.5802/jolt.988)
+- [Murray, Roberts and Wockel, Quasi-periodic paths and a string 2-group model from the free loop group, Corollary 2.6](https://arxiv.org/abs/1702.01514v2)
+
 ### Doctrinal adjunction becomes a statement about conjunctions in a double category
 
 **Remember:** Lax goes one way, colax the other, and the adjunction lives across the square.
@@ -8884,6 +9013,24 @@
 **Sources:**
 
 - [Vegard Fjellbo, Optimal Triangulation of Regular Simplicial Sets (2020), arXiv:2001.04339](https://arxiv.org/abs/2001.04339)
+
+### Realization recovers the topological String classifying space
+
+**Remember:** Realize the smooth fiber to recover the topological fiber.
+
+*Makes the theorem clean to state or prove.* MSC 18N50 (Simplicial sets, simplicial objects), 57R15. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** The smooth String classifying stack records a spin bundle together with a trivialization of half its first Pontryagin class. This construction is a homotopy fiber, which retains the chosen path from the class to zero.
+
+**Problem.** For n ≥ 5, topological realization of this smooth classifying stack gives the classifying space of String(n), the 3-connected cover of Spin(n).
+
+**How the definition helps.** The defining fiber has the same two maps as the topological construction after realization. The proof shows that realization preserves this particular fiber. It uses a model of the target made from finite products of circles in each simplicial degree.
+
+**nLab:** [string 2-group](https://ncatlab.org/nlab/show/string+2-group). It says: “indeed maps under \|−\| to the topological string group:”
+
+**Sources:**
+
+- [Fiorenza, Schreiber and Stasheff, Čech cocycles for differential characteristic classes](https://doi.org/10.4310/atmp.2012.v16.n1.a5)
 
 ### The π∗-Kan condition makes realization preserve homotopy pullbacks
 

@@ -394,6 +394,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Chern–Simons transgressions add modulo exact forms
+
+**Remember:** An oriented triangle relates the three paths along its edges.
+
+*True by definition.* MSC 53C05 (Connections (general theory)), 57R20. arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** The Chern–Simons transgression integrates the Chern character form along a path between connections on a fixed complex bundle. Take the resulting odd form modulo exact forms, meaning derivatives of other forms.
+
+**Problem.** Transgression from a first connection to a second and then to a third adds to the direct transgression between the first and third.
+
+**How the definition helps.** Passing to the quotient removes the exact form that measures the choice of path. Integrating along two consecutive paths adds their forms. In our own proof, Stokes’ theorem on a triangle of connections makes the difference from the direct path exact.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “This is indeed well defined in that it is independent of the chosen concordance, up to an exact term.”
+
+**Sources:**
+
+- [James Simons and Dennis Sullivan, Structured vector bundles define differential K-theory, §1](https://www.math.stonybrook.edu/~dennis/publications/PDF/DS-pub-0126.pdf)
+
 ### Connections as horizontal subbundles make zero curvature mean integrability
 
 **Remember:** Flat means the horizontal planes fit together into sheets.
@@ -679,6 +697,400 @@
 **Paper or page:** [Equivariant gluing theory on regular instanton moduli spaces](https://arxiv.org/abs/2101.09425). It says: “Suppose B is connected, π : P → B is a principal G-bundle and A is a flat connection on P, then there exists a representation π₁(B) → G unique up to conjugation”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Character curvatures have integral periods
+
+**Remember:** A cycle has zero boundary, so its curvature integral is zero modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** A degree-k differential character assigns values in ℝ/ℤ additively to smooth integral (k−1)-cycles. On boundaries it gives the integral of a fixed k-form modulo integers. This form is its curvature.
+
+**Problem.** The curvature of a differential character integrates to an integer on every smooth integral k-cycle.
+
+**How the definition helps.** The boundary rule turns the integral on a cycle into the character’s value at zero, modulo integers. In the model using forms and cochains, integrality instead follows by comparing curvature with an integral cocycle. Our own comparison uses the theorem identifying the two models.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §1](https://doi.org/10.1007/BFb0075216)
+
+### Characters give boundary holonomy
+
+**Remember:** On boundaries, holonomy is the curvature integral modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-n differential character assigns values in ℝ/ℤ additively to smooth (n−1)-cycles. On a boundary its value equals the integral of a fixed n-form, its curvature, over the bounding chain modulo integers.
+
+**Problem.** The holonomy of a smooth Deligne class on the boundary of a smooth chain equals the curvature integral modulo integers. Holonomy here means the circle value assigned to a cycle.
+
+**How the definition helps.** The character model includes the boundary formula in its definition. The comparison theorem identifies its evaluation with holonomy computed by gluing local Deligne data (our own).
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+
+### Deligne addition tensors bundles
+
+**Remember:** Multiply transition functions and add connection forms.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-two Deligne cocycle records local connection forms and the circle-valued functions that change frames on overlaps. Its sum multiplies the functions and adds the forms.
+
+**Problem.** Addition of degree-two smooth Deligne classes corresponds to tensoring Hermitian line bundles with their unitary connections.
+
+**How the definition helps.** The sum already records the frame changes and connection forms of the tensor product (our own). Identifying these local descriptions with geometric bundles uses the classification by gluing (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Deligne classes classify line bundles with connection
+
+**Remember:** Transition functions and connection forms fit in one cocycle.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-two smooth Deligne cocycle describes a line with connection on a cover with contractible intersections. It gives circle-valued changes of frame on overlaps and real connection forms on patches. The changes compose on triples, and their normalized logarithmic derivatives give the differences between connection forms.
+
+**Problem.** Degree-two smooth Deligne classes classify Hermitian line bundles with unitary connection up to isomorphism. Such a connection transports vectors while preserving their lengths.
+
+**How the definition helps.** The cocycle equations give exactly the rules for gluing local lines and their connections (our own). Gluing constructs the bundle, while changes of local frame account for equivalent cocycles (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Deligne cocycles encode gerbe connections
+
+**Remember:** One cocycle stores the functions, potentials, and curvings.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** On a cover with contractible intersections, a degree-two Deligne cocycle assigns circle-valued functions to triple overlaps, 1-forms to double overlaps, and 2-forms to patches. The functions obey the usual product rule on quadruple overlaps. Alternating differences of the 1-forms and 2-forms give, respectively, the normalized logarithmic derivatives of the functions and the exterior derivatives of the 1-forms.
+
+**Problem.** Degree-two Deligne cocycles modulo changes of local trivialization classify circle bundle gerbes with connection and curving up to stable isomorphism.
+
+**How the definition helps.** One cocycle records all three gluing rules for the gerbe, its connection, and its curving. Our own explanation identifies changes of local frames and patch connections with coboundaries, the changes ignored in cohomology. The classification theorem reconstructs the gerbe from these local data.
+
+**Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “a geometrical model of certain 1-gerbes with connection, or equivalently of a 2-class in Deligne cohomology.”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+- [P. Gajer, Geometry of Deligne cohomology](https://doi.org/10.1007/s002220050118)
+
+### Deligne products preserve integral products
+
+**Remember:** The degree zero part multiplies integer cochains.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth Deligne class combines integer data with local differential forms. Projecting onto the integer data gives its underlying integral class. The Deligne cup product multiplies the integer entries on overlapping patches.
+
+**Problem.** The underlying integral class of a Deligne cup product is the ordinary cup product of the underlying integral classes.
+
+**How the definition helps.** Projection retains precisely the integer multiplication rule on overlaps (our own). The comparison between cohomology on a good cover and singular cohomology identifies this rule with the ordinary cup product (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “α ∧ β = αβ”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+
+### Deligne products wedge curvatures
+
+**Remember:** Differentiate the last product form to wedge the curvatures.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Deligne cup product represents multiplication of differential cohomology classes using local forms and overlap data. For positive degrees, its highest local form is α∧dβ, where α and β are the highest forms of the factors. The symbol ∧ denotes the exterior product of forms.
+
+**Problem.** The curvature of a Deligne cup product equals the exterior product of the two curvatures.
+
+**How the definition helps.** Differentiating α∧dβ gives dα∧dβ, and these two derivatives are the factor curvatures (our own). The work lies in constructing a product on classes from this asymmetric local formula (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+
+### Deligne projection recovers Chern classes
+
+**Remember:** Drop the forms and keep the integer cocycle.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The degree-two smooth Deligne complex links integers, smooth real functions, and real one-forms. Projection to the integers forgets the functions and forms.
+
+**Problem.** For a line bundle with unitary connection, this projection sends its Deligne class to the first Chern class, its integral topological invariant.
+
+**How the definition helps.** Projection retains the integer discrepancies between local logarithms of the circle-valued frame changes on triple overlaps (our own). The exponential sequence identifies these discrepancies with the first Chern class computed without a connection (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “a canonical forgetful map”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat complexes compute flat classes
+
+**Remember:** Require closed top forms and only locally constant data survive.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For n ≥ 2, the flat Deligne complex starts with smooth circle-valued functions in degree one. It continues with differential forms through degree n−1, requiring the last forms to be closed. The first map takes normalized logarithmic derivatives, and subsequent maps take exterior derivatives.
+
+**Problem.** On a smooth manifold X, degree-n smooth Deligne classes with zero curvature form the ordinary cohomology group Hⁿ⁻¹(X, ℝ/ℤ).
+
+**How the definition helps.** Requiring closed last forms imposes zero curvature directly on local representatives (our own). Local primitives and local logarithms leave only locally constant circle values in degree one (our own). The exact sequence for curvature identifies the resulting group with the kernel (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “The Deligne cohomology group fits into a short exact sequence (of abelian groups) of the form”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat connections lift torsion
+
+**Remember:** Flat connections can keep torsion that real cohomology forgets.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A flat unitary connection has zero curvature and admits local frames that it transports unchanged. In these frames the changes on overlaps take locally constant values in the circle ℝ/ℤ.
+
+**Problem.** On a compact smooth manifold, a Hermitian line bundle admits a flat unitary connection exactly when some positive integer kills its first Chern class.
+
+**How the definition helps.** Locally constant frame changes express the first Chern class as the connecting map for ℤ → ℝ → ℝ/ℤ (our own). Exactness identifies its image with the kernel of passage to real cohomology (our own). Compactness gives finite generation, so this kernel consists precisely of torsion classes (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the Bockstein homomorphism:”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat holonomy factors through homology
+
+**Remember:** Without curvature, adding a boundary changes no phase.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-three differential character assigns a unit complex number to each smooth integral 2-cycle and sends sums to products. On a boundary its value is the exponential of 2πi times the integral of its curvature over the filling. A flat gerbe has zero curvature.
+
+**Problem.** The surface phases of a flat circle gerbe depend only on the integral homology class of the surface.
+
+**How the definition helps.** In our own derivation, zero curvature makes every boundary phase one, so adding a boundary preserves the phase. The comparison theorem identifies gerbe surface phases with a differential character. In our own counterexample, a trivial gerbe on ℝ³ has potential x dy ∧ dz. The boundary of a ball of volume one-half has phase −1.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
+
+**Sources:**
+
+- [B. Park, Differential cohomology and gerbes: An introduction to higher differential geometry](https://byungdo.github.io/seminars/IMSRS.pdf)
+
+### Global forms cup with curvature
+
+**Remember:** A global form cups by wedging with curvature.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Write a(A) for the degree-p Deligne class represented by a single global (p−1)-form A. In the Deligne cup product, a left form multiplies only the highest right form β, giving A∧dβ.
+
+**Problem.** For positive degrees p and q, multiplying a(A) by a degree-q Deligne class with curvature F gives a(A∧F).
+
+**How the definition helps.** Only the derivatives of the highest right forms survive, and these agree everywhere with F (our own). The cochain formula therefore produces the single global form A∧F (our own). The work lies in proving that this product respects changes of representatives (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+
+### Global forms describe trivial topology
+
+**Remember:** Zero topology leaves one global form modulo integral periods.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The weight-n smooth Deligne complex links integers to real functions and then to forms through degree n−1, for n ≥ 2. Projection onto the integers gives the underlying integral class.
+
+**Problem.** Degree-n classes with zero underlying integral class form the group of global (n−1)-forms modulo closed forms with integer integrals over cycles.
+
+**How the definition helps.** Deleting the integer term leaves a complex of forms whose cohomology can be computed using global forms (our own). Partitions of unity justify this step (our own). Exactness and the de Rham theorem identify the remaining ambiguity with closed forms having integral periods (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “Hence we get a short exact sequence by dividing out the image”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Last Deligne forms give curvature
+
+**Remember:** Take the exterior derivative where the Deligne complex stops.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth Deligne cocycle of degree n ≥ 2 records local differential forms and their changes on overlaps. Its highest forms have degree n−1 and differ on overlaps by exact forms, which are derivatives of other forms.
+
+**Problem.** Differentiating the highest forms of a smooth Deligne cocycle gives a global closed curvature form depending only on its class.
+
+**How the definition helps.** The local derivatives agree because differentiating twice gives zero (our own). Changing the representative also changes its highest forms locally by exact forms (our own). Comparison with geometric connections identifies this global derivative with their curvature (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the failure of the (n−k+1)-forms to glue on (k+1)-fold intersections of charts is given by the de Rham differential of the (n−k)-forms”
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Let $\\pi \\colon Y\\to X$ be a surjective submersion. Then for all $p\\geq 0$ the complex \\\[ 0 \\to \\Omega ^p(X)\\xrightarrow {\\pi ^\*} \\Omega ^p(Y) \\xrightarrow {\\delta } \\Omega ^p(Y<sup>\[2\]</sup>) \\xrightarrow {\\delta } \\Omega ^p(Y<sup>\[3\]</sup>) \\xrightarrow {\\delta } \\cdots \\\] is exact”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Lifting gerbes detect obstructions
+
+**Remember:** Multiply lifted transition functions to read the obstruction.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A central circle extension maps one Lie group onto another with a central circle as kernel. For a principal bundle, two points in one fiber differ by a unique group element. The lifting gerbe assigns to that pair the circle of lifts of this element and multiplies lifts using the extended group.
+
+**Problem.** A smooth principal bundle lifts to the extended group exactly when the integral cohomology class of its lifting gerbe vanishes.
+
+**How the definition helps.** The gerbe product records exactly where lifted transition functions fail to multiply on triple overlaps. Our own comparison uses the same circle-valued error in the usual transition-function proof. The exponential sequence identifies its cohomology class with the integral gerbe class. Vanishing means that local circle factors correct the lifts so they glue.
+
+**nLab:** [lifting gerbe](https://ncatlab.org/nlab/show/lifting+gerbe). It says: “arising as the obstruction to the lift of a G-principal bundle”
+
+**Sources:**
+
+- [B. Park, Differential cohomology and gerbes: An introduction to higher differential geometry](https://byungdo.github.io/seminars/IMSRS.pdf)
+
+### Matching real classes admit lifts
+
+**Remember:** The witness exists exactly when the two real cohomology classes agree.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-n differential cocycle includes an integral cocycle, a closed n-form, and a real cochain. A cochain assigns numbers to chains, and its coboundary evaluates it on their boundaries. The real cochain has coboundary equal to the integrated form minus the integral cocycle.
+
+**Problem.** An integral degree-n class and a closed n-form on a smooth manifold have a common differential refinement exactly when their real cohomology classes agree.
+
+**How the definition helps.** The required real cochain exists exactly when the difference represents zero in real cohomology (our own). The comparison with smooth Deligne classes uses the de Rham theorem to relate differential forms to real cochains (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “represent real cohomology classes that are in the image of integral cohomology classes.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Sphere tests miss torus periods
+
+**Remember:** Checking spheres does not check all periods.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** A degree-two differential character assigns values in ℝ/ℤ additively to smooth integral 1-cycles. Its curvature is a 2-form whose integral on each smooth integral 2-chain gives the character’s value on the boundary, modulo integers.
+
+**Problem.** A torus admits a 2-form whose integral over every mapped sphere is zero, although the form cannot be a character curvature.
+
+**How the definition helps.** The boundary rule tests the whole torus, which has zero boundary. In our own example the form has total integral one half. Every map from the sphere to the torus lifts to the plane, where the lifted form has a primitive. Stokes’ theorem therefore gives zero on every sphere.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “a rule that assigns values in the circle group U(1)”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 1.1](https://doi.org/10.1007/BFb0075216)
+
+### Surface holonomy obeys Stokes
+
+**Remember:** Trivialize on the three-manifold and use ordinary Stokes.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A circle gerbe with connection assigns a phase, called holonomy, to each closed oriented surface mapped smoothly into its base. A trivialization over the surface describes the gerbe by a real 2-form b. Define the phase as exp(2πi ∫ b), integrating over the surface.
+
+**Problem.** For a smooth map from a compact oriented three-manifold, the boundary phase equals the exponential of 2πi times the integral of the pulled-back gerbe curvature.
+
+**How the definition helps.** The trivialization formula reduces the boundary phase to ordinary Stokes whenever the trivialization extends over the filling. In our own proof, each connected component with boundary admits a trivialization because its third integral cohomology vanishes. A closed component contributes phase one because the curvature has integral periods. The geometric comparison theorem identifies this formula with the usual sum of local contributions from a triangulation.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
+
+**Sources:**
+
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+
+### The Bockstein recovers flat characteristic classes
+
+**Remember:** With no curvature term, the integral class comes from the coboundary alone.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 3: graduate.
+
+**Definition.** In the cochain description of a differential character, a real cochain h lifts its cycle values modulo integers. The characteristic class is represented by integrated curvature minus δh, where δ takes the coboundary. A flat character has zero curvature.
+
+**Problem.** The integral characteristic class of a flat character equals minus the Bockstein of its ℝ/ℤ cohomology class.
+
+**How the definition helps.** Setting curvature to zero leaves exactly −δh. The Bockstein takes a circle-valued cocycle, lifts it to real values, and takes its coboundary. Our own comparison with the definition on cycles uses the theorem identifying characters with cochain classes.
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “The underlying characteristic class”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Corollary 1.2](https://doi.org/10.1007/BFb0075216)
+
+### Truncation preserves exact curvature
+
+**Remember:** An exact curvature can disappear in de Rham cohomology but not in the cutoff complex.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 55N20. arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** In degree n, the Hopkins–Singer construction for ordinary differential cohomology discards forms below degree n before taking cohomology. Its degree-n form group therefore records individual closed forms. A form occurs as curvature when its real cohomology class comes from integral cohomology.
+
+**Problem.** On ℝ² there is a differential class with curvature d(x dy) = dx ∧ dy. Using the full form complex would identify this curvature with zero.
+
+**How the definition helps.** The cutoff removes the degree-one forms whose derivatives would otherwise be boundaries in degree two (our own). The one-form x dy defines a topologically trivial differential class with curvature dx ∧ dy (our own). In the full complex, this same two-form represents zero because it is exact (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “the truncated sheaves of de Rham complexes with coefficients in a given chain complex:”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Two-forms describe topologically trivial gerbes
+
+**Remember:** A comparison line changes the curving by its curvature.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A trivial gerbe with curving B carries a global 2-form B specifying its surface phases. A comparison between two such gerbes is a line bundle whose connection has normalized curvature B₂ − B₁. Normalization divides unitary curvature by 2πi.
+
+**Problem.** Every topologically trivial circle gerbe with connection and curving has such a global description. Two forms give equivalent descriptions exactly when their difference integrates to an integer on every closed integral 2-cycle and is closed.
+
+**How the definition helps.** The comparison line turns equivalence into a prescribed-curvature problem for an ordinary line bundle. The line bundle curvature theorem gives exactly the stated period condition. In our own explanation, a topological trivialization with compatible connection lets the remaining curving descend to the base.
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “differ by a globally defined connection (n−1)-form, well defined up to addition of a form with integral periods.”
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “where the right hand side denotes the category of principal 𝕋-bundles with connection of fixed curvature F = B₂ − B₁.”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+- [P. Gajer, Geometry of Deligne cohomology](https://doi.org/10.1007/s002220050118)
+- [K. Waldorf, Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799)
 
 ### Synge's theorem needs orientability, which excludes the real projective plane
 
@@ -2016,6 +2428,655 @@
 **Sources:**
 
 - [Simon K. Donaldson, An application of gauge theory to four-dimensional topology](https://doi.org/10.4310/jdg/1214437665)
+
+### A Chern–Simons 2-curving computes Pontryagin curvature
+
+**Remember:** The derivative of the 2-curving is the characteristic form.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A 2-curving is the local 3-form whose derivative gives the curvature of a circle 2-gerbe, a higher circle bundle. For their Chern–Simons 2-gerbe, Roberts and Vozzo take the negative Chern–Simons form of the spin connection.
+
+**Problem.** For a principal Spin(n) bundle with connection and n ≥ 5, this 2-gerbe has 4-curvature equal to −2π times the half-Pontryagin form.
+
+**How the definition helps.** The chosen 2-curving reduces the calculation to differentiating the Chern–Simons form. Its derivative gives the curvature pairing that represents the Pontryagin form. In our own comparison with computing curvature from overlap data, the work moves to proving that the chosen form satisfies the gluing equations.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “\\curv (\\nabla ,\\beta \_A,-CS(A))/2\\pi = -\\frac 12 p<sub>1</sub>(Q,A).”
+
+**Sources:**
+
+- [Roberts and Vozzo, Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4)
+
+### Absolute products preserve compact support
+
+**Remember:** One relative factor keeps the product relative.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Represent a compactly supported character by a differential cocycle relative to the complement of a compact set K. Its cochains and form vanish on that complement. Multiply by an ordinary character using the cochain product before passing to equivalence classes.
+
+**Problem.** Compactly supported characters form a graded module over ordinary differential characters. Forgetting support commutes with this action.
+
+**How the definition helps.** Each term of the product restricts to zero outside K because it contains a relative factor. Our own comparison with characters defined on cycles uses the relative product theorem, including naturality of the correction comparing wedge and cup products. It gives a product on classes compatible with enlarging K and with forgetting K.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), §3.3 and §4.2](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Bott connections give secondary Pontryagin classes
+
+**Remember:** Too many transverse curvature factors vanish.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A codimension-q foliation divides a manifold locally into leaves with q transverse directions. A Bott connection on the normal bundle extends the canonical differentiation in directions tangent to the leaves. Its differential Pontryagin character refines the integral Pontryagin class and has the corresponding curvature form.
+
+**Problem.** If 2i exceeds q, the i-th differential Pontryagin character gives an ℝ/ℤ cohomology class of degree 4i−1 independent of the Bott connection.
+
+**How the definition helps.** The character retains a cohomology class one degree lower when its curvature vanishes. Bott’s vanishing theorem kills the degree-4i curvature form because 4i exceeds 2q. Our own independence argument joins two Bott connections on the cylinder with leaves extended along the interval. The same vanishing theorem there gives equal endpoint classes.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed”
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “the Chern form $c<sub>J</sub>(\\Omega ({\\nabla ^{{\\mathcal F}}}))$ is identically zero.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §7, Proposition 7.3](https://doi.org/10.1007/BFb0075216)
+- [Steven Hurder, Rigid secondary characteristic classes (2024), Theorem 3.1](https://arxiv.org/abs/2403.09371)
+
+### Characteristic refinements multiply
+
+**Remember:** Multiply the two prescribed projections and use uniqueness.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a compact Lie group, pair a conjugation-invariant polynomial P with an integral characteristic class u represented over ℝ by its curvature form. The Cheeger–Simons refinement is the unique natural character assignment with that curvature and integral class. Natural means that pulling back a connection pulls back its character.
+
+**Problem.** The refinement of the product pair (PQ, u ∪ v) equals the product of the refinements of (P,u) and (Q,v).
+
+**How the definition helps.** The product already has the curvature and integral class that specify the natural assignment. Our own argument uses the multiplicativity of both projections. Passing from the construction on cycles to this characterization requires the uniqueness theorem for assignments on all bundles with connection.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 2.2 and Corollary 2.3](https://doi.org/10.1007/BFb0075216)
+
+### Circle integration computes transgression curvature
+
+**Remember:** Curvature passes through integration along the circle.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A differential cohomology class records an integral class together with curvature and holonomy. To transgress a gerbe class, pull it back along evaluation, which sends a loop and a circle point to the corresponding manifold point. Integrating along the oriented circle gives a degree-two class representing a line bundle with connection.
+
+**Problem.** The normalized curvature of this line bundle is the integral along the same oriented circle of the pulled-back gerbe curvature.
+
+**How the definition helps.** Integration of differential cohomology classes commutes with taking curvature, giving the formula in one step. Our own comparison uses this rule in place of computing parallel transport in the geometric line of trivializations along each loop. Identifying the two line bundles with connection requires a comparison theorem.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “is a differential cohomology class on X of degree k less.”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+
+### Circle integration gives line bundles
+
+**Remember:** Integrate a gerbe over the circle to get a line bundle.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** Circle integration takes a differential cohomology class on X × S¹ to a class on X one degree lower. A smooth family of loops in M gives an evaluation map X × S¹ → M. Transgression means pulling a class back along this map and integrating over the oriented circle.
+
+**Problem.** Transgression of a circle gerbe with connection and curving gives each smooth family of loops a line bundle with unitary connection up to isomorphism.
+
+**How the definition helps.** Circle integration takes the degree-three class describing the gerbe to degree two, where classes describe lines with connection (our own). The work lies in constructing integration and proving the geometric classifications in both degrees (our own).
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “sends n-connections on Σₖ on U × Σₖ to the (n−k)-connection on U which is their fiber integration over Σₖ.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+
+### Closed fibers permit integration
+
+**Remember:** A closed fiber adds no boundary to a product cycle.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A degree-n differential character assigns circle values to smooth (n−1)-cycles and evaluates boundaries by integrating curvature modulo integers. For a closed oriented k-manifold F, integrate a character on X × F by evaluating it on products with a fundamental cycle of F. This cycle represents the orientation.
+
+**Problem.** For n &gt; k, integration over F gives a degree-(n−k) character on X whose curvature is the integral of the original curvature over F.
+
+**How the definition helps.** A closed fiber contributes no boundary term, so the original character gives the required boundary rule on product chains (our own). Changing the fundamental cycle contributes a curvature integral with too many fiber directions, which vanishes (our own). An interval instead contributes its two endpoints by Stokes’ theorem (our own).
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “with compact fibers in terms of Deligne complex”
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Given a k-form ξ on X × \[a,b\] we have d∫\[a,b\] ξ + ∫\[a,b\] dξ = ξ\|X × {b} − ξ\|X × {a}.”
+
+**Sources:**
+
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+- [D. M. Roberts and R. F. Vozzo, Rigid models for 2-gerbes I: Chern–Simons geometry, Proposition 3.9.](https://arxiv.org/abs/2209.05521v4)
+
+### Cochains give differential characters
+
+**Remember:** The real comparison cochain becomes holonomy modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A differential cocycle records an integral cocycle c, a closed n-form ω, and a real cochain h of degree n−1. On each smooth n-chain, h evaluates its boundary as the integral of ω minus the value of c.
+
+**Problem.** Evaluating h modulo integers identifies degree-n smooth Deligne classes with differential characters. These characters add on cycles and evaluate boundaries by integrating their curvature modulo integers.
+
+**How the definition helps.** Reducing the cochain equation modulo integers gives the rule for boundaries (our own). Conversely, lifting the character to a real cochain recovers an integral discrepancy c, and different lifts give equivalent cocycles (our own). Identifying these cochain classes with Deligne classes requires the comparison theorem (our own).
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “are equivalent to other models for these structures, notably to Deligne cohomology”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+
+### Cocycle pairing gives surface holonomy
+
+**Remember:** Every oriented triangulation represents the same surface class.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A gerbe with connection gives a degree-three differential character, a circle-valued function on two-cycles whose boundary values integrate its curvature. Pull this character back to a closed oriented surface and evaluate it on a cycle representing the surface orientation.
+
+**Problem.** For a smooth map from a closed oriented surface, gerbe holonomy is independent of the triangulation and patch labels used in the local formula.
+
+**How the definition helps.** The pulled-back curvature is a three-form on a surface, so the character vanishes on boundaries there (our own). All oriented triangulations represent the same homology class, and character evaluation uses no patch labels (our own). The comparison theorem identifies this evaluation with the local face, edge, and vertex formula (our own).
+
+**nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe), [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “assigns the exponentiated integrals of the 2-form over faces, of the connection 1-form over edges, and assigns the isomorphism μᵢⱼₖ to vertices.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+
+### Compact support requires relative periods
+
+**Remember:** An interval with both ends outside the support can detect a missing period.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A character with compact support uses cycles relative to the complement of some compact set K. These are chains whose boundaries lie outside K, taken modulo chains outside K. On relative boundaries the character integrates its curvature modulo integers.
+
+**Problem.** The curvature integrates to an integer on every relative cycle of its degree. A compactly supported 1-form on ℝ with integral one half cannot occur.
+
+**How the definition helps.** Every relative cycle has zero relative boundary, so its curvature integral must vanish modulo integers. In our own example an interval containing K in its interior detects the half-integer. Absolute cycles miss it because every 1-form on the line has a primitive.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Definition 3.1 and Theorem 4.2](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Compact support retains data at infinity
+
+**Remember:** Trivializations at infinity can differ even when the absolute character vanishes.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A compactly supported differential character comes from a character relative to the complement of a compact set K. Two representatives agree if they become equal after enlarging K. A relative cycle may have boundary outside K.
+
+**Problem.** On the real line, compactly supported degree-two characters form the group ℝ/ℤ. Every such character becomes zero on forgetting compact support.
+
+**How the definition helps.** Relative cycles include paths joining the two ends of the line, which absolute cycles miss. In our own calculation we take K to be a closed interval. There are no curvature 2-forms, so characters are homomorphisms on relative first homology, generated by a crossing path. Enlarging the interval preserves this generator, whereas absolute first homology vanishes.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Theorem 4.2 and Remark 4.5](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Curving adjusts the Chern character
+
+**Remember:** The exponential of the curving cancels the extra line curvature.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A finite-rank gerbe module has local vector bundles that differ on overlaps by tensoring with lines, with connections respecting these identifications. Choose local 2-forms B whose differences equal the intervening line curvatures divided by 2πi. The adjusted Chern character multiplies the usual curvature form ch(E) = tr exp(F∕2πi) by exp(−B), where F is the module curvature.
+
+**Problem.** The adjusted forms agree on overlaps and give a global even form α satisfying dα + H ∧ α = 0, where H = dB.
+
+**How the definition helps.** The exponential correction cancels the factor that tensoring with a line contributes to the ordinary Chern character. In our own calculation the factors cancel on each overlap, so the local forms glue. Differentiating the correction gives −H, since the ordinary character is closed. Proving independence of the resulting cohomology class from the module connection requires a separate comparison of connections.
+
+**Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “The twisted Chern character is a differential form that represents a class in the twisted cohomology”
+
+**Sources:**
+
+- [P. Bouwknegt, A. L. Carey, V. Mathai, M. K. Murray and D. Stevenson, Twisted K-Theory and K-Theory of Bundle Gerbes](https://doi.org/10.1007/s002200200646)
+- [V. Mathai and D. Stevenson, Chern Character in Twisted K-Theory: Equivariant and Holomorphic Cases](https://doi.org/10.1007/s00220-003-0807-7)
+
+### Deligne squares define Chern–Simons
+
+**Remember:** Square the differential class, then evaluate on the fundamental cycle.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A line bundle with unitary connection defines a degree-two differential class. Its Deligne square multiplies this class by itself and gives a degree-four character, an additive circle-valued function on three-cycles.
+
+**Problem.** On a closed oriented three-manifold, evaluating the Deligne square on the orientation class gives the abelian Chern–Simons action in ℝ/ℤ with this normalization. For a trivial bundle with real normalized connection form A, the action is ∫ A∧dA modulo integers.
+
+**How the definition helps.** The square gives a global character even when the local connection forms do not glue to one form (our own). Its curvature vanishes in dimension three, so evaluation depends only on the homology class (our own). On a trivial bundle the Deligne product reduces to A∧dA (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “The action functional of abelian higher dimensional Chern-Simons theory is given by the fiber integration in ordinary differential cohomology over the BD cup product of differential cocycles”
+
+**Sources:**
+
+- [Domenico Fiorenza, Hisham Sati and Urs Schreiber, Extended higher cup-product Chern–Simons theories.](https://doi.org/10.1016/j.geomphys.2013.07.011)
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+
+### Fake flatness permits surface transport
+
+**Remember:** A surface label must account for the change along its edges.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A strict Lie 2-group has group elements as path labels and arrows between them as surface labels. Locally, a connection supplies forms A and B of degrees one and two. Fake flatness means that the boundary map on Lie algebras sends B to the curvature of A.
+
+**Problem.** These forms define smooth transport along paths and surfaces between paths exactly when the connection is fake flat. Transport uses thin homotopies, which sweep out no extra dimension.
+
+**How the definition helps.** Fake flatness makes the boundary of each surface label agree with transport along its two edges. The integration theorem constructs transport from the forms and recovers the forms by differentiation. In our own counterexample, take the identity boundary map for the circle, zero A and a nonzero B on the plane.
+
+**nLab:** [higher parallel transport](https://ncatlab.org/nlab/show/higher+parallel+transport). It says: “A 2-connection therefore admits parallel transport only if its 2-form curvature is constrained to vanish.”
+
+**Sources:**
+
+- [Schreiber and Waldorf, Smooth functors vs. differential forms](https://doi.org/10.4310/hha.2011.v13.n1.a7)
+
+### Finite holonomy determines the secondary class
+
+**Remember:** On a finite holonomy group, the Bockstein has an inverse.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Parallel transport in a flat bundle gives a group H of transformations around loops, called its holonomy group. A positive-degree integral characteristic class u compatible with an invariant polynomial has a flat differential refinement. Its secondary class is the corresponding cohomology class with ℝ/ℤ coefficients, one degree lower.
+
+**Problem.** For finite H and u of degree at least two, the secondary class pulls back from the unique class on BH with Bockstein −u\|BH. Here BH classifies principal H-bundles, and the Bockstein connects ℝ/ℤ cohomology to integral cohomology.
+
+**How the definition helps.** The secondary class records exactly a lift of the negative integral class through the Bockstein. Our own explanation uses naturality of the universal flat class and vanishing of positive-degree real cohomology of a finite group. The coefficient exact sequence then makes that lift unique on BH.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 2.10](https://doi.org/10.1007/BFb0075216)
+
+### Flat gerbes measure differential string choices
+
+**Remember:** Two paths to zero differ by a loop at zero.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** Fix a spin bundle with connection. An untwisted differential string structure is a trivialization of its differential half-Pontryagin class to the zero cocycle, including the connection data. Equivalently, it is a path from the cocycle to zero in the space classifying circle 2-gerbes with connection.
+
+**Problem.** Choosing one such trivialization identifies the space of all such choices with the space of flat circle gerbes, including their isomorphisms and higher symmetries.
+
+**How the definition helps.** Paths with common endpoints can be compared by reversing the chosen path and composing. Our own argument thereby identifies the choices with loops at zero. In the complex of local connection forms, these loops are circle gerbes with closed local 2-forms, precisely the flat gerbes. The path description replaces a direct comparison of local trivializations.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure), [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “is the homotopy fiber of ½ p̂₁(X) over the trivial differential cocycle.”
+
+**Sources:**
+
+- [Fiorenza, Schreiber and Stasheff, Čech cocycles for differential characteristic classes](https://doi.org/10.4310/atmp.2012.v16.n1.a5)
+
+### Form multiplication forces cup products
+
+**Remember:** Two products could differ only by a flat operation on integral classes.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** In ordinary differential cohomology, a form α determines a class a(α) one degree higher, and each class x has a closed curvature form R(x). A compatible product multiplies curvatures by wedge product and satisfies a(α)x = a(α ∧ R(x)).
+
+**Problem.** On an ordinary character functor, the diagram model of ordinary differential cohomology, at most one natural graded-commutative ring product satisfies these rules.
+
+**How the definition helps.** The form rule makes the difference of two products depend only on the underlying integral classes (our own). The curvature rule makes that difference flat, so it takes values in circle-valued cohomology one degree lower (our own). Simons and Sullivan prove that no such natural bilinear cohomology operation exists (our own).
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “both these sequences interlock to form the hexagonal differential cohomology diagram of ordinary differential cohomology.”
+
+**Sources:**
+
+- [Simons and Sullivan, Axiomatic characterization of ordinary differential cohomology](https://doi.org/10.1112/jtopol/jtm006)
+
+### Fusion recovers lost gerbes
+
+**Remember:** Fusion remembers how three paths fit together.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** Fusion multiplies fibers over loops formed from path pairs (a,b) and (b,c) into the fiber for (a,c), reversing each second path. The paths share endpoints, and the product is smooth and associative. Parallel transport must preserve fusion and reverse the order of factors under a half-turn of the loops.
+
+**Problem.** On a connected smooth manifold, transgression identifies circle gerbes with connection, up to isomorphism, with fusion circle bundles having superficial connections, up to isomorphism. Superficial connections give phase one on tori of rank at most one and preserve phases during homotopies of rank at most two.
+
+**How the definition helps.** Fusion retains the multiplication needed to reconstruct a gerbe from its loop bundle. Waldorf proves the reconstruction theorem. In our own example, a closed oriented surface of genus two carries a flat gerbe whose phase on the surface differs from one. Every torus map to this surface has degree zero, so the loop connection alone has trivial holonomy.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “Lifted transgression L̃ is an equivalence of categories”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Geometric string structures give Pontryagin primitives
+
+**Remember:** Trivial topology does not force the Chern–Simons curvature to vanish.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A geometric string structure trivializes the Chern–Simons 2-gerbe, the higher circle bundle representing half the first Pontryagin class of a spin bundle. The trivialization respects the spin connection through compatible connection data, including a global 3-form C on the base.
+
+**Problem.** The derivative of C equals the half-Pontryagin form of the spin connection, with the normalization used for the Chern–Simons 2-gerbe.
+
+**How the definition helps.** The trivialization identifies the curvature of the Chern–Simons 2-gerbe with the derivative of C. Requiring C to vanish would exclude connections whose half-Pontryagin form is exact and nonzero. The existence theorem supplies compatible connections on topological trivializations.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “on a trivial circle n-bundle every connection may be represented by a globally defined n-form.”
+
+**Sources:**
+
+- [Waldorf, String connections and Chern–Simons theory](https://doi.org/10.1090/s0002-9947-2013-05816-3)
+
+### Gerbe automorphisms are flat line bundles
+
+**Remember:** A change that fixes the curving has flat line data.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A degree-three Deligne cocycle describes a circle gerbe by local two-forms, overlap one-forms, and circle values on triple overlaps. A change of this description uses one-forms on patches and circle-valued functions on overlaps. It acts by adding their combined derivative and overlap differences.
+
+**Problem.** Up to isomorphism, symmetries preserving a gerbe’s connection and local two-forms form the group of flat unitary line bundles under tensor product.
+
+**How the definition helps.** Fixing the patch two-forms forces the change one-forms to be closed, so they define flat local connections (our own). The remaining equations glue them into a line bundle, and equivalent changes give isomorphic bundles (our own). The geometric interpretation requires the comparison between gerbe symmetries and cocycle changes (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the collection of Deligne cocycles with coefficients in the Deligne complex that defines it, is considerably richer than other models”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Paweł Gajer, Geometry of Deligne cohomology.](https://doi.org/10.1007/s002220050118)
+
+### Gerbe multiplication builds a bundle 2-gerbe
+
+**Remember:** The group difference on triples turns multiplication into gluing.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A circle gerbe is a higher circle bundle. A multiplicative gerbe on a group identifies the tensor product of its values at g and h with its value at gh. A chosen isomorphism compares the two triple products, and the pentagon identity makes these comparisons agree for four factors.
+
+**Problem.** Every principal G-bundle and multiplicative gerbe on G determine a bundle 2-gerbe on the base, with gerbes as its transition data.
+
+**How the definition helps.** Two points in one bundle fiber determine the unique group element carrying the first to the second. On triples these elements multiply, so gerbe multiplication gives the required transition isomorphism. On quadruples the comparison of triple products gives its associator, and the pentagon supplies the last gluing law. This replaces a separate construction of coherence maps on the overlaps.
+
+**nLab:** [universal Chern-Simons line 3-bundle](https://ncatlab.org/nlab/show/universal+Chern-Simons+line+3-bundle). It says: “the pullback of the multiplicative structure on 𝒢 induces the structure of a bundle 2-gerbe”
+
+**Sources:**
+
+- [Carey, Johnson, Murray, Stevenson and Wang, Bundle gerbes for Chern-Simons and Wess-Zumino-Witten theories](https://doi.org/10.1007/s00220-005-1376-8)
+
+### Higher refined classes stay constant along flat paths
+
+**Remember:** Two time differentials wedge to zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A Cheeger–Simons character refines an integral characteristic class whose real image comes from a conjugation-invariant polynomial P. It evaluates cycles modulo integers and integrates P of the connection curvature on boundaries. A flat connection has zero curvature.
+
+**Problem.** Along a smooth path of flat connections on a fixed principal bundle, the refined class stays constant if P has degree at least two. The differential first Chern class can vary.
+
+**How the definition helps.** On the cylinder, every curvature term contains the time differential because each time slice is flat. Two such terms wedge to zero, so the boundary rule gives equal values on the two ends of every swept cycle. In our own example, the connections d + 2πit dx on the trivial line over ℝ/ℤ give different parallel transports around the circle.
+
+**nLab:** [Chern-Simons form](https://ncatlab.org/nlab/show/Chern-Simons+form). It says: “is a form that trivializes the difference between the two curvature characteristic forms”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 2.9 and §4](https://doi.org/10.1007/BFb0075216)
+
+### Jandl structures allow unoriented holonomy
+
+**Remember:** Reverse the orientation and dualize the gerbe.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** For a circle gerbe with connection, a Jandl structure identifies its pullback by an involution with its dual, which inverts surface phases. The identification preserves the connection and comes with a compatible identification of its double application with the identity.
+
+**Problem.** A Jandl gerbe assigns a phase to a closed unoriented surface mapped from its orientation double cover into the base. The map must intertwine the exchange of sheets with the involution on the base.
+
+**How the definition helps.** In our own explanation, duality compensates for the inversion of the phase when a local orientation changes. The holonomy theorem proves independence from all choices of local orientations. In our own example, use the identity involution on the sphere and a trivial gerbe whose 2-form integrates to one-third. Its phase exp(2πi/3) differs from its inverse, so this gerbe admits no Jandl structure.
+
+**nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe). It says: “The generalization ("Jandl gerbes") to unoriented surfaces”
+
+**Sources:**
+
+- [U. Schreiber, C. Schweigert and K. Waldorf, Unoriented WZW Models and Holonomy of Bundle Gerbes](https://doi.org/10.1007/s00220-007-0271-x)
+
+### Locally constant coefficients classify flat gerbes
+
+**Remember:** At zero curvature, only locally constant transition data survive.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18F20. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A flat circle gerbe is a higher circle bundle with connection and zero 3-curvature. Its local description uses circle functions, 1-forms and 2-forms on overlapping patches. Flatness requires the 2-forms to be closed.
+
+**Problem.** On a smooth manifold X, flat circle gerbes, their isomorphisms and the maps between isomorphisms form the mapping space from X to K(ℝ/ℤ, 2). This target has just one nonzero homotopy group, the discrete circle group in degree two.
+
+**How the definition helps.** Closed 2-forms have local primitives, so the Poincaré lemma removes the form data locally and leaves locally constant circle coefficients. The comparison with geometric gerbes identifies the resulting cocycles and all their symmetries.
+
+**nLab:** [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “by the Poincare lemma applied to each Cartesian space”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://doi.org/10.1007/s40062-014-0092-5)
+
+### Loop transport computes torus holonomy
+
+**Remember:** A loop of loops sweeps the torus seen by the gerbe.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A circle gerbe with connection assigns a circle value, its holonomy, to each closed oriented surface mapped into the base. Transgression gives a circle bundle with connection on the free loop space. It pulls the gerbe’s differential class back by evaluation and integrates over the loop parameter.
+
+**Problem.** Transport around a closed curve in free loop space has the same holonomy as the gerbe on the torus it traces. Orient the torus in the order used for integration.
+
+**How the definition helps.** Integration over the loop parameter turns evaluation on a curve of loops into evaluation on the swept torus. In our own derivation, this is the evaluation rule for integration of differential characters, which assign circle values to cycles. The comparison theorem identifies the integrated class with the bundle built from gerbe trivializations.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “the partial higher holonomy operation for circle n-bundles with connection”
+
+**Sources:**
+
+- [Waldorf, Transgression to loop spaces and its inverse, II](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Multiplicative gerbes give product holonomy
+
+**Remember:** The correction gerbe contributes the exponential of its curving integral.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A multiplicative circle gerbe with connection on a Lie group compares its pullback by multiplication with the tensor product of its two pullbacks by projection. The tensor product includes a trivial gerbe with a real 2-form ρ on the group square. The comparison preserves connections and satisfies associativity up to compatible isomorphism.
+
+**Problem.** For smooth maps f and g from a closed oriented surface into the group, their surface phases satisfy h(fg) = h(f)h(g) exp(2πi ∫ (f,g)⁎ρ).
+
+**How the definition helps.** The multiplicative comparison expresses the product phase as three phases, one for each tensor factor. The trivial factor contributes the exponential of its 2-form integral. Our own derivation replaces a local calculation of the product phase with this comparison. Constructing a multiplicative structure with connection is the separate geometric step.
+
+**nLab:** [basic gerbe](https://ncatlab.org/nlab/show/basic+gerbe). It says: “the basic bundle gerbe itself has a multiplicative structure covering that on G”
+
+**Sources:**
+
+- [K. Waldorf, Multiplicative bundle gerbes with connection](https://doi.org/10.1016/j.difgeo.2009.10.006)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+
+### Rational coefficients kill flat cross terms
+
+**Remember:** The rational refinement discards torsion cross terms.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Chern character uses the usual polynomials expressing the Chern character in Chern classes, now applied to differential Chern classes with rational periods. For a flat unitary bundle each positive-degree term has zero curvature and gives an odd cohomology class with ℝ/ℚ coefficients.
+
+**Problem.** In degree 2r−1, the secondary Chern character equals the secondary r-th Chern class multiplied by (−1)ʳ⁻¹/(r−1)!, after passage to ℝ/ℚ coefficients.
+
+**How the definition helps.** The polynomial definition leaves only its linear term because products of two positive-degree flat factors vanish here. Our own explanation uses the flat product formula, which pairs one factor with the rational characteristic class of the other. Flatness kills that rational class by the curvature formula. The Newton identities give the stated coefficient.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 8.22](https://doi.org/10.1007/BFb0075216)
+
+### Rigid connections give one curvature class
+
+**Remember:** Different 2-curvings change curvature by a derivative.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A rigid bundle 2-gerbe describes a higher circle bundle by gluing data on successive overlaps. Its connection includes a 3-form on the cover, called the 2-curving. Its differences on overlaps must match derivatives of the lower connection data.
+
+**Problem.** Any two rigid connections on the same rigid bundle 2-gerbe give 4-curvatures that differ by an exact form.
+
+**How the definition helps.** The overlap equations let us compare the two curvings on a common cover. In our own summary, correcting their difference by an exact form gives a 3-form from the base. Its derivative is the difference of the 4-curvatures. The correction uses exactness of the sequence of forms on successive overlaps.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Hence the de Rham class associated to a rigid bundle 2-gerbe is independent of the choice of rigid connective structure.”
+
+**Sources:**
+
+- [Roberts and Vozzo, Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4)
+
+### Secondary Chern characters satisfy fiber transfer
+
+**Remember:** The Euler class transfers the secondary Chern character.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The complex secondary Chern character of a flat bundle records an odd cohomology class with coefficients in ℂ/ℚ. Its real part takes coefficients in ℝ/ℚ. For a graded flat bundle, take the alternating sum of these real classes.
+
+**Problem.** A flat complex bundle on a smooth family of closed oriented manifolds over a compact base gives flat cohomology bundles on the base. Their alternating real secondary character equals the fiber integral of the original real secondary character times the Euler class of the vertical tangent bundle.
+
+**How the definition helps.** The secondary character puts both sides in the same odd cohomology group, even though ordinary real Chern classes of flat bundles vanish in positive degrees. In our own reading, the alternating sum accounts for the degrees of fiber cohomology. Ho’s local index theorem proves the equality. The vertical tangent bundle consists of the tangent spaces along the fibers.
+
+**Paper or page:** [Local index theory and the Riemann-Roch-Grothendieck theorem for complex flat vector bundles II](https://arxiv.org/abs/2310.06616). It says: “\\operatorname{Re}(\\operatorname{CCS}(H(Z, F\|<sub>Z</sub>), \\nabla <sup>H(Z, F\|<sub>Z</sub>)</sup>))=\\int <sub>X/B</sub>e(T<sup>VX</sup>)\\cup \\operatorname{Re}(\\operatorname{CCS}(F, \\nabla ^F))”
+
+**Sources:**
+
+- [Man-Ho Ho, Local index theory and the Riemann-Roch-Grothendieck theorem for complex flat vector bundles II (2023), real Riemann–Roch–Grothendieck formula](https://arxiv.org/abs/2310.06616)
+
+### Smooth duals exclude point evaluations
+
+**Remember:** The dual must pair with forms by integration, not by sampling.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** On a closed oriented n-manifold, a degree-k integration character integrates a (k−1)-form over cycles modulo integers. A homomorphism from characters to ℝ/ℤ is smooth if on integration characters it integrates that form wedged with a fixed smooth (n−k+1)-form.
+
+**Problem.** For 1 ≤ k ≤ n, every smooth homomorphism on degree-k characters pairs with a unique degree-(n−k+1) character by multiplication and evaluation on the manifold.
+
+**How the definition helps.** Character multiplication pairs form inputs with a smooth curvature form, which explains the smoothness requirement. Our own counterexample evaluates a circle-valued function at one point of the circle. A smooth density representing this functional would vanish away from that point by testing real functions supported elsewhere, hence vanish everywhere. Existence and uniqueness use the smooth duality theorem.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Definition 5.2 and Theorem 5.4](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Thin loops constrain transgression connections
+
+**Remember:** Collapsed tori cannot carry a gerbe phase.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A loop of loops traces a torus in the base manifold. A connection on a circle bundle over loop space is superficial if transport around every torus of differential rank at most one gives phase one. It must also give equal phases for tori joined by a homotopy of differential rank at most two.
+
+**Problem.** Every circle gerbe with connection induces a superficial connection on its bundle over free loops.
+
+**How the definition helps.** Superficiality records the two rank bounds under which gerbe surface transport loses dependence on the surface. In our own derivation, the surface holonomy formula gives the first condition, and its curvature formula on a homotopy gives the second. In our own counterexample, evaluate loops in a circle at one parameter and pull back a flat connection with nontrivial phase. The circle of constant loops retains that phase although its torus map has rank one.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “if φ ∈ LLX, φ̃ : S¹ × S¹ → X has rank one, then”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Transgression lines hold boundary holonomy
+
+**Remember:** Each boundary frame turns the holonomy vector into a phase.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** The transgression line of a circle gerbe with connection assigns a complex line to each smooth loop. Its unit vectors are the ways to identify the gerbe on that loop with the trivial gerbe with zero curving, up to connection-preserving isomorphism.
+
+**Problem.** A smooth map from a compact oriented surface with one parametrized outgoing boundary gives a canonical unit vector in the line of its boundary loop.
+
+**How the definition helps.** The line records how the boundary phase changes when the chosen trivialization changes. In our own explanation, a surface trivialization supplies both a boundary frame and a phase obtained by integrating its 2-form. Changing the trivialization multiplies them by inverse factors, by Stokes for the comparison line bundle. Their product therefore gives the same vector.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “for β ∈ LX and where I₀ denotes the trivial gerbe on the circle.”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+- [S. Bunk and K. Waldorf, Smooth functorial field theories from B-fields and D-branes](https://link.springer.com/article/10.1007/s40062-020-00272-2)
+
+### Translation symmetries of a gerbe model String
+
+**Remember:** The basic gerbe remembers the extension that makes String.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A basic circle gerbe on G is a higher circle bundle whose class generates H³(G; ℤ). Its translation symmetries identify the gerbe with its translates and include the isomorphisms between these identifications. Composition gives a smooth 2-group, a group with isomorphisms between its elements.
+
+**Problem.** For compact, simple, simply connected G, this symmetry 2-group models String(G), the cover that also kills the third homotopy group.
+
+**How the definition helps.** Composition of gerbe symmetries supplies the multiplication in the proposed String model. The work in Theorem 1.4 is identifying the homotopy type of this extension.
+
+**Paper or page:** [Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395v2). It says: “Then both Symɢ(𝒢) and Desₗ are smooth 2-group models for the string group of G.”
+
+**Sources:**
+
+- [Bunk, Müller and Szabo, Smooth 2-Group Extensions and Symmetries of Bundle Gerbes, Theorem 1.4](https://arxiv.org/abs/2004.13395v2)
+
+### Universal differential classes commute with pullback
+
+**Remember:** Pull back one differential class to every bundle with connection.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** For a compact Lie group, a universal differential characteristic class is a map from the stack of bundles with connection to differential cohomology. A stack records families and their isomorphisms. The map refines an even positive degree integral class by recording its characteristic curvature form.
+
+**Problem.** Pulling back a bundle with connection pulls back its differential characteristic class along the same smooth map.
+
+**How the definition helps.** A bundle receives its differential class by composition with the universal map. In our own comparison, computing a class separately from each connection would require checking naturality. Here composition gives naturality once the universal map with the prescribed curvature has been constructed.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “there is a map č : B∇G → Bᵏ⁻¹∇𝕋 natural in (G, c)”
+
+**Sources:**
+
+- [Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings, Theorem 22](https://arxiv.org/abs/2304.14764v1)
+
+### Whitney sums multiply differential Chern classes
+
+**Remember:** Compare both projections where both bundles are universal.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Chern classes are natural character assignments for Hermitian bundles with unitary connection. Their curvatures are the Chern forms computed from the connection, and their integral classes are the ordinary Chern classes. The total class is their sum, including the degree-zero unit.
+
+**Problem.** For a direct sum with its block sum connection, the total differential Chern class equals the product of the total classes of the summands.
+
+**How the definition helps.** Characterizing the assignment by naturality and its two projections reduces the formula to the ordinary sum formulas for classes and curvature forms. Our own comparison treats a pair of bundles as one bundle for the product of their unitary groups. The uniqueness theorem there replaces a direct calculation on cycles.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 4.6](https://doi.org/10.1007/BFb0075216)
 
 ### Singular foliations as modules of vector fields always have holonomy groupoids
 

@@ -1809,6 +1809,80 @@
 
 - [Carlo Mazza, Vladimir Voevodsky and Charles Weibel, Lecture Notes on Motivic Cohomology (2006)](https://www.claymath.org/library/monographs/cmim02.pdf)
 
+### Extra terms force holomorphic flatness
+
+**Remember:** Keeping the next form forces the connection form to be closed.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 53C08. arXiv math.AG, math.DG. Level 3: graduate.
+
+**Definition.** In weight two, a holomorphic Deligne cocycle for a line bundle uses holomorphic frame changes and local holomorphic connection forms. Weight three adds the exterior derivative from one-forms to two-forms.
+
+**Problem.** Degree-two holomorphic Deligne classes in weight three classify holomorphic line bundles with flat holomorphic connection up to isomorphism. Weight two classifies all holomorphic line bundles with holomorphic connection.
+
+**How the definition helps.** The extra derivative forces each local connection form to be closed, exactly the flatness condition (our own). On the trivial line over ℂ², the form z dw has nonzero derivative dz∧dw and therefore works only in weight two (our own). Gluing the local frames and connections gives the classification (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “using holomorphic differential forms”
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “For q = p = 2, it is the group of isomorphism classes of C×-bundles with connection.”
+
+**Sources:**
+
+- [Helmut Hamm and Lê Dũng Tráng, Picard groups for line bundles with connections, Lemma 1.13.](https://doi.org/10.5427/jsing.2018.18j)
+
+### Finite coefficients erase the Hodge term
+
+**Remember:** Reducing modulo m leaves the lattice and removes the forms.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** The weight p analytic Deligne complex starts with the constants (2πi)ᵖℤ, followed by holomorphic functions and forms through degree p−1. Its cohomology accounts for gluing local sections. Reduction with finite coefficients takes the cone of multiplication by m on this complex.
+
+**Problem.** On a complex manifold, weight p Deligne cohomology with coefficients modulo m equals ordinary cohomology with coefficients (2πi)ᵖℤ modulo m, for p,m ≥ 1.
+
+**How the definition helps.** Using the truncated holomorphic complex makes reduction termwise because all its terms are flat over ℤ (our own). Multiplication by m is invertible on forms, including functions, so only the constants survive (our own). Comparison with the cone definition uses the holomorphic de Rham theorem (our own).
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “or of holomorphic forms, respectively”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §1.1](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### The Deligne cone gives the Jacobian kernel
+
+**Remember:** The cone puts the period quotient one degree higher.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** The Deligne cone compares integral cochains scaled by (2πi)ᵖ with complex differential forms modulo Fᵖ. The Hodge filtration step Fᵖ keeps forms with at least p holomorphic factors. A cocycle records both an integral cochain and a witness that its image is a boundary.
+
+**Problem.** On a smooth projective complex variety, degree 2p Deligne cohomology of weight p maps onto integral classes whose complex images have type (p,p). Its kernel is the intermediate Jacobian, the degree 2p−1 complex cohomology modulo Fᵖ and the image of scaled integral cohomology.
+
+**How the definition helps.** The cone places the quotient defining the Jacobian directly in its exact sequence (our own). Passing from the truncated holomorphic complex to the cone uses the de Rham comparison theorem (our own). Hodge decomposition identifies the image in degree 2p, including integral torsion (our own).
+
+**nLab:** [intermediate Jacobian](https://ncatlab.org/nlab/show/intermediate+Jacobian). It says: “is characterised as being the fiber of a canonical map from (complex analytic) Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2 and 7](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Weight one classifies line bundles
+
+**Remember:** The exponential turns a two-term complex into transition functions.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** On a complex manifold, the weight one Deligne complex includes the constants 2πiℤ into the holomorphic functions. They sit in degrees zero and one. Deligne cohomology combines this complex with the gluing of local sections.
+
+**Problem.** Degree two Deligne cohomology of weight one classifies holomorphic line bundles up to isomorphism, with addition corresponding to tensor product.
+
+**How the definition helps.** Exponentiation replaces the two terms by nowhere-zero holomorphic functions in degree one without changing cohomology (our own). Local logarithms prove this replacement works (our own). Degree one classes of those functions give the transition functions that glue a line bundle (our own).
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “the group of isomorphism classes of smooth (or holomorphic, depending on the context) principal C×-bundles”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §1.4](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
 ### Constructible sets are exactly what images of morphisms produce
 
 **Remember:** Images of varieties are not varieties, but they are constructible.
@@ -2057,6 +2131,80 @@
 **Sources:**
 
 - [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://doi.org/10.1007/bf02699132)
+
+### Forgetting currents recovers Chow groups
+
+**Remember:** Lift rational relations to erase the cycle while keeping its remaining Green data.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** An ordinary Chow class records an algebraic cycle, a formal sum of subvarieties, modulo divisors of rational functions on subvarieties. An arithmetic Chow class also records a Green current, a generalized differential form that compensates for integration along the cycle. Its relations lift each ordinary divisor relation by attaching the corresponding logarithm.
+
+**Problem.** On a regular projective arithmetic variety, forgetting the Green current maps arithmetic Chow classes onto ordinary Chow classes. The kernel consists exactly of classes with zero cycle and a smooth form.
+
+**How the definition helps.** Lifting the ordinary divisor relations lets us subtract them from an arithmetic representative until its cycle is zero (our own). Existence of Green currents gives surjectivity (our own). Analytic regularity replaces the remaining current by a smooth form modulo the derivatives allowed in the group (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “\\widetilde{C}<sup>2p-1</sup>(p)\\overset {\\operatorname{a}<sub>C</sub>}{\\longrightarrow } \\operatorname{\\widehat{CH}}<sup>p</sup>(\\mathcal{X},C) \\overset {\\zeta <sub>C</sub>}{\\longrightarrow } \\operatorname{CH}<sup>p</sup>(\\mathcal{X})\\to 0”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Green functions recover line metrics
+
+**Remember:** The logarithmic part gives the divisor, and the smooth part gives the metric.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG. Level 3: graduate.
+
+**Definition.** An arithmetic divisor pairs a divisor D, a formal sum of hypersurfaces, with a conjugation-invariant real function g off D. If f is a local equation for D, then g + log \|f\|² must extend smoothly. The first arithmetic Chow group identifies pairs differing by (div(u), −log \|u\|²) for a nonzero rational function u.
+
+**Problem.** On a smooth projective integral variety over an arithmetic field, the first arithmetic Chern class identifies hermitian line bundles with arithmetic divisor classes.
+
+**How the definition helps.** The logarithmic condition turns the singular function into a smooth metric in each local frame (our own). In the line bundle of D, give its canonical rational section squared norm exp(−g) (our own). Dividing the section by f gives a local frame with smooth positive squared norm exp(−g − log \|f\|²) (our own). Principal pairs change the rational section and preserve the resulting metric up to isometry (our own).
+
+**Paper or page:** [Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1). It says: “The assignment (ℒ, ‖·‖) ↦ ĉ₁(ℒ, ‖·‖) defines a group isomorphism”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [Souvik Goswami and Rahul Gupta, Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1)
+
+### Section changes preserve Chern classes
+
+**Remember:** Record both the divisor and the norm of the section.
+
+*True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A hermitian line bundle assigns a smoothly varying norm to each complex fiber, compatibly with conjugation. Its first arithmetic Chern class records a rational section’s divisor of zeros and poles and its negative log squared norm. The arithmetic Chow group sets (div(u), −log \|u\|²) equal to zero for every nonzero rational function u.
+
+**Problem.** On a regular integral arithmetic variety, every nonzero rational section of a hermitian line bundle gives the same first arithmetic Chern class.
+
+**How the definition helps.** The quotient removes exactly the change that a new section introduces (our own). Multiplying a section by u adds div(u) to the divisor and subtracts log \|u\|² from the second entry (our own). The Poincaré–Lelong formula shows that the second entry has the singularities required by the first (our own).
+
+**Wikipedia:** [Arakelov theory](https://en.wikipedia.org/wiki/Arakelov_theory). It says: “is the quotient of this group by the subgroup generated by certain "trivial" cycles.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+
+### Zero mean fixes Green functions
+
+**Remember:** The equation leaves one constant, and the mean fixes it.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A divisor D on a compact connected Riemann surface specifies point masses δ(D) of total integer weight deg(D). Choose a smooth positive area form μ of mass one. The normalized Green function has mean zero for μ and solves the Poisson equation with source deg(D)μ − δ(D).
+
+**Problem.** Each divisor D has exactly one normalized Green function for μ.
+
+**How the definition helps.** The mean condition removes the only freedom in solving the equation, an additive constant (our own). Without it, every constant solves the equation for the zero divisor (our own). Existence follows from the Poisson equation on a compact surface because the source has total mass zero (our own).
+
+**nLab:** [Arakelov geometry](https://ncatlab.org/nlab/show/Arakelov+geometry). It says: “he defined the intersection numbers using the complementary piece at infinity.”
+
+**Sources:**
+
+- [Suren J. Arakelov, Intersection theory of divisors on an arithmetic surface (1974)](https://doi.org/10.1070/IM1974v008n06ABEH002141)
 
 ### Residue codes give evaluation duals
 
@@ -3230,6 +3378,24 @@ $$”
 
 - [J. I. Burgos Gil, R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions, arXiv:0902.0430 (2010), Documenta Math. 15 (2010) 73--176](https://arxiv.org/abs/0902.0430v2)
 
+### Shifts change Bott–Chern signs
+
+**Remember:** Swap even and odd, and the secondary class changes sign.
+
+*True by definition.* MSC 14C17 (Intersection theory, characteristic classes, intersection multiplicities in algebraic geometry), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** The secondary Chern character of an exact complex of hermitian bundles is a differential form class measuring its metric discrepancy. Its differential gives the signed sum of the Chern character forms of the terms, with opposite signs in even and odd degrees. Pullbacks preserve the class, and orthogonally split exact complexes have class zero.
+
+**Problem.** Shifting a bounded exact complex of hermitian holomorphic bundles by one degree negates its secondary Chern character. Shifting by two degrees preserves it.
+
+**How the definition helps.** The axioms determine the shifted class without repeating the integral construction (our own). One shift reverses the signed sum while preserving pullback compatibility and orthogonal splitting (our own). The negative of the original class therefore satisfies all three axioms, and the uniqueness theorem identifies it with the shifted class (our own).
+
+**Paper or page:** [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2). It says: “\\widetilde {\\phi }(\\overline {E}<sub>\\ast </sub>\[k\])=(-1)<sup>k</sup>\\widetilde {\\phi }(\\overline {E}<sub>\\ast </sub>).”
+
+**Sources:**
+
+- [J. I. Burgos Gil and R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2)
+
 ### The virtual fundamental class always has the expected dimension
 
 **Remember:** The virtual class has the dimension that naive counting predicts.
@@ -3285,6 +3451,79 @@ $$”
 
 - [Kay Rülling and Takao Yamazaki, Suslin homology of relative curves with modulus (2016)](https://doi.org/10.1112/jlms/jdw006)
 - [Carlo Mazza, Vladimir Voevodsky and Charles Weibel, Lecture Notes on Motivic Cohomology (2006)](https://www.claymath.org/library/monographs/cmim02.pdf)
+
+### Jacobians measure Hodge splitting failure
+
+**Remember:** Subtract an integral lift from a Hodge lift.
+
+*True by definition.* MSC 14C30 (Transcendental methods, Hodge theory (algebro-geometric aspects)), 14F43. arXiv math.AG. Level 4: research.
+
+**Definition.** For a torsion-free integral Hodge structure H of weight minus one, its Jacobian is its complex vector space modulo two subgroups. These are the integral lattice and F⁰, the sum of components whose first Hodge index is nonnegative.
+
+**Problem.** For a smooth projective complex variety, take H from degree 2p−1 integral cohomology by removing torsion and lowering both Hodge indices by p. The intermediate Jacobian classifies mixed Hodge extensions with subobject H and quotient the weight-zero line ℤ(0).
+
+**How the definition helps.** Two lifts of 1, one integral and one in F⁰, differ by an element of the complex space of H (our own). Changing lifts adds exactly the two subgroups in the Jacobian quotient (our own). Carlson’s inverse construction recovers the extension filtration from this difference (our own).
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “By a theorem of Carlson, the Jacobian is identified with the following group of extensions in the abelian category of mixed Hodge structures”
+
+**Sources:**
+
+- [James Carlson, The geometry of the extension class of a mixed Hodge structure](https://doi.org/10.1090/pspum/046.2/927981)
+
+### Homogeneous torsion removes genus corrections
+
+**Remember:** Change the torsion in pushforward and the extra genus disappears.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Analytic torsion supplies a metric correction when sending a complex of vector bundles forward along a projective map. Such correction theories are classified by a real power series called their additive genus. Homogeneous torsion is the theory corresponding to the zero series.
+
+**Problem.** For metrized projective maps of regular arithmetic varieties, homogeneous torsion gives the arithmetic Riemann–Roch identity in rational arithmetic Chow groups with currents. The Chern character of the direct image equals the direct image of the Chern character multiplied first by the relative Todd class.
+
+**How the definition helps.** The general formula has an extra term linear in the genus, which vanishes identically for homogeneous torsion (our own). The classification of torsion theories and the general arithmetic Riemann–Roch theorem supply the substantive steps (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “satisfies an exact Grothendieck-Riemann-Roch type formula:”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+- [Burgos Gil, Freixas i Montplet and Lițcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms, Corollary 6.4](https://www.numdam.org/item/AFST_2014_6_23_3_513_0/)
+
+### Relative Todd classes compose
+
+**Remember:** Compose with the tangent triangle to multiply the two Todd classes.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A metrized projective map carries metric data on its relative tangent complex, which records tangent directions along the map. For a composite, use the metric induced by the exact triangle relating the two relative tangent complexes to the composite’s complex.
+
+**Problem.** For composable metrized projective maps of regular arithmetic varieties, the relative arithmetic Todd classes multiply in the rational arithmetic Chow ring. The first factor is the class of the first map, and the second is its pullback of the next map’s class.
+
+**How the definition helps.** Using the induced metric puts the tangent complexes in a tight triangle, one whose metrics introduce no secondary correction (our own). An independently chosen metric on the composite would require accounting for its discrepancy (our own). Multiplicativity then follows from the Todd class theorem for tight triangles (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Td̂(ḡ ∘ f̄) = f⁎Td̂(ḡ) · Td̂(f̄)”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Todd correction cancels normal metrics
+
+**Remember:** The Todd term cancels the dependence on the auxiliary normal metric.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** For a closed embedding of complex manifolds, a singular Bott–Chern class compares a bundle on the submanifold with a metrized resolution on the ambient manifold. It uses an auxiliary metric on the normal bundle, which records directions transverse to the submanifold. The covariant class adds the secondary inverse Todd correction from the tangent sequence, weighted by the Chern character and Todd form before pushforward.
+
+**Problem.** With the remaining metric data fixed, the covariant singular Bott–Chern class is independent of the metric on the normal bundle.
+
+**How the definition helps.** The added Todd correction changes by exactly the negative of the change in the original class (our own). The metric variation formulas for the two terms establish this cancellation (our own).
+
+**Paper or page:** [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2). It says: “does not depend on the choice of the metric on $N<sub>Y/X</sub>$.”
+
+**Sources:**
+
+- [J. I. Burgos Gil and R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2)
 
 ### Hodge cosets classify path torsors
 
@@ -4859,6 +5098,266 @@ $$”
 
 - [Vladimir Voevodsky, On motivic cohomology with ℤ/ℓ coefficients (2011)](https://annals.math.princeton.edu/2011/174-1/p11)
 
+### Atlas cochains retain stabilizer characters
+
+**Remember:** Keep the overlaps to keep the stabilizers.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14D23. arXiv math.AG. Level 4: research.
+
+**Definition.** A classifying stack remembers a group as the symmetries of a point. Its atlas nerve records strings of group elements as successive overlaps of the point with itself. Integral Deligne–Beilinson cohomology compares integral cochains on these overlaps with differential forms filtered by holomorphic degree.
+
+**Problem.** For the classifying stack of the complex m-th roots of unity, degree two integral Deligne–Beilinson cohomology of weight one is ℤ/m. The ordinary point has zero in that degree and weight.
+
+**How the definition helps.** The overlap cochains compute group cohomology, so they retain the symmetry group that disappears on the ordinary point (our own). Averaging over the group kills positive-degree complex cohomology, leaving its degree two integral cohomology ℤ/m (our own). The descent theorem justifies computing on these overlaps (our own).
+
+**Paper or page:** [Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1). It says: “Let 𝒳 be a Deligne-Mumford stack of finite type over ℂ. Then there is an exact sequence”
+
+**Sources:**
+
+- [Zhiyuan Li and Xun Zhang, Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1)
+
+### Correspondences commute with Abel–Jacobi
+
+**Remember:** Apply the correspondence before or after taking the Deligne class.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** For a cycle with zero integral cohomology class, its Abel–Jacobi invariant is its Deligne cycle class in the intermediate Jacobian, a complex torus. A correspondence is a cycle on a product acting by pullback, product with the cycle, and pushforward.
+
+**Problem.** Between smooth projective complex varieties, applying a correspondence of degree r before taking the Abel–Jacobi invariant gives the same result as applying it afterwards. The target uses codimension p+r for an input of codimension p.
+
+**How the definition helps.** The Deligne cycle class respects each operation that defines the correspondence (our own). This replaces a comparison of integrals on bounding chains by the product and pushforward theorems for cycle classes (our own). Identifying the result with Griffiths’s invariant still uses the comparison theorem (our own).
+
+**Paper or page:** [Vanishing criteria for Ceresa cycles](https://arxiv.org/abs/2406.03891v2). It says: “Moreover for every α ∈ CHᵖ(X)ₕₒₘ, γ∗(AJₓᵖ(α)) = AJʏᵖ⁺ʳ(γ∗(α)).”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Jef Laga and Ari Shnidman, Vanishing criteria for Ceresa cycles](https://arxiv.org/abs/2406.03891v2)
+
+### Deligne cycle classes recover Abel–Jacobi
+
+**Remember:** When the ordinary class vanishes, the Deligne lift is the Abel–Jacobi class.
+
+*Makes the theorem clean to state or prove.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** The Deligne cycle class records the integral class of an algebraic cycle together with its class from filtered differential forms. On a smooth projective complex variety, the kernel of the map forgetting the forms is a complex torus called the intermediate Jacobian.
+
+**Problem.** For cycles whose integral cohomology class vanishes, the Deligne cycle class in the intermediate Jacobian equals Griffiths’s Abel–Jacobi invariant.
+
+**How the definition helps.** A zero integral class puts the Deligne lift directly in the intermediate Jacobian. Griffiths instead integrates forms over a chain bounded by the cycle (our own). The comparison of the two answers is Esnault and Viehweg’s Theorem 7.11.
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “this induces a map from cycles to intermediate Jacobians. This is the Abel-Jacobi map”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7, comparison with the Abel–Jacobi map](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Deligne duality shifts degree by one
+
+**Remember:** Dualizing the comparison swaps its terms and shifts degree.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The real Deligne cone compares forms of holomorphic degree at least p with complex cochains modulo the line (2πi)ᵖℝ. It records a filtered cochain together with a cochain one degree lower witnessing agreement in the quotient.
+
+**Problem.** On a smooth projective complex variety of dimension d, degree n real Deligne cohomology of weight p is dual to degree 2d−n+1 of weight d−p+1.
+
+**How the definition helps.** Dualizing the cone exchanges its terms, so the cochain placed one degree lower accounts for the extra degree (our own). Poincaré duality pairs complementary ordinary degrees (our own). The annihilator of the p-th holomorphic filtration step is step d−p+1 in the dual degree (our own).
+
+**Paper or page:** [Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1). It says: “Let X be a proper complex algebraic manifold, equidimensional of dimension d. Then there is a perfect duality”
+
+**Sources:**
+
+- [J. I. Burgos Gil, Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1)
+
+### High twists remove filtered cochains
+
+**Remember:** Below the Hodge cutoff, only the shifted real part remains.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The real Deligne cone compares forms of holomorphic degree at least p with complex cochains modulo the line ℝ(p) = (2πi)ᵖℝ. Projection identifies this quotient line with ℝ(p−1). The shift in the cone places quotient cochains one degree higher.
+
+**Problem.** On a smooth complex quasi-projective variety, take n &lt; p. Degree n real Deligne–Beilinson cohomology of weight p equals ordinary degree n−1 cohomology with coefficients ℝ(p−1).
+
+**How the definition helps.** In the cone, filtered forms start in degree p, so only the shifted quotient contributes below p (our own). Replacing the logarithmic de Rham complex by ordinary complex cochains uses the de Rham comparison theorem (our own).
+
+**Paper or page:** [The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893v3). It says: “Then it defines a class in Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2.14–2.16](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Thu Ha Trieu, The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893v3)
+
+### Hodge extensions yield two-step exactness
+
+**Remember:** Only Hodge classes and one layer of extensions survive.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A rational mixed Hodge structure carries filtrations by weight and holomorphic degree, with a pure Hodge decomposition on each weight quotient. Absolute Hodge cohomology takes derived maps from the weight-zero line ℚ(0) into the variety’s cochain complex with these filtrations. A twist by p lowers both Hodge indices by p.
+
+**Problem.** In degree n, rational absolute Hodge cohomology surjects onto filtration-preserving maps from ℚ(0) to the twisted degree n cohomology of a complex algebraic variety. Its kernel classifies extensions with quotient ℚ(0) and subobject the twisted degree n−1 cohomology.
+
+**How the definition helps.** Derived maps organize the calculation by extension degree (our own). Rational mixed Hodge structures have no higher extensions beyond degree one (our own). Thus only ordinary maps and single extensions remain, avoiding an explicit calculation with filtered cochains (our own).
+
+**Paper or page:** [Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2). It says: “then we recover the absolute Hodge cohomology groups of Beilinson”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Raphaël Ruimy and Swann Tubach, Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2)
+
+### Hyperplane powers split Deligne cohomology
+
+**Remember:** Split both sides of the comparison with the same hyperplane class.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The integral Deligne–Beilinson cone compares integral cochains with forms filtered by holomorphic degree. On the bundle of one-dimensional quotients of a vector bundle, h denotes the Deligne first Chern class of the tautological quotient line.
+
+**Problem.** Over a smooth complex quasi-projective variety, the projective bundle of a rank r vector bundle has r summands in Deligne–Beilinson degree n and weight p. Pullback followed by multiplication by hʲ identifies summand j with base cohomology in degree n−2j and weight p−j, for 0 ≤ j &lt; r.
+
+**How the definition helps.** The same hyperplane powers split both inputs to the cone and respect the comparison map (our own). The ordinary and filtered projective bundle formulas supply the splittings (our own). Compatibility of the Deligne product transfers them to the cone exact sequence (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “It is a morphism of complexes, so it induces a cup product in Deligne cohomology.”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, Proposition 8.5](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Jacobian classes have square zero
+
+**Remember:** Two pure comparison terms have nothing to multiply.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A Deligne cochain in the cone model records an integral cochain, a filtered differential form, and a cochain comparing them. The product formula pairs a comparison cochain only with an integral cochain or a filtered form.
+
+**Problem.** On a smooth projective complex variety, the intermediate Jacobians form an ideal in the integral Deligne ring restricted to degrees twice the weights. Every product of two elements of this ideal vanishes.
+
+**How the definition helps.** A Jacobian class has a representative with only a comparison cochain, so two such representatives multiply to zero (our own). The cone sequence identifies these classes with the kernel of the map to ordinary cohomology (our own). Comparing this product with the product on truncated holomorphic complexes takes a separate argument (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “It is a morphism of complexes, so it induces a cup product in Deligne cohomology.”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §3 and Proposition 7.10](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Logarithmic classes select algebraic units
+
+**Remember:** Logarithmic differentials allow zeros and poles but not essential singularities.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Choose a smooth projective compactification whose boundary locally consists of coordinate hyperplanes. Deligne–Beilinson cohomology compares integral cochains with differential forms that allow logarithmic poles there. These forms use factors dz/z along boundary coordinates z.
+
+**Problem.** For a smooth complex quasi-projective variety, degree one integral Deligne–Beilinson cohomology of weight one is the group of invertible regular functions.
+
+**How the definition helps.** The logarithmic pole condition picks out algebraic units among nowhere-zero holomorphic functions f (our own). It requires df/f to have only logarithmic poles at the boundary (our own). On the affine line, exp(z) fails because dz has a double pole at infinity (our own). Esnault and Viehweg prove the test by extending functions meromorphically across the boundary.
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “a cohomology theory for algebraic varieties”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2.12–2.13](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Odd Deligne groups recover higher Brauer groups
+
+**Remember:** A missing odd Betti group leaves a period quotient.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Cohomology of K3 type in degree 2p has types (p−1,p+1), (p,p), and (p+1,p−1), with both outer pieces one-dimensional. Its higher analytic Brauer group is the first piece modulo the projection of integral cohomology. The Deligne cone compares integral cochains with complex forms modulo holomorphic degrees at least p.
+
+**Problem.** Suppose a smooth projective complex variety has K3 type in degree 2p and zero integral cohomology in degrees 2p−1 and 2p+1. Its degree 2p+1 integral Deligne cohomology of weight p equals the higher analytic Brauer group in degree 2p.
+
+**How the definition helps.** The cone exact sequence leaves just the degree 2p quotient because the next integral group vanishes (our own). Hodge decomposition removes the two types with first index at least p (our own). Dividing the remaining line by projected periods recovers the analytic Brauer description (our own).
+
+**Paper or page:** [Twists of intermediate Jacobian fibrations](https://arxiv.org/abs/2411.01953v2). It says: “is a Hodge structure of K3 type. Then we have canonical isomorphisms”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Yajnaseni Dutta, Dominique Mattei and Evgeny Shinder, Twists of intermediate Jacobian fibrations](https://arxiv.org/abs/2411.01953v2)
+
+### Supported Deligne lifts are unique
+
+**Remember:** Keep the support until the lift is unique.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** Deligne cohomology with support compares integral cochains and filtered differential forms relative to the complement of a closed set. Relative cochains record a class together with data trivializing its restriction to that complement.
+
+**Problem.** On a smooth projective complex variety, let Z be the support of a cycle of pure codimension p. Its integral and filtered fundamental classes lift together to a unique supported Deligne class of degree 2p and weight p.
+
+**How the definition helps.** Keeping the support kills the degree 2p−1 complex cohomology that measures ambiguity in the lift (our own). This vanishing uses the real codimension bound, and existence uses agreement of the two fundamental classes over ℂ (our own). Without support, a point on an elliptic curve has a whole Jacobian of possible lifts (our own).
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “the refinement to Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7.1](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Weak Hodge cochains recover Deligne cohomology
+
+**Remember:** Forget weights and retain the real and filtered comparison.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A weak Hodge complex compares real cochains with complex cochains filtered by holomorphic degree. Weak Hodge cohomology takes derived maps from the real line of type (0,0) into this comparison. It forgets the weight filtration.
+
+**Problem.** For a smooth projective complex variety, weak Hodge cohomology of its real Hodge complex agrees with real Deligne cohomology in every degree and twist.
+
+**How the definition helps.** A derived map gives real and filtered cochains together with a cochain witnessing their agreement (our own). These are precisely the three entries of the Deligne cone (our own). The de Rham comparison identifies the complex of forms used here with complex cochains (our own).
+
+**Paper or page:** [Special L-values of geometric motives](https://arxiv.org/abs/1003.1215v3). It says: “Weak Hodge cohomology identifies with Deligne cohomology”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Jakob Scholbach, Special L-values of geometric motives](https://arxiv.org/abs/1003.1215v3)
+
+### Weights reject the torus top class
+
+**Remember:** Meeting the Hodge cutoff does not make a class weight zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Rational absolute Hodge cohomology takes derived maps from the weight-zero rational line into cochains carrying weight and Hodge filtrations. A twist by one lowers each Hodge index by one and the weight by two. Deligne–Beilinson cohomology imposes the Hodge cutoff alone.
+
+**Problem.** For the algebraic torus (ℂ∖{0})², rational absolute Hodge cohomology vanishes in degree two and weight one. Rational Deligne–Beilinson cohomology in that degree and weight has dimension one.
+
+**How the definition helps.** Preserving weights excludes the top class because its twisted weight is two (our own). Its original type (2,2) passes the Deligne cutoff requiring first index at least one (our own). Twisted first cohomology has only type (0,0), so it supplies neither an extension nor a Deligne quotient (our own).
+
+**Paper or page:** [Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2). It says: “then we recover the absolute Hodge cohomology groups of Beilinson”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Raphaël Ruimy and Swann Tubach, Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2)
+
+### Étale cycle maps extend to stacks
+
+**Remember:** A map of étale complexes still acts on an atlas.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 19E15, 14D23. arXiv math.AG, math.KT. Level 4: research.
+
+**Definition.** The rational regulator is a map of complexes from algebraic cycles to Deligne–Beilinson cochains. Both complexes admit gluing for étale covers, which are locally isomorphisms in complex analytic coordinates. A Deligne–Mumford stack admits such a cover by a scheme.
+
+**Problem.** For a smooth finite-type Deligne–Mumford stack over ℂ, rational codimension p cycles modulo rational equivalence map to degree 2p Deligne–Beilinson cohomology of weight p. On smooth schemes this gives Bloch’s cycle class map.
+
+**How the definition helps.** A single map of complexes on étale covers acts on the cohomology obtained by gluing over the stack (our own). This replaces constructing classes separately on each stack (our own). The comparison theorems identify the source with rational Chow groups and the target with Deligne–Beilinson cohomology (our own).
+
+**Paper or page:** [Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1). It says: “If 𝒳 is a smooth scheme, the cycle class map clᴰᴮ agrees with the Deligne-Beilinson cycle class map defined in”
+
+**Sources:**
+
+- [Zhiyuan Li and Xun Zhang, Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1)
+
 ### Arithmetic circle modules give zeta values without semisimplicity
 
 **Remember:** Define the Euler characteristic through K₀, and semisimplicity is no longer needed.
@@ -5133,6 +5632,189 @@ $$”
 **Sources:**
 
 - [Hidekazu Furusho, Pentagon and hexagon equations (2010)](https://annals.math.princeton.edu/wp-content/uploads/annals-v171-n1-p13-p.pdf)
+
+### Bott–Chern forms restore character additivity
+
+**Remember:** Put the failure of additivity into the relations.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 19E08. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An arithmetic K-group records vector bundles with smooth metrics and also classes of differential forms. For an exact sequence with subbundle A, middle bundle B and quotient C, it imposes \[A\] − \[B\] + \[C\] = a(η). Here η is the Bott–Chern form measuring the metric discrepancy, and a inserts a form as a class.
+
+**Problem.** On a regular projective arithmetic variety, the arithmetic Chern character gives a group homomorphism from arithmetic K-theory to rational arithmetic Chow groups.
+
+**How the definition helps.** The defining relation accounts for the discrepancy that would obstruct additivity under the ordinary relation \[B\] = \[A\] + \[C\] (our own). The characteristic-class theorem identifies the discrepancy in the target with the very same Bott–Chern form (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “φ̂(ℱ∗) − φ̂(𝒢∗) + φ̂(ℋ∗) = a(φ̃(τ̄))”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Compatible wavefront bounds permit current products
+
+**Remember:** Opposite singular directions can cancel and make a product undefined.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A wavefront bound for a current, a generalized differential form, specifies which nonzero covectors may carry singularities. For arithmetic Chow groups, the bound is a closed cone invariant under complex conjugation. Two bounds are compatible if they contain no opposite covectors at the same point.
+
+**Problem.** On a regular arithmetic variety, compatible bounds S and T give a product of arithmetic Chow classes with rational coefficients. Its bound is S ∪ T ∪ (S + T), where addition pairs covectors at the same point.
+
+**How the definition helps.** Compatibility excludes cancellation of opposite singular directions, so the distribution product theorem applies (our own). A point mass has opposite singular directions and has no canonical square as a distribution (our own). Passing to arithmetic classes also requires proving that the product respects the cycle relations (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Moreover, if S ∩ (−S′) = ∅, there is a graded bilinear map”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Currents make proper pushforwards compose
+
+**Remember:** Push a test form back twice to push its current forward twice.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A current is a generalized differential form that acts on smooth test forms. For a proper map, its direct image evaluates a test form by first pulling that form back. Arithmetic Chow groups with current coefficients allow this direct image even when a smooth input acquires singularities.
+
+**Problem.** For composable proper maps between regular arithmetic varieties, successive direct images of arithmetic Chow classes with current coefficients equal the direct image along the composite.
+
+**How the definition helps.** Allowing currents keeps both direct images defined, and testing against a form reduces their composition to two successive pullbacks (our own). Algebraic cycles already satisfy the composition rule (our own). The arithmetic theorem also checks the cycle relations and controls the singular directions of the result (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Furthermore, the relation (g ∘ f)∗ = g∗ ∘ f∗ is satisfied.”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Deligne classes determine compatible lifts
+
+**Remember:** A curvature form can vary without changing the class it represents.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** The curvature of an arithmetic cycle adds integration along its cycle to the complex second derivative of its Green current. A Green current is a generalized differential form chosen to make this sum smooth. Real Deligne cohomology identifies closed forms in the relevant complex when their difference is a differential.
+
+**Problem.** On a regular projective arithmetic variety, consider a Chow class and a closed real Deligne form of matching degree. They admit a common arithmetic lift exactly when their Deligne classes agree.
+
+**How the definition helps.** Curvature turns the lifting problem into a comparison between the class of the form and the class of the cycle (our own). Once a Green current exists, changing its form component adds a differential to the curvature (our own). Exactness shows that this accounts for every compatible pair (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “CHᵖ(𝒳) ⊕ ZC²ᵖ(p) ⟶ H²ᵖ(C∗(p)) ⟶ 0”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Exact terms make Green products commute
+
+**Remember:** Swapping the factors changes only terms killed in the Green quotient.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A Green current is a generalized differential form that compensates for integration along an algebraic cycle. Its star product with another Green current combines restriction to the second cycle with a term involving the first curvature. Arithmetic Chow classes identify Green terms differing by sums of derivatives under ∂ and ∂̄, the two complex parts of differentiation.
+
+**Problem.** For properly intersecting cycles on a smooth projective variety over an arithmetic field, the two orders of the Green star product agree modulo these derivatives.
+
+**How the definition helps.** The quotient discards the derivative terms that exchanging the two factors introduces (our own). The usual formula on representatives treats the factors differently, so commutativity there would be too strong (our own). The analytic work uses representatives with logarithmic singularities to justify integration by parts along the intersection (our own).
+
+**nLab:** [arithmetic Chow group](https://ncatlab.org/nlab/show/arithmetic+Chow+group). It says: “pairs consisting of a codimension p subvariety of X together with a Green current for it.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+
+### Green products multiply curvatures
+
+**Remember:** The cycle term cancels, leaving the product of the two curvature forms.
+
+*True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG. Level 4: research.
+
+**Definition.** A Green current g for a cycle Z has curvature ω, the smooth sum of its complex second derivative and integration along Z. For cycles Z and W meeting in the expected codimension, the Green star product adds two terms. They are the restriction of g integrated along W and the product of ω with the Green current for W.
+
+**Problem.** For properly intersecting cycles on a smooth projective variety over an arithmetic field, the Green star product multiplies their curvature forms.
+
+**How the definition helps.** The second term cancels the extra contribution from differentiating the restriction term (our own). Multiplying the two Green currents directly would miss this cancellation (our own). The analytic work justifies restricting representatives with logarithmic singularities and identifies the remaining cycle contribution with integration over the intersection (our own).
+
+**Paper or page:** [Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1). It says: “Assume that the cycles α and β intersect properly.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [Souvik Goswami and Rahul Gupta, Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1)
+
+### Self-dual torsion lifts Grothendieck duality
+
+**Remember:** Choose torsion that obeys the same duality as the complexes.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 58J52. arXiv math.AG. Level 4: research.
+
+**Definition.** An arithmetic complex records a complex of bundles with metrics and an additional differential form or current. Analytic torsion corrects its direct image for the choice of metrics. A torsion theory is self-dual when dualizing these data, including the relative dualizing twist and the sign on forms, preserves its correction rule.
+
+**Problem.** For a metrized projective map between smooth complex varieties, self-dual torsion makes arithmetic duality commute with direct image up to natural isomorphism. On the source one tensors the dual with the relative dualizing complex, which accounts for duality along the fibers.
+
+**How the definition helps.** Self-duality gives the same metric correction on both sides of the ordinary duality isomorphism (our own). Grothendieck duality supplies that underlying isomorphism, and the torsion comparison proves it respects the extra arithmetic data (our own).
+
+**Paper or page:** [Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2). It says: “Let T be a self-dual theory of generalized analytic torsion classes.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, G. Freixas i Montplet and R. Litcanu, Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2)
+
+### Smooth curvature detects ordinary classes
+
+**Remember:** Allow currents first, then detect the smooth subgroup by curvature.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An arithmetic cycle has a curvature current, a generalized form obtained by adding integration over the cycle to a derivative of its Green term. Arithmetic Chow homology with currents permits singular curvature. Its curvature modulo smooth forms records only the singular part.
+
+**Problem.** Suppose an arithmetic variety has projective generic fiber, the variety obtained over the base field of fractions. Ordinary arithmetic Chow homology embeds in the version with currents, with image exactly the classes whose curvature vanishes modulo smooth forms.
+
+**How the definition helps.** Taking curvature modulo smooth forms expresses the entire obstruction to an ordinary representative in one class (our own). The comparison theorem proves injectivity and shows that smooth curvature suffices to recover such a representative (our own).
+
+**Paper or page:** [Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1). It says: “denotes the subspace of currents that can be represented by smooth differential forms.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1)
+
+### Tight triangles multiply Todd classes
+
+**Remember:** An orthogonal cancellation carries no secondary metric defect.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 14C17. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A mapping cone combines a map of complexes into one complex that represents its quotient in the derived category. A tight triangle equips this cone with the metric induced from the first two complexes, up to tight isomorphism. Tight isomorphisms ignore metric changes generated by orthogonally split cancellations and by pairing an exact complex with its shift.
+
+**Problem.** On a regular arithmetic variety, the rational arithmetic Todd class of the middle complex in a tight triangle equals the product for the outer complexes.
+
+**How the definition helps.** Tightness forces the secondary class measuring the discrepancy between the two sides to vanish (our own). Even an identity map between lines can have a metric discrepancy if their norms differ (our own). The multiplicative characteristic-class theorem identifies precisely which correction to discard (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “In particular, if τ̄ is tightly distinguished, the equality”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Răzvan Lițcanu, Hermitian structures on the derived category of coherent sheaves](https://perso.pages.math.cnrs.fr/users/gerard.freixas/Articles/Burgos-Freixas-Litcanu-JMPA.pdf)
+
+### Wavefront bounds permit arithmetic pullbacks
+
+**Remember:** A pullback cannot collapse a permitted singular direction.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A wavefront set records the nonzero covectors, or directional linear functionals, along which a generalized form fails to be smooth. In an arithmetic Chow group with current coefficients, a closed cone S bounds the permitted singular directions and respects complex conjugation. A map is transverse to S if its derivative pulls no covector in S back to zero.
+
+**Problem.** A transverse map between regular arithmetic varieties pulls arithmetic Chow classes with bound S back to classes bounded by the pulled-back cone.
+
+**How the definition helps.** Transversality excludes the directions that prevent a distribution from having a well-defined restriction (our own). For example, restricting a point mass to its own point would require assigning it a point value (our own). The distribution pullback theorem constructs the restriction, and the arithmetic theorem checks that it respects the cycle relations (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “If $N<sub>f</sub>\\cap S=\\emptyset $, then there is a pull-back morphism”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
 
 ### A principal kernel of θ makes perfectoid rings of characteristic p perfect
 

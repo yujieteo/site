@@ -829,6 +829,27 @@
 
 - [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420)
 
+### Charge characters exclude fractional monopoles
+
+**Remember:** The zero boundary has phase zero modulo integers.
+
+*Rules out counterexamples.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Away from a magnetic source, a degree-two differential character assigns an additive phase in ℝ/ℤ to each smooth integral one-cycle. On a boundary, the phase equals the integral of the normalized magnetic field over the spanning chain, modulo integers.
+
+**Problem.** A magnetic field described by such a character has integer flux through every closed oriented surface. A monopole with normalized flux ½ through its surrounding sphere therefore admits no character.
+
+**How the definition helps.** In our own derivation, a closed surface has zero boundary, whose phase must be zero. Half the area form on a sphere of area one gives our own excluded example. The comparison theorem identifies these characters with circle bundles with connection.
+
+**nLab:** [Dirac charge quantization](https://ncatlab.org/nlab/show/Dirac+charge+quantization). It says: “the electromagnetic field must be a connection on a principal U(1) bundle whose first Chern class is the discrete measure for the units of magnetic charge.”
+
+**Wikipedia:** [Magnetic monopole](https://en.wikipedia.org/wiki/Magnetic_monopole). It says: “The total magnetic flux is none other than the first Chern number of the principal bundle, and depends only upon the choice of the principal bundle, and not the specific connection over it.”
+
+**Sources:**
+
+- [Daniel S. Freed, Dirac charge quantization and generalized differential cohomology](https://doi.org/10.4310/sdg.2002.v7.n1.a6)
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+
 ### The covariant derivative commutator gives gauge-covariant field strength
 
 **Remember:** Conjugating two derivatives also conjugates their commutator.
@@ -1060,6 +1081,24 @@
 **Sources:**
 
 - [Edward Witten, Quantum field theory and the Jones polynomial (1989)](https://doi.org/10.1007/BF01217730)
+
+### Surface integration gives Chern–Simons curvature
+
+**Remember:** Integrate the universal curvature to get the curvature of the line.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Start with a compact, simply connected simple gauge group and an invariant inner product at integral level. This normalization gives a degree-four differential class, which assigns phases to three-cycles. Integrating the universal class over a closed oriented surface gives the Chern–Simons line with connection on the space of surface connections.
+
+**Problem.** The normalized curvature of the Chern–Simons line is the symplectic form on the space of surface connections. On two variations it integrates their wedge product paired by the chosen inner product, with the level normalization.
+
+**How the definition helps.** Surface integration turns the universal curvature polynomial into a two-form on variations of the connection. In our own derivation, the curvature formula for integration gives the wedge pairing, which is closed and nondegenerate. Identifying the integrated class with the line defined by the action takes a separate comparison.
+
+**Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062v1). It says: “the Chern-Simons action defines a unitary connection B on the Hermitian line bundle ℒQ → 𝒜Q”
+
+**Sources:**
+
+- [Daniel S. Freed, Classical Chern–Simons theory, 1](https://doi.org/10.1006/aima.1995.1039)
 
 ### Unitary conjugation preserves spectral actions
 
@@ -1674,6 +1713,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Thierry Lévy, Yang-Mills measure on compact surfaces](https://doi.org/10.1090/memo/0790)
+
+### Torsion flux operators need not commute
+
+**Remember:** Flat flux can still have a nontrivial commutator.
+
+*Makes the theorem clean to state or prove.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A self-dual two-form field has field strength equal to its dual. On a closed oriented spatial five-manifold, its flux shifts belong to degree-three differential cohomology, which records surface phases and curvature. Heisenberg quantization represents shifts by operators whose commutator on odd-order flat fields is their exponentiated integrated cup product.
+
+**Problem.** On the product of the lens space L(3,1) and the two-torus, two flat flux shifts have commutator exp(±2πi/3).
+
+**How the definition helps.** The operator law retains the linking of finite-order classes that have zero curvature. In our own example, multiply the degree-two lens-space generator by each of the two degree-one circle generators. The resulting pairing multiplies the lens-space linking number ±⅓ by the torus intersection number one. The physical input is the Heisenberg quantization law.
+
+**nLab:** [uncertainty of fluxes](https://ncatlab.org/nlab/show/uncertainty+of+fluxes). It says: “this bracket becomes non-vanishing if torsion-components of the fluxes (through their enhancement to ordinary differential cohomology) are retained”
+
+**Sources:**
+
+- [Daniel S. Freed, Gregory W. Moore and Graeme Segal, Heisenberg groups and noncommutative fluxes](https://doi.org/10.1016/j.aop.2006.07.014)
 
 ### Action exponentials transport master equations
 
@@ -2408,6 +2465,62 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Romeo Brunetti, Klaus Fredenhagen and Rainer Verch, The Generally Covariant Locality Principle (2003)](https://doi.org/10.1007/s00220-003-0815-7)
 
+### Boundary trivializations give open surface phases
+
+**Remember:** The boundary trivialization turns a surface holonomy line into a phase.
+
+*True by definition. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 81T40. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A relative Wess–Zumino field is a gerbe with connection on a target and a chosen trivialization on the allowed boundary submanifold. The gerbe gives a curvature three-form H, and the trivialization gives a two-form B with dB equal to the restriction of H.
+
+**Problem.** Each compact oriented surface map whose boundary lies in the chosen submanifold has a scalar phase. On relative boundaries the phase in ℝ/ℤ integrates H over the filling and subtracts the integral of B over its cap.
+
+**How the definition helps.** The chosen trivialization evaluates the boundary line, turning the surface amplitude into a number. In our own derivation, the relative boundary of a filling C with cap D has surface chain ∂C − D and edge ∂D. Relative Stokes gives the two integrals with opposite signs. Constructing surface transport with its boundary line supplies the geometric input.
+
+**nLab:** [Wess-Zumino-Witten model](https://ncatlab.org/nlab/show/Wess-Zumino-Witten+model). It says: “their existence corresponds to a trivialization of the underlying BU(1)-principal 2-bundle (U(1)-bundle gerbe) of the restriction of the B-field to the brane.”
+
+**Sources:**
+
+- [Krzysztof Gawędzki and Nuno Reis, WZW branes and gerbes](https://doi.org/10.1142/s0129055x02001557)
+- [Severin Bunk and Konrad Waldorf, Smooth functorial field theories from B-fields and D-branes](https://doi.org/10.1007/s40062-020-00272-2)
+
+### Characters replace global brane potentials
+
+**Remember:** A character assigns the brane its phase directly.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th, math.KT. Level 4: research.
+
+**Definition.** A twisted differential K-character assigns a value modulo integers to each compatible geometric K-cycle, which represents a brane with orientation and coefficient data. Its boundary rule equates the value on a boundary with an integral of curvature data modulo integers.
+
+**Problem.** In the twisted K-character model on compact simply connected spacetime, a Ramond–Ramond field assigns a Wess–Zumino phase to every compatible brane cycle. This phase exists even for a field with nonzero topological class.
+
+**How the definition helps.** The character evaluates the field directly on the cycle, so no global potential is required (our own). Exponentiating its value times 2πi gives the phase (our own). The substantial theorem identifies the character model with twisted differential K-theory (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the differential aspect captures the higher gauge field called the RR-field”
+
+**Sources:**
+
+- [Fabio Ferrari Ruffino and Juan Carlos Rocha Barriga, Twisted differential K-characters and D-branes (2020)](https://doi.org/10.1016/j.nuclphysb.2020.115169)
+
+### Cup products detect circle duals
+
+**Remember:** The obstruction is the integral cup product, not its differential refinement.
+
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th. Level 4: research.
+
+**Definition.** A differential circle T-duality pair consists of two principal circle bundles with connection over one smooth manifold and a choice of geometric trivialization. This choice represents their differential cup product, the cohomology product that includes connection data, by a global three-form.
+
+**Problem.** Two circle bundles with fixed connections admit a differential T-duality pair exactly when their first Chern classes have zero integral cup product.
+
+**How the definition helps.** Allowing a global three-form leaves only the integral obstruction (our own). Exactness of differential cohomology says precisely which products come from such forms (our own). Comparing this description with the one using geometric data on both bundles requires a separate equivalence theorem (our own).
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “such that the underlying topological class of the cup product (P, θ) ∪ (P̂, θ̂) is trivial;”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-duality and Differential K-Theory (2014), §2](https://doi.org/10.1142/S0219199713500144)
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
 ### Even self-dual lattices ensure modularity
 
 **Remember:** Even norms remove shift phases, and self-duality closes the Fourier transform.
@@ -2425,6 +2538,42 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Non-Chiral Vertex Operator Algebra Associated To Lorentzian Lattices And Narain CFTs](https://arxiv.org/abs/2312.16296v2)
+
+### Gerbe isomorphisms relate dual fluxes
+
+**Remember:** An isomorphism with a curving shift gives a flux difference by differentiation.
+
+*True by definition. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th. Level 4: research.
+
+**Definition.** A geometric T-duality correspondence matches two torus bundles on their fiber product. It identifies their gerbes, geometric objects with three-form curvature, after shifting the second by a two-form ρ built from the connections.
+
+**Problem.** On the fiber product, the first pulled-back curvature minus the second equals the exterior derivative dρ.
+
+**How the definition helps.** Taking curvature turns the shift by ρ into addition of dρ (our own). The gerbe isomorphism therefore gives the flux equation directly, where a description by local fields requires checking their transformation rules (our own). Constructing that isomorphism from the local rules is the separate step (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “is a T-duality correspondence with H-flux.”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
+### Gerbe shifts parametrize circle duals
+
+**Remember:** Gerbes shift the choice, and circle automorphisms identify some shifts.
+
+*Makes the theorem clean to state or prove.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
+
+**Definition.** A differential circle T-duality pair chooses a geometric trivialization representing the product of two circle bundles with connection by a three-form. Connection-preserving symmetries of the bundles identify equivalent choices.
+
+**Problem.** Fix two circle bundles with connection admitting a pair on a connected base, and write F and G for their curvatures. Degree-three differential cohomology acts transitively on equivalence classes of pairs, with kernel represented by aF + bG for real constants a and b.
+
+**How the definition helps.** Comparing two trivializations gives a degree-three differential class (our own). Bundle symmetries can identify distinct shifts of a trivialization (our own). Waldorf computes their image, giving exactly the stated kernel.
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “acts freely and transitively in the fibre over (ξ, ξ̂).”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
 
 ### Jump factors glue partition functions
 
@@ -2444,6 +2593,60 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Mathematical structures of non-perturbative topological string theory: from GW to DT invariants](https://arxiv.org/abs/2109.06878v2)
 
+### One trivialization matches twists
+
+**Remember:** Trivialize the cup product once to obtain two twists that agree together.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th, math.KT. Level 4: research.
+
+**Definition.** A differential T-duality pair chooses two bundles with connections whose torus structure groups are dual. It includes a geometric trivialization representing the differential cup product of their characteristic classes by a global three-form.
+
+**Problem.** One differential T-duality pair determines a gerbe, a geometric representative of a degree-three class, on each bundle. Their topological twists agree after pullback to the fiber product.
+
+**How the definition helps.** One trivialization gives both bundles a common reference for constructing their twists (our own). Each bundle acquires a section when pulled back to itself, giving a second trivialization for comparison (our own). Kahle and Valentino construct the twists and their identification by comparing these choices (our own).
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “on P and on P̂, respectively, whose pullbacks to the fiber product P ×ₓ P̂ are equivalent there.”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-duality and Differential K-Theory (2014), §2](https://doi.org/10.1142/S0219199713500144)
+
+### Orbifold points retain flat gerbes
+
+**Remember:** Group cochains survive on a point with symmetry.
+
+*Rules out counterexamples.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08, 57R18. arXiv hep-th. Level 4: research.
+
+**Definition.** An orbifold point with finite symmetry group G records sequences of group elements as successive symmetries of the point. The Deligne complex describes gerbes with connection using circle-valued functions on these sequences and differential forms.
+
+**Problem.** Gerbes with connection on this orbifold point are all flat. Their classes form H²(G,U(1)), the group of circle-valued two-cocycles modulo coboundaries.
+
+**How the definition helps.** The sequences form discrete spaces, so positive-degree forms vanish and only ordinary group cochains survive (our own). For two independent symmetries of order two, the cocycle ω((a,b),(c,d)) = (−1)ᵃᵈ gives a nontrivial class (our own). Its values on the two generators change when their order reverses, which a coboundary cannot do (our own).
+
+**nLab:** [discrete torsion](https://ncatlab.org/nlab/show/discrete+torsion). It says: “This gives a classification of discrete torsion in terms of the second group cohomology group H²(G,U(1)).”
+
+**Sources:**
+
+- [Ernesto Lupercio and Bernardo Uribe, An introduction to gerbes on orbifolds (2004), §§3–4](https://doi.org/10.5802/ambp.190)
+
+### Split metrics lift T-duality
+
+**Remember:** Keep the connections and choose reciprocal fiber metrics.
+
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
+
+**Definition.** An invariant metric on a principal torus bundle splits into a metric on the base and inner products along the fibers. A connection specifies the horizontal directions orthogonal to those fibers.
+
+**Problem.** Every differential T-duality correspondence between principal torus bundles admits invariant metrics that make it a geometric T-duality correspondence with the original connections.
+
+**How the definition helps.** The split description turns the metric conditions into a shared base metric and mutually dual fiber metrics (our own). Choosing these pieces preserves both given connections and the original matching of twists (our own). Passing from separate metric transformation equations to this construction uses the classification of invariant metrics (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “whose Kaluza-Klein connections are ω and ω̂, respectively, such that 𝒟 is a geometric T-duality correspondence”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
 ### Cutting curves proves fusion associativity
 
 **Remember:** Both sums count the rank of the same bundle.
@@ -2461,6 +2664,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Xu Gao, Jianqi Liu, Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1)
+
+### Equivariant gerbes permit global gauging
+
+**Remember:** Descent covers gauge fields on nontrivial bundles.
+
+*Makes the theorem clean to state or prove.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A gerbe with connection is a gauge field that assigns phases to closed oriented surfaces. An equivariant gerbe with connection extends this assignment to a target with a symmetry group, including compatible identifications under changes of gauge.
+
+**Problem.** On a closed oriented surface, an equivariant Wess–Zumino gerbe gives a gauge-invariant phase even for a nontrivial principal symmetry bundle. The field consists of a connection and a section of the bundle with the target as fiber.
+
+**How the definition helps.** In our own explanation, the equivariant data identify the local descriptions of the pulled-back gerbe under each change of gauge. Descent, the theorem that these compatible descriptions glue, gives a gerbe on the surface and hence a phase. Constructing the equivariant structure is a separate existence problem.
+
+**nLab:** [gauged WZW model](https://ncatlab.org/nlab/show/gauged+WZW+model). It says: “the action functional of the gauged WZW model is that obtained by refining this circle 2-bundle to the H-equivariant differential cohomology of G”
+
+**Sources:**
+
+- [Krzysztof Gawędzki, Rafał R. Suszek and Konrad Waldorf, Global gauge anomalies in two-dimensional bosonic sigma models](https://doi.org/10.1007/s00220-010-1162-0)
 
 ### Projectively flat blocks give actions
 
@@ -2497,6 +2718,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Fuchs, Runkel and Schweigert, TFT construction of RCFT correlators I: Partition functions](https://doi.org/10.1016/S0550-3213(02)00744-7)
+
+### Surface holonomy needs no filling
+
+**Remember:** Surface holonomy does not ask the surface to bound in the target.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A Wess–Zumino character assigns additive phases in ℝ/ℤ to all smooth two-cycles in the target. On a boundary, its phase equals the integral of a fixed curvature three-form over the spanning chain modulo integers.
+
+**Problem.** Every map from a closed oriented surface has a phase for a fixed Wess–Zumino character, including maps that admit no filling in the target.
+
+**How the definition helps.** Evaluation uses the image of a fundamental cycle of the surface. Changing that cycle adds a boundary within the surface, where every three-form vanishes. In our own example, the identity of the two-sphere cannot extend over an oriented filling because its fundamental class is nonzero. The comparison with the geometric surface phase uses the description by a gerbe, a gauge field that assigns phases to surfaces.
+
+**nLab:** [Wess-Zumino-Witten model](https://ncatlab.org/nlab/show/Wess-Zumino-Witten+model). It says: “this WZW term is the surface holonomy functional of a connection on a bundle gerbe”
+
+**Sources:**
+
+- [Krzysztof Gawędzki and Nuno Reis, WZW branes and gerbes](https://doi.org/10.1142/s0129055x02001557)
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
 
 ### Swapping points makes fusion commutative
 
@@ -2588,6 +2828,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
 
+### Chern–Simons characters replace global potentials
+
+**Remember:** The class evaluates even when no filling has been chosen.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** For a compact gauge group, a degree-four integral characteristic class assigns a topological invariant to each principal bundle. Its natural differential lift assigns phases to smooth three-cycles. On boundaries it integrates the corresponding polynomial in the connection curvature modulo integers.
+
+**Problem.** On any closed oriented three-manifold this lift defines a Chern–Simons phase, even for a nontrivial bundle. If the bundle and connection extend over an oriented filling, integrating the curvature polynomial there gives the same phase modulo integers.
+
+**How the definition helps.** In our own argument, evaluation on a fundamental cycle replaces the integral of a globally chosen gauge potential. Two fundamental cycles differ by a boundary within the three-manifold, where the curvature four-form vanishes. The boundary rule also gives the filling formula. Theorem 22 constructs the natural lift.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “if char: Ĥ∗(–; ℤ) → H∗(–; ℤ) denotes the characteristic class map, then char(č ∘ f) = c(P)”
+
+**Sources:**
+
+- [Arun Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings](https://doi.org/10.1090/conm/802/16079)
+- [Alan L. Carey, Stuart Johnson, Michael K. Murray, Danny Stevenson and Bai-Ling Wang, Bundle gerbes for Chern–Simons and Wess–Zumino–Witten theories](https://doi.org/10.1007/s00220-005-1376-8)
+
 ### Crosscap squares obstruct unoriented extensions
 
 **Remember:** Two crosscaps must equal the handle with one reversed circle.
@@ -2606,6 +2865,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
 
+### Cup products polarize abelian Chern–Simons
+
+**Remember:** The mixed term comes from the two cross products.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A circle bundle with connection defines a degree-two differential class x recording its flux and loop phases. On a closed oriented three-manifold, the level-two abelian Chern–Simons action S(x) integrates the cup square x ∪ x modulo integers. The cup product multiplies differential classes.
+
+**Problem.** For fields x and y, S(x+y) − S(x) − S(y) equals twice the integral of x ∪ y modulo integers.
+
+**How the definition helps.** Writing the action as a square makes its two mixed terms equal by bilinearity and symmetry in even degree. In our own comparison, the global formula ∫ A ∧ dA covers only a chosen global potential A. The differential product extends that formula to nontrivial bundles.
+
+**nLab:** [higher dimensional Chern-Simons theory](https://ncatlab.org/nlab/show/higher+dimensional+Chern-Simons+theory). It says: “the above action functional may be regarded as a quadratic form on the cohomology group”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
 ### Dual lines glue Chern–Simons actions
 
 **Remember:** Opposite sides of a cut supply dual lines.
@@ -2623,6 +2901,43 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Daniel S. Freed, Classical Chern-Simons Theory, 1](https://doi.org/10.1006/aima.1995.1039)
+
+### Flat Chern–Simons detects torsion linking
+
+**Remember:** Zero curvature does not erase torsion linking.
+
+*True by definition. Confidence: medium.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A flat circle connection has zero curvature but can give a phase around a loop. On a closed oriented three-manifold, the mixed abelian Chern–Simons action integrates the differential cup product of two such fields modulo integers.
+
+**Problem.** The mixed action equals the torsion linking pairing of the two first Chern classes, the finite-order integral classes of the bundles.
+
+**How the definition helps.** The flat product formula replaces the differential product by an ordinary cup product. In our own derivation, take the loop-phase class of the first field and cup it with the second Chern class. Its integral is the linking pairing, using the sign convention in which the connecting map sends loop phases to Chern classes. A different lift changes the first factor by a real class, whose product with torsion vanishes.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “information beyond the curvature characteristic form which represents the underlying characteristic class in de Rham cohomology”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
+### Spin fillings allow odd Chern–Simons levels
+
+**Remember:** On a spin four-manifold, every integral square evaluates to an even integer.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A spin filling extends the boundary spin structure, a lift of the oriented frame bundle, over a compact oriented four-manifold. Extend the boundary line bundle and connection too. At integer level k the action integrates kF ∧ F/2 modulo integers, where F is curvature normalized to represent the first Chern class.
+
+**Problem.** For a closed spin three-manifold with a circle connection, this action exists and is independent of the spin filling. Allowing arbitrary oriented fillings destroys independence at odd levels.
+
+**How the definition helps.** Gluing two spin fillings gives a closed spin four-manifold, where the Wu formula makes every integral degree-two square even. The quoted bordism calculation guarantees a filling carrying the line bundle. In our own counterexample, adjoining the complex projective plane with its generator line changes the action by k/2.
+
+**nLab:** [abelian Chern-Simons theory](https://ncatlab.org/nlab/show/abelian+Chern-Simons+theory). It says: “the cobordism ring for spin manifolds equipped with complex line bundles is trivial in degree 3”
+
+**Sources:**
+
+- [Robbert Dijkgraaf and Edward Witten, Topological gauge theories and group cohomology, section 5](https://doi.org/10.1007/BF02096988)
 
 ### Spin-statistics for topological field theories follows from a sign-twisted duality structure
 
@@ -2678,6 +2993,81 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Zhu, The Hermitian axiom on two-dimensional topological quantum field theories](https://doi.org/10.1063/5.0121440)
 
+### Wu lifts repair half-squares
+
+**Remember:** Subtract the characteristic product before dividing by two.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** On a closed oriented eight-manifold, a characteristic lift λ is an integral class reducing modulo two to the fourth Wu class. That class measures parity of squares by the rule ∫ x² ≡ ∫ x ∪ λ modulo two for every integral degree-four class x.
+
+**Problem.** For the seven-dimensional abelian Chern–Simons action, integrating (x² − x ∪ λ)/2 gives the same value modulo integers on compatible fillings. The fillings must glue to a closed oriented eight-manifold carrying the indicated classes and characteristic lift.
+
+**How the definition helps.** The Wu identity makes the difference of the two corrected integrals an integer. In our own example, a generator on the quaternionic projective plane squares to one, so the uncorrected half-square changes by a half. Constructing an action for fields without chosen fillings takes a separate theorem.
+
+**nLab:** [higher dimensional Chern-Simons theory](https://ncatlab.org/nlab/show/higher+dimensional+Chern-Simons+theory). It says: “the degree-4 Wu class (for k = 1) is refined by the first fractional Pontryagin class”
+
+**Sources:**
+
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+- [Samuel Monnier, Topological field theories on manifolds with Wu structures](https://doi.org/10.1142/s0129055x17500155)
+
+### Differential lifts give the Green–Schwarz identity
+
+**Remember:** The three-form of the lift differentiates to the characteristic difference.
+
+*True by definition.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A twisted differential string structure identifies two descriptions of a degree-four gauge field. One takes the difference of the spin and gauge characteristic classes with connection. The other comes from a global three-form H and has curvature dH.
+
+**Problem.** For the heterotic string twist ½p₁ − c₂, the lift gives dH = ½p₁(∇) − c₂(A). The right side uses the normalized Pontryagin and Chern forms of the spin and gauge connections.
+
+**How the definition helps.** The identification forces both descriptions to have the same curvature. In our own comparison, this recovers the Green–Schwarz differential equation from a lift that also records integral topology. Constructing the characteristic classes with connection takes separate work.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “induces a form H ∈ Ω³(U) such that H and Θ satisfy the twisted Bianchi identity”
+
+**Sources:**
+
+- [Arun Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings](https://doi.org/10.1090/conm/802/16079)
+- [Hisham Sati, Urs Schreiber and Jim Stasheff, Twisted differential String and Fivebrane structures](https://doi.org/10.1007/s00220-012-1510-3)
+
+### Flat anomaly lines can change sign
+
+**Remember:** Zero local anomaly does not force trivial transport.
+
+*Makes the theorem clean to state or prove.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** The fermion Pfaffian line is the real line in which a fermion amplitude takes its value. Its connection transports the amplitude along paths of gauge fields and can record a sign around a loop.
+
+**Problem.** For one four-dimensional Weyl fermion in the defining SU(2) representation, the flat Pfaffian line has transport −1 around a gauge loop on the four-sphere. The loop closes by a gauge transformation in the nonidentity component.
+
+**How the definition helps.** The line makes a global sign measurable by transport even when the local anomaly vanishes. In our own explanation, the two gauge components correspond to the two homotopy classes of maps from the four-sphere to SU(2). Witten computes the sign from the parity of the spectral crossings along the path.
+
+**Wikipedia:** [Anomaly (physics)](https://en.wikipedia.org/wiki/Anomaly_%28physics%29). It says: “the actions of gauge symmetries in the identity component and the disconnected component of the gauge group on a physical state differ by a sign.”
+
+**Sources:**
+
+- [Edward Witten, An SU(2) anomaly](https://doi.org/10.1016/0370-2693(82)90728-6)
+- [Xianzhe Dai and Daniel S. Freed, Eta-invariants and determinant lines](https://doi.org/10.1063/1.530747)
+
+### Integral trivializations catch hidden Green–Schwarz obstructions
+
+**Remember:** Exact curvature does not kill torsion.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A geometric Green–Schwarz trivialization describes the difference between the spin and gauge characteristic fields by a single global three-form. That description retains the connection but has zero integral characteristic class.
+
+**Problem.** A nonzero finite-order class ½p₁ − c₂ obstructs a Green–Schwarz trivialization even when its curvature form is exact.
+
+**How the definition helps.** A global three-form cannot represent a field with nonzero integral class. In our own example, take the product of the lens space L(3,1) and the sphere S², whose degree-two generators are a and b. A line with first Chern class a+b and its inverse have direct sum with second Chern class −2ab, nonzero of order three. The tangent bundle is stably trivial, so its spin class vanishes and the difference survives only integrally.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “as the homotopy fiber of the difference of differential cocycles”
+
+**Sources:**
+
+- [Hisham Sati, Urs Schreiber and Jim Stasheff, Twisted differential String and Fivebrane structures](https://doi.org/10.1007/s00220-012-1510-3)
+
 ### One generator tests global anomalies
 
 **Remember:** A character of a cyclic bordism group is fixed by one value.
@@ -2695,6 +3085,43 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Arun Debray and Matthew Yu, What Bordism-Theoretic Anomaly Cancellation Can Do for U (2024)](https://link.springer.com/article/10.1007/s00220-024-04937-4)
+
+### Shifted flux allows half periods
+
+**Remember:** Shift first, then test whether the periods are integers.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory), 81T30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** In M-theory, write G for the normalized four-form measuring the C-field flux on spin spacetime. A shifted flux class requires \[G\] + λ/2 to come from integral cohomology, where λ = p₁/2 is the integral spin characteristic class.
+
+**Problem.** On every closed four-cycle, the C-field flux is integral when λ evaluates evenly and half-integral when it evaluates oddly.
+
+**How the definition helps.** Testing integrality after the shift fixes the fractional part on each cycle. In our own example, λ evaluates to ±1 on the quaternionic projective line inside the quaternionic projective plane. The product of the projective plane with the three-sphere therefore requires half-integral flux through that line. Witten derives the shift by requiring cancellation of the membrane anomaly.
+
+**nLab:** [shifted C-field flux quantization](https://ncatlab.org/nlab/show/shifted+C-field+flux+quantization). It says: “becomes integral after shifted by one quarter of the first Pontryagin class”
+
+**Sources:**
+
+- [Edward Witten, On flux quantization in M-theory and the effective action](https://doi.org/10.1016/s0393-0440(96)00042-3)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
+### Twisted spin lifts test brane anomalies
+
+**Remember:** For a single brane, the two degree three twists must match.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** On an oriented brane, the manifold where an open string ends, W₃ measures the obstruction to defining complex spinors. A twisted spin-c structure identifies the surface gauge field carrying this obstruction with the one induced by the background B-field.
+
+**Problem.** A single boundary gauge line passes the topological Freed–Witten anomaly test exactly when W₃ plus the restricted integral B-field class vanishes.
+
+**How the definition helps.** The two surface gauge fields admit a topological identification exactly when their degree-three integral classes agree. Since 2W₃ = 0, equality is equivalent to cancellation. In our own example, the Wu manifold SU(3)/SO(3) has nonzero W₃ and fails the test with zero B-field. Freed and Witten identify this obstruction with the open-string anomaly.
+
+**nLab:** [twisted spinᶜ structure](https://ncatlab.org/nlab/show/twisted+spin%E1%B6%9C+structure). It says: “Twisted spinᶜ-structures appear similarly as the conditions for the analogous quantum anomaly cancellation, but now of the open type II superstring ending on a D-brane.”
+
+**Sources:**
+
+- [Daniel S. Freed and Edward Witten, Anomalies in string theory with D-branes](https://doi.org/10.4310/ajm.1999.v3.n4.a6)
 
 ### Boundary obstructions live in degree two
 

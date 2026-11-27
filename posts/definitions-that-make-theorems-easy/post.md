@@ -3,14 +3,14 @@ title: Definitions that make theorems easy
 date: 2026-11-27
 draft: false
 split: true
-summary: 6709 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
+summary: 6933 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
 summary: Each entry gives the definition in plain words, a line to remember it by, the problem it solves and how it solves it. It also gives a quote from the page or paper that supports it, and the original papers.
 summary: Some definitions make a result true by definition. Some rule out a known counterexample. Most let a theorem be stated with no exceptions, or make a long proof short.
 summary: An AI model found and wrote the entries. A second pass checked them, and a third pass rewrote them in plain English. Nobody checked them by hand.
 ---
 A good definition does part of the work of a theorem. Take the number 1. If 1 were a prime number, the factorization of 6 would not be unique: 6 = 2 · 3 = 1 · 2 · 3. So the definition of a prime leaves 1 out, and the theorem needs no exception.
 
-This page collects 6709 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
+This page collects 6933 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
 
 ## How to read an entry
 
@@ -24,7 +24,7 @@ Each entry has the same parts, in the same order:
 - **Quote and pages.** A sentence from the nLab, Wikipedia, or a paper or page in the TheoremSearch data set that supports the entry, and links to the pages.
 - **Sources.** Papers on the definition or the theorem. Most are the original papers. A few are surveys, books or histories.
 
-The entries come from three places. 1531 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2744 come from [Wikipedia](https://en.wikipedia.org/). 2434 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
+The entries come from three places. 1677 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2758 come from [Wikipedia](https://en.wikipedia.org/). 2498 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
 
 ## Tags and order
 
@@ -38,11 +38,11 @@ The entries are always in the same order. They are sorted first by the main MSC 
 
 ## Three kinds of help
 
-**True by definition** (3190 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
+**True by definition** (3292 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
 
-**Rules out counterexamples** (1521 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
+**Rules out counterexamples** (1577 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
 
-**Makes the theorem clean to state or prove** (1998 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
+**Makes the theorem clean to state or prove** (2064 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
 
 ## Patterns that repeat
 
@@ -76,7 +76,7 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 ## Entries
 
-::figure kind=definitions alt="A list of 6709 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
+::figure kind=definitions alt="A list of 6933 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
 
 ## 00 General and overarching topics; collections
 
@@ -29158,6 +29158,80 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Carlo Mazza, Vladimir Voevodsky and Charles Weibel, Lecture Notes on Motivic Cohomology (2006)](https://www.claymath.org/library/monographs/cmim02.pdf)
 
+### Extra terms force holomorphic flatness
+
+**Remember:** Keeping the next form forces the connection form to be closed.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 53C08. arXiv math.AG, math.DG. Level 3: graduate.
+
+**Definition.** In weight two, a holomorphic Deligne cocycle for a line bundle uses holomorphic frame changes and local holomorphic connection forms. Weight three adds the exterior derivative from one-forms to two-forms.
+
+**Problem.** Degree-two holomorphic Deligne classes in weight three classify holomorphic line bundles with flat holomorphic connection up to isomorphism. Weight two classifies all holomorphic line bundles with holomorphic connection.
+
+**How the definition helps.** The extra derivative forces each local connection form to be closed, exactly the flatness condition (our own). On the trivial line over ℂ², the form z dw has nonzero derivative dz∧dw and therefore works only in weight two (our own). Gluing the local frames and connections gives the classification (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “using holomorphic differential forms”
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “For q = p = 2, it is the group of isomorphism classes of C×-bundles with connection.”
+
+**Sources:**
+
+- [Helmut Hamm and Lê Dũng Tráng, Picard groups for line bundles with connections, Lemma 1.13.](https://doi.org/10.5427/jsing.2018.18j)
+
+### Finite coefficients erase the Hodge term
+
+**Remember:** Reducing modulo m leaves the lattice and removes the forms.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** The weight p analytic Deligne complex starts with the constants (2πi)ᵖℤ, followed by holomorphic functions and forms through degree p−1. Its cohomology accounts for gluing local sections. Reduction with finite coefficients takes the cone of multiplication by m on this complex.
+
+**Problem.** On a complex manifold, weight p Deligne cohomology with coefficients modulo m equals ordinary cohomology with coefficients (2πi)ᵖℤ modulo m, for p,m ≥ 1.
+
+**How the definition helps.** Using the truncated holomorphic complex makes reduction termwise because all its terms are flat over ℤ (our own). Multiplication by m is invertible on forms, including functions, so only the constants survive (our own). Comparison with the cone definition uses the holomorphic de Rham theorem (our own).
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “or of holomorphic forms, respectively”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §1.1](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### The Deligne cone gives the Jacobian kernel
+
+**Remember:** The cone puts the period quotient one degree higher.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** The Deligne cone compares integral cochains scaled by (2πi)ᵖ with complex differential forms modulo Fᵖ. The Hodge filtration step Fᵖ keeps forms with at least p holomorphic factors. A cocycle records both an integral cochain and a witness that its image is a boundary.
+
+**Problem.** On a smooth projective complex variety, degree 2p Deligne cohomology of weight p maps onto integral classes whose complex images have type (p,p). Its kernel is the intermediate Jacobian, the degree 2p−1 complex cohomology modulo Fᵖ and the image of scaled integral cohomology.
+
+**How the definition helps.** The cone places the quotient defining the Jacobian directly in its exact sequence (our own). Passing from the truncated holomorphic complex to the cone uses the de Rham comparison theorem (our own). Hodge decomposition identifies the image in degree 2p, including integral torsion (our own).
+
+**nLab:** [intermediate Jacobian](https://ncatlab.org/nlab/show/intermediate+Jacobian). It says: “is characterised as being the fiber of a canonical map from (complex analytic) Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2 and 7](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Weight one classifies line bundles
+
+**Remember:** The exponential turns a two-term complex into transition functions.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** On a complex manifold, the weight one Deligne complex includes the constants 2πiℤ into the holomorphic functions. They sit in degrees zero and one. Deligne cohomology combines this complex with the gluing of local sections.
+
+**Problem.** Degree two Deligne cohomology of weight one classifies holomorphic line bundles up to isomorphism, with addition corresponding to tensor product.
+
+**How the definition helps.** Exponentiation replaces the two terms by nowhere-zero holomorphic functions in degree one without changing cohomology (our own). Local logarithms prove this replacement works (our own). Degree one classes of those functions give the transition functions that glue a line bundle (our own).
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “the group of isomorphism classes of smooth (or holomorphic, depending on the context) principal C×-bundles”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §1.4](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
 ### Constructible sets are exactly what images of morphisms produce
 
 **Remember:** Images of varieties are not varieties, but they are constructible.
@@ -29406,6 +29480,80 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://doi.org/10.1007/bf02699132)
+
+### Forgetting currents recovers Chow groups
+
+**Remember:** Lift rational relations to erase the cycle while keeping its remaining Green data.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** An ordinary Chow class records an algebraic cycle, a formal sum of subvarieties, modulo divisors of rational functions on subvarieties. An arithmetic Chow class also records a Green current, a generalized differential form that compensates for integration along the cycle. Its relations lift each ordinary divisor relation by attaching the corresponding logarithm.
+
+**Problem.** On a regular projective arithmetic variety, forgetting the Green current maps arithmetic Chow classes onto ordinary Chow classes. The kernel consists exactly of classes with zero cycle and a smooth form.
+
+**How the definition helps.** Lifting the ordinary divisor relations lets us subtract them from an arithmetic representative until its cycle is zero (our own). Existence of Green currents gives surjectivity (our own). Analytic regularity replaces the remaining current by a smooth form modulo the derivatives allowed in the group (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “\\widetilde{C}<sup>2p-1</sup>(p)\\overset {\\operatorname{a}<sub>C</sub>}{\\longrightarrow } \\operatorname{\\widehat{CH}}<sup>p</sup>(\\mathcal{X},C) \\overset {\\zeta <sub>C</sub>}{\\longrightarrow } \\operatorname{CH}<sup>p</sup>(\\mathcal{X})\\to 0”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Green functions recover line metrics
+
+**Remember:** The logarithmic part gives the divisor, and the smooth part gives the metric.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG. Level 3: graduate.
+
+**Definition.** An arithmetic divisor pairs a divisor D, a formal sum of hypersurfaces, with a conjugation-invariant real function g off D. If f is a local equation for D, then g + log \|f\|² must extend smoothly. The first arithmetic Chow group identifies pairs differing by (div(u), −log \|u\|²) for a nonzero rational function u.
+
+**Problem.** On a smooth projective integral variety over an arithmetic field, the first arithmetic Chern class identifies hermitian line bundles with arithmetic divisor classes.
+
+**How the definition helps.** The logarithmic condition turns the singular function into a smooth metric in each local frame (our own). In the line bundle of D, give its canonical rational section squared norm exp(−g) (our own). Dividing the section by f gives a local frame with smooth positive squared norm exp(−g − log \|f\|²) (our own). Principal pairs change the rational section and preserve the resulting metric up to isometry (our own).
+
+**Paper or page:** [Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1). It says: “The assignment (ℒ, ‖·‖) ↦ ĉ₁(ℒ, ‖·‖) defines a group isomorphism”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [Souvik Goswami and Rahul Gupta, Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1)
+
+### Section changes preserve Chern classes
+
+**Remember:** Record both the divisor and the norm of the section.
+
+*True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A hermitian line bundle assigns a smoothly varying norm to each complex fiber, compatibly with conjugation. Its first arithmetic Chern class records a rational section’s divisor of zeros and poles and its negative log squared norm. The arithmetic Chow group sets (div(u), −log \|u\|²) equal to zero for every nonzero rational function u.
+
+**Problem.** On a regular integral arithmetic variety, every nonzero rational section of a hermitian line bundle gives the same first arithmetic Chern class.
+
+**How the definition helps.** The quotient removes exactly the change that a new section introduces (our own). Multiplying a section by u adds div(u) to the divisor and subtracts log \|u\|² from the second entry (our own). The Poincaré–Lelong formula shows that the second entry has the singularities required by the first (our own).
+
+**Wikipedia:** [Arakelov theory](https://en.wikipedia.org/wiki/Arakelov_theory). It says: “is the quotient of this group by the subgroup generated by certain "trivial" cycles.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+
+### Zero mean fixes Green functions
+
+**Remember:** The equation leaves one constant, and the mean fixes it.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A divisor D on a compact connected Riemann surface specifies point masses δ(D) of total integer weight deg(D). Choose a smooth positive area form μ of mass one. The normalized Green function has mean zero for μ and solves the Poisson equation with source deg(D)μ − δ(D).
+
+**Problem.** Each divisor D has exactly one normalized Green function for μ.
+
+**How the definition helps.** The mean condition removes the only freedom in solving the equation, an additive constant (our own). Without it, every constant solves the equation for the zero divisor (our own). Existence follows from the Poisson equation on a compact surface because the source has total mass zero (our own).
+
+**nLab:** [Arakelov geometry](https://ncatlab.org/nlab/show/Arakelov+geometry). It says: “he defined the intersection numbers using the complementary piece at infinity.”
+
+**Sources:**
+
+- [Suren J. Arakelov, Intersection theory of divisors on an arithmetic surface (1974)](https://doi.org/10.1070/IM1974v008n06ABEH002141)
 
 ### Residue codes give evaluation duals
 
@@ -30579,6 +30727,24 @@ $$”
 
 - [J. I. Burgos Gil, R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions, arXiv:0902.0430 (2010), Documenta Math. 15 (2010) 73--176](https://arxiv.org/abs/0902.0430v2)
 
+### Shifts change Bott–Chern signs
+
+**Remember:** Swap even and odd, and the secondary class changes sign.
+
+*True by definition.* MSC 14C17 (Intersection theory, characteristic classes, intersection multiplicities in algebraic geometry), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** The secondary Chern character of an exact complex of hermitian bundles is a differential form class measuring its metric discrepancy. Its differential gives the signed sum of the Chern character forms of the terms, with opposite signs in even and odd degrees. Pullbacks preserve the class, and orthogonally split exact complexes have class zero.
+
+**Problem.** Shifting a bounded exact complex of hermitian holomorphic bundles by one degree negates its secondary Chern character. Shifting by two degrees preserves it.
+
+**How the definition helps.** The axioms determine the shifted class without repeating the integral construction (our own). One shift reverses the signed sum while preserving pullback compatibility and orthogonal splitting (our own). The negative of the original class therefore satisfies all three axioms, and the uniqueness theorem identifies it with the shifted class (our own).
+
+**Paper or page:** [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2). It says: “\\widetilde {\\phi }(\\overline {E}<sub>\\ast </sub>\[k\])=(-1)<sup>k</sup>\\widetilde {\\phi }(\\overline {E}<sub>\\ast </sub>).”
+
+**Sources:**
+
+- [J. I. Burgos Gil and R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2)
+
 ### The virtual fundamental class always has the expected dimension
 
 **Remember:** The virtual class has the dimension that naive counting predicts.
@@ -30634,6 +30800,79 @@ $$”
 
 - [Kay Rülling and Takao Yamazaki, Suslin homology of relative curves with modulus (2016)](https://doi.org/10.1112/jlms/jdw006)
 - [Carlo Mazza, Vladimir Voevodsky and Charles Weibel, Lecture Notes on Motivic Cohomology (2006)](https://www.claymath.org/library/monographs/cmim02.pdf)
+
+### Jacobians measure Hodge splitting failure
+
+**Remember:** Subtract an integral lift from a Hodge lift.
+
+*True by definition.* MSC 14C30 (Transcendental methods, Hodge theory (algebro-geometric aspects)), 14F43. arXiv math.AG. Level 4: research.
+
+**Definition.** For a torsion-free integral Hodge structure H of weight minus one, its Jacobian is its complex vector space modulo two subgroups. These are the integral lattice and F⁰, the sum of components whose first Hodge index is nonnegative.
+
+**Problem.** For a smooth projective complex variety, take H from degree 2p−1 integral cohomology by removing torsion and lowering both Hodge indices by p. The intermediate Jacobian classifies mixed Hodge extensions with subobject H and quotient the weight-zero line ℤ(0).
+
+**How the definition helps.** Two lifts of 1, one integral and one in F⁰, differ by an element of the complex space of H (our own). Changing lifts adds exactly the two subgroups in the Jacobian quotient (our own). Carlson’s inverse construction recovers the extension filtration from this difference (our own).
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “By a theorem of Carlson, the Jacobian is identified with the following group of extensions in the abelian category of mixed Hodge structures”
+
+**Sources:**
+
+- [James Carlson, The geometry of the extension class of a mixed Hodge structure](https://doi.org/10.1090/pspum/046.2/927981)
+
+### Homogeneous torsion removes genus corrections
+
+**Remember:** Change the torsion in pushforward and the extra genus disappears.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Analytic torsion supplies a metric correction when sending a complex of vector bundles forward along a projective map. Such correction theories are classified by a real power series called their additive genus. Homogeneous torsion is the theory corresponding to the zero series.
+
+**Problem.** For metrized projective maps of regular arithmetic varieties, homogeneous torsion gives the arithmetic Riemann–Roch identity in rational arithmetic Chow groups with currents. The Chern character of the direct image equals the direct image of the Chern character multiplied first by the relative Todd class.
+
+**How the definition helps.** The general formula has an extra term linear in the genus, which vanishes identically for homogeneous torsion (our own). The classification of torsion theories and the general arithmetic Riemann–Roch theorem supply the substantive steps (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “satisfies an exact Grothendieck-Riemann-Roch type formula:”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+- [Burgos Gil, Freixas i Montplet and Lițcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms, Corollary 6.4](https://www.numdam.org/item/AFST_2014_6_23_3_513_0/)
+
+### Relative Todd classes compose
+
+**Remember:** Compose with the tangent triangle to multiply the two Todd classes.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A metrized projective map carries metric data on its relative tangent complex, which records tangent directions along the map. For a composite, use the metric induced by the exact triangle relating the two relative tangent complexes to the composite’s complex.
+
+**Problem.** For composable metrized projective maps of regular arithmetic varieties, the relative arithmetic Todd classes multiply in the rational arithmetic Chow ring. The first factor is the class of the first map, and the second is its pullback of the next map’s class.
+
+**How the definition helps.** Using the induced metric puts the tangent complexes in a tight triangle, one whose metrics introduce no secondary correction (our own). An independently chosen metric on the composite would require accounting for its discrepancy (our own). Multiplicativity then follows from the Todd class theorem for tight triangles (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Td̂(ḡ ∘ f̄) = f⁎Td̂(ḡ) · Td̂(f̄)”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Todd correction cancels normal metrics
+
+**Remember:** The Todd term cancels the dependence on the auxiliary normal metric.
+
+*True by definition.* MSC 14C40 (Riemann-Roch theorems), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** For a closed embedding of complex manifolds, a singular Bott–Chern class compares a bundle on the submanifold with a metrized resolution on the ambient manifold. It uses an auxiliary metric on the normal bundle, which records directions transverse to the submanifold. The covariant class adds the secondary inverse Todd correction from the tangent sequence, weighted by the Chern character and Todd form before pushforward.
+
+**Problem.** With the remaining metric data fixed, the covariant singular Bott–Chern class is independent of the metric on the normal bundle.
+
+**How the definition helps.** The added Todd correction changes by exactly the negative of the change in the original class (our own). The metric variation formulas for the two terms establish this cancellation (our own).
+
+**Paper or page:** [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2). It says: “does not depend on the choice of the metric on $N<sub>Y/X</sub>$.”
+
+**Sources:**
+
+- [J. I. Burgos Gil and R. Litcanu, Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2)
 
 ### Hodge cosets classify path torsors
 
@@ -32208,6 +32447,266 @@ $$”
 
 - [Vladimir Voevodsky, On motivic cohomology with ℤ/ℓ coefficients (2011)](https://annals.math.princeton.edu/2011/174-1/p11)
 
+### Atlas cochains retain stabilizer characters
+
+**Remember:** Keep the overlaps to keep the stabilizers.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14D23. arXiv math.AG. Level 4: research.
+
+**Definition.** A classifying stack remembers a group as the symmetries of a point. Its atlas nerve records strings of group elements as successive overlaps of the point with itself. Integral Deligne–Beilinson cohomology compares integral cochains on these overlaps with differential forms filtered by holomorphic degree.
+
+**Problem.** For the classifying stack of the complex m-th roots of unity, degree two integral Deligne–Beilinson cohomology of weight one is ℤ/m. The ordinary point has zero in that degree and weight.
+
+**How the definition helps.** The overlap cochains compute group cohomology, so they retain the symmetry group that disappears on the ordinary point (our own). Averaging over the group kills positive-degree complex cohomology, leaving its degree two integral cohomology ℤ/m (our own). The descent theorem justifies computing on these overlaps (our own).
+
+**Paper or page:** [Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1). It says: “Let 𝒳 be a Deligne-Mumford stack of finite type over ℂ. Then there is an exact sequence”
+
+**Sources:**
+
+- [Zhiyuan Li and Xun Zhang, Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1)
+
+### Correspondences commute with Abel–Jacobi
+
+**Remember:** Apply the correspondence before or after taking the Deligne class.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** For a cycle with zero integral cohomology class, its Abel–Jacobi invariant is its Deligne cycle class in the intermediate Jacobian, a complex torus. A correspondence is a cycle on a product acting by pullback, product with the cycle, and pushforward.
+
+**Problem.** Between smooth projective complex varieties, applying a correspondence of degree r before taking the Abel–Jacobi invariant gives the same result as applying it afterwards. The target uses codimension p+r for an input of codimension p.
+
+**How the definition helps.** The Deligne cycle class respects each operation that defines the correspondence (our own). This replaces a comparison of integrals on bounding chains by the product and pushforward theorems for cycle classes (our own). Identifying the result with Griffiths’s invariant still uses the comparison theorem (our own).
+
+**Paper or page:** [Vanishing criteria for Ceresa cycles](https://arxiv.org/abs/2406.03891v2). It says: “Moreover for every α ∈ CHᵖ(X)ₕₒₘ, γ∗(AJₓᵖ(α)) = AJʏᵖ⁺ʳ(γ∗(α)).”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Jef Laga and Ari Shnidman, Vanishing criteria for Ceresa cycles](https://arxiv.org/abs/2406.03891v2)
+
+### Deligne cycle classes recover Abel–Jacobi
+
+**Remember:** When the ordinary class vanishes, the Deligne lift is the Abel–Jacobi class.
+
+*Makes the theorem clean to state or prove.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** The Deligne cycle class records the integral class of an algebraic cycle together with its class from filtered differential forms. On a smooth projective complex variety, the kernel of the map forgetting the forms is a complex torus called the intermediate Jacobian.
+
+**Problem.** For cycles whose integral cohomology class vanishes, the Deligne cycle class in the intermediate Jacobian equals Griffiths’s Abel–Jacobi invariant.
+
+**How the definition helps.** A zero integral class puts the Deligne lift directly in the intermediate Jacobian. Griffiths instead integrates forms over a chain bounded by the cycle (our own). The comparison of the two answers is Esnault and Viehweg’s Theorem 7.11.
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “this induces a map from cycles to intermediate Jacobians. This is the Abel-Jacobi map”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7, comparison with the Abel–Jacobi map](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Deligne duality shifts degree by one
+
+**Remember:** Dualizing the comparison swaps its terms and shifts degree.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The real Deligne cone compares forms of holomorphic degree at least p with complex cochains modulo the line (2πi)ᵖℝ. It records a filtered cochain together with a cochain one degree lower witnessing agreement in the quotient.
+
+**Problem.** On a smooth projective complex variety of dimension d, degree n real Deligne cohomology of weight p is dual to degree 2d−n+1 of weight d−p+1.
+
+**How the definition helps.** Dualizing the cone exchanges its terms, so the cochain placed one degree lower accounts for the extra degree (our own). Poincaré duality pairs complementary ordinary degrees (our own). The annihilator of the p-th holomorphic filtration step is step d−p+1 in the dual degree (our own).
+
+**Paper or page:** [Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1). It says: “Let X be a proper complex algebraic manifold, equidimensional of dimension d. Then there is a perfect duality”
+
+**Sources:**
+
+- [J. I. Burgos Gil, Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1)
+
+### High twists remove filtered cochains
+
+**Remember:** Below the Hodge cutoff, only the shifted real part remains.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The real Deligne cone compares forms of holomorphic degree at least p with complex cochains modulo the line ℝ(p) = (2πi)ᵖℝ. Projection identifies this quotient line with ℝ(p−1). The shift in the cone places quotient cochains one degree higher.
+
+**Problem.** On a smooth complex quasi-projective variety, take n &lt; p. Degree n real Deligne–Beilinson cohomology of weight p equals ordinary degree n−1 cohomology with coefficients ℝ(p−1).
+
+**How the definition helps.** In the cone, filtered forms start in degree p, so only the shifted quotient contributes below p (our own). Replacing the logarithmic de Rham complex by ordinary complex cochains uses the de Rham comparison theorem (our own).
+
+**Paper or page:** [The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893v3). It says: “Then it defines a class in Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2.14–2.16](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Thu Ha Trieu, The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893v3)
+
+### Hodge extensions yield two-step exactness
+
+**Remember:** Only Hodge classes and one layer of extensions survive.
+
+*True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A rational mixed Hodge structure carries filtrations by weight and holomorphic degree, with a pure Hodge decomposition on each weight quotient. Absolute Hodge cohomology takes derived maps from the weight-zero line ℚ(0) into the variety’s cochain complex with these filtrations. A twist by p lowers both Hodge indices by p.
+
+**Problem.** In degree n, rational absolute Hodge cohomology surjects onto filtration-preserving maps from ℚ(0) to the twisted degree n cohomology of a complex algebraic variety. Its kernel classifies extensions with quotient ℚ(0) and subobject the twisted degree n−1 cohomology.
+
+**How the definition helps.** Derived maps organize the calculation by extension degree (our own). Rational mixed Hodge structures have no higher extensions beyond degree one (our own). Thus only ordinary maps and single extensions remain, avoiding an explicit calculation with filtered cochains (our own).
+
+**Paper or page:** [Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2). It says: “then we recover the absolute Hodge cohomology groups of Beilinson”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Raphaël Ruimy and Swann Tubach, Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2)
+
+### Hyperplane powers split Deligne cohomology
+
+**Remember:** Split both sides of the comparison with the same hyperplane class.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** The integral Deligne–Beilinson cone compares integral cochains with forms filtered by holomorphic degree. On the bundle of one-dimensional quotients of a vector bundle, h denotes the Deligne first Chern class of the tautological quotient line.
+
+**Problem.** Over a smooth complex quasi-projective variety, the projective bundle of a rank r vector bundle has r summands in Deligne–Beilinson degree n and weight p. Pullback followed by multiplication by hʲ identifies summand j with base cohomology in degree n−2j and weight p−j, for 0 ≤ j &lt; r.
+
+**How the definition helps.** The same hyperplane powers split both inputs to the cone and respect the comparison map (our own). The ordinary and filtered projective bundle formulas supply the splittings (our own). Compatibility of the Deligne product transfers them to the cone exact sequence (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “It is a morphism of complexes, so it induces a cup product in Deligne cohomology.”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, Proposition 8.5](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Jacobian classes have square zero
+
+**Remember:** Two pure comparison terms have nothing to multiply.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A Deligne cochain in the cone model records an integral cochain, a filtered differential form, and a cochain comparing them. The product formula pairs a comparison cochain only with an integral cochain or a filtered form.
+
+**Problem.** On a smooth projective complex variety, the intermediate Jacobians form an ideal in the integral Deligne ring restricted to degrees twice the weights. Every product of two elements of this ideal vanishes.
+
+**How the definition helps.** A Jacobian class has a representative with only a comparison cochain, so two such representatives multiply to zero (our own). The cone sequence identifies these classes with the kernel of the map to ordinary cohomology (our own). Comparing this product with the product on truncated holomorphic complexes takes a separate argument (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “It is a morphism of complexes, so it induces a cup product in Deligne cohomology.”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §3 and Proposition 7.10](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Logarithmic classes select algebraic units
+
+**Remember:** Logarithmic differentials allow zeros and poles but not essential singularities.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Choose a smooth projective compactification whose boundary locally consists of coordinate hyperplanes. Deligne–Beilinson cohomology compares integral cochains with differential forms that allow logarithmic poles there. These forms use factors dz/z along boundary coordinates z.
+
+**Problem.** For a smooth complex quasi-projective variety, degree one integral Deligne–Beilinson cohomology of weight one is the group of invertible regular functions.
+
+**How the definition helps.** The logarithmic pole condition picks out algebraic units among nowhere-zero holomorphic functions f (our own). It requires df/f to have only logarithmic poles at the boundary (our own). On the affine line, exp(z) fails because dz has a double pole at infinity (our own). Esnault and Viehweg prove the test by extending functions meromorphically across the boundary.
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “a cohomology theory for algebraic varieties”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §§2.12–2.13](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Odd Deligne groups recover higher Brauer groups
+
+**Remember:** A missing odd Betti group leaves a period quotient.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Cohomology of K3 type in degree 2p has types (p−1,p+1), (p,p), and (p+1,p−1), with both outer pieces one-dimensional. Its higher analytic Brauer group is the first piece modulo the projection of integral cohomology. The Deligne cone compares integral cochains with complex forms modulo holomorphic degrees at least p.
+
+**Problem.** Suppose a smooth projective complex variety has K3 type in degree 2p and zero integral cohomology in degrees 2p−1 and 2p+1. Its degree 2p+1 integral Deligne cohomology of weight p equals the higher analytic Brauer group in degree 2p.
+
+**How the definition helps.** The cone exact sequence leaves just the degree 2p quotient because the next integral group vanishes (our own). Hodge decomposition removes the two types with first index at least p (our own). Dividing the remaining line by projected periods recovers the analytic Brauer description (our own).
+
+**Paper or page:** [Twists of intermediate Jacobian fibrations](https://arxiv.org/abs/2411.01953v2). It says: “is a Hodge structure of K3 type. Then we have canonical isomorphisms”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Yajnaseni Dutta, Dominique Mattei and Evgeny Shinder, Twists of intermediate Jacobian fibrations](https://arxiv.org/abs/2411.01953v2)
+
+### Supported Deligne lifts are unique
+
+**Remember:** Keep the support until the lift is unique.
+
+*Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14C25. arXiv math.AG. Level 4: research.
+
+**Definition.** Deligne cohomology with support compares integral cochains and filtered differential forms relative to the complement of a closed set. Relative cochains record a class together with data trivializing its restriction to that complement.
+
+**Problem.** On a smooth projective complex variety, let Z be the support of a cycle of pure codimension p. Its integral and filtered fundamental classes lift together to a unique supported Deligne class of degree 2p and weight p.
+
+**How the definition helps.** Keeping the support kills the degree 2p−1 complex cohomology that measures ambiguity in the lift (our own). This vanishing uses the real codimension bound, and existence uses agreement of the two fundamental classes over ℂ (our own). Without support, a point on an elliptic curve has a whole Jacobian of possible lifts (our own).
+
+**nLab:** [Abel-Jacobi map](https://ncatlab.org/nlab/show/Abel-Jacobi+map). It says: “the refinement to Deligne cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §7.1](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
+### Weak Hodge cochains recover Deligne cohomology
+
+**Remember:** Forget weights and retain the real and filtered comparison.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** A weak Hodge complex compares real cochains with complex cochains filtered by holomorphic degree. Weak Hodge cohomology takes derived maps from the real line of type (0,0) into this comparison. It forgets the weight filtration.
+
+**Problem.** For a smooth projective complex variety, weak Hodge cohomology of its real Hodge complex agrees with real Deligne cohomology in every degree and twist.
+
+**How the definition helps.** A derived map gives real and filtered cochains together with a cochain witnessing their agreement (our own). These are precisely the three entries of the Deligne cone (our own). The de Rham comparison identifies the complex of forms used here with complex cochains (our own).
+
+**Paper or page:** [Special L-values of geometric motives](https://arxiv.org/abs/1003.1215v3). It says: “Weak Hodge cohomology identifies with Deligne cohomology”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Jakob Scholbach, Special L-values of geometric motives](https://arxiv.org/abs/1003.1215v3)
+
+### Weights reject the torus top class
+
+**Remember:** Meeting the Hodge cutoff does not make a class weight zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
+
+**Definition.** Rational absolute Hodge cohomology takes derived maps from the weight-zero rational line into cochains carrying weight and Hodge filtrations. A twist by one lowers each Hodge index by one and the weight by two. Deligne–Beilinson cohomology imposes the Hodge cutoff alone.
+
+**Problem.** For the algebraic torus (ℂ∖{0})², rational absolute Hodge cohomology vanishes in degree two and weight one. Rational Deligne–Beilinson cohomology in that degree and weight has dimension one.
+
+**How the definition helps.** Preserving weights excludes the top class because its twisted weight is two (our own). Its original type (2,2) passes the Deligne cutoff requiring first index at least one (our own). Twisted first cohomology has only type (0,0), so it supplies neither an extension nor a Deligne quotient (our own).
+
+**Paper or page:** [Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2). It says: “then we recover the absolute Hodge cohomology groups of Beilinson”
+
+**Sources:**
+
+- [Alexander Beilinson, Notes on absolute Hodge cohomology](https://doi.org/10.1090/conm/055.1/862628)
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, §2](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+- [Raphaël Ruimy and Swann Tubach, Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2)
+
+### Étale cycle maps extend to stacks
+
+**Remember:** A map of étale complexes still acts on an atlas.
+
+*True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 19E15, 14D23. arXiv math.AG, math.KT. Level 4: research.
+
+**Definition.** The rational regulator is a map of complexes from algebraic cycles to Deligne–Beilinson cochains. Both complexes admit gluing for étale covers, which are locally isomorphisms in complex analytic coordinates. A Deligne–Mumford stack admits such a cover by a scheme.
+
+**Problem.** For a smooth finite-type Deligne–Mumford stack over ℂ, rational codimension p cycles modulo rational equivalence map to degree 2p Deligne–Beilinson cohomology of weight p. On smooth schemes this gives Bloch’s cycle class map.
+
+**How the definition helps.** A single map of complexes on étale covers acts on the cohomology obtained by gluing over the stack (our own). This replaces constructing classes separately on each stack (our own). The comparison theorems identify the source with rational Chow groups and the target with Deligne–Beilinson cohomology (our own).
+
+**Paper or page:** [Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1). It says: “If 𝒳 is a smooth scheme, the cycle class map clᴰᴮ agrees with the Deligne-Beilinson cycle class map defined in”
+
+**Sources:**
+
+- [Zhiyuan Li and Xun Zhang, Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1)
+
 ### Arithmetic circle modules give zeta values without semisimplicity
 
 **Remember:** Define the Euler characteristic through K₀, and semisimplicity is no longer needed.
@@ -32482,6 +32981,189 @@ $$”
 **Sources:**
 
 - [Hidekazu Furusho, Pentagon and hexagon equations (2010)](https://annals.math.princeton.edu/wp-content/uploads/annals-v171-n1-p13-p.pdf)
+
+### Bott–Chern forms restore character additivity
+
+**Remember:** Put the failure of additivity into the relations.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 19E08. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An arithmetic K-group records vector bundles with smooth metrics and also classes of differential forms. For an exact sequence with subbundle A, middle bundle B and quotient C, it imposes \[A\] − \[B\] + \[C\] = a(η). Here η is the Bott–Chern form measuring the metric discrepancy, and a inserts a form as a class.
+
+**Problem.** On a regular projective arithmetic variety, the arithmetic Chern character gives a group homomorphism from arithmetic K-theory to rational arithmetic Chow groups.
+
+**How the definition helps.** The defining relation accounts for the discrepancy that would obstruct additivity under the ordinary relation \[B\] = \[A\] + \[C\] (our own). The characteristic-class theorem identifies the discrepancy in the target with the very same Bott–Chern form (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “φ̂(ℱ∗) − φ̂(𝒢∗) + φ̂(ℋ∗) = a(φ̃(τ̄))”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Compatible wavefront bounds permit current products
+
+**Remember:** Opposite singular directions can cancel and make a product undefined.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A wavefront bound for a current, a generalized differential form, specifies which nonzero covectors may carry singularities. For arithmetic Chow groups, the bound is a closed cone invariant under complex conjugation. Two bounds are compatible if they contain no opposite covectors at the same point.
+
+**Problem.** On a regular arithmetic variety, compatible bounds S and T give a product of arithmetic Chow classes with rational coefficients. Its bound is S ∪ T ∪ (S + T), where addition pairs covectors at the same point.
+
+**How the definition helps.** Compatibility excludes cancellation of opposite singular directions, so the distribution product theorem applies (our own). A point mass has opposite singular directions and has no canonical square as a distribution (our own). Passing to arithmetic classes also requires proving that the product respects the cycle relations (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Moreover, if S ∩ (−S′) = ∅, there is a graded bilinear map”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Currents make proper pushforwards compose
+
+**Remember:** Push a test form back twice to push its current forward twice.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A current is a generalized differential form that acts on smooth test forms. For a proper map, its direct image evaluates a test form by first pulling that form back. Arithmetic Chow groups with current coefficients allow this direct image even when a smooth input acquires singularities.
+
+**Problem.** For composable proper maps between regular arithmetic varieties, successive direct images of arithmetic Chow classes with current coefficients equal the direct image along the composite.
+
+**How the definition helps.** Allowing currents keeps both direct images defined, and testing against a form reduces their composition to two successive pullbacks (our own). Algebraic cycles already satisfy the composition rule (our own). The arithmetic theorem also checks the cycle relations and controls the singular directions of the result (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Furthermore, the relation (g ∘ f)∗ = g∗ ∘ f∗ is satisfied.”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Deligne classes determine compatible lifts
+
+**Remember:** A curvature form can vary without changing the class it represents.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** The curvature of an arithmetic cycle adds integration along its cycle to the complex second derivative of its Green current. A Green current is a generalized differential form chosen to make this sum smooth. Real Deligne cohomology identifies closed forms in the relevant complex when their difference is a differential.
+
+**Problem.** On a regular projective arithmetic variety, consider a Chow class and a closed real Deligne form of matching degree. They admit a common arithmetic lift exactly when their Deligne classes agree.
+
+**How the definition helps.** Curvature turns the lifting problem into a comparison between the class of the form and the class of the cycle (our own). Once a Green current exists, changing its form component adds a differential to the curvature (our own). Exactness shows that this accounts for every compatible pair (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “CHᵖ(𝒳) ⊕ ZC²ᵖ(p) ⟶ H²ᵖ(C∗(p)) ⟶ 0”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+
+### Exact terms make Green products commute
+
+**Remember:** Swapping the factors changes only terms killed in the Green quotient.
+
+*True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A Green current is a generalized differential form that compensates for integration along an algebraic cycle. Its star product with another Green current combines restriction to the second cycle with a term involving the first curvature. Arithmetic Chow classes identify Green terms differing by sums of derivatives under ∂ and ∂̄, the two complex parts of differentiation.
+
+**Problem.** For properly intersecting cycles on a smooth projective variety over an arithmetic field, the two orders of the Green star product agree modulo these derivatives.
+
+**How the definition helps.** The quotient discards the derivative terms that exchanging the two factors introduces (our own). The usual formula on representatives treats the factors differently, so commutativity there would be too strong (our own). The analytic work uses representatives with logarithmic singularities to justify integration by parts along the intersection (our own).
+
+**nLab:** [arithmetic Chow group](https://ncatlab.org/nlab/show/arithmetic+Chow+group). It says: “pairs consisting of a codimension p subvariety of X together with a Green current for it.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+
+### Green products multiply curvatures
+
+**Remember:** The cycle term cancels, leaving the product of the two curvature forms.
+
+*True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG. Level 4: research.
+
+**Definition.** A Green current g for a cycle Z has curvature ω, the smooth sum of its complex second derivative and integration along Z. For cycles Z and W meeting in the expected codimension, the Green star product adds two terms. They are the restriction of g integrated along W and the product of ω with the Green current for W.
+
+**Problem.** For properly intersecting cycles on a smooth projective variety over an arithmetic field, the Green star product multiplies their curvature forms.
+
+**How the definition helps.** The second term cancels the extra contribution from differentiating the restriction term (our own). Multiplying the two Green currents directly would miss this cancellation (our own). The analytic work justifies restricting representatives with logarithmic singularities and identifies the remaining cycle contribution with integration over the intersection (our own).
+
+**Paper or page:** [Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1). It says: “Assume that the cycles α and β intersect properly.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://www.numdam.org/item/PMIHES_1990__72__93_0/)
+- [Souvik Goswami and Rahul Gupta, Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1)
+
+### Self-dual torsion lifts Grothendieck duality
+
+**Remember:** Choose torsion that obeys the same duality as the complexes.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 58J52. arXiv math.AG. Level 4: research.
+
+**Definition.** An arithmetic complex records a complex of bundles with metrics and an additional differential form or current. Analytic torsion corrects its direct image for the choice of metrics. A torsion theory is self-dual when dualizing these data, including the relative dualizing twist and the sign on forms, preserves its correction rule.
+
+**Problem.** For a metrized projective map between smooth complex varieties, self-dual torsion makes arithmetic duality commute with direct image up to natural isomorphism. On the source one tensors the dual with the relative dualizing complex, which accounts for duality along the fibers.
+
+**How the definition helps.** Self-duality gives the same metric correction on both sides of the ordinary duality isomorphism (our own). Grothendieck duality supplies that underlying isomorphism, and the torsion comparison proves it respects the extra arithmetic data (our own).
+
+**Paper or page:** [Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2). It says: “Let T be a self-dual theory of generalized analytic torsion classes.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, G. Freixas i Montplet and R. Litcanu, Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2)
+
+### Smooth curvature detects ordinary classes
+
+**Remember:** Allow currents first, then detect the smooth subgroup by curvature.
+
+*Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An arithmetic cycle has a curvature current, a generalized form obtained by adding integration over the cycle to a derivative of its Green term. Arithmetic Chow homology with currents permits singular curvature. Its curvature modulo smooth forms records only the singular part.
+
+**Problem.** Suppose an arithmetic variety has projective generic fiber, the variety obtained over the base field of fractions. Ordinary arithmetic Chow homology embeds in the version with currents, with image exactly the classes whose curvature vanishes modulo smooth forms.
+
+**How the definition helps.** Taking curvature modulo smooth forms expresses the entire obstruction to an ordinary representative in one class (our own). The comparison theorem proves injectivity and shows that smooth curvature suffices to recover such a representative (our own).
+
+**Paper or page:** [Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1). It says: “denotes the subspace of currents that can be represented by smooth differential forms.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1)
+
+### Tight triangles multiply Todd classes
+
+**Remember:** An orthogonal cancellation carries no secondary metric defect.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 14C17. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A mapping cone combines a map of complexes into one complex that represents its quotient in the derived category. A tight triangle equips this cone with the metric induced from the first two complexes, up to tight isomorphism. Tight isomorphisms ignore metric changes generated by orthogonally split cancellations and by pairing an exact complex with its shift.
+
+**Problem.** On a regular arithmetic variety, the rational arithmetic Todd class of the middle complex in a tight triangle equals the product for the outer complexes.
+
+**How the definition helps.** Tightness forces the secondary class measuring the discrepancy between the two sides to vanish (our own). Even an identity map between lines can have a metric discrepancy if their norms differ (our own). The multiplicative characteristic-class theorem identifies precisely which correction to discard (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “In particular, if τ̄ is tightly distinguished, the equality”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Răzvan Lițcanu, Hermitian structures on the derived category of coherent sheaves](https://perso.pages.math.cnrs.fr/users/gerard.freixas/Articles/Burgos-Freixas-Litcanu-JMPA.pdf)
+
+### Wavefront bounds permit arithmetic pullbacks
+
+**Remember:** A pullback cannot collapse a permitted singular direction.
+
+*Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A wavefront set records the nonzero covectors, or directional linear functionals, along which a generalized form fails to be smooth. In an arithmetic Chow group with current coefficients, a closed cone S bounds the permitted singular directions and respects complex conjugation. A map is transverse to S if its derivative pulls no covector in S back to zero.
+
+**Problem.** A transverse map between regular arithmetic varieties pulls arithmetic Chow classes with bound S back to classes bounded by the pulled-back cone.
+
+**How the definition helps.** Transversality excludes the directions that prevent a distribution from having a well-defined restriction (our own). For example, restricting a point mass to its own point would require assigning it a point value (our own). The distribution pullback theorem constructs the restriction, and the arithmetic theorem checks that it respects the cycle relations (our own).
+
+**Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “If $N<sub>f</sub>\\cap S=\\emptyset $, then there is a pull-back morphism”
+
+**Sources:**
+
+- [José Ignacio Burgos Gil, Gerard Freixas i Montplet and Razvan Litcanu, The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1)
 
 ### A principal kernel of θ makes perfectoid rings of characteristic p perfect
 
@@ -41644,6 +42326,24 @@ $$”
 
 - [The Stacks Project, Sites Modules, Lemma 18.36.1.](https://stacks.math.columbia.edu/tag/04EN)
 
+### Stable isomorphism ignores cover refinements
+
+**Remember:** Compare the gerbes after both covers have been pulled back.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 3: graduate.
+
+**Definition.** A bundle gerbe assigns a line to each pair of lifts of one point, with associative multiplication along triples. A stable isomorphism compares two presentations by a line bundle on pairs consisting of one lift from each presentation. Its fibers identify the two line systems compatibly with multiplication.
+
+**Problem.** Refining the cover of a bundle gerbe gives a stably isomorphic presentation.
+
+**How the definition helps.** The comparison line already exists between each old lift and the image of each new lift. In our own proof, multiplying gerbe lines gives the required identifications, and associativity gives their compatibility. An isomorphism of covers would be too restrictive, since even covers of a point can have different sizes.
+
+**nLab:** [bundle gerbe](https://ncatlab.org/nlab/show/bundle+gerbe). It says: “by refining, if necessary, the surjective submersion Y by a good open cover”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+
 ### Tensor products characterized by bilinear maps commute with sheafification
 
 **Remember:** Maps out of a tensor product are bilinear maps.
@@ -45530,6 +46230,44 @@ $$”
 - [Thomas Nikolaus, Urs Schreiber, Danny Stevenson, Principal ∞-bundles – General theory, J. Homotopy Relat. Struct. 10 (2015) 749–801, arXiv:1207.0248](https://arxiv.org/abs/1207.0248)
 - [Takashi Karube, On the local cross-sections in locally compact groups, J. Math. Soc. Japan 10 (1958) 343–347](https://doi.org/10.2969/jmsj/01040343)
 
+### Classifying maps pull 2-bundles back
+
+**Remember:** Pull back the bundle by precomposing its classifying map.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A principal 2-bundle is locally a copy of a smooth group with invertible arrows between its elements. Its classifying stack BG collects these bundles and their symmetries. A map to BG describes a bundle by pulling back the universal bundle, retaining the identifications in the pullback.
+
+**Problem.** If X → BG classifies a principal 2-bundle, the composite Y → X → BG classifies its pullback to Y.
+
+**How the definition helps.** Two successive pullbacks of the universal bundle give the pullback along the composite. In our own comparison, a description by transition maps requires pulling back their compatibility isomorphisms as well. The classification theorem identifies those local data with maps to BG.
+
+**nLab:** [principal 2-bundle](https://ncatlab.org/nlab/show/principal+2-bundle). It says: “This says that principal 2-bundles are classified by Cech cohomology with coefficients in deloopings of (sheaves of) 2-groups.”
+
+**Paper or page:** [Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1). It says: “is a principal 𝒢-2-bundle over 𝒵”
+
+**Sources:**
+
+- [Caviglia, Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1)
+
+### Coherent actions descend gerbes
+
+**Remember:** The group element is the difference between two lifts.
+
+*Rules out counterexamples.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe assigns lines to pairs of local lifts of a point and multiplies those lines on triples. A weak group action identifies the gerbe with its translates in smooth families. Its comparison maps identify successive translations with their product and agree on triples.
+
+**Problem.** On a principal group bundle, a gerbe with a weak action comes from a gerbe on the quotient, up to equivalence.
+
+**How the definition helps.** Each pair in one fiber differs by a unique group element, so the comparison maps give the gluing rules. The descent theorem proves these rules produce a gerbe on the quotient. In our own example, every translation of the three-sphere group SU(2) preserves the gerbe classified by a generator of its third integral cohomology. That class cannot come from the quotient point.
+
+**Paper or page:** [Equivariant bundle gerbes](https://arxiv.org/abs/1506.07931). It says: “Let M → N be a principal G-bundle. If 𝒢 is a bundle gerbe on M acted on weakly by G then 𝒢 descends to a bundle gerbe on N”
+
+**Sources:**
+
+- [M. K. Murray, D. M. Roberts, D. Stevenson and R. F. Vozzo, Equivariant bundle gerbes](https://arxiv.org/abs/1506.07931)
+
 ### Condensed epimorphisms let Hochschild–Serre hold for topological group extensions
 
 **Remember:** Ask compact families to lift, and the spectral sequence for subgroups works.
@@ -45565,6 +46303,42 @@ $$”
 **Sources:**
 
 - [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+
+### Connected bands preserve loop gerbes
+
+**Remember:** Connected groups have no nontrivial bundle types on a circle.
+
+*Rules out counterexamples.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A smooth gerbe locally has objects, any two of which are locally isomorphic. Its abelian band is the bundle of commutative groups of automorphisms of those objects. Its loop stack records smooth families of maps from the circle into the gerbe, together with isomorphisms between those maps.
+
+**Problem.** For a finite-dimensional abelian gerbe on a finite-dimensional manifold, a locally trivial band of connected Lie groups ensures the loop stack is a gerbe. Its base is the free loop space, and its band consists of smooth sections of the original band along each loop.
+
+**How the definition helps.** Connected fibers allow local isomorphisms along a loop to join up around the circle. The theorem proves smooth local existence and comparison for families of loops. In our own counterexample, take the gerbe of principal two-element group bundles over a point. Its loops include both double covers of the circle, which are not isomorphic.
+
+**Paper or page:** [Smooth loop stacks of differentiable stacks and gerbes](https://arxiv.org/abs/1602.07973). It says: “Then 𝕃X is an abelian L𝒜-gerbe on LM.”
+
+**Sources:**
+
+- [D. M. Roberts and R. F. Vozzo, Smooth loop stacks of differentiable stacks and gerbes](https://arxiv.org/abs/1602.07973)
+
+### Equivariance splits gerbe symmetries
+
+**Remember:** A coherent lift of every group element gives a splitting.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 53C08. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe describes local lines and their multiplication on overlaps. Its symmetry over a group element identifies the gerbe with its translate. The smooth symmetry 2-group keeps these identifications in smooth families, together with the isomorphisms between them.
+
+**Problem.** For a connected Lie group acting smoothly on the base, the gerbe admits a compatible action exactly when its symmetry 2-group splits over the group.
+
+**How the definition helps.** A splitting chooses a symmetry over each group element and supplies compatible isomorphisms for products, precisely the data of a group action on the gerbe. A splitting here varies smoothly over the group. Our own comparison replaces separate multiplication diagrams with a single map of smooth 2-groups. The theorem constructs the smooth extension in which this map takes values.
+
+**Paper or page:** [Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395). It says: “The gerbe 𝒢 admits a G-equivariant structure if and only if there exists a morphism G̲ ⟶ Sym<sub>G</sub>(𝒢) of smooth 2-groups which splits the extension”
+
+**Sources:**
+
+- [S. Bunk, L. Müller and R. J. Szabo, Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395)
 
 ### Fréchet complexes are condensed-exact exactly when algebraically exact
 
@@ -45673,6 +46447,24 @@ $$”
 **nLab:** [smooth infinity-stack](https://ncatlab.org/nlab/show/smooth+infinity-stack). It says: “But restricted to the site CartSp the simplicial sheaf BG does satisfy descent: there is up to isomorphism only a single G-bundle on ℝⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Principal 2-bundles let quotient families glue
+
+**Remember:** A quotient family remembers the torsor, not just the orbit.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** Let a smooth 2-group G act on a stack X, which records objects and their isomorphisms over manifolds. A quotient family is a locally trivial principal G 2-bundle together with a map to X that respects the action. Local triviality means the bundle is locally a copy of G over the base.
+
+**Problem.** These quotient families form a 2-stack on smooth manifolds. Compatible local families, maps and isomorphisms between maps glue over open covers.
+
+**How the definition helps.** A family carries the transition isomorphisms and their compatibility on triple overlaps. In our own smooth-site argument these data glue the principal 2-bundle, and descent in X glues its map. Describing a quotient by pointwise orbits loses those gluing maps. The proof uses effective descent for bundles, which constructs a global bundle from compatible local pieces.
+
+**Paper or page:** [Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1). It says: “Then the quotient pre-2-stack \[𝒳/𝒢\] is a 2-stack.”
+
+**Sources:**
+
+- [Caviglia, Principal 2-bundles and quotient 2-stacks](https://arxiv.org/abs/2403.09379v1)
 
 ### Probing by compact spaces makes the pyknotic embedding preserve limits
 
@@ -47862,6 +48654,25 @@ $$”
 
 - [Kathryn Hess and Nima Rasekh, Shadows are Bicategorical Traces, arXiv:2109.02144 (2021)](https://arxiv.org/abs/2109.02144)
 
+### Coherent multiplication permits a free-loop String model
+
+**Remember:** Move the product through an equivalence instead of forcing strict laws.
+
+*Makes the theorem clean to state or prove.* MSC 18N10 (2-categories, bicategories, double categories). arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A coherent Lie 2-group has smooth objects and invertible arrows. Multiplication, the unit and inverses obey the group laws through specified isomorphisms satisfying compatibility equations.
+
+**Problem.** For compact, simple, simply connected G, a coherent model of its 3-connected cover String(G) uses the basic circle extension of the free loop group. This extension is the space of arrows starting at the unit, which no strict Lie 2-group model can have here.
+
+**How the definition helps.** Allowing coherent isomorphisms lets one transfer multiplication along an equivalence with the based-loop model. The construction requires a smooth equivalence and explicit compatibility maps. A strict model would require the group laws to hold as equalities.
+
+**Paper or page:** [Quasi-periodic paths and a string 2-group model from the free loop group](https://arxiv.org/abs/1702.01514v2). It says: “there does not exist a strict Lie 2-group model for the string group of G that has L̂G as source-fibre.”
+
+**Sources:**
+
+- [Murray, Roberts and Wockel, Quasi-Periodic Paths and a String 2-Group Model from the Free Loop Group](https://doi.org/10.5802/jolt.988)
+- [Murray, Roberts and Wockel, Quasi-periodic paths and a string 2-group model from the free loop group, Corollary 2.6](https://arxiv.org/abs/1702.01514v2)
+
 ### Doctrinal adjunction becomes a statement about conjunctions in a double category
 
 **Remember:** Lax goes one way, colax the other, and the adjunction lives across the square.
@@ -48411,6 +49222,24 @@ $$”
 **Sources:**
 
 - [Vegard Fjellbo, Optimal Triangulation of Regular Simplicial Sets (2020), arXiv:2001.04339](https://arxiv.org/abs/2001.04339)
+
+### Realization recovers the topological String classifying space
+
+**Remember:** Realize the smooth fiber to recover the topological fiber.
+
+*Makes the theorem clean to state or prove.* MSC 18N50 (Simplicial sets, simplicial objects), 57R15. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** The smooth String classifying stack records a spin bundle together with a trivialization of half its first Pontryagin class. This construction is a homotopy fiber, which retains the chosen path from the class to zero.
+
+**Problem.** For n ≥ 5, topological realization of this smooth classifying stack gives the classifying space of String(n), the 3-connected cover of Spin(n).
+
+**How the definition helps.** The defining fiber has the same two maps as the topological construction after realization. The proof shows that realization preserves this particular fiber. It uses a model of the target made from finite products of circles in each simplicial degree.
+
+**nLab:** [string 2-group](https://ncatlab.org/nlab/show/string+2-group). It says: “indeed maps under \|−\| to the topological string group:”
+
+**Sources:**
+
+- [Fiorenza, Schreiber and Stasheff, Čech cocycles for differential characteristic classes](https://doi.org/10.4310/atmp.2012.v16.n1.a5)
 
 ### The π∗-Kan condition makes realization preserve homotopy pullbacks
 
@@ -51192,6 +52021,24 @@ $$”
 
 - [Dong Uk Lee, Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties, Theorem 4.2.4 (2025)](https://arxiv.org/abs/2502.11950v1)
 
+### Real unit regulators are logarithms
+
+**Remember:** The real projection forgets the argument of a unit.
+
+*True by definition.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 4: research.
+
+**Definition.** An algebraic unit is a regular function with a regular inverse. Its weight one regulator class uses local logarithms, whose differences are integral multiples of 2πi. The real Deligne model projects their values modulo the imaginary line 2πiℝ.
+
+**Problem.** For a smooth complex quasi-projective variety, the real Beilinson regulator sends an algebraic unit f to the real function log\|f\|.
+
+**How the definition helps.** Projection takes the real part, which equals log\|f\| for every branch (our own). This replaces gluing branch choices by a single global function (our own). The comparison with Deligne–Beilinson cohomology uses the logarithmic pole condition on df/f at the boundary (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “designed to be a target for the Beilinson regulator from motivic cohomology”
+
+**Sources:**
+
+- [Hélène Esnault and Eckart Viehweg, Deligne–Beilinson cohomology, Proposition 2.12 and sections 2.15–2.17](https://archive.mpim-bonn.mpg.de/2980/1/preprint_1987_2.pdf)
+
 ### Reduced ranks give twisted coefficients
 
 **Remember:** Use the ranks the twisted modules actually have as coefficients.
@@ -52537,6 +53384,187 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Character averaging gives nondegenerate pairings
+
+**Remember:** Averaging pairs each irreducible character with its dual.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** For a point with finite symmetry group G, even differential K-classes are virtual characters, the integer combinations of irreducible representation traces. Odd classes are complex functions constant on conjugacy classes, modulo virtual characters. The intersection pairing averages the product of the two functions over G and reduces modulo integers.
+
+**Problem.** This intersection pairing takes values in ℂ/ℤ and detects every nonzero class on either side.
+
+**How the definition helps.** Averaging pairs each irreducible character with its dual with value one and all others with zero (our own). Thus an odd representative pairs integrally with every even class exactly when all its character coefficients are integers (our own). Any nonzero even coefficient can likewise be detected by scaling the dual character (our own). The calculation uses the identification of differential classes with these character groups (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “the disjoint union of fixed loci”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Chern–Simons relations cancel stabilization changes
+
+**Remember:** Changing a finite index bundle changes its eta form by the compensating transgression.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A differential K-cycle combines a Hermitian bundle with unitary connection and an odd form modulo exact forms. Its equivalence relation allows adding matching auxiliary bundles. When the connections then differ, the odd forms must compensate by the Chern–Simons form, which measures that change.
+
+**Problem.** Consider a family of closed even-dimensional Spinᶜ fibers with metrics and compatible connections defining its Dirac operators. Any two finite bundle additions making the positive operators surjective give the same differential analytic index.
+
+**How the definition helps.** Comparing the corrected cycles instead of their kernel bundles lets the change in the spectral correction cancel the connection change (our own). Ho proves that the stabilized kernel bundles are isomorphic and that their eta forms differ by precisely the required Chern–Simons form modulo exact forms.
+
+**Paper or page:** [Local index theory and ℤ/kℤ K-theory](https://arxiv.org/abs/2410.16399). It says: “Then there exists a ℤ₂-graded morphism”
+
+**Sources:**
+
+- [Man-Ho Ho, Local index theory and ℤ/kℤ K-theory, Proposition 5.1](https://arxiv.org/abs/2410.16399)
+
+### Circle integration excludes exotic addition
+
+**Remember:** Circle integration ties the odd-degree addition to the even-degree theory.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth extension of complex K-theory adds curvature forms and classes represented by forms to the usual theory of complex vector bundles. Circle integration lowers degree by one and commutes with these maps and the underlying K-class. It vanishes on classes pulled back from the base and changes sign under circle reversal.
+
+**Problem.** Any two such extensions on smooth manifolds admit a unique natural isomorphism preserving the structure maps and circle integration. Without circle integration, nonisomorphic extensions exist.
+
+**How the definition helps.** Circle integration recovers odd classes from even classes on the circle product, forcing the comparison in odd degrees (our own). Bunke and Schick prove uniqueness in even degrees using approximations by smooth manifolds (our own). They also construct a different addition in odd degree when integration is omitted (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “If we don't require compatibility with S¹-integration, then there are "exotic" abelian group structures on K̂¹.”
+
+**Sources:**
+
+- [Bunke and Schick, Uniqueness of smooth extensions of generalized cohomology theories, Theorems 3.3 and 6.2](https://doi.org/10.1112/jtopol/jtq002)
+
+### Clifford cycles refine spin indices
+
+**Remember:** Keep the index modules and their characteristic form together.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R15. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A differential Clifford cycle records local spaces of spinors, on which vectors act according to the metric. Compatible connections with higher differential forms and a correcting form record how those spaces vary. Local spaces can include all eigenvectors below a chosen energy cutoff.
+
+**Problem.** For a proper smooth family of closed Riemannian spin manifolds of dimension n, a real metric bundle with compatible connection gives a differential Clifford cycle. Its class in degree −n of differential real K-theory lifts the real family index.
+
+**How the definition helps.** Local energy cutoffs give vector bundles even where the Dirac kernels change dimension (our own). The proof compares different cutoffs and shows that forgetting the form data recovers the real index (our own).
+
+**Paper or page:** [The families Clifford index and differential KO-theory](https://arxiv.org/abs/2303.09091v1). It says: “The families Clifford index determines a degree −n differential cocycle”
+
+**Sources:**
+
+- [Daniel Berwick-Evans, The families Clifford index and differential KO-theory](https://arxiv.org/abs/2303.09091v1)
+
+### Composite orientations make pushforwards compose
+
+**Remember:** The composite orientation records the change from split to composite geometry.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation chooses fiber geometry defining Dirac operators and an odd correction form. The composite orientation combines the two fiber geometries and weights their corrections with the corresponding Todd forms, characteristic forms of the fiber connections. A further odd form accounts for changing the split connection to the composite connection.
+
+**Problem.** For composable proper submersions of compact manifolds with closed fibers, the two differential K-theory pushforwards compose to the pushforward for the composite orientation.
+
+**How the definition helps.** Building the connection change into the orientation puts both ways of integrating into one composition law (our own). Bunke and Schick prove it by rescaling the fiber metric and comparing the resulting families.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definition 3.21 and Theorem 3.23](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Connections absorb odd form corrections
+
+**Remember:** A connection on a trivial bundle can store an odd form correction.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A structured bundle carries a connection up to changes whose Chern–Simons form is exact. This odd form measures how the characteristic forms of two connections differ. The structured bundle model represents differential K-classes by formal differences of these bundles.
+
+**Problem.** On a compact smooth manifold, every degree-zero differential K-class with complex connections and complex forms admits a representative with zero auxiliary form.
+
+**How the definition helps.** Using connection differences in place of auxiliary forms builds form corrections into the representatives (our own). The substantive step is the Simons–Sullivan realization theorem. It realizes each odd form, modulo exact forms and odd Chern characters, by connections on a trivial bundle.
+
+**nLab:** [Simons-Sullivan structured bundle](https://ncatlab.org/nlab/show/Simons-Sullivan+structured+bundle). It says: “such that the corresponding Grothendieck group is a model for differential K-theory.”
+
+**Sources:**
+
+- [James Simons and Dennis Sullivan, Structured vector bundles define differential K-theory, Proposition 2.6](https://www.claymath.org/library/proceedings/cmip011c.pdf)
+
+### Curvature distinguishes orbifold representations
+
+**Remember:** A character records the trace of every symmetry.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** For a finite group acting on a point, orbifold K-curvature records one number per conjugacy class of group elements. For a virtual representation, a formal difference of representations, this number is the difference of their traces.
+
+**Problem.** Orbifold curvature distinguishes all even differential K-classes of a point with finite symmetry.
+
+**How the definition helps.** Recording every trace gives the full character, which determines a virtual representation (our own). For the group of order two, the sign and trivial representations have equal dimension and opposite traces at the nonidentity element (our own). The differential K-theory exact sequence identifies the even group with virtual representations (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “of the disjoint union of fixed loci”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+- [Richard J. Szabo and Alessandro Valentino, Ramond-Ramond Fields, Fractional Branes and Orbifold Differential K-Theory (2010)](https://doi.org/10.1007/s00220-009-0975-1)
+
+### Determinants retain form corrections
+
+**Remember:** An exact change in the form only changes the gauge.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A degree-zero Freed–Lott representative combines a Hermitian bundle with unitary connection and an odd differential form modulo exact forms. Its differential determinant takes the top exterior power and subtracts 2πi times the one-form component from the induced connection.
+
+**Problem.** The differential determinant sends sums of differential K-classes to tensor products of lines with connection. Its value up to connection-preserving isomorphism depends only on the class.
+
+**How the definition helps.** Correcting the ordinary determinant connection cancels the change allowed in the representative (our own). The degree-one Chern–Simons form measures this change by the trace of the connection difference. Changing the correction by an exact form gives an isomorphic connection.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “line bundle with connection that refines the first Chern-class to ordinary differential cohomology.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Section 8.1](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Differential Todd classes package Riemann–Roch
+
+**Remember:** Put the Todd correction into integration before comparing Chern characters.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L10. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation of a family of closed fibers includes a connection on its Spinᶜ structure and an odd correction form σ. Its differential Todd class combines the characteristic class of that connection with the negative of the differential cohomology class defined by σ. Todd-corrected integration multiplies by this class before integrating along the fibers.
+
+**Problem.** For a smoothly K-oriented proper submersion of compact manifolds, the differential Chern character carries the K-theory pushforward to Todd-corrected integration in rational differential cohomology. This character expresses differential K-classes in cohomology with rational coefficients.
+
+**How the definition helps.** The corrected integral packages the orientation terms into a single map for the Riemann–Roch formula (our own). The ordinary and local index theorems identify the underlying class and curvature. Bunke and Schick still have to show the remaining zero-curvature difference vanishes.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Lemma 6.17 and Theorem 6.19](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Eta corrections restore index curvature
+
+**Remember:** The derivative of the eta form supplies the missing curvature.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** For a family of Dirac operators, the differential analytic index refines the difference of its positive and negative kernel bundles. Freed and Lott add an odd differential form, the eta form, to the integrated input correction. Its derivative measures the curvature missing from the kernel bundles.
+
+**Problem.** Consider closed even-dimensional fibers with a metric and a Spinᶜ connection, the geometry defining the Dirac operators. If their kernels form bundles, index curvature equals input curvature integrated over each fiber with its Todd characteristic form.
+
+**How the definition helps.** Adding the eta form supplies exactly the term missing from the kernel formula (our own). The local families index theorem computes its derivative. Taking the exterior derivative of the integrated input correction supplies the remaining term.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Definition 3.12 and Lemma 3.14](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
 ### Exact connection changes preserve curvature
 
 **Remember:** An exact change contributes zero after differentiation.
@@ -52552,6 +53580,79 @@ $$”
 **nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “the equivalence relation that identifies two connections ∇ and ∇′ if their Chern-Simons form CS(∇,∇′) is exact.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Exact transgression distinguishes flat connections
+
+**Remember:** Equal curvature does not imply exact transgression.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A structured bundle is a complex vector bundle with a connection considered up to a specific equivalence. Two connections on the same bundle are equivalent when their Chern–Simons difference form is exact. One obtains this form by integrating the Chern character along a path of connections.
+
+**Problem.** On the trivial line over a circle, flat unitary connections with different holonomy give distinct structured bundles. Holonomy is the phase acquired by transporting a vector once around the circle.
+
+**How the definition helps.** Exactness forces the integral of the normalized difference form around the circle to vanish (our own). Modulo integers, this integral measures the ratio of the two holonomies as an angle in ℝ/ℤ (our own). Changing the trivialization can shift the integral only by an integer (our own). Simons and Sullivan show that changing the path changes the difference form only by an exact form (our own).
+
+**nLab:** [Simons-Sullivan structured bundle](https://ncatlab.org/nlab/show/Simons-Sullivan+structured+bundle). It says: “The equivalence relation divided out is relation by a concordance such that the corresponding Chern-Simons form is exact.”
+
+**Sources:**
+
+- [Simons and Sullivan, Structured vector bundles define differential K-theory](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/Simons-Sullivan.pdf)
+
+### Fiber pairing prevents zero transforms
+
+**Remember:** The matching line must pair the two fibers.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** A geometric T-duality correspondence matches two torus bundles and their twists, the geometric data that modify K-theory. After trivializing the twists on dual fibers, the matching line bundle must pair their two integer lattices by evaluation.
+
+**Problem.** For a geometric T-duality correspondence, pulling back, matching twists, and integrating over the other projection gives an isomorphism of twisted K-groups.
+
+**How the definition helps.** The required fiber pairing rules out a matching that kills the unit (our own). On two untwisted circles, the identity matching integrates the unit to zero (our own). Proving invertibility for the prescribed pairing uses the topological T-duality theorem (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “of twisted K-theory groups is an isomorphism.”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
+### Flat lines change twist identifications
+
+**Remember:** Zero twist does not mean every twist isomorphism acts as identity.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C08. arXiv math.KT. Level 4: research.
+
+**Definition.** In the gerbe model of twisted differential K-theory, a twist includes its isomorphisms. Even the trivial gerbe, which represents the zero twist, has symmetries given by flat lines, meaning lines with zero curvature.
+
+**Problem.** A symmetry of the zero twist can act nontrivially on differential K-theory of the circle.
+
+**How the definition helps.** Remembering twist isomorphisms retains their action by tensor product (our own). A flat line whose parallel transport around the circle equals −1 sends the unit to a line with different holonomy (our own). Passing only to the degree-three class of the twist loses this action (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the combination of differential K-theory and twisted K-theory.”
+
+**Sources:**
+
+- [Fabio Ferrari Ruffino and Juan Carlos Rocha Barriga, Twisted differential K-characters and D-branes (2020)](https://doi.org/10.1016/j.nuclphysb.2020.115169)
+- [Byungdo Park, Geometric models of twisted differential K-theory I (2018)](https://doi.org/10.1007/s40062-017-0177-z)
+
+### Flat pushforwards forget refinements
+
+**Remember:** Flat classes keep the topological orientation and forget its differential choices.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** A flat differential K-class has zero curvature. A differential K-orientation adds geometric choices, including a connection, to a topological complex spin orientation so that one can integrate differential K-classes.
+
+**Problem.** On a closed manifold with a finite group action, the equivariant integral of a flat differential K-class depends only on the underlying equivariant K-orientation.
+
+**How the definition helps.** Zero curvature makes the change in the integral along a path of refinements vanish (our own). Bunke and Schick obtain independence from the homotopy formula for differential integration. General classes can retain the geometric choices (our own).
+
+**nLab:** [flat K-theory](https://ncatlab.org/nlab/show/flat+K-theory). It says: “the restriction (namely the homotopy pullback) of differential K-theory (any version of it) to vanishing generalized-curvature.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
 
 ### Fredholm sections allow nontorsion twists
 
@@ -52570,6 +53671,279 @@ $$”
 **Sources:**
 
 - [Michael Atiyah and Graeme Segal, Twisted K-theory and cohomology (2006)](https://doi.org/10.1142/9789812772688_0002)
+
+### Global sections recover differential K-theory
+
+**Remember:** Taking sections carries the connection and its transgression together.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A differential K-cycle for an algebra combines a projective module, a connection and an odd differential form. The module is a direct summand of a finite free module. Changing its connection changes the form by integrating the Chern character, a characteristic form, along the connection path.
+
+**Problem.** For a compact smooth manifold X, taking sections identifies degree-zero differential K-theory of complex bundles with the module group of smooth complex functions on X. Both models use complex connections and complex differential forms.
+
+**How the definition helps.** Defining the module relation by the same connection integral ensures that taking sections preserves the entire cycle relation (our own). The differential Serre–Swan theorem identifies bundles with connection and projective modules with connection. The proof also matches the normalizations of their characteristic forms.
+
+**Paper or page:** [Noncommutative Differential K-theory](https://arxiv.org/abs/2106.12073). It says: “which is an isomorphism of abelian groups natural in X.”
+
+**Sources:**
+
+- [Byungdo Park, Arthur J. Parzygnat, Corbett Redden and Augusto Stoffel, Noncommutative Differential K-theory, Theorem 4.31](https://arxiv.org/abs/2106.12073)
+
+### Invariant curvature removes T-duality kernels
+
+**Remember:** Invariant curvature survives averaging along the torus.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A twisted differential K-class on a torus bundle is geometrically invariant when translations along the fibers preserve its curvature form. T-duality exchanges a torus bundle with its dual by pulling classes to their common fiber product, changing the twist and integrating over the original torus.
+
+**Problem.** For a differential T-duality pair of principal torus bundles, T-duality identifies the geometrically invariant subgroups, shifting degree by the fiber dimension. On the full groups it can have a kernel.
+
+**How the definition helps.** Requiring invariant curvature excludes variations that fiber integration averages away (our own). On the standard dual circle pair, a nonconstant function of mean zero gives a class with nonzero curvature but zero transform (our own). The general isomorphism uses topological T-duality and the corresponding isomorphism on invariant forms.
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “this setup naturally induces the T-duality operation as an isomorphism on twisted differential K-theory.”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-Duality and Differential K-Theory (2014)](https://doi.org/10.1142/S0219199713500144)
+
+### Odd classes are character quotients
+
+**Remember:** Identify two class functions when their difference is a virtual character.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** In complex orbifold differential K-theory, curvature and auxiliary forms live on the inertia orbifold, which records points together with their symmetries. For a point with finite symmetry group G, degree-zero forms are complex functions constant on conjugacy classes of G.
+
+**Problem.** The odd differential K-group of this point is the additive group of these functions modulo virtual characters, the integer combinations of representation traces.
+
+**How the definition helps.** Using the inertia orbifold supplies one coordinate per conjugacy class (our own). In the differential K-theory exact sequence, odd topological K-theory vanishes and the even character map sends representations to their traces (our own). This computes the quotient without comparing geometric cycles individually (our own).
+
+**nLab:** [delocalized equivariant cohomology](https://ncatlab.org/nlab/show/delocalized+equivariant+cohomology). It says: “is the ordinary cohomology of the quotient space”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Orbifold bordisms produce forms
+
+**Remember:** A bounding family leaves a differential form in its boundary class.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
+
+**Definition.** In orbifold differential K-theory a cycle pairs a family of Dirac operators with a differential form on points equipped with symmetries. Write \[E,ρ\] for its class and ∅ for the empty family.
+
+**Problem.** If E bounds a geometric family W with product geometry near the boundary, then \[E,0\] equals \[∅,Ω(W)\]. Here Ω(W) is the local index form obtained by integrating the index density along the fibers of W.
+
+**How the definition helps.** The form in the cycle can record the boundary contribution after the topological index vanishes (our own). The family index theorem with boundary identifies that contribution with Ω(W) (our own).
+
+**nLab:** [orbifold differential K-theory](https://ncatlab.org/nlab/show/orbifold+differential+K-theory). It says: “hence enhancement of orbifold K-theory to differential cohomology.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Differential orbifold K-theory (2013)](https://doi.org/10.4171/JNCG/143)
+
+### Orientation twists permit K-theory pushforwards
+
+**Remember:** The normal bundle supplies the twist needed for integration.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+
+**Definition.** For an embedding with oriented normal bundle N, its orientation twist is the integral class W₃(N) obstructing a complex spin structure. Twisted K-theory allows this class to enter the coefficients used for vector bundle classes.
+
+**Problem.** For a smooth embedding of closed manifolds with oriented normal bundle, the twisted K-theory pushforward accepts the restricted target twist plus W₃(N). Its degree shift is the codimension modulo two.
+
+**How the definition helps.** The orientation twist supplies the coefficients required by the Thom class, which implements integration across normal fibers (our own). The twisted Thom isomorphism is the substantive theorem (our own). Extending from the normal neighborhood then gives the pushforward (our own).
+
+**nLab:** [Freed-Witten anomaly](https://ncatlab.org/nlab/show/Freed-Witten+anomaly). It says: “Postcomposition with this map in KK-theory now yields a map from the i⁎χ ⊗ W₃(NQ)-twisted K-theory of Q to the χ-twisted K-theory of X”
+
+**Sources:**
+
+- [Alan L. Carey and Bai-Ling Wang, Thom isomorphism and push-forward map in twisted K-theory (2008)](https://doi.org/10.1017/is007011015jkt011)
+
+### Pulled-back orientations give base change
+
+**Remember:** Pull back the geometry before or after forming the index family.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A geometric family represents a differential K-class by a smoothly varying family of Dirac operators and a differential form. Pulling back its smooth K-orientation transports the fiber geometry and its correcting form to the new base.
+
+**Problem.** For a smoothly K-oriented proper submersion with closed fibers between compact manifolds, forming the differential K-theory pushforward commutes with smooth pullback between compact bases.
+
+**How the definition helps.** Pulling back the full orientation gives the same geometry and form over each new base point (our own). Fiber integration commutes with pullback. The work lies in defining the corrected index on classes, where different families can represent the same class.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Lemmas 3.10 and 3.20](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Sign transport kills constant curvature
+
+**Remember:** A constant carried around the circle must return with the opposite sign.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** For the nontrivial degree-one twist of real K-theory on the circle, curvature takes values in a flat real line. Its parallel transport around the circle multiplies every value by −1.
+
+**Problem.** The degree-zero curvature component of every degree-zero differential real K-class with this twist vanishes.
+
+**How the definition helps.** A closed zero-form with these coefficients must return to its starting value after parallel transport (our own). Only zero equals its negative (our own). Ordinary real coefficients would allow the constant curvature component of the untwisted unit (our own). The input from twisted real K-theory is the identification of the coefficient line (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “More detailed discussion of twisted differential K-theory for KU/KO and its application to K-theory classification of D-brane charge”
+
+**Sources:**
+
+- [Daniel Grady and Hisham Sati, Twisted differential KO-theory (2026)](https://doi.org/10.2140/tunis.2026.8.265)
+
+### Smooth orientations fix pushforward curvature
+
+**Remember:** The correction cancels the change in the Todd form.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation chooses geometry defining a Dirac operator along each fiber and an odd form σ modulo exact forms. Its Todd form T is the characteristic form computed from that geometry. Equivalent choices change σ by a form whose derivative equals the change in T.
+
+**Problem.** For a smoothly K-oriented proper family of closed fibers, T − dσ depends only on the orientation. Integrating input curvature against this weight gives the curvature of the differential K-theory pushforward, the index on the base.
+
+**How the definition helps.** The correction to the geometric Todd form cancels its dependence on the chosen connection (our own). The transgression formula computes the change in T. The local families index formula gives the asserted curvature.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definition 3.5 and Lemmas 3.16–3.17](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
+
+### Spectra glue twisted classes
+
+**Remember:** Glue the spectra first, then take classes.
+
+*True by definition. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** A sheaf of spectra records local cohomology data together with their homotopies, which are continuous identifications. For a fixed differential K-twist, its differential function spectrum matches twisted topological K-data with differential forms through their common real cohomology model.
+
+**Problem.** On a smooth manifold covered by two open sets, twisted differential K-classes agreeing on the intersection extend to a class on the union.
+
+**How the definition helps.** The sheaf description turns global data into two local representatives and a homotopy identifying their restrictions (our own). Equality of the restricted classes supplies such a homotopy, although its choice can affect the extension (our own). Compared with gluing geometric cycles, the work lies in proving the spectrum satisfies this gluing rule (our own).
+
+**nLab:** [twisted differential cohomology](https://ncatlab.org/nlab/show/twisted+differential+cohomology). It says: “may be understood as sheaves of parametrized spectra”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Nikolaus, Twisted differential cohomology (2019)](https://doi.org/10.2140/agt.2019.19.1631)
+
+### Stabilization handles jumping kernels
+
+**Remember:** Stabilize the operator family instead of trying to bundle its kernels.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** Stabilizing a Dirac family means choosing finite-dimensional source and target bundles so the operator is invertible on their complements. Their formal difference replaces the difference of kernels. An eta form records the corresponding correction from the spectrum.
+
+**Problem.** For a smooth family of closed even-dimensional Spinᶜ manifolds over a compact base, the differential analytic index exists even when kernel dimensions jump. The family carries metrics and compatible connections defining its Dirac operators.
+
+**How the definition helps.** The finite bundles vary smoothly even where the kernel dimension changes (our own). Freed and Lott prove these bundles exist and that the resulting class is independent of the choice. When the kernels form bundles, their formula recovers the kernel index.
+
+**Paper or page:** [An extended variational formula for the Bismut-Cheeger eta form and its applications](https://arxiv.org/abs/2209.00502). It says: “is a well defined group homomorphism.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Lemma 7.13, Definition 7.27 and Corollary 7.36](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+- [Man-Ho Ho, An extended variational formula for the Bismut-Cheeger eta form and its applications, Proposition 1.2](https://arxiv.org/abs/2209.00502)
+
+### Structured bundles give tensor multiplication
+
+**Remember:** Tensoring multiplies a connection difference by a closed Chern character form.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N15. arXiv math.AT. Level 4: research.
+
+**Definition.** A structured bundle identifies connections on a complex bundle when their Chern–Simons difference form is exact. This form integrates the Chern character along a path of connections. The Simons–Sullivan group consists of formal differences of structured bundles under direct sum.
+
+**Problem.** Tensor product induces a multiplication on the Simons–Sullivan group, making it a model of the differential K-theory ring in degree zero.
+
+**How the definition helps.** Tensoring a connection path with a fixed bundle multiplies its difference form by the fixed connection’s closed Chern character form (our own). Multiplying an exact form by a closed form preserves exactness, so the product respects the equivalence relation (our own). Distributivity then extends multiplication to formal differences (our own).
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “Under direct sum and tensor product of vector bundles, this becomes a commutatve rig.”
+
+**Sources:**
+
+- [Simons and Sullivan, Structured vector bundles define differential K-theory](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/Simons-Sullivan.pdf)
+
+### Suspension transfers the index theorem
+
+**Remember:** Suspend and desuspend in the same way for both indices.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** Freed and Lott define the odd differential K-theory index by suspension, which turns an odd class into an even class on a circle product. They take the even index there and then integrate out the circle to return to odd degree.
+
+**Problem.** For a proper smooth family of closed even-dimensional fibers, the odd analytic and topological indices agree. The fibers carry metrics and Spinᶜ connections defining the family of Dirac operators.
+
+**How the definition helps.** Defining both odd indices through the same circle operations reduces their comparison to the even index theorem (our own). Freed and Lott prove equality in even degree and construct the two circle operations.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Section 9.25](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Tensor products add twists
+
+**Remember:** Multiply the classes by tensoring the twists.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+
+**Definition.** A differential K-twist specifies how both topological K-theory and its differential forms vary locally, with a comparison over the reals. Tensor product combines two twists by tensoring both kinds of data and their comparisons.
+
+**Problem.** For degree-three differential twists, multiplication of differential K-classes lands in the sum of their twists. The curvature of their product is the wedge product of their curvatures.
+
+**How the definition helps.** Tensor product combines the two comparisons, so the product of the forms represents the product of the underlying classes (our own). This identifies the target even when a single twisted group has no internal multiplication (our own). Constructing the compatible product maps is the substantive step in the spectrum model (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the combination of differential K-theory and twisted K-theory.”
+
+**Wikipedia:** [Twisted K-theory](https://en.wikipedia.org/wiki/Twisted_K-theory). It says: “the product of an element of K-theory with twist H with an element of K-theory with twist H′ is an element of K-theory twisted by H+H′.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Nikolaus, Twisted differential cohomology (2019)](https://doi.org/10.2140/agt.2019.19.1631)
+
+### Topological indices determine analytic determinants
+
+**Remember:** Take the determinant after computing the index without spectral analysis.
+
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** The differential determinant of a virtual bundle takes the quotient of its two determinant lines. It uses the induced connection shifted by the degree-one part of the differential K-class’s form correction, with factor −2πi.
+
+**Problem.** For a compact geometric family of twisted Spinᶜ Dirac operators on closed even-dimensional fibers, the differential topological index determines the analytic determinant line. After periodicity shifts the index to degree zero, its differential determinant is the dual of the Bismut–Freed line with connection.
+
+**How the definition helps.** Using the differential determinant preserves the connection when the analytic index is replaced by the topological index (our own). The families index theorem identifies the two differential K-classes. Freed and Lott also identify the analytic index determinant with the dual spectral line.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “line bundle with connection that refines the first Chern-class to ordinary differential cohomology.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Theorem 7.42 and Proposition 8.3](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Topological orientations miss differential indices
+
+**Remember:** The odd form in an orientation can change the index without changing its topology.
+
+*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+
+**Definition.** A smooth K-orientation supplements the geometry of a family of Dirac operators with an odd differential form σ modulo exact forms. Its pushforward assigns a differential K-class on the base to each class on the total space.
+
+**Problem.** On an oriented circle over a point, keep the metric, Spinᶜ structure and connection fixed. Two orientation forms differing by a one-form of integral ½ give different pushforwards of the unit class.
+
+**How the definition helps.** The orientation retains σ, whose integral contributes directly to the index of the unit (our own). The curvature of the unit is 1, so increasing the integral of σ by ½ changes the index by −½ in ℝ/ℤ. This uses the pushforward formula and the calculation of odd differential K-theory on a point.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Sections 3.1.10 and 3.2.2 and Lemma 5.1](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
 
 ## 20 Group theory and generalizations
 
@@ -81803,6 +83177,24 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Chern–Simons transgressions add modulo exact forms
+
+**Remember:** An oriented triangle relates the three paths along its edges.
+
+*True by definition.* MSC 53C05 (Connections (general theory)), 57R20. arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** The Chern–Simons transgression integrates the Chern character form along a path between connections on a fixed complex bundle. Take the resulting odd form modulo exact forms, meaning derivatives of other forms.
+
+**Problem.** Transgression from a first connection to a second and then to a third adds to the direct transgression between the first and third.
+
+**How the definition helps.** Passing to the quotient removes the exact form that measures the choice of path. Integrating along two consecutive paths adds their forms. In our own proof, Stokes’ theorem on a triangle of connections makes the difference from the direct path exact.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “This is indeed well defined in that it is independent of the chosen concordance, up to an exact term.”
+
+**Sources:**
+
+- [James Simons and Dennis Sullivan, Structured vector bundles define differential K-theory, §1](https://www.math.stonybrook.edu/~dennis/publications/PDF/DS-pub-0126.pdf)
+
 ### Connections as horizontal subbundles make zero curvature mean integrability
 
 **Remember:** Flat means the horizontal planes fit together into sheets.
@@ -82088,6 +83480,400 @@ a parallelogram.”
 **Paper or page:** [Equivariant gluing theory on regular instanton moduli spaces](https://arxiv.org/abs/2101.09425). It says: “Suppose B is connected, π : P → B is a principal G-bundle and A is a flat connection on P, then there exists a representation π₁(B) → G unique up to conjugation”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Character curvatures have integral periods
+
+**Remember:** A cycle has zero boundary, so its curvature integral is zero modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** A degree-k differential character assigns values in ℝ/ℤ additively to smooth integral (k−1)-cycles. On boundaries it gives the integral of a fixed k-form modulo integers. This form is its curvature.
+
+**Problem.** The curvature of a differential character integrates to an integer on every smooth integral k-cycle.
+
+**How the definition helps.** The boundary rule turns the integral on a cycle into the character’s value at zero, modulo integers. In the model using forms and cochains, integrality instead follows by comparing curvature with an integral cocycle. Our own comparison uses the theorem identifying the two models.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §1](https://doi.org/10.1007/BFb0075216)
+
+### Characters give boundary holonomy
+
+**Remember:** On boundaries, holonomy is the curvature integral modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-n differential character assigns values in ℝ/ℤ additively to smooth (n−1)-cycles. On a boundary its value equals the integral of a fixed n-form, its curvature, over the bounding chain modulo integers.
+
+**Problem.** The holonomy of a smooth Deligne class on the boundary of a smooth chain equals the curvature integral modulo integers. Holonomy here means the circle value assigned to a cycle.
+
+**How the definition helps.** The character model includes the boundary formula in its definition. The comparison theorem identifies its evaluation with holonomy computed by gluing local Deligne data (our own).
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+
+### Deligne addition tensors bundles
+
+**Remember:** Multiply transition functions and add connection forms.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-two Deligne cocycle records local connection forms and the circle-valued functions that change frames on overlaps. Its sum multiplies the functions and adds the forms.
+
+**Problem.** Addition of degree-two smooth Deligne classes corresponds to tensoring Hermitian line bundles with their unitary connections.
+
+**How the definition helps.** The sum already records the frame changes and connection forms of the tensor product (our own). Identifying these local descriptions with geometric bundles uses the classification by gluing (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Deligne classes classify line bundles with connection
+
+**Remember:** Transition functions and connection forms fit in one cocycle.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-two smooth Deligne cocycle describes a line with connection on a cover with contractible intersections. It gives circle-valued changes of frame on overlaps and real connection forms on patches. The changes compose on triples, and their normalized logarithmic derivatives give the differences between connection forms.
+
+**Problem.** Degree-two smooth Deligne classes classify Hermitian line bundles with unitary connection up to isomorphism. Such a connection transports vectors while preserving their lengths.
+
+**How the definition helps.** The cocycle equations give exactly the rules for gluing local lines and their connections (our own). Gluing constructs the bundle, while changes of local frame account for equivalent cocycles (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Deligne cocycles encode gerbe connections
+
+**Remember:** One cocycle stores the functions, potentials, and curvings.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** On a cover with contractible intersections, a degree-two Deligne cocycle assigns circle-valued functions to triple overlaps, 1-forms to double overlaps, and 2-forms to patches. The functions obey the usual product rule on quadruple overlaps. Alternating differences of the 1-forms and 2-forms give, respectively, the normalized logarithmic derivatives of the functions and the exterior derivatives of the 1-forms.
+
+**Problem.** Degree-two Deligne cocycles modulo changes of local trivialization classify circle bundle gerbes with connection and curving up to stable isomorphism.
+
+**How the definition helps.** One cocycle records all three gluing rules for the gerbe, its connection, and its curving. Our own explanation identifies changes of local frames and patch connections with coboundaries, the changes ignored in cohomology. The classification theorem reconstructs the gerbe from these local data.
+
+**Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “a geometrical model of certain 1-gerbes with connection, or equivalently of a 2-class in Deligne cohomology.”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+- [P. Gajer, Geometry of Deligne cohomology](https://doi.org/10.1007/s002220050118)
+
+### Deligne products preserve integral products
+
+**Remember:** The degree zero part multiplies integer cochains.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth Deligne class combines integer data with local differential forms. Projecting onto the integer data gives its underlying integral class. The Deligne cup product multiplies the integer entries on overlapping patches.
+
+**Problem.** The underlying integral class of a Deligne cup product is the ordinary cup product of the underlying integral classes.
+
+**How the definition helps.** Projection retains precisely the integer multiplication rule on overlaps (our own). The comparison between cohomology on a good cover and singular cohomology identifies this rule with the ordinary cup product (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “α ∧ β = αβ”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+
+### Deligne products wedge curvatures
+
+**Remember:** Differentiate the last product form to wedge the curvatures.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Deligne cup product represents multiplication of differential cohomology classes using local forms and overlap data. For positive degrees, its highest local form is α∧dβ, where α and β are the highest forms of the factors. The symbol ∧ denotes the exterior product of forms.
+
+**Problem.** The curvature of a Deligne cup product equals the exterior product of the two curvatures.
+
+**How the definition helps.** Differentiating α∧dβ gives dα∧dβ, and these two derivatives are the factor curvatures (our own). The work lies in constructing a product on classes from this asymmetric local formula (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+
+### Deligne projection recovers Chern classes
+
+**Remember:** Drop the forms and keep the integer cocycle.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The degree-two smooth Deligne complex links integers, smooth real functions, and real one-forms. Projection to the integers forgets the functions and forms.
+
+**Problem.** For a line bundle with unitary connection, this projection sends its Deligne class to the first Chern class, its integral topological invariant.
+
+**How the definition helps.** Projection retains the integer discrepancies between local logarithms of the circle-valued frame changes on triple overlaps (our own). The exponential sequence identifies these discrepancies with the first Chern class computed without a connection (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “a canonical forgetful map”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat complexes compute flat classes
+
+**Remember:** Require closed top forms and only locally constant data survive.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For n ≥ 2, the flat Deligne complex starts with smooth circle-valued functions in degree one. It continues with differential forms through degree n−1, requiring the last forms to be closed. The first map takes normalized logarithmic derivatives, and subsequent maps take exterior derivatives.
+
+**Problem.** On a smooth manifold X, degree-n smooth Deligne classes with zero curvature form the ordinary cohomology group Hⁿ⁻¹(X, ℝ/ℤ).
+
+**How the definition helps.** Requiring closed last forms imposes zero curvature directly on local representatives (our own). Local primitives and local logarithms leave only locally constant circle values in degree one (our own). The exact sequence for curvature identifies the resulting group with the kernel (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “The Deligne cohomology group fits into a short exact sequence (of abelian groups) of the form”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat connections lift torsion
+
+**Remember:** Flat connections can keep torsion that real cohomology forgets.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A flat unitary connection has zero curvature and admits local frames that it transports unchanged. In these frames the changes on overlaps take locally constant values in the circle ℝ/ℤ.
+
+**Problem.** On a compact smooth manifold, a Hermitian line bundle admits a flat unitary connection exactly when some positive integer kills its first Chern class.
+
+**How the definition helps.** Locally constant frame changes express the first Chern class as the connecting map for ℤ → ℝ → ℝ/ℤ (our own). Exactness identifies its image with the kernel of passage to real cohomology (our own). Compactness gives finite generation, so this kernel consists precisely of torsion classes (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the Bockstein homomorphism:”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Flat holonomy factors through homology
+
+**Remember:** Without curvature, adding a boundary changes no phase.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-three differential character assigns a unit complex number to each smooth integral 2-cycle and sends sums to products. On a boundary its value is the exponential of 2πi times the integral of its curvature over the filling. A flat gerbe has zero curvature.
+
+**Problem.** The surface phases of a flat circle gerbe depend only on the integral homology class of the surface.
+
+**How the definition helps.** In our own derivation, zero curvature makes every boundary phase one, so adding a boundary preserves the phase. The comparison theorem identifies gerbe surface phases with a differential character. In our own counterexample, a trivial gerbe on ℝ³ has potential x dy ∧ dz. The boundary of a ball of volume one-half has phase −1.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
+
+**Sources:**
+
+- [B. Park, Differential cohomology and gerbes: An introduction to higher differential geometry](https://byungdo.github.io/seminars/IMSRS.pdf)
+
+### Global forms cup with curvature
+
+**Remember:** A global form cups by wedging with curvature.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Write a(A) for the degree-p Deligne class represented by a single global (p−1)-form A. In the Deligne cup product, a left form multiplies only the highest right form β, giving A∧dβ.
+
+**Problem.** For positive degrees p and q, multiplying a(A) by a degree-q Deligne class with curvature F gives a(A∧F).
+
+**How the definition helps.** Only the derivatives of the highest right forms survive, and these agree everywhere with F (our own). The cochain formula therefore produces the single global form A∧F (our own). The work lies in proving that this product respects changes of representatives (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+
+### Global forms describe trivial topology
+
+**Remember:** Zero topology leaves one global form modulo integral periods.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The weight-n smooth Deligne complex links integers to real functions and then to forms through degree n−1, for n ≥ 2. Projection onto the integers gives the underlying integral class.
+
+**Problem.** Degree-n classes with zero underlying integral class form the group of global (n−1)-forms modulo closed forms with integer integrals over cycles.
+
+**How the definition helps.** Deleting the integer term leaves a complex of forms whose cohomology can be computed using global forms (our own). Partitions of unity justify this step (our own). Exactness and the de Rham theorem identify the remaining ambiguity with closed forms having integral periods (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “Hence we get a short exact sequence by dividing out the image”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Last Deligne forms give curvature
+
+**Remember:** Take the exterior derivative where the Deligne complex stops.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth Deligne cocycle of degree n ≥ 2 records local differential forms and their changes on overlaps. Its highest forms have degree n−1 and differ on overlaps by exact forms, which are derivatives of other forms.
+
+**Problem.** Differentiating the highest forms of a smooth Deligne cocycle gives a global closed curvature form depending only on its class.
+
+**How the definition helps.** The local derivatives agree because differentiating twice gives zero (our own). Changing the representative also changes its highest forms locally by exact forms (our own). Comparison with geometric connections identifies this global derivative with their curvature (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the failure of the (n−k+1)-forms to glue on (k+1)-fold intersections of charts is given by the de Rham differential of the (n−k)-forms”
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Let $\\pi \\colon Y\\to X$ be a surjective submersion. Then for all $p\\geq 0$ the complex \\\[ 0 \\to \\Omega ^p(X)\\xrightarrow {\\pi ^\*} \\Omega ^p(Y) \\xrightarrow {\\delta } \\Omega ^p(Y<sup>\[2\]</sup>) \\xrightarrow {\\delta } \\Omega ^p(Y<sup>\[3\]</sup>) \\xrightarrow {\\delta } \\cdots \\\] is exact”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Lifting gerbes detect obstructions
+
+**Remember:** Multiply lifted transition functions to read the obstruction.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A central circle extension maps one Lie group onto another with a central circle as kernel. For a principal bundle, two points in one fiber differ by a unique group element. The lifting gerbe assigns to that pair the circle of lifts of this element and multiplies lifts using the extended group.
+
+**Problem.** A smooth principal bundle lifts to the extended group exactly when the integral cohomology class of its lifting gerbe vanishes.
+
+**How the definition helps.** The gerbe product records exactly where lifted transition functions fail to multiply on triple overlaps. Our own comparison uses the same circle-valued error in the usual transition-function proof. The exponential sequence identifies its cohomology class with the integral gerbe class. Vanishing means that local circle factors correct the lifts so they glue.
+
+**nLab:** [lifting gerbe](https://ncatlab.org/nlab/show/lifting+gerbe). It says: “arising as the obstruction to the lift of a G-principal bundle”
+
+**Sources:**
+
+- [B. Park, Differential cohomology and gerbes: An introduction to higher differential geometry](https://byungdo.github.io/seminars/IMSRS.pdf)
+
+### Matching real classes admit lifts
+
+**Remember:** The witness exists exactly when the two real cohomology classes agree.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A degree-n differential cocycle includes an integral cocycle, a closed n-form, and a real cochain. A cochain assigns numbers to chains, and its coboundary evaluates it on their boundaries. The real cochain has coboundary equal to the integrated form minus the integral cocycle.
+
+**Problem.** An integral degree-n class and a closed n-form on a smooth manifold have a common differential refinement exactly when their real cohomology classes agree.
+
+**How the definition helps.** The required real cochain exists exactly when the difference represents zero in real cohomology (our own). The comparison with smooth Deligne classes uses the de Rham theorem to relate differential forms to real cochains (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “represent real cohomology classes that are in the image of integral cohomology classes.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+
+### Sphere tests miss torus periods
+
+**Remember:** Checking spheres does not check all periods.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** A degree-two differential character assigns values in ℝ/ℤ additively to smooth integral 1-cycles. Its curvature is a 2-form whose integral on each smooth integral 2-chain gives the character’s value on the boundary, modulo integers.
+
+**Problem.** A torus admits a 2-form whose integral over every mapped sphere is zero, although the form cannot be a character curvature.
+
+**How the definition helps.** The boundary rule tests the whole torus, which has zero boundary. In our own example the form has total integral one half. Every map from the sphere to the torus lifts to the plane, where the lifted form has a primitive. Stokes’ theorem therefore gives zero on every sphere.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “a rule that assigns values in the circle group U(1)”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 1.1](https://doi.org/10.1007/BFb0075216)
+
+### Surface holonomy obeys Stokes
+
+**Remember:** Trivialize on the three-manifold and use ordinary Stokes.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A circle gerbe with connection assigns a phase, called holonomy, to each closed oriented surface mapped smoothly into its base. A trivialization over the surface describes the gerbe by a real 2-form b. Define the phase as exp(2πi ∫ b), integrating over the surface.
+
+**Problem.** For a smooth map from a compact oriented three-manifold, the boundary phase equals the exponential of 2πi times the integral of the pulled-back gerbe curvature.
+
+**How the definition helps.** The trivialization formula reduces the boundary phase to ordinary Stokes whenever the trivialization extends over the filling. In our own proof, each connected component with boundary admits a trivialization because its third integral cohomology vanishes. A closed component contributes phase one because the curvature has integral periods. The geometric comparison theorem identifies this formula with the usual sum of local contributions from a triangulation.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
+
+**Sources:**
+
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+
+### The Bockstein recovers flat characteristic classes
+
+**Remember:** With no curvature term, the integral class comes from the coboundary alone.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 3: graduate.
+
+**Definition.** In the cochain description of a differential character, a real cochain h lifts its cycle values modulo integers. The characteristic class is represented by integrated curvature minus δh, where δ takes the coboundary. A flat character has zero curvature.
+
+**Problem.** The integral characteristic class of a flat character equals minus the Bockstein of its ℝ/ℤ cohomology class.
+
+**How the definition helps.** Setting curvature to zero leaves exactly −δh. The Bockstein takes a circle-valued cocycle, lifts it to real values, and takes its coboundary. Our own comparison with the definition on cycles uses the theorem identifying characters with cochain classes.
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “The underlying characteristic class”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Corollary 1.2](https://doi.org/10.1007/BFb0075216)
+
+### Truncation preserves exact curvature
+
+**Remember:** An exact curvature can disappear in de Rham cohomology but not in the cutoff complex.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 55N20. arXiv math.DG, math.AT. Level 3: graduate.
+
+**Definition.** In degree n, the Hopkins–Singer construction for ordinary differential cohomology discards forms below degree n before taking cohomology. Its degree-n form group therefore records individual closed forms. A form occurs as curvature when its real cohomology class comes from integral cohomology.
+
+**Problem.** On ℝ² there is a differential class with curvature d(x dy) = dx ∧ dy. Using the full form complex would identify this curvature with zero.
+
+**How the definition helps.** The cutoff removes the degree-one forms whose derivatives would otherwise be boundaries in degree two (our own). The one-form x dy defines a topologically trivial differential class with curvature dx ∧ dy (our own). In the full complex, this same two-form represents zero because it is exact (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “the truncated sheaves of de Rham complexes with coefficients in a given chain complex:”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Two-forms describe topologically trivial gerbes
+
+**Remember:** A comparison line changes the curving by its curvature.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A trivial gerbe with curving B carries a global 2-form B specifying its surface phases. A comparison between two such gerbes is a line bundle whose connection has normalized curvature B₂ − B₁. Normalization divides unitary curvature by 2πi.
+
+**Problem.** Every topologically trivial circle gerbe with connection and curving has such a global description. Two forms give equivalent descriptions exactly when their difference integrates to an integer on every closed integral 2-cycle and is closed.
+
+**How the definition helps.** The comparison line turns equivalence into a prescribed-curvature problem for an ordinary line bundle. The line bundle curvature theorem gives exactly the stated period condition. In our own explanation, a topological trivialization with compatible connection lets the remaining curving descend to the base.
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “differ by a globally defined connection (n−1)-form, well defined up to addition of a form with integral periods.”
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “where the right hand side denotes the category of principal 𝕋-bundles with connection of fixed curvature F = B₂ − B₁.”
+
+**Sources:**
+
+- [M. K. Murray and D. Stevenson, Bundle Gerbes: Stable Isomorphism and Local Theory](https://doi.org/10.1112/s0024610700001551)
+- [P. Gajer, Geometry of Deligne cohomology](https://doi.org/10.1007/s002220050118)
+- [K. Waldorf, Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799)
 
 ### Synge's theorem needs orientability, which excludes the real projective plane
 
@@ -83425,6 +85211,655 @@ a parallelogram.”
 **Sources:**
 
 - [Simon K. Donaldson, An application of gauge theory to four-dimensional topology](https://doi.org/10.4310/jdg/1214437665)
+
+### A Chern–Simons 2-curving computes Pontryagin curvature
+
+**Remember:** The derivative of the 2-curving is the characteristic form.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A 2-curving is the local 3-form whose derivative gives the curvature of a circle 2-gerbe, a higher circle bundle. For their Chern–Simons 2-gerbe, Roberts and Vozzo take the negative Chern–Simons form of the spin connection.
+
+**Problem.** For a principal Spin(n) bundle with connection and n ≥ 5, this 2-gerbe has 4-curvature equal to −2π times the half-Pontryagin form.
+
+**How the definition helps.** The chosen 2-curving reduces the calculation to differentiating the Chern–Simons form. Its derivative gives the curvature pairing that represents the Pontryagin form. In our own comparison with computing curvature from overlap data, the work moves to proving that the chosen form satisfies the gluing equations.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “\\curv (\\nabla ,\\beta \_A,-CS(A))/2\\pi = -\\frac 12 p<sub>1</sub>(Q,A).”
+
+**Sources:**
+
+- [Roberts and Vozzo, Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4)
+
+### Absolute products preserve compact support
+
+**Remember:** One relative factor keeps the product relative.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Represent a compactly supported character by a differential cocycle relative to the complement of a compact set K. Its cochains and form vanish on that complement. Multiply by an ordinary character using the cochain product before passing to equivalence classes.
+
+**Problem.** Compactly supported characters form a graded module over ordinary differential characters. Forgetting support commutes with this action.
+
+**How the definition helps.** Each term of the product restricts to zero outside K because it contains a relative factor. Our own comparison with characters defined on cycles uses the relative product theorem, including naturality of the correction comparing wedge and cup products. It gives a product on classes compatible with enlarging K and with forgetting K.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), §3.3 and §4.2](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Bott connections give secondary Pontryagin classes
+
+**Remember:** Too many transverse curvature factors vanish.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A codimension-q foliation divides a manifold locally into leaves with q transverse directions. A Bott connection on the normal bundle extends the canonical differentiation in directions tangent to the leaves. Its differential Pontryagin character refines the integral Pontryagin class and has the corresponding curvature form.
+
+**Problem.** If 2i exceeds q, the i-th differential Pontryagin character gives an ℝ/ℤ cohomology class of degree 4i−1 independent of the Bott connection.
+
+**How the definition helps.** The character retains a cohomology class one degree lower when its curvature vanishes. Bott’s vanishing theorem kills the degree-4i curvature form because 4i exceeds 2q. Our own independence argument joins two Bott connections on the cylinder with leaves extended along the interval. The same vanishing theorem there gives equal endpoint classes.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed”
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “the Chern form $c<sub>J</sub>(\\Omega ({\\nabla ^{{\\mathcal F}}}))$ is identically zero.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §7, Proposition 7.3](https://doi.org/10.1007/BFb0075216)
+- [Steven Hurder, Rigid secondary characteristic classes (2024), Theorem 3.1](https://arxiv.org/abs/2403.09371)
+
+### Characteristic refinements multiply
+
+**Remember:** Multiply the two prescribed projections and use uniqueness.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a compact Lie group, pair a conjugation-invariant polynomial P with an integral characteristic class u represented over ℝ by its curvature form. The Cheeger–Simons refinement is the unique natural character assignment with that curvature and integral class. Natural means that pulling back a connection pulls back its character.
+
+**Problem.** The refinement of the product pair (PQ, u ∪ v) equals the product of the refinements of (P,u) and (Q,v).
+
+**How the definition helps.** The product already has the curvature and integral class that specify the natural assignment. Our own argument uses the multiplicativity of both projections. Passing from the construction on cycles to this characterization requires the uniqueness theorem for assignments on all bundles with connection.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 2.2 and Corollary 2.3](https://doi.org/10.1007/BFb0075216)
+
+### Circle integration computes transgression curvature
+
+**Remember:** Curvature passes through integration along the circle.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A differential cohomology class records an integral class together with curvature and holonomy. To transgress a gerbe class, pull it back along evaluation, which sends a loop and a circle point to the corresponding manifold point. Integrating along the oriented circle gives a degree-two class representing a line bundle with connection.
+
+**Problem.** The normalized curvature of this line bundle is the integral along the same oriented circle of the pulled-back gerbe curvature.
+
+**How the definition helps.** Integration of differential cohomology classes commutes with taking curvature, giving the formula in one step. Our own comparison uses this rule in place of computing parallel transport in the geometric line of trivializations along each loop. Identifying the two line bundles with connection requires a comparison theorem.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “is a differential cohomology class on X of degree k less.”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+
+### Circle integration gives line bundles
+
+**Remember:** Integrate a gerbe over the circle to get a line bundle.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** Circle integration takes a differential cohomology class on X × S¹ to a class on X one degree lower. A smooth family of loops in M gives an evaluation map X × S¹ → M. Transgression means pulling a class back along this map and integrating over the oriented circle.
+
+**Problem.** Transgression of a circle gerbe with connection and curving gives each smooth family of loops a line bundle with unitary connection up to isomorphism.
+
+**How the definition helps.** Circle integration takes the degree-three class describing the gerbe to degree two, where classes describe lines with connection (our own). The work lies in constructing integration and proving the geometric classifications in both degrees (our own).
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “sends n-connections on Σₖ on U × Σₖ to the (n−k)-connection on U which is their fiber integration over Σₖ.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+
+### Closed fibers permit integration
+
+**Remember:** A closed fiber adds no boundary to a product cycle.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A degree-n differential character assigns circle values to smooth (n−1)-cycles and evaluates boundaries by integrating curvature modulo integers. For a closed oriented k-manifold F, integrate a character on X × F by evaluating it on products with a fundamental cycle of F. This cycle represents the orientation.
+
+**Problem.** For n &gt; k, integration over F gives a degree-(n−k) character on X whose curvature is the integral of the original curvature over F.
+
+**How the definition helps.** A closed fiber contributes no boundary term, so the original character gives the required boundary rule on product chains (our own). Changing the fundamental cycle contributes a curvature integral with too many fiber directions, which vanishes (our own). An interval instead contributes its two endpoints by Stokes’ theorem (our own).
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “with compact fibers in terms of Deligne complex”
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Given a k-form ξ on X × \[a,b\] we have d∫\[a,b\] ξ + ∫\[a,b\] dξ = ξ\|X × {b} − ξ\|X × {a}.”
+
+**Sources:**
+
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+- [D. M. Roberts and R. F. Vozzo, Rigid models for 2-gerbes I: Chern–Simons geometry, Proposition 3.9.](https://arxiv.org/abs/2209.05521v4)
+
+### Cochains give differential characters
+
+**Remember:** The real comparison cochain becomes holonomy modulo integers.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A differential cocycle records an integral cocycle c, a closed n-form ω, and a real cochain h of degree n−1. On each smooth n-chain, h evaluates its boundary as the integral of ω minus the value of c.
+
+**Problem.** Evaluating h modulo integers identifies degree-n smooth Deligne classes with differential characters. These characters add on cycles and evaluate boundaries by integrating their curvature modulo integers.
+
+**How the definition helps.** Reducing the cochain equation modulo integers gives the rule for boundaries (our own). Conversely, lifting the character to a real cochain recovers an integral discrepancy c, and different lifts give equivalent cocycles (our own). Identifying these cochain classes with Deligne classes requires the comparison theorem (our own).
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “are equivalent to other models for these structures, notably to Deligne cohomology”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory.](https://doi.org/10.4310/jdg/1143642908)
+- [Christian Bär and Christian Becker, Differential Characters and Geometric Chains.](https://doi.org/10.1007/978-3-319-07034-6_1)
+
+### Cocycle pairing gives surface holonomy
+
+**Remember:** Every oriented triangulation represents the same surface class.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A gerbe with connection gives a degree-three differential character, a circle-valued function on two-cycles whose boundary values integrate its curvature. Pull this character back to a closed oriented surface and evaluate it on a cycle representing the surface orientation.
+
+**Problem.** For a smooth map from a closed oriented surface, gerbe holonomy is independent of the triangulation and patch labels used in the local formula.
+
+**How the definition helps.** The pulled-back curvature is a three-form on a surface, so the character vanishes on boundaries there (our own). All oriented triangulations represent the same homology class, and character evaluation uses no patch labels (our own). The comparison theorem identifies this evaluation with the local face, edge, and vertex formula (our own).
+
+**nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe), [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “assigns the exponentiated integrals of the 2-form over faces, of the connection 1-form over edges, and assigns the isomorphism μᵢⱼₖ to vertices.”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi and Yuji Terashima, Higher-dimensional parallel transports.](https://doi.org/10.4310/MRL.2001.v8.n1.a4)
+
+### Compact support requires relative periods
+
+**Remember:** An interval with both ends outside the support can detect a missing period.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A character with compact support uses cycles relative to the complement of some compact set K. These are chains whose boundaries lie outside K, taken modulo chains outside K. On relative boundaries the character integrates its curvature modulo integers.
+
+**Problem.** The curvature integrates to an integer on every relative cycle of its degree. A compactly supported 1-form on ℝ with integral one half cannot occur.
+
+**How the definition helps.** Every relative cycle has zero relative boundary, so its curvature integral must vanish modulo integers. In our own example an interval containing K in its interior detects the half-integer. Absolute cycles miss it because every 1-form on the line has a primitive.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Definition 3.1 and Theorem 4.2](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Compact support retains data at infinity
+
+**Remember:** Trivializations at infinity can differ even when the absolute character vanishes.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A compactly supported differential character comes from a character relative to the complement of a compact set K. Two representatives agree if they become equal after enlarging K. A relative cycle may have boundary outside K.
+
+**Problem.** On the real line, compactly supported degree-two characters form the group ℝ/ℤ. Every such character becomes zero on forgetting compact support.
+
+**How the definition helps.** Relative cycles include paths joining the two ends of the line, which absolute cycles miss. In our own calculation we take K to be a closed interval. There are no curvature 2-forms, so characters are homomorphisms on relative first homology, generated by a crossing path. Enlarging the interval preserves this generator, whereas absolute first homology vanishes.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Theorem 4.2 and Remark 4.5](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Curving adjusts the Chern character
+
+**Remember:** The exponential of the curving cancels the extra line curvature.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A finite-rank gerbe module has local vector bundles that differ on overlaps by tensoring with lines, with connections respecting these identifications. Choose local 2-forms B whose differences equal the intervening line curvatures divided by 2πi. The adjusted Chern character multiplies the usual curvature form ch(E) = tr exp(F∕2πi) by exp(−B), where F is the module curvature.
+
+**Problem.** The adjusted forms agree on overlaps and give a global even form α satisfying dα + H ∧ α = 0, where H = dB.
+
+**How the definition helps.** The exponential correction cancels the factor that tensoring with a line contributes to the ordinary Chern character. In our own calculation the factors cancel on each overlap, so the local forms glue. Differentiating the correction gives −H, since the ordinary character is closed. Proving independence of the resulting cohomology class from the module connection requires a separate comparison of connections.
+
+**Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “The twisted Chern character is a differential form that represents a class in the twisted cohomology”
+
+**Sources:**
+
+- [P. Bouwknegt, A. L. Carey, V. Mathai, M. K. Murray and D. Stevenson, Twisted K-Theory and K-Theory of Bundle Gerbes](https://doi.org/10.1007/s002200200646)
+- [V. Mathai and D. Stevenson, Chern Character in Twisted K-Theory: Equivariant and Holomorphic Cases](https://doi.org/10.1007/s00220-003-0807-7)
+
+### Deligne squares define Chern–Simons
+
+**Remember:** Square the differential class, then evaluate on the fundamental cycle.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A line bundle with unitary connection defines a degree-two differential class. Its Deligne square multiplies this class by itself and gives a degree-four character, an additive circle-valued function on three-cycles.
+
+**Problem.** On a closed oriented three-manifold, evaluating the Deligne square on the orientation class gives the abelian Chern–Simons action in ℝ/ℤ with this normalization. For a trivial bundle with real normalized connection form A, the action is ∫ A∧dA modulo integers.
+
+**How the definition helps.** The square gives a global character even when the local connection forms do not glue to one form (our own). Its curvature vanishes in dimension three, so evaluation depends only on the homology class (our own). On a trivial bundle the Deligne product reduces to A∧dA (our own).
+
+**nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “The action functional of abelian higher dimensional Chern-Simons theory is given by the fiber integration in ordinary differential cohomology over the BD cup product of differential cocycles”
+
+**Sources:**
+
+- [Domenico Fiorenza, Hisham Sati and Urs Schreiber, Extended higher cup-product Chern–Simons theories.](https://doi.org/10.1016/j.geomphys.2013.07.011)
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Kiyonori Gomi, Projective unitary representations of smooth Deligne cohomology groups, §2.](https://doi.org/10.1016/j.geomphys.2009.06.012)
+
+### Fake flatness permits surface transport
+
+**Remember:** A surface label must account for the change along its edges.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A strict Lie 2-group has group elements as path labels and arrows between them as surface labels. Locally, a connection supplies forms A and B of degrees one and two. Fake flatness means that the boundary map on Lie algebras sends B to the curvature of A.
+
+**Problem.** These forms define smooth transport along paths and surfaces between paths exactly when the connection is fake flat. Transport uses thin homotopies, which sweep out no extra dimension.
+
+**How the definition helps.** Fake flatness makes the boundary of each surface label agree with transport along its two edges. The integration theorem constructs transport from the forms and recovers the forms by differentiation. In our own counterexample, take the identity boundary map for the circle, zero A and a nonzero B on the plane.
+
+**nLab:** [higher parallel transport](https://ncatlab.org/nlab/show/higher+parallel+transport). It says: “A 2-connection therefore admits parallel transport only if its 2-form curvature is constrained to vanish.”
+
+**Sources:**
+
+- [Schreiber and Waldorf, Smooth functors vs. differential forms](https://doi.org/10.4310/hha.2011.v13.n1.a7)
+
+### Finite holonomy determines the secondary class
+
+**Remember:** On a finite holonomy group, the Bockstein has an inverse.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Parallel transport in a flat bundle gives a group H of transformations around loops, called its holonomy group. A positive-degree integral characteristic class u compatible with an invariant polynomial has a flat differential refinement. Its secondary class is the corresponding cohomology class with ℝ/ℤ coefficients, one degree lower.
+
+**Problem.** For finite H and u of degree at least two, the secondary class pulls back from the unique class on BH with Bockstein −u\|BH. Here BH classifies principal H-bundles, and the Bockstein connects ℝ/ℤ cohomology to integral cohomology.
+
+**How the definition helps.** The secondary class records exactly a lift of the negative integral class through the Bockstein. Our own explanation uses naturality of the universal flat class and vanishing of positive-degree real cohomology of a finite group. The coefficient exact sequence then makes that lift unique on BH.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 2.10](https://doi.org/10.1007/BFb0075216)
+
+### Flat gerbes measure differential string choices
+
+**Remember:** Two paths to zero differ by a loop at zero.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** Fix a spin bundle with connection. An untwisted differential string structure is a trivialization of its differential half-Pontryagin class to the zero cocycle, including the connection data. Equivalently, it is a path from the cocycle to zero in the space classifying circle 2-gerbes with connection.
+
+**Problem.** Choosing one such trivialization identifies the space of all such choices with the space of flat circle gerbes, including their isomorphisms and higher symmetries.
+
+**How the definition helps.** Paths with common endpoints can be compared by reversing the chosen path and composing. Our own argument thereby identifies the choices with loops at zero. In the complex of local connection forms, these loops are circle gerbes with closed local 2-forms, precisely the flat gerbes. The path description replaces a direct comparison of local trivializations.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure), [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “is the homotopy fiber of ½ p̂₁(X) over the trivial differential cocycle.”
+
+**Sources:**
+
+- [Fiorenza, Schreiber and Stasheff, Čech cocycles for differential characteristic classes](https://doi.org/10.4310/atmp.2012.v16.n1.a5)
+
+### Form multiplication forces cup products
+
+**Remember:** Two products could differ only by a flat operation on integral classes.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** In ordinary differential cohomology, a form α determines a class a(α) one degree higher, and each class x has a closed curvature form R(x). A compatible product multiplies curvatures by wedge product and satisfies a(α)x = a(α ∧ R(x)).
+
+**Problem.** On an ordinary character functor, the diagram model of ordinary differential cohomology, at most one natural graded-commutative ring product satisfies these rules.
+
+**How the definition helps.** The form rule makes the difference of two products depend only on the underlying integral classes (our own). The curvature rule makes that difference flat, so it takes values in circle-valued cohomology one degree lower (our own). Simons and Sullivan prove that no such natural bilinear cohomology operation exists (our own).
+
+**nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “both these sequences interlock to form the hexagonal differential cohomology diagram of ordinary differential cohomology.”
+
+**Sources:**
+
+- [Simons and Sullivan, Axiomatic characterization of ordinary differential cohomology](https://doi.org/10.1112/jtopol/jtm006)
+
+### Fusion recovers lost gerbes
+
+**Remember:** Fusion remembers how three paths fit together.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** Fusion multiplies fibers over loops formed from path pairs (a,b) and (b,c) into the fiber for (a,c), reversing each second path. The paths share endpoints, and the product is smooth and associative. Parallel transport must preserve fusion and reverse the order of factors under a half-turn of the loops.
+
+**Problem.** On a connected smooth manifold, transgression identifies circle gerbes with connection, up to isomorphism, with fusion circle bundles having superficial connections, up to isomorphism. Superficial connections give phase one on tori of rank at most one and preserve phases during homotopies of rank at most two.
+
+**How the definition helps.** Fusion retains the multiplication needed to reconstruct a gerbe from its loop bundle. Waldorf proves the reconstruction theorem. In our own example, a closed oriented surface of genus two carries a flat gerbe whose phase on the surface differs from one. Every torus map to this surface has degree zero, so the loop connection alone has trivial holonomy.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “Lifted transgression L̃ is an equivalence of categories”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Geometric string structures give Pontryagin primitives
+
+**Remember:** Trivial topology does not force the Chern–Simons curvature to vanish.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A geometric string structure trivializes the Chern–Simons 2-gerbe, the higher circle bundle representing half the first Pontryagin class of a spin bundle. The trivialization respects the spin connection through compatible connection data, including a global 3-form C on the base.
+
+**Problem.** The derivative of C equals the half-Pontryagin form of the spin connection, with the normalization used for the Chern–Simons 2-gerbe.
+
+**How the definition helps.** The trivialization identifies the curvature of the Chern–Simons 2-gerbe with the derivative of C. Requiring C to vanish would exclude connections whose half-Pontryagin form is exact and nonzero. The existence theorem supplies compatible connections on topological trivializations.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “on a trivial circle n-bundle every connection may be represented by a globally defined n-form.”
+
+**Sources:**
+
+- [Waldorf, String connections and Chern–Simons theory](https://doi.org/10.1090/s0002-9947-2013-05816-3)
+
+### Gerbe automorphisms are flat line bundles
+
+**Remember:** A change that fixes the curving has flat line data.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A degree-three Deligne cocycle describes a circle gerbe by local two-forms, overlap one-forms, and circle values on triple overlaps. A change of this description uses one-forms on patches and circle-valued functions on overlaps. It acts by adding their combined derivative and overlap differences.
+
+**Problem.** Up to isomorphism, symmetries preserving a gerbe’s connection and local two-forms form the group of flat unitary line bundles under tensor product.
+
+**How the definition helps.** Fixing the patch two-forms forces the change one-forms to be closed, so they define flat local connections (our own). The remaining equations glue them into a line bundle, and equivalent changes give isomorphic bundles (our own). The geometric interpretation requires the comparison between gerbe symmetries and cocycle changes (our own).
+
+**nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the collection of Deligne cocycles with coefficients in the Deligne complex that defines it, is considerably richer than other models”
+
+**Sources:**
+
+- [Jean-Luc Brylinski, Loop Spaces, Characteristic Classes and Geometric Quantization.](https://doi.org/10.1007/978-0-8176-4731-5)
+- [Paweł Gajer, Geometry of Deligne cohomology.](https://doi.org/10.1007/s002220050118)
+
+### Gerbe multiplication builds a bundle 2-gerbe
+
+**Remember:** The group difference on triples turns multiplication into gluing.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A circle gerbe is a higher circle bundle. A multiplicative gerbe on a group identifies the tensor product of its values at g and h with its value at gh. A chosen isomorphism compares the two triple products, and the pentagon identity makes these comparisons agree for four factors.
+
+**Problem.** Every principal G-bundle and multiplicative gerbe on G determine a bundle 2-gerbe on the base, with gerbes as its transition data.
+
+**How the definition helps.** Two points in one bundle fiber determine the unique group element carrying the first to the second. On triples these elements multiply, so gerbe multiplication gives the required transition isomorphism. On quadruples the comparison of triple products gives its associator, and the pentagon supplies the last gluing law. This replaces a separate construction of coherence maps on the overlaps.
+
+**nLab:** [universal Chern-Simons line 3-bundle](https://ncatlab.org/nlab/show/universal+Chern-Simons+line+3-bundle). It says: “the pullback of the multiplicative structure on 𝒢 induces the structure of a bundle 2-gerbe”
+
+**Sources:**
+
+- [Carey, Johnson, Murray, Stevenson and Wang, Bundle gerbes for Chern-Simons and Wess-Zumino-Witten theories](https://doi.org/10.1007/s00220-005-1376-8)
+
+### Higher refined classes stay constant along flat paths
+
+**Remember:** Two time differentials wedge to zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A Cheeger–Simons character refines an integral characteristic class whose real image comes from a conjugation-invariant polynomial P. It evaluates cycles modulo integers and integrates P of the connection curvature on boundaries. A flat connection has zero curvature.
+
+**Problem.** Along a smooth path of flat connections on a fixed principal bundle, the refined class stays constant if P has degree at least two. The differential first Chern class can vary.
+
+**How the definition helps.** On the cylinder, every curvature term contains the time differential because each time slice is flat. Two such terms wedge to zero, so the boundary rule gives equal values on the two ends of every swept cycle. In our own example, the connections d + 2πit dx on the trivial line over ℝ/ℤ give different parallel transports around the circle.
+
+**nLab:** [Chern-Simons form](https://ncatlab.org/nlab/show/Chern-Simons+form). It says: “is a form that trivializes the difference between the two curvature characteristic forms”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 2.9 and §4](https://doi.org/10.1007/BFb0075216)
+
+### Jandl structures allow unoriented holonomy
+
+**Remember:** Reverse the orientation and dualize the gerbe.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** For a circle gerbe with connection, a Jandl structure identifies its pullback by an involution with its dual, which inverts surface phases. The identification preserves the connection and comes with a compatible identification of its double application with the identity.
+
+**Problem.** A Jandl gerbe assigns a phase to a closed unoriented surface mapped from its orientation double cover into the base. The map must intertwine the exchange of sheets with the involution on the base.
+
+**How the definition helps.** In our own explanation, duality compensates for the inversion of the phase when a local orientation changes. The holonomy theorem proves independence from all choices of local orientations. In our own example, use the identity involution on the sphere and a trivial gerbe whose 2-form integrates to one-third. Its phase exp(2πi/3) differs from its inverse, so this gerbe admits no Jandl structure.
+
+**nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe). It says: “The generalization ("Jandl gerbes") to unoriented surfaces”
+
+**Sources:**
+
+- [U. Schreiber, C. Schweigert and K. Waldorf, Unoriented WZW Models and Holonomy of Bundle Gerbes](https://doi.org/10.1007/s00220-007-0271-x)
+
+### Locally constant coefficients classify flat gerbes
+
+**Remember:** At zero curvature, only locally constant transition data survive.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18F20. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A flat circle gerbe is a higher circle bundle with connection and zero 3-curvature. Its local description uses circle functions, 1-forms and 2-forms on overlapping patches. Flatness requires the 2-forms to be closed.
+
+**Problem.** On a smooth manifold X, flat circle gerbes, their isomorphisms and the maps between isomorphisms form the mapping space from X to K(ℝ/ℤ, 2). This target has just one nonzero homotopy group, the discrete circle group in degree two.
+
+**How the definition helps.** Closed 2-forms have local primitives, so the Poincaré lemma removes the form data locally and leaves locally constant circle coefficients. The comparison with geometric gerbes identifies the resulting cocycles and all their symmetries.
+
+**nLab:** [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “by the Poincare lemma applied to each Cartesian space”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://doi.org/10.1007/s40062-014-0092-5)
+
+### Loop transport computes torus holonomy
+
+**Remember:** A loop of loops sweeps the torus seen by the gerbe.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A circle gerbe with connection assigns a circle value, its holonomy, to each closed oriented surface mapped into the base. Transgression gives a circle bundle with connection on the free loop space. It pulls the gerbe’s differential class back by evaluation and integrates over the loop parameter.
+
+**Problem.** Transport around a closed curve in free loop space has the same holonomy as the gerbe on the torus it traces. Orient the torus in the order used for integration.
+
+**How the definition helps.** Integration over the loop parameter turns evaluation on a curve of loops into evaluation on the swept torus. In our own derivation, this is the evaluation rule for integration of differential characters, which assign circle values to cycles. The comparison theorem identifies the integrated class with the bundle built from gerbe trivializations.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “the partial higher holonomy operation for circle n-bundles with connection”
+
+**Sources:**
+
+- [Waldorf, Transgression to loop spaces and its inverse, II](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Multiplicative gerbes give product holonomy
+
+**Remember:** The correction gerbe contributes the exponential of its curving integral.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A multiplicative circle gerbe with connection on a Lie group compares its pullback by multiplication with the tensor product of its two pullbacks by projection. The tensor product includes a trivial gerbe with a real 2-form ρ on the group square. The comparison preserves connections and satisfies associativity up to compatible isomorphism.
+
+**Problem.** For smooth maps f and g from a closed oriented surface into the group, their surface phases satisfy h(fg) = h(f)h(g) exp(2πi ∫ (f,g)⁎ρ).
+
+**How the definition helps.** The multiplicative comparison expresses the product phase as three phases, one for each tensor factor. The trivial factor contributes the exponential of its 2-form integral. Our own derivation replaces a local calculation of the product phase with this comparison. Constructing a multiplicative structure with connection is the separate geometric step.
+
+**nLab:** [basic gerbe](https://ncatlab.org/nlab/show/basic+gerbe). It says: “the basic bundle gerbe itself has a multiplicative structure covering that on G”
+
+**Sources:**
+
+- [K. Waldorf, Multiplicative bundle gerbes with connection](https://doi.org/10.1016/j.difgeo.2009.10.006)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+
+### Rational coefficients kill flat cross terms
+
+**Remember:** The rational refinement discards torsion cross terms.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Chern character uses the usual polynomials expressing the Chern character in Chern classes, now applied to differential Chern classes with rational periods. For a flat unitary bundle each positive-degree term has zero curvature and gives an odd cohomology class with ℝ/ℚ coefficients.
+
+**Problem.** In degree 2r−1, the secondary Chern character equals the secondary r-th Chern class multiplied by (−1)ʳ⁻¹/(r−1)!, after passage to ℝ/ℚ coefficients.
+
+**How the definition helps.** The polynomial definition leaves only its linear term because products of two positive-degree flat factors vanish here. Our own explanation uses the flat product formula, which pairs one factor with the rational characteristic class of the other. Flatness kills that rational class by the curvature formula. The Newton identities give the stated coefficient.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 8.22](https://doi.org/10.1007/BFb0075216)
+
+### Rigid connections give one curvature class
+
+**Remember:** Different 2-curvings change curvature by a derivative.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A rigid bundle 2-gerbe describes a higher circle bundle by gluing data on successive overlaps. Its connection includes a 3-form on the cover, called the 2-curving. Its differences on overlaps must match derivatives of the lower connection data.
+
+**Problem.** Any two rigid connections on the same rigid bundle 2-gerbe give 4-curvatures that differ by an exact form.
+
+**How the definition helps.** The overlap equations let us compare the two curvings on a common cover. In our own summary, correcting their difference by an exact form gives a 3-form from the base. Its derivative is the difference of the 4-curvatures. The correction uses exactness of the sequence of forms on successive overlaps.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Hence the de Rham class associated to a rigid bundle 2-gerbe is independent of the choice of rigid connective structure.”
+
+**Sources:**
+
+- [Roberts and Vozzo, Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4)
+
+### Secondary Chern characters satisfy fiber transfer
+
+**Remember:** The Euler class transfers the secondary Chern character.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The complex secondary Chern character of a flat bundle records an odd cohomology class with coefficients in ℂ/ℚ. Its real part takes coefficients in ℝ/ℚ. For a graded flat bundle, take the alternating sum of these real classes.
+
+**Problem.** A flat complex bundle on a smooth family of closed oriented manifolds over a compact base gives flat cohomology bundles on the base. Their alternating real secondary character equals the fiber integral of the original real secondary character times the Euler class of the vertical tangent bundle.
+
+**How the definition helps.** The secondary character puts both sides in the same odd cohomology group, even though ordinary real Chern classes of flat bundles vanish in positive degrees. In our own reading, the alternating sum accounts for the degrees of fiber cohomology. Ho’s local index theorem proves the equality. The vertical tangent bundle consists of the tangent spaces along the fibers.
+
+**Paper or page:** [Local index theory and the Riemann-Roch-Grothendieck theorem for complex flat vector bundles II](https://arxiv.org/abs/2310.06616). It says: “\\operatorname{Re}(\\operatorname{CCS}(H(Z, F\|<sub>Z</sub>), \\nabla <sup>H(Z, F\|<sub>Z</sub>)</sup>))=\\int <sub>X/B</sub>e(T<sup>VX</sup>)\\cup \\operatorname{Re}(\\operatorname{CCS}(F, \\nabla ^F))”
+
+**Sources:**
+
+- [Man-Ho Ho, Local index theory and the Riemann-Roch-Grothendieck theorem for complex flat vector bundles II (2023), real Riemann–Roch–Grothendieck formula](https://arxiv.org/abs/2310.06616)
+
+### Smooth duals exclude point evaluations
+
+**Remember:** The dual must pair with forms by integration, not by sampling.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** On a closed oriented n-manifold, a degree-k integration character integrates a (k−1)-form over cycles modulo integers. A homomorphism from characters to ℝ/ℤ is smooth if on integration characters it integrates that form wedged with a fixed smooth (n−k+1)-form.
+
+**Problem.** For 1 ≤ k ≤ n, every smooth homomorphism on degree-k characters pairs with a unique degree-(n−k+1) character by multiplication and evaluation on the manifold.
+
+**How the definition helps.** Character multiplication pairs form inputs with a smooth curvature form, which explains the smoothness requirement. Our own counterexample evaluates a circle-valued function at one point of the circle. A smooth density representing this functional would vanish away from that point by testing real functions supported elsewhere, hence vanish everywhere. Existence and uniqueness use the smooth duality theorem.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
+
+**Sources:**
+
+- [Christian Becker, Marco Benini, Alexander Schenkel and Richard J. Szabo, Cheeger–Simons differential characters with compact support and Pontryagin duality (2019), Definition 5.2 and Theorem 5.4](https://doi.org/10.4310/CAG.2019.v27.n7.a2)
+
+### Thin loops constrain transgression connections
+
+**Remember:** Collapsed tori cannot carry a gerbe phase.
+
+*Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** A loop of loops traces a torus in the base manifold. A connection on a circle bundle over loop space is superficial if transport around every torus of differential rank at most one gives phase one. It must also give equal phases for tori joined by a homotopy of differential rank at most two.
+
+**Problem.** Every circle gerbe with connection induces a superficial connection on its bundle over free loops.
+
+**How the definition helps.** Superficiality records the two rank bounds under which gerbe surface transport loses dependence on the surface. In our own derivation, the surface holonomy formula gives the first condition, and its curvature formula on a homotopy gives the second. In our own counterexample, evaluate loops in a circle at one parameter and pull back a flat connection with nontrivial phase. The circle of constant loops retains that phase although its torus map has rank one.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “if φ ∈ LLX, φ̃ : S¹ × S¹ → X has rank one, then”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+
+### Transgression lines hold boundary holonomy
+
+**Remember:** Each boundary frame turns the holonomy vector into a phase.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
+
+**Definition.** The transgression line of a circle gerbe with connection assigns a complex line to each smooth loop. Its unit vectors are the ways to identify the gerbe on that loop with the trivial gerbe with zero curving, up to connection-preserving isomorphism.
+
+**Problem.** A smooth map from a compact oriented surface with one parametrized outgoing boundary gives a canonical unit vector in the line of its boundary loop.
+
+**How the definition helps.** The line records how the boundary phase changes when the chosen trivialization changes. In our own explanation, a surface trivialization supplies both a boundary frame and a phase obtained by integrating its 2-form. Changing the trivialization multiplies them by inverse factors, by Stokes for the comparison line bundle. Their product therefore gives the same vector.
+
+**nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “for β ∈ LX and where I₀ denotes the trivial gerbe on the circle.”
+
+**Sources:**
+
+- [K. Waldorf, Transgression to loop spaces and its inverse, II: Gerbes and fusion bundles with connection](https://doi.org/10.4310/ajm.2016.v20.n1.a4)
+- [J. Fuchs, T. Nikolaus, C. Schweigert and K. Waldorf, Bundle gerbes and surface holonomy](https://doi.org/10.4171/077-1/8)
+- [S. Bunk and K. Waldorf, Smooth functorial field theories from B-fields and D-branes](https://link.springer.com/article/10.1007/s40062-020-00272-2)
+
+### Translation symmetries of a gerbe model String
+
+**Remember:** The basic gerbe remembers the extension that makes String.
+
+*Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.CT, math.DG. Level 4: research.
+
+**Definition.** A basic circle gerbe on G is a higher circle bundle whose class generates H³(G; ℤ). Its translation symmetries identify the gerbe with its translates and include the isomorphisms between these identifications. Composition gives a smooth 2-group, a group with isomorphisms between its elements.
+
+**Problem.** For compact, simple, simply connected G, this symmetry 2-group models String(G), the cover that also kills the third homotopy group.
+
+**How the definition helps.** Composition of gerbe symmetries supplies the multiplication in the proposed String model. The work in Theorem 1.4 is identifying the homotopy type of this extension.
+
+**Paper or page:** [Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395v2). It says: “Then both Symɢ(𝒢) and Desₗ are smooth 2-group models for the string group of G.”
+
+**Sources:**
+
+- [Bunk, Müller and Szabo, Smooth 2-Group Extensions and Symmetries of Bundle Gerbes, Theorem 1.4](https://arxiv.org/abs/2004.13395v2)
+
+### Universal differential classes commute with pullback
+
+**Remember:** Pull back one differential class to every bundle with connection.
+
+*True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** For a compact Lie group, a universal differential characteristic class is a map from the stack of bundles with connection to differential cohomology. A stack records families and their isomorphisms. The map refines an even positive degree integral class by recording its characteristic curvature form.
+
+**Problem.** Pulling back a bundle with connection pulls back its differential characteristic class along the same smooth map.
+
+**How the definition helps.** A bundle receives its differential class by composition with the universal map. In our own comparison, computing a class separately from each connection would require checking naturality. Here composition gives naturality once the universal map with the prescribed curvature has been constructed.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “there is a map č : B∇G → Bᵏ⁻¹∇𝕋 natural in (G, c)”
+
+**Sources:**
+
+- [Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings, Theorem 22](https://arxiv.org/abs/2304.14764v1)
+
+### Whitney sums multiply differential Chern classes
+
+**Remember:** Compare both projections where both bundles are universal.
+
+*True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Chern classes are natural character assignments for Hermitian bundles with unitary connection. Their curvatures are the Chern forms computed from the connection, and their integral classes are the ordinary Chern classes. The total class is their sum, including the degree-zero unit.
+
+**Problem.** For a direct sum with its block sum connection, the total differential Chern class equals the product of the total classes of the summands.
+
+**How the definition helps.** Characterizing the assignment by naturality and its two projections reduces the formula to the ordinary sum formulas for classes and curvature forms. Our own comparison treats a pair of bundles as one bundle for the product of their unitary groups. The uniqueness theorem there replaces a direct calculation on cycles.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 4.6](https://doi.org/10.1007/BFb0075216)
 
 ### Singular foliations as modules of vector fields always have holonomy groupoids
 
@@ -87270,6 +89705,25 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Flat differential classes are homotopy invariant
+
+**Remember:** Without curvature, smooth homotopies cannot change a differential class.
+
+*Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 53C08. arXiv math.AT, math.DG. Level 3: graduate.
+
+**Definition.** A differential cohomology class has a closed differential form called its curvature. The class is flat when this form vanishes.
+
+**Problem.** Smoothly homotopic maps give the same pullback on flat differential classes. They can give different pullbacks on classes with nonzero curvature.
+
+**How the definition helps.** The homotopy formula expresses the endpoint difference using the integral of curvature along the homotopy, which vanishes for flat classes (our own). In ordinary degree one, classes are smooth functions with values in ℝ/ℤ (our own). The function t ↦ t mod ℤ on ℝ distinguishes evaluation at 0 from evaluation at ½ (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “(i.e. flat cohomology) is a homotopy invariant functor.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
 ### Generalized cohomology drops only the dimension axiom
 
 **Remember:** Keep homotopy invariance, exactness and excision; let the point have any coefficients.
@@ -89387,6 +91841,134 @@ a parallelogram.”
 
 - [Spencer Cattalani, Aleksey Zinger, Pseudocycles for Borel-Moore Homology, arXiv:2209.10036 (2022)](https://arxiv.org/abs/2209.10036)
 
+### Bordism holonomy forces integral periods
+
+**Remember:** On a closed bordism, the holonomy difference vanishes and the integral is an integer.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N22. arXiv math.AT. Level 4: research.
+
+**Definition.** A bordism joins structured manifolds as boundary pieces of a manifold one dimension higher. In the differential Anderson dual model, a cocycle pairs a closed form with an additive rule assigning values modulo integers to cycles. On each bordism, the rule evaluated on its boundary equals the integral determined by the form and the tangential structure, modulo integers.
+
+**Problem.** On closed manifolds, these integrals give an integer-valued homomorphism on the bordism group for the chosen tangential structure.
+
+**How the definition helps.** The boundary rule forces the integral on a closed manifold to vanish modulo integers because its boundary is empty (our own). Thus the model encodes integrality through boundary values instead of testing every period separately (our own). The Chern–Weil construction makes the integrand a closed form from a connection, so Stokes’ theorem gives bordism invariance (our own).
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270). It says: “induces a ℤ-valued homomorphism cw(ω) : Ω∗ᴳ(X, Y) → ℤ.”
+
+**Sources:**
+
+- [Yamashita and Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFT’s, I, Lemma 4.77](https://arxiv.org/abs/2106.09270)
+
+### Circle suspension preserves underlying theory
+
+**Remember:** Reduced circle evaluation shifts down once, and suspension shifts back up.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** For a sheaf of spectra F on manifolds, reduced circle evaluation takes data on S¹ × M together with a trivialization on the basepoint slice. Geometric suspension shifts this reduced spectrum up by one degree.
+
+**Problem.** Geometric suspension preserves the underlying cohomology theory of a differential refinement, obtained by forcing homotopic maps to act alike.
+
+**How the definition helps.** Removing the basepoint contribution leaves a loop in the underlying theory, and the degree shift cancels that loop (our own). Bunke, Nikolaus and Völkl prove that taking the invariant approximation commutes with reduced circle evaluation (our own).
+
+**nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Cofiber curvature gives homotopy formulas
+
+**Remember:** The difference of endpoint restrictions passes through curvature and lands in deformations.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns spectra to manifolds with gluing on open covers. Define curvature data by quotienting out the constant sheaf built from the value at a point, keeping homotopy information. Deformations form the fiber over zero of the map to the approximation that makes homotopic maps act alike.
+
+**Problem.** For data on M × \[0,1\], the difference of endpoint restrictions factors naturally through curvature data on the cylinder and then through deformations on M.
+
+**How the definition helps.** The endpoints agree up to homotopy on the constant part, so their difference factors through curvature (our own). They also agree after passage to the invariant approximation, so the result lifts to deformations (our own). Bunke, Nikolaus and Völkl construct compatible homotopies for these two steps in Theorem 3.2 (our own).
+
+**nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “every smooth spectrum sits in a hexagonal differential cohomology diagram”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Curvature and topology reconstruct smooth spectra
+
+**Remember:** A smooth spectrum glues its curvature data to its underlying topology.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns spectra to manifolds and allows compatible local data to glue. Its flat part is the constant sheaf built from its value at a point. Its curvature target is the cofiber, the quotient by that flat part that keeps homotopy information.
+
+**Problem.** A smooth spectrum can be reconstructed from its curvature target and its homotopy-invariant approximation. Reconstruction matches their images in the homotopy-invariant approximation of the curvature target, including a path witnessing each match.
+
+**How the definition helps.** Quotienting by the flat part gives both comparison maps the same fiber, which makes their square a homotopy pullback (our own). The approximation forces homotopic maps to act alike and preserves fiber sequences (our own). It therefore leaves the already invariant flat part unchanged (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “where both rows are homotopy fiber sequences.”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Filtering fixes curvature along paths
+
+**Remember:** With no simplex direction, closed curvature cannot change along a simplex.
+
+*Rules out counterexamples. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** The differential function complex describes families of cocycles on a manifold M with a simplex as parameter space. At filtration zero, the closed curvature form vanishes whenever one input points along the simplex.
+
+**Problem.** Curvature is constant on each connected component of the filtration-zero complex. In the unrestricted complex, a path can join distinct curvatures.
+
+**How the definition helps.** The restriction removes all parameter differentials, so closedness forces the remaining coefficients to be constant along the simplex (our own). Without the restriction, the exact form d(tf) on M × \[0,1\] joins zero to df for any nonconstant smooth function f (our own). The function tf modulo integers gives the corresponding family of degree-one differential classes (our own).
+
+**nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “the sub-simplicial set of differential forms that vanish when evaluated on more than s vector fields tangent to the simplex;”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Hodge pullbacks give generalized Jacobians
+
+**Remember:** Matching determines the image, and paths account for the kernel one degree lower.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** Take a connective spectrum E with finitely generated homotopy groups and only even homotopy groups over ℚ. Here connective means its negative homotopy groups vanish. Its weight-p Hodge pullback matches E-classes after weighted complexification with forms of holomorphic degree at least p+j for each coefficient degree 2j.
+
+**Problem.** On a compact Kähler manifold, degree-2p Hodge-filtered classes map onto precisely the E-classes whose complex images belong to this filtration. The kernel is degree-(2p−1) complexified E-cohomology modulo the sum of the filtered subgroup and the image of E-cohomology.
+
+**How the definition helps.** The matching condition gives the image, while the freedom to choose a matching path gives the kernel one degree lower (our own). The pullback exact sequence computes this quotient (our own). Hodge decomposition for compact Kähler manifolds identifies filtered cohomology with a subgroup of complex cohomology (our own).
+
+**nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “the Hodge-filtered variant pairs instead with the Hodge filtered E• ⊗ ℂ-valued Dolbeault complexes”
+
+**Sources:**
+
+- [Hopkins and Quick, Hodge filtered complex bordism, §4](https://doi.org/10.1112/jtopol/jtu021)
+
+### Hodge pullbacks recover Deligne cohomology
+
+**Remember:** Quotienting out the retained forms leaves the Deligne complex.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** On a complex manifold, the weight-p Hodge pullback matches the lattice (2πi)ᵖℤ with holomorphic forms of degrees at least p. It compares both inside the full holomorphic form complex and keeps the matching homotopies.
+
+**Problem.** For positive integers p, this pullback computes analytic Deligne cohomology in every degree. Its usual defining complex starts with the lattice and continues through holomorphic forms of degrees zero to p−1.
+
+**How the definition helps.** Taking the quotient by the retained forms leaves exactly the degrees below p (our own). The pullback is then the homotopy fiber of the map from the lattice to that quotient, giving the usual Deligne complex (our own). The holomorphic de Rham theorem identifies the full form complex with complex coefficients (our own).
+
+**nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “reproduces the Deligne complex in its original form”
+
+**Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “An alternative definition of this complex is given as the homotopy limit”
+
+**Sources:**
+
+- [Hopkins and Quick, Hodge filtered complex bordism, §4](https://doi.org/10.1112/jtopol/jtu021)
+
 ### In a cohesive ∞-topos, every differential cohomology theory has the hexagon
 
 **Remember:** Cohesion builds the hexagon in for you.
@@ -89406,6 +91988,299 @@ a parallelogram.”
 - [Ulrich Bunke, Thomas Nikolaus, Michael Völkl, Differential cohomology theories as sheaves of spectra, J. Homotopy Relat. Struct. 11 (2016) 1–66, arXiv:1311.3188](https://arxiv.org/abs/1311.3188)
 - [James Simons, Dennis Sullivan, Axiomatic Characterization of Ordinary Differential Cohomology, J. Topology 1 (2008) 45–56, arXiv:math/0701077](https://arxiv.org/abs/math/0701077)
 - [M. J. Hopkins, I. M. Singer, Quadratic functions in geometry, topology, and M-theory, J. Differential Geom. 70 (2005) 329–452, arXiv:math/0211216](https://arxiv.org/abs/math/0211216)
+
+### Looping lowers both filtration indices
+
+**Remember:** Looping lowers the cohomology degree and the allowed simplex degree together.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A differential function complex describes families of cocycles with a simplex as parameter space. Filtration s allows a curvature form to use at most s directions along the simplex. Take compatible real cocycles on an Ω-spectrum, a sequence of spaces in which each space represents based loops in the next.
+
+**Problem.** For n ≥ 1 and s ≥ 0, the degree-(n−1) complex at filtration s is weakly equivalent to loops on degree n at filtration s+1.
+
+**How the definition helps.** A loop adds one parameter direction, which the extra filtration step allows (our own). Hopkins and Singer prove that the comparison induces isomorphisms on all homotopy groups by analyzing the filtered forms (our own).
+
+**nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “identifying the loop space object (at the canonical base point) of the differential function complex of Eₙ at filtration level s+1 with that differential function complex of Eₙ₋₁ at filtration level s.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Matching classes and curvature lift
+
+**Remember:** Agreement in real cohomology guarantees a path between representatives.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** For a generalized cohomology theory E, a Hopkins–Singer cocycle records a representative of an E-class and a closed differential form. It also records a path joining their images in the space representing real cohomology with the real coefficients of E.
+
+**Problem.** On a smooth manifold, an E-class and a closed form lift together to a differential E-class whenever their real classes agree.
+
+**How the definition helps.** The definition asks for a path, and equality of real classes puts the two representatives in the same path component (our own). In the cochain description this amounts to finding a real cochain whose coboundary is their difference (our own). The de Rham comparison sends the form to its real representative by integration (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “A standard definition of differential cohomology is in terms of a homotopy pullback of a generalized (Eilenberg-Steenrod) cohomology theory with the complex of differential forms over real cohomology:”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Paths retain flat information
+
+**Remember:** Two zero classes can still be joined by a nontrivial path.
+
+*True by definition. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** The Hopkins–Singer construction pairs a representative of a generalized cohomology class with a closed form. Its homotopy pullback also records a path between their real representatives, which a pullback of groups discards.
+
+**Problem.** Classes with both entries zero form a quotient of degree-(n−1) cohomology with the graded real coefficients of E. The denominator is the real image of E-cohomology in degree n−1.
+
+**How the definition helps.** With both entries zero, a comparison path becomes a loop based at zero (our own). Such loops represent real cohomology one degree lower (our own). The pullback exact sequence identifies loops differing by the real image of an E-class (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “The characterization/construction of differential cohomology via homotopy fiber products (of mapping spectra with differential form data)”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Purity preserves curvature data
+
+**Remember:** Only data that vanish on a point can serve as pure curvature.
+
+*Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A sheaf of spectra assigns spectra to manifolds with gluing on open covers. It is pure if its value at a point is zero, and its invariant approximation forces homotopic maps to act alike. A homotopy pullback matches two inputs over a common target and remembers the matching paths.
+
+**Problem.** The homotopy pullback of a pure sheaf P and a constant sheaf over the invariant approximation of P defines a differential theory. Its curvature data recover P.
+
+**How the definition helps.** Removing the constant part preserves this pullback, kills both invariant entries and leaves the pure input P intact (our own). Proposition 3.5 identifies the resulting quotient with the curvature data (our own). If P is nonzero and constant, matching it against zero instead gives zero curvature data (our own).
+
+**nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “♭-anti-modal types are called "pure”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### Smooth spectra give Mayer–Vietoris sequences
+
+**Remember:** Glue the spectra first, then take homotopy groups.
+
+*True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N30. arXiv math.AT. Level 4: research.
+
+**Definition.** A smooth spectrum assigns each manifold a spectrum, an object representing groups in successive degrees. Its sheaf condition reconstructs global data from local data together with homotopies matching them on overlaps.
+
+**Problem.** For a cover by two open sets, the homotopy groups form a long exact sequence relating the manifold, the two sets and their intersection.
+
+**How the definition helps.** The sheaf condition already expresses global sections as pairs of local sections with a path matching their restrictions (our own). For spectra, this identifies global sections with the fiber of the difference of restrictions (our own). Taking homotopy groups gives exactness in every degree (our own). A model defined by geometric cocycles must first prove the gluing condition (our own).
+
+**nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “A sheaf of spectra on the site of all smooth manifolds may be thought of as a spectrum equipped with generalized smooth structure,”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+
+### The curvature fiber gives flat coefficients
+
+**Remember:** For flat classes, take the fiber of realification.
+
+*Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** In degree n, the Hopkins–Singer construction matches E-cohomology with real differential forms and discards form degrees below n, counting coefficient degrees. Curvature sends a differential class to its closed form. A flat class has zero curvature.
+
+**Problem.** On a smooth manifold, flat differential E-classes of degree n form the E-cohomology group with ℝ/ℤ coefficients in degree n−1.
+
+**How the definition helps.** Setting curvature to zero in the defining pullback leaves the fiber of the map from E to its real version (our own). This fiber records a class and a path from its real image to zero (our own). The cutoff leaves no degree-(n−1) form classes, so this fiber computes the kernel (our own). In spectra, the fiber is the degree shift of the quotient defining ℝ/ℤ coefficients (our own).
+
+**nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “Moreover Ê(flat)⁎ = E ℝ/ℤ•⁻¹.”
+
+**Sources:**
+
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### The pullback lifts circle integration
+
+**Remember:** Integrate both inputs and carry their comparison along.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
+
+**Definition.** A Hopkins–Singer cocycle records a topological cocycle, a closed form and a path matching their real representatives. In degree n the construction discards forms below total degree n.
+
+**Problem.** Integrating around the oriented circle gives a natural map from degree n on S¹ × M to degree n−1 on M. It respects both curvature and the underlying topological class.
+
+**How the definition helps.** Matching paths let circle integration on forms and topological suspension define a single operation on differential classes (our own). The comparison must identify the two operations on real representatives up to a specified homotopy, and integration lowers the form cutoff by one (our own).
+
+**nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “General discussion of fiber integration for Hopkins-Singer coefficients is in (HopkinsSinger, section 4.10) and for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
+
+**Sources:**
+
+- [Bunke, Nikolaus and Völkl, Differential cohomology theories as sheaves of spectra](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/BNV.pdf)
+- [Hopkins and Singer, Quadratic functions in geometry, topology, and M-theory, §4 and Appendix D](https://doi.org/10.4310/jdg/1143642908)
+
+### Bordism corrections preserve curvature
+
+**Remember:** When a cycle bounds, its boundary current already has a primitive.
+
+*True by definition. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** In smooth complex cobordism, a cycle map carries a connection on its stable complex normal bundle. Pushing its characteristic form forward gives a current T, a form with distribution coefficients. A corrected cycle includes a current α such that its curvature T − dα is smooth.
+
+**Problem.** Curvature depends only on the smooth complex cobordism class of a corrected cycle.
+
+**How the definition helps.** The geometric boundary and its correcting current contribute opposite terms to curvature (our own). A cycle map alone gives a current that can be singular (our own). Stokes’ theorem identifies the boundary current with the derivative of the bordism current (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
+
+### Bordism pushforward uses pullback cycles
+
+**Remember:** Send a character forward by pulling its test cycles back.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology). arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A bordism character assigns values modulo integers to closed manifolds mapped into a space. Across a bordism, the change equals the integral of its curvature with the prescribed characteristic forms. Pushing a character forward evaluates it on inverse images of test manifolds and integrates its curvature along the fibers with those weights.
+
+**Problem.** For a proper submersion with compatible geometric orientation, this construction lifts the topological pushforward on the Anderson dual of bordism. This dual theory pairs cohomology classes with bordism cycles.
+
+**How the definition helps.** The inverse image of a test manifold is the same manifold after forgetting the connections (our own). The proof checks the boundary rule and identifies this geometric operation with the topological pushforward (our own).
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “refines the topological pushforward map”
+
+**Sources:**
+
+- [Mayuko Yamashita and Kazuya Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3)
+
+### Bott orientations give holomorphic pushforwards
+
+**Remember:** The holomorphic normal data supply the orientation without a choice.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** For a holomorphic map, its virtual normal bundle is the pulled-back target tangent bundle minus the source tangent bundle. Its Bott orientation uses connections whose antiholomorphic parts give the prescribed holomorphic structures. The orientation identifies choices that differ by the allowed filtered and exact form corrections.
+
+**Problem.** A proper holomorphic map between complex manifolds canonically pushes forward Hodge-filtered complex cobordism classes. If d is target dimension minus source dimension over ℂ, the degree increases by 2d and the filtration index by d.
+
+**How the definition helps.** The holomorphic bundles supply the orientation required for the pushforward (our own). The proof shows that changing compatible connections preserves the orientation and uses distribution-valued forms to treat embeddings as well as submersions (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “On Umkehr maps in this context:”
+
+**Sources:**
+
+- [Knut Bjarte Haus and Gereon Quick, Geometric pushforward in Hodge filtered complex cobordism and secondary invariants (2024)](https://gereonq.folk.ntnu.no/GeometricAJ_Documenta.pdf)
+
+### Eta invariants fit one anomaly character
+
+**Remember:** The eta phase and its local index form belong to one class.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A differential spin-c bordism character pairs a curvature form with a phase on closed manifolds carrying spin-c geometry, the structure defining their complex Dirac operators. Across a bordism, a manifold joining two such backgrounds, the phase change equals the curvature integral modulo integers.
+
+**Problem.** For a Hermitian bundle with unitary connection, the reduced eta phase and its local index form represent the spin-c index image in differential Anderson duality.
+
+**How the definition helps.** The character lets one specify that image by giving its form and its values on closed backgrounds. The form is the degree 2k part of the Chern character times the Todd form, two polynomials in the bundle and tangent curvatures. The phase on a (2k−1)-manifold measures the twisted Dirac operator’s spectral asymmetry, including half its kernel dimension, modulo integers. In our own explanation, the boundary index theorem gives compatibility, while Proposition 3.52 identifies the resulting class.
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2). It says: “((\\mathrm{Ch}(\\nabla ^W)\\otimes \\mathrm{Todd})\|<sub>2k</sub>, \\bar{\\eta }<sub>\\nabla ^W</sub>)= \\Phi \_{\\mathrm{ABS}}(\[W, h<sup>E</sup>, \\nabla ^E, 0\]\\otimes \\gamma \_K).”
+
+**Sources:**
+
+- [Mayuko Yamashita, Differential models for the Anderson dual to bordism theories and invertible QFTs, II](https://arxiv.org/abs/2110.14828v2)
+
+### Eta invariants realize spinᶜ orientations
+
+**Remember:** A Dirac spectral invariant supplies the evaluation part of the orientation.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15, 58J20. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A spinᶜ structure lifts oriented frames to a group combining spin rotations and circle phases. In degree 2k, a differential bordism character assigns values modulo integers to closed spinᶜ manifolds of dimension 2k−1 mapped into the base. On a boundary it integrates a curvature form using the spinᶜ connection.
+
+**Problem.** For a Hermitian bundle with compatible connection, the differential Atiyah–Bott–Shapiro pairing uses the total degree-2k part of the Chern character times the Todd series. Its evaluation is the twisted Dirac operator’s reduced eta invariant, a measure of spectral asymmetry that includes the kernel contribution.
+
+**How the definition helps.** The character describes the pairing by one curvature formula and one rule for evaluating cycles (our own). The index theorem for manifolds with boundary relates these formulas modulo integers (our own). Identifying the resulting character with the pairing requires the differential orientation theorem (our own).
+
+**Wikipedia:** [Atiyah–Bott–Shapiro orientation](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott%E2%80%93Shapiro_orientation). It says: “These represent the Â genus and the Todd genus.”
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2). It says: “(Ch(∇ᵂ) ⊗ Todd)\|₂ₖ”
+
+**Sources:**
+
+- [Mayuko Yamashita, Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2)
+
+### Flat anomaly characters give the extension group
+
+**Remember:** A topologically nontrivial flat phase does not lift to a real character.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Fix a tangential structure, meaning a chosen type of structure on tangent bundles. Let B be the group of closed (n−1)-dimensional backgrounds modulo boundaries with that structure. A flat character assigns additive values in ℝ/ℤ to B.
+
+**Problem.** Flat characters give a subgroup of the degree n topological Anderson dual naturally isomorphic to Ext¹(B, ℤ). This group classifies abelian extensions of B by ℤ.
+
+**How the definition helps.** The character model identifies the kernel of the map from flat characters to topological classes with phases that lift to real characters. In our own derivation, the coefficient sequence ℤ → ℝ → ℝ/ℤ identifies the quotient with Ext¹ because ℝ is divisible. Comparing the character model with the spectrum definition of Anderson duality takes a separate theorem.
+
+**Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “\\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R})\\to \\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R}/\\mathbb {Z}) \\xrightarrow {p} (I\\Omega ^G\_{\\mathrm{dR}})<sup>n</sup>(X, Y)”
+
+**Sources:**
+
+- [Mayuko Yamashita and Kazuya Yonekura, Differential models for the Anderson dual to bordism theories and invertible QFTs, I](https://arxiv.org/abs/2106.09270v3)
+
+### Gerbe isomorphisms transport spinᶜ bordism
+
+**Remember:** Change the twist by tensoring the cycle’s module.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A bundle gerbe describes a twist by local line bundles and rules for multiplying them on overlaps. A twisted spinᶜ cycle uses local spinor bundles that glue according to these rules. Their endomorphisms carry the prescribed tangent Clifford action, which encodes the metric, with its connection.
+
+**Problem.** A connection-preserving stable isomorphism of gerbes gives an isomorphism between their differential spinᶜ bordism groups. It preserves the maps relating cycles to forms and underlying bordism classes.
+
+**How the definition helps.** The line bundle describing the change of twist acts directly on the local spinors (our own). Tensoring with its inverse changes the twist while preserving endomorphisms. Tensoring back reverses the operation. The proof checks that the new local bundles glue and their characteristic forms agree.
+
+**Paper or page:** [Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map](https://arxiv.org/abs/2510.27286v1). It says: “If (K, ∇ᴷ) is a differential stable isomorphism of bundle gerbes”
+
+**Sources:**
+
+- [Fei Han and Yuanchu Li, Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map](https://arxiv.org/abs/2510.27286v1)
+- [Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map, Proposition 4.7](https://bpb-us-w2.wpmucdn.com/blog.nus.edu.sg/dist/4/12585/files/2025/11/2510.27286v1.pdf)
+
+### Hodge cobordism gives Abel–Jacobi invariants
+
+**Remember:** A vanished topological class can still leave a comparison class.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14C30. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Hodge-filtered complex cobordism records a topological cobordism class, a differential form and a comparison between their complex cohomology classes. In coefficient degree 2j, filtration p requires at least p + j holomorphic differentials in each term of the form.
+
+**Problem.** On a smooth projective complex variety, a codimension-p algebraic cobordism class that vanishes in topological complex cobordism has an Abel–Jacobi invariant. Its target is complexified cobordism in degree 2p−1 modulo the integral image and the shifted filtration p.
+
+**How the definition helps.** The comparison retains a class in the quotient even when the topological class vanishes (our own). The proof constructs the filtered cycle map from algebraic cobordism and identifies its topologically trivial values with elements of this quotient (our own).
+
+**nLab:** [Center for Quantum and Topological Systems](https://ncatlab.org/nlab/show/Center+for+Quantum+and+Topological+Systems). It says: “This allows us to give a concrete description of an Abel-Jacobi type secondary invariant for topologically trivial cobordism cycles.”
+
+**Sources:**
+
+- [Gereon Quick, An Abel-Jacobi invariant for cobordant cycles (2016)](https://gereonq.folk.ntnu.no/AbelJacobi_Documenta.pdf)
+- [Michael J. Hopkins and Gereon Quick, Hodge filtered complex bordism (2015)](https://doi.org/10.1112/jtopol/jtu021)
+
+### Landweber base change preserves differential exactness
+
+**Remember:** Tensor the smooth theory and its structure maps together.
+
+*Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** Let R be a graded algebra over the coefficient ring of complex cobordism. Landweber exactness means that tensoring with R preserves exact sequences of modules carrying the standard cobordism coaction. This coaction records how cobordism operations act.
+
+**Problem.** On compact smooth manifolds, tensoring smooth complex cobordism with R gives a multiplicative differential extension of the corresponding cohomology theory when R is Landweber exact.
+
+**How the definition helps.** One change of coefficients transports both geometric classes and their differential forms (our own). The proof uses Landweber exactness on the underlying cobordism groups to preserve the differential extension sequence (our own).
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “By tensoring with a Landweber exact ring, this induces various other differential cohomology theories, such as differential elliptic cohomology.”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
 
 ### Landweber exact vₙ-periodic theories all have the Bousfield class of E(n)
 
@@ -89499,6 +92374,24 @@ a parallelogram.”
 **Sources:**
 
 - [P. G. Goerss, M. J. Hopkins, Moduli spaces of commutative ring spectra, in Structured Ring Spectra, Cambridge University Press (2004)](https://doi.org/10.1017/cbo9780511529955.009)
+
+### Transversality allows correction current pullback
+
+**Remember:** Keep singular directions away from the pullback map’s normal directions.
+
+*Rules out counterexamples. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77, 58A25. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A smooth cobordism cycle includes a map and a correcting current, a differential form with distribution coefficients. Choose the current so its singular directions annihilate the derivative of the cycle map at some point over their base point. These singular directions form its wavefront set.
+
+**Problem.** Every smooth map transverse to the cycle map can pull back the chosen correcting current.
+
+**How the definition helps.** Transversality keeps singular directions away from covectors that annihilate the derivative of the pullback map (our own). The distribution pullback theorem then applies (our own). A step function at its jump illustrates why arbitrary currents lack a canonical restriction (our own). The paper constructs the required representative by changing the current by an exact current.
+
+**nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
+
+**Sources:**
+
+- [Bunke, Schick, Schröder, and Wiethaup, Landweber exact formal group laws and smooth cohomology theories (2009)](https://doi.org/10.2140/agt.2009.9.1751)
 
 ### Ephemeral modules are exactly those at interleaving distance zero
 
@@ -94062,6 +96955,339 @@ a parallelogram.”
 - [Timothy Killingback, World-sheet anomalies and loop geometry, Nuclear Physics B 288 (1987) 578–588](https://doi.org/10.1016/0550-3213(87)90229-X)
 - [Hisham Sati, Urs Schreiber, Jim Stasheff, Twisted differential String and Fivebrane structures, Comm. Math. Phys. 315 (2012), arXiv:0910.4001](https://arxiv.org/abs/0910.4001)
 
+### Fusion recovers string structures from loops
+
+**Remember:** Fusion remembers how loops were cut into paths.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.AT, math.DG. Level 4: research.
+
+**Definition.** A loop spin structure lifts the bundle of spin frames along loops through a central circle extension of the loop group. A fusion structure multiplies the circle fibers for paired frame paths with common endpoints, cancelling their shared path. This multiplication is smooth, associative and compatible with the lifted group action.
+
+**Problem.** Let M be a spin manifold of dimension three or at least five. Its free loop space admits a fusion spin structure exactly when M admits a string structure, a trivialization of half its first Pontryagin class.
+
+**How the definition helps.** Fusion supplies the path gluing needed to reconstruct the string obstruction from loops (our own). Without fusion, even a spin bundle with nonzero half-Pontryagin class can have a spin loop bundle. Waldorf proves the reconstruction theorem.
+
+**nLab:** [From String structures to Spin structures on loop spaces](https://ncatlab.org/nlab/show/From+String+structures+to+Spin+structures+on+loop+spaces). It says: “what Waldorf calls a fusion extension of ℒSpin.”
+
+**Sources:**
+
+- [Konrad Waldorf, Spin structures on loop spaces that characterize string manifolds (2016)](https://msp.org/agt/2016/16-2/agt-v16-n2-p02-s.pdf)
+
+### String trivializations integrate Chern–Simons holonomy
+
+**Remember:** Integrate the global connection form to compute holonomy.
+
+*True by definition. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A spin connection determines a higher circle bundle representing the differential class of half the first Pontryagin class. A geometric string structure identifies this bundle, with its connection, with the trivial bundle carrying a global 3-form H. The differential class assigns a value modulo integers to each closed integral 3-cycle.
+
+**Problem.** On every smooth integral 3-cycle, the differential half-Pontryagin class evaluates to the integral of H modulo integers.
+
+**How the definition helps.** In the chosen trivialization, integration of H gives the value on the cycle directly (our own). A purely topological trivialization supplies no such connection form (our own). Comparing higher circle bundles with differential characters identifies this value with the original holonomy (our own).
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “a choice of equivalence λ of the Chern-Simons circle 3-bundle with connection”
+
+**Sources:**
+
+- [Konrad Waldorf, String connections and Chern-Simons theory (2013)](https://doi.org/10.1090/S0002-9947-2013-05816-3)
+
+### Inertia makes holonomy flat
+
+**Remember:** A constant base loop contributes no tangent to the curvature integral.
+
+*Makes the theorem clean to state or prove.* MSC 57R18 (Topology and geometry of orbifolds), 81T30. arXiv math.DG, hep-th. Level 4: research.
+
+**Definition.** A gerbe is a geometric representative of a degree-three class. Integrating a gerbe with connection around each loop gives a holonomy line with connection on loop space. The inertia orbifold keeps loops that stay at one point in a local chart and may close by a symmetry.
+
+**Problem.** The holonomy line of an orbifold gerbe has flat connection on the inertia orbifold, even when the gerbe has nonzero curvature.
+
+**How the definition helps.** On these loops the circle tangent maps to zero, so integrating the gerbe curvature around the circle gives zero (our own). This uses the curvature formula for the holonomy line constructed by Lupercio and Uribe (our own). The closing symmetry can still act on the flat line (our own).
+
+**nLab:** [inner local system](https://ncatlab.org/nlab/show/inner+local+system). It says: “is a family of local systems (in fact flat connections with coefficients in U(1)) on loci with non-trivial automorphisms”
+
+**Sources:**
+
+- [Ernesto Lupercio and Bernardo Uribe, Holonomy for gerbes over orbifolds (2006), §5](https://doi.org/10.1016/j.geomphys.2005.08.006)
+- [Ernesto Lupercio and Bernardo Uribe, An introduction to gerbes on orbifolds (2004), §§3–4](https://doi.org/10.5802/ambp.190)
+
+### Angular forms compute secondary Euler numbers
+
+**Remember:** Lift the fundamental cycle and integrate the angular form.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Use the canonical angular form determined by the metric connection on an oriented even-rank bundle. It integrates to one on each oriented unit sphere and its derivative is the pulled-back Euler form in the convention used here.
+
+**Problem.** For a rank-2n bundle over a closed oriented (2n−1)-manifold, the differential Euler number equals the angular form integrated along any unit section, modulo integers.
+
+**How the definition helps.** A section lifts the fundamental cycle exactly, so the sphere-bundle formula for the Euler character needs no correction chain. Our own explanation replaces the universal character with this lift formula. Cheeger and Simons prove agreement and show that changing the lift changes the integral by an integer.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed, and now itself represents a cohomology class, in one degree lower.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §3](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Antipodes force flat Euler two-torsion
+
+**Remember:** Antipodes negate the fiber form without changing the base cycle.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat oriented Euclidean bundle, extend the normalized volume form of its unit spheres by zero on horizontal directions. Define the flat Euler class by integrating this form modulo integers on homology classes lifting cycles from the base.
+
+**Problem.** For every flat oriented Euclidean bundle of odd rank at least three, twice the flat Euler class is zero.
+
+**How the definition helps.** The antipodal map negates the sphere form while preserving the projected cycle. Our own summary uses the sphere integral in place of a calculation with universal characteristic classes. The homology sequence makes the value independent of the lift, so it equals its negative.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed, and now itself represents a cohomology class, in one degree lower.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Proposition 8.12](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Bott characters retain normal torsion
+
+**Remember:** Zero curvature leaves room for torsion in the integral class.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A flat differential character assigns values modulo integers to homology classes. Its integral characteristic class is, up to sign, the coboundary of a real lift of those values.
+
+**Problem.** A smooth codimension-two foliation can have a normal plane bundle whose squared first Pontryagin class is nonzero integrally, although its adapted curvature form vanishes.
+
+**How the definition helps.** The flat character retains torsion through the coboundary of its real lift. Our own example takes a flat complex line with generating order-three holonomy over the standard nine-dimensional lens space with fundamental group of order three. Its horizontal leaves have that line as their normal bundle along the zero section. There the squared Pontryagin class equals the fourth power of the first Chern class, a generator of the integral degree-eight cohomology group ℤ/3.
+
+**Paper or page:** [Characteristic classes for flat Diff(M)-foliations](https://arxiv.org/abs/2311.09160). It says: “is injective for all ℓ ≥ 0.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 7.4 and Corollary 7.5](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+- [Steven Hurder, Characteristic classes for flat Diff(M)-foliations](https://arxiv.org/abs/2311.09160)
+
+### Determinants give first flat Chern classes
+
+**Remember:** Take the determinant before taking the logarithm.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat complex bundle, define its first differential Chern class using the determinant line, the top exterior power of the bundle. On that line the class measures the logarithm of parallel transport around loops, divided by 2πi, modulo integers.
+
+**Problem.** The first differential Chern class on a loop equals the logarithm of the determinant of its transport matrix, divided by 2πi, modulo integers.
+
+**How the definition helps.** Transport on the top exterior power acts by the determinant. Our own explanation replaces evaluation of the universal differential class with transport on a line. Proposition 4.4 identifies these descriptions with the stated sign.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “\\widehat{c}<sub>\\rho ,1</sub>(\\bar{\\nu })=\\widehat{c}<sub>\\det (\\rho ),1</sub>(\\bar{\\nu })=\\frac{1}{2\\pi i}\\log (\\det (\\rho )\_{\\mathrm{Ab}}(\\bar{\\nu }))”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §4 and §8](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### Differential Euler classes multiply
+
+**Remember:** Multiply the Euler forms and the integral classes together.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The differential Euler class assigns values modulo integers to cycles of dimension one below the rank of an oriented Euclidean bundle with metric connection. It is the unique natural refinement with Euler curvature form and integral Euler class.
+
+**Problem.** For two such bundles of positive even rank, the differential Euler class of their oriented direct sum with the sum connection equals the product.
+
+**How the definition helps.** Natural uniqueness reduces the product formula to checking its curvature and integral class. Both multiply under direct sums. Our own summary uses the universal pair of bundles to apply uniqueness, avoiding a calculation on individual cycles.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “the Cheeger-Simons homomorphism refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 3.6](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Differential normal classes bound conformal immersions
+
+**Remember:** An immersion replaces the inverse tangent class with a normal class.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Form the total differential Chern class of the complexified tangent bundle using the metric connection with zero torsion. Invert this sum in the ring of differential characters. Its degree-4i component, multiplied by (−1)ⁱ, is the inverse differential Pontryagin class of index i.
+
+**Problem.** If a Riemannian manifold admits a conformal immersion into Euclidean space of codimension k, its inverse differential Pontryagin classes vanish for 2i &gt; k.
+
+**How the definition helps.** Inversion expresses the obstruction using only the tangent bundle. For the induced metric, Cheeger and Simons identify the inverse class with the corresponding normal class. The complexified normal bundle has rank k, so its Chern classes above index k vanish. Our own summary then uses conformal invariance to recover the given metric.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “Using refined Chern-Weil theory the notions of curvature characteristic forms and their Chern-Simons forms are unified into the notion of cocycles in ordinary differential cohomology.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 6.2 and §5](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Exact transgression preserves differential Chern classes
+
+**Remember:** Exact Chern character transgression leaves all differential Chern classes unchanged.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A structured Hermitian bundle identifies unitary connections when their Chern character transgression is exact. This odd form integrates the Chern character curvature along a path between the connections.
+
+**Problem.** Over a compact smooth manifold, each differential Chern class depends only on the structured Hermitian bundle. It extends to formal differences of such bundles in differential K-theory.
+
+**How the definition helps.** The equivalence relation kills exactly the change measured by the Chern character transgression. Our own summary uses the polynomial relations between Chern forms and Chern character forms to obtain exact transgressions for each Chern class. The connection-change formula gives equality, and Ho uses the direct sum formula to pass to formal differences.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “two connections on a vector bundle are taken to be the same representative of a differential K-cocycle if they are related by a concordance such that the corresponding Chern-Simons form is exact.”
+
+**Sources:**
+
+- [Man-Ho Ho, On differential characteristic classes (2015), §3.2](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/40022D852E2A3F395D25C626125F268C/S1446788714000627a.pdf/on_differential_characteristic_classes.pdf)
+
+### Flat determinants detect trivial bundles
+
+**Remember:** No rational first cohomology means the determinant cannot hide.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The first secondary Chern class of a flat complex bundle measures determinant transport around loops by its logarithm divided by 2πi, modulo integers. The coboundary of a complex lift recovers the integral first Chern class up to sign.
+
+**Problem.** On a closed oriented rational homology three-sphere, a flat complex bundle is topologically trivial exactly when every loop has determinant transport one. Here the base has the rational homology of the three-sphere.
+
+**How the definition helps.** Vanishing first complex cohomology makes the coboundary map injective, so determinant transport detects the integral first Chern class. That class and the rank classify complex bundles in dimension three. Our own counterexample on S¹ × S² gives a trivial line nontrivial transport around the circle.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “The representation ρ is topologically trivial if and only if cᵨ,₁ = 0, if and only if ĉᵨ,₁ = 0.”
+
+**Sources:**
+
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### Godbillon–Vey numbers obstruct foliated cobordism
+
+**Remember:** Integrate the secondary form on the boundary of the cobordism.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A cooriented codimension-one foliation has tangent planes given by the kernel of a global one-form α without zeros. Choose β with dα = β ∧ α. The Godbillon–Vey number on a closed oriented three-manifold is the integral of β ∧ dβ.
+
+**Problem.** Thurston constructed foliations of the three-sphere with every real Godbillon–Vey number. Different numbers rule out a cooriented foliated cobordism, an oriented interpolating manifold whose foliation restricts to the two given foliations.
+
+**How the definition helps.** The number integrates a closed form that extends across any such cobordism. Stokes’ theorem gives equal boundary integrals with the two ends given their original orientations. Our own summary uses independence of α and β for the invariant and Thurston’s construction for the range.
+
+**Wikipedia:** [William Thurston](https://en.wikipedia.org/wiki/William_Thurston). It says: “whose Godbillon–Vey invariants (after Claude Godbillon and Jacques Vey) take every real value.”
+
+**Sources:**
+
+- [William Thurston, Noncobordant foliations of S³ (1972)](https://doi.org/10.1090/S0002-9904-1972-12975-6)
+
+### Integral lifts distinguish identical curvatures
+
+**Remember:** Curvature cannot see which torsion class you added.
+
+*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A Cheeger–Simons characteristic class assigns values modulo integers to cycles. Its definition pairs a polynomial in the curvature with an integral class that the polynomial represents over the reals.
+
+**Problem.** For the cyclic group of order two, the zero polynomial admits two distinct natural differential characteristic classes of degree two.
+
+**How the definition helps.** The integral class distinguishes choices that give the same curvature. In our own example, the group’s classifying space has two integral degree-two classes, both zero over the reals. The Cheeger–Simons theorem supplies a natural differential class for each pair.
+
+**nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “the Cheeger-Simons homomorphism refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Theorem 2.2](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Mapping tori give Chern–Simons holonomy
+
+**Remember:** One loop of surfaces sweeps out one three-cycle.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08, 58J28. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A degree-four differential character assigns numbers modulo integers to three-cycles. For a smooth family of closed oriented surfaces, integrate this character over the fibers to define the Chern–Simons line with connection on the base.
+
+**Problem.** Parallel transport around a loop in the base equals exp(2πi h), where h is the original character evaluated on the surface family over that loop.
+
+**How the definition helps.** Fiber integration evaluates the character on the three-manifold swept out by the surfaces. Our own explanation uses this in place of constructing transport by gluing local line trivializations. The three-manifold is the mapping torus, obtained by joining the ends of the surface family around the loop.
+
+**nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “is the partial higher holonomy operation for circle n-bundles with connection”
+
+**Sources:**
+
+- [Daniel Freed, Classical Chern–Simons Theory, Part 2 (2002)](https://www.ma.utexas.edu/users/dafr/cs2.pdf)
+
+### Trivializations recover Chern–Simons integrals
+
+**Remember:** Use the tautological frame upstairs and your chosen frame downstairs.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** Each point of a principal bundle picks a frame for the bundle pulled back to its total space. In this frame the Chern–Simons form compares the given connection with the trivial connection.
+
+**Problem.** On the total space, the differential characteristic class evaluates on cycles by integrating this Chern–Simons form modulo integers. A global section gives the same formula on the base.
+
+**How the definition helps.** The chosen frame makes the reference connection trivial, so its positive-degree characteristic class vanishes. Our own explanation uses the connection-change formula to replace a universal class calculation with a single integral.
+
+**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “Using refined Chern-Weil theory the notions of curvature characteristic forms and their Chern-Simons forms are unified into the notion of cocycles in ordinary differential cohomology.”
+
+**Wikipedia:** [Chern–Simons form](https://en.wikipedia.org/wiki/Chern%E2%80%93Simons_form). It says: “The right-hand side of this equation is proportional to the k-th Chern character of the connection A.”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), Propositions 2.8–2.9](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Truncation closes mixed foliation forms
+
+**Remember:** The differential hits a polynomial that the algebra has already discarded.
+
+*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** The truncated Weil algebra for codimension q sets curvature polynomials of form degree above 2q equal to zero. Its closed generators cᵢ have degree 2i, and its odd generators satisfy dyᵢ = cᵢ.
+
+**Problem.** For a smooth foliation with a framed normal bundle, a polynomial c of degree at most 2q gives a secondary class whenever degree(cᵢc) exceeds 2q. The class is represented in the algebra by yᵢc.
+
+**How the definition helps.** Truncation sets the derivative cᵢc of yᵢc equal to zero. Our own calculation replaces a derivative on the manifold with multiplication in the algebra. Bott vanishing justifies the cutoff, and the characteristic map takes the resulting class to the manifold using the chosen normal frame.
+
+**nLab:** [Bott connection](https://ncatlab.org/nlab/show/Bott+connection). It says: “for any connection on the (co)normal bundle and defined on all vector fields on X which restricts to the above along leaves”
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “of graded degree $deg(c<sub>J</sub>) &gt; 2q$, the Chern form $c<sub>J</sub>(\\Omega ({\\nabla ^{{\\mathcal F}}}))$ is identically zero.”
+
+**Sources:**
+
+- [Raoul Bott, On characteristic classes in the framework of Gelfand–Fuks cohomology (1976)](https://www.numdam.org/item/AST_1976__32-33__113_0/)
+- [Steven Hurder, Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371)
+
+### Universal flat classes live on discrete groups
+
+**Remember:** Classify the locally constant transitions, not just the underlying bundle.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R40. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A flat principal bundle has transition functions that are locally constant. Its classifying map therefore takes values in the classifying space of the structure group with the discrete topology.
+
+**Problem.** Choose a positive-degree integral characteristic class and a curvature polynomial representing it over the reals. One universal secondary class then gives every flat bundle’s secondary class by pullback.
+
+**How the definition helps.** The discrete topology retains the locally constant transition functions and hence the flat bundle itself. Our own summary uses naturality after Cheeger and Simons construct the universal class with coefficients in ℝ/ℤ.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “in particular if the curvature characteristic form vanishes so that the corresponding Chern-Simons form becomes closed”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §8](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
+
+### Universal foliation classes pull back
+
+**Remember:** Pull back one class from the space of framed transverse data.
+
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30, 55R40. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** A framed Haefliger structure records local transverse coordinate changes near points, together with a basis of the normal bundle varying smoothly over the manifold. Its classifying map records these data up to extension over an interval.
+
+**Problem.** Every secondary class from the truncated Weil algebra of a framed foliation comes by pullback from the framed Haefliger classifying space.
+
+**How the definition helps.** The classifying space puts the transverse data for all framed foliations in one place. The truncated Weil algebra records curvature polynomials and their primitives, subject to the codimension bound. Our own summary uses the universal characteristic map of Theorem 3.2 to obtain the pullback formula.
+
+**Paper or page:** [Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371). It says: “There is a well-defined universal characteristic map”
+
+**Sources:**
+
+- [Raoul Bott and André Haefliger, On characteristic classes of Γ-foliations (1972)](https://doi.org/10.1090/S0002-9904-1972-13101-X)
+- [Steven Hurder, Rigid secondary characteristic classes](https://arxiv.org/abs/2403.09371)
+
 ### In cohesive higher geometry every foliation is simple
 
 **Remember:** Let the leaf space be a stack, and every foliation becomes a submersion.
@@ -95783,6 +99009,24 @@ a parallelogram.”
 
 - [Kai Behrend, Ping Xu, Differentiable stacks and gerbes, J. Symplectic Geom. 9 (2011) 285–341, arXiv:math/0605694](https://arxiv.org/abs/math/0605694)
 
+### Loop transport takes values in a quotient group
+
+**Remember:** Labels joined by an arrow give the same transport class.
+
+*True by definition.* MSC 58H05 (Pseudogroups and differentiable groupoids), 18N10. arXiv math.DG, math.CT. Level 4: research.
+
+**Definition.** A strict Lie 2-group can be described by a boundary homomorphism ∂ from H to G and a compatible G-action on H. Its objects are elements g of G, and each h gives an arrow from g to ∂(h)g. Transport identifies maps of a bundle fiber when a natural isomorphism relates them.
+
+**Problem.** For a quasi-principal 2-bundle with strict connection over a Lie groupoid, choosing a fiber object identifies thin loop transport values with elements of G/∂(H).
+
+**How the definition helps.** Two labels in G describe isomorphic transports exactly when an arrow joins them. Their cosets modulo ∂(H) therefore agree. In our own comparison, retaining the transport maps themselves would also retain the arrows between labels. The transport theorem constructs these maps for paths in the groupoid, modulo deformations that sweep out no area.
+
+**Paper or page:** [Parallel transport on a Lie 2-group bundle over a Lie groupoid along Haefliger paths](https://arxiv.org/abs/2309.05355v1). It says: “the group Aut̅(𝔼) is isomorphic to the quotient group G/τ(H).”
+
+**Sources:**
+
+- [Chatterjee and Chaudhuri, Parallel transport on a Lie 2-group bundle over a Lie groupoid along Haefliger paths, Proposition 5.17](https://arxiv.org/abs/2309.05355v1)
+
 ### Stacky Lie groupoids make Lie's third theorem true for Lie algebroids
 
 **Remember:** If the quotient is not a manifold, keep it as a stack.
@@ -95946,6 +99190,24 @@ a parallelogram.”
 
 - [Daniel Berwick-Evans, The families analytic index for 1∣1-dimensional Euclidean field theories (2023)](https://arxiv.org/abs/2303.09207v1)
 
+### Spectral sections require zero index
+
+**Remember:** Allow changes near zero, but keep the signs far from zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30. arXiv math.DG. Level 4: research.
+
+**Definition.** A spectral section is a smooth family of orthogonal projections. Above a common spectral cutoff it keeps every eigenvector, and below the negative cutoff it discards every eigenvector. Between the cutoffs the projection can vary.
+
+**Problem.** Over a compact base, a smooth Dirac family on closed odd-dimensional spin fibers admits a spectral section exactly when its odd family index vanishes.
+
+**How the definition helps.** The adjustable middle band lets a smooth projection pass through individual zero crossings (our own explanation). Melrose and Piazza prove that vanishing of the index in K¹, the group classifying odd index families, suffices for a global choice.
+
+**nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “the change of spectrum of an operator as that operator continuously varies with a parameter.”
+
+**Sources:**
+
+- [Melrose and Piazza, Families of Dirac operators, boundaries and the b-calculus (1997)](https://math.mit.edu/~rbm/papers/fdobbc.abstract/fdobbc.abstract.html)
+
 ### The heat supertrace counts index
 
 **Remember:** Subtract the odd trace and every positive eigenvalue cancels.
@@ -96002,6 +99264,132 @@ a parallelogram.”
 
 - [M. F. Atiyah, Elliptic operators, discrete groups and von Neumann algebras, Astérisque 32–33 (1976) 43–72](https://mathscinet.ams.org/mathscinet-getitem?mr=0420729)
 
+### Boundary eta varies covariantly
+
+**Remember:** Differentiate the eta section with the connection on its boundary line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math-ph. Level 4: research.
+
+**Definition.** For a compact odd-dimensional spin manifold with product metric near its boundary, write ξ for half the sum of eta and the kernel dimension. A spectral boundary condition gives a scalar exp(2πiξ). Changing that condition changes the frame, so the intrinsic phase τ belongs to the inverse boundary determinant line.
+
+**Problem.** In a smooth geometric family, the covariant derivative of τ equals 2πiωτ. The one-form ω is the degree-one part of the fiber integral of Â, the curvature polynomial of the vertical tangent bundle.
+
+**How the definition helps.** The connection differentiates the phase while accounting for changes of frame (our own explanation). The Dai–Freed variation theorem computes that derivative for the natural Bismut–Freed connection.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “In fact, this is a smooth section of the determinant line bundle as X varies.”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+
+### Boundary zero modes affect the index
+
+**Remember:** The boundary projection excludes zero modes, so the correction counts them.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The boundary Dirac operator has an eta invariant η, its regularized count of positive eigenvalues minus negative ones. Its reduced eta invariant ξ = (η + dim ker D)/2 also counts zero modes.
+
+**Problem.** On a compact even-dimensional spin manifold with product metric near the boundary, impose the boundary condition that excludes all nonnegative modes. The chiral Dirac index equals the integral of the Â curvature form minus ξ.
+
+**How the definition helps.** The kernel term counts the zero modes excluded by the boundary condition (our own explanation). On a product cylinder the two signed eta contributions cancel, but together the kernel terms subtract one full cross-sectional kernel dimension. The Atiyah–Patodi–Singer index theorem proves the formula.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “regularized number of positive minus negative eigenvalues of D.”
+
+**Sources:**
+
+- [Atiyah, Patodi and Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Corrected eta forms compose
+
+**Remember:** Correct the connection, then integrate the inner eta form.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For an odd-dimensional spin family, identify eta forms whose difference represents the Chern character of a K⁰ class, allowing exact differences. For a composite family, first subtract the integral of the transgression form comparing its vertical connection with the split connection. This form measures the change in the Â curvature polynomial.
+
+**Problem.** For closed odd inner and even outer spin fibers, assume the inner Dirac operators are invertible and the composite kernels form a bundle. The corrected untwisted composite eta class equals the outer fiber integral of the inner eta form times the outer Â form.
+
+**How the definition helps.** Subtraction absorbs the connection change, and the quotient absorbs the index class (our own explanation). Liu’s composition theorem supplies both terms before these operations. Inner invertibility removes the kernel contribution.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “such that modulo exact forms on B”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
+### Determinants isolate secondary eta invariants
+
+**Remember:** After rank correction, subtract the spectral contribution of the determinant line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 57R20. arXiv math.DG, math.AT. Level 4: research.
+
+**Definition.** For a flat unitary bundle, twist the spin Dirac operator by that bundle. Its reduced eta invariant is half the regularized imbalance of positive and negative eigenvalues plus half the kernel dimension. The rank correction subtracts the bundle rank times the untwisted reduced eta invariant.
+
+**Problem.** Let the base be a closed oriented spin three-manifold with the rational homology of a sphere. Modulo integers, the second secondary Chern number equals the bundle’s rank-corrected invariant minus that of its determinant line.
+
+**How the definition helps.** The rank corrections cancel trivial summands, and subtracting the determinant cancels the first Chern class. Our own explanation applies the index comparison for this formal difference of bundles. The cited theorem identifies the remaining spectral difference with the second secondary Chern number in its sign convention.
+
+**Paper or page:** [Classification of indecomposable reflexive modules on quotient singularities through Atiyah--Patodi--Singer theory](https://arxiv.org/abs/2504.21204). It says: “ĉᵨ,₂(\[L\]) = ξ̃ᵨ(D) − ξ̃det(ρ)(D).”
+
+**Sources:**
+
+- [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
+
+### End-periodic eta forms recover invariants
+
+**Remember:** The form keeps the periodic correction and its family variation together.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** On a manifold with a repeating end, the Fourier–Laplace transform replaces translation by one period with a complex phase. Taylor’s end-periodic eta form integrates the transformed family heat expression over these phases and positive times, retaining differential forms on the base.
+
+**Problem.** For end-periodic Dirac families with closed range and finite-dimensional kernel and cokernel, the degree-zero component equals the end-periodic eta invariant on each fiber.
+
+**How the definition helps.** Degree zero discards all differentiation across the base and leaves the single-fiber heat expression (our own explanation). Taylor proves convergence and compares this expression with the earlier scalar definition.
+
+**Paper or page:** [An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1). It says: “is the fiberwise end-periodic eta invariant”
+
+**Sources:**
+
+- [Alex R. Taylor, An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1)
+
+### Eta forms give adiabatic limits
+
+**Remember:** The eta form stores what remains after stretching the base.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The Bismut–Cheeger eta form records spectral asymmetry for a family of spin Dirac operators. It integrates a heat trace over positive times using a superconnection, an operator combining differentiation along fibers and across the base.
+
+**Problem.** For a spin fibration of closed manifolds with odd-dimensional total space and invertible fiber operators, the reduced eta invariant has a limit. As the base metric stretches, the limit equals the base integral of the eta form times Â, the base curvature polynomial.
+
+**How the definition helps.** The eta form collects the fiber contributions into one integrand (our own explanation). Invertibility removes the kernel term and the integer remainder in the adiabatic limit theorem. The theorem supplies the estimates needed to take the limit.
+
+**Paper or page:** [Eta Form and Spectral Sequence for the Composition of Fibrations](https://arxiv.org/abs/2305.19637v1). It says: “is invertible, then R = 0;”
+
+**Sources:**
+
+- [Bismut and Cheeger, η-invariants and their adiabatic limits (1989)](https://doi.org/10.1090/S0894-0347-1989-0966608-3)
+
+### Eta measures the signature defect
+
+**Remember:** Signed spectral asymmetry supplies the missing boundary term.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For the odd signature operator on even-degree boundary forms, sum sign(λ)/\|λ\|ˢ over its nonzero eigenvalues, counting multiplicities. Its eta invariant η is the value at zero after analytic continuation.
+
+**Problem.** For a compact oriented Riemannian 4k-manifold with product metric near its boundary, the signature of its intersection form equals ∫ L − η. Here L is the Hirzebruch form computed from curvature.
+
+**How the definition helps.** Eta packages the imbalance between positive and negative boundary eigenvalues into one number (our own explanation). The Atiyah–Patodi–Singer theorem identifies that number with the difference between the curvature integral and the signature.
+
+**Wikipedia:** [Eta invariant](https://en.wikipedia.org/wiki/Eta_invariant). It says: “who used it to extend the Hirzebruch signature theorem to manifolds with boundary.”
+
+**Sources:**
+
+- [Atiyah, Patodi and Singer, Spectral asymmetry and Riemannian Geometry. I (1975), Theorem 4.14](https://doi.org/10.1017/S0305004100049410)
+
 ### Eta phases sew along determinant lines
 
 **Remember:** On a manifold with boundary, the phase lives in a line.
@@ -96019,6 +99407,26 @@ a parallelogram.”
 **Sources:**
 
 - [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Eta winding counts spectral flow
+
+**Remember:** The phase hides each jump, but its winding remembers their sum.
+
+*True by definition. Confidence: medium.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** The eta phase of a self-adjoint Dirac operator is exp(2πiξ), where ξ is half the regularized signed eigenvalue count plus half the kernel dimension. This gives a circle-valued invariant even when ξ jumps.
+
+**Problem.** For a smooth loop of such operators on a closed odd-dimensional manifold with only simple transverse crossings, the phase winding equals minus the spectral flow. Spectral flow counts upward zero crossings positively and downward crossings negatively.
+
+**How the definition helps.** Passing to the circle turns integer jumps into a winding count (our own explanation). Each upward crossing raises ξ by one, so a continuous real lift subtracts one there. The endpoint spectra agree, leaving minus the total signed crossing count as the change in the lift.
+
+**nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “the change of spectrum of an operator as that operator continuously varies with a parameter.”
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “is the spectral flow between D₀ and D₁.”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
 
 ### Free symmetries simplify eta variation
 
@@ -96038,6 +99446,62 @@ a parallelogram.”
 
 - [Peter Hochs and Aquerman Yanes, Equivariant spectral flow for families of Dirac-type operators (2025)](https://doi.org/10.2140/akt.2025.10.189)
 
+### Grading makes eta forms subtract
+
+**Remember:** Reversing the grading reverses the supertrace.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A graded twisting bundle has positive and negative parts, and its connection preserves both. The eta form measures spectral asymmetry using a signed trace, the positive trace minus the negative trace. In the family twisted by the negative part, one reverses the grading.
+
+**Problem.** For closed even-dimensional Spinᶜ fibers with compatible metrics and connections, the graded eta form equals η(E⁺) − η(E⁻), modulo exact forms. The finite bundles representing the two indices combine with the second grading reversed.
+
+**How the definition helps.** Using the signed trace instead of the ordinary trace makes reversal change the sign (our own). Ho constructs compatible finite-dimensional representatives so the two terms split before integration.
+
+**Paper or page:** [An extended variational formula for the Bismut-Cheeger eta form and its applications](https://arxiv.org/abs/2209.00502). It says: “denotes the ℤ₂-graded complex vector bundle with the opposite grading of”
+
+**Sources:**
+
+- [Man-Ho Ho, An extended variational formula for the Bismut-Cheeger eta form and its applications, Theorem 1.2](https://arxiv.org/abs/2209.00502)
+
+### Odd indices over points record eta
+
+**Remember:** An odd index can record a spectral phase instead of a rank.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** The odd differential analytic index over a point takes values in ℝ/ℤ, real numbers modulo integers. It uses a circle product to turn the family into an even-dimensional one. The reduced eta invariant halves the sum of the regularized spectral asymmetry and the kernel dimension.
+
+**Problem.** For a closed odd-dimensional Riemannian Spinᶜ manifold, the index of a Hermitian bundle with unitary connection equals the reduced eta invariant modulo integers. The Dirac operator uses the chosen Spinᶜ connection, and the input has zero auxiliary form.
+
+**How the definition helps.** The differential index has a target that retains the fractional part of the spectral invariant (our own). Freed and Lott identify it by computing parallel transport around the extra circle and taking a limit that stretches the base metric.
+
+**nLab:** [fiber integration in differential K-theory](https://ncatlab.org/nlab/show/fiber+integration+in+differential+K-theory). It says: “The special case of fiber integration in differential cohomology for the case of differential K-theory.”
+
+**Wikipedia:** [Eta invariant](https://en.wikipedia.org/wiki/Eta_invariant). It says: “the eta invariant of a self-adjoint elliptic differential operator on a compact manifold is formally the number of positive eigenvalues minus the number of negative eigenvalues.”
+
+**Sources:**
+
+- [Daniel S. Freed and John Lott, An index theorem in differential K-theory (2010), Corollary 9.39](https://math.berkeley.edu/~lott/gt-2010-14-021p.pdf)
+
+### Quotients remove eta perturbation dependence
+
+**Remember:** The quotient absorbs the Chern character of higher spectral flow.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** An invertible smoothing perturbation adds an operator with smooth kernel to remove zero eigenvalues from a Dirac family. Identify two resulting eta forms if their difference is closed and represents the Chern character of a K¹ class. This character assigns an odd cohomology class to a family of unitary matrices.
+
+**Problem.** For a closed even-dimensional geometric Dirac family with fixed geometry and zero family index, every admissible invertible perturbation gives the same quotient class.
+
+**How the definition helps.** The quotient kills the ambiguity that remains for ordinary eta forms (our own explanation). Liu’s variation formula identifies the difference modulo exact forms with the Chern character of higher spectral flow, the K¹ class comparing the perturbations.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “For any g ∈ G, modulo exact forms on B, we have”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
 ### Reduced eta stays smooth
 
 **Remember:** The kernel term makes a zero mode agree with either sign in the phase.
@@ -96055,6 +99519,42 @@ a parallelogram.”
 **Sources:**
 
 - [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Reducing eta removes spectral flow
+
+**Remember:** Reducing modulo integers erases the count of eigenvalues crossing zero.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
+
+**Definition.** For a self-adjoint Dirac operator D, let η be its regularized count of positive eigenvalues minus negative ones. Its reduced eta invariant is ξ = (η + dim ker D)/2. Take its value modulo integers.
+
+**Problem.** Along a smooth path of metrics and unitary connections on a closed odd-dimensional spin manifold, the change in ξ equals the cylinder integral modulo integers. The integrand is the product of the Â and Chern character forms computed from curvature, using product data near both ends.
+
+**How the definition helps.** Reduction modulo integers discards spectral flow, the signed count of eigenvalues crossing zero (our own explanation). The Atiyah–Patodi–Singer variation formula identifies the remaining term with the curvature integral.
+
+**Paper or page:** [Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2). It says: “The difference of two reduced eta invariants”
+
+**Sources:**
+
+- [Bo Liu, Bismut-Cheeger eta form and higher spectral flow](https://arxiv.org/abs/2105.01926v2)
+
+### Tamed families represent eta form classes
+
+**Remember:** Pair the families only when their eta form accounts for the change.
+
+*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A geometric cycle consists of a family of Dirac operators and a differential form modulo exact forms. A taming adds smoothing operators to make the family invertible, and its eta form measures the resulting spectral asymmetry. Two cycles pair when a taming of their difference has eta form equal to the difference of their forms.
+
+**Problem.** A tamed family with zero auxiliary form equals the empty family with auxiliary form −η in differential K-theory. Here η denotes the chosen taming’s eta form.
+
+**How the definition helps.** Pairing by the eta form lets the empty family represent the original family with a single form correction (our own). The required difference of forms is exactly the eta form of the given taming. The work lies in proving that the relation generated by pairing models differential K-theory.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Definitions 2.7 and 2.10 and equation (6)](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
 
 ### Half spectral flow retains parity
 
@@ -96091,6 +99591,24 @@ a parallelogram.”
 **Sources:**
 
 - [Johnny Lim and Hang Wang, Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary (2022)](https://doi.org/10.1007/s00209-022-03091-8)
+
+### Nonzero spectral flow prevents taming
+
+**Remember:** An invertible loop has no eigenvalues crossing zero.
+
+*Rules out counterexamples.* MSC 58J30 (Spectral flows), 19L50. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** A taming adds operators with smooth integral kernels to a family of self-adjoint Dirac operators, making every member invertible. Spectral flow counts eigenvalues crossing zero around a loop, with a sign for the direction.
+
+**Problem.** A smooth loop of Dirac operators on closed odd-dimensional fibers with nonzero spectral flow admits no taming.
+
+**How the definition helps.** A tamed loop has no zero crossings, and adding the perturbations continuously preserves spectral flow (our own). For example, take the circle Dirac operators with eigenvalues n + t for integers n. Increasing t by one identifies the endpoints by shifting the eigenvectors and gives spectral flow one.
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “a differential-geometric cocycle model of differential K-theory where cocycles are given by smooth families of Dirac operators.”
+
+**Sources:**
+
+- [Ulrich Bunke and Thomas Schick, Smooth K-theory (2009), Section 2.2.2](https://www.numdam.org/item/AST_2009__328__45_0.pdf)
 
 ### Spectral flow adds across joins
 
@@ -96164,6 +99682,62 @@ a parallelogram.”
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
 
+### Bounding spin removes holonomy signs
+
+**Remember:** Use the bounding circle to read holonomy without an index sign.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** The bounding spin structure on a circle extends across a disk. It makes spinor fields change sign after one turn. Use it on the base circle when pulling a family of spin Dirac operators back around a loop.
+
+**Problem.** For closed even-dimensional spin fibers, transport around the loop in the inverse determinant line equals the limiting phase exp(2πiξ) as the circle stretches. Here ξ is half the regularized signed eigenvalue count plus half the kernel dimension on the total space.
+
+**How the definition helps.** The bounding spin structure includes the sign otherwise supplied by the parity of the fiber index (our own explanation). For a constant family with one positive point as fiber, periodic spinors give phase −1 and antiperiodic spinors give 1. Dai and Freed identify the latter convention with holonomy.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “were used by Bismut and Freed to compute the holonomy of certain determinant line bundles of Dirac operators”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+- [Bismut and Freed, The analysis of elliptic families II (1986), Theorem 3.16](https://doi.org/10.1007/BF01206955)
+
+### Cusp subtraction regularizes analytic torsion
+
+**Remember:** Subtract the model heat trace before taking the zeta determinant.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** Regularize the heat trace by removing zero modes and subtracting one third of the thrice-punctured sphere’s contribution per cusp before integration. Let ζ be the continued Mellin transform of this trace, normalized by the gamma function. Finski’s torsion is exp(−ζ′(0)/2) times one cube root of the model’s Takhtajan–Zograf torsion per cusp.
+
+**Problem.** For the trivial line on a complete finite-area hyperbolic surface with cusps and scalar curvature −1, Finski’s torsion equals the Takhtajan–Zograf torsion from closed geodesics.
+
+**How the definition helps.** Matching each cusp to a model removes the divergence that prevents an ordinary heat trace (our own explanation). Finski proves continuation of the resulting zeta function and identifies the normalized value with the geodesic formula.
+
+**Paper or page:** [Quillen metric for singular families of Riemann surfaces with cusps and compact perturbation theorem](https://arxiv.org/abs/1911.09087v1). It says: “our definition of the analytic torsion is compatible with the definition of Takhtajan-Zograf.”
+
+**Sources:**
+
+- [Siarhei Finski, Quillen metric for singular families of Riemann surfaces with cusps and compact perturbation theorem](https://arxiv.org/abs/1911.09087v1)
+- [Finski, Quillen metric theory for surfaces with cusps](https://proceedings.centre-mersenne.org/item/10.5802/tsg.372.pdf)
+
+### Cylinder eta gives parallel transport
+
+**Remember:** The cylinder phase maps the initial line to the final line.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** Pull a spin family back along a path and form its cylinder. The exponentiated reduced eta invariant of this cylinder is a linear map between the inverse determinant lines at its two ends. Reduced eta is half the regularized signed eigenvalue count plus half the kernel dimension.
+
+**Problem.** For a smooth geometric family of closed even-dimensional spin manifolds, the cylinder map tends to Bismut–Freed parallel transport as the path metric stretches. The path is constant near its ends.
+
+**How the definition helps.** The two boundary factors give the eta invariant the source and target of a transport map (our own explanation). Dai and Freed use gluing to compose these maps and variation to identify their limiting connection.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “These sections, given by the exponentiated eta invariant, satisfy the sewing law.”
+
+**Sources:**
+
+- [Dai and Freed, η-invariants and determinant lines (1994)](https://web.math.ucsb.edu/~dai/paper/dfJMP.pdf)
+
 ### Determinant sections detect noninvertibility
 
 **Remember:** A finite determinant tells where its infinite-dimensional operator fails to invert.
@@ -96181,6 +99755,132 @@ a parallelogram.”
 **Sources:**
 
 - [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### Local forms give determinant curvature
+
+**Remember:** The connection selects a curvature form within its cohomology class.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** On the inverse determinant line of a spin Dirac family, use the dual Bismut–Freed connection. It differentiates sections using the low eigenspaces and a regularized contribution from the rest of the spectrum.
+
+**Problem.** For closed even-dimensional spin fibers, i/(2π) times the curvature of this connection equals the degree-two part of the fiber integral of Â. The form Â is a polynomial in the curvature along the fibers.
+
+**How the definition helps.** Choosing the connection specifies a particular curvature form within the first Chern class (our own explanation). The Bismut–Freed local index calculation identifies that form.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “the agreement of this prediction with the curvature form was proven by Bismut and Freed.”
+
+**Sources:**
+
+- [Bismut and Freed, The analysis of elliptic families II (1986), Theorem 1.21](https://doi.org/10.1007/BF01206955)
+
+### Odd genera give self-dual torsion
+
+**Remember:** Duality preserves odd coefficients and negates even ones.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 14G40. arXiv math.AG. Level 4: research.
+
+**Definition.** A generalized analytic torsion theory assigns metric corrections to direct images of complexes of vector bundles. Its additive genus is the real power series that measures its difference from homogeneous torsion, the reference theory. The classification theorem identifies each such theory with exactly one series.
+
+**Problem.** A generalized analytic torsion theory agrees with its dual exactly when its additive genus is odd, including the requirement that its constant term vanish.
+
+**How the definition helps.** The genus turns comparison with the dual theory into the power series identity S(x) = −S(−x) (our own). This identity forces exactly the even coefficients to vanish (our own). The substantive steps classify the theories and compute the action of duality on their genera (our own).
+
+**Paper or page:** [Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2). It says: “is self-dual if and only if aₙ = 0 for n even.”
+
+**Sources:**
+
+- [J. I. Burgos Gil, G. Freixas i Montplet and R. Litcanu, Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2)
+
+### Pfaffian patching gives square roots
+
+**Remember:** Glue with Pfaffians before squaring the transition maps.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** Below a positive gap in the squared Dirac spectrum, take the dual top exterior power of the positive-chirality space, one of the two spinor components. Join these local lines using the Pfaffian of each intervening skew block. The Pfaffian is the normalized top wedge power of its alternating form.
+
+**Problem.** For spin fibers of dimension 8k + 2 with real twisting bundle, the resulting Pfaffian line squares canonically to the determinant line. In index zero, its canonical section squares to the determinant section.
+
+**How the definition helps.** Squaring each Pfaffian gives the determinant used to join the ordinary determinant lines (our own explanation). The real structure supplies the skew blocks, and Freed proves that their local identifications agree on overlaps.
+
+**nLab:** [Pfaffian line bundle](https://ncatlab.org/nlab/show/Pfaffian+line+bundle). It says: “this has a canonical square root line bundle, the Pfaffian line bundle.”
+
+**Sources:**
+
+- [Freed, On determinant line bundles (1987), §3](https://abel.math.harvard.edu/~dafr/detsur.pdf)
+
+### Quaternionic eta retains holonomy signs
+
+**Remember:** A quaternionic crossing changes reduced eta by an even integer.
+
+*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** For a Dirac operator with quaternionic symmetry, every eigenvalue has even complex multiplicity. Keep ξ, half the sum of the regularized signed eigenvalue count and the kernel dimension, modulo even integers.
+
+**Problem.** For closed spin fibers of dimension 8k + 2 with real twisting bundle, transport around a loop in the Pfaffian line equals the limiting exp(−πiξ). Compute ξ on the total space as the base circle stretches, using the spin structure that extends across a disk.
+
+**How the definition helps.** Keeping ξ modulo even integers makes the square-root phase single-valued (our own explanation). Quaternionic crossings change ξ by an even integer. Freed’s holonomy theorem identifies the resulting sign with transport in the canonical square root of the determinant line.
+
+**nLab:** [Pfaffian line bundle](https://ncatlab.org/nlab/show/Pfaffian+line+bundle). It says: “this has a canonical square root line bundle, the Pfaffian line bundle.”
+
+**Sources:**
+
+- [Freed, On determinant line bundles (1987), §3](https://abel.math.harvard.edu/~dafr/detsur.pdf)
+
+### Quillen norms survive kernel jumps
+
+**Remember:** The missing eigenvalues in one factor appear in the other.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** The determinant line of D pairs the dual top exterior power of its kernel with the top exterior power of its cokernel. The Quillen norm multiplies their induced norm by the square root of the regularized product of positive eigenvalues of D∗D.
+
+**Problem.** For smoothly varying Dolbeault operators on a fixed compact Riemann surface with fixed Hermitian data, the Quillen norm stays smooth when the kernel dimension changes.
+
+**How the definition helps.** The correction cancels the singular factor in the uncorrected norm (our own explanation). For multiplication by z on ℂ, a smooth constant frame has uncorrected norm 1/\|z\| away from zero. The correction contributes \|z\|, and Quillen proves smoothness of the remaining spectral product in the general case.
+
+**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “does not define a smooth Hermitian metric.”
+
+**Sources:**
+
+- [Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### String structures trivialize surface Pfaffians
+
+**Remember:** Integrate the trivialization over the surface to trivialize the line.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
+
+**Definition.** A geometric string structure trivializes the differential half Pontryagin class of a spin bundle. This choice includes a three-form H whose derivative is the curvature form representing that class.
+
+**Problem.** Consider a geometric family of closed spin surfaces with a spin twisting bundle of rank at least three. A geometric string structure on that bundle gives a unit section of the relative Pfaffian line.
+
+**How the definition helps.** Integrating the chosen trivialization along each surface gives a trivialization on the base (our own explanation). Bunke identifies the resulting line with the relative Pfaffian line, which compares the twisted Dirac family with the trivial twist of equal rank.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “is the trivialization of this class refined to ordinary differential cohomology”
+
+**Sources:**
+
+- [Bunke, String Structures and Trivialisations of a Pfaffian Line Bundle (2011)](https://doi.org/10.1007/s00220-011-1348-0)
+
+### Torsion corrects the harmonic norm
+
+**Remember:** The torsion cancels the length in the harmonic norm.
+
+*Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
+
+**Definition.** On the determinant line of cohomology, take the top exterior powers in even degrees and their duals in odd degrees. The Ray–Singer norm divides the norm of harmonic representatives by analytic torsion, a weighted product of regularized Laplacian determinants.
+
+**Problem.** For a closed oriented Riemannian manifold with unitary flat coefficients, the Ray–Singer norm equals the Reidemeister norm computed from cellular cochains.
+
+**How the definition helps.** Analytic torsion cancels the metric dependence of harmonic representatives (our own explanation). On a circle of length L with trivial coefficients, the integral cohomology basis gives harmonic determinant norm L and analytic torsion L. The Cheeger–Müller theorem proves the equality in general.
+
+**Wikipedia:** [Analytic torsion](https://en.wikipedia.org/wiki/Analytic_torsion). It says: “This Cheeger–Müller theorem (that the two notions of torsion are equivalent)”
+
+**Sources:**
+
+- [Cheeger, Analytic Torsion and the Heat Equation (1979)](https://doi.org/10.2307/1971113)
 
 ### Zeta regularization defines the determinant of a Laplacian
 
@@ -108647,6 +112347,27 @@ a parallelogram.”
 
 - [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420)
 
+### Charge characters exclude fractional monopoles
+
+**Remember:** The zero boundary has phase zero modulo integers.
+
+*Rules out counterexamples.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Away from a magnetic source, a degree-two differential character assigns an additive phase in ℝ/ℤ to each smooth integral one-cycle. On a boundary, the phase equals the integral of the normalized magnetic field over the spanning chain, modulo integers.
+
+**Problem.** A magnetic field described by such a character has integer flux through every closed oriented surface. A monopole with normalized flux ½ through its surrounding sphere therefore admits no character.
+
+**How the definition helps.** In our own derivation, a closed surface has zero boundary, whose phase must be zero. Half the area form on a sphere of area one gives our own excluded example. The comparison theorem identifies these characters with circle bundles with connection.
+
+**nLab:** [Dirac charge quantization](https://ncatlab.org/nlab/show/Dirac+charge+quantization). It says: “the electromagnetic field must be a connection on a principal U(1) bundle whose first Chern class is the discrete measure for the units of magnetic charge.”
+
+**Wikipedia:** [Magnetic monopole](https://en.wikipedia.org/wiki/Magnetic_monopole). It says: “The total magnetic flux is none other than the first Chern number of the principal bundle, and depends only upon the choice of the principal bundle, and not the specific connection over it.”
+
+**Sources:**
+
+- [Daniel S. Freed, Dirac charge quantization and generalized differential cohomology](https://doi.org/10.4310/sdg.2002.v7.n1.a6)
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+
 ### The covariant derivative commutator gives gauge-covariant field strength
 
 **Remember:** Conjugating two derivatives also conjugates their commutator.
@@ -108878,6 +112599,24 @@ a parallelogram.”
 **Sources:**
 
 - [Edward Witten, Quantum field theory and the Jones polynomial (1989)](https://doi.org/10.1007/BF01217730)
+
+### Surface integration gives Chern–Simons curvature
+
+**Remember:** Integrate the universal curvature to get the curvature of the line.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Start with a compact, simply connected simple gauge group and an invariant inner product at integral level. This normalization gives a degree-four differential class, which assigns phases to three-cycles. Integrating the universal class over a closed oriented surface gives the Chern–Simons line with connection on the space of surface connections.
+
+**Problem.** The normalized curvature of the Chern–Simons line is the symplectic form on the space of surface connections. On two variations it integrates their wedge product paired by the chosen inner product, with the level normalization.
+
+**How the definition helps.** Surface integration turns the universal curvature polynomial into a two-form on variations of the connection. In our own derivation, the curvature formula for integration gives the wedge pairing, which is closed and nondegenerate. Identifying the integrated class with the line defined by the action takes a separate comparison.
+
+**Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062v1). It says: “the Chern-Simons action defines a unitary connection B on the Hermitian line bundle ℒQ → 𝒜Q”
+
+**Sources:**
+
+- [Daniel S. Freed, Classical Chern–Simons theory, 1](https://doi.org/10.1006/aima.1995.1039)
 
 ### Unitary conjugation preserves spectral actions
 
@@ -109492,6 +113231,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Thierry Lévy, Yang-Mills measure on compact surfaces](https://doi.org/10.1090/memo/0790)
+
+### Torsion flux operators need not commute
+
+**Remember:** Flat flux can still have a nontrivial commutator.
+
+*Makes the theorem clean to state or prove.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A self-dual two-form field has field strength equal to its dual. On a closed oriented spatial five-manifold, its flux shifts belong to degree-three differential cohomology, which records surface phases and curvature. Heisenberg quantization represents shifts by operators whose commutator on odd-order flat fields is their exponentiated integrated cup product.
+
+**Problem.** On the product of the lens space L(3,1) and the two-torus, two flat flux shifts have commutator exp(±2πi/3).
+
+**How the definition helps.** The operator law retains the linking of finite-order classes that have zero curvature. In our own example, multiply the degree-two lens-space generator by each of the two degree-one circle generators. The resulting pairing multiplies the lens-space linking number ±⅓ by the torus intersection number one. The physical input is the Heisenberg quantization law.
+
+**nLab:** [uncertainty of fluxes](https://ncatlab.org/nlab/show/uncertainty+of+fluxes). It says: “this bracket becomes non-vanishing if torsion-components of the fluxes (through their enhancement to ordinary differential cohomology) are retained”
+
+**Sources:**
+
+- [Daniel S. Freed, Gregory W. Moore and Graeme Segal, Heisenberg groups and noncommutative fluxes](https://doi.org/10.1016/j.aop.2006.07.014)
 
 ### Action exponentials transport master equations
 
@@ -110226,6 +113983,62 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Romeo Brunetti, Klaus Fredenhagen and Rainer Verch, The Generally Covariant Locality Principle (2003)](https://doi.org/10.1007/s00220-003-0815-7)
 
+### Boundary trivializations give open surface phases
+
+**Remember:** The boundary trivialization turns a surface holonomy line into a phase.
+
+*True by definition. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 81T40. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A relative Wess–Zumino field is a gerbe with connection on a target and a chosen trivialization on the allowed boundary submanifold. The gerbe gives a curvature three-form H, and the trivialization gives a two-form B with dB equal to the restriction of H.
+
+**Problem.** Each compact oriented surface map whose boundary lies in the chosen submanifold has a scalar phase. On relative boundaries the phase in ℝ/ℤ integrates H over the filling and subtracts the integral of B over its cap.
+
+**How the definition helps.** The chosen trivialization evaluates the boundary line, turning the surface amplitude into a number. In our own derivation, the relative boundary of a filling C with cap D has surface chain ∂C − D and edge ∂D. Relative Stokes gives the two integrals with opposite signs. Constructing surface transport with its boundary line supplies the geometric input.
+
+**nLab:** [Wess-Zumino-Witten model](https://ncatlab.org/nlab/show/Wess-Zumino-Witten+model). It says: “their existence corresponds to a trivialization of the underlying BU(1)-principal 2-bundle (U(1)-bundle gerbe) of the restriction of the B-field to the brane.”
+
+**Sources:**
+
+- [Krzysztof Gawędzki and Nuno Reis, WZW branes and gerbes](https://doi.org/10.1142/s0129055x02001557)
+- [Severin Bunk and Konrad Waldorf, Smooth functorial field theories from B-fields and D-branes](https://doi.org/10.1007/s40062-020-00272-2)
+
+### Characters replace global brane potentials
+
+**Remember:** A character assigns the brane its phase directly.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th, math.KT. Level 4: research.
+
+**Definition.** A twisted differential K-character assigns a value modulo integers to each compatible geometric K-cycle, which represents a brane with orientation and coefficient data. Its boundary rule equates the value on a boundary with an integral of curvature data modulo integers.
+
+**Problem.** In the twisted K-character model on compact simply connected spacetime, a Ramond–Ramond field assigns a Wess–Zumino phase to every compatible brane cycle. This phase exists even for a field with nonzero topological class.
+
+**How the definition helps.** The character evaluates the field directly on the cycle, so no global potential is required (our own). Exponentiating its value times 2πi gives the phase (our own). The substantial theorem identifies the character model with twisted differential K-theory (our own).
+
+**nLab:** [twisted differential K-theory](https://ncatlab.org/nlab/show/twisted+differential+K-theory). It says: “the differential aspect captures the higher gauge field called the RR-field”
+
+**Sources:**
+
+- [Fabio Ferrari Ruffino and Juan Carlos Rocha Barriga, Twisted differential K-characters and D-branes (2020)](https://doi.org/10.1016/j.nuclphysb.2020.115169)
+
+### Cup products detect circle duals
+
+**Remember:** The obstruction is the integral cup product, not its differential refinement.
+
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th. Level 4: research.
+
+**Definition.** A differential circle T-duality pair consists of two principal circle bundles with connection over one smooth manifold and a choice of geometric trivialization. This choice represents their differential cup product, the cohomology product that includes connection data, by a global three-form.
+
+**Problem.** Two circle bundles with fixed connections admit a differential T-duality pair exactly when their first Chern classes have zero integral cup product.
+
+**How the definition helps.** Allowing a global three-form leaves only the integral obstruction (our own). Exactness of differential cohomology says precisely which products come from such forms (our own). Comparing this description with the one using geometric data on both bundles requires a separate equivalence theorem (our own).
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “such that the underlying topological class of the cup product (P, θ) ∪ (P̂, θ̂) is trivial;”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-duality and Differential K-Theory (2014), §2](https://doi.org/10.1142/S0219199713500144)
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
 ### Even self-dual lattices ensure modularity
 
 **Remember:** Even norms remove shift phases, and self-duality closes the Fourier transform.
@@ -110243,6 +114056,42 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Non-Chiral Vertex Operator Algebra Associated To Lorentzian Lattices And Narain CFTs](https://arxiv.org/abs/2312.16296v2)
+
+### Gerbe isomorphisms relate dual fluxes
+
+**Remember:** An isomorphism with a curving shift gives a flux difference by differentiation.
+
+*True by definition. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th. Level 4: research.
+
+**Definition.** A geometric T-duality correspondence matches two torus bundles on their fiber product. It identifies their gerbes, geometric objects with three-form curvature, after shifting the second by a two-form ρ built from the connections.
+
+**Problem.** On the fiber product, the first pulled-back curvature minus the second equals the exterior derivative dρ.
+
+**How the definition helps.** Taking curvature turns the shift by ρ into addition of dρ (our own). The gerbe isomorphism therefore gives the flux equation directly, where a description by local fields requires checking their transformation rules (our own). Constructing that isomorphism from the local rules is the separate step (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “is a T-duality correspondence with H-flux.”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
+### Gerbe shifts parametrize circle duals
+
+**Remember:** Gerbes shift the choice, and circle automorphisms identify some shifts.
+
+*Makes the theorem clean to state or prove.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
+
+**Definition.** A differential circle T-duality pair chooses a geometric trivialization representing the product of two circle bundles with connection by a three-form. Connection-preserving symmetries of the bundles identify equivalent choices.
+
+**Problem.** Fix two circle bundles with connection admitting a pair on a connected base, and write F and G for their curvatures. Degree-three differential cohomology acts transitively on equivalence classes of pairs, with kernel represented by aF + bG for real constants a and b.
+
+**How the definition helps.** Comparing two trivializations gives a degree-three differential class (our own). Bundle symmetries can identify distinct shifts of a trivialization (our own). Waldorf computes their image, giving exactly the stated kernel.
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “acts freely and transitively in the fibre over (ξ, ξ̂).”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
 
 ### Jump factors glue partition functions
 
@@ -110262,6 +114111,60 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Mathematical structures of non-perturbative topological string theory: from GW to DT invariants](https://arxiv.org/abs/2109.06878v2)
 
+### One trivialization matches twists
+
+**Remember:** Trivialize the cup product once to obtain two twists that agree together.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th, math.KT. Level 4: research.
+
+**Definition.** A differential T-duality pair chooses two bundles with connections whose torus structure groups are dual. It includes a geometric trivialization representing the differential cup product of their characteristic classes by a global three-form.
+
+**Problem.** One differential T-duality pair determines a gerbe, a geometric representative of a degree-three class, on each bundle. Their topological twists agree after pullback to the fiber product.
+
+**How the definition helps.** One trivialization gives both bundles a common reference for constructing their twists (our own). Each bundle acquires a section when pulled back to itself, giving a second trivialization for comparison (our own). Kahle and Valentino construct the twists and their identification by comparing these choices (our own).
+
+**nLab:** [T-Duality and Differential K-Theory](https://ncatlab.org/nlab/show/T-Duality+and+Differential+K-Theory). It says: “on P and on P̂, respectively, whose pullbacks to the fiber product P ×ₓ P̂ are equivalent there.”
+
+**Sources:**
+
+- [Alexander Kahle and Alessandro Valentino, T-duality and Differential K-Theory (2014), §2](https://doi.org/10.1142/S0219199713500144)
+
+### Orbifold points retain flat gerbes
+
+**Remember:** Group cochains survive on a point with symmetry.
+
+*Rules out counterexamples.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08, 57R18. arXiv hep-th. Level 4: research.
+
+**Definition.** An orbifold point with finite symmetry group G records sequences of group elements as successive symmetries of the point. The Deligne complex describes gerbes with connection using circle-valued functions on these sequences and differential forms.
+
+**Problem.** Gerbes with connection on this orbifold point are all flat. Their classes form H²(G,U(1)), the group of circle-valued two-cocycles modulo coboundaries.
+
+**How the definition helps.** The sequences form discrete spaces, so positive-degree forms vanish and only ordinary group cochains survive (our own). For two independent symmetries of order two, the cocycle ω((a,b),(c,d)) = (−1)ᵃᵈ gives a nontrivial class (our own). Its values on the two generators change when their order reverses, which a coboundary cannot do (our own).
+
+**nLab:** [discrete torsion](https://ncatlab.org/nlab/show/discrete+torsion). It says: “This gives a classification of discrete torsion in terms of the second group cohomology group H²(G,U(1)).”
+
+**Sources:**
+
+- [Ernesto Lupercio and Bernardo Uribe, An introduction to gerbes on orbifolds (2004), §§3–4](https://doi.org/10.5802/ambp.190)
+
+### Split metrics lift T-duality
+
+**Remember:** Keep the connections and choose reciprocal fiber metrics.
+
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
+
+**Definition.** An invariant metric on a principal torus bundle splits into a metric on the base and inner products along the fibers. A connection specifies the horizontal directions orthogonal to those fibers.
+
+**Problem.** Every differential T-duality correspondence between principal torus bundles admits invariant metrics that make it a geometric T-duality correspondence with the original connections.
+
+**How the definition helps.** The split description turns the metric conditions into a shared base metric and mutually dual fiber metrics (our own). Choosing these pieces preserves both given connections and the original matching of twists (our own). Passing from separate metric transformation equations to this construction uses the classification of invariant metrics (our own).
+
+**Paper or page:** [Geometric T-duality: Buscher rules in general topology](https://arxiv.org/abs/2207.11799). It says: “whose Kaluza-Klein connections are ω and ω̂, respectively, such that 𝒟 is a geometric T-duality correspondence”
+
+**Sources:**
+
+- [Konrad Waldorf, Geometric T-duality: Buscher rules in general topology](https://doi.org/10.1007/s00023-023-01295-0)
+
 ### Cutting curves proves fusion associativity
 
 **Remember:** Both sums count the rank of the same bundle.
@@ -110279,6 +114182,24 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Xu Gao, Jianqi Liu, Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1)
+
+### Equivariant gerbes permit global gauging
+
+**Remember:** Descent covers gauge fields on nontrivial bundles.
+
+*Makes the theorem clean to state or prove.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 81T50. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A gerbe with connection is a gauge field that assigns phases to closed oriented surfaces. An equivariant gerbe with connection extends this assignment to a target with a symmetry group, including compatible identifications under changes of gauge.
+
+**Problem.** On a closed oriented surface, an equivariant Wess–Zumino gerbe gives a gauge-invariant phase even for a nontrivial principal symmetry bundle. The field consists of a connection and a section of the bundle with the target as fiber.
+
+**How the definition helps.** In our own explanation, the equivariant data identify the local descriptions of the pulled-back gerbe under each change of gauge. Descent, the theorem that these compatible descriptions glue, gives a gerbe on the surface and hence a phase. Constructing the equivariant structure is a separate existence problem.
+
+**nLab:** [gauged WZW model](https://ncatlab.org/nlab/show/gauged+WZW+model). It says: “the action functional of the gauged WZW model is that obtained by refining this circle 2-bundle to the H-equivariant differential cohomology of G”
+
+**Sources:**
+
+- [Krzysztof Gawędzki, Rafał R. Suszek and Konrad Waldorf, Global gauge anomalies in two-dimensional bosonic sigma models](https://doi.org/10.1007/s00220-010-1162-0)
 
 ### Projectively flat blocks give actions
 
@@ -110315,6 +114236,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Fuchs, Runkel and Schweigert, TFT construction of RCFT correlators I: Partition functions](https://doi.org/10.1016/S0550-3213(02)00744-7)
+
+### Surface holonomy needs no filling
+
+**Remember:** Surface holonomy does not ask the surface to bound in the target.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A Wess–Zumino character assigns additive phases in ℝ/ℤ to all smooth two-cycles in the target. On a boundary, its phase equals the integral of a fixed curvature three-form over the spanning chain modulo integers.
+
+**Problem.** Every map from a closed oriented surface has a phase for a fixed Wess–Zumino character, including maps that admit no filling in the target.
+
+**How the definition helps.** Evaluation uses the image of a fundamental cycle of the surface. Changing that cycle adds a boundary within the surface, where every three-form vanishes. In our own example, the identity of the two-sphere cannot extend over an oriented filling because its fundamental class is nonzero. The comparison with the geometric surface phase uses the description by a gerbe, a gauge field that assigns phases to surfaces.
+
+**nLab:** [Wess-Zumino-Witten model](https://ncatlab.org/nlab/show/Wess-Zumino-Witten+model). It says: “this WZW term is the surface holonomy functional of a connection on a bundle gerbe”
+
+**Sources:**
+
+- [Krzysztof Gawędzki and Nuno Reis, WZW branes and gerbes](https://doi.org/10.1142/s0129055x02001557)
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
 
 ### Swapping points makes fusion commutative
 
@@ -110406,6 +114346,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
 
+### Chern–Simons characters replace global potentials
+
+**Remember:** The class evaluates even when no filling has been chosen.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** For a compact gauge group, a degree-four integral characteristic class assigns a topological invariant to each principal bundle. Its natural differential lift assigns phases to smooth three-cycles. On boundaries it integrates the corresponding polynomial in the connection curvature modulo integers.
+
+**Problem.** On any closed oriented three-manifold this lift defines a Chern–Simons phase, even for a nontrivial bundle. If the bundle and connection extend over an oriented filling, integrating the curvature polynomial there gives the same phase modulo integers.
+
+**How the definition helps.** In our own argument, evaluation on a fundamental cycle replaces the integral of a globally chosen gauge potential. Two fundamental cycles differ by a boundary within the three-manifold, where the curvature four-form vanishes. The boundary rule also gives the filling formula. Theorem 22 constructs the natural lift.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “if char: Ĥ∗(–; ℤ) → H∗(–; ℤ) denotes the characteristic class map, then char(č ∘ f) = c(P)”
+
+**Sources:**
+
+- [Arun Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings](https://doi.org/10.1090/conm/802/16079)
+- [Alan L. Carey, Stuart Johnson, Michael K. Murray, Danny Stevenson and Bai-Ling Wang, Bundle gerbes for Chern–Simons and Wess–Zumino–Witten theories](https://doi.org/10.1007/s00220-005-1376-8)
+
 ### Crosscap squares obstruct unoriented extensions
 
 **Remember:** Two crosscaps must equal the handle with one reversed circle.
@@ -110424,6 +114383,25 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
 
+### Cup products polarize abelian Chern–Simons
+
+**Remember:** The mixed term comes from the two cross products.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A circle bundle with connection defines a degree-two differential class x recording its flux and loop phases. On a closed oriented three-manifold, the level-two abelian Chern–Simons action S(x) integrates the cup square x ∪ x modulo integers. The cup product multiplies differential classes.
+
+**Problem.** For fields x and y, S(x+y) − S(x) − S(y) equals twice the integral of x ∪ y modulo integers.
+
+**How the definition helps.** Writing the action as a square makes its two mixed terms equal by bilinearity and symmetry in even degree. In our own comparison, the global formula ∫ A ∧ dA covers only a chosen global potential A. The differential product extends that formula to nontrivial bundles.
+
+**nLab:** [higher dimensional Chern-Simons theory](https://ncatlab.org/nlab/show/higher+dimensional+Chern-Simons+theory). It says: “the above action functional may be regarded as a quadratic form on the cohomology group”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
 ### Dual lines glue Chern–Simons actions
 
 **Remember:** Opposite sides of a cut supply dual lines.
@@ -110441,6 +114419,43 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Daniel S. Freed, Classical Chern-Simons Theory, 1](https://doi.org/10.1006/aima.1995.1039)
+
+### Flat Chern–Simons detects torsion linking
+
+**Remember:** Zero curvature does not erase torsion linking.
+
+*True by definition. Confidence: medium.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A flat circle connection has zero curvature but can give a phase around a loop. On a closed oriented three-manifold, the mixed abelian Chern–Simons action integrates the differential cup product of two such fields modulo integers.
+
+**Problem.** The mixed action equals the torsion linking pairing of the two first Chern classes, the finite-order integral classes of the bundles.
+
+**How the definition helps.** The flat product formula replaces the differential product by an ordinary cup product. In our own derivation, take the loop-phase class of the first field and cup it with the second Chern class. Its integral is the linking pairing, using the sign convention in which the connecting map sends loop phases to Chern classes. A different lift changes the first factor by a real class, whose product with torsion vanishes.
+
+**nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “information beyond the curvature characteristic form which represents the underlying characteristic class in de Rham cohomology”
+
+**Sources:**
+
+- [Jeff Cheeger and James Simons, Differential characters and geometric invariants](https://doi.org/10.1007/bfb0075216)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
+### Spin fillings allow odd Chern–Simons levels
+
+**Remember:** On a spin four-manifold, every integral square evaluates to an even integer.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A spin filling extends the boundary spin structure, a lift of the oriented frame bundle, over a compact oriented four-manifold. Extend the boundary line bundle and connection too. At integer level k the action integrates kF ∧ F/2 modulo integers, where F is curvature normalized to represent the first Chern class.
+
+**Problem.** For a closed spin three-manifold with a circle connection, this action exists and is independent of the spin filling. Allowing arbitrary oriented fillings destroys independence at odd levels.
+
+**How the definition helps.** Gluing two spin fillings gives a closed spin four-manifold, where the Wu formula makes every integral degree-two square even. The quoted bordism calculation guarantees a filling carrying the line bundle. In our own counterexample, adjoining the complex projective plane with its generator line changes the action by k/2.
+
+**nLab:** [abelian Chern-Simons theory](https://ncatlab.org/nlab/show/abelian+Chern-Simons+theory). It says: “the cobordism ring for spin manifolds equipped with complex line bundles is trivial in degree 3”
+
+**Sources:**
+
+- [Robbert Dijkgraaf and Edward Witten, Topological gauge theories and group cohomology, section 5](https://doi.org/10.1007/BF02096988)
 
 ### Spin-statistics for topological field theories follows from a sign-twisted duality structure
 
@@ -110496,6 +114511,81 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Zhu, The Hermitian axiom on two-dimensional topological quantum field theories](https://doi.org/10.1063/5.0121440)
 
+### Wu lifts repair half-squares
+
+**Remember:** Subtract the characteristic product before dividing by two.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** On a closed oriented eight-manifold, a characteristic lift λ is an integral class reducing modulo two to the fourth Wu class. That class measures parity of squares by the rule ∫ x² ≡ ∫ x ∪ λ modulo two for every integral degree-four class x.
+
+**Problem.** For the seven-dimensional abelian Chern–Simons action, integrating (x² − x ∪ λ)/2 gives the same value modulo integers on compatible fillings. The fillings must glue to a closed oriented eight-manifold carrying the indicated classes and characteristic lift.
+
+**How the definition helps.** The Wu identity makes the difference of the two corrected integrals an integer. In our own example, a generator on the quaternionic projective plane squares to one, so the uncorrected half-square changes by a half. Constructing an action for fields without chosen fillings takes a separate theorem.
+
+**nLab:** [higher dimensional Chern-Simons theory](https://ncatlab.org/nlab/show/higher+dimensional+Chern-Simons+theory). It says: “the degree-4 Wu class (for k = 1) is refined by the first fractional Pontryagin class”
+
+**Sources:**
+
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+- [Samuel Monnier, Topological field theories on manifolds with Wu structures](https://doi.org/10.1142/s0129055x17500155)
+
+### Differential lifts give the Green–Schwarz identity
+
+**Remember:** The three-form of the lift differentiates to the characteristic difference.
+
+*True by definition.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A twisted differential string structure identifies two descriptions of a degree-four gauge field. One takes the difference of the spin and gauge characteristic classes with connection. The other comes from a global three-form H and has curvature dH.
+
+**Problem.** For the heterotic string twist ½p₁ − c₂, the lift gives dH = ½p₁(∇) − c₂(A). The right side uses the normalized Pontryagin and Chern forms of the spin and gauge connections.
+
+**How the definition helps.** The identification forces both descriptions to have the same curvature. In our own comparison, this recovers the Green–Schwarz differential equation from a lift that also records integral topology. Constructing the characteristic classes with connection takes separate work.
+
+**Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “induces a form H ∈ Ω³(U) such that H and Θ satisfy the twisted Bianchi identity”
+
+**Sources:**
+
+- [Arun Debray, Bordism for the 2-group symmetries of the heterotic and CHL strings](https://doi.org/10.1090/conm/802/16079)
+- [Hisham Sati, Urs Schreiber and Jim Stasheff, Twisted differential String and Fivebrane structures](https://doi.org/10.1007/s00220-012-1510-3)
+
+### Flat anomaly lines can change sign
+
+**Remember:** Zero local anomaly does not force trivial transport.
+
+*Makes the theorem clean to state or prove.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** The fermion Pfaffian line is the real line in which a fermion amplitude takes its value. Its connection transports the amplitude along paths of gauge fields and can record a sign around a loop.
+
+**Problem.** For one four-dimensional Weyl fermion in the defining SU(2) representation, the flat Pfaffian line has transport −1 around a gauge loop on the four-sphere. The loop closes by a gauge transformation in the nonidentity component.
+
+**How the definition helps.** The line makes a global sign measurable by transport even when the local anomaly vanishes. In our own explanation, the two gauge components correspond to the two homotopy classes of maps from the four-sphere to SU(2). Witten computes the sign from the parity of the spectral crossings along the path.
+
+**Wikipedia:** [Anomaly (physics)](https://en.wikipedia.org/wiki/Anomaly_%28physics%29). It says: “the actions of gauge symmetries in the identity component and the disconnected component of the gauge group on a physical state differ by a sign.”
+
+**Sources:**
+
+- [Edward Witten, An SU(2) anomaly](https://doi.org/10.1016/0370-2693(82)90728-6)
+- [Xianzhe Dai and Daniel S. Freed, Eta-invariants and determinant lines](https://doi.org/10.1063/1.530747)
+
+### Integral trivializations catch hidden Green–Schwarz obstructions
+
+**Remember:** Exact curvature does not kill torsion.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** A geometric Green–Schwarz trivialization describes the difference between the spin and gauge characteristic fields by a single global three-form. That description retains the connection but has zero integral characteristic class.
+
+**Problem.** A nonzero finite-order class ½p₁ − c₂ obstructs a Green–Schwarz trivialization even when its curvature form is exact.
+
+**How the definition helps.** A global three-form cannot represent a field with nonzero integral class. In our own example, take the product of the lens space L(3,1) and the sphere S², whose degree-two generators are a and b. A line with first Chern class a+b and its inverse have direct sum with second Chern class −2ab, nonzero of order three. The tangent bundle is stably trivial, so its spin class vanishes and the difference survives only integrally.
+
+**nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “as the homotopy fiber of the difference of differential cocycles”
+
+**Sources:**
+
+- [Hisham Sati, Urs Schreiber and Jim Stasheff, Twisted differential String and Fivebrane structures](https://doi.org/10.1007/s00220-012-1510-3)
+
 ### One generator tests global anomalies
 
 **Remember:** A character of a cyclic bordism group is fixed by one value.
@@ -110513,6 +114603,43 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 **Sources:**
 
 - [Arun Debray and Matthew Yu, What Bordism-Theoretic Anomaly Cancellation Can Do for U (2024)](https://link.springer.com/article/10.1007/s00220-024-04937-4)
+
+### Shifted flux allows half periods
+
+**Remember:** Shift first, then test whether the periods are integers.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory), 81T30. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** In M-theory, write G for the normalized four-form measuring the C-field flux on spin spacetime. A shifted flux class requires \[G\] + λ/2 to come from integral cohomology, where λ = p₁/2 is the integral spin characteristic class.
+
+**Problem.** On every closed four-cycle, the C-field flux is integral when λ evaluates evenly and half-integral when it evaluates oddly.
+
+**How the definition helps.** Testing integrality after the shift fixes the fractional part on each cycle. In our own example, λ evaluates to ±1 on the quaternionic projective line inside the quaternionic projective plane. The product of the projective plane with the three-sphere therefore requires half-integral flux through that line. Witten derives the shift by requiring cancellation of the membrane anomaly.
+
+**nLab:** [shifted C-field flux quantization](https://ncatlab.org/nlab/show/shifted+C-field+flux+quantization). It says: “becomes integral after shifted by one quarter of the first Pontryagin class”
+
+**Sources:**
+
+- [Edward Witten, On flux quantization in M-theory and the effective action](https://doi.org/10.1016/s0393-0440(96)00042-3)
+- [Michael J. Hopkins and Isadore M. Singer, Quadratic functions in geometry, topology, and M-theory](https://doi.org/10.4310/jdg/1143642908)
+
+### Twisted spin lifts test brane anomalies
+
+**Remember:** For a single brane, the two degree three twists must match.
+
+*Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** On an oriented brane, the manifold where an open string ends, W₃ measures the obstruction to defining complex spinors. A twisted spin-c structure identifies the surface gauge field carrying this obstruction with the one induced by the background B-field.
+
+**Problem.** A single boundary gauge line passes the topological Freed–Witten anomaly test exactly when W₃ plus the restricted integral B-field class vanishes.
+
+**How the definition helps.** The two surface gauge fields admit a topological identification exactly when their degree-three integral classes agree. Since 2W₃ = 0, equality is equivalent to cancellation. In our own example, the Wu manifold SU(3)/SO(3) has nonzero W₃ and fails the test with zero B-field. Freed and Witten identify this obstruction with the open-string anomaly.
+
+**nLab:** [twisted spinᶜ structure](https://ncatlab.org/nlab/show/twisted+spin%E1%B6%9C+structure). It says: “Twisted spinᶜ-structures appear similarly as the conditions for the analogous quantum anomaly cancellation, but now of the open type II superstring ending on a D-brane.”
+
+**Sources:**
+
+- [Daniel S. Freed and Edward Witten, Anomalies in string theory with D-branes](https://doi.org/10.4310/ajm.1999.v3.n4.a6)
 
 ### Boundary obstructions live in degree two
 
