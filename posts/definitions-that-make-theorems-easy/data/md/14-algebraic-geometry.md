@@ -1361,6 +1361,57 @@
 - [Jean-Pierre Serre, Un théorème de dualité, Commentarii Mathematici Helvetici 29 (1955) 9–26](https://doi.org/10.1007/BF02564268)
 - [Robin Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20 (1966)](https://doi.org/10.1007/BFb0080482)
 
+### Coordinate crossings allow small poles
+
+**Remember:** Independent coordinates let each pole face its own integrability test.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A divisor has simple normal crossings when its components through each point are smooth and become distinct coordinate hyperplanes in suitable local coordinates. For positive coefficients aⱼ, form the product of the factors \|zⱼ\| raised to −2aⱼ. The multiplier ideal tests local integrability of \|f\|² times this product.
+
+**Problem.** A divisor with simple normal crossings has the whole local function ring as its multiplier ideal everywhere exactly when every coefficient is below one.
+
+**How the definition helps.** Coordinate hyperplanes separate the integral of the constant function into one-variable factors, each finite precisely below one. Our own counterexample uses three lines through the origin in the complex plane of dimension two, each with coefficient ¾. Blowing up the origin produces order 9/4 in the weighted divisor and order one in the Jacobian. The resulting one-variable integral diverges.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “measures singularities coming from the fractional parts of D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrability computes resolved multiplier ideals
+
+**Remember:** The change of volume supplies the relative canonical divisor.
+
+*True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For a nonzero ideal generated locally by g₁,…,gₘ, its multiplier ideal at c &gt; 0 tests a holomorphic function f by integration. It requires \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ to have finite integral near each point.
+
+**Problem.** On a smooth complex variety, resolve the ideal so its pullback has coordinate factors with orders mⱼ. Membership requires ordⱼ(f∘π) + kⱼ ≥ ⌊cmⱼ⌋ along every such divisor, where kⱼ is the vanishing order of the resolution Jacobian.
+
+**How the definition helps.** The integral definition turns the divisor formula into separate tests in one complex variable. In our own calculation, changing variables adds the squared Jacobian to the numerator. Each radial integral converges exactly when its exponent exceeds −1, giving the stated integer bound. Constructing the resolution is the deep step.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “where the fᵢ are a finite set of local generators of the ideal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplier ideals extend off hypersurfaces
+
+**Remember:** The multiplier condition is exactly the norm condition for extension.
+
+*True by definition.* MSC 14F18 (Multiplier ideals), 32U05. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A plurisubharmonic weight φ is an upper semicontinuous function that is subharmonic on complex lines in local coordinates. Its multiplier ideal 𝒥(φ) consists of local holomorphic functions f with \|f\|² exp(−2φ) locally integrable.
+
+**Problem.** On a smooth hypersurface Y where the restricted weight is not identically minus infinity on any component, every multiplier ideal germ extends locally. Its extension belongs to the multiplier ideal on the ambient complex manifold.
+
+**How the definition helps.** The integral definition gives exactly the hypothesis and conclusion of the weighted holomorphic extension theorem. In our own explanation, a definition using vanishing orders would require comparing resolutions on two different spaces. The Ohsawa–Takegoshi theorem supplies the extension with finite integral.
+
+**Paper or page:** [Analyticity theorems for parameter-dependent plurisubharmonic functions](https://arxiv.org/abs/2405.07786v1). It says: “\\mathcal{I} (\\varphi \|<sub>Y</sub>) \\subset \\mathcal{I} (\\varphi ) \|<sub>Y</sub> .”
+
+**Sources:**
+
+- [T. Ohsawa and K. Takegoshi, On the extension of L² holomorphic functions (1987)](https://doi.org/10.1007/BF01166457)
+- [J.-P. Demailly, L. Ein and R. Lazarsfeld, A subadditivity property of multiplier ideals (2000)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/subaddmult.pdf)
+
 ### Compact direct images sum traces
 
 **Remember:** Push a trace function forward by summing it over each fiber.
@@ -4057,6 +4108,60 @@ $$”
 **Sources:**
 
 - [Andrew Nadel, Multiplier ideal sheaves and existence of Kähler–Einstein metrics of positive scalar curvature (1989)](https://doi.org/10.1073/pnas.86.19.7299)
+
+### Diagonal restriction gives multiplier subadditivity
+
+**Remember:** Separate the weights before you restrict to the diagonal.
+
+*Makes the theorem clean to state or prove.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A plurisubharmonic weight is upper semicontinuous and subharmonic along complex lines in local coordinates. Its multiplier ideal 𝒥(φ) collects local holomorphic functions f for which \|f\|² exp(−2φ) is locally integrable.
+
+**Problem.** For two such weights on a complex manifold, 𝒥(φ+ψ) is contained in the product ideal 𝒥(φ)𝒥(ψ).
+
+**How the definition helps.** The ideals express a relation between three integrability tests as one inclusion. Our own summary puts the two weights on separate factors of a product space. The product formula separates the two ideals there. The restriction theorem on the diagonal gives the inclusion because the two weights add there.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “is locally integrable, where the fᵢ are a finite set of local generators of the ideal.”
+
+**Sources:**
+
+- [J.-P. Demailly, L. Ein and R. Lazarsfeld, A subadditivity property of multiplier ideals (2000)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/subaddmult.pdf)
+
+### Generic slices preserve multiplier ideals
+
+**Remember:** One inclusion comes from slicing and the other from extension.
+
+*Makes the theorem clean to state or prove.* MSC 14F18 (Multiplier ideals), 32U05. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A weight φ is locally a sum of a smooth function and an upper semicontinuous function subharmonic on complex lines. Its multiplier ideal consists of germs f with \|f\|² exp(−2φ) locally integrable. A base-point-free linear system is a projective family of divisors with no common point.
+
+**Problem.** On a smooth complex projective variety of positive dimension, restricting the multiplier ideal to a general member gives the ideal of the restricted weight. Exceptional members form at most a pluripolar set, locally contained where a nontrivial plurisubharmonic function equals minus infinity.
+
+**How the definition helps.** The two ideals distinguish restricting integrable functions from testing integrability after restriction. In our own summary, Fubini’s theorem restricts local generators for almost every member, while weighted extension gives the reverse inclusion. Xia’s analytic Bertini theorem supplies the stronger pluripolar bound.
+
+**Paper or page:** [Analytic Bertini theorem](https://arxiv.org/abs/2110.14971v2). It says: “Then there is a pluripolar subset Σ ⊆ Λ”
+
+**Sources:**
+
+- [Mingchen Xia, Analytic Bertini theorem](https://arxiv.org/abs/2110.14971v2)
+
+### Newton polyhedra compute multiplier ideals
+
+**Remember:** Volume adds one to each exponent before the interior test.
+
+*True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Newton polyhedron P of a nonzero monomial ideal is the convex hull of all its monomial exponents. For generators gⱼ, its multiplier ideal at c &gt; 0 consists of holomorphic germs f with \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ locally integrable.
+
+**Problem.** For a monomial ideal in complex affine space, its multiplier ideal at c is generated by monomials xᵛ with v+(1,…,1) inside cP. Here “inside” excludes the boundary.
+
+**How the definition helps.** The integral definition replaces a resolution of singularities with an exponential decay test in logarithmic coordinates. In our own calculation, the volume element shifts each exponent by one. Convergence requires strict decay along every nonzero ray in the nonnegative orthant, exactly the interior condition. Orthogonality under coordinate rotations reduces the test to individual monomials.
+
+**Paper or page:** [Multiplicities of Jumping Numbers](https://arxiv.org/abs/2102.07080v3). It says: “denotes the interior of the scaled Newton polyhedron P(c·𝔞).”
+
+**Sources:**
+
+- [J. A. Howald, Multiplier ideals of monomial ideals (2001)](https://doi.org/10.1090/S0002-9947-01-02720-9)
 
 ### A tameness condition removes the properness hypothesis for unramified cohomology
 

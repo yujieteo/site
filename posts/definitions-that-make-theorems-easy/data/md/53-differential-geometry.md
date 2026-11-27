@@ -2322,6 +2322,42 @@
 
 - [Michael Dütsch, Deformation quantization of the free theory, chapter 2 of From Classical Field Theory to Perturbative Quantum Field Theory, Progress in Mathematical Physics 74, Birkhäuser (2019) 45–69](https://doi.org/10.1007/978-3-030-04738-2_2)
 
+### Weierstrass data make symmetry an integral test
+
+**Remember:** Match the derivative everywhere and the position at one point.
+
+*Makes the theorem clean to state or prove.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 58E12. arXiv math.DG. Level 4: research.
+
+**Definition.** Consider a finite group acting holomorphically on a connected open complex curve and orthogonally on Euclidean space. Weierstrass data form a nowhere-zero vector of holomorphic differentials whose squares sum to zero and whose real integrals vanish around loops. The data respect the actions when pulling them back by each group element gives its orthogonal transformation of the vector.
+
+**Problem.** Integrating the real parts gives a conformal minimal immersion F. For data respecting the actions, equality F(gx) = gF(x) everywhere reduces to testing every group element g at one chosen point x.
+
+**How the definition helps.** The symmetry of the data gives the two sides equal derivatives everywhere (our own explanation). On a connected surface their difference is constant, so equality at the chosen point decides equality everywhere. The Weierstrass representation supplies the immersion.
+
+**Paper or page:** [Minimal surfaces with symmetries](https://arxiv.org/abs/2308.12637v5). It says: “is G-equivariant if and only if the map f : X → Y is G-equivariant and”
+
+**Sources:**
+
+- [Franc Forstnerič, Minimal surfaces with symmetries](https://arxiv.org/abs/2308.12637v5)
+
+### Holonomy determines connection symmetries
+
+**Remember:** One fiber value extends exactly when it commutes with every loop.
+
+*True by definition.* MSC 53C05 (Connections (general theory)), 58D05. arXiv math.DG. Level 4: research.
+
+**Definition.** A connection specifies parallel transport, a rule for moving points of a bundle fiber along a path. Its holonomy group consists of transports around loops at one base point. A gauge symmetry preserves the connection when it commutes with transport along every path.
+
+**Problem.** On a principal bundle over a connected manifold, restriction identifies the gauge symmetry group with the fiber automorphisms commuting with all holonomy. Fiber automorphisms here respect the structure group action.
+
+**How the definition helps.** The transport description determines a symmetry everywhere from its value on one fiber. In our own proof, transport that value along any path to the desired fiber. Commutation with loop transport makes the result independent of the path, and local smooth families of paths give smoothness. The description uses the equivalence between preserving horizontal tangent spaces and preserving their path transports.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “the centralizer of the holonomy of A at m ∈ M inside the automorphism group”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
+
 ### Thin homotopy makes parallel transport a functor on paths
 
 **Remember:** Paths that differ by sweeping no area give the same transport.

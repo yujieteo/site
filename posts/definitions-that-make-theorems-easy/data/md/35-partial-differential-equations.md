@@ -200,6 +200,42 @@
 
 - [Lars Hörmander, Fourier integral operators. I, Acta Mathematica 127 (1971) 79–183](https://doi.org/10.1007/BF02392052)
 
+### Wave fronts project to singular support
+
+**Remember:** No bad directions means no singular point.
+
+*Makes the theorem clean to state or prove.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The wave front set records singular frequency directions at each point of a distribution, a generalized function. A direction is regular if a smooth cutoff equal to one nearby gives faster-than-polynomial Fourier decay throughout a cone around it. The singular support consists of points with no smooth neighborhood.
+
+**Problem.** Forgetting the directions in the wave front set gives exactly the singular support.
+
+**How the definition helps.** The directional test recovers ordinary smoothness once every direction at a point passes. In our own argument, finitely many smaller cones cover the unit sphere, and a single smaller cutoff preserves decay on each. Fourier inversion then gives smoothness there. A smooth localization already has rapid decay in all directions.
+
+**nLab:** [wavefront set](https://ncatlab.org/nlab/show/wavefront+set). It says: “The projection of the wave front set down to the base space is the singular support of the distribution.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Wave fronts pull back as covectors
+
+**Remember:** Fourier directions pull back by the transpose derivative.
+
+*Makes the theorem clean to state or prove.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The wave front set records singular frequency directions of a distribution, a generalized function. Each direction is a covector, a linear functional on tangent vectors. A smooth change of coordinates pulls a covector back by composing it with the derivative.
+
+**Problem.** Under a smooth invertible change of coordinates with smooth inverse, the wave front set of a distribution pulls back exactly as its covectors do.
+
+**How the definition helps.** Recording covectors gives each singular direction a coordinate change rule. In our own explanation, the chain rule gives that rule for the phase in the Fourier integral. Integration by parts gives decay in the remaining directions. Applying the estimate to the inverse change gives equality.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(ψ\* u) = {(x, ᵗψ′\|ₓ η) ; (ψ(x), η) ∈ WF(u)}.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
 ### Principal symbols turn composition into multiplication
 
 **Remember:** Every derivative that hits a coefficient lowers the order on the input.
@@ -889,6 +925,40 @@
 
 - [Shiqi Ma, Lecture notes for pseudodifferential operators and microlocal analysis, arXiv:2107.12839v1 (2021)](https://arxiv.org/abs/2107.12839v1)
 
+### Symbol sums need no convergence
+
+**Remember:** Match each finite truncation and let the tail drop in order.
+
+*Makes the theorem clean to state or prove.* MSC 35S05 (Pseudodifferential operators as generalizations of partial differential operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A symbol of order m weights frequencies with growth bounded by order m, with stronger bounds after frequency differentiation. An asymptotic sum matches each finite sum up to an error of the first omitted order.
+
+**Problem.** Every sequence of standard symbols with orders strictly decreasing to minus infinity has an asymptotic sum, unique up to an error of every negative order.
+
+**How the definition helps.** Matching finite sums allows each new term to change at bounded frequencies without affecting its prescribed order at infinity. In our own explanation, successively larger frequency cutoffs make the modified series converge in the required estimates. Two sums have the same finite approximations, so their difference satisfies every negative-order bound.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “there exists a symbol (not unique) a ∈ Sᵐ”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Weyl quantization makes adjoints conjugate symbols
+
+**Remember:** A midpoint stays put when input and output swap.
+
+*True by definition.* MSC 35S05 (Pseudodifferential operators as generalizations of partial differential operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A symbol gives the weight assigned to each frequency at each position. Weyl quantization uses the midpoint between input and output to choose that position. Left quantization uses the output position.
+
+**Problem.** For standard scalar symbols on Euclidean space, taking the formal adjoint in Weyl quantization conjugates the symbol.
+
+**How the definition helps.** In our own explanation, exchanging input and output leaves the midpoint fixed. Conjugation reverses the Fourier phase, and exchanging the positions reverses it again. The remaining step justifies the integral identity on smooth, rapidly decreasing test functions.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “(aʷ(x, hD)u, v) = (u, āʷ(x, hD) v).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Projection gives Calderón identities
 
 **Remember:** Take traces after reconstruction to get a projector.
@@ -904,6 +974,24 @@
 **Wikipedia:** [Calderón projector](https://en.wikipedia.org/wiki/Calder%C3%B3n_projector). It says: “As the Calderón operator is a projector”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Invertible mixed derivatives exclude unbounded traces
+
+**Remember:** A full-rank phase cannot collapse a coordinate into a trace.
+
+*Rules out counterexamples.* MSC 35S30 (Fourier integral operators applied to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a Fourier integral operator, the phase Φ specifies how the input frequencies oscillate at each output position. In the position-frequency representation, the graph condition requires the matrix of mixed position and frequency derivatives to be invertible.
+
+**Problem.** A real phase smooth away from zero and homogeneous of degree one defines a bounded operator on square-integrable functions under the graph condition. The amplitude must have standard order zero and compact position support, with the graph condition throughout its closed set of position and frequency directions.
+
+**How the definition helps.** The graph condition prevents the phase from losing an entire frequency direction. In our own example, the phase x₁ξ₁ in two dimensions gives restriction to the line x₂ = 0, even after an output cutoff. This restriction is unbounded in square mean. The positive result uses oscillatory estimates for composition with the adjoint.
+
+**Wikipedia:** [Fourier integral operator](https://en.wikipedia.org/wiki/Fourier_integral_operator). It says: “if a is of order zero, it is possible to show that T defines a bounded operator from L² to L².”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
 
 ### Causal support and adjoints force uniqueness
 

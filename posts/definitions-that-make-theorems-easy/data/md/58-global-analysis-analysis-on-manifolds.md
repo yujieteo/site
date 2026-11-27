@@ -269,6 +269,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Boundary Hodge spectra pair up
+
+**Remember:** The star swaps tangential and normal parts.
+
+*True by definition. Confidence: medium.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Absolute boundary conditions set the normal components of α and dα to zero. Relative boundary conditions set the tangential components of α and d⁎α to zero, where d⁎ is the formal adjoint.
+
+**Problem.** On a compact oriented Riemannian n-manifold with smooth boundary, absolute k-forms and relative (n − k)-forms have identical Laplacian spectra, including multiplicities.
+
+**How the definition helps.** The paired boundary conditions let the Hodge star identify the two eigenvalue problems directly. In our own argument, the star exchanges normal and tangential components and interchanges d and d⁎ up to signs. Boundary elliptic theory gives the operator domains on which the star intertwines the Laplacians.
+
+**Paper or page:** [Well-Posedness of the Hodge Wave Equation on a Compact Manifold](https://arxiv.org/abs/2502.01514v2). It says: “Moreover, we have the following relations between the spaces of weakly differentiable forms: ⋆(HΩᵏ(M)) = H⋆Ωⁿ⁻ᵏ(M)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining harmonic as closed and coclosed shows the Hodge star preserves it
 
 **Remember:** The Hodge star swaps the two first-order equations, up to signs.
@@ -314,6 +330,70 @@
 **How the definition helps.** The condition d\*ω = 0 says directly that ω is orthogonal to all exact forms (our own). All other representatives differ from ω by such a form, so Pythagoras gives the strict norm increase (our own). The Hodge theorem does the work of finding the harmonic representative (our own).
 
 **Wikipedia:** [Hodge theory](https://en.wikipedia.org/wiki/Hodge_theory). It says: “the harmonic representative is the unique closed form of minimum L² norm that represents a given cohomology class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic stars give the signature
+
+**Remember:** The star splits the pairing into plus and minus norms.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Hodge star ⋆ satisfies α ∧ ⋆β = ⟨α,β⟩ vol, where vol is the metric volume form. In middle degree on an oriented Riemannian 4m-manifold, self-dual and anti-self-dual forms satisfy ⋆α = α and ⋆α = −α, respectively.
+
+**Problem.** On a closed oriented Riemannian 4m-manifold, the intersection signature equals the dimension of self-dual harmonic forms minus the dimension of anti-self-dual harmonic forms.
+
+**How the definition helps.** The star gives the positive and negative spaces directly, avoiding diagonalization of the cohomology pairing. Our own calculation integrates α ∧ α on each space to obtain the squared norm with the corresponding sign. The Hodge theorem identifies harmonic forms with cohomology, where these two dimensions determine the signature.
+
+**nLab:** [Hodge star operator](https://ncatlab.org/nlab/show/Hodge+star+operator). It says: “α ∧ ⋆β = (α ∣ β) vol₍g₎”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrating heat gives Green operators
+
+**Remember:** Integrating heat replaces each positive eigenvalue by its reciprocal.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Green operator G divides each positive Hodge Laplacian mode by its eigenvalue and kills the zero modes. A mode is an eigenform. Heat evolution for time t multiplies a mode of eigenvalue λ by exp(−tλ).
+
+**Problem.** On a closed Riemannian manifold, the heat evolution of an L² form perpendicular to the zero modes integrates to its Green operator image. The integral runs over all positive times.
+
+**How the definition helps.** The spectral definition replaces inversion of a differential operator with integration of one exponential per mode. Our own calculation gives 1/λ for each positive eigenvalue. The spectral theorem supplies the eigenforms and a positive lower bound on positive eigenvalues, ensuring convergence in L².
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “G<sub>k</sub>(\\omega )=\\int \_0<sup>\\infty </sup>e<sup>-t\\Delta </sup>\\omega \~  dt”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product Hodge Laplacians add
+
+**Remember:** Opposite signs cancel all mixed derivatives.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On product forms, the graded product differential adds the two factor derivatives. The second derivative carries a sign (−1)ᵖ when the first factor has degree p.
+
+**Problem.** For closed Riemannian manifolds with the product metric, the Laplacian on forms is the sum of the two factor Laplacians.
+
+**How the definition helps.** The graded product rule replaces a coordinate calculation with cancellation of the mixed terms. Our own calculation uses the product metric to give the second adjoint the same sign. Differentiating in the first factor changes parity, so the mixed terms cancel when d + d⁎ is squared.
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “Δ = Δₓ + Δᵧ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced classes have harmonic representatives
+
+**Remember:** Close the exact forms before taking the quotient.
+
+*Rules out counterexamples.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Fix a closed exterior derivative d on square-integrable forms, with d² = 0. Reduced L² cohomology identifies closed forms whose difference is a norm limit of derivatives. A harmonic form is closed and orthogonal to all derivatives.
+
+**Problem.** Every reduced L² cohomology class contains exactly one harmonic form.
+
+**How the definition helps.** Taking the closure lets us project a closed form orthogonally off the derivatives. Our own example is the indicator of (0,1) times dx on the real line. Derivatives are dense there, but every primitive of this form has nonzero constant value on at least one infinite tail.
+
+**Paper or page:** [Geometric singularities and Hodge theory](https://arxiv.org/abs/2407.01170v3). It says: “We have that $\\ker (\\Gamma ) = \\ker (\\Pi ) \\oplus \\overline{\\mathrm{ran}(\\Gamma )}$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -365,6 +445,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Half-densities make pullbacks unitary
+
+**Remember:** Two half-Jacobians give the full change-of-variables factor.
+
+*True by definition.* MSC 58A32 (Natural bundles). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A half-density transforms under a coordinate change by the square root of the absolute Jacobian determinant. Its product with a conjugate half-density transforms as an ordinary density, which can be integrated without choosing a measure.
+
+**Problem.** A diffeomorphism gives a unitary pullback on square-integrable half-densities. The pullback by its inverse is the adjoint.
+
+**How the definition helps.** The two square roots in the inner product supply exactly the Jacobian for changing variables. In our own explanation, scalar functions would require a separately chosen measure to define that inner product. Change of variables proves norm preservation, and the inverse map gives surjectivity.
+
+**nLab:** [canonical Hilbert space of half-densities](https://ncatlab.org/nlab/show/canonical+Hilbert+space+of+half-densities). It says: “whose inner product is given by tensoring two half-densities to an actual density and then integrating that over X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Diffeological spaces make spaces of smooth maps smooth again
 
 **Remember:** Say which maps into X are smooth, and let the rest follow.
@@ -401,6 +497,42 @@
 **Sources:**
 
 - [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
+
+### Banach charts give unique local flows
+
+**Remember:** One complete norm lets Picard iteration control all directions.
+
+*Rules out counterexamples.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds). arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A Banach manifold uses charts in vector spaces with one complete norm. A Fréchet manifold allows a complete topology given by countably many seminorms, each of which can vanish on nonzero vectors.
+
+**Problem.** Every smooth vector field on a Banach manifold has a unique smooth local flow.
+
+**How the definition helps.** One complete norm lets Picard’s contraction argument turn local derivative bounds into existence and uniqueness of solutions. In our own counterexample, shift each real sequence one place to the left in the product topology. Choose a smooth function that vanishes with all derivatives at zero but is positive at every positive time. Its successive derivatives form a solution with the same initial value as the zero solution.
+
+**nLab:** [Fréchet manifold](https://ncatlab.org/nlab/show/Fr%C3%A9chet+manifold). It says: “The existence and uniqueness theorems for ordinary differential equations fail in infinite dimensions”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Strong metrics give smooth gradients
+
+**Remember:** A strong metric turns every differential into a tangent vector.
+
+*Rules out counterexamples.* MSC 58B20 (Riemannian, Finsler and other geometric structures on infinite-dimensional manifolds), 58B10. arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A Hilbert manifold has local coordinates in a Hilbert space. A strong Riemannian metric assigns smoothly varying inner products whose norms give the original topology on each tangent space. A weak metric allows a coarser topology.
+
+**Problem.** With a strong metric, every smooth real function has a unique smooth gradient. Its inner product with each tangent vector gives the derivative in that direction.
+
+**How the definition helps.** The strong inner product represents every continuous linear functional by a unique tangent vector, and the representation varies smoothly. Our own counterexample weights coordinate n in the usual inner product on square-summable sequences by 1/n. The continuous linear function with coefficients 1/n would then require a gradient with every entry one. That sequence is not square-summable.
+
+**Paper or page:** [On Mañé's Critical Value for Tonelli Lagrangians on Half Lie-Groups](https://arxiv.org/abs/2511.13428). It says: “is a bundle isomorphism.”
+
+**Sources:**
+
+- [On Mañé's Critical Value for Tonelli Lagrangians on Half Lie-Groups](https://arxiv.org/abs/2511.13428)
 
 ### Dirac commutators recover geodesic distance
 
@@ -529,6 +661,172 @@
 
 - [Juan Carlos Álvarez Paiva, answer to 'Why do I need densities in order to integrate on a non-orientable manifold?', MathOverflow (2012)](https://mathoverflow.net/questions/90455/) (link not checked)
 
+### Momentum classes conserve circulation
+
+**Remember:** Follow the loop and ignore exact changes in momentum.
+
+*True by definition. Confidence: medium.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The metric turns a fluid velocity into a one-form by taking its inner product with each tangent vector. The momentum class identifies two such one-forms if their difference is the differential of a function.
+
+**Problem.** For smooth incompressible Euler flow on a closed Riemannian manifold, pulling the momentum class back along the particle flow keeps it constant. Thus the integral of velocity around each moving closed loop stays constant.
+
+**How the definition helps.** Passing to the class removes the entire differential term in the moving fluid’s momentum equation. In our own derivation, Euler’s equation gives the time derivative of the pulled-back one-form as the differential of a function. The quotient makes this derivative zero, and differentials integrate to zero on closed loops.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “then we have the following conservation law:”
+
+**Sources:**
+
+- [Patrick Heslin, Two-Point Boundary Value Problems on Diffeomorphism Groups, Lemma 3.4](https://arxiv.org/abs/2110.12278)
+
+### Smooth curves make inversion smooth
+
+**Remember:** To invert a smooth family, solve a finite-dimensional equation with a parameter.
+
+*True by definition.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** In convenient calculus a map is smooth if it takes smooth curves to smooth curves. On the diffeomorphism group of a closed manifold, a curve of maps is smooth exactly when evaluation depends smoothly on time and position together.
+
+**Problem.** Inversion is smooth on the Fréchet manifold of smooth diffeomorphisms of a closed manifold.
+
+**How the definition helps.** The curve test replaces differentiation of the inversion operator by inversion of ordinary smooth families. The finite-dimensional implicit function theorem applied to f(t,y) = x gives smooth dependence of y on t and x. The mapping-space theorem identifying smooth curves with jointly smooth families supplies the remaining step.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “inversion maps smooth curves to smooth curves”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Mapping tangents are pointwise fields
+
+**Remember:** Vary each image point in its own tangent space.
+
+*True by definition.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A local addition sends short vectors based at y to nearby points and sends the zero vector to y. The base and resulting point together give smooth coordinates near the diagonal. Around a smooth map f, these coordinates describe nearby maps by smooth vector fields along f.
+
+**Problem.** For a closed manifold M and a finite-dimensional manifold N, the tangent bundle of the smooth mapping space identifies with smooth maps into TN. Here TN is the tangent bundle of N, and the fiber over f consists of smooth vector fields along f.
+
+**How the definition helps.** The local-addition chart already takes values in the space of vector fields along f, so its velocities lie in that space. In our own proof, evaluating a curve of maps at each point gives the intrinsic identification by differentiation in time. Chart compatibility and smooth dependence on the base map make this a smooth bundle isomorphism.
+
+**nLab:** [tangent spaces of mapping spaces](https://ncatlab.org/nlab/show/tangent+spaces+of+mapping+spaces). It says: “The claim of this page is that this is a diffeomorphism, and further a vector bundle isomorphism”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Category bounds critical point counts
+
+**Remember:** Each isolated critical point can account for one contractible set.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Lusternik–Schnirelmann category of a manifold is the least number of open sets covering it that can each contract to a point inside the manifold. Use infinity if no finite cover works.
+
+**Problem.** Suppose a bounded-below, twice continuously differentiable function on a complete Riemannian Hilbert manifold satisfies Palais–Smale compactness. It has at least as many critical points as the category of the manifold.
+
+**How the definition helps.** Each isolated critical point contributes at most one set to a cover by sets contractible in the manifold (our own). Palais–Smale compactness gives a convergent subsequence whenever values stay bounded and derivative norms approach zero (our own). The deformation theorem pulls covers across intervals without critical values and adds neighborhoods of critical points at each critical value (our own).
+
+**nLab:** [Lusternik-Schnirelmann category](https://ncatlab.org/nlab/show/Lusternik-Schnirelmann+category). It says: “A topological space X has Lusternik–Schnirelmann category ≤ n if there is an open cover of X by at most n sets for which the inclusion maps U ↪︎ X are nullhomotopic.”
+
+**Sources:**
+
+- [Mónica Clapp and Dieter Puppe, Invariants of the Lusternik-Schnirelmann type and the topology of critical sets (1986)](https://doi.org/10.1090/S0002-9947-1986-0860382-0)
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+
+### Compactness clears regular bands
+
+**Remember:** A regular band with compactness has no arbitrarily flat points.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Palais–Smale condition requires a convergent subsequence whenever function values stay bounded and derivative norms approach zero.
+
+**Problem.** Suppose a twice continuously differentiable Palais–Smale function on a complete Riemannian Hilbert manifold has no critical points with values in \[a,b\]. One can continuously deform {f ≤ b} onto {f ≤ a} while fixing {f ≤ a} throughout.
+
+**How the definition helps.** Compactness keeps the gradient norm uniformly positive in the band (our own). Otherwise a sequence with vanishing gradient norms would have a limit with zero gradient there (our own). Dividing the downward gradient by its squared norm gives bounded speed and lowers the value at unit rate until it reaches a (our own).
+
+**Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “In the calculus of variations, where one is typically interested in infinite-dimensional function spaces, the condition is necessary because some extra notion of compactness beyond simple boundedness is needed.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+- [Richard S. Palais and Stephen Smale, A generalized Morse theory (1964)](https://doi.org/10.1090/S0002-9904-1964-11062-4)
+
+### Compactness prevents mountain-pass escape
+
+**Remember:** A pass at infinity is not a critical point.
+
+*Rules out counterexamples.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A differentiable function f satisfies the Palais–Smale condition at height c if every sequence approaching stationarity there has a convergent subsequence. Approaching stationarity means the values approach c and the derivative norms approach zero.
+
+**Problem.** For a continuously differentiable Hilbert space function, let c be the infimum of maximum heights along continuous paths between two given points. If c exceeds both endpoint values, Palais–Smale compactness at c gives a point with value c and derivative zero.
+
+**How the definition helps.** Compactness gives a limit for points approaching stationarity at the pass height (our own). The mountain-pass deformation argument supplies these points by lowering paths wherever the derivative stays large (our own). For f(x,y) = (x²−1)² + exp(−y), paths from (−1,1) to (1,1) must cross x = 0 (our own). Crossing at increasing heights y gives pass value 1, yet the derivative in y never vanishes (our own).
+
+**Wikipedia:** [Mountain pass theorem](https://en.wikipedia.org/wiki/Mountain_pass_theorem). It says: “then the conclusion of the theorem is that c is a critical value of I.”
+
+**Sources:**
+
+- [Antonio Ambrosetti and Paul H. Rabinowitz, Dual variational methods in critical point theory and applications (1973)](https://doi.org/10.1016/0022-1236(73)90051-7)
+- [Richard S. Palais and Stephen Smale, A generalized Morse theory (1964)](https://doi.org/10.1090/S0002-9904-1964-11062-4)
+
+### Fixed directions suffice for criticality
+
+**Remember:** Average a direction before testing the derivative.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The fixed subspace of a group of linear symmetries contains exactly the vectors left unchanged by every group element. An invariant function takes the same value after applying any symmetry.
+
+**Problem.** Let a compact group act continuously and linearly on a Banach space and preserve a continuously differentiable function. A critical point of the function restricted to the fixed subspace is critical on the full space.
+
+**How the definition helps.** At a fixed point, averaging any direction over the group preserves its derivative and produces a direction in the fixed subspace (our own). Compactness supplies the invariant probability measure for this average (our own). At a restricted critical point the derivative vanishes on every averaged direction, hence on every original direction (our own).
+
+**Paper or page:** [Nonlocal problem with critical exponential nonlinearity of convolution type: A non-resonant case](https://arxiv.org/abs/2408.00654). It says: “If J : X → ℝ is an H-invariant, C¹ functional”
+
+**Sources:**
+
+- [Richard S. Palais, The principle of symmetric criticality (1979)](https://doi.org/10.1007/BF01941322)
+- [Suman Kanungo, Pawan Kumar Mishra, Nonlocal problem with critical exponential nonlinearity of convolution type: A non-resonant case](https://arxiv.org/abs/2408.00654)
+
+### Invertible Hessians give Morse coordinates
+
+**Remember:** No zero eigenvector does not mean a gap from zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** At a critical point the Hessian is the second derivative. On a Hilbert manifold, strong nondegeneracy means the Hessian gives a bounded linear isomorphism from the tangent space onto its dual.
+
+**Problem.** Near a strongly nondegenerate critical point, a smooth function admits coordinates in which it equals its critical value plus ‖u‖² minus ‖v‖².
+
+**How the definition helps.** Strong nondegeneracy keeps the Hessian spectrum away from zero, as required by the Hilbert space Morse lemma (our own). On the space of square summable sequences, the form ∑ xₙ²/n has zero kernel but no bounded inverse onto the dual (our own). A smooth coordinate change preserves invertibility of the Hessian at a critical point, so this example cannot have the stated form (our own).
+
+**nLab:** [Morse theory](https://ncatlab.org/nlab/show/Morse+theory). It says: “Morse theory is the method of studying the topology of a smooth manifold M by the study of Morse functions M → ℝ and their associated gradient flows.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+
+### Metric slopes find almost critical points
+
+**Remember:** Test actual downhill changes when derivatives do not exist.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The strong slope at a finite-valued point x measures the greatest local rate of decrease. It is the limit superior of max(f(x) − f(y), 0)/d(x,y) as y approaches x through other points. At an isolated point it is zero.
+
+**Problem.** Let f be lower semicontinuous, bounded below, and finite somewhere on a complete metric space, allowing the value +∞. There are points whose values approach its infimum and whose strong slopes approach zero.
+
+**How the definition helps.** The distance penalty in Ekeland’s variational principle bounds precisely the local rate of decrease (our own). For each ε &gt; 0 the principle gives a near-minimizer x satisfying f(x) − f(y) ≤ εd(x,y) for every y (our own). Dividing by distance bounds the strong slope by ε while the chosen values approach the infimum (our own).
+
+**Paper or page:** [Slopes and Moreau-Rockafellar Theorem](https://arxiv.org/abs/2309.03505). It says: “Let (M, ρ) be a complete metric space and let f : M → ℝ ∪ {+∞} be a proper lower semicontinuous and bounded below function.”
+
+**Sources:**
+
+- [Milen Ivanov, Nadia Zlateva, Slopes and Moreau-Rockafellar Theorem](https://arxiv.org/abs/2309.03505)
+
 ### Palais–Smale compactness gives minimizers
 
 **Remember:** A nearly stationary minimizing sequence needs somewhere to converge.
@@ -544,6 +842,404 @@
 **Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “if every sequence {uₖ} ⊂ H such that: {I\[uₖ\]} is bounded, and I′\[uₖ\] → 0 in H has a convergent subsequence in H.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Ray maxima give Nehari minimax
+
+**Remember:** Every ray reaches its energy peak on the Nehari set.
+
+*True by definition.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** On a nonzero real Banach space take f(u) = ‖u‖²/2 − B(u)/p, with p &gt; 2. Assume B is continuous, positive away from zero, and satisfies B(tu) = tᵖB(u) for t &gt; 0. The Nehari set consists of nonzero u satisfying ‖u‖² = B(u).
+
+**Problem.** Among continuous paths from zero to a nonzero point of nonpositive energy, the infimum of path maxima equals the infimum on the Nehari set.
+
+**How the definition helps.** The Nehari equation selects the unique maximum on each ray, replacing a search over paths by one over ray maxima (our own). Extending a ray beyond its maximum to negative energy gives one inequality (our own). Homogeneity and continuity at zero give ‖u‖² &gt; B(u) uniformly near zero for nonzero u (our own). Every admissible path reaches the opposite inequality, so it crosses the Nehari set and gives the reverse bound (our own).
+
+**Paper or page:** [Entire Nodal Solutions with Prescribed Symmetry to Caffarelli-Kohn-Nirenberg Equations](https://arxiv.org/abs/2511.11543). It says: “beginning at 0 with non-trivial endpoint of non-positive energy”
+
+**Sources:**
+
+- [Edward Chernysh, Entire Nodal Solutions with Prescribed Symmetry to Caffarelli-Kohn-Nirenberg Equations](https://arxiv.org/abs/2511.11543)
+
+### Broken geodesics retain sublevel topology
+
+**Remember:** Keep the joints and shorten everything between them.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For a fixed partition of time, a broken geodesic joins successive path values by shortest geodesics at constant speed on each interval.
+
+**Problem.** Consider fixed-endpoint paths of energy at most E on a compact Riemannian manifold without boundary, where energy integrates squared speed. For a sufficiently fine partition, this space deforms continuously onto its broken geodesics while fixing them throughout.
+
+**How the definition helps.** Replacing each segment by its shortest geodesic preserves the joints and can only lower energy (our own). Replacing a growing initial portion of each segment gives a continuous deformation in the norm measuring the path and its first derivative (our own). The energy bound makes short portions uniformly short enough to have unique shortest replacements varying smoothly with their endpoints (our own).
+
+**nLab:** [geodesic](https://ncatlab.org/nlab/show/geodesic). It says: “A geodesic may not globally minimize the distance between its end points.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Bumpiness makes bounded geodesic counts finite
+
+**Remember:** An isolated orbit cannot be the limit of other closed orbits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A Jacobi field solves the equation obtained by linearizing the geodesic equation. A metric is bumpy if every periodic Jacobi field on every nonconstant closed geodesic is a constant multiple of its velocity.
+
+**Problem.** On a compact Riemannian manifold without boundary, a bumpy metric has finitely many closed unit-speed geodesics below each length bound, up to time shift.
+
+**How the definition helps.** Bumpiness isolates each periodic orbit by the implicit function theorem on a section transverse to the flow (our own). The positive injectivity radius bounds periods away from zero (our own). Compactness of unit tangent vectors and bounded periods would give a limiting periodic orbit for any infinite sequence, contradicting isolation (our own).
+
+**Paper or page:** [Morse Index bound of simple closed geodesics on 2-spheres and strong Morse Inequalities](https://arxiv.org/abs/2303.00644). It says: “This induces a nontrivial Jacobi field of w and contradicts to the fact that the metric is bumpy.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Dongyeong Ko, Morse Index bound of simple closed geodesics on 2-spheres and strong Morse Inequalities](https://arxiv.org/abs/2303.00644)
+
+### Conjugate endpoints detect Hessian nullity
+
+**Remember:** A missed endpoint direction is a zero direction of the energy.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The exponential map sends an initial velocity to the endpoint of its geodesic at time one. The conjugate multiplicity is the dimension of the kernel of the map’s derivative at that velocity.
+
+**Problem.** Along a Riemannian geodesic with fixed endpoints, the dimension of the kernel of the energy Hessian equals the conjugate multiplicity at the final endpoint.
+
+**How the definition helps.** The exponential map records exactly where a change of initial velocity sends the endpoint (our own). Differentiating this variation gives a Jacobi field, a solution of the linearized geodesic equation starting at zero (our own). The second variation identifies the kernel of the energy Hessian with those fields that also vanish at the final endpoint (our own).
+
+**Paper or page:** [On the Cut Locus of Submanifolds of a Finsler Manifold](https://arxiv.org/abs/2307.11045). It says: “J is a Jacobi field along γ, satisfying J(0) = 0 = J(t).”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Aritra Bhowmick, Sachchidanand Prasad, On the Cut Locus of Submanifolds of a Finsler Manifold](https://arxiv.org/abs/2307.11045)
+
+### Constant loops give Morse–Bott minima
+
+**Remember:** Moving the base point does not bend a constant loop.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A submanifold of minima is Morse–Bott if the second derivative has exactly the tangent directions as its kernel and is invertible across the submanifold.
+
+**Problem.** For loops of square integrable speed on a closed Riemannian manifold, the constant loops form a Morse–Bott submanifold of energy minima.
+
+**How the definition helps.** The tangent directions move the constant loop to another point without changing its energy (our own). The second derivative of energy measures the integral of the squared derivative of a variation field, up to a positive factor (our own). The periodic Poincaré inequality bounds the squared norm of every mean-zero field by this integral, giving invertibility across the constant loops (our own).
+
+**nLab:** [Morse theory](https://ncatlab.org/nlab/show/Morse+theory). It says: “Morse theory is the method of studying the topology of a smooth manifold M by the study of Morse functions M → ℝ and their associated gradient flows.”
+
+**Sources:**
+
+- [Wolfgang Ziller, The free loop space of globally symmetric spaces (1977)](https://doi.org/10.1007/BF01390161)
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free homotopy prevents constant minimizers
+
+**Remember:** A loop that cannot contract cannot minimize to a point.
+
+*Rules out counterexamples.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Two loops belong to the same free homotopy class if one deforms continuously into the other while its starting point may move. A class is nontrivial if it contains no constant loop.
+
+**Problem.** Every nontrivial free homotopy class on a closed Riemannian manifold has an energy-minimizing closed geodesic.
+
+**How the definition helps.** The class excludes zero-energy loops while allowing variations that move the join (our own). A bounded-energy minimizing sequence has a uniformly convergent subsequence by the Cauchy–Schwarz inequality and compactness (our own). Nearby loops are homotopic, and lower semicontinuity of energy makes the limit a minimizer (our own). The first variation then gives a smooth periodic geodesic (our own).
+
+**Paper or page:** [On the space of metrics with non-positive curvature](https://arxiv.org/abs/2506.19983). It says: “in particular there is a smooth closed geodesic γ₁ ∈ β.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free loop variations rule out corners
+
+**Remember:** Moving the join tests whether the two velocities agree.
+
+*Rules out counterexamples.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Free loop energy integrates squared speed over one period of an absolutely continuous loop on a Riemannian manifold with square integrable speed. A variation may move the common starting and ending point.
+
+**Problem.** Every critical point of the free loop energy is a smooth periodic geodesic, possibly constant. A single geodesic arc meeting its starting point with a different velocity cannot be critical.
+
+**How the definition helps.** Moving the join tests the difference between the incoming and outgoing velocities (our own). Variations away from the join give the geodesic equation and hence a smooth geodesic on the open interval (our own). Integration by parts pairs the velocity difference with every possible displacement of the join, forcing the velocities to agree (our own).
+
+**Wikipedia:** [Closed geodesic](https://en.wikipedia.org/wiki/Closed_geodesic). It says: “closed geodesics of period 1 are precisely the critical points of the energy function E : ΛM → ℝ”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Jacobi interpolation gives a matrix index
+
+**Remember:** Variation at the joints holds all the negative directions.
+
+*True by definition.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A broken Jacobi field is a continuous variation field along a geodesic that solves the linearized geodesic equation separately on each partition interval. For fixed endpoints, the field vanishes at both ends.
+
+**Problem.** For a sufficiently fine partition, the fixed-endpoint energy Hessian along a Riemannian geodesic has the same index on broken Jacobi fields as on all variations.
+
+**How the definition helps.** Jacobi interpolation replaces the search over all variations by a search over their values at finitely many joints (our own). The index counts the greatest dimension on which the energy Hessian is negative definite (our own). Subtracting the interpolant leaves a field vanishing at every joint, orthogonal to the interpolant for the Hessian by integration by parts (our own). Short segments have positive second variation for fixed endpoints, so the remaining fields add no negative directions (our own).
+
+**Wikipedia:** [Jacobi field](https://en.wikipedia.org/wiki/Jacobi_field). It says: “values of J and D/dt J at one point of γ uniquely determine the Jacobi field.”
+
+**Paper or page:** [The Morse index theorem in the case of two variable endpoints in conic Finsler manifolds](https://arxiv.org/abs/2302.00611). It says: “Equality holds only if u(t) = v(t) for all t ∈ \[a,b\].”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Guangcun Lu, The Morse index theorem in the case of two variable endpoints in conic Finsler manifolds](https://arxiv.org/abs/2302.00611)
+
+### Relative sweepouts find nonconstant geodesics
+
+**Remember:** Measure loop families relative to the constants, not against them.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A relative sweepout maps a disk continuously into loops with square integrable velocity, using the norm that controls both loops and velocities. Boundary loops are constant, and deformations preserve this condition and fix one marked boundary value. The width of a deformation class is the infimum of maximum energies among its sweepouts.
+
+**Problem.** On a compact Riemannian manifold without boundary, every nonzero relative sweepout class has positive width equal to the energy of a nonconstant closed geodesic.
+
+**How the definition helps.** A sweepout that deforms entirely into constant loops represents zero (our own). All sufficiently low-energy loops retract continuously onto constant loops, giving every nonzero class a positive energy barrier (our own). Compactness for sequences with nearly zero derivative and the deformation theorem for loop energy give a critical loop at that height (our own).
+
+**Wikipedia:** [Lyusternik–Fet theorem](https://en.wikipedia.org/wiki/Lyusternik%E2%80%93Fet_theorem). It says: “on every compact Riemannian manifold there exists a closed geodesic.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free boundary coordinates are Steklov eigenfunctions
+
+**Remember:** The outward unit conormal is the position vector.
+
+*True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A free boundary minimal surface in the unit ball has zero mean curvature and meets the sphere orthogonally along its boundary. A Steklov eigenfunction is harmonic inside, and its outward normal derivative equals a constant times its value along the boundary.
+
+**Problem.** Each nonzero coordinate function of a compact free boundary minimal surface in the Euclidean unit ball has Steklov eigenvalue one for the induced metric.
+
+**How the definition helps.** Orthogonality makes the outward unit normal within the surface equal to the position vector along the boundary (our own explanation). Each coordinate therefore equals its own outward derivative. The coordinate Laplacian formula gives interior harmonicity from zero mean curvature. The area variation formula identifies these geometric conditions with stationarity when the boundary can slide on the sphere.
+
+**Paper or page:** [Non planar free boundary minimal disks into ellipsoids](https://arxiv.org/abs/2304.12111v2). It says: “free boundary minimal immersion such that”
+
+**Sources:**
+
+- [A. Fraser and R. Schoen, Sharp eigenvalue bounds and minimal surfaces in the ball](https://doi.org/10.1007/s00222-015-0604-x)
+
+### Positive curvature makes stable surfaces spherical
+
+**Remember:** Test stability with constant speed, then count curvature.
+
+*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A two-sided surface has a continuous unit normal. A minimal surface is stationary for area, meaning each smooth normal variation has zero first area derivative. It is stable when each such variation with compact support has nonnegative second area derivative.
+
+**Problem.** In an oriented three-manifold of positive scalar curvature, each component of a closed two-sided stable minimal surface is a sphere.
+
+**How the definition helps.** Stability permits a constant normal speed on each closed component, eliminating the derivative term in the second area variation (our own explanation). The Gauss equation then bounds twice the total intrinsic curvature below by the integral of the positive ambient scalar curvature. Each component is orientable, so the Gauss–Bonnet theorem forces it to be a sphere.
+
+**Paper or page:** [Minimal surfaces and comparison geometry](https://arxiv.org/abs/2510.04481v1). It says: “then each component of a closed two-sided stable minimal surface”
+
+**Sources:**
+
+- [R. Schoen and S.-T. Yau, Existence of Incompressible Minimal Surfaces and the Topology of Three Dimensional Manifolds with Non-Negative Scalar Curvature (1979)](https://doi.org/10.2307/1971247)
+
+### Stability rules out nonplanar complete surfaces
+
+**Remember:** Complete stable minimal surfaces in three-dimensional Euclidean space are flat.
+
+*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A two-sided minimal surface has a continuous unit normal and zero mean curvature. It is stable if every smooth normal variation supported on a compact set has nonnegative second area derivative.
+
+**Problem.** The image of a connected, complete, two-sided stable minimal immersion without boundary in Euclidean three-space is a plane.
+
+**How the definition helps.** Stability bounds bending by the energy needed to vary the surface in its normal direction (our own explanation). The stable plane theorem uses completeness and this bound to show that the surface has no bending anywhere. The complete Enneper surface gives a counterexample without stability, since sufficiently large disks on it are unstable.
+
+**Paper or page:** [Minimal surfaces and the new main inequality](https://arxiv.org/abs/2301.00249v2). It says: “is unstable.”
+
+**Sources:**
+
+- [M. do Carmo and C. K. Peng, Stable complete minimal surfaces in ℝ³ are planes (1979)](https://doi.org/10.1090/s0273-0979-1979-14689-5)
+
+### Strict convexity makes minimal graphs unique
+
+**Remember:** Strict convexity allows only one stationary graph with given boundary values.
+
+*True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A scalar minimal graph is the graph of a real function u that is stationary for the area integral with density √(1 + \|∇u\|²). Stationary means that every smooth variation fixing the boundary values has zero first area derivative.
+
+**Problem.** On a bounded connected planar domain with smooth boundary, two scalar minimal graphs smooth up to the boundary coincide if their boundary values agree.
+
+**How the definition helps.** The area definition gives a strictly convex function along the straight interpolation between two distinct graphs with equal boundary values (our own explanation). Their gradients must differ somewhere, since equal gradients and equal boundary values force the functions to coincide. Strict convexity rules out zero derivatives at both ends. The area variation formula identifies stationarity with the usual zero mean curvature equation.
+
+**Paper or page:** [The Dirichlet problem for the minimal surface system on smooth domains](https://arxiv.org/abs/2506.23245v1). It says: “Then there exists a unique solution”
+
+**Sources:**
+
+- [H. Jenkins and J. Serrin, Variational problems of minimal surface type II. Boundary value problems for the minimal surface equation (1966)](https://doi.org/10.1007/bf00282252)
+
+### Three boundary points prevent disk collapse
+
+**Remember:** Fix three boundary points to stop the disk from drifting.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A normalized Plateau disk harmonically extends a parametrization of a simple closed curve in Euclidean space, one coordinate at a time. The boundary map is a uniform limit of homeomorphisms that traverse the curve in the same direction. Three distinct fixed boundary points map to three prescribed curve points in cyclic order.
+
+**Problem.** Every sequence of normalized Plateau disks spanning the same curve with uniformly bounded Dirichlet energy has a uniformly convergent subsequence on the closed disk.
+
+**How the definition helps.** Fixing three points prevents conformal changes of disk coordinates from squeezing almost the whole boundary towards one point (our own explanation). The Courant–Lebesgue estimate bounds oscillation on short arcs, and the ordered boundary maps turn that bound into uniform continuity across the family. A compactness theorem then gives boundary convergence, which harmonic extension carries into the disk.
+
+**Wikipedia:** [Plateau's problem](https://en.wikipedia.org/wiki/Plateau%27s_problem). It says: “Douglas minimized the now-named Douglas integral, while Radó minimized the "energy".”
+
+**Sources:**
+
+- [J. Douglas, Solution of the problem of Plateau (1931)](https://doi.org/10.1090/s0002-9947-1931-1501590-9)
+
+### Finite energy removes punctures
+
+**Remember:** Finite energy becomes small on disks shrinking to a puncture.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A map has finite Dirichlet energy near a puncture if half its squared derivative has finite integral over a punctured disk. A harmonic map is a critical point of this energy under changes supported inside the domain.
+
+**Problem.** A smooth harmonic map from a punctured disk to a closed Riemannian manifold extends smoothly across the puncture if its energy is finite.
+
+**How the definition helps.** Finite energy makes the integral arbitrarily small on sufficiently small disks (our own explanation). The small-energy theorem then extends the map with continuous first derivatives, and the harmonic map equation gives smoothness. The circle map with angle log \|z\| winds endlessly near zero and has infinite energy (our own example).
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “then f can be extended to D in C¹.”
+
+**Sources:**
+
+- [J. Sacks and K. Uhlenbeck, The Existence of Minimal Immersions of 2-Spheres (1981)](https://doi.org/10.2307/1971131)
+
+### Gradient flow dissipates map energy
+
+**Remember:** Integrated squared speed gives the rate of energy loss.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Dirichlet energy integrates half the squared length of a map’s derivative. Harmonic map heat flow moves each map along the negative gradient of this energy. The inner product for this gradient integrates the pointwise inner products of two velocities.
+
+**Problem.** Along a smooth harmonic map heat flow on a compact domain without boundary, the energy derivative equals minus the integral of squared speed.
+
+**How the definition helps.** The velocity equals the negative gradient, so the chain rule gives the energy derivative as minus the integrated squared speed (our own explanation). The first variation formula identifies this velocity with the trace of the map’s second derivative, recovering the usual heat equation.
+
+**Wikipedia:** [Harmonic map](https://en.wikipedia.org/wiki/Harmonic_map). It says: “the Laplacian of f can be thought of as the gradient of the Dirichlet energy”
+
+**Sources:**
+
+- [J. Eells Jr. and J. H. Sampson, Harmonic Mappings of Riemannian Manifolds (1964)](https://doi.org/10.2307/2373037)
+
+### Harmonic forms classify harmonic circle maps
+
+**Remember:** Integrate the harmonic form and take angles modulo 2π.
+
+*Makes the theorem clean to state or prove.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Local angles of a circle map differ by constant multiples of 2π, so their derivatives form one global differential form. A circle map is harmonic when this form has zero divergence. The form is already closed because it is locally a derivative.
+
+**Problem.** Each homotopy class of maps from a connected closed Riemannian manifold to the unit circle contains exactly one harmonic map up to rotation.
+
+**How the definition helps.** Differentiating the angle turns the harmonic map equation into a linear equation on forms (our own explanation). Integrals around closed loops record angle changes in multiples of 2π and determine the homotopy class. The Hodge theorem gives exactly one closed form with zero divergence and those loop integrals. Integrating it modulo 2π recovers the map up to its starting angle.
+
+**nLab:** [Hodge theorem](https://ncatlab.org/nlab/show/Hodge+theorem). It says: “has precisely one harmonic cocycle reprentative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hopf differentials make harmonic spheres conformal
+
+**Remember:** The sphere has no nonzero holomorphic quadratic differential to record distortion.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Hopf differential of a surface map is the part of its pulled back metric proportional to dz² in a complex coordinate z. It vanishes exactly where the derivative scales lengths equally in all directions, allowing zero scale.
+
+**Problem.** Every smooth harmonic map from the Riemann sphere to a Riemannian manifold is weakly conformal, meaning its derivative is conformal or zero.
+
+**How the definition helps.** The Hopf differential packages the failure to preserve angles in one object (our own explanation). For a harmonic map, the harmonic map equation makes its coefficient holomorphic in every complex coordinate. On the Riemann sphere every such quadratic differential vanishes, so the derivative scales all directions equally.
+
+**Paper or page:** [New examples of harmonic maps to the hyperbolic plane via Bäcklund transformation](https://arxiv.org/abs/2112.06601v3). It says: “the Hopf differential of u is holomorphic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Kähler splitting makes holomorphic maps minimize energy
+
+**Remember:** The homotopy term stays fixed and the error vanishes for holomorphic maps.
+
+*True by definition. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On a Kähler manifold, the metric g and complex structure J give the closed area form ω(v,w) = g(Jv,w). For a surface map, define its antiholomorphic energy by integrating ½\|b − Ja\|². Here a and b are its derivatives along a positively oriented orthonormal frame.
+
+**Problem.** A holomorphic map from a closed Riemann surface to a Kähler manifold minimizes Dirichlet energy among all smoothly homotopic maps.
+
+**How the definition helps.** The antiholomorphic energy measures exactly how much Dirichlet energy exceeds the integral of the pulled-back area form (our own explanation). Expanding the square gives the usual energy density ½(\|a\|² + \|b\|²) minus ω(a,b). A holomorphic map has b = Ja, so the excess vanishes. Stokes’ theorem keeps the area integral fixed throughout a homotopy.
+
+**Wikipedia:** [Calibrated geometry](https://en.wikipedia.org/wiki/Calibrated_geometry). It says: “the calibrated submanifolds are the complex submanifolds.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product energy separates harmonic maps
+
+**Remember:** Split the energy to read off the harmonic factors.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A harmonic map is a critical point of Dirichlet energy, the integral of half the squared norm of its derivative. For a product target, use the metric that sums the squared lengths from the factors.
+
+**Problem.** A smooth map from a closed Riemannian manifold into a Riemannian product is harmonic exactly when both component maps are harmonic.
+
+**How the definition helps.** The energy of a map into a product is the sum of its component energies (our own explanation). Varying one component at a time therefore tests both energy derivatives independently. The first variation formula identifies this test with the usual harmonic map equation.
+
+**nLab:** [harmonic map](https://ncatlab.org/nlab/show/harmonic+map). It says: “which is a critical point of the Dirichlet kinetic energy functional”
+
+**Sources:**
+
+- [J. Eells Jr. and J. H. Sampson, Harmonic Mappings of Riemannian Manifolds (1964)](https://doi.org/10.2307/2373037)
+
+### Subcritical energy preserves homotopy in limits
+
+**Remember:** The higher power keeps limits in the same homotopy class.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On a fixed closed Riemannian surface, the Sacks–Uhlenbeck energy integrates (1 + \|du\|²)ᵅ, where du is the derivative and α exceeds one.
+
+**Problem.** For fixed α, continuous maps into a closed Riemannian manifold with uniformly bounded Sacks–Uhlenbeck energy have a uniformly convergent subsequence. All sufficiently late maps in that subsequence are homotopic to its limit.
+
+**How the definition helps.** The higher power controls oscillation because the derivative exponent 2α exceeds the surface dimension (our own explanation). The Sobolev embedding bounds how fast the maps can vary, giving uniform convergence along a subsequence. Joining nearby values by short geodesics gives a continuous deformation to the limit. At α = 1, conformal automorphisms of the round sphere can concentrate at a point.
+
+**Paper or page:** [Existence and Stability of α-harmonic Maps](https://arxiv.org/abs/2208.07995v1). It says: “it has a vanishing α-tension field.”
+
+**Sources:**
+
+- [J. Sacks and K. Uhlenbeck, The Existence of Minimal Immersions of 2-Spheres (1981)](https://doi.org/10.2307/1971131)
+
+### Surface rescaling preserves harmonic morphisms
+
+**Remember:** On a surface, changing scale does not change harmonic tests.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A harmonic morphism is a smooth map that pulls back each local solution of the Laplace equation to another solution. Pullback means composing the function with the map.
+
+**Problem.** Multiplying the metric of a target surface by any smooth positive function preserves every harmonic morphism into that surface.
+
+**How the definition helps.** The definition tests exactly the same functions after rescaling. On a surface, rescaling multiplies the Laplace operator by the reciprocal factor (our own explanation). The Fuglede–Ishihara theorem identifies this test with the usual conditions on the derivatives of the map.
+
+**Wikipedia:** [Harmonic morphism](https://en.wikipedia.org/wiki/Harmonic_morphism). It says: “This means that, at least for local studies, the codomain can be chosen to be the complex plane with its standard flat metric.”
+
+**Sources:**
+
+- [B. Fuglede, Harmonic morphisms between Riemannian manifolds (1978)](https://doi.org/10.5802/aif.691)
+- [T. Ishihara, A mapping of Riemannian manifolds which preserves harmonic functions (1979)](https://doi.org/10.1215/kjm/1250522428)
 
 ### Clifford multiplication makes Dirac operators elliptic
 
@@ -593,6 +1289,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact graph domains give finiteness
+
+**Remember:** A bounded graph sequence has an ambient convergent subsequence.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** A Hilbert complex is a sequence of Hilbert spaces with closed, densely defined derivatives d satisfying d² = 0. Call it compact if any sequence bounded in norm together with its derivatives and adjoint derivatives has a convergent subsequence in the ambient space.
+
+**Problem.** A finite compact Hilbert complex has closed differential ranges and finite-dimensional cohomology.
+
+**How the definition helps.** Compactness rules out infinitely many orthonormal harmonic vectors and sequences that would prevent a closed range. In our own argument, unit vectors perpendicular to the harmonic space cannot have both derivative norms tending to zero. A convergent subsequence would give a harmonic unit vector perpendicular to that space. The resulting lower bound gives closed ranges, so harmonic vectors represent cohomology.
+
+**Paper or page:** [Families of Annihilating Skew-Selfadjoint Operators and their Connection to Hilbert Complexes](https://arxiv.org/abs/2307.00946v2). It says: “compact if and only if the embedding dom(S) ↪︎ H is compact.”
+
+**Sources:**
+
+- [J. Brüning and M. Lesch, Hilbert complexes (1992)](https://doi.org/10.1016/0022-1236(92)90147-b)
+
+### Completeness gives one derivative domain
+
+**Remember:** Small cutoff gradients preserve the derivative.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The minimal domain consists of limits of compactly supported smooth forms for which both the forms and their derivatives converge in L². The maximal domain allows every L² form whose derivative, tested against smooth compactly supported forms, also belongs to L².
+
+**Problem.** On a complete Riemannian manifold without boundary, the minimal and maximal exterior derivatives on L² forms coincide.
+
+**How the definition helps.** Completeness supplies cutoffs with arbitrarily small gradients, so cutting off a form also approximates its derivative. Our own proof then smooths the compactly supported approximations. On the incomplete interval (0,1), the constant function belongs to the maximal domain, but minimal-domain functions vanish at the endpoints.
+
+**Paper or page:** [Lipschitz-homotopy invariants:L²-cohomology, Roe index and ρ-class](https://arxiv.org/abs/2109.07400v1). It says: “Then the maximal and the minimal domain of the exterior derivative coincide”
+
+**Sources:**
+
+- [M. P. Gaffney, The Heat Equation Method of Milgram and Rosenbloom for Open Riemannian Manifolds (1954)](https://doi.org/10.2307/1969846)
+
+### Exact symbols make Laplacians elliptic
+
+**Remember:** Exact symbols leave no null vector for the Laplacian.
+
+*True by definition.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The principal symbol records the highest derivatives of an operator in a chosen covector direction. A differential complex is elliptic if each symbol image equals the next symbol kernel at every nonzero covector.
+
+**Problem.** In a first-order elliptic complex with bundle metrics, the Laplacian DD⁎ + D⁎D has invertible symbol at every nonzero covector. Here D is the differential and D⁎ its adjoint.
+
+**How the definition helps.** Symbol exactness replaces a determinant calculation with a test for membership in two orthogonal spaces. In our own proof, a Laplacian symbol kills a vector exactly when the outgoing symbol and the incoming adjoint symbol both kill it. Such a vector belongs to the incoming image and is perpendicular to it.
+
+**Wikipedia:** [Elliptic complex](https://en.wikipedia.org/wiki/Elliptic_complex). It says: “Elliptic complexes isolate those features common to the de Rham complex and the Dolbeault complex which are essential for performing Hodge theory.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Eta phases forget the filling
 
 **Remember:** Two fillings can change the index integral only by an integer.
@@ -610,6 +1358,22 @@
 **Sources:**
 
 - [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Hodge–Dirac index counts Euler characteristic
+
+**Remember:** Even harmonic forms count up and odd ones count down.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The even-to-odd Hodge–Dirac operator sends an even-degree form to (d + d⁎) applied to it. Here d is the exterior derivative and d⁎ its adjoint. The index is the kernel dimension minus the adjoint kernel dimension.
+
+**Problem.** On a closed oriented Riemannian manifold, the index of the even-to-odd Hodge–Dirac operator is the Euler characteristic.
+
+**How the definition helps.** Grouping degrees by parity turns the alternating sum for the Euler characteristic into one index. Our own argument identifies the two kernels with even and odd harmonic forms. The Hodge theorem gives one harmonic form per cohomology class.
+
+**nLab:** [Hodge theorem](https://ncatlab.org/nlab/show/Hodge+theorem). It says: “Harmonic forms are precisely those in the kernel of d + d\*, which are precisely those in the joint kernel of d and d\*.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Index characters vanish without fixed points
 
@@ -701,6 +1465,226 @@
 
 - [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
 
+### Signed heat traces recover eta
+
+**Remember:** Insert D into the squared heat operator to restore the signs.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J35. arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a self-adjoint elliptic differential operator D of positive order on a closed manifold, the eta function counts positive and negative eigenvalues with opposite signs. It weights each nonzero eigenvalue λ by \|λ\| to the power −s and continues the resulting signed sum analytically.
+
+**Problem.** For sufficiently large real part of s, Γ((s+1)/2)η(s) equals the integral over t &gt; 0 of t to the power (s−1)/2 times Tr(D exp(−tD²)).
+
+**How the definition helps.** Inserting D into the heat trace restores the sign lost on squaring each eigenvalue. Our own calculation applies the gamma integral to each nonzero mode, turning its signed heat contribution into the corresponding eta weight. Absolute convergence in this half-plane permits termwise integration.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “The eta function is a kind of odd version of the Mellin transform of an odd version of the theta function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A ground state removes heat killing
+
+**Remember:** Divide by the ground state so the generator kills constants.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For H = Δ+V, take the nonnegative Laplacian Δ and a smooth real function V on a closed connected Riemannian manifold. Choose a positive eigenfunction h for the lowest eigenvalue λ. The ground state transform sends f to h⁻¹(H−λ)(hf) and weights volume by h².
+
+**Problem.** The transformed operator is a weighted Laplacian, and its heat flow preserves the constant function one.
+
+**How the definition helps.** Conjugation turns the lowest eigenfunction into the constant one, which the shifted operator kills. Our own product calculation gives the weighted Laplacian f ↦ −h⁻² div(h²∇f). The ground state theorem supplies a strictly positive h, so division by h is valid everywhere.
+
+**Wikipedia:** [Doob's h-transform](https://en.wikipedia.org/wiki/Doob%27s_h-transform). It says: “The key advantage of Doob's h-transform is that the transition probabilities of the transformed process are explicitly given as functions of h.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conformal surfaces share heat recurrence
+
+**Remember:** In two dimensions, conformal changes leave gradient energy unchanged.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.DG, math.SP. Level 3: graduate.
+
+**Definition.** A surface is parabolic when every compact set has zero capacity. Capacity is the infimum of gradient energy over smooth compactly supported functions that are at least 1 near the set.
+
+**Problem.** On complete connected surfaces without boundary, conformally related metrics have the same Brownian recurrence behavior. Recurrence means Brownian motion returns to every open neighborhood of its starting point arbitrarily late with probability one.
+
+**How the definition helps.** Capacity uses gradient energy, whose gradient and area factors cancel under a conformal change in two dimensions. Our own calculation therefore gives identical capacities. The capacity criterion identifies vanishing capacity of every compact set with Brownian recurrence.
+
+**Paper or page:** [Parabolicity of invariant Surfaces](https://arxiv.org/abs/2312.02837). It says: “In dimension 2, parabolicity is preserved under conformal changes in the metric tensor.”
+
+**Sources:**
+
+- [Andrea Del Prete, Vicent Gimeno i Garcia, Parabolicity of invariant Surfaces](https://arxiv.org/abs/2312.02837)
+
+### Diffusion distances use twice the heat time
+
+**Remember:** Inner products of heat profiles let the two times add.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The heat profile Kₜ(x,·) gives the temperature distribution at time t from a unit point source at x. Diffusion distance between x and y is the L² distance between their profiles, using Riemannian volume.
+
+**Problem.** On a closed Riemannian manifold, squared diffusion distance equals K₂ₜ(x,x)+K₂ₜ(y,y)−2K₂ₜ(x,y) for every t &gt; 0.
+
+**How the definition helps.** The profile definition turns each inner product into two successive heat steps. Our own calculation expands the squared distance and uses kernel symmetry to compose the two steps. The heat composition law then evaluates all three terms at time 2t without computing diffusion coordinates.
+
+**Wikipedia:** [Diffusion map](https://en.wikipedia.org/wiki/Diffusion_map). It says: “Dₜ(xᵢ,xⱼ)² = ∑ᵧ (p(y,t\|xᵢ)−p(y,t\|xⱼ))²/ϕ₀(y)”
+
+**Sources:**
+
+- [Ronald Coifman and Stéphane Lafon, Diffusion Maps (2006)](https://doi.org/10.1016/j.acha.2006.04.006)
+
+### Heat traces multiply on products
+
+**Remember:** Eigenvalues add on products, so their heat weights multiply.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The spectral heat operator at time t multiplies each Laplace eigenfunction with eigenvalue λ by exp(−tλ). Its heat kernel is the function that represents this operator by integration.
+
+**Problem.** On a product of closed Riemannian manifolds with the product metric, the scalar heat kernel equals the product of the two heat kernels. Their heat traces multiply as well.
+
+**How the definition helps.** The exponential converts sums of eigenvalues into products of heat weights. Our own calculation uses products of eigenfunctions, which form a complete basis because the product Laplacian adds the factor Laplacians. Smooth convergence gives the kernel formula without solving the heat equation again.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “The heat kernel K for P is then the kernel of an integral operator representing the heat operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Iterated energy controls heat gradients
+
+**Remember:** The iterated energy is the derivative of a heat interpolation.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a smooth weight V on a closed Riemannian manifold, let Lf = div(∇f)−⟨∇V,∇f⟩ generate heat flow Pₜ. Define the gradient energy Γ(f) = \|∇f\|² and its iteration Γ₂(f) = (LΓ(f)−2⟨∇f,∇Lf⟩)/2.
+
+**Problem.** If Γ₂(f) ≥ KΓ(f) for all smooth f, then Γ(Pₜf) ≤ exp(−2Kt)PₜΓ(f) at every point and every time t ≥ 0.
+
+**How the definition helps.** The iterated energy collects exactly the terms from differentiating a heat average of the gradient energy. Set u = Pₜ₋ₛf and differentiate PₛΓ(u) to obtain 2PₛΓ₂(u). Positivity of heat flow gives the differential inequality, which integrates to the claim. The weighted Bochner formula connects this condition to a geometric curvature bound.
+
+**Paper or page:** [A Bakry-Émery approach to Lipschitz transportation on manifolds](https://arxiv.org/abs/2310.02478). It says: “Γ(Pₜf) ≤ exp(−2ρt) Pₜ(Γ(f)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spectral gaps set heat decay
+
+**Remember:** Apply the energy bound to the moving temperature.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** On a closed connected Riemannian manifold, the spectral gap λ is the largest constant satisfying ∫\|∇f\|² ≥ λ∫\|f\|² for every smooth mean-zero function f.
+
+**Problem.** On square-integrable mean-zero functions, the heat operator at time t ≥ 0 has norm exactly exp(−tλ).
+
+**How the definition helps.** The energy definition bounds the derivative of the squared norm along heat flow by −2λ times that norm squared. Our own proof integrates this inequality. The variational characterization identifies λ with the first positive eigenvalue, whose eigenfunctions attain equality.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “\|θ(t) − 1\| ≤ Cγ exp(−γt), for any t ≥ 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wave propagation localizes heat
+
+**Remember:** Only the Gaussian tail reaches past the wave front.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The wave formula defines heat flow at time t by averaging the wave operators cos(s√Δ) over a centered Gaussian of variance 2t. Here Δ is the nonnegative scalar Laplacian. The Gaussian Fourier transform gives the usual heat operator exp(−tΔ).
+
+**Problem.** Suppose square-integrable functions f and g on a closed Riemannian manifold have supports at distance r. At t &gt; 0, their heat pairing \|⟨exp(−tΔ)f,g⟩\| is at most exp(−r²/(4t)) times their L² norms multiplied together.
+
+**How the definition helps.** Finite wave speed removes all wave times with \|s\| &lt; r from the average. In our own proof, each remaining wave operator has norm at most one. The two-sided Gaussian tail is at most exp(−r²/(4t)), giving the bound.
+
+**Paper or page:** [The Gromov-Lawson index and the Baum-Connes assembly map](https://arxiv.org/abs/2103.03495). It says: “Moreover, it has finite propagation ≤ t \|x\|.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Canonical relations track singular directions
+
+**Remember:** Keep the output directions paired with singular input directions.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A Fourier integral operator combines oscillations governed by a phase. Where its frequency derivative vanishes, pair the output derivative with the negative input derivative. These pairs form the canonical relation, a relation between output and input frequency directions.
+
+**Problem.** Suppose both directions in every pair are nonzero. For compactly supported distributions, every output wave front direction pairs with an input wave front direction.
+
+**How the definition helps.** The canonical relation lists the only routes by which a singular direction can reach the output. In our own explanation, wave front directions are those where localization fails to give rapid Fourier decay. Estimates for oscillatory kernels exclude all other routes.
+
+**Paper or page:** [Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity](https://arxiv.org/abs/2212.00243v1). It says: “WF(Af) ⊂ C ∘ WF(f).”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Characteristic sets locate hidden singularities
+
+**Remember:** An operator can hide a singularity only in a characteristic direction.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The characteristic set consists of the nonzero frequencies where the leading symbol, the highest-order frequency term, vanishes. The wave front set records positions and directions where local Fourier decay fails to beat every inverse power.
+
+**Problem.** For a properly supported scalar classical pseudodifferential operator A, a distribution u and its image Au have identical wave front sets outside the characteristic set.
+
+**How the definition helps.** The characteristic set marks precisely where one cannot start an inverse by dividing by the leading symbol. In our own explanation, restricting either kernel variable to a compact set also confines the other to a compact set. The local inverse theorem then recovers u from Au up to a smooth error in each remaining direction.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(Au) ⊂ WF u ⊂ WF(Au) ∪ Char A.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Invertible symbols give Fredholm operators
+
+**Remember:** Invert at high frequencies and leave only compact errors.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A classical pseudodifferential operator is elliptic when its leading symbol, the highest-order frequency term, is invertible at every nonzero covector. An operator is Fredholm when its range is closed and its kernel and cokernel have finite dimension.
+
+**Problem.** On a compact manifold without boundary, a classical operator of order m is Fredholm between Sobolev orders s and s − m exactly when elliptic.
+
+**How the definition helps.** Ellipticity turns the Fredholm criterion into a pointwise test on the leading symbol. In our own explanation, symbol inversion constructs an inverse up to smooth errors, which are compact here. Conversely, localized high-frequency tests detect a singular leading symbol. Sobolev order measures regularity in square mean.
+
+**Paper or page:** [Analysis on noncompact manifolds and Index Theory: Fredholm conditions and Pseudodifferential operators](https://arxiv.org/abs/2308.06225v1). It says: “Then P : Hˢ(M; E) → Hˢ⁻ᵐ(M; F) is Fredholm if, and only if, it is elliptic.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://math.uchicago.edu/~shmuel/tom-readings/ASI.pdf)
+
+### Proper support preserves compact tests
+
+**Remember:** The transpose must keep test functions compactly supported.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A kernel has proper support if restricting either coordinate to a compact set confines the other coordinate to a compact set.
+
+**Problem.** A properly supported pseudodifferential operator acts on all distributions, meaning generalized functions, and carries compactly supported distributions to compactly supported distributions.
+
+**How the definition helps.** Proper support keeps the transpose of the operator from spreading a compactly supported test function to infinity. In our own argument, the transpose also preserves smoothness, so any distribution can act on the resulting test function. The other support bound controls the output. On the real line the constant kernel would require integrating the constant function over the entire line.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “Tσ₁ is properly supported”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Strong ellipticity bounds energy below
+
+**Remember:** Nonzero is not enough for an energy lower bound.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a scalar classical operator of order 2m, its leading symbol is the highest-order frequency term. Strong ellipticity means that its real part is positive on every unit covector.
+
+**Problem.** On a compact manifold without boundary, strong ellipticity of order 2m &gt; 0 gives Re ⟨Au,u⟩ ≥ c‖u‖²ₘ − C‖u‖²₀ for every smooth u. Here c &gt; 0 and C ≥ 0 are fixed, and the norms measure square-integrable regularity of the indicated orders.
+
+**How the definition helps.** Positivity on the compact unit covector bundle gives a uniform positive lower bound there. In our own explanation, the energy estimate factors the positive leading term and controls the lower-order error. The negative of the nonnegative circle Laplacian is elliptic but violates the bound on high Fourier modes.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “and the symbol a ∈ S²ᵐ is strongly elliptic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Causal subtraction gives skew adjoints
 
 **Remember:** Taking the adjoint swaps future and past.
@@ -718,6 +1702,106 @@
 **Sources:**
 
 - [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
+
+### Wave fronts follow Hamiltonian flows
+
+**Remember:** Singular covectors follow the Hamiltonian flow on the zero set.
+
+*Makes the theorem clean to state or prove.* MSC 58J47 (Propagation of singularities; initial value problems on manifolds), 58J40. arXiv math.AP. Level 3: graduate.
+
+**Definition.** The wave front set records positions and directions where local Fourier decay fails to beat every inverse power. A real leading symbol p drives the Hamiltonian flow with velocity (∂ξp, −∂ₓp) in position and frequency. Real principal type here requires this velocity to be nonradial wherever p vanishes at nonzero frequency.
+
+**Problem.** Suppose a properly supported scalar classical pseudodifferential operator P has real principal type and Pu is smooth. The wave front set of u consists of entire Hamiltonian trajectories in the zero set of its leading symbol.
+
+**How the definition helps.** Recording frequency as well as position distinguishes trajectories even where their paths on the manifold cross. In our own explanation, elliptic regularity excludes singularities off the zero set. The propagation estimate transports regularity along each remaining trajectory.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(u) is made of null bicharacteristic curves”
+
+**Sources:**
+
+- [J. J. Duistermaat and Lars Hörmander, Fourier integral operators. II (1972)](https://doi.org/10.1007/BF02392165)
+
+### Boundary-fixed conformal changes preserve Steklov spectra
+
+**Remember:** Interior conformal changes preserve harmonic functions and leave boundary normals alone.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The Dirichlet-to-Neumann operator extends boundary temperatures to a harmonic function, a function with zero Laplacian. It returns the outward normal derivative at the boundary. Its eigenvalues with multiplicities form the Steklov spectrum.
+
+**Problem.** On a compact connected Riemannian surface with smooth nonempty boundary, a conformal change preserving the boundary metric preserves this operator and its Steklov spectrum.
+
+**How the definition helps.** The boundary operator uses only the harmonic extension and the boundary normal. In our own proof, a conformal change multiplies the surface Laplacian by a positive function, preserving harmonicity. Uniqueness gives the same extension, and the unit normal agrees because the conformal factor equals one on the boundary.
+
+**Wikipedia:** [Poincaré–Steklov operator](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Steklov_operator). It says: “to the normal derivative ∂u/∂n on the boundary of Ω.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Energy domains bracket eigenvalues
+
+**Remember:** Zero trace restricts the energy domain, while cutting without matching enlarges it.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** Define the Neumann Laplacian by gradient energy on square-integrable functions with square-integrable weak first derivatives. For the Dirichlet Laplacian, restrict that energy to functions with zero boundary values in the trace sense.
+
+**Problem.** Cut a closed Riemannian manifold along a smooth separating hypersurface and combine the spectra of the pieces with multiplicity. At each index the Neumann eigenvalue is at most the uncut eigenvalue, which is at most the Dirichlet eigenvalue.
+
+**How the definition helps.** Energy domains expose inclusions that the differential boundary conditions conceal. In our own proof, zero boundary values imply matching values, while independent Neumann energy domains require no matching. The trace theorem identifies matching functions with uncut functions. The variational min-max formula raises eigenvalues when the energy domain shrinks.
+
+**Wikipedia:** [Min-max theorem](https://en.wikipedia.org/wiki/Min-max_theorem). It says: “The min-max theorem also applies to (possibly unbounded) self-adjoint operators.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gauge equivalence preserves magnetic spectra
+
+**Remember:** Conjugating the derivative also conjugates its Laplacian.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** A unitary connection differentiates sections of a complex line bundle while respecting their inner products. Two connections are gauge equivalent if a length-preserving complex-linear change in each fiber carries one derivative to the other and varies smoothly.
+
+**Problem.** On a closed Riemannian manifold, gauge-equivalent connections have the same connection Laplacian spectrum, including multiplicities. Connections with equal curvature can have different spectra.
+
+**How the definition helps.** The same unitary change carries each derivative and its adjoint to the other pair, so it conjugates their Laplacians. Our own counterexample uses d and d+iα dθ on the circle of length 2π. Both have zero curvature, but their eigenvalues are n² and (n+α)² for integers n. Only the first spectrum contains zero when α is not an integer.
+
+**nLab:** [holonomy](https://ncatlab.org/nlab/show/holonomy). It says: “its parallel transport around some loop γ : \[0,1\] → X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat coefficients identify zeta poles
+
+**Remember:** A heat term with power −a gives a pole at a.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a strictly positive operator of Laplace type, such as the scalar Laplacian plus one, let H(t) sum exp(−tλ) over eigenvalues with multiplicity. For large real part of s, define Γ(s)ζ(s) by integrating H(t) times t to the power s−1 over positive times. Here Γ is the gamma function, and ζ is the spectral zeta function.
+
+**Problem.** On a closed manifold, a term c times t to the power −a in the small-time expansion of H gives Γ(s)ζ(s) residue c at a. The nonzero coefficients give precisely the poles, all simple.
+
+**How the definition helps.** Our own calculation turns each heat term into c/(s−a) by integrating from zero to one. Subtracting enough terms leaves an integral analytic near a. The heat expansion controls this remainder, and the gamma integral identifies ζ with the usual sum of inverse eigenvalue powers.
+
+**nLab:** [zeta function of an elliptic differential operator](https://ncatlab.org/nlab/show/zeta+function+of+an+elliptic+differential+operator). It says: “The zeta function of H is the holomorphic function defined by the series”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat content hears eigenfunctions
+
+**Remember:** Heat content weights each mode by its overlap with uniform heat.
+
+*Makes the theorem clean to state or prove.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** Dirichlet heat content is the total heat left at time t after a region starts at temperature one and its boundary stays at zero.
+
+**Problem.** Two bounded planar sets can have the same Dirichlet eigenvalues, including multiplicities, and different heat contents.
+
+**How the definition helps.** Total heat weights each eigenspace by the squared length of the projection of the constant function onto it. Our own calculation expands the initial temperature in eigenfunctions and integrates the solution. The cited Chapman sets have equal spectra and different heat contents.
+
+**Paper or page:** [Torsional rigidity and isospectral planar sets](https://arxiv.org/abs/2105.07477). It says: “The Chapman domains C₁ and C₂ are distinguished by heat content.”
+
+**Sources:**
+
+- [Joseph Comer, Patrick McDonald, Torsional rigidity and isospectral planar sets](https://arxiv.org/abs/2105.07477)
 
 ### Heat traces recover area
 
@@ -737,6 +1821,38 @@
 
 - [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
 
+### Heat traces recover multiplicities
+
+**Remember:** The slowest remaining exponential reveals the next eigenvalue.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The heat trace at time t &gt; 0 sums exp(−tλ) over the eigenvalues λ of the nonnegative Laplacian, counting every copy.
+
+**Problem.** Two closed Riemannian manifolds have identical Laplace eigenvalues with multiplicity exactly when their heat traces agree at every positive time.
+
+**How the definition helps.** In our own argument, the slowest exponential in the trace reveals the least eigenvalue and its multiplicity. Subtract that contribution and repeat. Convergence of the trace at each positive time justifies isolating each successive term as t tends to infinity.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “The function θ = θℛₘ defined by the heat trace: θ(t) := Tr(exp(−tℛₘ)), t &gt; 0, is positive valued, decreasing and smooth on (0,∞).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat constants control determinant scaling
+
+**Remember:** The constant heat term, minus zero modes, is the scaling exponent.
+
+*True by definition. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J35. arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The spectral zeta function ζ continues the sum of λ to the power −s over positive eigenvalues λ from the region where it converges. The zeta determinant is exp(−ζ′(0)), with zero eigenvalues omitted from the sum.
+
+**Problem.** For a nonnegative operator A of Laplace type on a closed manifold, scaling A by c &gt; 0 multiplies its zeta determinant by cᵃ⁻ᵏ. Here a is the constant term of the heat trace expansion, and k counts zero eigenvalues with multiplicity.
+
+**How the definition helps.** The zeta sum turns scaling into multiplication by c to the power −s before differentiation. Our own calculation therefore gives scaling exponent ζ(0). The integral relating the heat trace to ζ gives ζ(0) = a−k after removing the zero modes.
+
+**nLab:** [zeta function of an elliptic differential operator](https://ncatlab.org/nlab/show/zeta+function+of+an+elliptic+differential+operator). It says: “detᵣₑg H ≔ exp(−ζ′ₕ(0)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Almost conjugate subgroups preserve spectra
 
 **Remember:** Equal class counts give equal dimensions of fixed eigenfunctions.
@@ -754,6 +1870,96 @@
 **Sources:**
 
 - [Toshikazu Sunada, Riemannian Coverings and Isospectral Manifolds (1985).](https://doi.org/10.2307/1971195)
+
+### Fiberwise nondegeneracy preserves parameters
+
+**Remember:** Use the Hessian in the variables you can change.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A fiberwise nondegenerate critical point of a smooth real function F(u,x) satisfies two tests with the parameter u fixed. Its first derivative in x vanishes and its matrix of second derivatives in x is invertible.
+
+**Problem.** Nearby fiber critical points form a smooth graph x = c(u). Coordinates fixing u express F as its value on the graph plus a fixed sum of signed squares.
+
+**How the definition helps.** The invertible fiber Hessian lets the implicit function theorem solve for the graph (our own argument). The parametric Morse lemma supplies quadratic coordinates after centering on the graph and subtracting the critical value. For F(u,x) = ux, the full Hessian is invertible but the fiber critical set is u = 0.
+
+**nLab:** [Morse lemma](https://ncatlab.org/nlab/show/Morse+lemma). It says: “The Morse lemma states that for any nondegenerate critical point p of f there is a chart φ: U → ℝⁿ around p such that the function in these coordinates is quadratic”
+
+**Paper or page:** [Local intersections of Lagrangian manifolds correspond to catastrophe theory](https://arxiv.org/abs/1811.10165v5). It says: “There exists a change of coordinates K on a neighbourhood of 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal nondegeneracy excludes quartics
+
+**Remember:** Allow flat tangent directions, but not flat normal directions.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth real function is Morse–Bott along a submanifold of critical points if its Hessian kernel there equals the tangent space. The Hessian is the form of second derivatives at a critical point.
+
+**Problem.** Near each point of that submanifold, smooth coordinates express the function as its critical value plus signed squares of the normal coordinates.
+
+**How the definition helps.** The kernel condition makes the normal Hessian invertible, so the Morse lemma with parameters supplies normal coordinates varying smoothly along the submanifold (our own explanation). For y⁴ the critical line is smooth, but the normal Hessian vanishes.
+
+**Paper or page:** [Gradient Flow in Morse and Analytic Settings](https://arxiv.org/abs/2311.09968v1). It says: “Let f: M → ℝ be Morse–Bott and N a l-dimensional critical submanifold of f with index λ.”
+
+**Sources:**
+
+- [Raoul Bott, Nondegenerate Critical Manifolds](https://doi.org/10.2307/1969631)
+
+### Distinct critical values give stability
+
+**Remember:** Give each critical point its own height.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58K25 (Stability theory for manifolds), 58K05. arXiv math.DG. Level 3: graduate.
+
+**Definition.** An excellent Morse function has an invertible Hessian at every critical point. It takes distinct values at distinct critical points.
+
+**Problem.** On a closed smooth manifold, every sufficiently small smooth perturbation of an excellent Morse function differs from it by source and target coordinate changes.
+
+**How the definition helps.** Distinct critical values allow one target coordinate change to adjust each critical height independently (our own explanation). For cos(2θ) on the circle, raising one of the two equal maxima creates an extra critical value. The stability proof uses Morse coordinates at critical points and integrates a vector field elsewhere.
+
+**Wikipedia:** [Morse theory](https://en.wikipedia.org/wiki/Morse_theory). It says: “two critical points are at the same height, which can be resolved by a slight perturbation of f.”
+
+**Sources:**
+
+- [Martin Golubitsky and Victor Guillemin, Stable Mappings and Their Singularities](https://doi.org/10.1007/978-1-4615-7904-5)
+
+### Multijets rule out quadruple points
+
+**Remember:** Test coincidences only at distinct source points.
+
+*Rules out counterexamples.* MSC 58K30 (Global theory of singularities), 57R35. arXiv math.GT. Level 3: graduate.
+
+**Definition.** The four-point multijet of order zero records a map’s values at four distinct ordered source points. A quadruple point occurs when this tuple belongs to the diagonal, where all four entries agree.
+
+**Problem.** For a generic smooth map from a surface to a three-manifold, the four-point multijet is transverse to the diagonal and there are no quadruple points. Here generic means on a set containing a countable intersection of open dense sets in the smooth Whitney topology.
+
+**How the definition helps.** Restricting to distinct points gives a configuration space of dimension eight, too small to meet a codimension-nine diagonal transversely (our own explanation). Transversality means the derivative supplies all directions normal to the diagonal. The multijet transversality theorem gives genericity even though all four entries come from one map.
+
+**nLab:** [transversal maps](https://ncatlab.org/nlab/show/transversal+maps). It says: “Maps f: X → Z, g: Y → Z with dim(X)+dim(Y) &lt; dim(Z) are transversal iff their images are disjoint.”
+
+**Sources:**
+
+- [John N. Mather, Stability of C∞ Mappings V. Transversality](https://doi.org/10.1016/0001-8708(70)90028-9)
+
+### Intrinsic Hessians recognize folds
+
+**Remember:** Test the second derivative in the lost directions.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For a smooth map from dimension n to dimension p ≤ n, consider a point where the derivative has rank p−1. Restrict the second derivative to kernel directions and project its values modulo the image of the first derivative. A fold point has a nondegenerate resulting form, meaning its kernel is zero.
+
+**Problem.** Near a fold point, smooth source and target coordinates put the map in the form (u,x) ↦ (u,Q(x)) for a nondegenerate quadratic form Q.
+
+**How the definition helps.** Straightening the first p−1 outputs turns the projected second derivative into the Hessian in the remaining variables (our own argument). The parametric Morse lemma gives the quadratic part, and subtracting the critical value in the target finishes the change. At the origin of (u,x) ↦ (u,x³ + ux), rank alone misses the vanishing second derivative.
+
+**Paper or page:** [Local intersections of Lagrangian manifolds correspond to catastrophe theory](https://arxiv.org/abs/1811.10165v5). It says: “There exists a change of coordinates K on a neighbourhood of 0”
+
+**Sources:**
+
+- [Martin Golubitsky and Victor Guillemin, Stable Mappings and Their Singularities](https://doi.org/10.1007/978-1-4615-7904-5)
 
 ### In smooth sets, every differential form comes from one universal form
 
@@ -880,6 +2086,120 @@
 **Sources:**
 
 - [P. Hajłasz, J. Mirra and A. Schikorra, Hölder continuous mappings, differential forms and the Heisenberg groups, arXiv:2503.11506 (2025)](https://arxiv.org/abs/2503.11506)
+
+### A second differential gives formality
+
+**Remember:** Use forms closed under the second differential.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** On a complex manifold, d splits into components ∂ and ∂̄, and dᶜ means i(∂̄ − ∂). Forms killed by dᶜ form an algebra with differential d. An algebra is formal if a chain of maps preserving multiplication and differentials links it to its cohomology and induces isomorphisms on cohomology.
+
+**Problem.** The real de Rham algebra of a compact Kähler manifold is formal.
+
+**How the definition helps.** The intermediate algebra supplies both maps needed for formality without choosing multiplicative harmonic representatives. Our own explanation uses inclusion into all forms and projection onto dᶜ-cohomology. The ddᶜ lemma says a form closed under both derivatives and exact under either is a double derivative. It makes the induced differential zero and both maps isomorphisms on cohomology.
+
+**Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “A related result is that every compact Kähler manifold is formal in the sense of rational homotopy theory.”
+
+**Sources:**
+
+- [P. Deligne, P. Griffiths, J. Morgan, and D. Sullivan, Real homotopy theory of Kähler manifolds (1975)](https://doi.org/10.1007/BF01389853)
+
+### Equivalent metrics preserve reduced cohomology
+
+**Remember:** Equivalent norms have the same closed exact forms.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** Two metrics are uniformly equivalent if each bounds the other by a constant multiple at every point. Reduced L² cohomology identifies square-integrable closed forms that differ by a norm limit of derivatives.
+
+**Problem.** For a fixed closed exterior derivative, uniformly equivalent metrics give the same reduced L² cohomology. Their harmonic spaces are canonically isomorphic.
+
+**How the definition helps.** The quotient compares harmonic spaces without comparing their metric-dependent adjoints. Equivalent norms give the same limits of derivatives. In our own argument, orthogonal projection selects the unique representative perpendicular to all derivatives for each metric.
+
+**Paper or page:** [Geometric singularities and Hodge theory](https://arxiv.org/abs/2407.01170v3). It says: “also mutually bounded and yield equivalent L²-spaces which are equal as sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Green operators give current primitives
+
+**Remember:** Invert the Laplacian, then apply the adjoint.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** Currents are differential forms with distribution coefficients. The Green operator G inverts the Hodge Laplacian on the space perpendicular to its kernel and acts as zero on the kernel.
+
+**Problem.** On a closed oriented Riemannian manifold, each exact current S satisfies S = d(d⁎GS), where d⁎ is the adjoint of d.
+
+**How the definition helps.** The inverse selects an explicit primitive from all possible solutions of dT = S. In our own derivation, exactness removes the harmonic component, so (dd⁎ + d⁎d)GS = S. Since G commutes with d and dS = 0, only dd⁎GS remains. Elliptic theory extends these identities to currents.
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “Let S = dT be an exact current with S ∈ 𝒟′ₖ(M). Then in fact S = d(d\*G(S)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic duality reverses twists
+
+**Remember:** The star reverses the sign of the twist.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** For a closed real one-form θ, the twisted derivative sends α to dα + θ∧α. A twisted harmonic form lies in the kernels of this derivative and its metric adjoint.
+
+**Problem.** On a closed oriented Riemannian n-manifold, the Hodge star bijects θ-twisted harmonic k-forms with (−θ)-twisted harmonic (n − k)-forms.
+
+**How the definition helps.** The joint-kernel definition lets the star exchange two first-order equations without expanding the twisted Laplacian. Our own calculation uses the adjoint of multiplication by θ under the wedge product. This adjoint contracts a form with the vector dual to θ, giving the opposite twist under the star.
+
+**Paper or page:** [Morse-Novikov cohomology on foliated manifolds](https://arxiv.org/abs/2202.04508v1). It says: “the Hodge star operator ⋆𝓕 satisfies ⋆𝓕 Δ𝓕,ω = Δ𝓕,−ω ⋆𝓕.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lefschetz harmonic forms preserve symmetry
+
+**Remember:** Use the lowering commutator to define harmonicity.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** In a Lefschetz complex, L and Λ are the raising and lowering operators of a graded representation of sl₂, the traceless two-by-two matrices. They change degree by two in opposite directions. A vector is Lefschetz harmonic if both the differential d and the commutator dΛ − Λd kill it.
+
+**Problem.** Suppose d commutes with L in a Lefschetz complex centered at degree n. Then Lⁿ⁻ᵏ bijects harmonic vectors in degrees k and 2n − k for 0 ≤ k ≤ n.
+
+**How the definition helps.** Using the commutator as the second harmonicity equation makes the harmonic space itself a representation. In our own argument, the commutator identities show that both L and Λ preserve the common kernel. The representation theorem then pairs opposite degrees without choosing cohomology representatives.
+
+**Paper or page:** [HKT manifolds: Hodge theory, formality and balanced metrics](https://arxiv.org/abs/2207.09168v2). It says: “the space of Lefschetz harmonic p-forms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonlinear classes have unique minimizers
+
+**Remember:** A closed class has one shortest form.
+
+*Rules out counterexamples.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** An Lᵖ form has integrable pth power of its length. Reduced Lᵖ cohomology takes weakly closed forms modulo limits of derivatives of Lᵖ forms with Lᵖ derivative. Weak derivatives are defined by integration against smooth test forms.
+
+**Problem.** On a complete Riemannian manifold, each reduced Lᵖ class has a unique form of least norm when 1 &lt; p &lt; ∞.
+
+**How the definition helps.** Closing the space of derivatives makes every class a closed affine set. Our own argument uses uniform convexity of Lᵖ to give each such set a unique nearest point to zero. Differentiating the norm to the pth power along exact forms gives the nonlinear harmonic equation.
+
+**Paper or page:** [Lp -cohomology and the geometry of p-harmonic forms](https://arxiv.org/abs/2403.19481v2). It says: “such that \[h\]ᵣₑ𝒹 = φ, and d\*(\|h\|ᵖ⁻²h) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonlinear stars swap conjugate exponents
+
+**Remember:** Raise the length before swapping the degree.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** For 1 &lt; p &lt; ∞, the nonlinear Hodge star sends h to ⋆(\|h\|ᵖ⁻²h) and sends zero to zero. The ordinary star ⋆ exchanges complementary degrees using the metric and orientation. A p-harmonic form h satisfies dh = 0 and d⁎(\|h\|ᵖ⁻²h) = 0 against smooth test forms, where d⁎ is the adjoint.
+
+**Problem.** On a complete oriented Riemannian n-manifold, the nonlinear star bijects Lᵖ p-harmonic k-forms with Lᑫ q-harmonic (n − k)-forms. Here q = p/(p − 1).
+
+**How the definition helps.** The length factor lets the ordinary star exchange the two nonlinear equations. In our own proof, (p − 1)q = p gives integrability, and (p − 1)(q − 1) = 1 reverses the length change. Applying the ordinary star twice contributes only a degree-dependent sign.
+
+**Paper or page:** [Lp -cohomology and the geometry of p-harmonic forms](https://arxiv.org/abs/2403.19481v2). It says: “Then ⋆ₚ defines a bijective”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Jet pullbacks classify formal solutions
 
@@ -1024,6 +2344,60 @@
 **Sources:**
 
 - [Andreas Kriegl, Peter W. Michor, The Convenient Setting of Global Analysis, AMS Mathematical Surveys and Monographs 53, 1997 (§42)](https://doi.org/10.1090/surv/053)
+
+### Curve tangents exclude higher derivations
+
+**Remember:** Velocities see first derivatives, but some derivations see second derivatives.
+
+*Rules out counterexamples.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds). arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A kinematic tangent vector is the velocity of a smooth curve through a point. An operational tangent vector is a bounded linear functional on smooth function germs satisfying the product rule there. A germ records only the values of a function near the point.
+
+**Problem.** In an infinite-dimensional real Hilbert space, every velocity gives a distinct operational tangent vector, but some operational tangent vectors come from no velocity.
+
+**How the definition helps.** Curve velocities use only first derivatives and are distinguished by linear functions. In our own construction, apply a bounded functional to the operator representing the second derivative. Hahn–Banach supplies such a functional vanishing on compact operators and taking value one on the identity. The product rule holds because its extra terms have finite rank, while the squared norm detects this second derivative.
+
+**nLab:** [operational tangent space](https://ncatlab.org/nlab/show/operational+tangent+space). It says: “For more general smooth spaces, these are no longer equivalent.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Dual evaluation is conveniently smooth
+
+**Remember:** Bounded products suffice for smooth evaluation, even without joint continuity.
+
+*Makes the theorem clean to state or prove.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds), 46A20. arXiv math.FA. Level 4: research.
+
+**Definition.** A map is conveniently smooth if it sends smooth curves to smooth curves. For a complete space with a topology given by countably many seminorms, called a Fréchet space, take its continuous dual. Give the dual the topology of uniform convergence on bounded sets.
+
+**Problem.** Evaluation, which sends a vector and a continuous linear functional to the functional’s value there, is conveniently smooth for every Fréchet space. For real sequences with the product topology, evaluation fails to be jointly continuous.
+
+**How the definition helps.** The dual topology bounds evaluation on each product of bounded sets, and bounded bilinear maps are conveniently smooth. In our own example, each basic sequence neighborhood leaves some coordinate unrestricted. Every dual neighborhood contains a nonzero multiple of evaluation at that coordinate, so the pairing is unbounded on the two neighborhoods.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “Multilinear mappings are smooth if and only if they are bounded”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Strong symplectic forms straighten locally
+
+**Remember:** Invert contraction to obtain the vector field that straightens the form.
+
+*Rules out counterexamples.* MSC 58B20 (Riemannian, Finsler and other geometric structures on infinite-dimensional manifolds), 53D05. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A closed smooth two-form on a Banach manifold is strongly symplectic if pairing with it identifies each tangent space with its continuous dual. This identification and its inverse must be bounded. A weak symplectic form requires only an injective pairing.
+
+**Problem.** Every strong symplectic form on a Banach manifold is constant in suitable local coordinates.
+
+**How the definition helps.** An invertible pairing lets Moser’s argument solve for a vector field from a prescribed one-form. In our own account, interpolate between the given form and its constant value at the center of a chart. Nearby pairings stay invertible, and integrating the resulting vector field gives the required coordinates. Marsden constructed a weak symplectic form with no such chart.
+
+**nLab:** [Darboux's theorem](https://ncatlab.org/nlab/show/Darboux%27s+theorem). It says: “for (X, ω) a symplectic manifold there are local charts in which the symplectic form ω takes the form”
+
+**Sources:**
+
+- [Jerrold E. Marsden, Darboux’s Theorem Fails for Weak Symplectic Forms (1972)](https://doi.org/10.2307/2037864)
 
 ### Ellwood freeness equals the algebraic Galois condition on Peter–Weyl elements
 
@@ -1446,6 +2820,186 @@
 
 - [Ali H. Chamseddine and Alain Connes, The spectral action principle, Communications in Mathematical Physics 186 (1997)](https://doi.org/10.1007/s002200050126)
 
+### Tame estimates permit local inversion
+
+**Remember:** Control the loss of derivatives before trying to invert the map.
+
+*Rules out counterexamples.* MSC 58C15 (Implicit function theorems; global Newton methods on manifolds), 58B10. arXiv math.FA, math.DG. Level 4: research.
+
+**Definition.** On smooth periodic functions, let ‖f‖ₙ measure the largest absolute value of f and its first n derivatives. A tame map satisfies local bounds ‖P(f)‖ₙ ≤ Cₙ(1 + ‖f‖ₙ₊ᵣ) for large n with fixed r. Smooth tame maps obey such bounds for the map and all its derivatives, including their direction arguments.
+
+**Problem.** A smooth tame map between open sets of smooth periodic functions has smooth tame local inverses if its derivatives have smoothly tame inverses. This condition concerns the map sending a base function and a right-hand side to the solution of the linearized equation.
+
+**How the definition helps.** A fixed shift bounds the loss of derivatives, so smoothing can compensate for that loss during iteration. In our own account, Hamilton’s estimates prove that the resulting approximations converge. The hypotheses control the inverse derivative throughout a neighborhood.
+
+**Wikipedia:** [Nash–Moser theorem](https://en.wikipedia.org/wiki/Nash%E2%80%93Moser_theorem). It says: “Then P is locally invertible, and each local inverse P⁻¹ is a smooth tame map.”
+
+**Sources:**
+
+- [Richard S. Hamilton, The Inverse Function Theorem of Nash and Moser (1982)](https://www.ams.org/bull/1982-07-01/S0273-0979-1982-15004-2)
+
+### Diffeomorphisms integrate time-dependent fields
+
+**Remember:** Solve the flow one particle at a time.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The Lie algebra of a Lie group is its tangent space at the identity. A group is regular if every smooth time-dependent Lie algebra element integrates from the identity and its time-one endpoint depends smoothly on the input. Integration here means that right translation back to the identity recovers the prescribed velocity.
+
+**Problem.** The smooth diffeomorphism group of a closed finite-dimensional manifold is regular.
+
+**How the definition helps.** For diffeomorphisms, the evolution equation follows one point at a time under a time-dependent vector field. In our own account, compactness gives existence throughout the time interval. Smooth dependence on parameters gives smooth endpoints for every smooth family of inputs, which is the curve test for smoothness.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “For each compact manifold M, the diffeomorphism group Diff(M) is a regular Lie group.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Extra Sobolev derivatives permit smooth inversion
+
+**Remember:** Spend one input derivative for each derivative of inversion.
+
+*Rules out counterexamples.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** On a closed n-dimensional manifold, a Sobolev diffeomorphism of integer order s has square-integrable weak derivatives through order s in local coordinates. Its inverse has the same regularity, and s exceeds n/2 + 1. Weak derivatives are derivatives defined by integration against smooth test functions.
+
+**Problem.** For each nonnegative integer k, inversion from order s + k to order s is k times continuously differentiable.
+
+**How the definition helps.** The extra input derivatives supply the spatial derivatives needed when differentiating inversion. In our own circle example, rotating the output of a diffeomorphism translates the argument of its inverse. Differentiating this translation in the order-s norm requires one further square-integrable derivative. Sobolev estimates for composition establish the positive result.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “𝒟ˢ⁺ᵏ(M) → 𝒟ˢ(M) ; ϕ ↦ ϕ⁻¹ is Cᵏ-smooth.”
+
+**Sources:**
+
+- [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278)
+
+### Fixed volume gives a retract
+
+**Remember:** The volume forms contract while the preserving factor stays fixed.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** Fix a positive volume form μ and assign to each orientation-preserving diffeomorphism φ its pullback φ∗μ. The forms so obtained have the same total volume as μ. The volume-preserving group consists exactly of maps with pullback μ.
+
+**Problem.** On a closed connected oriented manifold, the orientation-preserving diffeomorphism group deforms continuously onto the μ-preserving subgroup while fixing that subgroup throughout.
+
+**How the definition helps.** Positive forms of fixed total volume form a convex set, so straight-line interpolation contracts that set to μ. In our own proof, Moser’s construction selects a diffeomorphism pulling μ back to each form, continuously and with the identity at μ. Composing φ on the right with the inverse of that selection at φ∗μ gives a volume-preserving factor. Contract the form while keeping this factor fixed.
+
+**nLab:** [volume preserving diffeomorphism](https://ncatlab.org/nlab/show/volume+preserving+diffeomorphism). It says: “This inclusion is a weak homotopy equivalence, in fact a deformation retract.”
+
+**Sources:**
+
+- [Jürgen Moser, On the Volume Elements on a Manifold (1965)](https://doi.org/10.1090/S0002-9947-1965-0182927-5)
+
+### Invariant charts model bundle automorphisms
+
+**Remember:** Equivariant coordinates turn a commuting map into an invariant field.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A principal bundle automorphism is a diffeomorphism of its total space commuting with the structure group action. An invariant metric measures lengths equally before and after that action. Moving each point along a short geodesic gives coordinates for diffeomorphisms near the identity.
+
+**Problem.** For a compact structure group and closed base, bundle automorphisms form a closed smooth subgroup of all diffeomorphisms of the total space. Its tangent vectors at the identity are exactly the smooth vector fields preserved by the structure group.
+
+**How the definition helps.** The invariant metric sends transformed geodesics to geodesics, so its coordinates turn the automorphism condition into invariance of a vector field. In our own proof, averaging over the compact group supplies the metric and a projection onto invariant fields. Commuting with each group element is a closed condition.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “is a closed tame Fréchet Lie subgroup of Diff(P)”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
+
+### Orientation covers carry fluid geodesics
+
+**Remember:** Lift a fluid motion and let sheet symmetry keep it upstairs.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The orientation cover has two points above each point of a manifold, one for each local orientation. A diffeomorphism lifts by carrying each orientation to its image under the derivative. A volume-preserving lift preserves the cover’s volume form and commutes with the sheet exchange.
+
+**Problem.** For a closed nonorientable Riemannian manifold, the lifted volume-preserving group is totally geodesic for the cover’s kinetic-energy metric. Every geodesic starting tangent to that subgroup stays in it while it exists.
+
+**How the definition helps.** Conjugation by the sheet exchange preserves kinetic energy and fixes exactly the volume-form-preserving lifts. In our own proof, this symmetry takes a geodesic starting tangent to the subgroup to another with the same initial data. Uniqueness for the fluid equation makes the two geodesics coincide.
+
+**Paper or page:** [Curvature of Measure-Preserving Diffeomorphism Groups of Non-Orientable Surfaces](https://arxiv.org/abs/2501.06599). It says: “is a totally geodesic submanifold”
+
+**Sources:**
+
+- [Curvature of Measure-Preserving Diffeomorphism Groups of Non-Orientable Surfaces](https://arxiv.org/abs/2501.06599)
+
+### Slices keep asymmetry open
+
+**Remember:** On a slice, nearby symmetries can only come from old ones.
+
+*True by definition.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The stabilizer of a configuration consists of the transformations fixing it. A slice is a local submanifold through the configuration, preserved by its stabilizer, whose translates cover a neighborhood. Only transformations in the stabilizer can move the slice to meet itself.
+
+**Problem.** Consider a Riemannian metric and a principal bundle connection over a closed manifold, with compact structure group. The pairs whose only symmetry is the identity form an open set.
+
+**How the definition helps.** On the slice, any symmetry must carry the slice to meet itself, so it belongs to the original stabilizer. Elsewhere on its translates, stabilizers differ only by conjugation. In our own proof, the slice theorem replaces a separate search for new symmetries at every nearby pair.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “The subset of elements of Conf(P) with a trivial symmetry group is open in Conf(P).”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
+
+### Smooth curves keep compact support
+
+**Remember:** A compact time interval needs only one compact support.
+
+*Rules out counterexamples.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds), 46A13. arXiv math.DG. Level 4: research.
+
+**Definition.** A compactly supported diffeomorphism equals the identity outside some compact set. Its usual group charts use compactly supported vector fields. Their topology is the locally convex inductive limit, the finest locally convex topology making each fixed-support space include continuously.
+
+**Problem.** For a smooth curve of compactly supported diffeomorphisms on a second-countable finite-dimensional manifold, one compact set contains every support on a compact time interval.
+
+**How the definition helps.** Every bounded set of chart vectors lies in one fixed-support space. In our own proof, cover the time interval by finitely many compact subintervals on which translated charts apply. Each chart curve has bounded image there, and the finitely many supports together with those of the chart centers have compact union.
+
+**nLab:** [compactly supported mapping space](https://ncatlab.org/nlab/show/compactly+supported+mapping+space). It says: “on those maps that have compact support.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Sobolev inverses restrict to smooth data
+
+**Remember:** If the inverses agree on every level, they agree on the intersection.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** On the flat two-torus, the smooth volume-preserving group is the intersection of its Sobolev diffeomorphism groups of all sufficiently high integer orders. Each order controls square-integrable derivatives through that order. All these norms together give the smooth group its topology.
+
+**Problem.** For the kinetic-energy metric, the map taking a small initial velocity to its geodesic endpoint at time one has a local inverse. Both maps are continuously differentiable in the Fréchet sense on smooth data.
+
+**How the definition helps.** Taking the intersection of Sobolev spaces lets compatible local inverses give one inverse on smooth data. In our own account, the hard step is showing that one low-order neighborhood suffices at every higher order. This requires regularity estimates for the endpoint map and its derivative in both directions.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “admits a well-defined exponential map which is a local C¹ꜰ-diffeomorphism at the identity.”
+
+**Sources:**
+
+- [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278)
+
+### Normal graphs chart unparametrized submanifolds
+
+**Remember:** Keep the normal displacement and discard the change of labels.
+
+*Makes the theorem clean to state or prove.* MSC 58D10 (Spaces of embeddings and immersions), 58D05. arXiv math.DG. Level 4: research.
+
+**Definition.** An unparametrized embedded submanifold records the image of an embedding. Near a fixed compact image, a normal graph moves each point by a short vector perpendicular to that image. A tubular neighborhood supplies these coordinates.
+
+**Problem.** Smooth embeddings of a closed manifold into a finite-dimensional manifold form a principal bundle over their images. Locally each embedding corresponds smoothly to an image and a diffeomorphism of the source.
+
+**How the definition helps.** Projection back onto the reference image fixes one parametrization for each nearby image. Any embedding with that image differs from the chosen one by a unique source diffeomorphism. In our own account, tubular coordinates and smooth inversion of diffeomorphisms give smooth dependence of both factors.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “is a principal fiber bundle”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
 ### Local additions make spaces of smooth maps manifold-like
 
 **Remember:** The space carries its own charts: each tangent vector v points to η(v).
@@ -1461,6 +3015,205 @@
 **nLab:** [locally additive space](https://ncatlab.org/nlab/show/locally+additive+space). It says: “Let X be a locally kinematic space and S a smoothly compact space. Then C∞(S,X) is again a locally kinematic space.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Postcomposition is smooth
+
+**Remember:** A tangent vector at each image point gives one chart coordinate.
+
+*Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A local addition sends each small tangent vector at y to a nearby point, and sends zero to y. The base point and the resulting point together give smooth coordinates near the diagonal. A chart around a map g therefore describes nearby maps by vector fields along g.
+
+**Problem.** Let X be a closed manifold and let M and N be smooth manifolds with local additions. Each smooth map f from M to N induces a smooth map g ↦ f ∘ g on smooth maps from X.
+
+**How the definition helps.** In these charts, composition applies a smooth map separately to the vector at each point of X. Our own explanation uses the theorem that smooth maps between fibers act smoothly on spaces of smooth sections.
+
+**Paper or page:** [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587). It says: “If f : M → N is smooth, then the pushforward f∗ : C∞(X,M) → C∞(X,N), f∗(g) = f ∘ g, is smooth.”
+
+**Sources:**
+
+- [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587)
+
+### Submersions lift to mapping spaces
+
+**Remember:** Choose chart coordinates that make projection act one tangent vector at a time.
+
+*Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A submersion looks in local coordinates like a projection from a product onto one factor. A local addition gives coordinates near each point using short tangent vectors there. For a map p, compatible local additions send a vector and its derivative image to points related by p.
+
+**Problem.** Let p be a smooth surjective submersion between Banach manifolds admitting smooth partitions of unity. For every closed manifold X, composition g ↦ p ∘ g is a submersion on smooth maps from X.
+
+**How the definition helps.** Compatible coordinates turn composition with p into a linear projection on vector fields along g. In our own account, the work is constructing those coordinates and a smooth linear right inverse for that projection.
+
+**Paper or page:** [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587). It says: “If p : M → N is a smooth surjective submersion, then the pushforward p∗ : C∞(X,M) → C∞(X,N), p∗(f) = p ∘ f is a submersion.”
+
+**Sources:**
+
+- [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587)
+
+### Coincident genus levels force critical pairs
+
+**Remember:** Repeated levels concentrate genus on the critical set.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 4: research.
+
+**Definition.** For a symmetric set avoiding zero, genus is the least k admitting a continuous odd map into ℝᵏ avoiding zero. Odd means h(−x) = −h(x), and genus is infinite if no k works. The kth genus level is the infimum of maxima on compact symmetric sets of genus at least k.
+
+**Problem.** For an even continuously differentiable Hilbert space function f, suppose genus levels k through k+r coincide at finite c &lt; f(0). If every sequence with values approaching c and derivatives approaching zero has a convergent subsequence, the critical set there has genus at least r+1.
+
+**How the definition helps.** Genus bounds how much a test set can lose when one removes a neighborhood of the critical set (our own). The compact critical set has a symmetric neighborhood of the same genus (our own). If that genus were at most r, removing the neighborhood from a nearly optimal test would leave genus at least k (our own). An odd deformation would push the remainder below c, contradicting the kth level (our own).
+
+**Paper or page:** [Existence of Eigenvalues for Anisotropic and Fractional Anisotropic Problems via Ljusternik-Schnirelmann Theory](https://arxiv.org/abs/2309.14301). It says: “such that φ(u) = c has genus ≥ k + 1.”
+
+**Sources:**
+
+- [I. Ceresa Dussel, J. Fernandez Bonder, Existence of Eigenvalues for Anisotropic and Fractional Anisotropic Problems via Ljusternik-Schnirelmann Theory](https://arxiv.org/abs/2309.14301)
+- [Charles V. Coffman, A minimum-maximum principle for a class of non-linear integral equations (1969)](https://doi.org/10.1007/BF02786802)
+
+### Homotopy-stable families localize minimax sequences
+
+**Remember:** Preserve the tests so you can deform them near a barrier.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 4: research.
+
+**Definition.** A homotopy-stable family here consists of nonempty compact test sets containing a fixed closed boundary B. Every continuous deformation starting at the identity and fixing B throughout takes each test to another test. For a continuously differentiable function f on a complete connected Riemannian Hilbert manifold, let c be the finite infimum of test maxima.
+
+**Problem.** Suppose a closed set F meets every test outside B and sup f(B) ≤ c ≤ inf f(F). For tests Aₙ with maxima approaching c, there are xₙ approaching F and Aₙ in distance, with f(xₙ) → c and ‖df(xₙ)‖ → 0.
+
+**How the definition helps.** Any deformation fixing B preserves the test family and therefore preserves its obligation to meet F outside B (our own). The localized minimax theorem constructs a deformation near a nearly optimal test if no points near its barrier satisfy the required estimates (our own). Lowering the test there would contradict the barrier inequality (our own).
+
+**Paper or page:** [Normalized solutions to a class of Kirchhoff equations with Sobolev critical exponent](https://arxiv.org/abs/2103.08106). It says: “Let φ be a C¹-functional on a complete connected C¹-Finsler manifold X and consider a homotopy-stable family ℱ with an extended closed boundary B.”
+
+**Sources:**
+
+- [Gongbao Li, Xiao Luo, Tao Yang, Normalized solutions to a class of Kirchhoff equations with Sobolev critical exponent](https://arxiv.org/abs/2103.08106)
+
+### Morse–Bott perturbations add indices
+
+**Remember:** Normal and tangent negative directions count separately.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 4: research.
+
+**Definition.** A critical submanifold is Morse–Bott if its Hessian, the second derivative, has kernel equal to the tangent space and an invertible normal part. The index counts the greatest dimension of a subspace where the Hessian is negative definite.
+
+**Problem.** Near a compact Morse–Bott critical submanifold of finite index in Hilbert space, add a small positive multiple of a smooth function of nearest-point projection. At each nondegenerate critical point of the added function on the submanifold, the new index equals the normal index plus its tangent index.
+
+**How the definition helps.** Projection makes the added Hessian act only on tangent directions at these points (our own). The original Hessian acts only on normal directions, so the negative dimensions add (our own). The perturbation theorem supplies a neighborhood where these account for all critical points when the added function has only nondegenerate critical points (our own).
+
+**Paper or page:** [Morse theory for the Allen-Cahn functional](https://arxiv.org/abs/2310.17096). It says: “the Morse index of fδ at any x₀ ∈ C is ind(f,x₀) + ind(gᵢ,x₀)”
+
+**Sources:**
+
+- [Jingwen Chen, Pedro Gaspar, Morse theory for the Allen-Cahn functional](https://arxiv.org/abs/2310.17096)
+
+### Bott twists split iteration indices
+
+**Remember:** An iterate splits into one sector for each root of unity.
+
+*True by definition.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 4: research.
+
+**Definition.** For a unit complex number z, the twisted index uses complex variation fields along one period of a closed geodesic satisfying V(1) = zV(0). It counts the greatest complex dimension on which the second derivative of energy is negative definite.
+
+**Problem.** The index of a closed geodesic traversed m times equals the sum of its twisted indices over all mth roots of unity.
+
+**How the definition helps.** Each twisted boundary condition selects one eigenspace of the shift by one period (our own). Instead of counting negative directions over all m periods, Fourier decomposition splits the calculation into these one-period spaces (our own). The energy Hessian respects the shift and restricts to a positive multiple of the one-period form on each space (our own).
+
+**Wikipedia:** [Closed geodesic](https://en.wikipedia.org/wiki/Closed_geodesic). It says: “If γ is a critical point of E, so are the reparametrized curves γᵐ, for each m ∈ ℕ, defined by γᵐ(t) := γ(mt).”
+
+**Sources:**
+
+- [Raoul Bott, On the iteration of closed geodesics and the Sturm intersection theory (1956)](https://doi.org/10.1002/cpa.3160090204)
+
+### Negative bundles describe sublevel crossings
+
+**Remember:** One negative disk at each critical loop replaces one cell.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 4: research.
+
+**Definition.** A Morse–Bott family of critical loops has second derivative with kernel tangent to the family and invertible normal part. Its negative bundle consists of the normal directions in the negative spectral subspace at each loop.
+
+**Problem.** Suppose a single compact Morse–Bott component accounts for all critical loops at an isolated energy level on a closed Riemannian manifold. With coefficients modulo two, relative homology across that level in degree j equals the component’s homology in degree j−λ, where λ is the negative rank.
+
+**How the definition helps.** Each negative fiber supplies the disk attached at its critical loop (our own). The Morse–Bott attachment theorem computes relative homology between nearby upper and lower energy sublevels from these disks and their boundary spheres (our own). The Thom isomorphism shifts homology by the fiber dimension λ, with no orientation assumption for coefficients modulo two (our own).
+
+**Wikipedia:** [Morse theory](https://en.wikipedia.org/wiki/Morse_theory). It says: “the kernel of the Hessian at a critical point equals the tangent space to the critical submanifold.”
+
+**Sources:**
+
+- [Raoul Bott, Nondegenerate Critical Manifolds (1954)](https://doi.org/10.2307/1969631)
+- [Wolfgang Ziller, The free loop space of globally symmetric spaces (1977)](https://doi.org/10.1007/BF01390161)
+
+### Bubble trees restore compactness
+
+**Remember:** Keep each rescaled sphere as part of the limit.
+
+*Makes the theorem clean to state or prove.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A harmonic bubble tree consists of a harmonic map on the original surface and finitely many harmonic spheres joined at points. The maps agree at each joint, and their energies add. A harmonic map is a critical point of Dirichlet energy.
+
+**Problem.** Take a sequence of harmonic maps from a fixed closed Riemannian surface to a closed Riemannian manifold with uniformly bounded energies. After rescaling, a subsequence converges to a harmonic bubble tree whose energy equals the limit of its energies.
+
+**How the definition helps.** The tree keeps both the original limit and the energy seen only after rescaling (our own explanation). The compactness theorem must extract the spheres at the right scales (our own explanation). It must also show that the regions between scales cause no energy loss or gaps in the image (our own explanation).
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “to a smooth harmonic bubble tree map”
+
+**Sources:**
+
+- [T. H. Parker, Bubble tree convergence for harmonic maps (1996)](https://doi.org/10.4310/jdg/1214459224)
+
+### Curvature comparison makes boundary minimizers unique
+
+**Remember:** Midpoint comparison makes two minimizers coincide.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A complete space with shortest paths is CAT(0) when points on triangle sides lie at most as far apart as their Euclidean counterparts. The Euclidean comparison triangle has the same side lengths, and corresponding points divide matching sides in the same proportions.
+
+**Problem.** Fix boundary values on a bounded connected Riemannian domain with nonempty boundary locally given by Lipschitz graphs. Any two finite-energy maps minimizing Dirichlet energy into a CAT(0) space with these boundary values agree almost everywhere.
+
+**How the definition helps.** Triangle comparison makes the midpoint map save energy wherever the distance between two maps varies (our own explanation). The Korevaar–Schoen energy inequality quantifies this saving. Two minimizers cannot save energy, so their distance has zero gradient and vanishes at the boundary. For a spherical target, even smooth boundary data can admit distinct minimizers.
+
+**Paper or page:** [Harmonic maps in singular geometry and rigidity](https://arxiv.org/abs/2510.13708v1). It says: “Then there exists a unique”
+
+**Sources:**
+
+- [N. J. Korevaar and R. M. Schoen, Sobolev spaces and harmonic maps for metric space targets (1993)](https://doi.org/10.4310/cag.1993.v1.n4.a4)
+- [A. Detaille and K. Mazowiecka, Generic non-uniqueness of minimizing harmonic maps from a ball to a sphere](https://arxiv.org/abs/2403.12662v1)
+
+### Half-harmonic maps become free boundary equations
+
+**Remember:** Move the nonlocal equation into a local boundary condition.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** For a smooth circle-valued map on the real line, extend both coordinates harmonically into the upper half-plane. Its half-energy is the Dirichlet energy of this extension, which integrates half the squared derivative. The map is half-harmonic if its half-energy has zero first derivative under every compactly supported variation along the circle.
+
+**Problem.** A smooth map with finite half-energy is half-harmonic exactly when its extension’s outward normal derivative is perpendicular to the circle at each boundary value.
+
+**How the definition helps.** The extension solves the interior Laplace equation, so integration by parts leaves only the boundary derivative (our own explanation). Pairing this derivative with all tangent variations tests exactly whether it is perpendicular to the circle. The Fourier transform identifies this boundary derivative with the square root of the positive Laplace operator.
+
+**Paper or page:** [Non-degeneracy and quantitative stability of half-harmonic maps from ℝ to 𝕊](https://arxiv.org/abs/2107.08521v1). It says: “Let U be the harmonic extension of u”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Small energy excludes harmonic sphere bubbles
+
+**Remember:** A nonconstant bubble costs at least one sphere energy gap.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A harmonic sphere is a map from the round sphere that is stationary for Dirichlet energy. For a closed Riemannian target, its sphere energy gap is the infimum of energies of nonconstant harmonic spheres. Use infinity if none exist.
+
+**Problem.** Consider harmonic maps from a fixed closed Riemannian surface into that target. If their energies share a finite upper bound strictly below the sphere energy gap, a subsequence converges smoothly.
+
+**How the definition helps.** Every nonconstant sphere extracted by rescaling would consume at least the gap (our own explanation). The bubble compactness theorem therefore gives smooth convergence everywhere along a subsequence. Conformal automorphisms of the round sphere can concentrate at one point when their energy equals the gap.
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “There is a constant ε′₀ &gt; 0 depending only on (X,h)”
+
+**Sources:**
+
+- [T. H. Parker, Bubble tree convergence for harmonic maps (1996)](https://doi.org/10.4310/jdg/1214459224)
 
 ### Asking nondegeneracy only across orbits makes Morse theory work on stacks
 
@@ -1535,6 +3288,54 @@
 - [Hsian-Hua Tseng, Chenchang Zhu, Integrating Lie algebroids via stacks, Compositio Math. 142 (2006) 251–270, arXiv:math/0405003](https://arxiv.org/abs/math/0405003)
 - [Marius Crainic, Rui Loja Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620, arXiv:math/0105033](https://arxiv.org/abs/math/0105033)
 
+### Cone ellipticity excludes critical weights
+
+**Remember:** Choose a weight line that misses every conormal root.
+
+*Rules out counterexamples.* MSC 58J05 (Elliptic equations on manifolds, general theory), 58J40. arXiv math.AP. Level 4: research.
+
+**Definition.** Cone ellipticity at weight γ requires invertible leading frequency symbols both in the interior and after radial rescaling at the tip. Freeze coefficients at the tip and replace the radial derivative −t∂ₜ by a complex number z. The resulting operator must be invertible along Re z = d/2 − γ, where d is the cone dimension.
+
+**Problem.** On a compact manifold with isolated cone tips, cone ellipticity makes an order-m cone differential operator Fredholm between the weighted Sobolev spaces. Its target has regularity s − m and weight γ − m when its domain has regularity s and weight γ.
+
+**How the definition helps.** The extra invertibility test detects modes that can concentrate at the tip while escaping interior estimates. In our own explanation, inversion along the weight line controls these modes. The cone inverse construction leaves compact errors, giving closed range and finite-dimensional kernel and cokernel.
+
+**Paper or page:** [A Short Introduction to the Analysis on Manifolds with Conical Singularities](https://arxiv.org/abs/2311.07746v2). It says: “In particular, A then is a Fredholm operator.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Support control closes the range
+
+**Remember:** Bound the support of the preimage by bounding the support of its image.
+
+*Makes the theorem clean to state or prove.* MSC 58J05 (Elliptic equations on manifolds, general theory). arXiv math.AP. Level 4: research.
+
+**Definition.** Support convexity for the transpose P\* means that each compact set K admits a compact set L with the following property. Every compactly supported distribution v with P\*v supported in K is itself supported in L.
+
+**Problem.** A second-order elliptic differential operator P has closed range on smooth functions if its transpose satisfies support convexity. Convergence here means uniform convergence of every derivative on compact sets.
+
+**How the definition helps.** Support convexity confines all relevant transpose preimages to one compact region for each test region. In our own explanation, ellipticity gives local regularity estimates there. The functional analytic closed-range theorem converts those estimates and the support bound into closed range.
+
+**Paper or page:** [Elliptic operators on non-compact manifolds have closed range](https://arxiv.org/abs/2203.07534v1). It says: “we see that M is P\*-convex. By Petersen’s functional analytic argument, it follows that P has closed range.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Averaged pullback preserves square integrability
+
+**Remember:** Average a submersion instead of evaluating on a thin image.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** For a smooth map f between closed oriented Riemannian manifolds, take small tangent disks centered at its image points, one disk per source point. The Hilsum–Skandalis pullback evaluates forms through the exponential map on these disks. It multiplies by a smooth closed form supported inside the disk bundle, of integral one per fiber, then integrates over each disk.
+
+**Problem.** The Hilsum–Skandalis pullback gives a bounded operator on square-integrable forms and commutes with the exterior derivative on smooth forms.
+
+**How the definition helps.** Averaging over disks avoids evaluating a square-integrable form just on the image of f, which may have measure zero. Our own explanation uses the surjective derivative of the disk evaluation map and compact support to bound the integral. Closedness of the averaging form and Stokes’ theorem give commutation with d.
+
+**Paper or page:** [Stability of L²-invariants on stratified spaces](https://arxiv.org/abs/2310.05721v3). It says: “are well-defined and extend to bounded maps on the corresponding L² completions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Symbol exactness makes de Rham elliptic
 
 **Remember:** Contract against a vector that the covector sends to one.
@@ -1550,6 +3351,24 @@
 **nLab:** [elliptic chain complex](https://ncatlab.org/nlab/show/elliptic+chain+complex). It says: “Let X be a compact smooth manifold. Then the de Rham complex is an elliptic complex.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Witt links remove boundary modes
+
+**Remember:** No middle link classes means no ambiguous boundary modes.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A link is the closed manifold forming a cross-section of a cone. The Witt condition requires every even-dimensional link to have zero real cohomology in its middle degree.
+
+**Problem.** Consider a compact space with isolated exact cone tips and Witt links, with no other boundary. After sufficiently shrinking the link metrics, d + d⁎ on smooth forms supported away from the tips has a unique self-adjoint extension.
+
+**How the definition helps.** The Witt condition removes the middle-degree harmonic forms that would require boundary data at a cone tip. Our own explanation uses separation of variables on the cone. Shrinking the links moves the remaining nonzero link eigenvalues beyond the range requiring boundary data. A torus link retains harmonic one-forms under every rescaling.
+
+**Paper or page:** [Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps](https://arxiv.org/abs/2505.14952v1). It says: “satisfies the analytic Witt condition and therefore admits a closed self-adjoint extension”
+
+**Sources:**
+
+- [P. Albin, É. Leichtnam, R. Mazzeo, and P. Piazza, Hodge theory on Cheeger spaces (2018)](https://doi.org/10.1515/crelle-2015-0095)
 
 ### Witten deformation preserves de Rham cohomology
 
@@ -1660,6 +3479,42 @@
 **Sources:**
 
 - [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Heat supertraces give Lefschetz numbers
+
+**Remember:** The nonzero modes come from exact complexes.
+
+*True by definition. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** The Lefschetz number of a map commuting with a differential is its alternating trace on cohomology. Its heat supertrace takes the alternating trace on forms after heat evolution followed by the map.
+
+**Problem.** For a geometric lift commuting with a first-order elliptic complex on a closed manifold, the heat supertrace equals the Lefschetz number at every positive time.
+
+**How the definition helps.** Alternating traces cancel on each positive eigenspace, leaving the trace on harmonic representatives of cohomology. Our own proof projects the lift back onto each Laplacian eigenspace after applying it. For eigenvalue λ &gt; 0, the identity dd⁎ + d⁎d = λ makes that complex exact, so its alternating trace vanishes. Elliptic heat theory justifies summing these traces.
+
+**Wikipedia:** [Atiyah–Bott fixed-point theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott_fixed-point_theorem). It says: “the alternating sum of its traces on each graded part of the homology of the elliptic complex.”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, A Lefschetz Fixed Point Formula for Elliptic Complexes: I (1967)](https://doi.org/10.2307/1970694)
+
+### Nondegenerate points give finite weights
+
+**Remember:** Require invertibility before dividing by the fixed-point determinant.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A fixed point x of a smooth map f is nondegenerate when I − Df is invertible on the tangent space at x. A geometric lift pulls sections back along f and applies a bundle map in each degree.
+
+**Problem.** A geometric lift commuting with an elliptic complex on a closed manifold has a fixed-point formula when all fixed points are nondegenerate. Its alternating cohomology trace equals the sum of alternating fiber traces divided by \|det(I − Df)\| at those points.
+
+**How the definition helps.** Nondegeneracy makes each denominator nonzero and each fixed point isolated, so compactness makes the sum finite. Our own counterexample is the identity map on a circle, where every denominator vanishes. The Atiyah–Bott theorem identifies the local sum with the trace on cohomology.
+
+**Wikipedia:** [Atiyah–Bott fixed-point theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott_fixed-point_theorem). It says: “the non-vanishing of this is a consequence of transversality”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, A Lefschetz Fixed Point Formula for Elliptic Complexes: I (1967)](https://doi.org/10.2307/1970694)
 
 ### Spectral cutoffs handle jumping kernels
 
@@ -2117,6 +3972,24 @@
 
 - [John Phillips, Self-Adjoint Fredholm Operators and Spectral Flow (1996)](https://doi.org/10.4153/CMB-1996-054-4)
 
+### Heat kernels descend by periodization
+
+**Remember:** Sum over the lifts to move heat downstairs.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** On a compact quotient by a lattice, a discrete group of translations, lift each function by composing it with the quotient map. Define heat flow downstairs by applying the covering heat operator to this lift. A Rockland operator is a left-invariant homogeneous differential operator acting injectively on smooth vectors in every nontrivial irreducible unitary representation.
+
+**Problem.** On a graded nilpotent Lie group, a positive Rockland operator of positive degree has a smooth heat kernel. On a compact lattice quotient, its heat kernel sums the covering kernel over all lifts of the source point.
+
+**How the definition helps.** Each lift carries the same initial value, so its kernel weight adds to the weights of the other lifts. Our own derivation splits the covering integral into translates of one region representing the quotient. Rapid kernel decay justifies the sum, and uniqueness identifies the resulting evolution with heat flow downstairs.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “Kₜ(ẋ,ẏ) = ∑<sub>γ ∈ Γ</sub> pₜ(y⁻¹γx),”
+
+**Sources:**
+
+- [Veronique Fischer, Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246)
+
 ### Stochastic completeness rules out unprescribed heat
 
 **Remember:** No lost heat means no unprescribed heat.
@@ -2134,6 +4007,24 @@
 **Sources:**
 
 - [Debdip Ganguly, Yehuda Pinchover, and Prasun Roychowdhury, Stochastic completeness and L¹-Liouville property for second-order elliptic operators](https://arxiv.org/abs/2203.06493v1)
+
+### Twisted heat decays without fixed points
+
+**Remember:** A fixed-point-free map keeps every sampled pair off the diagonal.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** An isometry g acts on functions by composition. Its twisted heat trace takes the trace after composing heat flow with this action. Equivalently, it integrates the heat kernel Kₜ(gx,x) over x.
+
+**Problem.** For a fixed-point-free isometry of a closed Riemannian manifold, the twisted scalar heat trace decays faster than every positive power of time near zero.
+
+**How the definition helps.** The kernel formula samples only pairs a positive distance apart, since the manifold is compact and g has no fixed point. Our own argument uses the small-time Gaussian bound on the heat kernel there. Integrating this bound gives the stated decay.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “the kernel of an integral operator representing the heat operator”
+
+**Sources:**
+
+- [Harold Donnelly, Spectrum and the Fixed Point Sets of Isometries. I (1976)](https://doi.org/10.1007/BF01436198)
 
 ### A bracket-aware principal symbol is invertible exactly for maximally hypoelliptic operators
 
@@ -2153,6 +4044,96 @@
 
 - [Iakovos Androulidakis, Omar Mohsen, Robert Yuncken, A pseudodifferential calculus for maximally hypoelliptic operators and the Helffer-Nourrigat conjecture, arXiv:2201.12060 (2022)](https://arxiv.org/abs/2201.12060v2)
 
+### Bolker injectivity blocks mirror artifacts
+
+**Remember:** One data covector cannot link two input covectors.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** A generalized Radon transform integrates over a smooth family of surfaces. Its canonical relation pairs object frequencies with the data frequencies they produce. The Bolker condition requires projection onto data frequencies to be one-to-one with injective derivative.
+
+**Problem.** For a smoothly localized, properly supported generalized Radon transform satisfying the Bolker condition, the transform followed by its adjoint is pseudodifferential.
+
+**How the definition helps.** Injectivity prevents two object frequencies from matching the same data frequency. In our own argument, the derivative condition allows smooth composition of the relations, leaving only identical object frequencies paired. The Fourier integral composition theorem then identifies the operator. Circles centered on a line illustrate the failure because reflected points produce identical measurements.
+
+**Paper or page:** [Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity](https://arxiv.org/abs/2212.00243v1). It says: “is an FIO satisfying the Bolker condition if D is disjoint from every tangent plane to S.”
+
+**Sources:**
+
+- [James W. Webber, Sean Holman and Eric Todd Quinto, Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity (2023)](https://doi.org/10.1016/j.jfa.2023.110056)
+
+### Eigenlines detect failed diagonalization
+
+**Remember:** An eigenline can exist without a global eigenvector.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A Hermitian leading symbol is a matrix of highest-order frequency terms equal to its conjugate transpose. For an everywhere simple eigenvalue, its one-dimensional complex eigenspaces form the eigenline bundle over all nonzero covectors.
+
+**Problem.** A smooth global unit eigenvector exists exactly when the eigenline bundle has zero first Chern class, the integer cohomology class classifying complex line bundles.
+
+**How the definition helps.** Collecting the eigenspaces into a bundle turns the eigenvector choice into the question of whether that bundle is trivial. In our own explanation, a global unit eigenvector gives a basis in every fiber. The classification theorem for complex line bundles supplies the cohomological test.
+
+**Paper or page:** [Topological obstructions to the diagonalisation of pseudodifferential systems](https://arxiv.org/abs/2203.16957v3). It says: “the Euler class e ∈ H²(ℂPᵐ⁻¹) of the circle bundle”
+
+**Sources:**
+
+- [Matteo Capoferri, Grigori Rozenblum, Nikolai Saveliev and Dmitri Vassiliev, Topological obstructions to the diagonalisation of pseudodifferential systems (2022)](https://doi.org/10.1090/bproc/147)
+
+### Invertibility at infinity prevents escape
+
+**Remember:** A cylinder needs an invertible model as well as an invertible symbol.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** Far along a straight cylindrical end, translating an operator back toward the origin gives its limit operator. Full ellipticity requires this model to be invertible between the corresponding regularity spaces. It also requires the leading frequency symbol to be invertible in every nonzero direction.
+
+**Problem.** Consider a classical operator invariant under translations far down each straight cylindrical end, up to a rapidly decaying smoothing remainder. With compact core and cross sections, it is Fredholm between the corresponding Sobolev spaces exactly when fully elliptic.
+
+**How the definition helps.** The limit operator tests sequences that move down the cylinder while escaping every compact set. In our own example, slowly varying functions along an infinite cylinder defeat the Laplacian despite its invertible leading symbol. The inverse construction uses both tests to obtain closed range and finite-dimensional kernel and cokernel.
+
+**Paper or page:** [Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends](https://arxiv.org/abs/2308.06308v3). It says: “is Fredholm if, and only, if”
+
+**Sources:**
+
+- [Mirela Kohr, Victor Nistor and Wolfgang L. Wendland, Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends (2023)](https://arxiv.org/abs/2308.06308v3)
+
+### Noninteger orders avoid trace ambiguity
+
+**Remember:** No critical degree means no logarithmic ambiguity.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** To form the canonical trace density, integrate the classical scalar symbol over a frequency ball in coordinates, using the Fourier normalization. Retain the constant term as the radius grows, and multiply by the coordinate volume density.
+
+**Problem.** For noninteger real order on a closed manifold, these local densities agree across coordinate charts. Below order minus the dimension, their integral equals the ordinary operator trace.
+
+**How the definition helps.** Noninteger order excludes a homogeneous symbol term of degree minus the dimension, the only degree producing a logarithm. In our own explanation, such a logarithm would change the constant term under rescaling. The coordinate-change theorem handles general chart changes. At sufficiently low order the frequency integral converges.
+
+**Paper or page:** [A groupoid approach to the Wodzicki residue and the Kontsevich-Vishik trace](https://arxiv.org/abs/2312.10415v2). It says: “the Kontsevich-Vishik density of u₁ at x ∈ M is equal to Ψᵤ(x,1).”
+
+**Sources:**
+
+- [Maxim Kontsevich and Simeon Vishik, Determinants of elliptic pseudo-differential operators (1994)](https://www.ihes.fr/~maxim/TEXTS/determinants_elliptic_11.pdf)
+
+### Shubin order yields compactness
+
+**Remember:** Compactness needs improvement in position as well as frequency.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** Shubin order controls growth in position and frequency together on a manifold approaching a cone as its radial coordinate r grows. Negative order requires decay at large distances as well as smoothing at high frequencies.
+
+**Problem.** Every negative-order Shubin operator is compact on the space of square-integrable functions for the cylindrical measure, which uses dr/r in the radial direction.
+
+**How the definition helps.** Joint decay rules out escape to infinity in either position or frequency. In our own explanation, compactness follows from the compact embedding for the corresponding spaces of weighted regularity. On the line, convolution with a nonzero smooth compactly supported function smooths inputs but carries their translates arbitrarily far apart.
+
+**Paper or page:** [A Shubin pseudodifferential calculus on asymptotically conic manifolds](https://arxiv.org/abs/2408.08169v2). It says: “The operator T is compact for μ &lt; 0.”
+
+**Sources:**
+
+- [Thomas Krainer, A Shubin Pseudodifferential Calculus on Asymptotically Conic Manifolds (2025)](https://doi.org/10.1007/s00041-025-10178-3)
+
 ### Spectral and heat-kernel fractional Laplacians differ only through lost heat mass
 
 **Remember:** If heat is conserved, the two definitions agree.
@@ -2170,6 +4151,94 @@
 **Sources:**
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
+
+### The cylindrical calculus keeps inverses
+
+**Remember:** An inverse can have a rapidly decreasing tail.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** On straight cylindrical ends, the translation-invariant calculus uses operators unchanged by translation far down each end. Their kernels vanish beyond a fixed input-to-output distance. The essentially translation-invariant calculus also admits smoothing remainders with rapid decay at infinity.
+
+**Problem.** On a manifold with compact core and straight cylindrical ends, any order-zero operator in the larger calculus invertible on square-integrable functions has its inverse there.
+
+**How the definition helps.** Allowing decaying tails removes a support obstruction to inversion. In our own example on the line, subtract convolution with a positive bump supported in \[1,2\] of integral below one from the identity. Its inverse sums all convolution powers and reaches arbitrarily far. The spectral invariance theorem proves that inverses stay in the larger class.
+
+**Paper or page:** [Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends](https://arxiv.org/abs/2308.06308v3). It says: “Then $T<sup>-1</sup>\\in {\\Psi\_{\\operatorname{ess}}<sup>\[-s-t\]</sup>}({\\mathfrak M} ; F, E)$.”
+
+**Sources:**
+
+- [Mirela Kohr, Victor Nistor and Wolfgang L. Wendland, Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends (2023)](https://arxiv.org/abs/2308.06308v3)
+
+### The residue measures failed scaling
+
+**Remember:** Divide the scaling defect by log to read the residue.
+
+*True by definition.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** The tangent groupoid joins pairs of manifold points to tangent vectors at scale zero. A classical operator kernel extends to this family with a scaling law up to smooth error. In dimension d at order −d, the defect is the dilated kernel times the dth power of the scale factor, minus the original kernel.
+
+**Problem.** At each zero tangent vector, the scaling defect divided by the logarithm of the positive dilation factor gives the Wodzicki residue density. The dilation factor must differ from one.
+
+**How the definition helps.** Evaluating the smooth error at a fixed zero vector turns successive dilations into addition of defects. In our own explanation, continuity makes this additive law on positive scale factors a multiple of the logarithm. The identification theorem equates the coefficient with the usual frequency integral of the degree −d symbol.
+
+**Paper or page:** [A groupoid approach to the Wodzicki residue](https://arxiv.org/abs/2303.15787v2). It says: “Resₓᵂ(P) = 1/log(s) (sᵈ αₛ\*𝕜 − 𝕜)\|(x,0,0)”
+
+**Sources:**
+
+- [Nathan Couchet and Robert Yuncken, A groupoid approach to the Wodzicki residue (2024)](https://doi.org/10.1016/j.jfa.2023.110268)
+
+### Aperiodicity removes the sphere’s Weyl obstruction
+
+**Remember:** A null set of periodic directions cannot produce sphere-sized jumps.
+
+*Rules out counterexamples.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** A unit tangent vector is periodic if its geodesic returns with the same position and velocity after a positive time. Call the periodic directions negligible if they have zero measure for the natural volume on the unit tangent bundle. The leading Weyl term is (2π)⁻ⁿ times manifold volume, Euclidean unit ball volume, and λ to the power n/2, all multiplied together.
+
+**Problem.** On a closed n-dimensional Riemannian manifold with negligible periodic directions, let N(λ) count Laplace eigenvalues at most λ with multiplicity. Its error from the leading Weyl term is little-o of λ to the power (n−1)/2 as λ tends to infinity.
+
+**How the definition helps.** The measure condition excludes round spheres, where every direction returns and large multiplicities force jumps of the same order as the proposed error scale. Our own comparison uses the continuity of the leading Weyl term across each jump. Dividing the error by the stated power must give a limit of zero. The sharper estimate requires the Duistermaat–Guillemin theorem relating periodic geodesics to the wave trace.
+
+**Wikipedia:** [Weyl law](https://en.wikipedia.org/wiki/Weyl_law). It says: “when the set of periodic bicharacteristics has measure 0.”
+
+**Sources:**
+
+- [Johannes Duistermaat and Victor Guillemin, The Spectrum of Positive Elliptic Operators and Periodic Bicharacteristics (1975)](https://doi.org/10.1007/BF01405172)
+
+### Energy closure preserves cone dilation
+
+**Remember:** Dilation rescales the energy and therefore preserves its completion.
+
+*True by definition.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** On an infinite cone, define the Friedrichs Laplacian through the gradient energy of smooth functions supported away from the tip. Complete these functions in the norm whose square adds the energy to the squared L² norm.
+
+**Problem.** On an exact infinite cone, every radial dilation, normalized to preserve the L² norm, preserves the Friedrichs operator domain. For dilation U that evaluates functions at radius ρr, the Laplacian satisfies ΔU = ρ²UΔ.
+
+**How the definition helps.** Dilation rescales the energy by a constant, so it preserves the completion without requiring an expansion at the tip. Our own calculation gives the factor ρ². The theorem associating an operator to the closed energy form transfers this identity to the operator domain.
+
+**Paper or page:** [Extensions of symmetric operators that are invariant under scaling and applications to indicial operators](https://arxiv.org/abs/2107.01239). It says: “In particular, the Friedrichs extension Aꜰ = A\*\|𝒟ꜰ : 𝒟ꜰ ⊂ H → H, 𝒟ꜰ = 𝒟ₘₐₓ ∩ ℋꜰ is invariant.”
+
+**Sources:**
+
+- [Thomas Krainer, Extensions of symmetric operators that are invariant under scaling and applications to indicial operators](https://arxiv.org/abs/2107.01239)
+
+### Energy excludes logarithmic cone modes
+
+**Remember:** Finite energy excludes logarithms that square integrability admits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** At a flat cone tip, the Friedrichs Laplacian uses the closure of the gradient energy of smooth functions supported away from the tip. The energy norm squares to the sum of the gradient energy and the squared L² norm.
+
+**Problem.** On a compact flat cone surface, the angular average of a function in the Friedrichs operator domain has no logarithmic term at the tip.
+
+**How the definition helps.** Finite energy rules out a logarithm because its radial derivative is proportional to 1/r. Our own calculation integrates its squared derivative against the cone area element and finds the divergent integral ∫dr/r. A cutoff logarithm and its Laplacian on the punctured cone are both square integrable.
+
+**Paper or page:** [Compact polyhedral surfaces of an arbitrary genus and determinants of Laplacians](https://arxiv.org/abs/0906.0717). It says: “Let Δ be the Friedrichs extension of the Laplacian defined on functions from C∞₀(𝒳 ∖ {P₁,…,Pₙ}).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Bounding spin removes holonomy signs
 
@@ -2244,6 +4313,24 @@
 **Sources:**
 
 - [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### Even-dimensional analytic torsion cancels
+
+**Remember:** Dual degrees turn the weighted sum into an alternating sum.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J50. arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** In degree p, let Dₚ be the determinant obtained from positive eigenvalues of the Laplacian on differential p-forms by zeta regularization. This assigns a value to their infinite product using the derivative of their spectral zeta function. Analytic torsion multiplies the Dₚ raised to the powers −(−1)ᵖp/2.
+
+**Problem.** On a closed oriented Riemannian manifold of even dimension, the analytic torsion of the ordinary differential forms equals one.
+
+**How the definition helps.** The exponents pair across complementary degrees because the Hodge star identifies their spectra. In our own calculation, averaging paired exponents leaves a constant times the alternating sign. On each positive eigenspace, exterior differentiation gives an exact sequence, so its alternating dimension is zero. This cancels the corresponding contribution to log torsion.
+
+**nLab:** [analytic torsion](https://ncatlab.org/nlab/show/analytic+torsion). It says: “given by a product of powers of the functional determinants”
+
+**Sources:**
+
+- [Daniel Ray and Isadore Singer, R-Torsion and the Laplacian on Riemannian Manifolds (1971)](https://doi.org/10.1016/0001-8708(71)90045-4)
 
 ### Local forms give determinant curvature
 
@@ -2388,3 +4475,225 @@
 **Sources:**
 
 - [D. B. Ray and I. M. Singer, R-Torsion and the Laplacian on Riemannian manifolds, Advances in Mathematics 7 (1971)](https://doi.org/10.1016/0001-8708(71)90045-4)
+
+### Birth–death points connect Morse functions
+
+**Remember:** Allow the cubic singularity that creates and cancels pairs.
+
+*Makes the theorem clean to state or prove.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.GT. Level 4: research.
+
+**Definition.** A generalized Morse function has two allowed kinds of critical point. The Hessian, its matrix of second derivatives, can be invertible. Alternatively its kernel can be a line on which the third derivative is nonzero, giving a birth–death point.
+
+**Problem.** On a closed smooth manifold, every smooth path between Morse functions admits arbitrarily close smooth paths of generalized Morse functions with the same endpoints.
+
+**How the definition helps.** Allowing a birth–death point admits the degeneracy that a generic path can meet (our own explanation). In x³ + tx, two critical points disappear as t passes through zero. Transversality for derivative data lets a path avoid all worse degeneracies.
+
+**nLab:** [framed generalized Morse function](https://ncatlab.org/nlab/show/framed+generalized+Morse+function). It says: “whose critical points either have a nondegenerate Hessian or a Hessian with a 1-dimensional kernel K such that the third derivative of f along K is nonzero.”
+
+**Sources:**
+
+- [Kiyoshi Igusa, Higher Singularities of Smooth Functions are Unnecessary](https://doi.org/10.2307/2006962)
+
+### Boardman strata give expected codimension
+
+**Remember:** Compute universal strata once, then pull them back.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A jet records a smooth map’s value and derivatives through a specified order. Boardman strata group jets by successive kernel dimensions. A Thom–Boardman map meets each such stratum transversely through its jets, meaning their derivatives supply all directions normal to the stratum.
+
+**Problem.** Each corresponding set of source points is empty or smooth with the same codimension as its Boardman stratum.
+
+**How the definition helps.** Transversality transfers the codimension from jet space to the source by the inverse image theorem (our own explanation). Boardman proves that the strata themselves are smooth. A constant plane map has rank zero everywhere, although rank zero has codimension four among plane jets (our own example).
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “Assume that the k-jet extension jᵏf of the map f: M → N is transverse to the manifolds Σᴵ (we call these maps Thom-Boardman maps).”
+
+**Sources:**
+
+- [John M. Boardman, Singularities of differentiable maps](https://doi.org/10.1007/BF02684585)
+
+### Divided differences keep colliding points
+
+**Remember:** Divide before setting the two source points equal.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** Consider a finite holomorphic map locally of the form (x,t) ↦ (x,h(x,t)), where t is one variable. Its double point space has one equation per component of h. Each equation sets (hⱼ(x,t) − hⱼ(x,s))/(t − s) to zero, using the t derivative when s = t.
+
+**Problem.** For a family in these coordinates, each member’s double point space equals the corresponding fiber of the family’s double point space.
+
+**How the definition helps.** The extended equations allow parameter substitution even when the source points coincide (our own explanation). For t ↦ (t²,t³ + ut), distinct points with the same image merge at zero as u tends to zero. The central map has no distinct pair, yet its divided differences still vanish there.
+
+**Paper or page:** [Cohomological connectivity of perturbations of map-germs](https://arxiv.org/abs/2103.14685v1). It says: “unlike 𝒟ᵏ(f), the spaces Dᵏ(f) behave well under deformations”
+
+**Sources:**
+
+- [Yongqiang Liu, Guillermo Peñafort Sanchis, Matthias Zach, Cohomological connectivity of perturbations of map-germs](https://arxiv.org/abs/2103.14685v1)
+
+### Whitney A keeps transversality open
+
+**Remember:** The lower tangent space must fit inside every limiting upper tangent space.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A stratification divides a closed set into locally finitely many smooth pieces called strata, with their boundaries made of lower strata. Whitney condition A requires each limiting tangent plane from an approaching stratum to contain the tangent space of the stratum at the limit.
+
+**Problem.** For a compact source, smooth maps whose order-k jets meet every stratum transversely form an open set in the smooth topology. Here the stratified set lies in the space of jets, which record values and derivatives through order k, and satisfies Whitney condition A.
+
+**How the definition helps.** Condition A preserves the tangent directions needed for transversality when the meeting point moves between strata (our own explanation). Transversality means the jet map supplies all directions missing from the stratum’s tangent plane. Compactness lets this control persist over the whole source.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “the set of maps f: M → N whose k-jet is transversal to all strata of the stratification is open”
+
+**Sources:**
+
+- [David Trotman, Stability of transversality to a stratification implies Whitney (a)-regularity](https://doi.org/10.1007/BF01410081)
+
+### Infinitesimal coordinate changes yield stability
+
+**Remember:** Test stability by asking which variations coordinate changes can absorb.
+
+*Makes the theorem clean to state or prove.* MSC 58K25 (Stability theory for manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A smooth map f is infinitesimally stable if every smooth vector field along f has the form df(X) + Y ∘ f. A field along f assigns a target tangent vector at each image point for each source point. The fields X and Y live on the source and target respectively.
+
+**Problem.** For smooth manifolds without boundary and compact source, infinitesimal stability is equivalent to stability. Stability means all sufficiently close smooth maps differ from f by smooth source and target coordinate changes.
+
+**How the definition helps.** Infinitesimal stability replaces a search for coordinate changes with a linear equation for their velocities (our own explanation). Mather’s theorem passes from these first-order solutions to stability under actual perturbations.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “If f is stable then it is infinitesimally stable”
+
+**Sources:**
+
+- [John N. Mather, Stability of C∞ Mappings II. Infinitesimal Stability Implies Stability](https://doi.org/10.2307/1970668)
+
+### Contact changes preserve local algebras
+
+**Remember:** Changing generators leaves the quotient ring unchanged.
+
+*Makes the theorem clean to state or prove.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.CV. Level 4: research.
+
+**Definition.** A holomorphic map germ records the map near the origin. Its local algebra is the ring of holomorphic function germs modulo the ideal generated by the map components. Contact equivalence allows source coordinate changes and invertible matrices of holomorphic functions acting on the components.
+
+**Problem.** For finitely determined germs with fixed source and target dimensions, contact equivalence is equivalent to isomorphism of their local complex algebras. Finite determinacy means derivatives through some finite order determine the contact class.
+
+**How the definition helps.** The quotient forgets which components generate the ideal, so a contact change gives an algebra isomorphism (our own explanation). Mather’s theorem supplies the reverse direction, recovering the contact class from the abstract algebra.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “Hence two finitely determined map germs are K-equivalent if and only if their local algebras (or equivalently, their quotient algebras) are isomorphic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite determinacy makes equivalence smooth
+
+**Remember:** Only finitely many terms of a formal coordinate change matter.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 4: research.
+
+**Definition.** Two smooth map germs are left–right equivalent if smooth source and target coordinate changes identify them near zero. A germ is k-determined if every smooth germ sharing its value and derivatives through order k is equivalent to it.
+
+**Problem.** For a finitely determined germ, equivalence by invertible formal power series implies smooth left–right equivalence.
+
+**How the definition helps.** Finite determinacy lets us truncate the formal coordinate changes at an order at least k and at least one (our own proof). The polynomial truncations have invertible derivatives and realize the required derivatives of the transformed map. Without determinacy, the zero function and the smooth extension of exp(−1/x²) by zero have identical series but different zero sets.
+
+**nLab:** [jet bundle](https://ncatlab.org/nlab/show/jet+bundle). It says: “where two germs are considered equivalent if their first k partial derivatives at x coincide.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Immersed lifts distinguish cuspidal edges
+
+**Remember:** Check both the surface and its normal lift.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 4: research.
+
+**Definition.** A front is a surface map into three-space with a smooth unit normal ν such that the pair (f,ν) has injective derivative. A singular point is nondegenerate if the signed area density det(fₓ,fᵧ,ν) has nonzero derivative there.
+
+**Problem.** At a nondegenerate singular point of a front, smooth coordinates give the cuspidal edge (x,y²,y³) exactly when the derivative kernel crosses the singular curve transversely.
+
+**How the definition helps.** The immersed lift forces the normal to vary in the direction lost by the surface derivative (our own explanation). For (x,y²,0), the kernel crosses the singular line but the normal is constant. The front recognition theorem supplies the equivalence.
+
+**Paper or page:** [Null surfaces of pseudo-spherical spacelike framed curves in the anti-de Sitter 3-space](https://arxiv.org/abs/2305.04230v1). It says: “The germ of f at p is locally diffeomorphic to the cuspidal edge if and only if ξ(s₀) is transversal to c′(s₀)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stable germs need only contact equivalence
+
+**Remember:** Stable germs need only the coarser contact classification.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.CV. Level 4: research.
+
+**Definition.** A stable holomorphic map germ absorbs every unfolding, a family through the map, by coordinate changes preserving the parameters. Contact equivalence allows an invertible change of source coordinates and an invertible matrix of holomorphic functions acting on the components.
+
+**Problem.** For stable holomorphic germs with fixed source and target dimensions, contact equivalence implies equivalence by source and target coordinate changes.
+
+**How the definition helps.** Stability makes the contact class sufficient for classification by coordinate changes, by the stable classification theorem. In our own counterexample without stability, (x,y³) and (x,y³ + xy) differ by an invertible component matrix. Their critical values form a smooth line and a cusp respectively, so target coordinates cannot identify them.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “Two stable maps are 𝒜-equivalent iff they are 𝒦-equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Contact directions count stable parameters
+
+**Remember:** Count only directions that target translations leave uncovered.
+
+*Makes the theorem clean to state or prove.* MSC 58K60 (Deformation of singularities), 58K25, 58K40. arXiv math.DG. Level 4: research.
+
+**Definition.** For a smooth map near zero, take vector-valued function germs along the map modulo three kinds of variations. Remove derivatives along source vector fields, vectors with entries in the ideal generated by the map components, and constant target vectors. Call the resulting real vector space N.
+
+**Problem.** If the quotient by the first two kinds of variations is finite-dimensional, dim N is the least parameter count for a stable unfolding. Such an unfolding includes its parameters among its outputs and absorbs small perturbations by source and target coordinate changes locally.
+
+**How the definition helps.** Removing constant vectors counts only directions target translations cannot supply (our own explanation). The stability criterion requires the parameter derivatives to span N. Adding basis representatives with independent coefficients gives a stable unfolding of minimum size.
+
+**Paper or page:** [A note on 1-parameter stable unfoldings](https://arxiv.org/abs/2410.10321v1). It says: “is a minimal stable unfolding of f.”
+
+**Sources:**
+
+- [Ignacio Breva Ribes, Raúl Oset Sinha, A note on 1-parameter stable unfoldings](https://arxiv.org/abs/2410.10321v1)
+
+### Infinitesimal versality counts parameters
+
+**Remember:** Each parameter supplies at most one independent direction.
+
+*Makes the theorem clean to state or prove.* MSC 58K60 (Deformation of singularities), 58K40. arXiv math.AG. Level 4: research.
+
+**Definition.** For a formal power series map at zero over ℂ, take all series perturbations modulo first-order source and target coordinate changes, including translations. A parameter family is infinitesimally versal if its parameter derivatives span this quotient.
+
+**Problem.** If the quotient has finite dimension, its dimension is the minimum number of parameters for formal versality. Formal versality means every formal family of the map comes from parameter substitution and parameter-dependent source and target coordinate changes.
+
+**How the definition helps.** Spanning the quotient uses at least one parameter for each basis vector (our own explanation). Adding a linear combination of basis representatives gives a family attaining that count by the formal versality theorem.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “is the minimal number of parameters in a 𝒢-versal unfolding.”
+
+**Sources:**
+
+- [Dmitry Kerner, Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1)
+
+### Unfoldings preserve local algebras
+
+**Remember:** Quotienting by the output parameters sets them to zero.
+
+*True by definition.* MSC 58K60 (Deformation of singularities), 58K40. arXiv math.CV. Level 4: research.
+
+**Definition.** A holomorphic map germ records a map near zero. An unfolding of f is the map (x,u) ↦ (g(x,u),u), where g(x,0) = f(x). Its local algebra is the ring of source function germs modulo the ideal generated by all output components.
+
+**Problem.** Every unfolding has a local algebra isomorphic to that of its original map germ.
+
+**How the definition helps.** Recording the parameters as outputs sets them to zero in the quotient (our own explanation). Keeping only the varying outputs can change the answer. For g(x,u) = x² + u alone the quotient still contains a free variable, whereas including u gives the relation x² = 0.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “If Ψ̂ is an unfolding of Ψ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Universal jet classes pull back
+
+**Remember:** Compute the class in the universal bundle, then pull it back.
+
+*True by definition.* MSC 58K65 (Topological invariants on manifolds), 58K05. arXiv math.AG, math.AT. Level 4: research.
+
+**Definition.** Jets record map values and derivatives through a fixed order. For a closed complex algebraic jet locus of pure codimension preserved by coordinate changes, its Thom polynomial is its universal cohomology class. This class represents intersection with the locus in the universal bundle of jets.
+
+**Problem.** For a holomorphic map whose jets meet every smooth stratum of the locus transversely, the Thom polynomial gives the class of its singularity locus. One pulls it back by the map classifying the jet coordinate bundle.
+
+**How the definition helps.** The universal definition replaces a fresh intersection calculation for each map with one pullback (our own explanation). Transverse inverse images preserve the cohomology class dual to a locus. Computing the universal class itself requires a separate calculation.
+
+**Paper or page:** [Thom polynomials for singularities of maps](https://arxiv.org/abs/2502.16727v2). It says: “where W(s):=s⁻¹(W(E)) and ρ: M → BG is the classifying map”
+
+**Sources:** none listed. No primary source with a working link was found.

@@ -3,14 +3,14 @@ title: Definitions that make theorems easy
 date: 2026-11-27
 draft: false
 split: true
-summary: 6933 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
+summary: 7286 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
 summary: Each entry gives the definition in plain words, a line to remember it by, the problem it solves and how it solves it. It also gives a quote from the page or paper that supports it, and the original papers.
 summary: Some definitions make a result true by definition. Some rule out a known counterexample. Most let a theorem be stated with no exceptions, or make a long proof short.
 summary: An AI model found and wrote the entries. A second pass checked them, and a third pass rewrote them in plain English. Nobody checked them by hand.
 ---
 A good definition does part of the work of a theorem. Take the number 1. If 1 were a prime number, the factorization of 6 would not be unique: 6 = 2 · 3 = 1 · 2 · 3. So the definition of a prime leaves 1 out, and the theorem needs no exception.
 
-This page collects 6933 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
+This page collects 7286 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
 
 ## How to read an entry
 
@@ -24,7 +24,7 @@ Each entry has the same parts, in the same order:
 - **Quote and pages.** A sentence from the nLab, Wikipedia, or a paper or page in the TheoremSearch data set that supports the entry, and links to the pages.
 - **Sources.** Papers on the definition or the theorem. Most are the original papers. A few are surveys, books or histories.
 
-The entries come from three places. 1677 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2758 come from [Wikipedia](https://en.wikipedia.org/). 2498 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
+The entries come from three places. 1739 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2849 come from [Wikipedia](https://en.wikipedia.org/). 2698 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
 
 ## Tags and order
 
@@ -38,11 +38,11 @@ The entries are always in the same order. They are sorted first by the main MSC 
 
 ## Three kinds of help
 
-**True by definition** (3292 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
+**True by definition** (3432 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
 
-**Rules out counterexamples** (1577 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
+**Rules out counterexamples** (1690 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
 
-**Makes the theorem clean to state or prove** (2064 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
+**Makes the theorem clean to state or prove** (2164 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
 
 ## Patterns that repeat
 
@@ -76,7 +76,7 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 ## Entries
 
-::figure kind=definitions alt="A list of 6933 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
+::figure kind=definitions alt="A list of 7286 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
 
 ## 00 General and overarching topics; collections
 
@@ -28710,6 +28710,57 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Jean-Pierre Serre, Un théorème de dualité, Commentarii Mathematici Helvetici 29 (1955) 9–26](https://doi.org/10.1007/BF02564268)
 - [Robin Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20 (1966)](https://doi.org/10.1007/BFb0080482)
 
+### Coordinate crossings allow small poles
+
+**Remember:** Independent coordinates let each pole face its own integrability test.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A divisor has simple normal crossings when its components through each point are smooth and become distinct coordinate hyperplanes in suitable local coordinates. For positive coefficients aⱼ, form the product of the factors \|zⱼ\| raised to −2aⱼ. The multiplier ideal tests local integrability of \|f\|² times this product.
+
+**Problem.** A divisor with simple normal crossings has the whole local function ring as its multiplier ideal everywhere exactly when every coefficient is below one.
+
+**How the definition helps.** Coordinate hyperplanes separate the integral of the constant function into one-variable factors, each finite precisely below one. Our own counterexample uses three lines through the origin in the complex plane of dimension two, each with coefficient ¾. Blowing up the origin produces order 9/4 in the weighted divisor and order one in the Jacobian. The resulting one-variable integral diverges.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “measures singularities coming from the fractional parts of D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrability computes resolved multiplier ideals
+
+**Remember:** The change of volume supplies the relative canonical divisor.
+
+*True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For a nonzero ideal generated locally by g₁,…,gₘ, its multiplier ideal at c &gt; 0 tests a holomorphic function f by integration. It requires \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ to have finite integral near each point.
+
+**Problem.** On a smooth complex variety, resolve the ideal so its pullback has coordinate factors with orders mⱼ. Membership requires ordⱼ(f∘π) + kⱼ ≥ ⌊cmⱼ⌋ along every such divisor, where kⱼ is the vanishing order of the resolution Jacobian.
+
+**How the definition helps.** The integral definition turns the divisor formula into separate tests in one complex variable. In our own calculation, changing variables adds the squared Jacobian to the numerator. Each radial integral converges exactly when its exponent exceeds −1, giving the stated integer bound. Constructing the resolution is the deep step.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “where the fᵢ are a finite set of local generators of the ideal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplier ideals extend off hypersurfaces
+
+**Remember:** The multiplier condition is exactly the norm condition for extension.
+
+*True by definition.* MSC 14F18 (Multiplier ideals), 32U05. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A plurisubharmonic weight φ is an upper semicontinuous function that is subharmonic on complex lines in local coordinates. Its multiplier ideal 𝒥(φ) consists of local holomorphic functions f with \|f\|² exp(−2φ) locally integrable.
+
+**Problem.** On a smooth hypersurface Y where the restricted weight is not identically minus infinity on any component, every multiplier ideal germ extends locally. Its extension belongs to the multiplier ideal on the ambient complex manifold.
+
+**How the definition helps.** The integral definition gives exactly the hypothesis and conclusion of the weighted holomorphic extension theorem. In our own explanation, a definition using vanishing orders would require comparing resolutions on two different spaces. The Ohsawa–Takegoshi theorem supplies the extension with finite integral.
+
+**Paper or page:** [Analyticity theorems for parameter-dependent plurisubharmonic functions](https://arxiv.org/abs/2405.07786v1). It says: “\\mathcal{I} (\\varphi \|<sub>Y</sub>) \\subset \\mathcal{I} (\\varphi ) \|<sub>Y</sub> .”
+
+**Sources:**
+
+- [T. Ohsawa and K. Takegoshi, On the extension of L² holomorphic functions (1987)](https://doi.org/10.1007/BF01166457)
+- [J.-P. Demailly, L. Ein and R. Lazarsfeld, A subadditivity property of multiplier ideals (2000)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/subaddmult.pdf)
+
 ### Compact direct images sum traces
 
 **Remember:** Push a trace function forward by summing it over each fiber.
@@ -31406,6 +31457,60 @@ $$”
 **Sources:**
 
 - [Andrew Nadel, Multiplier ideal sheaves and existence of Kähler–Einstein metrics of positive scalar curvature (1989)](https://doi.org/10.1073/pnas.86.19.7299)
+
+### Diagonal restriction gives multiplier subadditivity
+
+**Remember:** Separate the weights before you restrict to the diagonal.
+
+*Makes the theorem clean to state or prove.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A plurisubharmonic weight is upper semicontinuous and subharmonic along complex lines in local coordinates. Its multiplier ideal 𝒥(φ) collects local holomorphic functions f for which \|f\|² exp(−2φ) is locally integrable.
+
+**Problem.** For two such weights on a complex manifold, 𝒥(φ+ψ) is contained in the product ideal 𝒥(φ)𝒥(ψ).
+
+**How the definition helps.** The ideals express a relation between three integrability tests as one inclusion. Our own summary puts the two weights on separate factors of a product space. The product formula separates the two ideals there. The restriction theorem on the diagonal gives the inclusion because the two weights add there.
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “is locally integrable, where the fᵢ are a finite set of local generators of the ideal.”
+
+**Sources:**
+
+- [J.-P. Demailly, L. Ein and R. Lazarsfeld, A subadditivity property of multiplier ideals (2000)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/subaddmult.pdf)
+
+### Generic slices preserve multiplier ideals
+
+**Remember:** One inclusion comes from slicing and the other from extension.
+
+*Makes the theorem clean to state or prove.* MSC 14F18 (Multiplier ideals), 32U05. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A weight φ is locally a sum of a smooth function and an upper semicontinuous function subharmonic on complex lines. Its multiplier ideal consists of germs f with \|f\|² exp(−2φ) locally integrable. A base-point-free linear system is a projective family of divisors with no common point.
+
+**Problem.** On a smooth complex projective variety of positive dimension, restricting the multiplier ideal to a general member gives the ideal of the restricted weight. Exceptional members form at most a pluripolar set, locally contained where a nontrivial plurisubharmonic function equals minus infinity.
+
+**How the definition helps.** The two ideals distinguish restricting integrable functions from testing integrability after restriction. In our own summary, Fubini’s theorem restricts local generators for almost every member, while weighted extension gives the reverse inclusion. Xia’s analytic Bertini theorem supplies the stronger pluripolar bound.
+
+**Paper or page:** [Analytic Bertini theorem](https://arxiv.org/abs/2110.14971v2). It says: “Then there is a pluripolar subset Σ ⊆ Λ”
+
+**Sources:**
+
+- [Mingchen Xia, Analytic Bertini theorem](https://arxiv.org/abs/2110.14971v2)
+
+### Newton polyhedra compute multiplier ideals
+
+**Remember:** Volume adds one to each exponent before the interior test.
+
+*True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Newton polyhedron P of a nonzero monomial ideal is the convex hull of all its monomial exponents. For generators gⱼ, its multiplier ideal at c &gt; 0 consists of holomorphic germs f with \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ locally integrable.
+
+**Problem.** For a monomial ideal in complex affine space, its multiplier ideal at c is generated by monomials xᵛ with v+(1,…,1) inside cP. Here “inside” excludes the boundary.
+
+**How the definition helps.** The integral definition replaces a resolution of singularities with an exponential decay test in logarithmic coordinates. In our own calculation, the volume element shifts each exponent by one. Convergence requires strict decay along every nonzero ray in the nonnegative orthant, exactly the interior condition. Orthogonality under coordinate rotations reduces the test to individual monomials.
+
+**Paper or page:** [Multiplicities of Jumping Numbers](https://arxiv.org/abs/2102.07080v3). It says: “denotes the interior of the scaled Newton polyhedron P(c·𝔞).”
+
+**Sources:**
+
+- [J. A. Howald, Multiplier ideals of monomial ideals (2001)](https://doi.org/10.1090/S0002-9947-01-02720-9)
 
 ### A tameness condition removes the properness hypothesis for unramified cohomology
 
@@ -63784,6 +63889,40 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bergman coordinates linearize biholomorphisms
+
+**Remember:** Differentiate the kernel ratio to remove the Jacobian factors.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Bergman representative coordinates center at a point a of a bounded domain with Bergman kernel K. Take the gradient in w̄ of log(K(z,w)/K(a,w)) at w=a, then apply the inverse Bergman metric at a.
+
+**Problem.** In representative coordinates centered at a and F(a), a holomorphic isomorphism F between bounded domains is locally its derivative dF(a).
+
+**How the definition helps.** The kernel ratio cancels the Jacobian factor depending on w, and differentiation removes the factor depending only on z. In our own calculation, the metric transformation law converts the remaining derivative factor into dF(a). The coordinate map has derivative equal to the identity at a by the mixed derivative formula for the Bergman metric.
+
+**Paper or page:** [Local Rigidity of the Bergman Metric and of the Kähler Carathéodory Metric](https://arxiv.org/abs/2408.09572v2). It says: “the Bergman representative coordinate”
+
+**Sources:**
+
+- [Stefan Bergman, The Kernel Function and Conformal Mapping](https://doi.org/10.1090/surv/005)
+
+### Bergman kernels converge along exhaustions
+
+**Remember:** Extremal functions have locally convergent subsequences on an exhaustion.
+
+*True by definition. Confidence: medium.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Bergman diagonal K(z,z) is the largest value of \|f(z)\|² among holomorphic functions of volume L² norm at most one.
+
+**Problem.** If bounded domains increase to a bounded union, their Bergman kernels converge uniformly on compact subsets of the product of the union with itself.
+
+**How the definition helps.** The extremal definition compares successive domains by restriction, without choosing compatible bases. In our own proof, local mean-value bounds give a locally convergent subsequence of maximizing functions at each fixed point. Fatou’s lemma bounds the limit’s norm by one, giving equality of the limiting diagonals. Kernel Cauchy–Schwarz bounds give local compactness on the product, and holomorphic dependence on z and w̄ gives uniqueness from diagonal values.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Bergman kernels follow the Jacobian
 
 **Remember:** A change of variables moves the evaluation kernel with the Jacobian.
@@ -63850,6 +63989,139 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normalized forms share Cauchy reproduction
+
+**Remember:** Keep the normalization and change the kernel without changing reproduction.
+
+*Makes the theorem clean to state or prove.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** For an interior point z, a generating form η assigns complex-linear functionals smoothly near the boundary and satisfies η(w)(w−z)=1. Its Cauchy–Fantappiè kernel is η wedged with n−1 copies of its antiholomorphic derivative in w, divided by (2πi)ⁿ.
+
+**Problem.** On a bounded smooth domain every such kernel recovers a holomorphic function continuous on the closure by integrating its boundary values.
+
+**How the definition helps.** The normalization survives straight-line interpolation between any generating form and the radial Bochner–Martinelli form. In our own argument, derivatives of the coefficients in antiholomorphic and interpolation directions annihilate w−z. Only n−1 such coefficient directions are independent, so the top wedge vanishes. Stokes’ theorem along the interpolation gives the same integral as the radial formula.
+
+**Wikipedia:** [Bochner–Martinelli formula](https://en.wikipedia.org/wiki/Bochner%E2%80%93Martinelli_formula). It says: “generalization of the Cauchy integral formula to functions of several complex variables”
+
+**Sources:**
+
+- [Lanzani and Stein, Cauchy-type integrals in several complex variables (2013)](https://link.springer.com/article/10.1007/s13373-013-0038-y)
+
+### Peak powers force Bergman divergence
+
+**Remember:** Peak powers retain their boundary value as their volume norms shrink.
+
+*True by definition. Confidence: medium.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A peak function is holomorphic on a bounded domain and continuous on its closure. It equals one at p and has modulus less than one everywhere else. The Bergman diagonal K(z,z) is the supremum of \|f(z)\|² over holomorphic functions of volume L² norm at most one.
+
+**Problem.** At a boundary point p with a peak function, K(z,z) tends to infinity as z approaches p from inside.
+
+**How the definition helps.** Peak powers give explicit tests in the extremal formula for the diagonal. In our own proof, dominated convergence sends their squared norms to zero, while each fixed power tends to one at p. Dividing by its norm gives an arbitrarily large lower bound near p. The kernel representation of evaluation identifies this extremal formula with the usual diagonal.
+
+**Paper or page:** [Around L¹ (un)boundedness of Bergman and Szegö projections](https://arxiv.org/abs/2104.04009v1). It says: “there exists F ∈ A(D) such that F(z₀)=1 and \|F(z)\|&lt;1 for every z ∈ D̄ ∖ {z₀}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smaller domains enlarge Bergman diagonals
+
+**Remember:** A smaller domain gives more functions a norm at most one.
+
+*True by definition. Confidence: medium.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV, math.FA. Level 3: graduate.
+
+**Definition.** The Bergman diagonal K(z,z) is the supremum of \|f(z)\|² over holomorphic functions with volume L² norm at most one.
+
+**Problem.** If U ⊂ V are bounded domains and z lies in U, the Bergman diagonal on U is at least as large as on V.
+
+**How the definition helps.** Restriction can only decrease the norm, so every candidate on V supplies a candidate on U. Our own proof uses this supremum in place of a sum over a basis. The two formulas agree because the kernel vector represents evaluation in the Hilbert space.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit flux gives Bochner–Martinelli reproduction
+
+**Remember:** Unit flux gives Stokes' theorem the right normalization.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Bochner–Martinelli kernel comes from the radial field centered at z with magnitude \|ζ−z\|¹⁻²ⁿ. Contract it into Euclidean volume and retain the part with n holomorphic and n−1 antiholomorphic differentials. Normalize its integral over a sphere centered at z to one.
+
+**Problem.** For a function holomorphic inside a bounded smooth domain and continuous on its closure, integration against this boundary kernel gives its value at z.
+
+**How the definition helps.** Unit flux turns the integral over a shrinking sphere into evaluation at its center. In our own proof, differentiation shows the kernel is closed away from z. Multiplication by a holomorphic function preserves closedness because each term already contains every holomorphic differential. Stokes’ theorem on inner approximating domains then equates the boundary and sphere integrals.
+
+**Paper or page:** [Geometric conditions for bounded point evaluations in several complex variables](https://arxiv.org/abs/2507.23688v2). It says: “where w(ζ,z) is the Bochner-Martinelli kernel.”
+
+**Sources:**
+
+- [Bochner, Analytic and Meromorphic Continuation by Means of Green's Formula (1943)](https://doi.org/10.2307/1969103)
+- [Lanzani and Stein, Cauchy-type integrals in several complex variables (2013)](https://link.springer.com/article/10.1007/s13373-013-0038-y)
+
+### Berezin averaging fixes holomorphic symbols
+
+**Remember:** A kernel vector averages its holomorphic multiplier to the value at its center.
+
+*True by definition. Confidence: medium.* MSC 32A36 (Bergman spaces of functions in several complex variables). arXiv math.CV, math.FA. Level 3: graduate.
+
+**Definition.** The Bergman kernel vector K(·,z) represents evaluation by an inner product on square-integrable holomorphic functions. The Berezin transform averages a bounded function against the volume density \|K(w,z)\|²/K(z,z).
+
+**Problem.** On a bounded domain the Berezin transform is a contraction in supremum norm and fixes every bounded holomorphic function.
+
+**How the definition helps.** The density integrates to one because K(z,z) is the squared norm of the kernel vector. In our own proof, evaluation of the holomorphic product fK(·,z) gives f(z)K(z,z). This reproducing identity explains why the kernel-weighted average returns the center value. This replaces the operator definition, which pairs multiplication by f with the normalized evaluation vector.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bergman projection integrates square integrable inputs
+
+**Remember:** Project first or pair with the kernel first.
+
+*True by definition. Confidence: medium.* MSC 32A36 (Bergman spaces of functions in several complex variables). arXiv math.CV, math.FA. Level 3: graduate.
+
+**Definition.** The Bergman projection P is the orthogonal projection from the space of square-integrable functions onto the square-integrable holomorphic functions. The kernel vector K(·,z) represents evaluation at z by an inner product.
+
+**Problem.** On a bounded domain, Pf(z) equals the inner product of f with K(·,z) for every f in L².
+
+**How the definition helps.** The discarded part f − Pf is orthogonal to the kernel vector. Our own proof therefore recovers the integral formula from the orthogonal projection. Local mean-value estimates give bounded evaluations and show that the holomorphic subspace is closed.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Square integrability removes hyperplane poles
+
+**Remember:** A simple pole already has infinite squared area integral.
+
+*Rules out counterexamples.* MSC 32A36 (Bergman spaces of functions in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Bergman space consists of holomorphic functions whose squared absolute value has finite volume integral.
+
+**Problem.** On a polydisc with a coordinate hyperplane removed, every Bergman function extends across the hyperplane with the same norm.
+
+**How the definition helps.** Square integrability excludes every negative Laurent power in the missing coordinate. In our own proof, circle orthogonality makes each negative power contribute an infinite radial integral wherever its coefficient is nonzero. The coefficients depend holomorphically on the other coordinates, so a nonzero coefficient would give divergence on a set of positive volume. The hyperplane has zero volume, so extension preserves the norm.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Torus characters separate Laurent monomials
+
+**Remember:** Different Laurent powers respond differently to some coordinate rotation.
+
+*Makes the theorem clean to state or prove.* MSC 32A36 (Bergman spaces of functions in several complex variables). arXiv math.CV, math.FA. Level 3: graduate.
+
+**Definition.** A Reinhardt domain admits independent rotations of its complex coordinates. Its admissible Laurent monomials are products of integer powers of the coordinates that are holomorphic and square-integrable on the domain.
+
+**Problem.** On a bounded Reinhardt domain the admissible Laurent monomials form an orthogonal basis of its square-integrable holomorphic functions.
+
+**How the definition helps.** Admissibility selects exactly the powers that can appear, including negative powers where the domain allows them. In our own explanation, averaging over rotations extracts each Laurent coefficient. Distinct powers are orthogonal by rotation invariance, and uniqueness of Laurent expansions proves completeness.
+
+**Paper or page:** [Projections onto Lᵖ-Bergman spaces of Reinhardt Domains](https://arxiv.org/abs/2303.10005v3). It says: “forms a Banach-space basis of Aᵖ(Ω,λ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The polydisk maximum needs only its torus
 
 **Remember:** The torus suffices, and each of its points can peak.
@@ -63866,6 +64138,70 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Discriminants mark branch loci
+
+**Remember:** A repeated root is precisely where the discriminant vanishes.
+
+*True by definition. Confidence: medium.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems), 32H35. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The discriminant of a monic polynomial is the product of squared differences over all pairs of roots. A Weierstrass polynomial is monic in one variable, with holomorphic lower coefficients that vanish at the base origin.
+
+**Problem.** Near the origin, a square-free Weierstrass polynomial defines separate holomorphic sheets above exactly those base points where its discriminant is nonzero. Each sheet projects isomorphically onto a neighborhood of the base point.
+
+**How the definition helps.** The root product detects collisions directly and agrees with the usual determinant formula by the resultant identity (our own comparison). Symmetry makes the product a holomorphic function of the coefficients. The implicit function theorem separates simple roots, and a repeated root gives a fiber with multiplicity.
+
+**Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “The discriminant of a polynomial over a field is zero if and only if the polynomial has a multiple root in some field extension.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local algebras determine germ maps
+
+**Remember:** The images of the coordinates determine the whole germ map.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems), 32B10. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The local algebra of a complex analytic germ consists of convergent power series modulo the equations defining the space near the point. A local complex algebra map preserves complex scalars and sends functions vanishing at one point to functions vanishing at the other.
+
+**Problem.** Each local complex algebra map between the local algebras of two complex analytic germs comes from a unique holomorphic map in the reverse direction.
+
+**How the definition helps.** The local algebra records the coordinates and their equations, so the images of the coordinates specify the candidate map (our own argument). Polynomial substitution agrees with the given algebra map after truncation at every degree. Krull’s intersection theorem says that agreement to all orders implies equality, even when the local algebra contains nilpotents.
+
+**Wikipedia:** [Complex analytic variety](https://en.wikipedia.org/wiki/Complex_analytic_variety). It says: “Morphisms of complex analytic varieties are defined to be morphisms of the underlying locally ringed spaces”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Thick intersections govern gluing
+
+**Remember:** Tangency forces agreement of derivatives as well as values.
+
+*Rules out counterexamples.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems), 32C15. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For closed analytic subspaces with ideals I and J, their union has ideal I ∩ J and their intersection has ideal I + J. Functions on either space are holomorphic functions modulo its ideal.
+
+**Problem.** Holomorphic germs on the union correspond to pairs of germs that agree modulo the ideal of the intersection.
+
+**How the definition helps.** The sum I + J records exactly when two local representatives have a common lift (our own argument). The curves y = 0 and y = x² intersect along the ideal (y, x²). The functions 0 and x agree at the origin but differ modulo that ideal.
+
+**Wikipedia:** [Complex analytic variety](https://en.wikipedia.org/wiki/Complex_analytic_variety). It says: “Define a sheaf of rings on X by letting 𝒪ₓ be the restriction to X of 𝒪ᵤ/(f₁, …, fₖ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weierstrass norms eliminate coordinates
+
+**Remember:** A zero of g on a fiber makes its multiplication matrix singular.
+
+*True by definition. Confidence: medium.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems), 32B10. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A Weierstrass polynomial P is monic in w, with holomorphic lower coefficients vanishing at the base origin. Modulo P, multiplication by a holomorphic germ g is a linear map over functions in the remaining coordinates. Its determinant is the norm of g.
+
+**Problem.** Near the origin, the projection of the common zero set of P and g onto the remaining coordinates is the zero set of the norm.
+
+**How the definition helps.** Defining the norm by a determinant replaces a search through all roots with a single equation on the base (our own argument). Weierstrass division supplies a basis consisting of powers of w below the degree of P. At each base point, multiplication is invertible exactly when g vanishes at no root, even when roots repeat.
+
+**nLab:** [Weierstrass preparation theorem](https://ncatlab.org/nlab/show/Weierstrass+preparation+theorem). It says: “where r = r(z,w) is a polynomial of degree &lt; k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Weierstrass polynomials give free quotients
 
 **Remember:** Divide by the monic polynomial and keep the short remainder.
@@ -63879,6 +64215,22 @@ $$”
 **How the definition helps.** In our own proof, representing the equation by a Weierstrass polynomial reduces the basis question to reading off remainder coefficients. Preparation replaces the original holomorphic equation by this polynomial without changing its ideal. Weierstrass division gives existence and uniqueness of the remainder of degree below d. Its coefficients are therefore the unique coordinates in the proposed basis.
 
 **nLab:** [Weierstrass preparation theorem](https://ncatlab.org/nlab/show/Weierstrass+preparation+theorem). It says: “where r = r(z,w) is a polynomial of degree &lt; k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weierstrass preparation makes projections finite
+
+**Remember:** A monic equation keeps a fixed number of roots above the base.
+
+*Makes the theorem clean to state or prove.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A holomorphic germ describes a function near the origin. It is regular of order d in w when its restriction to the w-axis has a zero of order d. A Weierstrass polynomial is monic in w, with holomorphic lower coefficients that vanish at the base origin.
+
+**Problem.** Near the origin, the zeros of a germ regular of positive order d in w project finitely onto the other coordinates. Each fiber contains d roots counted with multiplicity.
+
+**How the definition helps.** The monic polynomial gives one equation of fixed degree for all nearby fibers (our own explanation). Weierstrass preparation writes the germ as that polynomial times a function without zeros. After shrinking the base, all roots stay inside a smaller disk, so the projection has compact inverse images of compact sets.
+
+**nLab:** [Weierstrass preparation theorem](https://ncatlab.org/nlab/show/Weierstrass+preparation+theorem). It says: “Then there is a neighborhood of origin such that f is uniquely representable in the form f = P · h where P is a Weierstrass polynomial of degree d of w and h(0) ≠ 0.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -63982,6 +64334,40 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cartan generators globalize local equations
+
+**Remember:** Generate the local ideal at every point using global functions.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32C35 (Analytic sheaves and cohomology groups), 32E10. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The vanishing ideal sheaf of a closed analytic subset consists of local holomorphic functions that vanish on that subset. Its local generators and relations are finite, a property called coherence.
+
+**Problem.** Every closed analytic subset of a Stein manifold is the common zero set of a family of global holomorphic functions. A Stein manifold admits a proper holomorphic embedding into complex affine space.
+
+**How the definition helps.** Outside the subset, the vanishing ideal contains 1, so any family generating this ideal must detect every outside point (our own argument). Cartan’s theorem A supplies global functions that generate the ideal locally. At least one must be nonzero at each outside point.
+
+**Paper or page:** [Deformation of nef adjoint canonical line bundles](https://arxiv.org/abs/2510.23967v1). It says: “Then ℱ is globally generated by its sections”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Coherent ideals algebraize thickened subspaces
+
+**Remember:** Algebraize the ideal, and the quotient keeps the multiplicities.
+
+*Makes the theorem clean to state or prove.* MSC 32C35 (Analytic sheaves and cohomology groups), 32J25, 14F06. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A closed analytic subspace is specified by an ideal sheaf, a collection of local holomorphic equations compatible with restriction. Its functions are local holomorphic functions modulo that ideal. Coherence means the equations and their relations locally admit finite lists of generators.
+
+**Problem.** Every closed analytic subspace of a complex projective variety comes from a unique closed algebraic subscheme. This includes subspaces with nonzero functions whose powers vanish.
+
+**How the definition helps.** The ideal remembers which functions vanish in the quotient, even when two ideals give the same set of points (our own explanation). Serre’s comparison recovers the algebraic ideal together with its inclusion into the functions on the variety. Exactness preserves the quotient, which recovers the subspace.
+
+**Paper or page:** [Relative-Hyper GAGA Theorem](https://arxiv.org/abs/2409.01481v3). It says: “For every coherent analytic sheaf 𝒢 on Xₐₙ, there exists a coherent algebraic sheaf ℱ on X such that ℱₐₙ ≃ 𝒢.”
+
+**Sources:**
+
+- [J.-P. Serre, Géométrie algébrique et géométrie analytique (1956), Théorèmes 1–3](https://www.numdam.org/item/AIF_1956__6__1_0/)
+
 ### Conjugation pairs Bott–Chern groups
 
 **Remember:** Conjugation swaps the operators but keeps both conditions.
@@ -64030,6 +64416,22 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Local presentations preserve pullback coherence
+
+**Remember:** Pull back the matrix, and it still has finitely many entries.
+
+*True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** On a complex analytic space, a finitely presented sheaf has finitely many local generators and relations on a neighborhood of each point. A matrix of holomorphic functions records the relations.
+
+**Problem.** Pulling back a coherent analytic sheaf along any holomorphic map of complex analytic spaces gives a coherent sheaf.
+
+**How the definition helps.** The matrix pulls back entry by entry and still presents the new sheaf (our own argument). Tensor products preserve quotients, which justifies pulling back a presentation this way. Oka’s coherence theorem makes finite presentation equivalent here to the usual requirement that relations among any finite list have finitely many local generators.
+
+**nLab:** [coherent sheaf](https://ncatlab.org/nlab/show/coherent+sheaf). It says: “finitely presented if there is an exact sequence of the form 𝒪ᵖ → 𝒪ⁿ → ℰ → 0 with p and n finite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Properness preserves algebraic global sections
 
 **Remember:** Compactness rules out the affine line and its nonpolynomial entire functions.
@@ -64048,6 +64450,25 @@ $$”
 
 - [Jean-Pierre Serre, Géométrie algébrique et géométrie analytique (1956)](https://doi.org/10.5802/aif.59)
 
+### Properness preserves higher sheaf cohomology
+
+**Remember:** Properness lets algebraic and holomorphic sheaf cohomology agree.
+
+*Rules out counterexamples.* MSC 32C35 (Analytic sheaves and cohomology groups), 14F06. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A complex algebraic variety is proper when its complex points form a compact space in the usual topology. Analytification allows holomorphic coefficients in the local generators and relations of a coherent algebraic sheaf. A coherent sheaf describes local sections using finitely many generators and finitely generated relations.
+
+**Problem.** On a proper complex algebraic variety, analytification preserves every positive-degree cohomology group of a coherent algebraic sheaf.
+
+**How the definition helps.** Properness excludes noncompact examples where analytic cohomology detects infinite Laurent tails (our own example). On the punctured affine plane, exp(1/(xy)) represents a class on the overlap of the two coordinate open sets. Infinitely many terms have both exponents negative, which algebraic representatives and corrections from either open set cannot reproduce. Raynaud’s comparison theorem proves agreement in the proper case.
+
+**Paper or page:** [Relative-Hyper GAGA Theorem](https://arxiv.org/abs/2409.01481v3). It says: “For every ℱ ∈ Cohₐₗɡ(X), there is an isomorphism H\*(X, ℱ) ≃ H\*(Xₐₙ, ℱₐₙ).”
+
+**Sources:**
+
+- [J.-P. Serre, Géométrie algébrique et géométrie analytique (1956), Théorèmes 1–3](https://www.numdam.org/item/AIF_1956__6__1_0/)
+- [Michèle Raynaud, Géométrie algébrique et géométrie analytique, SGA 1, Exposé XII, §4](https://grothendiecksga.com/read/sga1/fr/XII.html)
+
 ### Stein overlaps justify Čech cohomology
 
 **Remember:** Use overlaps with no higher coherent cohomology.
@@ -64063,6 +64484,142 @@ $$”
 **nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “the positive-degree abelian sheaf cohomology with values in any analytic coherent sheaf on any Stein manifold vanishes”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Stein vanishing lifts sections
+
+**Remember:** The first cohomology of the kernel contains the obstruction to extension.
+
+*Makes the theorem clean to state or prove.* MSC 32C35 (Analytic sheaves and cohomology groups), 32E10. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** Restricting a sheaf to a closed analytic subspace means taking a quotient by the local equations of that subspace times the sheaf. A coherent analytic sheaf has finitely many local generators and finitely generated local relations. A Stein manifold admits a proper holomorphic embedding into complex affine space.
+
+**Problem.** On a Stein manifold, every global section of the restriction of a coherent analytic sheaf to a closed analytic subspace extends to the manifold.
+
+**How the definition helps.** The quotient identifies the kernel whose first cohomology contains the obstruction to lifting a section (our own argument). This kernel is coherent, so Cartan’s theorem B makes its first cohomology vanish.
+
+**nLab:** [Cartan theorem B](https://ncatlab.org/nlab/show/Cartan+theorem+B). It says: “On a Stein manifold Σ and for A an analytic coherent sheaf on Σ then all the positive-degree abelian sheaf cohomology groups of Σ with coefficients in A vanish”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Analytic polyhedra supply boundary poles
+
+**Remember:** At a tight inequality, a reciprocal supplies a pole.
+
+*Rules out counterexamples.* MSC 32D05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** An analytic polyhedron in an open set D consists of the points satisfying finitely many inequalities \|f\| &lt; 1 for holomorphic functions on D. Its closure must be compact and contained in D.
+
+**Problem.** Each connected component of an analytic polyhedron is a domain of holomorphy.
+
+**How the definition helps.** An equality \|f(p)\| = 1 at each boundary point p gives a holomorphic function 1/(f − f(p)) on the component. It becomes unbounded on approach to p. Our own proof uses these reciprocals to obstruct extension across each boundary patch.
+
+**Wikipedia:** [Analytic polyhedron](https://en.wikipedia.org/wiki/Analytic_polyhedron). It says: “Every analytic polyhedron is a domain of holomorphy and it is thus pseudo-convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Boundary distance handles increasing unions
+
+**Remember:** As domains grow, the negative log of distance falls.
+
+*True by definition.* MSC 32D05 (Domains of holomorphy), 32E40. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A proper domain passes the boundary distance test when the negative logarithm of distance to its complement is plurisubharmonic. This means its restriction to each complex line satisfies the subharmonic mean inequality.
+
+**Problem.** An increasing union of domains of holomorphy in ℂⁿ is a domain of holomorphy.
+
+**How the definition helps.** Boundary distances increase to the distance for the union because each closed ball inside the union eventually lies in one domain. Their negative logarithms decrease, and a finite decreasing limit preserves the mean inequality locally. Our own proof uses the equivalence between the distance test and holomorphic nonextension. The whole space is already a domain of holomorphy.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “is an ascending sequence of domains of holomorphy, then their union”
+
+**Sources:**
+
+- [Kiyoshi Oka, Sur les fonctions analytiques de plusieurs variables IX. Domaines finis sans point critique intérieur, Japanese Journal of Mathematics 23 (1953), 97–155.](https://doi.org/10.4099/jjm1924.23.0_97)
+
+### Common extension excludes compact holes
+
+**Remember:** A hole filled by every function gives a common extension patch.
+
+*Rules out counterexamples.* MSC 32D05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A domain of holomorphy has no common extension patch. Such a patch is a connected open set crossing the boundary where every holomorphic function extends from the same nonempty open part of the domain.
+
+**Problem.** In ℂⁿ with n ≥ 2, deleting a nonempty compact subset from a domain never leaves a domain of holomorphy if the remainder is connected.
+
+**How the definition helps.** A filled hole supplies exactly the common extension patch that the definition forbids. Hartogs’s extension theorem does the analytic work. Every holomorphic function on the remainder extends to the original domain.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “any function holomorphic on U ∖ K can be analytically continued to U”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Holomorphic convexity preserves products
+
+**Remember:** Test each coordinate with functions from its own factor.
+
+*True by definition.* MSC 32D05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The holomorphic hull of K consists of points where \|f\| ≤ the maximum of \|f\| on K for every holomorphic function f on the domain.
+
+**Problem.** The product of two domains of holomorphy is a domain of holomorphy.
+
+**How the definition helps.** Testing each coordinate separately puts the hull of a compact set inside the product of the two projected sets’ hulls. Both hulls are compact, and the product hull is closed. Our own proof uses the Cartan–Thullen theorem, which identifies domains of holomorphy with domains where compact sets have compact holomorphic hulls.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “Ω₁ × Ω₂ is a domain of holomorphy.”
+
+**Sources:**
+
+- [Henri Cartan and Peter Thullen, Zur Theorie der Singularitäten der Funktionen mehrerer komplexen Veränderlichen, Mathematische Annalen 106 (1932), 617–647.](https://doi.org/10.1007/BF01455905)
+
+### Holomorphic hulls preserve boundary distance
+
+**Remember:** Bounds on all holomorphic functions also bound their derivatives.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32D05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The holomorphic hull of a compact set K collects the points where every holomorphic function on the domain satisfies its maximum modulus bound on K.
+
+**Problem.** In a proper domain of holomorphy, a nonempty compact set and its holomorphic hull have equal distances to the boundary in the maximum norm.
+
+**How the definition helps.** The hull tests every Taylor coefficient because each derivative of a holomorphic function is again holomorphic. Cauchy’s estimates on equal polydisks around K therefore give each hull point the same guaranteed Taylor radius. Our own argument uses holomorphic nonextension to rule out a common Taylor radius larger than a hull point’s boundary distance.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “The equivalence of 1, 2, 3 is the Cartan–Thullen theorem.”
+
+**Sources:**
+
+- [Henri Cartan and Peter Thullen, Zur Theorie der Singularitäten der Funktionen mehrerer komplexen Veränderlichen, Mathematische Annalen 106 (1932), 617–647.](https://doi.org/10.1007/BF01455905)
+
+### Logarithmic nonconvexity forces holomorphic extension
+
+**Remember:** A Taylor series fills every gap between allowed log radii.
+
+*Rules out counterexamples.* MSC 32D05 (Domains of holomorphy), 32A05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complete Reinhardt domain contains every point obtained by decreasing or preserving each coordinate modulus of any point in the domain. Its logarithmic image records the logarithms of all coordinate moduli at points with no zero coordinate.
+
+**Problem.** A complete Reinhardt domain with a nonconvex logarithmic image cannot be a domain of holomorphy.
+
+**How the definition helps.** A gap in the logarithmic image leaves room for every holomorphic function to extend by its Taylor series. Completeness gives one series about zero throughout the domain by Cauchy’s formula on products of circles. In our own proof, Hölder’s inequality extends absolute convergence to the convex hull of the open logarithmic image.
+
+**Wikipedia:** [Function of several complex variables](https://en.wikipedia.org/wiki/Function_of_several_complex_variables). It says: “is a logarithmically convex Reinhardt domain with centre a = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonextendable functions are generic
+
+**Remember:** One obstructing function per patch is enough for a generic global obstruction.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32D05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A domain of holomorphy admits no common extension across a boundary ball from the same nonempty open subset of its overlap with the domain.
+
+**Problem.** On a domain of holomorphy, functions with no local holomorphic extension form a dense countable intersection of open sets for uniform convergence on compact subsets.
+
+**How the definition helps.** Each extension patch has an obstructing function, so functions extending on that patch form a proper linear subspace. Our own proof uses countably many pairs of rational balls and integer bounds on extension size. Montel’s compactness theorem makes each bounded extension test closed, and the proper subspace gives it empty interior. Baire’s theorem then gives the stated conclusion.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “There exists a function holomorphic on Ω that cannot be analytically continued beyond Ω.”
+
+**Sources:**
+
+- [Henri Cartan and Peter Thullen, Zur Theorie der Singularitäten der Funktionen mehrerer komplexen Veränderlichen, Mathematische Annalen 106 (1932), 617–647.](https://doi.org/10.1007/BF01455905)
 
 ### Riemann domains allow multiple sheets
 
@@ -64102,6 +64659,24 @@ $$”
 
 - [Bochner, Analytic and Meromorphic Continuation by Means of Green’s Formula (1943)](https://doi.org/10.2307/1969103)
 
+### Pseudoconvexity excludes shell extension failures
+
+**Remember:** A square-integrable slice need not extend across a shell.
+
+*Rules out counterexamples.* MSC 32D15 (Continuation of analytic objects in several complex variables), 32T05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A domain is pseudoconvex if it admits a continuous plurisubharmonic exhaustion. An exhaustion has relatively compact sublevel sets, and plurisubharmonic means subharmonic on complex lines.
+
+**Problem.** In a bounded pseudoconvex domain in ℂⁿ, every weighted square-integrable holomorphic function on a hyperplane slice extends with finite weighted norm. The weight is exp(−φ) for a plurisubharmonic function φ.
+
+**How the definition helps.** The exhaustion supplies domains for the weighted differential estimates in the Ohsawa–Takegoshi extension theorem. Our own counterexample slices the shell 1 &lt; \|z\| &lt; 2 in ℂ² by a coordinate line. The reciprocal coordinate has finite squared integral on the annulus. Hartogs extension would fill the shell and give a holomorphic function on a disc agreeing with that reciprocal.
+
+**Paper or page:** [A Hilbert Bundles Description of Complex Brunn-Minkowski Theory](https://arxiv.org/abs/2305.07476v1). It says: “Let Ω be a pseudoconvex domain in ℂⁿ”
+
+**Sources:**
+
+- [T. Ohsawa and K. Takegoshi, On the extension of L² holomorphic functions (1987)](https://doi.org/10.1007/BF01166457)
+
 ### Compact support simplifies Hartogs extension
 
 **Remember:** Subtract a compactly supported correction and keep the exterior values.
@@ -64119,6 +64694,42 @@ $$”
 **Sources:**
 
 - [Ehrenpreis, A new proof and an extension of Hartog’s theorem (1961)](https://doi.org/10.1090/s0002-9904-1961-10661-7)
+
+### Stein acyclicity survives finite maps
+
+**Remember:** Push down the sheaf to test Steinness upstairs.
+
+*True by definition. Confidence: medium.* MSC 32E10 (Stein spaces). arXiv math.CV. Level 3: graduate.
+
+**Definition.** One can define a Stein space by the vanishing of positive-degree cohomology for every coherent analytic sheaf. Such a sheaf describes local holomorphic sections with finitely many local generators and locally finitely generated relations among any finite list of sections.
+
+**Problem.** The source of a finite holomorphic map to a Stein space is Stein. Here finite means proper with finite fibers.
+
+**How the definition helps.** The vanishing test moves downstairs because a finite map preserves the cohomology of a sheaf under direct image (our own). The direct image records sections over inverse images of open sets, and the finite mapping theorem preserves coherence (our own). Cartan’s criterion identifies this test with the geometric definition using holomorphic functions (our own).
+
+**nLab:** [Cartan theorem B](https://ncatlab.org/nlab/show/Cartan+theorem+B). It says: “all the positive-degree abelian sheaf cohomology groups of Σ with coefficients in A vanish”
+
+**Sources:**
+
+- [Hans Grauert and Reinhold Remmert, Theory of Stein Spaces (2004)](https://doi.org/10.1007/978-3-642-18921-0)
+
+### Tangencies require more than values
+
+**Remember:** Match both functions on the intersection with its full analytic structure.
+
+*Rules out counterexamples.* MSC 32E10 (Stein spaces). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A closed analytic subspace has an ideal of local holomorphic equations. If two subspaces have ideals I and J, their analytic intersection has ideal I + J. Functions agree on this intersection when their local representatives differ by an element of I + J.
+
+**Problem.** Two holomorphic functions on closed analytic subspaces of a Stein space extend to one global function exactly when their restrictions to the analytic intersection agree.
+
+**How the definition helps.** Agreement modulo I + J is exactly the condition for two functions to give one function on the union (our own). Cartan’s Theorem B extends that function from the closed union to the whole Stein space (our own). On y = 0 and y = x², the functions 0 and x agree at the origin (our own). They differ on the analytic intersection because x is nonzero modulo (y, x²) (our own).
+
+**Paper or page:** [Stein spaces and Stein algebras](https://arxiv.org/abs/2410.05521v1). It says: “Let S be a complex space. Let S₁ and S₂ be closed complex subspaces of S. Set T:=S₁∩S₂. The following diagram of sheaves on S is exact:”
+
+**Sources:**
+
+- [Olivier Benoist, Stein spaces and Stein algebras (2026)](https://doi.org/10.4064/ba260107-1-3)
 
 ### Polynomial convexity excludes circle obstructions
 
@@ -64154,6 +64765,43 @@ $$”
 
 - [Agler and McCarthy, Norm preserving extensions of holomorphic functions from subvarieties of the bidisk (2003)](https://doi.org/10.4007/annals.2003.157.289)
 
+### Runge approximation composes
+
+**Remember:** Approximate in the middle space, then in the largest one.
+
+*True by definition.* MSC 32E30 (Holomorphic, polynomial and rational approximation, and interpolation in several complex variables; Runge pairs), 32E10. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Stein open subset U of a Stein space X is Runge in X if global holomorphic functions on X approximate those on U. Approximation means uniform approximation on each compact subset of U.
+
+**Problem.** If V is Runge in U and U is Runge in X, then V is Runge in X.
+
+**How the definition helps.** Two successive approximations on the same compact set give one approximation, since their errors add (our own). The equivalent geometric test compares the points where every holomorphic function obeys its maximum bound on that compact set (our own). Oka–Weil approximation establishes the equivalence (our own).
+
+**Paper or page:** [Étale cohomology of algebraic varieties over Stein compacta](https://arxiv.org/abs/2305.06054v3). It says: “The image of the restriction map 𝒪(S) → 𝒪(Ω) is dense, and Ω is Stein.”
+
+**Sources:**
+
+- [Olivier Benoist, Étale cohomology of algebraic varieties over Stein compacta (2025)](https://doi.org/10.1007/s00222-025-01323-2)
+
+### Runge chains stay Stein
+
+**Remember:** Approximate along the chain so the earlier hulls cannot grow.
+
+*Makes the theorem clean to state or prove.* MSC 32E30 (Holomorphic, polynomial and rational approximation, and interpolation in several complex variables; Runge pairs), 32Q28, 32E10. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Stein open subset U of a Stein space X is Runge in X if global holomorphic functions on X approximate those on U. Approximation means uniform approximation on each compact subset of U.
+
+**Problem.** An increasing countable union of Stein manifolds is Stein if each open inclusion is Runge.
+
+**How the definition helps.** The Runge condition lets each stage approximate the previous one on progressively larger compact sets (our own). Choosing summable errors gives a holomorphic limit throughout the union and allows approximation on every earlier stage (our own). Consequently global functions still separate points, and the holomorphic hull of each compact set stays compact (our own). These two properties characterize Stein manifolds (our own).
+
+**Paper or page:** [Étale cohomology of algebraic varieties over Stein compacta](https://arxiv.org/abs/2305.06054v3). It says: “The image of the restriction map 𝒪(S) → 𝒪(Ω) is dense, and Ω is Stein.”
+
+**Sources:**
+
+- [Hans Grauert and Reinhold Remmert, Theory of Stein Spaces (2004)](https://doi.org/10.1007/978-3-642-18921-0)
+- [Olivier Benoist, Étale cohomology of algebraic varieties over Stein compacta (2025)](https://doi.org/10.1007/s00222-025-01323-2)
+
 ### Pseudoconvexity turns the domain of holomorphy problem into a local test
 
 **Remember:** Domains of holomorphy are exactly the pseudoconvex domains, a local test.
@@ -64172,6 +64820,91 @@ $$”
 
 - [H. Grauert, On Levi's Problem and the Imbedding of Real-Analytic Manifolds, Annals of Mathematics 68 (1958)](https://doi.org/10.2307/1970257)
 - [K. Oka, Sur les fonctions analytiques de plusieurs variables VI. Domaines pseudoconvexes, Tohoku Mathematical Journal 49 (1942)](https://www.nara-wu.ac.jp/aic/gdb/nwugdb/oka/ko_ron/f/n06/p001.html)
+
+### Averaging discs gives convex balls
+
+**Remember:** Put both discs on the same parameter before averaging them.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Lempert function is the infimum of hyperbolic distances between two unit-disc parameters that a holomorphic disc sends to the prescribed points. The Kobayashi distance allows chains of such discs and adds their distances.
+
+**Problem.** Every Kobayashi ball in a bounded convex domain is Euclidean convex.
+
+**How the definition helps.** Single discs can be averaged point by point because the domain is convex. In our own proof, two trial discs start at the ball center and reach their endpoints at parameters within the required hyperbolic radius. Rescale and rotate the discs to reach both endpoints at the same parameter, then take any convex combination. Lempert’s theorem identifies the single-disc infimum with the Kobayashi distance on bounded convex domains.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “the Kobayashi pseudometric dₓ is defined as the largest pseudometric on X”
+
+**Sources:**
+
+- [Marco Abate, Iteration Theory of Holomorphic Maps on Taut Manifolds, Proposition 2.3.46 (1989)](https://people.dm.unipi.it/abate/libri/libriric/files/IterationThTautMan2-3.pdf)
+- [László Lempert, La métrique de Kobayashi et la représentation des domaines sur la boule, Theorem 1 (1981)](https://www.numdam.org/item/BSMF_1981__109__427_0/)
+
+### Bergman length dominates Carathéodory length
+
+**Remember:** Multiply a disc map by the evaluation kernel to test its derivative.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables), 32A25. arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a bounded domain let K be the Bergman kernel, which represents evaluation by an L² inner product. The Bergman length of v at z is the supremum of \|df(z)v\|/√K(z,z) over unit-norm holomorphic functions vanishing at z.
+
+**Problem.** Bergman length dominates Carathéodory length, the supremum of \|dh(z)v\| over holomorphic maps into the unit disc satisfying h(z)=0.
+
+**How the definition helps.** Each disc map h gives the Bergman test function hK(·,z)/√K(z,z), of norm at most one. Its derivative gives exactly the proposed lower bound in our own proof. Differentiating the kernel and projecting away its evaluation vector identifies the supremum with the usual metric from log K(z,z).
+
+**Paper or page:** [Local Rigidity of the Bergman Metric and of the Kähler Carathéodory Metric](https://arxiv.org/abs/2408.09572v2). It says: “BΩ(z, v) ≥ CΩ(z, v)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Carathéodory distance ignores analytic holes
+
+**Remember:** If all tests extend across a hole, the supremum does not change.
+
+*Rules out counterexamples.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Carathéodory pseudodistance is the supremum of the hyperbolic distances measured by holomorphic maps to the unit disc. An analytic subset is locally the common zero set of holomorphic functions.
+
+**Problem.** Removing a proper closed analytic subset from a connected complex manifold leaves the Carathéodory pseudodistance unchanged on the remaining points.
+
+**How the definition helps.** Every disc-valued test on the complement extends across the analytic subset, so removing it preserves the entire set of tests. In our own proof, boundedness gives holomorphic extension by the Riemann extension theorem, and the maximum modulus principle keeps the values inside the disc. For a different kind of hole, removing \|z₁\| ≤ 1 from ℂ² creates the nonconstant test 1/z₁.
+
+**Wikipedia:** [Carathéodory metric](https://en.wikipedia.org/wiki/Carath%C3%A9odory_metric). It says: “d(x, y) = sup { ρ(f(x), f(y)) \| f : B → Δ is holomorphic }.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Carathéodory distance solves two-point interpolation
+
+**Remember:** The largest distance seen by a disc is the interpolation limit.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Poincaré distance is the hyperbolic distance on the unit disc. The Carathéodory pseudodistance between two domain points is the supremum of their image distances under holomorphic maps into the disc.
+
+**Problem.** A holomorphic map can take two distinct domain points to prescribed disc values exactly when their Poincaré distance is at most the source Carathéodory pseudodistance.
+
+**How the definition helps.** The defining supremum gives the largest possible separation of the prescribed values. In our own proof, disc symmetries send the first value to zero, and Montel’s compactness theorem gives a maximizing map. Multiplying this map by a constant of modulus at most one realizes every smaller separation. Disc symmetries then give the prescribed values.
+
+**Paper or page:** [Pick interpolation and invariant functions](https://arxiv.org/abs/2309.04796). It says: “For two distinct points $z<sub>1</sub>,z<sub>2</sub>\\in \\Omega $ we have \\begin{align}  \\mathscr {D}\_\\Omega (z<sub>1</sub>,z<sub>2</sub>)=\\mathscr {D}<sub>2</sub>=\\mathbb {D}<sup>2</sup> <sub>c<sup>\*\_\\Omega</sup> (z<sub>1</sub>,z<sub>2</sub>)</sub>. \\end{align}”
+
+**Sources:**
+
+- [Pick interpolation and invariant functions, Theorem 2.3](https://arxiv.org/abs/2309.04796)
+
+### Compactness collapses Carathéodory distance
+
+**Remember:** A target disc sees nothing when every holomorphic function is constant.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Carathéodory pseudodistance is the supremum of hyperbolic distances measured by holomorphic maps into the unit disc. The Kobayashi pseudodistance measures the least total hyperbolic length of chains of holomorphic discs joining the points.
+
+**Problem.** On every connected compact complex manifold the Carathéodory pseudodistance vanishes identically, even if the manifold is Kobayashi hyperbolic.
+
+**How the definition helps.** On a compact connected manifold, every test into the disc is constant by the maximum modulus principle. Every distance in the defining supremum is therefore zero. Our own comparison uses a compact Riemann surface of genus at least two, whose disc cover gives a genuine Kobayashi distance.
+
+**Wikipedia:** [Carathéodory metric](https://en.wikipedia.org/wiki/Carath%C3%A9odory_metric). It says: “d(x, y) = sup { ρ(f(x), f(y)) \| f : B → Δ is holomorphic }.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Disk chains lift through coverings
 
@@ -64208,6 +64941,58 @@ $$”
 - [Quasi Triangle Inequality for the Lempert function](https://arxiv.org/abs/2503.19754v2)
 - [Lempert, La métrique de Kobayashi et la représentation des domaines sur la boule (1981)](https://doi.org/10.24033/bsmf.1948)
 
+### One exact distance certifies geodesics
+
+**Remember:** One exact pair forces every pair to be exact.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Poincaré distance is the hyperbolic distance on the unit disc. The Carathéodory pseudodistance is the supremum of the distances measured by holomorphic maps into that disc. A Carathéodory geodesic is a holomorphic map from the disc that preserves all these distances.
+
+**Problem.** A holomorphic disc in a finite-dimensional complex domain is a Carathéodory complex geodesic if it preserves the distance of one distinct pair.
+
+**How the definition helps.** A maximizing map turns one exact pair into equality in the Schwarz–Pick inequality on the disc. In our own proof, we normalize a maximizing sequence at the first point and use Montel’s compactness theorem to obtain a maximizer. Its composition with the given disc preserves one distance, so Schwarz–Pick makes the composition an isometry. This forces the original disc to preserve every distance.
+
+**Wikipedia:** [Complex geodesic](https://en.wikipedia.org/wiki/Complex_geodesic). It says: “d(f(w), f(z)) = ρ(w, z) for all points w and z in Δ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projective evaluation makes Bergman metrics Kähler
+
+**Remember:** Evaluation lines pull back a metric with a closed form.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables), 32A25. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Bergman space consists of the square-integrable holomorphic functions. Send each point to the line spanned by evaluation there in the dual space. Measure tangent vectors by mapping them into this space of lines with its standard Fubini–Study metric.
+
+**Problem.** On a bounded domain in ℂⁿ this construction gives a Kähler metric, whose associated two-form is closed.
+
+**How the definition helps.** Pullback by a holomorphic map with injective derivative preserves positivity and closedness of the metric form. In our own argument, the constant and coordinate functions show that evaluation detects every tangent direction. The squared norm of evaluation is K(z,z), so the pullback has the usual Bergman potential log K(z,z).
+
+**Wikipedia:** [Bergman metric](https://en.wikipedia.org/wiki/Bergman_metric). It says: “The Bergman metric is in fact a positive definite matrix at each point if G is a bounded domain.”
+
+**Sources:**
+
+- [Kobayashi, Geometry of bounded domains (1959)](https://doi.org/10.1090/s0002-9947-1959-0112162-5)
+
+### Tautness gives extremal discs
+
+**Remember:** A fixed center keeps a sequence of almost extremal discs from escaping.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complex manifold is taut if every sequence of holomorphic unit discs has a subsequence that converges uniformly on compact sets or escapes. Escape means the images of each compact source set eventually miss each compact target set. The infinitesimal Kobayashi length of v at x is the infimum of \|a\| over discs satisfying f(0) = x and a f′(0) = v.
+
+**Problem.** On a taut complex manifold every infinitesimal Kobayashi length is realized by a holomorphic disc and a scalar.
+
+**How the definition helps.** The fixed center prevents discs approaching the infimum from escaping, so tautness supplies a limiting disc. In our own explanation, the bounded scalars also have a convergent subsequence. Cauchy’s formula gives convergence of derivatives at zero, so the limiting disc and scalar attain the infimum.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “The Kobayashi infinitesimal pseudometric is a Finsler pseudometric”
+
+**Sources:**
+
+- [Marco Abate, Iteration Theory of Holomorphic Maps on Taut Manifolds, proof of Proposition 2.3.34 (1989)](https://people.dm.unipi.it/abate/libri/libriric/files/IterationThTautMan2-3.pdf)
+
 ### The largest disc-contracting distance makes every holomorphic map distance-decreasing
 
 **Remember:** Define the distance by discs, and holomorphic maps never stretch it.
@@ -64225,6 +65010,331 @@ $$”
 **Sources:**
 
 - [S. Kobayashi, Invariant distances on complex manifolds and holomorphic mappings, Journal of the Mathematical Society of Japan 19 (1967)](https://doi.org/10.2969/jmsj/01940460)
+
+### Weakly vanishing kernels give Bergman completeness
+
+**Remember:** A sequence of evaluation lines cannot converge if its unit vectors vanish weakly.
+
+*Rules out counterexamples.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables), 32A25. arXiv math.CV, math.FA. Level 3: graduate.
+
+**Definition.** The Bergman kernel vector represents evaluation by an inner product on the square-integrable holomorphic functions. The normalized kernel vectors vanish weakly at the boundary if their inner products with each fixed function tend to zero there.
+
+**Problem.** On a bounded domain this weak vanishing makes the Bergman metric complete, so every Cauchy sequence for its distance converges inside.
+
+**How the definition helps.** Weak vanishing rules out convergence of the corresponding lines in projective Hilbert space. In our own argument, the projective description of the Bergman metric sends each Cauchy sequence to Cauchy lines. Those lines converge, so their unit representatives converge in norm after phase adjustment. This excludes a boundary subsequence, and an interior limit point gives convergence because the metric induces the usual topology.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:**
+
+- [Kobayashi, Geometry of bounded domains (1959)](https://doi.org/10.1090/S0002-9947-1959-0112162-5)
+
+### Beltrami graphs expose integrability
+
+**Remember:** The graph is integrable when its tangent brackets stay inside it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** Complex coordinates split complexified tangent vectors into holomorphic and antiholomorphic directions. A Beltrami differential μ maps the antiholomorphic directions smoothly and complex-linearly into the holomorphic directions. Its graph consists of vectors v + μ(v) and specifies the new antiholomorphic directions for small μ.
+
+**Problem.** The graph comes from local complex coordinates exactly when ∂̄μ + ½\[μ,μ\] = 0.
+
+**How the definition helps.** Closure of the graph under vector field brackets gives one equation for μ (our own). Its linear term differentiates μ in antiholomorphic directions, and its quadratic term brackets the holomorphic corrections (our own). The Newlander–Nirenberg theorem supplies coordinates once brackets stay in the graph (our own).
+
+**nLab:** [Maurer-Cartan equation](https://ncatlab.org/nlab/show/Maurer-Cartan+equation). It says: “the solutions in some contexts parametrize infinitesimal deformations”
+
+**Sources:**
+
+- [K. Kodaira, Complex Manifolds and Deformation of Complex Structures](https://doi.org/10.1007/b138372)
+
+### Brackets detect second-order obstructions
+
+**Remember:** The quadratic bracket is the price of extending one more order.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The Maurer–Cartan description encodes a formal change of complex coordinates by a tangent-valued form μ satisfying ∂̄μ + ½\[μ,μ\] = 0. Here ∂̄ differentiates in antiholomorphic directions, and the bracket extends the bracket of vector fields. To second order write μ = εα + ε²β and discard powers above two.
+
+**Problem.** A first-order solution α extends to second order exactly when \[α,α\] represents zero in the second cohomology of holomorphic vector fields.
+
+**How the definition helps.** The quadratic coefficient gives the single equation ∂̄β = −½\[α,α\] (our own). It has a solution precisely when the right side represents zero in cohomology (our own). Kodaira–Spencer theory identifies solutions up to coordinate changes with formal deformations (our own).
+
+**nLab:** [Deligne groupoid](https://ncatlab.org/nlab/show/Deligne+groupoid). It says: “MC(𝔤) = {x ∈ 𝔤¹ \| dx + ½\[x,x\] = 0}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual numbers linearize complex deformations
+
+**Remember:** Square-zero parameters turn changes of charts into addition.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The dual numbers form the ring ℂ\[ε\]/(ε²), whose elements have the form a + bε. A first-order deformation of a complex manifold X glues products of its coordinate charts with this infinitesimal parameter space. The gluing must recover the original charts and their transitions at ε = 0.
+
+**Problem.** First-order deformations of a compact complex manifold X, up to isomorphisms respecting that identification, correspond to first cohomology classes of its holomorphic vector fields.
+
+**How the definition helps.** Square-zero multiplication turns composition of infinitesimal chart changes into addition of vector fields (our own). Compatibility on triple overlaps gives a cocycle, and changing charts adds a coboundary, precisely the equivalence in first cohomology (our own). Smoothness of X supplies the local product charts (our own).
+
+**Wikipedia:** [Kodaira–Spencer map](https://en.wikipedia.org/wiki/Kodaira%E2%80%93Spencer_map). It says: “gives this 1-cochain as a 1-cocycle, hence a class”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed loci give Enriques deformations
+
+**Remember:** Keep the cover involution by keeping its parameter fixed.
+
+*Makes the theorem clean to state or prove.* MSC 32G05 (Deformations of complex structures). arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** A complex Enriques surface is the quotient of a K3 surface by a fixed-point-free involution, a symmetry of order two. The involution acts on the local deformation space of the cover. Its fixed germ consists of the parameters near the original surface that the involution preserves.
+
+**Problem.** The local deformation space of the Enriques surface is isomorphic to this fixed germ and is smooth.
+
+**How the definition helps.** The fixed parameters specify exactly which fibers retain the involution (our own). The covering theorem identifies deformations of the quotient with these parameters (our own). Averaging coordinates makes the involution linear on the smooth deformation base of the cover, so its fixed space is smooth (our own).
+
+**Paper or page:** [Deformations of primitive Enriques varieties](https://arxiv.org/abs/2509.14014v1). It says: “The space Defˡᵗ(Y) ≃ B of locally trivial deformations of Y is smooth”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Kodaira–Spencer maps commute with pullback
+
+**Remember:** Changing the base first just changes the input tangent vector.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For a smooth proper holomorphic family, the Kodaira–Spencer map measures how a fiber changes along a base tangent vector. Lift the vector locally to the total space and subtract the lifts on overlaps. These differences define a first cohomology class of holomorphic vector fields on the fiber.
+
+**Problem.** After pullback along a holomorphic base map, the Kodaira–Spencer map is the original map composed with the derivative of that base map.
+
+**How the definition helps.** The differences of lifts compute the connecting map of the tangent sequence, which respects maps between families (our own). Pullback sends the new base vector to its derivative in the original base (our own). This avoids differentiating the pulled-back chart transitions individually (our own).
+
+**Wikipedia:** [Kodaira–Spencer map](https://en.wikipedia.org/wiki/Kodaira%E2%80%93Spencer_map). It says: “which gives a 1-cocycle on M with values in its tangent bundle”
+
+**Sources:**
+
+- [K. Kodaira, Complex Manifolds and Deformation of Complex Structures](https://doi.org/10.1007/b138372)
+
+### Local triviality removes smoothing directions
+
+**Remember:** Fix each local model and deform only how they fit together.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32G05 (Deformations of complex structures), 14B12. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A first-order deformation of a complex space X has parameter ε with ε² = 0 and an identification of the fiber at zero with X. It is locally trivial if each point has a neighborhood where the family is a product respecting that identification.
+
+**Problem.** Locally trivial first-order deformations up to isomorphism respecting the identification correspond to first cohomology classes of the sheaf of holomorphic vector fields on X.
+
+**How the definition helps.** Product charts can change on overlaps only by the identity plus ε times a derivation, a linear operator satisfying the product rule (our own). Triple overlaps give the cocycle condition, and changing charts adds exactly a coboundary (our own). The node deformation xy = ε changes the local equation and gives no such product chart (our own).
+
+**Paper or page:** [Unobstructedness of deformations for a d-semistable central corank one boundary point](https://arxiv.org/abs/2410.10583v2). It says: “X has a non-locally trivial first order deformation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal sequences remove coordinate motion
+
+**Remember:** The normal sequence separates moving equations from changing the manifold.
+
+*True by definition. Confidence: medium.* MSC 32G05 (Deformations of complex structures), 14B12. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** For a smooth hypersurface, the normal sequence relates tangent fields on the hypersurface, ambient tangent fields along it and normal motions. Its connecting map sends a normal motion to the first cohomology class measuring the failure of local ambient lifts to agree.
+
+**Problem.** For a smooth quintic threefold in complex projective four-space, first-order deformations are degree-five polynomials modulo the defining polynomial and its infinitesimal projective coordinate changes.
+
+**How the definition helps.** Exactness makes ambient tangent fields precisely the normal motions with zero intrinsic deformation class (our own). Projective-space cohomology shows that these fields extend globally and that the connecting map reaches every intrinsic deformation class (our own). Comparing local lifts with chart changes identifies this connecting map with the usual deformation map (our own).
+
+**Paper or page:** [The Kodaira-Spencer map for minimal toric hypersurfaces](https://arxiv.org/abs/2203.01092v4). It says: “ker(κℙ,𝑓) ≅ Lie Aut(ℙ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Semiuniversality gives unique base germs
+
+**Remember:** All families factor locally, and the minimal base is unique.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A versal family induces every nearby deformation of its central fiber by a change of parameters. A semiuniversal family also induces each first-order deformation from a unique tangent vector at the base point.
+
+**Problem.** Any two semiuniversal families of a compact complex manifold have isomorphic base germs, meaning their bases agree after shrinking around the chosen points.
+
+**How the definition helps.** Versality gives comparison maps both ways, and first-order uniqueness makes their derivatives inverse (our own). Each composite is an analytic self-map with invertible derivative on the tangent space, hence an isomorphism of germs (our own). Kuranishi’s theorem constructs the family from changes of complex charts (our own).
+
+**Paper or page:** [Calabi-Yau Foliations and Deformations](https://arxiv.org/abs/2412.07566v1). It says: “For any compact complex manifold X₀, there exists a versal family of deformations parametrized by an analytic space germ (R,0).”
+
+**Sources:**
+
+- [M. Kuranishi, On the Locally Complete Families of Complex Analytic Structures](https://doi.org/10.2307/1970211)
+
+### Tangent fields classify pair deformations
+
+**Remember:** Use vector fields tangent to the divisor when changing pair charts.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures), 14B12. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** For a smooth complex manifold X with a smooth hypersurface D, logarithmic vector fields are holomorphic vector fields tangent to D. Equivalently, they send each local function vanishing on D to another such function.
+
+**Problem.** For a compact pair (X,D), first-order deformations fixing the central identification correspond to first cohomology classes of logarithmic vector fields. Isomorphisms must respect that identification.
+
+**How the definition helps.** Infinitesimal chart changes preserving the hypersurface have precisely logarithmic vector fields as their linear terms (our own). Straightening a smooth hypersurface gives local product charts for the pair (our own). Their overlap conditions give cocycles, and changing the charts adds coboundaries (our own).
+
+**Paper or page:** [Smoothing Gorenstein toric Fano 3-folds](https://arxiv.org/abs/2412.06500v1). It says: “Ext¹(Ωₓ(log D), 𝒪ₓ) is the tangent space of Def(X, D)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-forms identify K3 period derivatives
+
+**Remember:** Contraction with the two-form makes the period differential invertible.
+
+*Makes the theorem clean to state or prove.* MSC 32G05 (Deformations of complex structures), 32G20. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** A K3 surface is a simply connected compact complex surface with a nowhere vanishing holomorphic two-form. A marking identifies its second integral cohomology with a fixed lattice. The period is the line spanned by the form in the complexified lattice.
+
+**Problem.** Near each marked K3 surface, the period map identifies its deformation space with an open subset of the period domain. This domain consists of lines ℂω satisfying ω·ω = 0 and ω·ω̄ &gt; 0 for the intersection pairing.
+
+**How the definition helps.** The period line gives one geometric object whose derivative detects every first-order deformation (our own). Griffiths’ formula computes that derivative by contraction with the two-form, which identifies vector fields with one-forms (our own). The deformation space is smooth because the second cohomology of its tangent sheaf vanishes (our own).
+
+**Wikipedia:** [K3 surface](https://en.wikipedia.org/wiki/K3_surface). It says: “This is surjective, and a local isomorphism, but not an isomorphism”
+
+**Sources:**
+
+- [P. A. Griffiths, Periods of Integrals on Algebraic Manifolds, II: Local Study of the Period Mapping](https://doi.org/10.2307/2373485)
+
+### Zero obstruction spaces give smooth bases
+
+**Remember:** No obstruction space means no local equations.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For a compact complex manifold X, let H¹ and H² denote cohomology of its holomorphic vector fields. The Kuranishi obstruction map is a holomorphic map from a neighborhood of zero in H¹ to H². Its zeros near the origin form the Kuranishi base, which describes all small deformations with no redundant first-order parameters.
+
+**Problem.** If H² vanishes, the Kuranishi base is smooth of dimension dim H¹.
+
+**How the definition helps.** A map to the zero space vanishes everywhere, so its zeros fill the neighborhood (our own). Kuranishi’s theorem replaces the equations for gluing local charts with this finite-dimensional map (our own).
+
+**Paper or page:** [Calabi-Yau Foliations and Deformations](https://arxiv.org/abs/2412.07566v1). It says: “If H² = 0, the Kuranishi space is smooth and isomorphic to an open neighborhood of 0 in H¹.”
+
+**Sources:**
+
+- [M. Kuranishi, On the Locally Complete Families of Complex Analytic Structures](https://doi.org/10.2307/1970211)
+- [K. Kodaira, Complex Manifolds and Deformation of Complex Structures](https://doi.org/10.1007/b138372)
+
+### Level markings remove polarized automorphisms
+
+**Remember:** At level three or higher, inversion cannot hide in the marking.
+
+*Rules out counterexamples.* MSC 32G13 (Complex-analytic moduli problems). arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** A principally polarized complex abelian variety is a projective complex torus with a polarization giving a perfect alternating pairing on its lattice. A full level n marking chooses a basis of the points killed by multiplication by n with the standard alternating pairing.
+
+**Problem.** For n ≥ 3, the identity is the only group automorphism preserving both the polarization and the full level n marking.
+
+**How the definition helps.** Preserving the basis forces the automorphism to act as the identity modulo n on the lattice (our own). Inversion still acts trivially at level two (our own). Polarization makes the automorphism group finite, and Minkowski’s lemma excludes nonidentity finite-order integral matrices congruent to the identity at level n ≥ 3 (our own).
+
+**Wikipedia:** [Level structure (algebraic geometry)](https://en.wikipedia.org/wiki/Level_structure_%28algebraic_geometry%29). It says: “by demanding automorphisms to preserve the level structure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polarization cuts K3 moduli
+
+**Remember:** A fixed polarization class cuts the period domain by one hyperplane.
+
+*True by definition.* MSC 32G13 (Complex-analytic moduli problems), 32G20. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** A polarized K3 surface is a simply connected compact complex surface with a nowhere vanishing holomorphic two-form and a chosen ample line bundle. An ample bundle has a power giving a projective embedding. A deformation of the pair extends the line bundle along with the surface.
+
+**Problem.** Near the original pair, the period lines of its deformations fill an open subset of the hyperplane section orthogonal to the bundle’s first Chern class. This local deformation space is smooth of dimension 19.
+
+**How the definition helps.** The bundle extends precisely when its class stays perpendicular to the holomorphic two-form (our own). The exponential sequence for holomorphic functions gives this extension criterion, and ampleness persists nearby (our own). Local Torelli supplies period coordinates in dimension twenty, and the positive square of the polarization makes the hyperplane cut transverse (our own).
+
+**Wikipedia:** [K3 surface](https://en.wikipedia.org/wiki/K3_surface). It says: “The different 19-dimensional moduli spaces”
+
+**Sources:**
+
+- [D. Huybrechts, Lectures on K3 Surfaces, chapter 6](https://www.math.uni-bonn.de/people/huybrech/K3.html)
+
+### Positive Lagrangians give symmetric periods
+
+**Remember:** A positive Lagrangian is the graph of a symmetric period matrix.
+
+*True by definition.* MSC 32G13 (Complex-analytic moduli problems), 32G20. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** Fix a lattice with a basis in which its alternating form Q has the standard symplectic matrix. A positive Lagrangian is a complex subspace of half the dimension on which Q vanishes and iQ(v,v̄) is positive for nonzero v.
+
+**Problem.** Marked principally polarized complex tori with this lattice have period space equal to the Siegel upper half-space of symmetric matrices with positive definite imaginary part.
+
+**How the definition helps.** Positivity makes the subspace a graph over the first coordinate block because any vector in the second block pairs trivially with its conjugate (our own). Writing this graph as (v,Zv), the vanishing of Q gives symmetry of Z and positivity makes its imaginary part positive definite (our own). The Riemann bilinear relations identify these subspaces with marked polarized tori (our own).
+
+**Wikipedia:** [Siegel upper half-space](https://en.wikipedia.org/wiki/Siegel_upper_half-space). It says: “symmetric matrices over the complex numbers whose imaginary part is positive definite”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weight one periods recover tori
+
+**Remember:** The holomorphic one-forms recover the complex structure on the lattice.
+
+*True by definition.* MSC 32G13 (Complex-analytic moduli problems), 32G20. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A marked complex torus is a quotient of a complex vector space by a lattice with a chosen basis. Its weight one period is the space W of holomorphic one-forms inside the complex dual of the marked real vector space.
+
+**Problem.** Marked complex tori inducing a fixed orientation correspond to subspaces W complementary to their complex conjugates and inducing that orientation.
+
+**How the definition helps.** The two subspaces recover the complex structure on the dual by multiplying W by i and its conjugate by −i (our own). Dualizing recovers the original vector space with its complex structure and marked lattice (our own). The broader theorem uses the Albanese map, obtained by integrating holomorphic one-forms, to recognize Kähler structures on smooth tori (our own).
+
+**Paper or page:** [Teichmuller spaces, ergodic theory and global Torelli theorem](https://arxiv.org/abs/1404.3847v1). It says: “the space of all complex operators on H¹(M,ℝ) compatible with the orientation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hodge flags make periods holomorphic
+
+**Remember:** The filtration varies holomorphically even when its split summands do not.
+
+*Makes the theorem clean to state or prove.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** In degree k, the Hodge filtration groups cohomology classes by the types of differential forms representing them. Its step Fᵖ sums the types (a, k−a) with a ≥ p. The local period map records these nested subspaces, called a flag, after identifying nearby cohomology groups by parallel transport.
+
+**Problem.** For a smooth projective family over a complex manifold, the local period map varies holomorphically in the space of flags of fixed dimensions.
+
+**How the definition helps.** The filtration gives a complex space of flags in which holomorphic dependence has a precise meaning (our own). Recovering the individual type spaces from the flag uses complex conjugation (our own). Griffiths proved the substantive result that the filtration steps vary holomorphically.
+
+**Wikipedia:** [Period mapping](https://en.wikipedia.org/wiki/Period_mapping). It says: “Griffiths proved that the period map is holomorphic.”
+
+**Sources:**
+
+- [P. A. Griffiths, Periods of Integrals on Algebraic Manifolds, II: Local Study of the Period Mapping](https://doi.org/10.2307/2373485)
+
+### Hodge quotients give class equations
+
+**Remember:** A real class lies in the middle when its Hodge quotient vanishes.
+
+*True by definition. Confidence: medium.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** In cohomology of degree 2p, the Hodge filtration step Fᵖ sums all form types (a, 2p−a) with a ≥ p. The quotient by Fᵖ records the remaining components of a class.
+
+**Problem.** In a smooth projective family, fix a rational cohomology class locally by parallel transport. The points where it has only type (p,p) form a closed complex analytic set in that neighborhood.
+
+**How the definition helps.** The quotient turns the type condition into the vanishing of one holomorphic section (our own). A rational class equals its conjugate, and conjugation interchanges the two type indices (our own). Membership in Fᵖ therefore forces both indices to equal p (our own). Griffiths’ theorem makes Fᵖ holomorphic, so the quotient section gives local holomorphic equations (our own).
+
+**nLab:** [Hodge structure](https://ncatlab.org/nlab/show/Hodge+structure). It says: “Fᵖ H²ᵖ = Hᵖ˒ᵖ(X) ⊕ Hᵖ⁺¹˒ᵖ⁻¹(X) ⊕ ⋯ ⊕ H²ᵖ˒⁰(X).”
+
+**Sources:**
+
+- [P. A. Griffiths, Periods of Integrals on Algebraic Manifolds, II: Local Study of the Period Mapping](https://doi.org/10.2307/2373485)
+
+### Transversality gives integrable Higgs fields
+
+**Remember:** Flatness makes the two-step part of the squared connection vanish.
+
+*True by definition. Confidence: medium.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** In a variation of Hodge structure, the cohomology spaces carry nested holomorphic subspaces called the Hodge filtration. Differentiating a section by the flat connection, the rule for parallel transport, lowers its filtration step by at most one. On the direct sum of successive quotients, let θ be the map induced by this one-step drop.
+
+**Problem.** These quotients form a holomorphic Higgs bundle. This means θ is a holomorphic one-form with values in linear operators, and its operators in any two directions commute.
+
+**How the definition helps.** Passing to successive quotients makes the commutator exactly the two-step part of the curvature (our own). In a local splitting of the filtration, one would instead track several components of the connection (our own). Terms differentiating scalar coefficients disappear in the quotient, and flatness means the curvature vanishes (our own). Griffiths proved the filtration bound for smooth projective families.
+
+**nLab:** [Higgs bundle](https://ncatlab.org/nlab/show/Higgs+bundle). It says: “satisfying the integrability condition Φ ∧ Φ = 0.”
+
+**Sources:**
+
+- [P. A. Griffiths, Periods of Integrals on Algebraic Manifolds, II: Local Study of the Period Mapping](https://doi.org/10.2307/2373485)
 
 ### Proper maps have analytic images
 
@@ -64326,6 +65436,58 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Multiplier ideals allow singular vanishing
+
+**Remember:** Keep exactly the germs that the weighted norm can see.
+
+*Makes the theorem clean to state or prove.* MSC 32L20 (Vanishing theorems), 32Q15. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A singular metric on a holomorphic line bundle measures squared lengths locally with a weight exp(−2φ). Its multiplier ideal 𝒥 consists of local holomorphic functions f for which \|f\|² exp(−2φ) has finite integral near each point.
+
+**Problem.** On compact Kähler X with Kähler form ω, suppose a singular metric on L has curvature at least εω for some ε &gt; 0. Then Hᑫ(X,K⊗L⊗𝒥) vanishes for q &gt; 0, where K is the bundle of holomorphic top forms.
+
+**How the definition helps.** The ideal specifies exactly which coefficients have the finite norm needed to solve the weighted differential equation. In our own summary, Nadel’s proof identifies sheaf cohomology with a complex of square-integrable forms. Curvature estimates solve the equation ∂̄u = v for closed forms v of positive degree.
+
+**Wikipedia:** [Nadel vanishing theorem](https://en.wikipedia.org/wiki/Nadel_vanishing_theorem). It says: “It generalizes the Kodaira vanishing theorem using singular metrics with (strictly) positive curvature,”
+
+**Sources:**
+
+- [A. M. Nadel, Multiplier ideal sheaves and Kähler-Einstein metrics of positive scalar curvature (1990)](https://annals.math.princeton.edu/1990/132-3/p04)
+
+### Nakano positivity gives vanishing where Griffiths positivity fails
+
+**Remember:** Test curvature on sums of tensors, not only simple tensors.
+
+*Rules out counterexamples.* MSC 32L20 (Vanishing theorems), 32Q15. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** Curvature of a Hermitian holomorphic bundle defines a Hermitian form on the tensor product of tangent space and fiber. Nakano positivity requires positivity on every nonzero tensor. Griffiths positivity tests only individual products of a tangent vector and a fiber vector.
+
+**Problem.** On a compact Kähler manifold X, a Nakano-positive bundle E satisfies Hᑫ(X,K⊗E) = 0 for q &gt; 0. Here K is the bundle of holomorphic forms of top degree.
+
+**How the definition helps.** Testing sums of tensors makes the curvature term positive in the Bochner–Kodaira energy identity. That identity forces every harmonic representative of these cohomology groups to vanish. Our own example uses the Griffiths-positive tangent bundle of the complex projective plane. Tensoring it with K gives the cotangent bundle, whose first cohomology contains the nonzero Kähler class.
+
+**Paper or page:** [Positivity and L² Extension](https://arxiv.org/abs/2508.01753v1). It says: “Griffiths-positive but not 2-positive for k=1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing extends multiplier subscheme sections
+
+**Remember:** Take the quotient whose kernel Nadel vanishing controls.
+
+*Makes the theorem clean to state or prove.* MSC 32L20 (Vanishing theorems), 14F18. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** For a singular line metric, the multiplier ideal 𝒥 consists of local holomorphic functions whose squared lengths have finite integral. Its multiplier subscheme Z has function sheaf 𝒪/𝒥, so functions on Z retain information modulo the full ideal.
+
+**Problem.** On a compact Kähler manifold X, suppose the curvature of a singular metric on L dominates a positive multiple of the Kähler form. Every section of K⊗L on Z extends to X, where K is the holomorphic top-form bundle.
+
+**How the definition helps.** The quotient by the full ideal makes the kernel of restriction precisely the sheaf whose cohomology Nadel vanishing controls. In our own argument, the exact cohomology sequence places the obstruction to extension in H¹(X,K⊗L⊗𝒥). Nadel vanishing kills this group.
+
+**Wikipedia:** [Nadel vanishing theorem](https://en.wikipedia.org/wiki/Nadel_vanishing_theorem). It says: “its zero variety is an analytic set.”
+
+**Sources:**
+
+- [A. M. Nadel, Multiplier ideal sheaves and Kähler-Einstein metrics of positive scalar curvature (1990)](https://annals.math.princeton.edu/1990/132-3/p04)
+
 ### Amoeba complements have convex components
 
 **Remember:** A line segment in log coordinates interpolates radii geometrically.
@@ -64342,6 +65504,22 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Kähler closedness excludes Hopf obstruction
+
+**Remember:** Closedness lets a single harmonic theory control both complex derivatives.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32Q15 (Kähler manifolds). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A Hermitian metric measures lengths compatibly with the complex structure. It is Kähler when its associated real two-form is closed.
+
+**Problem.** On a compact Kähler manifold, every exact differential form of pure type equals ∂∂̄u for some form u. Here ∂ and ∂̄ are the two parts of exterior differentiation in complex coordinates.
+
+**How the definition helps.** Closedness gives the Kähler identities, which link the Laplacians for the two complex derivatives and yield the result through Hodge theory. Our own counterexample identifies z with 2z in punctured complex two-space to form a compact Hopf surface. The nonzero form i∂∂̄log\|z\|² descends with a global primitive because dilation changes the logarithm only by a constant. A global real potential would be subharmonic on every complex curve and hence constant by the maximum principle.
+
+**Wikipedia:** [Bott–Chern cohomology](https://en.wikipedia.org/wiki/Bott%E2%80%93Chern_cohomology). It says: “are closely connected with the ∂∂̄-lemma.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Odd-degree Betti numbers of compact Kähler manifolds are even
 
 **Remember:** In odd degree, each Hodge piece has a distinct conjugate.
@@ -64355,6 +65533,22 @@ $$”
 **How the definition helps.** The Kähler condition gives a decomposition in which complex conjugation pairs summands of equal dimension. Hodge theory supplies this decomposition by the numbers p and q of ordinary and conjugate differentials. In odd degree, p + q is odd, so the partner with indices (q, p) is distinct. The Hopf surface shows why the metric matters. It is compact and complex, but its first Betti number is one.
 
 **Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “A simple consequence of Hodge theory is that every odd Betti number b₂ₐ₊₁ of a compact Kähler manifold is even, by Hodge symmetry.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Primitive classes split Kähler cohomology
+
+**Remember:** The adjoint turns primitive into orthogonal to wedge multiples.
+
+*True by definition.* MSC 32Q15 (Kähler manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** For a compact Kähler manifold, let L wedge a form with its Kähler form. A harmonic form is primitive when the adjoint of L kills it. A cohomology class is primitive when its harmonic representative is primitive.
+
+**Problem.** Each class of type (p,q) splits uniquely into a primitive class and L applied to a class of type (p−1,q−1). The two summands are orthogonal for the inner product on harmonic forms.
+
+**How the definition helps.** The adjoint definition identifies primitive forms as the orthogonal complement of the image of L. Our own argument replaces the test by repeated wedge powers with this single orthogonality test. The Kähler identities ensure that L and its adjoint preserve harmonic forms. Hodge theory identifies these forms with cohomology classes.
+
+**Paper or page:** [Hodge-Riemann property of Griffiths positive matrices with (1,1)-form entries](https://arxiv.org/abs/2211.11578v3). It says: “H<sup>p,q</sup>(X,\\mathbb{C} )=\\Big (\\{\\omega \\}\\smile H<sup>p-1,q-1</sup>(X,\\mathbb{C} )\\Big )\\oplus P<sup>p,q</sup>(X,\\mathbb{C} )”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -64376,6 +65570,42 @@ $$”
 
 - [E. Kähler, Über eine bemerkenswerte Hermitesche Metrik, Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg 9 (1933) 173–186](https://doi.org/10.1007/BF02940642)
 
+### An exhaustion separates its own sublevels
+
+**Remember:** One plurisubharmonic function separates its whole sublevel from outside points.
+
+*True by definition.* MSC 32Q28 (Stein manifolds), 32U05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The holomorphic hull of K consists of points where every global holomorphic function obeys its maximum modulus bound on K. The plurisubharmonic hull instead tests upper bounds for functions satisfying the subharmonic mean inequality along holomorphic discs. On a Stein manifold the two hulls agree for compact K.
+
+**Problem.** Let ρ be a smooth strictly plurisubharmonic function on a Stein manifold with compact sets {ρ ≤ c} for every real c. Each such set equals its holomorphic hull.
+
+**How the definition helps.** The exhaustion ρ itself exceeds c at every point outside the sublevel, so its plurisubharmonic hull adds nothing (our own). The theorem identifying the two hulls on Stein manifolds then gives holomorphic convexity (our own).
+
+**Paper or page:** [The Oka principle for tame families of Stein manifolds](https://arxiv.org/abs/2510.25887v1). It says: “the sublevel set {ρ ≤ c} ⊂ T × X is proper and 𝒥-convex.”
+
+**Sources:**
+
+- [Franc Forstnerič and Álfheiður Sigurðardóttir, The Oka principle for tame families of Stein manifolds (2026)](https://doi.org/10.1090/btran/257)
+
+### Chern classes classify Stein line bundles
+
+**Remember:** Taking local logarithms leaves an integer class.
+
+*True by definition.* MSC 32Q28 (Stein manifolds), 32E10. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The analytic Picard group classifies holomorphic line bundles, which are locally products with a complex line. Equivalently, it records nowhere-zero holomorphic transition functions on overlaps, up to changes of local frames. This describes the first sheaf cohomology group of nowhere-zero holomorphic functions.
+
+**Problem.** The first Chern class identifies the analytic Picard group of a Stein manifold X with H²(X, ℤ).
+
+**How the definition helps.** Using transition functions turns the first Chern class into the obstruction to choosing compatible local logarithms (our own). The exponential sequence expresses this obstruction as a map to integer cohomology in degree two (our own). Cartan’s Theorem B makes the neighboring holomorphic function cohomology groups in degrees one and two vanish, so the map is bijective (our own).
+
+**nLab:** [Oka principle](https://ncatlab.org/nlab/show/Oka+principle). It says: “holomorphic line bundles over Stein manifolds are fully classified by their first Chern class”
+
+**Sources:**
+
+- [Kiyosi Oka, Sur les fonctions analytiques de plusieurs variables. III–Deuxième problème de Cousin (1939)](https://doi.org/10.32917/hmj/1558490525)
+
 ### Closed submanifolds inherit Stein embeddings
 
 **Remember:** Restrict a closed embedding to a closed submanifold.
@@ -64391,6 +65621,24 @@ $$”
 **nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “Every closed sub-complex manifold of a Stein manifold is itself Stein.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Holomorphic forms compute Stein cohomology
+
+**Remember:** On Stein manifolds, holomorphic forms already compute cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 32Q28 (Stein manifolds), 32E10. arXiv math.CV. Level 3: graduate.
+
+**Definition.** Global holomorphic de Rham cohomology uses differential forms whose coefficients are holomorphic in local coordinates. In each degree it takes forms with zero exterior derivative modulo derivatives of global holomorphic forms.
+
+**Problem.** On a Stein manifold, the cohomology of the complex of global holomorphic forms equals singular cohomology with complex coefficients.
+
+**How the definition helps.** Using global forms gives one complex whose cohomology can be compared directly with the topology of the manifold (our own). The holomorphic Poincaré lemma says that closed holomorphic forms of positive degree have local primitives (our own). Cartan’s Theorem B removes higher sheaf cohomology of the forms, so this local calculation gives the global comparison (our own).
+
+**nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “The holomorphic de Rham cohomology of Stein manifolds coincides with ordinary de Rham cohomology (with complex coefficients).”
+
+**Sources:**
+
+- [Hans Grauert and Reinhold Remmert, Theory of Stein Spaces (2004)](https://doi.org/10.1007/978-3-642-18921-0)
 
 ### On Stein manifolds sheaf cohomology solves the first Cousin problem
 
@@ -64501,6 +65749,24 @@ $$”
 
 - [Robert Brody, Compact Manifolds and Hyperbolicity (1978)](https://doi.org/10.2307/1998216)
 
+### Complete Kobayashi distance gives tautness
+
+**Remember:** One point in a compact set keeps each smaller disc in a compact ball.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Kobayashi pseudodistance measures the least total hyperbolic length of chains of holomorphic discs. Complete hyperbolicity means it is a complete metric. Tautness requires each disc sequence to have a subsequence converging locally uniformly or eventually sending each compact set outside every compact target set.
+
+**Problem.** Every complete Kobayashi hyperbolic complex manifold is taut.
+
+**How the definition helps.** Completeness makes closed Kobayashi balls compact by the Hopf–Rinow theorem for length spaces. In our own explanation, discs that fail to escape have a subsequence taking some points of a fixed compact set into another compact set. Distance contraction then confines their images on every smaller closed disc to a compact ball. The Arzelà–Ascoli theorem gives a subsequence converging uniformly on compact sets.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “the Kobayashi pseudometric dₓ is defined as the largest pseudometric on X”
+
+**Sources:**
+
+- [Marco Abate, Iteration Theory of Holomorphic Maps on Taut Manifolds, Theorem 2.3.18 (1989)](https://people.dm.unipi.it/abate/libri/libriric/files/IterationThTautMan2-3.pdf)
+
 ### Entire curves test compact hyperbolicity
 
 **Remember:** Compactness lets fast disks give an entire curve.
@@ -64518,6 +65784,167 @@ $$”
 **Sources:**
 
 - [Robert Brody, Compact manifolds in hyperbolicity (1978)](https://doi.org/10.1090/S0002-9947-1978-0470252-3)
+
+### Hyperbolic embeddings remove essential singularities
+
+**Remember:** Boundary separation forces each shrinking circle to concentrate near one point.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Kobayashi pseudodistance measures the least total hyperbolic length of chains of holomorphic discs joining two points. Let U be open in a compact complex manifold X. It is hyperbolically embedded if distinct closure points have neighborhoods whose intersections with U have positive Kobayashi distance from each other.
+
+**Problem.** Every holomorphic map from a punctured disc into a hyperbolically embedded U extends across the puncture as a holomorphic map to X.
+
+**How the definition helps.** Positive separation prevents one small image circle from approaching two distinct closure points. In our own explanation, holomorphic maps decrease Kobayashi distances, and circles around the puncture have diameters tending to zero in the punctured disc. Kiernan’s extension argument rules out different limits along different circles. Without separation, exp(1/z) maps into the punctured plane and has an essential singularity.
+
+**Paper or page:** [Nevanlinna Pair and Algebraic Hyperbolicity](https://arxiv.org/abs/2102.04624). It says: “If X ∖ D is hyperbolically imbedded in X, then X ∖ D is quantitatively big Picard.”
+
+**Sources:**
+
+- [Nevanlinna Pair and Algebraic Hyperbolicity, Theorem 1.1](https://arxiv.org/abs/2102.04624)
+- [Peter Kiernan, Hyperbolically imbedded spaces and the big Picard theorem (1973), Theorem 1](https://doi.org/10.1007/BF01351589)
+
+### Negative Euler characteristic selects disc covers
+
+**Remember:** Count handles and punctures to tell whether the universal cover is a disc.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Remove r distinct points from a compact connected Riemann surface of genus g, its number of handles. The resulting curve is called hyperbolic when 2g − 2 + r is positive.
+
+**Problem.** A curve of this form is hyperbolic exactly when its universal holomorphic cover is the unit disc.
+
+**How the definition helps.** The numerical test excludes the curves covered by the sphere or the plane. In our own proof, uniformization leaves only the sphere, plane, and disc as possible covers. The sphere covers only itself, and every fixed-point-free holomorphic symmetry of the plane is a translation. The possible plane quotients are the plane, the punctured plane, and compact tori, all with nonnegative Euler characteristic.
+
+**nLab:** [hyperbolic curves](https://ncatlab.org/nlab/show/hyperbolic+curves). It says: “We say that X is hyperbolic if 2g−2+r &gt; 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform negative curvature gives hyperbolicity
+
+**Remember:** A curvature bound limits how fast every trial disc can move.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** The infinitesimal Kobayashi length of a nonzero tangent vector is the reciprocal of the supremum of its multiples realized as unit-disc derivatives. Holomorphic sectional curvature measures curvature in each complex tangent line. A Kähler metric is a Hermitian metric whose associated two-form is closed.
+
+**Problem.** If a Kähler metric has holomorphic sectional curvature bounded above by a negative constant, the Kobayashi distance separates points. If the original metric is complete, so is the Kobayashi distance.
+
+**How the definition helps.** A uniform curvature bound limits all disc derivatives, giving a positive lower bound for Kobayashi length relative to the original norm. In our own argument, the Ahlfors–Schwarz lemma supplies that derivative estimate, and Royden’s theorem converts the length bound into a distance bound. The plane with metric exp(2\|z\|²)\|dz\|² has negative curvature approaching zero, yet its Kobayashi distance vanishes.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “holomorphic sectional curvature bounded above by a negative constant, then X is Kobayashi hyperbolic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Group actions supply Oka sprays
+
+**Remember:** The derivative of the group action already spans every tangent space.
+
+*Makes the theorem clean to state or prove.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A dominating spray on a complex manifold Y is a holomorphic map from a vector bundle over Y back to Y. It sends the zero vector over each point to that point. Differentiating along the fiber there must give every tangent direction.
+
+**Problem.** Every complex manifold with a transitive holomorphic action of a complex Lie group has a dominating spray and hence is Oka.
+
+**How the definition helps.** A dominating spray asks for exactly the tangent directions produced by a transitive action (our own). For a Lie algebra vector v and a point y, the map sending (y,v) to exp(v) acting on y gives the spray (our own). Its derivative in v covers the tangent space because the orbit is the whole manifold (our own). Gromov’s theorem turns the spray into the Oka approximation property (our own).
+
+**nLab:** [Oka manifold](https://ncatlab.org/nlab/show/Oka+manifold). It says: “Every complex Lie group and every coset space (homogeneous space) of complex Lie groups is an Oka manifold.”
+
+**Sources:**
+
+- [Mikhail Gromov, Oka’s Principle for Holomorphic Sections of Elliptic Bundles (1989)](https://doi.org/10.2307/1990897)
+
+### Holomorphic coverings preserve Oka approximation
+
+**Remember:** Convex test domains have no loops that can switch sheets.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complex manifold Y is Oka if it passes the convex approximation test in every dimension n. Each holomorphic map into Y defined near a compact convex set in ℂⁿ admits uniform approximation there by holomorphic maps on all of ℂⁿ.
+
+**Problem.** For a holomorphic covering between connected complex manifolds, the total space is Oka exactly when the base is Oka.
+
+**How the definition helps.** Convex neighborhoods are simply connected, so a test map into the base lifts after choosing one sheet (our own). Approximate this lift upstairs and project to obtain approximations downstairs (our own). Conversely, sufficiently close approximations downstairs lift on ℂⁿ, and choosing nearby starting values gives uniform convergence upstairs on the compact set (our own). Forstnerič’s theorem identifies the convex test with the full Oka property (our own).
+
+**Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “If Y → Z is an Oka map of connected complex manifolds, then Y is an Oka manifold if and only if Z is an Oka manifold.”
+
+**Sources:**
+
+- [Franc Forstnerič, Stein Manifolds and Holomorphic Mappings (2011)](https://doi.org/10.1007/978-3-642-22250-4)
+- [Franc Forstnerič, Oka maps (2010)](https://doi.org/10.1016/j.crma.2009.12.004)
+
+### Holomorphic retracts inherit Oka approximation
+
+**Remember:** Approximate upstairs, then return along the retraction.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complex manifold Y is Oka if it passes the convex approximation test in every dimension n. Each holomorphic map into Y defined near a compact convex set in ℂⁿ admits uniform approximation there by holomorphic maps on all of ℂⁿ.
+
+**Problem.** A holomorphic retract of an Oka manifold X is Oka. A retract Y has holomorphic maps i from Y to X and r back to Y with r ∘ i equal to the identity.
+
+**How the definition helps.** The retraction sends entire approximations of i ∘ f to entire approximations of f, without changing the limiting map (our own). The hard theorem equates convex approximation with the full Oka principle (our own).
+
+**Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “Furthermore, all these Oka properties are pairwise equivalent.”
+
+**Sources:**
+
+- [Franc Forstnerič, Runge approximation on convex sets implies the Oka property (2006)](https://doi.org/10.4007/annals.2006.163.689)
+
+### Isomorphism bundles give holomorphic uniqueness
+
+**Remember:** An isomorphism is a section with invertible values.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The isomorphism bundle of two equal-rank holomorphic vector bundles collects the invertible linear maps between their fibers at each point. A section chooses one such map at every point.
+
+**Problem.** Topologically isomorphic holomorphic vector bundles over a Stein manifold are holomorphically isomorphic.
+
+**How the definition helps.** Passing to the isomorphism bundle makes a continuous bundle isomorphism exactly a continuous section (our own). Its fibers are copies of the group of invertible complex matrices, which is an Oka manifold (our own). The Oka principle for sections over Stein manifolds deforms the section to a holomorphic one, giving a holomorphic isomorphism (our own).
+
+**nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “the holomorphic and the topological classification of complex vector bundles on X coincide.”
+
+**Sources:**
+
+- [Hans Grauert, Analytische Faserungen über holomorph-vollständigen Räumen (1958)](https://doi.org/10.1007/BF01351803)
+- [Mikhail Gromov, Oka’s Principle for Holomorphic Sections of Elliptic Bundles (1989)](https://doi.org/10.2307/1990897)
+
+### Oka interpolation needs continuous extension
+
+**Remember:** First extend continuously, then make the extension holomorphic.
+
+*Rules out counterexamples.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** In the interpolation definition of an Oka manifold, a continuous map from a Stein space can be deformed to a holomorphic map. If it already is holomorphic on a closed complex subvariety, the deformation may fix it there.
+
+**Problem.** A holomorphic map from a closed complex subvariety of a Stein space to an Oka manifold extends holomorphically if it extends continuously.
+
+**How the definition helps.** Interpolation keeps the prescribed values fixed while deforming a continuous extension to a holomorphic one (our own). On the curve zw = 1 in ℂ², projection to z maps the loop \|z\| = 1 once around zero (our own). The loop contracts in ℂ², so this projection cannot extend continuously to ℂ² with values in the punctured plane (our own).
+
+**Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “f: X → Y is a continuous map which is holomorphic on a neighbourhood of K and on X′”
+
+**Sources:**
+
+- [Franc Forstnerič, Stein Manifolds and Holomorphic Mappings (2011)](https://doi.org/10.1007/978-3-642-22250-4)
+
+### Oka products approximate by components
+
+**Remember:** Approximate the components separately, then put them back together.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complex manifold Y is Oka if it passes the convex approximation test in every dimension n. Each holomorphic map into Y defined near a compact convex set in ℂⁿ admits uniform approximation there by holomorphic maps on all of ℂⁿ.
+
+**Problem.** A finite product of Oka manifolds is Oka.
+
+**How the definition helps.** The convex test splits into independent approximation problems for the component maps (our own). The main theorem establishes that this single test is equivalent to the Oka principle for maps from Stein spaces (our own).
+
+**Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “A complex manifold Y which enjoys CAP has all Oka properties”
+
+**Sources:**
+
+- [Franc Forstnerič, Runge approximation on convex sets implies the Oka property (2006)](https://doi.org/10.4007/annals.2006.163.689)
 
 ### A tensor test for complex structures, by the Newlander–Nirenberg theorem
 
@@ -64537,6 +65964,221 @@ $$”
 
 - [A. Newlander and L. Nirenberg, Complex analytic coordinates in almost complex manifolds, Annals of Mathematics 65 (1957) 391–404](https://doi.org/10.2307/1970051)
 
+### Constant Milnor number prevents splitting
+
+**Remember:** The tracked point uses the full multiplicity, leaving none for other points.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** At an isolated critical point, the Milnor number is the local degree of the gradient, the map formed by the first derivatives. This degree counts preimages of a nearby regular value with their complex multiplicities.
+
+**Problem.** Suppose a holomorphic family on ℂⁿ has an isolated critical point at zero in every fiber. If its Milnor number there stays constant, no other critical points approach zero.
+
+**How the definition helps.** Local degree counts critical points with positive weights, so a point retaining the full degree leaves none for another point (our own). Conservation of degree keeps the total fixed in a small ball (our own). Milnor’s comparison theorem connects this count to the number of spheres in the nearby fiber (our own).
+
+**Paper or page:** [On deformations of isolated singularity functions](https://arxiv.org/abs/2206.10035v1). It says: “has no coalescing of singular (critical) points if and only if it is μ-constant.”
+
+**Sources:**
+
+- [On deformations of isolated singularity functions](https://arxiv.org/abs/2206.10035v1)
+
+### Jacobian algebras multiply Milnor numbers
+
+**Remember:** Separate variables turn the Jacobian algebra into a tensor product.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** At an isolated critical point, the Jacobian algebra consists of holomorphic functions near the point modulo the ideal generated by the first derivatives. Its complex dimension is the algebraic Milnor number μ.
+
+**Problem.** For holomorphic germs f and g with isolated critical points in disjoint variables, μ(f + g) = μ(f)μ(g).
+
+**How the definition helps.** Separate variables make the Jacobian algebra of the sum the tensor product of the two finite-dimensional algebras (our own). Dimensions therefore multiply (our own). Milnor’s theorem identifies this dimension with the geometric count of spheres in a nearby smooth fiber (our own).
+
+**Wikipedia:** [Milnor number](https://en.wikipedia.org/wiki/Milnor_number). It says: “introduced μ(f) in geometric terms”
+
+**Sources:**
+
+- [John Milnor, Singular Points of Complex Hypersurfaces, 1968](https://doi.org/10.1515/9781400881819)
+
+### Log resolutions give rational thresholds
+
+**Remember:** After resolution each divisor gives one elementary integrability bound.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A log resolution is a proper change of space, invertible off the zero set, that makes f locally a coordinate monomial times a nonvanishing function. Its exceptional components and the transformed zero set lie along coordinate hyperplanes. The complex singularity exponent is the supremum of c for which \|f\|⁻²ᶜ is integrable near zero.
+
+**Problem.** For a nonzero germ vanishing at zero, the exponent is the smallest ratio (k + 1)/m among components mapping over zero with m positive. Here m and k count vanishing orders of the pulled-back function and the Jacobian determinant along that component.
+
+**How the definition helps.** The log resolution replaces the integral by products of one-variable radial integrals (our own). The radial power is integrable exactly when cm &lt; k + 1, so finitely many integer pairs give the threshold (our own). The hard work is the existence of a log resolution (our own).
+
+**Paper or page:** [On diminished multiplier ideal and the termination of flips](https://arxiv.org/abs/2405.11902v4). It says: “is a log resolution of both (X,Δ) and 𝔞 · 𝔮.”
+
+**Sources:**
+
+- [Edward Bierstone and Pierre D. Milman, Canonical desingularization in characteristic zero by blowing up the maximum strata of a local invariant, 1997](https://doi.org/10.1007/s002220050141)
+- [Jean-Pierre Demailly and János Kollár, Semi-continuity of complex singularity exponents and Kähler–Einstein metrics on Fano orbifolds, 2001](https://doi.org/10.1016/s0012-9593(01)01069-2)
+
+### Milnor numbers bound Taylor degrees
+
+**Remember:** A finite Jacobian quotient limits how much of the Taylor series matters.
+
+*Rules out counterexamples.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The Milnor number μ is the dimension of the ring of holomorphic functions near zero modulo the first derivatives of f. A function is right determined to degree k if every function with the same Taylor coefficients through degree k differs by a local coordinate change.
+
+**Problem.** A holomorphic function with an isolated critical point at zero and Milnor number μ is right determined to degree μ + 1.
+
+**How the definition helps.** Isolation gives a finite quotient, so every term of degree at least μ belongs to the derivative ideal (our own). The finite determinacy theorem turns this containment into the stated coordinate change (our own). Without isolation, x² and x² + yᴺ agree through degree N − 1, yet their critical sets have different dimensions (our own).
+
+**Paper or page:** [On Normal Forms of Singular Levi-Flat Real Analytic Hypersurfaces](https://arxiv.org/abs/1003.4999v4). It says: “with Milnor number μ. Then f is right equivalent to”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalization quotients count branch intersections
+
+**Remember:** Count the defects of the branches and the cost of gluing them.
+
+*Makes the theorem clean to state or prove.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** Normalizing a reduced complex curve separates its branches into smooth curves. Its delta invariant δ is the dimension of functions on the normalization modulo functions coming from the original curve.
+
+**Problem.** For plane curve germs C and D with no common branch, δ(C ∪ D) = δ(C) + δ(D) + I(C,D). The intersection multiplicity I(C,D) is the dimension of local functions modulo the two equations.
+
+**How the definition helps.** The quotient counts missing functions in two stages, first on each curve and then where the curves meet (our own). Passing to the separate normalizations gives δ(C) + δ(D) (our own). A pair of functions glues exactly when its difference vanishes modulo both equations together, giving the extra dimension I(C,D) (our own).
+
+**Paper or page:** [Lotuses as computational architectures](https://arxiv.org/abs/2502.17102v1). It says: “δ(A) = ∑<sub>l = 1</sub><sup>r</sup> δ(A<sub>l</sub>) + ∑<sub>l &lt; m</sub> (A<sub>l</sub> · A<sub>m</sub>)<sub>O</sub>.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted scaling equates Milnor and Tjurina numbers
+
+**Remember:** Euler’s identity makes the extra Tjurina relation redundant.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A polynomial is weighted homogeneous if positive integer weights give all its monomials the same degree. At an isolated critical point, the Milnor number is the dimension of local holomorphic functions modulo the first derivatives. The Tjurina number also imposes the equation f = 0 in this quotient.
+
+**Problem.** For a weighted homogeneous holomorphic germ with isolated critical point, the Milnor and Tjurina numbers are equal.
+
+**How the definition helps.** The quotient definition of the Milnor number lets us compare two ideals directly, bypassing the geometric count of spheres (our own). Differentiating weighted scaling expresses the degree times f as a sum of coordinate multiples of its derivatives (our own). Thus imposing f changes nothing (our own). Milnor’s theorem identifies the quotient dimension with the sphere count (our own).
+
+**Paper or page:** [On the k-th Milnor and k-th Tjurina Numbers of a Foliation](https://arxiv.org/abs/2510.24868v2). It says: “be an isolated singularity defined by a quasi-homogeneous polynomial f”
+
+**Sources:**
+
+- [Kyoji Saito, Quasihomogene isolierte Singularitäten von Hyperflächen, 1971](https://doi.org/10.1007/bf01405360)
+
+### Tjurina ideals ignore invertible factors
+
+**Remember:** Include the equation, and the extra derivative terms disappear.
+
+*True by definition. Confidence: medium.* MSC 32S10 (Invariants of analytic local rings), 32B05. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** The Tjurina ideal of a holomorphic equation f is generated by f and all its first partial derivatives. The Tjurina algebra is the local ring of holomorphic germs modulo that ideal.
+
+**Problem.** Multiplying f by a holomorphic function u that is nonzero at the base point preserves the Tjurina ideal and algebra.
+
+**How the definition helps.** Including f absorbs the extra term f ∂u in the product rule, which the derivatives alone need not absorb (our own argument). Thus the generators for uf belong to the ideal for f. Applying the same calculation to 1/u gives the reverse inclusion.
+
+**Paper or page:** [Computing Regular Meromorphic Differential Forms via Saito's Logarithmic Residues](https://arxiv.org/abs/2007.09950v4). It says: “where (f, ∂f/∂x₁, ∂f/∂x₂, …, ∂f/∂xₙ) is the ideal in 𝒪ₓ,ₒ generated by f”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal surface links detect smoothness
+
+**Remember:** A simply connected link detects a smooth surface only with normality.
+
+*Rules out counterexamples.* MSC 32S25 (Complex surface and hypersurface singularities), 32S05. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A complex surface is normal if its local rings are domains containing every fraction that satisfies a monic polynomial over the ring. Its link at a point is the intersection with a sufficiently small sphere centered there.
+
+**Problem.** A normal complex surface germ with simply connected link is smooth.
+
+**How the definition helps.** Normality excludes the singular image of (u,v) ↦ (u,v²,v³,uv), whose local ring omits the integral fraction v (our own). The map is injective, and the image norm increases along each parameter ray, giving a three-sphere as link (our own). Mumford’s theorem supplies the smoothness criterion for normal surfaces (our own).
+
+**Paper or page:** [On isolated hypersurface singularities: algebra-geometric and symplectic aspects](https://arxiv.org/abs/2405.03475v1). It says: “the link of x is simply connected if and only if x is a smooth point of W.”
+
+**Sources:**
+
+- [David Mumford, The topology of normal singularities of an algebraic surface and a criterion for simplicity, 1961](https://doi.org/10.1007/bf02698717)
+
+### Embedded resolutions make equations monomial
+
+**Remember:** A smooth strict transform can still touch an exceptional curve.
+
+*Rules out counterexamples.* MSC 32S45 (Modifications; resolution of singularities (complex-analytic aspects)), 32S05. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** An embedded resolution of a plane curve uses blowups, which replace points by their tangent directions. The resulting curve together with every exceptional curve must locally be a union of distinct coordinate axes.
+
+**Problem.** After an embedded resolution of a reduced plane curve, the pullback of a defining equation is a unit times a coordinate monomial at every point.
+
+**How the definition helps.** The coordinate axes account for every zero of the pulled-back equation, leaving a nonvanishing factor after division by their powers (our own). One blowup makes the cusp y² = x³ smooth but tangent to the exceptional curve (our own). Embedded resolution removes that tangency as well (our own).
+
+**nLab:** [resolution of singularities](https://ncatlab.org/nlab/show/resolution+of+singularities). It says: “which is an isomorphism away from the singular locus.”
+
+**Paper or page:** [The existence of valuative interpolation](https://arxiv.org/abs/2510.22244v1). It says: “simultaneously have only normal crossings.”
+
+**Sources:**
+
+- [Edward Bierstone and Pierre D. Milman, Canonical desingularization in characteristic zero by blowing up the maximum strata of a local invariant, 1997](https://doi.org/10.1007/s002220050141)
+
+### Conjugation reverses real monodromy
+
+**Remember:** Conjugation reverses the loop that defines the return map.
+
+*True by definition.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV. Level 3: graduate.
+
+**Definition.** The geometric monodromy is the return map T obtained by transporting a nearby smooth fiber once around zero counterclockwise. Maps related by a continuous deformation through diffeomorphisms define the same class. For a real equation and a real fiber value, complex conjugation restricts to a map c of the fiber.
+
+**Problem.** For an isolated complex hypersurface singularity given by a real equation, T is the product (T ∘ c) ∘ c. Each factor squares to the identity up to deformation.
+
+**How the definition helps.** Geometric transport follows an oriented loop, so conjugating the transport gives transport around the reversed loop (our own). Hence c ∘ T ∘ c = T⁻¹ up to deformation, and both factors square to the identity (our own). Milnor’s fibration supplies the geometric transport behind this symmetry, which the homology action alone does not specify (our own).
+
+**Paper or page:** [Plane curve singularities via divides](https://arxiv.org/abs/2503.10424v1). It says: “is the composition of two involutions of the fiber Fδ, δ ∈ ℝ, namely”
+
+**Sources:**
+
+- [Plane curve singularities via divides](https://arxiv.org/abs/2503.10424v1)
+
+### Isolation forces middle dimensional spheres
+
+**Remember:** An isolated critical point keeps the vanishing homology in the middle.
+
+*Rules out counterexamples.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A holomorphic function has an isolated critical point at zero if all first derivatives vanish there and have no other common zero nearby. For f(0) = 0, its Milnor fiber is a small nonzero level inside a sufficiently small ball, with the ball chosen first.
+
+**Problem.** For such a function on ℂⁿ⁺¹, the Milnor fiber has the homotopy type of finitely many n-spheres joined at one point.
+
+**How the definition helps.** Isolation excludes xy on ℂ³, whose critical line gives a fiber homotopy equivalent to a circle (our own). That fiber is not a wedge of two-spheres (our own). Milnor’s bouquet theorem supplies the claimed homotopy type when the critical point is isolated (our own).
+
+**nLab:** [Milnor fiber](https://ncatlab.org/nlab/show/Milnor+fiber). It says: “with an isolated singularity at zero”
+
+**Wikipedia:** [Milnor number](https://en.wikipedia.org/wiki/Milnor_number). It says: “has the same homotopy type as a bouquet”
+
+**Sources:**
+
+- [John Milnor, Singular Points of Complex Hypersurfaces, 1968](https://doi.org/10.1515/9781400881819)
+
+### Transverse boundaries give Milnor bundles
+
+**Remember:** Check the sphere as well as the interior to get a bundle.
+
+*True by definition.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Milnor tube restricts a holomorphic function near an isolated critical point to a small closed ball and a disk around its critical value. Choose the disk so every other level is smooth and meets the boundary sphere transversely. This means their tangent spaces together span the ambient space.
+
+**Problem.** Over the punctured disk, a Milnor tube is a smooth fiber bundle with boundary. Near each nonzero value it is smoothly a product, including along the fiber boundary.
+
+**How the definition helps.** The closed ball makes the restricted map proper, and the boundary condition gives full derivative rank even on the sphere (our own). Ehresmann’s theorem then gives local products, including their boundaries (our own). An arbitrary ball and disk need not work together (our own). Milnor’s transversality theorem supplies compatible radii (our own).
+
+**Paper or page:** [On isolated hypersurface singularities: algebra-geometric and symplectic aspects](https://arxiv.org/abs/2405.03475v1). It says: “is a locally trivial fiber bundle with fibers diffeomorphic to the Milnor fiber.”
+
+**Sources:**
+
+- [John Milnor, Singular Points of Complex Hypersurfaces, 1968](https://doi.org/10.1515/9781400881819)
+
 ### Duality preserves perverse sheaves
 
 **Remember:** Duality trades the two vanishing bounds.
@@ -64550,6 +66192,160 @@ $$”
 **How the definition helps.** The two restriction tests exchange places under duality, so their combination gives a symmetric definition. In our own argument, duality on a stratum of complex dimension d sends degree k to −2d − k. This exchanges the two sides of −d. The exchange identities for Verdier duality supply the work.
 
 **Paper or page:** [A note on the support and cosupport conditions for a perverse sheaf](https://arxiv.org/abs/2207.02566v1). It says: “(new support) for all m ≥ 0, for all k &gt; −m, Hᵏ(uₘ\* A•) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex tangents make Levi signs intrinsic
+
+**Remember:** Restrict to complex tangents before testing the Hessian.
+
+*True by definition. Confidence: medium.* MSC 32T05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A smooth defining function vanishes on the boundary with nonzero gradient and is negative inside. Its Levi form restricts the matrix of mixed complex second derivatives to tangent vectors that remain tangent after multiplication by i.
+
+**Problem.** Whether a smooth boundary has nonnegative Levi form is independent of its defining function.
+
+**How the definition helps.** Testing only complex tangent vectors removes the terms that could change the sign of the full matrix of second derivatives. Two smooth defining functions differ locally by a smooth positive factor. In our own product rule calculation, each derivative of that factor multiplies the vanishing defining function or a vanishing tangential derivative. Only the positive factor times the original Levi form remains.
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “for every p ∈ ∂G and w in the complex tangent space at p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exhaustions survive holomorphic inverse images
+
+**Remember:** Add the source exhaustion to the exhaustion pulled back from the target.
+
+*True by definition.* MSC 32T05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A plurisubharmonic exhaustion is a continuous real function with compact closed sublevels that satisfies the subharmonic mean inequality on holomorphic disks. A domain with such a function is pseudoconvex.
+
+**Problem.** For a holomorphic map from a pseudoconvex domain, each component of the inverse image of a pseudoconvex open domain is pseudoconvex.
+
+**How the definition helps.** Adding the source exhaustion to the target exhaustion composed with the map gives a function that passes the disk test. Both terms are bounded below, so a closed sublevel confines the points and their images to compact subsets of their respective domains. Our own proof uses the exhaustion criterion in place of boundary tests.
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “a domain is pseudoconvex if G has a continuous plurisubharmonic exhaustion function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exhaustions trap disks away from boundaries
+
+**Remember:** A bound on disk rims is a bound on whole disks.
+
+*True by definition.* MSC 32T05 (Domains of holomorphy). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A plurisubharmonic exhaustion is a continuous real function with compact closed sublevel sets that satisfies the subharmonic mean inequality along holomorphic disks. A domain admitting such a function is pseudoconvex.
+
+**Problem.** In a pseudoconvex domain, all holomorphic disks whose rims lie in a fixed compact subset lie in a single compact subset. The disks take their values in the domain and extend continuously to their rims there.
+
+**How the definition helps.** The maximum principle bounds the exhaustion on every disk by its maximum on the common compact set of rims. The corresponding closed sublevel contains all the disks. Our own proof uses the exhaustion criterion for pseudoconvexity in place of holomorphic nonextension.
+
+**Wikipedia:** [Plurisubharmonic function](https://en.wikipedia.org/wiki/Plurisubharmonic_function). It says: “plurisubharmonic functions satisfy the maximum principle”
+
+**Paper or page:** [On Segre-degenerate Levi-flat hypervarieties](https://arxiv.org/abs/2306.07259v2). It says: “Then D lifts to the envelope of holomorphy, that is, any f ∈ 𝒪(Ω) can be analytically continued to a neighborhood of D.”
+
+**Sources:**
+
+- [Kiyoshi Oka, Sur les fonctions analytiques de plusieurs variables IX. Domaines finis sans point critique intérieur, Japanese Journal of Mathematics 23 (1953), 97–155.](https://doi.org/10.4099/jjm1924.23.0_97)
+
+### Exhaustions yield smooth pseudoconvex subdomains
+
+**Remember:** Cut a smooth strict exhaustion at regular values.
+
+*True by definition.* MSC 32T05 (Domains of holomorphy), 32E40. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A pseudoconvex domain has a continuous plurisubharmonic exhaustion, a function with compact closed sublevels that satisfies the mean inequality along complex lines. A smooth exhaustion is strictly plurisubharmonic if its matrix of mixed complex second derivatives is positive definite.
+
+**Problem.** Every pseudoconvex domain in ℂⁿ is an increasing union of relatively compact domains with smooth strongly pseudoconvex boundaries. On these boundaries the complex second derivative matrix is positive on nonzero complex tangent vectors.
+
+**How the definition helps.** Cutting a smooth strict exhaustion at a regular value gives a smooth boundary with positive complex curvature. The main work is replacing the continuous exhaustion by a smooth plurisubharmonic one, then adding \|z\|² for strictness. Sard’s theorem gives arbitrarily large regular values, where the gradient stays nonzero on the level. Our own construction takes the components containing a fixed point, which eventually contain every path from that point.
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “This is because once we have a φ as in the definition we can actually find a C∞ exhaustion function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Log radius tests Hartogs pseudoconvexity
+
+**Remember:** In the fiber direction, distance at the center equals the radius.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32T05 (Domains of holomorphy), 32T35. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A complete Hartogs domain consists of pairs (z,w) with z in a base domain and \|w\| &lt; exp(−u(z)) for a continuous real function u. Plurisubharmonic functions satisfy the subharmonic mean inequality on complex lines.
+
+**Problem.** Over a pseudoconvex base in ℂⁿ, this domain is pseudoconvex exactly when its negative logarithmic radius u is plurisubharmonic.
+
+**How the definition helps.** The distance from each disk center to its rim gives the radius in one fixed complex direction. Oka’s directional distance theorem makes its negative logarithm plurisubharmonic on the centers of a pseudoconvex domain. Conversely, add −log(1 − \|w\| exp(u(z))) to a plurisubharmonic exhaustion of the base, a function with compact closed sublevels. In our own construction, increasing convex composition preserves plurisubharmonicity, and the added term diverges at the rim.
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “a domain is pseudoconvex if G has a continuous plurisubharmonic exhaustion function.”
+
+**Paper or page:** [Oka tubes in holomorphic line bundles](https://arxiv.org/abs/2310.14871v4). It says: “Then, the (pseudoconcave) Hartogs domain Ω = {(z,t) ∈ ℂⁿ × ℂ: \|t\| &lt; φ(z)} is an Oka domain.”
+
+**Sources:**
+
+- [Kiyoshi Oka, Sur les fonctions analytiques de plusieurs variables IX. Domaines finis sans point critique intérieur, Japanese Journal of Mathematics 23 (1953), 97–155.](https://doi.org/10.4099/jjm1924.23.0_97)
+
+### Pseudoconvex tubes have convex bases
+
+**Remember:** For a tube, complex-line subharmonicity becomes real convexity.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32T05 (Domains of holomorphy), 32E40. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A tube consists of all complex points whose real parts lie in a given connected open set, its base. On a proper tube, boundary distance equals the real distance from the base point to the base boundary.
+
+**Problem.** A tube is a domain of holomorphy exactly when its base is convex.
+
+**How the definition helps.** On a tube, the negative logarithm of boundary distance depends only on real parts, so plurisubharmonicity gives local convexity on the base. Adding the squared norm gives a real function with compact closed sublevels. Their connected components are closed and locally convex, hence convex by the local convexity theorem. Our own proof puts each path in one such component, while the converse follows because every convex tube is a domain of holomorphy.
+
+**Wikipedia:** [Tube domain](https://en.wikipedia.org/wiki/Tube_domain). It says: “Tubes over convex sets are domains of holomorphy.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strict pseudoconvexity excludes boundary disks
+
+**Remember:** A boundary disk would have zero curvature in its complex tangent direction.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32T15 (Strongly pseudoconvex domains), 32T05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A smooth boundary is strongly pseudoconvex if its defining function has positive complex Hessian on each nonzero complex tangent vector. The function vanishes on the boundary with nonzero gradient and is negative inside. A tangent vector is complex tangent if multiplying it by i preserves tangency.
+
+**Problem.** The boundary of a strongly pseudoconvex domain contains no nonconstant holomorphic disk, meaning a holomorphic image of the unit disk.
+
+**How the definition helps.** A disk in the boundary makes the defining function identically zero along the disk. At a point with nonzero derivative, the chain rule gives a positive Laplacian by strong pseudoconvexity. Our own argument uses the contradiction with the zero Laplacian of a constant function.
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “for every p ∈ ∂G and w in the complex tangent space at p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strong pseudoconvexity bounds boundary values by Neumann energy
+
+**Remember:** Positive tangential curvature makes the boundary term a trace bound.
+
+*Makes the theorem clean to state or prove.* MSC 32T15 (Strongly pseudoconvex domains). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** A boundary equation vanishes on the boundary, is negative inside, and has nonzero boundary gradient. Strong pseudoconvexity means its matrix of mixed complex second derivatives is positive on every nonzero complex tangent vector.
+
+**Problem.** On a smooth bounded strongly pseudoconvex domain, the squared boundary L² norm of a smooth (0,1)-form is bounded by a constant times its ∂̄-Neumann energy. The form must satisfy the adjoint boundary condition, which sets its complex normal coefficient to zero.
+
+**How the definition helps.** Tangential positivity controls every surviving boundary coefficient because the adjoint condition eliminates the normal one (our own). Compactness of the boundary makes the positive lower bound uniform (our own). The unweighted integration-by-parts identity bounds the resulting boundary integral by the energy (our own).
+
+**Paper or page:** [∂̄ Sobolev-type inequality and an improved L²-estimate of ∂̄ on bounded strictly pseudoconvex domains](https://arxiv.org/abs/2401.15597v3). It says: “‖Tϕ\*α‖₁² + ‖Sϕα‖₃²”
+
+**Sources:**
+
+- [J. J. Kohn, Harmonic integrals on strongly pseudo-convex manifolds, I (1963)](https://doi.org/10.2307/1970506)
+
+### The Levi polynomial gives a local holomorphic peak
+
+**Remember:** The Levi polynomial separates holomorphic terms from the curvature that controls their real part.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32T15 (Strongly pseudoconvex domains), 32T40. arXiv math.CV. Level 3: graduate.
+
+**Definition.** At a boundary point p, take a real boundary equation ρ that is negative inside and has nonzero gradient. Its Levi polynomial collects the holomorphic linear and quadratic terms of its Taylor expansion about p, with zero constant term.
+
+**Problem.** Each point of a C² strongly pseudoconvex boundary has a local holomorphic peak function. It equals one at that point and has modulus below one everywhere else on the nearby closure.
+
+**How the definition helps.** The Levi polynomial collects the holomorphic terms while leaving the positive complex Hessian to control their real part (our own). Strong pseudoconvexity gives positivity on complex tangents, and changing the boundary equation supplies positivity in all directions (our own). Taylor’s formula then gives negative real part away from p on the nearby closure, so exponentiation produces the peak (our own).
+
+**Paper or page:** [A Solution Operator for the ∂̄ Equation in Sobolev Spaces of Negative Index](https://arxiv.org/abs/2111.09245v2). It says: “is strictly plurisubharmonic in a neighborhood ω of bΩ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -64569,6 +66365,24 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Hyperconvexity rules out invisible boundaries
+
+**Remember:** A plurisubharmonic exhaustion provides a barrier at every boundary point.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32U10 (Plurisubharmonic exhaustion functions), 32U35, 32W20. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A bounded domain is hyperconvex if it has a negative continuous plurisubharmonic function whose negative sublevel sets have compact closure inside. Plurisubharmonic functions are upper semicontinuous and satisfy the disk mean inequality on complex lines. The Green function with pole a is the largest nonpositive such function bounded above near a by log\|z − a\| plus a constant.
+
+**Problem.** On a bounded hyperconvex domain, the Green function with an interior pole tends to zero at every boundary point.
+
+**How the definition helps.** The exhaustion tends to zero at the boundary and gives a lower bound there after scaling and pasting to a logarithmic pole. In our own comparison, deleting the center of a ball leaves its Green function unchanged for a pole elsewhere. Bounded-above tests extend across the puncture, where the ball’s Green function is strictly negative.
+
+**Paper or page:** [Pluricomplex Green Functions on Stein Manifolds and Certain Linear Topological Invariants](https://arxiv.org/abs/2112.13212). It says: “There exists a negative plurisubharmonic function on M that has a relatively compact sublevel set containing ζ₀.”
+
+**Sources:**
+
+- [Jean-Pierre Demailly, Mesures de Monge-Ampère et mesures pluriharmoniques](https://doi.org/10.1007/BF01161920)
+
 ### Maxima preserve pseudoconvex intersections
 
 **Remember:** The larger exhaustion keeps points away from both boundaries.
@@ -64584,6 +66398,24 @@ $$”
 **Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “In other words, a domain is pseudoconvex if G has a continuous plurisubharmonic exhaustion function.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Current densities make Lelong numbers add
+
+**Remember:** Hessian masses add before the radius goes to zero.
+
+*True by definition.* MSC 32U25 (Lelong numbers), 32U05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** For a plurisubharmonic function u, its distributional Laplacian is a positive measure μ. The Lelong number at a is the limiting ratio μ(B(a,r))/r²ⁿ⁻² as r decreases to zero, times a dimensional constant. Choose the constant so that log\|z − a\| has Lelong number one.
+
+**Problem.** For two plurisubharmonic functions, each finite somewhere on the domain, the Lelong number of their sum equals the sum of their Lelong numbers.
+
+**How the definition helps.** The density definition adds the two ball masses before taking the limit. In our own comparison, the equivalent logarithmic definition involves a lower limit, which generally does not distribute over sums. Lelong’s monotonicity formula gives existence of the density, and the growth theorem identifies it with logarithmic growth.
+
+**Wikipedia:** [Lelong number](https://en.wikipedia.org/wiki/Lelong_number). It says: “Similarly a plurisubharmonic function also has a Lelong number at a point.”
+
+**Sources:**
+
+- [Jean-Pierre Demailly, Complex Analytic and Differential Geometry, Chapter III](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf)
 
 ### Logarithmic growth gives vanishing order
 
@@ -64601,6 +66433,80 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Logarithmic growth handles Lelong minima
+
+**Remember:** A negative logarithm turns the maximum into a minimum.
+
+*True by definition.* MSC 32U25 (Lelong numbers), 32U05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** For an upper semicontinuous function u satisfying the disk mean inequality on complex lines, its Lelong number at a measures logarithmic growth. It equals the lower limit of u(z)/log\|z − a\| as z approaches a.
+
+**Problem.** The Lelong number of max(u,v) equals the smaller of the two Lelong numbers at the same point.
+
+**How the definition helps.** The growth definition divides by a negative logarithm, turning the pointwise maximum into a minimum. In our own proof, taking the lower limit commutes with a minimum of two functions. The equivalence with the alternative definition by densities of Laplacian measures requires the growth theorem.
+
+**Wikipedia:** [Lelong number](https://en.wikipedia.org/wiki/Lelong_number). It says: “The Lelong number of a plurisubharmonic function φ at a point x of ℂⁿ is liminf<sub>z→x</sub> φ(z)/log \|z−x\|.”
+
+**Sources:**
+
+- [Jean-Pierre Demailly, Complex Analytic and Differential Geometry, Chapter III](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf)
+
+### Degree scaling bounds polynomial pullbacks
+
+**Remember:** Pull the test back and divide by the degree.
+
+*True by definition.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 32U05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The extremal function V(E) of a compact set E is the supremum of plurisubharmonic functions u that are nonpositive on E. Such functions are upper semicontinuous and satisfy the disk mean inequality on each complex line. The tests must also satisfy u(z) ≤ log\|z\| + C for large \|z\|, with C depending on u.
+
+**Problem.** For a polynomial map h of degree d ≥ 1, V(h(E))(h(w)) ≤ d V(E)(w) at every point w.
+
+**How the definition helps.** In our own proof, composing a target test with h multiplies its logarithmic growth bound by at most d. Dividing by d therefore gives a source test. Siciak’s theorem identifies this supremum with the alternative one formed from logarithms of polynomials.
+
+**Paper or page:** [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171). It says: “Then, for every w ∈ ℂᵏ, L<sub>h(E)</sub>(h(w)) ≤ d · L<sub>E</sub>(w).”
+
+**Sources:**
+
+- [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171)
+- [Józef Siciak, Extremal plurisubharmonic functions in ℂⁿ, Annales Polonici Mathematici 39 (1981), 175–211](https://doi.org/10.4064/ap-39-1-175-211)
+
+### Green envelopes are maximal off-pole
+
+**Remember:** A local improvement would improve the whole envelope.
+
+*True by definition.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 32W20. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A bounded domain is hyperconvex if it admits a negative continuous plurisubharmonic function whose negative sublevel sets have compact closure inside. Plurisubharmonic functions satisfy the disk mean inequality on complex lines and are upper semicontinuous. The Green function with pole a is the largest nonpositive such function bounded above near a by log\|z − a\| plus a constant.
+
+**Problem.** On a bounded hyperconvex domain, the Green function has zero Monge–Ampère measure, the top power of its complex Hessian, away from its pole.
+
+**How the definition helps.** The largest admissible function cannot be raised locally away from its pole. In our own proof, taking a maximum pastes any local improvement respecting the boundary values into a global competitor. The Green function is locally bounded away from its pole. Bedford and Taylor identify this comparison property with the zero-measure equation.
+
+**Paper or page:** [The pluricomplex Poisson kernel for convex finite type domains](https://arxiv.org/abs/2509.26230). It says: “Then u is maximal if and only if (ddᶜu)ⁿ = 0.”
+
+**Sources:**
+
+- [Eric Bedford and B. A. Taylor, A new capacity for plurisubharmonic functions, Acta Mathematica 149 (1982), 1–40](https://doi.org/10.1007/BF02392348)
+- [Jean-Pierre Demailly, Mesures de Monge-Ampère et mesures pluriharmoniques](https://doi.org/10.1007/BF01161920)
+
+### Logarithmic poles make Green functions contract
+
+**Remember:** A holomorphic pullback keeps the logarithmic pole bound.
+
+*True by definition. Confidence: medium.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 32U05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a bounded complex domain D, the pluricomplex Green function G(z,a) is the supremum of nonpositive plurisubharmonic tests u(z). These upper semicontinuous functions satisfy the disk mean inequality on complex lines and obey u(z) ≤ log\|z − a\| + C near a.
+
+**Problem.** For a holomorphic map F between bounded complex domains D and E, the Green function of E at (F(z),F(a)) never exceeds D’s at (z,a).
+
+**How the definition helps.** The logarithmic bound survives composition because F is locally Lipschitz at a. In our own proof, each target test pulls back to a source test or to the constant −∞. Taking the supremum gives the inequality. Identifying this envelope with the alternative formula using holomorphic disks is a separate theorem.
+
+**Paper or page:** [Pluricomplex Green Functions on Stein Manifolds and Certain Linear Topological Invariants](https://arxiv.org/abs/2112.13212). It says: “M possesses a semi-proper pluricomplex Green function with a strict logarithmic pole at ζ₀.”
+
+**Sources:**
+
+- [Maciej Klimek, Invariant pluricomplex Green functions](https://doi.org/10.4064/-31-1-207-226)
+
 ### Logarithmic derivatives add zero divisors
 
 **Remember:** The logarithm turns products into sums of zero currents.
@@ -64614,6 +66520,296 @@ $$”
 **How the definition helps.** In our own argument the logarithm changes a product into a sum, and differentiation preserves sums. The local Poincaré–Lelong formula identifies this derivative with the geometric zero current. The quoted theorem gives a version on a domain with boundary.
 
 **Paper or page:** [Induced Fubini-Study metrics on strictly pseudoconvex CR manifolds and zeros of random CR functions](https://arxiv.org/abs/2401.09143v1). It says: “(\[Div(f)\], ψ) = (i/π) ∫₍G₎ ∂∂̄ log(\|f\|) ∧ ψ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Analytic data avoid Lewy’s obstruction
+
+**Remember:** Analytic forcing lets a noncharacteristic real slice determine a local solution.
+
+*Rules out counterexamples.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** On Im w=\|z\|² write z=x+iy and t=Re w. The tangential Cauchy–Riemann equation uses L=∂/∂z̄−iz∂/∂t, where ∂/∂z̄=(∂/∂x+i∂/∂y)/2. A real analytic forcing term f has a convergent power series in x, y, and t near each point.
+
+**Problem.** The equation Lu = f has a local analytic solution for every real analytic f. This fails for general smooth f.
+
+**How the definition helps.** Convergence of the forcing series allows the Cauchy–Kovalevskaya theorem to produce an analytic solution. In our own coordinate check, the coefficient of ∂/∂x is 1/2, so the equation determines that derivative from data along x=0. Lewy’s example gives smooth forcing for which no local solution exists.
+
+**Wikipedia:** [Lewy's example](https://en.wikipedia.org/wiki/Lewy%27s_example). It says: “Note that if F is analytic, then the Cauchy–Kovalevskaya theorem implies that there exists a solution.”
+
+**Sources:**
+
+- [Hans Lewy, An Example of a Smooth Linear Partial Differential Equation Without Solution (1957)](https://doi.org/10.2307/1970121)
+
+### Compatible maps pull back solutions
+
+**Remember:** Preserve the allowed directions and the equations pull back.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** A Cauchy–Riemann structure specifies antiholomorphic tangent directions, the directions that differentiate every local solution to zero. A map is compatible if its derivative carries those directions into the corresponding target directions.
+
+**Problem.** Suppose differentials of local target solutions have precisely the antiholomorphic directions as their common kernel. A smooth map is compatible exactly when it pulls all local target solutions back to solutions.
+
+**How the definition helps.** The chain rule translates the test on functions into the test on tangent directions. Target solutions detect every failure of compatibility because their differentials have the specified common kernel. Finding enough independent local solutions is the separate existence problem.
+
+**Paper or page:** [Regularity of infinitesimal automorphisms of involutive structures](https://arxiv.org/abs/2506.24105). It says: “the function h⁎f = f ∘ h is a solution of 𝒱.”
+
+**Sources:**
+
+- [Bernhard Lamel and Nicholas Braun Rodrigues, Regularity of infinitesimal automorphisms of involutive structures (arXiv:2506.24105v1)](https://arxiv.org/abs/2506.24105)
+
+### Connection uniqueness makes curvature natural
+
+**Remember:** A map preserving the defining data cannot change the canonical connection.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.DG, math.CV. Level 3: graduate.
+
+**Definition.** On a strictly pseudoconvex Cauchy–Riemann manifold, let θ be a positive contact form and J the complex structure on H=ker θ. The Tanaka–Webster connection preserves H, J, dθ, and the field T specified by θ(T)=1 and dθ(T,·)=0. Its torsion τ, antisymmetrized covariant differentiation minus the bracket, satisfies τ(X,Y)=dθ(X,Y)T and τ(T,JX)=−Jτ(T,X) for X,Y in H.
+
+**Problem.** A diffeomorphism preserving the positive contact form and the complex structure on its kernel preserves the Tanaka–Webster connection and its curvature.
+
+**How the definition helps.** The defining conditions determine one connection, so our own proof avoids transforming its coordinate coefficients. Pullback preserves every condition, and uniqueness identifies the pulled-back connection with the original one. Curvature then agrees because it is computed from the connection. The Tanaka–Webster theorem proves existence and uniqueness.
+
+**Paper or page:** [On the second coefficient of the asymptotic expansion of Boutet de Monvel--Sjöstrand](https://arxiv.org/abs/2012.15456). It says: “there exists an unique affine connection, called Tanaka–Webster connection”
+
+**Sources:**
+
+- [S. M. Webster, Pseudo-Hermitian structures on a real hypersurface (1978)](https://doi.org/10.4310/jdg/1214434345)
+
+### Holomorphic maps preserve Segre varieties
+
+**Remember:** A mapping identity on the real hypersurface lifts to its complexified equation.
+
+*True by definition. Confidence: medium.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** A smooth real analytic hypersurface has a real-valued analytic defining function ρ with nonzero gradient. Treat the conjugate variables in its power series as independent. The Segre variety Q(w) consists of nearby z satisfying ρ(z,w̄)=0.
+
+**Problem.** A holomorphic map sending one such hypersurface into another sends each nearby Segre variety into the Segre variety of the image point, locally.
+
+**How the definition helps.** Our own proof uses the polarized equation to turn preservation of real points into preservation of Segre varieties. The analytic implicit function theorem makes the source defining function a real coordinate. Since the target defining function composed with the map vanishes on the source, it contains that coordinate as a factor. Polarizing this factorization proves the inclusion.
+
+**Paper or page:** [Orthogonal pair and a rigidity problem for Segre maps between hyperquadrics](https://arxiv.org/abs/2109.09340). It says: “A local holomorphic Segre map from ℋⁿ into ℋᴺ is a local orthogonal pair from ℙ¹,ⁿ to ℙ¹,ᴺ.”
+
+**Sources:**
+
+- [M. S. Baouendi, P. Ebenfelt, and L. P. Rothschild, Real Submanifolds in Complex Space and Their Mappings (1999)](https://doi.org/10.1515/9781400883967)
+
+### Involutivity gives the tangential complex
+
+**Remember:** Brackets stay in the bundle, so the exterior derivative descends.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** A Cauchy–Riemann structure selects complex tangent directions L that meet their conjugates only at zero. Involutivity means that brackets of vector fields in L stay in L. Tangential forms record the values of ordinary complex forms on L.
+
+**Problem.** On an involutive Cauchy–Riemann manifold, exterior differentiation defines a differential on tangential forms, and its square vanishes.
+
+**How the definition helps.** Bracket closure makes exterior differentiation preserve forms that vanish on L, by the exterior derivative formula (our own argument). Thus two extensions of a tangential form give the same tangential derivative. This construction inherits d² = 0 without a second differentiation in local coordinates.
+
+**nLab:** [CR manifold](https://ncatlab.org/nlab/show/CR+manifold). It says: “such that \[L, L\] ⊂ L and L ∩ L̄ = {0}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Levi flatness gives complex leaves
+
+**Remember:** When mixed brackets stay tangent, the complex planes become leaves.
+
+*Makes the theorem clean to state or prove.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** On a real hypersurface in complex space, the complex tangent planes H consist of tangent vectors whose multiples by i are tangent. Levi flatness means that brackets of holomorphic tangent fields with their conjugate-type partners stay in the complexification of H.
+
+**Problem.** Every smooth Levi-flat hypersurface locally splits into complex hypersurfaces tangent to H.
+
+**How the definition helps.** Our own argument uses Levi flatness to supply exactly the mixed brackets in the Frobenius integrability test. Brackets within each complex type already stay tangent. Frobenius gives real leaves, and projection onto complex tangent coordinates expresses each leaf as a graph satisfying the Cauchy–Riemann equations.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “h(v,w) = (1/2i)\[v,w̄\] mod L ⊕ L̄, v,w ∈ L.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Levi nondegeneracy makes contact planes
+
+**Remember:** Nondegeneracy of the Levi form is nondegeneracy on the contact planes.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.DG, math.CV. Level 3: graduate.
+
+**Definition.** On a smooth real hypersurface in complex space, the complex tangent planes H consist of tangent vectors whose multiples by i are tangent. Choose a local real one-form θ with kernel H. Levi nondegeneracy means that dθ has a nonsingular pairing between the holomorphic tangent directions and their conjugates.
+
+**Problem.** Levi nondegeneracy makes H a contact structure, meaning that dθ has zero kernel on H.
+
+**How the definition helps.** Our own argument uses bracket closure within each complex type to make both same-type blocks of dθ vanish. The mixed blocks therefore detect its entire kernel. This bracket calculation connects the usual complex Hessian test to the contact condition.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “In the strictly pseudoconvex case this bundle defines a contact structure on M, with α a contact form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Levi rank survives CR equivalence
+
+**Remember:** The Levi form measures the bracket that escapes the complex tangent space.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.DG, math.CV. Level 3: graduate.
+
+**Definition.** A Cauchy–Riemann structure specifies a bundle L of complex tangent directions. Its Levi form takes the bracket of X in L with the conjugate of Y in L and divides by 2i. It keeps only the class modulo L and its conjugate.
+
+**Problem.** A diffeomorphism carrying one hypersurface’s Cauchy–Riemann structure onto another’s preserves the rank of the Levi form.
+
+**How the definition helps.** The bracket definition makes the rank intrinsic because a diffeomorphism transports both brackets and quotient spaces (our own argument). To compare with the complex Hessian of a defining function, differentiate its complex normal one-form on tangent fields. The exterior derivative formula recovers the bracket pairing up to a nonzero scalar.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “h(v,w) = (1/2i)\[v,w̄\] mod L ⊕ L̄, v,w ∈ L.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polarization makes Segre incidence symmetric
+
+**Remember:** Conjugate the defining equation and exchange the two points.
+
+*True by definition. Confidence: medium.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** Take a real-valued analytic defining function ρ for a hypersurface in complex space. In its convergent series, replace the conjugate coordinate z̄ by an independent variable. The Segre variety Q(w) consists of nearby z satisfying ρ(z,w̄)=0.
+
+**Problem.** Near the base point, z lies in Q(w) if and only if w lies in Q(z). A point z lies in Q(z) exactly when it lies on the real hypersurface.
+
+**How the definition helps.** Our own proof uses the polarized equation to replace two incidence tests by one. The real values of the original function make its power series coefficients conjugate when the two exponent lists are exchanged. Thus ρ(z,w̄) and ρ(w,z̄) are conjugates. Setting w=z recovers the original hypersurface.
+
+**Paper or page:** [Orthogonal pair and a rigidity problem for Segre maps between hyperquadrics](https://arxiv.org/abs/2109.09340). It says: “A local holomorphic Segre map from ℋⁿ into ℋᴺ is a local orthogonal pair from ℙ¹,ⁿ to ℙ¹,ᴺ.”
+
+**Sources:**
+
+- [M. S. Baouendi, P. Ebenfelt, and L. P. Rothschild, Real Submanifolds in Complex Space and Their Mappings (1999)](https://doi.org/10.1515/9781400883967)
+
+### Zero energy identifies Kohn harmonics
+
+**Remember:** Zero energy means both tangential derivatives vanish.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** Let D differentiate square-integrable forms along the antiholomorphic tangent directions of a Cauchy–Riemann manifold, using a closed operator domain. Write D⁎ for its Hilbert space adjoint. The Kohn Laplacian is the operator associated with the closed energy form ‖Du‖² + ‖D⁎u‖² on their common domain.
+
+**Problem.** The Kohn Laplacian has kernel exactly where both D and D⁎ vanish. In degree zero this gives the square-integrable Cauchy–Riemann functions in the domain of D.
+
+**How the definition helps.** The energy definition replaces a second-order kernel equation with a sum of squares (our own argument). Testing a kernel element against itself makes both squares vanish. Conversely, both derivatives vanishing makes every energy pairing zero. The closed form theorem identifies this test with membership in the operator kernel.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “Functions that are annihilated by the Kohn Laplacian are called CR functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero Webster torsion preserves complex tangents
+
+**Remember:** Webster torsion measures the change of the complex structure along the Reeb flow.
+
+*Makes the theorem clean to state or prove.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.DG, math.CV. Level 3: graduate.
+
+**Definition.** On a strictly pseudoconvex Cauchy–Riemann manifold, choose a positive contact form θ whose kernel carries the complex structure J. The Reeb field T satisfies θ(T)=1 and dθ(T,·)=0. Webster torsion is A(X)=τ(T,X), where τ measures the difference between antisymmetrized Tanaka–Webster covariant differentiation and the vector field bracket.
+
+**Problem.** The local flow of T preserves the complex tangent planes and their complex structure exactly when Webster torsion vanishes.
+
+**How the definition helps.** Webster torsion isolates the term left when we differentiate J along the flow (our own calculation). The connection preserves T and J, so the derivative on X equals −A(JX)+JA(X). The torsion identity A(JX)=−JA(X) makes this derivative 2JA(X). The defining equations for T already imply that its flow preserves θ and its kernel.
+
+**Paper or page:** [On the second coefficient of the asymptotic expansion of Boutet de Monvel--Sjöstrand](https://arxiv.org/abs/2012.15456). It says: “τ(T, JU) = −Jτ(T, U)”
+
+**Sources:**
+
+- [S. M. Webster, Pseudo-Hermitian structures on a real hypersurface (1978)](https://doi.org/10.4310/jdg/1214434345)
+
+### Analytic involutivity supplies CR coordinates
+
+**Remember:** Complexify an analytic frame and integrate the resulting holomorphic distribution.
+
+*Rules out counterexamples.* MSC 32V30 (Embeddings of CR manifolds), 32V05. arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** A real analytic Cauchy–Riemann structure specifies complex tangent directions L with local bases given by convergent real power series. Brackets of fields in L stay in L, and L meets its conjugate only at zero.
+
+**Problem.** Every real analytic Cauchy–Riemann manifold embeds locally into complex Euclidean space with its prescribed antiholomorphic directions. Its real tangent spaces span the ambient tangent spaces over ℂ.
+
+**How the definition helps.** Convergence lets us extend a local basis and its bracket identities holomorphically to independent complex coordinates (our own argument). The holomorphic Frobenius theorem gives coordinate functions whose differentials have precisely the extended directions as common kernel. On the real manifold this kernel contains no nonzero real vector, and the complex differentials remain independent. Nirenberg’s smooth counterexample lacks enough local solutions for an embedding.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “Nirenberg constructs a single, non-vanishing complex vector field P”
+
+**Sources:**
+
+- [Louis Nirenberg, On a question of Hans Lewy (1974)](https://doi.org/10.1070/rm1974v029n02abeh003856)
+
+### Definite Levi form forces type two
+
+**Remember:** A definite mixed quadratic term survives every tangent curve.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32V35 (Finite-type conditions on CR manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** For a smooth hypersurface ρ = 0, D’Angelo one-type is the supremum of normalized contact orders over nonconstant holomorphic curves through the point. Each normalized order divides the first nonzero Taylor degree of ρ along the curve by the curve’s first nonconstant degree. A flat composition has infinite order.
+
+**Problem.** A smooth real hypersurface in ℂⁿ, n ≥ 2, has one-type two wherever its Levi form is definite. This form is the complex Hessian of ρ restricted to complex tangent vectors.
+
+**How the definition helps.** Definiteness prevents cancellation of the first mixed term (our own argument). For a curve of order k with tangent leading vector v, the coefficient of tᵏt̄ᵏ is the Levi form evaluated on v. Nontangent curves have normalized contact one, and a complex tangent line attains two. The indefinite hypersurface Im w = \|z₁\|² − \|z₂\|² contains the line (t,t,0).
+
+**Paper or page:** [The asymptotic behavior of the Bergman kernel on pseudoconvex model domains](https://arxiv.org/abs/2308.08249). It says: “Δ₁(∂Ωꜰ, 0) = ρꜰ.”
+
+**Sources:**
+
+- [John P. D’Angelo, Real Hypersurfaces, Orders of Contact, and Applications (1982)](https://doi.org/10.2307/2007015)
+
+### Finite type makes real solutions constant
+
+**Remember:** If both tangent directions kill a function, their brackets kill it too.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32V35 (Finite-type conditions on CR manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** A Cauchy–Riemann function has derivative zero along every antiholomorphic tangent field. Finite bracket type means that those fields, their conjugates, and their repeated brackets span all complexified tangent directions at each point.
+
+**Problem.** Every real-valued smooth Cauchy–Riemann function on a connected manifold of finite bracket type is constant.
+
+**How the definition helps.** Finite bracket type forces the differential to vanish once the function is real (our own argument). Conjugation shows that the conjugate fields also kill the function, and brackets of fields that kill a function kill it too. On the flat hypersurface Im w = 0 in ℂ², Re w gives a nonconstant real solution.
+
+**Paper or page:** [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044). It says: “it is of Bloom-Graham finite type at p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Levi brackets supply the missing direction
+
+**Remember:** One nonzero Levi bracket fills the one missing direction.
+
+*True by definition.* MSC 32V35 (Finite-type conditions on CR manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** Bracket type counts the shortest length needed for complex tangent fields, their conjugates, and their repeated brackets together to span the complexified tangent space. On a real hypersurface, the Levi form records mixed brackets modulo the fields of both types.
+
+**Problem.** A real hypersurface has bracket type two at p exactly when its Levi form is nonzero at p.
+
+**How the definition helps.** Our own argument uses the bracket description of the Levi form to test the only missing direction. The original fields span a hyperplane, and brackets within each type stay there. Thus one nonzero mixed bracket in the quotient suffices. The comparison with the usual complex Hessian follows by differentiating a one-form that annihilates the complex tangents.
+
+**Wikipedia:** [CR manifold](https://en.wikipedia.org/wiki/CR_manifold). It says: “The Levi form gives the length of the projection of \[v,w̄\] in the T-direction.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalized contact ignores curve speed
+
+**Remember:** A branched change of parameter multiplies both orders by the same number.
+
+*True by definition.* MSC 32V35 (Finite-type conditions on CR manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** For a smooth hypersurface ρ=0, normalized contact divides the vanishing order of ρ ∘ γ by that of γ−γ(0). Here γ is a nonconstant holomorphic curve starting on the hypersurface. Order means the first nonzero Taylor degree among all components, with infinity for a flat function.
+
+**Problem.** Precomposing a curve by any nonconstant holomorphic change of parameter fixing zero preserves its normalized contact.
+
+**How the definition helps.** Our own argument divides out the factor that a branched parameter introduces into raw contact. A parameter of order k multiplies each finite order by k, since its leading monomial preserves distinct exponent pairs. A flat numerator stays flat.
+
+**Paper or page:** [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044). It says: “Δ₁(M, p) = Δ₁ʳᵉᵍ(M, p) = ρ₁(M,p;(z)).”
+
+**Sources:**
+
+- [John P. D’Angelo, Real Hypersurfaces, Orders of Contact, and Applications (1982)](https://doi.org/10.2307/2007015)
+
+### Pure powers detect finite type
+
+**Remember:** Pure powers bound every curve, and the coordinate axes attain the worst bound.
+
+*Rules out counterexamples.* MSC 32V35 (Finite-type conditions on CR manifolds). arXiv math.CV, math.DG. Level 3: graduate.
+
+**Definition.** Consider the hypersurface Re w + ∑ \|m(z)\|² = 0, where the m are finitely many nonconstant monomials. A pure power uses only one z coordinate. D’Angelo one-type takes the supremum of vanishing order along holomorphic curves through zero divided by the curve’s first nonconstant Taylor degree.
+
+**Problem.** The hypersurface has finite one-type at zero exactly when every z coordinate has a pure power. Its type then equals twice the largest of the least pure exponents for the individual coordinates.
+
+**How the definition helps.** Pure powers bound contact on every curve because the first mixed terms in a sum of squares cannot cancel (our own proof). If w has smallest vanishing order, the linear term gives contact one. Otherwise a least-order z coordinate’s pure power bounds normalized contact. The coordinate axes attain the stated maximum, and a missing pure power puts an entire axis in the hypersurface.
+
+**Paper or page:** [The asymptotic behavior of the Bergman kernel on pseudoconvex model domains](https://arxiv.org/abs/2308.08249). It says: “F is convenient (i.e., 𝒩₊(F) intersects all axes).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -64633,6 +66829,221 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A weaker norm detects Neumann compactness
+
+**Remember:** A small energy term leaves only a compact error.
+
+*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** Write Q(u) for the sum of squared L² norms of the antiholomorphic derivative ∂̄u and its Hilbert adjoint derivative ∂̄\*u. A compactness estimate bounds ‖u‖² by εQ(u) + Cε‖u‖₋₁² throughout their common domain, for each ε &gt; 0. The weaker norm ‖·‖₋₁ tests against functions with one square-integrable derivative and zero boundary values.
+
+**Problem.** On a smooth bounded pseudoconvex domain, this estimate in positive form degree implies compactness of the corresponding ∂̄-Neumann inverse. Here pseudoconvexity means nonnegative boundary curvature in complex tangent directions.
+
+**How the definition helps.** The estimate upgrades convergence in the weaker norm to L² convergence along sequences with bounded energy (our own). Apply it to differences and then let ε decrease to zero (our own). Rellich’s compact embedding supplies the subsequence, and factoring the inverse through the energy inclusion gives compactness (our own).
+
+**Paper or page:** [On compactness and Lᵖ-regularity in the ∂̄-Neumann problem](https://arxiv.org/abs/2009.13391v2). It says: “Assume that for all ε &gt; 0 there exist a Banach space Zε and a compact linear map Kε”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A weighted adjoint brings curvature into the energy
+
+**Remember:** Change the weight, and the adjoint supplies its derivative.
+
+*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** Weight the L² inner product by exp(−ϕ), where ϕ is a smooth real function on a domain in ℂⁿ. The weighted adjoint of the antiholomorphic derivative ∂̄ moves that derivative across this inner product.
+
+**Problem.** For smooth compactly supported (0,1)-forms, the weighted ∂̄ energy dominates the weighted integral of the complex Hessian of ϕ evaluated on the form. The energy adds the squared weighted norms of the derivative and its weighted adjoint.
+
+**How the definition helps.** Moving the weight through the ordinary adjoint introduces first derivatives of ϕ (our own). Integration by parts differentiates them again, giving the complex Hessian, the matrix of mixed complex second derivatives (our own). The remaining interior term is a sum of squares, and compact support removes the boundary term (our own).
+
+**Paper or page:** [∂̄ Sobolev-type inequality and an improved L²-estimate of ∂̄ on bounded strictly pseudoconvex domains](https://arxiv.org/abs/2401.15597v3). It says: “‖Tϕ\*α‖₁² + ‖Sϕα‖₃²”
+
+**Sources:**
+
+- [Lars Hörmander, L² estimates and existence theorems for the ∂̄ operator (1965)](https://doi.org/10.1007/BF02391775)
+
+### Closed data characterize solvable ∂̄ equations
+
+**Remember:** Mixed derivatives must agree before a function can have the prescribed derivatives.
+
+*Rules out counterexamples.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** A smooth (0,1)-form f lists the proposed antiholomorphic derivatives of a function. It is ∂̄-closed when ∂̄f = 0, meaning its mixed antiholomorphic derivatives agree in either order.
+
+**Problem.** On a pseudoconvex domain in ℂⁿ, the equation ∂̄u = f has a smooth solution exactly when f is ∂̄-closed. Pseudoconvex domains admit exhaustions by functions that satisfy the submean inequality on each complex line.
+
+**How the definition helps.** Closure collects all the necessary mixed derivative identities into one condition (our own). For example, z̄₁ d z̄₂ fails this test in ℂ² (our own). Hörmander’s existence theorem supplies a weak solution on a pseudoconvex domain, and interior regularity makes it smooth (our own).
+
+**nLab:** [Dolbeault complex](https://ncatlab.org/nlab/show/Dolbeault+complex). It says: “The Dolbeault complex of X is the chain complex”
+
+**Sources:**
+
+- [Lars Hörmander, L² estimates and existence theorems for the ∂̄ operator (1965)](https://doi.org/10.1007/BF02391775)
+
+### Hankel operators as least norm solutions
+
+**Remember:** A Hankel operator solves a ∂̄ equation with holomorphic input.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** For a bounded symbol φ, the Bergman Hankel operator sends a square-integrable holomorphic function g to φg minus its orthogonal projection onto the holomorphic functions.
+
+**Problem.** On a smooth bounded pseudoconvex domain, compactness of the ∂̄-Neumann inverse on (0,1)-forms makes this Hankel operator compact for every C¹ symbol on the closure.
+
+**How the definition helps.** Subtracting the projection picks the solution of ∂̄u = g∂̄φ perpendicular to all holomorphic functions (our own). This replaces a direct compactness test on products by a bounded multiplication followed by the least norm solution operator (our own). Compactness of the Neumann inverse implies compactness of that solution operator through its energy estimate (our own).
+
+**Paper or page:** [Big Hankel operators on Hardy spaces of strongly pseudoconvex domains](https://arxiv.org/abs/2102.03999v1). It says: “Then the Hankel operator H<sub>f</sub>=(I-P<sub>B</sub>)M<sub>f</sub> is bounded”
+
+**Sources:**
+
+- [Mehmet Celik, Sonmez Sahutoglu and Emil J. Straube, A sufficient condition for compactness of Hankel operators](https://doi.org/10.7900/jot.2021apr04.2334)
+
+### Orthogonality separates variables in canonical solutions
+
+**Remember:** Solve on one factor and keep the other factors holomorphic.
+
+*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** The canonical solution of ∂̄u = f is the square-integrable solution perpendicular to all square-integrable holomorphic functions. Here ∂̄ takes derivatives in the conjugate complex coordinates.
+
+**Problem.** On a product of smoothly bounded planar domains, suppose a one-factor L² datum is multiplied by square-integrable holomorphic functions on the other factors. Its canonical solution is the one-factor canonical solution times those same functions.
+
+**How the definition helps.** Orthogonality on each slice proves the product formula without evaluating the full solution operator (our own). Differentiation gives the required datum because the other factors are holomorphic (our own). Fubini’s theorem reduces orthogonality against a holomorphic test function to the one-factor condition (our own).
+
+**Paper or page:** [Uniform estimates for the canonical solution to the ∂̄-equation on product domains](https://arxiv.org/abs/2006.14484v2). It says: “where Tⱼ is the canonical solution operator over Dⱼ.”
+
+**Sources:**
+
+- [Uniform estimates for the canonical solution to the ∂̄-equation on product domains](https://arxiv.org/abs/2006.14484v2)
+
+### Representing the Neumann inverse by the energy inclusion
+
+**Remember:** The inverse is compact exactly when bounded energy gives compactness.
+
+*True by definition.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** For a square-integrable differential form u, its ∂̄ energy adds the squared norms of its antiholomorphic derivative ∂̄u and its Hilbert adjoint derivative ∂̄\*u. The energy space consists of forms in both operator domains, with norm equal to the square root of this energy.
+
+**Problem.** On a bounded C⁴ pseudoconvex domain in ℂ², the ∂̄-Neumann inverse on (0,1)-forms is compact exactly when the energy inclusion into L² is compact. Here pseudoconvexity means nonnegative boundary curvature in complex tangent directions.
+
+**How the definition helps.** The energy inner product represents the inverse as JJ\*, where J includes the energy space into L² (our own). This replaces testing solutions of the boundary equation directly (our own). The basic L² estimate justifies the representation, and a Hilbert space operator J is compact exactly when JJ\* is (our own).
+
+**Paper or page:** [On compactness and Lᵖ-regularity in the ∂̄-Neumann problem](https://arxiv.org/abs/2009.13391v2). It says: “or, equivalently, 𝒥 is compact on D²₍₀,₁₎(Ω)”
+
+**Sources:**
+
+- [On compactness and Lᵖ-regularity in the ∂̄-Neumann problem](https://arxiv.org/abs/2009.13391v2)
+
+### Testing the adjoint detects the normal boundary coefficient
+
+**Remember:** Testing up to the boundary forces the normal coefficient to vanish.
+
+*Rules out counterexamples.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** The maximal antiholomorphic derivative ∂̄ acts on every square-integrable function whose weak ∂̄ derivative is also square integrable. Its Hilbert adjoint tests against that entire domain.
+
+**Problem.** On a smooth bounded domain, a smooth (0,1)-form up to the boundary belongs to the adjoint domain exactly when its complex normal coefficient vanishes there.
+
+**How the definition helps.** Testing against functions with boundary values exposes the normal coefficient in integration by parts (our own). Interior tests alone would admit the constant form d z̄₁ on the unit ball (our own). Smooth approximation extends the integration formula to the maximal domain (our own).
+
+**Paper or page:** [∂̄ Sobolev-type inequality and an improved L²-estimate of ∂̄ on bounded strictly pseudoconvex domains](https://arxiv.org/abs/2401.15597v3). It says: “if and only if ∑ⱼ₌₁ⁿ αⱼ(z) ∂ρ/∂zⱼ(z) = 0”
+
+**Sources:**
+
+- [∂̄ Sobolev-type inequality and an improved L²-estimate of ∂̄ on bounded strictly pseudoconvex domains](https://arxiv.org/abs/2401.15597v3)
+
+### The energy definition gives both Neumann boundary conditions
+
+**Remember:** The form and its ∂̄ derivative must both pass the adjoint test.
+
+*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** The ∂̄-Neumann energy pairs antiholomorphic derivatives and their Hilbert adjoint derivatives in L². Its Laplacian acts on energy-domain forms whose energy pairing with every test form equals an L² inner product with one fixed form.
+
+**Problem.** On a smooth bounded domain, a form smooth up to the boundary belongs to this Laplacian’s domain exactly when two complex normal contractions vanish there. The contractions are those of the form and its antiholomorphic derivative.
+
+**How the definition helps.** The energy domain enforces the adjoint condition on the form before integration by parts begins (our own). Representing the pairing by an L² form enforces the same condition on its derivative (our own). The representation theorem for closed energy forms thus recovers both classical boundary conditions (our own).
+
+**Paper or page:** [∂̄ Sobolev-type inequality and an improved L²-estimate of ∂̄ on bounded strictly pseudoconvex domains](https://arxiv.org/abs/2401.15597v3). It says: “if and only if ∑ⱼ₌₁ⁿ αⱼ(z) ∂ρ/∂zⱼ(z) = 0 for any z ∈ ∂Ω.”
+
+**Sources:**
+
+- [J. J. Kohn, Harmonic integrals on strongly pseudo-convex manifolds, I (1963)](https://doi.org/10.2307/1970506)
+
+### The inverse Hessian measures data for the ∂̄ equation
+
+**Remember:** The Hessian measures tests and its inverse measures data.
+
+*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** For a smooth real weight ϕ, let H be its positive definite matrix of mixed complex second derivatives. The squared dual norm of a coefficient vector f integrates its quadratic form for H⁻¹ against exp(−ϕ) times volume.
+
+**Problem.** On a pseudoconvex domain in ℂⁿ, suppose a (0,1)-form f has zero weak antiholomorphic derivative and finite dual norm. Then ∂̄u = f has a solution whose L² norm with weight exp(−ϕ) is at most that dual norm.
+
+**How the definition helps.** The inverse matrix gives exactly the Cauchy–Schwarz bound paired with the curvature matrix in the energy estimate (our own). Hörmander’s weighted estimate and Hilbert space duality turn this bound into a solution (our own).
+
+**Paper or page:** [A bridge connecting convex analysis and complex analysis and L²-estimate of d and ∂̄](https://arxiv.org/abs/2405.08559v2). It says: “we can solve ∂̄u=f with the estimate”
+
+**Sources:**
+
+- [Lars Hörmander, L² estimates and existence theorems for the ∂̄ operator (1965)](https://doi.org/10.1007/BF02391775)
+
+### Top degree turns the Neumann problem into the Dirichlet problem
+
+**Remember:** In top degree the normal condition kills the whole trace.
+
+*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+
+**Definition.** The ∂̄-Neumann energy adds the squared norms of the maximal antiholomorphic derivative and its Hilbert adjoint. In top degree a form has one coefficient, and the adjoint boundary condition sets its complex normal contraction to zero.
+
+**Problem.** On a smooth bounded domain in ℂⁿ, the top-degree ∂̄-Neumann Laplacian acts on that coefficient as one quarter of the positive Dirichlet Laplacian. Here the coordinate forms d z̄ⱼ are orthonormal, and Dirichlet means zero boundary values.
+
+**How the definition helps.** The normal contraction vanishes exactly when the single coefficient vanishes, since the boundary normal is nonzero (our own). The outgoing derivative vanishes in top degree, and integration by parts makes the energy one quarter of the scalar gradient energy (our own). Closing this energy identifies its domain with the first Sobolev space with zero boundary values (our own).
+
+**Paper or page:** [On compactness and Lᵖ-regularity in the ∂̄-Neumann problem](https://arxiv.org/abs/2009.13391v2). It says: “then f<sub>norm</sub> ∈ W<sup>1,p</sup><sub>0,(0,q−1)</sub>(Ω)”
+
+**Sources:**
+
+- [J. J. Kohn, Potential theory and several complex variables (1963)](https://www.numdam.org/item/ASNSP_1963_3_17_4_373_0/)
+
+### Boundedness prevents infinite mass
+
+**Remember:** Bound the potential before multiplying it by a current.
+
+*Rules out counterexamples.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Plurisubharmonic functions are upper semicontinuous and satisfy the disk mean inequality on complex lines. Bedford and Taylor construct the Monge–Ampère measure of a locally bounded such function u by repeatedly applying T ↦ ddᶜ(uT), starting with 1. Here ddᶜ takes the complex Hessian, and each intermediate generalized form T has measure coefficients.
+
+**Problem.** The resulting measure has finite mass on compact sets and equals the top power of the ordinary complex Hessian wherever u is smooth.
+
+**How the definition helps.** Local boundedness lets u multiply the measure coefficients at every step of the recursion. In our own account, Kiselman’s example shows what can fail near zero in dimension n ≥ 2. Multiply \|z₂\|² + ⋯ + \|zₙ\|² − 1 by the positive nth root of −log\|z₁\|. Even off the plane z₁ = 0, the smooth density has infinite integral in every small ball about zero.
+
+**Paper or page:** [A variational Approach to complex Hessian equations in ℂⁿ](https://arxiv.org/abs/1301.6502). It says: “Then we can define inductively a closed m-positive current”
+
+**Sources:**
+
+- [Eric Bedford and B. A. Taylor, A new capacity for plurisubharmonic functions, Acta Mathematica 149 (1982), 1–40](https://doi.org/10.1007/BF02392348)
+- [Zbigniew Błocki, The domain of definition of the complex Monge–Ampère operator, American Journal of Mathematics 128 (2006), 519–530](https://doi.org/10.1353/ajm.2006.0010)
+
+### Current recursion gives exact products
+
+**Remember:** Multiply the current first and differentiate afterward.
+
+*True by definition.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 3: graduate.
+
+**Definition.** For a locally bounded plurisubharmonic function u, the complex Hessian ddᶜu is a positive differential form with distribution coefficients. Such a generalized form is called a current. For a closed positive current T, Bedford and Taylor define the product ddᶜu ∧ T by differentiating uT with ddᶜ.
+
+**Problem.** Every mixed product of k such Hessians on a domain in ℂⁿ, with 1 ≤ k ≤ n, equals ddᶜS for some current S.
+
+**How the definition helps.** The recursive definition displays the primitive S as the first potential times the remaining product. In our own comparison, multiplying smooth Hessian matrices does not display this primitive. Bedford and Taylor justify the recursion and prove symmetry for locally bounded potentials.
+
+**Paper or page:** [A variational Approach to complex Hessian equations in ℂⁿ](https://arxiv.org/abs/1301.6502). It says: “we can define inductively a closed m-positive current”
+
+**Sources:**
+
+- [Eric Bedford and B. A. Taylor, A new capacity for plurisubharmonic functions, Acta Mathematica 149 (1982), 1–40](https://doi.org/10.1007/BF02392348)
+
 ### Kähler classes fix Monge–Ampère mass
 
 **Remember:** The top power of a closed form integrates to a cohomology number.
@@ -64648,6 +67059,150 @@ $$”
 **Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “Since the 2-form ω is closed, it determines an element in de Rham cohomology”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Bergman spans test quadrature maps
+
+**Remember:** Weighted composition sends the constant function to the Jacobian determinant.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 4: research.
+
+**Definition.** The Bergman span is the finite linear span of vectors representing values and holomorphic derivatives by inner products on square-integrable holomorphic functions. A volume quadrature domain computes every such function’s integral by a fixed finite sum of its values and derivatives.
+
+**Problem.** A holomorphic isomorphism between bounded domains has a volume quadrature domain as its image exactly when its complex Jacobian determinant belongs to the source span.
+
+**How the definition helps.** The constant function one represents integration, so a quadrature identity says precisely that one belongs to the span. In our own argument, composition weighted by the Jacobian preserves inner products and sends one to the Jacobian. The chain rule for the map and its inverse shows that this operation carries one span onto the other.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:**
+
+- [Legg, Quadrature Domains for the Bergman Space in Several Complex Variables (2018)](https://link.springer.com/article/10.1007/s40315-017-0224-0)
+
+### Constant Bergman invariant gives an Einstein metric
+
+**Remember:** Dividing by the kernel removes one Hessian from the Ricci equation.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 4: research.
+
+**Definition.** On a bounded domain, the Bergman metric matrix g consists of the mixed complex second derivatives of log K(z,z), where K is the Bergman kernel. The Bergman invariant is B = det(g)/K(z,z).
+
+**Problem.** If B is constant, the Ricci curvature tensor of the Bergman metric equals −g.
+
+**How the definition helps.** Constancy makes log det(g) and log K(z,z) differ by a constant. In our own calculation their mixed second derivatives agree, and the Ricci tensor is minus the matrix of those derivatives. The kernel transformation law shows that B is independent of the choice of holomorphic coordinates.
+
+**Paper or page:** [Kähler-Einstein Bergman metrics on pseudoconvex domains of dimension two](https://arxiv.org/abs/2309.10595v2). It says: “if and only if the Bergman invariant function is constant”
+
+**Sources:**
+
+- [Kähler-Einstein Bergman metrics on pseudoconvex domains of dimension two](https://arxiv.org/abs/2309.10595v2)
+
+### Dual evaluation reveals Bergman plurisubharmonicity
+
+**Remember:** Treat point evaluation as a holomorphic functional on each fiber.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** For weight exp(−φ), the diagonal Bergman kernel K(z) is the largest \|f(z)\|² among holomorphic functions with weighted squared integral at most one. Thus K(z) measures the squared norm of evaluation at z. A plurisubharmonic function is upper semicontinuous and subharmonic on complex lines.
+
+**Problem.** Fix z in a bounded pseudoconvex domain Ω, which admits a plurisubharmonic function with relatively compact sublevel sets. For smooth jointly plurisubharmonic φ(t,z) near U×Ω̄, log Kᵗ(z) is plurisubharmonic on the parameter domain U.
+
+**How the definition helps.** The evaluation definition turns kernel variation into variation of the norm of one holomorphic functional. Our own comparison replaces differentiating a sum over an orthonormal basis with a curvature theorem for the weighted spaces. Berndtsson proves the curvature sign that makes the logarithm subharmonic on every complex parameter line.
+
+**Paper or page:** [A Hilbert Bundles Description of Complex Brunn-Minkowski Theory](https://arxiv.org/abs/2305.07476v1). It says: “Then for each z∈Ω, the map U∋t↦log Kᵗ(z) is plurisubharmonic.”
+
+**Sources:**
+
+- [B. Berndtsson, Subharmonicity properties of the Bergman kernel and some other functions associated to pseudoconvex domains (2006)](https://doi.org/10.5802/aif.2223)
+
+### Skew correction recovers Szegő projection
+
+**Remember:** Correct a reproducing projection by its failure to be self-adjoint.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV, math.FA. Level 4: research.
+
+**Definition.** The Hardy space is the L² boundary closure of holomorphic traces, and S is its orthogonal projection. For a bounded Cauchy–Fantappiè projection C onto the same space, the Kerzman–Stein operator is the difference A = C − C\* from its adjoint.
+
+**Problem.** The orthogonal Szegő projection satisfies S = C(I+A)⁻¹, and the inverse has norm at most one.
+
+**How the definition helps.** Their common range gives SC=C and SC\*=S, hence S(I+A)=C. In our own algebra, skew-adjointness gives a lower bound of one for both I+A and its adjoint, hence invertibility. This recovers the orthogonal projection from a boundary integral projection whose construction requires separate estimates.
+
+**Wikipedia:** [Szegő kernel](https://en.wikipedia.org/wiki/Szeg%C5%91_kernel). It says: “a reproducing kernel on a natural Hilbert space”
+
+**Sources:**
+
+- [Kerzman and Stein, The Szegö kernel in terms of Cauchy-Fantappiè kernels (1978)](https://doi.org/10.1215/S0012-7094-78-04513-1)
+
+### Tangent separation prevents Leray poles
+
+**Remember:** A complex tangent plane must miss every interior point.
+
+*Rules out counterexamples.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 4: research.
+
+**Definition.** A smooth domain is strictly complex linearly convex if each affine complex tangent plane meets the closure only at its point of tangency. Choose a smooth function ρ that vanishes on the boundary and has nonzero gradient there. The Leray kernel uses the normalized complex differential ∂ρ(w) divided by its value on w−z.
+
+**Problem.** On such a bounded domain the Leray kernel depends holomorphically on the interior point z and reproduces holomorphic functions continuous on the closure.
+
+**How the definition helps.** Tangent separation makes the denominator nonzero, and its dependence on z is holomorphic. The normalized form then gives the Cauchy–Fantappiè integral formula. In our own example, the image of the unit ball under (u,v) ↦ (u,v+u²) still has strictly pseudoconvex boundary. Its complex tangent at (0,1) contains interior points (t,1) for small nonzero real t.
+
+**Wikipedia:** [Bochner–Martinelli formula](https://en.wikipedia.org/wiki/Bochner%E2%80%93Martinelli_formula). It says: “generalization of the Cauchy integral formula to functions of several complex variables”
+
+**Sources:**
+
+- [Lanzani and Stein, Cauchy-type integrals in several complex variables (2013)](https://link.springer.com/article/10.1007/s13373-013-0038-y)
+
+### Zero-free kernels give global diastasis
+
+**Remember:** Nonvanishing keeps the logarithm finite even away from the diagonal.
+
+*Rules out counterexamples.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)). arXiv math.CV. Level 4: research.
+
+**Definition.** A bounded domain is Lu Qi-Keng if its Bergman kernel K never vanishes on a pair of points. The diastasis is a local potential for the metric in two variables, given by log(K(z,z)K(w,w)/\|K(z,w)\|²).
+
+**Problem.** On a Lu Qi-Keng domain the diastasis extends to a finite real analytic function on every pair of points.
+
+**How the definition helps.** The zero-free condition keeps the denominator positive everywhere. In our own argument, the diagonal factors are positive because constants belong to the Bergman space, and the kernel is analytic in z and w̄. Nikolov and Zwonek found zeros on the symmetrized tridisc, the image of the unit tridisc under the elementary symmetric polynomials.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:**
+
+- [Nikolov and Zwonek, The Bergman kernel of the symmetrized polydisc in higher dimensions has zeros (2006)](https://link.springer.com/article/10.1007/s00013-006-1801-z)
+
+### Fiber volume encodes Bergman weights
+
+**Remember:** Give each fiber the area that the base point should weigh.
+
+*True by definition.* MSC 32A36 (Bergman spaces of functions in several complex variables), 32A25. arXiv math.CV. Level 4: research.
+
+**Definition.** The Forelli–Rudin construction puts a disc centered at zero with area w(z) above each point z of a bounded domain. Here w is positive, continuous, and bounded. The weighted Bergman space uses w times ordinary volume to measure squared norms of holomorphic functions.
+
+**Problem.** The ordinary Bergman kernel of the enlarged domain at (z,0) and (u,0) equals the weighted Bergman kernel at z and u.
+
+**How the definition helps.** Integrating along each disc turns ordinary volume into the prescribed weight for functions constant along the discs. In our own argument, averaging over disc rotations projects orthogonally onto those functions and preserves their values at the centers. Thus both spaces represent evaluation there by the same kernel.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:**
+
+- [Ligocka, On the Forelli–Rudin construction and weighted Bergman projections (1989)](https://geodesic.mathdoc.fr/articles/10.4064/sm-94-3-257-272/)
+
+### Monomial projections respect the exponent
+
+**Remember:** Use only monomials whose pth powers have finite integral.
+
+*Rules out counterexamples.* MSC 32A36 (Bergman spaces of functions in several complex variables). arXiv math.CV, math.FA. Level 4: research.
+
+**Definition.** On a bounded domain invariant under separate coordinate rotations, the monomial basis projection uses the Laurent monomials e with finite Lᵖ norm. Its coefficient for e is the integral of f times ē\|e\|ᵖ⁻² divided by the integral of \|e\|ᵖ.
+
+**Problem.** On bounded monomial polyhedra, domains given by independent monomial inequalities, this projection maps Lᵖ boundedly onto its holomorphic subspace for 1 &lt; p &lt; ∞.
+
+**How the definition helps.** Choosing powers at exponent p excludes singular monomials outside Lᵖ. The cited paper proves boundedness by kernel estimates. In our own example, the ordinary Bergman projection sends z̄₂ to a nonzero multiple of 1/z₂ on the triangle \|z₁\| &lt; \|z₂\| &lt; 1. This output has infinite L⁴ norm.
+
+**Paper or page:** [Projections onto Lᵖ-Bergman spaces of Reinhardt Domains](https://arxiv.org/abs/2303.10005v3). It says: “The Monomial Basis Projection is a bounded surjective projection operator”
+
+**Sources:**
+
+- [Chakrabarti and Edholm, Projections onto Lᵖ-Bergman spaces of Reinhardt Domains](https://arxiv.org/abs/2303.10005v3)
 
 ### Hyperfunctions as boundary values form a flabby sheaf
 
@@ -64688,6 +67243,22 @@ $$”
 - [Generalized Mahler measures of Laurent polynomials, Proposition 7.2](https://arxiv.org/abs/2308.04601)
 - [Amoeba (mathematics), Ronkin function](https://en.wikipedia.org/wiki/Amoeba_(mathematics)#Ronkin_function)
 
+### Principal pullbacks permit integral division
+
+**Remember:** Once the ideal has one generator, divide the monic equation by its powers.
+
+*True by definition.* MSC 32B05 (Analytic algebras and generalizations, preparation theorems), 32C20. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A function is integral over I if it solves a monic equation whose jth coefficient after the leading term belongs to Iʲ. The normalized blowup makes I locally principal on a normal space. Here normality means every fraction satisfying a monic equation over the local ring belongs to that ring.
+
+**Problem.** On a reduced irreducible complex space, let I be a nonzero ideal locally given by finitely many holomorphic generators and relations. Every function integral over I pulls back into the ideal generated by I on its normalized blowup.
+
+**How the definition helps.** Using a monic equation instead of analytic growth bounds lets us divide by powers of one local generator (our own argument). The resulting quotient satisfies a monic equation over the new local ring. Normality makes the quotient holomorphic, so the function belongs to the extended ideal.
+
+**Paper or page:** [On Skoda's theorem for Nadel-Lebesgue multiplier ideal sheaves on singular complex spaces and regularity of weak Kähler-Einstein metrics](https://arxiv.org/abs/2301.00094v1). It says: “For every morphism π : X̃ → X satisfying: (i) π is a proper and surjective, (ii) X̃ is a normal complex space”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Coherent means nuclear and pseudocompact, so Grauert's theorem becomes two checks
 
 **Remember:** Split coherent into nuclear and pseudocompact, then push each one forward.
@@ -64705,6 +67276,24 @@ $$”
 **Sources:**
 
 - [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
+
+### Cohomology matrices expose jumping fibers
+
+**Remember:** Fiber cohomology jumps where matrix ranks drop.
+
+*Makes the theorem clean to state or prove.* MSC 32C35 (Analytic sheaves and cohomology groups), 32H35. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A Grauert complex is a finite sequence of local holomorphic matrices whose consecutive maps compose to zero. Evaluating it at a base point gives a complex whose cohomology equals the sheaf cohomology on that fiber. Flatness means tensoring with each sheaf stalk preserves exact sequences over the corresponding base stalk.
+
+**Problem.** Suppose a coherent analytic sheaf is flat over the base of a proper holomorphic map. In each degree, the points where fiber cohomology has dimension at least k form a closed analytic set.
+
+**How the definition helps.** The matrices express a cohomology dimension bound as a rank condition (our own calculation). Subtract the incoming and outgoing ranks from the middle dimension. Their sum is the rank of a block diagonal matrix, whose minors give the required equations. Grauert’s theorem supplies a single complex throughout a neighborhood.
+
+**Wikipedia:** [Base change theorems](https://en.wikipedia.org/wiki/Base_change_theorems). It says: “Proper base change also holds in the context of complex manifolds and complex analytic spaces.”
+
+**Sources:**
+
+- [H. Grauert, Ein Theorem der analytischen Garbentheorie und die Modulräume komplexer Strukturen (1960)](https://pmihes.centre-mersenne.org/articles/10.1007/BF02684746/)
 
 ### Comparing categorified locales makes GAGA follow from the valuative criterion
 
@@ -64724,6 +67313,43 @@ $$”
 
 - [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
 
+### Flat families preserve Euler characteristic
+
+**Remember:** Cohomology can jump, but the alternating sum stays fixed.
+
+*True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups), 32H35. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Euler characteristic of a sheaf on a compact complex space is the alternating sum of its cohomology dimensions. A Grauert complex is a finite complex of holomorphic vector bundles whose evaluations compute those groups on nearby fibers.
+
+**Problem.** For a proper holomorphic map, the fiber Euler characteristic of a coherent sheaf flat over the base is locally constant. Flatness means tensoring with the sheaf stalk preserves exact sequences over the corresponding base stalk.
+
+**How the definition helps.** Computing the alternating sum from the complex replaces changing cohomology dimensions with fixed bundle ranks (our own calculation). Each differential contributes its rank twice with opposite signs. Grauert’s theorem supplies the complex over a whole neighborhood.
+
+**Wikipedia:** [Base change theorems](https://en.wikipedia.org/wiki/Base_change_theorems). It says: “Proper base change also holds in the context of complex manifolds and complex analytic spaces.”
+
+**Sources:**
+
+- [H. Grauert, Ein Theorem der analytischen Garbentheorie und die Modulräume komplexer Strukturen (1960)](https://pmihes.centre-mersenne.org/articles/10.1007/BF02684746/)
+
+### Hypercohomology lifts comparison to complexes
+
+**Remember:** Compare the terms, then let the spectral sequence compare the complex.
+
+*Makes the theorem clean to state or prove.* MSC 32C35 (Analytic sheaves and cohomology groups), 14F06. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** Hypercohomology measures a complex of sheaves as a whole. One computes it by resolving the individual sheaves, taking global sections, and combining the resolution maps with the original differentials.
+
+**Problem.** On a complex projective variety, a bounded complex of coherent algebraic sheaves has the same hypercohomology after extension to holomorphic coefficients.
+
+**How the definition helps.** The combined complex lets one compare individual sheaves first (our own explanation). Serre’s theorem identifies each sheaf’s algebraic and analytic cohomology. The hypercohomology spectral sequence assembles those groups in stages, with only finitely many pieces in each degree. Comparison at each stage therefore identifies the final groups.
+
+**Paper or page:** [Relative-Hyper GAGA Theorem](https://arxiv.org/abs/2409.01481v3). It says: “Then the hypercohomology of ℱ• on X is isomorphic to the hypercohomology of its analytification”
+
+**Sources:**
+
+- [Eita Haibara and Taewan Kim, Relative-Hyper GAGA Theorem, Theorem 3.0.1](https://arxiv.org/abs/2409.01481v3)
+- [J.-P. Serre, Géométrie algébrique et géométrie analytique (1956), Théorèmes 1–3](https://www.numdam.org/item/AIF_1956__6__1_0/)
+
 ### Proper maps preserve sheaf coherence
 
 **Remember:** Over a point, coherence means finite dimension.
@@ -64741,6 +67367,22 @@ $$”
 **Sources:**
 
 - [Hans Grauert, Ein Theorem der analytischen Garbentheorie und die Modulräume komplexer Strukturen (1960)](https://doi.org/10.1007/bf02684746)
+
+### Hypersurfaces supply poles where points cannot
+
+**Remember:** A local equation supplies a pole where deleting a point does not.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32D05 (Domains of holomorphy), 32D20, 32E10. arXiv math.CV. Level 4: research.
+
+**Definition.** A closed analytic hypersurface is locally the zero set of one holomorphic function that is not identically zero. A domain of holomorphy has no boundary patch across which all holomorphic functions extend from the same open subset.
+
+**Problem.** Removing a closed analytic hypersurface from a domain of holomorphy in ℂⁿ leaves a domain of holomorphy. Removing a point from a ball in dimension at least two can destroy this property.
+
+**How the definition helps.** A local defining equation supplies a reciprocal with a pole along the deleted hypersurface. Inside a small ball, this reciprocal obstructs extension at the hypersurface, and the sphere already obstructs extension at the ball boundary. Our own proof uses the local Levi theorem over a Stein domain to pass from these local domains of holomorphy to the whole complement. Hartogs’s theorem fills the puncture in the ball example.
+
+**Wikipedia:** [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy). It says: “any function holomorphic on U ∖ K can be analytically continued to U”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Bott–Chern vanishing fills pluriharmonic holes
 
@@ -64779,6 +67421,236 @@ $$”
 - [J. P. Pridham, A differential graded model for derived analytic geometry (2020), Proposition 1.13](https://doi.org/10.1016/j.aim.2019.106922)
 - [Alexei Yu. Pirkovskii, Holomorphically finitely generated algebras (2015), Theorem 3.23](https://doi.org/10.4171/jncg/192)
 
+### Relative vanishing needs convexity
+
+**Remember:** A compact set can enclose cohomology that its hull fills.
+
+*Rules out counterexamples.* MSC 32E10 (Stein spaces). arXiv math.CV. Level 4: research.
+
+**Definition.** A compact subset of a Stein space is holomorphically convex if it contains its holomorphic hull. The hull consists of all points where no global holomorphic function exceeds its maximum modulus on the compact set.
+
+**Problem.** For an n-dimensional Stein space and a holomorphically convex compact set K, relative cohomology with constant integer coefficients vanishes in degrees above n.
+
+**How the definition helps.** The hull condition excludes compact sets such as the unit sphere in ℂ², whose hull fills the ball (our own). The sphere has integer cohomology ℤ in degree three, while ℂ² is contractible (our own). The exact sequence of the pair therefore gives relative cohomology ℤ in degree four (our own). Benoist proves vanishing above the complex dimension when the compact set equals its hull.
+
+**Paper or page:** [On the Artin vanishing theorem for Stein spaces](https://arxiv.org/abs/2410.04291v2). It says: “Then Hᵏ(S, K, 𝔽) = 0 for k &gt; n.”
+
+**Sources:**
+
+- [Olivier Benoist, On the Artin vanishing theorem for Stein spaces (2025)](https://doi.org/10.1112/blms.70124)
+
+### Stein algebras recover holomorphic maps
+
+**Remember:** Recover a map by pulling back its coordinate functions.
+
+*Makes the theorem clean to state or prove.* MSC 32E10 (Stein spaces). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Stein algebra of a Stein space X is the complex algebra 𝒪(X) of all holomorphic functions defined on X. Composition with a holomorphic map pulls functions back and reverses the direction of the map.
+
+**Problem.** For Stein spaces X and Y, every unital complex algebra homomorphism 𝒪(Y) → 𝒪(X) comes from exactly one holomorphic map X → Y.
+
+**How the definition helps.** Keeping multiplication and addition lets one state a geometric mapping theorem entirely in terms of global functions (our own). Benoist proves that taking global functions gives an equivalence with all arrows reversed. The equivalence supplies both existence and uniqueness (our own).
+
+**Paper or page:** [Stein spaces and Stein algebras](https://arxiv.org/abs/2410.05521v1). It says: “is an anti-equivalence of categories.”
+
+**Sources:**
+
+- [Olivier Benoist, Stein spaces and Stein algebras (2026)](https://doi.org/10.4064/ba260107-1-3)
+
+### Tame hulls stay locally bounded
+
+**Remember:** Bound a moving compact set by one fixed compact set locally.
+
+*Makes the theorem clean to state or prove.* MSC 32E10 (Stein spaces). arXiv math.CV. Level 4: research.
+
+**Definition.** The holomorphic hull adds points where every holomorphic function obeys its maximum modulus bound on a compact set. For a continuous family of Stein structures over a locally compact Hausdorff space, tameness has a compactness test. For each fixed compact set, the pairs of parameters and hull points above any compact parameter set must form a compact set.
+
+**Problem.** In a tame family, taking the holomorphic hull separately in each fiber preserves properness over the parameters. Properness means that the inverse image of each compact parameter set is compact.
+
+**How the definition helps.** Tameness supplies one compact bound for all moving hulls above a compact parameter neighborhood (our own). Indeed, the moving sets there project into one fixed compact set, whose hulls contain theirs (our own). The authors’ lemma also establishes closedness, which the compact bound alone does not imply (our own).
+
+**Paper or page:** [The Oka principle for tame families of Stein manifolds](https://arxiv.org/abs/2510.25887v1). It says: “If K ⊂ T × X is proper and 𝒥 is a tame family of Stein structures on X then the hull K̂𝒥 is also proper.”
+
+**Sources:**
+
+- [Franc Forstnerič and Álfheiður Sigurðardóttir, The Oka principle for tame families of Stein manifolds (2026)](https://doi.org/10.1090/btran/257)
+
+### Fefferman measure makes Szegő metrics invariant
+
+**Remember:** The logarithm turns the Jacobian factor into a term whose mixed derivatives vanish.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables), 32A25. arXiv math.CV. Level 4: research.
+
+**Definition.** Fefferman measure weights surface area on a smooth strictly pseudoconvex boundary, where a defining function ρ has positive complex Hessian on complex tangents. Border that Hessian with the complex gradient, its adjoint, and a zero corner. In complex dimension n, the weight is the (n+1)st root of the absolute determinant divided by \|∇ρ\|, up to a dimensional constant.
+
+**Problem.** For Fefferman measure, take the mixed complex second derivatives of the logarithm of the Szegő kernel diagonal. Holomorphic isomorphisms between smoothly bounded simply connected strictly pseudoconvex domains preserve this metric.
+
+**How the definition helps.** Fefferman measure changes by a power of the absolute Jacobian, allowing a holomorphic weight to preserve boundary inner products. For the boundary space of square-integrable holomorphic traces, simple connectivity gives the holomorphic power of the nonvanishing Jacobian. The resulting kernel diagonals differ by a Jacobian factor whose logarithm has zero mixed complex second derivatives.
+
+**Wikipedia:** [Szegő kernel](https://en.wikipedia.org/wiki/Szeg%C5%91_kernel). It says: “a reproducing kernel on a natural Hilbert space”
+
+**Sources:**
+
+- [David Barrett and Lina Lee, On the Szegő Metric](https://doi.org/10.1007/s12220-012-9329-x)
+
+### Full squeezing identifies the ball
+
+**Remember:** An attained full radius leaves no part of the ball out.
+
+*Makes the theorem clean to state or prove.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 4: research.
+
+**Definition.** Embed a bounded complex domain holomorphically into the unit ball of the same dimension, sending a chosen point to zero. The squeezing function there is the supremum of radii of centered balls contained in such images.
+
+**Problem.** If the squeezing function equals one anywhere, the domain admits a holomorphic bijection onto the unit ball with holomorphic inverse.
+
+**How the definition helps.** An embedding that attains radius one covers the whole ball. In our own explanation, the essential step is the attainment theorem for bounded domains. Its proof takes limits of embeddings and their inverses.
+
+**Paper or page:** [d-balanced squeezing function](https://arxiv.org/abs/2103.00526). It says: “then D is biholomoprhically equivalent to Ω.”
+
+**Sources:**
+
+- [d-balanced squeezing function, Corollary 4.6](https://arxiv.org/abs/2103.00526)
+
+### Left inverses transfer disc interpolation
+
+**Remember:** A disc with a left inverse loses no interpolation data.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 4: research.
+
+**Definition.** A complex geodesic preserves distance from the unit disc into a domain, measured there by holomorphic maps back to the disc. Equivalently, it has a holomorphic left inverse, a map back to the disc whose composition with the geodesic is the identity.
+
+**Problem.** Finite data on a complex geodesic admit a disc-valued holomorphic interpolant on the domain exactly when their parameters admit one on the disc.
+
+**How the definition helps.** The left inverse extends any interpolating function from the disc to the domain by composition. Composing in the other direction restricts a domain interpolant to the disc. In our own argument, the work lies in obtaining the left inverse from distance preservation using a maximizing map and Schwarz–Pick equality.
+
+**Paper or page:** [Pick interpolation and invariant functions](https://arxiv.org/abs/2309.04796). It says: “if and only if φ is a Carathéodory geodesic.”
+
+**Sources:**
+
+- [Pick interpolation and invariant functions, Corollary 2.7](https://arxiv.org/abs/2309.04796)
+
+### Abelian models remove Calabi–Yau obstructions
+
+**Remember:** An equivalent zero bracket leaves no nonlinear lifting equations.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures), 32Q25. arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** The Kodaira–Spencer algebra describes changes of complex structure using tangent-valued forms, a differential and a bracket. Homotopy abelian means that a chain of maps connects this algebra to one with zero bracket. Each map may point either way and must preserve both operations and induce an isomorphism on cohomology.
+
+**Problem.** For a smooth complex projective variety with a nowhere vanishing holomorphic volume form, the Kodaira–Spencer algebra is homotopy abelian. Every formal deformation therefore lifts across each small extension of parameter algebras, a surjection with kernel annihilated by the maximal ideal.
+
+**How the definition helps.** In the zero-bracket model, the deformation equation is linear, so each closed coefficient can multiply any lift of its parameter (our own). Iacono and Manetti prove that such a model exists, and invariance under cohomology equivalences transfers the lifting result (our own).
+
+**Wikipedia:** [Bogomolov–Tian–Todorov theorem](https://en.wikipedia.org/wiki/Bogomolov%E2%80%93Tian%E2%80%93Todorov_theorem). It says: “Consequently the deformations of X are unobstructed.”
+
+**Sources:**
+
+- [D. Iacono and M. Manetti, An algebraic proof of Bogomolov-Tian-Todorov theorem](https://doi.org/10.1007/978-3-8348-9680-3_5)
+
+### Formality leaves only quadratic equations
+
+**Remember:** A formal deformation algebra has no higher equations to solve.
+
+*True by definition.* MSC 32G05 (Deformations of complex structures). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** The Kodaira–Spencer algebra describes changes of complex structure using tangent-valued forms, their differential and their bracket. It is formal if maps preserving these operations and inducing cohomology isomorphisms connect it to its cohomology with zero differential.
+
+**Problem.** For a compact complex manifold with formal Kodaira–Spencer algebra, the formal deformation base has only the quadratic equations \[x,x\] = 0. Here x ranges over first cohomology and its bracket lies in second cohomology.
+
+**How the definition helps.** Passing to cohomology removes the differential from the deformation equation dx + ½\[x,x\] = 0 (our own). The comparison theorem identifies the formal deformation bases of the original algebra and its cohomology model (our own).
+
+**nLab:** [Deligne groupoid](https://ncatlab.org/nlab/show/Deligne+groupoid). It says: “MC(𝔤) = {x ∈ 𝔤¹ \| dx + ½\[x,x\] = 0}”
+
+**Sources:**
+
+- [M. Manetti, Kodaira-Spencer formality of products of complex manifolds](https://iris.uniroma1.it/handle/11573/603584)
+
+### Trivial normal products give compatible local smoothings
+
+**Remember:** A trivial smoothing bundle admits a parameter nonzero along the entire crossing.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32G05 (Deformations of complex structures). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** Suppose two smooth components of a compact complex surface meet transversely along a smooth curve D. The surface is d-semistable if the product of their two normal line bundles along D is trivial. Each normal line records the direction transverse to D in its component.
+
+**Problem.** A d-semistable surface of this form admits local first-order smoothing parameters that agree along D and vanish nowhere on D.
+
+**How the definition helps.** In the crossing equation xy = t, the smoothing parameter transforms as the product of the two normal directions (our own). A trivial product bundle has a constant nonzero section (our own). For two projective planes meeting along a line in projective three-space, the product has degree two, so every section has a zero (our own). Lifting compatible local parameters to a global deformation requires a separate argument (our own).
+
+**Paper or page:** [Unobstructedness of deformations for a d-semistable central corank one boundary point](https://arxiv.org/abs/2410.10583v2). It says: “We have τ¹ₓ = 𝒪ᴅ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ample classes exclude period reflections
+
+**Remember:** A reflection in a curve cannot preserve an ample class.
+
+*Rules out counterexamples.* MSC 32G13 (Complex-analytic moduli problems), 32G20. arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** A polarized K3 surface carries a chosen ample line bundle, one whose high powers embed the surface in projective space. Its first Chern class records the polarization in second integral cohomology.
+
+**Problem.** An integral isometry preserving the period lines and matching the two polarization classes comes from a unique polarized isomorphism between the K3 surfaces.
+
+**How the definition helps.** The polarization picks out the chamber of positive classes containing the ample classes (our own). Reflection in a smooth rational curve preserves the period line but sends the curve class to its negative (our own). The strong Torelli theorem realizes the isometry once it matches the chambers (our own).
+
+**Wikipedia:** [K3 surface](https://en.wikipedia.org/wiki/K3_surface). It says: “generated by reflections in the set of roots Δ”
+
+**Sources:**
+
+- [D. Burns and M. Rapoport, On the Torelli problem for kählerian K-3 surfaces](https://doi.org/10.24033/asens.1287)
+
+### Birational quotients make periods invertible
+
+**Remember:** Identify inseparable points before asking periods to distinguish them.
+
+*Rules out counterexamples.* MSC 32G13 (Complex-analytic moduli problems), 32G20. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** Fix a simply connected compact Kähler manifold whose holomorphic two-forms are spanned by one everywhere nondegenerate form. Its Teichmüller space parametrizes complex structures of this kind up to diffeomorphisms continuously deformable to the identity. Its birational Teichmüller space identifies points that have no disjoint open neighborhoods.
+
+**Problem.** On each connected component of the birational Teichmüller space, the period map is a diffeomorphism onto the period domain of holomorphic two-form lines.
+
+**How the definition helps.** The period domain has disjoint neighborhoods for distinct lines, so the period map must identify inseparable points (our own). Verbitsky’s global Torelli theorem proves that making these identifications suffices and that the resulting map has a smooth inverse (our own).
+
+**Paper or page:** [Teichmuller spaces, ergodic theory and global Torelli theorem](https://arxiv.org/abs/1404.3847v1). It says: “Then Per is a diffeomorphism on each connected component.”
+
+**Sources:**
+
+- [M. Verbitsky, Teichmuller spaces, ergodic theory and global Torelli theorem](https://arxiv.org/abs/1404.3847)
+
+### Interior monodromy excludes weight jumps
+
+**Remember:** Use the interior of the cone to read its common weight filtration.
+
+*Rules out counterexamples.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** For a polarized nilpotent orbit, commuting operators with vanishing powers generate a cone by nonnegative linear combinations. Their exponentials translate a fixed flag of nested subspaces into flags satisfying the Hodge polarization conditions for all sufficiently large imaginary parameters. The relative interior consists of sums with a strictly positive coefficient for every generator.
+
+**Problem.** Every operator in the relative interior gives the same monodromy weight filtration. This filtration places each Jordan chain in weights spaced two apart and centered at the original cohomology weight.
+
+**How the definition helps.** Positive coefficients retain every degenerating direction, which can matter even for two independent families of elliptic curves (our own). Let each curve develop a node, a point where two branches cross, and take the direct sum of their first cohomology groups (our own). The lowest weight space receives a line from each curve in its relative interior, but only one line on a boundary ray (our own). The Cattani–Kaplan theorem proves constancy throughout the relative interior.
+
+**Paper or page:** [Space of nilpotent orbits and extension of period maps (I): The weight 3 Calabi-Yau types](https://arxiv.org/abs/2306.11254v2). It says: “for any N in the relative interior of σ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nilpotent orbits forget disk coordinates
+
+**Remember:** Changing the coordinate moves the flag inside its orbit.
+
+*True by definition. Confidence: medium.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** The period flag Φ(z) records nested cohomology subspaces above t = exp(2πiz). If transport T around zero has T−I nilpotent, meaning some power vanishes, the corrected flag exp(−z log T)Φ(z) has a limit F at zero. Its orbit consists of all flags exp(c log T)F for complex c.
+
+**Problem.** For a polarized integral variation on a punctured disk with this transport, the orbit of the limiting flag is independent of the local coordinate.
+
+**How the definition helps.** The orbit absorbs the translation that changes an individual limiting flag (our own). Replacing t by u(t)t, with u holomorphic and u(0) nonzero, multiplies F by exp(−cN), where c = log(u(0))/(2πi) (our own). Schmid’s theorem gives the limit for periods with an integral lattice and a fixed pairing satisfying the Hodge positivity conditions (our own).
+
+**Paper or page:** [On the nilpotent orbit theorem of complex variations of Hodge structure](https://arxiv.org/abs/2203.04266v3). It says: “where a(w) := Ψ(0,w)”
+
+**Sources:**
+
+- [W. Schmid, Variation of Hodge Structure: The Singularities of the Period Mapping](https://doi.org/10.1007/BF01389674)
+
 ### Tangential polylogarithm periods give zeta values
 
 **Remember:** At one, only the first coordinate needs its logarithm removed.
@@ -64814,6 +67686,43 @@ $$”
 **Sources:**
 
 - [Pierre Deligne, Équations différentielles à points singuliers réguliers (1970)](https://doi.org/10.1007/BFb0061194)
+
+### Untwisting monodromy gives limiting flags
+
+**Remember:** Remove the deck transformation before taking a limit.
+
+*Makes the theorem clean to state or prove.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A period flag Φ(z) records nested cohomology subspaces above the punctured disk with coordinate t = exp(2πiz). One turn sends Φ(z) to TΦ(z), where T is the transport around the puncture. When T−I is nilpotent, some power vanishes, and the untwisted flag is Ψ(t) = exp(−z log T)Φ(z).
+
+**Problem.** For a polarized integral variation of Hodge structure with this monodromy, Ψ extends holomorphically across the puncture. Its limit lies in the flag space defined by the polarization’s orthogonality equations.
+
+**How the definition helps.** The exponential cancels the change of flag after one turn, giving a single-valued map (our own). Here the cohomology has an integral lattice and a fixed pairing, the polarization, that imposes orthogonality and positivity (our own). The nilpotent orbit theorem proves the extension across zero, where positivity can fail (our own).
+
+**Paper or page:** [On the nilpotent orbit theorem of complex variations of Hodge structure](https://arxiv.org/abs/2203.04266v3). It says: “Ψ extends holomorphically to Δᵖ⁺ᑫ”
+
+**Sources:**
+
+- [W. Schmid, Variation of Hodge Structure: The Singularities of the Period Mapping](https://doi.org/10.1007/BF01389674)
+
+### Condition R transfers boundary smoothness
+
+**Remember:** Check smoothness of the projection before studying the boundary map.
+
+*Makes the theorem clean to state or prove.* MSC 32H02 (Holomorphic mappings, (holomorphic) embeddings and related questions in several complex variables), 32A36. arXiv math.CV. Level 4: research.
+
+**Definition.** The Bergman projection is orthogonal projection in volume L² onto the holomorphic functions. A domain satisfies Condition R if this projection preserves smoothness up to the boundary.
+
+**Problem.** Suppose two smooth bounded domains admit continuous functions subharmonic on complex lines with relatively compact sublevel sets. If either satisfies Condition R, every holomorphic isomorphism between them extends smoothly with smooth inverse to their closures.
+
+**How the definition helps.** Condition R states the boundary regularity hypothesis entirely through one domain’s projection. In our own summary, the proof constructs inputs vanishing to high order without changing their projections. It then uses the projection on Jacobian-weighted coordinates to recover boundary regularity of the map.
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:**
+
+- [Bell and Ligocka, A simplification and extension of Fefferman's theorem on biholomorphic mappings (1980)](https://link.springer.com/article/10.1007/BF01418930)
+- [Bell, Biholomorphic mappings and the ∂̄-problem (1981)](https://annals.math.princeton.edu/1981/114-1/p04)
 
 ### Unchanged functions force connected fibers
 
@@ -64901,6 +67810,58 @@ $$”
 
 - [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
 
+### Uniform curvature opens spectral gaps
+
+**Remember:** The same curvature floor controls forms across the whole manifold.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32L20 (Vanishing theorems), 32Q15. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A holomorphic bundle with a Hermitian metric has a uniform Nakano lower bound ε &gt; 0 when its curvature bounds every tangent–fiber tensor from below. The curvature form on each tensor v must have value at least ε‖v‖², using the bundle and base metrics.
+
+**Problem.** On a complete Kähler n-fold, this bound puts the spectrum of the bundle-valued ∂̄ Laplacian on square-integrable (n,q)-forms in \[qε,∞) for q &gt; 0.
+
+**How the definition helps.** The same positive bound at every point gives one lower bound for the total energy. In our own argument, the Bochner–Kodaira identity counts the curvature contribution once for each of the q conjugate indices. Completeness extends the energy inequality from compactly supported forms to the operator. On flat complex space with the trivial bundle, dilations give unit forms with energy tending to zero.
+
+**Paper or page:** [A bridge connecting convex analysis and complex analysis and L²-estimate of d and ∂̄](https://arxiv.org/abs/2405.08559v2). It says: “a holomorphic vector bundle over X with a Nakano positive Hermitian metric”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bounded primitives confine harmonic forms
+
+**Remember:** A bounded primitive makes wedging exact even in square-integrable cohomology.
+
+*True by definition.* MSC 32Q15 (Kähler manifolds). arXiv math.DG, math.CV. Level 4: research.
+
+**Definition.** A Kähler form ω has a bounded primitive if ω = dβ for a one-form β of bounded pointwise length. Ordinary exactness allows β to grow without bound.
+
+**Problem.** Suppose a complete Kähler manifold of complex dimension n has a Kähler form with a bounded primitive. Every square-integrable harmonic form vanishes outside degree n.
+
+**How the definition helps.** The bound keeps β∧α square-integrable whenever the harmonic form α is square-integrable. In our own summary, ω∧α is then an exact form with square-integrable primitive, and the Kähler identities make it harmonic. Integration by parts on the complete manifold forces it to vanish. Wedging with ω is injective below degree n, and Hodge star duality handles higher degrees.
+
+**nLab:** [hard Lefschetz theorem](https://ncatlab.org/nlab/show/hard+Lefschetz+theorem). It says: “the operation of forming the wedge product with the symplectic form”
+
+**Sources:**
+
+- [M. Gromov, Kähler hyperbolicity and L²-Hodge theory (1991)](https://doi.org/10.4310/jdg/1214446039)
+
+### Bounded primitives survive branched pullback
+
+**Remember:** Lift the map and pull back the bounded primitive.
+
+*Makes the theorem clean to state or prove.* MSC 32Q15 (Kähler manifolds). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A compact Kähler manifold is weakly Kähler hyperbolic if it has a nef real (1,1) class with positive top self-intersection. Nef means the class is a limit of Kähler classes. Some smooth representative must pull back on the universal cover to the exterior derivative of a bounded one-form.
+
+**Problem.** Let X map holomorphically onto a weakly Kähler hyperbolic manifold Y, with finite fibers over a dense open set. If X is compact Kähler, it too is weakly Kähler hyperbolic.
+
+**How the definition helps.** Testing a cohomology class allows the pulled-back form to degenerate where the map branches. In our own proof, compactness bounds the derivative, so the lifted map pulls the bounded one-form back to a bounded one-form. Pullback preserves nefness, and top self-intersection multiplies by the positive degree of the map.
+
+**Paper or page:** [Weak Kähler hyperbolicity is birational](https://arxiv.org/abs/2406.01734v2). It says: “If Y is weakly Khler hyperbolic, then X is weakly Khler hyperbolic.”
+
+**Sources:**
+
+- [Francesco Bei, Benoît Claudon, Simone Diverio and Stefano Trapani, Weak Kähler hyperbolicity is birational](https://arxiv.org/abs/2406.01734v2)
+
 ### Uniform relative K-polystability is exactly the condition for toric extremal metrics
 
 **Remember:** Measure stability with a norm, and it matches extremal metrics exactly.
@@ -64937,6 +67898,97 @@ $$”
 
 - [J. Ross, R. P. Thomas, Weighted projective embeddings, stability of orbifolds and constant scalar curvature Kähler metrics, arXiv:0907.5214 (2009), J.Diff.Geom.88:109-159,2011](https://arxiv.org/abs/0907.5214v2)
 
+### Brody curves make hyperbolicity open
+
+**Remember:** The derivative bound gives compactness, and normalization keeps the limit nonconstant.
+
+*Makes the theorem clean to state or prove.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** A normalized Brody curve is a holomorphic map from the complex plane whose derivative has norm at most one everywhere and norm one at zero. A smooth Hermitian metric supplies these norms.
+
+**Problem.** In a holomorphic family given by a proper submersion, the parameters with Kobayashi hyperbolic fibers form an open set. Here preimages of compact sets are compact, the differential is surjective, and hyperbolicity means the intrinsic disc distance separates points.
+
+**How the definition helps.** The derivative bound gives compactness, and normalization keeps a limit curve nonconstant. In our own explanation, Brody’s theorem supplies normalized curves on any sequence of nonhyperbolic fibers approaching a hyperbolic fiber. Properness confines their images to a compact set, so a subsequence converges on compact sets into the limiting fiber. Its derivative still has norm one at zero, contradicting hyperbolicity.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “hyperbolicity is an open condition (in the Euclidean topology) for families of compact complex spaces.”
+
+**Sources:**
+
+- [Jean-Pierre Demailly, Algebraic criteria for Kobayashi hyperbolic projective varieties and jet differentials, Proposition 1.6 (1997)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/source_files/hyperbolic.pdf)
+- [Robert Brody, Compact manifolds in hyperbolicity (1978)](https://doi.org/10.1090/S0002-9947-1978-0470252-3)
+
+### Gromov models extend biholomorphisms
+
+**Remember:** Match both closures to their metric boundaries to extend the map.
+
+*Makes the theorem clean to state or prove.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** A bounded Gromov model domain has a complete Kobayashi distance, the intrinsic distance measured by chains of holomorphic discs. Its shortest-path triangles are uniformly thin, meaning each side stays within a fixed distance of the other two. Adding endpoints of geodesic rays gives a compactification that the identity identifies homeomorphically with the Euclidean closure.
+
+**Problem.** Every holomorphic bijection with holomorphic inverse between bounded Gromov model domains extends to a homeomorphism of their Euclidean closures.
+
+**How the definition helps.** The defining identification turns a Euclidean boundary point into an endpoint of metric rays. In our own explanation, the holomorphic bijection preserves the Kobayashi distance and therefore carries rays and their endpoints to rays and their endpoints. The induced homeomorphism of metric compactifications gives the required extension.
+
+**Paper or page:** [Local and global visibility and Gromov hyperbolicity of domains with respect to the Kobayashi distance](https://arxiv.org/abs/2201.03070). It says: “Ω₂ is a Gromov model domain if and only if F extends as a homeomorphism”
+
+**Sources:**
+
+- [Local and global visibility and Gromov hyperbolicity of domains with respect to the Kobayashi distance, Theorem 1.4](https://arxiv.org/abs/2201.03070)
+
+### Infinitesimal hyperbolicity bounds curve area
+
+**Remember:** Disc contraction turns ambient area into a genus bound.
+
+*Makes the theorem clean to state or prove.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** For a nonzero tangent vector v, its infinitesimal Kobayashi length is the reciprocal of the supremum of scales r realized by unit-disc derivatives r v. On a compact manifold, infinitesimal hyperbolicity means these lengths dominate a fixed positive multiple of a smooth Hermitian norm.
+
+**Problem.** On a compact infinitesimally hyperbolic manifold, every nonconstant holomorphic map from a compact connected surface of genus g has area at most A(2g−2). Here the surface is a Riemann surface, area counts multiplicity, and A depends only on the target metric.
+
+**How the definition helps.** The lower bound on tangent lengths turns disc contraction into an upper bound on the area measured by the target metric. In our own argument, uniformization excludes genus zero and one because the target admits no nonconstant holomorphic map from the plane. For higher genus, the disc cover bounds the pulled-back metric by a fixed multiple of the hyperbolic metric. Gauss–Bonnet gives hyperbolic area proportional to 2g−2.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “The Kobayashi infinitesimal pseudometric is a Finsler pseudometric”
+
+**Sources:**
+
+- [Jean-Pierre Demailly, Algebraic criteria for Kobayashi hyperbolic projective varieties and jet differentials, Theorem 2.1 (1997)](https://www-fourier.univ-grenoble-alpes.fr/~demailly/source_files/hyperbolic.pdf)
+
+### Kobayashi volume bounds degree
+
+**Remember:** Each sheet contributes the target volume.
+
+*Makes the theorem clean to state or prove.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** Use holomorphic maps from the unit ball that send zero to a chosen manifold point and have invertible derivative there. The Kobayashi–Eisenman density is the infimum of the Euclidean volume densities carried to that point by these derivatives. Integrating this density gives the Kobayashi volume.
+
+**Problem.** Consider a surjective holomorphic map between connected compact Kobayashi hyperbolic manifolds of equal dimension. Its degree times the target Kobayashi volume is at most the source Kobayashi volume.
+
+**How the definition helps.** Composing a test map with the given map shows that the pulled-back target density is at most the source density. At critical points the pulled-back density vanishes. In our own explanation, integration counts each regular target point with its degree, the number of sheets above it.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “The Kobayashi–Eisenman pseudo-volume form is an intrinsic measure on a complex n-fold”
+
+**Sources:**
+
+- [Marco Abate, Iteration Theory of Holomorphic Maps on Taut Manifolds, Theorem 2.3.41 and its proof (1989)](https://people.dm.unipi.it/abate/libri/libriric/files/IterationThTautMan2-3.pdf)
+
+### Picard hyperbolicity makes curve maps algebraic
+
+**Remember:** Fill finitely many punctures, then use projectivity to recover algebraicity.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV. Level 4: research.
+
+**Definition.** Fix a smooth projective compactification of a smooth complex algebraic variety, so the variety sits inside a smooth projective variety as a dense open subset. It is Picard hyperbolic if every holomorphic map from a punctured disc into the open subset extends across the puncture into the compactification.
+
+**Problem.** Every holomorphic map from a smooth algebraic curve of finite type into a Picard hyperbolic variety is algebraic.
+
+**How the definition helps.** Picard hyperbolicity fills each missing point of the source curve in the target compactification. In our own argument, this produces a holomorphic map between projective varieties, which the algebraic and analytic comparison theorem makes algebraic. Restriction gives the original map. Without puncture extension, the exponential map from the complex line to the punctured plane is a holomorphic counterexample.
+
+**Paper or page:** [Nevanlinna Pair and Algebraic Hyperbolicity](https://arxiv.org/abs/2102.04624). It says: “Assume that Y⁰ is Picard hyperbolic.”
+
+**Sources:**
+
+- [Nevanlinna Pair and Algebraic Hyperbolicity, Proposition 2.2](https://arxiv.org/abs/2102.04624)
+
 ### Visibility gives convex domains the Denjoy–Wolff property
 
 **Remember:** If geodesics must dive inward, orbits cannot drift to two boundary points.
@@ -64957,6 +68009,60 @@ $$”
 - [Vikramjeet Singh Chandel, Anwoy Maitra, Amar Deep Sarkar, Notions of Visibility with respect to the Kobayashi distance: Comparison and Applications, arXiv:2111.00549 (2021)](https://arxiv.org/abs/2111.00549v2)
 - [Bharali, Zimmer, Goldilocks domains, a weak notion of visibility, and applications, Advances in Mathematics 310 (2017), 377–425](https://doi.org/10.1016/j.aim.2017.02.005)
 
+### Visibility separates distinct boundary limits
+
+**Remember:** Passing through a compact set costs more as both endpoints escape.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** On a bounded domain, the Kobayashi distance measures the least total hyperbolic length of chains of holomorphic discs. Assume this distance is complete. Visibility means each pair of distinct boundary points has neighborhoods such that every shortest path joining them inside the domain meets one fixed compact set.
+
+**Problem.** In such a visible domain, the Kobayashi distance between sequences approaching distinct Euclidean boundary points tends to infinity.
+
+**How the definition helps.** Visibility forces each shortest path through a fixed compact set, even as its endpoints approach distinct boundary points. In our own proof, completeness makes closed metric balls compact, so the distance from either endpoint to that set tends to infinity. Without visibility, the bidisc points (r,0) and (r,½) stay a fixed distance apart as r approaches one.
+
+**Paper or page:** [Notions of Visibility with respect to the Kobayashi distance: Comparison and Applications](https://arxiv.org/abs/2111.00549). It says: “then $\\mathsf{k}M(z\\nu ,w\_\\nu ) \\to \\infty $ as $\\nu \\to \\infty $.”
+
+**Sources:**
+
+- [Notions of Visibility with respect to the Kobayashi distance: Comparison and Applications, Lemma 3.3](https://arxiv.org/abs/2111.00549)
+
+### Algebraic interpolation connects points rationally
+
+**Remember:** Interpolate two points on the affine line, then add infinity.
+
+*Rules out counterexamples.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** An algebraically Oka-1 manifold permits approximation and interpolation of continuous maps from smooth affine algebraic curves by homotopic regular maps. Regular maps are algebraic everywhere on the source. On holomorphically convex compact sets where the initial map is holomorphic nearby, approximation is uniform and interpolation matches finite derivatives at finitely many points.
+
+**Problem.** Every connected projective algebraic Oka-1 manifold is rationally connected. In particular, two distinct points lie on the image of a nonconstant morphism from the projective line.
+
+**How the definition helps.** Algebraic interpolation produces a regular map from the affine line with two prescribed values, using a continuous map constant near the interpolation points (our own). A regular map to a projective manifold extends across infinity on the projective line (our own). Holomorphic interpolation alone permits the exponential map to the projective line, which has an essential singularity at infinity (our own).
+
+**Paper or page:** [Oka-1 manifolds: New examples and properties](https://arxiv.org/abs/2402.09798v4). It says: “Every projective aOka-1 manifold is rationally connected.”
+
+**Sources:**
+
+- [Franc Forstnerič and Finnur Lárusson, Oka-1 manifolds: New examples and properties (published online 2024)](https://doi.org/10.1007/s00209-024-03649-8)
+
+### Oka curves force Liouville rigidity
+
+**Remember:** Pass an entire curve through two points and test the function there.
+
+*Rules out counterexamples.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 4: research.
+
+**Definition.** An Oka-1 manifold allows continuous maps from open Riemann surfaces to deform to holomorphic maps with approximation and interpolation. Approximation preserves values to any chosen accuracy on compact sets whose complements have no relatively compact components. Interpolation matches prescribed finite derivatives at closed discrete points, assuming the initial map is holomorphic near both sets.
+
+**Problem.** Every plurisubharmonic function bounded above on a connected Oka-1 manifold is constant. Such functions restrict to subharmonic functions or identically minus infinity along holomorphic curves.
+
+**How the definition helps.** Interpolation gives a holomorphic map from ℂ through any two target points (our own). Start with a continuous map that is constant near two chosen arguments and joins their prescribed values along a path (our own). A bounded-above subharmonic function on ℂ is constant, so the two target values of the plurisubharmonic function agree (our own). On the unit ball the squared norm violates this conclusion (our own).
+
+**Paper or page:** [Oka-1 manifolds](https://arxiv.org/abs/2303.15855v5). It says: “Every Oka-1 manifold is strongly Liouville.”
+
+**Sources:**
+
+- [Antonio Alarcón and Franc Forstnerič, Oka-1 manifolds (2025)](https://doi.org/10.1007/s00209-025-03833-4)
+
 ### Oka families preserve homotopy groups
 
 **Remember:** Use spheres for representatives and disks for relations.
@@ -64972,6 +68078,25 @@ $$”
 **Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “the inclusion of the space of holomorphic maps X → Y in the space of continuous maps”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Oka maps compose and pull back
+
+**Remember:** Use the same lifting rules before and after changing the base.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 4: research.
+
+**Definition.** In Lárusson’s model for holomorphic maps, an Oka map is a fibration between complex manifolds. A fibration passes prescribed lifting tests that fill compatible diagrams of maps.
+
+**Problem.** Composites of Oka maps are Oka. A pullback of an Oka map is Oka whenever the fiber product exists as a complex manifold.
+
+**How the definition helps.** A lift for a composite comes from solving the two lifting problems in succession (our own). A lift for a pullback comes from a lift for the original map and the defining property of the fiber product (our own). Lárusson identifies these abstract lifting tests with the analytic condition on deforming continuous lifts into holomorphic lifts (our own).
+
+**nLab:** [Oka principle](https://ncatlab.org/nlab/show/Oka+principle). It says: “a holomorphic map is a fibration if and only if it is an Oka map.”
+
+**Sources:**
+
+- [Finnur Lárusson, Model structures and the Oka principle (2004)](https://doi.org/10.1016/j.jpaa.2004.02.005)
+- [Franc Forstnerič, Oka maps (2010)](https://doi.org/10.1016/j.crma.2009.12.004)
 
 ### The convex approximation property gives every form of the Oka principle
 
@@ -64992,6 +68117,76 @@ $$”
 - [Franc Forstnerič, From Stein manifolds to Oka manifolds: the h-principle in complex analysis, arXiv:2509.21197 (2025)](https://arxiv.org/abs/2509.21197v1)
 - [Forstnerič, Runge approximation on convex sets implies the Oka property, Annals of Mathematics 163 (2006), 689–707](https://doi.org/10.4007/annals.2006.163.689)
 
+### Integral closure preserves Łojasiewicz exponents
+
+**Remember:** Integral closure changes generators but not their least order along an arc.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** For a holomorphic ideal with an isolated zero, measure its order on an analytic arc by the least vanishing order of its generators. Divide this by the least order of the arc coordinates. The Łojasiewicz exponent is the supremum of these ratios over nonconstant arcs through zero.
+
+**Problem.** The Łojasiewicz exponent stays fixed on passing to the integral closure. This closure adds solutions of monic equations whose j-th coefficient after the leading term belongs to the j-th ideal power.
+
+**How the definition helps.** The arc criterion says that integral closure preserves the least order on each arc (our own). Every ratio in the supremum therefore stays fixed (our own). Curve selection identifies this supremum with the least α for which the generator norm is at least a positive constant times \|z\|ᵅ (our own).
+
+**Paper or page:** [Effective Bertini theorem and formulas for multiplicity and the local Łojasiewicz exponent](https://arxiv.org/abs/2106.10924v1). It says: “the Łojasiewicz exponent ℒ₀(f) is given by”
+
+**Sources:**
+
+- [Monique Lejeune-Jalabert and Bernard Teissier, Clôture intégrale des idéaux et équisingularité, 2008](https://doi.org/10.5802/afst.1203)
+
+### Nondegenerate polygons compute Milnor numbers
+
+**Remember:** The polygon counts correctly when no face hides a critical point.
+
+*Rules out counterexamples.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Newton polygon is the lower boundary of the convex hull of all exponent pairs of nonzero terms plus the nonnegative quadrant. A plane germ is convenient if this boundary meets both axes. It is Newton nondegenerate if, on each compact face, the sum of its terms has no critical point with both coordinates nonzero.
+
+**Problem.** For a convenient Newton nondegenerate plane germ vanishing at zero, the Milnor number equals twice the area under the polygon minus both intercepts plus one. This number is the dimension of local functions modulo the first derivatives.
+
+**How the definition helps.** Nondegeneracy rules out critical points of face polynomials that the polygon alone cannot detect (our own). The germs (x+y)² + y³ and x² + y² have the same polygon but Milnor numbers 2 and 1 respectively (our own). Kouchnirenko’s theorem gives the area formula under the face condition (our own).
+
+**Paper or page:** [On real algebraic links in the 3-sphere associated with mixed polynomials](https://arxiv.org/abs/2011.11206v4). It says: “with equality holding if and only if q is non-degenerate.”
+
+**Sources:**
+
+- [Anatoli Kouchnirenko, Polyèdres de Newton et nombres de Milnor, 1976](https://doi.org/10.1007/bf01389769)
+
+### Rounded divisors make jumps discrete
+
+**Remember:** The ideal can change only when a rounded coefficient changes.
+
+*True by definition.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** Resolve a nonzero holomorphic ideal so its pullback is locally generated by a monomial in coordinates. Along each coordinate divisor, let m be the ideal’s vanishing order and k the Jacobian determinant’s order. The multiplier ideal at c consists of functions whose pullbacks vanish to order at least ⌊cm⌋ − k along each divisor.
+
+**Problem.** At a point of a complex manifold, the positive numbers where a nonzero holomorphic ideal’s multiplier ideal changes are rational and locally finite.
+
+**How the definition helps.** Each rounded order stays fixed until cm reaches an integer (our own). Finitely many divisors occur locally, so only finitely many such rational values occur in any bounded interval (our own). Change of variables identifies this order test with the usual weighted square-integrability definition (our own).
+
+**Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “where the fᵢ are a finite set of local generators of the ideal.”
+
+**Sources:**
+
+- [Lawrence Ein, Robert Lazarsfeld, Karen E. Smith and Dror Varolin, Jumping coefficients of multiplier ideals, 2004](https://doi.org/10.1215/s0012-7094-04-12333-4)
+
+### ℚ-factorial germs forbid projective small resolutions
+
+**Remember:** A divisor pulled back from the base has degree zero on a collapsed curve.
+
+*Rules out counterexamples.* MSC 32S05 (Local complex singularities). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A normal complex germ is ℚ-factorial if a positive multiple of each divisor has one local meromorphic equation. A small resolution replaces the singularity by a smooth space without collapsing any divisor.
+
+**Problem.** A singular locally ℚ-factorial normal complex germ has no projective small resolution.
+
+**How the definition helps.** Smallness lets a relatively ample divisor descend as a divisor, and ℚ-factoriality gives a multiple with a local equation downstairs (our own). Pulling it back recovers that multiple, which then has degree zero on each collapsed curve (our own). Projectivity requires a positive degree there (our own). The node xy = zw admits a projective small resolution and fails ℚ-factoriality (our own).
+
+**Paper or page:** [On isolated hypersurface singularities: algebra-geometric and symplectic aspects](https://arxiv.org/abs/2405.03475v1). It says: “is locally analytically ℚ-factorial, then X does not admit a small resolution.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normalization quotients control delta jumps
 
 **Remember:** Count missing functions in the branches, then track that count in families.
@@ -65009,6 +68204,132 @@ $$”
 **Sources:**
 
 - [Gert-Martin Greuel and Gerhard Pfister, On Delta for parameterized Curve Singularities (2021 preprint)](https://arxiv.org/abs/2101.01784v1)
+
+### Simultaneous normalization trivializes marked curves
+
+**Remember:** Trivialize the normalized branches, then glue back their marked points.
+
+*True by definition.* MSC 32S15 (Equisingularity (topological and analytic)), 32S05. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A weak simultaneous resolution of a marked family of reduced curves uses one finite map to normalize every fiber, separating its branches into smooth curves. The normalized curves form a flat family, and the marked points above the section form disjoint copies of the base.
+
+**Problem.** Consider a flat family of reduced complex curve germs over a disk, with smooth fibers away from their marked points. A weak simultaneous resolution makes the family locally a topological product respecting the marks.
+
+**How the definition helps.** The resolution separates the branches while tracking precisely which points to identify again (our own). Locally the smooth normalized branches are products with marked sections (our own). Gluing these sections fiber by fiber gives the marked product downstairs (our own). The cited theorem also characterizes this situation by constant numerical invariants.
+
+**Paper or page:** [Equinormalizability and topologically triviality of deformations of isolated curve singularities over smooth base spaces](https://arxiv.org/abs/1504.01296v1). It says: “f admits a weak simultaneous resolution”
+
+**Sources:**
+
+- [Equinormalizability and topologically triviality of deformations of isolated curve singularities over smooth base spaces](https://arxiv.org/abs/1504.01296v1)
+
+### Tjurina bases parametrize deformations
+
+**Remember:** One basis vector gives one necessary first-order parameter.
+
+*Makes the theorem clean to state or prove.* MSC 32S30 (Deformations of complex singularities; vanishing cycles), 32B05. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** For a hypersurface equation f, the Tjurina algebra consists of convergent power series modulo f and its first derivatives. At an isolated singularity this algebra has finite dimension.
+
+**Problem.** At an isolated complex hypersurface singularity, basis representatives gⱼ of its Tjurina algebra give a semiuniversal deformation f + ∑ tⱼgⱼ = 0. Every local deformation comes from this family by changing parameters, and the family uses the fewest possible parameters.
+
+**How the definition helps.** The quotient removes exactly the first-order changes caused by coordinate changes and multiplication by invertible functions (our own explanation). A basis leaves one parameter per independent direction. The analytic versality theorem shows that these directions suffice for actual families.
+
+**Paper or page:** [Grauert's Approximation Theorem in any Characteristic and Applications](https://arxiv.org/abs/2510.21001v2). It says: “is a semiuniversal (respectively versal) deformation of R.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing cycles yield reduced cohomology
+
+**Remember:** The cone removes the classes that were already present at the central point.
+
+*True by definition.* MSC 32S30 (Deformations of complex singularities; vanishing cycles), 32S55. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** Nearby cycles record cochains on nearby fibers of a holomorphic function. Unshifted vanishing cycles form the mapping cone of the map from central to nearby cochains. This cone records which cohomology classes the map gains or loses.
+
+**Problem.** At each point of the zero fiber of a nonconstant holomorphic function on a connected complex manifold, vanishing cycles give the reduced Milnor fiber cohomology. Both sides use complex coefficients and the same degree.
+
+**How the definition helps.** The cone of the constant-class map computes reduced cohomology (our own). The nearby-cycle comparison identifies local nearby cochains with cochains of the Milnor fiber (our own). Under this comparison the specialization map sends a scalar to the constant cochain with that value (our own).
+
+**nLab:** [vanishing cycle](https://ncatlab.org/nlab/show/vanishing+cycle). It says: “Deligne proposed the framework of vanishing and nearby cycle functors.”
+
+**Paper or page:** [Geometric monodromies, mixed Hodge numbers of motivic Milnor fibers and Newton polyhedra](https://arxiv.org/abs/2308.09418v3). It says: “stand for the reduced cohomology groups of Fₓ.”
+
+**Sources:**
+
+- [Pierre Deligne, Le formalisme des cycles évanescents, in SGA 7 II, edited by Pierre Deligne and Nicholas Katz, 1973 (volume DOI)](https://doi.org/10.1007/bfb0060505)
+
+### Bernstein equations continue singular integrals
+
+**Remember:** The functional equation shifts the singular integral to a more convergent one.
+
+*True by definition.* MSC 32S40 (Monodromy; relations with differential equations and \\(D\\)-modules (complex-analytic aspects)), 32S05. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** The Bernstein–Sato polynomial of f is the monic polynomial b of least degree that permits a functional equation. A differential operator with polynomial dependence on s must send fˢ⁺¹ to b(s)fˢ.
+
+**Problem.** For a nonzero holomorphic germ f, the integral of \|f\|²ˢ against any smooth test density supported compactly near zero extends meromorphically from Re(s) &gt; 0.
+
+**How the definition helps.** The functional equation expresses a polynomial multiple of \|f\|²ˢ using derivatives of the more convergent power \|f\|²⁽ˢ⁺¹⁾ (our own). Apply the equation and its coefficient conjugate, keeping s unchanged, then integrate by parts onto the test density (our own). Iteration replaces a direct analysis of the singular integral by continuation one strip at a time (our own). Existence of the functional equation is the substantive theorem (our own).
+
+**Wikipedia:** [Bernstein–Sato polynomial](https://en.wikipedia.org/wiki/Bernstein%E2%80%93Sato_polynomial). It says: “can be analytically continued to a meromorphic distribution-valued function of s by repeatedly using the functional equation”
+
+**Sources:**
+
+- [Joseph Bernstein, The analytic continuation of generalized functions with respect to a parameter, 1972](https://doi.org/10.1007/bf01077645)
+
+### Crossings contribute no zeta factor
+
+**Remember:** At a crossing the local fiber has circles, so its Lefschetz contributions cancel.
+
+*Makes the theorem clean to state or prove.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A log resolution makes the pulled-back function a coordinate monomial times a nonvanishing factor. Monodromy is the return map T after one turn around zero. Its zeta function multiplies det(1 − tT) on even fiber cohomology and divides by the corresponding factors on odd cohomology.
+
+**Problem.** In A’Campo’s formula each component of multiplicity m contributes (1 − tᵐ) raised to the Euler characteristic of its part above zero outside other components. Intersections of components contribute no factor.
+
+**How the definition helps.** The monomial model gives a finite union of positive-dimensional tori up to homotopy wherever two or more components meet (our own). Each return permutes tori or translates them, so the alternating traces cancel there (our own). On a single component the return cycles m sheets (our own). A’Campo’s theorem assembles these local factors using Euler characteristics (our own).
+
+**Paper or page:** [Geometric monodromies, mixed Hodge numbers of motivic Milnor fibers and Newton polyhedra](https://arxiv.org/abs/2308.09418v3). It says: “Then we have ζₕ,₀(j!ℒ)(t)=1.”
+
+**Sources:**
+
+- [Norbert A’Campo, La fonction zêta d’une monodromie, 1975](https://doi.org/10.1007/bf02565748)
+
+### Cyclic covers split Milnor cohomology
+
+**Remember:** The finite cover turns each monodromy eigenspace into local coefficient cohomology.
+
+*True by definition.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** For a reduced homogeneous polynomial Q of degree d &gt; 0, the global Milnor fiber is the level Q = 1. Sending each point to its complex line maps this fiber to the projective complement of Q = 0. Multiplication by d-th roots of unity permutes the sheets.
+
+**Problem.** For each character of the roots of unity, its eigenspace in complex fiber cohomology equals the complement cohomology with the corresponding local coefficients. These coefficients are functions on the sheets that transform by that character under pullback.
+
+**How the definition helps.** The global level meets each line of the complement in exactly d points, exhibiting the fiber as a finite cover (our own). Functions on the sheets split by characters, and this splitting passes to cohomology (our own). Homogeneous scaling connects this global model to the nearby fiber inside a small ball (our own).
+
+**nLab:** [Milnor fiber](https://ncatlab.org/nlab/show/Milnor+fiber). It says: “Relation to local systems on the complement of a union of complex hyperplanes”
+
+**Sources:**
+
+- [Daniel Cohen and Alexander Suciu, On Milnor Fibrations of Arrangements, 1995](https://doi.org/10.1112/jlms/51.1.105)
+
+### Vanishing cycles locate Dehn twists
+
+**Remember:** The collapsing circle specifies where to twist.
+
+*Rules out counterexamples.* MSC 32S55 (Milnor fibration; relations with knot theory). arXiv math.CV. Level 4: research.
+
+**Definition.** A geometric vanishing cycle is an embedded circle in a smooth complex curve fiber that shrinks to a point in a nearby singular fiber. Curves related by a deformation through embedded circles represent the same cycle.
+
+**Problem.** Around one ordinary node, locally given by xy = t, counterclockwise transport acts by a positive Dehn twist about the geometric vanishing cycle.
+
+**How the definition helps.** The embedded circle specifies the annulus on which to perform the twist (our own). The local model gives one full turn of one boundary relative to the other (our own). For isolated plane curve singularities of fiber genus at least two, the cited lemma gives circles with the same homology class that cannot collapse.
+
+**Paper or page:** [Vanishing arcs for isolated plane curve singularities](https://arxiv.org/abs/2506.04917v1). It says: “that represents the vanishing cycle but such that it is not a geometric vanishing cycle.”
+
+**Sources:**
+
+- [Vanishing arcs for isolated plane curve singularities](https://arxiv.org/abs/2506.04917v1)
 
 ### Paracyclic representations define perverse sheaves on surfaces without derived categories
 
@@ -65028,6 +68349,77 @@ $$”
 
 - [Tobias Dyckerhoff, Mikhail Kapranov, Yan Soibelman, Perverse sheaves on Riemann surfaces as Milnor sheaves, arXiv:2012.11388v2 (2021)](https://arxiv.org/abs/2012.11388v2)
 
+### Property P excludes boundary discs
+
+**Remember:** An analytic disc cannot carry arbitrarily curved bounded weights.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32T27 (Geometric and analytic invariants on weakly pseudoconvex boundaries), 32W05. arXiv math.CV, math.AP. Level 4: research.
+
+**Definition.** A boundary has property P in degree one if each M &gt; 0 admits a smooth weight between zero and one on a boundary neighborhood. Its matrix of mixed complex second derivatives must dominate M times the identity there.
+
+**Problem.** A smooth bounded pseudoconvex domain with property P in degree one admits no nonconstant holomorphic map from the unit disc into its boundary.
+
+**How the definition helps.** Pulling the bounded weight back to a small disc makes its Laplacian arbitrarily large throughout that disc (our own). Choose the disc where the derivative of the map stays bounded away from zero (our own). The circle mean inequality then forces an increase larger than one, contradicting the bound on the weight (our own).
+
+**Paper or page:** [The Levi q-core and Property (P in degree q)](https://arxiv.org/abs/2505.17693v1). It says: “Then M satisfies Property (P<sub>q</sub>)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Levi core retains complex boundary manifolds
+
+**Remember:** A whole complex boundary manifold survives every deletion.
+
+*Makes the theorem clean to state or prove.* MSC 32T27 (Geometric and analytic invariants on weakly pseudoconvex boundaries), 32W05. arXiv math.CV. Level 4: research.
+
+**Definition.** Start with the kernel of the Levi form, the complex Hessian of a boundary equation restricted to complex tangent directions. At each step retain only directions tangent to the closed support, the closure of points with nonzero directions. Tangents annihilate smooth functions vanishing on the support, and intersection at limit stages gives the eventual stable distribution called the Levi core.
+
+**Problem.** On a smooth pseudoconvex boundary, the Levi core contains the holomorphic tangent directions of every positive-dimensional embedded complex submanifold of the boundary.
+
+**How the definition helps.** The deletion rule preserves directions along any such submanifold because the support still contains the whole submanifold (our own). Its directions start in the Levi kernel by pseudoconvexity and the vanishing boundary equation (our own). Induction gives survival through every stage, which membership in the original kernel alone would not show (our own).
+
+**Paper or page:** [The core of the Levi distribution](https://arxiv.org/abs/2109.04763v1). It says: “Let V ⊂ M be an embedded submanifold of positive dimension”
+
+**Sources:**
+
+- [The core of the Levi distribution](https://arxiv.org/abs/2109.04763v1)
+
+### Integrability thresholds give analytic loci
+
+**Remember:** Strong openness turns a threshold into one ideal’s zero set.
+
+*Makes the theorem clean to state or prove.* MSC 32U05 (Plurisubharmonic functions and generalizations), 14F18. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** Let φ be upper semicontinuous and subharmonic on complex lines in local coordinates. Its complex singularity exponent at x is the supremum of c ≥ 0 for which exp(−2cφ) is integrable near x.
+
+**Problem.** For each c &gt; 0, the points with exponent at most c form an analytic set. This means holomorphic equations cut out the set locally.
+
+**How the definition helps.** The exponent puts all local integrability tests on one numerical scale. In our own explanation, strong openness rules out integrability at a finite endpoint. The constant function then fails the multiplier ideal test precisely on the stated set. Coherence supplies finitely many local holomorphic generators of the ideal, whose common zeros give the equations.
+
+**Paper or page:** [Analyticity theorems for parameter-dependent plurisubharmonic functions](https://arxiv.org/abs/2405.07786v1). It says: “\\{  z \\in \\Omega ; c<sub>z</sub> (\\varphi ) \\leq c \\}  = \\{  z \\in \\Omega ; e<sup>- 2 c \\varphi </sup> \\notin L<sup>1\_{\\emph{loc}</sup>, z} \\}  = \\bigcap \_{f \\in \\bigcup <sub>c' &gt; c</sub> \\mathcal{H}<sub>\\Omega </sub> (c' \\varphi )} f<sup>- 1</sup> (0)”
+
+**Sources:**
+
+- [Bojie He, Analyticity theorems for parameter-dependent plurisubharmonic functions](https://arxiv.org/abs/2405.07786v1)
+- [Q. Guan and X. Zhou, A proof of Demailly’s strong openness conjecture (2015)](https://doi.org/10.4007/annals.2015.182.2.5)
+
+### Radial reweighting gives concavity
+
+**Remember:** Geometric means of integrable weights are integrable by Hölder’s inequality.
+
+*True by definition.* MSC 32U05 (Plurisubharmonic functions and generalizations). arXiv math.CV. Level 4: research.
+
+**Definition.** Let φ be plurisubharmonic near zero in ℂⁿ, meaning it is upper semicontinuous and satisfies the disk mean inequality on complex lines. For t &gt; −n, its weighted singularity exponent c(t) is the supremum of c ≥ 0 for which \|z\|²ᵗ exp(−2cφ) is locally integrable at zero.
+
+**Problem.** The weighted singularity exponent c(t) is nondecreasing and concave on t &gt; −n, allowing the value +∞.
+
+**How the definition helps.** The integrability definition makes c(t) the upper boundary of a convex set of exponent pairs. In our own proof, interpolation takes geometric means of two integrands, so Hölder’s inequality gives convexity. Increasing t decreases the integrand inside the unit ball. The alternative description by decay of weighted sublevel volumes requires integrating over the levels of φ.
+
+**Paper or page:** [Singularity invariants of plurisubharmonic functions and complex spaces](https://arxiv.org/abs/2304.02238). It says: “is concave and increasing.”
+
+**Sources:**
+
+- [Singularity invariants of plurisubharmonic functions and complex spaces](https://arxiv.org/abs/2304.02238)
+
 ### Slice comparison puts maxima on boundaries
 
 **Remember:** An affine bound on a slice rules out a strict interior peak.
@@ -65043,6 +68435,62 @@ $$”
 **Paper or page:** [On rigid q-plurisubharmonic functions and q-pseudoconvex tube domains in ℂⁿ](https://arxiv.org/abs/2510.05009v2). It says: “Then any function $u$ which is upper semi-continuous on $\\overline{\\Omega }$ and $q$-plurisubharmonic on $\\Omega $ fulfills\\\[ \\max \\{ \\psi (z) : z \\in \\overline{\\Omega }\\} = \\max \\{ \\psi (z) : z \\in \\partial \\Omega \\} . \\\]”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Complete poles make holes removable
+
+**Remember:** A pole exactly on the hole supplies the cutoff.
+
+*Rules out counterexamples.* MSC 32U30 (Removable sets in pluripotential theory), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** A plurisubharmonic function is upper semicontinuous and satisfies the disk mean inequality on every complex line. A complete pluripolar set is exactly the set where one such function equals −∞, with the function finite somewhere.
+
+**Problem.** In a domain in ℂⁿ with n ≥ 2, every plurisubharmonic function outside a compact complete pluripolar set extends uniquely across it.
+
+**How the definition helps.** The defining function singles out the entire hole with one pole set, giving cutoff functions in our own account of Wang’s proof. Wang uses estimates near that set to extend the complex Hessian and recover a potential. For an arbitrary compact hole, take a sphere and assign one inside and zero outside. The maximum principle prevents an extension.
+
+**Paper or page:** [Complete pluripolar sets and removable singularities of plurisubharmonic functions](https://arxiv.org/abs/2210.01416). It says: “Then every psh function on Ω ∖ K admits a unique psh extension to Ω.”
+
+**Sources:**
+
+- [Complete pluripolar sets and removable singularities of plurisubharmonic functions](https://arxiv.org/abs/2210.01416)
+
+### Nonpluripolar constraints bound envelopes
+
+**Remember:** A constraint at a logarithmic pole cannot control the rest of the envelope.
+
+*Rules out counterexamples.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** A pluripolar set lies locally where a plurisubharmonic function finite somewhere takes the value −∞. On a compact connected Kähler manifold with form ω, an ω-potential becomes plurisubharmonic after adding a local potential for ω. The extremal envelope of E is the supremum of ω-potentials bounded above by zero on E.
+
+**Problem.** For a nonpluripolar Borel set E, the upper limit of nearby envelope values defines an ω-potential everywhere.
+
+**How the definition helps.** Nonpluripolarity bounds the family above, so the upper-envelope theorem gives an ω-potential. In our own counterexample, a potential on the projective line has a logarithmic pole at one point. Adding any constant preserves the constraint there and sends the supremum to infinity everywhere else.
+
+**Wikipedia:** [Pluripolar set](https://en.wikipedia.org/wiki/Pluripolar_set). It says: “A pluripolar set is any subset of a complete pluripolar set.”
+
+**Paper or page:** [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171). It says: “If E is not pluripolar, then Vₑ\* ∈ PSH(X,ω).”
+
+**Sources:**
+
+- [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171)
+
+### Open constraints preserve semicontinuity
+
+**Remember:** An open constraint survives taking upper limits.
+
+*Rules out counterexamples.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact connected Kähler manifold, fix its positive closed form ω. An admissible potential becomes plurisubharmonic after adding a local potential for ω, so it obeys the complex-line disk mean inequality after that addition. The extremal function V of E is the supremum of admissible potentials bounded above by zero on E.
+
+**Problem.** For nonempty open E, V equals its upper semicontinuous regularization, the upper limit of nearby values.
+
+**How the definition helps.** Openness keeps the upper limit at most zero throughout E. In our own proof, the envelope theorem makes the regularized supremum admissible, since the open constraint bounds the family above. It therefore belongs to the original family and cannot exceed its supremum.
+
+**Paper or page:** [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171). It says: “If E is an open subset, then V(E) = V\*(E).”
+
+**Sources:**
+
+- [Regularity of the Siciak-Zaharjuta extremal function on compact Kähler manifolds](https://arxiv.org/abs/2305.04171)
 
 ### Polar constraints leave corrected envelopes unchanged
 
@@ -65078,6 +68526,24 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Pluripolar cutoffs preserve closedness
+
+**Remember:** A defining pole lets cutoffs approach a hole without leaving a boundary term.
+
+*Rules out counterexamples.* MSC 32U40 (Currents), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** A closed complete pluripolar set is a closed set locally equal to the −∞ set of a plurisubharmonic function finite somewhere. Such a function is upper semicontinuous and obeys the disk mean inequality on complex lines. A positive current is a generalized differential form with measure coefficients, and it is closed when its distributional exterior derivative vanishes.
+
+**Problem.** Consider a closed positive current outside a closed complete pluripolar set, with locally finite mass near that set. Extending its coefficients by zero preserves closedness.
+
+**How the definition helps.** The defining function supplies cutoffs that approach the hole while controlling their derivatives. In our own account, El Mir uses positivity and finite mass to show that no boundary term survives. In ℂ² the standard Kähler form on one side of a real hyperplane acquires a boundary term when extended by zero.
+
+**Wikipedia:** [Skoda–El Mir theorem](https://en.wikipedia.org/wiki/Skoda%E2%80%93El_Mir_theorem). It says: “Then the trivial extension of Θ to X is closed on X.”
+
+**Sources:**
+
+- [Hassine El Mir, Sur le prolongement des courants positifs fermés, Acta Mathematica 153 (1984), 1–45](https://doi.org/10.1007/BF02392374)
+
 ### Restricted currents add divisorial coefficients
 
 **Remember:** Restrict both summands to the same hypersurface before adding.
@@ -65093,6 +68559,132 @@ $$”
 **Paper or page:** [On the Canonical Bundle Formula and Adjunction for Generalized Kaehler Pairs](https://arxiv.org/abs/2404.12007v1). It says: “χ₍A₎T = ν(T, A)\[A\], where ν(T, A) is the generic Lelong number of T along A.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Green operator separates harmonic forms
+
+**Remember:** Invert away from the kernel and project onto it.
+
+*True by definition.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** The Kohn Laplacian is the self-adjoint operator measuring energy in the tangential Cauchy–Riemann equations. Its kernel consists of harmonic forms. When the range is closed, the complex Green operator inverts the Laplacian on the orthogonal complement of this kernel and vanishes on the kernel.
+
+**Problem.** Applying the Green operator then the Laplacian subtracts the orthogonal projection onto harmonic forms from any square-integrable form. The reverse order gives the same result on the Laplacian’s domain.
+
+**How the definition helps.** The partial inverse handles the kernel by discarding exactly the component that the Laplacian cannot recover (our own argument). On its orthogonal complement both compositions act as the identity. The closed range hypothesis ensures that this inverse is bounded.
+
+**Paper or page:** [On the singularities of the Szegő kernels on CR orbifolds](https://arxiv.org/abs/2208.03690). It says: “such that N□ᵦ⁽ᵠ⁾ + Π⁽ᵠ⁾ = I on Dom □ᵦ⁽ᵠ⁾”
+
+**Sources:**
+
+- [Andrea Galasso and Chin-Yu Hsiao, On the singularities of the Szegő kernels on CR orbifolds (arXiv:2208.03690v1)](https://arxiv.org/abs/2208.03690)
+
+### Mixed Levi signs remove singularities
+
+**Remember:** Mixed Levi signs give a negative direction for either normal.
+
+*Rules out counterexamples.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** At a point of a smooth real hypersurface in complex space, complex tangents are tangent vectors whose multiples by i remain tangent. The scalar Levi form is the complex Hessian of a defining function restricted to these directions. Mixed signature means it has both positive and negative eigenvalues.
+
+**Problem.** Where the Levi form has mixed signature, every distribution satisfying the tangential Cauchy–Riemann equations is locally a smooth function.
+
+**How the definition helps.** Mixed signature supplies a negative eigenvalue for either sign of a covector annihilating the complex tangents (our own deduction). The tangential equations confine possible singular directions to that covector line. The cited regularity theorem excludes each direction with a negative eigenvalue, exhausting the line. On the sphere the boundary value of 1/(1 − z₁) gives a singular solution.
+
+**Paper or page:** [Regularity of infinitesimal automorphisms of involutive structures](https://arxiv.org/abs/2506.24105). It says: “the Levi form in σ has one negative eigenvalue”
+
+**Sources:**
+
+- [Bernhard Lamel and Nicholas Braun Rodrigues, Regularity of infinitesimal automorphisms of involutive structures (arXiv:2506.24105v1)](https://arxiv.org/abs/2506.24105)
+
+### Transversality prevents Levi collapse
+
+**Remember:** A nonzero normal factor carries Levi positivity through the map.
+
+*Rules out counterexamples.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** A Cauchy–Riemann map preserves complex tangent directions and their complex structure. Between hypersurfaces it is transverse when its derivative acts nontrivially on the real tangent lines left after quotienting by complex tangents. The Levi form measures complex second derivatives of a defining function along complex tangents.
+
+**Problem.** Suppose the source Levi form is positive definite and the target Levi form is positive semidefinite for suitable defining functions. A twice continuously differentiable Cauchy–Riemann map has injective derivative wherever it is transverse.
+
+**How the definition helps.** Transversality makes the pulled-back target Levi form a nonzero multiple of the source form (our own argument). Definiteness therefore excludes a kernel on the complex tangents, and transversality excludes all remaining kernel vectors. A constant map illustrates failure without transversality.
+
+**Paper or page:** [Regularity of CR maps into uniformly pseudoconvex hypersurfaces and applications to proper holomorphic maps](https://arxiv.org/abs/2302.14016). It says: “Then h is an immersion”
+
+**Sources:**
+
+- [Josef Greilhuber and Bernhard Lamel, Regularity of CR maps into uniformly pseudoconvex hypersurfaces and applications to proper holomorphic maps (arXiv:2302.14016v1)](https://arxiv.org/abs/2302.14016)
+
+### Two-jets determine CR symmetries
+
+**Remember:** After normalization, only the quadric’s second-order freedom remains.
+
+*Rules out counterexamples.* MSC 32V05 (CR structures, CR operators, and generalizations). arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** The two-jet of a holomorphic map at a point records its value and all first and second derivatives there. A hypersurface is Levi-nondegenerate when the complex Hessian of a defining function has zero kernel on complex tangent vectors.
+
+**Problem.** Two local biholomorphic symmetries of a Levi-nondegenerate real analytic hypersurface in ℂⁿ, n ≥ 2, agree near a fixed point if their two-jets agree there.
+
+**How the definition helps.** The two-jet records all freedom left by the Chern–Moser choice of coordinates (our own explanation). Their normalization theorem fixes the higher coefficients once these initial parameters agree. The flat hypersurface Im w=0 in ℂ² allows the symmetry (z,w) ↦ (z+z³,w), which shares the identity’s two-jet.
+
+**Paper or page:** [New examples of CR submanifolds for the 2-jet determination problem](https://arxiv.org/abs/2506.21221). It says: “is uniquely determined by its 2-jet.”
+
+**Sources:**
+
+- [S. S. Chern and J. K. Moser, Real hypersurfaces in complex manifolds](https://doi.org/10.1007/BF02392146)
+
+### Finite bracket type permits wedge extension
+
+**Remember:** Bracket spanning rules out an independent real parameter with arbitrary boundary data.
+
+*Rules out counterexamples.* MSC 32V35 (Finite-type conditions on CR manifolds), 32V25. arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** A real submanifold in complex space is generic when its tangent space spans the ambient space over ℂ at each point. Finite bracket type means that complex tangent fields, their conjugates, and their repeated brackets span the submanifold’s complexified tangent space at the point.
+
+**Problem.** Near a finite bracket type point of a smooth generic submanifold of positive codimension, every smooth solution of the tangential Cauchy–Riemann equations extends holomorphically. The extension occupies a wedge opening along a cone of normal directions.
+
+**How the definition helps.** Bracket generation excludes a free real parameter on which solutions could depend arbitrarily (our own explanation). On Im w = 0, a smooth function of Re w can vanish for negative arguments and be positive for positive arguments. Boundary uniqueness on a half-disc prevents holomorphic extension across that transition into either side. Tumanov’s theorem supplies the extension under the bracket condition.
+
+**Paper or page:** [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044). It says: “it is of Bloom-Graham finite type at p”
+
+**Sources:**
+
+- [A. E. Tumanov, Extension of CR Functions into a Wedge from a Manifold of Finite Type](https://doi.org/10.1070/sm1989v064n01abeh003298)
+
+### Finite contact gives a Sobolev gain
+
+**Remember:** Finite type gives a uniform ceiling on how flat complex curves can be.
+
+*Rules out counterexamples.* MSC 32V35 (Finite-type conditions on CR manifolds), 32W05. arXiv math.CV, math.AP. Level 4: research.
+
+**Definition.** D’Angelo one-type measures contact between a smooth boundary ρ = 0 and nonconstant holomorphic curves γ through a boundary point p. It takes the supremum of the vanishing order of ρ ∘ γ divided by the smallest vanishing order among the coordinates of γ − p. A flat composition contributes infinity.
+
+**Problem.** Suppose the boundary is pseudoconvex near p, meaning its complex Hessian is nonnegative on complex tangents for a defining function negative inside. Finite one-type at p gives a local subelliptic estimate for the ∂̄-Neumann problem on (0,1)-forms.
+
+**How the definition helps.** Finite one-type puts a uniform bound on normalized contact, excluding the arbitrarily flat curves that obstruct derivative gain (our own comparison). Catlin bounds a squared Sobolev norm of positive order by the energies of ∂̄ and its adjoint plus the squared L² norm. The estimate applies to forms supported near p that satisfy the adjoint boundary condition.
+
+**Paper or page:** [The asymptotic behavior of the Bergman kernel on pseudoconvex model domains](https://arxiv.org/abs/2308.08249). It says: “∂Ωꜰ is of finite type at 0 (i.e., Δ₁(∂Ωꜰ,0) &lt; ∞)”
+
+**Sources:**
+
+- [David Catlin, Subelliptic Estimates for the ∂̄-Neumann Problem on Pseudoconvex Domains (1987)](https://doi.org/10.2307/1971347)
+
+### Finite nondegeneracy rules out divergence
+
+**Remember:** A finite list of differentiated equations can solve for every missing component.
+
+*Rules out counterexamples.* MSC 32V35 (Finite-type conditions on CR manifolds), 32V05. arXiv math.CV, math.DG. Level 4: research.
+
+**Definition.** For a smooth real analytic hypersurface ρ=0 in ℂⁿ, form the vector of complex derivatives ∂ρ/∂zⱼ. Finite nondegeneracy at a point means that this vector and its repeated derivatives along antiholomorphic tangent fields span ℂⁿ there after finitely many orders.
+
+**Problem.** Consider an invertible formal series map fixing zero and carrying one real analytic hypersurface equation onto another up to an invertible factor. If the source is finitely nondegenerate there, the series converges.
+
+**How the definition helps.** Finite nondegeneracy supplies independent equations for every target coordinate after differentiation of the mapping identity (our own explanation). The convergence theorem of Baouendi, Ebenfelt, and Rothschild turns this rank condition into an actual holomorphic map. On Im w=0 in ℂ², any invertible divergent series in z alone can replace z while w stays fixed.
+
+**Paper or page:** [Complete normal forms for real hypersurfaces in ℂ³ at 2-nondegenerate points of Levi non-uniform rank zero](https://arxiv.org/abs/2310.11785). It says: “Then every origin-preserving formal equivalence map between M and M′ is biholomorphic.”
+
+**Sources:**
+
+- [M. S. Baouendi, P. Ebenfelt, and L. P. Rothschild, Parametrization of local biholomorphisms of real analytic hypersurfaces (1997)](https://doi.org/10.4310/ajm.1997.v1.n1.a1)
 
 ### Smooth curves can miss infinite type
 
@@ -65113,6 +68705,135 @@ $$”
 - [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044v1)
 - [Catlin, Necessary Conditions for Subellipticity of the ∂̄-Neumann Problem (1983)](https://doi.org/10.2307/2006974)
 - [Catlin, Subelliptic Estimates for the ∂̄-Neumann Problem on Pseudoconvex Domains (1987)](https://doi.org/10.2307/1971347)
+
+### Bounded weights with large curvature force compactness
+
+**Remember:** Bound the weight and let its curvature grow.
+
+*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 4: research.
+
+**Definition.** The complex Hessian is the matrix of mixed derivatives in complex coordinates and their conjugates. A boundary has property P in degree q if each M &gt; 0 admits a smooth weight between zero and one on some boundary neighborhood. Everywhere there, each sum of q eigenvalues chosen by distinct indices of its complex Hessian must be at least M.
+
+**Problem.** On a smooth bounded pseudoconvex domain in ℂⁿ, property P makes the ∂̄-Neumann inverse compact in degree q, for 1 ≤ q ≤ n. Pseudoconvexity means the boundary has nonnegative curvature along its complex tangents.
+
+**How the definition helps.** Property P puts arbitrarily large curvature into a boundary estimate while keeping the weight bounded (our own). The weighted ∂̄ estimate gives a small boundary contribution, and interior regularity supplies a compact error (our own).
+
+**Paper or page:** [The Levi q-core and Property (Pq)](https://arxiv.org/abs/2505.17693v1). It says: “and hence the ∂̄-Neumann operator N<sub>q</sub> is compact.”
+
+**Sources:**
+
+- [The Levi q-core and Property (Pq)](https://arxiv.org/abs/2505.17693v1)
+
+### Energy primitives give shift identities
+
+**Remember:** Move the zero potential and subtract its old energy.
+
+*True by definition.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact Kähler manifold of dimension n, a smooth potential u for the positive closed form ω satisfies ω + ddᶜu &gt; 0. Here ddᶜu is its complex Hessian. Define the energy by E(0) = 0 and require its derivative in direction h to equal ∫ h(ω + ddᶜu)ⁿ.
+
+**Problem.** For a smooth ω-potential τ, use ω + ddᶜτ as the new background. The new energy at each admissible φ equals the old energy at φ + τ minus the old energy at τ.
+
+**How the definition helps.** Defining energy by its derivative makes translation preserve the derivative, since both sides use the same corrected Hessian. In our own proof, the energies differ by a constant on the convex space of potentials. Evaluation at zero fixes this constant. The usual formula summing products of forms proves that an energy with this derivative exists.
+
+**Paper or page:** [Measures of finite energy in pluripotential theory: a synthetic approach](https://arxiv.org/abs/2307.01697). It says: “\\operatorname{E}<sub>\\omega \_\\tau </sub>(\\varphi )=\\operatorname{E}<sub>\\omega </sub>(\\varphi +\\tau )-\\operatorname{E}\_\\omega (\\tau ).”
+
+**Sources:**
+
+- [Robert Berman, Sébastien Boucksom, Vincent Guedj and Ahmed Zeriahi, A variational approach to complex Monge-Ampère equations](https://doi.org/10.1007/s10240-012-0046-6)
+
+### Full mass prevents vacuous domination
+
+**Remember:** A measure that lost its mass cannot test domination.
+
+*Rules out counterexamples.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact Kähler manifold of dimension n, a potential u for its positive closed form ω has nonnegative corrected complex Hessian ω + ddᶜu. Its nonpluripolar Monge–Ampère measure takes the top power by truncating u and discarding mass where u equals −∞. The full mass class consists of potentials whose measure has total mass ∫ ωⁿ.
+
+**Problem.** For full mass potentials u and v, if u ≤ v almost everywhere for the measure of v, then u ≤ v everywhere.
+
+**How the definition helps.** Full mass rules out an empty test in which the measure of v vanishes. For our own example, take the Fubini–Study form on projective space and the logarithm of a hyperplane section’s Fubini–Study norm. With matching curvature normalization, its corrected Hessian lives entirely on the hyperplane, so its nonpluripolar measure vanishes. The zero potential passes this vacuous test despite exceeding v, while the full mass case follows from the comparison theorem.
+
+**Paper or page:** [Generalized Monge-Ampère capacities](https://arxiv.org/abs/1402.2497). It says: “If u, v ∈ ℰ(X,ω) such that u ≤ v MA(v)-almost everywhere then u ≤ v on X.”
+
+**Sources:**
+
+- [Vincent Guedj and Ahmed Zeriahi, The weighted Monge–Ampère energy of quasiplurisubharmonic functions, Journal of Functional Analysis 250 (2007), 442–482](https://doi.org/10.1016/j.jfa.2007.04.018)
+
+### Homogeneous geodesics make energy affine
+
+**Remember:** Zero product Monge–Ampère measure means zero energy curvature.
+
+*True by definition.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact Kähler manifold with form ω, a weak geodesic is a rotation-invariant potential U on the product with an annulus. Its corrected complex Hessian, the pulled-back form ω plus ddᶜU, is nonnegative and has vanishing top power. Monge–Ampère energy varies in direction h by the integral of h against the top Hessian power on each slice.
+
+**Problem.** Along a continuous weak geodesic between bounded potentials, the Monge–Ampère energy is affine in the logarithm of the annulus radius.
+
+**How the definition helps.** The product definition sets to zero the very measure whose integral gives the complex Hessian of the energy. In our own proof, the energy is therefore harmonic on the annulus, and rotation invariance makes it affine in log radius. The work lies in the energy variation formula for weak potentials and the correspondence with the smooth geodesic equation.
+
+**nLab:** [Kähler potential](https://ncatlab.org/nlab/show/K%C3%A4hler+potential). It says: “On a Kähler manifold the Kähler form ω can locally be written as ω = √−1 ∂∂̄K”
+
+**Paper or page:** [Geometry and Topology of the space of plurisubharmonic functions](https://arxiv.org/abs/1703.05556). It says: “Let (Φₛ)₀≤ₛ≤₁ be a continuous geodesic. Then s ↦ E(Φₛ) is affine.”
+
+**Sources:**
+
+- [Robert Berman, Sébastien Boucksom, Vincent Guedj and Ahmed Zeriahi, A variational approach to complex Monge-Ampère equations](https://doi.org/10.1007/s10240-012-0046-6)
+
+### Mass bounds extend Monge–Ampère
+
+**Remember:** Control the mass before passing to a local decreasing limit.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 4: research.
+
+**Definition.** A bounded hyperconvex domain admits a negative continuous plurisubharmonic exhaustion, a function whose negative sublevel sets have compact closure inside. Cegrell’s class consists of nonpositive plurisubharmonic functions that locally are decreasing limits of bounded global plurisubharmonic tests tending to zero at the boundary. Each local approximation must have uniformly bounded total Monge–Ampère mass, the integral of the top power of the complex Hessian.
+
+**Problem.** For a function in Cegrell’s class, these approximations define a unique local Monge–Ampère measure. Their measures converge to it when integrated against continuous functions supported on compact subsets of the neighborhood.
+
+**How the definition helps.** The class supplies bounded approximations and controls their masses even when the limit takes the value −∞. In our own account, the mass bound gives subsequential limits on compact subsets. Cegrell’s comparison estimates prove that every allowed approximation gives the same limit.
+
+**Paper or page:** [Singularity invariants of plurisubharmonic functions and complex spaces](https://arxiv.org/abs/2304.02238). It says: “is in the Cegrell’s class ℰ.”
+
+**Sources:**
+
+- [Urban Cegrell, The general definition of the complex Monge–Ampère operator, Annales de l’Institut Fourier 54 (2004), 159–179](https://archive.numdam.org/articles/10.5802/aif.2014/)
+
+### Obstacle envelopes concentrate mass
+
+**Remember:** Where the obstacle leaves room, a local improvement is forbidden by the envelope.
+
+*Makes the theorem clean to state or prove.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact Kähler manifold with form θ, a θ-potential becomes plurisubharmonic after adding a local potential for θ. The envelope of a continuous function h is the upper limit of nearby values of the supremum over θ-potentials bounded above by h.
+
+**Problem.** The envelope’s Monge–Ampère measure, the top power of its corrected complex Hessian, assigns zero mass to the open set where the envelope lies below h.
+
+**How the definition helps.** The envelope is already the largest admissible potential, so no local replacement below the obstacle can raise it. In our own explanation, continuity preserves the bound by h when taking upper limits. The substantive step constructs local replacements and identifies local maximality with vanishing Monge–Ampère measure.
+
+**Paper or page:** [Monge-Ampère equations with prescribed singularities on compact Hermitian manifolds](https://arxiv.org/abs/2511.02339). It says: “Then Pθ(h) ≤ h outside a pluripolar set and ∫\_{ {Pθ(h)&lt;h} } (θ + ddᶜPθ(h))ⁿ = 0.”
+
+**Sources:**
+
+- [Monge-Ampère equations with prescribed singularities on compact Hermitian manifolds](https://arxiv.org/abs/2511.02339)
+
+### Plurifine locality handles maxima
+
+**Remember:** Make strict comparison sets open and use locality there.
+
+*True by definition.* MSC 32W20 (Complex Monge-Ampère operators), 32U05. arXiv math.CV. Level 4: research.
+
+**Definition.** Plurisubharmonic functions are upper semicontinuous functions satisfying the disk mean inequality on every complex line. The plurifine topology is the coarsest topology making all such local functions continuous, allowing the value −∞. A potential for a smooth closed real form θ of type (1,1) becomes plurisubharmonic after adding a local potential for θ.
+
+**Problem.** Where one θ-potential u exceeds another v, u and max(u,v) have the same nonpluripolar Monge–Ampère measure. This measure takes the top power of the corrected complex Hessian by truncation and omits mass on pole sets.
+
+**How the definition helps.** The plurifine topology makes the strict comparison set open, and the two functions agree there. Our own argument applies the locality theorem in that topology. Ordinary open sets can miss points of strict comparison.
+
+**Paper or page:** [Monge-Ampère equations with prescribed singularities on compact Hermitian manifolds](https://arxiv.org/abs/2511.02339). It says: “𝟙{u &gt; v} (θ + ddᶜu)ⁿ = 𝟙{u &gt; v} (θ + ddᶜ max(u,v))ⁿ.”
+
+**Sources:**
+
+- [Eric Bedford and B. A. Taylor, A new capacity for plurisubharmonic functions, Acta Mathematica 149 (1982), 1–40](https://doi.org/10.1007/BF02392348)
+- [Monge-Ampère equations with prescribed singularities on compact Hermitian manifolds](https://arxiv.org/abs/2511.02339)
 
 ## 33 Special functions
 
@@ -67555,6 +71276,42 @@ $$”
 
 - [Lars Hörmander, Fourier integral operators. I, Acta Mathematica 127 (1971) 79–183](https://doi.org/10.1007/BF02392052)
 
+### Wave fronts project to singular support
+
+**Remember:** No bad directions means no singular point.
+
+*Makes the theorem clean to state or prove.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The wave front set records singular frequency directions at each point of a distribution, a generalized function. A direction is regular if a smooth cutoff equal to one nearby gives faster-than-polynomial Fourier decay throughout a cone around it. The singular support consists of points with no smooth neighborhood.
+
+**Problem.** Forgetting the directions in the wave front set gives exactly the singular support.
+
+**How the definition helps.** The directional test recovers ordinary smoothness once every direction at a point passes. In our own argument, finitely many smaller cones cover the unit sphere, and a single smaller cutoff preserves decay on each. Fourier inversion then gives smoothness there. A smooth localization already has rapid decay in all directions.
+
+**nLab:** [wavefront set](https://ncatlab.org/nlab/show/wavefront+set). It says: “The projection of the wave front set down to the base space is the singular support of the distribution.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Wave fronts pull back as covectors
+
+**Remember:** Fourier directions pull back by the transpose derivative.
+
+*Makes the theorem clean to state or prove.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The wave front set records singular frequency directions of a distribution, a generalized function. Each direction is a covector, a linear functional on tangent vectors. A smooth change of coordinates pulls a covector back by composing it with the derivative.
+
+**Problem.** Under a smooth invertible change of coordinates with smooth inverse, the wave front set of a distribution pulls back exactly as its covectors do.
+
+**How the definition helps.** Recording covectors gives each singular direction a coordinate change rule. In our own explanation, the chain rule gives that rule for the phase in the Fourier integral. Integration by parts gives decay in the remaining directions. Applying the estimate to the inverse change gives equality.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(ψ\* u) = {(x, ᵗψ′\|ₓ η) ; (ψ(x), η) ∈ WF(u)}.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
 ### Principal symbols turn composition into multiplication
 
 **Remember:** Every derivative that hits a coefficient lowers the order on the input.
@@ -68244,6 +72001,40 @@ $$”
 
 - [Shiqi Ma, Lecture notes for pseudodifferential operators and microlocal analysis, arXiv:2107.12839v1 (2021)](https://arxiv.org/abs/2107.12839v1)
 
+### Symbol sums need no convergence
+
+**Remember:** Match each finite truncation and let the tail drop in order.
+
+*Makes the theorem clean to state or prove.* MSC 35S05 (Pseudodifferential operators as generalizations of partial differential operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A symbol of order m weights frequencies with growth bounded by order m, with stronger bounds after frequency differentiation. An asymptotic sum matches each finite sum up to an error of the first omitted order.
+
+**Problem.** Every sequence of standard symbols with orders strictly decreasing to minus infinity has an asymptotic sum, unique up to an error of every negative order.
+
+**How the definition helps.** Matching finite sums allows each new term to change at bounded frequencies without affecting its prescribed order at infinity. In our own explanation, successively larger frequency cutoffs make the modified series converge in the required estimates. Two sums have the same finite approximations, so their difference satisfies every negative-order bound.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “there exists a symbol (not unique) a ∈ Sᵐ”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Weyl quantization makes adjoints conjugate symbols
+
+**Remember:** A midpoint stays put when input and output swap.
+
+*True by definition.* MSC 35S05 (Pseudodifferential operators as generalizations of partial differential operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A symbol gives the weight assigned to each frequency at each position. Weyl quantization uses the midpoint between input and output to choose that position. Left quantization uses the output position.
+
+**Problem.** For standard scalar symbols on Euclidean space, taking the formal adjoint in Weyl quantization conjugates the symbol.
+
+**How the definition helps.** In our own explanation, exchanging input and output leaves the midpoint fixed. Conjugation reverses the Fourier phase, and exchanging the positions reverses it again. The remaining step justifies the integral identity on smooth, rapidly decreasing test functions.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “(aʷ(x, hD)u, v) = (u, āʷ(x, hD) v).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Projection gives Calderón identities
 
 **Remember:** Take traces after reconstruction to get a projector.
@@ -68259,6 +72050,24 @@ $$”
 **Wikipedia:** [Calderón projector](https://en.wikipedia.org/wiki/Calder%C3%B3n_projector). It says: “As the Calderón operator is a projector”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Invertible mixed derivatives exclude unbounded traces
+
+**Remember:** A full-rank phase cannot collapse a coordinate into a trace.
+
+*Rules out counterexamples.* MSC 35S30 (Fourier integral operators applied to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a Fourier integral operator, the phase Φ specifies how the input frequencies oscillate at each output position. In the position-frequency representation, the graph condition requires the matrix of mixed position and frequency derivatives to be invertible.
+
+**Problem.** A real phase smooth away from zero and homogeneous of degree one defines a bounded operator on square-integrable functions under the graph condition. The amplitude must have standard order zero and compact position support, with the graph condition throughout its closed set of position and frequency directions.
+
+**How the definition helps.** The graph condition prevents the phase from losing an entire frequency direction. In our own example, the phase x₁ξ₁ in two dimensions gives restriction to the line x₂ = 0, even after an output cutoff. This restriction is unbounded in square mean. The positive result uses oscillatory estimates for composition with the adjoint.
+
+**Wikipedia:** [Fourier integral operator](https://en.wikipedia.org/wiki/Fourier_integral_operator). It says: “if a is of order zero, it is possible to show that T defines a bounded operator from L² to L².”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
 
 ### Causal support and adjoints force uniqueness
 
@@ -76531,6 +80340,24 @@ $$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Mackey completeness gives smooth primitives
+
+**Remember:** Control the Riemann sums in one disk to obtain a primitive.
+
+*Makes the theorem clean to state or prove.* MSC 46A03 (General theory of locally convex spaces), 58B10. arXiv math.FA. Level 4: research.
+
+**Definition.** A bounded disk in a locally convex space is a bounded convex set closed under multiplication by scalars of absolute value at most one. A sequence is Mackey–Cauchy if all sufficiently late differences lie in arbitrarily small multiples of one fixed bounded disk. A space is Mackey complete if every such sequence converges.
+
+**Problem.** Every smooth curve in a Mackey-complete Hausdorff locally convex space has a smooth primitive, a curve whose derivative equals the given curve.
+
+**How the definition helps.** Mackey completeness supplies exactly the limit needed for Riemann sums of a smooth curve. In our own proof, bounded difference quotients on each compact interval place the errors between successive refinements in shrinking multiples of one bounded disk. Integrating up to a variable endpoint then gives a curve with the prescribed derivative.
+
+**nLab:** [convenient vector space](https://ncatlab.org/nlab/show/convenient+vector+space). It says: “there is a curve ∫ c (an antiderivative of c) such that c is the derivative of ∫ c.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
 ### Liquid real vector spaces are closed under extensions, unlike Banach spaces
 
 **Remember:** Allow non-convex measures, and extensions of Banach spaces stay inside.
@@ -79949,6 +83776,24 @@ $$”
 **Sources:**
 
 - [Primal-dual programs for the constrained optimal impulse control: discounted model](https://arxiv.org/abs/2504.18387v1)
+
+### Varifold stationarity survives weak limits
+
+**Remember:** Keep tangent planes so the area variation passes to the limit.
+
+*True by definition. Confidence: medium.* MSC 49Q15 (Geometric measure and integration theory, integral and normal currents in optimization), 58E12. arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A surface varifold measures area on pairs consisting of a point and an unoriented plane through it. It is stationary when every smooth, compactly supported vector field has zero integrated divergence along these planes. This divergence traces the field’s derivative in just the plane directions.
+
+**Problem.** A weak limit of stationary surface varifolds is stationary.
+
+**How the definition helps.** Recording the plane makes the area variation an integral of a continuous, compactly supported test function (our own explanation). Weak convergence means convergence of all such integrals, so the limiting variation is zero. The first variation formula identifies this test with stationarity under smooth deformations.
+
+**Paper or page:** [Weyl Law and convergence in the classical limit for min-max nonlocal minimal surfaces](https://arxiv.org/abs/2406.12162v4). It says: “the limit integral stationary varifold”
+
+**Sources:**
+
+- [W. K. Allard, On the First Variation of a Varifold (1972)](https://doi.org/10.2307/1970868)
 
 ### A jump-based transport distance makes nonlocal diffusion an entropy gradient flow
 
@@ -85104,6 +88949,42 @@ a parallelogram.”
 **Sources:**
 
 - [Michael Dütsch, Deformation quantization of the free theory, chapter 2 of From Classical Field Theory to Perturbative Quantum Field Theory, Progress in Mathematical Physics 74, Birkhäuser (2019) 45–69](https://doi.org/10.1007/978-3-030-04738-2_2)
+
+### Weierstrass data make symmetry an integral test
+
+**Remember:** Match the derivative everywhere and the position at one point.
+
+*Makes the theorem clean to state or prove.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 58E12. arXiv math.DG. Level 4: research.
+
+**Definition.** Consider a finite group acting holomorphically on a connected open complex curve and orthogonally on Euclidean space. Weierstrass data form a nowhere-zero vector of holomorphic differentials whose squares sum to zero and whose real integrals vanish around loops. The data respect the actions when pulling them back by each group element gives its orthogonal transformation of the vector.
+
+**Problem.** Integrating the real parts gives a conformal minimal immersion F. For data respecting the actions, equality F(gx) = gF(x) everywhere reduces to testing every group element g at one chosen point x.
+
+**How the definition helps.** The symmetry of the data gives the two sides equal derivatives everywhere (our own explanation). On a connected surface their difference is constant, so equality at the chosen point decides equality everywhere. The Weierstrass representation supplies the immersion.
+
+**Paper or page:** [Minimal surfaces with symmetries](https://arxiv.org/abs/2308.12637v5). It says: “is G-equivariant if and only if the map f : X → Y is G-equivariant and”
+
+**Sources:**
+
+- [Franc Forstnerič, Minimal surfaces with symmetries](https://arxiv.org/abs/2308.12637v5)
+
+### Holonomy determines connection symmetries
+
+**Remember:** One fiber value extends exactly when it commutes with every loop.
+
+*True by definition.* MSC 53C05 (Connections (general theory)), 58D05. arXiv math.DG. Level 4: research.
+
+**Definition.** A connection specifies parallel transport, a rule for moving points of a bundle fiber along a path. Its holonomy group consists of transports around loops at one base point. A gauge symmetry preserves the connection when it commutes with transport along every path.
+
+**Problem.** On a principal bundle over a connected manifold, restriction identifies the gauge symmetry group with the fiber automorphisms commuting with all holonomy. Fiber automorphisms here respect the structure group action.
+
+**How the definition helps.** The transport description determines a symmetry everywhere from its value on one fiber. In our own proof, transport that value along any path to the desired fiber. Commutation with loop transport makes the result independent of the path, and local smooth families of paths give smoothness. The description uses the equivalence between preserving horizontal tangent spaces and preserving their path transports.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “the centralizer of the holonomy of A at m ∈ M inside the automorphism group”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
 
 ### Thin homotopy makes parallel transport a functor on paths
 
@@ -97780,6 +101661,22 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Boundary Hodge spectra pair up
+
+**Remember:** The star swaps tangential and normal parts.
+
+*True by definition. Confidence: medium.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Absolute boundary conditions set the normal components of α and dα to zero. Relative boundary conditions set the tangential components of α and d⁎α to zero, where d⁎ is the formal adjoint.
+
+**Problem.** On a compact oriented Riemannian n-manifold with smooth boundary, absolute k-forms and relative (n − k)-forms have identical Laplacian spectra, including multiplicities.
+
+**How the definition helps.** The paired boundary conditions let the Hodge star identify the two eigenvalue problems directly. In our own argument, the star exchanges normal and tangential components and interchanges d and d⁎ up to signs. Boundary elliptic theory gives the operator domains on which the star intertwines the Laplacians.
+
+**Paper or page:** [Well-Posedness of the Hodge Wave Equation on a Compact Manifold](https://arxiv.org/abs/2502.01514v2). It says: “Moreover, we have the following relations between the spaces of weakly differentiable forms: ⋆(HΩᵏ(M)) = H⋆Ωⁿ⁻ᵏ(M)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining harmonic as closed and coclosed shows the Hodge star preserves it
 
 **Remember:** The Hodge star swaps the two first-order equations, up to signs.
@@ -97825,6 +101722,70 @@ a parallelogram.”
 **How the definition helps.** The condition d\*ω = 0 says directly that ω is orthogonal to all exact forms (our own). All other representatives differ from ω by such a form, so Pythagoras gives the strict norm increase (our own). The Hodge theorem does the work of finding the harmonic representative (our own).
 
 **Wikipedia:** [Hodge theory](https://en.wikipedia.org/wiki/Hodge_theory). It says: “the harmonic representative is the unique closed form of minimum L² norm that represents a given cohomology class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic stars give the signature
+
+**Remember:** The star splits the pairing into plus and minus norms.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Hodge star ⋆ satisfies α ∧ ⋆β = ⟨α,β⟩ vol, where vol is the metric volume form. In middle degree on an oriented Riemannian 4m-manifold, self-dual and anti-self-dual forms satisfy ⋆α = α and ⋆α = −α, respectively.
+
+**Problem.** On a closed oriented Riemannian 4m-manifold, the intersection signature equals the dimension of self-dual harmonic forms minus the dimension of anti-self-dual harmonic forms.
+
+**How the definition helps.** The star gives the positive and negative spaces directly, avoiding diagonalization of the cohomology pairing. Our own calculation integrates α ∧ α on each space to obtain the squared norm with the corresponding sign. The Hodge theorem identifies harmonic forms with cohomology, where these two dimensions determine the signature.
+
+**nLab:** [Hodge star operator](https://ncatlab.org/nlab/show/Hodge+star+operator). It says: “α ∧ ⋆β = (α ∣ β) vol₍g₎”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrating heat gives Green operators
+
+**Remember:** Integrating heat replaces each positive eigenvalue by its reciprocal.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Green operator G divides each positive Hodge Laplacian mode by its eigenvalue and kills the zero modes. A mode is an eigenform. Heat evolution for time t multiplies a mode of eigenvalue λ by exp(−tλ).
+
+**Problem.** On a closed Riemannian manifold, the heat evolution of an L² form perpendicular to the zero modes integrates to its Green operator image. The integral runs over all positive times.
+
+**How the definition helps.** The spectral definition replaces inversion of a differential operator with integration of one exponential per mode. Our own calculation gives 1/λ for each positive eigenvalue. The spectral theorem supplies the eigenforms and a positive lower bound on positive eigenvalues, ensuring convergence in L².
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “G<sub>k</sub>(\\omega )=\\int \_0<sup>\\infty </sup>e<sup>-t\\Delta </sup>\\omega \~  dt”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product Hodge Laplacians add
+
+**Remember:** Opposite signs cancel all mixed derivatives.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On product forms, the graded product differential adds the two factor derivatives. The second derivative carries a sign (−1)ᵖ when the first factor has degree p.
+
+**Problem.** For closed Riemannian manifolds with the product metric, the Laplacian on forms is the sum of the two factor Laplacians.
+
+**How the definition helps.** The graded product rule replaces a coordinate calculation with cancellation of the mixed terms. Our own calculation uses the product metric to give the second adjoint the same sign. Differentiating in the first factor changes parity, so the mixed terms cancel when d + d⁎ is squared.
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “Δ = Δₓ + Δᵧ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced classes have harmonic representatives
+
+**Remember:** Close the exact forms before taking the quotient.
+
+*Rules out counterexamples.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Fix a closed exterior derivative d on square-integrable forms, with d² = 0. Reduced L² cohomology identifies closed forms whose difference is a norm limit of derivatives. A harmonic form is closed and orthogonal to all derivatives.
+
+**Problem.** Every reduced L² cohomology class contains exactly one harmonic form.
+
+**How the definition helps.** Taking the closure lets us project a closed form orthogonally off the derivatives. Our own example is the indicator of (0,1) times dx on the real line. Derivatives are dense there, but every primitive of this form has nonzero constant value on at least one infinite tail.
+
+**Paper or page:** [Geometric singularities and Hodge theory](https://arxiv.org/abs/2407.01170v3). It says: “We have that $\\ker (\\Gamma ) = \\ker (\\Pi ) \\oplus \\overline{\\mathrm{ran}(\\Gamma )}$”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -97876,6 +101837,22 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Half-densities make pullbacks unitary
+
+**Remember:** Two half-Jacobians give the full change-of-variables factor.
+
+*True by definition.* MSC 58A32 (Natural bundles). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A half-density transforms under a coordinate change by the square root of the absolute Jacobian determinant. Its product with a conjugate half-density transforms as an ordinary density, which can be integrated without choosing a measure.
+
+**Problem.** A diffeomorphism gives a unitary pullback on square-integrable half-densities. The pullback by its inverse is the adjoint.
+
+**How the definition helps.** The two square roots in the inner product supply exactly the Jacobian for changing variables. In our own explanation, scalar functions would require a separately chosen measure to define that inner product. Change of variables proves norm preservation, and the inverse map gives surjectivity.
+
+**nLab:** [canonical Hilbert space of half-densities](https://ncatlab.org/nlab/show/canonical+Hilbert+space+of+half-densities). It says: “whose inner product is given by tensoring two half-densities to an actual density and then integrating that over X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Diffeological spaces make spaces of smooth maps smooth again
 
 **Remember:** Say which maps into X are smooth, and let the rest follow.
@@ -97912,6 +101889,42 @@ a parallelogram.”
 **Sources:**
 
 - [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
+
+### Banach charts give unique local flows
+
+**Remember:** One complete norm lets Picard iteration control all directions.
+
+*Rules out counterexamples.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds). arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A Banach manifold uses charts in vector spaces with one complete norm. A Fréchet manifold allows a complete topology given by countably many seminorms, each of which can vanish on nonzero vectors.
+
+**Problem.** Every smooth vector field on a Banach manifold has a unique smooth local flow.
+
+**How the definition helps.** One complete norm lets Picard’s contraction argument turn local derivative bounds into existence and uniqueness of solutions. In our own counterexample, shift each real sequence one place to the left in the product topology. Choose a smooth function that vanishes with all derivatives at zero but is positive at every positive time. Its successive derivatives form a solution with the same initial value as the zero solution.
+
+**nLab:** [Fréchet manifold](https://ncatlab.org/nlab/show/Fr%C3%A9chet+manifold). It says: “The existence and uniqueness theorems for ordinary differential equations fail in infinite dimensions”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Strong metrics give smooth gradients
+
+**Remember:** A strong metric turns every differential into a tangent vector.
+
+*Rules out counterexamples.* MSC 58B20 (Riemannian, Finsler and other geometric structures on infinite-dimensional manifolds), 58B10. arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A Hilbert manifold has local coordinates in a Hilbert space. A strong Riemannian metric assigns smoothly varying inner products whose norms give the original topology on each tangent space. A weak metric allows a coarser topology.
+
+**Problem.** With a strong metric, every smooth real function has a unique smooth gradient. Its inner product with each tangent vector gives the derivative in that direction.
+
+**How the definition helps.** The strong inner product represents every continuous linear functional by a unique tangent vector, and the representation varies smoothly. Our own counterexample weights coordinate n in the usual inner product on square-summable sequences by 1/n. The continuous linear function with coefficients 1/n would then require a gradient with every entry one. That sequence is not square-summable.
+
+**Paper or page:** [On Mañé's Critical Value for Tonelli Lagrangians on Half Lie-Groups](https://arxiv.org/abs/2511.13428). It says: “is a bundle isomorphism.”
+
+**Sources:**
+
+- [On Mañé's Critical Value for Tonelli Lagrangians on Half Lie-Groups](https://arxiv.org/abs/2511.13428)
 
 ### Dirac commutators recover geodesic distance
 
@@ -98040,6 +102053,172 @@ a parallelogram.”
 
 - [Juan Carlos Álvarez Paiva, answer to 'Why do I need densities in order to integrate on a non-orientable manifold?', MathOverflow (2012)](https://mathoverflow.net/questions/90455/) (link not checked)
 
+### Momentum classes conserve circulation
+
+**Remember:** Follow the loop and ignore exact changes in momentum.
+
+*True by definition. Confidence: medium.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The metric turns a fluid velocity into a one-form by taking its inner product with each tangent vector. The momentum class identifies two such one-forms if their difference is the differential of a function.
+
+**Problem.** For smooth incompressible Euler flow on a closed Riemannian manifold, pulling the momentum class back along the particle flow keeps it constant. Thus the integral of velocity around each moving closed loop stays constant.
+
+**How the definition helps.** Passing to the class removes the entire differential term in the moving fluid’s momentum equation. In our own derivation, Euler’s equation gives the time derivative of the pulled-back one-form as the differential of a function. The quotient makes this derivative zero, and differentials integrate to zero on closed loops.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “then we have the following conservation law:”
+
+**Sources:**
+
+- [Patrick Heslin, Two-Point Boundary Value Problems on Diffeomorphism Groups, Lemma 3.4](https://arxiv.org/abs/2110.12278)
+
+### Smooth curves make inversion smooth
+
+**Remember:** To invert a smooth family, solve a finite-dimensional equation with a parameter.
+
+*True by definition.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** In convenient calculus a map is smooth if it takes smooth curves to smooth curves. On the diffeomorphism group of a closed manifold, a curve of maps is smooth exactly when evaluation depends smoothly on time and position together.
+
+**Problem.** Inversion is smooth on the Fréchet manifold of smooth diffeomorphisms of a closed manifold.
+
+**How the definition helps.** The curve test replaces differentiation of the inversion operator by inversion of ordinary smooth families. The finite-dimensional implicit function theorem applied to f(t,y) = x gives smooth dependence of y on t and x. The mapping-space theorem identifying smooth curves with jointly smooth families supplies the remaining step.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “inversion maps smooth curves to smooth curves”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Mapping tangents are pointwise fields
+
+**Remember:** Vary each image point in its own tangent space.
+
+*True by definition.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 3: graduate.
+
+**Definition.** A local addition sends short vectors based at y to nearby points and sends the zero vector to y. The base and resulting point together give smooth coordinates near the diagonal. Around a smooth map f, these coordinates describe nearby maps by smooth vector fields along f.
+
+**Problem.** For a closed manifold M and a finite-dimensional manifold N, the tangent bundle of the smooth mapping space identifies with smooth maps into TN. Here TN is the tangent bundle of N, and the fiber over f consists of smooth vector fields along f.
+
+**How the definition helps.** The local-addition chart already takes values in the space of vector fields along f, so its velocities lie in that space. In our own proof, evaluating a curve of maps at each point gives the intrinsic identification by differentiation in time. Chart compatibility and smooth dependence on the base map make this a smooth bundle isomorphism.
+
+**nLab:** [tangent spaces of mapping spaces](https://ncatlab.org/nlab/show/tangent+spaces+of+mapping+spaces). It says: “The claim of this page is that this is a diffeomorphism, and further a vector bundle isomorphism”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Category bounds critical point counts
+
+**Remember:** Each isolated critical point can account for one contractible set.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Lusternik–Schnirelmann category of a manifold is the least number of open sets covering it that can each contract to a point inside the manifold. Use infinity if no finite cover works.
+
+**Problem.** Suppose a bounded-below, twice continuously differentiable function on a complete Riemannian Hilbert manifold satisfies Palais–Smale compactness. It has at least as many critical points as the category of the manifold.
+
+**How the definition helps.** Each isolated critical point contributes at most one set to a cover by sets contractible in the manifold (our own). Palais–Smale compactness gives a convergent subsequence whenever values stay bounded and derivative norms approach zero (our own). The deformation theorem pulls covers across intervals without critical values and adds neighborhoods of critical points at each critical value (our own).
+
+**nLab:** [Lusternik-Schnirelmann category](https://ncatlab.org/nlab/show/Lusternik-Schnirelmann+category). It says: “A topological space X has Lusternik–Schnirelmann category ≤ n if there is an open cover of X by at most n sets for which the inclusion maps U ↪︎ X are nullhomotopic.”
+
+**Sources:**
+
+- [Mónica Clapp and Dieter Puppe, Invariants of the Lusternik-Schnirelmann type and the topology of critical sets (1986)](https://doi.org/10.1090/S0002-9947-1986-0860382-0)
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+
+### Compactness clears regular bands
+
+**Remember:** A regular band with compactness has no arbitrarily flat points.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Palais–Smale condition requires a convergent subsequence whenever function values stay bounded and derivative norms approach zero.
+
+**Problem.** Suppose a twice continuously differentiable Palais–Smale function on a complete Riemannian Hilbert manifold has no critical points with values in \[a,b\]. One can continuously deform {f ≤ b} onto {f ≤ a} while fixing {f ≤ a} throughout.
+
+**How the definition helps.** Compactness keeps the gradient norm uniformly positive in the band (our own). Otherwise a sequence with vanishing gradient norms would have a limit with zero gradient there (our own). Dividing the downward gradient by its squared norm gives bounded speed and lowers the value at unit rate until it reaches a (our own).
+
+**Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “In the calculus of variations, where one is typically interested in infinite-dimensional function spaces, the condition is necessary because some extra notion of compactness beyond simple boundedness is needed.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+- [Richard S. Palais and Stephen Smale, A generalized Morse theory (1964)](https://doi.org/10.1090/S0002-9904-1964-11062-4)
+
+### Compactness prevents mountain-pass escape
+
+**Remember:** A pass at infinity is not a critical point.
+
+*Rules out counterexamples.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A differentiable function f satisfies the Palais–Smale condition at height c if every sequence approaching stationarity there has a convergent subsequence. Approaching stationarity means the values approach c and the derivative norms approach zero.
+
+**Problem.** For a continuously differentiable Hilbert space function, let c be the infimum of maximum heights along continuous paths between two given points. If c exceeds both endpoint values, Palais–Smale compactness at c gives a point with value c and derivative zero.
+
+**How the definition helps.** Compactness gives a limit for points approaching stationarity at the pass height (our own). The mountain-pass deformation argument supplies these points by lowering paths wherever the derivative stays large (our own). For f(x,y) = (x²−1)² + exp(−y), paths from (−1,1) to (1,1) must cross x = 0 (our own). Crossing at increasing heights y gives pass value 1, yet the derivative in y never vanishes (our own).
+
+**Wikipedia:** [Mountain pass theorem](https://en.wikipedia.org/wiki/Mountain_pass_theorem). It says: “then the conclusion of the theorem is that c is a critical value of I.”
+
+**Sources:**
+
+- [Antonio Ambrosetti and Paul H. Rabinowitz, Dual variational methods in critical point theory and applications (1973)](https://doi.org/10.1016/0022-1236(73)90051-7)
+- [Richard S. Palais and Stephen Smale, A generalized Morse theory (1964)](https://doi.org/10.1090/S0002-9904-1964-11062-4)
+
+### Fixed directions suffice for criticality
+
+**Remember:** Average a direction before testing the derivative.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The fixed subspace of a group of linear symmetries contains exactly the vectors left unchanged by every group element. An invariant function takes the same value after applying any symmetry.
+
+**Problem.** Let a compact group act continuously and linearly on a Banach space and preserve a continuously differentiable function. A critical point of the function restricted to the fixed subspace is critical on the full space.
+
+**How the definition helps.** At a fixed point, averaging any direction over the group preserves its derivative and produces a direction in the fixed subspace (our own). Compactness supplies the invariant probability measure for this average (our own). At a restricted critical point the derivative vanishes on every averaged direction, hence on every original direction (our own).
+
+**Paper or page:** [Nonlocal problem with critical exponential nonlinearity of convolution type: A non-resonant case](https://arxiv.org/abs/2408.00654). It says: “If J : X → ℝ is an H-invariant, C¹ functional”
+
+**Sources:**
+
+- [Richard S. Palais, The principle of symmetric criticality (1979)](https://doi.org/10.1007/BF01941322)
+- [Suman Kanungo, Pawan Kumar Mishra, Nonlocal problem with critical exponential nonlinearity of convolution type: A non-resonant case](https://arxiv.org/abs/2408.00654)
+
+### Invertible Hessians give Morse coordinates
+
+**Remember:** No zero eigenvector does not mean a gap from zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** At a critical point the Hessian is the second derivative. On a Hilbert manifold, strong nondegeneracy means the Hessian gives a bounded linear isomorphism from the tangent space onto its dual.
+
+**Problem.** Near a strongly nondegenerate critical point, a smooth function admits coordinates in which it equals its critical value plus ‖u‖² minus ‖v‖².
+
+**How the definition helps.** Strong nondegeneracy keeps the Hessian spectrum away from zero, as required by the Hilbert space Morse lemma (our own). On the space of square summable sequences, the form ∑ xₙ²/n has zero kernel but no bounded inverse onto the dual (our own). A smooth coordinate change preserves invertibility of the Hessian at a critical point, so this example cannot have the stated form (our own).
+
+**nLab:** [Morse theory](https://ncatlab.org/nlab/show/Morse+theory). It says: “Morse theory is the method of studying the topology of a smooth manifold M by the study of Morse functions M → ℝ and their associated gradient flows.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+
+### Metric slopes find almost critical points
+
+**Remember:** Test actual downhill changes when derivatives do not exist.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The strong slope at a finite-valued point x measures the greatest local rate of decrease. It is the limit superior of max(f(x) − f(y), 0)/d(x,y) as y approaches x through other points. At an isolated point it is zero.
+
+**Problem.** Let f be lower semicontinuous, bounded below, and finite somewhere on a complete metric space, allowing the value +∞. There are points whose values approach its infimum and whose strong slopes approach zero.
+
+**How the definition helps.** The distance penalty in Ekeland’s variational principle bounds precisely the local rate of decrease (our own). For each ε &gt; 0 the principle gives a near-minimizer x satisfying f(x) − f(y) ≤ εd(x,y) for every y (our own). Dividing by distance bounds the strong slope by ε while the chosen values approach the infimum (our own).
+
+**Paper or page:** [Slopes and Moreau-Rockafellar Theorem](https://arxiv.org/abs/2309.03505). It says: “Let (M, ρ) be a complete metric space and let f : M → ℝ ∪ {+∞} be a proper lower semicontinuous and bounded below function.”
+
+**Sources:**
+
+- [Milen Ivanov, Nadia Zlateva, Slopes and Moreau-Rockafellar Theorem](https://arxiv.org/abs/2309.03505)
+
 ### Palais–Smale compactness gives minimizers
 
 **Remember:** A nearly stationary minimizing sequence needs somewhere to converge.
@@ -98055,6 +102234,404 @@ a parallelogram.”
 **Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “if every sequence {uₖ} ⊂ H such that: {I\[uₖ\]} is bounded, and I′\[uₖ\] → 0 in H has a convergent subsequence in H.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Ray maxima give Nehari minimax
+
+**Remember:** Every ray reaches its energy peak on the Nehari set.
+
+*True by definition.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
+
+**Definition.** On a nonzero real Banach space take f(u) = ‖u‖²/2 − B(u)/p, with p &gt; 2. Assume B is continuous, positive away from zero, and satisfies B(tu) = tᵖB(u) for t &gt; 0. The Nehari set consists of nonzero u satisfying ‖u‖² = B(u).
+
+**Problem.** Among continuous paths from zero to a nonzero point of nonpositive energy, the infimum of path maxima equals the infimum on the Nehari set.
+
+**How the definition helps.** The Nehari equation selects the unique maximum on each ray, replacing a search over paths by one over ray maxima (our own). Extending a ray beyond its maximum to negative energy gives one inequality (our own). Homogeneity and continuity at zero give ‖u‖² &gt; B(u) uniformly near zero for nonzero u (our own). Every admissible path reaches the opposite inequality, so it crosses the Nehari set and gives the reverse bound (our own).
+
+**Paper or page:** [Entire Nodal Solutions with Prescribed Symmetry to Caffarelli-Kohn-Nirenberg Equations](https://arxiv.org/abs/2511.11543). It says: “beginning at 0 with non-trivial endpoint of non-positive energy”
+
+**Sources:**
+
+- [Edward Chernysh, Entire Nodal Solutions with Prescribed Symmetry to Caffarelli-Kohn-Nirenberg Equations](https://arxiv.org/abs/2511.11543)
+
+### Broken geodesics retain sublevel topology
+
+**Remember:** Keep the joints and shorten everything between them.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For a fixed partition of time, a broken geodesic joins successive path values by shortest geodesics at constant speed on each interval.
+
+**Problem.** Consider fixed-endpoint paths of energy at most E on a compact Riemannian manifold without boundary, where energy integrates squared speed. For a sufficiently fine partition, this space deforms continuously onto its broken geodesics while fixing them throughout.
+
+**How the definition helps.** Replacing each segment by its shortest geodesic preserves the joints and can only lower energy (our own). Replacing a growing initial portion of each segment gives a continuous deformation in the norm measuring the path and its first derivative (our own). The energy bound makes short portions uniformly short enough to have unique shortest replacements varying smoothly with their endpoints (our own).
+
+**nLab:** [geodesic](https://ncatlab.org/nlab/show/geodesic). It says: “A geodesic may not globally minimize the distance between its end points.”
+
+**Sources:**
+
+- [Richard S. Palais, Morse theory on Hilbert manifolds (1963)](https://doi.org/10.1016/0040-9383(63)90013-2)
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Bumpiness makes bounded geodesic counts finite
+
+**Remember:** An isolated orbit cannot be the limit of other closed orbits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A Jacobi field solves the equation obtained by linearizing the geodesic equation. A metric is bumpy if every periodic Jacobi field on every nonconstant closed geodesic is a constant multiple of its velocity.
+
+**Problem.** On a compact Riemannian manifold without boundary, a bumpy metric has finitely many closed unit-speed geodesics below each length bound, up to time shift.
+
+**How the definition helps.** Bumpiness isolates each periodic orbit by the implicit function theorem on a section transverse to the flow (our own). The positive injectivity radius bounds periods away from zero (our own). Compactness of unit tangent vectors and bounded periods would give a limiting periodic orbit for any infinite sequence, contradicting isolation (our own).
+
+**Paper or page:** [Morse Index bound of simple closed geodesics on 2-spheres and strong Morse Inequalities](https://arxiv.org/abs/2303.00644). It says: “This induces a nontrivial Jacobi field of w and contradicts to the fact that the metric is bumpy.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Dongyeong Ko, Morse Index bound of simple closed geodesics on 2-spheres and strong Morse Inequalities](https://arxiv.org/abs/2303.00644)
+
+### Conjugate endpoints detect Hessian nullity
+
+**Remember:** A missed endpoint direction is a zero direction of the energy.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The exponential map sends an initial velocity to the endpoint of its geodesic at time one. The conjugate multiplicity is the dimension of the kernel of the map’s derivative at that velocity.
+
+**Problem.** Along a Riemannian geodesic with fixed endpoints, the dimension of the kernel of the energy Hessian equals the conjugate multiplicity at the final endpoint.
+
+**How the definition helps.** The exponential map records exactly where a change of initial velocity sends the endpoint (our own). Differentiating this variation gives a Jacobi field, a solution of the linearized geodesic equation starting at zero (our own). The second variation identifies the kernel of the energy Hessian with those fields that also vanish at the final endpoint (our own).
+
+**Paper or page:** [On the Cut Locus of Submanifolds of a Finsler Manifold](https://arxiv.org/abs/2307.11045). It says: “J is a Jacobi field along γ, satisfying J(0) = 0 = J(t).”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Aritra Bhowmick, Sachchidanand Prasad, On the Cut Locus of Submanifolds of a Finsler Manifold](https://arxiv.org/abs/2307.11045)
+
+### Constant loops give Morse–Bott minima
+
+**Remember:** Moving the base point does not bend a constant loop.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A submanifold of minima is Morse–Bott if the second derivative has exactly the tangent directions as its kernel and is invertible across the submanifold.
+
+**Problem.** For loops of square integrable speed on a closed Riemannian manifold, the constant loops form a Morse–Bott submanifold of energy minima.
+
+**How the definition helps.** The tangent directions move the constant loop to another point without changing its energy (our own). The second derivative of energy measures the integral of the squared derivative of a variation field, up to a positive factor (our own). The periodic Poincaré inequality bounds the squared norm of every mean-zero field by this integral, giving invertibility across the constant loops (our own).
+
+**nLab:** [Morse theory](https://ncatlab.org/nlab/show/Morse+theory). It says: “Morse theory is the method of studying the topology of a smooth manifold M by the study of Morse functions M → ℝ and their associated gradient flows.”
+
+**Sources:**
+
+- [Wolfgang Ziller, The free loop space of globally symmetric spaces (1977)](https://doi.org/10.1007/BF01390161)
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free homotopy prevents constant minimizers
+
+**Remember:** A loop that cannot contract cannot minimize to a point.
+
+*Rules out counterexamples.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Two loops belong to the same free homotopy class if one deforms continuously into the other while its starting point may move. A class is nontrivial if it contains no constant loop.
+
+**Problem.** Every nontrivial free homotopy class on a closed Riemannian manifold has an energy-minimizing closed geodesic.
+
+**How the definition helps.** The class excludes zero-energy loops while allowing variations that move the join (our own). A bounded-energy minimizing sequence has a uniformly convergent subsequence by the Cauchy–Schwarz inequality and compactness (our own). Nearby loops are homotopic, and lower semicontinuity of energy makes the limit a minimizer (our own). The first variation then gives a smooth periodic geodesic (our own).
+
+**Paper or page:** [On the space of metrics with non-positive curvature](https://arxiv.org/abs/2506.19983). It says: “in particular there is a smooth closed geodesic γ₁ ∈ β.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free loop variations rule out corners
+
+**Remember:** Moving the join tests whether the two velocities agree.
+
+*Rules out counterexamples.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Free loop energy integrates squared speed over one period of an absolutely continuous loop on a Riemannian manifold with square integrable speed. A variation may move the common starting and ending point.
+
+**Problem.** Every critical point of the free loop energy is a smooth periodic geodesic, possibly constant. A single geodesic arc meeting its starting point with a different velocity cannot be critical.
+
+**How the definition helps.** Moving the join tests the difference between the incoming and outgoing velocities (our own). Variations away from the join give the geodesic equation and hence a smooth geodesic on the open interval (our own). Integration by parts pairs the velocity difference with every possible displacement of the join, forcing the velocities to agree (our own).
+
+**Wikipedia:** [Closed geodesic](https://en.wikipedia.org/wiki/Closed_geodesic). It says: “closed geodesics of period 1 are precisely the critical points of the energy function E : ΛM → ℝ”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Jacobi interpolation gives a matrix index
+
+**Remember:** Variation at the joints holds all the negative directions.
+
+*True by definition.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A broken Jacobi field is a continuous variation field along a geodesic that solves the linearized geodesic equation separately on each partition interval. For fixed endpoints, the field vanishes at both ends.
+
+**Problem.** For a sufficiently fine partition, the fixed-endpoint energy Hessian along a Riemannian geodesic has the same index on broken Jacobi fields as on all variations.
+
+**How the definition helps.** Jacobi interpolation replaces the search over all variations by a search over their values at finitely many joints (our own). The index counts the greatest dimension on which the energy Hessian is negative definite (our own). Subtracting the interpolant leaves a field vanishing at every joint, orthogonal to the interpolant for the Hessian by integration by parts (our own). Short segments have positive second variation for fixed endpoints, so the remaining fields add no negative directions (our own).
+
+**Wikipedia:** [Jacobi field](https://en.wikipedia.org/wiki/Jacobi_field). It says: “values of J and D/dt J at one point of γ uniquely determine the Jacobi field.”
+
+**Paper or page:** [The Morse index theorem in the case of two variable endpoints in conic Finsler manifolds](https://arxiv.org/abs/2302.00611). It says: “Equality holds only if u(t) = v(t) for all t ∈ \[a,b\].”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+- [Guangcun Lu, The Morse index theorem in the case of two variable endpoints in conic Finsler manifolds](https://arxiv.org/abs/2302.00611)
+
+### Relative sweepouts find nonconstant geodesics
+
+**Remember:** Measure loop families relative to the constants, not against them.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A relative sweepout maps a disk continuously into loops with square integrable velocity, using the norm that controls both loops and velocities. Boundary loops are constant, and deformations preserve this condition and fix one marked boundary value. The width of a deformation class is the infimum of maximum energies among its sweepouts.
+
+**Problem.** On a compact Riemannian manifold without boundary, every nonzero relative sweepout class has positive width equal to the energy of a nonconstant closed geodesic.
+
+**How the definition helps.** A sweepout that deforms entirely into constant loops represents zero (our own). All sufficiently low-energy loops retract continuously onto constant loops, giving every nonzero class a positive energy barrier (our own). Compactness for sequences with nearly zero derivative and the deformation theorem for loop energy give a critical loop at that height (our own).
+
+**Wikipedia:** [Lyusternik–Fet theorem](https://en.wikipedia.org/wiki/Lyusternik%E2%80%93Fet_theorem). It says: “on every compact Riemannian manifold there exists a closed geodesic.”
+
+**Sources:**
+
+- [Wilhelm Klingenberg, Lectures on Closed Geodesics (1978)](https://doi.org/10.1007/978-3-642-61881-9)
+
+### Free boundary coordinates are Steklov eigenfunctions
+
+**Remember:** The outward unit conormal is the position vector.
+
+*True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A free boundary minimal surface in the unit ball has zero mean curvature and meets the sphere orthogonally along its boundary. A Steklov eigenfunction is harmonic inside, and its outward normal derivative equals a constant times its value along the boundary.
+
+**Problem.** Each nonzero coordinate function of a compact free boundary minimal surface in the Euclidean unit ball has Steklov eigenvalue one for the induced metric.
+
+**How the definition helps.** Orthogonality makes the outward unit normal within the surface equal to the position vector along the boundary (our own explanation). Each coordinate therefore equals its own outward derivative. The coordinate Laplacian formula gives interior harmonicity from zero mean curvature. The area variation formula identifies these geometric conditions with stationarity when the boundary can slide on the sphere.
+
+**Paper or page:** [Non planar free boundary minimal disks into ellipsoids](https://arxiv.org/abs/2304.12111v2). It says: “free boundary minimal immersion such that”
+
+**Sources:**
+
+- [A. Fraser and R. Schoen, Sharp eigenvalue bounds and minimal surfaces in the ball](https://doi.org/10.1007/s00222-015-0604-x)
+
+### Positive curvature makes stable surfaces spherical
+
+**Remember:** Test stability with constant speed, then count curvature.
+
+*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A two-sided surface has a continuous unit normal. A minimal surface is stationary for area, meaning each smooth normal variation has zero first area derivative. It is stable when each such variation with compact support has nonnegative second area derivative.
+
+**Problem.** In an oriented three-manifold of positive scalar curvature, each component of a closed two-sided stable minimal surface is a sphere.
+
+**How the definition helps.** Stability permits a constant normal speed on each closed component, eliminating the derivative term in the second area variation (our own explanation). The Gauss equation then bounds twice the total intrinsic curvature below by the integral of the positive ambient scalar curvature. Each component is orientable, so the Gauss–Bonnet theorem forces it to be a sphere.
+
+**Paper or page:** [Minimal surfaces and comparison geometry](https://arxiv.org/abs/2510.04481v1). It says: “then each component of a closed two-sided stable minimal surface”
+
+**Sources:**
+
+- [R. Schoen and S.-T. Yau, Existence of Incompressible Minimal Surfaces and the Topology of Three Dimensional Manifolds with Non-Negative Scalar Curvature (1979)](https://doi.org/10.2307/1971247)
+
+### Stability rules out nonplanar complete surfaces
+
+**Remember:** Complete stable minimal surfaces in three-dimensional Euclidean space are flat.
+
+*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A two-sided minimal surface has a continuous unit normal and zero mean curvature. It is stable if every smooth normal variation supported on a compact set has nonnegative second area derivative.
+
+**Problem.** The image of a connected, complete, two-sided stable minimal immersion without boundary in Euclidean three-space is a plane.
+
+**How the definition helps.** Stability bounds bending by the energy needed to vary the surface in its normal direction (our own explanation). The stable plane theorem uses completeness and this bound to show that the surface has no bending anywhere. The complete Enneper surface gives a counterexample without stability, since sufficiently large disks on it are unstable.
+
+**Paper or page:** [Minimal surfaces and the new main inequality](https://arxiv.org/abs/2301.00249v2). It says: “is unstable.”
+
+**Sources:**
+
+- [M. do Carmo and C. K. Peng, Stable complete minimal surfaces in ℝ³ are planes (1979)](https://doi.org/10.1090/s0273-0979-1979-14689-5)
+
+### Strict convexity makes minimal graphs unique
+
+**Remember:** Strict convexity allows only one stationary graph with given boundary values.
+
+*True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A scalar minimal graph is the graph of a real function u that is stationary for the area integral with density √(1 + \|∇u\|²). Stationary means that every smooth variation fixing the boundary values has zero first area derivative.
+
+**Problem.** On a bounded connected planar domain with smooth boundary, two scalar minimal graphs smooth up to the boundary coincide if their boundary values agree.
+
+**How the definition helps.** The area definition gives a strictly convex function along the straight interpolation between two distinct graphs with equal boundary values (our own explanation). Their gradients must differ somewhere, since equal gradients and equal boundary values force the functions to coincide. Strict convexity rules out zero derivatives at both ends. The area variation formula identifies stationarity with the usual zero mean curvature equation.
+
+**Paper or page:** [The Dirichlet problem for the minimal surface system on smooth domains](https://arxiv.org/abs/2506.23245v1). It says: “Then there exists a unique solution”
+
+**Sources:**
+
+- [H. Jenkins and J. Serrin, Variational problems of minimal surface type II. Boundary value problems for the minimal surface equation (1966)](https://doi.org/10.1007/bf00282252)
+
+### Three boundary points prevent disk collapse
+
+**Remember:** Fix three boundary points to stop the disk from drifting.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A normalized Plateau disk harmonically extends a parametrization of a simple closed curve in Euclidean space, one coordinate at a time. The boundary map is a uniform limit of homeomorphisms that traverse the curve in the same direction. Three distinct fixed boundary points map to three prescribed curve points in cyclic order.
+
+**Problem.** Every sequence of normalized Plateau disks spanning the same curve with uniformly bounded Dirichlet energy has a uniformly convergent subsequence on the closed disk.
+
+**How the definition helps.** Fixing three points prevents conformal changes of disk coordinates from squeezing almost the whole boundary towards one point (our own explanation). The Courant–Lebesgue estimate bounds oscillation on short arcs, and the ordered boundary maps turn that bound into uniform continuity across the family. A compactness theorem then gives boundary convergence, which harmonic extension carries into the disk.
+
+**Wikipedia:** [Plateau's problem](https://en.wikipedia.org/wiki/Plateau%27s_problem). It says: “Douglas minimized the now-named Douglas integral, while Radó minimized the "energy".”
+
+**Sources:**
+
+- [J. Douglas, Solution of the problem of Plateau (1931)](https://doi.org/10.1090/s0002-9947-1931-1501590-9)
+
+### Finite energy removes punctures
+
+**Remember:** Finite energy becomes small on disks shrinking to a puncture.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A map has finite Dirichlet energy near a puncture if half its squared derivative has finite integral over a punctured disk. A harmonic map is a critical point of this energy under changes supported inside the domain.
+
+**Problem.** A smooth harmonic map from a punctured disk to a closed Riemannian manifold extends smoothly across the puncture if its energy is finite.
+
+**How the definition helps.** Finite energy makes the integral arbitrarily small on sufficiently small disks (our own explanation). The small-energy theorem then extends the map with continuous first derivatives, and the harmonic map equation gives smoothness. The circle map with angle log \|z\| winds endlessly near zero and has infinite energy (our own example).
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “then f can be extended to D in C¹.”
+
+**Sources:**
+
+- [J. Sacks and K. Uhlenbeck, The Existence of Minimal Immersions of 2-Spheres (1981)](https://doi.org/10.2307/1971131)
+
+### Gradient flow dissipates map energy
+
+**Remember:** Integrated squared speed gives the rate of energy loss.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Dirichlet energy integrates half the squared length of a map’s derivative. Harmonic map heat flow moves each map along the negative gradient of this energy. The inner product for this gradient integrates the pointwise inner products of two velocities.
+
+**Problem.** Along a smooth harmonic map heat flow on a compact domain without boundary, the energy derivative equals minus the integral of squared speed.
+
+**How the definition helps.** The velocity equals the negative gradient, so the chain rule gives the energy derivative as minus the integrated squared speed (our own explanation). The first variation formula identifies this velocity with the trace of the map’s second derivative, recovering the usual heat equation.
+
+**Wikipedia:** [Harmonic map](https://en.wikipedia.org/wiki/Harmonic_map). It says: “the Laplacian of f can be thought of as the gradient of the Dirichlet energy”
+
+**Sources:**
+
+- [J. Eells Jr. and J. H. Sampson, Harmonic Mappings of Riemannian Manifolds (1964)](https://doi.org/10.2307/2373037)
+
+### Harmonic forms classify harmonic circle maps
+
+**Remember:** Integrate the harmonic form and take angles modulo 2π.
+
+*Makes the theorem clean to state or prove.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** Local angles of a circle map differ by constant multiples of 2π, so their derivatives form one global differential form. A circle map is harmonic when this form has zero divergence. The form is already closed because it is locally a derivative.
+
+**Problem.** Each homotopy class of maps from a connected closed Riemannian manifold to the unit circle contains exactly one harmonic map up to rotation.
+
+**How the definition helps.** Differentiating the angle turns the harmonic map equation into a linear equation on forms (our own explanation). Integrals around closed loops record angle changes in multiples of 2π and determine the homotopy class. The Hodge theorem gives exactly one closed form with zero divergence and those loop integrals. Integrating it modulo 2π recovers the map up to its starting angle.
+
+**nLab:** [Hodge theorem](https://ncatlab.org/nlab/show/Hodge+theorem). It says: “has precisely one harmonic cocycle reprentative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hopf differentials make harmonic spheres conformal
+
+**Remember:** The sphere has no nonzero holomorphic quadratic differential to record distortion.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The Hopf differential of a surface map is the part of its pulled back metric proportional to dz² in a complex coordinate z. It vanishes exactly where the derivative scales lengths equally in all directions, allowing zero scale.
+
+**Problem.** Every smooth harmonic map from the Riemann sphere to a Riemannian manifold is weakly conformal, meaning its derivative is conformal or zero.
+
+**How the definition helps.** The Hopf differential packages the failure to preserve angles in one object (our own explanation). For a harmonic map, the harmonic map equation makes its coefficient holomorphic in every complex coordinate. On the Riemann sphere every such quadratic differential vanishes, so the derivative scales all directions equally.
+
+**Paper or page:** [New examples of harmonic maps to the hyperbolic plane via Bäcklund transformation](https://arxiv.org/abs/2112.06601v3). It says: “the Hopf differential of u is holomorphic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Kähler splitting makes holomorphic maps minimize energy
+
+**Remember:** The homotopy term stays fixed and the error vanishes for holomorphic maps.
+
+*True by definition. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On a Kähler manifold, the metric g and complex structure J give the closed area form ω(v,w) = g(Jv,w). For a surface map, define its antiholomorphic energy by integrating ½\|b − Ja\|². Here a and b are its derivatives along a positively oriented orthonormal frame.
+
+**Problem.** A holomorphic map from a closed Riemann surface to a Kähler manifold minimizes Dirichlet energy among all smoothly homotopic maps.
+
+**How the definition helps.** The antiholomorphic energy measures exactly how much Dirichlet energy exceeds the integral of the pulled-back area form (our own explanation). Expanding the square gives the usual energy density ½(\|a\|² + \|b\|²) minus ω(a,b). A holomorphic map has b = Ja, so the excess vanishes. Stokes’ theorem keeps the area integral fixed throughout a homotopy.
+
+**Wikipedia:** [Calibrated geometry](https://en.wikipedia.org/wiki/Calibrated_geometry). It says: “the calibrated submanifolds are the complex submanifolds.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product energy separates harmonic maps
+
+**Remember:** Split the energy to read off the harmonic factors.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A harmonic map is a critical point of Dirichlet energy, the integral of half the squared norm of its derivative. For a product target, use the metric that sums the squared lengths from the factors.
+
+**Problem.** A smooth map from a closed Riemannian manifold into a Riemannian product is harmonic exactly when both component maps are harmonic.
+
+**How the definition helps.** The energy of a map into a product is the sum of its component energies (our own explanation). Varying one component at a time therefore tests both energy derivatives independently. The first variation formula identifies this test with the usual harmonic map equation.
+
+**nLab:** [harmonic map](https://ncatlab.org/nlab/show/harmonic+map). It says: “which is a critical point of the Dirichlet kinetic energy functional”
+
+**Sources:**
+
+- [J. Eells Jr. and J. H. Sampson, Harmonic Mappings of Riemannian Manifolds (1964)](https://doi.org/10.2307/2373037)
+
+### Subcritical energy preserves homotopy in limits
+
+**Remember:** The higher power keeps limits in the same homotopy class.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** On a fixed closed Riemannian surface, the Sacks–Uhlenbeck energy integrates (1 + \|du\|²)ᵅ, where du is the derivative and α exceeds one.
+
+**Problem.** For fixed α, continuous maps into a closed Riemannian manifold with uniformly bounded Sacks–Uhlenbeck energy have a uniformly convergent subsequence. All sufficiently late maps in that subsequence are homotopic to its limit.
+
+**How the definition helps.** The higher power controls oscillation because the derivative exponent 2α exceeds the surface dimension (our own explanation). The Sobolev embedding bounds how fast the maps can vary, giving uniform convergence along a subsequence. Joining nearby values by short geodesics gives a continuous deformation to the limit. At α = 1, conformal automorphisms of the round sphere can concentrate at a point.
+
+**Paper or page:** [Existence and Stability of α-harmonic Maps](https://arxiv.org/abs/2208.07995v1). It says: “it has a vanishing α-tension field.”
+
+**Sources:**
+
+- [J. Sacks and K. Uhlenbeck, The Existence of Minimal Immersions of 2-Spheres (1981)](https://doi.org/10.2307/1971131)
+
+### Surface rescaling preserves harmonic morphisms
+
+**Remember:** On a surface, changing scale does not change harmonic tests.
+
+*True by definition.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** A harmonic morphism is a smooth map that pulls back each local solution of the Laplace equation to another solution. Pullback means composing the function with the map.
+
+**Problem.** Multiplying the metric of a target surface by any smooth positive function preserves every harmonic morphism into that surface.
+
+**How the definition helps.** The definition tests exactly the same functions after rescaling. On a surface, rescaling multiplies the Laplace operator by the reciprocal factor (our own explanation). The Fuglede–Ishihara theorem identifies this test with the usual conditions on the derivatives of the map.
+
+**Wikipedia:** [Harmonic morphism](https://en.wikipedia.org/wiki/Harmonic_morphism). It says: “This means that, at least for local studies, the codomain can be chosen to be the complex plane with its standard flat metric.”
+
+**Sources:**
+
+- [B. Fuglede, Harmonic morphisms between Riemannian manifolds (1978)](https://doi.org/10.5802/aif.691)
+- [T. Ishihara, A mapping of Riemannian manifolds which preserves harmonic functions (1979)](https://doi.org/10.1215/kjm/1250522428)
 
 ### Clifford multiplication makes Dirac operators elliptic
 
@@ -98104,6 +102681,58 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact graph domains give finiteness
+
+**Remember:** A bounded graph sequence has an ambient convergent subsequence.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** A Hilbert complex is a sequence of Hilbert spaces with closed, densely defined derivatives d satisfying d² = 0. Call it compact if any sequence bounded in norm together with its derivatives and adjoint derivatives has a convergent subsequence in the ambient space.
+
+**Problem.** A finite compact Hilbert complex has closed differential ranges and finite-dimensional cohomology.
+
+**How the definition helps.** Compactness rules out infinitely many orthonormal harmonic vectors and sequences that would prevent a closed range. In our own argument, unit vectors perpendicular to the harmonic space cannot have both derivative norms tending to zero. A convergent subsequence would give a harmonic unit vector perpendicular to that space. The resulting lower bound gives closed ranges, so harmonic vectors represent cohomology.
+
+**Paper or page:** [Families of Annihilating Skew-Selfadjoint Operators and their Connection to Hilbert Complexes](https://arxiv.org/abs/2307.00946v2). It says: “compact if and only if the embedding dom(S) ↪︎ H is compact.”
+
+**Sources:**
+
+- [J. Brüning and M. Lesch, Hilbert complexes (1992)](https://doi.org/10.1016/0022-1236(92)90147-b)
+
+### Completeness gives one derivative domain
+
+**Remember:** Small cutoff gradients preserve the derivative.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The minimal domain consists of limits of compactly supported smooth forms for which both the forms and their derivatives converge in L². The maximal domain allows every L² form whose derivative, tested against smooth compactly supported forms, also belongs to L².
+
+**Problem.** On a complete Riemannian manifold without boundary, the minimal and maximal exterior derivatives on L² forms coincide.
+
+**How the definition helps.** Completeness supplies cutoffs with arbitrarily small gradients, so cutting off a form also approximates its derivative. Our own proof then smooths the compactly supported approximations. On the incomplete interval (0,1), the constant function belongs to the maximal domain, but minimal-domain functions vanish at the endpoints.
+
+**Paper or page:** [Lipschitz-homotopy invariants:L²-cohomology, Roe index and ρ-class](https://arxiv.org/abs/2109.07400v1). It says: “Then the maximal and the minimal domain of the exterior derivative coincide”
+
+**Sources:**
+
+- [M. P. Gaffney, The Heat Equation Method of Milgram and Rosenbloom for Open Riemannian Manifolds (1954)](https://doi.org/10.2307/1969846)
+
+### Exact symbols make Laplacians elliptic
+
+**Remember:** Exact symbols leave no null vector for the Laplacian.
+
+*True by definition.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 3: graduate.
+
+**Definition.** The principal symbol records the highest derivatives of an operator in a chosen covector direction. A differential complex is elliptic if each symbol image equals the next symbol kernel at every nonzero covector.
+
+**Problem.** In a first-order elliptic complex with bundle metrics, the Laplacian DD⁎ + D⁎D has invertible symbol at every nonzero covector. Here D is the differential and D⁎ its adjoint.
+
+**How the definition helps.** Symbol exactness replaces a determinant calculation with a test for membership in two orthogonal spaces. In our own proof, a Laplacian symbol kills a vector exactly when the outgoing symbol and the incoming adjoint symbol both kill it. Such a vector belongs to the incoming image and is perpendicular to it.
+
+**Wikipedia:** [Elliptic complex](https://en.wikipedia.org/wiki/Elliptic_complex). It says: “Elliptic complexes isolate those features common to the de Rham complex and the Dolbeault complex which are essential for performing Hodge theory.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Eta phases forget the filling
 
 **Remember:** Two fillings can change the index integral only by an integer.
@@ -98121,6 +102750,22 @@ a parallelogram.”
 **Sources:**
 
 - [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Hodge–Dirac index counts Euler characteristic
+
+**Remember:** Even harmonic forms count up and odd ones count down.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.DG, math.AP. Level 3: graduate.
+
+**Definition.** The even-to-odd Hodge–Dirac operator sends an even-degree form to (d + d⁎) applied to it. Here d is the exterior derivative and d⁎ its adjoint. The index is the kernel dimension minus the adjoint kernel dimension.
+
+**Problem.** On a closed oriented Riemannian manifold, the index of the even-to-odd Hodge–Dirac operator is the Euler characteristic.
+
+**How the definition helps.** Grouping degrees by parity turns the alternating sum for the Euler characteristic into one index. Our own argument identifies the two kernels with even and odd harmonic forms. The Hodge theorem gives one harmonic form per cohomology class.
+
+**nLab:** [Hodge theorem](https://ncatlab.org/nlab/show/Hodge+theorem). It says: “Harmonic forms are precisely those in the kernel of d + d\*, which are precisely those in the joint kernel of d and d\*.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Index characters vanish without fixed points
 
@@ -98212,6 +102857,226 @@ a parallelogram.”
 
 - [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
 
+### Signed heat traces recover eta
+
+**Remember:** Insert D into the squared heat operator to restore the signs.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J35. arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a self-adjoint elliptic differential operator D of positive order on a closed manifold, the eta function counts positive and negative eigenvalues with opposite signs. It weights each nonzero eigenvalue λ by \|λ\| to the power −s and continues the resulting signed sum analytically.
+
+**Problem.** For sufficiently large real part of s, Γ((s+1)/2)η(s) equals the integral over t &gt; 0 of t to the power (s−1)/2 times Tr(D exp(−tD²)).
+
+**How the definition helps.** Inserting D into the heat trace restores the sign lost on squaring each eigenvalue. Our own calculation applies the gamma integral to each nonzero mode, turning its signed heat contribution into the corresponding eta weight. Absolute convergence in this half-plane permits termwise integration.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “The eta function is a kind of odd version of the Mellin transform of an odd version of the theta function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A ground state removes heat killing
+
+**Remember:** Divide by the ground state so the generator kills constants.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For H = Δ+V, take the nonnegative Laplacian Δ and a smooth real function V on a closed connected Riemannian manifold. Choose a positive eigenfunction h for the lowest eigenvalue λ. The ground state transform sends f to h⁻¹(H−λ)(hf) and weights volume by h².
+
+**Problem.** The transformed operator is a weighted Laplacian, and its heat flow preserves the constant function one.
+
+**How the definition helps.** Conjugation turns the lowest eigenfunction into the constant one, which the shifted operator kills. Our own product calculation gives the weighted Laplacian f ↦ −h⁻² div(h²∇f). The ground state theorem supplies a strictly positive h, so division by h is valid everywhere.
+
+**Wikipedia:** [Doob's h-transform](https://en.wikipedia.org/wiki/Doob%27s_h-transform). It says: “The key advantage of Doob's h-transform is that the transition probabilities of the transformed process are explicitly given as functions of h.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conformal surfaces share heat recurrence
+
+**Remember:** In two dimensions, conformal changes leave gradient energy unchanged.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.DG, math.SP. Level 3: graduate.
+
+**Definition.** A surface is parabolic when every compact set has zero capacity. Capacity is the infimum of gradient energy over smooth compactly supported functions that are at least 1 near the set.
+
+**Problem.** On complete connected surfaces without boundary, conformally related metrics have the same Brownian recurrence behavior. Recurrence means Brownian motion returns to every open neighborhood of its starting point arbitrarily late with probability one.
+
+**How the definition helps.** Capacity uses gradient energy, whose gradient and area factors cancel under a conformal change in two dimensions. Our own calculation therefore gives identical capacities. The capacity criterion identifies vanishing capacity of every compact set with Brownian recurrence.
+
+**Paper or page:** [Parabolicity of invariant Surfaces](https://arxiv.org/abs/2312.02837). It says: “In dimension 2, parabolicity is preserved under conformal changes in the metric tensor.”
+
+**Sources:**
+
+- [Andrea Del Prete, Vicent Gimeno i Garcia, Parabolicity of invariant Surfaces](https://arxiv.org/abs/2312.02837)
+
+### Diffusion distances use twice the heat time
+
+**Remember:** Inner products of heat profiles let the two times add.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The heat profile Kₜ(x,·) gives the temperature distribution at time t from a unit point source at x. Diffusion distance between x and y is the L² distance between their profiles, using Riemannian volume.
+
+**Problem.** On a closed Riemannian manifold, squared diffusion distance equals K₂ₜ(x,x)+K₂ₜ(y,y)−2K₂ₜ(x,y) for every t &gt; 0.
+
+**How the definition helps.** The profile definition turns each inner product into two successive heat steps. Our own calculation expands the squared distance and uses kernel symmetry to compose the two steps. The heat composition law then evaluates all three terms at time 2t without computing diffusion coordinates.
+
+**Wikipedia:** [Diffusion map](https://en.wikipedia.org/wiki/Diffusion_map). It says: “Dₜ(xᵢ,xⱼ)² = ∑ᵧ (p(y,t\|xᵢ)−p(y,t\|xⱼ))²/ϕ₀(y)”
+
+**Sources:**
+
+- [Ronald Coifman and Stéphane Lafon, Diffusion Maps (2006)](https://doi.org/10.1016/j.acha.2006.04.006)
+
+### Heat traces multiply on products
+
+**Remember:** Eigenvalues add on products, so their heat weights multiply.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The spectral heat operator at time t multiplies each Laplace eigenfunction with eigenvalue λ by exp(−tλ). Its heat kernel is the function that represents this operator by integration.
+
+**Problem.** On a product of closed Riemannian manifolds with the product metric, the scalar heat kernel equals the product of the two heat kernels. Their heat traces multiply as well.
+
+**How the definition helps.** The exponential converts sums of eigenvalues into products of heat weights. Our own calculation uses products of eigenfunctions, which form a complete basis because the product Laplacian adds the factor Laplacians. Smooth convergence gives the kernel formula without solving the heat equation again.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “The heat kernel K for P is then the kernel of an integral operator representing the heat operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Iterated energy controls heat gradients
+
+**Remember:** The iterated energy is the derivative of a heat interpolation.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a smooth weight V on a closed Riemannian manifold, let Lf = div(∇f)−⟨∇V,∇f⟩ generate heat flow Pₜ. Define the gradient energy Γ(f) = \|∇f\|² and its iteration Γ₂(f) = (LΓ(f)−2⟨∇f,∇Lf⟩)/2.
+
+**Problem.** If Γ₂(f) ≥ KΓ(f) for all smooth f, then Γ(Pₜf) ≤ exp(−2Kt)PₜΓ(f) at every point and every time t ≥ 0.
+
+**How the definition helps.** The iterated energy collects exactly the terms from differentiating a heat average of the gradient energy. Set u = Pₜ₋ₛf and differentiate PₛΓ(u) to obtain 2PₛΓ₂(u). Positivity of heat flow gives the differential inequality, which integrates to the claim. The weighted Bochner formula connects this condition to a geometric curvature bound.
+
+**Paper or page:** [A Bakry-Émery approach to Lipschitz transportation on manifolds](https://arxiv.org/abs/2310.02478). It says: “Γ(Pₜf) ≤ exp(−2ρt) Pₜ(Γ(f)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spectral gaps set heat decay
+
+**Remember:** Apply the energy bound to the moving temperature.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** On a closed connected Riemannian manifold, the spectral gap λ is the largest constant satisfying ∫\|∇f\|² ≥ λ∫\|f\|² for every smooth mean-zero function f.
+
+**Problem.** On square-integrable mean-zero functions, the heat operator at time t ≥ 0 has norm exactly exp(−tλ).
+
+**How the definition helps.** The energy definition bounds the derivative of the squared norm along heat flow by −2λ times that norm squared. Our own proof integrates this inequality. The variational characterization identifies λ with the first positive eigenvalue, whose eigenfunctions attain equality.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “\|θ(t) − 1\| ≤ Cγ exp(−γt), for any t ≥ 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wave propagation localizes heat
+
+**Remember:** Only the Gaussian tail reaches past the wave front.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The wave formula defines heat flow at time t by averaging the wave operators cos(s√Δ) over a centered Gaussian of variance 2t. Here Δ is the nonnegative scalar Laplacian. The Gaussian Fourier transform gives the usual heat operator exp(−tΔ).
+
+**Problem.** Suppose square-integrable functions f and g on a closed Riemannian manifold have supports at distance r. At t &gt; 0, their heat pairing \|⟨exp(−tΔ)f,g⟩\| is at most exp(−r²/(4t)) times their L² norms multiplied together.
+
+**How the definition helps.** Finite wave speed removes all wave times with \|s\| &lt; r from the average. In our own proof, each remaining wave operator has norm at most one. The two-sided Gaussian tail is at most exp(−r²/(4t)), giving the bound.
+
+**Paper or page:** [The Gromov-Lawson index and the Baum-Connes assembly map](https://arxiv.org/abs/2103.03495). It says: “Moreover, it has finite propagation ≤ t \|x\|.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Canonical relations track singular directions
+
+**Remember:** Keep the output directions paired with singular input directions.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A Fourier integral operator combines oscillations governed by a phase. Where its frequency derivative vanishes, pair the output derivative with the negative input derivative. These pairs form the canonical relation, a relation between output and input frequency directions.
+
+**Problem.** Suppose both directions in every pair are nonzero. For compactly supported distributions, every output wave front direction pairs with an input wave front direction.
+
+**How the definition helps.** The canonical relation lists the only routes by which a singular direction can reach the output. In our own explanation, wave front directions are those where localization fails to give rapid Fourier decay. Estimates for oscillatory kernels exclude all other routes.
+
+**Paper or page:** [Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity](https://arxiv.org/abs/2212.00243v1). It says: “WF(Af) ⊂ C ∘ WF(f).”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Characteristic sets locate hidden singularities
+
+**Remember:** An operator can hide a singularity only in a characteristic direction.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The characteristic set consists of the nonzero frequencies where the leading symbol, the highest-order frequency term, vanishes. The wave front set records positions and directions where local Fourier decay fails to beat every inverse power.
+
+**Problem.** For a properly supported scalar classical pseudodifferential operator A, a distribution u and its image Au have identical wave front sets outside the characteristic set.
+
+**How the definition helps.** The characteristic set marks precisely where one cannot start an inverse by dividing by the leading symbol. In our own explanation, restricting either kernel variable to a compact set also confines the other to a compact set. The local inverse theorem then recovers u from Au up to a smooth error in each remaining direction.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(Au) ⊂ WF u ⊂ WF(Au) ∪ Char A.”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Invertible symbols give Fredholm operators
+
+**Remember:** Invert at high frequencies and leave only compact errors.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A classical pseudodifferential operator is elliptic when its leading symbol, the highest-order frequency term, is invertible at every nonzero covector. An operator is Fredholm when its range is closed and its kernel and cokernel have finite dimension.
+
+**Problem.** On a compact manifold without boundary, a classical operator of order m is Fredholm between Sobolev orders s and s − m exactly when elliptic.
+
+**How the definition helps.** Ellipticity turns the Fredholm criterion into a pointwise test on the leading symbol. In our own explanation, symbol inversion constructs an inverse up to smooth errors, which are compact here. Conversely, localized high-frequency tests detect a singular leading symbol. Sobolev order measures regularity in square mean.
+
+**Paper or page:** [Analysis on noncompact manifolds and Index Theory: Fredholm conditions and Pseudodifferential operators](https://arxiv.org/abs/2308.06225v1). It says: “Then P : Hˢ(M; E) → Hˢ⁻ᵐ(M; F) is Fredholm if, and only if, it is elliptic.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://math.uchicago.edu/~shmuel/tom-readings/ASI.pdf)
+
+### Proper support preserves compact tests
+
+**Remember:** The transpose must keep test functions compactly supported.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A kernel has proper support if restricting either coordinate to a compact set confines the other coordinate to a compact set.
+
+**Problem.** A properly supported pseudodifferential operator acts on all distributions, meaning generalized functions, and carries compactly supported distributions to compactly supported distributions.
+
+**How the definition helps.** Proper support keeps the transpose of the operator from spreading a compactly supported test function to infinity. In our own argument, the transpose also preserves smoothness, so any distribution can act on the resulting test function. The other support bound controls the output. On the real line the constant kernel would require integrating the constant function over the entire line.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “Tσ₁ is properly supported”
+
+**Sources:**
+
+- [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
+
+### Strong ellipticity bounds energy below
+
+**Remember:** Nonzero is not enough for an energy lower bound.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a scalar classical operator of order 2m, its leading symbol is the highest-order frequency term. Strong ellipticity means that its real part is positive on every unit covector.
+
+**Problem.** On a compact manifold without boundary, strong ellipticity of order 2m &gt; 0 gives Re ⟨Au,u⟩ ≥ c‖u‖²ₘ − C‖u‖²₀ for every smooth u. Here c &gt; 0 and C ≥ 0 are fixed, and the norms measure square-integrable regularity of the indicated orders.
+
+**How the definition helps.** Positivity on the compact unit covector bundle gives a uniform positive lower bound there. In our own explanation, the energy estimate factors the positive leading term and controls the lower-order error. The negative of the nonnegative circle Laplacian is elliptic but violates the bound on high Fourier modes.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “and the symbol a ∈ S²ᵐ is strongly elliptic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Causal subtraction gives skew adjoints
 
 **Remember:** Taking the adjoint swaps future and past.
@@ -98229,6 +103094,106 @@ a parallelogram.”
 **Sources:**
 
 - [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
+
+### Wave fronts follow Hamiltonian flows
+
+**Remember:** Singular covectors follow the Hamiltonian flow on the zero set.
+
+*Makes the theorem clean to state or prove.* MSC 58J47 (Propagation of singularities; initial value problems on manifolds), 58J40. arXiv math.AP. Level 3: graduate.
+
+**Definition.** The wave front set records positions and directions where local Fourier decay fails to beat every inverse power. A real leading symbol p drives the Hamiltonian flow with velocity (∂ξp, −∂ₓp) in position and frequency. Real principal type here requires this velocity to be nonradial wherever p vanishes at nonzero frequency.
+
+**Problem.** Suppose a properly supported scalar classical pseudodifferential operator P has real principal type and Pu is smooth. The wave front set of u consists of entire Hamiltonian trajectories in the zero set of its leading symbol.
+
+**How the definition helps.** Recording frequency as well as position distinguishes trajectories even where their paths on the manifold cross. In our own explanation, elliptic regularity excludes singularities off the zero set. The propagation estimate transports regularity along each remaining trajectory.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “WF(u) is made of null bicharacteristic curves”
+
+**Sources:**
+
+- [J. J. Duistermaat and Lars Hörmander, Fourier integral operators. II (1972)](https://doi.org/10.1007/BF02392165)
+
+### Boundary-fixed conformal changes preserve Steklov spectra
+
+**Remember:** Interior conformal changes preserve harmonic functions and leave boundary normals alone.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The Dirichlet-to-Neumann operator extends boundary temperatures to a harmonic function, a function with zero Laplacian. It returns the outward normal derivative at the boundary. Its eigenvalues with multiplicities form the Steklov spectrum.
+
+**Problem.** On a compact connected Riemannian surface with smooth nonempty boundary, a conformal change preserving the boundary metric preserves this operator and its Steklov spectrum.
+
+**How the definition helps.** The boundary operator uses only the harmonic extension and the boundary normal. In our own proof, a conformal change multiplies the surface Laplacian by a positive function, preserving harmonicity. Uniqueness gives the same extension, and the unit normal agrees because the conformal factor equals one on the boundary.
+
+**Wikipedia:** [Poincaré–Steklov operator](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Steklov_operator). It says: “to the normal derivative ∂u/∂n on the boundary of Ω.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Energy domains bracket eigenvalues
+
+**Remember:** Zero trace restricts the energy domain, while cutting without matching enlarges it.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** Define the Neumann Laplacian by gradient energy on square-integrable functions with square-integrable weak first derivatives. For the Dirichlet Laplacian, restrict that energy to functions with zero boundary values in the trace sense.
+
+**Problem.** Cut a closed Riemannian manifold along a smooth separating hypersurface and combine the spectra of the pieces with multiplicity. At each index the Neumann eigenvalue is at most the uncut eigenvalue, which is at most the Dirichlet eigenvalue.
+
+**How the definition helps.** Energy domains expose inclusions that the differential boundary conditions conceal. In our own proof, zero boundary values imply matching values, while independent Neumann energy domains require no matching. The trace theorem identifies matching functions with uncut functions. The variational min-max formula raises eigenvalues when the energy domain shrinks.
+
+**Wikipedia:** [Min-max theorem](https://en.wikipedia.org/wiki/Min-max_theorem). It says: “The min-max theorem also applies to (possibly unbounded) self-adjoint operators.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gauge equivalence preserves magnetic spectra
+
+**Remember:** Conjugating the derivative also conjugates its Laplacian.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** A unitary connection differentiates sections of a complex line bundle while respecting their inner products. Two connections are gauge equivalent if a length-preserving complex-linear change in each fiber carries one derivative to the other and varies smoothly.
+
+**Problem.** On a closed Riemannian manifold, gauge-equivalent connections have the same connection Laplacian spectrum, including multiplicities. Connections with equal curvature can have different spectra.
+
+**How the definition helps.** The same unitary change carries each derivative and its adjoint to the other pair, so it conjugates their Laplacians. Our own counterexample uses d and d+iα dθ on the circle of length 2π. Both have zero curvature, but their eigenvalues are n² and (n+α)² for integers n. Only the first spectrum contains zero when α is not an integer.
+
+**nLab:** [holonomy](https://ncatlab.org/nlab/show/holonomy). It says: “its parallel transport around some loop γ : \[0,1\] → X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat coefficients identify zeta poles
+
+**Remember:** A heat term with power −a gives a pole at a.
+
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** For a strictly positive operator of Laplace type, such as the scalar Laplacian plus one, let H(t) sum exp(−tλ) over eigenvalues with multiplicity. For large real part of s, define Γ(s)ζ(s) by integrating H(t) times t to the power s−1 over positive times. Here Γ is the gamma function, and ζ is the spectral zeta function.
+
+**Problem.** On a closed manifold, a term c times t to the power −a in the small-time expansion of H gives Γ(s)ζ(s) residue c at a. The nonzero coefficients give precisely the poles, all simple.
+
+**How the definition helps.** Our own calculation turns each heat term into c/(s−a) by integrating from zero to one. Subtracting enough terms leaves an integral analytic near a. The heat expansion controls this remainder, and the gamma integral identifies ζ with the usual sum of inverse eigenvalue powers.
+
+**nLab:** [zeta function of an elliptic differential operator](https://ncatlab.org/nlab/show/zeta+function+of+an+elliptic+differential+operator). It says: “The zeta function of H is the holomorphic function defined by the series”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat content hears eigenfunctions
+
+**Remember:** Heat content weights each mode by its overlap with uniform heat.
+
+*Makes the theorem clean to state or prove.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** Dirichlet heat content is the total heat left at time t after a region starts at temperature one and its boundary stays at zero.
+
+**Problem.** Two bounded planar sets can have the same Dirichlet eigenvalues, including multiplicities, and different heat contents.
+
+**How the definition helps.** Total heat weights each eigenspace by the squared length of the projection of the constant function onto it. Our own calculation expands the initial temperature in eigenfunctions and integrates the solution. The cited Chapman sets have equal spectra and different heat contents.
+
+**Paper or page:** [Torsional rigidity and isospectral planar sets](https://arxiv.org/abs/2105.07477). It says: “The Chapman domains C₁ and C₂ are distinguished by heat content.”
+
+**Sources:**
+
+- [Joseph Comer, Patrick McDonald, Torsional rigidity and isospectral planar sets](https://arxiv.org/abs/2105.07477)
 
 ### Heat traces recover area
 
@@ -98248,6 +103213,38 @@ a parallelogram.”
 
 - [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
 
+### Heat traces recover multiplicities
+
+**Remember:** The slowest remaining exponential reveals the next eigenvalue.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The heat trace at time t &gt; 0 sums exp(−tλ) over the eigenvalues λ of the nonnegative Laplacian, counting every copy.
+
+**Problem.** Two closed Riemannian manifolds have identical Laplace eigenvalues with multiplicity exactly when their heat traces agree at every positive time.
+
+**How the definition helps.** In our own argument, the slowest exponential in the trace reveals the least eigenvalue and its multiplicity. Subtract that contribution and repeat. Convergence of the trace at each positive time justifies isolating each successive term as t tends to infinity.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “The function θ = θℛₘ defined by the heat trace: θ(t) := Tr(exp(−tℛₘ)), t &gt; 0, is positive valued, decreasing and smooth on (0,∞).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat constants control determinant scaling
+
+**Remember:** The constant heat term, minus zero modes, is the scaling exponent.
+
+*True by definition. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J35. arXiv math.SP, math.DG. Level 3: graduate.
+
+**Definition.** The spectral zeta function ζ continues the sum of λ to the power −s over positive eigenvalues λ from the region where it converges. The zeta determinant is exp(−ζ′(0)), with zero eigenvalues omitted from the sum.
+
+**Problem.** For a nonnegative operator A of Laplace type on a closed manifold, scaling A by c &gt; 0 multiplies its zeta determinant by cᵃ⁻ᵏ. Here a is the constant term of the heat trace expansion, and k counts zero eigenvalues with multiplicity.
+
+**How the definition helps.** The zeta sum turns scaling into multiplication by c to the power −s before differentiation. Our own calculation therefore gives scaling exponent ζ(0). The integral relating the heat trace to ζ gives ζ(0) = a−k after removing the zero modes.
+
+**nLab:** [zeta function of an elliptic differential operator](https://ncatlab.org/nlab/show/zeta+function+of+an+elliptic+differential+operator). It says: “detᵣₑg H ≔ exp(−ζ′ₕ(0)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Almost conjugate subgroups preserve spectra
 
 **Remember:** Equal class counts give equal dimensions of fixed eigenfunctions.
@@ -98265,6 +103262,96 @@ a parallelogram.”
 **Sources:**
 
 - [Toshikazu Sunada, Riemannian Coverings and Isospectral Manifolds (1985).](https://doi.org/10.2307/1971195)
+
+### Fiberwise nondegeneracy preserves parameters
+
+**Remember:** Use the Hessian in the variables you can change.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A fiberwise nondegenerate critical point of a smooth real function F(u,x) satisfies two tests with the parameter u fixed. Its first derivative in x vanishes and its matrix of second derivatives in x is invertible.
+
+**Problem.** Nearby fiber critical points form a smooth graph x = c(u). Coordinates fixing u express F as its value on the graph plus a fixed sum of signed squares.
+
+**How the definition helps.** The invertible fiber Hessian lets the implicit function theorem solve for the graph (our own argument). The parametric Morse lemma supplies quadratic coordinates after centering on the graph and subtracting the critical value. For F(u,x) = ux, the full Hessian is invertible but the fiber critical set is u = 0.
+
+**nLab:** [Morse lemma](https://ncatlab.org/nlab/show/Morse+lemma). It says: “The Morse lemma states that for any nondegenerate critical point p of f there is a chart φ: U → ℝⁿ around p such that the function in these coordinates is quadratic”
+
+**Paper or page:** [Local intersections of Lagrangian manifolds correspond to catastrophe theory](https://arxiv.org/abs/1811.10165v5). It says: “There exists a change of coordinates K on a neighbourhood of 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal nondegeneracy excludes quartics
+
+**Remember:** Allow flat tangent directions, but not flat normal directions.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth real function is Morse–Bott along a submanifold of critical points if its Hessian kernel there equals the tangent space. The Hessian is the form of second derivatives at a critical point.
+
+**Problem.** Near each point of that submanifold, smooth coordinates express the function as its critical value plus signed squares of the normal coordinates.
+
+**How the definition helps.** The kernel condition makes the normal Hessian invertible, so the Morse lemma with parameters supplies normal coordinates varying smoothly along the submanifold (our own explanation). For y⁴ the critical line is smooth, but the normal Hessian vanishes.
+
+**Paper or page:** [Gradient Flow in Morse and Analytic Settings](https://arxiv.org/abs/2311.09968v1). It says: “Let f: M → ℝ be Morse–Bott and N a l-dimensional critical submanifold of f with index λ.”
+
+**Sources:**
+
+- [Raoul Bott, Nondegenerate Critical Manifolds](https://doi.org/10.2307/1969631)
+
+### Distinct critical values give stability
+
+**Remember:** Give each critical point its own height.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58K25 (Stability theory for manifolds), 58K05. arXiv math.DG. Level 3: graduate.
+
+**Definition.** An excellent Morse function has an invertible Hessian at every critical point. It takes distinct values at distinct critical points.
+
+**Problem.** On a closed smooth manifold, every sufficiently small smooth perturbation of an excellent Morse function differs from it by source and target coordinate changes.
+
+**How the definition helps.** Distinct critical values allow one target coordinate change to adjust each critical height independently (our own explanation). For cos(2θ) on the circle, raising one of the two equal maxima creates an extra critical value. The stability proof uses Morse coordinates at critical points and integrates a vector field elsewhere.
+
+**Wikipedia:** [Morse theory](https://en.wikipedia.org/wiki/Morse_theory). It says: “two critical points are at the same height, which can be resolved by a slight perturbation of f.”
+
+**Sources:**
+
+- [Martin Golubitsky and Victor Guillemin, Stable Mappings and Their Singularities](https://doi.org/10.1007/978-1-4615-7904-5)
+
+### Multijets rule out quadruple points
+
+**Remember:** Test coincidences only at distinct source points.
+
+*Rules out counterexamples.* MSC 58K30 (Global theory of singularities), 57R35. arXiv math.GT. Level 3: graduate.
+
+**Definition.** The four-point multijet of order zero records a map’s values at four distinct ordered source points. A quadruple point occurs when this tuple belongs to the diagonal, where all four entries agree.
+
+**Problem.** For a generic smooth map from a surface to a three-manifold, the four-point multijet is transverse to the diagonal and there are no quadruple points. Here generic means on a set containing a countable intersection of open dense sets in the smooth Whitney topology.
+
+**How the definition helps.** Restricting to distinct points gives a configuration space of dimension eight, too small to meet a codimension-nine diagonal transversely (our own explanation). Transversality means the derivative supplies all directions normal to the diagonal. The multijet transversality theorem gives genericity even though all four entries come from one map.
+
+**nLab:** [transversal maps](https://ncatlab.org/nlab/show/transversal+maps). It says: “Maps f: X → Z, g: Y → Z with dim(X)+dim(Y) &lt; dim(Z) are transversal iff their images are disjoint.”
+
+**Sources:**
+
+- [John N. Mather, Stability of C∞ Mappings V. Transversality](https://doi.org/10.1016/0001-8708(70)90028-9)
+
+### Intrinsic Hessians recognize folds
+
+**Remember:** Test the second derivative in the lost directions.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 3: graduate.
+
+**Definition.** For a smooth map from dimension n to dimension p ≤ n, consider a point where the derivative has rank p−1. Restrict the second derivative to kernel directions and project its values modulo the image of the first derivative. A fold point has a nondegenerate resulting form, meaning its kernel is zero.
+
+**Problem.** Near a fold point, smooth source and target coordinates put the map in the form (u,x) ↦ (u,Q(x)) for a nondegenerate quadratic form Q.
+
+**How the definition helps.** Straightening the first p−1 outputs turns the projected second derivative into the Hessian in the remaining variables (our own argument). The parametric Morse lemma gives the quadratic part, and subtracting the critical value in the target finishes the change. At the origin of (u,x) ↦ (u,x³ + ux), rank alone misses the vanishing second derivative.
+
+**Paper or page:** [Local intersections of Lagrangian manifolds correspond to catastrophe theory](https://arxiv.org/abs/1811.10165v5). It says: “There exists a change of coordinates K on a neighbourhood of 0”
+
+**Sources:**
+
+- [Martin Golubitsky and Victor Guillemin, Stable Mappings and Their Singularities](https://doi.org/10.1007/978-1-4615-7904-5)
 
 ### In smooth sets, every differential form comes from one universal form
 
@@ -98391,6 +103478,120 @@ a parallelogram.”
 **Sources:**
 
 - [P. Hajłasz, J. Mirra and A. Schikorra, Hölder continuous mappings, differential forms and the Heisenberg groups, arXiv:2503.11506 (2025)](https://arxiv.org/abs/2503.11506)
+
+### A second differential gives formality
+
+**Remember:** Use forms closed under the second differential.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** On a complex manifold, d splits into components ∂ and ∂̄, and dᶜ means i(∂̄ − ∂). Forms killed by dᶜ form an algebra with differential d. An algebra is formal if a chain of maps preserving multiplication and differentials links it to its cohomology and induces isomorphisms on cohomology.
+
+**Problem.** The real de Rham algebra of a compact Kähler manifold is formal.
+
+**How the definition helps.** The intermediate algebra supplies both maps needed for formality without choosing multiplicative harmonic representatives. Our own explanation uses inclusion into all forms and projection onto dᶜ-cohomology. The ddᶜ lemma says a form closed under both derivatives and exact under either is a double derivative. It makes the induced differential zero and both maps isomorphisms on cohomology.
+
+**Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “A related result is that every compact Kähler manifold is formal in the sense of rational homotopy theory.”
+
+**Sources:**
+
+- [P. Deligne, P. Griffiths, J. Morgan, and D. Sullivan, Real homotopy theory of Kähler manifolds (1975)](https://doi.org/10.1007/BF01389853)
+
+### Equivalent metrics preserve reduced cohomology
+
+**Remember:** Equivalent norms have the same closed exact forms.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** Two metrics are uniformly equivalent if each bounds the other by a constant multiple at every point. Reduced L² cohomology identifies square-integrable closed forms that differ by a norm limit of derivatives.
+
+**Problem.** For a fixed closed exterior derivative, uniformly equivalent metrics give the same reduced L² cohomology. Their harmonic spaces are canonically isomorphic.
+
+**How the definition helps.** The quotient compares harmonic spaces without comparing their metric-dependent adjoints. Equivalent norms give the same limits of derivatives. In our own argument, orthogonal projection selects the unique representative perpendicular to all derivatives for each metric.
+
+**Paper or page:** [Geometric singularities and Hodge theory](https://arxiv.org/abs/2407.01170v3). It says: “also mutually bounded and yield equivalent L²-spaces which are equal as sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Green operators give current primitives
+
+**Remember:** Invert the Laplacian, then apply the adjoint.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** Currents are differential forms with distribution coefficients. The Green operator G inverts the Hodge Laplacian on the space perpendicular to its kernel and acts as zero on the kernel.
+
+**Problem.** On a closed oriented Riemannian manifold, each exact current S satisfies S = d(d⁎GS), where d⁎ is the adjoint of d.
+
+**How the definition helps.** The inverse selects an explicit primitive from all possible solutions of dT = S. In our own derivation, exactness removes the harmonic component, so (dd⁎ + d⁎d)GS = S. Since G commutes with d and dS = 0, only dd⁎GS remains. Elliptic theory extends these identities to currents.
+
+**Paper or page:** [On linking numbers and Biot-Savart kernels](https://arxiv.org/abs/2509.02802v1). It says: “Let S = dT be an exact current with S ∈ 𝒟′ₖ(M). Then in fact S = d(d\*G(S)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic duality reverses twists
+
+**Remember:** The star reverses the sign of the twist.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** For a closed real one-form θ, the twisted derivative sends α to dα + θ∧α. A twisted harmonic form lies in the kernels of this derivative and its metric adjoint.
+
+**Problem.** On a closed oriented Riemannian n-manifold, the Hodge star bijects θ-twisted harmonic k-forms with (−θ)-twisted harmonic (n − k)-forms.
+
+**How the definition helps.** The joint-kernel definition lets the star exchange two first-order equations without expanding the twisted Laplacian. Our own calculation uses the adjoint of multiplication by θ under the wedge product. This adjoint contracts a form with the vector dual to θ, giving the opposite twist under the star.
+
+**Paper or page:** [Morse-Novikov cohomology on foliated manifolds](https://arxiv.org/abs/2202.04508v1). It says: “the Hodge star operator ⋆𝓕 satisfies ⋆𝓕 Δ𝓕,ω = Δ𝓕,−ω ⋆𝓕.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lefschetz harmonic forms preserve symmetry
+
+**Remember:** Use the lowering commutator to define harmonicity.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** In a Lefschetz complex, L and Λ are the raising and lowering operators of a graded representation of sl₂, the traceless two-by-two matrices. They change degree by two in opposite directions. A vector is Lefschetz harmonic if both the differential d and the commutator dΛ − Λd kill it.
+
+**Problem.** Suppose d commutes with L in a Lefschetz complex centered at degree n. Then Lⁿ⁻ᵏ bijects harmonic vectors in degrees k and 2n − k for 0 ≤ k ≤ n.
+
+**How the definition helps.** Using the commutator as the second harmonicity equation makes the harmonic space itself a representation. In our own argument, the commutator identities show that both L and Λ preserve the common kernel. The representation theorem then pairs opposite degrees without choosing cohomology representatives.
+
+**Paper or page:** [HKT manifolds: Hodge theory, formality and balanced metrics](https://arxiv.org/abs/2207.09168v2). It says: “the space of Lefschetz harmonic p-forms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonlinear classes have unique minimizers
+
+**Remember:** A closed class has one shortest form.
+
+*Rules out counterexamples.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** An Lᵖ form has integrable pth power of its length. Reduced Lᵖ cohomology takes weakly closed forms modulo limits of derivatives of Lᵖ forms with Lᵖ derivative. Weak derivatives are defined by integration against smooth test forms.
+
+**Problem.** On a complete Riemannian manifold, each reduced Lᵖ class has a unique form of least norm when 1 &lt; p &lt; ∞.
+
+**How the definition helps.** Closing the space of derivatives makes every class a closed affine set. Our own argument uses uniform convexity of Lᵖ to give each such set a unique nearest point to zero. Differentiating the norm to the pth power along exact forms gives the nonlinear harmonic equation.
+
+**Paper or page:** [Lp -cohomology and the geometry of p-harmonic forms](https://arxiv.org/abs/2403.19481v2). It says: “such that \[h\]ᵣₑ𝒹 = φ, and d\*(\|h\|ᵖ⁻²h) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonlinear stars swap conjugate exponents
+
+**Remember:** Raise the length before swapping the degree.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** For 1 &lt; p &lt; ∞, the nonlinear Hodge star sends h to ⋆(\|h\|ᵖ⁻²h) and sends zero to zero. The ordinary star ⋆ exchanges complementary degrees using the metric and orientation. A p-harmonic form h satisfies dh = 0 and d⁎(\|h\|ᵖ⁻²h) = 0 against smooth test forms, where d⁎ is the adjoint.
+
+**Problem.** On a complete oriented Riemannian n-manifold, the nonlinear star bijects Lᵖ p-harmonic k-forms with Lᑫ q-harmonic (n − k)-forms. Here q = p/(p − 1).
+
+**How the definition helps.** The length factor lets the ordinary star exchange the two nonlinear equations. In our own proof, (p − 1)q = p gives integrability, and (p − 1)(q − 1) = 1 reverses the length change. Applying the ordinary star twice contributes only a degree-dependent sign.
+
+**Paper or page:** [Lp -cohomology and the geometry of p-harmonic forms](https://arxiv.org/abs/2403.19481v2). It says: “Then ⋆ₚ defines a bijective”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Jet pullbacks classify formal solutions
 
@@ -98535,6 +103736,60 @@ a parallelogram.”
 **Sources:**
 
 - [Andreas Kriegl, Peter W. Michor, The Convenient Setting of Global Analysis, AMS Mathematical Surveys and Monographs 53, 1997 (§42)](https://doi.org/10.1090/surv/053)
+
+### Curve tangents exclude higher derivations
+
+**Remember:** Velocities see first derivatives, but some derivations see second derivatives.
+
+*Rules out counterexamples.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds). arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A kinematic tangent vector is the velocity of a smooth curve through a point. An operational tangent vector is a bounded linear functional on smooth function germs satisfying the product rule there. A germ records only the values of a function near the point.
+
+**Problem.** In an infinite-dimensional real Hilbert space, every velocity gives a distinct operational tangent vector, but some operational tangent vectors come from no velocity.
+
+**How the definition helps.** Curve velocities use only first derivatives and are distinguished by linear functions. In our own construction, apply a bounded functional to the operator representing the second derivative. Hahn–Banach supplies such a functional vanishing on compact operators and taking value one on the identity. The product rule holds because its extra terms have finite rank, while the squared norm detects this second derivative.
+
+**nLab:** [operational tangent space](https://ncatlab.org/nlab/show/operational+tangent+space). It says: “For more general smooth spaces, these are no longer equivalent.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Dual evaluation is conveniently smooth
+
+**Remember:** Bounded products suffice for smooth evaluation, even without joint continuity.
+
+*Makes the theorem clean to state or prove.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds), 46A20. arXiv math.FA. Level 4: research.
+
+**Definition.** A map is conveniently smooth if it sends smooth curves to smooth curves. For a complete space with a topology given by countably many seminorms, called a Fréchet space, take its continuous dual. Give the dual the topology of uniform convergence on bounded sets.
+
+**Problem.** Evaluation, which sends a vector and a continuous linear functional to the functional’s value there, is conveniently smooth for every Fréchet space. For real sequences with the product topology, evaluation fails to be jointly continuous.
+
+**How the definition helps.** The dual topology bounds evaluation on each product of bounded sets, and bounded bilinear maps are conveniently smooth. In our own example, each basic sequence neighborhood leaves some coordinate unrestricted. Every dual neighborhood contains a nonzero multiple of evaluation at that coordinate, so the pairing is unbounded on the two neighborhoods.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “Multilinear mappings are smooth if and only if they are bounded”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Strong symplectic forms straighten locally
+
+**Remember:** Invert contraction to obtain the vector field that straightens the form.
+
+*Rules out counterexamples.* MSC 58B20 (Riemannian, Finsler and other geometric structures on infinite-dimensional manifolds), 53D05. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A closed smooth two-form on a Banach manifold is strongly symplectic if pairing with it identifies each tangent space with its continuous dual. This identification and its inverse must be bounded. A weak symplectic form requires only an injective pairing.
+
+**Problem.** Every strong symplectic form on a Banach manifold is constant in suitable local coordinates.
+
+**How the definition helps.** An invertible pairing lets Moser’s argument solve for a vector field from a prescribed one-form. In our own account, interpolate between the given form and its constant value at the center of a chart. Nearby pairings stay invertible, and integrating the resulting vector field gives the required coordinates. Marsden constructed a weak symplectic form with no such chart.
+
+**nLab:** [Darboux's theorem](https://ncatlab.org/nlab/show/Darboux%27s+theorem). It says: “for (X, ω) a symplectic manifold there are local charts in which the symplectic form ω takes the form”
+
+**Sources:**
+
+- [Jerrold E. Marsden, Darboux’s Theorem Fails for Weak Symplectic Forms (1972)](https://doi.org/10.2307/2037864)
 
 ### Ellwood freeness equals the algebraic Galois condition on Peter–Weyl elements
 
@@ -98957,6 +104212,186 @@ a parallelogram.”
 
 - [Ali H. Chamseddine and Alain Connes, The spectral action principle, Communications in Mathematical Physics 186 (1997)](https://doi.org/10.1007/s002200050126)
 
+### Tame estimates permit local inversion
+
+**Remember:** Control the loss of derivatives before trying to invert the map.
+
+*Rules out counterexamples.* MSC 58C15 (Implicit function theorems; global Newton methods on manifolds), 58B10. arXiv math.FA, math.DG. Level 4: research.
+
+**Definition.** On smooth periodic functions, let ‖f‖ₙ measure the largest absolute value of f and its first n derivatives. A tame map satisfies local bounds ‖P(f)‖ₙ ≤ Cₙ(1 + ‖f‖ₙ₊ᵣ) for large n with fixed r. Smooth tame maps obey such bounds for the map and all its derivatives, including their direction arguments.
+
+**Problem.** A smooth tame map between open sets of smooth periodic functions has smooth tame local inverses if its derivatives have smoothly tame inverses. This condition concerns the map sending a base function and a right-hand side to the solution of the linearized equation.
+
+**How the definition helps.** A fixed shift bounds the loss of derivatives, so smoothing can compensate for that loss during iteration. In our own account, Hamilton’s estimates prove that the resulting approximations converge. The hypotheses control the inverse derivative throughout a neighborhood.
+
+**Wikipedia:** [Nash–Moser theorem](https://en.wikipedia.org/wiki/Nash%E2%80%93Moser_theorem). It says: “Then P is locally invertible, and each local inverse P⁻¹ is a smooth tame map.”
+
+**Sources:**
+
+- [Richard S. Hamilton, The Inverse Function Theorem of Nash and Moser (1982)](https://www.ams.org/bull/1982-07-01/S0273-0979-1982-15004-2)
+
+### Diffeomorphisms integrate time-dependent fields
+
+**Remember:** Solve the flow one particle at a time.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The Lie algebra of a Lie group is its tangent space at the identity. A group is regular if every smooth time-dependent Lie algebra element integrates from the identity and its time-one endpoint depends smoothly on the input. Integration here means that right translation back to the identity recovers the prescribed velocity.
+
+**Problem.** The smooth diffeomorphism group of a closed finite-dimensional manifold is regular.
+
+**How the definition helps.** For diffeomorphisms, the evolution equation follows one point at a time under a time-dependent vector field. In our own account, compactness gives existence throughout the time interval. Smooth dependence on parameters gives smooth endpoints for every smooth family of inputs, which is the curve test for smoothness.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “For each compact manifold M, the diffeomorphism group Diff(M) is a regular Lie group.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Extra Sobolev derivatives permit smooth inversion
+
+**Remember:** Spend one input derivative for each derivative of inversion.
+
+*Rules out counterexamples.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** On a closed n-dimensional manifold, a Sobolev diffeomorphism of integer order s has square-integrable weak derivatives through order s in local coordinates. Its inverse has the same regularity, and s exceeds n/2 + 1. Weak derivatives are derivatives defined by integration against smooth test functions.
+
+**Problem.** For each nonnegative integer k, inversion from order s + k to order s is k times continuously differentiable.
+
+**How the definition helps.** The extra input derivatives supply the spatial derivatives needed when differentiating inversion. In our own circle example, rotating the output of a diffeomorphism translates the argument of its inverse. Differentiating this translation in the order-s norm requires one further square-integrable derivative. Sobolev estimates for composition establish the positive result.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “𝒟ˢ⁺ᵏ(M) → 𝒟ˢ(M) ; ϕ ↦ ϕ⁻¹ is Cᵏ-smooth.”
+
+**Sources:**
+
+- [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278)
+
+### Fixed volume gives a retract
+
+**Remember:** The volume forms contract while the preserving factor stays fixed.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** Fix a positive volume form μ and assign to each orientation-preserving diffeomorphism φ its pullback φ∗μ. The forms so obtained have the same total volume as μ. The volume-preserving group consists exactly of maps with pullback μ.
+
+**Problem.** On a closed connected oriented manifold, the orientation-preserving diffeomorphism group deforms continuously onto the μ-preserving subgroup while fixing that subgroup throughout.
+
+**How the definition helps.** Positive forms of fixed total volume form a convex set, so straight-line interpolation contracts that set to μ. In our own proof, Moser’s construction selects a diffeomorphism pulling μ back to each form, continuously and with the identity at μ. Composing φ on the right with the inverse of that selection at φ∗μ gives a volume-preserving factor. Contract the form while keeping this factor fixed.
+
+**nLab:** [volume preserving diffeomorphism](https://ncatlab.org/nlab/show/volume+preserving+diffeomorphism). It says: “This inclusion is a weak homotopy equivalence, in fact a deformation retract.”
+
+**Sources:**
+
+- [Jürgen Moser, On the Volume Elements on a Manifold (1965)](https://doi.org/10.1090/S0002-9947-1965-0182927-5)
+
+### Invariant charts model bundle automorphisms
+
+**Remember:** Equivariant coordinates turn a commuting map into an invariant field.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A principal bundle automorphism is a diffeomorphism of its total space commuting with the structure group action. An invariant metric measures lengths equally before and after that action. Moving each point along a short geodesic gives coordinates for diffeomorphisms near the identity.
+
+**Problem.** For a compact structure group and closed base, bundle automorphisms form a closed smooth subgroup of all diffeomorphisms of the total space. Its tangent vectors at the identity are exactly the smooth vector fields preserved by the structure group.
+
+**How the definition helps.** The invariant metric sends transformed geodesics to geodesics, so its coordinates turn the automorphism condition into invariance of a vector field. In our own proof, averaging over the compact group supplies the metric and a projection onto invariant fields. Commuting with each group element is a closed condition.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “is a closed tame Fréchet Lie subgroup of Diff(P)”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
+
+### Orientation covers carry fluid geodesics
+
+**Remember:** Lift a fluid motion and let sheet symmetry keep it upstairs.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The orientation cover has two points above each point of a manifold, one for each local orientation. A diffeomorphism lifts by carrying each orientation to its image under the derivative. A volume-preserving lift preserves the cover’s volume form and commutes with the sheet exchange.
+
+**Problem.** For a closed nonorientable Riemannian manifold, the lifted volume-preserving group is totally geodesic for the cover’s kinetic-energy metric. Every geodesic starting tangent to that subgroup stays in it while it exists.
+
+**How the definition helps.** Conjugation by the sheet exchange preserves kinetic energy and fixes exactly the volume-form-preserving lifts. In our own proof, this symmetry takes a geodesic starting tangent to the subgroup to another with the same initial data. Uniqueness for the fluid equation makes the two geodesics coincide.
+
+**Paper or page:** [Curvature of Measure-Preserving Diffeomorphism Groups of Non-Orientable Surfaces](https://arxiv.org/abs/2501.06599). It says: “is a totally geodesic submanifold”
+
+**Sources:**
+
+- [Curvature of Measure-Preserving Diffeomorphism Groups of Non-Orientable Surfaces](https://arxiv.org/abs/2501.06599)
+
+### Slices keep asymmetry open
+
+**Remember:** On a slice, nearby symmetries can only come from old ones.
+
+*True by definition.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** The stabilizer of a configuration consists of the transformations fixing it. A slice is a local submanifold through the configuration, preserved by its stabilizer, whose translates cover a neighborhood. Only transformations in the stabilizer can move the slice to meet itself.
+
+**Problem.** Consider a Riemannian metric and a principal bundle connection over a closed manifold, with compact structure group. The pairs whose only symmetry is the identity form an open set.
+
+**How the definition helps.** On the slice, any symmetry must carry the slice to meet itself, so it belongs to the original stabilizer. Elsewhere on its translates, stabilizers differ only by conjugation. In our own proof, the slice theorem replaces a separate search for new symmetries at every nearby pair.
+
+**Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “The subset of elements of Conf(P) with a trivial symmetry group is open in Conf(P).”
+
+**Sources:**
+
+- [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572)
+
+### Smooth curves keep compact support
+
+**Remember:** A compact time interval needs only one compact support.
+
+*Rules out counterexamples.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds), 46A13. arXiv math.DG. Level 4: research.
+
+**Definition.** A compactly supported diffeomorphism equals the identity outside some compact set. Its usual group charts use compactly supported vector fields. Their topology is the locally convex inductive limit, the finest locally convex topology making each fixed-support space include continuously.
+
+**Problem.** For a smooth curve of compactly supported diffeomorphisms on a second-countable finite-dimensional manifold, one compact set contains every support on a compact time interval.
+
+**How the definition helps.** Every bounded set of chart vectors lies in one fixed-support space. In our own proof, cover the time interval by finitely many compact subintervals on which translated charts apply. Each chart curve has bounded image there, and the finitely many supports together with those of the chart centers have compact union.
+
+**nLab:** [compactly supported mapping space](https://ncatlab.org/nlab/show/compactly+supported+mapping+space). It says: “on those maps that have compact support.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
+### Sobolev inverses restrict to smooth data
+
+**Remember:** If the inverses agree on every level, they agree on the intersection.
+
+*Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** On the flat two-torus, the smooth volume-preserving group is the intersection of its Sobolev diffeomorphism groups of all sufficiently high integer orders. Each order controls square-integrable derivatives through that order. All these norms together give the smooth group its topology.
+
+**Problem.** For the kinetic-energy metric, the map taking a small initial velocity to its geodesic endpoint at time one has a local inverse. Both maps are continuously differentiable in the Fréchet sense on smooth data.
+
+**How the definition helps.** Taking the intersection of Sobolev spaces lets compatible local inverses give one inverse on smooth data. In our own account, the hard step is showing that one low-order neighborhood suffices at every higher order. This requires regularity estimates for the endpoint map and its derivative in both directions.
+
+**Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “admits a well-defined exponential map which is a local C¹ꜰ-diffeomorphism at the identity.”
+
+**Sources:**
+
+- [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278)
+
+### Normal graphs chart unparametrized submanifolds
+
+**Remember:** Keep the normal displacement and discard the change of labels.
+
+*Makes the theorem clean to state or prove.* MSC 58D10 (Spaces of embeddings and immersions), 58D05. arXiv math.DG. Level 4: research.
+
+**Definition.** An unparametrized embedded submanifold records the image of an embedding. Near a fixed compact image, a normal graph moves each point by a short vector perpendicular to that image. A tubular neighborhood supplies these coordinates.
+
+**Problem.** Smooth embeddings of a closed manifold into a finite-dimensional manifold form a principal bundle over their images. Locally each embedding corresponds smoothly to an image and a diffeomorphism of the source.
+
+**How the definition helps.** Projection back onto the reference image fixes one parametrization for each nearby image. Any embedding with that image differs from the chosen one by a unique source diffeomorphism. In our own account, tubular coordinates and smooth inversion of diffeomorphisms give smooth dependence of both factors.
+
+**Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “is a principal fiber bundle”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
 ### Local additions make spaces of smooth maps manifold-like
 
 **Remember:** The space carries its own charts: each tangent vector v points to η(v).
@@ -98972,6 +104407,205 @@ a parallelogram.”
 **nLab:** [locally additive space](https://ncatlab.org/nlab/show/locally+additive+space). It says: “Let X be a locally kinematic space and S a smoothly compact space. Then C∞(S,X) is again a locally kinematic space.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Postcomposition is smooth
+
+**Remember:** A tangent vector at each image point gives one chart coordinate.
+
+*Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A local addition sends each small tangent vector at y to a nearby point, and sends zero to y. The base point and the resulting point together give smooth coordinates near the diagonal. A chart around a map g therefore describes nearby maps by vector fields along g.
+
+**Problem.** Let X be a closed manifold and let M and N be smooth manifolds with local additions. Each smooth map f from M to N induces a smooth map g ↦ f ∘ g on smooth maps from X.
+
+**How the definition helps.** In these charts, composition applies a smooth map separately to the vector at each point of X. Our own explanation uses the theorem that smooth maps between fibers act smoothly on spaces of smooth sections.
+
+**Paper or page:** [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587). It says: “If f : M → N is smooth, then the pushforward f∗ : C∞(X,M) → C∞(X,N), f∗(g) = f ∘ g, is smooth.”
+
+**Sources:**
+
+- [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587)
+
+### Submersions lift to mapping spaces
+
+**Remember:** Choose chart coordinates that make projection act one tangent vector at a time.
+
+*Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
+
+**Definition.** A submersion looks in local coordinates like a projection from a product onto one factor. A local addition gives coordinates near each point using short tangent vectors there. For a map p, compatible local additions send a vector and its derivative image to points related by p.
+
+**Problem.** Let p be a smooth surjective submersion between Banach manifolds admitting smooth partitions of unity. For every closed manifold X, composition g ↦ p ∘ g is a submersion on smooth maps from X.
+
+**How the definition helps.** Compatible coordinates turn composition with p into a linear projection on vector fields along g. In our own account, the work is constructing those coordinates and a smooth linear right inverse for that projection.
+
+**Paper or page:** [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587). It says: “If p : M → N is a smooth surjective submersion, then the pushforward p∗ : C∞(X,M) → C∞(X,N), p∗(f) = p ∘ f is a submersion.”
+
+**Sources:**
+
+- [The Stacey-Roberts Lemma for Banach Manifolds](https://arxiv.org/abs/2411.00587)
+
+### Coincident genus levels force critical pairs
+
+**Remember:** Repeated levels concentrate genus on the critical set.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 4: research.
+
+**Definition.** For a symmetric set avoiding zero, genus is the least k admitting a continuous odd map into ℝᵏ avoiding zero. Odd means h(−x) = −h(x), and genus is infinite if no k works. The kth genus level is the infimum of maxima on compact symmetric sets of genus at least k.
+
+**Problem.** For an even continuously differentiable Hilbert space function f, suppose genus levels k through k+r coincide at finite c &lt; f(0). If every sequence with values approaching c and derivatives approaching zero has a convergent subsequence, the critical set there has genus at least r+1.
+
+**How the definition helps.** Genus bounds how much a test set can lose when one removes a neighborhood of the critical set (our own). The compact critical set has a symmetric neighborhood of the same genus (our own). If that genus were at most r, removing the neighborhood from a nearly optimal test would leave genus at least k (our own). An odd deformation would push the remainder below c, contradicting the kth level (our own).
+
+**Paper or page:** [Existence of Eigenvalues for Anisotropic and Fractional Anisotropic Problems via Ljusternik-Schnirelmann Theory](https://arxiv.org/abs/2309.14301). It says: “such that φ(u) = c has genus ≥ k + 1.”
+
+**Sources:**
+
+- [I. Ceresa Dussel, J. Fernandez Bonder, Existence of Eigenvalues for Anisotropic and Fractional Anisotropic Problems via Ljusternik-Schnirelmann Theory](https://arxiv.org/abs/2309.14301)
+- [Charles V. Coffman, A minimum-maximum principle for a class of non-linear integral equations (1969)](https://doi.org/10.1007/BF02786802)
+
+### Homotopy-stable families localize minimax sequences
+
+**Remember:** Preserve the tests so you can deform them near a barrier.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 4: research.
+
+**Definition.** A homotopy-stable family here consists of nonempty compact test sets containing a fixed closed boundary B. Every continuous deformation starting at the identity and fixing B throughout takes each test to another test. For a continuously differentiable function f on a complete connected Riemannian Hilbert manifold, let c be the finite infimum of test maxima.
+
+**Problem.** Suppose a closed set F meets every test outside B and sup f(B) ≤ c ≤ inf f(F). For tests Aₙ with maxima approaching c, there are xₙ approaching F and Aₙ in distance, with f(xₙ) → c and ‖df(xₙ)‖ → 0.
+
+**How the definition helps.** Any deformation fixing B preserves the test family and therefore preserves its obligation to meet F outside B (our own). The localized minimax theorem constructs a deformation near a nearly optimal test if no points near its barrier satisfy the required estimates (our own). Lowering the test there would contradict the barrier inequality (our own).
+
+**Paper or page:** [Normalized solutions to a class of Kirchhoff equations with Sobolev critical exponent](https://arxiv.org/abs/2103.08106). It says: “Let φ be a C¹-functional on a complete connected C¹-Finsler manifold X and consider a homotopy-stable family ℱ with an extended closed boundary B.”
+
+**Sources:**
+
+- [Gongbao Li, Xiao Luo, Tao Yang, Normalized solutions to a class of Kirchhoff equations with Sobolev critical exponent](https://arxiv.org/abs/2103.08106)
+
+### Morse–Bott perturbations add indices
+
+**Remember:** Normal and tangent negative directions count separately.
+
+*Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 4: research.
+
+**Definition.** A critical submanifold is Morse–Bott if its Hessian, the second derivative, has kernel equal to the tangent space and an invertible normal part. The index counts the greatest dimension of a subspace where the Hessian is negative definite.
+
+**Problem.** Near a compact Morse–Bott critical submanifold of finite index in Hilbert space, add a small positive multiple of a smooth function of nearest-point projection. At each nondegenerate critical point of the added function on the submanifold, the new index equals the normal index plus its tangent index.
+
+**How the definition helps.** Projection makes the added Hessian act only on tangent directions at these points (our own). The original Hessian acts only on normal directions, so the negative dimensions add (our own). The perturbation theorem supplies a neighborhood where these account for all critical points when the added function has only nondegenerate critical points (our own).
+
+**Paper or page:** [Morse theory for the Allen-Cahn functional](https://arxiv.org/abs/2310.17096). It says: “the Morse index of fδ at any x₀ ∈ C is ind(f,x₀) + ind(gᵢ,x₀)”
+
+**Sources:**
+
+- [Jingwen Chen, Pedro Gaspar, Morse theory for the Allen-Cahn functional](https://arxiv.org/abs/2310.17096)
+
+### Bott twists split iteration indices
+
+**Remember:** An iterate splits into one sector for each root of unity.
+
+*True by definition.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 4: research.
+
+**Definition.** For a unit complex number z, the twisted index uses complex variation fields along one period of a closed geodesic satisfying V(1) = zV(0). It counts the greatest complex dimension on which the second derivative of energy is negative definite.
+
+**Problem.** The index of a closed geodesic traversed m times equals the sum of its twisted indices over all mth roots of unity.
+
+**How the definition helps.** Each twisted boundary condition selects one eigenspace of the shift by one period (our own). Instead of counting negative directions over all m periods, Fourier decomposition splits the calculation into these one-period spaces (our own). The energy Hessian respects the shift and restricts to a positive multiple of the one-period form on each space (our own).
+
+**Wikipedia:** [Closed geodesic](https://en.wikipedia.org/wiki/Closed_geodesic). It says: “If γ is a critical point of E, so are the reparametrized curves γᵐ, for each m ∈ ℕ, defined by γᵐ(t) := γ(mt).”
+
+**Sources:**
+
+- [Raoul Bott, On the iteration of closed geodesics and the Sturm intersection theory (1956)](https://doi.org/10.1002/cpa.3160090204)
+
+### Negative bundles describe sublevel crossings
+
+**Remember:** One negative disk at each critical loop replaces one cell.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 4: research.
+
+**Definition.** A Morse–Bott family of critical loops has second derivative with kernel tangent to the family and invertible normal part. Its negative bundle consists of the normal directions in the negative spectral subspace at each loop.
+
+**Problem.** Suppose a single compact Morse–Bott component accounts for all critical loops at an isolated energy level on a closed Riemannian manifold. With coefficients modulo two, relative homology across that level in degree j equals the component’s homology in degree j−λ, where λ is the negative rank.
+
+**How the definition helps.** Each negative fiber supplies the disk attached at its critical loop (our own). The Morse–Bott attachment theorem computes relative homology between nearby upper and lower energy sublevels from these disks and their boundary spheres (our own). The Thom isomorphism shifts homology by the fiber dimension λ, with no orientation assumption for coefficients modulo two (our own).
+
+**Wikipedia:** [Morse theory](https://en.wikipedia.org/wiki/Morse_theory). It says: “the kernel of the Hessian at a critical point equals the tangent space to the critical submanifold.”
+
+**Sources:**
+
+- [Raoul Bott, Nondegenerate Critical Manifolds (1954)](https://doi.org/10.2307/1969631)
+- [Wolfgang Ziller, The free loop space of globally symmetric spaces (1977)](https://doi.org/10.1007/BF01390161)
+
+### Bubble trees restore compactness
+
+**Remember:** Keep each rescaled sphere as part of the limit.
+
+*Makes the theorem clean to state or prove.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A harmonic bubble tree consists of a harmonic map on the original surface and finitely many harmonic spheres joined at points. The maps agree at each joint, and their energies add. A harmonic map is a critical point of Dirichlet energy.
+
+**Problem.** Take a sequence of harmonic maps from a fixed closed Riemannian surface to a closed Riemannian manifold with uniformly bounded energies. After rescaling, a subsequence converges to a harmonic bubble tree whose energy equals the limit of its energies.
+
+**How the definition helps.** The tree keeps both the original limit and the energy seen only after rescaling (our own explanation). The compactness theorem must extract the spheres at the right scales (our own explanation). It must also show that the regions between scales cause no energy loss or gaps in the image (our own explanation).
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “to a smooth harmonic bubble tree map”
+
+**Sources:**
+
+- [T. H. Parker, Bubble tree convergence for harmonic maps (1996)](https://doi.org/10.4310/jdg/1214459224)
+
+### Curvature comparison makes boundary minimizers unique
+
+**Remember:** Midpoint comparison makes two minimizers coincide.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A complete space with shortest paths is CAT(0) when points on triangle sides lie at most as far apart as their Euclidean counterparts. The Euclidean comparison triangle has the same side lengths, and corresponding points divide matching sides in the same proportions.
+
+**Problem.** Fix boundary values on a bounded connected Riemannian domain with nonempty boundary locally given by Lipschitz graphs. Any two finite-energy maps minimizing Dirichlet energy into a CAT(0) space with these boundary values agree almost everywhere.
+
+**How the definition helps.** Triangle comparison makes the midpoint map save energy wherever the distance between two maps varies (our own explanation). The Korevaar–Schoen energy inequality quantifies this saving. Two minimizers cannot save energy, so their distance has zero gradient and vanishes at the boundary. For a spherical target, even smooth boundary data can admit distinct minimizers.
+
+**Paper or page:** [Harmonic maps in singular geometry and rigidity](https://arxiv.org/abs/2510.13708v1). It says: “Then there exists a unique”
+
+**Sources:**
+
+- [N. J. Korevaar and R. M. Schoen, Sobolev spaces and harmonic maps for metric space targets (1993)](https://doi.org/10.4310/cag.1993.v1.n4.a4)
+- [A. Detaille and K. Mazowiecka, Generic non-uniqueness of minimizing harmonic maps from a ball to a sphere](https://arxiv.org/abs/2403.12662v1)
+
+### Half-harmonic maps become free boundary equations
+
+**Remember:** Move the nonlocal equation into a local boundary condition.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** For a smooth circle-valued map on the real line, extend both coordinates harmonically into the upper half-plane. Its half-energy is the Dirichlet energy of this extension, which integrates half the squared derivative. The map is half-harmonic if its half-energy has zero first derivative under every compactly supported variation along the circle.
+
+**Problem.** A smooth map with finite half-energy is half-harmonic exactly when its extension’s outward normal derivative is perpendicular to the circle at each boundary value.
+
+**How the definition helps.** The extension solves the interior Laplace equation, so integration by parts leaves only the boundary derivative (our own explanation). Pairing this derivative with all tangent variations tests exactly whether it is perpendicular to the circle. The Fourier transform identifies this boundary derivative with the square root of the positive Laplace operator.
+
+**Paper or page:** [Non-degeneracy and quantitative stability of half-harmonic maps from ℝ to 𝕊](https://arxiv.org/abs/2107.08521v1). It says: “Let U be the harmonic extension of u”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Small energy excludes harmonic sphere bubbles
+
+**Remember:** A nonconstant bubble costs at least one sphere energy gap.
+
+*Rules out counterexamples.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A harmonic sphere is a map from the round sphere that is stationary for Dirichlet energy. For a closed Riemannian target, its sphere energy gap is the infimum of energies of nonconstant harmonic spheres. Use infinity if none exist.
+
+**Problem.** Consider harmonic maps from a fixed closed Riemannian surface into that target. If their energies share a finite upper bound strictly below the sphere energy gap, a subsequence converges smoothly.
+
+**How the definition helps.** Every nonconstant sphere extracted by rescaling would consume at least the gap (our own explanation). The bubble compactness theorem therefore gives smooth convergence everywhere along a subsequence. Conformal automorphisms of the round sphere can concentrate at one point when their energy equals the gap.
+
+**Paper or page:** [Compactness of harmonic maps of surfaces with regular nodes](https://arxiv.org/abs/2012.14040v2). It says: “There is a constant ε′₀ &gt; 0 depending only on (X,h)”
+
+**Sources:**
+
+- [T. H. Parker, Bubble tree convergence for harmonic maps (1996)](https://doi.org/10.4310/jdg/1214459224)
 
 ### Asking nondegeneracy only across orbits makes Morse theory work on stacks
 
@@ -99046,6 +104680,54 @@ a parallelogram.”
 - [Hsian-Hua Tseng, Chenchang Zhu, Integrating Lie algebroids via stacks, Compositio Math. 142 (2006) 251–270, arXiv:math/0405003](https://arxiv.org/abs/math/0405003)
 - [Marius Crainic, Rui Loja Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620, arXiv:math/0105033](https://arxiv.org/abs/math/0105033)
 
+### Cone ellipticity excludes critical weights
+
+**Remember:** Choose a weight line that misses every conormal root.
+
+*Rules out counterexamples.* MSC 58J05 (Elliptic equations on manifolds, general theory), 58J40. arXiv math.AP. Level 4: research.
+
+**Definition.** Cone ellipticity at weight γ requires invertible leading frequency symbols both in the interior and after radial rescaling at the tip. Freeze coefficients at the tip and replace the radial derivative −t∂ₜ by a complex number z. The resulting operator must be invertible along Re z = d/2 − γ, where d is the cone dimension.
+
+**Problem.** On a compact manifold with isolated cone tips, cone ellipticity makes an order-m cone differential operator Fredholm between the weighted Sobolev spaces. Its target has regularity s − m and weight γ − m when its domain has regularity s and weight γ.
+
+**How the definition helps.** The extra invertibility test detects modes that can concentrate at the tip while escaping interior estimates. In our own explanation, inversion along the weight line controls these modes. The cone inverse construction leaves compact errors, giving closed range and finite-dimensional kernel and cokernel.
+
+**Paper or page:** [A Short Introduction to the Analysis on Manifolds with Conical Singularities](https://arxiv.org/abs/2311.07746v2). It says: “In particular, A then is a Fredholm operator.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Support control closes the range
+
+**Remember:** Bound the support of the preimage by bounding the support of its image.
+
+*Makes the theorem clean to state or prove.* MSC 58J05 (Elliptic equations on manifolds, general theory). arXiv math.AP. Level 4: research.
+
+**Definition.** Support convexity for the transpose P\* means that each compact set K admits a compact set L with the following property. Every compactly supported distribution v with P\*v supported in K is itself supported in L.
+
+**Problem.** A second-order elliptic differential operator P has closed range on smooth functions if its transpose satisfies support convexity. Convergence here means uniform convergence of every derivative on compact sets.
+
+**How the definition helps.** Support convexity confines all relevant transpose preimages to one compact region for each test region. In our own explanation, ellipticity gives local regularity estimates there. The functional analytic closed-range theorem converts those estimates and the support bound into closed range.
+
+**Paper or page:** [Elliptic operators on non-compact manifolds have closed range](https://arxiv.org/abs/2203.07534v1). It says: “we see that M is P\*-convex. By Petersen’s functional analytic argument, it follows that P has closed range.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Averaged pullback preserves square integrability
+
+**Remember:** Average a submersion instead of evaluating on a thin image.
+
+*Rules out counterexamples.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** For a smooth map f between closed oriented Riemannian manifolds, take small tangent disks centered at its image points, one disk per source point. The Hilsum–Skandalis pullback evaluates forms through the exponential map on these disks. It multiplies by a smooth closed form supported inside the disk bundle, of integral one per fiber, then integrates over each disk.
+
+**Problem.** The Hilsum–Skandalis pullback gives a bounded operator on square-integrable forms and commutes with the exterior derivative on smooth forms.
+
+**How the definition helps.** Averaging over disks avoids evaluating a square-integrable form just on the image of f, which may have measure zero. Our own explanation uses the surjective derivative of the disk evaluation map and compact support to bound the integral. Closedness of the averaging form and Stokes’ theorem give commutation with d.
+
+**Paper or page:** [Stability of L²-invariants on stratified spaces](https://arxiv.org/abs/2310.05721v3). It says: “are well-defined and extend to bounded maps on the corresponding L² completions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Symbol exactness makes de Rham elliptic
 
 **Remember:** Contract against a vector that the covector sends to one.
@@ -99061,6 +104743,24 @@ a parallelogram.”
 **nLab:** [elliptic chain complex](https://ncatlab.org/nlab/show/elliptic+chain+complex). It says: “Let X be a compact smooth manifold. Then the de Rham complex is an elliptic complex.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Witt links remove boundary modes
+
+**Remember:** No middle link classes means no ambiguous boundary modes.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J10 (Differential complexes). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A link is the closed manifold forming a cross-section of a cone. The Witt condition requires every even-dimensional link to have zero real cohomology in its middle degree.
+
+**Problem.** Consider a compact space with isolated exact cone tips and Witt links, with no other boundary. After sufficiently shrinking the link metrics, d + d⁎ on smooth forms supported away from the tips has a unique self-adjoint extension.
+
+**How the definition helps.** The Witt condition removes the middle-degree harmonic forms that would require boundary data at a cone tip. Our own explanation uses separation of variables on the cone. Shrinking the links moves the remaining nonzero link eigenvalues beyond the range requiring boundary data. A torus link retains harmonic one-forms under every rescaling.
+
+**Paper or page:** [Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps](https://arxiv.org/abs/2505.14952v1). It says: “satisfies the analytic Witt condition and therefore admits a closed self-adjoint extension”
+
+**Sources:**
+
+- [P. Albin, É. Leichtnam, R. Mazzeo, and P. Piazza, Hodge theory on Cheeger spaces (2018)](https://doi.org/10.1515/crelle-2015-0095)
 
 ### Witten deformation preserves de Rham cohomology
 
@@ -99171,6 +104871,42 @@ a parallelogram.”
 **Sources:**
 
 - [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Heat supertraces give Lefschetz numbers
+
+**Remember:** The nonzero modes come from exact complexes.
+
+*True by definition. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** The Lefschetz number of a map commuting with a differential is its alternating trace on cohomology. Its heat supertrace takes the alternating trace on forms after heat evolution followed by the map.
+
+**Problem.** For a geometric lift commuting with a first-order elliptic complex on a closed manifold, the heat supertrace equals the Lefschetz number at every positive time.
+
+**How the definition helps.** Alternating traces cancel on each positive eigenspace, leaving the trace on harmonic representatives of cohomology. Our own proof projects the lift back onto each Laplacian eigenspace after applying it. For eigenvalue λ &gt; 0, the identity dd⁎ + d⁎d = λ makes that complex exact, so its alternating trace vanishes. Elliptic heat theory justifies summing these traces.
+
+**Wikipedia:** [Atiyah–Bott fixed-point theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott_fixed-point_theorem). It says: “the alternating sum of its traces on each graded part of the homology of the elliptic complex.”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, A Lefschetz Fixed Point Formula for Elliptic Complexes: I (1967)](https://doi.org/10.2307/1970694)
+
+### Nondegenerate points give finite weights
+
+**Remember:** Require invertibility before dividing by the fixed-point determinant.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J10. arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A fixed point x of a smooth map f is nondegenerate when I − Df is invertible on the tangent space at x. A geometric lift pulls sections back along f and applies a bundle map in each degree.
+
+**Problem.** A geometric lift commuting with an elliptic complex on a closed manifold has a fixed-point formula when all fixed points are nondegenerate. Its alternating cohomology trace equals the sum of alternating fiber traces divided by \|det(I − Df)\| at those points.
+
+**How the definition helps.** Nondegeneracy makes each denominator nonzero and each fixed point isolated, so compactness makes the sum finite. Our own counterexample is the identity map on a circle, where every denominator vanishes. The Atiyah–Bott theorem identifies the local sum with the trace on cohomology.
+
+**Wikipedia:** [Atiyah–Bott fixed-point theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott_fixed-point_theorem). It says: “the non-vanishing of this is a consequence of transversality”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, A Lefschetz Fixed Point Formula for Elliptic Complexes: I (1967)](https://doi.org/10.2307/1970694)
 
 ### Spectral cutoffs handle jumping kernels
 
@@ -99628,6 +105364,24 @@ a parallelogram.”
 
 - [John Phillips, Self-Adjoint Fredholm Operators and Spectral Flow (1996)](https://doi.org/10.4153/CMB-1996-054-4)
 
+### Heat kernels descend by periodization
+
+**Remember:** Sum over the lifts to move heat downstairs.
+
+*True by definition.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** On a compact quotient by a lattice, a discrete group of translations, lift each function by composing it with the quotient map. Define heat flow downstairs by applying the covering heat operator to this lift. A Rockland operator is a left-invariant homogeneous differential operator acting injectively on smooth vectors in every nontrivial irreducible unitary representation.
+
+**Problem.** On a graded nilpotent Lie group, a positive Rockland operator of positive degree has a smooth heat kernel. On a compact lattice quotient, its heat kernel sums the covering kernel over all lifts of the source point.
+
+**How the definition helps.** Each lift carries the same initial value, so its kernel weight adds to the weights of the other lifts. Our own derivation splits the covering integral into translates of one region representing the quotient. Rapid kernel decay justifies the sum, and uniqueness identifies the resulting evolution with heat flow downstairs.
+
+**Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “Kₜ(ẋ,ẏ) = ∑<sub>γ ∈ Γ</sub> pₜ(y⁻¹γx),”
+
+**Sources:**
+
+- [Veronique Fischer, Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246)
+
 ### Stochastic completeness rules out unprescribed heat
 
 **Remember:** No lost heat means no unprescribed heat.
@@ -99645,6 +105399,24 @@ a parallelogram.”
 **Sources:**
 
 - [Debdip Ganguly, Yehuda Pinchover, and Prasun Roychowdhury, Stochastic completeness and L¹-Liouville property for second-order elliptic operators](https://arxiv.org/abs/2203.06493v1)
+
+### Twisted heat decays without fixed points
+
+**Remember:** A fixed-point-free map keeps every sampled pair off the diagonal.
+
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** An isometry g acts on functions by composition. Its twisted heat trace takes the trace after composing heat flow with this action. Equivalently, it integrates the heat kernel Kₜ(gx,x) over x.
+
+**Problem.** For a fixed-point-free isometry of a closed Riemannian manifold, the twisted scalar heat trace decays faster than every positive power of time near zero.
+
+**How the definition helps.** The kernel formula samples only pairs a positive distance apart, since the manifold is compact and g has no fixed point. Our own argument uses the small-time Gaussian bound on the heat kernel there. Integrating this bound gives the stated decay.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “the kernel of an integral operator representing the heat operator”
+
+**Sources:**
+
+- [Harold Donnelly, Spectrum and the Fixed Point Sets of Isometries. I (1976)](https://doi.org/10.1007/BF01436198)
 
 ### A bracket-aware principal symbol is invertible exactly for maximally hypoelliptic operators
 
@@ -99664,6 +105436,96 @@ a parallelogram.”
 
 - [Iakovos Androulidakis, Omar Mohsen, Robert Yuncken, A pseudodifferential calculus for maximally hypoelliptic operators and the Helffer-Nourrigat conjecture, arXiv:2201.12060 (2022)](https://arxiv.org/abs/2201.12060v2)
 
+### Bolker injectivity blocks mirror artifacts
+
+**Remember:** One data covector cannot link two input covectors.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** A generalized Radon transform integrates over a smooth family of surfaces. Its canonical relation pairs object frequencies with the data frequencies they produce. The Bolker condition requires projection onto data frequencies to be one-to-one with injective derivative.
+
+**Problem.** For a smoothly localized, properly supported generalized Radon transform satisfying the Bolker condition, the transform followed by its adjoint is pseudodifferential.
+
+**How the definition helps.** Injectivity prevents two object frequencies from matching the same data frequency. In our own argument, the derivative condition allows smooth composition of the relations, leaving only identical object frequencies paired. The Fourier integral composition theorem then identifies the operator. Circles centered on a line illustrate the failure because reflected points produce identical measurements.
+
+**Paper or page:** [Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity](https://arxiv.org/abs/2212.00243v1). It says: “is an FIO satisfying the Bolker condition if D is disjoint from every tangent plane to S.”
+
+**Sources:**
+
+- [James W. Webber, Sean Holman and Eric Todd Quinto, Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity (2023)](https://doi.org/10.1016/j.jfa.2023.110056)
+
+### Eigenlines detect failed diagonalization
+
+**Remember:** An eigenline can exist without a global eigenvector.
+
+*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** A Hermitian leading symbol is a matrix of highest-order frequency terms equal to its conjugate transpose. For an everywhere simple eigenvalue, its one-dimensional complex eigenspaces form the eigenline bundle over all nonzero covectors.
+
+**Problem.** A smooth global unit eigenvector exists exactly when the eigenline bundle has zero first Chern class, the integer cohomology class classifying complex line bundles.
+
+**How the definition helps.** Collecting the eigenspaces into a bundle turns the eigenvector choice into the question of whether that bundle is trivial. In our own explanation, a global unit eigenvector gives a basis in every fiber. The classification theorem for complex line bundles supplies the cohomological test.
+
+**Paper or page:** [Topological obstructions to the diagonalisation of pseudodifferential systems](https://arxiv.org/abs/2203.16957v3). It says: “the Euler class e ∈ H²(ℂPᵐ⁻¹) of the circle bundle”
+
+**Sources:**
+
+- [Matteo Capoferri, Grigori Rozenblum, Nikolai Saveliev and Dmitri Vassiliev, Topological obstructions to the diagonalisation of pseudodifferential systems (2022)](https://doi.org/10.1090/bproc/147)
+
+### Invertibility at infinity prevents escape
+
+**Remember:** A cylinder needs an invertible model as well as an invertible symbol.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** Far along a straight cylindrical end, translating an operator back toward the origin gives its limit operator. Full ellipticity requires this model to be invertible between the corresponding regularity spaces. It also requires the leading frequency symbol to be invertible in every nonzero direction.
+
+**Problem.** Consider a classical operator invariant under translations far down each straight cylindrical end, up to a rapidly decaying smoothing remainder. With compact core and cross sections, it is Fredholm between the corresponding Sobolev spaces exactly when fully elliptic.
+
+**How the definition helps.** The limit operator tests sequences that move down the cylinder while escaping every compact set. In our own example, slowly varying functions along an infinite cylinder defeat the Laplacian despite its invertible leading symbol. The inverse construction uses both tests to obtain closed range and finite-dimensional kernel and cokernel.
+
+**Paper or page:** [Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends](https://arxiv.org/abs/2308.06308v3). It says: “is Fredholm if, and only, if”
+
+**Sources:**
+
+- [Mirela Kohr, Victor Nistor and Wolfgang L. Wendland, Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends (2023)](https://arxiv.org/abs/2308.06308v3)
+
+### Noninteger orders avoid trace ambiguity
+
+**Remember:** No critical degree means no logarithmic ambiguity.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** To form the canonical trace density, integrate the classical scalar symbol over a frequency ball in coordinates, using the Fourier normalization. Retain the constant term as the radius grows, and multiply by the coordinate volume density.
+
+**Problem.** For noninteger real order on a closed manifold, these local densities agree across coordinate charts. Below order minus the dimension, their integral equals the ordinary operator trace.
+
+**How the definition helps.** Noninteger order excludes a homogeneous symbol term of degree minus the dimension, the only degree producing a logarithm. In our own explanation, such a logarithm would change the constant term under rescaling. The coordinate-change theorem handles general chart changes. At sufficiently low order the frequency integral converges.
+
+**Paper or page:** [A groupoid approach to the Wodzicki residue and the Kontsevich-Vishik trace](https://arxiv.org/abs/2312.10415v2). It says: “the Kontsevich-Vishik density of u₁ at x ∈ M is equal to Ψᵤ(x,1).”
+
+**Sources:**
+
+- [Maxim Kontsevich and Simeon Vishik, Determinants of elliptic pseudo-differential operators (1994)](https://www.ihes.fr/~maxim/TEXTS/determinants_elliptic_11.pdf)
+
+### Shubin order yields compactness
+
+**Remember:** Compactness needs improvement in position as well as frequency.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** Shubin order controls growth in position and frequency together on a manifold approaching a cone as its radial coordinate r grows. Negative order requires decay at large distances as well as smoothing at high frequencies.
+
+**Problem.** Every negative-order Shubin operator is compact on the space of square-integrable functions for the cylindrical measure, which uses dr/r in the radial direction.
+
+**How the definition helps.** Joint decay rules out escape to infinity in either position or frequency. In our own explanation, compactness follows from the compact embedding for the corresponding spaces of weighted regularity. On the line, convolution with a nonzero smooth compactly supported function smooths inputs but carries their translates arbitrarily far apart.
+
+**Paper or page:** [A Shubin pseudodifferential calculus on asymptotically conic manifolds](https://arxiv.org/abs/2408.08169v2). It says: “The operator T is compact for μ &lt; 0.”
+
+**Sources:**
+
+- [Thomas Krainer, A Shubin Pseudodifferential Calculus on Asymptotically Conic Manifolds (2025)](https://doi.org/10.1007/s00041-025-10178-3)
+
 ### Spectral and heat-kernel fractional Laplacians differ only through lost heat mass
 
 **Remember:** If heat is conserved, the two definitions agree.
@@ -99681,6 +105543,94 @@ a parallelogram.”
 **Sources:**
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
+
+### The cylindrical calculus keeps inverses
+
+**Remember:** An inverse can have a rapidly decreasing tail.
+
+*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
+
+**Definition.** On straight cylindrical ends, the translation-invariant calculus uses operators unchanged by translation far down each end. Their kernels vanish beyond a fixed input-to-output distance. The essentially translation-invariant calculus also admits smoothing remainders with rapid decay at infinity.
+
+**Problem.** On a manifold with compact core and straight cylindrical ends, any order-zero operator in the larger calculus invertible on square-integrable functions has its inverse there.
+
+**How the definition helps.** Allowing decaying tails removes a support obstruction to inversion. In our own example on the line, subtract convolution with a positive bump supported in \[1,2\] of integral below one from the identity. Its inverse sums all convolution powers and reaches arbitrarily far. The spectral invariance theorem proves that inverses stay in the larger class.
+
+**Paper or page:** [Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends](https://arxiv.org/abs/2308.06308v3). It says: “Then $T<sup>-1</sup>\\in {\\Psi\_{\\operatorname{ess}}<sup>\[-s-t\]</sup>}({\\mathfrak M} ; F, E)$.”
+
+**Sources:**
+
+- [Mirela Kohr, Victor Nistor and Wolfgang L. Wendland, Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends (2023)](https://arxiv.org/abs/2308.06308v3)
+
+### The residue measures failed scaling
+
+**Remember:** Divide the scaling defect by log to read the residue.
+
+*True by definition.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP, math.DG. Level 4: research.
+
+**Definition.** The tangent groupoid joins pairs of manifold points to tangent vectors at scale zero. A classical operator kernel extends to this family with a scaling law up to smooth error. In dimension d at order −d, the defect is the dilated kernel times the dth power of the scale factor, minus the original kernel.
+
+**Problem.** At each zero tangent vector, the scaling defect divided by the logarithm of the positive dilation factor gives the Wodzicki residue density. The dilation factor must differ from one.
+
+**How the definition helps.** Evaluating the smooth error at a fixed zero vector turns successive dilations into addition of defects. In our own explanation, continuity makes this additive law on positive scale factors a multiple of the logarithm. The identification theorem equates the coefficient with the usual frequency integral of the degree −d symbol.
+
+**Paper or page:** [A groupoid approach to the Wodzicki residue](https://arxiv.org/abs/2303.15787v2). It says: “Resₓᵂ(P) = 1/log(s) (sᵈ αₛ\*𝕜 − 𝕜)\|(x,0,0)”
+
+**Sources:**
+
+- [Nathan Couchet and Robert Yuncken, A groupoid approach to the Wodzicki residue (2024)](https://doi.org/10.1016/j.jfa.2023.110268)
+
+### Aperiodicity removes the sphere’s Weyl obstruction
+
+**Remember:** A null set of periodic directions cannot produce sphere-sized jumps.
+
+*Rules out counterexamples.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** A unit tangent vector is periodic if its geodesic returns with the same position and velocity after a positive time. Call the periodic directions negligible if they have zero measure for the natural volume on the unit tangent bundle. The leading Weyl term is (2π)⁻ⁿ times manifold volume, Euclidean unit ball volume, and λ to the power n/2, all multiplied together.
+
+**Problem.** On a closed n-dimensional Riemannian manifold with negligible periodic directions, let N(λ) count Laplace eigenvalues at most λ with multiplicity. Its error from the leading Weyl term is little-o of λ to the power (n−1)/2 as λ tends to infinity.
+
+**How the definition helps.** The measure condition excludes round spheres, where every direction returns and large multiplicities force jumps of the same order as the proposed error scale. Our own comparison uses the continuity of the leading Weyl term across each jump. Dividing the error by the stated power must give a limit of zero. The sharper estimate requires the Duistermaat–Guillemin theorem relating periodic geodesics to the wave trace.
+
+**Wikipedia:** [Weyl law](https://en.wikipedia.org/wiki/Weyl_law). It says: “when the set of periodic bicharacteristics has measure 0.”
+
+**Sources:**
+
+- [Johannes Duistermaat and Victor Guillemin, The Spectrum of Positive Elliptic Operators and Periodic Bicharacteristics (1975)](https://doi.org/10.1007/BF01405172)
+
+### Energy closure preserves cone dilation
+
+**Remember:** Dilation rescales the energy and therefore preserves its completion.
+
+*True by definition.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** On an infinite cone, define the Friedrichs Laplacian through the gradient energy of smooth functions supported away from the tip. Complete these functions in the norm whose square adds the energy to the squared L² norm.
+
+**Problem.** On an exact infinite cone, every radial dilation, normalized to preserve the L² norm, preserves the Friedrichs operator domain. For dilation U that evaluates functions at radius ρr, the Laplacian satisfies ΔU = ρ²UΔ.
+
+**How the definition helps.** Dilation rescales the energy by a constant, so it preserves the completion without requiring an expansion at the tip. Our own calculation gives the factor ρ². The theorem associating an operator to the closed energy form transfers this identity to the operator domain.
+
+**Paper or page:** [Extensions of symmetric operators that are invariant under scaling and applications to indicial operators](https://arxiv.org/abs/2107.01239). It says: “In particular, the Friedrichs extension Aꜰ = A\*\|𝒟ꜰ : 𝒟ꜰ ⊂ H → H, 𝒟ꜰ = 𝒟ₘₐₓ ∩ ℋꜰ is invariant.”
+
+**Sources:**
+
+- [Thomas Krainer, Extensions of symmetric operators that are invariant under scaling and applications to indicial operators](https://arxiv.org/abs/2107.01239)
+
+### Energy excludes logarithmic cone modes
+
+**Remember:** Finite energy excludes logarithms that square integrability admits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** At a flat cone tip, the Friedrichs Laplacian uses the closure of the gradient energy of smooth functions supported away from the tip. The energy norm squares to the sum of the gradient energy and the squared L² norm.
+
+**Problem.** On a compact flat cone surface, the angular average of a function in the Friedrichs operator domain has no logarithmic term at the tip.
+
+**How the definition helps.** Finite energy rules out a logarithm because its radial derivative is proportional to 1/r. Our own calculation integrates its squared derivative against the cone area element and finds the divergent integral ∫dr/r. A cutoff logarithm and its Laplacian on the punctured cone are both square integrable.
+
+**Paper or page:** [Compact polyhedral surfaces of an arbitrary genus and determinants of Laplacians](https://arxiv.org/abs/0906.0717). It says: “Let Δ be the Friedrichs extension of the Laplacian defined on functions from C∞₀(𝒳 ∖ {P₁,…,Pₙ}).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Bounding spin removes holonomy signs
 
@@ -99755,6 +105705,24 @@ a parallelogram.”
 **Sources:**
 
 - [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
+
+### Even-dimensional analytic torsion cancels
+
+**Remember:** Dual degrees turn the weighted sum into an alternating sum.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J50. arXiv math.SP, math.DG. Level 4: research.
+
+**Definition.** In degree p, let Dₚ be the determinant obtained from positive eigenvalues of the Laplacian on differential p-forms by zeta regularization. This assigns a value to their infinite product using the derivative of their spectral zeta function. Analytic torsion multiplies the Dₚ raised to the powers −(−1)ᵖp/2.
+
+**Problem.** On a closed oriented Riemannian manifold of even dimension, the analytic torsion of the ordinary differential forms equals one.
+
+**How the definition helps.** The exponents pair across complementary degrees because the Hodge star identifies their spectra. In our own calculation, averaging paired exponents leaves a constant times the alternating sign. On each positive eigenspace, exterior differentiation gives an exact sequence, so its alternating dimension is zero. This cancels the corresponding contribution to log torsion.
+
+**nLab:** [analytic torsion](https://ncatlab.org/nlab/show/analytic+torsion). It says: “given by a product of powers of the functional determinants”
+
+**Sources:**
+
+- [Daniel Ray and Isadore Singer, R-Torsion and the Laplacian on Riemannian Manifolds (1971)](https://doi.org/10.1016/0001-8708(71)90045-4)
 
 ### Local forms give determinant curvature
 
@@ -99899,6 +105867,228 @@ a parallelogram.”
 **Sources:**
 
 - [D. B. Ray and I. M. Singer, R-Torsion and the Laplacian on Riemannian manifolds, Advances in Mathematics 7 (1971)](https://doi.org/10.1016/0001-8708(71)90045-4)
+
+### Birth–death points connect Morse functions
+
+**Remember:** Allow the cubic singularity that creates and cancels pairs.
+
+*Makes the theorem clean to state or prove.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.GT. Level 4: research.
+
+**Definition.** A generalized Morse function has two allowed kinds of critical point. The Hessian, its matrix of second derivatives, can be invertible. Alternatively its kernel can be a line on which the third derivative is nonzero, giving a birth–death point.
+
+**Problem.** On a closed smooth manifold, every smooth path between Morse functions admits arbitrarily close smooth paths of generalized Morse functions with the same endpoints.
+
+**How the definition helps.** Allowing a birth–death point admits the degeneracy that a generic path can meet (our own explanation). In x³ + tx, two critical points disappear as t passes through zero. Transversality for derivative data lets a path avoid all worse degeneracies.
+
+**nLab:** [framed generalized Morse function](https://ncatlab.org/nlab/show/framed+generalized+Morse+function). It says: “whose critical points either have a nondegenerate Hessian or a Hessian with a 1-dimensional kernel K such that the third derivative of f along K is nonzero.”
+
+**Sources:**
+
+- [Kiyoshi Igusa, Higher Singularities of Smooth Functions are Unnecessary](https://doi.org/10.2307/2006962)
+
+### Boardman strata give expected codimension
+
+**Remember:** Compute universal strata once, then pull them back.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A jet records a smooth map’s value and derivatives through a specified order. Boardman strata group jets by successive kernel dimensions. A Thom–Boardman map meets each such stratum transversely through its jets, meaning their derivatives supply all directions normal to the stratum.
+
+**Problem.** Each corresponding set of source points is empty or smooth with the same codimension as its Boardman stratum.
+
+**How the definition helps.** Transversality transfers the codimension from jet space to the source by the inverse image theorem (our own explanation). Boardman proves that the strata themselves are smooth. A constant plane map has rank zero everywhere, although rank zero has codimension four among plane jets (our own example).
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “Assume that the k-jet extension jᵏf of the map f: M → N is transverse to the manifolds Σᴵ (we call these maps Thom-Boardman maps).”
+
+**Sources:**
+
+- [John M. Boardman, Singularities of differentiable maps](https://doi.org/10.1007/BF02684585)
+
+### Divided differences keep colliding points
+
+**Remember:** Divide before setting the two source points equal.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** Consider a finite holomorphic map locally of the form (x,t) ↦ (x,h(x,t)), where t is one variable. Its double point space has one equation per component of h. Each equation sets (hⱼ(x,t) − hⱼ(x,s))/(t − s) to zero, using the t derivative when s = t.
+
+**Problem.** For a family in these coordinates, each member’s double point space equals the corresponding fiber of the family’s double point space.
+
+**How the definition helps.** The extended equations allow parameter substitution even when the source points coincide (our own explanation). For t ↦ (t²,t³ + ut), distinct points with the same image merge at zero as u tends to zero. The central map has no distinct pair, yet its divided differences still vanish there.
+
+**Paper or page:** [Cohomological connectivity of perturbations of map-germs](https://arxiv.org/abs/2103.14685v1). It says: “unlike 𝒟ᵏ(f), the spaces Dᵏ(f) behave well under deformations”
+
+**Sources:**
+
+- [Yongqiang Liu, Guillermo Peñafort Sanchis, Matthias Zach, Cohomological connectivity of perturbations of map-germs](https://arxiv.org/abs/2103.14685v1)
+
+### Whitney A keeps transversality open
+
+**Remember:** The lower tangent space must fit inside every limiting upper tangent space.
+
+*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A stratification divides a closed set into locally finitely many smooth pieces called strata, with their boundaries made of lower strata. Whitney condition A requires each limiting tangent plane from an approaching stratum to contain the tangent space of the stratum at the limit.
+
+**Problem.** For a compact source, smooth maps whose order-k jets meet every stratum transversely form an open set in the smooth topology. Here the stratified set lies in the space of jets, which record values and derivatives through order k, and satisfies Whitney condition A.
+
+**How the definition helps.** Condition A preserves the tangent directions needed for transversality when the meeting point moves between strata (our own explanation). Transversality means the jet map supplies all directions missing from the stratum’s tangent plane. Compactness lets this control persist over the whole source.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “the set of maps f: M → N whose k-jet is transversal to all strata of the stratification is open”
+
+**Sources:**
+
+- [David Trotman, Stability of transversality to a stratification implies Whitney (a)-regularity](https://doi.org/10.1007/BF01410081)
+
+### Infinitesimal coordinate changes yield stability
+
+**Remember:** Test stability by asking which variations coordinate changes can absorb.
+
+*Makes the theorem clean to state or prove.* MSC 58K25 (Stability theory for manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** A smooth map f is infinitesimally stable if every smooth vector field along f has the form df(X) + Y ∘ f. A field along f assigns a target tangent vector at each image point for each source point. The fields X and Y live on the source and target respectively.
+
+**Problem.** For smooth manifolds without boundary and compact source, infinitesimal stability is equivalent to stability. Stability means all sufficiently close smooth maps differ from f by smooth source and target coordinate changes.
+
+**How the definition helps.** Infinitesimal stability replaces a search for coordinate changes with a linear equation for their velocities (our own explanation). Mather’s theorem passes from these first-order solutions to stability under actual perturbations.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “If f is stable then it is infinitesimally stable”
+
+**Sources:**
+
+- [John N. Mather, Stability of C∞ Mappings II. Infinitesimal Stability Implies Stability](https://doi.org/10.2307/1970668)
+
+### Contact changes preserve local algebras
+
+**Remember:** Changing generators leaves the quotient ring unchanged.
+
+*Makes the theorem clean to state or prove.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.CV. Level 4: research.
+
+**Definition.** A holomorphic map germ records the map near the origin. Its local algebra is the ring of holomorphic function germs modulo the ideal generated by the map components. Contact equivalence allows source coordinate changes and invertible matrices of holomorphic functions acting on the components.
+
+**Problem.** For finitely determined germs with fixed source and target dimensions, contact equivalence is equivalent to isomorphism of their local complex algebras. Finite determinacy means derivatives through some finite order determine the contact class.
+
+**How the definition helps.** The quotient forgets which components generate the ideal, so a contact change gives an algebra isomorphism (our own explanation). Mather’s theorem supplies the reverse direction, recovering the contact class from the abstract algebra.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “Hence two finitely determined map germs are K-equivalent if and only if their local algebras (or equivalently, their quotient algebras) are isomorphic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite determinacy makes equivalence smooth
+
+**Remember:** Only finitely many terms of a formal coordinate change matter.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 4: research.
+
+**Definition.** Two smooth map germs are left–right equivalent if smooth source and target coordinate changes identify them near zero. A germ is k-determined if every smooth germ sharing its value and derivatives through order k is equivalent to it.
+
+**Problem.** For a finitely determined germ, equivalence by invertible formal power series implies smooth left–right equivalence.
+
+**How the definition helps.** Finite determinacy lets us truncate the formal coordinate changes at an order at least k and at least one (our own proof). The polynomial truncations have invertible derivatives and realize the required derivatives of the transformed map. Without determinacy, the zero function and the smooth extension of exp(−1/x²) by zero have identical series but different zero sets.
+
+**nLab:** [jet bundle](https://ncatlab.org/nlab/show/jet+bundle). It says: “where two germs are considered equivalent if their first k partial derivatives at x coincide.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Immersed lifts distinguish cuspidal edges
+
+**Remember:** Check both the surface and its normal lift.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.DG. Level 4: research.
+
+**Definition.** A front is a surface map into three-space with a smooth unit normal ν such that the pair (f,ν) has injective derivative. A singular point is nondegenerate if the signed area density det(fₓ,fᵧ,ν) has nonzero derivative there.
+
+**Problem.** At a nondegenerate singular point of a front, smooth coordinates give the cuspidal edge (x,y²,y³) exactly when the derivative kernel crosses the singular curve transversely.
+
+**How the definition helps.** The immersed lift forces the normal to vary in the direction lost by the surface derivative (our own explanation). For (x,y²,0), the kernel crosses the singular line but the normal is constant. The front recognition theorem supplies the equivalence.
+
+**Paper or page:** [Null surfaces of pseudo-spherical spacelike framed curves in the anti-de Sitter 3-space](https://arxiv.org/abs/2305.04230v1). It says: “The germ of f at p is locally diffeomorphic to the cuspidal edge if and only if ξ(s₀) is transversal to c′(s₀)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stable germs need only contact equivalence
+
+**Remember:** Stable germs need only the coarser contact classification.
+
+*Rules out counterexamples.* MSC 58K40 (Classification; finite determinacy of map germs). arXiv math.CV. Level 4: research.
+
+**Definition.** A stable holomorphic map germ absorbs every unfolding, a family through the map, by coordinate changes preserving the parameters. Contact equivalence allows an invertible change of source coordinates and an invertible matrix of holomorphic functions acting on the components.
+
+**Problem.** For stable holomorphic germs with fixed source and target dimensions, contact equivalence implies equivalence by source and target coordinate changes.
+
+**How the definition helps.** Stability makes the contact class sufficient for classification by coordinate changes, by the stable classification theorem. In our own counterexample without stability, (x,y³) and (x,y³ + xy) differ by an invertible component matrix. Their critical values form a smooth line and a cusp respectively, so target coordinates cannot identify them.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “Two stable maps are 𝒜-equivalent iff they are 𝒦-equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Contact directions count stable parameters
+
+**Remember:** Count only directions that target translations leave uncovered.
+
+*Makes the theorem clean to state or prove.* MSC 58K60 (Deformation of singularities), 58K25, 58K40. arXiv math.DG. Level 4: research.
+
+**Definition.** For a smooth map near zero, take vector-valued function germs along the map modulo three kinds of variations. Remove derivatives along source vector fields, vectors with entries in the ideal generated by the map components, and constant target vectors. Call the resulting real vector space N.
+
+**Problem.** If the quotient by the first two kinds of variations is finite-dimensional, dim N is the least parameter count for a stable unfolding. Such an unfolding includes its parameters among its outputs and absorbs small perturbations by source and target coordinate changes locally.
+
+**How the definition helps.** Removing constant vectors counts only directions target translations cannot supply (our own explanation). The stability criterion requires the parameter derivatives to span N. Adding basis representatives with independent coefficients gives a stable unfolding of minimum size.
+
+**Paper or page:** [A note on 1-parameter stable unfoldings](https://arxiv.org/abs/2410.10321v1). It says: “is a minimal stable unfolding of f.”
+
+**Sources:**
+
+- [Ignacio Breva Ribes, Raúl Oset Sinha, A note on 1-parameter stable unfoldings](https://arxiv.org/abs/2410.10321v1)
+
+### Infinitesimal versality counts parameters
+
+**Remember:** Each parameter supplies at most one independent direction.
+
+*Makes the theorem clean to state or prove.* MSC 58K60 (Deformation of singularities), 58K40. arXiv math.AG. Level 4: research.
+
+**Definition.** For a formal power series map at zero over ℂ, take all series perturbations modulo first-order source and target coordinate changes, including translations. A parameter family is infinitesimally versal if its parameter derivatives span this quotient.
+
+**Problem.** If the quotient has finite dimension, its dimension is the minimum number of parameters for formal versality. Formal versality means every formal family of the map comes from parameter substitution and parameter-dependent source and target coordinate changes.
+
+**How the definition helps.** Spanning the quotient uses at least one parameter for each basis vector (our own explanation). Adding a linear combination of basis representatives gives a family attaining that count by the formal versality theorem.
+
+**Paper or page:** [Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1). It says: “is the minimal number of parameters in a 𝒢-versal unfolding.”
+
+**Sources:**
+
+- [Dmitry Kerner, Unfoldings of maps, the first results on stable maps, and results of Mather-Yau/Gaffney-Hauser type in arbitrary characteristic](https://arxiv.org/abs/2209.05071v1)
+
+### Unfoldings preserve local algebras
+
+**Remember:** Quotienting by the output parameters sets them to zero.
+
+*True by definition.* MSC 58K60 (Deformation of singularities), 58K40. arXiv math.CV. Level 4: research.
+
+**Definition.** A holomorphic map germ records a map near zero. An unfolding of f is the map (x,u) ↦ (g(x,u),u), where g(x,0) = f(x). Its local algebra is the ring of source function germs modulo the ideal generated by all output components.
+
+**Problem.** Every unfolding has a local algebra isomorphic to that of its original map germ.
+
+**How the definition helps.** Recording the parameters as outputs sets them to zero in the quotient (our own explanation). Keeping only the varying outputs can change the answer. For g(x,u) = x² + u alone the quotient still contains a free variable, whereas including u gives the relation x² = 0.
+
+**Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “If Ψ̂ is an unfolding of Ψ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Universal jet classes pull back
+
+**Remember:** Compute the class in the universal bundle, then pull it back.
+
+*True by definition.* MSC 58K65 (Topological invariants on manifolds), 58K05. arXiv math.AG, math.AT. Level 4: research.
+
+**Definition.** Jets record map values and derivatives through a fixed order. For a closed complex algebraic jet locus of pure codimension preserved by coordinate changes, its Thom polynomial is its universal cohomology class. This class represents intersection with the locus in the universal bundle of jets.
+
+**Problem.** For a holomorphic map whose jets meet every smooth stratum of the locus transversely, the Thom polynomial gives the class of its singularity locus. One pulls it back by the map classifying the jet coordinate bundle.
+
+**How the definition helps.** The universal definition replaces a fresh intersection calculation for each map with one pullback (our own explanation). Transverse inverse images preserve the cohomology class dual to a locus. Computing the universal class itself requires a separate calculation.
+
+**Paper or page:** [Thom polynomials for singularities of maps](https://arxiv.org/abs/2502.16727v2). It says: “where W(s):=s⁻¹(W(E)) and ρ: M → BG is the classifying map”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ## 60 Probability theory and stochastic processes
 

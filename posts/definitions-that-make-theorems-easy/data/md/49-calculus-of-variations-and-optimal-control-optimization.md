@@ -769,6 +769,24 @@
 
 - [Primal-dual programs for the constrained optimal impulse control: discounted model](https://arxiv.org/abs/2504.18387v1)
 
+### Varifold stationarity survives weak limits
+
+**Remember:** Keep tangent planes so the area variation passes to the limit.
+
+*True by definition. Confidence: medium.* MSC 49Q15 (Geometric measure and integration theory, integral and normal currents in optimization), 58E12. arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** A surface varifold measures area on pairs consisting of a point and an unoriented plane through it. It is stationary when every smooth, compactly supported vector field has zero integrated divergence along these planes. This divergence traces the field’s derivative in just the plane directions.
+
+**Problem.** A weak limit of stationary surface varifolds is stationary.
+
+**How the definition helps.** Recording the plane makes the area variation an integral of a continuous, compactly supported test function (our own explanation). Weak convergence means convergence of all such integrals, so the limiting variation is zero. The first variation formula identifies this test with stationarity under smooth deformations.
+
+**Paper or page:** [Weyl Law and convergence in the classical limit for min-max nonlocal minimal surfaces](https://arxiv.org/abs/2406.12162v4). It says: “the limit integral stationary varifold”
+
+**Sources:**
+
+- [W. K. Allard, On the First Variation of a Varifold (1972)](https://doi.org/10.2307/1970868)
+
 ### A jump-based transport distance makes nonlocal diffusion an entropy gradient flow
 
 **Remember:** Charge for mass that moves by jumps, and entropy descent is jump diffusion.

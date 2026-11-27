@@ -1756,6 +1756,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Mackey completeness gives smooth primitives
+
+**Remember:** Control the Riemann sums in one disk to obtain a primitive.
+
+*Makes the theorem clean to state or prove.* MSC 46A03 (General theory of locally convex spaces), 58B10. arXiv math.FA. Level 4: research.
+
+**Definition.** A bounded disk in a locally convex space is a bounded convex set closed under multiplication by scalars of absolute value at most one. A sequence is Mackey–Cauchy if all sufficiently late differences lie in arbitrarily small multiples of one fixed bounded disk. A space is Mackey complete if every such sequence converges.
+
+**Problem.** Every smooth curve in a Mackey-complete Hausdorff locally convex space has a smooth primitive, a curve whose derivative equals the given curve.
+
+**How the definition helps.** Mackey completeness supplies exactly the limit needed for Riemann sums of a smooth curve. In our own proof, bounded difference quotients on each compact interval place the errors between successive refinements in shrinking multiples of one bounded disk. Integrating up to a variable endpoint then gives a curve with the prescribed derivative.
+
+**nLab:** [convenient vector space](https://ncatlab.org/nlab/show/convenient+vector+space). It says: “there is a curve ∫ c (an antiderivative of c) such that c is the derivative of ∫ c.”
+
+**Sources:**
+
+- [Andreas Kriegl and Peter W. Michor, The Convenient Setting of Global Analysis (1997)](https://www.mat.univie.ac.at/~michor/apbookh.pdf)
+
 ### Liquid real vector spaces are closed under extensions, unlike Banach spaces
 
 **Remember:** Allow non-convex measures, and extensions of Banach spaces stay inside.
