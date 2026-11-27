@@ -1084,6 +1084,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining the spectrum as a support makes it nonempty and proves Gelfand–Mazur
+
+**Remember:** A nonzero module cannot live on the empty set.
+
+*True by definition.* MSC 47A10 (Spectrum, resolvent), 46H05, 46A16. arXiv math.FA. Level 4: research.
+
+**Definition.** An endomorphism T of a liquid complex vector space V makes V a ℂ\[T\]-module. For a closed set Z ⊂ ℂ, an idempotent algebra cuts out the category C(Z) of modules supported on Z. The spectrum of T is the smallest closed Z with V in C(Z).
+
+**Problem.** Every endomorphism of a nonzero complex quasi-Banach space has a nonempty compact spectrum. Hence every quasi-Banach field over ℂ is ℂ itself, and ℂ is algebraically closed.
+
+**How the definition helps.** With the spectrum defined as a support, nonemptiness only says that a nonzero object is not supported on the empty set. The category over the empty set is zero (Proposition 5.14 of the complex notes). The usual proof uses Liouville's theorem and a bounded linear functional, which Lᵖ for p &lt; 1 lacks (our own). The work moves to Theorem 5.1, which identifies the space of these supports with ℂ using Ostrowski's elementary theorem on multiplicative seminorms.
+
+**nLab:** [Gelfand-Mazur theorem](https://ncatlab.org/nlab/show/Gelfand-Mazur+theorem). It says: “the only complex Banach algebra which is also a field is the algebra of complex numbers ℂ”
+
+**Sources:**
+
+- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
+
 ### Koszul Laplacians test joint spectra
 
 **Remember:** Replace exactness at each stage with one positive inverse test.

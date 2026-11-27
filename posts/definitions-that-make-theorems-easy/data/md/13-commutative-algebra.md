@@ -992,6 +992,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Duality into the injective hull of the residue field preserves length
+
+**Remember:** E is injective and its socle is κ, so Hom(−, E) keeps length.
+
+*Rules out counterexamples.* MSC 13C11 (Injective and flat modules and ideals in commutative rings), 13D45. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let R be an Artinian local ring with maximal ideal m and residue field κ. An injective hull E of κ is an injective module containing κ, in which every nonzero submodule meets κ. The Matlis dual of a module M is D(M) = Hom(M, E).
+
+**Problem.** For every finitely generated module M over an Artinian local ring, D(M) has the same length as M. With one more step, D is an exact duality on finitely generated modules, with D∘D the identity.
+
+**How the definition helps.** Choosing E makes D exact and makes D(κ) = κ, so length is counted one composition factor at a time. D(κ) is the socle of E, the elements killed by m, and this is κ because every nonzero submodule of E meets κ. Dualizing into R itself fails: for R = κ\[x,y\]/(x,y)², Hom(κ, R) is two-dimensional (our own example). The existence of injective hulls is the only outside input.
+
+**Paper or page:** [Dualizing, Lemma 47.6.1.](https://stacks.math.columbia.edu/tag/08YX), [Dualizing, Lemma 47.6.3.](https://stacks.math.columbia.edu/tag/08YZ). It says: “For every finite R-module M we have length<sub>R</sub>(M) = length<sub>R</sub>(Hom<sub>R</sub>(M, E)) In particular, the injective hull E of κ is a finite R-module.”
+
+**Sources:**
+
+- [E. Matlis, Injective modules over Noetherian rings, Pacific Journal of Mathematics 8 (1958) 511–528](https://doi.org/10.2140/pjm.1958.8.511)
+
 ### Faithful flatness lets exactness be checked after a change of ring
 
 **Remember:** Faithfully flat base change neither creates nor hides exactness.
@@ -1026,6 +1044,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Requiring a complete local ring makes Matlis duality an anti-equivalence
+
+**Remember:** The double dual of R is its completion, so R must be complete.
+
+*Rules out counterexamples.* MSC 13C11 (Injective and flat modules and ideals in commutative rings), 13J10, 13D45. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let R be a Noetherian local ring with residue field κ. Let E be an injective hull of κ, the smallest injective module containing it, and D(M) = Hom(M, E) the Matlis dual. The theorem asks that R be complete for the topology given by the powers of its maximal ideal.
+
+**Problem.** If R is a complete Noetherian local ring, then D is an anti-equivalence between Artinian and Noetherian R-modules, with D∘D the identity on both sides.
+
+**How the definition helps.** Completeness is exactly what makes the double dual of R equal to R, because D(D(R)) = Hom(E, E) is the completion of R. Without it the duality fails at R itself. For example, for k\[x\] localized at (x), the double dual is the power series ring k\[\[x\]\], which is larger (our own example). The remaining work is that E is Artinian and is the union of the injective hulls over the rings R/mⁿ.
+
+**Wikipedia:** [Matlis duality](https://en.wikipedia.org/wiki/Matlis_duality). It says: “Then Matlis duality states that the duality functor D<sub>R</sub> gives an anti-equivalence between the categories of Artinian and Noetherian R-modules.”
+
+**Paper or page:** [Dualizing, Lemma 47.7.5.](https://stacks.math.columbia.edu/tag/08Z6), [Dualizing, Proposition 47.7.8.](https://stacks.math.columbia.edu/tag/08Z9). It says: “Let E be an injective hull of κ over R. Then Hom<sub>R</sub>(E, E) is canonically isomorphic to the completion of R.”
+
+**Sources:**
+
+- [E. Matlis, Injective modules over Noetherian rings, Pacific Journal of Mathematics 8 (1958) 511–528](https://doi.org/10.2140/pjm.1958.8.511)
+
 ### The maximal-ideal test for faithful flatness makes flat local maps faithfully flat
 
 **Remember:** A local map cannot make the quotient by the source maximal ideal vanish.
@@ -1055,6 +1093,24 @@
 **How the definition helps.** With a regular element in the definition, the ring R itself is torsion-free as a module, so free modules are torsion-free. The older domain-only definition uses any nonzero element, and over a ring with zero divisors it fails for every nonzero module, as the page says. If ab = 0 with a and b nonzero, and m ≠ 0, then either bm = 0, or a kills the nonzero element bm (our own). The converse stays false: the ideal (x, y) of k\[x, y\] is torsion-free but not flat.
 
 **Wikipedia:** [Torsion-free module](https://en.wikipedia.org/wiki/Torsion-free_module). It says: “this does not work well over more general rings, for if the ring contains zero-divisors then the only module satisfying this condition is the zero module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Auslander–Buchsbaum turns Cohen–Macaulayness into freeness over a regular subring
+
+**Remember:** Cohen–Macaulay means free over a regular local subring.
+
+*True by definition.* MSC 13C14 (Cohen-Macaulay modules), 13D05, 13H05. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring is Cohen–Macaulay when its depth equals its Krull dimension. Depth is the length of a maximal regular sequence in the maximal ideal. This definition by depth replaces Macaulay's older one, that ideals generated by parameters are unmixed. Unlike unmixedness, depth enters the Auslander–Buchsbaum formula.
+
+**Problem.** Let R be a local ring that is finitely generated as a module over a regular local subring A. Then R is Cohen–Macaulay if and only if R is a free A-module (Hironaka's criterion, also called miracle flatness).
+
+**How the definition helps.** Over a regular local ring every finitely generated module has finite projective dimension. Since R is finite over A, dim R = dim A, and R has the same depth over A and over R (our own). So the Auslander–Buchsbaum formula gives pd R + depth R = dim A (our own). Hence R is Cohen–Macaulay exactly when pd R = 0, that is, when R is free over A (our own). The work goes into Serre's theorem on regular local rings and into the Auslander–Buchsbaum formula.
+
+**Wikipedia:** [Cohen–Macaulay ring](https://en.wikipedia.org/wiki/Cohen%E2%80%93Macaulay_ring). It says: “Then R is Cohen–Macaulay if and only if it is flat as an A-module; it is also equivalent to say that R is free as an A-module.”
+
+**Paper or page:** [Homological Local, Proposition 4.19](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Let φ: S′ → S be a local map of local noetherian rings such that S is a finitely generated S′-module. Then, for any finitely generated S-module M, depthS M = depthS′ M.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1093,6 +1149,26 @@
 **Paper or page:** [Algebra, Lemma 10.103.5.](https://stacks.math.columbia.edu/tag/0C6G). It says: “Then M is Cohen-Macaulay if and only if M/xM is Cohen-Macaulay.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Defining depth by Ext makes all maximal regular sequences equally long
+
+**Remember:** Depth is the first degree where Ext stops vanishing.
+
+*True by definition.* MSC 13C15 (Dimension theory, depth, related commutative rings (catenary, etc.)), 13D07. arXiv math.AC. Level 3: graduate.
+
+**Definition.** An M-regular sequence in an ideal I is a list x₁,…,xₙ in I such that each xᵢ is a nonzerodivisor on M/(x₁,…,xᵢ₋₁)M. Define the depth of I on M as the least i with Extⁱ(R/I, M) ≠ 0. This number mentions no sequence at all, unlike the older definition as the length of a maximal regular sequence.
+
+**Problem.** Let R be Noetherian, let M be a finitely generated module, and let I be an ideal with IM ≠ M. Then every maximal M-regular sequence in I has length equal to the least i with Extⁱ(R/I, M) ≠ 0 (Rees's theorem).
+
+**How the definition helps.** The Ext number does not depend on any choice, so the theorem only has to show that each maximal sequence has that length. If x in I is regular on M, passing to M/xM lowers the Ext number by one (our own). If no element of I is regular on M, then I lies in an associated prime of M. Such a prime annihilates some element of M. So Hom(R/I, M) ≠ 0 (our own). The work goes into these two steps of an induction.
+
+**Wikipedia:** [Depth (ring theory)](https://en.wikipedia.org/wiki/Depth_%28ring_theory%29). It says: “Then all maximal regular sequences x₁, …, xₙ for M, where each xᵢ belongs to 𝔪, have the same length n equal to the 𝔪-depth of M.”
+
+**Paper or page:** [Homological Local, Theorem 2.20](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Suppose M is an R-module and IM ≠ M. All maximal M-sequences in I have the same length. This length is the smallest value of r such that Extʳ(R/I, M) ≠ 0.”
+
+**Sources:**
+
+- [D. Rees, The grade of an ideal or module, Mathematical Proceedings of the Cambridge Philosophical Society 53 (1957), 28–42.](https://doi.org/10.1017/s0305004100031960)
 
 ### The Ext definition of depth makes depth bounds follow from exact sequences
 
@@ -1144,6 +1220,24 @@
 
 - [The Stacks Project Authors, The Stacks Project, Tag 05P8 (Divisors, Lemma 31.9.6)](https://stacks.math.columbia.edu/tag/05P8)
 
+### Comparing modules up to projective summands makes syzygies well defined
+
+**Remember:** Syzygies are unique once projective summands are ignored.
+
+*True by definition.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13D05, 16D40. arXiv math.AC, math.RA. Level 3: graduate.
+
+**Definition.** A first syzygy of a module M is the kernel K of a surjection P → M from a projective module P. Schanuel's lemma says that two such kernels K and K′, from P and P′, satisfy K ⊕ P′ ≅ K′ ⊕ P. So the syzygy is well defined once modules are compared up to adding projective summands.
+
+**Problem.** A module M has projective dimension at most n if and only if, in some projective resolution of M, the n-th syzygy is projective. Then the n-th syzygy is projective in every projective resolution of M.
+
+**How the definition helps.** Two n-th syzygies of M differ only by projective summands. A direct summand of a projective module is projective, so being projective is a property of M, not of the resolution. Applying Schanuel's lemma n times needs only induction (our own). The usual alternative proof uses Ext: the n-th syzygy is projective exactly when Extⁿ⁺¹(M, −) vanishes (our own). The work goes into Schanuel's lemma, which compares the two surjections onto M through their pullback.
+
+**Wikipedia:** [Schanuel's lemma](https://en.wikipedia.org/wiki/Schanuel%27s_lemma). It says: “If 0→K→P→M→0 and 0→K′→P′→M→0 are short exact sequences of R-modules and P and P′ are projective, then K⊕P′ is isomorphic to K′⊕P.”
+
+**Paper or page:** [Homological Local, Proposition 4.3](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “We have pd(M) ≤ n if any projective resolution ⋯ → P₁ → P₀ → M → 0 breaks off at the nth stage: that is, the kernel of Pₙ₋₁ → Pₙ₋₂ is projective.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Koszul complexes as tensor products makes them iterated cones
 
 **Remember:** Adding one element takes the cone of multiplication by that element.
@@ -1160,6 +1254,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Fine multigrading turns Betti numbers of face rings into simplicial homology
+
+**Remember:** Each set of vertices carries its own piece of homology.
+
+*Makes the theorem clean to state or prove.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13F55, 05E45. arXiv math.AC, math.CO. Level 3: graduate.
+
+**Definition.** The Stanley–Reisner ring k\[Δ\] of a simplicial complex Δ on vertices 1,…,n is k\[x₁,…,xₙ\] divided by the squarefree monomials of the non-faces. Grade it by ℤⁿ, with the i-th unit vector as the degree of xᵢ. The multigraded Betti number β(i, b) is the dimension of the degree-b part of Torᵢ(k\[Δ\], k).
+
+**Problem.** Only squarefree degrees occur, that is, subsets W of the vertices. Let Δ restricted to W be the faces lying inside W. Then β(i, W) is the dimension of its reduced homology in degree \|W\| − i − 1 (Hochster's formula).
+
+**How the definition helps.** Compute Tor by tensoring k\[Δ\] with the Koszul resolution of k. The part of this complex in degree W is, up to a shift, the simplicial cochain complex of Δ restricted to W (our own). The quote gives the coarse form for the ideal of Δ, whose Betti numbers are those of k\[Δ\] moved by one step (our own). The work goes into the Koszul resolution of k and into Tor being computable from either argument.
+
+**Wikipedia:** [Stanley–Reisner ring](https://en.wikipedia.org/wiki/Stanley%E2%80%93Reisner_ring). It says: “The face ring k\[Δ\] is a multigraded algebra over k all of whose components with respect to the fine grading have dimension at most 1. Consequently, its homology can be studied by combinatorial and geometric methods.”
+
+**Paper or page:** [Betti Cones of Stanley-Reisner Ideals](https://arxiv.org/abs/2401.05962v1). It says: “For any integers 0≤i≤n and d, we have β<sub>i,d</sub>(I\_Δ) = ∑<sub>U∈(V choose d)</sub> dim\_𝕂 H̃<sub>d−i−2</sub>(Δ<sub>U</sub>) where (V choose d) denotes the subsets of V of size d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Graded free resolutions make Hilbert series a polynomial over (1 − t)ⁿ
+
+**Remember:** Resolve, then add up free pieces with signs.
+
+*Makes the theorem clean to state or prove.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13D40. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let M be a graded module over S = k\[x₁,…,xₙ\], with each xᵢ of degree 1. Its Hilbert series is the power series whose d-th coefficient is the dimension of the degree-d part of M. A free module of rank one with generator in degree j has Hilbert series tʲ/(1 − t)ⁿ. Hilbert series add over exact sequences of graded modules.
+
+**Problem.** Let M be a finitely generated graded S-module generated in degrees ≥ 0. Then its Hilbert series equals K(t)/(1 − t)ⁿ for a polynomial K(t) with integer coefficients. Hence the dimension of the degree-d part of M agrees with a polynomial in d for all large d (Hilbert's theorem).
+
+**How the definition helps.** A finite graded free resolution writes the Hilbert series of M as an alternating sum of series of the form tʲ/(1 − t)ⁿ. The syzygy theorem supplies this finite resolution. The numerator is K(t) = Σ (−1)ⁱ βᵢⱼ tʲ, where βᵢⱼ counts degree-j generators in step i (our own). Expanding 1/(1 − t)ⁿ as a series then gives the Hilbert polynomial (our own).
+
+**Wikipedia:** [Hilbert series and Hilbert polynomial](https://en.wikipedia.org/wiki/Hilbert_series_and_Hilbert_polynomial). It says: “Every graded module M over a graded regular ring R has a graded free resolution because of the Hilbert syzygy theorem”
+
+**Paper or page:** [Algebra, Proposition 10.58.7](https://stacks.math.columbia.edu/tag/00K1). It says: “If S₊ is generated by elements of degree 1, then this function is a numerical polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Koszul differentials defined as derivations give exact complexes for nonzero functionals
 
 **Remember:** Wedging with a vector of value one undoes the differential.
@@ -1173,6 +1303,22 @@
 **How the definition helps.** With this definition, one short identity shows that every cycle is a boundary. Choose v with φ(v) = 1; the product rule gives d(v ∧ x) + v ∧ d(x) = x for every x. So if d(x) = 0, then x = d(v ∧ x). With the coordinate formula, the same identity needs an index computation (these steps are our own).
 
 **nLab:** [Koszul complex](https://ncatlab.org/nlab/show/Koszul+complex). It says: “The differential can be obtained from the faces of the obvious Koszul semi-simplicial R-module”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Koszul resolutions make Ext of a regular quotient an exterior algebra
+
+**Remember:** For a regular ideal, Ext is the exterior algebra on the normal module.
+
+*True by definition. Confidence: medium.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13D07. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** An ideal I of R is Koszul-regular when, locally on R, it is generated by elements whose Koszul complex is a resolution of R/I. A regular sequence gives an example. Then the conormal module I/I² is locally free over R/I, and its dual N = Hom(I/I², R/I) is called the normal module.
+
+**Problem.** If I is Koszul-regular, then the Yoneda product, which splices extensions, makes Extⁱ(R/I, R/I) isomorphic to the i-th exterior power of N for every i. Likewise Torᵢ(R/I, R/I) is the i-th exterior power of I/I².
+
+**How the definition helps.** Every differential of the Koszul complex multiplies by generators of I. So after applying Hom(−, R/I), or tensoring with R/I, all differentials become zero (our own). Then Ext and Tor are just the terms of the new complex, which are exterior powers (our own). Koszul-regularity, not regularity of a sequence, is exactly what this proof uses (our own). The work goes into matching the Yoneda product with the wedge product.
+
+**Paper or page:** [Duality, Lemma 48.15.4](https://stacks.math.columbia.edu/tag/0BQY). It says: “If ℐ is Koszul-regular (Divisors, Definition) then composition on RHom\_𝒪Y(𝒪X, 𝒪X) defines isomorphisms ∧ⁱ(Ext¹\_𝒪Y(𝒪X, 𝒪X)) → Extⁱ\_𝒪Y(𝒪X, 𝒪X)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1196,6 +1342,122 @@
 - [The Stacks Project Authors, The Stacks Project, Tag 063C (Divisors, Lemma 31.20.1)](https://stacks.math.columbia.edu/tag/063C)
 - [The Stacks Project Authors, The Stacks Project, Tag 08SJ (Cotangent, Lemma 92.14.2)](https://stacks.math.columbia.edu/tag/08SJ)
 
+### Measuring depth by Koszul homology makes it ignore finite ring extensions
+
+**Remember:** Koszul homology sees depth through any set of generators.
+
+*True by definition. Confidence: medium.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13C15. arXiv math.AC. Level 3: graduate.
+
+**Definition.** The Koszul complex K(x; M) on elements x₁,…,xₙ is M tensored with the exterior algebra on n generators. Its differential sends the i-th generator to xᵢ. Let R be Noetherian and M finitely generated. Depth-sensitivity says: if m is the largest i with Hᵢ(K(x; M)) ≠ 0, then (x₁,…,xₙ) has depth n − m on M.
+
+**Problem.** Let R → S be a local map of Noetherian local rings. Let M be a finitely generated S-module that is also finitely generated over R. Then the depth of M over R equals its depth over S.
+
+**How the definition helps.** Koszul homology on generators of 𝔪 is the same whether M is viewed over R or over S (our own). Over S, these elements and the annihilator of M generate an ideal with radical 𝔫, since M/𝔪M has finite length (our own). Depth on M depends only on that radical, which ends the proof (our own). The work goes into depth-sensitivity, not into tracking regular sequences from R inside S.
+
+**Wikipedia:** [Koszul complex](https://en.wikipedia.org/wiki/Koszul_complex). It says: “then every maximal M-regular sequence in I has length n - m (in particular, they all have the same length).”
+
+**Paper or page:** [Homological Local, Proposition 2.10](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Let (R, 𝔪) → (S, 𝔫) be a morphism of noetherian local rings. Suppose M is a finitely generated S-module, which is also finitely generated as an R-module. Then depthR M = depthS M.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Measuring projective dimension by Tor with the field proves Hilbert's syzygy theorem
+
+**Remember:** Resolve k instead of M, and n steps suffice.
+
+*True by definition.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13D05. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let S = k\[x₁,…,xₙ\] with k a field. For a finitely generated graded S-module M, the minimal graded free resolution has i-th term of rank equal to the dimension of Torᵢ(M, k). So the projective dimension of M, the length of its shortest projective resolution, is the largest i with Torᵢ(M, k) ≠ 0.
+
+**Problem.** Every finitely generated graded module over k\[x₁,…,xₙ\] has a graded free resolution of length at most n (Hilbert's syzygy theorem). The bound is sharp, since k itself has projective dimension n.
+
+**How the definition helps.** Tor can be computed by resolving the second argument, and the Koszul complex resolves k in n + 1 steps (our own). So Torᵢ(M, k) = 0 for i &gt; n, and the minimal resolution of M stops by step n. For M = k, Torₙ(k, k) is the top exterior power of kⁿ, which is nonzero (our own). This replaces the classical proofs, which induct on the number of variables or use Gröbner bases (our own). The work goes into the balancing of Tor and into Nakayama's lemma, which matches the ranks of the minimal resolution with the dimensions of Tor.
+
+**Wikipedia:** [Hilbert's syzygy theorem](https://en.wikipedia.org/wiki/Hilbert%27s_syzygy_theorem). It says: “Hilbert's syzygy theorem may be restated as: the global dimension of k\[x₁,…,xₙ\] is n.”
+
+**Paper or page:** [Lower bounds on Betti numbers](https://arxiv.org/abs/2108.05871v1), [Algebra, Proposition 10.114.2](https://stacks.math.columbia.edu/tag/00OQ). It says: “Let R = k\[x₁, …, xₙ\] be a polynomial ring in n variables over a field k. If M is a finitely generated graded R-module, then M has a finite free resolution of length at most n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mumford's shifted vanishing condition makes regularity pass to all higher twists
+
+**Remember:** Each higher cohomology vanishes one twist earlier than the last.
+
+*Makes the theorem clean to state or prove.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 14F06. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** A coherent sheaf F on projective space ℙⁿ over a field is m-regular when Hⁱ(ℙⁿ, F(m − i)) = 0 for every i &gt; 0. The shift by −i is the point of the definition: the i-th cohomology must vanish i twists below m.
+
+**Problem.** If F is m-regular, then F is d-regular for every d ≥ m. Moreover, for d ≥ m the sheaf F(d) is generated by its global sections and Hⁱ(ℙⁿ, F(d)) = 0 for all i ≥ 1 (Castelnuovo–Mumford).
+
+**How the definition helps.** The shifts match the long exact sequence for restriction to a hyperplane H that avoids the associated points of F. So the restriction of F to H is again m-regular, and induction on n applies. The same sequence then gives Hⁱ(F(m + 1 − i)) = 0, which is (m + 1)-regularity (our own). Global generation needs one more step: the multiplication maps from H⁰(F(d)) ⊗ H⁰(𝒪(1)) to H⁰(F(d + 1)) are onto for d ≥ m. The work goes into choosing such a hyperplane, after enlarging the field if needed, and into the case n = 0.
+
+**Wikipedia:** [Castelnuovo–Mumford regularity](https://en.wikipedia.org/wiki/Castelnuovo%E2%80%93Mumford_regularity). It says: “If a coherent sheaf is r-regular then F(r) is generated by its global sections.”
+
+**Paper or page:** [J. Alper, Stacks and Moduli, Chapter 2.3 Regularity, Proposition 2.3](https://sites.math.washington.edu//~jarod/moduli.pdf), [J. Alper, Stacks and Moduli, Chapter 2.3 Regularity, Lemma 2.2](https://sites.math.washington.edu//~jarod/moduli.pdf). It says: “For d ≥ m, F(d) is globally generated and Hⁱ(ℙⁿ, F(d)) = 0 for i ≥ 1.”
+
+**Sources:**
+
+- [D. Mumford, Lectures on Curves on an Algebraic Surface, Annals of Mathematics Studies 59, Princeton University Press, 1966.](https://doi.org/10.1515/9781400882069)
+
+### Ranks and ideals of minors make exactness of free complexes checkable
+
+**Remember:** A free complex is exact when its minors are deep enough.
+
+*Makes the theorem clean to state or prove.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13C15. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let φ be a map of finite free modules over a commutative ring. The rank of φ is the largest r such that some r × r minor of its matrix is nonzero. Let I(φ) be the ideal generated by the minors of that size. These two invariants replace the rank over a field, which has no meaning over a general ring.
+
+**Problem.** Let R be a Noetherian local ring and 0 → Fₑ → … → F₀ a complex of finite free modules with maps φᵢ. It is exact except at F₀ exactly when two conditions hold for each i (Buchsbaum–Eisenbud). First, φᵢ has rank Fᵢ − rank Fᵢ₊₁ + rank Fᵢ₊₂ − …; second, I(φᵢ) is R or contains a regular sequence of length i.
+
+**How the definition helps.** Ranks and ideals of minors are polynomial conditions on the matrix entries, so exactness becomes a statement about the depth of ideals. The case of one map is McCoy's theorem. It says φ is injective exactly when its rank equals the rank of its source and I(φ) has zero annihilator. The work goes into localizing at the primes that contain some I(φᵢ), and into the depth lemma for exact sequences (our own).
+
+**Paper or page:** [Algebra, Proposition 10.102.9](https://stacks.math.columbia.edu/tag/00N1), [More Algebra, Lemma 15.15.6](https://stacks.math.columbia.edu/tag/00MX). It says: “I(φᵢ) = R, or I(φᵢ) contains a regular sequence of length i.”
+
+**Sources:**
+
+- [D. A. Buchsbaum and D. Eisenbud, What makes a complex exact?, Journal of Algebra 25 (1973), 259–268.](https://doi.org/10.1016/0021-8693(73)90044-6)
+
+### Defining the cotangent complex by resolutions makes it Ω for polynomial algebras
+
+**Remember:** A polynomial algebra is its own free resolution.
+
+*True by definition.* MSC 13D03 ((Co)homology of commutative rings and algebras (e.g., Hochschild, André-Quillen, cyclic, dihedral, etc.)), 18G31. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** Let A → B be a ring map. Choose a simplicial A-algebra P with a map P → B such that each Pₙ is a polynomial algebra over A. The map must induce an isomorphism on homotopy groups. The cotangent complex L(B/A) is the chain complex of the B-modules Ω(Pₙ/A) ⊗ B, the left derived functor of Kähler differentials Ω.
+
+**Problem.** If B is a polynomial algebra over A, then L(B/A) is quasi-isomorphic to the Kähler differentials Ω(B/A) placed in degree zero.
+
+**How the definition helps.** The constant simplicial algebra with value B is already a resolution by polynomial algebras, so the definition computes Ω(B/A) directly. The work moves to the theorem that any two such resolutions give the same answer (Stacks Project, Cotangent, tag 08PS). That theorem rests on the homotopy theory of simplicial algebras.
+
+**Wikipedia:** [Cotangent complex](https://en.wikipedia.org/wiki/Cotangent_complex). It says: “We can take the resolution of Spec(A\[x1,…,xn\]) to be the identity map, and then it is clear that the cotangent complex is the same as the Kähler differentials.”
+
+**Paper or page:** [Cotangent, tag 08QH](https://stacks.math.columbia.edu/tag/08QH), [Cotangent, tag 08PS](https://stacks.math.columbia.edu/tag/08PS). It says: “If B is a polynomial algebra over the ring A, then L<sub>B</sub>/A is quasi-isomorphic to Ω<sub>B</sub>/A\[0\].”
+
+**Sources:**
+
+- [Luc Illusie, Complexe Cotangent et Déformations I, Lecture Notes in Mathematics 239, Springer (1971)](https://doi.org/10.1007/BFb0059052)
+- [Daniel Quillen, Homotopical Algebra, Lecture Notes in Mathematics 43, Springer (1967)](https://doi.org/10.1007/BFb0097438)
+
+### Deriving Kähler differentials extends the Jacobi–Zariski sequence to a triangle
+
+**Remember:** Derive the differentials, and the three-term sequence never loses exactness.
+
+*Rules out counterexamples.* MSC 13D03 ((Co)homology of commutative rings and algebras (e.g., Hochschild, André-Quillen, cyclic, dihedral, etc.)), 18G31. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** The cotangent complex L(B/A) of a ring map A → B is the left derived functor of Kähler differentials. It is computed from a simplicial resolution of B by polynomial A-algebras. Its homology in degree zero is the module of Kähler differentials Ω(B/A).
+
+**Problem.** Let A → B → C be ring maps. Without any smoothness hypothesis, there is a distinguished triangle L(B/A) ⊗ C → L(C/A) → L(C/B) → shift. Its long exact homology sequence ends with the classical sequence Ω(B/A) ⊗ C → Ω(C/A) → Ω(C/B) → 0.
+
+**How the definition helps.** A derived functor turns a right exact sequence into a long exact one, so failures of left exactness are absorbed by first homology groups. For ℤ → ℤ\[x\] → ℤ\[x\]/(x), the classical map from ℤ·dx to Ω(ℤ/ℤ) = 0 is not injective. The triangle repairs this with the term H₁(L(C/B)) = (x)/(x²) (our own example). The work went into choosing compatible polynomial resolutions for the two maps.
+
+**Wikipedia:** [Cotangent complex](https://en.wikipedia.org/wiki/Cotangent_complex). It says: “This sequence is exact on the left if the morphism f is smooth.”
+
+**Paper or page:** [Cotangent, tag 08QX](https://stacks.math.columbia.edu/tag/08QX). It says: “Let A → B → C be ring maps. There is a canonical distinguished triangle L<sub>B</sub>/A ⊗ᴸ<sub>B</sub> C → L<sub>C</sub>/A → L<sub>C</sub>/B → L<sub>B</sub>/A ⊗ᴸ<sub>B</sub> C\[1\] in D(C).”
+
+**Sources:**
+
+- [Luc Illusie, Complexe Cotangent et Déformations I, Lecture Notes in Mathematics 239, Springer (1971)](https://doi.org/10.1007/BFb0059052)
+- [Daniel Quillen, Homotopical Algebra, Lecture Notes in Mathematics 43, Springer (1967)](https://doi.org/10.1007/BFb0097438)
+
 ### Minimal resolutions reveal projective dimension
 
 **Remember:** Over the residue field, all differentials vanish.
@@ -1209,6 +1471,108 @@
 **How the definition helps.** The matrix test makes all differentials zero after tensoring with the residue field, the quotient by the maximal ideal (our own). Tor is the homology of this tensor product, so it records the rank in every degree (our own). A nonzero Tor group rules out any shorter projective resolution (our own). When the ranks vanish above some degree, the minimal resolution itself supplies the upper bound (our own). Nakayama’s lemma connects the matrix test to the construction by smallest generating sets (our own).
 
 **Paper or page:** [Homological Local, Corollary 4.7.](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Then pd(M) is the largest integer n such that Torₙ(M, k) ≠ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Serre's definition of regular rings by global dimension shuts out Nagata's example
+
+**Remember:** A uniform bound on resolutions forbids infinite dimension.
+
+*Rules out counterexamples.* MSC 13D05 (Homological dimension and commutative rings), 13H05. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian ring is usually called regular when every localization at a prime is a regular local ring. Serre instead called a Noetherian ring regular when it has finite global dimension. This is a uniform bound on the projective dimensions of all its modules. Nagata built a Noetherian ring whose localizations are all regular, but whose Krull dimension is infinite.
+
+**Problem.** A Noetherian ring has finite global dimension n exactly when all its localizations are regular and its Krull dimension is n. So Serre's regular rings are the regular rings of finite Krull dimension, and Nagata's ring is not one of them.
+
+**How the definition helps.** Serre's definition contains a uniform bound, and the uniform bound is exactly what Nagata's ring lacks. Nagata's ring is regular in the localization sense, but its local rings have unbounded dimension, so its global dimension is infinite (our own). So under the localization definition, the statement that regular rings have finite global dimension needs finite Krull dimension. The work goes into Serre's local theorem that a regular local ring of dimension d has global dimension d.
+
+**Wikipedia:** [Regular local ring](https://en.wikipedia.org/wiki/Regular_local_ring). It says: “Jean-Pierre Serre defined a regular ring as a commutative noetherian ring of finite global homological dimension. His definition is stronger than the definition above, which allows regular rings of infinite Krull dimension.”
+
+**Paper or page:** [Algebra, Lemma 10.110.8](https://stacks.math.columbia.edu/tag/00OE), [Algebra, Lemma 10.110.2](https://stacks.math.columbia.edu/tag/00O9). It says: “Let R be a Noetherian ring. The following are equivalent: R has finite global dimension n, R is a regular ring of dimension n,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Serre's homological criterion makes regularity descend along flat local maps
+
+**Remember:** Regular means the residue field has a finite resolution.
+
+*True by definition.* MSC 13D05 (Homological dimension and commutative rings), 13H05. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring R with maximal ideal 𝔪 is regular when 𝔪 is generated by dim R elements. Serre's criterion says this holds exactly when the residue field k = R/𝔪 has finite projective dimension, or equally when R has finite global dimension. The global dimension is the supremum of the projective dimensions of all modules.
+
+**Problem.** Let R → S be a flat local map of Noetherian local rings. If S is regular, then R is regular.
+
+**How the definition helps.** The homological criterion only asks for one finite resolution, and flat base change moves resolutions from R to S. A minimal free resolution of k over R becomes a minimal free resolution of S/𝔪S over S of the same length (our own). Since S is regular, S/𝔪S has finite projective dimension, so both resolutions are finite, and R is regular (our own). The work goes into Serre's theorem that this criterion agrees with the generator-counting definition.
+
+**Paper or page:** [Homological Local, Proposition 5.2](https://math.uchicago.edu/~amathew/CRing.pdf), [Algebra, Proposition 10.110.5](https://stacks.math.columbia.edu/tag/00OC). It says: “Let (R, 𝔪) → (S, 𝔫) be a flat, local homomorphism of noetherian local rings. If S is regular, so is R.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Testing projective dimension by Tor with the residue field bounds every module
+
+**Remember:** No module is harder to resolve than the residue field.
+
+*True by definition.* MSC 13D05 (Homological dimension and commutative rings), 13D07. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let M be a finitely generated module over a Noetherian local ring R with residue field k. Define the projective dimension of M as the largest i with Torᵢ(M, k) ≠ 0. This replaces the length of a shortest projective resolution, which needs a search over all resolutions.
+
+**Problem.** Every finitely generated module over a Noetherian local ring R has projective dimension at most pd k. Hence the global dimension of R equals the projective dimension of its residue field.
+
+**How the definition helps.** Tor can be computed by resolving k instead of M, so Torᵢ(M, k) = 0 for i &gt; pd k (our own). The Tor definition then gives pd M ≤ pd k at once. The work goes into the Tor description of projective dimension, which uses Nakayama's lemma and minimal resolutions. Passing to all modules uses the fact that global dimension is detected on cyclic modules R/I.
+
+**Paper or page:** [Homological Local, Corollary 4.8](https://math.uchicago.edu/~amathew/CRing.pdf), [Algebra, Lemma 10.109.12](https://stacks.math.columbia.edu/tag/065T). It says: “Suppose there exists n such that Torₙ₊₁(k, k) = 0. Then every finitely generated R-module has a finite free resolution of length at most n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining Gorenstein by finite injective dimension makes regular rings Gorenstein
+
+**Remember:** Finite global dimension bounds every injective dimension, including that of R.
+
+*True by definition.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 13H10, 13D05. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring R is Gorenstein when R, as a module over itself, has finite injective dimension. That is, R has an injective resolution of finite length. A Noetherian ring is Gorenstein when all its localizations at primes are. A regular local ring is one whose maximal ideal is generated by dim R elements.
+
+**Problem.** Every regular local ring is Gorenstein, and so is every regular ring.
+
+**How the definition helps.** With Gorenstein defined by finite injective dimension, Serre's theorem settles it: over a regular local ring, projective resolutions have bounded length. That bound, the global dimension, also bounds the injective dimension of every module, R included. With Bass's equivalent definition by Ext modules, one would instead compute Ext(k, R), with k the residue field, by a Koszul complex (our own remark). For a regular ring, every localization is a regular local ring, so the global case follows.
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “a Gorenstein local ring is a commutative Noetherian local ring R with finite injective dimension as an R-module.”
+
+**Paper or page:** [Dualizing, Lemma 47.21.3.](https://stacks.math.columbia.edu/tag/0AWX). It says: “A regular local ring is Gorenstein. A regular ring is Gorenstein.”
+
+**Sources:**
+
+- [H. Bass, On the ubiquity of Gorenstein rings, Mathematische Zeitschrift 82 (1963) 8–28](https://doi.org/10.1007/BF01112819)
+
+### Flat base change lets Ext be computed over the larger ring
+
+**Remember:** Flatness keeps resolutions exact, and the adjunction does the rest.
+
+*Rules out counterexamples.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 18G15. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** A ring map R → R′ is flat when tensoring over R with R′ keeps exact sequences exact. The base change adjunction says that R′-linear maps M ⊗ R′ → N′ are the same as R-linear maps M → N′, for each R′-module N′.
+
+**Problem.** Let R → R′ be flat, M an R-module and N′ an R′-module. Then Extⁱ over R′ of (M ⊗ R′, N′) is isomorphic to Extⁱ over R of (M, N′) for all i ≥ 0.
+
+**How the definition helps.** Flatness turns a projective resolution P of M into a projective resolution P ⊗ R′ of M ⊗ R′ (our own). Then the adjunction matches the two Hom complexes term by term (our own). Without flatness this fails: for Z → Z/2 and M = N′ = Z/2, Ext¹ over Z/2 is 0 (our own). But Ext¹ over Z of (Z/2, Z/2) is Z/2 (our own). The work moves into the independence of Ext from the chosen resolution.
+
+**Paper or page:** [Algebra, Lemma 10.73.1.](https://stacks.math.columbia.edu/tag/087N). It says: “Given a flat ring map R → R′, an R-module M, and an R′-module N′ the natural map Extⁱ<sub>R</sub>′(M ⊗<sub>R</sub> R′, N′) → Extⁱ<sub>R</sub>(M, N′) is an isomorphism for i ≥ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Flatness of the ring map makes Tor commute with base change
+
+**Remember:** A flat ring map carries free resolutions to free resolutions.
+
+*Rules out counterexamples.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 18G15. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** A ring map R → R′ is flat when tensoring over R with R′ keeps exact sequences of R-modules exact. Base change sends an R-module M to the R′-module M ⊗ R′.
+
+**Problem.** If R → R′ is flat, then Torᵢᴿ(M, N) ⊗ R′ ≅ Torᵢᴿ′(M ⊗ R′, N ⊗ R′) for all R-modules M, N and all i. Without flatness this fails.
+
+**How the definition helps.** Flatness keeps a free resolution P of M exact after tensoring with R′, so P ⊗ R′ is a free resolution of M ⊗ R′ (our own). Then (P ⊗ R′) ⊗ (N ⊗ R′) over R′ equals (P ⊗ N) ⊗ R′, and the exact functor − ⊗ R′ commutes with homology (our own). Take the map Z → Z/2, which is not flat, and M = N = Z/2. The left side in degree 1 is Z/2, but Tor₁ over Z/2 of (Z/2, Z/2) is 0 (our own). The work moves into the independence of Tor from the chosen resolution.
+
+**Paper or page:** [Algebra, Lemma 10.76.1.](https://stacks.math.columbia.edu/tag/00M8). It says: “Given a flat ring map R → R′ and R-modules M, N the natural R-module map Torᵢᴿ(M, N) ⊗<sub>R</sub> R′ → Torᵢᴿ′(M ⊗<sub>R</sub> R′, N ⊗<sub>R</sub> R′) is an isomorphism for all i.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1265,6 +1629,27 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gorenstein rings dualize themselves, so local duality uses Ext into R
+
+**Remember:** Gorenstein means R already has finite injective dimension, so R dualizes itself.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings), 13H10, 13D07. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring R is Gorenstein when R has finite injective dimension as a module over itself. A dualizing complex is a bounded complex ω• of finite injective dimension with finitely generated cohomology. Also R → RHom(ω•, ω•) must be an isomorphism, with RHom the derived Hom. For ω• = R this map is always the identity.
+
+**Problem.** Let R be a Gorenstein local ring of dimension n, with E an injective hull of its residue field (the smallest injective module containing it). For every finitely generated module M, Hⁱₘ(M) is the Matlis dual Hom(Extⁿ⁻ⁱ(M, R), E).
+
+**How the definition helps.** R always meets two of the three conditions on a dualizing complex, and Gorenstein is exactly the third, finite injective dimension. So R, shifted by n, is the normalized dualizing complex. Local duality with ω• = R\[n\] then gives the formula, and all the work is in local duality. Without this, one would first build a canonical module and then show that it is R (our own remark).
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “Then, for any finitely generated R-module M and integer i, the local cohomology group Hⁱ<sub>m</sub>(M) is dual to Extⁿ⁻ⁱ<sub>R</sub>(M,R)”
+
+**Paper or page:** [Dualizing, Lemma 47.21.4.](https://stacks.math.columbia.edu/tag/0DW9). It says: “If A is Gorenstein, then A has a dualizing complex if and only if A\[0\] is a dualizing complex.”
+
+**Sources:**
+
+- [H. Bass, On the ubiquity of Gorenstein rings, Mathematische Zeitschrift 82 (1963) 8–28](https://doi.org/10.1007/BF01112819)
+- [R. Hartshorne, Local Cohomology (a seminar given by A. Grothendieck), Lecture Notes in Mathematics 41, Springer, 1967](https://doi.org/10.1007/BFb0073971)
+
 ### Local cohomology ignores ideal thickening
 
 **Remember:** Ideals defining the same closed set give the same local cohomology.
@@ -1283,6 +1668,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Local cohomology makes Cohen–Macaulay mean cohomology in one degree
+
+**Remember:** Depth is where local cohomology starts, dimension is where it stops.
+
+*Makes the theorem clean to state or prove.* MSC 13D45 (Local cohomology and commutative rings), 13C14. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let M be a nonzero finitely generated module over a Noetherian local ring with maximal ideal m. Its depth is the length of a longest M-regular sequence in m: each element is a nonzerodivisor on M modulo the earlier ones. M is Cohen–Macaulay when its depth equals its Krull dimension. The local cohomology module Hⁱₘ(M) is the i-th derived functor of taking the elements killed by a power of m.
+
+**Problem.** Hⁱₘ(M) is zero below the depth and above the dimension, and nonzero at both ends. So M is Cohen–Macaulay exactly when Hⁱₘ(M) is nonzero for only one i.
+
+**How the definition helps.** Local cohomology turns the two numbers in the definition into the two ends of one range of nonzero degrees. So their equality becomes the statement that only one degree survives. The lower end comes from the description of depth by Ext modules and the formula of local cohomology as a colimit of Ext modules. The upper end is Grothendieck's vanishing and nonvanishing theorems, where the real work lies.
+
+**Wikipedia:** [Local cohomology](https://en.wikipedia.org/wiki/Local_cohomology). It says: “These two bounds together yield a characterisation of Cohen–Macaulay modules over local rings: they are precisely those modules where Hⁿ<sub>m</sub>(M) vanishes for all but one n.”
+
+**Paper or page:** [Dualizing, Lemma 47.11.1.](https://stacks.math.columbia.edu/tag/0AVZ), [Local Cohomology, Lemma 51.4.7.](https://stacks.math.columbia.edu/tag/0DXC), [Local Cohomology, Lemma 51.4.9.](https://stacks.math.columbia.edu/tag/0DXE). It says: “the smallest integer i such that H<sup>i<sub>I</sub></sup>(M) is nonzero.”
+
+**Sources:**
+
+- [R. Hartshorne, Local Cohomology (a seminar given by A. Grothendieck), Lecture Notes in Mathematics 41, Springer, 1967](https://doi.org/10.1007/BFb0073971)
+
 ### Local cohomology measures extension failure
 
 **Remember:** Degree zero detects sections that disappear, and degree one detects those that cannot extend.
@@ -1298,6 +1703,45 @@
 **Paper or page:** [Local Cohomology, Lemma 51.2.2.](https://stacks.math.columbia.edu/tag/0DWR). It says: “given $M$ there is an exact sequence $$ 0 \\to H<sup>0<sub>Z</sub></sup>(M) \\to M \\to H<sup>0</sup>(U, \\mathcal{F}) \\to H<sup>1<sub>Z</sub></sup>(M) \\to 0 $$”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Regularity defined by local cohomology never rises when finite-length torsion is removed
+
+**Remember:** Regularity is read off local cohomology, and torsion only touches degree zero.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings), 13D02. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** Let M be a finitely generated graded module over a polynomial ring, and m the ideal of the variables. Its Castelnuovo–Mumford regularity is the largest value of end(Hⁱₘ(M)) + i, where Hⁱₘ is local cohomology at m. Here end(N) is the top degree in which N is nonzero. The older definition takes the largest bⱼ − j, with bⱼ the top generator degree in step j of the minimal free resolution.
+
+**Problem.** For every such M, the regularity of M/H⁰ₘ(M) is at most the regularity of M.
+
+**How the definition helps.** Removing the finite-length part H⁰ₘ(M) kills the degree-zero local cohomology and leaves all higher local cohomology unchanged (our own step). So the supremum can only drop. In terms of free resolutions this is not visible, since the resolution changes completely. The work went into the theorem of Eisenbud and Goto that the two definitions agree.
+
+**Wikipedia:** [Local cohomology](https://en.wikipedia.org/wiki/Local_cohomology), [Castelnuovo–Mumford regularity](https://en.wikipedia.org/wiki/Castelnuovo%E2%80%93Mumford_regularity). It says: “For example, the Castelnuovo–Mumford regularity can be formulated using local cohomology as reg(M) = sup{end(H<sup>i<sub>m</sub></sup>(M))+i \| 0 ≤ i ≤ dim(M)}”
+
+**Sources:**
+
+- [D. Eisenbud and S. Goto, Linear free resolutions and minimal multiplicity, Journal of Algebra 88 (1984)](https://doi.org/10.1016/0021-8693(84)90092-9)
+
+### Torsion as a union of annihilators makes local cohomology an Ext colimit
+
+**Remember:** Torsion is a colimit of Homs, so local cohomology is a colimit of Exts.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings), 13D07. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let a be an ideal of a ring A. The torsion functor Γₐ sends a module M to its elements killed by some power of a. So Γₐ(M) is the union, or colimit, of the submodules Hom(A/aⁿ, M). Local cohomology Hⁱₐ is the i-th right derived functor of Γₐ.
+
+**Problem.** For every module M and every i, the local cohomology Hⁱₐ(M) is the colimit over n of Extⁱ(A/aⁿ, M).
+
+**How the definition helps.** Because Γₐ is a colimit of the functors Hom(A/aⁿ, −), its derived functors are the colimit of their derived functors, the Ext modules. Apply all these functors to one injective resolution of M, then take cohomology. Filtered colimits of modules are exact, so the colimit passes through cohomology. With the other common definition, by the Čech complex, the same formula needs a comparison theorem and a finitely generated ideal (our own remark).
+
+**Wikipedia:** [Local cohomology](https://en.wikipedia.org/wiki/Local_cohomology). It says: “and for this reason, the local cohomology of an R-module M agrees with a direct limit of Ext modules”
+
+**Paper or page:** [Dualizing, Lemma 47.8.2.](https://stacks.math.columbia.edu/tag/0954). It says: “For any object K of D(A) we have RΓ<sub>I</sub>(K) = hocolim RHom<sub>A</sub>(A/Iⁿ, K) in D(A) and R<sup>qΓ<sub>I</sub></sup>(K) = colim<sub>n</sub> Ext<sub>A</sub><sup>q</sup>(A/Iⁿ, K) as modules for all q ∈ Z.”
+
+**Sources:**
+
+- [R. Hartshorne, Local Cohomology (a seminar given by A. Grothendieck), Lecture Notes in Mathematics 41, Springer, 1967](https://doi.org/10.1007/BFb0073971)
+- [A. Grothendieck, SGA 2, Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux, Documents Mathématiques 4, SMF, 2005](https://arxiv.org/abs/math/0511279)
 
 ### Čech length bounds local cohomology
 
@@ -1592,6 +2036,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining δ-rings by a p-derivation makes Frobenius lifts ring maps
+
+**Remember:** δ is the Frobenius lift divided by p, written so that p may vanish.
+
+*True by definition.* MSC 13F35 (Witt vectors and related rings), 14F30. arXiv math.AC, math.NT. Level 3: graduate.
+
+**Definition.** A δ-ring is a commutative ring A with a map of sets δ: A → A. It satisfies δ(0) = δ(1) = 0 and δ(xy) = xᵖδ(y) + yᵖδ(x) + pδ(x)δ(y). It also satisfies δ(x+y) = δ(x) + δ(y) + (xᵖ + yᵖ − (x+y)ᵖ)/p. The last fraction is a polynomial with integer coefficients, so no division takes place.
+
+**Problem.** In a δ-ring, φ(x) = xᵖ + pδ(x) is a ring endomorphism that lifts the Frobenius map x ↦ xᵖ of A/p. If A has no p-torsion, δ-structures on A correspond exactly to such lifts.
+
+**How the definition helps.** The two rules for δ are exactly what makes φ additive and multiplicative, so φ is a ring map by expanding. The usual alternative is to take a Frobenius lift φ itself as the structure. For a ring with no p-torsion, the two agree: set δ(x) = (φ(x) − xᵖ)/p to go back. Using δ instead of φ keeps the rules meaningful when p is a zero divisor (our own remark).
+
+**nLab:** [δ-ring](https://ncatlab.org/nlab/show/%CE%B4-ring). It says: “If (R,δ) is a δ-ring, then the map φ: R→R given by φ(x)=xᵖ+pδ(x) is a ring homomorphism that lifts the Frobenius endomorphism on R/p.”
+
+**Wikipedia:** [P-derivation](https://en.wikipedia.org/wiki/P-derivation). It says: “When the ring R is p-torsion free the correspondence is a bijection.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+
 ### Ghost coordinates make big Witt vectors over rational algebras a ring
 
 **Remember:** In ghost coordinates, all operations are coordinate by coordinate.
@@ -1608,6 +2072,45 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Limits and colimits of δ-rings are computed on the underlying rings
+
+**Remember:** δ-rings are rings with a section to W₂, so limits come for free.
+
+*True by definition.* MSC 13F35 (Witt vectors and related rings), 18A30. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** W₂(A), the length-2 Witt vectors, is the set of pairs (a₀, a₁) in A with addition and multiplication given by universal polynomials. A δ-structure on A is the same as a ring map A → W₂(A) that is a section of the projection (a₀, a₁) ↦ a₀. The section sends a to (a, δ(a)).
+
+**Problem.** The forgetful functor from δ-rings to commutative rings creates all limits and all colimits. For example, a product or a tensor product of δ-rings is a δ-ring in a unique compatible way.
+
+**How the definition helps.** Because a δ-structure is a ring map into a functor of the same ring, limits and colimits of rings inherit it. With the list of axioms for δ, one would instead check each axiom by hand for each construction. For a colimit A of rings Aᵢ, the compatible maps Aᵢ → W₂(Aᵢ) → W₂(A) induce a section of W₂(A) → A (our own remark). For limits, W₂ preserves limits because its underlying set is A × A (our own remark). The quoted proposition is the derived version, for derived δ-rings.
+
+**Wikipedia:** [Witt vector](https://en.wikipedia.org/wiki/Witt_vector). It says: “The functor U creates limits and colimits”
+
+**Paper or page:** [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447). It says: “preserves small limits and colimits.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [A. Holeman, Derived δ-Rings and Relative Prismatic Cohomology, arXiv preprint 2303.17447 (2023)](https://arxiv.org/abs/2303.17447)
+
+### Perfect p-complete δ-rings are exactly Witt vectors of perfect rings
+
+**Remember:** Perfect plus p-complete means W of a perfect 𝔽ₚ-algebra.
+
+*Rules out counterexamples.* MSC 13F35 (Witt vectors and related rings), 13A35. arXiv math.AC, math.NT. Level 3: graduate.
+
+**Definition.** A δ-ring A is perfect when its Frobenius lift φ is a bijection. It is p-adically complete when A is the limit of the rings A/pⁿ.
+
+**Problem.** The functor W gives an equivalence from perfect rings of characteristic p to perfect, p-adically complete δ-rings, with inverse A ↦ A/p. Completeness is needed: the integers ℤ with φ the identity are a perfect δ-ring that is not of this form.
+
+**How the definition helps.** Perfectness makes A have no p-torsion, so A is a p-adic lift of the perfect ring A/p, and completeness then pins A down as W(A/p). The torsion step is the lemma that φ kills p-torsion. Without completeness, ℤ is a perfect δ-ring with ℤ/p = 𝔽ₚ, but W(𝔽ₚ) = ℤₚ is not ℤ (our own example). The uniqueness of p-adic lifts of perfect rings is the classical work behind the equivalence.
+
+**Wikipedia:** [Witt vector](https://en.wikipedia.org/wiki/Witt_vector). It says: “Its image then consists of those δ-rings that are perfect (in the sense that the associated map φ is an isomorphism) and whose underlying ring is p-adically complete.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+
 ### Perfect residue fields give Witt reduction modulo p
 
 **Remember:** Perfect residue fields make the Witt shift the same as divisibility by p.
@@ -1623,6 +2126,27 @@
 **nLab:** [ring of Witt vectors](https://ncatlab.org/nlab/show/ring+of+Witt+vectors). It says: “the Verschiebung morphism coincides with the shift (a₀, a₁, …) ↦ (0, a₀, a₁, …)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Witt vectors are the cofree δ-ring on a ring
+
+**Remember:** Map a δ-ring into R, and it lifts uniquely to W(R).
+
+*Makes the theorem clean to state or prove.* MSC 13F35 (Witt vectors and related rings). arXiv math.AC, math.NT. Level 3: graduate.
+
+**Definition.** A δ-ring is a ring with a p-derivation δ, so with a compatible lift of Frobenius. The p-typical Witt vectors W(R) of a ring R form a δ-ring, and the first Witt component gives a ring map W(R) → R.
+
+**Problem.** For every δ-ring A and every ring R, each ring map A → R lifts to a unique δ-ring map A → W(R). So W is right adjoint to the forgetful functor from δ-rings to rings.
+
+**How the definition helps.** With δ-rings as objects, the Witt vectors gain a short universal property: W adds a δ-structure in the most general way. Without δ-rings, W(R) is known only by its explicit polynomial addition and multiplication. When A has no p-torsion, the lift is A → W(A) → W(R) (our own description). The first map has ghost components a, φ(a), φ²(a) and so on. The work went into the classical proof that the Witt vector operations are polynomial with integer coefficients.
+
+**Wikipedia:** [Witt vector](https://en.wikipedia.org/wiki/Witt_vector). It says: “One then has a forgetful functor U: CRing\_δ → CRing whose right adjoint identifies with the functor W of Witt vectors.”
+
+**Paper or page:** [Graded loopspaces in mixed characteristics and de Rham-Witt algebra](https://arxiv.org/abs/2209.03483), [Prismatic F-crystals and Lubin-Tate (φ<sub>q</sub>,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “The Witt vectors admits a natural δ-structure, the forgetful functor δ-CRing<sub>k</sub> → CRing<sub>k</sub> admits W as a right adjoint.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [L. Monier, Graded loopspaces in mixed characteristics and de Rham-Witt algebra, PhD thesis, arXiv 2209.03483 (2022)](https://arxiv.org/abs/2209.03483)
 
 ### Excellent rings shut out Nagata's badly behaved Noetherian rings
 
@@ -1711,6 +2235,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Finite injective dimension of a local ring forces it to be Cohen–Macaulay
+
+**Remember:** A ring that dualizes itself is a one-term dualizing complex, hence Cohen–Macaulay.
+
+*True by definition.* MSC 13H10 (Special types (Cohen-Macaulay, Gorenstein, Buchsbaum, etc.)), 13D07. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring is Gorenstein when it has finite injective dimension as a module over itself. It is Cohen–Macaulay when its depth, the length of a longest regular sequence, equals its dimension. A dualizing complex is a bounded complex ω• of finite injective dimension with finitely generated cohomology and R = RHom(ω•, ω•).
+
+**Problem.** Every Gorenstein ring is Cohen–Macaulay.
+
+**How the definition helps.** Finite injective dimension makes R itself a dualizing complex in one degree, and a one-term dualizing complex forces depth to equal dimension. The work went into the lemma that a dualizing module forces Cohen–Macaulay, which rests on local duality. The usual proof, due to Bass, goes instead through his theorem that finite injective dimension equals depth (our own remark).
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “A Gorenstein ring is in particular Cohen–Macaulay.”
+
+**Paper or page:** [Dualizing, Lemma 47.21.2.](https://stacks.math.columbia.edu/tag/0DW8), [Dualizing, Lemma 47.20.3.](https://stacks.math.columbia.edu/tag/0DW5). It says: “A Gorenstein ring is Cohen-Macaulay.”
+
+**Sources:**
+
+- [H. Bass, On the ubiquity of Gorenstein rings, Mathematische Zeitschrift 82 (1963) 8–28](https://doi.org/10.1007/BF01112819)
+
 ### Regular quotients preserve Gorensteinness
 
 **Remember:** Use the same final quotient to test type one.
@@ -1784,6 +2328,42 @@
 **Paper or page:** [Intersection, Theorem 43.15.5.](https://stacks.math.columbia.edu/tag/0AZZ). It says: “Then $$ e<sub>I</sub>(M, r) = \\sum (-1)<sup>i\\text{length}<sub>A</sub></sup> H<sub>i</sub>(K\_\\bullet(f<sub>1</sub>, \\ldots, f<sub>r</sub>) \\otimes<sub>A</sub> M) $$”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Serre's Tor formula fixes intersection multiplicity where length overcounts
+
+**Remember:** Higher Tor terms correct the overcount of the naive length.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13H15 (Multiplicity theory and related topics), 13D07, 14C17. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** Let A be a regular local ring. Let A/I and A/J be the local rings of two subvarieties that meet only at the closed point, with dimensions adding up to dim A. The naive intersection multiplicity is the length of A/(I + J). Serre's multiplicity is the alternating sum of the lengths of Torᵢ(A/I, A/J) over all i ≥ 0.
+
+**Problem.** With Serre's multiplicities, Bézout's theorem holds for all subvarieties of projective space that meet properly. The product of the degrees equals the sum, over the components of the intersection, of multiplicity times degree. The naive length can make this fail when a subvariety is not Cohen–Macaulay.
+
+**How the definition helps.** The higher Tor terms correct for the failure of A/I or A/J to be Cohen–Macaulay. Let V be the union of the planes x = y = 0 and z = w = 0 in 4-space (our own, after Hartshorne). Let W be the plane x = z, y = w. Then A/(I + J) has length 3, but W meets each plane transversally, so the right answer is 2 (our own). Serre's sum gives 2 (our own). The work goes into Serre's theorems that his sum is positive and well behaved for varieties over a field.
+
+**Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “When V and W can be moved into a transverse position, this homological formula produces the expected answer.”
+
+**Sources:**
+
+- [J.-P. Serre, Algèbre locale, multiplicités, Lecture Notes in Mathematics 11, Springer, 1965 (third edition 1975).](https://doi.org/10.1007/978-3-540-37123-6)
+
+### Serre's Tor sum corrects intersection multiplicity where length overcounts
+
+**Remember:** Higher Tors correct the length when one variety is not Cohen–Macaulay.
+
+*Rules out counterexamples.* MSC 13H15 (Multiplicity theory and related topics), 13D07, 14C17. arXiv math.AC, math.AG. Level 3: graduate.
+
+**Definition.** Let A be a regular local ring, one whose maximal ideal is generated by dim A elements. Let I, J be ideals with A/(I + J) of finite length. Serre defined the intersection multiplicity χ(A/I, A/J) as the alternating sum of the lengths of the modules Torᵢ(A/I, A/J). The naive definition is the length of A/(I + J), the term for i = 0.
+
+**Problem.** Serre's multiplicity is additive on short exact sequences. It equals the length of A/(I + J) when both quotients are Cohen–Macaulay and their dimensions add to dim A.
+
+**How the definition helps.** Additivity lets a bad variety be cut into good pieces, which length does not allow. For example, let Y be the planes x = y = 0 and z = w = 0 in four-space (our own example). Against the plane x = z, y = w, Serre's sum gives 2 but length gives 3. The reason is that Y is not Cohen–Macaulay, and the work went into Serre's theorems on additivity and on the Cohen–Macaulay case.
+
+**Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number), [Serre's multiplicity conjectures](https://en.wikipedia.org/wiki/Serre%27s_multiplicity_conjectures). It says: “When V and W can be moved into a transverse position, this homological formula produces the expected answer.”
+
+**Sources:**
+
+- [J.-P. Serre, Local Algebra, Springer Monographs in Mathematics, Springer, 2000 (translation of Algèbre locale, multiplicités, 1965)](https://doi.org/10.1007/978-3-662-04203-8)
 
 ### Early local rings had to be Noetherian, which keeps Krull's intersection theorem
 
@@ -2085,6 +2665,24 @@
 
 - [Majid Eghbali, On Artinianness of Formal Local Cohomology, Colocalization and Coassociated Primes (2013)](https://doi.org/10.7146/math.scand.a-15478)
 
+### Matrix factorizations make resolutions over hypersurfaces periodic of period two
+
+**Remember:** Two matrices whose product is f give every periodic resolution.
+
+*Makes the theorem clean to state or prove.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13C14. arXiv math.AC. Level 4: research.
+
+**Definition.** Let A be a regular local ring, f a nonzero element of its maximal ideal, and R = A/(f). A matrix factorization of f is a pair of square matrices φ, ψ over A with φψ = ψφ = f times the identity. It is reduced when all entries lie in the maximal ideal. A maximal Cohen–Macaulay module is a finitely generated module whose depth equals dim R.
+
+**Problem.** Taking cokernels gives a bijection between reduced matrix factorizations of f, up to equivalence, and maximal Cohen–Macaulay R-modules without free summands. Every finitely generated R-module has a minimal free resolution that is eventually periodic of period two (Eisenbud).
+
+**How the definition helps.** By the Auslander–Buchsbaum formula, a maximal Cohen–Macaulay R-module M has projective dimension one over A (our own). So M is the cokernel of a square matrix φ (our own). Since f kills M, f times the identity factors through φ and gives ψ (our own). Modulo f, φ and ψ alternate in a periodic resolution of M, and high syzygies of any module are maximal Cohen–Macaulay (our own). The work goes into the Auslander–Buchsbaum formula.
+
+**Paper or page:** [ADE Classification of Hypersurface Singularities over Local Rings](https://arxiv.org/abs/2509.15396v1). It says: “Let (A,m) be a be a regular local ring and let r ∈ A be a non unit. Then there there exists a bijection between 𝓜𝓒𝓜(A/⟨r⟩) and equivalence classes of reduced matrix factorizations of r.”
+
+**Sources:**
+
+- [D. Eisenbud, Homological algebra on a complete intersection, with an application to group representations, Transactions of the American Mathematical Society 260 (1980), 35–64.](https://doi.org/10.1090/s0002-9947-1980-0570778-7)
+
 ### Weak proregularity makes derived completion agree with completion
 
 **Remember:** Weakly proregular ideals let completion behave as over Noetherian rings.
@@ -2122,6 +2720,78 @@
 
 - [Ryoya Ando, A note on weakly proregular sequences and local cohomology, arXiv:2105.07652 (2021), Moroccan J. Algebra Geom. Appl. 1 (2022), 98-107](https://arxiv.org/abs/2105.07652v2)
 - [Peter Schenzel, Proregular sequences, local cohomology, and completion, Math. Scand. 92 (2003), 161](https://doi.org/10.7146/math.scand.a-14399)
+
+### Working in the cone of Betti diagrams proves the multiplicity bounds
+
+**Remember:** Betti tables are positive mixtures of pure ones.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 13D02 (Syzygies, resolutions, complexes and commutative rings), 13D40. arXiv math.AC. Level 4: research.
+
+**Definition.** The Betti diagram of a graded module M over k\[x₁,…,xₙ\] is the table of its graded Betti numbers βᵢⱼ. Here βᵢⱼ is the number of degree-j generators of the i-th free module in a minimal resolution. Boij and Söderberg proposed to study these tables up to positive rational multiples, inside the cone they span. A pure diagram has one nonzero entry in each column.
+
+**Problem.** Let S/I be a Cohen–Macaulay quotient of k\[x₁,…,xₙ\] of codimension c. Let tᵢ and Tᵢ be the least and greatest generator degrees in step i of its minimal resolution. Then the multiplicity of S/I lies between t₁t₂⋯ and T₁T₂⋯, each a product over steps 1 to c divided by c! (Herzog–Huneke–Srinivasan, proved by Eisenbud and Schreyer).
+
+**How the definition helps.** In the cone, the multiplicity and β₀ are both linear (our own). So their ratio for S/I is an average of the ratios for pure diagrams (our own). For pure diagrams the Herzog–Kühl formulas give the bounds exactly (our own). Eisenbud and Schreyer proved that every such diagram is a positive combination of pure diagrams with shifts between those of S/I. The work goes into that decomposition theorem, which rests on a duality with cohomology tables of vector bundles.
+
+**Paper or page:** [Betti Cones of Stanley-Reisner Ideals](https://arxiv.org/abs/2401.05962v1), [Lim Ulrich sequences and Boij-Söderberg cones](https://arxiv.org/abs/2209.03498v2). It says: “There exist positive rational numbers qᵢ and a chain of decreasing sequences c¹ &lt; ⋯ &lt; cʳ in ℤʰ⁺¹ such that β(M) = q₁ π(c¹)+⋯ + qᵣ π(cʳ).”
+
+**Sources:**
+
+- [D. Eisenbud and F.-O. Schreyer, Betti numbers of graded modules and cohomology of vector bundles, Journal of the American Mathematical Society 22 (2009), 859–888.](https://doi.org/10.1090/s0894-0347-08-00620-6)
+
+### Complete intersection dimension gives Serre's criterion for complete intersections
+
+**Remember:** Allow regular-sequence quotients, and complete intersections behave like regular rings.
+
+*Makes the theorem clean to state or prove.* MSC 13D05 (Homological dimension and commutative rings), 13H10. arXiv math.AC. Level 4: research.
+
+**Definition.** A local ring is a complete intersection when its completion is a regular local ring divided by a regular sequence. A quasi-deformation of R is a pair of local maps R → R′ ← Q. Here R → R′ is flat, and Q → R′ is onto with kernel generated by a regular sequence. The complete intersection dimension of M is the least value of pd M ⊗ R′ − pd R′, both over Q, over all quasi-deformations.
+
+**Problem.** A Noetherian local ring R is a complete intersection exactly when its residue field has finite complete intersection dimension (Avramov, Gasharov and Peeva). Then every finitely generated module has finite complete intersection dimension. Such modules satisfy the Auslander–Buchsbaum formula with this dimension.
+
+**How the definition helps.** The definition builds the complete intersection condition into the allowed comparison rings, so a complete intersection is its own witness. Take R′ to be the completion of R, and Q a regular local ring that maps onto it (our own). Over Q every module has finite projective dimension, so every module gets finite complete intersection dimension (our own). The work goes into the converse and into the Auslander–Buchsbaum formula for this dimension.
+
+**Paper or page:** [A Ghost Lemma for Commutative Ring Homomorphisms via André-Quillen Homology](https://arxiv.org/abs/2507.13988v1). It says: “Let (R,k) be a local ring. Then R is a complete intersection if and only if CI-dim<sub>R</sub>(k) &lt; ∞.”
+
+**Sources:**
+
+- [L. L. Avramov, V. N. Gasharov and I. V. Peeva, Complete intersection dimension, Publications Mathématiques de l'IHÉS 86 (1997), 67–114.](https://doi.org/10.1007/bf02698901)
+
+### Gorenstein dimension extends Auslander–Buchsbaum and characterizes Gorenstein rings
+
+**Remember:** Totally reflexive modules look free to R itself.
+
+*Makes the theorem clean to state or prove.* MSC 13D05 (Homological dimension and commutative rings), 13H10. arXiv math.AC. Level 4: research.
+
+**Definition.** Let R be a Noetherian local ring and G\* = Hom(G, R). A finitely generated module G is totally reflexive when G → G\*\* is an isomorphism and Extⁱ(G, R) and Extⁱ(G\*, R) vanish for i &gt; 0. The Gorenstein dimension of M is the shortest length of a resolution of M by totally reflexive modules. Free modules are totally reflexive, so the Gorenstein dimension is at most pd M.
+
+**Problem.** If M has finite Gorenstein dimension, then this dimension plus depth M equals depth R (the Auslander–Bridger formula). The ring R is Gorenstein exactly when every finitely generated R-module has finite Gorenstein dimension.
+
+**How the definition helps.** The Auslander–Buchsbaum induction only uses how free modules behave under Hom into R. Totally reflexive modules behave the same way, so the induction goes through (our own). This gives a Gorenstein version of Serre's criterion, with Gorenstein dimension in place of projective dimension (our own). The work goes into showing that Gorenstein dimension can be tested on any resolution, as Schanuel's lemma does for projective dimension.
+
+**Paper or page:** [On a relative dependency formula](https://arxiv.org/abs/2410.13239v1). It says: “If G-dim<sub>R</sub>(M) &lt; ∞, then G-dim<sub>R</sub>(M) + depth(M) = depth(R). This equality is known as Auslander-Bridger formula.”
+
+**Sources:**
+
+- [M. Auslander and M. Bridger, Stable module theory, Memoirs of the American Mathematical Society 94 (1969).](https://doi.org/10.1090/memo/0094)
+
+### A one-module dualizing complex forces the ring to be Cohen–Macaulay
+
+**Remember:** One nonzero cohomology means depth equals dimension, which is Cohen–Macaulay.
+
+*Makes the theorem clean to state or prove.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 13C14, 13D45. arXiv math.AC. Level 4: research.
+
+**Definition.** A dualizing complex for a Noetherian ring A is a bounded complex ω• with finitely generated cohomology, finite injective dimension, and A = RHom(ω•, ω•). Here RHom is the derived Hom, and a dualizing module is a finitely generated module whose one-term complex is dualizing. A local ring is Cohen–Macaulay when its depth, the length of a longest regular sequence, equals its dimension. A ring is Cohen–Macaulay when all its localizations are.
+
+**Problem.** If a Noetherian ring has a dualizing module, then it is Cohen–Macaulay.
+
+**How the definition helps.** The normalized dualizing complex of a local ring records depth and dimension as the ends of its cohomology. So a single nonzero module makes them equal. Localizations of dualizing complexes stay dualizing, so the global statement reduces to local rings. The work went into local duality.
+
+**Paper or page:** [Dualizing, Lemma 47.20.3.](https://stacks.math.columbia.edu/tag/0DW5), [Dualizing, Lemma 47.20.1.](https://stacks.math.columbia.edu/tag/0AWR). It says: “Let A be a Noetherian ring. If there exists a finite A-module ω<sub>A</sub> such that ω<sub>A</sub>\[0\] is a dualizing complex, then A is Cohen-Macaulay.”
+
+**Sources:**
+
+- [R. Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20, Springer, 1966](https://doi.org/10.1007/BFb0080482)
 
 ### Higher congruence modules extend Wiles's numerical criterion
 
@@ -2161,6 +2831,43 @@
 - [J. P. C. Greenlees, J. P. May, Derived functors of I-adic completion and local homology, Journal of Algebra 149 (1992) 438–453](https://doi.org/10.1016/0021-8693(92)90026-I)
 - [Andrew Salch, Approximation of subcategories by abelian subcategories, arXiv:1006.0048](https://arxiv.org/abs/1006.0048)
 
+### Regular local rings remove the non-rigid Tor of the node
+
+**Remember:** Over regular rings, once Tor vanishes it stays zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 13H05. arXiv math.AC. Level 4: research.
+
+**Definition.** A finitely generated module M over a local ring is Tor-rigid when it passes this test for every finitely generated module N. If Torᵢ(M, N) = 0 for some i ≥ 1, then Torⱼ(M, N) = 0 for every j ≥ i. A regular local ring is one whose maximal ideal is generated by as many elements as its dimension.
+
+**Problem.** Over a regular local ring, every finitely generated module is Tor-rigid. Auslander proved this for unramified rings, and Lichtenbaum in general.
+
+**How the definition helps.** Regularity removes rings like the node R = k\[\[x,y\]\]/(xy), where rigidity fails. In our own computation, R/(x) has a periodic free resolution whose maps are multiplication by x and y in turn. Tensoring it with R/(y) gives Tor₁(R/(x), R/(y)) = 0 but Tor₂ = k. The work went into the rigidity theorem, which Auslander proved for unramified rings and Lichtenbaum completed.
+
+**Paper or page:** [A study of the cohomological rigidity property](https://arxiv.org/abs/2009.06481). It says: “Assume R is a local complete intersection of dimension d and M ∈ mod(R) is Tor-rigid (e.g., R is regular).”
+
+**Sources:**
+
+- [M. Auslander, Modules over unramified regular local rings, Illinois Journal of Mathematics 5 (1961)](https://doi.org/10.1215/ijm/1255631585)
+- [S. Lichtenbaum, On the vanishing of Tor in regular local rings, Illinois Journal of Mathematics 10 (1966)](https://doi.org/10.1215/ijm/1256055103)
+
+### Asking for a dualizing complex excludes Nagata's non-catenary Noetherian rings
+
+**Remember:** Dualizing complexes measure dimension, so Nagata's bad rings cannot have one.
+
+*Rules out counterexamples.* MSC 13D09 (Derived categories and commutative rings), 13D07, 13E05. arXiv math.AC, math.AG. Level 4: research.
+
+**Definition.** A dualizing complex for a Noetherian ring A is a bounded complex ω• with finitely generated cohomology and finite injective dimension. Also A = RHom(ω•, ω•), for the derived Hom. A ring is catenary when all maximal chains of primes between two given primes have the same length. It is universally catenary when every finitely generated algebra over it is catenary.
+
+**Problem.** Every Noetherian ring with a dualizing complex is universally catenary and has finite Krull dimension.
+
+**How the definition helps.** A dualizing complex gives a dimension function: a shift attached to each prime p that changes by exactly one along each immediate specialization. Such a function forces all maximal chains between two primes to have the same length, and finite type algebras inherit a dualizing complex. So Nagata's Noetherian rings that are not catenary, and his Noetherian ring of infinite dimension, have no dualizing complex (our own remark). The work went into the existence of the dimension function.
+
+**Paper or page:** [Dualizing, Lemma 47.17.4.](https://stacks.math.columbia.edu/tag/0A80), [Dualizing, Lemma 47.17.3.](https://stacks.math.columbia.edu/tag/0A7Z). It says: “Let A be a Noetherian ring which has a dualizing complex. Then A is universally catenary of finite dimension.”
+
+**Sources:**
+
+- [R. Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20, Springer, 1966](https://doi.org/10.1007/BFb0080482)
+
 ### Defining derived tensors by K-flat replacements makes them associative
 
 **Remember:** Replace all three inputs once, then regroup the ordinary tensor product.
@@ -2197,6 +2904,80 @@
 
 - [Nicolas Spaltenstein, Resolutions of unbounded complexes (1988)](https://www.numdam.org/item/CM_1988__65_2_121_0/)
 
+### Décalage reduced modulo f is the Bockstein complex of cohomology
+
+**Remember:** Modulo f, décalage turns cohomology groups with Bockstein maps into a complex.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 13D09 (Derived categories and commutative rings), 14F30. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** Let f be a nonzerodivisor in a ring A, and let M be a complex of A-modules with no f-torsion. Its décalage ηf M is the subcomplex of M\[1/f\] with degree i part {x ∈ fⁱMⁱ : dx ∈ fⁱ⁺¹Mⁱ⁺¹}. The Bockstein complex has terms Hⁱ(M ⊗ fⁱA/fⁱ⁺¹A), and its differential is the connecting map of 0 → fⁱ⁺¹A/fⁱ⁺²A → fⁱA/fⁱ⁺²A → fⁱA/fⁱ⁺¹A → 0.
+
+**Problem.** For such M, there is a natural quasi-isomorphism from ηf M ⊗ A/f to the Bockstein complex. So Lη(f)M modulo f is determined by the cohomology groups of M/f and their Bockstein maps.
+
+**How the definition helps.** An element of ηf M in degree i is fⁱ times an element whose differential is divisible by f. So modulo f it records exactly a cohomology class of M/f and its Bockstein. In general a complex has no model built from its cohomology groups, so M modulo f itself has no such description (our own). In Bhatt–Morrow–Scholze this is how the de Rham complex appears, with its differential as a Bockstein map on Hodge–Tate cohomology (our own summary).
+
+**Paper or page:** [More Algebra](https://stacks.math.columbia.edu/tag/0F7T). It says: “There is a canonical map of complexes η<sub>fM•</sub> ⊗<sub>A</sub> A/fA → H•(M•/f) which is a quasi-isomorphism where the right hand side is the complex”
+
+**Sources:**
+
+- [The Stacks Project, Tag 0F7T](https://stacks.math.columbia.edu/tag/0F7T)
+
+### Décalage replaces each cohomology group by its quotient by f-torsion
+
+**Remember:** Décalage keeps each cohomology group but throws away its f-torsion.
+
+*Makes the theorem clean to state or prove.* MSC 13D09 (Derived categories and commutative rings), 14F30. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** Let f be a nonzerodivisor in a ring A, and let M be a complex of A-modules whose terms have no f-torsion. The décalage ηf M is the subcomplex of M\[1/f\] whose degree i part is the set of x in fⁱMⁱ with dx in fⁱ⁺¹Mⁱ⁺¹. Lη(f) is the functor on the derived category that applies ηf to a representative with torsion-free terms.
+
+**Problem.** For such M and every i, multiplication by fⁱ is an isomorphism from Hⁱ(M)/Hⁱ(M)\[f\] onto Hⁱ(ηf M). Here Hⁱ(M)\[f\] is the set of classes killed by f.
+
+**How the definition helps.** The divisibility conditions that define ηf M are exactly those that kill the f-torsion classes of cohomology. Its degree i cocycles are fⁱz for cocycles z of M, and fⁱz is a boundary exactly when fz is one (our own). Removing torsion from each cohomology group is not an operation on complexes, but ηf carries it out on complexes. Bhatt–Morrow–Scholze use Lη(μ), with μ = \[ε\] − 1 in Fontaine's ring Ainf, to remove unwanted μ-torsion from p-adic cohomology (our own summary).
+
+**Paper or page:** [More Algebra](https://stacks.math.columbia.edu/tag/0F7P). It says: “There is a canonical isomorphism fⁱ : Hⁱ(M•)/Hⁱ(M•)\[f\] → Hⁱ(η<sub>fM•</sub>) given by multiplication by fⁱ.”
+
+**Sources:**
+
+- [The Stacks Project, Tag 0F7P](https://stacks.math.columbia.edu/tag/0F7P)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
+### Generation by the unit makes every thick subcategory a tensor ideal
+
+**Remember:** If the unit builds everything, every thick subcategory absorbs tensor products.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13D09 (Derived categories and commutative rings), 18G80, 14A30. arXiv math.AC, math.CT. Level 4: research.
+
+**Definition.** The unit R generates the perfect complexes over a commutative ring R. That is, every perfect complex lies in the smallest thick subcategory that contains R. A thick subcategory is a full triangulated subcategory closed under direct summands.
+
+**Problem.** Let R be a commutative noetherian ring. The thick subcategories of perfect complexes over R correspond to the specialization closed subsets of Spec R. These are the subsets closed under passing to larger primes.
+
+**How the definition helps.** Generation by the unit excludes thick subcategories that are not tensor ideals, such as ⟨𝒪⟩ on ℙ¹. For b in a thick subcategory 𝒞, the x with x⊗b in 𝒞 form a thick subcategory containing R, hence everything (our own argument). So Thomason's classification covers all thick subcategories, and for noetherian R its Thomason subsets are the specialization closed subsets. The quote shows the same generation for graded rings, and the real work stays in Neeman's proof that support detects membership.
+
+**Paper or page:** [Classifying thick subcategories over a Koszul complex via the curved BGG correspondence](https://arxiv.org/abs/2502.13806), [Classifying thick subcategories over a Koszul complex via the curved BGG correspondence](https://arxiv.org/abs/2502.13806). It says: “In particular, if A is regular or concentrated in nonnegative degrees, then thick<sub>perf</sub>(A,0)(A)=perf(A,0).”
+
+**Sources:**
+
+- [Amnon Neeman, The chromatic tower for D(R), Topology 31 (1992) 519–532](https://doi.org/10.1016/0040-9383(92)90047-l)
+- [R. W. Thomason, The classification of triangulated subcategories, Compositio Math. 105 (1997) 1–27](https://doi.org/10.1023/A:1017932514274)
+
+### Requiring torsion-free terms makes décalage respect quasi-isomorphisms
+
+**Remember:** Décalage needs torsion-free terms, or quasi-isomorphic inputs give different outputs.
+
+*Rules out counterexamples.* MSC 13D09 (Derived categories and commutative rings), 14F30. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** Let f be a nonzerodivisor in a ring A. For a complex M with f-torsion-free terms, the décalage ηf M is the subcomplex of M\[1/f\] given in degree i by {x ∈ fⁱMⁱ : dx ∈ fⁱ⁺¹Mⁱ⁺¹}. The definition is made only for such complexes, and Lη(f) applies it to a torsion-free representative.
+
+**Problem.** A quasi-isomorphism between complexes of f-torsion-free modules induces a quasi-isomorphism after décalage. Every complex is quasi-isomorphic to one with free terms, so Lη(f) is a well-defined functor on the whole derived category of A.
+
+**How the definition helps.** The torsion-free condition excludes complexes on which the formula gives answers that depend on the representative. For A = Zₚ and f = p, the formula applied inside Z/p in degree 0 gives Z/p (our own example). The quasi-isomorphic complex Zₚ → Zₚ, multiplication by p in degrees −1 and 0, has décalage p⁻¹Zₚ → Zₚ, which is acyclic. With torsion-free terms, Hⁱ(ηf M) ≅ Hⁱ(M)/Hⁱ(M)\[f\], and invariance under quasi-isomorphism follows at once.
+
+**Paper or page:** [More Algebra](https://stacks.math.columbia.edu/tag/0F7Q). It says: “If M• → N• is a quasi-isomorphism of complexes of f-torsion free A-modules, then the induced map η<sub>fM•</sub> → η<sub>fN•</sub> is a quasi-isomorphism too.”
+
+**Sources:**
+
+- [The Stacks Project, Tag 0F7Q](https://stacks.math.columbia.edu/tag/0F7Q)
+
 ### Tor amplitude survives base change
 
 **Remember:** Test against modules over the new ring as modules over the old one.
@@ -2212,6 +2993,25 @@
 **Paper or page:** [More Algebra, Lemma 15.67.13.](https://stacks.math.columbia.edu/tag/066L). It says: “Then $K<sup>\\bullet</sup> \\otimes<sub>A</sub><sup>{\\mathbf{L}}</sup> B$ as a complex of $B$-modules has tor amplitude in $\[a, b\]$.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A Frobenius isomorphism forces torsion modules over regular rings to be injective
+
+**Remember:** A Frobenius-fixed torsion module over a regular ring is a sum of E's.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 13D45 (Local cohomology and commutative rings), 13A35. arXiv math.AC. Level 4: research.
+
+**Definition.** Let A be a regular local ring of prime characteristic p, with maximal ideal m and Frobenius map F(a) = aᵖ. The Frobenius functor sends a module M to its base change along F. A module is m-power torsion when each element is killed by a power of m.
+
+**Problem.** Every m-power torsion A-module isomorphic to its Frobenius base change is a direct sum of copies of E. Here E is the injective hull of the residue field, the smallest injective module containing it.
+
+**How the definition helps.** Over a regular ring Frobenius is flat by Kunz's theorem, so Frobenius base change is exact and sends E to E (our own summary). Every local cohomology module of A has the required isomorphism, by the Stacks lemma on Frobenius and local cohomology. So each of these modules that is m-power torsion is a direct sum of copies of E. The work went into the lemma, which follows from work of Huneke and Sharp.
+
+**Paper or page:** [Local Cohomology, Lemma 51.18.2.](https://stacks.math.columbia.edu/tag/0EC3), [Local Cohomology, Lemma 51.19.2.](https://stacks.math.columbia.edu/tag/0EC6). It says: “Let M be a 𝔪-power torsion module such that M ⊗<sub>A, F</sub> A ≅ M. Then M is isomorphic to a direct sum of copies of the injective hull E of k.”
+
+**Sources:**
+
+- [C. Huneke and R. Y. Sharp, Bass numbers of local cohomology modules, Transactions of the American Mathematical Society 339 (1993)](https://doi.org/10.1090/S0002-9947-1993-1124167-6)
+- [E. Kunz, Characterizations of regular local rings of characteristic p, American Journal of Mathematics 91 (1969)](https://doi.org/10.2307/2373351)
 
 ### Derived local cohomology changes rings
 
@@ -2260,6 +3060,82 @@
 **Paper or page:** [Dualizing, Lemma 47.10.1.](https://stacks.math.columbia.edu/tag/0955). It says: “the adjunction $R\\Gamma<sub>I</sub>(K) \\to K$ is an isomorphism for $K \\in D\_{I<sup>\\infty\\text{-torsion}}</sup>(A)$”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Leibniz operators force torsion modules over power series rings to be injective
+
+**Remember:** Derivations acting on a torsion module make it a sum of copies of E.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 13D45 (Local cohomology and commutative rings), 13N10. arXiv math.AC. Level 4: research.
+
+**Definition.** Let A = k\[\[x₁, …, xₙ\]\] with k a field of characteristic 0, and let m be its maximal ideal. Take an m-power torsion A-module M, one in which every element is killed by a power of m. Give M additive operators D₁, …, Dₙ with the Leibniz rule Dᵢ(fz) = ∂ᵢ(f)z + fDᵢ(z), where ∂ᵢ is the partial derivative. The operators need not commute, so M need not be a full module over the ring of differential operators.
+
+**Problem.** Every m-power torsion A-module with such Leibniz operators is a direct sum of copies of E. Here E is the injective hull of k, the smallest injective module containing it.
+
+**How the definition helps.** Leibniz operators are easy to find on local cohomology, and the lemma turns them into injectivity with no resolution needed (our own summary). Each derivation of A acts by the Leibniz rule on the local cohomology of A with support in any closed set. So each of these modules that is m-power torsion is a direct sum of copies of E. In our own words, this is an analogue of Kashiwara's theorem for D-modules supported at a point, and a special case of Lyubeznik's theorem.
+
+**Paper or page:** [Local Cohomology, Lemma 51.18.1.](https://stacks.math.columbia.edu/tag/0EC2), [Local Cohomology, Lemma 51.19.1.](https://stacks.math.columbia.edu/tag/0EC5). It says: “Then M is isomorphic to a direct sum of copies of the injective hull E of k.”
+
+**Sources:**
+
+- [G. Lyubeznik, Finiteness properties of local cohomology modules (an application of D-modules to commutative algebra), Inventiones Mathematicae 113 (1993)](https://doi.org/10.1007/BF01244301)
+
+### Normalizing the dualizing complex makes local duality hold without a shift
+
+**Remember:** Normalize so that RHom(κ, ω) is κ; then duality needs no shift.
+
+*Makes the theorem clean to state or prove.* MSC 13D45 (Local cohomology and commutative rings), 14B15. arXiv math.AC, math.AG. Level 4: research.
+
+**Definition.** A dualizing complex ω• for a Noetherian ring A is a bounded complex with finitely generated cohomology and finite injective dimension. Also, A → RHom(ω•, ω•) is an isomorphism, where RHom is the derived Hom. Over a local ring with residue field κ, RHom(κ, ω•) is κ shifted by some integer, and ω• is normalized when the shift is zero.
+
+**Problem.** Let A be a Noetherian local ring with normalized dualizing complex ω•, and E an injective hull of its residue field. For every finitely generated M, Hom(Hⁱₘ(M), E) is the completion of Ext⁻ⁱ(M, ω•), where Hⁱₘ is local cohomology at m.
+
+**How the definition helps.** The normalization fixes the degree at the residue field, so for finite-length modules RHom(N, ω•) is the Matlis dual Hom(N, E) placed in degree zero. Every degree in local duality is then fixed by that one choice. The work went into showing that the local cohomology of ω• is E in degree zero, and into local duality for complexes. For finitely generated M the derived completion is the usual completion (our own step).
+
+**Paper or page:** [Dualizing, Lemma 47.15.12.](https://stacks.math.columbia.edu/tag/0A7L), [Dualizing, Lemma 47.16.4.](https://stacks.math.columbia.edu/tag/0A7Q), [Dualizing, Theorem 47.18.3.](https://stacks.math.columbia.edu/tag/0A84). It says: “Then there exists a functorial isomorphism RHom<sub>A</sub>(N, ω<sub>A•</sub>) = Hom<sub>A</sub>(N, E)\[0\] for N running through the finite length A-modules.”
+
+**Sources:**
+
+- [R. Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20, Springer, 1966](https://doi.org/10.1007/BFb0080482)
+- [R. Hartshorne, Local Cohomology (a seminar given by A. Grothendieck), Lecture Notes in Mathematics 41, Springer, 1967](https://doi.org/10.1007/BFb0073971)
+
+### Small-dimensional ideals rule out Hartshorne's non-cofinite local cohomology
+
+**Remember:** If R/a has dimension at most one, local cohomology is cofinite.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13D45 (Local cohomology and commutative rings), 13E05. arXiv math.AC. Level 4: research.
+
+**Definition.** Let a be an ideal of a Noetherian ring R. Hartshorne called a module N a-cofinite when its support lies in V(a), the primes containing a, and every Extⁱ(R/a, N) is finitely generated. Local cohomology Hⁱₐ is the i-th derived functor of taking elements killed by a power of a. The extra condition is that R/a has Krull dimension at most 1.
+
+**Problem.** If dim R/a ≤ 1, then for every finitely generated module M, every local cohomology module Hⁱₐ(M) is a-cofinite.
+
+**How the definition helps.** The dimension bound removes the kind of example Hartshorne found, so cofiniteness holds in every degree with no exceptions. Hartshorne's example lives over a power series ring in four variables, with R/a of dimension 2 (our own summary). There a local cohomology module in degree 2 is not a-cofinite. Bahmanpour and Naghipour proved the case dim R/a ≤ 1 for all Noetherian rings, after Melkersson's work on related cases.
+
+**Paper or page:** [A characterization result of cofinite local cohomology modules](https://arxiv.org/abs/2305.10202). It says: “(b) dim R/a ≤ 1. See \[BN\]. Then H<sup>i<sub>a</sub></sup>(M) is a–cofinite for all i ≥ 0.”
+
+**Sources:**
+
+- [R. Hartshorne, Affine duality and cofiniteness, Inventiones Mathematicae 9 (1970) 145–164](https://doi.org/10.1007/BF01404554)
+- [K. Bahmanpour and R. Naghipour, Cofiniteness of local cohomology modules for ideals of small dimension, Journal of Algebra 321 (2009)](https://doi.org/10.1016/j.jalgebra.2008.12.020)
+- [L. Melkersson, Modules cofinite with respect to an ideal, Journal of Algebra 285 (2005)](https://doi.org/10.1016/j.jalgebra.2004.08.037)
+
+### Torsion and completion as adjoints make torsion and complete complexes equivalent
+
+**Remember:** Torsion sees only the completion, and completion sees only the torsion.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings), 13D09, 13B35. arXiv math.AC. Level 4: research.
+
+**Definition.** Let a be a finitely generated ideal of a ring A. Derived local cohomology RΓₐ is the right adjoint of the inclusion of complexes whose cohomology is a-power torsion. A complex is derived a-complete when RHom(A\[1/f\], K) = 0 for each f in a. Derived completion Λ is the left adjoint of the inclusion of derived a-complete complexes.
+
+**Problem.** RΓₐ and Λ are inverse equivalences between the a-power torsion complexes and the derived a-complete complexes. This is Greenlees–May duality.
+
+**How the definition helps.** The adjoint definitions give for free that RΓₐ fixes torsion complexes and Λ fixes complete ones. So the identities RΓₐ(ΛK) = RΓₐ(K) and Λ(RΓₐK) = ΛK give the equivalence in one line. With the older definitions by Čech and Koszul complexes, the fixed-point facts need their own proofs (our own remark). The work went into the two identities.
+
+**Paper or page:** [Dualizing, Lemma 47.12.1.](https://stacks.math.columbia.edu/tag/0A6W), [Dualizing, Proposition 47.12.2.](https://stacks.math.columbia.edu/tag/0A6X). It says: “For an object K in D(A) we have RΓ<sub>Z</sub>(K<sup>∧</sup>) = RΓ<sub>Z</sub>(K) and (RΓ<sub>Z</sub>(K))<sup>∧</sup> = K<sup>∧</sup> in D(A).”
+
+**Sources:**
+
+- [J. P. C. Greenlees and J. P. May, Derived functors of I-adic completion and local homology, Journal of Algebra 149 (1992)](https://doi.org/10.1016/0021-8693(92)90026-I)
+- [M. Porta, L. Shaul and A. Yekutieli, On the homology of completion and torsion, Algebras and Representation Theory 17 (2014)](https://doi.org/10.1007/s10468-012-9385-8)
 
 ### Counting generators up to symmetry makes infinite polynomial rings Noetherian
 
@@ -2315,6 +3191,44 @@
 
 - [M. Richard Sayanagi, Power Series Rings over Zero-Dimensional Rings, arXiv:2510.07496 (2025)](https://arxiv.org/abs/2510.07496v1)
 
+### A δ-structure makes Frobenius kill all p-torsion
+
+**Remember:** If pα = 0, then φ(α) = 0; so 𝔽ₚ has no δ-structure.
+
+*Rules out counterexamples.* MSC 13F35 (Witt vectors and related rings). arXiv math.NT, math.AC. Level 4: research.
+
+**Definition.** A δ-ring is a ring A with an operation δ. Its rules make φ(x) = xᵖ + pδ(x) a ring map that lifts Frobenius modulo p. The structure is the operation δ, not only the map φ.
+
+**Problem.** In a δ-ring, every element α with pα = 0 satisfies φ(α) = 0. So a perfect δ-ring, where φ is bijective, has no p-torsion, and no nonzero ring of characteristic p carries a δ-structure.
+
+**How the definition helps.** The product rule for δ ties δ(pα) to αᵖ, and this forces φ(α) to vanish. Here δ(p) = 1 − pᵖ⁻¹, and expanding 0 = δ(pα) gives φ(α) = pᵖ⁻¹αᵖ = 0 (our own computation). The quoted lemma is the L-typical version, where L is a finite extension of the p-adic numbers; π = p in the classical case. On 𝔽ₚ the identity lifts Frobenius, but no δ-structure gives it. Every element is p-torsion, so φ(1) would be 0, not 1 (our own example).
+
+**Paper or page:** [Prismatic F-crystals and Lubin-Tate (φ<sub>q</sub>,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “Let A be a δ<sub>L</sub>-algebra. Then if α ∈ A is π-torsion, we have φ(α) = 0. In particular, if A is perfect then A is π-torsion free.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [S. Marks, Prismatic F-crystals and Lubin-Tate (φq, Γ)-modules, arXiv preprint 2303.07620 (2023)](https://arxiv.org/abs/2303.07620)
+
+### Distinguished elements make the prism condition depend only on the ideal
+
+**Remember:** Distinguished means δ(d) is a unit, equivalently p lies in (d, φ(d)).
+
+*Makes the theorem clean to state or prove.* MSC 13F35 (Witt vectors and related rings), 14F30. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** An element d of a δ-ring A is distinguished when δ(d) is a unit. Rad(A) is the Jacobson radical, the intersection of all maximal ideals.
+
+**Problem.** Let A be a δ-ring with p in its Jacobson radical, and let d be in the Jacobson radical. Then d is distinguished exactly when p lies in the ideal (d, φ(d)), and also exactly when the ideal (d) contains some distinguished element.
+
+**How the definition helps.** The condition p ∈ (d, φ(d)) depends only on the ideal (d), so the unit condition on δ(d) does too. This is why a prism can be defined by an ideal I with p ∈ I + φ(I)A, without choosing a generator. Modulo d, φ(d) is pδ(d), so p ∈ (d, pδ(d)), and the radical hypotheses turn this into δ(d) being a unit (our own sketch). The quoted lemma is the L-typical form, with π = p in the classical case.
+
+**Paper or page:** [Prismatic F-crystals and Lubin-Tate (φ<sub>q</sub>,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “Let A be a δ<sub>L</sub>-algebra, and let d∈Rad(A). The following are equivalent: (i) d is distinguished. (ii) The ideal (d) contains a distinguished element. (iii) π ∈ (d<sup>q</sup>,φ(d)). (iv) π ∈ (d,φ(d)).”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [S. Marks, Prismatic F-crystals and Lubin-Tate (φq, Γ)-modules, arXiv preprint 2303.07620 (2023)](https://arxiv.org/abs/2303.07620)
+
 ### Verschiebung substitution is injective
 
 **Remember:** Substitution moves each coefficient to a distinct degree and loses none of them.
@@ -2332,6 +3246,24 @@
 **Sources:**
 
 - [Lars Hesselholt and Ib Madsen, Cyclic polytopes and the K-theory of truncated polynomial algebras](https://www.math.nagoya-u.ac.jp/~larsh/papers/007/polytope.pdf)
+
+### Koszul Euler characteristics turn multiplicity into a test for Cohen–Macaulayness
+
+**Remember:** Multiplicity equals colength exactly when the parameters form a regular sequence.
+
+*True by definition. Confidence: medium.* MSC 13H15 (Multiplicity theory and related topics), 13D02, 13H10. arXiv math.AC. Level 4: research.
+
+**Definition.** Let R be a Noetherian local ring of dimension d. A system of parameters x is a list of d elements of the maximal ideal such that R/(x) has finite length. Serre showed that the Hilbert–Samuel multiplicity e(x; R) equals the alternating sum of the lengths of the Koszul homology modules Hᵢ(x; R).
+
+**Problem.** For every system of parameters, e(x; R) ≤ length R/(x), with equality if and only if R is Cohen–Macaulay.
+
+**How the definition helps.** With the Koszul formula, length R/(x) − e(x; R) is the alternating sum of the higher Koszul homology lengths, starting with length H₁ (our own). Serre showed this sum is never negative and is zero only when H₁ = 0, that is, when x is a regular sequence (our own). The Hilbert–Samuel definition alone gives no such formula. The work goes into Serre's identification of the two multiplicities.
+
+**Paper or page:** [More Algebra, Lemma 15.126.7](https://stacks.math.columbia.edu/tag/0BWW), [Intersection, Lemma 43.16.2](https://stacks.math.columbia.edu/tag/0B03). It says: “If eI/d! is the leading coefficient of the numerical polynomial n ↦ lengthR(R/Iⁿ⁺¹), then eI ≤ lengthR(R/I).”
+
+**Sources:**
+
+- [J.-P. Serre, Algèbre locale, multiplicités, Lecture Notes in Mathematics 11, Springer, 1965 (third edition 1975).](https://doi.org/10.1007/978-3-540-37123-6)
 
 ### For absolute-valued Huber rings, topological simplicity means the completion is a field
 

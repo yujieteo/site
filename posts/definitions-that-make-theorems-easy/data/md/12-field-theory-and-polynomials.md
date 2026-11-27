@@ -756,6 +756,46 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining the Brauer group as Galois H² makes it torsion
+
+**Remember:** Each Galois class lives on a finite quotient, so Brauer classes have finite order.
+
+*True by definition.* MSC 12G05 (Galois cohomology), 16K50, 20J06. arXiv math.NT, math.RA. Level 3: graduate.
+
+**Definition.** The Brauer group Br(K) of a field K classifies central simple algebras over K up to matrix algebras over them. These are finite-dimensional algebras with centre K and no two-sided ideals other than 0 and the whole algebra. It is isomorphic to continuous H² of the absolute Galois group of K, with coefficients in the units of a separable closure.
+
+**Problem.** For every field K, the Brauer group Br(K) is a torsion group.
+
+**How the definition helps.** Continuous cohomology of a profinite group is torsion in positive degrees, so the isomorphism makes Br(K) torsion at once. Each class is split by a finite Galois extension L, and the degree of L kills it, by restriction and transfer (our own). With algebras alone, one must show instead that the order of a class divides the degree of its division algebra (our own). The work went into the isomorphism, which matches algebras split by L with 2-cocycles and uses Hilbert's Theorem 90 (our own).
+
+**Wikipedia:** [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “For an arbitrary field K, the Brauer group can be expressed in terms of Galois cohomology as follows: Br K ≅ H²(K, Gₘ),”
+
+**Paper or page:** [Etale Cohomology, Lemma 59.57.6](https://stacks.math.columbia.edu/tag/0DV3). It says: “Let G be a profinite topological group. Then Hⁱ(G, M) is torsion for i &gt; 0 and any G-module M”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
+
+### Galois cohomology turns Kummer theory into one long exact sequence
+
+**Remember:** Hilbert 90 turns m-th power classes into first cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 12G05 (Galois cohomology), 11R34, 20J06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a field, Kₛ a separable closure and m an integer prime to the characteristic. Let μₘ be the group of m-th roots of unity in Kₛ. The Kummer sequence is 1 → μₘ → Kₛ× → Kₛ× → 1, where the second map raises each nonzero element to the m-th power. It is exact because m is prime to the characteristic.
+
+**Problem.** For every such K and m, the group K×/(K×)ᵐ is isomorphic to H¹(K, μₘ), even when K has no m-th roots of unity. When K contains them, this gives the classical description of cyclic extensions of degree dividing m by m-th roots.
+
+**How the definition helps.** Galois cohomology lets the m-th power classes of K be a cohomology group, with no roots of unity needed in K. The long exact sequence of the Kummer sequence gives K× → K× → H¹(K, μₘ) → H¹(K, Kₛ×), and the last group is 0. So H¹(K, μₘ) is the cokernel of the m-th power map, and the work went into Hilbert's Theorem 90 (our own). When μₘ lies in K, H¹(K, μₘ) is Hom(Gal(Kₛ/K), ℤ/m), which classifies cyclic extensions (our own).
+
+**Wikipedia:** [Kummer theory](https://en.wikipedia.org/wiki/Kummer_theory). It says: “By Hilbert's Theorem 90 H¹(L, K̄×) = 0, and hence we get an isomorphism δ: L×/(L×)ᵐ → H¹(L, K̄×\[m\]).”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
+
 ### Group cohomology states Hilbert's Theorem 90 for every Galois group
 
 **Remember:** Every cocycle into L× has the form σ(b)/b; that is Theorem 90.
@@ -774,6 +814,25 @@
 
 - [Emmy Noether, Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper, Mathematische Annalen 108 (1933)](https://doi.org/10.1007/BF01452845)
 - [David Hilbert, Die Theorie der algebraischen Zahlkörper, Jahresbericht der Deutschen Mathematiker-Vereinigung 4 (1897)](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002115344)
+
+### Cohomological dimension one of finite fields makes finite division rings commutative
+
+**Remember:** Dimension one and torsion units leave no room for Brauer classes.
+
+*True by definition.* MSC 12G10 (Cohomological dimension of fields), 16K20, 12G05. arXiv math.NT, math.RA. Level 3: graduate.
+
+**Definition.** The cohomological dimension of a profinite group G is the least n with Hᵏ(G, M) = 0 for all k &gt; n and torsion discrete M. A field has the cohomological dimension of its absolute Galois group. For a finite field this group is Ẑ, the profinite integers.
+
+**Problem.** The Brauer group of a finite field is 0. Hence every finite division ring is commutative, which is Wedderburn's little theorem.
+
+**How the definition helps.** The units of an algebraic closure of a finite field form a torsion module, so dimension one kills their H², which is the Brauer group. Every nonzero element of the closure lies in a finite field, so it has finite order (our own). A finite division ring is a central division algebra over its centre, a finite field, so it equals its centre (our own). Witt's elementary proof counts with the class equation instead, and here the work went into showing that Ẑ has dimension one (our own).
+
+**Wikipedia:** [Cohomological dimension](https://en.wikipedia.org/wiki/Cohomological_dimension), [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “Every finite field has absolute Galois group isomorphic to Ẑ and so has cohomological dimension 1.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
 
 ### Differential closedness gives separability without perfection
 

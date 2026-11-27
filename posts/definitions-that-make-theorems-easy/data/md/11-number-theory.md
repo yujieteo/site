@@ -5620,6 +5620,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Restricted products put Poitou–Tate duality in one sequence
+
+**Remember:** Almost everywhere unramified makes the infinite product locally compact.
+
+*Makes the theorem clean to state or prove.* MSC 11R34 (Galois cohomology), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois module M over a number field k, take the local cohomology groups H¹(kᵥ, M) over all places v. Their restricted product keeps only the families whose entry lies in the unramified subgroup at almost every place.
+
+**Problem.** Global cohomology of M and of its twisted dual M′ = Hom(M, μ) fit into a nine-term exact sequence through restricted products of local cohomology. Summing the local pairings gives a perfect pairing of the restricted products for M and M′.
+
+**How the definition helps.** The restriction makes the product locally compact, so Pontryagin duality applies to it (our own). Global classes are unramified almost everywhere, so they land in the restricted product (our own). The work went into the global duality theorems of Poitou and Tate.
+
+**Wikipedia:** [Tate duality](https://en.wikipedia.org/wiki/Tate_duality). It says: “where ∏′ denotes a restricted product with respect to the unramified cohomology groups.”
+
+**Sources:**
+
+- [Jürgen Neukirch, Alexander Schmidt and Kay Wingberg, Cohomology of Number Fields, Springer (2008)](https://doi.org/10.1007/978-3-540-37889-1)
+
 ### Artin and Hecke factors agree
 
 **Remember:** The same Frobenius value gives both factors wherever the units act trivially.
@@ -5688,6 +5706,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Herbrand quotients make the first inequality computable
+
+**Remember:** Herbrand quotients multiply and ignore finite pieces, so compute them on lattices.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 20J06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A be a module over a cyclic group G. Its Herbrand quotient h(A) is the order of Tate cohomology in degree 0 over that in degree 1. It is defined when both groups are finite.
+
+**Problem.** For a cyclic extension L/K of number fields of degree n, the idele class group of L has Herbrand quotient n. So the index of the norm group in the idele class group of K is at least n.
+
+**How the definition helps.** The quotient is multiplicative and ignores finite modules, so one may cut the idele class group into S-units and local unit groups (our own). Each cohomology group alone is hard to find, but the quotient for the S-units follows from Dirichlet's unit theorem (our own). The degree 0 group is the norm index, which gives the inequality.
+
+**Wikipedia:** [Class formation](https://en.wikipedia.org/wiki/Class_formation), [Herbrand quotient](https://en.wikipedia.org/wiki/Herbrand_quotient). It says: “It is fairly straightforward to prove, because the Herbrand quotient is easy to work out, as it is multiplicative on short exact sequences, and is 1 for finite modules.”
+
+**Sources:**
+
+- [Jacques Herbrand, Sur les théorèmes du genre principal et des idéaux principaux, Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg 9 (1933)](https://doi.org/10.1007/bf02940630)
+
 ### Moduli with real places let conductors tell real abelian fields apart
 
 **Remember:** Put the real place in the modulus to record whether signs matter.
@@ -5704,6 +5740,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Outside the special case, local powers are global
+
+**Remember:** Only 2-adic cyclotomic accidents stop local n-th powers from being global.
+
+*Rules out counterexamples.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For s ≥ 2 let ηₛ be 2cos(2π/2ˢ). A field is s-special if it contains ηₛ but none of i, ηₛ₊₁ and iηₛ₊₁. The special case occurs when K is s-special with 2ˢ⁺¹ dividing n, and S contains the 2-adic primes p where Kₚ is s-special.
+
+**Problem.** Let S be a finite set of primes of a number field K. Outside the special case, an element that is an n-th power at every prime outside S is an n-th power in K.
+
+**How the definition helps.** The special case names exactly where the Hasse principle fails, so the theorem has no further exceptions. ℚ is 2-special, so Wang's example appears: 16 is an 8th power at every odd prime but not in ℚ. Even then the failure is a group of order 2. The work went into Wang's corrected proof, which uses class field theory (our own).
+
+**Wikipedia:** [Grunwald–Wang theorem](https://en.wikipedia.org/wiki/Grunwald%E2%80%93Wang_theorem). It says: “In the special case the failure of the Hasse principle is finite of order 2”
+
+**Sources:**
+
+- [Shianghaw Wang, A counter-example to Grunwald's theorem, Annals of Mathematics 49 (1948)](https://doi.org/10.2307/1969410)
+- [Shianghaw Wang, On Grunwald's theorem, Annals of Mathematics 51 (1950)](https://doi.org/10.2307/1969335)
+
 ### Ray moduli bound composita
 
 **Remember:** The stricter modulus maps onto both weaker ray class groups.
@@ -5719,6 +5774,25 @@
 **Wikipedia:** [Ray class field](https://en.wikipedia.org/wiki/Ray_class_field). It says: “They are sometimes easier to handle theoretically because they are all quotients of a single group, and thus easier to compare.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### The transfer reduces the principal ideal theorem
+
+**Remember:** Extending ideals is the transfer, and the transfer to the commutator subgroup vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 20J06, 11R29. arXiv math.NT, math.GR. Level 3: graduate.
+
+**Definition.** Let H be a subgroup of finite index in a group G. The transfer is a homomorphism from the abelianization of G to the abelianization of H, built by choosing coset representatives.
+
+**Problem.** Every ideal of a number field K becomes principal in the Hilbert class field of K.
+
+**How the definition helps.** Through Artin reciprocity, extending ideal classes from K to its Hilbert class field becomes the transfer from G to its derived subgroup. Here G is the Galois group of the second Hilbert class field over K (our own). So the theorem becomes the claim that this transfer is trivial. Furtwängler proved this group-theoretic claim in 1929, and that is where the work went.
+
+**Wikipedia:** [Principal ideal theorem](https://en.wikipedia.org/wiki/Principal_ideal_theorem). It says: “he showed that it would follow if the transfer from a finite group to its derived subgroup is trivial.”
+
+**Sources:**
+
+- [Emil Artin, Idealklassen in Oberkörpern und allgemeines Reziprozitätsgesetz, Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg 7 (1929)](https://doi.org/10.1007/bf02941159)
+- [Philipp Furtwängler, Beweis des Hauptidealsatzes für die Klassenkörper algebraischer Zahlkörper, Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg 7 (1929)](https://doi.org/10.1007/bf02941157)
 
 ### Unramified at real places, the Hilbert class field matches the class group
 
@@ -6554,6 +6628,24 @@
 **Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “the reciprocity map induces an isomorphism of the quotient group K×/N(L×)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Twisted duals make local Tate duality perfect
+
+**Remember:** Dual into roots of unity, not into ℚ/ℤ, and the pairing becomes perfect.
+
+*Rules out counterexamples.* MSC 11S25 (Galois cohomology), 11S31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A be a finite Galois module over a p-adic field K. Its twisted dual A′ is the group of homomorphisms from A to the roots of unity. Galois acts on both A and the roots of unity.
+
+**Problem.** Cup product gives a perfect pairing between Hⁱ(K, A) and H²⁻ⁱ(K, A′) with values in the Brauer group ℚ/ℤ, for i = 0, 1, 2.
+
+**How the definition helps.** Pairing into the roots of unity matches the Galois action, since H²(K, μₙ) is the n-torsion of the Brauer group (our own). The plain dual fails, for example for A = ℤ/ℓ over ℚₚ with p not 1 modulo ℓ and ℓ ≠ p. There H⁰(A) is ℤ/ℓ, but H² of the plain dual is 0, since it is dual to H⁰ of the roots of unity (our own). The work went into local class field theory, which computes the Brauer group.
+
+**Wikipedia:** [Local Tate duality](https://en.wikipedia.org/wiki/Local_Tate_duality). It says: “It shows that the dual of such a Galois module is the Tate twist of usual linear dual.”
+
+**Sources:**
+
+- [Jürgen Neukirch, Alexander Schmidt and Kay Wingberg, Cohomology of Number Fields, Springer (2008)](https://doi.org/10.1007/978-3-540-37889-1)
 
 ### Unramified classes are Frobenius quotients
 
@@ -7726,6 +7818,25 @@
 
 - [On the relation between pseudocharacters and Chenevier's determinants](https://arxiv.org/abs/2402.18034v1)
 
+### Fontaine's (φ,Γ)-modules are Laurent F-crystals evaluated on one prism
+
+**Remember:** Γ is the symmetry group of one prism, not extra data.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 14F30, 11S20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let K be a finite extension of ℚₚ with integers 𝒪, and Γ = Gal(K(μ)/K), where μ is all p-power roots of unity. An étale φ-module is a finite free module with a Frobenius-semilinear map whose linearization is an isomorphism. A (φ,Γ)-module is an étale φ-module over Fontaine's ring 𝐀(K) with a commuting semilinear Γ-action. A Laurent F-crystal over 𝒪 is a compatible family of étale φ-modules over the p-completed A\[1/I\], for all prisms (A, I) over 𝒪.
+
+**Problem.** (φ,Γ)-modules over 𝐀(K) are equivalent to Laurent F-crystals over 𝒪. Wu also shows that Laurent F-crystals are equivalent to ℤₚ-representations of Gal(K̄/K), which gives a new proof of Fontaine's theorem.
+
+**How the definition helps.** Wu's prism is Fontaine's ring 𝐀(K)⁺ with the ideal generated by a Frobenius power of 1 + q + ⋯ + qᵖ⁻¹. Its automorphism group among prisms over 𝒪 is Γ, so a (φ,Γ)-module is the crystal's value there with its symmetries. The work went into Wu's proof that this prism covers the final object among prisms over 𝒪.
+
+**Paper or page:** [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105), [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105), [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105). It says: “Then (φ,Γ)-modules over 𝐀<sub>K</sub> are equivalent to prismatic F-crystals in 𝒪\_Δ\[1/I\]<sup>∧<sub>p</sub>-modules</sup> over (𝒪<sub>K</sub>)\_Δ.”
+
+**Sources:**
+
+- [Z. Wu, Galois representations, (φ,Γ)-modules and prismatic F-crystals, Documenta Mathematica 26 (2021) 1771–1798](https://doi.org/10.4171/dm/855)
+- [J.-M. Fontaine, Représentations p-adiques des corps locaux (1ère partie), Modern Birkhäuser Classics (2007 reprint)](https://doi.org/10.1007/978-0-8176-4575-5_6)
+
 ### Frames make Galois lifts glue
 
 **Remember:** Fixed matrices glue entry by entry.
@@ -7760,6 +7871,24 @@
 
 - [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3)
 
+### Kummer-tower (φ,τ)-modules are descent data on the Breuil–Kisin prism
+
+**Remember:** The awkward τ-action is just gluing data over the self-product prism.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 14F30, 11S20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let 𝒪 be the integers of a finite extension of ℚₚ, with residue field k and a uniformizer π with Eisenstein polynomial E. The Breuil–Kisin prism is (𝔖, E) with 𝔖 = W(k)\[\[u\]\] and φ(u) = uᵖ, and A⁽²⁾ is its self-product among prisms over 𝒪. An étale (φ,τ)-module is an étale φ-module over 𝔖\[1/E\] completed at p, with a semilinear action of one Galois element τ over a larger ring. Here τ fixes the p-power roots of unity and moves chosen p-power roots of π (our own).
+
+**Problem.** Étale φ-modules over the completed 𝔖\[1/E\] with descent data over the completed A⁽²⁾\[1/E\] are equivalent to étale (φ,τ)-modules. A descent datum is determined by its value at τ.
+
+**How the definition helps.** A descent datum over the self-product is the gluing data that every crystal has, so the ad hoc τ-action becomes standard descent. The comparison with Galois representations then follows from the Laurent F-crystal theorem (our own). The work went into computing A⁽²⁾ and its perfection, and into showing that the value at τ fixes the datum.
+
+**Paper or page:** [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240). It says: “The category of étale φ-modules over A\[1/E\]<sup>∧<sub>p</sub></sup> with descent data over A<sup>(2)</sup>\[1/E\]<sup>∧<sub>p</sub></sup> is equivalent to the category of étale (φ,τ)-modules over A\[1/E\]<sup>∧<sub>p</sub></sup>”
+
+**Sources:**
+
+- [H. Du and T. Liu, A prismatic approach to (φ, Ĝ)-modules and F-crystals, preprint (2023), arXiv:2107.12240](https://arxiv.org/abs/2107.12240)
+
 ### Lifts modulo strict conjugation make the deformation tangent space first Galois cohomology
 
 **Remember:** The group law gives cocycles, and changes of basis give coboundaries.
@@ -7777,6 +7906,25 @@
 **Sources:**
 
 - [Barry Mazur, Deforming Galois representations, in Galois Groups over ℚ (1989)](https://doi.org/10.1007/978-1-4613-9649-9_7)
+
+### Log prisms extend the crystalline correspondence to semistable lattices
+
+**Remember:** Add a log structure, and crystalline becomes semistable.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 14F30. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let 𝒪 be the integers of a finite extension K of ℚₚ, and G = Gal(K̄/K). Here a prism is a ring with a Frobenius lift and an ideal I, satisfying completeness conditions. Koshikawa's log prisms add a log structure coming from a uniformizer (our own gloss). A prismatic F-crystal of height h gives a finite projective module on each log prism (A, I), with Frobenius injective and cokernel killed by Iʰ.
+
+**Problem.** On the log prismatic site of 𝒪, F-crystals of height h are equivalent to semistable lattices with Hodge–Tate weights in \[0, h\]. Hodge–Tate weights are integers attached to a representation by its decomposition over the completed algebraic closure. Semistable representations include the Tate modules of curves with semistable reduction (our own gloss).
+
+**How the definition helps.** The log structure is the only change, and it moves the theorem from crystalline to semistable lattices. This matches the move from good reduction to semistable reduction (our own). Without the log structure, the same statement holds with crystalline lattices. The work went into Du and Liu's extension of their (φ,Ĝ)-module construction to log prisms.
+
+**Paper or page:** [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240), [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240). It says: “The category of prismatic F-crystals over (X,M<sub>X</sub>)\_Δ<sub>log</sub> of height h is equivalent to the category of lattices in semi-stable representations of G<sub>K</sub> with Hodge-Tate weights between 0 and h.”
+
+**Sources:**
+
+- [H. Du and T. Liu, A prismatic approach to (φ, Ĝ)-modules and F-crystals, preprint (2023), arXiv:2107.12240](https://arxiv.org/abs/2107.12240)
+- [T. Liu, A note on lattices in semi-stable representations, Mathematische Annalen 346 (2010) 117–138](https://doi.org/10.1007/s00208-009-0392-y)
 
 ### Oddness excludes nonmodular real representations
 
@@ -7797,6 +7945,44 @@
 - [Khare and Wintenberger, Serre’s modularity conjecture (I)](https://doi.org/10.1007/s00222-009-0205-7)
 - [Khare and Wintenberger, Serre’s modularity conjecture (II)](https://doi.org/10.1007/s00222-009-0206-6)
 
+### Prismatic F-crystals over a p-adic integer ring are crystalline Galois lattices
+
+**Remember:** Crystalline lattices are F-crystals on all prisms at once, with no choices.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 14F30, 11S20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let K be a finite extension of ℚₚ with ring of integers 𝒪 and Galois group G = Gal(K̄/K). A prism over 𝒪 is a ring A with a Frobenius lift φ, an ideal I and a map from 𝒪 to A/I. A prismatic F-crystal over 𝒪 gives a finite projective A-module M(A) on each such prism, compatible with base change. Its Frobenius map from φ\*M(A) to M(A) becomes an isomorphism once I is inverted.
+
+**Problem.** Prismatic F-crystals over 𝒪 are equivalent to G-stable ℤₚ-lattices in crystalline representations of G. A representation V is crystalline when V ⊗ Bcris, with Bcris Fontaine's crystalline period ring, has as many G-invariant vectors as the dimension of V.
+
+**How the definition helps.** The F-crystal uses every prism and no chosen uniformizer, so it describes crystalline lattices integrally and canonically. Kisin's earlier Breuil–Kisin module depends on a uniformizer and its Eisenstein polynomial. Du and Liu's Theorem 4.1.10 says that this module is the value of the crystal at one prism, the Breuil–Kisin prism. The work went into the proof of Bhatt and Scholze, and Du and Liu give a second proof.
+
+**Paper or page:** [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240), [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240). It says: “There is an equivalence of the category of prismatic F-crystals in finite locally free 𝒪\_Δ-modules over (𝒪<sub>K</sub>)\_Δ and the category of Galois stable lattices in crystalline representations of G<sub>K</sub>.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prismatic F-crystals and crystalline Galois representations, Cambridge Journal of Mathematics 11 (2023)](https://doi.org/10.4310/cjm.2023.v11.n2.a3)
+- [M. Kisin, Crystalline representations and F-crystals, in Algebraic Geometry and Number Theory, Progress in Mathematics](https://doi.org/10.1007/978-0-8176-4532-8_7)
+
+### Rational Hodge–Tate crystals compute Galois cohomology of nearly Hodge–Tate representations
+
+**Remember:** The crystal's one operator is the Sen operator, made canonical.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F80 (Galois representations), 14F30, 11S25. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let 𝒪 be the integers of a finite extension K of ℚₚ, G = Gal(K̄/K), and C the completion of K̄. A rational Hodge–Tate crystal gives a finite projective A/I-module, with p inverted, on each prism (A, I) over 𝒪. A C-representation is a finite-dimensional C-vector space with a continuous semilinear G-action. Its Sen weights are the eigenvalues of Sen's canonical operator, and nearly Hodge–Tate means they lie near the integers (our own paraphrase).
+
+**Problem.** Evaluation at Fontaine's perfect prism for C, Witt vectors of the tilt of 𝒪(C), gives an equivalence. It goes from rational Hodge–Tate crystals over 𝒪 to nearly Hodge–Tate C-representations, and matches prismatic cohomology with continuous Galois cohomology.
+
+**How the definition helps.** The crystal's one operator plays the role of the Sen operator (our own reading), so Sen theory gets a canonical home on the prismatic site. Sen's classification by linear operators assumes an algebraically closed residue field and is not canonical, as Theorem 8.6 recalls. The work went into Sen theory over the Kummer tower, through locally analytic vectors (Theorem 7.12).
+
+**Paper or page:** [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024). It says: “There exists a natural quasi-isomorphism RΓ((𝒪<sub>K</sub>)\_Δ,\*, 𝕄) ≃ RΓ(G<sub>K</sub>, W) where the right hand side is Galois cohomology.”
+
+**Sources:**
+
+- [H. Gao, Y. Min and Y. Wang, Hodge–Tate prismatic crystals and Sen theory, preprint (2023), arXiv:2311.07024](https://arxiv.org/abs/2311.07024)
+- [S. Sen, Continuous cohomology and p-adic Galois representations, Inventiones Mathematicae 62 (1980) 89–116](https://doi.org/10.1007/bf01391665)
+
 ### Reducibility ideals locate split traces
 
 **Remember:** One ideal detects every quotient with a split trace.
@@ -7814,6 +8000,44 @@
 **Sources:**
 
 - [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2)
+
+### Requiring an étale Frobenius makes φ-modules match Galois representations
+
+**Remember:** Frobenius must be invertible, or fixed vectors vanish.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F80 (Galois representations), 11S20, 14F30. arXiv math.NT. Level 4: research.
+
+**Definition.** Let K be a finite extension of ℚₚ, K∞ the field K with all p-power roots of unity, and 𝐀(K) Fontaine's ring for K. An étale φ-module over 𝐀(K) is a finite free module M with a Frobenius-semilinear map whose linearization is an isomorphism. Without the word étale one allows, for example, M = 𝐀(K) with Frobenius x ↦ p·φ(x).
+
+**Problem.** Let 𝐀 be Fontaine's larger completed ring. Taking Frobenius-fixed vectors in M ⊗ 𝐀 is an equivalence from étale φ-modules over 𝐀(K) to ℤₚ-representations of Gal(K̄/K∞).
+
+**How the definition helps.** The étale condition makes Frobenius invertible, so the fixed vectors span M over 𝐀 (our own summary of Fontaine). In the excluded example a fixed vector satisfies x = pφ(x) = p²φ²(x) = …, so it is zero (our own). Thus a rank-one module has no fixed vectors, and the functor loses rank. The quote is the Lubin–Tate version of Kisin and Ren, which Marks cites; its case L = ℚₚ is the statement here.
+
+**Paper or page:** [Prismatic F-crystals and Lubin-Tate (φq,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “The functors Mod\_𝐀<sub>K</sub><sup>φ<sub>q</sub>,et</sup> → Rep\_𝒪<sub>L</sub>(G<sub>K∞</sub>), M ↦ (M⊗\_𝐀<sub>K</sub> 𝐀)<sup>φ = 1</sup>, (T⊗\_𝒪<sub>L</sub> 𝐀)<sup>G<sub>K∞</sub></sup> ↤ T form an equivalence of exact tensor categories.”
+
+**Sources:**
+
+- [J.-M. Fontaine, Représentations p-adiques des corps locaux (1ère partie), Modern Birkhäuser Classics (2007 reprint)](https://doi.org/10.1007/978-0-8176-4575-5_6)
+- [M. Kisin and W. Ren, Galois representations and Lubin–Tate groups, Documenta Mathematica 14 (2009) 441–461](https://doi.org/10.4171/dm/278)
+
+### The self-product prism gives a one-line criterion for crystalline lattices
+
+**Remember:** Crystalline means τ stays inside the self-product prism.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F80 (Galois representations), 14F30. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let 𝒪 be the integers of a finite extension of ℚₚ, with residue field k and a uniformizer π with Eisenstein polynomial E. A Kisin module 𝔐 is a finite free W(k)\[\[u\]\]-module with Frobenius, and Liu's (φ,Ĝ)-module adds a Galois action on a larger module. Here τ is the Galois element that fixes p-power roots of unity and moves p-power roots of π (our own). A prism is a ring with a Frobenius lift and an ideal, and A⁽²⁾ is the self-product of the prism (W(k)\[\[u\]\], E).
+
+**Problem.** Liu's (φ,Ĝ)-modules classify lattices in semistable representations with bounded Hodge–Tate weights. Semistable representations form a class wider than crystalline ones. The lattice of a (φ,Ĝ)-module is crystalline exactly when τ maps 𝔐 into A⁽²⁾ ⊗ 𝔐.
+
+**How the definition helps.** Crystalline lattices come from F-crystals on all prisms, and A⁽²⁾ is where such crystals glue, so crystallinity becomes a ring condition on τ. Semistable lattices need a larger ring built from A⁽²⁾ (our own reading). The work went into Du and Liu's prismatic construction of (φ,Ĝ)-modules.
+
+**Paper or page:** [A prismatic approach to (φ, Ĝ)-modules and F-crystals](https://arxiv.org/abs/2107.12240). It says: “Select τ ∈ Ĝ as the above. Then T̂(𝔐̂) is crystalline if and only if τ(𝔐) ⊂ A<sup>(2)</sup>⊗<sub>A</sub> 𝔐.”
+
+**Sources:**
+
+- [H. Du and T. Liu, A prismatic approach to (φ, Ĝ)-modules and F-crystals, preprint (2023), arXiv:2107.12240](https://arxiv.org/abs/2107.12240)
+- [T. Liu, A note on lattices in semi-stable representations, Mathematische Annalen 346 (2010) 117–138](https://doi.org/10.1007/s00208-009-0392-y)
 
 ### Defining overconvergent forms as sheaf sections lets the weight vary p-adically
 
@@ -8059,6 +8283,24 @@
 **Sources:**
 
 - [Marston Conder, Gareth Jones, Manfred Streit and Jürgen Wolfart, Galois actions on regular dessins of small genera, Proposition 1 (2013)](https://www.math.uni-frankfurt.de/~wolfart/Artikel/CoJoStWo.pdf)
+
+### Zero-cycles with modulus give class field theory
+
+**Remember:** The modulus D bounds ramification along the boundary, as a conductor does.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11G45 (Geometric class field theory), 19F05, 14C25. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let U be open in a proper variety X, and let D be an effective divisor supported on the boundary. The Chow group of zero-cycles with modulus CH₀(X\|D) is the free group on closed points of U. It is taken modulo divisors of functions on curves that are congruent to 1 along D.
+
+**Problem.** Let U be smooth and quasi-projective over a finite field, inside a normal proper X whose boundary supports an effective Cartier divisor C. Then the reciprocity maps give an isomorphism from the inverse limit over D ⊂ C and m of CH₀(X\|D) ⊗ ℤ/m onto π₁ᵃᵇ(U).
+
+**How the definition helps.** The modulus D plays the role of a conductor, so each CH₀(X\|D) sees only the covers whose ramification is bounded by D (our own). Here π₁ᵃᵇ(U) is the abelian étale fundamental group, the Galois group of all finite abelian covers of U. The paper also proves the degree-zero form, that the reciprocity map from C(U)⁰ to π₁ᵃᵇ(U)⁰ is an isomorphism. The work went into Bloch's formula, which links zero-cycles with modulus to Milnor K-sheaves.
+
+**Paper or page:** [Bloch's formula for 0-cycles with modulus and higher dimensional Class Field Theory](https://arxiv.org/abs/2002.01856), [Bloch's formula for 0-cycles with modulus and higher dimensional Class Field Theory](https://arxiv.org/abs/2002.01856). It says: “The reciprocity maps {ρ₍X,D₎}\|D\|⊂C induce an isomorphism of pro-finite topological groups ρU : lim D,m CH₀(X\|D) ⊗ ℤ/m ≅ π₁ᵃᵇ(U).”
+
+**Sources:**
+
+- [Federico Binda, Amalendu Krishna and Shuji Saito, Bloch's formula for 0-cycles with modulus and higher dimensional class field theory, arXiv:2002.01856](https://arxiv.org/abs/2002.01856)
 
 ### Invariant metrics scale heights exactly
 
@@ -11280,6 +11522,45 @@
 **Sources:**
 
 - [Bipartite Euler Systems for certain Galois Representations](https://arxiv.org/abs/2302.05181v1)
+
+### Ext into units extends Artin–Verdier duality
+
+**Remember:** Pair against the units, and every constructible sheaf gets a dual.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R34 (Galois cohomology), 11R37, 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let X be the spectrum of the ring of integers of a totally imaginary number field. Artin–Verdier duality pairs étale cohomology on X with Ext groups into the sheaf 𝔾ₘ of units. A constructible sheaf is locally constant and finitely generated on the pieces of a finite partition of X.
+
+**Problem.** For a constructible sheaf F on X, Deninger's theorem identifies the dual of Hʳ(X, F) with Ext³⁻ʳ(F, 𝔾ₘ) for r = 0, 1. For r = 2, 3 it identifies Hʳ(X, F) with the dual of that Ext group.
+
+**How the definition helps.** Ext into 𝔾ₘ makes sense for every sheaf, so the duality needs no torsion hypothesis. For F = ℤ and r = 2, H²(X, ℤ) is the dual of the Galois group of the Hilbert class field (our own). The group Ext¹(ℤ, 𝔾ₘ) is the class group, so this case says that this Galois group is the class group (our own). That is unramified class field theory.
+
+**Wikipedia:** [Artin–Verdier duality](https://en.wikipedia.org/wiki/Artin%E2%80%93Verdier_duality). It says: “proved Artin–Verdier duality for constructible, but not necessarily torsion sheaves. For such a sheaf F, the above pairing induces isomorphisms”
+
+**Sources:**
+
+- [Christopher Deninger, An extension of Artin–Verdier duality to non-torsion sheaves, Journal für die reine und angewandte Mathematik 366 (1986)](https://doi.org/10.1515/crll.1986.366.18)
+
+### Tate-modified compact supports make Artin–Verdier duality hold
+
+**Remember:** Tate cohomology at real places removes the 2-torsion that never stops.
+
+*Rules out counterexamples.* MSC 11R34 (Galois cohomology), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let U be an open subscheme of the spectrum of a ring of integers. Compactly supported cohomology of a sheaf on U is defined from a cone, a complex that subtracts the local cohomology at the places outside U. At real places, the definition uses Tate cohomology of the group of order 2 in place of ordinary group cohomology.
+
+**Problem.** Let F be a constructible sheaf on U, one that is locally constant with finite stalks on the pieces of a finite partition. Then the Tate-modified compactly supported cohomology Ĥⁱc(U, F) is finite, is dual to Ext³⁻ⁱ(F, 𝔾ₘ) for every i, and vanishes for i ≥ 4.
+
+**How the definition helps.** Tate cohomology at the real places cancels the 2-torsion that real places add in all high degrees (our own). Without it, the cohomology of the spectrum of ℤ with coefficients ℤ/2 is nonzero in all large degrees, which breaks a duality of dimension 3 (our own). The usual statement avoids this by assuming the number field is totally imaginary. With the modified definition, the theorem holds for every number field and every open U.
+
+**Wikipedia:** [Artin–Verdier duality](https://en.wikipedia.org/wiki/Artin%E2%80%93Verdier_duality). It says: “The sum is taken over all places of K, which are not in U, including the archimedean ones.”
+
+**Paper or page:** [Special values of L-functions on regular arithmetic schemes of dimension 1](https://arxiv.org/abs/2108.00811). It says: “If F is constructible, all groups are finite and the Artin-Verdier arrow is an isomorphism.”
+
+**Sources:**
+
+- [Barry Mazur, Notes on étale cohomology of number fields, Annales scientifiques de l'École Normale Supérieure 6 (1973)](https://doi.org/10.24033/asens.1257)
+- [Adrien Morin, Special values of L-functions on regular arithmetic schemes of dimension 1, arXiv:2108.00811](https://arxiv.org/abs/2108.00811)
 
 ### Unit cohomology detects capitulation
 

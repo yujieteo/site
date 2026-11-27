@@ -196,6 +196,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A superfluous kernel makes the projective cover a summand of every presentation
+
+**Remember:** A superfluous kernel means no smaller projective could map onto M.
+
+*True by definition.* MSC 16D40 (Free, projective, and flat modules and ideals in associative algebras), 18G05. arXiv math.RA. Level 3: graduate.
+
+**Definition.** A projective cover of M is a surjection p: P → M from a projective module with superfluous kernel. Superfluous means that N + ker p = P forces N = P. Other surjections from projectives are just projective presentations.
+
+**Problem.** Let p: P → M be a projective cover and P′ → M any surjection from a projective module. Then P is a direct summand of P′ over M, so projective covers are unique up to isomorphism.
+
+**How the definition helps.** The superfluous condition makes every lifted map onto P surjective. Projectivity gives α: P′ → P over M, and then α(P′) + ker p = P, so α(P′) = P (our own). The map α splits because P is projective, and uniqueness follows by applying this to two covers (our own). The work moves to existence, which holds for all modules only over perfect rings (Bass).
+
+**Wikipedia:** [Projective cover](https://en.wikipedia.org/wiki/Projective_cover). It says: “If (P,p) is a projective cover of M, and P' is another projective module with an epimorphism p′:P′→M, then there is a split epimorphism α from P' to P such that pα=p′”
+
+**Paper or page:** [Stacks Project, Dualizing Complexes, Lemma 47.4.2](https://stacks.math.columbia.edu/tag/08XZ). It says: “If a projective cover of M exists, then it is unique up to isomorphism.”
+
+**Sources:**
+
+- [H. Bass, Finitistic dimension and a homological generalization of semi-primary rings, Transactions of the American Mathematical Society 95 (1960)](https://doi.org/10.1090/S0002-9947-1960-0157984-8)
+
 ### Free modules defined by universal property turn products of sets into tensors
 
 **Remember:** Pairs of generators become pure tensors.
@@ -248,6 +268,24 @@
 
 - [B. Eckmann and A. Schopf, Über injektive Moduln, Archiv der Mathematik 4 (1953) 75–78](https://doi.org/10.1007/BF01899665)
 - [E. Matlis, Injective modules over Noetherian rings, Pacific Journal of Mathematics 8 (1958) 511–528](https://doi.org/10.2140/pjm.1958.8.511)
+
+### Essential extensions turn injectivity into a maximality condition
+
+**Remember:** Injective modules are exactly the ones with no room to grow essentially.
+
+*Makes the theorem clean to state or prove.* MSC 16D50 (Injective modules, self-injective associative rings), 18G05. arXiv math.RA. Level 3: graduate.
+
+**Definition.** An extension M ⊂ N of modules is essential when every nonzero submodule of N meets M in a nonzero submodule. Injectivity is usually defined by extending maps along all monomorphisms.
+
+**Problem.** A module is injective if and only if it has no proper essential extension. Inside an injective module I, a submodule E is injective exactly when no E ⊊ E′ ⊂ I is an essential extension.
+
+**How the definition helps.** The notion of essential extension turns a statement about all maps into a maximality statement in one partial order of submodules. So Zorn's lemma gives a maximal essential extension of M inside an injective module, and by this theorem it is injective (our own). This gives the existence of injective hulls in a few lines. The real work is the theorem that every module embeds in some injective module (our own).
+
+**Paper or page:** [Stacks Project, Dualizing Complexes, Lemma 47.3.5](https://stacks.math.columbia.edu/tag/08XS). It says: “In particular, an R-module is injective if and only if every essential extension is trivial.”
+
+**Sources:**
+
+- [B. Eckmann and A. Schopf, Über injektive Moduln, Archiv der Mathematik 4 (1953)](https://doi.org/10.1007/BF01899665)
 
 ### Absolutely simple modules make Schur's lemma give scalars over any field
 
@@ -319,6 +357,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Determining functors by their value on R gives the Eilenberg–Watts theorem
+
+**Remember:** Right exact and sum-preserving means tensoring with F(R).
+
+*Makes the theorem clean to state or prove.* MSC 16D90 (Module categories in associative algebras), 18E10. arXiv math.RA, math.CT. Level 3: graduate.
+
+**Definition.** A functor between module categories is cocontinuous when it preserves all small colimits. Equivalently it is right exact and preserves direct sums, or it is a left adjoint.
+
+**Problem.** For rings R and S, every additive cocontinuous functor F from Mod-R to Mod-S is tensoring over R with the bimodule F(R). This gives an equivalence between R–S bimodules and cocontinuous functors.
+
+**How the definition helps.** The ring R generates Mod-R by colimits, so a cocontinuous functor is fixed by its value on R. Every module is the cokernel of a map between free modules, and F preserves sums and cokernels (our own). The left R-action on F(R) comes from applying F to left multiplication by r. The work is the check that the comparison map M ⊗ F(R) → F(M) is natural and an isomorphism on free modules (our own).
+
+**nLab:** [Eilenberg-Watts theorem](https://ncatlab.org/nlab/show/Eilenberg-Watts+theorem). It says: “Conversely, if F : Mod<sub>R</sub> → Mod<sub>S</sub> is additive and cocontinuous, then it is naturally isomorphic to tensoring with a bimodule.”
+
+**Sources:**
+
+- [C. E. Watts, Intrinsic characterizations of some additive functors, Proc. Amer. Math. Soc. 11 (1960) 5–8](https://doi.org/10.1090/S0002-9939-1960-0118757-0)
+
 ### Full corners recover modules
 
 **Remember:** A full corner still sees the whole ring.
@@ -383,6 +439,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bimodule resolutions of an algebra bound the global dimension of its modules
+
+**Remember:** One bimodule resolution of A resolves every A-module at once.
+
+*Makes the theorem clean to state or prove.* MSC 16E10 (Homological dimension in associative algebras), 16E40, 16H05. arXiv math.RA. Level 3: graduate.
+
+**Definition.** View a k-algebra A as a module over Aᵉ = A ⊗ Aᵒᵖ, that is, as an A-bimodule. Its projective dimension there is called the Hochschild dimension of A. The algebra is separable when this dimension is 0, that is, when A is a projective bimodule.
+
+**Problem.** The global dimension of a k-algebra A is at most its Hochschild dimension. In particular a separable algebra has global dimension 0, so it is semisimple.
+
+**How the definition helps.** Tensoring one bimodule resolution of A over A with a module M resolves M, since A tensored over A with M is M. The bimodule resolution splits as a sequence of right modules, so it stays exact after tensoring (our own summary). Each term becomes A ⊗ V for a vector space V, which is a free A-module, so the resolution is projective (our own summary). So the bound holds for all modules at once, with no module-by-module argument.
+
+**Wikipedia:** [Separable algebra](https://en.wikipedia.org/wiki/Separable_algebra). It says: “A K-algebra A is separable if and only if it is projective when considered as a left module of Aᵉ in the usual way.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite global dimension makes the Cartan matrix invertible over the integers
+
+**Remember:** Finite resolutions make projectives span, so the Cartan determinant is a unit.
+
+*True by definition.* MSC 16E10 (Homological dimension in associative algebras), 16G10, 16E20. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** Let A be a finite-dimensional algebra with simple modules Sᵢ and projective covers Pᵢ. Its Cartan matrix has (i, j) entry the multiplicity of Sᵢ in a composition series of Pⱼ. A Grothendieck group adds classes of modules along short exact sequences. The Cartan matrix C represents the map from the group of projectives, with basis \[Pⱼ\], to that of all modules, with basis \[Sᵢ\].
+
+**Problem.** If A has finite global dimension, then the determinant of its Cartan matrix is 1 or −1 (Eilenberg).
+
+**How the definition helps.** Read as a map between free abelian groups of equal rank, the Cartan matrix has determinant ±1 exactly when the map is onto. Finite global dimension gives each simple module a finite projective resolution. So its class is an alternating sum of classes of projectives, and the map is onto (our own summary). For A = k\[x\]/(x²) the Cartan matrix is (2), so this algebra has infinite global dimension.
+
+**Wikipedia:** [Cartan matrix](https://en.wikipedia.org/wiki/Cartan_matrix). It says: “a Cartan matrix is defined by considering a (finite) set of principal indecomposable modules and writing composition series for them in terms of irreducible modules, yielding a matrix of integers counting the number of occurrences of an irreducible module.”
+
+**Sources:**
+
+- [S. Eilenberg, Algebras of cohomologically finite dimension, Commentarii Mathematici Helvetici (1954)](https://doi.org/10.1007/BF02566937)
+
+### Tor-defined weak dimension makes Noetherian global dimension two-sided
+
+**Remember:** Tor sees both sides at once, so Noetherian rings have one global dimension.
+
+*True by definition.* MSC 16E10 (Homological dimension in associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** The weak global dimension of R is the largest n with Torₙ(M, N) ≠ 0 for a right module M and a left module N. Tor always takes one module from each side, so this number has no left or right version. The left and right global dimensions use projective resolutions of left modules only, or of right modules only.
+
+**Problem.** If a ring R is Noetherian on both sides, then its left and right global dimensions are equal. Both equal the weak global dimension of R.
+
+**How the definition helps.** Weak global dimension is symmetric by definition, so any one-sided dimension that equals it is automatically symmetric. The work goes into Auslander's theorem that the right global dimension of a right Noetherian ring equals its weak global dimension. It uses the fact that a finitely presented flat module is projective (our own summary). The Noetherian condition is needed: the triangular ring with rows (ℤ, ℚ) and (0, ℚ) has right global dimension 1 and left 2.
+
+**Wikipedia:** [Global dimension](https://en.wikipedia.org/wiki/Global_dimension). It says: “if A is a Noetherian ring, both of these dimensions turn out to be equal to weak global dimension, whose definition is left-right symmetric.”
+
+**Sources:**
+
+- [M. Auslander, On the dimension of modules and algebras (III): global dimension, Nagoya Mathematical Journal (1955)](https://doi.org/10.1017/S0027763000023291)
+
+### Defining the Euler form by alternating Ext makes tilting an isometry
+
+**Remember:** Euler forms live in the derived category, so derived equivalences preserve them.
+
+*True by definition.* MSC 16E20 (Grothendieck groups, \\(K\\)-theory, etc.), 16E35, 16E10. arXiv math.RT. Level 3: graduate.
+
+**Definition.** For a finite-dimensional algebra A of finite global dimension, the Euler form on the Grothendieck group is ⟨\[M\], \[N\]⟩ = Σ (−1)ⁱ dim Extⁱ(M, N). Written with the Cartan matrix C, the same form is xᵀC⁻ᵀy, which depends on the algebra. A tilting module T, with B = End(T), has projective dimension at most 1 and no self-extensions. It also has as many indecomposable summands as A has simple modules.
+
+**Problem.** If A has finite global dimension and T is a tilting module with B = End(T), then B has finite global dimension. Sending \[M\] to \[Hom(T, M)\] − \[Ext¹(T, M)\] gives an isometry of Euler forms between the Grothendieck groups of A and B.
+
+**How the definition helps.** Each Extⁱ(M, N) is a Hom space in the derived category, so the Euler form is defined by the derived category alone. So any equivalence of derived categories preserves it (our own summary). On classes of modules, the tilting equivalence sends \[M\] to \[Hom(T, M)\] − \[Ext¹(T, M)\]. The work goes into Happel's theorem that tilting gives an equivalence of bounded derived categories.
+
+**Wikipedia:** [Tilting theory](https://en.wikipedia.org/wiki/Tilting_theory). It says: “If A has finite global dimension, then B also has finite global dimension, and the difference of F and F′ induces an isometry between the Grothendieck groups K₀(A) and K₀(B).”
+
+**Sources:**
+
+- [D. Happel, Triangulated Categories in the Representation Theory of Finite Dimensional Algebras, Cambridge University Press (1988)](https://doi.org/10.1017/CBO9780511629228)
+
 ### Perfect complexes survive equivalence
 
 **Remember:** Perfect complexes are the ones that see sums one piece at a time.
@@ -419,6 +545,22 @@
 
 - [Jeremy Rickard, Morita Theory for Derived Categories](https://doi.org/10.1112/jlms/s2-39.3.436)
 
+### Bidimension at most one makes nilpotent extensions split
+
+**Remember:** Bidimension at most one kills HH², so nilpotent extensions split.
+
+*Rules out counterexamples. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16N20. arXiv math.RA. Level 3: graduate.
+
+**Definition.** The enveloping algebra Bᵉ = B ⊗ₖ Bᵒᵖ of an algebra B is the ring whose modules are B-bimodules. The bidimension of B is the projective dimension of B as a Bᵉ-module. Bidimension zero means that B is separable.
+
+**Problem.** Let A be a finite-dimensional algebra over a field k, with a nilpotent ideal I. If A/I has bidimension at most one, then A contains a subalgebra that maps isomorphically onto A/I.
+
+**How the definition helps.** The bidimension bound kills the obstruction group, because the obstruction to splitting lies in HH²(A/I, N), which is Ext² over (A/I)ᵉ (our own). Here N is a layer Iʲ/Iʲ⁺¹ with N·N = 0, and induction over these layers finishes the proof (our own). The hypothesis excludes A = k\[x\]/((xᵖ − t)²) over k = 𝔽ₚ(t), with I generated by xᵖ − t (our own). No y in A has yᵖ = t, so A/I, which holds a pth root of t, does not embed in A (our own).
+
+**Wikipedia:** [Associative algebra](https://en.wikipedia.org/wiki/Associative_algebra). It says: “if the projective dimension of A / I as a module over the enveloping algebra (A / I)ᵉ is at most one, then the natural surjection p : A → A / I splits”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Centralizers split group-ring Hochschild homology
 
 **Remember:** Components are conjugacy classes, and the loops in each component are centralizers.
@@ -437,6 +579,146 @@
 
 - [Dan Burghelea, The cyclic homology of the group rings](https://doi.org/10.1007/BF02567420)
 
+### Defining Hochschild homology as Tor makes it Morita invariant
+
+**Remember:** Tor is built from bimodules, so Morita equivalent algebras agree.
+
+*True by definition. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 19D55, 16D90. arXiv math.KT, math.RA. Level 3: graduate.
+
+**Definition.** For an algebra A over a field k, A-bimodules are the same as modules over the enveloping algebra Aᵉ = A ⊗ Aᵒᵖ. Cartan and Eilenberg define HHₙ(A, M) as Torₙ over Aᵉ of A and M, the derived functor of tensor product. The older definition uses an explicit chain complex built from tensor powers of A.
+
+**Problem.** If A and B are Morita equivalent, meaning that they have equivalent categories of modules, then HHₙ(A) ≅ HHₙ(B) for all n. In particular HHₙ(Mₘ(A)) ≅ HHₙ(A) for every matrix size m.
+
+**How the definition helps.** As Tor, Hochschild homology is a derived tensor product, and Morita equivalences respect tensor products of bimodules (our own). The bimodules that give the equivalence send A to B and Tor over Aᵉ to Tor over Bᵉ (our own). With the explicit complex, one must instead build a trace map from Mₘ(A) to A and a chain homotopy by hand. The work went into the theorem that the explicit complex computes Tor.
+
+**Wikipedia:** [Hochschild homology](https://en.wikipedia.org/wiki/Hochschild_homology). It says: “Bimodules over A are essentially the same as modules over the enveloping algebra of A, so in particular A and M can be considered as Aᵉ-modules.”
+
+**Sources:**
+
+- [J.-L. Loday, Cyclic Homology, 2nd ed., Grundlehren der mathematischen Wissenschaften 301, Springer (1998)](https://doi.org/10.1007/978-3-662-11389-9)
+
+### Hochschild extensions of an algebra are classified by HH²
+
+**Remember:** A linear section's failure to multiply is a Hochschild 2-cocycle.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)). arXiv math.RA, math.KT. Level 3: graduate.
+
+**Definition.** A Hochschild extension of an algebra R by an R-bimodule N is a surjection of algebras E → R. It must split as a k-linear map, and its kernel N must satisfy N·N = 0. HH²(R, N) is the degree-2 cohomology of the complex of multilinear maps from R to N, with the Hochschild differential.
+
+**Problem.** Equivalence classes of Hochschild extensions of R by N are in bijection with HH²(R, N).
+
+**How the definition helps.** The k-linear splitting makes the proof short (our own). It writes E as R ⊕ N with product (a, m)(b, n) = (ab, an + mb + f(a, b)) (our own). Associativity of E is exactly the cocycle condition on f, and a change of linear section changes f by a coboundary (our own). Over a general ring k the splitting condition is needed (our own).
+
+**nLab:** [Hochschild cohomology](https://ncatlab.org/nlab/show/Hochschild+cohomology). It says: “For R a k-algebra and N an R-bimodule, equivalence classes of Hochschild extensions of R by N are in bijection with degree 2 Hochschild cohomology HH²(R,N).”
+
+**Sources:**
+
+- [G. Hochschild, On the cohomology groups of an associative algebra, Annals of Mathematics 46 (1945)](https://doi.org/10.2307/1969145)
+
+### Hochschild homology as Tor computes polynomial rings with Koszul complexes
+
+**Remember:** Choose the Koszul resolution, and the differentials vanish.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 13D03. arXiv math.KT, math.AC. Level 3: graduate.
+
+**Definition.** Hochschild homology is HHₙ(A) = Torₙ of A with itself over the enveloping algebra Aᵉ = A ⊗ₖ Aᵒᵖ. This replaces the bar complex of A, whose terms are all tensor powers of A, by any projective resolution of A over Aᵉ.
+
+**Problem.** Let k be a commutative ring and A = k\[x₁, …, xₙ\]. Then HH\*(A) ≅ A ⊗ Λ(dx₁, …, dxₙ), the exterior algebra of differential forms over A.
+
+**How the definition helps.** Because Tor may be computed with any projective resolution, we may use the Koszul complex (our own). Here Aᵉ is a polynomial ring in 2n variables xᵢ and yᵢ, and A is Aᵉ modulo the regular sequence xᵢ − yᵢ (our own). After tensoring with A, each xᵢ − yᵢ acts as zero, so all differentials vanish (our own). The work went into the theorem that Tor does not depend on the resolution, which covers the bar complex when A is free over k.
+
+**Wikipedia:** [Hochschild homology](https://en.wikipedia.org/wiki/Hochschild_homology). It says: “Bimodules over A are essentially the same as modules over the enveloping algebra of A, so in particular A and M can be considered as Aᵉ-modules.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hochschild homology as Tor gives smooth algebras their differential forms
+
+**Remember:** Locally, the diagonal of a smooth variety is cut out by a regular sequence.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 13D03, 19D55. arXiv math.KT, math.AC. Level 3: graduate.
+
+**Definition.** For a commutative k-algebra A, Hochschild homology is HHₙ(A) = Torₙ over A ⊗ A of A with A. Let I be the kernel of multiplication A ⊗ A → A. The algebraic 1-forms, or Kähler differentials, are Ω¹ = I/I², and Ωⁿ is their n-th exterior power.
+
+**Problem.** Let A be a smooth commutative algebra of finite type over a field k. Then the antisymmetrization map gives an isomorphism Ωⁿ ≅ HHₙ(A) for every n ≥ 0.
+
+**How the definition helps.** As Tor, Hochschild homology may be computed from any projective resolution of A over A ⊗ A, and it can be computed locally. For a smooth algebra, I is locally generated by a regular sequence, like the elements xᵢ⊗1 − 1⊗xᵢ for polynomials (our own). The Koszul resolution of that sequence then gives Tor as the exterior algebra on I/I² = Ω¹ (our own). The explicit Hochschild complex is far from such a resolution, and the work went into the regularity of I.
+
+**nLab:** [Hochschild-Kostant-Rosenberg theorem](https://ncatlab.org/nlab/show/Hochschild-Kostant-Rosenberg+theorem). It says: “For a k-algebra R, its module of Kähler differentials coincides with its first Hochschild homology”
+
+**Wikipedia:** [Hochschild homology](https://en.wikipedia.org/wiki/Hochschild_homology). It says: “states there is an isomorphism Ωⁿ<sub>A</sub>/k ≅ HHₙ(A/k) for every n ≥ 0. This isomorphism can be described explicitly using the anti-symmetrization map.”
+
+**Sources:**
+
+- [G. Hochschild, B. Kostant, A. Rosenberg, Differential forms on regular affine algebras, Trans. AMS 102 (1962) 383–408](https://doi.org/10.1090/S0002-9947-1962-0142598-8)
+
+### Separability as projectivity over Aᵉ makes Hochschild cohomology vanish
+
+**Remember:** Separable means A is projective as a bimodule over itself.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16H05. arXiv math.RA. Level 3: graduate.
+
+**Definition.** A k-algebra A over a field k is separable when A is projective as a module over Aᵉ = A ⊗ₖ Aᵒᵖ. Modules over Aᵉ are the same as A-bimodules, that is, modules with commuting left and right actions of A. This replaces the older test that A stays semisimple after every field extension of k.
+
+**Problem.** A separable algebra A has Hochschild cohomology HHⁿ(A, M) = 0 for every A-bimodule M and every n ≥ 1. In particular, every derivation of A into a bimodule M is inner, that is, of the form a ↦ am − ma.
+
+**How the definition helps.** With this definition the vanishing takes one line, because HHⁿ(A, M) is Extⁿ over Aᵉ from A to M (our own). Ext out of a projective module is zero in positive degrees (our own). The work went into the theorem that projectivity agrees with semisimplicity after every field extension. The condition excludes L = k(s) over k = 𝔽ₚ(t) with sᵖ = t, where d/ds is a derivation that is not inner (our own).
+
+**nLab:** [separable algebra](https://ncatlab.org/nlab/show/separable+algebra). It says: “Third, a k-algebra A is separable if and only if it is projective when considered as a left module of Aᵉ in the usual way.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smoothness in the HKR theorem excludes the dual numbers
+
+**Remember:** Smooth algebras have Hochschild homology equal to differential forms, and nothing more.
+
+*Rules out counterexamples.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 13D03. arXiv math.KT, math.AC. Level 3: graduate.
+
+**Definition.** Let A be a commutative algebra, essentially of finite type over a field k. A is smooth when its Kähler differentials Ω¹, the universal module of derivations, are projective of rank equal to the local dimension. The rank condition matters: in characteristic p, k\[x\]/(xᵖ) has free Ω¹ but is not smooth (our own).
+
+**Problem.** For a smooth commutative algebra A over a field, HHₙ(A) is isomorphic to the module Ωⁿ = ΛⁿΩ¹ of n-forms over A.
+
+**How the definition helps.** Smoothness makes the kernel of A ⊗ A → A locally generated by a regular sequence, so local Koszul resolutions exist (our own). The work went into that local structure theorem for smooth algebras. The hypothesis excludes the dual numbers A = k\[x\]/(x²) in characteristic 0, where Ω² = 0 (our own). A periodic resolution over Aᵉ gives HHₙ(A) ≅ k for every n ≥ 1, so HH₂(A) ≠ Ω² (our own).
+
+**nLab:** [Hochschild-Kostant-Rosenberg theorem](https://ncatlab.org/nlab/show/Hochschild-Kostant-Rosenberg+theorem). It says: “the A-module of Kähler differentials Ω¹ₖ(A) is a projective object”
+
+**Sources:**
+
+- [G. Hochschild, B. Kostant and A. Rosenberg, Differential forms on regular affine algebras, Transactions of the AMS 102 (1962)](https://doi.org/10.1090/s0002-9947-1962-0142598-8)
+
+### The Gerstenhaber bracket turns associativity into one equation
+
+**Remember:** Associative means the product brackets to zero with itself.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16S80. arXiv math.RA, math.QA. Level 3: graduate.
+
+**Definition.** Hochschild cochains are multilinear maps from copies of A to A. The composite f ∘ g of two cochains is the signed sum of all ways to insert g into one input of f. The Gerstenhaber bracket is the graded commutator \[f, g\] = f ∘ g ∓ g ∘ f.
+
+**Problem.** Over a field of characteristic not 2, a bilinear map μ on A is associative if and only if \[μ, μ\] = 0. If μ is associative, then μ + c is associative if and only if c satisfies the Maurer–Cartan equation dc + ½\[c, c\] = 0.
+
+**How the definition helps.** The bracket is built so that μ ∘ μ is the associator, μ(μ(a, b), c) − μ(a, μ(b, c)) (our own). Also \[μ, μ\] = 2 μ ∘ μ (our own). Expanding \[μ + c, μ + c\] = 0 gives the Maurer–Cartan equation, where d = \[μ, −\] is the Hochschild differential (our own). The work went into Gerstenhaber's proof that the bracket is a graded Lie bracket.
+
+**nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “Note that μ is associative iff μ ∘ μ = 0 iff \[μ, μ\] = 0.”
+
+**Sources:**
+
+- [M. Gerstenhaber, The cohomology structure of an associative ring, Annals of Mathematics 78 (1963)](https://doi.org/10.2307/1970343)
+
+### Derived categories of dg modules depend only on quasi-isomorphism class
+
+**Remember:** Invert quasi-isomorphisms, and quasi-isomorphic algebras look the same.
+
+*Makes the theorem clean to state or prove.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 18G80. arXiv math.KT, math.RA. Level 3: graduate.
+
+**Definition.** The derived category D(A) of a dg algebra A is the category of dg A-modules with all quasi-isomorphisms made invertible. A quasi-isomorphism is a map that induces an isomorphism on cohomology. This replaces the homotopy category of dg modules, where such maps need not be invertible.
+
+**Problem.** Let A → B be a quasi-isomorphism of dg algebras over a ring R. Then the derived tensor product with B is an equivalence from D(A) to D(B), with inverse the restriction of scalars.
+
+**How the definition helps.** Inverting quasi-isomorphisms makes the map A → B an isomorphism in D(A), and this map is the unit of the adjunction at A (our own). Restriction does not change the underlying complex, so it passes to derived categories at once (our own). Since A generates D(A) by triangles and sums, the unit is an isomorphism everywhere (our own). The work went into constructing projective-like resolutions of dg modules, so that the derived tensor product exists.
+
+**Paper or page:** [Lemma 22.37.1](https://stacks.math.columbia.edu/tag/09S6). It says: “gives an R-linear equivalence of triangulated categories with quasi-inverse the restriction functor N ↦ N<sub>A</sub>.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Pseudo-inverses make commutative von Neumann regular rings a variety
 
 **Remember:** Ask the inverse to be regular too, and it becomes unique.
@@ -454,6 +736,44 @@
 **Sources:**
 
 - [John von Neumann, On regular rings, Proc. Natl. Acad. Sci. USA 22 (1936) 707–713](https://doi.org/10.1073/pnas.22.12.707)
+
+### Weak dimension zero sees von Neumann regular rings that global dimension misses
+
+**Remember:** Flatness, not projectivity, is what von Neumann regular rings have everywhere.
+
+*Makes the theorem clean to state or prove.* MSC 16E50 (von Neumann regular rings and generalizations (associative algebraic aspects)), 16E10. arXiv math.RA. Level 3: graduate.
+
+**Definition.** The weak global dimension of a ring is the largest n with Torₙ(M, N) ≠ 0 for some modules M and N. It measures distance from flatness, as global dimension measures distance from projectivity. A ring R is von Neumann regular if for every a in R there is x with axa = a.
+
+**Problem.** A ring is von Neumann regular exactly when its weak global dimension is 0, that is, when every module is flat. An infinite product of fields is such a ring, but its global dimension is not 0.
+
+**How the definition helps.** Weak global dimension 0 says every cyclic module R/I is flat, and flatness of R/I is an elementwise condition on I. A cyclic module R/I is flat exactly when each a in I has a = ax for some x in I (our own summary). For I = Ra this reads a = ara, which is von Neumann regularity. Global dimension 0 would mean semisimple instead, which fails for an infinite product of fields.
+
+**Wikipedia:** [Weak dimension](https://en.wikipedia.org/wiki/Weak_dimension). It says: “A Von Neumann regular ring has weak global dimension 0. A product of infinitely many fields has weak global dimension 0 but its global dimension is nonzero.”
+
+**Paper or page:** [Stacks Project, More Algebra, Lemma 15.105.5](https://stacks.math.columbia.edu/tag/092F). It says: “A has weak dimension ≤ 0, A is absolutely flat, A is reduced and every prime is maximal, and every local ring of A is a field.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Global and dominant dimension two single out the Auslander algebras
+
+**Remember:** Global dimension two and dominant dimension two recover a representation-finite algebra.
+
+*Makes the theorem clean to state or prove.* MSC 16G10 (Representations of associative Artinian rings), 16E10, 16G60. arXiv math.RT. Level 3: graduate.
+
+**Definition.** An Artin algebra Γ, for example a finite-dimensional algebra, is an Auslander algebra when two bounds hold. Its global dimension is at most 2, and its dominant dimension is at least 2. Dominant dimension at least 2 means that the first two terms I and J of a minimal injective resolution of Γ are projective.
+
+**Problem.** Representation-finite algebras, which have only finitely many indecomposable modules, correspond one to one with Auslander algebras (Auslander). This holds up to Morita equivalence, which means having equivalent module categories. The algebra Λ goes to the endomorphism algebra of the sum of its indecomposable modules.
+
+**How the definition helps.** The two inequalities describe exactly the homological shape of End(M) when M contains every indecomposable module, so the correspondence can be stated with two numbers. Global dimension at most 2 holds because M contains every indecomposable module. So the kernel of a map between sums of summands of M is again such a sum (our own summary). Dominant dimension at least 2 recovers Λ from the injective hull of Γ, the smallest injective module containing Γ. The work goes into this step, the Morita–Tachikawa theorem.
+
+**Wikipedia:** [Auslander algebra](https://en.wikipedia.org/wiki/Auslander_algebra). It says: “Γ is called an Auslander algebra if gl dim Γ ≤ 2 and if 0 → Γ → I → J → K → 0 is a minimal injective resolution of Γ then I and J are projective”
+
+**Paper or page:** [Nakayama-type phenomena in higher Auslander--Reiten theory](https://arxiv.org/abs/2402.15889v1). It says: “There is a one-to-one correspondence between Morita equivalence classes of representation-finite algebras and Morita equivalence classes of Auslander algebras.”
+
+**Sources:**
+
+- [M. Auslander, Representation theory of Artin algebras II, Communications in Algebra (1974)](https://doi.org/10.1080/00927877409412807)
 
 ### Counting indecomposable quiver representations makes Gabriel's ADE theorem statable
 
@@ -474,6 +794,22 @@
 - [Gabriel, P. (1972). Unzerlegbare Darstellungen I. manuscripta mathematica 6.](https://doi.org/10.1007/BF01298413)
 - [Bernstein, I. N., Gel'fand, I. M., Ponomarev, V. A. (1973). Coxeter functors and Gabriel's theorem. Russian Mathematical Surveys 28, 17–32.](https://doi.org/10.1070/RM1973v028n02ABEH001526)
 
+### Global dimension one makes the quiver Euler form depend only on dimensions
+
+**Remember:** With no Ext², Hom minus Ext¹ is a bilinear form in dimension vectors.
+
+*Makes the theorem clean to state or prove.* MSC 16G20 (Representations of quivers and partially ordered sets), 16E10. arXiv math.RT. Level 3: graduate.
+
+**Definition.** A ring is hereditary if every submodule of a projective module is projective, that is, if its global dimension is at most 1. The path algebra kQ of a finite quiver Q without oriented cycles is hereditary. Its modules are the representations of Q, which assign a vector space to each vertex and a linear map to each arrow.
+
+**Problem.** Let M and N be representations of Q with dimension vectors m and n. Then dim Hom(M, N) − dim Ext¹(M, N) = Σ mᵢnᵢ − Σ mᵢnⱼ. The first sum runs over vertices i, and the second over arrows from i to j.
+
+**How the definition helps.** Global dimension at most 1 stops the alternating sum of Ext dimensions after Ext¹, so a resolution of length 1 computes it. Apply Hom(−, N) to the standard resolution of M. Its two terms give the spaces of linear maps from Mᵢ to Nᵢ over vertices and from Mᵢ to Nⱼ over arrows (our own summary).
+
+**Wikipedia:** [Hereditary ring](https://en.wikipedia.org/wiki/Hereditary_ring). It says: “An important example of a (left) hereditary ring is the path algebra of a quiver. This is a consequence of the existence of the standard resolution (which is of length 1) for modules over a path algebra.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Path algebras turn quiver representations into modules over one algebra
 
 **Remember:** Paths multiply by joining end to start; modules are representations.
@@ -491,6 +827,24 @@
 **Sources:**
 
 - [Gabriel, P. (1972). Unzerlegbare Darstellungen I. manuscripta mathematica 6.](https://doi.org/10.1007/BF01298413)
+
+### Dividing out projective maps makes Auslander–Reiten duality an isomorphism
+
+**Remember:** Ext¹ is dual to Hom only after removing projective and injective maps.
+
+*Rules out counterexamples.* MSC 16G70 (Auslander-Reiten sequences (almost split sequences) and Auslander-Reiten quivers), 18G65. arXiv math.RT. Level 3: graduate.
+
+**Definition.** An Artin algebra is finitely generated as a module over a commutative Artinian ring; a finite-dimensional algebra is an example. Stable Hom divides out the maps that factor through a projective module, and costable Hom divides out those that factor through an injective module. D is duality over the base ring, and τ is the Auslander–Reiten translate.
+
+**Problem.** For finitely generated modules M and N over an Artin algebra, Ext¹(M, N) ≅ D stable Hom(τ⁻¹N, M) ≅ D costable Hom(N, τM). The formula fails with ordinary Hom.
+
+**How the definition helps.** Maps through projectives or injectives give zero extensions, so they must be removed before Ext¹ can be dual to a Hom space. For example, over k\[x\]/(x²) take N = k\[x\]/(x²), which is injective, and M = k, with τk = k. Then Ext¹(k, N) = 0, but Hom(N, k) = k is nonzero (our own example). The work went into Auslander and Reiten's construction of the duality through the transpose.
+
+**Paper or page:** [A geometric model for the non-τ-rigid modules of type D̃ₙ](https://arxiv.org/abs/2507.02218). It says: “Then there are isomorphisms Ext¹(M,N) ≅ D H̲o̲m̲(τ⁻¹N, M) ≅ D H̅o̅m̅(N, τM).”
+
+**Sources:**
+
+- [Maurice Auslander and Idun Reiten, Representation theory of Artin algebras III, Almost split sequences, Communications in Algebra 3 (1975) 239–294](https://doi.org/10.1080/00927877508822046)
 
 ### Minimal almost split maps are unique
 
@@ -889,6 +1243,24 @@
 
 - [J. L. Dorroh, Concerning adjunctions to algebras, Bulletin of the American Mathematical Society 38 (1932) 85–88](https://doi.org/10.1090/S0002-9904-1932-05333-2)
 
+### The Gerstenhaber bracket puts deformation obstructions in Hochschild cohomology
+
+**Remember:** Associativity is one bracket equation, so obstructions become cohomology classes.
+
+*Makes the theorem clean to state or prove.* MSC 16S80 (Deformations of associative rings), 16E40, 53D55. arXiv math.QA, math.RA. Level 3: graduate.
+
+**Definition.** The Gerstenhaber bracket is a graded Lie bracket on Hochschild cochains, the multilinear maps from Aⁿ to A. For a bilinear product μ it gives \[μ, μ\] = 2 μ∘μ, where (μ∘μ)(a,b,c) = μ(μ(a,b),c) − μ(a,μ(b,c)). So μ is associative exactly when \[μ, μ\] = 0.
+
+**Problem.** Let A be an associative algebra whose third Hochschild cohomology HH³(A, A) is zero. Then every Hochschild 2-cocycle B₁ is the first term of an associative formal deformation μ + ħB₁ + ħ²B₂ + ⋯ (Gerstenhaber).
+
+**How the definition helps.** The bracket turns associativity of μ + c, with c = ħB₁ + ħ²B₂ + ⋯, into one equation δc + ½\[c, c\] = 0. Here δ = \[μ, −\] is the Hochschild differential, and the equation follows from \[μ, μ\] = 0 by expanding \[μ + c, μ + c\]. At order ħⁿ it reads δBₙ = −½ Σ \[Bᵢ, Bⱼ\] over i + j = n, and the graded Jacobi identity makes the right side a 3-cocycle. So its class in HH³(A, A) is the only obstruction at each step, and it vanishes by assumption.
+
+**nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “Note that μ is associative iff μ ∘ μ = 0 iff \[μ, μ\] = 0.”
+
+**Sources:**
+
+- [Murray Gerstenhaber, On the deformation of rings and algebras, Annals of Mathematics 79 (1964) 59–103](https://doi.org/10.2307/1970484)
+
 ### The Ore condition makes every element of a localization a single fraction
 
 **Remember:** The Ore condition moves a denominator from right to left: r s⁻¹ = s'⁻¹ r'.
@@ -1022,6 +1394,26 @@
 **nLab:** [quotient bialgebra](https://ncatlab.org/nlab/show/quotient+bialgebra). It says: “A Hopf ideal is a bialgebra ideal which is invariant under the antipode map.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Hopf–Galois extensions are exactly affine torsors in the commutative case
+
+**Remember:** The Galois map is the torsor map read on coordinate rings.
+
+*True by definition.* MSC 16T05 (Hopf algebras and their applications), 58B32, 14L30. arXiv math.QA, math.AG. Level 3: graduate.
+
+**Definition.** Let H be a Hopf algebra and E a right H-comodule algebra with coaction ρ and coinvariants U. The extension U ⊂ E is H-Galois when the canonical map x ⊗ y ↦ (x⊗1)ρ(y), from E ⊗ E over U to E ⊗ H, is bijective. Noncommutative geometry uses this as its definition of a principal bundle.
+
+**Problem.** Let G = Spec H act on X = Spec E with affine quotient Y = Spec U. Then X → Y is a G-torsor exactly when U ⊂ E is H-Galois and E is faithfully flat over U. Faithfully flat means that tensoring with E preserves and detects exact sequences.
+
+**How the definition helps.** The canonical map is the ring map of (x,g) ↦ (x, xg). This is because E ⊗ E over U is the coordinate ring of the fibre product of X with itself over Y. So the torsor isomorphism and the Galois bijection are the same statement, and faithful flatness matches on both sides. For a finite group acting on a finite set, the quoted theorem shows that the map is bijective exactly when the action is free. Dropping commutativity but keeping the definition gives quantum principal bundles.
+
+**nLab:** [Hopf-Galois extension](https://ncatlab.org/nlab/show/Hopf-Galois+extension). It says: “the algebra E of regular functions over the total scheme X of an affine G-torsor X→Y, whose base Y also happens to be affine, is a commutative H-Hopf–Galois extension of the algebra of regular functions U on the base”
+
+**Paper or page:** [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860). It says: “is bijective if and only if α: X×G → X×<sub>X/G</sub> X is bijective, and this holds if and only if the G-action is free.”
+
+**Sources:**
+
+- [H.-J. Schneider, Principal homogeneous spaces for arbitrary Hopf algebras, Israel Journal of Mathematics 72 (1990) 167–195](https://doi.org/10.1007/BF02764619)
 
 ### Normal Hopf subalgebras give quotients
 
@@ -1175,6 +1567,22 @@
 
 - [Alex Martsinkovsky, The defect, the Malgrange functor, and linear control systems, arXiv:2403.13520 (2024)](https://arxiv.org/abs/2403.13520v1)
 
+### Dominant dimension two characterizes endomorphism algebras of generator-cogenerators
+
+**Remember:** Dominant dimension two means the algebra is a double centralizer.
+
+*Makes the theorem clean to state or prove.* MSC 16E10 (Homological dimension in associative algebras), 16G10, 16D90. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** The dominant dimension of an algebra Γ is the number of initial terms of a minimal injective resolution of Γ that are also projective. A module M over an algebra Λ is a generator-cogenerator if every indecomposable projective and every indecomposable injective module is a direct summand of M.
+
+**Problem.** Up to Morita equivalence, the finite-dimensional algebras of dominant dimension at least 2 are exactly the algebras End(M)ᵒᵖ with M a generator-cogenerator (Morita and Tachikawa). Here Morita equivalence means equivalent module categories. The algebra Λ is recovered as End(I)ᵒᵖ, where the injective hull I is the smallest injective module containing Γ.
+
+**How the definition helps.** Dominant dimension at least 2 is a homological way to say that Γ is a double centralizer, so one inequality replaces a structural description. Here double centralizer means that Γ is the ring of endomorphisms of I that commute with End(I) (our own summary). The work goes into this double-centralizer theorem. The Auslander correspondence is the special case where M contains every indecomposable module.
+
+**Paper or page:** [Nakayama-type phenomena in higher Auslander--Reiten theory](https://arxiv.org/abs/2402.15889v1). It says: “There is a one-to-one correspondence between equivalence classes of Morita–Tachikawa pairs and Morita equivalence classes of finite dimensional algebras Γ such that domdim Γ ≥ 2.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Averaging computes reflexive homology
 
 **Remember:** When two is invertible, reflection averaging kills the higher derived coinvariants.
@@ -1192,6 +1600,24 @@
 **Sources:**
 
 - [Daniel Graves, Reflexive homology](https://arxiv.org/abs/2204.07985v3)
+
+### Calabi–Yau algebras have Serre duality for finite-dimensional modules
+
+**Remember:** Calabi–Yau algebras behave like compact manifolds of dimension d.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16E65. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** Modules over Aᵉ = A ⊗ₖ Aᵒᵖ are A-bimodules, and A is homologically smooth when A is a perfect complex of bimodules. Such an A is Calabi–Yau of dimension d when RHom over Aᵉ from A to Aᵉ is isomorphic to the shifted bimodule A\[−d\].
+
+**Problem.** Let A be Calabi–Yau of dimension d over a field k, let M be a finite-dimensional A-module and let N be any A-module. Then the k-dual of Extⁱ(M, N) is isomorphic to Ext in degree d − i from N to M.
+
+**How the definition helps.** The Calabi–Yau condition moves Ext into Hochschild homology, where duality over k applies (our own). Ext from M to N over A equals Hochschild cohomology of A with coefficients in the bimodule Homₖ(M, N) (our own). The work went into Van den Bergh duality, which turns this into a Tor group over A in degree d − i (our own). Because M is finite-dimensional, the k-dual of that Tor group is Ext in degree d − i from N to M (our own).
+
+**Paper or page:** [On deformed preprojective algebras](https://arxiv.org/abs/2108.00795). It says: “In particular D Extⁱ<sub>A</sub> (M, N) ≅ Extᵈ⁻ⁱ<sub>A</sub>(N, M) for M a finite-dimensional A-module and N any A-module.”
+
+**Sources:**
+
+- [W. Crawley-Boevey and Y. Kimura, On deformed preprojective algebras, Journal of Pure and Applied Algebra 226 (2022)](https://doi.org/10.1016/j.jpaa.2022.107130)
 
 ### Circle gluing computes Hochschild chains
 
@@ -1229,6 +1655,279 @@
 
 - [Massimiliano Ungheretti, Free loop spaces and dihedral homology](https://www.math.ku.dk/bibliotek/arkivet/phd-theses/phd16mu.pdf)
 
+### Eckmann–Hilton makes the Hochschild cup product graded commutative
+
+**Remember:** Two compatible products on one set must agree and commute.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)). arXiv math.KT, math.RA. Level 4: research.
+
+**Definition.** Hochschild cohomology HH\*(A, A) is Ext\* from A to A over the enveloping algebra Aᵉ = A ⊗ₖ Aᵒᵖ, whose modules are A-bimodules. It has a Yoneda product, from splicing extensions end to end. It also has a product from the tensor product over A of two bimodule extensions.
+
+**Problem.** The cup product on the Hochschild cohomology HH\*(A, A) is graded commutative.
+
+**How the definition helps.** Defining HH\* inside the bimodule category gives two compatible products, and the Eckmann–Hilton argument forces two such products to agree and commute. The tensor product over A respects Yoneda composition, and both products have the unit A (our own). The work went into Suárez-Álvarez's graded version, which tracks signs, and into matching the Yoneda and cup products (our own). Gerstenhaber's direct proof needs an explicit homotopy on cochains (our own).
+
+**nLab:** [Eckmann-Hilton argument](https://ncatlab.org/nlab/show/Eckmann-Hilton+argument). It says: “In other words this says that when a set is equipped with a pair of monoid structures, such that one is a homomorphism for the other, then the two structures actually coincide and the resulting monoid is commutative.”
+
+**Sources:**
+
+- [M. Suárez-Álvarez, The Hilton–Heckmann argument for the anti-commutativity of cup products, Proceedings of the AMS 132 (2004)](https://doi.org/10.1090/s0002-9939-04-07409-x)
+
+### Hochschild cochains as coderivations make the Jacobi identity automatic
+
+**Remember:** Brackets of coderivations are commutators, and commutators satisfy Jacobi.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 17B55. arXiv math.KT, math.QA. Level 4: research.
+
+**Definition.** The tensor coalgebra on a graded space V is the sum of all tensor powers of V. Its comultiplication cuts each tensor into two parts in all ways. A coderivation is a linear map that obeys the Leibniz rule for it. Stasheff identifies a Hochschild cochain on A with the unique coderivation of the tensor coalgebra on the shift A\[1\] that extends it.
+
+**Problem.** The Gerstenhaber bracket makes the shifted Hochschild complex of A a differential graded Lie algebra.
+
+**How the definition helps.** Under Stasheff's identification, the Gerstenhaber bracket is the graded commutator of coderivations, and every graded commutator satisfies the Jacobi identity (our own). Direct proofs with insertion formulas need a long sign check. The work went into showing that a coderivation is determined by its component into V (our own). This dg Lie algebra is the one that governs deformations of A.
+
+**nLab:** [deformation theory](https://ncatlab.org/nlab/show/deformation+theory). It says: “In the case of an associative algebra (or a dg algebra, or an A-infinity algebra, or a dg category, or an A-infinity category), the appropriate dgLa is the Hochschild complex with the Hochschild differential and the Gerstenhaber bracket.”
+
+**Sources:**
+
+- [J. Stasheff, The intrinsic bracket on the deformation complex of an associative algebra, Journal of Pure and Applied Algebra 89 (1993)](https://doi.org/10.1016/0022-4049(93)90096-c)
+
+### Hochschild cohomology as bimodule Ext is a derived invariant
+
+**Remember:** Derived equivalent algebras share their Hochschild cohomology.
+
+*True by definition. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16E35, 18G80. arXiv math.RA, math.KT. Level 4: research.
+
+**Definition.** Hochschild cohomology HHⁿ(A, A) is the group of maps from A to A shifted by n in the derived category of A-bimodules. Here A-bimodules are modules over Aᵉ = A ⊗ₖ Aᵒᵖ. Two algebras are derived equivalent when their derived categories of modules are equivalent in a way that respects shifts and exact triangles.
+
+**Problem.** Let A and B be algebras over a field k. If A and B are derived equivalent, then HH\*(A, A) ≅ HH\*(B, B) as graded rings.
+
+**How the definition helps.** Defining HH by maps in the derived bimodule category means that any equivalence of these categories sending A to B preserves HH (our own). The work went into Rickard's theorem that, over a field, a derived equivalence comes from a two-sided tilting complex X. Tensoring with X on one side and its dual on the other gives such an equivalence of bimodule categories (our own). Morita equivalence is the special case where X is a module (our own).
+
+**nLab:** [derived Morita equivalence](https://ncatlab.org/nlab/show/derived+Morita+equivalence). It says: “The existence of a tilting complex is necessary and sufficient for an equivalence between the unbounded derived categories of two rings.”
+
+**Sources:**
+
+- [J. Rickard, Derived equivalences as derived functors, Journal of the London Mathematical Society 43 (1991)](https://doi.org/10.1112/jlms/s2-43.1.37)
+
+### Quasi-free algebras have Hochschild homology only in degrees zero and one
+
+**Remember:** A projective resolution of length one leaves no room for higher Tor.
+
+*True by definition. Confidence: medium.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 19D55. arXiv math.KT, math.RA. Level 4: research.
+
+**Definition.** For an algebra A, let Ω¹A be the kernel of multiplication A ⊗ A → A, an A-bimodule. Cuntz and Quillen call A quasi-free if Ω¹A is a projective bimodule. Equivalently, every algebra map from A lifts along every extension by a nilpotent ideal.
+
+**Problem.** If A is quasi-free, then HHₙ(A, M) = 0 for every bimodule M and every n ≥ 2. Free algebras and path algebras of quivers (directed graphs) are quasi-free, but the polynomial ring k\[x, y\] is not.
+
+**How the definition helps.** For quasi-free A, the sequence 0 → Ω¹A → A ⊗ A → A → 0 is a projective bimodule resolution of length one. Hochschild homology is Tor over the enveloping algebra, so it vanishes above degree 1 directly from this resolution (our own). With the lifting definition, this vanishing would need its own proof, and the work went into Cuntz and Quillen's equivalence of the two definitions. For k\[x, y\], the Hochschild–Kostant–Rosenberg theorem gives HH₂ = Ω² ≠ 0, so it is not quasi-free (our own).
+
+**nLab:** [quasi-free algebra](https://ncatlab.org/nlab/show/quasi-free+algebra). It says: “However most commutative formally smooth algebras are not formally smooth in the associative noncommutative sense.”
+
+**Sources:**
+
+- [J. Cuntz, D. Quillen, Algebra extensions and nonsingularity, J. Amer. Math. Soc. 8 (1995) 251–289](https://doi.org/10.1090/s0894-0347-1995-1303029-0)
+- [J. Cuntz, D. Quillen, Cyclic homology and nonsingularity, J. Amer. Math. Soc. 8 (1995) 373–442](https://doi.org/10.1090/s0894-0347-1995-1303030-7)
+
+### The Calabi–Yau condition turns Hochschild cohomology into Hochschild homology
+
+**Remember:** Calabi–Yau algebras trade Hochschild cohomology for homology in complementary degree.
+
+*True by definition.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 16E65. arXiv math.RA, math.KT. Level 4: research.
+
+**Definition.** A is homologically smooth when A is a perfect complex of A-bimodules, built from finitely many free bimodules by cones and summands. Its inverse dualizing bimodule A! is RHom from A to Aᵉ over Aᵉ = A ⊗ₖ Aᵒᵖ, the ring whose modules are bimodules. A is Calabi–Yau of dimension d when A! is isomorphic to the shifted bimodule A\[−d\]. The nLab adds a symmetry condition that this theorem does not use.
+
+**Problem.** Let A be homologically smooth and Calabi–Yau of dimension d. Then for every A-bimodule M, Hochschild cohomology HHⁱ(A, M) is isomorphic to Hochschild homology of A with coefficients in M in degree d − i.
+
+**How the definition helps.** The Calabi–Yau condition makes the duality a substitution, since for perfect A, RHom over Aᵉ from A to M equals A! ⊗ M over Aᵉ (our own). Replacing A! by A\[−d\] gives A ⊗ M over Aᵉ, which computes Hochschild homology, shifted by d (our own). The work went into proving smoothness and the Calabi–Yau property for examples (our own). Van den Bergh proved the duality when A! is any invertible bimodule placed in one degree.
+
+**nLab:** [Calabi-Yau algebra](https://ncatlab.org/nlab/show/Calabi-Yau+algebra). It says: “A homologically smooth dg-algebra A is a Calabi-Yau algebra of dimension d if there is a quasi-isomorphism of A-bimodules f : A → A<sup>!</sup>\[d\] such that f ≃ f<sup>!</sup>\[d\].”
+
+**Sources:**
+
+- [M. Van den Bergh, A relation between Hochschild homology and cohomology for Gorenstein rings, Proceedings of the AMS 126 (1998)](https://doi.org/10.1090/s0002-9939-98-04210-5)
+
+### A∞ quasi-isomorphisms have inverses, unlike quasi-isomorphisms of dg algebras
+
+**Remember:** Allow higher components, and quasi-isomorphisms can be turned around.
+
+*Rules out counterexamples.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)). arXiv math.KT, math.AT. Level 4: research.
+
+**Definition.** An A∞-algebra is a chain complex with a product that is associative up to coherent higher homotopies m₃, m₄ and so on. An A∞-morphism has components f₁, f₂ and so on, and it is a quasi-isomorphism when f₁ is an isomorphism on cohomology. A quasi-isomorphism is a map that induces an isomorphism on cohomology.
+
+**Problem.** Over a field, every A∞ quasi-isomorphism has an inverse up to homotopy. So being A∞ quasi-isomorphic is an equivalence relation that needs no chains of maps in alternating directions.
+
+**How the definition helps.** The extra components give enough maps that, between minimal A∞-algebras, every quasi-isomorphism is an isomorphism, as quoted. Kadeishvili's minimal model theorem reduces the general case to this one (our own). Strict dg maps fail: the minimal free dg resolution A of k\[x\]/(x²) has degree-0 part k\[x\] and no dg map back (our own). Such a map would send x to some z in k\[x\] with z² = 0, so z = 0 (our own).
+
+**Paper or page:** [Ainfinity-algebra Structure in Cohomology and its Applications](https://arxiv.org/abs/2307.10300). It says: “Each weak equivalence of minimal A∞-algebras is an isomorphism.”
+
+**Sources:**
+
+- [B. Keller, Introduction to A-infinity algebras and modules, Homology, Homotopy and Applications 3 (2001)](https://doi.org/10.4310/hha.2001.v3.n1.a1)
+
+### A∞-algebras let every dg algebra be equivalent to its cohomology
+
+**Remember:** Cohomology plus higher products remembers the whole dg algebra.
+
+*Makes the theorem clean to state or prove.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 55P62. arXiv math.KT, math.AT. Level 4: research.
+
+**Definition.** An A∞-algebra is a chain complex A with maps mₙ from n-fold tensors to A. Here m₁ is the differential, m₂ is a product, and the higher maps make m₂ associative up to coherent homotopy. A dg algebra is the case mₙ = 0 for n ≥ 3, and an A∞-algebra is minimal when m₁ = 0.
+
+**Problem.** Over a field, every A∞-algebra A is A∞-quasi-isomorphic to a minimal A∞-algebra on its cohomology H(A). Its product m₂ is the product that H(A) inherits from A.
+
+**How the definition helps.** With A∞-algebras allowed, the cohomology can carry the higher products that a dg algebra would need extra generators to hold. Without them, the statement fails, because many dg algebras are not quasi-isomorphic to their cohomology as dg algebras (our own). The work went into the construction of the operations mₙ, which uses a choice of homotopy and sums over trees (our own).
+
+**nLab:** [Kadeishvili's theorem](https://ncatlab.org/nlab/show/Kadeishvili%27s+theorem). It says: “Kadeishvili's theorem says that every A-∞-algebra (in chain complexes) is equivalent, as an A∞-algebra, to its cohomology ring.”
+
+**Sources:**
+
+- [T. Kadeishvili, On the homology theory of fibre spaces, Russian Mathematical Surveys 35 (1980)](https://doi.org/10.1070/rm1980v035n03abeh001842)
+
+### A∞-morphisms as coalgebra maps compose and invert easily
+
+**Remember:** View A∞ maps as coalgebra maps, and composition is just composition.
+
+*True by definition.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 18N40. arXiv math.KT, math.RA. Level 4: research.
+
+**Definition.** An A∞-algebra is a graded vector space A with maps mₙ from n-fold tensors to A that satisfy associativity up to coherent homotopy. Equivalently, it is a degree-one coderivation D with D² = 0 on the bar construction BA, the tensor coalgebra on the shift of A. A coderivation obeys the Leibniz rule for the comultiplication. An A∞-morphism from A to A′ is a map of dg coalgebras from BA to BA′, given by components fₙ.
+
+**Problem.** A∞-algebras and A∞-morphisms form a category. An A∞-morphism is an isomorphism if and only if its first component f₁ is a linear isomorphism.
+
+**How the definition helps.** Maps of dg coalgebras compose associatively, so the category axioms need no work (our own). By contrast, the component formula for a composite is a sum over trees (our own). A map of tensor coalgebras is invertible once its linear part is, by solving for the inverse one degree at a time (our own). The work went into the bar construction, which encodes all the operations mₙ as one coderivation.
+
+**Wikipedia:** [Homotopy associative algebra](https://en.wikipedia.org/wiki/Homotopy_associative_algebra). It says: “For instance, a morphism f: A → A′ of A∞-algebras is equivalently a morphism of differential graded coalgebras Bf: BA → BA′”
+
+**Paper or page:** [Ainfinity-algebra Structure in Cohomology and its Applications](https://arxiv.org/abs/2307.10300). It says: “A morphism of A∞-algebras is an isomorphism if and only if its first component f₁:(M,m₁)→(M′,m′₁) is an isomorphism of dg modules.”
+
+**Sources:**
+
+- [B. Keller, Introduction to A-infinity algebras and modules, Homology, Homotopy and Applications 3 (2001)](https://doi.org/10.4310/hha.2001.v3.n1.a1)
+
+### Keeping dg endomorphisms gives a fully faithful functor from dg modules
+
+**Remember:** Keep the chain-level endomorphisms, not only their cohomology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 18G80. arXiv math.KT, math.AG. Level 4: research.
+
+**Definition.** The dg endomorphism algebra of a complex K is the complex of all graded maps from K to K, with the commutator differential. It keeps more than the graded Ext algebra, which is only its cohomology. An object is compact when maps out of it commute with direct sums.
+
+**Problem.** Let K be a compact complex on a ringed site whose dg endomorphism algebra E computes its Ext groups. Then the derived tensor product over E with K is a fully faithful functor from D(E), the derived category of dg E-modules, to D(𝒪).
+
+**How the definition helps.** Keeping the chain-level endomorphisms makes the functor right on E, since E itself computes the maps from E to E in D(E) (our own). Compactness of K then extends full faithfulness from E to everything built from E by triangles and sums (our own). If K also generates D(𝒪), the functor is an equivalence, which is Keller's theorem (our own). The graded Ext algebra alone cannot do this, because it forgets the higher structure (our own).
+
+**Paper or page:** [Lemma 22.35.6](https://stacks.math.columbia.edu/tag/09LZ). It says: “K• represents a compact object of D(𝒪)”
+
+**Sources:**
+
+- [B. Keller, Deriving DG categories, Annales Scientifiques de l'ENS 27 (1994)](https://doi.org/10.24033/asens.1689)
+
+### Pure weights on a dg algebra force formality
+
+**Remember:** If weight equals degree in cohomology, the algebra is formal.
+
+*True by definition. Confidence: medium.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 55P62. arXiv math.AT, math.KT. Level 4: research.
+
+**Definition.** A weight grading on a dg algebra A splits each Aⁿ into weight pieces. The differential keeps the weight, and the product adds weights. The grading is pure when Hⁿ(A) lives only in weight n, and formal means connected to H(A) by maps that are isomorphisms on cohomology.
+
+**Problem.** A dg algebra over a field with a pure weight grading is formal.
+
+**How the definition helps.** Purity puts the cohomology of each weight-w piece in degree w, so cutting the piece off at degree w keeps that cohomology (our own). Let B be the sum over w of the weight-w piece, cut off above degree w and with only cocycles in degree w (our own). B is a subalgebra, and the maps from B to A and from B to H(A) are quasi-isomorphisms of algebras (our own). The work went into finding weights, for example from Hodge theory or Galois actions.
+
+**Paper or page:** [Weight structures and formality](https://arxiv.org/abs/2406.19142). It says: “A weight structure is a naturally occurring grading on certain differential graded algebras. If this weight satisfies a purity property, one can deduce formality.”
+
+**Sources:**
+
+- [C. Emprin and G. Horel, Weight structures and formality, arXiv:2406.19142 (2024)](https://arxiv.org/abs/2406.19142)
+
+### Vanishing bigraded Hochschild cohomology makes a graded algebra intrinsically formal
+
+**Remember:** No room in HH(n, 2 − n), no higher products survive.
+
+*Makes the theorem clean to state or prove.* MSC 16E45 (Differential graded algebras and applications (associative algebraic aspects)), 16E40. arXiv math.KT, math.RA. Level 4: research.
+
+**Definition.** For a graded algebra H, Hochschild cohomology has two gradings: HH(n, m) uses cochains with n inputs that change internal degree by m. A minimal A∞ structure on H adds operations mₙ with n inputs and degree 2 − n to the product of H. H is intrinsically formal when every dg algebra with cohomology H is formal, that is, connected to H by maps that are isomorphisms on cohomology.
+
+**Problem.** Let H be a graded algebra with HH(n, 2 − n)(H, H) = 0 for all n ≥ 3. Then every minimal A∞ structure on H is A∞-isomorphic to H with no higher operations, so H is intrinsically formal.
+
+**How the definition helps.** The bigrading names the group of the first higher operation: the first nonzero mₙ is a cocycle of bidegree (n, 2 − n) (our own). When its class vanishes, an A∞ isomorphism with one new component removes mₙ, and induction on n finishes (our own). The last step uses Kadeishvili's minimal model theorem, which puts an A∞ structure on the cohomology of any dg algebra.
+
+**Paper or page:** [Ainfinity-algebra Structure in Cohomology and its Applications](https://arxiv.org/abs/2307.10300). It says: “Then each m∼0, that is each minimal A∞-algebra structure on H is degenerate”
+
+**Sources:**
+
+- [T. Kadeishvili, A∞-algebra structure in cohomology and its applications, arXiv:2307.10300 (2023)](https://arxiv.org/abs/2307.10300)
+
+### Finitistic dimension of a Gorenstein algebra equals its self-injective dimension
+
+**Remember:** Ignore infinite resolutions, and a Gorenstein ring's dimension is its self-injective dimension.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E65 (Homological conditions on associative rings (generalizations of regular, Gorenstein, Cohen-Macaulay rings, etc.)), 16E10. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** A ring R, Noetherian on both sides, is Iwanaga–Gorenstein if R has finite injective dimension as a left and as a right module over itself. The two numbers are then equal, say to d. The finitistic dimension of R is the supremum of the projective dimensions of the modules of finite projective dimension. Unlike global dimension, it ignores modules of infinite projective dimension.
+
+**Problem.** Over an Iwanaga–Gorenstein ring of self-injective dimension d, a module has finite projective dimension exactly when it has finite injective dimension. Then both are at most d (Iwanaga). For a finite-dimensional such algebra the finitistic dimension is d, even when the global dimension is infinite.
+
+**How the definition helps.** Leaving out the modules of infinite projective dimension removes exactly what makes the global dimension infinite, so the remaining number can equal d. The bound d is Iwanaga's theorem. For a finite-dimensional algebra A, the dual module Homₖ(A, k) has projective dimension d, which gives the lower bound (our own summary). For a self-injective algebra such as k\[x\]/(x²), d = 0, so every module of finite projective dimension is projective.
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “A (not necessarily commutative) ring R is called Gorenstein if R has finite injective dimension both as a left R-module and as a right R-module.”
+
+**Sources:**
+
+- [Y. Iwanaga, On rings with finite self-injective dimension II, Tsukuba Journal of Mathematics (1980)](https://doi.org/10.21099/tkbjm/1496158797)
+
+### Gorenstein condition pins down the Artin–Schelter regular algebras of dimension two
+
+**Remember:** Self-dual resolution and slow growth leave only quantum planes and the Jordan plane.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E65 (Homological conditions on associative rings (generalizations of regular, Gorenstein, Cohen-Macaulay rings, etc.)), 16S38, 16W50. arXiv math.RA. Level 4: research.
+
+**Definition.** A connected graded algebra A over a field k is Artin–Schelter regular if it has finite global dimension d, polynomial growth, and the Gorenstein property. The Gorenstein property says that Extⁱ(k, A) is zero for i ≠ d. For i = d it is one copy of k, up to a degree shift. It is a noncommutative version of a polynomial ring.
+
+**Problem.** Take an Artin–Schelter regular algebra of global dimension 2, generated in degree 1 over an algebraically closed field. It has two generators x and y and one quadratic relation. Up to a change of generators, the relation is xy − qyx with q ≠ 0, or xy − yx − y².
+
+**How the definition helps.** The Gorenstein property makes the minimal resolution of k self-dual, which forces the relation Σ mᵢⱼxᵢxⱼ to have invertible matrix (mᵢⱼ) (our own). That resolution has length 2, with terms A, n copies of A shifted by 1, and A shifted by 2 (our own). The Hilbert series, which counts graded dimensions, is 1/(1 − nt + t²) and grows polynomially only for n = 2 (our own).
+
+**nLab:** [Artin-Schelter regular algebra](https://ncatlab.org/nlab/show/Artin-Schelter+regular+algebra). It says: “A is Artin-Schelter regular (AS regular) if the following three conditions hold: it is of finite global dimension d”
+
+**Sources:**
+
+- [M. Artin and W. F. Schelter, Graded algebras of global dimension 3, Advances in Mathematics (1987)](https://doi.org/10.1016/0001-8708(87)90034-X)
+
+### Gorenstein projective modules model the singularity category of a Gorenstein ring
+
+**Remember:** Over Gorenstein rings, singularities are measured by Gorenstein projective modules up to projectives.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16E65 (Homological conditions on associative rings (generalizations of regular, Gorenstein, Cohen-Macaulay rings, etc.)), 18G80, 16G50. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** The singularity category of a Noetherian ring R is a quotient of the bounded derived category of finitely generated modules. One divides out the perfect complexes, the bounded complexes of finitely generated projectives. A finitely generated module is Gorenstein projective if it is a kernel in an exact complex of projectives that stays exact after applying Hom(−, R). Over an Iwanaga–Gorenstein ring of self-injective dimension d, they are exactly the d-th syzygies, the kernels reached after d steps of a projective resolution.
+
+**Problem.** For an Iwanaga–Gorenstein ring R, the stable category of Gorenstein projective modules is equivalent, as a triangulated category, to the singularity category of R (Buchweitz). For a self-injective algebra every module is Gorenstein projective, so the stable module category is the singularity category.
+
+**How the definition helps.** Gorenstein projective modules form a Frobenius category, an exact category whose projective and injective objects coincide, so their stable category is triangulated (our own summary). Every finitely generated module has a d-th syzygy that is Gorenstein projective. In the singularity category a module is a shift of its syzygy, so the functor reaches every object (our own summary). The natural functor to the singularity category is the candidate equivalence; Buchweitz proves it full and faithful using complete resolutions (our own summary).
+
+**nLab:** [triangulated category of singularities](https://ncatlab.org/nlab/show/triangulated+category+of+singularities). It says: “The quotient Dᵇ(X)/Perf(X) hence serves as the derived category of the singularities themselves.”
+
+**Sources:**
+
+- [R.-O. Buchweitz, Maximal Cohen–Macaulay Modules and Tate Cohomology, Mathematical Surveys and Monographs 262, American Mathematical Society (2021)](https://doi.org/10.1090/surv/262)
+
+### Cellular structure lets one Cartan determinant decide finite global dimension
+
+**Remember:** For cellular algebras, determinant one means finite global dimension.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16G10 (Representations of associative Artinian rings), 16E10, 20C08. arXiv math.RT. Level 4: research.
+
+**Definition.** A cellular algebra, in the sense of Graham and Lehrer, has an anti-involution and a basis that produces cell modules W(λ) indexed by a poset. Its Cartan matrix factors as C = DᵀD, where the decomposition matrix D records the composition factors of the cell modules. A quasi-hereditary algebra is one whose module category is a highest-weight category, and such algebras have finite global dimension.
+
+**Problem.** For a cellular algebra over a field, three conditions are equivalent: finite global dimension, being quasi-hereditary, and Cartan determinant 1 (König and Xi).
+
+**How the definition helps.** The factorization C = DᵀD makes the Cartan matrix symmetric and positive definite, so its determinant is a positive integer. If the global dimension is finite, Eilenberg's theorem makes the determinant ±1, hence 1 (our own summary). König and Xi show that determinant 1 forces quasi-heredity, and quasi-hereditary algebras have finite global dimension, which closes the circle.
+
+**Wikipedia:** [Cellular algebra](https://en.wikipedia.org/wiki/Cellular_algebra). It says: “A is quasi-hereditary (i.e. its module category is a highest-weight category).”
+
+**Sources:**
+
+- [S. König and C. C. Xi, Cellular algebras and quasi-hereditary algebras: a comparison, Electronic Research Announcements of the American Mathematical Society (1999)](https://doi.org/10.1090/S1079-6762-99-00063-3)
+
 ### Green sequences filter modules
 
 **Remember:** Each jump adds the next kind of filtration factor.
@@ -1244,6 +1943,24 @@
 **Paper or page:** [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3), [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3). It says: “Moreover, this filtration is unique up-to-isomorphism.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Higher Auslander algebras match cluster tilting modules one to one
+
+**Remember:** Replace two by d plus one, and Auslander's correspondence goes higher.
+
+*Makes the theorem clean to state or prove.* MSC 16G10 (Representations of associative Artinian rings), 16E10, 16G70. arXiv math.RT. Level 4: research.
+
+**Definition.** For d ≥ 1, a d-Auslander algebra has global dimension at most d + 1 and dominant dimension at least d + 1. Write add M for the direct summands of finite sums of copies of a module M. Then M is d-cluster tilting when add M is the set of X with Extⁱ(M, X) = 0 for 0 &lt; i &lt; d. The same must hold with the two arguments of Ext swapped.
+
+**Problem.** Pairs (Λ, M) with M a d-cluster tilting Λ-module correspond one to one with d-Auslander algebras (Iyama). The pair goes to End(M)ᵒᵖ. For d = 1 this is the Auslander correspondence.
+
+**How the definition helps.** Changing the bound 2 to d + 1 in both inequalities is all it takes to state the higher correspondence. For d = 1 the Ext condition is empty, so M must contain every indecomposable module, as in Auslander's case. The work goes into Iyama's higher Auslander–Reiten theory for these subcategories (our own summary).
+
+**Paper or page:** [Nakayama-type phenomena in higher Auslander--Reiten theory](https://arxiv.org/abs/2402.15889v1). It says: “There is a one-to-one correspondence between equivalence classes of d-Auslander–Iyama pairs and Morita equivalence classes of d-Auslander algebras.”
+
+**Sources:**
+
+- [O. Iyama, Auslander correspondence, Advances in Mathematics (2007)](https://doi.org/10.1016/j.aim.2006.06.003)
 
 ### Semibricks give simple objects
 
@@ -1422,6 +2139,179 @@
 
 - [Per Bäck, Patrik Lundström, Johan Öinert, Johan Richter, Ore Extensions of Abelian Groups with Operators, arXiv:2410.16761 (2024), J. Algebra 686 (2026), 176-194](https://arxiv.org/abs/2410.16761v3)
 
+### Koszul algebras have formal Ext algebras by a grading argument
+
+**Remember:** Diagonal Ext leaves no room for higher products.
+
+*True by definition.* MSC 16S37 (Quadratic and Koszul algebras), 16E45. arXiv math.RA, math.KT. Level 4: research.
+
+**Definition.** Let A be a graded algebra generated in degree 1 with relations in degree 2. A is Koszul when Extⁱ from k to k over A lives only in internal degree i, the grading that comes from A. So the Ext algebra is concentrated on the diagonal, which is equivalent to Priddy's condition that the Koszul complex resolves k.
+
+**Problem.** If A is Koszul, then the dg algebra of derived endomorphisms of k over A is formal. Its minimal A∞ structure on Ext(k, k) has mₙ = 0 for all n ≥ 3.
+
+**How the definition helps.** The diagonal condition leaves no room for higher products, because each mₙ keeps internal degree but shifts cohomological degree by 2 − n (our own). So for n ≠ 2, mₙ sends diagonal classes off the diagonal, where Ext is zero (our own). The minimal model can be chosen to respect the internal grading (our own). The work went into proving that algebras of interest, such as polynomial rings, are Koszul.
+
+**nLab:** [Koszul duality](https://ncatlab.org/nlab/show/Koszul+duality). It says: “In this case, B=Ext(L,L) is forced to be formal (if it had any interesting A∞ operations, they would break the grading)”
+
+**Sources:**
+
+- [S. Priddy, Koszul resolutions, Transactions of the AMS 152 (1970)](https://doi.org/10.1090/s0002-9947-1970-0265437-8)
+
+### Koszul algebras stop the deformation obstruction tower after three conditions
+
+**Remember:** On the Koszul resolution, terms beyond μ₂ have nowhere to land.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16S37 (Quadratic and Koszul algebras), 16S80, 16E40. arXiv math.RA, math.QA. Level 4: research.
+
+**Definition.** Let S be a graded algebra generated in degree 1 with relations in degree 2. S is Koszul when its Koszul complex is a resolution, which gives a small resolution of S as a bimodule. A graded deformation of S is a product μ₀ + t μ₁ + t² μ₂ + …, where μⱼ lowers degree by j.
+
+**Problem.** For a Koszul algebra S, a first-order term μ₁ lifts to a graded deformation exactly when some μ₂ satisfies three equations. These are d μ₁ = 0, \[μ₁, μ₁\] = 2 d μ₂ and \[μ₁, μ₂\] = 0, for the Hochschild differential d and Gerstenhaber bracket.
+
+**How the definition helps.** The small Koszul resolution leaves no room for high terms, since a 2-cochain there is a map on the degree-2 relations (our own). So a term μⱼ with j ≥ 3 lands in negative degree and vanishes, and the tower of obstructions reduces to three equations (our own). They match the conditions of Braverman and Gaitsgory for a Poincaré–Birkhoff–Witt deformation (our own). The quoted result of Shepler and Witherspoon also allows a Hopf action, and the work went into comparing the Koszul and bar resolutions.
+
+**Paper or page:** [Deformation Theory and Hopf Actions on Koszul Algebras](https://arxiv.org/abs/2504.14397). It says: “lifts to a graded deformation of S\# H if and only if there exists a k-linear map μ₂: (S\# H)⊗(S\# H) → (S\# H) with”
+
+**Sources:**
+
+- [A. Braverman and D. Gaitsgory, Poincaré–Birkhoff–Witt theorem for quadratic algebras of Koszul type, Journal of Algebra 181 (1996)](https://doi.org/10.1006/jabr.1996.0122)
+- [A. Shepler and S. Witherspoon, Deformation theory and Hopf actions on Koszul algebras, Advances in Mathematics (2026)](https://doi.org/10.1016/j.aim.2026.110975)
+
+### Artin–Zhang's χ condition is exactly what balanced dualizing complexes need
+
+**Remember:** Finite Ext from k on both sides buys a two-sided dualizing complex.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 16E65, 14A22. arXiv math.RA. Level 4: research.
+
+**Definition.** A noetherian connected graded algebra A satisfies the χ condition of Artin and Zhang when every Extʲ(k, M) is finite-dimensional for finitely generated graded M. A balanced dualizing complex is a complex of graded bimodules that dualizes finitely generated modules on both sides. Its local cohomology on each side must be the graded dual of A.
+
+**Problem.** A has a balanced dualizing complex exactly when A and its opposite satisfy χ and have finite local cohomological dimension. The dualizing complex is then the graded dual of the local cohomology of A.
+
+**How the definition helps.** The χ condition names the one finiteness property that local cohomology needs, so the existence theorem becomes a clean equivalence. Local cohomology is the derived functor of taking elements killed by a power of A≥1 (our own gloss). Under χ its pieces are finite-dimensional, so its graded dual is a candidate dualizing complex (our own summary). The work went into Van den Bergh's proof that this candidate dualizes.
+
+**Paper or page:** [Existence of balanced dualizing dg-modules](https://arxiv.org/abs/2506.02398). It says: “admits a balanced dualizing dg-module if and only if the graded k-algebra H⁰(A) and its opposite algebra H⁰(A)<sup>op</sup> satisfy Artin-Zhang's condition χ and have finite local cohomological dimension”
+
+**Sources:**
+
+- [M. Van den Bergh, Existence theorems for dualizing complexes over non-commutative graded and filtered rings, Journal of Algebra 195 (1997) 662–679](https://doi.org/10.1006/jabr.1997.7052)
+- [M. Artin and J. J. Zhang, Noncommutative projective schemes, Advances in Mathematics 109 (1994) 228–287](https://doi.org/10.1006/aima.1994.1087)
+
+### Excluding twelve parameter points makes every Sklyanin algebra a regular noetherian domain
+
+**Remember:** Remove twelve bad points and Sklyanin algebras behave like k\[x,y,z\].
+
+*Rules out counterexamples.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 14A22, 14H52. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** Let \[a:b:c\] be a point of ℙ² over a field k with a primitive cube root of unity. The Sklyanin algebra is k⟨x,y,z⟩ modulo ayz + bzy + cx², azx + bxz + cy² and axy + byx + cz². It is non-degenerate when \[a:b:c\] avoids a set 𝔇 of 12 points: the three coordinate points and the points with a³ = b³ = c³.
+
+**Problem.** Every non-degenerate Sklyanin algebra is a noetherian domain. It is Artin–Schelter regular of global dimension 3, a noncommutative analogue of k\[x,y,z\], with the same dimension as k\[x,y,z\] in each degree.
+
+**How the definition helps.** The definition removes exactly the parameters where these properties fail, so the theorem has no exceptions. At \[0:0:1\] the algebra is k⟨x,y,z⟩/(x², y², z²), so x is a nonzero zero divisor. Walton showed that every degenerate Sklyanin algebra has zero divisors and is neither left nor right noetherian. The work for the non-degenerate case went into Artin, Tate and Van den Bergh's study of point modules on an elliptic curve.
+
+**Wikipedia:** [Sklyanin algebra](https://en.wikipedia.org/wiki/Sklyanin_algebra). It says: “Whenever \[a:b:c\] ∈ 𝔇 we call S<sub>a,b,c</sub> a degenerate Sklyanin algebra and whenever \[a:b:c\] ∈ P² ∖ 𝔇 we say the algebra is non-degenerate.”
+
+**Sources:**
+
+- [M. Artin, J. Tate and M. Van den Bergh, Some algebras associated to automorphisms of elliptic curves, The Grothendieck Festschrift, Vol. I, Progress in Mathematics 86 (1990); Birkhäuser reprint 2007](https://doi.org/10.1007/978-0-8176-4574-8_3)
+- [J. Tate and M. Van den Bergh, Homological properties of Sklyanin algebras, Inventiones Mathematicae 124 (1996) 619–648](https://doi.org/10.1007/s002220050065)
+- [S. P. Smith, “Degenerate” 3-dimensional Sklyanin algebras are monomial algebras, Journal of Algebra 358 (2012) 74–86](https://doi.org/10.1016/j.jalgebra.2012.01.039)
+- [C. Walton, Degenerate Sklyanin algebras and generalized twisted homogeneous coordinate rings, Journal of Algebra 322 (2009) 2508–2527](https://doi.org/10.1016/j.jalgebra.2009.02.024)
+
+### Point modules defined by Hilbert series turn noncommutative points into a scheme
+
+**Remember:** A point module is a walk of points, one step per degree.
+
+*Makes the theorem clean to state or prove.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 14A22. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** Let A be a graded algebra generated by a finite-dimensional space V in degree one. A point module is a graded module M₀ ⊕ M₁ ⊕ ⋯ that is generated by M₀ and has each Mₙ one-dimensional. For a commutative polynomial ring these are the homogeneous coordinate rings of the points of projective space.
+
+**Problem.** Truncated point modules of length d + 1, which stop at degree d, form a closed subscheme of the product of d copies of ℙ(V\*). For a quadratic Artin–Schelter regular algebra of dimension 3, the point modules form ℙ² or a cubic curve in ℙ², possibly singular or reducible.
+
+**How the definition helps.** Each Mₙ is a line, so V acting on Mₙ gives a point of ℙ(V\*) (our own summary). A truncated module is then a list of points, and a relation of degree d acts as zero exactly when its multilinear form vanishes there. The hard part is the Artin–Tate–Van den Bergh theorem that, for these regular algebras, the schemes stabilize to the graph of an automorphism.
+
+**Wikipedia:** [Sklyanin algebra](https://en.wikipedia.org/wiki/Sklyanin_algebra). It says: “Point modules are a way of finding projective geometry in the underlying structure of noncommutative graded rings.”
+
+**Paper or page:** [Algebras Associated to Inverse Systems of Projective Schemes](https://arxiv.org/abs/2406.17139). It says: “the set of isomorphism classes of truncated right point modules for T(V) of length d + 1, and the d-fold cartesian product (of sets) ℙ(V\*)<sup>×d</sup>”
+
+**Sources:**
+
+- [M. Artin, J. Tate and M. Van den Bergh, Some algebras associated to automorphisms of elliptic curves, The Grothendieck Festschrift, Vol. I, Progress in Mathematics 86 (1990); Birkhäuser reprint 2007](https://doi.org/10.1007/978-0-8176-4574-8_3)
+
+### The Gorenstein condition makes the Hilbert series of a regular algebra palindromic
+
+**Remember:** The resolution of k reads the same backwards, so the Hilbert series does.
+
+*True by definition.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 16E65. arXiv math.RA. Level 4: research.
+
+**Definition.** A connected graded algebra A is Artin–Schelter regular of dimension d when it has global dimension d, polynomial growth and the Gorenstein property. Polynomial growth means dim Aₙ is bounded by a polynomial in n. The Gorenstein property says that Extⁱ(k, A) is zero for i ≠ d, and Extᵈ(k, A) is k shifted by some degree l.
+
+**Problem.** The Hilbert series of A, whose n-th coefficient is the dimension of Aₙ, is 1/p(t) for a polynomial p with tˡ p(1/t) = (−1)ᵈ p(t). For example, three generators and three quadratic relations in dimension 3 force p(t) = (1 − t)³.
+
+**How the definition helps.** The Gorenstein property says that the minimal free resolution of k is self-dual, and the functional equation is this self-duality counted by degree. Applying Hom into A to the resolution gives a resolution of k again (our own summary). So term i matches term d − i, and generator degree j matches l − j, which is the functional equation for the alternating sum p(t) (our own). For commutative graded rings of finite global dimension the Gorenstein property is a theorem, but Artin and Schelter put it into the definition (our own).
+
+**nLab:** [Artin-Schelter regular algebra](https://ncatlab.org/nlab/show/Artin-Schelter+regular+algebra). It says: “is Gorenstein: Ext<sub>A</sub><sup>i</sup>(\_A k,A) = 0 for i≠d and Ext<sub>A</sub><sup>d</sup>(\_A k,A) = k<sub>A</sub>.”
+
+**Sources:**
+
+- [M. Artin and W. F. Schelter, Graded algebras of global dimension 3, Advances in Mathematics 66 (1987) 171–216](https://doi.org/10.1016/0001-8708(87)90034-X)
+
+### The homological determinant gives Watanabe's theorem for noncommutative invariant rings
+
+**Remember:** Measure the determinant where the Gorenstein property lives, in local cohomology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 16W22, 16E65. arXiv math.RA. Level 4: research.
+
+**Definition.** An Artin–Schelter Gorenstein algebra A is connected graded of finite injective dimension d. Its groups Extⁱ(k, A) vanish except Extᵈ(k, A), a shifted copy of k. A graded automorphism g acts on one key piece of the top local cohomology of A by a scalar, the homological determinant hdet g of Jørgensen and Zhang.
+
+**Problem.** Let H be a finite group of graded automorphisms of a noetherian such A, with \|H\| invertible in k and hdet h = 1 for all h. Then the invariant ring is again Artin–Schelter Gorenstein, generalizing Watanabe's theorem for subgroups of SL(n).
+
+**How the definition helps.** The homological determinant is read off where the Gorenstein structure sits, so the commutative proof works with hdet in place of det (our own summary). For a polynomial ring the theorem is Watanabe's, and hdet is the usual determinant (our own). The proof checks that H acts trivially on the canonical module. The work went into Jørgensen and Zhang's study of the local cohomology of invariant rings.
+
+**Paper or page:** [Invariants of Unimodular Quadratic Polynomial Poisson Algebras of Dimension 3](https://arxiv.org/abs/2302.13588), [Invariants of Unimodular Quadratic Polynomial Poisson Algebras of Dimension 3](https://arxiv.org/abs/2302.13588). It says: “Let A be a Noetherian Artin-Schelter Gorenstein 𝕜-algebra and let H be a finite subgroup of the graded automorphism group of A. If hdet h = 1 for all h ∈ H, then A<sup>H</sup> is Artin-Schelter Gorenstein.”
+
+**Sources:**
+
+- [P. Jørgensen and J. J. Zhang, Gourmet's guide to Gorensteinness, Advances in Mathematics 151 (2000) 313–345](https://doi.org/10.1006/aima.1999.1897)
+
+### The Nakayama automorphism restores Poincaré duality for algebras that are not Calabi–Yau
+
+**Remember:** A twist by ν turns failed Calabi–Yau duality into duality.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 16E40, 16E65. arXiv math.RA. Level 4: research.
+
+**Definition.** Call A homologically smooth when it has a finite resolution by finitely generated projective bimodules. Such an A is twisted Calabi–Yau of dimension d when Extⁱ(A, A ⊗ Aᵒᵖ) is zero for i ≠ d and is A twisted on the right by an automorphism ν for i = d. Here ν is the Nakayama automorphism, A is Calabi–Yau when ν can be the identity, and Aₕ is k⟨x,y⟩ modulo yx − xy − h for a polynomial h in x.
+
+**Problem.** Each Aₕ is twisted Calabi–Yau of dimension 2 with ν(x) = x and ν(y) = y + h′, so twisted Poincaré duality holds for Aₕ. In characteristic zero, Aₕ is Calabi–Yau only when h is constant, as for k\[x,y\] and the Weyl algebra.
+
+**How the definition helps.** The Nakayama automorphism records how far A is from Calabi–Yau, so one duality statement covers every Aₕ. Van den Bergh's duality theorem turns the Ext condition into twisted Poincaré duality between Hochschild cohomology and homology. The units of Aₕ are scalars, so ν is not inner when h′ ≠ 0, and then Aₕ is not Calabi–Yau (our own). The work went into computing the bimodule Ext groups of Aₕ.
+
+**Paper or page:** [Noncommutative Algebra and Representation Theory: Symmetry, Structure &amp; Invariants](https://arxiv.org/abs/2307.16808). It says: “The algebra 𝖠<sub>h</sub> is ν-twisted Calabi-Yau with Nakayama automorphism satisfying ν(x)= x and ν(y)=y+h′. Thus, the twisted Poincaré duality holds for 𝖠<sub>h</sub>.”
+
+**Sources:**
+
+- [M. Van den Bergh, A relation between Hochschild homology and cohomology for Gorenstein rings, Proceedings of the American Mathematical Society 126 (1998) 1345–1348](https://doi.org/10.1090/s0002-9939-98-04210-5)
+- [S. A. Lopes, Noncommutative Algebra and Representation Theory: Symmetry, Structure &amp; Invariants, Communications in Mathematics 32 (2024); arXiv:2307.16808](https://arxiv.org/abs/2307.16808)
+
+### Zhang twists keep the graded module category, so they keep regularity
+
+**Remember:** A twist changes the multiplication but not the graded modules.
+
+*True by definition.* MSC 16S38 (Rings arising from noncommutative algebraic geometry), 16W50. arXiv math.RA. Level 4: research.
+
+**Definition.** Let A be a graded algebra and σ a graded automorphism of A. The Zhang twist of A by σ keeps the graded vector space. Its product is a ∗ b = a σᵐ(b) for a of degree m.
+
+**Problem.** A Zhang twist of A has a graded module category equivalent to that of A. So the twist is noetherian, or Artin–Schelter regular (a noncommutative analogue of a polynomial ring), exactly when A is.
+
+**How the definition helps.** The twist is built so that graded modules twist along with the algebra, so every property defined through graded modules transfers at once. Each graded A-module M becomes a twisted module by m ∗ a = m σⁿ(a) for m of degree n, and σ⁻¹ undoes this (our own check). Without twists, one proves such properties for an algebra like the quantum plane directly from its relations (our own). The work went into Zhang's converse: for connected algebras generated in degree one, every such equivalence comes from a generalized twist.
+
+**Wikipedia:** [Sklyanin algebra](https://en.wikipedia.org/wiki/Sklyanin_algebra). It says: “These two cases are Zhang twists of each other and therefore have many properties in common.”
+
+**Paper or page:** [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383). It says: “The following are equivalent: A and B are twist-equivalent. Gr A is isomorphic to Gr B.”
+
+**Sources:**
+
+- [J. J. Zhang, Twisted graded algebras and equivalences of graded categories, Proceedings of the London Mathematical Society s3-72 (1996) 281–311](https://doi.org/10.1112/plms/s3-72.2.281)
+- [N. Cooney and J. E. Grabowski, Automorphism groupoids in noncommutative projective geometry, arXiv:1807.06383](https://arxiv.org/abs/1807.06383)
+
 ### Condition (K) makes all Leavitt path algebra ideals graded
 
 **Remember:** Two ways round every cycle, and all ideals come from the graph.
@@ -1458,6 +2348,27 @@
 
 - [Gene Abrams, Roozbeh Hazrat, Monoids, dynamics and Leavitt path algebras, arXiv:2409.00289 (2024)](https://arxiv.org/abs/2409.00289v1)
 - [Gene Abrams, Gonzalo Aranda Pino, The Leavitt path algebra of a graph, J. Algebra 293 (2005), 319-334](https://doi.org/10.1016/j.jalgebra.2005.07.028)
+
+### Gabriel filters of ideals classify hereditary torsion classes of modules
+
+**Remember:** A hereditary torsion class is decided by which cyclic modules R/I it contains.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16S90 (Torsion theories; radicals on module categories (associative algebraic aspects)), 18E10, 18E40. arXiv math.RA, math.CT. Level 4: research.
+
+**Definition.** A Gabriel filter on a ring R is a set of left ideals that is upward closed and closed under finite intersections. It is also closed under I ↦ (I : r), the ideal of all s with sr in I. Finally it contains J whenever some I in the filter has (J : r) in the filter for every r in I. A module is torsion for the filter when each element is killed by some ideal in the filter.
+
+**Problem.** For any ring R, the hereditary torsion classes in R-Mod correspond one-to-one to the Gabriel filters of left ideals of R. The class 𝒯 goes to the filter of ideals I with R/I in 𝒯.
+
+**How the definition helps.** A hereditary torsion class is determined by the cyclic modules R/I it contains, because every module is a sum of cyclic submodules (our own). The axioms of a Gabriel filter are those closure properties written in terms of ideals (our own). Closure under subobjects and quotients gives the first axioms, and closure under extensions gives Gabriel composition (our own). The work goes into checking that the torsion modules of a Gabriel filter are closed under extensions.
+
+**nLab:** [Gabriel filter](https://ncatlab.org/nlab/show/Gabriel+filter). It says: “Given a Gabriel filter G, the class of all G-torsion modules (see uniform filter) is a hereditary torsion class.”
+
+**Paper or page:** [Classes of Preradicals Induced by Relative Injectivity, Corollary 3](https://arxiv.org/abs/1511.01222). It says: “Let σ be a preradical over R-Mod. Then 𝕋\_σ is an hereditary torsion class if and only if 𝕀\_σ is a Gabriel filter.”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+- [Classes of preradicals induced by relative injectivity, arXiv:1511.01222](https://arxiv.org/abs/1511.01222)
 
 ### A variant of the Hopf module theorem holds exactly for Hopf algebras
 
@@ -1497,6 +2408,24 @@
 
 - [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
 
+### Cleft extensions are crossed products, the trivial bundles of Hopf–Galois theory
+
+**Remember:** A global section turns a principal bundle into a twisted product.
+
+*Makes the theorem clean to state or prove.* MSC 16T05 (Hopf algebras and their applications), 58B32, 16S35. arXiv math.QA, math.RA. Level 4: research.
+
+**Definition.** An H-comodule algebra A with coinvariants B is cleft when there is a comodule map γ: H → A with a convolution inverse γ⁻¹. That means γ(h₍₁₎)γ⁻¹(h₍₂₎) = ε(h)1 = γ⁻¹(h₍₁₎)γ(h₍₂₎). The map γ plays the role of a global section of a principal bundle.
+
+**Problem.** For a Hopf algebra H over a field, A is cleft exactly when it is a crossed product of B and H. The crossed product is twisted by an action of H on B and an invertible 2-cocycle. Both conditions are equivalent to B ⊂ A being H-Galois with A ≅ B ⊗ H as left B-modules and right H-comodules.
+
+**How the definition helps.** The cleaving map γ directly gives the twisted action h ▷ b = γ(h₍₁₎) b γ⁻¹(h₍₂₎) and the cocycle σ(h,k) = γ(h₍₁₎)γ(k₍₁₎)γ⁻¹(h₍₂₎k₍₂₎). Then b ⊗ h ↦ bγ(h) is an isomorphism from the crossed product to A. So one condition, an invertible section, says at once that the bundle is trivial and that its algebra is a crossed product. The work moves into the theorems of Doi and Takeuchi and of Blattner, Cohen and Montgomery.
+
+**Paper or page:** [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860), [Differential Calculi on Quantum Principal Bundles over Projective Bases](https://arxiv.org/abs/2110.03481). It says: “(i) There exists an invertible 2-cocycle and an action of H on A<sup>co H</sup> such that A≅A<sup>co H</sup> \#\_σ H. (ii) The extension A<sup>co H</sup> ⊂ A is H-cleft. (iii) A<sup>co H</sup> ⊂ A is a H-Galois extension and has the normal basis property.”
+
+**Sources:**
+
+- [Y. Doi and M. Takeuchi, Cleft comodule algebras for a bialgebra, Communications in Algebra 14 (1986) 801–817](https://doi.org/10.1080/00927878608823337)
+
 ### Defining Nichols algebras by a maximal ideal forbids primitives above degree one
 
 **Remember:** A new higher primitive would give a larger ideal to remove.
@@ -1530,6 +2459,42 @@
 **Sources:**
 
 - [AGZT-Lectures on formal multiple zeta values](https://arxiv.org/abs/2406.13630v1)
+
+### Faithfully flat Galois extensions give descent for relative Hopf modules
+
+**Remember:** On a principal bundle, equivariant modules upstairs are just modules downstairs.
+
+*Makes the theorem clean to state or prove.* MSC 16T05 (Hopf algebras and their applications), 58B32. arXiv math.QA, math.RA. Level 4: research.
+
+**Definition.** Let E be an H-comodule algebra with coinvariants U. The extension U ⊂ E is H-Galois when the canonical map from E ⊗ E over U to E ⊗ H is bijective. A relative Hopf module is an E-module M with a compatible H-coaction, the algebraic version of an equivariant vector bundle on the total space.
+
+**Problem.** Let U ⊂ E be H-Galois, with E faithfully flat as a right U-module. Then M ↦ E ⊗ M over U is an equivalence from U-modules to relative Hopf modules, with inverse given by taking coinvariants.
+
+**How the definition helps.** The Galois bijection between E ⊗ E over U and E ⊗ H identifies relative Hopf modules with descent data for the ring map U → E. So the theorem becomes ordinary faithfully flat descent for noncommutative rings. In the commutative case it says that equivariant quasi-coherent sheaves on a torsor descend to its base.
+
+**nLab:** [Schneider's theorem](https://ncatlab.org/nlab/show/Schneider%27s+theorem). It says: “Hence the categories of comodules are equivalent and the theorem hence boils down to the standard faithfully flat descent (for noncommutative rings) or comonadicity criterium in comonadic version.”
+
+**Sources:**
+
+- [H.-J. Schneider, Principal homogeneous spaces for arbitrary Hopf algebras, Israel Journal of Mathematics 72 (1990) 167–195](https://doi.org/10.1007/BF02764619)
+
+### Quantum torsors recover their Hopf algebra from the Galois object alone
+
+**Remember:** A torsor knows its structure group, so you need not supply it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 16T05 (Hopf algebras and their applications), 58B32. arXiv math.QA, math.RA. Level 4: research.
+
+**Definition.** A quantum torsor, in the sense of Grunspan and Schauenburg, is an algebra T with an algebra map μ: T → T ⊗ Tᵒᵖ ⊗ T. The map μ satisfies associativity-type axioms. It generalizes the operation (x, y, z) ↦ xy⁻¹z of a heap, which describes a torsor without naming its group.
+
+**Problem.** Every faithfully flat H-Galois object T is a quantum torsor, and the Hopf algebra Hᵣ(T) built from the torsor structure alone is isomorphic to H. Conversely, a faithfully flat quantum torsor is a Galois object over Hᵣ(T).
+
+**How the definition helps.** The torsor map μ is the inverse Galois map composed with the coaction, so the structure Hopf algebra becomes something T determines, not extra data. From μ one builds Hᵣ(T) inside Tᵒᵖ ⊗ T by a descent condition, and also a left Hopf algebra Hₗ(T) that makes T a bi-Galois object. The work moves into faithfully flat descent, in Schauenburg's proof.
+
+**Paper or page:** [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860), [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860). It says: “Let T be a faithfully flat H-Galois object. Then T is a quantum K-torsor with associated map μ:T → T ⊗ Tᵒᵖ ⊗ T defined by”
+
+**Sources:**
+
+- [P. Schauenburg, Hopf-Galois and bi-Galois extensions, in Galois Theory, Hopf Algebras, and Semiabelian Categories, Fields Institute Communications 43 (2004) 469–515](https://doi.org/10.1090/fic/043/22)
 
 ### Quasi-Hopf algebras describe monoidal categories with a nontrivial associator
 

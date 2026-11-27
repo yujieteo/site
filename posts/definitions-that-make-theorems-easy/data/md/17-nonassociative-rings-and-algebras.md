@@ -488,6 +488,22 @@
 - [Tom Lada, Jim Stasheff, Introduction to sh Lie algebras for physicists, Int. J. Theor. Phys. 32 (1993), arXiv:hep-th/9209099](https://arxiv.org/abs/hep-th/9209099)
 - [Tom Lada, Martin Markl, Strongly homotopy Lie algebras, Comm. Algebra 23 (1995), arXiv:hep-th/9406095](https://arxiv.org/abs/hep-th/9406095)
 
+### Abelian extensions classified by H² make the Levi decomposition a vanishing statement
+
+**Remember:** Levi splits off the semisimple part because H² of semisimple algebras vanishes.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B05. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** Let 𝔰 be a Lie algebra and M an 𝔰-module. H²(𝔰,M) is the set of classes of extensions 0 → M → 𝔤 → 𝔰 → 0 in which M is an abelian ideal with the given action. The class is zero exactly when the extension splits, that is, when 𝔤 has a subalgebra mapping isomorphically onto 𝔰.
+
+**Problem.** Let 𝔤 be a finite-dimensional Lie algebra over a field of characteristic zero, with radical 𝔯 (its largest solvable ideal). Then 𝔤 = 𝔰 ⋉ 𝔯 for a semisimple subalgebra 𝔰, so 𝔤 = 𝔰 ⊕ 𝔯 as vector spaces (Levi).
+
+**How the definition helps.** With this definition, a Levi subalgebra is a splitting of 0 → 𝔯 → 𝔤 → 𝔤/𝔯 → 0, so it exists once the class in H² is zero. This replaces Levi's construction of the complement by hand. For abelian 𝔯, Whitehead's second lemma gives H²(𝔤/𝔯, 𝔯) = 0, and induction on dim 𝔯 gives the general case (our own summary). The work went into Whitehead's second lemma, which is proved with the Casimir element.
+
+**Wikipedia:** [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology), [Whitehead's lemma (Lie algebra)](https://en.wikipedia.org/wiki/Whitehead%27s_lemma_%28Lie_algebra%29). It says: “Similarly, Whitehead's second lemma states that under the conditions of the first lemma, also H²(𝔤,V) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cocycles detect split central extensions
 
 **Remember:** The extension splits when a change of section erases the bracket error.
@@ -522,6 +538,22 @@
 
 - [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Transactions of the American Mathematical Society 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
 
+### Defining cohomology as Ext lets the Casimir kill all cohomology
+
+**Remember:** The Casimir is zero on k and invertible on V, so Ext vanishes.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B10. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** The cohomology Hⁿ(𝔤,M) is Extⁿ from the trivial module k to M over the universal enveloping algebra U(𝔤). That is the associative algebra whose modules are the 𝔤-modules. An element z of the center of U(𝔤) acts on these Ext groups through either variable, and the two actions are equal.
+
+**Problem.** Let 𝔤 be a finite-dimensional semisimple Lie algebra over a field of characteristic zero. If V is a finite-dimensional irreducible module on which 𝔤 acts nontrivially, then Hⁿ(𝔤,V) = 0 for every n.
+
+**How the definition helps.** With the Ext definition, a central element acts on cohomology through either variable, and the two actions agree (our own). The Casimir element, a central element built from an invariant form, acts by zero on k and invertibly on V, so Ext is zero. With the cochain definition, one would instead build an explicit contracting homotopy (our own). The work went into the fact that the Casimir acts invertibly on a nontrivial irreducible module in characteristic zero.
+
+**Wikipedia:** [Whitehead's lemma (Lie algebra)](https://en.wikipedia.org/wiki/Whitehead%27s_lemma_%28Lie_algebra%29), [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology). It says: “further let V be irreducible under the 𝔤-action and let 𝔤 act nontrivially, so 𝔤 · V ≠ 0. Then H<sup>q</sup>(𝔤,V) = 0 for all q ≥ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Lie cohomology by exterior forms gives a commutative product
 
 **Remember:** A differential with the product rule passes the wedge product to cohomology.
@@ -535,6 +567,22 @@
 **How the definition helps.** The exterior algebra is graded commutative, and the differential obeys the product rule. So closed forms multiply to closed forms, and a boundary times a closed form is a boundary. That is our own argument. The nLab adds that d² = 0 holds exactly when the bracket satisfies the Jacobi identity. In our own account, the work moves to two comparisons. This complex must compute the Ext groups, and the wedge product must match the Yoneda product, whose commutativity is not obvious.
 
 **nLab:** [Chevalley-Eilenberg algebra](https://ncatlab.org/nlab/show/Chevalley-Eilenberg+algebra). It says: “the graded-commutative dg-algebra structures on ∧•𝔤∗ are precisely in bijection with Lie algebra structures on 𝔤”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derivations modulo inner derivations make Levi factors conjugate
+
+**Remember:** Two Levi factors differ by a derivation, and derivations are inner.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B05. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** Let 𝔰 be a Lie algebra and M an 𝔰-module. H¹(𝔰,M) is the space of derivations (linear maps f with f(\[x,y\]) = x·f(y) − y·f(x)) modulo the inner derivations x ↦ x·m. When an extension of 𝔰 by an abelian ideal M splits, any two splittings differ by such a derivation.
+
+**Problem.** In a finite-dimensional Lie algebra over a field of characteristic zero, any two Levi subalgebras are conjugate (Malcev). The conjugating automorphism has the form exp(ad z), with z in the nilradical.
+
+**How the definition helps.** With this definition, conjugacy of Levi subalgebras becomes the vanishing of H¹, and one need not build the automorphism by hand (our own). For an abelian radical 𝔯, two Levi subalgebras differ by a derivation from 𝔤/𝔯 to 𝔯, which Whitehead's first lemma makes inner, x ↦ \[x,z\]. Then exp(ad z) = 1 + ad z moves one onto the other, and induction gives the general case (our own summary). The work went into Whitehead's first lemma, H¹(𝔰,M) = 0 for finite-dimensional M over a semisimple 𝔰.
+
+**Wikipedia:** [Levi decomposition](https://en.wikipedia.org/wiki/Levi_decomposition), [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology). It says: “Moreover, Malcev (1942) showed that any two Levi subalgebras are conjugate by an (inner) automorphism of the form exp(ad(z)) where z is in the nilradical (Levi–Malcev theorem).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -555,6 +603,150 @@
 **Sources:**
 
 - [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Transactions of the American Mathematical Society 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### Invariant forms are cocycles, so the Killing 3-form gives nonzero H³
+
+**Remember:** Invariant forms are closed and never exact on reductive Lie algebras.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B20. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** Koszul wrote the differential on the Chevalley–Eilenberg algebra Λ𝔤\* as d = ½ Σ eⁱ ∧ θ(eᵢ). Here θ is the coadjoint action and (eᵢ), (eⁱ) are dual bases. So d is zero on 𝔤-invariant forms.
+
+**Problem.** For a finite-dimensional reductive Lie algebra 𝔤 over a field of characteristic zero, H\*(𝔤;k) is isomorphic to the algebra of 𝔤-invariant forms in Λ𝔤\*. In particular, for semisimple 𝔤 the form ⟨x,\[y,z\]⟩ gives a nonzero class in H³(𝔤;k), so the vanishing of H¹ and H² stops at degree 3.
+
+**How the definition helps.** Written in Koszul's form, the differential is visibly zero on invariant forms, so every invariant form is a cocycle at once. The work went into showing that invariant forms meet every class exactly once. This uses that 𝔤 acts trivially on cohomology and that Λ𝔤\* is completely reducible, so the noninvariant part is acyclic.
+
+**nLab:** [Lie algebra cohomology](https://ncatlab.org/nlab/show/Lie+algebra+cohomology). It says: “For instance for 𝔤 a semisimple Lie algebra, there is the Killing form ⟨−,−⟩. The corresponding 3-cocycle is μ := ⟨−,\[−,−\]⟩ ∈ CE(𝔤)”
+
+**Sources:**
+
+- [J.-L. Koszul, Homologie et cohomologie des algèbres de Lie, Bull. Soc. Math. France 78 (1950) 65–127](https://doi.org/10.24033/bsmf.1410)
+
+### Invariants in two stages give the Hochschild–Serre spectral sequence
+
+**Remember:** Take 𝔥-invariants, then 𝔤/𝔥-invariants, and derive the composite.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 18G40. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** Hⁿ(𝔤,M) is the n-th right derived functor of the invariants functor that sends M to its 𝔤-invariants. For an ideal 𝔥 of 𝔤, taking 𝔤-invariants is the same as taking 𝔥-invariants and then 𝔤/𝔥-invariants.
+
+**Problem.** For an ideal 𝔥 of a Lie algebra 𝔤 and a 𝔤-module M, there is a spectral sequence from H\*(𝔤/𝔥; H\*(𝔥;M)) to H\*(𝔤;M). Its low-degree terms give the five-term inflation-restriction exact sequence.
+
+**How the definition helps.** With cohomology defined as a derived functor, the spectral sequence is Grothendieck's spectral sequence for a composite of two functors. The check is that 𝔥-invariants send injective 𝔤-modules to injective 𝔤/𝔥-modules, being right adjoint to the exact inflation functor. Restriction to 𝔥 also keeps injective modules, because U(𝔤) is free over U(𝔥) (our own). Hochschild and Serre instead built the sequence by filtering the cochain complex.
+
+**nLab:** [Hochschild-Serre spectral sequence](https://ncatlab.org/nlab/show/Hochschild-Serre+spectral+sequence). It says: “The invariants can be computed in two stages, hence as the composite of two functors”
+
+**Paper or page:** [Kurosh theorem for certain Koszul Lie algebras](https://arxiv.org/abs/2201.03034). It says: “the inflation-restriction sequence (namely, the 5-term sequence induced by the Hochschild-Serre spectral sequence) associated with the exact sequence of ℕ-graded 𝔽-Lie algebras 0→I→ℱ→ℒ→0”
+
+**Sources:**
+
+- [G. Hochschild and J.-P. Serre, Cohomology of Lie algebras, Ann. of Math. 57 (1953) 591–603](https://doi.org/10.2307/1969740)
+
+### Left-invariant forms make Lie algebra cohomology the cohomology of compact groups
+
+**Remember:** Average forms over a compact group, and only Lie algebra data remain.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 57T10. arXiv math.RT, math.DG. Level 3: graduate.
+
+**Definition.** The Chevalley–Eilenberg complex of a real Lie algebra 𝔤 is the exterior algebra Λ𝔤\* of alternating forms, with differential dω(x₀,…,xₙ) = Σ ± ω(\[xᵢ,xⱼ\], …). For a Lie group G it is exactly the complex of left-invariant differential forms on G with the de Rham differential.
+
+**Problem.** For a compact connected Lie group G, the de Rham cohomology of G is isomorphic to the Lie algebra cohomology H\*(𝔤;ℝ). This fails without compactness: the group ℝ is contractible, but H¹ of its Lie algebra is ℝ.
+
+**How the definition helps.** Because the Chevalley–Eilenberg complex is the complex of left-invariant forms, the theorem only says that invariant forms compute de Rham cohomology. The work went into the averaging argument. Integrating over G with Haar measure projects onto invariant forms. Translations act trivially on cohomology because G is connected.
+
+**Wikipedia:** [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology). It says: “Using an averaging process, this complex can be replaced by the complex of left-invariant differential forms.”
+
+**Sources:**
+
+- [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Trans. Amer. Math. Soc. 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### Relative cochains are invariant forms, so relative cohomology computes compact homogeneous spaces
+
+**Remember:** Invariant forms on G/K are exactly the relative cochains.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 57T15. arXiv math.RT, math.DG. Level 3: graduate.
+
+**Definition.** For a Lie algebra 𝔤 with subalgebra 𝔨, the relative cochains are the 𝔨-invariant elements of Λ(𝔤/𝔨)\*, with the Chevalley–Eilenberg differential. Their cohomology is the relative Lie algebra cohomology H\*(𝔤,𝔨).
+
+**Problem.** Let G be a compact connected Lie group and K a closed connected subgroup. Then the de Rham cohomology of G/K is isomorphic to H\*(𝔤,𝔨;ℝ).
+
+**How the definition helps.** With this definition, a relative cochain is the value at the base point of a G-invariant form on G/K. So the relative complex is the complex of G-invariant forms. The work went into the averaging argument over the compact group G, as for G itself (our own summary).
+
+**nLab:** [Lie algebra cohomology](https://ncatlab.org/nlab/show/Lie+algebra+cohomology). It says: “consisting of the 𝔥-invariant elements in the tensor product of V with the exterior algebra of the coset 𝔤/𝔥.”
+
+**Sources:**
+
+- [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Trans. Amer. Math. Soc. 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### The Chevalley–Eilenberg resolution makes cohomology vanish above the dimension
+
+**Remember:** No alternating forms above dim 𝔤, so no cohomology there.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B35. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** The Chevalley–Eilenberg resolution of the trivial module k is the complex U(𝔤) ⊗ Λⁿ𝔤 of free U(𝔤)-modules, with a Koszul-type differential. Its Hom into M is the complex of alternating forms on 𝔤 with values in M.
+
+**Problem.** For a Lie algebra 𝔤 of finite dimension d over a field, Hⁿ(𝔤,M) = 0 for every module M and every n &gt; d. Hence Ext over U(𝔤) between any two modules vanishes above degree d, so U(𝔤) has global dimension at most d.
+
+**How the definition helps.** With the Chevalley–Eilenberg resolution, the cochains in degree n are alternating n-forms, and there are none above degree d. The bound for all modules follows because Ext from N to M equals Lie algebra cohomology with coefficients in Hom(N,M) (our own). The work went into proving the resolution exact, which reduces by the Poincaré–Birkhoff–Witt filtration to the exactness of the Koszul complex of a polynomial ring.
+
+**nLab:** [Lie algebra cohomology](https://ncatlab.org/nlab/show/Lie+algebra+cohomology). It says: “Lie algebra cohomology and homology were defined by Chevalley-Eilenberg with a help of concrete Koszul-type resolution”
+
+**Sources:**
+
+- [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Trans. Amer. Math. Soc. 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### The Ext definition gives free Lie algebras cohomological dimension one
+
+**Remember:** Tensor algebras have a two-term resolution, so free Lie algebras stop at H¹.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B01. arXiv math.RA. Level 3: graduate.
+
+**Definition.** Hⁿ(𝔤,M) is Extⁿ over the universal enveloping algebra U(𝔤) from the trivial module to M. For the free Lie algebra on a vector space V, the enveloping algebra is the tensor algebra T(V).
+
+**Problem.** If 𝔣 is a free Lie algebra, then Hⁿ(𝔣,M) = 0 for every module M and every n ≥ 2. Conversely, an ℕ-graded Lie algebra L generated by its degree-one part with H²(L,𝔽) = 0 is free.
+
+**How the definition helps.** With the Ext definition, one short projective resolution of the trivial module bounds all cohomology. Over T(V) the augmentation ideal is the free module T(V) ⊗ V, which gives the two-term resolution in the quote. The work went into the fact that U of a free Lie algebra is the tensor algebra, which follows from the two universal properties. The converse uses the inflation-restriction sequence for the kernel of the map from the free Lie algebra.
+
+**Paper or page:** [Kurosh theorem for certain Koszul Lie algebras](https://arxiv.org/abs/2201.03034). It says: “If ℒ is free, then H²(ℒ,𝔽)=0, since 0→𝒰(ℒ)⊗ℒ₁→𝒰(ℒ)→𝔽→0 is a projective resolution of the trivial 𝒰(ℒ)-module 𝔽.”
+
+**Sources:**
+
+- [Kurosh theorem for certain Koszul Lie algebras, arXiv:2201.03034](https://arxiv.org/abs/2201.03034)
+
+### The symmetric-space involution kills the differential on invariant forms
+
+**Remember:** The involution has sign (−1)ᵏ, so d must be zero.
+
+*True by definition. Confidence: medium.* MSC 17B56 (Cohomology of Lie (super)algebras), 53C35, 57T15. arXiv math.RT, math.DG. Level 3: graduate.
+
+**Definition.** A compact symmetric space is G/K with an involution σ of G whose fixed points contain K as an open subgroup. Then 𝔤 = 𝔨 ⊕ 𝔭, where σ is +1 on 𝔨 and −1 on 𝔭. The relative cochains are the K-invariant elements of Λ𝔭\*.
+
+**Problem.** Let G/K be a compact symmetric space with G compact and connected. Then every G-invariant differential form on G/K is closed, so the de Rham cohomology of G/K is (Λ𝔭\*)ᴷ, the K-invariant forms on 𝔭 (Cartan).
+
+**How the definition helps.** The involution acts on invariant k-forms by (−1)ᵏ, and it commutes with d. So for an invariant k-form ω, the form dω is multiplied both by (−1)ᵏ and by (−1)ᵏ⁺¹, so dω = 0 (our own). The work went into the theorem that G-invariant forms compute the cohomology of G/K, which needs averaging over the compact group G.
+
+**nLab:** [Lie algebra cohomology](https://ncatlab.org/nlab/show/Lie+algebra+cohomology). It says: “consisting of the 𝔥-invariant elements in the tensor product of V with the exterior algebra of the coset 𝔤/𝔥.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Universal central extensions exist exactly for perfect Lie algebras, with kernel H₂
+
+**Remember:** Only perfect algebras have a universal cover, and its kernel is H₂.
+
+*Rules out counterexamples.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B55. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** A central extension of a Lie algebra 𝔤 is a surjection 𝔢 → 𝔤 whose kernel lies in the center of 𝔢. A universal central extension is an initial object among central extensions of 𝔤. A Lie algebra is perfect when \[𝔤,𝔤\] = 𝔤.
+
+**Problem.** A Lie algebra 𝔤 over a field has a universal central extension if and only if 𝔤 is perfect. Then the extension is unique up to unique isomorphism, and its kernel is the homology H₂(𝔤).
+
+**How the definition helps.** Defining the universal extension as an initial object gives uniqueness up to unique isomorphism at once. Perfectness removes the abelian counterexample k: maps between split extensions k ⊕ V change by any linear map k → V, so none is initial (our own). For perfect 𝔤, the extension is Λ²𝔤 divided by the boundary image of Λ³𝔤, mapped to 𝔤 by x∧y ↦ \[x,y\]. Its kernel is H₂(𝔤) by the Chevalley–Eilenberg chain complex (our own summary).
+
+**nLab:** [universal central extension](https://ncatlab.org/nlab/show/universal+central+extension). It says: “the universal central extension is, if it exists, the initial object in the category of central extensions of that object.”
+
+**Wikipedia:** [Lie algebra extension](https://en.wikipedia.org/wiki/Lie_algebra_extension). It says: “By universality, it is easy to conclude that such universal central extensions are unique up to isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Witt brackets inherit Jacobi
 
@@ -1073,6 +1265,42 @@
 
 - [Generalized Positive Energy Representations of Groups of Jets](https://arxiv.org/abs/2211.10390)
 
+### Lie n-algebras let higher cohomology classify extensions
+
+**Remember:** H² gives Lie algebras, H³ gives Lie 2-algebras, and so on.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B55 (Homological methods in Lie (super)algebras), 17B56. arXiv math.RA, math.QA. Level 4: research.
+
+**Definition.** A Lie n-algebra is an L∞-algebra concentrated in degrees 0 to n−1. An L∞-algebra is a graded space with brackets of every arity that satisfy higher Jacobi identities. The string Lie 2-algebra of a simple 𝔤 is the one built from the Killing 3-form.
+
+**Problem.** For a Lie algebra 𝔤 and a module M, Lie 2-algebras with 𝔤 in degree 0, M in degree 1, zero differential and the given action correspond, up to equivalence, to classes in H³(𝔤;M) (Baez–Crans). For simple 𝔤 the class of the Killing 3-form gives the string Lie 2-algebra.
+
+**How the definition helps.** With the L∞ definition, such a Lie 2-algebra has one extra datum, a ternary bracket from Λ³𝔤 to M. The higher Jacobi identity for this bracket is exactly the 3-cocycle condition, which extends the classical fact that H² classifies abelian extensions (our own). The work went into showing that equivalences of Lie 2-algebras change the cocycle by a coboundary.
+
+**Wikipedia:** [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology). It says: “any element of the cohomology group Hⁿ⁺¹(𝔤; M) gives an equivalence class of ways to extend the Lie algebra 𝔤 to a "Lie n-algebra" with 𝔤 in grade zero and M in grade n−1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### L∞ quasi-isomorphisms have quasi-inverses
+
+**Remember:** Weaken the morphisms, and quasi-isomorphisms can be inverted.
+
+*Makes the theorem clean to state or prove.* MSC 17B55 (Homological methods in Lie (super)algebras), 53D55. arXiv math.QA. Level 4: research.
+
+**Definition.** An L∞ morphism between differential graded Lie algebras is a sequence of maps Fₙ on n-fold graded antisymmetric powers. It preserves the brackets up to coherent homotopy, and its first component F₁ is a chain map. The morphism is an L∞ quasi-isomorphism if F₁ induces an isomorphism on cohomology.
+
+**Problem.** Over a field of characteristic zero, every L∞ quasi-isomorphism F has an L∞ quasi-inverse G, which induces the inverse map on cohomology. So being L∞ quasi-isomorphic is a symmetric relation that needs no zigzags.
+
+**How the definition helps.** The wider class of morphisms contains the inverses that strict morphisms lack. With strict morphisms, quasi-isomorphic algebras are joined by a zigzag L₁ ← M → L₂, as in the nLab definition. With L∞ morphisms, one map in either direction suffices, so the formality theorem can be stated as a single map. The work moves into homotopy transfer onto minimal models, which builds G (our own summary).
+
+**nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “L₁ and L₂ are quasi-isomorphic if there exists M with quasi-isomorphisms L₁ ← M → L₂.”
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662). It says: “If F is a quasi-isomorphism it admits a quasi-inverse, i.e. there is an L∞-morphism G: (g̃,Q̃) → (g,Q) which induces the inverse isomorphism in the corresponding cohomologies.”
+
+**Sources:**
+
+- [Maxim Kontsevich, Deformation quantization of Poisson manifolds, Letters in Mathematical Physics 66 (2003) 157–216](https://doi.org/10.1023/B:MATH.0000027508.00421.bf)
+
 ### Translation preserves higher bracket identities
 
 **Remember:** Changing the origin does not change the square.
@@ -1108,6 +1336,257 @@
 **Sources:**
 
 - [Niek de Kleijn, Felix Wierstra, A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1)
+
+### A Hopf algebra structure makes Lie algebra cohomology an exterior algebra
+
+**Remember:** Hopf structure forces exterior algebras on odd primitive classes.
+
+*Makes the theorem clean to state or prove.* MSC 17B56 (Cohomology of Lie (super)algebras), 57T10. arXiv math.RT, math.AT. Level 4: research.
+
+**Definition.** For a compact connected Lie group G, the multiplication G × G → G gives H\*(G;ℝ) a coproduct. With the cup product, this makes it a graded commutative and cocommutative Hopf algebra. Through invariant forms, the same structure exists on H\*(𝔤;k) for a reductive Lie algebra 𝔤 in characteristic zero (our own summary).
+
+**Problem.** For a finite-dimensional semisimple Lie algebra 𝔤 over a field of characteristic zero, H\*(𝔤;k) is an exterior algebra on primitive generators of odd degree. For 𝔤 = 𝔰𝔩ₙ the generators have degrees 3, 5, …, 2n−1.
+
+**How the definition helps.** Once the cohomology is a Hopf algebra, its shape follows from Hopf's structure theorem for finite-dimensional graded commutative and cocommutative Hopf algebras in characteristic zero. The work moved into Hopf's algebraic theorem. It also moved into Chevalley's identification of the degrees (our own summary). They are 2d − 1 for the degrees d of the basic invariant polynomials.
+
+**Wikipedia:** [Hopf algebra](https://en.wikipedia.org/wiki/Hopf_algebra). It says: “Let A be a finite-dimensional, graded commutative, graded cocommutative Hopf algebra over a field of characteristic 0. Then A (as an algebra) is a free exterior algebra with generators of odd degree.”
+
+**Sources:**
+
+- [H. Hopf, Über die Topologie der Gruppen-Mannigfaltigkeiten und ihre Verallgemeinerungen, Ann. of Math. 42 (1941) 22–52](https://doi.org/10.2307/1968985)
+
+### Characteristic zero excludes simple modular modules with nonzero first cohomology
+
+**Remember:** In characteristic p the Casimir can vanish, and Whitehead's lemmas fail.
+
+*Rules out counterexamples.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B50. arXiv math.RT. Level 4: research.
+
+**Definition.** The Casimir element is a central element of U(𝔤) built from the Killing form. In characteristic zero it acts invertibly on every nontrivial finite-dimensional irreducible module. Whitehead's lemmas rest on this fact, so they assume characteristic zero.
+
+**Problem.** Over a field of characteristic zero, H¹(𝔤,V) = H²(𝔤,V) = 0 for every finite-dimensional module V of a semisimple Lie algebra 𝔤. In characteristic p &gt; 3 this fails: the simple 𝔰𝔩₃-module L(p−2,1) is nontrivial but has nonzero H¹.
+
+**How the definition helps.** Characteristic zero keeps the Casimir action invertible, and Whitehead's proof rests on that. For L(p−2,1), the Casimir scalar (λ, λ+2ρ) is 2p²/3 when roots have (α,α) = 2, which is zero modulo p (our own computation). So the Casimir argument gives nothing. The cited paper, which assumes p &gt; 3, computes that H¹ is really nonzero.
+
+**Paper or page:** [Cohomology of 𝔰𝔩₃ and 𝔤𝔩₃ with Coefficients in Simple Modules and Weyl Modules in Positive Characteristics](https://arxiv.org/abs/2203.16142). It says: “Let 𝔤=𝔰𝔩₃(k) and M=L(p−2,1). Then, Hⁿ(𝔤,M)=0, except for the following cases: (i) H¹(𝔤,L(p−2,1))≅H⁷(𝔤,L(p−2,1))≅L(1,0)⁽¹⁾”
+
+**Sources:**
+
+- [Cohomology of 𝔰𝔩₃ and 𝔤𝔩₃ with Coefficients in Simple Modules and Weyl Modules in Positive Characteristics, arXiv:2203.16142](https://arxiv.org/abs/2203.16142)
+
+### Cyclic homology makes the homology of matrix Lie algebras statable
+
+**Remember:** Primitive homology of matrices is cyclic homology shifted by one.
+
+*Makes the theorem clean to state or prove.* MSC 17B56 (Cohomology of Lie (super)algebras), 19D55. arXiv math.KT, math.RA. Level 4: research.
+
+**Definition.** In characteristic zero, the cyclic homology HC\*(A) of an associative algebra A is the homology of the Hochschild chains divided by cyclic permutations. The Hochschild chains are the tensor powers of A. The Lie algebra 𝔤𝔩(A) is the union of the matrix Lie algebras 𝔤𝔩ₙ(A).
+
+**Problem.** Let A be a unital associative algebra over a field of characteristic zero. Then H\*(𝔤𝔩(A);k) is a Hopf algebra whose primitive part in degree n is HCₙ₋₁(A) (Loday–Quillen, Tsygan).
+
+**How the definition helps.** Cyclic homology gives the primitive part a name and a small complex, so the answer is one formula for every A. The Hopf algebra is graded commutative and cocommutative, so it is free on its primitives (our own). The work went into invariant theory of 𝔤𝔩ₙ. The coinvariants of tensor powers of matrices are spanned by permutations, and the cyclic ones give the primitive classes.
+
+**nLab:** [Loday-Quillen-Tsygan theorem](https://ncatlab.org/nlab/show/Loday-Quillen-Tsygan+theorem), [Lie algebra homology](https://ncatlab.org/nlab/show/Lie+algebra+homology). It says: “states that for any associative algebra, A in characteristic zero, the Lie algebra homology H•(𝔤𝔩(A)) of the infinite general linear Lie algebra 𝔤𝔩(A) with coefficients in A is, up to a degree shift, the exterior algebra”
+
+**Sources:**
+
+- [J.-L. Loday and D. Quillen, Cyclic homology and the Lie algebra homology of matrices, Comment. Math. Helv. 59 (1984) 565–591](https://doi.org/10.1007/BF02566367)
+
+### Cyclic homology names the center of universal current algebras
+
+**Remember:** The universal center of 𝔤 ⊗ A is one-forms modulo exact forms.
+
+*Makes the theorem clean to state or prove.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B67, 19D55. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** Let A be a commutative complex algebra. Its first cyclic homology HC₁(A) is Ω¹(A)/dA, the Kähler 1-forms (formal sums of a db) modulo exact forms. The current algebra 𝔤 ⊗ A of a finite-dimensional simple Lie algebra 𝔤 has bracket \[x⊗a, y⊗b\] = \[x,y\]⊗ab.
+
+**Problem.** For a finite-dimensional simple complex Lie algebra 𝔤 and a commutative complex algebra A, the universal central extension of 𝔤 ⊗ A has kernel HC₁(A) = Ω¹(A)/dA (Kassel). For A = ℂ\[t,t⁻¹\] this kernel is spanned by t⁻¹dt, which gives the affine Kac–Moody algebra without its degree derivation.
+
+**How the definition helps.** Cyclic homology gives the kernel a name that works for every A at once. So the theorem is one formula instead of a computation for each algebra. The cocycle is (x⊗a, y⊗b) ↦ (x,y)·(a db) in Ω¹(A)/dA, with (x,y) the Killing form (our own). The work went into Kassel's proof that this cocycle is universal.
+
+**Paper or page:** [Affine super Yangians and deformed double current superalgebras](https://arxiv.org/abs/2404.07328). It says: “let HC₁(A) denote the first cyclic homology group of A. The universal central extension 𝔤(A) of … is given by 𝔤(A) ≃ 𝔤 ⊗ A ⊕ HC₁(A) if 𝔤 is not of type A(n,n)”
+
+**Sources:**
+
+- [C. Kassel, Kähler differentials and coverings of complex simple Lie algebras extended over a commutative algebra, J. Pure Appl. Algebra 34 (1984) 265–275](https://doi.org/10.1016/0022-4049(84)90040-9)
+
+### Finite dimension excludes affine algebras without Levi decomposition
+
+**Remember:** Loop algebras have nonzero H², so their central extension cannot split.
+
+*Rules out counterexamples.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B67. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** The Levi theorem is stated for finite-dimensional Lie algebras over a field of characteristic zero. The affine algebra is the central extension of the loop algebra 𝔤 ⊗ ℂ\[t,t⁻¹\] by the cocycle (x⊗tᵐ, y⊗tⁿ) ↦ m δ(m+n,0) (x,y).
+
+**Problem.** Every finite-dimensional Lie algebra over a field of characteristic zero is the semidirect product of a semisimple subalgebra and its radical. The finiteness condition is needed: the affine Lie algebra has radical equal to its one-dimensional center, but no complement.
+
+**How the definition helps.** A complement to the center of the affine algebra would split its central extension, so the defining cocycle would be a coboundary (our own). But that cocycle is a nonzero class in H² of the loop algebra. Whitehead's second lemma, the key step of the Levi theorem, needs a finite-dimensional semisimple quotient, and the loop algebra is not one. So the infinite-dimensional analogue of Whitehead's second lemma is false.
+
+**Wikipedia:** [Levi decomposition](https://en.wikipedia.org/wiki/Levi_decomposition). It says: “affine Lie algebras have a radical consisting of their center, but cannot be written as a semidirect product of the center and another Lie algebra.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### H² with adjoint coefficients counts deformations, so semisimple Lie algebras are rigid
+
+**Remember:** No adjoint H², no deformations: semisimple brackets cannot be bent.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B20. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** A first-order deformation of a Lie bracket μ is a bracket μ + tφ that satisfies the Jacobi identity modulo t². This holds exactly when φ is a 2-cocycle of 𝔤 with values in the adjoint module. The deformations that come from a change of basis are exactly the coboundaries, so H²(𝔤,𝔤) is the space of first-order deformations up to isomorphism.
+
+**Problem.** A finite-dimensional semisimple Lie algebra over an algebraically closed field of characteristic zero is rigid. That is, its orbit under change of basis is open in the variety of all Lie brackets of that dimension.
+
+**How the definition helps.** With this definition, rigidity reduces to the vanishing of H²(𝔤,𝔤), which Whitehead's second lemma gives for semisimple 𝔤. Without it, one must show directly that every nearby bracket is isomorphic to the given one (our own). The work moved to the theorem of Nijenhuis and Richardson that H²(𝔤,𝔤) = 0 implies the orbit is open. Its proof compares the orbit with the tangent space of the variety.
+
+**Paper or page:** [Deformations and rigidity in varieties of Lie algebras](https://arxiv.org/abs/2101.09670). It says: “Let 𝕂 be an algebraically closed field of characteristic zero and let ℒₙ=Lₙ(𝕂), with the structure of affine algebraic variety. Given μ ∈ ℒₙ, if H²(μ,μ)=0, then μ is rigid in ℒₙ.”
+
+**Sources:**
+
+- [A. Nijenhuis and R. W. Richardson, Cohomology and deformations in graded Lie algebras, Bull. Amer. Math. Soc. 72 (1966) 1–29](https://doi.org/10.1090/s0002-9904-1966-11401-5)
+
+### Relative cohomology as Ext of (𝔤,K)-modules forces matching infinitesimal characters
+
+**Remember:** Cohomology needs the infinitesimal character of the trivial representation.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 22E47, 22E46. arXiv math.RT. Level 4: research.
+
+**Definition.** Let G be a real reductive group with maximal compact subgroup K. The (𝔤,K)-cohomology Hⁿ(𝔤,K;V) is Extⁿ from the trivial module to V in the category of (𝔤,K)-modules. It is computed by the relative complex of K-invariant maps from Λⁿ(𝔤/𝔨) to V.
+
+**Problem.** If an irreducible (𝔤,K)-module π has nonzero (𝔤,K)-cohomology, then π has the same infinitesimal character as the trivial representation (Wigner's lemma). For unitary π this is part of the Vogan–Zuckerman classification of cohomological representations.
+
+**How the definition helps.** Because the cohomology is an Ext group, each central element of U(𝔤) acts on it through either variable, and the two actions agree (our own). If π and the trivial module have different infinitesimal characters, some central element acts by different scalars on them, so the Ext group is zero. With only the relative cochain complex, one would have to build an explicit homotopy instead (our own). The work for the full classification went into Vogan and Zuckerman's modules A𝔮 and their cohomology.
+
+**Paper or page:** [Limit Multiplicity For Unitary Groups and The Stable Trace Formula](https://arxiv.org/abs/2105.09834). It says: “The group G has finitely many cohomological representations π, and Hⁱ(𝔤, K; π) ≠ 0 if and only if: (i) π has the infinitesimal character of the trivial representation of G, and;”
+
+**Sources:**
+
+- [Limit Multiplicity For Unitary Groups and The Stable Trace Formula, arXiv:2105.09834](https://arxiv.org/abs/2105.09834)
+
+### Relative cohomology makes the Hochschild–Serre factorization one tensor product
+
+**Remember:** Cohomology of 𝔰 ⋉ 𝔯 is H(𝔰) times the relative part.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B56 (Cohomology of Lie (super)algebras), 18G40. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** The relative cohomology H\*(𝔤,𝔰;M) is the cohomology of the 𝔰-invariant elements of Λ(𝔤/𝔰)\* ⊗ M. When 𝔤 = 𝔰 ⋉ 𝔯 with 𝔰 semisimple, it equals the 𝔰-invariant part of H\*(𝔯;M).
+
+**Problem.** Let 𝔤 = 𝔰 ⋉ 𝔯 be finite-dimensional over a field of characteristic zero, with 𝔰 semisimple, and let M be a finite-dimensional 𝔤-module. Then H\*(𝔤;M) ≅ H\*(𝔰;k) ⊗ H\*(𝔤,𝔰;M) (Hochschild and Serre).
+
+**How the definition helps.** Relative cohomology names the second factor intrinsically, so the theorem becomes a single tensor product formula. The work went into the Hochschild–Serre spectral sequence for the ideal 𝔯. Its second page is H\*(𝔰; H\*(𝔯;M)), and Whitehead's vanishing for nontrivial simple modules leaves only H\*(𝔰;k) tensored with the 𝔰-invariant part. Hochschild and Serre then show that the spectral sequence degenerates (our own summary).
+
+**nLab:** [Lie algebra cohomology](https://ncatlab.org/nlab/show/Lie+algebra+cohomology). It says: “Then the invariants in the Lie algebra cohomology of 𝔞 (either with respect to 𝔥 or all of 𝔤) coincide with the relative Lie algebra cohomology”
+
+**Paper or page:** [Cohomology of perfect Lie algebras](https://arxiv.org/abs/2411.14952). It says: “Let 𝔤=𝔰⋉V with 𝔰=𝔰𝔩₂(ℂ), V=Vₘ and k≥0. Then we have Hᵏ(𝔤,𝔤) ≅ ⊕<sub>i+j=k</sub> Hⁱ(𝔰,ℂ)⊗Hʲ(V,𝔤)<sup>𝔰</sup>”
+
+**Sources:**
+
+- [G. Hochschild and J.-P. Serre, Cohomology of Lie algebras, Ann. of Math. 57 (1953) 591–603](https://doi.org/10.2307/1969740)
+
+### Relative Lie algebra cohomology makes Matsushima's formula for locally symmetric spaces statable
+
+**Remember:** Betti numbers of Γ∖G/K count representations weighted by their relative cohomology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B56 (Cohomology of Lie (super)algebras), 22E40, 11F75. arXiv math.RT. Level 4: research.
+
+**Definition.** Let G be a connected semisimple Lie group with maximal compact subgroup K, and Γ a torsion-free cocompact lattice. The (𝔤,K)-cohomology of a (𝔤,K)-module V is the cohomology of the relative complex of K-invariant maps from Λ(𝔤/𝔨) to V. It is one invariant attached to each unitary representation of G.
+
+**Problem.** The cohomology H\*(Γ∖G/K; ℂ) is the sum, over irreducible unitary π, of m(π,Γ) copies of H\*(𝔤,K;π). Here m(π,Γ) is the multiplicity of π in L²(Γ∖G) (Matsushima).
+
+**How the definition helps.** With relative cohomology, the de Rham complex of Γ∖G/K is the relative complex with coefficients in the smooth functions on Γ∖G. The decomposition of L²(Γ∖G) into irreducibles then splits the cohomology into one piece for each representation (our own summary). The work went into the analysis: only finitely many π contribute, and the decomposition must pass to smooth vectors and to cohomology.
+
+**Paper or page:** [Limit Multiplicity For Unitary Groups and The Stable Trace Formula](https://arxiv.org/abs/2105.09834). It says: “Let hⁱₖ(𝔭ⁿ) denote the dimension of the subspace of Hⁱ(Γ(𝔭ⁿ), 𝐂) coming from the (𝔤,K)-cohomology of the representation πₖ.”
+
+**Sources:**
+
+- [Y. Matsushima, A formula for the Betti numbers of compact locally symmetric Riemannian manifolds, J. Differential Geom. 1 (1967) 99–109](https://doi.org/10.4310/jdg/1214427883)
+
+### Relative Lie algebra cohomology makes van Est's comparison theorem statable
+
+**Remember:** Continuous group cohomology equals Lie algebra cohomology relative to compact directions.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B56 (Cohomology of Lie (super)algebras), 22E41. arXiv math.RT. Level 4: research.
+
+**Definition.** Let G be a Lie group with maximal compact subgroup K and V a finite-dimensional G-module. The relative cohomology H\*(𝔤,𝔨;V) uses 𝔨-invariant elements of Λ(𝔤/𝔨)\* ⊗ V. The continuous cohomology of G uses continuous (or smooth) cochains on G.
+
+**Problem.** Let G be a connected Lie group with maximal compact subgroup K, and V a finite-dimensional continuous G-module. Then the continuous cohomology of G with coefficients in V is H\*(𝔤,𝔨;V), which is H\*(𝔤;V) when G is contractible (van Est).
+
+**How the definition helps.** The relative complex is exactly the complex of G-invariant V-valued forms on the contractible space G/K. So relative cohomology is the right target for differentiating group cochains (our own). The work went into van Est's proof that the differentiation map is an isomorphism, which uses the contractibility of G/K.
+
+**nLab:** [van Est isomorphism](https://ncatlab.org/nlab/show/van+Est+isomorphism). It says: “The content of a van Est isomorphism is that the canonical comparison map from Lie group cohomology to Lie algebra cohomology (by differentiation) is an isomorphism whenever the Lie group is sufficiently connected.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The dot action makes Kostant's theorem on nilradical cohomology one formula
+
+**Remember:** Each degree of nilradical cohomology lists the dot images of λ once.
+
+*Makes the theorem clean to state or prove.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B10. arXiv math.RT. Level 4: research.
+
+**Definition.** Let 𝔭 = 𝔩 ⊕ 𝔲 be a parabolic subalgebra of a complex semisimple Lie algebra 𝔤, with Levi factor 𝔩 and nilradical 𝔲. The cohomology of 𝔲 with coefficients in a 𝔤-module is an 𝔩-module. The dot action is w·λ = w(λ+ρ) − ρ, and Wᴾ is the set of shortest coset representatives for the Weyl group of 𝔩.
+
+**Problem.** Let V(λ) be an irreducible finite-dimensional 𝔤-module. In degree q, the cohomology of 𝔲 in V(λ) is the sum of the irreducible 𝔩-modules of highest weight w⁻¹·λ, for w in Wᴾ of length q (Kostant).
+
+**How the definition helps.** The dot action turns the answer into a list indexed by Weyl group elements of a given length, with no case analysis. For the Borel subalgebra this gives one weight w·λ for each w of length q. The work went into Kostant's Laplacian on the Chevalley–Eilenberg complex of 𝔲, whose kernel is computed with the Casimir element.
+
+**Paper or page:** [Uniform twisted homological stability](https://arxiv.org/abs/2402.00354). It says: “H<sup>q</sup>(𝔲;V(λ)) = ⊕<sub>w ∈ W<sup>P</sup>, ℓ(w)=q</sub> V\_𝔩(w⁻¹•λ), where V\_𝔩(μ) denotes the irreducible representation of 𝔩 of highest weight μ.”
+
+**Sources:**
+
+- [B. Kostant, Lie algebra cohomology and the generalized Borel–Weil theorem, Ann. of Math. 74 (1961) 329–387](https://doi.org/10.2307/1970237)
+
+### Unimodularity gives Lie algebra cohomology Poincaré duality
+
+**Remember:** Trace-free adjoint action makes the top form closed and duality perfect.
+
+*Rules out counterexamples.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B30. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** A finite-dimensional Lie algebra 𝔤 is unimodular if tr(ad x) = 0 for every x. Equivalently, 𝔤 acts trivially on the top exterior power Λᵈ𝔤, where d = dim 𝔤.
+
+**Problem.** For a unimodular Lie algebra 𝔤 of dimension d over a field k, Hⁱ(𝔤;k) is dual to Hᵈ⁻ⁱ(𝔤;k), and the top cohomology is k. Without unimodularity this fails: for the two-dimensional algebra with \[x,y\] = y, H⁰ = k but H² = 0.
+
+**How the definition helps.** Unimodularity says that the dualizing module of U(𝔤), Λᵈ𝔤\* with its 𝔤-action, is trivial, so the duality in the quote becomes Poincaré duality (our own). In the two-dimensional example, d(y\*) = −x\*∧y\*, so the top form is exact and H² = 0 (our own computation). The work went into showing that U(𝔤) is a duality algebra, using the Chevalley–Eilenberg resolution.
+
+**Paper or page:** [Kurosh theorem for certain Koszul Lie algebras](https://arxiv.org/abs/2201.03034). It says: “Let D be the right A-module Hⁿ(A,A). Then for every left A-module M there holds the following homological duality Hⁱ(A,M)≃Torᴬₙ₋ᵢ(D,M).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing H¹ and H² recognize the Virasoro algebra as universal
+
+**Remember:** A perfect extension with no further extensions is the universal one.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B68. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** A central extension 𝔢 → 𝔤 is universal if it is initial among central extensions of 𝔤. An equivalent test: 𝔢 is perfect (H¹(𝔢,k) = 0) and every central extension of 𝔢 splits (H²(𝔢,k) = 0).
+
+**Problem.** The Virasoro algebra is the universal central extension of the Witt algebra of polynomial vector fields on the circle. Its kernel is one-dimensional.
+
+**How the definition helps.** With the cohomological test, universality is checked by two vanishing statements about the Virasoro algebra itself, with no diagram chasing. Perfectness makes maps out of 𝔢 unique, and H² = 0 lets 𝔢 lift into any central extension, so the test follows (our own). The work went into the Gelfand–Fuks computation that H² of the Witt algebra is one-dimensional. It is spanned by the cocycle with the factor (m³ − m)/12.
+
+**Wikipedia:** [Virasoro algebra](https://en.wikipedia.org/wiki/Virasoro_algebra). It says: “the Virasoro algebra is a complex Lie algebra and the unique nontrivial central extension of the Witt algebra.”
+
+**Paper or page:** [Lie algebras whose derivation algebras are simple](https://arxiv.org/abs/2501.15560). It says: “Let 𝒱 denote the Virasoro algebra over a field 𝔽 of characteristic zero. Then H¹(𝒱,𝔽)=H²(𝒱,𝔽)=0. In particular, the Virasoro algebra 𝒱 is a universal central extension of the two-sided Witt algebra 𝒲.”
+
+**Sources:**
+
+- [I. M. Gel'fand and D. B. Fuks, The cohomologies of the Lie algebra of the vector fields in a circle, Funct. Anal. Appl. 2 (1968) 342–343](https://doi.org/10.1007/BF01075687)
+
+### Vanishing second Lie algebra cohomology lets projective representations lift
+
+**Remember:** No real H², no projective phases after passing to the universal cover.
+
+*Rules out counterexamples.* MSC 17B56 (Cohomology of Lie (super)algebras), 22E70, 22D12. arXiv math.RT. Level 4: research.
+
+**Definition.** A projective unitary representation of a group G is a homomorphism from G to the unitary group of a Hilbert space divided by scalars. Bargmann's condition is H²(𝔤;ℝ) = 0 for the Lie algebra 𝔤 of G.
+
+**Problem.** Let G be a connected Lie group with H²(𝔤;ℝ) = 0. Then every projective unitary representation of G comes from a true unitary representation of the universal cover of G.
+
+**How the definition helps.** Under the condition, the circle extension of G that the representation makes splits at the Lie algebra level, hence over the universal cover (our own summary). The condition removes the standard counterexample ℝ²ⁿ, whose projective representation from the Heisenberg group does not lift. There the Lie algebra is abelian, so H² is all alternating forms, which is nonzero. The work went into showing that the circle extension is a Lie group.
+
+**Wikipedia:** [Projective representation](https://en.wikipedia.org/wiki/Projective_representation). It says: “Bargmann's theorem states that if the second Lie algebra cohomology group H²(𝔤; ℝ) of 𝔤 is trivial, then every projective unitary representation of G can be de-projectivized after passing to the universal cover.”
+
+**Sources:**
+
+- [V. Bargmann, On unitary ray representations of continuous groups, Ann. of Math. 59 (1954) 1–46](https://doi.org/10.2307/1969831)
+- [D. J. Simms, A short proof of Bargmann's criterion for the lifting of projective representations of Lie groups, Rep. Math. Phys. 2 (1971) 283–287](https://doi.org/10.1016/0034-4877(71)90011-5)
 
 ### Manin triples expose duality
 

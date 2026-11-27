@@ -1025,6 +1025,189 @@
 
 - [Andreas Kriegl, Peter W. Michor, The Convenient Setting of Global Analysis, AMS Mathematical Surveys and Monographs 53, 1997 (§42)](https://doi.org/10.1090/surv/053)
 
+### Ellwood freeness equals the algebraic Galois condition on Peter–Weyl elements
+
+**Remember:** Analytic density and algebraic bijectivity describe the same free actions.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B32 (Geometry of quantum groups), 46L67, 46L55. arXiv math.QA, math.OA. Level 4: research.
+
+**Definition.** Let δ be a coaction of a compact quantum group G on a unital C\*-algebra A with fixed-point algebra B. Let O(G) be the Hopf \*-algebra of matrix coefficients. The Peter–Weyl subalgebra P is the set of a in A with δ(a) in the algebraic tensor product A ⊗ O(G). The coaction is Peter–Weyl–Galois when the canonical map p ⊗ q ↦ (p⊗1)δ(q), from P ⊗ P over B to P ⊗ O(G), is bijective.
+
+**Problem.** A coaction of a compact quantum group on a unital C\*-algebra satisfies the Ellwood condition exactly when it is Peter–Weyl–Galois. So free actions on C\*-algebras are the same as principal comodule algebras at the algebraic level.
+
+**How the definition helps.** On the Peter–Weyl subalgebra, the analytic density condition becomes surjectivity of maps between finite-dimensional spectral pieces, as in the quoted theorem. Surjectivity then gives bijectivity by Schneider's criterion, since every comodule over the cosemisimple Hopf algebra O(G) is injective (our own). So all of Hopf–Galois algebra, such as strong connections, applies to every free C\*-action. The work moves into the theorem of Baum, De Commer and Hajac.
+
+**Paper or page:** [Part III, Free Actions of Compact Quantum Groups on C\*-Algebras](https://arxiv.org/abs/1701.05895). It says: “has dense range or, equivalently, is surjective. (c) The C\*-dynamical system (𝒜,G,α) satisfies the Ellwood condition.”
+
+**Sources:**
+
+- [P. F. Baum, K. De Commer and P. M. Hajac, Free actions of compact quantum groups on unital C\*-algebras, Documenta Mathematica 22 (2017) 825–849](https://doi.org/10.4171/dm/579)
+- [Part III, Free Actions of Compact Quantum Groups on C\*-Algebras (arXiv 1701.05895)](https://arxiv.org/abs/1701.05895)
+
+### Strong connections make associated modules of quantum bundles projective
+
+**Remember:** A strong connection hands you the idempotent of every associated bundle.
+
+*True by definition. Confidence: medium.* MSC 58B32 (Geometry of quantum groups), 16T05, 16D40. arXiv math.QA. Level 4: research.
+
+**Definition.** A principal comodule algebra is an H-Galois extension B ⊂ A whose multiplication B ⊗ A → A splits by a left B-linear, right H-colinear map. A strong connection is a map ω: H → A ⊗ A with ω(1) = 1 ⊗ 1, colinear on both sides, whose product is ε(h)1. For a Hopf algebra with bijective antipode, A is principal exactly when it has a strong connection.
+
+**Problem.** If A is a principal H-comodule algebra over B and V is a finite-dimensional H-comodule, the associated module A □ V is a finitely generated projective B-module. Here A □ V, the cotensor product, is the space of sections of the associated vector bundle.
+
+**How the definition helps.** The strong connection writes down an idempotent matrix with entries in B whose image is A □ V. So A □ V is a direct summand of a free B-module of finite rank (our own). The Galois condition alone gives no such formula. An example is the q-monopole line bundle on the Podleś sphere, given by a 2×2 idempotent. The work moves into the proof that principality gives a strong connection.
+
+**Paper or page:** [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860). It says: “A is a principal H-comodule algebra if and only if it admits a strong connection form, that is, if there exists a map ω: H → A⊗A such that ω(1)=1⊗1,”
+
+**Sources:**
+
+- [P. M. Hajac, Strong connections on quantum principal bundles, Communications in Mathematical Physics 182 (1996) 579–617](https://doi.org/10.1007/BF02506418)
+
+### The Ellwood density condition is exactly freeness for commutative algebras
+
+**Remember:** Free means the functions f(x)g(xh) separate the points of X × G.
+
+*Makes the theorem clean to state or prove.* MSC 58B32 (Geometry of quantum groups), 46L55, 46L85. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** Let δ: A → A ⊗ C(G) be a coaction of a compact quantum group G on a unital C\*-algebra A. It satisfies the Ellwood condition, and is called free, when the linear span of (A⊗1)δ(A) is dense in A ⊗ C(G). It replaces the pointwise condition that xg = x forces g = e.
+
+**Problem.** A continuous action of a compact group G on a compact Hausdorff space X is free exactly when the induced coaction on C(X) satisfies the Ellwood condition.
+
+**How the definition helps.** For A = C(X), the span of (A⊗1)δ(A) is the algebra of functions (x,g) ↦ f₁(x)f₂(xg). By the Stone–Weierstrass theorem it is dense exactly when (x,g) ↦ (x,xg) is injective, which is freeness (our own). So the condition states freeness with no reference to points. It then makes sense for noncommutative A and quantum G, where it defines a noncommutative principal bundle.
+
+**Paper or page:** [Noncommutative numerable principal bundles from group actions on C\*-algebras](https://arxiv.org/abs/2203.14677). It says: “The G-action on X is free if and only if span{ f₁α₍·₎(f₂) : f₁,f₂∈C<sub>c</sub>(X) } is κ-dense in C(G,C(X)),”
+
+**Sources:**
+
+- [D. A. Ellwood, A new characterisation of principal actions, Journal of Functional Analysis 173 (2000) 49–60](https://doi.org/10.1006/jfan.2000.3561)
+
+### A heat-trace condition removes the Fubini counterexample for Dixmier traces
+
+**Remember:** Heat traces with a clean leading term make integrals of products multiply.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L51. arXiv math.OA. Level 4: research.
+
+**Definition.** A spectral triple (A, H, D) is an algebra A of operators on a Hilbert space H with a self-adjoint operator D. It is (p,∞)-summable when (1 + D²) raised to the power −p/2 is in the weak trace class L¹'∞. The regularity condition asks each heat trace Tr(T exp(−t²D²)) to be c(T)t⁻ᵖ plus an error, of order t¹⁻ᵖ in the paper's examples (our own reading).
+
+**Problem.** If two spectral triples meet the heat-trace condition, the integral of T₁ ⊗ T₂ on the product triple is the product of the integrals. This holds, with fixed Gamma-function constants, for every normalised trace on L¹'∞.
+
+**How the definition helps.** Heat traces multiply under tensor products, and the integral is read off from the leading term of the heat trace. So clean leading terms in both factors make the integrals multiply. The condition excludes a (1,∞)-summable triple where D has simple spectrum 0, 1, 2, …. There, U ⊗ U⁻¹ has a nonzero integral although U and U⁻¹ both integrate to 0.
+
+**Paper or page:** [Fubini theorem in noncommutative geometry](https://arxiv.org/abs/1612.04012), [Fubini theorem in noncommutative geometry](https://arxiv.org/abs/1612.04012). It says: “There exists a (1,∞)−summable spectral triple (𝒜,H,D) such that D has simple spectrum ℤ₊. 𝒜 is generated by a unitary operator U and is finite dimensional.”
+
+**Sources:**
+
+- [F. Sukochev and D. Zanin, Fubini theorem in noncommutative geometry, Journal of Functional Analysis 272 (2017)](https://doi.org/10.1016/j.jfa.2016.10.016)
+
+### A trace valued in bounded sequences modulo null sequences removes the limit
+
+**Remember:** Take the quotient first, choose the limit last.
+
+*True by definition. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L51, 47B10. arXiv math.OA, math.FA. Level 4: research.
+
+**Definition.** Take T in the weak trace class L¹'∞, and divide the sum of its first N eigenvalues by log N. Ponge defines τ(T) as the class of this sequence in ℓ∞/ℓ₀, the space of bounded sequences modulo the sequences that tend to 0.
+
+**Problem.** τ is a positive continuous linear trace on L¹'∞ that vanishes on the operators whose singular values are o(1/n). Every Dixmier trace is a generalised limit applied to τ, so every Dixmier trace has the same properties.
+
+**How the definition helps.** τ is already linear, positive and a trace before any limit is chosen. A Dixmier trace applies a generalised limit to τ, and such a limit is zero on null sequences, so it inherits these properties. This replaces a separate check of linearity for each choice of limit (our own). The work went into showing that eigenvalue sums are additive up to a bounded error (our own).
+
+**Paper or page:** [Connes' integration and Weyl's laws](https://arxiv.org/abs/2107.01242). It says: “The map τ : ℒ₁,∞ → ℓ∞/ℓ₀ is a positive continuous linear trace. It is annihilated by operators in (ℒ₁,∞)₀, including infinitesimal operators of order &gt;1.”
+
+**Sources:**
+
+- [Raphaël Ponge, Connes' integration and Weyl's laws, Journal of Noncommutative Geometry (2023)](https://doi.org/10.4171/jncg/509)
+
+### Connes' 2-cocycle gives integer Chern numbers on the noncommutative torus
+
+**Remember:** The curvature cocycle counts an index, so it is an integer.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87, 19D55. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** The smooth noncommutative torus A(θ) is generated by unitaries U and V with VU = exp(2πiθ) UV. It has a trace τ and derivations δ₁ and δ₂ with δ₁U = 2πiU, δ₁V = 0, δ₂U = 0 and δ₂V = 2πiV. Connes' cyclic 2-cocycle is φ(a₀, a₁, a₂) = (1/2πi) τ(a₀(δ₁a₁ δ₂a₂ − δ₂a₁ δ₁a₂)).
+
+**Problem.** For every projection e in matrices over A(θ), the Chern number φ(e, e, e) is an integer. By contrast, the trace τ(e) can be irrational, since τ takes the values ℤ + θℤ on K₀.
+
+**How the definition helps.** The Chern number is the index of a Fredholm operator built from δ₁ and δ₂, hence an integer (our own summary of Connes). The 0-cocycle τ is also a cyclic cocycle, but it has no such index meaning and takes irrational values. The quoted formula is the commutative case, where the pairing is the classical Chern number. The work went into Connes' index computation.
+
+**Wikipedia:** [Noncommutative torus](https://en.wikipedia.org/wiki/Noncommutative_torus). It says: “But as an ordered group, K₀ ≃ Z + θZ.”
+
+**Paper or page:** [A combinatorial integration on the Cantor dust](https://arxiv.org/abs/2209.03537). It says: “the Connes’ pairing of the cyclic 2-cocycle \[φ\] with \[p\] is expressed as follows”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Connes' axioms for spectral triples characterise smooth compact manifolds
+
+**Remember:** List what a Dirac operator does, and the list gives back the manifold.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math.DG. Level 4: research.
+
+**Definition.** Connes lists five conditions on a spectral triple (A, H, D): dimension n, first order (\[\[D, a\], b\] = 0), regularity, finiteness and orientability. Orientability asks for a Hochschild cycle c, a formal sum of tensors in A, with π(c) = γ for even n and 1 for odd n. Each condition holds for the Dirac operator of a spin manifold.
+
+**Problem.** Let A be commutative, and let (A, H, D) meet these conditions and an absolute continuity condition. Then A is the algebra of smooth functions on a compact oriented smooth n-manifold.
+
+**How the definition helps.** The axioms put a smooth manifold into purely operator language, so the theorem becomes an exact match between two kinds of object. The work went into Connes' long proof, which uses the orientation cycle to build local coordinates from finitely many elements of A (our own).
+
+**Wikipedia:** [Noncommutative geometry](https://en.wikipedia.org/wiki/Noncommutative_geometry). It says: “Connes' reconstruction theorem states, roughly, that a commutative spectral triple satisfying appropriate regularity, finiteness and orientability hypotheses arises from a compact smooth manifold.”
+
+**Sources:**
+
+- [Alain Connes, On the spectral characterization of manifolds, Journal of Noncommutative Geometry 7 (2013)](https://doi.org/10.4171/JNCG/108)
+
+### Connes' trace theorem turns the Dixmier trace into a local integral
+
+**Remember:** On a manifold, the Dixmier trace only sees the symbol of order −n.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 58J42, 46L51. arXiv math.OA, math.DG. Level 4: research.
+
+**Definition.** Connes defines the noncommutative integral of an operator in the weak trace class L¹'∞ as its Dixmier trace. A classical pseudodifferential operator P on a closed n-manifold M is an operator given by a symbol with an expansion in homogeneous terms. Its Wodzicki residue integrates the term of order −n of the symbol over the unit cosphere bundle.
+
+**Problem.** If P has order −n, every Dixmier trace of P equals its Wodzicki residue divided by n(2π)ⁿ. So the Dixmier trace of f(1 + Δ) raised to the power −n/2 is a constant times the integral of f.
+
+**How the definition helps.** The Dixmier trace gives an integral for every spectral triple, so on a manifold it can be compared with a symbol integral. Both are traces on operators of order −n that vanish on operators of lower order (our own). For connected M with n ≥ 2, Wodzicki showed the residue is the only such trace (our own). The work went into that uniqueness theorem and into computing the constant.
+
+**Wikipedia:** [Singular trace](https://en.wikipedia.org/wiki/Singular_trace). It says: “Connes (1988) showed that Wodzicki's noncommutative residue (Wodzicki 1984) of a pseudodifferential operator on a manifold M of order -dim(M) is equal to its Dixmier trace.”
+
+**Sources:**
+
+- [Alain Connes, The action functional in noncommutative geometry, Communications in Mathematical Physics 117 (1988)](https://doi.org/10.1007/BF01218391)
+- [Mariusz Wodzicki, Local invariants of spectral asymmetry, Inventiones Mathematicae 75 (1984)](https://doi.org/10.1007/BF01403095)
+
+### Dimension spectrum makes the Connes–Moscovici index formula local
+
+**Remember:** Residues ignore trace class errors, so the index becomes local.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K56, 58J20. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A spectral triple is an algebra A on a Hilbert space H with a self-adjoint D having compact resolvent and bounded commutators \[D, a\]. Its dimension spectrum is the set of poles of the functions z ↦ Tr(b\|D\|⁻ᶻ), for b built from A, \[D, A\] and commutators with \|D\|. The residue ⨍ b at z = 0 vanishes when b is trace class.
+
+**Problem.** Take a regular, finitely summable spectral triple with discrete dimension spectrum, and its Chern–Connes character, the cocycle that computes index pairings. This character is cohomologous to sums of residues ⨍ of products of a₀, iterated commutators \[D, aᵢ\] and negative powers of \|D\| (Connes–Moscovici).
+
+**How the definition helps.** Residues ignore trace class operators, so only the leading, symbol-like terms of each expression contribute (our own). That is what local means here, and the dimension spectrum condition makes the residues exist (our own). For the Dirac operator on a spin manifold, the residues become integrals of local densities and give the Atiyah–Singer formula (our own summary). The work went into Connes and Moscovici's long proof that the residue cocycle is cohomologous to the character.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple), [Noncommutative geometry](https://en.wikipedia.org/wiki/Noncommutative_geometry). It says: “The local index formula of Connes and Moscovici gives a way to compute index pairings for suitable spectral triples using local expressions in cyclic cohomology.”
+
+**Sources:**
+
+- [A. Connes, H. Moscovici, The local index formula in noncommutative geometry, Geom. Funct. Anal. 5 (1995) 174–243](https://doi.org/10.1007/BF01895667)
+
+### Dirac operators on matrix algebras make them converge to coadjoint orbits
+
+**Remember:** Build the metric from a Dirac operator, and convergence speaks about Dirac operators.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89, 81R60. arXiv math.OA, math.MP. Level 4: research.
+
+**Definition.** Let 𝒜 be the functions on a coadjoint orbit, the orbit of a weight λ in the dual Lie algebra of a compact group G. Let ℬᵐ be the matrix algebra on the irreducible representation with highest weight mλ. Rieffel builds a Dirac operator D on each of them, with Lip-norm L(a) = ‖\[D, a\]‖, a kind of Lipschitz constant.
+
+**Problem.** The matrix algebras ℬᵐ, with their Dirac Lip-norms, converge to the coadjoint orbit 𝒜 in Latrémolière's propinquity as m → ∞. For example, the fuzzy spheres converge to the 2-sphere.
+
+**How the definition helps.** A Lip-norm defined by ‖\[D, a\]‖ carries a Dirac operator, so metric convergence becomes a statement about Dirac operators. Physicists want to approximate the Dirac operator of the orbit by Dirac operators on matrix algebras. Rieffel's earlier Lip-norms came from the group action and had no Dirac operator behind them (our own). The work went into estimates showing that the length of a bridge, a common algebra that holds both ℬᵐ and 𝒜, tends to 0.
+
+**Paper or page:** [Dirac operators for matrix algebras converging to coadjoint orbits](https://arxiv.org/abs/2108.01136). It says: “Thus the sequence {(ℬᵐ, Lᴰᵐ)} of compact C\*-metric spaces converges to the compact C\*-metric space {(𝒜, Lᴰᴬ)} for Latrémolière's propinquity.”
+
+**Sources:**
+
+- [Marc A. Rieffel, Dirac operators for matrix algebras converging to coadjoint orbits, Communications in Mathematical Physics 401 (2023)](https://doi.org/10.1007/s00220-023-04682-0)
+- [Marc A. Rieffel, Gromov–Hausdorff distance for quantum metric spaces; Matrix algebras converge to the sphere for quantum Gromov–Hausdorff distance, Memoirs of the AMS 168, no. 796 (2004)](https://doi.org/10.1090/memo/0796)
+
 ### Dirac weights detect polynomial growth
 
 **Remember:** The Dirac eigenvalues are the group weights, with repetitions.
@@ -1042,6 +1225,45 @@
 **Sources:**
 
 - [A Note on Twisted Crossed Products and Spectral Triples](https://arxiv.org/abs/2110.05345)
+
+### Entire cyclic cohomology gives theta-summable spectral triples a Chern character
+
+**Remember:** Infinitely many components need a growth condition, and heat kernels supply it.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19D55, 46L87. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A spectral triple is an algebra A on a Hilbert space H with a self-adjoint operator D that has bounded commutators with A. It is θ-summable if exp(−tD²) is trace class for every t &gt; 0, which is weaker than finite summability. Periodic cyclic cohomology allows only finitely many nonzero cocycle components, while Connes' entire cyclic cohomology allows infinitely many if their norms decay fast enough.
+
+**Problem.** For a θ-summable even spectral triple, the JLO cocycle Φₜ, built from heat operators exp(−stD²) and commutators \[D, a\], is an entire cyclic cocycle. Its class does not depend on t, and its pairing with an idempotent e is the index of D twisted by e.
+
+**How the definition helps.** Entire cyclic cohomology is built to hold cocycles like JLO, which have a nonzero component in every even degree (our own summary). Their components decay factorially, which is the growth that entire cyclic cohomology allows (our own summary). So a Chern character exists for θ-summable triples, as in infinite-dimensional models with no finite summability. The work went into the estimates of Jaffe, Lesniewski and Osterwalder and into Connes' proof that the pairing is the index.
+
+**Wikipedia:** [JLO cocycle](https://en.wikipedia.org/wiki/JLO_cocycle), [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “The cohomology class defined by Φt(D) is independent of the value of t”
+
+**Sources:**
+
+- [A. Jaffe, A. Lesniewski, K. Osterwalder, Quantum K-theory I. The Chern character, Comm. Math. Phys. 118 (1988) 1–14](https://doi.org/10.1007/BF01218474)
+- [A. Connes, Entire cyclic cohomology of Banach algebras and characters of θ-summable Fredholm modules, K-Theory 1 (1988) 519–548](https://doi.org/10.1007/bf00533785)
+
+### Finite summability lets a trace formula compute the index pairing
+
+**Remember:** Enough commutators in Lᵖ multiply into trace class.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K56, 19D55. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A Fredholm module (H, F) is a representation of A on a Hilbert space H with an operator F commuting with A modulo compact operators. It is p-summable if each \[F, a\] lies in the Schatten ideal Lᵖ, the compact operators whose singular values have summable p-th powers. For an even module with grading γ, F² = 1 and even n ≥ p − 1, set τₙ(a₀, …, aₙ) = c Tr(γF\[F,a₀\]⋯\[F,aₙ\]).
+
+**Problem.** Each τₙ is a cyclic n-cocycle, and its pairing with an idempotent e is the index of eFe from eH₊ to eH₋. Here H₊ and H₋ are the ±1 eigenspaces of γ, and c is Connes' constant.
+
+**How the definition helps.** Summability makes the product of n + 1 commutators trace class, by Hölder's inequality for Schatten ideals, so τₙ is defined (our own). The index of a Fredholm operator equals a trace of a power of its defect, and this trace is ⟨τₙ, e⟩ (our own summary). Without summability, F still gives a K-homology class but no finite trace formula. The work went into Connes' identification of the index with the trace formula.
+
+**nLab:** [Fredholm module](https://ncatlab.org/nlab/show/Fredholm+module). It says: “an odd Fredholm module over A is a representation π : A → B(H) of A on a Hilbert space H together with a Fredholm operator F on H such that \[F,π(a)\] ∈ K(H) for all a ∈ A.”
+
+**Paper or page:** [Finitely Summable K-homology, the Index Pairing, and Cantor Minimal Systems](https://arxiv.org/abs/2505.24135). It says: “then any index pairing between a class in K⁰(A) and one in K₀(A) can be computed using Connes’ trace formulas for p-summable cycles.”
+
+**Sources:**
+
+- [A. Connes, Non-commutative differential geometry, Publ. Math. IHÉS 62 (1985) 41–144](https://doi.org/10.1007/BF02698807)
 
 ### First order forces additive weights
 
@@ -1061,6 +1283,42 @@
 
 - [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
 
+### KO-dimension defines dimension mod 8 from three signs
+
+**Remember:** Three signs of J fix the dimension modulo 8.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K33, 46L87. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A real spectral triple has an antilinear unitary J with J² = ε and JD = ε′DJ. In the even case, also Jγ = ε″γJ, where γ is the grading and each sign is ±1. The KO-dimension is the number n mod 8 that Connes' table assigns to the triple of signs (ε, ε′, ε″).
+
+**Problem.** For a closed spin manifold of dimension n with its charge conjugation J, the KO-dimension is n mod 8. The definition also applies where classical dimension fails: the finite space of the Standard Model has KO-dimension 6 but classical dimension 0.
+
+**How the definition helps.** The signs of J are defined for every real spectral triple, even with no points, so a dimension exists for all of them. On a manifold, the signs come from the real Clifford algebras, which repeat with period 8 (our own). The work went into matching the sign table with the eight real Clifford algebras (our own).
+
+**nLab:** [KO-dimension](https://ncatlab.org/nlab/show/KO-dimension). It says: “For classical Riemannian manifolds KO-dimension coincides with the traditional concept of dimension of manifolds, modulo 8.”
+
+**Sources:**
+
+- [Alain Connes, Noncommutative geometry and reality, Journal of Mathematical Physics 36 (1995)](https://doi.org/10.1063/1.531241)
+
+### Operator systems let Peter–Weyl truncations converge to compact quantum groups
+
+**Remember:** Cutting an algebra by a projection leaves an operator system.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89, 46L67. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** An operator system is a self-adjoint space of bounded operators that contains 1, but need not be closed under products. Let P project L²(𝔾) onto the parts that belong to a finite set Λ of irreducible representations of a compact quantum group 𝔾. The Peter–Weyl truncation is the operator system of compressions PaP, with a in A = C(𝔾).
+
+**Problem.** Take a coamenable compact quantum group with a bi-invariant regular Lip-norm. Its Peter–Weyl truncations converge to it in Kerr's complete Gromov–Hausdorff distance as Λ grows to include every representation.
+
+**How the definition helps.** The compressions PaP do not form an algebra, so even the statement needs a distance between operator systems. With that distance, the truncations and the full algebra are objects of one kind. The work went into the choice of a state whose slice map nearly inverts the compression a ↦ PaP in Lip-norm. Coamenability is what makes such a state available (our own).
+
+**Paper or page:** [Convergence of Peter--Weyl Truncations of Compact Quantum Groups](https://arxiv.org/abs/2409.16698). It says: “We prove convergence of such nets in terms of Kerr's complete Gromov–Hausdorff distance. An important tool is the choice of an appropriate state whose induced slice map gives an approximate inverse of the compression map C(𝔾) ∋ a ↦ PaP in Lip-norm.”
+
+**Sources:**
+
+- [Malte Leimbach, Convergence of Peter–Weyl truncations of compact quantum groups, Journal of Noncommutative Geometry (2025)](https://doi.org/10.4171/jncg/634)
+
 ### Product Dirac operators add summability exponents
 
 **Remember:** The Pauli matrices cancel the mixed terms in the square.
@@ -1078,6 +1336,115 @@
 **Sources:**
 
 - [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+
+### Propinquity zero gives an isomorphism, unlike Rieffel's distance
+
+**Remember:** A distance that sees products can tell an algebra from its opposite.
+
+*Rules out counterexamples. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89. arXiv math.OA. Level 4: research.
+
+**Definition.** A compact quantum metric space is a C\*-algebra with a Lip-norm, a seminorm that plays the role of a Lipschitz constant. Rieffel's distance sees only self-adjoint elements and order, while Latrémolière's propinquity uses \*-homomorphisms and so keeps the multiplication. A Lip-norm L is C-strongly Leibniz when L(ab) ≤ ‖a‖L(b) + L(a)‖b‖ and L(a⁻¹) ≤ C‖a⁻¹‖²L(a) for invertible a.
+
+**Problem.** For each C ≥ 1, the C-strongly Leibniz propinquity is a metric on C-strongly Leibniz compact quantum metric spaces, up to full quantum isometry. So distance zero gives a \*-isomorphism that preserves the Lip-norms.
+
+**How the definition helps.** The propinquity is built from \*-homomorphisms, so distance zero gives a map that respects products, not just order. Rieffel's distance is zero between a C\*-algebra and its opposite algebra with the same Lip-norm, since both have the same self-adjoint part (our own). Phillips found a simple separable C\*-algebra that is not isomorphic to its opposite (our own). The work went into Latrémolière's proof that distance zero gives a full quantum isometry, which the strongly Leibniz class keeps (our own).
+
+**Paper or page:** [The strongly Leibniz property and the Gromov--Hausdorff propinquity](https://arxiv.org/abs/2301.05692). It says: “For all C ≥ 1, the C-strongly Leibniz propinquity Λ\*SLC is a metric on 𝒮ℒC.”
+
+**Sources:**
+
+- [Konrad Aguilar, Stephan Ramon Garcia, Elena Kim and Frédéric Latrémolière, The strongly Leibniz property and the Gromov–Hausdorff propinquity, Journal of Mathematical Analysis and Applications 529 (2024)](https://doi.org/10.1016/j.jmaa.2023.127572)
+- [Frédéric Latrémolière, The quantum Gromov–Hausdorff propinquity, Transactions of the AMS 368 (2016)](https://doi.org/10.1090/tran/6334)
+- [N. Christopher Phillips, A simple separable C\*-algebra not isomorphic to its opposite algebra, Proceedings of the AMS 132 (2004)](https://doi.org/10.1090/s0002-9939-04-07330-7)
+
+### Spectral action on a product space gives gravity plus Standard Model
+
+**Remember:** Fluctuate the Dirac operator, and gauge fields come out of gravity.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 81T13, 81R60. arXiv math.MP, math.OA. Level 4: research.
+
+**Definition.** The spectral action of a spectral triple is Tr f(D/Λ), where f is a positive cutoff function and Λ is an energy scale. An almost commutative geometry is the product of a spin manifold M with a finite spectral triple F. Gauge and Higgs fields enter as inner fluctuations D + A + JAJ⁻¹, with A a sum of terms a\[D, b\] and J a charge conjugation.
+
+**Problem.** Take F with algebra ℂ ⊕ ℍ ⊕ M₃(ℂ), and expand the fluctuated spectral action on M × F for large Λ. Among other terms, the expansion contains the Einstein–Hilbert action, a cosmological term and the bosonic Standard Model Lagrangian with the Higgs potential.
+
+**How the definition helps.** The definition treats gauge and Higgs fields as parts of the Dirac operator, so the one gravity functional Tr f(D/Λ) already contains their actions. The work went into the heat-kernel expansion of the trace and into the choice of the finite space F (our own).
+
+**Wikipedia:** [Noncommutative standard model](https://en.wikipedia.org/wiki/Noncommutative_standard_model). It says: “The full Lagrangian (in Euclidean signature) of the Standard Model minimally coupled to gravity is obtained as pure gravity over that product space.”
+
+**Sources:**
+
+- [Ali H. Chamseddine and Alain Connes, The spectral action principle, Communications in Mathematical Physics 186 (1997)](https://doi.org/10.1007/s002200050126)
+
+### Summability shows the free group C\*-algebra has no nontrivial projections
+
+**Remember:** An integer trapped between 0 and 1 must be 0 or 1.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L80, 22D25. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A Fredholm module (H, F) is p-summable on a dense subalgebra if its commutators \[F, a\] there have p-th power summable singular values. The action of a free group Fₙ on its Cayley tree gives a Fredholm module over its reduced group C\*-algebra C\*ᵣ(Fₙ). On the group algebra ℂFₙ its commutators have finite rank, so it is 1-summable there.
+
+**Problem.** The reduced group C\*-algebra C\*ᵣ(Fₙ) of a free group has no projections other than 0 and 1 (Pimsner–Voiculescu). This follows because its canonical trace takes only integer values on K₀.
+
+**How the definition helps.** Summability turns the index pairing into a trace formula, which for the tree module is the canonical trace τ (our own summary of Connes' argument). So τ(e) is a Fredholm index, hence an integer, for projections e in a smooth subalgebra with the same K-theory (our own). A projection e has 0 ≤ τ(e) ≤ 1, and τ is faithful, so e = 0 or e = 1. The work went into building the summable module from the tree.
+
+**Wikipedia:** [Kaplansky's conjectures](https://en.wikipedia.org/wiki/Kaplansky%27s_conjectures). It says: “The idempotent conjecture has a generalisation, the Kadison idempotent conjecture, also known as the Kadison–Kaplansky conjecture, for elements in the reduced group C\*-algebra.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Summable weights make AF algebras limits of their finite-dimensional pieces
+
+**Remember:** One Dirac operator for all levels lets the tail of β bound the distance.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89, 46L35. arXiv math.OA. Level 4: research.
+
+**Definition.** Let A be a unital AF algebra, the closure of an increasing union of finite-dimensional algebras Aₙ, with a faithful trace τ. Christensen and Ivan set D = Σ aₙQₙ, where Qₙ projects onto the new part of L²(Aₙ) and aₙ comes from a summable β. The Lip-norm L(a) = ‖\[D, a\]‖, a kind of Lipschitz constant, makes A a compact quantum metric space.
+
+**Problem.** The Latrémolière propinquity, a distance between compact quantum metric spaces, from (A, L) to (Aₙ, L) is at most βₙ + βₙ₊₁ + ⋯. So the finite-dimensional algebras Aₙ converge to A.
+
+**How the definition helps.** Each Aₙ gets its Lip-norm by restricting the one commutator seminorm of D, so A and Aₙ are compared inside one space. Then the distance bound is just the tail of the summable sequence. The work went into the theorem of Christensen and Ivan that this D gives a compact quantum metric at all (our own).
+
+**Paper or page:** [Quantum Gromov-Hausdorff propinquity convergence of Christensen-Ivan quantum metrics on AF algebras](https://arxiv.org/abs/2312.16458), [Quantum Gromov-Hausdorff propinquity convergence of Christensen-Ivan quantum metrics on AF algebras](https://arxiv.org/abs/2312.16458). It says: “For every n ∈ ℕ, it holds that Λ((𝒜, Lτβ), (𝒜ₙ, Lτβ)) ≤ ∑ₖ₌ₙ∞ βₖ, where Λ is the quantum Gromov-Hausdorff propinquity”
+
+**Sources:**
+
+- [Quantum Gromov–Hausdorff propinquity convergence of Christensen–Ivan quantum metrics on AF algebras, arXiv:2312.16458](https://arxiv.org/abs/2312.16458)
+
+### The entropy of a free fermion state is a spectral action
+
+**Remember:** Entropy adds over eigenvalues, so it is a spectral action.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 81T75, 82B10. arXiv math.MP, math.OA. Level 4: research.
+
+**Definition.** Here a spectral action of an operator D is any trace Tr f(D) of a function f of D. Second quantization turns D on a one-particle space into a system of free fermions, one mode for each eigenvalue. With no chemical potential, the equilibrium state at inverse temperature β fills the mode λ with probability 1/(1 + eˣ), where x = βλ.
+
+**Problem.** The von Neumann entropy of the equilibrium free fermion state equals Tr h(βD), with h(x) = log(1 + e⁻ˣ) + x/(1 + eˣ). So, when the heat trace of D has an expansion, the entropy has an expansion as β → 0.
+
+**How the definition helps.** A free fermion state is a product over the eigenmodes of D, so its entropy is a sum over eigenvalues. Each mode contributes −p log p − (1 − p) log(1 − p) with p = 1/(1 + eˣ), and this equals h(x) (our own). So the entropy is a trace Tr h(βD), a spectral action in the broad sense. The work went into computing the coefficients of its expansion from the heat trace of D.
+
+**Paper or page:** [Second Quantization and the Spectral Action](https://arxiv.org/abs/1903.09624). It says: “For μ&lt;0 we then have the following expansion for the entropy: 𝒮(ρf) = Tr(hβμ(βD))”
+
+**Sources:**
+
+- [Ali H. Chamseddine, Alain Connes and Walter D. van Suijlekom, Entropy and the spectral action, Communications in Mathematical Physics 373 (2019)](https://doi.org/10.1007/s00220-019-03297-8)
+- [Rui Dong, Masoud Khalkhali and Walter D. van Suijlekom, Second quantization and the spectral action, Journal of Geometry and Physics 167 (2021)](https://doi.org/10.1016/j.geomphys.2021.104285)
+
+### The spectral action reduces to the Einstein–Hilbert action on manifolds
+
+**Remember:** Count eigenvalues of D below Λ, and get gravity.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 58J35, 81T75. arXiv math.MP, math.DG. Level 4: research.
+
+**Definition.** The spectral action of a spectral triple (A, H, D) is Tr f(D/Λ). Here f is a positive even cutoff function and Λ is an energy scale. It depends only on the spectrum of D.
+
+**Problem.** For the Dirac operator of a closed spin 4-manifold, Tr f(D/Λ) has an expansion as Λ → ∞. Up to constants that depend on f, its Λ⁴ term is the volume and its Λ² term is the integral of the scalar curvature.
+
+**How the definition helps.** The functional uses only the spectrum of D, so it is defined for every spectral triple and is invariant under all unitaries. On a manifold, its expansion comes from the heat-kernel coefficients of D² (our own). The Lichnerowicz formula D² = ∇\*∇ + R/4 puts the scalar curvature R into the second coefficient (our own).
+
+**nLab:** [spectral action](https://ncatlab.org/nlab/show/spectral+action). It says: “And indeed, on spectral triples corresponding to ordinary Riemannian geometry the spectral action reduces to the Einstein-Hilbert action plus a series of integrals over higher curvature invariants.”
+
+**Sources:**
+
+- [Ali H. Chamseddine and Alain Connes, The spectral action principle, Communications in Mathematical Physics 186 (1997)](https://doi.org/10.1007/s002200050126)
 
 ### Local additions make spaces of smooth maps manifold-like
 
@@ -1312,6 +1679,43 @@
 
 - [H. P. McKean Jr. and I. M. Singer, Curvature and the eigenvalues of the Laplacian (1967)](https://doi.org/10.4310/jdg/1214427880)
 - [Peter B. Gilkey, Curvature and the eigenvalues of the Laplacian for elliptic complexes (1973)](https://doi.org/10.1016/0001-8708(73)90119-9)
+
+### Roe's partitioned index turns coarse index theory into curvature obstructions
+
+**Remember:** Index the whole manifold once, then read off the hypersurface's index.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J22 (Exotic index theories on manifolds), 19K56, 53C21. arXiv math.DG, math.KT. Level 4: research.
+
+**Definition.** Cut a complete Riemannian manifold M of odd dimension along a compact hypersurface N into two pieces. A Dirac operator D on M has a coarse index in the K-theory of the Roe algebra, an algebra of operators that move supports a bounded distance. The partitioned index is the integer obtained from it by a boundary map built from the two pieces.
+
+**Problem.** The partitioned index of D equals the index of the Dirac operator on N (Roe). So if N is spin and N × ℝ has a complete metric of uniformly positive scalar curvature, the Dirac operator on N has index zero.
+
+**How the definition helps.** The coarse index lives on all of M, so the partition only has to extract a number, and the hard analysis is done once. Uniformly positive scalar curvature makes D invertible, so its coarse index and hence the partitioned index vanish (our own). Applying this to N × ℝ, cut along N, gives the stated obstruction (our own).
+
+**Paper or page:** [A partitioned manifold index theorem for noncompact hypersurfaces](https://arxiv.org/abs/2507.16591v2), [A partitioned manifold index theorem for noncompact hypersurfaces](https://arxiv.org/abs/2507.16591v2). It says: “Then Ind(D<sub>N</sub>) = Ind(D;N) after identifying both K-theory groups with ℤ.”
+
+**Sources:**
+
+- [J. Roe, Partitioning non-compact manifolds and the dual Toeplitz problem, in Operator Algebras and Applications, Cambridge University Press (1989)](https://doi.org/10.1017/cbo9780511662270.012)
+- [P. Hochs and T. de Kok, A partitioned manifold index theorem for noncompact hypersurfaces, arXiv:2507.16591](https://arxiv.org/abs/2507.16591v2)
+
+### Von Neumann dimension gives a finite index on infinite coverings
+
+**Remember:** Measure kernels per fundamental domain, and the covering's index equals the base's.
+
+*Makes the theorem clean to state or prove.* MSC 58J22 (Exotic index theories on manifolds), 58J20. arXiv math.DG, math.OA. Level 4: research.
+
+**Definition.** Let Γ act freely on a manifold M̃ with compact quotient, and let V be a closed Γ-invariant subspace of L²(M̃). The Γ-dimension of V is the integral, over a fundamental domain, of the trace of the kernel of the orthogonal projection onto V along the diagonal. It is a finite non-negative real number even when V is infinite-dimensional.
+
+**Problem.** Let D be an elliptic operator on a closed manifold M, and D̃ its lift to a Galois covering M̃ with group Γ. Then the Γ-dimension of the kernel of D̃ minus that of its adjoint equals the ordinary index of D (Atiyah's L²-index theorem).
+
+**How the definition helps.** Γ-dimension turns infinite-dimensional, Γ-invariant kernels into finite numbers, so an index on M̃ can be stated at all. Both indices are supertraces of heat operators, and they do not depend on time (our own). For small time, the heat kernels upstairs and downstairs agree near the diagonal to all orders, so the two indices agree (our own). Hence, for infinite Γ, a non-zero index of D forces infinitely many independent L² solutions of D̃ (our own).
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “it is possible to get a finite index using the dimension of a module over a von Neumann algebra; this index is in general real rather than integer valued.”
+
+**Sources:**
+
+- [M. F. Atiyah, Elliptic operators, discrete groups and von Neumann algebras, Astérisque 32–33 (1976) 43–72](https://mathscinet.ams.org/mathscinet-getitem?mr=0420729)
 
 ### Eta phases sew along determinant lines
 

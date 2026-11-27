@@ -904,6 +904,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A comonad's standard simplicial resolution is contractible after forgetting structure
+
+**Remember:** The unit of the adjunction is a free extra degeneracy.
+
+*True by definition.* MSC 18C15 (Monads (= standard construction, triple or triad), algebras for monads, homology and derived functors for monads), 18G31. arXiv math.CT. Level 3: graduate.
+
+**Definition.** Let F be the free group functor, left adjoint to the forgetful functor U from groups to sets, and let L = FU. The standard simplicial resolution of a group G has Lⁿ⁺¹(G) in degree n. The counit of the adjunction gives the face maps. The comultiplication of L gives the degeneracy maps.
+
+**Problem.** For every group G, the standard simplicial resolution is free in every degree, has π₀ = G, and has all higher homotopy groups zero. For any adjoint pair, the resolution becomes homotopy equivalent to its augmentation after applying the right adjoint.
+
+**How the definition helps.** After forgetting structure, the unit of the adjunction gives an extra degeneracy map in each degree. An augmented simplicial object with an extra degeneracy is homotopy equivalent to its augmentation. Without the comonad, one builds a free resolution by hand and kills homotopy groups degree by degree. The Stacks Project proves this for any adjoint pair (tag 08ND), and for groups it gives acyclicity.
+
+**nLab:** [simplicial resolution](https://ncatlab.org/nlab/show/simplicial+resolution). It says: “The resulting object is an augmented simplicial group that is free in all non-negative dimensions and is acyclic. It has zeroth homotopy equal to G and all homotopy groups are trivial.”
+
+**Paper or page:** [Simplicial, tag 08ND](https://stacks.math.columbia.edu/tag/08ND). It says: “the maps 1<sub>V</sub> ⋆ ε : V ∘ X → V, and ε ⋆ 1<sub>U</sub> : X ∘ U → U are homotopy equivalences.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining idempotent monads by equal unit insertions makes algebras fixed points
 
 **Remember:** The only possible algebra action undoes the unit.
@@ -1295,6 +1313,67 @@
 
 - [Peter J. Freyd, Andre Scedrov, Categories, Allegories, North-Holland Mathematical Library 39 (1990), chapter 2: Allegories](https://doi.org/10.1016/s0924-6509(08)70049-7)
 
+### A compact projective generator recognizes module categories among abelian categories
+
+**Remember:** One small projective that sees everything turns a category into modules.
+
+*Makes the theorem clean to state or prove.* MSC 18E10 (Abelian categories, Grothendieck categories), 16D90, 18E20. arXiv math.CT, math.RA. Level 3: graduate.
+
+**Definition.** An object P is a compact projective generator when Hom(P, −) is exact, preserves direct sums and is faithful. The ring is R = End(P)ᵒᵖ.
+
+**Problem.** An abelian category with all small coproducts is equivalent to R-Mod exactly when it has a compact projective generator P, and then R = End(P)ᵒᵖ. Hence Mod-R and Mod-S are equivalent exactly when S is the endomorphism ring of such a generator of Mod-R.
+
+**How the definition helps.** Exactness, preserving direct sums and faithfulness are the properties Hom(R, −) has on R-modules, so they single out module categories. Every object is a cokernel of a map between sums of copies of P, so Hom(P, −) is full, faithful and essentially surjective (our own). Morita's theorem follows at once, since such generators of module categories are the progenerators (our own). Finitely generated modules fail because they lack infinite sums. Sheaves on ℝ fail because they lack enough projectives.
+
+**nLab:** [Freyd-Mitchell embedding theorem](https://ncatlab.org/nlab/show/Freyd-Mitchell+embedding+theorem). It says: “If C has all small coproducts and has a compact projective generator, then C ≃ R Mod for some ring R.”
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “(Note that not all Grothendieck categories allow projective resolutions for all objects; examples are categories of sheaves of abelian groups on many topological spaces, such as on the space of real numbers.)”
+
+**Sources:**
+
+- [P. Freyd, Abelian Categories, Harper &amp; Row (1964), Exercise F on p. 103; reprinted in Reprints in Theory Appl. Categ. 3 (2003)](http://www.tac.mta.ca/tac/reprints/articles/3/tr3abs.html)
+
+### A generator lets cocontinuous functors on Grothendieck categories have right adjoints
+
+**Remember:** Preserve colimits and you have a right adjoint, no solution set needed.
+
+*Makes the theorem clean to state or prove.* MSC 18E10 (Abelian categories, Grothendieck categories), 18A40. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A Grothendieck category has a generator: an object U such that Hom(U, −) is faithful. Freyd's special adjoint functor theorem needs a cocomplete category with a generating set whose quotients of each object form a set.
+
+**Problem.** A functor from a Grothendieck category to a category with small Hom-sets has a right adjoint exactly when it preserves all small colimits. Similarly, a functor 𝒜ᵒᵖ → Sets is representable exactly when it turns colimits into limits.
+
+**How the definition helps.** The generator is exactly the small generating set in Freyd's special adjoint functor theorem, so no solution set has to be checked. In an abelian category quotients match subobjects, and Grothendieck categories are well-powered, so the other hypotheses hold too. The work moves into the adjoint functor theorem and into the proof that subobjects form a set.
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “it has a right adjoint if and only if it commutes with all colimits. This follows from Peter J. Freyd's special adjoint functor theorem and its dual.”
+
+**Paper or page:** [Injectives, Lemma 19.13.1](https://stacks.math.columbia.edu/tag/07D7). It says: “Let F : 𝒜ᵒᵖᵖ → Sets be a functor. Then F is representable if and only if F commutes with colimits”
+
+**Sources:**
+
+- [A. Grothendieck, Sur quelques points d'algèbre homologique, Tôhoku Math. J. 9 (1957) 119–221](https://doi.org/10.2748/tmj/1178244839)
+
+### A reflective embedding into modules makes every Grothendieck category complete
+
+**Remember:** Products in a Grothendieck category are products of modules, reflected back.
+
+*Makes the theorem clean to state or prove.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E20, 18A40. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A Grothendieck category has all colimits by definition, but nothing in the definition gives limits. A full subcategory is reflective when its inclusion has a left adjoint.
+
+**Problem.** Every Grothendieck category has all small limits, in particular all products. Products need not be exact, as sheaves on a space show.
+
+**How the definition helps.** Gabriel–Popescu makes 𝒜 a reflective subcategory of Mod(R), and a reflective full subcategory of a complete category is closed under limits (our own). So limits in 𝒜 can be computed in Mod(R), and completeness takes one line. Stacks instead deduces products from a representability lemma (Injectives, Lemma 19.13.1).
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “Furthermore, Gabriel-Popescu can be used to see that every Grothendieck category is complete, being a reflective subcategory of the complete category Mod(R) for some R.”
+
+**Paper or page:** [Injectives, Lemma 19.13.2](https://stacks.math.columbia.edu/tag/07D8), [Injectives, Theorem 19.14.3](https://stacks.math.columbia.edu/tag/0F5U). It says: “A Grothendieck abelian category has Ab3\*.”
+
+**Sources:**
+
+- [M. Takeuchi, A simple proof of Gabriel and Popesco's theorem, J. Algebra 18 (1971) 112–113](https://doi.org/10.1016/0021-8693(71)90130-X)
+- [A. Grothendieck, Sur quelques points d'algèbre homologique, Tôhoku Math. J. 9 (1957) 119–221](https://doi.org/10.2748/tmj/1178244839)
+
 ### A zero object is not simple, so Schur's lemma has no exception
 
 **Remember:** A simple object has exactly two quotients; the zero object has only one.
@@ -1330,6 +1409,26 @@
 - [Barry Mitchell, The full imbedding theorem, American Journal of Mathematics 86 (1964) 619–637](https://doi.org/10.2307/2373027)
 - [Peter Freyd, Abelian categories, Harper and Row (1964); Reprints in Theory and Applications of Categories 3 (2003)](http://www.tac.mta.ca/tac/reprints/articles/3/tr3abs.html)
 - [Alexander Grothendieck, Sur quelques points d'algèbre homologique, I, Tôhoku Mathematical Journal 9 (1957) 119–221](https://doi.org/10.2748/tmj/1178244839)
+
+### Closure under subobjects makes Serre subcategories exactly the kernels of exact functors
+
+**Remember:** Kernels of exact functors absorb subobjects; weak Serre subcategories need not.
+
+*Rules out counterexamples.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E35. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A Serre subcategory is closed under subobjects, quotients and extensions. A weak Serre subcategory is only closed under kernels, cokernels and extensions, as in the Stacks Project.
+
+**Problem.** A full subcategory of an abelian category is the kernel of some exact functor exactly when it is a Serre subcategory. The weak Serre subcategory of ℚ-vector spaces in Ab is the kernel of no exact functor.
+
+**How the definition helps.** If F is exact and F(B) = 0, then every subobject and quotient of B also goes to 0, so kernels are closed under subobjects and quotients. Conversely a Serre subcategory is the kernel of the quotient functor 𝒜 → 𝒜/𝒞, and building that quotient is where the work goes. The ℚ-vector spaces are closed under kernels, cokernels and extensions in Ab, but ℤ ⊂ ℚ is a subobject that is not a ℚ-vector space (our own). So the stronger closure condition is what excludes this case (our own).
+
+**Wikipedia:** [Localizing subcategory](https://en.wikipedia.org/wiki/Localizing_subcategory). It says: “The importance of this notion stems from the fact that kernels of exact functors between abelian categories are Serre subcategories”
+
+**Paper or page:** [Homology, Lemma 12.10.4](https://stacks.math.columbia.edu/tag/02MQ), [Homology, Lemma 12.10.3](https://stacks.math.columbia.edu/tag/0754). It says: “Let F : 𝒜 → ℬ be an exact functor. Then the full subcategory of objects C of 𝒜 such that F(C) = 0 forms a Serre subcategory of 𝒜.”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
 
 ### Freyd's free abelian category makes modules the same as exact functors
 
@@ -1387,6 +1486,120 @@
 
 - [Evan Chen, An Infinitely Large Napkin (open textbook)](https://venhance.github.io/napkin/Napkin.pdf)
 
+### Localizing subcategories make the Serre quotient a full subcategory of closed objects
+
+**Remember:** A section functor turns an abstract quotient into concrete closed objects.
+
+*Rules out counterexamples.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E35, 18E40. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A Serre subcategory 𝒞 of 𝒜 is localizing when the quotient functor T: 𝒜 → 𝒜/𝒞 has a right adjoint S, the section functor. An object X is 𝒞-closed when the unit X → ST(X) is an isomorphism.
+
+**Problem.** For a localizing subcategory 𝒞, the section functor is fully faithful and identifies 𝒜/𝒞 with the full subcategory of 𝒞-closed objects. Finite-dimensional spaces in Mod(k) are a Serre subcategory with no such description.
+
+**How the definition helps.** The right adjoint is the extra condition, and a fully faithful right adjoint identifies the quotient with the objects fixed by the unit. A left adjoint preserves coproducts, so a localizing subcategory is closed under coproducts. The finite-dimensional spaces are not, since a countable sum of copies of k is infinite-dimensional, so Mod(k) → Mod(k)/mod(k) has no right adjoint (our own). In a Grothendieck category the work is Gabriel's theorem that closure under coproducts is enough.
+
+**nLab:** [localizing subcategory](https://ncatlab.org/nlab/show/localizing+subcategory). It says: “The section functor S<sub>T</sub> realizes the equivalence of categories between A/T and the full subcategory of A generated by T-closed objects.”
+
+**Wikipedia:** [Localizing subcategory](https://en.wikipedia.org/wiki/Localizing_subcategory), [Quotient of an abelian category](https://en.wikipedia.org/wiki/Quotient_of_an_abelian_category). It says: “Since then T, as a left adjoint, preserves colimits, each localizing subcategory is closed under colimits.”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
+### Requiring finitely presented subobjects makes coherent objects an abelian subcategory
+
+**Remember:** Coherence asks subobjects to stay finitely presented, so kernels stay inside.
+
+*Rules out counterexamples. Confidence: medium.* MSC 18E10 (Abelian categories, Grothendieck categories), 13E99. arXiv math.CT, math.AC. Level 3: graduate.
+
+**Definition.** An object of a Grothendieck category is coherent when it is finitely presented and each finitely generated subobject is also finitely presented. Finitely presented alone is the weaker condition it replaces.
+
+**Problem.** In any Grothendieck category the coherent objects form an abelian subcategory, and the inclusion is exact. Finitely presented modules over a ring that is not coherent are not closed under kernels.
+
+**How the definition helps.** The extra condition on subobjects is exactly what keeps kernels inside the class. The image of a map between coherent objects is a finitely generated subobject of the target, so it is finitely presented (our own). Then the kernel is finitely generated, and as a subobject of a coherent object it is finitely presented (our own). Over R = k\[x, y₁, y₂, …\]/(x yᵢ), multiplication by x on R has kernel (y₁, y₂, …), which is not finitely generated (our own).
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “The full subcategory of all coherent objects in 𝒜 is abelian and the inclusion functor is exact.”
+
+**Sources:**
+
+- [I. Herzog, The Ziegler spectrum of a locally coherent Grothendieck category, Proc. London Math. Soc. 74 (1997) 503–558](https://doi.org/10.1112/S002461159700018X)
+
+### Serre quotients by fractions make K₀ of the quotient a cokernel
+
+**Remember:** Classes from the killed subcategory are exactly what K₀ of the quotient forgets.
+
+*True by definition.* MSC 18E10 (Abelian categories, Grothendieck categories), 18F30. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** The Serre quotient 𝒜/𝒞 can be built by inverting the morphisms whose kernel and cokernel lie in 𝒞. It has the same objects as 𝒜. K₀ of an abelian category is the free abelian group on isomorphism classes of objects, modulo \[B\] = \[A\] + \[C\] for each short exact sequence 0 → A → B → C → 0.
+
+**Problem.** For a Serre subcategory 𝒞 of an abelian category 𝒜, the sequence K₀(𝒞) → K₀(𝒜) → K₀(𝒜/𝒞) → 0 is exact. Quillen extends it to a long exact sequence of higher K-groups.
+
+**How the definition helps.** In the quotient built by inverting morphisms the objects do not change, so a class \[X\] can be sent back to K₀(𝒜). An inverted morphism has kernel and cokernel in 𝒞, so its source and target have the same class modulo the image of K₀(𝒞) (our own). So X ↦ \[X\] gives a well-defined inverse map from K₀(𝒜/𝒞) to K₀(𝒜)/K₀(𝒞) (our own). Gabriel's Hom-set formula, the other definition, does not show directly which maps become isomorphisms (our own). The remaining work is the lemma that every short exact sequence of 𝒜/𝒞 is isomorphic to the image of one in 𝒜.
+
+**Wikipedia:** [Quotient of an abelian category](https://en.wikipedia.org/wiki/Quotient_of_an_abelian_category). It says: “Here, one starts with the class S of those morphisms in 𝒜 whose kernel and cokernel both belong to ℬ.”
+
+**Paper or page:** [Homology, Lemma 12.11.3](https://stacks.math.columbia.edu/tag/02MX). It says: “The exact functors 𝒞 → 𝒜 and 𝒜 → ℬ induce an exact sequence K₀(𝒞) → K₀(𝒜) → K₀(ℬ) → 0 of K-groups”
+
+**Sources:**
+
+- [D. Quillen, Higher algebraic K-theory I, Lecture Notes in Math. 341, Springer (1973) 85–147](https://doi.org/10.1007/BFb0067053)
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
+### The self-dual definition of abelian categories gives injective results from projective ones
+
+**Remember:** Turn the arrows around and projectives become injectives for free.
+
+*True by definition.* MSC 18E10 (Abelian categories, Grothendieck categories), 18G05, 18G10. arXiv math.CT. Level 3: graduate.
+
+**Definition.** An abelian category is an additive category with kernels and cokernels in which each map from the coimage to the image is an isomorphism. Every axiom has its dual among the axioms, unlike the definition of a module category.
+
+**Problem.** In an abelian category with enough injectives, every object has an injective resolution, unique up to homotopy, and right derived functors are well defined. These follow from the projective versions applied to the opposite category.
+
+**How the definition helps.** Because the opposite of an abelian category is abelian, every theorem about projectives has a dual about injectives with no new proof. Injectives in 𝒜 are the projectives in 𝒜ᵒᵖ, and injective resolutions are projective resolutions read backwards (our own). So the comparison theorem for projective resolutions gives the one for injective resolutions (our own). The work stays in the projective proof, done once.
+
+**nLab:** [abelian category](https://ncatlab.org/nlab/show/abelian+category). It says: “The notion of abelian category is self-dual: opposite of any abelian category is abelian.”
+
+**Sources:**
+
+- [A. Grothendieck, Sur quelques points d'algèbre homologique, Tôhoku Math. J. 9 (1957) 119–221](https://doi.org/10.2748/tmj/1178244839)
+
+### The universal property of Serre quotients identifies localized module categories
+
+**Remember:** Kill the torsion modules and you are left with modules over the localization.
+
+*Makes the theorem clean to state or prove.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E35, 13B30. arXiv math.CT, math.AC. Level 3: graduate.
+
+**Definition.** A Serre subcategory 𝒞 of an abelian category 𝒜 is a full subcategory closed under subobjects, quotients and extensions. The Serre quotient 𝒜/𝒞 is an abelian category with an exact functor 𝒜 → 𝒜/𝒞 that kills 𝒞. Every exact functor that kills 𝒞 factors uniquely through it.
+
+**Problem.** Let S be a multiplicative subset of a ring A, and let 𝒯 be the S-torsion modules, in which each element is killed by some element of S. Then Mod(A)/𝒯 is equivalent to Mod(S⁻¹A). In particular, Ab modulo torsion groups is the category of ℚ-vector spaces.
+
+**How the definition helps.** The universal property reduces the equivalence to one exact functor out of Mod(A). Localization M ↦ S⁻¹M is exact and kills exactly the S-torsion modules, so it factors through Mod(A)/𝒯 (our own). Every S⁻¹A-module is its own localization, so the induced functor is essentially surjective (our own). The real work is the proof that the induced functor is full and faithful, which Stacks gives in its examples chapter.
+
+**Wikipedia:** [Quotient of an abelian category](https://en.wikipedia.org/wiki/Quotient_of_an_abelian_category). It says: “The Serre quotient here is equivalent to the category Mod(ℚ) of all vector spaces over the rationals, with the canonical functor Ab→Mod(ℚ) given by tensoring with ℚ.”
+
+**Paper or page:** [Homology, Lemma 12.10.6](https://stacks.math.columbia.edu/tag/02MS), [Examples, Proposition 110.77.1](https://stacks.math.columbia.edu/tag/0EA5). It says: “For any exact functor G : 𝒜 → ℬ such that 𝒞 ⊂ Ker(G) there exists a factorization G = H ∘ F for a unique exact functor H : 𝒜/𝒞 → ℬ.”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+- [J.-P. Serre, Groupes d'homotopie et classes de groupes abéliens, Ann. of Math. 58 (1953) 258–294](https://doi.org/10.2307/1969789)
+
+### Weak Serre subcategories make complexes with cohomology in them triangulated
+
+**Remember:** Kernels, cokernels and extensions are exactly what the long exact sequence asks.
+
+*True by definition.* MSC 18E10 (Abelian categories, Grothendieck categories), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A weak Serre subcategory ℬ of an abelian category 𝒜 contains 0 and is closed under kernels, cokernels and extensions in 𝒜. Consider the full subcategory of the derived category D(𝒜) on complexes whose cohomology objects all lie in ℬ.
+
+**Problem.** If ℬ is a weak Serre subcategory of 𝒜, then the complexes with cohomology in ℬ form a triangulated subcategory of D(𝒜), closed under direct summands. For example, ℚ-vector spaces in Ab give a triangulated subcategory although they are not a Serre subcategory.
+
+**How the definition helps.** The weak Serre conditions are exactly what the long exact cohomology sequence of a triangle needs. Take a distinguished triangle X → Y → Z, the derived-category form of a short exact sequence, with X and Z in the subcategory (our own). Then Hⁱ(Y) is an extension of the kernel of Hⁱ(Z) → Hⁱ⁺¹(X) by the cokernel of Hⁱ⁻¹(Z) → Hⁱ(X) (our own). Both lie in ℬ, so Hⁱ(Y) lies in ℬ (our own). The usual Serre condition, closure under all subobjects, is not needed, and it would exclude the ℚ-vector spaces (our own).
+
+**Paper or page:** [Derived, Lemma 13.17.1](https://stacks.math.columbia.edu/tag/06UQ), [Homology, Lemma 12.10.3](https://stacks.math.columbia.edu/tag/0754). It says: “Let ℬ ⊂ 𝒜 be a weak Serre subcategory. The category D\_ℬ(𝒜) is a strictly full saturated triangulated subcategory of D(𝒜).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Semi-abelian categories give the homological lemmas for groups and Lie algebras
 
 **Remember:** Semi-abelian categories are to groups what abelian categories are to abelian groups.
@@ -1423,6 +1636,115 @@
 **Sources:**
 
 - [Pierre Gabriel, Michel Zisman, Calculus of Fractions and Homotopy Theory, Ergebnisse der Mathematik und ihrer Grenzgebiete 35, Springer (1967)](https://doi.org/10.1007/978-3-642-85844-4)
+
+### A left calculus of fractions makes localization preserve finite colimits
+
+**Remember:** Fractions on the left let localization keep pushouts and finite coproducts.
+
+*Makes the theorem clean to state or prove.* MSC 18E35 (Localization of categories, calculus of fractions), 18A35. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A left multiplicative system S in a category C contains the identities, is closed under composition and obeys a cancellation rule. It also obeys an Ore condition: a map s in S and a map g with the same source fit in a commuting square. In that square the map opposite s lies in S, so each map of S⁻¹C is a single fraction s⁻¹f with s in S.
+
+**Problem.** For a left multiplicative system S, the localization functor from C to S⁻¹C preserves every finite colimit that exists in C.
+
+**How the definition helps.** Fractions write each set of maps in S⁻¹C as a filtered colimit of sets of maps in C (our own). Maps out of a finite colimit form a finite limit of sets, and filtered colimits of sets commute with finite limits (our own). So the localization keeps the universal property of finite colimits (our own). Without fractions, maps in a localization are long zigzags, and this argument fails (our own).
+
+**nLab:** [calculus of fractions](https://ncatlab.org/nlab/show/calculus+of+fractions). It says: “Dually, if W admits a calculus of left fractions, then Q is right exact and preserves finite colimits.”
+
+**Paper or page:** [Categories, Lemma 4.27.9](https://stacks.math.columbia.edu/tag/05Q2). It says: “Let C be a category and let S be a left multiplicative system of morphisms of C. The localization functor Q : C → S⁻¹C commutes with finite colimits.”
+
+**Sources:**
+
+- [Pierre Gabriel and Michel Zisman, Calculus of Fractions and Homotopy Theory, Springer (1967)](https://doi.org/10.1007/978-3-642-85844-4)
+
+### Compatible multiplicative systems give the localization a unique triangulated structure
+
+**Remember:** Compatible fractions carry triangles through the localization.
+
+*Makes the theorem clean to state or prove.* MSC 18E35 (Localization of categories, calculus of fractions), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** In a triangulated category D, distinguished triangles X → Y → Z → X\[1\] play the role of short exact sequences. A multiplicative system S in D is compatible if it is closed under shifts. Also, two maps in S that commute with the first maps of two triangles must extend to a map of triangles in S.
+
+**Problem.** The localization S⁻¹D has exactly one pre-triangulated structure for which Q commutes with shifts and is exact, that is, sends distinguished triangles to distinguished triangles. If D is triangulated, then so is S⁻¹D.
+
+**How the definition helps.** The two compatibility conditions are what is needed to move each triangle axiom across a fraction (our own). A triangle in S⁻¹D is distinguished when it is isomorphic to the image of one in D. Pre-triangulated means that all axioms hold except perhaps the octahedral axiom. The work is one check of the axioms on fractions, and then derived categories and Verdier quotients inherit triangles (our own).
+
+**Paper or page:** [Derived, Proposition 13.5.6](https://stacks.math.columbia.edu/tag/05R6). It says: “Then there exists a unique structure of a pre-triangulated category on S⁻¹D such that \[1\] ∘ Q = Q ∘ \[1\] and the localization functor Q : D → S⁻¹D is exact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicative systems give a concrete test for the maps that localization inverts
+
+**Remember:** A map turns invertible exactly when S-maps complete it on both sides.
+
+*Makes the theorem clean to state or prove.* MSC 18E35 (Localization of categories, calculus of fractions). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A multiplicative system S in a category C is a class of maps with a calculus of fractions on both sides. S is saturated if every map that becomes invertible in the localization S⁻¹C already lies in S.
+
+**Problem.** A map f becomes invertible in S⁻¹C exactly when there are maps g and h with gf and fh in S. These maps form the smallest saturated multiplicative system that contains S.
+
+**How the definition helps.** Fractions make every inverse in S⁻¹C a single roof, a pair of maps going out and back (our own). So an inverse of Q(f) yields maps g and h with gf and fh in S (our own). Conversely, if gf and fh lie in S, then Q(f) has inverses on both sides (our own).
+
+**nLab:** [calculus of fractions](https://ncatlab.org/nlab/show/calculus+of+fractions). It says: “In the presence of either sort of calculus of fractions, the 2-out-of-6 property is equivalent to saturation of W, i.e. that any morphism in C which becomes an isomorphism in C\[W⁻¹\] is already in W.”
+
+**Paper or page:** [Categories, Lemma 4.27.21](https://stacks.math.columbia.edu/tag/05Q9). It says: “The set Ŝ = {f ∈ Arrows(C) \| Q(f) is an isomorphism} is equal to S′ = {f ∈ Arrows(C) \| there exist g, h such that gf, fh ∈ S} and is the smallest saturated multiplicative system containing S.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Saturation makes compatible multiplicative systems and thick subcategories the same data
+
+**Remember:** Thick subcategories and saturated systems are two faces of one quotient.
+
+*Makes the theorem clean to state or prove.* MSC 18E35 (Localization of categories, calculus of fractions), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A triangulated subcategory B of D is thick if it contains every direct summand of each of its objects. A multiplicative system S is saturated if it contains every map that becomes invertible after localizing at S. The cone of a map f is the third object of a distinguished triangle on f.
+
+**Problem.** Send B to the maps whose cone lies in B, and send S to the objects that become zero in S⁻¹D. These two rules are inverse bijections between saturated compatible multiplicative systems and strictly full thick triangulated subcategories of D.
+
+**How the definition helps.** Saturation on each side removes the only freedom, so each rule undoes the other (our own). Without it, S and its saturation give the same localization (our own). The work is two lemmas: maps with cone in B form a compatible system, and the quotient kills exactly the summands of objects of B. So Verdier quotients and localizations are two names for one construction (our own).
+
+**Paper or page:** [Derived, Lemma 13.6.10](https://stacks.math.columbia.edu/tag/05RL). It says: “In particular, the constructions define mutually inverse maps between the (partially ordered) set of saturated multiplicative systems in D compatible with the triangulated structure on D and the (partially ordered) set of strictly full saturated triangulated subcategories of D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining torsion pairs by vanishing Hom makes the torsion sequence unique
+
+**Remember:** No maps from torsion to torsion-free forces one torsion part.
+
+*True by definition.* MSC 18E40 (Torsion theories, radicals), 18E10. arXiv math.CT, math.RT. Level 3: graduate.
+
+**Definition.** A torsion pair (𝒯, ℱ) in an abelian category consists of full subcategories with Hom(T, F) = 0 for T in 𝒯 and F in ℱ. Every object X must have a subobject Y in 𝒯 with X/Y in ℱ. This replaces the elementwise definition of the torsion subgroup.
+
+**Problem.** In a torsion pair, the sequence 0 → Y → X → X/Y → 0 with Y in 𝒯 and X/Y in ℱ is unique up to isomorphism. So X ↦ Y is a functor, right adjoint to the inclusion of 𝒯.
+
+**How the definition helps.** The vanishing of Hom(𝒯, ℱ) gives uniqueness in one line. If Y and Y′ both work, the map Y → X → X/Y′ goes from 𝒯 to ℱ, so it is zero, and Y ⊆ Y′ (our own). By symmetry Y = Y′, and the same argument shows every map from a torsion object into X lands in Y (our own). The work moves to proving that a given pair of classes has the decomposition property.
+
+**nLab:** [torsion theory](https://ncatlab.org/nlab/show/torsion+theory). It says: “Presentation of an object X in Ob A as an extension 0→Y→X→X/Y→0, Y in Ob T by X/Y in Ob F is unique up to an isomorphism of short exact sequences”
+
+**Sources:**
+
+- [S. E. Dickson, A torsion theory for Abelian categories, Trans. Amer. Math. Soc. 121 (1966) 223–235](https://doi.org/10.1090/S0002-9947-1966-0191935-0)
+
+### Hereditary torsion classes are the localizing subcategories, unlike divisible groups
+
+**Remember:** Torsion closed under subobjects is a Serre subcategory closed under sums.
+
+*Rules out counterexamples.* MSC 18E40 (Torsion theories, radicals), 18E10, 16S90. arXiv math.CT, math.RA. Level 3: graduate.
+
+**Definition.** A torsion class in an abelian category is closed under quotients, coproducts and extensions. It is hereditary when it is also closed under subobjects. The torsion radical t sends X to its largest subobject in the class.
+
+**Problem.** In a Grothendieck category, the hereditary torsion classes are exactly the localizing subcategories. The divisible abelian groups form a torsion class that is not hereditary and is not localizing.
+
+**How the definition helps.** A hereditary torsion class is closed under subobjects, quotients and extensions, so it is a Serre subcategory, and it is closed under coproducts. In a category with injective hulls, Gabriel's theorem says such a Serre subcategory is localizing, and that is where the work lies. Divisible groups are closed under quotients, sums and extensions, but ℤ ⊂ ℚ is not divisible (our own). Their radical is not left exact: it gives 0 on ℤ but ℚ on ℚ (our own).
+
+**nLab:** [torsion theory](https://ncatlab.org/nlab/show/torsion+theory). It says: “A torsion theory is called hereditary if T is closed under subobjects, or equivalently, t is left exact functor.”
+
+**Wikipedia:** [Localizing subcategory](https://en.wikipedia.org/wiki/Localizing_subcategory). It says: “Hence the notion of a localizing subcategory is equivalent to the notion of a hereditary torsion class.”
+
+**Sources:**
+
+- [S. E. Dickson, A torsion theory for Abelian categories, Trans. Amer. Math. Soc. 121 (1966) 223–235](https://doi.org/10.1090/S0002-9947-1966-0191935-0)
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
 
 ### Grothendieck's Galois theory matches étale algebras with all finite G-sets
 
@@ -2130,6 +2452,42 @@
 
 - [B. Banaschewski, G. Bruns, Categorical characterization of the MacNeille completion, Archiv der Mathematik 18 (1967) 369–377](https://doi.org/10.1007/BF01898828)
 
+### A two-term product complex makes higher derived limits of towers vanish
+
+**Remember:** Two terms in the complex, so only lim and lim¹ survive.
+
+*True by definition.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18A30. arXiv math.CT. Level 3: graduate.
+
+**Definition.** Take a tower ⋯ → A₂ → A₁ → A₀ of abelian groups with transition maps f. Let ∂ map the product of the Aₙ to itself by (aₙ) ↦ (aₙ − f(aₙ₊₁)). The kernel of ∂ is lim Aₙ and its cokernel is lim¹ Aₙ. This two-term complex represents the whole derived functor R lim.
+
+**Problem.** For every tower of abelian groups, Rᵖlim Aₙ = 0 for all p ≥ 2. So a short exact sequence of towers gives a six-term exact sequence from lim to lim¹ that ends in 0.
+
+**How the definition helps.** A complex with only two terms has cohomology in only two degrees, so all higher derived limits vanish at once. The six-term sequence is then the long exact sequence, cut off after lim¹ (our own). The work moves into showing that the product complex computes R lim, using that ∂ is onto for injective towers (our own).
+
+**nLab:** [lim<sup>1</sup> and Milnor sequences](https://ncatlab.org/nlab/show/lim%5E1+and+Milnor+sequences). It says: “The notation "lim¹" is common notation for the first derived functor R¹lim of the limit functor.”
+
+**Paper or page:** [More Algebra, Lemma 15.87.1.](https://stacks.math.columbia.edu/tag/07KW). It says: “for any (Aₙ) in Ab(N) we have Rᵖlim Aₙ = 0 for p &gt; 1, the object Rlim Aₙ of D(Ab) is represented by the complex ∏ Aₙ → ∏ Aₙ, (xₙ) ↦ (xₙ − fₙ₊₁(xₙ₊₁))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Acyclic objects compute derived functors as well as injective objects do
+
+**Remember:** Injectives are enough but not needed; acyclic terms already do the job.
+
+*Makes the theorem clean to state or prove.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** Let F be a left exact additive functor between abelian categories, with right derived functors RⁱF. An object J is F-acyclic when RⁱF(J) = 0 for all i &gt; 0. Injective objects are F-acyclic, but so are many others, such as flasque sheaves for the global sections functor.
+
+**Problem.** If 0 → A → J⁰ → J¹ → ⋯ is a resolution of A by F-acyclic objects, then RⁱF(A) ≅ Hⁱ(F(J•)) for all i. In particular, flasque resolutions compute sheaf cohomology, and flat resolutions compute Tor.
+
+**How the definition helps.** The definition keeps exactly the property of injectives that the computation uses, namely that F has no higher derived functors on each term. Cut the resolution into short exact sequences; the long exact sequence keeps each one exact after F is applied (our own). So F(J•) has the same cohomology as F applied to an injective resolution. The work moves into the long exact sequence of derived functors.
+
+**nLab:** [acyclic object](https://ncatlab.org/nlab/show/acyclic+object). It says: “A resolution by F-acyclic objects serves to compute the derived functor of F.”
+
+**Paper or page:** [Derived, Lemma 13.16.7.](https://stacks.math.columbia.edu/tag/015E). It says: “Let A• be a bounded below complex of right F-acyclic objects such that RF is defined at A•. The canonical map F(A•) ⟶ RF(A•) is an isomorphism in D⁺(B), i.e., A• computes RF.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining derived functors as universal δ-functors makes natural maps extend uniquely
 
 **Remember:** A map in degree zero fixes the whole map of derived functors.
@@ -2196,6 +2554,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Degreewise split horseshoe resolutions give derived functors long exact sequences
+
+**Remember:** Split in each degree, so every additive functor keeps the sequence exact.
+
+*True by definition.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A projective resolution of A is an exact sequence ⋯ → P₁ → P₀ → A → 0 in which each Pₙ is projective. Take a short exact sequence 0 → A′ → A → A″ → 0. A horseshoe resolution of it is a short exact sequence of projective resolutions 0 → P′ → P → P″ → 0 with Pₙ = P′ₙ ⊕ P″ₙ in each degree. The horseshoe lemma says that such a resolution exists whenever there are enough projectives.
+
+**Problem.** Let F be an additive functor. Its left derived functors LₙF turn each short exact sequence 0 → A′ → A → A″ → 0 into a long exact sequence ⋯ → LₙF(A′) → LₙF(A) → LₙF(A″) → Lₙ₋₁F(A′) → ⋯ → L₀F(A″) → 0.
+
+**How the definition helps.** Each degree is a direct sum, so every additive functor keeps the sequence of resolutions exact. The long exact sequence is then just the homology sequence. For arbitrary resolutions and a map between them, F(P′) → F(P) → F(P″) need not be exact (our own). With the horseshoe choice, F(P′) → F(P) → F(P″) is a short exact sequence of complexes. Its long exact homology sequence is the long exact sequence of the LₙF. The work moves into the horseshoe lemma, which builds P from projective lifts and the snake lemma.
+
+**nLab:** [derived functor in homological algebra](https://ncatlab.org/nlab/show/derived+functor+in+homological+algebra). It says: “Since Aⁿ is an injective object for all n, its component sequences 0 → Aⁿ → Bⁿ → Cⁿ → 0 are indeed split exact sequences”
+
+**Wikipedia:** [Horseshoe lemma](https://en.wikipedia.org/wiki/Horseshoe_lemma). It says: “a resolution of A can be built up inductively with the nth item in the resolution equal to the coproduct of the nth items in the resolutions of A′ and A″.”
+
+**Sources:**
+
+- [Henri Cartan and Samuel Eilenberg, Homological Algebra, Princeton University Press (1956)](https://doi.org/10.1515/9781400883844)
+
+### Derived functors defined on the derived category keep adjunctions
+
+**Remember:** Adjoint functors stay adjoint after deriving, with no exactness needed.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18A40. arXiv math.CT. Level 3: graduate.
+
+**Definition.** The derived category D(A) is formed from complexes by inverting quasi-isomorphisms, the chain maps that induce isomorphisms on cohomology. The total right derived functor RF : D(A) → D(B) is the best approximation to F that respects quasi-isomorphisms, defined by a universal property. The total left derived functor LG is the dual notion.
+
+**Problem.** Let F and G be additive functors between abelian categories, with G left adjoint to F. If RF : D(A) → D(B) and LG : D(B) → D(A) both exist, then LG is left adjoint to RF.
+
+**How the definition helps.** Only total derived functors on the derived category can be adjoint; the separate functors RⁱF and LᵢG cannot even state it. Stacks proves the adjunction from the universal properties of RF and LG and the adjunction on chain complexes. Neither F nor G needs to be exact, so tensor and Hom are covered at once (our own). The work moves into the existence of RF and LG, for example through K-injective and K-projective replacements.
+
+**Paper or page:** [Derived, Lemma 13.30.3.](https://stacks.math.columbia.edu/tag/09T5). It says: “If the derived functors RF : D(A) → D(B) and LG : D(B) → D(A) exist, then RF is a right adjoint to LG.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite cohomological dimension extends derived functors to unbounded complexes
+
+**Remember:** A bound on cohomological dimension lets acyclic complexes compute RF everywhere.
+
+*Rules out counterexamples. Confidence: medium.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** Assume every object embeds in an F-acyclic object, one on which all higher derived functors of F vanish. A left exact functor F then has finite cohomological dimension when RⁿF = 0 for some n. An unbounded complex may be nonzero in infinitely many negative and positive degrees.
+
+**Problem.** If F has finite cohomological dimension, then RF exists on the whole unbounded derived category D(A), and every complex of F-acyclic objects computes it. Without the bound, an unbounded complex of acyclic objects can give the wrong answer.
+
+**How the definition helps.** The bound means that each cohomology group of RF depends on only finitely many degrees of the complex, so the bounded-below theory extends (our own). Without it the claim fails. Over the ring Z/4, the complex ⋯ → Z/4 → Z/4 → ⋯ with every map multiplication by 2 is exact and made of injectives (our own). Applying F = Hom(Z/2, −) gives copies of Z/2 with zero maps, which is not exact, although RF of an exact complex is 0 (our own). Here Extⁿ over Z/4 of (Z/2, Z/2) is nonzero for every n, so the bound fails (our own).
+
+**Paper or page:** [Derived, Lemma 13.32.2.](https://stacks.math.columbia.edu/tag/07K7). It says: “there exists an integer n ≥ 0 such that RⁿF = 0, Then RF : D(A) → D(B) exists, any complex consisting of right acyclic objects for F computes RF”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### K-injective complexes give derived functors on unbounded complexes
 
 **Remember:** Ask for the property resolutions need, not for injective terms.
@@ -2233,6 +2643,24 @@
 
 - [Peter J. Hilton, Urs Stammbach, A Course in Homological Algebra, Graduate Texts in Mathematics 4, Springer (1971; 2nd edition 1997)](https://doi.org/10.1007/978-1-4419-8566-8)
 
+### Requiring injective terms makes derived functors independent of the resolution
+
+**Remember:** Injective resolutions agree up to homotopy, so F cannot tell them apart.
+
+*Rules out counterexamples.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** An object I is injective when Hom(−, I) keeps short exact sequences exact. An injective resolution of X is an exact sequence 0 → X → I⁰ → I¹ → ⋯ in which each Iⁿ is injective. The right derived functor RⁱF(X) is the i-th cohomology of F(I•).
+
+**Problem.** For a left exact additive functor F, the groups Hⁱ(F(I•)) do not depend on the choice of injective resolution I• of X, up to canonical isomorphism. For resolutions by arbitrary objects this fails.
+
+**How the definition helps.** Injectivity makes any two injective resolutions of X chain homotopy equivalent, by maps unique up to homotopy, and additive functors keep chain homotopies (our own). Without it the answer changes. Take F = Hom(Z/2, −) on abelian groups; the resolution 0 → Z/2 → Z/2 → 0 gives R¹F(Z/2) = 0 (our own). The injective resolution 0 → Z/2 → Q/Z → Q/Z → 0, with second map multiplication by 2, gives the correct value Ext¹(Z/2, Z/2) = Z/2 (our own). The work moves into the comparison theorem, which uses injectivity to extend maps one degree at a time.
+
+**Wikipedia:** [Derived functor](https://en.wikipedia.org/wiki/Derived_functor). It says: “various things have to be checked: the result does not depend on the given injective resolution of X, and any morphism X → Y naturally yields a morphism RⁱF(X) → RⁱF(Y), so that we indeed obtain a functor.”
+
+**Sources:**
+
+- [Henri Cartan and Samuel Eilenberg, Homological Algebra, Princeton University Press (1956)](https://doi.org/10.1515/9781400883844)
+
 ### Defining Ext as derived-category maps makes the Yoneda product associative
 
 **Remember:** A Yoneda product is composition with the degrees lined up.
@@ -2249,6 +2677,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining flatness by vanishing Tor makes flat modules closed under extensions
+
+**Remember:** Flatness is Tor₁ vanishing, so long exact sequences decide it.
+
+*True by definition.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 13C11. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** A module M is flat when tensoring with M keeps short exact sequences exact. Equivalently, Tor₁(X, M) = 0 for every module X, where Tor is the left derived functor of the tensor product. The Tor form turns flatness into the vanishing of one functor.
+
+**Problem.** Let 0 → A → B → C → 0 be a short exact sequence of modules with C flat. Then A is flat if and only if B is flat. If A and B are flat, C need not be flat.
+
+**How the definition helps.** With the Tor form, the claim is read off the long exact sequence Tor₂(X, C) → Tor₁(X, A) → Tor₁(X, B) → Tor₁(X, C). If C is flat both ends vanish, so Tor₁(X, A) ≅ Tor₁(X, B) (our own). For 0 → Z → Z → Z/2 → 0, with first map multiplication by 2, Z is flat but Z/2 is not (our own). The work moves into the theorem that tensor-exactness and Tor-vanishing agree.
+
+**Wikipedia:** [Flat module](https://en.wikipedia.org/wiki/Flat_module). It says: “If A and C are flat, then so is B. Also, if B and C are flat, then so is A. If A and B are flat, C need not be flat in general.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Tor with both inputs resolved makes Tor symmetric
 
 **Remember:** Swap the two resolutions, with a sign from the degrees.
@@ -2262,6 +2706,169 @@
 **How the definition helps.** With both inputs resolved, the definition is symmetric apart from the order of the tensor factors (our own). Swapping them, with a minus sign when both degrees are odd, is an isomorphism of complexes (our own). The work goes into proving that this two-sided Tor agrees with Tor computed by resolving either input alone (our own).
 
 **nLab:** [Tor](https://ncatlab.org/nlab/show/Tor). It says: “the total complex of the degreewise tensor product of modules double complex”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derived tensor products give a Künneth spectral sequence over any ring
+
+**Remember:** Resolve inside the definition, and the freeness hypothesis disappears.
+
+*Makes the theorem clean to state or prove.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 18G40, 55U25. arXiv math.AC, math.CT. Level 3: graduate.
+
+**Definition.** The derived tensor product K ⊗ᴸ L of two complexes is formed by first replacing K with a quasi-isomorphic complex of flat modules, then tensoring. A quasi-isomorphism is a chain map that induces isomorphisms on homology. The flatness that classical Künneth theorems assume is thus built into the definition.
+
+**Problem.** Let K and L be bounded complexes of modules over any ring. A spectral sequence converges to the cohomology of K ⊗ᴸ L. Its E₂ term in position (p, q) is the sum of Tor₋ₚ(Hⁱ(K), Hʲ(L)) over i + j = q. Over a principal ideal domain it has two nonzero columns, which gives the Künneth short exact sequence for all bounded complexes.
+
+**How the definition helps.** Because the derived tensor product already contains a flat replacement, the Künneth statement no longer needs a freeness hypothesis on the complexes. In topology singular chains are free, so the plain tensor product is already the derived one. Over a principal ideal domain Tor vanishes above degree 1, so the spectral sequence collapses to a short exact sequence (our own). The work moves into the existence of flat replacements and the spectral sequence of a double complex.
+
+**Wikipedia:** [Künneth theorem](https://en.wikipedia.org/wiki/K%C3%BCnneth_theorem). It says: “The freeness of the chain modules means that in this geometric case it is not necessary to use any hyperhomology or total derived tensor product.”
+
+**Paper or page:** [More Algebra, Lemma 15.64.4.](https://stacks.math.columbia.edu/tag/0H7Z). It says: “Let R be a ring. Let K and L be objects of Dᵇ(R). There exists a bigraded bounded spectral sequence”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hereditary rings make the Künneth theorem a short exact sequence
+
+**Remember:** Resolutions of length one leave room for only one Tor term.
+
+*Rules out counterexamples.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 55U25. arXiv math.AC, math.AT. Level 3: graduate.
+
+**Definition.** A ring is hereditary when every submodule of a projective module is projective. Equivalently, every module has a projective resolution of length at most 1, so Torₙ = 0 for all n ≥ 2. Principal ideal domains such as Z, and Dedekind domains, are hereditary.
+
+**Problem.** Let R be a commutative hereditary ring, C a complex of projective modules and D any complex. Then there is a short exact sequence 0 → ⊕ Hᵢ(C) ⊗ Hⱼ(D) → Hₙ(C ⊗ D) → ⊕ Tor₁(Hᵢ(C), Hₖ(D)) → 0, with i + j = n and i + k = n − 1. Over Z/4 no such sequence exists in general.
+
+**How the definition helps.** Over a hereditary ring every module has a projective resolution of length at most 1, so no Tor terms above degree 1 can enter the formula. The boundaries of C are submodules of projectives, hence projective, which splits the cycle and boundary sequences (our own). Over Z/4, which is not hereditary, let C be the free resolution ⋯ → Z/4 → Z/4 → Z/4 of Z/2, every map multiplication by 2 (our own). With D = Z/2, H₂(C ⊗ D) = Tor₂(Z/2, Z/2) = Z/2, while the formula would give 0 (our own).
+
+**nLab:** [Künneth theorem](https://ncatlab.org/nlab/show/K%C3%BCnneth+theorem). It says: “For R a principal ideal domain, given a chain complex C• ∈ Ch•(R Mod) of free modules over R and given any other chain complex C′• ∈ Ch•(R Mod), then for each n ∈ ℕ”
+
+**Wikipedia:** [Hereditary ring](https://en.wikipedia.org/wiki/Hereditary_ring). It says: “The ring R is left hereditary if and only if all left modules have projective resolutions of length at most 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Identifying extensions with Ext¹ makes the Baer sum a group law
+
+**Remember:** Carry the sum over from Ext¹, and the group axioms come free.
+
+*True by definition.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** An extension of A by B is a short exact sequence 0 → B → E → A → 0, taken up to isomorphism fixing A and B. The Baer sum of two extensions is formed by a pullback over A followed by a pushout under B. Ext¹(A, B), the first right derived functor of Hom(−, B), is in bijection with these classes.
+
+**Problem.** Equivalence classes of extensions of A by B form an abelian group under Baer sum. The split extension is the zero, and negating the map B → E gives the inverse.
+
+**How the definition helps.** Under the bijection with the group Ext¹(A, B), the Baer sum becomes ordinary addition, so associativity, commutativity and inverses hold at once. Checking these axioms directly with pullbacks and pushouts is long, as the direct proof in the Stacks Project shows. The work moves into the theorem that the bijection turns Baer sum into addition, which Wikipedia attributes to Weibel, Corollary 3.4.5.
+
+**Wikipedia:** [Ext functor](https://en.wikipedia.org/wiki/Ext_functor). It says: “The Baer sum is an explicit description of the abelian group structure on Ext¹<sub>R</sub>(A,B), viewed as the set of equivalence classes of extensions of A by B.”
+
+**Paper or page:** [Homology, Lemma 12.6.3.](https://stacks.math.columbia.edu/tag/010L). It says: “The construction (E₁, E₂) ↦ E₁ + E₂ above defines a commutative group law on Ext<sub>A</sub>(B, A) which is functorial in both variables.”
+
+**Sources:**
+
+- [Reinhold Baer, Erweiterung von Gruppen und ihren Isomorphismen, Mathematische Zeitschrift 38 (1934), 375–416](https://doi.org/10.1007/BF01170643)
+- [Charles A. Weibel, An Introduction to Homological Algebra, Cambridge University Press (1994)](https://doi.org/10.1017/CBO9781139644136)
+
+### Requiring free chain groups makes the universal coefficient theorem for homology hold
+
+**Remember:** Free chains turn cycles over boundaries into a resolution, and Tor appears.
+
+*Rules out counterexamples.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 55U20. arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** A chain complex C of abelian groups is free when each group Cₙ is free abelian. Then the cycles Zₙ and boundaries Bₙ are free too, since subgroups of free abelian groups are free. So 0 → Bₙ → Zₙ → Hₙ(C) → 0 is a free resolution of the homology group Hₙ(C).
+
+**Problem.** Let C be a free chain complex and A an abelian group. There is a natural short exact sequence 0 → Hₙ(C) ⊗ A → Hₙ(C ⊗ A) → Tor₁(Hₙ₋₁(C), A) → 0. It splits, but not naturally. For complexes that are not free this can fail.
+
+**How the definition helps.** Freeness makes 0 → Bₙ → Zₙ → Hₙ(C) → 0 a free resolution, so the correction term is Tor₁ by the definition of Tor. Freeness of Bₙ₋₁ also splits 0 → Zₙ → Cₙ → Bₙ₋₁ → 0, so it stays exact after tensoring with A. Let C be Z/2 in degree 0 and A = Z/2 (our own). The formula would give H₁(C ⊗ A) = Tor₁(Z/2, Z/2) = Z/2, but in fact H₁(C ⊗ A) = 0 (our own). Singular chain groups are free, so the theorem applies to every space.
+
+**nLab:** [universal coefficient theorem](https://ncatlab.org/nlab/show/universal+coefficient+theorem). It says: “as a projective resolution of Hₙ(C•). Therefore by definition of Tor the group Tor₁(Hₙ(C•), A) is the chain homology in degree 1 of”
+
+**Wikipedia:** [Universal coefficient theorem](https://en.wikipedia.org/wiki/Universal_coefficient_theorem). It says: “The usual proof of this result is a pure piece of homological algebra about chain complexes of free abelian groups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Splicing Yoneda extensions makes vanishing of one Ext propagate upward
+
+**Remember:** Every long extension is a splice, so one zero factor kills it.
+
+*True by definition.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A Yoneda extension of degree i is an exact sequence 0 → A → E₁ → ⋯ → Eᵢ → B → 0, up to a natural equivalence. Yoneda's Extⁱ(B, A) is the set of these classes, defined in any abelian category without projectives or injectives. Two extensions can be spliced end to end, which gives the Yoneda product.
+
+**Problem.** In any abelian category, if Extᵖ(B, A) = 0 for all objects A and B, then Extⁱ(B, A) = 0 for all i ≥ p and all objects A and B.
+
+**How the definition helps.** Cut a degree-i extension at its p-th kernel K (our own). This writes it as the splice of a degree-p extension of K by A and a degree-(i − p) extension of B by K. So its class is a Yoneda product with a factor in Extᵖ(K, A) = 0 (our own). The usual proof by dimension shifting needs enough projectives or injectives, which a general abelian category may lack (our own). The work moves into the theorem that Yoneda classes agree with Ext in the derived category.
+
+**Paper or page:** [Derived, Lemma 13.27.8.](https://stacks.math.columbia.edu/tag/0EWW). It says: “If Extᵖ<sub>A</sub>(B, A) = 0 for any pair of objects A, B of A, then Extⁱ<sub>A</sub>(B, A) = 0 for i ≥ p and any pair of objects A, B of A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Ext group lets cohomology be computed from homology
+
+**Remember:** Cohomology is dual homology plus Ext of the homology one degree down.
+
+*Makes the theorem clean to state or prove.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 55U20, 55N10. arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** For abelian groups H and A, choose a free resolution 0 → F₁ → F₀ → H → 0. Then Ext¹(H, A) is the cokernel of Hom(F₀, A) → Hom(F₁, A), the first right derived functor of Hom(−, A). It vanishes when H is free, and Ext¹(Z/m, Z) = Z/m.
+
+**Problem.** For a space X and an abelian group A, Hⁿ(X; A) ≅ Hom(Hₙ(X), A) ⊕ Ext¹(Hₙ₋₁(X), A), by a splitting that is not natural. For a finite CW complex, Hⁿ(X; Z) is a free abelian group of rank βₙ plus the torsion subgroup of Hₙ₋₁(X), where βₙ is the n-th Betti number.
+
+**How the definition helps.** Ext¹ names exactly the part of cohomology that evaluation on cycles misses, so the theorem becomes one split short exact sequence. In the proof, the free resolution 0 → Bₙ₋₁ → Zₙ₋₁ → Hₙ₋₁ → 0 from the chains makes the Ext term appear by definition (our own). Since Hom(Z/m, Z) = 0 and Ext¹(Z/m, Z) = Z/m, torsion in homology moves up one degree in cohomology. The work moves into splitting the cycle and boundary sequences, which needs free chain groups.
+
+**nLab:** [universal coefficient theorem](https://ncatlab.org/nlab/show/universal+coefficient+theorem). It says: “If the coefficients are not a field but an arbitrary abelian group, then this relationship receives a correction by an Ext-group.”
+
+**Wikipedia:** [Universal coefficient theorem](https://en.wikipedia.org/wiki/Universal_coefficient_theorem). It says: “This gives the following statement for integral cohomology: Hⁱ(X;ℤ) ≅ ℤ<sup>βᵢ</sup>(X) ⊕ Tᵢ₋₁.”
+
+**Sources:**
+
+- [Samuel Eilenberg and Saunders MacLane, Group extensions and homology, Annals of Mathematics 43 (1942), 757–831](https://doi.org/10.2307/1968966)
+
+### Vanishing Ext² makes every bounded complex split into its cohomology
+
+**Remember:** With no Ext², nothing can glue the cohomology pieces together.
+
+*Makes the theorem clean to state or prove.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** An abelian category is hereditary when Ext²(B, A) = 0 for all objects A and B. Modules over a principal ideal domain, and coherent sheaves on a smooth projective curve, form hereditary categories. The bounded derived category Dᵇ(A) has bounded complexes as objects, with quasi-isomorphisms inverted.
+
+**Problem.** In a hereditary abelian category, every bounded complex K is isomorphic in the derived category to the direct sum of its cohomology objects Hⁱ(K), each placed in degree i.
+
+**How the definition helps.** Cohomology pieces of a complex can only be glued by maps in Ext groups of degree 2 or more, and the definition kills all of these. Truncation splits off the top cohomology of K by a triangle whose connecting map lies in such an Ext group, so the triangle splits (our own). Induction on the length of K finishes the proof (our own). For abelian groups this says that every bounded complex is quasi-isomorphic to its homology with zero differentials (our own).
+
+**Paper or page:** [Derived, Lemma 13.27.10.](https://stacks.math.columbia.edu/tag/0EWX). It says: “Assume Ext²<sub>A</sub>(B, A) = 0 for any pair of objects A, B of A. Then any object K of Dᵇ(A) is isomorphic to the direct sum of its cohomologies: K ≅ ⊕ Hⁱ(K)\[−i\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing on injectives makes Ext the same whichever variable is resolved
+
+**Remember:** Long exact, starts with Hom, dies on injectives, so it is Ext.
+
+*True by definition.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 18G10. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A δ-functor is a sequence of functors Tⁿ with connecting maps that turn short exact sequences into long exact sequences. Let F be a left exact functor. Its right derived functors are the only δ-functor with T⁰ = F and Tⁿ(I) = 0 for every injective I and n &gt; 0. So derived functors can be recognized without building them from injective resolutions.
+
+**Problem.** For modules A and B, let P → A be a projective resolution and B → I an injective resolution. Then Hⁿ(Hom(P, B)) ≅ Hⁿ(Hom(A, I)) for all n, so both give Extⁿ(A, B).
+
+**How the definition helps.** Fix A. Then B ↦ Hⁿ(Hom(P, B)) is a δ-functor that is Hom(A, B) in degree 0 and vanishes on injective B. So the characterization makes it the right derived functor of Hom(A, −). It has long exact sequences because Hom(Pₙ, −) is exact for projective Pₙ (our own). It vanishes on injective B because Hom(−, B) is then exact, so Hom(P, B) has no higher cohomology (our own). The work moves into Grothendieck's theorem that such δ-functors are universal.
+
+**nLab:** [Ext](https://ncatlab.org/nlab/show/Ext). It says: “If they exist, the classical right derived functors of either functor agree”
+
+**Wikipedia:** [Derived functor](https://en.wikipedia.org/wiki/Derived_functor). It says: “such that for every injective object I of A, Rⁱ(I)=0 for every positive i, then these functors are the right derived functors of R⁰.”
+
+**Sources:**
+
+- [Alexander Grothendieck, Sur quelques points d'algèbre homologique, I, Tôhoku Mathematical Journal 9 (1957), 119–221](https://doi.org/10.2748/tmj/1178244839)
+
+### Yoneda's definition lets every exact functor act on Ext
+
+**Remember:** Apply the functor to the whole exact sequence; that is the map.
+
+*True by definition.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)). arXiv math.CT. Level 3: graduate.
+
+**Definition.** Yoneda defines Extⁱ(B, A) as classes of exact sequences 0 → A → E₁ → ⋯ → Eᵢ → B → 0, with no resolutions. An exact functor is an additive functor that keeps all short exact sequences exact.
+
+**Problem.** Every exact functor F between abelian categories induces a homomorphism Ext¹(B, A) → Ext¹(F(B), F(A)) that sends an extension E to F(E). The same rule works for Yoneda's higher Ext groups.
+
+**How the definition helps.** F sends an exact sequence that represents a class to an exact sequence of the same length, so the map is simply to apply F. With the resolution definition the map is harder, because an exact functor need not send projectives to projectives (our own). For example, the forgetful functor from rational vector spaces to abelian groups is exact, but Q is not a projective abelian group (our own). The same rule for higher Ext groups is our own. The work moves into the theorem that Yoneda classes agree with derived-functor Ext when there are enough projectives.
+
+**Paper or page:** [Homology, Lemma 12.7.3.](https://stacks.math.columbia.edu/tag/010O). It says: “Let F : A → B be an exact functor. For every pair of objects A, B of A the functor F induces an abelian group homomorphism Ext<sub>A</sub>(B, A) ⟶ Ext<sub>B</sub>(F(B), F(A)) which maps the extension E to F(E).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2283,6 +2890,22 @@
 
 - [R. Baer, Erweiterung von Gruppen und ihren Isomorphismen, Mathematische Zeitschrift 38 (1934) 375–416](https://doi.org/10.1007/BF01170643)
 
+### Defining global dimension through Ext makes projective and injective versions agree
+
+**Remember:** Ext does not care which variable you resolve, so both suprema agree.
+
+*True by definition.* MSC 18G20 (Homological dimension (category-theoretic aspects)), 16E10. arXiv math.RA, math.CT. Level 3: graduate.
+
+**Definition.** The global dimension of an abelian category C is the largest i with Extⁱ(M, N) ≠ 0 for some objects M and N. The usual definition for rings is the supremum of the projective dimensions of all modules. The Ext definition does not mention projective or injective objects at all.
+
+**Problem.** In an abelian category with enough projectives and enough injectives, the supremum of the projective dimensions equals the supremum of the injective dimensions. Both equal the global dimension, and C and its opposite category have the same global dimension.
+
+**How the definition helps.** The Ext definition treats the two variables of Ext in the same way, so it is unchanged when arrows are reversed. Each one-sided supremum equals it, because M has projective dimension at most n exactly when Extⁿ⁺¹(M, −) = 0 (our own summary). The dual statement holds for injective dimension. The work goes into this dimension-shifting lemma.
+
+**nLab:** [projective dimension](https://ncatlab.org/nlab/show/projective+dimension). It says: “More generally, a global dimension of an abelian category C may be defined as gl.dim(C) := sup{ i ≥ 0 \| ∃ M,N ∈ C, Extⁱ(M,N) ≠ 0}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining projective dimension by Ext makes it drop on direct summands
 
 **Remember:** A summand cannot have nonzero Ext where the whole module has none.
@@ -2298,6 +2921,60 @@
 **nLab:** [projective dimension](https://ncatlab.org/nlab/show/projective+dimension). It says: “its projective dimension pd(M) is the minimal integer n (if it exists) such that there is a resolution of M”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Defining cotorsion pairs by Ext¹ makes both classes closed under extensions
+
+**Remember:** A class cut out by vanishing Ext¹ inherits every closure property Ext¹ has.
+
+*True by definition. Confidence: medium.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18G15. arXiv math.CT, math.RA. Level 3: graduate.
+
+**Definition.** A cotorsion pair (𝒟, ℰ) is a pair of classes of objects in an abelian category, each defined from the other by vanishing Ext¹. So D lies in 𝒟 exactly when Ext¹(D, E) = 0 for every E in ℰ, and dually.
+
+**Problem.** In every cotorsion pair (𝒟, ℰ), both classes are closed under extensions and direct summands. The class 𝒟 contains all projective objects, and ℰ contains all injective objects.
+
+**How the definition helps.** Each class is cut out by the vanishing of one functor, Ext¹, so it inherits every closure property that this vanishing has. For an extension of two objects of 𝒟, the long exact Ext sequence traps Ext¹(D, E) between two zeros (our own). Direct summands work because Ext¹ turns direct sums into direct sums (our own). So a class such as the cotorsion modules, defined as Ext¹-orthogonal to the flat modules, gets these properties with no further proof (our own).
+
+**nLab:** [cotorsion pair](https://ncatlab.org/nlab/show/cotorsion+pair). It says: “D ∈ 𝒟 if and only if Ext¹(D, E) = 0 for all E ∈ ℰ”
+
+**Sources:**
+
+- [M. Hovey, Cotorsion pairs and model categories, in Interactions between Homotopy Theory and Algebra, Contemporary Mathematics 436 (2007)](https://doi.org/10.1090/conm/436/08413)
+
+### The automorphism condition in Enochs's definition makes covers unique
+
+**Remember:** Self-maps over M must be invertible, so two covers are isomorphic.
+
+*True by definition.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 16D40. arXiv math.RA, math.CT. Level 3: graduate.
+
+**Definition.** For a class 𝒞 of modules, a 𝒞-precover of M is a map φ: C → M with C in 𝒞. Every map from an object of 𝒞 to M must factor through φ. It is a 𝒞-cover if also each endomorphism f of C with φf = φ is an automorphism.
+
+**Problem.** If a module M has a 𝒞-cover, it is unique up to an isomorphism over M. In particular, the flat cover of a module is unique up to isomorphism.
+
+**How the definition helps.** The extra condition turns the usual exchange of maps between two candidates into a uniqueness proof. Two covers have maps f and g between them over M, and then gf and fg are automorphisms, so f is an isomorphism (our own). Precovers alone are not unique, since adding a summand from 𝒞 that maps to zero gives another one (our own). The work moves to existence, proved for flat covers by Bican, El Bashir and Enochs.
+
+**Wikipedia:** [Flat cover](https://en.wikipedia.org/wiki/Flat_cover). It says: “Any module over a ring has a flat cover that is unique up to (non-unique) isomorphism.”
+
+**Sources:**
+
+- [E. E. Enochs, Injective and flat covers, envelopes and resolvents, Israel Journal of Mathematics 39 (1981)](https://doi.org/10.1007/BF02760849)
+
+### Combinatorial simplicial homotopy matches chain homotopy under Dold–Kan
+
+**Remember:** Simplicial homotopies and chain homotopies are the same thing after normalizing.
+
+*Makes the theorem clean to state or prove.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 18N50. arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** Let a, b be two maps U → V of simplicial objects in an additive category. A homotopy from a to b is a map h from U × Δ\[1\] to V. It restricts to a and b at the two ends of the interval Δ\[1\]. Here U × Δ\[1\] is built in each degree from copies of U, so no topology is involved.
+
+**Problem.** In an abelian category, two maps a, b of simplicial objects are homotopic exactly when N(a) and N(b) are chain homotopic. So Dold–Kan identifies simplicial homotopy classes of maps with chain homotopy classes.
+
+**How the definition helps.** The homotopy is itself a map of simplicial objects, so applying the normalization functor to it directly gives chain-level data. The Stacks Project shows that this data is a chain homotopy. It also shows that every chain homotopy on N comes from such a map h. The work is an explicit formula relating the components of h to the chain homotopy.
+
+**Paper or page:** [Simplicial, tag 019S](https://stacks.math.columbia.edu/tag/019S), [Simplicial, tag 01A4](https://stacks.math.columbia.edu/tag/01A4). It says: “If a, b are homotopic, then s(a), s(b) : s(U) → s(V) are homotopic maps of chain complexes. If 𝒜 is abelian, then also N(a), N(b) : N(U) → N(V) are homotopic maps of chain complexes.”
+
+**Sources:**
+
+- [The Stacks Project, Simplicial Methods, Lemmas 14.27.1 and 14.29.3](https://stacks.math.columbia.edu/tag/019S)
 
 ### Defining normalization as the Dold–Kan equivalence makes it exact
 
@@ -2316,6 +2993,103 @@
 **Sources:**
 
 - [Albrecht Dold, Homology of Symmetric Products and Other Functors of Complexes, Annals of Mathematics (1958)](https://doi.org/10.2307/1970043)
+
+### Dold–Kan turns a shifted abelian group into an Eilenberg–MacLane space
+
+**Remember:** Put A in degree n, apply Γ, get K(A, n).
+
+*True by definition.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 55P20. arXiv math.AT, math.CT. Level 3: graduate.
+
+**Definition.** The Dold–Kan correspondence is an equivalence between simplicial abelian groups and chain complexes of abelian groups in degrees n ≥ 0. Its inverse functor Γ builds a simplicial abelian group from a chain complex. An Eilenberg–MacLane space K(A, n) is a space whose only nonzero homotopy group is A, in degree n.
+
+**Problem.** Let A be an abelian group and n ≥ 1. Then Γ(A\[n\]) is a Kan complex whose only nonzero homotopy group is πₙ = A. So its geometric realization is an Eilenberg–MacLane space K(A, n).
+
+**How the definition helps.** Under Dold–Kan, homotopy groups are homology groups, so a complex with one nonzero group gives one nonzero homotopy group. The usual construction of K(A, n) attaches cells to kill homotopy groups one at a time. A simplicial group is always a Kan complex, so nothing else needs checking. The work went into the Dold–Kan theorem and the identification of homotopy groups with homology of the Moore complex.
+
+**nLab:** [Dold-Kan correspondence](https://ncatlab.org/nlab/show/Dold-Kan+correspondence). It says: “The simplicial abelian group Γ(A\[−n\]) is an Eilenberg-MacLane object K(A,n).”
+
+**Wikipedia:** [Dold–Kan correspondence](https://en.wikipedia.org/wiki/Dold%E2%80%93Kan_correspondence). It says: “For a chain complex C that has an abelian group A in degree n and zero in all other degrees, the corresponding simplicial group is the Eilenberg–MacLane space K(A, n).”
+
+**Sources:**
+
+- [Albrecht Dold, Homology of symmetric products and other functors of complexes, Annals of Mathematics 68 (1958) 54–80](https://doi.org/10.2307/1970043)
+- [Daniel M. Kan, Functors involving c.s.s. complexes, Transactions of the American Mathematical Society 87 (1958)](https://doi.org/10.1090/s0002-9947-1958-0131873-8)
+
+### Lax monoidal normalization makes homotopy of a simplicial ring a graded ring
+
+**Remember:** Shuffle maps carry multiplication from simplicial rings to differential graded rings.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 18M05. arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** A lax monoidal functor N comes with natural maps N(A) ⊗ N(B) → N(A ⊗ B). These maps are associative and unital but need not be isomorphisms. For the normalized chain functor they are the Eilenberg–Zilber shuffle maps.
+
+**Problem.** For a simplicial ring R, the normalized complex N(R) is a differential graded ring, and the homotopy groups π∗(R) form a graded ring. If R is commutative, N(R) and π∗(R) are graded-commutative.
+
+**How the definition helps.** A lax monoidal functor sends monoids to monoids, so N(R) inherits a product as soon as N is lax monoidal. The shuffle map is symmetric, so commutative monoids go to graded-commutative ones (our own). The work went into the Eilenberg–Zilber theorem, which supplies the shuffle map and its properties. Because N is not strong monoidal, the nLab says the equivalence matches simplicial rings and dg rings only up to homotopy, as a Quillen equivalence.
+
+**nLab:** [monoidal Dold-Kan correspondence](https://ncatlab.org/nlab/show/monoidal+Dold-Kan+correspondence). It says: “The two functors in the Dold-Kan correspondence individually respect these monoidal structures, in the sense that they are lax monoidal functors (but not strong monoidal functors”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Splitting off degenerate simplices lets homology use only nondegenerate simplices
+
+**Remember:** Degenerate simplices form a contractible summand, so throw them away.
+
+*Makes the theorem clean to state or prove.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 55U10. arXiv math.AT, math.CT. Level 3: graduate.
+
+**Definition.** For a simplicial abelian group A, the alternating face complex C A has Aₙ in degree n. Its differential is the alternating sum of the face maps. The degenerate subcomplex D A is generated by the images of the degeneracy maps. The normalized complex C A / D A is isomorphic to the Moore complex.
+
+**Problem.** For every simplicial abelian group A, the quotient map C A → C A / D A is a chain homotopy equivalence. So the homology of a simplicial set can be computed from the free complex on its nondegenerate simplices.
+
+**How the definition helps.** The normalized complex is a direct summand complementary to D A, so the comparison reduces to one fact: D A is contractible. For a simplicial set X, the quotient of ℤ\[X\] by its degenerate part is free on the nondegenerate simplices (our own). The work went into the Eilenberg–Mac Lane theorem that D A is null-homotopic. So the standard n-simplex, which has infinitely many degenerate simplices, has a finite chain complex.
+
+**nLab:** [Moore complex](https://ncatlab.org/nlab/show/Moore+complex). It says: “i.e. the complex D•(X) is null-homotopic (a contractible chain complex).”
+
+**Paper or page:** [Simplicial, tag 019A](https://stacks.math.columbia.edu/tag/019A). It says: “The canonical morphism of chain complexes N(U) → s(U) is split. In fact, s(U) = N(U) ⊕ D(U) for some complex D(U). The construction U ↦ D(U) is functorial.”
+
+**Sources:**
+
+- [Paul G. Goerss and John F. Jardine, Simplicial Homotopy Theory, Progress in Mathematics 174, Birkhäuser (1999)](https://doi.org/10.1007/978-3-0348-8707-6)
+
+### The Moore complex makes homotopy groups of simplicial abelian groups its homology
+
+**Remember:** A cycle of the Moore complex is a sphere based at zero.
+
+*True by definition.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 55U10. arXiv math.AT, math.CT. Level 3: graduate.
+
+**Definition.** The Moore complex N A of a simplicial abelian group A is a chain complex. In degree n it holds the n-simplices that every face map except d₀ sends to zero. Its differential is d₀. A Kan complex is a simplicial set in which every horn, a simplex boundary with one face missing, can be filled.
+
+**Problem.** Let A be a simplicial abelian group and let n ≥ 0. Then the simplicial homotopy group πₙ(A, 0) is naturally isomorphic to the homology group Hₙ(N A).
+
+**How the definition helps.** The Moore complex is built so that its cycles are exactly the n-simplices with every face zero, which represent elements of πₙ(A, 0). The usual definition uses maps from a sphere to the geometric realization of A. A simplex is homotopic to zero when it is d₀ of an (n+1)-simplex with all other faces zero, that is, a boundary (our own). The work moves into Moore's theorem that every simplicial group is a Kan complex, which makes this homotopy relation behave.
+
+**nLab:** [Moore complex](https://ncatlab.org/nlab/show/Moore+complex). It says: “For A a simplicial abelian group there are natural isomorphisms πₙ(A,0) ≃ Hₙ(N A) ≃ Hₙ(A) between the simplicial homotopy groups and the chain homology groups of the unnormalized and of the normalized chain complexes.”
+
+**Paper or page:** [Simplicial, tag 08NZ](https://stacks.math.columbia.edu/tag/08NZ). It says: “Let X be a simplicial group. Then X is a Kan complex.”
+
+**Sources:**
+
+- [Paul G. Goerss and John F. Jardine, Simplicial Homotopy Theory, Progress in Mathematics 174, Birkhäuser (1999)](https://doi.org/10.1007/978-3-0348-8707-6)
+
+### Through Dold–Kan, every simplicial abelian group splits into Eilenberg–MacLane spaces
+
+**Remember:** Chain complexes over ℤ split up to quasi-isomorphism, so simplicial abelian groups split.
+
+*Makes the theorem clean to state or prove.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 55P20. arXiv math.AT, math.CT. Level 3: graduate.
+
+**Definition.** The Dold–Kan correspondence identifies simplicial abelian groups with chain complexes of abelian groups in degrees n ≥ 0. Weak equivalences of simplicial abelian groups correspond to quasi-isomorphisms, that is, chain maps that induce isomorphisms on homology.
+
+**Problem.** Every simplicial abelian group A is homotopy equivalent, as a simplicial set, to the product over i ≥ 0 of Eilenberg–MacLane spaces K(πᵢA, i). The equivalence is not natural in A.
+
+**How the definition helps.** Dold–Kan turns the topological question into one about chain complexes, where it becomes a fact about the ring ℤ. Over ℤ every submodule of a free module is free. So every chain complex is quasi-isomorphic to the direct sum of its homology groups in their degrees (our own). Applying Γ gives the product of the spaces K(Hᵢ, i), since each simplicial degree sees finitely many factors (our own).
+
+**nLab:** [Dold-Kan correspondence](https://ncatlab.org/nlab/show/Dold-Kan+correspondence). It says: “The simplicial abelian group Γ(A\[−n\]) is an Eilenberg-MacLane object K(A,n).”
+
+**Wikipedia:** [Simplicial group](https://en.wikipedia.org/wiki/Simplicial_group). It says: “any simplicial abelian group A is non-canonically homotopy equivalent to a product of Eilenberg–MacLane spaces, ∏ i≥0 K(πᵢA, i).”
+
+**Sources:**
+
+- [Paul G. Goerss and John F. Jardine, Simplicial Homotopy Theory, Progress in Mathematics 174, Birkhäuser (1999)](https://doi.org/10.1007/978-3-0348-8707-6)
 
 ### Defining cones by maps out of them makes null homotopies extend
 
@@ -2351,6 +3125,140 @@
 
 - [George M. Bergman, On diagram-chasing in double complexes, Theory and Applications of Categories 26 (2012) 60–96, arXiv:1108.0958](https://arxiv.org/abs/1108.0958)
 
+### Identifying homotopic chain maps makes cone triangles satisfy the triangulated axioms
+
+**Remember:** Up to homotopy, the cone of an identity becomes zero.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** The homotopy category K(A) of an additive category A has chain complexes as objects and chain maps up to chain homotopy as morphisms. A triangle in K(A) is distinguished when it is isomorphic to a cone triangle A → B → C(f) → A\[1\]. The category of complexes itself has the same cone triangles, but it does not identify homotopic maps.
+
+**Problem.** For every additive category A, the homotopy category K(A) with cone triangles is a triangulated category, meaning these triangles satisfy Verdier's axioms. The category of complexes is not: for a nonzero complex X, the triangle X → X → 0 → X\[1\] fails there.
+
+**How the definition helps.** Passing to homotopy classes makes the cone of an identity map isomorphic to 0, because that cone is contractible, meaning its identity map is null-homotopic. So the triangle X → X → 0 → X\[1\], which the axioms demand, becomes distinguished. Among plain complexes the cone of the identity stays nonzero, so this triangle fails. The remaining work went into the rotation and octahedral axioms.
+
+**Wikipedia:** [Homotopy category of chain complexes](https://en.wikipedia.org/wiki/Homotopy_category_of_chain_complexes). It says: “is not distinguished since the cone of the identity map is not isomorphic to the complex 0 (however, the zero map C(id) → 0 is a homotopy equivalence, so that this triangle is distinguished in K(A)).”
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/014S). It says: “Let 𝒜 be an additive category. The category K(𝒜) of complexes up to homotopy with its natural translation functors and distinguished triangles as defined above is a triangulated category.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inverting quasi-isomorphisms makes every short exact sequence of complexes a triangle
+
+**Remember:** Cone and cokernel agree in cohomology, not up to homotopy.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** The derived category D(A) of an abelian category A is obtained from complexes by inverting all quasi-isomorphisms. Let 0 → X → Y → Z → 0 be a short exact sequence of complexes, with f the map from X to Y. The comparison map from the cone C(f) to Z sends (x, y) to the image of y.
+
+**Problem.** For every short exact sequence of complexes, the map from the cone of the injection to the cokernel is a quasi-isomorphism. So in D(A) every short exact sequence gives a distinguished triangle, but in K(A), complexes up to homotopy, some do not.
+
+**How the definition helps.** In D(A) the comparison map becomes an isomorphism, so the cokernel can stand in for the cone. The map is onto, and its kernel is the cone of the identity of X, which is acyclic (our own). In K(A) this fails for 0 → ℤ → ℤ → ℤ/2 → 0, with the first map multiplication by 2. Every chain map from ℤ/2 to the cone of this map is zero, so the two are not homotopy equivalent (our own).
+
+**nLab:** [mapping cone](https://ncatlab.org/nlab/show/mapping+cone). It says: “The following discussion revolves around the fact that now cone(f)• as well as Z• are both models for the homotopy cofiber of f.”
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/0152). It says: “Let 𝒜 be an abelian category. The functor Comp(𝒜) → D(𝒜) defined has the natural structure of a δ-functor, with δ<sub>A•→B•→C•</sub> = − p ∘ q⁻¹ with p and q as explained above.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mapping cones turn a quasi-isomorphism test into one acyclicity check
+
+**Remember:** A map is a quasi-isomorphism when its cone has no cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** Let f be a chain map from A to B. Its mapping cone C(f) has C(f)ⁿ = Aⁿ⁺¹ ⊕ Bⁿ and differential (a, b) ↦ (−da, f(a) + db). It sits in a short exact sequence 0 → B → C(f) → A\[1\] → 0. A quasi-isomorphism is a chain map that is an isomorphism on all cohomology groups.
+
+**Problem.** A chain map f between complexes over an abelian category is a quasi-isomorphism exactly when its mapping cone is acyclic. Acyclic means that all its cohomology groups are zero.
+
+**How the definition helps.** The cone is built so that the connecting map of its short exact sequence is the map that f induces on cohomology. So in the long exact sequence, Hⁿ(C(f)) sits between the cokernel of Hⁿ(f) and the kernel of Hⁿ⁺¹(f). Exactness then shows that every Hⁿ(f) is an isomorphism exactly when every Hⁿ(C(f)) is zero. The only real work is a sign check that the connecting map is H(f).
+
+**nLab:** [quasi-isomorphism](https://ncatlab.org/nlab/show/quasi-isomorphism). It says: “A chain map f• : C• → D• is a quasi-isomorphism precisely if its mapping cone cone(f)• ∈ Ch•(𝒜) has all trivial chain homology groups.”
+
+**Wikipedia:** [Mapping cone (homological algebra)](https://en.wikipedia.org/wiki/Mapping_cone_%28homological_algebra%29). It says: “The main use of the cone is to identify quasi-isomorphisms: if the cone is acyclic, then the map is a quasi-isomorphism.”
+
+**Sources:**
+
+- [C. A. Weibel, An Introduction to Homological Algebra, Cambridge University Press (1994)](https://doi.org/10.1017/CBO9781139644136)
+
+### Pretriangulated dg categories give triangulated homotopy categories and exact functors
+
+**Remember:** Take cones at the dg level, and ho(A) gets its triangles free.
+
+*True by definition.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** A dg category has a chain complex of morphisms between any two objects, and composition respects the differentials. Its homotopy category ho(A) keeps the objects and takes the zeroth cohomology of each morphism complex. A is pretriangulated if its image in the homotopy category of dg modules is closed, up to isomorphism, under shifts and mapping cones.
+
+**Problem.** If A is pretriangulated, then ho(A) has a canonical triangulated structure. A dg functor between pretriangulated dg categories then induces an exact functor between their homotopy categories.
+
+**How the definition helps.** The triangles of ho(A) are restricted from the triangulated category of dg modules, so no axiom has to be checked directly on ho(A) (our own). The work went into one theorem: the homotopy category of dg modules is triangulated (Stacks Project, tag 09KJ, for a dg algebra). The nLab also states that a dg functor between pretriangulated dg categories induces a triangulated functor, because dg functors preserve cones and shifts.
+
+**nLab:** [pretriangulated dg-category](https://ncatlab.org/nlab/show/pretriangulated+dg-category). It says: “As an immediate corollary, note that for a pretriangulated dg-category A, its homotopy category ho(A) inherits a canonical triangulated structure.”
+
+**Paper or page:** [Dga, Proposition 22.10.3.](https://stacks.math.columbia.edu/tag/09KJ). It says: “The homotopy category K(Mod\_(A, d)) of differential graded A-modules with its natural translation functors and distinguished triangles is a triangulated category.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Enhanced triangulated categories, Math. USSR Sbornik (1991)](https://doi.org/10.1070/SM1991v070n01ABEH001253)
+
+### Product totalization turns any exact left resolution of complexes into a quasi-isomorphism
+
+**Remember:** Resolve to the left, then totalize with products.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G40. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** The total complex of a double complex has in degree n the sum, or the product, of the terms with p + q = n. The two agree when each diagonal has finitely many nonzero terms. For left resolutions … → A₁ → A₀ → M, the product is the right choice.
+
+**Problem.** Let … → A₁ → A₀ → M → 0 be an exact sequence of complexes of abelian groups. Then the product total complex of the double complex of the A's maps to M by a quasi-isomorphism.
+
+**How the definition helps.** Products let a cycle be killed one diagonal entry at a time, with infinitely many corrections that still form one element (our own). The direct sum version needs an extra exactness condition on kernels (Stacks 09IZ) and fails without it. For example, take M = 0 and A₀ = ℤ in degree 0. For m ≥ 1, let Aₘ be the identity ℤ → ℤ in degrees m − 1 and m. Map Aₘ to Aₘ₋₁ by the identity in degree m − 1. This sequence is exact, yet the direct-sum total complex has H⁰ = ℤ while the product one is acyclic (our own).
+
+**nLab:** [total complex](https://ncatlab.org/nlab/show/total+complex). It says: “Using the four different types of total complexes gives the flexibility to make more nuanced exactness statements for the total complex under various assumptions on the double complex.”
+
+**Paper or page:** [Homology](https://stacks.math.columbia.edu/tag/0E1R). It says: “Let Tot\_π(A<sup>•, •</sup>) be the product total complex associated to the double complex (see proof). Then the map Tot\_π(A<sup>•, •</sup>) → M• induced by A₀• → M• is a quasi-isomorphism.”
+
+**Sources:**
+
+- [C. A. Weibel, An Introduction to Homological Algebra, Cambridge University Press (1994)](https://doi.org/10.1017/CBO9781139644136)
+
+### Property (P) modules make maps in the derived category homotopy classes
+
+**Remember:** Built from free pieces, P sees every acyclic module as zero.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 16E45, 18G80. arXiv math.KT, math.CT. Level 3: graduate.
+
+**Definition.** A dg module P over a dg algebra A has property (P) if it has an exhaustive increasing filtration that splits as graded modules. Its quotients must be direct sums of shifts of A. Such modules play the role of projective resolutions.
+
+**Problem.** If P has property (P), then every map of dg modules from P to an acyclic dg module is null-homotopic. Every dg module receives a quasi-isomorphism from such a P, so maps in the derived category are homotopy classes of maps out of P.
+
+**How the definition helps.** The filtration builds a null homotopy one free piece at a time, because an acyclic module N has no cohomology to obstruct it (our own). The counterexample is over A = k\[ε\]/(ε²): the complex … → A → A → … with every differential multiplication by ε (our own). It is free in each degree and acyclic, but not contractible, so graded freeness is not enough (our own). The work went into the existence of such resolutions (Stacks Project, tag 09KP).
+
+**Paper or page:** [Dga, Lemma 22.20.2.](https://stacks.math.columbia.edu/tag/09KM), [Dga, Lemma 22.20.4.](https://stacks.math.columbia.edu/tag/09KP). It says: “Let P be a differential graded A-module with property (P). Then Hom<sub>K</sub>(Mod\_(A, d))(P, N) = 0 for all acyclic differential graded A-modules N.”
+
+**Sources:**
+
+- [B. Keller, Deriving DG categories, Ann. Sci. École Norm. Sup. 27 (1994) 63–102](https://doi.org/10.24033/asens.1689)
+
+### Strongly pretriangulated dg categories make cones of strict squares canonical
+
+**Remember:** A cone that represents a functor is natural in its arrow.
+
+*True by definition.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT. Level 3: graduate.
+
+**Definition.** In a dg category, a closed map is a morphism that the differential sends to zero. The cone of a closed degree-zero map f is an object that represents the mapping cone of f on morphism complexes. A dg category is strongly pretriangulated if it has a zero object, all shifts and all such cones.
+
+**Problem.** In a strongly pretriangulated dg category, a strictly commuting square of closed degree-zero maps induces a canonical map between the two cones. In a triangulated category, the third map of a morphism of triangles exists but need not be unique.
+
+**How the definition helps.** A cone is defined as an object that represents a functor, so the Yoneda lemma makes it functorial in strict squares (our own). In a triangulated category, any map from X\[1\] to Y fills the identity square on the cone Y ⊕ X\[1\] of the zero map (our own). So when Y = X\[1\], the fill-in is not unique (our own). At the dg level, the other fill-ins come from squares that commute only up to a chosen homotopy (our own).
+
+**nLab:** [pretriangulated dg-category](https://ncatlab.org/nlab/show/pretriangulated+dg-category). It says: “The cone of a closed morphism f : X → Y of degree zero is an object Cone(f) ∈ A representing the functor”
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “One of the technical complications with triangulated categories is the fact the cone construction is not functorial.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Enhanced triangulated categories, Math. USSR Sbornik (1991)](https://doi.org/10.1070/SM1991v070n01ABEH001253)
+
 ### Truncating at kernels and quotients makes bounded-cohomology complexes bounded
 
 **Remember:** Keep the kernel or the quotient where the complex meets the cutoff.
@@ -2366,6 +3274,163 @@
 **Paper or page:** [Stacks Project, Derived, Lemma 13.11.5](https://stacks.math.columbia.edu/tag/05RV). It says: “where all the arrows are quasi-isomorphisms, L• bounded below, M• bounded above, and N• a bounded complex.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Twisted complexes give every dg category a universal pretriangulated envelope
+
+**Remember:** Twisted complexes add every cone to C, and nothing more.
+
+*True by definition.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A twisted complex over a dg category C is a finite family of objects Eᵢ with maps qᵢⱼ of degree i − j + 1. The matrix (qᵢⱼ) is strictly triangular and satisfies d q + q ∘ q = 0. Twisted complexes form a strongly pretriangulated dg category PreTr(C) that contains C.
+
+**Problem.** The embedding of C in PreTr(C) is a pretriangulated envelope: every dg functor from C to a strongly pretriangulated dg category extends along it. The homotopy category of PreTr(C) is the triangulated subcategory generated by C in the homotopy category of dg modules.
+
+**How the definition helps.** A twisted complex is an iterated cone in one object, so the cone of a closed map of twisted complexes is again one (our own). The nLab gives another construction of the envelope: a full subcategory of dg modules generated by the representable ones. The work went into Bondal and Kapranov's proof that twisted complexes give the same envelope.
+
+**nLab:** [pretriangulated dg-category](https://ncatlab.org/nlab/show/pretriangulated+dg-category), [twisted complex](https://ncatlab.org/nlab/show/twisted+complex). It says: “such that any functor u: A → B to a strongly pretriangulated dg-category B factors uniquely through a functor tri(A) → B.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Enhanced triangulated categories, Math. USSR Sbornik (1991)](https://doi.org/10.1070/SM1991v070n01ABEH001253)
+
+### Algebraic de Rham cohomology as hypercohomology recovers a curve's whole H¹
+
+**Remember:** Global forms miss H¹(𝒪); hypercohomology keeps it.
+
+*Rules out counterexamples.* MSC 18G40 (Spectral sequences, hypercohomology), 14F40. arXiv math.AG. Level 3: graduate.
+
+**Definition.** The hypercohomology of a bounded below complex K of sheaves is the cohomology of the global sections of an injective complex quasi-isomorphic to K. Algebraic de Rham cohomology of a smooth complex variety is the hypercohomology of its complex of algebraic differential forms, in the Zariski topology. The naive alternative takes the cohomology of the complex of global algebraic forms.
+
+**Problem.** For a smooth projective complex curve of genus g, the first hypercohomology of its de Rham complex has dimension 2g, the first Betti number. The complex of global algebraic forms has first cohomology of dimension only g.
+
+**How the definition helps.** Hypercohomology keeps the higher cohomology of each term, so H¹(X, 𝒪), of dimension g, contributes beside the g global 1-forms (our own computation). On a projective curve the global functions are constants. So the naive complex is ℂ → H⁰(X, Ω¹) with zero map, and its H¹ has dimension g. Grothendieck's comparison theorem, which carries the real work, identifies hypercohomology with the topological cohomology of the curve.
+
+**nLab:** [hypercohomology](https://ncatlab.org/nlab/show/hypercohomology). It says: “In the context of algebraic geometry, "de Rham cohomology" refers to the hypercohomology of the de Rham complex Ω•.”
+
+**Wikipedia:** [Hodge–de Rham spectral sequence](https://en.wikipedia.org/wiki/Hodge%E2%80%93de_Rham_spectral_sequence). It says: “For smooth proper varieties over a field of characteristic 0, the spectral sequence can also be written as”
+
+**Sources:**
+
+- [Alexander Grothendieck, On the de Rham cohomology of algebraic varieties, Publications Mathématiques de l'IHÉS 29 (1966) 95–103](https://doi.org/10.1007/BF02684807)
+
+### Cartan–Eilenberg resolutions make the second hypercohomology spectral sequence immediate
+
+**Remember:** Resolve the cohomology too, and the spectral sequence follows.
+
+*True by definition.* MSC 18G40 (Spectral sequences, hypercohomology), 18G10. arXiv math.CT, math.AG. Level 3: graduate.
+
+**Definition.** A Cartan–Eilenberg resolution of a bounded below complex K is a double complex I of injective objects with a map from K. In each degree, the boundaries, cycles and cohomology of I in the direction of K are injective resolutions of those of K. An ordinary injective resolution resolves only K itself, up to quasi-isomorphism.
+
+**Problem.** Let F be left exact and I a Cartan–Eilenberg resolution of K. Then the second spectral sequence of F(I) has E₂ terms RᵖF of the q-th cohomology of K. Here RᵖF are the derived functors of F, and the spectral sequence converges to the hypercohomology of K.
+
+**How the definition helps.** The short exact sequences that link boundaries, cycles and cohomology in the resolution consist of injectives, so they split. Hence F commutes with that cohomology, which becomes F of an injective resolution of the cohomology of K (our own). The next step then gives RᵖF of that cohomology at once. The work went into proving that these resolutions exist, with the horseshoe lemma (Stacks 015I).
+
+**Wikipedia:** [Cartan–Eilenberg resolution](https://en.wikipedia.org/wiki/Cartan%E2%80%93Eilenberg_resolution). It says: “The complex Hₚ(P, dʰ) obtained by taking the homology of each row with respect to the horizontal differential forms a projective resolution Hₚ(ε): Hₚ(P, dʰ) → Hₚ(A) of degree p homology of A.”
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/015J). It says: “The spectral sequences (′Eᵣ, ′dᵣ)<sub>r ≥ 0</sub> and (″Eᵣ, ″dᵣ)<sub>r ≥ 0</sub> associated to the double complex F(I<sup>•, •</sup>) satisfy the relations ′E₁<sup>p, q</sup> = R<sup>qF</sup>(Kᵖ) and ″E₂<sup>p, q</sup> = RᵖF(H<sup>q</sup>(K•))”
+
+**Sources:**
+
+- [H. Cartan and S. Eilenberg, Homological Algebra, Princeton University Press (1956)](https://doi.org/10.1515/9781400883844)
+
+### Defining direct images by preimages makes the Leray spectral sequence a composite
+
+**Remember:** Sections over Y of f∗F are sections over X, so derive twice.
+
+*True by definition.* MSC 18G40 (Spectral sequences, hypercohomology), 55N30. arXiv math.AT, math.AG. Level 3: graduate.
+
+**Definition.** For a continuous map f : X → Y, the direct image f∗F has sections (f∗F)(V) = F(f⁻¹V). The higher direct images Rʲf∗F are its right derived functors.
+
+**Problem.** For every abelian sheaf F on X there is a spectral sequence with second page Hⁱ(Y, Rʲf∗F) that converges to Hⁱ⁺ʲ(X, F).
+
+**How the definition helps.** The definition gives Γ(Y, f∗F) = Γ(X, F), so global sections on X are the composite of f∗ and global sections on Y. The functor f∗ has the exact left adjoint f⁻¹, so it sends injective sheaves to injective sheaves (our own summary). The Grothendieck spectral sequence of a composite of functors then gives the Leray spectral sequence, and it carries the work. Without this identity, one would have to build a double complex of resolutions by hand (our own remark).
+
+**Wikipedia:** [Leray spectral sequence](https://en.wikipedia.org/wiki/Leray_spectral_sequence). It says: “Composing this with the functor Γ of taking sections on ShAb(Y) is the same as taking sections on ShAb(X), by the definition of the direct image functor f∗”
+
+**Paper or page:** [Cohomology](https://stacks.math.columbia.edu/tag/01F2). It says: “Let f : X → Y be a morphism of ringed spaces. Let ℱ• be a bounded below complex of 𝒪<sub>X</sub>-modules. There is a spectral sequence”
+
+**Sources:**
+
+- [Birger Iversen, Cohomology of Sheaves, Universitext, Springer (1986)](https://doi.org/10.1007/978-3-642-82783-9)
+
+### Defining pages as homology of earlier pages makes page isomorphisms propagate
+
+**Remember:** An isomorphism on one page is an isomorphism on all later pages.
+
+*True by definition.* MSC 18G40 (Spectral sequences, hypercohomology), 55T05. arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** A spectral sequence is a sequence of pages Eᵣ with differentials dᵣ such that dᵣ ∘ dᵣ = 0. Each page Eᵣ₊₁ is defined as the homology of (Eᵣ, dᵣ). A morphism is a family of maps fᵣ that commute with the differentials, with fᵣ₊₁ induced by fᵣ on homology.
+
+**Problem.** A morphism of spectral sequences that is an isomorphism on some page Eᵣ is an isomorphism on every later page. This is the mapping lemma.
+
+**How the definition helps.** Each page is defined as the homology of the previous one, so a page isomorphism that commutes with differentials passes to the next page. If pages are defined instead as explicit subquotients of a filtered complex, the fact that each page is the homology of the last needs proof. The work moves into that fact and into convergence theorems. Convergence theorems turn page isomorphisms into statements about the abutment, the object the spectral sequence computes.
+
+**nLab:** [spectral sequence](https://ncatlab.org/nlab/show/spectral+sequence). It says: “is a morphism of spectral sequences such that for some r we have that fᵣ : Eᵣ<sup>p,q</sup> → Fᵣ<sup>p,q</sup> is an isomorphism, then also fₛ is an isomorphism for all s ≥ r.”
+
+**Wikipedia:** [Spectral sequence](https://en.wikipedia.org/wiki/Spectral_sequence). It says: “It is straightforward to check that the homology of Eᵣ with respect to this differential is Eᵣ₊₁, so this gives a spectral sequence.”
+
+**Sources:**
+
+- [C. A. Weibel, An Introduction to Homological Algebra, Cambridge University Press (1994)](https://doi.org/10.1017/CBO9781139644136)
+
+### Filtering the holomorphic de Rham complex gives the Frölicher spectral sequence
+
+**Remember:** Filter forms by degree; the pieces are single sheaves Ωⁱ.
+
+*Makes the theorem clean to state or prove.* MSC 18G40 (Spectral sequences, hypercohomology), 14F40, 32Q15. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** On a complex manifold X, the holomorphic de Rham complex Ω• has the Hodge filtration. Its p-th piece is the subcomplex of forms of degree at least p. Hypercohomology is defined on complexes and depends only on their quasi-isomorphism class.
+
+**Problem.** There is a spectral sequence whose first page is Hʲ(X, Ωⁱ) and which converges to Hⁱ⁺ʲ(X, ℂ). On a compact Kähler manifold it degenerates at the first page.
+
+**How the definition helps.** The holomorphic Poincaré lemma makes ℂ → Ω• a quasi-isomorphism, so the hypercohomology of Ω• is the cohomology of X with complex coefficients. The graded pieces of the Hodge filtration are the single sheaves Ωⁱ in degree i. So the spectral sequence of a filtered complex has first page Hʲ(X, Ωⁱ). Degeneration on compact Kähler manifolds is the hard part and comes from Hodge theory.
+
+**Wikipedia:** [Hodge–de Rham spectral sequence](https://en.wikipedia.org/wiki/Hodge%E2%80%93de_Rham_spectral_sequence). It says: “The existence of the spectral sequence as stated above follows from the Poincaré lemma, which gives a quasi-isomorphism of complexes of sheaves”
+
+**Paper or page:** [Cohomology](https://stacks.math.columbia.edu/tag/0BKK). It says: “Let ℱ• be a filtered complex of 𝒪<sub>X</sub>-modules. There exists a canonical spectral sequence”
+
+**Sources:**
+
+- [Alfred Frölicher, Relations between the cohomology groups of Dolbeault and topological invariants, Proceedings of the National Academy of Sciences 41 (1955) 641–644](https://doi.org/10.1073/pnas.41.9.641)
+- [Phillip Griffiths and Joseph Harris, Principles of Algebraic Geometry, Wiley (1978; reprinted 1994)](https://doi.org/10.1002/9781118032527)
+
+### Finite filtrations make an isomorphism on one page a quasi-isomorphism
+
+**Remember:** Finite filtrations let pages decide cohomology.
+
+*Rules out counterexamples.* MSC 18G40 (Spectral sequences, hypercohomology). arXiv math.CT, math.AT. Level 3: graduate.
+
+**Definition.** A filtration F on a complex K is finite when each Kⁿ has integers a ≤ b with FᵃKⁿ = Kⁿ and Fᵇ⁺¹Kⁿ = 0. A finite filtration is exhaustive, with union everything, and separated, with intersection zero.
+
+**Problem.** Let f be a map of complexes with finite filtrations that preserves the filtrations. If f is an isomorphism on some page Eᵣ of the associated spectral sequences, then f is a quasi-isomorphism.
+
+**How the definition helps.** With finite filtrations the spectral sequence converges, so an isomorphism on Eᵣ gives one on the limit page E∞, the associated graded of the cohomology. A five lemma induction up the finite filtration of Hⁿ then finishes the proof (our own). Finiteness removes a counterexample: filter ℤ in degree 0 with every Fᵖ equal to 0, or every Fᵖ equal to ℤ. Then all pages vanish, so the map from the zero complex is an isomorphism on every page but not a quasi-isomorphism (our own).
+
+**Paper or page:** [Homology](https://stacks.math.columbia.edu/tag/012W). It says: “Assume that the filtration on each Kⁿ is finite (see Definition). Then the spectral sequence associated to (K•, F) is bounded, the filtration on each Hⁿ(K•) is finite, the spectral sequence associated to (K•, F) converges to H\*(K•)”
+
+**Sources:**
+
+- [C. A. Weibel, An Introduction to Homological Algebra, Cambridge University Press (1994)](https://doi.org/10.1017/CBO9781139644136)
+
+### Requiring injectives to go to acyclics gives the Grothendieck spectral sequence
+
+**Remember:** Injectives to acyclics, and composite derived functors split into two steps.
+
+*Makes the theorem clean to state or prove.* MSC 18G40 (Spectral sequences, hypercohomology), 18G10. arXiv math.CT, math.AG. Level 3: graduate.
+
+**Definition.** An object B is G-acyclic when RⁱG(B) = 0 for all i &gt; 0. Take left exact functors F from A to B and G from B to C. The key hypothesis is that F sends injectives to G-acyclic objects.
+
+**Problem.** Assume this, with enough injectives in A and B, and let X be a bounded below complex. Then there is a bounded spectral sequence whose E₂ term is RᵖG of the q-th cohomology of RF(X), the derived functor of F at X. It converges to the cohomology of R(G∘F)(X).
+
+**How the definition helps.** The hypothesis is exactly what makes R(G∘F) equal to RG∘RF, because RF(X) is then computed by a complex of G-acyclic objects (Stacks 015M). With that, the spectral sequence is the second hypercohomology spectral sequence of G applied to the complex RF(X) (our own). So the classical composite spectral sequence becomes a corollary of one condition and one double complex. Leray's spectral sequence and the local-to-global Ext spectral sequence are instances.
+
+**Wikipedia:** [Grothendieck spectral sequence](https://en.wikipedia.org/wiki/Grothendieck_spectral_sequence). It says: “such that both 𝒜 and ℬ have enough injectives and F takes injective objects to G-acyclic objects, then for each object A of 𝒜 there is a spectral sequence”
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/015N). It says: “There exists a spectral sequence (Eᵣ, dᵣ)<sub>r ≥ 0</sub> consisting of bigraded objects Eᵣ of 𝒞 with dᵣ of bidegree (r, − r + 1) and with E₂<sup>p, q</sup> = RᵖG(H<sup>q</sup>(RF(X)))”
+
+**Sources:**
+
+- [A. Grothendieck, Sur quelques points d'algèbre homologique, I, Tôhoku Mathematical Journal 9 (1957)](https://doi.org/10.2748/tmj/1178244839)
 
 ### Starting spectral sequences from exact couples makes differentials square to zero
 
@@ -2383,6 +3448,108 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weak Serre subcategories let finiteness pass from a page to cohomology
+
+**Remember:** Closed under kernels, cokernels and extensions is all a spectral sequence needs.
+
+*True by definition.* MSC 18G40 (Spectral sequences, hypercohomology), 18E10. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** A weak Serre subcategory C of an abelian category is a full subcategory with this property. If an exact sequence A₀ → A₁ → A₂ → A₃ → A₄ has its four outer terms in C, then A₂ is in C. So C is closed under kernels, cokernels and extensions.
+
+**Problem.** Let K be a complex with a finite filtration in each degree. If some page Eᵣ lies in a weak Serre subcategory C, then every cohomology object Hⁿ(K) lies in C.
+
+**How the definition helps.** Each later page is a kernel modulo an image of a map between objects of C, so it stays in C. With a finite filtration, Hⁿ(K) is built from finitely many terms of the limit page E∞ by extensions, which stay in C. A Serre subcategory must also contain all subobjects, so the weaker closure covers more cases, like ℚ-vector spaces among abelian groups (our own). The work went into convergence for finite filtrations.
+
+**Paper or page:** [Homology](https://stacks.math.columbia.edu/tag/012W). It says: “if 𝒞 ⊂ 𝒜 is a weak Serre subcategory and for some r we have Eᵣ<sup>p, q</sup> ∈ 𝒞 for all p, q ∈ 𝐙, then Hⁿ(K•) is in 𝒞.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Factoring out projectives makes self-injective module categories triangulated
+
+**Remember:** Quotient by projectives, and short exact sequences become triangles.
+
+*Makes the theorem clean to state or prove.* MSC 18G65 (Stable module categories), 16D50, 18G80. arXiv math.RT. Level 3: graduate.
+
+**Definition.** The stable module category of a ring has the modules as objects, and module maps modulo those that factor through a projective module as morphisms. A self-injective algebra, such as the group algebra kG of a finite group over a field, has the same projective and injective modules. There the syzygy functor Ω, the kernel of a projective cover, has an inverse Ω⁻¹, the cokernel of an injective hull.
+
+**Problem.** For a finite-dimensional self-injective algebra A, the stable module category is triangulated with shift functor Ω⁻¹. Each short exact sequence 0 → X → E → Y → 0 gives a triangle X → E → Y → Ω⁻¹X.
+
+**How the definition helps.** Over a self-injective algebra, factoring through a projective is the same as factoring through an injective. So the quotient is symmetric, and Ω becomes invertible. A short exact sequence gives an element of Ext¹(Y, X), which is a stable map from Y to Ω⁻¹X, and this map closes the triangle. The work goes into Happel's theorem that the stable category of any Frobenius category, where projective and injective objects coincide, is triangulated.
+
+**nLab:** [Frobenius category](https://ncatlab.org/nlab/show/Frobenius+category). It says: “The stable category of a Frobenius category is canonically a triangulated category.”
+
+**Wikipedia:** [Stable module category](https://en.wikipedia.org/wiki/Stable_module_category). It says: “Taking Ω⁻¹ to be the translation functor and such sequences as above to be exact triangles, the stable module category becomes a triangulated category.”
+
+**Sources:**
+
+- [D. Happel, Triangulated Categories in the Representation Theory of Finite Dimensional Algebras, Cambridge University Press (1988)](https://doi.org/10.1017/CBO9780511629228)
+
+### Over any ring, the syzygy is a functor on the stable category
+
+**Remember:** Lifts differ by maps through a projective, so Ω is stably well defined.
+
+*Makes the theorem clean to state or prove.* MSC 18G65 (Stable module categories), 16D40. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** The stable module category of a ring R has the same objects as the module category. Its morphisms are module maps modulo those that factor through a projective module. The syzygy Ω(M) is the kernel of any surjection P → M from a projective module P.
+
+**Problem.** For every ring R, sending M to Ω(M) gives a well-defined additive functor from the stable module category of R to itself.
+
+**How the definition helps.** Two lifts of a map M → N differ by a map through a projective, so they agree in the stable category (our own). Without the quotient, a map M → N has many different lifts Ω(M) → Ω(N). Schanuel's lemma shows that two choices of P give stably isomorphic syzygies (our own). The stable category is the place where every choice disappears.
+
+**Wikipedia:** [Stable module category](https://en.wikipedia.org/wiki/Stable_module_category). It says: “One important property of the stable module category is it allows defining the Ω functor for general rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quotienting by perfect complexes makes singularity categories vanish exactly for regular rings
+
+**Remember:** Singularity category zero means every module has a finite resolution.
+
+*True by definition.* MSC 18G65 (Stable module categories), 13D09, 13H05. arXiv math.AC, math.RT. Level 3: graduate.
+
+**Definition.** For a commutative Noetherian ring R, take the bounded derived category of finitely generated modules. A perfect complex is one isomorphic there to a bounded complex of finitely generated projectives. The singularity category Dsg(R) is the Verdier quotient by the perfect complexes, the triangulated category in which perfect complexes become zero.
+
+**Problem.** A commutative Noetherian ring R has Dsg(R) = 0 if and only if R is regular. Here regular means that every localization of R at a prime is a regular local ring.
+
+**How the definition helps.** An object is zero in the quotient exactly when it is perfect, so Dsg(R) = 0 says that every finitely generated module is perfect. The work goes into the Auslander–Buchsbaum–Serre theorem: a local ring is regular if and only if its residue field has finite projective dimension. Given that theorem, the residue fields of R are perfect if Dsg(R) = 0, and Stacks 066Z gives the converse (our own assembly).
+
+**Paper or page:** [More Algebra, tag 066Z](https://stacks.math.columbia.edu/tag/066Z). It says: “a complex of R-modules K• is perfect if and only if K• ∈ Dᵇ(R) and each Hⁱ(K•) is a finite R-module.”
+
+**Sources:**
+
+- [Ragnar-Olaf Buchweitz, Maximal Cohen–Macaulay Modules and Tate Cohomology, Mathematical Surveys and Monographs 262, AMS (2021)](https://doi.org/10.1090/surv/262)
+
+### Stable Hom of syzygies computes Ext over a group algebra
+
+**Remember:** Ext is stable Hom out of a syzygy.
+
+*Makes the theorem clean to state or prove.* MSC 18G65 (Stable module categories), 20J06. arXiv math.RT, math.GR. Level 3: graduate.
+
+**Definition.** In the stable module category, Hom(M, N) is the group of module maps modulo those that factor through a projective module. The syzygy Ω(M) is the kernel of a surjection from a projective module onto M. Over a group algebra kG of a finite group, projective and injective modules coincide.
+
+**Problem.** Let G be a finite group, k a field and M, N two kG-modules. Then for every n ≥ 1, Extⁿ(M, N) is isomorphic to the stable Hom from Ωⁿ(M) to N.
+
+**How the definition helps.** The stable category is the place where Ext becomes a Hom group, so the theorem is a statement inside one category. Take 0 → Ω(M) → P → M → 0. Then Ext¹(M, N) is Hom(Ω(M), N) modulo the maps that extend to P. Since projective kG-modules are injective, these are exactly the maps through a projective (our own), and dimension shifting gives higher n.
+
+**Wikipedia:** [Stable module category](https://en.wikipedia.org/wiki/Stable_module_category). It says: “One can show that there exist isomorphisms H̲o̲m̲(Ωⁿ(M), N) ≅ Extⁿ<sub>kG</sub>(M,N) ≅ H̲o̲m̲(M, Ω⁻ⁿ(N)) for every positive integer n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A right adjoint to the inclusion makes a triangulated subcategory thick
+
+**Remember:** An adjoint splits each object, and the split forces thickness.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A full triangulated subcategory A of D is right admissible if its inclusion into D has a right adjoint. The right orthogonal of A is the class of objects that receive no nonzero maps from objects of A. Strictly full means full and closed under isomorphic objects.
+
+**Problem.** A is right admissible exactly when each object X sits in a triangle with first term in A and third term in the right orthogonal. If this holds, then A is thick, and a strictly full A equals the left orthogonal of its right orthogonal.
+
+**How the definition helps.** The triangle form shows that A is, up to isomorphism, a left orthogonal, and left orthogonals are thick automatically (our own). They are defined by vanishing of maps, so they are closed under summands and cones (Stacks Lemma 13.40.4). So a triangulated subcategory that is not thick, such as the complexes with even Euler characteristic, has no right adjoint to its inclusion (our own).
+
+**Paper or page:** [Derived, Lemma 13.40.7](https://stacks.math.columbia.edu/tag/0CQS). It says: “for every X in D there exists a distinguished triangle A → X → B → A\[1\] in D with A ∈ Ob(A) and B ∈ Ob(A⊥).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Axioms of a t-structure make truncation right adjoint to inclusion
 
 **Remember:** Maps from low objects factor uniquely through the low part.
@@ -2396,6 +3563,22 @@
 **How the definition helps.** The axioms already contain both facts the proof needs, so it is two lines (our own). For a low object A, apply maps from A to the triangle of X (our own). The axioms make all maps from A to the high part and to its shift zero (our own). So maps from A to X equal maps from A to the low part (our own). The work goes into checking these axioms for complexes, using truncation at kernels (our own).
 
 **nLab:** [t-structure](https://ncatlab.org/nlab/show/t-structure). It says: “For all objects X ∈ C there is a fiber sequence”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Countable direct sums make every idempotent split in a triangulated category
+
+**Remember:** A telescope of an idempotent is its image.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories). arXiv math.CT. Level 3: graduate.
+
+**Definition.** The homotopy colimit of a sequence of maps Xₙ → Xₙ₊₁ is the cone of 1 − shift on the sum of the Xₙ. An idempotent e, a map with e² = e, splits if X ≅ Y ⊕ Y′ with e the projection onto Y.
+
+**Problem.** If a pre-triangulated category has countable direct sums, then every idempotent in it splits, so the category is Karoubian. The same holds if it has countable products.
+
+**How the definition helps.** Countable sums let a homotopy colimit stand in for the missing image of an idempotent. The homotopy colimit of X → X → …, with all maps e, serves as the image of e (our own, after Bökstedt and Neeman). The same construction with 1 − e serves as the kernel, and the two together split X (our own). Without sums the result fails: among complexes with even Euler characteristic, the projection of k ⊕ k onto one summand does not split (our own).
+
+**Paper or page:** [Derived, Lemma 13.4.14](https://stacks.math.columbia.edu/tag/05QW). It says: “If D has countable coproducts, then D is Karoubian.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2417,6 +3600,26 @@
 
 - [Jean-Louis Verdier, Des catégories dérivées des catégories abéliennes, Astérisque 239](https://doi.org/10.24033/ast.364)
 
+### Defining the Serre functor by representability makes it unique and exact
+
+**Remember:** An object fixed by a universal property allows only one choice.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14F08. arXiv math.CT, math.AG. Level 3: graduate.
+
+**Definition.** Let T be a triangulated category over a field k, that is, a category with shifts and distinguished triangles, like a derived category. Assume that its Hom spaces are finite-dimensional. A Serre functor is an equivalence S of T with natural isomorphisms Hom(X, Y) ≅ Hom(Y, S X)\*, where \* is the dual space. So S X represents the contravariant functor Y ↦ Hom(X, Y)\*.
+
+**Problem.** If a Serre functor exists, it is unique up to a unique isomorphism. It is also exact, so it sends distinguished triangles to distinguished triangles.
+
+**How the definition helps.** The definition says that S X represents a fixed functor, and the Yoneda lemma makes a representing object unique up to unique isomorphism (our own). A formula such as E ↦ E ⊗ ω\[n\] on a variety would hide this uniqueness (our own). Stacks Lemma 0FY4 states the definition in this form, and exactness needs the short argument given with Lemma 0FY6. The work goes into existence, which for varieties is Serre–Grothendieck duality.
+
+**nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “A Serre functor does not always exist, but when it does then it is unique up to graded natural isomorphism.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.3.5](https://stacks.math.columbia.edu/tag/0FY6), [Derived Categories of Varieties, Lemma 57.3.1](https://stacks.math.columbia.edu/tag/0FY4). It says: “If a Serre functor exists, then it is unique up to unique isomorphism and it is an exact functor of triangulated categories.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+
 ### Defining Verdier quotients by a universal property makes exact functors factor
 
 **Remember:** Any exact functor that kills A passes through the quotient.
@@ -2434,6 +3637,111 @@
 **Sources:**
 
 - [Jean-Louis Verdier, Des catégories dérivées des catégories abéliennes, Astérisque 239](https://doi.org/10.24033/ast.364)
+
+### Finite Hom spaces let every exceptional object split off a semiorthogonal piece
+
+**Remember:** An exceptional object projects out with one finite sum.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14F08. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** A full triangulated subcategory B of T is right admissible if its inclusion has a right adjoint R. That is, Hom(b, X) ≅ Hom(b, R X) for every b in B. Its right orthogonal B⊥ is the subcategory of objects with no nonzero maps from B. A right admissible B gives the semiorthogonal decomposition T = ⟨B⊥, B⟩.
+
+**Problem.** Let T be a triangulated category over k whose spaces ⊕ Hom(X, Y\[t\]) are finite-dimensional. Let E be exceptional, meaning that Hom(E, E) = k and Hom(E, E\[t\]) = 0 for t ≠ 0. Then the subcategory ⟨E⟩ of finite sums of shifts of E is right admissible, so T = ⟨E⊥, ⟨E⟩⟩.
+
+**How the definition helps.** The right adjoint is X ↦ ⊕ Hom(E, X\[t\]) ⊗ E\[−t\], a finite sum because the Hom spaces are finite (our own). Exceptionality makes ⟨E⟩ equivalent to the derived category of vector spaces, which is why this formula is a right adjoint (our own). The cone of the evaluation map to X then lies in E⊥, and that triangle is the decomposition. For a Fano variety in characteristic zero, Hⁱ(X, O) = 0 for i &gt; 0, so O is exceptional and Dᵇ(X) = ⟨O⊥, O⟩.
+
+**Wikipedia:** [Semiorthogonal decomposition](https://en.wikipedia.org/wiki/Semiorthogonal_decomposition). It says: “In a proper triangulated category 𝒯 over k, such as the bounded derived category of coherent sheaves on a smooth projective variety, every exceptional collection generates an admissible subcategory, and so it determines a semiorthogonal decomposition”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### K-injective complexes make products in the derived category termwise products
+
+**Remember:** Into K-injectives, homotopy classes are derived maps, so products are termwise.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 18E10. arXiv math.CT. Level 3: graduate.
+
+**Definition.** A complex I is K-injective if every map from an acyclic complex to I is null-homotopic. Equivalently, maps into I in the homotopy category already equal maps into I in the derived category.
+
+**Problem.** In a Grothendieck abelian category, the derived category has all products. The product of a family is the termwise product of K-injective complexes that represent its members.
+
+**How the definition helps.** Maps into a K-injective complex are computed up to homotopy, and in the homotopy category the termwise product is already a product. Termwise products of K-injective complexes stay K-injective (Stacks Lemma 13.31.5), so the product passes to the derived category. The work goes into the existence of K-injective resolutions in Grothendieck categories (Stacks Theorem 19.12.6). Termwise products of arbitrary complexes do not work, because products of exact sequences of sheaves need not be exact (our own).
+
+**Paper or page:** [Injectives, Lemma 19.13.4](https://stacks.math.columbia.edu/tag/07D9). It says: “Let A be a Grothendieck abelian category. Then (1) D(A) has both direct sums and products, (2) direct sums are obtained by taking termwise direct sums of any complexes, (3) products are obtained by taking termwise products of K-injective complexes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Non-degeneracy makes the cohomology functors of a t-structure detect isomorphisms
+
+**Remember:** Non-degenerate t-structures hide nothing from their cohomology.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories). arXiv math.CT. Level 3: graduate.
+
+**Definition.** Each t-structure has cohomology functors Hⁿ from D to its heart. The t-structure is non-degenerate if the only objects that lie in every D≤n, or in every D≥n, are zero.
+
+**Problem.** For a non-degenerate t-structure, a map f is an isomorphism exactly when Hⁿ(f) is an isomorphism for every n. Also, D≤n then consists exactly of the objects whose Hⁱ vanish for all i &gt; n.
+
+**How the definition helps.** Non-degeneracy rules out nonzero objects that the heart cannot see, and they are the only obstacle. Counterexample (our own): on a nonzero D, take D≤0 = D and D≥0 = 0, with truncation triangles X → X → 0 → X\[1\]. The heart is zero, so every Hⁿ vanishes, yet D is not zero. With non-degeneracy, an object with no cohomology is zero, and the cone of f gives the result (our own).
+
+**Wikipedia:** [T-structure](https://en.wikipedia.org/wiki/T-structure). It says: “A t-structure is non-degenerate if the intersection of all D≤n, as well as the intersection of all D≥n, consists only of zero objects. For a non-degenerate t-structure, the collection of functors {Hⁿ}ₙ∈ℤ is conservative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Requiring thickness makes a subcategory exactly the kernel of its Verdier quotient
+
+**Remember:** Quotients kill summands too, so only thick subcategories are kernels.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories), 18E35. arXiv math.CT. Level 3: graduate.
+
+**Definition.** The Verdier quotient D/B of a triangulated category D by a triangulated subcategory B inverts every map whose cone lies in B. The subcategory B is thick if it contains every direct summand of each of its objects.
+
+**Problem.** The objects that become zero in D/B are exactly the direct summands of objects of B. So B is the kernel of the quotient functor exactly when B is thick.
+
+**How the definition helps.** A zero object has only zero summands, so every kernel is thick, and thickness removes the only mismatch. Counterexample (our own): in the bounded derived category of vector spaces of finite dimension, let B hold the complexes with even Euler characteristic. B is triangulated, because Euler characteristic is additive on triangles and a shift only changes its sign. But k is a summand of k ⊕ k, which lies in B, so k becomes zero in D/B although k is not in B.
+
+**nLab:** [Bousfield localization of triangulated categories](https://ncatlab.org/nlab/show/Bousfield+localization+of+triangulated+categories). It says: “The Verdier quotient B/A has the property that the only objects whose images in B/A are isomorphic to the zero object are the objects from the thickening of A (the smallest thick subcategory containing A).”
+
+**Paper or page:** [Derived, Lemma 13.6.9](https://stacks.math.columbia.edu/tag/05RK). It says: “In other words it is the smallest strictly full saturated triangulated subcategory of D containing B.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Semiorthogonal decompositions split the Grothendieck group into a direct sum
+
+**Remember:** A canonical filtration of every object splits K₀ into pieces.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 18F30, 14F08. arXiv math.CT, math.KT. Level 3: graduate.
+
+**Definition.** A semiorthogonal decomposition D = ⟨A₁, …, Aₙ⟩ is a list of full triangulated subcategories that generate D. It asks for no nonzero maps from Aⱼ to Aᵢ when i &lt; j. Then every object T has a filtration whose successive cones lie in A₁, …, Aₙ. The filtration is unique up to unique isomorphism.
+
+**Problem.** A semiorthogonal decomposition D = ⟨A₁, …, Aₙ⟩ gives K₀(D) ≅ K₀(A₁) ⊕ … ⊕ K₀(Aₙ). Here K₀ is the Grothendieck group. It has a generator for each object and the relation \[Y\] = \[X\] + \[Z\] for each distinguished triangle X → Y → Z.
+
+**How the definition helps.** The definition gives each object a filtration that is unique up to unique isomorphism, so its pieces are functors of the object. Their classes invert the map from K₀(A₁) ⊕ … ⊕ K₀(Aₙ) to K₀(D) that adds up classes (our own). Bondal and Kapranov's proof that the filtration is unique carries the work. It makes each projection to Aᵢ an exact functor, which respects the relations of K₀ (our own).
+
+**Wikipedia:** [Semiorthogonal decomposition](https://en.wikipedia.org/wiki/Semiorthogonal_decomposition). It says: “Using that observation, a semiorthogonal decomposition 𝒯=⟨𝒜₁,…,𝒜ₙ⟩ implies a direct sum splitting of Grothendieck groups”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+
+### The octahedral axiom makes maps with cones in a subcategory compose
+
+**Remember:** The cone of a composite is an extension of the two cones.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G80 (Derived categories, triangulated categories), 18E35. arXiv math.CT. Level 3: graduate.
+
+**Definition.** The octahedral axiom says that for composable maps u and v, the cones of u, v and vu fit into one distinguished triangle. For a full triangulated subcategory D′ of D, let S be the class of maps whose cone is isomorphic to an object of D′.
+
+**Problem.** For every full triangulated subcategory D′ of a triangulated category D, the class S is a multiplicative system compatible with the triangulated structure. So the Verdier quotient D/D′, defined as S⁻¹D, exists as a triangulated category.
+
+**How the definition helps.** The octahedral axiom makes the cone of vu an extension of the cones of u and v (our own). So this cone lies in D′ when the other two do, and S is closed under composition (our own). Wikipedia reads the axiom as a third isomorphism theorem, (Z/X)/(Y/X) ≅ Z/Y. Stacks Lemma 13.6.6 checks the remaining conditions.
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “Putting these together, the octahedral axiom asserts the "third isomorphism theorem":”
+
+**Paper or page:** [Derived, Lemma 13.6.6](https://stacks.math.columbia.edu/tag/05RG). It says: “Then S is a multiplicative system compatible with the triangulated structure on D.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Cartesian products force a unique comonoid structure on every object
 
@@ -3472,6 +4780,24 @@
 
 - [Henning Krause, Serre's theorem for coherent sheaves via Auslander's techniques, arXiv:2312.13755v2 (2024)](https://arxiv.org/abs/2312.13755v2)
 
+### Coherent functors on an abelian category have global dimension at most two
+
+**Remember:** Hom keeps kernels, so every coherent functor has a resolution of length two.
+
+*Makes the theorem clean to state or prove.* MSC 18A25 (Functor categories, comma categories), 16E10, 18E10. arXiv math.CT, math.RT. Level 4: research.
+
+**Definition.** A coherent functor on an abelian category C is a contravariant additive functor F to abelian groups with a presentation. That is an exact sequence Hom(−, a) → Hom(−, b) → F → 0 for some objects a and b. The coherent functors form an abelian category. By the Yoneda lemma, the representable functors Hom(−, b) are projective in it.
+
+**Problem.** Every coherent functor on an abelian category has projective dimension at most 2. So the category of coherent functors has global dimension at most 2 (Auslander). For modules over a representation-finite algebra, this category is the module category of the Auslander algebra.
+
+**How the definition helps.** The presentation comes from a map f from a to b in C, and the kernel of the induced map is again representable. Since Hom(x, −) keeps kernels, that kernel is Hom(−, ker f) (our own summary). So 0 → Hom(−, ker f) → Hom(−, a) → Hom(−, b) → F → 0 is a projective resolution of length 2. All the work sits in the Yoneda lemma and the existence of kernels in C.
+
+**nLab:** [abelianization of an additive category](https://ncatlab.org/nlab/show/abelianization+of+an+additive+category). It says: “In the case where C is abelian already, finitely presentable additive presheaves of abelian groups were studied under the name of coherent functors by Auslander.”
+
+**Sources:**
+
+- [M. Auslander, Coherent functors, Proceedings of the Conference on Categorical Algebra, Springer (1966)](https://doi.org/10.1007/978-3-642-99902-4_8)
+
 ### A ternary factorization system is two nested factorization systems
 
 **Remember:** Two nested two-step factorizations give one three-step factorization.
@@ -4186,6 +5512,67 @@
 - [Ignacio López Franco, Tensor products of finitely cocomplete and abelian categories, Journal of Algebra 396 (2013) 207–219](https://doi.org/10.1016/j.jalgebra.2013.08.015)
 - [Alexandru Chirvasitu, Theo Johnson-Freyd, The fundamental pro-groupoid of an affine 2-scheme, Applied Categorical Structures 21 (2013) 469–522, arXiv:1105.3104](https://arxiv.org/abs/1105.3104)
 
+### Gabriel's spectrum of indecomposable injectives recovers a noetherian scheme
+
+**Remember:** Indecomposable injectives are the points, so the category knows its scheme.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18E10 (Abelian categories, Grothendieck categories), 14A15, 14A22. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** The Gabriel spectrum of a Grothendieck category is the set of isomorphism classes of indecomposable injective objects. It is defined from the abelian category alone, with no ring or space given.
+
+**Problem.** Two noetherian schemes with equivalent categories of quasi-coherent sheaves are isomorphic. Rosenberg later extended this to all schemes, using a different spectrum.
+
+**How the definition helps.** An equivalence of categories preserves indecomposable injectives, so it gives a bijection of Gabriel spectra automatically. For a noetherian scheme, the indecomposable injectives correspond one-to-one to the points (our own). The work is Gabriel's proof that the topology and the structure sheaf can be recovered from localizing subcategories.
+
+**nLab:** [Des Catégories Abéliennes](https://ncatlab.org/nlab/show/Des+Cat%C3%A9gories+Ab%C3%A9liennes), [Gabriel-Rosenberg theorem](https://ncatlab.org/nlab/show/Gabriel-Rosenberg+theorem). It says: “for any abelian category Gabriel introduces a spectrum whose points are (isomorphism classes of) indecomposable injectives”
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “This category encodes all the relevant geometric information about V, and V can be recovered from Qcoh(V) (the Gabriel–Rosenberg reconstruction theorem).”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
+### Gabriel–Popescu makes every Grothendieck category locally presentable
+
+**Remember:** A reflective piece of a module category inherits small generators.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18E10 (Abelian categories, Grothendieck categories), 18C35, 18E20. arXiv math.CT. Level 4: research.
+
+**Definition.** A Giraud subcategory of Mod(R) is a reflective full subcategory with an exact reflector. A category is locally presentable when it has all colimits and a set 𝒢 of objects with this property. For one infinite cardinal κ, every object is a κ-filtered colimit of objects in 𝒢. The objects in 𝒢 must be κ-presentable: maps out of them commute with κ-filtered colimits.
+
+**Problem.** Every Grothendieck category is locally presentable. So the small object argument and the theory of accessible categories apply to it.
+
+**How the definition helps.** Gabriel–Popescu puts the category inside Mod(R) as a reflective subcategory, and module categories are locally presentable. A reflective subcategory closed under κ-filtered colimits for some κ is again locally presentable, a standard fact of accessible category theory (our own). Beke gives the details of this argument.
+
+**nLab:** [Grothendieck category](https://ncatlab.org/nlab/show/Grothendieck+category). It says: “Any Grothendieck abelian category is locally presentable.”
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “As a consequence of Gabriel–Popescu, one can show that every Grothendieck category is locally presentable.”
+
+**Sources:**
+
+- [T. Beke, Sheafifiable homotopy model categories, Math. Proc. Cambridge Philos. Soc. 129 (2000) 447–475](https://doi.org/10.1017/S0305004100004722)
+- [M. Takeuchi, A simple proof of Gabriel and Popesco's theorem, J. Algebra 18 (1971) 112–113](https://doi.org/10.1016/0021-8693(71)90130-X)
+
+### In locally noetherian categories, noetherian objects determine the localizing subcategories
+
+**Remember:** Small noetherian pieces decide every localizing subcategory.
+
+*Makes the theorem clean to state or prove.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E40, 16D90. arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** A Grothendieck category is locally noetherian when it has a set of noetherian generators. A noetherian object is one whose subobjects satisfy the ascending chain condition.
+
+**Problem.** In a locally noetherian Grothendieck category 𝒜, sending a localizing subcategory to its noetherian objects is a bijection onto the Serre subcategories of noetherian objects. For a noetherian ring R this matches localizing subcategories of Mod(R) with Serre subcategories of finitely generated modules.
+
+**How the definition helps.** Every object is the directed union of its noetherian subobjects, so a localizing subcategory, closed under subobjects and colimits, is fixed by its noetherian members (our own). Conversely a Serre subcategory of noetherian objects generates a localizing subcategory by directed unions (our own). The work is Gabriel's proof that this generated class meets the noetherian objects in exactly the class we started from.
+
+**nLab:** [localizing subcategory](https://ncatlab.org/nlab/show/localizing+subcategory). It says: “the assignment which to any localizing subcategory T⊂A assigns the full subcategory T<sub>Noether</sub>⊂T of noetherian objects in T is the bijection between the localizing subcategories in A and (strongly) thick subcategories in A<sub>Noether</sub>”
+
+**Wikipedia:** [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “A Grothendieck category is called locally Noetherian if it has a set of Noetherian generators; an example is the category of left modules over a left-Noetherian ring.”
+
+**Sources:**
+
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
 ### Left and right abelian envelopes of a thin category are Ringel dual
 
 **Remember:** Same thin category, other side of the envelope, Ringel dual result.
@@ -4204,6 +5591,120 @@
 
 - [Agnieszka Bodzenta, Alexey Bondal, Abelian envelopes of exact categories and highest weight categories, arXiv:2012.15707 (2024)](https://arxiv.org/abs/2012.15707v4)
 - [Agnieszka Bodzenta, Alexey Bondal, Abelian envelopes of exact categories and highest weight categories, Mathematische Zeitschrift (2024)](https://doi.org/10.1007/s00209-024-03543-3)
+
+### Universal properties make abelianizing a localization a Serre quotient
+
+**Remember:** Invert, then abelianize, equals abelianize, then kill kernels and cokernels.
+
+*True by definition. Confidence: medium.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E35. arXiv math.CT. Level 4: research.
+
+**Definition.** The free abelian category Ab(add(𝒞)) of a category 𝒞 has a functor from 𝒞 with a universal property. Functors from 𝒞 into an abelian category 𝒜 match exact functors from Ab(add(𝒞)) to 𝒜. The localization 𝒞\[Σ⁻¹\] and the Serre quotient are also defined by universal properties.
+
+**Problem.** Let Σ be a class of morphisms in a category 𝒞, and let 𝒮 be the Serre subcategory generated by the kernels and cokernels of Σ. Then the free abelian category on 𝒞\[Σ⁻¹\] is the Serre quotient by 𝒮 of the free abelian category on 𝒞.
+
+**How the definition helps.** Both sides classify the same thing, so they agree by Yoneda. Exact functors out of either side are functors 𝒞 → 𝒜 that invert Σ (our own). An exact functor inverts a map exactly when it kills its kernel and cokernel, which matches the Serre subcategory (our own). A direct proof would have to compare Hom-groups in the two categories (our own). The work went into the existence of the free abelian category, due to Freyd, and of Serre quotients.
+
+**Paper or page:** [Abelian versus triangulated quotients, Proposition 6](https://arxiv.org/abs/2503.07194), [Abelian versus triangulated quotients, Lemma 5](https://arxiv.org/abs/2503.07194). It says: “Then the localisation 𝒞 → 𝒞\[Σ⁻¹\] induces an equivalence Ab(add(𝒞))/𝒮 ⥲ Ab(add(𝒞\[Σ⁻¹\])), where 𝒮 denotes the Serre subcategory generated by the kernels and cokernels of the morphisms in Σ”
+
+**Sources:**
+
+- [Abelian versus triangulated quotients, arXiv:2503.07194 (2025)](https://arxiv.org/abs/2503.07194)
+
+### Well-powered abelian categories have Serre quotients with small Hom-sets
+
+**Remember:** Few subobjects means a set-sized colimit, so small Hom-sets.
+
+*Rules out counterexamples.* MSC 18E10 (Abelian categories, Grothendieck categories), 18E35. arXiv math.CT. Level 4: research.
+
+**Definition.** An abelian category is well-powered when the subobjects of each object form a set, not a proper class. Gabriel defines Hom from X to Y in 𝒜/ℬ as a direct limit of Hom(X′, Y/Y′). The limit runs over subobjects X′ ⊆ X and Y′ ⊆ Y with X/X′ and Y′ in ℬ.
+
+**Problem.** If 𝒜 has small Hom-sets, which are sets rather than proper classes, and is well-powered, then every Serre quotient 𝒜/ℬ has small Hom-sets. Grothendieck categories are well-powered, so their Serre quotients are honest categories.
+
+**How the definition helps.** Gabriel's formula makes each Hom of the quotient a colimit of small Hom-sets indexed by pairs of subobjects. Well-poweredness makes that index a set, so the colimit is a set (our own). Without it, the quoted paper gives an abelian category with small Hom-sets and a Serre quotient whose Hom-sets are not small. For a Grothendieck category, Stacks bounds the number of subobjects by the maps out of a generator.
+
+**Wikipedia:** [Quotient of an abelian category](https://en.wikipedia.org/wiki/Quotient_of_an_abelian_category), [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “where the limit is taken over subobjects X′ ⊆ X and Y′ ⊆ Y such that X/X′∈ℬ and Y′ ∈ ℬ.”
+
+**Paper or page:** [Abelian versus triangulated quotients, Proposition 7](https://arxiv.org/abs/2503.07194), [Injectives, Lemma 19.11.1](https://stacks.math.columbia.edu/tag/0E8N). It says: “The abelian category Ab(add(𝒞)) is a 𝔘-category, and there exists a Serre subcategory such that the corresponding quotient is not a 𝔘-category.”
+
+**Sources:**
+
+- [Abelian versus triangulated quotients, arXiv:2503.07194 (2025)](https://arxiv.org/abs/2503.07194)
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
+### Barr's embedding lets statements about regular categories be checked in sets
+
+**Remember:** If it holds in sets with finite limits and images, it holds regularly.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18E20 (Categorical embedding theorems), 18E08. arXiv math.CT, math.LO. Level 4: research.
+
+**Definition.** A regular category has finite limits and image factorizations, and its regular epimorphisms (coequalizers, the analogue of surjections) are stable under pullback. A regular functor preserves finite limits and regular epimorphisms.
+
+**Problem.** Every small regular category has a full, faithful, regular embedding into a category of presheaves. So an implication between properties of finite limits and images that holds in Set holds in every small regular category. For example, a composite of regular epimorphisms is a regular epimorphism.
+
+**How the definition helps.** A full, faithful, regular functor preserves and reflects finite limits and images, so such a statement can be checked in presheaves (our own). In presheaves, limits and images are computed objectwise in Set (our own). So the claim reduces to an element chase in sets. Statements with negations need not transfer (our own). The work is in Barr's theorem.
+
+**nLab:** [Barr embedding theorem](https://ncatlab.org/nlab/show/Barr+embedding+theorem). It says: “by Barr's embedding theorem, if a category is small and regular, then there exists an embedding, which is a full, faithful and regular, into a category of presheaves over some small category.”
+
+**Sources:**
+
+- [M. Barr, Exact categories, in Exact Categories and Categories of Sheaves, Lecture Notes in Math. 236, Springer (1971) 1–120](https://doi.org/10.1007/BFb0058580)
+
+### Gabriel–Popescu makes Grothendieck categories exactly quotients of module categories
+
+**Remember:** Grothendieck categories are module categories with some modules declared zero.
+
+*Makes the theorem clean to state or prove.* MSC 18E20 (Categorical embedding theorems), 18E10, 18E35. arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** A Grothendieck category is an abelian category with all coproducts, exact filtered colimits and a generator U, an object such that Hom(U, −) is faithful. A localizing subcategory ℬ of Mod(R) is a Serre subcategory whose quotient functor Mod(R) → Mod(R)/ℬ has a right adjoint.
+
+**Problem.** An abelian category is a Grothendieck category exactly when it is equivalent to Mod(R)/ℬ for a ring R and a localizing subcategory ℬ. One can take R = End(U) and G = Hom(U, −).
+
+**How the definition helps.** The generator U gives the functor G = Hom(U, −) into modules over End(U), and the Grothendieck axioms are what make its left adjoint exact. Then the kernel of that left adjoint is a localizing subcategory, and the quotient by it is 𝒜. The converse holds because quotients of Grothendieck categories by localizing subcategories are again Grothendieck. The work is the exactness of the left adjoint, for which Takeuchi gave a short proof.
+
+**Wikipedia:** [Quotient of an abelian category](https://en.wikipedia.org/wiki/Quotient_of_an_abelian_category), [Grothendieck category](https://en.wikipedia.org/wiki/Grothendieck_category). It says: “The Gabriel–Popescu theorem states that any Grothendieck category 𝒜 is equivalent to a Serre quotient of the form Mod(R)/ℬ, where Mod(R) denotes the abelian category of right modules over some unital ring R”
+
+**Paper or page:** [Injectives, Theorem 19.14.3](https://stacks.math.columbia.edu/tag/0F5U). It says: “Then there exists a (noncommutative) ring R and functors G : 𝒜 → Mod<sub>R</sub> and F : Mod<sub>R</sub> → 𝒜 such that F is the left adjoint to G, G is fully faithful, and F is exact.”
+
+**Sources:**
+
+- [M. Takeuchi, A simple proof of Gabriel and Popesco's theorem, J. Algebra 18 (1971) 112–113](https://doi.org/10.1016/0021-8693(71)90130-X)
+- [P. Gabriel, Des catégories abéliennes, Bull. Soc. Math. France 90 (1962) 323–448](https://doi.org/10.24033/bsmf.1583)
+
+### Perpendicular subcategories of modules are exactly abelian categories with projective generators
+
+**Remember:** Grothendieck categories need exact colimits; contramodule categories need a projective generator instead.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18E20 (Categorical embedding theorems), 18E10, 18C35. arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** The right perpendicular subcategory to a set 𝒮 of modules consists of the modules M with Hom(S, M) = 0 and Ext¹(S, M) = 0 for all S in 𝒮. A category is locally presentable when it has all colimits and a set 𝒢 of objects with this property. For one infinite cardinal κ, every object is a κ-filtered colimit of objects in 𝒢. The objects in 𝒢 must be κ-presentable: maps out of them commute with κ-filtered colimits.
+
+**Problem.** An abelian category embeds exactly and fully faithfully into modules as a right perpendicular subcategory exactly when it is locally presentable with a projective generator. This class contains categories of contramodules, which in general are not Grothendieck categories.
+
+**How the definition helps.** Dropping exact filtered colimits and keeping a projective generator gives a class with its own embedding theorem, parallel to Gabriel–Popescu. The projective generator P gives the exact functor Hom(P, −) into modules over End(P) (our own). The work is showing that the image is cut out by Hom and Ext conditions.
+
+**Paper or page:** [Abelian right perpendicular subcategories in module categories, Corollary 4.11](https://arxiv.org/abs/1705.04960). It says: “The following classes of abelian categories (viewed as abstract categories irrespectively of a particular embedding into a category of modules) coincide with each other, and with the class of all locally presentable abelian categories with a projective generator”
+
+**Sources:**
+
+- [L. Positselski, Abelian right perpendicular subcategories in module categories, arXiv:1705.04960 (2022)](https://arxiv.org/abs/1705.04960)
+
+### The Gabriel–Quillen embedding moves diagram lemmas into exact categories
+
+**Remember:** Embed the exact category, chase the diagram, pull the answer back.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18E20 (Categorical embedding theorems), 18E05, 18E10. arXiv math.CT, math.KT. Level 4: research.
+
+**Definition.** A Quillen exact category is an additive category with a class of kernel–cokernel pairs, its conflations, satisfying axioms modelled on short exact sequences. An example is torsion-free abelian groups, which do not form an abelian category.
+
+**Problem.** Every small exact category embeds fully and faithfully into an abelian category. The image is closed under extensions, and a sequence is a conflation exactly when it is short exact there. So the five lemma holds for conflations in every small exact category.
+
+**How the definition helps.** Quillen's axioms are exactly what make the embedding into left exact functors detect conflations, so lemmas pass across. Given a map of conflations whose outer maps are isomorphisms, the five lemma in the abelian category makes the middle map invertible (our own). A fully faithful functor reflects isomorphisms, so the middle map is invertible in the exact category (our own). The work goes into showing that left exact functors form an abelian category with the stated properties.
+
+**Wikipedia:** [Exact category](https://en.wikipedia.org/wiki/Exact_category). It says: “in which E is a natural subcategory (via the Yoneda embedding, since Hom is left exact), stable under extensions, and in which a sequence is in E if and only if it is exact in A”
+
+**Sources:**
+
+- [D. Quillen, Higher algebraic K-theory I, Lecture Notes in Math. 341, Springer (1973)](https://doi.org/10.1007/BFb0067053)
 
 ### Left modular torsion classes are exactly those splitting every brick
 
@@ -4240,6 +5741,24 @@
 **Sources:**
 
 - [M. Artin, B. Mazur, Etale Homotopy, Lecture Notes in Mathematics 100, Springer (1969)](https://doi.org/10.1007/BFb0080957)
+
+### Closed condensed subsets of a compactly generated space are its closed subspaces
+
+**Remember:** Closed means closed on every profinite probe, exactly like compactly generated closedness.
+
+*True by definition. Confidence: medium.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 54D50. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** Let S be a profinite set (compact, Hausdorff and totally disconnected) with a map to a condensed set A. A subobject Z of A is closed if its pullback to every such S is a closed subset. This tests closedness on compact probes, as a compactly generated topology does.
+
+**Problem.** For a compactly generated space T, closed subspaces Z ⊂ T correspond bijectively to closed condensed subsets of T̲, by Z ↦ Z̲. Here T̲ is the condensed set S ↦ C(S, T).
+
+**How the definition helps.** A subset of a compactly generated space is closed when its preimage in every compact Hausdorff probe is closed, and profinite probes suffice. Closed condensed subsets are defined by the same test (our own wording of the standard definition), so the two notions match on the underlying set. The work left is to see that a closed condensed subset is the condensed set of its underlying subspace. That uses that maps S → T landing in Z are continuous into Z with the subspace topology.
+
+**Paper or page:** [The condensed homotopy type of a scheme](https://arxiv.org/abs/2510.07443). It says: “Sending a closed subspace Z ⊂ T to Z → T induces an order-preserving bijection between closed subspaces of T and closed condensed subsets of T.”
+
+**Sources:**
+
+- [The condensed homotopy type of a scheme, arXiv:2510.07443](https://arxiv.org/abs/2510.07443)
 
 ### Condensed abelian groups form an abelian category
 
@@ -4332,6 +5851,84 @@
 
 - [Ross Street, Notions of topos, Bulletin of the Australian Mathematical Society 23 (1981) 199–208](https://doi.org/10.1017/S000497270000705X)
 
+### Probing by profinite sets embeds compactly generated spaces fully faithfully
+
+**Remember:** A compactly generated topology is exactly what maps from compact spaces see.
+
+*True by definition.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 54D50, 18F60. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** A topological space X gives the condensed set X̲. Its value X̲(S) on a profinite set S (compact, Hausdorff and totally disconnected) is the set of continuous maps S → X. A space is compactly generated if a subset is closed whenever its preimage under every map from a compact Hausdorff space is closed.
+
+**Problem.** For compactly generated spaces X and arbitrary Y, maps of condensed sets X̲ → Y̲ are the same as continuous maps X → Y.
+
+**How the definition helps.** A map X̲ → Y̲ is a function X → Y that is continuous on every compact probe S → X. Profinite probes are enough, because every compact Hausdorff space is a quotient of a profinite set. For a compactly generated X this is exactly continuity, by the definition of compactly generated. The full statement needs cardinal bounds, so it is stated for κ-condensed sets.
+
+**nLab:** [condensed set](https://ncatlab.org/nlab/show/condensed+set). It says: “The forgetful functor from the category of topological spaces to κ-condensed sets is a faithful functor. It becomes fully faithful when restricted to κ-compactly generated spaces.”
+
+**Paper or page:** [Arithmetic duality for p-adic pro-étale cohomology of analytic curves](https://arxiv.org/abs/2308.07712). It says: “restricted to compactly generated topological spaces is fully faithful.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+
+### Profinite covers let condensed sets be evaluated on all compact Hausdorff spaces
+
+**Remember:** Every compact space is a quotient of a profinite one, so nothing changes.
+
+*True by definition.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 18F20, 54D30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A condensed set is a sheaf on profinite sets (compact, Hausdorff and totally disconnected), where a cover is a finite jointly surjective family of maps. The same kind of cover defines a site on all compact Hausdorff spaces. A site is a category with a chosen notion of cover.
+
+**Problem.** Restriction from compact Hausdorff spaces to profinite sets is an equivalence of their categories of sheaves. So a condensed set has a well-defined value on every compact Hausdorff space, such as the interval \[0, 1\].
+
+**How the definition helps.** Every compact Hausdorff space S is the image of a profinite set S′, such as the Stone–Čech compactification of S taken as a discrete set. The fibre product S′ ×ₛ S′ is closed in S′ × S′, so it is again profinite. So the sheaf condition for the cover S′ → S fixes the value on S from values on profinite sets. The remaining work is the comparison lemma, which says that a dense subcategory of a site has the same sheaves.
+
+**nLab:** [condensed set](https://ncatlab.org/nlab/show/condensed+set). It says: “In all three cases, morphisms are given by continuous maps and covering families are given by finite families of jointly surjective continuous maps.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+
+### Quasiseparatedness excludes ℝ modulo ℚ from compact Hausdorff condensed sets
+
+**Remember:** Compact plus closed equivalence relation gives compact Hausdorff; ℝ/ℚ fails the second.
+
+*Rules out counterexamples. Confidence: medium.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 54D30, 54B15. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** A condensed set T is quasicompact if some profinite set S (compact, Hausdorff and totally disconnected) maps onto it. It is quasiseparated if for any two profinite sets S₁, S₂ over T the fibre product S₁ ×ₜ S₂ is quasicompact. For a space X, X̲ is the condensed set S ↦ C(S, X).
+
+**Problem.** The functor X ↦ X̲ is an equivalence from compact Hausdorff spaces to quasicompact quasiseparated condensed sets.
+
+**How the definition helps.** Quasiseparatedness makes S ×ₜ S a closed subset of S × S for a profinite cover S → T. So T = S/R for a closed equivalence relation R, and such a quotient of a compact Hausdorff space is compact Hausdorff. Without quasiseparatedness the theorem fails for ℝ/ℚ, the condensed cokernel of the discrete group ℚ mapping into ℝ. The interval \[0, 1\] covers ℝ/ℚ, but the fibre product of \[0, 1\] with itself over ℝ/ℚ is an infinite disjoint union of segments (our own check).
+
+**Paper or page:** [Arithmetic duality for p-adic pro-étale cohomology of analytic curves](https://arxiv.org/abs/2308.07712). It says: “induces an equivalence between the category of compact Hausdorff spaces and qcqs (i.e., quasi-compact quasi-separated) condensed sets.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Arithmetic duality for p-adic pro-étale cohomology of analytic curves, arXiv:2308.07712](https://arxiv.org/abs/2308.07712)
+
+### Splitting covers turn condensed sets into finite-product-preserving functors
+
+**Remember:** Where every cover splits, the sheaf condition is only about finite disjoint unions.
+
+*True by definition.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 54G05, 18F20. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A compact Hausdorff space S is extremally disconnected if the closure of every open set is open. By Gleason's theorem, this holds exactly when every continuous surjection onto S from a compact Hausdorff space has a continuous section. A condensed set is a sheaf of sets on profinite sets, that is, compact Hausdorff totally disconnected spaces. A cover is a finite jointly surjective family of maps.
+
+**Problem.** Condensed sets (with a size bound κ) are the same as functors T from κ-small extremally disconnected sets to sets that send finite disjoint unions to products. In particular T(∅) is a point and T(S₁ ⊔ S₂) = T(S₁) × T(S₂).
+
+**How the definition helps.** On extremally disconnected sets every cover has a section. So a presheaf that turns finite disjoint unions into products is automatically a sheaf. The work goes into Gleason's theorem and into one more fact: every profinite set is a quotient of an extremally disconnected one. So a sheaf on profinite sets is fixed by its values on extremally disconnected sets. On profinite sets in general the extra condition is real: the surjection βℕ → ℕ ∪ {∞} has no section (our own example).
+
+**nLab:** [pyknotic set](https://ncatlab.org/nlab/show/pyknotic+set). It says: “Take 𝒞 ⊂ Top to be the subcategory of tiny compact hausdorff spaces that are extremally disconnected, called Stonean spaces. A pyknotic set carries finite coproducts to products in Set.”
+
+**Wikipedia:** [Extremally disconnected space](https://en.wikipedia.org/wiki/Extremally_disconnected_space). It says: “the projective objects of the category of compact Hausdorff spaces are exactly the extremally disconnected compact Hausdorff spaces.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Andrew M. Gleason, Projective topological spaces, Illinois Journal of Mathematics 2 (1958), 482–489](https://doi.org/10.1215/ijm/1255454110)
+
 ### Superextensive sites let you sheafify for single covers after imposing coproducts
 
 **Remember:** Glue the covering pieces into one coproduct, and treat coproducts separately.
@@ -4368,6 +5965,25 @@
 
 - [Olivia Caramello, Atomic toposes and countable categoricity, Applied Categorical Structures 20 (2012) 379–391, arXiv:0811.3547](https://arxiv.org/abs/0811.3547)
 
+### The Yoneda internal Hom makes condensed sets cartesian closed
+
+**Remember:** Define maps over S as maps from A × S, and currying is automatic.
+
+*True by definition.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 54C35, 18F60. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** Let S be a profinite set, that is, a compact Hausdorff totally disconnected space. For condensed sets A and B, the internal Hom is the condensed set with Hom(A, B)(S) = Hom(A × S̲, B). This is forced by the Yoneda lemma if Hom is to be right adjoint to A × −.
+
+**Problem.** Condensed sets form a cartesian closed category. For Hausdorff X and Y with X compactly generated, Hom(X̲, Y̲) is the condensed set of C(X, Y) with the compact-open topology. Here X̲ means S ↦ C(S, X).
+
+**How the definition helps.** The adjunction Hom(T, Hom(A, B)) = Hom(T × A, B) holds for T = S̲ by definition. It then holds for every T, since every condensed set is a colimit of profinite ones and products commute with colimits. Topological spaces are not cartesian closed, and their exponential law needs a condition such as local compactness. The comparison with C(X, Y) uses the classical exponential law for compact Hausdorff S and the full faithfulness on compactly generated spaces.
+
+**Paper or page:** [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers](https://arxiv.org/abs/2109.07816). It says: “Let A and B be Hausdorff topological spaces, where A is compactly generated. Then, Hom(A, B) = C(A,B) where C(A,B) is given the compact-open topology.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers, arXiv:2109.07816](https://arxiv.org/abs/2109.07816)
+
 ### In a (2,1)-topos, every principal bundle is locally trivial
 
 **Remember:** In a higher topos, the bundle is the quotient, and the quotient is the bundle.
@@ -4387,6 +6003,98 @@
 - [Thomas Nikolaus, Urs Schreiber, Danny Stevenson, Principal ∞-bundles – General theory, J. Homotopy Relat. Struct. 10 (2015) 749–801, arXiv:1207.0248](https://arxiv.org/abs/1207.0248)
 - [Takashi Karube, On the local cross-sections in locally compact groups, J. Math. Soc. Japan 10 (1958) 343–347](https://doi.org/10.2969/jmsj/01040343)
 
+### Condensed epimorphisms let Hochschild–Serre hold for topological group extensions
+
+**Remember:** Ask compact families to lift, and the spectral sequence for subgroups works.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 20J06, 18G40. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** An extension 1 → H → G → Q → 1 of topological groups is exact if Q is the coset space G/H. Also H must be the kernel, with the subspace topology. The condensed condition asks also that G̲ → Q̲ is an epimorphism, where G̲ is the condensed set S ↦ C(S, G). So continuous maps to Q from profinite sets (compact, Hausdorff and totally disconnected) lift locally to G.
+
+**Problem.** Suppose G̲ → Q̲ is an epimorphism. Then for every topological G-module A there is a Hochschild–Serre spectral sequence ℍᵖ(Q, ℍᵐ(H, A)) ⇒ ℍᵖ⁺ᵐ(G, A) in condensed group cohomology.
+
+**How the definition helps.** With the epimorphism condition, Q̲ is the quotient of G̲ by H̲ in condensed sets (our own summary). So the classifying topos of H is the slice of the classifying topos of G over Q̲. The spectral sequence is then the Grothendieck spectral sequence for H-invariants followed by Q-invariants. For continuous cochains the classical theorem usually needs extra conditions, such as a continuous local section of G → Q.
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565). It says: “Suppose that G → Q is an epimorphism in 𝒞. Let A be a topological G-module. Then the condensed abelian group ℍ<sup>q</sup>(B<sub>H</sub>, i<sup>\*A</sup>) carries a Q-action for all q, and there is an Hochschild-Serre spectral sequence”
+
+**Sources:**
+
+- [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+
+### Condensed group cohomology is a derived functor matching continuous cochains
+
+**Remember:** Derived invariants of condensed modules give long exact sequences and continuous cochains.
+
+*True by definition. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 20J06, 18G10. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** For a condensed group G, condensed group cohomology ℍⁿ(G, A) is the n-th derived functor of invariants on condensed G-modules. For a fixed size bound κ, these modules form a Grothendieck abelian category, so the derived functors exist.
+
+**Problem.** Every short exact sequence of condensed G-modules gives a long exact cohomology sequence. If every Gⁿ is compactly generated and the coefficients have no higher cohomology on each Gⁿ, the cohomology is computed by continuous cochains Gⁿ → A.
+
+**How the definition helps.** Condensed cohomology is a derived functor in an abelian category, so every short exact sequence gives a long exact sequence by definition. Classical continuous cohomology gives long exact sequences only under extra conditions, for example when the quotient map has a continuous section. The work moves to the comparison with continuous cochains, which needs the stated hypotheses on Gⁿ and on A. The cohomology groups also come with a natural topology, as condensed abelian groups.
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565). It says: “In particular, the underlying abelian group H<sup>q</sup>(B<sub>G</sub>, A) = ℍ<sup>q</sup>(B<sub>G</sub>, A)(∗) coincides with continuous group cohomology.”
+
+**Sources:**
+
+- [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+
+### Fréchet complexes are condensed-exact exactly when algebraically exact
+
+**Remember:** For Fréchet spaces, open mapping turns algebraic exactness into condensed exactness.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 46A04, 18E10. arXiv math.CT, math.FA. Level 4: research.
+
+**Definition.** A complex of topological vector spaces is exact as condensed ℝ-modules if it is exact after applying V ↦ V̲. Here V̲(S) is the set of continuous maps into V from a profinite set S (compact, Hausdorff and totally disconnected). A map is surjective there when each continuous map S → W lifts to V after pulling back along some surjection S′ → S of profinite sets.
+
+**Problem.** A complex of Fréchet spaces is exact as condensed ℝ-modules if and only if it is exact as a complex of vector spaces.
+
+**How the definition helps.** Condensed surjectivity asks only that compact families lift, so the question is whether compact sets lift along surjections of Fréchet spaces (our own summary). Kernels are closed, so each map onto the next kernel is a surjection of Fréchet spaces, and it is open by the open mapping theorem. Each compact set in a Fréchet space lies in the closed convex hull of a sequence tending to zero. Such sequences lift along open surjections (our own). Evaluation at a point gives the converse.
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565). It says: “A complex of Frechet (resp. Banach) spaces is exact as a complex of condensed ℝ-modules if and only if it is exact on the underlying vector spaces.”
+
+**Sources:**
+
+- [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+
+### Functorial resolutions of abelian groups pass to condensed groups by sheafifying
+
+**Remember:** A resolution natural in A works in every topos after sheafifying.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18G10. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A Breen–Deligne resolution resolves every abelian group A by finite sums of free groups ℤ\[Aʳ\] on powers of A. It is natural in A, and the exponents do not depend on A. For a condensed abelian group M, ℤ\[Mʳ\] is the free condensed abelian group on the condensed set Mʳ.
+
+**Problem.** Every condensed abelian group M has a resolution ⋯ → ℤ\[M³\] ⊕ ℤ\[M²\] → ℤ\[M²\] → ℤ\[M\] → M → 0. Its terms are finite sums of free condensed abelian groups ℤ\[Mʳ\] on powers of M.
+
+**How the definition helps.** The resolution is natural in A, so applying it to each group M(S) gives a resolution of presheaves. Sheafification is exact, so it gives a resolution of M. All the work is in the existence of the natural resolution for abstract abelian groups. Breen and Deligne constructed it, and Scholze's notes sketch a proof with stable homotopy theory.
+
+**Paper or page:** [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers](https://arxiv.org/abs/2109.07816), [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers](https://arxiv.org/abs/2109.07816). It says: “that is functorial in A and the rᵢ,ⱼ are independent of the choice of A.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+
+### Hypercovers by extremally disconnected sets give projective resolutions
+
+**Remember:** The sheaf condition makes the complex exact; Gleason makes the terms projective.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18G10, 54G05. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A hypercover S• → S is a simplicial space with surjective maps to its matching objects. Examples of these maps are S₀ → S and S₁ → S₀ ×ₛ S₀. An extremally disconnected set is a compact Hausdorff space onto which every surjection from a compact Hausdorff space splits. For such a set T, the free condensed abelian group ℤ\[T\] is projective.
+
+**Problem.** Let S be a compact Hausdorff space and S• → S a hypercover by extremally disconnected sets. Then ⋯ → ℤ\[S₁\] → ℤ\[S₀\] → ℤ\[S\] → 0 is a projective resolution, so Extⁱ(ℤ\[S\], M) is the cohomology of M(S₀) → M(S₁) → ⋯.
+
+**How the definition helps.** The terms are projective by Gleason's theorem, since each Sₙ is extremally disconnected. The complex is exact because a hypercover is a covering in every degree, so the free sheaves on it form an exact complex. The work is the existence of such hypercovers, which uses that every compact Hausdorff space is covered by a Stone–Čech compactification.
+
+**Paper or page:** [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers](https://arxiv.org/abs/2109.07816). It says: “Let S be a compact Hausdorff space and let S• → S be a simplicial hypercover of S by extremally disconnected spaces. Then, ⋯ → ℤ\[S₁\] → ℤ\[S₀\] → ℤ\[S\] → 0 is a projective resolution of ℤ\[S\].”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Roy Dyckhoff, Projective resolutions of topological spaces, Journal of Pure and Applied Algebra 7 (1976)](https://doi.org/10.1016/0022-4049(76)90069-4)
+- [Andrew M. Gleason, Projective topological spaces, Illinois Journal of Mathematics 2 (1958), 482–489](https://doi.org/10.1215/ijm/1255454110)
+
 ### Light condensed sets form a Grothendieck topos without universes
 
 **Remember:** Light means countable, so the test spaces stay a small collection.
@@ -4405,6 +6113,24 @@
 
 - [Dustin Clausen, Peter Scholze, Analytic Stacks, lecture course, 2023](https://indico.math.cnrs.fr/event/10345/)
 
+### Locally constant maps characterize discrete condensed sets by finite approximation
+
+**Remember:** Locally constant maps from a limit of finite sets factor through a finite stage.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18F10. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** A condensed set is discrete if it is isomorphic to the condensed set of locally constant maps S → X for some set X. This is the constant sheaf, left adjoint to taking the underlying set X(∗).
+
+**Problem.** Let S be a profinite set (compact, Hausdorff and totally disconnected), written as a limit of finite sets Sᵢ. A condensed set X is discrete if and only if, for all such S, the colimit of the X(Sᵢ) maps bijectively to X(S).
+
+**How the definition helps.** A locally constant map from S = lim Sᵢ takes finitely many values on clopen pieces, so it factors through some finite Sᵢ. So the sheaf of locally constant maps satisfies the colimit condition at once. For the converse, the sheaf condition gives X(F) is a product of copies of X(∗) for a finite set F, and the colimit condition then fixes X(S) as locally constant maps. The paper checks this proof in the Lean proof assistant.
+
+**Paper or page:** [A formal characterization of discrete condensed objects](https://arxiv.org/abs/2410.17847). It says: “A condensed set X is discrete if and only if for every profinite set S = lim Sᵢ, the canonical map X(S) → colim X(Sᵢ) is an isomorphism.”
+
+**Sources:**
+
+- [A formal characterization of discrete condensed objects, arXiv:2410.17847](https://arxiv.org/abs/2410.17847)
+
 ### On the test spaces ℝⁿ alone, BG is already a stack
 
 **Remember:** Every ℝⁿ is contractible, so every G-bundle on it is trivial.
@@ -4420,6 +6146,64 @@
 **nLab:** [smooth infinity-stack](https://ncatlab.org/nlab/show/smooth+infinity-stack). It says: “But restricted to the site CartSp the simplicial sheaf BG does satisfy descent: there is up to isomorphism only a single G-bundle on ℝⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Probing by compact spaces makes the pyknotic embedding preserve limits
+
+**Remember:** Mapping out of a fixed compact space preserves limits, so the embedding does.
+
+*True by definition.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 54D50, 18F60. arXiv math.CT, math.GN. Level 4: research.
+
+**Definition.** A pyknotic set is a sheaf of sets on compact Hausdorff spaces of a fixed small size, with finite jointly surjective covers (Barwick and Haine). A space X gives the pyknotic set S ↦ C(S, X).
+
+**Problem.** The embedding of compactly generated spaces into pyknotic sets preserves all small limits, though not colimits. In topological spaces the reverse holds: compactly generated spaces are closed under colimits but not under limits.
+
+**How the definition helps.** Limits of sheaves are computed sectionwise, and maps out of a fixed S turn limits into limits. A limit of compactly generated spaces is the compactly generated version of the topological limit. Maps from a compact Hausdorff S do not see that change of topology. The work is in the full faithfulness, which uses that a compactly generated topology is fixed by its compact probes.
+
+**nLab:** [pyknotic set](https://ncatlab.org/nlab/show/pyknotic+set). It says: “Compactly generated topological spaces embed fully faithfully into pyknotic sets, in a manner that preserves limits.”
+
+**Sources:**
+
+- [Clark Barwick and Peter Haine, Pyknotic objects, I. Basic notions, arXiv:1904.09966 (2019)](https://arxiv.org/abs/1904.09966)
+
+### Projective test spaces make infinite products of condensed abelian groups exact
+
+**Remember:** Products of condensed groups are taken pointwise on spaces where every cover splits.
+
+*Rules out counterexamples.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18E10, 18G05. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A condensed abelian group is a sheaf of abelian groups on profinite sets (compact, Hausdorff and totally disconnected). An extremally disconnected set is a compact Hausdorff space onto which every surjection from a compact Hausdorff space splits. By Gleason's theorem, a condensed abelian group is the same as a functor on extremally disconnected sets that turns finite disjoint unions into products.
+
+**Problem.** In condensed abelian groups a product of surjections is a surjection, so infinite products are exact (Grothendieck's axiom AB4\*). Sheaves of abelian groups on a topological space usually fail this.
+
+**How the definition helps.** Products and surjections can both be tested on extremally disconnected sets S, and there they are products and surjections of abelian groups. For sheaves on a topological space, surjectivity is tested at stalks, and a product does not commute with stalks. Our own example on the real line maps the extension by zero Fₙ of ℤ from (−1/n, 1/n) onto the skyscraper ℤ at 0. Each map is surjective, but the section (1, 1, 1, …) of the product of the skyscrapers lifts on no neighbourhood of 0.
+
+**nLab:** [condensed abelian group](https://ncatlab.org/nlab/show/condensed+abelian+group). It says: “In this category, filtered colimits and infinite products are exact. The latter property is rather rare.”
+
+**Paper or page:** [Condensed Mathematics: The internal Hom of condensed sets and condensed abelian groups and a prismatic construction of the real numbers](https://arxiv.org/abs/2109.07816). It says: “(AB4\*) Arbitrary products are exact.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+
+### Repleteness makes towers of surjective condensed abelian groups have no lim¹
+
+**Remember:** Surjections stay surjective on projective test spaces, so Mittag-Leffler holds automatically.
+
+*True by definition. Confidence: medium.* MSC 18F20 (Presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)), 18G10, 18B25. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A topos is replete if, for every sequence ⋯ → F₂ → F₁ → F₀ of surjections of sheaves, the limit maps onto each Fₙ. An extremally disconnected set is a compact Hausdorff space onto which every surjection from a compact Hausdorff space splits. Condensed sets are replete, since surjectivity can be tested on extremally disconnected sets.
+
+**Problem.** Let ⋯ → M₂ → M₁ → M₀ be a tower of surjections of condensed abelian groups. Then lim¹ Mₙ, the first derived functor of the limit, is zero, so the derived limit is the ordinary limit.
+
+**How the definition helps.** On an extremally disconnected set S each map Mₙ₊₁(S) → Mₙ(S) is surjective, because S is projective. A tower of surjective abelian groups has lim¹ = 0 by the Mittag-Leffler condition. Limits, infinite products and cokernels of condensed abelian groups are computed pointwise on such S, so the condensed lim¹ vanishes too (our own summary). On a general site this fails, since surjections of sheaves need not be surjective on sections.
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565). It says: “Let G be a condensed group. Then its classifying topos B<sub>G</sub> is replete.”
+
+**Sources:**
+
+- [Peter Scholze (with Dustin Clausen), Lectures on Condensed Mathematics, lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Duality for condensed cohomology of the Weil group of a p-adic field, arXiv:2402.05565](https://arxiv.org/abs/2402.05565)
+- [Bhargav Bhatt and Peter Scholze, The pro-étale topology for schemes, Astérisque 369 (2015), 99–201](https://doi.org/10.24033/ast.960)
 
 ### Small presheaves give the free cocompletion of a large category
 
@@ -4678,6 +6462,24 @@
 
 - [Tatsuji Kawai, Giovanni Sambin, The principle of pointfree continuity, Logical Methods in Computer Science 15(1) (2019), arXiv:1802.04512](https://arxiv.org/abs/1802.04512v4)
 
+### Frame-valued support makes radical localizing ideals the universal support
+
+**Remember:** Drop the points, keep the frame, and the universal support appears.
+
+*True by definition.* MSC 18F70 (Frames and locales, pointfree topology, Stone duality), 18G80, 06D22. arXiv math.CT. Level 4: research.
+
+**Definition.** Let K be a tensor triangulated category with arbitrary direct sums, such as D(R). A localizing tensor ideal is a thick tensor ideal closed under direct sums. It is radical if it contains each object that has a tensor power in it. A frame is a complete lattice in which finite meets distribute over arbitrary joins, like the open sets of a space. Krause and Letz let a support take values in a frame, not in the closed sets of a space as Balmer does.
+
+**Problem.** Suppose K has a property called the tensor property, and its radical localizing tensor ideals form a set. Then they form a frame, and sending X to the radical ideal it generates is the initial support on K.
+
+**How the definition helps.** A support with values in a frame needs no points, so the frame of radical ideals is the universal answer by construction (our own summary). A space appears only when this frame is spatial, and then points come back (our own remark). The work goes into the distributive law of the frame.
+
+**Paper or page:** [The spectrum of a well-generated tensor triangulated category](https://arxiv.org/abs/2203.03249), [The spectrum of a well-generated tensor triangulated category](https://arxiv.org/abs/2203.03249). It says: “Then the radical localizing tensor ideals of 𝒦 form a frame and the map Obj(𝒦) ⟶ Rad(𝒦), X ↦ rad(X) is a support; it is initial among all supports on 𝒦.”
+
+**Sources:**
+
+- [Henning Krause and Janina C. Letz, The spectrum of a well-generated tensor-triangulated category, Bull. Lond. Math. Soc. 55 (2023) 680–705](https://doi.org/10.1112/blms.12749)
+
 ### Locale maps are the right continuous functions for constructive analysis
 
 **Remember:** Define continuity on the open sets, and composition and 1/x come free.
@@ -4769,6 +6571,27 @@
 
 - [John R. Isbell, Atomless parts of spaces, Mathematica Scandinavica 31 (1972) 5–32](https://doi.org/10.7146/math.scand.a-11409)
 
+### Radical ideals form a coherent frame, so the spectrum is spectral
+
+**Remember:** A coherent frame of ideals gives a spectral space of primes.
+
+*True by definition.* MSC 18F70 (Frames and locales, pointfree topology, Stone duality), 18G80, 06D22. arXiv math.CT. Level 4: research.
+
+**Definition.** A frame is a complete lattice in which finite meets distribute over arbitrary joins. It is coherent if every element is a join of compact elements, and the compact elements form a sublattice with the top. Here the frame is the lattice Rad(K) of radical thick tensor ideals. The rival is to put a topology on Spc K by hand and check its properties directly.
+
+**Problem.** Spc K is a spectral space, that is, homeomorphic to the prime spectrum of a commutative ring. Rad(K) is the frame of open sets of the Hochster dual of Spc K. That dual space has the primes as points and the Thomason subsets as open sets.
+
+**How the definition helps.** Stone duality turns the coherent frame Rad(K) into a spectral space at once, so no topology needs checking by hand. Its points are the prime elements of the frame, and the second quoted lemma shows that these are the prime ideals. The resulting space is the Hochster dual of Spc K, and its dual Spc K is spectral too (our own summary of Kock and Pitsch). The work goes into the distributive law of the frame.
+
+**nLab:** [coherent locale](https://ncatlab.org/nlab/show/coherent+locale). It says: “Coherent locales are spatial.”
+
+**Paper or page:** [Tensor extriangulated categories](https://arxiv.org/abs/2502.18257), [Tensor extriangulated categories](https://arxiv.org/abs/2502.18257). It says: “Suppose (𝒜,⊗,𝟙) is a tensor extriangulated category. If Rad(𝒜) is a set, then it is a coherent frame.”
+
+**Sources:**
+
+- [Joachim Kock and Wolfgang Pitsch, Hochster duality in derived categories and point-free reconstruction of schemes, Trans. Amer. Math. Soc. 369 (2017) 223–261](https://doi.org/10.1090/tran/6773)
+- [Raphael Bennett-Tennenhaus, Isambard Goodbody, Janina C. Letz and Amit Shah, Tensor extriangulated categories, arXiv:2502.18257 (2025)](https://arxiv.org/abs/2502.18257)
+
 ### With sublocales as parts, the Banach–Tarski pieces overlap
 
 **Remember:** In a locale, two pieces with no common point can still overlap.
@@ -4787,6 +6610,25 @@
 
 - [Alex Simpson, Measure, randomness and sublocales, Annals of Pure and Applied Logic 163:11 (2012) 1642–1659](https://doi.org/10.1016/j.apal.2011.12.014)
 - [Olivier Leroy, Théorie de la mesure dans les lieux réguliers. ou : Les intersections cachées dans le paradoxe de Banach-Tarski (manuscript, 1995); arXiv:1303.5631](https://arxiv.org/abs/1303.5631)
+
+### A set of generators makes lim¹ vanish on towers of epimorphisms
+
+**Remember:** A set of generators restores lim¹ = 0 for towers of epimorphisms.
+
+*Rules out counterexamples. Confidence: medium.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18E10. arXiv math.CT. Level 4: research.
+
+**Definition.** A set of generators is a set of objects G with this property: every nonzero map f : X → Y stays nonzero after composing with some map G → X. Axiom AB3 asks for all direct sums, and AB4\* asks for all products, taken exactly. A tower of epimorphisms is a sequence ⋯ → A₂ → A₁ → A₀ of surjective maps.
+
+**Problem.** In an abelian category satisfying AB3 and AB4\* with a set of generators, every tower of epimorphisms has lim¹ = 0. Without generators this fails, even with AB4 and AB4\*.
+
+**How the definition helps.** A set of generators rules out the Neeman–Deligne example, so the vanishing known for abelian groups holds in every such category. Neeman and Deligne built a category with AB4 and AB4\*, but without generators, and a tower of epimorphisms in it with nonzero lim¹. This disproved a 1961 claim of Roos. Roos's 2006 paper proves the result once a set of generators is added.
+
+**Wikipedia:** [Inverse limit](https://en.wikipedia.org/wiki/Inverse_limit). It says: “Roos has since shown (in "Derived functors of inverse limits revisited") that his result is correct if C has a set of generators (in addition to satisfying (AB3) and (AB4\*)).”
+
+**Sources:**
+
+- [Jan-Erik Roos, Derived functors of inverse limits revisited, Journal of the London Mathematical Society 73 (2006), 65–83](https://doi.org/10.1112/S0024610705022416)
+- [Amnon Neeman, A counterexample to a 1961 “theorem” in homological algebra, Inventiones Mathematicae 148 (2002), 397–420](https://doi.org/10.1007/s002220100197)
 
 ### Roos's axiom rescues resolutions of unbounded complexes
 
@@ -4807,6 +6649,262 @@
 - [Dolors Herbera, Wolfgang Pitsch, Manuel Saorín, Simone Virili, A poisonous example to explicit resolutions of unbounded complexes, arXiv:2407.09741 (2024)](https://arxiv.org/abs/2407.09741v3)
 - [Jan-Erik Roos, Derived functors of inverse limits revisited, J. London Math. Soc. 73 (2006), 65-83](https://doi.org/10.1112/s0024610705022416)
 
+### Vanishing lim¹ on countable sums characterizes Mittag-Leffler towers
+
+**Remember:** Mittag-Leffler means lim¹ vanishing that survives countable direct sums.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18A30. arXiv math.CT, math.AC. Level 4: research.
+
+**Definition.** A tower (Aₙ) is a sequence of abelian groups with maps Aₙ₊₁ → Aₙ. It is Mittag-Leffler when, for each n, the images of Aₘ → Aₙ stop shrinking for large m. The group lim¹ is the first right derived functor of the inverse limit of towers.
+
+**Problem.** A tower (Aₙ) of abelian groups is Mittag-Leffler if and only if lim¹ Aₙ = 0 and lim¹ also vanishes on the tower of countable direct sums of copies of Aₙ.
+
+**How the definition helps.** The theorem turns a condition on images into a purely homological test. The test on sums is needed: for the tower of p-adic integers Zₚ with every map multiplication by p, the images keep shrinking (our own). Yet its lim¹ is Ext¹(Z\[1/p\], Zₚ) = 0, because Zₚ is a cotorsion group (our own). The hard direction, from vanishing to the condition on images, is Emmanouil's theorem.
+
+**Paper or page:** [More Algebra, Lemma 15.87.14.](https://stacks.math.columbia.edu/tag/0CQA). It says: “Let (Aₙ) be an inverse system of abelian groups. The following are equivalent (Aₙ) is Mittag-Leffler, R¹lim Aₙ = 0 and the same holds for ⊕<sub>i ∈ N</sub> (Aₙ).”
+
+**Sources:**
+
+- [Ioannis Emmanouil, Mittag-Leffler condition and the vanishing of lim¹, Topology 35 (1996), 267–271](https://doi.org/10.1016/0040-9383(94)00056-5)
+
+### Presenting magnitude cohomology as Ext gives it a Yoneda algebra structure
+
+**Remember:** Once magnitude cohomology is Ext, Yoneda's product supplies its ring structure.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G15 (Ext and Tor, generalizations, Künneth formula (category-theoretic aspects)), 55N35. arXiv math.AT, math.CT. Level 4: research.
+
+**Definition.** Magnitude homology is a homology theory of metric spaces and graphs, built from chains of points weighted by distance. A quasimetric is a metric that need not be symmetric. Asao and Ivanov attach to a finite quasimetric space a graded algebra, the distance algebra. They present magnitude homology and cohomology as Tor and Ext over it.
+
+**Problem.** For a finite quasimetric space, magnitude cohomology is an Ext group over the distance algebra, and the magnitude cohomology algebra is a Yoneda algebra.
+
+**How the definition helps.** Once magnitude cohomology is a derived functor, general homological algebra supplies its long exact sequences and an associative Yoneda product (our own). The chain-level definition becomes one choice of resolution among many (our own). The work moves into the paper's theorems that distance modules have enough projectives and injectives and that magnitude (co)homology is the derived functor of coinvariants and invariants.
+
+**Paper or page:** [Magnitude homology is a derived functor](https://arxiv.org/abs/2402.14466). It says: “In addition, we show that the magnitude cohomology algebra of a finite quasimetric space can be described as a Yoneda algebra.”
+
+**Sources:**
+
+- [Yasuhiko Asao and Sergei O. Ivanov, Magnitude homology is a derived functor, arXiv:2402.14466 (2024)](https://arxiv.org/abs/2402.14466)
+
+### A projective class gives relative homological algebra its own model structure
+
+**Remember:** Choose which objects count as projective, and the homotopy theory follows.
+
+*Makes the theorem clean to state or prove.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18N40. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A projective class on an abelian category is a class 𝒫 of objects with a class ℰ of maps. The maps in ℰ are the f for which every Hom(P, f) with P in 𝒫 is onto. The class 𝒫 must be exactly the objects projective against all of ℰ. Every object must receive a map in ℰ from some object of 𝒫.
+
+**Problem.** For a projective class 𝒫, call a chain map f a weak equivalence when each Hom(P, f) is a quasi-isomorphism. Call it a fibration when each Hom(P, f) is onto. If cofibrant resolutions exist, these give a model structure on unbounded complexes (Christensen and Hovey, 2002).
+
+**How the definition helps.** The projective class fixes every notion through the functors Hom(P, −), so one theorem covers ordinary, pure and other relative homological algebras. For projective modules it gives the standard projective model structure, as the nLab notes. The work moves to the existence of cofibrant resolutions. Christensen and Hovey prove it in many cases. One case is a class pulled back from the trivial class along a functor that preserves countable direct sums.
+
+**nLab:** [model structure on chain complexes](https://ncatlab.org/nlab/show/model+structure+on+chain+complexes). It says: “Then this constitutes a model category structure precisely if cofibrant resolutions exist”
+
+**Sources:**
+
+- [J. D. Christensen and M. Hovey, Quillen model structures for relative homological algebra, Mathematical Proceedings of the Cambridge Philosophical Society 133 (2002)](https://doi.org/10.1017/S0305004102006126)
+
+### A resolving left class makes a cotorsion pair kill all higher Ext
+
+**Remember:** Close the left class under kernels and every higher Ext vanishes too.
+
+*Makes the theorem clean to state or prove.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18G15. arXiv math.RA, math.CT. Level 4: research.
+
+**Definition.** A cotorsion pair (𝒳, 𝒴) is a pair of classes of objects, each the class of objects with vanishing Ext¹ against the other. It is hereditary when 𝒳 is closed under kernels of epimorphisms between its objects. Here 𝒳 is generating, so every object is a quotient of an object of 𝒳, and 𝒴 is cogenerating in the dual sense.
+
+**Problem.** For such a pair, Extⁱ(X, Y) = 0 for all i ≥ 1, all X in 𝒳 and all Y in 𝒴. Moreover, the pair is left-complete exactly when it is right-complete.
+
+**How the definition helps.** Closure under kernels lets one replace an object of 𝒳 by the kernel of a surjection onto it from 𝒳. This lowers the degree of Ext by one (our own summary). Repeating this step turns each higher Ext into an Ext¹, which vanishes by definition (our own summary). The same property is equivalent to closure of 𝒴 under cokernels of monomorphisms, as the cited lemma states. The lemma also states that left and right completeness then agree.
+
+**Paper or page:** [A poisonous example to explicit resolutions of unbounded complexes](https://arxiv.org/abs/2407.09741v3). It says: “(𝒳, 𝒴) is a cotorsion pair and 𝒳 is closed under kernels of epimorphisms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Abelian model structures are exactly two compatible complete cotorsion pairs
+
+**Remember:** Abelian model structures are classes of objects, not classes of maps.
+
+*Makes the theorem clean to state or prove.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18N40. arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** A model structure picks out three classes of maps, cofibrations, fibrations and weak equivalences, that allow homotopy theory. On a complete and cocomplete abelian category, it is abelian when cofibrations are exactly the monomorphisms with cofibrant cokernel. Fibrations must be exactly the epimorphisms with fibrant kernel. Write 𝒞, ℱ and 𝒲 for the cofibrant, fibrant and trivial objects.
+
+**Problem.** Abelian model structures correspond one to one to triples (𝒞, 𝒲, ℱ) of classes (Hovey, 2002). In such a triple, 𝒲 is thick, and (𝒞 ∩ 𝒲, ℱ) and (𝒞, ℱ ∩ 𝒲) are complete cotorsion pairs. Thick means closed under summands, with two-out-of-three in short exact sequences.
+
+**How the definition helps.** The definition describes maps through their kernels and cokernels, so every model category axiom becomes a statement about classes of objects. A monomorphism lifts against an epimorphism when Ext¹ of the cokernel into the kernel vanishes, so lifting becomes a cotorsion pair condition (our own summary). The factorization axioms become completeness. The work goes into the two-out-of-three property of weak equivalences, which uses the thickness of 𝒲.
+
+**nLab:** [abelian model category](https://ncatlab.org/nlab/show/abelian+model+category). It says: “Then there exists a unique abelian model structure on 𝒜 such that 𝒞, ℱ, 𝒲 are the classes of cofibrant, fibrant, and trivial objects, respectively.”
+
+**Sources:**
+
+- [M. Hovey, Cotorsion pairs, model category structures, and representation theory, Mathematische Zeitschrift 241 (2002)](https://doi.org/10.1007/s00209-002-0431-9)
+
+### Cogenerating a cotorsion pair by a set makes it complete
+
+**Remember:** A set of test objects lets the small object argument build approximations.
+
+*Makes the theorem clean to state or prove.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 16D40. arXiv math.RA, math.CT. Level 4: research.
+
+**Definition.** For a set S of objects, S⊥ is the class of Y with Ext¹(s, Y) = 0 for all s in S. The pair (⊥(S⊥), S⊥) is the cotorsion pair cogenerated by S. A pair (𝒳, 𝒴) is complete when each object M is a quotient of some X in 𝒳 with kernel in 𝒴. Dually, M must embed in some Y′ in 𝒴 with cokernel in 𝒳.
+
+**Problem.** In a Grothendieck category with enough projectives, such as a module category, every cotorsion pair cogenerated by a set is complete. Eklof and Trlifaj proved this for modules.
+
+**How the definition helps.** Since only a set must be tested, one can glue copies of its members transfinitely until Ext¹ against S vanishes (our own summary). Eklof's lemma, also in the data set, keeps the glued object in the left class. The work moves to showing that a given pair is cogenerated by a set. For flat modules this is the key step towards flat covers (our own).
+
+**Paper or page:** [Cotorsion pairs and model structures on Morita rings](https://arxiv.org/abs/2208.05684v3), [Powers of ghost ideals](https://arxiv.org/abs/2411.05250v1). It says: “Let 𝒜 be a Grothendieck category with enough projective objects. Then any cotorsion pair in 𝒜 cogenerated by a set is complete.”
+
+**Sources:**
+
+- [P. C. Eklof and J. Trlifaj, How to make Ext vanish, Bulletin of the London Mathematical Society 33 (2001)](https://doi.org/10.1112/blms/33.1.41)
+
+### Defining injective classes by lifting makes relative resolutions unique up to homotopy
+
+**Remember:** Relative injectives extend along relative monomorphisms, so comparison works as usual.
+
+*True by definition.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18G10. arXiv math.RA, math.CT. Level 4: research.
+
+**Definition.** Let ℐ be a class of objects. A map f is an ℐ-monomorphism when every Hom(f, I) with I in ℐ is onto. Then ℐ is an injective class when it is exactly the objects injective against all ℐ-monomorphisms, and every object has an ℐ-monomorphism into ℐ.
+
+**Problem.** For any injective class ℐ, any two relative ℐ-injective resolutions of an object are homotopy equivalent. The homotopy equivalence is compatible with the maps from the object and is unique up to homotopy.
+
+**How the definition helps.** The classical comparison theorem uses only that maps into injectives extend along the maps of the resolution. The ℐ-monomorphisms are defined as exactly the maps along which maps into ℐ extend (our own summary). So the classical proof works word for word, and relative derived functors such as Eilenberg and Moore's relative Ext are well defined. The work moves to checking that a class is an injective class.
+
+**Paper or page:** [A poisonous example to explicit resolutions of unbounded complexes](https://arxiv.org/abs/2407.09741v3). It says: “then there is a homotopy equivalence f•:I•→J• such that f•∘u=v, and f• is unique up to homotopy.”
+
+**Sources:**
+
+- [S. Eilenberg and J. C. Moore, Foundations of relative homological algebra, Memoirs of the American Mathematical Society 55 (1965)](https://doi.org/10.1090/memo/0055)
+
+### Hovey triples with the same trivial objects have the same homotopy category
+
+**Remember:** Same trivial objects, same weak equivalences, same homotopy category.
+
+*True by definition.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 18N40, 18G80. arXiv math.CT, math.RT. Level 4: research.
+
+**Definition.** A Hovey triple (𝒞, 𝒲, ℱ) has 𝒲 thick and (𝒞 ∩ 𝒲, ℱ) and (𝒞, 𝒲 ∩ ℱ) complete cotorsion pairs. It gives a model structure whose trivial objects are 𝒲, and its homotopy category inverts the weak equivalences. The triple is hereditary when both its cotorsion pairs are hereditary.
+
+**Problem.** In a weakly idempotent complete exact category, two Hovey triples with the same trivial class 𝒲 have the same homotopy category (Šťovíček). For hereditary triples, their stable categories (𝒞 ∩ ℱ)/(𝒞 ∩ ℱ ∩ 𝒲) are triangle equivalent.
+
+**How the definition helps.** The weak equivalences are determined by 𝒲 alone, so two such structures invert the same maps (our own summary). This uses Hovey's lemma that the weak equivalences are the composites of two kinds of maps. The first kind is an admissible monomorphism with cokernel in 𝒲, the second an admissible epimorphism with kernel in 𝒲. So the homotopy categories agree with no Quillen equivalence to build (our own). The cofibrant and fibrant objects may differ greatly, so very different stable categories are compared at no cost.
+
+**Paper or page:** [Chains of model structures arising from modules of finite Gorenstein dimension](https://arxiv.org/abs/2403.05232v4), [Chains of model structures arising from modules of finite Gorenstein dimension](https://arxiv.org/abs/2403.05232v4). It says: “If W=W′, then the homotopy categories of the two exact model structures on 𝒜 are the same.”
+
+**Sources:**
+
+- [J. Šťovíček, Exact model categories, approximation theory, and cohomology of quasi-coherent sheaves, in Advances in Representation Theory of Algebras, EMS (2014)](https://doi.org/10.4171/125-1/10)
+
+### Tensor-tested Gorenstein modules give a complete cotorsion pair over every ring
+
+**Remember:** Tensoring with injectives is easier to control than Hom into projectives.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 16E65, 16D40. arXiv math.RA, math.RT. Level 4: research.
+
+**Definition.** A module is Gorenstein projective when it is the kernel of one map in an exact complex of projectives. That complex must stay exact under every Hom(−, Q) with Q projective. The module is projectively coresolved Gorenstein flat (PGF) when instead the complex stays exact under every I ⊗ − with I an injective right module.
+
+**Problem.** For every ring, (PGF, PGF⊥) is a complete hereditary cotorsion pair, cogenerated by a set, whose common objects are the projectives (Šaroch and Šťovíček). Over left virtually Gorenstein rings, PGF modules are exactly the Gorenstein projective ones.
+
+**How the definition helps.** A condition defined by tensor products is a purity condition, and such conditions can be checked on small pieces (our own summary). So the class is cogenerated by a set, and the Eklof–Trlifaj theorem gives completeness. The Hom test in the classical definition does not split into small pieces in this way (our own). The work lies in Šaroch and Šťovíček's singular compactness arguments.
+
+**Paper or page:** [Chains of model structures arising from modules of finite Gorenstein dimension](https://arxiv.org/abs/2403.05232v4), [Homotopy equivalences and Grothendieck duality over rings with finite Gorenstein weak global dimension](https://arxiv.org/abs/2402.03010v1). It says: “(𝒫𝒢ℱ, 𝒫𝒢ℱ⊥) is a complete and hereditary cotorsion pair with kernel 𝒫, and cogenerated by a set.”
+
+**Sources:**
+
+- [J. Šaroch and J. Šťovíček, Singular compactness and definability for Σ-cotorsion and Gorenstein modules, Selecta Mathematica 26 (2020)](https://doi.org/10.1007/s00029-020-0543-2)
+
+### The flat cotorsion pair gives quasi-coherent sheaves a derived tensor product
+
+**Remember:** Flat cofibrant complexes stand in for missing projectives.
+
+*Makes the theorem clean to state or prove.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 14F08, 18N40. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** Gillespie builds a model structure on complexes from a hereditary cotorsion pair (𝒟, ℰ) in a Grothendieck category. Its trivial objects are the acyclic complexes, and every cofibrant complex has all its terms in 𝒟. For quasi-coherent sheaves one takes 𝒟 to be the flat sheaves, which tensor exactly.
+
+**Problem.** For a quasi-compact separated scheme X, complexes of quasi-coherent sheaves carry a monoidal model structure whose weak equivalences are the quasi-isomorphisms. So the derived tensor product exists on D(Qcoh X), although Qcoh X usually lacks enough projectives.
+
+**How the definition helps.** Cofibrant replacement by flat complexes does the job that projective resolutions do for modules, and the monoidal axioms hold because flat objects tensor exactly. The work lies in Gillespie's existence theorem. It needs a hereditary cotorsion pair cogenerated by a set, whose left class is a Kaplansky class.
+
+**nLab:** [model structure on chain complexes](https://ncatlab.org/nlab/show/model+structure+on+chain+complexes). It says: “This gives a better understanding of the derived category of quasi-coherent sheaves D(Qcoh(X)), and in particular gives immediately the derived functor · ⊗ᴸ · (which is usually a problem due to sheaves not having enough projectives).”
+
+**Sources:**
+
+- [J. Gillespie, The flat model structure on complexes of sheaves, Transactions of the American Mathematical Society 358 (2006)](https://doi.org/10.1090/S0002-9947-06-04157-2)
+- [J. Gillespie, Kaplansky classes and derived categories, Mathematische Zeitschrift 257 (2007)](https://doi.org/10.1007/s00209-007-0148-x)
+
+### Using flat modules instead of projectives gives every module a cover
+
+**Remember:** Projective covers fail for ℤ/2ℤ; flat covers exist for every module.
+
+*Rules out counterexamples.* MSC 18G25 (Relative homological algebra, projective classes (category-theoretic aspects)), 16D40. arXiv math.RA, math.CT. Level 4: research.
+
+**Definition.** A projective cover of M is a surjection P → M from a projective module with superfluous kernel K. This means that N + K = P forces N = P. A flat cover is a map F → M from a flat module through which all maps from flat modules factor. Its endomorphisms over M must all be automorphisms.
+
+**Problem.** Every module over every ring has a flat cover (Bican, El Bashir and Enochs, 2001). Projective covers do not always exist: the ℤ-module ℤ/2ℤ has none.
+
+**How the definition helps.** Flat modules are closed under direct limits, and Enochs showed that a precovering class closed under direct limits is covering (our own summary). Bican and El Bashir showed that the flat cotorsion pair is cogenerated by a set, so flat precovers exist (our own summary). For projectives, ℤ/2ℤ fails, as Wikipedia states. The reason is that the kernel of a projective cover lies in J(R)P, where J(R) is the Jacobson radical, and J(ℤ) = 0 (our own).
+
+**Wikipedia:** [Projective cover](https://en.wikipedia.org/wiki/Projective_cover), [Flat cover](https://en.wikipedia.org/wiki/Flat_cover). It says: “the natural map from Z onto Z/2Z is not a projective cover of the Z-module Z/2Z (which in fact has no projective cover).”
+
+**Sources:**
+
+- [L. Bican, R. El Bashir and E. Enochs, All modules have flat covers, Bulletin of the London Mathematical Society 33 (2001)](https://doi.org/10.1017/S0024609301008104)
+
+### In stable ∞-categories, simplicial objects are filtered objects by their skeleta
+
+**Remember:** Skeleta filter the realization; the filtration's layers are the Moore complex.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G31 (Simplicial modules and Dold-Kan correspondence), 18N60. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A stable ∞-category is a homotopy-theoretic version of a triangulated category, such as spectra or the derived category of a ring. The n-skeleton of a simplicial object X is the part built from degrees at most n. The geometric realization of X is its colimit. The ∞-categorical Dold–Kan correspondence sends X to the sequence of realizations of its skeleta.
+
+**Problem.** For a stable ∞-category C, simplicial objects in C are equivalent to sequences X₀ → X₁ → X₂ → ⋯ in C (Lurie). So the realization of every simplicial object has a skeletal spectral sequence. When C has a t-structure, its first page is the Moore complexes of the homotopy objects.
+
+**How the definition helps.** The equivalence makes the skeleton filtration a filtered object, so the general spectral sequence of a filtered object applies at once. The nLab notes that the chain complex of this filtration agrees with the ordinary Dold–Kan chain complex in the homotopy category. The work went into Lurie's proof of the equivalence in Higher Algebra, Theorem 1.2.4.1.
+
+**nLab:** [infinity-Dold-Kan correspondence](https://ncatlab.org/nlab/show/infinity-Dold-Kan+correspondence). It says: “Under this equivalence, a simplicial object X• is sent to the sequence of geometric realizations ((∞,1)-colimits) of its simplicial skeleta”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adding contracting homotopies to killed objects makes dg quotients enhance Verdier quotients
+
+**Remember:** To kill an object, give its identity a null homotopy.
+
+*True by definition.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18E35, 18G80. arXiv math.CT, math.KT. Level 4: research.
+
+**Definition.** Let A be a pretriangulated dg category over a field and B a full pretriangulated dg subcategory. For each object U of B, Drinfeld's dg quotient A/B freely adds a degree −1 map ε from U to U with dε = id. So each object of B becomes contractible, that is, isomorphic to zero in the homotopy category.
+
+**Problem.** The homotopy category of A/B is the Verdier quotient H⁰(A)/H⁰(B), the triangulated category in which maps with cones in H⁰(B) become invertible. So the dg quotient is a dg enhancement of the Verdier quotient, unique up to isomorphism in the homotopy category of dg categories.
+
+**How the definition helps.** Objects of B become zero by definition, because their identity maps are now boundaries. The work went into Drinfeld's theorem that nothing else is killed, so H⁰(A/B) is exactly the Verdier quotient (our own). The nLab adds that the dg quotient is a homotopy cofibre for the Morita model structure.
+
+**nLab:** [model structure on dg-categories](https://ncatlab.org/nlab/show/model+structure+on+dg-categories). It says: “The DG quotient of Drinfeld is a model for the homotopy cofibre with respect to the Morita model structure.”
+
+**Paper or page:** [On the graded singularity category of Abelian quotient singularities, I. Smooth categorical compactification](https://arxiv.org/abs/2507.19815). It says: “the DG quotient of the pair (A, B) (meaning A modulo B) exists and is unique in the sense of Hqe. Moreover, the DG quotient, denoted by A/B, is a DG enhancement of the triangulated category H⁰(A)/H⁰(B).”
+
+**Sources:**
+
+- [V. Drinfeld, DG quotients of DG categories, J. Algebra (2004)](https://doi.org/10.1016/j.jalgebra.2003.05.001)
+
+### Algebraic compactly generated triangulated categories are derived categories of dg categories
+
+**Remember:** Algebraic plus compact generators means modules over a dg category.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80, 55P42. arXiv math.CT, math.KT. Level 4: research.
+
+**Definition.** A triangulated category is algebraic if it is equivalent to the stable category of a Frobenius exact category. A Frobenius exact category has enough projectives and enough injectives, and the two classes are the same. It is compactly generated if it has direct sums and a set of compact objects whose shifts detect every nonzero object. An object is compact if maps out of it commute with direct sums.
+
+**Problem.** Every algebraic compactly generated triangulated category is equivalent to the derived category of a small dg category (Keller). The algebraic condition is needed: the stable homotopy category is compactly generated but has no dg model.
+
+**How the definition helps.** Being algebraic gives dg morphism complexes between the compact generators, so they form a small dg category A (our own). The work went into showing that the derived tensor functor from D(A) to T is an equivalence (our own). The condition removes the stable homotopy category, where twice the identity of the cone of 2 on the sphere spectrum is nonzero (our own). In an algebraic category, n times the identity of a cone of n is zero, by an explicit null homotopy (our own).
+
+**nLab:** [algebraic triangulated category](https://ncatlab.org/nlab/show/algebraic+triangulated+category). It says: “A triangulated category is called algebraic (in the sense of B. Keller) if it is equivalent to the stable category of a Quillen exact category of a Frobenius category”
+
+**Wikipedia:** [Differential graded category](https://en.wikipedia.org/wiki/Differential_graded_category). It says: “In general, there need not exist dg enhancements of triangulated categories or functors between them, for example stable homotopy category can be shown not to arise from a dg category in this way.”
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369). It says: “Let T be an algebraic compactly generated triangulated category. Then, there exists a small differential graded category and a k-linear equivalence of triangulated categories T → D(A).”
+
+**Sources:**
+
+- [B. Keller, Deriving DG categories, Ann. Sci. École Norm. Sup. 27 (1994) 63–102](https://doi.org/10.24033/asens.1689)
+- [S. Schwede, Algebraic versus topological triangulated categories, in Triangulated Categories, LMS Lecture Note Ser. 375 (2010) 389–407](https://doi.org/10.1017/cbo9781139107075.010)
+
 ### Defining exactness with homotopies makes dg exact structures match ∞-categorical ones
 
 **Remember:** Record the homotopy that kills the composite, not only the two maps.
@@ -4824,6 +6922,195 @@
 **Sources:**
 
 - [Xiaofa Chen, On exact dg categories, arXiv:2306.08231 (2023)](https://arxiv.org/abs/2306.08231v1)
+
+### Dg functors between varieties are Fourier–Mukai, but exact functors need not be
+
+**Remember:** Remember the dg structure, and every functor has a kernel.
+
+*Rules out counterexamples.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 14F08. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A Fourier–Mukai transform pulls a complex on X back to X × Y, tensors it with a fixed complex K, and pushes forward to Y. The complex K is the kernel. Here a dg functor is a morphism, in the homotopy category of dg categories, between dg categories of perfect complexes. An exact functor is a functor of triangulated categories that preserves shifts and distinguished triangles.
+
+**Problem.** For smooth projective varieties X and Y over a field, every dg functor between their dg categories of perfect complexes is a Fourier–Mukai transform (Toën). Some exact functors between bounded derived categories of smooth projective varieties are not Fourier–Mukai transforms (Rizzardo, Van den Bergh and Neeman).
+
+**How the definition helps.** A dg functor keeps its higher homotopies, so Toën's description of functors as bimodules applies, and the bimodule is the kernel (our own). An exact functor keeps only the triangulated shadow, and Rizzardo, Van den Bergh and Neeman found one with no kernel. That functor has no dg lift, since a lift would have a kernel by Toën's theorem (our own). The work went into Toën's derived Morita theory.
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “For varieties X and Y, every functor from the dg-category of X to that of Y comes from a complex of sheaves on X×Y by the Fourier–Mukai transform.”
+
+**Paper or page:** [Twisted Hodge diamonds give rise to non-Fourier-Mukai functors](https://arxiv.org/abs/2207.03363). It says: “Finally we use the above computations to apply the construction by A. Rizzardo, M. Van den Bergh and A. Neeman of non-Fourier-Mukai functors and verify that the constructed functors indeed cannot be Fourier-Mukai for odd dimensional quadrics.”
+
+**Sources:**
+
+- [B. Toën, The homotopy theory of dg-categories and derived Morita theory, Invent. Math. 167 (2007) 615–667](https://doi.org/10.1007/s00222-006-0025-y)
+- [A. Rizzardo, M. Van den Bergh and A. Neeman, An example of a non-Fourier–Mukai functor between derived categories of coherent sheaves, Invent. Math. (2019)](https://doi.org/10.1007/s00222-019-00862-9)
+
+### Exact sequences of dg categories give long exact sequences in Hochschild homology
+
+**Remember:** Hochschild homology turns dg localizations into triangles.
+
+*Makes the theorem clean to state or prove.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 19D55, 16E40. arXiv math.KT, math.CT. Level 4: research.
+
+**Definition.** A sequence A → B → C of small pretriangulated dg categories is exact if A → B is fully faithful and A → C is zero. Also, C must be the Verdier quotient of B by A up to summands, where maps with cones in A are inverted. Keller attaches to each dg category a mixed complex M, which gives its Hochschild and cyclic homology. M is a complex with a second square-zero operator of degree one that anticommutes with the differential.
+
+**Problem.** For an exact sequence A → B → C of small dg categories, the mixed complexes form a triangle M(A) → M(B) → M(C) (Keller). So Hochschild and cyclic homology have long exact sequences along it.
+
+**How the definition helps.** Hochschild homology is defined for every dg category, so the quotient C has a Hochschild homology of its own (our own). A triangulated category alone has no well-defined Hochschild homology, so the statement needs the dg setting (our own). The work went into Keller's localization theorem, proved with dg quotients (our own). For an open subscheme U of X, it links X, U and the complexes supported off U in one long exact sequence (our own).
+
+**Paper or page:** [On a theorem of Keller over a base ring](https://arxiv.org/abs/2511.09264). It says: “Then the sequence M(A) → M(B) → M(C) is a triangle in 𝒟Mix.”
+
+**Sources:**
+
+- [B. Keller, Invariance and localization for cyclic homology of DG algebras, J. Pure Appl. Algebra (1998)](https://doi.org/10.1016/s0022-4049(96)00085-0)
+- [B. Keller, On the cyclic homology of exact categories, J. Pure Appl. Algebra (1999)](https://doi.org/10.1016/s0022-4049(97)00152-7)
+
+### Functors that preserve direct sums between derived dg categories are bimodules
+
+**Remember:** Once quasi-equivalences are inverted, a sum-preserving functor is just a bimodule.
+
+*Makes the theorem clean to state or prove.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18N40. arXiv math.CT, math.KT. Level 4: research.
+
+**Definition.** The homotopy category of dg categories inverts quasi-equivalences, the dg functors that are quasi-isomorphisms on morphism complexes and equivalences on homotopy categories. Toën showed that it has internal morphism objects RHom(A, B). Their objects are quasi-functors, which are bimodules that behave like functors, rather than strict dg functors.
+
+**Problem.** Let A and B be small dg categories over a commutative ring k. Take the quasi-functors between their derived dg categories that preserve small direct sums. In the homotopy category of dg categories, they form the derived dg category of the derived tensor product Aᵒᵖ ⊗ B (Toën).
+
+**How the definition helps.** A sum-preserving functor is fixed by its values on representable modules, and in the homotopy category these values form a bimodule (our own). With strict dg functors the statement fails, because a quasi-equivalence need not have a dg inverse (our own). The work went into Toën's computation of mapping spaces in the model structure on dg categories, through right quasi-representable bimodules (our own).
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369), [A new model for dg-categories](https://arxiv.org/abs/2302.00430). It says: “where the right-hand side is the differential graded category of quasi-functors D<sub>dg</sub>(A) ⇝ D<sub>dg</sub>(B) whose induced k-linear functor D(A) → D(B) preserves small coproducts.”
+
+**Sources:**
+
+- [B. Toën, The homotopy theory of dg-categories and derived Morita theory, Invent. Math. 167 (2007) 615–667](https://doi.org/10.1007/s00222-006-0025-y)
+
+### Morita equivalence lets a thick generating subcategory replace the whole dg category
+
+**Remember:** Morita equivalence sees only what thick closure can build.
+
+*True by definition.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories), 18G80. arXiv math.CT, math.KT. Level 4: research.
+
+**Definition.** A dg functor F from C to D is a Morita equivalence if restriction along F is an equivalence of derived categories of dg modules. Every quasi-equivalence, a quasi-isomorphism on morphism complexes that is an equivalence on homotopy categories, is one. X is Karoubian if idempotents split in its homotopy category H⁰(X), and a thick subcategory is a triangulated subcategory closed under direct summands.
+
+**Problem.** Let X be a Karoubian pretriangulated dg category, and let A be a full dg subcategory whose homotopy category generates H⁰(X) as a thick subcategory. Then the inclusion of A in X is a Morita equivalence (Keller).
+
+**How the definition helps.** A Morita equivalence only asks for an equivalence of derived categories, and a derived category cannot tell A from its thick closure (our own). A quasi-equivalence would also need the inclusion to be essentially surjective on H⁰, which fails here (our own). The work went into Keller's theorem that derived categories are controlled by their compact objects, the perfect modules (our own). Perfect modules form the thick closure of the representable modules, and for Karoubian pretriangulated X they make up H⁰(X) (our own).
+
+**nLab:** [model structure on dg-categories](https://ncatlab.org/nlab/show/model+structure+on+dg-categories). It says: “functors F: C → D whose induced restriction of scalars functor L f\* : D(D) → D(C) is an equivalence of categories.”
+
+**Paper or page:** [The Derived Auslander-Iyama Correspondence](https://arxiv.org/abs/2208.14413). It says: “Let X be a Karoubian pre-triangulated DG category and A ⊆ X a full DG subcategory such that thick(H⁰(A)) = H⁰(X). Then, the inclusion functor A ↪︎ X is a Morita equivalence”
+
+**Sources:**
+
+- [B. Keller, On differential graded categories, Proceedings of the ICM, Madrid 2006, vol. II](https://doi.org/10.4171/022-2/8)
+
+### Cartan–Eilenberg systems determine poset-filtered complexes up to filtered chain equivalence
+
+**Remember:** Record every relative homology, and you know the filtered complex.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G40 (Spectral sequences, hypercohomology), 37B30. arXiv math.AT, math.DS. Level 4: research.
+
+**Definition.** A Cartan–Eilenberg system records the homology H(p, q) of each piece between two filtration levels. It also records the maps and connecting maps that link these pieces in long exact sequences. Spendlove and Vandervorst use filtrations indexed by the down-sets of a partially ordered set.
+
+**Problem.** Two differential vector spaces filtered by the down-sets of a partially ordered set have isomorphic Cartan–Eilenberg systems exactly when they are filtered chain equivalent.
+
+**How the definition helps.** The system keeps all relative homology groups and their connecting maps, which is exactly the data a filtered chain equivalence must preserve. So over a field it is a complete invariant of the filtered complex up to filtered chain equivalence. The work went into building a filtered chain equivalence from an isomorphism of systems. The authors apply it to two open conjectures of Robbin and Salamon on the uniqueness of connection matrices in Conley index theory.
+
+**nLab:** [Cartan-Eilenberg spectral sequence](https://ncatlab.org/nlab/show/Cartan-Eilenberg+spectral+sequence). It says: “axioms for certain systems of bigraded modules H(p,q) ("Cartan-Eilenberg systems") are given which imply the existence of a spectral sequence converging to H(-∞,∞).”
+
+**Paper or page:** [Graded differential groups, Cartan-Eilenberg systems and conjectures in Conley index theory](https://arxiv.org/abs/2406.19977). It says: “Let (D, d<sub>D</sub>) and (D′, d<sub>D′</sub>) be O(P)-filtered differential vector spaces over a field 𝕂. Then, E(D, d<sub>D</sub>) ≅ E(D′, d<sub>D′</sub>) if and only if (D, d<sub>D</sub>) and (D′, d<sub>D′</sub>) are O(P)-filtered chain equivalent”
+
+**Sources:**
+
+- [K. Spendlove and R. Vandervorst, Graded differential groups, Cartan-Eilenberg systems and conjectures in Conley index theory (2024)](https://arxiv.org/abs/2406.19977)
+
+### Conditional convergence lets an isomorphism on one page lift to the abutment
+
+**Remember:** Complete towers let page isomorphisms reach the target.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G40 (Spectral sequences, hypercohomology), 55T05. arXiv math.AT, math.CT. Level 4: research.
+
+**Definition.** An exact couple gives a tower of groups D whose maps filter a target group, together with the pages E. The spectral sequence converges conditionally when the tower is complete, meaning that its limit and its first derived limit lim¹ vanish. This is a condition on the tower alone, checked before any page is computed.
+
+**Problem.** Take a map of exact couples whose spectral sequences converge conditionally and lie in the left half-plane, with homological indexing. If the map is an isomorphism on some page Eʳ, then it is an isomorphism on the filtered targets (Boardman).
+
+**How the definition helps.** Conditional convergence is a property of the tower alone, so it holds for both couples without knowing any differentials. The mapping lemma gives isomorphisms on all later pages and on the limit page E∞ (our own summary). Boardman's argument with lim and lim¹ then carries this to the filtered targets (our own summary). It covers half-plane cases such as Adams spectral sequences.
+
+**nLab:** [conditional convergence of spectral sequences](https://ncatlab.org/nlab/show/conditional+convergence+of+spectral+sequences). It says: “then it is said to converge conditionally to 𝒟<sup>0,•</sup> if, when regarding {𝒟<sup>s,•</sup>} as a filtering for 𝒟<sup>0,•</sup> it is exhaustive and complete”
+
+**Paper or page:** [The singularity and cosingularity categories of C\*BG for groups with cyclic Sylow p-subgroups](https://arxiv.org/abs/2107.09389). It says: “where both spectral sequences are conditionally convergent and live in the (homologically indexed) left half plane, if the map Eʳ → E′ʳ is an isomorphism for some r then D → D′ is an isomorphism of filtered graded groups.”
+
+**Sources:**
+
+- [J. M. Boardman, Conditionally convergent spectral sequences, Contemporary Mathematics 239 (1999)](https://doi.org/10.1090/conm/239/03597)
+
+### Filtered objects in stable ∞-categories give all filtration spectral sequences at once
+
+**Remember:** One tower, one homological functor, one spectral sequence.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G40 (Spectral sequences, hypercohomology), 18N60, 55T05. arXiv math.AT, math.CT. Level 4: research.
+
+**Definition.** In a stable ∞-category, such as complexes up to quasi-isomorphism, every map has a cofibre, which plays the role of the cone. A filtered object is any sequence … → Xₙ₋₁ → Xₙ → … of maps, not necessarily inclusions. A homological functor π to an abelian category turns cofibre sequences into long exact sequences.
+
+**Problem.** Every homological functor π gives a functor from filtered objects to spectral sequences, with E₁ given by π of the cofibres of Xₙ₋₁ → Xₙ. The spectral sequence of a filtered complex and the Atiyah–Hirzebruch and Adams spectral sequences are all instances.
+
+**How the definition helps.** Every map has a cofibre with a long exact sequence, so each tower gives an exact couple with no injectivity to check. One construction therefore gives the spectral sequences that classical texts build separately for filtered complexes, double complexes and towers of spaces. The work moves into building the stable ∞-category and its cofibre sequences. Convergence then needs only conditions on the tower and on π.
+
+**nLab:** [spectral sequence of a filtered stable homotopy type](https://ncatlab.org/nlab/show/spectral+sequence+of+a+filtered+stable+homotopy+type). It says: “Any homological functor 𝒞 → 𝒜 from a stable (∞,1)-category to an abelian category induces a functor Filt(𝒞) → SpSeq(𝒜) from the stable (∞,1)-category of filtered objects in 𝒞 to the abelian category of bigraded spectral sequences in 𝒜.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Filtered quasi-isomorphisms make spectral sequence pages from E₁ on choice-free
+
+**Remember:** Invert maps that are quasi-isomorphisms on every graded piece.
+
+*Makes the theorem clean to state or prove.* MSC 18G40 (Spectral sequences, hypercohomology), 18G80. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A map of filtered complexes is a filtered quasi-isomorphism when it induces a quasi-isomorphism on every graded piece grᵖ = Fᵖ/Fᵖ⁺¹. The filtered derived category inverts these maps. A quasi-isomorphism of the underlying complexes is not enough, because it can change the graded pieces.
+
+**Problem.** Let T be left exact on an abelian category with enough injectives, and K a bounded below complex with finite filtrations. A spectral sequence runs from the derived functors of T at each grᵖK to those at K, with pages from E₁ on free of choices.
+
+**How the definition helps.** A filtered quasi-isomorphism is by definition an isomorphism on E₁ = H(gr), so by the mapping lemma it is an isomorphism on all later pages. Two filtered injective resolutions of K are filtered homotopy equivalent (Stacks 05TY), so they give the same pages from E₁ on. The work went into building filtered injective resolutions (Stacks 05TW). The page E₀ depends on the choice, so the statement starts at E₁.
+
+**nLab:** [filtered derived category](https://ncatlab.org/nlab/show/filtered+derived+category). It says: “One defines a morphism in Comp(Fil(A)) to be a quasi-isomorphism if it induces quasi-isomorphisms on each degree of the associated graded objects.”
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/015W). It says: “The construction of this spectral sequence is functorial in the object K• of Comp⁺(Filᶠ(𝒜)) and the terms (Eᵣ, dᵣ) for r ≥ 1 do not depend on any choices.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shifted cones detect isomorphisms on a chosen spectral sequence page
+
+**Remember:** Shift the filtration by r, and the cone sees page r plus one.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G40 (Spectral sequences, hypercohomology), 18N40, 18G35. arXiv math.AT, math.CT. Level 4: research.
+
+**Definition.** A map of filtered complexes is an r-quasi-isomorphism when it induces an isomorphism on the page Eᵣ₊₁ of the spectral sequences. The r-cone Cᵣ(f) is the mapping cone of f, with the filtration on the copy of the source shifted by an amount set by r. A filtered complex is r-acyclic when its page Eᵣ₊₁ is zero.
+
+**Problem.** A map f of filtered chain complexes is an r-quasi-isomorphism exactly when its r-cone is r-acyclic (Cirici, Egas Santander, Livernet and Whitehouse).
+
+**How the definition helps.** The shift is chosen so that the pages Eᵣ₊₁ of source, target and r-cone fit together like the cohomology of an ordinary cone (our own). So the test for a map becomes a test that one object has a zero page. For r = 0 this is the cone test for maps that are quasi-isomorphisms on every graded piece. From E₂ on, pages do not in general turn short exact sequences into long exact ones (our own). So the plain cone does not give this test.
+
+**Paper or page:** [A distributive lattice of model structures relating to spectral sequences](https://arxiv.org/abs/2402.09893). It says: “Let f: A → B be a morphism of filtered chain complexes. Then f ∈ ℰᵣ if and only if Cᵣ(f) is r-acyclic.”
+
+**Sources:**
+
+- [J. Cirici, D. Egas Santander, M. Livernet and S. Whitehouse, Model category structures and spectral sequences, Proceedings of the Royal Society of Edinburgh A (2020)](https://doi.org/10.1017/prm.2019.45)
+- [J. A. Brotherston, A distributive lattice of model structures relating to spectral sequences (2024)](https://arxiv.org/abs/2402.09893)
+
+### Strict differentials make a filtered complex's spectral sequence degenerate at E₁
+
+**Remember:** Strict differentials let grading commute with cohomology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G40 (Spectral sequences, hypercohomology), 14C30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** Take decreasing filtrations, and write gr for the associated graded, the sum of the quotients Fᵖ/Fᵖ⁺¹. A map f from A to B of filtered objects always satisfies f(FᵖA) ⊆ f(A) ∩ FᵖB. It is strict when equality holds for every p.
+
+**Problem.** Let K be a complex with a finite filtration. Its spectral sequence degenerates at E₁, meaning dᵣ = 0 for all r ≥ 1, exactly when every differential of K is strict (Deligne).
+
+**How the definition helps.** For strict maps, taking the associated graded commutes with kernels, images and cohomology, so E₁ = H(gr K) equals gr H(K) = E∞. Deligne proved the full equivalence, which turns a statement about all pages into one condition on d (our own). Without strictness the graded loses information. The identity of a field k, from k in filtration degree −1 to k in degree 0, is bijective with zero graded (our own).
+
+**Paper or page:** [Homology](https://stacks.math.columbia.edu/tag/0128). It says: “Let A → B → C be a complex of filtered objects of 𝒜. Assume α : A → B and β : B → C are strict morphisms of filtered objects. Then gr(Ker(β)/Im(α)) = Ker(gr(β))/Im(gr(α))).”
+
+**Sources:**
+
+- [P. Deligne, Théorie de Hodge II, Publications Mathématiques de l'IHÉS 40 (1971)](https://doi.org/10.1007/BF02684692)
 
 ### Butterflies describe weak morphisms of 2-groups with ordinary groups
 
@@ -4899,6 +7186,152 @@
 
 - [Jeremy R. B. Brightbill, Vanessa Miemietz, The $N$-Stable Category, arXiv:2109.07728 (2021)](https://arxiv.org/abs/2109.07728v2)
 
+### Cofibrant modules give every group ring a triangulated stable module category
+
+**Remember:** Cofibrant modules restore projectives equal injectives for infinite groups.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G65 (Stable module categories), 20J05. arXiv math.RT, math.GR. Level 4: research.
+
+**Definition.** Let B(G, R) be the RG-module of functions from a group G to a commutative ring R that take finitely many values (our own gloss). An RG-module M is cofibrant if the tensor product over R of M and B(G, R) is a projective RG-module. For an infinite group, RG is not self-injective.
+
+**Problem.** For every group G and commutative ring R, the stable category of cofibrant RG-modules is triangulated. It is triangle equivalent to the homotopy category of fibrant RG-modules.
+
+**How the definition helps.** The cofibrant modules form a Frobenius category, so Happel's theorem gives the triangulated structure at once. The work went into proving the Frobenius property, that is, that projective RG-modules are the injective objects of this subcategory. For a finite group over a field every module is cofibrant, and one recovers the usual stable module category (our own).
+
+**Paper or page:** [Gorenstein cohomological dimension and stable categories for groups](https://arxiv.org/abs/2206.09589), [Gorenstein cohomological dimension and stable categories for groups](https://arxiv.org/abs/2206.09589). It says: “Then the subcategory of cofibrant RG-modules 𝒞of(RG) is a Frobenius category, whose projective and injective objects coincide and are precisely the projective RG-modules.”
+
+**Sources:**
+
+- [Gorenstein cohomological dimension and stable categories for groups, arXiv:2206.09589](https://arxiv.org/abs/2206.09589)
+
+### Defining Tate–Hochschild cohomology by singularity categories makes it detect smoothness
+
+**Remember:** A perfect diagonal is zero in the singularity category.
+
+*True by definition. Confidence: medium.* MSC 18G65 (Stable module categories), 16E40. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** For a finite-dimensional algebra A over a field, let Aᵉ = A ⊗ Aᵒᵖ be its enveloping algebra, so A-bimodules are Aᵉ-modules. Tate–Hochschild (singular Hochschild) cohomology is HHⁿsg(A) = Hom(A, A\[n\]) in the singularity category of Aᵉ, for every integer n. The algebra A is homologically smooth if A is a perfect complex of bimodules.
+
+**Problem.** For a finite-dimensional algebra A over a field, the Tate–Hochschild cohomology HH∗sg(A) is zero if and only if A is homologically smooth.
+
+**How the definition helps.** In the singularity category an object is zero exactly when it is perfect, so HH∗sg(A) vanishes when A is a perfect bimodule. Conversely, HH⁰sg(A) = 0 makes the identity of A zero, so A is zero there and hence perfect (our own). Under the other definition, as Hochschild cohomology of the dg singularity category, this is not visible. Keller proved the two definitions agree, and that is where the work went.
+
+**Paper or page:** [DG singular equivalence and singular locus](https://arxiv.org/abs/2403.13637). It says: “There is a canonical isomorphism of graded algebras between the Tate-Hochschild cohomologies HH∗<sub>sg</sub>(A) of A and the Hochschild cohomologies of S<sub>dg</sub>(A).”
+
+**Sources:**
+
+- [Bernhard Keller, Singular Hochschild cohomology via the singularity category, Comptes Rendus Mathématique 356 (2018) 1106–1111](https://doi.org/10.1016/j.crma.2018.10.003)
+- [Ragnar-Olaf Buchweitz, Maximal Cohen–Macaulay Modules and Tate Cohomology, Mathematical Surveys and Monographs 262, AMS (2021)](https://doi.org/10.1090/surv/262)
+
+### Endotrivial modules are the invertible objects of the stable module category
+
+**Remember:** Invertible up to projectives means endotrivial.
+
+*Makes the theorem clean to state or prove.* MSC 18G65 (Stable module categories), 20C20. arXiv math.RT, math.GR. Level 4: research.
+
+**Definition.** A kG-module M is endotrivial if Homₖ(M, M) ≅ k ⊕ P with P projective. Equivalently, M ⊗ M\* ≅ k in the stable module category, so M is invertible for the tensor product there. The stable classes of endotrivial modules form the group T(G), the Picard group of the stable module category.
+
+**Problem.** For a finite group G, the endotrivial modules modulo stable isomorphism form an abelian group T(G) under tensor product, which contains every syzygy Ωⁿ(k). For an elementary abelian p-group of rank at least 2, over a field of characteristic p, T(G) ≅ ℤ, generated by Ω(k) (Dade).
+
+**How the definition helps.** Viewing endotrivial modules as invertible objects makes T(G) a group at once, since invertible objects always form an abelian group. Also Ωᵐ(k) ⊗ Ωⁿ(k) ≅ Ωᵐ⁺ⁿ(k) stably, so the syzygies of k are invertible (our own). The work moves into Dade's theorem that, for elementary abelian groups of rank at least 2, these syzygies are all of T(G).
+
+**Paper or page:** [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308). It says: “π₀ pic StMod(kC<sub>p</sub>ⁿ) ≅ 0 if p = 2 and n = 1; C₂ if p is odd and n = 1; ℤ if n ≥ 2.”
+
+**Sources:**
+
+- [Everett C. Dade, Endo-permutation modules over p-groups II, Annals of Mathematics 108 (1978) 317–346](https://doi.org/10.2307/1971169)
+
+### Finite Gorenstein dimension is exactly what lets Gorenstein projectives fill singularity categories
+
+**Remember:** Stable Gorenstein projectives always sit inside; finite dimension makes them everything.
+
+*Rules out counterexamples.* MSC 18G65 (Stable module categories), 18G80, 16E65. arXiv math.RT, math.CT. Level 4: research.
+
+**Definition.** An object G is Gorenstein projective if it is a kernel in an exact complex of projectives. That complex must stay exact after applying Hom(−, P) for every projective P. Gorenstein projective dimension counts the steps needed to resolve an object by Gorenstein projectives. The stable category of Gorenstein projectives is triangulated.
+
+**Problem.** Let 𝒜 be an abelian category with enough projectives. The stable category of Gorenstein projectives embeds in the singularity category, and it fills it exactly when every object has finite Gorenstein projective dimension.
+
+**How the definition helps.** Finite Gorenstein projective dimension means every object has a Gorenstein projective syzygy, which then represents it in the singularity category. Without it the embedding can miss objects. For a local ring with square-zero maximal ideal that is not Gorenstein, such as k\[x,y\]/(x,y)², every Gorenstein projective is free (our own example). There the stable category is zero but the singularity category is not.
+
+**Paper or page:** [Lambda-pure global dimension of Grothendieck categories and some applications](https://arxiv.org/abs/2411.05356). It says: “Then the canonical functor F: 𝒢(𝒜) → 𝐃ᵇ<sub>sg</sub>(𝒜) is a fully faithful triangle functor. Moreover, F is a triangulated equivalent if and only if the Gorenstein projective dimension of each object in 𝒜 is finite”
+
+**Sources:**
+
+- [Ragnar-Olaf Buchweitz, Maximal Cohen–Macaulay Modules and Tate Cohomology, Mathematical Surveys and Monographs 262, AMS (2021)](https://doi.org/10.1090/surv/262)
+
+### Inverting the syzygy on the stable category gives the singularity category
+
+**Remember:** Force the syzygy to be invertible and you get the singularity category.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G65 (Stable module categories), 16E35. arXiv math.RT. Level 4: research.
+
+**Definition.** The stabilization of the stable module category with respect to the syzygy Ω has objects (X, n), with X a module and n an integer. Morphisms from (X, n) to (Y, m) form the direct limit over p of stable Hom(Ωᵖ⁻ⁿX, Ωᵖ⁻ᵐY). In this category Ω becomes invertible.
+
+**Problem.** For an Artin algebra Λ, the stabilization of its stable module category with respect to Ω is triangle equivalent to the singularity category Dsg(Λ). No Gorenstein or self-injective hypothesis is needed.
+
+**How the definition helps.** In the singularity category projectives are zero, so every module is a shift of its syzygy and Ω is already invertible. The stabilization is the universal way to make Ω invertible, so the comparison functor exists by its universal property (our own). The work went into showing the functor is fully faithful and dense (Keller and Vossieck, and Buchweitz). In the quoted paper, Ωnc ⊗ − is a functorial model of Ω.
+
+**Paper or page:** [The singularity category as a stable module category](https://arxiv.org/abs/2509.01056). It says: “(Buchweitz, Keller-Vossieck) The functor above F induces a triangle equivalence 𝒮(Λ-m̲o̲d̲, Ω<sub>nc</sub> ⊗\_Λ −) ⟶ 𝐃<sub>sg</sub>(Λ)”
+
+**Sources:**
+
+- [The singularity category as a stable module category, arXiv:2509.01056](https://arxiv.org/abs/2509.01056)
+
+### A∞-functors compute the derived internal Hom of dg categories
+
+**Remember:** Allow higher components, and dg functors need no resolution first.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G70 (\\(A\_\\)-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
+
+**Definition.** An A∞-functor between dg categories has components fₙ, which send n composable morphisms to a morphism of degree 1 − n. They satisfy the A∞ relations. A strict dg functor is the case where fₙ = 0 for all n ≥ 2. It is strictly unital if f₁ preserves identities and every higher fₙ vanishes when an input is an identity.
+
+**Problem.** Work over a field and in the homotopy category of dg categories. There, the internal Hom from A to B is isomorphic to the dg category of strictly unital A∞-functors (Faonte; Canonaco, Ornaghi and Stellari). So no free resolution of A is needed first.
+
+**How the definition helps.** An A∞-functor out of A is a dg functor out of the bar–cobar resolution of A (our own). That resolution is a free dg category equivalent to A in the homotopy category (our own). With strict dg functors one must first replace A by such a free resolution, as in Toën's construction (our own). The work went into comparing A∞-functors with Toën's internal Hom (our own).
+
+**nLab:** [model structure on dg-categories](https://ncatlab.org/nlab/show/model+structure+on+dg-categories). It says: “The derived internal Hom in the homotopy category of DG-categories is equivalent to the dg-category of A∞-functors.”
+
+**Sources:**
+
+- [G. Faonte, A∞-functors and homotopy theory of dg-categories, J. Noncommut. Geom. 11 (2017)](https://doi.org/10.4171/jncg/11-3-6)
+- [A. Canonaco, M. Ornaghi and P. Stellari, Localizations of the category of A∞ categories and internal Homs, Doc. Math. (2019)](https://doi.org/10.4171/dm/731)
+
+### Twisted complexes over an A∞-category model the triangulated category its objects generate
+
+**Remember:** Cones of A∞ morphisms are just bigger twisted complexes.
+
+*Makes the theorem clean to state or prove.* MSC 18G70 (\\(A\_\\)-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
+
+**Definition.** An A∞-category has maps mₙ from n composable morphisms to one morphism; m₁ is the differential and m₂ is composition up to homotopy. A twisted complex is a finite sum of shifted objects with a strictly triangular matrix δ of degree-one morphisms. It satisfies m₁(δ) + m₂(δ, δ) + … = 0. Twisted complexes form an A∞-category Tw A with cones, and H⁰(Tw A) takes the zeroth cohomology of its morphisms.
+
+**Problem.** The A∞ Yoneda embedding of A into A∞-modules over A factors through Tw A. It induces an equivalence from H⁰(Tw A) to the triangulated subcategory of the derived category of A generated by its objects (Lefèvre-Hasegawa).
+
+**How the definition helps.** Twisted complexes write every iterated cone with the morphisms of A alone, so the generated triangulated category needs no module category (our own). The cohomology category of A need not be triangulated, so without Tw A the generated category exists only inside modules (our own). The work went into the A∞ Yoneda lemma, which makes the Yoneda embedding fully faithful on cohomology (our own).
+
+**Paper or page:** [Perverse coherent extensions on Calabi-Yau threefolds and representations of cohomological Hall algebras](https://arxiv.org/abs/2309.16582). It says: “inducing an equivalence of triangulated categories H⁰(Y₂): H⁰(Tw A) → Triang(Aᵢ) where Triang(Aᵢ) denotes the triangulated subcategory of D(A) generated by the objects Aᵢ.”
+
+**Sources:**
+
+- [M. Kontsevich, Homological algebra of mirror symmetry, Proceedings of the ICM, Zürich 1994](https://doi.org/10.1007/978-3-0348-9078-6_11)
+
+### A set of compact objects generates a t-structure
+
+**Remember:** Orthogonality defines the halves, and compactness builds the truncations.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories). arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** Let S₀ be a set of compact objects in a triangulated category D with direct sums. Define D≥1 as the objects that receive no nonzero maps from any shift S\[n\] with S in S₀ and n ≥ 0. Define D≤0 as the objects with no nonzero maps into D≥1.
+
+**Problem.** The pair of D≤0 and D≥0 = D≥1\[1\] is a t-structure (Alonso, Jeremías and Souto). Here D≤0 is the smallest class that contains S₀ and is closed under positive shifts, extensions and sums.
+
+**How the definition helps.** Defining D≥1 by orthogonality makes the vanishing axiom and the shift conditions automatic, so only the truncation triangle needs work (our own). That triangle is built as a homotopy colimit that attaches sums of shifted objects of S₀ step by step. Compactness of S₀ makes this colimit land in D≤0 with cone in D≥1 (our own summary). For S₀ = {R} in the derived category of a ring R, this gives the standard t-structure (our own).
+
+**Wikipedia:** [T-structure](https://en.wikipedia.org/wiki/T-structure). It says: “Many t-structures arise by means of the following fact: in a triangulated category with arbitrary direct sums, and a set S₀ of compact objects in D, the subcategories”
+
+**Sources:**
+
+- [Leovigildo Alonso Tarrío, Ana Jeremías López and María José Souto Salorio, Construction of t-structures and equivalences of derived categories, Trans. Amer. Math. Soc. 355 (2003) 2523–2543](https://doi.org/10.1090/S0002-9947-03-03261-6)
+
 ### Allowing massless semistable objects makes stability pass to a quotient category
 
 **Remember:** Let some objects weigh nothing, then divide them out.
@@ -4917,6 +7350,118 @@
 
 - [Nathan Broomhead, David Pauksztello, David Ploog, Jon Woolf, Partial compactification of stability manifolds by massless semistable objects, arXiv:2208.03173 (2022)](https://arxiv.org/abs/2208.03173v1)
 
+### BIK stratification is defined so that support classifies localizing ideals
+
+**Remember:** Build every ideal from points, and make each point indivisible.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 13D09. arXiv math.CT, math.RT. Level 4: research.
+
+**Definition.** Let a graded noetherian ring R act on a compactly generated tensor triangulated category K. Each object x then has a local piece Γₚx at each homogeneous prime p. Benson, Iyengar and Krause (BIK) call K stratified if each x lies in the localizing tensor ideal generated by its local pieces. Also, each nonzero Γₚ K must have no localizing tensor ideal except 0 and itself.
+
+**Problem.** If K is stratified by R, then support is a bijection. It goes from the localizing tensor ideals of K onto the subsets of the support of K.
+
+**How the definition helps.** The two conditions are exactly what makes the support map injective (our own summary). The first rebuilds each ideal from its local pieces, and the second makes each local piece all or nothing (our own summary). The rival is a direct proof, such as Neeman's for D(R). The work now moves into proving stratification in each example.
+
+**Paper or page:** [On localizing subcategories of Lie superalgebra representations](https://arxiv.org/abs/2503.13639). It says: “If 𝒦 is stratified in the sense of BIK, then the maps σ and τ provide mutually inverse bijections between the set of ⊗-ideal localizing subcategories of 𝒦 and subsets of Proj R”
+
+**Sources:**
+
+- [Dave Benson, Srikanth B. Iyengar and Henning Krause, Stratifying triangulated categories, J. Topol. 4 (2011) 641–666](https://doi.org/10.1112/jtopol/jtr017)
+
+### Bounded t-structures make the Grothendieck group equal to that of the heart
+
+**Remember:** Finitely many cohomology objects let each class split as an alternating sum.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories), 18F30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A t-structure is bounded if every object has only finitely many nonzero cohomology objects Hⁱ. The Grothendieck group K₀ of a triangulated category has a generator for each object. It has the relation \[Y\] = \[X\] + \[Z\] for each distinguished triangle X → Y → Z → X\[1\].
+
+**Problem.** For a bounded t-structure with heart A, the inclusion of A gives an isomorphism from K₀(A) to K₀(D). Its inverse sends \[X\] to the alternating sum of the classes \[Hⁱ(X)\].
+
+**How the definition helps.** Boundedness makes the alternating sum finite, and truncation triangles show that \[X\] equals it (our own). Counterexample (our own): for bounded-above complexes with finite-dimensional cohomology over k, let T be the sum of the k\[2n\], n ≥ 0. Then T ≅ k ⊕ T\[2\] and \[T\[2\]\] = \[T\], so \[k\] = 0 in K₀(D), but not in K₀ of the heart. This t-structure is not bounded, because T has infinitely many nonzero Hⁱ.
+
+**Wikipedia:** [Bridgeland stability condition](https://en.wikipedia.org/wiki/Bridgeland_stability_condition). It says: “There is a natural isomorphism of Grothendieck groups K₀(A) ≅ K₀(D) that turns the stability function into a central charge”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bridgeland stability conditions are bounded hearts with a stability function
+
+**Remember:** Pick a heart and a central charge, and the slicing follows.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 14F08. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A slicing gives, for each real φ, a subcategory P(φ) of semistable objects of phase φ, and filters every object by phase. A pre-stability condition adds a homomorphism Z from K₀(D) to ℂ that sends nonzero objects of P(φ) to the ray at angle πφ. A stability function on an abelian category sends nonzero objects into the upper half-plane or the negative real axis.
+
+**Problem.** (Bridgeland) A pre-stability condition on D is the same as a bounded heart A with a stability function that has the Harder–Narasimhan property. That property says each object of A has a filtration with semistable factors of strictly decreasing phase.
+
+**How the definition helps.** The slicing definition deforms well but is hard to write down, while the heart form reduces construction to one abelian category (our own). There one checks a sign condition and the existence of Harder–Narasimhan filtrations. The work is Bridgeland's Proposition 5.3, which rebuilds the slicing from the heart. The heart is then the objects of phase in (0, 1\], and most known examples are built in this form (our own).
+
+**Wikipedia:** [Bridgeland stability condition](https://en.wikipedia.org/wiki/Bridgeland_stability_condition). It says: “Conversely if (Z,P) is a stability condition, then the subcategory P(0,1\] is the heart of a bounded t-structure on which Z gives a stability function with Harder—Narasimhan property.”
+
+**Paper or page:** [A short proof of the deformation property of Bridgeland stability conditions](https://arxiv.org/abs/1606.02169v3). It says: “To give a pre-stability condition on D is equivalent to giving a heart A of a bounded t-structure, and a stability function Z on A with the HN property.”
+
+**Sources:**
+
+- [Tom Bridgeland, Stability conditions on triangulated categories, Ann. of Math. 166 (2007) 317–345](https://doi.org/10.4007/annals.2007.166.317)
+
+### Closure under cones is what lets the spectrum see Spec R
+
+**Remember:** Without cones, ideals of projectives only see connected components.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories), 13D09, 14A30. arXiv math.CT, math.AC. Level 4: research.
+
+**Definition.** Perfect complexes over R are bounded complexes of finitely generated projective modules, with triangles built from cones. A thick ideal of perfect complexes must be closed under cones. In the category proj(R) of finitely generated projective modules every short exact sequence splits. So an ideal there needs closure only under sums and summands.
+
+**Problem.** For a commutative ring R, Spc of the perfect complexes over R is homeomorphic to Spec R.
+
+**How the definition helps.** Closure under cones puts the cone of multiplication by each element f into the category, with support the zero set of f (our own summary). These supports cut out the Zariski topology, and proj(R) has no such objects (our own summary). So for a hereditary noetherian ring such as ℤ, the spectrum of proj(R) shrinks to the connected components. With cones, the work goes into Thomason's classification.
+
+**Paper or page:** [Tensor extriangulated categories](https://arxiv.org/abs/2502.18257). It says: “If R is a commutative hereditary noetherian ring, then the Balmer spectrum BSpc(proj(R)) is the finite set of connected components of the Zariski spectrum ZSpec(R) equipped with the discrete topology”
+
+**Sources:**
+
+- [R. W. Thomason, The classification of triangulated subcategories, Compositio Math. 105 (1997) 1–27](https://doi.org/10.1023/A:1017932514274)
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+- [Raphael Bennett-Tennenhaus, Isambard Goodbody, Janina C. Letz and Amit Shah, Tensor extriangulated categories, arXiv:2502.18257 (2025)](https://arxiv.org/abs/2502.18257)
+
+### Compact generation makes sum-to-product cohomological functors representable
+
+**Remember:** Compact generators turn Brown's theorem for spectra into a general theorem.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 55U35. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** An object G of a triangulated category D with direct sums is compact if maps out of G commute with direct sums. D is compactly generated if a set of compact objects detects zero. That is, X is zero when every map to X from every shift of a generator is zero.
+
+**Problem.** (Neeman) In a compactly generated triangulated category D, each cohomological functor H from D to abelian groups that sends sums to products is representable. Here cohomological means contravariant and sending triangles to long exact sequences.
+
+**How the definition helps.** Compact generators let one build the representing object W in countably many steps, each checked on generators (our own summary of Neeman). W is the homotopy colimit of these steps. The result mirrors Brown's theorem for spectra, with generators in place of spheres. Applied to Hom(F(−), Y), it gives a right adjoint to each exact F out of D that preserves sums.
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “Let D be a compactly generated triangulated category, H: Dᵒᵖ → Ab a cohomological functor which takes coproducts to products. Then H is representable.”
+
+**Paper or page:** [Derived, Lemma 13.38.1](https://stacks.math.columbia.edu/tag/0A8F), [Derived, Proposition 13.38.2](https://stacks.math.columbia.edu/tag/0A8G). It says: “Let H : D → Ab be a contravariant cohomological functor which transforms direct sums into products. Then H is representable.”
+
+**Sources:**
+
+- [Amnon Neeman, The Grothendieck duality theorem via Bousfield's techniques and Brown representability, J. Amer. Math. Soc. 9 (1996) 205–236](https://doi.org/10.1090/S0894-0347-96-00174-9)
+
+### Compact generators detect zero exactly when they build all compact objects
+
+**Remember:** Detecting zero with one compact object means building all compacts from it.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 13D09. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A compact object E generates D if X = 0 whenever every map from every shift E\[n\] to X is zero. E is a classical generator of the compact objects if each of them comes from E by finitely many shifts, cones and direct summands.
+
+**Problem.** If D has direct sums, a compact object E generates D exactly when D is compactly generated and E classically generates the compact objects. So every perfect complex over a ring R is built from R by finitely many shifts, cones and direct summands.
+
+**How the definition helps.** The weak definition only asks that maps out of E detect zero, and the theorem upgrades this to a finite building process. The work is Neeman's proof that each object is a homotopy colimit of objects built from sums of shifts of E. A compact object maps into such a colimit through a finite stage, so it is a summand of a finitely built object (our own).
+
+**Paper or page:** [Derived, Proposition 13.37.6](https://stacks.math.columbia.edu/tag/09SR). It says: “Let E be a compact object of D. The following are equivalent (1) E is a classical generator for D<sub>c</sub> and D is compactly generated, and (2) E is a generator for D.”
+
+**Sources:**
+
+- [Amnon Neeman, The connection between the K-theory localization theorem of Thomason, Trobaugh and Yao and the smashing subcategories of Bousfield and Ravenel, Ann. Sci. École Norm. Sup. 25 (1992) 547–566](https://doi.org/10.24033/asens.1659)
+
 ### Defining Bousfield localization by an adjoint makes local objects detectable
 
 **Remember:** A map into a local object cannot see an object killed by the quotient.
@@ -4932,6 +7477,244 @@
 **nLab:** [Bousfield localization of triangulated categories](https://ncatlab.org/nlab/show/Bousfield+localization+of+triangulated+categories). It says: “which is then (automatically) triangulated and fully faithful.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Defining perverse sheaves as a heart makes them an abelian category
+
+**Remember:** Perverse sheaves are abelian because every heart is abelian.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 32S60. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A t-structure on a triangulated category D is a pair of full subcategories D≤0 and D≥0. They imitate the complexes with cohomology only in degrees at most 0, and at least 0. The heart is D≤0 ∩ D≥0, and perverse sheaves are the heart of the perverse t-structure on constructible complexes.
+
+**Problem.** The heart of any t-structure is abelian, and its short exact sequences are the distinguished triangles with all three terms in the heart. So perverse sheaves form an abelian category, although they are complexes and not sheaves.
+
+**How the definition helps.** Once perverse sheaves are defined as a heart, being abelian is inherited from the general theorem of Beilinson, Bernstein and Deligne. Kernels and cokernels in the heart come from truncating the cone of a map (our own). Without this definition one would have to build kernels of maps of complexes by hand (our own). The work moves to that general theorem and to the proof that the perversity conditions define a t-structure, which glues over strata.
+
+**Wikipedia:** [T-structure](https://en.wikipedia.org/wiki/T-structure). It says: “The category of perverse sheaves is, by definition, the core of the so-called perverse t-structure on the derived category of the category of sheaves on a complex analytic space X”
+
+**Paper or page:** [The left heart and exact hull of an additive regular category](https://arxiv.org/abs/2105.11483v2). It says: “Moreover, a sequence 0 → X →f Y →g Z → 0 is a short exact sequence in T♥ if and only if there is a triangle X →f Y →g Z → Σ(X) in T.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining the comparison map through cones makes it a spectral map
+
+**Remember:** r lies in ρ(P) when r stops being invertible modulo P.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 14A30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** The graded central ring R of K is End\*(1), the graded ring of maps from the unit to its shifts. For a prime P, ρ(P) is the set of homogeneous elements r of R whose cone does not lie in P. This set is a homogeneous prime ideal of R, so ρ maps Spc K to the homogeneous spectrum Specʰ(R).
+
+**Problem.** ρ is a spectral continuous map from Spc K to Specʰ(R), natural in K. For perfect complexes over a commutative ring A it is a homeomorphism onto Spec A.
+
+**How the definition helps.** The cone of r lies in P exactly when r becomes invertible in K/P, so ρ(P) holds the non-units modulo P (our own summary). So one can state, in any example, how far the spectrum differs from the spectrum of the unit's endomorphism ring. The quote allows more general gradings, and grading by shifts is a special case (our own remark). The work in each example goes into showing that ρ is injective or surjective.
+
+**Paper or page:** [Periods in equivariant and motivic contexts](https://arxiv.org/abs/2511.14325), [The Balmer spectrum of certain Deligne-Mumford stacks](https://arxiv.org/abs/2101.01446). It says: “the formula ρ(𝒫) = {r ∈ ℛ\_ℳ \| cone(r) ∉ 𝒫} defines a spectral continuous map”
+
+**Sources:**
+
+- [Paul Balmer, Spectra, spectra, spectra – Tensor triangular spectra versus Zariski spectra of endomorphism rings, Algebr. Geom. Topol. 10 (2010) 1521–1563](https://doi.org/10.2140/agt.2010.10.1521)
+
+### Defining the spectrum by prime thick ideals makes it classify radical ideals
+
+**Remember:** Primes of a tensor category classify its ideals, as for rings.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 18M05. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A tensor triangulated category K is a triangulated category with a compatible symmetric monoidal product ⊗. A thick tensor ideal P is prime if a ⊗ b in P implies a in P or b in P. The Balmer spectrum Spc K is the set of primes, with closed sets generated by the supports supp(a), the primes that do not contain a.
+
+**Problem.** (Balmer) Support gives an order-preserving bijection from radical thick tensor ideals of K to Thomason subsets of Spc K. For perfect complexes on a quasi-compact quasi-separated scheme X, the spectrum is X itself.
+
+**How the definition helps.** Support on Spc K has the formal properties of a support theory by construction, so prime-ideal arguments give the bijection (our own). Thomason subsets are unions of closed sets with quasi-compact complements. Earlier classifications by Hopkins, Neeman and Thomason each needed their own proof, and now the work moves to computing Spc K (our own). The computations use Thomason's theorem for schemes and the nilpotence theorem of Devinatz, Hopkins and Smith for finite spectra (our own).
+
+**nLab:** [spectrum of a tensor triangulated category](https://ncatlab.org/nlab/show/spectrum+of+a+tensor+triangulated+category). It says: “Accordingly, one may consider the prime spectrum of a tensor triangulated category in direct analogy: the prime ideals are taken to be the thick subcategories which behave as prime ideals under the tensor product, in the obvious way.”
+
+**Paper or page:** [The Spectrum of Stable Infinity Categories with Actions](https://arxiv.org/abs/2505.02724v3). It says: “Let 𝔖 be the set of radical tensor ideals of T, and 𝔗 the set of Thomason subsets of Spec⊗T. Then, the map Supp⊗ : 𝔖 → 𝔗 is an order-preserving bijection”
+
+**Sources:**
+
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+
+### Defining the twisted inverse image as a right adjoint makes it exist
+
+**Remember:** Define the duality functor as an adjoint, then let Brown build it.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14F08. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** Let f from X to Y be a map of quasi-compact quasi-separated schemes. For proper f, Neeman defines the twisted inverse image of Grothendieck duality as the right adjoint of the derived direct image Rf∗. Hartshorne's older construction glued local formulas built from residues and dualizing complexes.
+
+**Problem.** For every such f, the functor Rf∗ on complexes with quasi-coherent cohomology has a right adjoint. For proper f this adjoint is the twisted inverse image, so the duality isomorphism holds by definition.
+
+**How the definition helps.** With the adjoint definition, the duality isomorphism is the adjunction itself. Existence follows from Brown representability, since these complexes form a compactly generated category and Rf∗ preserves sums (our own summary of Neeman). The work moves to these two facts and to computing the adjoint in examples (our own). For smooth proper f it is pullback twisted by the relative dualizing sheaf and shifted by the relative dimension (our own).
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “In particular, Neeman used it to simplify and generalize the construction of the exceptional inverse image functor f<sup>!</sup> for a morphism f of schemes, the central feature of coherent duality theory.”
+
+**Paper or page:** [Duality, Lemma 48.3.1](https://stacks.math.columbia.edu/tag/0A9E). It says: “Let f : X → Y be a morphism between quasi-separated and quasi-compact schemes. The functor Rf\_\* : D<sub>QCoh</sub>(𝒪<sub>X</sub>) → D<sub>QCoh</sub>(𝒪<sub>Y</sub>) has a right adjoint.”
+
+**Sources:**
+
+- [Amnon Neeman, The Grothendieck duality theorem via Bousfield's techniques and Brown representability, J. Amer. Math. Soc. 9 (1996) 205–236](https://doi.org/10.1090/S0894-0347-96-00174-9)
+
+### Detecting tensor nilpotence makes the images of spectra patch-dense
+
+**Remember:** Detect nilpotence, and the images of spectra recover the whole spectrum.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 18F70. arXiv math.CT. Level 4: research.
+
+**Definition.** The patch topology on a spectral space has the quasi-compact open sets and their complements as a subbasis. A subset is patch-dense if it meets every nonempty patch-open set. Functors Fᵢ jointly detect ⊗-nilpotence if each map killed by every Fᵢ has a tensor power equal to zero.
+
+**Problem.** Let K be rigid, and let tensor triangulated functors Fᵢ out of K jointly detect ⊗-nilpotence. Then the union of the images of the maps Spc(Fᵢ) is patch-dense, so it determines Spc K.
+
+**How the definition helps.** Patch-density is the right notion because a patch-dense subset, with the supports on it, already determines the spectrum. Ordinary density is too weak, since one generic point is dense in an irreducible space. If every Fᵢ kills an object a, its identity map is ⊗-nilpotent, so a = 0 because K is rigid (our own sketch). So the images meet every nonempty supp(a), and the paper extends this to all patch-open sets.
+
+**Paper or page:** [Patch-density in tensor-triangular geometry](https://arxiv.org/abs/2503.15274), [Patch-density in tensor-triangular geometry](https://arxiv.org/abs/2503.15274). It says: “If 𝒦 is rigid and a family of tt-functors {Fᵢ: 𝒦 → ℒᵢ} jointly detects ⊗-nilpotence then the subset ∪ᵢ Im(Spc(Fᵢ)) ⊆ Spc(𝒦) is patch-dense.”
+
+**Sources:**
+
+- [Patch-density in tensor-triangular geometry, arXiv:2503.15274 (2025)](https://arxiv.org/abs/2503.15274)
+
+### Finite global dimension gives the bounded derived category a Serre functor
+
+**Remember:** Finite global dimension lets the Nakayama functor become a Serre functor.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories), 16E10, 16G70. arXiv math.RT. Level 4: research.
+
+**Definition.** Let T be a k-linear triangulated category with finite-dimensional Hom spaces. A Serre functor on T is an equivalence S with natural isomorphisms from Hom(X, Y) to the dual of Hom(Y, SX) (Bondal and Kapranov). For a finite-dimensional algebra A, the Nakayama functor is the tensor product with the dual bimodule DA = Homₖ(A, k).
+
+**Problem.** Let A be a finite-dimensional algebra of finite global dimension. Then the derived Nakayama functor is a Serre functor on the bounded derived category of finitely generated A-modules. So this category has Auslander–Reiten triangles (Happel).
+
+**How the definition helps.** Finite global dimension rules out modules whose Ext groups never stop, which is the one obstacle to a Serre functor. For A = k\[x\]/(x²), each Extⁿ(k, k) = Hom(k, k\[n\]) is nonzero, yet Serre duality would make it vanish for large n (our own). With finite global dimension every object is a bounded complex of projectives (our own summary). There the Nakayama isomorphism between the dual of Hom(P, X) and Hom(X, νP), for P projective, gives the Serre functor (our own summary).
+
+**nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “A Serre functor does not always exist, but when it does then it is unique up to graded natural isomorphism.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya (1990)](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+- [D. Happel, Auslander–Reiten triangles in derived categories of finite-dimensional algebras, Proceedings of the American Mathematical Society (1991)](https://doi.org/10.1090/S0002-9939-1991-1045137-6)
+
+### Inverse images of prime ideals are prime, so the spectrum is functorial
+
+**Remember:** Pull a prime back along F and it stays prime.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14A30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** A tensor triangulated functor F from K to L is exact and respects ⊗ and the unit. For a prime Q of L, the inverse image F⁻¹(Q) is the set of objects a with F(a) in Q. The rival is to use maximal ideals as points, as in the maximal spectrum of a ring.
+
+**Problem.** Every tensor triangulated functor F from K to L gives a continuous map Spc(F) from Spc L to Spc K, sending Q to F⁻¹(Q). The inverse image of supp(a) under this map is supp(F(a)).
+
+**How the definition helps.** F⁻¹(Q) is prime because F(a⊗b) ≅ F(a)⊗F(b), and proper because F keeps the unit (our own remark). The support formula is also immediate from the definitions (our own remark). Maximal ideals fail this: along ℤ → ℚ, the zero ideal of ℚ pulls back to the zero ideal of ℤ (our own example). The quoted paper adds that the map is injective when F is essentially surjective.
+
+**Paper or page:** [Tensor extriangulated categories](https://arxiv.org/abs/2502.18257). It says: “Then the induced map BSpc(ℬ) → BSpc(𝒜) is injective.”
+
+**Sources:**
+
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+
+### Killing the objects supported off U makes the spectrum exactly U
+
+**Remember:** Kill what lives on V, and only U is left.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 18E35, 14A30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** Let V be a Thomason subset of Spc K with complement U. Let J be the thick tensor ideal of objects whose support lies in V. The restriction K\|U is the Verdier quotient K/J, the category in which objects of J become zero, made idempotent complete.
+
+**Problem.** The quotient functor K → K\|U induces a homeomorphism from Spc(K\|U) onto the subspace U of Spc K.
+
+**How the definition helps.** The primes of K/J are the primes of K that contain J (our own summary). A prime contains J exactly when it lies outside V, straight from the definition of supp (our own remark). So restriction to an open set becomes a statement about any tensor triangulated category. The work moves into the classification, which gives supp(J) = V.
+
+**Paper or page:** [Periods in equivariant and motivic contexts](https://arxiv.org/abs/2511.14325). It says: “The localization 𝒦 → 𝒦\|<sub>U</sub> induces on spectra the inclusion U ≅ Spc(𝒦\|<sub>U</sub>) ↪︎ Spc(𝒦)”
+
+**Sources:**
+
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+- [Martin Gallauer, Periods in equivariant and motivic contexts, arXiv:2511.14325 (2025)](https://arxiv.org/abs/2511.14325)
+
+### One-sided t-exactness makes adjoint functors restrict to adjoint functors on hearts
+
+**Remember:** Half-exact adjoints stay adjoint after taking zeroth cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories). arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** An exact functor F between triangulated categories with t-structures is right t-exact if it sends D≤0 into D≤0. It is left t-exact if it sends D≥0 into D≥0. Its heart version sends an object A of the heart to H⁰(F(A)).
+
+**Problem.** If L is left adjoint to R, then L is right t-exact exactly when R is left t-exact. In that case the heart versions of L and R form an adjoint pair between the hearts.
+
+**How the definition helps.** Adjunction turns the vanishing of maps from L(D≤0) to D≥1 into the vanishing of maps from D≤0 to R(D≥1) (our own). These two vanishing conditions say exactly that L is right t-exact and R is left t-exact (our own). On the heart, H⁰ is a truncation, and truncations are adjoint to inclusions, so the adjunction passes to the heart versions (our own).
+
+**Wikipedia:** [T-structure](https://en.wikipedia.org/wiki/T-structure). It says: “are exact functors with T\* left adjoint to T∗, then T\* is right t-exact if and only if T∗ is left t-exact”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime ideals pass to filtered colimits, so spectra become inverse limits
+
+**Remember:** Objects live at finite stages, so primes are checked stage by stage.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14A30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** In a filtered colimit 𝒯 of tensor triangulated categories 𝒯ᵢ, every object and every map comes from some stage 𝒯ᵢ. Spc is defined from prime ideals, so a prime of 𝒯 is a compatible family of primes of the stages. The rival is a support theory chosen by hand, which has no reason to commute with colimits.
+
+**Problem.** For a filtered colimit 𝒯 of tensor triangulated categories 𝒯ᵢ, Spc(𝒯) is the inverse limit of the spaces Spc(𝒯ᵢ). The comparison map to the homogeneous spectrum of End\*(1) is the limit of the comparison maps.
+
+**How the definition helps.** Each object and each relation of the colimit lives at a finite stage, so primality is checked stage by stage (our own summary). The topologies match because each support is pulled back from a finite stage (our own summary). Little work remains. The quoted paper uses the result to reduce questions about stacks to finite stages.
+
+**Paper or page:** [The Balmer spectrum of certain Deligne-Mumford stacks](https://arxiv.org/abs/2101.01446). It says: “Then we have Spc(𝒯)=lim←ᵢ Spc(𝒯ᵢ) and Specʰ(R)=lim←ᵢ Specʰ(Rᵢ) as topological spaces”
+
+**Sources:**
+
+- [Eike Lau, The Balmer spectrum of certain Deligne–Mumford stacks, Compositio Math. 159 (2023) 1314–1346](https://doi.org/10.1112/s0010437x23007200)
+
+### Recollements glue t-structures from an open set and its closed complement
+
+**Remember:** Truncate on the open part, truncate on the closed part, then glue.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 32S60. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A recollement is a triangulated category D with a closed part F, a full subcategory, and an open part U, a quotient. Six adjoint functors connect them, among them the restrictions j\* to U and i\* to F, and the part i! supported on F. Each object has two gluing triangles, as for sheaves on a space.
+
+**Problem.** Given t-structures on U and on F, the following rule defines a t-structure on D. K lies in D≤0 when j\*K and i\*K lie in degrees ≤ 0, and in D≥0 when j\*K and i!K lie in degrees ≥ 0.
+
+**How the definition helps.** The gluing triangles split each object into an open part and a closed part, so the conditions can be stated on each part (our own). The work is the construction of the truncation triangle by Beilinson, Bernstein and Deligne. Perverse sheaves are then built one stratum at a time, starting from shifted local systems on each stratum (our own).
+
+**nLab:** [recollement](https://ncatlab.org/nlab/show/recollement). It says: “As suggested by this example, recollement may in fact be regarded as the additive or triangulated version of Artin gluing.”
+
+**Wikipedia:** [T-structure](https://en.wikipedia.org/wiki/T-structure). It says: “This t-structure is said to be the gluing of the t-structures on U and F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rigidity makes every thick tensor ideal radical
+
+**Remember:** With duals, a is a summand of a⊗a∨⊗a.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 18M05. arXiv math.CT. Level 4: research.
+
+**Definition.** An object a is rigid if it has a dual a∨ with maps 1 → a∨⊗a and a⊗a∨ → 1 that satisfy the triangle identities. K is rigid if every object is rigid, as for perfect complexes on a scheme. A thick tensor ideal is radical if it contains a whenever it contains a tensor power a⊗ⁿ. In a general tensor triangulated category, radical ideals must be singled out by hand.
+
+**Problem.** In a rigid tensor triangulated category every thick tensor ideal is radical. So Thomason subsets of Spc K classify all thick tensor ideals.
+
+**How the definition helps.** The triangle identities make a a direct summand of a⊗a∨⊗a, so a lies in every thick tensor ideal that contains a⊗a (our own sketch). Repeating this brings any tensor power of a down to a itself (our own sketch). The work for the classification stays in the general theorem on radical ideals.
+
+**Paper or page:** [The Spectrum of Stable Infinity Categories with Actions](https://arxiv.org/abs/2505.02724). It says: “Assume every tensor ideal I is radical—that is, for any a ∈ D ∖ I and any n ≥ 1, a⊗ⁿ ∉ I (e.g., when D is rigid, see \[Ba, Remark 4.3\]).”
+
+**Sources:**
+
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+
+### Set-generated localizing subcategories of compactly generated categories have Bousfield localizations
+
+**Remember:** Closed under sums and set-generated, so the localization exists.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G80 (Derived categories, triangulated categories), 55P60. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A localizing subcategory S of a triangulated category with direct sums is a triangulated subcategory closed under all direct sums. A Bousfield localization functor L with kernel S gives each X a triangle Y → X → LX → Y\[1\]. Here Y lies in S, and LX receives no nonzero maps from S.
+
+**Problem.** In a compactly generated triangulated category, every localizing subcategory generated by a set of objects is the kernel of a Bousfield localization functor. Examples include localizing a spectrum at a prime and restricting complexes of sheaves to an open subset.
+
+**How the definition helps.** Closure under sums makes S a triangulated category with sums, so representability theorems apply inside S (our own). When the set consists of compact objects, S is compactly generated and its inclusion preserves sums (our own). Then Neeman's theorem gives the inclusion a right adjoint, whose counit triangle is the Bousfield triangle (our own). For arbitrary sets, the work is Neeman's theory of well generated categories, as surveyed by Krause (our own).
+
+**Wikipedia:** [Triangulated category](https://en.wikipedia.org/wiki/Triangulated_category). It says: “if a localizing subcategory S of a compactly generated triangulated category D is generated by a set of objects, then there is a Bousfield localization functor L: D → D with kernel S.”
+
+**Sources:**
+
+- [Henning Krause, Localization theory for triangulated categories, in Triangulated Categories, LMS Lecture Note Ser. 375, Cambridge Univ. Press (2010) 161–235](https://doi.org/10.1017/CBO9781139107075.005)
 
 ### Silting subcategories reduce a triangulated Grothendieck group to direct sums
 
@@ -4950,6 +7733,82 @@
 **Sources:**
 
 - [Xiao-Wu Chen, Zhi-Wei Li, Xiaojin Zhang, Zhibing Zhao, The Grothendieck group of a triangulated category, arXiv:2404.15800 (2024)](https://arxiv.org/abs/2404.15800v3)
+
+### Stratification by a noetherian ring makes smashing ideals compactly generated
+
+**Remember:** Stratified by a noetherian ring, smashing means finite.
+
+*Rules out counterexamples.* MSC 18G80 (Derived categories, triangulated categories), 55U35, 13D09. arXiv math.CT, math.AT. Level 4: research.
+
+**Definition.** A localizing tensor ideal S is smashing if the localization that kills S commutes with direct sums. It is finite if compact objects generate it. K is stratified by a noetherian ring R when support in Spec R classifies its localizing tensor ideals.
+
+**Problem.** Let K be stratified by a noetherian ring R, with the graded maps between compact objects finitely generated over R. Then every smashing localizing tensor ideal of K is generated by compact objects.
+
+**How the definition helps.** Stratification turns a smashing ideal into a subset of Spec R, and the smashing condition makes that subset specialization closed (our own summary). Compact objects supported there, built as iterated cones of ring elements, then generate the ideal (our own summary). Without such a ring the claim fails: Keller's non-noetherian valuation ring and the p-local stable homotopy category have smashing ideals not generated by compact objects. The work moves into proving stratification, as in the quoted case of Tate motives.
+
+**Paper or page:** [Stratification of Derived Categories of Tate Motives](https://arxiv.org/abs/2406.13088), [Stratification of Derived Categories of Tate Motives](https://arxiv.org/abs/2406.13088). It says: “Every smashing ideal of DTM(ℚ̄, ℤ) is compactly generated. That is, every smashing localization is a finite localization.”
+
+**Sources:**
+
+- [Dave Benson, Srikanth B. Iyengar and Henning Krause, Stratifying triangulated categories, J. Topol. 4 (2011) 641–666](https://doi.org/10.1112/jtopol/jtr017)
+- [Stratification of Derived Categories of Tate Motives, arXiv:2406.13088 (2024)](https://arxiv.org/abs/2406.13088)
+- [Bernhard Keller, A remark on the generalized smashing conjecture, Manuscripta Math. 84 (1994) 193–198](https://doi.org/10.1007/bf02567453)
+
+### Strong generation makes every finite cohomological functor representable
+
+**Remember:** A bounded number of cones replaces infinite sums in Brown's theorem.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G80 (Derived categories, triangulated categories), 14F08. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** An object G strongly generates D if one number n works for all objects. Each object is a summand of one built from finite sums of shifts of G using at most n cones. D is Ext-finite over a field k if the maps from X to all shifts of Y have finite total dimension.
+
+**Problem.** (Bondal and Van den Bergh) Let D be Ext-finite, strongly generated and idempotent complete. Then every contravariant cohomological functor H to vector spaces, with the dimensions of H(X\[i\]) summing to a finite number for each X, is representable.
+
+**How the definition helps.** A bound on the number of cones lets one build the representing object in finitely many steps, so no infinite sums are needed (our own). This replaces compact generation in small categories, where Brown representability is unavailable (our own). For a smooth projective variety, the bounded derived category of coherent sheaves is strongly generated. So it has a Serre functor, and every exact functor out of it into an Ext-finite category has a right adjoint (our own).
+
+**Paper or page:** [Brown representability for triangulated categories with a linear action by a graded ring](https://arxiv.org/abs/2206.09646v2). It says: “a graded R-linear triangulated category, that is strongly generated, Ext-finite and idempotent complete. Then a graded R-linear cohomological functor f : Tᵒᵖ → grMod(R) is graded representable if and only if f is locally finite.”
+
+**Sources:**
+
+- [Alexei Bondal and Michel Van den Bergh, Generators and representability of functors in commutative and noncommutative geometry, Moscow Math. J. 3 (2003) 1–36](https://doi.org/10.17323/1609-4514-2003-3-1-1-36)
+
+### The Balmer spectrum is the final space carrying a tensor support
+
+**Remember:** Every support theory on K is pulled back from the Balmer spectrum.
+
+*True by definition.* MSC 18G80 (Derived categories, triangulated categories), 14A30. arXiv math.CT, math.AG. Level 4: research.
+
+**Definition.** In a tensor triangulated category K, a prime P is a proper thick tensor ideal, closed under cones, summands and ⊗ with anything. Also a⊗b in P forces a or b in P. Spc K is the space of primes, and supp(a) is the set of primes without a. A support data is a space X with closed sets σ(a) that obey the rules of supp for 0, 1, sums, shifts, ⊗ and triangles.
+
+**Problem.** (Spc K, supp) is a support data. Every support data (X, σ) on K comes from it by a unique continuous map f with σ(a) = f⁻¹(supp a).
+
+**How the definition helps.** The rules of a support data say exactly that, for each point x, the objects whose support misses x form a prime (our own summary). So f must send x to that prime, and Spc K is the final support data by construction. Cohomological support uses the ring End\*(1) of maps from the unit to its shifts. For it, even the ⊗ rule is an extra condition, as the quote shows. The work in each example goes into showing that f is a homeomorphism (our own remark).
+
+**nLab:** [spectrum of a tensor triangulated category](https://ncatlab.org/nlab/show/spectrum+of+a+tensor+triangulated+category). It says: “the prime ideals are taken to be the thick subcategories which behave as prime ideals under the tensor product, in the obvious way.”
+
+**Paper or page:** [The Balmer spectrum of certain Deligne-Mumford stacks](https://arxiv.org/abs/2101.01446). It says: “The cohomological support (Specʰ(R),V) is a support data on 𝒯 iff for all X,Y∈𝒯 the set V(X) is closed and V(X⊗Y)=V(X)∩V(Y).”
+
+**Sources:**
+
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+
+### Torsion pairs give exactly the hearts between a heart and its shift
+
+**Remember:** Shift the torsion-free part left by one, and a new heart appears.
+
+*Makes the theorem clean to state or prove.* MSC 18G80 (Derived categories, triangulated categories), 18E40. arXiv math.AG, math.RT. Level 4: research.
+
+**Definition.** A torsion pair (T, F) in an abelian category A is a pair of full subcategories with no nonzero maps from T to F. Each object E has a short exact sequence 0 → T → E → F → 0 with T in T and F in F. The tilt of a bounded heart A at the pair is the extension closure of F\[1\] and T.
+
+**Problem.** (Happel, Reiten and Smalø) The tilt of a bounded heart at a torsion pair is again a bounded heart. (Polishchuk) Conversely, every bounded heart inside the extension closure of A and A\[1\] is the tilt of A at a torsion pair.
+
+**How the definition helps.** A torsion pair decides inside A which objects move one step left, so building a new heart needs no work in D (our own). The new D≤0 consists of the objects whose cohomology vanishes in positive degrees and lies in T in degree 0 (our own). Bridgeland stability conditions on surfaces are built from such tilts of coherent sheaves (our own).
+
+**Paper or page:** [Filtrations and torsion pairs in Abramovich Polishchuk's heart](https://arxiv.org/abs/2206.06839v2), [Stability conditions on the canonical line bundle of ℙ³](https://arxiv.org/abs/2501.15251v1). It says: “Suppose A is the heart of a bounded t-structure on a triangulated category D, (T,F) is a torsion pair in A. Then A\# = ⟨F\[1\], T⟩ is a heart of a bounded t-structure on D.”
+
+**Sources:**
+
+- [Dieter Happel, Idun Reiten and Sverre O. Smalø, Tilting in abelian categories and quasitilted algebras, Mem. Amer. Math. Soc. 575 (1996)](https://doi.org/10.1090/memo/0575)
 
 ### Defining bimonads through their algebras makes those algebras tensor together
 
@@ -5860,6 +8719,24 @@
 **Sources:**
 
 - [R. W. Thomason, Cat as a closed model category, Cahiers de Topologie et Géométrie Différentielle 21 (1980) 305–324](http://www.numdam.org/item/?id=CTGDC_1980__21_3_305_0)
+
+### Shared contraacyclic trivial objects make K(Proj) equivalent to K(Flat-Cot)
+
+**Remember:** Share the trivial objects and the homotopy categories must agree.
+
+*True by definition. Confidence: medium.* MSC 18N40 (Homotopical algebra, Quillen model categories, derivators), 18G25, 18G80. arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** Estrada and Gillespie build two abelian model structures on complexes of R-modules with the same trivial objects. These are the contraacyclic complexes, those into which every chain map from a complex of projectives is null-homotopic (our own). In one structure the cofibrant objects are the complexes of projectives. In the other they are the complexes of flat modules, and the fibrant ones are complexes of cotorsion modules.
+
+**Problem.** For every ring R, K(Proj) is triangle equivalent to K(Flat-Cot). These are the categories of complexes, up to chain homotopy, of projective modules and of flat cotorsion modules.
+
+**How the definition helps.** Both model structures have the same trivial objects, so they have the same weak equivalences and the same homotopy category (our own summary). Each homotopy category is the category of objects both cofibrant and fibrant, up to homotopy, which gives K(Proj) and K(Flat-Cot) (our own). So the equivalence needs no direct comparison of the two kinds of complexes. The work is in building the flat model structure from the flat cotorsion pair.
+
+**Paper or page:** [Quillen equivalences inducing Grothendieck duality for unbounded chain complexes of sheaves](https://arxiv.org/abs/2104.10783v2), [Quillen equivalences inducing Grothendieck duality for unbounded chain complexes of sheaves](https://arxiv.org/abs/2104.10783v2). It says: “Consequently, we have triangulated equivalences K(Proj) ≅ Ho(𝔐<sup>proj<sub>ctr</sub></sup>) = Ho(𝔐<sup>flat<sub>ctr</sub></sup>) ≅ K(Flat-Cot) ≅ 𝒟(Flat).”
+
+**Sources:**
+
+- [S. Estrada and J. Gillespie, Quillen equivalences inducing Grothendieck duality for unbounded chain complexes of sheaves, Communications in Contemporary Mathematics 27 (2025), published online 2024](https://doi.org/10.1142/S0219199724500342)
 
 ### Stable derivators give triangulated categories whose cones have universal properties
 

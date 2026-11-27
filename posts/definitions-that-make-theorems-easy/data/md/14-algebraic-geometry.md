@@ -457,6 +457,22 @@
 
 - [The Stacks Project Authors, The Stacks Project, Tag 01S4 (Morphisms, Lemma 29.10.2)](https://stacks.math.columbia.edu/tag/01S4)
 
+### Using irrelevant modules, not torsion modules, extends Serre's theorem to all gradings
+
+**Remember:** Quotient by modules with zero sheaf, not by modules killed by powers.
+
+*Rules out counterexamples.* MSC 14A15 (Schemes and morphisms), 14A22, 16W50. arXiv math.AG, math.AC. Level 3: graduate.
+
+**Definition.** Let A be a commutative noetherian graded ring A₀ ⊕ A₁ ⊕ ⋯, with Proj A its projective scheme. Call a finitely generated graded A-module M irrelevant when its sheaf M̃ on Proj A is zero (our own phrasing). Every torsion module is irrelevant, but the converse can fail.
+
+**Problem.** For every commutative noetherian graded ring A, finitely generated graded modules modulo irrelevant modules form a category equivalent to coherent sheaves on Proj A. With torsion modules in place of irrelevant ones, this needs extra hypotheses such as generation in degree one.
+
+**How the definition helps.** The functor M ↦ M̃ kills exactly the irrelevant modules, so they are the right class to divide by. Torsion fails for A = k\[x\] with x in degree 2 and M = A(1), the module A shifted by one degree (our own example). Then M sits in odd degrees, so M̃ = 0, but x acts injectively, so M is not torsion. When A is generated in degree one the two classes agree, and Artin and Zhang copy that form (our own).
+
+**Paper or page:** [Coherent, Proposition 30.15.3](https://stacks.math.columbia.edu/tag/0BXF), [Coherent, Proposition 30.14.4](https://stacks.math.columbia.edu/tag/0BXD). It says: “Let A be a Noetherian graded ring. Set X = Proj(A). The functor M ↦ M̃ induces an equivalence Mod<sup>fg</sup><sub>A</sub>/Mod<sup>fg</sup><sub>A, irrelevant</sub> ⟶ Coh(𝒪<sub>X</sub>)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Using prime ideals, not maximal ideals, makes Spec a functor
 
 **Remember:** Pull back a prime and you get a prime, so maps go backwards.
@@ -1186,6 +1202,146 @@
 
 - [Jean-Pierre Serre, Faisceaux algébriques cohérents, Annals of Mathematics 61 (1955)](https://doi.org/10.2307/1969915)
 
+### A full strong exceptional collection makes Dᵇ(X) a derived category of modules
+
+**Remember:** No higher self-extensions, so the endomorphism ring is an ordinary algebra.
+
+*Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 16E35. arXiv math.AG, math.RT. Level 3: graduate.
+
+**Definition.** A full exceptional collection is a generating list E₁, …, Eₘ of objects with Hom(Eᵢ, Eᵢ) = k and no self-maps of nonzero degree. It also has no maps from Eⱼ to Eᵢ\[t\] for i &lt; j. It is strong if also Hom(Eᵢ, Eⱼ\[t\]) = 0 for all i, j and every t ≠ 0. Let T be the sum of the Eᵢ, and let A = End(T), a finite-dimensional algebra.
+
+**Problem.** Let X be smooth projective, and let Dᵇ(X) have a full strong exceptional collection with sum T. Then RHom(T, −) is an equivalence from Dᵇ(X) to the bounded derived category of finitely generated right A-modules (Bondal). For Beilinson's collection on Pⁿ, A is the path algebra of a quiver with relations.
+
+**How the definition helps.** Strongness puts every endomorphism of T in degree 0, so RHom(T, −) sends T to the free module A and is fully faithful on T (our own). Full faithfulness then spreads to everything T generates, and fullness makes the functor essentially surjective (our own). Without strongness the endomorphisms of T have other degrees, and one needs a dg algebra (our own). The input is a proof that the collection is full, such as Beilinson's theorem.
+
+**nLab:** [exceptional collection](https://ncatlab.org/nlab/show/exceptional+collection). It says: “It is a full exceptional collection if in addition it generates the category.”
+
+**Wikipedia:** [Derived noncommutative algebraic geometry](https://en.wikipedia.org/wiki/Derived_noncommutative_algebraic_geometry). It says: “is a strong exceptional collection if in addition, for any ℓ ≠ 0 and any i, j, we have Hom(Eᵢ, Eⱼ\[+ℓ\]) = 0”
+
+**Sources:**
+
+- [A. I. Bondal, Representation of associative algebras and coherent sheaves, Mathematics of the USSR-Izvestiya 34 (1990) 23–42](https://doi.org/10.1070/im1990v034n01abeh000583)
+- [A. A. Beilinson, Coherent sheaves on Pⁿ and problems of linear algebra, Functional Analysis and Its Applications 12 (1978) 214–216](https://doi.org/10.1007/bf01681436)
+
+### Fourier–Mukai kernels compose by convolution, so composites stay transforms
+
+**Remember:** Pull, tensor, push, twice, is one pull, tensor, push.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** A Fourier–Mukai transform from X to Y pulls a complex back to X × Y, tensors it with a fixed complex K, and pushes forward to Y. The complex K is the kernel. All three operations are derived functors.
+
+**Problem.** Over a base S, take kernels K on X × Y and K′ on Y × Z. Assume that Y is flat and that X and Z are tor independent, so their derived fibre product has no higher Tor terms. Then the composite of their transforms is again a transform, with an explicit kernel on X × Z.
+
+**How the definition helps.** Both functors are pull–tensor–push, so flat base change and the projection formula move the middle push forward past the next pullback (our own). The composite then becomes one pull–tensor–push through X × Y × Z, with kernel the push forward of the tensor product of the pullbacks of K and K′. The flatness and tor-independence conditions are what base change needs, and base change carries the work. As a result, a question about composites of transforms becomes a question about one complex on a product.
+
+**Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “Given two kernels K₁ ∈ Dᵇ(X×Y) and K₂ ∈ Dᵇ(Y×Z), the composed functor ΦK₂ ∘ ΦK₁ is also a Fourier-Mukai transform.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.8.3](https://stacks.math.columbia.edu/tag/0FYS). It says: “If X and Z are tor independent over S and Y → S is flat, then Φ<sub>K</sub>′ ∘ Φ<sub>K</sub> = Φ<sub>K</sub>″”
+
+**Sources:**
+
+- [S. Mukai, Duality between D(X) and D(X̂) with its application to Picard sheaves, Nagoya Mathematical Journal 81 (1981) 153–175](https://doi.org/10.1017/S002776300001922X)
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### Full exceptional collections make K₀ free, which excludes curves of positive genus
+
+**Remember:** A full exceptional collection is a basis for K₀.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18F30, 18G80. arXiv math.AG, math.KT. Level 3: graduate.
+
+**Definition.** An object E is exceptional if Hom(E, E) = k and Hom(E, E\[t\]) = 0 for t ≠ 0. An exceptional collection is a list of exceptional objects E₁, …, Eₘ with Hom(Eⱼ, Eᵢ\[t\]) = 0 for all i &lt; j and all t. It is full if the Eᵢ generate the whole triangulated category. Each Eᵢ generates a copy of the derived category of finite-dimensional vector spaces, whose K₀ is ℤ.
+
+**Problem.** Let X be smooth projective. If Dᵇ(X) has a full exceptional collection E₁, …, Eₘ, then K₀(X) is the free abelian group on \[E₁\], …, \[Eₘ\]. So a smooth projective complex curve of positive genus has no full exceptional collection.
+
+**How the definition helps.** A full exceptional collection splits Dᵇ(X) into m copies of the derived category of vector spaces, so K₀ splits into m copies of ℤ. The splitting of K₀ along a semiorthogonal decomposition carries the work. For a curve C of genus g ≥ 1, K₀(C) is ℤ ⊕ Pic(C), and Pic(C) contains the Jacobian, an uncountable group (our own). So K₀(C) is not finitely generated, and no full exceptional collection exists (our own).
+
+**Wikipedia:** [Semiorthogonal decomposition](https://en.wikipedia.org/wiki/Semiorthogonal_decomposition). It says: “In particular, if X is a smooth projective variety such that Dᵇ(X) has a full exceptional collection E₁,…,Eₘ, then the Grothendieck group of algebraic vector bundles on X is the free abelian group on the classes of these objects”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### Kernels make the adjoint of a Fourier–Mukai transform another explicit transform
+
+**Remember:** Adjoin each of pull, tensor, push, and you get a transform back.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** A Fourier–Mukai transform pulls back to X × Y, tensors with a kernel K, and pushes forward to Y. The kernel K is perfect if it is locally a bounded complex of vector bundles. Its dual K∨ is the complex of maps from K to the structure sheaf.
+
+**Problem.** Let Y be flat, proper and Gorenstein over a Noetherian base S, with relative dualizing complex ω, and let X be of finite type over S. Let K be a perfect kernel on X × Y. Then the transform from Y to X with kernel K∨ ⊗ ω is left adjoint to the transform with kernel K.
+
+**How the definition helps.** Each step of pull–tensor–push has a known left adjoint, and composing them gives pull–tensor–push again (our own). Pullback is left adjoint to push forward, and tensoring with K∨ is left adjoint to tensoring with K (our own). The left adjoint of pullback from X is push forward twisted by ω (our own). That step is Grothendieck duality for the proper projection X × Y → X, which carries the work and needs the Gorenstein condition.
+
+**Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “Fourier-Mukai transforms always have left and right adjoints, both of which are also kernel transformations.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.8.8](https://stacks.math.columbia.edu/tag/0FYX). It says: “There is a canonical isomorphism Hom<sub>Y</sub>(N, Φ(M)) → Hom<sub>X</sub>(Φ′(N), M) functorial in M”
+
+**Sources:**
+
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### Resolving the diagonal kernel shows n + 1 line bundles generate Dᵇ(Pⁿ)
+
+**Remember:** Resolve the identity's kernel, and every object resolves the same way.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 14N05. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** The Fourier–Mukai transform with kernel K on X × X pulls F back from the second factor, tensors with K, and pushes forward to the first factor. The structure sheaf of the diagonal, used as a kernel, gives the identity functor. The kernel E ⊠ G, built from E on the first factor and G on the second, sends F to E ⊗ RΓ(F ⊗ G).
+
+**Problem.** On projective space Pⁿ, the line bundles O(−n), …, O(−1), O form a full strong exceptional collection (Beilinson). Strong means that there are no maps between them in nonzero degrees. So every object of Dᵇ(Pⁿ) is built from them by shifts, sums and cones.
+
+**How the definition helps.** Every object F is its own transform by the diagonal kernel, so a resolution of that kernel by kernels E ⊠ G resolves F (our own). Each transform with kernel E ⊠ G is a sum of shifts of E, where RΓ means global sections, so these E generate (our own). On Pⁿ, Beilinson's resolution of the diagonal by the terms O(−i) ⊠ Ωⁱ(i) carries the work. Here Ωⁱ is the sheaf of i-forms, and exceptionality is a separate cohomology computation.
+
+**Wikipedia:** [Derived noncommutative algebraic geometry](https://en.wikipedia.org/wiki/Derived_noncommutative_algebraic_geometry). It says: “In the derived category Dᵇ(ℙⁿ) the line bundles 𝒪(−n), 𝒪(−n+1), …, 𝒪(−1), 𝒪 form a full strong exceptional collection.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.9.3](https://stacks.math.columbia.edu/tag/0FZ2). It says: “There exists a resolution … → ℰ₂ ⊠ 𝒢₂ → ℰ₁ ⊠ 𝒢₁ → ℰ₀ ⊠ 𝒢₀ → 𝒪\_Δ → 0 where each ℰᵢ and 𝒢ᵢ is a finite locally free 𝒪<sub>X</sub>-module.”
+
+**Sources:**
+
+- [A. A. Beilinson, Coherent sheaves on Pⁿ and problems of linear algebra, Functional Analysis and Its Applications 12 (1978) 214–216](https://doi.org/10.1007/bf01681436)
+
+### The intrinsic Serre functor makes derived equivalent varieties have equal dimension
+
+**Remember:** Equivalences respect Serre functors, and the Serre functor shifts by the dimension.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** A Serre functor S is defined from Hom spaces alone, by natural isomorphisms Hom(X, Y) ≅ Hom(Y, S X)\*, where \* is the dual space. So every exact equivalence carries a Serre functor to a Serre functor. Let Dᵇ(X) be the bounded derived category of coherent sheaves, whose objects are bounded complexes of sheaves up to quasi-isomorphism. For a smooth projective variety X of dimension n, its Serre functor is E ↦ E ⊗ ω\[n\], with ω the canonical line bundle.
+
+**Problem.** If smooth projective varieties X and Y have equivalent bounded derived categories of coherent sheaves, then X and Y have the same dimension.
+
+**How the definition helps.** Because the Serre functor depends only on the category, an equivalence F from Dᵇ(X) to Dᵇ(Y) commutes with the two Serre functors (our own). Serre duality carries the work: it makes the Serre functor E ↦ E ⊗ ω\[n\], which is the shift \[n\] on a skyscraper sheaf k(x). So P = F(k(x)) satisfies P ⊗ ω\[m\] ≅ P\[n\], with m = dim Y and ω the canonical bundle of Y (our own). Tensoring with a line bundle keeps the degrees of the cohomology sheaves of P, so n = m (our own).
+
+**nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “Any autoequivalence F : 𝒜 → 𝒜 commutes with a Serre functor: there is a natural graded isomorphism of functors F ∘ S ⥲ S ∘ F.”
+
+**Sources:**
+
+- [A. Bondal and D. Orlov, Reconstruction of a variety from the derived category and groups of autoequivalences, Compositio Mathematica 125 (2001) 327–344](https://doi.org/10.1023/A:1002470302976)
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### The Serre functor packages Serre duality on a proper Gorenstein scheme
+
+**Remember:** Serre duality for every pair of complexes is one functor.
+
+*Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 14F06. arXiv math.AG, math.CT. Level 3: graduate.
+
+**Definition.** A Serre functor on a triangulated category over a field is an equivalence S with natural isomorphisms Hom(K, L) ≅ Hom(L, S K)\*. A scheme is Gorenstein if its local rings have finite injective dimension over themselves. Then its dualizing complex ω•, the complex that gives Grothendieck duality, is locally a line bundle placed in one degree.
+
+**Problem.** Let X be a proper Gorenstein scheme over a field k. Then K ↦ ω• ⊗ K is a Serre functor on perfect complexes on X, which are locally bounded complexes of vector bundles. So Hom(K, L) ≅ Hom(L, ω• ⊗ K)\* for all perfect complexes K and L.
+
+**How the definition helps.** The Serre functor turns the many forms of Serre duality, one for each pair of sheaves and each degree, into one statement about one functor. The work is Grothendieck duality for the map from X to a point, which supplies ω• and the duality isomorphism. The Gorenstein condition makes ω• invertible, so tensoring with it keeps complexes perfect and is an equivalence (our own). For a smooth projective variety this functor is E ↦ E ⊗ ω\[n\], as the nLab states.
+
+**nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “In the derived category of coherent sheaves on a smooth projective variety X, the functor (· ⊗ ω<sub>X</sub>)\[n\] is a Serre functor, in view of Serre-Grothendieck duality, where ω<sub>X</sub> is the canonical sheaf and n is the dimension of X.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.4.1](https://stacks.math.columbia.edu/tag/0FY8). It says: “Then the functor S : D<sub>perf</sub>(𝒪<sub>X</sub>) ⟶ D<sub>perf</sub>(𝒪<sub>X</sub>), K ⟼ S(K) = ω<sub>X•</sub> ⊗ K is a Serre functor.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+
 ### The dualizing sheaf extends Serre duality to Cohen–Macaulay schemes
 
 **Remember:** Replace n-forms by the dualizing sheaf, and duality survives mild singularities.
@@ -1348,6 +1504,24 @@
 
 - [James S. Milne, Étale Cohomology, Chapter III (1980)](https://doi.org/10.1515/9781400883981)
 
+### Crystalline cohomology does not depend on the smooth presentation
+
+**Remember:** Any smooth presentation works, because the crystalline site does not see it.
+
+*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.AG. Level 3: graduate.
+
+**Definition.** Crystalline cohomology RΓ(Cris(X/S), ℱ) is the cohomology of a sheaf on the crystalline site, whose objects are divided power thickenings of open parts of X. It is defined with no choice of embedding or presentation. Take X = Spec C over a divided power base A, and a smooth A-algebra P′ with a surjection onto C. This gives a completed divided power envelope D′ and a module M′ with integrable connection.
+
+**Problem.** Let ℱ be a crystal in quasi-coherent modules on Cris(X/S), with X affine. For every smooth A-algebra P′ with a surjection onto C, the completed de Rham complex of M′ over D′ computes RΓ(Cris(X/S), ℱ).
+
+**How the definition helps.** Since the crystalline cohomology is defined without a presentation, each de Rham complex only has to be compared with it, not with the others. The Stacks Project first proves the comparison for one presentation in Proposition 64.21.3. Two presentations P′ and P″ can be compared through P′ ⊗ P″, which is again smooth (our own). The divided power Poincaré lemma shows that the extra variables add no cohomology (our own).
+
+**Paper or page:** [Crystalline, Lemma 64.21.4](https://stacks.math.columbia.edu/tag/07LH). It says: “Then the complex M′ ⊗<sup>∧<sub>D′</sub></sup> Ω\*<sub>D′</sub> computes RΓ(Cris(X/S), ℱ).”
+
+**Sources:**
+
+- [The Stacks Project, Crystalline cohomology, Lemma 64.21.4 (Tag 07LH)](https://stacks.math.columbia.edu/tag/07LH)
+
 ### Crystalline Frobenius needs no lift
 
 **Remember:** Use all thickenings so Frobenius acts without choosing a lift.
@@ -1381,6 +1555,42 @@
 **Sources:**
 
 - [The Stacks Project Authors, Lemma 64.2.3.](https://stacks.math.columbia.edu/tag/07HB)
+
+### Divided powers make the Poincaré lemma hold in characteristic p
+
+**Remember:** Every monomial form x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾.
+
+*Rules out counterexamples.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13N05. arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** The divided power polynomial ring k⟨x⟩ over a ring k has a basis of symbols x⁽ⁿ⁾, meant as xⁿ/n!, with x⁽ⁿ⁾x⁽ᵐ⁾ = ((n+m)!/(n!m!)) x⁽ⁿ⁺ᵐ⁾. Its derivation sends x⁽ⁿ⁾ to x⁽ⁿ⁻¹⁾ dx.
+
+**Problem.** For every ring k, the divided power de Rham complex of k⟨x⟩ has cohomology k in degree 0 and nothing in degree 1. Over the ordinary polynomial ring 𝔽ₚ\[x\], this fails: xᵖ is a nonconstant closed function and xᵖ⁻¹dx is a closed form with no primitive.
+
+**How the definition helps.** Each basis form x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾, so integration needs no division by n + 1. In 𝔽ₚ\[x\], a primitive of xᵖ⁻¹dx would need xᵖ/p, and d(xᵖ) = pxᵖ⁻¹dx = 0 (our own example). This is why crystalline cohomology uses thickenings with divided powers.
+
+**Wikipedia:** [Crystalline cohomology](https://en.wikipedia.org/wiki/Crystalline_cohomology). It says: “in order to prove exactness of the de Rham complex, one needs some sort of Poincaré lemma, whose proof in turn uses integration, and integration requires various divided powers, which exist in characteristic 0 but not always in characteristic p.”
+
+**Sources:**
+
+- [P. Berthelot and A. Ogus, Notes on Crystalline Cohomology, Princeton University Press (1978)](https://doi.org/10.1515/9781400867318)
+
+### The crystal condition gives an integrable connection
+
+**Remember:** Two pullbacks being equal is a connection; three is integrability.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
+
+**Definition.** A crystal in 𝒪X/S-modules is a sheaf ℱ on the crystalline site Cris(X/S), whose objects are divided power thickenings of open parts of X. Take a morphism from a thickening U′ to a thickening U. Then the comparison map from the pullback of ℱ on U to ℱ on U′ must be an isomorphism.
+
+**Problem.** Every crystal in 𝒪X/S-modules on the crystalline site comes with a canonical integrable connection.
+
+**How the definition helps.** The connection is read off from the crystal condition, so no separate data is needed. On the first-order divided power neighbourhood of the diagonal, the crystal condition identifies the two pullbacks of ℱ. Their difference is a map ℱ → ℱ ⊗ Ω¹, and the triple product gives integrability (our own). The usual definition takes the connection as extra data, and the work moves into the converse, that a suitably nilpotent integrable connection gives a crystal.
+
+**Paper or page:** [Crystalline, Lemma 64.15.1](https://stacks.math.columbia.edu/tag/07J6). It says: “Let ℱ be a crystal in 𝒪<sub>X/S</sub>-modules on Cris(X/S). Then ℱ comes equipped with a canonical integrable connection.”
+
+**Sources:**
+
+- [The Stacks Project, Crystalline cohomology, Lemma 64.15.1 (Tag 07J6)](https://stacks.math.columbia.edu/tag/07J6)
 
 ### Defining π₁ by unramified Galois extensions makes the function-field Galois map surjective
 
@@ -2514,6 +2724,218 @@ $$”
 
 - [Dmitry Kubrak, Georgii Shuklin, Alexander Zakharov, Derived binomial rings I: integral Betti cohomology of log schemes, arXiv:2308.01110 (2023)](https://arxiv.org/abs/2308.01110v1)
 
+### Counting twist equivalences, not automorphisms, removes the rigidity of quantum projective spaces
+
+**Remember:** Symmetries of a noncommutative space live in a groupoid, not a group.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16W50. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** Cooney and Grabowski define a groupoid whose objects are noncommutative projective spaces (QGr A, πA) of a fixed dimension. A morphism is an equivalence of the categories QGr that respects πA and its shifts. By Zhang's theorem, morphisms correspond to Zhang twists relating the coordinate algebras, and the point scheme E is the scheme of point modules.
+
+**Problem.** For a geometric noncommutative ℙⁿ with point scheme E, its automorphism group in the groupoid is the group of automorphisms of E that extend to ℙⁿ. By contrast, for q not a root of unity, the quantum ℙⁿ algebra has only (k\*)ⁿ⁺¹ as automorphisms, or k ⋉ (k\*)³ when n = 2.
+
+**How the definition helps.** Non-isomorphic algebras can give the same space, so algebra isomorphisms are too strict, and the groupoid counts every way two algebras define one space. Zhang's theorem identifies these ways with twists. The point scheme of Artin, Tate and Van den Bergh then describes the twists geometrically. The work went into Mori's description of twists through the point scheme, which Cooney and Grabowski use.
+
+**Paper or page:** [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383), [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383). It says: “noncommutative spaces (or equivalently their coordinate algebras) have very few automorphisms by comparison with their commutative counterparts.”
+
+**Sources:**
+
+- [N. Cooney and J. E. Grabowski, Automorphism groupoids in noncommutative projective geometry, arXiv:1807.06383](https://arxiv.org/abs/1807.06383)
+- [J. J. Zhang, Twisted graded algebras and equivalences of graded categories, Proceedings of the London Mathematical Society s3-72 (1996) 281–311](https://doi.org/10.1112/plms/s3-72.2.281)
+
+### Endomorphism algebras of tilting bundles are Calabi–Yau exactly on Calabi–Yau varieties
+
+**Remember:** The bimodule dual of A is the inverse canonical sheaf in disguise.
+
+*True by definition. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16E35, 14J32. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** An algebra A is homologically smooth when A is a perfect complex of A-bimodules. Ginzburg calls a smooth A Calabi–Yau of dimension d when its bimodule dual RHom(A, A ⊗ Aᵒᵖ) is A placed in degree d. A tilting generator on a variety X is a complex with no higher self-extensions that generates the derived category.
+
+**Problem.** Let X be a smooth connected variety of dimension d, projective over an affine variety, with a tilting generator ℰ. Then End ℰ is Calabi–Yau of dimension d exactly when the canonical sheaf of X is trivial.
+
+**How the definition helps.** The Calabi–Yau condition uses only bimodules and derived Hom, so it moves across the derived equivalence between X and End ℰ (our own summary). A definition through a Serre functor would need finite-dimensional Hom spaces, which fail when X is not projective. On X × X the bimodule A becomes the structure sheaf of the diagonal, whose dual is the inverse canonical sheaf there, shifted (our own). So the dual is a shift of A exactly when the canonical sheaf is trivial; Ginzburg proves this as Proposition 3.3.1.
+
+**nLab:** [Calabi-Yau algebra](https://ncatlab.org/nlab/show/Calabi-Yau+algebra). It says: “Then End ℰ is a Calabi-Yau algebra of dimension d precisely if X is a Calabi-Yau manifold of dimension d.”
+
+**Sources:**
+
+- [V. Ginzburg, Calabi–Yau algebras, arXiv:math/0612139](https://arxiv.org/abs/math/0612139)
+
+### Every noncommutative projective line is the ordinary projective line
+
+**Remember:** Quantum planes are twists of k\[x,y\], so their projective lines agree.
+
+*True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16S38. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** A noncommutative projective line is the pair (QGr A, πA), where A is an Artin–Schelter regular algebra of global dimension 2 generated in degree one. Here QGr A is the category of graded A-modules modulo torsion modules, and πA is the image of A.
+
+**Problem.** Over an algebraically closed field, every noncommutative projective line is equivalent to the ordinary ℙ¹ with its structure sheaf. This includes the quantum planes k⟨x,y⟩/(xy − qyx) and the Jordan plane k⟨x,y⟩/(xy − yx − x²).
+
+**How the definition helps.** QGr A depends only on the graded module category of A, and each such A is a Zhang twist of k\[x,y\] (our own check). With σ(x) = x, the twist by σ(y) = qy gives the quantum plane and σ(y) = y + x gives the Jordan plane (our own). So (QGr A, πA) is (QGr k\[x,y\], πk\[x,y\]), which Serre's theorem identifies with sheaves on ℙ¹. Defined as algebras, quantum planes with different q would be different spaces; the classification of regular algebras of dimension 2 does the remaining work.
+
+**Paper or page:** [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383). It says: “We analyse this automorphism groupoid, showing that in dimension 1 it is connected, so that every noncommutative ℙ¹ is isomorphic to commutative ℙ¹.”
+
+**Sources:**
+
+- [N. Cooney and J. E. Grabowski, Automorphism groupoids in noncommutative projective geometry, arXiv:1807.06383](https://arxiv.org/abs/1807.06383)
+- [J. J. Zhang, Twisted graded algebras and equivalences of graded categories, Proceedings of the London Mathematical Society s3-72 (1996) 281–311](https://doi.org/10.1112/plms/s3-72.2.281)
+- [M. Artin and W. F. Schelter, Graded algebras of global dimension 3, Advances in Mathematics 66 (1987) 171–216](https://doi.org/10.1016/0001-8708(87)90034-X)
+
+### Keeping the structure object and shift lets Artin–Zhang recover the graded ring
+
+**Remember:** Remember the structure sheaf and its twists, and the ring comes back.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16W50. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** Artin and Zhang define a noncommutative projective scheme as a triple (C, O, s). Here C is an abelian category, O is an object playing the structure sheaf, and s is an autoequivalence playing the twist by 𝒪(1). For a graded algebra A the triple is (QGr A, πA, shift).
+
+**Problem.** Let A be noetherian Artin–Schelter regular of dimension at least 2, a noncommutative analogue of a polynomial ring. Then (QGr A, πA, shift) gives back A as ⨁ Hom(πA, πA(n)), and any ample triple with suitable finiteness is QGr of its ring ⨁ Hom(O, sⁿO).
+
+**How the definition helps.** The triple keeps exactly the data from which a homogeneous coordinate ring is built, so reconstruction can be stated for any abelian category. Ampleness copies two facts from Serre's theorem (our own summary). Every object is a quotient of sums of the s⁻ⁿO, and surjections stay surjective on Hom from s⁻ⁿO for large n. For regular A, Hom(πA, πA(n)) = Aₙ because the first two local cohomology groups of A vanish (our own); Artin and Zhang prove the general equivalence.
+
+**Paper or page:** [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383), [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383). It says: “The graded endomorphism algebra of πA in QGr A, GrEnd(πA) = ⨁<sub>n∈ℤ</sub> Hom<sub>QGr A</sub>(πA,(πA)(n)) is isomorphic as graded k-algebras to A.”
+
+**Sources:**
+
+- [M. Artin and J. J. Zhang, Noncommutative projective schemes, Advances in Mathematics 109 (1994) 228–287](https://doi.org/10.1006/aima.1994.1087)
+- [N. Cooney and J. E. Grabowski, Automorphism groupoids in noncommutative projective geometry, arXiv:1807.06383](https://arxiv.org/abs/1807.06383)
+
+### Linear reductivity is exactly what makes skew group rings resolve quotient singularities
+
+**Remember:** Replace 'order prime to p' by 'linearly reductive', and Auslander's theorem survives.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S35, 14B05. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** A finite group scheme G over a field k is linearly reductive when all its representations are semisimple. A finite group is linearly reductive exactly when the characteristic of k does not divide its order, and μₚ is linearly reductive in characteristic p. The skew group ring S∗G is S ⊗ kG with G acting on S, where kG is the dual of the coordinate ring of G.
+
+**Problem.** Let a finite group scheme G act on S = k\[\[x₁, …, xₙ\]\] under Liedtke and Yasuda's assumptions, with invariant ring R. Then S∗G has finite global dimension exactly when G is linearly reductive, and then End of S over R is a noncommutative crepant resolution.
+
+**How the definition helps.** Linear reductivity is what Auslander's averaging argument needs, so the theorem covers group schemes such as μₚ with no extra case (our own summary). The excluded case is any action of a group such as ℤ/p in characteristic p, whose group algebra is not semisimple (our own reading). For such an action S∗G has infinite global dimension, so it cannot be a resolution. The work went into Liedtke and Yasuda's study of purity and F-regularity.
+
+**Paper or page:** [Non-commutative resolutions of linearly reductive quotient singularities](https://arxiv.org/abs/2304.14711), [Non-commutative resolutions of linearly reductive quotient singularities](https://arxiv.org/abs/2304.14711). It says: “The following are equivalent: R is a pure subring of S. R is strongly F-regular. G is linearly reductive. S\*G has finite global dimension.”
+
+**Sources:**
+
+- [C. Liedtke and T. Yasuda, Non-commutative resolutions of linearly reductive quotient singularities, Quarterly Journal of Mathematics 75 (2024) 969–985; arXiv:2304.14711](https://arxiv.org/abs/2304.14711)
+- [M. Auslander, On the purity of the branch locus, American Journal of Mathematics 84 (1962) 116–125](https://doi.org/10.2307/2372807)
+
+### Quasi-free algebras have smooth representation schemes in every dimension
+
+**Remember:** Lifting through all nilpotent extensions includes lifting through matrix rings.
+
+*True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16E40. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** An associative algebra A is quasi-free, in the sense of Cuntz and Quillen, when every algebra map from A to E/N lifts to E. Here E is any associative algebra and N is a nilpotent ideal. Free algebras and path algebras of quivers are quasi-free.
+
+**Problem.** If A is finitely generated and quasi-free, then for each n the scheme Repₙ(A) of n-dimensional representations is smooth. This scheme sends a commutative ring C to the algebra maps from A to the matrix ring Mₙ(C).
+
+**How the definition helps.** The definition lifts maps into every associative algebra, including matrix rings, so it contains the lifting criterion for smoothness of Repₙ(A) (our own summary). That criterion asks that points over C/J lift to C for every square-zero ideal J, and Mₙ(J) is a square-zero ideal of Mₙ(C). The commutative notion is not enough: Repₙ(k\[x,y\]) is the scheme of commuting pairs of matrices, singular for n ≥ 2 (our own example). The work went into Cuntz and Quillen's equivalent forms of the definition, which make examples checkable.
+
+**nLab:** [quasi-free algebra](https://ncatlab.org/nlab/show/quasi-free+algebra), [Kontsevich-Rosenberg principle](https://ncatlab.org/nlab/show/Kontsevich-Rosenberg+principle). It says: “However most commutative formally smooth algebras are not formally smooth in the associative noncommutative sense.”
+
+**Wikipedia:** [Quasi-free algebra](https://en.wikipedia.org/wiki/Quasi-free_algebra). It says: “In particular, a polynomial ring over a field is quasi-free if and only if the number of variables is at most one.”
+
+**Sources:**
+
+- [J. Cuntz and D. Quillen, Algebra extensions and nonsingularity, Journal of the American Mathematical Society 8 (1995) 251–289](https://doi.org/10.1090/s0894-0347-1995-1303029-0)
+- [M. Kontsevich and A. L. Rosenberg, Noncommutative smooth spaces, The Gelfand Mathematical Seminars 1996–1999, Birkhäuser (2000) 85–108](https://doi.org/10.1007/978-1-4612-1340-6_5)
+
+### Schematic algebras let noncommutative Proj be glued from Ore localizations
+
+**Remember:** Enough Ore localizations give noncommutative charts, and Serre's theorem follows.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16P40. arXiv math.RA, math.AG. Level 4: research.
+
+**Definition.** An Ore set in a ring is a multiplicative set at which one-sided fractions can be formed. Van Oystaeyen and Willaert call a connected graded noetherian algebra R schematic when it has finitely many homogeneous Ore sets, each meeting the positive part R₊. Also, each choice of one element from every set must generate a left ideal containing a power of R₊.
+
+**Problem.** For a schematic algebra R, coherent sheaves on the noncommutative site of its Ore localizations form a category equivalent to Proj R. Here Proj R means finitely generated graded modules modulo torsion modules.
+
+**How the definition helps.** The schematic condition is the noncommutative form of the open cover of Proj by the sets D₊(f), so sheaves and modules can be compared. Under it a module is torsion exactly when all its localizations vanish (our own summary). So the kernel of sheafification is the torsion class, as in Serre's proof (our own). The work went into building a Grothendieck topology from the Ore sets.
+
+**Paper or page:** [Noncommutative scheme theory and the Serre-Artin-Zhang-Verevkin theorem for semi-graded rings](https://arxiv.org/abs/2301.07815), [Noncommutative scheme theory and the Serre-Artin-Zhang-Verevkin theorem for semi-graded rings](https://arxiv.org/abs/2301.07815). It says: “(Serre-Artin-Zhang-Verevkin theorem). The category of coherent sheaves is equivalent to Proj(R).”
+
+**Sources:**
+
+- [F. Van Oystaeyen and L. Willaert, Grothendieck topology, coherent sheaves and Serre's theorem for schematic algebras, Journal of Pure and Applied Algebra 104 (1995) 109–122](https://doi.org/10.1016/0022-4049(94)00118-3)
+- [Noncommutative scheme theory and the Serre-Artin-Zhang-Verevkin theorem for semi-graded rings, arXiv:2301.07815](https://arxiv.org/abs/2301.07815)
+
+### Taking Serre's theorem as the definition of Proj makes truncation harmless
+
+**Remember:** Finite-dimensional differences are torsion, so qgr cannot see them.
+
+*True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16W50, 14A15. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** Let A be a noetherian connected graded algebra over a field k, so A₀ = k, not necessarily commutative. A graded module is torsion when each element is killed by A≥n, the part of A in degrees at least n, for some n. Artin and Zhang define qgr A as finitely generated graded modules modulo torsion modules, and call it the noncommutative projective scheme of A.
+
+**Problem.** Two finitely generated graded A-modules that agree in all large degrees become isomorphic in qgr A. In particular, a module M and each truncation M≥n give the same object.
+
+**How the definition helps.** The quotient by torsion modules inverts every map whose kernel and cokernel are torsion. The inclusion of M≥n into M has zero kernel and a finite-dimensional cokernel, which is torsion, so the claim holds by construction. With the sheaf definition of Proj, one must instead check that M and M≥n give the same sheaf on each standard open set. The work went into Serre's theorem, which identifies qgr A with coherent sheaves on Proj A when A is commutative and generated in degree one.
+
+**nLab:** [noncommutative algebraic geometry](https://ncatlab.org/nlab/show/noncommutative+algebraic+geometry). It says: “Serre's theorem on Proj of a graded ring is taken as a definition in the noncommutative case: quasicoherent sheaves over a Proj of a graded ring is the category of graded modules modulo the modules of finite length.”
+
+**Paper or page:** [Coherent, Proposition 30.14.4](https://stacks.math.columbia.edu/tag/0BXD). It says: “Set X = Proj(A). The functor M ↦ M̃ induces an equivalence Mod<sup>fg</sup><sub>A</sub>/Mod<sup>fg</sup><sub>A, torsion</sub> ⟶ Coh(𝒪<sub>X</sub>)”
+
+**Sources:**
+
+- [M. Artin and J. J. Zhang, Noncommutative projective schemes, Advances in Mathematics 109 (1994) 228–287](https://doi.org/10.1006/aima.1994.1087)
+
+### Tilting bundles on crepant resolutions give noncommutative crepant resolutions
+
+**Remember:** Read a crepant resolution through a tilting bundle to get a noncommutative one.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 14E15, 16S38. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** Let R be a normal Gorenstein domain and M a nonzero reflexive R-module with endomorphism ring Λ. Van den Bergh calls Λ a noncommutative crepant resolution of R when Λ has finite global dimension and is maximal Cohen–Macaulay over R, the algebraic form of crepancy. A tilting bundle is a vector bundle with no higher self-extensions that generates the derived category.
+
+**Problem.** Let R be a normal Gorenstein domain, and let Y → Spec R be a projective crepant resolution with a tilting bundle 𝒯. Then End 𝒯 is a noncommutative crepant resolution of R, derived equivalent to Y.
+
+**How the definition helps.** Each condition is what the crepant resolution gives after tilting, so the noncommutative statement matches the geometric one. Finite global dimension comes from the smoothness of Y through the derived equivalence. The Cohen–Macaulay condition comes from crepancy and Grothendieck duality (our own summary). The work went into finding tilting bundles, which Van den Bergh did when the fibres have dimension at most one.
+
+**Paper or page:** [Mutations of noncommutative crepant resolutions in geometric invariant theory](https://arxiv.org/abs/2310.11057), [Non-commutative crepant resolutions, an overview](https://arxiv.org/abs/2207.09703). It says: “Let R be a normal Gorenstein algebra and f : 𝔜 → Spec R is a stacky crepant resolution. Assume that 𝔜 admits a tilting bundle 𝒯. Then the reflexive R-module f♯𝒯 gives an NCCR of Y”
+
+**Sources:**
+
+- [M. Van den Bergh, Non-commutative crepant resolutions, in The Legacy of Niels Henrik Abel, Springer (2004) 749–770](https://doi.org/10.1007/978-3-642-18908-1_26)
+
+### Twisted homogeneous coordinate rings carry Serre's theorem to an automorphism twist
+
+**Remember:** Twist the multiplication by σ, and Serre's theorem still holds.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16W50. arXiv math.AG, math.RA. Level 4: research.
+
+**Definition.** Put ℒₙ = ℒ ⊗ σ\*ℒ ⊗ ⋯ ⊗ (σⁿ⁻¹)\*ℒ for a line bundle ℒ on a projective scheme X with automorphism σ. The twisted homogeneous coordinate ring B(X, ℒ, σ) is the sum of the global sections of all ℒₙ, with a product twisted by σ. The bundle ℒ is σ-ample when the higher cohomology of ℱ ⊗ ℒₙ vanishes for each coherent ℱ and all large n.
+
+**Problem.** If ℒ is σ-ample, then B(X, ℒ, σ) is noetherian and its category qgr is equivalent to coherent sheaves on X. For a Sklyanin algebra S with point modules on an elliptic curve E, a central element g kills them, and S/gS is such a ring.
+
+**How the definition helps.** σ-ampleness is the form of Serre vanishing that Serre's proof needs, so the proof works with ℒₙ in place of ℒⁿ (our own summary). With σ the identity, ℒₙ is ℒⁿ and σ-ampleness is ordinary ampleness. The identification of S/gS with a ring B(E, ℒ, σ) is our own summary of Artin, Tate and Van den Bergh. The work went into Artin and Van den Bergh's criterion for σ-ampleness, which on a curve holds for every ample ℒ.
+
+**Wikipedia:** [Sklyanin algebra](https://en.wikipedia.org/wiki/Sklyanin_algebra). It says: “then there exists an element g ∈ S which annihilates all point modules i.e. Mg = 0 for all point modules M of S.”
+
+**Paper or page:** [Automorphism groupoids in noncommutative projective geometry](https://arxiv.org/abs/1807.06383). It says: “Let ℒ be an ample line bundle on a projective scheme X. Then Γ̄<sub>h</sub> defines an equivalence of categories between QCoh(X) and QGr B.”
+
+**Sources:**
+
+- [M. Artin and M. Van den Bergh, Twisted homogeneous coordinate rings, Journal of Algebra 133 (1990)](https://doi.org/10.1016/0021-8693(90)90269-t)
+- [M. Artin, J. Tate and M. Van den Bergh, Some algebras associated to automorphisms of elliptic curves, The Grothendieck Festschrift, Vol. I, Progress in Mathematics 86 (1990); Birkhäuser reprint 2007](https://doi.org/10.1007/978-0-8176-4574-8_3)
+
+### Defining open immersions and proper maps by adjoints gives compactifications for free
+
+**Remember:** Every !-able map factors canonically as proper then open.
+
+*True by definition. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 18F20, 14G22. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A map of analytic rings from A to B is an open immersion if pullback has a fully faithful D(A)-linear left adjoint. It is proper if B carries the analytic ring structure induced from A. It is !-able if B with the induced structure maps to B by an open immersion.
+
+**Problem.** With these classes, A ↦ D(A) is a six-functor formalism on analytic rings, and it extends to analytic stacks. For example, ℤ■ → ℤ\[T\]■ factors as a proper map to (ℤ\[T\], ℤ)■ followed by an open immersion.
+
+**How the definition helps.** Every !-able map comes with its own factorization into a proper map and an open immersion, so no compactification has to be built. In étale and coherent theory, f₍!₎ needs Nagata's compactification theorem or an analogue, usually the hardest step (our own). Scholze notes that this step comes for free here (our own reading of the six-functor notes, Definition 9.16 and the text after it). The work moves into the construction of analytic rings and the extension to analytic stacks.
+
+**Wikipedia:** [Six operations](https://en.wikipedia.org/wiki/Six_operations). It says: “One says that f ∈ E is D-ètale if f<sup>!</sup> ≅ f<sup>\*</sup>.”
+
+**Sources:**
+
+- [Peter Scholze, Six-Functor Formalisms, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/SixFunctors.pdf)
+
 ### Derived Azumaya algebras realize the whole bigger Brauer group
 
 **Remember:** Take all of H²(𝔾ₘ) as the Brauer group; derived Azumaya algebras realize it.
@@ -2588,6 +3010,26 @@ $$”
 
 - [Bertrand Toën, Derived algebraic geometry, EMS Surveys in Mathematical Sciences 1 (2014) 153–240, arXiv:1401.1044](https://arxiv.org/abs/1401.1044)
 - [Bertrand Toën, Higher and derived stacks: a global overview, arXiv:math/0604504](https://arxiv.org/abs/math/0604504)
+
+### Keeping the tensor product lets perfect complexes recover the scheme
+
+**Remember:** Triangles alone can confuse varieties; triangles with tensor never do.
+
+*Rules out counterexamples.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 14F08, 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** The Balmer spectrum of perfect complexes on X uses the tensor product of complexes as well as the triangulated structure. Bondal and Orlov instead use only the triangulated category of bounded complexes of coherent sheaves.
+
+**Problem.** For a noetherian scheme X, Spc of the perfect complexes on X is homeomorphic to X. With its natural structure sheaf it is isomorphic to X as a scheme.
+
+**How the definition helps.** Keeping ⊗ excludes Mukai's example, an abelian variety and its dual with equivalent derived categories that need not be isomorphic. The equivalence does not respect ⊗, so it gives no map of Balmer spectra (our own remark). Bondal and Orlov need an ample or anti-ample canonical sheaf, and an abelian variety has a trivial one (our own remark). With ⊗ kept, the work goes into Thomason's classification of tensor ideals.
+
+**nLab:** [spectrum of a tensor triangulated category](https://ncatlab.org/nlab/show/spectrum+of+a+tensor+triangulated+category). It says: “If one restricts to perfect complexes then often the variety may be reconstructed from the spectrum of its category of coherent sheaves.”
+
+**Sources:**
+
+- [Paul Balmer, Presheaves of triangulated categories and reconstruction of schemes, Math. Ann. 324 (2002) 557–580](https://doi.org/10.1007/s00208-002-0353-1)
+- [Shigeru Mukai, Duality between D(X) and D(X̂) with its application to Picard sheaves, Nagoya Math. J. 81 (1981) 153–175](https://doi.org/10.1017/s002776300001922x)
+- [Alexei Bondal and Dmitri Orlov, Reconstruction of a variety from the derived category and groups of autoequivalences, Compositio Math. 125 (2001) 327–344](https://doi.org/10.1023/A:1002470302976)
 
 ### Left-exact functors give rings for free, and covers make them local
 
@@ -3028,6 +3470,22 @@ $$”
 
 - [Osamu Fujino, Kenta Hashizume, Adjunction and inversion of adjunction, arXiv:2105.14531v2 (2022)](https://arxiv.org/abs/2105.14531v2)
 
+### Adequate modules repair the failure of quasi-coherent modules on big sites
+
+**Remember:** Make kernels part of the definition, then divide by the parasites.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F06 (Sheaves in algebraic geometry), 18E10. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** On the big site of schemes over S, a module gives a value on every S-scheme T, not only on open sets. An adequate module is locally the kernel of a map between modules of the form T ↦ Γ(T, pullback of a quasi-coherent module). A parasitic module is one that vanishes on every T that is flat over S.
+
+**Problem.** Adequate modules on the big site form an abelian category, and the inclusion into all 𝒪-modules is exact. Quasi-coherent sheaves on S are the Serre quotient of adequate modules by parasitic ones.
+
+**How the definition helps.** Adequate modules are defined to include kernels of maps between quasi-coherent modules, so the kernel problem disappears. Over Spec ℤ, multiplication by p on 𝒪 has kernel 𝔽ₚ on Spec 𝔽ₚ but zero on Spec ℤ, so the kernel is not quasi-coherent (our own). That kernel is parasitic, and dividing by parasitic modules recovers quasi-coherent sheaves on S. The work is in Stacks' study of adequate functors on algebras.
+
+**Paper or page:** [Adequate, Lemma 46.5.11](https://stacks.math.columbia.edu/tag/06VQ), [Adequate, Lemma 46.6.2](https://stacks.math.columbia.edu/tag/06ZN). It says: “The subcategory 𝒞 ⊂ Adeq(𝒪) of parasitic adequate modules is a Serre subcategory. Moreover, the functor v induces an equivalence of categories Adeq(𝒪) / 𝒞 = QCoh(𝒪<sub>S</sub>).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Codim-2-saturated surfaces can be rebuilt from their reflexive sheaves
 
 **Remember:** Reflexive sheaves ignore single points, so fill in every missing point first.
@@ -3082,6 +3540,24 @@ $$”
 
 - [Hayato Morimura, Categorical generic fiber, arXiv:2111.00239 (2024)](https://arxiv.org/abs/2111.00239v4)
 
+### Solid localizations along dimension make Beilinson–Parshin adeles a fracture cube
+
+**Remember:** Adeles are vertices of a cube of solid localizations.
+
+*True by definition. Confidence: medium.* MSC 14F06 (Sheaves in algebraic geometry), 11R56. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let A be a ring of finite type over ℤ. For each k, the six functors for solid modules give an idempotent localization Lₖ that keeps the part of a module in dimension k. Composing these along chains of dimensions gives the vertices of a cube of functors, the fracture cube.
+
+**Problem.** Each vertex of the fracture cube, applied to A, is an iterated product of completed localizations over chains of primes, a Beilinson–Parshin adele ring. For A = ℤ, solid ℤ-modules are glued from modules over ℚ, over the product of all ℤₚ, and over the finite adeles.
+
+**How the definition helps.** The adeles appear as values of idempotent localization functors, so the adelic resolution follows from formal properties of those functors. Classically, Beilinson and Parshin define adeles by iterated limits and colimits over flags, and the resolution needs a direct calculation (our own). The work moves into computing each vertex on A, which uses that completion commutes with solid tensor products.
+
+**Paper or page:** [Beilinson-Parshin adeles via solid algebraic geometry](https://arxiv.org/abs/2403.08472), [Beilinson-Parshin adeles via solid algebraic geometry](https://arxiv.org/abs/2403.08472). It says: “The vertices of the cube are given by Beilinson-Parshin adeles. Specifically, each vertex is a continuous endofunctor that is additionally right t-exact and preserves right t-bounded products and completions”
+
+**Sources:**
+
+- [Christopher Brav, Grigorii Konovalov, Beilinson-Parshin adeles via solid algebraic geometry, arXiv:2403.08472](https://arxiv.org/abs/2403.08472)
+
 ### The functor of points defines quasicoherent sheaves on stacks
 
 **Remember:** A quasicoherent sheaf is a module for each affine scheme mapping in, glued by tensor products.
@@ -3099,6 +3575,24 @@ $$”
 **Sources:**
 
 - [Sharon Hollander, Descent for quasi-coherent sheaves on stacks, Algebraic and Geometric Topology 7 (2007) 411–438, arXiv:0708.2475](https://arxiv.org/abs/0708.2475)
+
+### A shift Serre functor makes Calabi–Yau semiorthogonal decompositions trivial
+
+**Remember:** When the Serre functor is a shift, one-way orthogonality becomes two-way.
+
+*True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 14J32. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A semiorthogonal decomposition D = ⟨A, B⟩ of a triangulated category is a pair of full triangulated subcategories that generate D. It asks for Hom(b, a) = 0 for all b in B and a in A, so the vanishing goes one way only. An orthogonal decomposition asks for it both ways.
+
+**Problem.** Let X be a connected smooth projective variety of dimension n with trivial canonical bundle. Then every semiorthogonal decomposition ⟨A, B⟩ of Dᵇ(X) has A = 0 or B = 0.
+
+**How the definition helps.** Here the Serre functor S, with Hom(a, b) ≅ Hom(b, S a)\*, is the shift \[n\], which turns one-way vanishing into two-way vanishing. Indeed Hom(a, b) ≅ Hom(b, a\[n\])\* = 0, so the decomposition is orthogonal (our own). The work then lies in the theorem that Dᵇ(X) of a connected variety has no nontrivial orthogonal decomposition. Wikipedia states this Calabi–Yau case as an example of Kuznetsov's result for a base-point-free canonical bundle, which needs more work.
+
+**Wikipedia:** [Semiorthogonal decomposition](https://en.wikipedia.org/wiki/Semiorthogonal_decomposition). It says: “for an (irreducible) smooth projective variety X over a field, the bounded derived category Dᵇ(X) of coherent sheaves never has a nontrivial orthogonal decomposition”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
 
 ### Absorbing singularities leaves a smooth category that survives smoothing
 
@@ -3118,6 +3612,122 @@ $$”
 
 - [Alexander Kuznetsov, Evgeny Shinder, Categorical absorptions of singularities and degenerations, arXiv:2207.06477v5 (2024), Épijournal de Géométrie Algébrique, special volume in honour of Claire Voisin](https://arxiv.org/abs/2207.06477v5)
 
+### An ample or anti-ample canonical bundle leaves only the standard autoequivalences
+
+**Remember:** Autoequivalences must permute points and line bundles, so they come from geometry.
+
+*Rules out counterexamples.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A point object of Dᵇ(X) is an object P with S(P) ≅ P\[n\], Hom(P, P\[i\]) = 0 for i &lt; 0, and Hom(P, P) a field. Here S is the Serre functor and n = dim X. An invertible object is an object L with an integer s such that, for every point object P, Hom(L, P\[s\]) = Hom(P, P) and Hom(L, P\[i\]) = 0 for i ≠ s. When ω is ample or anti-ample, point objects are shifted skyscrapers and invertible objects are shifted line bundles.
+
+**Problem.** Let the canonical bundle of X be ample or anti-ample. Then every exact autoequivalence of Dᵇ(X) composes pullback by an automorphism, tensoring with a line bundle, and a shift. So the group of autoequivalences is (Pic(X) ⋊ Aut(X)) × ℤ (Bondal and Orlov).
+
+**How the definition helps.** An autoequivalence preserves point objects and invertible objects, and the condition on ω identifies these with skyscrapers and line bundles. After a shift and a twist, it fixes the structure sheaf and sends skyscrapers to skyscrapers, so it comes from an automorphism (our own summary). Without the condition there are more autoequivalences. On an elliptic curve the Poincaré-bundle transform sends a skyscraper sheaf to a line bundle, which no standard autoequivalence does (our own).
+
+**nLab:** [Bondal-Orlov reconstruction theorem](https://ncatlab.org/nlab/show/Bondal-Orlov+reconstruction+theorem). It says: “If all point objects of Dᵇ(X), for a smooth projective variety X, are translations of skyscraper sheaves of closed points, then all invertible objects of Dᵇ(X) are translations of invertible sheaves on X.”
+
+**Wikipedia:** [Derived noncommutative algebraic geometry](https://en.wikipedia.org/wiki/Derived_noncommutative_algebraic_geometry). It says: “One nice application of the proof of this theorem is the identification of autoequivalences of the derived category of a smooth projective variety with ample (anti-)canonical sheaf.”
+
+**Sources:**
+
+- [A. Bondal and D. Orlov, Reconstruction of a variety from the derived category and groups of autoequivalences, Compositio Mathematica 125 (2001) 327–344](https://doi.org/10.1023/A:1002470302976)
+
+### Composing kernels reduces Mukai's equivalence to cohomology of the Poincaré bundle
+
+**Remember:** Convolve the Poincaré bundle with itself and get the antidiagonal.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 14K05, 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** For an abelian variety A of dimension g, the dual Â parametrizes line bundles of degree zero on A. The Poincaré bundle P on A × Â is the line bundle whose restriction to A × {ξ} is the line bundle that ξ names. The transform S with kernel P goes from Dᵇ(A) to Dᵇ(Â), and Ŝ is the transform back.
+
+**Problem.** The composite of S and Ŝ is (−1)\* \[−g\], the pullback by x ↦ −x followed by a shift by −g. In particular S is an equivalence from Dᵇ(A) to Dᵇ(Â) (Mukai).
+
+**How the definition helps.** Kernels compose by convolution, so the composite has as kernel a push forward of a tensor product of two copies of P (our own). Over a point (a, b) of A × A, this sees the cohomology of the line bundle that a + b names on Â (our own). A nontrivial such line bundle has no cohomology, so the kernel lives on the antidiagonal, the set of pairs (a, −a). A duality computation, which carries the work, identifies it with the structure sheaf of the antidiagonal shifted by −g (our own summary of Mukai).
+
+**Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “The Fourier–Mukai transformation is nearly involutive”
+
+**Sources:**
+
+- [S. Mukai, Duality between D(X) and D(X̂) with its application to Picard sheaves, Nagoya Mathematical Journal 81 (1981) 153–175](https://doi.org/10.1017/S002776300001922X)
+- [D. Huybrechts, Fourier–Mukai Transforms in Algebraic Geometry, Oxford University Press (2006)](https://doi.org/10.1093/acprof:oso/9780199296866.001.0001)
+
+### Defining mutations as projections keeps exceptional pairs exceptional
+
+**Remember:** Mutate by projecting away from E, and the pair stays exceptional.
+
+*True by definition. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** An object E is exceptional if Hom(E, E) = k and Hom(E, E\[t\]) = 0 for t ≠ 0. An exceptional pair (E, F) is a pair of exceptional objects with Hom(F, E\[t\]) = 0 for all t. The left mutation L(F) is the cone of the evaluation map ⊕ Hom(E, F\[t\]) ⊗ E\[−t\] → F. So L(F) is the projection of F onto E⊥ in the decomposition ⟨E⊥, ⟨E⟩⟩.
+
+**Problem.** If (E, F) is an exceptional pair, then (L(F), E) is again an exceptional pair, and it generates the same subcategory as (E, F). Repeating mutations along a full exceptional collection gives an action of the braid group on such collections.
+
+**How the definition helps.** Because L(F) is the projection onto E⊥, the vanishing Hom(E, L(F)\[t\]) = 0 holds by construction (our own). Applying Hom(−, L(F)) and Hom(F, −) to the defining triangle gives Hom(L(F), L(F)\[t\]) ≅ Hom(F, F\[t\]), so L(F) is exceptional (our own). The braid relations among mutations need a separate check. Nordskova and Van den Bergh show that this action with shifts is transitive and free for threefolds with a full exceptional collection of four vector bundles.
+
+**Paper or page:** [Full exceptional collections on Fano threefolds and groups generated by spherical twists on K3 surfaces](https://arxiv.org/abs/2412.06023). It says: “Then the action of the semidirect product B₄ ⋌ ℤ⁴ by mutations and shifts on the set of full exceptional collections in 𝒟ᵇ(X) is transitive and free.”
+
+**Sources:**
+
+- [A. I. Bondal and M. M. Kapranov, Representable functors, Serre functors, and mutations, Mathematics of the USSR-Izvestiya 35 (1990) 519–541](https://doi.org/10.1070/IM1990v035n03ABEH000716)
+
+### Point objects let Dᵇ(X) determine X with ample or anti-ample ω
+
+**Remember:** Points are defined inside the category, so equivalences must match points.
+
+*Rules out counterexamples.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** Let X be smooth projective of dimension n, and let S be the Serre functor of Dᵇ(X), with Hom(E, F) ≅ Hom(F, S E)\*. A point object is an object P with S(P) ≅ P\[n\], Hom(P, P\[i\]) = 0 for i &lt; 0, and Hom(P, P) a field. These conditions use only the triangulated structure, so every exact equivalence preserves point objects. The canonical bundle ω is ample if a power of it embeds X in projective space, and anti-ample if its dual is ample.
+
+**Problem.** Let X be smooth projective with ω ample or anti-ample. If Dᵇ(X) is equivalent to Dᵇ(Y) for a smooth projective Y, then X ≅ Y (Bondal and Orlov).
+
+**How the definition helps.** Point objects are defined by the triangulated structure alone, so an equivalence from Dᵇ(X) to Dᵇ(Y) must match point objects. Ampleness makes the point objects of X the shifted skyscraper sheaves, so the equivalence matches points (our own summary of Bondal and Orlov). The Serre functor then recovers the ring of sections of the powers of ω, and X is Proj of this ring (our own summary). Without ampleness this fails, since Mukai's transform gives Dᵇ(A) ≅ Dᵇ(Â) for an abelian variety A and its dual Â, often not isomorphic.
+
+**nLab:** [Bondal-Orlov reconstruction theorem](https://ncatlab.org/nlab/show/Bondal-Orlov+reconstruction+theorem). It says: “Bondal and Orlov show how to reconstruct a smooth variety from its derived category of coherent sheaves when its canonical sheaf is ample or anti-ample, using only the graded structure (i.e. the translation functor).”
+
+**Wikipedia:** [Derived noncommutative algebraic geometry](https://en.wikipedia.org/wiki/Derived_noncommutative_algebraic_geometry). It says: “Since an abelian variety is generally not isomorphic to its dual, there are derived equivalent derived categories without isomorphic underlying varieties.”
+
+**Sources:**
+
+- [A. Bondal and D. Orlov, Reconstruction of a variety from the derived category and groups of autoequivalences, Compositio Mathematica 125 (2001) 327–344](https://doi.org/10.1023/A:1002470302976)
+- [S. Mukai, Duality between D(X) and D(X̂) with its application to Picard sheaves, Nagoya Mathematical Journal 81 (1981) 153–175](https://doi.org/10.1017/S002776300001922X)
+
+### Spanning classes reduce full faithfulness to Ext groups between skyscraper sheaves
+
+**Remember:** Check a functor on points, and it is checked everywhere.
+
+*Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A spanning class Ω in a triangulated category is a set of objects that detects zero from both sides. So X = 0 if Hom(ω, X\[i\]) = 0 for all ω in Ω and all i. Also X = 0 if Hom(X\[i\], ω) = 0 for all such ω and i. On a smooth projective variety, the skyscraper sheaves k(x) of closed points form a spanning class.
+
+**Problem.** Let X and Y be proper over a field k, with X regular, and let F be an exact functor between their categories of perfect complexes. Then F is fully faithful exactly when it is bijective on Ext groups between skyscraper sheaves. That is, Extⁱ(k(x), k(x′)) → Extⁱ(F k(x), F k(x′)) is an isomorphism for all closed points x, x′ and all i.
+
+**How the definition helps.** By Bridgeland's criterion, an exact functor with both adjoints is fully faithful once it is fully faithful on a spanning class (our own summary). The criterion carries the work, using both adjoints to pass from the spanning class to all objects. Regularity of X gives the adjoints and makes each skyscraper sheaf a perfect complex (our own). So a condition on all pairs of complexes becomes a condition on pairs of points.
+
+**nLab:** [Bondal-Orlov reconstruction theorem](https://ncatlab.org/nlab/show/Bondal-Orlov+reconstruction+theorem). It says: “But {𝒪<sub>y</sub> : y ∈ Y} form a spanning class of Dᵇ(Y) which implies that P = 0.”
+
+**Paper or page:** [Derived Categories of Varieties, Lemma 57.11.5](https://stacks.math.columbia.edu/tag/0G25). It says: “Assume X is regular. Then a k-linear exact functor F : D<sub>perf</sub>(𝒪<sub>X</sub>) → D<sub>perf</sub>(𝒪<sub>Y</sub>) is fully faithful if and only if for any closed points x, x′ ∈ X the maps”
+
+**Sources:**
+
+- [T. Bridgeland, Equivalences of triangulated categories and Fourier–Mukai transforms, Bulletin of the London Mathematical Society 31 (1999) 25–34](https://doi.org/10.1112/s0024609398004998)
+
+### The spherical condition makes a twist an autoequivalence, unlike exceptional objects
+
+**Remember:** Spheres twist the category; exceptional objects collapse under the same twist.
+
+*Rules out counterexamples.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** Let D be the bounded derived category of a smooth projective variety of dimension n, with Serre functor S, so that Hom(X, Y) ≅ Hom(Y, S X)\*. An object E is spherical if S(E) ≅ E\[n\] and Hom(E, E\[p\]) is k for p = 0 and p = n and zero otherwise. Its twist T sends X to the cone of the evaluation map ⊕ Hom(E, X\[p\]) ⊗ E\[−p\] → X. As a functor, T is an integral transform (Fourier–Mukai transform) whose kernel on the product is the cone of E∨ ⊠ E → O(diagonal).
+
+**Problem.** For a spherical object E, the twist T is an exact autoequivalence of D (Seidel and Thomas). The same cone built from an exceptional object E is not an equivalence, because it sends E to zero.
+
+**How the definition helps.** The graded Hom of a sphere makes T(E) ≅ E\[1 − n\], while T fixes every object of E⊥ (our own). Since S(E) ≅ E\[n\], the objects E and E⊥ form a spanning class (our own summary of Seidel and Thomas). Bridgeland's criterion for equivalences then carries the work. For an exceptional E, the map Hom(E, E) ⊗ E → E is an isomorphism, so T(E) = 0 (our own).
+
+**Paper or page:** [Invariant stability conditions on local P¹ × P¹ (after Del Monte-Longhi)](https://arxiv.org/abs/2404.05232), [Number of full exceptional collections modulo spherical twists for elliptic orbifolds](https://arxiv.org/abs/2311.11110). It says: “Let S be a spherical object in 𝒟. Then Tw<sub>S</sub> is an exact autoequivalence of 𝒟.”
+
+**Sources:**
+
+- [P. Seidel and R. Thomas, Braid group actions on derived categories of coherent sheaves, Duke Mathematical Journal 108 (2001) 37–108](https://doi.org/10.1215/s0012-7094-01-10812-0)
+
 ### The support property makes Bridgeland stability conditions deform continuously
 
 **Remember:** Keep semistable objects a fixed distance from zero charge.
@@ -3136,6 +3746,42 @@ $$”
 
 - [Kotaro Kawatani, On a deformation of gluing stability conditions, arXiv:2107.13367v2 (2021)](https://arxiv.org/abs/2107.13367v2)
 - [T. Bridgeland, Stability conditions on triangulated categories, Annals of Mathematics 166 (2007)](https://doi.org/10.4007/annals.2007.166.317)
+
+### Thomason filtrations classify compactly generated tensor t-structures
+
+**Remember:** One Thomason subset per degree describes a tensor t-structure.
+
+*True by definition. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 14A30, 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A t-structure on D(Qcoh X) is given by its aisle, a subcategory that plays the role of complexes in degrees at most 0. It is a tensor t-structure if the aisle is closed under tensoring with complexes in degrees at most 0. A Thomason filtration is a sequence φ(i) of Thomason subsets of X with φ(i) ⊇ φ(i+1). The rival is a general t-structure, such as the one on ℙ¹ whose heart is the Kronecker quiver's representations.
+
+**Problem.** For a noetherian scheme X, compactly generated tensor t-structures on D(Qcoh X) correspond to Thomason filtrations of X. The filtration φ gives the aisle of complexes whose i-th cohomology sheaf has support in φ(i).
+
+**How the definition helps.** The tensor condition lets support decide membership in the aisle degree by degree, so Thomason's classification gives one subset per degree (our own summary). Without it, the Kronecker t-structure on ℙ¹ has no such description (our own example). The work moves into showing that compact generation is local on X (our own summary). That reduces the claim to the affine case of Alonso, Jeremías and Saorín.
+
+**Paper or page:** [Compactly generated tensor t-structures on the derived category of a Noetherian scheme](https://arxiv.org/abs/2204.05015). It says: “Let X be a Noetherian scheme. There is a one-to-one correspondence between Thomᶠⁱˡ(X) and Aisleᶜᵖ⊗(X).”
+
+**Sources:**
+
+- [Compactly generated tensor t-structures on the derived category of a Noetherian scheme, arXiv:2204.05015 (2022)](https://arxiv.org/abs/2204.05015)
+
+### Thomason's classification needs tensor ideals, as the projective line shows
+
+**Remember:** Support sees tensor ideals; on ℙ¹ it cannot see thick subcategories.
+
+*Rules out counterexamples.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 14A30, 18G80. arXiv math.AG, math.CT. Level 4: research.
+
+**Definition.** A thick subcategory of perfect complexes is a full triangulated subcategory closed under direct summands. It is a tensor ideal if it is also closed under tensoring with every perfect complex. The support of a complex is the set of points where its cohomology sheaves are not zero.
+
+**Problem.** Let X be a quasi-compact quasi-separated scheme. Send each thick tensor ideal of perfect complexes to the union of the supports of its objects. This is a bijection onto the Thomason subsets of X.
+
+**How the definition helps.** Asking for closure under ⊗ excludes the thick subcategory generated by the line bundle 𝒪 on ℙ¹. The quote shows that admissible subcategories on ℙ¹ come from exceptional collections, and ⟨𝒪⟩ is one of these. It contains 𝒪, whose support is all of ℙ¹, but not 𝒪(1), so support cannot tell it from the whole category (our own example). It is not a tensor ideal, since 𝒪⊗𝒪(1) = 𝒪(1) (our own example).
+
+**Paper or page:** [Thick subcategories on weighted projective curves and nilpotent representations of quivers](https://arxiv.org/abs/2407.01207). It says: “Assume that 𝕏 is a weighted projective line: that is, X≅ℙ¹. Then any admissible subcategory 𝒯 ⊂ Dᵇ(coh 𝕏) is generated by an exceptional collection.”
+
+**Sources:**
+
+- [R. W. Thomason, The classification of triangulated subcategories, Compositio Math. 105 (1997) 1–27](https://doi.org/10.1023/A:1017932514274)
 
 ### With crystalline differential operators, D-modules are flat connections in characteristic p
 
@@ -3320,6 +3966,180 @@ $$”
 
 - [Adrien Morin, Special values of L-functions on regular arithmetic schemes of dimension 1, arXiv:2108.00811v1 (2021)](https://arxiv.org/abs/2108.00811v1)
 
+### A single chart turns Cartier–Witt sheaves into modules with one operator
+
+**Remember:** One infinitesimal symmetry of the chart gives one operator Θ.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** The Cartier–Witt stack WCart is the prismatization of Spf ℤₚ, and its sheaves are prismatic crystals over ℤₚ. Its closed part WCartₙ is cut out by Iⁿ, where I is the ideal of the universal prism. Zeyu Liu uses a chart ρ from Spf ℤₚ\[\[λ\]\]/λⁿ and an automorphism of ρ over the dual numbers. Its derivative is an operator Θ on ρ\*ℰ with Θ(λⁱx) = iλⁱx + λⁱΘ(x).
+
+**Problem.** For n ≤ p, sending ℰ to (ρ\*ℰ, Θ) is fully faithful, meaning it is bijective on maps. Its image is the ℤₚ-complete objects on which Θᵖ − Θ is locally nilpotent modulo p. Cohomology on WCartₙ is the fibre of Θ.
+
+**How the definition helps.** The chart has one infinitesimal symmetry, so descent data reduce to the single operator Θ (our own summary). For n = 1, let 𝔽 have p² elements, and let Θ multiply W(𝔽) by a Teichmüller root of unity of order p² − 1 (our own). Modulo p, Θᵖ − Θ is then multiplication by a non-zero element of 𝔽, so the condition excludes it. The work went into building the automorphism of ρ, which needs n ≤ p.
+
+**Paper or page:** [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051). It says: “Let n≤p, then for any ℰ∈𝒟(WCart<sub>n</sub>), the natural morphism RΓ(WCart<sub>n</sub>, ℰ)→ρ<sup>\*ℰ</sup> induces a canonical identification RΓ(WCart<sub>n</sub>, ℰ)=fib(ρ<sup>\*ℰ</sup> →Θ\_ℰ ρ<sup>\*ℰ</sup>).”
+
+**Sources:**
+
+- [Zeyu Liu, On the prismatization of 𝒪K beyond the Hodge-Tate locus, preprint (2024), arXiv:2409.02051](https://arxiv.org/abs/2409.02051)
+- [B. Bhatt and J. Lurie, Absolute prismatic cohomology, preprint (2022), arXiv:2201.06120](https://arxiv.org/abs/2201.06120)
+
+### A weakly final object turns prismatic cohomology into a Čech complex
+
+**Remember:** One weakly final object and products give a Čech complex.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 18F10. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An object X of a category is weakly final when every object Y has at least one map Y → X. Maps in the prismatic site are prism maps in the opposite direction, so here X is a prism that maps to every prism over R. The site uses the indiscrete topology, so its cohomology is the cohomology of a presheaf on a category.
+
+**Problem.** In a category with finite nonempty products and a weakly final X, the Čech complex ℱ(X) → ℱ(X × X) → ⋯ computes presheaf cohomology. So the prismatic cohomology of a smooth algebra is an explicit complex of rings.
+
+**How the definition helps.** Weak finality makes the Čech nerve of X a resolution of the terminal presheaf, so no covering families are needed. A final object would give the cohomology as ℱ(X) at once, but the prismatic site of a smooth algebra usually has none (our own remark). The quoted lemma writes the condition with arrows read as prism maps (our own reading). The work moves into building X and its self-products, which are prismatic envelopes of polynomial δ-algebras (our own summary).
+
+**Paper or page:** [Overconvergent prismatic cohomology](https://arxiv.org/abs/2308.09423), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024). It says: “Assume there exists a weakly final object X∈𝒞, i.e. Hom(X,Y)≠0 for all Y∈𝒞. Then RΓ(𝒞,ℱ) is computed by the chain complex (the totalisation of) attached to ℱ(X)→ℱ(X×X)⇉ℱ(X×X×X)”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [Overconvergent prismatic cohomology, arXiv preprint 2308.09423 (2023)](https://arxiv.org/abs/2308.09423)
+
+### Ainf-cohomology agrees with étale cohomology after inverting μ
+
+**Remember:** Décalage only rescales by powers of μ, so inverting μ undoes it.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fontaine's ring Ainf = W(𝒪♭) is built from the ring of integers 𝒪 of a complete algebraically closed field C. Ainf-cohomology is AΩ = Lη(μ) Rν∗Ainf, the décalage along μ = \[ε\] − 1 of the pushforward of the pro-étale sheaf Ainf. Here ε is a compatible system of p-power roots of unity, and Gaisin and Koshikawa use the same definition for a smooth map.
+
+**Problem.** Let f : 𝔛 → 𝔜 be a proper smooth map of flat p-adic formal schemes, locally of finite type over 𝒪. After inverting μ, relative Ainf-cohomology is the relative p-adic étale cohomology of the generic fibres, tensored with the sheaf Ainf on 𝔜 with μ inverted.
+
+**How the definition helps.** AΩ is defined from the étale side, so after inverting μ only the décalage must be undone, and inverting μ undoes it. In degree i the décalage lies between μⁱ⁺¹ and μⁱ times the original terms (Lemma 3.10 of Gaisin–Koshikawa). The rest is a relative primitive comparison theorem, true up to modules killed by W(𝔪♭) = ker(Ainf → W(k)), which contains μ (our own). A definition by the q-de Rham complex would instead make this comparison hard and the de Rham comparison easy (our own).
+
+**Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983). It says: “Let 𝔛 and 𝔜 be flat p-adic formal schemes locally of finite type over 𝒪, and let f : 𝔛 → 𝔜 be a proper smooth morphism. Then RΓ<sub>A<sub>inf</sub></sub>(𝔛/𝔜) ⊗ᴸ<sub>A<sub>inf</sub></sub> A<sub>inf</sub>\[1/μ\] ≅ RΓ<sub>A<sub>inf</sub></sub>(𝔛/𝔜)<sup>∧</sup> ⊗ᴸ<sub>A<sub>inf</sub></sub> A<sub>inf</sub>\[1/μ\] ≅ Rf<sub>η, proét\*</sub>Ẑ<sub>p</sub> ⊗ᴸ<sub>Ẑ<sub>p</sub></sub> 𝔸<sub>inf,Y</sub>\[1/μ\]”
+
+**Sources:**
+
+- [Ildar Gaisin and Teruhisa Koshikawa, Relative Ainf-cohomology, arXiv:2206.07983 (2022)](https://arxiv.org/abs/2206.07983)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
+### Breuil–Kisin Frobenius structure bounds crystalline torsion by étale torsion
+
+**Remember:** A Frobenius with F∘V = Eⁱ limits how much u-torsion appears.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let K be discretely valued with perfect residue field k and ramification index e, and let C be the completion of K̄. Breuil–Kisin prismatic cohomology lives over 𝔖 = W(k)\[\[u\]\], a ring with a Frobenius lift, with E an Eisenstein polynomial of degree e. Each cohomology group 𝔐ⁱ has maps F from its Frobenius twist to 𝔐ⁱ and V back, with F∘V = V∘F = Eⁱ.
+
+**Problem.** Let 𝒳 be a smooth proper formal scheme over the integers of K, and let i &gt; 0. If pᵐ kills the torsion of étale Hⁱ(𝒳C, Zₚ), then pᵐ⁺ᶜ kills that of crystalline Hⁱ(𝒳k/W(k)), where c depends only on e and i.
+
+**How the definition helps.** F and V exclude modules with large u-power torsion, which the étale side cannot see but the crystalline side, where u goes to 0, can. For 𝔖/(u, pᴺ), V must land in uᵖ⁻¹ times the Frobenius twist, which F kills, so Eⁱ = F∘V is zero (our own check). Since Eⁱ acts there as pⁱ times a unit, this forces N ≤ i. For cohomology, F and V force p to a power bounded by e and i to kill the u-power torsion (source, Theorem 4.3).
+
+**Paper or page:** [Bounding crystalline torsion from étale torsion](https://arxiv.org/abs/2506.13543). It says: “There exists a constant c(e, i) depending only on ramification index e and cohomological degree i &gt; 0, such that if the Hⁱ\_ét(𝒳<sub>C</sub>, ℤ<sub>p</sub>)<sub>tors</sub> is annihilated by pᵐ, then the Hⁱ<sub>crys</sub>(𝒳<sub>k</sub>/W)<sub>tors</sub> is annihilated by p<sup>m+c</sup>.”
+
+**Sources:**
+
+- [Bounding crystalline torsion from étale torsion, arXiv:2506.13543 (2025)](https://arxiv.org/abs/2506.13543)
+
+### Crystalline prisms make the crystalline comparison a statement about one complex
+
+**Remember:** Over a crystalline prism, Frobenius-twisted prismatic cohomology is crystalline cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A prism is a δ-ring A with an ideal I such that A is complete for p and I, I defines a Cartier divisor, and p ∈ I + φ(I)A. A crystalline prism is a prism with I = (p), so A has no p-torsion and A/p has characteristic p. Then (p) has canonical divided powers pⁿ/n!, so crystalline cohomology over A makes sense.
+
+**Problem.** Let (A, (p)) be a crystalline prism and R a smooth A/p-algebra. The completed Frobenius pullback of the prismatic cohomology of R is the crystalline cohomology of R over A, compatibly with Frobenius.
+
+**How the definition helps.** With I = (p), prismatic and crystalline cohomology live over the same ring A, so one can compare them directly. Both sides are computed by Čech–Alexander complexes, and the Frobenius-twisted prismatic envelopes in them are divided power envelopes (our own summary). A δ-structure forces this: adjoining φ(f)/p adjoins fᵖ/p, and then all divided powers of f (our own sketch). Li and Liu extend the comparison to prisms whose ideal I carries divided powers.
+
+**nLab:** [prismatic cohomology](https://ncatlab.org/nlab/show/prismatic+cohomology). It says: “Let A,(p) be a bounded prism and let R be a smooth A/p-algebra. There exists a canonical isomorphism φ<sub>A</sub><sup>\*Δ<sub>R</sup>/A</sub><sup>∧</sup> ≅ RΓ<sub>crys</sub>(R/A) in D(A), compatible with the action of Frobenius on both sides.”
+
+**Paper or page:** [Comparison of prismatic cohomology and derived de Rham cohomology](https://arxiv.org/abs/2012.14064). It says: “Let (A,I,γ) be a bounded PD prism. Then for any p-completely smooth A/I-algebra R, there is a natural isomorphism in CAlg(A): RΓ\_Δ(R/A) ⊗̂<sub>A,φ<sub>A</sub></sub> A ≅ RΓ<sub>crys</sub>(R/(A,I,γ)),”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022) 1135–1275](https://doi.org/10.4007/annals.2022.196.3.5)
+- [S. Li and T. Liu, Comparison of prismatic cohomology and derived de Rham cohomology, arXiv preprint 2012.14064](https://arxiv.org/abs/2012.14064)
+
+### Décalage along ζₚ − 1 turns Hodge–Tate cohomology into twisted differential forms
+
+**Remember:** Décalage removes the junk torsion, leaving differential forms.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** The Hodge–Tate complex is Ω̃ = Lη(ζₚ − 1) Rν∗Ô⁺. It is the décalage along ζₚ − 1 of the pushforward of the completed integral structure sheaf. Here {−i} is the Breuil–Kisin–Fargues twist, a free rank-one module that agrees with the Tate twist (−i) after inverting p (our own gloss).
+
+**Problem.** For a smooth map 𝔛 → 𝔜 of formal schemes over 𝒪, Hⁱ(Ω̃) is canonically the i-forms twisted by {−i}, up to almost zero modules. These are modules killed by the maximal ideal of 𝒪, and the error vanishes when 𝔜 is locally of finite type.
+
+**How the definition helps.** Décalage along ζₚ − 1 deletes exactly the part of Hⁱ(Rν∗Ô⁺) killed by ζₚ − 1, which is the unwanted part. Faltings' local computation shows that Hⁱ(Rν∗Ô⁺) is almost a twist of the i-forms plus such torsion (our own summary). Décalage along I tensors the torsion-free part of Hⁱ with the i-th power of I (Stacks Lemma 20.55.5), and {−i} absorbs it. The work moves into Faltings' computation, while Theorem 5.2 of Gaisin–Koshikawa links Ω̃ to AΩ.
+
+**Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Cohomology](https://stacks.math.columbia.edu/tag/0F8N). It says: “induces an Ô⁺ᵃ<sub>D</sub>-module identification q\*Ωⁱ<sub>𝔛/𝔜</sub>{−i}ᵃ → Hⁱ(Ω̃<sub>𝔛/𝔜</sub>)ᵃ, for every i ≥ 0. If in addition 𝔜 is locally of finite type over 𝒪, then the almost can be dropped.”
+
+**Sources:**
+
+- [Ildar Gaisin and Teruhisa Koshikawa, Relative Ainf-cohomology, arXiv:2206.07983 (2022)](https://arxiv.org/abs/2206.07983)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
+### Décalage along μ turns perfectoid torus cohomology into the q-de Rham complex
+
+**Remember:** Fractional exponents give μ-torsion, and décalage along μ deletes it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let R be a small smooth algebra with coordinates, and R∞ the perfectoid algebra got by adjoining all p-power roots of the coordinates. The group Zₚᵈ acts on Ainf(R∞), and the q-de Rham complex is the Koszul complex of the q-derivatives in the coordinates. W(𝔪♭) is the kernel of the map Ainf → W(k).
+
+**Problem.** Locally, Lη(μ) of the continuous group cohomology of Zₚᵈ acting on Ainf(R∞) maps to Ainf-cohomology, with a cone whose cohomology is killed by W(𝔪♭). This décalage of group cohomology is the q-de Rham complex of the lift of R to Ainf.
+
+**How the definition helps.** Décalage along μ makes acyclic every summand whose cohomology is killed by μ. The group cohomology splits by exponent, and each non-integral exponent gives such a summand (our own). On the integral exponents, the Koszul complex of the operators γᵢ − 1, divided by μ, is the q-de Rham complex (our own, following Bhatt–Morrow–Scholze). The work moves into the almost purity theorem, which makes the edge map from group cohomology an isomorphism up to W(𝔪♭).
+
+**Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983). It says: “such that the cohomology groups of Cone(Lη\_μ(e)) are killed by W(𝔪♭) ⊂ A<sub>inf</sub>. Moreover if (R<sub>∞</sub>\[1/p\])° = R<sub>∞</sub>, then this morphism is an isomorphism.”
+
+**Sources:**
+
+- [Ildar Gaisin and Teruhisa Koshikawa, Relative Ainf-cohomology, arXiv:2206.07983 (2022)](https://arxiv.org/abs/2206.07983)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
+### Décalage is multiplicative, which gives the Frobenius structure on Ainf-cohomology
+
+**Remember:** Décalage along fg is décalage along g, then along f.
+
+*True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13D09. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** For a complex M whose terms have no f-torsion, the décalage ηf M is the subcomplex {x ∈ fⁱMⁱ : dx ∈ fⁱ⁺¹Mⁱ⁺¹} of M\[1/f\]. Ainf-cohomology is AΩ = Lη(μ) Rν∗Ainf, the décalage along μ of the sheaf Ainf pushed from the pro-étale to the Zariski site. Here Ainf = W(𝒪♭) is Fontaine's period ring, and μ = \[ε\] − 1 for a compatible system ε of p-power roots of unity.
+
+**Problem.** If fg is a nonzerodivisor on every term of M, then ηf ηg M = ηfg M. So the Frobenius φ of Ainf gives an isomorphism from the Frobenius twist of AΩ onto Lη(ξ̃) AΩ, where ξ̃ = φ(μ)/μ.
+
+**How the definition helps.** Because décalage is multiplicative, the Frobenius structure on AΩ follows from its definition, with no local coordinates. The Frobenius φ is an automorphism of Ainf and of the sheaf Ainf, and φ(μ) = μ·ξ̃. So the Frobenius twist of Lη(μ) Rν∗Ainf is Lη(φ(μ)) Rν∗Ainf, which is Lη(ξ̃) AΩ (our own summary of the argument). A definition by local q-de Rham complexes would need a Frobenius built in coordinates and checked to be independent of them (our own).
+
+**Paper or page:** [More Algebra](https://stacks.math.columbia.edu/tag/0F7U). It says: “Let M• be a complex of A-modules such that fg is a nonzerodivisor on all Mⁱ. Then η<sub>f</sub>η<sub>gM•</sub> = η<sub>fgM•</sub>.”
+
+**Sources:**
+
+- [The Stacks Project, Tag 0F7U](https://stacks.math.columbia.edu/tag/0F7U)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
+### Filtered prismatization turns the Nygaard filtration into a pushforward
+
+**Remember:** A filtration is a sheaf on 𝔸¹/𝔾ₘ, so push forward.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let X be a p-adic formal scheme. Its filtered prismatization, built from filtered Cartier–Witt divisors, is a stack with a map t to 𝔸¹/𝔾ₘ, the quotient of the affine line by scaling. Quasi-coherent sheaves on 𝔸¹/𝔾ₘ are filtered complexes, by the Rees construction. The Nygaard filtration is a filtration on absolute prismatic cohomology, the cohomology over all prisms of X, defined using Frobenius (our own gloss).
+
+**Problem.** Let X be bounded, p-quasisyntomic, quasi-compact and quasi-separated. Pushing the structure sheaf of its filtered prismatization along t gives its Nygaard-filtered absolute prismatic cohomology.
+
+**How the definition helps.** The map to 𝔸¹/𝔾ₘ stores a filtration as a sheaf, so the Nygaard filtration becomes the pushforward of one structure sheaf. Functoriality and multiplicativity of the filtration then come from pushforward (our own). The work went into identifying this pushforward, which Hauck states as a theorem.
+
+**nLab:** [prismatization](https://ncatlab.org/nlab/show/prismatization). It says: “The filtered prismatization of X is the stack X<sup>𝒩</sup> over ℤ<sub>p</sub><sup>𝒩</sup> obtained via transmutation from 𝔾<sub>a</sub><sup>𝒩→ℤ<sub>p</sub>^𝒩</sup>”
+
+**Paper or page:** [An arithmetic étale-crystalline comparison with coefficients in crystalline local systems](https://arxiv.org/abs/2505.03294), [An arithmetic étale-crystalline comparison with coefficients in crystalline local systems](https://arxiv.org/abs/2505.03294). It says: “Let X be a bounded p-adic formal scheme. Assume that X is p-quasisyntomic and qcqs. Then t<sub>X</sub>,\* 𝒪<sub>X</sub><sup>N</sup> identifies with Fil<sup>•<sub>N</sub></sup> RΓ\_Δ(X) in 𝒟𝓕̂(ℤ<sub>p</sub>) under the Rees equivalence.”
+
+**Sources:**
+
+- [M. Hauck, An arithmetic étale-crystalline comparison with coefficients in crystalline local systems, preprint (2025), arXiv:2505.03294](https://arxiv.org/abs/2505.03294)
+- [B. Bhatt and J. Lurie, Absolute prismatic cohomology, preprint (2022), arXiv:2201.06120](https://arxiv.org/abs/2201.06120)
+
 ### Frobenius perfection is universal
 
 **Remember:** First invert Frobenius, then complete so maps still land in prisms.
@@ -3338,6 +4158,79 @@ $$”
 
 - [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105v4)
 - [Bhargav Bhatt and Peter Scholze, Prisms and Prismatic Cohomology (2022)](https://doi.org/10.4007/annals.2022.196.3.5)
+
+### Hodge–Tate crystals over p-adic integers have cohomology in degrees 0 and 1
+
+**Remember:** One operator θ, so cohomology is the two-term complex of θ.
+
+*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S25. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let 𝒪 be the integers of a finite extension of ℚₚ. A Hodge–Tate crystal gives a finite projective A/I-module on each prism (A, I) over 𝒪, compatibly with base change. Gao, Min and Wang evaluate it at the Breuil–Kisin prism. This gives an 𝒪-module M and an endomorphism θ with a smallness condition.
+
+**Problem.** For a Hodge–Tate crystal with pair (M, θ), prismatic cohomology is the complex M → M given by θ, so it vanishes above degree 1. Crystals with full prismatic coefficients also have no cohomology above degree 1.
+
+**How the definition helps.** The gluing data along the Breuil–Kisin prism reduce to one operator, so cohomology is the cone of one map. Theorem 4.5 states this two-term complex, and Theorem 1.11 states the vanishing for full coefficients. The work went into computing the self-products of the Breuil–Kisin prism, where the gluing data become one operator (our own summary).
+
+**Paper or page:** [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024). It says: “Let 𝕄 ∈ Vect((𝒪<sub>K</sub>)\_Δ,\*, 𝒪\_Δ) (a such object is called a crystal). Then H<sup>i</sup>((𝒪<sub>K</sub>)\_Δ, 𝕄) = 0, ∀ i ≥ 2”
+
+**Sources:**
+
+- [H. Gao, Y. Min and Y. Wang, Hodge–Tate prismatic crystals and Sen theory, preprint (2023), arXiv:2311.07024](https://arxiv.org/abs/2311.07024)
+
+### Laurent F-crystals are étale ℤₚ-local systems on the generic fibre
+
+**Remember:** Invert I, keep Frobenius invertible, and you get étale local systems.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11F80, 14G45. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let X be a bounded p-adic formal scheme. A prism (A, I) of X is a ring A with a Frobenius lift and an ideal I, with a map from Spf(A/I) to X. A Laurent F-crystal gives, on each prism, a finite projective module over A\[1/I\] completed at p, compatible with base change. Its Frobenius is semilinear with invertible linearization.
+
+**Problem.** Laurent F-crystals on X are equivalent to ℤₚ-local systems on the adic generic fibre of X. These are étale sheaves of finite free ℤₚ-modules, a family version of Galois representations.
+
+**How the definition helps.** The definition uses every prism and no tower or coordinates, so it makes sense for every bounded X. On a perfect prism, the completed A\[1/I\] is the Witt vector ring of a perfect ring of characteristic p (our own). There, Katz's Artin–Schreier–Witt theory matches étale φ-modules with local systems (our own). The work went into the Bhatt–Scholze proof, which reduces to perfect prisms (our own summary).
+
+**Paper or page:** [Prismatic F-crystals and Lubin-Tate (φq,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “Let X be a bounded formal scheme adic over Spf ℤ<sub>p</sub> with adic generic fiber X\_η. Then there is an equivalence Vect(X\_Δ, 𝒪\_Δ\[1/ℐ\]<sup>∧\_</sup>(p))<sup>φ = 1</sup> ≃ Loc\_ℤ<sub>p</sub>(X\_η).”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prismatic F-crystals and crystalline Galois representations, Cambridge Journal of Mathematics 11 (2023)](https://doi.org/10.4310/cjm.2023.v11.n2.a3)
+
+### Locally filtered free F-crystals are exactly vector bundles on the syntomification
+
+**Remember:** F-gauges are F-crystals whose Nygaard filtration has a local basis.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11F80. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let W be the Witt vectors of a perfect field, and 𝔛 a base formal W-scheme, a class of smooth formal schemes (our own reading). A prismatic F-crystal gives a module with Frobenius on each prism (A, I) of 𝔛, a ring with a Frobenius lift and an ideal. It is locally filtered free when its Nygaard filtration, by where Frobenius lands in powers of I, is locally free (our own gloss). The syntomification is a stack of Drinfeld and of Bhatt and Lurie, whose vector bundles are F-gauges.
+
+**Problem.** For a base formal W-scheme 𝔛, forgetting is an equivalence from F-gauges to locally filtered free prismatic F-crystals. It is bi-exact, meaning that it and its inverse keep exact sequences exact. Effective F-crystals of height at most p − 2 are automatically locally filtered free.
+
+**How the definition helps.** The condition asks the Nygaard filtration to have a local basis, which is the extra structure an F-gauge records. So F-gauges become an explicit condition on crystals. The height bound p − 2 lets Imai, Kato and Youcis check this condition directly (Proposition 3.3).
+
+**Paper or page:** [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282), [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282), [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282). It says: “The equivalence R\_𝔛: 𝐕𝐞𝐜𝐭(𝔛<sup>syn</sup>) ⥲ 𝐕𝐞𝐜𝐭<sup>φ,lff</sup>(𝔛\_Δ) given by the forgetful functor is bi-exact.”
+
+**Sources:**
+
+- [N. Imai, H. Kato and A. Youcis, An integral analogue of Fontaine's crystalline functor, preprint (2025), arXiv:2504.16282](https://arxiv.org/abs/2504.16282)
+
+### One Ainf-cohomology shows étale torsion is at most crystalline torsion
+
+**Remember:** Torsion can only grow from the étale end to the crystalline end.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let C be a complete algebraically closed field, such as the completion of K̄, with ring of integers 𝒪. For a smooth proper formal scheme over 𝒪, Ainf-cohomology RΓ(Ainf) is RΓ(Lη(μ) Rν∗Ainf), a perfect complex over Fontaine's ring Ainf. Its cohomology groups are Breuil–Kisin–Fargues modules: finitely presented Ainf-modules with a Frobenius that become free after inverting p.
+
+**Problem.** Let 𝒳 be a smooth proper formal scheme over the integers of a p-adic field K, with perfect residue field k. The torsion in étale Hⁱ of the geometric generic fibre has length at most that of the torsion in crystalline Hⁱ(𝒳k/W(k)).
+
+**How the definition helps.** After base change to 𝒪, one object RΓ(Ainf) specializes to both cohomologies, so the inequality concerns one module. Inverting μ gives étale cohomology tensored with Ainf\[1/μ\], and base change to W(k̄) gives crystalline cohomology. For a Breuil–Kisin–Fargues module, the torsion length can only grow at the closed point (our own summary of Bhatt–Morrow–Scholze). The work moves into the étale and crystalline comparison theorems for RΓ(Ainf).
+
+**Paper or page:** [Bounding crystalline torsion from étale torsion](https://arxiv.org/abs/2506.13543). It says: “There is an inequality length(Hⁱ\_ét(𝒳<sub>K</sub>̄, ℤ<sub>p</sub>)<sub>tors</sub>) ≤ length(Hⁱ<sub>crys</sub>(𝒳<sub>k</sub>/W(k))<sub>tors</sub>). In particular, if Hⁱ<sub>crys</sub>(𝒳<sub>k</sub>/W(k))<sub>tors</sub> = 0, then Hⁱ\_ét(𝒳<sub>K</sub>̄, ℤ<sub>p</sub>)<sub>tors</sub> = 0.”
+
+**Sources:**
+
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+- [Bounding crystalline torsion from étale torsion, arXiv:2506.13543 (2025)](https://arxiv.org/abs/2506.13543)
 
 ### Overconvergence gives the affine line primitives
 
@@ -3374,6 +4267,102 @@ $$”
 **Sources:**
 
 - [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447v1)
+
+### Prismatic Dieudonné crystals classify p-divisible groups over quasi-syntomic rings
+
+**Remember:** One crystal on all prisms replaces many Dieudonné theories.
+
+*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A p-divisible group is a direct system of finite flat group schemes, like the p-power torsion of an abelian variety. A prism (A, I) is a ring with a Frobenius lift and an ideal I. A prismatic Dieudonné crystal gives a module with Frobenius on each prism over R, with linearized Frobenius cokernel killed by I. R is quasi-syntomic, a condition that holds for smooth algebras and perfectoid rings (our own gloss).
+
+**Problem.** For quasi-syntomic R, sending a p-divisible group to its prismatic Dieudonné crystal is contravariant and fully faithful, meaning bijective on maps. It is an anti-equivalence, an equivalence that reverses arrows, when R has a quasi-syntomic cover by a perfectoid ring.
+
+**How the definition helps.** One definition works over every quasi-syntomic base, so one theorem covers bases that earlier Dieudonné theories treated one at a time. Over perfectoid rings its value at Fontaine's prism agrees with the Scholze–Weinstein and Lau modules. The work went into the Anschütz–Le Bras proof, which descends from quasiregular semiperfectoid rings (our own summary).
+
+**Wikipedia:** [Dieudonné module](https://en.wikipedia.org/wiki/Dieudonn%C3%A9_module). It says: “Very recently, the notion of prismatic cohomology (due to Bhatt and Scholze) has been used by Anschütz-Le Bras, Madapusi-Mondal, and Mondal to obtain generalisations of the notion of Dieudonné crystal in mixed characteristic.”
+
+**Paper or page:** [The prismatic realization functor for Shimura varieties of abelian type](https://arxiv.org/abs/2310.08472), [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282). It says: “The functor ℳ\_Δ defines a contravariant fully faithful embedding ℳ\_Δ: 𝐁𝐓<sub>p</sub>(R) → 𝐕𝐞𝐜𝐭<sup>φ\_</sup>\[0,1\](R\_Δ), which is an anti-equivalence if R admits a quasi-syntomic cover R → R̃ with R̃ perfectoid.”
+
+**Sources:**
+
+- [J. Anschütz and A.-C. Le Bras, Prismatic Dieudonné theory, Forum of Mathematics, Pi 11 (2023) e2](https://doi.org/10.1017/fmp.2022.22)
+
+### Quasiregular semiperfectoid rings give prismatic sites a final object
+
+**Remember:** For quasiregular semiperfectoid rings, prismatic cohomology is just one prism.
+
+*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A ring R is quasiregular semiperfectoid if it is p-complete with bounded p-power torsion, receives a map from a perfectoid ring, and has R/p semiperfect. Also its cotangent complex over ℤₚ (the derived module of differentials) must be, after p-completion, a flat module placed in degree −1. Examples are quotients of perfectoid rings by regular sequences, such as the ring of integers of an algebraically closed perfectoid field modulo p.
+
+**Problem.** Let (A, I) be a perfect prism and R a quasiregular semiperfectoid A/I-algebra. Then the prismatic cohomology Δ(R/A) is a ring in degree 0. It is a prism over (A, I), and it is the final object of the prismatic site of R.
+
+**How the definition helps.** On a site with a final object, a sheaf's cohomology is its value there, so prismatic cohomology becomes the single ring Δ(R/A). The conditions on R make Δ(R/A)/I a flat module in degree 0, and this forces Δ(R/A) to be discrete (our own summary). The work goes into the Hodge–Tate comparison and the construction of prismatic envelopes, in Bhatt and Scholze's Proposition 7.10. Every quasisyntomic ring has a cover by such rings, so prismatic cohomology of other rings is computed by descent from them.
+
+**Paper or page:** [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447). It says: “Then Δ<sub>R</sub>/A is discrete and naturally admits the structure of a prism over (A,I). Moreover, it is the final object in the relative (or absolute) prismatic site of R.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022)](https://doi.org/10.4007/annals.2022.196.3.5)
+
+### Sheaves on the Cartier–Witt stack are prismatic crystals
+
+**Remember:** Each prism is a point of the stack, so sheaves are crystals.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23, 14A30. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let X be a quasi-syntomic p-adic formal scheme, a mild flatness condition (our own gloss). On a ring R with p nilpotent, a Cartier–Witt divisor is an invertible W(R)-module I with a map to W(R), subject to two conditions. The prismatization of X, due to Drinfeld and to Bhatt and Lurie, sends R to such divisors with a map from Spec W(R)/I to X. A prismatic crystal is a compatible family of complete complexes over A, for all prisms (A, I) of X.
+
+**Problem.** Quasi-coherent complexes on the prismatization of X are the same as prismatic crystals on X. The same holds over A/Iⁿ, for the closed part cut out by Iⁿ.
+
+**How the definition helps.** Each prism of X is a point of the prismatization, so a sheaf on it is a crystal almost by definition. A prism (A, I) gives a ring map from A to W(A), and I pulls back to a Cartier–Witt divisor (our own). So a sheaf restricts to a compatible family of modules over the prisms, which is a crystal on the prismatic site. The work went into the converse, a flat descent result of Bhatt and Lurie for quasi-syntomic X (our own summary).
+
+**nLab:** [prismatization](https://ncatlab.org/nlab/show/prismatization), [prismatic cohomology](https://ncatlab.org/nlab/show/prismatic+cohomology). It says: “When X is quasi-syntomic, one can identify the ∞-category of crystals of (p,I\_Δ)-complete complexes on (X\_Δ,𝒪\_Δ) with the derived ∞-category of quasi-coherent sheaves on WCart<sub>X</sub>”
+
+**Paper or page:** [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051). It says: “Assume that X is a quasi-syntomic p-adic formal scheme, then there is an equivalence 𝒟<sub>qc</sub>(X<sub>n</sub><sup>Δ</sup>) ⥲ lim\_(A, I)∈X\_Δ 𝒟̂(A/I<sup>n</sup>) =: 𝒟<sub>crys</sub>(X\_Δ, 𝒪\_Δ/ℐ\_Δ<sup>n</sup>) of symmetric monoidal stable ∞-categories.”
+
+**Sources:**
+
+- [B. Bhatt and J. Lurie, Absolute prismatic cohomology, preprint (2022), arXiv:2201.06120](https://arxiv.org/abs/2201.06120)
+- [V. Drinfeld, Prismatization, Selecta Mathematica (2024)](https://doi.org/10.1007/s00029-024-00937-3)
+- [B. Bhatt, Algebraic geometry in mixed characteristic, preprint (2021), arXiv:2112.12010](https://arxiv.org/abs/2112.12010)
+
+### Syntomic cohomology is the fiber of canonical minus Frobenius
+
+**Remember:** Syntomic cohomology: degree-zero piece, compared by inclusion and by Frobenius.
+
+*True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 19D55. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Over 𝔽p, a perfect prismatic F-gauge M is a graded module with pieces Mⁱ. It has two operators t and u that move the degree. Inverting t gives M\[1/t\], inverting u gives M\[1/u\], and a Frobenius φ identifies M\[1/u\] with M\[1/t\]. Syntomic cohomology is cohomology on the syntomification, the stack whose sheaves are F-gauges.
+
+**Problem.** For a perfect prismatic F-gauge M, the syntomic cohomology RΓsyn(M) is the fiber of a map from M⁰ to M\[1/t\]. This map is the canonical map to M\[1/t\] minus φ applied after the canonical map to M\[1/u\].
+
+**How the definition helps.** The syntomification is glued from the filtered prismatization along two maps, so its global sections are the fiber of canonical map minus Frobenius for every F-gauge (our own summary). For the Breuil–Kisin twist, M⁰ is the n-th Nygaard piece and M\[1/t\] is prismatic cohomology. Then the formula gives the syntomic complex ℤp(n), which Bhatt, Morrow and Scholze defined directly as such a fiber (our own). The work moves into identifying cohomology of the filtered prismatization with Nygaard-filtered prismatic cohomology (our own).
+
+**Paper or page:** [Special Values without Semi-Simplicity Via K-Theory](https://arxiv.org/abs/2404.18367). It says: “the syntomic cohomology of a given M ∈ F-Gauge<sup>perf\_Δ</sup> is computed by RΓ<sub>syn</sub>(M) = fib(M⁰ —(t<sup>∞</sup> − φ∘u<sup>∞</sup>)→ M\[1/t\])”
+
+**Sources:**
+
+- [Logan Hyslop, Special Values without Semi-Simplicity Via K-Theory, arXiv:2404.18367 (2025)](https://arxiv.org/abs/2404.18367)
+
+### Truncated Barsotti–Tate groups are bundles on the syntomification
+
+**Remember:** Weights zero and one on the syntomic stack give truncated p-divisible groups.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** The syntomification Xˢʸⁿ of a p-adic formal scheme X is a stack built by Drinfeld and by Bhatt and Lurie. Its vector bundles are called F-gauges, and its cohomology is syntomic cohomology. A bundle has Hodge–Tate weights, integers read off from its restriction to a special locus (our own summary). An n-truncated Barsotti–Tate group is a finite flat group scheme that behaves like the pⁿ-torsion of a p-divisible group.
+
+**Problem.** Let X be one of the p-adic formal schemes treated in the paper. Then n-truncated Barsotti–Tate groups over X are equivalent to vector bundles on Xˢʸⁿ ⊗ ℤ/pⁿ with Hodge–Tate weights 0 and 1. The equivalence is compatible with Cartier duality.
+
+**How the definition helps.** The stack Xˢʸⁿ gives one category in which Dieudonné-type data live for every n and every base. The group attached to a bundle M is explicit: its points over C are truncated syntomic cohomology of C with coefficients in M. So the work moves into showing that this functor is represented by a truncated Barsotti–Tate group, which is Theorem C of the paper. The weights 0 and 1 match the two Hodge–Tate weights of p-divisible groups (our own).
+
+**Paper or page:** [An algebraicity conjecture of Drinfeld and the moduli of p-divisible groups](https://arxiv.org/abs/2412.10226), [An algebraicity conjecture of Drinfeld and the moduli of p-divisible groups](https://arxiv.org/abs/2412.10226). It says: “Then there is a canonical equivalence of categories 𝒢ₙ : Vect<sub>0,1</sub>(X<sup>syn</sup> ⊗ ℤ/pⁿℤ) ≃→ BTₙ(X) compatible with Cartier duality.”
+
+**Sources:**
+
+- [An algebraicity conjecture of Drinfeld and the moduli of p-divisible groups, arXiv:2412.10226](https://arxiv.org/abs/2412.10226)
 
 ### Augmentation powers bound integral length
 
@@ -3429,6 +4418,25 @@ $$”
 
 - [Ben Moore, The de Rham period map for punctured elliptic curves and the KZB equation](https://arxiv.org/abs/2306.02171)
 
+### Ainf-cohomology specializes to de Rham cohomology at q equal to 1
+
+**Remember:** Set q = 1 in the q-de Rham complex and you get de Rham.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Ainf-cohomology is AΩ = Lη(μ) Rν∗Ainf, with μ = q − 1 where q = \[ε\]. Fontaine's map θ from Ainf onto 𝒪 sends q to 1. Locally, with coordinates, AΩ is the q-de Rham complex, whose differential is the q-derivative (f(qT) − f(T))/(qT − T).
+
+**Problem.** For a smooth map 𝔛 → 𝔜 of formal schemes over 𝒪, AΩ tensored along θ is the de Rham complex, up to almost zero modules. These are modules killed by the maximal ideal of 𝒪, and the error vanishes when 𝔜 is locally of finite type.
+
+**How the definition helps.** The q-de Rham complex deforms the de Rham complex in a variable q, so setting q = 1 gives the de Rham complex. The map θ sends q to 1 and each q-derivative to the ordinary derivative (our own). The work moves into the identification of AΩ with the q-de Rham complex (Theorem 1.3 of Gaisin–Koshikawa). It also moves into a base change step, because Lη(μ) does not commute with tensoring along θ in general (our own).
+
+**Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983). It says: “There is a morphism in D(D, 𝒪) q\*Ω•<sub>𝔛/𝔜</sub> → AΩ<sub>𝔛/𝔜</sub> ⊗ᴸ<sub>A<sub>inf</sub>, θ</sub> 𝒪. whose image in D(D, 𝒪ᵃ) is an almost isomorphism.”
+
+**Sources:**
+
+- [Ildar Gaisin and Teruhisa Koshikawa, Relative Ainf-cohomology, arXiv:2206.07983 (2022)](https://arxiv.org/abs/2206.07983)
+- [Bhargav Bhatt, Matthew Morrow and Peter Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
 ### Defining periods by integrals over semi-algebraic sets makes them a ring
 
 **Remember:** Multiply periods by taking the product of their domains.
@@ -3467,6 +4475,24 @@ $$”
 **Sources:**
 
 - [Kirill Magidson, Divided Powers and Derived De Rham Cohomology, arXiv:2405.05153 (2024)](https://arxiv.org/abs/2405.05153v2)
+
+### Derived de Rham cohomology makes the prismatic de Rham comparison functorial
+
+**Remember:** Derived de Rham works for every algebra, even the quotient A/I.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Derived de Rham cohomology over A extends the de Rham complex from polynomial A-algebras to all A-algebras by resolving with polynomial algebras, then completes p-adically. It needs no smoothness, and we write dR(B/A) for it. A prism (A, I) is a ring A with a Frobenius lift and a special ideal I, and prismatic cohomology is defined over A/I.
+
+**Problem.** Let (A, I) be a bounded prism and X a smooth proper formal scheme over A/I. The Frobenius twist of prismatic cohomology of X, tensored with dR((A/I)/A), is dR(X/A).
+
+**How the definition helps.** Derived de Rham cohomology is defined for every algebra, so the theorem can use it for A/I over A, which is not smooth. Classical de Rham cohomology needs a smooth algebra or a smooth lift, and A → A/I is a quotient map. Here dR((A/I)/A) plays the role of a divided-power envelope of I (our own gloss). The general definition also allows descent from large quasisyntomic algebras, where both sides sit in degree 0 (our own summary of the strategy).
+
+**Paper or page:** [Comparison of prismatic cohomology and derived de Rham cohomology](https://arxiv.org/abs/2012.14064). It says: “Let (A,I) be a bounded prism, and let X be a smooth proper (p-adic) formal scheme over Spf(A/I). Then we have a functorial isomorphism RΓ\_Δ(X/A) ⊗ᴸ<sub>A, φ<sub>A</sub></sub> A ⊗ᴸ<sub>A</sub> dR<sup>∧<sub></sup>(A/I)/A</sub> ≅ RΓ(X, dR<sup>∧<sub>−</sup>/A</sub>),”
+
+**Sources:**
+
+- [Shizhang Li and Tong Liu, Comparison of prismatic cohomology and derived de Rham cohomology, arXiv:2012.14064 (2022)](https://arxiv.org/abs/2012.14064)
 
 ### Derived F-zips exist for every smooth proper map in characteristic p
 
@@ -3560,6 +4586,24 @@ $$”
 **Sources:**
 
 - [Hien and Roucairol, Integral representations for solutions of exponential Gauß-Manin systems](https://doi.org/10.24033/bsmf.2564)
+
+### Sen operator semisimplicity splits the diffracted Hodge complex up to degree p
+
+**Remember:** Eigenvalues −i separate the pieces, and at i = p semisimplicity must do it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Bhatt and Lurie attach to a p-adic formal scheme X its diffracted Hodge complex, with an endomorphism Θ called the Sen operator. Its conjugate filtration has i-th graded piece LΩⁱ\[−i\], built from the cotangent complex, which is Ωⁱ\[−i\] for smooth X. Θ acts on that piece as −i, and Fil p denotes step p of the filtration.
+
+**Problem.** Let X be a smooth formal scheme over W(k), with k perfect of characteristic p and special fibre X₀. If Θ is semisimple on Fil p of the de Rham complex of X₀, then Fil p splits as ⊕ LΩⁱ\[−i\] over i ≤ p.
+
+**How the definition helps.** With Θ, the obstruction to splitting becomes a property of one operator, namely whether it is semisimple. For i &lt; p the values −i are distinct modulo p, so eigenvalues alone split the pieces (our own summary, after Bhatt and Lurie). At i = p the value −p equals 0 modulo p, so semisimplicity is the extra condition needed. Petrov also gives a variety with a lift over W₂(k) whose Sen operator is not semisimple (his Corollary 1.4).
+
+**Paper or page:** [Non-decomposability of the de Rham complex and non-semisimplicity of the Sen operator](https://arxiv.org/abs/2302.11389), [Non-decomposability of the de Rham complex and non-semisimplicity of the Sen operator](https://arxiv.org/abs/2302.11389), [Non-decomposability of the de Rham complex and non-semisimplicity of the Sen operator](https://arxiv.org/abs/2302.11389). It says: “If the Sen operator on Fil<sub>conj</sub><sup>p</sup> dR<sub>X₀</sub> is semi-simple then there exists a decomposition (Fil<sub>conj</sub><sup>p</sup> Ω<sup>DHod<sub>X</sub></sup>, Θ<sub>X</sub>) ≃ ⊕<sub>i=0</sub><sup>p</sup> (LΩⁱ<sub>X</sub>\[−i\], −i)”
+
+**Sources:**
+
+- [Alexander Petrov, Non-decomposability of the de Rham complex and non-semisimplicity of the Sen operator, arXiv:2302.11389 (2025)](https://arxiv.org/abs/2302.11389)
 
 ### Tate inversion extends the period algebra
 
@@ -3669,6 +4713,24 @@ $$”
 **Sources:**
 
 - [Carlo Mazza, Vladimir Voevodsky and Charles Weibel, Lecture Notes on Motivic Cohomology (2006)](https://www.claymath.org/library/monographs/cmim02.pdf)
+
+### Finite coefficients make motivic base change between algebraically closed fields fully faithful
+
+**Remember:** Mod n, enlarging an algebraically closed field adds no new motivic maps.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 19E15, 55P42. arXiv math.AG, math.KT. Level 4: research.
+
+**Definition.** The stable motivic homotopy category SH(F) of Morel and Voevodsky is the homotopy theory of spectra over F in which the affine line is contractible. Its mod-n version SH(F, ℤ/n) computes maps with ℤ/n coefficients.
+
+**Problem.** For an extension E/F of algebraically closed fields of characteristic zero, the base change functor SH(F, ℤ/n) → SH(E, ℤ/n) is fully faithful. This extends Suslin rigidity from K-theory to all motivic spectra.
+
+**How the definition helps.** Finite coefficients remove the divisible groups, such as the unit group Fˣ, that separate two algebraically closed fields. With integer coefficients the functor is not full (our own). Maps from the sphere spectrum to its suspension by the multiplicative group 𝔾ₘ form the group Fˣ here (our own). The map Fˣ → Eˣ is not onto when E is larger (our own). Mod n, only Fˣ/n = 0 and the n-th roots of unity remain, and these agree (our own).
+
+**Wikipedia:** [Rigidity (K-theory)](https://en.wikipedia.org/wiki/Rigidity_%28K-theory%29). It says: “show that the base change functor for the mod-n stable A¹-homotopy category SH(F, ℤ/n) → SH(E, ℤ/n) is fully faithful”
+
+**Sources:**
+
+- [O. Röndigs and P. A. Østvær, Rigidity in motivic homotopy theory, Mathematische Annalen 341 (2008) 651–675](https://doi.org/10.1007/s00208-008-0208-5)
 
 ### Proper motives agree with compact supports
 
@@ -3797,6 +4859,24 @@ $$”
 
 - [Vladimir Voevodsky, On motivic cohomology with ℤ/ℓ coefficients (2011)](https://annals.math.princeton.edu/2011/174-1/p11)
 
+### Arithmetic circle modules give zeta values without semisimplicity
+
+**Remember:** Define the Euler characteristic through K₀, and semisimplicity is no longer needed.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14F30, 11G25. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** An arithmetic C(S¹,R)-module is a module over the cochains on the circle with coefficients in a Dedekind ring R, with finiteness conditions. The circle gives an operator e of degree one with e² = 0. In the application, e is cup product with the Frobenius class in H¹ of 𝔽p (our own). Hyslop computes K₀ of this category and defines a multiplicative Euler characteristic χ(A,e) through it.
+
+**Problem.** For a smooth proper 𝔽p-scheme X and any integer n, the leading term of ζ(X,s) at s = n is ±χ(X,ℤ̂(n),e) times Milne's correction factor. Here the p-part of χ uses syntomic cohomology ℤp(n). Milne proved this assuming Tate's semisimplicity conjecture.
+
+**How the definition helps.** The K₀ definition always gives a number, so the formula can be stated without semisimplicity. The classical Euler characteristic needs the cohomology of e on H∗ to be finite, and without semisimplicity that can fail (our own summary). The new Euler characteristic agrees with the classical one when the classical one is defined. The work moves into lifting syntomic cohomology of F-gauges and ℓ-adic cohomology to arithmetic modules.
+
+**Paper or page:** [Special Values without Semi-Simplicity Via K-Theory](https://arxiv.org/abs/2404.18367), [Special Values without Semi-Simplicity Via K-Theory](https://arxiv.org/abs/2404.18367). It says: “Let X be a smooth proper 𝔽p-scheme. Then, for any integer n, we have that ζ(X,s) ∼ ±χ(X,ℤ̂(n),e)p<sup>χ(X,𝒪<sub>X</sub>,n)</sup>(1−p<sup>n−s</sup>)<sup>−ρₙ</sup> as s → n.”
+
+**Sources:**
+
+- [Logan Hyslop, Special Values without Semi-Simplicity Via K-Theory, arXiv:2404.18367 (2025)](https://arxiv.org/abs/2404.18367)
+
 ### Witt Frobenius handles field extensions
 
 **Remember:** Witt Frobenius keeps the point counts from extensions of degrees divisible by r.
@@ -3850,6 +4930,43 @@ $$”
 **Sources:**
 
 - [Haowen Zhang, Reciprocity obstruction to strong approximation over p-adic function fields, arXiv:2307.08515v1 (2023)](https://arxiv.org/abs/2307.08515v1)
+
+### Dualizable solid modules are perfect complexes, so vector bundles glue
+
+**Remember:** Dualizability is formal, so it glues whenever the module categories glue.
+
+*True by definition. Confidence: medium.* MSC 14G22 (Rigid analytic geometry), 14F06, 46S10. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A Huber pair (A, A⁺) is a Huber ring A, a standard kind of topological ring, with a chosen open subring A⁺ of bounded elements. It defines an affinoid adic space. It has a category of solid modules, and an object is dualizable if it has a dual for the solid tensor product.
+
+**Problem.** For every Huber pair (A, A⁺), the dualizable solid modules are exactly the perfect complexes over A. So perfect complexes and vector bundles glue on adic spaces, which recovers and slightly generalizes the gluing results of Kedlaya and Liu.
+
+**How the definition helps.** Dualizability is defined by the tensor structure alone, so it descends once the whole module categories descend. Descent for solid modules is formal (Proposition 12.18 of the analytic notes), and dualizable objects descend with them. Kedlaya and Liu proved the gluing with explicit estimates on Banach modules (our own). Here the work moves into Theorem 14.9, which identifies dualizable solid modules with perfect complexes; Remark 14.10 adds vector bundles.
+
+**nLab:** [solid module](https://ncatlab.org/nlab/show/solid+module). It says: “Using the notion of adic spaces, we can glue together solid modules”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Analytic Geometry (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019–2020)](https://www.math.uni-bonn.de/people/scholze/Analytic.pdf)
+
+### Solid almost modules give rigid spaces mod p Poincaré duality
+
+**Remember:** Pass from 𝔽ₚ-sheaves to almost modules, where solid six functors exist.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14G22 (Rigid analytic geometry), 14F20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Almost mathematics treats a module killed by the maximal ideal of the ring of integers as zero. Mann's solid almost O⁺/π-modules are solid modules over the integral structure sheaf modulo a small element π, up to almost zero modules.
+
+**Problem.** Let K be algebraically closed of characteristic 0 with residue characteristic p. For a proper smooth rigid-analytic variety X of dimension d over K, cup product pairs Hⁱ(X, 𝔽ₚ) and H²ᵈ⁻ⁱ(X, 𝔽ₚ) perfectly into 𝔽ₚ(−d).
+
+**How the definition helps.** Solid almost modules carry a six-functor formalism, so Poincaré duality becomes a computation of f⁽!⁾ for a smooth map, as in ℓ-adic theory. With p equal to the residue characteristic, étale 𝔽ₚ-sheaves alone give no usable f⁽!⁾ on non-proper spaces (our own). Almost mathematics is needed to make 𝒪⁺/π acyclic on affinoid perfectoid spaces, as the nLab page notes. The work is in Mann's construction of the formalism and of the trace map; Zavyalov proved the same duality earlier by other methods.
+
+**nLab:** [solid module](https://ncatlab.org/nlab/show/solid+module), [six operations](https://ncatlab.org/nlab/show/six+operations). It says: “In Mann22, Mann combines the theory of solid modules with the theory of almost modules to construct the derived ∞-category (in the sense of 1.3.2 of LurieHA) 𝒟□ᵃ(𝒪ₓ⁺/π) of solid 𝒪ₓ⁺/π almost modules and with it the six operations on rigid analytic spaces, in order to prove the following "mod p" version of Poincare duality”
+
+**Sources:**
+
+- [Lucas Mann, A p-adic 6-functor formalism in rigid-analytic geometry, arXiv:2206.02022](https://arxiv.org/abs/2206.02022)
+- [Bogdan Zavyalov, Mod-p Poincaré duality in p-adic analytic geometry, arXiv:2111.01830](https://arxiv.org/abs/2111.01830)
 
 ### Zariski-constructible sheaves give rigid spaces six functors and perverse sheaves
 
@@ -4017,6 +5134,25 @@ $$”
 
 - [Hidekazu Furusho, Pentagon and hexagon equations (2010)](https://annals.math.princeton.edu/wp-content/uploads/annals-v171-n1-p13-p.pdf)
 
+### A principal kernel of θ makes perfectoid rings of characteristic p perfect
+
+**Remember:** Surjective Frobenius alone allows semiperfect rings; principal θ-kernel rules them out.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 13A35. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** Bhatt and Scholze call a ring R integral perfectoid if three things hold. R is π-adically complete for some π with πᵖ dividing p. Frobenius is surjective on R/p. The kernel of Fontaine's map θ from W(R♭) onto R is principal, where W(R♭) is the Witt vector ring of the tilt.
+
+**Problem.** A ring of characteristic p is integral perfectoid if and only if it is perfect.
+
+**How the definition helps.** The principal-kernel condition removes the semiperfect rings that are not perfect. Take R to be 𝔽ₚ\[x\] with all p-power roots of x adjoined, modulo x (our own example). This R has surjective Frobenius, but the p-th root of x is nonzero and its p-th power is 0. Its tilt maps onto R with kernel generated by t, the sequence of p-power roots of x. So ker θ is generated by p and the Teichmüller lift \[t\], and this ideal is not principal (our own). For a perfect ring R we have R♭ = R and ker θ = (p), so the condition holds.
+
+**nLab:** [perfect ring](https://ncatlab.org/nlab/show/perfect+ring). It says: “A ring R of characteristic p is said to be perfect if the Frobenius map φ: R → R is an isomorphism. If instead φ is merely assumed to be surjective, R is said to be semiperfect.”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022)](https://doi.org/10.4007/annals.2022.196.3.5)
+- [B. Bhatt, M. Morrow and P. Scholze, Integral p-adic Hodge theory, Publications Mathématiques de l'IHÉS 128 (2018)](https://doi.org/10.1007/s10240-019-00102-z)
+
 ### Almost modules make the integral structure sheaf acyclic on perfectoid spaces
 
 **Remember:** Ignore anything that the small ideal kills.
@@ -4036,6 +5172,42 @@ $$”
 - [Peter Scholze, Perfectoid spaces, Publ. Math. IHÉS 116 (2012), arXiv:1111.4914](https://arxiv.org/abs/1111.4914)
 - [Lucas Mann, A p-adic 6-functor formalism in rigid-analytic geometry, arXiv:2206.02022](https://arxiv.org/abs/2206.02022)
 
+### As diamonds, a perfectoid space and its tilt are the same
+
+**Remember:** Diamonds only see characteristic p test objects, so tilting changes nothing.
+
+*True by definition.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let X be an analytic adic space over ℤₚ. Its diamond X♢ is a functor on perfectoid spaces T of characteristic p. It sends T to the set, up to isomorphism, of untilts T♯ of T with a map T♯ → X. An untilt of T is a perfectoid space whose tilt is identified with T.
+
+**Problem.** For a perfectoid space X, the diamond X♢ is represented by the tilt X♭. For any analytic adic space X over ℤₚ, the diamond has the same underlying space and the same étale site as X.
+
+**How the definition helps.** By the tilting equivalence, an untilt of T with a map to X is the same as a map from T to X♭. So X♢ = X♭ for perfectoid X (our own summary). Without diamonds one only has an equivalence of categories between spaces over X and over X♭. With diamonds, X and its tilt give literally the same object. For a general X one covers X by perfectoid spaces. The claims about the underlying space and the étale site then follow from the perfectoid case. The work goes into the tilting equivalence and Scholze's theory of v-sheaves.
+
+**Paper or page:** [On the Unipotent p-adic Simpson Correspondence](https://arxiv.org/abs/2403.04565). It says: “The associated diamond functor preserves étaleness, and induces an equivalence of (finite) étale sites X\_ét ≅ X♢\_ét, X<sub>f</sub>ét ≅ X♢<sub>f</sub>ét.”
+
+**Sources:**
+
+- [P. Scholze, Étale cohomology of diamonds (2020)](https://doi.org/10.2139/ssrn.3542189)
+
+### Building the Fargues–Fontaine curve from Witt vectors makes untilts into points
+
+**Remember:** Each untilt is a quotient of W(𝒪), hence a point of the curve.
+
+*Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22, 11S20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let C be an algebraically closed perfectoid field of characteristic p with ring of integers 𝒪. Fix ϖ in C with 0 &lt; \|ϖ\| &lt; 1. Let Y be the part of Spa W(𝒪) where p and the Teichmüller lift \[ϖ\] are invertible. The Fargues–Fontaine curve is the quotient of Y by the Frobenius φ, or the Proj of the graded ring of Frobenius eigenvectors.
+
+**Problem.** The closed points of the Fargues–Fontaine curve correspond to the untilts of C of characteristic 0, up to Frobenius. The residue field at each point is the corresponding untilt.
+
+**How the definition helps.** An untilt C♯ of C gives the surjection θ from W(𝒪) to the ring of integers of C♯. By construction of the curve, the kernel of θ is a point of Y. Dividing by Frobenius identifies untilts that differ by a Frobenius twist (our own summary). The work goes into the converse. Fargues and Fontaine show that every closed point comes from such a kernel. Their proof uses a Weierstrass-type factorization of elements of W(𝒪).
+
+**nLab:** [Fargues-Fontaine curve](https://ncatlab.org/nlab/show/Fargues-Fontaine+curve). It says: “The Fargues-Fontaine curve X<sub>C</sub> is a complete algebraic curve whose closed points parametrize the untilts of C. Such an untilt may be recovered as the residue field of the corresponding point.”
+
+**Sources:**
+
+- [L. Fargues and J.-M. Fontaine, Courbes et fibrés vectoriels en théorie de Hodge p-adique, Astérisque 406 (2018)](https://doi.org/10.24033/ast.1056)
+
 ### Frobenius descent identifies sections with eigenvectors
 
 **Remember:** A twist turns a fixed-section condition into an eigenvalue condition.
@@ -4051,6 +5223,44 @@ $$”
 **nLab:** [Fargues-Fontaine curve](https://ncatlab.org/nlab/show/Fargues-Fontaine+curve). It says: “The (relative) Fargues-Fontaine curve $X<sub>S</sub>$ is then defined to be $Y<sub>S</sub>/\\phi<sub>S</sub><sup>{\\mathbb{Z}}$</sup>, where $\\phi<sub>S</sub>$ is the Frobenius on $S$.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Nuclear modules give ℓ-adic sheaves on v-stacks descent and six functors
+
+**Remember:** Nuclear coefficients glue in the v-topology, so ℚℓ-sheaves get six functors.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14F20, 14G22. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A small v-stack is a sheaf on perfectoid spaces for the v-topology, whose covers are, roughly, surjective maps. A solid ℓ-adic sheaf is nuclear if every map into it from a compact object is trace-class. Trace-class means the map comes from an element of a tensor product. Coefficients Λ can be ℤℓ, ℚℓ or the algebraic closure of ℚℓ.
+
+**Problem.** For every nuclear ℤℓ-algebra Λ, nuclear Λ-modules form a v-sheaf of ∞-categories on small v-stacks, with a full six-functor formalism. For discrete Λ, they are exactly the étale sheaves.
+
+**How the definition helps.** Nuclearity keeps exactly the solid sheaves that étale sheaves control, so the theory can satisfy v-descent and glue on any small v-stack (our own summary). Before this, no satisfying six-functor formalism with ℚℓ coefficients was known, as Mann's abstract states. The work is in Mann's proof of v-descent and in describing nuclear sheaves as colimits of basic nuclear ones.
+
+**Paper or page:** [The 6-Functor Formalism for ℤℓ- and ℚℓ-Sheaves on Diamonds](https://arxiv.org/abs/2209.08135), [The 6-Functor Formalism for ℤℓ- and ℚℓ-Sheaves on Diamonds](https://arxiv.org/abs/2209.08135). It says: “The ∞-category of nuclear Λ-modules is stable under pullback and satisfies v-descent.”
+
+**Sources:**
+
+- [Lucas Mann, The 6-Functor Formalism for ℤℓ- and ℚℓ-Sheaves on Diamonds, arXiv:2209.08135](https://arxiv.org/abs/2209.08135)
+
+### Perfect prisms are the same thing as integral perfectoid rings
+
+**Remember:** A perfect prism is a perfectoid ring together with its Witt vector thickening.
+
+*Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14F30, 13F35. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A prism is a pair (A, I): A is a δ-ring, a ring with a Frobenius lift φ, and I is an ideal locally generated by one non-zero-divisor. A is complete for (p) + I, p lies in I + φ(I)A, and the prism is perfect when φ is bijective. A ring R is integral perfectoid if it is π-complete for some π with πᵖ dividing p, and Frobenius is onto on R/p. Also the kernel of Fontaine's map θ, from the Witt vectors W(R♭) of the tilt onto R, must be principal.
+
+**Problem.** The functor (A, I) ↦ A/I is an equivalence from perfect prisms to integral perfectoid rings. Its inverse sends R to the Witt vectors W(R♭) of the tilt, with the ideal ker θ.
+
+**How the definition helps.** With prisms defined, Fontaine's ring W(R♭) and the kernel of θ become one object, so his construction becomes an equivalence of categories. The condition that ker θ is principal is exactly what makes (W(R♭), ker θ) a prism. The work goes into two facts in Bhatt and Scholze (our own summary). First, in a perfect prism the ideal I is generated by one distinguished element. Second, a perfect p-complete δ-ring is the Witt vectors of its reduction modulo p.
+
+**nLab:** [prismatic cohomology](https://ncatlab.org/nlab/show/prismatic+cohomology). It says: “A prism (A,I) is perfect if A is perfect. The category of perfect prisms is equivalent to the category of integral perfectoid rings”
+
+**Paper or page:** [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105). It says: “The category of perfect prisms is equivalent to the category of integral perfectoid rings. The equivalence functors are (A,I) → A/I, and R → (W(R♭), Ker(θ)).”
+
+**Sources:**
+
+- [B. Bhatt and P. Scholze, Prisms and prismatic cohomology, Annals of Mathematics 196 (2022)](https://doi.org/10.4007/annals.2022.196.3.5)
 
 ### Perfectoid fields share their Galois group with their tilt
 
@@ -4070,6 +5280,25 @@ $$”
 
 - [Peter Scholze, Perfectoid spaces, Publications Mathématiques de l'IHÉS 116 (2012)](https://doi.org/10.1007/s10240-012-0042-x)
 
+### Perfectoid rings are stably uniform, so their adic spectra are sheafy
+
+**Remember:** Perfectoid survives rational localization, so uniformity does too, and sheafiness follows.
+
+*Rules out counterexamples.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A Tate ring is a topological ring with a unit ϖ whose powers tend to 0. It is uniform if its power-bounded elements, those whose powers stay bounded, form a bounded subring A°. It is stably uniform if every rational localization (the ring on a basic open set of Spa(A, A⁺)) is uniform. A perfectoid Tate ring is complete and uniform, with ϖᵖ dividing p in A° and Frobenius bijective from A°/ϖ to A°/ϖᵖ.
+
+**Problem.** Every perfectoid Huber pair is sheafy: the structure presheaf on Spa(A, A⁺) is a sheaf, and it has no higher Čech cohomology.
+
+**How the definition helps.** Stable uniformity removes the Huber rings whose structure presheaf is not a sheaf, and perfectoid rings are stably uniform. They are, because rational localizations of perfectoid rings are perfectoid. Such bad rings exist: Buzzard and Verberkmoes give explicit examples. The work goes into two theorems. Scholze proved the localization fact for perfectoid algebras. Buzzard and Verberkmoes showed that stably uniform Huber pairs are sheafy.
+
+**Paper or page:** [Adic spaces](https://arxiv.org/abs/2405.06435), [Adic spaces](https://arxiv.org/abs/2405.06435), [Adic spaces](https://arxiv.org/abs/2405.06435). It says: “Every perfectoid Huber pair (A,A⁺) is sheafy and the structure sheaf is acyclic.”
+
+**Sources:**
+
+- [K. Buzzard and A. Verberkmoes, Stably uniform affinoids are sheafy, Journal für die reine und angewandte Mathematik (2016)](https://doi.org/10.1515/crelle-2015-0089)
+- [P. Scholze, Perfectoid spaces, Publications Mathématiques de l'IHÉS 116 (2012)](https://doi.org/10.1007/s10240-012-0042-x)
+
 ### Perfectoid rings let you move étale problems to characteristic p
 
 **Remember:** Perfectoid means Frobenius is surjective enough to move between characteristics 0 and p.
@@ -4087,6 +5316,42 @@ $$”
 **Sources:**
 
 - [Peter Scholze, Perfectoid spaces, arXiv:1111.4914](https://arxiv.org/abs/1111.4914)
+
+### Requiring 𝔪² = 𝔪 makes almost zero modules a Serre subcategory
+
+**Remember:** Two ideal factors in an extension collapse to one when 𝔪² equals 𝔪.
+
+*Rules out counterexamples.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 13D99, 18E35. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** A basic setup for almost mathematics is a ring V with an ideal 𝔪 such that 𝔪² = 𝔪, usually with 𝔪 ⊗ 𝔪 flat. A V-module M is almost zero if 𝔪M = 0. Almost modules are V-modules modulo the almost zero ones.
+
+**Problem.** In a basic setup, the almost zero modules form a Serre subcategory, closed under submodules, quotients and extensions. So the category of almost modules is an abelian quotient category with a tensor product.
+
+**How the definition helps.** If M is an extension of N by L and 𝔪 kills both, then 𝔪² kills M, and 𝔪² = 𝔪 gives 𝔪M = 0. Without the idempotent condition this fails, for example over ℤₚ with 𝔪 = (p) (our own example). There ℤ/p² is an extension of ℤ/p by ℤ/p. Both ends are killed by p, but ℤ/p² is not. For the valuation ring of a perfectoid field, 𝔪 is generated by all pⁿ-th roots of a pseudo-uniformizer, so 𝔪² = 𝔪 holds (our own).
+
+**nLab:** [almost scheme](https://ncatlab.org/nlab/show/almost+scheme), [almost module](https://ncatlab.org/nlab/show/almost+module). It says: “One starts with a "basic setup" consisting of a fixed commutative unital ("base") ring V containing an ideal I such that I² = I.”
+
+**Sources:**
+
+- [O. Gabber and L. Ramero, Almost Ring Theory, Lecture Notes in Mathematics 1800, Springer (2003)](https://doi.org/10.1007/b10047)
+
+### Restricting to absolutely weakly normal schemes makes the diamond functor fully faithful
+
+**Remember:** Diamonds cannot see a cusp, so cusps must be excluded.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22, 14B05. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A universal homeomorphism is a map of schemes that stays a homeomorphism after every base change. For every scheme X, the universal homeomorphisms Y → X have an initial object, the absolute weak normalization of X. X is absolutely weakly normal if it equals its absolute weak normalization. O is the ring of integers of a p-adic field, and the diamond X♢ is a sheaf on perfectoid spaces of characteristic p.
+
+**Problem.** The functor X ↦ X♢ is fully faithful on flat, separated, absolutely weakly normal formal schemes topologically of finite type over O. Its target is the category of v-sheaves over Spd O.
+
+**How the definition helps.** The condition removes schemes that differ from another scheme only by a universal homeomorphism, which diamonds cannot detect. For example, take the cuspidal cubic y²z = x³ over O and its normalization, the projective line over O (our own example). The normalization map is a universal homeomorphism, and the projective line is absolutely weakly normal, so it is the absolute weak normalization (our own). Proposition 2.18 of the same paper says that a proper flat scheme and its absolute weak normalization have the same diamond. So the two schemes have isomorphic diamonds but are not isomorphic. The work goes into showing that, on absolutely weakly normal schemes, maps of diamonds come from maps of schemes.
+
+**Paper or page:** [On the p-adic theory of local models](https://arxiv.org/abs/2201.01234), [On the p-adic theory of local models](https://arxiv.org/abs/2201.01234), [Morphisms, Lemma 29.47.7.](https://stacks.math.columbia.edu/tag/0EUS). It says: “The functor X ↦ X♢ from the category of absolute weakly normal formal schemes flat, separated and topologically of finite type over O, to v-sheaves over Spd O is fully faithful.”
+
+**Sources:**
+
+- [J. Anschütz, I. Gleason, J. Lourenço and T. Richarz, On the p-adic theory of local models (arXiv 2201.01234)](https://arxiv.org/abs/2201.01234)
 
 ### Tilted line bundles encode tensor roots
 
@@ -4442,6 +5707,24 @@ $$”
 **Sources:**
 
 - [Dave Benson, Julia Pevtsova, Group schemes and their Lie algebras over a symmetric tensor category, arXiv:2507.02031 (2025)](https://arxiv.org/abs/2507.02031v1)
+
+### The dot action centered at −ρ makes Bott's theorem one formula
+
+**Remember:** Shift by ρ, reflect, shift back: that weight carries the cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 14M15 (Grassmannians, Schubert varieties, flag manifolds), 22E46, 17B56. arXiv math.RT, math.AG. Level 4: research.
+
+**Definition.** Let G be a complex semisimple group with Borel subgroup B and Weyl group W. The dot action of W on weights is w·λ = w(λ+ρ) − ρ, where ρ is half the sum of the positive roots. It is the usual reflection action moved so that its center is −ρ.
+
+**Problem.** Let L(λ) be the line bundle on G/B of an integral weight λ; if λ+ρ lies on a reflecting wall, all its cohomology vanishes. Otherwise, with w the unique element making w·λ dominant, only degree ℓ(w) has cohomology, dual to the irreducible module of highest weight w·λ (Bott).
+
+**How the definition helps.** With the dot action, the two cases become one test: either a dot reflection fixes λ, or one dot move makes it dominant. Without it, the statement needs a list of shifted chambers. The work went into Bott's computation of the sheaf cohomology, or into Demazure's later short proof.
+
+**Wikipedia:** [Borel–Weil–Bott theorem](https://en.wikipedia.org/wiki/Borel%E2%80%93Weil%E2%80%93Bott_theorem). It says: “For any integral weight λ and w in the Weyl group W, we set w\*λ := w(λ+ρ)−ρ, where ρ denotes the half-sum of positive roots of G.”
+
+**Sources:**
+
+- [R. Bott, Homogeneous vector bundles, Ann. of Math. 66 (1957) 203–248](https://doi.org/10.2307/1969996)
 
 ### A scheme structure on cactus varieties compares them with catalecticant equations
 

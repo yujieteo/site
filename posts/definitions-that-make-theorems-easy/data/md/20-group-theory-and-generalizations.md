@@ -1961,6 +1961,117 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cohomological dimension at most one means every abelian-kernel extension splits
+
+**Remember:** No second cohomology means no nonsplit abelian extensions.
+
+*Makes the theorem clean to state or prove.* MSC 20J05 (Homological methods in group theory), 20E05, 20J06. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A group G has cohomological dimension at most n if Hᵏ(G, M) = 0 for all k &gt; n and all G-modules M. Extensions 1 → M → E → G → 1 with M abelian, up to equivalence, correspond to classes in H²(G, M). The split extensions, those with a subgroup of E mapping isomorphically onto G, correspond to 0.
+
+**Problem.** A group G has cohomological dimension at most 1 exactly when every extension of G with abelian kernel splits. By the Stallings–Swan theorem, these groups are exactly the free groups.
+
+**How the definition helps.** Cohomological dimension turns 'every extension with abelian kernel splits' into one vanishing condition: H²(G, M) = 0 for all M. Each extension class is 0 exactly when the extension splits. Vanishing of H² for all modules forces vanishing in higher degrees, since embedding a module into one with zero cohomology lowers the degree (our own). The work toward freeness is Stallings' theorem on ends for finitely generated groups and Swan's extension to all groups.
+
+**Wikipedia:** [Cohomological dimension](https://en.wikipedia.org/wiki/Cohomological_dimension). It says: “The Stallings-Swan theorem for a group G says that G is free if and only if every extension by G with abelian kernel is split.”
+
+**Sources:**
+
+- [Richard G. Swan, Groups of cohomological dimension one, Journal of Algebra 12 (1969) 585–610](https://doi.org/10.1016/0021-8693(69)90030-1)
+- [John R. Stallings, On torsion-free groups with infinitely many ends, Annals of Mathematics 88 (1968) 312–334](https://doi.org/10.2307/1970577)
+
+### Defining H₂ as a derived functor makes Hopf's quotient independent of presentation
+
+**Remember:** Homology knows the group, so Hopf's quotient forgets the presentation.
+
+*True by definition.* MSC 20J05 (Homological methods in group theory), 20F05, 20J06. arXiv math.GR. Level 3: graduate.
+
+**Definition.** The second homology H₂(G, ℤ) of a group G is Tor₂ of ℤ with ℤ over the group ring ℤ\[G\]. It depends only on G, because any two projective resolutions of ℤ are homotopy equivalent. A presentation of G is a free group F with a normal subgroup R such that G ≅ F/R.
+
+**Problem.** For every presentation G ≅ F/R, H₂(G, ℤ) ≅ (R ∩ \[F, F\])/\[F, R\]. So this quotient is the same for all presentations of G.
+
+**How the definition helps.** The quotient is built from a presentation, but H₂ is built from G alone, so the formula proves independence at once. A direct proof would have to compare two presentations by hand (our own). The work went into the formula itself (our own). It comes from the exact sequence of low-degree homology for 1 → R → F → G → 1, since H₂(F, ℤ) = 0 (our own).
+
+**Wikipedia:** [Schur multiplier](https://en.wikipedia.org/wiki/Schur_multiplier), [Group cohomology](https://en.wikipedia.org/wiki/Group_cohomology). It says: “H₂(G, ℤ) ≅ (R ∩ \[F, F\])/\[F, R\] where G ≅ F/R and F is a free group.”
+
+**Sources:**
+
+- [Heinz Hopf, Fundamentalgruppe und zweite Bettische Gruppe, Commentarii Mathematici Helvetici 14 (1942) 257–309](https://doi.org/10.1007/BF02565622)
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
+
+### Excluding proper-power relators gives one-relator groups cohomological dimension at most two
+
+**Remember:** Forbid proper powers, and the two-cell picture is the whole story.
+
+*Rules out counterexamples.* MSC 20J05 (Homological methods in group theory), 20F05. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A one-relator group G has a presentation with generators x₁, …, xₙ and a single relator r. The relator r is a proper power if r = sᵐ for some word s and some m ≥ 2. The cohomological dimension of G is the largest degree in which some coefficient module has nonzero cohomology.
+
+**Problem.** If r is not a proper power, the group ⟨x₁, …, xₙ \| r⟩ is torsion-free and has cohomological dimension at most 2. Without the condition this fails: ⟨x \| xᵐ⟩ is cyclic of order m and has infinite cohomological dimension.
+
+**How the definition helps.** Excluding proper powers makes the presentation complex, one point with a loop for each generator and a disk glued along r, have contractible universal cover. Its cellular chains then give a free resolution of ℤ of length 2, so cohomology vanishes above degree 2 (our own). If r = sᵐ, then s has order exactly m (Karrass, Magnus and Solitar), and a nontrivial finite subgroup forces infinite dimension (our own). The work went into Lyndon's identity theorem, from which Dyer and Vasquez deduced this contractibility.
+
+**Wikipedia:** [One-relator group](https://en.wikipedia.org/wiki/One-relator_group). It says: “If r ∈ F(x₁,…,xₙ) is not a proper power then a one-relator group G has cohomological dimension ≤ 2.”
+
+**Sources:**
+
+- [Roger C. Lyndon, Cohomology theory of groups with a single defining relation, Annals of Mathematics 52 (1950) 650–665](https://doi.org/10.2307/1969440)
+
+### A free group's augmentation ideal is free, so higher cohomology vanishes
+
+**Remember:** A resolution of length one leaves no room for H².
+
+*True by definition.* MSC 20J06 (Cohomology of groups), 20E05. arXiv math.GR. Level 3: graduate.
+
+**Definition.** Group cohomology Hⁿ(G, M) is Extⁿ from ℤ to M over the group ring ℤ\[G\], and any projective resolution of ℤ computes it. The augmentation map from ℤ\[G\] to ℤ sends each group element to 1, and its kernel is the augmentation ideal I. So 0 → I → ℤ\[G\] → ℤ → 0 is a projective resolution whenever I is projective.
+
+**Problem.** For a free group F on a set S, Hᵏ(F, M) = 0 for all k ≥ 2 and all F-modules M. If S is finite, H¹(F, ℤ) is free abelian of rank \|S\|.
+
+**How the definition helps.** Ext can be computed from any projective resolution, and a free group has one of length one. The elements s − 1 for s in S form a basis of I, so the resolution has only two terms (our own). The standard bar resolution, behind the cochain definition, has nonzero terms in every degree, so it shows no vanishing (our own). The work went into the freeness of I, which uses the unique reduced words of F (our own).
+
+**Wikipedia:** [Group cohomology](https://en.wikipedia.org/wiki/Group_cohomology). It says: “Notice the augmentation map aug: ℤ\[G\] → ℤ<sub>triv</sub> has kernel given by the free submodule I<sub>S</sub> generated by the set {s − 1 : s ∈ S}”
+
+**Sources:**
+
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
+
+### Abstract kernels put the obstruction to nonabelian extensions in third cohomology
+
+**Remember:** Fix the outer action first, and the obstruction lands in H³.
+
+*Makes the theorem clean to state or prove.* MSC 20J06 (Cohomology of groups), 20E22. arXiv math.GR. Level 3: graduate.
+
+**Definition.** An abstract kernel is a homomorphism from a group G to Out(K), the automorphisms of a group K modulo the inner ones. Every extension 1 → K → E → G → 1 gives one by conjugation. The centre Z(K) becomes a G-module through the abstract kernel.
+
+**Problem.** Each abstract kernel has an obstruction class in H³(G, Z(K)), and some extension realizes it exactly when the class is 0. Then the extensions that realize it, up to equivalence, form a set on which H²(G, Z(K)) acts simply transitively.
+
+**How the definition helps.** Fixing the outer action gives a fixed abelian module, the centre, where the failure to build an extension can be measured. Lift each element of G to an automorphism of K; the lifts multiply correctly only up to inner automorphisms (our own). The remaining error takes values in Z(K) and forms a 3-cocycle, which changes by a coboundary when the lifts change (our own). The work went into Eilenberg and Mac Lane's cocycle computations (our own).
+
+**Wikipedia:** [Group extension](https://en.wikipedia.org/wiki/Group_extension). It says: “There is a similar classification of all extensions of G by A in terms of homomorphisms from G→Out(A), a tedious but explicitly checkable existence condition involving H³(G, Z(A)) and the cohomology group H²(G, Z(A)).”
+
+**Sources:**
+
+- [Samuel Eilenberg and Saunders MacLane, Cohomology theory in abstract groups II. Group extensions with a non-Abelian kernel, Annals of Mathematics 48 (1947) 326–341](https://doi.org/10.2307/1969174)
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
+
+### Characterizing projective profinite groups by cohomological dimension makes closed subgroups projective
+
+**Remember:** Dimension cannot grow on subgroups, so projectivity passes down.
+
+*True by definition. Confidence: medium.* MSC 20J06 (Cohomology of groups), 20E18, 12G10. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A profinite group G is projective if every continuous surjection from a profinite group onto G has a continuous homomorphic section. This is equivalent to cd(G) ≤ 1, that is, to H²(G, M) = 0 for every torsion discrete G-module M.
+
+**Problem.** Every closed subgroup of a projective profinite group is projective. In particular, closed subgroups of free profinite groups are projective, though they need not be free.
+
+**How the definition helps.** Cohomological dimension cannot increase on closed subgroups, so the condition cd ≤ 1 passes down at once. That inequality follows from Shapiro's lemma, which turns cohomology of a closed subgroup into cohomology of G with function-valued coefficients (our own). With the lifting definition, a section for the subgroup would have to be built by hand (our own). The work went into the equivalence of projectivity with cd(G) ≤ 1 (our own).
+
+**Wikipedia:** [Profinite group](https://en.wikipedia.org/wiki/Profinite_group). It says: “Projectivity for a profinite group G is equivalent to either of the two properties: the cohomological dimension cd(G) ≤ 1; for every prime p the Sylow p-subgroups of G are free pro-p-groups.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
+
 ### Classifying spaces give graded commutativity
 
 **Remember:** The group cup product inherits the sign rule from space cohomology.
@@ -2011,6 +2122,42 @@
 \\operatorname{Ext}<sup>n<sub>R</sub></sup>({}<sub>R</sub> M,N) \\cong \\operatorname{Ext}<sup>n<sub>S</sub></sup>(M,\\operatorname{Hom}<sub>R</sub>(S,N))”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Continuous cohomology of profinite groups is torsion, unlike abstract cohomology
+
+**Remember:** Every continuous class lives on a finite quotient, so it is torsion.
+
+*Rules out counterexamples.* MSC 20J06 (Cohomology of groups), 20E18, 12G05. arXiv math.GR, math.NT. Level 3: graduate.
+
+**Definition.** For a profinite group G, a discrete G-module is a G-module in which every element is fixed by some open subgroup. Continuous cohomology is the derived functor of taking fixed elements on discrete modules. It equals the direct limit of the cohomology of the finite quotients G/U with coefficients in the U-fixed elements.
+
+**Problem.** For a profinite group G, the continuous cohomology Hⁱ(G, M) is a torsion group for every i &gt; 0 and every discrete module M. If M is a ℚ-vector space, then Hⁱ(G, M) = 0 for i &gt; 0.
+
+**How the definition helps.** By the direct-limit formula each class comes from a finite quotient G/U, and \|G/U\| kills it by restriction and transfer (our own). Abstract cohomology fails this for the profinite integers Ẑ (our own). There H¹(Ẑ, ℚ) is the group of all homomorphisms from Ẑ to ℚ, which is not 0 since Ẑ is torsion-free (our own). The continuous version is 0, since a continuous homomorphism from compact Ẑ to discrete ℚ has finite image (our own).
+
+**Paper or page:** [Etale Cohomology, Lemma 59.57.6](https://stacks.math.columbia.edu/tag/0DV3). It says: “Let G be a profinite topological group. Then Hⁱ(G, M) is torsion for i &gt; 0 and any G-module M, and Hⁱ(G, M) = 0 if M is a Q-vector space.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
+
+### Corestriction after restriction is the index, so finite groups have torsion cohomology
+
+**Remember:** Restrict then transfer back, and you multiply by the index.
+
+*True by definition.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a subgroup H of finite index in G, the transfer, or corestriction, is a map from Hⁿ(H, M) to Hⁿ(G, M). In degree 0 it sends an H-fixed element m to the sum of gm over representatives g of the cosets of H. In higher degrees it is the unique extension of this map that commutes with the connecting maps of long exact sequences.
+
+**Problem.** If G is finite, then \|G\| kills Hⁿ(G, M) for every n ≥ 1 and every G-module M. So Hⁿ(G, M) = 0 for n ≥ 1 when multiplication by \|G\| is invertible on M.
+
+**How the definition helps.** This definition of transfer reduces the identity cor ∘ res = \[G : H\] to a check in degree 0 (our own). In degree 0, restriction then transfer adds \[G : H\] copies of m (our own). Both sides commute with connecting maps, so they agree in all degrees; the cochain formula needs a cocycle computation instead (our own). Take H trivial: its positive-degree cohomology is 0, so \|G\| kills every class (our own).
+
+**Wikipedia:** [Group cohomology](https://en.wikipedia.org/wiki/Group_cohomology). It says: “If the order of G is invertible in a G-module M (for example, if M is a ℚ-vector space), the transfer map can be used to show that Hⁿ(G,M) = 0 for n ⩾ 1.”
+
+**Sources:**
+
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
 
 ### Coset sums give relative cohomology
 
@@ -2066,6 +2213,62 @@
 **Sources:**
 
 - [John Tate, The higher dimensional cohomology groups of class field theory, Annals of Mathematics 56 (1952)](https://doi.org/10.2307/1969801)
+
+### Tate cohomology makes cyclic group cohomology two-periodic in every degree
+
+**Remember:** Cyclic groups repeat every two steps, also through degree zero.
+
+*Makes the theorem clean to state or prove.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a finite group G, Tate cohomology Ĥⁿ(G, A) is defined for every integer n. It is ordinary cohomology for n ≥ 1, the fixed elements modulo norms for n = 0, and homology for n ≤ −2. It is the cohomology of maps from a complete resolution into A, an exact complex of free ℤ\[G\]-modules in all degrees.
+
+**Problem.** For a finite cyclic group G of order k and every G-module A, Ĥᵐ(G, A) ≅ Ĥᵐ⁺²(G, A) for every integer m.
+
+**How the definition helps.** A cyclic group has a complete resolution that repeats with period 2, so its Tate groups repeat with no exception (our own). Its maps alternate between multiplication by t − 1 and by the norm 1 + t + ⋯ + tᵏ⁻¹, for a generator t (our own). Ordinary cohomology breaks the pattern: H⁰(G, ℤ) = ℤ, but H²(G, ℤ) = ℤ/k (our own). Tate's degree 0 group is ℤ/k, so the period holds there too (our own).
+
+**Wikipedia:** [Herbrand quotient](https://en.wikipedia.org/wiki/Herbrand_quotient), [Group cohomology](https://en.wikipedia.org/wiki/Group_cohomology). It says: “If instead we use the Tate cohomology groups then the periodicity extends down to n=0.”
+
+**Sources:**
+
+- [John Tate, The higher dimensional cohomology groups of class field theory, Annals of Mathematics 56 (1952) 294–297](https://doi.org/10.2307/1969801)
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
+
+### Tate cohomology vanishes on induced modules in every degree, including degree zero
+
+**Remember:** Divide fixed points by norms, and induced modules become invisible.
+
+*Rules out counterexamples.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a finite group G, the norm of a in a G-module A is the sum of ga over all g in G. Tate cohomology Ĥⁿ(G, A) is ordinary cohomology for n ≥ 1, and fixed elements modulo norms for n = 0. In negative degrees it is built from homology and the kernel of the norm.
+
+**Problem.** Every induced module ℤ\[G\] ⊗ B, for an abelian group B, has Ĥⁿ(G, ℤ\[G\] ⊗ B) = 0 for all integers n. So an embedding of A into an induced module with quotient C gives Ĥⁿ⁺¹(G, A) ≅ Ĥⁿ(G, C) in every degree.
+
+**How the definition helps.** For an induced module the norm map is an isomorphism from coinvariants onto fixed elements, so Tate's groups in degrees −1 and 0 vanish (our own). Ordinary H⁰(G, ℤ\[G\]) is ℤ, generated by the sum of all group elements, so ordinary cohomology does not vanish there (our own). Dimension shifting moves degree by embedding a module into one with zero cohomology, so with ordinary groups it fails at degree 0 (our own). The vanishing in other degrees comes from Shapiro's lemma, which matches induced cohomology with that of the trivial group (our own).
+
+**Wikipedia:** [Tate cohomology group](https://en.wikipedia.org/wiki/Tate_cohomology_group). It says: “If A is an induced G module (meaning, induced from a module for the trivial group) then all Tate cohomology groups of A vanish.”
+
+**Sources:**
+
+- [John Tate, The higher dimensional cohomology groups of class field theory, Annals of Mathematics 56 (1952) 294–297](https://doi.org/10.2307/1969801)
+- [Kenneth S. Brown, Cohomology of Groups, Graduate Texts in Mathematics 87, Springer (1982)](https://doi.org/10.1007/978-1-4684-9327-6)
+
+### The Herbrand quotient is multiplicative and equals one on finite modules
+
+**Remember:** Cyclic cohomology loops around a hexagon, so orders multiply.
+
+*Makes the theorem clean to state or prove.* MSC 20J06 (Cohomology of groups), 11R37. arXiv math.NT, math.GR. Level 3: graduate.
+
+**Definition.** Let G be a finite cyclic group and A a G-module whose Tate groups Ĥ⁰(G, A) and Ĥ¹(G, A) are finite. The Herbrand quotient h(A) is the order of Ĥ⁰(G, A) divided by the order of Ĥ¹(G, A). By the period 2 of Tate cohomology, these two groups give all the Tate groups of A.
+
+**Problem.** Let 0 → A → B → C → 0 be an exact sequence of G-modules. If two of the three Herbrand quotients are defined, so is the third, and h(B) = h(A)h(C). If A is finite, then h(A) = 1, so a submodule of finite index has the same quotient.
+
+**How the definition helps.** Periodicity folds the long exact sequence of Tate groups into an exact hexagon of six groups (our own). In an exact cycle of finite groups, the alternating product of the orders is 1, and here that product is h(A)h(C)/h(B) (our own). For finite A, the orders of kernels and images of 1 − t and of the norm balance, so h(A) = 1 (our own). The work went into periodicity, which the Tate groups give in all degrees (our own).
+
+**Wikipedia:** [Herbrand quotient](https://en.wikipedia.org/wiki/Herbrand_quotient). It says: “The Herbrand quotient is multiplicative on short exact sequences.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
 
 ### Two-stage invariants give spectral sequences
 
@@ -2319,6 +2522,25 @@
 
 - [Plawan Das, C. S. Rajan, Finiteness theorems for potentially equivalent Galois representations: extension of Faltings' finiteness criteria, arXiv:2012.15598v2 (2021)](https://arxiv.org/abs/2012.15598v2)
 
+### Killing projectives turns the spectrum into Proj of group cohomology
+
+**Remember:** Projectives sit at the irrelevant point, so killing them leaves Proj.
+
+*True by definition.* MSC 20C20 (Modular representations and characters), 20J06, 18G80. arXiv math.RT, math.CT. Level 4: research.
+
+**Definition.** The stable module category stmod kG has finitely generated kG-modules as objects, with maps through projective modules set to zero. By Rickard's theorem it is the quotient of Dᵇ(mod kG) by the perfect complexes. Proj H\*(G,k) is the set of homogeneous primes of group cohomology other than the ideal of positive-degree elements. The rival is Dᵇ(mod kG) itself, whose spectrum keeps that extra point.
+
+**Problem.** Let G be a finite group and k a field of characteristic p. Then Spc(Dᵇ(mod kG)) is homeomorphic to Specʰ H\*(G,k), and Spc(stmod kG) is homeomorphic to Proj H\*(G,k).
+
+**How the definition helps.** The perfect complexes form a thick tensor ideal supported at one closed point, the ideal of positive-degree elements (our own summary). The primes of a quotient are the primes that contain the ideal, so the quotient removes exactly that point. The quote is for a coefficient ring A, and A = k gives Dᵇ(mod kG) (our own remark). The real work is the Benson–Carlson–Rickard classification of thick tensor ideals of stmod kG.
+
+**Paper or page:** [The Balmer spectrum of certain Deligne-Mumford stacks](https://arxiv.org/abs/2101.01446), [Lattices over finite group schemes and stratification](https://arxiv.org/abs/2307.16271). It says: “The category Perf(AG) of perfect complexes of AG-modules is a thick tensor ideal in Dᵇ(AG)<sub>A</sub>-perf.”
+
+**Sources:**
+
+- [Dave Benson, Jon F. Carlson and Jeremy Rickard, Thick subcategories of the stable module category, Fund. Math. 153 (1997) 59–80](https://doi.org/10.4064/fm-153-1-59-80)
+- [Paul Balmer, The spectrum of prime ideals in tensor triangulated categories, J. Reine Angew. Math. 588 (2005) 149–168](https://doi.org/10.1515/crll.2005.2005.588.149)
+
 ### For free group automorphisms, real pretrees detect exactly the exponentially growing elements
 
 **Remember:** Keep the intervals and drop the distances when growth rates differ.
@@ -2539,6 +2761,80 @@
 **Sources:**
 
 - [Lewis Bowen, Michael Chapman, Surjunctivity does not characterize cosoficity of invariant random subgroups, arXiv:2511.06586v1 (2025)](https://arxiv.org/abs/2511.06586v1)
+
+### Cohomological generator and relation counts make Golod–Shafarevich a statement about the group
+
+**Remember:** A finite p-group needs more than a quarter of d squared relations.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 20J05 (Homological methods in group theory), 20D15, 20F05. arXiv math.GR, math.NT. Level 4: research.
+
+**Definition.** For a finite p-group G, let d and r be the dimensions of H¹(G, 𝔽ₚ) and H²(G, 𝔽ₚ). Here 𝔽ₚ is the field of p elements with trivial action. By the Burnside basis theorem, d is the least number of generators of G, and a presentation on d generators needs at least r relations.
+
+**Problem.** If G is a nontrivial finite p-group, then r &gt; d²/4. So a presentation of G on d generators has more than d²/4 relations.
+
+**How the definition helps.** The cohomological definition makes d and r invariants of G, so the inequality is a statement about G alone. A minimal presentation of G as a pro-p group, a limit of finite p-groups, has exactly d generators and r relations (our own). The work went into the Golod–Shafarevich inequality for graded algebras given by generators and relations, applied to the mod p group algebra (our own).
+
+**Wikipedia:** [Golod–Shafarevich theorem](https://en.wikipedia.org/wiki/Golod%E2%80%93Shafarevich_theorem). It says: “If G is a non-trivial finite p-group, then r &gt; d²/4, where d = dim H¹(G,ℤ/pℤ) and r = dim H²(G,ℤ/pℤ) (the mod p cohomology groups of G).”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
+
+### Invariant means make bounded cocycles of amenable groups into dual modules coboundaries
+
+**Remember:** Average a bounded cocycle, and you get its primitive.
+
+*True by definition.* MSC 20J06 (Cohomology of groups), 43A07. arXiv math.GR, math.FA. Level 4: research.
+
+**Definition.** A discrete group Γ is amenable if it has an invariant mean. This is a positive linear functional m on bounded real functions u, with m(1) = 1 and m(h ↦ u(gh)) = m(u). A bounded 1-cocycle into the dual E\* of a Banach module is a bounded map f with f(gh) = f(g) + g·f(h).
+
+**Problem.** If Γ is amenable and acts by isometries on a Banach space E, every bounded 1-cocycle f from Γ to E\* is a coboundary. That is, f(g) = g·φ − φ for some φ in E\*.
+
+**How the definition helps.** The mean averages the bounded cocycle into its own primitive. For x in E, let ψ(x) be the mean of h ↦ f(h)(x), which lies in E\* because f is bounded (our own). Invariance of the mean gives ψ = f(g) + g·ψ, so φ = −ψ works; the Følner definition would need finite averages and a limit (our own). Johnson showed that this vanishing property in turn characterizes amenability.
+
+**Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “If Γ acts by isometries on a (separable) Banach space E and f in ℓ∞(Γ, E\*) is a bounded 1-cocycle, i.e. f(gh) = f(g) + g·f(h), then f is a 1-coboundary”
+
+**Sources:**
+
+- [Barry Edward Johnson, Cohomology in Banach algebras, Memoirs of the American Mathematical Society 127 (1972)](https://doi.org/10.1090/memo/0127)
+
+### Mislin's completion vanishes on every object of finite projective dimension
+
+**Remember:** Kill projectives, then shift until the resolution ends.
+
+*True by definition.* MSC 20J06 (Cohomology of groups), 18G15. arXiv math.GR, math.KT. Level 4: research.
+
+**Definition.** A cohomological functor is a family of functors Tⁿ, for all integers n, that turns short exact sequences into long exact sequences. Its Mislin completion T̂ is the universal such functor that vanishes on projective objects and receives a map from T. For group cohomology, T̂ is complete cohomology, which is Tate cohomology for finite groups.
+
+**Problem.** If an object M has finite projective dimension, then T̂ⁿ(M) = 0 for every integer n. The paper also shows that complete cohomology vanishes for every group of finite cohomological dimension.
+
+**How the definition helps.** A functor that vanishes on projectives shifts degree along each sequence 0 → K → P → M → 0 with P projective. The long exact sequence gives T̂ⁿ(M) ≅ T̂ⁿ⁺¹(K), so T̂ of M equals T̂ of a later kernel in a resolution (our own). Finite projective dimension makes some syzygy projective, and its T̂ is 0 (our own). The work went into constructing the completion, as a direct limit of shifted copies of T (our own).
+
+**Paper or page:** [On a Completion of Cohomological Functors Generalising Tate Cohomology II, Lemma 1.1](https://arxiv.org/abs/2405.03634v2). It says: “If M ∈ obj(𝒞) has finite projective dimension, then T̂ⁿ(M) = 0 for every n ∈ ℤ.”
+
+**Sources:**
+
+- [Guido Mislin, Tate cohomology for arbitrary groups via satellites, Topology and its Applications 56 (1994) 293–300](https://doi.org/10.1016/0166-8641(94)90081-7)
+- [Max Gheorghiu, On a Completion of Cohomological Functors Generalising Tate Cohomology II, arXiv:2405.03634 (2024)](https://arxiv.org/abs/2405.03634)
+
+### Profinite completion's universal property gives every group separable first cohomology
+
+**Remember:** Maps to finite groups extend, so derivations extend.
+
+*True by definition.* MSC 20J06 (Cohomology of groups), 20E18. arXiv math.GR. Level 4: research.
+
+**Definition.** The profinite completion Γ̂ of a group Γ is the inverse limit of its finite quotients, with a map ι from Γ to Γ̂. Every homomorphism from Γ to a finite group factors uniquely through ι. The group Γ has separable cohomology if ι induces isomorphisms from Hⁿ(Γ̂, M) to Hⁿ(Γ, M) for all finite Γ̂-modules M.
+
+**Problem.** Every group has separable cohomology in degree 1. That is, for every finite Γ̂-module M, the map from continuous H¹(Γ̂, M) to H¹(Γ, M) is an isomorphism.
+
+**How the definition helps.** Defining H¹ by derivations lets a derivation become a homomorphism into a finite semidirect product, and the universal property extends it. If the action on M factors through a finite quotient Q, a derivation f gives a homomorphism Γ → M ⋊ Q (our own). Its unique extension to Γ̂ is a continuous derivation, and density of ι(Γ) shows that principal derivations match (our own). No such argument works in degree 2: the paper finds Baumslag–Solitar groups with separable cohomology and others without it.
+
+**Paper or page:** [Cohomological Separability of Baumslag--Solitar groups and Their Generalisations, Lemma 2.4](https://arxiv.org/abs/2406.03960v1), [Cohomological Separability of Baumslag--Solitar groups and Their Generalisations, Lemma 3.2](https://arxiv.org/abs/2406.03960v1). It says: “All groups have separable cohomology in dimension 1.”
+
+**Sources:**
+
+- [William D. Cohen and Julian Wykowski, Cohomological Separability of Baumslag–Solitar groups and Their Generalisations, arXiv:2406.03960 (2024)](https://arxiv.org/abs/2406.03960)
+- [Jean-Pierre Serre, Galois Cohomology, Springer (1997)](https://doi.org/10.1007/978-3-642-59141-9)
 
 ### Vanishing of asymptotic second cohomology implies uniform stability of almost representations
 

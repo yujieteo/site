@@ -1394,6 +1394,42 @@
 - [W. F. Stinespring, Positive functions on C\*-algebras, Proceedings of the AMS 6 (1955), 211–216](https://doi.org/10.1090/S0002-9939-1955-0069403-4)
 - [M.-D. Choi, Completely positive linear maps on complex matrices, Linear Algebra and its Applications 10 (1975), 285–290](https://doi.org/10.1016/0024-3795(75)90075-0)
 
+### Countable generation lets every Hilbert module sit inside the standard module
+
+**Remember:** Countably generated Hilbert modules are summands of ℓ²(B), like separable Hilbert spaces.
+
+*Rules out counterexamples.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 19K35. arXiv math.OA. Level 3: graduate.
+
+**Definition.** A Hilbert B-module E is countably generated when some countable subset spans a dense submodule. The standard module ℓ²(B) consists of the sequences (bᵢ) in B for which the sum of the bᵢ\*bᵢ converges in B.
+
+**Problem.** For every countably generated Hilbert B-module E, E ⊕ ℓ²(B) ≅ ℓ²(B) as Hilbert modules. So E is the range of a projection on ℓ²(B), and every Kasparov module on a countably generated module can be moved onto ℓ²(B).
+
+**How the definition helps.** Countable generation removes modules that are too large to fit into ℓ²(B). For B = ℂ, Hilbert modules are Hilbert spaces, and a non-separable space H fails, because H ⊕ ℓ² is not separable (our own). Wikipedia presents the theorem as the module version of the fact that there is only one separable infinite-dimensional Hilbert space. The work goes into Kasparov's proof of the stabilization theorem, and in return KK(A,B) can be defined with one fixed module (our own).
+
+**Wikipedia:** [Hilbert C\*-module](https://en.wikipedia.org/wiki/Hilbert_C%2A-module). It says: “if E is a countably generated Hilbert A-module, there is an isometric isomorphism E ⊕ ℓ₂(A) ≅ ℓ₂(A).”
+
+**Sources:**
+
+- [Iain Raeburn and Shaun J. Thompson, Countably generated Hilbert modules, the Kasparov stabilisation theorem, and frames in Hilbert modules, Proceedings of the American Mathematical Society 131 (2003) 1557–1564](https://doi.org/10.1090/S0002-9939-02-06787-4)
+
+### Full Hilbert modules make matrix algebras, stabilizations and full corners Morita equivalent
+
+**Remember:** Compact operators on a full module are Morita equivalent to the coefficients.
+
+*True by definition.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 46L85. arXiv math.OA. Level 3: graduate.
+
+**Definition.** A Hilbert B-module E is a right B-module with a B-valued inner product, complete in the norm it gives. It is full when the inner products ⟨x,y⟩ span a dense subset of B. Two C\*-algebras A and B are Morita equivalent when A is isomorphic to the algebra 𝒦(E) of compact operators on a full Hilbert B-module E.
+
+**Problem.** Every C\*-algebra B is Morita equivalent to the matrix algebra Mₙ(B), to its stabilization B ⊗ 𝒦, and to every full corner pBp. Here a projection p is full when BpB spans a dense subset of B.
+
+**How the definition helps.** Each algebra in the list is already the compact operators on an obvious full B-module, so the definition applies at once (our own). Mₙ(B) is 𝒦(Bⁿ), B ⊗ 𝒦 is 𝒦 of the standard module ℓ²(B), and pBp is 𝒦(pB) (our own). The usual definition asks for Rieffel's imprimitivity bimodule, a bimodule with compatible full inner products on both sides. The work moves into the quoted theorem that the two definitions agree.
+
+**Paper or page:** [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456). It says: “Let A and B be C\*-algebras. The following are equivalent. (1) The C\*-algebras A and B are Morita equivalent. (2) There exists a full Hilbert B-module and a faithful representation φ : A → ℒ<sub>B</sub>(E) such that φ(A)=𝒦<sub>B</sub>(E).”
+
+**Sources:**
+
+- [Marc A. Rieffel, Induced representations of C\*-algebras, Advances in Mathematics 13 (1974) 176–257](https://doi.org/10.1016/0001-8708(74)90068-1)
+
 ### A predual defines von Neumann algebras without choosing a Hilbert space
 
 **Remember:** Being a dual space is the abstract mark of a von Neumann algebra.
@@ -1448,6 +1484,86 @@
 
 - [G. A. Elliott, On the classification of inductive limits of sequences of semisimple finite-dimensional algebras, Journal of Algebra 38 (1976), 29–44](https://doi.org/10.1016/0021-8693(76)90242-8)
 
+### Hulanicki's definition of amenability makes full and reduced crossed products agree
+
+**Remember:** If the trivial representation is near the regular one, every representation is.
+
+*True by definition. Confidence: medium.* MSC 46L55 (Noncommutative dynamical systems), 22D25, 43A07. arXiv math.OA, math.GR. Level 3: graduate.
+
+**Definition.** A locally compact group G is amenable, in Hulanicki's form, when its trivial representation is weakly contained in its regular representation. The regular representation is the action of G on L²(G) by translation. Weakly contained means that the constant function 1 is a limit, uniformly on compact sets, of sums of matrix coefficients of the regular representation.
+
+**Problem.** For an amenable group G acting on a C\*-algebra A, the full crossed product A ⋊ G equals the reduced crossed product A ⋊ᵣ G. The free group on two generators fails this already for A = ℂ.
+
+**How the definition helps.** With this definition, a few lines with Fell's absorption principle show that every covariant representation is weakly contained in a regular one (our own). Fell's principle says that a representation tensored with the regular representation is a multiple of the regular representation (our own). The work moves into the equivalence of Hulanicki's definition with the invariant-mean and Følner definitions (our own). For the free group F₂ the full algebra has a one-dimensional representation, but the reduced algebra is simple, so the two differ (our own).
+
+**nLab:** [amenable topological groupoid](https://ncatlab.org/nlab/show/amenable+topological+groupoid). It says: “For an amenable Lie groupoid 𝒢, the full groupoid convolution algebra and the reduced one are naturally isomorphic.”
+
+**Sources:**
+
+- [Andrzej Hulanicki, Groups whose regular representation weakly contains all unitary representations, Studia Mathematica 24 (1964) 27–59](https://doi.org/10.4064/sm-24-1-27-59)
+
+### Morita equivalence of crossed products gives Mackey's imprimitivity theorem
+
+**Remember:** Systems of imprimitivity are representations of a Morita equivalent algebra.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 22D30, 46L08. arXiv math.OA, math.RT. Level 3: graduate.
+
+**Definition.** A system of imprimitivity based on G/H is a unitary representation U of G with a representation M of C₀(G/H) such that U(g)M(f)U(g)\* = M(g·f). By the universal property of the crossed product, these are exactly the representations of C₀(G/H) ⋊ G.
+
+**Problem.** Let H be a closed subgroup of a second countable locally compact group G. A unitary representation of G is induced from H if and only if it has a system of imprimitivity based on G/H.
+
+**How the definition helps.** Systems of imprimitivity are by definition representations of C₀(G/H) ⋊ G. The quoted Morita equivalence, a link by a bimodule with compatible full inner products, matches these with representations of C\*(H) (our own). Mackey's proof instead uses projection-valued measures and Borel cross sections (our own). The work moves into building the bimodule and checking that it induces Mackey's representation (our own).
+
+**Wikipedia:** [System of imprimitivity](https://en.wikipedia.org/wiki/System_of_imprimitivity). It says: “It was used by George Mackey as the basis for his theory of induced unitary representations of locally compact groups.”
+
+**Paper or page:** [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456). It says: “Let G be a second countable locally compact topological group and H be a closed subgroup of G. The crossed product C₀(G/H) ⋊ G is Morita equivalent to C\*(H).”
+
+**Sources:**
+
+- [Marc A. Rieffel, Induced representations of C\*-algebras, Advances in Mathematics 13 (1974) 176–257](https://doi.org/10.1016/0001-8708(74)90068-1)
+- [George W. Mackey, Induced representations of locally compact groups I, Annals of Mathematics 55 (1952) 101](https://doi.org/10.2307/1969423)
+
+### The crossed product's universal property reduces Stone–von Neumann to compact operators
+
+**Remember:** Weyl pairs are representations of the compacts, and the compacts have one.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 22D25, 81S05. arXiv math.OA, math.RT. Level 3: graduate.
+
+**Definition.** The crossed product A ⋊ G of a group action on a C\*-algebra A is defined so that its nondegenerate representations match covariant representations. A covariant representation is a representation π of A with a unitary representation U of G such that U(s)π(a)U(s)\* = π(s·a). The Schrödinger pair acts on L²(G) by translations and by multiplication with characters, the continuous homomorphisms from G to the circle.
+
+**Problem.** Let G be a locally compact abelian group with dual group Ĝ. Every pair of unitary representations U of G and V of Ĝ with U(s)V(γ)U(s)\* = γ(s)V(γ) is a multiple of the Schrödinger pair on L²(G).
+
+**How the definition helps.** By definition such a pair is a covariant representation of G acting on C₀(G) ≅ C\*(Ĝ), so it is a representation of the crossed product. The quoted theorem says the crossed product is 𝒦(L²(G)), whose nondegenerate representations are all multiples of the identity representation (our own). So the work moves into this isomorphism, and not into von Neumann's explicit projections built from Weyl operators (our own). For G = ℝⁿ the result is the Stone–von Neumann theorem.
+
+**Wikipedia:** [Stone–von Neumann theorem](https://en.wikipedia.org/wiki/Stone%E2%80%93von_Neumann_theorem). It says: “It is a general fact that covariant representations are in one-to-one correspondence with \*-representation of the corresponding crossed product.”
+
+**Paper or page:** [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456). It says: “Let G be a unimodular group. The crossed product C₀(G) ⋊\_α G is isomorphic to 𝒦(L²(G)).”
+
+**Sources:**
+
+- [George W. Mackey, A theorem of Stone and von Neumann, Duke Mathematical Journal 16 (1949) 313–326](https://doi.org/10.1215/S0012-7094-49-01631-2)
+- [Marc A. Rieffel, On the uniqueness of the Heisenberg commutation relations, Duke Mathematical Journal 39 (1972) 745–752](https://doi.org/10.1215/S0012-7094-72-03982-8)
+
+### The universal definition makes the noncommutative torus a crossed product by ℤ
+
+**Remember:** Same generators, same relation, same universal property, same algebra.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 46L85. arXiv math.OA. Level 3: graduate.
+
+**Definition.** A concrete definition of A(θ) takes the C\*-algebra generated by a multiplication operator and a rotation operator on L² of the circle. The universal definition instead takes the universal C\*-algebra generated by two unitaries U and V with VU = exp(2πiθ)UV. Universal means that any such pair in any C\*-algebra is the image of U and V under a unique \*-homomorphism.
+
+**Problem.** A(θ) is isomorphic to the crossed product C(𝕋) ⋊ ℤ, where ℤ acts on the circle by rotation through the angle 2πθ.
+
+**How the definition helps.** Both algebras have the same universal property, so they are isomorphic. C(𝕋) is universal for one unitary u, and the crossed product by ℤ adds a unitary w with w u w\* = λu (our own). That is exactly the defining property of A(θ), and the work moves into the universal property of crossed products by ℤ (our own). Matching the concrete algebra, for irrational θ, needs a separate theorem, the simplicity of A(θ) (our own).
+
+**Wikipedia:** [Noncommutative torus](https://en.wikipedia.org/wiki/Noncommutative_torus). It says: “The resulting C\*-crossed product C(S¹) ⋊ Z is isomorphic to Aθ.”
+
+**Paper or page:** [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456). It says: “The algebra of continuous functions on the circle 𝕋 denoted C(𝕋) is the universal C\*-algebra generated by u such that u\*u=uu\*=1.”
+
+**Sources:**
+
+- [Marc A. Rieffel, C\*-algebras associated with irrational rotations, Pacific Journal of Mathematics 93 (1981) 415–429](https://doi.org/10.2140/pjm.1981.93.415)
+
 ### Trivial dynamics turns thermal equilibrium into a trace
 
 **Remember:** With no time evolution, equilibrium means a trace.
@@ -1465,6 +1581,60 @@
 **Sources:**
 
 - [Rudolf Haag, Nicolaas M. Hugenholtz and Marinus Winnink, On the equilibrium states in quantum statistical mechanics](https://doi.org/10.1007/BF01646342)
+
+### Coefficient algebras give compact quantum groups a genuine Hopf \*-algebra
+
+**Remember:** Finite sums Δ(uᵢⱼ) = Σ uᵢₖ ⊗ uₖⱼ keep coefficients algebraic.
+
+*Makes the theorem clean to state or prove.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 16T05. arXiv math.QA, math.OA. Level 3: graduate.
+
+**Definition.** For a compact matrix quantum group (C, u), the coefficient algebra C₀ is the \*-subalgebra of C generated by the entries uᵢⱼ of the matrix u. The antipode κ is required only on C₀, not on all of C. For a compact group, C₀ is an algebra of representative functions, the matrix coefficients of finite-dimensional representations.
+
+**Problem.** The coefficient algebra C₀ is a dense Hopf \*-algebra inside C, with counit ε(uᵢⱼ) = δᵢⱼ and antipode κ. The full algebra C is not a Hopf algebra in general.
+
+**How the definition helps.** The comultiplication sends each generator to a finite sum, Δ(uᵢⱼ) = Σₖ uᵢₖ ⊗ uₖⱼ, so Δ maps C₀ into the algebraic tensor product C₀ ⊗ C₀. On all of C, Δ lands only in the completed tensor product, so the Hopf axioms cannot be written there. The antipode on C₀ is part of Woronowicz's axioms. The work moves into his proof that the counit and the antipode are well defined on C₀.
+
+**nLab:** [representative function](https://ncatlab.org/nlab/show/representative+function). It says: “The set of all representative functions on G is a Hopf F-algebra.”
+
+**Wikipedia:** [Compact quantum group](https://en.wikipedia.org/wiki/Compact_quantum_group). It says: “Strictly speaking, this does not make C(G) into a Hopf algebra, unless G is finite.”
+
+**Sources:**
+
+- [S. L. Woronowicz, Compact matrix pseudogroups, Communications in Mathematical Physics 111 (1987) 613–665](https://doi.org/10.1007/BF01219077)
+
+### Two-sided invariance makes the Haar state of a compact quantum group unique
+
+**Remember:** Two invariant states give h = h⋆h′ = h′, so only one exists.
+
+*True by definition.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 58B32. arXiv math.OA, math.QA. Level 3: graduate.
+
+**Definition.** A compact quantum group is a unital C\*-algebra C(G) with a coassociative unital \*-homomorphism Δ: C(G) → C(G) ⊗ C(G). The spans of (C(G)⊗1)Δ(C(G)) and (1⊗C(G))Δ(C(G)) must be dense in C(G) ⊗ C(G). A Haar state is a state h with h⋆φ = h = φ⋆h for every state φ. Here φ⋆ψ = (φ⊗ψ)∘Δ is the convolution of states.
+
+**Problem.** Every compact quantum group has exactly one Haar state.
+
+**How the definition helps.** Asking for invariance from both sides makes uniqueness a one-line computation. If h and h′ are Haar states, then h⋆h′ = h because h absorbs h′, and h⋆h′ = h′ because h′ absorbs h. With invariance from one side only, uniqueness needs more work: one first needs a two-sided invariant state (our own). The work moves into existence, which Woronowicz proved from the density axioms.
+
+**Paper or page:** [Analysis for idempotent states on quantum permutation groups](https://arxiv.org/abs/2301.13423), [Quantum expanders and property (T) discrete quantum groups](https://arxiv.org/abs/2502.01974). It says: “The algebra of continuous functions C(𝔾) on a compact quantum group admits a unique invariant state h, such that for all states φ on C(𝔾): h⋆φ=h=φ⋆h.”
+
+**Sources:**
+
+- [S. L. Woronowicz, Compact matrix pseudogroups, Communications in Mathematical Physics 111 (1987) 613–665](https://doi.org/10.1007/BF01219077)
+
+### Woronowicz density axioms exclude compact semigroups without a Haar state
+
+**Remember:** Density is cancellation, and compact cancellative semigroups are groups.
+
+*Rules out counterexamples. Confidence: medium.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 22C05. arXiv math.OA, math.QA. Level 3: graduate.
+
+**Definition.** Woronowicz defines a compact quantum group as a unital C\*-algebra C with a coassociative unital \*-homomorphism Δ: C → C ⊗ C. He also asks that the linear spans of (C⊗1)Δ(C) and (1⊗C)Δ(C) are dense in C ⊗ C. With coassociativity alone, the object is only a compact quantum semigroup.
+
+**Problem.** If C = C(S) for a compact semigroup S, the density axioms hold exactly when S is a compact group. The two-point semigroup with xy = x satisfies coassociativity but has no Haar state.
+
+**How the definition helps.** In the commutative case, each density axiom is a cancellation law in disguise. The span of (C⊗1)Δ(C) is the unital \*-algebra of functions (x,y) ↦ f(x)g(xy). By the Stone–Weierstrass theorem, it is dense exactly when xy = xy′ forces y = y′ (our own). For the semigroup with xy = x, this span is only C⊗1, and no state h satisfies ∫f(xy)dh(y) = h(f) for all x (our own). The work moves into the classical theorem that a compact Hausdorff semigroup with both cancellation laws is a group.
+
+**Wikipedia:** [Compact quantum group](https://en.wikipedia.org/wiki/Compact_quantum_group). It says: “the sets {(C ⊗ 1) Δ(C)} and {(1 ⊗ C) Δ(C)} are dense in C ⊗ C.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining K₀ of non-unital algebras by unitization matches compactly supported K-theory
 
@@ -1516,6 +1686,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining multipliers by a universal property gives the Stone–Čech compactification
+
+**Remember:** Largest essential unitization of C₀(X) is functions on the largest compactification.
+
+*True by definition.* MSC 46L85 (Noncommutative topology), 54D35, 46L05. arXiv math.OA, math.GN. Level 3: graduate.
+
+**Definition.** The multiplier algebra M(A) is the largest unital C\*-algebra that contains A as an essential ideal. Essential means that the ideal meets every other nonzero ideal. Every C\*-algebra that contains A as an essential ideal maps into M(A) by a unique injective map that fixes A.
+
+**Problem.** For a locally compact Hausdorff space X, the multiplier algebra of C₀(X) is Cb(X) ≅ C(βX), where βX is the Stone–Čech compactification. So the corona algebra M(C₀(X))/C₀(X) is C(βX ∖ X).
+
+**How the definition helps.** The universal property of M(A) is the algebraic copy of the universal property of βX, so the two sides match. A compactification K of X, a compact space in which X is dense and open, makes C₀(X) an essential ideal of C(K) (our own). The largest such algebra must then come from the largest compactification (our own). The usual definition by double centralizers, pairs of maps on A, needs a proof that it has this universal property (our own).
+
+**nLab:** [multiplier algebra](https://ncatlab.org/nlab/show/multiplier+algebra). It says: “In the commutative case, every unital commutative extension in which A is an essential ideal corresponds to a compactification of the spectrum Spec(A); M(A) is in that case the C\*-algebra of functions on the Stone–Čech compactification β(Spec(A)).”
+
+**Sources:**
+
+- [Charles A. Akemann, Gert K. Pedersen and Jun Tomiyama, Multipliers of C\*-algebras, Journal of Functional Analysis 13 (1973) 277–301](https://doi.org/10.1016/0022-1236(73)90036-0)
+
+### Nondegenerate homomorphisms make Gelfand duality match proper maps exactly
+
+**Remember:** Dense image ideal on the algebra side means proper map on the space side.
+
+*Rules out counterexamples.* MSC 46L85 (Noncommutative topology), 46L05, 54D45. arXiv math.OA, math.GN. Level 3: graduate.
+
+**Definition.** A \*-homomorphism φ from A to B is nondegenerate when the products φ(a)b span a dense subset of B. A continuous map f from X to Y is proper when the preimage of every compact set is compact.
+
+**Problem.** Let X and Y be locally compact Hausdorff spaces. The nondegenerate \*-homomorphisms from C₀(Y) to C₀(X) are exactly the maps g ↦ g∘f with f a proper continuous map from X to Y.
+
+**How the definition helps.** Nondegeneracy removes the homomorphisms that come from no map of spaces. An example is the inclusion of the ideal C₀((0,1)) into C(\[0,1\]), which no map from \[0,1\] to (0,1) induces (our own). Under nondegeneracy, each point evaluation of C₀(X) pulls back to a nonzero character of C₀(Y), and so to a point f(x) of Y (our own). The condition that each g∘f vanishes at infinity then says exactly that f is proper (our own).
+
+**nLab:** [Gelfand duality](https://ncatlab.org/nlab/show/Gelfand+duality). It says: “between the category of locally compact Hausdorff spaces and proper maps and the category of commutative nonunital C\*-algebras with nondegenerate \*-homomorphisms as morphisms.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The universal definition gives the noncommutative torus a gauge action and trace
+
+**Remember:** Rescaled generators satisfy the same relation, so the torus acts.
+
+*True by definition.* MSC 46L85 (Noncommutative topology), 46L55. arXiv math.OA. Level 3: graduate.
+
+**Definition.** The concrete definition of A(θ), for irrational θ, uses two operators on L² of the circle, and there the symmetries are not visible. Instead define A(θ) as the universal C\*-algebra generated by unitaries U and V with VU = λUV, where λ = exp(2πiθ). The gauge action of the torus 𝕋² then sends U to zU and V to wV for \|z\| = \|w\| = 1.
+
+**Problem.** For every θ, A(θ) has a faithful tracial state τ with τ(UᵐVⁿ) = 0 unless m = n = 0. A tracial state is a state with τ(xy) = τ(yx), and faithful means τ(x\*x) &gt; 0 for x ≠ 0.
+
+**How the definition helps.** The pair zU and wV satisfies the same relation, so the universal property gives the gauge action for free (our own). Averaging over 𝕋² maps onto the fixed points, which are the scalars, and kills no nonzero positive element, so it defines τ (our own). The trace property reduces to monomials, where both orders of a product give the same power of λ (our own). With the concrete definition the gauge action, and so τ, must instead be built from unitaries that implement it (our own).
+
+**nLab:** [noncommutative torus](https://ncatlab.org/nlab/show/noncommutative+torus). It says: “we get the C\*-algebra generated by two unitary operators U and V subject to the relation UV=θVU.”
+
+**Wikipedia:** [Noncommutative torus](https://en.wikipedia.org/wiki/Noncommutative_torus). It says: “Every irrational rotation algebra has a unique tracial state.”
+
+**Sources:**
+
+- [Marc A. Rieffel, C\*-algebras associated with irrational rotations, Pacific Journal of Mathematics 93 (1981) 415–429](https://doi.org/10.2140/pjm.1981.93.415)
+
 ### Writing closed convex functions as suprema of affine functions gives weak semicontinuity
 
 **Remember:** The weak topology already sees each affine function.
@@ -1531,6 +1755,26 @@
 **Paper or page:** [Convex Real Function on Normed Vector Space is Lower Semicontinuous iff Weakly Lower Semicontinuous](https://proofwiki.org/wiki/Convex_Real_Function_on_Normed_Vector_Space_is_Lower_Semicontinuous_iff_Weakly_Lower_Semicontinuous). It says: “Let f : X → ℝ be a convex function.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Liquid real vector spaces are closed under extensions, unlike Banach spaces
+
+**Remember:** Allow non-convex measures, and extensions of Banach spaces stay inside.
+
+*Rules out counterexamples.* MSC 46A16 (Not locally convex spaces (metrizable topological linear spaces, locally bounded spaces, quasi-Banach spaces, etc.)), 46M05. arXiv math.FA, math.AG. Level 4: research.
+
+**Definition.** Fix 0 &lt; p ≤ 1. For a profinite set S, let M&lt;p(S) be the union of the spaces of p′-measures on S over all p′ &lt; p. It need not be locally convex. A condensed real vector space V is p-liquid if every map from S to V extends uniquely to a linear map from M&lt;p(S).
+
+**Problem.** For each 0 &lt; p ≤ 1, the p-liquid real vector spaces form an abelian category closed under kernels, cokernels and extensions. It has a tensor product that makes liquidification symmetric monoidal.
+
+**How the definition helps.** Liquidity uses non-convex measures, so it admits the quasi-Banach spaces that arise as extensions of Banach spaces. The counterexample is Ribe's extension of ℓ¹ by ℝ (Corollary 5.4 of the analytic notes). Its middle term is complete but not locally convex, so Banach spaces are not closed under extensions. Kalton's theorem, that an extension of p-Banach spaces is p′-Banach for all p′ &lt; p, explains why the definition uses every p′ &lt; p. The hard work is Theorem 6.6, which shows that this defines an analytic ring.
+
+**nLab:** [liquid vector space](https://ncatlab.org/nlab/show/liquid+vector+space). It says: “Roughly, completeness is expressed as ability to integrate with respect to Radon measures. This doesn't quite work as stated, and to make this rigorous one has to bring L<sup>p-spaces</sup> for 0&lt;p≤1 (i.e., the non-convex case) into the picture.”
+
+**Wikipedia:** [Condensed mathematics](https://en.wikipedia.org/wiki/Condensed_mathematics). It says: “In condensed mathematics, liquid vector spaces are alternatives to complete topological vector spaces, the category of which has better abstract properties than that of complete topological vector spaces.”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Analytic Geometry (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019–2020)](https://www.math.uni-bonn.de/people/scholze/Analytic.pdf)
 
 ### Webbed spaces extend the closed graph theorem beyond Fréchet spaces
 
@@ -1584,6 +1828,25 @@
 
 - [N. Borchard and G. Wachsmuth, Characterization of Hilbertizable spaces via convex functions, arXiv:2506.04686 (2025)](https://arxiv.org/abs/2506.04686v1)
 - [S. Kwapień, Isomorphic characterizations of inner product spaces by orthogonal series with vector valued coefficients, Studia Math. 44 (1972) 583–595](https://doi.org/10.4064/sm-44-6-583-595)
+
+### Condensed duals of Banach spaces are Smith spaces, so biduality always holds
+
+**Remember:** Dualize with compact sets, not the norm, and c₀ becomes reflexive.
+
+*Rules out counterexamples.* MSC 46B10 (Duality and reflexivity in normed linear and Banach spaces), 46A20. arXiv math.FA. Level 4: research.
+
+**Definition.** A Smith space is a complete locally convex space with a compact set K such that every compact set lies in some multiple λK. The condensed dual Hom(V, ℝ) is the condensed space of linear maps from V to ℝ. It remembers uniform convergence on compact sets, not the norm topology.
+
+**Problem.** For every Banach space V, the condensed dual of V is a Smith space, and V maps isomorphically to its double condensed dual. So Banach spaces and Smith spaces are anti-equivalent, and even c₀ is reflexive in this sense.
+
+**How the definition helps.** The condensed dual carries the compact-open structure, which is a Smith space whose own dual gives V back (Theorem 4.7 of the analytic notes). This removes the classical counterexample c₀, whose double dual in the norm sense is the larger space ℓ∞ (our own). Smith proved this duality in 1952 with the topology of uniform convergence on compact sets; the condensed dual gives that topology automatically. The work is in one computation: the dual of the Smith space of measures on S is C(S, ℝ).
+
+**Wikipedia:** [Smith space](https://en.wikipedia.org/wiki/Smith_space). It says: “a Smith space is a complete compactly generated locally convex topological vector space X having a universal compact set”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Analytic Geometry (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019–2020)](https://www.math.uni-bonn.de/people/scholze/Analytic.pdf)
+- [M. F. Smith, The Pontrjagin duality theorem in linear spaces, Annals of Mathematics 56 (1952), 248–253](https://doi.org/10.2307/1969798)
 
 ### Grothendieck's property forces separable Banach spaces to be reflexive
 
@@ -1857,6 +2120,24 @@
 
 - [Kristin Courtney, Niklas Galke, Lauritz van Luijk, Alexander Stottmeister, Soft inductive limits of operator systems and a noncommutative Lazar-Lindenstrauss theorem, arXiv:2510.02019 (2025)](https://arxiv.org/abs/2510.02019)
 
+### Countable approximate units make Morita equivalence the same as stable isomorphism
+
+**Remember:** Countable approximate units keep Morita equivalent algebras inside one separable stabilization.
+
+*Rules out counterexamples.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 46L80. arXiv math.OA. Level 4: research.
+
+**Definition.** A C\*-algebra is σ-unital when it has a countable approximate unit, a sequence eₙ with eₙa → a for every element a. Every separable C\*-algebra is σ-unital. Two C\*-algebras A and B are stably isomorphic when A ⊗ 𝒦 ≅ B ⊗ 𝒦, where 𝒦 is the algebra of compact operators on a separable infinite-dimensional Hilbert space.
+
+**Problem.** Two σ-unital C\*-algebras are strongly Morita equivalent if and only if they are stably isomorphic. In particular, they then have isomorphic K-groups.
+
+**How the definition helps.** The countability condition removes algebras that are too large for the separable Hilbert space inside 𝒦. Without it the theorem fails. Take the compact operators 𝒦(H) on a non-separable Hilbert space H. Then ℂ and 𝒦(H) are Morita equivalent through H, but 𝒦(H) ⊗ 𝒦 is not separable while ℂ ⊗ 𝒦 = 𝒦 is (our own). With a countable approximate unit, the bimodule is countably generated, and a stabilization theorem for countably generated Hilbert modules does the work (our own).
+
+**Paper or page:** [Refinement of Higher-Rank Graph Reduction](https://arxiv.org/abs/2211.17156). It says: “Let 𝔸₁ and 𝔸₂ be C\*-algebras with countable approximate identities. Then 𝔸₁ ⊗ 𝒦 ≅ 𝔸₂ ⊗ 𝒦 if and only if 𝔸₁ is Morita equivalent to 𝔸₂”
+
+**Sources:**
+
+- [Lawrence G. Brown, Philip Green and Marc A. Rieffel, Stable isomorphism and strong Morita equivalence of C\*-algebras, Pacific Journal of Mathematics 71 (1977) 349–363](https://doi.org/10.2140/pjm.1977.71.349)
+
 ### Selfless C\*-algebras with a trace are simple with strict comparison
 
 **Remember:** If A cannot tell itself from its free product, A is regular.
@@ -2095,6 +2376,78 @@
 - [Toke Meier Carlsen, Eun Ji Kang, A Cuntz–Krieger Uniqueness theorem for C\*-algebras of relative generalized Boolean dynamical systems, arXiv:2305.09232 (2023)](https://arxiv.org/abs/2305.09232)
 - [Alex Kumjian, David Pask, Iain Raeburn, Jean Renault, Graphs, groupoids, and Cuntz–Krieger algebras, J. Funct. Anal. (1997)](https://doi.org/10.1006/jfan.1996.3001)
 
+### Effectiveness excludes group isotropy and makes ideals meet the diagonal
+
+**Remember:** No open isotropy, so no ideal can hide from the diagonal.
+
+*Rules out counterexamples.* MSC 46L55 (Noncommutative dynamical systems), 22A22, 46L05. arXiv math.OA, math.DS. Level 4: research.
+
+**Definition.** An étale groupoid is one whose range and source maps are local homeomorphisms; its unit space G⁽⁰⁾ is the set of its points. G is effective when the interior of its isotropy, the arrows from a point to itself, is only G⁽⁰⁾. For a countable discrete group acting on a space, this means that points with trivial stabilizer are dense.
+
+**Problem.** Let G be an effective, locally compact Hausdorff étale groupoid. Then every nonzero ideal of the reduced C\*-algebra C\*ᵣ(G), the completion in its regular representation, contains a nonzero function on the unit space.
+
+**How the definition helps.** Effectiveness removes cases such as the group ℤ sitting over one point, where the conclusion fails. There C\*(ℤ) ≅ C(𝕋), and the ideal of functions vanishing at 1 contains no nonzero constant (our own). Effectiveness is not needed in every case, since the free group F₂ over a point has a simple reduced algebra (our own). The quoted paper proves a partial converse for the full algebra.
+
+**Paper or page:** [Some results regarding the ideal structure of C\*-algebras of étale groupoids](https://arxiv.org/abs/2211.06126). It says: “If G is effective, then every nontrivial ideal of C\*<sub>r</sub>(G) contains a nonzero element of C₀(G⁽⁰⁾).”
+
+**Sources:**
+
+- [Jean Renault, A Groupoid Approach to C\*-Algebras, Lecture Notes in Mathematics 793, Springer (1980)](https://doi.org/10.1007/BFb0091072)
+
+### Groupoid equivalence makes the Kronecker flow algebra Morita equivalent to A(θ)
+
+**Remember:** Cut the flow by a transversal circle and get the rotation algebra.
+
+*True by definition. Confidence: medium.* MSC 46L55 (Noncommutative dynamical systems), 46L85, 57R30. arXiv math.OA, math.DS. Level 4: research.
+
+**Definition.** The Kronecker flow moves a point of the torus 𝕋² along lines of slope θ, and its C\*-algebra is the crossed product C(𝕋²) ⋊ ℝ. A transversal is a circle that meets every flow line, and the first-return map on it is rotation by angle 2πθ. Morita equivalent algebras are linked by a bimodule with compatible full inner products.
+
+**Problem.** For irrational θ, the C\*-algebra C(𝕋²) ⋊ ℝ of the Kronecker flow is Morita equivalent to the noncommutative torus A(θ) = C(𝕋) ⋊ ℤ.
+
+**How the definition helps.** The symmetric imprimitivity theorem, with G = ℝ², H = ℤ² and K the line ℝ(1, θ), avoids building a bimodule by hand (our own). It makes C(ℤ²∖ℝ²) ⋊ K, the Kronecker flow algebra, Morita equivalent to C₀(ℝ²/K) ⋊ ℤ² (our own). The second algebra is C₀(ℝ) ⋊ (ℤ + θℤ), which one more such step makes Morita equivalent to A(θ) (our own). In geometric terms the transversal circle cuts the flow down to its first-return rotation (our own).
+
+**nLab:** [noncommutative torus](https://ncatlab.org/nlab/show/noncommutative+torus). It says: “The following Lie groupoid is Morita equivalent to the above Lie groupoid: take the groupoid quotient of U(1)² (i.e., a torus) by the action of the Lie group R of real numbers”
+
+**Sources:**
+
+- [Marc A. Rieffel, Strong Morita equivalence of certain transformation group C\*-algebras, Mathematische Annalen 222 (1976)](https://doi.org/10.1007/BF01418238)
+
+### Groupoid equivalence makes the symmetric imprimitivity theorem a one-line check
+
+**Remember:** Let H and K act on G from two sides.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 22A22, 46L08. arXiv math.OA. Level 4: research.
+
+**Definition.** A space Z is an equivalence between groupoids G and H when G acts on Z from the left and H from the right. Both actions are free, with no nontrivial stabilizers, and proper, they commute, and each orbit space is the other groupoid's unit space. A transformation groupoid K ⋉ Y encodes an action of a group K on a space Y.
+
+**Problem.** For closed subgroups H and K of a locally compact group G, the crossed products C₀(G/K) ⋊ H and C₀(H∖G) ⋊ K are Morita equivalent.
+
+**How the definition helps.** The group G itself is visibly an equivalence between the two transformation groupoids, with H acting by left and K by right translation (our own). Both actions are free and proper, they commute, and the orbit spaces are H∖G and G/K (our own). The quoted equivalence theorem of Muhly, Renault and Williams then gives a bimodule with compatible full inner products, which is a Morita equivalence. Rieffel and Green instead wrote down the bimodule and checked its inner products by hand (our own).
+
+**Paper or page:** [Groupoids, equivalence bibundles and bimodules for noncommutative solenoids](https://arxiv.org/abs/2503.13251). It says: “C<sub>c</sub>(Z) can be completed to a C\*(G,λ) - C\*(H,μ)- imprimitivity bimodule X=X<sub>H</sub><sup>G</sup>.”
+
+**Sources:**
+
+- [Marc A. Rieffel, Strong Morita equivalence of certain transformation group C\*-algebras, Mathematische Annalen 222 (1976) 7–22](https://doi.org/10.1007/BF01418238)
+
+### Minimal effective groupoids have simple algebras, which excludes the trivial action
+
+**Remember:** Dense orbits and no open isotropy give a simple algebra.
+
+*Rules out counterexamples.* MSC 46L55 (Noncommutative dynamical systems), 22A22, 37A55. arXiv math.OA, math.DS. Level 4: research.
+
+**Definition.** An étale groupoid, with range and source maps that are local homeomorphisms, is minimal when every orbit is dense in the unit space. It is effective when its isotropy, the arrows from a point to itself, has no interior outside the units. For a group acting on a space, these say that every orbit is dense and that points with trivial stabilizer are dense.
+
+**Problem.** For a second countable Hausdorff étale groupoid G that is minimal and effective, the reduced C\*-algebra C\*ᵣ(G), the completion in its regular representation, is simple. In particular the noncommutative torus A(θ) is simple for irrational θ.
+
+**How the definition helps.** Effectiveness removes the trivial action of ℤ on a point, which is minimal but gives the non-simple algebra C(𝕋) (our own). Effectiveness makes every nonzero ideal meet C₀(G⁽⁰⁾) in an ideal C₀(U), with U open and invariant (our own). Minimality forces U to be the whole unit space, so the ideal is everything (our own). For Hausdorff groupoids the support condition in the quote holds automatically (our own).
+
+**Paper or page:** [An overview on self-similar graphs, their generalizations, and their associated algebras](https://arxiv.org/abs/2509.18702), [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456). It says: “If 𝒢 is minimal and effective and for every nonzero a ∈ C\*<sub>r</sub>(𝒢), supp(j(a)) has nonempty interior, then C\*<sub>r</sub>(𝒢) is simple.”
+
+**Sources:**
+
+- [Jonathan Brown, Lisa Orloff Clark, Cynthia Farthing and Aidan Sims, Simplicity of algebras associated to étale groupoids, Semigroup Forum 88 (2014) 433–452](https://doi.org/10.1007/s00233-013-9546-z)
+
 ### Outer modular flow forgets states
 
 **Remember:** Quotient by inner conjugation to forget the state.
@@ -2112,6 +2465,24 @@
 **Sources:**
 
 - [Alain Connes, Une classification des facteurs de type III](https://doi.org/10.24033/asens.1247)
+
+### Stabilizing by compact operators makes Takai duality hold for abelian groups
+
+**Remember:** Crossing by G then by its dual returns A, plus compacts.
+
+*Makes the theorem clean to state or prove.* MSC 46L55 (Noncommutative dynamical systems), 46L05. arXiv math.OA. Level 4: research.
+
+**Definition.** Let an abelian group G act on A, with dual group Ĝ of characters, the continuous homomorphisms from G to the circle. The dual action of Ĝ on A ⋊ G fixes A and multiplies the unitary of s ∈ G by γ(s). The stabilization A ⊗ 𝒦 is Morita equivalent to A, that is, linked to it by a bimodule with compatible full inner products.
+
+**Problem.** Let a locally compact abelian group G act on a C\*-algebra A. Then the double crossed product (A ⋊ G) ⋊ Ĝ is isomorphic to A ⊗ 𝒦(L²(G)), so it is Morita equivalent to A.
+
+**How the definition helps.** In general the double crossed product is not A, but it is always A up to compact operators, so the theorem needs the stabilized form. For example, ℂ ⋊ ℤ is C(𝕋), and C(𝕋) ⋊ 𝕋 under rotation is 𝒦(ℓ²(ℤ)), not ℂ (our own). The dual action exists by the universal property of the crossed product (our own). The quote is the general form for any group, with a coaction in place of Ĝ (our own).
+
+**Paper or page:** [Bijections Between Sets of Invariant Ideals, Via the Ladder Technique](https://arxiv.org/abs/2406.06780). It says: “The canonical map Φ\_α is an α̂̂−(α ⊗ Ad ρ) equivariant isomorphism of A ⋊\_α G ⋊\_α̂ G onto A ⊗ 𝒦.”
+
+**Sources:**
+
+- [Hiroshi Takai, On a duality for crossed products of C\*-algebras, Journal of Functional Analysis 19 (1975) 25–39](https://doi.org/10.1016/0022-1236(75)90004-X)
 
 ### The continuous core forgets states
 
@@ -2149,6 +2520,320 @@
 
 - [Roberto Longo and Yoh Tanimoto, Rotational KMS States and Type I Conformal Nets](https://doi.org/10.1007/s00220-017-2969-8)
 
+### Crossed products make Rieffel deformation keep K-theory
+
+**Remember:** Same crossed product, so the same K-theory.
+
+*True by definition.* MSC 46L65 (Quantizations, deformations for selfadjoint operator algebras), 46L80. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** Let ℝⁿ act on a C\*-algebra A, and let Θ be a real antisymmetric matrix. Rieffel defined the deformed algebra A(Θ) by twisting the product of A with an oscillatory integral over the action. Kasprzak instead builds A(Θ) inside the multiplier algebra of the crossed product A ⋊ ℝⁿ, using a twisted dual action. Then A(Θ) ⋊ ℝⁿ ≅ A ⋊ ℝⁿ by construction.
+
+**Problem.** For every action of ℝⁿ, the deformed algebra has the same K-groups: K₀(A(Θ)) ≅ K₀(A) and K₁(A(Θ)) ≅ K₁(A). For example, each noncommutative torus, a Rieffel deformation of C(𝕋²), has K₀ ≅ K₁ ≅ ℤ².
+
+**How the definition helps.** The crossed products of A and A(Θ) agree by definition, and Connes' Thom isomorphism fixes the K-theory of a crossed product by ℝⁿ. Connes' theorem says that a crossed product by ℝⁿ shifts K-theory by n degrees, modulo 2. Applying it to A and to A(Θ) gives isomorphic K-groups after the same shift. The work moves into the comparison of this construction with Rieffel's algebra, and into Connes' theorem.
+
+**Paper or page:** [On q-tensor products of Cuntz algebras](https://arxiv.org/abs/2112.06690), [On q-tensor products of Cuntz algebras](https://arxiv.org/abs/2112.06690). It says: “For a C\*-algebra 𝒜 one has K₀(𝒜\_Θ) = K₀(𝒜) and K₁(𝒜\_Θ)=K₁(𝒜).”
+
+**Sources:**
+
+- [Paweł Kasprzak, Rieffel deformation via crossed products, Journal of Functional Analysis 257 (2009) 1288–1332](https://doi.org/10.1016/j.jfa.2009.05.013)
+- [Marc A. Rieffel, Deformation quantization for actions of ℝᵈ, Memoirs of the AMS 106, no. 506 (1993)](https://doi.org/10.1090/memo/0506)
+
+### Crossed products make Rieffel deformation keep nuclearity
+
+**Remember:** Nuclearity survives crossed products by ℝⁿ, and both algebras share one.
+
+*True by definition. Confidence: medium.* MSC 46L65 (Quantizations, deformations for selfadjoint operator algebras), 46L05. arXiv math.OA. Level 4: research.
+
+**Definition.** Kasprzak defines the Rieffel deformation A(Θ) of a C\*-algebra A with an action of ℝⁿ inside the multiplier algebra of A ⋊ ℝⁿ. This gives A(Θ) ⋊ ℝⁿ ≅ A ⋊ ℝⁿ. A C\*-algebra is nuclear if its algebraic tensor product with every C\*-algebra has only one C\*-norm.
+
+**Problem.** The Rieffel deformation A(Θ) is nuclear if and only if A is nuclear.
+
+**How the definition helps.** Nuclearity passes to and from crossed products by ℝⁿ, and the two crossed products agree by definition. Crossed products by amenable groups such as ℝⁿ keep nuclearity, so A ⋊ ℝⁿ ≅ A(Θ) ⋊ ℝⁿ is nuclear when A is. Takai duality recovers A(Θ), tensored with the compact operators, as a crossed product of A(Θ) ⋊ ℝⁿ by ℝⁿ, so A(Θ) is nuclear too. The converse follows because A is the deformation of A(Θ) by −Θ (our own summary of the argument).
+
+**Paper or page:** [On q-tensor products of Cuntz algebras](https://arxiv.org/abs/2112.06690). It says: “A C\*-algebra 𝒜\_Θ is nuclear if and only if 𝒜 is nuclear.”
+
+**Sources:**
+
+- [Paweł Kasprzak, Rieffel deformation via crossed products, Journal of Functional Analysis 257 (2009) 1288–1332](https://doi.org/10.1016/j.jfa.2009.05.013)
+
+### Discrete ħ lets matrices quantize the sphere
+
+**Remember:** Quantize only at ħ = 1/N, and finite matrices suffice.
+
+*Makes the theorem clean to state or prove.* MSC 46L65 (Quantizations, deformations for selfadjoint operator algebras), 53D50. arXiv math.OA, math.SG. Level 4: research.
+
+**Definition.** A strict deformation quantization, in one common form of the definition, gives a C\*-algebra for each ħ in a set I ⊂ \[0, 1\] that accumulates only at 0. It also gives maps Q from a dense Poisson subalgebra of functions into these algebras. As ħ → 0, they must satisfy ‖Q(f)Q(g) − Q(fg)‖ → 0 and ‖\[Q(f), Q(g)\]/iħ − Q({f,g})‖ → 0, and ‖Q(f)‖ must tend to the supremum norm of f.
+
+**Problem.** The 2-sphere has a strict deformation quantization with ħ = 1/N, by Bordemann, Meinrenken and Schlichenmaier. Each algebra is the algebra of (N + 1) × (N + 1) matrices, made of Berezin–Toeplitz operators on holomorphic sections of the N-th power of a line bundle.
+
+**How the definition helps.** The definition asks for algebras only at a discrete set of values of ħ, such as ħ = 1/N, where the needed line bundle exists. A definition that asked for a convergent star product would need much harder analysis, and the nLab says that this was open for the sphere. The Toeplitz operator of f multiplies a holomorphic section by f and projects back, so it acts on an (N + 1)-dimensional space. The work moves into the estimates of Bordemann, Meinrenken and Schlichenmaier for products and commutators of Toeplitz operators.
+
+**nLab:** [deformation quantization of the 2-sphere](https://ncatlab.org/nlab/show/deformation+quantization+of+the+2-sphere). It says: “One definition of strict deformation quantization takes it to be such a formal deformation quantization which happens to converge for finite real number values of ħ. This is not known to exist for the 2-sphere.”
+
+**Paper or page:** [Strict Quantization for Compact Pseudo-Kähler Manifolds and Group Actions](https://arxiv.org/abs/2410.03322). It says: “the semi-classical Dirac condition holds ‖ki\[T<sup>G<sub>k</sub></sup>\[f̃\], T<sup>G<sub>k</sub></sup>\[g̃\]\] − T<sup>G<sub>k</sub></sup>\[{f̃, g̃}\]‖ = O(1/k)”
+
+**Sources:**
+
+- [Martin Bordemann, Eckhard Meinrenken, Martin Schlichenmaier, Toeplitz quantization of Kähler manifolds and gl(N), N → ∞ limits, Communications in Mathematical Physics 165 (1994) 281–296](https://doi.org/10.1007/BF02099772)
+
+### Opposite phases invert Rieffel deformation
+
+**Remember:** Opposite phases cancel, so deforming by Θ then −Θ does nothing.
+
+*True by definition. Confidence: medium.* MSC 46L65 (Quantizations, deformations for selfadjoint operator algebras), 46L85. arXiv math.OA. Level 4: research.
+
+**Definition.** Suppose ℝⁿ acts on A periodically, that is, through a torus action. Then A splits into spectral subspaces A(p), p ∈ ℤⁿ, on which the torus acts by the character p. The Rieffel deformation A(Θ) multiplies a ∈ A(p) and b ∈ A(q) with an extra phase factor exp(2πi⟨Θp, q⟩). Then it completes in a C\*-norm.
+
+**Problem.** The torus action passes to A(Θ), and deforming A(Θ) by −Θ gives back A. The identity map on spectral subspaces is an equivariant \*-isomorphism from A to the deformation of A(Θ) by −Θ.
+
+**How the definition helps.** The phase factors for Θ and for −Θ cancel, so the twice-deformed product agrees with the product of A on each pair of spectral subspaces. The torus still acts on A(Θ) by the same characters, so the second deformation is defined. For the norms, a faithful representation π of A gives a faithful twisted representation πΘ, and twisting again by −Θ returns π (our own summary). With Rieffel's definition by oscillatory integrals, the same fact needs a computation with iterated integrals.
+
+**Paper or page:** [On q-tensor products of Cuntz algebras](https://arxiv.org/abs/2112.06690), [On q-tensor products of Cuntz algebras](https://arxiv.org/abs/2112.06690). It says: “The mapping id : 𝒜 → (𝒜\_Θ)<sub>−Θ</sub> is an equivariant \*-isomorphism.”
+
+**Sources:**
+
+- [Marc A. Rieffel, Deformation quantization for actions of ℝᵈ, Memoirs of the AMS 106, no. 506 (1993)](https://doi.org/10.1090/memo/0506)
+
+### Rieffel deformation transports invariant convolution semigroups
+
+**Remember:** Maps that commute with the action extend to the crossed product and restrict.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L65 (Quantizations, deformations for selfadjoint operator algebras), 46L67. arXiv math.OA. Level 4: research.
+
+**Definition.** Let Γ be a closed abelian subgroup of a locally compact quantum group 𝔾, and Ψ a 2-cocycle on the dual group of Γ. The function algebra of the Rieffel deformation sits inside the multiplier algebra of the crossed product of C₀(𝔾) by Γ². A twisted dual action picks it out. A convolution semigroup is a weak-star continuous family of states μₜ with μₛ ⋆ μₜ = μₛ₊ₜ.
+
+**Problem.** Take weak-star continuous convolution semigroups of states that are invariant under the adjoint action of Γ. Those on 𝔾 correspond canonically and one to one with those on its Rieffel deformation (Skalski–Viselter).
+
+**How the definition helps.** A map that commutes with the action of Γ extends to the crossed product and preserves the deformed subalgebra, so it restricts to the deformation. Convolution by an invariant state commutes with the translations by Γ, and the construction respects composition, so semigroups go to semigroups. Deforming back with the conjugate cocycle gives the inverse correspondence. The work moves into showing that the restricted maps are again convolution by states of the deformed quantum group (our own summary).
+
+**Paper or page:** [Convolution semigroups on Rieffel deformations of locally compact quantum groups](https://arxiv.org/abs/2311.04630), [Convolution semigroups on Rieffel deformations of locally compact quantum groups](https://arxiv.org/abs/2311.04630). It says: “Then the canonical completely positive ‘extension’ S̃ of S to the crossed product A ⋊\_ρ Γ is non-degenerate and preserves the algebra A<sup>Ψ</sup>, and the respective restriction S<sup>Ψ</sup>: A<sup>Ψ</sup> → A<sup>Ψ</sup> is a completely positive map of norm 1.”
+
+**Sources:**
+
+- [Adam Skalski, Ami Viselter, Convolution semigroups on Rieffel deformations of locally compact quantum groups, Letters in Mathematical Physics 114 (2024), article 52](https://doi.org/10.1007/s11005-024-01797-w)
+
+### A two-sided null space restores the Kawada–Itô theorem for quantum groups
+
+**Remember:** Idempotent states come from subgroups exactly when their null space is two-sided.
+
+*Rules out counterexamples. Confidence: medium.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 60B15. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** A state φ on C(G) is idempotent when φ⋆φ = φ for the convolution φ⋆ψ = (φ⊗ψ)Δ. A Haar idempotent is a state h′ ∘ π, where π: C(G) → C(H) defines a quantum subgroup H and h′ is the Haar state of H. The null space of φ is the set of f with φ(f\*f) = 0.
+
+**Problem.** An idempotent state on a compact quantum group is the Haar state of a quantum subgroup exactly when its null space is a two-sided ideal. Not every idempotent state has this property, as Pal's example on the Kac–Paljutkin quantum group shows.
+
+**How the definition helps.** A null space that is a two-sided ideal can be divided out, and the quotient is the algebra of the quantum subgroup. On a classical compact group every null space is a two-sided ideal, since C(G) is commutative, so the Kawada–Itô theorem holds with no condition. Pal found an idempotent state on the eight-dimensional Kac–Paljutkin quantum group that does not come from a subgroup. The null space condition removes exactly such states.
+
+**Paper or page:** [Analysis for idempotent states on quantum permutation groups](https://arxiv.org/abs/2301.13423), [Analysis for idempotent states on quantum permutation groups](https://arxiv.org/abs/2301.13423). It says: “Let 𝔾 be a compact quantum group and φ∈C(𝔾)\* an idempotent state. Then φ is a Haar idempotent if and only if the null-space Nᵩ = { f∈C(𝔾) : φ(\|f\|²)=0 } is a two-sided ideal.”
+
+**Sources:**
+
+- [A. Pal, A counterexample on idempotent states on a compact quantum group, Letters in Mathematical Physics 37 (1996) 75–77](https://doi.org/10.1007/BF00400140)
+- [U. Franz, A. Skalski and R. Tomatsu, Idempotent states on compact quantum groups and their classification on Uq(2), SUq(2), and SOq(3), Journal of Noncommutative Geometry 7 (2013) 221–254](https://doi.org/10.4171/JNCG/115)
+- [U. Franz and A. Skalski, On idempotent states on quantum groups, Journal of Algebra 322 (2009) 1774–1802](https://doi.org/10.1016/j.jalgebra.2009.05.037)
+
+### Cancellation in place of an antipode still produces counit and antipode
+
+**Remember:** Ask the Galois maps to be bijective, and ε and S appear.
+
+*True by definition. Confidence: medium.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 16T05. arXiv math.QA, math.OA. Level 4: research.
+
+**Definition.** Van Daele's multiplier Hopf algebras replace the antipode axiom by a cancellation property. The maps a ⊗ b ↦ Δ(a)(1⊗b) and a ⊗ b ↦ (a⊗1)Δ(b) must be bijections of A ⊗ A. These are the Galois maps of A over itself, and they make sense when A has no unit, as for finitely supported functions on a discrete group.
+
+**Problem.** A bornological algebra with comultiplication and a positive faithful left-invariant integral has cancellation exactly when a counit ε and an antipode S exist with the Hopf-type identities. In that case ε and S are unique.
+
+**How the definition helps.** The antipode is read off from the inverse of the Galois map, through m(S⊗id)(Δ(a)(1⊗b)) = ε(a)b. So existence and uniqueness of ε and S follow from the bijections. Unlike an antipode, cancellation needs no unit, so one definition covers compact and discrete quantum groups and their duals. The work moves into Van Daele's construction of ε and S from the inverse maps.
+
+**Paper or page:** [Bornological quantum groups as locally compact quantum groups](https://arxiv.org/abs/2106.02386). It says: “The following are equivalent: (i) Δ satisfies the cancellation property, (ii) there exists an essential homomorphism ε:𝒜→ℂ, called the counit, and a bounded algebra antiautomorphism coalgebra antiautomorphism S:𝒜→𝒜, called the antipode,”
+
+**Sources:**
+
+- [A. Van Daele, Multiplier Hopf algebras, Transactions of the American Mathematical Society 342 (1994) 917–932](https://doi.org/10.1090/S0002-9947-1994-1220906-5)
+- [Bornological quantum groups as locally compact quantum groups (arXiv 2106.02386)](https://arxiv.org/abs/2106.02386)
+
+### Fixing a state lets quantum automorphism groups of matrix algebras exist
+
+**Remember:** Fix a state on Mₙ, and a largest quantum symmetry group appears.
+
+*Rules out counterexamples. Confidence: medium.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 58B32. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** An action of a compact quantum group on a finite-dimensional C\*-algebra B is a unital \*-homomorphism α: B → B ⊗ C(G) satisfying the coaction identities. Wang's quantum automorphism group of (B, ψ) is the universal compact quantum group among actions that preserve a fixed faithful state ψ, that is, (ψ⊗id)α(b) = ψ(b)1.
+
+**Problem.** For every finite-dimensional C\*-algebra B with a faithful state ψ, a universal compact quantum group acting on B and preserving ψ exists. Without the condition on ψ, the matrix algebra Mₙ with n ≥ 2 has no universal compact quantum group acting on it.
+
+**How the definition helps.** Preserving ψ makes the action unitary on the Hilbert space L²(B, ψ), so the universal object is a quotient of a universal unitary quantum group (our own). Without ψ, the category of all actions on Mₙ has no final object, as Wang showed (our own). For B = ℂⁿ no state is needed: the quantum permutation group Sₙ⁺ is universal among all actions, and it preserves the uniform state (our own).
+
+**Paper or page:** [On the von Neumann algebra of class functions on a compact quantum group](https://arxiv.org/abs/2103.06216), [A quantum Frucht's theorem and quantum automorphisms of quantum Cayley graphs](https://arxiv.org/abs/2503.11149). It says: “the quantum automorphism group of a finite dimensional C∗-algebra equipped with a δ-form”
+
+**Sources:**
+
+- [S. Wang, Quantum symmetry groups of finite spaces, Communications in Mathematical Physics 195 (1998) 195–211](https://doi.org/10.1007/s002200050385)
+
+### Monoidal equivalence lets a genuine quantum group share SO(3)'s representations
+
+**Remember:** Same tensor category, different dimensions: SO(3) and S₄⁺ are twins.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 18M05. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** Two compact quantum groups are monoidally equivalent when their categories of finite-dimensional unitary representations are equivalent as C\*-tensor categories. Bichon, De Rijdt and Vaes showed that such an equivalence is the same as a bi-Galois object. This is an algebra with commuting ergodic actions of full multiplicity of both quantum groups.
+
+**Problem.** The quantum permutation group S₄⁺ is monoidally equivalent to SO(3), though C(S₄⁺) is not commutative. So S₄⁺ has the fusion rules of SO(3), and properties of discrete duals that depend only on the tensor category pass between them.
+
+**How the definition helps.** Equivalence at the level of tensor categories forgets the dimensions, so a classical group and a noncommutative one can be compared. Fusion rules then transfer by definition. Analytic properties, such as the central approximation property of the duals, transfer by theorems that use the bi-Galois object. The work moves into Banica's computation of the representations of S₄⁺.
+
+**Paper or page:** [Classification of Quantum Graphs on M₂ and their Quantum Automorphism Groups](https://arxiv.org/abs/2110.09085), [The approximation property for locally compact quantum groups](https://arxiv.org/abs/2305.04894). It says: “(1) The special orthogonal group SO(3) is monoidally equivalent to the quantum symmetric group S₄⁺.”
+
+**Sources:**
+
+- [J. Bichon, A. De Rijdt and S. Vaes, Ergodic coactions with large multiplicity and monoidal equivalence of quantum groups, Communications in Mathematical Physics 262 (2006) 703–728](https://doi.org/10.1007/s00220-005-1442-2)
+
+### Putting Haar weights in the axioms gives Pontryagin duality for quantum groups
+
+**Remember:** Assume the Haar weights, and duality comes for free.
+
+*Makes the theorem clean to state or prove.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 58B32. arXiv math.OA, math.QA. Level 4: research.
+
+**Definition.** Kustermans and Vaes define a locally compact quantum group as a C\*-algebra with a coassociative comultiplication, density conditions, and left- and right-invariant weights as axioms. A weight is an unbounded analogue of a positive functional, and the invariant weights play the role of Haar measures. The earlier Kac algebras also asked for an involutive antipode, which excludes Woronowicz's quantum SU(2).
+
+**Problem.** Every locally compact quantum group G has a dual locally compact quantum group Ĝ, and the dual of Ĝ is isomorphic to G. This extends Pontryagin duality and covers non-Kac examples such as quantum SU(2).
+
+**How the definition helps.** The left Haar weight gives a Hilbert space and a multiplicative unitary, and the dual is built from that unitary. Without the weights in the axioms there is no regular representation to build from. For groups and for compact and discrete quantum groups the weights exist by theorem. In general no existence proof is known, so the axioms carry this part of the work.
+
+**Wikipedia:** [Locally compact quantum group](https://en.wikipedia.org/wiki/Locally_compact_quantum_group). It says: “One of the main features distinguishing this new approach from its predecessors is the axiomatic existence of left and right invariant weights.”
+
+**Sources:**
+
+- [J. Kustermans and S. Vaes, Locally compact quantum groups, Annales Scientifiques de l'École Normale Supérieure 33 (2000) 837–934](https://doi.org/10.1016/S0012-9593(00)01055-7)
+
+### The reduced completion makes the Haar state faithful
+
+**Remember:** Divide out what the Haar state cannot see.
+
+*Rules out counterexamples.* MSC 46L67 (Quantum groups (operator algebraic aspects)), 46L30. arXiv math.OA. Level 4: research.
+
+**Definition.** The reduced C\*-algebra Cᵣ(G) of a compact quantum group is the image of C(G) in the GNS representation of its Haar state h. The GNS representation is the action of C(G) by left multiplication on the Hilbert space built from h. A state is faithful when h(a\*a) = 0 forces a = 0.
+
+**Problem.** The Haar state of Cᵣ(G) is faithful, for every compact quantum group G. On the full algebra it can fail to be faithful, as for the dual of the free group F₂.
+
+**How the definition helps.** Passing to the GNS image removes exactly the elements that the Haar state cannot see. For the dual of F₂, the algebra is the full group C\*-algebra C\*(F₂), and the Haar state is the canonical trace. This trace is not faithful because F₂ is not amenable (our own). The work moves into the proof that the null space of h is a two-sided ideal, which uses Woronowicz's modular theory of the Haar state (our own).
+
+**Paper or page:** [Convergence of Fourier truncations for compact quantum groups and finitely generated groups](https://arxiv.org/abs/2210.00387). It says: “Assume that (𝒜,Δ) is in reduced form, that is, its Haar state is faithful.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closure under holomorphic functional calculus preserves operator K-theory
+
+**Remember:** Holomorphic functions turn near-idempotents into true idempotents inside the subalgebra.
+
+*Makes the theorem clean to state or prove.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 58B34, 46H30. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** Let 𝒜 be a dense subalgebra of a C\*-algebra A. It is closed under holomorphic functional calculus if f(a) ∈ 𝒜 for a ∈ 𝒜 and f holomorphic near the spectrum of a. The algebra C∞(M) inside C(M) is the basic example.
+
+**Problem.** Suppose 𝒜 and all its matrix algebras are closed under holomorphic functional calculus in the matrix algebras of A. Then the inclusion gives K₀(𝒜) ≅ K₀(A), and likewise for K₁, so cyclic cocycles on 𝒜 pair with all of the K-theory of A.
+
+**How the definition helps.** The condition is exactly what lets holomorphic functions turn approximate idempotents in 𝒜 into true idempotents in 𝒜 (our own). Approximate an idempotent of A by a ∈ 𝒜, and let f be 0 near 0 and 1 near 1 (our own). Then f(a) is an idempotent in 𝒜, and the same trick moves homotopies into 𝒜, which gives injectivity (our own). This matters because cyclic cocycles live on smooth subalgebras, while K-theory belongs to the C\*-algebra.
+
+**Wikipedia:** [Cyclic homology](https://en.wikipedia.org/wiki/Cyclic_homology). It says: “Since, on the other hand, cyclic homology degenerates on C\*-algebras, there came up the need to define modified theories.”
+
+**Paper or page:** [Finitely Summable K-homology, the Index Pairing, and Cantor Minimal Systems](https://arxiv.org/abs/2505.24135). It says: “for each n, Mₙ(𝒜) is closed under the holomorphic functional calculus in Mₙ(A) so that ι\*:K\*(𝒜) → K\*(A) is an isomorphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stabilizing by the compact operators makes algebraic and topological K-theory agree
+
+**Remember:** After stabilizing, the determinant disappears and the two K-theories agree.
+
+*Rules out counterexamples.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19D50. arXiv math.KT, math.OA. Level 4: research.
+
+**Definition.** A C\*-algebra A is stable when A ≅ A ⊗ 𝒦, where 𝒦 is the algebra of compact operators. Algebraic K-theory Kₙᵃˡᵍ treats A as a ring and forgets its topology. Topological K-theory Kₙ uses projections and unitaries up to homotopy.
+
+**Problem.** For every C\*-algebra A and every n ≥ 0, the natural map Kₙᵃˡᵍ(A ⊗ 𝒦) → Kₙ(A ⊗ 𝒦) is an isomorphism.
+
+**How the definition helps.** Stabilization removes algebraic invariants, such as the determinant, that topological K-theory cannot see. For A = ℂ the theorem fails without stabilization: K₁ᵃˡᵍ(ℂ) = ℂˣ through the determinant, but K₁(ℂ) = 0 because each unitary group U(n) is connected (our own). Suslin and Wodzicki proved excision for algebraic K-theory, which makes it split exact on stable C\*-algebras (our own). Higson's theorem that stable split-exact functors are homotopy invariant then lets the two theories be compared (our own).
+
+**Wikipedia:** [Karoubi conjecture](https://en.wikipedia.org/wiki/Karoubi_conjecture). It says: “the Karoubi conjecture was a conjecture by Max Karoubi that the algebraic and topological K-theories coincide on C\* algebras spatially tensored with the algebra of compact operators.”
+
+**Sources:**
+
+- [Andrei Suslin and Mariusz Wodzicki, Excision in algebraic K-theory, Annals of Mathematics 136 (1992) 51–122](https://doi.org/10.2307/2946546)
+- [Max Karoubi, K-théorie algébrique de certaines algèbres d'opérateurs, Lecture Notes in Mathematics 725, Springer (1979) 254–290](https://doi.org/10.1007/BFb0062621)
+
+### The Pimsner–Voiculescu Toeplitz algebra turns crossed products by ℤ into six-term sequences
+
+**Remember:** Replace the crossed product by a Toeplitz extension, then read off its hexagon.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 46L55. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** Let α be an automorphism of A, and let u be the unitary in the crossed product A ⋊α ℤ that implements α. Let S be the unilateral shift and 𝒯 the Toeplitz algebra it generates. The Pimsner–Voiculescu Toeplitz algebra T is generated by the elements a ⊗ 1 and u ⊗ S in (A ⋊α ℤ) ⊗ 𝒯. It sits in an extension 0 → A ⊗ 𝒦 → T → A ⋊α ℤ → 0.
+
+**Problem.** For every automorphism α of a C\*-algebra A there is a six-term exact sequence K₀(A) → K₀(A) → K₀(A ⋊α ℤ) → K₁(A) → K₁(A) → K₁(A ⋊α ℤ) → K₀(A). The maps from K∗(A) to K∗(A) are 1 − α∗.
+
+**How the definition helps.** The Toeplitz extension turns the crossed product into the quotient of an extension, and every extension has a six-term sequence. Stability gives K∗(A ⊗ 𝒦) = K∗(A) (our own). Pimsner and Voiculescu showed that the inclusion of A into T is an isomorphism on K-theory, so T can be replaced by A (our own). One then checks that the map from K∗(A ⊗ 𝒦) to K∗(A) is 1 − α∗ (our own). The quote states the dual sequence in K-homology.
+
+**Paper or page:** [Finitely Summable K-homology, the Index Pairing, and Cantor Minimal Systems](https://arxiv.org/abs/2505.24135). It says: “For a C\*-algebra A and an action α ∈ Aut(A) there is a Pimsner-Voiculescu exact sequence in K-homology for the crossed product A ⋊φ ℤ”
+
+**Sources:**
+
+- [Levi Lorenzo, Finitely summable K-homology, the index pairing, and Cantor minimal systems, arXiv:2505.24135 (2025)](https://arxiv.org/abs/2505.24135)
+
+### Viewing a correspondence as a KK class gives the Cuntz–Pimsner exact sequence
+
+**Remember:** The correspondence is its own KK class, and 1 − \[E\] drives the sequence.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19K35, 46L08. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A C\*-correspondence over A is a Hilbert A-module E with a left action of A. Its Toeplitz algebra 𝒯(E) is the universal C\*-algebra of a Toeplitz representation of E, and the Cuntz–Pimsner algebra 𝒪(E) is a quotient of it. When A acts on E by compact operators, the pair (E, 0) is a Kasparov module, so E defines a class \[E\] in KK(A,A).
+
+**Problem.** Let A be separable and act on a countably generated E injectively and by compact operators. Then there is a six-term exact sequence K₀(A) → K₀(A) → K₀(𝒪(E)) → K₁(A) → K₁(A) → K₁(𝒪(E)) → K₀(A). The maps from K∗(A) to K∗(A) are 1 − \[E\], the identity minus the Kasparov product with \[E\].
+
+**How the definition helps.** Because E with operator zero is already a Kasparov module, the map in the sequence is a single KK class, read off from E without any choice (our own). Pimsner showed that A → 𝒯(E) is a KK-equivalence and that the kernel of 𝒯(E) → 𝒪(E) is Morita equivalent to A (our own). The six-term sequence of this extension then becomes the stated one. The theorem contains the Pimsner–Voiculescu sequence for crossed products by ℤ, and Wikipedia notes that such crossed products and the Cuntz algebras are quotients of Toeplitz algebras.
+
+**Wikipedia:** [Hilbert C\*-module](https://en.wikipedia.org/wiki/Hilbert_C%2A-module). It says: “In particular, graph algebras, crossed products by ℤ, and the Cuntz algebras are all quotients of specific Toeplitz algebras.”
+
+**Sources:**
+
+- [Mihai V. Pimsner, A class of C\*-algebras generalizing both Cuntz–Krieger algebras and crossed products by ℤ, in Free Probability Theory, Fields Institute Communications 12, American Mathematical Society (1997) 189–212](https://doi.org/10.1090/fic/012/08)
+
+### Defining the primitive ideal topology by ideals makes it Morita invariant
+
+**Remember:** Same ideal lattice, same primitive spectrum, same space when commutative.
+
+*True by definition.* MSC 46L85 (Noncommutative topology), 46L08. arXiv math.OA. Level 4: research.
+
+**Definition.** The primitive ideal space Prim(A) is the set of kernels of irreducible representations of A. Its hull–kernel topology has as closed sets the primitive ideals that contain a given ideal. Algebras are Morita equivalent when an imprimitivity bimodule, a bimodule with compatible full inner products valued in each algebra, links them.
+
+**Problem.** Morita equivalent C\*-algebras have homeomorphic primitive ideal spaces. In particular C₀(X) and C₀(Y) are Morita equivalent only when X and Y are homeomorphic, so the two algebras are isomorphic.
+
+**How the definition helps.** The topology on Prim(A) is defined only through ideals, so a lattice isomorphism of ideals that matches primitive ideals is a homeomorphism (our own). The bimodule gives such a lattice isomorphism by the quoted Rieffel correspondence, and Rieffel induction matches the primitive ideals (our own). The usual alternative compares the topologies of the two spaces of irreducible representations directly through induced representations (our own). For commutative algebras Prim(C₀(X)) is X, so Morita equivalence collapses to isomorphism (our own).
+
+**Paper or page:** [The Rieffel Correspondence for Equivalent Fell Bundles](https://arxiv.org/abs/2309.12116). It says: “In particular, J ↦ X·J is a lattice isomorphism of ℐ(B) onto 𝒞(X) with inverse Y ↦ ⟨Y,Y⟩<sub>B</sub>, and K ↦ K·X is a lattice isomorphism of ℐ(A) onto 𝒞(X)”
+
+**Sources:**
+
+- [Marc A. Rieffel, Induced representations of C\*-algebras, Advances in Mathematics 13 (1974) 176–257](https://doi.org/10.1016/0001-8708(74)90068-1)
+
+### Symmetric imprimitivity makes noncommutative tori in one GL(2,ℤ) orbit Morita equivalent
+
+**Remember:** Swap which lattice acts on the line and θ becomes 1/θ.
+
+*True by definition.* MSC 46L85 (Noncommutative topology), 46L55, 58B34. arXiv math.OA. Level 4: research.
+
+**Definition.** The noncommutative torus A(θ) is the crossed product C(𝕋) ⋊ ℤ for rotation of the circle by angle 2πθ. Equivalently it is C(ℝ/ℤ) ⋊ θℤ, where θℤ acts on ℝ/ℤ by translation. Morita equivalent algebras are linked by a bimodule with compatible full inner products valued in each algebra.
+
+**Problem.** Let θ and η be nonzero and lie in one orbit of GL(2,ℤ) acting on ℝ by fractional linear maps. Then A(θ) and A(η) are Morita equivalent, and in particular A(θ) is Morita equivalent to A(1/θ).
+
+**How the definition helps.** As a crossed product of the line by two lattices, A(θ) falls under symmetric imprimitivity, so no bimodule is built by hand (our own). Take G = ℝ, H = ℤ and K = θℤ, so C(ℝ/θℤ) ⋊ ℤ is Morita equivalent to C(ℤ∖ℝ) ⋊ θℤ (our own). The first algebra is A(1/θ) and the second is A(θ) (our own). With A(θ) ≅ A(θ+1) ≅ A(−θ), these moves generate the GL(2,ℤ) action (our own).
+
+**nLab:** [noncommutative torus](https://ncatlab.org/nlab/show/noncommutative+torus). It says: “Furthermore, two noncommutative tori with paremeters θ₁ and θ₂ are Morita equivalent if and only if θ₁ and θ₂ are in the same orbit with respect to the action of GL(2,Z) on U(1)”
+
+**Wikipedia:** [Noncommutative torus](https://en.wikipedia.org/wiki/Noncommutative_torus). It says: “In particular, the noncommutative tori with θ rational are Morita equivalent to the classical torus.”
+
+**Sources:**
+
+- [Marc A. Rieffel, Strong Morita equivalence of certain transformation group C\*-algebras, Mathematische Annalen 222 (1976) 7–22](https://doi.org/10.1007/BF01418238)
+- [Marc A. Rieffel, C\*-algebras associated with irrational rotations, Pacific Journal of Mathematics 93 (1981) 415–429](https://doi.org/10.2140/pjm.1981.93.415)
+
 ### Bipartite quantum graphs keep the classical spectral test
 
 **Remember:** A regular quantum graph has a bipartite piece when −d is an eigenvalue.
@@ -2166,3 +2851,95 @@
 **Sources:**
 
 - [Junichiro Matsuda, Algebraic connectedness and bipartiteness of quantum graphs, Comm. Math. Phys. 405, no. 185 (2024), arXiv:2310.09500](https://arxiv.org/abs/2310.09500)
+
+### Liquid tensor products of holomorphic functions on discs give polydisc functions
+
+**Remember:** Tensor disc functions, get polydisc functions; tensor disjoint discs, get zero.
+
+*Makes the theorem clean to state or prove.* MSC 46M05 (Tensor products in functional analysis), 46A32, 32A38. arXiv math.FA, math.CV. Level 4: research.
+
+**Definition.** The liquid tensor product is the tensor product on liquid spaces that makes liquidification symmetric monoidal. O(D) is the space of holomorphic functions on the open unit disc D. For a closed disc, O means functions holomorphic on some larger open disc.
+
+**Problem.** The k-fold liquid tensor product of O(D) is the space O(Dᵏ) of holomorphic functions on the open polydisc. For disjoint closed discs D₁ and D₂ in ℂ, the derived liquid tensor product of O(D₁) and O(D₂) over ℂ\[z\] is 0.
+
+**How the definition helps.** The liquid tensor product lives on an abelian category and can be derived, so tensor products over ℂ\[z\] work as in algebra. Over ℂ one gets O(D₁ × D₂), where z₁ − z₂ is invertible, so over ℂ\[z\] one gets 0 (our own reading of Corollary 10.9). Grothendieck's completed tensor product gives the polydisc result but has no derived version over ℂ\[z\] (our own). The work is in Theorem 4.1 of the complex geometry notes.
+
+**nLab:** [gaseous vector space](https://ncatlab.org/nlab/show/gaseous+vector+space). It says: “tensor products of spaces of holomorphic or real-analytic functions behave correctly under the gaseous tensor product, but tensor products of spaces of C<sup>∞</sup>-functions are only correct under the liquid tensor product”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Analytic Geometry (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019–2020)](https://www.math.uni-bonn.de/people/scholze/Analytic.pdf)
+- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
+
+### Almost unit balls determine Banach modules together with their exact norms
+
+**Remember:** Up to almost zero, the unit ball remembers the norm exactly.
+
+*Rules out counterexamples. Confidence: medium.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 46H25, 13J10. arXiv math.NT, math.FA. Level 4: research.
+
+**Definition.** Let A be a Banach ring with a norm-multiplicative, topologically nilpotent unit ϖ of norm at most 1. Suppose ϖ has compatible pⁿ-th roots of norm ‖ϖ‖ to the power 1/pⁿ. The almost unit ball of a Banach module is its closed unit ball, viewed up to modules killed by all these roots.
+
+**Problem.** Taking almost unit balls is an equivalence from Banach A-modules, with maps that do not increase norms, to ϖ-adically complete, ϖ-torsion-free almost modules. The norm is recovered exactly from the almost unit ball, not only up to equivalence.
+
+**How the definition helps.** Almost mathematics identifies exactly those lattices that give the same gauge norm, so the norm becomes an invariant of the almost module. For example, the open and closed unit balls differ. But each lies in the other after multiplying by any root of ϖ, so they are almost equal (our own). Without almost mathematics, a lattice fixes the norm only up to equivalence, as the paper's abstract says.
+
+**Paper or page:** [Banach modules, almost mathematics and condensed mathematics](https://arxiv.org/abs/2508.11268). It says: “form a pair of quasi-inverse equivalences between the category Ban<sub>A</sub><sup>≤1</sup> of submetric Banach (A, ‖⋅‖)-modules with submetric A-module maps and the category of ϖ-adically complete, ϖ-torsion-free almost modules over the closed unit ball A\_≤1.”
+
+**Sources:**
+
+- [Dimitri Dine, Banach modules, almost mathematics and condensed mathematics, arXiv:2508.11268](https://arxiv.org/abs/2508.11268)
+
+### The analytic ring axiom gives modules an abelian category with projective generators
+
+**Remember:** Ask that measures and points see the same maps, and modules behave.
+
+*True by definition.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 18G80, 13D09. arXiv math.AG, math.FA. Level 4: research.
+
+**Definition.** A pre-analytic ring 𝒜 gives each extremally disconnected set S, a projective kind of profinite set, a module 𝒜\[S\] of measures on S. It is analytic if maps out of 𝒜\[S\] and out of the free module on S agree, in the derived sense. The targets are complexes built from sums of the 𝒜\[T\].
+
+**Problem.** For an analytic ring 𝒜, the modules M with Hom(𝒜\[S\], M) = M(S) for every extremally disconnected S form an abelian category. It is closed under limits, colimits and extensions, and the 𝒜\[S\] are compact projective generators.
+
+**How the definition helps.** The analytic ring axiom is exactly the hypothesis of Lemma 5.10 in the condensed notes, which feeds Lemma 5.9. So the module theory follows at once (Proposition 7.5). This replaces building, ring by ring, a category of complete topological modules (our own). The work moves into checking the axiom for each example, such as Nöbeling's theorem for ℤ■. For the liquid real numbers, the check is Clausen and Scholze's hardest theorem (our own).
+
+**nLab:** [analytic ring](https://ncatlab.org/nlab/show/analytic+ring). It says: “a pre-analytic ring is a condensed ring A together with a functor S↦𝒜\[S\] from extremally disconnected topological spaces to 𝒜-modules in condensed abelian groups taking finite disjoint unions to products”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Condensed Mathematics (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+
+### The solid tensor product keeps adically complete modules complete
+
+**Remember:** Solid tensor products of complete modules are complete, so ℤₚ ⊗ ℤₚ = ℤₚ.
+
+*Rules out counterexamples.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 13J10, 13D09. arXiv math.AG, math.AC. Level 4: research.
+
+**Definition.** The solid tensor product is the unique tensor product on solid modules that makes solidification symmetric monoidal. For an ideal I of a ring A, a module M is I-complete if it is the derived limit of the quotients M ⊗ A/Iⁿ.
+
+**Problem.** Let A be a commutative ring of finite type over ℤ, and I an ideal. If two solid A-modules are I-complete and have homology bounded below, then so is their solid tensor product; for example ℤₚ ⊗ ℤₚ = ℤₚ.
+
+**How the definition helps.** The solid tensor product of two products of copies of ℤ is again a product (our own reading of the condensed notes, Proposition 6.3). So completion is built in. This excludes the ordinary tensor product ℤₚ ⊗ ℤₚ over ℤ, which contains a nonzero ℚ-vector space and is not p-adically complete (our own). For a general ideal I, the work is in the cited corollary, which shows that completion at I is symmetric monoidal.
+
+**Paper or page:** [Beilinson-Parshin adeles via solid algebraic geometry](https://arxiv.org/abs/2403.08472), [The 6-Functor Formalism for ℤℓ- and ℚℓ-Sheaves on Diamonds](https://arxiv.org/abs/2209.08135). It says: “In particular, the tensor product of a pair of I-complete eventually connective A■-modules is I-complete.”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Condensed Mathematics (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)
+- [Christopher Brav, Grigorii Konovalov, Beilinson-Parshin adeles via solid algebraic geometry, arXiv:2403.08472](https://arxiv.org/abs/2403.08472)
+
+### Unique extension along completed free groups makes solid abelian groups abelian
+
+**Remember:** Solid groups cannot tell a free group from its completion.
+
+*True by definition.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 18F20. arXiv math.AG, math.FA. Level 4: research.
+
+**Definition.** A condensed abelian group is a sheaf of abelian groups on profinite sets; it stands in for a topological group. For a profinite set S, the limit of finite sets Sᵢ, let ℤ\[S\]■ be the limit of the free groups ℤ\[Sᵢ\]. A condensed abelian group is solid if every map from S into it extends uniquely to a group map from ℤ\[S\]■.
+
+**Problem.** Solid abelian groups form an abelian subcategory of condensed abelian groups, closed under all limits, colimits and extensions. Products of copies of ℤ are compact projective generators, and the inclusion has a left adjoint, called solidification.
+
+**How the definition helps.** Solidity is a unique-extension condition, and Lemma 5.9 turns such a condition into an abelian subcategory with these closure properties, once one hypothesis holds. So no closure property is checked by hand, while a quotient of a complete topological group need not be complete (our own). The work is in checking that hypothesis in Lecture VI. It rests on Nöbeling's theorem (Theorem 5.4), that continuous functions from S to ℤ form a free abelian group. So ℤ\[S\]■ is a product of copies of ℤ.
+
+**nLab:** [solid abelian group](https://ncatlab.org/nlab/show/solid+abelian+group). It says: “A solid abelian group is a condensed abelian group A such that for all profinite sets S and all maps f:S → A, there is a unique map g:ℤ\[S\]<sup>□</sup> → A such that f = g ∘ m.”
+
+**Sources:**
+
+- [Peter Scholze, Lectures on Condensed Mathematics (all results joint with Dustin Clausen), lecture notes, University of Bonn (2019)](https://www.math.uni-bonn.de/people/scholze/Condensed.pdf)

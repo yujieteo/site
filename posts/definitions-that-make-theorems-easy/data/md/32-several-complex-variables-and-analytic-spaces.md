@@ -936,6 +936,42 @@
 - [Generalized Mahler measures of Laurent polynomials, Proposition 7.2](https://arxiv.org/abs/2308.04601)
 - [Amoeba (mathematics), Ronkin function](https://en.wikipedia.org/wiki/Amoeba_(mathematics)#Ronkin_function)
 
+### Coherent means nuclear and pseudocompact, so Grauert's theorem becomes two checks
+
+**Remember:** Split coherent into nuclear and pseudocompact, then push each one forward.
+
+*True by definition. Confidence: medium.* MSC 32C35 (Analytic sheaves and cohomology groups), 32L10. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** A complex of liquid modules is pseudocompact if it is a complex of compact projectives bounded to the right. It is nuclear if every map into it from a compact object is trace-class, that is, comes from an element of a tensor product. On a compact Stein set, complexes from coherent analytic sheaves are exactly the nuclear pseudocompact ones.
+
+**Problem.** For a proper map f between complex analytic spaces, the derived pushforward sends complexes with coherent cohomology to complexes with coherent cohomology. In particular, coherent sheaves on a compact complex space have finite-dimensional cohomology.
+
+**How the definition helps.** Coherence splits into two conditions, and the pushforward preserves each one for its own soft reason (Proposition 9.19 and Theorem 12.18 of the complex notes). Nuclearity survives because forgetful functors from modules over nuclear algebras preserve it. Pseudocompactness survives because the pushforward equals f₍!₎ for proper f, whose right adjoint commutes with bounded sums (Theorem 12.17). Classical proofs of Grauert's theorem need hard analytic estimates (our own); here the work moves into Proposition 9.19 and Theorem 12.17.
+
+**nLab:** [condensed mathematics](https://ncatlab.org/nlab/show/condensed+mathematics). It says: “to provide new "analysis-free" proofs of the finiteness of coherent cohomology, Serre duality, GAGA, and the Hirzebruch-Riemann-Roch theorem in complex analysis.”
+
+**Sources:**
+
+- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
+
+### Comparing categorified locales makes GAGA follow from the valuative criterion
+
+**Remember:** Proper means valuations have unique centres, so the two locales agree.
+
+*True by definition. Confidence: medium.* MSC 32C35 (Analytic sheaves and cohomology groups), 14F06, 32J25. arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** A locale is a space given only by its lattice of open sets. Clausen and Scholze attach a locale to a symmetric monoidal stable ∞-category; its closed subsets come from idempotent algebras. Analytification sends liquid quasi-coherent sheaves on a finite type ℂ-scheme X to those on its analytic space.
+
+**Problem.** For every proper finite type ℂ-scheme X, analytification is an equivalence between the algebraic and the analytic categories of liquid quasi-coherent sheaves. On coherent sheaves this gives Serre's GAGA theorem.
+
+**How the definition helps.** Both categories are compared as categorified locales, so the equivalence reduces to a bijection on points, which are valuations. The valuative criterion for properness says exactly that this map is a bijection (our own reading of the complex notes, Theorems 6.10 and 7.2). Serre's proof instead computes the cohomology of coherent sheaves on projective space (our own). The work moves into building the locales and into finding coherent sheaves inside the liquid categories (Theorem 13.10).
+
+**nLab:** [condensed mathematics](https://ncatlab.org/nlab/show/condensed+mathematics), [GAGA](https://ncatlab.org/nlab/show/GAGA). It says: “to provide new "analysis-free" proofs of the finiteness of coherent cohomology, Serre duality, GAGA, and the Hirzebruch-Riemann-Roch theorem in complex analysis.”
+
+**Sources:**
+
+- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
+
 ### Proper maps preserve sheaf coherence
 
 **Remember:** Over a point, coherence means finite dimension.
@@ -1094,6 +1130,24 @@
 **Paper or page:** [Numerical flatness and principal bundles on Fujiki manifolds](https://arxiv.org/abs/2111.15243v1). It says: “the connection on Eᵢ/Eᵢ₋₁ induced by ∇ is unitary for all 1 ≤ i ≤ ℓ.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Liquid quasi-coherent sheaves give Serre duality on non-compact complex manifolds
+
+**Remember:** Keep the non-Hausdorff part of cohomology, and duality needs no Hausdorff assumption.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32L10 (Sheaves and cohomology of sections of holomorphic vector bundles, general results), 32C35. arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** For a map f of complex analytic spaces, Clausen and Scholze define a compactly supported pushforward f₍!₎ on liquid quasi-coherent sheaves, with right adjoint f⁽!⁾. Compactly supported cohomology is then a liquid vector space, not a topological one.
+
+**Problem.** For a smooth map f of relative dimension d, f⁽!⁾M ≅ f\*M ⊗ Ωᵈ\[d\], where Ωᵈ is the sheaf of relative d-forms. Let X be a complex manifold, compact or not, and M coherent. Then each Hⁱ(X, M∨ ⊗ Ωᵈ) is an extension of the dual of compactly supported cohomology by an Ext¹ term.
+
+**How the definition helps.** Compactly supported cohomology is kept as a condensed space, so its non-Hausdorff part survives as the Ext¹ term. Classical Serre duality on a non-compact manifold needs these groups to be Hausdorff, which fails in examples (our own). Here each group is a quotient of duals of nuclear Fréchet spaces, so Ext into ℂ vanishes above degree 1. The work goes into constructing f₍!₎ for non-proper maps (our own reading of the complex notes, Theorem 13.6 and the text after it).
+
+**nLab:** [condensed mathematics](https://ncatlab.org/nlab/show/condensed+mathematics), [Serre duality](https://ncatlab.org/nlab/show/Serre+duality). It says: “to provide new "analysis-free" proofs of the finiteness of coherent cohomology, Serre duality, GAGA, and the Hirzebruch-Riemann-Roch theorem in complex analysis.”
+
+**Sources:**
+
+- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
 
 ### Uniform relative K-polystability is exactly the condition for toric extremal metrics
 
