@@ -1,3 +1,19 @@
+### Images bound product rank
+
+**Remember:** A composition cannot gain independent outputs from either factor.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the rank of a matrix as the dimension of its image, the space of all its outputs. One can instead use the largest size of a square submatrix with nonzero determinant.
+
+**Problem.** For matrices A and B over the same field with AB defined, rank(AB) ≤ min(rank(A), rank(B)).
+
+**How the definition helps.** The outputs of AB lie in the image of A and come from applying A to the image of B (our own). A linear map cannot increase the dimension of a subspace (our own). The work moves to proving that image dimension equals the largest size detected by determinants (our own).
+
+**Wikipedia:** [Rank (linear algebra)](https://en.wikipedia.org/wiki/Rank_%28linear_algebra%29). It says: “rank(AB) ≤ min(rank(A), rank(B)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Linear independence of families, not sets, matches the determinant test
 
 **Remember:** Two equal columns make a dependent family, even as one set.
@@ -13,6 +29,26 @@
 **Wikipedia:** [Linear independence](https://en.wikipedia.org/wiki/Linear_independence). It says: “These two notions are not equivalent: the difference being that in a family we allow repeated elements, while in a set we do not.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Minors show transposes preserve rank
+
+**Remember:** Transposing turns each square submatrix into one with the same determinant.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a matrix over a field, define rank as the largest size of a square submatrix with nonzero determinant. Use zero if none exists. The column rank is the dimension of the span of the columns.
+
+**Problem.** A matrix and its transpose have the same rank. In particular, the span of its rows and the span of its columns have the same dimension.
+
+**How the definition helps.** Each square submatrix of the transpose is the transpose of a square submatrix of the original matrix (our own). A determinant equals the determinant of its transpose, so the largest qualifying size stays the same (our own). The remaining work is to prove that this size equals the column rank (our own).
+
+**Wikipedia:** [Rank (linear algebra)](https://en.wikipedia.org/wiki/Rank_%28linear_algebra%29). It says: “The rank of A is the largest order of any non-zero minor in A.”
+
+**Paper or page:** [Column Rank of Matrix equals Row Rank](https://proofwiki.org/wiki/Column_Rank_of_Matrix_equals_Row_Rank). It says: “The column rank of A is equal to the row rank of A.”
+
+**Sources:**
+
+- [William P. Wardlaw, Row Rank Equals Column Rank, Mathematics Magazine 78 (2005), 316–318.](https://doi.org/10.1080/0025570X.2005.11953349)
 
 ### The empty set is independent, so the zero space has a basis
 
@@ -47,6 +83,22 @@
 **Sources:**
 
 - [Aslanbek Naziev, On the independence of conditions in the linear mapping definition (revised), arXiv:2208.12648 (2022)](https://arxiv.org/abs/2208.12648v3)
+
+### Affine spaces include translated solution sets
+
+**Remember:** Subtract one solution to turn all the rest into solutions with zero right side.
+
+*Makes the theorem clean to state or prove.* MSC 15A06 (Linear equations (linear algebraic aspects)). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** An affine subspace is a translate of a linear subspace. Unlike a linear subspace, it need not contain the origin.
+
+**Problem.** The solution set of a consistent linear system Ax = b is an affine subspace.
+
+**How the definition helps.** Choosing one solution p makes the full solution set a translate of the kernel (our own). Indeed, x solves Ax = b exactly when A(x − p) = 0 (our own). The line x + y = 1 translates the line x + y = 0 and omits the origin (our own).
+
+**nLab:** [affine space](https://ncatlab.org/nlab/show/affine+space). It says: “An affine space or affine linear space is a vector space that has forgotten its origin.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the determinant by its properties makes the product rule easy
 
@@ -134,6 +186,38 @@
 
 - [Cayley, A. (1858). A memoir on the theory of matrices. Philosophical Transactions of the Royal Society of London 148.](https://doi.org/10.1098/rstl.1858.0002)
 
+### The characteristic polynomial gives the trace as an eigenvalue sum
+
+**Remember:** The coefficient below the leading term records the sum of the roots.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Let A be a complex square matrix of size n ≥ 1, and let I be the identity matrix. Define its trace as minus the coefficient of degree n − 1 in det(tI − A). The usual definition adds the diagonal entries.
+
+**Problem.** The trace of a complex square matrix is the sum of its eigenvalues, counted with their multiplicities as roots.
+
+**How the definition helps.** Factoring det(tI − A) shows that its coefficient of degree n − 1 is minus the sum of its roots, counted with multiplicity (our own). Expanding the determinant gives the same coefficient as minus the sum of the diagonal entries (our own).
+
+**Wikipedia:** [Trace (linear algebra)](https://en.wikipedia.org/wiki/Trace_%28linear_algebra%29). It says: “the trace of a matrix is equal to the sum of its eigenvalues (counted with algebraic multiplicities)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Changing coordinates preserves eigenspace dimensions
+
+**Remember:** The basis changes, but the vectors scaled by the map do not.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define similar matrices as matrices of the same linear map in different bases. The algebraic definition says B = S⁻¹AS for an invertible matrix S.
+
+**Problem.** Similar matrices have the same eigenvalues and the same eigenspace dimension for each eigenvalue.
+
+**How the definition helps.** Changing coordinates leaves the underlying map and its eigenspaces unchanged (our own). Coordinates in either basis therefore give each eigenspace the same dimension (our own). The work moves to deriving the formula B = S⁻¹AS for a change of basis (our own).
+
+**Wikipedia:** [Change of basis](https://en.wikipedia.org/wiki/Change_of_basis). It says: “two matrices are similar if and only if they represent the same endomorphism on two different bases.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Eigenvectors must be nonzero, so eigenvalues are roots of the characteristic polynomial
 
 **Remember:** Zero is fixed by every scale factor, so zero is never an eigenvector.
@@ -166,6 +250,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Squaring restricts projection eigenvalues
+
+**Remember:** A projection has the same effect once or twice.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A projection is a linear map P with P² = P. The geometric definition sends u + v to u for a chosen pair of complementary subspaces. Complementary means every vector has exactly one such decomposition.
+
+**Problem.** Every eigenvalue of a projection is zero or one.
+
+**How the definition helps.** On an eigenvector, P² = P becomes λ² = λ (our own). The work moves to showing that P² = P gives the geometric decomposition (our own). Each x splits as Px plus x − Px, the first fixed and the second sent to zero (our own).
+
+**nLab:** [idempotent](https://ncatlab.org/nlab/show/idempotent). It says: “e ∘ e = e.”
+
+**Wikipedia:** [Projection (linear algebra)](https://en.wikipedia.org/wiki/Projection_%28linear_algebra%29). It says: “The eigenvalues of a projection matrix must be 0 or 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Leading ones alone in their columns make reduced echelon form unique
 
 **Remember:** Leading ones with zeros above and below leave no choices.
@@ -179,6 +281,24 @@
 **How the definition helps.** The two extra rules remove the freedoms that echelon forms still have. The page names these freedoms: multiplying a row by a nonzero scalar, and adding a multiple of a row to a row above it. Both keep a matrix in echelon form, so echelon form alone is not unique. Making each pivot 1 removes the first freedom, and clearing the entries above each pivot removes the second (our own). What the definition leaves to prove is that row equivalent reduced matrices are equal. A short proof compares the solution sets of the two homogeneous systems (our own).
 
 **Wikipedia:** [Row echelon form](https://en.wikipedia.org/wiki/Row_echelon_form). It says: “While a matrix may have several echelon forms, its reduced echelon form is unique.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dot products reverse transpose order
+
+**Remember:** Move the left factor first, then the right factor.
+
+*True by definition.* MSC 15A24 (Matrix equations and identities), 15A63. arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the transpose Aᵀ by requiring (Ax) · y = x · (Aᵀy) for every pair of compatible vectors. The usual entry definition swaps rows and columns.
+
+**Problem.** For real matrices A and B that can be multiplied, (AB)ᵀ = BᵀAᵀ.
+
+**How the definition helps.** Moving A across the dot product and then moving B puts Bᵀ before Aᵀ (our own). The work moves to showing that testing the dot product on coordinate vectors gives the usual transposed entries (our own).
+
+**nLab:** [adjoint operator](https://ncatlab.org/nlab/show/adjoint+operator). It says: “⟨T a, b⟩ = ⟨a, T∗ b⟩”
+
+**Paper or page:** [Transpose of Matrix Product](https://proofwiki.org/wiki/Transpose_of_Matrix_Product). It says: “(AB)ᵀ = BᵀAᵀ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -216,6 +336,54 @@
 
 - [Cayley, A. (1858). A memoir on the theory of matrices. Philosophical Transactions of the Royal Society of London 148.](https://doi.org/10.1098/rstl.1858.0002)
 
+### Trace proves Frobenius norm invariance
+
+**Remember:** Orthogonal factors cancel inside the trace.
+
+*True by definition.* MSC 15A60 (Norms of matrices, numerical range, applications of functional analysis to matrix theory). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the squared Frobenius norm of a real matrix A as tr(AᵀA). Here the trace, written tr, adds diagonal entries. Another definition adds the squares of all entries of A.
+
+**Problem.** Multiplying a real matrix on either side by an orthogonal matrix of matching size leaves its Frobenius norm unchanged.
+
+**How the definition helps.** Inside the trace, an orthogonal factor cancels its transpose, after cycling the factors if needed (our own). The work moves to proving that trace is unchanged by cycling compatible factors and that tr(AᵀA) sums the squared entries (our own).
+
+**Wikipedia:** [Matrix norm](https://en.wikipedia.org/wiki/Matrix_norm). It says: “This property follows from the cyclic nature of the trace”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gram matrices detect independent columns
+
+**Remember:** The Gram quadratic form measures the squared length of a column combination.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products), 15A03. arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a real matrix V, define the Gram matrix of its columns as VᵀV. Equivalently, each entry is the dot product of the corresponding pair of columns.
+
+**Problem.** The Gram matrix is positive definite exactly when the columns are linearly independent. Positive definite means its quadratic form is positive on every nonzero vector.
+
+**How the definition helps.** The product definition gives xᵀ(VᵀV)x = ‖Vx‖², which vanishes exactly when Vx = 0 (our own). The work moves to checking that VᵀV contains the pairwise dot products (our own).
+
+**Wikipedia:** [Gram matrix](https://en.wikipedia.org/wiki/Gram_matrix). It says: “the Gramian matrix is positive definite if and only if the vectors vᵢ are linearly independent”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Orthogonal projection finds the closest point
+
+**Remember:** Moving away from the perpendicular foot adds a square to the distance.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The orthogonal projection of x onto a subspace is the point p in it such that x − p is perpendicular to the subspace. Equivalently, sum the components of x along an orthonormal basis of the subspace.
+
+**Problem.** In a finite-dimensional real inner product space, the orthogonal projection of x is the unique nearest point in the subspace.
+
+**How the definition helps.** For any point q in the subspace, the vectors x − p and p − q are perpendicular (our own). Pythagoras shows that the squared distance to q exceeds the squared distance to p unless q = p (our own). The work moves to showing that the basis formula produces a perpendicular residual (our own).
+
+**Wikipedia:** [Projection (linear algebra)](https://en.wikipedia.org/wiki/Projection_%28linear_algebra%29). It says: “⟨Px, y − Py⟩ = ⟨x, (P − P²)y⟩ = 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Quadratic forms make sums of positive definite matrices positive definite
 
 **Remember:** At each nonzero vector, the form of the sum adds two positive numbers.
@@ -229,6 +397,22 @@
 **How the definition helps.** The quadratic form definition makes the sum positive by adding two positive numbers at each nonzero vector. The eigenvalue test does not give that proof, because the eigenvalues of the sum need not be sums of corresponding eigenvalues. The work is in the spectral theorem, which gives an orthonormal basis of eigenvectors for each real symmetric matrix. In that basis the form is a sum of squares weighted by the eigenvalues. This account of the comparison is our own.
 
 **Wikipedia:** [Definite matrix](https://en.wikipedia.org/wiki/Definite_matrix). It says: “If M and N are positive-definite, then the sum M + N is also positive-definite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symmetry makes quadratic form matrices unique
+
+**Remember:** Symmetry divides each mixed coefficient equally between two matrix entries.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Represent a real quadratic form q, a homogeneous polynomial of degree two, by a symmetric matrix S with q(x) = xᵀSx. Allowing any square matrix also gives representations, but they need not be unique.
+
+**Problem.** Every real quadratic form has exactly one symmetric matrix representation in fixed coordinates.
+
+**How the definition helps.** Symmetry forces each off-diagonal entry to be half the corresponding mixed coefficient (our own). Each diagonal entry equals the coefficient of one squared variable (our own). Comparing coefficients now proves existence and uniqueness (our own). Without symmetry, even the nonzero matrix sending (x, y) to (y, −x) represents the zero form (our own).
+
+**Wikipedia:** [Quadratic form](https://en.wikipedia.org/wiki/Quadratic_form). It says: “there is a one-to-one correspondence between quadratic forms and symmetric matrices that determine them.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -280,6 +464,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Distance-preserving maps compose and invert
+
+**Remember:** Composing or reversing distance-preserving maps still preserves distance.
+
+*True by definition.* MSC 15B10 (Orthogonal matrices). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define an orthogonal real square matrix by asking its linear map to preserve all distances. An equivalent entry test asks for columns of length one with pairwise zero dot products.
+
+**Problem.** The product of two orthogonal matrices of the same size is orthogonal. The inverse of each orthogonal matrix is orthogonal.
+
+**How the definition helps.** A composition preserves distances at each step, and reversing a distance-preserving bijection preserves them too (our own). A distance-preserving square matrix is injective and therefore invertible (our own). The work moves to recovering dot products from lengths and checking them on coordinate vectors (our own).
+
+**nLab:** [orthogonal group](https://ncatlab.org/nlab/show/orthogonal+group). It says: “This is isomorphic to the group of n × n orthogonal matrices.”
+
+**Paper or page:** [Inverse of Orthogonal Matrix is Orthogonal](https://proofwiki.org/wiki/Inverse_of_Orthogonal_Matrix_is_Orthogonal). It says: “Then its inverse A⁻¹ is also orthogonal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normal matrices are exactly the ones the spectral theorem diagonalizes
 
 **Remember:** Diagonal matrices commute with their adjoints, and unitary changes of basis keep that.
@@ -293,6 +495,22 @@
 **How the definition helps.** The definition takes an easy necessary condition, and the theorem says that it is also sufficient. The condition is necessary because a diagonal matrix commutes with its conjugate transpose, and a unitary change of basis keeps that property. The article's proof of sufficiency is short. By the Schur decomposition, A is unitarily similar to an upper triangular matrix. A normal upper triangular matrix must be diagonal. The article then reads off two more facts. A normal matrix is Hermitian exactly when its eigenvalues are real, and unitary exactly when its eigenvalues lie on the unit circle.
 
 **Wikipedia:** [Normal matrix](https://en.wikipedia.org/wiki/Normal_matrix). It says: “The concept of normality is important because normal matrices are precisely those to which the spectral theorem applies:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Self-adjointness makes distinct eigenspaces orthogonal
+
+**Remember:** Different eigenvalues cannot scale the same nonzero dot product equally.
+
+*True by definition.* MSC 15B57 (Hermitian, skew-Hermitian, and related matrices), 15A18. arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A real square matrix A is self-adjoint if (Ax) · y = x · (Ay) for all vectors x and y. The entry definition calls A symmetric if it equals its transpose.
+
+**Problem.** Eigenvectors of a real symmetric matrix for distinct eigenvalues have dot product zero.
+
+**How the definition helps.** Moving A across the dot product gives λ(x · y) = μ(x · y) for eigenvectors with eigenvalues λ and μ (our own). If λ and μ differ, the dot product must be zero (our own). The work moves to checking that the dot product definition is equivalent to symmetry of the entries (our own).
+
+**Paper or page:** [Eigenvectors of Symmetric Matrix are Orthogonal](https://proofwiki.org/wiki/Eigenvectors_of_Symmetric_Matrix_are_Orthogonal). It says: “Then v₁ and v₂ are orthogonal with respect to ⟨·, ·⟩.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

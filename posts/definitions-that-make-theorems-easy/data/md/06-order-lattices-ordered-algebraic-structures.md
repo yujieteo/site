@@ -1,3 +1,57 @@
+### Lexicographic comparison gives total orders
+
+**Remember:** The first difference settles the comparison.
+
+*True by definition.* MSC 06A05 (Total orders). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Compare two tuples of a fixed finite length at their first unequal coordinate. A total order compares every pair, so this rule differs from requiring every coordinate to be at most its counterpart.
+
+**Problem.** Lexicographic comparison of tuples from totally ordered sets gives a total order.
+
+**How the definition helps.** The first difference always decides which of two distinct tuples comes first. For transitivity, use the earlier of the two first differences (our own). If they coincide, transitivity in that coordinate decides the comparison (our own). Coordinatewise comparison leaves (0, 1) and (1, 0) incomparable (our own).
+
+**nLab:** [lexicographic order](https://ncatlab.org/nlab/show/lexicographic+order). It says: “if x, y ∈ L and x ≠ y, then x &lt; y iff xᵢ &lt; yᵢ where i is the least element in the set {j ∈ I : xⱼ ≠ yⱼ}.”
+
+**Paper or page:** [Lexicographic Order on Pair of Totally Ordered Sets is Total Ordering](https://proofwiki.org/wiki/Lexicographic_Order_on_Pair_of_Totally_Ordered_Sets_is_Total_Ordering). It says: “is a total ordering on S₁ × S₂”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Well-ordering gives strong induction
+
+**Remember:** Any failure would have a first failure.
+
+*Rules out counterexamples.* MSC 06A05 (Total orders). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A well-order is a total order in which every nonempty subset has a least element. Totality alone says only that every pair can be compared.
+
+**Problem.** A claim about natural numbers holds everywhere if its truth at all smaller numbers implies its truth at each number.
+
+**How the definition helps.** The well-ordering of the natural numbers supplies a first counterexample whenever the claim fails (our own). All earlier elements then satisfy the claim and force it to hold at that counterexample (our own). On the integers, the claim that every integer is nonnegative satisfies the earlier-elements implication but is false (our own). For any integer there is a smaller negative integer, so the premise of that implication never holds (our own).
+
+**Wikipedia:** [Well-order](https://en.wikipedia.org/wiki/Well-order). It says: “the standard ordering ≤ of the integers is not a well ordering”
+
+**Paper or page:** [Well-Ordered Induction](https://proofwiki.org/wiki/Well-Ordered_Induction). It says: “That is, if a property passes from the initial segment of x to x, then this property is true for all x ∈ A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Antisymmetry makes least elements unique
+
+**Remember:** Two least elements each lie below the other.
+
+*Rules out counterexamples.* MSC 06A06 (Partial orders, general). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A preorder is a reflexive and transitive comparison. A partial order also requires antisymmetry, which means that x ≤ y and y ≤ x force x = y.
+
+**Problem.** Any subset of a partially ordered set has at most one least element.
+
+**How the definition helps.** Antisymmetry turns the two comparisons between least elements into equality (our own). Each least element is at most every element of the subset, including the other least element (our own). Divisibility on all integers lacks antisymmetry and has two least elements, 1 and −1 (our own).
+
+**Wikipedia:** [Partially ordered set](https://en.wikipedia.org/wiki/Partially_ordered_set). It says: “i.e. no two distinct elements precede each other.”
+
+**Paper or page:** [Smallest Element is Unique](https://proofwiki.org/wiki/Smallest_Element_is_Unique). It says: “If S has a smallest element, then it can have only one.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The order dual gives every order theorem a second theorem free
 
 **Remember:** Turn the Hasse diagram upside down and every theorem still holds.
@@ -11,6 +65,40 @@
 **How the definition helps.** The axioms of a partial order do not change when the order is reversed, so the dual of a partially ordered set is again one. A statement true for all partially ordered sets is then true for every dual. Read in the original set, this is the dual statement. So each theorem about least upper bounds gives a theorem about greatest lower bounds with no new proof. Ideals and filters, and closure and kernel operators, are dual pairs in this way. The limit is that the principle needs a class of orders that is closed under duals. For example, Heyting algebras, the algebras of intuitionistic logic, are not closed under duals (our own).
 
 **Wikipedia:** [Duality (order theory)](https://en.wikipedia.org/wiki/Duality_%28order_theory%29). It says: “The importance of this simple definition stems from the fact that every definition and theorem of order theory can readily be transferred to the dual order.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ties turn preorders into partial orders
+
+**Remember:** Treat mutual comparisons as ties, then order the tie classes.
+
+*True by definition.* MSC 06A06 (Partial orders, general). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A preorder is a reflexive and transitive relation. Group elements into classes by putting x and y together when x ≤ y and y ≤ x. Order the class of x below or equal to the class of y when x ≤ y.
+
+**Problem.** The classes of a preorder under mutual comparison form a partially ordered set.
+
+**How the definition helps.** Classes make antisymmetry automatic because comparison both ways puts the representatives in the same class. Transitivity makes the comparison independent of the representatives (our own). For integer divisibility, each class consists of an integer and its negative (our own).
+
+**nLab:** [preorder](https://ncatlab.org/nlab/show/preorder). It says: “Then the quotient set P / ∼ is a poset.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cover relations recover finite orders
+
+**Remember:** Follow upward steps to recover comparisons.
+
+*Rules out counterexamples.* MSC 06A07 (Combinatorics of partially ordered sets). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** In a partially ordered set, y covers x if x &lt; y and nothing lies strictly between them. A Hasse diagram draws only these steps and leaves out comparisons that follow by transitivity.
+
+**Problem.** In a finite partially ordered set, x &lt; y exactly when a path of one or more upward cover steps leads from x to y.
+
+**How the definition helps.** Keeping only covers still records every comparison because each finite interval can be crossed in immediate steps (our own). Choose the next element as a minimal element above the current one and at most y (our own). Each step rises, so finiteness forces arrival at y (our own). In the rational numbers, every two distinct numbers have another between them, so there are no covers (our own).
+
+**nLab:** [Hasse diagram](https://ncatlab.org/nlab/show/Hasse+diagram). It says: “its Hasse diagram encodes the minimal amount of information necessary to reproduce the ordering relation.”
+
+**Wikipedia:** [Hasse diagram](https://en.wikipedia.org/wiki/Hasse_diagram). It says: “a type of mathematical diagram used to represent a finite partially ordered set”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -32,6 +120,24 @@
 
 - [ProofWiki, Equivalence of Definitions of Transitive Closure of Relation/Union of Compositions is Smallest](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Transitive_Closure_of_Relation/Union_of_Compositions_is_Smallest)
 - [ProofWiki, Equivalence of Definitions of Transitive Closure of Relation/Finite Chain is Smallest](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Transitive_Closure_of_Relation/Finite_Chain_is_Smallest)
+
+### Absorption makes lattice orders agree
+
+**Remember:** Absorption makes meet and join agree about which element is larger.
+
+*Rules out counterexamples.* MSC 06B05 (Structure theory of lattices). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** An algebraic definition of a lattice uses two commutative and associative operations, ∧ and ∨. Each operation gives x when applied to x twice. The absorption laws are x ∧ (x ∨ y) = x and x ∨ (x ∧ y) = x.
+
+**Problem.** The two operations determine one order in which ∧ is greatest lower bound and ∨ is least upper bound.
+
+**How the definition helps.** Absorption makes the two order tests agree. Define x ≤ y when x ∧ y = x. Absorption makes this equivalent to x ∨ y = y. The operation laws then make ∧ the greatest lower bound and ∨ the least upper bound. Without absorption, both operations could be minimum on {0, 1}, giving opposite orders (our own).
+
+**nLab:** [lattice](https://ncatlab.org/nlab/show/lattice). It says: “Notice that the absorption laws guarantee that these two descriptions of ≤ agree.”
+
+**Paper or page:** [Structure with Commutative Idempotent Associative Operations satisfying Absorption Laws is Lattice](https://proofwiki.org/wiki/Structure_with_Commutative_Idempotent_Associative_Operations_satisfying_Absorption_Laws_is_Lattice). It says: “Then there exists a unique lattice ordering ≼ on S such that”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Dedekind completeness is exactly what makes closed bounded sets compact
 

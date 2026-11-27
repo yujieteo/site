@@ -14,6 +14,62 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Zero coefficients cannot hide sign changes
+
+**Remember:** Skip zeros before counting signs.
+
+*Rules out counterexamples.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 01A45. arXiv math.HO. Level 1: early undergraduate.
+
+**Definition.** Count a polynomial’s sign changes after deleting all zero coefficients. A tempting alternative counts only adjacent coefficients with opposite signs.
+
+**Problem.** For a real polynomial with a nonzero constant term, the positive root count equals the sign count minus a nonnegative even integer. Count roots with multiplicity.
+
+**How the definition helps.** Deleting zeros counts a sign change across a missing power. In our own example, x² − 1 has one positive root, but neither adjacent coefficient pair changes sign. Our own proof outline uses the fact that multiplying by x − a for positive a adds at least one sign change. For parity, compare the first and last nonzero coefficients. Their signs also give the signs near zero and near positive infinity, and only roots of odd multiplicity reverse the polynomial’s sign.
+
+**Wikipedia:** [Descartes's rule of signs](https://en.wikipedia.org/wiki/Descartes%27s_rule_of_signs). It says: “the number of sign changes in the sequence of the polynomial's coefficients (omitting zero coefficients)”
+
+**Paper or page:** [Gauss's proof of Descartes's rule of signs](https://arxiv.org/abs/2205.04249v2). It says: “Let f(x) be a polynomial with f(0) ≠ 0. There exists a nonnegative even integer ν such that”
+
+**Sources:**
+
+- [Melvyn B. Nathanson, Gauss's proof of Descartes's rule of signs](https://arxiv.org/abs/2205.04249v2)
+
+### Formal differentiation detects repeated roots
+
+**Remember:** At a root, the derivative detects a second copy of the same linear factor.
+
+*Makes the theorem clean to state or prove.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** The formal derivative sends constants to zero. For each positive power, multiply the coefficient by the exponent and lower the exponent by one. A root a is repeated when (x − a)² divides the polynomial.
+
+**Problem.** If a is a root of a nonzero polynomial f over a field, then a is a repeated root exactly when f′(a) = 0.
+
+**How the definition helps.** The formal product rule turns the test into one substitution at the root (our own). Write f = (x − a)g by the factor theorem, so the product rule gives f′(a) = g(a) (our own). Apply the factor theorem again to see that g(a) vanishes exactly when x − a divides g (our own). The work is in proving the formal product rule from the rule on powers (our own).
+
+**Wikipedia:** [Formal derivative](https://en.wikipedia.org/wiki/Formal_derivative). It says: “Formal differentiation is used in algebra to test for multiple roots of a polynomial.”
+
+**Paper or page:** [Double Root of Polynomial is Root of Derivative](https://proofwiki.org/wiki/Double_Root_of_Polynomial_is_Root_of_Derivative). It says: “Then a is a root of f′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lagrange basis polynomials isolate data points
+
+**Remember:** Each basis polynomial contributes only its own prescribed value at the given inputs.
+
+*True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** For each distinct input, multiply the linear factors that vanish at every other input. Divide by the value of that product at the chosen input. These Lagrange basis polynomials replace the usual basis of successive powers of x.
+
+**Problem.** Choose n + 1 distinct inputs in a field. Exactly one polynomial of degree at most n takes prescribed values from that field at those inputs.
+
+**How the definition helps.** Each basis polynomial is 1 at its own input and 0 at the others (our own). Distinct inputs make each denominator a product of nonzero differences (our own). Weight each basis polynomial by its prescribed value and add the results (our own). The root bound does the remaining work, since the difference of two solutions would have more roots than its degree (our own).
+
+**Wikipedia:** [Lagrange polynomial](https://en.wikipedia.org/wiki/Lagrange_polynomial). It says: “The interpolating polynomial is unique.”
+
+**Paper or page:** [Lagrange Interpolation Formula/Formulation 1](https://proofwiki.org/wiki/Lagrange_Interpolation_Formula/Formulation_1). It says: “Then there exists a unique polynomial P ∈ ℝ\[X\] of degree at most n such that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Over an algebraically closed field every linear map has an eigenvector
 
 **Remember:** Every characteristic polynomial has a root, so every linear map has an eigenvalue.

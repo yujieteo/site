@@ -1,3 +1,19 @@
+### Closed normal subgroups give Hausdorff quotients
+
+**Remember:** Closedness separates the identity coset, and translation does the rest.
+
+*Rules out counterexamples. Confidence: medium.* MSC 22A05 (Structure of general topological groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Give the cosets of a normal subgroup N the quotient topology. For Hausdorff topological groups, restrict this construction to closed normal subgroups if the quotient must stay Hausdorff.
+
+**Problem.** The quotient of a Hausdorff topological group by a normal subgroup is Hausdorff exactly when the subgroup is closed.
+
+**How the definition helps.** Closedness makes the identity coset a closed point (our own argument). Translation then makes all points closed. The quotient map is open because the preimage of the image of an open set is a union of translates. Consequently the group operations are continuous on the quotient. In a topological group with closed points, distinct points have disjoint neighborhoods. Conversely, the preimage of a closed identity point is closed. For example, the quotient ℝ∕ℚ has only two open sets because ℚ is dense.
+
+**nLab:** [closed subgroup](https://ncatlab.org/nlab/show/closed+subgroup). It says: “A common condition on subgroups of a topological group is that they be closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### An invariant inner product makes complete reducibility immediate
 
 **Remember:** An invariant subspace has an invariant orthogonal complement.
@@ -80,6 +96,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Matrix coefficients form dense algebras
+
+**Remember:** The product of two coefficients is a coefficient of their tensor product.
+
+*Makes the theorem clean to state or prove.* MSC 22C05 (Compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A matrix coefficient is a function g ↦ ℓ(gv), where v belongs to a finite-dimensional continuous complex representation and ℓ is a linear functional. Take all linear combinations of these functions. Traces alone give only functions constant on conjugacy classes.
+
+**Problem.** The matrix coefficients of a compact Hausdorff group span an algebra dense in the continuous functions in the uniform norm.
+
+**How the definition helps.** Matrix coefficients give a class of functions closed under products that can distinguish points in the same conjugacy class (our own explanation). Tensor the representations to multiply their coefficients. The trivial representation gives constants, and conjugate representations supply complex conjugates. The substantial part of Peter–Weyl shows that finite-dimensional continuous representations separate points of a compact Hausdorff group. Stone–Weierstrass now gives uniform density.
+
+**nLab:** [Peter-Weyl theorem](https://ncatlab.org/nlab/show/Peter-Weyl+theorem). It says: “Representative functions on a compact topological group form a dense subspace of the space of all continuous functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The normalizer shows why Weyl symmetry preserves weight multiplicities
 
 **Remember:** Conjugating the torus transports its common eigenspaces.
@@ -95,6 +127,57 @@
 **nLab:** [Weyl group](https://ncatlab.org/nlab/show/Weyl+group). It says: “The Weyl group of a compact Lie group G is equivalently the quotient group of the normalizer of any maximal torus T by that torus.”
 
 **Wikipedia:** [Semisimple Lie algebra](https://en.wikipedia.org/wiki/Semisimple_Lie_algebra). It says: “The Weyl group is an important symmetry of the problem; for example, the weights of any finite-dimensional representation of 𝔤 are invariant under the Weyl group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed subgroups make Chabauty compact
+
+**Remember:** Closed subgroup limits may stop being discrete.
+
+*Rules out counterexamples. Confidence: medium.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Represent a closed subgroup H by H ∪ {∞} in the one-point compactification of a locally compact Hausdorff group. Give these sets the topology on compact subsets, where sets must hit specified open sets and miss specified closed sets. Do not restrict H to discrete subgroups.
+
+**Problem.** The space of closed subgroups is compact. The discrete subgroups alone need not form a compact space.
+
+**How the definition helps.** Allowing every closed subgroup keeps limits that would disappear if we required discreteness (our own argument). In the compact space of closed sets containing ∞, each subgroup limit contains the identity. Approximate two finite limit points simultaneously by subgroup elements. Continuity of division puts their quotient in the limit too. Thus the subgroup condition defines a closed subset of a compact space. For example, (1∕n)ℤ converges to ℝ, which is not discrete.
+
+**Paper or page:** [Computably locally compact groups and their closed subgroups](https://arxiv.org/abs/2407.19440). It says: “For a computably locally compact group G, the Chabauty space 𝒮(G) is Π⁰₁ (effectively closed) in the computably compact hyperspace 𝒦(G\*)”
+
+**Sources:**
+
+- [Computably locally compact groups and their closed subgroups, Proposition 4.2](https://arxiv.org/abs/2407.19440)
+- [Claude Chabauty, Limite d’ensembles et géométrie des nombres (1950)](https://doi.org/10.24033/bsmf.1412)
+
+### Finite stabilizer orbits give compactness
+
+**Remember:** A stabilizer with finite orbits sits in a product of finite groups.
+
+*Rules out counterexamples.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Give permutations of a countable set the topology of pointwise convergence on that discrete set. Take a closed transitive group of permutations and require each point stabilizer to have only finite orbits.
+
+**Problem.** Each point stabilizer is compact and open. The group is therefore locally compact.
+
+**How the definition helps.** Finite orbits place a point stabilizer inside a compact product of finite permutation groups (our own argument). Each factor permutes one orbit. Every element of the product permutes the original set, so closedness of the stabilizer makes it compact. Fixing one point is an open condition. In the full permutation group of a countably infinite set, every pointwise stabilizer of a finite set has an infinite orbit. None of these basic neighborhoods is compact.
+
+**Paper or page:** [Cayley--Abels graphs and invariants of totally disconnected, locally compact groups](https://arxiv.org/abs/2105.12630). It says: “Assume G is closed in the permutation topology. Assume also that all suborbits are finite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattices force ambient unimodularity
+
+**Remember:** A finite invariant quotient cannot sustain a nontrivial volume scaling.
+
+*Rules out counterexamples.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A lattice is a discrete subgroup Γ whose quotient G∕Γ has a nonzero finite invariant measure. This is stronger than just requiring a discrete subgroup. A group is unimodular when left Haar measure, a volume invariant under left translation, is also right invariant.
+
+**Problem.** A locally compact Hausdorff group with a lattice is unimodular.
+
+**How the definition helps.** Finite invariant volume forces every logarithmic volume change to vanish (our own argument). The modular function measures volume change under right translation. The invariant quotient measure criterion makes this function one on the discrete subgroup, so its logarithm descends to the quotient. Normalize the quotient measure and push it to ℝ by this logarithm. Its image is a probability measure invariant under translation by every logarithmic volume change. A nonzero translation partitions ℝ into infinitely many translates of one half-open interval, which cannot all have equal probability. Integer translations form a discrete subgroup of the nonunimodular real affine group.
+
+**Wikipedia:** [Lattice (discrete subgroup)](https://en.wikipedia.org/wiki/Lattice_%28discrete_subgroup%29). It says: “a necessary condition for a group to contain a lattice is that the group must be unimodular.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -152,6 +235,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Admissibility gives smooth biduality
+
+**Remember:** Take the double dual of each finite fixed space, then take their union.
+
+*Rules out counterexamples. Confidence: medium.* MSC 22D12 (Other representations of locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** For a totally disconnected locally compact group, a complex representation is smooth if every vector has an open stabilizer. Its smooth dual keeps only linear functionals with open stabilizers. An admissible representation also has finite-dimensional fixed spaces for all compact open subgroups.
+
+**Problem.** The evaluation map from a smooth admissible representation to its double smooth dual is an isomorphism.
+
+**How the definition helps.** Admissibility makes evaluation an isomorphism on each fixed space (our own argument). Averaging over a compact open subgroup projects onto its fixed space. Thus its fixed functionals are precisely the dual of that space. Apply this twice and use finite-dimensional double duality. Every smooth vector belongs to such a fixed space by the compact open subgroup theorem. For the trivial group, an infinite-dimensional vector space fails algebraic double duality.
+
+**Wikipedia:** [Admissible representation](https://en.wikipedia.org/wiki/Admissible_representation). It says: “the space of vectors fixed by any compact open subgroup is finite dimensional”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Admissibility makes character traces finite
+
+**Remember:** Average first, then trace on a finite space.
+
+*Rules out counterexamples. Confidence: medium.* MSC 22D12 (Other representations of locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let G be a totally disconnected locally compact Hausdorff group. A complex representation is smooth if every vector has an open stabilizer. It is admissible if the vectors fixed by each compact open subgroup form a finite-dimensional space.
+
+**Problem.** Every compactly supported locally constant test function defines a finite-rank operator in an admissible smooth complex representation.
+
+**How the definition helps.** Admissibility gives the integrated operator a finite-dimensional target (our own argument). Compact support and local constancy give one compact open subgroup under whose left translations the test function stays fixed. Left invariance of the integration measure then forces the operator’s image into the subgroup’s fixed space. Its finite rank lets us take its trace. For infinitely many copies of the trivial representation, a function of integral one gives the identity, which has infinite rank.
+
+**Wikipedia:** [Admissible representation](https://en.wikipedia.org/wiki/Admissible_representation). It says: “the space of vectors fixed by any compact open subgroup is finite dimensional”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact open subgroups give smoothness
+
+**Remember:** A sufficiently small subgroup of complex invertible matrices is trivial.
+
+*True by definition. Confidence: medium.* MSC 22D12 (Other representations of locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A locally profinite group is a Hausdorff topological group with a compact open subgroup inside each identity neighborhood. A representation is smooth if every vector has an open stabilizer. Continuity of a complex matrix representation uses the usual topology on matrices.
+
+**Problem.** Every finite-dimensional continuous complex representation of a locally profinite group has open kernel and is smooth.
+
+**How the definition helps.** The compact open subgroup definition turns one small matrix neighborhood into an open kernel (our own argument). Complex invertible matrices have an identity neighborhood containing no nontrivial subgroup. Its preimage contains a compact open subgroup, whose image must therefore be trivial. The kernel contains that open subgroup and is open. Van Dantzig’s theorem identifies this neighborhood definition with local compactness and total disconnectedness for Hausdorff groups.
+
+**Wikipedia:** [Locally profinite group](https://en.wikipedia.org/wiki/Locally_profinite_group). It says: “every neighborhood of the identity element contains a compact open subgroup.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the full group C\*-algebra by all representations makes every representation extend
 
 **Remember:** The supremum bounds every representation at once.
@@ -165,6 +296,22 @@
 **How the definition helps.** By definition, ‖π(x)‖ ≤ ‖x‖ for every unitary representation π and every x in ℂ\[G\], so π extends by continuity. The work is to show that the supremum is a norm. It is finite because ‖x‖ is at most the sum of the absolute values of the coefficients of x. It is nonzero for nonzero x because the left regular representation is faithful on ℂ\[G\]. The reduced algebra lacks the property. For the free group on two generators, the trivial representation does not extend to the reduced algebra. Wikipedia says the universal property follows from the definition; the rest is our own account.
 
 **Wikipedia:** [Group algebra of a locally compact group](https://en.wikipedia.org/wiki/Group_algebra_of_a_locally_compact_group). It says: “It follows from the definition that, when G is a discrete group, C\*(G) has the following universal property”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact induction preserves exactness
+
+**Remember:** Each coset contributes one copy, and direct sums preserve exactness.
+
+*True by definition. Confidence: medium.* MSC 22D30 (Induced representations for locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let H be an open subgroup of a locally profinite group G, where compact open subgroups form a neighborhood basis at the identity. For a smooth H-representation V, compact induction uses functions f from G to V satisfying f(hg) = hf(g). They vanish outside finitely many right cosets Hg. Ordinary smooth induction allows support on infinitely many cosets.
+
+**Problem.** Compact induction from H is exact on smooth representations over a field. Here smooth means each vector is fixed by an open subgroup.
+
+**How the definition helps.** Finite coset support makes compact induction a direct sum on the underlying vector spaces (our own argument). Evaluate at one representative per right coset. Each nonzero value has an open stabilizer in H. Intersecting their conjugates gives an open subgroup fixing the function under right translation. Direct sums of exact sequences of vector spaces are exact.
+
+**Wikipedia:** [Induced representation](https://en.wikipedia.org/wiki/Induced_representation). It says: “φ has compact support mod H”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -391,6 +538,38 @@
 
 - [Bachir Bekka, Canonical Commutation Relations: A quick proof of the Stone-von Neumann theorem and an extension to general rings, arXiv:2502.00387 (2025)](https://arxiv.org/abs/2502.00387v1)
 
+### Compact normal quotients preserve scale
+
+**Remember:** The same coset action gives the same scale.
+
+*True by definition.* MSC 22D45 (Automorphism groups of locally compact groups). arXiv math.GR. Level 4: research.
+
+**Definition.** For a totally disconnected locally compact group, the scale of g is the minimum of \[U : U ∩ g⁻¹Ug\] over compact open subgroups U. Equivalently, fix one such U and let U act on right cosets by right multiplication. Take the limit of the nth roots of the orbit sizes of Ugⁿ.
+
+**Problem.** Quotienting a totally disconnected locally compact group by a compact normal subgroup does not change the scale of any element.
+
+**How the definition helps.** The growth formula allows the same orbit counts in both groups (our own argument). Choose a compact open subgroup of the quotient. Its inverse image is open and compact because the quotient map has compact kernel and is proper. The quotient map identifies the two right coset spaces and the corresponding subgroup orbits. Their growth rates therefore agree. Proposition 1.6 identifies each rate with the scale defined by minimizing an index.
+
+**Paper or page:** [Cayley--Abels graphs and invariants of totally disconnected, locally compact groups](https://arxiv.org/abs/2105.12630), [Cayley--Abels graphs and invariants of totally disconnected, locally compact groups](https://arxiv.org/abs/2105.12630). It says: “If g ∈ G, then s₍G⁄K₎(gK) = s(g).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Growth makes scale exponentiate
+
+**Remember:** Passing to a power takes a subsequence of the same growth rate.
+
+*True by definition.* MSC 22D45 (Automorphism groups of locally compact groups). arXiv math.GR. Level 4: research.
+
+**Definition.** Let G be a locally compact group whose connected components are single points. The usual scale minimizes an index over compact open subgroups. Instead, fix one compact open subgroup U and count the orbit of Ugⁿ under right multiplication by U. The scale of g is the limit of the nth roots of these orbit sizes.
+
+**Problem.** For every positive integer m, the scale of gᵐ is the mth power of the scale of g.
+
+**How the definition helps.** The growth definition turns powers into a change of index, our own observation. For gᵐ, the nth orbit size is the mnth orbit size for g. Taking its nth root gives the mth power of the corresponding mnth root, by our own calculation. The work is the orbit growth theorem, which identifies the limit with the minimum index for every U.
+
+**Paper or page:** [Cayley--Abels graphs and invariants of totally disconnected, locally compact groups](https://arxiv.org/abs/2105.12630). It says: “If g ∈ G then s(g) = limₙ→∞ \|(αgⁿ)G₍α₎\|¹⁄ⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Synthetic Maurer–Cartan forms make flatness the identity x⁻¹y·y⁻¹z = x⁻¹z
 
 **Remember:** Group differences cancel at the middle point.
@@ -444,3 +623,21 @@
 
 - [Harish-Chandra, Representations of Semisimple Lie Groups. III. Characters, in Collected Papers, Springer (1984) 370–373](https://doi.org/10.1007/978-1-4899-7407-5_23)
 - [Harish-Chandra, Invariant Eigendistributions on a Semisimple Lie Group, in Collected Papers, Springer (1984) 1457–1508](https://doi.org/10.1007/978-1-4899-7407-5_63)
+
+### Normalized induction preserves smooth duals
+
+**Remember:** Two half factors supply the one volume factor needed for pairing.
+
+*Makes the theorem clean to state or prove.* MSC 22E50 (Representations of Lie and linear algebraic groups over local fields). arXiv math.RT. Level 4: research.
+
+**Definition.** Let G = SL₂(F), where F is a nonarchimedean local field, such as the p-adic numbers. Let B be its upper triangular subgroup. Extend a complex character χ of the diagonal subgroup to B by ignoring the off-diagonal entry. Normalized induction multiplies χ by the square root of the volume change under conjugation on upper triangular matrices with ones on the diagonal.
+
+**Problem.** For a character χ with open kernel, the smooth dual of normalized induction from χ is normalized induction from χ⁻¹. The smooth dual consists of linear functionals with open stabilizer.
+
+**How the definition helps.** Normalization lets the two character factors cancel while their square roots supply the volume change required for integration (our own explanation). Multiply the two functions and integrate their product over a maximal compact subgroup. The integration formula makes this pairing invariant under G. Identifying all smooth functionals through this pairing takes a separate duality theorem.
+
+**Wikipedia:** [Induced representation](https://en.wikipedia.org/wiki/Induced_representation). It says: “With the addition of the normalizing factors this induction functor takes unitary representations to unitary representations.”
+
+**Paper or page:** [Representations of SL₂(F)](https://arxiv.org/abs/2404.11188). It says: “The smooth dual of iᴳ′₍B′₎(χ) is iᴳ′₍B′₎(χ⁻¹).”
+
+**Sources:** none listed. No primary source with a working link was found.

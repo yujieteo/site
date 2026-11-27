@@ -1,3 +1,37 @@
+### Rank one projectors show numerical range convexity
+
+**Remember:** Two vectors reduce numerical range convexity to a filled ellipse.
+
+*True by definition.* MSC 47A12 (Numerical range, numerical radius). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The numerical range of a complex square matrix A consists of x\*Ax for all unit column vectors x. Equivalently, it consists of trace(AP) for all orthogonal projections P onto lines, since P = xx\*.
+
+**Problem.** The numerical range of a complex square matrix is convex.
+
+**How the definition helps.** The projection formula turns the two-dimensional numerical range into a linear image of a sphere (our own). The rank-one projections in two dimensions form a sphere inside the three-dimensional real affine space of trace-one Hermitian matrices (our own). Its image in the plane is a filled ellipse, a segment, or a point (our own). Any two unit vectors span a space of dimension at most two (our own). Projecting A back onto that space preserves x\*Ax there, so the segment joining the two values lies in the numerical range (our own).
+
+**Wikipedia:** [Numerical range](https://en.wikipedia.org/wiki/Numerical_range). It says: “The image of a 2-sphere under a linear projection is a filled ellipse.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal pseudospectra are spectral neighborhoods
+
+**Remember:** For normal matrices, resolvent size measures distance to the closest eigenvalue.
+
+*True by definition.* MSC 47A55 (Perturbation theory of linear operators). arXiv math.SP, math.FA. Level 2: later undergraduate.
+
+**Definition.** Fix ε &gt; 0 and a complex square matrix A. Its ε-pseudospectrum contains its eigenvalues and exactly those other numbers z with ‖(A − zI)⁻¹‖ ≥ 1/ε. The norm uses Euclidean lengths. Equivalently, collect all eigenvalues of A + E for matrices E with ‖E‖ ≤ ε.
+
+**Problem.** If A is normal, meaning AA\* = A\*A, its ε-pseudospectrum consists exactly of numbers at distance at most ε from an eigenvalue.
+
+**How the definition helps.** The inverse-norm definition reduces the neighborhood formula to reading diagonal entries in an orthonormal eigenbasis (our own). The spectral theorem supplies that basis for normal matrices (our own). The inverse norm is the largest reciprocal distance from z to an eigenvalue (our own). For the two-by-two matrix with only an upper-right 1, the only eigenvalue is zero (our own). At z = 1/2 the inverse has an entry of magnitude 4, so ε = 1/3 disproves the neighborhood formula there (our own).
+
+**Wikipedia:** [Pseudospectrum](https://en.wikipedia.org/wiki/Pseudospectrum). It says: “The ε-pseudospectrum of a matrix A consists of all eigenvalues of matrices which are ε-close to A:”
+
+**Paper or page:** [Stability Analysis of a Simple Discretization Method for a Class of Strongly Singular Integral Equations](https://arxiv.org/abs/2302.13159v3). It says: “‖(λ𝕀 − AΩ)⁻¹‖ = dist(λ, 𝒞)⁻¹.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A dense domain makes the adjoint of an operator well defined
 
 **Remember:** Only a dense domain pins down the vector that represents the functional.
@@ -33,6 +67,24 @@
 **Sources:**
 
 - [J. von Neumann, Über adjungierte Funktionaloperatoren, Annals of Mathematics 33 (1932), 294–310](https://doi.org/10.2307/1968331)
+
+### Closed graphs give complete domains
+
+**Remember:** A Cauchy sequence in graph norm controls both input and output.
+
+*True by definition.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Give the domain of T the graph norm ‖x‖ + ‖Tx‖, not just ‖x‖. It measures both the input and the output. The graph is the set of pairs (x, Tx).
+
+**Problem.** For a linear operator between Banach spaces, the domain is complete in graph norm exactly when the operator has a closed graph.
+
+**How the definition helps.** The graph norm makes x ↦ (x, Tx) preserve distances when the product space uses the sum norm (our own). The graph is complete exactly when it is closed in the complete product space (our own). For a particular operator, one still has to prove its graph is closed (our own).
+
+**Wikipedia:** [Unbounded operator](https://en.wikipedia.org/wiki/Unbounded_operator). It says: “An operator T is said to be closed if its graph Γ(T) is a closed set.”
+
+**Paper or page:** [The spectral theorem for normal operators on a Clifford module](https://arxiv.org/abs/2112.05201v1). It says: “is a complete normed right module over ℝₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Partial isometries give every bounded operator a polar decomposition
 
@@ -82,6 +134,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact resolvents give discrete spectra
+
+**Remember:** Study the bounded inverse to find the unbounded spectrum.
+
+*Makes the theorem clean to state or prove.* MSC 47A10 (Spectrum, resolvent). arXiv math.SP, math.FA. Level 3: graduate.
+
+**Definition.** An operator has compact resolvent if one shift A − zI has a bounded, compact inverse on the whole space. A compact operator sends bounded sets to sets with compact closure.
+
+**Problem.** Let A be a closed operator with compact resolvent on a complex Banach space. Every spectral point is an isolated eigenvalue with a finite-dimensional space of generalized eigenvectors. The spectrum has no finite accumulation point.
+
+**How the definition helps.** The shifted inverse lets us use the spectral theory of compact operators (our own). The map λ ↦ 1/(λ − z) sends finite spectral points to nonzero spectral points of the inverse (our own). The hard work lies in proving the inverse is compact and proving the compact operator theorem (our own).
+
+**Wikipedia:** [Resolvent formalism](https://en.wikipedia.org/wiki/Resolvent_formalism). It says: “The spectrum σ(A) of such A is a discrete subset of ℂ.”
+
+**Paper or page:** [Spectral properties of Schrödinger operator with translations and Neumann boundary conditions](https://arxiv.org/abs/2506.23645v1). It says: “its spectrum consists of a countably many eigenvalues with the only accumulation point at infinity”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defined by invertibility, the spectrum of an operator is never empty
 
 **Remember:** The spectrum is where T − λI fails to be invertible, not only injective.
@@ -95,6 +165,22 @@
 **How the definition helps.** The invertibility definition puts more numbers in the spectrum than the eigenvalues, so the theorem becomes true. If the spectrum meant only the eigenvalues, the theorem would be false: the right shift on ℓ² has no eigenvalues. The number 0 is still in its spectrum, because the inverse of the shift is defined only on a non-dense subspace. Suppose the spectrum were empty. Then the resolvent (T − λI)⁻¹ would be holomorphic and bounded on all of ℂ and zero at infinity. By the vector-valued Liouville theorem it would be zero everywhere, which is impossible. The proof needs complex scalars, and the article notes that for unbounded operators the spectrum can be empty.
 
 **Wikipedia:** [Spectrum (functional analysis)](https://en.wikipedia.org/wiki/Spectrum_%28functional_analysis%29). It says: “In fact every bounded linear operator on a complex Banach space must have a non-empty spectrum.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Graph norms test resolvent compactness
+
+**Remember:** Compactness of the domain inclusion is compactness of the inverse in disguise.
+
+*True by definition. Confidence: medium.* MSC 47A10 (Spectrum, resolvent). arXiv math.SP, math.FA. Level 3: graduate.
+
+**Definition.** Let A be a closed linear operator on a Banach space. Give its domain the graph norm ‖u‖ + ‖Au‖.
+
+**Problem.** Suppose a closed operator has a bounded shifted inverse. It has compact resolvent exactly when its graph norm unit ball has compact closure in the original space.
+
+**How the definition helps.** With the graph norm, A − zI gives a bounded bijection from the domain onto the space whenever z lies outside the spectrum (our own). Its inverse is bounded by the bounded inverse theorem (our own). Composing that inverse with the domain inclusion gives the usual shifted inverse (our own). Thus the usual inverse is compact exactly when the inclusion sends the domain unit ball to a set with compact closure (our own).
+
+**Paper or page:** [Conditions for sectoriality and compactness of the resolvent for a non-self-adjoint Sturm--Liouville operator with singular distributional potential](https://arxiv.org/abs/2503.16172v1). It says: “‖L₀y‖ + ‖y‖ ≤ 1”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -134,6 +220,38 @@
 
 - [Michael C. H. Choi, Youjia Wang, Group-averaged Markov chains: mixing improvement, arXiv:2509.02996 (2025)](https://arxiv.org/abs/2509.02996v2)
 
+### Adjoints preserve the Fredholm property
+
+**Remember:** Take adjoints of both inverse identities and keep the compact errors.
+
+*True by definition.* MSC 47A53 ((Semi-) Fredholm operators; index theories). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A bounded operator T on a Hilbert space is Fredholm if some bounded S makes ST − I and TS − I compact. A compact operator sends bounded sets to sets with compact closure. The usual definition requires closed range, finite-dimensional kernel, and finite-dimensional quotient by the range.
+
+**Problem.** The adjoint of a bounded operator on a Hilbert space is Fredholm exactly when the operator is Fredholm.
+
+**How the definition helps.** Taking adjoints preserves compact errors and swaps the two inverse identities (our own). Taking the adjoint twice gives the converse (our own). Atkinson’s theorem connects this test to the usual definition (our own).
+
+**Paper or page:** [Perturbations of APS Boundary Conditions for Lorentzian Dirac Operators](https://arxiv.org/abs/2408.16696v3). It says: “T\* is Fredholm if and only if T is Fredholm.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed range matters for Fredholmness
+
+**Remember:** An adjoint kernel only sees the closure of the range.
+
+*Rules out counterexamples.* MSC 47A53 ((Semi-) Fredholm operators; index theories). arXiv math.FA. Level 3: graduate.
+
+**Definition.** For bounded Hilbert space operators, the Fredholm definition asks for closed range and finite-dimensional kernels for T and T\*. It is not enough to count the two kernels without checking the range.
+
+**Problem.** A bounded Fredholm operator has finite-dimensional quotient by its range. The dimension of this quotient equals the dimension of the kernel of the adjoint.
+
+**How the definition helps.** Closed range lets each quotient class have exactly one representative orthogonal to the range (our own). These representatives form the kernel of the adjoint (our own). On the space of square-summable sequences, the diagonal operator with entries 1/n has both kernels zero (our own). Its range contains every finite sequence but omits the square-summable sequence (1/n), whose preimage would be the constant sequence (our own). Thus its range is dense and its quotient is nonzero (our own).
+
+**Paper or page:** [Perturbations of APS Boundary Conditions for Lorentzian Dirac Operators](https://arxiv.org/abs/2408.16696v3). It says: “Ker(T) and Ker(T\*) are finite dimensional and T has closed range”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fredholm as invertible modulo compacts makes compact perturbations harmless
 
 **Remember:** Compact operators vanish in the Calkin algebra, so they cannot spoil invertibility there.
@@ -171,6 +289,22 @@
 
 - [Fredholm, E. I. (1903). Sur une classe d'équations fonctionnelles. Acta Mathematica 27, 365–390.](https://doi.org/10.1007/BF02421317)
 
+### Norm resolvents block spectral pollution
+
+**Remember:** Uniform control of shifted inverses prevents false spectral limits.
+
+*Rules out counterexamples.* MSC 47A55 (Perturbation theory of linear operators). arXiv math.SP, math.FA. Level 3: graduate.
+
+**Definition.** For self-adjoint operators on one complex Hilbert space, compare their shifted inverses (A − iI)⁻¹. Norm resolvent convergence requires these inverses to converge in operator norm. Strong resolvent convergence requires convergence on each fixed vector.
+
+**Problem.** If self-adjoint operators converge in norm resolvent, a finite limit of their spectral points belongs to the limit spectrum. Strong resolvent convergence does not suffice.
+
+**How the definition helps.** Norm convergence keeps every sufficiently late term invertible whenever the limit is invertible (our own). A number λ is outside the spectrum exactly when I − (λ − i)(A − iI)⁻¹ is invertible (our own). This bounded test still works when λ varies with the operator (our own). Projections onto successive basis vectors converge strongly to zero while all have the eigenvalue 1 (our own). The shifted inverses also converge strongly because each is a fixed linear combination of the identity and its projection (our own).
+
+**Paper or page:** [Diverging eigenvalues in domain truncations of Schrödinger operators with complex potentials](https://arxiv.org/abs/2107.10557v1). It says: “converge to T∞ in the norm resolvent sense (hence there is no spectral pollution)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the continuous functional calculus by uniqueness makes composition automatic
 
 **Remember:** A calculus is fixed once you know where the coordinate goes.
@@ -184,6 +318,22 @@
 **How the definition helps.** Uniqueness does the work, because the map g ↦ (g ∘ f)(a) is a unital homomorphism that preserves adjoints. It sends the coordinate function to f(a), so it is the calculus of f(a). This needs σ(f(a)) = f(σ(a)), so that g ∘ f is defined on σ(a). That fact is the spectral mapping theorem. The remaining work is existence, by the Gelfand representation of commutative C\*-algebras, and uniqueness, by the Stone–Weierstrass theorem. The nLab proves existence and uniqueness; the composition argument is our own.
 
 **nLab:** [functional calculus](https://ncatlab.org/nlab/show/functional+calculus). It says: “To see uniqueness, notice that any other morphism with these properties coincides with φ on all polynomials in ι and ῑ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Square roots become ordinary functions
+
+**Remember:** Apply the scalar square root on the spectrum.
+
+*Rules out counterexamples.* MSC 47A60 (Functional calculus for linear operators). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A bounded self-adjoint operator T is positive if ⟨Tx,x⟩ ≥ 0 for every x. The spectral theorem lets us apply continuous functions to T by evaluating them on its spectrum. Applying t ↦ √t defines the positive square root.
+
+**Problem.** Every bounded positive operator on a Hilbert space has a unique positive square root.
+
+**How the definition helps.** Requiring a positive root removes the sign ambiguity even for the identity, which also has the square root −I (our own). The functional calculus preserves products and positivity, so applying the scalar square root gives a positive square root (our own). If B is any positive square root, applying √t to B² gives B by composition (our own). The spectral theorem supplies the functional calculus (our own).
+
+**Paper or page:** [The spectral theorem for normal operators on a Clifford module](https://arxiv.org/abs/2112.05201v1). It says: “Then there exists a unique positive operator A ∈ ℬ(ℋₙ) such that A² = T.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -219,6 +369,38 @@
 **How the definition helps.** If L has rank less than n, so does ALB, and ‖ATB − ALB‖ ≤ ‖A‖ ‖T − L‖ ‖B‖. Taking the infimum over L gives the bound. The work moves to the theorem that the two definitions agree. It says that the best approximation of rank less than n cuts off the singular value expansion of T. For matrices this is the Eckart–Young theorem. With the spectral definition, the bound needs a minimax argument for eigenvalues. Wikipedia gives the infimum formula, and the comparison is our own.
 
 **Wikipedia:** [Singular value](https://en.wikipedia.org/wiki/Singular_value). It says: “σₙ(T) = inf { ‖T−L‖ : L is an operator of finite rank &lt; n }.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weak limits reveal compact operators
+
+**Remember:** An orthonormal sequence tends weakly to zero while each vector keeps norm one.
+
+*Rules out counterexamples.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 3: graduate.
+
+**Definition.** One can define compactness for a bounded linear operator from a Hilbert space by requiring weakly convergent sequences to have norm-convergent images. Weak convergence tests against each fixed vector by inner product. The usual definition requires bounded sets to have images with compact closure.
+
+**Problem.** On an infinite-dimensional Hilbert space the identity is weakly compact but not compact. Weak compactness asks only for weakly compact closure of the image of the unit ball.
+
+**How the definition helps.** The sequence test detects failure of compactness using any infinite orthonormal sequence (our own). That sequence tends weakly to zero but stays at norm one (our own). Every bounded sequence in a Hilbert space has a weakly convergent subsequence (our own). This fact gives the reverse implication from the sequence test to compactness and explains weak compactness of the unit ball (our own).
+
+**nLab:** [compact operator](https://ncatlab.org/nlab/show/compact+operator). It says: “For Hilbert spaces and more generally for reflexive Banach spaces, the two notions are equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adjoints preserve Hilbert–Schmidt norms
+
+**Remember:** Taking the adjoint swaps rows and columns and preserves absolute values.
+
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** For a bounded operator between separable Hilbert spaces, sum the squared absolute values of its matrix entries in orthonormal bases. If the sum is finite, its square root is the Hilbert–Schmidt norm. An equivalent definition sums the squared singular values, the eigenvalues of √(T\*T), before taking the square root.
+
+**Problem.** The adjoint of a Hilbert–Schmidt operator is Hilbert–Schmidt with the same norm.
+
+**How the definition helps.** Taking the adjoint swaps matrix entries and takes their complex conjugates (our own). The sum of their squared absolute values is unchanged (our own). Parseval’s identity justifies the matrix formula in any basis (our own).
+
+**Wikipedia:** [Hilbert–Schmidt operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_operator). It says: “The Hilbert–Schmidt norm does not depend on the choice of orthonormal basis.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -398,6 +580,22 @@
 
 - [Edward Nelson, Analytic vectors, Annals of Mathematics 70 (1959) 572–615](https://doi.org/10.2307/1970331)
 
+### Square integrable kernels give Hilbert–Schmidt operators
+
+**Remember:** Sum the squared matrix entries to recover the squared kernel norm.
+
+*True by definition.* MSC 47B34 (Kernel operators). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A kernel k defines an integral operator on the unit interval by (Kf)(x) = ∫₀¹ k(x,y)f(y) dy. Sum ‖Ke‖² over an orthonormal basis of square integrable functions. If the sum is finite, its square root is the Hilbert–Schmidt norm.
+
+**Problem.** Every square integrable kernel on the unit square defines a Hilbert–Schmidt operator. Its Hilbert–Schmidt norm equals the L² norm of the kernel.
+
+**How the definition helps.** Using the basis sum turns the Hilbert–Schmidt norm calculation into Parseval’s identity for the kernel (our own). For each x, sum the squared coefficients of k(x,·) in the conjugate basis (our own). Integrating this sum over x gives the squared L² norm of k (our own). Tonelli’s theorem permits the exchange of sum and integral because the terms are nonnegative (our own). This avoids finding the singular values, whose squared sum also gives the squared Hilbert–Schmidt norm (our own).
+
+**Wikipedia:** [Hilbert–Schmidt operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_operator). It says: “with kernel k is a Hilbert–Schmidt operator and ‖K‖HS = ‖k‖₂.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dissipative operators make semigroup generation easy to check
 
 **Remember:** Check one energy inequality and one range condition, and the semigroup exists.
@@ -468,6 +666,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Maximal monotone graphs retain limits
+
+**Remember:** If a limit fits every graph pair, maximality puts it inside.
+
+*Rules out counterexamples.* MSC 47H05 (Monotone operators and generalizations). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A graph is monotone if ⟨x − y, u − v⟩ ≥ 0 for every two pairs (x, u) and (y, v). It is maximal monotone if no new pair can be added without breaking this inequality.
+
+**Problem.** On a real Hilbert space, suppose graph pairs have inputs converging weakly and outputs converging in norm. Weak convergence means convergence of inner products against every fixed vector. If the graph is maximal monotone, the limiting pair belongs to it.
+
+**How the definition helps.** Each limiting pair still satisfies the defining inequality against every graph pair (our own). The input sequence is bounded, so the norm error in the output goes to zero in each inner product (our own). Maximality forces the limiting pair into the graph (our own). The zero operator restricted to positive reals loses the pair (0, 0) (our own).
+
+**Paper or page:** [A strongly convergent inertial inexact proximal-point algorithm for monotone inclusions with applications to variational inequalities](https://arxiv.org/abs/2407.03485v2). It says: “T is maximal monotone if and only if T = T⁰.”
+
+**Sources:**
+
+- [George J. Minty, Monotone (nonlinear) operators in Hilbert space (1962)](https://doi.org/10.1215/S0012-7094-62-02933-2)
+
 ### Composed averaged maps fix exactly the points that every factor fixes
 
 **Remember:** Each averaged step loses distance unless it stays put.
@@ -503,6 +719,54 @@
 **Sources:**
 
 - [Kay Barshad, Aviv Gibali, Simeon Reich, Unrestricted Douglas-Rachford algorithms for solving convex feasibility problems in Hilbert space, arXiv:2204.00275v2 (2022)](https://arxiv.org/abs/2204.00275v2)
+
+### Relations admit infinite operator limits
+
+**Remember:** An infinite multiple of the identity becomes a vertical graph.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 47A06 (Linear relations (multivalued linear operators)). arXiv math.SP, math.FA. Level 4: research.
+
+**Definition.** A linear relation on a Hilbert space H is a linear subspace of H × H. It can pair one input with several outputs. Its inverse swaps the two coordinates. Convergence in norm resolvent means that the inverses after shifting by i converge in operator norm.
+
+**Problem.** On a nonzero complex Hilbert space, the operators nI converge in norm resolvent to the self-adjoint relation consisting of all pairs (0,y).
+
+**How the definition helps.** The vertical relation accepts zero input with every output, so its inverse sends every input to zero (our own). The relation is self-adjoint because it is the inverse of the self-adjoint zero operator (our own). Subtracting any scalar times the input leaves this relation unchanged (our own). The resolvents of nI are (n − z)⁻¹I and converge to zero (our own). No ordinary operator on a nonzero space has the zero operator as its resolvent (our own).
+
+**Paper or page:** [Sequences of operators, monotone in the sense of contractive domination](https://arxiv.org/abs/2401.00312v1). It says: “In fact, Hₙ → H∞ in the strong resolvent sense or, equivalently, in the strong graph sense.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimal dilations are unique
+
+**Remember:** Keep only the translates of the original space.
+
+*Rules out counterexamples.* MSC 47A20 (Dilations, extensions, compressions of linear operators). arXiv math.FA. Level 4: research.
+
+**Definition.** Let V(t), for t ≥ 0, be isometries on a Hilbert space H with V(0) = I and V(s+t) = V(s)V(t). A unitary dilation is a unitary group U(t) on a larger Hilbert space that agrees with V(t) on H for t ≥ 0. It is minimal if the vectors U(t)x, for real t and x in H, span a dense subspace.
+
+**Problem.** Any two minimal unitary dilations of the same isometric semigroup are unitarily equivalent by a map that fixes the original space.
+
+**How the definition helps.** Minimality excludes extra orthogonal summands on which the unitary group could act freely (our own). For s ≤ t, the inner product of U(s)x and U(t)y equals that of x and V(t−s)y (our own). Thus matching corresponding translates preserves inner products and extends by density to the required unitary map (our own).
+
+**Paper or page:** [Notes on C\*-algebras](https://arxiv.org/abs/2505.17456v1). It says: “Moreover, any two minimal unitary dilations of V are unitarily equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A shifted inverse detects eigenvectors
+
+**Remember:** Move the free inverse between the two square roots.
+
+*True by definition. Confidence: medium.* MSC 47A75 (Eigenvalue problems for linear operators). arXiv math.SP. Level 4: research.
+
+**Definition.** Let A be self-adjoint on a Hilbert space, and let V be bounded and nonnegative, meaning ⟨Vu,u⟩ ≥ 0 for every u. For λ outside the spectrum of A, define the Birman–Schwinger operator K(λ) = √V (A − λI)⁻¹ √V. Here √V is the positive square root of V.
+
+**Problem.** For self-adjoint A, λ outside its spectrum is an eigenvalue of A − V exactly when 1 is an eigenvalue of K(λ). The eigenspace dimensions agree.
+
+**How the definition helps.** The shifted inverse lets the eigenvalue equation turn directly into a fixed vector equation (our own). Send u to √V u and send a fixed vector f back to (A − λI)⁻¹ √V f (our own). The maps are inverse on the two eigenspaces (our own). The work in applications is defining and controlling K when the perturbation is not bounded (our own).
+
+**Paper or page:** [Keller and Lieb-Thirring estimates of the eigenvalues in the gap of Dirac operators](https://arxiv.org/abs/2210.03091v2). It says: “λ is an eigenvalue of 𝒟̸ₘ − V if and only if 1 is an eigenvalue of Kᵥ(λ).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Abstract Friedrichs operators split into skew-symmetric and bounded positive parts
 

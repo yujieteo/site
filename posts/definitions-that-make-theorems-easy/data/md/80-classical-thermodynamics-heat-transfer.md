@@ -34,6 +34,38 @@
 
 - [Carathéodory, C. (1909). Untersuchungen über die Grundlagen der Thermodynamik. Mathematische Annalen 67, 355–386.](https://doi.org/10.1007/BF01450409)
 
+### Enthalpy gives heat at constant pressure
+
+**Remember:** Add pressure times volume to turn constant-pressure heating into a state change.
+
+*True by definition.* MSC 80A10 (Classical and relativistic thermodynamics). arXiv physics.class-ph. Level 1: early undergraduate.
+
+**Definition.** Define enthalpy as internal energy plus pressure times volume. Use it in place of internal energy for heating a closed system at constant pressure.
+
+**Problem.** Consider a closed system whose only work is expansion against a constant pressure equal to the system pressure. The heat supplied equals its enthalpy increase when bulk kinetic and potential energies stay fixed.
+
+**How the definition helps.** In our own calculation, the increase in pressure times volume exactly accounts for expansion work. The first law then turns the sum of internal energy change and expansion work into the heat supplied.
+
+**Wikipedia:** [Enthalpy](https://en.wikipedia.org/wiki/Enthalpy). It says: “at constant pressure the enthalpy change equals the energy exchanged with the environment by heat.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gibbs energy tracks total entropy
+
+**Remember:** At fixed temperature and pressure, rising total entropy means falling Gibbs energy.
+
+*True by definition.* MSC 80A10 (Classical and relativistic thermodynamics). arXiv cond-mat.stat-mech. Level 2: later undergraduate.
+
+**Definition.** Define Gibbs energy as internal energy plus pressure times volume minus temperature times entropy. Use it to compare a closed system’s equilibrium states at the same positive temperature and pressure as its surroundings.
+
+**Problem.** Suppose the system exchanges heat with one temperature reservoir and does only expansion work against the fixed external pressure. Gibbs energy cannot increase in a spontaneous change between these states.
+
+**How the definition helps.** In our own calculation, Gibbs energy combines the system and surroundings terms in the total entropy change. The reservoir loses the heat gained by the system, while the first law accounts for expansion work. Our own calculation gives ΔG = −TΔSₜₒₜ, so the second law gives ΔG ≤ 0.
+
+**Wikipedia:** [Gibbs free energy](https://en.wikipedia.org/wiki/Gibbs_free_energy). It says: “The equation can be also seen from the perspective of the system taken together with its surroundings”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Homogeneity of the energy turns Euler's theorem into the Gibbs–Duhem equation
 
 **Remember:** Scale the whole system, and its intensive variables lose one freedom.
@@ -87,6 +119,54 @@
 
 - [L. Pauling, The Structure and Entropy of Ice and of Other Crystals with Some Randomness of Atomic Arrangement, Journal of the American Chemical Society 57 (1935), 2680–2684](https://doi.org/10.1021/ja01315a102)
 
+### A logarithmic mean gives heat flow
+
+**Remember:** Average the temperature gap logarithmically when the gap changes exponentially along the exchanger.
+
+*Makes the theorem clean to state or prove.* MSC 80A19 (Diffusive and convective heat and mass transfer, heat flow). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Let a and b be the positive temperature differences between the hot and cold streams at the two ends of a heat exchanger. Define their logarithmic mean as (a − b)/log(a/b) when they differ. For equal gaps, use their common value.
+
+**Problem.** Consider steady parallel or counterflow without heat loss or heat conduction along the streams. Assume constant overall transfer coefficient and constant heat capacity rates, meaning heat carried per unit time per degree. The heat transfer rate equals coefficient times exchange area times the logarithmic mean.
+
+**How the definition helps.** In our own calculation, this mean equals the average temperature gap over the exchange area. The stream energy balances make the gap exponential in cumulative exchange area, including a constant gap as a limiting case in our own derivation.
+
+**Wikipedia:** [Logarithmic mean temperature difference](https://en.wikipedia.org/wiki/Logarithmic_mean_temperature_difference). It says: “When the two temperature differences are equal, this formula does not directly resolve, so the LMTD is conventionally taken to equal its limit value”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Effusivity weights contact temperature
+
+**Remember:** The material with higher effusivity pulls the contact temperature closer to its own.
+
+*Makes the theorem clean to state or prove.* MSC 80A19 (Diffusive and convective heat and mass transfer, heat flow). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Define thermal effusivity as √(kc), where k is thermal conductivity and c is heat capacity per unit volume. Conductivity relates heat flow to a temperature gradient. Heat capacity measures the energy needed for a unit temperature rise.
+
+**Problem.** Two homogeneous half-spaces placed in perfect planar contact have constant interface temperature. With uniform initial temperatures and constant material properties, that temperature is the mean weighted by the two effusivities.
+
+**How the definition helps.** Effusivity gives each material’s weight in the formula for the shared contact temperature. In our own derivation, the heat equation gives each side’s heat flux as its effusivity times its temperature drop divided by √(πt). Matching the fluxes cancels the common time factor in our own calculation.
+
+**Wikipedia:** [Thermal effusivity](https://en.wikipedia.org/wiki/Thermal_effusivity). It says: “the temperature at the contact surface Tₘ will be a weighted mean based on their relative effusivities.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Area weighting makes view factors reciprocal
+
+**Remember:** Swap emitter and receiver after restoring the area used to normalize.
+
+*True by definition.* MSC 80A21 (Radiative heat transfer). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Suppose every point on each surface emits equally per unit area, with power per solid angle proportional to the cosine from the normal. The view factor is the fraction of emitted power reaching the other surface directly through transparent space. Multiply this fraction by the emitting area.
+
+**Problem.** For two diffusely emitting surfaces, each view factor times its emitting area is unchanged when the surfaces swap roles.
+
+**How the definition helps.** In our own calculation, multiplying by area removes the emitter’s normalization and leaves a symmetric integral over visible point pairs. Its kernel contains both projection cosines divided by π times the squared separation. Exchanging the points therefore preserves the integral in our own proof. The physical step derives the kernel from diffuse emission and straight ray paths.
+
+**Wikipedia:** [View factor](https://en.wikipedia.org/wiki/View_factor). It says: “Aᵢ Fᵢ→ⱼ = Aⱼ Fⱼ→ᵢ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Carathéodory's approach defines heat as energy change minus adiabatic work
 
 **Remember:** Heat is whatever energy change work does not explain.
@@ -104,3 +184,53 @@
 **Sources:**
 
 - [Carathéodory, C. (1909). Untersuchungen über die Grundlagen der Thermodynamik. Mathematische Annalen 67, 355–386.](https://doi.org/10.1007/BF01450409)
+
+### Entropy inversion preserves stability
+
+**Remember:** The same stability test survives when energy and entropy trade places.
+
+*Makes the theorem clean to state or prove.* MSC 80A05 (Foundations of thermodynamics and heat transfer). arXiv cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Write equilibrium entropy as S(E,x), where E is energy and x collects the remaining variables. When entropy increases strictly with energy, solve for energy as a function of entropy and x.
+
+**Problem.** Suppose S is continuously differentiable and concave on an open convex domain, with positive energy derivative. Its inverse energy function is convex on every convex subset of its domain.
+
+**How the definition helps.** In our own proof, exchanging energy and entropy lets the same chord compare both functions. Concavity places the chord below the entropy graph. Since entropy increases with energy, reaching the chord’s entropy requires at most the chord’s energy in our own argument.
+
+**Paper or page:** [A note on relations between convexity and concavity of thermodynamic functions](https://arxiv.org/abs/2510.24440v1). It says: “If ϕᵤ₁(u)&gt;0 for all u∈D, then we can use the same transformation but the properties are switched,”
+
+**Sources:**
+
+- [Mária Lukáčová-Medvid’ová, Ferdinand Thein, Gerald Warnecke and Yuhuan Yuan, A note on relations between convexity and concavity of thermodynamic functions](https://arxiv.org/abs/2510.24440v1)
+
+### A common tangent gives equal areas
+
+**Remember:** A straight coexistence segment cancels the two pressure areas.
+
+*True by definition.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** At fixed temperature, plot the uniform phase’s Helmholtz free energy per mole against volume per mole. Allow mixtures by taking the largest convex function below this graph. In a coexistence interval, this function follows a straight line that touches the two pure phases.
+
+**Problem.** If the supporting line touches two smooth points, its negative slope is the coexistence pressure. The signed areas between the original pressure curve and this pressure cancel on that interval.
+
+**How the definition helps.** In our own calculation, the straight segment fixes the free energy difference as slope times volume change. Pressure equals minus the volume derivative, so integrating pressure gives the same difference with opposite sign. Subtracting the constant coexistence pressure then gives zero signed area in our own proof. The physical step in our own comparison justifies the straight segment by mixing bulk phases with negligible interface energy per mole.
+
+**Wikipedia:** [Maxwell construction](https://en.wikipedia.org/wiki/Maxwell_construction). It says: “This line is the one for which the two areas, I and II, shown in the figure, are equal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stored latent heat gives the interface law
+
+**Remember:** Count the heat of melting even when the temperature stays fixed.
+
+*True by definition.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** Consider a material at rest that melts at a fixed temperature. Describe stored thermal energy per unit volume by its enthalpy, including the heat needed to melt a unit volume. At melting temperature this gives distinct values for solid and liquid.
+
+**Problem.** For smooth phases and a smooth melting front at the melting temperature, weak energy conservation gives the Stefan condition. The heat flux jump supplies the latent heat required to move the front.
+
+**How the definition helps.** In our own balance, moving the interface converts a known volume and therefore accounts for its melting heat automatically. For a unit area, the stored energy jump times the normal speed equals the net heat flux into the front. Our own derivation integrates energy conservation across a shrinking layer around the front, replacing a separately imposed boundary law.
+
+**Wikipedia:** [Stefan problem](https://en.wikipedia.org/wiki/Stefan_problem). It says: “the discontinuity of heat flux at the boundary must be accounted for by the rate of latent heat release”
+
+**Sources:** none listed. No primary source with a working link was found.

@@ -32,6 +32,94 @@
 
 - [A. J. Hoffman and J. B. Kruskal, Integral boundary points of convex polyhedra, in Linear Inequalities and Related Systems, Annals of Mathematics Studies 38 (1956), 223–246](https://doi.org/10.1515/9781400881987-014)
 
+### Touching objectives share envelope slopes
+
+**Remember:** At a smooth contact, the upper envelope and its touching curve share a slope.
+
+*True by definition.* MSC 90C31 (Sensitivity, stability, parametric optimization), 91B02. arXiv math.OC, econ.TH. Level 2: later undergraduate.
+
+**Definition.** Fix a set of feasible choices. Each choice gives an objective curve as the parameter varies. Their pointwise supremum is the value function, also called the upper envelope.
+
+**Problem.** At an interior parameter where the value function and an attaining objective curve are differentiable, their derivatives agree.
+
+**How the definition helps.** Our own proof uses the envelope definition to turn equality at the optimizer into a minimum of the gap between two curves. The gap has derivative zero there, so the slopes agree. Differentiating an optimizing choice would require assumptions about how it moves. The work lies in proving attainment and differentiability when the problem does not already supply them.
+
+**Wikipedia:** [Envelope theorem](https://en.wikipedia.org/wiki/Envelope_theorem). It says: “the traditional envelope formula holds for optimization problems with arbitrary choice sets at any differentiability point of the value function”
+
+**Sources:**
+
+- [Milgrom and Segal, Envelope Theorems for Arbitrary Choice Sets (2002)](https://doi.org/10.1111/1468-0262.00296)
+
+### Residual edges certify maximum flow
+
+**Remember:** If the sink is unreachable, the reachable side gives a full cut.
+
+*True by definition.* MSC 90C35 (Programming involving graphs or networks). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A residual network records changes allowed by the current flow. A forward edge tracks spare capacity, while a backward edge tracks flow that can be canceled. Tracking only spare capacity misses the chance to reroute previously sent flow.
+
+**Problem.** In a finite directed network, a feasible flow is maximum exactly when its residual network has no positive-capacity path from source to sink.
+
+**How the definition helps.** The residual network turns each path from source to sink into a legal increase in flow. If no path exists, every original edge leaving the reachable set is full. Every original edge entering it carries zero flow. The current flow therefore equals the total capacity leaving that set, an upper bound for every feasible flow.
+
+**Wikipedia:** [Ford–Fulkerson algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm). It says: “If S is the set of nodes reachable by s in the residual network”
+
+**Sources:**
+
+- [Ford and Fulkerson, Maximal Flow Through a Network (1956)](https://doi.org/10.4153/cjm-1956-045-5)
+
+### Multipliers turn constraints into stationarity
+
+**Remember:** Subtract the right constraint gradients to cancel the objective gradient.
+
+*Makes the theorem clean to state or prove.* MSC 90C46 (Optimality conditions and duality in mathematical programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For a smooth equality constraint G(x) = 0, form the Lagrangian by subtracting a weighted sum of the constraints from the objective. The weights are the Lagrange multipliers. This lets us work in the original coordinates instead of finding coordinates on the constraint set.
+
+**Problem.** Let the objective and constraints be smooth on an open subset of finite-dimensional space. At a constrained local extremum with independent constraint gradients, some multiplier makes every first derivative of the Lagrangian zero.
+
+**How the definition helps.** The Lagrangian combines feasibility and gradient balance in one equation saying that its derivative vanishes. Its derivatives in the weights give the constraints. Its derivatives in the original variables give gradient balance. The implicit function theorem identifies the tangent space with the kernel of the constraint derivative. Our own example minimizes x subject to x² = 0. At zero the constraint gradient vanishes, so no multiplier can cancel the objective gradient.
+
+**nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “Then there is a function(al) l in Y\* such that x is a critical point of the function F − l∘G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integer dual certificates force integer vertices
+
+**Remember:** An integer dual solution prices integer bounds at an integer total.
+
+*Makes the theorem clean to state or prove.* MSC 90C10 (Integer programming), 90C46. arXiv math.OC. Level 3: graduate.
+
+**Definition.** Consider rational linear inequalities Ax ≤ b. A dual certificate for an objective c is a nonnegative vector y with Aᵀy = c. It bounds c·x above by b·y. The system is totally dual integral if every integer objective with finite maximum has an integer certificate attaining that maximum.
+
+**Problem.** If a totally dual integral system has integer bounds b, its feasible region is the convex hull of its integer points.
+
+**How the definition helps.** Integer certificates make every finite maximum for an integer objective an integer, since each maximum equals b·y. Our own explanation then uses a separate characterization of rational polyhedra. Such a region is the convex hull of its integer points if all its finite maxima for integer objectives are integers.
+
+**Wikipedia:** [Total dual integrality](https://en.wikipedia.org/wiki/Total_dual_integrality). It says: “there is an integer optimal dual solution.”
+
+**Sources:**
+
+- [Giles and Pulleyblank, Total dual integrality and integer polyhedra (1979)](https://doi.org/10.1016/0024-3795(79)90018-1)
+
+### Quadratic perspectives encode on–off mixtures
+
+**Remember:** Divide output by the on fraction before charging the on cost.
+
+*True by definition. Confidence: medium.* MSC 90C11 (Mixed integer programming), 90C20. arXiv math.OC. Level 3: graduate.
+
+**Definition.** Let z indicate whether production is on, x denote output, and t denote a cost bound. When off, x = 0 and t ≥ 0. When on, t ≥ x². The closed perspective equals x²/z for z &gt; 0, zero at the origin, and infinity for nonzero x at z = 0.
+
+**Problem.** Allow any real output when production is on. The convex hull consists exactly of points with activation between zero and one and cost bound at least the closed perspective.
+
+**How the definition helps.** Our own proof interprets z as the weight of the on state, which must then produce x/z on average. Convexity of the square gives the cost bound z(x/z)² for z &gt; 0, even when several on states are mixed. One on state producing x/z attains the bound, and increasing its cost bound gives every larger value. At z = 0 only off states contribute. Coupled switches need a separate argument.
+
+**Paper or page:** [A note on quadratic constraints with indicator variables: Convex hull description and perspective relaxation](https://arxiv.org/abs/2209.01433v1). It says: “x²/z = maxₚ∈ℝ (px − p²z/4).”
+
+**Sources:**
+
+- [A note on quadratic constraints with indicator variables: Convex hull description and perspective relaxation](https://arxiv.org/abs/2209.01433v1)
+
 ### Negative entropy turns mirror descent into multiplicative exponential weights
 
 **Remember:** Exponentiate the negative gradient, multiply by the old probabilities, then normalize.
@@ -67,6 +155,40 @@
 **Sources:**
 
 - [Neal Parikh and Stephen Boyd, Proximal Algorithms, Foundations and Trends in Optimization 1 (2014)](https://doi.org/10.1561/2400000003)
+
+### One score tests coordinatewise dominance
+
+**Remember:** One vector must cover all the target’s coordinates at once.
+
+*True by definition.* MSC 90C29 (Multi-objective and goal programming), 90C17. arXiv math.OC. Level 3: graduate.
+
+**Definition.** Let A be a nonempty compact set of attainable vectors. For target y and candidate a in A, take the largest coordinate of y − a. The score of y is the minimum of that number over all candidates.
+
+**Problem.** Some attainable vector matches or exceeds every target coordinate exactly when the score is nonpositive. Changing the target changes its score by at most the largest absolute coordinate change.
+
+**How the definition helps.** Our own explanation replaces separate coordinate tests by one maximum for each candidate. A nonpositive maximum means that the same candidate covers every coordinate. Compactness gives a minimizing candidate because the maximum of finitely many continuous functions is continuous. Using a minimizer for either target as a candidate for the other proves the change bound.
+
+**Paper or page:** [Set-based Robust Optimization of Uncertain Multiobjective Problems via Epigraphical Reformulations](https://arxiv.org/abs/2212.14018v1). It says: “A − ℝᵐ₊ = {y ∈ ℝᵐ \| ψₐ(y) ≤ 0}”
+
+**Sources:**
+
+- [Set-based Robust Optimization of Uncertain Multiobjective Problems via Epigraphical Reformulations](https://arxiv.org/abs/2212.14018v1)
+
+### Closure captures limiting linear constraints
+
+**Remember:** An infinite system can imply inequalities that appear only as limits.
+
+*Rules out counterexamples.* MSC 90C34 (Semi-infinite programming), 90C46. arXiv math.OC. Level 3: graduate.
+
+**Definition.** Encode each linear constraint a·x ≥ b by the pair (a, b). Form all finite nonnegative linear combinations of these pairs and the pair for 0 ≥ −1. The closed cone also contains all limits of these combinations.
+
+**Problem.** For a consistent linear system in finite dimensions, a linear inequality follows exactly when its pair lies in that closed cone.
+
+**How the definition helps.** Closing the cone includes limits of inequalities that hold at every feasible point. In our own example, the constraints x ≥ −1/n for positive integers n imply x ≥ 0. No finite nonnegative combination gives the pair (1, 0), although the pairs (1, −1/n) converge to it. The converse uses the extended Farkas lemma to find a feasible point violating any inequality whose pair lies outside the cone.
+
+**Paper or page:** [On the Polyhedrality of the Chvatal-Gomory Closure](https://arxiv.org/abs/2106.00295v1). It says: “The inequality ax ≥ b is a consequence of the consistent system”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### A strictly feasible point closes the duality gap in convex programs
 
@@ -214,6 +336,24 @@
 
 - [Vladimir Norkin, The Exact Projective Penalty Method for Constrained Optimization, arXiv:2312.02094v1 (2023)](https://arxiv.org/abs/2312.02094v1)
 
+### Definability stops endless policy switches
+
+**Remember:** With finitely many switches, one policy stays best near discount one.
+
+*Rules out counterexamples.* MSC 90C40 (Markov and semi-Markov decision processes). arXiv math.OC. Level 4: research.
+
+**Definition.** A policy chooses an action in each situation, called a state. A discount factor weights a reward one step later by a fraction of its current value. A Blackwell optimal policy stays optimal for every discount factor sufficiently close to one. Definable transition sets use one mathematical language in which every definable subset of the line consists of finitely many intervals and points.
+
+**Problem.** Consider finitely many states and actions, with a separate compact definable set of transition probabilities for each state and action. Stationary policies use the same decision rule whenever a state recurs. One fixed action per state maximizes worst-case discounted reward among stationary policies for every discount factor sufficiently close to one.
+
+**How the definition helps.** Definability makes the discount factors favoring one fixed policy over another a finite union of intervals and points. In our own explanation, the hard step proves this property for worst-case rewards. Only finitely many policies choose one fixed action per state, so their ranking settles near one. The paper gives compact convex transition sets for which no policy stays optimal.
+
+**Paper or page:** [Beyond discounted returns: Robust Markov decision processes with average and Blackwell optimality](https://arxiv.org/abs/2312.03618v3), [Beyond discounted returns: Robust Markov decision processes with average and Blackwell optimality](https://arxiv.org/abs/2312.03618v3). It says: “There exists an sa-rectangular robust MDP instance, with a compact convex uncertainty set U, and with no Blackwell optimal policy:”
+
+**Sources:**
+
+- [Beyond discounted returns: Robust Markov decision processes with average and Blackwell optimality](https://arxiv.org/abs/2312.03618v3)
+
 ### Lifting a Markov decision process to distributions keeps its optimal values
 
 **Remember:** The state is now a distribution, so the next state is not random.
@@ -267,6 +407,24 @@
 **Sources:**
 
 - [Julien Grand-Clément, Nian Si, Shengbo Wang, Tractable Robust Markov Decision Processes, arXiv:2411.08435v1 (2024)](https://arxiv.org/abs/2411.08435v1)
+
+### Uniform absorption controls escaping visit counts
+
+**Remember:** Uniform absorption lets one time cutoff work for every policy.
+
+*Rules out counterexamples. Confidence: medium.* MSC 90C40 (Markov and semi-Markov decision processes). arXiv math.OC. Level 4: research.
+
+**Definition.** An occupation measure counts expected visits to each state and action before the process stops. Absorption means that each policy has finite expected stopping time from the given starting distribution. Uniform absorption means the expected number of visits after step n tends to zero uniformly over policies.
+
+**Problem.** Consider countably many discrete states, finitely many actions, an absorbing set, and a fixed starting distribution. In an absorbing model, occupation measures form a compact set exactly when absorption is uniform. Here convergence means convergence of integrals against every bounded function on state and action pairs.
+
+**How the definition helps.** Uniform absorption lets one finite time horizon approximate the expected visit counts of every policy. In our own explanation, the omitted visits bound the error for every bounded test function. The theorem also needs compactness of the laws of controlled paths and continuity of the finite-time integrals. The converse proves that compactness forces the late visits to vanish uniformly.
+
+**Paper or page:** [A note on weak compactness of occupation measures for an absorbing Markov decision process](https://arxiv.org/abs/2402.10672v3). It says: “The set of occupation measures O is ws-compact if and only if M is uniformly absorbing.”
+
+**Sources:**
+
+- [A note on weak compactness of occupation measures for an absorbing Markov decision process](https://arxiv.org/abs/2402.10672v3)
 
 ### White's vector Bellman equations hold once policies may depend on history
 

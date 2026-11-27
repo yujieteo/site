@@ -1,3 +1,35 @@
+### Finite closed pieces preserve continuity
+
+**Remember:** Closed preimages join over finitely many closed pieces.
+
+*True by definition.* MSC 54C05 (Continuous maps), 54E35. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A map is continuous if the preimage of every closed set is closed. This is equivalent to continuity defined by distances in metric spaces.
+
+**Problem.** Let finitely many closed sets cover a metric space. A map to another metric space is continuous if its restriction to each set is continuous.
+
+**How the definition helps.** The closed-preimage test reduces the proof to taking a finite union of closed sets (our own). On each piece, the preimage of a closed set is closed relative to that piece (our own). Each piece is closed in the whole space, so its part of the preimage is also closed there (our own). Their union is the full preimage (our own). The work moves to proving that the closed-preimage and distance tests agree (our own).
+
+**Paper or page:** [Pasting Lemma/Finite Union of Closed Sets](https://proofwiki.org/wiki/Pasting_Lemma/Finite_Union_of_Closed_Sets). It says: “Let I be a finite indexing set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distance to a set needs no nearest point
+
+**Remember:** Distance to a set changes by at most the distance moved.
+
+*Rules out counterexamples.* MSC 54E35 (Metric spaces, metrizability). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** Define distance to a nonempty set as the infimum of the distances to its points. The infimum is the greatest lower bound, which need not come from a nearest point.
+
+**Problem.** Distance to a nonempty subset of a metric space changes by at most the distance moved.
+
+**How the definition helps.** The triangle inequality bounds the distance through each point of the set, so it also bounds their infimum (our own). Swap the starting and ending points to get the other bound (our own). The work shifts from finding a nearest point to using the infimum and the triangle inequality (our own). For example, zero has distance zero to (0, 1), but no point there attains it (our own).
+
+**Paper or page:** [Triangle Inequality on Distance from Point to Subset](https://proofwiki.org/wiki/Triangle_Inequality_on_Distance_from_Point_to_Subset). It says: “∀ x, y ∈ A: d(x, H) ≤ d(x, y) + d(y, H)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Distance zero only for equal points makes every metric space Hausdorff
 
 **Remember:** Points at distance r &gt; 0 sit in disjoint balls of radius r/2.
@@ -18,6 +50,22 @@
 - [ProofWiki, Partition Space is Pseudometrizable](https://proofwiki.org/wiki/Partition_Space_is_Pseudometrizable)
 - [ProofWiki, Partition Topology is not Hausdorff](https://proofwiki.org/wiki/Partition_Topology_is_not_Hausdorff)
 
+### Maximum distance gives coordinatewise convergence
+
+**Remember:** All coordinates are close when the largest distance is small.
+
+*True by definition. Confidence: medium.* MSC 54E35 (Metric spaces, metrizability). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** For a finite product of metric spaces, take the distance to be the largest coordinate distance. On ordinary Euclidean space another choice is the square root of the sum of squared coordinate distances.
+
+**Problem.** In a finite product with the maximum metric, convergence is equivalent to convergence in every coordinate (our own).
+
+**How the definition helps.** A ball for the maximum distance requires every coordinate distance to be below the same radius (our own). If each coordinate converges, the largest of the finitely many cutoffs works for all coordinates (our own). Conversely, bounding the maximum bounds each coordinate (our own). To recover the Euclidean statement, compare the maximum distance with the usual Euclidean distance (our own).
+
+**Paper or page:** [Chebyshev Distance is Metric](https://proofwiki.org/wiki/Chebyshev_Distance_is_Metric). It says: “Then d∞ is a metric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zero distance only between equal points makes limits unique
 
 **Remember:** Only a true metric tells two points apart, so limits are unique.
@@ -37,6 +85,24 @@
 - [ProofWiki, Convergent Sequence in Metric Space has Unique Limit](https://proofwiki.org/wiki/Convergent_Sequence_in_Metric_Space_has_Unique_Limit)
 - [ProofWiki, Pseudometric Space is Metric Space iff Kolmogorov](https://proofwiki.org/wiki/Pseudometric_Space_is_Metric_Space_iff_Kolmogorov)
 
+### Uniform continuity preserves Cauchy sequences
+
+**Remember:** One distance bound works for the whole tail.
+
+*Rules out counterexamples.* MSC 54E40 (Special maps on metric spaces), 26A15. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A uniformly continuous map uses one input distance bound for each desired output tolerance. Ordinary continuity lets that bound depend on the starting point.
+
+**Problem.** A uniformly continuous map sends every Cauchy sequence to a Cauchy sequence.
+
+**How the definition helps.** The same input bound works for every pair in the tail, so every output pair is close enough (our own). The work in an application moves to finding an input bound independent of the starting point (our own). Ordinary continuity allows x ↦ 1/x on (0, 1\], which sends the Cauchy sequence 1/n to the unbounded sequence n (our own).
+
+**nLab:** [uniformly continuous map](https://ncatlab.org/nlab/show/uniformly+continuous+map). It says: “The concept of uniformly continuous map f is based on the same intuition but a different formalisation: first you pick how nearby you want the points to be, then you pick two points sufficiently nearby.”
+
+**Wikipedia:** [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “In this setting, it is also true that uniformly continuous maps transform Cauchy sequences into Cauchy sequences.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cauchy sequences test convergence without knowing the limit
 
 **Remember:** A Cauchy sequence converges to a point that need not be named in advance.
@@ -50,6 +116,72 @@
 **How the definition helps.** The Cauchy condition uses only the terms, and completeness makes it enough to give a limit. The definition of convergence uses the limit itself, so it cannot prove that a limit exists. For example, take a normed space. The statement 'every absolutely convergent series converges' holds exactly when the space is complete. The article gives one direction, and the converse is our own addition. In the rational numbers the test fails. Rational approximations of √2 form a Cauchy sequence with no rational limit (our own example).
 
 **Wikipedia:** [Cauchy sequence](https://en.wikipedia.org/wiki/Cauchy_sequence), [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “The utility of Cauchy sequences lies in the fact that in a complete metric space (one where all such sequences are known to converge to a limit), the criterion for convergence depends only on the terms of the sequence itself”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sequential closedness keeps subspaces complete
+
+**Remember:** Closed subsets keep their sequence limits.
+
+*True by definition.* MSC 54E50 (Complete metric spaces). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A subset of a metric space is closed if it contains the limit of every sequence from the subset that converges in the ambient space. Another test asks whether its complement is open.
+
+**Problem.** A subspace of a complete metric space is complete if and only if it is closed.
+
+**How the definition helps.** Closedness keeps the limit that completeness of the ambient space gives each Cauchy sequence in the subset (our own). Conversely, any convergent sequence from a complete subset is Cauchy, so its unique limit belongs to the subset (our own). The separate step is proving that the two closedness tests agree (our own). At a point whose every ball meets the subset, choose a subset point within distance 1/n for each positive integer n (our own).
+
+**Paper or page:** [Subspace of Complete Metric Space is Closed iff Complete](https://proofwiki.org/wiki/Subspace_of_Complete_Metric_Space_is_Closed_iff_Complete). It says: “Let (M, d) be a complete metric space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The supremum metric is complete
+
+**Remember:** One worst error measures every point.
+
+*Makes the theorem clean to state or prove.* MSC 54E50 (Complete metric spaces), 40A30. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** For bounded real functions on the same nonempty set, take the supremum of their absolute differences over that set as their distance. Convergence in this metric is uniform convergence.
+
+**Problem.** Every Cauchy sequence for the supremum metric on bounded real functions converges in that metric to a bounded function.
+
+**How the definition helps.** A single distance bound controls every point, so the Cauchy bound survives passage to pointwise limits (our own). Completeness of the real numbers gives a limit at each point (our own). Fix one sufficiently late function and pass to the pointwise limit in the other sequence index (our own). The resulting uniform bound gives convergence in the metric (our own). The limit is bounded because one bounded function stays within one unit of it everywhere (our own).
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “every Cauchy sequence of functions converges uniformly.”
+
+**Paper or page:** [Sequence of Functions is Uniformly Cauchy iff Uniformly Convergent](https://proofwiki.org/wiki/Sequence_of_Functions_is_Uniformly_Cauchy_iff_Uniformly_Convergent). It says: “Let ⟨fₙ⟩ be a sequence of real functions S → ℝ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform shrinking gives fixed points
+
+**Remember:** One shrink factor controls every step.
+
+*Rules out counterexamples.* MSC 54E50 (Complete metric spaces). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A contraction has one factor 0 ≤ q &lt; 1 such that d(f(x), f(y)) ≤ q d(x, y) for every pair. The weaker test only asks each distinct pair to get strictly closer.
+
+**Problem.** Every contraction from a nonempty complete metric space to itself has exactly one fixed point.
+
+**How the definition helps.** One factor bounds successive steps by a geometric series, so the iterates are Cauchy (our own). Completeness gives their limit, and continuity makes it a fixed point (our own). Two different fixed points cannot shrink their distance (our own). The map x ↦ x + 1/(x+1) on \[0, ∞) shrinks every distinct pair but has no fixed point (our own).
+
+**Paper or page:** [Banach Fixed-Point Theorem](https://proofwiki.org/wiki/Banach_Fixed-Point_Theorem). It says: “Then there exists a unique fixed point of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniformly equivalent metrics preserve completeness
+
+**Remember:** Uniform equivalence preserves the same Cauchy sequences.
+
+*Rules out counterexamples. Confidence: medium.* MSC 54E50 (Complete metric spaces). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** Two metrics on the same set are uniformly equivalent if the identity map in each direction is uniformly continuous. Topological equivalence only asks the identity maps to be continuous.
+
+**Problem.** If two metrics are uniformly equivalent, either both are complete or neither is complete.
+
+**How the definition helps.** Each identity map preserves Cauchy sequences and their limits, so completeness transfers in either direction (our own). The work moves to finding distance bounds that work everywhere for the two identity maps (our own). On ℝ, the usual distance and the distance between arctangents give the same open sets (our own). The positive integers are Cauchy only for the latter distance and have no limit in it (our own).
+
+**Wikipedia:** [Equivalence of metrics](https://en.wikipedia.org/wiki/Equivalence_of_metrics). It says: “or all uniformly continuous maps, obtaining uniform equivalence.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -208,6 +340,24 @@
 **How the definition helps.** The product topology has only the open sets needed to make the projections continuous, so a basic open set restricts only finitely many coordinates. Its preimage under f is then a finite intersection of preimages under the coordinate maps, which gives the theorem in one line. The more intuitive box topology, which allows all products of open sets, fails it. Take the map from ℝ to the countable product ℝ × ℝ × … that sends x to (x, x, x, …). Each coordinate map is the identity. Yet it is not continuous into the box topology, because the preimage of the product of the intervals (−1/n, 1/n) is only {0}. The two topologies agree for finite products.
 
 **Wikipedia:** [Product topology](https://en.wikipedia.org/wiki/Product_topology), [Box topology](https://en.wikipedia.org/wiki/Box_topology). It says: “It follows from the above universal property that a map f : Y → X is continuous if and only if fᵢ = pᵢ ∘ f is continuous for all i ∈ I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distance functions represent Hausdorff distance
+
+**Remember:** Compare two sets by comparing their distances from every point.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology). arXiv math.MG, cs.CG. Level 2: later undergraduate.
+
+**Definition.** Represent each nonempty compact Euclidean set by the function giving the distance from each point of the ambient space to that set. Measure separation by the supremum of the absolute difference of these functions.
+
+**Problem.** The uniform distance between the distance functions equals the usual Hausdorff distance. In this representation its triangle inequality is the uniform norm triangle inequality.
+
+**How the definition helps.** Representing sets by distance functions gives the triangle inequality point by point from the triangle inequality for real numbers. Our own argument takes the supremum over all points. The work is proving agreement with the usual Hausdorff distance. This is the least radius for which each set lies within that distance of the other. The metric triangle inequality bounds the function difference by that radius. Testing on points of either set gives the reverse bound.
+
+**nLab:** [Hausdorff metric](https://ncatlab.org/nlab/show/Hausdorff+metric). It says: “its symmetrization is the Hausdorff metric”
+
+**Paper or page:** [Computing the Hausdorff Distance of Two Sets from Their Signed Distance Functions](https://arxiv.org/abs/1812.06740v1). It says: “dH(A, B) = ‖dA − dB‖∞”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -993,6 +1143,24 @@
 **nLab:** [ultrafilter](https://ncatlab.org/nlab/show/ultrafilter). It says: “each ultrafilter U on X + Y must contain exactly one of X, Y”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Expansions give largest Hausdorff intermediates
+
+**Remember:** Intersect the two expansions to keep every allowed point.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology), 68U05. arXiv cs.CG, math.MG. Level 3: graduate.
+
+**Definition.** The Hausdorff distance is the least radius for which each set lies within that distance of the other. Take nonempty compact plane sets A and B at Hausdorff distance one. Expand A by t and B by 1 − t, including every point within the stated distance. Intersect the expansions.
+
+**Problem.** For 0 ≤ t ≤ 1, this intersection contains every compact set at distances t from A and 1 − t from B. It attains both distances itself.
+
+**How the definition helps.** Intersecting the two expansions keeps every point an intermediate set could contain. Our own proof starts with this candidate and derives the distance equations. From each point of A, choose a nearest point of B, and do the same starting from B. On each resulting segment, take the point a fraction t of the way from its A endpoint. It belongs to both expansions, since the segment has length at most one. Thus the Hausdorff distances are at most t and 1 − t. Their sum must be at least one by the triangle inequality, so both bounds are exact.
+
+**Paper or page:** [Between Shapes, Using the Hausdorff Distance](https://arxiv.org/abs/2009.14719v2). It says: “Sα is the maximal set that satisfies dH(A, Sα) = α and dH(B, Sα) = 1 − α.”
+
+**Sources:**
+
+- [Between Shapes, Using the Hausdorff Distance, Lemma 2](https://arxiv.org/abs/2009.14719v2)
 
 ### Defining proper maps by compact preimages makes them extend to one-point compactifications
 

@@ -1,3 +1,37 @@
+### Compatible equivalences give algebra quotients
+
+**Remember:** Do the operation on representatives, then take the class.
+
+*Rules out counterexamples.* MSC 08A30 (Subalgebras, congruence relations). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A congruence is an equivalence relation for which replacing inputs by equivalent inputs gives equivalent outputs. To operate on classes, choose one representative from each class, apply the operation, and take the class of the result.
+
+**Problem.** Every congruence defines a quotient algebra, and the map sending an element to its class preserves all operations.
+
+**How the definition helps.** Compatibility makes the result independent of the chosen representatives. Our own illustration uses 1 and −1, which have equal absolute values. Adding 1 gives 2 and 0, which do not. Compatibility rules out this failure before we define the quotient.
+
+**Wikipedia:** [Congruence relation](https://en.wikipedia.org/wiki/Congruence_relation). It says: “A congruence relation on the structure is then defined as an equivalence relation that is also compatible.”
+
+**Paper or page:** [Absolute Value induces Equivalence not Compatible with Integer Addition](https://proofwiki.org/wiki/Absolute_Value_induces_Equivalence_not_Compatible_with_Integer_Addition). It says: “Then R is not a congruence relation for integer addition.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Torsion-free groups need quasi-identities
+
+**Remember:** An implication can rule out torsion without demanding closure under quotients.
+
+*Makes the theorem clean to state or prove.* MSC 08C15 (Quasivarieties), 03C05. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A quasi-identity says that if a finite list of equations holds, then another equation holds. A quasivariety allows these implications, while a variety allows only equations. A group is torsion-free if its identity is its only element of finite order.
+
+**Problem.** Torsion-free groups form a quasivariety but not a variety.
+
+**How the definition helps.** Our own argument uses one implication for each integer n ≥ 2. If xⁿ = 1, it requires x = 1. These implications exclude exactly the nonidentity elements of finite order. Equations alone cannot do this because equations pass to quotients. The integers under addition are torsion-free, but their quotient modulo two has an element of order two.
+
+**Wikipedia:** [Quasivariety](https://en.wikipedia.org/wiki/Quasivariety). It says: “Every variety is a quasivariety by virtue of an equation being a quasi-identity for which n = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finitary closure makes subalgebra lattices algebraic
 
 **Remember:** Finite generators give the compact elements of the subalgebra lattice.
@@ -17,6 +51,24 @@
 **Sources:**
 
 - [Garrett Birkhoff and Orrin Frink, Representations of lattices by sets, Transactions of the American Mathematical Society (1948)](https://doi.org/10.1090/S0002-9947-1948-0027263-2)
+
+### Majority operations reconstruct from pairs
+
+**Remember:** Three witnesses that miss different coordinates recover the full tuple.
+
+*Rules out counterexamples.* MSC 08A40 (Operations and polynomials in algebraic structures, primal algebras). arXiv cs.CC, math.LO. Level 3: graduate.
+
+**Definition.** A majority operation takes three inputs and returns the repeated value whenever two agree. An operation preserves a relation if applying it coordinate by coordinate to tuples in the relation gives another tuple in the relation.
+
+**Problem.** Consider a relation on tuples of fixed finite length at least two. If a majority operation preserves it, a tuple belongs exactly when each coordinate pair occurs in the corresponding projection.
+
+**How the definition helps.** A majority operation combines three partial matches into one full match. Our own proof starts with pairs and uses induction on tuple length. Omit each of three different coordinates in turn. By induction in the projected relation, each shorter tuple extends to a member matching every coordinate except possibly the omitted one. Every coordinate matches at least twice, so the majority returns the desired tuple. Our own counterexample consists of three-bit strings with an even number of ones. All pairs occur, yet 111 is absent, and the majority of 110, 101 and 011 is 111.
+
+**Paper or page:** [A polynomial-time algorithm for median-closed semilinear constraints](https://arxiv.org/abs/1808.10068v2). It says: “Let Γ be a structure with domain D and a majority polymorphism. Then every relation in Γ is 2-decomposable.”
+
+**Sources:**
+
+- [Manuel Bodirsky, Marcello Mamino. A polynomial-time algorithm for median-closed semilinear constraints, Theorem 2.1.](https://arxiv.org/abs/1808.10068v2)
 
 ### Term equivalence preserves subalgebras, congruences and endomorphisms
 
@@ -89,6 +141,24 @@
 
 - [G. Birkhoff, On the structure of abstract algebras, Mathematical Proceedings of the Cambridge Philosophical Society 31 (1935)](https://doi.org/10.1017/S0305004100013463)
 
+### Free quotients encode equational consequences
+
+**Remember:** Identify the assumptions, then check equality in the resulting algebra.
+
+*True by definition.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A quasivariety is a class of algebras defined by implications between equations. Start with its free algebra on the variables, where every assignment into a member extends uniquely to a map preserving operations. A congruence is an equivalence relation that all operations respect. Take the quotient by the smallest congruence that identifies the assumed equations on the generators and keeps the quotient in the class.
+
+**Problem.** An equation follows from the assumptions in a quasivariety exactly when its two sides agree on the named generators in this quotient.
+
+**How the definition helps.** The quotient replaces testing every assignment with one equality test on its named generators. Our own proof extends each assignment satisfying the assumptions to a map on the free algebra. The resulting map factors through the quotient, so equality there implies equality under the assignment. Conversely, the named generators themselves satisfy the assumptions. The construction uses the intersection of all congruences that impose the assumptions and keep the quotient in the class.
+
+**Paper or page:** [Structural completeness in quasivarieties](https://arxiv.org/abs/2401.02754v1). It says: “if p ≈ q is an equation in variables from X then the following are equivalent: FQ(X,Σ) ⊨ p ≈ q; Σ ⊢Q p ≈ q; (p,q) ∈ θQ(Σ).”
+
+**Sources:**
+
+- [Paolo Aglianó, Alex Citkin. Structural completeness in quasivarieties, Lemma 2.11.](https://arxiv.org/abs/2401.02754v1)
+
 ### Closure under subalgebras and products gives free algebras
 
 **Remember:** Take all generated models together, then keep the part generated by the common inputs.
@@ -106,6 +176,60 @@
 **Sources:**
 
 - [G. Birkhoff, On the structure of abstract algebras, Mathematical Proceedings of the Cambridge Philosophical Society 31 (1935)](https://doi.org/10.1017/S0305004100013463)
+
+### Free Steiner generators extend bijections
+
+**Remember:** Extend a bijection and its inverse from the free generators.
+
+*True by definition.* MSC 08B20 (Free algebras). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A Steiner quasigroup has a commutative product with xx = x and x(xy) = y. A generating set is free if every assignment to any Steiner quasigroup extends uniquely to a map that preserves multiplication.
+
+**Problem.** Every bijection between free generating sets of Steiner quasigroups extends to an isomorphism.
+
+**How the definition helps.** The extension property gives maps in both directions from the bijection and its inverse. Our own check uses uniqueness twice. Each composite fixes every generator, so it equals the identity. With a construction by expressions, the work lies in proving that substitution gives a unique map preserving multiplication.
+
+**Paper or page:** [Endomorphisms of free Steiner quasigroups](https://arxiv.org/abs/2412.06055v3). It says: “In fact, every bijection between A and B can be extended to an isomorphism between M and N.”
+
+**Sources:**
+
+- [Silvia Barbina, Enrique Casanovas. Endomorphisms of free Steiner quasigroups, Corollary 2.10.](https://arxiv.org/abs/2412.06055v3)
+
+### One pair detects subdirect irreducibility
+
+**Remember:** If every proper quotient merges the same pair, no product of them can separate it.
+
+*True by definition.* MSC 08B26 (Subdirect products and subdirect irreducibility). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A congruence is an equivalence relation that every operation respects. A nontrivial algebra is subdirectly irreducible if every embedding into a product that projects onto each factor has an injective projection. Equivalently, it has a least congruence strictly larger than equality.
+
+**Problem.** A nontrivial algebra is subdirectly irreducible exactly when some distinct pair merges under every noninjective quotient map.
+
+**How the definition helps.** Any distinct pair in the least such congruence merges in every noninjective quotient. Conversely, a pair that always merges generates the least such congruence. Our own explanation connects this test to products. The map into a product of quotients is injective exactly when every distinct pair stays distinct in some coordinate.
+
+**Wikipedia:** [Subdirectly irreducible algebra](https://en.wikipedia.org/wiki/Subdirectly_irreducible_algebra). It says: “two elements that are identified by every proper quotient”
+
+**Sources:**
+
+- [Garrett Birkhoff. Subdirect unions in universal algebra (1944).](https://doi.org/10.1090/S0002-9904-1944-08235-9)
+
+### Subdirect factors detect equations
+
+**Remember:** To test an equation, test the algebras that cannot split further.
+
+*Makes the theorem clean to state or prove.* MSC 08B26 (Subdirect products and subdirect irreducibility). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A subdirect product is a subalgebra of a product that maps onto each factor. A nontrivial algebra is subdirectly irreducible if every such representation has an injective coordinate map.
+
+**Problem.** An equation holds throughout a variety, a class defined by equations, if it holds in all its subdirectly irreducible members.
+
+**How the definition helps.** The coordinate maps detect equality because the algebra embeds in their product. Birkhoff’s theorem supplies such an embedding with subdirectly irreducible quotients as factors. Our own deduction uses the fact that quotients preserve equations, so each factor belongs to the variety. If two expressions agree in every factor, their values agree in the embedded algebra.
+
+**Wikipedia:** [Subdirectly irreducible algebra](https://en.wikipedia.org/wiki/Subdirectly_irreducible_algebra). It says: “every algebra is subdirectly representable by its subdirectly irreducible quotients.”
+
+**Sources:**
+
+- [Garrett Birkhoff. Subdirect unions in universal algebra (1944).](https://doi.org/10.1090/S0002-9904-1944-08235-9)
 
 ### Alternating polymorphisms characterize affine integer programming
 
@@ -165,6 +289,24 @@
 - [Andrei Krokhin, Jakub Opršal, An invitation to the promise constraint satisfaction problem, ACM SIGLOG News (2022)](https://doi.org/10.1145/3559736.3559740)
 - [Libor Barto, Jakub Bulín, Andrei Krokhin, Jakub Opršal, Algebraic Approach to Promise Constraint Satisfaction, Journal of the ACM (2021)](https://doi.org/10.1145/3457606)
 
+### Constant terms select unique idempotents
+
+**Remember:** A constant expression that fixes each idempotent leaves room for just one.
+
+*Makes the theorem clean to state or prove.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.RA. Level 4: research.
+
+**Definition.** A variety is a class of algebras defined by equations. Work with nonempty algebras whose operations all take at least one input. An element is idempotent if each operation returns it whenever it fills every input. A variety is polarized if one expression in one variable has constant, idempotent value in every member.
+
+**Problem.** A variety of this kind is polarized exactly when every member has exactly one idempotent.
+
+**How the definition helps.** One expression names an idempotent in every algebra at once. Our own argument evaluates it at any idempotent, where every expression returns its input. Constancy then gives uniqueness. Conversely, in the free algebra on one generator, some expression represents its unique idempotent. Freeness means that this expression has idempotent value under every assignment in every member. Uniqueness in each member makes its value constant.
+
+**Paper or page:** [Mal'tsev products of varieties, I](https://arxiv.org/abs/2404.08841v1). It says: “Each algebra in V has precisely one idempotent if and only if the variety V is polarized.”
+
+**Sources:**
+
+- [Tomasz Penza, Anna B. Romanowska. Mal'tsev products of varieties, I, Corollary 1.3.](https://arxiv.org/abs/2404.08841v1)
+
 ### Filters in residuated lattices are ideals of subtractive varieties
 
 **Remember:** Many filter theorems are the general ideal theory of subtractive varieties.
@@ -183,6 +325,24 @@
 
 - [Paolo Aglianò, Why most papers on filters are really trivial (including this one), arXiv:2309.15022 (2023)](https://arxiv.org/abs/2309.15022)
 
+### Loop identities force relation loops
+
+**Remember:** Apply the same expression to both ends of the edges.
+
+*Makes the theorem clean to state or prove.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.LO. Level 4: research.
+
+**Definition.** A loop condition asks for one expression that takes equal values on two specified lists of variables under every assignment. Its directed graph has an edge between corresponding variables, pointing from left to right. A graph on an algebra is compatible if applying any operation to edges coordinate by coordinate gives another edge.
+
+**Problem.** A loop condition holds throughout a variety, a class defined by equations, exactly when the following graph test always succeeds. Map its pattern into any compatible graph on a member, sending edges to edges. Whenever such a map exists, the graph must contain an edge from a vertex to itself.
+
+**How the definition helps.** The pattern records the inputs of the expression as edges, so the identity asks for an edge with equal endpoints. Our own forward argument applies the expression to the edges supplied by the map. Compatibility gives an edge and the identity makes it a loop. For the converse, use the free algebra on the variables, where expressions agree exactly when the variety equates them. Close the pattern edges under all operations there. A loop in that closure gives the required expression.
+
+**Paper or page:** [Loop conditions with strongly connected graphs](https://arxiv.org/abs/1810.03177v1). It says: “For any algebra A ∈ V and any digraph G compatible with A, if there is a digraph homomorphism G꜀ → G, then G has a loop.”
+
+**Sources:**
+
+- [Miroslav Olšák. Loop conditions with strongly connected graphs, Proposition 2.2.](https://arxiv.org/abs/1810.03177v1)
+
 ### Malcev theories are exactly those whose simplicial algebras are Kan
 
 **Remember:** A Malcev term fills horns, so simplicial algebras are Kan.
@@ -200,3 +360,21 @@
 **Sources:**
 
 - [Benno van den Berg, Freek Geerligs, Examples and cofibrant generation of effective Kan fibrations, arXiv:2402.10568 (2024)](https://arxiv.org/abs/2402.10568)
+
+### Free algebras give structural cores
+
+**Remember:** Generate from the free algebra and keep the same free algebra.
+
+*True by definition.* MSC 08C15 (Quasivarieties). arXiv math.LO. Level 4: research.
+
+**Definition.** A quasivariety is a class of algebras defined by implications between finite lists of equations and single equations. In its free algebra, every assignment of the generators into a member extends uniquely to a map preserving the operations. The quasivariety is structurally complete if it is the smallest quasivariety containing its free algebra on countably infinitely many generators.
+
+**Problem.** The quasivariety generated by the countably generated free algebra of any quasivariety is structurally complete.
+
+**How the definition helps.** Our own proof uses the same free algebra twice. It belongs to the smaller quasivariety it generates, and assignments into that class still extend uniquely. Thus it remains free there and generates the whole smaller class. The characterization theorem identifies this generation test with minimality among quasivarieties having the same equations.
+
+**Paper or page:** [Structural completeness in quasivarieties](https://arxiv.org/abs/2401.02754v1). It says: “is structurally complete and it is the structural core of Q.”
+
+**Sources:**
+
+- [Paolo Aglianó, Alex Citkin. Structural completeness in quasivarieties, Corollary 3.2.](https://arxiv.org/abs/2401.02754v1)

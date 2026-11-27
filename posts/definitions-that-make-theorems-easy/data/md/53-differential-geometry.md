@@ -758,6 +758,42 @@
 - [Christian Bär, Nicolas Ginoux, Frank Pfäffle, Wave equations on Lorentzian manifolds and quantization, EMS (2007), arXiv:0806.1036](https://arxiv.org/abs/0806.1036)
 - [Robert Geroch, Domain of dependence, J. Math. Phys. 11 (1970) 437–449](https://doi.org/10.1063/1.1665157)
 
+### Cauchy surfaces separate past and future
+
+**Remember:** Every observer crosses once, so every event lies before, on, or after.
+
+*True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc, math.DG. Level 3: graduate.
+
+**Definition.** A Cauchy surface meets every timelike curve that cannot be extended at either end exactly once. A timelike curve can describe a slower-than-light observer. A spacelike surface alone does not require a meeting.
+
+**Problem.** A spacetime with a Cauchy surface splits into the surface, its timelike past, and its timelike future. These three sets are disjoint.
+
+**How the definition helps.** The crossing rule puts every event on the surface or on one side of it in time. In our own proof, extend a timelike path through the event in both directions and locate its unique crossing. Any timelike connection between surface points would give a path crossing twice, so the three sets are disjoint. A spacelike surface alone need not meet every path. A separate theorem identifies spacetimes admitting Cauchy surfaces with globally hyperbolic spacetimes.
+
+**nLab:** [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface). It says: “intersects Σ precisely in one point.”
+
+**Paper or page:** [Limit curve theorems for incomplete metric spaces and the null distance on Lorentzian manifolds](https://arxiv.org/abs/2511.05847v1). It says: “M is the disjoint union M = I⁺(S) ∪ S ∪ I⁻(S).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit clock gradients follow free fall
+
+**Remember:** A unit clock gradient has no acceleration.
+
+*True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C10. arXiv gr-qc, math.DG. Level 3: graduate.
+
+**Definition.** A smooth local clock function f has a gradient, the vector corresponding to its differential under the spacetime metric. Require the gradient to have squared length −1. An ordinary time function only needs to increase along future causal paths, those moving at or below light speed.
+
+**Problem.** Paths following this gradient are unit timelike geodesics. They describe free fall with elapsed proper time as parameter.
+
+**How the definition helps.** Normalizing the gradient makes its squared length constant, which forces its acceleration to vanish. In our own calculation, symmetry of second derivatives makes the acceleration half the gradient of that squared length. Constructing such a clock is separate work. The cited construction uses elapsed proper time along perpendicular geodesics before they cross.
+
+**Paper or page:** [Omniscient foliations and the geometry of cosmological spacetimes](https://arxiv.org/abs/2205.07470v1). It says: “Thus, any integral curve of ∇f is a unit timelike geodesic.”
+
+**Sources:**
+
+- [Omniscient foliations and the geometry of cosmological spacetimes](https://arxiv.org/abs/2205.07470v1)
+
 ### Hilbert’s cross-ratio distance adds along straight segments
 
 **Remember:** The same boundary endpoints make cross-ratios multiply and distances add.
@@ -844,6 +880,54 @@
 
 - [R. Izquierdo-López, M. de León, L. Schiavone and P. Soto, A zoo of coisotropic embeddings, arXiv:2509.19039 (2025)](https://arxiv.org/abs/2509.19039)
 
+### Exactness excludes torus translations
+
+**Remember:** Preserving the form is local, but having a global Hamiltonian is not.
+
+*Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 37J06. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic field preserves a symplectic form ω, a closed nondegenerate alternating two-form. Inserting the field into the first slot gives a one-form. A Hamiltonian field requires that one-form to be exact, meaning it equals the derivative of a globally defined function.
+
+**Problem.** The one-form of a Hamiltonian field integrates to zero around every closed curve. On the unit-period torus, horizontal translation preserves the standard area form but has no global Hamiltonian.
+
+**How the definition helps.** Exactness makes every closed-curve integral zero by the fundamental theorem of calculus (our own). Inserting the unit horizontal field into dx ∧ dy gives dy, whose integral around the upward vertical circle is one (our own). Translation preserves the area form, so preservation alone allows this counterexample (our own).
+
+**nLab:** [symplectic vector field](https://ncatlab.org/nlab/show/symplectic+vector+field). It says: “If this contraction even is an exact differential form in that there is a function h ∈ C∞(X) such that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed cohomology lets Moser straighten forms
+
+**Remember:** An exact time derivative gives the vector field that cancels it.
+
+*Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic form is a closed nondegenerate alternating two-form. A smooth path of such forms has fixed de Rham cohomology when every difference between two forms is the exterior derivative of a one-form.
+
+**Problem.** On a compact manifold without boundary, a smooth path of cohomologous symplectic forms admits a smooth family of coordinate changes starting at the identity. Each change pulls the corresponding form back to the initial form.
+
+**How the definition helps.** Fixed cohomology makes the time derivative an exterior derivative, supplying the one-form needed to cancel the change (our own). The proof chooses these one-forms smoothly and uses nondegeneracy to convert them into a vector field (our own). Compactness lets its flow run for the whole time interval (our own). On a product of two area-one tori, multiply the first area form by t and the second by 1/t (our own). Their sum keeps the same volume as t grows from one to two, but its integral over the first torus doubles (our own). A smooth deformation of the identity preserves this integral (our own).
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Then there exists an isotopy ρ ⦂ M × ℝ → M such that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quotienting null directions removes degeneracy
+
+**Remember:** Remove precisely the directions that pair to zero.
+
+*Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A presymplectic form is a closed two-form that may have a kernel. Its null directions are the tangent vectors that pair to zero with every vector. Take the quotient by the connected leaves tangent to these directions.
+
+**Problem.** Assume the form has constant rank and its space of leaves is a smooth manifold. If the quotient projection has surjective derivative everywhere, the form descends to a unique closed nondegenerate two-form.
+
+**How the definition helps.** Identifying points along null directions specifies a quotient where the descended form can be nondegenerate. In our own proof, constant rank and closedness make the null directions tangent to connected submanifolds called leaves. The form vanishes when one argument is tangent to a leaf. Cartan’s formula and closedness show that motion along a leaf also preserves the form. These facts give descent through the smooth projection, and removing precisely the kernel gives nondegeneracy. Existence of the smooth quotient is a separate hypothesis.
+
+**nLab:** [presymplectic structure](https://ncatlab.org/nlab/show/presymplectic+structure). It says: “the quotient of X by the flow of the vector fields in the kernel of ω is, if it exists in a reasonable way, a symplectic manifold.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The coordinate-free tautological form makes cotangent lifts preserve the symplectic form
 
 **Remember:** The lift keeps θ, so it keeps dθ.
@@ -857,6 +941,22 @@
 **How the definition helps.** With the coordinate-free definition, the lift preserves θ itself, so it also preserves dθ. In our own check, the inverse derivative in the lift cancels the derivative of f inside θ. Pullback commutes with the exterior derivative, so dθ is preserved too. In our own comparison, the coordinate formula would require tracking how the coordinates pᵢ and qᵢ change under f. In our own account, the work moves to showing that θ is smooth, gives the coordinate formula, and has nondegenerate dθ.
 
 **nLab:** [cotangent bundle](https://ncatlab.org/nlab/show/cotangent+bundle). It says: “The de Rham differential ω ≔ dθ is a symplectic form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Contact maps lift by rescaling covectors
+
+**Remember:** Lift the covectors and their evaluation rule stays the same.
+
+*True by definition.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A contact structure specifies tangent hyperplanes locally given by the kernel of a contact form α. Define its symplectization using all nonzero covectors that vanish on these planes. The tautological one-form evaluates each covector on the projection of a tangent vector to the base. Its exterior derivative is the symplectic form.
+
+**Problem.** A diffeomorphism preserving contact planes lifts canonically to a diffeomorphism preserving the symplectic form on the symplectization.
+
+**How the definition helps.** Defining the space by covectors makes the lift the usual change of covectors under a diffeomorphism. In our own proof, pull each covector back by the inverse map. It still vanishes on the contact planes, and its evaluation on a projected tangent vector stays unchanged. The lift therefore preserves the tautological form and its derivative. Using a chosen contact form instead requires tracking its rescaling. Locally every such covector is rα for a contact form α and a nonzero scalar r. The contact condition makes d(rα) nondegenerate.
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “This construction does not depend on the choice of contact form.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -877,6 +977,74 @@
 **Sources:**
 
 - [Hansjörg Geiges, An Introduction to Contact Topology (2008), Lemma 1.1.1](https://doi.org/10.1017/CBO9780511611438)
+
+### Transverse Liouville fields give contact forms
+
+**Remember:** A transverse Liouville field gives the contact form and normalizes the motion.
+
+*True by definition.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic form ω is a closed nondegenerate two-form. A Liouville field V gives a one-form λ = ω(V, ·) satisfying dλ = ω. A hypersurface has contact type if such a field crosses it everywhere. On a hypersurface of dimension 2n − 1, a contact form α satisfies α ∧ (dα)ⁿ⁻¹ ≠ 0 everywhere.
+
+**Problem.** On a hypersurface of contact type, the restriction of λ is a contact form α. On a regular energy surface, its Reeb field follows the Hamiltonian trajectories up to a change of speed.
+
+**How the definition helps.** The crossing condition replaces a separate contact-volume test with a test for a nonzero normal component. In our own proof, inserting V into the ambient volume ωⁿ gives nλ ∧ ωⁿ⁻¹. This restricts to a volume form exactly where V crosses the surface. The Reeb field spans the kernel of the restricted dα and satisfies α(R) = 1. On a level where the energy differential never vanishes, the Hamiltonian field spans that same kernel.
+
+**Paper or page:** [A note on the geometry of the two-body problem on S²](https://arxiv.org/abs/2310.02659v2). It says: “is a (positive) time reparametrisation of the Hamiltonian vector field”
+
+**Sources:**
+
+- [A note on the geometry of the two-body problem on S², Theorem 4.2](https://arxiv.org/abs/2310.02659v2)
+
+### Conormal bundles are Lagrangian
+
+**Remember:** A conormal covector kills every allowed base direction.
+
+*True by definition.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
+
+**Definition.** At each point of a smooth submanifold, take all linear functionals that vanish on its tangent space. Together they form the conormal bundle. The canonical one-form on the cotangent bundle evaluates each functional on the base component of a tangent vector.
+
+**Problem.** The conormal bundle of a smooth submanifold is Lagrangian in the ambient cotangent bundle. That means the symplectic form vanishes on it and it has half the ambient dimension.
+
+**How the definition helps.** The canonical one-form vanishes on the conormal bundle because all its base directions lie along the submanifold (our own). Its restriction therefore has zero exterior derivative, giving zero for the restricted symplectic form without a coordinate calculation (our own). For a k-dimensional submanifold of an n-dimensional space, each conormal fiber contributes n − k dimensions, giving n altogether (our own).
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “For any submanifold S ⊂ X, the conormal bundle N\*S is a Lagrangian submanifold of T\*X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exact Lagrangians exclude holomorphic disks
+
+**Remember:** Exact boundary data leave a holomorphic disk with zero energy.
+
+*Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let ω = dλ be a symplectic form, a closed nondegenerate two-form with a chosen primitive λ. A Lagrangian is a half-dimensional submanifold on which ω restricts to zero. It is exact if λ restricts to the differential of a function.
+
+**Problem.** Choose a compatible complex structure on each tangent space so that ω(v, Jv) is positive for every nonzero vector v. A map from the usual complex disk whose derivative respects the complex structures must be constant if its boundary lies on an exact Lagrangian.
+
+**How the definition helps.** Exactness makes the boundary integral of λ vanish, forcing the disk to have zero area. In our own proof, Stokes’ theorem identifies that integral with the integral of ω over the disk. The quoted energy identity then forces the disk to be constant. Without exactness, the ordinary unit disk in the complex plane gives a counterexample with boundary on the unit circle.
+
+**Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “the equality holds if and only if u is constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exact Lagrangians lift to Legendrians
+
+**Remember:** Use the primitive as the height of the Legendrian lift.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
+
+**Definition.** The cotangent bundle carries a one-form θ that evaluates each covector on motion in the base. A Lagrangian is a half-dimensional submanifold on which dθ vanishes. It is exact when θ restricts to df for a single function f. In the bundle with an extra height z, a Legendrian has the same dimension and lies tangent to the kernel of dz − θ.
+
+**Problem.** Every exact Lagrangian in a cotangent bundle lifts to a Legendrian for the contact form dz − θ.
+
+**How the definition helps.** Exactness supplies a single height function for the lift. In our own proof, setting z = f makes dz − θ vanish on the graph. Conversely, any height defining such a graph satisfies df = θ there. Over a circle, the graph of a one-form with nonzero integral gives a Lagrangian without a single-valued height.
+
+**Paper or page:** [Normal invariant of nearby Lagrangians via twisted derivative](https://arxiv.org/abs/2505.12515v2). It says: “(any Legendrian lift of) L”
+
+**Sources:**
+
+- [Normal invariant of nearby Lagrangians via twisted derivative, Corollary 3.34](https://arxiv.org/abs/2505.12515v2)
 
 ### Loop classes make the Maslov index invariant under deformation
 
@@ -914,6 +1082,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Vanishing first cohomology forces Lagrangian intersections
+
+**Remember:** A global primitive reaches extrema, where the nearby graph meets the original.
+
+*Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Lagrangian submanifold has half the ambient dimension, and the symplectic form vanishes on its tangent spaces. Its first real cohomology vanishes if every closed one-form on it is the derivative of a global function.
+
+**Problem.** Let X be a compact connected Lagrangian submanifold without boundary and of positive dimension, with vanishing first real cohomology. Every sufficiently C¹-close Lagrangian deformation meets X in at least two points. Here closeness controls both positions and first derivatives.
+
+**How the definition helps.** Vanishing cohomology makes the closed one-form describing a nearby deformation the derivative of a single function (our own). The Lagrangian neighborhood theorem supplies the graph description, with intersections exactly at zeros of that derivative (our own). A nonconstant function has distinct maximum and minimum points, while a constant function gives intersection everywhere (our own). On a torus, a small nonzero constant one-form has a graph disjoint from the zero section in its cotangent bundle (our own).
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “every Lagrangian submanifold of M which is C¹-close to X intersects X in at least two points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining first integrals by the Poisson bracket gives Poisson’s theorem
 
 **Remember:** The bracket of two conserved quantities is another conserved quantity.
@@ -948,6 +1132,56 @@
 
 - [André Lichnerowicz, Les variétés de Poisson et leurs algèbres de Lie associées, Journal of Differential Geometry 12 (1977), 253–300](https://doi.org/10.4310/jdg/1214433987)
 
+### Invariant functions give Poisson quotients
+
+**Remember:** Bracket invariant functions upstairs to get the bracket downstairs.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Poisson bracket is a Lie bracket on smooth functions that satisfies the product rule in each argument. A Poisson map preserves this bracket when functions are pulled back. On a smooth orbit space, functions correspond by pullback to smooth functions constant on each orbit.
+
+**Problem.** Suppose a Lie group acts smoothly by Poisson maps, freely and properly. Then its orbit space has a unique Poisson bracket making the projection a Poisson map.
+
+**How the definition helps.** Using invariant functions gives the quotient bracket without constructing a tensor in quotient coordinates. In our own proof, the group preserves brackets, so the bracket of two invariant functions stays invariant. The bracket identities pass to the quotient because pullback identifies its functions with these invariant functions. The smooth quotient theorem supplies the manifold structure. Freeness means point stabilizers are trivial. Properness means the map sending (g, x) to (gx, x) has compact preimages of compact sets.
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “inherits a Poisson structure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicativity makes inversion antisymplectic
+
+**Remember:** Composing an arrow with its inverse adds their forms to zero.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Lie groupoid has smooth spaces of objects and invertible arrows, with smooth composition and inversion. Give its arrows a symplectic form, a closed nondegenerate alternating two-form. Multiplicativity means that on composable pairs, the form pulled back by composition equals the sum pulled back from the two arrows.
+
+**Problem.** Inversion in a symplectic groupoid sends the symplectic form to its negative.
+
+**How the definition helps.** Multiplicativity lets us insert an arrow and its inverse directly into an addition formula for forms (our own). Two identity arrows compose to themselves, so the form restricted to identity arrows equals twice itself and vanishes (our own). Composing with the inverse thus gives zero for the sum, proving the sign reversal (our own). The equivalent graph definition requires the composition graph to be Lagrangian in a product with one sign reversed (our own). Restricting that product form to the graph gives the addition formula (our own).
+
+**nLab:** [symplectic groupoid](https://ncatlab.org/nlab/show/symplectic+groupoid). It says: “the alternating sum of its canonical pullbacks to the space X₂ of composable morphisms vanishes”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Poisson maps have coisotropic graphs
+
+**Remember:** Subtract the domain bracket and test on functions vanishing along the graph.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Poisson bracket is a Lie bracket on functions that satisfies the product rule. A Poisson map preserves brackets when functions are pulled back. Call a submanifold coisotropic if the bracket of any two local functions vanishing there also vanishes there.
+
+**Problem.** A smooth map is Poisson exactly when its graph is coisotropic in the product using the target bracket and the negative domain bracket.
+
+**How the definition helps.** The vanishing-function definition turns the geometric tangent-space test into a calculation with coordinate differences. In our own proof, each target coordinate g gives a function g(y) − g(f(x)) that vanishes on the graph. These differences generate all local functions vanishing there, by integrating their first derivatives along coordinate segments. Their product brackets restrict to the target brackets pulled back by f minus the corresponding domain brackets. The product rule extends the test to all vanishing functions.
+
+**Paper or page:** [Lie groups of Poisson diffeomorphisms](https://arxiv.org/abs/2108.11490v2). It says: “A map $f:M\\to N$ is a Poisson map if and only if the graph of $f$ is coisotropic in $(N\\times M, \\pi<sub>N</sub>\\times (-\\pi<sub>M</sub>))$.”
+
+**Sources:**
+
+- [Lie groups of Poisson diffeomorphisms, Proposition 1.2](https://arxiv.org/abs/2108.11490v2)
+
 ### Curvature is the moment map, so flat connections form a symplectic quotient
 
 **Remember:** Flat means zero moment map, so flat moduli are symplectic quotients.
@@ -968,6 +1202,76 @@
 - [A. Thomas, A Gentle Introduction to the Non-Abelian Hodge Correspondence, arXiv:2208.05940 (2022)](https://arxiv.org/abs/2208.05940)
 - [M. F. Atiyah and R. Bott, The Yang–Mills equations over Riemann surfaces, Philosophical Transactions of the Royal Society A 308 (1983) 523–615](https://doi.org/10.1098/rsta.1983.0017)
 
+### Equivariant momentum maps preserve brackets
+
+**Remember:** Generating each motion is not enough if the brackets do not match.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG, math.DS. Level 3: graduate.
+
+**Definition.** A momentum map μ assigns each phase point a linear functional on the Lie algebra, the space of infinitesimal symmetries. Evaluation on a symmetry gives a function generating its motion. Equivariance means that moving the phase point transforms this functional by the induced action on linear functionals.
+
+**Problem.** For a connected Hamiltonian symmetry group, an equivariant momentum map preserves brackets when functions on the dual Lie algebra are composed with μ. Use the Lie–Poisson bracket, which on linear functions gives their Lie algebra bracket, with matching sign conventions.
+
+**How the definition helps.** Differentiating equivariance makes the generating functions reproduce the brackets of infinitesimal symmetries (our own). Linear functions supply every possible differential on the dual Lie algebra, and brackets at a point depend only on those differentials (our own). Translations of the plane commute, but their generators y and −x have bracket one in the standard convention (our own). Adding constants cannot repair that mismatch (our own).
+
+**nLab:** [momentum map](https://ncatlab.org/nlab/show/momentum+map). It says: “its dual μ is a Poisson manifold homomorphism with respect to the Lie-Poisson structure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Free actions give smooth symplectic quotients
+
+**Remember:** Free symmetry removes the fixed points that can make a quotient singular.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG, math.DS. Level 3: graduate.
+
+**Definition.** For a Hamiltonian symmetry action, the momentum map collects the functions generating the infinitesimal symmetries. Assume it respects the group action. On its zero level, call the action free if only the identity fixes any point. The reduced space identifies points on the same orbit.
+
+**Problem.** For a compact Lie group acting freely on the zero level, the reduced space is smooth and inherits a symplectic form.
+
+**How the definition helps.** Freeness makes the symmetry directions independent, so the momentum derivative has full rank and the zero level is smooth (our own). Compactness and freeness give a smooth orbit space by the quotient theorem (our own). The restricted form has exactly the orbit directions as its kernel, so it induces a nondegenerate form there (our own). For opposite circle rotations on two complex coordinates, the zero level contains the fixed origin (our own). Reduction gives a single point there with a two-dimensional symplectic piece around it (our own).
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Assume that G acts freely on μ⁻¹(0).”
+
+**Sources:**
+
+- [Jerrold Marsden and Alan Weinstein, Reduction of symplectic manifolds with symmetry (1974)](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Free reduction avoids quotient singularities
+
+**Remember:** Remove point stabilizers before taking the smooth symplectic quotient.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A moment map collects the energy functions generating a Lie group’s infinitesimal motions. Assume it respects the group action and the induced action on the dual Lie algebra. On a level of this map, identify points related by group elements fixing its value. An action is free when only the identity fixes a point.
+
+**Problem.** Choose a regular value, meaning that the moment map derivative is onto throughout its level. Properness means the map sending (g, x) to (gx, x) has compact preimages of compact sets. If the group fixing the value acts freely and properly there, the quotient is a smooth symplectic manifold.
+
+**How the definition helps.** Freeness rules out leftover point symmetries in local quotient charts. In our own example, a circle rotates the two coordinates of ℂ² at speeds one and two. Use momentum (\|z\|² + 2\|w\|²)/2. On each positive level, a half-turn fixes points with z = 0 and negates their transverse coordinate. The local quotient thus retains an order-two symmetry. The free and proper action theorem supplies smooth quotient charts. The reduction theorem supplies their symplectic form.
+
+**Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “Then there is a unique symplectic structure”
+
+**Sources:**
+
+- [Jerrold Marsden and Alan Weinstein, Reduction of symplectic manifolds with symmetry (1974)](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Reduced forms carry Hamiltonian flows
+
+**Remember:** Pull back the form and energy to see that their flows agree.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Hamiltonian is an energy function whose differential determines motion through a symplectic form, a closed nondegenerate two-form. A moment map collects the Hamiltonians for infinitesimal group motions. On a level of this map, identify points related by group elements fixing its value. Define the reduced form by requiring its pullback to equal the original form on the level.
+
+**Problem.** Choose a moment map respecting the group actions and a level where its derivative is onto. Suppose the group fixing that value acts freely and properly on the level. Then the flow of any invariant energy projects to the flow of the induced energy on the quotient.
+
+**How the definition helps.** Defining the reduced form by pullback lets us check the equation of motion on the original level without choosing quotient coordinates. In our own explanation, pulling back the reduced energy gives the original energy on the level. Noether’s theorem keeps the flow on that level. The reduction theorem supplies a smooth quotient and proves that its form is nondegenerate.
+
+**Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “In particular, $X<sub>H</sub>$ and $X<sub>h</sub>$ are $\\pi$-related.”
+
+**Sources:**
+
+- [Jerrold Marsden and Alan Weinstein, Reduction of symplectic manifolds with symmetry (1974)](https://doi.org/10.1016/0034-4877(74)90021-4)
+
 ### With Hamiltonian actions, Noether's theorem takes one line
 
 **Remember:** In phase space, a symmetry is a function, and so is its charge.
@@ -986,6 +1290,38 @@
 
 - [Emmy Noether, Invariante Variationsprobleme, Nachr. Ges. Wiss. Göttingen, Math.-Phys. Kl. (1918) 235–257; English translation by M. A. Tavel, Invariant Variation Problems, arXiv:physics/0503066](https://arxiv.org/abs/physics/0503066)
 
+### Exact symplectic maps lift to contact maps
+
+**Remember:** Add the primitive difference to height to cancel the error.
+
+*Rules out counterexamples.* MSC 53D22 (Canonical transformations in symplectic and contact geometry). arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let λ be a one-form whose derivative dλ is symplectic, meaning closed and nondegenerate. A diffeomorphism is exact symplectic if it pulls λ back to λ + dF for a single function F. Adding a real height z gives a contact form dz − λ.
+
+**Problem.** Every exact symplectic map lifts to a map of the contactization preserving dz − λ exactly.
+
+**How the definition helps.** Exactness supplies the single height correction needed to preserve dz − λ. In our own calculation, sending z to z + F adds dF to dz and cancels the change in λ. Conversely, any height translation preserving the form must supply such a primitive. Translating momentum by a nonzero constant over a circle changes λ by a one-form with nonzero integral. No global height correction exists in that example.
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “and it lifts to a contact transformation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symplectic maps have Lagrangian graphs
+
+**Remember:** On a graph, the difference of the forms tests preservation.
+
+*True by definition.* MSC 53D22 (Canonical transformations in symplectic and contact geometry). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Lagrangian submanifold has half the ambient dimension and zero restricted symplectic form. On a product, use the target symplectic form minus the source form.
+
+**Problem.** A diffeomorphism preserves the symplectic form exactly when its graph is Lagrangian for the difference form.
+
+**How the definition helps.** Using the difference form on the product turns preservation of two forms into vanishing of one form on the graph. In our own calculation, restriction to the graph gives the pulled-back target form minus the source form. The graph has half the product dimension since the map is a diffeomorphism. These two facts also prove the converse.
+
+**nLab:** [Lagrangian correspondence](https://ncatlab.org/nlab/show/Lagrangian+correspondence). It says: “The graph of any symplectomorphism induces a Lagrangian correspondence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Symplectomorphisms carry Hamiltonian motion to Hamiltonian motion
 
 **Remember:** Preserve the symplectic form and the transformed Hamiltonian determines the transported motion.
@@ -1001,6 +1337,22 @@
 **nLab:** [canonical transformation](https://ncatlab.org/nlab/show/canonical+transformation). It says: “Since phase spaces are mathematically identified with symplectic manifolds, canonical transformations are symplectomorphisms.”
 
 **Wikipedia:** [Canonical transformation](https://en.wikipedia.org/wiki/Canonical_transformation). It says: “Modern mathematical descriptions of canonical transformations are considered under the broader topic of symplectomorphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Capacity normalization gives non-squeezing
+
+**Remember:** Volume misses the narrow cylinder, but a normalized capacity sees it.
+
+*True by definition.* MSC 53D35 (Global theory of symplectic and contact manifolds). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic embedding preserves the symplectic form, a closed nondegenerate two-form. A capacity assigns a nonnegative number, possibly infinite, that cannot decrease when one space embeds symplectically into another. Multiplying the symplectic form by a positive constant multiplies the capacity by that constant. In standard symplectic space, normalization assigns πr² to both the radius-r ball and the cylinder over a radius-r disk in one conjugate coordinate plane.
+
+**Problem.** In standard symplectic space, a ball cannot embed symplectically into a cylinder of smaller radius over a conjugate coordinate plane.
+
+**How the definition helps.** Normalization gives the ball and cylinder the same size scale, so monotonicity compares their radii directly. An embedding of a radius-r ball into a radius-R cylinder would require πr² ≤ πR². In our own comparison, volume gives no such obstruction because the cylinder has infinite volume in dimension four or higher. The work moves into proving that a normalized capacity exists. Conversely, non-squeezing normalizes the Gromov width, the supremum of πr² over all balls admitting a symplectic embedding into the space.
+
+**Wikipedia:** [Non-squeezing theorem](https://en.wikipedia.org/wiki/Non-squeezing_theorem). It says: “Given such a capacity, one can verify the non-squeezing theorem”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1225,6 +1577,60 @@
 
 - [E. Minguzzi, Lorentzian manifolds properly isometrically embeddable in Minkowski spacetime, arXiv:2303.05941v1 (2023), Letters in Mathematical Physics 113, 67 (2023)](https://arxiv.org/abs/2303.05941v1)
 
+### Null distance straightens causal curves
+
+**Remember:** One causal segment costs exactly its clock change.
+
+*True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc, math.DG. Level 4: research.
+
+**Definition.** A time function is a continuous clock reading that increases along every future path moving at or below light speed. To define null distance, join two events by such paths, allowing reversals between pieces. Take the infimum of the sums of absolute clock changes.
+
+**Problem.** On a causal curve, null distance between any two points equals their absolute clock difference. Where null distance is a metric, clock time makes the curve an isometric copy of an interval.
+
+**How the definition helps.** Adding absolute clock changes makes a path without reversals as cheap as possible. In our own proof, the triangle inequality bounds every sum below by the endpoint difference. A single causal segment attains that bound, even for light, whose ordinary proper time vanishes. Proving that null distance separates arbitrary events needs further assumptions on the clock.
+
+**Paper or page:** [Limit curve theorems for incomplete metric spaces and the null distance on Lorentzian manifolds](https://arxiv.org/abs/2511.05847v1). It says: “d(γ ∘ s(t₁), γ ∘ s(t₂); f) = \|t₁−t₂\|”
+
+**Sources:**
+
+- [Limit curve theorems for incomplete metric spaces and the null distance on Lorentzian manifolds](https://arxiv.org/abs/2511.05847v1)
+
+### Shortest spatial paths settle lightlike reachability
+
+**Remember:** A trip with exactly enough time needs an actual shortest path.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83F05. arXiv gr-qc, math.DG. Level 4: research.
+
+**Definition.** Let spatial lengths at time t equal their fixed reference lengths multiplied by a positive continuous scale factor. The reference metric is geodesic if each pair of points has a shortest path. A length metric only requires paths whose lengths approach the distance.
+
+**Problem.** Available conformal time is the integral of the reciprocal scale factor between two event times. For a geodesic reference metric, a signal reaches the later event exactly when the reference distance is at most the available conformal time.
+
+**How the definition helps.** A shortest path lets a light signal attain the limiting distance, including equality. In our own proof, traverse that path at constant speed in conformal time. Conversely, the speed limit bounds the length of every signal path. In our own example, remove the origin from the Euclidean plane. Between opposite points, detours approach the straight distance but never attain it. Establishing existence of shortest paths is a separate geometric problem.
+
+**Paper or page:** [Bonnet-Myers rigidity theorem for globally hyperbolic Lorentzian length spaces](https://arxiv.org/abs/2401.17017v3). It says: “if Y is strictly intrinsic the causal relation agrees”
+
+**Sources:**
+
+- [Bonnet-Myers rigidity theorem for globally hyperbolic Lorentzian length spaces](https://arxiv.org/abs/2401.17017v3)
+
+### Timelike convergence rules out de Sitter
+
+**Remember:** Light can miss the curvature that makes timelike lines fail to split spacetime.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C20. arXiv gr-qc, math.DG. Level 4: research.
+
+**Definition.** Timelike convergence requires nonnegative Ricci curvature on every timelike vector, a direction available to a massive observer. Ricci curvature is a trace of the curvature tensor. Null convergence tests only lightlike directions. A globally hyperbolic spacetime admits a surface that every inextendible timelike path crosses once.
+
+**Problem.** Suppose a globally hyperbolic spacetime satisfies timelike convergence and contains a complete timelike line. Such a line maximizes elapsed proper time between any two of its points and extends indefinitely in both directions. The spacetime then splits into time and space with metric −dt² + h, where the spatial metric h is independent of time.
+
+**How the definition helps.** Testing timelike directions excludes de Sitter spacetime, which passes every lightlike test and violates the product conclusion. In our own example, de Sitter curvature gives a Ricci tensor equal to a positive multiple of the metric with negative time sign. It therefore vanishes on lightlike vectors and is negative on timelike vectors. Fixed spatial positions in global coordinates give complete maximizing lines because spatial motion reduces elapsed proper time. A product would have zero Ricci curvature in its time direction. Galloway’s splitting theorem supplies the difficult implication under timelike convergence.
+
+**Paper or page:** [An elliptic proof of the splitting theorems from Lorentzian geometry](https://arxiv.org/abs/2410.12632v1). It says: “R(v,v) ≥ 0 for all timelike vectors”
+
+**Sources:**
+
+- [Gregory J. Galloway (1989), The Lorentzian splitting theorem without the completeness assumption](https://doi.org/10.4310/jdg/1214442881)
+
 ### Triangle comparison gives timelike curvature bounds that pass to limits
 
 **Remember:** Compare timelike triangles, and curvature makes sense without a smooth metric.
@@ -1281,6 +1687,24 @@
 
 - [Stefan Matijević, Systolic S¹-index and characterization of non-smooth Zoll convex bodies, arXiv:2501.13856v3 (2025)](https://arxiv.org/abs/2501.13856v3)
 
+### Loose charts make formal isotopy sufficient
+
+**Remember:** A loose chart lets formal tangent data classify actual embeddings.
+
+*Makes the theorem clean to state or prove.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 4: research.
+
+**Definition.** A contact structure gives a maximally nonintegrable field of tangent hyperplanes, called contact planes. A Legendrian embedding is tangent to these planes and has half their dimension. A loose embedding contains Murphy’s prescribed local model, a zigzag arc thickened in transverse directions with a specified size bound. A formal Legendrian embedding includes a deformation of its derivative through injective linear maps to tangent data satisfying the Legendrian condition.
+
+**Problem.** In contact dimension at least five, every formal Legendrian isotopy class of closed connected knots has a loose representative, unique up to ambient contact isotopy.
+
+**How the definition helps.** The loose chart singles out the knots that formal tangent data can classify. Here isotopy means continuous deformation through the relevant embeddings, and ambient contact isotopy moves the surrounding space while preserving its contact planes. In our own explanation, the chart provides room for the local changes in Murphy’s proof. Her deformation theorem supplies existence and uniqueness.
+
+**Paper or page:** [Loose Legendrian embeddings in high dimensional contact manifolds](https://arxiv.org/abs/1201.2245v5). It says: “Then for each formal Legendrian isotopy class there is a loose Legendrian knot in that class, unique up to ambient contact isotopy.”
+
+**Sources:**
+
+- [Loose Legendrian embeddings in high dimensional contact manifolds, Theorem 1.2](https://arxiv.org/abs/1201.2245v5)
+
 ### Higher crossing forms compute the Maslov index at degenerate crossings
 
 **Remember:** At a flat crossing, use the first derivative that does not vanish.
@@ -1298,6 +1722,106 @@
 **Sources:**
 
 - [Margaret Beck, Jonathan Jaquette, Hannah Pieper, The Maslov index, degenerate crossings and the stability of pulse solutions to the Swift-Hohenberg equation, arXiv:2403.04003 (2025)](https://arxiv.org/abs/2403.04003v4)
+
+### Dual maps detect Lie algebroid morphisms
+
+**Remember:** The Poisson bracket reads the original bracket and anchor from linear functions.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 4: research.
+
+**Definition.** A Lie algebroid is a vector bundle with a Lie bracket on sections. Its anchor maps sections to vector fields and gives the derivative term in the bracket’s product rule. Each section defines a linear function on every dual fiber by evaluation. The dual bundle carries a Poisson bracket, a Lie bracket of functions satisfying the product rule.
+
+**Problem.** Fix a vector bundle map between two Lie algebroids over the identity of their common base. It preserves the section bracket and anchor exactly when its dual preserves Poisson brackets by pullback.
+
+**How the definition helps.** The dual bracket expresses both conditions for a morphism as one requirement on functions. Bracketing two section functions gives the function for their section bracket. Bracketing a section function with a base function differentiates the latter along the anchor. Two base functions have zero bracket. In our own proof, these functions supply local coordinates, so their brackets determine the whole bracket. The Lie algebroid identities ensure that this construction defines a Poisson bracket.
+
+**Paper or page:** [Comomentum sections and Poisson maps in Hamiltonian Lie algebroids](https://arxiv.org/abs/2405.03533v2). It says: “the dual map ψ: A₂∗ → A₁∗ is a Poisson map.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicative forms reverse under inversion
+
+**Remember:** An arrow and its inverse multiply to a unit, where the form vanishes.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 4: research.
+
+**Definition.** A Lie groupoid has smooth spaces of objects and arrows, and every arrow has an inverse. A symplectic form on its arrows is multiplicative if pulling back by multiplication adds the two arrow forms.
+
+**Problem.** Inversion in a symplectic groupoid pulls back the symplectic form to its negative.
+
+**How the definition helps.** The additive definition of multiplicativity lets us substitute inverse arrows directly into one identity of forms. The usual graph definition requires the graph of multiplication to be Lagrangian, meaning half-dimensional with zero restricted difference form. Restricting the product form to this graph gives the additive identity. In our own proof, multiplying each identity arrow by itself shows that the form on identity arrows equals twice itself. It therefore vanishes there. Multiplying each arrow by its inverse now shows that inversion negates the form.
+
+**nLab:** [symplectic groupoid](https://ncatlab.org/nlab/show/symplectic+groupoid). It says: “multiplicative in that the alternating sum of its canonical pullbacks to the space X₂ of composable morphisms vanishes”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing ideals give Poisson reduction
+
+**Remember:** Use only functions whose brackets preserve vanishing on the submanifold.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 4: research.
+
+**Definition.** A Poisson bracket is a Lie bracket on functions that satisfies the product rule. Let I consist of smooth functions vanishing on a closed embedded submanifold S. Call S coisotropic if bracketing any two members of I gives another member of I.
+
+**Problem.** Let N consist of functions f such that bracketing f with any member of I gives a member of I. For coisotropic S, multiplication and the bracket are well defined on N modulo I.
+
+**How the definition helps.** Defining coisotropy by vanishing functions gives exactly the inclusion I ⊆ N needed to take the quotient. In our own proof, the Jacobi identity closes N under brackets, and the product rule closes it under multiplication. Adding a member of I to a representative changes either result only by a member of I. The geometric work lies in the quoted equivalence with the tangent-space test for coisotropy.
+
+**nLab:** [coisotropic submanifold](https://ncatlab.org/nlab/show/coisotropic+submanifold). It says: “S ↪︎ X is coisotropic if the subalgebra of C∞(X) consisting of functions vanishing on S is closed under the Poisson bracket.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hypertight forms exclude holomorphic planes
+
+**Remember:** A plane would cap its orbit, so a hypertight form rules it out.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology). arXiv math.SG. Level 4: research.
+
+**Definition.** A contact form α determines a vector field R by α(R) = 1 and dα(R, ·) = 0. A Reeb orbit is a closed trajectory of R. A contact form is hypertight if no such orbit bounds a continuous disk.
+
+**Problem.** Add a positive coordinate r to the contact manifold and use the symplectic form d(rα) on the product. For a hypertight form, this space contains no holomorphic plane approaching a single Reeb orbit at infinity.
+
+**How the definition helps.** Hypertightness excludes exactly the disk that the end of such a plane would supply. In our own proof, project a large circle in the plane to the contact manifold. Convergence at infinity makes this loop homotopic to the orbit. The projected interior of the circle fills the loop, so the orbit also bounds a disk. This obstruction uses only the topology of the plane and its end.
+
+**Paper or page:** [A contact homotopy type](https://arxiv.org/abs/2511.01821v1). It says: “Suppose (Y, λ) has no contractible Reeb orbits.”
+
+**Sources:**
+
+- [A contact homotopy type, Corollary 1.5](https://arxiv.org/abs/2511.01821v1)
+
+### Minimum spherical area rules out splitting
+
+**Remember:** Two positive areas cannot share a total equal to the least positive area.
+
+*Rules out counterexamples.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
+
+**Definition.** A spherical homology class is the class represented by a map from a sphere. Choose one whose area, the integral of the symplectic form, is least among all positive spherical areas.
+
+**Problem.** Fix a compact symplectic manifold without boundary and a compatible complex structure on its tangent spaces. A limit of holomorphic spheres in a class of least positive spherical area has exactly one nonconstant sphere component.
+
+**How the definition helps.** The minimum gives each nonconstant component a lower area bound equal to the entire area available. In our own proof, component areas add to the original area, and each nonconstant holomorphic sphere has positive area. At larger area, the sphere maps z ↦ z + t/z split as t tends to zero through positive values. Away from zero they tend to z, while rescaling z = tw gives the second sphere map w ↦ 1/w. The compactness theorem supplies the limit. The area bound controls its components.
+
+**Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “Let A ∈ Z be a homology class of the minimal positive symplectic area in Z”
+
+**Sources:**
+
+- [Shah Faisal, A proof of Gromov's non-squeezing theorem, Theorem 3.2](https://arxiv.org/abs/2412.18462v1)
+
+### Stable maps keep colliding marks distinct
+
+**Remember:** Put colliding marks on a constant sphere instead of identifying them.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
+
+**Definition.** A stable map allows smooth pieces of a domain curve to meet in pairs at points called nodes. Its labeled marks are distinct smooth points away from nodes. Only finitely many changes of domain coordinates may preserve the map and every mark. A sphere mapped to a point therefore needs at least three marks or node branches in total.
+
+**Problem.** Fix a compact symplectic target without boundary and a compatible complex structure on its tangent spaces. Stable holomorphic maps of fixed genus, homology class, and number of marks form a compact space up to changes of domain coordinates.
+
+**How the definition helps.** Allowing a constant sphere gives colliding marks separate places in the limiting domain. In our own example, two marks approach the same point on a fixed nonconstant sphere. A new sphere carries the two marks and meets the original sphere at one node. Its three distinguished points rule out any nonidentity change of sphere coordinates fixing them. Gromov compactness proves that a subsequence converges in the space of stable maps.
+
+**Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “we attach a copy of ℙ¹ (a sphere), called a bubble, to the domain curve at the problematic point.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Spinᶜ quantization builds in the metaplectic correction
 

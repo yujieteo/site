@@ -1,3 +1,35 @@
+### Absolute continuity makes straight paths optimal
+
+**Remember:** The integral of velocity must equal the change in position.
+
+*Rules out counterexamples.* MSC 49J05 (Existence theories for free problems in one independent variable), 49K05. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** An absolutely continuous real path on a closed interval equals its starting point plus the integral of an integrable velocity. Continuity and existence of a derivative almost everywhere do not ensure this representation.
+
+**Problem.** Among absolutely continuous real paths from 0 to 1 in unit time, the straight path uniquely minimizes the integral of squared speed.
+
+**How the definition helps.** Absolute continuity forces the velocity to integrate to one, so Cauchy–Schwarz gives a lower bound of one on the energy (our own). Equality forces constant velocity almost everywhere (our own). Without absolute continuity the Cantor function joins these endpoints with derivative zero almost everywhere (our own). The work is in the fundamental theorem that identifies absolutely continuous paths with integrals of their velocities.
+
+**Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “is uniformly continuous, and is differentiable with f′(x) = 0 for almost all x, but does not satisfy the Fundamental Theorem”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact sublevels trap minimizing sequences
+
+**Remember:** Keep a low-cost sequence inside one compact set.
+
+*Rules out counterexamples.* MSC 49J27 (Existence theories for problems in abstract spaces). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A cost has compact sublevels if, for each real bound, the points costing at most that bound form a compact set.
+
+**Problem.** Suppose a cost on a metric space has compact sublevels and a finite infimum. Then some point attains that infimum.
+
+**How the definition helps.** One compact sublevel contains the tail of any sequence whose costs approach the infimum (our own). A subsequence therefore converges (our own). Every sublevel is closed, so the limit belongs to every sublevel above the infimum and attains it (our own). Without compactness, exp(−x) on the real line approaches zero without attaining it (our own).
+
+**Wikipedia:** [Direct method in the calculus of variations](https://en.wikipedia.org/wiki/Direct_method_in_the_calculus_of_variations). It says: “Show that J is sequentially lower semi-continuous with respect to the topology τ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### With subgradients, zero is a subgradient exactly at a global minimum
 
 **Remember:** A flat line below the graph marks the lowest point.
@@ -33,6 +65,72 @@
 **Sources:**
 
 - [Yuchen Lou, Shigeng Sun, Jorge Nocedal, Design Guidelines for Noise-Tolerant Optimization with Applications in Robust Design, arXiv:2401.15007v2 (2024)](https://arxiv.org/abs/2401.15007v2)
+
+### Continuation values give a recursion for optimal reward
+
+**Remember:** Once the current state is fixed, only the remaining choices matter.
+
+*Makes the theorem clean to state or prove.* MSC 49L20 (Dynamic programming in optimal control and differential games). arXiv math.OC, cs.SY. Level 2: later undergraduate.
+
+**Definition.** At each decision time, define the continuation value of a state as the supremum of total rewards over its feasible remaining paths. The state must determine future rewards and allowed actions.
+
+**Problem.** Consider a deterministic problem with finitely many decision times, bounded additive rewards and a feasible continuation at every decision state. Each value equals the supremum over first actions of immediate reward plus the next state’s value. Every remaining part of an optimal path is optimal from its starting state.
+
+**How the definition helps.** The continuation value summarizes all feasible tails by one number, so the recursion needs only the first action and next state (our own). Group feasible paths by first action and take the supremum within each group (our own). If an optimal path had a better feasible tail, replacing its tail would improve the whole path (our own). The work lies in choosing a state that permits such replacements (our own).
+
+**Wikipedia:** [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation). It says: “the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.”
+
+**Sources:**
+
+- [R. Bellman, On the Theory of Dynamic Programming (1952)](https://doi.org/10.1073/pnas.38.8.716)
+
+### Discounting contracts the Bellman update
+
+**Remember:** Averaging cannot grow an error, and discounting shrinks it.
+
+*Rules out counterexamples.* MSC 49L20 (Dynamic programming in optimal control and differential games), 93E20. arXiv math.OC, cs.SY. Level 2: later undergraduate.
+
+**Definition.** Fix a rule for choosing actions from the current state. Its Bellman update adds the expected immediate reward to γ times the expected trial value at the next state. The discount γ satisfies 0 ≤ γ &lt; 1.
+
+**Problem.** In a finite decision process with bounded rewards, the largest absolute difference after an update is at most γ times the previous difference. The unique fixed point gives the expected sum of discounted rewards.
+
+**How the definition helps.** Discounting makes the expected next-step difference strictly smaller in maximum norm whenever the trial values differ (our own). The rewards cancel, and averaging cannot increase the largest absolute difference (our own). The contraction theorem gives uniqueness. Conditioning on the first reward shows that the expected discounted sum is a fixed point (our own). At γ = 1, a single state with zero reward makes every value a fixed point (our own).
+
+**Paper or page:** [On the Reinhardt Conjecture and Formal Foundations of Optimal Control](https://arxiv.org/abs/2208.04443v1). It says: “The operator Bπ is a contraction in the max norm on the space of functions S → ℝ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma limits preserve limiting minimizers
+
+**Remember:** Check moving points to keep moving wells from disappearing.
+
+*Rules out counterexamples.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Costs Gamma converge on a metric space when two tests hold at each point. Every sequence approaching that point has lower limiting cost at least the proposed value there. Some sequence approaching the same point has costs converging to that value. Pointwise convergence checks only constant sequences.
+
+**Problem.** If costs Gamma converge on a metric space, every cluster point of their minimizers minimizes the limit cost.
+
+**How the definition helps.** The lower bound controls the convergent minimizers, and the matching upper bound lets us compare them with any fixed candidate (our own). For pointwise convergence, start with the cost x on \[0, 1\] and set it to −1 only at 1 − 1/n (our own). Its minimizers tend to 1, but the pointwise limit is minimized at 0 (our own). The work goes into proving the two bounds for the costs in question (our own).
+
+**Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “then every cluster point of the sequence xₙ is a minimizer of F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polyconvexity implies quasiconvexity by averaging
+
+**Remember:** Average the minors first, then use convexity.
+
+*True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** A minor is the determinant of a square submatrix. A matrix function is polyconvex if it is a convex function of the list of all its minors. Quasiconvexity means that adding a smooth gradient perturbation to a constant matrix cannot lower the average cost when the perturbing map has compact support.
+
+**Problem.** Every finite polyconvex matrix function is quasiconvex in the sense used for variational integrals.
+
+**How the definition helps.** Convexity in the minors lets Jensen’s inequality bound the average cost by the cost evaluated through their averages (our own). The essential identity says that each perturbed minor averages to the corresponding minor of the constant matrix (our own). Integration by parts proves this identity because the perturbing map vanishes near the boundary (our own).
+
+**Paper or page:** [On the local everywhere Hölder continuity for weak solutions of a class of not convex vectorial problems of the Calculus of Variations](https://arxiv.org/abs/2302.02387v1). It says: “f convex ⇒ f polyconvex ⇒ f quasiconvex ⇒ f rank one convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Young measures give a minimizer when no function attains the infimum
 
@@ -122,6 +220,24 @@
 **Sources:**
 
 - [R. Tyrrell Rockafellar, Convex Analysis, Princeton University Press (1970)](https://doi.org/10.1515/9781400873173)
+
+### Beliefs restore the Markov property
+
+**Remember:** Keep what the history says about the current state.
+
+*Makes the theorem clean to state or prove.* MSC 49N30 (Problems with incomplete information (optimization)), 93C41. arXiv math.OC, cs.SY. Level 3: graduate.
+
+**Definition.** Use the conditional probability of each hidden state given all past actions and observations as the new state. This probability vector, called the belief, replaces the full history.
+
+**Problem.** Consider a decision process with hidden states, finite sets of states, actions and observations, and finitely many decision times. For bounded additive rewards, an optimal rule uses only the current belief and time. Its value follows by maximizing expected current reward plus expected future value at each step.
+
+**How the definition helps.** The belief gives the current expected reward and the probability of each next observation (our own). Bayes’ rule then gives the next belief using only the current belief, action and observation (our own). The work is proving this update and applying backward induction on the resulting decision process (our own).
+
+**Wikipedia:** [Partially observable Markov decision process](https://en.wikipedia.org/wiki/Partially_observable_Markov_decision_process). It says: “A Markovian belief state allows a POMDP to be formulated as a Markov decision process where every belief is a state.”
+
+**Sources:**
+
+- [R. D. Smallwood and E. J. Sondik, The Optimal Control of Partially Observable Markov Processes over a Finite Horizon (1973)](https://doi.org/10.1287/opre.21.5.1071)
 
 ### De Giorgi’s divergence definition of perimeter makes it lower semicontinuous
 
@@ -248,6 +364,42 @@
 
 - [Jalal Fadili, Tran T. A. Nghia, Duy Nhat Phan, Solution uniqueness of convex optimization problems via the radial cone, arXiv:2401.10346v1 (2024)](https://arxiv.org/abs/2401.10346v1)
 - [Jalal Fadili, Tran T. A. Nghia, Duy Nhat Phan, Solution Uniqueness of Convex Optimization Problems via the Radial Cone, Journal of Optimization Theory and Applications (2025)](https://doi.org/10.1007/s10957-025-02723-3)
+
+### Accumulated reward makes laws recursive
+
+**Remember:** Carry the running total as part of the state.
+
+*Makes the theorem clean to state or prove.* MSC 49L20 (Dynamic programming in optimal control and differential games), 93E20. arXiv math.OC, cs.SY. Level 4: research.
+
+**Definition.** Track both the current state and the total reward earned so far. Use their joint probability distribution as the state of a new decision process.
+
+**Problem.** Consider the paper’s finite-horizon decision process with finitely many states and a compact set of actions. For every original rule, successive updates of this distribution reproduce the joint distribution of final state and total reward.
+
+**How the definition helps.** Tracking the running total makes the final reward distribution accessible through updates at each step (our own). Start with zero reward and the original distribution of states. The work lies in finding rules based on state and running total that reproduce the distributions under a history-dependent rule (our own).
+
+**Paper or page:** [Yet Another Distributional Bellman Equation](https://arxiv.org/abs/2505.21098v2). It says: “For every policy σ = (σₙ) in the original MDP model, there exists an action sequence π = (πₙ) in the lifted MDP”
+
+**Sources:**
+
+- [Yet Another Distributional Bellman Equation](https://arxiv.org/abs/2505.21098v2)
+
+### Randomization mixes occupation measures
+
+**Remember:** Mix the rules before starting, and their expected visit counts mix.
+
+*True by definition.* MSC 49N25 (Impulsive optimal control problems), 93E20. arXiv math.OC, cs.SY. Level 4: research.
+
+**Definition.** An impulse control rule chooses when to intervene and which intervention to make. In the associated decision process, an occupation measure records the expected number of visits to each set of state and action pairs.
+
+**Problem.** For the discounted impulse control problem in the paper, the occupation measures of randomized rules in the associated decision process form a convex set.
+
+**How the definition helps.** Expected visit counts mix linearly when a single initial draw chooses which rule to follow (our own). Conditioning on that draw gives the required weighted average for every set of state and action pairs (our own). The work lies in representing impulse controls by decision rules and admitting the initial random choice (our own).
+
+**Paper or page:** [Primal-dual programs for the constrained optimal impulse control: discounted model](https://arxiv.org/abs/2504.18387v1). It says: “The set of all occupation measures in the induced MDP is convex”
+
+**Sources:**
+
+- [Primal-dual programs for the constrained optimal impulse control: discounted model](https://arxiv.org/abs/2504.18387v1)
 
 ### A jump-based transport distance makes nonlocal diffusion an entropy gradient flow
 

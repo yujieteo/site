@@ -1,3 +1,19 @@
+### Exact equations give level sets
+
+**Remember:** An exact equation keeps its potential constant.
+
+*True by definition.* MSC 34A05 (Explicit solutions, first integrals of ordinary differential equations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The equation M dx + N dy = 0 is exact if some differentiable function f has partial derivatives M and N in that order.
+
+**Problem.** A differentiable graph on an interval solves an exact equation exactly when f is constant along the graph.
+
+**How the definition helps.** The potential f makes the equation say that its derivative along the graph vanishes. In our own account, the chain rule gives this statement immediately. The alternative test compares ∂M/∂y and ∂N/∂x. For continuously differentiable coefficients on a simply connected open region, equality guarantees a potential.
+
+**Paper or page:** [ProofWiki](https://proofwiki.org/wiki/Solution_to_Exact_Differential_Equation). It says: “The general solution of such an equation is: f(x, y) = C”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A Lipschitz condition makes solutions of differential equations unique
 
 **Remember:** Lipschitz bounds the slope of every chord, so solutions cannot split.
@@ -11,6 +27,38 @@
 **How the definition helps.** The Lipschitz condition makes the Picard iteration a contraction, and a contraction has exactly one fixed point. Without the condition, uniqueness fails. The equation y′ = a y²ᐟ³ with y(0) = 0 has at least two solutions. One is y = 0. The other is (at/3)³ for t &lt; 0 and 0 for t ≥ 0. The function y²ᐟ³ is not Lipschitz near 0, because its derivative is unbounded there. With the Lipschitz condition, the integral operator of Picard iteration is a contraction on a short time interval, and the Banach fixed-point theorem gives existence and uniqueness. The result stays local: for y′ = 1 + y² with y(0) = 0, the solution tan t exists only for \|t\| &lt; π/2 (our own example).
 
 **Wikipedia:** [Picard–Lindelöf theorem](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem). It says: “The uniqueness theorem does not apply because the derivative of the function f(y) = y²ᐟ³ is not bounded in the neighborhood of y = 0 and therefore it is not Lipschitz continuous, violating the hypothesis of the theorem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic time simplifies Euler equations
+
+**Remember:** Logarithms turn changes of scale into shifts.
+
+*True by definition.* MSC 34A25 (Analytical theory of ordinary differential equations: series, transformations, transforms, operational calculus, etc.), 34A30. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For x &gt; 0 define D by Dy = xy′. A second-order Euler equation with constant coefficients uses x²y″ = D(Dy) − Dy together with Dy and y.
+
+**Problem.** Set t = log x and write Y(t) = y(exp t). Then x²y″ + axy′ + by = 0 becomes Y″ + (a − 1)Y′ + bY = 0.
+
+**How the definition helps.** Logarithmic time turns the scale derivative D into ordinary differentiation, making every coefficient constant. In our own calculation, the chain rule gives dY/dt = Dy at x = exp(t). Applying this rule twice gives the transformed equation. One must still solve that equation and substitute t = log x.
+
+**Wikipedia:** [Cauchy–Euler equation](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Euler_equation). It says: “can be used to reduce this equation to a linear differential equation with constant coefficients.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrating factors reduce equations to integrals
+
+**Remember:** Multiply first, then integrate the product.
+
+*True by definition.* MSC 34A30 (Linear ordinary differential equations and systems), 34A05. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For y′ + py = q, an integrating factor is a nowhere-zero function μ for which μ(y′ + py) equals (μy)′ for every differentiable y.
+
+**Problem.** Let p and q be continuous on an interval, and let P be an antiderivative of p. With μ = exp(P), the solutions are exactly the functions for which μy is an antiderivative of μq.
+
+**How the definition helps.** Choosing μ to give a product derivative reduces the equation to one integration. In our own calculation, matching coefficients in the product rule gives μ′ = pμ. Taking μ = exp(P) solves this auxiliary equation.
+
+**Paper or page:** [ProofWiki](https://proofwiki.org/wiki/Integrating_Factor_for_First_Order_ODE/Function_of_One_Variable). It says: “\\mu(x) = e<sup>\\int g(x)\\,dx</sup> is an integrating factor for (1).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -30,6 +78,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Disconjugacy gives unique two-point solutions
+
+**Remember:** No two zeros means no two solutions share the same two values.
+
+*Rules out counterexamples.* MSC 34B05 (Linear boundary value problems for ordinary differential equations), 34C10. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A real equation y″ + py′ + qy = 0 is disconjugate on an interval if no nonzero solution vanishes at two distinct points there.
+
+**Problem.** For a disconjugate homogeneous second-order linear equation with continuous coefficients, exactly one solution takes any two prescribed values at two distinct points.
+
+**How the definition helps.** Disconjugacy makes the map taking a solution to its two boundary values injective. In our own proof, initial-value existence and uniqueness give the solution space dimension two. An injective linear map between two spaces of dimension two is surjective. Our own counterexample is y″ + y = 0, since every multiple of sin t vanishes at 0 and π.
+
+**Paper or page:** [Strict domain monotonicity of the principal eigenvalue and a characterization of lower boundedness for the Friedrichs extension of four-coefficient Sturm-Liouville operators](https://arxiv.org/abs/2201.05948v2). It says: “there exists a unique real-valued solution u∗(λ, ·) of (τ − λ)u = 0 on (a,b)”
+
+**Sources:**
+
+- [Fritz Gesztesy, Roger Nichols (2022), Strict domain monotonicity of the principal eigenvalue and a characterization of lower boundedness for the Friedrichs extension of four-coefficient Sturm-Liouville operators](https://arxiv.org/abs/2201.05948v2)
+
 ### Regular Sturm–Liouville problems have a full basis of eigenfunctions
 
 **Remember:** Finite interval, positive coefficients, one condition per end: pure eigenvalues.
@@ -45,6 +111,56 @@
 **Wikipedia:** [Sturm–Liouville theory](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory). It says: “If the interval is unbounded, or if the coefficients have singularities at the boundary points, one calls L singular. In this case, the spectrum no longer consists of eigenvalues alone and can contain a continuous component.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Dulac weights rule out cycles
+
+**Remember:** A closed orbit has zero outward flux even after weighting.
+
+*Rules out counterexamples.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations), 34C07. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A Dulac function for a planar velocity field F is a continuously differentiable weight B making the divergence of BF strictly positive or strictly negative. Divergence is the sum of the two matching coordinate derivatives.
+
+**Problem.** A continuously differentiable autonomous planar field with such a weight on a simply connected open region has no nonconstant periodic orbit entirely inside it.
+
+**How the definition helps.** The weight gives a strict sign to the divergence while leaving the weighted field tangent to any closed orbit. In our own proof, the outward flux across the orbit is zero. Green’s theorem identifies that flux with the integral of the divergence inside, which has a strict sign. Simple connectedness keeps the interior in the region. Our own example on an annulus has radial speed r − 1 and angular speed one. Its divergence is 2 − 1/r, positive for r &gt; ½, yet the unit circle is periodic.
+
+**Wikipedia:** [Bendixson–Dulac theorem](https://en.wikipedia.org/wiki/Bendixson%E2%80%93Dulac_theorem). It says: “has the same sign (≠ 0) almost everywhere in a simply connected region of the plane”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### First returns detect closed orbits
+
+**Remember:** A trajectory closes when the next crossing is the starting point.
+
+*True by definition.* MSC 34C25 (Periodic solutions to ordinary differential equations), 37C27. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Choose a small surface of codimension one that the velocity crosses transversely, meaning the velocity lies outside its tangent space. The first return map sends each returning point to its next crossing.
+
+**Problem.** A point in the domain of the first return map is fixed exactly when its trajectory closes at its next crossing.
+
+**How the definition helps.** The return map replaces following an entire closed path with testing one equality. In our own argument, uniqueness repeats the path after a return to its starting point. Near a periodic orbit, the implicit function theorem gives nearby return times because the velocity crosses the surface.
+
+**Wikipedia:** [Poincaré map](https://en.wikipedia.org/wiki/Poincar%C3%A9_map). It says: “Per definition this system has a fixed point at p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonresonance gives one periodic response
+
+**Remember:** A forced response repeats uniquely when the homogeneous period map lacks eigenvalue one.
+
+*Rules out counterexamples.* MSC 34C25 (Periodic solutions to ordinary differential equations), 34A30. arXiv math.DS, math.CA. Level 2: later undergraduate.
+
+**Definition.** The affine period map sends an initial state x to Mx + b after one period. Call the system nonresonant at the period when 1 is not an eigenvalue of M.
+
+**Problem.** Suppose a linear system has continuous coefficients and forcing that repeat after time T. Under nonresonance it has exactly one T-periodic solution.
+
+**How the definition helps.** Nonresonance makes I − M invertible, so exactly one initial value solves the return equation (I − M)x = b. In our own argument, uniqueness makes the solution from that initial value repeat after T. Our own examples with M = I are u′ = 0, with infinitely many periodic solutions, and u′ = 1, with none.
+
+**Paper or page:** [Control Sets for Affine Systems, Spectral Properties and Projective Spaces](https://arxiv.org/abs/2201.05014v2). It says: “This solution is unique if and only if 1 ∉ spec(Φᵤ(τ,0)).”
+
+**Sources:**
+
+- [Fritz Colonius, Alexandre J. Santana, Juliana Setti (2022), Control Sets for Affine Systems, Spectral Properties and Projective Spaces](https://arxiv.org/abs/2201.05014v2)
 
 ### Asymptotic stability asks for stability as well as attraction
 
@@ -80,6 +196,96 @@
 **Wikipedia:** [Radially unbounded function](https://en.wikipedia.org/wiki/Radially_unbounded_function), [Lyapunov function](https://en.wikipedia.org/wiki/Lyapunov_function), [LaSalle's invariance principle](https://en.wikipedia.org/wiki/LaSalle%27s_invariance_principle). It says: “are not radially unbounded since along the line x₁ = x₂, the condition is not verified even though the second function is globally positive definite.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### History makes delayed evolution restartable
+
+**Remember:** A delay equation needs a history, not a snapshot.
+
+*Makes the theorem clean to state or prove.* MSC 34K05 (General theory of functional-differential equations). arXiv math.DS, math.CA. Level 2: later undergraduate.
+
+**Definition.** For a delay τ &gt; 0, the state at time t is the function s ↦ x(t + s) on \[−τ,0\].
+
+**Problem.** For x′(t) = x(t − τ), a continuous initial history on \[−τ,0\] determines a unique forward solution. Two equal history segments give equal future histories.
+
+**How the definition helps.** The history supplies every delayed value needed to integrate the equation over the next interval of length τ. In our own proof, repeating this integration gives existence and uniqueness for all forward times. Histories with equal values at zero can differ at −τ, giving different initial right derivatives.
+
+**Wikipedia:** [Delay differential equation](https://en.wikipedia.org/wiki/Delay_differential_equation). It says: “with given initial condition φ: \[−τ,0\] → ℝⁿ. Then the solution on the interval \[0,τ\] is given by ψ(t)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Commuting coefficients simplify matrix evolution
+
+**Remember:** Only commuting factors can be freely reordered in the exponential.
+
+*Rules out counterexamples.* MSC 34A30 (Linear ordinary differential equations and systems). arXiv math.CA. Level 3: graduate.
+
+**Definition.** The coefficient matrices of x′ = A(t)x commute pairwise if A(s)A(t) = A(t)A(s) for every s and t.
+
+**Problem.** For continuous pairwise commuting coefficients, the evolution from time zero is exp(∫₀ᵗ A(s) ds).
+
+**How the definition helps.** Pairwise commutation lets A(t) pass through its integral, so the usual scalar differentiation rule applies to the matrix exponential. In our own proof, differentiation and the identity initial value identify the evolution matrix by uniqueness. Our own example uses two successive smooth pulses of integral one. The first multiplies the matrix with its only nonzero entry 1 at (1,2), the second its transpose. After both pulses, the evolution matrix has diagonal entries 1 and 2. The exponential of the integrated coefficient has equal diagonal entries.
+
+**Wikipedia:** [Magnus expansion](https://en.wikipedia.org/wiki/Magnus_expansion). It says: “In the general case, however, the expression above is no longer the solution of the problem.”
+
+**Sources:**
+
+- [Wilhelm Magnus (1954), On the exponential solution of differential equations for a linear operator](https://doi.org/10.1002/cpa.3160070404)
+
+### Exterior products linearize volume evolution
+
+**Remember:** Differentiate one factor at a time to follow volume.
+
+*True by definition.* MSC 34A30 (Linear ordinary differential equations and systems), 15A75. arXiv math.DS, math.CA. Level 3: graduate.
+
+**Definition.** The exterior product of k vectors represents their oriented k-dimensional volume and direction. Define the kth additive compound of A on such products by applying A to each factor in turn and adding the results.
+
+**Problem.** For a continuous real matrix A(t), the exterior product of k solutions of x′ = A(t)x solves the linear equation with the kth additive compound. Its Euclidean norm equals the volume of the parallelepiped spanned by the solutions.
+
+**How the definition helps.** The additive compound puts the product rule directly into the coefficient matrix for oriented volumes. In our own comparison, tracking every determinant of k selected coordinates separately requires differentiating each of its columns. Exterior products collect those determinants into one vector. The work of estimating its growth remains.
+
+**Paper or page:** [Compound matrices in systems and control theory](https://arxiv.org/abs/2103.15097v1). It says: “\\frac{d}{dt} \\Phi<sup>(k)</sup>(t)=A<sup>\[k\]</sup>(t) \\Phi<sup>(k)</sup>(t)”
+
+**Sources:**
+
+- [Eyal Bar-Shalom, Michael Margaliot (2021), Compound matrices in systems and control theory](https://arxiv.org/abs/2103.15097v1)
+
+### One period gives Floquet coordinates
+
+**Remember:** Take a logarithm of one period to separate the periodic part.
+
+*True by definition.* MSC 34A30 (Linear ordinary differential equations and systems), 34C25. arXiv math.DS, math.CA. Level 3: graduate.
+
+**Definition.** For x′ = A(t)x with continuous T-periodic A, let Φ(t) carry initial values at zero to their values at t. The one-period matrix is M = Φ(T). Choose a constant complex matrix B with exp(TB) = M and set P(t) = Φ(t)exp(−tB).
+
+**Problem.** The invertible matrix P repeats every T time units, so Φ(t) = P(t)exp(tB).
+
+**How the definition helps.** The factor exp(−tB) cancels the extra M picked up over one period. In our own proof, uniqueness gives Φ(t + T) = Φ(t)M. This construction replaces solving directly for P with finding a logarithm of M. The matrix logarithm theorem gives one because M is invertible over the complex numbers.
+
+**Paper or page:** [ProofWiki](https://proofwiki.org/wiki/Floquet's_Theorem). It says: “\\Phi(t) = P(t)e<sup>Bt</sup>”
+
+**Sources:**
+
+- [Gaston Floquet (1883), Sur les équations différentielles linéaires à coefficients périodiques](https://doi.org/10.24033/asens.220)
+
+### Ordered products solve changing systems
+
+**Remember:** Keep matrix factors in the order in which they act.
+
+*True by definition.* MSC 34A30 (Linear ordinary differential equations and systems), 34A25. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For x′ = A(t)x, start with the constant identity matrix as the first term. Obtain each next term by integrating A(s) times the preceding term at s from zero to t. The sum is the Peano–Baker series.
+
+**Problem.** If A is continuous on \[0,T\], the series converges there to the matrix taking each initial value to its value at t.
+
+**How the definition helps.** The recursion builds the integral equation for evolution directly into the series. In our own account, multiplying on the left keeps the factors in time order even when matrices fail to commute. A factorial bound gives uniform convergence, so integration commutes with summation. The sum therefore solves the initial-value problem, and uniqueness identifies it with the evolution matrix.
+
+**nLab:** [iterated integral](https://ncatlab.org/nlab/show/iterated+integral). It says: “Iterated integrals include nested integration of differential forms of the kind as it appears in the formulation of parallel transport”
+
+**Wikipedia:** [State-transition matrix](https://en.wikipedia.org/wiki/State-transition_matrix). It says: “The most general transition matrix is given by a product integral, referred to as the Peano–Baker series:”
+
+**Sources:**
+
+- [Michael Baake and Ulrike Schlägel (2011), The Peano-Baker series](https://doi.org/10.1134/S0081543811080098)
 
 ### Carathéodory solutions let differential equations have discontinuous right-hand sides
 
@@ -134,6 +340,176 @@
 - [Fritz Gesztesy, Lance L. Littlejohn, Mateusz Piorkowski, Jonathan Stanfill, The Jacobi operator on (−1,1) and its various m-functions, Complex Anal. Oper. Theory 18 (2024) Paper No. 155, arXiv:2307.12164](https://doi.org/10.1007/s11785-024-01576-4)
 - [Jussi Behrndt, Fritz Gesztesy, Seppo Hassi, Roger Nichols, Henk de Snoo, On Sesquilinear Forms for Lower Semibounded (Singular) Sturm-Liouville Operators, arXiv:2509.07205 (2025)](https://arxiv.org/abs/2509.07205v1)
 - [Weyl, Über gewöhnliche Differentialgleichungen mit Singularitäten und die zugehörigen Entwicklungen willkürlicher Funktionen, Mathematische Annalen 68 (1910), 220–269](https://doi.org/10.1007/bf01474161)
+
+### Isochrons advance phase uniformly
+
+**Remember:** Match the future trajectory to measure phase now.
+
+*True by definition.* MSC 34C25 (Periodic solutions to ordinary differential equations), 34D35. arXiv math.DS. Level 3: graduate.
+
+**Definition.** Choose a reference solution γ on an attracting cycle with least period T. A solution x has phase θ modulo T if \|x(t) − γ(t + θ)\| tends to zero as t tends to infinity. An isochron contains exactly the starting points with one such phase.
+
+**Problem.** Consider a smooth flow with an attracting cycle whose transverse linear return map has all eigenvalues strictly inside the unit circle. Every sufficiently nearby point has a unique phase modulo T. Following its solution for time s adds s to that phase.
+
+**How the definition helps.** The definition compares trajectories at matching times, so shifting both clocks advances the reference phase by the same amount. In our own argument, replacing t by t + s preserves convergence. Measuring distance to the cycle alone loses the reference phase. The stable foliation theorem gives existence and uniqueness by grouping nearby points according to the reference trajectory they approach.
+
+**Wikipedia:** [Isochron](https://en.wikipedia.org/wiki/Isochron). It says: “an isochron is a set of initial conditions for the system that all lead to the same long-term behaviour.”
+
+**Sources:**
+
+- [John Guckenheimer (1975), Isochrons and phaseless sets](https://doi.org/10.1007/BF01273747)
+
+### Dichotomies give unique bounded responses
+
+**Remember:** Integrate each part of the forcing in the direction that decays.
+
+*Rules out counterexamples. Confidence: medium.* MSC 34D09 (Dichotomy, trichotomy of solutions to ordinary differential equations), 34A30. arXiv math.DS, math.CA. Level 3: graduate.
+
+**Definition.** For x′ = A(t)x, let U(t,s) carry states from s to t. An exponential dichotomy gives complementary projections P(s) and Q(s) whose ranges travel with the flow. For t ≥ s, the norm of U(t,s)P(s) is at most K exp(−α\|t − s\|). For t ≤ s, the same bound holds for U(t,s)Q(s), using the same fixed positive constants K and α.
+
+**Problem.** Suppose x′ = A(t)x has an exponential dichotomy on the whole real line, with A continuous. For every bounded continuous f, the equation x′ = A(t)x + f(t) has exactly one bounded solution there.
+
+**How the definition helps.** The two projected estimates make the forcing integrable in opposite time directions. In our own proof for ordinary equations, integrate the P part forward from minus infinity. Subtract the integral of the Q part from t to plus infinity, using U(t,s) on each projected forcing value. Differentiation verifies the forced equation. Applying the estimates from arbitrarily distant times eliminates each component of a bounded homogeneous solution. Our own example x′ = 1 has no bounded solution when the homogeneous equation has no decay.
+
+**Wikipedia:** [Exponential dichotomy](https://en.wikipedia.org/wiki/Exponential_dichotomy). It says: “then the equilibrium point 0 is said to have an exponential dichotomy if there exists a (constant) matrix P such that P² = P”
+
+**Paper or page:** [Linearization and Hölder continuity of generalized ODEs with application to measure differential equations](https://arxiv.org/abs/2301.09955v3). It says: “have a unique bounded solution.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Transport makes spectral projections periodic
+
+**Remember:** Transport the splitting rather than recomputing it at each time.
+
+*True by definition.* MSC 34D09 (Dichotomy, trichotomy of solutions to ordinary differential equations), 34C25. arXiv math.DS. Level 3: graduate.
+
+**Definition.** For x′ = A(t)x with continuous T-periodic A, let M advance vectors from zero to T. Group its complex generalized eigenspaces by eigenvalue modulus below, equal to, or above one. A generalized eigenspace for λ consists of vectors killed by some power of M − λI. Carry each group forward and project onto it along the other two groups.
+
+**Problem.** These subspaces of a continuous periodic linear system repeat each period. Projecting onto one before transport gives the same result as transporting first and projecting onto its later copy.
+
+**How the definition helps.** Carrying the groups with the flow makes projection commute with evolution. In our own proof, a vector keeps the same three components after each component travels to its new space. Recomputing eigenvectors at every time is unnecessary. Each initial group is invariant under M, so after one period it returns to itself.
+
+**Paper or page:** [Periodic Center Manifolds for Nonhyperbolic Limit Cycles in ODEs](https://arxiv.org/abs/2309.11919v3). It says: “The projections commute with the fundamental matrix: U(t,s)πᵢ(s) = πᵢ(t)U(t,s)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Floquet multipliers detect exponential decay
+
+**Remember:** Test the eigenvalues of a whole period, not those of each instant.
+
+*Makes the theorem clean to state or prove.* MSC 34D20 (Stability of solutions to ordinary differential equations), 34A30. arXiv math.DS, math.CA. Level 3: graduate.
+
+**Definition.** For x′ = A(t)x with continuous T-periodic A, the period map sends each initial vector to its value after time T. Its eigenvalues are the Floquet multipliers.
+
+**Problem.** Every solution decays exponentially, with uniform bounds proportional to its initial size, exactly when every multiplier has modulus less than one.
+
+**How the definition helps.** The multipliers express long-term decay through the spectrum of one matrix. In our own proof, evolution through n periods applies the same matrix n times. Its powers decay exponentially exactly when all eigenvalues have modulus below one. Evolution during the remaining fraction of a period has a uniform bound.
+
+**Paper or page:** [On stability for generalized linear differential equations and applications to impulsive systems](https://arxiv.org/abs/2207.01716v2). It says: “the eigenvalues of the monodromy matrix X(ω) are inside of the unit circle.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariant subsets locate long-term limits
+
+**Remember:** Keep only the points that can stay where the decrease stops.
+
+*Rules out counterexamples.* MSC 34D20 (Stability of solutions to ordinary differential equations), 34D05. arXiv math.DS. Level 3: graduate.
+
+**Definition.** Consider a smooth autonomous system on a compact set K that contains every forward trajectory starting in K. A Lyapunov function here is a continuously differentiable function V that never increases along these trajectories. Let E contain exactly the points of K where the derivative along the flow vanishes. Let S be the union of the complete trajectories that stay in E for all positive and negative times.
+
+**Problem.** For every trajectory starting in K, the distance to S tends to zero as time tends to infinity.
+
+**How the definition helps.** Requiring a whole trajectory to stay in E removes points where decrease merely pauses. In our own argument, compactness gives a nonempty set of accumulation points at late times. This set is invariant, and V has its limiting value throughout it. It therefore lies in S. Our own example is a damped pendulum whose energy derivative vanishes momentarily at a turning point.
+
+**Wikipedia:** [LaSalle's invariance principle](https://en.wikipedia.org/wiki/LaSalle%27s_invariance_principle). It says: “is the union of complete trajectories contained entirely in the set”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangent contraction contracts path distances
+
+**Remember:** Shorten every tangent vector to shorten every path.
+
+*Makes the theorem clean to state or prove.* MSC 34D20 (Stability of solutions to ordinary differential equations), 34C40. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A contraction metric gives each tangent vector a length that can depend on its base point. The derivative of the flow carries each vector along its solution. After time t ≥ 0, each transported length is at most exp(−ct) times its initial length for one common c &gt; 0.
+
+**Problem.** Consider a connected open region where every solution exists and stays inside for all forward times. Define distance as the infimum of lengths of piecewise smooth connecting paths inside the region. After time t, the distance between two solutions is at most exp(−ct) times their initial distance.
+
+**How the definition helps.** Measuring distance by path length lets the tangent bound apply along every connecting path. In our own proof, push a path forward and integrate its tangent lengths. Taking the infimum over initial paths gives the distance bound without requiring a shortest path. Finding the contraction metric remains a separate problem.
+
+**Paper or page:** [Algebraic Test for Asymptotic Stability of Periodic Orbits for Polynomial Systems](https://arxiv.org/abs/2112.05998v1). It says: “L(Γ(0, ·)) eᵃᵗ ≤ L(Γ(t, ·)) ≤ L(Γ(0, ·)) eᴬᵗ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular singularities prevent exponential blow-up
+
+**Remember:** Limit pole orders to keep local solutions within powers and logarithms.
+
+*Rules out counterexamples.* MSC 34M35 (Singularities, monodromy and local behavior of solutions to ordinary differential equations in the complex domain, normal forms). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Consider y″ + p(z)y′ + q(z)y = 0 near an isolated singularity at zero. The singularity is regular if zp(z) and z²q(z) extend analytically to zero.
+
+**Problem.** On each sufficiently small sector with a fixed logarithm, every solution near zero satisfies \|y(z)\| ≤ C/\|z\|ᴺ for some positive C and N.
+
+**How the definition helps.** The pole bounds allow solutions built from powers, convergent series, and logarithms, each with at most power-law growth on the sector. The Frobenius theorem proves these local expansions. In our own counterexample, z⁴y″ + (2z³ + z²)y′ = 0 has solution exp(1/z). On the positive real axis this solution outgrows every inverse power.
+
+**Wikipedia:** [Regular singular point](https://en.wikipedia.org/wiki/Regular_singular_point). It says: “a regular singular point, where the growth of solutions is bounded (in any small sector) by an algebraic function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inverse factors encode return derivatives
+
+**Remember:** The factor and the derivative of the return map grow by the same multiplier.
+
+*True by definition. Confidence: medium.* MSC 34C07 (Theory of limit cycles of polynomial and analytic vector fields (existence, uniqueness, bounds, Hilbert's 16th problem and ramifications) for ordinary differential equations), 34C25. arXiv math.DS. Level 4: research.
+
+**Definition.** Let dr/dθ = F(θ,r), where F is smooth and T-periodic in θ. An inverse integrating factor is a nontrivial differentiable function V satisfying dV/dθ = V ∂F/∂r along solutions. This equation lets V vanish even where its reciprocal has no meaning.
+
+**Problem.** Assume V is T-periodic and continuously differentiable. If P takes an initial value r at zero to its value at T, then V(0,P(r)) = V(0,r)P′(r) wherever P exists.
+
+**How the definition helps.** Our own proof compares V along a solution with the derivative of that solution with respect to its initial value. Both satisfy the same scalar linear equation. The initial-value derivative starts at one, so multiplying it by the initial V gives V along the solution. Periodicity then gives the stated formula. Constructing V remains a separate problem.
+
+**Paper or page:** [Principal Bautin ideal of monodromic singularities with inverse integrating factors](https://arxiv.org/abs/2412.09205v1). It says: “V(0, Π(ρ₀)) = V(0, ρ₀) Π′(ρ₀)”
+
+**Sources:**
+
+- [Isaac A. García, Jaume Giné (2024), Principal Bautin ideal of monodromic singularities with inverse integrating factors](https://arxiv.org/abs/2412.09205v1)
+
+### Reciprocal radius locates finite-time blow-up
+
+**Remember:** Infinite rescaled time can correspond to a finite original lifetime.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 34C11 (Growth and boundedness of solutions to ordinary differential equations), 34C40. arXiv math.DS. Level 4: research.
+
+**Definition.** Let x′ = F(x), where F(rx) = rᵈF(x) for r &gt; 0 and degree d &gt; 1. Away from zero, use radius r = \|x\| and reciprocal radius ρ = 1/r. Introduce time s with ds/dt equal to r raised to the power d − 1.
+
+**Problem.** Suppose a trajectory exists for every s ≥ 0 and its reciprocal radius tends to zero exponentially. Its radius tends to infinity in finite original time.
+
+**How the definition helps.** Reciprocal radius puts infinity at zero, and the new clock expresses the original lifetime as an integral. In our own radial calculation, dt/ds equals ρ raised to the positive power d − 1. Exponential decay makes that integral finite. Proving decay in the transformed system remains the main dynamical step.
+
+**Paper or page:** [Blow-up behavior for ODEs with normally hyperbolic nature in dynamics at infinity](https://arxiv.org/abs/2307.09201v3). It says: “Then tₘₐₓ &lt; ∞ holds; namely, y(t) is a blow-up solution.”
+
+**Sources:**
+
+- [Kaname Matsue (2024), Blow-up behavior for ODEs with normally hyperbolic nature in dynamics at infinity](https://arxiv.org/abs/2307.09201v3)
+
+### Total positivity limits sign changes
+
+**Remember:** Positive entries preserve signs of positive vectors, but positive minors control all sign changes.
+
+*Rules out counterexamples.* MSC 34C12 (Monotone systems involving ordinary differential equations), 15B48. arXiv math.DS, math.CA. Level 4: research.
+
+**Definition.** A linear system is totally positive when every minor of its forward evolution matrix is positive at every positive elapsed time. A minor is the determinant of a square submatrix. Mere positivity of entries checks only the one-by-one minors.
+
+**Problem.** In a totally positive system, the number of sign changes in a nonzero solution cannot increase when zero entries are skipped.
+
+**How the definition helps.** Positive minors let the matrix theorem on sign changes apply at every forward step. The matrix theorem supplies the main proof. Our own example uses a constant matrix with rows (0,1,1), (1,0,1), and (2,1,0). Its exponential has positive entries at every positive time by the exponential series. From (1,−1,0), the third component initially has derivative 1. The signs become +, −, +, giving two changes instead of one.
+
+**Paper or page:** [Behavior of Totally Positive Differential Systems Near a Periodic Solution](https://arxiv.org/abs/2101.06027v1). It says: “Then s⁺(Ax) ≤ s⁻(x) for all x ∈ ℝⁿ ∖ {0}.”
+
+**Sources:**
+
+- [Binyamin Schwarz (1970), Totally positive differential systems](https://doi.org/10.2140/pjm.1970.32.203)
 
 ### Defining singular Schrödinger operators by quadratic forms makes them self-adjoint
 

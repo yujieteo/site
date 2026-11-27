@@ -1,3 +1,19 @@
+### Logarithms linearize Mellin convolution
+
+**Remember:** Logarithms turn division into subtraction and ratios into lengths.
+
+*True by definition.* MSC 43A32 (Other transforms and operators of Fourier type), 43A70. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define convolution on the positive numbers by integrating f(y)g(x/y) against dy/y. The measure dy/y counts equal ratios equally, unlike ordinary length dy.
+
+**Problem.** Suppose f and g are integrable against dx/x on the positive half-line. Logarithmic coordinates turn their convolution into ordinary convolution. Its Mellin transform on the imaginary axis equals the product of their transforms.
+
+**How the definition helps.** The measure dy/y becomes ordinary length under y = exp(u), so the integral becomes ordinary convolution. In our own proof, the Mellin kernel at imaginary parameter iξ becomes exp(iξu). The Fourier convolution theorem now gives the product formula.
+
+**Wikipedia:** [Mellin transform](https://en.wikipedia.org/wiki/Mellin_transform). It says: “Notice that dx/x is a Haar measure on the multiplicative group ℝ₊× and x ↦ xˢ is a (generally non-unitary) multiplicative character.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Amenability gives invariant measures through its fixed-point definition
 
 **Remember:** An invariant measure is a fixed point for the action on probability measures.
@@ -86,6 +102,72 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Homomorphisms preserve measure convolution
+
+**Remember:** Multiplying and then mapping agrees with mapping and then multiplying.
+
+*True by definition. Confidence: medium.* MSC 43A10 (Measure algebras on groups, semigroups, etc.). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Take finite positive regular Borel measures on locally compact groups. To convolve them, integrate each continuous compactly supported test function at the product xy against the two measures. This definition extends the integral formula for densities to point masses.
+
+**Problem.** A continuous homomorphism of locally compact groups sends a convolution to the convolution of the image measures.
+
+**How the definition helps.** In our own proof, the product-measure definition makes both routes integrate the same function of two variables. Applying a homomorphism after multiplying gives the same element as multiplying the two images. Integration against each image measure amounts to composing with the homomorphism before integrating.
+
+**Paper or page:** [Homomorphisms of L¹ algebras and Fourier algebras](https://arxiv.org/abs/2302.09573v1). It says: “a homomorphism φ : L¹(F) → M(G) of the form f ↦ θ∗(f)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Haar correction gives convolution adjoints
+
+**Remember:** Invert the measure, not just the value of its density.
+
+*Rules out counterexamples.* MSC 43A20 (\\(L<sup>1\\</sup>)-algebras on groups, semigroups, etc.), 43A05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Left Haar measure is invariant under left translations. To take the adjoint of an integrable density, first invert the group elements and conjugate the associated measure. Express the result as a density for the original left Haar measure.
+
+**Problem.** On a locally compact group, left convolution by the adjoint density gives the adjoint operator on square-integrable functions.
+
+**How the definition helps.** Inverting the whole measure includes the change in volume when inversion exchanges left and right Haar measures. In our own proof, each left translation preserves inner products, so its adjoint translates by the inverse element. Integrating this identity gives the operator formula. On the group of maps x ↦ ax + b with a positive, inversion changes left Haar measure. Simply conjugating the density at the inverse element therefore fails in our own example.
+
+**nLab:** [Haar integral](https://ncatlab.org/nlab/show/Haar+integral). It says: “The left and the right Haar measure may or may not coincide, groups for which they coincide are called unimodular.”
+
+**Wikipedia:** [Group algebra of a locally compact group](https://en.wikipedia.org/wiki/Group_algebra_of_a_locally_compact_group). It says: “where Δ is the modular function on G. With this involution, it is a \*-algebra.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrable convolution identities require discreteness
+
+**Remember:** An identity needs a point mass, not just a density.
+
+*Rules out counterexamples.* MSC 43A20 (\\(L<sup>1\\</sup>)-algebras on groups, semigroups, etc.), 43A10. arXiv math.FA. Level 3: graduate.
+
+**Definition.** The group algebra consists of integrable densities for Haar measure, the measure preserved by left translations. The measure algebra also contains point masses. Multiplication in both algebras is convolution, which averages translates.
+
+**Problem.** The group algebra of a locally compact group has an identity exactly when the group is discrete.
+
+**How the definition helps.** Allowing measures makes the point mass at the group identity a convolution identity. In our own proof, normalized densities on shrinking identity neighborhoods converge to that mass when tested against continuous functions of compact support. Convolving those densities with an integrable identity leaves them unchanged and also converges to that identity. Thus an integrable identity must represent the point mass. This mass has a density exactly when a singleton has positive Haar measure, which happens exactly for discrete groups.
+
+**Wikipedia:** [Group algebra of a locally compact group](https://en.wikipedia.org/wiki/Group_algebra_of_a_locally_compact_group). It says: “A group algebra has an identity, as opposed to just an approximate identity, if and only if the topology on the group is the discrete topology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Characters turn convolution into products
+
+**Remember:** The group law splits a character into two factors.
+
+*True by definition.* MSC 43A25 (Fourier and Fourier-Stieltjes transforms on locally compact and other abelian groups), 43A20. arXiv math.FA, math.CA. Level 3: graduate.
+
+**Definition.** On a locally compact abelian group, a character is a continuous homomorphism to the unit circle. The Fourier transform at a character integrates the function times the conjugate of that character. Use Haar measure, which translations preserve.
+
+**Problem.** On a locally compact abelian group, the Fourier transform of a convolution of integrable functions equals the product of their transforms.
+
+**How the definition helps.** Choosing characters as kernels makes the kernel of a product split into two factors. In our own proof, convolution averages translates of one function weighted by the other. Translation invariance and Fubini’s theorem then separate the two integrals. A general integral kernel would leave the variables coupled.
+
+**nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “the transform of the convolution of two functions is the product of the transforms of each of the functions separately.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Gelfand transform makes Fourier transforms vanish at infinity
 
 **Remember:** Identify the two transforms and inherit vanishing at infinity.
@@ -101,6 +183,24 @@
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality). It says: “This means the Fourier transform is a special case of the Gelfand transform.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Tensor products multiply Fourier–Stieltjes coefficients
+
+**Remember:** Tensor both actions and both pairs of vectors to multiply coefficients.
+
+*True by definition.* MSC 43A30 (Fourier and Fourier-Stieltjes transforms on nonabelian groups and on semigroups, etc.), 43A65. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A unitary representation is a continuous group action on a Hilbert space by linear operators preserving inner products. Each coefficient pairs a translated vector with a fixed vector. The Fourier–Stieltjes algebra consists of all such coefficient functions. On abelian groups, an equivalent definition uses Fourier transforms of finite measures on the group of characters.
+
+**Problem.** The pointwise product of two Fourier–Stieltjes functions belongs to the Fourier–Stieltjes algebra of the same locally compact group.
+
+**How the definition helps.** The coefficient definition makes a product of two functions a single coefficient of the tensor product action. Inner products of simple tensors multiply. In our own comparison, the measure definition on abelian groups needs the Fourier convolution theorem to prove closure. The representation proof uses the existence and continuity of the tensor product action.
+
+**Wikipedia:** [Fourier algebra](https://en.wikipedia.org/wiki/Fourier_algebra). It says: “B(G) forms an algebra with pointwise addition and multiplication, as for any unitary representations π and ρ of G,”
+
+**Sources:**
+
+- [P. Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
 
 ### Inverse limits make profinite group characters have finite order
 
@@ -154,6 +254,22 @@
 
 - [L. Pontrjagin, The theory of topological commutative groups, Annals of Mathematics 35 (1934)](https://doi.org/10.2307/1968438)
 
+### One fixed line factors spherical averages
+
+**Remember:** Averaging onto one line splits the inner product into two factors.
+
+*True by definition.* MSC 43A90 (Harmonic analysis and spherical functions), 43A65. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Let a locally compact group act continuously on a Hilbert space by operators preserving inner products. Suppose the vectors fixed by a compact subgroup K form a line. Choose a unit vector v on that line and set φ(x) = ⟨xv,v⟩.
+
+**Problem.** The average of φ(xky) over k in K equals φ(x)φ(y), using translation-invariant measure of total mass one.
+
+**How the definition helps.** The fixed-vector definition turns the subgroup average into projection onto the line through v. In our own proof, invariance makes the average of the operators an orthogonal projection onto all fixed vectors. Projection onto one line gives the two inner products in the formula. This avoids solving the equations that characterize spherical functions as common eigenfunctions of convolution operators.
+
+**Paper or page:** [Spherical Fourier multipliers related to Gelfand pairs](https://arxiv.org/abs/2407.09225v3). It says: “\\int<sub>K</sub> \\varphi(xky)dk=\\varphi(x)\\varphi(y).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Leptin densities give a geometric proof of the model set density formula
 
 **Remember:** Measure density with compact enlargements, then squeeze between interior and closure.
@@ -171,3 +287,19 @@
 **Sources:**
 
 - [Felix Pogorzelski, Christoph Richard, Nicolae Strungaru, Leptin densities in amenable groups, arXiv:2107.04760v2 (2021)](https://arxiv.org/abs/2107.04760v2)
+
+### Frequency bands reconstruct modulo polynomials
+
+**Remember:** Bands that miss zero cannot see polynomials.
+
+*Rules out counterexamples.* MSC 43A70 (Analysis on specific locally compact and other abelian groups), 42B25. arXiv math.CA, math.FA. Level 4: research.
+
+**Definition.** A tempered distribution on the integers acts continuously on rapidly decreasing test sequences. Treat distributions that differ by a polynomial sequence as the same object.
+
+**Problem.** The discrete Laplacian takes second differences, with a minus sign. A smooth partition of its positive square-root frequencies into bands by powers of two reconstructs each distribution modulo polynomials.
+
+**How the definition helps.** Identifying polynomial differences removes precisely what every band misses at frequency zero. In our own example, every band sends the constant sequence to zero. The proof still needs convergence against test sequences whose moments all vanish. In our own explanation, the missing distributions have Fourier transforms supported at zero, hence are polynomial sequences.
+
+**Paper or page:** [Hardy spaces, Besov spaces and Triebel–Lizorkin spaces associated with a discrete Laplacian and applications](https://arxiv.org/abs/2411.19399v1). It says: “in 𝒮′(ℤ)/𝒫(ℤ).”
+
+**Sources:** none listed. No primary source with a working link was found.

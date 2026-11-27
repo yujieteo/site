@@ -53,6 +53,24 @@
 - [R. Selten, Spieltheoretische Behandlung eines Oligopolmodells mit Nachfrageträgheit, Zeitschrift für die gesamte Staatswissenschaft 121 (1965), 301–324 and 667–689](https://www.jstor.org/stable/40748884)
 - [R. Selten, Reexamination of the perfectness concept for equilibrium points in extensive games, International Journal of Game Theory 4 (1975), 25–55](https://doi.org/10.1007/BF01766400)
 
+### Dominating sets survive voting cycles
+
+**Remember:** A majority cycle can remove the winner but not the winning set.
+
+*Makes the theorem clean to state or prove.* MSC 91B12 (Voting theory), 91B14. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
+
+**Definition.** For a finite election, call a set dominating if each member beats each outsider by majority vote. The Smith set is the least nonempty dominating set. It extends the Condorcet winner, who beats every other candidate alone.
+
+**Problem.** A nonempty finite election always has exactly one least nonempty dominating set, even when no candidate beats all others.
+
+**How the definition helps.** Allowing a set of winners makes the full candidate set a possible answer even in a cycle. Our own proof shows that any two dominating sets are nested. Otherwise, take a candidate belonging only to each set. Each would have to beat the other. A finite nested family of nonempty sets has a least member. In our own example, A beats B, B beats C, and C beats A. Only the full set dominates.
+
+**Wikipedia:** [Smith set](https://en.wikipedia.org/wiki/Smith_set). It says: “It follows that the Smith set is the smallest non-empty dominating set, and that it is well defined.”
+
+**Sources:**
+
+- [Smith, Aggregation of Preferences with Variable Electorate (1973)](https://doi.org/10.2307/1914033)
+
 ### Gibbard–Satterthwaite counts possible outcomes, so two-outcome rules escape
 
 **Remember:** Three possible winners force a dictator or a chance to lie.
@@ -127,6 +145,24 @@
 **Sources:**
 
 - [J. von Neumann and O. Morgenstern, Theory of Games and Economic Behavior, Princeton University Press (1944; 2nd ed. 1947, with the utility axioms)](https://doi.org/10.1515/9781400829460)
+
+### Log wealth turns growth into addition
+
+**Remember:** Logarithms turn compounded returns into an average of one-round gains.
+
+*True by definition.* MSC 91G10 (Portfolio theory), 91A60. arXiv q-fin.PM. Level 2: later undergraduate.
+
+**Definition.** For repeated bets, compare fixed betting fractions by their expected one-round log return. Divide wealth after one round by wealth before it. The logarithm of this ratio is the log return.
+
+**Problem.** Suppose successive wealth multipliers are independent, identically distributed, positive, and have integrable logarithms. Log wealth gained per round converges with probability one to the expected one-round log return.
+
+**How the definition helps.** The logarithm turns compounded wealth into a sum of one-round log returns. In our own proof the strong law of large numbers gives the limit of their average. Comparing expected wealth instead gives a different decision. In our own even-odds example, a player wins with probability 60%. Betting everything maximizes expected one-round wealth but loses everything at the first defeat.
+
+**Wikipedia:** [Kelly criterion](https://en.wikipedia.org/wiki/Kelly_criterion). It says: “maximizing the long-term expected value of the logarithm of wealth”
+
+**Sources:**
+
+- [Kelly, A New Interpretation of Information Rate (1956)](https://doi.org/10.1002/j.1538-7305.1956.tb03809.x)
 
 ### Best-response sets contain the supports of Nash equilibria
 
@@ -274,6 +310,24 @@
 
 - [H. W. Kuhn, Extensive Games and the Problem of Information, in Contributions to the Theory of Games II, Annals of Mathematics Studies 28 (1953), 193–216](https://doi.org/10.1515/9781400881970-012)
 - [M. Piccione and A. Rubinstein, On the Interpretation of Decision Problems with Imperfect Recall, Games and Economic Behavior 20 (1997), 3–24](https://doi.org/10.1006/game.1997.0536)
+
+### Invasion resistance breaks Nash ties
+
+**Remember:** If mutants tie against residents, compare how both do against mutants.
+
+*Rules out counterexamples.* MSC 91A22 (Evolutionary games). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** The resident strategy is the one initially used throughout the population. It is evolutionarily stable if, against each distinct mutant strategy, residents earn strictly more than mutants at every sufficiently small positive mutant share. Both face opponents drawn from the same population.
+
+**Problem.** In a finite symmetric two-player game, an evolutionarily stable strategy is a symmetric Nash equilibrium. If a mutant ties against the resident, the resident must earn more against the mutant than the mutant does against itself.
+
+**How the definition helps.** Testing positive mutant shares distinguishes strategies that tie when everyone plays the resident strategy. Our own proof writes the resident’s payoff advantage as an affine function of the mutant share. At zero, the advantage must be nonnegative. If it vanishes there, the slope must be positive. In the article’s example, B ties A against residents playing A, yet B earns more than A against B.
+
+**Wikipedia:** [Evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy). It says: “only B is an ESS”
+
+**Sources:**
+
+- [Maynard Smith and Price, The Logic of Animal Conflict (1973)](https://doi.org/10.1038/246015a0)
 
 ### Defining common knowledge by a common partition makes agreement immediate
 
@@ -471,6 +525,76 @@
 **Sources:**
 
 - [G. Debreu, Valuation equilibrium and Pareto optimum, Proceedings of the National Academy of Sciences 40 (1954) 588–592](https://doi.org/10.1073/pnas.40.7.588)
+
+### Benchmarks maximize expected log wealth
+
+**Remember:** If relative wealth cannot grow on average, neither can its expected logarithm.
+
+*True by definition.* MSC 91G10 (Portfolio theory), 91G15. arXiv q-fin.PM. Level 3: graduate.
+
+**Definition.** A numeraire portfolio is an attainable portfolio with strictly positive wealth. Divide any allowed wealth process by its wealth. At any future date, the conditional expected ratio given current information is at most the current ratio.
+
+**Problem.** Suppose a numeraire portfolio exists and has finite expected terminal log wealth. It maximizes expected terminal log wealth among positive portfolios with equal initial wealth and finite expected logarithms.
+
+**How the definition helps.** Our own proof compares each portfolio directly with the benchmark, whose defining property bounds the expected terminal wealth ratio by one. Concavity of the logarithm bounds the expected log ratio by the log of that expectation. The resulting bound is zero. The market theorem supplies the benchmark’s existence under its trading assumptions.
+
+**Paper or page:** [Signature Methods in Stochastic Portfolio Theory](https://arxiv.org/abs/2310.02322v3). It says: “the numeraire portfolio is the log-optimal portfolio.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Convex order tests whether two price laws admit a martingale
+
+**Remember:** Under a martingale, convex payoff averages cannot fall over time.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 91G15 (Financial markets), 91G20. arXiv q-fin.MF. Level 3: graduate.
+
+**Definition.** One price distribution lies below another in convex order when every convex function integrable under both has a smaller or equal mean under the first. A martingale is a price process whose expected next price, given the current price, equals the current price.
+
+**Problem.** Two real price distributions with finite first moments can occur successively in a martingale exactly when the first lies below the second in convex order.
+
+**How the definition helps.** Convex order collects all the inequalities that conditional Jensen’s inequality gives for a martingale. In our own example, equal means alone permit a random first price followed by a constant price. Absolute distance from that constant violates convex order unless the first price is already constant. Strassen’s theorem proves the difficult converse by constructing a joint distribution with the required conditional mean.
+
+**Paper or page:** [Convex Order and Arbitrage](https://arxiv.org/abs/2510.01599v1). It says: “The following are equivalent: The market is free of model-independent arbitrage. $\\mathcal{M}(\\mu ,\\nu ) \\neq \\emptyset $. $\\mu \\preceq \_c \\nu $.”
+
+**Sources:**
+
+- [Convex Order and Arbitrage](https://arxiv.org/abs/2510.01599v1)
+
+### Convex acceptance makes capital convex
+
+**Remember:** Mix acceptable positions and mix their cash cushions in the same proportions.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
+
+**Definition.** An acceptance set lists safe financial positions and stays acceptable when a payoff increases. The capital required for a position is the infimum of the cash deposits that make it safe. A negative deposit means a withdrawal.
+
+**Problem.** Assume the capital requirement is finite for every position. A convex acceptance set gives a convex capital requirement.
+
+**How the definition helps.** Our own proof mixes the deposits in the same proportions as the positions. Convexity keeps the resulting position safe. Take deposits arbitrarily close to their infima to get the convexity inequality for capital. Starting from a capital formula would require checking that inequality for every pair of positions. Here the work lies in checking which mixtures the safety rule accepts.
+
+**Paper or page:** [A note on the induction of comonotonic additive risk measures from acceptance sets](https://arxiv.org/abs/2307.04647v2). It says: “If A is convex, then ρₐ is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Worst-case averages make expected shortfall subadditive
+
+**Remember:** The worst average of a sum cannot exceed the sum of the worst averages.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
+
+**Definition.** Fix a tail fraction α strictly between zero and one. Expected shortfall averages the worst α fraction of losses, using just enough of any tied losses. Equivalently, maximize expected loss after reweighting outcomes by nonnegative factors with mean one and upper bound 1/α. Value at risk uses a single percentile of the loss distribution.
+
+**Problem.** For two integrable losses, expected shortfall of their sum is at most the sum of their expected shortfalls.
+
+**How the definition helps.** Our own proof uses the same weights for both losses, so their weighted averages add. Each average is at most its separate maximum. The representation theorem shows that this maximum equals the tail average. In our own example, two independent losses each equal one with probability 4% and zero otherwise. Each has a 95th percentile of zero, but their sum has a 95th percentile of one.
+
+**Wikipedia:** [Value at risk](https://en.wikipedia.org/wiki/Value_at_risk). It says: “VaR of a combined portfolio can be larger than the sum of the VaRs of its components.”
+
+**Paper or page:** [An elementary proof of the dual representation of Expected Shortfall](https://arxiv.org/abs/2306.14506v1). It says: “In particular, ESα is subadditive, i.e., for all X,Y ∈ L¹, ESα(X + Y) ≤ ESα(X) + ESα(Y).”
+
+**Sources:**
+
+- [Herdegen and Munari, An elementary proof of the dual representation of Expected Shortfall (2023)](https://doi.org/10.1007/s11579-023-00346-8)
 
 ### An extra payoff row makes Dantzig's game always decode a linear program
 
@@ -670,6 +794,24 @@
 
 - [Tim Roughgarden, Intrinsic Robustness of the Price of Anarchy, Journal of the ACM 62 (2015)](https://doi.org/10.1145/2806883)
 
+### Coarser voting groups preserve obvious truthfulness
+
+**Remember:** Larger groups leave fewer voters free to vary across the comparison.
+
+*True by definition.* MSC 91B03 (Mechanism design theory), 91B12. arXiv econ.TH, cs.GT. Level 4: research.
+
+**Definition.** Compare truthful play with a deviation at the first decision where they differ. Fix the strategies of the other voters in the same group, allowing each possible choice of those strategies. Across the remaining voters’ possible actions, the worst truthful outcome must rank at least as high as the best outcome from deviating.
+
+**Problem.** If a voting procedure passes this test for a partition of the voters, it passes after any groups merge.
+
+**How the definition helps.** Our own explanation holds more strategies fixed after groups merge, so both ranges of possible outcomes shrink. The worst truthful outcome can only improve, and the best outcome from deviating can only worsen. The original procedure still works. The work lies in finding a procedure that passes the stronger test.
+
+**Paper or page:** [Obvious Strategy-proofness with Respect to a Partition](https://arxiv.org/abs/2409.05315v1). It says: “Let f: D → A be OSP with respect to S\* and let S be a coarser partition of S\*. Then, f: D → A is OSP with respect to S.”
+
+**Sources:**
+
+- [Obvious Strategy-proofness with Respect to a Partition](https://arxiv.org/abs/2409.05315v1)
+
 ### Paying reports against a better-informed later report makes truthful reporting an equilibrium
 
 **Remember:** Score each report against a better-informed later forecast instead of the unseen truth.
@@ -815,6 +957,24 @@
 
 - [Moshe Babaioff, Uriel Feige, Share-Based Fairness for Arbitrary Entitlements, arXiv:2405.14575v1 (2024)](https://arxiv.org/abs/2405.14575v1)
 
+### Posterior messages preserve feasible beliefs
+
+**Remember:** Tell each player the probability their old signal implied.
+
+*True by definition.* MSC 91B44 (Economics of information), 91A27. arXiv econ.TH, cs.GT. Level 4: research.
+
+**Definition.** Start with a common distribution over possible winners, called the prior. Each player receives a private signal. The posterior is the player’s probability of winning after seeing that signal. A direct signal reports that probability itself.
+
+**Problem.** Any joint distribution of posterior winning probabilities obtainable from private signals is also obtainable from direct signals under the same prior.
+
+**How the definition helps.** Our own proof replaces each arbitrary signal by the winning probability it implies, preserving the whole vector of reported probabilities. Averaging the old conditional probability given its reported value returns that same value. Each report is therefore still the receiver’s winning probability. The work lies in deciding which joint distributions any signals could generate.
+
+**Paper or page:** [A Belief-Based Characterization of Reduced-Form Auctions](https://arxiv.org/abs/2307.04070v1). It says: “then there exists a direct information structure I such that ν is p₀-feasible for I.”
+
+**Sources:**
+
+- [A Belief-Based Characterization of Reduced-Form Auctions](https://arxiv.org/abs/2307.04070v1)
+
 ### Saturated agent spaces make fractional and ordinary coalitions block the same allocations
 
 **Remember:** On a saturated space, some whole coalition matches every fractional coalition's totals.
@@ -851,6 +1011,24 @@
 
 - [Agustín G. Bonifacio, Noelia Juarez, Pablo Neme, Jorge Oviedo, Core and stability notions in many-to-one matching markets with indifferences, arXiv:2203.16293v1 (2022)](https://arxiv.org/abs/2203.16293v1)
 
+### Quasi-stability permits repair by iteration
+
+**Remember:** Allow blocks from unemployed workers while the matching is being repaired.
+
+*Makes the theorem clean to state or prove.* MSC 91B68 (Matching models). arXiv econ.TH. Level 4: research.
+
+**Definition.** A worker and firm block a matching if the worker prefers the firm and the firm would choose the worker from its enlarged staff. A stable matching has no such pair, and each participant accepts their assignment. A worker-quasi-stable matching requires acceptable assignments but permits blocking pairs involving unemployed workers only.
+
+**Problem.** Consider finitely many workers and firms, strict preferences, and substitutable firm choices. Substitutability means a firm still selects a chosen worker from any smaller pool containing that worker. The paper’s repair round preserves worker-quasi-stability and leaves a matching unchanged exactly when it is stable.
+
+**How the definition helps.** Our own explanation uses the restriction on blocking pairs to identify all workers who can start a repair. Each unemployed worker with a blocking firm applies to their favorite such firm. Firms choose from their applicants and current workers. The hard step proves that no employed worker can block after the round. The paper shows that the rounds improve the matching in the firms’ ordering until it becomes stable.
+
+**Paper or page:** [The lattice of worker-quasi-stable matchings](https://arxiv.org/abs/2103.16330v4). It says: “T(μ) = μ if and only if μ is stable.”
+
+**Sources:**
+
+- [Bonifacio, Guiñazú, Juarez, Neme and Oviedo, The lattice of worker-quasi-stable matchings (2022)](https://doi.org/10.1016/j.geb.2022.06.004)
+
 ### Vote-margin edge weights turn popularity into one maximum-weight matching test
 
 **Remember:** A rival matching's total weight is its vote margin against M.
@@ -870,6 +1048,24 @@
 - [Yuga Kanaya, Kenjiro Takazawa, On the Equivalence of the Graph-Structural and Optimization-Based Characterizations of Popular Matchings, arXiv:2508.00349v1 (2025)](https://arxiv.org/abs/2508.00349v1)
 - [Péter Biró, Robert W. Irving, David F. Manlove, Popular Matchings in the Marriage and Roommates Problems, Algorithms and Complexity (CIAC 2010), Lecture Notes in Computer Science 6078 (2010), 97-108](https://doi.org/10.1007/978-3-642-13073-1_10)
 
+### Linear portfolio rules make mean–variance optimization quadratic
+
+**Remember:** Affine returns give linear means and quadratic variances.
+
+*True by definition.* MSC 91G10 (Portfolio theory), 90C20. arXiv q-fin.PM, math.OC. Level 4: research.
+
+**Definition.** Start with benchmark portfolio weights and choose functions of observed price history. Adjust the weights using a linear combination of those functions while keeping the weights summing to one. In the paper’s construction, the next return equals a baseline return plus a linear function of the chosen coefficients.
+
+**Problem.** Assume the return terms have finite second moments. Minimizing return variance minus a nonnegative multiple of expected return gives a convex quadratic problem in the coefficients.
+
+**How the definition helps.** The restricted portfolio definition makes the next return affine in the coefficients, even when the signals depend nonlinearly on past prices. In our own calculation, its expectation is affine and its variance is quadratic. The covariance matrix gives the quadratic term and is positive semidefinite. The work lies in constructing this representation for the trading rules.
+
+**Paper or page:** [Signature Methods in Stochastic Portfolio Theory](https://arxiv.org/abs/2310.02322v3). It says: “the following two optimization problems are convex quadratic optimization problems”
+
+**Sources:**
+
+- [Signature Methods in Stochastic Portfolio Theory](https://arxiv.org/abs/2310.02322v3)
+
 ### Portfolio choice is well-posed exactly when utility or risk punishes large losses
 
 **Remember:** Either the utility or the risk must notice large losses.
@@ -887,3 +1083,57 @@
 **Sources:**
 
 - [Leonardo Baggiani, Martin Herdegen, Nazem Khan, The Interplay between Utility and Risk in Portfolio Selection, arXiv:2509.10351v1 (2025)](https://arxiv.org/abs/2509.10351v1)
+
+### Comonotonic prices satisfy put–call parity
+
+**Remember:** Split a payoff into two parts that rise together, then add their prices.
+
+*Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 4: research.
+
+**Definition.** Two payoffs are comonotonic if no two states rank them in opposite orders. A comonotonic additive rule prices their sum by adding their prices. A monotone rule gives a higher or equal price to a payoff that is at least as large in every state.
+
+**Problem.** For bounded measurable payoffs, a monotone pricing rule satisfies the paper’s put–call parity exactly when it is comonotonic additive.
+
+**How the definition helps.** Our own explanation uses the fact that both option payoffs increase or stay constant as the underlying payoff rises. At strike k ≥ 0, the call pays the excess above k, or zero. The short put pays minus the shortfall below k, or zero. Together with cash k, these payoffs sum to the underlying payoff. Additivity prices the pieces separately. The converse must recover additivity for every comonotonic pair from these special decompositions.
+
+**Paper or page:** [Put-Call Parities, absence of arbitrage opportunities and non-linear pricing rules](https://arxiv.org/abs/2203.16292v1). It says: “satisfies PCP if and only if it is Comonotonic Additive.”
+
+**Sources:**
+
+- [Bastianello, Chateauneuf and Cornet, Put–Call Parities, absence of arbitrage opportunities, and nonlinear pricing rules (2024)](https://doi.org/10.1111/mafi.12433)
+
+### Directional closure makes capital limits attainable
+
+**Remember:** Including limits along the priced direction makes the boundary budget work.
+
+*Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
+
+**Definition.** Safe positions form a set that stays safe when payoffs increase. Allow trades in a vector space of payoffs with linear prices, including a nonnegative payoff U priced at one. Add all zero-price trades to the safe set to form B. Directional closure means x belongs to B whenever x + εU belongs to B for every ε &gt; 0.
+
+**Problem.** Required capital is the infimum price of trades making a position safe. Fix any real budget m. Directional closure holds exactly when every position requiring at most m admits a trade costing m that makes it safe.
+
+**How the definition helps.** Directional closure includes the boundary reached by trades costing arbitrarily little above the budget. Our own argument writes every trade of price m as mU plus a zero-price trade. Thus a trade at price m works exactly when the position plus mU belongs to B. In our own cash example only positive balances are safe. Starting from zero, every positive deposit works, but depositing the infimum of zero fails.
+
+**Paper or page:** [A new view on risk measures associated with acceptance sets](https://arxiv.org/abs/2109.12320v2). It says: “holds if and only if A + ker π is (−U)-directionally closed.”
+
+**Sources:**
+
+- [A new view on risk measures associated with acceptance sets](https://arxiv.org/abs/2109.12320v2)
+
+### Logarithms turn risk products into sums
+
+**Remember:** Taking logs turns multiplication of risk bounds into addition.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
+
+**Definition.** For a positive loss factor X, let η(X) be the infimum price of an eligible payoff H that makes X/H acceptable. Use positive payoffs and prices. In logarithmic units, an eligible payoff becomes log H and its cost becomes the logarithm of its price.
+
+**Problem.** Assume products stay in the loss domain and the risks are positive and finite. Then η(XY) ≤ η(X)η(Y) exactly when the corresponding risk on log losses is subadditive, meaning the risk of a sum never exceeds the summed risks.
+
+**How the definition helps.** Our own explanation takes logarithms of both sides, turning a product bound into a sum bound. The essential identity says that the transformed capital requirement at log X equals log η(X). It follows by translating every acceptable trade and taking its infimum cost.
+
+**Paper or page:** [Multi-asset return risk measures](https://arxiv.org/abs/2411.08763v2). It says: “is subadditive if and only if ηℜ is submultiplicative, i.e., ∀ X,Y ∈ C: ηℜ(XY) ≤ ηℜ(X)ηℜ(Y).”
+
+**Sources:**
+
+- [Multi-asset return risk measures](https://arxiv.org/abs/2411.08763v2)

@@ -16,6 +16,38 @@
 
 - [The Nguyen, Improving the Gilbert–Varshamov bound for permutation codes in the Cayley metric and Kendall τ-metric, arXiv:2404.15126 (2024)](https://arxiv.org/abs/2404.15126)
 
+### Cycle lengths give permutation sign
+
+**Remember:** A cycle contributes a minus sign exactly when its length is even.
+
+*True by definition.* MSC 05A05 (Permutations, words, matrices). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For a permutation of a finite set, count the cycles of even length in its disjoint cycle decomposition. Define its sign as +1 when this count is even and −1 when it is odd. The usual swap definition counts swaps in an expression for the permutation.
+
+**Problem.** A permutation has sign −1 exactly when its cycle decomposition has an odd number of even-length cycles.
+
+**How the definition helps.** The cycle definition makes the sign readable directly from the cycle lengths. To recover the swap definition, observe that a swap merges two cycles or splits one cycle into two. The combined length stays the same, so the number of even cycles changes by one. Each swap therefore reverses the sign.
+
+**nLab:** [signature of a permutation](https://ncatlab.org/nlab/show/signature+of+a+permutation). It says: “Each cycle of period k contributes a sign (−1)ᵏ⁻¹, and the overall sign is the product of these contributions taken over all the cycles.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Permutation matrices compose on basis vectors
+
+**Remember:** Follow one basis vector through both moves.
+
+*True by definition.* MSC 05A05 (Permutations, words, matrices). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define the matrix of a permutation σ by sending the jth standard basis vector to the one in position σ(j). Equivalently, column j has a 1 in row σ(j) and zeros elsewhere.
+
+**Problem.** The matrix for applying τ and then σ equals the matrix of σ times the matrix of τ.
+
+**How the definition helps.** The basis-vector definition makes matrix multiplication follow the two moves in order (our own). Each basis vector first moves under τ and then under σ, so the product is the matrix of the composed permutation (our own). The work moves to checking that the column pattern implements the prescribed moves (our own).
+
+**Wikipedia:** [Permutation matrix](https://en.wikipedia.org/wiki/Permutation_matrix). It says: “pre-multiplying just once by the combined Cσ∘τ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Binomial coefficients outside Pascal's triangle are zero
 
 **Remember:** There are no ways to choose −1 or n + 1 things from n things.
@@ -116,6 +148,22 @@
 
 - [Roudy El Haddad, Repeated Sums and Binomial Coefficients, arXiv:2102.12391v2 (2021)](https://arxiv.org/abs/2102.12391v2)
 
+### Falling factorials simplify finite differences
+
+**Remember:** Shifting the factors leaves only two end factors to subtract.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** The falling factorial of length m at x is the product of m consecutive terms x, x − 1, and so on. Define the length-zero product as 1. These polynomials can replace ordinary powers when expanding a polynomial.
+
+**Problem.** Let Fₘ(x) be the falling factorial of length m at x. For m ≥ 1, Fₘ(x + 1) − Fₘ(x) equals m times Fₘ₋₁(x).
+
+**How the definition helps.** The consecutive factors make the two products share all but their end factors (our own). Those end factors differ by m (our own). The work in using this rule for ordinary polynomials moves to changing from ordinary powers to falling factorials (our own).
+
+**Paper or page:** [Forward Difference of Falling Factorial](https://proofwiki.org/wiki/Forward_Difference_of_Falling_Factorial). It says: “Δ(xᵐ̲) = m x⁽ᵐ⁻¹⁾̲”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Setting 0! = 1 keeps the binomial formulas exact
 
 **Remember:** There is exactly one way to arrange nothing.
@@ -150,6 +198,38 @@
 
 - [D. E. Knuth, Two Notes on Notation, American Mathematical Monthly 99 (1992) 403–422](https://doi.org/10.1080/00029890.1992.11995869)
 
+### Balanced parentheses give the Catalan recurrence
+
+**Remember:** Split at the closing parenthesis that matches the very first opening.
+
+*True by definition.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Let C(n) count balanced strings of n opening and n closing parentheses. In every prefix, the number of openings must be at least the number of closings. Count the empty string once. The binomial formula instead counts n-element subsets of a 2n-element set and divides by n+1.
+
+**Problem.** For n ≥ 1, C(n) equals the sum of C(i)C(n−1−i) over the integers i from 0 to n−1.
+
+**How the definition helps.** Balanced strings split uniquely at the closing parenthesis that matches the first opening (our own). If the enclosed string has i pairs, the string after it has n−1−i pairs (our own). Any two balanced strings of those sizes give one such string (our own). Agreement with the binomial formula requires another argument, such as reflecting the first unbalanced prefix (our own).
+
+**nLab:** [Catalan number](https://ncatlab.org/nlab/show/Catalan+number). It says: “strings consisting of n well-balanced pairs of parentheses (also known as "Dyck words")”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bars make allocation counts binomial
+
+**Remember:** Choose the bars and the stars fill the remaining positions.
+
+*True by definition.* MSC 05A15 (Exact enumeration problems, generating functions), 05A19. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Describe an ordered allocation of n identical objects to k labeled bins as a row of n stars and k − 1 bars. The bars mark bin boundaries. Allow empty runs of stars to represent empty bins.
+
+**Problem.** Take n ≥ 0 identical objects and k ≥ 1 labeled bins. The allocation count equals the number of ways to choose k − 1 slots among n + k − 1.
+
+**How the definition helps.** The string definition makes every allocation a choice of bar positions (our own). The work lies in checking the correspondence in both directions, including empty runs at the ends and between two bars (our own).
+
+**Wikipedia:** [Stars and bars (combinatorics)](https://en.wikipedia.org/wiki/Stars_and_bars_%28combinatorics%29). It says: “In terms of configurations involving objects and bins, bins are now allowed to be empty.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### With (−1)!! = 1, double factorial formulas start at n = 0
 
 **Remember:** There is exactly one way to pair up the empty set.
@@ -163,6 +243,22 @@
 **How the definition helps.** The factorial formula gives (−1)!! = 1, so the n = 0 case of each statement is true with no exception. The empty set has exactly one perfect matching, the empty one. The 0-th Gaussian moment is the total mass, which is 1. The constant term of exp(x²/2) is 1. This point is our own reading. The nLab states the definition and the uniform statements, and the agreement at n = 0 follows at once from them.
 
 **nLab:** [double factorial](https://ncatlab.org/nlab/show/double+factorial). It says: “(2n−1)!! = (1/2ⁿ)(2n)!/n! so that in particular, (−1)!! is defined to be 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Binary counts match odd and distinct partitions
+
+**Remember:** Each binary digit fuses a group of equal odd parts into one distinct part.
+
+*True by definition.* MSC 05A17 (Combinatorial aspects of partitions of integers), 11P81. arXiv math.CO, math.NT. Level 1: early undergraduate.
+
+**Definition.** An integer partition is a sum of positive integers with order ignored. Describe it by the number of copies of each part instead of a list. For a partition into odd parts, write each such number of copies in binary.
+
+**Problem.** For every positive integer n, the number of partitions of n into odd parts equals the number into distinct parts.
+
+**How the definition helps.** Binary multiplicities group copies of odd parts into distinct parts without changing the total (our own). For an odd part d, a 1 in binary position i gives one part d times 2ⁱ (our own). The inverse uses the unique split of each positive integer into an odd factor and a power of two (our own). Unique binary expansion ensures the two constructions undo each other (our own).
+
+**Wikipedia:** [Glaisher's theorem](https://en.wikipedia.org/wiki/Glaisher%27s_theorem). It says: “the number of partitions of n into distinct parts is equal to the number of partitions of n into odd parts.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -235,6 +331,54 @@
 **Sources:**
 
 - [R. P. Stanley, Enumerative Combinatorics, Volume 1, second edition, Cambridge University Press (2011)](https://doi.org/10.1017/CBO9781139058520)
+
+### Largest elements give hockey stick sums
+
+**Remember:** Choose the largest element, then choose the rest below it.
+
+*True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics), 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Let C(j,m) count the m-element subsets of a set with j elements. The factorial formula is another definition when m ≤ j. If m &gt; j, the subset count is zero.
+
+**Problem.** For nonnegative integers m and n, the sum of C(j,m) from j = 0 to n equals C(n+1,m+1).
+
+**How the definition helps.** Counting subsets of {1, …, n+1} lets us group the subsets of size m+1 by their largest element (our own). If that element is j+1, choose the other m from {1, …, j} (our own). Each m-element subset has m! orderings, which gives the factorial formula (our own).
+
+**Paper or page:** [Sum of Binomial Coefficients over Upper Index](https://proofwiki.org/wiki/Sum_of_Binomial_Coefficients_over_Upper_Index). It says: “(0 choose m) + (1 choose m) + (2 choose m) + ⋯ + (n choose m) = (n + 1 choose m + 1)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subset counts give Vandermonde’s identity
+
+**Remember:** Count the whole choice by how many come from the first set.
+
+*True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics), 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For nonnegative integers n and k, write C(n,k) for the number of k-element subsets of an n-element set. This replaces the factorial quotient, with C(n,k) = 0 when k exceeds n.
+
+**Problem.** For nonnegative integers r, s and n, C(r+s,n) equals the sum of C(r,k)C(s,n−k) over k from 0 to n.
+
+**How the definition helps.** Counting subsets lets us group choices by how many elements come from each set (our own). Start with disjoint sets of sizes r and s (our own). Choosing k elements from the first leaves n−k to choose from the second (our own). The factorial formula follows because each k-element subset has k! orderings (our own).
+
+**Paper or page:** [Chu-Vandermonde Identity](https://proofwiki.org/wiki/Chu-Vandermonde_Identity). It says: “The sum of products of binomial coefficients binom r k and binom s n minus k, for k from 0 to n, equals binom r plus s n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Toggling cancels alternating binomial sums
+
+**Remember:** Toggle one fixed element to pair every even subset with an odd one.
+
+*True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics), 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define C(n,k) as the number of k-element subsets of an n-element set. Give each subset weight +1 for even size and −1 for odd size. The factorial formula does not name the subsets that can be paired.
+
+**Problem.** For an integer n ≥ 1, add C(n,k) with a plus sign for even k and a minus sign for odd k. The sum over k from 0 to n is zero.
+
+**How the definition helps.** The subset definition lets us pair terms of opposite sign by toggling one fixed element (our own). Toggling twice gives back the original subset, so no subset goes unpaired (our own). The equivalence with the factorial formula uses the k! orderings of every k-element subset (our own).
+
+**Paper or page:** [Alternating Sum and Difference of Binomial Coefficients for Given n](https://proofwiki.org/wiki/Alternating_Sum_and_Difference_of_Binomial_Coefficients_for_Given_n). It says: “∀ n ∈ ℤ≥0: ∑ᵢ₌₀ⁿ (−1)ⁱ (n choose i) = δₙ₀”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Counting labelled trees gives Cayley's formula nⁿ⁻²
 
@@ -372,6 +516,22 @@
 
 - [T. R. Jensen and B. Toft, Graph Coloring Problems, Wiley (1994)](https://doi.org/10.1002/9781118032497)
 
+### Color counts give deletion and contraction
+
+**Remember:** After deleting an edge, split colorings by whether its endpoints match.
+
+*True by definition.* MSC 05C31 (Graph polynomials), 05C15. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For a finite simple graph G, define its chromatic polynomial by its values at positive integers k. Each value counts assignments of k available colors with different colors at adjacent vertices. One can instead specify the polynomial by a recurrence.
+
+**Problem.** Choose an edge e in G. Subtracting the count after contraction from the count after deletion gives the count for G. Contraction merges the endpoints, removes e, and merges any repeated edges.
+
+**How the definition helps.** Counting colorings lets us split the colorings after deletion by whether the endpoints have the same color. Different colors give exactly the colorings of G. Equal colors give exactly the colorings after contraction. For an edgeless graph, each vertex has k independent choices (our own). Induction on the number of edges then proves the count is a polynomial (our own).
+
+**Wikipedia:** [Chromatic polynomial](https://en.wikipedia.org/wiki/Chromatic_polynomial). It says: “This follows from the observation that every k-coloring of G either gives different colors to u and v, or the same colors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting one remaining vertex gives Kₙ connectivity n − 1
 
 **Remember:** Remove n − 1 vertices from Kₙ: one vertex is left, and that counts.
@@ -390,6 +550,22 @@
 
 - [H. Whitney, Congruent graphs and the connectivity of graphs, American Journal of Mathematics 54 (1932), 150–168](https://doi.org/10.2307/2371086)
 
+### Maximal forests force every bridge
+
+**Remember:** A bridge cannot close a cycle, so a maximal forest cannot omit it.
+
+*True by definition.* MSC 05C40 (Connectivity), 05C05. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A spanning tree of a connected graph keeps all vertices and uses a maximal set of edges with no cycle. Maximal means that adding any unused edge creates a cycle. The usual definition uses a connected, cycle-free subgraph on all vertices.
+
+**Problem.** In a finite connected simple graph, an edge is a bridge exactly when every spanning tree contains it. A bridge is an edge whose deletion disconnects the graph.
+
+**How the definition helps.** An edge set maximal without cycles must contain every bridge, since adding a missing bridge cannot create a cycle (our own). If an edge is not a bridge, delete it and choose a maximal cycle-free edge set in the remaining graph (our own). This set connects all vertices because otherwise an edge between two components could still be added (our own). It therefore gives a spanning tree that omits the deleted edge (our own).
+
+**Paper or page:** [Edge is Bridge iff in All Spanning Trees](https://proofwiki.org/wiki/Edge_is_Bridge_iff_in_All_Spanning_Trees). It says: “e belongs to every spanning tree for G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Reachability classes make graph components partition the vertices
 
 **Remember:** Group together all vertices that can reach one another.
@@ -407,6 +583,42 @@
 **Paper or page:** [Graph Components are Equivalence Classes](https://proofwiki.org/wiki/Graph_Components_are_Equivalence_Classes). It says: “The components of a graph are equivalence classes under the relation is connected to on the set of vertices.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Euler tours need connected edges
+
+**Remember:** Keep the edges together, but ignore isolated vertices.
+
+*Rules out counterexamples.* MSC 05C45 (Eulerian and Hamiltonian graphs), 05C40. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** An Euler tour is a closed walk that uses every edge exactly once. Say the edges lie in one connected component if any two vertices incident to edges can reach each other. Isolated vertices do not count against this condition.
+
+**Problem.** Take a finite simple graph with at least one edge. It has an Euler tour exactly when every vertex has even degree and its edges lie in one connected component.
+
+**How the definition helps.** Requiring the edges to lie together rules out two disjoint triangles, which have even degrees but no single tour (our own). The edge-based condition still allows a triangle beside an isolated vertex (our own). The work is Hierholzer’s argument that closed trails can be joined until they cover all edges (our own).
+
+**Wikipedia:** [Eulerian path](https://en.wikipedia.org/wiki/Eulerian_path). It says: “all of its vertices with nonzero degree belong to a single connected component.”
+
+**Sources:**
+
+- [Carl Hierholzer and Chr. Wiener, Ueber die Möglichkeit, einen Linienzug ohne Wiederholung und ohne Unterbrechung zu umfahren (1873).](https://doi.org/10.1007/bf01442866)
+
+### Free endpoints identify larger matchings
+
+**Remember:** Only an alternating path with two free ends adds a matching edge.
+
+*Rules out counterexamples.* MSC 05C70 (Edge subsets with special properties (factorization, matching, partitioning, covering and packing, etc.)). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A matching is a set of edges with no shared vertices. An augmenting path has positive length, alternates between edges outside and inside the matching, and has two unmatched endpoints. An ordinary alternating path need not have unmatched endpoints.
+
+**Problem.** In a finite graph, a matching is largest exactly when it has no augmenting path.
+
+**How the definition helps.** The endpoint rule ensures that swapping the edges along the path adds one edge without creating a shared endpoint (our own). In a four-vertex path, matching the two end edges gives a largest matching, even though all three edges alternate (our own). The work in the converse compares two matchings using only edges that appear in exactly one of them (our own). Those edges form alternating paths and cycles, and a larger matching must contribute an extra edge on one path (our own).
+
+**Wikipedia:** [Berge's theorem](https://en.wikipedia.org/wiki/Berge%27s_theorem). It says: “a path that starts and ends on free (unmatched) vertices, and alternates between edges in and not in the matching”
+
+**Sources:**
+
+- [Claude Berge, Two Theorems in Graph Theory (1957).](https://doi.org/10.1073/pnas.43.9.842)
 
 ### Forbidding objects of size zero makes sequence and set constructions countable
 
@@ -843,6 +1055,24 @@
 **Sources:**
 
 - [O. Veblen, An application of modular equations in analysis situs, Annals of Mathematics 14 (1912) 86–94](https://doi.org/10.2307/1967604)
+
+### Cycle addition samples uniform even subgraphs
+
+**Remember:** Equal-sized fibers turn fair cycle choices into a uniform subgraph.
+
+*True by definition.* MSC 05C38 (Paths and cycles), 60K35. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** In a finite graph, an even subgraph has even degree at every vertex. Add two edge sets by keeping the edges that occur in exactly one set. With this addition, the even subgraphs form a vector space over the two-element field.
+
+**Problem.** Choose any finite list of cycles that spans this space. Independently keep each listed cycle with probability one half. Their sum is uniform over all even subgraphs.
+
+**How the definition helps.** Cycle coordinates turn sampling subject to vertex constraints into a linear map from independent coin flips (our own). The map reaches every even subgraph because the cycles span (our own). Each fiber is a translate of the kernel, so every outcome has the same number of preimages (our own).
+
+**Paper or page:** [Uniform even subgraphs and graphical representations of Ising as factors of i.i.d](https://arxiv.org/abs/2112.03228v1). It says: “then L ≔ ∑ εᵢ Cᵢ is a uniform even subgraph of G.”
+
+**Sources:**
+
+- [\[, ', O, m, e, r,  , A, n, g, e, l, ', ,,  , ', G, o, u, r, a, b,  , R, a, y, ', ,,  , ', Y, i, n, o, n,  , S, p, i, n, k, a, ', \], Uniform even subgraphs and graphical representations of Ising as factors of i.i.d](https://arxiv.org/abs/2112.03228v1)
 
 ### An edge equivalence relation makes blocks partition the edges
 

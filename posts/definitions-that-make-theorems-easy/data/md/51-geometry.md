@@ -32,6 +32,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Equidistance makes angle bisectors meet
+
+**Remember:** Two equalities give the third.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** The internal angle bisector consists of the vertex and the interior points equally distant from the two side lines. The usual definition splits the angle into two equal angles.
+
+**Problem.** The three internal angle bisectors of a nondegenerate triangle meet at one point.
+
+**How the definition helps.** At the intersection of two internal bisectors, equality of distances to the side lines gives the third equality (our own). The point therefore lies on the third internal bisector (our own). Congruent right triangles give the equal-distance test (our own). One also needs the fact that the first two internal bisectors meet inside the triangle (our own).
+
+**Paper or page:** [Angle Bisectors are Locus of Points Equidistant from Lines](https://proofwiki.org/wiki/Angle_Bisectors_are_Locus_of_Points_Equidistant_from_Lines). It says: “The locus of points which are equidistant from ℒ₁ and ℒ₂ are the angle bisectors of ℒ₁ and ℒ₂.”
+
+**Sources:**
+
+- [Euclid, Elements, Book IV, Proposition 4](https://mathcs.clarku.edu/~djoyce/java/elements/bookIV/propIV4.html)
+
+### Midpoint averages give Varignon’s parallelogram
+
+**Remember:** The two midpoint diagonals have the same midpoint.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries), 51N10. arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Take the average of two endpoint position vectors as their midpoint. The geometric definition asks for the point halfway along the segment.
+
+**Problem.** The successive side midpoints of a convex quadrilateral with no three collinear vertices form a parallelogram.
+
+**How the definition helps.** Both diagonals between side midpoints have the same midpoint, the average of the four original vertices (our own). The work sits in identifying the vector average with the geometric midpoint and proving that bisecting diagonals characterize parallelograms (our own).
+
+**Wikipedia:** [Varignon's theorem](https://en.wikipedia.org/wiki/Varignon%27s_theorem). It says: “the midpoints of the sides of an arbitrary quadrilateral form a parallelogram”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Signed lengths make the converse of Menelaus's theorem true
 
 **Remember:** With signs, Menelaus gives −1 and Ceva gives +1.
@@ -84,6 +118,22 @@
 **Wikipedia:** [Centroid](https://en.wikipedia.org/wiki/Centroid). It says: “The centroid divides each of the medians in the ratio 2:1, which is to say it is located ⅓ of the distance from each side to the opposite vertex”
 
 **Paper or page:** [Medians of Triangle Meet at Centroid](https://proofwiki.org/wiki/Medians_of_Triangle_Meet_at_Centroid). It says: “Then the medians of △ABC meet at a single point.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Triangle weights cancel in Ceva’s theorem
+
+**Remember:** Multiply around the triangle and every weight cancels.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries), 51N10. arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Write an interior point as a weighted average of the three vertices with positive weights summing to one. These are barycentric coordinates. Ordinary Cartesian coordinates do not single out the triangle's sides.
+
+**Problem.** Join each vertex of a triangle to a point inside its opposite side. The three lines meet exactly when the three ratios of side segments, taken in cyclic order, multiply to one.
+
+**How the definition helps.** In barycentric coordinates, each side ratio is a quotient of vertex weights, so the cyclic product cancels (our own). For weights a, b, c at vertices A, B, C, the line from A meets BC at L with BL/LC = c/b (our own). This follows by normalizing the weights b and c to sum to one on BC (our own). Conversely, two prescribed ratios determine positive weights up to scale, and product one forces the third ratio (our own). Normalizing the weights gives the common point (our own).
+
+**Paper or page:** [Ceva's Theorem](https://proofwiki.org/wiki/Ceva's_Theorem). It says: “BL/LC × CM/MA × AN/NB = 1”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -150,6 +200,90 @@
 **How the definition helps.** The definition covers the equal weights that give midpoints and centroids. Our own comparison puts the work into matching this definition with the coordinate rule. Subtracting f(0) from a map that preserves weighted combinations leaves a map that respects scalar multiplication and addition. Conversely, the weights sum to 1, so the translation b enters a weighted combination only once.
 
 **Wikipedia:** [Affine transformation](https://en.wikipedia.org/wiki/Affine_transformation). It says: “In other words, f preserves barycenters.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A curved bisector is parabolic
+
+**Remember:** A radius shifts the tangent into a directrix.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry), 51M04. arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Take a circle and a tangent line. Work outside the open disk, in the closed half-plane containing the center. Define their bisector as the points equally distant from the circle and the line.
+
+**Problem.** The distance bisector is a parabola with the circle center as its focus. Its directrix is the tangent line shifted by one radius away from the center.
+
+**How the definition helps.** On the chosen side, shifting the tangent outward adds one radius to every distance from the tangent (our own). Outside the open disk, distance to the circle equals distance to its center minus the radius (our own). Equating these distances gives the focus and directrix test for a parabola (our own). Conversely, the parabola opens toward the center and has its vertex at the tangency point (our own). Its points lie on the chosen side and their distances to the focus are at least one radius (our own).
+
+**Paper or page:** [Bisecting horn angles](https://arxiv.org/abs/2206.09499v1). It says: “The metric bisector of a horn angle formed by a circle and a tangent is the parabola with focus at the center of the circle, focal distance equal to the circle’s radius, and directrix parallel to the tangent.”
+
+**Sources:**
+
+- [Sergiy Koshkin, Bisecting horn angles, Theorem 1](https://arxiv.org/abs/2206.09499v1)
+
+### Focal distances explain parabolic reflection
+
+**Remember:** Equal distances give a mirror line.
+
+*Makes the theorem clean to state or prove.* MSC 51N20 (Euclidean analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Define a parabola as the points equidistant from a fixed focus and a fixed line called the directrix. The focus must not be on the line. Another definition cuts a cone with a plane parallel to a side of the cone.
+
+**Problem.** A ray travelling parallel to the axis toward a parabola from its open side reflects through the focus.
+
+**How the definition helps.** The focus identifies the outgoing direction, and equal distances give the mirror line (our own). Drop a perpendicular from the contact point to the directrix and call its foot H (our own). The contact point lies on the perpendicular bisector of H and the focus (our own). Every parabola point is at least as close to the focus as to H, with equality only at the contact point (our own). Thus the bisector supports the smooth parabola there and is its tangent (our own). Reflection across it exchanges the directions toward H and toward the focus (our own). Starting from the cone definition also requires proving the focus and directrix description (our own).
+
+**Paper or page:** [Focal Property of Parabola](https://proofwiki.org/wiki/Focal_Property_of_Parabola). It says: “The tangent to 𝒦 at P bisects the angle between the straight line PF and the straight line through P perpendicular to D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Focal sums make ellipses convex
+
+**Remember:** Each focal distance obeys the triangle inequality.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Define a filled ellipse by an upper bound on the sum of its distances to two fixed points. The bound must exceed the distance between the two points. Another description uses a quadratic inequality in coordinates.
+
+**Problem.** The segment between any two points of a filled ellipse stays in the filled ellipse (our own).
+
+**How the definition helps.** The triangle inequality bounds each focal distance along a segment by the weighted average of the endpoint distances (our own). Adding the bounds gives the defining inequality along the segment (our own). The work moves to identifying the region bounded by that focal sum with the quadratic region (our own).
+
+**nLab:** [convex set](https://ncatlab.org/nlab/show/convex+set). It says: “the straight line segment connecting x with y in X is also contained in S.”
+
+**Wikipedia:** [Ellipse](https://en.wikipedia.org/wiki/Ellipse). It says: “the ellipse is the set of points P such that the sum of the distances \|PF₁\|, \|PF₂\| is equal to 2a”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed areas give the shoelace formula
+
+**Remember:** Interior edges cancel when you keep the signs.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry), 51M04. arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Give a triangle positive area in counterclockwise order, negative area in clockwise order, and zero area when its vertices are collinear. Reversing the order reverses the sign.
+
+**Problem.** A simple polygon listed counterclockwise has area equal to the sum of signed triangle areas from the origin to each successive edge. Each term is half the determinant of the two endpoint vectors.
+
+**How the definition helps.** Signed area lets the contributions from each internal edge cancel, because adjacent triangles traverse it in opposite directions (our own). For each counterclockwise triangle, expand its area as half the sum of determinants of successive vertex vectors (our own). Add over a triangulation of the polygon to leave only the boundary edges (our own). This uses the determinant formula for triangle area and the existence of a triangulation (our own).
+
+**Wikipedia:** [Shoelace formula](https://en.wikipedia.org/wiki/Shoelace_formula). It says: “The triangle formula sums up the oriented areas Aᵢ of triangles OPᵢPᵢ₊₁”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two point reflections give a translation
+
+**Remember:** Two sign changes leave a shift.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Write reflection of x in a point p as x ↦ 2p − x. The geometric definition requires p to be the midpoint of x and its image.
+
+**Problem.** Reflection in p followed by reflection in q translates each point by twice the vector from p to q.
+
+**How the definition helps.** Substituting the first formula into the second gives x + 2(q − p) (our own). The work moves to solving the midpoint equation for the image (our own).
+
+**Wikipedia:** [Point reflection](https://en.wikipedia.org/wiki/Point_reflection). It says: “The composition of two point reflections is a translation.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -711,6 +845,25 @@
 **Sources:**
 
 - [J. Milnor, A note on curvature and fundamental group, Journal of Differential Geometry 2 (1968) 1–7](https://doi.org/10.4310/jdg/1214501132)
+
+### Hyperconvexity aligns Čech and Rips
+
+**Remember:** Hyperconvexity turns pairwise distance bounds into a common point.
+
+*Rules out counterexamples.* MSC 51F99 (Metric geometry). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A metric space is hyperconvex if every family of closed balls satisfying the following pairwise bound has a common point. Each center distance must be at most the sum of the corresponding radii. A Rips face at scale r is a group of sites with all pairwise distances at most r. A Čech face requires their closed balls of radius r/2 in the ambient space to share a point.
+
+**Problem.** For any finite site set in a hyperconvex space and r ≥ 0, these two complexes are equal.
+
+**How the definition helps.** Hyperconvexity turns the pairwise bounds for a Rips face into the common point required for a Čech face. Our own reverse argument uses the triangle inequality through that common point. Without hyperconvexity, the three vertices of a Euclidean equilateral triangle of side r &gt; 0 give a Rips face. Their closed balls of radius r/2 have no common point.
+
+**Paper or page:** [Geometry of Data](https://arxiv.org/abs/2203.07208v1). It says: “In a hyperconvex space, all simplices that are filled in the Vietoris-Rips complex are also filled in the Čech complex.”
+
+**Sources:**
+
+- [Geometry of Data, Lemma 5.1](https://arxiv.org/abs/2203.07208v1)
+- [N. Aronszajn and P. Panitchpakdi, Extension of uniformly continuous transformations and hyperconvex metric spaces (1956)](https://doi.org/10.2140/pjm.1956.6.405)
 
 ### Stating geometry in first-order logic makes it decidable
 

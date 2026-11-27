@@ -1,3 +1,19 @@
+### Sign brackets certify bisection error
+
+**Remember:** Keep opposite signs and halve the error bound.
+
+*Rules out counterexamples.* MSC 65H05 (Numerical computation of solutions to single equations). arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** For a continuous real function, a sign bracket is a closed interval whose endpoint values have opposite signs. Bisect it and keep the half with opposite endpoint signs. Stop if the midpoint is a root.
+
+**Problem.** In exact arithmetic, each retained interval contains a root within half its width of its midpoint.
+
+**How the definition helps.** Opposite signs guarantee a root by the intermediate value theorem, so half the interval width bounds the midpoint error. Each bisection halves that bound. In our own example, x² + 1 on \[−1,1\] has no root despite having a minimum inside the interval.
+
+**Wikipedia:** [Bisection method](https://en.wikipedia.org/wiki/Bisection_method). It says: “Once the process starts, the signs at the left and right ends of the interval remain the same for all iterations.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Romberg estimates as extrapolation to zero cancel the leading error terms
 
 **Remember:** Interpolation at zero removes every fitted power of the spacing.
@@ -64,6 +80,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### De Casteljau’s triangle gives exact subdivisions
+
+**Remember:** The two edges of the evaluation triangle trace the two pieces.
+
+*True by definition.* MSC 65D17 (Computer-aided design (modeling of curves and surfaces)). arXiv math.NA, cs.NA. Level 2: later undergraduate.
+
+**Definition.** Evaluate a Bézier curve by repeatedly interpolating between neighboring control points, using parameter s in \[0,1\] at each round. Arrange successive rounds in a triangle, with the original points across the top. Read its left edge down and its right edge up to obtain two new lists of control points. This replaces expanding and rescaling the coordinate polynomials.
+
+**Problem.** The new Bézier curves reproduce the original on \[0,s\] and \[s,1\], with each parameter rescaled to \[0,1\].
+
+**How the definition helps.** In our own proof, each edge records the results of mixing the split parameter with one endpoint parameter. Allow a separate parameter in each interpolation round. The result is affine in each parameter and symmetric because adjacent rounds commute. For the left piece, substitute st in every slot and expand each slot between 0 and s. The coefficients are precisely those of repeated interpolation at t using the left edge. Expanding between s and 1 gives the right edge in reverse row order.
+
+**Wikipedia:** [De Casteljau's algorithm](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm). It says: “Note that the intermediate points that were constructed are in fact the control points for two new Bézier curves, both exactly coincident with the old one.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted coordinates preserve Bézier projections
+
+**Remember:** Transform the weighted vectors first and divide only at the end.
+
+*True by definition.* MSC 65D17 (Computer-aided design (modeling of curves and surfaces)), 41A20. arXiv math.NA, cs.NA. Level 2: later undergraduate.
+
+**Definition.** Start with positively weighted control points, the points used to construct the curve. Multiply each point by its weight and append the weight as a final coordinate. Construct the ordinary Bézier curve on these vectors by repeated linear interpolation between neighbors. Divide its first coordinates by its last to recover the rational curve.
+
+**Problem.** Applying a projective change of coordinates to a rational Bézier curve is equivalent to applying its linear matrix to the weighted control vectors. The statement holds wherever the resulting last coordinate is nonzero.
+
+**How the definition helps.** In our own proof, a matrix commutes with each linear interpolation, so applying it to the weighted vectors transforms the whole curve. A projective change of coordinates means precisely this matrix action followed by division by the last coordinate. The equivalence with the usual rational formula follows because interpolation combines all coordinates with the same coefficients.
+
+**Wikipedia:** [De Casteljau's algorithm](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm), [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve). It says: “The numerator is a weighted Bernstein-form Bézier curve and the denominator is a weighted sum of Bernstein polynomials.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Orthogonal-polynomial nodes make Gaussian quadrature exact through degree 2n − 1
 
 **Remember:** The part divisible by the node polynomial vanishes both ways.
@@ -81,6 +129,70 @@
 **Sources:**
 
 - [C. G. J. Jacobi, Ueber Gauß neue Methode, die Werthe der Integrale näherungsweise zu finden (1826).](https://doi.org/10.1515/crll.1826.1.301)
+
+### Squared polynomials give positive Gaussian weights
+
+**Remember:** A Gaussian weight is the integral of a square.
+
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** An n-point Gaussian rule approximates an integral by a weighted sum of samples and integrates polynomials through degree 2n − 1 exactly. At each sample point, choose the polynomial of degree below n that equals one there and zero at all other sample points. Define the corresponding weight as the weighted integral of its square. The usual formula integrates the polynomial itself.
+
+**Problem.** Every Gaussian weight is positive for a positive weight function on an interval with the required finite moments.
+
+**How the definition helps.** Each weight integrates a nonzero square against a positive weight function. In our own words, the square and the original basis polynomial agree at every node. Exactness through degree 2n − 1 identifies their integrals because the square has degree 2n − 2. Proving that exactness carries the work.
+
+**Wikipedia:** [Gaussian quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). It says: “Since both ω(x) and f(x) are non-negative functions, it follows that wᵢ &gt; 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strict diagonal dominance prevents singularity
+
+**Remember:** Every row gives a disc that misses zero.
+
+*Rules out counterexamples.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices), 65F05. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** A square matrix has strict row diagonal dominance if each diagonal entry has magnitude exceeding the sum of the other magnitudes in its row. Weak dominance permits equality.
+
+**Problem.** Every strictly row diagonally dominant matrix is invertible.
+
+**How the definition helps.** Strict dominance keeps zero outside every Gershgorin disc. Each row gives a disc centered at its diagonal entry, with radius equal to the sum of the other magnitudes. The Gershgorin theorem puts every eigenvalue in one of these discs. In our own example, the two-by-two matrix with every entry one satisfies weak dominance and has eigenvalue zero.
+
+**nLab:** [Gershgorin circle theorem](https://ncatlab.org/nlab/show/Gershgorin+circle+theorem). It says: “each of its eigenvalues is contained in at least one Gershgorin disc”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Scaled adjoints solve least squares
+
+**Remember:** Reverse the length-preserving part and undo the scale.
+
+*True by definition.* MSC 65F20 (Numerical solutions to overdetermined systems, pseudoinverses). arXiv math.NA, cs.NA. Level 2: later undergraduate.
+
+**Definition.** View a matrix whose nonzero singular values all equal σ &gt; 0 as σ times a partial isometry. A partial isometry preserves lengths on the orthogonal complement of its kernel and vanishes on the kernel.
+
+**Problem.** The minimum-length least-squares solution to Ax = b is A\*b divided by σ², where A\* denotes the adjoint.
+
+**How the definition helps.** In our own proof, writing A = σU replaces the usual least-squares equations with one orthogonal projection. The matrix UU\* projects onto the range of A, so the closest attainable value to b is UU\*b. Applying U\* and dividing by σ gives the unique least-squares solution perpendicular to the kernel. This is A\*b divided by σ². The singular value decomposition justifies the representation A = σU.
+
+**Paper or page:** [An Optimal Least-Square Solver For Scaled Partial-Isometric Linear Systems](https://arxiv.org/abs/2507.01434v1). It says: “A matrix A ∈ ℂᵐˣⁿ is a partial isometry iff all its non-zero singular values (if any) are 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Opposite signs prevent Householder cancellation
+
+**Remember:** Choose the opposite sign so the leading terms add.
+
+*Rules out counterexamples.* MSC 65F25 (Orthogonalization in numerical linear algebra), 65G50. arXiv math.NA, cs.NA. Level 2: later undergraduate.
+
+**Definition.** To reflect a nonzero real vector x onto the first coordinate axis, choose a target of length ‖x‖. Give its first coordinate the opposite sign to x₁. If x₁ is zero, either sign works. Take the difference between x and the target as the normal to the reflecting plane.
+
+**Problem.** The first coordinate of the normal has absolute value \|x₁\| + ‖x‖, so forming it cannot subtract nearly equal positive magnitudes.
+
+**How the definition helps.** The opposite signs make the first-coordinate subtraction an addition of absolute values. In our own example, targeting the same sign for x = (1,0) gives a zero normal. With a tiny second coordinate, that choice can also round the first difference to zero. The reflection theorem leaves the sign free because either target has the correct length.
+
+**Wikipedia:** [Householder transformation](https://en.wikipedia.org/wiki/Householder_transformation). It says: “in practice we want to avoid catastrophic cancellation”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Derivative-based relative condition numbers are submultiplicative under composition
 
@@ -151,6 +263,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Negative remainders make Sturm counts work
+
+**Remember:** Negate the remainder so interior zeros cannot change the count.
+
+*Rules out counterexamples.* MSC 65H04 (Numerical computation of roots of polynomial equations). arXiv math.NA, cs.NA. Level 2: later undergraduate.
+
+**Definition.** Start with a nonconstant real polynomial and its derivative. Repeatedly divide the preceding polynomial by the current one and append the negative remainder. Stop before appending a zero remainder. At a given point, ignore zero values when counting sign changes in this sequence.
+
+**Problem.** For a polynomial without repeated roots and endpoints that are not roots, the drop in sign changes across the interval counts its real roots.
+
+**How the definition helps.** Negating each remainder makes the neighbors of a vanishing later term have opposite signs, so its crossing cannot change the count. The derivative makes the first pair lose exactly one change at each simple root. In our own example, ordinary division for x² − 1 and 2x gives remainder −1 instead of the Sturm term 1. The ordinary sign counts at −2 and 2 are equal, although the interval has two roots.
+
+**Wikipedia:** [Sturm's theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem). It says: “the number of sign changes (ignoring zeros) in the sequence of real numbers”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dividing by slope restores quadratic convergence
+
+**Remember:** Divide out one derivative to make the root simple.
+
+*Rules out counterexamples.* MSC 65H05 (Numerical computation of solutions to single equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Near a root of finite multiplicity, apply Newton’s method to f/f′ rather than to f. Extend the quotient at the root by setting it to zero. Multiplicity m means f is the mth power of displacement from the root times a smooth, nonzero factor.
+
+**Problem.** Suppose the nonzero factor has three continuous derivatives near the root. From sufficiently close starting points, Newton’s method on the extended quotient converges at least quadratically. This means each new absolute error is bounded by a fixed constant times the square of the previous error.
+
+**How the definition helps.** The quotient has a simple zero because differentiation lowers the multiplicity by one. In our own argument, the extended quotient is twice continuously differentiable and has derivative 1/m at the root. The local Newton convergence theorem for smooth simple roots then applies. For f(x) = x², the unmodified Newton step only halves the error.
+
+**Wikipedia:** [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method). It says: “Applying Newton's method to find the root of g(x) recovers quadratic convergence in many cases”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zero-stability makes consistent multistep methods converge
 
 **Remember:** Check the roots of ρ, and convergence comes for free.
@@ -186,6 +330,76 @@
 **Sources:**
 
 - [Chebyshev admissible meshes and Lebesgue constants of complex polynomial projections](https://arxiv.org/abs/2311.06511v1)
+
+### Paired nodes cancel odd powers
+
+**Remember:** Pair the branches to cancel odd powers before applying Gaussian quadrature.
+
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 3: graduate.
+
+**Definition.** On an interval where the cubic φ is nonnegative, integrate both branches of y² = φ(x) against the same positive measure in x. Start with an N-point Gaussian rule on that interval, a weighted sum exact for polynomials through degree 2N − 1. At each sample x, give both points (x, ±√φ(x)) the original weight.
+
+**Problem.** The paired sum integrates a polynomial exactly whenever its even part in y reduces to degree at most 2N − 1 in x.
+
+**How the definition helps.** Pairing the points cancels the odd part of the polynomial before any weights need to be computed on the curve. In our own proof, replace y² by φ(x) in the even part. Both the integral and the paired sum become twice their one-dimensional counterparts. The one-dimensional Gaussian exactness theorem supplies the result.
+
+**Paper or page:** [Orthogonal polynomials on planar cubic curves](https://arxiv.org/abs/2011.10884v1). It says: “I<sub>n</sub> (f):= \\sum <sub>k=1</sub><sup>N</sup> {\\lambda }<sub>k,N</sub> \\left\[f(x<sub>k,N</sub>,y<sub>k,N</sub>)+f(x<sub>k,N</sub>,-y<sub>k,N</sub>)\\right\]”
+
+**Sources:**
+
+- [Marco Fasondini, Sheehan Olver, Yuan Xu. Orthogonal polynomials on planar cubic curves (2020).](https://arxiv.org/abs/2011.10884v1)
+
+### Positive quadrature weights limit amplification
+
+**Remember:** A weighted average cannot amplify an error bound.
+
+*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 3: graduate.
+
+**Definition.** On each coordinate interval \[0,1\], approximate integration by a weighted sum of function values. Require nonnegative weights that sum to one. For each point of the product grid, multiply the corresponding coordinate weights. This adds nonnegativity to the usual requirement of integrating constants exactly.
+
+**Problem.** Apply each coordinate rule to the function left after earlier exact integrations. If each such rule has uniform error at most ε, the full rule has error at most dε in d dimensions.
+
+**How the definition helps.** Each coordinate rule forms an average, so applying it cannot increase the largest absolute error. In our own proof, replace exact integrals by coordinate rules one at a time, starting with the last coordinate. Each difference contributes at most ε, and adding the d bounds proves the result. In our own example, weights 2 and −1 integrate constants exactly but turn sample errors 1 and −1 into 3.
+
+**Paper or page:** [Tensor-Train Numerical Integration of Multivariate Functions with Singularities](https://arxiv.org/abs/2103.12129v1). It says: “has nonnegative weights and is exact for constant functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tridiagonal matrices reveal Gaussian nodes
+
+**Remember:** The recurrence turns polynomial zeros into matrix eigenvalues.
+
+*Makes the theorem clean to state or prove.* MSC 65D32 (Numerical quadrature and cubature formulas), 65F15. arXiv math.NA, cs.NA. Level 3: graduate.
+
+**Definition.** Use a positive weight on a bounded interval of positive length, with finite integral. Choose polynomials of degrees zero through n that are orthonormal for this weight. On polynomials of degree below n, multiply by x and project orthogonally back onto that space. In the degree-ordered basis this gives the Jacobi matrix, which has nonzero entries only on the main diagonal and its two neighboring diagonals.
+
+**Problem.** The n sampling points of the Gaussian integration rule are the eigenvalues of the Jacobi matrix.
+
+**How the definition helps.** The Jacobi matrix represents multiplication by x, so evaluation at a root turns its recurrence into an eigenvector equation. In our own words, projection discards a multiple of the degree n polynomial, which vanishes at that root. The vector of basis values is nonzero because it includes the constant polynomial. Orthogonal polynomial theory identifies the n distinct roots as the Gaussian sampling points.
+
+**Wikipedia:** [Gauss–Legendre quadrature](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature). It says: “They reduce the problem of computing the nodes of a Gaussian quadrature rule to the problem of finding the eigenvalues”
+
+**Sources:**
+
+- [Gene H. Golub and John H. Welsch. Calculation of Gauss quadrature rules (1969).](https://doi.org/10.1090/s0025-5718-69-99647-1)
+
+### Bregman projections decrease solution error
+
+**Remember:** The projected step spends part of the remaining error.
+
+*True by definition.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 3: graduate.
+
+**Definition.** On real coordinate space, choose a differentiable function whose graph lies above each tangent plane by at least a fixed positive multiple of squared distance. Write D(x,y) for the gap at y above the tangent plane at x. The usual Bregman projection minimizes D(x,z) over a nonempty closed convex set C. Equivalently, choose z in C satisfying D(z,y) + D(x,z) ≤ D(x,y) for every y in C.
+
+**Problem.** Project onto selected equations and pick any exact solution. The error to that solution falls by at least the error from the old iterate to the new one.
+
+**How the definition helps.** The inequality defining the projection gives the error bound as soon as the chosen set contains every exact solution. In our own application, C imposes selected linear combinations of the original equations. The equivalence with minimization follows by expanding the three gaps and applying the first-order condition for a convex minimum.
+
+**Paper or page:** [Adaptively Sketched Bregman Projection Methods for Linear Systems](https://arxiv.org/abs/2112.14456v1). It says: “D<sub>f</sub><sup>{\\hat{x}\_\*}</sup>(\\hat{x},y)\\leq D<sub>f</sub><sup>x\_\*</sup>(x,y) - D<sub>f</sub><sup>x\_\*</sup>(x,\\hat{x}),\\quad \\forall y\\in C.”
+
+**Sources:**
+
+- [Ziyang Yuan, Lu Zhang, Hongxia Wang, Hui Zhang. Adaptively Sketched Bregman Projection Methods for Linear Systems (2021).](https://arxiv.org/abs/2112.14456v1)
 
 ### Defining conjugate gradients by energy minimization bounds steps by distinct eigenvalues
 
@@ -293,6 +507,24 @@
 
 - [Lloyd N. Trefethen, Pseudospectra of Linear Operators (1997).](https://doi.org/10.1137/S0036144595295284)
 
+### Acyclic matching makes solves triangular
+
+**Remember:** No cycle means an order for solving the paired equations.
+
+*Makes the theorem clean to state or prove.* MSC 65F50 (Computational methods for sparse matrices), 65N22. arXiv math.NA, cs.NA. Level 3: graduate.
+
+**Definition.** Pair distinct mesh cells with distinct faces on their boundaries, using faces one dimension lower. Use the paired faces as rows and the paired cells as columns of the signed boundary matrix. Draw an arrow from pair i to another pair j when face i occurs in cell j. Call the matching acyclic if these arrows form no directed cycle.
+
+**Problem.** For oriented mesh incidences with nonzero matched entries, the submatrix of an acyclic matching is triangular after ordering the pairs. It can be solved by back substitution.
+
+**How the definition helps.** Acyclicity lets us order the pairs so every arrow points forward. In our own argument, each off-diagonal nonzero entry then lies above the diagonal. Matched entries give a nonzero diagonal, so back substitution solves the system.
+
+**Paper or page:** [Inverting the discrete curl operator: a novel graph algorithm to find a vector potential of a given vector field](https://arxiv.org/abs/2111.04431v1). It says: “is upper triangular and invertible.”
+
+**Sources:**
+
+- [Silvano Pitassi, Riccardo Ghiloni, Ruben Specogna. Inverting the discrete curl operator: a novel graph algorithm to find a vector potential of a given vector field (2021).](https://arxiv.org/abs/2111.04431v1)
+
 ### Interval operations defined as sets of results are inclusion monotone
 
 **Remember:** Wider input intervals only add possible operand pairs.
@@ -346,6 +578,22 @@
 
 - [Moritz Feuerle, Richard Löscher, Olaf Steinbach, Karsten Urban, A unified framework for the analysis, numerical approximation and model reduction of linear operator equations, Part I: Well-posedness in space and time, arXiv:2508.05407v1 (2025)](https://arxiv.org/abs/2508.05407v1)
 
+### Affine ratio levels survive Runge–Kutta
+
+**Remember:** Each ratio level is a flat constraint.
+
+*True by definition.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Write a conserved quantity as Q(x)/R(x), where Q and R are affine and R is nonzero on the domain. For a value c, represent its level by the affine equation Q(x) − cR(x) = 0. This replaces testing conservation through the nonlinear ratio.
+
+**Problem.** An explicit Runge–Kutta step preserves any conserved affine ratio as long as its stages and output remain in the domain.
+
+**How the definition helps.** Writing a ratio level as an affine equation lets every stage preserve it by addition. In our own proof, conservation makes the directional derivative of Q − cR vanish along the slope at every point on that level. Every explicit stage adds a combination of earlier slopes to the initial state. Induction keeps every stage and the final state on the level.
+
+**Paper or page:** [On the preservation of second integrals by Runge-Kutta methods](https://arxiv.org/abs/2105.10929v1). It says: “All Runge-Kutta methods preserve all rational first integrals of the form H(x) = Q(x)/R(x) for Q(x) and R(x) affine.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A-stability turns stiff solvers into a sharp order barrier
 
 **Remember:** Stable for every decaying mode means order two at most.
@@ -363,6 +611,22 @@
 **Sources:**
 
 - [G. Dahlquist, A special stability problem for linear multistep methods, BIT 3 (1963) 27–43](https://doi.org/10.1007/BF01963532)
+
+### Convex Euler stages inherit stability
+
+**Remember:** No stage grows if none of the Euler steps in its average grows.
+
+*True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L06. arXiv math.NA. Level 3: graduate.
+
+**Definition.** A forward Euler step adds the step length times the current slope to the current state. Write each Runge–Kutta stage, including the final update, as a weighted average of Euler steps from earlier states. The weights must be nonnegative and sum to one. The usual coefficient table can hide this representation.
+
+**Problem.** Suppose forward Euler cannot increase a chosen norm below a given step limit. The full update cannot increase the norm if every Euler substep satisfies that limit.
+
+**How the definition helps.** In our own argument, every term in a stage average already satisfies the bound, so convexity gives the bound for the average. In our own words, induction carries it through the stages. The work is to find a nonnegative stage representation and check its largest Euler substep.
+
+**Paper or page:** [Embedded error estimation and adaptive step-size control for optimal explicit strong stability preserving Runge--Kutta methods](https://arxiv.org/abs/1806.08693v1). It says: “then the solution obtained by ERK method satisfies the strong stability bound ‖uⁿ⁺¹‖ ≤ ‖uⁿ‖”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The inner-product logarithmic norm bounds solution growth by exp(μt)
 
@@ -413,6 +677,24 @@
 **Sources:**
 
 - [P. D. Lax and R. D. Richtmyer, Survey of the Stability of Linear Finite Difference Equations, Communications on Pure and Applied Mathematics 9 (1956)](https://doi.org/10.1002/cpa.3160090206)
+
+### Nonnegative inverses preserve positivity
+
+**Remember:** A nonnegative matrix cannot turn nonnegative data negative.
+
+*True by definition.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Write one time step as Bu = Kv, where v is the old state and u is the new state. Require every entry of K to be nonnegative. Choose B to be a nonsingular M-matrix, meaning its off-diagonal entries are nonpositive and its inverse has nonnegative entries.
+
+**Problem.** For a homogeneous step whose new state solves that implicit system, nonnegative old data give nonnegative new data.
+
+**How the definition helps.** The inverse characterization makes u the result of applying two nonnegative matrices to v. In our own words, each multiplication preserves nonnegative entries. The work lies in recognizing B without computing its inverse. The cited theorem allows a positive diagonal when each diagonal entry exceeds the sum of the other absolute entries in its row.
+
+**Paper or page:** [Flux-corrected transport stabilization of an evolutionary cross-diffusion cancer invasion model](https://arxiv.org/abs/2307.08096v1). It says: “Then 𝔹 is an M-matrix”
+
+**Sources:**
+
+- [Shahin Heydari, Petr Knobloch, and Thomas Wick. Flux-corrected transport stabilization of an evolutionary cross-diffusion cancer invasion model (2024).](https://doi.org/10.1016/j.jcp.2023.112711)
 
 ### Coercivity makes the Galerkin solution nearly the best approximation
 

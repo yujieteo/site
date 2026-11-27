@@ -100,6 +100,73 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Pivot inversion gives exact coverage
+
+**Remember:** Invert one probability statement to get confidence coverage.
+
+*True by definition.* MSC 62F25 (Parametric tolerance and confidence regions). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** A pivot is a function of data and unknown parameters whose distribution is the same for all parameter values. Form a confidence set from all parameter values that put the observed pivot in a fixed acceptance region.
+
+**Problem.** If the acceptance region has pivot probability 1 − α, the resulting confidence set covers the true parameter with probability 1 − α.
+
+**How the definition helps.** Inverting the pivot makes coverage the same event as the pivot landing in the chosen region. Our own argument replaces a separate coverage calculation at each parameter value with one probability calculation under the common law. The work is finding the pivot and its distribution.
+
+**Wikipedia:** [Pivotal quantity](https://en.wikipedia.org/wiki/Pivotal_quantity). It says: “A pivot need not be a statistic — the function and its value can depend on the parameters of the model, but its distribution must not.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distinct tuples give unbiased averages
+
+**Remember:** Use each observation only once per tuple.
+
+*Rules out counterexamples.* MSC 62G05 (Nonparametric estimation). arXiv stat.TH. Level 2: later undergraduate.
+
+**Definition.** A U-statistic estimates the mean of a symmetric function of k independent draws. Average the function over all subsets of k distinct sample indices.
+
+**Problem.** For an independent and identically distributed sample of size at least k, the resulting U-statistic is unbiased whenever the function has finite mean.
+
+**How the definition helps.** Distinct indices give each term the same mean as the target, by our own argument. In our own example, take two independent observations with the same finite, positive variance. Averaging their squared differences over all four ordered pairs halves the expected value because two pairs repeat an index.
+
+**Wikipedia:** [U-statistic](https://en.wikipedia.org/wiki/U-statistic). It says: “a U-statistic is a class of statistics defined as the average over the application of a given function applied to all tuples of a fixed size.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Empirical measures give bootstrap variance
+
+**Remember:** Replace the population law with the observed frequencies.
+
+*True by definition. Confidence: medium.* MSC 62G09 (Nonparametric statistical resampling methods). arXiv stat.ME. Level 2: later undergraduate.
+
+**Definition.** Give mass 1/n to each of n observations, counting repeats. Define a bootstrap sample as n independent draws from this empirical distribution.
+
+**Problem.** Given n real observations, the variance of the bootstrap mean equals their mean squared deviation from their average, divided by n.
+
+**How the definition helps.** Viewing resampling as independent draws from one distribution lets us apply the variance formula for an average. Our own calculation replaces counting all possible resamples with computing the variance of a single draw. That variance uses the divisor n because each observed index receives mass 1/n. Accuracy as an estimate of population sampling variability is a separate question.
+
+**nLab:** [empirical distribution](https://ncatlab.org/nlab/show/empirical+distribution). It says: “The empirical distribution of a finite sequence (x₁, …, xₙ) ∈ Xᴺ is the probability measure on X given by”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting originals validates permutation tests
+
+**Remember:** Rank the observation together with the simulations.
+
+*Rules out counterexamples.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 2: later undergraduate.
+
+**Definition.** Compute the observed score and one score per simulation. Define p as the fraction of all scores at least as large as the observed score, counting the observed score itself.
+
+**Problem.** Suppose that, under the hypothesis being tested, permuting the scores leaves their joint distribution unchanged. Then rejecting when p ≤ α has probability at most α for 0 ≤ α ≤ 1.
+
+**How the definition helps.** Including the observation turns p into its descending rank divided by the total number of scores. Counting every tie gives the largest rank in each tied group, so ties can only increase p. The work is proving that the simulation method preserves the joint distribution under permutations. In our own example with one simulation and distinct interchangeable scores, omitting the observation gives p = 0 half the time.
+
+**Paper or page:** [Differentially Private Permutation Tests: Applications to Kernel Methods](https://arxiv.org/abs/2310.19043v2). It says: “Suppose that X₁, …, Xₙ, Xₙ₊₁ are exchangeable random variables.”
+
+**Sources:**
+
+- [Differentially Private Permutation Tests: Applications to Kernel Methods](https://arxiv.org/abs/2310.19043v2)
+- [Phipson and Smyth (2010), Permutation P-values Should Never Be Zero: Calculating Exact P-values When Permutations Are Randomly Drawn](https://doi.org/10.2202/1544-6115.1585)
+
 ### The largest minimizer of check loss is a sample quantile
 
 **Remember:** Weight the two slopes so they balance at the quantile.
@@ -132,6 +199,22 @@
 **How the definition helps.** The gamma definition makes merging two coordinates the same as adding their gamma variables before division (our own). A sum of independent gamma variables with the same scale has their added shape, and this sum is independent of the remaining variables (our own). Their total does not change (our own). The density proof instead integrates over all splits of the merged coordinate (our own). The work shifts to proving gamma additivity and deriving the Dirichlet density from the normalized vector (our own).
 
 **Wikipedia:** [Dirichlet distribution](https://en.wikipedia.org/wiki/Dirichlet_distribution). It says: “This aggregation property may be used to derive the marginal distribution of Xᵢ mentioned above.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Least squares predictions stay unique
+
+**Remember:** Several coefficient vectors can describe the same closest point.
+
+*Makes the theorem clean to state or prove.* MSC 62J05 (Linear regression; mixed models). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Define the least squares fit as the vector of achievable predictions closest to the observed responses in Euclidean distance. The achievable vectors form the span of the predictor columns.
+
+**Problem.** The least squares fitted values are unique even when the predictor columns are linearly dependent.
+
+**How the definition helps.** Defining the fit in the predictor span lets the orthogonal projection theorem give uniqueness directly. In our own argument, minimizing squared residuals means finding the closest achievable vector. Duplicate columns allow the same total coefficient to be split between them arbitrarily, as our own counterexample shows.
+
+**Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “When there is perfect multicollinearity, it is no longer possible to obtain unique estimates for the coefficients of the related regressors”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -452,6 +535,88 @@
 
 - [Jeffreys, H. (1946). An invariant form for the prior probability in estimation problems. Proceedings of the Royal Society A 186, 453–461.](https://doi.org/10.1098/rspa.1946.0056)
 
+### Variational bounds tighten at the posterior
+
+**Remember:** The trial density closes the gap exactly when it matches the posterior.
+
+*True by definition.* MSC 62F15 (Bayesian inference). arXiv stat.ML. Level 3: graduate.
+
+**Definition.** For fixed data, the evidence is the integral of the joint density over the hidden variables. The posterior is their conditional density given the data. Choose a trial density for those variables. Define the bound as the trial expectation of the log ratio of the joint density to the trial density.
+
+**Problem.** Suppose the log evidence is finite and the trial expectation exists, possibly as minus infinity. The bound never exceeds the log evidence and equals it exactly when the trial and posterior densities agree almost everywhere.
+
+**How the definition helps.** Writing the bound as an average log ratio makes its gap from the log evidence a known nonnegative quantity. Factor the joint density into evidence times posterior. The gap is then relative entropy, the trial expectation of the log ratio of trial density to posterior density. Its nonnegativity and equality condition give the result without optimizing over trial densities directly. In our own example, positive trial mass where the posterior vanishes makes the bound minus infinity.
+
+**Wikipedia:** [Evidence lower bound](https://en.wikipedia.org/wiki/Evidence_lower_bound). It says: “= ln pθ(x) − Dᴋʟ(qφ(z\|x) \|\| pθ(z\|x)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conditional copies give uniform ranks
+
+**Remember:** Matching conditional draws makes the observed rank just another rank.
+
+*True by definition. Confidence: medium.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 3: graduate.
+
+**Definition.** Hold the response and the control variables fixed. Independently draw replacement values of the tested feature from its exact distribution given the controls. Score each replacement and the observed feature by the same fixed rule. Order tied scores uniformly at random.
+
+**Problem.** If the feature and response are independent given the controls, the observed score’s rank is uniform. Equal groups of ranks then have equal probabilities.
+
+**How the definition helps.** Drawing replacements conditional on the controls preserves the observed feature’s law even when ordinary shuffling would change it. In our own argument, conditional independence makes the observed feature and its replacements independent draws given the response and controls. Their scores therefore occupy every rank with equal probability after random tie breaking. The work is obtaining the exact conditional law. The cited limit theorem concerns grouped ranks under additional assumptions.
+
+**Paper or page:** [Pearson Chi-squared Conditional Randomization Test](https://arxiv.org/abs/2111.00027v2). It says: “will converge to χ² distribution with L − 1 degrees of freedom”
+
+**Sources:**
+
+- [Adel Javanmard, Mohammad Mehrabi (2025), Pearson Chi-squared Conditional Randomization Test](https://arxiv.org/abs/2111.00027v2)
+
+### Including the test score in the average gives a valid e-value
+
+**Remember:** Normalize with the test score still in the pool.
+
+*Rules out counterexamples.* MSC 62G15 (Nonparametric tolerance and confidence regions), 68T05. arXiv stat.ML, cs.LG. Level 3: graduate.
+
+**Definition.** Define an e-value as a nonnegative test statistic with mean at most one under the null hypothesis. Divide the test score by the average of all nonnegative scores, including the test score. Set the ratio to zero if all scores vanish. Using only the calibration scores in the average can give a zero denominator instead.
+
+**Problem.** If the joint score distribution is invariant under permutations, the statistic has mean at most one. Its probability of reaching 1/α is at most α for 0 &lt; α &lt; 1.
+
+**How the definition helps.** In our own proof, including every score makes the denominator symmetric, so each index has the same expected ratio. The ratios sum to the number of scores whenever any score is positive. Our own zero convention makes their sum zero otherwise. Each ratio therefore has expectation at most one. Markov’s inequality gives the probability bound. If only the test score is positive, omitting it would require division by zero.
+
+**Paper or page:** [Enhancing Conformal Prediction Using E-Test Statistics](https://arxiv.org/abs/2403.19082v1). It says: “Set\\\[ F = \\frac{L<sub>n+1</sub>}{\\left(\\sum\\limits<sub>j=1</sub><sup>n+1</sup> L<sub>j</sub>\\right)/(n+1)}. \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Within-group ranks give coverage in each prediction group
+
+**Remember:** Rank each candidate inside its own group.
+
+*Makes the theorem clean to state or prove.* MSC 62G15 (Nonparametric tolerance and confidence regions), 68T05. arXiv stat.ML, cs.LG. Level 3: graduate.
+
+**Definition.** Fix 0 &lt; α &lt; 1 and a rule assigning each input and proposed label to a group. For each candidate label, pool its score with the calibration scores in its group. Its rank is one plus the number of strictly smaller scores. Include the candidate if its rank is at most the group size, including the candidate, times (1 − α), rounded up.
+
+**Problem.** Assume permuting the examples preserves their joint distribution and permutes their scores in the same way. Conditional on any positive-probability group of the true test pair, the prediction set contains the true label with probability at least 1 − α.
+
+**How the definition helps.** In our own proof, ranking within the group makes the test example interchangeable with its group peers. Conditional on group membership, randomly breaking ties would give the test example a uniform rank among those peers. Counting only strictly smaller scores can only lower its rank. The rounded cutoff thus includes the true label with at least the stated probability.
+
+**Paper or page:** [Conformal Mixed-Integer Constraint Learning with Feasibility Guarantees](https://arxiv.org/abs/2506.03531v1). It says: “for all groups k ∈ {1, …, K} with ℙ(g(Xₙ₊₁, Yₙ₊₁) = k) &gt; 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuous margins make copulas unique
+
+**Remember:** Continuous margins fill the cube on which the copula lives.
+
+*Rules out counterexamples.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas). arXiv math.ST. Level 3: graduate.
+
+**Definition.** A copula is a joint distribution on the unit cube with uniform individual coordinates. It links marginal distribution functions to a joint distribution by using their values as inputs.
+
+**Problem.** Sklar’s theorem gives a unique copula for a joint law with continuous marginal distribution functions.
+
+**How the definition helps.** Continuous marginal distribution functions attain every value strictly between zero and one, so the joint distribution fixes the copula throughout the open cube. Continuity of the copula then fixes its boundary values, by our own argument. Applying each marginal distribution function to its own coordinate gives uniform coordinates and constructs the copula. In our own counterexample, every bivariate copula gives the same joint law for two constant coordinates.
+
+**Wikipedia:** [Copula (statistics)](https://en.wikipedia.org/wiki/Copula_%28statistics%29). It says: “This implies that the copula is unique if the marginals Fᵢ are continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The outer-product definition makes linear transforms of Wishart matrices Wishart
 
 **Remember:** Transform each normal vector before forming its outer product.
@@ -489,6 +654,59 @@
 - [Dominic Edelmann, Tobias Terzer, Donald Richards, A Basic Treatment of the Distance Covariance, Sankhya, Series B, 83 (2021), S12-S25](https://arxiv.org/abs/2206.10135v1)
 - [Gábor J. Székely, Maria L. Rizzo, and Nail K. Bakirov, Measuring and testing dependence by correlation of distances (2007)](https://doi.org/10.1214/009053607000000505)
 
+### Calibration bounds forecast spread
+
+**Remember:** Calibrated forecasts average the true conditional mean.
+
+*Rules out counterexamples.* MSC 62J02 (General nonlinear regression). arXiv stat.ML. Level 3: graduate.
+
+**Definition.** A forecast F based on inputs X is calibrated if E\[Y ∣ F\] = F almost surely, where Y is the outcome.
+
+**Problem.** Let Y and the forecasts be integrable. Among calibrated forecasts based on X, the conditional mean E\[Y ∣ X\] maximizes the expectation of every real-valued convex function.
+
+**How the definition helps.** Calibration makes F the conditional average of E\[Y ∣ X\] given F, by our own use of iterated expectation. Jensen’s inequality then bounds the convex function of that average by the average of the convex function. In our own counterexample, Y is zero and the input takes values ±1 equally often. Forecasting the input gives a larger expected square than forecasting zero.
+
+**Paper or page:** [Model selection with Gini indices under auto-calibration](https://arxiv.org/abs/2207.14372v3). It says: “is auto-calibrated for Y, and it strictly dominates in convex order any other auto-calibrated regression function”
+
+**Sources:**
+
+- [Model selection with Gini indices under auto-calibration](https://arxiv.org/abs/2207.14372v3)
+
+### Orthogonal sums of squares are independent
+
+**Remember:** Different orthogonal directions use different Gaussian coordinates.
+
+*Rules out counterexamples.* MSC 62J10 (Analysis of variance and covariance (ANOVA)). arXiv math.ST. Level 3: graduate.
+
+**Definition.** For Gaussian data, project the observation vector onto mutually orthogonal subspaces of positive dimension. Use the squared length of each projection as one sum of squares.
+
+**Problem.** For a centered Gaussian vector with covariance σ²I and σ &gt; 0, the sums are independent. Each sum divided by σ² has the law of a sum of independent squared standard normal variables, one per subspace dimension. This is the chi-squared law for that dimension.
+
+**How the definition helps.** Orthogonal subspaces separate the sums into disjoint groups of independent Gaussian coordinates. Our own argument chooses an orthonormal basis for each subspace and combines the bases. The covariance hypothesis gives independent coordinates in those directions. In our own counterexample, using the same line twice gives identical nonconstant sums.
+
+**Wikipedia:** [Cochran's theorem](https://en.wikipedia.org/wiki/Cochran%27s_theorem). It says: “Cochran's theorem then states that Q₁ and Q₂ are independent, with chi-squared distributions with n − 1 and 1 degree of freedom respectively.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed testing protects true hypotheses
+
+**Remember:** Reject a claim only after rejecting every conjunction that contains it.
+
+*Rules out counterexamples.* MSC 62J15 (Paired and multiple comparisons; multiple testing). arXiv stat.TH. Level 3: graduate.
+
+**Definition.** For each nonempty subset of a finite family of hypotheses, test the claim that all its members are true. Each test must reject a true claim with probability at most α. Reject an original hypothesis only if the tests reject every such claim containing it.
+
+**Problem.** The chance of rejecting any true original hypothesis is at most α, even when some original hypotheses are false.
+
+**How the definition helps.** Rejecting any true hypothesis requires rejecting the claim that all the true hypotheses hold together. That claim is true, so its test rejects with probability at most α. In our own counterexample, two independent tests each reject a true hypothesis with probability α. Separate testing then makes at least one error with probability 1 − (1 − α)², greater than α for 0 &lt; α &lt; 1.
+
+**Paper or page:** [Too Many, Too Improbable: testing joint hypotheses and closed testing shortcuts](https://arxiv.org/abs/2108.04731v3). It says: “by means of a closed testing procedure controls the FWER at level α in the strong sense.”
+
+**Sources:**
+
+- [Too Many, Too Improbable: testing joint hypotheses and closed testing shortcuts](https://arxiv.org/abs/2108.04731v3)
+- [Marcus, Peritz, and Gabriel (1976), On closed testing procedures with special reference to ordered analysis of variance](https://doi.org/10.1093/biomet/63.3.655)
+
 ### A log score that uses survival for censored cases stays strictly proper
 
 **Remember:** Score survival when the event itself is not seen.
@@ -524,6 +742,42 @@
 **Sources:**
 
 - [Romain Pic, Clément Dombry, Philippe Naveau, Maxime Taillardat, Proper Scoring Rules for Multivariate Probabilistic Forecasts based on Aggregation and Transformation, arXiv:2407.00650v1 (2024)](https://arxiv.org/abs/2407.00650v1)
+
+### Candidate labels retain calibrated forecasts
+
+**Remember:** Trying both labels includes the forecast trained with the right one.
+
+*Makes the theorem clean to state or prove.* MSC 62C05 (General considerations in statistical decision theory). arXiv stat.ML. Level 4: research.
+
+**Definition.** For binary outcomes, append the new case to the training sample once with each possible label. Fit each augmented sample by the same rule, independent of case order. For each chosen input function, multiply its value in each case by the residual, the outcome minus the prediction. Require those products to average zero for each function and return both predictions for the new case.
+
+**Problem.** Suppose the joint law of the cases is unchanged by reordering, and all residual products have finite means. For each chosen function, the expected residual product for the new case is zero for the candidate fitted with its true label.
+
+**How the definition helps.** Trying both labels includes the fit that treats the new case exactly like a training case. In our own argument, symmetry gives every case the same expected residual product for each fixed function. That expectation equals the expected sample average, which is zero by construction. Finding fits that satisfy every required equation carries the work.
+
+**Paper or page:** [Generalized Venn and Venn-Abers Calibration with Applications in Conformal Prediction](https://arxiv.org/abs/2502.05676v3). It says: “contains the perfectly multicalibrated prediction”
+
+**Sources:**
+
+- [Generalized Venn and Venn-Abers Calibration with Applications in Conformal Prediction](https://arxiv.org/abs/2502.05676v3)
+
+### Count deletion estimates Poisson risk
+
+**Remember:** Removing one count shifts a Poisson expectation by its mean.
+
+*True by definition.* MSC 62C05 (General considerations in statistical decision theory), 62F40. arXiv stat.ME. Level 4: research.
+
+**Definition.** Let g take a vector of independent Poisson counts to a vector of fitted means. Start with the sum of squared differences between counts and fitted means. For each positive count, decrease it by one and refit. Add twice the original count times the drop in its own fitted coordinate to the starting sum.
+
+**Problem.** If each fitted coordinate has finite second moment, this corrected sum estimates expected squared prediction error without bias. Evaluate prediction error against an independent vector of counts with the same means.
+
+**How the definition helps.** Deleting one count makes the correction recover the cross term that ordinary training error misses. In our own calculation, k times the Poisson probability of k equals the mean times the probability of k − 1 for k ≥ 1. Summing over k converts each count-weighted deleted fit into an unbiased estimate of the unknown mean times the expected original fit. Expanding the fresh-data squared error then gives the stated correction.
+
+**Paper or page:** [Unbiased Test Error Estimation in the Poisson Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2212.01943v3). It says: “where we abbreviate g₋(Y) = (g₁(Y−e₁), …, gₙ(Y−eₙ))”
+
+**Sources:**
+
+- [Unbiased Test Error Estimation in the Poisson Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2212.01943v3)
 
 ### Tilted risk moves continuously from minimum loss through mean to maximum
 
@@ -633,6 +887,42 @@
 
 - [Yixin Wang, David M. Blei, John P. Cunningham, Posterior Collapse and Latent Variable Non-identifiability, arXiv:2301.00537v1 (2023)](https://arxiv.org/abs/2301.00537v1)
 
+### Posterior ranks detect marginal errors
+
+**Remember:** A randomized probability rank tests the whole chosen marginal law.
+
+*Makes the theorem clean to state or prove.* MSC 62F15 (Bayesian inference). arXiv stat.TH. Level 4: research.
+
+**Definition.** Fix the observed data. Let F be the fitted conditional distribution function of a real quantity T, and draw T from its true conditional law. Choose R uniformly between F’s left limit at T and F(T), using randomness independent of T. If the endpoints coincide, use their common value.
+
+**Problem.** At these fixed data, R is uniform on (0, 1) exactly when F is the true conditional distribution function.
+
+**How the definition helps.** Spreading each jump across its probability interval lets the same uniformity test cover discrete and continuous distributions. If F is correct, this randomized distribution transform gives a uniform draw. For the converse, our own argument compares T ≤ t with R ≤ F(t). The events can differ only when R = F(t), which has probability zero under uniformity. Hence the true probability of T ≤ t equals F(t).
+
+**Paper or page:** [Simulation-Based Calibration Checking for Bayesian Computation: The Choice of Test Quantities Shapes Sensitivity](https://arxiv.org/abs/2211.02383v3). It says: “if and only if ∀x ∈ \[0, 1\]: q₍φ,𝑓₎(x \| y) = x.”
+
+**Sources:**
+
+- [Simulation-Based Calibration Checking for Bayesian Computation: The Choice of Test Quantities Shapes Sensitivity](https://arxiv.org/abs/2211.02383v3)
+
+### Gaussian noise splits training and testing
+
+**Remember:** Opposite noise weights cancel the shared covariance.
+
+*True by definition.* MSC 62F40 (Bootstrap, jackknife and other resampling methods). arXiv stat.ME. Level 4: research.
+
+**Definition.** Let Y be a Gaussian vector with covariance σ²I. Independently draw centered Gaussian noise W with the same covariance. For α &gt; 0, train on T = Y + √α W and test on S = Y − W/√α.
+
+**Problem.** The training and test vectors are independent. For a prediction rule g, subtract nσ²(1/α − α) from the squared distance between S and g(T), where n is the dimension. With finite squared error, this estimates the expected squared distance between g(T) and an independent copy of T without bias.
+
+**How the definition helps.** The opposite noise weights cancel the shared covariance, so the jointly Gaussian vectors are independent. Our own calculation replaces a fresh training-distribution draw with S, which has the same mean but a different variance. Subtracting the difference in total variances corrects the squared error. Estimating risk at the original noise level takes a separate argument.
+
+**Paper or page:** [Unbiased Risk Estimation in the Normal Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2111.09447v3). It says: “is unbiased for the noise-elevated risk”
+
+**Sources:**
+
+- [Unbiased Risk Estimation in the Normal Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2111.09447v3)
+
 ### A density ratio turns gradient-free Stein discrepancy into the usual one
 
 **Remember:** Differentiate the easier density, then reweight to check the target.
@@ -650,6 +940,42 @@
 **Sources:**
 
 - [Matthew A Fisher, Chris. J Oates, Gradient-Free Kernel Stein Discrepancy, arXiv:2207.02636v2 (2022)](https://arxiv.org/abs/2207.02636v2)
+
+### Characteristic kernels distinguish conditional laws
+
+**Remember:** Square before averaging so different groups cannot cancel.
+
+*Rules out counterexamples.* MSC 62G10 (Nonparametric hypothesis testing), 68T05. arXiv stat.ML. Level 4: research.
+
+**Definition.** A kernel gives the inner product of two feature vectors, one for each input. The kernel mean of a probability law is the expected feature vector under that law. A characteristic kernel gives different means to different laws. Compare two conditional laws by averaging the squared distance between their kernel means over their common conditioning variable.
+
+**Problem.** When the kernel mean exists and is one-to-one, the averaged squared distance is zero exactly when the conditional laws agree almost surely.
+
+**How the definition helps.** In our own proof, zero average squared distance forces equal kernel means almost surely, and injectivity then forces equal conditional laws. The work lies in proving that the means exist and that the chosen kernel separates laws. For our own counterexample, the linear kernel on the real line represents each law by its ordinary mean. A point mass at zero and a fair mixture of −1 and 1 have the same mean in every group.
+
+**Paper or page:** [A Kernel-Based Conditional Two-Sample Test Using Nearest Neighbors (with Applications to Calibration, Regression Curves, and Simulation-Based Inference)](https://arxiv.org/abs/2407.16550v2). It says: “ECMMD²\[ℱ, P₍X∣Z₎, P₍Y∣Z₎\] = 0 if and only if ℙ\[P₍X∣Z₎ = P₍Y∣Z₎\] = 1.”
+
+**Sources:**
+
+- [Anirban Chatterjee, Ziang Niu, Bhaswar B. Bhattacharya. A Kernel-Based Conditional Two-Sample Test Using Nearest Neighbors (with Applications to Calibration, Regression Curves, and Simulation-Based Inference). 2024.](https://arxiv.org/abs/2407.16550v2)
+
+### Weighted permutations restore exchangeability
+
+**Remember:** Weight the shuffled labels by the odds that produced them.
+
+*True by definition.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 4: research.
+
+**Definition.** Pool independent samples from two populations, keeping individual observations distinguishable but hiding their labels. Keep the original group sizes. Draw a new labeling with probability proportional to the product of the proposed density ratios for observations assigned the second label.
+
+**Problem.** Suppose the second population density equals the first times a known positive function, up to a constant. Given the unlabeled pool, permuting the original labeling and independent weighted redraws leaves their joint law unchanged.
+
+**How the definition helps.** Weighted relabeling gives each assignment its correct conditional probability, whereas uniform relabeling ignores differences between the densities. In our own calculation, each assignment likelihood contains the same product of first-population densities. Canceling that product leaves the proposed weights. Independent draws using those weights therefore have the same conditional law as the original assignment.
+
+**Paper or page:** [Nonparametric inference for ratios of densities via uniformly valid and powerful permutation tests](https://arxiv.org/abs/2505.24529v2). It says: “Then the sequence (Z, Z⁽¹⁾, …, Z⁽ᴴ⁾) is exchangeable.”
+
+**Sources:**
+
+- [Nonparametric inference for ratios of densities via uniformly valid and powerful permutation tests](https://arxiv.org/abs/2505.24529v2)
 
 ### With polynomial test functions, zero Stein discrepancy means the first moments agree
 
@@ -723,6 +1049,24 @@
 
 - [Paulo C. Marques F, Universal distribution of the empirical coverage in split conformal prediction, Statistics &amp; Probability Letters, Volume 219, 2025, 110350.](https://arxiv.org/abs/2303.02770v2)
 
+### Residual correction gives doubly robust coverage
+
+**Remember:** Correct a target prediction with a weighted source residual.
+
+*True by definition.* MSC 62G15 (Nonparametric tolerance and confidence regions). arXiv stat.ME. Level 4: research.
+
+**Definition.** Fix a rule that gives a set of predicted outcomes for each input. Suppose only the input distribution changes between the source and target populations. Predict the chance that the set contains the outcome, and average that prediction over target inputs. Add the source average of the observed coverage indicator minus its prediction, multiplied within each case by an estimated target-to-source density ratio.
+
+**Problem.** Assume the target input distribution gives no mass to sets of source probability zero, and the weighted residual is integrable. The corrected population average equals target coverage if either the coverage prediction or the density ratio is correct.
+
+**How the definition helps.** Subtracting predicted coverage inside the correction cancels the error of either method used alone. Our own argument conditions on the input when the coverage prediction is correct. The residual then has conditional mean zero. When the ratio is correct, weighting converts the source residual average into the target residual average. Adding it restores the actual target coverage. Applying this population identity to estimated quantities requires separate error bounds.
+
+**Paper or page:** [Doubly Robust Calibration of Prediction Sets under Covariate Shift](https://arxiv.org/abs/2203.01761v3). It says: “holds true, whenever either of the following holds true:”
+
+**Sources:**
+
+- [Doubly Robust Calibration of Prediction Sets under Covariate Shift](https://arxiv.org/abs/2203.01761v3)
+
 ### Weighted coverage gives conformal guarantees for overlapping and fractional groups
 
 **Remember:** Choose group indicators for hard membership and fractional weights for soft membership.
@@ -740,6 +1084,24 @@
 **Sources:**
 
 - [Konstantina Bairaktari, Jiayun Wu, Zhiwei Steven Wu, Kandinsky Conformal Prediction: Beyond Class- and Covariate-Conditional Coverage, arXiv:2502.17264v2 (2025)](https://arxiv.org/abs/2502.17264v2)
+
+### Classifier odds recover copula density
+
+**Remember:** Compare joint ranks to independent ranks using classifier odds.
+
+*True by definition.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas). arXiv stat.ML. Level 4: research.
+
+**Definition.** Transform each coordinate by its continuous marginal distribution function. The joint density of these transformed coordinates, when it exists, is the copula density. With equal probability, draw a point from this joint law or from the uniform law on the cube. Label the point by its source.
+
+**Problem.** At almost every point of the cube, the true conditional odds of the joint label equal the copula density.
+
+**How the definition helps.** The uniform comparison class has density one, so its use turns the usual density ratio into the copula density itself. In our own application of Bayes’ rule, equal class probabilities cancel from the conditional odds. Estimating those odds from data still requires fitting a classifier, a rule that predicts the class label.
+
+**Paper or page:** [Your copula is a classifier in disguise: classification-based copula density estimation](https://arxiv.org/abs/2411.03014v2). It says: “we train a classifier to distinguish samples from the joint density from those of the product of independent marginals, recovering the copula density in the process.”
+
+**Sources:**
+
+- [Your copula is a classifier in disguise: classification-based copula density estimation](https://arxiv.org/abs/2411.03014v2)
 
 ### Counting only interior mass guarantees a halfspace that attains halfspace depth
 
@@ -832,6 +1194,24 @@
 **Sources:**
 
 - [Oliver Y. Feng, Yu-Chun Kao, Min Xu, Richard J. Samworth, Optimal convex $M$-estimation via score matching, arXiv:2403.16688v2 (2024)](https://arxiv.org/abs/2403.16688v2)
+
+### Swappable knockoffs give fair signs
+
+**Remember:** A null feature cannot tell its original from its copy.
+
+*True by definition.* MSC 62J15 (Paired and multiple comparisons; multiple testing). arXiv stat.ME. Level 4: research.
+
+**Definition.** Pair each input variable with a synthetic copy, called a knockoff. Swapping any selection of original variables with their copies must preserve the joint distribution of all inputs and copies. Given the original inputs, the copies must be independent of the outcome. Swapping one pair must reverse its score and leave the other scores unchanged.
+
+**Problem.** Call an input null if it is independent of the outcome given all other inputs. Given all score magnitudes and all scores for the other inputs that are not null, the nonzero null scores have independent, equally likely signs.
+
+**How the definition helps.** Swapping a null feature with its copy leaves the data law unchanged and reverses only that feature’s score. In our own single-study argument, these swaps replace a direct calculation of joint sign probabilities. Every sign pattern has the same conditional probability because separate swaps connect any two patterns. The work is constructing copies with the required joint law.
+
+**Paper or page:** [FDR Controlled Multiple Testing for Union Null Hypotheses: A Knockoff-based Approach](https://arxiv.org/abs/2106.12719v3). It says: “(W₁, ⋯, Wₚ) =ᵈ (W₁ · ε₁, ⋯, Wₚ · εₚ).”
+
+**Sources:**
+
+- [FDR Controlled Multiple Testing for Union Null Hypotheses: A Knockoff-based Approach](https://arxiv.org/abs/2106.12719v3)
 
 ### A maximal invariant turns a composite null hypothesis into a simple one
 
@@ -940,3 +1320,21 @@
 **Sources:**
 
 - [Dean P. Foster, Sergiu Hart, Smooth Calibration, Leaky Forecasts, Finite Recall, and Nash Dynamics, arXiv:2210.07152v1 (2022); Games and Economic Behavior 109 (May 2018), 271-293](https://arxiv.org/abs/2210.07152v1)
+
+### Metric restriction makes learning finite
+
+**Remember:** Training differences only see the part of the metric on their span.
+
+*True by definition.* MSC 62R07 (Statistical aspects of big data and data science). arXiv stat.ML. Level 4: research.
+
+**Definition.** Learn distances between training points in a real Hilbert space, a complete inner product space. For a difference v, set its squared distance to ⟨v, Av⟩ with A bounded, self-adjoint, and strictly positive on nonzero vectors. Compress A to the training span by projecting its output there.
+
+**Problem.** For a loss depending only on training distances, the infimum over these operators equals the infimum on the training span. Every minimizer on the span extends to the whole space.
+
+**How the definition helps.** Compressing the operator preserves all training distances and replaces a search over the full space with one on the training span. In our own calculation, projecting Av preserves its inner product with each training difference v. The reverse direction requires extending any admissible operator on the span. Acting as the identity on its orthogonal complement gives such an extension, so the two searches attain the same loss values.
+
+**Paper or page:** [Representer Theorems for Metric and Preference Learning: Geometric Insights and Algorithms](https://arxiv.org/abs/2304.03720v2). It says: “And both solutions have the same optimal value.”
+
+**Sources:**
+
+- [Peyman Morteza (2025), Representer Theorems for Metric and Preference Learning: Geometric Insights and Algorithms](https://arxiv.org/abs/2304.03720v2)

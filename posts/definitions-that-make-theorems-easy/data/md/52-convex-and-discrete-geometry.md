@@ -50,6 +50,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Polarity ignores convex combinations
+
+**Remember:** An upper bound on generators is the same bound on their averages.
+
+*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The one-sided polar of a nonempty Euclidean set A consists of y such that x · y ≤ 1 for every x in A. For a polytope containing the origin inside, an equivalent description builds the dual polytope from rescaled facet normals.
+
+**Problem.** The one-sided polar of a set equals the one-sided polar of its convex hull.
+
+**How the definition helps.** The inequality definition lets one check a linear bound on generators alone. In our own proof, every convex combination preserves the upper bound of one. Conversely, a bound on the hull holds on the original set. For a full-dimensional polytope containing zero in its interior, one can also construct the polar from rescaled facet normals. That approach requires proving these normals generate precisely the set of valid inequalities.
+
+**Paper or page:** [One-Sided Polar of Convex Hull is One-Sided Polar of Original Set](https://proofwiki.org/wiki/One-Sided_Polar_of_Convex_Hull_is_One-Sided_Polar_of_Original_Set). It says: “(conv A)⊙ = A⊙”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The intersection definition makes the convex hull smallest
 
 **Remember:** The intersection of all candidates lies inside each candidate.
@@ -88,6 +104,42 @@
 
 - [R. Tyrrell Rockafellar, Convex Analysis, Princeton University Press (1970), §18](https://doi.org/10.1515/9781400873173)
 
+### Ball bodies survive double polarity
+
+**Remember:** Apply ball polarity twice to recover the ball hull.
+
+*Rules out counterexamples.* MSC 52A30 (Variants of convex sets (star-shaped, (\\(m, n\\))-convex, etc.)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The radius-r polar of a set consists of centers of closed radius-r balls that contain the set. A radius-r ball body is an intersection of closed balls of that radius.
+
+**Problem.** In Euclidean dimension d &gt; 1, taking the radius-r polar twice fixes each radius-r ball body for r &gt; 0.
+
+**How the definition helps.** An intersection of balls already contains exactly what its defining balls force. In our own proof, taking the polar twice intersects every radius-r ball containing the set. These balls include every defining ball, so their intersection recovers the body. For two distinct points less than 2r apart, every containing ball also contains their segment. The double polar therefore adds points.
+
+**Paper or page:** [Selected topics from the theory of intersections of balls](https://arxiv.org/abs/2411.10302v2). It says: “(Aʳ)ʳ = A”
+
+**Sources:**
+
+- [Selected topics from the theory of intersections of balls, Proposition 3.2](https://arxiv.org/abs/2411.10302v2)
+
+### Half-planes make guard kernels convex
+
+**Remember:** A guard must stay on the inward side of every edge.
+
+*True by definition.* MSC 52A30 (Variants of convex sets (star-shaped, (\\(m, n\\))-convex, etc.)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** The kernel of a simple polygon consists of the points that see the whole polygon. Two points see each other when the segment joining them stays in the closed polygon. Equivalently, traverse the boundary counterclockwise and intersect the closed half-planes to the left of its edges.
+
+**Problem.** For a simple polygon, the set of points that can each see the whole polygon is convex, possibly empty.
+
+**How the definition helps.** The half-plane description makes the kernel convex because intersections preserve convexity. Our own comparison starts from visibility, which requires checking an entire segment for every point of the polygon. The kernel theorem does the geometric work by replacing all those tests with one half-plane per edge.
+
+**Wikipedia:** [Star-shaped polygon](https://en.wikipedia.org/wiki/Star-shaped_polygon). It says: “The kernel of a polygon is the intersection of all its interior half-planes.”
+
+**Sources:**
+
+- [D. T. Lee and F. P. Preparata, An Optimal Algorithm for Finding the Kernel of a Polygon (1979)](https://doi.org/10.1145/322139.322142)
+
 ### In a two-distance set, smaller-diameter pieces are exactly cliques
 
 **Remember:** Short distances are edges, and smaller pieces are cliques.
@@ -105,6 +157,22 @@
 **Sources:**
 
 - [Oleg R. Musin, Borsuk's conjecture for two-distance sets and its equivalent formulation for graphs, arXiv:2511.03668 (2025)](https://arxiv.org/abs/2511.03668v2)
+
+### Signed face projections cancel
+
+**Remember:** Project all faces with signs and each edge cancels.
+
+*True by definition.* MSC 52A38 (Length, area, volume and convex sets (aspects of convex geometry)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Multiply each face area by its outward unit normal to get its vector area. Equivalently, its component along an axis is the signed area projected onto the plane perpendicular to that axis.
+
+**Problem.** The outward vector areas of all faces of a bounded three-dimensional convex polyhedron sum to zero.
+
+**How the definition helps.** Signed projection makes the two sides of a solid contribute equal areas with opposite signs. In our own proof, project the boundary along any unit direction onto its perpendicular plane. Almost every line through the projected solid enters once and leaves once. The two boundary points contribute opposite signs, so the projected areas cancel. The equivalence between signed projected area and the corresponding vector component supplies the geometric step. Applying this argument in three coordinate directions proves the vector sum vanishes.
+
+**Paper or page:** [Total Vector Area of Polyhedron is Zero](https://proofwiki.org/wiki/Total_Vector_Area_of_Polyhedron_is_Zero). It says: “the total vector area of all the faces of P”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Strong convexity is ordinary convexity after subtracting a quadratic
 
@@ -142,6 +210,22 @@
 
 - [G. M. Ziegler, Lectures on Polytopes, Graduate Texts in Mathematics 152, Springer (1995)](https://doi.org/10.1007/978-1-4613-8431-1)
 - [B. Grünbaum, Convex Polytopes, Graduate Texts in Mathematics 221, Springer (2003)](https://doi.org/10.1007/978-1-4613-0019-9)
+
+### Diamond rules exclude branching edges
+
+**Remember:** Skip one rank and exactly two faces fill the gap.
+
+*Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** An abstract polyhedron orders its faces by inclusion, with a least face of rank −1 and a greatest face of rank 3. Each immediate step increases rank by one. Between faces three or more ranks apart, the intermediate faces must connect by chains of comparable faces. The diamond rule requires exactly two intermediate faces between comparable faces two ranks apart.
+
+**Problem.** In an abstract polyhedron, every edge lies on exactly two polygon faces.
+
+**How the definition helps.** The diamond rule fixes the number of faces between an edge and the whole polyhedron. Their ranks differ by two, so precisely two polygon faces intervene. Our own example without this rule glues three triangles along one common edge. Three polygon faces then intervene.
+
+**nLab:** [abstract polytope](https://ncatlab.org/nlab/show/abstract+polytope). It says: “every line segment and polyhedron share two polygons”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Cauchy's rigidity theorem needs the polyhedra to be convex
 
@@ -241,6 +325,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Order volumes count linear extensions
+
+**Remember:** Sort the coordinates and each valid order gets one equal piece.
+
+*True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** The order polytope of a finite partially ordered set has one coordinate in \[0, 1\] for each element. Require the coordinates to respect all comparisons in the order. A linear extension is a total order that keeps those comparisons.
+
+**Problem.** For a partial order on n elements, n! times the order polytope’s volume counts its linear extensions.
+
+**How the definition helps.** Coordinate inequalities make each strict ordering of the coordinates either entirely admissible or entirely inadmissible. Listing the polytope's vertices hides this partition. In our own calculation, coordinate permutations give all n! regions of the unit cube equal volume. Ties lie in hyperplanes of volume zero. The admissible regions correspond exactly to linear extensions.
+
+**Wikipedia:** [Order polytope](https://en.wikipedia.org/wiki/Order_polytope). It says: “an order polytope can be partitioned into order simplices in a canonical way”
+
+**Sources:**
+
+- [R. P. Stanley, Two poset polytopes (1986)](https://doi.org/10.1007/BF02187680)
+
+### Unimodular pieces count lattice volume
+
+**Remember:** Each unimodular piece counts once.
+
+*True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A lattice simplex is unimodular if its edge vectors at one vertex form a basis of the lattice in their linear span. Normalize volume so a full-dimensional unimodular simplex has volume one.
+
+**Problem.** The normalized volume of a full-dimensional lattice polytope with a unimodular triangulation counts its top-dimensional simplices.
+
+**How the definition helps.** Normalized volume assigns one unit to each full-dimensional simplex in the triangulation. In our own calculation, ordinary volume requires dividing the absolute edge determinant by d! in dimension d, using lattice coordinates. The basis condition makes that determinant one in absolute value. Multiplying ordinary volume by d! removes the denominator, and additivity counts the pieces. Finding such a triangulation is a separate problem.
+
+**Paper or page:** [Flow polytopes for extensions of bipartite graphs](https://arxiv.org/abs/2509.26445v2). It says: “is equal to the number of maximal simplices”
+
+**Sources:**
+
+- [Flow polytopes for extensions of bipartite graphs, Theorem 2.14](https://arxiv.org/abs/2509.26445v2)
+
 ### Valuing the Dehn invariant in a tensor product makes dissection invariance automatic
 
 **Remember:** Length times angle, forgetting rational multiples of π.
@@ -294,6 +414,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Hole-free triangulations have tree duals
+
+**Remember:** One boundary leaves no cycle in the graph of triangles.
+
+*Rules out counterexamples.* MSC 52C20 (Tilings in \\(2\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Use a simple polygon, whose boundary is one closed chain with no crossings. Triangulate it without adding vertices. Join two triangles in a graph when they share an interior edge.
+
+**Problem.** The adjacency graph of triangles in any such triangulation is a tree.
+
+**How the definition helps.** With no holes or added vertices, the triangles have exactly enough shared edges to connect them in a tree. In our own proof, Euler's formula for a disk gives one fewer interior edge than triangles. Paths inside the polygon can avoid vertices and cross one edge at a time, so the graph is connected. Between two concentric, aligned squares, dividing each of the four trapezoids into triangles gives a cycle. Even in a single triangle, joining an interior vertex to its three corners produces a cycle.
+
+**Wikipedia:** [Art gallery problem](https://en.wikipedia.org/wiki/Art_gallery_problem). It says: “the weak dual graph to the triangulation (the undirected graph having one vertex per triangle and one edge per pair of adjacent triangles) is a tree”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Power diagrams are Voronoi slices
+
+**Remember:** One added height turns each weight into a squared distance.
+
+*True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** In a power diagram, compare squared distance to each site minus its weight. In a Voronoi diagram, compare ordinary distances to the sites.
+
+**Problem.** Every power diagram of finitely many Euclidean sites is a flat slice of an ordinary Voronoi diagram in one higher dimension.
+
+**How the definition helps.** Encoding weights as heights turns the weighted comparison into an ordinary nearest-site test. In our own construction, choose K at least as large as every weight. Place the site of weight w at height √(K − w) above its original position. By Pythagoras, its squared distance from a point at height zero equals its power there plus K. Adding the same constant preserves all minimizers, including ties.
+
+**Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “interpreted as a planar cross-section of an unweighted three-dimensional Voronoi diagram”
+
+**Sources:**
+
+- [F. Aurenhammer, Power Diagrams: Properties, Algorithms and Applications (1987)](https://doi.org/10.1137/0216006)
+
+### Power weights preserve flat boundaries
+
+**Remember:** Squaring first lets the same quadratic term cancel.
+
+*True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Assign each of finitely many distinct Euclidean sites p a real weight w. Its power cell contains every point x where ‖x − p‖² − w attains the smallest value among the sites.
+
+**Problem.** Each power cell for finitely many sites is a convex polyhedron, possibly empty or unbounded.
+
+**How the definition helps.** Subtracting weights after squaring makes every pairwise comparison linear in the unknown point. In our own calculation, expanding both squares cancels the common term ‖x‖². Each inequality therefore describes a closed half-space for distinct sites. Their intersection is a convex polyhedron. Subtracting weights from unsquared distances can give curved boundaries.
+
+**Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “the intersection of the halfspaces bounded by the radical axes”
+
+**Sources:**
+
+- [F. Aurenhammer, Power Diagrams: Properties, Algorithms and Applications (1987)](https://doi.org/10.1137/0216006)
+
 ### Voronoi cells as half-space intersections are convex polyhedra by definition
 
 **Remember:** Each other site contributes one linear inequality.
@@ -309,6 +481,60 @@
 **Wikipedia:** [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). It says: “For one other site pⱼ, the points that are closer to pₖ than to pⱼ, or equally distant, form a closed half-space”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Closed disks prevent Gabriel crossings
+
+**Remember:** Count points on the rim to stop crossings.
+
+*Rules out counterexamples.* MSC 52C45 (Combinatorial complexity of geometric structures). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Join two sites if the closed disk with their segment as diameter contains no other site. An alternative rule tests only the open disk.
+
+**Problem.** For any finite set of distinct plane sites, the closed-disk Gabriel graph has no crossing edges.
+
+**How the definition helps.** Counting boundary points blocks even a crossing with a right angle. In our own proof, two crossing segments are diagonals of a convex quadrilateral. Its angles sum to 360°, so some angle is at least 90°. Its vertex lies in the closed disk whose diameter joins its two neighbors. The open-disk rule admits both diagonals of a square.
+
+**Wikipedia:** [Gabriel graph](https://en.wikipedia.org/wiki/Gabriel_graph). It says: “The Gabriel graph is a subgraph of the Delaunay triangulation.”
+
+**Sources:**
+
+- [K. R. Gabriel and R. R. Sokal, A New Statistical Approach to Geographic Variation Analysis (1969)](https://doi.org/10.2307/2412323)
+
+### Neighborhood graphs contain minimum trees
+
+**Remember:** A third site closer to both ends gives a cheaper link.
+
+*Rules out counterexamples.* MSC 52C45 (Combinatorial complexity of geometric structures). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Join two sites if no third site is strictly closer to both than they are to each other.
+
+**Problem.** For finitely many distinct plane sites, every spanning tree of least total length lies in the relative neighborhood graph.
+
+**How the definition helps.** Strict comparison rules out only edges that admit a cheaper replacement. In our own proof, removing a tree edge splits the tree into two parts. A third site closer to both ends gives a shorter edge between the parts. That replacement contradicts minimality. Allowing equal distances in the rejection test would delete every edge of an equilateral triangle.
+
+**Wikipedia:** [Relative neighborhood graph](https://en.wikipedia.org/wiki/Relative_neighborhood_graph). It says: “the Euclidean minimum spanning tree is a subgraph of it”
+
+**Sources:**
+
+- [G. T. Toussaint, The relative neighbourhood graph of a finite planar set (1980)](https://doi.org/10.1016/0031-3203(80)90066-7)
+
+### Anti-exchange gives unique generators
+
+**Remember:** If two outside points cannot trade places, the smallest generator is unique.
+
+*Rules out counterexamples.* MSC 52A01 (Axiomatic and generalized convexity). arXiv math.CO. Level 3: graduate.
+
+**Definition.** A closure operation enlarges sets, preserves inclusions, and gives the same result when applied twice. A finite convex geometry has such an operation and keeps the empty set closed. Its anti-exchange rule concerns distinct points x and y outside a closed set C. If adding x to C brings y into the closure, adding y to C must leave x outside the closure.
+
+**Problem.** Each closed set has a unique inclusion-minimal generator, a subset whose closure is that set and whose proper subsets cannot generate it.
+
+**How the definition helps.** Anti-exchange prevents one missing generator from being replaced by a sequence of other points. Our own proof compares two minimal generators of the same closed set. Remove a point x from the first generator that the second omits. Add points from the second until x first enters the closure. Just before that step, adding x would already recover the whole closed set, including the point about to enter. This contradicts anti-exchange. Without the rule, either of two parallel nonzero vectors generates both under linear span restricted to that pair.
+
+**Paper or page:** [Cospanning characterizations of antimatroids and convex geometries](https://arxiv.org/abs/2107.08556v1). It says: “is uniquely generated if and only if the operator φ satisfies the anti-exchange property.”
+
+**Sources:**
+
+- [Cospanning characterizations of antimatroids and convex geometries, Theorem 2.8](https://arxiv.org/abs/2107.08556v1)
 
 ### Support functions turn set addition into ordinary addition
 
@@ -326,6 +552,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Support functions give Blaschke selection
+
+**Remember:** Bound the sets to bound how fast their support functions can change.
+
+*Makes the theorem clean to state or prove.* MSC 52A27 (Approximation by convex sets). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A nonempty compact convex set has a support function giving its largest dot product with each unit direction. The Hausdorff distance is the least radius for which each set lies within that distance of the other. It equals the largest absolute difference of the two support functions.
+
+**Problem.** Within a fixed Euclidean ball, every sequence of nonempty compact convex sets has a subsequence converging in Hausdorff distance. Its limit is again nonempty, compact and convex.
+
+**How the definition helps.** Support functions turn the geometric selection problem into compactness of a family of functions on the unit sphere. In our own proof, an origin-centered ball of radius R containing all sets bounds every support value in absolute value by R. Changing direction by distance δ changes a support value by at most Rδ. The Arzelà–Ascoli theorem then gives a uniformly convergent subsequence. Extend the limit from unit directions by scaling its value by the vector length. Like every function in the sequence, this extension satisfies h(x + y) ≤ h(x) + h(y). The support-function representation theorem gives a nonempty compact convex limit set, and the distance identity gives Hausdorff convergence.
+
+**Wikipedia:** [Support function](https://en.wikipedia.org/wiki/Support_function). It says: “The mapping τ is an isometry between this cone, endowed with the Hausdorff metric, and a subcone of the family of continuous functions on Sⁿ⁻¹ with the uniform norm.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separation rules out flat transversals
+
+**Remember:** A flat meeting every hull makes the hulls of two groups meet.
+
+*Makes the theorem clean to state or prove.* MSC 52A35 (Helly-type theorems and geometric transversal theory). arXiv cs.CG, math.MG. Level 3: graduate.
+
+**Definition.** Call k nonempty compact Euclidean sets well-separated if every split into two nonempty groups admits a hyperplane with the groups on opposite open sides. A transversal is an affine subspace meeting each set under consideration.
+
+**Problem.** For 2 ≤ k ≤ d + 1 in ℝᵈ, well-separated sets have no transversal of dimension k − 2 to their convex hulls. The converse also holds.
+
+**How the definition helps.** Strict separation turns a question about a flat meeting many hulls into a test on two groups at a time. In our own proof, points chosen on one (k − 2)-dimensional flat from k hulls must be affinely dependent. Splitting a dependence by coefficient sign gives two convex combinations with the same value, so strict separation fails. Conversely, two compact convex hulls without a strict separator meet by the separation theorem. Write their common point as a convex combination on each side and group terms from the same set. The two expressions give dependent representatives, using zero coefficients for unused sets. Their affine span fits inside a flat of dimension k − 2.
+
+**Paper or page:** [Well-Separation and Hyperplane Transversals in High Dimensions](https://arxiv.org/abs/2209.02319v1). It says: “are well-separated if and only if their convex hulls have no (k − 2)-transversal.”
+
+**Sources:**
+
+- [Well-Separation and Hyperplane Transversals in High Dimensions, Lemma 2.1](https://arxiv.org/abs/2209.02319v1)
+
 ### Polynomial coefficients make mixed volume linear under Minkowski addition
 
 **Remember:** Expand the volume polynomial and compare the coefficient using each weight once.
@@ -341,6 +601,24 @@
 **Wikipedia:** [Mixed volume](https://en.wikipedia.org/wiki/Mixed_volume). It says: “One can show that f is a homogeneous polynomial of degree n, so can be written as”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Polytope projection bodies are zonotopes
+
+**Remember:** Each facet contributes the support function of one segment.
+
+*True by definition.* MSC 52A39 (Mixed volumes and related topics in convex geometry). arXiv math.MG. Level 3: graduate.
+
+**Definition.** The support function of a compact convex body gives its largest dot product with each unit direction u. In dimension d, project the body orthogonally onto the hyperplane perpendicular to u. The projection body has support value equal to the (d − 1)-dimensional volume of that projection.
+
+**Problem.** For a full-dimensional convex polytope, the projection body is a zonotope. This means it consists of all sums obtained by choosing one point from each of finitely many segments.
+
+**How the definition helps.** Support functions turn Cauchy's projection formula into a sum of contributions from individual segments. In our own calculation, a facet of area a and outward unit normal v contributes a\|u · v\|/2 in direction u. This is the largest dot product with u on the segment joining −av/2 to av/2. Adding segments adds their support functions. Cauchy's formula and the fact that support functions determine convex bodies give the result.
+
+**Wikipedia:** [Projection body](https://en.wikipedia.org/wiki/Projection_body). It says: “the support function of ΠK in the direction u is the (n – 1)-dimensional volume of the projection of K”
+
+**Sources:**
+
+- [J. Bourgain and J. Lindenstrauss, Projection bodies (1988)](https://doi.org/10.1007/BFb0081746)
 
 ### Steiner coefficients give quermassintegrals their scaling law and rigid-motion invariance
 
@@ -462,6 +740,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Polytope sums refine normal fans
+
+**Remember:** Maximize over the two summands separately, then add the maximizing faces.
+
+*Makes the theorem clean to state or prove.* MSC 52B11 (\\(n\\)-dimensional polytopes). arXiv cs.CG, math.MG. Level 3: graduate.
+
+**Definition.** The normal cone of a nonempty face consists of directions that maximize the dot product at every point on that face. The collection of these cones is the normal fan. A Minkowski sum consists of all sums of one point from each polytope.
+
+**Problem.** The normal fan of a Minkowski sum is the common refinement of the two normal fans. Its cones are intersections of cones from the two fans.
+
+**How the definition helps.** Grouping directions by their maximizing faces lets us describe all faces of a sum in one statement. In our own proof, a direction maximizes on the sum exactly at sums of maximizers on the two polytopes. Directions choosing a given pair of faces therefore satisfy both sets of constraints. Intersecting the two normal cones records those simultaneous constraints. The face correspondence for polytopes identifies the resulting collection with the normal fan of the sum.
+
+**Wikipedia:** [Normal fan](https://en.wikipedia.org/wiki/Normal_fan). It says: “the set of linear functionals w such that the set of points x in P that maximize w(x) contains F”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zonotopes as cube images make every face a zonotope
 
 **Remember:** Maximize on the cube first, then take the image.
@@ -494,6 +788,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Half-open pieces count Ehrhart coefficients
+
+**Remember:** Each omitted facet adds one required unit in the lattice count.
+
+*True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** Triangulate a d-dimensional lattice polytope into simplices whose edge vectors from one vertex form a lattice basis in its span. Choose an interior point q outside every facet plane of the full-dimensional simplices. From each such simplex omit every facet whose plane separates q from its interior. The resulting pieces partition the polytope.
+
+**Problem.** The lattice-point series counts points in each integer dilation, including dilation zero, using the dilation factor as the exponent of z. Multiplying by the (d + 1)st power of (1 − z) gives the Ehrhart numerator. Its coefficient of degree i counts pieces with i omitted facets.
+
+**How the definition helps.** Opening selected facets replaces boundary inclusion-exclusion with a count of independent integer coefficients. In our own proof, moving slightly toward the chosen interior point assigns each boundary point to exactly one piece. At dilation n, the vertex coefficients sum to n and are integers because the simplex is unimodular. Each omitted facet forces its opposite coefficient to be positive. Subtracting one from each required positive coefficient shifts the counting series by one degree per omitted facet. Summing the disjoint contributions gives the numerator.
+
+**Paper or page:** [Ehrhart theory of cosmological polytopes](https://arxiv.org/abs/2412.01602v2). It says: “h⁎ᵢ(P) = \|{j ∈ \[m\] : \|vis<sub>q</sub>(Δⱼ)\| = i}\|”
+
+**Sources:**
+
+- [Ehrhart theory of cosmological polytopes, Theorem 2.1](https://arxiv.org/abs/2412.01602v2)
+
 ### Support functions make Newton polytopes of products add as Minkowski sums
 
 **Remember:** In each direction, the top parts of f and g multiply without cancelling.
@@ -509,6 +821,45 @@
 **Wikipedia:** [Newton polytope](https://en.wikipedia.org/wiki/Newton_polytope). It says: “Newt(fg) = Newt(f) + Newt(g)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Lifted energy selects Delaunay triangulations
+
+**Remember:** The lowest lifted surface gives the least energy.
+
+*True by definition.* MSC 52B55 (Computational aspects related to convexity). arXiv cs.CG. Level 3: graduate.
+
+**Definition.** Lift each site p to height ‖p‖². Extend those heights linearly on each simplex of a triangulation. Define the energy as the integral of the height above the paraboloid over the convex hull.
+
+**Problem.** Take finitely many sites spanning ℝᵈ, with every d + 1 affinely independent and no d + 2 on one sphere. Among triangulations using precisely those sites, the Delaunay triangulation uniquely minimizes the energy.
+
+**How the definition helps.** Defining the energy by height makes the lowest possible surface minimize the integral. In our own argument, every interpolated surface lies above the lower boundary of the lifted convex hull. Its lower faces project to the Delaunay triangulation, whose simplices have circumspheres with no sites inside. This lifting theorem supplies the geometric step. General position makes the lower faces simplices, so any different triangulation raises the surface on an open set.
+
+**Paper or page:** [Delaunay-like Triangulation of Smooth Orientable Submanifolds by L1-Norm Minimization](https://arxiv.org/abs/2203.06008v3). It says: “the triangulation of P that minimizes the Delaunay energy is unique and is the Delaunay complex of P.”
+
+**Sources:**
+
+- [Delaunay-like Triangulation of Smooth Orientable Submanifolds by L1-Norm Minimization, Theorem 2](https://arxiv.org/abs/2203.06008v3)
+
+### Clipped cells preserve ball-union topology
+
+**Remember:** Clip each ball to its nearest-site cell without changing the union.
+
+*Makes the theorem clean to state or prove.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 3: graduate.
+
+**Definition.** Take finitely many Euclidean sites and a radius r ≥ 0. Clip each closed ball to the points at least as close to its center as to any other site. The alpha complex records a face for each group of clipped balls with a common point.
+
+**Problem.** The alpha complex and the union of the original balls have the same homotopy type. This means maps in both directions compose to maps continuously deformable to the identities.
+
+**How the definition helps.** Clipping gives closed convex sets whose intersections define the complex and whose union still covers all the balls together. In our own argument, every covered point belongs to a nearest site's ball and cell. The nerve theorem identifies the shape of this union with the complex that records which sets meet.
+
+**Wikipedia:** [Alpha shape](https://en.wikipedia.org/wiki/Alpha_shape). It says: “the radius of the smallest empty circle containing the edge or triangle”
+
+**Paper or page:** [Good Coverings of Proximal Alexandrov Spaces. Homotopic Cycles in Jordan Curve Theorem Extension](https://arxiv.org/abs/2108.10113v1). It says: “Let F be a finite collection of closed, convex sets in Euclidean space. Then the nerve of F and union of the sets in F have the same homotopy type.”
+
+**Sources:**
+
+- [H. Edelsbrunner, The union of balls and its dual shape (1995)](https://doi.org/10.1007/bf02574053)
+- [J. F. Peters and T. Vergili, Good Coverings of Proximal Alexandrov Spaces. Homotopic Cycles in Jordan Curve Theorem Extension, Theorem 4](https://arxiv.org/abs/2108.10113v1)
 
 ### Generic rigidity makes Laman's edge count an exact test
 
@@ -529,6 +880,22 @@
 **Sources:**
 
 - [Goran Malić, Ileana Streinu, Combinatorial Resultants in the Algebraic Rigidity Matroid, arXiv:2103.08432 (2021)](https://arxiv.org/abs/2103.08432)
+
+### Chambers index zonotope vertices
+
+**Remember:** Choose the winning endpoint of each segment to find a vertex.
+
+*True by definition.* MSC 52C35 (Arrangements of points, flats, hyperplanes (aspects of discrete geometry)). arXiv cs.CG, math.MG. Level 3: graduate.
+
+**Definition.** Define the zonotope as a sum of segments from zero to nonzero generating vectors. For each vector, draw the hyperplane through zero perpendicular to it. A chamber is a connected region off all these hyperplanes.
+
+**Problem.** Chambers of this arrangement correspond bijectively to vertices of the zonotope.
+
+**How the definition helps.** Writing the zonotope as a sum of segments lets each direction choose an endpoint of every segment independently. Our own proof uses this description of the projected cube, with each cube coordinate contributing one segment. Within a chamber, the signs of the dot products fix every endpoint, giving a unique maximizing vertex. Crossing to another chamber changes an endpoint and strictly lowers the original direction's value on the new sum. Every vertex uniquely maximizes some linear function, and a small perturbation avoids all the hyperplanes.
+
+**Wikipedia:** [Zonotope](https://en.wikipedia.org/wiki/Zonotope). It says: “The Minkowski sum of a finite set of line segments in ℝᵈ forms a type of convex polytope called a zonotope.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Support values turn minimal convex environmental contours into linear programs
 
@@ -619,6 +986,25 @@
 **Sources:**
 
 - [B. Grünbaum, Are your polyhedra the same as my polyhedra?, in Discrete and Computational Geometry, Algorithms and Combinatorics 25, Springer (2003) 461–488](https://doi.org/10.1007/978-3-642-55566-4_21)
+
+### Polytope logarithms linearize dilation
+
+**Remember:** Minkowski addition becomes multiplication, so dilation becomes multiplication inside the logarithm.
+
+*True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)). arXiv math.CO. Level 4: research.
+
+**Definition.** Work with rational coefficients in the polytope algebra of Euclidean dimension d, where translates have the same class and the empty set represents zero. When two polytopes have convex union, their classes sum to the class of their union plus that of their intersection. Multiplication takes all sums of one point from each polytope. For a nonempty polytope P, let p be the logarithm of its class, using the power series around one.
+
+**Problem.** For nonnegative integer n, the class of nP is the finite exponential of np. Its dependence on n is polynomial of degree at most the ambient dimension.
+
+**How the definition helps.** Using the logarithm replaces repeated multiplication of polytope classes by ordinary multiplication of the logarithm by n. In our own calculation, the class of nP is the nth power of the class of P because multiplication adds polytopes. Subtract one from the class of P. McMullen's theorem says the (d + 1)st power of this difference vanishes. This makes the logarithm and exponential finite sums.
+
+**Paper or page:** [A pithy look at the Polytope Algebra](https://arxiv.org/abs/2111.02820v1). It says: “⟦P⟧ⁿ = ⟦nP⟧”
+
+**Sources:**
+
+- [A pithy look at the Polytope Algebra, Theorem 4.13](https://arxiv.org/abs/2111.02820v1)
+- [P. McMullen, The polytope algebra (1989)](https://doi.org/10.1016/0001-8708(89)90029-7)
 
 ### Spherical and hyperbolic discrete Laplacians keep the smooth conformal eigenvalue equation
 

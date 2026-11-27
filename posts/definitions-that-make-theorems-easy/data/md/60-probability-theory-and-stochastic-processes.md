@@ -396,6 +396,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Equilibrium weighting makes generators symmetric
+
+**Remember:** Weight by equilibrium before you ask for symmetry.
+
+*True by definition.* MSC 60J27 (Continuous-time Markov processes on discrete state spaces), 82C31. arXiv math-ph, cond-mat.stat-mech. Level 2: later undergraduate.
+
+**Definition.** For a finite continuous-time Markov chain, weight the inner product of state functions by a positive equilibrium distribution. The equilibrium flow from one state to another equals its starting probability times its jump rate. Detailed balance means the two flows agree for each pair.
+
+**Problem.** Under detailed balance, the generator, the matrix giving the instantaneous change of expected state functions, is self-adjoint in this inner product. A change of coordinates therefore makes it real symmetric.
+
+**How the definition helps.** The equilibrium weights turn the off-diagonal coefficients of the inner product with the generator into the pairwise flows (our own). Detailed balance lets us exchange the two states, proving self-adjointness (our own). Multiplying each coordinate by the square root of its equilibrium probability gives ordinary Euclidean coordinates (our own). The model-specific work is checking detailed balance (our own).
+
+**Paper or page:** [Characterizing the detailed balance property by means of measurements in chemical networks](https://arxiv.org/abs/2402.12935v1). It says: “Then the matrix B = S⁻¹AS is symmetric”
+
+**Sources:**
+
+- [\[, ', E, u, g, e, n, i, a,  , F, r, a, n, c, o, ', ,,  , ', B, e, r, n, h, a, r, d,  , K, e, p, k, a, ', ,,  , ', J, u, a, n,  , J, .,  , L, .,  , V, e, l, á, z, q, u, e, z, ', \], Characterizing the detailed balance property by means of measurements in chemical networks](https://arxiv.org/abs/2402.12935v1)
+
 ### Condition on a σ-algebra, not on a single event of probability zero
 
 **Remember:** A great circle has no conditional distribution until you name its family of circles.
@@ -1076,6 +1094,42 @@
 **Sources:**
 
 - [W. Feller, The Parabolic Differential Equations and the Associated Semi-Groups of Transformations, Annals of Mathematics 55 (1952)](https://doi.org/10.2307/1969644)
+
+### Conditioning preserves determinantal particle laws
+
+**Remember:** Make holes into points, then condition by a block determinant.
+
+*True by definition.* MSC 60G55 (Point processes (e.g., Poisson, Cox, Hawkes processes)). arXiv math.PR, math-ph. Level 3: graduate.
+
+**Definition.** A finite determinantal process chooses a random set of occupied sites using a matrix K. For any specified sites, their joint inclusion probability equals the determinant on their rows and columns. The complementary process records the empty sites and has kernel I − K.
+
+**Problem.** Conditioning a finite determinantal process to leave a specified set empty gives a determinantal process on the remaining sites. This holds when the conditioning event has positive probability.
+
+**How the definition helps.** Recording holes changes an emptiness condition into an inclusion condition with a determinant formula (our own). Inclusion-exclusion gives the hole kernel I − K (our own). Conditional inclusion probabilities are ratios of determinants (our own). Eliminating the block for the required holes expresses each ratio as a determinant on the remaining sites (our own). Taking the complement again gives a kernel for the remaining particles (our own).
+
+**Paper or page:** [Determinantal point processes conditioned on randomly incomplete configurations](https://arxiv.org/abs/2112.10642v2). It says: “Then Pᶿ₍∣∅₎ is also a DPP”
+
+**Sources:**
+
+- [\[, ', T, o, m,  , C, l, a, e, y, s, ', ,,  , ', G, a, b, r, i, e, l,  , G, l, e, s, n, e, r, ', \], Determinantal point processes conditioned on randomly incomplete configurations](https://arxiv.org/abs/2112.10642v2)
+
+### Paired kernels give equal particle counts
+
+**Remember:** The same nonzero eigenvalues give the same count law.
+
+*True by definition.* MSC 60G55 (Point processes (e.g., Poisson, Cox, Hawkes processes)). arXiv math.PR, math-ph. Level 3: graduate.
+
+**Definition.** A finite determinantal process chooses a random subset of sites. The probability of including any specified sites equals the determinant of the kernel matrix restricted to their rows and columns. Given a rectangular matrix W with singular values at most one, use W\*W and WW\* as the two kernels. Here W\* is the conjugate transpose.
+
+**Problem.** The two finite determinantal processes have the same distribution for their total number of points.
+
+**How the definition helps.** Building both kernels from one matrix makes their nonzero eigenvalues identical (our own). For a kernel K and point count N, the expectation of zᴺ equals det(I + (z − 1)K) (our own). Expanding the determinant in principal minors proves this identity from the inclusion probabilities (our own). Zero eigenvalues contribute factors of one, so the two generating polynomials agree (our own).
+
+**Paper or page:** [Partial Isometries, Duality, and Determinantal Point Processes](https://arxiv.org/abs/1903.04945v4). It says: “P(Ξ₁⁽Λ₂⁾(Λ₁)=m) = P(Ξ₂⁽Λ₁⁾(Λ₂)=m)”
+
+**Sources:**
+
+- [\[, ', M, a, k, o, t, o,  , K, a, t, o, r, i, ', ,,  , ', T, o, m, o, y, u, k, i,  , S, h, i, r, a, i, ', \], Partial Isometries, Duality, and Determinantal Point Processes](https://arxiv.org/abs/1903.04945v4)
 
 ### Poisson point processes defined by counts are closed under superposition
 

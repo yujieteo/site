@@ -14,6 +14,72 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Transverse data determine transport locally
+
+**Remember:** Each nearby path must cross the data curve once.
+
+*Rules out counterexamples.* MSC 35F05 (Linear first-order PDEs). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Call an initial curve noncharacteristic if the velocity is nowhere tangent to it. Place the initial values on such a curve instead of an arbitrary curve.
+
+**Problem.** For a smooth planar velocity b, prescribe smooth data for b · ∇u = 0 on a smooth noncharacteristic curve. A unique smooth solution exists locally near each interior point of the curve.
+
+**How the definition helps.** The velocity crosses the curve, so each nearby path meets the curve once locally. In our own proof, the inverse function theorem gives coordinates from the starting point and travel time. Copy the given value along each path. For ∂u/∂y = 0 with zero data on x = 0, both zero and u(x,y) = x work in our own example.
+
+**Wikipedia:** [Method of characteristics](https://en.wikipedia.org/wiki/Method_of_characteristics). It says: “Once the ODE is found, it can be solved along the characteristic curves and transformed into a solution for the original PDE.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponentiation turns nonlinear evolution into heat
+
+**Remember:** Evolve the exponential by heat, then take the logarithm.
+
+*True by definition.* MSC 35F21 (Hamilton-Jacobi equations). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For ν &gt; 0, evolve the exponential of minus the initial potential divided by 2ν by the linear heat equation. Define the evolved potential as −2ν times the logarithm of that heat solution.
+
+**Problem.** For smooth bounded initial potentials on the line, this prescription solves ∂u/∂t + \|∂u/∂x\|² ÷ 2 = ν ∂²u/∂x².
+
+**How the definition helps.** The exponential change of variable cancels the squared derivative term, leaving the linear heat equation. In our own calculation, differentiate u = −2ν log v and substitute the heat equation for v. The heat kernel averages positive initial values, so the logarithm exists. The work lies in finding the substitution and solving the linear heat equation.
+
+**Wikipedia:** [Cole–Hopf transformation](https://en.wikipedia.org/wiki/Cole%E2%80%93Hopf_transformation). It says: “it provides an explicit formula for fairly general solutions of the PDE in terms of the initial datum and the heat kernel.”
+
+**Sources:**
+
+- [Julian D. Cole, On a quasi-linear parabolic equation occurring in aerodynamics (1951).](https://doi.org/10.1090/qam/42889)
+
+### Mean-zero normalization makes Neumann solutions unique
+
+**Remember:** Normal derivatives miss constants, so fix the mean.
+
+*Rules out counterexamples.* MSC 35J25 (Boundary value problems for second-order elliptic equations). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Prescribe the derivative perpendicular to the boundary in the outward direction. Also require the solution to have mean zero over the domain.
+
+**Problem.** On a smooth bounded connected domain, prescribe a smooth outward normal derivative whose integral over the boundary is zero. Exactly one function with zero Laplacian and mean zero has that derivative.
+
+**How the definition helps.** Fixing the mean removes the constant shifts that the boundary derivative cannot detect. In our own example, zero and one both have zero boundary derivative. In our own proof, integration by parts shows that the difference of two solutions has zero gradient. Connectedness makes it constant, and its mean makes it zero. The Neumann existence theorem supplies a solution, from which we subtract its mean.
+
+**Wikipedia:** [Laplace's equation](https://en.wikipedia.org/wiki/Laplace%27s_equation). It says: “For the Neumann problem, uniqueness holds only up to an additive constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wave coordinates split right and left
+
+**Remember:** Zero mixed derivative leaves one function of each coordinate.
+
+*True by definition.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Fix a constant wave speed c &gt; 0. Use x + ct and x − ct as coordinates. Each stays constant along one family of lines traveled by waves.
+
+**Problem.** Every twice continuously differentiable solution of ∂²u/∂t² = c² ∂²u/∂x² on the whole line splits into two oppositely traveling profiles.
+
+**How the definition helps.** In the moving coordinates, the wave equation says that one mixed derivative vanishes. Integrate once in each coordinate to obtain one profile for each direction. In our own explanation, the work lies in the chain rule that converts the original second derivatives into this mixed derivative.
+
+**Wikipedia:** [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula). It says: “The general solution of this PDE is u(μ,η) = F(μ) + G(η)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fundamental solutions solve forced equations by convolution
 
 **Remember:** Solve once for a point source, then convolve with the data.
@@ -29,6 +95,24 @@
 **Wikipedia:** [Fundamental solution](https://en.wikipedia.org/wiki/Fundamental_solution). It says: “Once the fundamental solution is found, it is straightforward to find a solution of the original equation, through convolution of the fundamental solution and the desired right hand side.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A parametrix transfers smoothness to solutions
+
+**Remember:** Apply the approximate inverse and the error is already smooth.
+
+*True by definition.* MSC 35A17 (Parametrices in context of PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A distribution is a generalized function that acts on smooth compactly supported tests. A local left parametrix Q for P preserves smooth functions, and QP differs from the identity by an operator that makes distributions smooth.
+
+**Problem.** Let P be a linear differential operator with smooth coefficients whose highest-order polynomial in the derivative variables never vanishes in a nonzero real direction. If Pu is smooth in an open set, the distribution u is smooth there.
+
+**How the definition helps.** The approximate inverse expresses u as the sum of a smooth response and a smooth error. In our own argument, work locally and write QP as the identity plus a smoothing operator R. Then u = Q(Pu) − Ru, and both terms are smooth. Constructing such a local inverse from the highest-order polynomial carries the work.
+
+**Paper or page:** [Lecture notes for pseudodifferential operators and microlocal analysis](https://arxiv.org/abs/2107.12839v1). It says: “and a is elliptic, then Tₐ has a parametrix.”
+
+**Sources:**
+
+- [Shiqi Ma, Lecture notes for pseudodifferential operators and microlocal analysis (2021).](https://arxiv.org/abs/2107.12839v1)
 
 ### Wave front sets say when two distributions can be multiplied
 
@@ -47,6 +131,38 @@
 **Sources:**
 
 - [Lars Hörmander, Fourier integral operators. I, Acta Mathematica 127 (1971) 79–183](https://doi.org/10.1007/BF02392052)
+
+### Principal symbols turn composition into multiplication
+
+**Remember:** Every derivative that hits a coefficient lowers the order on the input.
+
+*True by definition. Confidence: medium.* MSC 35A30 (Geometric theory, characteristics, transformations in context of PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a linear differential operator with smooth coefficients, write the coefficients to the left of the derivatives. Replace each coordinate derivative by a corresponding variable to form a polynomial, the full symbol. The sum of the terms of highest degree is the principal symbol.
+
+**Problem.** For operators of orders m and n, the degree m + n part of the composition symbol equals the product of the principal symbols.
+
+**How the definition helps.** Keeping only the specified degree discards every product-rule term in which a derivative hits a coefficient. In our own proof, only derivatives acting on the input contribute to degree m + n. The full symbols require extra terms for differentiated coefficients. A separate coordinate-change argument identifies the leading polynomial intrinsically.
+
+**nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “the principal symbol is the highest degree homogeneous component of the symbol.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closing the test space lets a harmonic function test itself
+
+**Remember:** Close the test space to let the unknown test itself.
+
+*True by definition.* MSC 35D30 (Weak solutions to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Start with smooth real functions compactly supported in a bounded open set. Measure the squared norm by integrating the function’s square plus its gradient’s squared length. Completing this space defines the zero-boundary Sobolev space.
+
+**Problem.** Suppose u belongs to this space and the integral of ∇u · ∇φ vanishes for each smooth compactly supported φ. Then u vanishes almost everywhere.
+
+**How the definition helps.** The closure definition supplies test functions converging to u together with their gradients. In our own proof, the integral passes to the limit and gives zero for the squared gradient integral. Poincaré’s inequality bounds the squared integral of u by a constant times that gradient integral. On domains with locally Lipschitz boundary graphs, the trace theorem identifies this closure with functions having zero boundary values.
+
+**Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “trace-zero functions in W¹˒ᵖ(Ω) can be approximated by smooth functions with compact support.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Leray's weak solutions give global existence for the Navier–Stokes equations
 
@@ -102,6 +218,22 @@
 
 - [Weyl, H. (1940). The method of orthogonal projection in potential theory. Duke Mathematical Journal 7, 411–444.](https://doi.org/10.1215/S0012-7094-40-00725-6)
 
+### Touching tests preserve maxima of subsolutions
+
+**Remember:** A test above the maximum is above whichever branch it touches.
+
+*True by definition.* MSC 35D40 (Viscosity solutions to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Require that the value of u at each point bounds the upper limit of nearby values. Test u with twice continuously differentiable functions that equal it at the point and lie above it nearby. For a viscosity subsolution, each test must give a nonpositive value in the differential equation there.
+
+**Problem.** Consider a second-order equation whose left side cannot increase when a positive semidefinite matrix is added to the matrix of second derivatives. The maximum of two viscosity subsolutions of this equation is again a viscosity subsolution.
+
+**How the definition helps.** A test touching the maximum from above also touches a branch attaining that maximum. In our own proof, the branch supplies the required inequality, and the maximum retains the upper-limit bound. The maximum can have a corner even when both branches are smooth. Testing smooth functions from above avoids differentiating that corner. The matrix condition ensures the test definition agrees with the pointwise inequality for smooth functions.
+
+**Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution). It says: “if for any point x₀ ∈ Ω and any C² function φ such that φ(x₀) = u(x₀) and φ ≥ u in a neighborhood of x₀”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Viscosity solutions make nonsmooth solutions unique
 
 **Remember:** Test the equation only on smooth functions that touch u from above or from below.
@@ -142,6 +274,72 @@
 - [Malgrange, B. (1956). Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution. Annales de l'Institut Fourier 6, 271–355.](https://doi.org/10.5802/aif.65)
 - [Lewy, H. (1957). An example of a smooth linear partial differential equation without solution. Annals of Mathematics 66(1), 155–158.](https://doi.org/10.2307/1970121)
 
+### Transport along paths preserves every average
+
+**Remember:** Keep the values and the volume, and every average stays fixed.
+
+*True by definition.* MSC 35F05 (Linear first-order PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Define a scalar transported by an invertible volume-preserving flow by copying its initial value along each particle path. A weak solution instead tests the equation against smooth functions and moves derivatives onto those functions.
+
+**Problem.** On a periodic domain, the spatial integral of any measurable function of the transported scalar stays constant whenever its initial integral exists and is finite.
+
+**How the definition helps.** Each particle keeps its scalar value, and the flow preserves volume. Changing variables to the starting positions proves conservation in our own argument. For a single shear on the two-dimensional torus, the paper identifies every space-time integrable weak solution on the shear interval with this path description.
+
+**Paper or page:** [Non-Uniqueness and Inadmissibility of the Vanishing Viscosity Limit of the Passive Scalar Transport Equation](https://arxiv.org/abs/2307.00809v4). It says: “In particular, f is a renormalised weak solution”
+
+**Sources:**
+
+- [Lucas Huysmans, Edriss S. Titi, Non-Uniqueness and Inadmissibility of the Vanishing Viscosity Limit of the Passive Scalar Transport Equation (2025).](https://arxiv.org/abs/2307.00809v4)
+
+### Outgoing waves make Helmholtz solutions unique
+
+**Remember:** Outgoing waves satisfy a derivative condition that standing waves fail.
+
+*Rules out counterexamples.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Fix a positive wave number k in three dimensions, and let r denote distance from the origin. A solution radiates outward if r(∂u/∂r − iku) → 0 uniformly in direction. Here i is the imaginary unit.
+
+**Problem.** Outside a bounded smooth obstacle with connected exterior, two radiating solutions of Δu + k²u = 0 with the same boundary values agree.
+
+**How the definition helps.** The radiation condition rules out standing waves with zero boundary values. Outside a ball of radius a, sin(k(r − a))/r gives such a wave in our own example. In our own proof, integrate by parts and use the radiation condition. The integral of the squared magnitude of the difference then tends to zero on distant spheres. Rellich’s uniqueness theorem then forces the difference to vanish.
+
+**Wikipedia:** [Sommerfeld radiation condition](https://en.wikipedia.org/wiki/Sommerfeld_radiation_condition). It says: “The Sommerfeld radiation condition is used to solve uniquely the Helmholtz equation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An obstacle minimizer is harmonic off contact
+
+**Remember:** Where there is room to move both ways, the Laplacian vanishes.
+
+*True by definition.* MSC 35J86 (Unilateral problems for linear elliptic equations and variational inequalities with linear elliptic operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Define the solution by minimizing the integral of the squared gradient among functions with fixed boundary values that stay above the obstacle. The contact set is where the solution equals the obstacle.
+
+**Problem.** Where a continuous minimizer lies strictly above a continuous obstacle, it is harmonic, meaning that its Laplacian vanishes.
+
+**How the definition helps.** Minimization permits a two-sided test wherever the obstacle leaves a gap. On each compact test support in that region, continuity gives a positive minimum gap in our own argument. Adding or subtracting a sufficiently small multiple of the test therefore respects the obstacle. Differentiating the energy gives zero for the integral of the two gradients’ dot product. Interior regularity turns this integral identity into the classical Laplace equation.
+
+**Wikipedia:** [Obstacle problem](https://en.wikipedia.org/wiki/Obstacle_problem). It says: “A variational argument shows that, away from the contact set, the solution to the obstacle problem is harmonic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Convexity picks one Monge–Ampère branch
+
+**Remember:** A positive determinant alone does not make a function convex.
+
+*Rules out counterexamples.* MSC 35J96 (Monge-Ampère equations). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Prescribe the determinant of the matrix of second derivatives and the values on the boundary. Select the convex solutions, whose matrices of second derivatives are positive semidefinite.
+
+**Problem.** On a bounded convex domain, suppose two convex solutions are twice continuously differentiable inside and continuous up to the boundary. They agree if their determinants equal the same positive function and their boundary values agree.
+
+**How the definition helps.** Convexity and the positive determinant make both matrices positive definite, allowing a maximum principle. In our own proof, differentiate the determinant along the line segment joining the two matrices. Averaging the resulting positive definite coefficient matrices gives a linear elliptic equation for the difference. Its maximum principle gives uniqueness. On the unit disk, both signs of (\|x\|² − 1)/2 give determinant one and zero boundary values in our own example.
+
+**Wikipedia:** [Monge–Ampère equation](https://en.wikipedia.org/wiki/Monge%E2%80%93Amp%C3%A8re_equation). It says: “this equation is elliptic if f is a positive function and solutions satisfy the constraint of being uniformly convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fourier heat multipliers make successive heating times add
 
 **Remember:** Multiplying the heat multipliers adds the two times in their exponents.
@@ -157,6 +355,76 @@
 **Wikipedia:** [Heat kernel](https://en.wikipedia.org/wiki/Heat_kernel). It says: “The most well-known heat kernel is the heat kernel of d-dimensional Euclidean space ℝᵈ, which has the form of a time-varying Gaussian function,”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Growth bounds restore heat uniqueness
+
+**Remember:** Control the growth at infinity to rule out heat from nowhere.
+
+*Rules out counterexamples.* MSC 35K05 (Heat equation). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For each finite time T, require positive constants A and B with \|u(x,t)\| ≤ A exp(B\|x\|²) for all x and 0 ≤ t ≤ T. Consider solutions continuous through time zero, with continuous first time and second spatial derivatives at positive times.
+
+**Problem.** Two such whole-space solutions of the heat equation agree if they have the same initial values.
+
+**How the definition helps.** The growth bound lets a positive comparison solution dominate the difference far from the origin. In our own argument, the maximum principle on expanding balls gives uniqueness over a short interval. Repeating the comparison covers each finite interval. In our own comparison, Tychonoff’s example gives a nonzero smooth solution with zero initial data when arbitrary growth is allowed.
+
+**Wikipedia:** [Heat equation](https://en.wikipedia.org/wiki/Heat_equation). It says: “To determine uniqueness of solutions in the whole space it is necessary to assume additional conditions, for example an exponential bound on the growth of solutions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Path weights order heat solutions
+
+**Remember:** More absorption gives less weight to every path.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 3: graduate.
+
+**Definition.** To solve the heat equation with absorption at position x and time t, start a diffusion path at x. Use Brownian motion with variance 2t per coordinate at time t, corresponding to Δ in the equation. Sample the initial value at the path’s endpoint and multiply by the exponential of minus the absorption accumulated along the path. Average over paths.
+
+**Problem.** For smooth bounded nonnegative absorption rates depending on position and common bounded measurable nonnegative initial data, a larger rate gives a smaller or equal solution.
+
+**How the definition helps.** Increasing absorption decreases each path’s weight. Our own comparison multiplies this inequality by the nonnegative initial value and averages over the same paths. The Feynman–Kac theorem identifies that average with the bounded heat solution.
+
+**Wikipedia:** [Feynman–Kac formula](https://en.wikipedia.org/wiki/Feynman%E2%80%93Kac_formula). It says: “the Feynman–Kac formula expresses u(x,t) as a conditional expectation of a certain random variable”
+
+**Sources:**
+
+- [Mark Kac, On distributions of certain Wiener functionals (1949).](https://doi.org/10.1090/S0002-9947-1949-0027960-X)
+
+### Minimizing steps pay for movement
+
+**Remember:** Doing nothing is always a candidate and costs no movement.
+
+*True by definition.* MSC 35K55 (Nonlinear parabolic equations). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Advance the density by minimizing its energy plus a movement penalty among admissible densities with the same mass and finite second moment. The penalty is the least total squared transport distance, weighted by the mass moved, divided by twice the positive time step.
+
+**Problem.** In the paper’s aggregation and diffusion scheme, suppose the initial density has finite energy and each step attains its minimum. The sum of movement penalties cannot exceed the energy lost from the initial to the final density.
+
+**How the definition helps.** The old density competes in the same minimization and pays zero movement penalty. Comparing the minimum with that candidate bounds each penalty by the energy lost in that step. Summing cancels all intermediate energies in our own derivation. The work lies in proving minimizers exist and their limit solves the evolution equation as the time step tends to zero.
+
+**Paper or page:** [Nonlinear aggregation-diffusion equations with Riesz potentials](https://arxiv.org/abs/2205.13520v1). It says: “\\mathcal F<sub>s</sub>\[\\rho \_\\tau ^k\]+\\frac1{2\\tau }\\sum <sub>h=1</sub><sup>k</sup> W<sub>2</sub><sup>2</sup>(\\rho \_\\tau ^h,\\rho \_\\tau <sup>h-1</sup>)\\le \\mathcal F<sub>s</sub>\[\\rho ^0\]”
+
+**Sources:**
+
+- [Yanghong Huang, Edoardo Mainini, Juan Luis Vázquez, Bruno Volzone, Nonlinear aggregation-diffusion equations with Riesz potentials (2022).](https://arxiv.org/abs/2205.13520v1)
+
+### Relabeling curves preserves curvature motion
+
+**Remember:** An increasing relabeling leaves the unit normal unchanged.
+
+*True by definition.* MSC 35K93 (Quasilinear parabolic equations with mean curvature operator). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Describe the moving surface as the zero set of a smooth function u of position and time. Where ∇u is nonzero, its unit normal is n = ∇u/\|∇u\|. The mean curvature equation for u is ∂u/∂t = \|∇u\| div n, where divergence sums the coordinate derivatives of the corresponding components.
+
+**Problem.** Where ∇u is nonzero, replacing u by h(u) preserves the equation for every smooth h with positive derivative. If h(0) = 0, it also preserves the moving surface.
+
+**How the definition helps.** An increasing relabeling preserves the unit normal and multiplies both sides of the equation by the same positive derivative. This proves invariance by the chain rule in our own argument. The work lies in deriving the scalar equation from motion by curvature. Extending it through zero gradients requires a separate definition of solution.
+
+**Wikipedia:** [Level-set method](https://en.wikipedia.org/wiki/Level-set_method). It says: “The boundary of the shape is then the zero-level set of φ”
+
+**Sources:**
+
+- [Stanley Osher and James A. Sethian, Fronts propagating with curvature-dependent speed: Algorithms based on Hamilton-Jacobi formulations (1988).](https://doi.org/10.1016/0021-9991(88)90002-2)
 
 ### The entropy condition picks the one physical shock solution
 
@@ -241,6 +509,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Extension energy gives fractional positivity
+
+**Remember:** A boundary pairing becomes a weighted squared gradient upstairs.
+
+*True by definition.* MSC 35R11 (Fractional partial differential equations). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Fix 0 &lt; s &lt; 1 and let y denote height in the upper half-space. Extend a boundary function by minimizing the integral of the squared gradient with weight y to the power 1 − 2s. Define the fractional Laplacian as a positive constant times the limiting weighted outward derivative at y = 0.
+
+**Problem.** For a real smooth compactly supported function on Euclidean space, the integral of its product with its fractional Laplacian is nonnegative. Only the zero function gives zero.
+
+**How the definition helps.** In the extension definition, the boundary integral equals a positive multiple of the weighted gradient energy. Integration by parts gives this equality in our own proof. Zero energy forces a constant extension, whose compactly supported boundary value must vanish. Caffarelli and Silvestre identify the weighted derivative with the usual Fourier definition, which multiplies frequency ξ by \|ξ\| to the power 2s.
+
+**Wikipedia:** [Fractional Laplacian](https://en.wikipedia.org/wiki/Fractional_Laplacian). It says: “The fractional Laplacian can also be defined through harmonic extensions.”
+
+**Sources:**
+
+- [Luis Caffarelli and Luis Silvestre, An Extension Problem Related to the Fractional Laplacian (2007).](https://doi.org/10.1080/03605300600987306)
+
 ### Fourier multipliers factor the half Laplacian through Riesz transforms
 
 **Remember:** Summing the products of the Riesz and derivative multipliers gives \|ξ\|.
@@ -277,6 +563,24 @@
 
 - [M. Kwaśnicki (2017), Ten equivalent definitions of the fractional Laplace operator, Fractional Calculus and Applied Analysis 20, 7–51](https://doi.org/10.1515/fca-2017-0002)
 
+### Minimum energy orders boundary currents
+
+**Remember:** Raising every trial energy raises their minimum.
+
+*True by definition.* MSC 35R30 (Inverse problems for PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For each boundary voltage admitting an extension of finite gradient energy, minimize the integral of conductivity times squared voltage gradient over such extensions. This gives the boundary quadratic form. Its usual definition pairs the voltage with the outward flux, using conductivity times the outward derivative of voltage.
+
+**Problem.** Take two bounded scalar conductivities on a smooth bounded domain, each bounded below by a positive constant. If one conductivity is at least as large almost everywhere, its boundary quadratic form is at least as large for every admissible voltage.
+
+**How the definition helps.** Increasing conductivity raises the energy of every candidate, so it also raises the minimum in our own comparison. The energy principle identifies the minimizing extension with the solution of the conductivity equation. Integration by parts identifies its energy with the boundary pairing, interpreted weakly when the conductivity is rough.
+
+**Wikipedia:** [Poincaré–Steklov operator](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Steklov_operator). It says: “The mapping of the surface temperature to the surface heat flux is a Poincaré–Steklov operator.”
+
+**Sources:**
+
+- [Bastian Harrach and Marcel Ullrich, Monotonicity-Based Shape Reconstruction in Electrical Impedance Tomography.](https://doi.org/10.1137/120886984)
+
 ### A left and a right parametrix of an operator agree modulo smoothing
 
 **Remember:** Modulo smoothing errors, a left inverse meets a right inverse.
@@ -294,6 +598,24 @@
 **Sources:**
 
 - [Shiqi Ma, Lecture notes for pseudodifferential operators and microlocal analysis, arXiv:2107.12839v1 (2021)](https://arxiv.org/abs/2107.12839v1)
+
+### Causal support and adjoints force uniqueness
+
+**Remember:** Pair a future-supported solution with a past-supported inverse.
+
+*True by definition.* MSC 35A08 (Fundamental solutions to PDEs). arXiv math.AP. Level 4: research.
+
+**Definition.** A retarded Green operator inverts a differential operator on smooth compactly supported inputs and confines each response to the source’s causal future. The causal future consists of points reachable at or below light speed. An advanced operator uses the causal past. Green hyperbolicity requires both inverses for the operator and its formal adjoint, obtained by integration by parts.
+
+**Problem.** On a globally hyperbolic spacetime, a Green hyperbolic operator has unique advanced and retarded inverses. Global hyperbolicity rules out causal loops and makes causal diamonds compact.
+
+**How the definition helps.** Requiring inverses for the adjoint gives a direct test for uniqueness without an equation-specific energy estimate. In our own proof, subtract two retarded responses to the same compact source. Their difference solves the equation with zero source. Apply the advanced adjoint inverse to an arbitrary smooth compactly supported test function. Its support meets the difference’s support in a compact set, so integration by parts gives zero against the original test. Reversing time gives advanced uniqueness.
+
+**nLab:** [Green hyperbolic partial differential equation](https://ncatlab.org/nlab/show/Green+hyperbolic+partial+differential+equation). It says: “advanced and retarded Green functions of Green hyperbolic differential operator are unique”
+
+**Sources:**
+
+- [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes.](https://doi.org/10.1007/s00220-014-2097-7)
 
 ### Parabolic fundamental solutions defined as operators always exist uniquely
 
@@ -349,6 +671,24 @@
 
 - [G. Barles, P. E. Souganidis, Convergence of approximation schemes for fully nonlinear second order equations, Asymptotic Analysis 4 (1991) 271–283](https://doi.org/10.3233/ASY-1991-4305)
 
+### Least-action updates cannot increase uniform errors
+
+**Remember:** A minimum cannot amplify a uniform change in its inputs.
+
+*True by definition.* MSC 35F21 (Hamilton-Jacobi equations). arXiv math.AP. Level 4: research.
+
+**Definition.** On a network of joined edges, assign a cost to each path, including time spent at junctions. For continuous starting data, at each endpoint and time, minimize the starting value plus the path cost over paths arriving there.
+
+**Problem.** For the paper’s network Hamilton–Jacobi evolution, the largest absolute difference between two solutions never exceeds that between their continuous starting values.
+
+**How the definition helps.** Changing the starting values by at most ε changes each candidate cost by at most ε in our own argument. Taking the minimum preserves the same bound. The substantial theorem identifies this path formula with the differential equation on edges and its prescribed conditions at junctions.
+
+**Paper or page:** [Large Time Behavior of Solutions to Hamilton-Jacobi Equations on Networks](https://arxiv.org/abs/2303.03872v3). It says: “for any φ ∈ C(Γ), t ∈ ℝ⁺ and a ∈ ℝ, S(t)(φ + a) = S(t)φ + a.”
+
+**Sources:**
+
+- [Marco Pozza, Large Time Behavior of Solutions to Hamilton-Jacobi Equations on Networks (2024).](https://arxiv.org/abs/2303.03872v3)
+
 ### A profile is reachable when backward-then-forward evolution returns it
 
 **Remember:** Go back once, then forward, to test whether the profile is reachable.
@@ -385,6 +725,24 @@
 
 - [Henri Berestycki, Grégoire Nadin, Luca Rossi, Generalized principal eigenvalues for parabolic operators in bounded domains, arXiv:2502.16522v1 (2025)](https://arxiv.org/abs/2502.16522v1)
 
+### Particle projection gives shared cluster velocity
+
+**Remember:** Project onto cluster velocities to average the free speeds.
+
+*True by definition.* MSC 35Q31 (Euler equations). arXiv math.AP. Level 4: research.
+
+**Definition.** Label particles on a line by cumulative mass, so label length measures mass. For particles that stick after collisions, start with each initial velocity and add the accumulated force per unit mass. Project these velocities orthogonally, using mass as the integration measure, onto functions constant on each cluster of particles at the same position.
+
+**Problem.** In the paper’s pressureless Euler flow, each cluster of positive mass moves at the mass average of its members’ velocities before the collision correction.
+
+**How the definition helps.** Projection onto constants replaces all velocities in a cluster by their average. In our own argument, orthogonality to the cluster’s indicator says that the total velocity correction there is zero. The work lies in deriving the projection formula from the particle dynamics.
+
+**Paper or page:** [Equivalence of entropy solutions and gradient flows for pressureless 1D Euler systems](https://arxiv.org/abs/2312.04932v3), [Equivalence of entropy solutions and gradient flows for pressureless 1D Euler systems](https://arxiv.org/abs/2312.04932v3). It says: “V(t) &amp; = \\Proj \_{\\mathscr {H}<sub>X(t)</sub>} U(t)”
+
+**Sources:**
+
+- [José Antonio Carrillo, Sondre Tesdal Galtung, Equivalence of entropy solutions and gradient flows for pressureless 1D Euler systems (2025).](https://arxiv.org/abs/2312.04932v3)
+
 ### A gauge-invariant boundary condition gives unique continuation for anti-de Sitter waves
 
 **Remember:** Test the boundary region without making the answer depend on a gauge.
@@ -403,6 +761,24 @@
 
 - [Athanasios Chatzikaleas, Arick Shao, A gauge-invariant unique continuation criterion for waves in asymptotically Anti-de Sitter spacetimes, arXiv:2201.06010v2 (2022)](https://arxiv.org/abs/2201.06010v2)
 
+### Contractive Airy boundary maps dissipate energy
+
+**Remember:** Compare incoming and outgoing boundary forms to check energy loss.
+
+*True by definition.* MSC 35R02 (PDEs on graphs and networks (ramified or polygonal spaces)). arXiv math.AP. Level 4: research.
+
+**Definition.** The Airy operator differentiates three times along each edge of a graph. At the junction of a loop and half-lines, collect endpoint values and their first two derivatives into two vectors. Prescribe the allowed traces, or endpoint data, by a linear map between these vectors. Each trace space has a quadratic form that can take either sign.
+
+**Problem.** The resulting operator A satisfies Re⟨Au,u⟩ ≤ 0 for every allowed u exactly when the output form never exceeds the input form.
+
+**How the definition helps.** The boundary map turns the energy test for an entire function into one inequality on its traces. In our own explanation, integration by parts gives the output form minus the input form, up to a positive factor. The converse uses the fact that functions on the edges can realize the allowed traces.
+
+**Paper or page:** [Airy and Schrödinger-type equations on looping-edge graphs](https://arxiv.org/abs/2410.11729v3). It says: “Aℒ is dissipative if and only if ℒ is a (𝒞₁,𝒞₀)-contraction.”
+
+**Sources:**
+
+- [Jaime Angulo Pava, Alexander Muñoz, Airy and Schrödinger-type equations on looping-edge graphs (2025).](https://arxiv.org/abs/2410.11729v3)
+
 ### Harnack inequalities hold for every function satisfying nonlocal energy estimates
 
 **Remember:** Keep the energy inequalities and drop the equation.
@@ -420,6 +796,24 @@
 **Sources:**
 
 - [Simone Ciani, Kenta Nakamura, Nonlocal parabolic De Giorgi classes, arXiv:2508.16247 (2025)](https://arxiv.org/abs/2508.16247v2)
+
+### Half-space positivity blocks false interior zeros
+
+**Remember:** For a nonlocal equation, the sign outside the domain still counts.
+
+*Rules out counterexamples.* MSC 35R11 (Fractional partial differential equations). arXiv math.AP. Level 4: research.
+
+**Definition.** Fix 0 &lt; s &lt; 1. Write L for the fractional Laplacian, which compares a function’s value with values everywhere, giving nearby points greater weight. Require opposite values at mirror points across a plane and nonnegative values throughout one half-space.
+
+**Problem.** Let Ω be an open subset of that half-space. Suppose Lu exists pointwise there and Lu + c(x)u ≥ 0 for a real function c. Then u is positive throughout Ω or zero almost everywhere in the whole space.
+
+**How the definition helps.** Nonnegativity on the whole half-space gives every reflected pair the same sign in our own proof. At an interior zero, a positive value contributes more than its more distant negative reflection. The integral is therefore negative unless u vanishes almost everywhere. Corollary 1.4 shows that requiring nonnegativity only inside the open subset permits an interior zero.
+
+**Paper or page:** [The role of antisymmetric functions in nonlocal equations](https://arxiv.org/abs/2203.11468v2), [The role of antisymmetric functions in nonlocal equations](https://arxiv.org/abs/2203.11468v2). It says: “is equal to zero at a point in Ω, but is not identically zero in Ω.”
+
+**Sources:**
+
+- [Serena Dipierro, Giorgio Poggesi, Jack Thompson, Enrico Valdinoci, The role of antisymmetric functions in nonlocal equations (2023).](https://arxiv.org/abs/2203.11468v2)
 
 ### Normalized fractional p-Laplacians on hyperbolic space tend to the p-Laplacian
 

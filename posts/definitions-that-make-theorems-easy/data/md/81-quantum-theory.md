@@ -17,6 +17,75 @@
 - [J. von Neumann, Wahrscheinlichkeitstheoretischer Aufbau der Quantenmechanik, Göttinger Nachrichten (1927), 245–272](https://eudml.org/doc/59230)
 - [U. Fano, Description of States in Quantum Mechanics by Density Matrix and Operator Techniques, Reviews of Modern Physics 29 (1957), 74–93](https://doi.org/10.1103/RevModPhys.29.74)
 
+### Schmidt form matches reduced spectra
+
+**Remember:** One amplitude list gives the nonzero eigenvalues on both sides.
+
+*True by definition.* MSC 81P40 (Quantum coherence, entanglement, quantum correlations). arXiv quant-ph. Level 2: later undergraduate.
+
+**Definition.** A pure state of two systems is a unit vector in their tensor product. In separate orthonormal bases, its coefficients form a matrix. The Schmidt form chooses the bases so only matching indices have nonzero coefficients. These coefficients are the nonnegative singular values of the matrix.
+
+**Problem.** Ignoring either part of a finite-dimensional pure state gives a reduced state describing the other part. These two state matrices have the same nonzero eigenvalues, with multiplicities, and hence the same entropy.
+
+**How the definition helps.** The paired orthonormal bases make both reduced matrices diagonal, with the same squared amplitudes. In our own explanation, an arbitrary amplitude matrix gives two different matrix products to diagonalize. The singular value decomposition does the work of choosing bases that handle both products at once.
+
+**Wikipedia:** [Schmidt decomposition](https://en.wikipedia.org/wiki/Schmidt_decomposition). It says: “is a diagonal matrix whose non-zero diagonal elements are \|αᵢ\|².”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Partial transpose tests separability
+
+**Remember:** Transpose one side to get a test that transposing both sides misses.
+
+*Rules out counterexamples.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria). arXiv quant-ph. Level 2: later undergraduate.
+
+**Definition.** A finite-dimensional quantum state has a positive semidefinite matrix of trace one. A separable state is a probability mixture of product states, whose matrices have the form A ⊗ B. In a fixed basis, partial transpose sends each A ⊗ B to A ⊗ Bᵀ and extends linearly.
+
+**Problem.** If a state is a mixture of product states, its partial transpose is positive semidefinite.
+
+**How the definition helps.** The mixture definition forces partial transpose to preserve positivity on every separable state. In our own argument, transposing B preserves its eigenvalues, so each transposed product remains positive semidefinite. Averaging preserves positivity. A negative eigenvalue therefore rules out separability. The converse requires a separate theorem and holds for dimensions 2 by 2 and 2 by 3, but fails in higher dimensions.
+
+**Wikipedia:** [Peres–Horodecki criterion](https://en.wikipedia.org/wiki/Peres%E2%80%93Horodecki_criterion). It says: “Note that the partial in the name implies that only part of the state is transposed.”
+
+**Sources:**
+
+- [Asher Peres, Separability Criterion for Density Matrices (1996)](https://doi.org/10.1103/PhysRevLett.77.1413)
+
+### Ladder operators give equal steps
+
+**Remember:** The adjoint of the lowering operator adds one unit of energy.
+
+*True by definition.* MSC 81Q05 (Closed and approximate solutions to the Schrödinger, Dirac, Klein-Gordon and other equations of quantum mechanics). arXiv quant-ph, math-ph. Level 2: later undergraduate.
+
+**Definition.** For the oscillator on the real line, choose units with mass, frequency, and the reduced Planck constant equal to one. Position x multiplies by the coordinate and momentum p acts as −i times differentiation. The lowering operator is a = (x + ip)⁄√2 and its adjoint is a†. On smooth rapidly decreasing functions, the energy operator H equals a†a + ½I.
+
+**Problem.** For the one-dimensional quantum harmonic oscillator, applying a† to an energy eigenfunction raises its energy by one unit. The eigenvalues form a single ladder starting at ½.
+
+**How the definition helps.** The factorization gives the energy shift by multiplication and replaces the ground-state equation with a first-order equation. In our own argument, aa† − a†a = I implies Ha† = a†H + a†. The lowest state solves aψ = 0 and is a Gaussian. Repeated raising gives polynomial multiples of that Gaussian. The completeness theorem for Hermite functions proves these states span the Hilbert space, so the ladder accounts for the full spectrum.
+
+**Wikipedia:** [Quantum harmonic oscillator](https://en.wikipedia.org/wiki/Quantum_harmonic_oscillator). It says: “Conceptually, it is important that there is only one solution of this equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shared tables give Bell's bound
+
+**Remember:** One joint table makes the four signed products add to ±2.
+
+*Rules out counterexamples.* MSC 81Q65 (Alternative quantum mechanics (including hidden variables, etc.)). arXiv quant-ph. Level 2: later undergraduate.
+
+**Definition.** Two observers each choose a setting and record a sign. A local hidden-variable model gives them shared random information independent of their settings. Given that information, their outcomes are independent, and each outcome distribution depends only on the corresponding observer’s setting.
+
+**Problem.** Let E(x,y) be the mean product of the two signs at settings x and y. Every local model satisfies \|E(0,0) + E(0,1) + E(1,0) − E(1,1)\| ≤ 2.
+
+**How the definition helps.** One shared table lets all four correlations use the same random signs. In our own proof, sample all randomness in advance, giving entries A, B for one observer and C, D for the other. The sum A(C + D) + B(C − D) equals ±2 because exactly one parenthesis vanishes. Averaging gives the bound. Our own counterexample chooses uniform outcome bits whose sum modulo two equals the product of the setting bits. Mapping bits 0 and 1 to signs +1 and −1 gives a sum of 4, although each observer sees a uniform sign.
+
+**Wikipedia:** [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality). It says: “the standard assumption of independence of the two sides, enabling us to obtain the joint probabilities of pairs of outcomes”
+
+**Sources:**
+
+- [John F. Clauser, Michael A. Horne, Abner Shimony and Richard A. Holt, Proposed Experiment to Test Local Hidden-Variable Theories (1969)](https://doi.org/10.1103/PhysRevLett.23.880)
+- [Arthur Fine, Hidden Variables, Joint Probability, and the Bell Inequalities (1982)](https://doi.org/10.1103/PhysRevLett.48.291)
+
 ### Defined this way, indistinguishable particles can only be bosons or fermions
 
 **Remember:** Swapping twice does nothing, so one swap multiplies by +1 or −1.
@@ -50,6 +119,24 @@
 **Wikipedia:** [Pauli exclusion principle](https://en.wikipedia.org/wiki/Pauli_exclusion_principle). It says: “Antisymmetry under exchange means that A(x, y) = −A(y, x). This implies A(x, y) = 0 when x = y, which is Pauli exclusion.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Unnormalized measurement maps compose
+
+**Remember:** Keep the probability in the trace until all measurements are done.
+
+*True by definition.* MSC 81P15 (Quantum measurement theory, state operations, state preparations). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A quantum instrument assigns each outcome a linear map that remains positive even with an untouched auxiliary system. The map returns an unnormalized output state whose trace is the outcome probability. The sum of all outcome maps preserves trace. This replaces a separate normalized state update and probability formula.
+
+**Problem.** Apply two finite-outcome instruments in order, with the second acting on the first instrument’s output. The composed outcome maps give the final states, and their traces give the joint probabilities.
+
+**How the definition helps.** Keeping the first probability in the output matrix lets the second linear map carry it through the calculation. In our own argument, a first outcome of probability p gives p times its conditional state. Linearity multiplies the second conditional probability by p. An impossible first outcome gives the zero matrix and hence zero joint probability. Summing over both outcomes composes two trace-preserving maps. The work of identifying physical measurements with instruments precedes this calculation.
+
+**Wikipedia:** [Quantum instrument](https://en.wikipedia.org/wiki/Quantum_instrument). It says: “a quantum instrument is a mathematical description of a quantum measurement, capturing both the classical and quantum outputs.”
+
+**Sources:**
+
+- [Masanao Ozawa, Quantum measuring processes of continuous observables (1984)](https://doi.org/10.1063/1.526000)
 
 ### Using generalized measurements makes Gleason's theorem hold for qubits too
 
@@ -88,6 +175,24 @@
 
 - [V. Bargmann, On Unitary Ray Representations of Continuous Groups, Annals of Mathematics 59 (1954), 1–46](https://doi.org/10.2307/1969831)
 
+### Entanglement of formation is convex
+
+**Remember:** Combine two ensembles to bound the cost of their mixture.
+
+*True by definition.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** For a pure state of two finite systems, discard either system and take the entropy of the remaining state matrix. This entropy is the sum of −p log₂ p over its positive eigenvalues p. A mixed state can be a probability mixture of pure states in many ways. Its entanglement of formation is the infimum of their mean entropies over all such decompositions.
+
+**Problem.** Mixing two states cannot give more entanglement of formation than the weighted mean of their entanglements of formation.
+
+**How the definition helps.** Taking the infimum lets us test the mixture with any combined decomposition of its two ingredients. In our own argument, choose a decomposition of each ingredient within ε of its infimum. Multiply each list of probabilities by its ingredient’s mixing weight and join the lists. The resulting cost exceeds the weighted mean of the two infima by at most ε. Let ε decrease to zero. Fixing one decomposition in advance would remove the freedom to use this combined list.
+
+**Wikipedia:** [Entanglement of formation](https://en.wikipedia.org/wiki/Entanglement_of_formation). It says: “This kind of extension of a quantity defined on some set (here the pure states) to its convex hull (here the mixed states) is called a convex roof construction.”
+
+**Sources:**
+
+- [Charles H. Bennett, David P. DiVincenzo, John A. Smolin and William K. Wootters, Mixed-state entanglement and quantum error correction (1996)](https://doi.org/10.1103/PhysRevA.54.3824)
+
 ### Separable states are defined as exactly what local operations can prepare
 
 **Remember:** Shared dice plus local preparation give exactly the separable states.
@@ -124,6 +229,22 @@
 
 - [Phillippe H. Eberhard, Ronald R. Ross, Quantum field theory cannot provide faster-than-light communication, Foundations of Physics Letters (1989)](https://doi.org/10.1007/BF00696109)
 
+### Diamond norms ignore idle systems
+
+**Remember:** Once every idle system is allowed, one more changes nothing.
+
+*True by definition.* MSC 81P47 (Quantum channels, fidelity). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** The diamond norm takes the largest trace-norm expansion when a linear map acts alongside an untouched system of any finite size. The trace norm is the sum of singular values. The ordinary induced trace norm tests the map on its input alone.
+
+**Problem.** Tensoring a finite-dimensional linear map with an identity map does not change its diamond norm.
+
+**How the definition helps.** In our own explanation, attaching another idle system only changes the size of a system already allowed in the supremum. The reverse bound follows by holding the additional system in a fixed pure state. The stabilization theorem reduces the supremum to an auxiliary system no bigger than the map’s input. Our own example shows why the ordinary norm differs. Transpose preserves singular values, but transposing just one side of a maximally entangled pair gives a larger trace norm.
+
+**Wikipedia:** [Diamond norm](https://en.wikipedia.org/wiki/Diamond_norm). It says: “The diamond norm is the trace norm of the output of a trivial extension of a linear map, maximized over all possible inputs with trace norm at most one.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fidelity as the best purification overlap cannot decrease under quantum channels
 
 **Remember:** Keep the channel's environment and the overlap stays the same.
@@ -141,6 +262,42 @@
 **Sources:**
 
 - [Armin Uhlmann, The Transition Probability in the State Space of a ∗-Algebra (1976)](https://doi.org/10.1016/0034-4877(76)90060-4)
+
+### Measure-and-prepare channels break entanglement
+
+**Remember:** A classical outcome can select a state but cannot carry entanglement.
+
+*True by definition.* MSC 81P47 (Quantum channels, fidelity). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A finite-dimensional quantum channel is a trace-preserving linear map that preserves positivity even in the presence of an untouched auxiliary system. A measure-and-prepare channel measures the input and chooses a new output state using only the recorded outcome. A channel breaks entanglement if its output and any untouched reference always form a mixture of product states.
+
+**Problem.** Every measure and prepare channel breaks entanglement with any untouched reference.
+
+**How the definition helps.** Conditioning on the recorded outcome fixes the prepared state, so it separates from the reference. In our own proof, forgetting the outcome averages these product states with their outcome probabilities. The cited equivalence supplies the converse, turning the condition on every reference into a measurement and preparation rule.
+
+**Paper or page:** [C\*-extreme entanglement breaking maps on operator systems](https://arxiv.org/abs/2306.07642v3). It says: “a Choi-Kraus decomposition with rank-one Choi-Kraus coefficients”
+
+**Sources:**
+
+- [C\*-extreme entanglement breaking maps on operator systems](https://arxiv.org/abs/2306.07642v3)
+
+### One Choi matrix unifies Kraus lists
+
+**Remember:** Different Kraus lists factor the same positive matrix.
+
+*True by definition.* MSC 81P47 (Quantum channels, fidelity). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A completely positive map preserves positive matrices even when it acts alongside an identity map of any finite size. A Kraus list represents it as a sum of terms EρE†, where the dagger denotes the adjoint. In a fixed input basis, the Choi matrix has block (i, j) equal to the map applied to matrix unit (i, j). A matrix unit has one entry equal to one and zeros elsewhere.
+
+**Problem.** Any two Kraus lists for the same finite-dimensional map differ by unitary mixing after padding the shorter list with zeros.
+
+**How the definition helps.** Both lists factor the same Choi matrix, so their rows have identical inner products. In our own argument, stack each operator’s columns into one vector and assemble the vectors as columns of a matrix. Multiplying that matrix by its adjoint gives the Choi matrix by the block definition. After zero padding, matching corresponding rows defines an isometry of their spans inside spaces of equal dimension. Extending it to a unitary gives the required mixing. Comparing the two operator sums directly hides this common matrix.
+
+**Paper or page:** [Universal Properties of Partial Quantum Maps](https://arxiv.org/abs/2206.04814v2). It says: “There is a unitary k-by-k matrix U = (uᵢⱼ)”
+
+**Sources:**
+
+- [Universal Properties of Partial Quantum Maps](https://arxiv.org/abs/2206.04814v2)
 
 ### Requiring complete positivity gives quantum channels their Kraus form
 
@@ -177,6 +334,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Commuting states can be broadcast
+
+**Remember:** States diagonal in one basis can share one sampled basis outcome.
+
+*Rules out counterexamples.* MSC 81P50 (Quantum state estimation, approximate cloning). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A finite-dimensional state has a positive semidefinite matrix of trace one. Broadcasting uses one physical transformation to produce two outputs from an unknown member of a known family. Each output considered alone must have the original state matrix. The two outputs may be correlated.
+
+**Problem.** One channel broadcasts every state in a commuting family of finite-dimensional states.
+
+**How the definition helps.** Commuting state matrices share an eigenbasis, so one sampled basis label suffices for both outputs. In our own construction, measure in that basis and prepare the observed basis state at each output. The probability of each label reproduces the corresponding diagonal entry of the input. Our own counterexample uses the pure states with vectors (1, 0) and (1, 1)⁄√2. A pure state at either output forces a product joint state. Broadcasting would therefore copy these nonorthogonal vectors, contrary to the no-cloning theorem. The no-broadcasting theorem proves the harder necessity of commutation for mixed states.
+
+**Wikipedia:** [No-broadcasting theorem](https://en.wikipedia.org/wiki/No-broadcasting_theorem). It says: “there is no method capable of taking a single copy of either state and succeeding”
+
+**Sources:**
+
+- [Howard Barnum, Carlton M. Caves, Christopher A. Fuchs, Richard Jozsa and Benjamin Schumacher, Noncommuting Mixed States Cannot Be Broadcast (1996)](https://doi.org/10.1103/PhysRevLett.76.2818)
+
 ### Codes defined by stabilizers detect every error that anticommutes with one
 
 **Remember:** An anticommuting error flips the sign of a check.
@@ -193,6 +368,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Correctable error spans stay correctable
+
+**Remember:** Check the cross-products once, then correct all linear combinations.
+
+*True by definition.* MSC 81P73 (Computational stability and error-correcting codes for quantum computation and communication processing). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A quantum code is a subspace with orthogonal projection P. An error list represents a channel by sending a state matrix ρ to the sum of EρE† over the list. The dagger denotes the adjoint. A recovery channel corrects the error if their composition restores every state supported on the code.
+
+**Problem.** Suppose PA†BP is a scalar multiple of P for every pair A, B in a spanning list of errors. Every channel represented by errors in their linear span then admits recovery on the code.
+
+**How the definition helps.** The Knill–Laflamme criterion replaces the search for a recovery channel by a condition that extends from a spanning list. In our own argument, inserting two linear combinations into PA†BP gives a sum of scalar multiples of P. The criterion turns this scalar condition back into the existence of recovery. Testing each error separately would omit products between distinct errors.
+
+**Paper or page:** [Kitaev's quantum double model as an error correcting code](https://arxiv.org/abs/1908.02829v3). It says: “A necessary and sufficient condition for the existence of a recovery channel ℛ correcting ℰ on 𝒞 is that P Eᵢ† Eⱼ P = αᵢⱼ P, for some Hermitian matrix α of complex numbers.”
+
+**Sources:**
+
+- [Kitaev's quantum double model as an error correcting code](https://arxiv.org/abs/1908.02829v3)
+
+### Valid stabilizers leave nonzero codes
+
+**Remember:** A valid stabilizer group always leaves room for a code.
+
+*Rules out counterexamples. Confidence: medium.* MSC 81P73 (Computational stability and error-correcting codes for quantum computation and communication processing). arXiv quant-ph. Level 3: graduate.
+
+**Definition.** A qubit has state space ℂ². The single-qubit Pauli matrices are the identity, the basis swap X, the sign change Z = diag(1, −1), and iXZ. The Pauli group on n qubits consists of their n-fold tensor products multiplied by ±1 or ±i. A stabilizer code is the common fixed space of a commuting Pauli subgroup that excludes −I.
+
+**Problem.** A stabilizer subgroup on n qubits has a nonzero fixed space. Its dimension is 2ⁿ divided by the subgroup order.
+
+**How the definition helps.** Excluding −I leaves the identity as the only group element with nonzero trace, in our own argument. Indeed, iI and −iI would square to −I and are also excluded. Averaging the group gives the projection onto the fixed space, so its trace gives the dimension. Our own counterexample is the group {I, −I}, whose only fixed vector is zero.
+
+**Paper or page:** [Stabilizer Formalism for Operator Algebra Quantum Error Correction](https://arxiv.org/abs/2304.11442v2). It says: “Let 𝒮 be an abelian subgroup of 𝒫ₙ that does not contain −I, and let C be its stabilizer subspace.”
+
+**Sources:**
+
+- [Stabilizer Formalism for Operator Algebra Quantum Error Correction](https://arxiv.org/abs/2304.11442v2)
+
 ### Antiunitary time reversal squaring to minus identity pairs energy eigenstates
 
 **Remember:** Time reversal gives an orthogonal partner when its square negates every state.
@@ -208,6 +419,24 @@
 **Wikipedia:** [Kramers' theorem](https://en.wikipedia.org/wiki/Kramers%27_theorem). It says: “If T : H → H is an antiunitary operator acting on a Hilbert space H satisfying T² = −1 and v a vector in H, then T v is orthogonal to v.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Signed traces cancel excited states
+
+**Remember:** The signed trace cancels every positive-energy pair.
+
+*True by definition.* MSC 81Q60 (Supersymmetry and quantum mechanics). arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** Split the state space into two orthogonal parts called even and odd. Supersymmetry here means that a self-adjoint operator Q exchanges the two parts and satisfies Q² = H, the energy operator. At inverse temperature β, the Witten index takes the trace of exp(−βH) on even states minus its trace on odd states.
+
+**Problem.** For supersymmetric quantum mechanics, suppose the thermal operator has finite trace for every positive inverse temperature. Then the Witten index is constant and equals the number of even zero-energy states minus the number of odd ones.
+
+**How the definition helps.** The minus sign cancels the two contributions at every positive energy. In our own proof, Q preserves the space of energy E because it commutes with H. For E &gt; 0, dividing Q by √E gives a map between the even and odd spaces that is its own inverse. Thus these spaces have equal dimensions. Only the zero-energy states contribute to the signed trace. The ordinary thermal trace counts both partners positively.
+
+**nLab:** [Witten index](https://ncatlab.org/nlab/show/Witten+index). It says: “The Witten index or supersymmetric index of a supersymmetric quantum field theory is its partition function with the trace-operation replaced by the super-trace.”
+
+**Sources:**
+
+- [Edward Witten, Constraints on supersymmetry breaking (1982)](https://doi.org/10.1016/0550-3213(82)90071-2)
 
 ### Berry holonomy makes the closed-loop phase factor gauge invariant
 
@@ -244,6 +473,61 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Primitive channels forget their inputs
+
+**Remember:** Irreducible channels can cycle, but primitive channels converge.
+
+*Rules out counterexamples.* MSC 81S22 (Open systems, reduced dynamics, master equations, decoherence). arXiv quant-ph, math-ph. Level 3: graduate.
+
+**Definition.** A quantum channel transforms state matrices, which are positive semidefinite and have trace one. A finite-dimensional channel is primitive if some fixed power sends every state to a positive definite state. Its error operators are matrices E that express the channel as a sum of terms EρE†, with † denoting the adjoint. Irreducibility means these operators have no common nonzero proper invariant subspace.
+
+**Problem.** Every primitive channel converges under iteration to one fixed full-rank state, regardless of its input.
+
+**How the definition helps.** Primitivity excludes the persistent cycles that irreducibility allows. In our own explanation, the quantum Perron–Frobenius theorem gives one simple eigenvalue at 1 and puts all other eigenvalues strictly inside the unit circle. Powers therefore converge to the fixed state. Our own irreducible example measures in a two-vector orthonormal basis and prepares the opposite basis state. The two basis states alternate forever.
+
+**Paper or page:** [Zero-error communication under discrete-time Markovian dynamics](https://arxiv.org/abs/2402.18703v3). It says: “∃ N ∈ ℕ such that ∀ ρ ∈ 𝕊𝒹(ℂ) and n ≥ N, Φⁿ(ρ) is of full rank.”
+
+**Sources:**
+
+- [Zero-error communication under discrete-time Markovian dynamics](https://arxiv.org/abs/2402.18703v3)
+- [Mikel Sanz, David Pérez-García, Michael M. Wolf and J. Ignacio Cirac, A Quantum Version of Wielandt’s Inequality (2010)](https://doi.org/10.1109/TIT.2010.2054552)
+
+### Composition makes Moyal products associative
+
+**Remember:** Three functions multiply like the three operators they represent.
+
+*True by definition.* MSC 81S30 (Phase-space methods including Wigner distributions, etc. applied to problems in quantum mechanics). arXiv math-ph, hep-th. Level 3: graduate.
+
+**Definition.** Phase space records position and momentum together. Weyl quantization turns a function on this space into an operator by changing coordinates and taking a Fourier transform. For smooth functions that decay rapidly with all derivatives, the resulting integral kernels have the same regularity and decay. The Moyal product sends two functions to operators, composes them, and converts the resulting kernel back to a function.
+
+**Problem.** The Moyal product is associative on smooth rapidly decaying functions on phase space.
+
+**How the definition helps.** In our own explanation, both bracketings turn into the same composition of three operators. Composition keeps their kernels smooth and rapidly decaying, and the Fourier transform lets us recover the functions uniquely. The work goes into showing this definition agrees with the Moyal oscillatory integral, and formally with the derivative expansion. It does not require the derivative series to converge for every such function.
+
+**Wikipedia:** [Moyal product](https://en.wikipedia.org/wiki/Moyal_product). It says: “It is an associative, non-commutative product”
+
+**Sources:**
+
+- [Hilbrand J. Groenewold, On the Principles of Elementary Quantum Mechanics (1946)](https://doi.org/10.1007/978-94-017-6065-2)
+
+### Wigner functions preserve both marginals
+
+**Remember:** Integrate out either coordinate to recover the probability density of the other.
+
+*True by definition.* MSC 81S30 (Phase-space methods including Wigner distributions, etc. applied to problems in quantum mechanics). arXiv math-ph, quant-ph. Level 3: graduate.
+
+**Definition.** Take a normalized wave function ψ on the real line that decays rapidly with all its derivatives. Choose units with Planck’s reduced constant equal to one. Its Wigner function W(x,p) is the integral over y of exp(−ipy)ψ(x+y/2) times the complex conjugate of ψ(x−y/2), divided by 2π. This joint description of position x and momentum p can take negative values.
+
+**Problem.** Integrating the Wigner function over momentum gives the position probability density. Integrating over position gives the momentum probability density.
+
+**How the definition helps.** The symmetric positions let the same Fourier integral recover both measurement laws. In our own derivation, integrating over momentum applies Fourier inversion at y = 0 and gives \|ψ(x)\|². For the position integral, substitute u = x+y/2 and v = x−y/2. The absolute Jacobian is one, and the exponential separates into factors depending on u and v. The result is the squared modulus of the normalized momentum wave function. A position probability density alone loses the phase needed for that second calculation.
+
+**Wikipedia:** [Wigner quasiprobability distribution](https://en.wikipedia.org/wiki/Wigner_quasiprobability_distribution). It says: “Marginal distributions for x and p are recovered by integrating over p and x respectively.”
+
+**Sources:**
+
+- [Eugene Wigner, On the Quantum Correction For Thermodynamic Equilibrium (1932)](https://doi.org/10.1103/PhysRev.40.749)
+
 ### The covariant derivative commutator gives gauge-covariant field strength
 
 **Remember:** Conjugating two derivatives also conjugates their commutator.
@@ -279,6 +563,40 @@
 **Sources:**
 
 - [Kenneth G. Wilson, Confinement of quarks, Physical Review D 10 (1974) 2445](https://doi.org/10.1103/PhysRevD.10.2445)
+
+### Braids allow arbitrary exchange phases
+
+**Remember:** A double exchange need not undo a phase.
+
+*Makes the theorem clean to state or prove.* MSC 81V27 (Anyons). arXiv quant-ph, hep-th. Level 3: graduate.
+
+**Definition.** A braid records a motion of indistinguishable particles in the plane, up to continuous deformation without collisions and with fixed endpoints. A scalar exchange rule assigns each braid a complex number of modulus one and multiplies these numbers when motions follow one another. A permutation records only the final arrangement.
+
+**Problem.** For two or more particles in the plane, every unit complex number gives a consistent scalar exchange phase. A phase descends to a permutation rule only if it is +1 or −1.
+
+**How the definition helps.** Braids retain the winding of an exchange, so two successive exchanges can carry a nontrivial phase. In our own construction, assign the same phase to each basic counterclockwise exchange of adjacent particles and its inverse to the reverse exchange. Both sides of each braid relation then have the same phase. A permutation rule also requires each basic exchange to square to the identity, leaving just the signs. The topological theorem identifies loops of unordered configurations of distinct points in the plane with braids up to deformation.
+
+**nLab:** [braid group statistics](https://ncatlab.org/nlab/show/braid+group+statistics). It says: “which allows one to regard any linear representation of the symmetric group also as a particular braid group representation.”
+
+**Sources:**
+
+- [Frank Wilczek, Quantum Mechanics of Fractional-Spin Particles (1982)](https://doi.org/10.1103/PhysRevLett.49.957)
+
+### Boson Fock spaces factor
+
+**Remember:** One-particle direct sums become many-particle tensor products.
+
+*True by definition. Confidence: medium.* MSC 81V73 (Bosonic systems in quantum theory). arXiv math-ph, quant-ph. Level 3: graduate.
+
+**Definition.** Bosons are particles whose states stay unchanged when particles exchange places. Their Fock space is the Hilbert space direct sum of the symmetric tensor powers of the one-particle space, including degree zero. In an orthonormal basis, an occupation vector records how many particles occupy each basis state.
+
+**Problem.** The bosonic Fock space of a direct sum of two one-particle spaces is naturally unitarily isomorphic to the tensor product of their Fock spaces.
+
+**How the definition helps.** Counting particles in a combined basis gives exactly one occupation vector for each pair of occupation vectors in the two separate bases. In our own proof, choose orthonormal bases in both one-particle spaces and take their union in the direct sum. Map each normalized occupation vector to the tensor product indexed by its two lists of counts. This matches orthonormal bases, so the map extends to a unitary. The map agrees with normalized symmetrization of tensors from the two spaces, which makes it independent of the chosen bases. The algebraic direct-sum formula alone does not determine these Hilbert space norms.
+
+**nLab:** [Fock space](https://ncatlab.org/nlab/show/Fock+space). It says: “In physics the symmetric tensor algebra on a space of quantum states of some quantum mechanical system is called its bosonic Fock space.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Inside the Bohr topos, Gleason's theorem says quantum states are classical states
 
@@ -426,6 +744,42 @@
 
 - [Jean Dolbeault, Maria J. Esteban, Eric Séré, Distinguished self-adjoint extension and eigenvalues of operators with gaps. Application to Dirac-Coulomb operators, J. Spectr. Theory 13 (2023), no. 2, 491–524, arXiv:2206.11679](https://arxiv.org/abs/2206.11679)
 
+### Cyclic vacua remove invisible states
+
+**Remember:** A dense set of vacuum descendants leaves no room for an unseen sector.
+
+*Rules out counterexamples.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Vacuum correlations are expectations of products of fields in the vacuum state. Each field acts on vectors after averaging against a smooth test function. The vacuum is cyclic when the vectors obtained by applying such field products to it span a dense subspace.
+
+**Problem.** Within the Wightman axioms, all vacuum correlation functions together determine the theory up to a unitary change of Hilbert space.
+
+**How the definition helps.** Cyclicity makes the inner products recorded by vacuum correlations determine the whole Hilbert space. In our own proof, match vectors built from identical field products in the two theories. Their inner products agree, so this correspondence extends from their dense spans to a unitary map. Adding one more field to a product shows that the map respects the fields on those spans. Our own counterexample adds an orthogonal positive-energy particle space with no invariant vector and lets every field vanish there. Vacuum correlations cannot detect this space. Constructing a theory from proposed correlations is the separate existence part of reconstruction.
+
+**nLab:** [Wightman axioms](https://ncatlab.org/nlab/show/Wightman+axioms). It says: “and all such Wightman theories are then unitarily equivalent.”
+
+**Sources:**
+
+- [Arthur S. Wightman, Quantum Field Theory in Terms of Vacuum Expectation Values (1956)](https://doi.org/10.1103/PhysRev.101.860)
+
+### Haag duality localizes purification changes
+
+**Remember:** Equal expectations on one side allow a change of vector on the other.
+
+*Rules out counterexamples.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, quant-ph. Level 4: research.
+
+**Definition.** A von Neumann algebra contains the identity and is closed under adjoints and weak operator limits. Weak convergence means convergence of every matrix element between fixed vectors. Two such algebras satisfy Haag duality when each consists of all bounded operators commuting with the other.
+
+**Problem.** If two unit vectors give the same expectations on the first algebra, Haag duality lets the second algebra carry one to the other. The operator is a partial isometry, meaning it preserves lengths on the subspace where it acts nontrivially.
+
+**How the definition helps.** Haag duality puts every operator commuting with the first algebra in the second algebra. In our own proof, match Aψ with Aφ for every operator A in the first algebra. Equal expectations give equal inner products, so this map extends to an isometry between the closed spans. Both spans and their orthogonal complements are invariant under the algebra. Extending the map by zero on the first span’s orthogonal complement therefore gives the required commuting operator. Our own counterexample uses all matrices on one tensor factor and only scalars on the other. Changing the second factor of a product vector preserves the first state, but scalars cannot rotate that factor.
+
+**Paper or page:** [Uniqueness of purifications is equivalent to Haag duality](https://arxiv.org/abs/2509.12911v1). It says: “has the Uhlmann property if and only if Haag duality holds.”
+
+**Sources:**
+
+- [Uniqueness of purifications is equivalent to Haag duality](https://arxiv.org/abs/2509.12911v1)
+
 ### Microcausal observables make the Wick algebra well defined
 
 **Remember:** Forbid the directions in which Hadamard singularities would collide.
@@ -462,6 +816,24 @@
 **Sources:**
 
 - [Romeo Brunetti, Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds, Commun. Math. Phys. 208 (2000) 623–661, arXiv:math-ph/9903028](https://arxiv.org/abs/math-ph/9903028)
+
+### Reflection positivity gives nonnegative norms
+
+**Remember:** Reflect one argument before asking whether the pairing can be a norm.
+
+*Rules out counterexamples.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Reflection positivity requires a nonnegative pairing of each positive-time observable with its time-reflected complex conjugate. The pairing uses the Euclidean correlation functions, where time is treated as a spatial coordinate. Ordinary positivity pairs an observable with its complex conjugate without reflecting time.
+
+**Problem.** With reflection positivity, the reflected pairing defines a Hilbert space after quotienting its zero-norm vectors and completing.
+
+**How the definition helps.** In our own explanation, checking the squared norm is exactly the new positivity test. The quotient removes all null vectors by the Cauchy–Schwarz inequality. Our own counterexample to ordinary positivity alone is the time covariance cos(t − s). It is a positive covariance, but the reflected covariance cos(t + s) is negative on the diagonal at t = π⁄2. The Osterwalder–Schrader reconstruction theorem does the further work of recovering a relativistic theory under additional hypotheses.
+
+**nLab:** [reflection positivity](https://ncatlab.org/nlab/show/reflection+positivity). It says: “In quantum field theory reflection positivity is the incarnation of unitarity under Wick rotation via a form of the Osterwalder-Schrader theorem.”
+
+**Sources:**
+
+- [Konrad Osterwalder and Robert Schrader, Axioms for Euclidean Green's functions (1973)](https://doi.org/10.1007/BF01645738)
 
 ### Causal perturbation theory makes causal factorization an axiom of the S-matrix
 
@@ -519,6 +891,24 @@
 - [G. Popineau, Raymond Stora, A pedagogical remark on the main theorem of perturbative renormalization theory, Nuclear Physics B 912 (2016) 70–78](https://doi.org/10.1016/j.nuclphysb.2016.04.046)
 - [Henri Epstein, Vladimir Glaser, The role of locality in perturbation theory, Annales de l'Institut Henri Poincaré A 19 (1973) 211](http://www.numdam.org/item/AIHPA_1973__19_3_211_0/)
 - [Romeo Brunetti, Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds, Communications in Mathematical Physics 208 (2000) 623–661, arXiv:math-ph/9903028](https://arxiv.org/abs/math-ph/9903028)
+
+### Hadamard differences are smooth
+
+**Remember:** The difference has no singular direction left once symmetry reverses those directions.
+
+*True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** A two-point function records correlations between two field values. Its wave front set records where singularities occur and their directions. The Hadamard condition selects pairs of directions along light rays, future-directed at the first point and opposite after transport to the second. The field commutation rule fixes the antisymmetric part.
+
+**Problem.** Consider the same free real scalar field on a globally hyperbolic spacetime, where a spatial slice determines evolution. Any two Hadamard two-point functions differ by a smooth function.
+
+**How the definition helps.** The chosen directions rule out every singularity of a symmetric difference. In our own proof, the common antisymmetric part cancels, so exchanging the two arguments preserves the difference. Every possible singular direction points toward the future in the first argument and toward the past in the second. Exchanging the arguments would reverse that requirement. An empty wave front set means the difference is smooth. Radzikowski proved that the direction condition agrees with the older local expansion of the singularity.
+
+**nLab:** [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “the wave front set is one causal half that of the causal propagator”
+
+**Sources:**
+
+- [Marek Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time (1996)](https://doi.org/10.1007/BF02100096)
 
 ### Spin-statistics for topological field theories follows from a sign-twisted duality structure
 

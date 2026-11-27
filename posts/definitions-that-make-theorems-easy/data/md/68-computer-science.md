@@ -1,3 +1,127 @@
+### Mutual reachability removes cycles
+
+**Remember:** A cycle of groups would be one group.
+
+*True by definition.* MSC 68R10 (Graph theory (including graph drawing) in computer science). arXiv cs.DM, cs.DS. Level 1: early undergraduate.
+
+**Definition.** Group vertices when each is reachable from the other by a directed path. Keep an edge between different groups if the original graph has such an edge. Unlike one-way reachability, mutual reachability gives a partition.
+
+**Problem.** The graph of groups has no directed cycles.
+
+**How the definition helps.** In our own argument, a cycle of groups would make any two vertices on it mutually reachable. In our own argument, paths inside each group connect the ends of edges between groups. The work moves to finding the mutual reachability groups before ordering the groups so all edges go forward.
+
+**Wikipedia:** [Strongly connected component](https://en.wikipedia.org/wiki/Strongly_connected_component). It says: “If each strongly connected component is contracted to a single vertex, the resulting graph is a directed acyclic graph”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative edges settle distances
+
+**Remember:** An extra edge cannot make a path cheaper.
+
+*Rules out counterexamples.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C85. arXiv cs.DS. Level 1: early undergraduate.
+
+**Definition.** Give every edge of a finite directed graph a nonnegative length. This allows zero-length edges and rules out paths that become cheaper when extended.
+
+**Problem.** Start at one source. Dijkstra’s algorithm tracks the shortest distance found so far to each vertex. Among unfinished vertices, it can permanently accept the smallest finite distance.
+
+**How the definition helps.** Nonnegative lengths make every prefix of a path cost at most the whole path. In our own proof, after accepting the source, consider a shorter competing path and its first unfinished vertex. Processing its finished predecessor would have offered that vertex a distance smaller than the chosen minimum. For our own counterexample, take edges from s to a and b of lengths 2 and 3. An edge of length −2 from b to a makes accepting distance 2 too early.
+
+**Wikipedia:** [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm). It says: “Dijkstra's algorithm is commonly used on graphs where the edge weights are non-negative integers or real numbers.”
+
+**Sources:**
+
+- [Edsger W. Dijkstra, A Note on Two Problems in Connexion with Graphs (1959)](https://doi.org/10.1007/BF01386390)
+
+### Cartesian trees encode minima
+
+**Remember:** The first common ancestor is the smallest entry in the interval.
+
+*True by definition.* MSC 68P05 (Data structures). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Build a binary tree on the distinct entries of an array. At every node, the left subtree, the node itself, and the right subtree occur in that order in the array. Each parent has a smaller value than its children.
+
+**Problem.** The minimum on an inclusive array interval is the value at the deepest node ancestral to both endpoints. A node counts as its own ancestor.
+
+**How the definition helps.** In our own proof, array order locates the common ancestor and parent order makes it smallest. The deepest common ancestor lies between the endpoints because they occupy different branches unless one is that ancestor. Its subtree covers a consecutive block containing the entire interval. The work shifts from scanning intervals to building the tree and finding common ancestors.
+
+**Wikipedia:** [Cartesian tree](https://en.wikipedia.org/wiki/Cartesian_tree). It says: “In a Cartesian tree, this minimum value can be found at the lowest common ancestor of the leftmost and rightmost values in the subsequence.”
+
+**Sources:**
+
+- [Erik D. Demaine, Gad M. Landau, and Oren Weimann, On Cartesian Trees and Range Minimum Queries (2009)](https://doi.org/10.1007/978-3-642-02927-1_29)
+
+### Light edges halve subtrees
+
+**Remember:** An unchosen child has a sibling at least as large.
+
+*True by definition.* MSC 68P05 (Data structures). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a rooted tree, mark one edge from each non-leaf node to a child whose subtree contains the most nodes. Break ties arbitrarily. Call the marked edges heavy and the other edges light.
+
+**Problem.** A root-to-leaf path in an n-node tree crosses at most log₂ n light edges.
+
+**How the definition helps.** Choosing a largest child guarantees that a light child has a sibling with at least as many descendants, counting each child itself. A light step therefore at least halves the remaining subtree size. Starting with n nodes allows at most log₂ n such steps. In our own example, marking an arbitrary child could leave a long chain of light edges, each with a single leaf sibling.
+
+**Wikipedia:** [Heavy-light decomposition](https://en.wikipedia.org/wiki/Heavy-light_decomposition). It says: “Therefore, on any root-to-leaf path of a tree with n nodes, there can be at most log₂ n light edges.”
+
+**Sources:**
+
+- [Daniel D. Sleator and Robert Endre Tarjan, A Data Structure for Dynamic Trees (1983)](https://doi.org/10.1016/0022-0000(83)90006-5)
+
+### Path copying preserves versions
+
+**Remember:** Copy the path, share the branches.
+
+*True by definition.* MSC 68P05 (Data structures). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Store each version of a rooted tree by keeping its root. Once created, a node’s value and child pointers cannot change. To update a stored value, copy its node and every ancestor, then direct the copied pointers along the new path. Both versions share all branches off this path.
+
+**Problem.** Changing one value at depth h creates h + 1 new nodes and preserves every older version. Depth counts edges from the root.
+
+**How the definition helps.** In our own proof, copying the path gives the new version its changed value while every old root still reaches exactly its original nodes. Updating the node in place would also change what earlier roots see. The path has h ancestors and one changed node. For more complicated updates, the work lies in bounding how many nodes need copying.
+
+**Wikipedia:** [Persistent data structure](https://en.wikipedia.org/wiki/Persistent_data_structure). It says: “Path copying is one of the simple methods to achieve persistency in a certain data structure such as binary search trees.”
+
+**Sources:**
+
+- [James R. Driscoll, Neil Sarnak, Daniel D. Sleator, and Robert E. Tarjan, Making Data Structures Persistent (1989)](https://doi.org/10.1016/0022-0000(89)90034-2)
+
+### Random priorities speed treap searches
+
+**Remember:** Priorities choose the root before either side.
+
+*True by definition.* MSC 68P05 (Data structures). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A treap stores keys in a binary search tree, with smaller keys to the left and larger keys to the right. Each key has an independent random priority from the same continuous distribution. A parent must have higher priority than its children.
+
+**Problem.** For n distinct keys, the treap has the same distribution as a binary search tree built in uniformly random insertion order. Searching for a fixed key takes O(log(n + 1)) expected comparisons.
+
+**How the definition helps.** The highest-priority key must be the root, exactly as if it had been inserted first into an empty search tree. The same rule applies recursively on each side. In our own argument, the independent continuous priorities give every insertion order equal probability. The search bound comes from the separate analysis of a binary search tree built in random order.
+
+**Wikipedia:** [Treap](https://en.wikipedia.org/wiki/Treap). It says: “inserting the nodes highest priority-first into a binary search tree without doing any rebalancing.”
+
+**Sources:**
+
+- [Raimund Seidel and Cecilia R. Aragon, Randomized Search Trees (1996)](https://doi.org/10.1007/s004539900061)
+
+### Binary tests certify sorting networks
+
+**Remember:** Turn any failed comparison into a one before a zero.
+
+*Rules out counterexamples.* MSC 68P10 (Searching and sorting), 68W10. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A comparator sends the smaller input to one wire and the larger to another. A comparator network fixes all wire pairs in advance. Unlike a general sorting procedure, it only uses these minimum and maximum gates.
+
+**Problem.** A fixed comparator network sorts every input from a total order if it sorts every binary input.
+
+**How the definition helps.** Every threshold commutes with minimum and maximum, so it commutes with each gate and therefore the entire network. In our own proof, a failed sort leaves a larger output before a smaller one. Map values above the smaller one to one and all other values to zero. The binary output now has a one before a zero. The work lies in checking binary inputs.
+
+**Wikipedia:** [Sorting network](https://en.wikipedia.org/wiki/Sorting_network). It says: “if a sorting network can correctly sort all 2ⁿ sequences of zeros and ones, then it is also valid for arbitrary ordered inputs.”
+
+**Sources:**
+
+- [Kenneth E. Batcher, Sorting Networks and Their Applications (1968)](https://doi.org/10.1145/1468075.1468121)
+
 ### A read-only input tape makes logarithmic space a meaningful class
 
 **Remember:** Do not charge a machine for merely reading its input.
@@ -48,6 +172,24 @@
 
 - [Cook, S. A. (1971). The complexity of theorem-proving procedures. Proc. 3rd ACM Symposium on Theory of Computing, 151–158.](https://doi.org/10.1145/800157.805047)
 
+### Binary grammar rules fix the length of every nonempty derivation
+
+**Remember:** One rule per letter and one fewer split.
+
+*True by definition.* MSC 68Q42 (Grammars and rewriting systems), 68Q45. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** In Chomsky normal form, a rule either replaces a variable by two variables or emits one letter. Only the start variable can have an empty rule, and that variable then cannot appear on a rule’s right side.
+
+**Problem.** In Chomsky normal form, every derivation of a word of length n greater than zero takes exactly 2n − 1 rule applications.
+
+**How the definition helps.** In our own proof, the two permitted rule types determine their counts from the final word length. Exactly n rules emit letters, each removing one variable. Every split adds one variable. Starting with one variable and ending with none therefore requires n − 1 splits. The normal-form theorem does the separate work of converting a context-free grammar while preserving its language.
+
+**Wikipedia:** [Chomsky normal form](https://en.wikipedia.org/wiki/Chomsky_normal_form). It says: “Every grammar in Chomsky normal form is context-free, and conversely, every context-free grammar can be transformed into an equivalent one”
+
+**Sources:**
+
+- [Noam Chomsky. On Certain Formal Properties of Grammars. 1959.](https://doi.org/10.1016/S0019-9958(59)90362-6)
+
 ### Chomsky normal form forces repeated symbols along long derivation paths
 
 **Remember:** Many leaves in a binary tree force a long path.
@@ -81,6 +223,24 @@
 **Wikipedia:** [Context-free language](https://en.wikipedia.org/wiki/Context-free_language). It says: “the union of two context-free languages is always context-free.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A zero threshold turns probabilities into reachability
+
+**Remember:** At zero, one positive path is enough.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A finite probabilistic automaton assigns a probability to each path taken while reading a word. Usually it accepts when the sum of accepting path probabilities exceeds a chosen threshold. At threshold zero, it accepts whenever this sum is positive.
+
+**Problem.** Every language accepted at threshold zero by a finite probabilistic automaton is regular.
+
+**How the definition helps.** In our own proof, a finite sum of nonnegative path probabilities is positive exactly when one path has positive probability. Keep the possible starting states and the transitions with positive probability. The resulting machine accepts if any path reaches an accepting state. The equivalence between this kind of machine and deterministic finite automata gives regularity.
+
+**Paper or page:** [On the Theory of Stochastic Automata](https://arxiv.org/abs/2103.14423v1). It says: “Each 0-stochastic language is regular.”
+
+**Sources:**
+
+- [Merve Nur Cakir, Mehwish Saleemi, Karl-Heinz Zimmermann. On the Theory of Stochastic Automata. 2021.](https://arxiv.org/abs/2103.14423v1)
 
 ### Complete deterministic automata recognize complements by swapping accepting states
 
@@ -116,6 +276,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Deterministic paths make regular word counts rational
+
+**Remember:** One path per word makes matrix powers count words.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata), 05A15. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** Count the letters that move between each pair of states in a deterministic finite automaton. Put these counts in a matrix. Count each accepted word by its path instead of enumerating words from a regular expression.
+
+**Problem.** The generating function for the number of accepted words of each length is rational for every regular language.
+
+**How the definition helps.** In our own proof, determinism makes each accepted word count exactly once among paths from the start to an accepting state. If M counts letters on transitions, its nth power counts paths of length n. Weight each path by one factor of z per letter. Summing all lengths gives the inverse of I − zM, whose entries are rational functions of z. The start row and accepting columns give the required series. The equivalence with deterministic automata lets this proof cover languages given by regular expressions.
+
+**Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “The generating function of a language L is a rational function if L is regular.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Deterministic stack machines make complementation possible
+
+**Remember:** One finished run gives one answer to flip.
+
+*Rules out counterexamples.* MSC 68Q45 (Formal languages and automata), 68Q42. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A pushdown automaton reads letters and stores symbols on a stack, where it can access only the top. A deterministic one has at most one possible move in each situation. The languages such machines accept are called deterministic context-free languages.
+
+**Problem.** The complement of every deterministic context-free language is deterministic context-free.
+
+**How the definition helps.** In our own explanation, determinism gives one decision to reverse once every run finishes. A normal-form theorem supplies an equivalent machine that reads through an end marker and always decides. Swapping its decisions then recognizes the complement. For our own counterexample without determinism, take all words over a, b and c except those of the form aⁿbⁿcⁿ for n ≥ 0. A stack machine can detect a wrong letter order or guess which adjacent block counts differ. Its complement is the standard example of a language no pushdown automaton recognizes.
+
+**Wikipedia:** [Deterministic context-free language](https://en.wikipedia.org/wiki/Deterministic_context-free_language). It says: “The set of deterministic context-free languages is closed under the following operations: complement”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Nondeterministic automata recognize reversed regular languages by reversing transitions
 
 **Remember:** Reverse every arrow and swap the start and accepting states.
@@ -148,6 +340,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Regular expressions make letter substitution preserve regularity
+
+**Remember:** Replace the letters and keep the expression’s operations.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A string homomorphism replaces each letter with a fixed word, possibly empty. Apply it to a regular expression by replacing each literal letter with an expression for its replacement word. Leave union, concatenation and repetition in place.
+
+**Problem.** The image of a regular language under any string homomorphism is regular.
+
+**How the definition helps.** Our own explanation is that replacing letters commutes with union, concatenation and taking all finite repetitions. Induction on the expression then identifies the new language with the image, by our own explanation. Kleene’s theorem carries the work of relating the expression proof to finite automata, by our own explanation.
+
+**Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “the trio operations: string homomorphism, inverse string homomorphism, and intersection with regular languages.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regular expressions make regular languages closed under Kleene star
 
 **Remember:** Star is one of the rules for building expressions.
@@ -161,6 +369,22 @@
 **How the definition helps.** The expression definition builds in all three closure rules. For a finite automaton, star instead takes a construction that can restart the machine after an accepting run (our own). To apply the expression proof to automata, use Kleene’s theorem, which proves that both definitions give the same languages.
 
 **Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “If A is a regular language, A\* (Kleene star) is a regular language. Due to this, the empty string language {ε} is also regular.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sets of reachable states make nondeterministic automata deterministic
+
+**Remember:** Track all possible states as one definite set.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A nondeterministic finite automaton can follow several transitions for a letter. Use the set of all currently reachable states as one state of a new machine. For each letter, take the union of the destinations from all states in the set.
+
+**Problem.** Every nondeterministic finite automaton without empty-input moves has an equivalent deterministic finite automaton.
+
+**How the definition helps.** In our own proof, taking all possible states together gives exactly one next set for each input letter. Start with the set of initial states. Induction on the input length shows that the stored set contains exactly the states reachable in the original machine. Accept if this set contains an accepting state. Finitely many subsets suffice because the original state set is finite.
+
+**Wikipedia:** [Powerset construction](https://en.wikipedia.org/wiki/Powerset_construction). It says: “In contrast, to simulate an NFA, one needs to keep track of a set of states: all of the states that the automaton could reach after seeing the same prefix of the input”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -200,6 +424,110 @@
 
 - [Janusz A. Brzozowski, Derivatives of Regular Expressions](https://doi.org/10.1145/321239.321249)
 
+### The least submonoid definition gives induction for word repetition
+
+**Remember:** A set closed under joining already contains every repetition.
+
+*True by definition.* MSC 68Q70 (Algebraic theory of languages and automata), 68Q45. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** The star of a language L is the smallest set containing L and the empty word that is closed under joining words end to end. Equivalently, it consists of all finite concatenations of words from L.
+
+**Problem.** If a property holds for the empty word and every word in L and survives concatenation, it holds throughout the star of L.
+
+**How the definition helps.** The words with the property form a set of the kind used in the definition, by our own explanation. The smallest such set lies inside it, by our own explanation. The work moves to proving that finite concatenations form precisely that smallest set, by our own explanation.
+
+**nLab:** [regular language](https://ncatlab.org/nlab/show/regular+language). It says: “is the smallest submonoid of V∗ that contains L(R).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real time excludes stale reads
+
+**Remember:** A finished write comes before a later read.
+
+*Rules out counterexamples.* MSC 68Q85 (Models and methods for concurrent and distributed computing (process algebras, bisimulation, transition nets, etc.)). arXiv cs.DC. Level 2: later undergraduate.
+
+**Definition.** A register stores a value, and a sequential read returns the most recently written value or the initial value. For a history of completed operations, linearizability requires a valid sequential order preserving the observed results. Whenever one operation finishes before another starts, that order must put it first. Sequential consistency requires only that the valid order respect each process’s own program order.
+
+**Problem.** In a linearizable register, a read that starts after a write completes cannot return the older value if there is no other write.
+
+**How the definition helps.** In our own argument, real-time order forces the read to follow the write in the sequential explanation. In our own example, one process finishes writing 1 and another then reads the initial 0. In our own argument, sequential consistency permits that result by placing the reader first. The work moves to proving that all operation results admit one sequential explanation within their time intervals.
+
+**Wikipedia:** [Linearizability](https://en.wikipedia.org/wiki/Linearizability), [Sequential consistency](https://en.wikipedia.org/wiki/Sequential_consistency). It says: “If an operation op₁ completes (gets a response) before op₂ begins (invokes), then op₁ precedes op₂ in σ.”
+
+**Sources:**
+
+- [Maurice P. Herlihy and Jeannette M. Wing, Linearizability: A Correctness Condition for Concurrent Objects (1990)](https://doi.org/10.1145/78969.78972)
+
+### Boundary relations stack strips
+
+**Remember:** Match the shared boundary to stack two strips.
+
+*True by definition.* MSC 68R05 (Combinatorics in computer science), 05B45. arXiv cs.DM. Level 2: later undergraduate.
+
+**Definition.** Each square tile has fixed orientation and a color on each edge. Touching edges must have the same color. Relate two color sequences extending infinitely in both directions when they form the lower and upper boundaries of a valid tile row. Compose relations by using one middle sequence as the upper boundary of one strip and the lower boundary of the next.
+
+**Problem.** The nth power of the one-row relation describes exactly the possible boundaries of strips of height n.
+
+**How the definition helps.** In our own argument, composition records exactly the condition for stacking strips without storing their interior tiles. Matching middle colors let us join any two strips with that seam. Conversely, cutting a strip supplies the middle sequence. The work lies in finding rows that realize the specified boundaries.
+
+**Paper or page:** [The domino problem is decidable for robust tilesets](https://arxiv.org/abs/2402.04438v1). It says: “there exists a valid tiling by τ of ℤ × \[0;n−1\] the horizontal strip of height n.”
+
+**Sources:**
+
+- [Nathalie Aubrun, Manon Blanc, Olivier Bournez, The domino problem is decidable for robust tilesets, arXiv:2402.04438v1](https://arxiv.org/abs/2402.04438v1)
+
+### Augmenting paths test maximum matchings
+
+**Remember:** A larger matching leaves a path with one extra edge.
+
+*Makes the theorem clean to state or prove.* MSC 68R10 (Graph theory (including graph drawing) in computer science). arXiv cs.DM, cs.DS. Level 2: later undergraduate.
+
+**Definition.** A matching in a finite undirected graph is a set of edges with no shared endpoints. An augmenting path has distinct vertices, uses at least one edge, and begins and ends at vertices untouched by the matching. Its edges alternate between edges outside the matching and edges in it.
+
+**Problem.** A matching has maximum size exactly when it has no augmenting path.
+
+**How the definition helps.** An augmenting path turns a comparison with all larger matchings into a test involving only the current matching. Swapping membership along the path adds one edge. Conversely, compare the current matching with a larger one and keep only edges belonging to exactly one. Each remaining vertex has at most one edge from each matching. The edges split into alternating paths and even cycles. Some path must contain an extra edge from the larger matching, so it augments the current one.
+
+**Wikipedia:** [Berge's theorem](https://en.wikipedia.org/wiki/Berge%27s_theorem). It says: “D consists of paths and even cycles”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Layered walks test divisibility
+
+**Remember:** Count steps by changing layers.
+
+*Makes the theorem clean to state or prove.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C20. arXiv cs.DM, cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a strongly connected directed graph, each vertex can reach every other by following arrows. For a finite such graph containing a cycle, its period is the greatest common divisor of its directed cycle lengths. Give each vertex k copies numbered modulo k. Each arrow goes from every copy of its tail to the next numbered copy of its head.
+
+**Problem.** Let k be a positive integer at most the number of vertices. Ignore the arrows between copies. The period is divisible by k exactly when copy zero of a fixed vertex cannot reach any other copy of itself.
+
+**How the definition helps.** In our own proof, the copy number records the length of a directed walk modulo k. Suppose k divides every cycle length. Walks from the fixed vertex to the same destination then have equal remainders. Appending a common return walk proves this, since each closed walk splits into directed cycles. Subtracting the destination remainder from the copy number gives a quantity unchanged across each edge in either direction. Conversely, visit a cycle whose length has nonzero remainder and return to the fixed vertex. Traversing the cycle once more changes the final copy, so at least one walk finishes outside copy zero.
+
+**Paper or page:** [The complexity of computing the period and the exponent of a digraph](https://arxiv.org/abs/2408.05762v2). It says: “k divides the period of G if and only if there is no undirected path”
+
+**Sources:**
+
+- [Stefan Kiefer, Andrew Ryzhikov, The complexity of computing the period and the exponent of a digraph, arXiv:2408.05762v2](https://arxiv.org/abs/2408.05762v2)
+
+### Reweighting preserves shortest paths
+
+**Remember:** The middle potentials cancel.
+
+*True by definition.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C85. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Assign each vertex v of a finite directed graph a number h(v), called its potential. Add h(u) − h(v) to the weight of each edge from u to v.
+
+**Problem.** Reweighting preserves the shortest paths between any fixed pair of vertices. If no cycle has negative weight, some potential makes every edge weight nonnegative.
+
+**How the definition helps.** In our own argument, the intermediate potentials cancel, so paths with the same endpoints gain the same amount. Adding a constant per edge would instead penalize paths with more edges. Add a source with zero-weight edges to all vertices. Without negative cycles, the Bellman–Ford algorithm computes the distances h from that source. Every edge weight w satisfies h(v) ≤ h(u) + w, making its new weight nonnegative.
+
+**Wikipedia:** [Johnson's algorithm](https://en.wikipedia.org/wiki/Johnson%27s_algorithm). It says: “It works by using the Bellman–Ford algorithm to compute a transformation of the input graph that removes all negative weights”
+
+**Sources:**
+
+- [Donald B. Johnson, Efficient Algorithms for Shortest Paths in Sparse Networks (1977)](https://doi.org/10.1145/321992.321993)
+
 ### Mechanical Sturmian words are balanced because their block sums telescope
 
 **Remember:** Add consecutive differences to count the ones in any block.
@@ -218,6 +546,184 @@
 
 - [M. Morse, G. A. Hedlund, Symbolic dynamics II. Sturmian trajectories, Amer. J. Math. 62 (1940) 1–42](https://doi.org/10.2307/2371431)
 
+### Coefficients test higher-order monotonicity
+
+**Remember:** Read the sign from the highest coefficient.
+
+*True by definition. Confidence: medium.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 52C35. arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Fix an integer k ≥ 1 and k + 1 planar points with distinct horizontal coordinates. Call them positive if a function through them has a nonnegative kth derivative everywhere. The alternative test reads the coefficient of xᵏ in the unique polynomial of degree at most k through the points.
+
+**Problem.** A nonnegative coefficient characterizes positive point sets. A nonpositive coefficient likewise characterizes sets admitting a function with everywhere nonpositive kth derivative.
+
+**How the definition helps.** In our own proof, a nonnegative coefficient immediately gives the required function because the polynomial’s kth derivative equals that coefficient times k factorial. Conversely, subtract the polynomial from any function witnessing positivity. The difference vanishes at all k + 1 coordinates. Applying Rolle’s theorem k times shows that the two kth derivatives agree somewhere between the extreme coordinates. This proves the coefficient test, and reversing the signs proves its negative counterpart.
+
+**Paper or page:** [Higher-order Erdos--Szekeres theorems](https://arxiv.org/abs/1111.3824v3). It says: “and it equals f⁽ᵏ⁾(x)/k! (which is a constant function).”
+
+**Sources:**
+
+- [Marek Elias, Jiri Matousek, Higher-order Erdos–Szekeres theorems, arXiv:1111.3824v3](https://arxiv.org/abs/1111.3824v3)
+
+### Lower envelopes give power diagrams
+
+**Remember:** Subtract the common square, then compare only planes.
+
+*True by definition.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** Give each center c in Euclidean space a real weight w. Its power at x is the squared distance from x to c minus w. Its power cell consists of points where this value is minimal among all centers, including ties.
+
+**Problem.** Each power cell is the set where one affine function attains the pointwise minimum of all the functions. An affine function is a linear function plus a constant.
+
+**How the definition helps.** In our own proof, squaring the distance gives the same quadratic term x · x for every center. Subtract it from every power and the function for center c becomes c · c − 2c · x − w. The dot denotes the usual inner product. Removing a common term preserves every comparison and tie. Using ordinary distance would leave square roots in the comparison. The remaining work is to construct the lower envelope, or pointwise minimum, of these affine functions.
+
+**Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “The power diagram of n spheres in d dimensions is combinatorially equivalent to the intersection of a set of n upward-facing halfspaces”
+
+**Sources:**
+
+- [Franz Aurenhammer, Power Diagrams: Properties, Algorithms and Applications (1987)](https://doi.org/10.1137/0216006)
+
+### Minimum trees need empty disks
+
+**Remember:** A point inside the disk offers a shorter replacement.
+
+*Rules out counterexamples.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)). arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** For distinct points p and q in a finite planar set, draw the closed disk with diameter pq. The Gabriel graph joins p and q exactly when this disk contains no third point.
+
+**Problem.** A Euclidean minimum spanning tree connects all the points with minimum total edge length. Every edge of every such tree belongs to the Gabriel graph.
+
+**How the definition helps.** In our own proof, a third point in the closed disk gives a shorter replacement whichever way deleting the tree edge splits the tree. Its distances to both endpoints are strictly less than the diameter because it differs from both endpoints. Connect it to the endpoint in the other component. This restores a tree and lowers the total length, contradicting minimality.
+
+**Wikipedia:** [Gabriel graph](https://en.wikipedia.org/wiki/Gabriel_graph), [Euclidean minimum spanning tree](https://en.wikipedia.org/wiki/Euclidean_minimum_spanning_tree). It says: “The Gabriel graph contains, as subgraphs, the Euclidean minimum spanning tree, the relative neighborhood graph, and the nearest neighbor graph.”
+
+**Sources:**
+
+- [K. Ruben Gabriel and Robert R. Sokal, A New Statistical Approach to Geographic Variation Analysis (1969)](https://doi.org/10.2307/2412323)
+
+### Minkowski optimization queries add
+
+**Remember:** Maximize separately, then add the points.
+
+*True by definition.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 52B55. arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** A polytope is the convex hull of a nonempty finite set of points. Its optimization oracle returns a point that maximizes a requested linear function. A Minkowski sum consists of sums of one point from each polytope. For the sum, use this interface instead of listing its vertices.
+
+**Problem.** One optimization query on a Minkowski sum needs only one query per summand, followed by addition.
+
+**How the definition helps.** In our own argument, an oracle can maximize over each summand separately without listing the vertices of the sum. A linear function takes a sum of points to the sum of their values. Adding one maximizing point from each summand therefore gives a maximizing point for the whole sum. The work lies in answering the individual queries.
+
+**Paper or page:** [Efficient edge-skeleton computation for polytopes defined by oracles](https://arxiv.org/abs/1412.3987v1). It says: “If P₁, …, Pᵣ ⊂ ℝᵈ are given by optimization oracles, then we compute an optimization oracle”
+
+**Sources:**
+
+- [Ioannis Z. Emiris, Vissarion Fisikopoulos, Bernd Gärtner, Efficient edge-skeleton computation for polytopes defined by oracles, arXiv:1412.3987v1](https://arxiv.org/abs/1412.3987v1)
+
+### Turn signs order rays
+
+**Remember:** From a hull corner, every turn compares two rays.
+
+*Rules out counterexamples.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 52C35. arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** For labeled planar points with no three on a line, the order type records the clockwise or counterclockwise turn of every ordered triple. This replaces the full coordinates. Fix a vertex a of the convex hull, the smallest convex set containing the points.
+
+**Problem.** At a hull vertex a, put p before q when the turn from a through p to q is counterclockwise. This rule totally orders all other points.
+
+**How the definition helps.** In our own argument, all rays from a hull vertex lie in an angle smaller than half a turn. Within that angle, the turn sign compares directions in their ordinary angular order. At the center of an equilateral triangle, the same comparison cycles through the three corners.
+
+**Paper or page:** [A canonical tree decomposition for order types, and some applications](https://arxiv.org/abs/2403.10311v2). It says: “defines a strict total order on X ∖ {a}.”
+
+**Sources:**
+
+- [Mathilde Bouvel, Valentin Féray, Xavier Goaoc, Florent Koechlin, A canonical tree decomposition for order types, and some applications, arXiv:2403.10311v2](https://arxiv.org/abs/2403.10311v2)
+
+### Residual reachability certifies maximum flow
+
+**Remember:** When no flow can get through, inspect the cut.
+
+*True by definition.* MSC 68W05 (Nonnumerical algorithms). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a finite directed network, each edge has a nonnegative capacity. A feasible flow respects those capacities and conserves flow at every vertex except the source and sink. Give each edge a forward residual edge for unused capacity and a backward residual edge for flow that can be undone. Keep only residual edges with positive capacity.
+
+**Problem.** A flow is maximum exactly when its residual graph has no path from source to sink.
+
+**How the definition helps.** In our own proof, allowing backward steps makes a residual path describe a feasible increase even when some earlier decisions must be reversed. Increase the flow along that path by its smallest residual capacity, undoing flow at backward steps. If no path exists, group all vertices reachable from the source. Every original edge leaving this group is full, and every original edge entering it carries zero flow. Flow conservation then makes the current value equal the group’s total outgoing capacity, an upper bound for every flow.
+
+**Wikipedia:** [Ford–Fulkerson algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm), [Max-flow min-cut theorem](https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem). It says: “When no more paths in step 2 can be found, s will not be able to reach t in the residual network.”
+
+**Sources:**
+
+- [L. R. Ford Jr. and D. R. Fulkerson, Maximal Flow Through a Network (1956)](https://doi.org/10.4153/CJM-1956-045-5)
+
+### Vector clocks detect causality
+
+**Remember:** Each coordinate records how far that process has reached you.
+
+*True by definition.* MSC 68W15 (Distributed algorithms). arXiv cs.DC. Level 2: later undergraduate.
+
+**Definition.** Number each process’s events starting at one. Causal precedence follows local event order and links from sending a message to receiving it, including chains of these steps. For each event, include that event and all its causal predecessors. Record the largest included event number for each process, using zero if it has none.
+
+**Problem.** One event causally precedes another exactly when its vector is at most the other's in every coordinate and smaller in some coordinate.
+
+**How the definition helps.** In our own proof, the vector records a prefix of each process’s events, so comparing vectors tests inclusion of causal histories. A single increasing timestamp can order events even when neither caused the other. The work lies in maintaining those prefixes locally by counting events and merging received clocks with coordinatewise maxima.
+
+**Wikipedia:** [Vector clock](https://en.wikipedia.org/wiki/Vector_clock). It says: “every process also keeps track of the largest value of each of the other processes' clocks that it has so far been informed of.”
+
+**Sources:**
+
+- [Reinhard Schwarz and Friedemann Mattern, Detecting causal relationships in distributed computations: In search of the holy grail (1994)](https://doi.org/10.1007/BF02277859)
+
+### Universal hashing bounds collisions
+
+**Remember:** Count each colliding pair, then add its probability.
+
+*True by definition.* MSC 68W20 (Randomized algorithms). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Choose a hash function at random from a family that maps keys to m bins. For any fixed pair of distinct keys, their chance of sharing a bin is at most 1/m. This replaces a single fixed hash function.
+
+**Problem.** Fix n distinct keys before choosing the function. The expected number of unordered pairs sharing a bin is at most n(n − 1)/(2m).
+
+**How the definition helps.** In our own proof, the defining probability bound applies separately to each of the n(n − 1)/2 pairs. Adding their probabilities gives the expected number of collisions, even when different pairs collide dependently. The work lies in constructing a family with that probability bound.
+
+**Wikipedia:** [Universal hashing](https://en.wikipedia.org/wiki/Universal_hashing). It says: “This guarantees a low number of collisions in expectation, even if the data is chosen by an adversary.”
+
+**Sources:**
+
+- [J. Lawrence Carter and Mark N. Wegman, Universal Classes of Hash Functions (1979)](https://doi.org/10.1016/0022-0000(79)90044-8)
+
+### Metric tours admit shortcuts
+
+**Remember:** Skip a repeat without paying more.
+
+*Rules out counterexamples.* MSC 68W25 (Approximation algorithms). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** In the metric traveling salesman problem, the vertices form a finite metric space. Every pair has an edge whose cost is the distance between them. The triangle inequality says that going directly costs at most as much as going through another vertex.
+
+**Problem.** Any closed walk visiting all vertices can be shortened to a tour that visits each vertex once before returning to its start. The tour costs no more than the walk.
+
+**How the definition helps.** The triangle inequality lets us skip a repeated vertex without increasing the cost. Repeating this step leaves a tour. In our own example, travel between a center and each of three leaves costs 1, while travel between leaves costs 10. Returning to the center after each leaf costs 6, but every tour costs 22. In Christofides’ algorithm, the main work is to bound the cost of the initial walk.
+
+**Wikipedia:** [Christofides algorithm](https://en.wikipedia.org/wiki/Christofides_algorithm). It says: “Thanks to the triangle inequality, even though the Euler tour might revisit vertices, shortcutting does not increase the weight,”
+
+**Sources:**
+
+- [Nicos Christofides, Worst-Case Analysis of a New Heuristic for the Travelling Salesman Problem (1976, published 2022)](https://doi.org/10.1007/s43069-021-00101-z)
+
+### Potential changes cancel
+
+**Remember:** The intermediate potentials cancel.
+
+*True by definition.* MSC 68W40 (Analysis of algorithms). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Assign each state of a data structure a number called its potential. Define the amortized cost of an operation as its actual cost plus the change in potential.
+
+**Problem.** If the potential starts at zero and stays nonnegative, total amortized cost bounds total actual cost from above.
+
+**How the definition helps.** In our own argument, the potential after one operation cancels the potential before the next. In our own argument, only the final nonnegative potential remains in the total charge. The work moves to finding a useful potential and bounding each operation's adjusted charge.
+
+**Wikipedia:** [Amortized analysis](https://en.wikipedia.org/wiki/Amortized_analysis). It says: “The amortized cost is the immediate cost plus the change in potential.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Precise definitions turned Brewer's CAP conjecture into a theorem
 
 **Remember:** During a partition, a store must choose between answering and staying consistent.
@@ -235,6 +741,24 @@
 **Sources:**
 
 - [S. Gilbert and N. Lynch, Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services, ACM SIGACT News 33 (2002) 51–59](https://doi.org/10.1145/564585.564601)
+
+### Replica joins ignore order
+
+**Remember:** Joining the same states gives the same result in any order.
+
+*True by definition.* MSC 68M14 (Distributed systems). arXiv cs.DC. Level 3: graduate.
+
+**Definition.** A replica is a local copy of shared data. Order its possible states by how much update information they contain, starting from a common least state. Updates may leave a state unchanged or move it upward. Merge by taking the least state above both inputs, called their join, instead of keeping the last state received.
+
+**Problem.** Replicas that start with the same initial state agree once they incorporate the same set of generated update states. Reordering or repeating those state deliveries does not change the result.
+
+**How the definition helps.** Taking the least state above all incorporated updates makes their order and repetition irrelevant. In our own argument, merging two histories by a join gives the least state above their combined updates. An update at one replica already includes its previous state. The work lies in designing an order and updates with these properties.
+
+**Wikipedia:** [Conflict-free replicated data type](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type). It says: “The merge function should compute the join for any pair of replica states”
+
+**Sources:**
+
+- [Marc Shapiro, Nuno Preguiça, Carlos Baquero, and Marek Zawirski, Conflict-Free Replicated Data Types (2011)](https://doi.org/10.1007/978-3-642-24550-3_29)
 
 ### Intrinsically typed terms make type preservation hold by construction
 
@@ -365,6 +889,24 @@
 
 - [Conor McBride and Ross Paterson, Applicative Programming with Effects](https://www.staff.city.ac.uk/~ross/papers/Applicative.html)
 
+### Sampled catalogs save searches
+
+**Remember:** Find one position, then follow links and check its neighbors.
+
+*True by definition.* MSC 68P10 (Searching and sorting). arXiv cs.DS. Level 3: graduate.
+
+**Definition.** Start with the last sorted list and work backward. Merge each original list with every second entry of the next augmented list. For each augmented entry, store its lower-bound position in the original list and in the next augmented list, when present. A lower bound here means the first position with value at least the query, or the end if none exists.
+
+**Problem.** With n entries across k nonempty sorted lists, this structure uses O(n) space. It finds the first entry at least as large as a query in every list in O(log n + k) time.
+
+**How the definition helps.** Sampling every second entry lets a search move to the next list with at most one backward correction. In our own proof, treat the end as a sentinel larger than every query. Binary search finds the first qualifying entry in the first augmented list. At every list, the original-list link gives the answer directly. Follow its other link and check the preceding entry, since two skipped entries would include a sample. If S counts all augmented entries, at most S/2 are copies. Thus S ≤ n + S/2, so S ≤ 2n.
+
+**Wikipedia:** [Fractional cascading](https://en.wikipedia.org/wiki/Fractional_cascading). It says: “each earlier list Mᵢ is formed by merging Lᵢ with every second item from Mᵢ₊₁.”
+
+**Sources:**
+
+- [Bernard Chazelle and Leonidas J. Guibas, Fractional Cascading: I. A Data Structuring Technique (1986)](https://doi.org/10.1007/BF01840440)
+
 ### Defining differential privacy by a probability ratio makes it compose
 
 **Remember:** One person's data can move any output probability by at most a factor exp(ε).
@@ -382,6 +924,24 @@
 **Sources:**
 
 - [Dwork, C.; McSherry, F.; Nissim, K.; Smith, A. (2006). Calibrating noise to sensitivity in private data analysis. Theory of Cryptography (TCC 2006), LNCS 3876, 265–284.](https://doi.org/10.1007/11681878_14)
+
+### Privacy curves compare testing risks
+
+**Remember:** Each prior strictly between zero and one selects a point on the curve.
+
+*Makes the theorem clean to state or prove.* MSC 68P27 (Privacy of data). arXiv cs.CR, cs.IT. Level 3: graduate.
+
+**Definition.** Fix output distributions P and Q. For every real ε, define the privacy curve as the maximum of P(A) − exp(ε)Q(A) over events A. Testing risk is the probability of guessing the wrong distribution when the prior probability of P is π.
+
+**Problem.** Compare two ordered pairs of output distributions. The first curve lies above or on the second everywhere exactly when its minimum risk is no greater for every prior.
+
+**How the definition helps.** The privacy curve uses the same weighted difference of probabilities as the testing risk. Our own derivation puts prior π on P and chooses P on A. The risk is π minus π times the privacy curve at exp(ε) = (1 − π)/π. Priors zero and one have zero minimum risk for either pair. Our own comparison puts the work into computing the full curve, not just one budget.
+
+**Paper or page:** [Beyond the Calibration Point: Mechanism Comparison in Differential Privacy](https://arxiv.org/abs/2406.08918v3). It says: “∀ π ∈ \[0,1\]: Rₘᵢₙ(π) ≤ R̃ₘᵢₙ(π).”
+
+**Sources:**
+
+- [Georgios Kaissis, Stefan Kolek, Borja Balle, Jamie Hayes, Daniel Rueckert, Beyond the Calibration Point: Mechanism Comparison in Differential Privacy (2025)](https://arxiv.org/abs/2406.08918v3)
 
 ### Privacy defined on output distributions cannot be broken by post-processing
 
@@ -691,6 +1251,43 @@
 
 - [A. Church, J. B. Rosser, Some properties of conversion, Transactions of the American Mathematical Society 39 (1936)](https://doi.org/10.1090/s0002-9947-1936-1501858-0)
 
+### A basis of output tests decides stochastic state equivalence
+
+**Remember:** Basis tests determine all the other output tests.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata), 68Q70. arXiv cs.FL. Level 3: graduate.
+
+**Definition.** A stochastic automaton reads one input letter, emits one output letter and changes state according to fixed probabilities at each step. A test specifies equally long input and output words. Its column gives the probability of that output for that input from each starting state. Form a matrix from test columns that constitute a basis for the span of all test columns.
+
+**Problem.** Two starting distributions in a stochastic automaton give identical output probabilities on all input words exactly when they agree on the basis tests.
+
+**How the definition helps.** In our own proof, agreement on the basis gives agreement on every test because each test column is a linear combination of basis columns. The probability under a starting distribution is its dot product with the column. Finding the basis requires showing when tests on longer words stop enlarging the span.
+
+**Paper or page:** [On the Theory of Stochastic Automata](https://arxiv.org/abs/2103.14423v1). It says: “Two state distributions π and π′ of A are equivalent if and only if π Hₐ = π′ Hₐ.”
+
+**Sources:**
+
+- [Merve Nur Cakir, Mehwish Saleemi, Karl-Heinz Zimmermann. On the Theory of Stochastic Automata. 2021.](https://arxiv.org/abs/2103.14423v1)
+
+### An isolated threshold makes probabilistic acceptance regular
+
+**Remember:** A gap turns approximate probabilities into exact yes-or-no answers.
+
+*Rules out counterexamples.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 3: graduate.
+
+**Definition.** A finite probabilistic automaton reads letters and moves among finitely many states according to transition probabilities. It accepts a word when its probability of finishing in an accepting state exceeds a threshold. The threshold is isolated if every word’s probability stays at least some fixed ε &gt; 0 from it.
+
+**Problem.** A finite probabilistic automaton with an isolated threshold recognizes a regular language, one that a deterministic finite automaton can recognize.
+
+**How the definition helps.** In our own proof, two state distributions less than ε apart give the same decision after every continuation. We measure distance by the largest difference in probability assigned to any set of states. Reading another letter cannot increase this distance. The compact set of state distributions has a finite cover by sets of diameter less than ε. Thus only finitely many patterns of future decisions occur, and these patterns serve as deterministic states.
+
+**Paper or page:** [On the Theory of Stochastic Automata](https://arxiv.org/abs/2103.14423v1), [On the Theory of Stochastic Automata](https://arxiv.org/abs/2103.14423v1). It says: “Let A be a stochastic acceptor with isolated cut point λ. Then the language L₍A,λ₎ is regular.”
+
+**Sources:**
+
+- [Merve Nur Cakir, Mehwish Saleemi, Karl-Heinz Zimmermann. On the Theory of Stochastic Automata. 2021.](https://arxiv.org/abs/2103.14423v1)
+- [Michael O. Rabin. Probabilistic Automata. 1963.](https://doi.org/10.1016/S0019-9958(63)90290-0)
+
 ### Brzozowski derivatives give a finite automaton for each regular expression
 
 **Remember:** After reading a word, check whether the empty suffix is allowed.
@@ -762,6 +1359,24 @@
 **Sources:**
 
 - [R. McNaughton, Testing and generating infinite sequences by a finite automaton, Information and Control 9 (1966) 521–530](https://doi.org/10.1016/S0019-9958(66)80013-X)
+
+### Observable transitions let output words determine the final state
+
+**Remember:** One allowed next state per step gives one final state.
+
+*Rules out counterexamples.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 3: graduate.
+
+**Definition.** A stochastic automaton reads a letter, emits a letter and changes state according to fixed probabilities. Call it observable if each starting state and pair of input and output letters allow at most one next state with positive probability.
+
+**Problem.** In an observable stochastic automaton, a starting state and a possible input and output word pair determine the final state.
+
+**How the definition helps.** In our own proof, each successive input and output pair determines one successor whenever the observed sequence is possible. Repeating this step determines the final state. In our own counterexample, the machine always emits the same letter but chooses between two successors by flipping a coin.
+
+**Paper or page:** [On the Theory of Stochastic Automata](https://arxiv.org/abs/2103.14423v1). It says: “p(y,s′ ∣ x,s) ≠ 0 ⇒ s′ = γ(y,x,s).”
+
+**Sources:**
+
+- [Merve Nur Cakir, Mehwish Saleemi, Karl-Heinz Zimmermann. On the Theory of Stochastic Automata. 2021.](https://arxiv.org/abs/2103.14423v1)
 
 ### Parity acceptance complements deterministic automata by shifting every priority
 
@@ -956,6 +1571,22 @@
 
 - [P. Cousot and R. Cousot, Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints, POPL 1977](https://doi.org/10.1145/512950.512973)
 
+### A prefix and suffix matrix gives the smallest weighted automaton
+
+**Remember:** A state only needs to store independent future scores.
+
+*Makes the theorem clean to state or prove.* MSC 68Q70 (Algebraic theory of languages and automata), 68Q45. arXiv cs.FL. Level 3: graduate.
+
+**Definition.** A weighted automaton assigns each letter a matrix. It gives a word a real score by multiplying those matrices between a start row and an end column. The Hankel matrix instead lists the score of each prefix followed by each suffix.
+
+**Problem.** A real word score comes from a finite weighted automaton exactly when its Hankel matrix has finite rank. That rank is the smallest possible state dimension.
+
+**How the definition helps.** In our own proof, the rows span a space on which appending each letter acts linearly. The row for a prefix followed by a letter uses the old row’s entries for suffixes beginning with that letter. Start with the empty prefix and read the score at the empty suffix. A basis gives a machine with dimension equal to the rank. Conversely, any machine factors the matrix through its state space, so its dimension bounds the rank.
+
+**Paper or page:** [Neural Network Based Nonlinear Weighted Finite Automata](https://arxiv.org/abs/1709.04380v2). It says: “For any f : Σ∗ → ℝ, rank(f) = rank(H𝒇).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Aperiodic syntactic monoids let us decide whether automata recognize star-free languages
 
 **Remember:** Compute the syntactic monoid and test whether all powers stabilize.
@@ -973,6 +1604,22 @@
 **Sources:**
 
 - [M.-P. Schützenberger, On finite monoids having only trivial subgroups, Information and Control 8 (1965)](https://doi.org/10.1016/s0019-9958(65)90108-7)
+
+### Finite monoid tests let rational sets survive intersection
+
+**Remember:** Track the finite test as the path product grows.
+
+*True by definition.* MSC 68Q70 (Algebraic theory of languages and automata), 68Q45. arXiv cs.FL. Level 3: graduate.
+
+**Definition.** A monoid has an associative product and an identity. A rational subset consists of the label products along paths from a start vertex to designated end vertices in a finite graph. A recognizable subset is the inverse image of a subset of a finite monoid under a map preserving products and identity.
+
+**Problem.** Intersecting a rational subset of a monoid with a recognizable subset gives a rational subset.
+
+**How the definition helps.** In our own proof, a finite monoid lets each graph vertex carry the image of the path product as extra state. Start with the identity and multiply by the image of each successive edge label. Finish only at designated end vertices whose stored values pass the finite test. This finite graph describes exactly the intersection. The equivalence with expressions built using finite union, product and repetition supplies the graph description of rational sets.
+
+**Wikipedia:** [Rational set](https://en.wikipedia.org/wiki/Rational_set). It says: “The intersection of a rational subset and a recognizable subset is rational.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Finite-monoid recognition preserves recognizability under inverse homomorphisms
 
@@ -1025,6 +1672,22 @@
 **Sources:**
 
 - [D. Park, Concurrency and automata on infinite sequences, in Theoretical Computer Science, LNCS 104, Springer 1981, 167–183](https://doi.org/10.1007/BFb0017309)
+
+### Compatible configurations can merge
+
+**Remember:** Keep every cause and check conflicts across the two sets.
+
+*Rules out counterexamples.* MSC 68Q85 (Models and methods for concurrent and distributed computing (process algebras, bisimulation, transition nets, etc.)), 68M14. arXiv cs.DC. Level 3: graduate.
+
+**Definition.** A configuration records the events that have occurred and includes every cause of each recorded event. With binary conflict, a set is consistent when it contains no conflicting pair. A configuration must be consistent. An extension is a configuration containing the original one.
+
+**Problem.** Two configurations in a binary conflict model have a common extension exactly when no event in one conflicts with an event in the other. Their union is then the least common extension.
+
+**How the definition helps.** In our own argument, the union already contains all causes, so only a conflict between configurations can prevent a merge. Every set containing the union still contains any such pair. Without binary conflict, three events could be forbidden together even though every pair is allowed.
+
+**nLab:** [event structure](https://ncatlab.org/nlab/show/event+structure). It says: “pairwise consistency implies mutual consistency.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining behavior by a terminal coalgebra makes bisimilar states behave equally
 
@@ -1097,6 +1760,144 @@
 - [Jonas Forster, Sergey Goncharov, Dirk Hofmann, Pedro Nora, Lutz Schröder, Paul Wild, Quantitative Hennessy-Milner Theorems via Notions of Density, arXiv:2207.09187 (2022)](https://arxiv.org/abs/2207.09187v2)
 - [Matthew Hennessy, Robin Milner, Algebraic laws for nondeterminism and concurrency, Journal of the ACM 32 (1985)](https://doi.org/10.1145/2455.2460)
 
+### Trace orders forget independent swaps
+
+**Remember:** Keep dependent order and forget independent order.
+
+*True by definition. Confidence: medium.* MSC 68Q85 (Models and methods for concurrent and distributed computing (process algebras, bisimulation, transition nets, etc.)), 68R15. arXiv cs.DC, cs.DM. Level 3: graduate.
+
+**Definition.** A trace alphabet lists action types and specifies a symmetric independence relation between distinct types. All other pairs are dependent, including two occurrences of the same type. Give each occurrence its own event, labeled by its type. Order dependent pairs as in the execution and include all comparisons forced by transitivity.
+
+**Problem.** Two finite action sequences give the same partial order up to a label-preserving isomorphism exactly when swaps of adjacent independent actions connect them.
+
+**How the definition helps.** In our own proof, swapping adjacent independent actions preserves every generating comparison, so it preserves the labeled partial order. Conversely, identify the events using the isomorphism and consider two orders of those events consistent with the partial order. Move the first event of the desired order left to the front. Every event it passes must be incomparable with it, hence independent. Repeat on the remaining events. This proves that storing the partial order captures exactly what the swap definition preserves.
+
+**nLab:** [trace alphabet](https://ncatlab.org/nlab/show/trace+alphabet), [Mazurkiewicz trace](https://ncatlab.org/nlab/show/Mazurkiewicz+trace). It says: “Its models are based on labelled posets, the labelling being by a trace alphabet.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bag subtrees bound covers
+
+**Remember:** Disjoint bag subtrees certify nonadjacent vertices.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C85. arXiv cs.DS, cs.DM. Level 3: graduate.
+
+**Definition.** A tree decomposition assigns sets of vertices of a finite graph, called bags, to nodes of a finite tree. Each edge has both ends in a bag. The bags containing any given vertex form a nonempty connected subtree.
+
+**Problem.** Any nonempty set of vertices can be covered by at most α bags. Here α is the largest number of pairwise nonadjacent vertices in that set.
+
+**How the definition helps.** In our own proof, a bag cover becomes a set of tree nodes meeting every subtree for the chosen vertices. Root the tree and call each subtree’s node nearest the root its top. Choose a subtree with a deepest top, select that top, and discard every subtree containing it. Any subtree intersecting the chosen one contains the selected top, since both tops lie above an intersection node. Repeating gives one pairwise disjoint witness subtree per selected node. Their vertices are pairwise nonadjacent because each graph edge needs a shared bag. This gives α, improving the cited bound of 2α − 1.
+
+**Paper or page:** [Computing Tree Decompositions with Small Independence Number](https://arxiv.org/abs/2207.09993v4). It says: “Then W is covered by a set of at most 2α(W)−1 bags of 𝒯.”
+
+**Sources:**
+
+- [Clément Dallard, Fedor V. Fomin, Petr A. Golovach, Tuukka Korhonen, Martin Milanič, Computing Tree Decompositions with Small Independence Number, arXiv:2207.09993v4](https://arxiv.org/abs/2207.09993v4)
+
+### A kernel replaces feature vectors in inner product algorithms
+
+**Remember:** Compute feature inner products without building feature vectors.
+
+*True by definition.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 46E22. arXiv cs.LG, stat.ML. Level 3: graduate.
+
+**Definition.** Define a kernel as a symmetric function whose matrices on finite samples have nonnegative quadratic forms. Build feature vectors whose pairwise inner products are the kernel values. This replaces an explicit list of feature coordinates.
+
+**Problem.** Any algorithm whose only access to the feature vectors is through their pairwise inner products gives the same result from the kernel matrix.
+
+**How the definition helps.** The kernel values are the required inner products in the feature space. The work moves to constructing that space from the positive semidefinite kernel, by our own explanation. For a chosen algorithm, one must also show it needs only inner products, by our own explanation.
+
+**nLab:** [kernel method](https://ncatlab.org/nlab/show/kernel+method). It says: “Many linear algebra techniques in H just involve the inner product, and so can be conducted as a form of nonlinear algebra back in X, using the 'kernel trick'.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Littlestone trees let an adversary force mistakes
+
+**Remember:** Follow the branch that the learner did not predict.
+
+*True by definition.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 68Q32. arXiv cs.LG. Level 3: graduate.
+
+**Definition.** Consider a class of functions from inputs to a finite set of labels. In a full binary Littlestone tree, each node specifies an input and its two outgoing edges carry distinct labels. Some function in the class gives all the specified answers along each finite path from the root. The next input may depend on earlier answers.
+
+**Problem.** If the class has an infinite full tree of this kind, an adaptive adversary can force a mistake on every round. Every finite sequence it reveals remains consistent with the class.
+
+**How the definition helps.** In our own explanation, the two edge labels let an adversary contradict each prediction while following a path that remains consistent after every round. The adversary presents the current input, observes the prediction and takes an edge with a different label. The harder converse constructs a learner that makes only finitely many mistakes when no infinite tree exists.
+
+**Paper or page:** [Multiclass Learnability Beyond the PAC Framework: Universal Rates and Partial Concept Classes](https://arxiv.org/abs/2210.02297v3). It says: “If ℋ has an infinite multiclass Littlestone tree, then there is a strategy for the adversary that forces any learner to make a mistake in every round.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Potential differences preserve the best policies
+
+**Remember:** Intermediate potentials cancel and terminal potentials are zero.
+
+*Rules out counterexamples.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 90C40. arXiv cs.LG. Level 3: graduate.
+
+**Definition.** A policy is a rule for choosing actions. Give each state a real number called its potential, with zero at every terminal state. Add the next state’s potential minus the current state’s potential to each reward.
+
+**Problem.** Start each policy in the same state and assume it reaches a terminal state almost surely. If total rewards have finite expectations, this change preserves their ordering by expected total reward.
+
+**How the definition helps.** In our own proof, summing potential differences cancels every intermediate value and leaves minus the starting potential. Every policy therefore receives the same total adjustment on every completed run. For our own counterexample, two actions end the task with rewards zero and one. Adding two only to the first action reverses their ranking.
+
+**Paper or page:** [Hierarchical Potential-based Reward Shaping from Task Specifications](https://arxiv.org/abs/2110.02792v3). It says: “R′(s, a, s′) = R(s, a, s′) + Ψ(s′) − Ψ(s)”
+
+**Sources:**
+
+- [Andrew Y. Ng, Daishi Harada, and Stuart J. Russell. Policy Invariance under Reward Transformations: Theory and Application to Reward Shaping. 1999.](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf)
+
+### Replace-one stability bounds the expected generalization gap
+
+**Remember:** Swap one point to compare training and test loss.
+
+*True by definition.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 68Q32. arXiv cs.LG, stat.ML. Level 3: graduate.
+
+**Definition.** A learning algorithm has uniform stability ε if replacing any one training example changes its expected loss on any fixed example by at most ε. Loss measures prediction error, and this expectation averages over the algorithm’s randomness.
+
+**Problem.** Draw the training examples independently from one distribution and assume finite expected losses. The expected average training loss differs by at most ε from the expected loss on an independent example from that distribution.
+
+**How the definition helps.** In our own proof, stability bounds exactly the difference that remains after exchanging a training example with an independent copy. Train on the modified sample and evaluate on the removed example. This has the same expected loss as training on the original sample and evaluating on fresh data. Comparing the two learners on the removed example costs at most ε. Average over training positions. The work lies in proving the algorithm stable.
+
+**Paper or page:** [A Unified Analysis for Finite Weight Averaging](https://arxiv.org/abs/2411.13169v1). It says: “Let A be ε-uniformly stable. Then, \|𝔼₍S,A₎\[Rₛ\[Aₛ\] − R𝒟\[Aₛ\]\]\| ≤ ε.”
+
+**Sources:**
+
+- [Moritz Hardt, Benjamin Recht, and Yoram Singer. Train faster, generalize better: Stability of stochastic gradient descent. 2016.](https://proceedings.mlr.press/v48/hardt16)
+
+### Blank symbols make alignment probabilities quick to compute
+
+**Remember:** Use blanks to separate repeated labels and sum valid paths.
+
+*Makes the theorem clean to state or prove.* MSC 68T07 (Artificial neural networks and deep learning), 68T50. arXiv cs.LG. Level 3: graduate.
+
+**Definition.** Connectionist temporal classification treats each alignment as one label or blank per time step. Merge consecutive copies of a label, then delete blanks. Give each alignment the product of its step probabilities and sum over alignments for the target.
+
+**Problem.** The probability of a target of length U on T time steps can be computed with O(TU) operations for nonempty targets.
+
+**How the definition helps.** In our own explanation, inserting blanks before, between and after target labels lets each partial alignment end at a numbered position. At each step, a path may stay, advance one position or skip a blank between different labels. Start at the first blank or first label and finish at the last label or last blank. These rules give one path for each valid alignment. Multiply each incoming sum by the current symbol probability. Each position needs at most three predecessor values, giving the stated operation count.
+
+**Wikipedia:** [Connectionist temporal classification](https://en.wikipedia.org/wiki/Connectionist_temporal_classification). It says: “Equivalent label sequences can occur in many ways – which makes scoring a non-trivial task, but there is an efficient forward–backward algorithm for that.”
+
+**Sources:**
+
+- [Alex Graves, Santiago Fernández, Faustino Gomez, and Jürgen Schmidhuber. Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks. 2006.](https://doi.org/10.1145/1143844.1143891)
+
+### Bounded overlap shrinks separators
+
+**Remember:** Bound the overlap to find a small cut.
+
+*Rules out counterexamples.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 05C40. arXiv cs.CG, cs.DS. Level 3: graduate.
+
+**Definition.** For a finite family of closed Euclidean balls of positive radius, the ply is the largest number of interiors containing one point. The intersection graph joins two balls when they meet.
+
+**Problem.** For n such balls of bounded ply in fixed dimension d, removing O(n⁽¹⁻¹⁄ᵈ⁾) vertices leaves two groups with no edge between them. Each contains at most a fixed fraction less than one of the original vertices.
+
+**How the definition helps.** In our own example, bounded ply excludes arbitrarily many concentric balls, whose intersection graph has every possible edge. Balancing that graph would require removing a fixed fraction of all its vertices. The geometric sphere separator theorem does the main work. It finds a sphere meeting few balls, with balanced numbers of balls entirely inside and entirely outside.
+
+**Paper or page:** [Maximizing the Sum of Radii of Disjoint Balls or Disks](https://arxiv.org/abs/1607.02184v2). It says: “the intersection graph of the balls has separators of size O(n⁽¹⁻¹⁄ᵈ⁾)”
+
+**Sources:**
+
+- [David Eppstein, Maximizing the Sum of Radii of Disjoint Balls or Disks, arXiv:1607.02184v2](https://arxiv.org/abs/1607.02184v2)
+
 ### Defining Delaunay cells by a lifted convex hull makes them unique
 
 **Remember:** Keep the whole lower face when four points share a circle.
@@ -1149,6 +1950,22 @@
 **Sources:**
 
 - [F. Pfenning, C. Elliott, Higher-order abstract syntax, PLDI 1988](https://doi.org/10.1145/53990.54010)
+
+### Dominating laws handle subsampling
+
+**Remember:** An added record enters the output law only when the sample includes it.
+
+*Makes the theorem clean to state or prove.* MSC 68P27 (Privacy of data). arXiv cs.CR. Level 4: research.
+
+**Definition.** Two data sets are neighbors here when the second adds one record to the first. For output laws R and S, let D(α,R,S) be the maximum of R(A) − αS(A) over events A. A pair P,Q dominates if D(α,P,Q) bounds D(α,R,S) from above for every neighboring pair and every α ≥ 0. Poisson subsampling keeps each record independently with probability γ.
+
+**Problem.** A dominating pair (P, Q) for adding one record becomes (P, (1 − γ)P + γQ) after Poisson subsampling. This uses the unmodified law as the first argument.
+
+**How the definition helps.** The extra record contributes to the second output law only when the sample includes it. Our own proof conditions on the sampled common records, giving output laws R and (1 − γ)R + γS. In the event difference, the coefficient of R(A) is 1 − α(1 − γ). If that coefficient is nonpositive, the maximum is zero. Otherwise, dividing by it gives the original comparison at a rescaled α. Averaging over the common sample preserves the bound.
+
+**Paper or page:** [Avoiding Pitfalls for Privacy Accounting of Subsampled Mechanisms under Composition](https://arxiv.org/abs/2405.20769v2). It says: “If (P, Q) dominates ℳ for add neighbours then (P, (1−γ)P + γQ) dominates ℳₚₒᵢₛₛₒₙ for add neighbours”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Dominating pairs turn privacy composition into products, so characteristic functions multiply
 
@@ -1405,6 +2222,24 @@
 
 - [Maxime Lucas, Abstract rewriting internalized, arXiv:2002.06004 (2020)](https://arxiv.org/abs/2002.06004)
 
+### Suffix agreement characterizes finite recognition of probability classes
+
+**Remember:** Compare every suffix before merging two prefixes.
+
+*Makes the theorem clean to state or prove.* MSC 68Q45 (Formal languages and automata), 68T50. arXiv cs.FL, cs.LG. Level 4: research.
+
+**Definition.** A language model gives a next-symbol distribution after each prefix. Fix an equivalence relation on these distributions. Group two prefixes if their distributions are equivalent after appending every possible suffix.
+
+**Problem.** A language model has finitely many such prefix classes exactly when a finite deterministic automaton can reproduce its output classes.
+
+**How the definition helps.** In our own proof, appending a letter to equivalent prefixes preserves equivalence because the test already includes every continuation starting with that letter. Each prefix class can therefore serve as a state. The empty continuation determines its output class. Conversely, prefixes reaching the same deterministic state give the same output class after every continuation.
+
+**Paper or page:** [Congruence-based Learning of Probabilistic Deterministic Finite Automata](https://arxiv.org/abs/2412.09760v1). It says: “For every equivalence ℰ and language model ℳ, ℳ is ℰ-regular if and only if ℳ is PDFA ℰ-recognizable.”
+
+**Sources:**
+
+- [Matías Carrasco, Franz Mayr, Sergio Yovine. Congruence-based Learning of Probabilistic Deterministic Finite Automata. 2024.](https://arxiv.org/abs/2412.09760v1)
+
 ### Tameness gives the monoid-program characterization by design
 
 **Remember:** Tame monoids gain no extra regular languages from programs.
@@ -1422,6 +2257,24 @@
 **Sources:**
 
 - [Nathan Grosshans, Pierre McKenzie, Luc Segoufin, Tameness and the power of programs over monoids in DA, Logical Methods in Computer Science 18(3) (2022)](https://arxiv.org/abs/2101.07495)
+
+### Tensor cells let automata run in parallel
+
+**Remember:** Paired cells let both machines keep events active.
+
+*Makes the theorem clean to state or prove.* MSC 68Q45 (Formal languages and automata), 68Q85. arXiv cs.FL. Level 4: research.
+
+**Definition.** A higher-dimensional automaton records simultaneously active events in a cell. In the tensor product, a cell pairs one cell from each machine. It lists the active events of the first component before those of the second without requiring the first events to finish earlier.
+
+**Problem.** The tensor product accepts exactly the parallel combinations of the two machines’ event languages.
+
+**How the definition helps.** In our own explanation, a paired cell lets events from both machines overlap while preserving each machine’s local constraints. The parallel language allows the components to run independently and includes executions with additional precedence constraints. The proof must project each combined run onto both components and construct a combined run for each allowed combination.
+
+**Paper or page:** [Kleene Theorem for Higher-Dimensional Automata](https://arxiv.org/abs/2202.03791v6). It says: “Then ℒ(X ⊗ Y) = ℒ(X) ∥ ℒ(Y).”
+
+**Sources:**
+
+- [Uli Fahrenberg, Christian Johansen, Georg Struth, and Krzysztof Ziemiański. Kleene Theorem for Higher-Dimensional Automata. 2024.](https://lmcs.episciences.org/14922)
 
 ### Defining handlers as algebra maps makes them respect the effect equations
 
@@ -1529,6 +2382,22 @@
 
 - [Amanda Burcroff, Eric Winsor, Generalized Lyndon Factorizations of Infinite Words, arXiv:1905.04746 (2019)](https://arxiv.org/abs/1905.04746v2)
 - [Amanda Burcroff and Eric Winsor, Generalized Lyndon factorizations of infinite words, Theoretical Computer Science 809 (2020), 30–38](https://doi.org/10.1016/j.tcs.2019.11.003)
+
+### Kernel evaluations reduce each learned layer to a finite span
+
+**Remember:** Drop every layer component the training points cannot see.
+
+*True by definition.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 68T07, 46E22. arXiv cs.LG, stat.ML. Level 4: research.
+
+**Definition.** Each layer is a function in a Hilbert space, a complete inner product space. Evaluation of each output coordinate at each input is a continuous linear functional. Its representing vector gives that coordinate by an inner product. At each layer, use the span of these vectors for all coordinates at the finitely many inputs reaching that layer during training.
+
+**Problem.** Minimize a loss depending only on final training predictions plus a positive multiple of each layer’s squared norm. At any minimizer, each layer belongs to its training evaluation span.
+
+**How the definition helps.** In our own proof, projection onto the evaluation span preserves every training output because it preserves the inner products defining those outputs. All later layers therefore receive the same training inputs. Any removed nonzero component strictly reduces the penalty, contradicting minimality. The Hilbert space representation theorem supplies the evaluation vectors that replace a search over arbitrary functions.
+
+**Paper or page:** [A resource-efficient model for deep kernel learning](https://arxiv.org/abs/2410.09926v1). It says: “fulfills $f<sub>i</sub>\\in V<sub>i</sub>\\subset H<sub>i</sub>$”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Multicalibration gives stronger hardcore lemmas
 

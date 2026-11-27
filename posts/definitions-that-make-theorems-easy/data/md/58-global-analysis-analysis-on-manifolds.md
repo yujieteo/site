@@ -241,6 +241,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Harmonic representatives minimize the norm
+
+**Remember:** A harmonic form is orthogonal to every exact correction.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.SP. Level 3: graduate.
+
+**Definition.** On a compact Riemannian manifold without boundary, a differential form ω is harmonic if dω = 0 and d\*ω = 0. Here d is the exterior derivative, and d\* is its adjoint for the integral inner product on forms. An equivalent definition uses the Laplacian and requires (dd\* + d\*d)ω = 0.
+
+**Problem.** On a closed Riemannian manifold, the harmonic representative of a real cohomology class uniquely minimizes the L² norm in that class. The class consists of closed forms that differ by exact forms, those of the form dα.
+
+**How the definition helps.** The condition d\*ω = 0 says directly that ω is orthogonal to all exact forms (our own). All other representatives differ from ω by such a form, so Pythagoras gives the strict norm increase (our own). The Hodge theorem does the work of finding the harmonic representative (our own).
+
+**Wikipedia:** [Hodge theory](https://en.wikipedia.org/wiki/Hodge_theory). It says: “the harmonic representative is the unique closed form of minimum L² norm that represents a given cohomology class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining current boundaries by duality makes pushforward commute with boundary
 
 **Remember:** Pulling back a test form commutes with differentiating it.
@@ -309,6 +325,22 @@
 **Sources:**
 
 - [Juan Carlos Álvarez Paiva, answer to 'Why do I need densities in order to integrate on a non-orientable manifold?', MathOverflow (2012)](https://mathoverflow.net/questions/90455/) (link not checked)
+
+### Palais–Smale compactness gives minimizers
+
+**Remember:** A nearly stationary minimizing sequence needs somewhere to converge.
+
+*Rules out counterexamples.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.FA. Level 3: graduate.
+
+**Definition.** The Palais–Smale condition requires a convergent subsequence whenever function values stay bounded and derivatives tend to zero in norm. It asks for compactness only along nearly stationary sequences.
+
+**Problem.** Let f be a continuously differentiable real-valued function on a real Hilbert space. If f is bounded below and satisfies the Palais–Smale condition, it attains its infimum.
+
+**How the definition helps.** The condition keeps nearly stationary minimizing sequences from escaping (our own). Ekeland’s variational principle supplies such a sequence, and continuity gives the minimum at its subsequential limit (our own). On the real line, e⁻ˣ approaches its infimum at infinity without attaining it (our own).
+
+**Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “if every sequence {uₖ} ⊂ H such that: {I\[uₖ\]} is bounded, and I′\[uₖ\] → 0 in H has a convergent subsequence in H.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the Laplacian as d\*d makes it symmetric and nonnegative
 
@@ -646,6 +678,77 @@
 
 - [Hsian-Hua Tseng, Chenchang Zhu, Integrating Lie algebroids via stacks, Compositio Math. 142 (2006) 251–270, arXiv:math/0405003](https://arxiv.org/abs/math/0405003)
 - [Marius Crainic, Rui Loja Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620, arXiv:math/0105033](https://arxiv.org/abs/math/0105033)
+
+### Symbol exactness makes de Rham elliptic
+
+**Remember:** Contract against a vector that the covector sends to one.
+
+*True by definition.* MSC 58J10 (Differential complexes). arXiv math.DG, math.AP. Level 4: research.
+
+**Definition.** In a differential complex, each operator kills the image of the preceding operator. Its leading symbol at a covector keeps the highest-order derivatives and replaces differentiation in each coordinate by the corresponding covector component. The complex is elliptic if, at every nonzero covector, each symbol image equals the next symbol kernel, including the zero spaces at the ends.
+
+**Problem.** The de Rham complex, the sequence of exterior derivatives, is elliptic on any smooth manifold without boundary.
+
+**How the definition helps.** The symbol definition reduces ellipticity to exactness of multiplication by a covector ξ using the exterior product (our own). Choose a vector v with ξ(v) = 1, and write ι for insertion of v into a form (our own). The identity ι(ξ ∧ ω) + ξ ∧ ιω = ω exhibits every kernel element as an image (our own). For a single operator, the same symbol test requires an invertible symbol (our own).
+
+**nLab:** [elliptic chain complex](https://ncatlab.org/nlab/show/elliptic+chain+complex). It says: “Let X be a compact smooth manifold. Then the de Rham complex is an elliptic complex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Witten deformation preserves de Rham cohomology
+
+**Remember:** Undo the exponential weight to recover the original complex.
+
+*True by definition.* MSC 58J10 (Differential complexes). arXiv math.DG, math.SP. Level 4: research.
+
+**Definition.** For a smooth real function f, set dₜ = exp(−tf) d exp(tf). Here d is the exterior derivative, and the exponentials multiply forms pointwise. Equivalently, add t df ∧ ω to dω when differentiating a form ω.
+
+**Problem.** The Witten differential dₜ squares to zero. Its cohomology, the kernel modulo the preceding image, is isomorphic to de Rham cohomology.
+
+**How the definition helps.** Writing dₜ as a conjugate of d shows at once that its square vanishes (our own). Multiplication by exp(−tf) carries kernels and images of d to those of dₜ (our own). The hard work in Witten’s method is estimating the spectrum of the Laplacian built from dₜ (our own).
+
+**Paper or page:** [Witten Deformation and Its Application toward Morse Inequalities](https://arxiv.org/abs/1710.09579v1). It says: “is a vector space isomorphism for all j = 0, ⋯, n.”
+
+**Sources:**
+
+- [Edward Witten, Supersymmetry and Morse theory (1982)](https://doi.org/10.4310/jdg/1214437492)
+
+### The heat supertrace counts index
+
+**Remember:** Subtract the odd trace and every positive eigenvalue cancels.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.SP. Level 4: research.
+
+**Definition.** Split the space of sections into two parts, called even and odd. For an operator preserving the parts and having a trace on each, its supertrace is the even trace minus the odd trace. The ordinary trace adds those two traces.
+
+**Problem.** Let D be a self-adjoint Dirac operator exchanging even and odd sections on a compact Riemannian manifold without boundary. For t &gt; 0, the supertrace of exp(−tD²) equals the index of the even-to-odd part of D. This index counts even zero modes minus odd zero modes, where a zero mode is a vector killed by D.
+
+**How the definition helps.** The subtraction cancels equal heat contributions from the two sides of each positive eigenvalue of D² (our own). D gives a bijection between those sides because its square is a nonzero scalar there (our own). The unmatched zero eigenspaces give the difference of kernel dimensions (our own). The work goes into proving that the heat operator has a trace (our own).
+
+**Paper or page:** [Some Modifications of Getzler's Grading technique](https://arxiv.org/abs/2201.00379v1). It says: “In particular, the supertrace of the heat kernel is constant in t.”
+
+**Sources:**
+
+- [H. P. McKean Jr. and I. M. Singer, Curvature and the eigenvalues of the Laplacian (1967)](https://doi.org/10.4310/jdg/1214427880)
+- [Peter B. Gilkey, Curvature and the eigenvalues of the Laplacian for elliptic complexes (1973)](https://doi.org/10.1016/0001-8708(73)90119-9)
+
+### Spectral flow adds across joins
+
+**Remember:** Add the local rank changes to count the net crossings.
+
+*True by definition.* MSC 58J30 (Spectral flows). arXiv math.SP, math.FA. Level 4: research.
+
+**Definition.** Consider a norm-continuous path of bounded self-adjoint operators with closed range and finite-dimensional kernel, called Fredholm operators. Divide the path into pieces, choosing a cutoff a &gt; 0 on each piece. The spectrum must avoid ±a, with only finitely many eigenvalues between them, counted with multiplicity, and no other spectrum there. Spectral flow sums the changes from start to finish in the number of eigenvalues in \[0, a) on each piece.
+
+**Problem.** Spectral flow along two joined paths is the sum of their spectral flows.
+
+**How the definition helps.** The rank changes already form a sum, so adjoining paths just joins two sums (our own). Choose a subdivision containing the join (our own). This avoids choosing individual eigenvalue paths (our own). The work lies in proving the local spectral cuts exist and that the sum is independent of their choice (our own).
+
+**nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “by spectral flow one refers to the change of spectrum of an operator as that operator continuously varies with a parameter.”
+
+**Sources:**
+
+- [John Phillips, Self-Adjoint Fredholm Operators and Spectral Flow (1996)](https://doi.org/10.4153/CMB-1996-054-4)
 
 ### A bracket-aware principal symbol is invertible exactly for maximally hypoelliptic operators
 

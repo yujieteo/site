@@ -30,6 +30,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Tail bounds make limit superiors subadditive
+
+**Remember:** The upper bound for a sum comes from adding the two tail bounds.
+
+*True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 40A05. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The limit superior of a bounded real sequence is the limit of the least upper bounds of its tails. A tail consists of all terms from a given index onward. Another definition takes the largest limit of any convergent subsequence.
+
+**Problem.** For bounded real sequences, the limit superior of their sum cannot exceed the sum of their limit superiors.
+
+**How the definition helps.** On every tail, the sum of the two least upper bounds bounds the summed sequence (our own). Taking limits of the tail bounds gives the inequality (our own). The work moves to proving that the tail bounds converge to the largest subsequential limit (our own).
+
+**Wikipedia:** [Limit inferior and limit superior](https://en.wikipedia.org/wiki/Limit_inferior_and_limit_superior). It says: “lim supₙ→∞ (aₙ + bₙ) ≤ lim supₙ→∞ aₙ + lim supₙ→∞ bₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The betweenness definition makes intersections of real intervals intervals
 
 **Remember:** A point between two shared points is shared.
@@ -77,6 +93,24 @@
 **How the definition helps.** When real numbers are cuts ordered by inclusion, the least upper bound of a set is simply its union. The rational numbers lack this property: the set of rationals x with x² &lt; 2 has upper bounds but no least one. Let S be a non-empty set of cuts with an upper bound. Its least upper bound is the union ⋃S, and a check of a few lines shows that this union is a cut. The intermediate value theorem and the Bolzano–Weierstrass theorem follow from this property. In this construction the arithmetic stays hard, especially multiplication. Even the proof that the cut for √2 squares to 2 is not immediate.
 
 **Wikipedia:** [Construction of the real numbers](https://en.wikipedia.org/wiki/Construction_of_the_real_numbers), [Least-upper-bound property](https://en.wikipedia.org/wiki/Least-upper-bound_property). It says: “If a nonempty set S of real numbers has any upper bound in R, then it has a least upper bound in R that is equal to ⋃S.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A symmetric restriction makes arcsine odd
+
+**Remember:** The principal interval contains the negative of every angle it contains.
+
+*Rules out counterexamples.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define arcsine as the inverse of sine restricted to \[−π/2, π/2\]. The unrestricted equation sin y = x can give several values of y.
+
+**Problem.** Arcsine is a function on \[−1, 1\] and satisfies arcsin(−x) = −arcsin(x).
+
+**How the definition helps.** The chosen interval contains −y whenever it contains y, and sin(−y) = −sin y (our own). Sine takes each value in \[−1, 1\] exactly once on this interval, so the inverse is odd (our own). On the alternative interval \[π/2, 3π/2\], the inverse sends zero to π and therefore cannot be odd (our own).
+
+**Wikipedia:** [Inverse trigonometric functions](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions). It says: “Since none of the six trigonometric functions are one-to-one, they must be restricted in order to have inverse functions.”
+
+**Paper or page:** [Inverse Sine is Odd Function](https://proofwiki.org/wiki/Inverse_Sine_is_Odd_Function). It says: “arcsin(−x) = −arcsin x”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -286,6 +320,38 @@
 
 - [Stephen Kuhn, The derivative à la Carathéodory, The American Mathematical Monthly 98 (1991) 40–44](https://doi.org/10.2307/2324035)
 
+### Derivatives give exact Lipschitz bounds
+
+**Remember:** Chords and derivatives give the same bound on slopes.
+
+*True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 26A15. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The Lipschitz bound of a real function on an open interval is the supremum of absolute slopes between distinct points. Allow infinity when no finite bound exists. The usual inequality definition instead seeks the smallest constant that bounds every such slope.
+
+**Problem.** For a differentiable function on an open interval, the Lipschitz bound equals the supremum of the absolute derivative, allowing infinity.
+
+**How the definition helps.** Writing the optimal bound as a supremum of chord slopes lets the mean value theorem compare it directly with the derivative bound (our own). Each chord slope equals some derivative, and each derivative is a limit of chord slopes (our own). These two facts give opposite inequalities between the suprema, including when they are infinite (our own).
+
+**nLab:** [Lipschitz map](https://ncatlab.org/nlab/show/Lipschitz+map). It says: “its Lipschitz norm is the supremum norm ‖f′‖∞ of its derivative f′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic derivatives turn products into sums
+
+**Remember:** Take logs to add the factors before you differentiate.
+
+*True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define the logarithmic derivative of a real function f as the derivative of ln \|f\| where f is nonzero. The usual formula writes it as f′/f.
+
+**Problem.** At a point where each of finitely many differentiable real factors is nonzero, their product has logarithmic derivative equal to the sum of theirs.
+
+**How the definition helps.** The logarithm of the absolute value of the product is already a sum of logarithms (our own). Differentiation preserves that sum (our own). The work moves to the chain rule, which identifies the derivative of ln \|f\| with f′/f (our own).
+
+**Wikipedia:** [Logarithmic derivative](https://en.wikipedia.org/wiki/Logarithmic_derivative). It says: “the logarithmic derivative of a product is the sum of the logarithmic derivatives of the factors”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Summing over set partitions turns the higher chain rule into simple induction
 
 **Remember:** A new derivative starts a block or joins one.
@@ -303,6 +369,22 @@
 **Sources:**
 
 - [Samuel Allen Alexander, A one-sentence elementary proof of the combinatorial Faà di Bruno's formula, arXiv:2206.02031v2 (2022)](https://arxiv.org/abs/2206.02031v2)
+
+### Uniform derivative limits allow differentiation
+
+**Remember:** Control all slopes and anchor one function value.
+
+*Rules out counterexamples. Confidence: medium.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 40A30. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Uniform convergence of derivatives requires one error bound for all points after a common cutoff. Uniform convergence of the original functions alone does not control their slopes.
+
+**Problem.** Take real functions continuous on a closed bounded interval and differentiable in its interior. Suppose their values converge at one point of the interval and their derivatives converge uniformly in the interior. Then the functions converge uniformly, and their limit has the limiting derivative at each interior point.
+
+**How the definition helps.** The mean value theorem turns a uniform bound on derivative differences into the same bound on differences of secant slopes (our own). The convergent values at one point then make the functions uniformly Cauchy, so they converge uniformly (our own). Pass the secant bound to the limit in one function index before shrinking the secant interval (our own). On \[−1, 1\], the functions x ↦ √(x² + 1/n) converge uniformly to \|x\|, which has no derivative at zero (our own).
+
+**Wikipedia:** [Uniform convergence](https://en.wikipedia.org/wiki/Uniform_convergence). It says: “With additional hypotheses, differentiability can be transferred to the limit function as well.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the integral by antiderivatives makes integration by parts the product rule
 
@@ -354,6 +436,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Darboux sums reject the rational indicator
+
+**Remember:** Every interval sees both zeros and ones.
+
+*True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Split the interval and take the greatest lower bound of the function on each piece. Multiply each bound by its piece length and add the products to get a Darboux lower sum. Use least upper bounds for an upper sum. A Riemann sum instead chooses one sample per piece.
+
+**Problem.** The function on \[0, 1\] that equals one on rational numbers and zero elsewhere is not Riemann integrable.
+
+**How the definition helps.** Every partition gives lower sum zero and upper sum one, since each piece contains both rational and irrational numbers (our own). Their gap can never become arbitrarily small, so the function fails the Darboux test (our own). The separate theorem that Riemann and Darboux integrability agree gives the conclusion for the Riemann integral (our own).
+
+**Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “This function does not have a Riemann integral.”
+
+**Paper or page:** [Equivalence of Definitions of Riemann and Darboux Integrals](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals). It says: “the Darboux integral of f over \[a, b\] exists and is equal to L.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Darboux sums turn integrability into one test on a single partition
 
 **Remember:** Squeeze the integral between rectangles above and rectangles below.
@@ -388,6 +488,106 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Uniform limits preserve Riemann integrals
+
+**Remember:** A small error everywhere gives a small total error.
+
+*Rules out counterexamples.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 40A30. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Uniform convergence requires one sequence cutoff to make the error small everywhere. Pointwise convergence allows a different cutoff at each point.
+
+**Problem.** If Riemann integrable functions on a closed bounded interval converge uniformly, their limit is integrable. Its integral is the limit of their integrals.
+
+**How the definition helps.** Uniform convergence bounds the error in every Riemann sum by the maximum allowed error times the interval length (our own). The upper and lower sum criterion then gives integrability of the limit (our own). On \[0, 1\], let the nth function equal n on (0, 1/n) and zero elsewhere (our own). Each integral equals one, but the pointwise limit is zero (our own).
+
+**Wikipedia:** [Uniform convergence](https://en.wikipedia.org/wiki/Uniform_convergence). It says: “the uniform limit of Riemann integrable functions is automatically Riemann integrable.”
+
+**Paper or page:** [Definite Integral of Limit of Uniformly Convergent Sequence of Integrable Functions](https://proofwiki.org/wiki/Definite_Integral_of_Limit_of_Uniformly_Convergent_Sequence_of_Integrable_Functions). It says: “Then f is integrable, and”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Convex chords order slopes
+
+**Remember:** The middle point below the chord orders the three slopes.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A function on an interval is convex if its value between two points lies at or below their chord. For twice differentiable functions, nonnegative second derivative gives an equivalent test.
+
+**Problem.** For u &lt; v &lt; w, a convex function has nondecreasing slopes on \[u, v\], \[u, w\], and \[v, w\], in that order.
+
+**How the definition helps.** The middle point v is a weighted mean of u and w. Writing the chord bound at v and rearranging gives both slope inequalities (our own). No derivative is needed (our own). The mean value theorem carries the work of proving the derivative test when that test applies (our own).
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “The proof is virtually trivial; just write v as a convex combination t u + (1−t)w and use the definition of convexity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Epigraph intersections preserve convexity
+
+**Remember:** The region above the highest graph is the intersection of all the upper regions.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The epigraph of a function consists of all points on or above its graph. Call the function convex if its epigraph contains the segment between any two of its points. The equivalent chord test requires each chord between graph points to lie on or above the graph.
+
+**Problem.** The pointwise supremum of convex functions on a common interval is convex if it is finite there. The pointwise supremum takes the least upper bound of the function values at each input.
+
+**How the definition helps.** The epigraph of the supremum is the intersection of the individual epigraphs (our own). Each shared pair of points belongs to every epigraph, so the whole segment belongs to their intersection (our own). The remaining work is to show that raising either endpoint of a chord keeps the segment on or above the graph (our own).
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “The pointwise maximum of two convex functions on D is again convex.”
+
+**Paper or page:** [Pointwise Supremum of Family of Convex Real Functions is Convex](https://proofwiki.org/wiki/Pointwise_Supremum_of_Family_of_Convex_Real_Functions_is_Convex). It says: “Then f is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ordered slopes give one-sided derivatives
+
+**Remember:** At an interior point, slopes approach from each side without oscillating.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26A24. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define convexity on an interval by ordering the slopes of adjacent chords. For x &lt; y &lt; z, the slope from x to y cannot exceed the slope from y to z. The geometric definition puts each chord on or above the graph.
+
+**Problem.** A finite convex function on an open real interval has finite left and right derivatives at each point.
+
+**How the definition helps.** An outer chord slope is a weighted average of its two adjacent chord slopes, so it lies between them (our own). Thus slopes with one endpoint fixed increase or stay constant as the other endpoint moves right (our own). Chords to fixed points on either side bound the nearby slopes, so both one-sided limits exist and are finite (our own). Rearranging the usual chord inequality gives the adjacent slope test (our own).
+
+**Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “Moreover, f admits left and right derivatives, and these are monotonically non-decreasing.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reflection makes increasing convex inverses concave
+
+**Remember:** Above an increasing graph becomes below its inverse when you swap coordinates.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A convex function has a convex region on or above its graph. A concave function has a convex region on or below it. An equivalent test compares the graph directly with its chords.
+
+**Problem.** The inverse of a strictly increasing convex function on an open interval is concave on its range.
+
+**How the definition helps.** Within the input and output intervals, swapping coordinates turns points on or above the graph into points on or below the inverse graph (our own). Strict increase gives this correspondence (our own). A real convex function on an open interval is continuous, so its range is an interval (our own). Swapping coordinates preserves segments, so chords of the inverse lie on or below its graph (our own).
+
+**Paper or page:** [Inverse of Strictly Increasing Convex Real Function is Concave](https://proofwiki.org/wiki/Inverse_of_Strictly_Increasing_Convex_Real_Function_is_Concave). It says: “If f be strictly increasing on I, then f⁻¹ is concave on J.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strict convexity makes minima unique
+
+**Remember:** Two lowest points would force an even lower midpoint.
+
+*Rules out counterexamples.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A real function on an interval is strictly convex if every chord between distinct graph points lies above the graph between them. Ordinary convexity also allows the chord to lie on the graph.
+
+**Problem.** A strictly convex function on an interval has at most one point where it attains its minimum.
+
+**How the definition helps.** Two distinct minimizers would have a midpoint with a strictly smaller value (our own). The constant zero function on \[0, 1\] shows why ordinary convexity permits several minimizers (our own).
+
+**Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “A strictly convex function will have at most one global minimum.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Twice differentiable maps have symmetric second derivatives
 
 **Remember:** Twice differentiable means the derivative itself has a derivative, not only the partials.
@@ -401,6 +601,40 @@
 **How the definition helps.** With this definition the theorem needs no continuity hypothesis, because the second derivative is one bilinear map that a symmetric difference approximates. Look at the second-order difference f(x+v+w) − f(x+v) − f(x+w) + f(x). It is symmetric in v and w. The mean value theorem shows that it equals d(df)(v,w) up to a small error, so the bilinear map is symmetric. The definition excludes the classical counterexample f(x,y) = xy(x² − y²)/(x² + y²). All second partial derivatives of this function exist at (0,0), but its two mixed partials differ there. The textbook version, with continuous second partials, then follows as a corollary.
 
 **nLab:** [differentiable map](https://ncatlab.org/nlab/show/differentiable+map). It says: “However, the theorem shows that if we require f to actually be twice differentiable rather than merely having second-order partial derivatives, then this cannot happen.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derivatives lower root multiplicity by one
+
+**Remember:** One derivative shifts the first nonzero derivative down by one place.
+
+*True by definition.* MSC 26C05 (Real polynomials: analytic properties, etc.). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For a root of a nonzero real polynomial, define its multiplicity as the least derivative order with nonzero value there. Order zero means the polynomial itself. The factor definition counts copies of the corresponding linear factor.
+
+**Problem.** Differentiating a nonzero real polynomial lowers the multiplicity of each root by one. A root of multiplicity one is no longer a root.
+
+**How the definition helps.** The derivative starts the list of derivative values one place later (our own). The work moves to Taylor’s formula for polynomials, which shows that the first nonzero term gives the number of linear factors (our own).
+
+**Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “If a is a root of multiplicity k of a polynomial, then it is a root of multiplicity k − 1 of the derivative”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Analytic functions equal their Taylor series
+
+**Remember:** A convergent power series has no freedom to choose its Taylor coefficients.
+
+*Rules out counterexamples.* MSC 26E05 (Real-analytic functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A real function is analytic at a point if a convergent power series centered there equals the function near the point. Having derivatives of all orders is weaker.
+
+**Problem.** A real analytic function agrees near each point of analyticity with its Taylor series there.
+
+**How the definition helps.** The local power series already represents the function, so only its coefficients need to be identified (our own). The work moves to termwise differentiation of a convergent power series, which extracts each coefficient at the center (our own). The smooth function exp(−1/x²), extended by zero at x = 0, has all derivatives zero there but is positive elsewhere (our own).
+
+**Wikipedia:** [Analytic function](https://en.wikipedia.org/wiki/Analytic_function). It says: “a function that is locally represented by a convergent power series.”
+
+**Paper or page:** [Calculus: Taylor](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then aₙ = f⁽ⁿ⁾(0)/n!.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -468,6 +702,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Closed sublevel sets give minima
+
+**Remember:** Closed sets of near-minimizers must meet on a compact domain.
+
+*True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A real function is lower semicontinuous if every sublevel set is closed. A sublevel set contains all points where the function is at most a specified height. On a metric space, this is equivalent to requiring that a value never exceed the limit inferior along any approaching sequence.
+
+**Problem.** A real-valued lower semicontinuous function on a nonempty compact interval attains its minimum.
+
+**How the definition helps.** Closed sublevel sets let compactness turn arbitrarily close approximations into a minimum (our own). If the infimum were minus infinity, all sublevel sets at heights −n would be nonempty (our own). Compactness would put one point in all of them, impossible for a real value (our own). For finite infimum m, the nonempty closed sublevel sets at heights m + 1/n likewise intersect (our own). Every point in their intersection attains m (our own). From the sequential definition, one first proves that each sublevel set contains the limits of its convergent sequences (our own).
+
+**nLab:** [semicontinuous map](https://ncatlab.org/nlab/show/semicontinuous+map). It says: “for each y ∈ U, f(y) &gt; a.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Oscillation shows that the points of continuity form a G-delta set
 
 **Remember:** Continuity means zero oscillation, and small oscillation is an open condition.
@@ -483,6 +733,24 @@
 **Wikipedia:** [Oscillation (mathematics)](https://en.wikipedia.org/wiki/Oscillation_%28mathematics%29). It says: “the continuous points are the intersection of the sets where the oscillation is less than ε (hence a Gδ set) – and gives a very quick proof of one direction of the Lebesgue integrability condition.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Distance cones extend Lipschitz functions
+
+**Remember:** Take the lowest distance bound from all the known values.
+
+*True by definition.* MSC 26A16 (Lipschitz (Hölder) classes). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A function is L-Lipschitz if each absolute change in value is at most L times the distance between inputs. For each x on the line, define its McShane extension as the infimum of f(a) + L\|x − a\| over original points a. This single formula replaces interpolation across individual gaps in the domain.
+
+**Problem.** A real function on any nonempty subset of the line with Lipschitz constant L extends to the whole line with the same bound.
+
+**How the definition helps.** Taking the infimum of distance bounds enforces the same Lipschitz inequality everywhere at once (our own). The triangle inequality bounds the change in each expression by L times the distance between inputs (our own). Taking infima preserves this bound in both directions (our own). Fix an original point b (our own). The Lipschitz and triangle inequalities bound every expression below by f(b) − L\|x − b\| (our own). Choosing a = b gives a finite upper bound (our own). At any original point x, the bounds all exceed or equal f(x), with equality when a = x (our own).
+
+**nLab:** [Lipschitz map](https://ncatlab.org/nlab/show/Lipschitz+map). It says: “d(f(a), f(b)) ≤ K d(a, b)”
+
+**Sources:**
+
+- [E. J. McShane, Extension of range of functions (1934)](https://doi.org/10.1090/S0002-9904-1934-05978-0)
 
 ### Defining Baire class one by limits makes derivatives Baire class one
 
@@ -515,6 +783,24 @@
 **Wikipedia:** [Strict differentiability](https://en.wikipedia.org/wiki/Strict_differentiability). It says: “the definition is made more restrictive by allowing both points used in the difference quotient to "move".”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Caputo derivatives vanish on constants
+
+**Remember:** Differentiate first and the constant is already gone.
+
+*Rules out counterexamples.* MSC 26A33 (Fractional derivatives and integrals). arXiv math.CA, math.AP. Level 2: later undergraduate.
+
+**Definition.** Fix 0 &lt; α &lt; 1 and start all integrals at zero. Integration of order 1 − α weights past values by the time lag raised to −α, divided by Γ(1 − α). Here Γ denotes the gamma function. The Caputo rule differentiates before integration, while the Riemann–Liouville rule differentiates afterwards.
+
+**Problem.** The Caputo derivative of a constant is zero. The Riemann–Liouville derivative of a nonzero constant on positive time is not zero.
+
+**How the definition helps.** A constant has ordinary derivative zero, so the Caputo rule integrates zero (our own). In our own comparison the reversed rule integrates 1 to a positive power of time, which still has a nonzero derivative. For general inputs, our own explanation uses the equivalence with subtracting the initial value before applying the reversed rule.
+
+**Wikipedia:** [Caputo fractional derivative](https://en.wikipedia.org/wiki/Caputo_fractional_derivative). It says: “The Caputo fractional derivative of a constant c is given by”
+
+**Sources:**
+
+- [M. Caputo, Linear Models of Dissipation whose Q is almost Frequency Independent—II (1967)](https://doi.org/10.1111/j.1365-246x.1967.tb02303.x)
 
 ### The Henstock integral makes every derivative integrable
 
@@ -551,6 +837,22 @@
 **Sources:**
 
 - [Heinrich Hake, Über de la Vallée Poussins Ober- und Unterfunktionen einfacher Integrale und die Integraldefinition von Perron, Mathematische Annalen 83 (1921) 119–142 (for the Perron integral, which is equivalent to the Henstock integral)](https://doi.org/10.1007/BF01464233)
+
+### Darboux brackets recover Lebesgue integrals
+
+**Remember:** Squeeze the Lebesgue integral between the two step integrals.
+
+*True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 28A25. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The Darboux construction brackets a bounded function with lower and upper step functions on partitions. Integrability means that the ordinary integrals of these two step functions can differ by arbitrarily little. Riemann’s tagged sums give an equivalent test.
+
+**Problem.** Every Darboux integrable function on a compact interval is Lebesgue integrable with the same integral.
+
+**How the definition helps.** Darboux sums supply pointwise step bounds, while individual tagged Riemann sums need not bound the function (our own). Choose successively finer partitions whose upper and lower integrals differ by less than 1/n (our own). The bounded step functions converge from above and below, apart from countably many partition endpoints (our own). Bounded convergence shows that the limiting bounds have equal integrals (our own). Their nonnegative difference therefore vanishes almost everywhere (our own). Lebesgue measurability follows because the function agrees almost everywhere with the measurable lower limit (our own). The common integral equals the Darboux integral (our own).
+
+**Paper or page:** [Lebesgue Integral is Extension of Darboux Integral](https://proofwiki.org/wiki/Lebesgue_Integral_is_Extension_of_Darboux_Integral). It says: “Then it is also Lebesgue integrable, and furthermore:”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Refining partitions let some Stieltjes integrals with shared jumps exist
 
@@ -654,6 +956,22 @@
 
 - [P. G. L. Dirichlet, Sur la convergence des séries trigonométriques qui servent à représenter une fonction arbitraire entre des limites données, J. reine angew. Math. 4 (1829), 157–169, doi:10.1515/crll.1829.4.157](https://doi.org/10.1515/crll.1829.4.157)
 
+### Lower bounds control reciprocal variation
+
+**Remember:** Keep every denominator away from zero before you sum the increments.
+
+*Rules out counterexamples.* MSC 26A45 (Functions of bounded variation, generalizations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Total variation takes the supremum of sums of absolute increments over finite partitions. A function bounded away from zero has \|f(x)\| ≥ M for one M &gt; 0. This is stronger than never taking the value zero.
+
+**Problem.** Let f have bounded variation on a closed interval and satisfy \|f\| ≥ M &gt; 0. Then 1/f has variation at most that of f divided by M².
+
+**How the definition helps.** A uniform lower bound controls both factors in the denominator of each reciprocal difference (our own). Its absolute value is at most the absolute difference of the original values divided by M² (our own). Summing over a partition and taking the supremum gives the bound (our own). On \[0, 1\], set f(0) = 1 and f(x) = x elsewhere (our own). This function has bounded variation, but its reciprocal is unbounded (our own).
+
+**Paper or page:** [Reciprocal of Function of Bounded Variation Bounded away from Zero is of Bounded Variation](https://proofwiki.org/wiki/Reciprocal_of_Function_of_Bounded_Variation_Bounded_away_from_Zero_is_of_Bounded_Variation). It says: “That is, there exists M ∈ ℝ such that: \|f(x)\| ≥ M &gt; 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The monotone-difference description of bounded variation gives countably many discontinuities
 
 **Remember:** Every discontinuity comes from one of the two monotone parts.
@@ -686,6 +1004,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Lipschitz implies absolute continuity
+
+**Remember:** Sum the same Lipschitz bound over all the intervals.
+
+*True by definition.* MSC 26A46 (Absolutely continuous real functions in one variable), 26A16. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A Lipschitz function bounds each absolute change in value by a fixed multiple of the distance between inputs. Absolute continuity requires that sufficiently small total length guarantees arbitrarily small total absolute change across finitely many disjoint intervals. On a closed bounded interval, this is equivalent to being a constant plus an indefinite integral of an integrable function.
+
+**Problem.** Every Lipschitz real function on a closed bounded interval is absolutely continuous.
+
+**How the definition helps.** The interval definition lets one sum the Lipschitz bound over the disjoint intervals (our own). The total change is at most the Lipschitz constant times the total length (our own). The work in the integral description moves to the fundamental theorem for absolutely continuous functions (our own).
+
+**Paper or page:** [Lipschitz Continuous Real Function is Absolutely Continuous](https://proofwiki.org/wiki/Lipschitz_Continuous_Real_Function_is_Absolutely_Continuous). It says: “Let f be Lipschitz continuous on I. Then f is absolutely continuous on I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuity upgrades midpoint convexity
+
+**Remember:** Repeatedly halve the interval, then use continuity to fill the gaps.
+
+*Rules out counterexamples.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A midpoint-convex function lies below the average of the endpoint values at each midpoint. Full convexity requires the corresponding inequality for every weight between zero and one.
+
+**Problem.** A continuous midpoint-convex function on a real interval is convex.
+
+**How the definition helps.** Continuity lets the midpoint test determine the inequality at every weight (our own). Repeated halving gives the inequality for fractions whose denominator is a power of two (our own). These fractions are dense, so continuity gives the remaining weights (our own). For a counterexample, take a basis of the reals over the rationals containing 1 and √2 (our own). Define a rational-linear map sending √2 to one and every other basis element to zero (our own). It has midpoint equality but is discontinuous because it vanishes on the rationals without vanishing everywhere (our own). Every finite convex function on the line is continuous (our own).
+
+**Wikipedia:** [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “Such functions are sometimes called Hamel functions.”
+
+**Paper or page:** [Continuous Midpoint-Convex Function is Convex](https://proofwiki.org/wiki/Continuous_Midpoint-Convex_Function_is_Convex). It says: “Let f be midpoint-convex and continuous on I. Then f is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Log-convexity singles out the gamma function among extensions of the factorial
 
 **Remember:** Of all the smooth ways to join the factorials, only Γ is log-convex.
@@ -699,6 +1051,22 @@
 **How the definition helps.** Log-convexity squeezes f between bounds that close up, so only one function is possible. The conditions f(1) = 1 and f(x + 1) = x·f(x) alone do not determine f. Our own example: Γ(x)·p(x) satisfies them for any positive function p with period 1 and p(1) = 1. Log-convexity traps f(x) between bounds that depend on a whole number n and converge to the same limit as n grows. So the proof both shows uniqueness and gives a formula for Γ. Bohr and Mollerup put the theorem in a textbook in 1922, because they thought someone had already proved it.
 
 **Wikipedia:** [Bohr–Mollerup theorem](https://en.wikipedia.org/wiki/Bohr%E2%80%93Mollerup_theorem). It says: “Therefore, there is no other function defined on x &gt; 0 with all the properties assigned to Γ(x).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sums preserve log-convexity
+
+**Remember:** Apply Hölder to the geometric means of the endpoint values.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26D15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A positive function is log-convex when its logarithm is convex. Equivalently, its value at a weighted mean is no greater than the weighted geometric mean of the endpoint values.
+
+**Problem.** Any finite sum of positive log-convex functions on a real interval is log-convex.
+
+**How the definition helps.** The geometric mean bound lets Hölder’s inequality combine the bounds for all summands (our own). For weights strictly between zero and one, use their reciprocals as the two exponents (our own). This bounds the sum at the weighted mean by the weighted geometric mean of the endpoint sums (our own). At weights zero and one the inequality is equality (our own). Taking logarithms gives convexity of the logarithm of the sum (our own).
+
+**Wikipedia:** [Logarithmically convex function](https://en.wikipedia.org/wiki/Logarithmically_convex_function). It says: “log ∘ f is convex”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -788,6 +1156,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Scaling ratios invert growth indices
+
+**Remember:** An inverse undoes a scale factor, so it inverts the index.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 26A12 (Rate of growth of functions, orders of infinity, slowly varying functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let f be positive and measurable on a positive half-line. It varies regularly with index ρ if f(ax)/f(x) tends to a raised to ρ as x tends to infinity, for each a &gt; 0.
+
+**Problem.** If a positive, continuous, strictly increasing function varies regularly with index ρ &gt; 0, its inverse varies regularly with index 1/ρ.
+
+**How the definition helps.** Ratios express the inverse law even when a power alone does not describe growth (our own). Fix a positive multiplier a and choose positive numbers b and c straddling a raised to 1/ρ (our own). For large x, regular variation gives f(bx) &lt; a f(x) &lt; f(cx) (our own). Taking inverses and dividing by x traps the inverse ratio between b and c (our own). The positive index and monotonicity imply unbounded growth, so the inverse covers every sufficiently large argument (our own). Bringing b and c together gives the limit (our own).
+
+**Wikipedia:** [Slowly varying function](https://en.wikipedia.org/wiki/Slowly_varying_function). It says: “Similarly, a regularly varying function is a function of a real variable whose behaviour at infinity is similar to the behaviour of a power law function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Uniform continuity with infinitesimals gives a short Heine–Cantor proof
 
 **Remember:** Uniform continuity checks closeness at all hyperreal points, not only real ones.
@@ -805,6 +1189,22 @@
 **Sources:**
 
 - [Abraham Robinson, Non-standard analysis, Indagationes Mathematicae (Proceedings) 64 (1961)](https://doi.org/10.1016/S1385-7258(61)50044-3)
+
+### Baire-one functions have dense continuity points
+
+**Remember:** Pointwise limits of continuous functions have points of continuity in every interval.
+
+*Rules out counterexamples.* MSC 26A21 (Classification of real functions; Baire classification of sets and functions), 26A15. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A real function is of Baire class one if it is the pointwise limit of a sequence of continuous functions.
+
+**Problem.** Every Baire class one real function on the real line is continuous on a dense set of points.
+
+**How the definition helps.** Continuous approximations give closed sets where every pair of terms after index N differs by at most ε (our own). Pointwise convergence makes these sets cover every closed interval (our own). The Baire category theorem gives one such set containing a smaller interval of positive length (our own). There the limit stays within ε of one continuous term (our own). Shrink the interval until that term varies by less than ε, so the limit varies by at most 3ε (our own). For each ε the resulting open intervals have dense union (our own). Baire’s theorem gives a dense intersection for ε = 1/n, and the limit is continuous at every point there (our own).
+
+**Wikipedia:** [Baire function](https://en.wikipedia.org/wiki/Baire_function). It says: “the pointwise limit of a sequence of Baire class 0 functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Dini derivatives exist for every function, so Denjoy–Young–Saks needs no hypothesis
 
@@ -837,6 +1237,22 @@
 **How the definition helps.** The definition bounds exactly the error that the difference quotient needs, in our own proof. In our own proof, the difference quotient error is at most twice the average of \|f − f(x)\| over \[x − \|h\|, x + \|h\|\]. The Lebesgue differentiation theorem carries the work, because it shows that almost every point is a Lebesgue point.
 
 **Wikipedia:** [Lebesgue differentiation theorem](https://en.wikipedia.org/wiki/Lebesgue_differentiation_theorem). It says: “The points x for which this is true are called the Lebesgue points of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma normalization adds fractional orders
+
+**Remember:** Normalized integration kernels add their orders when convolved.
+
+*True by definition.* MSC 26A33 (Fractional derivatives and integrals), 44A35. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For α &gt; 0, set k(t) = exp((α − 1) log t)/Γ(α) for t &gt; 0. Here Γ is the gamma function, with Γ(n + 1) = n! for nonnegative integers n. Define integration of order α by integrating k(t − s)f(s) from 0 to t.
+
+**Problem.** Take an integrable input on \[0,T\] and positive orders α and β. Integrating successively gives integration of order α + β almost everywhere.
+
+**How the definition helps.** The gamma factors cancel the constant produced by convolving two power kernels (our own). Substituting s = tu reduces that constant to an integral on \[0,1\], called the beta integral (our own). The beta–gamma identity evaluates it as Γ(α)Γ(β)/Γ(α + β) (our own). At integer orders the same rule recovers repeated ordinary integration (our own).
+
+**Paper or page:** [An extension of the Cartwright-McMullen theorem in fractional calculus for the smooth Stieltjes case](https://arxiv.org/abs/2309.07148v1). It says: “The Index Law holds. That is, $J<sub>a<sup>+</sub><sup>\\alpha</sup> </sup> \\circ J<sub>a<sup>+</sub><sup>\\beta</sup> </sup>=J<sub>a<sup>+</sub><sup>\\alpha</sup> +\\beta </sup>$ for all $\\alpha ,\\beta &gt; 0$.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -925,6 +1341,22 @@
 **Sources:**
 
 - [Serge Bernstein, Sur les fonctions absolument monotones, Acta Mathematica 52 (1929), 1–66.](https://doi.org/10.1007/BF02592679)
+
+### Affine minorants prove conditional Jensen
+
+**Remember:** Average each line first, then take the supremum.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 28A25. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A finite convex function on the whole line is the supremum of countably many affine minorants. These are straight lines that lie below the function. This describes the same class as requiring the function to lie below each chord between two of its points.
+
+**Problem.** Let X and f(X) be integrable, with f finite and convex on the line. Given the same information, f of the conditional mean of X is at most the conditional mean of f(X), with probability one.
+
+**How the definition helps.** Representing f by countably many lines lets conditional averaging preserve each lower bound simultaneously (our own). A conditional mean averages given a specified collection of events and commutes with affine functions (our own). Its monotonicity gives the desired inequality for each line outside a set of probability zero (our own). Take the supremum outside the union of those exceptional sets, which still has probability zero (our own). The supporting-line theorem supplies lines at rational points, and local bounds on slopes make their supremum equal f everywhere (our own).
+
+**Paper or page:** [Conditional Jensen's Inequality](https://proofwiki.org/wiki/Conditional_Jensen's_Inequality). It says: “f(E\[X \| 𝒢\]) ≤ E\[f(X) \| 𝒢\]”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Averaging gradients gives a center that splits expected Bregman divergence exactly
 

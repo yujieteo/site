@@ -1,3 +1,87 @@
+### Cancellation makes prime elements irreducible
+
+**Remember:** When a prime divides one of its factors, the other factor is a unit.
+
+*Rules out counterexamples.* MSC 13A05 (Divisibility and factorizations in commutative rings). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** An integral domain is a nonzero commutative ring with 1 in which a product of nonzero elements cannot be zero. A unit has a multiplicative inverse. An irreducible element is a nonzero nonunit with no factorization into two nonunits. A prime element is a nonzero nonunit that divides a product only if it divides one of the factors.
+
+**Problem.** In an integral domain, every prime element is irreducible.
+
+**How the definition helps.** The domain condition lets us cancel the prime, which shows one factor has an inverse (our own). If p = ab and p divides a, write a = pc (our own). Then p = pcb, so cancellation gives cb = 1 (our own). In the integers modulo 6, the residue 2 is prime because a product is even only if one factor is even (our own). Yet 2 equals 2 × 4 there, and neither factor has an inverse (our own).
+
+**Wikipedia:** [Prime element](https://en.wikipedia.org/wiki/Prime_element). It says: “In an integral domain, every prime is irreducible”
+
+**Paper or page:** [Prime Element of Integral Domain is Irreducible](https://proofwiki.org/wiki/Prime_Element_of_Integral_Domain_is_Irreducible). It says: “Then p is an irreducible element of ⟨D, +, ∘⟩.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime characteristic makes Frobenius additive
+
+**Remember:** In prime characteristic, the middle binomial terms vanish.
+
+*Rules out counterexamples.* MSC 13A35 (Characteristic \\(p\\) methods (Frobenius endomorphism) and reduction to characteristic \\(p\\); tight closure). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** The characteristic of a ring with 1 is the least positive number of copies of 1 that add to zero, or zero if none does. In prime characteristic p, the Frobenius map raises each element to the power p.
+
+**Problem.** Raising to the power p is a ring homomorphism in every commutative ring of prime characteristic p.
+
+**How the definition helps.** Prime characteristic makes the middle terms vanish in the binomial expansion of a sum raised to power p. Their coefficients are divisible by p. Commutativity gives multiplicativity. Modulo 4, the fourth power of 1 + 1 is 0, while the two fourth powers add to 2 (our own).
+
+**Wikipedia:** [Frobenius endomorphism](https://en.wikipedia.org/wiki/Frobenius_endomorphism). It says: “This shows that F is a ring homomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Domains keep root counts bounded
+
+**Remember:** After removing one linear factor, every other root must belong to the quotient.
+
+*Rules out counterexamples.* MSC 13B25 (Polynomials over commutative rings). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** An integral domain is a nonzero commutative ring with 1 in which a product of nonzero elements cannot be zero. A root is a value at which the polynomial is zero.
+
+**Problem.** A nonzero polynomial of degree n over an integral domain has at most n distinct roots.
+
+**How the definition helps.** The domain condition forces every other root to remain a root after removing one linear factor (our own). At a root a, the factor theorem gives f(x) = (x − a)g(x) (our own). At another root b, the product (b − a)g(b) vanishes while b − a is nonzero (our own). Hence g(b) vanishes, and induction on the degree gives the bound (our own). Modulo 8, all four odd residues solve x² − 1 = 0 (our own).
+
+**Wikipedia:** [Frobenius endomorphism](https://en.wikipedia.org/wiki/Frobenius_endomorphism). It says: “if R is not a domain, then Xᵖ − X may have more than p roots”
+
+**Paper or page:** [Polynomial Factor Theorem](https://proofwiki.org/wiki/Polynomial_Factor_Theorem). It says: “ξ ∈ K: P(ξ) = 0 ⇔ P(x) = (x − ξ) Q(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Monic divisors make long division work
+
+**Remember:** A leading coefficient of one needs no division.
+
+*Rules out counterexamples.* MSC 13B25 (Polynomials over commutative rings). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** A polynomial is monic if its leading coefficient is 1. Over a field every nonzero leading coefficient has an inverse, but over a general ring it may not.
+
+**Problem.** Over a nonzero commutative ring with 1, division by a monic polynomial gives a unique quotient and a remainder of lower degree or zero.
+
+**How the definition helps.** A leading coefficient of 1 lets subtraction cancel the highest term without dividing its coefficient (our own). Each subtraction lowers the degree until the remainder is zero or has lower degree than the divisor (our own). Multiplication by a monic divisor raises the degree of every nonzero polynomial by the degree of the divisor (our own). Different quotients would therefore give a remainder difference of at least the divisor’s degree (our own). In ℤ\[x\], division of x by 2x with a constant remainder would require the coefficient 1/2 (our own).
+
+**nLab:** [monic polynomial](https://ncatlab.org/nlab/show/monic+polynomial). It says: “whose highest order coefficient is 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Domains embed in fraction fields
+
+**Remember:** No nonzero denominator becomes zero during multiplication.
+
+*Rules out counterexamples.* MSC 13B30 (Rings of fractions and localization for commutative rings). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** An integral domain is a nonzero commutative ring with 1 and no pair of nonzero elements whose product is zero. Form fractions a/b with b ≠ 0. Treat a/b and c/d as equal when ad = bc.
+
+**Problem.** A nonzero commutative ring with 1 embeds in a field exactly when it is an integral domain.
+
+**How the definition helps.** The domain condition keeps products of nonzero denominators nonzero and allows cancellation in cross multiplication (our own). Cancellation makes equality of fractions transitive (our own). Fraction arithmetic gives a field where a/1 represents a and b/a inverts each nonzero a/b (our own). Conversely, a field embedding would preserve nonzero elements and their products (our own). Two nonzero elements with zero product therefore rule out an embedding, as 2 and 3 do modulo 6 (our own).
+
+**Wikipedia:** [Field of fractions](https://en.wikipedia.org/wiki/Field_of_fractions). It says: “the smallest field in which it can be embedded”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Formal power series need no convergence
 
 **Remember:** A formal power series is just its list of coefficients.

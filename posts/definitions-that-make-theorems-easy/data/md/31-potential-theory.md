@@ -64,6 +64,24 @@
 
 - [F. Riesz, Sur les fonctions subharmoniques et leur rapport à la théorie du potentiel, Acta Mathematica 48 (1926)](https://doi.org/10.1007/bf02565338)
 
+### Conformal maps transport harmonic measure
+
+**Remember:** Transport the boundary data and its harmonic average stays the same.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A harmonic function has Laplacian zero. Define harmonic measure at an interior point as the measure whose average of continuous boundary data gives their harmonic extension there. Another definition uses the distribution of the first exit point of Brownian motion.
+
+**Problem.** Take two bounded planar domains enclosed by simple closed curves. Suppose a conformal bijection extends to a homeomorphism of their closures. The map carries harmonic measure at each interior point to harmonic measure at its image.
+
+**How the definition helps.** The definition tests against continuous data, so our own proof pulls each test function back through the map. Harmonic extension commutes with conformal changes by uniqueness of the boundary problem (our own). The work moves to existence of the representing measure and to harmonicity under conformal changes (our own).
+
+**Wikipedia:** [Harmonic measure](https://en.wikipedia.org/wiki/Harmonic_measure). It says: “determines a probability measure ω(x, D) on ∂D by”
+
+**Paper or page:** [Rational lemniscates and the matching problem](https://arxiv.org/abs/2507.03547v1). It says: “ω(B₁,w,Ω) = ω(B₂,f(w),Ω′) (w ∈ Ω).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Extremal length distinguishes annuli with different radius ratios
 
 **Remember:** Extremal length reads the annulus radius ratio without classifying its conformal maps.
@@ -83,6 +101,24 @@
 **Sources:**
 
 - [L. Ahlfors and A. Beurling, Conformal invariants and function-theoretic null-sets, Acta Mathematica 83 (1950), 101–129](https://doi.org/10.1007/BF02392634)
+
+### Harmonic exit measures compose
+
+**Remember:** Exit the inner domain first, then start again from the exit point.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.PR, math.CV. Level 3: graduate.
+
+**Definition.** Start Brownian motion at an interior point x. Define harmonic measure at x as the probability distribution of its first exit point. The analytic definition uses the measure to average prescribed boundary values of a harmonic function.
+
+**Problem.** Start inside the smaller of two bounded planar domains, with its closure inside the larger domain. Average the outer exit distribution using the inner exit point as the new starting point. This gives the outer exit distribution from the original point.
+
+**How the definition helps.** The exit-law definition lets our own proof condition on the first exit from the inner domain. The work moves to the strong Markov theorem and the agreement of the exit law with the analytic measure (our own). The theorem lets Brownian motion restart from its current point at a random stopping time (our own).
+
+**Wikipedia:** [Harmonic measure](https://en.wikipedia.org/wiki/Harmonic_measure). It says: “Harmonic measure is the exit distribution of Brownian motion”
+
+**Paper or page:** [Speeds of Convergence for Petals of Semigroups of Holomorphic Functions](https://arxiv.org/abs/2303.09961v1). It says: “ω(z,E,Ω₂) = ω(z,E,Ω₁) + ∫∂Ω₁∖∂Ω₂ ω(ζ,E,Ω₂) · ω(z,dζ,Ω₁).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Transfinite diameter makes logarithmic capacity monotone and proportional under scaling
 
@@ -168,6 +204,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Kelvin weighting preserves harmonicity
+
+**Remember:** Sphere inversion needs a power of distance to preserve harmonicity.
+
+*Rules out counterexamples.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For x ≠ 0 in dimension n ≥ 3, sphere inversion sends x to x/\|x\|². The Kelvin transform evaluates u there and multiplies by \|x\| to the power 2 − n. A harmonic function has Laplacian zero.
+
+**Problem.** The Kelvin transform of a harmonic function is harmonic in the inverted domain away from the origin.
+
+**How the definition helps.** The weight makes the extra derivative terms cancel, so only a multiple of the original Laplacian remains (our own). In our own counterexample, unweighted inversion of the first coordinate gives x₁/\|x\|², which is not harmonic when n ≥ 3. The work moves to checking the weighted Laplacian identity by the chain rule (our own).
+
+**Wikipedia:** [Kelvin transform](https://en.wikipedia.org/wiki/Kelvin_transform). It says: “Then a function u is harmonic, subharmonic or superharmonic in D if and only if the Kelvin transform u\*”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The harmonic mean value property rules out nonconstant interior maxima
 
 **Remember:** An average equal to the maximum forces the maximum throughout the ball.
@@ -181,6 +233,74 @@
 **How the definition helps.** The mean value definition makes the set of maximum points open, in our own proof. Around any maximum point, take a ball whose average must equal the maximum. Since the function never exceeds that value and is continuous, it equals the maximum throughout the ball. The set of maximum points is also closed by continuity. A connected set cannot split into two nonempty open sets, so the function is constant. The work moves into proving that the mean value property and the differential equation define the same functions.
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “If U is connected, this means that f cannot have local maxima or minima, other than the exceptional case where f is constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heat integration gives positive Green kernels
+
+**Remember:** A discounted sum of positive heat kernels stays positive.
+
+*True by definition.* MSC 31B10 (Integral representations, integral operators, integral equations methods in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For the operator 1 − Δ on Euclidean space, define its Green kernel by integrating the heat kernel against exp(−t) from zero to infinity. The heat kernel describes the spread of heat from a unit point source. The usual Green function solves the point-source equation and decays at infinity.
+
+**Problem.** The Green kernel of the negative Laplacian plus 1 on Euclidean space is positive off the diagonal.
+
+**How the definition helps.** The heat integral adds positive values with positive weights, so it gives strict positivity directly (our own). Away from the source, the Gaussian heat kernel decays fast enough near time zero for the integral to converge (our own). The exponential weight controls large times (our own). The work lies in identifying the integral with the inverse of 1 − Δ (our own).
+
+**Paper or page:** [Nonlocal nonlinear diffusion equations. Smoothing effects, Green functions, and functional inequalities](https://arxiv.org/abs/2205.06850v2). It says: “and the Green functions of $-\\mathfrak {L}$ and $I-\\mathfrak {L}$ are respectively given by\\\[  \\mathbb {G}\_{-\\mathfrak {L}}<sup>x<sub>0</sub></sup>(x)=\\int <sub>0</sub><sup>\\infty</sup> \\mathbb {H}\_{-\\mathfrak {L}}<sup>x<sub>0</sub></sup>(x,t)\\, \\mathrm{d}t  \\\]and\\\[  \\mathbb {G}\_{I-\\mathfrak {L}}<sup>x<sub>0</sub></sup>(x)=\\int <sub>0</sub><sup>\\infty</sup> \\textup{e}<sup>-t</sup>\\mathbb {H}\_{-\\mathfrak {L}}<sup>x<sub>0</sub></sup>(x,t)\\, \\mathrm{d}t,  \\\]”
+
+**Sources:**
+
+- [Matteo Bonforte and Jørgen Endal, Nonlocal nonlinear diffusion equations. Smoothing effects, Green functions, and functional inequalities (2022), Proposition 7.1](https://arxiv.org/abs/2205.06850v2)
+
+### Inverse operators explain Green symmetry
+
+**Remember:** An inverse keeps the symmetry of the operator it inverts.
+
+*True by definition.* MSC 31B10 (Integral representations, integral operators, integral equations methods in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Define the Dirichlet Green kernel as the integral kernel of the inverse of the negative Laplacian with zero boundary values. The point-source definition solves a separate singular equation for each pole.
+
+**Problem.** On a bounded smooth Euclidean domain, the Dirichlet Green function satisfies G(x,y) = G(y,x) for distinct interior points.
+
+**How the definition helps.** The inverse preserves the symmetry of the Laplacian’s inner product pairing, so exchanging two test functions leaves that pairing unchanged (our own). Testing the real kernel gives symmetry almost everywhere (our own). Continuity away from the diagonal gives equality at every distinct pair (our own). The work lies in constructing the inverse and identifying its kernel with the point-source solution (our own).
+
+**Paper or page:** [The Strong Maximum Principle and the Harnack inequality for a class of hypoelliptic divergence-form operators](https://arxiv.org/abs/1407.1669v1). It says: “kε(x,y) = kε(y,x) for every x,y ∈ Ω.”
+
+**Sources:**
+
+- [The Strong Maximum Principle and the Harnack inequality for a class of hypoelliptic divergence-form operators](https://arxiv.org/abs/1407.1669v1)
+
+### Riesz potential orders add
+
+**Remember:** Multiply the frequency weights and their orders add.
+
+*True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions), 44A35. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Use the Fourier convention with exponential exp(−ix · ξ). Define a Riesz potential of order α by multiplying the Fourier transform by \|ξ\| to the power −α. The usual integral in space instead averages against a normalized power of distance.
+
+**Problem.** Take smooth input that decays rapidly along with all its derivatives. Choose positive orders α and β with sum less than the space dimension. Composing their Riesz potentials gives the potential of order α + β.
+
+**How the definition helps.** Multiplication adds the exponents, so two Fourier weights give exactly the weight of the summed order (our own). The sum is below the dimension, making the product locally integrable at zero (our own). Rapid decay controls the integral at large frequencies (our own). Identifying this Fourier formula with the spatial integral requires the Fourier transform of the normalized distance kernel (our own).
+
+**Wikipedia:** [Riesz potential](https://en.wikipedia.org/wiki/Riesz_potential). It says: “Consideration of the Fourier transform reveals that the Riesz potential is a Fourier multiplier.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Boundary values fix Green functions
+
+**Remember:** A point source fixes the singularity, and the boundary fixes the rest.
+
+*Rules out counterexamples.* MSC 31B20 (Boundary value and inverse problems for harmonic functions in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** On a bounded smooth domain, a Dirichlet Green function solves the negative Laplace equation with a unit point source and zero boundary values. The equation holds against smooth test functions, including at the source. A fundamental solution prescribes only the source.
+
+**Problem.** There is at most one Dirichlet Green function for each fixed interior pole.
+
+**How the definition helps.** Subtracting two candidates cancels both the point source and the boundary values (our own). Weyl’s lemma makes the difference smooth and harmonic because its Laplacian vanishes against every test function (our own). The maximum principle then makes the difference zero everywhere (our own). Without boundary values, adding 1 gives another solution (our own).
+
+**Wikipedia:** [Green's identities](https://en.wikipedia.org/wiki/Green%27s_identities). It says: “Green's function that vanishes on the boundary”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -203,6 +323,22 @@
 - [O. Perron, Eine neue Behandlung der ersten Randwertaufgabe für Δu = 0, Mathematische Zeitschrift 18 (1923)](https://doi.org/10.1007/BF01192395)
 - [N. Wiener, The Dirichlet Problem, Journal of Mathematics and Physics 3 (1924)](https://doi.org/10.1002/sapm192433127)
 
+### Disk tests preserve plurisubharmonicity
+
+**Remember:** A holomorphic map sends each test disk to another test disk.
+
+*True by definition.* MSC 31C10 (Pluriharmonic and plurisubharmonic functions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** An upper semicontinuous function has value at least its limiting upper value at each point. Call it plurisubharmonic if every holomorphic map from the unit disk pulls it back to a subharmonic function. This means each value is at most the average on every sufficiently small circle centered there, allowing the constant −∞. The usual test in complex Euclidean space uses only affine complex lines.
+
+**Problem.** Composing a plurisubharmonic function with a holomorphic map gives a plurisubharmonic function, with the identically −∞ case allowed.
+
+**How the definition helps.** Composing the holomorphic map with a test disk gives another test disk, so the circular average inequality follows immediately (our own). Continuity of the map preserves upper semicontinuity (our own). The work lies in proving that the affine-line test implies the disk test (our own).
+
+**Wikipedia:** [Plurisubharmonic function](https://en.wikipedia.org/wiki/Plurisubharmonic_function). It says: “the function f ∘ φ : Δ → ℝ ∪ {−∞} is subharmonic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dirichlet forms are exactly the energies whose flows keep values in \[0,1\]
 
 **Remember:** An energy that respects clipping gives a flow that respects bounds.
@@ -221,6 +357,24 @@
 
 - [Davide Addona, Equivalence of Sobolev norms with respect to weighted Gaussian measures, arXiv:2009.13875v3 (2023)](https://arxiv.org/abs/2009.13875v3)
 - [A. Beurling, J. Deny, Dirichlet Spaces, Proc. Natl. Acad. Sci. USA 45(2) (1959) 208–215](https://doi.org/10.1073/pnas.45.2.208)
+
+### Energy projections make balayage nonexpansive
+
+**Remember:** Projecting both charges cannot increase their energy distance.
+
+*True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions). arXiv math.CA. Level 4: research.
+
+**Definition.** A positive charge is a positive measure. For order α in dimension n, its Riesz potential integrates distance to the power α − n against the charge. Energy integrates the potential against the charge itself, and the energy distance is the square root of the energy of the difference. Sweeping selects the nearest positive finite-energy charge supported on a given closed set.
+
+**Problem.** Fix a Riesz order greater than zero and at most two in Euclidean dimension n ≥ 3. Sweeping two positive finite-energy charges onto the same closed set cannot increase their energy distance.
+
+**How the definition helps.** Nearest-point projection onto a convex set cannot increase distances in an inner product space (our own). The work lies in proving the nearest charge exists and gives the usual sweeping operation (our own). That operation preserves the original potential on the set apart from subsets supporting no nonzero positive charge of finite energy (our own).
+
+**Paper or page:** [Fractional harmonic measure in minimum Riesz energy problems with external fields](https://arxiv.org/abs/2311.18081v1). It says: “\\\| \\sigma -\\sigma ^A\\\| =\\min <sub>\\mu \\in \\mathcal E'(A)</sub>\\, \\\| \\sigma -\\mu \\\| .”
+
+**Sources:**
+
+- [Fractional harmonic measure in minimum Riesz energy problems with external fields](https://arxiv.org/abs/2311.18081v1)
 
 ### Neumann capacity measures the effect of releasing a small Dirichlet patch
 
@@ -257,6 +411,24 @@
 **Sources:**
 
 - [Guy R. David, Joseph Feneuil, Svitlana Mayboroda, Elliptic theory for sets with higher co-dimensional boundaries, arXiv:1702.05503 (2023)](https://arxiv.org/abs/1702.05503v3)
+
+### Countable unions preserve polarity
+
+**Remember:** Countably many sets of zero capacity still have zero capacity.
+
+*True by definition.* MSC 31C15 (Potentials and capacities on other spaces). arXiv math.CV, math.AP. Level 4: research.
+
+**Definition.** On a compact complex manifold with a Hermitian metric, fix an integer m between one and the complex dimension. Local m-polarity means that a local m-subharmonic function equals −∞ on the set without being identically −∞. These functions satisfy positivity tests on the first m powers of their complex second derivatives, interpreted weakly. Equivalently, the set has zero outer Hessian capacity, a size defined using positive measures from bounded test functions.
+
+**Problem.** A countable union of locally m-polar Borel sets is locally m-polar.
+
+**How the definition helps.** The capacity definition allows each set to have an open cover of arbitrarily small capacity (our own). Capacity on open sets takes a supremum over positive test measures, so the capacity of a union never exceeds the sum (our own). Choose open neighborhoods with capacities below ε/2ⁿ and take their union (our own). Every ε &gt; 0 works, so the union has zero outer capacity (our own). Lemma 6.2 supplies the hard equivalence with local m-polarity.
+
+**Paper or page:** [Polar sets for m-subharmonic functions on compact Hermitian manifolds](https://arxiv.org/abs/2511.01159v1). It says: “E is a locally m-polar set ⇔ cap′ₘ⁎(E) = 0 ⇔ capₘ⁎(E) = 0.”
+
+**Sources:**
+
+- [Polar sets for m-subharmonic functions on compact Hermitian manifolds](https://arxiv.org/abs/2511.01159v1)
 
 ### Irreducibility makes the ground state of a positive form unique and positive
 

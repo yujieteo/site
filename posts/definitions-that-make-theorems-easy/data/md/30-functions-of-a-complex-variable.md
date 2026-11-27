@@ -52,6 +52,22 @@
 
 - [W. Wirtinger, Zur formalen Theorie der Funktionen von mehr komplexen Veränderlichen, Mathematische Annalen 97 (1927), 357–375](https://doi.org/10.1007/BF01447872)
 
+### Differentiation preserves a power series radius
+
+**Remember:** An nth root makes the derivative’s factor n vanish in the limit.
+
+*True by definition.* MSC 30B10 (Power series (including lacunary series) in one complex variable), 40A30. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Take the upper limit of the nth roots of the coefficient magnitudes. Its reciprocal gives the radius, with zero and infinity exchanging places. Geometrically, the radius is the supremum of the distances from the center at which the series converges, including distance zero.
+
+**Problem.** A complex power series and its termwise derivative have the same radius of convergence.
+
+**How the definition helps.** The coefficient rule makes the extra factor n harmless, since its nth root tends to one (our own). Apply the rule to the derivative multiplied by the variable minus the center to align the powers (our own). That multiplication does not change convergence off the center (our own). The work goes into the Cauchy–Hadamard theorem, which gets the disk from the coefficient rule (our own).
+
+**Paper or page:** [Radius of Convergence of Derivative of Complex Power Series](https://proofwiki.org/wiki/Radius_of_Convergence_of_Derivative_of_Complex_Power_Series). It says: “Then R = R′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Holomorphic as one power series on a disk gives antiderivatives there
 
 **Remember:** Integrate each power, and the radius of convergence stays the same.

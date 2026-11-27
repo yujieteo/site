@@ -1,3 +1,19 @@
+### Even reflection cancels sines
+
+**Remember:** Even reflection keeps cosines and cancels sines.
+
+*True by definition.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Extend an integrable function on \[0,L\] to \[−L,L\] by reflection across zero. Use this even extension instead of choosing arbitrary values on the negative half.
+
+**Problem.** The reflected function has zero sine coefficients. Its cosine coefficients are twice the corresponding half-interval integral divided by L.
+
+**How the definition helps.** In our own proof, even reflection makes each sine integrand odd and each cosine integrand even. Our own explanation puts any pointwise reconstruction work into the ordinary Fourier convergence theorem for the extended function.
+
+**Paper or page:** [Fourier Series for Even Function over Symmetric Range](https://proofwiki.org/wiki/Fourier_Series_for_Even_Function_over_Symmetric_Range). It says: “Let f(x) be an even real function defined on the interval (−λ, λ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the Fejér kernel as a square makes it nonnegative
 
 **Remember:** A squared absolute value cannot be negative.
@@ -29,6 +45,109 @@
 **Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “After the Fourier transform, convolution with Pᵣ(θ) becomes multiplication by the sequence”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Band limits make sampling injective
+
+**Remember:** Samples are Fourier coefficients of the spectrum on one frequency interval.
+
+*Rules out counterexamples.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 94A20. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A square-integrable signal is bandlimited to a given interval if its Fourier transform vanishes off that interval. Use the continuous representative obtained by inverse Fourier integration over the interval.
+
+**Problem.** If the transform is supported in \[−½,½\], the signal is uniquely determined by its values at the integers.
+
+**How the definition helps.** In our own explanation, the support condition makes the samples into Fourier coefficients on a single interval. Completeness of the Fourier basis does the reconstruction work in our own explanation. Our own counterexample starts with a nonzero bandlimited signal and multiplies it by exp(2πit). In our own example this shifts the spectrum but leaves every sample at integer t unchanged.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “Then f can be reconstructed from its samples on ℤ by the formula”
+
+**Sources:**
+
+- [C. E. Shannon, Communication in the Presence of Noise (1949)](https://doi.org/10.1109/jrproc.1949.232969)
+
+### Periodization gives Poisson summation
+
+**Remember:** Fold the line into one period, then read its Fourier coefficients.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 42A16. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** To periodize f, add all its integer translates. The resulting sum has period one whenever it converges absolutely.
+
+**Problem.** Suppose f and all its derivatives decay faster than every inverse power at infinity. Use the Fourier kernel exp(−2πixξ). Then the sums of f and its Fourier transform over the integers agree.
+
+**How the definition helps.** Periodization makes the Fourier coefficients equal the transform values at the integers. In our own proof, integrating each translate over one period covers the real line once. Evaluating the Fourier series at zero gives the two sums. Decay justifies interchanging summation and integration and ensures absolute convergence of the Fourier series. This replaces a direct comparison of the sums.
+
+**Wikipedia:** [Poisson summation formula](https://en.wikipedia.org/wiki/Poisson_summation_formula). It says: “the Fourier series coefficients of \\(s<sub>P</sub>(x)\\) are \\(\\frac{1}{P} S\\left(\\frac{k}{P}\\right)\\)”
+
+**Paper or page:** [Poisson Summation Formula](https://proofwiki.org/wiki/Poisson_Summation_Formula). It says: “Then: ∑ₙ∈ℤ f(n) = ∑ₘ∈ℤ f̂(m)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projections give Fourier slices
+
+**Remember:** The projected coordinate is the only coordinate the Fourier kernel reads.
+
+*True by definition.* MSC 42B10 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 44A12. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For an integrable function on the plane, define its projection density by integrating along lines perpendicular to the projection axis. Equivalently, project the measure that has the original function as its density.
+
+**Problem.** The one-dimensional Fourier transform of the projection density is the restriction of the two-dimensional transform to the projection axis.
+
+**How the definition helps.** The image-measure definition turns the projected transform directly into an integral over the plane. In our own proof, a Fourier exponential pointing along the projection axis depends only on the projected coordinate. Fubini’s theorem shows that the image measure has the usual line-integral density. This gives the slice identity for every direction.
+
+**Wikipedia:** [Projection-slice theorem](https://en.wikipedia.org/wiki/Projection-slice_theorem). It says: “Take that same function, but do a two-dimensional Fourier transform first, and then slice the function through its origin, parallel to the projection line.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Parseval frames reconstruct directly
+
+**Remember:** If taking coefficients preserves lengths, its adjoint puts the vector back.
+
+*True by definition.* MSC 42C15 (General harmonic expansions, frames). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** In a Hilbert space, the coefficients of a vector are its inner products with the family members. For a frame, the sum of their absolute squares lies between two fixed positive multiples of the squared norm. For a Parseval frame, this sum equals the squared norm.
+
+**Problem.** Every vector is the norm-convergent sum of its Parseval frame coefficients times the corresponding frame vectors.
+
+**How the definition helps.** The Parseval identity makes the coefficient map preserve lengths, so its adjoint recovers the vector. In our own proof, polarization expresses inner products through squared norms and shows that the coefficient map preserves inner products. Its adjoint sums the coefficients times the frame vectors. For general frames, reconstruction also requires inverting the operator obtained by taking coefficients and then summing.
+
+**Paper or page:** [Hilbert space models and Blaschke frames](https://arxiv.org/abs/2510.18816v2). It says: “is a Parseval frame and the frame operator is the identity operator on ℋ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero moments cancel polynomials
+
+**Remember:** Cancel each power and every polynomial built from those powers disappears.
+
+*Rules out counterexamples.* MSC 42C40 (Nontrigonometric harmonic analysis involving wavelets and other special systems). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A compactly supported wavelet has M vanishing moments if its integral against each power of degree zero through M − 1 vanishes.
+
+**Problem.** Every translate and dilation of this wavelet has zero integral against each polynomial of degree less than M.
+
+**How the definition helps.** The moment conditions cancel each term of the polynomial after a change of variables. In our own proof, a shift and a nonzero change of scale preserve polynomial degree. Our own counterexample for M = 2 is the Haar wavelet. It equals one on \[0,½), minus one on \[½,1), and zero elsewhere. Its integral vanishes, but its integral against t equals −¼.
+
+**Wikipedia:** [Wavelet](https://en.wikipedia.org/wiki/Wavelet). It says: “to be a continuous function with a higher number M of vanishing moments”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wiener reciprocals retain summable coefficients
+
+**Remember:** In the Wiener algebra, the only tests for invertibility are point evaluations.
+
+*Makes the theorem clean to state or prove.* MSC 42A20 (Convergence and absolute convergence of Fourier and trigonometric series), 46J10. arXiv math.CA, math.FA. Level 3: graduate.
+
+**Definition.** The Wiener algebra consists of continuous functions on the circle whose Fourier coefficients are absolutely summable. Multiplication is pointwise, and the norm sums the absolute values of the coefficients. This norm makes the algebra complete.
+
+**Problem.** A function in the Wiener algebra has its reciprocal in that algebra if it is nowhere zero on the circle.
+
+**How the definition helps.** The algebra definition turns reciprocal closure into a test for invertibility. In our own explanation, a character is a nonzero multiplicative linear functional on the algebra. A general theorem for complete commutative normed algebras says that an element is invertible exactly when every character takes a nonzero value there. The circle coordinate and its inverse both have norm one, so each character sends the coordinate to a point on the circle. Finite Fourier sums are dense, and characters are continuous. Thus every character evaluates at its corresponding point.
+
+**Wikipedia:** [Wiener algebra](https://en.wikipedia.org/wiki/Wiener_algebra). It says: “if f has absolutely convergent Fourier series and is never zero, then its reciprocal 1/f also has an absolutely convergent Fourier series.”
+
+**Sources:**
+
+- [N. Wiener, Tauberian Theorems (1932)](https://doi.org/10.2307/1968102)
+- [D. J. Newman, Shorter Notes: A Simple Proof of Wiener’s 1/f Theorem (1975)](https://doi.org/10.2307/2040730)
 
 ### Extending by continuity defines the Fourier transform on all of L²
 
@@ -155,6 +274,22 @@
 - [Weighted weak (1,1) estimate for non-commutative square function, arXiv:2410.00987 (2024)](https://arxiv.org/abs/2410.00987v3)
 - [B. Muckenhoupt, Weighted norm inequalities for the Hardy maximal function, Trans. Amer. Math. Soc. 165 (1972), p. 207](https://doi.org/10.1090/s0002-9947-1972-0293384-6)
 
+### Atom cancellation makes Hilbert transforms integrable
+
+**Remember:** Zero mean cancels the nonintegrable tail.
+
+*Rules out counterexamples.* MSC 42B30 (\\(H<sup>p\\</sup>)-spaces), 42A50. arXiv math.CA, math.FA. Level 3: graduate.
+
+**Definition.** An atom is supported on an interval I, has absolute value at most 1/\|I\|, and has integral zero. Here \|I\| is the interval length. The atomic Hardy space H¹ consists of sums of atoms with absolutely summable coefficients. Its norm is the infimum of the coefficient sums in absolute value over all such representations.
+
+**Problem.** The Hilbert transform uses the kernel 1/(πx), omitting a symmetric interval around its singularity and taking a limit. It maps H¹ boundedly into the integrable functions on the line.
+
+**How the definition helps.** The zero integral lets us subtract a constant from the kernel when testing it against an atom. In our own proof, this improves decay far from the interval from inverse distance to inverse distance squared. The square-integrable bound handles points near the interval. Together these bounds give a uniform integral estimate per atom, which absolute summability extends to the whole space. Our own counterexample is the indicator of \[0,1\], whose transform decays only like 1/\|x\|. The atomic decomposition theorem identifies this space with the Hardy space defined using maximal averages.
+
+**Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “When 0 &lt; p ≤ 1, any element f of Hᵖ has an atomic decomposition as a convergent infinite combination of Hᵖ-atoms,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining polynomials by orthogonality makes the three-term recurrence a short argument
 
 **Remember:** Move the factor x across the inner product to the lower degree side.
@@ -187,6 +322,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Canonical duals keep Gabor shifts
+
+**Remember:** The inverse frame operator commutes with every lattice shift.
+
+*True by definition.* MSC 42C15 (General harmonic expansions, frames). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Translate one window and shift its frequency using a regular grid of time and frequency parameters. These functions form a Gabor frame if their squared coefficient magnitudes sum to between fixed positive multiples of each signal’s squared norm. The frame operator takes inner products with the frame vectors and sums those coefficients times the same vectors. Applying its inverse to each vector gives the canonical dual.
+
+**Problem.** The canonical dual of a lattice Gabor frame is another Gabor frame on the same lattice.
+
+**How the definition helps.** Choosing the inverse frame operator gives the dual window directly from the original window. In our own proof, each grid shift permutes the frame vectors up to complex factors of magnitude one. Those factors cancel in the frame operator, so both it and its inverse commute with every grid shift. Frame bounds guarantee the inverse exists. This avoids solving separate reconstruction equations for an unknown dual window.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “there exists a dual window g̃ ∈ L²(ℝᵈ) such that the canonical dual frame of 𝒢(g, ℒ) is 𝒢(g̃, ℒ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Real phase retrieval works exactly when every split leaves a spanning part
 
 **Remember:** Split measurements by sign agreement and let the spanning side settle the answer.
@@ -206,6 +357,58 @@
 - [Daniel Freeman, Daniel Haider, Optimal lower Lipschitz bounds for ReLU layers, saturation, and phase retrieval, arXiv:2502.09898v1 (2025)](https://arxiv.org/abs/2502.09898v1)
 - [Radu Balan, Pete Casazza, Dan Edidin, On signal reconstruction without phase, Applied and Computational Harmonic Analysis 20(3), 345–356 (2006)](https://doi.org/10.1016/j.acha.2005.07.001)
 
+### Zak zeros prevent Gabor frames
+
+**Remember:** At critical spacing, a Zak zero kills the lower bound.
+
+*Rules out counterexamples.* MSC 42C15 (General harmonic expansions, frames), 42C40. arXiv math.FA, math.CA. Level 3: graduate.
+
+**Definition.** Start with a square-integrable window g on the line. Translate it by integers and multiply by exponentials exp(2πint) for integer n. These functions form a Gabor frame if their squared coefficient magnitudes sum to between fixed positive multiples of each signal’s squared norm. The Zak transform takes the Fourier series of the sequence g(x − k) over integers k.
+
+**Problem.** On the integer time and frequency lattice, a continuous Zak transform with a zero cannot give a Gabor frame. In particular, a Gaussian window fails on this lattice.
+
+**How the definition helps.** The Zak transform turns the frame test into upper and lower bounds on the magnitude of one function. The cited criterion requires these bounds almost everywhere. In our own explanation, continuity makes that magnitude arbitrarily small on neighborhoods of positive area around a zero. The criterion uses the norm-preserving Zak transform and the Fourier basis on the unit square. For the Gaussian, terms indexed by k and 1 − k cancel at (½,½) in our own example.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “0 &lt; a ≤ \|Zg(x,ω)\| ≤ b &lt; ∞”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Admissibility gives wavelet reconstruction
+
+**Remember:** An admissible wavelet gives every nonzero frequency the same total weight.
+
+*Rules out counterexamples.* MSC 42C40 (Nontrigonometric harmonic analysis involving wavelets and other special systems). arXiv math.CA, math.FA. Level 3: graduate.
+
+**Definition.** Let ψ be a nonzero real square-integrable function on the line, and let ψ̂ denote its Fourier transform. Call ψ admissible if the integral of \|ψ̂(ω)\|²/\|ω\| over the line is finite.
+
+**Problem.** Take inner products with translated, positively dilated copies of ψ, normalized to preserve their norms. Weight translation b and scale a by db da/a². For admissible ψ, the adjoint of this coefficient map recovers the signal up to a fixed positive factor.
+
+**How the definition helps.** Admissibility gives each nonzero frequency the same finite weight when all positive scales are combined. In our own proof, Plancherel’s theorem preserves squared norms under the Fourier transform in the translation variable. Changing scale gives one half of the admissibility integral because ψ is real. The resulting norm identity gives reconstruction by the adjoint. Our own counterexample is a Gaussian, whose Fourier transform stays positive near zero, making the integral diverge.
+
+**Wikipedia:** [Continuous wavelet transform](https://en.wikipedia.org/wiki/Continuous_wavelet_transform). It says: “A wavelet whose admissible constant satisfies \\(0&lt;C\_\\psi&lt;\\infty\\) is called an admissible wavelet.”
+
+**Sources:**
+
+- [A. Grossmann and J. Morlet, Decomposition of Hardy Functions into Square Integrable Wavelets of Constant Shape (1984)](https://doi.org/10.1137/0515056)
+
+### Orthogonal details build wavelet bases
+
+**Remember:** Each detail space contains exactly what the coarser space missed.
+
+*True by definition.* MSC 42C40 (Nontrigonometric harmonic analysis involving wavelets and other special systems). arXiv math.FA, math.CA. Level 3: graduate.
+
+**Definition.** In a multiresolution analysis, nested closed spaces describe successively finer approximations. Their union is dense and their intersection contains only zero. The detail space at each scale contains the vectors in the next finer space perpendicular to the entire coarse space.
+
+**Problem.** Putting together orthonormal bases of all detail spaces gives an orthonormal basis of the full space.
+
+**How the definition helps.** Choosing orthogonal differences makes bases from different scales automatically perpendicular. In our own proof, splitting each fine space into its coarse and detail parts gives the decomposition across finitely many scales. Convergence of the projections at both ends gives completeness. Constructing wavelets that span each detail space still requires a separate argument.
+
+**Paper or page:** [A characterization of wavelet sets on Vilenkin groups with its application to construction of MRA wavelets](https://arxiv.org/abs/2405.04220v1). It says: “forms an orthonormal basis of L²(G).”
+
+**Sources:**
+
+- [S. G. Mallat, A theory for multiresolution signal decomposition: the wavelet representation (1989)](https://doi.org/10.1109/34.192463)
+
 ### Weak porosity is exactly what makes a distance weight an A₁ weight
 
 **Remember:** Enough room in the holes, and the distance weight stays averaged.
@@ -223,3 +426,21 @@
 **Sources:**
 
 - [Theresa C. Anderson, Juha Lehrbäck, Carlos Mudarra, Antti V. Vähäkangas, Weakly porous sets and Muckenhoupt Aₚ distance functions, arXiv:2209.06284 (2022)](https://arxiv.org/abs/2209.06284v2)
+
+### Frequency tiles give wavelet bases
+
+**Remember:** Scaling partitions the frequencies and folding supplies a basis within each tile.
+
+*Makes the theorem clean to state or prove.* MSC 42C40 (Nontrigonometric harmonic analysis involving wavelets and other special systems), 43A70. arXiv math.CA, math.FA. Level 4: research.
+
+**Definition.** On a Vilenkin group, digit strings add without carries. Choose one frequency set for each nonzero digit and take its indicator’s inverse Fourier transform as a wavelet. All digit shifts of all the sets together must cover frequency space once, except on a set of measure zero. Each individual set must also split into pieces that discrete digit translations rearrange into the standard frequency cell.
+
+**Problem.** The frequency sets satisfy these two conditions exactly when the associated wavelet translates and dilates form an orthonormal basis.
+
+**How the definition helps.** The tiling description separates orthogonality between scales from completeness within each frequency set. In our own explanation, shifting digit positions changes scale, and disjoint sets give perpendicular functions. Rearranging each set into one cell transfers the cell’s orthonormal basis of group characters, the homomorphisms to the unit circle. Plancherel’s theorem transfers the basis back to the original group. The cited characterization proves the converse as well.
+
+**Paper or page:** [A characterization of wavelet sets on Vilenkin groups with its application to construction of MRA wavelets](https://arxiv.org/abs/2405.04220v1). It says: “Then Ω is a wavelet set if and only if both of the following conditions hold true:”
+
+**Sources:**
+
+- [J. Liu and C. Zhang, A characterization of wavelet sets on Vilenkin groups with its application to construction of MRA wavelets (2024)](https://arxiv.org/abs/2405.04220v1)

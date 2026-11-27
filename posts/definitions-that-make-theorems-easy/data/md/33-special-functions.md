@@ -50,6 +50,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### One Lambert branch gives uniqueness
+
+**Remember:** Keep w at least minus one to get a single inverse.
+
+*Rules out counterexamples.* MSC 33E20 (Other functions defined by series and integrals). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define the principal real Lambert branch W₀ as the inverse of w ↦ w exp(w) restricted to w ≥ −1. The unrestricted inverse is a relation that can return more than one value.
+
+**Problem.** For every x ≥ −1/e, the equation w exp(w) = x has exactly one real solution with w ≥ −1. It is W₀(x).
+
+**How the definition helps.** In our own proof, the restriction puts w on the strictly increasing part of w exp(w). Our own calculation uses the derivative exp(w)(1 + w) to show that this part runs from −1/e to infinity. In our own counterexample, x = −2 exp(−2) also has the solution w = −2 on the other branch.
+
+**nLab:** [Lambert W-function](https://ncatlab.org/nlab/show/Lambert+W-function). It says: “In complex analysis, the Lambert W-function is a multi-branched function inverse to the function f(z) = zeᶻ.”
+
+**Wikipedia:** [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function). It says: “When dealing with real numbers only, the two branches W₀ and W₋₁ suffice”
+
+**Sources:**
+
+- [R. M. Corless et al., On the Lambert W function (1996)](https://doi.org/10.1007/bf02124750)
+
+### An exponential average makes sinc entire
+
+**Remember:** The exponential average has no division by zero.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define normalized sinc by integrating exp(2πizt) for −½ ≤ t ≤ ½. The usual quotient definition uses sin(πz)/(πz) and fills in its value at zero separately.
+
+**Problem.** Normalized sinc is entire, meaning complex differentiable everywhere, and has value 1 at zero.
+
+**How the definition helps.** In our own proof, averaging an exponential over a bounded interval gives a power series converging uniformly on every bounded set of z. At zero the integrand equals one throughout an interval of length one. Integrating explicitly for z ≠ 0 identifies the average with the usual quotient.
+
+**Wikipedia:** [Sinc function](https://en.wikipedia.org/wiki/Sinc_function). It says: “The normalized sinc function is the Fourier transform of the rectangular function with no scaling.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining π through the exponential gives Euler’s identity
 
 **Remember:** π is where exp(it) first reaches −1, so exp(iπ) = −1 is the definition.
@@ -166,6 +202,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The polygamma integral fixes signs
+
+**Remember:** Each derivative adds one negative logarithm under the polygamma integral.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Take x &gt; 0 and an integer n ≥ 1. Define ψₙ(x) as the integral of −uˣ⁻¹(log u)ⁿ/(1 − u) from zero to one. The usual definition takes n + 1 derivatives of log Γ(x).
+
+**Problem.** For each integer n ≥ 1, let f(x) = (−1)ⁿ⁺¹ψₙ(x). This function is completely monotone on x &gt; 0. Its kth derivative has sign (−1)ᵏ for every integer k ≥ 0.
+
+**How the definition helps.** In our own proof, the integral has a fixed sign, and each x derivative adds a factor log u ≤ 0. Our own argument uses integrable bounds on compact intervals of x to justify those derivatives. In our own account, the main work is to match the integral to the corresponding derivative of log Γ.
+
+**Paper or page:** [Integral Form of Polygamma Function/Corollary](https://proofwiki.org/wiki/Integral_Form_of_Polygamma_Function/Corollary). It says: “ψₙ(z) = −∫₀¹ uᶻ⁻¹ (ln u)ⁿ/(1 − u) du”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Working with 1/Γ gives a gamma product formula with no exceptions
 
 **Remember:** The gamma function has poles; its reciprocal has zeros and no exceptions.
@@ -198,6 +250,72 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Reversing the interval complements incomplete beta
+
+**Remember:** Reverse the beta integral to swap the parameters and take the complement.
+
+*True by definition.* MSC 33B20 (Incomplete beta and gamma functions (error functions, probability integral, Fresnel integrals)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a,b &gt; 0, integrate tᵃ⁻¹(1 − t)ᵇ⁻¹ from zero to x. Divide by its integral from zero to one to define the regularized incomplete beta function Iₓ(a,b). Another definition uses the Gauss hypergeometric series.
+
+**Problem.** For 0 ≤ x ≤ 1, the two fractions satisfy Iₓ(a,b) + I₁₋ₓ(b,a) = 1.
+
+**How the definition helps.** In our own derivation, substituting t ↦ 1 − t swaps the parameters and turns the remaining interval into an initial interval. The same substitution in our own proof preserves the total integral, so the denominator stays the same. In our own account, the work shifts to matching the series expression through Euler’s integral.
+
+**Wikipedia:** [Beta function](https://en.wikipedia.org/wiki/Beta_function). It says: “Iₓ(a,b) = 1 − I₁₋ₓ(b,a)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Even powers give dilogarithm duplication
+
+**Remember:** Adding opposite inputs leaves even powers and halves the dilogarithm at the square.
+
+*True by definition.* MSC 33B30 (Higher logarithm functions). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the dilogarithm Li₂(z) by summing the nth power of z divided by n² for n ≥ 1 and \|z\| &lt; 1. Another definition integrates −log(1 − z)/z from zero to z.
+
+**Problem.** For \|z\| &lt; 1, Li₂(z) + Li₂(−z) = ½ Li₂(z²).
+
+**How the definition helps.** In our own proof, adding the series at z and −z cancels every odd power. Our own calculation gives the even index 2n the factor 2/(2n)² = 1/(2n²). In our own account, the work moves to matching the series to the integral by integrating the logarithm series.
+
+**nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “Euler's dilogarithm is a complex-valued function Li₂ given by the series”
+
+**Paper or page:** [Dilogarithm of Square](https://proofwiki.org/wiki/Dilogarithm_of_Square). It says: “Li₂(z) + Li₂(−z) = ½ Li₂(z²)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Differentiating Gauss’s series shifts parameters
+
+**Remember:** A derivative raises every Gauss hypergeometric parameter by one.
+
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Write (a)ₙ for the product of n consecutive factors starting at a and increasing by one, with (a)₀ = 1. Define ₂F₁(a,b;c;z) by its power series with coefficient (a)ₙ(b)ₙ/((c)ₙ n!) at degree n. Another definition selects the solution of the Gauss differential equation that is analytic at zero and equals 1 there.
+
+**Problem.** For \|z\| &lt; 1 and c not a nonpositive integer, the derivative of ₂F₁(a,b;c;z) is (ab/c) ₂F₁(a+1,b+1;c+1;z).
+
+**How the definition helps.** In our own proof, differentiation exposes the first factor of each rising product. Removing those factors gives ab/c and leaves the three products starting at a+1, b+1 and c+1. The work lies in proving convergence and identifying the series with the normalized solution.
+
+**Paper or page:** [Derivative of Gaussian Hypergeometric Function](https://proofwiki.org/wiki/Derivative_of_Gaussian_Hypergeometric_Function). It says: “dF(a,b;c;x)/dx = (ab/c) F(a+1,b+1;c+1;x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Euler’s integral gives Gauss summation
+
+**Remember:** At one, Euler’s hypergeometric integral is just another beta integral.
+
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For positive u and v, B(u,v) is the integral of tᵘ⁻¹(1 − t)ᵛ⁻¹ over 0 &lt; t &lt; 1. For real c &gt; b &gt; 0, use u = b and v = c − b. Euler’s definition averages (1 − zt) to the power −a against this weight divided by B(u,v). The usual definition starts from a power series.
+
+**Problem.** Take real a, b and c with c &gt; b &gt; 0 and c − a − b &gt; 0. Then ₂F₁(a,b;c;1) = Γ(c)Γ(c − a − b)/(Γ(c − a)Γ(c − b)).
+
+**How the definition helps.** In our own proof, setting z = 1 combines two powers of 1 − t. The integral becomes B(b,c − a − b)/B(b,c − b). The beta identity B(u,v) = Γ(u)Γ(v)/Γ(u+v) gives the result. The remaining work identifies the integral with the series and justifies its limit at one.
+
+**Paper or page:** [Gauss's Hypergeometric Theorem](https://proofwiki.org/wiki/Gauss's_Hypergeometric_Theorem), [Euler's Integral Representation of Hypergeometric Function](https://proofwiki.org/wiki/Euler's_Integral_Representation_of_Hypergeometric_Function). It says: “F(a,b;c;1) = Γ(c)Γ(c − a − b)/(Γ(c − a)Γ(c − b))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Bessel generating function gives J₋ₙ = (−1)ⁿJₙ by one substitution
 
 **Remember:** Replacing t by −1/t swaps the orders.
@@ -211,6 +329,54 @@
 **How the definition helps.** The generating function does not change when t is replaced by −1/t. Comparing coefficients of tⁿ before and after this change gives Jₙ = (−1)ⁿJ₋ₙ. From the series definition, one shows that the first n terms vanish, because 1/Γ is zero at nonpositive integers, and then reindexes. The work moves to showing that the coefficients equal the series. Multiply the series for exp(xt/2) and exp(−x/(2t)) and collect powers of t. These steps are our own; Wikipedia says this definition is common for integer order.
 
 **Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “is often defined via a Laurent series for a generating function:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted differentiation lowers Bessel order
+
+**Remember:** Weight Bessel J before differentiating, and its order drops by one.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integers n ≥ 0, define Jₙ(x) by summing over integers m ≥ 0. Each term is (−1)ᵐ(x/2)²ᵐ⁺ⁿ divided by m!(m+n)!. Another definition selects the solution of Bessel’s equation with leading term (x/2)ⁿ/n! at zero.
+
+**Problem.** For integers n ≥ 1, the derivative of xⁿJₙ(x) equals xⁿJₙ₋₁(x).
+
+**How the definition helps.** In our own proof, multiplying by xⁿ makes differentiation bring down 2(m+n) in each term. Canceling m+n against (m+n)! leaves precisely the series for xⁿJₙ₋₁(x). The remaining work proves convergence and identifies the series with the normalized solution.
+
+**Paper or page:** [Derivative of x<sup>n</sup> by Bessel Function of the First Kind of Order n of x](https://proofwiki.org/wiki/Derivative_of_x^n_by_Bessel_Function_of_the_First_Kind_of_Order_n_of_x), [Series Expansion of Bessel Function of the First Kind](https://proofwiki.org/wiki/Series_Expansion_of_Bessel_Function_of_the_First_Kind). It says: “d(xⁿ Jₙ(x))/dx = xⁿ Jₙ₋₁(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Chebyshev angles give the derivative
+
+**Remember:** Differentiate the cosine through its angle to get the sine quotient.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For 0 &lt; θ &lt; π, define Tₙ(cos θ) = cos(nθ) and Uₙ(cos θ) = sin((n + 1)θ)/sin θ. These are the Chebyshev polynomials of the first and second kinds. Another definition builds each family by its recurrence in degree.
+
+**Problem.** For n ≥ 1, the derivative of Tₙ is n Uₙ₋₁.
+
+**How the definition helps.** In our own proof, the chain rule gives the sine quotient that defines the second family. Our own account puts the work in showing that the trigonometric formulas are polynomials and agree with the recurrences. In our own argument, the polynomial identity then extends the result to every x.
+
+**Wikipedia:** [Chebyshev polynomials](https://en.wikipedia.org/wiki/Chebyshev_polynomials). It says: “dTₙ/dx = n Uₙ₋₁”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derivatives give preceding Hermite polynomials
+
+**Remember:** For Hermite polynomials, differentiation in x shifts the generating series by one power.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Hₙ(x) as n! times the coefficient of tⁿ in exp(2tx − t²). Equivalently, multiply the nth derivative of exp(−x²) by (−1)ⁿ exp(x²).
+
+**Problem.** For n ≥ 1, the derivative of the nth Hermite polynomial is 2n times the preceding polynomial.
+
+**How the definition helps.** In our own proof, differentiating the generating function in x multiplies it by 2t. Comparing coefficients of tⁿ gives the factor 2n. Taylor expansion of exp(−(x − t)²) in t identifies the two definitions.
+
+**Paper or page:** [Generating Function for Hermite Polynomials](https://proofwiki.org/wiki/Generating_Function_for_Hermite_Polynomials), [Recurrence Formula for Hermite Polynomials using Derivative](https://proofwiki.org/wiki/Recurrence_Formula_for_Hermite_Polynomials_using_Derivative). It says: “dHₙ(x)/dx = 2n Hₙ₋₁(x)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -278,6 +444,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The q-gamma product telescopes under shifts
+
+**Remember:** Shifting x by one removes the first denominator factor.
+
+*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals), 39A10. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For 0&lt;q&lt;1 and x&gt;0, define Γ at base q by multiplying the factors (1−qⁿ⁺¹)/(1−qⁿ⁺ˣ) for n≥0. Include the factor (1−q) to the power 1−x.
+
+**Problem.** Increasing x by one multiplies the q-gamma function by (1−qˣ)/(1−q).
+
+**How the definition helps.** The product definition makes the shift remove exactly one denominator factor. In our own calculation, the common product factors cancel and the prefactor contributes 1/(1−q). This proves the shift law directly without evaluating an integral representation. The work lies in proving that the infinite products converge to nonzero limits. For x&gt;0 and 0&lt;q&lt;1, the deviations of their factors from one have finite geometric sums.
+
+**Wikipedia:** [q-gamma function](https://en.wikipedia.org/wiki/q-gamma_function). It says: “The q-gamma function satisfies the functional equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The q-gamma shift telescopes
+
+**Remember:** A unit shift drops the first denominator factor of the q-gamma product.
+
+*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Fix 0 &lt; q &lt; 1 and x &gt; 0. Define Γ₍q₎(x) as (1 − q)¹⁻ˣ times the product of (1 − qⁿ⁺¹)/(1 − qⁿ⁺ˣ) over integers n ≥ 0. A Jackson integral, a weighted sum over geometrically spaced points, gives another definition.
+
+**Problem.** For x &gt; 0, the q-gamma value at x + 1 is the value at x multiplied by (1 − qˣ)/(1 − q).
+
+**How the definition helps.** In our own calculation, increasing x drops the first denominator factor, while the prefactor contributes 1/(1 − q). In our own account, the work moves to product convergence and agreement with the Jackson integral.
+
+**Wikipedia:** [Q-gamma function](https://en.wikipedia.org/wiki/Q-gamma_function). It says: “Γ₍q₎(x+1) = (1−qˣ)/(1−q) Γ₍q₎(x) = \[x\]₍q₎ Γ₍q₎(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Carlson’s first integral is symmetric
+
+**Remember:** Carlson’s first elliptic integral gives all three inputs the same role.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For positive x, y and z, Carlson’s first symmetric elliptic integral is half the integral of 1/√((t+x)(t+y)(t+z)) from zero to infinity. Legendre’s form uses an upper integration limit and a parameter in the integrand.
+
+**Problem.** Carlson’s first symmetric elliptic integral has the same value after any permutation of x, y and z.
+
+**How the definition helps.** In our own explanation, the product of three factors in the integrand is unchanged when the inputs trade places. In our own account, the work moves to the change of variables that recovers Legendre’s form.
+
+**Wikipedia:** [Carlson symmetric form](https://en.wikipedia.org/wiki/Carlson_symmetric_form). It says: “The value of Rꜰ(x,y,z) is the same for any permutation of its arguments”
+
+**Sources:**
+
+- [B. C. Carlson, Numerical computation of real or complex elliptic integrals (1995)](https://doi.org/10.1007/bf02198293)
+
 ### Euler’s product gives the Gamma reflection formula by cancellation
 
 **Remember:** Pair the factors for z and −z to obtain Euler’s product for sine.
@@ -291,6 +507,92 @@
 **How the definition helps.** The product definition makes the reflection formula a cancellation followed by the sine product. Telescoping the ratios of successive-argument factors gives Γ(1 − z) = −zΓ(−z). In the product for Γ(z)Γ(−z), the powers of 1 + 1/n cancel. Therefore the reciprocal of Γ(z)Γ(1 − z) is z times the product of 1 − z²/n². Euler’s sine product identifies this with sin(πz)/π. Our own comparison with the integral definition shifts the work to proving convergence, consistency with the integral, and Euler’s sine product.
 
 **Wikipedia:** [Gamma function](https://en.wikipedia.org/wiki/Gamma_function). It says: “With Euler's infinite product Γ(z) = (1/z) ∏ₙ₌₁<sup>∞</sup> (1+1/n)ᶻ/(1 + z/n) compute”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multivariate gamma half-steps telescope
+
+**Remember:** A half-step keeps every gamma factor except the two ends.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For integers p ≥ 1 and real a &gt; (p − 1)/2, start with the product of p ordinary gamma values. Their arguments run from a to a − (p − 1)/2 in steps of −½. Multiply by π to the power p(p − 1)/4 to obtain multivariate gamma. Another definition integrates over real symmetric matrices with positive eigenvalues.
+
+**Problem.** The ratio of multivariate gamma at a + ½ to its value at a is Γ(a + ½)/Γ(a − (p − 1)/2).
+
+**How the definition helps.** In our own calculation, shifting a by ½ keeps all but one gamma factor in common and leaves the power of π unchanged. In our own account, the work lies in proving that the product agrees with the matrix integral.
+
+**Wikipedia:** [Multivariate gamma function](https://en.wikipedia.org/wiki/Multivariate_gamma_function). It says: “It has two equivalent definitions. One is given as the following integral over the p × p positive-definite real matrices”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The dilogarithm correction cancels its jump
+
+**Remember:** Add the argument term to cancel the imaginary jump on the cut.
+
+*Makes the theorem clean to state or prove.* MSC 33B30 (Higher logarithm functions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** For z outside the real ray \[1,∞), define Li₂(z) by integrating −log(1 − t)/t from 0 to z using the principal logarithm. For z ≠ 0, define D(z) = Im Li₂(z) + arg(1 − z) log\|z\|. Here arg takes values between −π and π.
+
+**Problem.** The Bloch–Wigner dilogarithm extends to a single-valued continuous real function on the complex plane.
+
+**How the definition helps.** In our own proof, the added term cancels the jump in the imaginary part of Li₂. At x &gt; 1 the upper and lower limits of Im Li₂ are π log x and −π log x. Integrating the imaginary part of −log(1 − z)/z along the cut gives these limits. The correction has the opposite limits, so set D(x) = 0 there. Near zero, arg(1 − z) is of order \|z\|, so its product with log\|z\| tends to zero. Near one, Li₂ has a finite real limit because its derivative has only an integrable logarithmic singularity. The bounded argument times log\|z\| tends to zero there.
+
+**nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “The Bloch–Wigner dilogarithm is defined by D(z) ≔ Im(Li₂(z)) + arg(1−z) log\|z\|.”
+
+**Wikipedia:** [Dilogarithm](https://en.wikipedia.org/wiki/Dilogarithm). It says: “D(z) = Im Li₂(z) + arg(1−z) log\|z\|.”
+
+**Sources:**
+
+- [Don Zagier, The Dilogarithm Function (2007)](https://doi.org/10.1007/978-3-540-30308-4_1)
+
+### Regularizing Gauss removes parameter poles
+
+**Remember:** Use reciprocal gamma in the coefficients, including its zeros.
+
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Write (a)ₙ for the product of n consecutive factors starting at a and increasing by one, with (a)₀ = 1. Define the regularized Gauss series by giving zⁿ the coefficient (a)ₙ(b)ₙ/(n!·Γ(c+n)). Use zero for 1/Γ at each nonpositive integer. Away from those integers the series equals ₂F₁(a,b;c;z)/Γ(c).
+
+**Problem.** For fixed a and b and \|z\| &lt; 1, the regularized Gauss function is analytic in c on the whole complex plane. The ordinary ₂F₁ need not exist at c = 0, −1, −2 and so on.
+
+**How the definition helps.** In our own proof, every regularized coefficient uses the entire reciprocal gamma function and thus has no parameter poles. Our own account puts the work in proving uniform convergence on compact sets of c and showing agreement with ₂F₁/Γ(c) elsewhere. In our own example, ₂F₁(1,1;c;z) has a pole at c = 0 for real 0 &lt; z &lt; 1.
+
+**Wikipedia:** [Hypergeometric function](https://en.wikipedia.org/wiki/Hypergeometric_function). It says: “Dividing by the value Γ(c) of the gamma function, we have the limit”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Airy’s contour gives its equation
+
+**Remember:** Two Airy derivatives turn the equation into a vanishing boundary term.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Define Ai(z) by integrating exp(t³/3 − zt) along two rays joined at zero and dividing by 2πi. The path comes in at angle −π/3 and goes out at angle π/3. The real oscillatory integral gives another definition.
+
+**Problem.** The Airy function satisfies Ai″(z) = z Ai(z) for every complex z.
+
+**How the definition helps.** In our own proof, applying the Airy equation to the contour integral gives the integral of a single derivative. Indeed, (t² − z) exp(t³/3 − zt) is the t derivative of the exponential. On either ray, t³ is negative real, so the exponential tends to zero at both ends. The remaining work justifies differentiation and identifies the contour integral with the real oscillatory integral.
+
+**nLab:** [Airy function](https://ncatlab.org/nlab/show/Airy+function). It says: “y″(x) − x · y(x) = 0”
+
+**Wikipedia:** [Airy function](https://en.wikipedia.org/wiki/Airy_function). It says: “where the integral is over a path C starting at the point at infinity with argument −π/3 and ending at the point at infinity with argument π/3.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Bessel integral gives order log-convexity
+
+**Remember:** A positive integral of exponentials is log-convex in their order parameter.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For x &gt; 0, define the modified Bessel function K of order ν by an integral. Take one half of the integral of exp(−x cosh t + νt) over all real t. Pair t with −t to get the usual integral with cosh(νt) over positive t. Another definition selects the decaying solution of the modified Bessel equation with a specified scale.
+
+**Problem.** For each x &gt; 0, the logarithm of K at x is convex in the real order ν.
+
+**How the definition helps.** In our own proof, the order ν appears only in a positive exponential, so interpolation of orders takes geometric means of integrands. Write K(ν) for the integral at fixed x. Hölder’s inequality gives K((1−s)ν+sμ) ≤ K(ν)¹⁻ˢK(μ)ˢ for 0 &lt; s &lt; 1. Taking logarithms gives convexity. The remaining work identifies the integral with the normalized decaying solution.
+
+**Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “K₍α₎(x) = ∫₀∞ exp(−x cosh t) cosh αt dt.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -342,6 +644,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coincident Appell arguments give Gauss
+
+**Remember:** Two equal Appell inputs combine their exponents into one Gauss parameter.
+
+*True by definition.* MSC 33C65 (Appell, Horn and Lauricella functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For real c &gt; a &gt; 0, normalize the weight tᵃ⁻¹(1 − t)ᶜ⁻ᵃ⁻¹ to integrate to one over 0 &lt; t &lt; 1. Define F₁ by averaging the product of (1 − xt) to the power −b and (1 − yt) to the power −b′. Appell’s series instead sums over two indices, one for each variable.
+
+**Problem.** For real c &gt; a &gt; 0, b and b′ real, and \|x\| &lt; 1, F₁(a;b,b′;c;x,x) = ₂F₁(b + b′,a;c;x).
+
+**How the definition helps.** In our own calculation, setting y = x makes the factors share a base, so adding the exponents gives Euler’s integral. In our own account, the work moves to proving that Picard’s integral matches the double series.
+
+**Wikipedia:** [Appell series](https://en.wikipedia.org/wiki/Appell_series). It says: “discovered that Appell's F₁ can also be written as a one-dimensional Euler-type integral”
+
+**Sources:**
+
+- [Émile Picard, Sur une extension aux fonctions de deux variables du problème de Riemann relatif aux fonctions hypergéométriques (1881)](https://www.numdam.org/item/ASENS_1881_2_10__305_0/)
+
+### A theta shift reindexes terms
+
+**Remember:** One theta shift adds a full turn, and the other shifts the summation index.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Use θ(z,τ) = ∑ exp(πin²τ + 2πinz), summed over all integers n, with τ in the upper half-plane. The same theta function can also be given by an infinite product.
+
+**Problem.** The Jacobi theta function obeys θ(z + 1,τ) = θ(z,τ) and θ(z + τ,τ) = exp(−πiτ − 2πiz) θ(z,τ).
+
+**How the definition helps.** In our own proof, a unit shift leaves each term unchanged, and a shift by τ completes a square in n. Replacing n by n+1 leaves the sum unchanged because it converges absolutely. The cited formula uses πz as its argument and q = exp(2πiτ). Jacobi’s triple product theorem identifies the sum with the infinite product.
+
+**nLab:** [Jacobi theta function](https://ncatlab.org/nlab/show/Jacobi+theta+function). It says: “The fundamental example of theta functions is the Jacobi theta function given by”
+
+**Paper or page:** [Kronecker theta function and a decomposition theorem for theta functions I](https://arxiv.org/abs/2012.01670v1). It says: “θ₃(z\|τ) = θ₃(z+π\|τ) = q¹ᐟ² e²ⁱᶻ θ₃(z+πτ\|τ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Elliptic gamma factors cancel under inversion
+
+**Remember:** The inversion swaps the top and bottom of every factor.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals), 33D65. arXiv math.CV. Level 3: graduate.
+
+**Definition.** Fix nonzero complex p and q with \|p\|, \|q\| &lt; 1. Define elliptic gamma by a product over pairs of nonnegative integers m and n. Each factor is (1 − pᵐ⁺¹qⁿ⁺¹/z)/(1 − pᵐqⁿz). An alternative starts with a series for its logarithm on \|pq\| &lt; \|z\| &lt; 1.
+
+**Problem.** For z ≠ 0, the elliptic gamma values at z and pq/z multiply to one wherever both are finite. The identity extends across isolated poles by cancellation.
+
+**How the definition helps.** In our own calculation, replacing z by pq/z interchanges the numerator and denominator of every factor. The work lies in proving convergence away from poles. Expanding the logarithms there on \|pq\| &lt; \|z\| &lt; 1 gives the alternative series.
+
+**Wikipedia:** [Elliptic gamma function](https://en.wikipedia.org/wiki/Elliptic_gamma_function). It says: “Γ(z;p,q) = 1/Γ(pq/z;p,q)”
+
+**Sources:**
+
+- [S. N. M. Ruijsenaars, First order analytic difference equations and integrable quantum systems (1997)](https://doi.org/10.1063/1.531809)
+
 ### Subtracting 1/λ² makes the Weierstrass ℘ series converge without a constant
 
 **Remember:** Subtract each pole's value at zero, and ℘ converges with no constant term.
@@ -357,6 +713,58 @@
 **Wikipedia:** [Weierstrass elliptic function](https://en.wikipedia.org/wiki/Weierstrass_elliptic_function), [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “It is constructed in such a way that it has a pole of order two at every lattice point. The term −1/λ² is there to make the series convergent.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Two periods forbid lone simple poles
+
+**Remember:** Opposite edges cancel, so one nonzero residue cannot stand alone.
+
+*Rules out counterexamples.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CV. Level 3: graduate.
+
+**Definition.** An elliptic function is meromorphic on the complex plane, so its only singularities are poles. It must repeat under two shifts that are linearly independent over the real numbers. A singly periodic meromorphic function only has to repeat under one shift.
+
+**Problem.** An elliptic function cannot have exactly one pole per period parallelogram if that pole is simple.
+
+**How the definition helps.** In our own proof, the two periods cancel the integrals along opposite sides of a period parallelogram whose boundary avoids all poles. The residue theorem then gives zero for the sum of residues inside. A residue is the coefficient of 1/(z − a) near a pole a. A simple pole has nonzero residue. Our own counterexample, cot z, has one simple pole per period strip.
+
+**Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “Every elliptic function has finitely many poles in ℂ/Λ and the sum of its residues is zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A Gaussian contour makes reciprocal gamma entire
+
+**Remember:** Gaussian decay lets the reciprocal gamma integral work at every parameter.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CV. Level 4: research.
+
+**Definition.** Fix σ &gt; 0 and put w = σ + it. Define reciprocal gamma by integrating w to the power 1 − 2z times exp(w²) over all real t, then dividing by π. Use the logarithm of w whose imaginary part lies between −π/2 and π/2. The usual definition takes the reciprocal of the continued gamma function.
+
+**Problem.** The reciprocal gamma function is entire, meaning that it is complex differentiable everywhere.
+
+**How the definition helps.** In our own proof, the integrand is entire in z and the Gaussian controls its growth along the contour. Our own bound uses that the other factor grows at most as a power of \|t\| when z ranges over a compact set. In our own account, the work is to prove that the contour integral equals the reciprocal of gamma.
+
+**Paper or page:** [A Unifying Integral Representation of the Gamma Function and Its Reciprocal](https://arxiv.org/abs/2506.12112v1). It says: “1/Γ(z) = (1/π)G(z), ∀ z ∈ ℂ”
+
+**Sources:**
+
+- [Peter Reinhard Hansen and Chen Tong, A Unifying Integral Representation of the Gamma Function and Its Reciprocal, Theorem 1](https://arxiv.org/abs/2506.12112v1)
+
+### Nonmatching multipliers make residues decisive
+
+**Remember:** Exclude the matching multipliers, and no pole-free term survives.
+
+*Rules out counterexamples.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CV. Level 4: research.
+
+**Definition.** Fix complex y and τ with Im τ &gt; 0, and put q = exp(2πiτ). Consider functions analytic except at poles, unchanged by a shift of π, and multiplied by exp(−2iy) under a shift of πτ. Require exp(2iy) ≠ qⁿ for every integer n.
+
+**Problem.** For functions in this class with only simple poles, one period parallelogram contains all the pole data needed to recover the function. At each pole a, record its location and its residue, the coefficient of 1/(z − a).
+
+**How the definition helps.** In our own proof, excluding these multipliers forces two functions with the same pole data to agree. The difference has no poles, so its π-periodicity gives a series in integral powers of exp(2iz). The second shift multiplies the nth power by qⁿ, forcing each coefficient to vanish. At y = 0, adding a constant preserves the pole data. The cited theorem reconstructs the function using shifts of a function with residue one and the prescribed shift laws.
+
+**Paper or page:** [Kronecker theta function and a decomposition theorem for theta functions I](https://arxiv.org/abs/2012.01670v1). It says: “where e²ⁱʸ ≠ qⁿ for n ∈ ℤ.”
+
+**Sources:**
+
+- [Zhi-Guo Liu, Kronecker theta function and a decomposition theorem for theta functions I, Theorem 1.7](https://arxiv.org/abs/2012.01670v1)
 
 ### Orbital residues decide elliptic summability up to two terms
 
