@@ -739,6 +739,42 @@
 
 - [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
 
+### Heat traces recover area
+
+**Remember:** At short times the heat trace first sees area.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds), 11F72. arXiv math.SP. Level 3: graduate.
+
+**Definition.** On a closed oriented surface X of curvature −1, define the heat trace H(t) = ∑ exp(−tλ) for t &gt; 0. Sum over the eigenvalues λ of the nonnegative Laplacian, counting multiplicity.
+
+**Problem.** As t decreases to zero, tH(t) tends to area(X)/(4π).
+
+**How the definition helps.** The exponential weight turns the length terms in Selberg’s trace formula into rapidly decreasing Gaussians. In our own derivation, each length ℓ contributes a factor exp(−ℓ²/(4t)). The shortest length is positive, and the number of geodesics grows at most exponentially with length. Together these facts bound the total geodesic contribution. Integrating the identity term gives the stated limit.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “By suitable choices of the test function, the trace formula yields asymptotic information about eigenvalues of the Laplacian”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Almost conjugate subgroups preserve spectra
+
+**Remember:** Equal class counts give equal dimensions of fixed eigenfunctions.
+
+*Makes the theorem clean to state or prove.* MSC 58J53 (Isospectrality). arXiv math.SP. Level 3: graduate.
+
+**Definition.** Let a finite group G act freely by isometries on a closed hyperbolic surface X. Call subgroups H and J almost conjugate if they meet each conjugacy class of G in equal numbers.
+
+**Problem.** The two quotient surfaces have the same Laplace eigenvalues, including multiplicities.
+
+**How the definition helps.** Equal class counts give identical subgroup averages of every function constant on conjugacy classes. Our own proof applies this fact to the trace of each group element on a Laplace eigenspace. Averaging the group actions projects onto the functions fixed by the subgroup. The trace of this projection counts its dimension. These fixed functions descend to exactly the eigenfunctions on the quotient.
+
+**Wikipedia:** [Isospectral](https://en.wikipedia.org/wiki/Isospectral). It says: “are subgroups of G meeting each conjugacy class of G in the same number of elements”
+
+**Sources:**
+
+- [Toshikazu Sunada, Riemannian Coverings and Isospectral Manifolds (1985).](https://doi.org/10.2307/1971195)
+
 ### In smooth sets, every differential form comes from one universal form
 
 **Remember:** A form on X is a map from X into the space of all forms.

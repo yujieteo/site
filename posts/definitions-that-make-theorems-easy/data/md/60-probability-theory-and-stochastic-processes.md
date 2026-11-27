@@ -750,6 +750,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The Dickman series restarts independently
+
+**Remember:** The first uniform factor leaves an independent copy of the full sum.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Let U₁,U₂,… be independent uniform variables on (0,1). Define D as the sum U₁+U₁U₂+U₁U₂U₃+⋯. The usual analytic description uses the Dickman function, which is 1 on \[0,1\] and solves uρ′(u)=−ρ(u−1) for u&gt;1.
+
+**Problem.** The series converges almost surely, and D has the same law as U(1+D′). Here D′ is an independent copy of D and U is uniform on (0,1), independent of D′. On \[0,∞) the density is exp(−γ)ρ, where γ is Euler’s constant.
+
+**How the definition helps.** Factoring out the first uniform variable leaves a fresh copy of the entire series (our own calculation). The terms are nonnegative and their expectations sum to ∑ 2⁻ᵏ=1, so the series is finite almost surely. Given D′, the product U(1+D′) is uniform between zero and 1+D′. In our own derivation, averaging those uniform densities gives the Dickman differential equation. Identifying the density still requires its normalizing constant.
+
+**Wikipedia:** [Dickman function](https://en.wikipedia.org/wiki/Dickman_function). It says: “The Dickman–de Bruijn function ρ(u) is a continuous function that satisfies the delay differential equation”
+
+**Paper or page:** [Representation and Simulation of Multivariate Dickman Distributions and Vervaat Perpetuities](https://arxiv.org/abs/2305.18634v1). It says: “When α = 1 we can write”
+
+**Sources:**
+
+- [Representation and Simulation of Multivariate Dickman Distributions and Vervaat Perpetuities](https://arxiv.org/abs/2305.18634v1)
+
 ### Characteristic functions show that one-dimensional projections determine multivariate laws
 
 **Remember:** The vector characteristic function takes each value from a one-dimensional projection.

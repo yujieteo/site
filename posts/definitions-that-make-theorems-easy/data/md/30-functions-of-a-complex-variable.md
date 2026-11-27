@@ -394,6 +394,78 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Band limits diagonalize mean squares
+
+**Remember:** A narrow Fourier transform cannot see the nonzero frequency gaps.
+
+*Rules out counterexamples. Confidence: medium.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable), 42A38. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** Fix T &gt; 0 and a positive integer N. Replace a sharp time cutoff by w(t/T), where w is smooth and rapidly decreasing. Define ŵ(ξ) by integrating w(u) exp(−iuξ) over the real line. Require ŵ to vanish whenever \|ξ\| ≥ T/N.
+
+**Problem.** For P(t) = ∑ over n ≤ N of a(n) exp(−it log n), the integral of w(t/T)\|P(t)\|² over ℝ equals Tŵ(0)∑ \|a(n)\|².
+
+**How the definition helps.** The narrow Fourier support removes every term coming from two different indices. In our own calculation, such a term samples ŵ at T log(m/n). Distinct positive integers at most N satisfy \|log(m/n)\| ≥ 1/N. Only the equal indices survive. The cited lemma uses Fourier decay and allows an error.
+
+**Paper or page:** [Extreme values of Dirichlet polynomials with multiplicative coefficients](https://arxiv.org/abs/2303.06739). It says: “M<sub>1</sub>(R, T) = T{\\hat\\Phi }(0) (1 + O(T<sup>-1</sup>) ) \\sum <sub>n\\leqslant X</sub> \|r<sub>f</sub>(n)\|<sup>2</sup>.”
+
+**Sources:**
+
+- [Max Wenqiang Xu, Daodao Yang, Extreme values of Dirichlet polynomials with multiplicative coefficients](https://arxiv.org/abs/2303.06739)
+
+### Prime phases recover time moments
+
+**Remember:** Give each prime its own phase.
+
+*Makes the theorem clean to state or prove.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable), 11K06. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** Fix an integer N ≥ 1. For each prime p ≤ N, choose an independent uniform point U(p) on the unit circle. Set U(1) = 1 and extend by multiplication, so U(mn) = U(m)U(n) whenever mn ≤ N.
+
+**Problem.** Put P(t) = ∑ a(n) exp(−it log n) and X = ∑ a(n)U(n), summing over 1 ≤ n ≤ N. For each real q &gt; 0, average the qth power of \|P(t)\| over \[0,T\]. As T grows, this approaches the expected qth power of \|X\|.
+
+**How the definition helps.** Independent prime phases turn the time average into an integral over a product of circles. Our own proof tests the phase distribution against products of integer powers of its coordinates. Each nonconstant product oscillates at a nonzero frequency because unique factorization makes the prime logarithms rationally independent. Its time average therefore vanishes. Weyl’s criterion now gives convergence for every continuous function of the phases, including the stated power.
+
+**Wikipedia:** [Equidistribution theorem](https://en.wikipedia.org/wiki/Equidistribution_theorem). It says: “equidistribution is equivalent to having a non-trivial estimate for the exponential sums formed with the sequence as exponents.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product coefficients simplify even moments
+
+**Remember:** Group products before taking the square.
+
+*Makes the theorem clean to state or prove.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix positive integers k and N and put P(t) = ∑ a(n) exp(−it log n), summing over 1 ≤ n ≤ N. Define b(m) by summing a(n₁)⋯a(nₖ) over ordered tuples with product m and entries between 1 and N.
+
+**Problem.** On any interval of length T, the integral of \|P(t)\|²ᵏ equals (T + O(Nᵏ))∑ \|b(m)\|². The implied constant is absolute.
+
+**How the definition helps.** Grouping equal products turns the even moment into a mean square with one coefficient per frequency. In our own derivation, the largest possible product is Nᵏ. The Montgomery–Vaughan mean value theorem then gives the error bound. For prime indices, each product occurs in at most k! orders, giving the cited prime sum estimate.
+
+**Paper or page:** [Conditional mean values of long Dirichlet polynomials](https://arxiv.org/abs/2201.02108). It says: “\\int \_T<sup>2T</sup>\\bigg\|\\sum <sub>p\\leqslant x</sub>\\frac{a(p)}{p<sup>1/2+it</sup>}\\bigg\|<sup>2k</sup>dt\\ll Tk!\\bigg(\\sum <sub>p\\leqslant x</sub>\\frac{\|a(p)\|<sup>2}{p}\\bigg</sup>)<sup>k</sup>.”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, Hilbert’s inequality, J. London Math. Soc. 8 (1974), 73–82](https://doi.org/10.1112/jlms/s2-8.1.73)
+
+### Summatory weights expose mean squares
+
+**Remember:** The log scale reveals the Fourier transform of the partial sums.
+
+*Makes the theorem clean to state or prove.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable), 44A15. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** For a finite Dirichlet polynomial A(s) = ∑ a(n) exp(−s log n), define S(x) = ∑ over n ≤ x of a(n). On the log scale use F(u) = exp(−σu)S(exp u) for σ &gt; 0.
+
+**Problem.** ∫ from 0 to ∞ of \|S(x)\|² exp(−(1+2σ) log x) dx equals (1/(2π))∫ over ℝ of \|A(σ+it)/(σ+it)\|² dt.
+
+**How the definition helps.** The logarithmic variable and exponential weight turn the partial sums into a function with Fourier transform A(σ+it)/(σ+it). In our own derivation, each coefficient contributes an integral starting at log n. Plancherel’s theorem equates the square integrals on the two sides of the Fourier transform. The cited lemma also covers infinite series under convergence assumptions.
+
+**nLab:** [Mellin transform](https://ncatlab.org/nlab/show/Mellin+transform). It says: “its Mellin transform is the function given by the integral expression”
+
+**Paper or page:** [Helson's conjecture for smooth numbers](https://arxiv.org/abs/2511.03430). It says: “\\int \_0<sup>\\infty</sup> \\frac{\|\\sum <sub>1\\leqslant n \\leqslant x</sub> a<sub>n</sub>\|<sup>2}{x<sup>1</sup> + 2 \\sigma </sup>} \\,  dx \\,  = \\frac{1}{2\\pi } \\int <sub>-\\infty </sub><sup>\\infty </sup> \\biggl\| \\frac{A(\\sigma + i t)}{\\sigma + it} \\biggr\|<sup>2</sup> \\,  dt \\,  .”
+
+**Sources:**
+
+- [Seth Hardy, Max Wenqiang Xu, Helson's conjecture for smooth numbers](https://arxiv.org/abs/2511.03430)
+
 ### Disk automorphisms preserve Blaschke degree
 
 **Remember:** Composing with a bijection preserves every fiber count.
@@ -1162,6 +1234,24 @@
 **Wikipedia:** [Blaschke product](https://en.wikipedia.org/wiki/Blaschke_product). It says: “The Blaschke product B(z) defines a function analytic in the open unit disc and vanishing exactly at the points aₙ, with multiplicity counted.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Disjoint prime blocks factor moments
+
+**Remember:** Separate prime sets make each product split in just one way.
+
+*Rules out counterexamples.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable). arXiv math.NT. Level 4: research.
+
+**Definition.** A Dirichlet polynomial has the form A(s) = ∑ a(n) exp(−s log n), with finitely many positive integer indices. Give each of finitely many factors Aⱼ a disjoint set of primes. Allow an index only when all its prime divisors belong to that factor’s set.
+
+**Problem.** Write M(A) for the average of \|A(½+it)\|² over T ≤ t ≤ 2T. Suppose the product has no index above N and N/T tends to zero. Then M(∏ Aⱼ) = (1 + O(N/T))∏ M(Aⱼ) for a fixed number of factors.
+
+**How the definition helps.** Each product index splits uniquely among the disjoint prime sets, so the sum of squared coefficients factors exactly. The Dirichlet polynomial mean value theorem transfers this identity to time averages with the stated error. Our own counterexample uses two copies of 1 + exp(−s log 2)√2. On the stated line, their separate mean squares tend to 2, while their product has limiting mean square 6.
+
+**Paper or page:** [Freezing transition and moments of moments of the Riemann zeta function](https://arxiv.org/abs/2301.10634). It says: “such that aⱼ(n) vanishes unless n is composed of primes in Iⱼ.”
+
+**Sources:**
+
+- [Michael J. Curran, Freezing transition and moments of moments of the Riemann zeta function](https://arxiv.org/abs/2301.10634)
 
 ### Hardy spaces of Dirichlet series do not depend on the chosen group
 

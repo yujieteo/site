@@ -1148,6 +1148,97 @@
 
 - [Christian Reiher, On Lev's periodicity conjecture, arXiv:2408.15174 (2024)](https://arxiv.org/abs/2408.15174)
 
+### Balanced indicators expose missing progressions
+
+**Remember:** Subtract the density before looking for missing patterns.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** In a cyclic group of prime order N, let A have density α&gt;0. Its balanced indicator is its indicator minus α. Measure this function with the Gowers norm of order k−1, which averages alternating products on additive cubes.
+
+**Problem.** Fix k≥3, with N≥k and Nαᵏ⁻¹≥2. If A contains no k-term progression with nonzero difference, its balanced indicator has Gowers norm of order k−1 at least αᵏ/(2k).
+
+**How the definition helps.** Centering turns a missing progression into a discrepancy from the count for the constant function α (our own argument). With only zero differences, the normalized count equals α/N, at most αᵏ/2. Replacing each indicator in turn by α expresses the discrepancy as k terms. The generalized von Neumann inequality bounds each term by the balanced indicator’s norm.
+
+**Paper or page:** [An inverse theorem for the Gowers U³ norm](https://arxiv.org/abs/math/0503014). It says: “Let k ≥ 3, let G be a finite additive group with (N,(k−1)!) = 1”
+
+**Sources:**
+
+- [Ben Green and Terence Tao, An inverse theorem for the Gowers U³ norm, arXiv:math/0503014v4](https://arxiv.org/abs/math/0503014)
+
+### Centered Fourier uniformity counts three-term progressions
+
+**Remember:** Remove the constant term so Fourier coefficients measure the counting error.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** Let A have density δ in a finite abelian group G of size n. For each homomorphism χ from G to the complex unit circle, average (1ₐ−δ) times the conjugate of χ. Here 1ₐ is the indicator of A. Call A Fourier ε-uniform if every such average has modulus at most ε.
+
+**Problem.** Suppose n is odd and A is Fourier ε-uniform. The number of pairs (x,r) with x, x+r and x+2r in A differs from δ³n² by at most εn².
+
+**How the definition helps.** Centering removes the constant Fourier coefficient, leaving only terms that measure the counting error (our own explanation). In the Fourier expansion, each nonconstant term uses frequencies χ, χ and χ⁻². Odd order makes χ⁻² nonconstant whenever χ is nonconstant. Uniformity bounds that factor by ε, and Parseval’s identity bounds the sum of the other squared moduli by one.
+
+**Paper or page:** [Quasirandomness in additive groups and hypergraphs](https://arxiv.org/abs/2107.01463). It says: “Let G be an additive group of odd order and suppose A ⊆ G is Fourier ε-uniform.”
+
+**Sources:**
+
+- [Davi Castro-Silva, Quasirandomness in additive groups and hypergraphs, arXiv:2107.01463v1](https://arxiv.org/abs/2107.01463)
+
+### Coset averages absorb large Fourier coefficients
+
+**Remember:** A character survives coset averaging exactly when it is trivial on the subspace.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** For a subspace H of the vector space 𝔽ₚⁿ over the field of prime order p, define g(x) as the mean of f on x+H. This coset average preserves the range \[0,1\]. A normalized Fourier coefficient averages a function times the conjugate of a character, a homomorphism to the unit circle.
+
+**Problem.** For every f from 𝔽ₚⁿ to \[0,1\] and ε&gt;0, there is a subspace H of codimension at most ε⁻². Every normalized Fourier coefficient of f minus its coset model has modulus at most ε.
+
+**How the definition helps.** Coset averaging preserves selected frequencies while keeping the model bounded, which truncating a Fourier series need not do (our own explanation). Intersect the kernels of the characters whose coefficients exceed ε in modulus. Parseval bounds their number by ε⁻², so at most that many independent linear conditions define H. Character orthogonality shows that averaging preserves these coefficients and either preserves or kills every other coefficient.
+
+**Paper or page:** [Quasirandomness in additive groups and hypergraphs](https://arxiv.org/abs/2107.01463). It says: “being a linear combination of at most 1/ε² characters with coefficients bounded in magnitude by 1”
+
+**Sources:**
+
+- [Davi Castro-Silva, Quasirandomness in additive groups and hypergraphs, arXiv:2107.01463v1](https://arxiv.org/abs/2107.01463)
+- [Fox and Zhao, Removal lemmas and approximate homomorphisms, Combinatorics, Probability and Computing 31 (2022), Lemma 5.2](https://doi.org/10.1017/s0963548321000572)
+
+### Cube products yield the triangle inequality
+
+**Remember:** Expand the cube of a sum, then bound each mixed cube.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** Choose a base point and d steps independently and uniformly in a finite abelian group. Each subset of steps gives a vertex by adding those steps to the base point. The cube average multiplies one function value per vertex, conjugates factors for odd subsets, and averages the product. Using f throughout and taking the 2ᵈ-th root gives its Gowers Uᵈ norm.
+
+**Problem.** For d ≥ 2, the Gowers Uᵈ norm of f+g is at most the sum of their Gowers Uᵈ norms.
+
+**How the definition helps.** Allowing different functions at the vertices gives one inequality for every mixed term in the expansion of f+g (our own explanation). Repeated Cauchy–Schwarz bounds each mixed average by the product of its vertex norms. Summing these bounds gives the binomial expansion of the sum of the two norms raised to 2ᵈ.
+
+**Paper or page:** [Parseval-type identities for Gowers uniformity norms in finite abelian groups](https://arxiv.org/abs/2508.08968). It says: “Then we have ‖f₀+f₁‖(Uᴬ˒ˡ) ≤ ‖f₀‖(Uᴬ˒ˡ)+‖f₁‖(Uᴬ˒ˡ).”
+
+**Sources:**
+
+- [Martin Niepel, Parseval-type identities for Gowers uniformity norms in finite abelian groups, arXiv:2508.08968v1](https://arxiv.org/abs/2508.08968)
+
+### Fourier moments expose large coefficients
+
+**Remember:** A large fourth moment needs a large coefficient when the second moment is bounded.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** Let f be real on a finite abelian group. A character χ is a homomorphism to the complex unit circle. Its Fourier coefficient f̂(χ) is the mean of f times the conjugate of χ. Define the U² norm as the fourth root of the sum of \|f̂(χ)\|⁴ over all characters.
+
+**Problem.** If \|f\| ≤ 1 and its U² norm is at least δ, some character χ has \|f̂(χ)\| ≥ δ².
+
+**How the definition helps.** The fourth moment directly bounds the largest coefficient when the second moment is bounded (our own argument). Indeed, the fourth moment is at most the largest squared modulus times the second moment. Parseval’s identity makes the second moment equal to the mean of \|f\|². The usual definition averages products over parallelograms, and character orthogonality proves the two formulas agree.
+
+**Paper or page:** [Quasirandomness in additive groups and hypergraphs](https://arxiv.org/abs/2107.01463). It says: “‖f‖(U²(G)) = ‖f̂‖(ℓ⁴(Ĝ)).”
+
+**Sources:**
+
+- [Davi Castro-Silva, Quasirandomness in additive groups and hypergraphs, arXiv:2107.01463v1](https://arxiv.org/abs/2107.01463)
+
 ### Independence keeps entropic distance nonnegative
 
 **Remember:** An independent difference cannot have less entropy than either summand.
@@ -1163,6 +1254,24 @@
 **Paper or page:** [Marton's Conjecture in abelian groups with bounded torsion](https://arxiv.org/abs/2404.02244v2). It says: “if X,Y are independent, then H\[X\], H\[Y\] are both at most H\[X ± Y\].”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicative differences expose Fourier structure
+
+**Remember:** A large cube average forces many differences with large Fourier coefficients.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** For a complex function f on a finite abelian group, its multiplicative difference Δₕf(x) is f(x+h) times the conjugate of f(x). Define ‖f‖ᵤ₃⁸ as the mean over h of ‖Δₕf‖ᵤ₂⁴. For any g, ‖g‖ᵤ₂⁴ sums the fourth powers of its normalized Fourier coefficient moduli.
+
+**Problem.** Let \|f\|≤1 and ‖f‖ᵤ₃≥η&gt;0. For at least a fraction η⁸/2 of the shifts h, some normalized Fourier coefficient of Δₕf has modulus at least η⁴/√2.
+
+**How the definition helps.** The recursive definition exposes an average of Fourier moments directly (our own argument). The usual eight-vertex cube formula gives this recursion by pairing opposite faces. Each moment is at most one, so a fraction at least η⁸/2 must reach η⁸/2. Parseval bounds the sum of squared coefficient moduli by one. The fourth moment therefore forces one coefficient to reach η⁴/√2. Each coefficient averages Δₕf against the conjugate of a homomorphism into the unit circle.
+
+**Paper or page:** [An inverse theorem for the Gowers U³ norm](https://arxiv.org/abs/math/0503014). It says: “Let G be an arbitrary finite additive group, and let f : G → 𝒟 be a bounded function”
+
+**Sources:**
+
+- [Ben Green and Terence Tao, An inverse theorem for the Gowers U³ norm, arXiv:math/0503014v4](https://arxiv.org/abs/math/0503014)
 
 ### Quadratic phases preserve cube norms
 
@@ -1193,6 +1302,22 @@
 **How the definition helps.** Regularity controls points gained by enlarging B, which an arbitrary radius need not do. In our own proof, both B and B + x fit inside the set of radius (1 + ρ)r. Their sizes agree, so their symmetric difference contains at most twice the number of added points. Regularity gives the bound for 100ρd ≤ 1. Otherwise the total difference between two probability distributions is at most 2. Finding a regular radius near a prescribed radius takes a separate lemma.
 
 **Paper or page:** [Sparse graph counting and Kelley-Meka bounds for binary systems](https://arxiv.org/abs/2311.12248v5). It says: “If B is a regular Bohr set of rank d”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero extension removes the ambient modulus
+
+**Remember:** Divide by the interval’s cube norm to cancel the ambient group.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** Choose integers d ≥ 2 and M &gt; 2ᵈN. Extend f on \[1,N\] by zero modulo M. Average the product of f over x plus every subset sum of d steps, conjugating factors from odd subsets. Take the 2ᵈ-th root and divide by the same quantity for the interval indicator.
+
+**Problem.** For d ≥ 2, this normalized interval norm is independent of the choice of M &gt; 2ᵈN.
+
+**How the definition helps.** Dividing by the indicator’s norm cancels the proportion of cubes inside the interval (our own explanation). Without that division, the average includes zeros from cubes outside the interval. Each surviving step lifts to the integer difference between its endpoint and the base point. The bound on M ensures that every lifted vertex agrees with its interval representative.
+
+**Wikipedia:** [Gowers norm](https://en.wikipedia.org/wiki/Gowers_norm). It says: “This definition does not depend on Ñ, as long as Ñ &gt; 2ᵈN.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1656,6 +1781,44 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Distinct indices become orthogonal
+
+**Remember:** As level grows, the nonzero moduli in the formula grow too.
+
+*Makes the theorem clean to state or prove.* MSC 11F30 (Fourier coefficients of automorphic forms), 11F72. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Fix even weight k ≥ 4 and positive Fourier indices m,n. Let Γ₀(q) consist of determinant-one integer matrices with lower-left entry divisible by q. Use a Petersson-orthonormal basis of holomorphic weight k forms with trivial character vanishing at all ends. Sum the conjugate mth times the nth Fourier coefficient and multiply by Γ(k−1) divided by (4π√(mn)) to the power k−1.
+
+**Problem.** As the positive integer q grows, this sum tends to one for equal indices and zero otherwise. The error is O(q to the power 1−k), with k,m,n fixed.
+
+**How the definition helps.** The normalization fixes the diagonal contribution while every other term has a modulus divisible by q. The Petersson inner product uses hyperbolic area weighted by y to the power k. In our own estimate, the Petersson formula expresses each remainder term using a finite exponential sum and a Bessel function. For modulus c, the sum has magnitude at most c and cancels the denominator in the bound. The Bessel function has order k−1 and argument proportional to 1/c, giving decay of order c to the power 1−k. Summing over positive multiples of q gives the error bound.
+
+**Paper or page:** [On the Density of Low Lying Zeros of a Large Family of Automorphic L-functions](https://arxiv.org/abs/2408.09050v2). It says: “where δ(m,n) = 1 when m=n and 0 otherwise and S denotes a Kloosterman sum.”
+
+**Sources:**
+
+- [Timothy Cheek, Pico Gilman, Kareem Jaber, Steven J. Miller and Marie-Hélène Tomé, On the Density of Low Lying Zeros of a Large Family of Automorphic L-functions.](https://arxiv.org/abs/2408.09050v2)
+
+### Harmonic weights normalize Petersson diagonals
+
+**Remember:** Weight each form by the reciprocal of its squared norm.
+
+*Makes the theorem clean to state or prove.* MSC 11F30 (Fourier coefficients of automorphic forms), 11F72. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Fix even k ≥ 4 and positive integer q. Use holomorphic cusp forms of weight k and trivial character for Γ₀(q), the determinant-one integer matrices with lower-left entry divisible by q. These forms obey the weight k transformation law and vanish at every cusp, or end. Give each orthogonal basis vector f weight Γ(k−1) divided by (4π) to the power k−1 and by its squared Petersson norm.
+
+**Problem.** Divide the nth Fourier coefficient by n to the power (k−1)/2 and call the result a(n). For positive m,n, the Petersson formula sums the weighted products of conjugate a(m) and a(n). Its diagonal term equals one for m = n and zero otherwise.
+
+**How the definition helps.** The reciprocal squared norm cancels any rescaling of a basis vector, and the common factor sets the diagonal coefficient to one. The Petersson norm integrates \|f(z)\|² times y to the power k against hyperbolic area on the quotient. In our own derivation, expanding a sum of translates of one Fourier mode in the orthogonal basis supplies the reciprocal norm. Computing its other Fourier coefficients gives the remaining terms in the formula.
+
+**Wikipedia:** [Petersson trace formula](https://en.wikipedia.org/wiki/Petersson_trace_formula). It says: “a kind of orthogonality relation between coefficients of a holomorphic modular form.”
+
+**Paper or page:** [Trace formula and functional equation](https://arxiv.org/abs/2410.16921v2). It says: “δ(m=n) + 2π i⁻ᵏ ∑₍c&gt;0, c≡0 (D)₎ Sχ(m,n;c)/c J₍k−1₎(4π√(mn)/c).”
+
+**Sources:**
+
+- [Henryk Iwaniec, Spectral Methods of Automorphic Forms, second edition (2002).](https://doi.org/10.1090/gsm/053)
+
 ### Poincaré series extract coefficients
 
 **Remember:** Average one mode to recover one coefficient.
@@ -1814,6 +1977,24 @@
 
 - [Martin Eichler and Don Zagier, The Theory of Jacobi Forms (1985)](https://doi.org/10.1007/978-1-4684-9162-3)
 
+### Analytic conductor unifies convexity
+
+**Remember:** One conductor tracks level, gamma shifts, and height.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a unitary cuspidal L-function on GL(d) over ℚ, d ≥ 2, let N denote its arithmetic conductor, which measures ramification at finite primes. Its gamma factors have the form Γℝ(s+κ), where Γℝ(z) = Γ(z/2) exp(−z log(π)/2). Define C(t) as N times the product of 3 + \|it+κ\| over these shifts.
+
+**Problem.** For every ε &gt; 0 and ½ ≤ σ ≤ 1, \|L(σ+it)\| is at most a constant times C(t) raised to (1−σ)/2+ε. The constant depends only on d and ε.
+
+**How the definition helps.** The conductor collects the level, height and gamma shifts in a single bound. The cited strip estimate applies with the second representation trivial. In our own explanation, Stirling’s formula estimates the gamma factors in the functional equation. Bounds near the edges of the strip and complex interpolation give the exponent inside.
+
+**Paper or page:** [Oscillations and first-ever negative Fourier coefficients of symmetric square L-functions over sparse set](https://arxiv.org/abs/2510.18994v1), [A new zero-free region for Rankin-Selberg L-functions](https://arxiv.org/abs/2303.16889v6). It says: “The hybrid convexity bound of the symmetric square L-function and the twisted symmetric square L-function is given by:”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 5](https://doi.org/10.1090/coll/053)
+
 ### Eisenstein symmetry gives functional equations
 
 **Remember:** The completed kernel carries its symmetry into the integral.
@@ -1829,6 +2010,92 @@
 **Wikipedia:** [Rankin–Selberg method](https://en.wikipedia.org/wiki/Rankin%E2%80%93Selberg_method). It says: “The analytic continuation and functional equation then boil down to those of the Eisenstein series.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Even weights give two reflected sums
+
+**Remember:** An even weight survives the reflection of the contour.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Consider a cusp-form L-function with entire completion Λ(s) = γ(s)L(s), where γ includes its conductor and gamma factors. Write Λ(s) = εΛ̃(1−s), where the tilde denotes the dual function. For an even entire weight G, require G(0) = 1 and rapid decay on vertical strips. One choice is G(u) = exp(u²).
+
+**Problem.** Write I(Λ) for the upward integral of Λ(½+u)G(u)/u on Re u = 2, divided by 2πi. For completions of polynomial growth on vertical strips, Λ(½) = I(Λ) + εI(Λ̃). Each integral gives a weighted coefficient sum when its Dirichlet series converges absolutely there and its gamma factor decays exponentially.
+
+**How the definition helps.** Evenness lets both sums use the same auxiliary weight. In our own derivation for entire completions, moving the contour to Re u = −2 crosses only the pole at zero. Its residue is Λ(½). Reflection sends the remaining integral to −εI(Λ̃), since G(−u) = G(u). The quoted Shintani formula also includes residues from poles of its completion.
+
+**Paper or page:** [Subconvexity of Shintani's zeta function](https://arxiv.org/abs/2104.13558v3). It says: “Let G(u) be any function which is holomorphic and bounded in \|Re(u)\| &lt; 4, even, with G(0) = 1.”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 5](https://doi.org/10.1090/coll/053)
+
+### Mellin completion turns inversion into reflection
+
+**Remember:** Inversion in y reflects the Mellin variable.
+
+*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be a holomorphic cusp form of weight k for SL₂(ℤ), so f has modular symmetry and vanishes at infinity. Its Fourier coefficients a(n) define L(s) = ∑ a(n)/nˢ. Define Λ(s) by integrating f(iy)yˢ dy/y over y &gt; 0.
+
+**Problem.** The integral gives an entire continuation of (2π)⁻ˢΓ(s)L(s). It satisfies Λ(s) = iᵏΛ(k−s).
+
+**How the definition helps.** In our own derivation, the integral turns modular inversion into the substitution y ↦ 1/y. The identity f(i/y) = (iy)ᵏf(iy) then gives the reflection. Decay at infinity and modular inversion give convergence at both ends for every s. Integrating the Fourier series term by term identifies the integral with the completed series for large Re s.
+
+**nLab:** [L-function](https://ncatlab.org/nlab/show/L-function). It says: “may also be obtained as the Mellin transform of f.”
+
+**Sources:**
+
+- [Hecke, Über die Bestimmung Dirichletscher Reihen durch ihre Funktionalgleichung (1936)](https://doi.org/10.1007/bf01565437)
+
+### Removing zeta isolates the adjoint
+
+**Remember:** Removing scalar matrices removes the zeta factor.
+
+*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be a holomorphic level-one cusp form that is an eigenvector of all Hecke averaging operators. Use the normalization with functional equation centered at ½. At each prime the two local parameters give a diagonal matrix A. The adjoint factor uses conjugation B ↦ ABA⁻¹ on trace-zero matrices, while the product with the dual uses all matrices.
+
+**Problem.** The resulting L-functions satisfy L(s,f×f̃) = ζ(s)L(s,Ad f), where f̃ denotes the dual. The adjoint function has a finite, nonzero value at 1.
+
+**How the definition helps.** In our own derivation, restricting conjugation to trace-zero matrices removes precisely the scalar matrices. Conjugation fixes that one-dimensional space, so its prime factor is 1/(1−p⁻ˢ). Multiplication over primes gives ζ(s). The Rankin–Selberg pole theorem gives a simple pole at 1 for the full product. Dividing by the simple pole of ζ proves the final claim.
+
+**Paper or page:** [Exceptional zeros of Rankin-Selberg L-functions and joint Sato-Tate distributions](https://arxiv.org/abs/2404.06482v2). It says: “a\_{\\mathrm{Sym}<sup>j</sup>(\\pi )\\times \\mathrm{Sym}<sup>j</sup>(\\widetilde{\\pi })}(v<sup>\\ell </sup>)&amp; =1+\\sum <sub>r=1</sub><sup>j</sup> a\_{\\mathrm{Sym}<sup>2r</sup>(\\pi )\\otimes \\omega <sub>\\pi </sub><sup>-r</sup>}(v<sup>\\ell </sup>)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Root numbers fix vanishing parity
+
+**Remember:** A negative sign allows only odd central Taylor powers.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an automorphic L-function, completion multiplies the series by the exponential and gamma factors in its functional equation. In the self-dual case, the same completed function Λ occurs on both sides. Its root number is the sign ε in Λ(s) = εΛ(1−s).
+
+**Problem.** Suppose Λ is holomorphic at ½ and does not vanish identically. Its vanishing order there is even for ε = 1 and odd for ε = −1. The original series has the same order if its completing factor is holomorphic and nonzero there.
+
+**How the definition helps.** In our own argument, completion makes reflection multiply each central Taylor term by a sign. A term of degree j acquires the factor (−1)ʲ. The first nonzero term must therefore have the parity prescribed by ε. Proving the functional equation supplies the symmetry this argument needs.
+
+**Wikipedia:** [Functional equation (L-function)](https://en.wikipedia.org/wiki/Functional_equation_%28L-function%29). It says: “Λ the L-function multiplied by a gamma-factor, and ε a complex number of absolute value 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unfolding reads the Petersson pairing
+
+**Remember:** The constant residue of E leaves precisely the inner product.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f and g be weight-k modular forms for SL₂(ℤ) that vanish at infinity. Put h(z) = yᵏf(z)overline(g(z)), with z = x+iy and overline denoting complex conjugation. Define I(s) by integrating h(z)E(z,s) over a fundamental domain with measure dx dy/y². The Eisenstein series E sums (Im γz)ˢ over matrices γ modulo left multiplication by the stabilizer of infinity.
+
+**Problem.** Write a(n) and b(n) for the Fourier coefficients of f and g. For Re s &gt; 1, I(s) equals ∑ a(n)overline(b(n))/nˢ⁺ᵏ⁻¹ times Γ(s+k−1) exp(−(s+k−1)log(4π)). Its residue at 1 is 3/π times the Petersson inner product, the integral of h with the same measure.
+
+**How the definition helps.** The Eisenstein series puts a known constant residue inside the integral defining the pairing. Unfolding integrates each summand over a translated domain and joins these domains into a strip. Integration across the strip keeps exactly the matching Fourier indices. In our own normalization, the remaining gamma integral gives the stated factor, and the residue of E is 3/π.
+
+**Wikipedia:** [Rankin–Selberg method](https://en.wikipedia.org/wiki/Rankin%E2%80%93Selberg_method). It says: “The integral was identified with the convolution L-function by a technique called "unfolding”
+
+**Sources:**
+
+- [Rankin, Contributions to the theory of Ramanujan’s function τ(n) and similar arithmetical functions (1939)](https://doi.org/10.1017/S0305004100021095)
 
 ### Cusp divisors add periods
 
@@ -1863,6 +2130,280 @@
 **Sources:**
 
 - [Ichirō Satake, Theory of spherical functions on reductive algebraic groups over p-adic fields (1963)](https://doi.org/10.1007/bf02684781)
+
+### Bessel weights transfer modulus sums
+
+**Remember:** Transform the modulus weight before summing over the spectrum.
+
+*Makes the theorem clean to state or prove.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11F30. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Choose a smooth weight H supported in a compact subinterval of (0,∞). At real t, define its transformed weight by integrating 4 cosh(πt) K(2it,4πx) H(x) against dx/x. Here K denotes the decaying modified Bessel function, with order first and argument second.
+
+**Problem.** For positive integers m,n, weight the modulus c by H(√(mn)/c)/c in the sum of opposite-sign Kloosterman sums S(m,−n;c). The level one summation formula gives a spectral sum and integral, both using the transformed weight.
+
+**How the definition helps.** One integral converts the chosen modulus weight into a weight for every spectral parameter t. A Kloosterman sum adds complex phases indexed by invertible residue classes and their inverses. The spectral sum uses Fourier coefficients of square integrable cusp eigenfunctions, with their reflection signs. The integral uses the continuous family of eigenfunctions called Eisenstein series. In our own specialization, compact support ensures the required derivative bounds and leaves only finitely many moduli. The equality itself is the Kloosterman summation theorem.
+
+**Paper or page:** [Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity](https://arxiv.org/abs/2208.05613v3). It says: “(𝓛±H)(t) ≔ ∫₀∞ 𝒥±₍t₎(x) H(x) dx/x”
+
+**Sources:**
+
+- [N. V. Kuznetsov, Petersson’s conjecture for cusp forms of weight zero and Linnik’s conjecture (1981).](https://doi.org/10.1070/SM1981v039n03ABEH001518)
+- [Henryk Iwaniec and Emmanuel Kowalski, Analytic Number Theory (2004), Theorem 16.5.](https://doi.org/10.1090/coll/053)
+- [Peter Humphries and Rizwanur Khan, Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity.](https://arxiv.org/abs/2208.05613v3)
+
+### Centralizers combine conjugate terms
+
+**Remember:** One orbit of conjugate elements needs one quotient integral.
+
+*True by definition.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** Let Γ be a discrete group acting freely by orientation-preserving hyperbolic isometries with compact quotient X. Fix γ in Γ and let C contain exactly the elements commuting with γ. For a smooth compactly supported distance weight k, integrate k(d(z,γz)) over C∖ℍ with hyperbolic area. Here ℍ is the hyperbolic plane and d measures distance.
+
+**Problem.** This single integral equals the sum of the diagonal kernel integrals over X indexed by conjugates of γ.
+
+**How the definition helps.** Integrating over C∖ℍ replaces a sum over conjugates with one integral. In our own derivation, the cosets Cg label the conjugates g⁻¹γg exactly once. Translating one fundamental region for Γ by those representatives covers a fundamental region for C up to null sets. Changing variables in each integral gives the equality. Evaluating the resulting integral is a separate step.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “with the first term corresponding to the identity element and the remaining terms forming a sum over the other conjugacy classes”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Completed factors make scattering unitary
+
+**Remember:** On the critical line the scattering quotient divides conjugates.
+
+*Makes the theorem clean to state or prove.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11M36. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On the modular surface, normalize the Eisenstein eigenfunction so its horizontal average is yˢ + φ(s)y¹⁻ˢ at height y. The coefficient φ(s) measures scattering at the narrowing end. Complete the Riemann zeta function by setting Λ(w) = Γ(w/2)ζ(w) divided by π to the power w/2.
+
+**Problem.** The scattering coefficient equals Λ(2s−1)/Λ(2s). It has absolute value one on Re(s) = ½, including its limiting value −1 at s = ½.
+
+**How the definition helps.** Completion turns the numerator into the conjugate of the denominator on this line. Our own deduction uses the functional equation Λ(w) = Λ(1−w) and conjugation. Away from s = ½ the denominator is nonzero because ζ has no zeros on Re(w) = 1. At the midpoint the simple poles at zero and one have opposite residues. Computing the horizontal average of the Eisenstein series supplies the quotient formula.
+
+**Wikipedia:** [Selberg zeta function](https://en.wikipedia.org/wiki/Selberg_zeta_function). It says: “In this case the determinant of the scattering matrix is given by: φ(s) = π¹ᐟ² Γ(s−1/2) ζ(2s−1) / (Γ(s) ζ(2s)).”
+
+**Sources:**
+
+- [Henryk Iwaniec, Spectral Methods of Automorphic Forms, second edition (2002).](https://doi.org/10.1090/gsm/053)
+
+### Congruence gives Selberg’s spectral gap
+
+**Remember:** Finite area alone cannot prevent a small positive eigenvalue.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Call a subgroup of SL(2,ℤ) a congruence subgroup if it contains every matrix congruent to the identity modulo some positive integer. Each such subgroup acts on the upper half-plane by fractional linear transformations.
+
+**Problem.** For congruence subgroups, every positive discrete Laplace eigenvalue on the quotient is at least 3/16. General finite-index subgroups can have arbitrarily small positive eigenvalues.
+
+**How the definition helps.** The congruence condition rules out finite covers on which functions can vary very slowly between sheets. Selberg’s theorem supplies the uniform lower bound. Our own counterexample starts with the quotient by the commutator subgroup of PSL(2,ℤ), a once-punctured torus. Cut it along a nonseparating closed curve and join n cut copies in a ring. A smooth function with sheet values cos(2πj/n) away from fixed collars can interpolate between adjacent values inside them. Cyclic symmetry gives zero mean after choosing identical interpolations, and its energy divided by its squared norm is O(1/n²). Below the continuous spectrum starting at ¼, this forces a positive discrete eigenvalue.
+
+**Wikipedia:** [Selberg's 1/4 conjecture](https://en.wikipedia.org/wiki/Selberg%27s_1/4_conjecture). It says: “Selberg showed that the eigenvalues are at least 3/16.”
+
+**Sources:**
+
+- [Atle Selberg, On the estimation of Fourier coefficients of modular forms (1965).](https://doi.org/10.1090/pspum/008/0182610)
+
+### Cusp truncation gives finite norms
+
+**Remember:** Cut the two power terms, not the whole cusp.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On the modular surface, let E(z,s) be the Eisenstein series describing the continuous spectrum. At height y its horizontal average is yˢ + φ(s)y¹⁻ˢ, where φ is the scattering coefficient. In the narrowing end above height Y &gt; 1, subtract this average from E. Use E itself below the cutoff.
+
+**Problem.** For fixed real t ≠ 0 and s = ½+it, the truncated series is square integrable for hyperbolic area. Its squared norm equals 2 log Y + O(1) as Y grows, with the error bound depending on t.
+
+**How the definition helps.** Subtracting the average removes exactly the two waves responsible for the divergent integral. The remaining Fourier modes decay exponentially with height. In our own calculation, each wave contributes log Y below the cutoff since \|φ(s)\| = 1. Their cross term has bounded integral because t ≠ 0. The Maass–Selberg relation gives the full norm formula.
+
+**Wikipedia:** [Maass–Selberg relations](https://en.wikipedia.org/wiki/Maass%E2%80%93Selberg_relations). It says: “However the integral defining the inner product does not converge, so the Eisenstein series first have to be truncated.”
+
+**Sources:**
+
+- [Henryk Iwaniec, Spectral Methods of Automorphic Forms, second edition (2002).](https://doi.org/10.1090/gsm/053)
+
+### Free compact quotients simplify traces
+
+**Remember:** No fixed points or cusps means only closed geodesics remain.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** Let Γ be a discrete group of orientation-preserving isometries of the hyperbolic plane. Require Γ to have no nonidentity element of finite order and to have compact quotient.
+
+**Problem.** In Selberg’s trace formula, the geometric sum contains only the identity and terms indexed by oriented closed geodesics.
+
+**How the definition helps.** The two conditions exclude rotations about interior points and transformations that produce cusp ends. In our own examples, the modular group contains both the rotation z ↦ −1/z and the translation z ↦ z + 1. Every remaining nonidentity element translates along a geodesic, which closes on the quotient. The trace formula supplies the contribution of each class.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “the group Γ has no parabolic or elliptic elements (other than the identity).”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Kuznetsov signs select odd forms
+
+**Remember:** Subtracting the two signs cancels every even contribution.
+
+*Makes the theorem clean to state or prove.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11F30. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Use the level one Kuznetsov formula, which relates Fourier coefficients on the modular surface to finite exponential sums. For positive integers m,n, take half the difference of its identities for (m,n) and (m,−n). Use the same even analytic test function with the decay required by the formula in both identities.
+
+**Problem.** Only odd cusp forms contribute on the spectral side. These are Laplace eigenfunctions that change sign under x ↦ −x and have zero horizontal average. Each product of normalized coefficients carries the test weight divided by L(1,ad f), the adjoint L-function of the form evaluated at one.
+
+**How the definition helps.** The difference assigns weight (1−ε)/2 to a form whose reflection sign is ε. This gives weight one to odd forms and zero to even forms. The continuous integrals in the two identities agree and cancel. Our own subtraction uses the signed coefficient formulas proved by Kuznetsov summation.
+
+**Paper or page:** [Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity](https://arxiv.org/abs/2208.05613v3). It says: “ε₍f₎⁽¹ ∓ ¹⁾⁄² λ₍f₎(m) λ₍f₎(n)/L(1, ad f)”
+
+**Sources:**
+
+- [N. V. Kuznetsov, Petersson’s conjecture for cusp forms of weight zero and Linnik’s conjecture (1981).](https://doi.org/10.1070/SM1981v039n03ABEH001518)
+- [Peter Humphries and Rizwanur Khan, Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity.](https://arxiv.org/abs/2208.05613v3)
+
+### Length weights recover primitive counts
+
+**Remember:** Subtract the shorter repeats before counting the new geodesics.
+
+*Makes the theorem clean to state or prove.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On a closed oriented surface of curvature −1, call an oriented closed geodesic primitive if it traverses its path only once. For each primitive length ℓ, counting multiplicity, place mass ℓ/(2 sinh(mℓ/2)) at mℓ for each positive integer m. Add masses at equal lengths.
+
+**Problem.** The Laplace eigenvalues, counted with multiplicity, determine how many primitive oriented geodesics have each length.
+
+**How the definition helps.** The masses record repeated trips with known weights, so shorter geodesics explain part of the mass at every later length. In our own reconstruction, Weyl’s eigenvalue counting law first gives the area. Selberg’s trace formula then determines the masses by integration against smooth even functions. At length ℓ, subtract repeats of all shorter geodesics and divide by ℓ/(2 sinh(ℓ/2)). Only finitely many lengths occur below any bound, so this procedure determines every count.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “so the lengths of primitive closed geodesics are spectral invariants.”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Mean zero gives heat decay
+
+**Remember:** Remove constants before asking the heat flow to decay.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** Let Γ be a subgroup of SL(2,ℤ) containing every matrix congruent to the identity modulo some positive integer. On its upper half-plane quotient, take square integrable functions whose integral against hyperbolic area is zero.
+
+**Problem.** At time t ≥ 0, heat flow on this space has operator norm at most exp(−3t/16).
+
+**How the definition helps.** The zero integral removes the constant functions, which heat flow leaves unchanged. Selberg proved that every positive discrete Laplace eigenvalue here is at least 3/16. The continuous spectrum begins at ¼. In our own deduction, heat flow multiplies a spectral component at λ by exp(−tλ), giving the bound.
+
+**Wikipedia:** [Selberg's 1/4 conjecture](https://en.wikipedia.org/wiki/Selberg%27s_1/4_conjecture). It says: “Selberg showed that the eigenvalues are at least 3/16.”
+
+**Sources:**
+
+- [Atle Selberg, On the estimation of Fourier coefficients of modular forms (1965).](https://doi.org/10.1090/pspum/008/0182610)
+
+### Odd reflection removes Eisenstein spectrum
+
+**Remember:** Reflection makes the average at the only cusp vanish.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On the modular surface, determinant-one integer matrices identify points z = x+iy of the upper half-plane by fractional linear transformations. Call a square integrable function odd if f(−x+iy) = −f(x+iy) almost everywhere.
+
+**Problem.** On the odd subspace the Laplacian has an orthonormal eigenbasis with finite multiplicities and no finite accumulation of eigenvalues.
+
+**How the definition helps.** Oddness makes the horizontal average vanish at every height where the integral exists. In our own proof, integrate over the period from −½ to ½ and pair x with −x. The surface has just one narrowing end, or cusp, so this average tests the entire cuspidal condition. The Laplacian commutes with reflection, and its spectrum on the cuspidal subspace is discrete.
+
+**Wikipedia:** [Maass wave form](https://en.wikipedia.org/wiki/Maass_wave_form). It says: “A Maass form f is called even, if i(f)=f and odd if i(f)=−f.”
+
+**Sources:**
+
+- [Henryk Iwaniec, Spectral Methods of Automorphic Forms, second edition (2002).](https://doi.org/10.1090/gsm/053)
+
+### Opposite signs remove Kuznetsov diagonals
+
+**Remember:** Opposite nonzero frequencies cannot match on the diagonal.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11F30. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** On the modular surface, pair Fourier modes of frequencies m and −n for positive integers m,n. Use an even test function h analytic in the strip \|Im(t)\| ≤ ½+δ for some δ &gt; 0. Require h to decay there at least as fast as (1+\|t\|) to the power −2−δ.
+
+**Problem.** In the Kuznetsov formula relating Fourier coefficient averages to exponential sums, these pairs have zero diagonal contribution, even when m = n.
+
+**How the definition helps.** Opposite signs forbid equality of the actual frequencies. In our own derivation, the identity transformation contributes the integral of exp(2πi(m+n)x) over one period. That integral vanishes, whereas equal signed frequencies give an integral of one. The Kuznetsov formula evaluates the remaining contributions.
+
+**Paper or page:** [Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity](https://arxiv.org/abs/2208.05613v3). It says: “δ(m,±n) 𝒩±h±”
+
+**Sources:**
+
+- [N. V. Kuznetsov, Petersson’s conjecture for cusp forms of weight zero and Linnik’s conjecture (1981).](https://doi.org/10.1070/SM1981v039n03ABEH001518)
+- [Peter Humphries and Rizwanur Khan, Lᵖ-Norm Bounds for Automorphic Forms via Spectral Reciprocity.](https://arxiv.org/abs/2208.05613v3)
+
+### Resolvent differences have finite traces
+
+**Remember:** Subtract before tracing to cancel the slow spectral tail.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11M36. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On a closed oriented surface of curvature −1, let Δ be the nonnegative Laplacian. For real a &gt; ½ define its shifted inverse R(a) = (Δ − ¼ + a²)⁻¹. For distinct a,b &gt; ½ take D = R(a) − R(b).
+
+**Problem.** The singular values of D have finite sum, so D has a trace. Neither shifted inverse alone has this property. After subtracting the identity contribution in Selberg’s trace formula, the trace equals F(a) − F(b), where F(a) = Z′(½+a)/(2a Z(½+a)).
+
+**How the definition helps.** Subtraction cancels the leading reciprocal eigenvalue term. In our own proof, Weyl’s law makes the nth eigenvalue grow proportionally to n. The individual inverse eigenvalues decay like 1/n, while their differences decay like 1/n². For the trace identity, the Fourier weight of the single inverse at length u is exp(−a\|u\|)/(2a). Selberg’s trace formula then identifies the closed geodesic sum with the logarithmic derivative of Z, Selberg’s product over primitive geodesics.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “The trace formula is also central to the analytic theory of the Selberg zeta function.”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Short Fourier support removes orbit terms
+
+**Remember:** If the weight cannot reach a length, that orbit cannot contribute.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** Let X be a closed oriented surface of curvature −1, and let L be its shortest closed geodesic length. Choose a smooth even function g supported in a compact subset of (−L,L). Define h(r) = ∫ℝ g(u) exp(iru) du.
+
+**Problem.** Write each Laplace eigenvalue as ¼ + r², counting multiplicity. Then ∑ h(r) = area(X)/(4π) times ∫ℝ r h(r) tanh(πr) dr.
+
+**How the definition helps.** The support condition kills every closed geodesic term because each length is at least L. In our own application of Selberg’s trace formula, only the identity contributes. An even weight positive at L would retain the shortest geodesics.
+
+**Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “∑ₙ₌₀∞ h(rₙ) = μ(X)/(4π) ∫₋∞∞ r h(r) tanh(πr) dr + ∑₍{T}₎ log N(T₀)/(N(T)¹ᐟ² − N(T)⁻¹ᐟ²) g(log N(T)).”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Weighted counts control unweighted errors
+
+**Remember:** Count repeats with their primitive length, then remove them.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 11M36. arXiv math.NT, math.SP. Level 3: graduate.
+
+**Definition.** On a closed oriented surface of curvature −1, call a closed geodesic primitive if it makes one circuit. For each oriented primitive geodesic P of length ℓ, set N(P) = exp(ℓ). Count each positive integer m with mℓ ≤ log X using weight ℓ, and sum over P to obtain Ψ(X).
+
+**Problem.** Fix ½ &lt; θ &lt; 1 and suppose Ψ(X) = X + O(X raised to θ). Then the number of primitive P with N(P) ≤ X differs from ∫₂ˣ du/log u by O((X raised to θ)/log X).
+
+**How the definition helps.** The primitive length weight stays the same on every repeat, so one can remove repeats before removing weights. In our own deduction, double circuits contribute O(√X) by the assumed bound on Ψ. Longer repeats contribute O(X¹ᐟ³ log X), since the shortest length bounds the number of possible exponents by O(log X). Partial summation, the sum version of integration by parts, removes the length weight log N(P). The spectral estimate for Ψ is a hypothesis.
+
+**Wikipedia:** [Prime geodesic](https://en.wikipedia.org/wiki/Prime_geodesic). It says: “weighted counting functions analogous to the Chebyshev function”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Zero cusp averages give discrete spectra
+
+**Remember:** Remove the constant Fourier term to remove the continuous part.
+
+*Rules out counterexamples.* MSC 11F72 (Spectral theory; trace formulas (e.g., that of Selberg)), 58J50. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** The modular surface identifies points z = x+iy of the upper half-plane under determinant-one integer matrices acting by fractional linear transformations. A square integrable function belongs to the cuspidal subspace when its periodic lift satisfies ∫₀¹ f(x+iy) dx = 0 for almost every y &gt; 0.
+
+**Problem.** On this subspace the nonnegative Laplacian has an orthonormal eigenbasis. Each eigenvalue has finite multiplicity, and only finitely many lie below any fixed bound.
+
+**How the definition helps.** The zero average removes the horizontally constant mode that can extend far into the narrowing end, called the cusp. In our own proof, the circle Poincaré inequality bounds a zero-average function by its horizontal derivative. With bounded energy, this makes the squared integral above height Y uniformly small as Y grows. Compactness on the remaining bounded region gives discrete spectrum.
+
+**Wikipedia:** [Maass wave form](https://en.wikipedia.org/wiki/Maass_wave_form). It says: “Then Δₖ operates on C(Γ∖ℋ,k) and has a discrete spectrum.”
+
+**Sources:**
+
+- [Henryk Iwaniec, Spectral Methods of Automorphic Forms, second edition (2002).](https://doi.org/10.1090/gsm/053)
 
 ### Cyclotomic determinants detect abelian quotients
 
@@ -2525,6 +3066,42 @@
 
 - [Carl Ludwig Siegel, A Mean Value Theorem in Geometry of Numbers](https://doi.org/10.2307/1969027)
 
+### Character relations locate the orbit
+
+**Remember:** Keep every integer relation satisfied by the step.
+
+*Makes the theorem clean to state or prove.* MSC 11J71 (Distribution modulo one). arXiv math.NT, math.DS. Level 3: graduate.
+
+**Definition.** Fix a step α on the torus ℝᵈ/ℤᵈ, where points differing by an integer vector coincide. Define H by requiring k·x ∈ ℤ for every integer vector k satisfying k·α ∈ ℤ.
+
+**Problem.** The points nα become uniformly distributed on H. Their averages against every continuous function approach its integral under the translation-invariant probability on H.
+
+**How the definition helps.** H specifies where uniform distribution can hold, even when the orbit misses most of the torus (our own). Kronecker’s theorem identifies H with the orbit closure. For each integer k, averaging exp(2πik·nα) gives a geometric sum (our own). Its limit equals one when k·α is integral and zero otherwise (our own). Translation invariance gives the same integrals on H, and trigonometric approximation handles every continuous function (our own).
+
+**nLab:** [Haar integral](https://ncatlab.org/nlab/show/Haar+integral). It says: “there exists a unique such integral, up to a scalar multiple.”
+
+**Wikipedia:** [Kronecker's theorem](https://en.wikipedia.org/wiki/Kronecker%27s_theorem). It says: “the whole Kronecker theorem describes the closure of ⟨P⟩ as the intersection of the kernels”
+
+**Paper or page:** [Metric uniform distribution on analytic curves](https://arxiv.org/abs/2509.06909v1). It says: “Then (xₙ) is uniformly distributed mod 1 if and only if for every non-zero v ∈ ℤᵏ,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniformly separated frequencies give metric equidistribution
+
+**Remember:** For almost every multiplier, separated frequencies spread uniformly.
+
+*Rules out counterexamples.* MSC 11J71 (Distribution modulo one). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Call a real sequence uniformly separated if some g &gt; 0 satisfies \|aₙ − aₘ\| ≥ g whenever n ≠ m.
+
+**Problem.** For almost every real x, the fraction of scaled terms aₙx landing modulo one in each interval approaches its length.
+
+**How the definition helps.** Separation limits how many frequencies can lie near any given frequency (our own). In increasing order, the jth neighbor on either side lies at distance at least jg (our own). Integrating the squared exponential average over a bounded interval then gives O(log N/N) at each nonzero integer frequency (our own). The metric convergence criterion of Davenport, Erdős and LeVeque turns this bound into uniform distribution almost everywhere (our own). Mere distinctness permits aₙ = 1/n, whose multiples converge to zero on the circle (our own).
+
+**Paper or page:** [Metric uniform distribution on analytic curves](https://arxiv.org/abs/2509.06909v1). It says: “Then for almost every x ∈ ℝ the sequence (aₙx) is uniformly distributed modulo 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Powered intervals give approximation dimension
 
 **Remember:** Keep the rational centers and shrink each interval by a power.
@@ -2645,6 +3222,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Continued fraction blocks bound rotation discrepancy
+
+**Remember:** Use return-time blocks so each block contributes only constant count error.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT, math.DS. Level 3: graduate.
+
+**Definition.** For an irrational step α, write N in its Ostrowski expansion, the greedy sum of denominators of successive continued fraction approximations to α. Each denominator occurs at most as many times as the next continued fraction entry. Split the first N rotation steps into consecutive blocks of these lengths.
+
+**Problem.** Suppose the continued fraction entries of α are bounded. For the points x+jα modulo one, the greatest absolute difference between arc frequency and arc length is O(log N/N), uniformly in x.
+
+**How the definition helps.** The expansion selects block lengths for which the Denjoy–Koksma inequality bounds the absolute arc count error by two (our own). An arc indicator has total variation two because it jumps once at each endpoint (our own). The denominators at least double every two steps, and bounded entries bound each multiplicity (our own). Thus O(log N) blocks suffice, and adding their errors gives the result after division by N (our own).
+
+**Paper or page:** [Dynamics of multicritical circle maps](https://arxiv.org/abs/2103.01153v1), [Limit laws of maximal Birkhoff sums for circle rotations via quantum modular forms](https://arxiv.org/abs/2303.07796v1). It says: “Let {qₙ}ₙ∈ℕ be the sequence of return times given by ρ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fourier cutoffs bound arc discrepancy
+
+**Remember:** Bound the sharp arc count from above and below with short Fourier sums.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an arc I of the unit circle, bound its indicator above and below by trigonometric polynomials using frequencies up to M ≥ 1. Selberg’s polynomials have constant terms \|I\| ± 1/(M+1), where \|I\| denotes arc length. At nonzero frequency k their coefficients are O(1/\|k\|).
+
+**Problem.** For a circle probability μ, write μ̂(k) = ∫exp(−2πikx) dμ(x). Its arc discrepancy is the supremum of \|μ(I) − \|I\|\| over arcs I. It is at most C times 1/M + ∑ₖ₌₁ᴹ \|μ̂(k)\|/k, with an absolute constant C.
+
+**How the definition helps.** Integrating the two polynomial bounds traps each arc mass using only finitely many Fourier coefficients (our own). The constant terms supply the length and its O(1/M) error (our own). Constructing bounds that hold at every point while controlling all coefficients is the substantive step (our own).
+
+**Wikipedia:** [Erdős–Turán inequality](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Tur%C3%A1n_inequality). It says: “where the supremum is over all arcs A ⊂ ℝ/ℤ of the unit circle”
+
+**Sources:**
+
+- [P. Erdős and P. Turán, On a problem in the theory of uniform distribution. I (1948)](https://www.dwc.knaw.nl/DL/publications/PU00018587.pdf)
+
+### Square-summed frequencies bound worst arc error
+
+**Remember:** Square the weighted Fourier errors before choosing the cutoff.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a circle probability μ, its kth Fourier coefficient is μ̂(k) = ∫exp(−2πikx) dμ(x). Define A as the square root of ∑ₖ₌₁∞ \|μ̂(k)\|²/k².
+
+**Problem.** For every arc I, the difference between μ(I) and its length has absolute value at most C times A raised to 2/3. The constant C is universal.
+
+**How the definition helps.** The square sum controls every truncated Fourier sum by the same number A (our own). The Erdős–Turán inequality bounds arc error by an absolute constant times 1/M + ∑ₖ₌₁ᴹ \|μ̂(k)\|/k. Cauchy–Schwarz bounds the sum by √M times A (our own). For 0 &lt; A ≤ 1, choosing M near A⁻²⁄³ balances the terms (our own). For A = 0 let M grow, and for A &gt; 1 use the trivial error bound one (our own).
+
+**Wikipedia:** [Erdős–Turán inequality](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Tur%C3%A1n_inequality). It says: “This inequality holds for arbitrary natural numbers m,n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gauss averages give denominator growth
 
 **Remember:** The logarithm turns successive reciprocal tails into a sum.
@@ -2681,6 +3308,250 @@
 
 - [C. Ryll-Nardzewski, On the ergodic theorems (II) (Ergodic theory of continued fractions), Studia Math. 12 (1951) 74–79](https://doi.org/10.4064/sm-12-1-74-79)
 
+### Completion transfers the Weil bound
+
+**Remember:** Fourier modes turn a cut-off inverse phase into complete sums.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For prime p, nonzero b modulo p and unit x, let T(x)=exp(2πibx⁻¹/p), using the inverse modulo p. Set T(0)=0. Replace an interval indicator by its additive Fourier expansion on residues modulo p.
+
+**Problem.** Take an integer a and an interval I containing at most p consecutive integers. The sum of T(x)exp(2πiax/p) over these integers has absolute value at most C√p log(2p) for an absolute constant C.
+
+**How the definition helps.** The Fourier expansion replaces the interval restriction by complete sums over all residues. In our own derivation, each exponential in that expansion changes only the coefficient a. A geometric series bounds the sum of the absolute Fourier coefficients by C log(2p) when the coefficients include the factor 1/p. Weil bounds each complete sum by 2√p when its linear coefficient is nonzero. When that coefficient vanishes, the complete sum equals −1.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “Short Kloosterman sums are defined as trigonometric sums of the form”
+
+**Sources:**
+
+- [André Weil, On Some Exponential Sums (1948)](https://doi.org/10.1073/pnas.34.5.204)
+
+### Grouping modulo pʳ isolates stationary residues
+
+**Remember:** Group modulo the square root of the modulus to make the exponent linear.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let p be an odd prime and r a positive integer. Put Q = pʳ, and take integers a and b coprime to p. Group the invertible residues x modulo Q² by their remainder u modulo Q. Give x the weight exp(2πi(ax+bx⁻¹)/Q²), using its inverse modulo Q².
+
+**Problem.** A class contributes zero unless au² ≡ b modulo Q. Otherwise it contributes Q times the weight of any member.
+
+**How the definition helps.** Grouping modulo Q makes the exponent linear in the index of the lift. In our own derivation, write x = u+Qt with 0 ≤ t &lt; Q and choose an invertible representative u. Modulo Q² its inverse equals u⁻¹−Qtu⁻². Summing over t gives zero unless a−bu⁻² vanishes modulo Q. In that case every member has the same weight.
+
+**Paper or page:** [Subconvexity for GL₂ × GL₂ L-functions in the depth aspect](https://arxiv.org/abs/2502.18727v1). It says: “Then, S(a,b;pⁿ) = 0 if ab ∉ (ℤₚˣ)².”
+
+**Sources:**
+
+- [Tengyou Zhu, Subconvexity for GL₂ × GL₂ L-functions in the depth aspect](https://arxiv.org/abs/2502.18727v1)
+
+### Hyper-Kloosterman transforms are Gauss powers
+
+**Remember:** A character splits the product constraint into one Gauss sum per variable.
+
+*True by definition. Confidence: medium.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a prime p and positive integer r, and write E(x)=exp(2πix/p). Define Kᵣ(a) by summing E(x₁)⋯E(xᵣ) over nonzero residues whose product equals a modulo p. A multiplicative character χ sends nonzero residues to complex numbers of absolute value one and satisfies χ(xy)=χ(x)χ(y). Write G(χ) for the sum of χ(x)E(x) over nonzero residues.
+
+**Problem.** For every multiplicative character χ, summing χ(a)Kᵣ(a) over nonzero residues a gives G(χ)ʳ.
+
+**How the definition helps.** The product constraint lets the character separate the variables. In our own generalization, keep all r variables instead of solving for the last one by division. Summing over a removes the constraint and leaves r independent copies of G(χ). This computes the transform directly. Bounding the original sum at each a requires further cancellation.
+
+**Paper or page:** [The sixth moment of Dirichlet L-functions at the central point](https://arxiv.org/abs/2409.01457v1). It says: “where the hyper-Kloosterman sum”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Joint primitivity prevents oversized sums
+
+**Remember:** Exclude a common factor so the modulus measures the true oscillation.
+
+*Rules out counterexamples.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For integers a,b and q ≥ 2, sum exp(2πi(ax+bx⁻¹)/q) over invertible residues x modulo q. Here x⁻¹ is the inverse modulo q. Write K(a,b;q) for this sum and call the pair jointly primitive when gcd(a,b,q) = 1.
+
+**Problem.** On jointly primitive pairs, \|K(a,b;q)\| ≤ τ(q)√q, where τ counts positive divisors. Without the condition the bound fails, for example when q = 25 and a = b = 0.
+
+**How the definition helps.** Joint primitivity makes the common-divisor factor in the general estimate equal to one. In our own example with q = 25 and a = b = 0, all 20 terms equal one. The proposed upper bound would be 3√25 = 15. The general estimate uses Weil’s prime-modulus bound and separate estimates for prime powers.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “\|K(a,b;m)\| ≤ τ(m) √gcd(a,b,m) √m.”
+
+**Sources:**
+
+- [André Weil, On Some Exponential Sums (1948)](https://doi.org/10.1073/pnas.34.5.204)
+
+### Smooth weights suppress distant frequencies
+
+**Remember:** Smooth weights let repeated integration by parts remove distant frequencies.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a prime p, an integer b coprime to p and a real N ≥ 1. Put K(n)=exp(2πibn⁻¹/p) for n invertible modulo p and K(n)=0 otherwise. Weight each integer n by W(n/N), where W is infinitely differentiable and vanishes outside a bounded interval. Define K̂(h)=∑ₓK(x)exp(2πihx/p) over residues and Ŵ(t)=∫ W(x)exp(−2πitx) dx over the real line.
+
+**Problem.** Summing K(n)W(n/N) over all integers gives (N/p)∑ₕ K̂(h)Ŵ(Nh/p), with h over all integers. For H ≥ max(1,p/N), the terms with \|h\| &gt; H contribute at most C√p (p/(NH))ᴬ in absolute value. For each A &gt; 0 the constant depends only on A and W.
+
+**How the definition helps.** Smoothness makes the transformed weight decrease faster than any fixed inverse power of frequency. Our own two-sided formula applies Poisson summation on each residue class. Repeated integration by parts bounds Ŵ, while Weil’s estimate gives \|K̂(h)\| ≤ 2√p. Summing those bounds gives the tail estimate.
+
+**Paper or page:** [On a Finite Field Analogue of van der Corput Differencing](https://arxiv.org/abs/2312.02525v1). It says: “any even smooth function V compactly supported on ℝ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponent pairs interpolate
+
+**Remember:** Interpolate two uniform bounds by taking their weighted geometric mean.
+
+*Makes the theorem clean to state or prove.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix s &gt; 0, N ≥ 1 and T ≥ Nˢ, and set Y=T/Nˢ. For 0 ≤ k ≤ ½ ≤ l ≤ 1, choose a positive derivative count R and relative tolerance δ ∈ (0,1). On \[N,2N\], require f′ and its derivatives through order R−1 to approximate their counterparts for T/xˢ within relative error δ. Call (k,l) an exponent pair if such choices bound every sum of exp(2πif(n)) on integer subintervals by CYᵏNˡ, uniformly in N,T,f.
+
+**Problem.** The constant C can depend on k,l,s, and the definition requires the bound for every s &gt; 0. Every convex combination of two exponent pairs is an exponent pair.
+
+**How the definition helps.** Recording the two powers as coordinates turns interpolation between estimates into a line segment. In our own derivation, take the larger derivative order and the smaller error tolerance. Both estimates then apply, so their weighted geometric mean gives the claimed powers. Proving the initial estimates takes the analytic work.
+
+**Wikipedia:** [Van der Corput's method](https://en.wikipedia.org/wiki/Van_der_Corput%27s_method). It says: “The set of exponents pairs is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Monotone slopes prevent coherent repetition
+
+**Remember:** Stay away from integer slopes and do not repeatedly retrace the same slopes.
+
+*Rules out counterexamples.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be a continuously differentiable real function on a bounded interval I. Require f′ to be monotone and to stay at least λ &gt; 0 away from every integer throughout I.
+
+**Problem.** The sum of exp(2πif(n)) over integers n in a bounded I is O(1/λ), with an absolute constant. Without monotonicity this bound can fail even with λ = 3/8.
+
+**How the definition helps.** Monotonicity keeps successive phase increments in order, which controls the error in summation by parts. In our own proof, the increments stay inside one gap between integers, at least λ from either endpoint. The total variation of 1/(exp(2πit)−1) across that gap is bounded by a constant times 1/λ. Our own counterexample uses f(t)=t/2+cos(πt)/(8π). Its derivative stays in \[3/8,5/8\]. Each pair of consecutive integers starting at an even integer contributes 2i sin(1/4), so the sum grows with the interval.
+
+**Paper or page:** [On Sárközy's theorem for shifted primes](https://arxiv.org/abs/2206.08001v3). It says: “Let f : I → ℝ be continuously differentiable such that f′ is monotonic and ∥f′(t)∥ ≥ λ on I.”
+
+**Sources:**
+
+- [Hugh L. Montgomery and Robert C. Vaughan, Multiplicative Number Theory II, Theorem 16.5](https://personal.science.psu.edu/rcv4/571s25/montgomery-vaughanII.pdf)
+
+### Separated phases factor major arcs
+
+**Remember:** Residue classes handle the rational phase and the integral handles the drift.
+
+*Makes the theorem clean to state or prove.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix positive integers k, N and q, and integers a₁,…,aₖ with gcd(q,a₁,…,aₖ) = 1. Write the real polynomial phase as A(x)/q+B(x), where A(x)=∑ⱼaⱼxʲ and B(x)=∑ⱼβⱼxʲ for 1 ≤ j ≤ k. Let C be the mean of exp(2πiA(x)/q) over residues modulo q. Let I be the integral of exp(2πiB(x)) from 0 to N.
+
+**Problem.** The sum of exp(2πi∑ (aⱼ/q+βⱼ)nʲ) over 1 ≤ n ≤ N equals CI plus an error. The error is O(q(1+∑ \|βⱼ\|Nʲ)), with a constant depending only on k.
+
+**How the definition helps.** The two factors separate the periodic part from the slowly varying part. In our own proof, group integers by their residues modulo q. On each group the periodic part is constant. Comparing the remaining sum with its integral costs at most a constant times one plus the integral of the absolute derivative. Summing these errors gives the stated bound.
+
+**Paper or page:** [Lᵖ maximal estimates for Weyl sums with k ≥ 3 on 𝕋](https://arxiv.org/abs/2408.15527v1). It says: “S<sub>k</sub>(\\bm {u},N) = q<sup>-1</sup>S<sub>k</sub>(q<sup>-1</sup>\\bm {r};q)I(\\bm {\\xi }) + \\Delta .”
+
+**Sources:**
+
+- [Xuezhi Chen, Changxing Miao, Jiye Yuan, Tengfei Zhao, Lᵖ maximal estimates for Weyl sums with k ≥ 3 on 𝕋](https://arxiv.org/abs/2408.15527v1)
+
+### Vinogradov moments count power sums
+
+**Remember:** Each integral keeps just the tuples with equal sums of powers.
+
+*True by definition.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix positive integers k, N and s. For α in the unit k-dimensional cube, let F(α) sum exp(2πi∑ⱼαⱼnʲ) over integers 1 ≤ n ≤ N. The inner sum runs from j = 1 to k. Define the mean value as the integral of \|F(α)\|²ˢ over the cube.
+
+**Problem.** The mean value counts ordered pairs of lists, each containing s integers from 1 through N. The lists must have equal sums of jth powers for every j from 1 through k.
+
+**How the definition helps.** Integrating one coefficient per power tests all the equations at once. Our own specialization of the lemma uses the points (n,n²,…,nᵏ). Expand the integrand to get one term per pair of lists. Each coordinate integral gives zero for unequal power sums and one for equal sums. Estimating the resulting integral supplies the difficult counting bound.
+
+**Paper or page:** [Decoupling estimates in Fourier analysis](https://arxiv.org/abs/2207.00652v1). It says: “For any finite set A ⊂ ℤᵈ, ∫<sub>\[0,1\]<sup>d</sub></sup> \|f<sub>A</sub>(x)\|<sup>2s</sup> dx = E<sub>s</sub>(A).”
+
+**Sources:**
+
+- [Jean Bourgain, Ciprian Demeter and Larry Guth, Proof of the main conjecture in Vinogradov’s Mean Value Theorem for degrees higher than three (2016)](https://doi.org/10.4007/annals.2016.184.2.7)
+
+### Reciprocal roots bound polynomial prime sums
+
+**Remember:** The logarithmic derivative turns the prime sum into a power sum.
+
+*Makes the theorem clean to state or prove.* MSC 11L20 (Sums over primes), 11T23. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let χ be a nonprincipal Dirichlet character on 𝔽𝓆\[T\], extended by zero on polynomials sharing a factor with its modulus. Form L(u,χ) by summing χ(f) times u raised to deg f over monic polynomials. Define Λ(Pʲ) = deg P for monic irreducible P and j ≥ 1. Set Λ(f) = 0 otherwise.
+
+**Problem.** Let d be the degree of L(u,χ). For n ≥ 1, the sum of Λ(f)χ(f) over degree-n monic polynomials has modulus at most d√(qⁿ).
+
+**How the definition helps.** The degree weight makes every prime power contribute exactly its coefficient in the logarithmic derivative of the Euler product. Our own calculation factors L into terms 1 − γu. The degree-n coefficient of uL′/L is then minus the sum of the nth powers of the reciprocal roots γ. Weil’s theorem bounds each \|γ\| by √q.
+
+**Paper or page:** [Equidistribution of high traces of random matrices over finite fields and cancellation in character sums of high conductor](https://arxiv.org/abs/2307.01344). It says: “we have \|γᵢ\| ∈ {1, √q} for all 1 ≤ i ≤ d(χ).”
+
+**Sources:**
+
+- [Equidistribution of high traces of random matrices over finite fields and cancellation in character sums of high conductor](https://arxiv.org/abs/2307.01344)
+
+### Conductors isolate primitive correlations
+
+**Remember:** Assign each character to the first modulus where it appears.
+
+*Makes the theorem clean to state or prove.* MSC 11L40 (Estimates on character sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix positive integers q,n,m with n and m coprime to q. A character’s conductor is the least divisor from which its values on invertible residues come. Call a character modulo q primitive if its conductor equals q. Let C(q) sum χ(n) times the complex conjugate of χ(m) over primitive characters modulo q.
+
+**Problem.** Sum μ(q/d)φ(d) over divisors d of q for which n ≡ m modulo d. The result equals C(q), where φ(d) counts invertible residues modulo d. Here μ vanishes on multiples of prime squares and otherwise equals −1 raised to the number of distinct prime factors.
+
+**How the definition helps.** Grouping characters by conductor writes the full character sum as a sum of primitive contributions over divisors. In our own derivation, every character comes from exactly one primitive character. Orthogonality makes the full sum modulo d equal φ(d) when the residues agree and zero otherwise. Möbius inversion recovers the contribution at conductor q. The quoted lemma instead splits the primitive sum by parity.
+
+**Paper or page:** [Bounds for moments of Dirichlet L-functions to a fixed modulus](https://arxiv.org/abs/2103.00149). It says: “the sum over non-trivial primitive even (respectively odd) characters modulo q.”
+
+**Sources:**
+
+- [Peng Gao, Bounds for moments of Dirichlet L-functions to a fixed modulus](https://arxiv.org/abs/2103.00149)
+
+### Balanced cutoffs shorten sums
+
+**Remember:** Split the length evenly between the two reflected sums.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** For large positive t, choose the same cutoff m = ⌊√(t/(2π))⌋ in both sums that approximate ζ(½ + it). Define θ(t) = Im log Γ(¼ + it/2) − (t/2)log π. Choose the continuous logarithm of the gamma function that is real at t = 0.
+
+**Problem.** Let C(t) sum cos(θ(t) − t log n)/√n for 1 ≤ n ≤ m. Then exp(iθ(t))ζ(½ + it) = 2C(t) + O(t⁻¹⁄⁴) as t tends to infinity.
+
+**How the definition helps.** Equal cutoffs pair terms with the same index, and multiplication by exp(iθ(t)) makes each pair complex conjugates (our own). Each pair therefore contributes twice a cosine divided by √n (our own). The approximate functional equation gives the stated error (our own).
+
+**Wikipedia:** [Riemann–Siegel formula](https://en.wikipedia.org/wiki/Riemann%E2%80%93Siegel_formula). It says: “an approximation of the zeta function by a sum of two finite Dirichlet series.”
+
+**Sources:**
+
+- [C. L. Siegel, Über Riemanns Nachlaß zur analytischen Zahlentheorie (1932), collected edition](https://doi.org/10.1007/978-3-662-28697-5_18)
+
+### Integrating the prime count makes the zero sum converge absolutely
+
+**Remember:** One integration gives each distant zero a second denominator.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Let ψ(x) sum log p over prime powers pᵏ ≤ x, with k ≥ 1. Define A(x) = ∫₁ˣ ψ(u) du. Write ζ for the Riemann zeta function and ρ for a zero with 0 &lt; Re ρ &lt; 1.
+
+**Problem.** For x &gt; 1, A(x) equals x²/2 − x log(2π) + ζ′(−1)/ζ(−1) minus two absolutely convergent sums. The first sums exp((ρ + 1) log x)/(ρ(ρ + 1)) over nontrivial zeros with multiplicity. The second sums exp((1 − 2k) log x)/(2k(2k − 1)) over integers k ≥ 1.
+
+**How the definition helps.** Integration gives each zero a second denominator, so the sum no longer depends on the order of its terms (our own). For fixed x, each term is O(1/\|ρ\|²) as \|ρ\| grows (our own). The count of zeros up to height T is O(T log T), which gives absolute convergence (our own). Moving the integration path past the poles gives the formula and requires bounds for ζ′/ζ on that path (our own).
+
+**Wikipedia:** [Explicit formulae for L-functions](https://en.wikipedia.org/wiki/Explicit_formulae_for_L-functions). It says: “This series is also conditionally convergent”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic time enables Wiener–Ikehara
+
+**Remember:** Logarithmic time places each prime power at its logarithm.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Use A(y) = ψ(exp y) instead of the unweighted prime count. Here ψ(x) sums log p over prime powers pᵏ ≤ x, so A is nondecreasing.
+
+**Problem.** If the Riemann zeta function ζ has no zeros on Re s = 1, then ψ(x)/x tends to 1. Consequently π(x), the number of primes up to x, is asymptotic to x/log x.
+
+**How the definition helps.** Measuring size by its logarithm turns the weighted count into a nondecreasing function with a known Laplace transform (our own). This transform integrates A(y) against exp(−sy) and equals −ζ′(s)/(sζ(s)) for Re s &gt; 1 (our own). Subtracting 1/(s − 1) leaves a function analytic near every point of Re s = 1 (our own). The Wiener–Ikehara theorem now gives A(y)/exp(y) → 1 (our own). Removing higher prime powers and applying partial summation gives the claim for primes (our own).
+
+**nLab:** [proof of the prime number theorem](https://ncatlab.org/nlab/show/proof+of+the+prime+number+theorem). It says: “The asymptotic statement θ(x) ∼ x implies the prime number theorem.”
+
+**Wikipedia:** [Wiener–Ikehara theorem](https://en.wikipedia.org/wiki/Wiener%E2%80%93Ikehara_theorem). It says: “Let A(x) be a non-negative, monotonic nondecreasing function of x, defined for 0 ≤ x &lt; ∞.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Matching parity prevents cancellation in theta series
 
 **Remember:** For an odd character, multiply by n so opposite integers add.
@@ -2694,6 +3565,24 @@
 **How the definition helps.** The extra factor makes the terms at n and −n agree instead of canceling (our own). Integrating the Gaussian term gives Γ((s+a)/2) and leaves the factor exp(−s log n) (our own). The integration is justified by absolute convergence for Re s &gt; 1 (our own). Beyond that region, the work moves to the theta transformation from Poisson summation (our own).
 
 **nLab:** [Dirichlet theta function](https://ncatlab.org/nlab/show/Dirichlet+theta+function). It says: “The Mellin transform of this is the completed Dirichlet L-function associated with χ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mellin weights remove jump terms
+
+**Remember:** Smooth weights damp the high zeros without choosing an order.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Replace the cutoff n ≤ x with a smooth weight w that vanishes outside a closed, bounded interval inside (1, ∞). Define its Mellin transform by W(s) = ∫₁∞ w(u) exp((s − 1) log u) du. Let Λ(n) equal log p at prime powers pᵏ and zero otherwise. Write ρ for a zero of the Riemann zeta function with 0 &lt; Re ρ &lt; 1.
+
+**Problem.** The sum of Λ(n)w(n) over integers n ≥ 1 equals W(1) − ∑ρ W(ρ) − ∑ₖ W(−2k). The first sum on the right counts nontrivial zeros with multiplicity, and the second uses integers k ≥ 1. Both converge absolutely.
+
+**How the definition helps.** A smooth weight replaces the jump at the cutoff and makes the sum over zeros converge absolutely (our own). Repeated integration by parts makes W decay faster than any inverse power of height on each vertical line (our own). Inverting the transform gives an integral involving −ζ′/ζ (our own). Bounds between zeros allow the integration path to move left, where the poles give the three terms (our own).
+
+**nLab:** [Mellin transform](https://ncatlab.org/nlab/show/Mellin+transform). It says: “its Mellin transform is the function given by the integral expression”
+
+**Wikipedia:** [Explicit formulae for L-functions](https://en.wikipedia.org/wiki/Explicit_formulae_for_L-functions). It says: “F is a smooth function all of whose derivatives are rapidly decreasing”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2732,6 +3621,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Shifted kernels cancel opposite poles
+
+**Remember:** Combine the shifted terms before letting the shifts meet.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write ζ for the Riemann zeta function and Γ for the gamma function. Put X(s) = exp((s−½)log π)Γ((1−s)/2)/Γ(s/2). For real t, set s = ½+it. Near z = 0, combine the shifted terms as K(z,t) = ζ(1+z) + X(s+z)X(1−s)ζ(1−z).
+
+**Problem.** For real t the singularity of K at z = 0 is removable. Its value there is 2γ − X′(s)/X(s), with γ Euler’s constant.
+
+**How the definition helps.** Combining the terms lets their opposite residues cancel before the shifts coincide. Our own calculation uses X(s)X(1−s) = 1 and ζ(1+z) = 1/z + γ + O(z). Expanding X(s+z) to first order gives the stated finite value. The cited theorem identifies the combined expression as the main term in a shifted second moment.
+
+**Paper or page:** [Shifted second moment of the Riemann zeta function and a Fourier type kernel](https://arxiv.org/abs/2408.04247). It says: “ζ(1+a−b) + ψ(a,b,t)ζ(1+b−a)”
+
+**Sources:**
+
+- [Parikshit Dutta, Debashis Ghoshal, Krishnan Rajkumar, Shifted second moment of the Riemann zeta function and a Fourier type kernel](https://arxiv.org/abs/2408.04247)
+
+### Subtraction isolates prime zeta singularities
+
+**Remember:** Removing the first prime power leaves a convergent remainder.
+
+*True by definition.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Let P(s) sum exp(−s log p) over primes for Re s &gt; 1. Use the decomposition P(s) = log ζ(s) + R(s), where R(s) is defined by subtracting log ζ(s) in that half-plane. Choose the logarithm via the Euler product.
+
+**Problem.** The remainder R extends holomorphically to Re s &gt; ½. There P continues along paths avoiding the zeros and pole of ζ, with the same local logarithmic singularities as log ζ.
+
+**How the definition helps.** Subtracting log ζ cancels every first power in the sum over primes (our own). The logarithm of the Euler product, the product expansion over primes, gives the remaining terms (our own). All have exponent at least two, so their series converges absolutely and locally uniformly for Re s &gt; ½ (our own). This continues the difference beyond the original domain of the series over primes (our own).
+
+**Wikipedia:** [Prime zeta function](https://en.wikipedia.org/wiki/Prime_zeta_function). It says: “with an infinite number of logarithmic singularities”
+
+**Sources:**
+
+- [C.-E. Fröberg, On the prime zeta function (1968)](https://doi.org/10.1007/BF01933420)
+
 ### The Riemann xi function is built to be entire and symmetric
 
 **Remember:** Multiply zeta by its missing factors, and it becomes symmetric and entire.
@@ -2768,6 +3693,186 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A zeta quotient isolates quadratic zeros
+
+**Remember:** Divide out rational zeta to see the quadratic character.
+
+*True by definition.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a quadratic number field K of discriminant D, start with its zeta function ζᴷ. It sums inverse powers of ideal norms, the indices of nonzero integral ideals, where the series converges. Use the quotient ζᴷ(s)/ζ(s), where ζ is the Riemann zeta function, and continue it analytically.
+
+**Problem.** On the real interval 0 &lt; s &lt; 1, ζᴷ and L(s,χᴰ) have exactly the same zeros with the same multiplicities. Here χᴰ denotes the primitive quadratic character attached to D.
+
+**How the definition helps.** Dividing out ζ isolates the character factor throughout the interval. The quadratic factorization identifies the quotient with L(s,χᴰ) by matching the prime factors of the two series. Our own check uses the alternating series for ζ to show ζ(s) &lt; 0 for 0 &lt; s &lt; 1. Multiplication by this nonzero factor preserves every zero and its multiplicity.
+
+**Wikipedia:** [Siegel zero](https://en.wikipedia.org/wiki/Siegel_zero). It says: “ζℚ(√D)(s) = ζ(s) L(s,χᴰ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Euler factors preserve Siegel bounds
+
+**Remember:** Bound the primitive value first and put back the missing factors.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let χ modulo q take both signs on invertible residues and vanish elsewhere. Its inducing primitive character χ∗ has the smallest modulus determining those signs. Divide L(1,χ) by the product of 1−χ∗(p)/p over primes dividing q.
+
+**Problem.** For every ε &gt; 0 there is a constant c(ε) &gt; 0. For all such χ, including imprimitive ones, L(1,χ) ≥ c(ε) exp(−ε log q).
+
+**How the definition helps.** Division recovers the primitive L-value, where Siegel’s theorem applies directly. Our own estimate restores the factors using 1−χ∗(p)/p ≥ 1−1/p. Their product is at least φ(q)/q, the proportion of invertible residues. For each ε &gt; 0 this proportion exceeds a positive constant depending on ε times exp(−ε log q/2). Applying Siegel’s theorem with exponent ε/2 contributes the other half of the exponent.
+
+**Wikipedia:** [Dirichlet L-function](https://en.wikipedia.org/wiki/Dirichlet_L-function). It says: “multiplied by only a finite number of factors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic subtraction computes L-values
+
+**Remember:** Subtract the same harmonic tail from each residue class.
+
+*True by definition.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M35. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For 0 &lt; u ≤ 1 define H(u) by summing 1/(m+u) − 1/(m+1) over integers m ≥ 0. Every residue class uses the same reference term 1/(m+1).
+
+**Problem.** Let χ be a Dirichlet character modulo q whose values on invertible residues are not all one. Then L(1,χ) = (1/q) ∑ χ(a)H(a/q), summing over 1 ≤ a ≤ q. Also H(u) = −Γ′(u)/Γ(u) − γ, where Γ is Euler’s gamma function and γ is Euler’s constant.
+
+**How the definition helps.** Subtracting the common term makes each residue sum converge separately. Without subtraction each sum diverges like the harmonic series. In our own derivation, summing complete blocks of q terms recovers the original series because the character values sum to zero. Differentiating the logarithm of Euler’s product for Γ gives the displayed formula for H.
+
+**Wikipedia:** [Dirichlet L-function](https://en.wikipedia.org/wiki/Dirichlet_L-function). It says: “linear combinations of the Hurwitz zeta function at rational values.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic gaps simplify zero repulsion
+
+**Remember:** The logarithm of the reciprocal gap measures repulsion.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M26. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A quadratic Dirichlet character χ gives multiplicative signs on invertible residues modulo q and vanishes elsewhere. Fix q ≥ 3 and a height T ≥ 2. Measure a zero’s horizontal distance from one in units of 1/log(qT). For a real zero β of L(s,χ), its distance in these units is δ = (1−β) log(qT).
+
+**Problem.** There are computable absolute constants c,c′ &gt; 0 with c &lt; 1. If 0 &lt; δ &lt; c, every other zero σ+it with \|t\| ≤ T satisfies (1−σ) log(qT) ≥ c′ log(1/δ). This covers the L-functions of all characters modulo q.
+
+**How the definition helps.** Using the same unit for both distances makes the gain a single logarithm. Our own rewriting expresses Theorem 3 in these units. The Deuring–Heilbronn theorem supplies the bound on the other zeros.
+
+**Paper or page:** [Condtional Bounds on Siegel Zeros](https://arxiv.org/abs/2010.01308). It says: “the product over all characters of modulus q including the exceptional one, has no other zero in the domain”
+
+**Sources:**
+
+- [D. R. Heath-Brown, Zero-free regions for Dirichlet L-functions, and the least prime in an arithmetic progression (1992)](https://doi.org/10.1112/plms/s3-64.2.265)
+
+### Odd parity gives class numbers
+
+**Remember:** For an odd quadratic character, the first residue moment gives the class number.
+
+*Rules out counterexamples.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R29. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a prime q &gt; 3 with q ≡ 3 modulo 4, let χ(a) be 1 on nonzero squares and −1 on nonsquares modulo q. Set χ(a) = 0 on multiples of q. Its first moment is the finite sum of aχ(a) over 1 ≤ a &lt; q. The character is odd, meaning χ(−1) = −1.
+
+**Problem.** The number of ideal classes of ℚ(√(−q)) equals −1/q times this first moment.
+
+**How the definition helps.** Odd parity makes the first moment measure the nonzero value L(0,χ). Our own derivation uses L(0,χ) = −∑ aχ(a)/q and the functional equation L(1,χ) = πL(0,χ)/√q. The class number formula then gives the result. For the quadratic character modulo 5, pairing a with 5−a makes the first moment zero, although L(1,χ) is positive.
+
+**Wikipedia:** [Class number formula](https://en.wikipedia.org/wiki/Class_number_formula). It says: “Dirichlet also showed that the L-series can be written in a finite form”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One quadratic factor controls abelian exceptions
+
+**Remember:** A quadratic factor can recur in many fields without becoming many exceptions.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R42. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Group the zeta factors of abelian number fields by primitive character, the character written with its smallest possible modulus. An abelian number field is a finite Galois extension of ℚ with commutative Galois group. Fix Q ≥ 10 and take fields with absolute discriminant at most Q.
+
+**Problem.** For some absolute c &gt; 0, suppose a field in this family has a real zeta zero β with 1−c/log Q &lt; β &lt; 1. Exactly one quadratic field F supplies this zero. The fields in the family whose zeta functions vanish at β are precisely those containing F.
+
+**How the definition helps.** Grouping identical factors lets one zero-free region control the entire family of fields. In our own deduction the conductor–discriminant formula bounds every primitive modulus by Q. Proposition 6.2 leaves at most one exceptional factor, from a quadratic character. The factorization of an abelian field’s zeta function includes that character exactly when the field contains its quadratic subfield. These two theorems give both directions of the claim.
+
+**Paper or page:** [An explicit version of Bombieri's log-free density estimate and Sárközy's theorem for shifted primes](https://arxiv.org/abs/2208.11123). It says: “there exists a unique primitive quadratic character χ∗ (mod q∗) with q∗ ≤ Q”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regulators normalize Siegel’s class bounds
+
+**Remember:** Use the regulator and roots of unity before comparing class numbers.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R29. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a quadratic field K with discriminant D, let A(K) be the residue of its zeta function at one. This is the coefficient of 1/(s−1) in its expansion there. Write h for the number of ideal classes and w for the number of roots of unity in K. For real K, let R be the logarithm of the smallest unit greater than one in a fixed real embedding.
+
+**Problem.** For every ε &gt; 0 some c(ε) &gt; 0 satisfies A(K) ≥ c(ε) exp(−ε log ∣D∣) for all quadratic fields K.
+
+**How the definition helps.** The residue puts real and imaginary quadratic fields under one bound. The class number formula gives A(K) = 4Rh/(w√\|D\|) for real K and A(K) = 2πh/(w√\|D\|) for imaginary K. Our own conversion uses the factorization of the field’s zeta function into the Riemann zeta function and a quadratic Dirichlet L-function. The former has residue one, so A(K) equals the latter’s value at one. Siegel’s theorem supplies the lower bound.
+
+**nLab:** [class number formula](https://ncatlab.org/nlab/show/class+number+formula). It says: “is proportional the product of the regulator with the class number of K”
+
+**Sources:**
+
+- [C. L. Siegel, Über die Classenzahl quadratischer Zahlkörper (1935)](https://doi.org/10.4064/aa-1-1-83-86)
+
+### Removing the exceptional factor bounds derivatives
+
+**Remember:** Remove the exceptional zero before taking the logarithmic derivative.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let χ be a real Dirichlet character of smallest possible modulus q that takes both signs on invertible residues. Fix a sufficiently small absolute c &gt; 0 from the classical zero-free region. If L(s,χ) has a real zero β &gt; 1−c/log q, put F(s) = L(s,χ)/(s−β), using the limiting value at β. Otherwise put F(s) = L(s,χ).
+
+**Problem.** There is an absolute constant C such that \|F′(1)/F(1)\| ≤ C log q. When β exists, L′(1,χ)/L(1,χ) equals 1/(1−β) plus F′(1)/F(1).
+
+**How the definition helps.** Dividing out the simple zero removes its entire contribution to the logarithmic derivative. Our own deduction uses the formula expressing the real part of L′/L as a sum over zeros plus explicit terms. The classical zero-free region lets us compare each remaining zero’s contribution at one with its contribution at 1+1/log q. The product over primes bounds the derivative at that second point. These analytic estimates supply the uniform error bound.
+
+**Wikipedia:** [Siegel zero](https://en.wikipedia.org/wiki/Siegel_zero). It says: “classical estimates for the number of non-trivial zeros”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two quadratic zeros share one pole
+
+**Remember:** Put two candidate zeros into a product with just one pole.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A quadratic character is a multiplicative sign on invertible residues, extended by zero elsewhere. It is primitive if no smaller divisor of its modulus determines those signs. For distinct primitive quadratic characters χ₁ and χ₂, form F(s) = ζ(s)L(s,χ₁)L(s,χ₂)L(s,χ₁χ₂). Here ζ is the Riemann zeta function, and the last character multiplies the two values at each integer.
+
+**Problem.** Let β₁ and β₂ be real zeros in (0,1) of the respective L-functions, with moduli q₁ and q₂. Then max(1−β₁,1−β₂) ≥ c/log(q₁q₂) for an absolute c &gt; 0.
+
+**How the definition helps.** The product puts both zeros against a single pole at one. In our own explanation, distinct primitive characters give a product character that takes some negative values on invertible residues. Its L-function adds no pole. At each prime power n, the coefficient in −F′/F contains the nonnegative factor (1+χ₁(n))(1+χ₂(n)). The analytic estimate relating this derivative to the zeros does the remaining work.
+
+**Paper or page:** [Condtional Bounds on Siegel Zeros](https://arxiv.org/abs/2010.01308). It says: “then it is real and associated to a unique, quadratic χ mod q.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuous angles count zeros
+
+**Remember:** Follow the turn instead of resetting the angle.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Let T &gt; 0 avoid the imaginary parts of nontrivial zeta zeros. Start with argument zero at ζ(2). Vary the argument continuously as s follows the straight segments from 2 to 2 + iT and then to ½ + iT. Call the final argument divided by π the function S(T).
+
+**Problem.** Count each Riemann zeta zero ρ with 0 &lt; Im ρ &lt; T according to its multiplicity. The count equals 1 + θ(T)/π + S(T), where θ(T) = Im log Γ(¼ + iT/2) − (T/2)log π. Use the continuous logarithm of the gamma function Γ that is real at T = 0.
+
+**How the definition helps.** Following the angle continuously records every full turn along the path (our own). The argument principle counts zeros by the total turn around a closed boundary (our own). The symmetry of the completed zeta function reduces this count to the stated path and the explicit gamma term (our own).
+
+**Wikipedia:** [Riemann–Siegel theta function](https://en.wikipedia.org/wiki/Riemann%E2%80%93Siegel_theta_function). It says: “the argument is chosen in such a way that a continuous function is obtained”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cosine gaps exclude zeros
+
+**Remember:** The first cosine must outweigh the constant term.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Use a cosine polynomial P(u) = ∑ from j = 0 to m of aⱼ cos(ju) that stays nonnegative on ℝ. Require aⱼ ≥ 0 and a₁ &gt; a₀ &gt; 0. For example, P(u) = (1 + cos u)² has a₁ = 2 and a₀ = 3/2.
+
+**Problem.** For each such P there is a constant c &gt; 0. If \|t\| ≥ 2 and σ ≥ 1 − c/log \|t\|, then ζ(σ + it) is nonzero.
+
+**How the definition helps.** Nonnegativity turns the series over prime powers into a nonnegative weighted sum of logarithmic derivatives (our own). Consider a possible zero β + it and take σ &gt; 1 (our own). Expanding those derivatives in terms of zeros gives a₁/(σ − β) ≤ a₀/(σ − 1) + O(log \|t\|) (our own). Nonnegative coefficients allow the other zeros to be discarded in this upper bound (our own). Choose σ − 1 to be a sufficiently small positive multiple of 1/log \|t\| (our own). Since a₁ &gt; a₀, the inequality forces 1 − β ≥ c/log \|t\| for some c &gt; 0 (our own).
+
+**Paper or page:** [Optimal Cosine Polynomials for Riemann Zeta Zero-Free Region](https://arxiv.org/abs/2411.01385). It says: “Historically, E. Landau used a particular type of non-negative cosine polynomial to construct this region.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fourth powers exclude boundary zeros
 
 **Remember:** A boundary zero would make a nonnegative sum have a negative limit.
@@ -2784,6 +3889,77 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gram signs certify zeros
+
+**Remember:** Test the endpoint signs before trusting a Gram interval.
+
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Define θ(t) = Im log Γ(¼ + it/2) − (t/2)log π using the continuous logarithm real at t = 0. On its increasing branch, choose successive points g and h where θ takes the values nπ and (n + 1)π. These are Gram points. Retain (g,h) when the Riemann zeta function is positive at both ½ + ig and ½ + ih.
+
+**Problem.** Every retained interval has a zero ½ + it with g &lt; t &lt; h. The test gives no guarantee about a rejected interval or uniqueness in a retained interval.
+
+**How the definition helps.** At successive Gram points, the factors exp(iθ(t)) have opposite signs. The functional equation makes Z(t) = exp(iθ(t))ζ(½ + it) real for every real t (our own). Positive endpoint values of ζ therefore give opposite signs for Z. Continuity forces an interior zero.
+
+**Wikipedia:** [Riemann–Siegel theta function](https://en.wikipedia.org/wiki/Riemann%E2%80%93Siegel_theta_function). It says: “and if this is positive at two successive Gram points, Z(t) must have a zero in the interval.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrated gaps certify completeness
+
+**Remember:** A missed zero leaves a gap throughout the later count.
+
+*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let N(t) count Riemann zeta zeros with heights in (0,t\], repeating each zero according to its multiplicity. Let M(t) count the verified occurrences in one fixed subset, and put D(t) = N(t) − M(t). Set S(t) = N(t) − 1 − θ(t)/π, where θ(t) = Im log Γ(¼ + it/2) − (t/2)log π. Choose the continuous logarithm of the gamma function Γ that is real at t = 0.
+
+**Problem.** Let 0 &lt; A &lt; B, and let U bound the integral of S over \[A, B\] from above. Let V be the integral of 1 + θ(t)/π − M(t) over that interval. If U + V &lt; B − A, then M(A) = N(A).
+
+**How the definition helps.** Counting all missed zeros cumulatively turns an omission by A into a discrepancy lasting throughout \[A, B\] (our own). Its integral is then at least B − A, even if every later zero is found (our own). By definition that integral is at most U + V (our own). Turing’s method supplies the difficult bound U for the integral of S (our own).
+
+**Wikipedia:** [Turing's method](https://en.wikipedia.org/wiki/Turing%27s_method). It says: “It was discovered by Alan Turing and published in 1953”
+
+**Sources:**
+
+- [A. M. Turing, Some Calculations of the Riemann Zeta-Function (1953)](https://doi.org/10.1112/plms/s3-3.1.99)
+- [R. S. Lehman, On the Distribution of Zeros of the Riemann Zeta-Function (1970)](https://doi.org/10.1112/plms/s3-20.2.303)
+
+### Paired zeros cancel exponentials
+
+**Remember:** Center the function and pair the opposite zeros.
+
+*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Let ζ denote the Riemann zeta function and Γ the gamma function. Set ξ(s) = s(s − 1) exp(−s(log π)/2)Γ(s/2)ζ(s)/2. Center ξ by setting Ξ(z) = ξ(½ + z). Its zeros occur in pairs a and −a, and ζ(½) ≠ 0 by the alternating series for zeta.
+
+**Problem.** For every z, Ξ(z)/Ξ(0) equals the product of 1 − (z/a)² over one zero from each pair, with multiplicity. This product converges locally uniformly with absolutely summable deviations from 1.
+
+**How the definition helps.** Pairing opposite zeros cancels the exponential factors that each zero needs in the usual product (our own). Hadamard’s theorem gives that product from the growth bound on ξ (our own). The functional equation makes Ξ even, so the remaining exponential has zero linear coefficient (our own).
+
+**Paper or page:** [Completed Riemann Zeta Function has Order One](https://proofwiki.org/wiki/Completed_Riemann_Zeta_Function_has_Order_One). It says: “The completed Riemann zeta function ξ has order at most 1.”
+
+**Sources:**
+
+- [B. Riemann, On the Number of Prime Numbers less than a Given Quantity (1859), translated by D. R. Wilkins](https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-translation.pdf)
+
+### Phase choices strengthen gap bounds
+
+**Remember:** Remove a constant phase speed without moving the zeros.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11M06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write ζ for the Riemann zeta function and let A(s) be a nonzero finite sum of terms a(n) exp(−s log n). Put F(t) = ζ(½+it)A(½+it). Multiply F by exp(ict), choosing real c to minimize the integral of \|F′+icF\|² on the chosen interval.
+
+**Problem.** Take an interval whose endpoints are distinct heights of zeros of ζ on the line Re s = ½. Let R be the integral of \|F\|² divided by the minimized derivative integral on that interval. Some successive zero heights there differ by at least π√R.
+
+**How the definition helps.** The phase factor preserves every zero while allowing the derivative integral to decrease. Our own proof applies Wirtinger’s inequality to the modified function between successive critical-line zeros. That inequality bounds the square integral by the derivative square integral times the squared gap divided by π². Add over the gaps and minimize over c. The cited paper uses a fourth-power inequality and estimates amplified moments to get a numerical gap bound.
+
+**Paper or page:** [Amplified Fourth Moment of the Riemann Zeta-Function and Applications](https://arxiv.org/abs/2511.14415). It says: “3\\lambda \_0(v)\\int <sub>a</sub><sup>b</sup>\|f(t)\|<sup>4dt\\leq</sup> \\Big(\\frac{b-a}{\\pi }\\Big)<sup>4\\int</sup> <sub>a</sub><sup>b</sup>\|f’(t)\|<sup>4dt</sup> +6v\\Big(\\frac{b-a}{\\pi }\\Big)<sup>2\\int</sup> <sub>a</sub><sup>b</sup>\|f(t)f’(t)\|<sup>2dt</sup>,”
+
+**Sources:**
+
+- [Hung M. Bui, Richard R. Hall, Martin Subira Jorge, Amplified Fourth Moment of the Riemann Zeta-Function and Applications](https://arxiv.org/abs/2511.14415)
+
 ### Phase correction reveals critical zeros
 
 **Remember:** Remove the phase so that a sign change detects a zero.
@@ -2797,6 +3973,54 @@
 **How the definition helps.** The phase factor turns the functional equation into equality with the complex conjugate (our own). The factor never vanishes, so it cannot create or remove zeros (our own). The work moves to the functional equation and to finding points of opposite sign, as in proofs of infinitely many critical zeros (our own).
 
 **Wikipedia:** [Z function](https://en.wikipedia.org/wiki/Z_function). It says: “It follows from the functional equation of the Riemann zeta function that the Z function is real for real values of t.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separated heights avoid poles
+
+**Remember:** Leave a small gap between the contour and every zero.
+
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Write ρ for a zero of the Riemann zeta function ζ with 0 &lt; Re ρ &lt; 1. Fix a sufficiently small absolute constant c &gt; 0. Call U separated at scale T if \|U − Im ρ\| ≥ c/log T for every such zero.
+
+**Problem.** For each sufficiently large T there is a separated U in \[T, T + 1\]. At this height (ζ′/ζ)(σ + iU) = O((log T)²) uniformly for −1 ≤ σ ≤ 2.
+
+**How the definition helps.** The gap keeps every denominator σ + iU − ρ away from zero (our own). Only O(log T) zeros have heights between T − 1 and T + 2 (our own). Removing an interval of radius c/log T around each leaves room if c is small enough (our own). In the expansion of ζ′/ζ, each nearby reciprocal is then O(log T), and the distant terms together contribute O(log T) (our own).
+
+**Paper or page:** [Explicit estimates for the Goldbach summatory function](https://arxiv.org/abs/2411.00323). It says: “If χ is a principal character, then ∑ (T &lt; \|γᵪ\| ≤ T + 1) 1 &lt; (1/π + 0.68) log(T + 1) + 7.407 + 25/(12πT).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subtracting the main term reveals a region without zeros
+
+**Remember:** Remove the pole at one to test for other poles.
+
+*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** Let ψ(x) sum log p over prime powers pᵏ ≤ x, and define E(x) = ψ(x) − x. Transform E rather than ψ by setting F(s) = ∫₁∞ E(x) exp(−(s + 1) log x) dx.
+
+**Problem.** If E(x) = O(exp(θ log x)) for some ½ ≤ θ &lt; 1, then ζ has no zeros in Re s &gt; θ. In Re s &gt; 1, sF(s) = −(ζ′/ζ)(s) − s/(s − 1).
+
+**How the definition helps.** Subtracting x from ψ(x) cancels the pole at 1 in the transform identity (our own). Partial summation gives the identity from the series for −ζ′/ζ (our own). The power bound makes the integral converge locally uniformly for Re s &gt; θ, where it defines a holomorphic function (our own). A zeta zero there would produce a pole in the continued identity (our own).
+
+**Paper or page:** [Logarithmic Derivative of Riemann Zeta Function](https://proofwiki.org/wiki/Logarithmic_Derivative_of_Riemann_Zeta_Function). It says: “−ζ′(s)/ζ(s) = ∑ₙ≥₁ Λ(n)n⁻ˢ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subtraction isolates nearby zeros
+
+**Remember:** Subtract at the same height to damp distant zeros.
+
+*True by definition. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+
+**Definition.** For the Riemann zeta function ζ, its logarithmic derivative is the quotient ζ′/ζ. Compare two values at the same height by setting D(σ,t) = (ζ′/ζ)(σ + it) − (ζ′/ζ)(2 + it). Write ρ for a zero with 0 &lt; Re ρ &lt; 1.
+
+**Problem.** Let s = σ + it, with −1 ≤ σ ≤ 2 and \|t\| ≥ 2. Away from zeros, (ζ′/ζ)(s) equals the sum of 1/(s − ρ) over \|Im ρ − t\| ≤ 1, plus O(log \|t\|). Count zeros with multiplicity.
+
+**How the definition helps.** Subtracting at the same height replaces each distant zero’s reciprocal by a difference that decays quadratically with distance (our own). The product formula supplies these reciprocals (our own). Each unit interval near height u contains O(log(2 + \|u\|)) zeros, which bounds the sum of the distant differences (our own). The product over primes bounds ζ′/ζ at 2 + it (our own). Stirling’s estimate for the gamma function bounds the remaining terms (our own).
+
+**Paper or page:** [Product Equation for Riemann Zeta Function](https://proofwiki.org/wiki/Product_Equation_for_Riemann_Zeta_Function). It says: “∑ρ (1/(s − ρ) + 1/ρ)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2875,6 +4099,92 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Selberg factors weight repeats
+
+**Remember:** The extra product index sums to the geodesic denominator.
+
+*True by definition.* MSC 11M36 (Selberg zeta functions and regularized determinants; applications to spectral theory, Dirichlet series, Eisenstein series, etc. (explicit formulas)), 11F72. arXiv math.SP, math.NT. Level 3: graduate.
+
+**Definition.** On a closed oriented surface of curvature −1, count each oriented closed geodesic that makes just one circuit. For Re(s) &gt; 1, define Z(s) by multiplying 1 − exp(−(s+k)ℓ) over these geodesics of length ℓ and integers k ≥ 0.
+
+**Problem.** For Re(s) &gt; 1, sum ℓ exp(−smℓ)/(1 − exp(−mℓ)) over those geodesics and all positive integers m. The sum equals Z′(s)/Z(s).
+
+**How the definition helps.** Including every shift k builds the denominator for each repeated circuit into the product. Our own comparison keeps only k = 0, which gives no such denominator. Logarithmic differentiation expands each factor into a sum over repeats m. Summing exp(−kmℓ) over k gives the stated denominator. The geodesic counting estimate justifies differentiation and rearrangement in this half-plane.
+
+**Wikipedia:** [Selberg zeta function](https://en.wikipedia.org/wiki/Selberg_zeta_function). It says: “where p runs over conjugacy classes of prime geodesics (equivalently, conjugacy classes of primitive hyperbolic elements of Γ)”
+
+**Sources:**
+
+- [Dennis A. Hejhal, The Selberg Trace Formula for PSL(2,ℝ), volume I (1976).](https://doi.org/10.1007/BFb0079608)
+
+### Degree bounds primitive factor counts
+
+**Remember:** Every proper factorization spends at least one unit of degree per factor.
+
+*Makes the theorem clean to state or prove.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Selberg class consists of Dirichlet series with specified continuation, reflection, coefficient bounds and prime factors. Its degree d(F) is twice the sum of the positive slopes λ in the completing factors Γ(λs+μ). A member other than 1 is primitive if it cannot split into two members both different from 1.
+
+**Problem.** Every member F other than 1 is a product of at most ⌊d(F)⌋ primitive factors.
+
+**How the definition helps.** Degree bounds the number of factors because it adds under multiplication and each nonconstant factor has degree at least one. Each split increases the factor count, so repeated splitting must stop. The degree gap theorem provides the lower bound. This proves existence without assuming unique factorization.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “every function F ≠ 1 can be written as a product of primitive functions”
+
+**Sources:**
+
+- [Kaczorowski and Perelli, On the structure of the Selberg class, I: 0≤d≤1](https://doi.org/10.1007/bf02392574)
+
+### Deleted Euler factors break reflection
+
+**Remember:** Deleting a prime can add zeros with no reflected partners.
+
+*Rules out counterexamples.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Selberg completion multiplies a Dirichlet series F(s) by Qˢ and finitely many gamma factors Γ(λs+μ). Require Q and λ positive and Re μ ≥ 0. The completed function Φ must satisfy Φ(s) = ε overline(Φ(1−s̄)), with \|ε\| = 1, where the overline denotes complex conjugation.
+
+**Problem.** The series over odd integers is F(s) = (1−2⁻ˢ)ζ(s), where ζ sums over all positive integers. It satisfies the other Selberg axioms but admits no such completion.
+
+**How the definition helps.** In our own argument, reflection requires partners for the zeros introduced by deleting the prime 2. The factor 1−2⁻ˢ vanishes at infinitely many nonzero heights on Re s = 0. Each gamma factor has at most one pole on that line. Infinitely many zeros must therefore reflect to Re s = 1. There the completing factors are finite and nonzero, and the classical nonvanishing theorem for ζ rules out the required zeros.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “Without this functional equation, the class would have Dirichlet L-functions for any imprimitive character.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponential Euler factors cannot vanish
+
+**Remember:** A convergent logarithm leaves no room for a zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Selberg class consists of Dirichlet series satisfying conditions on continuation, reflection, coefficients and products over primes. Its Euler product axiom expresses F(s) as exp(∑ b(n)/nˢ), with b(n) zero outside prime powers. For some θ &lt; ½, \|b(pʳ)\| is bounded by a constant times p raised to rθ.
+
+**Problem.** Every Selberg-class function is nonzero for Re s &gt; 1. The Davenport–Heilbronn function satisfies the other axioms and has zeros in this half-plane.
+
+**How the definition helps.** In our own proof, the Euler axiom supplies a convergent logarithm, so its exponential cannot vanish. For primes p, b(p) equals the original coefficient, and absolute convergence of the Dirichlet series controls these terms. For higher powers, summing the geometric tails over primes works because 2(Re s−θ) &gt; 1. The quoted passage places zeros off the critical line. Our stronger counterexample uses the Davenport–Heilbronn theorem locating zeros to the right of 1.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “Despite having an analytic continuation, having periodic coefficients (thus satisfying the Ramanujan conjecture), and satisfying the functional equation, it has zeros lying off the critical line.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma slopes govern zero counts
+
+**Remember:** The degree measures the main density of zeros.
+
+*Makes the theorem clean to state or prove.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Selberg-class function F has a completion given by QˢF(s) times gamma factors Γ(λs+μ) with positive slopes λ. Define its degree d as twice the sum of those slopes. Count zeros of the completion with multiplicity.
+
+**Problem.** For fixed F, let N(T) count those zeros with 0 &lt; Im s ≤ T. As T grows, N(T) = dT log T/(2π) + O(T), with a constant depending on F.
+
+**How the definition helps.** The sum of the slopes gives the leading coefficient of the zero count in every gamma factorization. In our own explanation, the argument principle expresses the count through changes of argument around a rectangle. Stirling’s formula gives each gamma factor a contribution proportional to its slope. The remaining contour estimates control the error.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “Denoting the number of non-trivial zeros of F with 0 ≤ Im(s) ≤ T”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 5](https://doi.org/10.1090/coll/053)
+
 ### Gamma slopes make degrees additive
 
 **Remember:** Adding the gamma slopes makes degrees add when series multiply.
@@ -2924,6 +4234,24 @@
 **Paper or page:** [An Explicit Tauberian Theorem taking Averaged Inputs with an Application to Counting Abelian Number Fields](https://arxiv.org/abs/2508.20814v1). It says: “\\frac{\\Gamma (s)}{\\Gamma (s+k+1)} X<sup>s+k</sup>”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic integrals sharpen prime estimates
+
+**Remember:** Integrate the changing density to keep its lower order terms.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes), 11M26. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Use Li(x) = ∫₂ˣ dt/log t as the main term for π(x), the number of primes up to x. The simpler main term x/log x freezes the density at the right endpoint.
+
+**Problem.** If the Riemann hypothesis holds, then π(x) − Li(x) = O(√x log x). In contrast, π(x) − x/log x is asymptotic to x/(log x)², even without that hypothesis.
+
+**How the definition helps.** Integrating the changing density includes the term x/(log x)², which exceeds the desired error for large x (our own). Von Koch’s conditional theorem gives the square-root error for Li(x) (our own). Integration by parts gives the second term of Li(x) (our own). The unconditional prime number theorem with its classical error bound transfers that term to π(x) (our own).
+
+**Wikipedia:** [Prime number theorem](https://en.wikipedia.org/wiki/Prime_number_theorem). It says: “it turned out that Dirichlet's approximation is considerably better if one considers the differences instead of quotients.”
+
+**Sources:**
+
+- [H. von Koch, Sur la distribution des nombres premiers (1901)](https://doi.org/10.1007/BF02403071)
 
 ### Taking the halfway value at jumps makes Riemann's explicit formula exact
 
@@ -2978,6 +4306,108 @@
 
 - [P. G. L. Dirichlet, Beweis des Satzes, dass jede unbegrenzte arithmetische Progression ... unendlich viele Primzahlen enthält (1837), reprinted by Cambridge University Press](https://doi.org/10.1017/CBO9781139237321.012)
 
+### Log weights linearize Siegel–Walfisz
+
+**Remember:** With log weights, the expected count grows like x.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write ψ(x;q,a) for the sum of Λ(n) over n ≤ x with n ≡ a modulo q. The von Mangoldt weight Λ(n) is log p for positive powers of a prime p, and zero otherwise. Let φ(q) count the classes coprime to q.
+
+**Problem.** For fixed A &gt; 0 there is c &gt; 0 such that ψ(x;q,a) = x/φ(q) + O(x exp(−c√log x)). The estimate is uniform for x ≥ 3, gcd(a,q) = 1 and q ≤ (log x)ᴬ.
+
+**How the definition helps.** Weighting prime powers by log p gives each reduced class the linear main term x/φ(q). Counting each prime once gives the main term (∫₂ˣ dt/log t)/φ(q). The weight simplifies the formula. Siegel’s theorem on real zeros still supplies the estimate needed for uniformity across these moduli (our own explanation).
+
+**Wikipedia:** [Siegel–Walfisz theorem](https://en.wikipedia.org/wiki/Siegel%E2%80%93Walfisz_theorem). It says: “whenever (a, q) = 1 and q ≤ (log x)ᴺ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matching signs cancel prime bias
+
+**Remember:** Compare classes with the same exceptional sign to remove its bias.
+
+*True by definition.* MSC 11N13 (Primes in congruence classes), 11M20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an invertible residue a modulo q, let θ(x;q,a) sum log p over primes p &lt; x congruent to a. A possible exceptional character is a real character modulo q whose L-function has a zero in the classical zero-free region near one. When it exists, pair residues a and b only when this character takes the same value on both. Otherwise pair any two invertible residues.
+
+**Problem.** For some absolute c,d,C &gt; 0 and all x ≥ 3, take q ≤ exp(c√(log x)). Every such pair satisfies \|θ(x;q,a)−θ(x;q,b)\| ≤ Cx exp(−d√(log x)).
+
+**How the definition helps.** Subtracting counts for matching signs cancels the exceptional term exactly, along with the common main term. Our own deduction specializes the prime ideal theorem to ℚ. Character orthogonality writes each residue count as an average of the character sums in that theorem. The coefficient of the exceptional term is the same for both residues. The theorem bounds the remaining error uniformly.
+
+**Paper or page:** [Notes on Mitsui's Prime Number Theorem with Siegel zeros](https://arxiv.org/abs/2209.11816). It says: “where β is the potential Siegel zero mod 𝔮.”
+
+**Sources:**
+
+- [Wataru Kai, Notes on Mitsui's Prime Number Theorem with Siegel zeros](https://arxiv.org/abs/2209.11816)
+
+### Maximal errors control shorter intervals
+
+**Remember:** Control every endpoint and any two endpoints can be subtracted.
+
+*True by definition.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A reduced class modulo q consists of integers congruent to some a with gcd(a,q) = 1. Write φ(q) for the number of reduced classes. Let E(t;q,a) sum log p over prime powers in that class up to t, then subtract t/φ(q). Let D(x;q) be the supremum of \|E(t;q,a)\| over those classes and 0 ≤ t ≤ x.
+
+**Problem.** Fix A &gt; 0 and set Q = √x/(log x)ᴮ for sufficiently large B depending on A. For each q let H(q) be the supremum of \|E(v;q,a) − E(u;q,a)\| over reduced a and 0 ≤ u ≤ v ≤ x. Then the sum of H(q) over q ≤ Q is O(x/(log x)ᴬ).
+
+**How the definition helps.** Taking the supremum over endpoints controls both ends of every interval (our own explanation). The triangle inequality gives H(q) ≤ 2D(x;q). An error estimate at x alone gives no bound at earlier endpoints. The maximal Bombieri–Vinogradov theorem supplies the estimate for the sum of D(x;q).
+
+**Wikipedia:** [Bombieri–Vinogradov theorem](https://en.wikipedia.org/wiki/Bombieri%E2%80%93Vinogradov_theorem). It says: “averaged over the moduli q up to Q.”
+
+**Sources:**
+
+- [Enrico Bombieri, On the large sieve (1965)](https://doi.org/10.1112/S0025579300005313)
+
+### Reduced classes exclude the even progression
+
+**Remember:** Primes split equally only among classes coprime to the modulus.
+
+*Rules out counterexamples.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Use reduced classes a modulo q, meaning gcd(a,q) = 1. Let π(x;q,a) count the primes at most x in that class, and let φ(q) count the reduced classes.
+
+**Problem.** For every fixed A &gt; 0, Siegel–Walfisz gives π(x;q,a) ∼ (∫₂ˣ dt/log t)/φ(q) uniformly over reduced classes with q ≤ (log x)ᴬ.
+
+**How the definition helps.** In our own explanation, the coprime condition removes classes forced to share a prime factor with the modulus. For example, the even class modulo 2 contains only the prime 2 (our own). The actual uniform estimate still needs Siegel–Walfisz, whose error is smaller than the main term throughout this range (our own).
+
+**Paper or page:** [Primes of the form $ax+by$ in certain intervals with small solutions](https://arxiv.org/abs/2510.01781v1). It says: “Let A be a positive real number and m, l two coprime integers with 1 ≤ m ≤ (log x)ᴬ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Square roots measure prime power corrections
+
+**Remember:** The leading correction comes from the classes whose squares land in a.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11N05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix q ≥ 2 and a coprime to q, and let φ(q) count the invertible residue classes. Let r(q,a) count classes b satisfying b² ≡ a modulo q. Let θ(x;q,a) sum log p over primes p ≤ x congruent to a. Let ψ(x;q,a) sum log p over all positive powers of p up to x congruent to a.
+
+**Problem.** For fixed q ≥ 2 and reduced a, ψ(x;q,a) − θ(x;q,a) = r(q,a)√x/φ(q) + o(√x) as x tends to infinity.
+
+**How the definition helps.** Counting the square roots of a gives one coefficient for the entire square contribution (our own explanation). Each root class contributes its prime sum up to √x. The prime number theorem for each fixed invertible class makes that sum asymptotic to √x/φ(q). Powers with exponent at least three contribute o(√x) in total (our own derivation).
+
+**nLab:** [proof of the prime number theorem](https://ncatlab.org/nlab/show/proof+of+the+prime+number+theorem). It says: “Proving the asymptotic result θ(x) ∼ x will involve complex analysis applied to the Riemann zeta function.”
+
+**Wikipedia:** [Chebyshev function](https://en.wikipedia.org/wiki/Chebyshev_function). It says: “with the sum extending over all prime powers not exceeding x”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Buchstab’s function unifies rough counts
+
+**Remember:** The delay function records what remains after the least prime is removed.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Call an integer y-rough if no prime factor is below y. Define ω on \[1,∞) by ω(u)=1/u on \[1,2\] and (uω(u))′=ω(u−1) for u&gt;2, with continuity at 2.
+
+**Problem.** Fix u&gt;1 and set y=exp((log x)/u). As x tends to infinity, the count of y-rough positive integers at most x is asymptotic to xω(u)/log y.
+
+**How the definition helps.** The function absorbs every change in the number of allowed prime factors into one formula (our own). In our own explanation, for 1&lt;u≤2 only primes contribute to the main term, which gives the starting value 1/u by the prime number theorem. Above 2, Buchstab’s identity groups the count by the least prime. The work is justifying the passage from that prime sum to the integral whose derivative is the delay equation.
+
+**Wikipedia:** [Buchstab function](https://en.wikipedia.org/wiki/Buchstab_function). It says: “The Buchstab function is used to count rough numbers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dickman’s delay bounds smooth densities
 
 **Remember:** A sliding unit interval bounds the density by its previous value divided by u.
@@ -2993,6 +4423,125 @@
 **Wikipedia:** [Dickman function](https://en.wikipedia.org/wiki/Dickman_function). It says: “The Dickman–de Bruijn function ρ(u) is a continuous function that satisfies the delay differential equation”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Squarefree smooth counts separate densities
+
+**Remember:** Remove squares by inversion and keep the same Dickman profile.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Ψ(x,y) count positive integers n≤x with no prime factor above y. Write the indicator that n is squarefree as ∑ μ(d) over d with d² dividing n. The Möbius function μ(d) vanishes if a prime square divides d. Otherwise it equals (−1)ᵏ for d with k distinct prime factors.
+
+**Problem.** Fix u≥1 and set y=exp((log x)/u). Let ρ(u) be the limiting proportion Ψ(x,y)/x as x tends to infinity. The count with the additional squarefree restriction is asymptotic to xρ(u)/ζ(2), where ζ(2)=∑ 1/n².
+
+**How the definition helps.** The square-divisor sum expresses the restricted count in terms of ordinary smooth counts Ψ (our own proof). Each d with no prime factor above y contributes μ(d)Ψ(x/d²,y). After division by x, the absolute value is at most 1/d². For fixed d, Dickman’s theorem and continuity of ρ give the limit μ(d)ρ(u)/d² by squeezing between nearby fixed parameters. Dominated convergence then leaves the factor ∑ μ(d)/d²=1/ζ(2).
+
+**Wikipedia:** [Dickman function](https://en.wikipedia.org/wiki/Dickman_function). It says: “Dickman proved that, when a is fixed, we have Ψ(x, x⁽¹⁄ᵃ⁾) ∼ xρ(a)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adjoints transpose the large sieve
+
+**Remember:** Take the conjugate transpose to exchange samples and coefficients.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take N consecutive integers n, with N ≥ 1, and points αᵣ on the circle ℝ/ℤ. Form the sampling matrix A with entries exp(2πinαᵣ). Its Euclidean operator norm is the largest ratio of output length to nonzero input length.
+
+**Problem.** Suppose distinct sample indices give points at circle distance at least δ, where 0 &lt; δ ≤ 1/2. Then ∑ₙ \|∑ᵣ bᵣ exp(−2πinαᵣ)\|² ≤ (N − 1 + 1/δ) ∑ᵣ \|bᵣ\|² for all complex bᵣ.
+
+**How the definition helps.** Writing the sampling estimate as a matrix norm bound gives the dual estimate by taking the conjugate transpose. The two matrices have the same Euclidean operator norm. In our own formulation, this replaces a second estimate of exponential sums. The original large sieve theorem supplies the bound on the norm.
+
+**Wikipedia:** [Large sieve](https://en.wikipedia.org/wiki/Large_sieve). It says: “equals the norm of its adjoint”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Liouville signs expose sieve parity
+
+**Remember:** The same divisibility estimates can hide opposite prime-factor parity.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Ω(n) count prime factors with multiplicity and put λ(n) = (−1) to the power Ω(n). Use the even and odd weights (1 + λ(n))/2 and (1 − λ(n))/2 on 1 ≤ n ≤ x. For each weight, record only its total mass on multiples of d, in the form x/(2d) + r(d).
+
+**Problem.** Fix 0 &lt; θ &lt; 1 and A &gt; 0, and sum \|r(d)\| over d up to x raised to θ. For either weight this sum is O(x/(log x)ᴬ). After removing multiples of primes at most √x, the even weight totals one and the odd weight totals asymptotically x/log x.
+
+**How the definition helps.** The two parity weights satisfy the same divisibility estimates but give different counts after sieving. In our own derivation, λ(dm) = λ(d)λ(m) reduces each error to a sum of Liouville signs up to x/d and a rounding error. The quantitative prime number theorem bounds the sign sum up to t by O(t/(log t)ᴮ) for every fixed B. Since x/d is at least a fixed power of x, summing these bounds with B = A + 2 suffices. Only one and primes above √x survive. Thus these divisor estimates alone cannot guarantee a lower bound of order x/log x.
+
+**Wikipedia:** [Parity problem](https://en.wikipedia.org/wiki/Parity_problem). It says: “The set with an odd number of factors is just the primes between x¹⁄² and x”
+
+**Sources:**
+
+- [J. Friedlander and H. Iwaniec, Asymptotic sieve for primes, Annals of Mathematics 148 (1998), 1041–1065.](https://doi.org/10.2307/121035)
+
+### Local density handles crowded samples
+
+**Remember:** Bound the occupancy of short arcs, even when points coincide.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** On the circle ℝ/ℤ, let K be the largest number of samples in a half-open arc of length δ. Count each sample with its multiplicity.
+
+**Problem.** Take 0 &lt; δ ≤ 1/2 and a polynomial T(α) = ∑ₙ aₙ exp(2πinα) with N consecutive integer frequencies. Then ∑ \|T(α)\|² ≤ 2K(N − 1 + 1/δ) ∑ₙ \|aₙ\|², where the left sum runs over all samples.
+
+**How the definition helps.** In our own proof, the local count lets us split the samples into at most 2K separated lists. Split the circle into two half-open semicircles. In each half, sort the samples and assign them cyclically to K lists. Two entries K places apart have gap at least δ, since a shorter gap would put K + 1 entries in one arc. Within a semicircle this gap equals their circle distance. The separated large sieve bounds each list, and adding gives the stated estimate.
+
+**Paper or page:** [Infinitude of palindromic almost-prime numbers](https://arxiv.org/abs/2307.16637v3). It says: “For any set of δ-spaced points”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local occupancy bounds clustered samples
+
+**Remember:** Charge for the size of a cluster, not its smallest gap.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves), 42A05. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** For sample points on ℝ/ℤ and integer N ≥ 2, let K be the most points in any closed arc of length 1/N. Count repetitions, and use K rather than the smallest distance between any two samples.
+
+**Problem.** Let S be a trigonometric polynomial on N consecutive integer frequencies. Put M = ∫₀¹ \|S(x)\|² dx. Summing \|S(x)\|² over all samples gives at most 4KNM.
+
+**How the definition helps.** The local count splits crowded samples into a bounded number of well-separated groups. In our own proof, join samples whose circular distance is less than 1/N. Two arcs from any sample cover all its neighbors, with at most K−1 others on either side. Greedy coloring therefore uses at most 2K−1 colors. Within each color, the additive large sieve bounds the sum by 2N times the square integral. Adding these bounds proves the claim, including repeated samples.
+
+**Paper or page:** [On large sieve inequalities involving pth powers of trigonometric polynomials](https://arxiv.org/abs/2209.12294). It says: “\\sum <sub>j=1</sub><sup>r\|s</sup>(x<sub>j</sub>)\|<sup>p\\le</sup> \\frac{pN\\sigma (\\delta ; N)}{2\\sqrt{\\pi }}\\cdot \\frac{ \\Gamma \\Bigl(p/2\\Bigr)}{\\Gamma \\Bigl(p/2+1/2\\Bigr)}\\\| s\\\| ^p<sub>L<sup>p</sup>(\\mathbb T)</sub>”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, The large sieve, Mathematika 20 (1973), 119–134](https://doi.org/10.1112/S0025579300004708)
+- [Saulius Norvidas, On large sieve inequalities involving pth powers of trigonometric polynomials](https://arxiv.org/abs/2209.12294)
+
+### Local odds multiply across primes
+
+**Remember:** Center each class indicator so its Fourier energy multiplies.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves). arXiv math.NT, math.CO. Level 3: graduate.
+
+**Definition.** For each prime p ≤ Q, choose residue classes avoided by A and let ω(p) &lt; 1 be their fraction. Write Iₚ for the indicator of the remaining classes. Set hₚ = Iₚ/(1 − ω(p)) − 1. For squarefree q, meaning q has no repeated prime factor, form the product of hₚ over p dividing q.
+
+**Problem.** Let A lie in an interval of N consecutive integers and let Q ≥ 2 be an integer. For squarefree q ≤ Q, multiply ω(p)/(1 − ω(p)) over its prime divisors, using one for the empty product. If G is the sum of these products, then \|A\| ≤ (N − 1 + Q²)/G.
+
+**How the definition helps.** Centering each indicator makes its average zero, so its Fourier expansion uses only nonconstant frequencies. In our own proof, the Chinese remainder theorem gives the product only frequencies with reduced denominator q. Its value on A and its mean square over residues both equal the product of local odds. Cauchy–Schwarz therefore bounds the sum of squared exponential sums at those frequencies from below by \|A\|² times that product. The additive large sieve bounds the sum over all these frequencies from above.
+
+**Paper or page:** [Diophantine stability and second order terms](https://arxiv.org/abs/2409.12144v1). It says: “ω(ℓ)/(1−ω(ℓ))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic collisions give Gallagher’s sieve
+
+**Remember:** Logarithmic weights count each prime power in a difference.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A be a subset of {1,…,N} and let Q be a finite set of prime powers. Count a collision when two distinct members of A agree modulo q in Q. Give each collision weight Λ(q) = log p, where q is a power of the prime p.
+
+**Problem.** Suppose A occupies at most g(q) classes modulo each q in Q, with g(q) ≥ 1. Put U = ∑ Λ(q) and V = ∑ Λ(q)/g(q), summing over Q. If V &gt; log N, then \|A\| ≤ (U − log N)/(V − log N).
+
+**How the definition helps.** The logarithmic weights let one bound all collisions of a pair by the logarithm of its difference. In our own derivation, each prime power dividing the difference contributes one copy of log p. Unique factorization bounds their sum by log N. Cauchy–Schwarz gives at least \|A\|²/g(q) − \|A\| ordered collisions modulo q. Summing and rearranging gives the bound for nonempty A.
+
+**Wikipedia:** [Larger sieve](https://en.wikipedia.org/wiki/Larger_sieve). It says: “there are at most g(q) residue classes modulo q, which contain elements of A.”
+
+**Sources:**
+
+- [P. X. Gallagher, A larger sieve, Acta Arithmetica 18 (1971), 77–81.](https://doi.org/10.4064/aa-18-1-77-81)
 
 ### New coordinates minimize Selberg’s sieve
 
@@ -3010,6 +4559,94 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Primitive characters prevent sieve repetitions
+
+**Remember:** Count each primitive character only at its own modulus.
+
+*Rules out counterexamples.* MSC 11N35 (Sieves), 11L40. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Dirichlet character modulo q is a multiplicative character of the invertible residues, extended by zero elsewhere. Call it primitive if its values on invertible residues do not come from a character modulo a proper divisor. Write φ(q) for the number of invertible residues.
+
+**Problem.** For complex coefficients on N consecutive integers, put D(χ) = ∑ a(n)χ(n). Sum q\|D(χ)\|²/φ(q) over positive q ≤ Q and primitive characters modulo q. The result is at most (N − 1 + Q²)∑ \|a(n)\|².
+
+**How the definition helps.** Primitivity prevents the same inducing character from recurring at many moduli. Our own derivation uses the Gauss sum, the character’s Fourier sum against exp(2πia/q). Its absolute square equals q for primitive characters. Character orthogonality then reduces the estimate to the additive large sieve at reduced fractions. For all coefficients equal to one on \[1,N\], the principal character at each prime contributes at least N²/4. Taking N much larger than Q² rules out the same estimate for all characters.
+
+**Wikipedia:** [Gauss sum](https://en.wikipedia.org/wiki/Gauss_sum). It says: “If χ is also primitive, then \|G(χ)\| = √N, in particular, it is nonzero.”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, The large sieve, Mathematika 20 (1973), 119–134](https://doi.org/10.1112/S0025579300004708)
+
+### Primitivity removes repeated character rows
+
+**Remember:** Primitive characters exclude repeated contributions from smaller moduli.
+
+*Rules out counterexamples.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Dirichlet character modulo q is a homomorphism from the invertible residue classes to the nonzero complex numbers, extended by zero elsewhere. It is primitive if its values on invertible classes do not come from a character modulo a proper divisor of q.
+
+**Problem.** Take complex coefficients aₙ on N consecutive integers and Q ≥ 1. For each primitive character χ modulo q, form (q/φ(q)) \|∑ₙ aₙχ(n)\|², where φ(q) counts invertible classes. Summing over those characters and all positive q ≤ Q gives at most (Q² + N) ∑ₙ \|aₙ\|².
+
+**How the definition helps.** Primitivity excludes characters that reproduce values from smaller moduli on invertible classes. Our own counterexample sets aₙ = 1 for 1 ≤ n ≤ N and takes N ≥ Q². For every prime q ≤ Q, the principal character equals one off multiples of q and zero on them. Each such character contributes at least N²/4, while the proposed bound is at most 2N². The number of primes up to Q grows without bound. The large sieve theorem supplies the bound for primitive characters.
+
+**Paper or page:** [The second moment of Dirichlet twists of a GL₄ automorphic L-function](https://arxiv.org/abs/2110.01783v2). It says: “For any complex numbers aₙ (M ≤ n &lt; M + N), we have”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, The large sieve, Mathematika 20 (1973), 119–134.](https://doi.org/10.1112/s0025579300004708)
+
+### Reduced fractions separate sieve samples
+
+**Remember:** Reduced fractions prevent several denominators from charging for the same sample.
+
+*Rules out counterexamples.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take positive integers q ≤ Q. For each q, use one fraction a/q for every residue 0 ≤ a &lt; q coprime to q. Measure distance modulo one by the distance of the difference to the nearest integer.
+
+**Problem.** For any N consecutive integer indices, put S(x) = ∑ a(n) exp(2πinx) over those indices. Then the sum of \|S(a/q)\|² over the reduced fractions is at most (N − 1 + Q²)∑ \|a(n)\|².
+
+**How the definition helps.** Reduced fractions give distinct sample points with distance at least 1/Q² around the circle. Our own explanation uses the integer numerator of any nonzero difference modulo one. The additive large sieve bounds the sum of squared samples using this spacing. Without reduction, zero occurs for every denominator. With all coefficients equal to one, these copies alone contribute QN².
+
+**Wikipedia:** [Large sieve](https://en.wikipedia.org/wiki/Large_sieve). It says: “for all x near rational numbers of the form a/p.”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, The large sieve, Mathematika 20 (1973), 119–134](https://doi.org/10.1112/S0025579300004708)
+
+### Selberg majorants prove sieve bounds
+
+**Remember:** Dominate the interval while cutting off every cross term.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves), 42A38. arXiv math.NT, math.CA. Level 3: graduate.
+
+**Definition.** For a closed interval I of length L and 0 &lt; δ &lt; 1, Selberg’s majorant B is an integrable upper bound for its indicator. Its Fourier transform uses exp(−2πixξ) and vanishes outside \[−δ,δ\]. Its integral equals L + 1/δ.
+
+**Problem.** Take points xⱼ whose pairwise distances modulo one exceed δ. Put S(x) = ∑ a(n) exp(2πinx), summing over integers in I. Then ∑ \|S(xⱼ)\|² ≤ (L + 1/δ)∑ \|a(n)\|².
+
+**How the definition helps.** The majorant covers every frequency in I, while its Fourier support removes every interaction between distinct samples. Our own derivation applies the bound to the transpose conjugate of the sampling matrix, which has the same norm. Poisson summation replaces the sum of sampled majorant values by shifted copies of its Fourier transform. Only equal sample points contribute, each with weight L + 1/δ. Constructing Selberg’s majorant supplies the difficult step.
+
+**Wikipedia:** [Large sieve](https://en.wikipedia.org/wiki/Large_sieve). It says: “It is also possible to derive the large sieve from majorants in the style of Selberg”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spacing rules out repeated samples
+
+**Remember:** Measure the gaps around the circle.
+
+*Rules out counterexamples.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For two points on ℝ/ℤ, their circle distance is the distance from their difference to the nearest integer. A list of points is δ-spaced if every pair of distinct indices gives points at distance at least δ.
+
+**Problem.** Take complex coefficients aₙ on N consecutive integers, with N ≥ 1, and put T(α) = ∑ₙ aₙ exp(2πinα). For 0 &lt; δ ≤ 1/2, the sum of \|T(α)\|² over δ-spaced points is at most (N − 1 + 1/δ) ∑ₙ \|aₙ\|².
+
+**How the definition helps.** Circle spacing excludes repeated samples, which could make the left side arbitrarily large. In our own example, a single coefficient equals one and every other coefficient vanishes. Every sample then contributes one. The large sieve inequality bounds the total contribution when the points are separated.
+
+**Paper or page:** [Infinitude of palindromic almost-prime numbers](https://arxiv.org/abs/2307.16637v3). It says: “For any set of δ-spaced points”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, The large sieve, Mathematika 20 (1973), 119–134.](https://doi.org/10.1112/s0025579300004708)
+
 ### Squares bound the Selberg sieve
 
 **Remember:** The square is one on survivors and never negative elsewhere.
@@ -3025,6 +4662,204 @@
 **Wikipedia:** [Selberg sieve](https://en.wikipedia.org/wiki/Selberg_sieve). It says: “Selberg replaced the values of the Möbius function which arise in this by a system of weights which are then optimised to fit the given problem.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Buchstab’s function counts rough numbers
+
+**Remember:** Subtract one from the logarithmic ratio when peeling off a prime.
+
+*Makes the theorem clean to state or prove.* MSC 11N36 (Applications of sieve methods). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Define ω(u) = 1/u on 1 ≤ u ≤ 2. Extend it continuously by requiring the derivative of uω(u) to equal ω(u − 1) for u &gt; 2. A positive integer is y-rough if it has no prime factor below y.
+
+**Problem.** Fix u &gt; 1 and let y be x raised to 1/u. As x tends to infinity, the number of y-rough integers up to x is asymptotic to xω(u)/log y.
+
+**How the definition helps.** The delay equation gives one leading coefficient for every fixed cutoff ratio u. In our own explanation, only primes and a negligible boundary term survive for 1 &lt; u ≤ 2. For larger u, grouping composite survivors by their smallest prime reduces the count to smaller instances. The prime number theorem converts the resulting prime sums to integrals. The delay equation describes how their leading coefficient changes.
+
+**Wikipedia:** [Buchstab function](https://en.wikipedia.org/wiki/Buchstab_function). It says: “The Buchstab function is used to count rough numbers.”
+
+**Paper or page:** [The Schinzel-Szekeres function](https://arxiv.org/abs/2310.13038v2). It says: “ω(v) is Buchstab’s function.”
+
+**Sources:**
+
+- [A. Buchstab, Asymptotische Abschätzung einer allgemeinen zahlentheoretischen Funktion, Matematicheskii Sbornik 2 (1937), 1239–1246.](https://m.mathnet.ru/php/archive.phtml?jrnid=sm&option_lang=eng&paperid=5649&wshow=paper)
+
+### Least factors partition sieve losses
+
+**Remember:** Assign each discarded number to its first prime divisor.
+
+*Rules out counterexamples.* MSC 11N36 (Applications of sieve methods). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite set A of positive integers, let S(A,z) count members with every prime factor at least z. Let Aₚ contain n/p for n∈A divisible by p. Sort the discarded numbers by their least prime factor, not by all prime factors separately.
+
+**Problem.** For 2≤z≤y, S(A,y)=S(A,z)−∑ S(Aₚ,p), with the sum over primes z≤p&lt;y. In an interval contained in (√x,x\], taking y&gt;√x makes the surviving numbers exactly the primes at least y.
+
+**How the definition helps.** Sorting by the least prime gives each discarded integer exactly one place in the sum. In our own explanation, dividing by its least prime p leaves no prime factor below p. The quotient may still contain p, which explains the cutoff at p itself. Counting all divisors would charge 15 to both 3 and 5. Buchstab’s identity can now be iterated, leaving smaller sifted sets whose sizes require estimates.
+
+**Wikipedia:** [Rough number](https://en.wikipedia.org/wiki/Rough_number). It says: “whose prime factors are all greater than or equal to”
+
+**Sources:**
+
+- [A. Buchstab, Asymptotische Abschätzung einer allgemeinen zahlentheoretischen Funktion, Matematicheskii Sbornik 2 (1937), 1239–1246](https://www.mathnet.ru/php/archive.phtml?jrnid=sm&option_lang=eng&paperid=5649&wshow=paper)
+- [Runbo Li, The number of primes in short intervals and numerical calculations for Harman's sieve](https://arxiv.org/abs/2308.04458)
+
+### Nearest powers control means
+
+**Remember:** A large mean has a nearby imaginary power.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be multiplicative, so f(ab)=f(a)f(b) for coprime a,b, and assume \|f(n)\| ≤ 1. For real t, sum (1−Re(f(p)exp(−it log p)))/p over primes p ≤ x. Let M be the minimum of this sum for \|t\| ≤ T.
+
+**Problem.** For x ≥ 3, divide the sum of f(n) over n ≤ x by x. For T ≥ 1, the modulus of this average is at most C((1+M)exp(−M)+1/T) with an absolute constant C.
+
+**How the definition helps.** Our own reading is that one minimum replaces a separate comparison with each possible frequency. Halász’s mean value theorem supplies the estimate that turns prime data into a bound for the mean.
+
+**Paper or page:** [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636). It says: “Let x ≥ 3 and T ≥ 1. Let g ∶ ℕ → 𝕌 be a multiplicative function.”
+
+**Sources:**
+
+- [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636)
+- [Andrew Granville and K. Soundararajan, Decay of Mean Values of Multiplicative Functions (2003)](https://doi.org/10.4153/CJM-2003-047-0)
+
+### The factor at two can erase means
+
+**Remember:** One vanishing local factor can erase the entire mean.
+
+*Rules out counterexamples.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be multiplicative, meaning f(ab)=f(a)f(b) for coprime a,b, with \|f(n)\| ≤ 1. For real t, set h(n)=f(n)exp(−it log n). Say f has finite distance from this power when ∑ₚ(1−Re h(p))/p converges over primes. Set B=(1+∑ⱼ≥₁ h(2ʲ)/2ʲ)/2.
+
+**Problem.** Assume f has finite distance from the power at t. The modulus of the average of f(1),…,f(N) tends to a positive limit exactly when B ≠ 0.
+
+**How the definition helps.** Our own local factor replaces the list of all values at powers of two. Its sum can vanish only if h(2ʲ) = −1 for every j ≥ 1, since those weights add to one. Halász’s theorem proves that this is exactly the exceptional case.
+
+**Paper or page:** [Furstenberg systems of pretentious and MRT multiplicative functions](https://arxiv.org/abs/2304.03121). It says: “then there exist a non-zero L ∈ ℂ and a slowly varying sequence”
+
+**Sources:**
+
+- [Furstenberg systems of pretentious and MRT multiplicative functions](https://arxiv.org/abs/2304.03121)
+
+### Wirsing’s factors isolate prime bias
+
+**Remember:** Remove the average prime weight before multiplying local factors.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be nonnegative and multiplicative, with f(1)=1 and f(pʲ) ≤ Cjᴬ for all primes p and integers j ≥ 1. Fix ξ &gt; 0 and 1 &lt; r &lt; 2. Assume the prime sum ∑ₚ≤ₓ f(p) differs from ξx/log x by at most Kx/(log x)ʳ for all large x. Define L(p) by multiplying ∑ⱼ≥₀ f(pʲ)/pʲ by (1−1/p) raised to ξ.
+
+**Problem.** Divide the sum of f(n) over n ≤ x by x times the (ξ−1)st power of log x. The quotient tends to ∏L(p)/Γ(ξ), where the prime product converges to a positive number and Γ is the gamma function.
+
+**How the definition helps.** In our own calculation, L(p) cancels the average contribution ξ/p in the logarithm of each prime factor. Partial summation converts the prime-sum error into a convergent series. The Wirsing–Odoni theorem identifies the product as part of the leading constant.
+
+**Paper or page:** [Multiplicative complements I](https://arxiv.org/abs/2204.00412). It says: “over the primes is convergent (and positive), and”
+
+**Sources:**
+
+- [Multiplicative complements I](https://arxiv.org/abs/2204.00412)
+- [Eduard Wirsing, Das asymptotische Verhalten von Summen über multiplikative Funktionen (1961)](https://link.springer.com/article/10.1007/BF01351892)
+
+### Zeta powers determine logarithmic growth
+
+**Remember:** The zeta power carries the entire leading singularity.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix an integer k ≥ 1 and write ω(n) for the number of distinct prime divisors of n. Put a(n)=k raised to ω(n). For real s &gt; 1, set ζ(s)=∑ₙ≥₁ exp(−s log n). Define G(s) by dividing ∑ₙ≥₁ a(n)exp(−s log n) by ζ(s) raised to k.
+
+**Problem.** The sum of a(n) over n ≤ x is asymptotic to G(1)x(log x)ᵏ⁻¹/(k−1)!. Here G(1) is the limit as s decreases to one.
+
+**How the definition helps.** Our own calculation separates the singular factor ζ(s)ᵏ from a product that converges at s=1. At s=1 each remaining prime contributes (1−1/p)ᵏ⁻¹(1+(k−1)/p). Multiplication cancels the term proportional to 1/p. The Selberg–Delange theorem converts the behavior of the series near s=1 into the growth rate of its coefficient sums.
+
+**Paper or page:** [On divisor bounded multiplicative functions in short intervals](https://arxiv.org/abs/2401.08432). It says: “where cₖ is an explicit positive constant.”
+
+**Sources:**
+
+- [On divisor bounded multiplicative functions in short intervals](https://arxiv.org/abs/2401.08432)
+
+### Diverging variance excludes single-prime limits
+
+**Remember:** A bounded prime contribution cannot dominate an infinite total variance.
+
+*Rules out counterexamples.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 3: graduate.
+
+**Definition.** Use a strongly additive real function f, so f(n) is the sum of f(p) over distinct primes dividing n. Require \|f(p)\|≤1 and B(x)²→∞, where B(x)²=∑ f(p)²/p over primes p≤x.
+
+**Problem.** Write A(x)=∑ f(p)/p over primes p≤x. For uniform N from 1 to x, (f(N)−A(x))/B(x) converges in law to a standard normal.
+
+**How the definition helps.** Diverging prime variance makes a fixed prime too small to supply the whole fluctuation (our own). In our own counterexample, take f(2)=1 and f(p)=0 for odd p. The normalized values then stay at ±1/√2, each with limiting probability one half. In our own explanation, divergence makes each bounded summand negligible in the independent model. The work is in the general Erdős–Kac theorem, which transfers the normal limit to the arithmetic count.
+
+**Wikipedia:** [Erdős–Kac theorem](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Kac_theorem). It says: “More generally, if f(n) is a strongly additive function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime powers factor Erdős–Wintner
+
+**Remember:** Independent prime contributions give one factor each in the limiting transform.
+
+*Makes the theorem clean to state or prove.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 3: graduate.
+
+**Definition.** Let f be real and additive, so f(ab)=f(a)+f(b) whenever a and b are coprime. Independently for each prime p, choose a nonnegative integer V with probability (1−1/p)/pᵏ at k. Write Xₚ for f evaluated at p raised to this random exponent.
+
+**Problem.** Suppose ∑ 1/p converges over primes with \|f(p)\|&gt;1. Suppose ∑ f(p)/p and ∑ f(p)²/p converge over the remaining primes. For N uniform on {1,…,x}, f(N) approaches a distribution with characteristic function ∏ E\[exp(itXₚ)\] as x tends to infinity.
+
+**How the definition helps.** Independent prime contributions turn the characteristic function, the mean of exp(it times the random value), into a product (our own explanation). Exponents above one occur at only finitely many primes almost surely, since ∑ 1/p² converges. Kolmogorov’s three-series theorem gives convergence of the independent sum under the three stated conditions. The Erdős–Wintner theorem identifies its distribution with the arithmetic limit.
+
+**Wikipedia:** [Erdős–Wintner theorem](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Wintner_theorem). It says: “It is an analogue of Kolmogorov's three-series theorem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime values miss additive variance
+
+**Remember:** A prime square can fluctuate even when every prime value vanishes.
+
+*Rules out counterexamples.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 3: graduate.
+
+**Definition.** For an additive f, use B(x)²=∑ \|f(q)\|²/q over prime powers q=pᵏ≤x with k≥1. Center at A(x)=∑ f(q)(1−1/p)/q over the same prime powers. An additive f satisfies f(ab)=f(a)+f(b) for coprime a and b.
+
+**Problem.** The average of \|f(n)−A(x)\|² over n≤x is at most a constant times B(x)² for every x≥2. No constant works for all additive f if the sum defining B(x)² uses only primes.
+
+**How the definition helps.** The prime-power definition includes fluctuations that do not occur at a prime itself (our own). In our own counterexample, set f(4)=1 and all other prime-power values to zero. Then f(n) is the indicator that 4 divides n but 8 does not, so the mean-square error tends to 7/64. Yet the prime-only sum is zero. The work in Turán–Kubilius is controlling all prime-power contributions despite the dependence between primes in a finite sample.
+
+**Wikipedia:** [Turán–Kubilius inequality](https://en.wikipedia.org/wiki/Tur%C3%A1n%E2%80%93Kubilius_inequality). It says: “It is useful for proving results about the normal order of an arithmetic function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Truncation makes sieve moments Gaussian
+
+**Remember:** Keep enough primes for the variance and few enough for every fixed moment.
+
+*Makes the theorem clean to state or prove.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 3: graduate.
+
+**Definition.** For a large integer x, put L=log log x and y=exp((log x)/∜L). Choose N uniformly from {1,…,x}. Let T count its distinct prime divisors at most y, and put μ=∑ 1/p over primes p≤y.
+
+**Problem.** For each fixed positive integer k, the kth moment of (T−μ)/√L tends to the kth standard normal moment. Also (ω(N)−L)/√L tends in law to the same normal law, where ω counts all distinct primes.
+
+**How the definition helps.** The cutoff keeps enough primes for Gaussian fluctuations while making joint divisibility probabilities easy to estimate (our own argument). For any product d of distinct retained primes, the divisibility probability differs from 1/d by at most 1/x. For fixed k, expanding the centered moment therefore costs O(yᵏ/x) compared with independent indicators of means 1/p. This error tends to zero. In the independent sum, the variance is asymptotic to L and each fixed higher derivative at zero of its logarithmic moment generating function is O(L). After normalization this gives the Gaussian moments. At most ∜L larger primes divide N, and Mertens’ estimate gives μ=L+O(log L), so the full count has the same limit.
+
+**Paper or page:** [On an Erdős--Kac-type conjecture of Elliott](https://arxiv.org/abs/2307.13585v3). It says: “Uniformly for 1 ≤ k ≤ (σℙ)⁽²⁄³⁾ we have”
+
+**Sources:**
+
+- [On an Erdős--Kac-type conjecture of Elliott](https://arxiv.org/abs/2307.13585v3)
+- [Andrew Granville and K. Soundararajan, Sieving and the Erdős–Kac theorem](https://doi.org/10.1007/978-1-4020-5404-4_2)
+
+### Zeta weights make primes independent
+
+**Remember:** Weight by inverse powers and prime divisibility becomes independent.
+
+*True by definition.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 3: graduate.
+
+**Definition.** For s&gt;1, give each positive integer n probability 1/(ζ(s)nˢ), where ζ(s)=∑ 1/nˢ. This replaces a uniform draw from a bounded interval by a power-weighted draw from all integers.
+
+**Problem.** Let ω(N) count distinct prime divisors and put μ(s)=∑ 1/pˢ over all primes. Divisibility by distinct primes gives independent events. As s decreases to 1, (ω(N)−μ(s))/√μ(s) converges in distribution to a standard normal variable.
+
+**How the definition helps.** The power weights give exact independence, which uniform sampling from a finite interval lacks (our own calculation). Summing the weights at multiples of d gives P(d divides N)=1/dˢ. For squarefree d this factors into the probabilities for its prime divisors. The variance of ω(N) is μ(s)+O(1), and μ(s) tends to infinity. In our own proof, the central limit theorem applies because each centered indicator is bounded by one.
+
+**Paper or page:** [A Generalization of the Erdős-Kac Theorem](https://arxiv.org/abs/2405.06860v1). It says: “Zeta(1+1/aⱼ)-distributed random variables”
+
+**Sources:**
+
+- [A Generalization of the Erdős-Kac Theorem](https://arxiv.org/abs/2405.06860v1)
 
 ### Ignoring finitely many exceptions gives Waring's problem its true constant G(k)
 
@@ -3044,6 +4879,157 @@
 
 - [G. H. Hardy and J. E. Littlewood, Some problems of 'Partitio Numerorum' IV: The singular series in Waring's problem and the value of the number G(k), Math. Z. 12 (1922) 161–188](https://doi.org/10.1007/BF01482074)
 
+### Log weights simplify Vinogradov’s asymptotic
+
+**Remember:** Log weights remove the prime density from the main term.
+
+*Makes the theorem clean to state or prove.* MSC 11P32 (Goldbach-type theorems; other additive questions involving primes), 11P55. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For each positive integer m, set Λ(m) = log p if m is a power of a prime p, and zero otherwise. Let r(N) sum Λ(a)Λ(b)Λ(c) over ordered triples of positive integers with a+b+c = N.
+
+**Problem.** For odd N tending to infinity and fixed A &gt; 0, Vinogradov’s theorem gives r(N) = ½G(N)N² + O(N²/(log N)ᴬ). Form G(N) by multiplying one factor per prime p. Use 1 − 1/(p−1)² when p divides N and 1 + 1/(p−1)³ otherwise.
+
+**How the definition helps.** In our own comparison, the log weights absorb the changing density of primes, leaving N² as the size of the main term. The prime number theorem in arithmetic progressions estimates the weighted sum near fractions with small denominators. Bounding the sum at the remaining frequencies takes a separate estimate.
+
+**Wikipedia:** [Vinogradov's theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_theorem). It says: “r(N) = ½G(N)N² + O(N² log⁻ᴬ N)”
+
+**Sources:**
+
+- [I. Vinogradow, Some theorems concerning the theory of primes (1937), Theorem 2](https://www.mathnet.ru/php/archive.phtml?jrnid=sm&option_lang=eng&paperid=5565&wshow=paper)
+
+### Major arcs expose Vaughan’s saving
+
+**Remember:** Keep small denominators out of the minor arcs.
+
+*Makes the theorem clean to state or prove.* MSC 11P32 (Goldbach-type theorems; other additive questions involving primes), 11P55, 11L07. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For large N, set L = (log N)ᴮ with B &gt; 0. Using distance modulo one, call frequencies within 2L/(qN) of a reduced fraction a/q with q ≤ L the major arcs. The remaining frequencies form the minor arcs. Let S(α) sum Λ(n)exp(2πiαn) over 1 ≤ n ≤ N, where Λ weights prime powers by their prime’s logarithm and vanishes elsewhere.
+
+**Problem.** For each A &gt; 0, take B &gt; 2A + 8. On the minor arcs \|S(α)\| = O(N/(log N)ᴬ), uniformly in α as N grows.
+
+**How the definition helps.** In our own proof, the widths force each minor-arc frequency to have an approximation with a denominator in the range of Vaughan’s saving. Dirichlet’s theorem gives a reduced a/q with q ≤ ⌊N/L⌋ and \|α−a/q\| ≤ 1/(q⌊N/L⌋). On the minor arcs this forces q &gt; L. Vaughan bounds \|S(α)\| by a constant times (N/√q + N⁴⁄⁵ + √(Nq))(log N)⁴. Both terms involving q are at most N/√L before multiplication by (log N)⁴.
+
+**Wikipedia:** [Vinogradov's theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_theorem). It says: “The set of real numbers close to such rational points is usually referred to as the major arcs, the complement forms the minor arcs.”
+
+**Paper or page:** [Almost all primes are not needed in Ternary Goldbach](https://arxiv.org/abs/2409.08968v1). It says: “Let u ≥ 1, α ∈ ℝ and consider a reduced fraction a/q such that \|α − a/q\| ≤ 1/q².”
+
+**Sources:**
+
+- [R. C. Vaughan, Sommes trigonométriques sur les nombres premiers (1977), pp. 981–983](https://personal.science.psu.edu/rcv4/pubswww.pdf)
+
+### Modulo twenty-four selects five prime squares
+
+**Remember:** Each prime above three has square one modulo twenty-four.
+
+*Rules out counterexamples.* MSC 11P32 (Goldbach-type theorems; other additive questions involving primes), 11P55, 11P05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Call a target admissible for five squares of primes greater than 3 if its remainder modulo 24 is 5.
+
+**Problem.** Every sufficiently large admissible integer is the sum of five squares of primes greater than 3. No integer outside the class can be such a sum with all five primes greater than 3.
+
+**How the definition helps.** In our own explanation, reducing each summand modulo 24 removes every target that fails the necessary congruence. Each prime above 3 has square 1 modulo 8 and modulo 3, hence modulo 24. Five such squares therefore sum to 5 modulo 24. Existence throughout that class requires Hua’s theorem. Liu and Zhan even place all five primes near the square root of one fifth of the target.
+
+**Paper or page:** [On the density version of quadratic Waring's problem and the quadratic Waring--Goldbach problem](https://arxiv.org/abs/2508.14939v3). It says: “for all sufficiently large integers y that are congruent to s mod 24”
+
+**Sources:**
+
+- [Jianya Liu and Tao Zhan, Hua’s Theorem on Prime Squares in Short Intervals (2000)](https://doi.org/10.1007/s101140000077)
+
+### Unit classes isolate Goldbach parity
+
+**Remember:** Count nonzero classes to see the parity obstruction.
+
+*Makes the theorem clean to state or prove.* MSC 11P32 (Goldbach-type theorems; other additive questions involving primes), 11P55. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For each prime p, let M(p,N) count ordered triples of nonzero residues whose sum equals N modulo p. Define σ(p,N) = pM(p,N)/(p−1)³ and let G(N) be the product of these factors over all primes.
+
+**Problem.** For even N the product G(N) vanishes. For odd N it has a positive lower bound that does not depend on N.
+
+**How the definition helps.** In our own calculation, the product lets a single factor detect whether parity forbids three odd summands. At p = 2 the factor is zero for even N and two for odd N. Counting triples gives σ(p,N) = 1 − 1/(p−1)² when p divides N and 1 + 1/(p−1)³ otherwise. The lower bounds 1 − 1/(p−1)² over odd primes have a positive product because the sum of 1/(p−1)² converges. Vinogradov’s theorem connects this product to the weighted number of representations.
+
+**Wikipedia:** [Vinogradov's theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_theorem). It says: “If N is odd, then G(N) is roughly 1”
+
+**Sources:**
+
+- [I. Vinogradow, Some theorems concerning the theory of primes (1937), Theorem 2](https://www.mathnet.ru/php/archive.phtml?jrnid=sm&option_lang=eng&paperid=5565&wshow=paper)
+
+### Dual forms reveal Kloosterman phases
+
+**Remember:** The dual form is the coefficient of the inverse numerator.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11L05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Work modulo an odd prime p in even dimension s. For a symmetric invertible matrix M, define Q(x) = xᵀMx and its dual form D(c) = cᵀM⁻¹c. Write e(t) = exp(2πit/p) for residues t, and define the Kloosterman sum K(m,n) by summing e(ma+na⁻¹) over nonzero residues a.
+
+**Problem.** For an integer N and a vector c modulo p, sum e(a(Q(x)−N)+c·x) over all vectors x and nonzero residues a. The absolute value is pˢ⁄² times \|K(−N,−D(c)/4)\|, with division modulo p.
+
+**How the definition helps.** In our own derivation, the dual form captures all dependence on c in one coefficient. Completing the square shifts x by (2a)⁻¹M⁻¹c and leaves the constant −D(c)/(4a). The sum over x has modulus pˢ⁄² by the quadratic Gauss sum formula. Its sign or complex phase is independent of a because s is even. Summing over a gives the stated Kloosterman sum.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “If a = 0 or b = 0 then the Kloosterman sum reduces to the Ramanujan sum.”
+
+**Paper or page:** [Counting solutions to quadratic polynomials](https://arxiv.org/abs/2405.04328v1). It says: “S(m,n;q) = \\sideset{}{<sup>\*}\\sum\_{x\\bmod{q}}e<sub>q</sub></sup>(mx+n\\overline{x})”
+
+**Sources:**
+
+- [V. Vinay Kumaraswamy, Counting solutions to quadratic polynomials (2024)](https://arxiv.org/abs/2405.04328v1)
+
+### Farey mediants expose Kloosterman sums
+
+**Remember:** At fixed denominator the next Farey denominator is an inverse residue.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11L05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take all reduced fractions in \[0,1\] with denominator at most an integer Q and list them in increasing order. These are the Farey fractions of order Q. For a fraction a/p with right neighbor b/r, end its arc at their mediant, the fraction (a+b)/(p+r).
+
+**Problem.** Fix a prime p ≤ Q, integers m,n with p not dividing m, and β &gt; 0. Sum exp(2πi(ma+na⁻¹)/p) over 1 ≤ a &lt; p whose right endpoint is at least a/p+β, using inverses modulo p. The absolute value is O(√p log p) with an absolute constant.
+
+**How the definition helps.** In our own explanation, the mediant turns the endpoint test into an interval condition on the inverse of a. Adjacent fractions satisfy bp−ar = 1 and Q−p &lt; r ≤ Q. The endpoint lies 1/\[p(p+r)\] to the right of a/p. The test therefore restricts r, which equals −a⁻¹ modulo p, to an interval. The finite Fourier expansion of its indicator has coefficients whose absolute values sum to O(log p). Each term gives a complete Kloosterman sum, the same exponential sum over all nonzero a with a shifted coefficient n. Weil’s bound gives at most 2√p for each because p does not divide m.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “the symbol n\* denotes the congruence class, inverse to n modulo m”
+
+**Sources:**
+
+- [H. D. Kloosterman, On the representation of numbers in the form ax² + by² + cz² + dt² (1926)](https://doi.org/10.1007/BF02564120)
+- [A. Weil, On Some Exponential Sums (1948)](https://doi.org/10.1073/pnas.34.5.204)
+
+### Numerator-free weights separate Poisson factors
+
+**Remember:** Use one weight for every numerator to get one complete sum.
+
+*True by definition.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11D45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take Q &gt; 2 and a smooth function ω positive on (½,1) and zero elsewhere. Write e(t) = exp(2πit) and let h(x,y) sum \[ω(xj)−ω(\|y\|/(xj))\]/(xj) over positive integers j. For an integer polynomial F in s variables, define S(q,c) by summing e((aF(b)+c·b)/q) over vectors b modulo q and residues a coprime to q. For smooth W of compact support, let I(q,c) integrate W(x)h(q/Q,F(x)/Q²)e(−c·x/q) over ℝˢ.
+
+**Problem.** Let C be Q divided by the sum of ω(j/Q) over positive integers j. To count integer zeros of F with weight W, sum S(q,c)I(q,c)/qˢ over positive q and integer vectors c, then multiply by C/Q².
+
+**How the definition helps.** In our own explanation, using the same weight for every numerator a gives one integral I(q,c) for all a. With arcs between neighboring fractions, the endpoints can depend on a. Heath-Brown’s exact formula for the indicator of zero supplies the new weight. Group the integer vectors by residue b modulo q. Poisson summation rewrites each lattice sum as a sum over integer frequencies c, leaving the factor e(c·b/q). Summing over b and a gives S(q,c).
+
+**nLab:** [Poisson summation formula](https://ncatlab.org/nlab/show/Poisson+summation+formula). It says: “equating a sum or integral of a function over a domain (e.g., a lattice) with a corresponding sum or integral of its Fourier dual over a dual domain”
+
+**Sources:**
+
+- [D. R. Heath-Brown, A New Form of the Circle Method, and its Application to Quadratic Forms (1996)](https://ora.ox.ac.uk/objects/uuid%3Abbd3c62f-f010-44b5-8be5-87e903fb0084/files/m7ec02df6e1b8303a66e7a6015ecb6044)
+
+### Power densities give Waring’s Gamma factor
+
+**Remember:** The power substitution turns the real factor into a beta integral.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix integers k,s ≥ 2. Changing variables from x &gt; 0 to t = xᵏ gives the density f(t) = t raised to (1/k − 1), divided by k. Extend f by zero for t ≤ 0. Define the real factor at N as the s-fold convolution of f, the density for the sum of s such variables.
+
+**Problem.** Take N &gt; 0 and integers k,s ≥ 2. The real factor is Γ(1 + 1/k)ˢ times N raised to (s/k − 1), divided by Γ(s/k). For sufficiently large s, this is the real factor in the classical Waring asymptotic.
+
+**How the definition helps.** In our own calculation, using power coordinates turns each convolution into the same beta integral. Write one summand as Nu, so the remaining summands have total N(1−u). Euler’s beta formula evaluates the resulting integral of powers of u and 1−u and cancels the previous gamma denominator. The circle method must still identify this continuous density in the asymptotic count of integer representations.
+
+**nLab:** [Euler beta function](https://ncatlab.org/nlab/show/Euler+beta+function). It says: “B(x,y) = \\int<sub>0</sub><sup>1</sup> t<sup>x-1</sup> (1-t)<sup>y-1</sup> d t = \\frac{\\Gamma(x)\\Gamma(y)}{\\Gamma(x+y)},\\,\\,\\,\\,\\,\\,Re x\\gt 0, \\,\\,\\,\\,Re y \\gt 0,”
+
+**Wikipedia:** [Hardy–Ramanujan–Littlewood circle method](https://en.wikipedia.org/wiki/Hardy%E2%80%93Ramanujan%E2%80%93Littlewood_circle_method). It says: “the singularities, organised into the so-called singular series, predominate”
+
+**Sources:**
+
+- [G. H. Hardy and J. E. Littlewood, Some problems of Partitio Numerorum IV (1922)](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0012/PPN266833020_0012.pdf)
+
 ### Power moments count integer solutions
 
 **Remember:** One frequency per degree enforces one equality per degree.
@@ -3059,6 +5045,94 @@
 **Wikipedia:** [Vinogradov's mean-value theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_mean-value_theorem). It says: “An alternative analytic expression for Jₛ,ₖ(X) is”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Primitive phases factor singular series
+
+**Remember:** Use primitive phases once, then multiply the prime contributions.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11D45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let F consist of r integer polynomials in s variables and put e(t) = exp(2πit). For q ≥ 1, sum e(a·F(x)/q) over vectors x and a modulo q of lengths s and r respectively. Include a precisely when its coordinates and q have greatest common divisor one. Divide by qˢ to obtain A(q), and call the sum of A(q) over q the singular series.
+
+**Problem.** Assume the series of \|A(q)\| converges. Then the singular series equals the product over primes p of ∑ \[j ≥ 0\] A(pʲ).
+
+**How the definition helps.** In our own explanation, grouping fractions by their reduced denominator counts each rational frequency once and separates contributions from different primes. For coprime u and v, the Chinese remainder theorem splits each residue vector into independent vectors modulo u and v. Multiplying the numerator vectors by the necessary modular inverses preserves their allowed sets, giving A(uv) = A(u)A(v). Absolute convergence now permits multiplication of the prime factors. Rome and Yamagishi prove convergence for the diagonal systems in their lemma.
+
+**Paper or page:** [Integral solutions to systems of diagonal equations](https://arxiv.org/abs/2406.09256v2). It says: “In fact, \\\[ \\mathfrak{S}=\\prod\_{p\\textnormal{ prime}}\\chi(p), \\\] where \\\[ \\chi(p)=1+\\sum<sub>k=1</sub><sup>\\infty</sup>A(p<sup>k</sup>). \\\]”
+
+**Sources:**
+
+- [N. Rome and S. Yamagishi, Integral solutions to systems of diagonal equations (2026)](https://doi.org/10.2140/pjm.2026.340.179)
+
+### Primitive phases telescope local densities
+
+**Remember:** Grouping phases by their true denominator gives each density increment.
+
+*True by definition.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11D45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a polynomial F in s variables with integer coefficients, sum exp(2πiaF(x)/q) over all vectors x modulo q and all residues a coprime to q. Divide by qˢ to obtain A(q), with A(1) = 1. The density at q is q times the fraction of vectors x satisfying F(x) ≡ 0 modulo q.
+
+**Problem.** For each prime p and integer j ≥ 0, the density at pʲ equals the sum of A(pⁱ) over integers 0 ≤ i ≤ j. If the series converges, its sum equals the limiting density.
+
+**How the definition helps.** In our own derivation, grouping fractions by reduced denominator gives the increments of the density without counting lifts individually. Average the sum of exp(2πiaF(x)/pʲ) over x, using every numerator a modulo pʲ. Orthogonality gives the density because the inner sum equals pʲ at solutions and zero elsewhere. The terms with reduced denominator pⁱ contribute exactly A(pⁱ). For a particular polynomial, proving convergence or positivity requires a separate argument.
+
+**Paper or page:** [Solving quadratic forms in restricted variables with the circle method](https://arxiv.org/abs/2505.17949v1). It says: “The weighted p-adic density equals χ̃ₚ(𝒜), i.e. χ̃ₚ(𝒜) = lim \[m → ∞\] pᵐM(pᵐ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Residue averages separate major arcs
+
+**Remember:** The residue average carries the rational phase and the integral carries the offset.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05, 11L07. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix an integer d ≥ 2 and write e(t) = exp(2πit). Let C(q,a) be the average of e(arᵈ/q) over residues r modulo q. Let V(β) be the integral of e(βtᵈ) from 0 to X. Write S(α) for the sum of e(αnᵈ) over integers 1 ≤ n ≤ X.
+
+**Problem.** For α = a/q + β with a and q coprime, S(α) = C(q,a)V(β) + O(q(1+Xᵈ\|β\|)). The bound is uniform for X ≥ 1, real β and positive integers q at fixed d.
+
+**How the definition helps.** In our own explanation, the residue average packages the periodic part of the sum, leaving one integral for the slowly changing part near a/q. Split the sum into residue classes modulo q. In each class compare the remaining sum with V(β)/q by integration. The discrepancy is bounded by a constant times one plus the total variation of e(βtᵈ), which is O(Xᵈ\|β\|). Adding the errors over q classes gives the estimate.
+
+**Paper or page:** [Integral solutions to systems of diagonal equations](https://arxiv.org/abs/2406.09256v2). It says: “\\sum<sub>1\\le x\\le X</sub> e(\\alpha x<sup>d</sup>) = X q<sup>-1</sup> S(q,a) I(X<sup>d\\beta</sup>) + O\\left(\\frac{q}{\\gcd(q,a)}(1+X<sup>d\|\\beta\|</sup>)\\right).”
+
+**Sources:**
+
+- [N. Rome and S. Yamagishi, Integral solutions to systems of diagonal equations (2026)](https://doi.org/10.2140/pjm.2026.340.179)
+
+### Smooth divisor differences detect zero
+
+**Remember:** Subtract the same smooth weight at paired divisors.
+
+*True by definition.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11D45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take Q &gt; 2 and a smooth function ω supported on \[½,1\] and positive inside. Set h(x,y) = ∑ over j ≥ 1 of \[ω(xj) − ω(\|y\|/(xj))\]/(xj). Set C = Q divided by ∑ over j ≥ 1 of ω(j/Q). Set c(q,n) = ∑ of exp(2πian/q) over units a modulo q.
+
+**Problem.** For any integer n, C/Q² times ∑ over q ≥ 1 of c(q,n)h(q/Q,n/Q²) is 1 at zero and 0 elsewhere.
+
+**How the definition helps.** In our own explanation, the two terms of the smooth weight pair divisors and cancel at every nonzero integer. Compared with integrating exp(2πitn) over the unit interval, this formula separates the contributions by denominator. Group the terms by d = qj. Summing c(q,n) over q dividing d gives d when d divides n and zero otherwise. For nonzero n the substitution d ↦ \|n\|/d interchanges the two divisor sums. At zero the second term vanishes and the chosen C gives one. Heath-Brown’s expansion leaves the task of estimating smooth integrals in applications.
+
+**Wikipedia:** [Hardy–Ramanujan–Littlewood circle method](https://en.wikipedia.org/wiki/Hardy%E2%80%93Ramanujan%E2%80%93Littlewood_circle_method). It says: “The integral Iₙ is divided up into integrals each on some arc of the circle”
+
+**Sources:**
+
+- [D. R. Heath-Brown, A New Form of the Circle Method, and its Application to Quadratic Forms (1996)](https://ora.ox.ac.uk/objects/uuid%3Abbd3c62f-f010-44b5-8be5-87e903fb0084/files/m7ec02df6e1b8303a66e7a6015ecb6044)
+
+### The dual cone marks large sums
+
+**Remember:** Off the dual cone the inverse phase is nonconstant.
+
+*Rules out counterexamples.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11L05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Q(x) = xᵀMx have even dimension s ≥ 2, with M symmetric and invertible modulo an odd prime p. For the equation Q(x) = 0, call a frequency c off the dual cone if cᵀM⁻¹c is nonzero modulo p.
+
+**Problem.** Sum exp(2πi(aQ(x)+c·x)/p) over all vectors x and nonzero residues a modulo p. Its absolute value is pˢ⁄² off the dual cone and (p−1)pˢ⁄² on it.
+
+**How the definition helps.** In our own specialization, the dual cone picks out exactly the frequencies where completing the square leaves a constant phase in a. The quadratic Gauss sum formula gives a common factor of absolute value pˢ⁄² because s is even. The remaining sum runs over a⁻¹ and equals −1 off the cone by the geometric series formula. On the cone every term equals one. For Q(x,y) = x²−y², the nonzero vector (1,1) lies on the cone.
+
+**Paper or page:** [Counting solutions to quadratic polynomials](https://arxiv.org/abs/2405.04328v1). It says: “S(m,n;q) = \\sideset{}{<sup>\*}\\sum\_{x\\bmod{q}}e<sub>q</sub></sup>(mx+n\\overline{x})”
+
+**Sources:**
+
+- [V. Vinay Kumaraswamy, Counting solutions to quadratic polynomials (2024)](https://arxiv.org/abs/2405.04328v1)
 
 ### Freiman models prevent false collisions
 
@@ -3362,6 +5436,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Relative class numbers keep odd characters
+
+**Remember:** Divide by the real class number to keep only odd characters.
+
+*Makes the theorem clean to state or prove.* MSC 11R29 (Class numbers, class groups, discriminants), 11M20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an odd prime p, let K be the field generated over ℚ by a primitive p-th root of unity. Its real subfield K⁺ consists of the elements fixed by complex conjugation. The relative class number is h⁻ = h(K)/h(K⁺), where h counts ideal classes.
+
+**Problem.** Put n = (p−1)/2 and write R and R⁺ for the regulators, the logarithmic unit lattice volumes of K and K⁺. Then h⁻ equals p exp(n log(√p/π))(R⁺/R) times the product of L(1,χ) over characters modulo p satisfying χ(−1) = −1.
+
+**How the definition helps.** Taking the ratio cancels exactly the factors indexed by even characters, those satisfying χ(−1) = 1. In our own derivation these characters index the zeta factors of K⁺, while all characters index those of K. The analytic class number formula expresses the ratio of residues at one in terms of class numbers and regulators. The absolute discriminants have ratio exp(n log p), and the fields contain 2p and 2 roots of unity respectively. These identities give the stated constant.
+
+**Wikipedia:** [Class number formula](https://en.wikipedia.org/wiki/Class_number_formula). It says: “there is a further formulation possible, as shown by Kummer.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Root discriminants ignore unramified extensions
 
 **Remember:** The root cancels the extension degree.
@@ -3648,6 +5738,22 @@
 
 - [Philipp Furtwängler, Allgemeiner Existenzbeweis für den Klassenkörper eines beliebigen algebraischen Zahlkörpers, Mathematische Annalen 63 (1906)](https://doi.org/10.1007/bf01448421)
 
+### Centering pairs Hadamard factors
+
+**Remember:** Center the reflection and the linear terms cancel.
+
+*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Λ be the Dedekind zeta function of a number field with the discriminant and gamma factors from its functional equation. Set F(z) = (z²+¼)Λ(½+iz). The quadratic factor removes the poles at s = 0 and s = 1.
+
+**Problem.** F is even. Its product over zeros has one factor 1−z²/w² for each nonzero pair w,−w, counted with multiplicity. Multiply these factors by a nonzero constant and by z raised to the order of vanishing at zero.
+
+**How the definition helps.** Centering at ½ turns the functional equation into F(z) = F(−z), pairing opposite zeros. This replaces separate factors for individual zeros of Λ. Hadamard’s theorem expresses the entire function F of order one as a product over zeros times an exponential of a linear polynomial. In our own calculation, the exponential corrections at w and −w cancel. The zero at the origin has even multiplicity, so evenness forces the remaining exponential to be constant.
+
+**Wikipedia:** [Dedekind zeta function](https://en.wikipedia.org/wiki/Dedekind_zeta_function). It says: “producing an entire function, and moves the critical line to the real line.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Equal zeta functions fix class number times regulator
 
 **Remember:** Equal zeta functions force equal class number times regulator.
@@ -3728,6 +5834,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Norm-one classes exclude shifted poles
+
+**Remember:** Test nontriviality on norm-one classes to avoid shifted poles.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele chooses a nonzero element in each completion of a number field, with a unit at almost every finite prime. Idele classes identify choices differing by one global field element. Multiplying the normalized local absolute values gives their norm. A unitary Hecke character is a continuous homomorphism from these classes to the unit circle.
+
+**Problem.** If the character is nontrivial on the subgroup of norm one, its completed Hecke L-function is holomorphic everywhere.
+
+**How the definition helps.** Our own test on norm-one classes excludes precisely the characters that depend only on the norm. Tate’s continuation theorem shows that only those characters can give poles. In our own example, χ(a) = exp(it log N(a)) weights each ideal of norm N(a), with real t ≠ 0. Its L-function is the Dedekind zeta function at s − it, with a pole at 1 + it.
+
+**Wikipedia:** [Hecke character](https://en.wikipedia.org/wiki/Hecke_character). It says: “Hecke proved these L-functions have a meromorphic continuation to the whole complex plane, being analytic except for a simple pole of order 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Permutation representations factor intermediate zeta functions
 
 **Remember:** A fixed field becomes a permutation representation.
@@ -3745,6 +5867,43 @@
 **Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “Then for any finite-dimensional complex representation ρ of H, we have an induction formula:”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Prime-power traces give Artin log derivatives
+
+**Remember:** Taking traces on fixed vectors includes the ramified primes.
+
+*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let ρ be a complex representation of the group of a finite Galois extension of number fields. At each prime 𝔭, inertia consists of local automorphisms acting trivially on residues. On vectors fixed by inertia, Frobenius represents raising residues to the power q, the base residue field size. Weight 𝔭ᵐ for m ≥ 1 by log(q) times the trace of the mth Frobenius power, and give other ideals weight zero.
+
+**Problem.** For Re s &gt; 1, sum each weight times exp(−s log N𝔞) over nonzero integral ideals 𝔞, where N𝔞 counts residue classes. The sum equals −L′(s,ρ)/L(s,ρ) for the Artin L-function of ρ.
+
+**How the definition helps.** Traces on fixed vectors make the prime-power weights agree with the logarithm of each Artin determinant factor, even at ramified primes. A character value on the full representation can depend on the chosen Frobenius lift there. Averaging over inertia gives the trace on fixed vectors. Our own calculation expands the logarithm of the determinant using its eigenvalues. Differentiation cancels the denominator m and supplies the factor log(q).
+
+**Paper or page:** [A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2). It says: “\\tilde {\\chi }(g)=\\frac {1}{\|I\|}\\sum <sub>\\alpha \\in I</sub>\\chi (g\\alpha ).”
+
+**Sources:**
+
+- [Jesse Thorner and Zhuo Zhang, A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2)
+- [Henryk Iwaniec and Emmanuel Kowalski, Analytic Number Theory (2004)](https://doi.org/10.1090/coll/053)
+
+### Primitive completion restores reflection
+
+**Remember:** The smallest modulus keeps every factor needed for reflection.
+
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A finite-order Hecke character χ assigns roots of unity multiplicatively to ideals coprime to its conductor, the smallest modulus through which it factors. Its primitive L-function includes every prime factor allowed by that conductor. Form Λ(s,χ) by multiplying by the gamma factors from the embeddings and by exp((s/2)log(DN𝔣)). Here D is the absolute field discriminant and N𝔣 is the conductor norm.
+
+**Problem.** For a finite-order character, the completed function satisfies Λ(s,χ) = ε(χ)Λ(1−s,χ̄), with \|ε(χ)\| = 1. The same completion need not work if one drops factors at extra primes.
+
+**How the definition helps.** Using the smallest modulus keeps the local factors needed on both sides of Hecke’s functional equation. Our own example deletes one prime of norm q from the trivial character’s product. This multiplies the completed zeta function by 1 − exp(−s log q). The multiplier has different absolute values at 2 and −1, so reflection cannot hold with a constant of absolute value one.
+
+**Wikipedia:** [Hecke character](https://en.wikipedia.org/wiki/Hecke_character). It says: “Hecke showed these L-functions satisfy a functional equation relating the values of the L-function of a character and the L-function of its complex conjugate character.”
+
+**Sources:**
+
+- [Henryk Iwaniec and Emmanuel Kowalski, Analytic Number Theory (2004)](https://doi.org/10.1090/coll/053)
 
 ### Summing over ideals gives the Dedekind zeta function an Euler product
 
@@ -3797,6 +5956,150 @@
 **Paper or page:** [Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578). It says: “The Artin L-function L(𝒪Ｆ,ρ,s) of any complex Galois representation ρ of G extends to a meromorphic function on the complex plane.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Characters isolate ray classes
+
+**Remember:** Fourier projection leaves one main term per class.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A ray class group groups ideals coprime to a fixed modulus by their ratios. Equivalent ideals have a ratio generated by an element congruent to one modulo the finite modulus and positive at prescribed real embeddings. A character sends this finite group multiplicatively into the complex unit circle.
+
+**Problem.** For a fixed number field and modulus, each of the h ray classes contains a proportion tending to 1/h of all prime ideals. Count prime ideals by the size of their residue fields.
+
+**How the definition helps.** Averaging χ(b)χ̄(a) over all characters tests whether a prime belongs to class a without searching for a generator. Character orthogonality gives one for b = a and zero otherwise. Our own deduction applies Kai’s weighted prime ideal theorem to each character. Only the constant character contributes to the leading term. Partial summation removes the logarithmic weights.
+
+**Paper or page:** [Notes on Mitsui's Prime Number Theorem with Siegel zeros](https://arxiv.org/abs/2209.11816v2). It says: “where β is the potential Siegel zero mod 𝔮.”
+
+**Sources:**
+
+- [Wataru Kai, Notes on Mitsui's Prime Number Theorem with Siegel zeros](https://arxiv.org/abs/2209.11816v2)
+
+### Fixed cosets count degree-one primes
+
+**Remember:** Fixed cosets are the cycles of length one.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Embed a number field K in a finite Galois extension L of ℚ. Its group G of rational automorphisms permutes the left cosets of the subgroup fixing K. At an unramified prime p, Frobenius acts on residues by raising them to the power p.
+
+**Problem.** The number of primes of K above p with residue field of size p equals the number of cosets fixed by Frobenius. The density of rational primes with such a factor equals the fraction of group elements fixing a coset.
+
+**How the definition helps.** The coset action turns the existence of a degree-one prime into a fixed-point test. The prime decomposition theorem identifies cycle lengths with residue degrees, the degrees of the finite residue fields over the field of p elements. Our own deduction uses Chebotarev’s theorem to turn the resulting count of group elements into a prime density.
+
+**Paper or page:** [Density questions on arithmetic equivalence](https://arxiv.org/abs/2106.01166v1). It says: “{\\rm Trace}(\\rho <sub>K</sub>({\\rm Frob}<sub>\\ell </sub>)) =a<sub>\\ell </sub>(K).”
+
+**Sources:**
+
+- [Guillermo Mantilla-Soler, Density questions on arithmetic equivalence (2021)](https://arxiv.org/abs/2106.01166v1)
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
+
+### Ideal norms isolate first-degree primes
+
+**Remember:** An inert quadratic prime enters at its square.
+
+*Rules out counterexamples.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a nonzero prime ideal 𝔭 in a number field, its norm is the size of the field obtained by reducing integers modulo 𝔭. This size is pᶠ for a rational prime p. Call f the residue degree. Order prime ideals by norm.
+
+**Problem.** In a number field of degree n, at most n√x prime ideals of norm ≤ x have degree greater than one. Hence the count of degree-one prime ideals is asymptotic to x/log x.
+
+**How the definition helps.** Ordering by norm delays every prime of residue degree above one until at least p². Our own bound counts at most n ideals above each rational prime p ≤ √x. Landau’s prime ideal theorem counts all prime ideals up to norm x. In our own comparison, ordering by p counts both ideals above each prime congruent to 1 modulo 4 in ℚ(i). It also counts one above each prime congruent to 3 modulo 4. Dirichlet’s theorem gives equal prime densities for these two progressions, yielding a total asymptotic to 3x/(2 log x).
+
+**Wikipedia:** [Landau prime ideal theorem](https://en.wikipedia.org/wiki/Landau_prime_ideal_theorem). It says: “the prime ideal theorem is dominated by the ideals of norm a prime number.”
+
+**Sources:**
+
+- [Edmund Landau, Neuer Beweis des Primzahlsatzes und Beweis des Primidealsatzes (1903)](https://doi.org/10.1007/BF01444310)
+
+### Principal primes have reciprocal class-number density
+
+**Remember:** Principal means identity in the Hilbert class field.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a number field K, its Hilbert class field H is the largest abelian extension unramified everywhere. This means finite primes acquire no repeated factors and real embeddings stay real. A principal ideal has one generator.
+
+**Problem.** Among prime ideals of K, the proportion that are principal tends to 1/h. Count primes by residue field size, and let h count ideal classes, which identify ideals differing by a field scalar.
+
+**How the definition helps.** The Hilbert class field turns the one-generator test into a test for complete splitting. Class field theory identifies ideal classes with automorphisms of H over K. A prime splits completely precisely when its class is the identity. Our own density calculation applies Chebotarev’s theorem to this one element in a group of size h.
+
+**Wikipedia:** [Hilbert class field](https://en.wikipedia.org/wiki/Hilbert_class_field). It says: “Its degree over K equals the class number of K”
+
+**Sources:**
+
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
+
+### Quarter turns let prime angles equidistribute
+
+**Remember:** Take angles modulo the rotations made by units.
+
+*Rules out counterexamples.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Every prime ideal of the Gaussian integers ℤ\[i\] has a generator a. Its four generators differ by multiplication by a power of i. Define the angle of the ideal as the argument of a modulo π/2.
+
+**Problem.** Order these prime ideals by norm, the size of their residue field. The fraction with angle in any fixed subinterval of \[0,π/2) tends to the interval length divided by π/2.
+
+**How the definition helps.** Taking angles modulo π/2 makes exp(4in arg a) independent of the generator for every integer n. These functions multiply on ideals, giving Hecke characters. The Hecke prime ideal theorem says each nonconstant character averages to zero over prime ideals. Our own deduction applies Weyl’s criterion, which tests uniform distribution by these averages. Choosing first-quadrant generators alone would leave three quarters of the full circle empty.
+
+**Wikipedia:** [Hecke character](https://en.wikipedia.org/wiki/Hecke_character). It says: “The only units are powers of i, so the factor of 4 in the exponent ensures that the character is well defined on ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real places preserve principal-prime density
+
+**Remember:** The ordinary class field keeps real places real.
+
+*Rules out counterexamples.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The ordinary Hilbert class field is the largest abelian extension unramified everywhere. Its Galois group is commutative, finite primes acquire no repeated factors, and real embeddings stay real. Dropping the condition on real embeddings gives the narrow class field.
+
+**Problem.** For K = ℚ(√3), all prime ideals split completely in its ordinary Hilbert class field. In its narrow class field, the proportion tends to one half when primes are ordered by residue field size.
+
+**How the definition helps.** The real embedding condition excludes K(i), where a principal prime can fail to split. The cited example gives class number one, so the ordinary Hilbert class field equals K. The narrow class field is K(i), which has degree two over K. Our own calculation applies Chebotarev’s theorem to its identity automorphism.
+
+**Wikipedia:** [Hilbert class field](https://en.wikipedia.org/wiki/Hilbert_class_field). It says: “in the extension K(i)/K there is ramification at the archimedean places”
+
+**Sources:**
+
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
+
+### Split primes identify normal fields
+
+**Remember:** Complete splitting detects the normal closure.
+
+*Rules out counterexamples.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A prime splits completely in a finite extension if it has as many distinct prime factors as the extension degree. Attach to each finite Galois extension its set of completely split primes.
+
+**Problem.** Two finite Galois extensions of K inside a fixed algebraic closure are equal if their completely split prime sets differ by only finitely many primes.
+
+**How the definition helps.** Complete splitting records which Frobenius elements fix the entire field. At an unramified prime, Frobenius raises residues to the size of the base residue field. Our own argument places both fields in one finite Galois extension. Chebotarev tests every conjugacy class infinitely often, so the split sets determine the subgroups fixing the two fields. Our own counterexample uses ℚ(∛2) and its Galois closure. Outside the ramified primes, splitting in the cubic field means Frobenius fixes all three roots, hence also the closure.
+
+**Wikipedia:** [Chebotarev density theorem](https://en.wikipedia.org/wiki/Chebotarev_density_theorem). It says: “is uniquely determined by the set of primes of K that split completely in it.”
+
+**Sources:**
+
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
+
+### Split primes intersect under composita
+
+**Remember:** Fixing both fields fixes every element they generate together.
+
+*True by definition.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a finite Galois number field K, let S(K) contain the rational primes that split into \[K:ℚ\] distinct prime ideals. Equivalently, these primes are unramified and their Frobenius is the identity. Frobenius acts on residues by raising them to the power p.
+
+**Problem.** For two finite Galois number fields K and L, S(KL) = S(K) ∩ S(L). In particular this intersection has natural density 1/\[KL:ℚ\].
+
+**How the definition helps.** An automorphism fixes the field KL generated by K and L exactly when it fixes both fields. Our own argument uses this test for Frobenius in place of factoring p in KL. Primes unramified in both fields remain unramified in KL, and Frobenius restricts to Frobenius in each field. Chebotarev’s theorem gives the density of the identity class.
+
+**Paper or page:** [Density questions on arithmetic equivalence](https://arxiv.org/abs/2106.01166v1). It says: “S(K̃L̃) = S(K̃) ∩ S(L̃).”
+
+**Sources:**
+
+- [Guillermo Mantilla-Soler, Density questions on arithmetic equivalence (2021)](https://arxiv.org/abs/2106.01166v1)
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
 
 ### Adele rings extend by tensoring
 
@@ -4588,6 +6891,77 @@
 
 - [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565v1)
 
+### Artin–Schreier sheaves encode lifted characters
+
+**Remember:** A single additive cover encodes every lifted character.
+
+*True by definition. Confidence: medium.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Fix a nontrivial additive character ψ of the prime field 𝔽ₚ, so ψ turns addition into multiplication. Above each x, take all solutions of yᵖ − y = x. Translation by 𝔽ₚ permutes these solutions. Use the one-dimensional space of functions h satisfying h(y + a) = ψ(a)h(y).
+
+**Problem.** For x in any finite extension k, geometric Frobenius has trace ψ(Tr(x)) on this space. Here Tr is the field trace from k to 𝔽ₚ.
+
+**How the definition helps.** Our own construction replaces a separate lifted character over each field with one space of functions above each point. Write q = \|k\|. Adding the successive pth powers of the defining equation shows that the qth power of y equals y + Tr(x). Geometric Frobenius acts on functions by precomposition with the qth-power map on solutions. The translation rule therefore gives the claimed scalar.
+
+**nLab:** [Artin-Schreier sequence](https://ncatlab.org/nlab/show/Artin-Schreier+sequence). It says: “F − id ≔ (−)ᵖ − (−) : (𝔾ₐ)ₓ → (𝔾ₐ)ₓ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced phases expose the true degree
+
+**Remember:** Remove pth-power differences before measuring a phase.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Over a finite field k of characteristic p, call two polynomial phases equivalent if their difference is gᵖ − g for some polynomial g. Replace a term a x raised to pm by b x raised to m, where bᵖ = a and m ≥ 1. Repeat after collecting terms until no positive exponent is divisible by p.
+
+**Problem.** For a nontrivial additive character ψ of 𝔽ₚ, sum ψ(Tr(f(x))) over k, using the field trace to 𝔽ₚ. Equivalent phases give the same sum. If the reduced phase has degree d ≥ 1, the modulus is at most (d − 1)√\|k\|.
+
+**How the definition helps.** Reduction measures the degree only after discarding differences invisible to the field trace. Our own calculation uses Tr(gᵖ) = Tr(g) at every input. The Weil bound applies because the remaining degree is prime to p. For example, xᵖ − x reduces to zero and its sum equals \|k\|.
+
+**nLab:** [Artin-Schreier sequence](https://ncatlab.org/nlab/show/Artin-Schreier+sequence). It says: “There is a short exact sequence of abelian sheaves over the étale site”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 11](https://people.math.ethz.ch/~kowalski/ik-ant-exp-sums.pdf)
+
+### Smooth top forms give Deligne cancellation
+
+**Remember:** Test the highest-degree terms on projective space.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Take a polynomial f of degree d ≥ 2 in m ≥ 2 variables over 𝔽𝓆. Assume the characteristic does not divide d. Call f smooth at infinity if its degree-d part and all its first partial derivatives have no common nonzero zero over the algebraic closure.
+
+**Problem.** For a nontrivial additive character ψ, sum ψ(f(x)) over all m-tuples in 𝔽𝓆. If f is smooth at infinity, the modulus is at most (d − 1)ᵐ√(qᵐ).
+
+**How the definition helps.** Testing only the top form excludes flat directions that can make a multivariable sum too large. Our own example in odd characteristic is f(x) = x₁². Each of the other variables multiplies the quadratic Gauss sum by q, giving modulus qᵐ/√q. Deligne’s theorem supplies the bound under the smoothness condition.
+
+**Wikipedia:** [Exponential sum](https://en.wikipedia.org/wiki/Exponential_sum). It says: “The Weil conjectures had major applications to complete sums with domain restricted by polynomial conditions”
+
+**Sources:**
+
+- [Deligne, La conjecture de Weil I](https://www.numdam.org/item/PMIHES_1974__43__273_0/)
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 11](https://people.math.ethz.ch/~kowalski/ik-ant-exp-sums.pdf)
+
+### Unique shifts force Burgess cancellation
+
+**Remember:** A shift used once gives a zero or pole of order one.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 11L40. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a nonprincipal multiplicative character χ modulo a prime p and set χ(0) = 0. Consider an ordered list of 2r shifts modulo p, with r ≥ 1. Call it exceptional if every shift appearing in the list occurs at least twice.
+
+**Problem.** For each x modulo p, multiply χ(x + b) over the first r shifts b and its complex conjugate over the last r. For a nonexceptional list, the sum of these products over x has modulus at most 2r√p.
+
+**How the definition helps.** A shift appearing once gives a simple zero or pole in the quotient of the two products of linear factors. Our own explanation uses this order to rule out a power of degree equal to the order of χ. The character bound in Corollary 11.24 of Iwaniec and Kowalski then applies, including at the excluded zeros. Repeating the first half as the second gives p minus the number of distinct shifts.
+
+**Paper or page:** [On the correlations between character sums of division polynomials under shifts](https://arxiv.org/abs/2507.09271). It says: “Assume that Ψ is not a non-trivial power of a function in”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 11](https://people.math.ethz.ch/~kowalski/ik-ant-exp-sums.pdf)
+
 ### Negative Gauss sums lift multiplicatively
 
 **Remember:** Negating each Gauss sum absorbs the sign in the lifting formula.
@@ -4603,6 +6977,24 @@
 **Paper or page:** [Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872). It says: “Then, for any integer n ≥ 1, we have Gₙᵣ(ψ′) = (−1)ⁿ⁻¹Gᵣ(ψ)ⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Nonpowers give Kummer cancellation
+
+**Remember:** A perfect power makes the character constant away from its zeros and poles.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11T24 (Other character sums and Gauss sums), 11T23, 14F20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let χ be a multiplicative character of order d &gt; 1 on the nonzero elements of a field with q elements. Take a nonzero rational function f over that field. Test whether f is a dth power after extending its coefficients to the algebraic closure.
+
+**Problem.** Sum χ(f(x)) over finite field elements outside the zeros and poles of f. If f fails the power test, the modulus is at most (s − 2)√q. Here s counts infinity and all distinct finite zeros and poles over the algebraic closure.
+
+**How the definition helps.** Our own explanation uses the orders of zeros and poles to test whether the character can stay constant. On the projective line, f is a geometric dth power exactly when d divides every such order. For f(x) = xᵈ, every nonzero input contributes one. The Weil bound for multiplicative character sums supplies the estimate in the other case.
+
+**nLab:** [Kummer sequence](https://ncatlab.org/nlab/show/Kummer+sequence). It says: “the group of nth roots of unity.”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 11](https://people.math.ethz.ch/~kowalski/ik-ant-exp-sums.pdf)
 
 ### Diophantine sets with parameters let Hilbert's tenth problem meet computability
 
@@ -4676,6 +7068,24 @@
 
 - [A maximal extension of the Bloom–Maynard bound for sets with no square differences](https://arxiv.org/abs/2303.03345v1)
 
+### Additive energy finds structured subsets
+
+**Remember:** Many repeated sums can reveal a structured subset inside a noisy set.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** The additive energy E(A) counts ordered quadruples (a,b,c,d) from A satisfying a+b=c+d. Each possible sum contributes the square of its number of representations.
+
+**Problem.** Let A be a finite nonempty subset of an abelian group with E(A) ≥ \|A\|³/K for K ≥ 1. Some subset B has \|B\| ≥ c\|A\|/K and \|B−B\| ≤ CK⁴\|B\| for absolute constants c,C &gt; 0.
+
+**How the definition helps.** Energy lets the hypothesis count repeated sums without requiring a bound on the total number of sums (our own explanation). Scattered points can add many new sums while a structured subset still contributes many quadruples. The Balog–Szemerédi–Gowers theorem extracts a large subset B with few distinct differences b−b′.
+
+**Paper or page:** [Note on the Theorem of Balog, Szemerédi, and Gowers](https://arxiv.org/abs/2308.10245). It says: “Given a real K ≥ 1 every additive set A with energy E(A) ≥ \|A\|³/K has a subset A′ ⊆ A”
+
+**Sources:**
+
+- [Christian Reiher and Tomasz Schoen, Note on the Theorem of Balog, Szemerédi, and Gowers, arXiv:2308.10245v2](https://arxiv.org/abs/2308.10245)
+
 ### Circle values extend cubic phases
 
 **Remember:** Cube differences see polynomial phases whose values are not signs.
@@ -4691,6 +7101,24 @@
 **Paper or page:** [Non-classical polynomials and the inverse theorem](https://arxiv.org/abs/2107.07495v1). It says: “Then P : V → ℝ/ℤ is a non-classical polynomial of degree at most d if and only if it can be expressed in the form”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Cut tests give sparse weights bounded models
+
+**Remember:** Intersect the sets in two cut tests to get another cut test.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** For fixed r≥2, test f on ℤ/Nℤ by averaging f(x₁+⋯+xᵣ) times a product of r indicators over independent uniform inputs. The i-th indicator tests an arbitrary subset of all coordinates except xᵢ. The arithmetic cut norm is the supremum of the absolute values of these averages.
+
+**Problem.** For every ε&gt;0 choose η&gt;0 independently of N. Suppose ν≥0 and the cut norm of ν−1 is at most η. Every 0≤f≤ν then admits a function g valued in \[0,1\] such that the cut norm of f−g is at most ε.
+
+**How the definition helps.** The product of two cut tests is another cut test because their indicators multiply by intersecting sets (our own explanation). The dense model theorem uses convex separation to test whether a bounded approximation exists. Polynomial approximation reduces the separating test to products that the cut norm already controls.
+
+**Wikipedia:** [Szemerédi's theorem](https://en.wikipedia.org/wiki/Szemer%C3%A9di%27s_theorem). It says: “A more general relative Szemerédi theorem has since been given by David Conlon, Jacob Fox, and Yufei Zhao.”
+
+**Sources:**
+
+- [Conlon, Fox and Zhao, The Green–Tao theorem: an exposition, EMS Surveys in Mathematical Sciences 1 (2014), 249–282](https://doi.org/10.4171/emss/6)
 
 ### Entropic doubling contracts under homomorphisms
 
@@ -4710,6 +7138,174 @@
 
 - [Ben Green, Freddie Manners, Terence Tao, Sumsets and entropy revisited, Random Struct. Alg. (2024) 1-33, arXiv:2306.13403](https://arxiv.org/abs/2306.13403)
 
+### Finite complexity separates binary prime problems
+
+**Remember:** A parallel pair cannot be separated into any allowed classes.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Take fixed nonconstant affine forms with integer coefficients, and write vᵢ for the coefficient vector of the linear part of form i. For each i, partition the remaining vectors into at most s+1 classes whose rational spans all exclude vᵢ. The complexity is the least nonnegative s that works for every i, or infinity if none works.
+
+**Problem.** For finite complexity, let K be a convex region in \[−N,N\]ᵈ where all forms are positive. Sum the product of their von Mangoldt weights over integer points of K, giving each prime power pᵃ weight log p and other integers zero. The result is vol(K)∏ₚβₚ+o(Nᵈ), where βₚ divides the fraction avoiding all zeros modulo p by (1−1/p)ᵗ for t forms.
+
+**How the definition helps.** The partition condition identifies systems covered by the counting theorem and excludes pairs with proportional slopes (our own explanation). If no slopes are proportional, singleton classes suffice. The forms n and n+2 share a slope, so the theorem makes no claim about twin primes. The asymptotic requires Green and Tao’s prime counting theorem and the later results that establish its hypotheses.
+
+**Paper or page:** [Improved quadratic Gowers uniformity for the Möbius function](https://arxiv.org/abs/2212.09635). It says: “Let Ψ be affine forms such that no two ψᵢ differ by a constant.”
+
+**Sources:**
+
+- [Green and Tao, Linear equations in primes, Annals of Mathematics 171 (2010), 1753–1850](https://doi.org/10.4007/annals.2010.171.1753)
+- [Green, Tao and Ziegler, An inverse theorem for the Gowers Uˢ⁺¹\[N\] norm, Annals of Mathematics 176 (2012), 1231–1372](https://doi.org/10.4007/annals.2012.176.2.11)
+- [Green and Tao, The Möbius function is strongly orthogonal to nilsequences, Annals of Mathematics 175 (2012), 541–566](https://doi.org/10.4007/annals.2012.175.2.3)
+
+### Linear forms tests transfer Szemerédi's theorem
+
+**Remember:** Test the doubled patterns that appear in the counting proof.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Fix k ≥ 3 and sample two independent uniform residues for each of k coordinates modulo a prime N, all choices independent. For each j from 1 to k, form every sum Σᵢ≠ⱼ(j−i)zᵢ using either residue at each coordinate i ≠ j. Evaluate the nonnegative weight ν on each indexed sum. The k-linear forms condition requires the mean of every subproduct to approach one as N grows.
+
+**Problem.** Suppose ν satisfies this condition, 0 ≤ f ≤ ν, and the mean of f is at least δ &gt; 0. The mean of f(x)⋯f(x+(k−1)d) over uniform x,d is at least c(k,δ)−o(1), with c(k,δ)&gt;0.
+
+**How the definition helps.** The tests control the extra products created when Cauchy–Schwarz duplicates an input (our own explanation). Conlon, Fox and Zhao compare the progression count with that of a bounded function with similar mean. The dense form of Szemerédi’s theorem supplies a positive lower bound for that function.
+
+**Wikipedia:** [Szemerédi's theorem](https://en.wikipedia.org/wiki/Szemer%C3%A9di%27s_theorem). It says: “It is not implied by Szemerédi's theorem because the primes have density 0 in the natural numbers.”
+
+**Sources:**
+
+- [Conlon, Fox and Zhao, A relative Szemerédi theorem, Geometric and Functional Analysis 25 (2015), 733–762](https://doi.org/10.1007/s00039-015-0324-9)
+- [Conlon, Fox and Zhao, The Green–Tao theorem: an exposition, EMS Surveys in Mathematical Sciences 1 (2014), 249–282](https://doi.org/10.4171/emss/6)
+
+### Local factors count prime progressions
+
+**Remember:** Separate real volume from each prime’s divisibility correction.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity), 11N13. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix k ≥ 3 and count pairs (x,d) modulo p for which none of x,x+d,…,x+(k−1)d vanishes. Divide their fraction by (1−1/p)ᵏ to obtain βₚ. The singular series is the product of βₚ over primes p.
+
+**Problem.** For fixed k≥3, the count of strictly increasing k-term prime progressions at most N is asymptotic to N²∏ₚβₚ divided by 2(k−1)(log N)ᵏ.
+
+**How the definition helps.** The singular series collects each prime’s correction to the count predicted by independent divisibility (our own explanation). For p≤k only d=0 works, giving p−1 pairs. For p&gt;k each nonzero difference forbids k starts, giving (p−1)(p−k+1) pairs in total. The region of increasing progressions contributes the leading area N²/(2(k−1)). Green and Tao’s counting theorem and its later supporting results supply the asymptotic.
+
+**Wikipedia:** [Green–Tao theorem](https://en.wikipedia.org/wiki/Green%E2%80%93Tao_theorem). It says: “for the number of k tuples of primes p₁ &lt; p₂ &lt; ⋯ &lt; pₖ ≤ N in arithmetic progression.”
+
+**Sources:**
+
+- [Green and Tao, Linear equations in primes, Annals of Mathematics 171 (2010), 1753–1850](https://doi.org/10.4007/annals.2010.171.1753)
+- [Green, Tao and Ziegler, An inverse theorem for the Gowers Uˢ⁺¹\[N\] norm, Annals of Mathematics 176 (2012), 1231–1372](https://doi.org/10.4007/annals.2012.176.2.11)
+- [Green and Tao, The Möbius function is strongly orthogonal to nilsequences, Annals of Mathematics 175 (2012), 541–566](https://doi.org/10.4007/annals.2012.175.2.3)
+
+### Minimum quadratic rank gives uniform fibers
+
+**Remember:** Check every combination, because two high-rank quadratics can cancel.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Let Q comprise d quadratic polynomials on a finite vector space H over a field of odd prime order p. For a quadratic part q, its rank is the matrix rank of the bilinear form q(x+y)−q(x)−q(y). The tuple rank is the minimum rank among combinations whose coefficients are not all zero.
+
+**Problem.** If Q has rank at least R, each equation Q(x)=b has \|H\|p⁻ᵈ solutions up to an error of at most \|H\|/√(pᴿ).
+
+**How the definition helps.** Testing all combinations controls every oscillating term in the Fourier expansion of the solution count (our own explanation). For example, the pair (q,q) never takes a value with unequal coordinates, however large the rank of q. The quadratic exponential sum estimate bounds each nonconstant term by the reciprocal of √(pᴿ) after averaging over H. Subtracting b reduces any target to the quoted zero count.
+
+**Paper or page:** [An inverse theorem for the Gowers U³-norm relative to quadratic level sets](https://arxiv.org/abs/2409.07962). It says: “be a d-tuple of quadratic polynomials on H of rank at least R.”
+
+**Sources:**
+
+- [Sean Prendiville, An inverse theorem for the Gowers U³-norm relative to quadratic level sets, arXiv:2409.07962v1](https://arxiv.org/abs/2409.07962)
+
+### Normal form exposes the counting bound
+
+**Remember:** Each rival form misses a coordinate that the chosen form uses.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Fix s ≥ 1 and linear forms over a field of prime order p. For each form, select at most s+1 coordinates with nonzero coefficients. Require each other form to omit at least one selected coordinate. Such a system is in s-normal form.
+
+**Problem.** Evaluate the forms on independent uniform inputs from a finite vector space over this field. Average the product obtained by applying a function fᵢ valued in \[0,1\] to each form. Replacing them by functions gᵢ valued in \[0,1\] changes this average by at most the sum of the order-(s+1) Gowers norms of fᵢ−gᵢ.
+
+**How the definition helps.** The selected coordinates specify which variables to duplicate in Cauchy–Schwarz (our own explanation). Each competing factor disappears at a step involving a coordinate it omits. What remains is a Gowers norm, which measures an alternating product over the vertices of an additive cube. The counting lemma gives the bound for one replacement, and adding the bounds covers all replacements.
+
+**Paper or page:** [Quasirandomness in additive groups and hypergraphs](https://arxiv.org/abs/2107.01463). It says: “Let Φ : Gᵏ → Gᵐ be a system of linear forms in s-normal form, and suppose that Φ is coprime.”
+
+**Sources:**
+
+- [Davi Castro-Silva, Quasirandomness in additive groups and hypergraphs, arXiv:2107.01463v1](https://arxiv.org/abs/2107.01463)
+
+### Power dependence defeats lower-order counting
+
+**Remember:** A relation among powers makes the phases cancel in the product.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Let ψ₁,…,ψₜ be linear forms over the field of prime order p&gt;d≥2. Test their d-th powers for linear dependence as homogeneous polynomials. Apply each form coordinate by coordinate to vectors of length n over the field.
+
+**Problem.** If the powers are dependent, there exist complex functions fᵢ of modulus one whose product along the forms always equals one. Yet at least one input has order-d Gowers norm tending to zero as n grows.
+
+**How the definition helps.** A relation Σᵢaᵢψᵢᵈ=0 supplies phases whose product is identically one (our own finite-field example). Put ζ=exp(2πi/p) and take fᵢ(x) to be ζ raised to aᵢ times the sum of the d-th powers of the coordinates. The Gowers norm takes the 2ᵈ-th root of the mean alternating product on d-dimensional additive cubes. For aᵢ≠0, differencing d times gives exponent aᵢd!h₁⋯h𝑑 per coordinate, up to sign. Its phase has mean strictly below one in modulus because it takes different values. Independence across coordinates raises that modulus to the n-th power.
+
+**Paper or page:** [On a conjecture of Gowers and Wolf](https://arxiv.org/abs/2106.15437). It says: “the polynomials ψ₁ˢ⁺¹, …, ψₜˢ⁺¹ are linearly independent.”
+
+**Sources:**
+
+- [Daniel Altman, On a conjecture of Gowers and Wolf, arXiv:2106.15437v2](https://arxiv.org/abs/2106.15437)
+
+### Relative density reaches sparse prime subsets
+
+**Remember:** Compare a set of primes with the primes themselves.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 4: research.
+
+**Definition.** Let π(N) count primes at most N. For a set A of primes, use the upper relative density limsup as N → ∞ of \|A ∩ \[1,N\]\|/π(N). This uses the primes as the reference set instead of all integers.
+
+**Problem.** Every set of primes with positive upper relative density contains infinitely many nonconstant arithmetic progressions of each fixed length k ≥ 2.
+
+**How the definition helps.** Relative density gives a prime subset a positive share even when its density among integers is zero (our own explanation). Green and Tao prove that Szemerédi’s progression theorem extends to sets bounded by suitable weights. A sieve supplies such a weight for the primes.
+
+**Wikipedia:** [Green–Tao theorem](https://en.wikipedia.org/wiki/Green%E2%80%93Tao_theorem). It says: “the set A contains infinitely many arithmetic progressions of length k.”
+
+**Sources:**
+
+- [Green and Tao, The primes contain arbitrarily long arithmetic progressions, Annals of Mathematics 167 (2008), 481–547](https://doi.org/10.4007/annals.2008.167.481)
+
+### Rough weights make prime uniformity measurable
+
+**Remember:** Compare primes with integers that avoid the same small prime divisors.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Let P be the product of primes below w, and let φ(P) count residues coprime to P. The Cramér model M assigns P/φ(P) to integers coprime to P and zero elsewhere. Its mean over a period equals one.
+
+**Problem.** Take w=exp((log N)¹ᐟ¹⁰) and fixed k ≥ 2. On \[1,N\], the order-k Gowers norm of Λ−M is O((log log N)⁻ᶜ) for some c=c(k)&gt;0. This norm averages products over additive cubes, and Λ gives weight log p to positive powers of p and zero elsewhere.
+
+**How the definition helps.** The model preserves the small-prime biases that prevent the constant function from approximating Λ (our own explanation). For example, the mean of (Λ(n)−1)exp(2πin/3) tends to −1/2 by the prime number theorem in residue classes. Tao and Teräväinen’s quantitative uniformity theorem bounds the remaining cube averages.
+
+**Paper or page:** [Improved quadratic Gowers uniformity for the Möbius function](https://arxiv.org/abs/2212.09635). It says: “\\\|\\Lambda - \\Lambda <sub>Q</sub>\\\| <sub>U<sup>s</sup>(\[N\])</sub> \\ll (\\log \\log (N))<sup>-c</sup>”
+
+**Sources:**
+
+- [Tao and Teräväinen, Quantitative bounds for Gowers uniformity of the Möbius and von Mangoldt functions, JEMS 27 (2025), 1321–1384](https://doi.org/10.4171/jems/1404)
+
+### Squared sieve weights dominate primes
+
+**Remember:** Beyond the divisor cutoff, a prime contributes only its divisor one.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity), 11N13. arXiv math.NT. Level 4: research.
+
+**Definition.** Choose smooth χ supported on \[−1,1\], with 0 ≤ χ ≤ 1 and χ(0)=1. Define S(m) by summing μ(d)χ(log d/log R) over divisors d of m, using the Möbius function μ. Let W be the product of primes up to w and c the integral of \|χ′\|² over \[0,1\]. On residues N/2 ≤ n &lt; N use ν(n)=φ(W)log(R)S(Wn+1)²/(Wc), and use one elsewhere.
+
+**Problem.** Fix k ≥ 3, take R=Nᵃ with a=1/(8k·2ᵏ), and let w grow sufficiently slowly with N. The weight passes the k-linear forms test for counting progressions, which requires mean 1+o(1) for every subproduct of the doubled progression forms. At primes Wn+1 in the specified half, ν(n) is at least (a/2c)(φ(W)/W)log(Wn+1).
+
+**How the definition helps.** Squaring the divisor sum makes the weight nonnegative while preserving its size at large primes (our own explanation). The Möbius function vanishes on multiples of squares of primes and otherwise equals (−1)ʳ for r distinct prime factors. At primes above R only the divisor one contributes, so S equals one. Here φ(W) counts residues coprime to W, and log(Wn+1) ≤ 2log N for large N. Proposition 8.3 of the cited exposition estimates products of divisor sums to prove the linear forms condition.
+
+**Wikipedia:** [Green–Tao theorem](https://en.wikipedia.org/wiki/Green%E2%80%93Tao_theorem). It says: “To construct this set, Green and Tao used ideas from Goldston, Pintz, and Yıldırım's work on prime gaps.”
+
+**Sources:**
+
+- [Conlon, Fox and Zhao, The Green–Tao theorem: an exposition, EMS Surveys in Mathematical Sciences 1 (2014), 249–282](https://doi.org/10.4171/emss/6)
+- [Green and Tao, The primes contain arbitrarily long arithmetic progressions, Annals of Mathematics 167 (2008), 481–547](https://doi.org/10.4007/annals.2008.167.481)
+
 ### Unique square completion turns a 1-step nilspace into an abelian group
 
 **Remember:** Fix an origin, then the fourth corner of a square is the sum.
@@ -4727,6 +7323,24 @@
 **Sources:**
 
 - [Pablo Candela, Notes on nilspaces: algebraic aspects, arXiv:1601.03693 (2017). Discrete Analysis, 2017:15, 59pp](https://arxiv.org/abs/1601.03693v3)
+
+### Weighted deletion extends arithmetic removal
+
+**Remember:** Delete little weight, even when the support has tiny density.
+
+*Makes the theorem clean to state or prove.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** For a nonnegative weight f modulo a prime N, deleting B costs the sum of f on B divided by N. The progression count averages f₁(x)f₂(x+d)⋯fₖ(x+(k−1)d) over uniform residues x,d. For each j from 1 to k, form every sum Σᵢ≠ⱼ(j−i)zᵢ using two independent uniform choices per coordinate, shared across sums. The k-linear forms test requires the mean of every subproduct of ν on these indexed sums to approach one.
+
+**Problem.** Fix k≥3 and ε&gt;0, and take sufficiently large primes N with 0≤fᵢ≤ν. If the weighted progression count falls below a constant c(k,ε)&gt;0, each input admits deletions costing at most ε. No progression then has its successive terms in the respective remaining supports.
+
+**How the definition helps.** Weighted deletion measures the mass that actually contributes to the count, even when the support occupies few residues (our own explanation). Conlon, Fox and Zhao’s relative arithmetic removal lemma gives the deletions. Its proof represents progressions by overlapping coordinate sets and applies the weighted removal theorem to those sets.
+
+**Paper or page:** [The Green-Tao theorem for affine curves over 𝔽(q)](https://arxiv.org/abs/2101.00839). It says: “Then there is a family of subsets”
+
+**Sources:**
+
+- [Conlon, Fox and Zhao, A relative Szemerédi theorem, Geometric and Functional Analysis 25 (2015), 733–762](https://doi.org/10.1007/s00039-015-0324-9)
 
 ### Sidon sets give error-correcting codes
 
@@ -4887,6 +7501,160 @@
 **Sources:**
 
 - [Giada Grossi, Higher Hida theory for Hilbert modular varieties in the totally split case, Proposition 3.1.2](https://arxiv.org/abs/2106.05666v3)
+
+### A three-block product excludes exceptional zeros
+
+**Remember:** Four copies of a real zero overwhelm three poles.
+
+*Rules out counterexamples.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Let π be a unitary cuspidal representation distinct from its dual π̃, with central character trivial on positive real scalars. Form the list Π = (1,π,π̃), where 1 is the trivial character. Define D(s) by multiplying the nine Rankin–Selberg functions pairing this list with its dual list.
+
+**Problem.** For fixed rank and number field, some effective c &gt; 0 excludes real zeros of L(s,π) in \[1−c/log(3+C),1). The analytic conductor C combines the finite conductor and the sizes of the gamma factors at height zero.
+
+**How the definition helps.** In our own proof, the list forces four copies of any real zero but gives only three poles at 1. Two factors equal L(s,π), and two equal its complex conjugate on the real line. Only the three matched dual pairs contribute poles. Positivity of the coefficients of −D′/D bounds the number of nearby zeros by three, counting multiplicities. Conductor estimates for the nine factors give the stated interval.
+
+**Paper or page:** [Exceptional zeros of Rankin-Selberg L-functions and joint Sato-Tate distributions](https://arxiv.org/abs/2404.06482v2). It says: “is not self-dual, then L(s,π) has no exceptional zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Abelian quotient isolates zero-free factors
+
+**Remember:** Remove the scalar line before bounding the other factors.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Take a full-level holomorphic cuspidal Hecke eigenform and write π for its normalized representation. Its mth symmetric power, written Symᵐπ, uses the action on homogeneous polynomials of degree m in two variables. For m ≥ 1 set R(s) = L(s,Symᵐπ×Symᵐπ)/ζ(s). Let C denote the analytic conductor of π, which measures its finite and gamma factors.
+
+**Problem.** There is an absolute, effectively computable c &gt; 0 such that R(s) has no real zeros for s ≥ 1−c/(m² log(3mC²)).
+
+**How the definition helps.** The quotient removes the scalar part before stating nonvanishing for all the remaining factors together. The paper explicitly divides by the one-dimensional factor when the symmetric powers and their underlying forms coincide. In our own specialization, full level gives trivial central character and finite conductor one. Such forms have no complex multiplication, as the theorem requires. The removed factor is ζ, and the squarefree conductor simplifies the bound. The zero-free estimate itself requires the paper’s theorem.
+
+**Paper or page:** [Exceptional zeros of Rankin-Selberg L-functions and joint Sato-Tate distributions](https://arxiv.org/abs/2404.06482v2). It says: “There exists an absolute, effectively computable constant”
+
+**Sources:**
+
+- [Jesse Thorner, Exceptional zeros of Rankin-Selberg L-functions and joint Sato-Tate distributions](https://arxiv.org/abs/2404.06482v2)
+
+### Additive twists encode modular transformations
+
+**Remember:** A rational additive twist records the cusp used in a transformation.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Start with an absolutely convergent series ∑ a(n)/nˢ on Re s &gt; 1 and set e(x) = exp(2πix). Define its completed additive twist T(s,x) = γ(s)∑ a(n)e(nx)/nˢ for rational x. Take γ(s) = Qˢ∏Γ(λs+μ), with Q,λ positive, ∑λ = 1 and Re μ &gt; −λ/2 for each factor. Fix a positive level N, a multiplicative character χ modulo N and a nonzero constant ω.
+
+**Problem.** For N dividing q &gt; 0 and ab ≡ 1 modulo q, assume both paired twists extend to entire functions of finite order. Require T(s,a/q) = ωχ(b) exp((1−2s)log q) T(1−s,−b/q). Then for some positive integer k, the coefficients a(n)exp((k−1)log(n)/2) define a modular Fourier series of weight k, level N and character χ.
+
+**How the definition helps.** The additive phase identifies the two rational shifts that a modular transformation relates. In our own explanation, the factor e(nx) translates the nth Fourier term by x. Finite order bounds their growth by exp(\|s\|ᴬ) for some fixed A at large \|s\|. The converse theorem recovers modular symmetry from the paired functional equations. Identifying the gamma factor and inverting the Mellin transform supply the analytic work.
+
+**Paper or page:** [An extension of Venkatesh's converse theorem to the Selberg class](https://arxiv.org/abs/2207.00451v1). It says: “Given any α ∈ ℚ, define the complete twisted L-function”
+
+**Sources:**
+
+- [Andrew R. Booker, Michael Farmer, Min Lee, An extension of Venkatesh's converse theorem to the Selberg class](https://arxiv.org/abs/2207.00451v1)
+
+### Analytic conductor measures sum length
+
+**Remember:** The square root of the conductor sets the central sum length.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Let f and g be level-one Maass cusp forms, Laplace eigenfunctions with modular symmetry and decay at infinity. Choose them as eigenfunctions of the Hecke averaging operators, with normalized eigenvalues λf(n) and λg(n). Their Rankin–Selberg L-function pairs their prime parameters. Its analytic conductor C at the center multiplies the finite conductor by 3 + \|κ\| for each real gamma factor Γℝ(s+κ).
+
+**Problem.** For C ≤ Q, Q &gt; 1 and ε &gt; 0, some smooth weight W vanishes beyond Q raised to ½+ε. Set S(t) = ∑ λf(n)λg(n)W(n)/(√n exp(it log n)). Then \|L(½,f×g)\|² is at most a constant times Qᵋ∫\|S(t)\|²dt + Q⁻¹⁰⁰, integrating over \|t\| ≤ log Q.
+
+**How the definition helps.** The conductor gives one cutoff for every pair with C ≤ Q. The cited lemma chooses W using only Q and ε. The estimate allows its constant to depend only on W and ε. Its derivatives satisfy uniform bounds on xʲ\|W⁽ʲ⁾(x)\| for each j. In our own explanation, estimates for the gamma factors in the functional equation give the square-root scale.
+
+**Paper or page:** [Uniform subconvexity bounds for GL(2) × GL(2) L-functions in the spectral aspect](https://arxiv.org/abs/2509.05968v1). It says: “Then there exists a function W(x) depending on Q and ε only”
+
+**Sources:**
+
+- [Zhao Xu, Uniform subconvexity bounds for GL(2) × GL(2) L-functions in the spectral aspect](https://arxiv.org/abs/2509.05968v1)
+
+### Dual tensor products give squares
+
+**Remember:** The trace of a tensor with its conjugate is an absolute square.
+
+*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** For a unitary cuspidal representation, let p be unramified, meaning its local L-factor has the full list of eigenvalues. Put these eigenvalues on the diagonal of A. For the product with the dual, define the prime factor as 1/det(I−(A⊗Ā)/pˢ). Here Ā conjugates each entry, and the tensor product pairs all eigenvalues.
+
+**Problem.** In −L′(s)/L(s) for this product, the term at pʳ has coefficient (log p)\|tr(Aʳ)\|² for every integer r ≥ 1. Every such coefficient is nonnegative.
+
+**How the definition helps.** In our own derivation, the tensor definition turns the coefficient into a trace times its complex conjugate. Taking the logarithmic derivative of the determinant gives (log p)tr((A⊗Ā)ʳ). Multiplying the two separate local L-factors would add their traces instead. The identification uses the description of unramified parameters for a unitary representation and its dual. The cited positivity theorem also covers ramified primes.
+
+**Paper or page:** [Exceptional zeros of Rankin-Selberg L-functions and joint Sato-Tate distributions](https://arxiv.org/abs/2404.06482v2). It says: “If Π ∈ 𝔄ₙ, then −L′/L(s, Π × Π̃) has non-negative Dirichlet coefficients.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma poles delimit the critical integers
+
+**Remember:** A critical integer avoids gamma poles on both sides.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** For two full-level holomorphic Hecke cusp forms of even weights k &gt; ℓ, use the normalization reflecting s to k+ℓ−1−s. Call an integer critical when the completing gamma factors are finite there and the dual gamma factors are finite at its reflection.
+
+**Problem.** The critical integers for the Rankin–Selberg function of these two forms are exactly ℓ, ℓ+1, …, k−1.
+
+**How the definition helps.** In our own calculation, checking the definition amounts to imposing one lower bound on each side of reflection. The gamma factors have arguments s and s−ℓ+1, and their poles occur at nonpositive integers. Finiteness therefore requires s ≥ ℓ and k+ℓ−1−s ≥ ℓ. Computing the gamma factors is the separate representation-theoretic step. The quoted proposition applies the critical-value test to a twisted symmetric square.
+
+**Paper or page:** [An Euler system for the adjoint of a modular form](https://arxiv.org/abs/2312.04665v2). It says: “The critical values (in the sense of Deligne)”
+
+**Sources:**
+
+- [Deligne, Valeurs de fonctions L et périodes d’intégrales](https://doi.org/10.1090/pspum/033.2/546622)
+
+### Isobaric sums count repeated poles
+
+**Remember:** Each copy pairs with every dual copy of its block.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** An isobaric sum Π groups cuspidal representations into a list of blocks, allowing repetitions. Its dual Π̃ replaces each block by its dual. Define L(s,Π×Π̃) by multiplying the Rankin–Selberg factors for all ordered pairs from the two lists. Use unitary blocks whose central characters equal one on positive real scalars.
+
+**Problem.** If each distinct block occurs m times, with m allowed to depend on the block, the pole order at 1 equals ∑ m².
+
+**How the definition helps.** In our own count, the ordered product pairs each copy with every dual copy of the same block. The pole theorem gives a simple pole at 1 precisely for a block paired with its dual. Nonvanishing at 1 for the remaining pairs prevents cancellation.
+
+**Paper or page:** [A new zero-free region for Rankin-Selberg L-functions](https://arxiv.org/abs/2303.16889v6). It says: “If Π is an isobaric sum, then the Rankin–Selberg L-function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Pole correction makes convexity uniform
+
+**Remember:** Cancel the pole without changing growth far from it.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Take two unitary cuspidal representations π and π′ over a number field, normalized so their central characters equal one on positive real scalars. Write L(s) for their Rankin–Selberg function, formed by pairing their local parameters. Set R(s) = L(s) unless π′ is dual to π. In that case set R(s) = L(s)(s−1)/(s+1).
+
+**Problem.** R is holomorphic for Re s &gt; −1. For σ ≥ 0 and integers j ≥ 0, its jth derivative at σ+it is O(C(t) raised to max(1−σ,0)/2+ε). Here C(t) combines finite and gamma factors at height t, with the constant depending only on ranks, field degree, j and ε &gt; 0.
+
+**How the definition helps.** The correction cancels the possible pole at 1 and stays bounded on the right half-plane. This gives one estimate even for dual pairs near the pole. In our own explanation, the simple-pole theorem justifies cancellation, strip estimates control size, and Cauchy’s formula bounds derivatives.
+
+**Paper or page:** [Oscillations and first-ever negative Fourier coefficients of symmetric square L-functions over sparse set](https://arxiv.org/abs/2510.18994v1), [A new zero-free region for Rankin-Selberg L-functions](https://arxiv.org/abs/2303.16889v6). It says: “consider the holomorphic function”
+
+**Sources:**
+
+- [Gergely Harcos, Jesse Thorner, A new zero-free region for Rankin-Selberg L-functions](https://arxiv.org/abs/2303.16889v6)
+
+### Smooth additive twists have dual length
+
+**Remember:** A smooth twist at length X returns at length q²/X.
+
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+
+**Definition.** Let λ(n) denote the normalized Fourier coefficients of a level-one holomorphic Hecke cusp form of weight k. Choose a smooth function v supported in \[1,2\]. Define H(u) = ∫v(y)Jₖ₋₁(4π√(uy))dy over positive y, where Jₖ₋₁ is the Bessel function of the first kind. Put e(x) = exp(2πix).
+
+**Problem.** For coprime integers a,q with q &gt; 0 and X &gt; 0, consider S = ∑ λ(n)e(an/q)v(n/X). If ab ≡ 1 modulo q, then S = (2πiᵏX/q)∑ λ(n)e(−bn/q)H(nX/q²). For fixed k and v, H(u) decays faster than every inverse power as u grows.
+
+**How the definition helps.** The transform H makes the original and reflected sums use reciprocal length scales X and q²/X. The cited summation formula replaces the original weight by an integral transform. In our own calculation, changing variables gives its argument nX/q² and its prefactor X. Smoothness removes boundary terms under repeated integration by parts and gives rapid decay. The underlying Voronoi summation theorem supplies the equality.
+
+**Paper or page:** [Subconvexity for GL(1) twists of Rankin-Selberg L-functions](https://arxiv.org/abs/2303.09646v5). It says: “v be a compactly supported smooth function on (0,∞).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Monodromy distinguishes Steinberg
 
@@ -5848,6 +8616,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Geodesic heights order quadratic roots
+
+**Remember:** The modulus cutoff becomes a horizontal height cutoff for geodesic tops.
+
+*Makes the theorem clean to state or prove.* MSC 11J71 (Distribution modulo one). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix a squarefree integer D &gt; 1 with D ≢ 1 modulo 4. For each positive m and each solution r² ≡ D modulo m, draw the semicircle with endpoints (r ± √D)/m. Take its highest point and read its horizontal coordinate modulo one.
+
+**Problem.** Collect r/m for 1 ≤ m ≤ X and one representative 0 ≤ r &lt; m per solution, counting repetitions. As X grows, the fraction in each fixed arc approaches its length.
+
+**How the definition helps.** The semicircle represents r/m as a position and the cutoff m ≤ X as a minimum height √D/X (our own). These semicircles are geodesics, the straightest paths in the hyperbolic upper half-plane (our own). Theorem 5.1 identifies the roots with positively oriented lifts of finitely many closed geodesics on the modular surface. This surface identifies points under fractional linear maps with integer coefficients and determinant one (our own). Corollary 2.7 counts the tops above a given height with leading term proportional to arc length. Dividing by the total count cancels that constant (our own).
+
+**Paper or page:** [Fine-scale distribution of roots of quadratic congruences](https://arxiv.org/abs/2105.02854v3), [Fine-scale distribution of roots of quadratic congruences](https://arxiv.org/abs/2105.02854v3). It says: “For a finite interval I ⊂ ℝ, 1 ≤ α &lt; β ≤ ∞ and probability measure λ with bounded density”
+
+**Sources:**
+
+- [J. Marklof and M. Welsh, Fine-scale distribution of roots of quadratic congruences](https://doi.org/10.1215/00127094-2022-0081)
+
+### Independent coordinate functions prevent diagonal concentration
+
+**Remember:** No nonzero character sees a constant polynomial phase.
+
+*Rules out counterexamples.* MSC 11J71 (Distribution modulo one). arXiv math.NT. Level 4: research.
+
+**Definition.** Call real polynomials p₁, …, pₖ independent modulo constants if no nonzero real linear combination of them is constant.
+
+**Problem.** For any sequence of distinct integers aₙ, form the vectors with coordinates aₙpⱼ(x) modulo one. For almost every real x, the fraction in each box approaches its volume.
+
+**How the definition helps.** Independence makes every nonzero integer combination of the coordinate polynomials nonconstant (our own). For distinct integers aₙ, the scalar metric theorem gives uniform distribution of aₙy modulo one for almost every y (our own). Substituting a nonconstant polynomial for y preserves this conclusion because its derivative has only finitely many zeros (our own). Weyl’s criterion tests all integer combinations and gives the box frequencies (our own). Taking both coordinates equal to x would trap every point on the diagonal (our own).
+
+**Paper or page:** [Metric uniform distribution on analytic curves](https://arxiv.org/abs/2509.06909v1). It says: “The set {1, p₁, …, pₖ} is linearly independent over ℝ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Macroscopic pair counts detect uniformity
+
+**Remember:** Averaging all pair differences squares the magnitude of each Fourier coefficient.
+
+*Makes the theorem clean to state or prove.* MSC 11J71 (Distribution modulo one). arXiv math.NT. Level 4: research.
+
+**Definition.** For N points on the circle, give each of the N² ordered differences modulo one mass 1/N². Keep the test arcs fixed as N grows.
+
+**Problem.** The fraction of ordered differences in every arc approaches its length exactly when the original sequence has the same property. Omitting pairs with equal indices gives the same equivalence.
+
+**How the definition helps.** Counting differences packages two sample sums into a single squared magnitude (our own). At each integer frequency k, the average of exp(2πik(x−y)) over ordered pairs equals the squared magnitude of the original exponential average (our own). Thus one average tends to zero exactly when the other does (our own). Weyl’s criterion characterizes uniform distribution by this cancellation at every nonzero integer frequency (our own). Equal-index pairs carry total mass 1/N (our own).
+
+**Paper or page:** [Weak Poissonian Correlations](https://arxiv.org/abs/2112.11813v1). It says: “The sequence (xₙ) is uniformly distributed mod 1.”
+
+**Sources:**
+
+- [Weak Poissonian Correlations](https://arxiv.org/abs/2112.11813v1)
+
 ### Period torsors bound transcendence degree
 
 **Remember:** The group dimension caps the number of independent periods.
@@ -5961,6 +8781,546 @@
 
 - [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1)
 
+### Anchored variation gives exact quadrature error
+
+**Remember:** A single box tests the sharpness of the integration bound.
+
+*True by definition.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** On \[0,1)ᵈ, represent f as a constant plus a mixture of box indicators against a finite signed measure ν on (0,1\]ᵈ. The indicator at t tests whether x lies below t in every coordinate. Define variation as the infimum of the total unsigned mass of ν over all such representations.
+
+**Problem.** The supremum of the absolute integration error over functions of variation at most one equals the star discrepancy. Integration error means sample average minus uniform integral. Star discrepancy is the supremum of the absolute frequency error over these boxes.
+
+**How the definition helps.** Representing functions by boxes writes integration error as an integral of box errors (our own). Each representation bounds the error by its total unsigned mass times star discrepancy (our own). Taking the infimum over representations gives the same bound for the variation norm (our own). A unit mass at any chosen box gives its error exactly (our own). The usual Hardy–Krause variation uses coordinate differences, and identifying the corresponding norms requires a signed-measure representation with matching boundary conventions (our own).
+
+**Wikipedia:** [Low-discrepancy sequence](https://en.wikipedia.org/wiki/Low-discrepancy_sequence). It says: “The Koksma–Hlawka inequality is sharp in the following sense”
+
+**Sources:**
+
+- [C. Aistleitner and J. Dick, Functions of bounded variation, signed measures, and a general Koksma–Hlawka inequality (2015)](https://doi.org/10.4064/aa167-2-4)
+
+### Dual digital nets retain exactly surviving frequencies
+
+**Remember:** A Walsh frequency survives precisely when its induced input frequency is zero.
+
+*True by definition.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** A binary digital net uses every m-bit input u once, with matrix arithmetic modulo two. The matrix Cⱼ gives coordinate j its binary digits Cⱼu, padded with zeros. A Walsh function uses a finite digit mask kⱼ per coordinate and returns −1 or 1 according to the parity of the selected digits. The dual net contains the masks satisfying ∑ⱼ Cⱼᵀkⱼ = 0, with masks restricted to the matrix rows in this sum.
+
+**Problem.** The sample average of a Walsh function equals one for dual masks and zero otherwise. For an absolutely convergent series of Walsh functions, sample average minus uniform integral equals the sum of coefficients at nonzero dual masks.
+
+**How the definition helps.** The dual condition replaces averaging over all inputs with a single test on the digit masks (our own). A zero mask sum gives even parity on every input (our own). For a nonzero sum, flipping an input bit with nonzero coefficient pairs opposite signs (our own). Absolute convergence allows termwise averaging, and the constant term integrates exactly (our own). Bounding the surviving coefficients is the remaining work in an error estimate (our own).
+
+**Paper or page:** [Optimal periodic L²-discrepancy and diaphony bounds for higher order digital sequences](https://arxiv.org/abs/2212.05747v1). It says: “and where 𝒟 is the so-called dual net”
+
+**Sources:**
+
+- [Optimal periodic L²-discrepancy and diaphony bounds for higher order digital sequences](https://arxiv.org/abs/2212.05747v1)
+
+### Extreme discrepancy removes lower-dimensional Haar terms
+
+**Remember:** Taking differences of both box ends discards terms that ignore a coordinate.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** Let F(t) be the sample fraction in \[0,t) minus its volume, where membership requires every coordinate to be below its threshold. Start with F and, one coordinate at a time, subtract the current function’s average in that coordinate. Call the result G.
+
+**Problem.** For each half-open box, square the difference between its sample fraction and volume. Integrating over all coordinatewise ordered endpoint pairs gives exactly ∫\|G(t)\|² dt over the unit cube.
+
+**How the definition helps.** Centering discards terms that cancel when we take endpoint differences in every coordinate (our own). Those successive differences recover the arbitrary box error from F or G (our own). For a mean-zero function g, integrating \|g(b)−g(a)\|² over the unit square gives twice its squared norm (our own). Applying this identity coordinate by coordinate supplies a factor of two each time (our own). Ordering each endpoint pair cancels the corresponding factor by symmetry (our own).
+
+**Paper or page:** [Point sets with optimal order of extreme and periodic discrepancy](https://arxiv.org/abs/2109.05781v1). It says: “and D its anchored discrepancy function with Haar coefficients”
+
+**Sources:**
+
+- [Point sets with optimal order of extreme and periodic discrepancy](https://arxiv.org/abs/2109.05781v1)
+
+### Greedy squared error gives uniform distribution
+
+**Remember:** Uniform averaging cancels the cross term before you choose the next point.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** For each box \[0,t) in the unit cube, subtract N times its volume from its count among the first N points. Here \[0,t) contains points below t in every coordinate. Choose the next point to minimize the integral over t of the resulting squared error.
+
+**Problem.** From any fixed nonempty finite starting list, the root mean square count error divided by N is O(N⁻¹⁄²). The fraction of points in each box approaches its volume.
+
+**How the definition helps.** Squaring the error makes the cross term disappear when we average over a uniformly chosen next point (our own). At each box the random count increment minus its expected value has mean zero and absolute value at most one (our own). The minimum therefore increases the integrated squared error by at most one per step (our own). The cited theorem gives the resulting uniform distribution.
+
+**Paper or page:** [Uniformly distributed sequences generated by a greedy minimization of the L² discrepancy](https://arxiv.org/abs/2109.06298v4). It says: “is uniformly distributed modulo 1.”
+
+**Sources:**
+
+- [Uniformly distributed sequences generated by a greedy minimization of the L² discrepancy](https://arxiv.org/abs/2109.06298v4)
+
+### Index coordinates transfer discrepancy bounds
+
+**Remember:** A box in the new coordinate selects a block of the old sequence.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** Attach j/N to the jth point of a list indexed from zero. For any half-open box, subtract the expected count under uniform sampling from its actual count. Extreme L² discrepancy is the square root of the integral of this squared error over coordinatewise ordered endpoint pairs.
+
+**Problem.** For every infinite sequence in the d-dimensional unit cube, infinitely many prefixes have extreme L² discrepancy at least c(d)(log N)ᵈ⁄². Here N is the prefix length and c(d) is positive.
+
+**How the definition helps.** An interval in the added coordinate selects the difference of two prefixes (our own). Rounding its endpoints to indices changes the expected count by at most two (our own). The triangle inequality bounds the lifted discrepancy by twice the largest prefix discrepancy plus two (our own). The finite point theorem in dimension d+1 forces this maximum to grow at least as fast as (log N)ᵈ⁄² (our own).
+
+**Paper or page:** [Exact order of extreme Lᵖ discrepancy of infinite sequences in arbitrary dimension](https://arxiv.org/abs/2109.06461v1), [Point sets with optimal order of extreme and periodic discrepancy](https://arxiv.org/abs/2109.05781v1). It says: “for infinitely many N ∈ ℕ.”
+
+**Sources:**
+
+- [Exact order of extreme Lᵖ discrepancy of infinite sequences in arbitrary dimension](https://arxiv.org/abs/2109.06461v1)
+
+### Interlaced digits raise digital net order
+
+**Remember:** Interlacing pushes the largest input digits up by nearly a factor α.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** A binary digital net maps every m-bit input to coordinate digit strings by linear maps modulo two. A dual mask selects finitely many digit positions whose sum is even for every input. Its order α weight adds the largest α selected positions per coordinate, using all available positions if fewer exist. For integer α ≥ 1, interlace each group of α coordinates by moving position j of coordinate r to position α(j−1)+r.
+
+**Problem.** Suppose every nonzero dual mask of the original αd-dimensional net has order one weight greater than m−t′. Every nonzero dual mask of the interlaced d-dimensional net then has order α weight greater than αm−αt′−dα(α−1)/2.
+
+**How the definition helps.** Interlacing preserves parity and makes the leading positions of each input group visible in the output weight (our own). Split a nonzero output dual mask along the interlaced positions to recover a nonzero input dual mask (our own). From each nonempty input coordinate take its leading selected position (our own). Moving it multiplies its position by α and subtracts α−r (our own). The selected positions contribute at most the sum of the largest α output positions in that group (our own). The losses total at most α(α−1)/2 per group, which gives the bound (our own).
+
+**Paper or page:** [Optimal periodic L²-discrepancy and diaphony bounds for higher order digital sequences](https://arxiv.org/abs/2212.05747v1). It says: “is an order 1 digital (t′, αd)-sequence over ℤ₂”
+
+**Sources:**
+
+- [Optimal periodic L²-discrepancy and diaphony bounds for higher order digital sequences](https://arxiv.org/abs/2212.05747v1)
+
+### Low discrepancy forces mesoscopic counts
+
+**Remember:** At a wider scale, each point sees the expected number of neighbors.
+
+*Makes the theorem clean to state or prove.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix 0 &lt; β &lt; 1 and s &gt; 0. Among the first N points of a circle sequence, count ordered pairs of distinct indices at circular distance at most s/Nᵝ. Divide by N raised to 2 − β.
+
+**Problem.** Suppose the largest absolute difference between sample fraction and length over all arcs is o(N⁻ᵝ). Then the normalized count tends to 2s for every fixed s &gt; 0.
+
+**How the definition helps.** The chosen radius makes each test arc longer than the discrepancy error, uniformly over its center (our own). Each center therefore sees 2sN¹⁻ᵝ + o(N¹⁻ᵝ) points including itself (our own). Summing over centers counts ordered pairs, and removing the N self-pairs does not affect the limit (our own).
+
+**Paper or page:** [Weak Poissonian box correlations of higher order](https://arxiv.org/abs/2312.11105v2). It says: “Then the sequence has (k, β)-Poissonian box correlations”
+
+**Sources:**
+
+- [Weak Poissonian box correlations of higher order](https://arxiv.org/abs/2312.11105v2)
+
+### Normalized height lets roots reflect
+
+**Remember:** Reflect through the unit circle without changing angles or normalized height.
+
+*True by definition.* MSC 11K38 (Irregularities of distribution, discrepancy). arXiv math.NT. Level 4: research.
+
+**Definition.** For a monic polynomial P with P(0) ≠ 0, use the height h(P) = ∫₀¹ log⁺(\|P(exp(2πit))\|/√\|P(0)\|) dt. Here log⁺ means the positive part of the logarithm.
+
+**Problem.** Reflect each root r outside the unit disk to 1/r̄ and form the monic polynomial with the new roots. This preserves both the height and the number of roots pointing into each arc. Thus the angular count bound 4√(Nh(P)/π) for degree N reduces to the closed disk case.
+
+**How the definition helps.** Dividing by √\|P(0)\| makes each root’s contribution invariant under reflection (our own). Without the denominator, reflecting r divides the boundary modulus by \|r\| (our own). On \|z\| = 1, the factor \|z−r\|/√\|r\| has the same value for r and 1/r̄ (our own). Their angles also agree, so reflection preserves every arc count with multiplicity (our own). The bound compares each count with N times the arc’s fraction of a full turn (our own). Proving it inside the disk still requires the Fourier estimate (our own).
+
+**Paper or page:** [Hilbert transforms and the equidistribution of zeros of polynomials](https://arxiv.org/abs/2104.00105v4). It says: “If P is a monic polynomial of degree N with P(0) ≠ 0, then 𝒟(P) ≤ (4/√π)√(N h(P)).”
+
+**Sources:**
+
+- [E. Carneiro et al., Hilbert transforms and the equidistribution of zeros of polynomials (2021)](https://doi.org/10.1016/j.jfa.2021.109199)
+- [K. Soundararajan, Equidistribution of Zeros of Polynomials (2019)](https://doi.org/10.1080/00029890.2019.1546078)
+
+### Pure eigenvalues bound hyper-Kloosterman sums
+
+**Remember:** The sum is a signed trace of r eigenvalues of the same size.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix a prime p, an integer r ≥ 3 and a nonzero residue a. Let Kᵣ(a) sum exp(2πi(x₁+⋯+xᵣ)/p) over tuples with product a modulo p. Represent this sum using Frobenius, the map raising coordinates to their pth powers. It acts on cohomology, a vector space attached to the product equation with coefficients recording the exponential weight.
+
+**Problem.** The absolute value of Kᵣ(a) is at most r times p to the power (r−1)/2.
+
+**How the definition helps.** The trace formula expresses the sum through eigenvalues, so their number and sizes give a bound. Deligne’s theorem supplies the difficult facts about this vector space, called cohomology with compact support. Only degree r−1 contributes, its dimension is r, and every eigenvalue has absolute value p to the power (r−1)/2. In our own final step, the signed trace satisfies the triangle inequality.
+
+**Paper or page:** [The sixth moment of Dirichlet L-functions at the central point](https://arxiv.org/abs/2409.01457v1). It says: “where the hyper-Kloosterman sum”
+
+**Sources:**
+
+- [Pierre Deligne, Applications de la formule des traces aux sommes trigonométriques, SGA 4½, section 7 (1977)](https://doi.org/10.1007/BFb0091523)
+
+### Rank and purity bound Kloosterman sums
+
+**Remember:** Rank counts the eigenvalues and purity bounds their sizes.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations), 11T23, 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix a nontrivial additive character ψ of a field with q elements. For a ≠ 0, sum ψ(x₁ + ⋯ + xᵣ) over all tuples with product a. This is the rank-r Kloosterman sum. Its associated sheaf records how the cohomology of these product fibers varies with a.
+
+**Problem.** For r ≥ 2 the sum has modulus at most r times q raised to (r − 1)/2.
+
+**How the definition helps.** The sheaf expresses every sum as a signed trace, so its rank and the sizes of its eigenvalues give one uniform bound. Our own deduction uses Deligne’s theorem that the sheaf has rank r and every Frobenius eigenvalue has modulus q raised to (r − 1)/2. The triangle inequality finishes the estimate.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “Geometrically the sum is taken along a 'hyperbola' XY = ab”
+
+**Sources:**
+
+- [Iwaniec and Kowalski, Analytic Number Theory, Chapter 11](https://people.math.ethz.ch/~kowalski/ik-ant-exp-sums.pdf)
+
+### Symmetric powers bound Kloosterman angles
+
+**Remember:** Chebyshev polynomials remove the invariant part of ordinary moments.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations), 11T23, 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix an odd prime p and a nontrivial additive character ψ of 𝔽ₚ. For a ≠ 0, define 2 cos θ(a) as minus the sum of ψ(x + a/x) over nonzero x, divided by √p. The Weil bound gives an angle in \[0,π\], since the sum is real. Set Uₘ(cos θ) = sin((m + 1)θ)/sin θ, taking limits at the endpoints.
+
+**Problem.** For each fixed integer m ≥ 1, the sum of Uₘ(cos θ(a)) over a ≠ 0 has modulus O(√p). The constant depends only on m.
+
+**How the definition helps.** The polynomial Uₘ turns each angle into the trace on degree-m symmetric tensors, which have no invariant vector for the determinant-one group SL(2). Our own calculation adds the eigenvalues exp(i(m − 2j)θ) for 0 ≤ j ≤ m. Katz identifies the geometric symmetry group of the normalized Kloosterman system as SL(2). The trace formula and Deligne’s bound then give the stated cancellation.
+
+**Wikipedia:** [Chebyshev polynomials](https://en.wikipedia.org/wiki/Chebyshev_polynomials). It says: “Similarly, the Chebyshev polynomials of the second kind Uₙ are defined by”
+
+**Sources:**
+
+- [Katz, Gauss Sums, Kloosterman Sums, and Monodromy Groups](https://web.math.princeton.edu/~nmk/Katz-GKM.pdf)
+- [Deligne, La conjecture de Weil II](https://www.numdam.org/item/PMIHES_1980__52__137_0/)
+
+### Zeta roots bound Kloosterman sums
+
+**Remember:** The first coefficient is the negative sum of the two reciprocal roots.
+
+*Makes the theorem clean to state or prove.* MSC 11L05 (Gauss and Kloosterman sums; generalizations). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix a prime p and nonzero residues a,b modulo p. In the field with pʳ elements, let Tr(x) denote the sum of the r field conjugates, counted with multiplicity. For each positive r, sum exp(2πi Tr(ax+b/x)/p) over nonzero x and call the result S(r). Put L(t) = exp(∑ᵣ S(r)tʳ/r), summing over positive r.
+
+**Problem.** There are complex numbers α and β of absolute value √p such that L(t) = (1−αt)(1−βt). Consequently \|S(1)\| ≤ 2√p.
+
+**How the definition helps.** The generating series puts the original sum in its linear coefficient. Weil’s work on the curve yᵖ−y = ax+b/x gives the factorization and the sizes of α and β. In our own coefficient comparison, S(1) = −α−β. The triangle inequality gives the estimate.
+
+**Wikipedia:** [Kloosterman sum](https://en.wikipedia.org/wiki/Kloosterman_sum). It says: “A fundamental technique of Weil reduces the estimate \|K(a,b;p)\| ≤ 2√p, when ab ≠ 0 to his results on local zeta-functions.”
+
+**Sources:**
+
+- [André Weil, On Some Exponential Sums (1948)](https://doi.org/10.1073/pnas.34.5.204)
+
+### Cube-free moduli ensure square-root bounds
+
+**Remember:** A prime cube can support a sum larger than the square-root bound.
+
+*Rules out counterexamples.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 4: research.
+
+**Definition.** For a fixed k ≥ 3, call q cube-free if no prime cube divides it. Let f be an integer polynomial of degree at most k whose nonconstant coefficients have no common factor with q.
+
+**Problem.** For cube-free q, sum exp(2πif(x)/q) over all residues x. The result is O(q to the power ½+ε) for every ε &gt; 0, with a constant depending on k and ε. At q = p³ with prime p &gt; 3, the phase x³ instead gives p².
+
+**How the definition helps.** Cube-freeness leaves only the factor with exponent ½ in the cited bound. The difficult estimates concern sums modulo primes and prime squares. Our own counterexample groups x modulo p². When p does not divide x, the p terms in its class sum to zero. The p² multiples of p each contribute one.
+
+**Paper or page:** [Lᵖ maximal estimates for Weyl sums with k ≥ 3 on 𝕋](https://arxiv.org/abs/2408.15527v1). It says: “q₂ ≥ 1 is cube free,”
+
+**Sources:**
+
+- [Xuezhi Chen, Changxing Miao, Jiye Yuan, Tengfei Zhao, Lᵖ maximal estimates for Weyl sums with k ≥ 3 on 𝕋](https://arxiv.org/abs/2408.15527v1)
+
+### One critical moment controls all
+
+**Remember:** Below the critical moment use Hölder, and above it use the maximum.
+
+*Makes the theorem clean to state or prove.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix positive integers k and N. On the unit k-dimensional cube let F(α) sum exp(2πi∑ⱼαⱼnʲ) over n from 1 through N, with j from 1 through k. Write M(p) for the integral of \|F\| to the power p. The critical order is 2K, where K = k(k+1)/2.
+
+**Problem.** Suppose M(2K) ≤ Cε Nᴷ⁺ᵋ for every ε &gt; 0. Then M(2s) ≤ C Nᵐ⁺ᵋ for every fixed s &gt; 0 and ε &gt; 0, where m = max(s,2s−K). Constants may depend on k, ε and the chosen order.
+
+**How the definition helps.** At the critical order the two predicted powers of N coincide, so one estimate covers both ranges. In our own reduction, Hölder’s inequality on a cube of volume one bounds M(2s) by M(2K) to the power s/K below that order. Above it, bound the extra factors using \|F\| ≤ N. The deep mean-value theorem supplies the critical estimate.
+
+**Paper or page:** [Decoupling estimates in Fourier analysis](https://arxiv.org/abs/2207.00652v1). It says: “N<sup>1/2</sup> + N<sup>{1</sup> - \\frac{k(k+1)}{2p}}”
+
+**Sources:**
+
+- [Jean Bourgain, Ciprian Demeter and Larry Guth, Proof of the main conjecture in Vinogradov’s Mean Value Theorem for degrees higher than three (2016)](https://doi.org/10.4007/annals.2016.184.2.7)
+
+### Reduced phases exclude constant counterexamples
+
+**Remember:** Over the prime field, remove powers of p before using the degree.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11L07 (Estimates on exponential sums). arXiv math.NT. Level 4: research.
+
+**Definition.** Over the field with p elements, replace each monomial degree that is positive and divisible by p by that degree divided by p. Repeat until no such degree remains and combine equal powers. Call the resulting polynomial reduced and exclude constant reduced polynomials.
+
+**Problem.** If the reduced phase has degree d ≥ 1, the complete sum of exp(2πif(x)/p) has absolute value at most (d−1)√p. A nonconstant original phase need not qualify, since xᵖ−x gives sum p.
+
+**How the definition helps.** The reduction puts every surviving nonconstant polynomial within the degree hypothesis of Weil’s estimate. In our own derivation, xᵖ=x on the prime field preserves every value during each replacement. Every surviving positive exponent is coprime to p. Weil’s theorem supplies the bound for the resulting degree. Our own example xᵖ−x reduces to zero, so every exponential equals one.
+
+**Wikipedia:** [Fermat's little theorem](https://en.wikipedia.org/wiki/Fermat%27s_little_theorem). It says: “aᵖ ≡ a (mod p).”
+
+**Sources:**
+
+- [André Weil, On Some Exponential Sums (1948)](https://doi.org/10.1073/pnas.34.5.204)
+
+### Exceptional weights isolate prime obstructions
+
+**Remember:** Separate ordinary character weights before seeking power savings over primes.
+
+*Rules out counterexamples.* MSC 11L20 (Sums over primes), 11T23. arXiv math.NT. Level 4: research.
+
+**Definition.** Use a middle extension on the affine line over 𝔽ₚ, meaning a coefficient system extended at missing points by locally invariant vectors. Assume its Frobenius eigenvalues at regular points have modulus one. Over the algebraic closure, require a direct sum of copies of one irreducible system. Call it exceptional if that system comes from a product of a multiplicative character and a linear additive character, allowing trivial characters.
+
+**Problem.** Let K be the Frobenius trace function of a nonexceptional system and V a fixed smooth function supported in \[1/2, 2\]. For 0 &lt; η &lt; 1/24, summing K(l)V(l/p) over primes l gives a bound of order p raised to (1 − η). The constant depends on η, V and the conductor, which measures the rank and ramification of the system.
+
+**How the definition helps.** The exception removes character products for which the uniform estimates over primes can fail. Our own example is the constant function one. For nonnegative nonzero V, the prime number theorem gives a sum of order p/log p. Fouvry, Kowalski and Michel prove the saving for the remaining systems using estimates for sums in two variables.
+
+**Wikipedia:** [Prime number theorem](https://en.wikipedia.org/wiki/Prime_number_theorem). It says: “The first such distribution found is π(N) \~ N/log(N)”
+
+**Sources:**
+
+- [Fouvry, Kowalski and Michel, Algebraic trace functions over the primes](https://people.math.ethz.ch/~kowalski/weights-over-primes.pdf)
+
+### Root power sums give multiplicative weights
+
+**Remember:** Root power sums add when monic polynomials multiply.
+
+*Makes the theorem clean to state or prove.* MSC 11L20 (Sums over primes), 11T23. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix k ≥ 1 and a nontrivial additive character ψ of 𝔽𝓆, a map taking sums to products. For a monic polynomial f, add the kth powers of all its roots, counting multiplicity. This sum belongs to 𝔽𝓆 because raising to the qth power permutes the roots. Define χ(f) by applying ψ to that sum.
+
+**Problem.** Set Λ(Pʲ) = deg P for monic irreducible P and j ≥ 1, and set Λ(f) = 0 otherwise. For n ≥ 1, the sum of Λ(f)χ(f) over degree-n monic polynomials has modulus at most √(qⁿ) gcd(k,qⁿ − 1).
+
+**How the definition helps.** Taking all roots makes χ multiplicative and turns the prime-power sum into one sum over elements of the degree-n field extension. Our own explanation groups extension elements by their minimal polynomial P. Each P contributes deg P elements, and their field traces repeat each root exactly as often as the corresponding power of P requires. Multiplicative character orthogonality counts kth powers, and the Gauss sum bound gives the estimate.
+
+**Paper or page:** [Equidistribution of high traces of random matrices over finite fields and cancellation in character sums of high conductor](https://arxiv.org/abs/2307.01344). It says: “\|∑ (f ∈ ℳₙ,𝓆) Λ(f)χₖ,ψ(f)\| ≤ qⁿᐟ² gcd(k, qⁿ − 1).”
+
+**Sources:**
+
+- [Equidistribution of high traces of random matrices over finite fields and cancellation in character sums of high conductor](https://arxiv.org/abs/2307.01344)
+
+### Complex shifts generate derivative moments
+
+**Remember:** Differentiate independent shifts to get both derivative factors.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Let ζ be the Riemann zeta function and let A(s) be a finite sum of terms a(n) exp(−s log n). Fix 0 &lt; r &lt; ¼ and a nonnegative integrable weight w of compact real support. Set B(t) = \|A(½+it)\|²w(t). Define J(z₁,z₂) by integrating ζ(½+it+z₁)ζ(½−it+z₂)B(t) over the real line.
+
+**Problem.** Integrate \|ζ′(½+it)\|²B(t) over the real line. The result equals the mixed derivative of J at (0,0), taken once in each shift. It is at most r⁻² times the maximum of \|J\| on \|z₁\| = \|z₂\| = r.
+
+**How the definition helps.** Independent complex shifts let one derivative act on each zeta factor. Our own formula differentiates under the integral, which is valid because the compact integration region stays away from the pole. Conjugation turns the product of derivatives into an absolute square. Cauchy’s integral formula in each variable gives the bound. The cited lemma supplies a separate estimate in terms of the polynomial coefficients.
+
+**Paper or page:** [Upper bounds for fractional joint moments of the Riemann zeta function](https://arxiv.org/abs/2106.00165). It says: “F(z<sub>1</sub>,z<sub>2</sub>) = \\sum <sub>h,k \\leq T<sup>\\theta</sup> </sub> \\frac {a<sub>h</sub> \\overline {a<sub>k</sub>}}{\[h,k\]} \\frac {(h,k)<sup>z<sub>1</sub> + z<sub>2</sub></sup>}{h<sup>z<sub>1</sub></sup> k<sup>z<sub>2</sub></sup>},”
+
+**Sources:**
+
+- [Michael J. Curran, Upper bounds for fractional joint moments of the Riemann zeta function](https://arxiv.org/abs/2106.00165)
+
+### Factoring poles regularizes reciprocal moments
+
+**Remember:** Remove the prime term before multiplying the local factors.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix real k &gt; 0. Define μₖ(n) by expanding the reciprocal kth power of the Riemann zeta function as ∑ μₖ(n) exp(−s log n). Use the analytic branch positive on the real axis to the right of 1. For real s &gt; 1, divide ∑ μₖ(n)² exp(−s log n) by ζ(s) raised to k².
+
+**Problem.** The resulting quotient tends to a positive finite limit as s decreases to 1. The original square sum is asymptotic to that limit times (s−1) to power −k².
+
+**How the definition helps.** Dividing out the zeta power cancels the first-order term in every prime factor. In our own proof, the power series for (1−z) raised to k gives μₖ(p) = −k at each prime p. The normalized factor therefore differs from one by O(p⁻²), uniformly for real s ≥ 1 with k fixed. These errors are summable, and every limiting factor is positive. The simple pole of ζ gives the claimed growth. The cited conditional theorem relates the same product to a time average.
+
+**Paper or page:** [Negative moments of the Riemann zeta-function](https://arxiv.org/abs/2302.07226). It says: “where μₖ(n) denotes the nth Dirichlet coefficient of ζ(s)⁻ᵏ.”
+
+**Sources:**
+
+- [Hung M. Bui, Alexandra Florea, Negative moments of the Riemann zeta-function](https://arxiv.org/abs/2302.07226)
+
+### Inverse log shifts cap kernels
+
+**Remember:** Keep the height cutoff when two shifts nearly coincide.
+
+*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Write ζ for the Riemann zeta function. For T ≥ 3 and real d set K(T,d) = \|ζ(1+1/log T+id)\|.
+
+**Problem.** Fix θ &gt; −1 and 0 ≤ β ≤ 1, and take \|h₁\|, \|h₂\| ≤ (log T) raised to θ. Set Y(t) = \|ζ(½+i(t+h₁))ζ(½+i(t+h₂))\|. Its mean after raising to 2β on \[T,2T\] lies between constant multiples of (K(T,h₁−h₂) log T) raised to 2β².
+
+**How the definition helps.** The displacement 1/log T gives one finite comparison even when the shifts coincide. Our own check uses the simple pole of ζ at 1. At equal shifts, the displaced factor grows like log T, while the undisplaced factor has a pole. The cited theorem proves both bounds for sufficiently large T, uniformly over the allowed shifts.
+
+**Paper or page:** [Freezing transition and moments of moments of the Riemann zeta function](https://arxiv.org/abs/2301.10634). It says: “\\frac {1}{T}\\int \_T<sup>2T</sup> \|\\zeta (\\tfrac {1}{2} + i t + ih<sub>1</sub>)\\zeta (\\tfrac {1}{2} + i t + ih<sub>2</sub>)\|<sup>2\\b </sup> \~dt \\ll (\\log T)<sup>2\\b ^2</sup> \|\\zeta (1 + i (h<sub>1</sub> - h<sub>2</sub>) + 1/\\log T)\|<sup>2\\b ^2</sup>.”
+
+**Sources:**
+
+- [Michael J. Curran, Freezing transition and moments of moments of the Riemann zeta function](https://arxiv.org/abs/2301.10634)
+
+### Matching parity folds central moments
+
+**Remember:** Match the weight to the character’s gamma factor.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Take a primitive nonprincipal Dirichlet character χ modulo q, so it comes from no smaller divisor and is nontrivial on invertible residues. Set h = ¼ if χ(−1) = 1 and h = ¾ otherwise. For x &gt; 0 put g(u) = Γ(h+u/2)² exp(−u log x)/(uΓ(h)²), using the gamma function Γ. Define W(x) as the upward integral of g on Re u = 2 divided by 2πi.
+
+**Problem.** Let L(s,χ) denote the continuation of ∑ χ(n) exp(−s log n) from Re s &gt; 1. Put C(a,b) = χ(a) times the conjugate of χ(b). Then \|L(½,χ)\|² equals twice the sum of C(a,b)W(πab/q)/√(ab) over positive integers a,b.
+
+**How the definition helps.** Matching the weight to the character’s parity gives the two contour integrals the same value. Our own explanation uses the functional equation relating the gamma-weighted L-function of χ to that of its complex conjugate. For their product the constant factors cancel. Moving the contour across zero picks up the central value squared. Changing the integration variable from u to −u then supplies the factor two.
+
+**Paper or page:** [Bounds for moments of Dirichlet L-functions to a fixed modulus](https://arxiv.org/abs/2103.00149). It says: “\|L(\\tfrac {1}{2}, \\chi )\|<sup>2</sup> = 2 \\sum <sup>\\infty </sup><sub>a, b=1</sub> \\frac{\\chi (a) \\overline{\\chi }(b)}{\\sqrt{ab}} \\mathcal{W}\_{\\mathfrak {a}} \\left(\\frac{\\pi ab}{q}\\right),”
+
+**Sources:**
+
+- [Peng Gao, Bounds for moments of Dirichlet L-functions to a fixed modulus](https://arxiv.org/abs/2103.00149)
+
+### Mellin weights turn logarithms into poles
+
+**Remember:** A logarithmic power becomes a higher pole.
+
+*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 44A15. arXiv math.NT, math.CA. Level 4: research.
+
+**Definition.** Write ζ for the Riemann zeta function. For Re s &gt; 1 define Z(s) by integrating \|ζ(½+it)\|⁴ exp(−s log t) over 1 ≤ t &lt; ∞.
+
+**Problem.** The function Z extends meromorphically to Re s &gt; 7/8, meaning it is holomorphic there except for poles. Its only pole there has order five at s = 1. The coefficient of (s−1)⁻⁵ is 12/π².
+
+**How the definition helps.** The Mellin weight turns each logarithmic power in the integrated moment into a pole of known order. Heath-Brown gives the integrated fourth moment as T times a quartic in log T, with leading coefficient 1/(2π²). For every ε &gt; 0 the error is O(T raised to 7/8+ε). In our own derivation, integration by parts turns the quartic term into a fifth-order pole with leading coefficient 4!/(2π²). The integrated error is holomorphic for Re s &gt; 7/8.
+
+**nLab:** [Mellin transform](https://ncatlab.org/nlab/show/Mellin+transform). It says: “its Mellin transform is the function given by the integral expression”
+
+**Sources:**
+
+- [D. R. Heath-Brown, The Fourth Power Moment of the Riemann Zeta Function, Proc. London Math. Soc. 38 (1979), 385–422](https://doi.org/10.1112/plms/s3-38.3.385)
+
+### One prime blocks exceptional conductors
+
+**Remember:** Remove one prime to remove every multiple of the bad conductor.
+
+*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N13. arXiv math.NT. Level 4: research.
+
+**Definition.** A Dirichlet character χ is a multiplicative character of invertible classes, extended by zero elsewhere. Its conductor is its smallest inducing modulus, and L(s,χ) continues the series Σ χ(n)exp(−s log n). Fix Q ≥ 100 and sufficiently small absolute c &gt; 0. Set B = 1 unless some character of conductor ≤ Q has a real zero above 1 − c/log Q in its L-function.
+
+**Problem.** If an exceptional character exists, take B to be the largest prime dividing its conductor. For q ≤ Q coprime to B, every zero σ+it of every L-function modulo q satisfies 1−σ ≥ c′/log(Q(1+\|t\|)). Here c′ &gt; 0 is absolute.
+
+**How the definition helps.** Excluding one prime removes every modulus that could carry an exceptional term in prime counts (our own explanation). A modulus carrying that character must be divisible by its conductor and hence by B. Landau–Page guarantees that all exceptional characters come from one primitive character, whose modulus equals its conductor. The theorem bounds the other zeros. Enlarging the modulus adds zeros only on the line Re(s) = 0 (our own).
+
+**Paper or page:** [Recent results on large gaps between primes](https://arxiv.org/abs/2402.07176v2). It says: “whenever L(σ + it, χ) = 0 and χ is a character of modulus at most Q”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vandermonde contours handle colliding shifts
+
+**Remember:** Keep the shifts inside the contour rather than in separate denominators.
+
+*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Take k shifts α₁,…,αₖ inside a circle Γ oriented counterclockwise, and let P(w) = ∏ₘ(w−αₘ). Fix 1 ≤ j ≤ k and let G be holomorphic near the product of j closed disks bounded by Γ. Set Δ(z) = ∏ over r &lt; s of (zₛ−zᵣ). Integrate G(z)Δ(z)²/∏ᵣP(zᵣ) around Γ in each variable, dividing each integral by 2πi.
+
+**Problem.** For distinct shifts, sum over ordered j-tuples u of different shifts. The contour integral equals the sum of G(u)Δ(u)²/∏ᵣP′(uᵣ). This sum extends holomorphically when shifts meet inside Γ.
+
+**How the definition helps.** The contour keeps every denominator away from zero as interior shifts meet. For distinct shifts, the residue theorem evaluates each integral at the simple roots of P. The squared Vandermonde product Δ(u)² removes tuples that select the same root twice. Our own example takes two shifts, one variable and G = 1. Both residues have poles as the shifts meet, but their sum vanishes.
+
+**Paper or page:** [Averages of quadratic twists of long Dirichlet polynomials](https://arxiv.org/abs/2208.01783). It says: “\\frac{1}{(2\\pi i)<sup>j}</sup> \\int \_\\Gamma \\cdots \\int \_\\Gamma \\frac{G(z) \\Delta (z)<sup>2}{\\Delta</sup> (z;A)}\\,  d<sup>j</sup> z = \\sum \_{u<sub>1</sub>,...,u<sub>j</sub> \\in A \\atop \\textrm{distinct}} \\frac{G(u<sub>1</sub>,...,u<sub>j</sub>)}{\\Delta (u; A-u)},”
+
+**Sources:**
+
+- [Brian Conrey, Brad Rodgers, Averages of quadratic twists of long Dirichlet polynomials](https://arxiv.org/abs/2208.01783)
+
+### Exponential weights quantify zero repulsion
+
+**Remember:** A zero near one leaves less weight for the other zeros.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** A primitive Dirichlet character has the smallest modulus that gives its values on invertible residues. For Q ≥ 10, consider the L-functions of all such characters for moduli at most Q. Count each zero ρ = β+iγ with β ≥ 1/2 and \|γ\| ≤ Q according to its multiplicity. Give it weight exp(−323905(1−β) log Q).
+
+**Problem.** For the absolute constant λ₁ in Proposition 6.2, at most one such zero satisfies (1−β) log Q &lt; λ₁. If it exists, it is real. Writing β₁ for this zero, the other weights sum to at most C(1−β₁) log Q for an absolute C.
+
+**How the definition helps.** The weights express repulsion from one as a bound on all remaining zeros together. Proposition 6.5 bounds their total weight by a constant times one minus the exceptional zero’s weight. Our own final step uses 1−exp(−u) ≤ u for u ≥ 0.
+
+**Paper or page:** [An explicit version of Bombieri's log-free density estimate and Sárközy's theorem for shifted primes](https://arxiv.org/abs/2208.11123). It says: “If there is an exceptional zero ρ∗ at scale Q, then”
+
+**Sources:**
+
+- [Jesse Thorner, Asif Zaman, An explicit version of Bombieri's log-free density estimate and Sárközy's theorem for shifted primes](https://arxiv.org/abs/2208.11123)
+
+### Random Euler products factor moments
+
+**Remember:** Independent local signs turn each moment into a product over primes.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** For each prime p choose X(p) independently. Give each sign ±1 probability p/(2(p+1)), and give zero probability 1/(p+1). Define Z as the limit of the products of 1/(1−X(p)/p) over primes in increasing order.
+
+**Problem.** Choose either sign and average over quadratic field discriminants D of that sign with \|D\| ≤ Y. For each positive integer t, the average of L(1,χᴰ)ᵗ tends to the expectation of Zᵗ as Y grows. Here χᴰ is the quadratic character attached to D.
+
+**How the definition helps.** Independent prime factors turn each random moment into a product of local averages. Our own expansion cancels the odd powers of each sign and gives the prime factors in Corollary 6.13. The random logarithms have summable means and variances, giving almost sure convergence. Bounded moments of order 2t justify passing expectations to the limit. The corollary supplies the arithmetic average, and counting discriminants supplies its normalization.
+
+**Paper or page:** [Counting quadratic points on Fano varieties](https://arxiv.org/abs/2505.17940). It says: “the set of positive, and ℱ₋ the set of negative fundamental discriminants.”
+
+**Sources:**
+
+- [Francesca Balestrieri, Kevin Destagnol, Julian Lyczak, Jennifer Park, Nick Rome, Counting quadratic points on Fano varieties](https://arxiv.org/abs/2505.17940)
+
+### Short Euler products approximate L-values
+
+**Remember:** For most conductors, only small primes are needed at one.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Let χ be a quadratic Dirichlet character, a multiplicative sign on invertible residues that vanishes elsewhere. Assume its modulus is its conductor, the smallest modulus determining its signs. Write P(y,χ) for the product of 1/(1−χ(p)/p) over primes p ≤ y. For Q ≥ 3 and fixed α &gt; 2, set y = exp(8α² log log Q).
+
+**Problem.** Take nonprincipal characters of conductor at most Q. Except at most exp((2/α) log Q) conductors, all satisfy \|L(1,χ)/P(y,χ)−1\| ≤ C(α) exp(−α log log Q).
+
+**How the definition helps.** The cutoff expresses a uniform approximation using only the character values at small primes. Proposition 2.1 bounds both the error and the number of exceptional conductors. In our own interpretation, estimates counting zeros near one control which conductors can obstruct this approximation.
+
+**Paper or page:** [Amicable pairs and aliquot cycles on average](https://arxiv.org/abs/1403.5810). It says: “not in ℰα(Q), then”
+
+**Sources:**
+
+- [A. Granville and K. Soundararajan, The distribution of values of L(1,χᴰ) (2003)](https://doi.org/10.1007/s00039-003-0438-3)
+
+### Weighted primes exclude exceptional zeros
+
+**Remember:** The two signs must fill the total weight left by the ramified primes.
+
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11N13. arXiv math.NT. Level 4: research.
+
+**Definition.** Let χ be a real Dirichlet character taking both signs on invertible residues, with smallest possible modulus q. Give each prime p ≤ x weight (log p)/p and total the weights separately for χ(p) = −1, 0 and 1. Set x = exp(C log q) for a sufficiently large fixed even integer C.
+
+**Problem.** There is an absolute c &gt; 0 such that no such L(s,χ) has a real zero in 1−c/log q &lt; s &lt; 1.
+
+**How the definition helps.** The common weight lets two estimates for opposite signs compete for a known total. Mertens’ theorem gives total weight log x + O(1). In our own deduction the primes dividing q contribute O(log log q). Green’s Theorem 1.1 puts the negative signs below three quarters of the total for sufficiently large q. Lemma 2.1 makes the positive share tend to zero along any sequence with (1−β) log q tending to zero. Its range includes our fixed power of q eventually. This contradicts the total, and nonvanishing at one handles the finitely many small moduli.
+
+**Paper or page:** [Siegel Zeros and Sarnak's Conjecture](https://arxiv.org/abs/2105.14653). It says: “with ηℓ &gt; exp(exp(30)).”
+
+**Sources:**
+
+- [B. Green, On Landau–Siegel zeros (2026), Theorem 1.1](https://hexagonmath.org/2610.00311v2)
+
+### Fourier cutoffs shorten prime sums
+
+**Remember:** Compact frequency support cuts the prime sum off exactly.
+
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 4: research.
+
+**Definition.** Fix A &gt; 0 and choose a real even smooth function φ that decreases rapidly with all its derivatives. Require its Fourier transform φ̂(u) = ∫ over real v of φ(v) exp(−2πiuv) dv to vanish for \|u\| &gt; A.
+
+**Problem.** Assume the Riemann hypothesis and write the nontrivial zeros as ½ + iγ, repeated with multiplicity. For T ≤ t ≤ 2T, the sum of φ((γ − t) log T/(2π)) equals φ̂(0) − 2D(t)/log T + O(1/log T). Here D(t) sums (log p)φ̂(log n/log T) cos(t log n)/√n over prime powers n = pᵏ ≤ exp(A log T).
+
+**How the definition helps.** The Fourier transform vanishes beyond A, so prime powers with log n &gt; A log T contribute exactly zero (our own). A Gaussian would leave terms at arbitrarily large prime powers (our own). The explicit formula relating zeros to prime powers supplies the identity and its error term.
+
+**Paper or page:** [Selberg's Central Limit Theorem weighted by Linear Statistics of Zeta Zeros](https://arxiv.org/abs/2507.04150). It says: “Nφ(t) = φ̂(0) + Sφ(t) + O(1/log T)”
+
+**Sources:**
+
+- [Selberg's Central Limit Theorem weighted by Linear Statistics of Zeta Zeros](https://arxiv.org/abs/2507.04150)
+
+### Gaussian weights permit interpolation
+
+**Remember:** Analytic weights let one interpolate between lines.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
+
+**Definition.** Fix α, T &gt; 0 and X &gt; 1. Let M(s) sum μ(n) exp(−s log n) for n ≤ X. The Möbius function μ vanishes on multiples of prime squares and otherwise equals (−1) raised to the number of prime divisors. Set H(s) = ((s − 1)/s) exp(α(s/T)²)ζ(s)M(s), taking the limiting value at 1.
+
+**Problem.** Let B(σ) be the integral of \|H(σ + it)\|² over all real t. For ½ ≤ a &lt; b and 0 ≤ θ ≤ 1, put c = (1 − θ)a + θb. Then log B(c) ≤ (1 − θ) log B(a) + θ log B(b).
+
+**How the definition helps.** A Gaussian factor supplies decay at both ends of every vertical line without cutting the integral off at height T (our own). The factor s − 1 cancels the pole of ζ at 1 (our own). Fourier transformation in t turns horizontal shifts into multiplication by real exponentials (our own). Plancherel’s identity and Hölder’s inequality then give the stated bound for the integrals (our own).
+
+**Paper or page:** [Explicit zero density for the Riemann zeta function](https://arxiv.org/abs/2101.12263), [Explicit zero density for the Riemann zeta function](https://arxiv.org/abs/2101.12263). It says: “g(s) = ((s − 1)/s) exp(α(s/T)²).”
+
+**Sources:**
+
+- [H. Kadiri, A. Lumley, and N. Ng, Explicit zero density for the Riemann zeta function](https://arxiv.org/abs/2101.12263)
+
 ### Li’s variable circles critical zeros
 
 **Remember:** The critical line becomes the unit circle, and zeros become poles of a logarithmic derivative.
@@ -5976,6 +9336,42 @@
 **Wikipedia:** [Li's criterion](https://en.wikipedia.org/wiki/Li%27s_criterion). It says: “Hence, φ′(z)/φ(z) is holomorphic on the unit disk \|z\| &lt; 1”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Minimization gives the prime error scale
+
+**Remember:** Minimize over height to find the scale of the error.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT. Level 4: research.
+
+**Definition.** Write s = σ + it and let η be continuous and decreasing from \[0, ∞) into (0, ½\]. Define ω(x) as the infimum of η(t) log x + log t over t ≥ 1.
+
+**Problem.** Suppose ζ has no zeros where σ &gt; 1 − η(\|t\|). For every ε &gt; 0, ψ(x) − x = O(x exp(−(1 − ε)ω(x))). Here ψ sums log p over prime powers up to x, and the constant may depend on ε and η.
+
+**How the definition helps.** One infimum combines the effects of the width of the region and the height of a possible zero (our own). The same expression therefore states the error bound for different boundary shapes (our own). Pintz’s theorem supplies the estimate relating that expression to the prime count.
+
+**Paper or page:** [On the connection between zero-free regions and the error term in the Prime Number Theorem](https://arxiv.org/abs/2507.13780). It says: “Then for every ε &gt; 0, ψ(x) − x ≪ε x exp(−(1 − ε)ω(x)).”
+
+**Sources:**
+
+- [J. Pintz, On the remainder term of the prime number formula II. On a theorem of Ingham (1980)](https://doi.org/10.4064/aa-37-1-209-220)
+
+### Squared sinc bounds multiplicities
+
+**Remember:** Majorize coincidence with a weight whose frequencies are controlled.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
+
+**Definition.** Measure the difference between two zero heights in units of 2π/log T, and call the result u. Give the pair weight r(u) = (sin(πu)/(πu))², with r(0) = 1.
+
+**Problem.** Assume the Riemann hypothesis, which places every nontrivial zeta zero on Re s = ½. Among zeros at heights in (0,T\], let P(T) be the proportion with multiplicity one, counting every occurrence in the denominator. Then lim inf P(T) ≥ ⅔ as T tends to infinity.
+
+**How the definition helps.** The weight majorizes the indicator of equal heights and uses only frequencies between −1 and 1 (our own). Montgomery applies his proved pair correlation formula to r(au) for 0 &lt; a &lt; 1. Letting a increase to 1 bounds the limiting upper ratio of equal-height ordered pairs to zeros by 4/3 (our own). A zero of multiplicity m contributes m² ordered pairs and m copies to the count (our own). For m ≥ 2, the excess m² − m counts at least those m copies (our own).
+
+**Wikipedia:** [Montgomery's pair correlation conjecture](https://en.wikipedia.org/wiki/Montgomery%27s_pair_correlation_conjecture). It says: “proved under the Riemann hypothesis, that for \|α\| ≤ 1 this function converges uniformly”
+
+**Sources:**
+
+- [H. L. Montgomery, The Pair Correlation of Zeros of the Zeta Function (1973)](https://public.websites.umich.edu/~hlm/paircor1.pdf)
 
 ### Coproduct stabilizers give double shuffle groups
 
@@ -6394,6 +9790,24 @@
 
 - [Jeffrey T. Sheats, The Riemann Hypothesis for the Goss Zeta Function for 𝔽q\[T\] (1998)](https://doi.org/10.1006/jnth.1998.2232)
 
+### Conductor survives gamma regrouping
+
+**Remember:** The conductor keeps the linear term of the gamma growth.
+
+*True by definition.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 4: research.
+
+**Definition.** For a nonzero Selberg-class function F, write its completing factor as γ(s) = Qˢ∏Γ(λs+μ), with Q and all slopes λ positive. Put d = 2∑λ. Define the conductor q as (2π)ᵈQ² times the product of exp(2λ log λ) over all factors.
+
+**Problem.** The conductor of F has the same value for every allowed completion. The exponential base Q alone can change when a gamma factor splits into several factors.
+
+**How the definition helps.** In our own calculation, the definition recovers q from the growth of the whole completing factor. Stirling’s formula gives log\|γ(x)\| = (d/2)x log x + Bx + O(log x) for real x tending to infinity. Here B = log Q + ∑λ log λ − d/2, so d and B determine q. The uniqueness theorem for completing factors makes their ratio constant. Its logarithm cannot change either growth coefficient.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “the same gamma factor can be expressed in many different ways, involving different numbers of gamma functions with different constants.”
+
+**Sources:**
+
+- [Kaczorowski and Perelli, On the structure of the Selberg class, IV: basic invariants](https://doi.org/10.4064/aa104-2-1)
+
 ### In the Selberg class, degree below 2 means a Dirichlet L-function
 
 **Remember:** Low degree leaves only ζ and the primitive Dirichlet L-functions.
@@ -6411,6 +9825,24 @@
 **Sources:**
 
 - [J. Kaczorowski and A. Perelli, On the structure of the Selberg class, VII: 1 &lt; d &lt; 2, Ann. of Math. 173 (2011) 1397–1441](https://doi.org/10.4007/annals.2011.173.3.4)
+
+### The Euler axiom excludes nonconstant degree-zero polynomials
+
+**Remember:** At degree zero, a nonconstant local polynomial violates the Euler bound.
+
+*Rules out counterexamples.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 4: research.
+
+**Definition.** In the Selberg class, the degree is twice the sum of the positive slopes λ in the factors Γ(λs+μ). The Euler axiom requires log F to have coefficients only at prime powers pʳ. Their absolute values must be bounded by a constant times p raised to rθ for some θ &lt; ½.
+
+**Problem.** Only 1 has degree zero in the Selberg class. Without the Euler axiom, F(s) = 1 + √p/pˢ gives a degree-zero example for each prime p.
+
+**How the definition helps.** In our own proof, the Euler bound keeps each local factor free of zeros for Re s &gt; θ. The degree-zero classification first reduces the series to a finite Dirichlet polynomial. Multiplicativity splits it into local polynomials, so all zeros have real part at most θ. Reflection would place a partner to the right of ½. A nonconstant local polynomial has a nonzero root, so every local factor must be constant. For the example, exp(s log(p)/2) completes F and gives reflection with no gamma factor.
+
+**Paper or page:** [Beyond the extended Selberg class: 1 &lt; dꜰ &lt; 2](https://arxiv.org/abs/2011.07525v1). It says: “The set 𝔄♯₀ consists of Dirichlet polynomials of the form”
+
+**Sources:**
+
+- [Kaczorowski and Perelli, On the structure of the Selberg class, I: 0≤d≤1](https://doi.org/10.1007/bf02392574)
 
 ### Admissible tuples are the prime patterns that sieve theorems can reach
 
@@ -6432,6 +9864,312 @@
 - [Y. Zhang, Bounded gaps between primes, Ann. of Math. 179 (2014) 1121–1174](https://doi.org/10.4007/annals.2014.179.3.7)
 - [J. Maynard, Small gaps between primes, Ann. of Math. 181 (2015) 383–413](https://doi.org/10.4007/annals.2015.181.1.7)
 
+### Empty windows recover gap tails
+
+**Remember:** One extra step removes one empty window from each longer gap.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** For a prime X and integer h≥0, count starting integers 2≤n&lt;X for which (n,n+h\] has no primes. Call the resulting count Eₓ(h). This window count weights the gaps by how many starting points they allow.
+
+**Problem.** The difference Eₓ(h)−Eₓ(h+1) counts consecutive prime gaps longer than h with both endpoints at most X. Suppose Eₓ(⌊λ log X⌋)/X tends to exp(−λ) for every λ≥0 as X grows through primes. Among consecutive gaps ending at or below X, the fraction longer than λ log X then tends to exp(−λ).
+
+**How the definition helps.** Counting starting points makes each gap of length g contribute exactly max(g−h,0). In our own argument, increasing h by one therefore removes one starting point from each longer gap. These losses decrease as h grows, so averages over adjacent blocks bound the loss at h. For λ&gt;0, take blocks of length ⌊ε log X⌋, pass to the limit in X, then let ε decrease to zero. The prime number theorem gives the total number of gaps asymptotic to X/log X. At λ=0 every gap qualifies.
+
+**Wikipedia:** [Prime gap](https://en.wikipedia.org/wiki/Prime_gap). It says: “the ratio of the length of the gap to the natural logarithm is greater than or equal to a fixed positive number k”
+
+**Sources:**
+
+- [P. X. Gallagher, On the distribution of primes in short intervals, Mathematika 23 (1976), 4–9](https://doi.org/10.1112/s0025579300016442)
+
+### Factorial moments remove repeated primes
+
+**Remember:** Count ordered distinct primes to match the prime tuple formula.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** Choose n uniformly from 1,…,X and count the primes N in (n,n+H\], where H=⌊λ log X⌋ for fixed λ&gt;0. The kth factorial moment is the mean of N(N−1)⋯(N−k+1). For k distinct shifts D, let u(p) be the fraction of residues a with every a+h nonzero modulo p for h∈D. Define S(D) as the product of u(p)/(1−1/p)ᵏ over primes p.
+
+**Problem.** For each fixed k≥1, suppose the probability that all n+h for h∈D are prime is (S(D)+o(1))/(log X)ᵏ. Assume the error inside the parentheses tends uniformly to zero over k-element subsets D of {1,…,H}. Then every kth factorial moment tends to λᵏ, and N converges in distribution to the Poisson law of mean λ.
+
+**How the definition helps.** The falling factorial counts ordered lists of distinct primes, exactly the lists in the assumed estimate. In our own derivation, sum those probabilities over ordered lists of distinct shifts. Their factors S(D) have mean tending to one by Gallagher’s theorem. The uniform error contributes o(1) because H/log X tends to λ. These limits determine the Poisson law.
+
+**Paper or page:** [Sums of singular series with large sets and the tail of the distribution of primes](https://arxiv.org/abs/2210.09775v2). It says: “Then there exists a β &gt; 0, dependent only on δ &gt; 0, with Tₖ(h) = hᵏ + O(hᵏ⁻ᵝ).”
+
+**Sources:**
+
+- [P. X. Gallagher, On the distribution of primes in short intervals, Mathematika 23 (1976), 4–9](https://doi.org/10.1112/s0025579300016442)
+
+### Independent phases give Bessel factors
+
+**Remember:** One shared phase per zero keeps the dependence between intervals.
+
+*True by definition.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** For each of the chosen positive imaginary parts γ of zeta zeros, choose an independent uniform point U on the unit circle. For each interval j, this zero contributes −2 Re(cⱼU), with a complex coefficient cⱼ specific to the zero and interval. Sum these contributions to obtain the model error Eⱼ.
+
+**Problem.** For real ξⱼ, the mean of exp(i∑ξⱼEⱼ) equals the product over zeros of J₀(2\|∑ξⱼcⱼ\|). Here J₀(a) is the average of exp(ia cos t) over uniform t in \[0,2π\]. The same formula holds for infinitely many zeros if each interval’s coefficients have a finite sum of squared absolute values.
+
+**How the definition helps.** Independence across zeros gives one factor per zero, while the shared circle point combines the intervals inside each factor. Rotating the circle turns each factor into the stated integral. In our own comparison, independent points for different intervals would remove their dependence on the same zero. In our own extension, square summability gives convergence in mean square, so the finite characteristic functions converge. For prime counts, the paper assumes the Riemann hypothesis and rational independence of the positive imaginary parts of the zeros. It also controls the contribution of the omitted zeros.
+
+**Paper or page:** [Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000v3). It says: “is the Bessel function of order 0.”
+
+**Sources:**
+
+- [Sun-Kai Leung, Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000)
+
+### Logarithmic sampling balances zero phases
+
+**Remember:** Uniform log time gives each nonconstant Fourier mode a vanishing mean.
+
+*Rules out counterexamples.* MSC 11N05 (Distribution of primes), 11M26. arXiv math.NT. Level 4: research.
+
+**Definition.** For X&gt;2, sample x in \[2,X\] with density 1/(x log(X/2)). Let γ₁,…,γᵣ be positive imaginary parts of zeros of the Riemann zeta function. The factors exp(iγⱼ log x) occur in formulas for prime counts in short intervals.
+
+**Problem.** If γ₁,…,γᵣ are linearly independent over the rationals, the phases tend jointly to uniform measure on the product of r unit circles.
+
+**How the definition helps.** The sampling rule makes log x uniform on an interval whose length grows without bound. In our own calculation, test the joint distribution against exp(iu log x), with u an integer combination of the γⱼ. Rational independence makes u nonzero for every nonzero combination, so each such average tends to zero. The Fourier criterion for uniform distribution gives the conclusion. For uniform x, the absolute value of the same average tends to 1/\|1+iu\|. Passing from finitely many phases to actual prime counts requires control of the remaining zeros.
+
+**Paper or page:** [Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000v3). It says: “is uniformly distributed over the torus 𝕋ᴺ.”
+
+**Sources:**
+
+- [Sun-Kai Leung, Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000)
+
+### Normalization gives singular series mean one
+
+**Remember:** Divide by independent survival to make each local average one.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes). arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** For a tuple of k shifts hⱼ let νₚ count their distinct classes modulo p. Normalize the survival fraction to (1 − νₚ/p)/(1 − 1/p)ᵏ, and multiply these ratios over primes p ≤ z. The limit as z tends to infinity defines the full singular series for distinct shifts.
+
+**Problem.** For any fixed z, the truncated series averages to 1 over all ordered tuples modulo the product of primes p ≤ z. For fixed k, the full series averages to 1 + o(1) over distinct ordered shifts in {1,…,H} as H tends to infinity.
+
+**How the definition helps.** Dividing by the independent survival probability makes the average of each local factor exactly one. In our own calculation, choose a test residue and k shifts independently and uniformly modulo p. Each shift misses the test residue with probability 1 − 1/p. Averaging the test residue first gives the numerator instead. The Chinese remainder theorem then gives mean one for the finite product. Gallagher’s theorem controls the passage to the full product over distinct shifts.
+
+**Paper or page:** [Sums of singular series with large sets and the tail of the distribution of primes](https://arxiv.org/abs/2210.09775v2). It says: “Tₖ(h) = hᵏ + O(hᵏ⁻ᵝ).”
+
+**Sources:**
+
+- [P. X. Gallagher, On the distribution of primes in short intervals, Mathematika 23 (1976), 4–9.](https://doi.org/10.1112/s0025579300016442)
+- [Vivian Kuperberg, Sums of singular series with large sets and the tail of the distribution of primes, Theorem 1.1.](https://arxiv.org/abs/2210.09775v2)
+
+### Relative windows fix zero weights
+
+**Remember:** Scale the interval with x so the zero weights stop moving.
+
+*True by definition.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** Set ψ(y)=∑ log p over prime powers pᵃ ≤ y with a ≥ 1. Replace a fixed interval length by a fixed fraction δ of x, where 0&lt;δ≤1. Measure the error as E(x)=(ψ((1+δ)x)−ψ(x)−δx)/√x.
+
+**Problem.** Assume every nontrivial zero ρ of the Riemann zeta function has the form ½+iγ, and take x,Z≥2. Then E(x)=−∑ c(ρ)exp(iγ log x)+O(√x log²(xZ)/Z+log x/√x), summing over \|γ\|≤Z with multiplicities. Here c(ρ)=(exp(ρ log(1+δ))−1)/ρ.
+
+**How the definition helps.** A fixed endpoint ratio gives each zero a coefficient independent of x. In our own calculation, subtract the two endpoint terms in the formula expressing ψ through the zeta zeros. Both contain exp(ρ log x), and dividing by √x leaves exp(iγ log x). For an interval of fixed length h, replacing δ by h/x makes the coefficient vary with x. The truncated formula supplies the stated remainder.
+
+**Paper or page:** [Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000v3). It says: “It follows immediately from the truncated von Mangoldt’s explicit formula”
+
+**Sources:**
+
+- [Sun-Kai Leung, Joint distribution of primes in multiple short intervals](https://arxiv.org/abs/2401.04000)
+- [H. Iwaniec and E. Kowalski, Analytic Number Theory, AMS Colloquium Publications 53 (2004)](https://doi.org/10.1090/coll/053)
+
+### Tent weights save a logarithm
+
+**Remember:** Use a tent to soften both edges of the prime count.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** Instead of counting all terms in a short interval at full weight, use max(0,h−\|n−x\|). Multiply this by Λ(n), which is log p at powers of a prime p and zero elsewhere.
+
+**Problem.** Assume every zero of the Riemann zeta function with real part strictly between zero and one has real part ½. For some C&gt;0 and all sufficiently large x, there is a prime within C√x log x of x.
+
+**How the definition helps.** The tent weight lets the proof integrate the prime-counting formula once before taking differences. In our own explanation, the second difference of this integral produces exactly the tent. Integration gives an extra denominator in each term from a zeta zero. Under the stated hypothesis, splitting the sum at height x/h bounds the error by O(h√x log x). With h=C√x log x and C sufficiently large, the main term h² dominates. Higher prime powers contribute o(h²), so a prime must have positive weight.
+
+**Wikipedia:** [Riemann hypothesis](https://en.wikipedia.org/wiki/Riemann_hypothesis). It says: “Cramér proved that, assuming the Riemann hypothesis, every gap is O(√p log p).”
+
+**Sources:**
+
+- [H. Iwaniec and E. Kowalski, Analytic Number Theory, AMS Colloquium Publications 53 (2004)](https://doi.org/10.1090/coll/053)
+
+### Truncated inverses give Heath-Brown’s identity
+
+**Remember:** For n up to X, K missing small factors cannot occur together.
+
+*True by definition.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix X≥2 and an integer K≥1. Set μ(m)=0 if a prime square divides m, and otherwise set μ(m)=(−1)ʳ for r distinct prime factors. For real s&gt;1, truncate the reciprocal of the Riemann zeta function ζ at Y=exp((log X)/K). The truncated sum is M(s)=∑ μ(m)/mˢ over m≤Y.
+
+**Problem.** For positive integers n≤X, let Λ(n)=log p when n is a positive power of a prime p, and zero otherwise. Then Λ(n) equals the coefficient of 1/nˢ in −ζ′(s)∑(−1)ʲ⁻¹ binom(K,j)ζ(s)ʲ⁻¹M(s)ʲ, summing from j=1 to K.
+
+**How the definition helps.** The truncation makes every coefficient of 1−ζM vanish through Y because M agrees there with the reciprocal series. In our own derivation, each index in the Kth power then exceeds Yᴷ=X. Multiply 1−(1−ζM)ᴷ by −ζ′/ζ, whose coefficients are Λ(n). Up to X the coefficients stay the same, and the binomial expansion gives the formula. Estimating the resulting sums over products of integers is the hard step in the prime-counting application.
+
+**Wikipedia:** [Vaughan's identity](https://en.wikipedia.org/wiki/Vaughan%27s_identity). It says: “Vaughan's identity was generalized by Heath-Brown”
+
+**Sources:**
+
+- [D. R. Heath-Brown, Prime Numbers in Short Intervals and a Generalized Vaughan Identity, Canadian Journal of Mathematics 34 (1982), 1365–1377](https://doi.org/10.4153/cjm-1982-095-9)
+
+### Tuple width transfers gap bounds
+
+**Remember:** Prove the sieve for all allowed shapes, then choose the narrowest one.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 4: research.
+
+**Definition.** For k≥2, consider all sets of k integers that miss a residue class modulo every prime. The width of a set is its largest entry minus its smallest. Let H(k) be the least width among these sets.
+
+**Problem.** Suppose every such set has infinitely many integer translates containing at least m primes, with 2≤m≤k. Then infinitely many blocks of m consecutive primes have width at most H(k). For m=2 and k=50, the Polymath sieve and H(50)≤246 give infinitely many consecutive prime gaps at most 246.
+
+**How the definition helps.** The minimum width converts a theorem about every allowed set into a bound for consecutive primes. In our own argument, choose a set attaining H(k) and apply the sieve theorem to that set. Each successful translate lies in an interval containing at least m primes. The first m primes there form a consecutive block. The sieve theorem and the construction of a narrow set supply the two substantive inputs.
+
+**Paper or page:** [Primes in Tuples of Linear Forms in Number Fields and Function Fields](https://arxiv.org/abs/2409.04705v1). It says: “there are infinitely many n such that at least m of n+hᵢ, 1 ≤ i ≤ k, are prime.”
+
+**Sources:**
+
+- [D. H. J. Polymath, Variants of the Selberg sieve, and bounded intervals containing many primes, Research in the Mathematical Sciences 1 (2014), 12](https://doi.org/10.1186/s40687-014-0012-7)
+
+### Zero counts set Huxley’s threshold
+
+**Remember:** A density exponent sets the interval length that the explicit formula can reach.
+
+*Makes the theorem clean to state or prove.* MSC 11N05 (Distribution of primes), 11M26. arXiv math.NT. Level 4: research.
+
+**Definition.** Let N(σ,T) count zeros of the Riemann zeta function ζ with real part at least σ and absolute imaginary part at most T. Count each zero with its multiplicity.
+
+**Problem.** Suppose N(σ,T) ≤ C exp(A(1−σ)log T)(log T)ᴮ throughout ½≤σ≤1 and T≥2, with fixed A≥2, B and C. Fix 1−1/A&lt;θ&lt;1 and put h=xᶿ. The number of primes in (x,x+h\] divided by h/log x tends to one as x grows.
+
+**How the definition helps.** The count groups zeros by the size of their contributions to the prime count. In our own derivation, the explicit formula expresses the error in a weighted prime count as a sum over zeros. Summation by parts bounds this sum using N. Choose T slightly above x/h so that Tᴬ remains below x by a fixed power. The Vinogradov–Korobov zero-free region excludes zeros close enough to real part one to defeat the logarithmic factors. Huxley’s classical density bound allows A=12/5, giving θ&gt;7/12.
+
+**Paper or page:** [New large value estimates for Dirichlet polynomials](https://arxiv.org/abs/2405.20552v1). It says: “Let N(σ, T) denote the number of zeros ρ of ζ(s) with ℜ(ρ) ≥ σ and \|ℑ(ρ)\| ≤ T.”
+
+**Sources:**
+
+- [M. N. Huxley, On the difference between consecutive primes, Inventiones Mathematicae 15, 164–170](https://doi.org/10.1007/BF01418933)
+- [H. Iwaniec and E. Kowalski, Analytic Number Theory, AMS Colloquium Publications 53 (2004)](https://doi.org/10.1090/coll/053)
+- [Larry Guth and James Maynard, New large value estimates for Dirichlet polynomials](https://arxiv.org/abs/2405.20552)
+
+### Anchoring removes small zero denominators
+
+**Remember:** Subtract the value at one before dividing by the zero.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11M20. arXiv math.NT. Level 4: research.
+
+**Definition.** For x ≥ 2, define Kₓ(z) as the integral of exp(zu) from u = 0 to u = log x. Thus Kₓ(z) = (exp(z log x)−1)/z for z ≠ 0 and Kₓ(0) = log x. For a character χ modulo q, let ψ(x,χ) sum χ(n) log p over positive prime powers n = pᵏ ≤ x.
+
+**Problem.** Take T ≥ 2 and a nonprincipal character χ of smallest possible modulus q. Sum Kₓ(ρ) over nontrivial zeros with \|Im ρ\| ≤ 1 and exp(ρ log x)/ρ over those with 1 &lt; \|Im ρ\| ≤ T. Counting multiplicities, ψ(x,χ) equals the negative of this combined sum up to error O(log(qx) + x(log(qxT))²/T).
+
+**How the definition helps.** The integral stays finite as a zero approaches zero, so each low zero contributes a well-defined term. Our own comparison uses the numerator exp(ρ log x)−1 in place of exp(ρ log x), which alone tends to one. Lemma 2.3 gives the resulting formula and bounds the error.
+
+**Paper or page:** [Average orders of Goldbach Estimates in Arithmetic Progressions](https://arxiv.org/abs/2407.18266). It says: “For a primitive Dirichlet character χ modulo q and t,T ≥ 2, we have”
+
+**Sources:**
+
+- [Thi Thu Nguyen, Average orders of Goldbach Estimates in Arithmetic Progressions](https://arxiv.org/abs/2407.18266)
+
+### Corrected mass absorbs exceptional zeros
+
+**Remember:** Put the exceptional zero in the main term, not the error.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11M06. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix q ≥ 2 and a coprime to q, and let φ(q) count the invertible classes modulo q. A real character χ assigns multiplicative signs to those classes and vanishes elsewhere. If its associated Dirichlet series has the exceptional real zero β specified in Thorner and Zaman’s theorem, set λ = 1 − χ(a)exp((β−1)log x)/β. Otherwise set λ = 1.
+
+**Problem.** Take x ≥ 3 with λx/φ(q) ≥ x¹⁸⁄¹⁹. The sum of log p over primes p ≤ x congruent to a equals (λx/φ(q))(1 + O(exp(U) + exp(V))). Here U = −c log x/log q and V = −c(log x)³⁄⁵/(log log x)¹⁄⁵ for an effectively computable absolute c &gt; 0.
+
+**How the definition helps.** Including the exceptional zero in the predicted count gives one relative error estimate in both cases (our own explanation). Where χ(a) = 1, the correction can reduce the prediction substantially. The proof bounds the other zeros more sharply when the exceptional zero approaches 1.
+
+**Paper or page:** [Refinements to the prime number theorem for arithmetic progressions](https://arxiv.org/abs/2108.10878v2). It says: “There exists a constant c &gt; 0 such that if λx/φ(q) ≥ x¹⁸⁄¹⁹, then”
+
+**Sources:**
+
+- [Jesse Thorner and Asif Zaman, Refinements to the prime number theorem for arithmetic progressions (2024)](https://link.springer.com/article/10.1007/s00209-023-03414-3)
+
+### Distinct tuples give Poisson moments
+
+**Remember:** Count distinct tuples to read the Poisson moments directly.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Choose a class uniformly among the φ(q) classes coprime to q. Let Z count its primes up to N. The falling factorial Z(Z−1)⋯(Z−k+1) counts ordered lists of k distinct primes from the class.
+
+**Problem.** Assume Leung’s Conjecture 1.1, a uniform estimate for how often prescribed shifts of an integer are all prime. Suppose N/(φ(q)log N) tends to λ &gt; 0 as N tends to infinity. Then each fixed falling factorial moment of order k tends to λᵏ, and Z approaches the Poisson distribution of mean λ.
+
+**How the definition helps.** Falling factorials count only distinct primes, exactly the tuples covered by the hypothesis (our own explanation). Ordinary powers also count tuples with repetitions. Leung groups these tuples by their number of distinct entries and estimates the resulting prime counts under the hypothesis. The limiting factorial moments determine the Poisson distribution (our own).
+
+**Paper or page:** [Moments of primes in progressions to a large modulus](https://arxiv.org/abs/2402.07941v2). It says: “Let k ≥ 1 be an integer. Suppose φ(q) ≍ N/log N.”
+
+**Sources:**
+
+- [Sun-Kai Leung, Moments of primes in progressions to a large modulus](https://doi.org/10.1515/forum-2024-0292)
+
+### Empty classes determine least primes
+
+**Remember:** The first prime has not arrived exactly when the class is empty.
+
+*True by definition.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Choose a class uniformly among the φ(q) classes coprime to q, and let P be its least prime. Measure the waiting time by T = P/(φ(q)log q).
+
+**Problem.** Assume Leung’s Conjecture 1.1, a uniform estimate for how often prescribed shifts of an integer are all prime. As q tends to infinity, the probability that T exceeds any fixed t &gt; 0 tends to exp(−t).
+
+**How the definition helps.** The waiting time exceeds t exactly when the prime count at tφ(q)log q is zero (our own explanation). Counting primes at that cutoff lets us apply Leung’s conditional Poisson limit with mean t, since log φ(q) is asymptotic to log q. A Poisson variable of mean t equals zero with probability exp(−t).
+
+**Paper or page:** [Moments of primes in progressions to a large modulus](https://arxiv.org/abs/2402.07941v2). It says: “Let t &gt; 0 be a fixed real number.”
+
+**Sources:**
+
+- [Sun-Kai Leung, Moments of primes in progressions to a large modulus](https://doi.org/10.1515/forum-2024-0292)
+
+### Good moduli give prime lower bounds
+
+**Remember:** Keep zero-free moduli and the lower bound needs no exceptional term.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11M06. arXiv math.NT. Level 4: research.
+
+**Definition.** A Dirichlet character χ modulo q is a multiplicative character of invertible residue classes, extended by zero elsewhere. Its L-function L(s,χ) continues the series Σ χ(n)exp(−s log n). Fix a sufficiently small absolute c &gt; 0 and call q good when every zero σ+it of every L(s,χ) satisfies 1−σ ≥ c/log(q(1+\|t\|)). Write φ(q) for the number of reduced classes, those coprime to q.
+
+**Problem.** There are positive constants C,D depending only on c. For good q ≥ 2 and reduced a, the class contains at least Cx/(φ(q)log x) primes up to x whenever x ≥ qᴰ.
+
+**How the definition helps.** A good modulus admits one lower bound for every reduced class (our own explanation). A real zero close to 1 can otherwise subtract nearly the entire predicted count in some classes. The proof relates prime counts to zeros and bounds how many zeros can approach the line Re(s) = 1 (our own).
+
+**Paper or page:** [Recent results on large gaps between primes](https://arxiv.org/abs/2402.07176v2). It says: “Let q be a good modulus. Then π(x;q,a) ≫ x/(φ(q) log x),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Residue ratios determine joint errors
+
+**Remember:** The ratio of two residue classes fixes their joint law.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11M06. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix q ≥ 3 and write φ(q) for the number of reduced classes, those coprime to q. Let ψ(x;a) sum log p over positive powers of primes p up to x in class a. Let M(x) be the mean of ψ(x;a) over reduced classes. Define E(x;a) = φ(q)(ψ(x;a) − M(x))/√x.
+
+**Problem.** Assume every nontrivial zero of a Dirichlet L-function modulo q has real part ½ and none equals ½. Assume the positive imaginary parts of these zeros, counted with multiplicity across primitive characters inducing characters modulo q, are linearly independent over ℚ. Sampling x on \[1,X\] with density 1/(x log X) gives (E(x;α),E(x;β)) a limiting distribution determined by αβ⁻¹ modulo q for reduced α,β.
+
+**How the definition helps.** Subtracting the class average removes the common term, leaving character values that compare the two classes (our own explanation). A character χ is a multiplicative function on the invertible classes with values on the unit circle. In the formula for the limiting distribution, the classes enter only through χ(αβ⁻¹). The proof relates the errors to zeros of the L-functions and controls the contribution of zeros with large imaginary part (our own).
+
+**Paper or page:** [Joint distributions of error terms for primes in arithmetic progressions modulo 11](https://arxiv.org/abs/2510.05427v1). It says: “where a ≡ αβ⁻¹ mod q.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smoothing sharpens least prime bounds
+
+**Remember:** An extra logarithm makes high zeros count less.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11M06. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix q ≥ 2 and a coprime to q. For each prime power n ≤ x congruent to a modulo q, give n weight (log p)log(x/n), where p divides n. Write φ(q) for the number of invertible classes modulo q.
+
+**Problem.** Assume the generalized Riemann hypothesis, which puts every nontrivial zero of every Dirichlet L-function on the line Re(s) = ½. The least prime congruent to a modulo q is then O((φ(q)log q)²), with an absolute implied constant.
+
+**How the definition helps.** The logarithmic weight reduces the contribution from zeros high above the real axis (our own explanation). In the integral for the weighted count, the denominator changes from s to s². Each zero ρ then contributes a term proportional to exp(ρ log x)/ρ². Under the hypothesis, summing these terms costs O(√x log q), while higher prime powers contribute O(√x). The main term x/φ(q) eventually exceeds both bounds at the stated scale (our own derivation).
+
+**Wikipedia:** [Linnik's theorem](https://en.wikipedia.org/wiki/Linnik%27s_theorem). It says: “where φ is the totient function”
+
+**Sources:**
+
+- [Youness Lamzouri, Xiannan Li and Kannan Soundararajan, Conditional bounds for the least quadratic non-residue and related problems](https://doi.org/10.1090/S0025-5718-2015-02925-1)
+
 ### Square-root weights expose prime bias
 
 **Remember:** At the central exponent, prime squares contribute a growing log log term.
@@ -6449,6 +10187,150 @@
 **Sources:**
 
 - [Arshay Sheth. Euler Products at the Centre and Applications to Chebyshev's Bias](https://arxiv.org/abs/2405.01512v1)
+
+### Squared weights halve the exponent
+
+**Remember:** Squaring the divisor sum makes the moduli at most the squared cutoff.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11N36, 11N05. arXiv math.NT. Level 4: research.
+
+**Definition.** Write φ(q) for the number of classes coprime to q. Let θ(t;q,a) sum log p over primes p ≤ t congruent to a modulo q. Let E(x;q) be the supremum of \|θ(t;q,a) − t/φ(q)\| over invertible a and 2 ≤ t ≤ x. A level of distribution ϑ ∈ (0,1\] means Σ E(x;q) = O(x/(log x)ᴬ) over q ≤ exp((ϑ−δ)log x) for all A,δ &gt; 0.
+
+**Problem.** Fix a nonzero integer a, η &gt; 0 and R ≤ exp((ϑ/2−η)log x). Take \|λ(d)\| ≤ 1 vanishing for gcd(d,a) &gt; 1, and let W(p) = (Σ λ(d))² over d ≤ R dividing p−a. Then Σ W(p)log p for x &lt; p ≤ 2x equals xΣ λ(d)λ(e)/φ(lcm(d,e)) over d,e ≤ R, within O(x/(log x)ᴬ) for every A &gt; 0.
+
+**How the definition helps.** The level specifies how large the moduli from the squared divisor sum may be (our own derivation). Each pair d,e gives the class a modulo their least common multiple, which is at most R². A modulus q arises at most τ(q)² times, where τ(q) counts its divisors. Cauchy–Schwarz combines the level estimate with E(2x;q) = O(x log x/q) and a bound by a fixed power of log x for Σ τ(q)⁴/q. Proving a level for primes requires a separate theorem, such as Bombieri–Vinogradov.
+
+**Wikipedia:** [Bombieri–Vinogradov theorem](https://en.wikipedia.org/wiki/Bombieri%E2%80%93Vinogradov_theorem). It says: “averaged over the moduli q up to Q.”
+
+**Sources:**
+
+- [Enrico Bombieri, On the large sieve (1965)](https://doi.org/10.1112/S0025579300005313)
+
+### The Siegel correction isolates progression bias
+
+**Remember:** Put the exceptional zero into the main term, not the error.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Set Q=exp((log N)¹ᐟ¹⁰), let D be the product of primes below Q, and let φ(D) count residues coprime to D. Start with M(n)=D/φ(D) on integers coprime to D and zero elsewhere. Consider primitive real Dirichlet characters χ, periodic multiplicative functions taking values 0,1,−1, whose least defining modulus is below Q. If one associated Dirichlet L-function has a real zero β between 1−c₀/log Q and 1, multiply M(n) by 1−χ(n)nᵝ⁻¹.
+
+**Problem.** Fix a sufficiently small absolute c₀&gt;0 and any arithmetic progression P in \[1,N\]. The sum of Λ−M on P has absolute value at most CN exp(−c(log N)¹ᐟ¹⁰) for effective constants c,C&gt;0. Here Λ gives weight log p to powers of a prime p and zero elsewhere.
+
+**How the definition helps.** Including the possible exceptional zero in M gives one error estimate for both cases (our own explanation). This zero belongs to the function obtained by continuing the series Σχ(n)/nˢ from real part greater than one. The Landau–Page theorem ensures uniqueness. Tao and Teräväinen prove the progression estimate in Proposition 2.2.
+
+**Paper or page:** [Improved quadratic Gowers uniformity for the Möbius function](https://arxiv.org/abs/2212.09635). It says: “qSiegel is the conductor for the character χSiegel for the Siegel zero β”
+
+**Sources:**
+
+- [Tao and Teräväinen, Quantitative bounds for Gowers uniformity of the Möbius and von Mangoldt functions, JEMS 27 (2025), 1321–1384](https://doi.org/10.4171/jems/1404)
+
+### The W-trick removes parity bias
+
+**Remember:** Pick one reduced class and scale its average back to one.
+
+*Rules out counterexamples.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Let W be the product of primes at most √(log log N), and choose 1 ≤ b ≤ W coprime to W. Write Λ(m)=log p when m is a positive power of a prime p, and zero otherwise. Use the weight F(n)=φ(W)Λ(Wn+b)/W, where φ(W) counts residues coprime to W.
+
+**Problem.** On the integer interval from 1 to ⌊(N−b)/W⌋, the order-k Gowers norm of F−1 is O((log log N)⁻ᶜ). This norm measures the alternating product over additive cubes inside the interval. The bound holds uniformly in b for each fixed k ≥ 2, with c&gt;0 depending on k.
+
+**How the definition helps.** Each chosen class avoids every prime dividing W, and the factor φ(W)/W restores the expected mean (our own explanation). Before restricting to a class, almost all the weight lies on odd integers. Tao and Teräväinen’s Corollary 1.5 proves uniformity after the restriction.
+
+**Wikipedia:** [Green–Tao theorem](https://en.wikipedia.org/wiki/Green%E2%80%93Tao_theorem). It says: “The proof is an extension of Szemerédi's theorem.”
+
+**Sources:**
+
+- [Tao and Teräväinen, Quantitative bounds for Gowers uniformity of the Möbius and von Mangoldt functions, JEMS 27 (2025), 1321–1384](https://doi.org/10.4171/jems/1404)
+
+### Three factors extend modulus ranges
+
+**Remember:** Flexible splitting lets the proof balance three modulus variables.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11N35. arXiv math.NT. Level 4: research.
+
+**Definition.** Call a sequence λ triply well factorable at level Q if it admits the following split for every Q = Q₁Q₂Q₃ with Qᵢ ≥ 1. Choose three sequences so that the ith has magnitude at most one and vanishes on integers above Qᵢ. For every q, summing their products over ordered factorizations q = q₁q₂q₃ must give λ(q).
+
+**Problem.** Fix a nonzero integer a and positive A and ε, and suppose Q ≤ x raised to the power 3/5 − ε. For q coprime to a, let E(q) count primes up to x congruent to a modulo q, minus π(x)/φ(q). Then ∑ λ(q)E(q) over these q ≤ Q is O(x/(log x)ᴬ).
+
+**How the definition helps.** Requiring every split lets Maynard choose the three factor ranges to suit each sum in the proof. Here π(x) counts all primes up to x, and φ(q) counts the invertible residue classes modulo q. In our own interpretation, a single fixed split could leave one factor outside the range needed for an estimate. Maynard’s estimates for the resulting sums establish the stated modulus range. Li uses distribution estimates in a sieve application.
+
+**Paper or page:** [On Chen's theorem, Goldbach's conjecture and almost prime twins II](https://arxiv.org/abs/2405.05727v4). It says: “The proof combines various techniques in sieve methods, such as weighted sieve, Chen's switching principle”
+
+**Sources:**
+
+- [J. Maynard, Primes in arithmetic progressions to large moduli II: Well-factorable estimates, Theorem 1.1.](https://ora.ox.ac.uk/objects/uuid%3Ad75350eb-1358-474a-b070-0b4b5ad720b2)
+
+### Three factors reach larger moduli
+
+**Remember:** Three adjustable factors let prime estimates reach farther.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes), 11N36. arXiv math.NT. Level 4: research.
+
+**Definition.** Call weights λ triply well factorable at level Q if every split Q = Q₁Q₂Q₃ with Qᵢ ≥ 1 admits three sequences uᵢ. Each satisfies \|uᵢ(d)\| ≤ 1 and vanishes for d &gt; Qᵢ. For every q, λ(q) equals the sum of u₁(d₁)u₂(d₂)u₃(d₃) over positive integers with d₁d₂d₃ = q.
+
+**Problem.** Fix a nonzero integer a and A,ε &gt; 0, and take triply well factorable weights at level Q ≤ exp((3/5 − ε)log x). Let E(q) count primes up to x congruent to a modulo q, minus the total prime count divided by the number of invertible classes. Then Σ λ(q)E(q) = O(x/(log x)ᴬ), summing over q ≤ Q coprime to a.
+
+**How the definition helps.** In our own explanation, the definition lets the proof choose three factor sizes after splitting the prime sum. An arbitrary weight supported on q ≤ Q has no such guarantee (our own). Maynard’s estimates for sums over products of variables do the work of controlling the signed errors (our own).
+
+**Wikipedia:** [Elliott–Halberstam conjecture](https://en.wikipedia.org/wiki/Elliott%E2%80%93Halberstam_conjecture). It says: “This conjecture was proven for all θ &lt; 1/2 by Enrico Bombieri”
+
+**Sources:**
+
+- [James Maynard, Primes in arithmetic progressions to large moduli II, Theorem 1.1](https://ora.ox.ac.uk/objects/uuid:d75350eb-1358-474a-b070-0b4b5ad720b2)
+
+### A saddle point cancels linear terms
+
+**Remember:** Choose the contour where the first derivative vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 4: research.
+
+**Definition.** Let Z(s,y)=∏ (1−1/pˢ)⁻¹ over primes p≤y. Choose α&gt;0 to minimize xˢZ(s,y) on the positive real axis. Use D for the second derivative of log Z(s,y) at α.
+
+**Problem.** Let Ψ(x,y) count positive integers at most x with no prime factor above y, and put u=log x/log y. Uniformly for x≥y≥max(2,log x), Ψ(x,y)=xᵅZ(α,y)/(α√(2πD)) times 1+O(1/u).
+
+**How the definition helps.** At the minimizing point, the linear term of the exponent vanishes (our own calculation). The derivative of log Z there equals −log x. Moving from α to α+it therefore gives quadratic term −Dt²/2 in the logarithm of the integrand’s numerator. Integrating this Gaussian term gives the displayed factor. Hildebrand and Tenenbaum bound the errors near α and the rest of the integral.
+
+**Paper or page:** [Smooth integers and the Dickman ρ function](https://arxiv.org/abs/2211.08973v6). It says: “where α &gt; 0 is defined as the minimum of s ↦ ζ(s,y)xˢ”
+
+**Sources:**
+
+- [Smooth integers and the Dickman ρ function](https://arxiv.org/abs/2211.08973v6)
+
+### A saddle point explains Dickman decay
+
+**Remember:** The saddle point turns repeated delay steps into a single exponential estimate.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 4: research.
+
+**Definition.** The Dickman function ρ equals one on \[0,1\] and satisfies uρ′(u)=−ρ(u−1) for u&gt;1. Define I(z)=∫₀ᶻ (exp(t)−1) dt/t for z≥0, with the integrand extended continuously at zero. For u&gt;1, choose ξ&gt;0 by I′(ξ)=u, equivalently exp(ξ)−1=uξ.
+
+**Problem.** As u tends to infinity, log ρ(u)=−u(log u+log log u−1+O(log log u/log u)), where ρ is the Dickman function.
+
+**How the definition helps.** Choosing ξ makes the derivative of I(z)−uz vanish, so a single estimate replaces repeated steps through the delay equation (our own explanation). Tenenbaum’s theorem estimates ρ(u) by exp(γ−uξ+I(ξ))/√(2πI″(ξ)), with relative error O(1/u). Here γ is Euler’s constant. In our own calculation, the root equation gives ξ=log u+log log u+O(log log u/log u). Integration near the upper endpoint gives I(ξ)=u(1+O(1/ξ)). The root equation also gives I″(ξ)=u+(1−u)/ξ, whose logarithm contributes only O(log u).
+
+**Paper or page:** [Smooth integers and the Dickman ρ function](https://arxiv.org/abs/2211.08973v6). It says: “For $u \\ge 1$ we have $\\rho (u) = (\\sqrt{2\\pi I''(\\xi (u))})<sup>-1</sup>e<sup>\\gamma -u\\xi +I(\\xi )</sup>(1+O(u<sup>-1</sup>)).$”
+
+**Sources:**
+
+- [Smooth integers and the Dickman ρ function](https://arxiv.org/abs/2211.08973v6)
+
+### Broken sticks model largest primes
+
+**Remember:** After the first break, the leftover stick restarts at a smaller scale.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT, math.PR. Level 4: research.
+
+**Definition.** Break a unit stick at a uniformly chosen point and keep the left piece. Repeat independently on the remaining stick, each time taking a uniform fraction. The lengths in decreasing order have the Poisson–Dirichlet law with parameter one. Let M be the largest length.
+
+**Problem.** Choose N uniformly from {1,…,x} and write P(N) for its largest prime factor, with P(1)=1. As x tends to infinity, log P(N)/log x converges in distribution to M. For 0&lt;t≤1, P(M≤t)=ρ(1/t), where ρ equals one on \[0,1\] and satisfies uρ′(u)=−ρ(u−1) for u&gt;1.
+
+**How the definition helps.** The first break leaves an independent copy of the construction on a shorter stick (our own derivation). Write F(t)=P(M≤t), so F(t)=1 for t≥1. Conditioning on the first length gives F(t)=∫₀ᵗ F(t/(1−v)) dv for 0&lt;t&lt;1. Setting g(u)=F(1/u) gives ug(u) equal to the integral of g from u−1 to u. Differentiation gives the equation for ρ. Billingsley’s theorem supplies the arithmetic limit for the ordered prime factors.
+
+**Paper or page:** [Multiplicative arithmetic functions and the generalized Ewens measure](https://arxiv.org/abs/1909.00601v3). It says: “where PD(θ) is the Poisson-Dirichlet distribution with parameter θ”
+
+**Sources:**
+
+- [Multiplicative arithmetic functions and the generalized Ewens measure](https://arxiv.org/abs/1909.00601v3)
 
 ### Hypergraphs let one density formula cover every pattern of coprimality conditions
 
@@ -6468,6 +10350,62 @@
 
 - [Brian Sittinger, Vickie Chen, The Density of Tuples Restricted by Relatively r-Prime Conditions, arXiv:2106.14061v2 (2021)](https://arxiv.org/abs/2106.14061v2)
 
+### Prime-prefix densities sum to one
+
+**Remember:** Each admissible prefix gets its own disjoint share of the integers.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 4: research.
+
+**Definition.** Let θ be real-valued on positive integers, with θ(1)≥2 and θ(m) at least the largest prime factor of every m&gt;1. Read each integer’s distinct primes in increasing order, starting with m=1. Accept the next prime p if p≤θ(m), then multiply m by the full power of p in the integer. Let B contain 1 and every integer that passes all its tests.
+
+**Problem.** Suppose the fraction of integers up to x belonging to B tends to zero. For m in B put w(m)=(1/m)∏ (1−1/p), taking the product over primes p≤θ(m). Then ∑ w(m) over B equals one.
+
+**How the definition helps.** Stopping at the first failed test partitions the integers into classes whose densities can be calculated (our own explanation). The class with accepted prefix m consists of m times all integers free of primes at most θ(m). The Chinese remainder theorem gives this class density w(m). The cited density theorem uses the zero-density hypothesis to control the contribution from large prefixes when passing to the infinite sum.
+
+**Paper or page:** [An extension of smooth numbers: multiple dense divisibility](https://arxiv.org/abs/2504.02699v2). It says: “If Bθ(x) = o(x), then”
+
+**Sources:**
+
+- [An extension of smooth numbers: multiple dense divisibility](https://arxiv.org/abs/2504.02699v2)
+
+### Reciprocal smooth weights yield Dickman
+
+**Remember:** Reciprocal weights give independent prime contributions on the logarithmic scale.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT, math.PR. Level 4: research.
+
+**Definition.** Fix y≥2 and consider all positive integers whose prime factors are at most y. Give each such n probability c(y)/n, where c(y)=∏ (1−1/p) over primes p≤y. Measure the size of n by Z=log n/log y.
+
+**Problem.** As y tends to infinity, Z converges in distribution to a Dickman variable D. Its Laplace transform, the mean E\[exp(−tD)\], equals exp(∫₀¹ (exp(−tu)−1) du/u) for t≥0.
+
+**How the definition helps.** Reciprocal weights make the prime exponents independent, so the transform factors over primes (our own derivation). Taking logarithms and expanding gives a sum over prime powers. Terms with exponent at least two vanish in the limit by dominated convergence, since ∑ 1/p² converges. Partial summation using Mertens’ estimate for ∑ 1/p turns the remaining terms into the displayed integral.
+
+**Wikipedia:** [Smooth number](https://en.wikipedia.org/wiki/Smooth_number). It says: “A positive integer is called B-smooth if none of its prime factors are greater than B.”
+
+**Paper or page:** [Dickman type stochastic processes with short- and long- range dependence](https://arxiv.org/abs/2408.11521v2). It says: “The Laplace transform of Dθ,ₐ ∼ GD(θ, a) is given by”
+
+**Sources:**
+
+- [Dickman type stochastic processes with short- and long- range dependence](https://arxiv.org/abs/2408.11521v2)
+
+### Square-root intervals center squarefull counts
+
+**Remember:** Equal widths after taking square roots give the same main term.
+
+*Makes the theorem clean to state or prove.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 4: research.
+
+**Definition.** Let Q(x) count positive integers n≤x in which each prime divisor has exponent at least two. Count them in (x,(√x+H)²\], an interval of width H after taking square roots. Write c=ζ(3/2)/ζ(3), where ζ(s)=∑ 1/nˢ. Put S(v)=sin(πv)/(πv) and S(0)=1.
+
+**Problem.** Fix 0&lt;ε&lt;0.01 and take Xᵋ≤H≤exp((189/1046−2ε)log X). As X grows, the average of \|Q((√x+H)²)−Q(x)−cH\|² over x∈\[X,2X\] is asymptotic to K∛(H²). Here K equals 4ζ(4/3)/(3ζ(2)) times the integral of S(v)²∛v over 0&lt;v&lt;∞.
+
+**How the definition helps.** Square-root width gives each squarefree factor a contribution of constant length as x varies (our own explanation). Every counted integer has a unique form a²b³ with b squarefree, meaning no prime square divides b. For fixed b the interval for a has length H/(b√b). These lengths sum to cH over all squarefree b. Chan’s theorem controls the correlations between rounding errors and the contribution of large b to obtain the mean square.
+
+**Paper or page:** [Variance of squarefull numbers in short intervals II](https://arxiv.org/abs/2311.13463v1). It says: “For $X<sup>\\epsilon </sup> \\le H \\le X<sup>{\\frac{189}{1046}</sup> - 2 \\epsilon }$, we have $\\frac{1}{X} \\int <sub>X</sub><sup>2X</sup> \\Big\| Q(x+y) - Q(x) - \\frac{\\zeta (3/2)}{\\zeta (3)} H \\Big\|<sup>2</sup> dx = \\frac{4 \\zeta (4/3)}{3 \\zeta (2)} \\int <sub>0</sub><sup>\\infty </sup> S(y)<sup>2</sup> y<sup>1/3</sup> dy \\cdot H<sup>2/3</sup> + O\_\\epsilon ( H<sup>2/3 - \\epsilon / 16</sup>)$”
+
+**Sources:**
+
+- [Variance of squarefull numbers in short intervals II](https://arxiv.org/abs/2311.13463v1)
+
 ### Fixed square divisors prevent Gaussian limits
 
 **Remember:** A fixed prime square makes every term in the random sum vanish.
@@ -6485,6 +10423,391 @@
 **Sources:**
 
 - [Jake Chinis, Besfort Shala. Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952v2)
+
+### Beta prefixes control sieve moduli
+
+**Remember:** Cut branches only when their signs allow it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11N35 (Sieves). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix D ≥ z ≥ 2 and β ≥ 1, and write the prime factors of a squarefree integer d in decreasing order. Reject nonsquarefree integers and integers with any prime factor at least z. For the upper weight test prefixes of odd length, and for the lower weight test prefixes of even length. Reject d if any tested prefix product times its last prime raised to β exceeds D.
+
+**Problem.** For each weight, give rejected integers weight zero and retained integers sign (−1)ʳ, where r counts their prime factors. The lower and upper sums over divisors of n bound the indicator that n has no prime factor below z. Both weights vanish above D.
+
+**How the definition helps.** The prefix tests stop inclusion–exclusion at a term whose sign determines the direction of the bound. In our own proof, group omitted terms by their first failing prefix. Their remaining factors range over subsets of smaller primes dividing n, so each group cancels or retains the prefix sign. A last untested prime is smaller than its predecessor and therefore fits under the preceding prefix bound. A single untested prime is already below z. The empty product gives weight one at d = 1. Estimating the resulting sums is the analytic part of the beta sieve.
+
+**Paper or page:** [Polynomials represented by norm forms via the beta sieve](https://arxiv.org/abs/2209.08949v2). It says: “there is a choice of upper and lower bound sieve weights Λ± (taking values in {−1,0,1}), and explicit constants”
+
+**Sources:**
+
+- [H. Iwaniec, Rosser’s sieve, Acta Arithmetica 36 (1980), 171–202.](https://doi.org/10.4064/aa-36-2-171-202)
+- [Alec Shute, Polynomials represented by norm forms via the beta sieve, §4.](https://doi.org/10.1017/S1474748025000076)
+
+### Linear sieve sums recover Buchstab
+
+**Remember:** Adding the two delay equations gives one delay equation.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 4: research.
+
+**Definition.** Let γ denote Euler’s constant and let f and F be the continuous lower and upper functions of the linear sieve. On 1 ≤ s ≤ 2 set f(s) = 0, and on 1 ≤ s ≤ 3 set sF(s) = 2 exp(γ). For s &gt; 2 require (sf(s))′ = F(s − 1) and (sF(s))′ = f(s − 1).
+
+**Problem.** Let ω(s) equal 1/s on \[1,2\] and extend continuously by (sω(s))′ = ω(s − 1) for s &gt; 2. Then f(s) + F(s) = 2 exp(γ)ω(s) for all s ≥ 1.
+
+**How the definition helps.** Adding the two sieve functions replaces their coupled equations with the single equation defining Buchstab’s function. In our own derivation, the normalized sum equals 1/s on the initial interval. Its value one unit earlier determines the derivative of s times the normalized sum. Integrating on successive unit intervals identifies the functions everywhere. The linear sieve theorem supplies the separate interpretation of f and F as lower and upper bounds.
+
+**Wikipedia:** [Buchstab function](https://en.wikipedia.org/wiki/Buchstab_function). It says: “the unique continuous function”
+
+**Paper or page:** [Weighted sieves with switching](https://arxiv.org/abs/2405.19063v3). It says: “(f(s)+o(1))”
+
+**Sources:**
+
+- [W. B. Jurkat and H.-E. Richert, An improvement of Selberg’s sieve method I, Acta Arithmetica 11 (1965), 217–240.](https://doi.org/10.4064/aa-11-2-217-240)
+
+### Waring counts control power moduli
+
+**Remember:** Turn clusters of power moduli into counts of sums of powers.
+
+*Makes the theorem clean to state or prove.* MSC 11N35 (Sieves). arXiv math.NT. Level 4: research.
+
+**Definition.** Take a trigonometric polynomial T with complex coefficients on N consecutive integer frequencies. Sample T at each reduced fraction a/qᵏ modulo one with 1 ≤ q ≤ Q. Let Δ be the least bound on the total squared sample magnitude divided by the total squared coefficient magnitude for nonzero T. Write R(t) for the number of ordered representations of t as a sum of s positive kth powers.
+
+**Problem.** Take integers k ≥ 2, s ≥ 1 and Q ≥ 1 with Qᵏ &lt; N &lt; Q²ᵏ. Suppose R(t) ≤ C for every integer 1 ≤ t ≤ sQᵏ. For each ε &gt; 0, Δ ≤ cNQᵋ(CQ²ᵏ/N)¹⁄ˢ, where c depends only on ε, k and s.
+
+**How the definition helps.** The representation count turns a cluster of nearby sample fractions into a counting problem for sums of powers. Baier and Lynch bound the number of denominators in such a cluster using this count. In our own interpretation, the representation bound measures crowding that the smallest gap alone cannot describe. The arithmetic work is to bound R(t) uniformly.
+
+**Paper or page:** [Large sieve inequalities with power moduli and Waring's problem](https://arxiv.org/abs/2303.07613v2). It says: “uniformly in positive integers n ≤ sQᵏ”
+
+**Sources:**
+
+- [S. Baier and S. B. Lynch, Large sieve inequalities with power moduli and Waring's problem, Lemma 2.1.](https://arxiv.org/abs/2303.07613v2)
+
+### A sieve quotient counts primes
+
+**Remember:** One ratio measures how many prime shifts the weights can force.
+
+*Makes the theorem clean to state or prove.* MSC 11N36 (Applications of sieve methods). arXiv math.NT. Level 4: research.
+
+**Definition.** Take a real piecewise smooth function F on the unit k-dimensional cube, zero unless ∑tᵢ≤1. Put I=∫F² over the cube. For Jᵢ, integrate F along coordinate i, square the result, then integrate over the other coordinates. Let Mₖ be the supremum of ∑Jᵢ/I over these functions with I and every Jᵢ positive.
+
+**Problem.** Take k distinct integer shifts h₁,…,hₖ whose residues omit at least one class modulo every prime. Infinitely many integers n give at least ⌈Mₖ/4⌉ primes among n+h₁,…,n+hₖ.
+
+**How the definition helps.** The quotient expresses a lower bound for the number of primes using one optimization over functions. In our own explanation, Maynard evaluates the weighted prime count and the total weight separately. The Bombieri–Vinogradov theorem controls the average error in prime counts across arithmetic progressions. Together these estimates give weighted averages arbitrarily close to Mₖ/4 from below on arbitrarily large intervals. An integer count exceeding ⌈Mₖ/4⌉−1 suffices.
+
+**Paper or page:** [Primes in Tuples of Linear Forms in Number Fields and Function Fields](https://arxiv.org/abs/2409.04705v1). It says: “Then there are infinitely many integers α ∈ A such that at least rₖ of the aᵢα + hᵢ, 1 ≤ i ≤ k are prime.”
+
+**Sources:**
+
+- [James Maynard, Small gaps between primes, Annals of Mathematics 181 (2015), 383–413](https://annals.math.princeton.edu/2015/181-1/p07)
+
+### An extra power raises GPY averages
+
+**Remember:** An extra log power raises the prime count seen by the square.
+
+*Makes the theorem clean to state or prove.* MSC 11N36 (Applications of sieve methods). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix k distinct integer shifts hᵢ and an integer 0≤ℓ≤k. Let μ(d) vanish on multiples of prime squares and equal (−1)ʲ on products of j distinct primes. For positive d≤R dividing ∏(n+hᵢ), sum μ(d) times log(R/d) raised to the power k+ℓ. Divide by (k+ℓ)! and square to obtain w(n).
+
+**Problem.** Fix shifts that omit a residue class modulo each prime, and let w(n) be this squared weight. For fixed 0 &lt; r &lt; ¼, put R=xʳ. Over x&lt;n≤2x, the w-weighted mean number of prime shifts tends to r · 2(2ℓ+1)/(ℓ+1) · k/(k+2ℓ+1).
+
+**How the definition helps.** The extra exponent ℓ lets one compare a whole family of weighted prime counts through one formula. In our own calculation, divide the prime-weighted sum by the total weight. The same product of local densities appears in both estimates and cancels. The remaining factorials give the displayed limit. At fixed r and large k, it approaches 2r for ℓ=0 and 3r for ℓ=1. The two sum estimates are the hard theorems of Goldston, Pintz and Yıldırım.
+
+**Wikipedia:** [Goldston–Pintz–Yıldırım sieve](https://en.wikipedia.org/wiki/Goldston%E2%80%93Pintz%E2%80%93Y%C4%B1ld%C4%B1r%C4%B1m_sieve). It says: “introduce another parameter 0 ≤ ℓ ≤ k”
+
+**Sources:**
+
+- [D. A. Goldston, J. Pintz and C. Y. Yıldırım, Primes in Tuples I, Annals of Mathematics 170 (2009), 819–862](https://doi.org/10.4007/annals.2009.170.819)
+
+### Fiber integrals bound Maynard weights
+
+**Remember:** Integrate along one coordinate, then bound all the resulting squares together.
+
+*Makes the theorem clean to state or prove.* MSC 11N36 (Applications of sieve methods). arXiv math.NT. Level 4: research.
+
+**Definition.** Take an integer k≥2 and a real square-integrable function F on the simplex tᵢ≥0, ∑tᵢ≤1. Extend F by zero to the unit cube and set I=∫F²&gt;0. To form Jᵢ, integrate F in coordinate i, square the result, then integrate over the remaining coordinates.
+
+**Problem.** For this version of the Maynard quotient, ∑ Jᵢ/I ≤ k log k/(k−1).
+
+**How the definition helps.** The quotient replaces a bound on many sieve coefficients with one inequality for integrals. In our own derivation, fix the other coordinates and write L=1−∑ⱼ≠ᵢ tⱼ. On each slice of positive length, apply Cauchy–Schwarz with weight L+(k−1)tᵢ. Its reciprocal integrates to log k/(k−1). At each point the k weights sum to k, giving the bound after integration. Maynard’s arithmetic estimates connect these integrals to prime counts.
+
+**Paper or page:** [Primes in Tuples of Linear Forms in Number Fields and Function Fields](https://arxiv.org/abs/2409.04705v1). It says: “M<sub>k</sub>=\\sup \_{F\\in \\mathcal{S}<sub>k</sub>}\\frac{\\sum <sub>m=1</sub><sup>k</sup>J<sup>(m)</sup><sub>k</sub>(F)}{I<sub>k</sub>(F)}”
+
+**Sources:**
+
+- [D. H. J. Polymath, Variants of the Selberg sieve, and bounded intervals containing many primes, Research in the Mathematical Sciences 1 (2014), 12](https://doi.org/10.1186/s40687-014-0012-7)
+- [James Maynard, Small gaps between primes, Annals of Mathematics 181 (2015), 383–413](https://annals.math.princeton.edu/2015/181-1/p07)
+
+### Balanced correlations cancel imaginary twists
+
+**Remember:** Zero total exponent cancels the common phase.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions), 11N64. arXiv math.NT. Level 4: research.
+
+**Definition.** Take a multiplicative function f with \|f(n)\| ≤ 1. Assume ∑ₚ(1−Re(f(p)χ̅(p)exp(−it log p)))/p converges over primes for some real t and some Dirichlet character χ. Such a character maps invertible residues modulo an integer homomorphically to the unit circle and vanishes on other residues. Call integer exponents balanced when their sum is zero.
+
+**Problem.** Choose fixed nonnegative integer shifts and one balanced list of exponents, one per shift. Multiply the corresponding powers of the shifted values f(n+h), using powers of the conjugate for negative exponents. The ordinary average of this product converges.
+
+**How the definition helps.** In our own explanation, balance cancels the common factor exp(it log n) across all shifts. For each fixed h, the ratio of exp(it log(n+h)) to exp(it log n) tends to one. Theorem 2.14 proves convergence for the remaining factors.
+
+**Paper or page:** [Furstenberg systems of pretentious and MRT multiplicative functions](https://arxiv.org/abs/2304.03121). It says: “are integers such that ∑(j=1,…,ℓ) kⱼ = 0, then the limit”
+
+**Sources:**
+
+- [Furstenberg systems of pretentious and MRT multiplicative functions](https://arxiv.org/abs/2304.03121)
+
+### Character distance controls residue means
+
+**Remember:** Test the characters to control every coprime class.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an integer Q ≥ 1. A Dirichlet character χ maps invertible residues modulo Q homomorphically to the unit circle and vanishes on other residues. For \|f(n)\| ≤ 1, define D(f,χ)² by summing (1−Re(f(p)χ̅(p)))/p over all primes. A logarithmic average assigns weights 1/n and divides by their sum.
+
+**Problem.** Suppose f is multiplicative and D(f,χ) is infinite for every character modulo Q. For each positive a coprime to Q, the logarithmic average of f(Qn+a) over n ≤ X tends to zero.
+
+**How the definition helps.** Our own explanation is that the distances test precisely the characters needed to select one invertible residue class. Character orthogonality expresses its indicator as a linear combination of characters. A logarithmic mean estimate gives cancellation for each term. For fixed positive a, replacing Q/(Qn+a) by 1/n adds an absolutely summable error before normalization.
+
+**Paper or page:** [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504). It says: “such that 𝔻(f,χ) = +∞ for all Dirichlet characters of modulus Q.”
+
+**Sources:**
+
+- [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504)
+
+### Local parity factors shifted correlations
+
+**Remember:** One local parity test per prime sets the correlation.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Take a prime set P with finite reciprocal sum and a finite nonempty set H of distinct positive integer shifts. Write vₚ(m) for the exponent of p in m. Let λ(m) equal 1 or −1 according as the total exponent from primes in P is even or odd. Define η(p,H) as the limiting fraction of positive n for which the sum of vₚ(n+h) over H is odd.
+
+**Problem.** For each n, multiply λ(n+h) over h in H. As X grows, the average of these products for n ≤ X tends to the product of 1−2η(p,H) over p in P. When the shifts are distinct modulo p, η(p,H)=\|H\|/(p+1).
+
+**How the definition helps.** The local parity test turns all shifted signs at one prime into a single event. In our own calculation, distinct residues allow at most one shift divisible by p. Each shift has odd exponent with limiting frequency 1/(p+1). Counting residues modulo prime powers gives the local frequencies. The Chinese remainder theorem combines finitely many such counts, and the convergent reciprocal sum controls the omitted primes.
+
+**Paper or page:** [On variants of Chowla's conjecture](https://arxiv.org/abs/2501.10962). It says: “Moreover, for every non-exceptional prime, ηₚᴴ = d/(p+1).”
+
+**Sources:**
+
+- [On variants of Chowla's conjecture](https://arxiv.org/abs/2501.10962)
+
+### Logarithmic means need no frequency search
+
+**Remember:** Harmonic weights allow a test against the constant function alone.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** For \|f(n)\| ≤ 1, average f(n) with weights 1/n, divided by the sum of the weights up to X. Set D(f,1;X)² = ∑(1 − Re f(p))/p over primes p ≤ X.
+
+**Problem.** For multiplicative f the absolute logarithmic mean is at most C exp(−D(f,1;X)²/2) for X ≥ 2, with absolute C.
+
+**How the definition helps.** Our own comparison is that harmonic weights give a bound using only the distance to the constant function 1. Halász’s bound for ordinary means searches over functions n ↦ exp(it log n) with real t. Lemma 2.2 supplies the estimate for harmonic weights.
+
+**Paper or page:** [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504). It says: “\|𝔼ˡᵒᵍ(n ≤ X) f(n)\| ≪ exp(−(1/2)∑(p ≤ X) (1−Re f(p))/p).”
+
+**Sources:**
+
+- [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504)
+
+### Multiplicativity at two prevents anticorrelation of size one
+
+**Remember:** The values on powers of two cannot all hide a parity sign.
+
+*Rules out counterexamples.* MSC 11N37 (Asymptotic results on arithmetic functions), 11N64. arXiv math.NT. Level 4: research.
+
+**Definition.** Require f to be multiplicative, real, and bounded by one in modulus. Require complete multiplicativity at 2, meaning f(2ʲ)=f(2) to power j for every j ≥ 1.
+
+**Problem.** Suppose f takes a negative value. Average f(n)f(n+1) over n=1,…,X. For all sufficiently large X, the modulus of this average is at most 1−δ for some δ &gt; 0 depending on f.
+
+**How the definition helps.** The condition excludes the function equal to 1 on odd integers and −1 on even integers. Its adjacent products always equal −1. In our own check, its value at 4 differs from the square of its value at 2. Matomäki and Radziwiłł prove the bound in the extension following Corollary 2.
+
+**Wikipedia:** [Kaisa Matomäki](https://en.wikipedia.org/wiki/Kaisa_Matom%C3%A4ki). It says: “Her research includes results on the distribution of multiplicative functions over short intervals of numbers”
+
+**Sources:**
+
+- [Kaisa Matomäki and Maksym Radziwiłł, Multiplicative functions in short intervals (2016)](https://annals.math.princeton.edu/2016/183-3/p06)
+
+### Nonproportional forms exclude self correlation
+
+**Remember:** A determinant rules out comparing a sign to itself.
+
+*Rules out counterexamples.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Take linear forms a₁n+b₁ and a₂n+b₂ with positive integer coefficients. Call them nonproportional when a₁b₂ ≠ a₂b₁. Define λ(p)=−1 at every prime and extend by λ(ab)=λ(a)λ(b) for all positive integers a,b.
+
+**Problem.** For nonproportional forms, the logarithmic average of λ(a₁n+b₁)λ(a₂n+b₂) tends to zero. The average uses weight 1/n divided by its sum up to X.
+
+**How the definition helps.** The determinant removes precisely the pairs whose ratio stays constant. In our own calculation, proportional forms are integer multiples of one common form. Its sign appears twice, so their product is constant. Tao’s logarithmic two-point theorem gives cancellation for the remaining pairs.
+
+**Paper or page:** [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504). It says: “Let a₁, a₂, b₁, b₂ be natural numbers such that a₁b₂ − a₂b₁ ≠ 0.”
+
+**Sources:**
+
+- [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504)
+- [Terence Tao, The logarithmically averaged Chowla and Elliott conjectures for two-point correlations (2016)](https://doi.org/10.1017/fmp.2016.6)
+
+### Prime parity factors the mean
+
+**Remember:** Average each prime’s parity with its geometric weights.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Let P be any set of primes. Let vₚ(n) count how many times p occurs in the prime factorization of n. Set λ(n)=1 if the total exponent from primes in P is even and λ(n)=−1 otherwise.
+
+**Problem.** The ordinary mean of λ for P tends to the product of 1−2/(p+1) over primes p in P. The product is zero exactly when ∑1/p over P diverges.
+
+**How the definition helps.** In our own calculation, the parity definition writes λ(n) as a product of signs, one per prime. The fraction of integers with exponent j at p tends to (1−1/p)/pʲ. Summing these fractions with alternating signs gives 1−2/(p+1). The Chinese remainder theorem combines finitely many primes. The Wintner–Wirsing theorem gives the limit for arbitrary P.
+
+**Paper or page:** [On variants of Chowla's conjecture](https://arxiv.org/abs/2501.10962). It says: “lim(x → ∞) (1/x)∑(n ≤ x) λ<sub>P</sub>(n) = ∏(p ∈ P)(1−2/(p+1)).”
+
+**Sources:**
+
+- [On variants of Chowla's conjecture](https://arxiv.org/abs/2501.10962)
+
+### Shifted powers can spoil Gaussian limits
+
+**Remember:** A polynomial power can repeat the original sum’s law.
+
+*Rules out counterexamples.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT, math.PR. Level 4: research.
+
+**Definition.** Choose independent complex numbers f(p) uniformly on the unit circle at primes. Extend by f(ab)=f(a)f(b) for all positive integers a,b. For degree d, exclude polynomials equal to w times the dth power of x+c, with w integral and c rational.
+
+**Problem.** Take an integer polynomial P of degree d ≥ 2 outside the excluded family, with P(n)&gt;0 for all sufficiently large n. Sum f(P(n)) over positive n ≤ N with P(n)&gt;0 and divide by √N. The result converges in distribution to a complex normal variable with independent real and imaginary parts, each normal with mean zero and variance ½.
+
+**How the definition helps.** The exclusion removes P(n)=n², where taking squares preserves the joint distribution of the prime phases. Thus the sum has the same law as the sum of f(n) itself. In our own deduction, Harper’s first moment bound forces that sum divided by √N to tend to zero in probability. The polynomial limit theorem proves the normal law outside the excluded family.
+
+**Paper or page:** [Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952). It says: “converge in distribution to a standard complex Gaussian.”
+
+**Sources:**
+
+- [Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952)
+- [Adam J. Harper, Moments of random multiplicative functions, I (2020)](https://doi.org/10.1017/fmp.2019.7)
+
+### Square products predict Gaussian limits
+
+**Remember:** For fair signs, even prime exponents survive averaging.
+
+*Makes the theorem clean to state or prove.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT, math.PR. Level 4: research.
+
+**Definition.** Call an integer squarefree if no prime square divides it. Assign independent fair signs to primes, multiply them on squarefree integers, and set f(n)=0 elsewhere. For a finite set S of squarefree integers, its square energy counts ordered quadruples from S whose product is a square.
+
+**Problem.** For each large N choose a set A of squarefree integers in \[1,N\] with \|A\| ≥ N exp(−√(log N log log N)/3). Assume subsets S ⊆ A satisfy \|S\|/\|A\| → 1 and their square energies divided by \|S\|² tend to three. The sum of f(n) over A divided by √\|A\| converges in distribution to the normal law with mean zero and variance one.
+
+**How the definition helps.** In our own expansion, square energy counts exactly the terms that contribute to the fourth moment of the sum over S. A prime with odd exponent contributes a sign of mean zero. A quadruple with all exponents even contributes one. The cited theorem turns this count and the size conditions into a normal limit.
+
+**Paper or page:** [Central limit theorems for random multiplicative functions](https://arxiv.org/abs/2212.06098). It says: “and satisfying E□(𝒮) = (3+o(1))\|𝒮\|². Then as f ranges over Rademacher random multiplicative functions”
+
+**Sources:**
+
+- [Central limit theorems for random multiplicative functions](https://arxiv.org/abs/2212.06098)
+
+### Tao’s averages test twisted characters
+
+**Remember:** A large two point average forces both functions near twisted characters.
+
+*Rules out counterexamples.* MSC 11N37 (Asymptotic results on arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Define the logarithmic average up to X using weights 1/n divided by their sum. A Dirichlet character χ maps invertible residues modulo q homomorphically to the unit circle and vanishes on other residues. Test against g(n)=χ(n)exp(it log n) for real t. Measure distance by summing (1−Re(f(p)g̅(p)))/p over primes p ≤ X and taking the square root.
+
+**Problem.** Fix distinct nonnegative integers a,b and ε &gt; 0, and take multiplicative f,h bounded by one in modulus. Suppose the logarithmic average of f(n+a)h(n+b) has modulus at least ε for sufficiently large X. Each function has a model g with distance and modulus q at most C and \|t\| ≤ CX, where C depends only on a,b,ε.
+
+**How the definition helps.** Our own example shows why the test needs a frequency as well as a character. Take f(n)=exp(i log n) and h its conjugate. Their shifted product tends to one, although prime number estimates give infinite distance from f to every untwisted character. Tao’s theorem proves the conclusion for both functions.
+
+**Paper or page:** [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636). It says: “Then there are primitive Dirichlet characters”
+
+**Sources:**
+
+- [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636)
+- [Terence Tao, The logarithmically averaged Chowla and Elliott conjectures for two-point correlations (2016)](https://doi.org/10.1017/fmp.2016.6)
+
+### Generating functions give Landau’s asymptotic
+
+**Remember:** The gamma factor starts with z, so k primes leave k minus one logarithms.
+
+*Makes the theorem clean to state or prove.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Let ω(n) count distinct prime divisors. Define S(x,z) by adding z raised to ω(n) over all positive integers n≤x. The coefficient of degree k counts integers with exactly k distinct prime divisors.
+
+**Problem.** Fix an integer k≥1 and put L=log log x. As x grows, the count with ω(n)=k is asymptotic to xLᵏ⁻¹/((k−1)! log x).
+
+**How the definition helps.** The generating function reduces the fixed-count problem to extracting one coefficient (our own calculation). The Selberg–Delange theorem estimates S(x,z) uniformly near zero, with leading term x exp(zL)G(z)/(Γ(z) log x). Here Γ is the gamma function, and G is analytic near zero with G(0)=1 by the theorem’s prime product. Since 1/Γ(z)=z+O(z²), the leading contribution comes from degree k−1 in exp(zL). Cauchy’s coefficient formula on the circle \|z\|=1/L bounds the error.
+
+**Paper or page:** [Probabilistic interpretation of the Selberg--Delange Method in analytic number theory](https://arxiv.org/abs/2501.17535v1). It says: “Let f: ℕ → ℂ be an admissible function with average value ρ.”
+
+**Sources:**
+
+- [Probabilistic interpretation of the Selberg--Delange Method in analytic number theory](https://arxiv.org/abs/2501.17535v1)
+
+### Poisson normalization yields a product
+
+**Remember:** Remove the Poisson term and each prime leaves a summable error.
+
+*Makes the theorem clean to state or prove.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions). arXiv math.NT, math.PR. Level 4: research.
+
+**Definition.** For s&gt;1, give N probability 1/(ζ(s)nˢ) at each positive integer n, where ζ(s)=∑ 1/nˢ. Let ω(N) count distinct prime factors and put μ(s)=∑ 1/pˢ over primes. Divide E\[exp(zω(N))\] by exp(μ(s)(exp(z)−1)), the corresponding expectation for a Poisson variable with mean μ(s).
+
+**Problem.** As s decreases to 1, the quotient converges locally uniformly for complex z. Its limit is the product over primes of (1+w/p)exp(−w/p), where w=exp(z)−1.
+
+**How the definition helps.** Dividing by the Poisson factor cancels the linear term at each prime (our own calculation). Independent prime divisibility gives the factor (1+w/pˢ)exp(−w/pˢ). On each bounded set of z, its difference from one is O(1/p²). The sum of these error bounds converges, so the product converges uniformly there as s decreases to one.
+
+**Paper or page:** [Large deviations for number of irreducible divisors of the Dirichlet series distribution](https://arxiv.org/abs/2511.14234v1). It says: “The random variables ω(Xₛ), s &gt; 1, converges mod-Poisson as s ↘ 1”
+
+**Sources:**
+
+- [Large deviations for number of irreducible divisors of the Dirichlet series distribution](https://arxiv.org/abs/2511.14234v1)
+
+### Sparse exceptions permit bounded values
+
+**Remember:** A nonunit prime value matters through its divisibility probability.
+
+*Makes the theorem clean to state or prove.* MSC 11N60 (Distribution functions associated with additive and positive multiplicative functions), 11N64. arXiv math.NT. Level 4: research.
+
+**Definition.** Let f be positive integer valued and multiplicative. Call a prime exceptional for this test when f(p) ≠ 1. Measure the exceptional primes by the sum of their reciprocals, without counting how large f(p) is.
+
+**Problem.** For a finite C, consider the fraction of integers n ≤ X satisfying f(n) ≤ C. For some C this fraction has positive limit superior exactly when the exceptional primes have finite reciprocal sum.
+
+**How the definition helps.** Our own reading is that every exceptional prime occurring exactly once multiplies the value by at least two. Thus the local test needs no knowledge of the size of a nonunit value. The cited theorem proves the density criterion with all prime powers. Our own simplification drops higher powers because the sum of their reciprocals converges.
+
+**Paper or page:** [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636). It says: “if and only if ∑(pᵛ ∶ f(pᵛ) ≠ 1) 1/pᵛ &lt; ∞.”
+
+**Sources:**
+
+- [Gap problems for integer-valued multiplicative functions](https://arxiv.org/abs/2311.11636)
+
+### Skipping zeros reveals sign changes
+
+**Remember:** A zero between two signs is not a sign.
+
+*Makes the theorem clean to state or prove.* MSC 11N64 (Other results on the distribution of values or the characterization of arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Count sign changes by first deleting the zeros of a real sequence. Count each pair of successive remaining terms whose product is negative.
+
+**Problem.** Let f be real and multiplicative. Its sign-change count up to X exceeds cX for some c &gt; 0 and all large X exactly when both conditions hold. It takes a negative value, and at least δX values up to X are nonzero for some δ &gt; 0 and all large X.
+
+**How the definition helps.** Skipping zeros lets the theorem count changes even when every pair of neighboring integers contains a zero. Our own example repeats the values 1,0,−1,0, starting at n=1. Its nonzero values alternate, giving one change about every two integers. Corollary 3 proves the criterion.
+
+**Wikipedia:** [Kaisa Matomäki](https://en.wikipedia.org/wiki/Kaisa_Matom%C3%A4ki). It says: “Her research includes results on the distribution of multiplicative functions over short intervals of numbers”
+
+**Sources:**
+
+- [Kaisa Matomäki and Maksym Radziwiłł, Multiplicative functions in short intervals (2016)](https://annals.math.princeton.edu/2016/183-3/p06)
+
+### Uniform distance gives one model
+
+**Remember:** A uniformly close model can be chosen once.
+
+*Makes the theorem clean to state or prove.* MSC 11N64 (Other results on the distribution of values or the characterization of arithmetic functions). arXiv math.NT. Level 4: research.
+
+**Definition.** Let f be multiplicative, with \|f(n)\| ≤ 1. A Dirichlet character χ is a homomorphism from the invertible residues modulo q to the unit circle, extended periodically and by zero elsewhere. For g(n)=χ(n)exp(it log n), define D(X)² by summing (1−Re(f(p)g̅(p)))/p over primes p ≤ X. Fix B ≥ 1 and minimize D(X) over q ≤ B and real \|t\| ≤ BX.
+
+**Problem.** If these minima stay bounded as X grows, one fixed pair χ,t keeps D(X) bounded for every X. Its modulus q still satisfies q ≤ B.
+
+**How the definition helps.** Our own reading is that the minimum lets the best character and frequency change with X. Lemma 2.10 proves that a uniform bound gives one pair valid at every scale.
+
+**Paper or page:** [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504). It says: “Then, there exists t ∈ ℝ and a Dirichlet character χ of modulus at most B, such that 𝔻(f(n),χ(n)nⁱᵗ) &lt; +∞.”
+
+**Sources:**
+
+- [On multiplicative recurrence along linear patterns](https://arxiv.org/abs/2412.03504)
 
 ### Counting remainders continue Beurling zeta
 
@@ -6522,6 +10845,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Relative density excludes Goldbach obstructions
+
+**Remember:** Measure density inside the prime class that can reach the target.
+
+*Rules out counterexamples.* MSC 11P32 (Goldbach-type theorems; other additive questions involving primes), 11P55. arXiv math.NT. Level 4: research.
+
+**Definition.** Let P contain all primes congruent to 1 modulo 3 and take A ⊆ P. Define its relative lower density as the limit inferior of \|A ∩ \[1,X\]\|/\|P ∩ \[1,X\]\| as X tends to infinity.
+
+**Problem.** Suppose A has relative lower density greater than one half in P. Then every sufficiently large odd multiple of 3 is a sum of three elements of A. This can fail at density one half.
+
+**How the definition helps.** In our own comparison, measuring density inside P gives a sharp threshold even though every subset of P has density zero among integers. Keep just the primes in P congruent to 1 or −1 modulo 5. The prime number theorem in arithmetic progressions gives relative density one half. Three residues from {1,−1} never sum to zero modulo 5, so this set misses every odd multiple of 15. Alsetri’s theorem proves that density strictly above one half suffices.
+
+**Paper or page:** [Density ternary Goldbach for primes in a fixed residue class](https://arxiv.org/abs/2505.09648v3). It says: “Then A+A+A contains every sufficiently large odd integer n which satisfies n ≡ 0 mod 3.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dickman weights isolate smooth density
+
+**Remember:** The Dickman weight isolates the lost density on central arcs.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05. arXiv math.NT. Level 4: research.
+
+**Definition.** An integer is Z-smooth if every prime factor is at most Z. The Dickman function ϱ equals one on \[0,1\] and satisfies uϱ′(u) = −ϱ(u−1) for u &gt; 1. For integer degree d, give m weight ϱ(log m/(d log Z)) times m raised to (1/d − 1), divided by d. Let w(β) sum these weights times exp(2πiβm) over integers Zᵈ &lt; m ≤ Xᵈ.
+
+**Problem.** Fix an integer d ≥ 3, B &gt; 0 and sufficiently small η &gt; 0, and set Z = X raised to η. For \|β\| &lt; (log X)ᴮ/Xᵈ, one has w(β) = ϱ(1/η)XI(Xᵈβ) + O(X/log Z + Z). Here I(t) = ∫₀¹ exp(2πitvᵈ) dv.
+
+**How the definition helps.** The weight separates the density of smooth integers from the integral for unrestricted powers. In our own explanation, m raised to (1/d − 1), divided by d, comes from changing variables from x to m = xᵈ. Rome and Yamagishi estimate the error from replacing the Dickman factor by its value at m = Xᵈ. Their preceding lemma relates this weighted sum to the original sum over smooth bases.
+
+**Paper or page:** [Integral solutions to systems of diagonal equations](https://arxiv.org/abs/2406.09256v2). It says: “Then w(β) = ϱ((d log X)/(d log Z)) X I(Xᵈβ) + O(X/log Z + Z).”
+
+**Sources:**
+
+- [N. Rome and S. Yamagishi, Integral solutions to systems of diagonal equations (2026)](https://doi.org/10.2140/pjm.2026.340.179)
+
+### Disjoint supports multiply local sums
+
+**Remember:** Functions on disjoint pieces vary independently, so their averages multiply.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05. arXiv math.NT. Level 4: research.
+
+**Definition.** On a curve over a finite field K, a finite closed subscheme Z specifies finitely many points, possibly with multiplicities. Write R for its finite K-algebra of functions and λ for a K-linear map from R to K. Given an integer k ≥ 1, define S(Z,λ) as the average of ψ(λ(xᵏ)) over x in R. Here ψ maps addition in K to multiplication of complex numbers of modulus one and is not identically one.
+
+**Problem.** If Z consists of disjoint parts Z₁ and Z₂, then S(Z,λ) = S(Z₁,λ₁)S(Z₂,λ₂). Here λᵢ acts on functions on the ith part by extending them by zero before applying λ. Call λ nondegenerate if it factors through no proper quotient of R, which holds exactly when both components are nondegenerate.
+
+**How the definition helps.** In our own explanation, specifying the finite set with multiplicities lets the global average split into separate averages over its disjoint parts. Functions on the union are pairs of functions, one on each part. Taking kth powers acts componentwise, λ adds the two outputs, and ψ turns that sum into a product. Averaging over independent choices gives the factorization. This is Sawin’s lemma for the trivial line bundle, where sections are ordinary functions. In our own explanation, every ideal of the product ring splits into ideals of the two factors, giving the nondegeneracy test.
+
+**Paper or page:** [The asymptotic in Waring's problem over function fields via singular sets in the circle method](https://arxiv.org/abs/2412.14053v1). It says: “Then we have \\\[ S<sub>Z</sub>(\\overline{\\alpha})=S<sub>Z<sub>1</sub></sub>(\\overline{\\alpha}<sub>Z<sub>1</sub></sub>)S<sub>Z<sub>2</sub></sub>(\\overline{\\alpha}<sub>Z<sub>2</sub></sub>) \\\]”
+
+**Sources:**
+
+- [W. Sawin, The asymptotic in Waring's problem over function fields via singular sets in the circle method (2024)](https://arxiv.org/abs/2412.14053v1)
+
 ### Real solution density makes positivity local
 
 **Remember:** A smooth zero with positive weight sends positive mass near zero.
@@ -6537,6 +10912,60 @@
 **Paper or page:** [Solving quadratic forms in restricted variables with the circle method](https://arxiv.org/abs/2505.17949v1). It says: “can be interpreted as a local density over the reals inside the compact set 𝔅.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Residues modulo sixteen select sums of twelve fourth powers
+
+**Remember:** Modulo sixteen, a fourth power records whether its base is odd.
+
+*Rules out counterexamples.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05. arXiv math.NT. Level 4: research.
+
+**Definition.** Call a positive integer admissible if its remainder modulo 16 lies between 1 and 12 inclusive. Consider representations by exactly twelve positive fourth powers with at least one odd base.
+
+**Problem.** Every sufficiently large admissible integer is a sum of twelve fourth powers of positive integers. No integer outside the admissible classes is such a sum with an odd base.
+
+**How the definition helps.** In our own explanation, the remainder records exactly how many of the twelve bases are odd. An even fourth power is zero modulo 16, and an odd fourth power is one. Thus a remainder of zero forces all twelve bases to be even, while remainders 13 through 15 are impossible. Brüdern and Wooley prove existence for every sufficiently large admissible integer in Corollary 1.3.
+
+**Wikipedia:** [Waring's problem](https://en.wikipedia.org/wiki/Waring%27s_problem). It says: “any sufficiently large number congruent to 1 through 14 mod 16 could be written as a sum of 14 fourth powers”
+
+**Sources:**
+
+- [J. Brüdern and T. D. Wooley, On smooth Weyl sums over biquadrates and Waring’s problem (2022)](https://www.math.purdue.edu/~twooley/publ/20220507smbiq.pdf)
+
+### Smooth cutoffs suppress Poisson tails
+
+**Remember:** Smooth weights remove boundary terms in repeated integration by parts.
+
+*Rules out counterexamples.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11L07. arXiv math.NT. Level 4: research.
+
+**Definition.** Let F₁ and F₂ be fixed quadratic forms in s real variables and W a smooth function of compact support. Define I by integrating W(x/P)exp(2πi\[β₁F₁(x)+β₂F₂(x)−c·x/q\]) over ℝˢ. Here β = (β₁,β₂) is real, c is a real vector and q is a positive integer.
+
+**Problem.** Fix δ &gt; 0 and take P sufficiently large. If \|c\| ≥ (q/P)(1+P²\|β\|)Pᵟ, then \|I\| ≤ C(A)Pˢ/(P\|c\|/q)ᴬ for each integer A ≥ 1. The constants may depend on the forms, W and δ.
+
+**How the definition helps.** In our own explanation, a smooth weight eliminates the boundary terms that prevent arbitrarily fast decay for a sharp cutoff. For example, integrating exp(2πitx) over \[0,1\] gives absolute value 1/(πt) at positive half-integers t. Scale x by P in the smooth integral. The frequency condition keeps the directional derivative of the phase away from zero throughout the support. Repeated integration by parts in the direction of c gives the stated decay. Frequencies below the threshold require separate estimates.
+
+**Paper or page:** [A two-dimensional delta symbol method and its application to pairs of quadratic forms](https://arxiv.org/abs/2411.11355v1). It says: “I<sub>q</sub>(\\vec{\\mathrm{w}},\\mathbf{u})\\ll<sub>N</sub> P<sup>s</sup>(P\|\\mathbf{u}\|/q)<sup>-N</sup>\\ll P<sup>s-N\\delta</sup>”
+
+**Sources:**
+
+- [J. Li, S. L. Rydin Myerson and P. Vishe, A two-dimensional delta symbol method and its application to pairs of quadratic forms](https://www.maths.dur.ac.uk/users/pankaj.vishe/2dDelta.pdf)
+
+### Subcritical moments bound minor arcs
+
+**Remember:** A good moment below twelve leaves a factor for the arc saving.
+
+*Makes the theorem clean to state or prove.* MSC 11P55 (Applications of the Hardy-Littlewood method), 11P05, 11L15. arXiv math.NT. Level 4: research.
+
+**Definition.** Let g(α) sum exp(2πiαx⁴) over positive integers x ≤ P whose prime factors are at most R. The moment of order t is the integral of \|g(α)\|ᵗ over \[0,1\]. Call Δ admissible if this moment is O(P raised to (t−4+Δ)). The bound must hold uniformly for 1 ≤ R ≤ P raised to η for some fixed η &gt; 0.
+
+**Problem.** Brüdern and Wooley prove that zero is admissible for t = 11.95597. Suppose \|g\| ≤ εP on a measurable subset E of \[0,1\], with R in the allowed range. Then the integral of \|g\|¹² over E is O(P⁸ times ε raised to (12−t)).
+
+**How the definition helps.** In our own explanation, an admissible exponent records the power lost in a moment estimate, so zero records the full expected saving. Theorem 1.2 supplies this estimate at an order strictly below twelve. Bound the remaining 12−t powers of \|g\| on E by the corresponding power of εP. Multiplying by the global moment bound gives the result. A bound only at order twelve leaves no positive power of ε.
+
+**Wikipedia:** [Hardy–Ramanujan–Littlewood circle method](https://en.wikipedia.org/wiki/Hardy%E2%80%93Ramanujan%E2%80%93Littlewood_circle_method). It says: “one takes a sufficiently high power of the generating function”
+
+**Sources:**
+
+- [J. Brüdern and T. D. Wooley, On smooth Weyl sums over biquadrates and Waring’s problem (2022)](https://www.math.purdue.edu/~twooley/publ/20220507smbiq.pdf)
 
 ### Bailey pairs generate identity chains
 
@@ -6904,6 +11333,25 @@
 
 - [CM Elliptic Curves: Volcanoes, Reality and Applications (Corollary 4.4)](https://arxiv.org/abs/2212.13316v1)
 
+### Degree-one counts determine zeta functions
+
+**Remember:** Degree-one counts give the whole permutation character.
+
+*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** Embed both number fields in one finite Galois extension L of ℚ. For each field K, the Galois group of L over ℚ permutes the embeddings of K into L. Its permutation character counts how many embeddings each automorphism fixes.
+
+**Problem.** Suppose that, outside finitely many rational primes p, both fields have the same number of prime ideals of norm p. Then their Dedekind zeta functions, which sum over nonzero integral ideals by norm, are equal.
+
+**How the definition helps.** Counting fixed embeddings turns degree-one prime counts into values of a single group character. This replaces a comparison of all coefficients in the two zeta functions. At an unramified prime, Frobenius acts on residues by raising them to the power p. Its fixed embeddings count the primes of norm p. In our own deduction, Chebotarev supplies each conjugacy class infinitely often, so the characters agree everywhere. Artin’s induction formula identifies their L-functions with the two zeta functions, including factors at ramified primes.
+
+**Paper or page:** [Density questions on arithmetic equivalence](https://arxiv.org/abs/2106.01166v1), [Stronger arithmetic equivalence](https://arxiv.org/abs/2104.01956v4). It says: “{\\rm Trace}(\\rho <sub>K</sub>({\\rm Frob}<sub>\\ell </sub>)) =a<sub>\\ell </sub>(K).”
+
+**Sources:**
+
+- [Guillermo Mantilla-Soler, Density questions on arithmetic equivalence (2021)](https://arxiv.org/abs/2106.01166v1)
+- [Andrew V. Sutherland, Stronger arithmetic equivalence (2021)](https://arxiv.org/abs/2104.01956v4)
+
 ### Degree-zero divisors read Stark ranks
 
 **Remember:** Taking degree zero subtracts one trivial character.
@@ -6921,6 +11369,43 @@
 **Sources:**
 
 - [Karl Rubin, A Stark conjecture over ℤ for abelian L-functions with multiple zeros (1996)](https://aif.centre-mersenne.org/articles/10.5802/aif.1505/)
+
+### Mixed parities exclude critical integers
+
+**Remember:** Opposite signs rule out every integer on one side.
+
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** A Hecke L-function has one gamma factor for each real embedding of a totally real field, a field whose embeddings all land in ℝ. For a finite-order character the factor is Γ((s+ε)/2) times a nonvanishing factor. Here ε is zero for the trivial local character and one for the sign character. Call m critical when m is an integer and all gamma factors at m and all dual factors at 1−m are finite.
+
+**Problem.** A finite-order Hecke character of a totally real field has no critical integers if both real signs occur.
+
+**How the definition helps.** Testing both ends of the functional equation forces a pole for every integer when both signs occur. Our own calculation uses the nonpositive integer poles of Γ. For m ≤ 0, choose ε so that m+ε is even and nonpositive. For m ≥ 1, apply the same test to 1−m, since the dual character has the same signs.
+
+**Paper or page:** [Notes on the arithmetic of Hecke L-functions](https://arxiv.org/abs/2207.03399v1). It says: “If there exists $v<sub>1</sub>, v<sub>2</sub> \\in S<sub>r</sub>$, such that $\\epsilon <sub>v<sub>1</sub></sub> \\neq \\epsilon <sub>v<sub>2</sub></sub>$ then ${\\rm Crit}(L(s,\\chi )) = \\emptyset .$”
+
+**Sources:**
+
+- [A. Raghuram, Notes on the arithmetic of Hecke L-functions (2022)](https://arxiv.org/abs/2207.03399v1)
+
+### Prime norms extend Brauer–Siegel
+
+**Remember:** Count places per log discriminant to keep the missing corrections.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** For each number field in the tower let g = log√D, where D is its absolute discriminant. For each prime power q, let φ(q) be the limiting number of prime ideals of residue field size q divided by g. Define φ(ℝ) and φ(ℂ) likewise using real embeddings and conjugate pairs of nonreal embeddings.
+
+**Problem.** Consider a strictly increasing tower of finite Galois extensions of ℚ with these limits. Then log(hR)/g tends to 1 + ∑ φ(q)log(q/(q−1)) − φ(ℝ)log 2 − φ(ℂ)log(2π), summing over prime powers. Here h counts ideal classes and the regulator R measures the volume of a cell in the logarithmic unit lattice.
+
+**How the definition helps.** In our own comparison, dividing each prime count by g gives a limiting coefficient for every term in the logarithm of the zeta product. Tsfasman and Vlăduţ prove the required limit for the zeta residues. The class number formula supplies the terms for real and complex embeddings. All correction terms vanish when the degree divided by g tends to zero.
+
+**Wikipedia:** [Brauer–Siegel theorem](https://en.wikipedia.org/wiki/Brauer%E2%80%93Siegel_theorem). It says: “\[Kᵢ : ℚ\]/log\|Dᵢ\| → 0 as i → ∞.”
+
+**Sources:**
+
+- [M. A. Tsfasman and S. G. Vlăduţ, Infinite global fields and the generalized Brauer–Siegel theorem (2002)](https://doi.org/10.17323/1609-4514-2002-2-2-329-402)
+- [A. I. Zykin, Asymptotic properties of the Dedekind zeta-function in families of number fields (2009), Theorem 1](https://doi.org/10.1070/RM2009v064n06ABEH004657)
 
 ### Primitive characters isolate a zeta quotient
 
@@ -6940,6 +11425,24 @@
 
 - [Elden Elmanto and Ningchuan Zhang, Equivariant algebraic K-theory and Artin L-functions](https://arxiv.org/abs/2405.03578)
 
+### Reflection bounds fields by zeta values
+
+**Remember:** Reflect past zero to expose a positive discriminant power.
+
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+
+**Definition.** Complete the Dedekind zeta function ζₖ(s) by multiplying by exp((s/2)log D) and the gamma factors attached to the field embeddings. Here D is the absolute discriminant of the number field K. The completed function takes equal values at s and 1−s.
+
+**Problem.** Fix a positive integer n, a negative real noninteger s, and B &gt; 0. Only finitely many degree-n number fields up to isomorphism satisfy \|ζₖ(s)\| ≤ B. For real s &gt; 1, infinitely many quadratic fields satisfy this inequality for some common B.
+
+**How the definition helps.** Completion lets us compare the unknown value at s with a positive series at 1−s. In our own fixed-degree argument, reflection contributes the factor exp((½−s)log D). The remaining gamma ratio takes finitely many nonzero values because only finitely many embedding counts occur. The series at 1−s starts with one and has positive terms. Thus B bounds D, and Hermite’s theorem gives finiteness. For s &gt; 1 the quadratic Euler products are all bounded by the square of the Riemann zeta function.
+
+**Paper or page:** [On the Northcott property of Dedekind zeta functions](https://arxiv.org/abs/2209.13854v1), [On the Northcott property of Dedekind zeta functions](https://arxiv.org/abs/2209.13854v1). It says: “The Northcott property does not hold”
+
+**Sources:**
+
+- [Xavier Généreux, Matilde Lalín, On the Northcott property of Dedekind zeta functions (2022)](https://arxiv.org/abs/2209.13854v1)
+
 ### Smoothing clears Stickelberger denominators
 
 **Remember:** Smoothing multiplies by factors that clear denominators.
@@ -6958,6 +11461,99 @@
 
 - [Samit Dasgupta and Mahesh Kakde, On the Brumer–Stark conjecture (2023)](https://annals.math.princeton.edu/2023/197-1/p05)
 - [Karl Rubin, A Stark conjecture over ℤ for abelian L-functions with multiple zeros (1996)](https://aif.centre-mersenne.org/articles/10.5802/aif.1505/)
+
+### Conductor norms sharpen Chebotarev
+
+**Remember:** Measure the Hecke factors over the fixed field.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 4: research.
+
+**Definition.** In a finite Galois extension L/F with group G, choose an abelian subgroup H meeting a conjugacy class C. Let K be the field fixed by H, with absolute discriminant D and degree n over ℚ. Each character of H has a conductor, the smallest finite modulus needed for its Hecke character. Let Q be the largest conductor norm and set B = DQ exp(n log n).
+
+**Problem.** Count unramified primes of F of norm at most x whose Frobenius belongs to C, obtaining π(x). For L ≠ ℚ and x ≥ Bᵃ, the relative error \|π(x)/M(x)−1\| is at most A(exp(−b log x/log B)+exp(−b√(log x/n))). The constants A, a and b are positive, absolute and effective.
+
+**How the definition helps.** Taking the largest conductor gives one scale controlling every character needed to count primes in C. Frobenius records the power map on residues above each prime, and the norm is the base residue field size. Start with M(x) = \|C\|Li(x)/\|G\|, where Li is the logarithmic integral. If a Hecke character χ for L/K has the exceptional real zero β near one, subtract \|C\|χ(c)Li(exp(β log x))/\|G\|. Here c belongs to C ∩ H. Thorner and Zaman prove the bound by estimating the zeros of these L-functions.
+
+**Paper or page:** [A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2). It says: “and K = Lᴴ is the subfield of L fixed by H, then”
+
+**Sources:**
+
+- [Jesse Thorner and Zhuo Zhang, A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2)
+- [Jesse Thorner and Asif Zaman, A unified and improved Chebotarev density theorem (2019), Theorem 1.4](https://msp.org/ant/2019/13-5/ant-v13-n5-p02-p.pdf)
+
+### Cyclic induction reduces Chebotarev
+
+**Remember:** Induce one cyclic point to its whole conjugacy class.
+
+*True by definition.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 4: research.
+
+**Definition.** Let G be the Galois group of a finite extension of number fields, and let C be the conjugacy class of c. Its cyclic subgroup H consists of the powers of c. Induce the point indicator at c by counting elements x of G satisfying x⁻¹gx = c and dividing by \|H\|.
+
+**Problem.** The induced function equals \|G\|/(\|C\|·\|H\|) on C and zero elsewhere. Consequently, prime counts weighted by the class indicator can be studied through abelian L-functions.
+
+**How the definition helps.** Induction expresses the whole class indicator using one point of a cyclic group. Our own calculation counts \|G\|/\|C\| conjugators for each element of C. On H, the point indicator expands in homomorphisms to the unit circle. Artin’s induction identity preserves their L-functions when the base changes to the field fixed by H. Class field reciprocity identifies these functions with Hecke L-functions over that field.
+
+**Paper or page:** [A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2). It says: “If $H$ be a subgroup of $G$ and $\\chi $ is a representation of $H$, then $L(s,\\operatorname{Ind} \_H<sup>G\\chi</sup> ,L/K)=L(s,\\chi ,L/L<sup>H</sup>)$.”
+
+**Sources:**
+
+- [Jesse Thorner and Zhuo Zhang, A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2)
+- [Henryk Iwaniec and Emmanuel Kowalski, Analytic Number Theory (2004)](https://doi.org/10.1090/coll/053)
+
+### Liouville weights reduce Landau’s theorem
+
+**Remember:** Balanced factor parity is enough for Landau’s theorem.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 4: research.
+
+**Definition.** In a number field K, factor each nonzero integral ideal into prime ideals. Give it weight 1 for an even number of factors and −1 for an odd number, counting repeats.
+
+**Problem.** Sum these weights over ideals of norm at most x, where the norm counts residue classes modulo the ideal. If the sum divided by x tends to zero, the number of prime ideals up to norm x is asymptotic to x/log x.
+
+**How the definition helps.** In our own formulation, the sign turns balance between even and odd factor counts into cancellation in one sum. Burgin proves that this cancellation implies the prime ideal theorem and establishes the required cancellation.
+
+**Paper or page:** [A New Elementary Proof of Landau's Prime Ideal Theorem, and Associated Results](https://arxiv.org/abs/2406.08565v4). It says: “i.e., that Ω is equidistributed modulo 2.”
+
+**Sources:**
+
+- [Alex Burgin, A New Elementary Proof of Landau's Prime Ideal Theorem, and Associated Results](https://arxiv.org/abs/2406.08565v4)
+
+### Null boundaries permit infinite Chebotarev
+
+**Remember:** A boundary of measure zero lets finite quotients approximate the prime density.
+
+*Rules out counterexamples.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 4: research.
+
+**Definition.** The Galois group G of an infinite Galois extension is the inverse limit of its finite Galois groups. Give G its translation-invariant probability measure, called Haar measure. Choose a set X stable under conjugation whose boundary has measure zero.
+
+**Problem.** Let L be a possibly infinite Galois extension of a number field K, ramified at only finitely many primes. The proportion of primes with Frobenius in X tends to its Haar measure as the residue field size bound grows.
+
+**How the definition helps.** A boundary of measure zero lets finite quotient conditions approximate X from inside and outside with arbitrarily small differences in measure. Frobenius records the automorphism raising residues to the size of the base residue field. Our own argument applies finite Chebotarev to both approximations. In our own counterexample, adjoining suitable roots of unity gives the cyclotomic ℤ₃-extension of ℚ. Its Galois group is the additive group of 3-adic integers. The countable set of prime Frobenius elements has measure zero but contains the Frobenius of every unramified prime.
+
+**Wikipedia:** [Chebotarev density theorem](https://en.wikipedia.org/wiki/Chebotarev_density_theorem). It says: “Let X be a subset of G that is stable under conjugation and whose boundary has Haar measure zero.”
+
+**Sources:**
+
+- [N. Tschebotareff, Die Bestimmung der Dichtigkeit einer Menge von Primzahlen, welche zu einer gegebenen Substitutionsklasse gehören (1926)](https://doi.org/10.1007/BF01206606)
+
+### Signed corrections stabilize Chebotarev counts
+
+**Remember:** Subtract the exceptional contribution before measuring relative error.
+
+*Makes the theorem clean to state or prove.* MSC 11R44 (Distribution of prime ideals). arXiv math.NT. Level 4: research.
+
+**Definition.** Let C be a conjugacy class in the group G of a finite Galois extension L/K of number fields. Write Li for the logarithmic integral and set M(x) = \|C\|Li(x)/\|G\|. If the Dedekind zeta function of L has an exceptional real zero β near one, subtract \|C\|χ(C)Li(exp(β log x))/\|G\| from M(x). Here χ is the real character attached to that zero.
+
+**Problem.** Count unramified primes of K up to residue field size x whose Frobenius belongs to C, obtaining π(x). For L ≠ ℚ, π(x)/M(x) tends to one whenever log x/log(D exp(n log n)) tends to infinity. Here D is the absolute discriminant of L and n its degree over ℚ.
+
+**How the definition helps.** Including the exceptional zero in M measures the error against the prime count predicted for that particular class. Frobenius records how raising residues to the base residue field size acts above the prime. When χ(C) = 1, the correction can nearly cancel the first term. Thorner and Zaman bound the remaining contributions relative to this smaller quantity.
+
+**Paper or page:** [A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2). It says: “\\frac {\|C\|}{\|G\|}(\\operatorname{Li} (x)-\\chi \_1(C)\\operatorname{Li} (x<sup>\\beta \_1</sup>))”
+
+**Sources:**
+
+- [Jesse Thorner and Zhuo Zhang, A new bound on the relative error in the Chebotarev density theorem](https://arxiv.org/abs/2412.01802v2)
+- [Jesse Thorner and Asif Zaman, A unified and improved Chebotarev density theorem (2019), Corollary 1.2](https://msp.org/ant/2019/13-5/ant-v13-n5-p02-p.pdf)
 
 ### Normalized Haar measure gives Riemann–Roch from Poisson summation
 
@@ -7119,6 +11715,61 @@
 
 - [Akinari Hoshi and Kazuki Kanai, Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872)
 
+### Conductor bounds complete trace errors
+
+**Remember:** One conductor controls both the size and the number of error terms.
+
+*Makes the theorem clean to state or prove.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A middle extension on the affine line extends a locally constant coefficient system across missing points by taking locally invariant vectors. Its conductor c is its rank plus the sum of 1 + Swan over its singular points on the projective line. Swan measures the part of local ramification coming from the field characteristic.
+
+**Problem.** Assume Frobenius eigenvalues have modulus one on the largest open set U of the affine line where the system is locally constant. Sum the Frobenius traces over the whole affine line over 𝔽𝓆. The result differs from the trace on second compactly supported cohomology of U by O(c²√q), with an absolute implied constant.
+
+**How the definition helps.** The conductor controls both the number of omitted points and the number of eigenvalues in the error term. Our own explanation uses the Euler characteristic formula for a curve to bound the dimension of first compactly supported cohomology. Deligne bounds the modulus of each of its eigenvalues by √q. Each omitted fiber contributes at most the rank.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “Taking logarithmic derivatives of both formal power series produces a statement on sums of traces for each finite field extension E of the base field k:”
+
+**Sources:**
+
+- [Deligne, La conjecture de Weil II](https://www.numdam.org/item/PMIHES_1980__52__137_0/)
+- [Fouvry, Kowalski, Michel and Sawin, Lectures on applied ℓ-adic cohomology](https://people.math.ethz.ch/~kowalski/applied-ell-adic.pdf)
+
+### Disjoint characters preserve hypergeometric purity
+
+**Remember:** Disjoint lists prevent a character from canceling a parameter.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take two length-n lists of multiplicative characters on 𝔽𝓆, with n ≥ 1. Call them disjoint when no character occurs in both. For nonzero tuples x and y with ∏xᵢ = t∏yᵢ, multiply the first characters on xᵢ and the inverse second characters on yᵢ. Multiply by ψ(Σxᵢ − Σyᵢ), where ψ is a nontrivial additive character, and sum over these tuples.
+
+**Problem.** For disjoint lists and t different from zero and one, the sum is a signed trace of n eigenvalues. Each eigenvalue has modulus q raised to (2n − 1)/2, so the sum has modulus at most n times that number.
+
+**How the definition helps.** Disjointness prevents a matching character from canceling between the lists and changing the predicted eigenvalue size. Our own example takes both lists to contain just the trivial character. For t different from zero and one, the sum becomes the sum of ψ((t − 1)y) over nonzero y, which equals −1. Katz’s hypergeometric sheaf theorem gives the rank and absolute values for disjoint lists.
+
+**Paper or page:** [Traces of Hecke Operators via Hypergeometric Character Sums](https://arxiv.org/abs/2408.02918). It says: “are algebraic numbers and have the same absolute value”
+
+**Sources:**
+
+- [Katz, Exponential Sums and Differential Equations, Chapter 8](https://web.math.princeton.edu/~nmk/wholebookcorrms.pdf)
+
+### Fourier sheaves exclude completion spikes
+
+**Remember:** Exclude additive characters to keep Fourier mass spread out.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 11L26. arXiv math.NT. Level 4: research.
+
+**Definition.** Start with a coefficient system on the affine line over 𝔽ₚ, extended across missing points by taking locally invariant vectors. Assume its Frobenius eigenvalues on the regular part have complex absolute value one. Call it a Fourier sheaf if none of its irreducible pieces over the algebraic closure comes from an additive character x ↦ ψ(ax). Include a = 0 in this test.
+
+**Problem.** Write K for the function giving the Frobenius trace at each point. The conductor c adds the rank to the sum of 1 + Swan over all singularities, including any at infinity. On each integer interval of length at most p, the sum of K has modulus O(c²√p log p), with an absolute constant.
+
+**How the definition helps.** Excluding additive characters removes the constituents whose Fourier transforms concentrate at a single frequency. Our own counterexample is the constant function, whose sum on a full interval equals p. The applied cohomology lectures bound the other Fourier coefficients and sum them against those of the interval. Here Swan measures ramification from the field characteristic.
+
+**Wikipedia:** [Quadratic residue](https://en.wikipedia.org/wiki/Quadratic_residue). It says: “for any nonprincipal Dirichlet character χ(n) modulo q and any integers M and N,”
+
+**Sources:**
+
+- [Fouvry, Kowalski, Michel and Sawin, Lectures on applied ℓ-adic cohomology](https://people.math.ethz.ch/~kowalski/applied-ell-adic.pdf)
+
 ### Frobenius traces give Kloosterman recurrences
 
 **Remember:** A Kloosterman sum over an extension is the negative trace of a Frobenius power.
@@ -7136,6 +11787,96 @@
 **Sources:**
 
 - [Márton Erdélyi and Árpád Tóth, Matrix Kloosterman sums](https://arxiv.org/abs/2109.00762)
+
+### Geometric nonisomorphism forces small correlations
+
+**Remember:** Compare sheaves after extending the field to detect the main term.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** On an open subset U of the affine line over 𝔽𝓆, take two locally constant systems of vector spaces F and G. Use ℓ-adic coefficients for a prime ℓ different from the characteristic. Assume both systems stay irreducible over the algebraic closure, meaning neither has a proper nonzero invariant subspace there. Call them geometrically distinct if they remain nonisomorphic there.
+
+**Problem.** Assume both systems have weight zero, meaning all pointwise Frobenius eigenvalues have complex absolute value one. For geometrically distinct systems, sum the trace of F times the conjugate trace of G over U(𝔽𝓆). The modulus is O(√q), with constant depending on the ranks, omitted points and local ramification.
+
+**How the definition helps.** Geometric distinction removes the invariant maps between F and G that could produce a term of order q. Our own explanation uses Schur’s lemma for these maps and Deligne’s bound for the remaining terms in the trace formula. Multiplying the Frobenius action by a constant unit scalar can change a system over the base field while preserving every absolute trace.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “where the cohomology groups are replaced by cohomology with coefficients in the sheaf.”
+
+**Sources:**
+
+- [Fouvry, Kowalski, Michel and Sawin, Lectures on applied ℓ-adic cohomology](https://people.math.ethz.ch/~kowalski/applied-ell-adic.pdf)
+
+### Good twists erase boundary terms
+
+**Remember:** A good twist leaves no cohomology at zero or infinity.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let F be a locally constant system of r-dimensional ℓ-adic vector spaces on the line with zero removed over 𝔽𝓆, with ℓ prime to q. Twist F by the one-dimensional system associated to a multiplicative character χ through the power covering of the nonzero line. Call χ good if extension by zero agrees with derived direct image on the projective line for this twist. These extensions differ only through local cohomology at zero and infinity.
+
+**Problem.** Over any finite extension field, at most 2r multiplicative characters fail this test. For every good character, ordinary cohomology of the twist agrees with its cohomology with compact supports.
+
+**How the definition helps.** Goodness tests for boundary contributions before computing either cohomology group. Our own explanation takes cohomology on the projective line of the two extensions in the definition. A bad twist must cancel a local character in the part fixed by wild inertia, the characteristic-power part of the local symmetry group. Each boundary has at most r such characters. Twisting the constant system by the trivial character leaves a boundary contribution.
+
+**Paper or page:** [Wasserstein metrics and quantitative equidistribution of exponential sums over finite fields](https://arxiv.org/abs/2505.22059). It says: “let 𝒳ᵢ be the set of characters χ : kᵢ× → ℂ× which are “good” for ℱᵢ(1/2)\[1\]”
+
+**Sources:**
+
+- [Katz, Convolution and Equidistribution](https://web.math.princeton.edu/~nmk/mellin398.pdf)
+
+### Newton polytopes bound torus sums
+
+**Remember:** Test each face that misses the origin.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** For a Laurent polynomial f in m variables, take the convex hull Δ of zero and its exponent vectors. For each face missing zero, let h consist of the terms on that face. Call f nondegenerate if the derivatives xᵢ∂h/∂xᵢ never vanish together at a point with all coordinates nonzero over the algebraic closure.
+
+**Problem.** Assume Δ has dimension m and f is nondegenerate. For any nontrivial additive character ψ of 𝔽𝓆, sum ψ(f(x)) over tuples of nonzero field elements. The modulus is at most √(qᵐ) times the volume of Δ measured in units of 1/m! of a lattice cube.
+
+**How the definition helps.** The face test lets the volume of the actual exponent polytope control the sum. Our own explanation uses the Adolphson–Sperber theorem to concentrate cohomology in one degree and compute its dimension from this volume. Deligne’s estimate bounds each contributing eigenvalue by √(qᵐ). In odd characteristic, (x + y)² fails the top-face test along y = −x. Its full affine sum has modulus q√q, and removing the axes changes it by at most 2q.
+
+**Paper or page:** [Robba's method on exponential sums](https://arxiv.org/abs/2109.02825). It says: “Suppose that f is nondegenerate. Then H(i)=aᵢ for all integer i≥0. Moreover, we have H(k)=0 for k&gt;nM, ∑ₖ₌₀ⁿᴹ H(k)=n! Vol(Δ(f)).”
+
+**Sources:**
+
+- [Robba's method on exponential sums](https://arxiv.org/abs/2109.02825)
+
+### Odd multiplicities force symplectic cancellation
+
+**Remember:** An odd number of standard symplectic factors cannot contain a fixed vector.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take a list of fractional linear maps over 𝔽ₚ, meaning invertible changes of variable x ↦ (ax + b)/(cx + d). Call the list normal if some map occurs an odd number of times.
+
+**Problem.** Let F be a middle extension, a coefficient system extended across singularities by local invariant vectors, with Frobenius eigenvalues of modulus one at regular points. Assume its geometric symmetry group is the full symplectic group in its standard representation, and only the identity preserves F up to scalar twist. For a normal list, the sum of products of the transformed traces over common finite inputs avoiding poles is O(√p).
+
+**How the definition helps.** Odd multiplicity gives a factor on which the central symmetry −I negates every tensor, ruling out invariant vectors. Our own explanation uses the independence theorem for distinct transformed systems. The symmetry and scalar-twist tests take place over the algebraic closure, where a scalar twist means tensoring with a one-dimensional system. The symplectic group consists of matrices preserving a fixed nondegenerate alternating form. Deligne’s bound controls the remaining sum in terms of list length and the rank and ramification of F.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “where the cohomology groups are replaced by cohomology with coefficients in the sheaf.”
+
+**Sources:**
+
+- [Fouvry, Kowalski and Michel, A study in sums of products](https://people.math.ethz.ch/~kowalski/sums-of-products.pdf)
+
+### Signed multiplicities force special linear cancellation
+
+**Remember:** Count ordinary factors positively and conjugate factors negatively, modulo the rank.
+
+*Rules out counterexamples.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Give each occurrence of a fractional linear map x ↦ (ax + b)/(cx + d) a sign, with ad − bc ≠ 0. Its signed multiplicity counts positive occurrences minus negative occurrences. Call the list r-normal if some map has signed multiplicity indivisible by r.
+
+**Problem.** Take a middle extension F over 𝔽ₚ with weight zero and geometric symmetry group SL(r) in its standard representation, where p &gt; r ≥ 3. Geometrically, only the identity preserves F up to scalar twist, and no fractional linear map carries F to its dual up to twist. For an r-normal list over 𝔽ₚ, the complete trace product summed away from poles is O(√p), conjugating traces with negative signs.
+
+**How the definition helps.** Signed multiplicity gives the exponent by which scalar matrices in SL(r), the determinant-one group, act on each tensor factor. A nonzero exponent modulo r prevents invariant vectors. Our own explanation uses independence of distinct transformed systems and Deligne’s bound. A middle extension fills missing fibers with locally invariant vectors, and weight zero gives Frobenius eigenvalues of modulus one at regular points. A scalar twist tensors the system with a one-dimensional system. The bound depends on the list length and the rank and ramification of F.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “where the cohomology groups are replaced by cohomology with coefficients in the sheaf.”
+
+**Sources:**
+
+- [Fouvry, Kowalski and Michel, A study in sums of products](https://people.math.ethz.ch/~kowalski/sums-of-products.pdf)
 
 ### Character spaces isolate Jacobi factors
 
@@ -7156,3 +11897,21 @@
 **Sources:**
 
 - [Asvin G, On the variation of the Frobenius in a non abelian Iwasawa tower](https://arxiv.org/abs/2203.16774)
+
+### Frobenius preserves strict Waring numbers
+
+**Remember:** Strip off Frobenius before counting the needed powers.
+
+*True by definition.* MSC 11T55 (Arithmetic theory of polynomial rings over finite fields), 11P05, 11P55. arXiv math.NT. Level 4: research.
+
+**Definition.** For polynomials over a finite field of characteristic p, let J(k) contain all finite sums of kth powers. For nonzero m in J(k), bound each base degree by ⌈deg(m)/k⌉. Increase this bound by one if k divides deg(m) and its leading coefficient lies outside the sums of kth powers in the field. Define G(k) as the least summand count sufficient under this bound for every m in J(k) of sufficiently large degree.
+
+**Problem.** For a positive integer k divisible by p, G(k) = G(k/p), with G(1) = 1.
+
+**How the definition helps.** In our own explanation, taking pth powers maps exactly the allowed targets for k/p onto those for k while preserving the base-degree bound. In characteristic p the pth power of a sum is the sum of the pth powers. This map multiplies target degrees by p and permutes the coefficient field, so the exceptional leading-coefficient test also agrees. The polynomial ring has no nonzero element with pth power zero, so representations correspond in both directions. Using all polynomials as targets would include powers of the variable whose degrees are not divisible by p. Liu and Wooley use the circle method for the remaining exponents.
+
+**nLab:** [Frobenius morphism](https://ncatlab.org/nlab/show/Frobenius+morphism). It says: “the characteristic of the field is used to show (a + b)ᵖ = aᵖ + bᵖ.”
+
+**Sources:**
+
+- [Y.-R. Liu and T. D. Wooley, Waring’s problem in function fields, §1](https://www.math.purdue.edu/~twooley/publ/wpfqt110809.pdf)

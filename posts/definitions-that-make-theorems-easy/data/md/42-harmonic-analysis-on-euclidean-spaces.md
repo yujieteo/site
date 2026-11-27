@@ -819,6 +819,24 @@
 
 - [S. G. Mallat, A theory for multiresolution signal decomposition: the wavelet representation (1989)](https://doi.org/10.1109/34.192463)
 
+### Smoothing counts approximate additive relations
+
+**Remember:** A short interval cannot distinguish nearly equal sums.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 42A05 (Trigonometric polynomials, inequalities, extremal problems), 11B30. arXiv math.CA, math.NT. Level 4: research.
+
+**Definition.** Let W be a finite set of real times and let η &gt; 0. Its additive energy at scale η counts ordered quadruples in W with \|a+b−c−d\| ≤ η. Unlike exact additive energy, this count includes nearly equal sums.
+
+**Problem.** Put P(v) = ∑ exp(iav), summing over a in W. On any interval of length H &gt; 0, the integral of \|P(v)\|⁴ is at most CH times the energy at scale 1/H. The constant C is absolute.
+
+**How the definition helps.** The tolerance counts exactly the frequency differences that a suitably chosen weight can retain. Our own proof bounds the interval indicator by a translated and scaled multiple of (sin x/x)². Its Fourier transform vanishes outside \[−1/H,1/H\] and has magnitude at most CH. Expanding the fourth power now gives the bound by counting ordered quadruples. The cited paper uses a related energy estimate for large values of Dirichlet polynomials.
+
+**Paper or page:** [New large value estimates for Dirichlet polynomials](https://arxiv.org/abs/2405.20552). It says: “\|R(v)\|⁴ dv ⪅ E(W).”
+
+**Sources:**
+
+- [Larry Guth, James Maynard, New large value estimates for Dirichlet polynomials](https://arxiv.org/abs/2405.20552)
+
 ### Fourier decay gives positive-volume sumsets
 
 **Remember:** Two copies of the Fourier decay give a square-integrable convolution transform.

@@ -1205,6 +1205,22 @@
 - [Jean-Pierre Serre, Un théorème de dualité, Commentarii Mathematici Helvetici 29 (1955) 9–26](https://doi.org/10.1007/BF02564268)
 - [Robin Hartshorne, Residues and Duality, Lecture Notes in Mathematics 20 (1966)](https://doi.org/10.1007/BFb0080482)
 
+### Compact direct images sum traces
+
+**Remember:** Push a trace function forward by summing it over each fiber.
+
+*Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies). arXiv math.AG. Level 3: graduate.
+
+**Definition.** Let f map one variety over a finite field to another. Start with a bounded constructible complex of ℓ-adic sheaves, meaning locally constant coefficient systems on finitely many pieces, with ℓ different from the characteristic. Its trace function adds the Frobenius traces in each degree with alternating signs. Frobenius here means the inverse of the field-size power map on geometric points.
+
+**Problem.** At every rational point y, the trace of the compactly supported direct image equals the sum of the original traces above y. This equality holds over every finite extension.
+
+**How the definition helps.** The compactly supported direct image collects the cohomology with compact supports of each fiber into one complex on the target. Our own explanation uses the base change theorem to identify its value at y with that fiber cohomology. The Grothendieck trace formula then converts its alternating trace into the required sum.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “where the cohomology groups are replaced by cohomology with coefficients in the sheaf.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Compact support by zero extension turns excision into a short exact sequence
 
 **Remember:** Extend by zero to turn an open and its complement into an exact sequence.
@@ -3194,6 +3210,24 @@ $$”
 - [Ahmed Abbes, Takeshi Saito, Holonomic étale sheaves are constructible, arXiv:2410.04677v1 (2024)](https://arxiv.org/abs/2410.04677v1)
 - [A. Beilinson, Constructible sheaves are holonomic, Selecta Mathematica (2016)](https://doi.org/10.1007/s00029-016-0260-z)
 
+### Linear phases isolate zero fibers
+
+**Remember:** A nonzero linear phase kills the whole fiber.
+
+*Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 11T23. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Let E be a family of r-dimensional vector spaces over a variety X in characteristic p. A section s picks a vector in every fiber. On the family of dual spaces define g(x,y) = y(s(x)), where y is a linear functional. Use a nontrivial additive character of 𝔽ₚ to attach a one-dimensional coefficient system to this phase.
+
+**Problem.** Work over the algebraic closure with ℓ-adic coefficients for a prime ℓ different from p. Let Z be the zero locus of s and give Z constant coefficients. Its degree-j compactly supported cohomology is isomorphic to degree-(j + 2r) compactly supported cohomology of the dual bundle with the phase coefficients.
+
+**How the definition helps.** The chosen phase makes each fiber contribute according to whether its selected vector vanishes. Our own explanation uses the vanishing theorem for the coefficient system of a nonzero linear phase. At a zero of s the coefficients become constant, and the affine fiber contributes only in degree 2r. Base change gives the stated identification of vector spaces.
+
+**Paper or page:** [Betti number bounds for varieties and exponential sums](https://arxiv.org/abs/2501.12623). It says: “In the situation above, we have an isomorphism of ℚ̄ℓ vector spaces Hʲ𝚌(V; ℚ̄ℓ) ≃ Hʲ⁺²ʳ𝚌(E∨; g∗ℒψ).”
+
+**Sources:**
+
+- [Betti number bounds for varieties and exponential sums](https://arxiv.org/abs/2501.12623)
+
 ### Lisse sheaves as dualizable objects give one theory for all coefficient rings
 
 **Remember:** Lisse means dualizable; constructible means lisse on each stratum.
@@ -3248,6 +3282,25 @@ $$”
 **Sources:**
 
 - [Bhargav Bhatt, Peter Scholze, The pro-étale topology for schemes, Astérisque 369 (2015) 99–201, arXiv:1309.1198](https://arxiv.org/abs/1309.1198)
+
+### Trace mean squares detect irreducibility
+
+**Remember:** The largest limiting mean square counts geometric endomorphisms.
+
+*Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 11T23. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Take a nonzero locally constant ℓ-adic system F on a nonempty open subset U of the affine line over 𝔽𝓆, with ℓ prime to q. Assume weight zero, so all pointwise Frobenius eigenvalues have complex modulus one. Over each degree-n extension, sum the squared absolute Frobenius traces over points of U and divide by qⁿ. Take the limit superior as n increases.
+
+**Problem.** This limit superior equals the dimension of the linear maps from F to itself that commute with all geometric symmetries. It equals one exactly when F has no proper nonzero subspace stable under those symmetries.
+
+**How the definition helps.** The limit superior recovers every geometric endomorphism even when Frobenius permutes them and individual averages oscillate. Our own explanation turns the squared trace into the trace on the system of linear endomorphisms. The trace formula and Deligne’s bound leave only the geometric endomorphism contribution in the limit, with an error tending to zero. The finitely many remaining eigenvalues have modulus one, and some common sequence of powers approaches one for them all. Geometric semisimplicity splits the system into irreducible pieces, so Schur’s lemma gives the last assertion.
+
+**Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “Taking logarithmic derivatives of both formal power series produces a statement on sums of traces for each finite field extension E of the base field k:”
+
+**Sources:**
+
+- [Fouvry, Kowalski, Michel and Sawin, Lectures on applied ℓ-adic cohomology](https://people.math.ethz.ch/~kowalski/applied-ell-adic.pdf)
+- [Deligne, La conjecture de Weil II](https://www.numdam.org/item/PMIHES_1980__52__137_0/)
 
 ### Weil–étale Euler characteristics give special values of arithmetic L-functions at zero
 

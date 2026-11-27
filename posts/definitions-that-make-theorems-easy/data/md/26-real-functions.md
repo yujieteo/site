@@ -1907,6 +1907,46 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Frequency gaps bound mean squares
+
+**Remember:** Close frequencies behave like one frequency until the interval resolves them.
+
+*Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals), 30B50. arXiv math.CA, math.NT. Level 3: graduate.
+
+**Definition.** Let P(t) = ∑ aⱼ exp(itλⱼ) have finitely many real frequencies, with at least two terms. Define δ as the smallest distance between two differently indexed frequencies. Require δ &gt; 0.
+
+**Problem.** On every interval of length T, the integral of \|P(t)\|² equals (T + O(1/δ))∑ \|aⱼ\|². The implied constant is absolute.
+
+**How the definition helps.** A positive gap rules out repeated frequencies and puts a common bound on interference between terms. Our own example takes two identical frequencies with coefficients 1. Their squared sum integrates to 4T, although their separate squares contribute only 2T. Expanding the square leaves two endpoint sums. Montgomery and Vaughan’s Hilbert inequality bounds each by a constant times ∑ \|aⱼ\|²/δ.
+
+**Wikipedia:** [Hilbert's inequality](https://en.wikipedia.org/wiki/Hilbert%27s_inequality). It says: “Montgomery &amp; Vaughan reported several generalizations of Hilbert's inequality”
+
+**Paper or page:** [Negative moments of the Riemann zeta-function](https://arxiv.org/abs/2302.07226). It says: “\\int \_T<sup>2T</sup> \\Big\|\\sum <sub>n\\leq N</sub> \\frac{a(n)}{n<sup>1/2+it</sup>}\\Big\|<sup>2</sup> \\,  dt = \\big(T+O(N)\\big)\\sum <sub>n\\leq N</sub>\\frac{\|a(n)\|<sup>2}{n}</sup>.”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, Hilbert’s inequality, J. London Math. Soc. 8 (1974), 73–82](https://doi.org/10.1112/jlms/s2-8.1.73)
+
+### Local gaps sharpen mean squares
+
+**Remember:** One close pair need not penalize all the coefficients.
+
+*Makes the theorem clean to state or prove.* MSC 26D15 (Inequalities for sums, series and integrals), 30B50. arXiv math.CA, math.NT. Level 3: graduate.
+
+**Definition.** Take finitely many distinct real frequencies λⱼ, with at least two terms. Let δⱼ be the distance from λⱼ to its nearest neighbor. Write P(t) = ∑ aⱼ exp(itλⱼ).
+
+**Problem.** On any interval of length T, the integral of \|P(t)\|² differs from T∑ \|aⱼ\|² by at most C∑ \|aⱼ\|²/δⱼ. The constant C is absolute.
+
+**How the definition helps.** Each coefficient pays for the distance to its own nearest frequency. In our own derivation, expanding the square gives two endpoint sums over unequal frequencies. Montgomery and Vaughan’s weighted Hilbert inequality bounds both sums using the individual gaps.
+
+**Wikipedia:** [Hilbert's inequality](https://en.wikipedia.org/wiki/Hilbert%27s_inequality). It says: “are distinct real numbers.”
+
+**Paper or page:** [Negative moments of the Riemann zeta-function](https://arxiv.org/abs/2302.07226). It says: “\\int \_T<sup>2T</sup> \\Big\|\\sum <sub>n\\leq N</sub> \\frac{a(n)}{n<sup>1/2+it</sup>}\\Big\|<sup>2</sup> \\,  dt = \\big(T+O(N)\\big)\\sum <sub>n\\leq N</sub>\\frac{\|a(n)\|<sup>2}{n}</sup>.”
+
+**Sources:**
+
+- [H. L. Montgomery and R. C. Vaughan, Hilbert’s inequality, J. London Math. Soc. 8 (1974), 73–82](https://doi.org/10.1112/jlms/s2-8.1.73)
+
 ### Testing smoothness on curves gives the exponential law for smooth maps
 
 **Remember:** All derivatives that ought to exist do exist.
