@@ -128,6 +128,25 @@ export function postPage(post: Post, bodyHtml: string, headings: Heading[], kind
   return shell(post.title, post.summary[0] ?? "", HEADER, `<main class="wrap page">${article}</main>`, scripts);
 }
 
+export interface SectionLink {
+  id: string;
+  title: string;
+}
+
+// One section of a split post. The links to the sections before and after it let a reader go through the post in order.
+export function sectionPage(post: Post, title: string, bodyHtml: string, prev: SectionLink | undefined, next: SectionLink | undefined): string {
+  const back = `/essays/${post.slug}/`;
+  const meta = `<p class="meta muted">Part of <a href="${back}">${post.title}</a> · ${readingMinutes(bodyHtml.replace(/<[^>]+>/g, " "))} min read</p>`;
+  const steps: string[] = [];
+  if (prev !== undefined) steps.push(`<a href="${back}${prev.id}/">← ${prev.title}</a>`);
+  steps.push(`<a href="${back}#sections">All sections</a>`);
+  if (next !== undefined) steps.push(`<a href="${back}${next.id}/">${next.title} →</a>`);
+  const nav = `<nav class="meta" aria-label="Sections">${steps.join(" · ")}</nav>`;
+  const article = `<article><h1>${title}</h1>${meta}${nav}${bodyHtml}${nav}</article>`;
+  const plain = title.replace(/<[^>]+>/g, "").replaceAll("&amp;", "&");
+  return shell(`${plain} · ${post.title}`, post.summary[0] ?? "", HEADER, `<main class="wrap page">${article}</main>`, ["kit/kit.js"]);
+}
+
 export function paperPage(post: Post, paper: Paper, bodyHtml: string): string {
   const minutes = readingMinutes(paper.source);
   const back = `/essays/${post.slug}/`;

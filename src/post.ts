@@ -6,6 +6,8 @@ export interface Post {
   title: string;
   date: string;
   draft: boolean;
+  // "split: true" in the front matter: each h2 section with h3 entries gets a page of its own.
+  split: boolean;
   summary: string[];
   source: string;
 }
@@ -45,7 +47,7 @@ export function parsePost(slug: string, raw: string): Post {
   const head = (parts[0] ?? "").replace(/^---\n/, "");
   const draft = isDraft(head);
   if (draft === undefined) throw new Error(`${slug}: expected YAML front matter with a boolean draft field when present`);
-  const post: Post = { slug, title: "", date: "", draft, summary: [], source: parts.slice(1).join("\n---\n").trim() };
+  const post: Post = { slug, title: "", date: "", draft, split: false, summary: [], source: parts.slice(1).join("\n---\n").trim() };
   for (const line of head.split("\n")) {
     const at = line.indexOf(": ");
     const key = line.slice(0, at);
@@ -53,6 +55,7 @@ export function parsePost(slug: string, raw: string): Post {
     if (key === "title") post.title = value;
     if (key === "date") post.date = value;
     if (key === "summary") post.summary.push(value);
+    if (key === "split") post.split = value === "true";
   }
   if (post.title === "" || post.date === "" || post.summary.length === 0) throw new Error(`${slug}: a post needs title, date and summary`);
   return post;

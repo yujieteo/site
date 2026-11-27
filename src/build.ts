@@ -1,6 +1,6 @@
 import { relative, resolve, sep } from "node:path";
 import { cpSync, existsSync, mkdirSync, renameSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { apiPage, callsPage, dealsPage, errorPage, forecastsPage, homePage, notFoundPage, paperPage, postPage } from "./pages.ts";
+import { apiPage, callsPage, dealsPage, errorPage, forecastsPage, homePage, notFoundPage, paperPage, postPage, sectionPage } from "./pages.ts";
 import { SITE, deals, loadNotes, notesGuide, today, type Note } from "./notes.ts";
 import { postApi, writeApi, writeManifest } from "./api.ts";
 import { checkBets, scoreBets } from "./bets.ts";
@@ -124,8 +124,50 @@ function writePost(out: string, post: Post): void {
   const kinds = figureKinds(post.source);
   const dir = `${out}/essays/${post.slug}`;
   mkdirSync(dir, { recursive: true });
-  writeFileSync(`${dir}/index.html`, postPage(post, body.html, body.toc, kinds));
+  if (post.split) {
+    const split = splitSections(body.html, post.slug);
+    writeFileSync(`${dir}/index.html`, postPage(post, split.main, headings(split.main), kinds));
+    split.sections.forEach((section, i) => {
+      mkdirSync(`${dir}/${section.id}`, { recursive: true });
+      writeFileSync(`${dir}/${section.id}/index.html`, sectionPage(post, section.title, section.html, split.sections[i - 1], split.sections[i + 1]));
+    });
+  } else {
+    writeFileSync(`${dir}/index.html`, postPage(post, body.html, body.toc, kinds));
+  }
   writeFileSync(`${dir}/index.md`, textVersion(post));
+}
+
+// A long post can be too big for one page. With "split: true", each h2 section that holds h3 entries moves to
+// /essays/<slug>/<section id>/, and the main page keeps the other sections and lists the moved ones in their place.
+// Every link to an id is rewritten to the page that now holds that id. The text version and the API still have the whole post.
+function splitSections(html: string, slug: string): { main: string; sections: { id: string; title: string; html: string }[] } {
+  const main: string[] = [];
+  const sections: { id: string; title: string; html: string; count: number }[] = [];
+  let listAt = -1;
+  for (const chunk of html.split(/(?=<h2 id=")/)) {
+    const head = /^<h2 id="([^"]+)">(.*?)<\/h2>/.exec(chunk);
+    const count = (chunk.match(/<h3[\s>]/g) ?? []).length;
+    if (head === null || count === 0) {
+      main.push(chunk);
+      continue;
+    }
+    if (listAt < 0) listAt = main.length;
+    sections.push({ id: head[1] ?? "", title: head[2] ?? "", html: chunk.slice(head[0].length), count });
+  }
+  // The page each id lives on: "" is the main page.
+  const page = new Map<string, string>();
+  for (const id of main.join("").matchAll(/\sid="([^"]+)"/g)) page.set(id[1] ?? "", "");
+  for (const section of sections) for (const id of section.html.matchAll(/\sid="([^"]+)"/g)) page.set(id[1] ?? "", section.id);
+  const relink = (text: string, here: string) =>
+    text.replace(/href="#([^"]+)"/g, (link, id: string) => {
+      const there = page.get(id);
+      if (there === undefined || there === here) return link;
+      return `href="/essays/${slug}/${there === "" ? "" : `${there}/`}#${id}"`;
+    });
+  const items = sections.map((s) => `<li><a href="/essays/${slug}/${s.id}/">${s.title}</a> <span class="muted">· ${s.count} ${s.count === 1 ? "entry" : "entries"}</span></li>`);
+  const list = `<h2 id="sections">Sections</h2>\n<ol>${items.join("")}</ol>\n`;
+  if (sections.length > 0) main.splice(listAt, 0, list);
+  return { main: relink(main.join(""), ""), sections: sections.map((s) => ({ id: s.id, title: s.title, html: relink(s.html, s.id) })) };
 }
 
 function writePaper(out: string, post: Post, paper: Paper): void {
