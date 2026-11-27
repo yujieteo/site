@@ -6,9 +6,9 @@
 
 **Definition.** Clock 1 sends a light signal at time τ₁ to clock 2. Clock 2 reflects the signal back, and clock 1 receives it at time τ₂. Set clock 2 so that it shows (τ₁ + τ₂)/2 at the reflection. In words, the reflection happens halfway between sending and receiving.
 
-**Problem.** Show that the one-way speed of light is the same in both directions.
+**Problem.** With Einstein synchronisation of distant clocks, the one-way speed of light is the same in both directions.
 
-**How the definition helps.** The rule builds the claim into the clocks, so there is nothing left to prove. You cannot measure a one-way speed before you synchronise distant clocks. Einstein's rule synchronises them by assuming that the two one-way times are equal. So the equality of the one-way speeds is a convention, as Poincaré noted. You can reread experiments on the one-way speed of light as tests of a round-trip condition. Some parts are not conventional. The rule is consistent (symmetric and transitive) only under physical conditions such as Reichenbach's round-trip condition, and in rotating frames the rule depends on the path.
+**How the definition helps.** The rule builds the claim into the clocks, so there is nothing left to prove. A one-way speed cannot be measured before distant clocks are synchronised. Einstein's rule synchronises them by assuming that the two one-way times are equal, so the equality is a convention, as Poincaré noted. Some parts are not conventional: the rule is consistent only under physical conditions such as Reichenbach's round-trip condition, and in rotating frames it depends on the path.
 
 **Wikipedia:** [Einstein synchronisation](https://en.wikipedia.org/wiki/Einstein_synchronisation). It says: “Since it is meaningless to measure a one-way velocity prior to the synchronisation of distant clocks, experiments claiming a measure of the one-way speed of light can often be reinterpreted as verifying the Laue–Weyl's round-trip condition.”
 
@@ -26,7 +26,7 @@
 
 **Problem.** The invariant mass of a system is the same in all inertial frames, and it is conserved. So the invariant mass of the decay products of a particle equals the rest mass of the parent particle.
 
-**How the definition helps.** E² − \|p\|²c² is the Minkowski square of the four-momentum, the spacetime vector (E/c, p) (our own wording). Lorentz transformations preserve it, so frame independence is built into the definition. Relativistic mass changes with speed, so every statement about it needs a chosen frame. The page says that particle physicists tend to avoid it. The work moves into conservation of total four-momentum. The page notes that the invariant mass of widely separated decay products gives the rest mass of the parent. One surprise remains: invariant mass is not additive, since a system of moving parts has more mass than the sum of the parts' masses.
+**How the definition helps.** E² − \|p\|²c² is the Minkowski square of the four-momentum, the spacetime vector (E/c, p) (our own wording). Lorentz transformations preserve it, so frame independence is built into the definition. The work moves into conservation of total four-momentum, which gives the rest mass of a parent from its decay products. Relativistic mass changes with speed, so every statement about it needs a chosen frame.
 
 **Wikipedia:** [Mass in special relativity](https://en.wikipedia.org/wiki/Mass_in_special_relativity). It says: “The term "relativistic mass" tends not to be used in particle and nuclear physics and is often avoided by writers on special relativity, in favor of referring to the body's relativistic energy.”
 
@@ -76,7 +76,7 @@
 
 **Problem.** Suppose frame B moves relative to frame A with rapidity w₁, and frame C moves relative to B with rapidity w₂, along the same line. Then C moves relative to A with rapidity w₁ + w₂. In terms of speeds, the same law is Einstein's formula (u + v)/(1 + uv/c²).
 
-**How the definition helps.** The definition tanh w = v/c picks exactly the parameter in which composing boosts is addition, so additivity is built in. Boosts along one line form a one-parameter group, with Λ(w₁ + w₂) = Λ(w₁)Λ(w₂). The work moves to showing that boosts are hyperbolic rotations, which Minkowski explained in 1908. The page says that Varićak introduced rapidity as a parameter in 1910. Einstein's velocity formula is then the addition formula for tanh. Additivity fails for boosts in different directions, which do not commute and produce an extra rotation, the Thomas–Wigner rotation (our own).
+**How the definition helps.** The definition tanh w = v/c picks exactly the parameter in which composing boosts is addition. Boosts along one line form a one-parameter group, with Λ(w₁ + w₂) = Λ(w₁)Λ(w₂), and Einstein's velocity formula is the addition formula for tanh. The work moves to showing that boosts are hyperbolic rotations, which Minkowski explained in 1908. Additivity fails for boosts in different directions, which do not commute and produce the Thomas–Wigner rotation (our own).
 
 **Wikipedia:** [Rapidity](https://en.wikipedia.org/wiki/Rapidity). It says: “The simplicity of this formula contrasts with the complexity of the corresponding velocity-addition formula.”
 
@@ -496,9 +496,9 @@
 
 **Definition.** A geodesic is a path whose velocity stays parallel along itself when measured in an affine parameter. A spacetime is geodesically incomplete if some such path ends at a finite parameter value and admits no continuation there.
 
-**Problem.** Penrose’s theorem concludes that a future light ray is incomplete. In its standard form it assumes a noncompact Cauchy surface, a closed future trapped surface, and nonnegative Ricci curvature in lightlike directions. Incompleteness alone allows curvature to stay zero.
+**Problem.** Assume a spacetime has a noncompact Cauchy surface, a closed future trapped surface, and nonnegative Ricci curvature in lightlike directions. Then Penrose’s theorem makes it geodesically incomplete: some future light ray ends at finite affine parameter. This conclusion alone does not require any curvature to diverge.
 
-**How the definition helps.** Using incomplete rays lets the theorem describe a failure of free propagation even when curvature stays bounded. A Cauchy surface meets each inextendible timelike path once. Both families of perpendicular future light rays initially contract at a trapped surface. In our own example, delete one event from flat spacetime and follow a straight light ray toward it. Its affine parameter stays finite, and its only possible endpoint is missing. This example distinguishes the two conclusions. Penrose’s theorem does the separate work of deriving incompleteness from trapping.
+**How the definition helps.** Using incomplete rays lets the theorem describe a failure of free propagation even when curvature stays bounded. In our own example, delete one event from flat spacetime and follow a straight light ray toward it. Its affine parameter stays finite and its only possible endpoint is missing, yet curvature is zero. Penrose’s theorem does the separate work of deriving incompleteness from trapping.
 
 **nLab:** [Penrose singularity theorem](https://ncatlab.org/nlab/show/Penrose+singularity+theorem). It says: “the singularity theorem makes statements about non-extendible curves but not explicitly about "singularities" in the sense of points of diverging curvature”
 
@@ -627,7 +627,7 @@
 
 **Problem.** Assume a three-dimensional end approaches Euclidean space with two derivatives at decay rate t &gt; ½ and has integrable scalar curvature. Along nearly round spheres escaping to infinity, the Hawking mass calculated from area and mean curvature tends to the total mass at infinity.
 
-**How the definition helps.** Near roundness excludes a persistent shape error that can swamp the mass being measured. In our own example, dilate a nonspherical ellipsoid in flat space. Its integrated squared mean curvature stays constant under dilation. Gauss–Bonnet gives the round value plus a positive integral measuring unequal principal curvatures. The Hawking mass multiplies this negative deficit by a factor proportional to the square root of area. It therefore tends to minus infinity although flat space has zero total mass. The convergence theorem controls this error for nearly round spheres.
+**How the definition helps.** Near roundness excludes a persistent shape error that can swamp the mass being measured. In our own example, dilate a nonspherical ellipsoid in flat space. By Gauss–Bonnet, its integrated squared mean curvature stays above the round value by a fixed positive amount. The Hawking mass multiplies this deficit by a factor proportional to the square root of area, so it tends to minus infinity although flat space has zero total mass.
 
 **nLab:** [ADM mass](https://ncatlab.org/nlab/show/ADM+mass). It says: “a notion of total mass contained in asymptotically flat spacetimes.”
 
@@ -702,7 +702,7 @@
 
 **Problem.** Each interior Lorentzian Hawking–Page metric in the cited family extends across its specified lightlike boundary with continuous first derivatives. No extension across that boundary has continuous second derivatives.
 
-**How the definition helps.** Requiring two continuous derivatives rules out extensions whose curvature diverges in a regular frame (our own explanation). A C² metric has continuous curvature components in every smooth local frame. The cited extensions have first derivatives whose changes are locally bounded by a constant times the square root of coordinate distance. It also proves curvature blowup at the boundary for every extension. Constructing the extension and establishing that obstruction are the substantive results.
+**How the definition helps.** Requiring two continuous derivatives rules out extensions whose curvature diverges in a regular frame (our own explanation). A C² metric has continuous curvature components in every smooth local frame. The cited paper proves that the sectional curvature blows up at the boundary for every extension. Constructing the C¹ extension and establishing that obstruction are the substantive results.
 
 **Paper or page:** [Extensions of Lorentzian Hawking--Page Solutions with Null Singularities, Spacelike Singularities, and Cauchy horizons of Taub--NUT type](https://arxiv.org/abs/2209.06134), [Extensions of Lorentzian Hawking--Page Solutions with Null Singularities, Spacelike Singularities, and Cauchy horizons of Taub--NUT type](https://arxiv.org/abs/2209.06134). It says: “For any extension of the Lorentzian Hawking–Page vacuum solution, the sectional curvature blows up along C₀⁻.”
 

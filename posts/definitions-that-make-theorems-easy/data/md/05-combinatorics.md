@@ -24,9 +24,9 @@
 
 **Definition.** For a permutation of a finite set, count the cycles of even length in its disjoint cycle decomposition. Define its sign as +1 when this count is even and −1 when it is odd. The usual swap definition counts swaps in an expression for the permutation.
 
-**Problem.** A permutation has sign −1 exactly when its cycle decomposition has an odd number of even-length cycles.
+**Problem.** Composing a permutation with a swap reverses its sign. So the sign is (−1)ᵏ for any way of writing the permutation as k swaps, and the parity of k does not depend on the way.
 
-**How the definition helps.** The cycle definition makes the sign readable directly from the cycle lengths. To recover the swap definition, observe that a swap merges two cycles or splits one cycle into two. The combined length stays the same, so the number of even cycles changes by one. Each swap therefore reverses the sign.
+**How the definition helps.** The cycle definition makes the sign readable directly from the cycle lengths, so it is well defined at once. A swap merges two cycles or splits one cycle into two. The combined length stays the same, so the number of even cycles changes by one. Each swap therefore reverses the sign.
 
 **nLab:** [signature of a permutation](https://ncatlab.org/nlab/show/signature+of+a+permutation). It says: “Each cycle of period k contributes a sign (−1)ᵏ⁻¹, and the overall sign is the product of these contributions taken over all the cycles.”
 
@@ -56,9 +56,9 @@
 
 **Definition.** Let n be a non-negative integer, and let k be an integer with k &lt; 0 or k &gt; n. Then C(n, k) = 0 by definition. This matches the number of k-element subsets of an n-element set, which is zero.
 
-**Problem.** Pascal's rule C(n, k) = C(n − 1, k − 1) + C(n − 1, k) and many other identities should hold with no separate edge cases.
+**Problem.** With this convention, Pascal's rule C(n, k) = C(n − 1, k − 1) + C(n − 1, k) holds for every n ≥ 1 and every integer k, including k = 0 and k = n.
 
-**How the definition helps.** The zero values make the identities hold at the edges of the triangle, so no special cases are needed. With this convention, Pascal's rule holds for every n ≥ 1 and every integer k, including k = 0 and k = n. The rule then builds the whole triangle from C(0, 0) = 1. The article notes that a different extension, through the gamma function, gives non-zero values for k &lt; 0. It also notes that this extension makes most binomial identities fail, even Pascal's identity at the origin.
+**How the definition helps.** The zero values make the identities hold at the edges of the triangle, so no special cases are needed. The rule then builds the whole triangle from C(0, 0) = 1. A different extension, through the gamma function, gives non-zero values for k &lt; 0. The article notes that it makes most binomial identities fail, even Pascal's rule at the origin.
 
 **Wikipedia:** [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient). It says: “this causes most binomial coefficient identities to fail, and thus is not widely used by the majority of definitions”
 
@@ -154,7 +154,7 @@
 
 **Definition.** Start with a row of ones indexed from zero. Replace each term by the sum of all terms up to it. After k such steps, term n equals C(n + k, k), the number of ways to choose k objects from n + k.
 
-**Problem.** Sum a sequence a from q up to n, then sum the results again, m times in all. The result is the single sum of C(n − i + m − 1, m − 1)·aᵢ over i from q to n. The paper uses this to simplify repeated harmonic sums.
+**Problem.** Summing a sequence a from q to n, m times in a row, gives the single sum of C(n − i + m − 1, m − 1)·aᵢ over i from q to n.
 
 **How the definition helps.** The definition makes the weights binomial coefficients by construction. In the repeated sum, the weight of aᵢ counts the chains of indices i ≤ N₂ ≤ … ≤ Nₘ ≤ n. That count is a repeated sum of ones with m − 1 levels, in our own argument. So by the definition it is C(n − i + m − 1, m − 1). The paper also checks the definition against the usual binomial coefficients with many sum identities.
 
@@ -206,9 +206,9 @@
 
 **Definition.** The factorial n! is the product 1·2·…·n. For n = 0 this is the empty product (a product with no factors), which equals 1. So 0! = 1.
 
-**Problem.** Some formulas should hold for all allowed values, including k = 0, k = n and n = 0. Examples are the binomial coefficient C(n,k) = n!/(k!(n−k)!), the recurrence n! = n·(n−1)! and the series eˣ = Σ xⁿ/n!.
+**Problem.** With 0! = 1, the formula C(n, k) = n!/(k!(n−k)!) holds for all 0 ≤ k ≤ n, and the recurrence n! = n·(n−1)! holds for all n ≥ 1. The series eˣ = Σₙ≥₀ xⁿ/n! also holds with its first term x⁰/0!.
 
-**How the definition helps.** With 0! = 1, these formulas need no special cases at the edges. The number of ways to choose all n elements of an n-element set is n!/(n!·0!) = 1, as it must be. The recurrence n! = n·(n−1)! holds at n = 1, so a recursion needs only the base case 0. The exponential series has 0! in its first term, x⁰/0!. The gamma function extends the factorial, with Γ(n + 1) = n!. It gives Γ(1) = 1 with no separate choice, so it agrees with 0! = 1.
+**How the definition helps.** With 0! = 1, these formulas need no special cases at the edges. The number of ways to choose all n elements of an n-element set is n!/(n!·0!) = 1, as it must be. The recurrence holds at n = 1, so a recursion needs only the base case 0. The gamma function, with Γ(n + 1) = n!, gives Γ(1) = 1 with no separate choice.
 
 **Wikipedia:** [Factorial](https://en.wikipedia.org/wiki/Factorial), [Empty product](https://en.wikipedia.org/wiki/Empty_product). It says: “This convention makes many identities in combinatorics valid for all valid choices of their parameters.”
 
@@ -222,9 +222,9 @@
 
 **Definition.** In algebra and combinatorics, 0⁰ is defined to be 1. Then the monomial x⁰ is the constant 1 for every value of x, including x = 0.
 
-**Problem.** Make the binomial theorem (1+x)ⁿ = Σ C(n,k)xᵏ hold at x = 0. The same applies to identities such as 1/(1−x) = Σ xⁿ and eˣ = Σ xⁿ/n!.
+**Problem.** With 0⁰ = 1, the binomial theorem (1+x)ⁿ = Σ C(n,k)xᵏ holds at x = 0. So do the identities 1/(1−x) = Σ xⁿ and eˣ = Σ xⁿ/n!.
 
-**How the definition helps.** With 0⁰ = 1, polynomial and power series formulas hold at x = 0 with no special case. A polynomial is written a₀x⁰ + … + aₙxⁿ. When you evaluate it at 0, you must get a₀, and this needs 0⁰ = 1. Without the convention, every power series identity needs a separate case at x = 0. Knuth argued strongly for this convention. Limits in analysis are still different: the two-variable function xʸ has no limit at (0,0), so 0⁰ stays an indeterminate form for limits.
+**How the definition helps.** With 0⁰ = 1, polynomial and power series formulas hold at x = 0 with no special case. A polynomial a₀x⁰ + … + aₙxⁿ must give a₀ at 0, and this needs 0⁰ = 1. Limits in analysis are different: the function xʸ has no limit at (0, 0), so 0⁰ stays an indeterminate form for limits.
 
 **Wikipedia:** [Zero to the power of zero](https://en.wikipedia.org/wiki/Zero_to_the_power_of_zero). It says: “Defining 0⁰ = 1 is necessary for many polynomial identities. For example, the binomial theorem (1+x)ⁿ = ∑ₖ₌₀ⁿ C(n,k) xᵏ holds for x = 0 only if 0⁰ = 1.”
 
@@ -256,7 +256,7 @@
 
 **Definition.** Describe an ordered allocation of n identical objects to k labeled bins as a row of n stars and k − 1 bars. The bars mark bin boundaries. Allow empty runs of stars to represent empty bins.
 
-**Problem.** Take n ≥ 0 identical objects and k ≥ 1 labeled bins. The allocation count equals the number of ways to choose k − 1 slots among n + k − 1.
+**Problem.** The number of ways to put n ≥ 0 identical objects into k ≥ 1 labeled bins is C(n + k − 1, k − 1).
 
 **How the definition helps.** The string definition makes every allocation a choice of bar positions (our own). The work lies in checking the correspondence in both directions, including empty runs at the ends and between two bars (our own).
 
@@ -272,9 +272,9 @@
 
 **Definition.** The double factorial (2n−1)!! is the product (2n−1)(2n−3)⋯3·1 of the odd numbers up to 2n−1. An equivalent formula is (2n−1)!! = (2n)! / (2ⁿ n!). For n = 0, this formula gives (−1)!! = 1.
 
-**Problem.** Three statements should hold for all n ≥ 0 with no exception. (2n−1)!! counts the perfect matchings (fixed-point-free involutions) of a set with 2n elements, and it is the 2n-th moment of the standard Gaussian. Also, the sequence with these values at even places and 0 at odd places has exponential generating function exp(x²/2).
+**Problem.** For all n ≥ 0, (2n−1)!! is the number of perfect matchings of a 2n-element set and the 2n-th moment of the standard Gaussian. The sequence with these values at even places and 0 at odd places has exponential generating function exp(x²/2).
 
-**How the definition helps.** The factorial formula gives (−1)!! = 1, so the n = 0 case of each statement is true with no exception. The empty set has exactly one perfect matching, the empty one. The 0-th Gaussian moment is the total mass, which is 1. The constant term of exp(x²/2) is 1. This point is our own reading. The nLab states the definition and the uniform statements, and the agreement at n = 0 follows at once from them.
+**How the definition helps.** The factorial formula gives (−1)!! = 1, so the n = 0 case of each statement is true with no exception (our own reading). The empty set has exactly one perfect matching, the empty one. The 0-th Gaussian moment is the total mass, which is 1, and the constant term of exp(x²/2) is 1.
 
 **nLab:** [double factorial](https://ncatlab.org/nlab/show/double+factorial). It says: “(2n−1)!! = (1/2ⁿ)(2n)!/n! so that in particular, (−1)!! is defined to be 1.”
 
@@ -306,7 +306,7 @@
 
 **Problem.** Each positive integer n has exactly 2ⁿ⁻¹ compositions, and (n − 1 choose k − 1) of them have k parts.
 
-**How the definition helps.** Positive parts make the number of compositions finite, so it can be counted. A part equal to zero can be inserted anywhere without changing the sum, so weak compositions of length not fixed are infinite in number. With positive parts, write n ones in a row. A composition is a choice of plus sign or comma in each of the n − 1 gaps. Weak compositions become finite in number again when the number of parts is fixed. Then adding one to each part turns them into compositions of n + k (our own remark).
+**How the definition helps.** Positive parts make the number of compositions finite, so it can be counted. A part equal to zero can be inserted anywhere without changing the sum, so weak compositions of unbounded length are infinite in number. With positive parts, write n ones in a row. A composition is a choice of plus sign or comma in each of the n − 1 gaps.
 
 **Wikipedia:** [Composition (combinatorics)](https://en.wikipedia.org/wiki/Composition_%28combinatorics%29). It says: “As a consequence every positive integer admits infinitely many weak compositions (if their length is not bounded).”
 
@@ -340,7 +340,7 @@
 
 **Problem.** Partitions of X correspond one-to-one to equivalence relations on X. The blocks are the equivalence classes.
 
-**How the definition helps.** Every equivalence class contains an element, so classes are never empty, and the definition of a partition matches this. If empty blocks were allowed, the partitions {X} and {X, ∅} of the same set would give the same equivalence relation (our own example). Then the correspondence would fail to be one-to-one. The condition also makes the Stirling numbers of the second kind and the Bell numbers count equivalence relations. The empty set then has exactly one partition, the empty family.
+**How the definition helps.** Every equivalence class contains an element, so classes are never empty, and the definition of a partition matches this. If empty blocks were allowed, the partitions {X} and {X, ∅} of the same set would give the same equivalence relation (our own example). Then the correspondence would fail to be one-to-one.
 
 **Wikipedia:** [Partition of a set](https://en.wikipedia.org/wiki/Partition_of_a_set). It says: “A partition of a set X is a set of non-empty subsets of X such that every element x in X is in exactly one of these subsets”
 
@@ -358,7 +358,7 @@
 
 **Problem.** The Bell numbers satisfy Bₙ₊₁ = the sum over k from 0 to n of (n choose k)·Bₖ. Their exponential generating function is exp(eˣ − 1).
 
-**How the definition helps.** Counting the empty partition lets the recurrence and the generating function hold from n = 0 with no special case. The recurrence chooses the block of the new element, and the rest of the set is partitioned in Bₖ ways. When the new block takes everything, the rest is empty and must count once. For n = 0 the recurrence reads B₁ = B₀, so it needs B₀ = 1 (our own check). The constant term of exp(eˣ − 1) is also 1. This is the same empty-product reason that makes 0! = 1 (our own remark).
+**How the definition helps.** Counting the empty partition lets the recurrence and the generating function hold from n = 0 with no special case. The recurrence chooses the block of the new element, and the rest of the set is partitioned in Bₖ ways. When the new block takes everything, the rest is empty and must count once; for n = 0 this gives B₁ = B₀ (our own check). The constant term of exp(eˣ − 1) is also 1.
 
 **Wikipedia:** [Bell number](https://en.wikipedia.org/wiki/Bell_number), [Partition of a set](https://en.wikipedia.org/wiki/Partition_of_a_set). It says: “B₀ is 1 because there is exactly one partition of the empty set. This partition is itself the empty set; it can be interpreted as a family of subsets of the empty set, consisting of zero subsets.”
 
@@ -372,11 +372,11 @@
 
 *True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics), 97K20. arXiv math.CO, math.HO. Level 1: early undergraduate.
 
-**Definition.** Define a binomial coefficient as the number of subsets of a given size, rather than as a quotient of factorials.
+**Definition.** Define the binomial coefficient C(n, k) as the number of k-element subsets of an n-element set, rather than as a quotient of factorials.
 
-**Problem.** Let l, m and n be nonnegative integers with l + m ≤ n. How many subsets of {0, …, n} have l + m + 1 elements?
+**Problem.** Let l, m and n be nonnegative integers with l + m ≤ n. Then the sum of C(k, m)·C(n − k, l) over k from m to n − l equals C(n + 1, l + m + 1).
 
-**How the definition helps.** Counting subsets lets us sort them by their element of rank m + 1 in increasing order. In our own proof, call that element k. Choose m smaller elements from k possibilities and l larger elements from n − k possibilities. Summing (k choose m) times (n − k choose l) from k = m to n − l counts every subset once. The factorial formula follows by counting ordered selections and dividing by their possible orders.
+**How the definition helps.** Counting subsets lets us sort the (l + m + 1)-element subsets of {0, …, n} by their element of rank m + 1 in increasing order. In our own proof, call that element k. Choose m smaller elements from k possibilities and l larger elements from n − k possibilities. Summing over k counts every subset once.
 
 **Paper or page:** [Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388). It says: “Let l, m, n ∈ ℕ be natural numbers such that l + m ≤ n. Then we have the following identity: \\sum <sub>k=m</sub><sup>n-l</sup>\\binom km\\binom {n-k}l=\\binom {n+1}{l+m+1}”
 
@@ -458,9 +458,9 @@
 
 **Definition.** A labelled tree on n vertices is a tree whose vertex set is {1, …, n}. Two labelled trees are the same only if they have the same edges. Unlabelled trees are counted only up to isomorphism.
 
-**Problem.** Count the trees on n vertices.
+**Problem.** Cayley's formula: there are exactly nⁿ⁻² labelled trees on n vertices.
 
-**How the definition helps.** Labels remove the symmetries that make the count up to isomorphism hard. As labelled objects, there are exactly nⁿ⁻² trees on n vertices, and this formula has short proofs. Up to isomorphism, no closed formula is known. There are generating-function methods, and there is Otter's asymptotic estimate t(n) ∼ Cαⁿn⁻⁵ᐟ². Here t(n) is the number of trees on n vertices up to isomorphism, and C and α are constants.
+**How the definition helps.** Labels remove the symmetries that make the count up to isomorphism hard. As labelled objects, the trees have the count nⁿ⁻², which has short proofs. Up to isomorphism, no closed formula is known, only generating-function methods and Otter's asymptotic estimate.
 
 **Wikipedia:** [Cayley's formula](https://en.wikipedia.org/wiki/Cayley%27s_formula), [Tree (graph theory)](https://en.wikipedia.org/wiki/Tree_%28graph_theory%29). It says: “No closed formula for the number t(n) of trees with n vertices up to graph isomorphism is known.”
 
@@ -492,9 +492,9 @@
 
 **Definition.** A tree is a connected graph with no cycles and at least one vertex. This excludes the graph of order zero, which has no vertices. That graph may be called a forest with zero trees.
 
-**Problem.** A tree with n vertices has exactly n − 1 edges. The equivalent descriptions of trees should also hold without exceptions.
+**Problem.** Every tree with n vertices has exactly n − 1 edges.
 
-**How the definition helps.** The rule 'at least one vertex' keeps the edge count and the equivalent descriptions true. The graph of order zero is vacuously connected (it has no two vertices to join) and has no cycles. Without the extra condition it would be a tree with 0 vertices and 0 edges, and that breaks the rule 'edges = vertices − 1'. The Null graph article notes the general trade-off. If you include the empty graph, formulas such as counts of components need exceptions, so many authors require at least one vertex. Harary and Read discussed this in 'Is the null-graph a pointless concept?'.
+**How the definition helps.** The rule 'at least one vertex' keeps the edge count true. The graph of order zero is vacuously connected and has no cycles. Without the extra condition it would be a tree with 0 vertices and 0 edges, which breaks the rule 'edges = vertices − 1'. Many authors exclude it for this reason, as Harary and Read discussed in 'Is the null-graph a pointless concept?'.
 
 **Wikipedia:** [Tree (graph theory)](https://en.wikipedia.org/wiki/Tree_%28graph_theory%29), [Null graph](https://en.wikipedia.org/wiki/Null_graph). It says: “the order-zero graph (graph with no vertices) is generally not considered to be a tree: while it is vacuously connected as a graph”
 
@@ -544,7 +544,7 @@
 
 **Problem.** A connected plane graph has V − E + F = 2. A plane graph with C connected components has V − E + F = 1 + C.
 
-**How the definition helps.** Connectedness rules out the graphs for which V − E + F = 2 fails. Two separate triangles have V − E + F = 6 − 6 + 3 = 3 (our own example). The outer face is shared. The base case of the proof is a tree, with E = V − 1 and one face, the outer one. Counting the outer face makes the plane behave like the sphere, so the value 2 matches Euler's formula for convex polyhedra. Without the outer face the formula would read 1, which is true but hides the link to the sphere (our own remark). For a disconnected graph, the same induction gives V − E + F = 1 + C.
+**How the definition helps.** Connectedness rules out the graphs for which V − E + F = 2 fails. Two separate triangles have V − E + F = 6 − 6 + 3 = 3, because they share the outer face (our own example). The base case of the proof is a tree, with E = V − 1 and one face, the outer one. For a disconnected graph, the same induction gives V − E + F = 1 + C.
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic), [Planar graph](https://en.wikipedia.org/wiki/Planar_graph). It says: “The Euler characteristic can be defined for connected plane graphs by the same V − E + F formula as for polyhedral surfaces, where F is the number of faces in the graph, including the exterior face.”
 
@@ -558,9 +558,9 @@
 
 **Definition.** A plane graph is a graph drawn in the plane with no crossing edges. Its dual graph has one vertex for each face. It has one edge for each edge of the original graph, joining the faces on the two sides of that edge. Loops and multiple edges are allowed.
 
-**Problem.** Duality should be symmetric: the dual of the dual of a connected plane graph is the original graph. Properties should also translate one for one, for example bridges into loops. (A bridge is an edge whose removal disconnects the graph.)
+**Problem.** If dual graphs may have loops and parallel edges, the dual of the dual of a connected plane graph is the original graph. The bridges of the graph, edges whose removal disconnects it, correspond exactly to the loops of its dual.
 
-**How the definition helps.** Allowing loops and parallel edges gives each edge exactly one dual edge, so nothing is lost. The dual of a simple graph is often not simple. For example, the dual of an n-cycle has two vertices joined by n parallel edges. Our own remark: if duals had to be simple, parallel edges would merge, the edge counts would not match, and taking the dual twice would not return the original graph. With multigraphs, each edge has exactly one dual edge. The bridges of G then correspond exactly to the loops of the dual, which is called cut–cycle duality.
+**How the definition helps.** Allowing loops and parallel edges gives each edge exactly one dual edge, so nothing is lost. The dual of a simple graph is often not simple: the dual of an n-cycle has two vertices joined by n parallel edges. If duals had to be simple, parallel edges would merge, and taking the dual twice would not return the original graph (our own remark).
 
 **Wikipedia:** [Dual graph](https://en.wikipedia.org/wiki/Dual_graph). It says: “The dual of a simple graph need not be simple: it may have self-loops (an edge with both endpoints at the same vertex) or multiple edges connecting the same two vertices”
 
@@ -578,7 +578,7 @@
 
 **Problem.** A simple planar graph with v ≥ 3 vertices has at most 3v − 6 edges. So K₅ is not planar, and every planar graph has a vertex of degree at most 5.
 
-**How the definition helps.** Simplicity guarantees that each face has at least three sides, which with Euler's formula bounds the edges. In a multigraph two parallel edges can bound a face of two sides, and a loop a face of one side. Then the bound fails (our own example). Two vertices joined by 100 parallel edges are planar, but 3·2 − 6 = 0. The condition v ≥ 3 excludes the single edge for the same reason. The bound shows with little work that K₅ is not planar and that planar graphs have average degree below 6. It does not show that K₃,₃ is non-planar; that needs the bound 2v − 4 for graphs with no triangles (our own remark).
+**How the definition helps.** Simplicity guarantees that each face has at least three sides, which with Euler's formula bounds the edges. In a multigraph, two parallel edges can bound a face of two sides, and a loop a face of one side. Two vertices joined by 100 parallel edges are planar, but 3·2 − 6 = 0 (our own example). The condition v ≥ 3 excludes the single edge for the same reason.
 
 **Wikipedia:** [Planar graph](https://en.wikipedia.org/wiki/Planar_graph). It says: “In a finite, connected, simple, planar graph, any face (except possibly the outer one) is bounded by at least three edges and every edge touches at most two faces, so 3f ≤ 2e”
 
@@ -608,9 +608,9 @@
 
 **Definition.** A proper vertex colouring gives the two ends of every edge different colours. A loop is an edge from a vertex to itself.
 
-**Problem.** Every finite loopless graph has a proper colouring, so its chromatic number is defined. Theorems such as Brooks' theorem and the four colour theorem are then stated for loopless graphs.
+**Problem.** Every finite loopless graph has a proper colouring, so its chromatic number is defined and is at most the number of vertices.
 
-**How the definition helps.** A loop asks a vertex to differ in colour from itself, so no colouring exists, and the convention removes this. Once loops are gone, giving each vertex its own colour always works (our own remark). So the chromatic number is at most the number of vertices. Parallel edges, in contrast, make no difference to vertex colouring (our own remark). In the homomorphism view, a graph with a loop has no map to any complete graph Kₖ, since Kₖ has no loops (our own remark).
+**How the definition helps.** A loop asks a vertex to differ in colour from itself, so no colouring exists, and the convention removes this. Once loops are gone, giving each vertex its own colour always works (our own remark). Parallel edges, in contrast, make no difference to vertex colouring (our own remark).
 
 **Wikipedia:** [Graph coloring](https://en.wikipedia.org/wiki/Graph_coloring), [Graph homomorphism](https://en.wikipedia.org/wiki/Graph_homomorphism). It says: “Since a vertex with a loop (i.e. a connection directly back to itself) could never be properly colored, it is understood that graphs in this context are loopless.”
 
@@ -644,7 +644,7 @@
 
 **Definition.** For a finite simple graph G, define its chromatic polynomial by its values at positive integers k. Each value counts assignments of k available colors with different colors at adjacent vertices. One can instead specify the polynomial by a recurrence.
 
-**Problem.** Choose an edge e in G. Subtracting the count after contraction from the count after deletion gives the count for G. Contraction merges the endpoints, removes e, and merges any repeated edges.
+**Problem.** For an edge e of G, the chromatic polynomial satisfies P(G) = P(G − e) − P(G / e). Here G − e deletes e, and G / e merges its endpoints, removes e, and merges any repeated edges.
 
 **How the definition helps.** Counting colorings lets us split the colorings after deletion by whether the endpoints have the same color. Different colors give exactly the colorings of G. Equal colors give exactly the colorings after contraction. For an edgeless graph, each vertex has k independent choices (our own). Induction on the number of edges then proves the count is a polynomial (our own).
 
@@ -680,7 +680,7 @@
 
 **Problem.** A graph is k-connected when its connectivity is at least k. Menger's theorem, in the global form due to Whitney, says this: a graph with at least two vertices is k-connected exactly when every pair of vertices is joined by k paths that share no inner vertices.
 
-**How the definition helps.** The 'single vertex' clause gives complete graphs the same value as the path count, so Menger's theorem needs no exception. The Wikipedia page on vertex connectivity says that no set of vertices disconnects a complete graph. So the plain definition, the size of the smallest disconnecting set, gives no value for Kₙ. If a single remaining vertex also counts, Kₙ gets connectivity n − 1. That is the same value that the path definition gives. So the two definitions agree on all graphs with at least two vertices.
+**How the definition helps.** The 'single vertex' clause gives complete graphs the same value as the path count, so Menger's theorem needs no exception. No set of vertices disconnects a complete graph, so the plain definition, the size of the smallest disconnecting set, gives no value for Kₙ. If a single remaining vertex also counts, Kₙ gets connectivity n − 1, the same value that the path definition gives.
 
 **Wikipedia:** [Vertex connectivity](https://en.wikipedia.org/wiki/Vertex_connectivity). It says: “This definition produces the same answer, n − 1, for the connectivity of the complete graph Kn.”
 
@@ -746,11 +746,11 @@
 
 *True by definition.* MSC 05C50 (Graphs and linear algebra (matrices, eigenvalues, etc.)). arXiv math.CO. Level 1: early undergraduate.
 
-**Definition.** For a finite simple graph, put 1 in a matrix entry if its row and column vertices share an edge. Put 0 otherwise. This replaces an edge list with a table of one-step walk counts.
+**Definition.** The adjacency matrix A of a finite simple graph has entry 1 when its row and column vertices share an edge, and 0 otherwise. So entry (i,j) of A counts walks of length one from i to j.
 
 **Problem.** For n ≥ 0, entry (i,j) of the nth matrix power counts walks of length n from i to j.
 
-**How the definition helps.** Matrix multiplication counts every choice of the next edge from the endpoint of a walk. A walk follows consecutive edges and may repeat vertices. Our own proof starts with the identity matrix, which counts walks of length zero. Unlike an edge list, each matrix entry already counts one-step walks. Removing the last edge splits each longer walk uniquely, so induction gives the formula.
+**How the definition helps.** Matrix multiplication sums over the next-to-last vertex, so it counts every way to extend a walk by one edge. Removing the last edge splits each longer walk uniquely, so induction gives the formula. The identity matrix starts the induction, since it counts walks of length zero (our own).
 
 **nLab:** [adjacency matrix](https://ncatlab.org/nlab/show/adjacency+matrix). It says: “entry bᵢ,ⱼ in Aⁿ is the number of n-step walks between vertex vᵢ ∈ G and vⱼ ∈ G.”
 
@@ -782,9 +782,9 @@
 
 **Definition.** For a simple undirected graph G, make one new vertex for each edge. Join two new vertices exactly when their edges in G share an endpoint. The resulting graph is the line graph of G.
 
-**Problem.** Matchings correspond to independent sets in the line graph, with the same size. A matching has no shared endpoints, and an independent set contains no adjacent vertices.
+**Problem.** A set of edges of G is a matching exactly when the corresponding vertices of the line graph form an independent set. This correspondence preserves size.
 
-**How the definition helps.** The line graph turns the rule against shared endpoints into the rule against adjacent vertices. In our own comparison, the original matching problem selects edges directly. The correspondence preserves size because each edge supplies exactly one vertex.
+**How the definition helps.** The line graph turns the rule against shared endpoints into the rule against adjacent vertices. The correspondence preserves size because each edge supplies exactly one vertex.
 
 **Wikipedia:** [Line graph](https://en.wikipedia.org/wiki/Line_graph). It says: “corresponds to a set of vertices in L(G) no two of which are adjacent, that is, an independent set.”
 
@@ -800,7 +800,7 @@
 
 **Problem.** If a class B has no object of size 0, sequences of B-objects have generating function 1/(1 − B(z)). Labelled sets of B-objects have exponential generating function exp(B(z)).
 
-**How the definition helps.** Objects of size zero could be added to a sequence without changing its size (our own example). Then there would be infinitely many structures of each size. The power series agree. When B has no constant term, the sums of the powers B(z)ᵏ, with or without 1/k!, add finitely many terms to each coefficient. With the condition, each construction gives a class with finitely many objects of each size. Then the rules for translating constructions into generating functions are automatic. The hard part is the analysis that reads asymptotics from the singularities.
+**How the definition helps.** Without objects of size zero, each coefficient of the sum of the powers B(z)ᵏ, with or without 1/k!, is a finite sum. An object of size zero could be added to a sequence without changing its size, giving infinitely many sequences of each size (our own example). With the condition, each construction gives a class, and the translation into generating functions is automatic.
 
 **Wikipedia:** [Symbolic method (combinatorics)](https://en.wikipedia.org/wiki/Symbolic_method_%28combinatorics%29). It says: “In the labelled case we have the additional requirement that X not contain elements of size zero.”
 
@@ -814,11 +814,11 @@
 
 *True by definition. Confidence: medium.* MSC 05A18 (Partitions of sets), 05A10. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** Define S(n, k) as the number of partitions of an n-element set into k nonempty unlabelled sets. Another definition uses the coefficient of x(x − 1)⋯(x − k + 1) when expanding xⁿ in these products. The product for k = 0 is 1.
+**Definition.** Define the Stirling number S(n, k) as the number of partitions of an n-element set into k nonempty unlabelled blocks. Another definition takes S(n, k) as the coefficient of the falling factorial x(x − 1)⋯(x − k + 1) when xⁿ is written in falling factorials.
 
-**Problem.** Every coefficient in this expansion of xⁿ is a nonnegative integer.
+**Problem.** When xⁿ is written as a combination of falling factorials, every coefficient is a nonnegative integer.
 
-**How the definition helps.** The partition definition makes nonnegativity immediate because the coefficient counts partitions. The coefficient definition alone does not display this count. The work moves into showing that the definitions agree. For positive integer x, both sides count maps from n inputs to x outputs (our own). Group inputs with the same output, then assign distinct outputs to the k groups in x(x − 1)⋯(x − k + 1) ways. Equality at infinitely many integers gives the polynomial identity (our own).
+**How the definition helps.** The partition definition makes nonnegativity immediate because the coefficient counts partitions. The work moves into showing that the definitions agree. For a positive integer x, both sides count maps from n inputs to x outputs, grouping inputs with the same output (our own). Equality at infinitely many integers gives the polynomial identity (our own).
 
 **Wikipedia:** [Stirling numbers of the second kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind). It says: “The Stirling numbers of the second kind may be characterized as the numbers that arise when one expresses powers of an indeterminate x in terms of the falling factorials”
 
@@ -848,9 +848,9 @@
 
 **Definition.** A balanced incomplete block design has v points and b blocks. Each block has k points, with 1 ≤ k &lt; v. Every point lies in r blocks, and every pair of points lies in λ blocks. 'Incomplete' here means that no block contains all the points.
 
-**Problem.** Fisher's inequality: a 2-design has at least as many blocks as points, b ≥ v.
+**Problem.** Fisher's inequality: a balanced incomplete block design has at least as many blocks as points, b ≥ v.
 
-**How the definition helps.** The condition k &lt; v gives r &gt; λ, and that is the fact the proof needs. Let M be the incidence matrix, with entry 1 when a point lies in a block and 0 otherwise. Then M Mᵀ has r on the diagonal and λ elsewhere. This matrix is invertible because r ≠ λ, so v ≤ rank M ≤ b. Without k &lt; v, a single block equal to the whole set is a 'design' with b = 1 &lt; v, and that breaks the inequality (our own example). The general version for pairwise balanced designs likewise excludes the 'trivial' design whose blocks are all copies of the point set.
+**How the definition helps.** The condition k &lt; v gives r &gt; λ, and that is the fact the proof needs. Let M be the point–block incidence matrix. Then M Mᵀ has r on the diagonal and λ elsewhere, so it is invertible and v ≤ rank M ≤ b. Without k &lt; v, a single block equal to the whole set has b = 1 &lt; v (our own example).
 
 **Wikipedia:** [Fisher's inequality](https://en.wikipedia.org/wiki/Fisher%27s_inequality), [Block design](https://en.wikipedia.org/wiki/Block_design). It says: “(To avoid degenerate examples, it is also assumed that v &gt; k, so that no block contains all the elements of the set.”
 
@@ -880,11 +880,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices), 05C10. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** A matroid on a finite set E is given by its bases, a family of subsets that behave like the bases of a vector space (you can exchange elements between any two of them). The dual of a matroid M is the matroid on E whose bases are the complements E ∖ B of the bases B of M. This dual exists for every matroid.
+**Definition.** A matroid on a finite set E is given by its bases, a family of subsets that behave like the bases of a vector space. The dual of a matroid is the matroid on E whose bases are the complements E ∖ B of the bases B. The cycle matroid of a graph has the edges as E and the spanning forests as bases.
 
-**Problem.** In graph duality, the faces of a drawing in the plane become vertices. This works only for planar graphs, so statements about duality need a planarity hypothesis.
+**Problem.** Every matroid, and so every graph through its cycle matroid, has a dual. The dual of the cycle matroid of G is graphic exactly when G is planar, and then it is the cycle matroid of the dual graph.
 
-**How the definition helps.** Each graph has a cycle matroid, and each matroid has a dual, so every graph gets a dual object. The cycle matroid of a graph has the edges as its set E, and its bases are the spanning forests. This works even for a non-planar graph, so duality theorems can be stated for all matroids without exception. A graphic matroid is the cycle matroid of some graph. Whitney's planarity criterion becomes a clean statement: the dual of a graphic matroid is graphic exactly when the graph is planar. In that case the dual is the matroid of the dual graph. The price is that the dual of the matroid of a non-planar graph is not the matroid of any graph.
+**How the definition helps.** Complements of bases always form the bases of a matroid, so duality needs no planarity hypothesis. Graph duality uses the faces of a plane drawing, so it exists only for planar graphs. Whitney's planarity criterion then becomes a clean statement about matroids. The price is that the dual of a non-planar graph's matroid is not the matroid of any graph.
 
 **Wikipedia:** [Dual matroid](https://en.wikipedia.org/wiki/Dual_matroid), [Matroid](https://en.wikipedia.org/wiki/Matroid). It says: “The dual of a graphic matroid is itself graphic if and only if the underlying graph is planar; the matroid of the dual of a planar graph is the same as the dual of the matroid of the graph.”
 
@@ -901,9 +901,9 @@
 
 **Definition.** A matroid is a finite set with a non-empty family of subsets that are called 'independent'. Every subset of an independent set is independent. If an independent set A is smaller than an independent set B, then some x in B but not in A makes A ∪ {x} independent. This last rule is the exchange axiom.
 
-**Problem.** The greedy algorithm takes the heaviest element that keeps the set independent, and repeats. For which families of sets does it find a maximum-weight independent set for every choice of weights?
+**Problem.** Take a non-empty family of subsets that is closed under taking subsets. The greedy algorithm finds a maximum-weight set in the family for every choice of nonnegative weights exactly when the family is a matroid.
 
-**How the definition helps.** The exchange axiom is exactly the condition that the greedy algorithm needs, so greedy is optimal on every matroid. Whitney chose the axioms as an abstract form of linear independence in matrices and of forests in graphs. The converse also holds. If a family is closed under subsets and greedy works on it for all weights, then the family is a matroid. So the definition and the algorithm characterize each other. Some problems need more than one matroid at once, such as matroid intersection (finding a largest set that is independent in two matroids). Greedy does not solve them, and they stay harder (our own remark).
+**How the definition helps.** The exchange axiom is exactly the condition that the greedy algorithm needs, so greedy is optimal on every matroid. Conversely, if greedy works for all weights, the family satisfies the exchange axiom. So the definition and the algorithm characterize each other.
 
 **Wikipedia:** [Matroid](https://en.wikipedia.org/wiki/Matroid). It says: “no matter how the sets are weighted, the greedy algorithm finds a maximum-weight set in the family, then F must be the family of independent sets of a matroid.”
 
@@ -922,7 +922,7 @@
 
 **Problem.** If G is planar, the dual of its graphic matroid is the graphic matroid of any planar dual of G. So all planar duals of G have the same matroid, though they may be non-isomorphic graphs.
 
-**How the definition helps.** The dual graph depends on the drawing, but the matroid keeps only which edge sets form cycles, so the dependence disappears. For connected G, cycles of the dual graph are the minimal edge cuts of G, which do not depend on the drawing (our own remark). So the statement "the dual of G" makes sense for matroids though not for graphs. Whitney's 2-isomorphism theorem says that graphs with no cut vertex and the same matroid differ only by simple twists (our own remark). Whitney's planarity criterion then reads: G is planar exactly when the dual of its matroid is graphic.
+**How the definition helps.** The dual graph depends on the drawing, but the matroid keeps only which edge sets form cycles. For connected G, cycles of the dual graph are the minimal edge cuts of G, which do not depend on the drawing (our own remark). So "the dual of G" makes sense for matroids though not for graphs.
 
 **Wikipedia:** [Graphic matroid](https://en.wikipedia.org/wiki/Graphic_matroid). It says: “While G may have multiple dual graphs, their graphic matroids are all isomorphic.”
 
@@ -937,11 +937,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices). arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** A matroid is simple if it has no loops and no parallel elements. That is, every one-element set and every two-element set is independent. A geometric lattice is a finite lattice that is atomistic and semimodular. Atomistic means that every element is a join of atoms, the elements just above the bottom.
+**Definition.** A matroid is simple if every set of one or two elements is independent, so it has no loops and no parallel elements. A flat is a set whose rank rises when any other element is added. A geometric lattice is a finite atomistic semimodular lattice; atomistic means every element is a join of atoms.
 
-**Problem.** The lattice of flats of a matroid should determine the matroid. A flat is a set of elements such that adding any other element raises its rank. This would give a one-to-one correspondence between matroids and geometric lattices.
+**Problem.** The flats of a simple matroid form a geometric lattice. Every geometric lattice arises in this way from exactly one simple matroid, up to isomorphism.
 
-**How the definition helps.** Simple matroids leave out the elements that the lattice of flats cannot see. The elements of the matroid become the atoms of the lattice. For simple matroids, the two constructions are inverse to each other. The matroid built from a geometric lattice is always simple. A loop lies in every flat, and parallel elements always lie in the same flats, so the lattice cannot see them. So you cannot recover a non-simple matroid from its lattice (our own explanation). Restricting to simple matroids removes these cases.
+**How the definition helps.** A loop lies in every flat, and parallel elements lie in the same flats, so the lattice of flats cannot see them (our own explanation). So a non-simple matroid cannot be recovered from its lattice. For simple matroids, the elements become the atoms of the lattice, and the two constructions are inverse to each other.
 
 **Wikipedia:** [Geometric lattice](https://en.wikipedia.org/wiki/Geometric_lattice). It says: “These two constructions, of a simple matroid from a lattice and of a lattice from a matroid, are inverse to each other”
 
@@ -996,7 +996,7 @@
 
 **Problem.** Cellular embeddings of a connected multigraph on closed oriented surfaces, up to orientation-preserving homeomorphism, correspond one-to-one to rotation systems. So a topological question becomes a question about permutations.
 
-**How the definition helps.** When every face is a disk, the faces carry no hidden topology, so the cyclic orders at the vertices determine the surface. One traces the faces by following the rotation, glues in disks, and gets back the surface. If a face could be an annulus or a punctured torus, the same rotation system would fit many different surfaces (our own remark). Heffter settled a dual form of this in the 1890s, and Edmonds gave the direct form in 1960. Gross and Alpert extended it to multigraphs in 1974. Finding the minimum genus of a graph stays hard: it is NP-hard (our own remark).
+**How the definition helps.** When every face is a disk, the faces carry no hidden topology, so the cyclic orders at the vertices determine the surface. One traces the faces by following the rotation, glues in disks, and gets back the surface. If a face could be an annulus or a punctured torus, one rotation system would fit many surfaces (our own remark).
 
 **Wikipedia:** [Combinatorial map](https://en.wikipedia.org/wiki/Combinatorial_map), [Graph embedding](https://en.wikipedia.org/wiki/Graph_embedding). It says: “Every rotation scheme defines a unique 2-cell embedding of a connected multigraph on a closed oriented surface (up to orientation-preserving topological equivalence).”
 
@@ -1015,7 +1015,7 @@
 
 **Problem.** Every simple planar graph has a crossing-free drawing in which every edge is a straight line segment. So curved edges do not let more graphs be drawn.
 
-**How the definition helps.** The word simple removes the only graphs that obviously cannot be drawn straight. Two parallel edges would have to be the same segment (our own remark). A loop cannot be a segment at all. Yet every planar multigraph has a crossing-free drawing with curves, so the theorem is false without the restriction. After the restriction, the proof is an induction on maximal planar graphs, or it follows from the circle packing theorem. Wagner, Fáry, Stein and Tutte gave proofs.
+**How the definition helps.** The word simple removes the only graphs that obviously cannot be drawn straight. Two parallel edges would have to be the same segment, and a loop cannot be a segment at all (our own remark). Every planar multigraph has a curved crossing-free drawing, so the theorem is false without the restriction.
 
 **Wikipedia:** [Fáry's theorem](https://en.wikipedia.org/wiki/F%C3%A1ry%27s_theorem), [Planar graph](https://en.wikipedia.org/wiki/Planar_graph). It says: “Fáry's theorem states that any simple, planar graph can be drawn without crossings so that its edges are straight line segments.”
 
@@ -1070,7 +1070,7 @@
 
 **Problem.** The four colour theorem: you can colour the regions of every planar map with four colours so that adjacent regions get different colours.
 
-**How the definition helps.** The definition removes two kinds of map that would need more than four colours. If meeting at a point counted as adjacency, a map like a pie chart would have arbitrarily many regions that all meet at the centre. That map would need arbitrarily many colours. Hudson showed that bizarre regions, such as regions with finite area and infinitely long boundary, can also need more than four colours. With the definition, the theorem becomes a statement about loopless planar graphs. Its proof still needs a large computer check.
+**How the definition helps.** The definition removes two kinds of map that would need more than four colours. If meeting at a point counted as adjacency, a pie chart with many slices would have many regions that all meet at the centre. Hudson showed that bizarre regions, such as regions with finite area and infinitely long boundary, can also need more than four colours. With the definition, the theorem becomes a statement about loopless planar graphs.
 
 **Wikipedia:** [Four color theorem](https://en.wikipedia.org/wiki/Four_color_theorem). It says: “Otherwise, a map in a shape of a pie chart would make an arbitrarily large number of regions 'adjacent' to each other at a common corner, and require an arbitrarily large number of colors as a result.”
 
@@ -1087,7 +1087,7 @@
 
 **Definition.** The colouring number is the least integer κ for which some vertex order gives every vertex fewer than κ earlier neighbours. An equivalent definition is one plus the degeneracy, the largest minimum degree among nonempty subgraphs.
 
-**Problem.** A finite nonempty simple graph can be coloured with at most its colouring number of colours. Adjacent vertices must receive different colours.
+**Problem.** A finite nonempty simple graph has a proper colouring with at most its colouring number of colours.
 
 **How the definition helps.** The order definition makes the bound immediate because colouring in that order leaves an unused colour at each step (our own). With the degree definition, first prove such an order exists. Repeatedly remove a vertex of minimum degree and reverse the removal order (our own). The converse comes from taking the last vertex in any nonempty subgraph in the chosen order (our own). The work moves into that equivalence.
 
@@ -1108,7 +1108,7 @@
 
 **Problem.** Every simple graph has an edge colouring with Δ + 1 colours. A loopless multigraph needs at most Δ + μ colours.
 
-**How the definition helps.** Simplicity stops many edges from crowding between the same few vertices, which is what forces many colours. Shannon's triangle shows this (our own example): take a triangle and double each edge. Then Δ = 4, but all six edges meet each other, so six colours are needed, more than Δ + 1 = 5. Shannon had shown that multigraphs need at most 3Δ/2 colours. For simple graphs, the proof is an exchange of colours along alternating paths. Deciding whether Δ colours suffice is still NP-complete.
+**How the definition helps.** Simplicity stops many edges from crowding between the same few vertices, which is what forces many colours. Shannon's triangle shows this (our own example). Double each edge of a triangle; then Δ = 4, but all six edges meet each other, so six colours are needed. For simple graphs, the proof is an exchange of colours along alternating paths.
 
 **Wikipedia:** [Vizing's theorem](https://en.wikipedia.org/wiki/Vizing%27s_theorem). It says: “Vizing's theorem states that every simple undirected graph may be edge colored using a number of colors that is at most one larger than the maximum degree Δ of the graph.”
 
@@ -1144,9 +1144,9 @@
 
 **Definition.** A graph is perfect when, in it and in every induced subgraph, the chromatic number equals the size of the largest clique. A bipartite graph has its vertices split into two sides, with every edge going between the sides.
 
-**Problem.** Kőnig's theorem says that in a bipartite graph the largest matching has the same size as the smallest vertex cover. A matching is a set of edges with no shared vertex. A vertex cover is a set of vertices that touches every edge.
+**Problem.** The complement of a bipartite graph is perfect. This is a restatement of Kőnig's theorem that in a bipartite graph the largest matching has the size of the smallest vertex cover.
 
-**How the definition helps.** The notion of a perfect graph turns several separate theorems of Kőnig into one kind of statement. Let G be bipartite with n vertices. A clique of the complement is an independent set of G, so the clique number is n minus the smallest vertex cover (our own detail). A colour class of the complement is a clique of G, so an edge or a single vertex. So the fewest colours is n minus the largest matching. Equality of the two numbers is exactly Kőnig's theorem, and induced subgraphs are again complements of bipartite graphs. In the same way, the perfection of line graphs of bipartite graphs is Kőnig's edge-colouring theorem.
+**How the definition helps.** The notion of a perfect graph turns Kőnig's theorem into one kind of statement about colourings and cliques. Let G be bipartite with n vertices. A clique of the complement is an independent set of G, so the clique number is n minus the smallest vertex cover (our own detail). A colour class of the complement is an edge or a single vertex of G, so the fewest colours is n minus the largest matching. Induced subgraphs are again complements of bipartite graphs.
 
 **Wikipedia:** [Bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph), [Perfect graph](https://en.wikipedia.org/wiki/Perfect_graph). It says: “Perfection of bipartite graphs is easy to see (their chromatic number is two and their maximum clique size is also two) but perfection of the complements of bipartite graphs is less trivial, and is another restatement of Kőnig's theorem.”
 
@@ -1180,9 +1180,9 @@
 
 **Definition.** A signed graph has a sign + or − on each edge. It is balanced when every cycle has an even number of negative edges. Switching at a vertex changes the sign of every edge at that vertex. Switching does not change the sign of any cycle.
 
-**Problem.** Harary's balance theorem says when a signed graph is balanced. The vertices must split into two parts, with positive edges inside the parts and negative edges between them. The cited statement adds a third equivalent form: some switching makes all edges positive.
+**Problem.** Harary's balance theorem: a signed graph is balanced exactly when some switching makes every edge positive. Equivalently, the vertices split into two parts, with negative edges exactly between the parts.
 
-**How the definition helps.** With switching, the two-part form of Harary's theorem becomes one statement: some switching makes every edge positive. The two parts are just the vertices that one switches and the vertices that one does not (our own remark). Because switching keeps the sign of each cycle, the all-positive graph is clearly balanced (our own remark). The remaining work is to find the switching, which one does along a spanning tree.
+**How the definition helps.** Switching keeps the sign of each cycle, so an all-positive switching shows at once that the graph is balanced (our own remark). The two parts are just the vertices that one switches and the vertices that one does not (our own remark). The remaining work is to find the switching, which one does along a spanning tree.
 
 **Paper or page:** [Circular Game Coloring of Signed Graphs](https://arxiv.org/abs/2505.21586). It says: “There exists a switching function ζ : V → {+1,−1} such that the switched signature σᶻ satisfies σᶻ(e) = +1 for all e∈E”
 
@@ -1200,7 +1200,7 @@
 
 **Problem.** For this vertex order, P(x) = (x − N₁)(x − N₂)⋯(x − Nₙ).
 
-**How the definition helps.** The elimination order gives one factor per vertex because its later neighbours must use distinct colours (our own). Start with the last vertex and work backwards. For x ≥ n, each step has exactly x − Nᵢ choices, no matter which colours the later neighbours used. The counts multiply, and equality at infinitely many integers proves the polynomial identity (our own). Without the order one can use the deletion–contraction recurrence for chromatic polynomials. Here the work moves into proving that the chord condition guarantees the order.
+**How the definition helps.** The elimination order gives one factor per vertex because its later neighbours form a clique and so use distinct colours (our own). Colour from the last vertex backwards. Each step has exactly x − Nᵢ choices, whatever colours the later neighbours used. The counts multiply, and equality at infinitely many integers proves the polynomial identity (our own).
 
 **Wikipedia:** [Chordal graph](https://en.wikipedia.org/wiki/Chordal_graph). It says: “The chromatic polynomial equals (x−N₁)(x−N₂)⋯(x−Nₙ).”
 
@@ -1216,9 +1216,9 @@
 
 **Definition.** For a finite graph G with vertices V, sum one term for each edge set A. Use powers of x − 1 and y − 1 with exponents k(A) − k(E) and \|A\| − \|V\| + k(A), respectively. Here E is the full edge set, and k(A) counts components including isolated vertices. Another definition uses a recursion that deletes or contracts an edge.
 
-**Problem.** T(1,1) counts forests that connect every component of G, and T(2,1) counts all edge sets with no cycle. T(1,2) counts edge sets with the same components as G.
+**Problem.** T(1,1) counts spanning forests, the edge sets with no cycle that connect each component of G. T(2,1) counts all edge sets with no cycle, and T(1,2) counts edge sets with the same components as G.
 
-**How the definition helps.** The subset sum turns evaluations into counts because setting a variable to 1 keeps just the terms with exponent zero (our own). The first exponent is zero exactly when A connects each component of G. The second is zero exactly when A contains no cycle. Setting a variable to 2 gives 1 to every power of that variable minus one (our own). Under the recursion definition, one must prove that the counts obey the recursion (our own). Here the work is to check that the subset sum obeys that recursion.
+**How the definition helps.** The subset sum turns evaluations into counts because setting a variable to 1 keeps just the terms with exponent zero (our own). The first exponent is zero exactly when A connects each component of G. The second is zero exactly when A contains no cycle. Setting a variable to 2 gives every term weight 1 in that variable (our own).
 
 **Wikipedia:** [Tutte polynomial](https://en.wikipedia.org/wiki/Tutte_polynomial). It says: “T<sub>G</sub>(1,1) counts the number of spanning forests (edge subsets without cycles and the same number of connected components as G).”
 
@@ -1254,7 +1254,7 @@
 
 **Problem.** A graph with m edges, n vertices and c connected components has a cycle space of dimension m − n + c.
 
-**How the definition helps.** The kernel definition reduces the dimension to the rank of the boundary map by rank–nullity (our own). The image consists of vertex sets of even size in every component. Each edge has two ends in its component, and the boundary of a path is its two endpoints. Pairing vertices within each component proves that every such even set occurs (our own). These c independent parity conditions give rank n − c. The cycle-span proof instead constructs a basis from a spanning forest. Here the work is computing the image and proving that all even-degree edge sets decompose into cycles (our own).
+**How the definition helps.** The kernel definition reduces the dimension to the rank of the boundary map by rank–nullity (our own). The image consists of the vertex sets with an even number of vertices in each component, since a path has two odd-degree endpoints (our own). These c parity conditions give rank n − c. The cycle-span definition instead needs a basis from a spanning forest and a proof that even-degree edge sets decompose into cycles.
 
 **Wikipedia:** [Cycle space](https://en.wikipedia.org/wiki/Cycle_space). It says: “consists of the elements of the edge space that map to the zero element of the vertex space; these are exactly the Eulerian subgraphs.”
 
@@ -1286,11 +1286,11 @@
 
 *True by definition.* MSC 05C40 (Connectivity), 05C38. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** In a finite simple undirected graph, relate edges if they are equal or lie on one simple cycle, which does not repeat vertices. Form a block from the edges in each equivalence class. The other definition uses maximal connected subgraphs with at least three vertices that stay connected after removal of any one vertex. It also counts bridges, edges whose removal increases the number of components, and isolated vertices.
+**Definition.** In a finite simple undirected graph, relate two edges if they are equal or lie on one simple cycle. A block is the set of edges in one equivalence class. The usual definition takes maximal 2-connected subgraphs, together with bridges and isolated vertices.
 
 **Problem.** Every edge lies in exactly one block. Distinct blocks can still share a vertex.
 
-**How the definition helps.** The equivalence-class definition gives the edge partition immediately because equivalence classes are disjoint and exhaust the edge set. The key work is transitivity. When two cycles share an edge, another simple cycle can contain the specified edge from each cycle, as the source explains. With maximal subgraphs, one instead proves that distinct blocks cannot share an edge. To connect the two definitions, one must also identify the classes with the maximal subgraphs or bridges (our own). Isolated vertices have no edges and do not affect the partition.
+**How the definition helps.** Equivalence classes are disjoint and cover the edge set, so the partition is immediate. The key work is transitivity: two simple cycles that share an edge f can be combined into a simple cycle through any edge of the first and any edge of the second. With maximal subgraphs, one instead proves that distinct blocks cannot share an edge.
 
 **Wikipedia:** [Biconnected component](https://en.wikipedia.org/wiki/Biconnected_component). It says: “Less obviously, this is a transitive relation: if there exists a simple cycle containing edges e and f, and another simple cycle containing edges f and g, then one can combine these two cycles”
 
@@ -1306,7 +1306,7 @@
 
 **Problem.** Let G(x) be the exponential generating function of all labelled graphs and C(x) that of connected ones. Then G(x) = exp(C(x)). The same holds for any structure built as a set of connected pieces.
 
-**How the definition helps.** Every graph splits in exactly one way into connected components, and this works only if no component is empty. If K₀ counted as connected, one could add any number of empty components, and the splitting would not be unique (our own remark). In the formula, C(x) then has no constant term, so exp(C(x)) is a well-defined power series. The empty graph appears once, as the set of zero components, through the empty product equal to 1. Taking the logarithm of G(x) then gives C(x). And G(x) is known, since there are 2 to the power n(n − 1)/2 labelled graphs on n vertices.
+**How the definition helps.** Every graph splits in exactly one way into connected components, and this works only if no component is empty. If K₀ counted as connected, one could add any number of empty components, and the splitting would not be unique (our own remark). Without K₀, C(x) has no constant term, so exp(C(x)) is a well-defined power series. The empty graph appears once, as the set of zero components.
 
 **Wikipedia:** [Exponential formula](https://en.wikipedia.org/wiki/Exponential_formula), [Null graph](https://en.wikipedia.org/wiki/Null_graph). It says: “or the definition of connected graphs has to be modified not to include K₀”
 
@@ -1324,7 +1324,7 @@
 
 **Problem.** A graph is the graph of a three-dimensional convex polyhedron exactly when it is planar and 3-connected.
 
-**How the definition helps.** The vertex count in the definition rules out the triangle, which would otherwise pass trivially (our own example). Removing any two vertices of a triangle leaves one vertex, which is connected, but no convex polyhedron has three vertices. Simplicity rules out parallel edges, which no polyhedron has. With these conditions the theorem is exact, and the smallest case is the tetrahedron, K₄. The hard direction is still to build a polyhedron from each such graph. Steinitz did this by an induction on reductions, and later proofs use springs or circle packings.
+**How the definition helps.** The vertex count in the definition rules out the triangle, which would otherwise pass trivially (our own example). Removing any two vertices of a triangle leaves one vertex, which is connected, but no convex polyhedron has three vertices. Simplicity rules out parallel edges, which no polyhedron has. The hard direction is still to build a polyhedron from each such graph.
 
 **Wikipedia:** [Steinitz's theorem](https://en.wikipedia.org/wiki/Steinitz%27s_theorem). It says: “A graph is 3-connected if it has more than three vertices and, after the removal of any two of its vertices, any other pair of vertices remain connected by a path.”
 
@@ -1375,7 +1375,7 @@
 
 **Problem.** A connected regular graph that is not complete is strongly regular exactly when its adjacency matrix has three distinct eigenvalues. Brouwer and van Maldeghem use this as the definition.
 
-**How the definition helps.** Setting aside the disconnected trivial graphs is what lets three eigenvalues mark strong regularity. Two disjoint triangles satisfy the definition with μ = 0 (our own example). But their only eigenvalues are 2 and −1, and 2 has multiplicity 2. A complete graph has only two distinct eigenvalues. The adjacency matrix A satisfies A² = kI + λA + μ(J − I − A), where J is the all-ones matrix. For a connected graph that is not complete, this forces exactly two eigenvalues besides k. Complete multipartite graphs with equal parts are excluded by convention but still have three eigenvalues (our own remark), so the match is not exact.
+**How the definition helps.** Setting aside the disconnected trivial graphs is what lets three eigenvalues mark strong regularity. Two disjoint triangles satisfy the definition with μ = 0, but their only eigenvalues are 2 and −1 (our own example). A complete graph has only two distinct eigenvalues. For a connected graph that is not complete, A² = kI + λA + μ(J − I − A) forces exactly two eigenvalues besides k.
 
 **Wikipedia:** [Strongly regular graph](https://en.wikipedia.org/wiki/Strongly_regular_graph). It says: “By convention, graphs which satisfy the definition trivially are excluded from detailed studies and lists of strongly regular graphs.”
 
@@ -1393,7 +1393,7 @@
 
 **Problem.** The cut and cycle spaces are orthogonal complements. An edge set lies in either space exactly when it meets every set in the other space in an even number of edges.
 
-**How the definition helps.** With these definitions, orthogonality follows from the matrix identity that the kernel of B is the orthogonal complement of the image of Bᵀ (our own). The dot product over the two-element field counts intersections modulo 2. The graph definitions give a direct parity proof in one direction (our own). The reverse direction needs an argument that every edge set meeting cycles evenly is a cut. Here the work is to identify the image of Bᵀ with the graph cuts. Applying Bᵀ to a vertex set gives precisely the edges with one endpoint in it (our own).
+**How the definition helps.** Over the two-element field, the kernel of B is the orthogonal complement of the image of Bᵀ, so orthogonality is linear algebra (our own). The dot product counts common edges modulo 2. The work is to identify the image of Bᵀ with the cuts. Bᵀ sends a vertex set to the edges with exactly one endpoint in it (our own).
 
 **Wikipedia:** [Cycle space](https://en.wikipedia.org/wiki/Cycle_space). It says: “the cycle space and the cut space of the graph (the family of edge sets that span the cuts of the graph) are the orthogonal complements of each other within the edge space.”
 
@@ -1409,7 +1409,7 @@
 
 **Problem.** A graph is k-colourable exactly when some orientation of it has no directed path with k + 1 vertices. This is the Gallai–Hasse–Roy–Vitaver theorem.
 
-**How the definition helps.** With colourings as homomorphisms, the theorem follows by combining two simple facts about maps. First, G maps to Kₖ exactly when some orientation of G maps to the transitive tournament on k vertices. That tournament has an arc from i to j whenever i &lt; j. Second, a directed graph with no directed cycle maps to that tournament exactly when it has no directed path with k + 1 vertices. For this, send each vertex to the number of vertices on the longest directed path ending there (our own remark). An orientation with directed cycles needs one more step, which uses a maximal acyclic subgraph (our own remark). Deciding whether a homomorphism exists is still NP-complete for most targets.
+**How the definition helps.** With colourings as homomorphisms, the theorem follows by combining two simple facts about maps. First, G maps to Kₖ exactly when some orientation of G maps to the transitive tournament on k vertices, which has an arc from i to j whenever i &lt; j. Second, an acyclic orientation maps to that tournament exactly when it has no directed path with k + 1 vertices. Send each vertex to the number of vertices on the longest directed path ending there (our own remark).
 
 **Wikipedia:** [Graph homomorphism](https://en.wikipedia.org/wiki/Graph_homomorphism). It says: “The k-colorings of G correspond exactly to homomorphisms from G to the complete graph Kₖ.”
 
@@ -1427,7 +1427,7 @@
 
 **Problem.** Join each pair of countably many vertices independently, with a fixed probability strictly between 0 and 1. With probability 1 the result is isomorphic to the Rado graph. So there is essentially one countable random graph.
 
-**How the definition helps.** The extension property is a list of countably many conditions, each of which a random graph meets with probability 1. Each vertex outside U and V succeeds with a fixed positive probability, and there are infinitely many tries. Uniqueness then follows from a back-and-forth argument: the extension property lets one extend a finite isomorphism one vertex at a time in both directions. So the probabilistic statement splits into two short steps. Erdős and Rényi proved the almost-sure result in 1963, and Rado gave an explicit construction in 1964.
+**How the definition helps.** The extension property is a list of countably many conditions, each of which a random graph meets with probability 1. Each vertex outside U and V succeeds with a fixed positive probability, and there are infinitely many tries. Uniqueness then follows from a back-and-forth argument. The extension property lets one extend a finite isomorphism one vertex at a time in both directions.
 
 **Wikipedia:** [Rado graph](https://en.wikipedia.org/wiki/Rado_graph). It says: “The Rado graph is uniquely defined, among countable graphs, by an extension property that guarantees the correctness of this algorithm”
 
@@ -1479,9 +1479,9 @@
 
 **Definition.** A tree decomposition of a graph puts its vertices into bags arranged along a tree. Every edge must lie in some bag, and the bags that hold a given vertex must form a connected subtree. The width is the size of the largest bag minus one. The treewidth is the least width over all tree decompositions.
 
-**Problem.** A graph with at least one edge has treewidth 1 exactly when it is a forest. More generally, the treewidth is one less than the smallest clique number of a chordal graph that contains it. A chordal graph has a chord in every cycle of four or more vertices.
+**Problem.** A graph with at least one edge has treewidth 1 exactly when it is a forest.
 
-**How the definition helps.** The minus one is chosen so that the scale starts with trees, the simplest graphs with edges. A tree decomposes into bags of two vertices, one bag per edge, so its width is 2 minus 1 = 1. Any cycle forces some bag of three vertices, so graphs with cycles have treewidth at least 2. The same shift makes the complete graph on k + 1 vertices have treewidth k, and the null graph have treewidth −1. The real theorems, such as the duality with brambles and the grid minor theorem, remain hard.
+**How the definition helps.** The minus one is chosen so that the scale starts with trees, the simplest graphs with edges. A tree decomposes into bags of two vertices, one bag per edge, so its width is 1. Any cycle forces some bag of three vertices, so graphs with cycles have treewidth at least 2. The same shift gives the complete graph on k + 1 vertices treewidth k.
 
 **Wikipedia:** [Treewidth](https://en.wikipedia.org/wiki/Treewidth), [Null graph](https://en.wikipedia.org/wiki/Null_graph). It says: “In this definition, the size of the largest set is diminished by one in order to make the treewidth of a tree equal to one.”
 
@@ -1566,11 +1566,11 @@
 
 *Rules out counterexamples.* MSC 05D15 (Transversal (matching) theory), 05C70. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** The marriage condition says that, for every k, any k sets of the family together contain at least k elements. For an infinite family, the condition applies to every finite subfamily. In the infinite version, every set in the family must be finite, but the family itself can be infinite.
+**Definition.** A system of distinct representatives of a family of sets picks one element from each set, never the same element twice. The marriage condition says that any k sets of the family together contain at least k elements, for every finite k. In the infinite version, every set must be finite, but the family may be infinite.
 
-**Problem.** Hall's marriage theorem: a family of sets has a system of distinct representatives exactly when the marriage condition holds. A system of distinct representatives, also called a transversal, picks one element from each set and never picks the same element twice.
+**Problem.** A family of finite sets, of any size, has a system of distinct representatives exactly when it satisfies the marriage condition.
 
-**How the definition helps.** Requiring finite sets removes the counterexample that breaks the infinite case. Philip Hall proved the theorem for finite families. For infinite families, the theorem fails if infinite sets are allowed. Marshall Hall Jr.'s example is A₀ = ℕ and Aᵢ = {i − 1} for i ≥ 1. This family satisfies the marriage condition but has no transversal. When each set must be finite, this example is excluded, and the theorem holds for families of any size. The infinite case still needs a compactness or choice argument (our own remark).
+**How the definition helps.** Requiring finite sets removes the counterexample that breaks the infinite case. Marshall Hall Jr.'s example is A₀ = ℕ and Aᵢ = {i − 1} for i ≥ 1. This family satisfies the marriage condition but has no system of distinct representatives. The infinite case still needs a compactness or choice argument (our own remark).
 
 **Wikipedia:** [Hall's marriage theorem](https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem). It says: “Suppose that F = {Aᵢ}ᵢ∈I, is a (possibly infinite) family of finite sets that need not be distinct, then F has a transversal if and only if F satisfies the marriage condition.”
 
@@ -1587,7 +1587,7 @@
 
 **Definition.** The elementary symmetric polynomial eₖ is the sum of all products of k different variables. The power sum pₖ is x₁ᵏ + ⋯ + xₙᵏ. A polynomial is symmetric when it does not change under any permutation of the variables.
 
-**Problem.** The fundamental theorem of symmetric polynomials says that every symmetric polynomial is a polynomial in e₁, …, eₙ, in exactly one way.
+**Problem.** Over any commutative ring, every symmetric polynomial is a polynomial in e₁, …, eₙ, in exactly one way.
 
 **How the definition helps.** The elementary symmetric polynomials need no division, so the theorem holds over every commutative ring. Over a field of characteristic zero, the power sums generate the same ring, as the paper's Theorem 2.2 states. Over the integers, e₂ = (p₁² − p₂)/2 needs division by 2, so the power sums do not generate (our own example). This is why the elementary basis is the standard choice (our own remark).
 
@@ -1689,11 +1689,11 @@
 
 *True by definition.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices), 06A07. arXiv math.CO. Level 3: graduate.
 
-**Definition.** A flat of a matroid contains every element whose addition leaves its rank unchanged. Rank counts the largest independent subset. On intervals of flats ordered by inclusion, convolution multiplies two functions by summing their products over intermediate flats. The Möbius function is the convolution inverse of the constant function one.
+**Definition.** A flat of a matroid is a set that contains every element whose addition leaves its rank unchanged. The Möbius function μ on the flats is the inverse, under convolution over intervals, of the constant function one. The characteristic polynomial sums μ(0̂, F) t<sup>(r(E) − r(F))</sup> over all flats F, where 0̂ is the least flat.
 
-**Problem.** For each flat, weight the variable raised to its rank deficit by the Möbius value from the least flat. Summing gives the characteristic polynomial, where rank deficit means full rank minus flat rank. These polynomials multiply for direct sums of finite loopless matroids, those in which every singleton is independent.
+**Problem.** The characteristic polynomial of a direct sum of finite loopless matroids is the product of their characteristic polynomials.
 
-**How the definition helps.** Convolution makes inversion separate across pairs of flats without running the Möbius recursion on the combined order (our own). In a direct sum, independence means independence in each component (our own). Thus flats form pairs and ranks add (our own). The product of the component inverses inverts the constant function on the product order (our own). The characteristic sum now factors (our own).
+**How the definition helps.** Convolution makes inversion separate across pairs of flats without running the Möbius recursion on the combined order (our own). In a direct sum, flats form pairs and ranks add (our own). The product of the component Möbius functions inverts the constant function on the product order (our own). So the characteristic sum factors (our own).
 
 **nLab:** [Möbius inversion](https://ncatlab.org/nlab/show/M%C3%B6bius+inversion). It says: “The Möbius function of the cartesian product P × Q of two posets P and Q is the product of their Möbius functions”
 
@@ -1725,9 +1725,9 @@
 
 **Definition.** A pregeometry on a set X is a closure operator cl on subsets of X that is finitary and satisfies the exchange condition. Finitary means that each point of cl(A) is already in cl(F) for some finite F ⊆ A. The exchange condition says: if a ∈ cl(A ∪ {b}), then a ∈ cl(A) or b ∈ cl(A ∪ {a}). A basis of Y is an independent set (a set in which no element is in the closure of the others) whose closure contains Y.
 
-**Problem.** Define one notion of dimension for three cases: the dimension of a vector space, the transcendence degree of an algebraically closed field, and the dimension of a strongly minimal set in model theory. A strongly minimal set is a definable set whose definable subsets are all finite or cofinite, also in every elementary extension.
+**Problem.** In any pregeometry, all bases of a set have the same cardinality. So vector spaces, algebraically closed fields and strongly minimal sets all get a well-defined dimension.
 
-**How the definition helps.** For any pregeometry, all bases of a set have the same cardinality, so one proof gives a well-defined dimension for all examples. Linear span in a vector space satisfies the exchange condition. So does algebraic closure in an algebraically closed field. The nLab credits the field case to Steinitz, with a footnote that Steinitz's 1913 lemma was about vector spaces. Baldwin and Lachlan's theorem says that model-theoretic algebraic closure on a minimal set is a pregeometry, so such sets get a dimension for free. Proving the exchange condition for each example is still real work.
+**How the definition helps.** One exchange argument gives a well-defined dimension for all examples. Linear span in a vector space satisfies the exchange condition, and so does algebraic closure in an algebraically closed field. By Baldwin and Lachlan, model-theoretic algebraic closure on a strongly minimal set is a pregeometry. Proving the exchange condition for each example is still real work.
 
 **nLab:** [geometric stability theory](https://ncatlab.org/nlab/show/geometric+stability+theory). It says: “An independent set A said to be a basis for Y ∈ P X if Y ⊆ cl(A). All bases of Y have the same cardinality, called the dimension of Y.”
 
@@ -1834,7 +1834,7 @@
 
 **Problem.** The bond matroid of a finite connected graph is the dual of the cycle matroid.
 
-**How the definition helps.** The spanning-complement definition makes dual independence the condition that removing a set leaves the graph connected (our own). The bases of the cycle matroid are spanning trees, which are connected acyclic subgraphs on all vertices. A remaining edge set contains a spanning tree exactly when it stays connected. The minimal failures of dual independence are therefore the circuits specified by the bond definition (our own). The complement-of-bases definition instead first compares the spanning tree complements with the maximal sets that can be removed. The work moves into showing that spanning complements describe precisely the subsets of dual bases (our own).
+**How the definition helps.** The spanning-complement definition makes dual independence the condition that removing a set leaves the graph connected (our own). A remaining edge set spans the cycle matroid exactly when it contains a spanning tree, that is, when it stays connected. So the minimal dual-dependent sets are the minimal disconnecting edge sets, the circuits of the bond matroid (our own). The work moves into showing that spanning complements describe precisely the subsets of dual bases (our own).
 
 **Wikipedia:** [Matroid](https://en.wikipedia.org/wiki/Matroid). It says: “A set is independent in M\* if and only if its complement spans M.”
 
@@ -1850,7 +1850,7 @@
 
 **Problem.** The characteristic polynomial is T(1 − λ, 0) multiplied by (−1) to the power r(E), where T is the Tutte polynomial.
 
-**How the definition helps.** The subset sums for the two polynomials match term by term after the substitution (our own). In the Tutte sum, the exponents of x − 1 and y − 1 are r(E) − r(S) and \|S\| − r(S). Substituting x = 1 − λ and y = 0 gives an overall sign of (−1) to the power r(E) + \|S\| (our own). The work moves into the proof of the flat formula. Group the signed subset contributions by the smallest flat containing each subset (our own). The cumulative sum for a flat F is the sum of (−1) to the power \|S\| over all S ⊆ F. These sums vanish except for F = ∅, so Möbius inversion recovers the weight of each flat (our own).
+**How the definition helps.** The subset sums for the two polynomials match term by term after the substitution (our own). In the Tutte sum, the exponents of x − 1 and y − 1 are r(E) − r(S) and \|S\| − r(S). Substituting x = 1 − λ and y = 0 gives each term the sign (−1) to the power r(E) + \|S\| (our own). The work moves into showing that the subset sum agrees with the flat formula, by Möbius inversion over flats (our own).
 
 **Wikipedia:** [Matroid](https://en.wikipedia.org/wiki/Matroid). It says: “From this definition it is easy to see that the characteristic polynomial is, up to a simple factor, an evaluation of T<sub>M</sub>, specifically, p<sub>M</sub>(λ) = (−1)<sup>r(M)</sup> T<sub>M</sub>(1−λ,0).”
 
@@ -1866,9 +1866,9 @@
 
 **Definition.** A combinatorial map describes a graph drawn on a surface by permutations. It is a set D of elements called darts, with permutations that act transitively on D. A rooted map is a map with one chosen dart, the root. Choosing a dart is the same as choosing a vertex, an edge and a face that all touch each other.
 
-**Problem.** Count maps on surfaces, for example triangulations of the plane. Symmetries of a map would make you count the same map more than once.
+**Problem.** A rooted map has no automorphism other than the identity. So rooted maps, such as rooted triangulations of the plane, can be counted with no correction for symmetry.
 
-**How the definition helps.** The root removes all symmetries, so each rooted map is counted once. An automorphism of a rooted map must fix the root. The permutations generate a group that acts transitively on the darts. So every dart is the image of the root under some word in the permutations, the automorphism fixes every dart, and it is the identity. So you count each rooted map exactly once and need no Burnside-type corrections (the averaging over symmetries in Burnside's lemma). Tutte used this idea, starting from rooted triangulations, in his censuses of planar maps. Counting unrooted maps, which can have symmetries, stays harder.
+**How the definition helps.** An automorphism of a rooted map must fix the root. The permutations act transitively on the darts, so every dart is the image of the root under some word in the permutations. The automorphism commutes with the permutations, so it fixes every dart and is the identity. Counting unrooted maps, which can have symmetries, stays harder.
 
 **nLab:** [combinatorial map](https://ncatlab.org/nlab/show/combinatorial+map). It says: “Later I realized that the distinguishing feature and the great advantage of rooted maps is that they have no symmetry. Automorphisms seem to complicate enumerative problems.”
 
@@ -1887,7 +1887,7 @@
 
 **Problem.** The perfect graph theorem says that the complement of a perfect graph is perfect. The complement has an edge exactly where the graph has none.
 
-**How the definition helps.** The condition on every induced subgraph stops a large clique from hiding a bad part of the graph. Without it the theorem fails (our own example): take a 5-cycle and a separate triangle. That graph has chromatic number 3 and clique number 3. Its complement joins a 5-cycle to three independent vertices, so it has clique number 3 but chromatic number 4. With the hereditary condition, odd cycles of length at least 5 are not perfect, and such examples are ruled out. The proof of the theorem is still real work. Lovász proved it in 1972, and the strong perfect graph theorem came only in 2006.
+**How the definition helps.** The condition on every induced subgraph stops a large clique from hiding a bad part of the graph. Without it the theorem fails (our own example). Take a 5-cycle and a separate triangle, with chromatic number 3 and clique number 3. Its complement joins a 5-cycle to three independent vertices, so it has clique number 3 but chromatic number 4. The hereditary condition rules this out, since the 5-cycle alone is not perfect.
 
 **Wikipedia:** [Perfect graph](https://en.wikipedia.org/wiki/Perfect_graph). It says: “A graph is perfect when these numbers are equal, and remain equal after the deletion of arbitrary subsets of vertices.”
 
@@ -1923,7 +1923,7 @@
 
 **Problem.** Seymour's theorem says that every bridgeless graph has a nowhere-zero 6-flow. A graph is bridgeless, or 2-edge-connected, when no single edge disconnects it.
 
-**How the definition helps.** Flows with values in a group let one work with the group ℤ₂ × ℤ₃, which has six elements, instead of integer 6-flows. Tutte showed that a graph has a nowhere-zero flow in an abelian group of order k exactly when it has a nowhere-zero k-flow. So the theorem about ℤ₂ × ℤ₃ gives the theorem about 6-flows. The group splits into a ℤ₂ part and a ℤ₃ part, and the proof can find each part separately (our own summary). The 5-flow conjecture of Tutte stays open.
+**How the definition helps.** Flows with values in a group let one work with the group ℤ₂ × ℤ₃, which has six elements, instead of integer 6-flows. Tutte showed that a graph has a nowhere-zero flow in an abelian group of order k exactly when it has a nowhere-zero k-flow. The group splits into a ℤ₂ part and a ℤ₃ part, and the proof can find each part separately (our own summary).
 
 **Wikipedia:** [https://en.wikipedia.org/wiki/Nowhere-zero<sub>flow</sub>](https://en.wikipedia.org/wiki/https%3A//en.wikipedia.org/wiki/Nowhere-zero_flow). It says: “(Tutte 1950) A graph G has an M-flow if and only if it has a \|M\|-flow.”
 
@@ -1943,7 +1943,7 @@
 
 **Problem.** The Tutte polynomial is a polynomial in x and y that does not depend on any order of the edges.
 
-**How the definition helps.** The subset sum makes well-definedness immediate because it uses no order and both exponents are nonnegative. Adding edges can only merge components (our own). At least \|V\| − k(A) edges are needed to connect the vertices within the components (our own). If you start with the recursion, you must show that different choices of edges give the same result. The work moves into checking the recursion for the subset sum. The activity formula counts spanning trees in each component using an order on the edges. Crapo’s equivalence with the activity formula explains why the coefficients in x and y are nonnegative.
+**How the definition helps.** The subset sum makes well-definedness immediate because it uses no order and both exponents are nonnegative. Adding edges can only merge components, and at least \|V\| − k(A) edges are needed to form the components of A (our own). If you start with the recursion, you must show that different choices of edges give the same result. The work moves into checking the recursion for the subset sum.
 
 **Wikipedia:** [Tutte polynomial](https://en.wikipedia.org/wiki/Tutte_polynomial). It says: “In this definition it is clear that T<sub>G</sub> is well-defined and a polynomial in x and y.”
 
@@ -1958,11 +1958,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 05C31 (Graph polynomials), 06A07. arXiv math.CO. Level 3: graduate.
 
-**Definition.** A proper coloring assigns different colors to adjacent vertices. Orient every edge toward its higher color. The orientation has no directed cycle, and directed paths define a partial order on the vertices.
+**Definition.** An acyclic orientation gives each edge a direction with no directed cycle. Each proper colouring gives one by orienting every edge toward its higher colour. So the chromatic polynomial at k counts pairs of an acyclic orientation and a colouring by 1 to k that strictly increases along arrows.
 
-**Problem.** For a finite simple graph with n vertices, its chromatic polynomial counts proper colorings at positive integers. At −k, its value times (−1)ⁿ counts pairs of an acyclic orientation and a coloring with colors from 1 through k. Colors may stay equal or increase along each arrow.
+**Problem.** For a finite simple graph with n vertices and chromatic polynomial χ, the number (−1)ⁿχ(−k) counts pairs of an acyclic orientation and a colouring by 1 to k that weakly increases along arrows.
 
-**How the definition helps.** Grouping by orientation makes each group a strict order count (our own). The work moves into order-polynomial reciprocity, which turns evaluation at a negative integer into a weak order count (our own). The compatible maps need not be proper (our own).
+**How the definition helps.** Grouping colourings by orientation makes each group a count of strictly order-preserving maps (our own). The work moves into order-polynomial reciprocity, which turns evaluation at a negative integer into a count of weakly order-preserving maps (our own). These compatible maps need not be proper colourings (our own).
 
 **Paper or page:** [q-Chromatic polynomials](https://arxiv.org/abs/2403.19573v1). It says: “where the sum is over all pairs of an n-coloring c and a compatible acyclic orientation ρ.”
 
@@ -1980,7 +1980,7 @@
 
 **Problem.** For every ε &gt; 0 and every positive integer m there is a number M with this property. Every graph with at least M vertices has an ε-regular partition into k parts, for some k with m ≤ k ≤ M.
 
-**How the definition helps.** The lemma lets a small fraction of pairs be irregular, because some graphs force irregular pairs. The half graph is the counterexample. It has vertices a₁, …, aₙ and b₁, …, bₙ, with aᵢ joined to bⱼ when i ≤ j (our own description). The page notes that half graphs need many irregular pairs, though only a small fraction of all pairs. Malliaris and Shelah showed that graphs with only small half graphs have partitions with no irregular pairs. The cost of the lemma is the bound on M, which grows as a tower of twos, and Gowers showed this growth is needed.
+**How the definition helps.** The lemma lets a small fraction of pairs be irregular, because some graphs force irregular pairs. The half graph is the counterexample. It has vertices a₁, …, aₙ and b₁, …, bₙ, with aᵢ joined to bⱼ when i ≤ j (our own description). Half graphs need many irregular pairs, though only a small fraction of all pairs.
 
 **Wikipedia:** [Szemerédi regularity lemma](https://en.wikipedia.org/wiki/Szemer%C3%A9di_regularity_lemma). It says: “However, some graphs, such as the half graphs, require many pairs of partitions (but a small fraction of all pairs) to be irregular.”
 
@@ -1994,11 +1994,11 @@
 
 *Rules out counterexamples.* MSC 05C35 (Extremal problems in graph theory), 05C80. arXiv math.CO. Level 3: graduate.
 
-**Definition.** A graphon is a symmetric measurable function on the unit square with values between zero and one. The cut norm of a difference takes the largest absolute integral in the sense of a supremum over measurable rectangles.
+**Definition.** A graphon is a symmetric measurable function from the unit square to \[0, 1\]. The cut norm of U − W is the largest absolute value of its integral over a measurable rectangle. The density t(F, W) is the probability that random labels and W-random edges produce all edges of a graph F.
 
-**Problem.** Give each vertex of a finite simple graph an independent uniform label. Given the labels, sample edges independently using the graphon values as probabilities. The probability that all required edges occur changes by at most the edge count times the cut norm of the graphon difference.
+**Problem.** For a finite simple graph F with e edges and graphons U and W, \|t(F, U) − t(F, W)\| is at most e times the cut norm of U − W.
 
-**How the definition helps.** The rectangle tests bound the effect of changing one edge probability at a time (our own). Fix all labels except the endpoints of that edge (our own). The remaining factors separate into one bounded function per endpoint and a constant (our own). Write each function as an average of indicators of its level sets (our own). Their products then test rectangles, and summing the edge bounds gives the claim (our own). A constant one-half graphon and a balanced complete bipartite graphon have equal edge densities but different triangle densities (our own).
+**How the definition helps.** Rectangle tests bound the effect of changing one edge probability at a time (our own). With the other labels fixed, the remaining factors separate into one bounded function per endpoint (our own). Writing each function as an average of indicators of level sets reduces the change to rectangle tests (our own). Edge density alone is not enough: the constant one-half graphon and a balanced complete bipartite graphon have equal edge densities but different triangle densities (our own).
 
 **Paper or page:** [Prominent examples of flip processes](https://arxiv.org/abs/2206.03884v1). It says: “Suppose that we have a graph F of order k and two graphons U and W. Then we have \|t(F,U) − t(F,W)\| ≤ (k choose 2)d□(U, W).”
 
@@ -2014,7 +2014,7 @@
 
 **Problem.** The sandpile group has order det Δ′, which is the number of spanning trees of the graph.
 
-**How the definition helps.** The matrix quotient makes the order a determinant by the general formula for the index of a full-rank integer lattice (our own). The matrix-tree theorem makes det Δ′ positive and identifies it with the number of spanning trees. The other definition uses stable states that can be reached from any stable state by adding grains and toppling. A vertex can topple when it has enough grains to send one along each incident edge. To add states, combine their grains and topple until stable. The work moves into proving that these states form a group isomorphic to the matrix quotient.
+**How the definition helps.** The matrix quotient makes the order a determinant by the general formula for the index of a full-rank integer lattice (our own). The matrix-tree theorem makes det Δ′ positive and identifies it with the number of spanning trees. The other definition uses recurrent stable states with addition followed by toppling. The work moves into proving that these states form a group isomorphic to the matrix quotient.
 
 **Wikipedia:** [Abelian sandpile model](https://en.wikipedia.org/wiki/Abelian_sandpile_model). It says: “Given the isomorphisms stated above, the order of the sandpile group is the determinant of Δ′, which by the matrix tree theorem is the number of spanning trees of the graph.”
 
@@ -2030,11 +2030,11 @@
 
 *True by definition.* MSC 05C50 (Graphs and linear algebra (matrices, eigenvalues, etc.)), 05C30. arXiv math.CO. Level 3: graduate.
 
-**Definition.** For a finite simple undirected graph, use both directions of each edge as separate states. Follow one directed edge by another when endpoints match and the second edge does not reverse the first. Identify closed walks up to cyclic shifts, keeping those with no reversal even across the closing step. For each such walk that is no shorter walk repeated, include the reciprocal of one minus t raised to its length.
+**Definition.** The Ihara zeta function of a finite simple graph is a product over primitive closed walks with no backtracking, taken up to cyclic shift. Each walk of length ℓ contributes 1/(1 − tˡ), and no backtracking is allowed at the closing step either. The directed-edge matrix M allows edge e to be followed by edge f when e ends where f starts and f is not the reverse of e.
 
-**Problem.** The product of these factors is the Ihara zeta function. Its reciprocal equals the determinant of the identity minus t times the directed-edge transition matrix.
+**Problem.** The reciprocal of the Ihara zeta function equals det(I − tM).
 
-**How the definition helps.** Closed walks of the matrix already enforce the ban on reversals (our own). Its power traces count them with a marked start (our own). The work is to group walks by their primitive cycle and use the trace expansion of the logarithm of the determinant (our own).
+**How the definition helps.** Closed walks of the matrix M already enforce the ban on backtracking (our own). The traces of powers of M count these walks with a marked start (our own). The work is to group walks by their primitive cycle and use the trace expansion of the logarithm of the determinant (our own).
 
 **Paper or page:** [On the double covers of a line graph](https://arxiv.org/abs/2202.04756v2). It says: “Let M be the edge adjacency matrix of a graph X. Then ζₓ(u)⁻¹ = det(I−Mu).”
 
@@ -2068,7 +2068,7 @@
 
 **Problem.** Every countable simple graph is isomorphic to an induced subgraph of the countable random graph. An induced subgraph keeps exactly the edges between its chosen vertices.
 
-**How the definition helps.** The extension property gives exactly the step needed to embed one more vertex, in our own argument. List the vertices of the countable graph. Each new vertex needs an image joined to the images of its earlier neighbors and to no other earlier image. The extension property supplies such an image outside the earlier images, in our own argument. With the coin-flip definition, the work moves into showing that the extension property holds with probability one, in our own account. There are countably many requests, and each one fails with probability zero, in our own account.
+**How the definition helps.** The extension property gives exactly the step needed to embed one more vertex (our own). List the vertices of the countable graph. Each new vertex needs an image joined to the images of its earlier neighbors and to no other earlier image, and the extension property supplies it. With the coin-flip definition, the work moves into showing that the extension property holds with probability one (our own).
 
 **nLab:** [countable random graph](https://ncatlab.org/nlab/show/countable+random+graph). It says: “there exists a vertex not in either subset which is connected to all the points in one subset and disconnected from the other.”
 
@@ -2100,9 +2100,9 @@
 
 **Definition.** A homomorphism G → K maps vertices to vertices and edges to edges. G × H is the categorical product of graphs, also called the tensor product. The exponential graph Kᴳ has all maps from the vertices of G to the vertices of K as vertices. Two maps f and g are adjacent when f(v) is adjacent to g(v′) for every edge vv′ of G.
 
-**Problem.** Hedetniemi's conjecture said that χ(G × H) = min(χ(G), χ(H)). Shitov disproved it in 2019.
+**Problem.** G × H is k-colourable exactly when H maps to Kₖᴳ. So Hedetniemi's conjecture, χ(G × H) = min(χ(G), χ(H)), holds for G and k exactly when G or Kₖᴳ is k-colourable.
 
-**How the definition helps.** The exponential graph changes a statement about all graphs H into a statement about one graph, Kᴳ. A colouring of G × H with k colours is a homomorphism into the complete graph Kₖ (our own remark). So the conjecture for G says that Kₖᴳ is k-colourable when G is not, as the Wikipedia text states. Wikipedia also notes that G × Kₖᴳ is the hardest case: any counterexample G × H gives the counterexample G × Kₖᴳ. Wikipedia credits this reformulation to El-Zahar and Sauer, who proved the case of 3 colours. The easy inequality χ(G × H) ≤ min(χ(G), χ(H)) comes from the projections (our own remark). Shitov's counterexample shows that the full conjecture is false.
+**How the definition helps.** The exponential graph changes a statement about all graphs H into a statement about one graph, Kₖᴳ. A colouring of G × H with k colours is a homomorphism into Kₖ (our own remark). Any counterexample G × H gives the counterexample G × Kₖᴳ. El-Zahar and Sauer used this to prove the case of 3 colours, and Shitov's counterexample shows that the full conjecture is false.
 
 **Wikipedia:** [https://en.wikipedia.org/wiki/Hedetniemi%27s<sub>conjecture</sub>](https://en.wikipedia.org/wiki/https%3A//en.wikipedia.org/wiki/Hedetniemi%2527s_conjecture). It says: “In other words, Hedetniemi's conjecture can be seen as a statement on exponential graphs: for every integer k, the graph Kₖᴳ is either k-colorable, or it contains a loop (meaning G is k-colorable).”
 
@@ -2122,7 +2122,7 @@
 
 **Problem.** Every sequence of finite graphs has a subsequence that converges in cut distance to a graphon. So questions about large dense graphs become questions about one limit object.
 
-**How the definition helps.** Graphons fill the gaps in the space of graphs, as the real numbers fill the gaps in the rationals, so limits exist. For example, random graphs G(n, 1/2) converge with probability 1 to the constant graphon 1/2, which comes from no finite graph (our own example). Compactness of the space of graphons implies a strong form of Szemerédi's regularity lemma. Many notions of convergence for dense graphs turn out to agree with cut distance. The proof of compactness still needs the weak regularity lemma. Sparse graphs all converge to the zero graphon, so they need other limit objects (our own remark).
+**How the definition helps.** Graphons fill the gaps in the space of graphs, as the real numbers fill the gaps in the rationals, so limits exist. For example, random graphs G(n, 1/2) converge with probability 1 to the constant graphon 1/2, which comes from no finite graph (our own example). The proof of compactness still needs the weak regularity lemma.
 
 **Wikipedia:** [Graphon](https://en.wikipedia.org/wiki/Graphon). It says: “This space turns out to be compact. Moreover, it contains the set of all finite graphs, represented by their associated graphons, as a dense subset.”
 
@@ -2161,7 +2161,7 @@
 
 **Problem.** Wagner's conjecture, now the Robertson–Seymour theorem, says this: in every infinite set of finite graphs, one graph is a minor of another. Equivalently, every minor-closed family is defined by finitely many forbidden minors. A family is minor-closed when every minor of a graph in the family is also in the family.
 
-**How the definition helps.** The minor relation is generous enough to remove infinite antichains, so every minor-closed family has a finite set of forbidden minors. An antichain is a set of graphs in which no graph is related to another. For topological minors the analogue of the Robertson–Seymour theorem is false, because that relation has infinite antichains (Ding 1996). Wagner's theorem uses minors: planar graphs are those with no K₅ or K₃,₃ minor. Kuratowski's older version uses subdivisions instead (our own remark). The proof of the Robertson–Seymour theorem is still very hard: it takes twenty papers and more than 500 pages.
+**How the definition helps.** The minor relation is generous enough to remove infinite antichains, sets of graphs in which no graph is related to another. For topological minors the analogue of the Robertson–Seymour theorem is false, because that relation has infinite antichains. Wagner's theorem uses minors: planar graphs are those with no K₅ or K₃,₃ minor. Kuratowski's older version uses subdivisions instead (our own remark).
 
 **Wikipedia:** [Robertson–Seymour theorem](https://en.wikipedia.org/wiki/Robertson%E2%80%93Seymour_theorem), [Graph minor](https://en.wikipedia.org/wiki/Graph_minor). It says: “The topological minor relation is not a well-quasi-ordering on the set of finite graphs and hence the result of Robertson and Seymour does not apply to topological minors.”
 
@@ -2180,7 +2180,7 @@
 
 **Problem.** For any clique, a set of pairwise adjacent vertices, some minimum-cost order eliminates all other vertices first.
 
-**How the definition helps.** A tree decomposition puts the whole clique in one bag, which our own proof saves for last. The minimum possible largest bag size equals the minimum elimination cost. Take a decomposition attaining that minimum. The clique vertices occur in pairwise intersecting subtrees, which share a node in a tree. Root the tree there and repeatedly delete vertices unique to a nonroot leaf bag, then discard that bag. All remaining neighbors of each deleted vertex fit in its bag, including neighbors joined by earlier deletions. In the root bag, delete the vertices outside the clique first.
+**How the definition helps.** A tree decomposition puts the whole clique in one bag, which our own proof saves for last. The minimum elimination cost equals the minimum largest bag size, so take an optimal decomposition. The clique's subtrees pairwise intersect, so they share a node, and we root the tree there. Repeatedly delete vertices that occur only in a leaf bag, then finish with the root bag's vertices outside the clique.
 
 **Paper or page:** [On Sparsification for Computing Treewidth](https://arxiv.org/abs/1308.3665v1). It says: “There is a minimum-cost elimination order π∗ of G that eliminates all vertices of A before eliminating any vertex of B.”
 
@@ -2208,11 +2208,11 @@
 
 *True by definition.* MSC 05D40 (Probabilistic methods in extremal combinatorics, including polynomial methods (combinatorial Nullstellensatz, etc.)). arXiv math.CO. Level 3: graduate.
 
-**Definition.** For a polynomial over a field, choose a target monomial of maximum total degree. In each coordinate, choose one more distinct field element than its target exponent. Weight each chosen element by the reciprocal of the product of its differences from the others in that coordinate. A grid point receives the product of its coordinate weights.
+**Definition.** Take a polynomial P over a field and a monomial x₁ᵏ¹⋯xₙᵏⁿ of maximum total degree. A grid for it is a product S₁ × ⋯ × Sₙ with \|Sᵢ\| = kᵢ + 1. Weight each grid point by the product over i of 1/∏(sᵢ − s′), where s′ runs over the other elements of Sᵢ.
 
-**Problem.** If a monomial of maximum total degree has a nonzero coefficient, the polynomial cannot vanish on every point of this grid.
+**Problem.** The weighted sum of P over the grid equals the coefficient of the chosen monomial. So if that coefficient is nonzero, P does not vanish on the whole grid.
 
-**How the definition helps.** The weighted evaluations extract the target coefficient, turning a vanishing question into one interpolation identity (our own). One-variable interpolation gives zero below the target exponent and one at that exponent (our own). Every other monomial within the degree bound falls below the target in some coordinate (our own). This replaces division by the grid’s vanishing polynomials with a weighted sum (our own). Without the degree bound, x − x² vanishes on {0,1} despite its nonzero linear term (our own).
+**How the definition helps.** The weighted evaluations extract the target coefficient, turning a vanishing question into one interpolation identity (our own). One-variable interpolation gives zero below the target exponent and one at that exponent (our own). Every other monomial within the degree bound falls below the target in some coordinate (our own). Without the degree bound, x − x² vanishes on {0,1} despite its nonzero linear term (our own).
 
 **Paper or page:** [Additive colorings of planar graphs](https://arxiv.org/abs/1202.0667v2). It says: “Suppose that there is a nonvanishing monomial x₁ᵏ¹⋯xₙᵏⁿ in P such that k₁+⋯+kₙ=deg(P).”
 
@@ -2230,7 +2230,7 @@
 
 **Problem.** Conditioning a strongly Rayleigh random subset on inclusion or exclusion of an element preserves the property if the event has positive probability.
 
-**How the definition helps.** Encoding subsets as monomials avoids checking the zeros of every conditional polynomial separately (our own). Setting a variable to zero selects subsets missing its element (our own). Differentiating selects subsets containing the element and removes that element from the recorded subset (our own). Multiply back its variable to record its certain presence (our own). Divide by the event probability in either case (our own). The work lies in proving closure under differentiation and substitution of real constants (our own).
+**How the definition helps.** Encoding subsets as monomials turns conditioning into operations on one polynomial (our own). Setting a variable to zero selects subsets missing its element (our own). Differentiating in that variable, then multiplying it back, selects subsets containing the element (our own). Dividing by the event probability normalizes, and the work lies in proving that these operations preserve stability (our own).
 
 **Paper or page:** [Stable multivariate Narayana polynomials and labeled plane trees](https://arxiv.org/abs/2403.15058v2). It says: “Given i,j ∈ \[n\], the following operations preserve real stability of f ∈ ℝ\[x\]:”
 
@@ -2244,7 +2244,7 @@
 
 **Definition.** A partition λ with at most n parts gives a decreasing list λ₁, …, λₙ, padded with zeros. Define its Schur polynomial by dividing the determinant with entries xᵢ raised to λⱼ + n − j by the determinant for λ = 0. Another definition sums one monomial per filling of the rows of lengths λᵢ by labels from 1 to n. Labels never decrease along rows and strictly increase down columns, and each label i contributes a factor xᵢ.
 
-**Problem.** The determinant ratio is a polynomial invariant under every permutation of the variables. In the filling definition, permuting the counts of the labels leaves the number of fillings unchanged.
+**Problem.** The determinant ratio is a polynomial that is invariant under every permutation of the variables.
 
 **How the definition helps.** The ratio makes symmetry immediate because swapping variables swaps two rows of each determinant, changing both signs. The denominator is the product of the differences xᵢ − xⱼ for i &lt; j. Every difference divides the numerator, since setting the corresponding variables equal gives two equal rows (our own). For the filling definition, a separate bijection can exchange the counts of adjacent labels (our own). The work moves into proving divisibility and showing that the two definitions agree.
 
@@ -2260,11 +2260,11 @@
 
 *True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO. Level 3: graduate.
 
-**Definition.** Index monomial quasisymmetric functions by lists of positive integers. Sum the monomials that place those exponents, in order, on distinct increasing variable indices. The fundamental basis instead allows adjacent variable indices to coincide except at prescribed rises.
+**Definition.** For a list α = (α₁, …, αₖ) of positive integers, the monomial quasisymmetric function M\_α is the sum of x<sub>i₁</sub><sup>α₁</sup>⋯x<sub>iₖ</sub><sup>αₖ</sup> over all i₁ &lt; ⋯ &lt; iₖ.
 
-**Problem.** Multiply two monomial quasisymmetric functions by merging their exponent lists in all ways that preserve both orders. A merge may add one exponent from each list. Sum the resulting monomial functions, counting repeated outcomes separately.
+**Problem.** M\_α M\_β is the sum of M\_γ over all quasi-shuffles γ of α and β, counted with multiplicity. A quasi-shuffle merges the two lists in an order-preserving way and may add one entry of α to one entry of β.
 
-**How the definition helps.** The indexed monomials show that only shared variable indices need special treatment (our own). The work is to show that each merge records exactly one pattern of shared indices (our own). Once the merge is fixed, summing over the actual indices gives its monomial quasisymmetric function (our own).
+**How the definition helps.** In the product, the only question is which variable indices of the two monomials coincide (our own). Each quasi-shuffle records exactly one pattern of shared indices, and shared indices add their exponents (our own). Once the merge is fixed, summing over the actual indices gives M\_γ (our own).
 
 **nLab:** [quasi-symmetric function](https://ncatlab.org/nlab/show/quasi-symmetric+function). It says: “Let X be a totally ordered set of indeterminants.”
 
@@ -2278,11 +2278,11 @@
 
 *True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO. Level 3: graduate.
 
-**Definition.** For each list of positive exponents, sum the monomials placing them in order on strictly increasing variable indices. This sum is the corresponding monomial quasisymmetric function. Its coproduct evaluates it on two ordered lists with every first-list variable preceding every second-list variable. Read products across the lists as tensors, keeping one factor for each list.
+**Definition.** For a list α of positive integers, the monomial quasisymmetric function M\_α sums the monomials that place the entries of α, in order, on strictly increasing variable indices. Its coproduct evaluates it on two ordered variable lists, with every variable of the first list before every variable of the second, and reads the result as a tensor.
 
-**Problem.** The coproduct sums over all cuts of the exponent list, including the two end cuts. Each term pairs the monomial functions for the two pieces, with the empty piece giving one.
+**Problem.** The coproduct of M\_α is the sum of M\_β ⊗ M\_γ over all ways to cut α into a first piece β and a second piece γ. Here M of the empty list is 1.
 
-**How the definition helps.** Evaluation on consecutive lists forces each increasing index sequence to cross between lists at most once (our own). Each cut therefore gives a product of independent sums (our own). This realizes the usual abstract splitting map by substitution and explains its cut formula (our own). Three consecutive lists give the same terms whichever split comes first (our own).
+**How the definition helps.** Evaluation on consecutive lists forces each increasing index sequence to cross between lists at most once (our own). Each cut point therefore gives a product of independent sums (our own).
 
 **Paper or page:** [The Bernstein homomorphism via Aguiar-Bergeron-Sottile universality](https://arxiv.org/abs/1604.02969v2). It says: “Let γ ∈ Comp and k ∈ ℕ. Then, Δ⁽ᵏ⁻¹⁾Mγ = ∑\[(γ₁, γ₂, …, γₖ) ∈ Compᵏ, γ₁γ₂⋯γₖ = γ\] Mγ₁ ⊗ Mγ₂ ⊗ ⋯ ⊗ Mγₖ.”
 
@@ -2328,7 +2328,7 @@
 
 **Definition.** Draw left-aligned rows of boxes whose lengths decrease weakly. Fill them with variable indices that increase weakly across rows and strictly down columns. Each filling contributes the product of the variables in its boxes. The Schur polynomial sums these products for one shape.
 
-**Problem.** Multiply the two Schur polynomials for each shape, using a different variable list for each factor. Summing over shapes gives the product of 1/(1 − xy) over all pairs of variables from the two lists.
+**Problem.** The sum over all shapes λ of s\_λ(x₁, x₂, …) s\_λ(y₁, y₂, …) equals the product of 1/(1 − xᵢyⱼ) over all pairs i, j.
 
 **How the definition helps.** The filling definition lets both sides count matrices by their row and column sums (our own). Expanding each geometric series chooses one nonnegative matrix entry (our own). The Robinson–Schensted–Knuth bijection turns each matrix into two fillings of equal shape with those variable counts (our own). The work lies in proving the bijection and identifying the filling sum with the usual determinant ratio (our own).
 
@@ -2378,7 +2378,7 @@
 
 **Definition.** An ordered selection, called an (n, m)-permutation in the paper, lists distinct elements chosen from a finite ordered set. A permuton, the usual limit object for permutations, is a probability measure on the unit square with uniform marginals. A generalized permuton is a probability measure on the unit square whose marginals are not fixed in advance (our own reading of Proposition 3.1). Convergence means convergence of pattern densities and of marginal distributions.
 
-**Problem.** Theorem 1.1 says that every convergent sequence of ordered selections has a generalized permuton as its limit. Theorem 1.2 says that every generalized permuton is such a limit. This generalizes the classical result that permutons are exactly the limits of permutation sequences.
+**Problem.** Every convergent sequence of ordered selections has a generalized permuton as its limit, and every generalized permuton is such a limit. This generalizes the fact that permutons are exactly the limits of permutation sequences.
 
 **How the definition helps.** Embedding selections into measures on the square lets compactness of that space supply the limits (our own). Pattern densities and marginals then pass to the limit (our own). The paper shows that several notions of convergence agree on generalized permutons. Theorem 1.2 still needs an explicit approximation of each generalized permuton by finite selections (our own).
 
@@ -2394,11 +2394,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 4: research.
 
-**Definition.** The convention 0⁰ = 1 says that the empty product is 1. The left side is a generating function built from directed friends-and-seats graphs, which the paper links to generalized Eulerian numbers. The right side is a power series in x.
+**Definition.** The convention 0⁰ = 1 treats x⁰ as the empty product, which is 1 for every x. ODP(Tourₙ, Cycleₙ) is a generating function built from directed friends-and-seats graphs, which the paper links to generalized Eulerian numbers.
 
-**Problem.** The generating function identity holds for every positive integer n.
+**Problem.** For every positive integer n, ODP(Tourₙ, Cycleₙ)/(1 − x)ⁿ = n Σ<sub>m≥0</sub> mⁿ⁻¹ xᵐ.
 
-**How the definition helps.** The convention makes the m = 0 term correct at n = 1, so one formula covers every n. At n = 1 the right side is Σ m⁰ xᵐ (our own check). Its term m = 0 must be 1 to give 1/(1 − x). With 0⁰ = 0 or undefined, the formula would need a special case for n = 1. For n ≥ 2 the term m = 0 is 0 in either case (our own remark). The identity itself still needs a counting argument.
+**How the definition helps.** The convention makes the m = 0 term correct at n = 1, so one formula covers every n. At n = 1 the right side is Σ m⁰ xᵐ, and its term m = 0 must be 1 to give 1/(1 − x) (our own check). For n ≥ 2 the term m = 0 is 0 in either case (our own remark). The identity itself still needs a counting argument.
 
 **Paper or page:** [Generalized Eulerian Numbers and Directed Friends-and-seats Graphs](https://arxiv.org/abs/2403.00966). It says: “For all positive integers n, we have that ODP(Tourₙ, Cycleₙ)/(1−x)ⁿ = n Σₘ≥₀ mⁿ⁻¹ xᵐ, where, by convention, 0⁰ = 1.”
 
@@ -2414,7 +2414,7 @@
 
 **Definition.** A signed set is a finite set whose elements each carry a sign + or −. A cobordism between two signed sets is, roughly, a matching that may pair elements across the two sets or cancel elements of opposite sign. Composition joins two cobordisms end to end.
 
-**Problem.** The Garsia–Milne involution principle builds a bijection between two sets from sign-reversing involutions on larger signed sets.
+**Problem.** A chain of cobordisms that starts and ends with unsigned sets A and B yields a matching from A to B. The Garsia–Milne involution principle is a special case.
 
 **How the definition helps.** Once cobordisms form a category, the involution principle is just composition of a chain of cobordisms. The abstract says the principle then reveals itself to have little to do with involutions. The bijection at the end comes from following each element along the chain until it reaches the other end (our own summary). The hard part is to show that composition is well defined and associative.
 
@@ -2430,11 +2430,11 @@
 
 *Rules out counterexamples.* MSC 05A20 (Combinatorial inequalities). arXiv math.CO. Level 4: research.
 
-**Definition.** Start with a homogeneous polynomial of degree d ≥ 2 with nonnegative coefficients. For any two occurring exponent vectors, each excess coordinate in the first must admit an exchange with a deficit coordinate. Moving one unit between these coordinates in opposite directions must give two occurring vectors. The polynomial is Lorentzian if this rule holds and every order d − 2 partial derivative has at most one positive Hessian eigenvalue.
+**Definition.** A homogeneous polynomial of degree d ≥ 2 with nonnegative coefficients is Lorentzian if two conditions hold. Its support must satisfy the exchange rule: for two exponent vectors, a unit can move from an excess coordinate to a deficit coordinate and stay in the support. Every partial derivative of order d − 2 must be a quadratic form with at most one positive eigenvalue.
 
-**Problem.** Multiply each coefficient by the product of the factorials of its exponents. These scaled coefficients are log-concave along a line that exchanges units of exponent between two variables.
+**Problem.** If f = Σ c\_α x<sup>α</sup>/α! is Lorentzian, then c\_α² ≥ c<sub>α+eᵢ−eⱼ</sub> c<sub>α−eᵢ+eⱼ</sub> for every exponent vector α and indices i, j.
 
-**How the definition helps.** The eigenvalue condition gives the coefficient inequality on a two-by-two block of second derivatives (our own). Differentiate according to the middle exponent vector after subtracting one from each exchange coordinate (our own). The diagonal entries are the scaled neighbors, and the off-diagonal entry is the scaled middle coefficient (our own). The block has nonnegative entries and at most one positive eigenvalue, so its determinant is nonpositive (our own). The exchange rule excludes gaps between positive coefficients on the line (our own). The polynomial x² + xy + y² satisfies the exchange rule but fails the scaled inequality (our own).
+**How the definition helps.** The eigenvalue condition gives the coefficient inequality on a two-by-two block of second derivatives (our own). Differentiate down to that block, whose diagonal entries are the outer coefficients and whose off-diagonal entry is the middle one (our own). A nonnegative block with at most one positive eigenvalue has nonpositive determinant (our own). The polynomial x² + xy + y² satisfies the exchange rule but fails the inequality (our own).
 
 **Paper or page:** [Log-concavity in Combinatorics](https://arxiv.org/abs/2404.10284v1). It says: “If f = ∑α cαxα/α! is a Lorentzian polynomial, then cα² ≥ cα₊ₑᵢ₋ₑⱼ cα₋ₑᵢ₊ₑⱼ”
 
@@ -2522,9 +2522,9 @@
 
 **Definition.** A rooted forest is a functor F : ℕᵒᵖ → Set, where ℕ is the ordered set 0 ≤ 1 ≤ 2 ≤ …. F(n) is the set of vertices at height n. The map F(n+1) → F(n) sends each vertex to its parent. A rooted tree is a forest in which F(0) is a single point.
 
-**Problem.** The category of rooted trees, and the category of rooted forests, is a Grothendieck topos. A Grothendieck topos is a category of sheaves on a site, and it behaves much like the category of sets.
+**Problem.** The category of rooted forests is a Grothendieck topos, and so is the equivalent category of rooted trees. A Grothendieck topos is a category of sheaves on a site, and it behaves much like the category of sets.
 
-**How the definition helps.** With the functor definition, forests form a presheaf category (a category of functors from the opposite of a category to Set), so they form a Grothendieck topos by definition. The category of trees is equivalent to the category of forests: remove the root, or add a new root. So the category of trees is a topos too. Unrooted trees do not have these properties, which is a reason to prefer rooted trees.
+**How the definition helps.** With the functor definition, forests form a presheaf category, so they form a Grothendieck topos by definition. The category of trees is equivalent to the category of forests: remove the root, or add a new root. So the category of trees is a topos too.
 
 **nLab:** [tree](https://ncatlab.org/nlab/show/tree). It says: “The functor description makes it clear that the category of forests is a (presheaf) topos, indeed a Grothendieck topos; therefore the category of trees, which is equivalent, is also a topos.”
 
@@ -2538,9 +2538,9 @@
 
 **Definition.** A graph is k-planar when it has a drawing in the plane in which each edge is crossed at most k times. A drawing is simple when two edges meet at most once. Multi-edges are several edges between the same two vertices.
 
-**Problem.** Ackerman proved that a 4-planar graph on n ≥ 3 vertices has at most 6(n − 2) edges. His proof is long and works for simple graphs with simple drawings. The new proof also allows multi-edges and non-simple drawings, under conditions that the paper states.
+**Problem.** A 4-planar graph on n ≥ 3 vertices has at most 6(n − 2) edges. This holds also for multigraphs with non-simple drawings, under conditions that the paper states.
 
-**How the definition helps.** Our own guess at why the wider class helps: the proof can redraw and merge edges without leaving the class. The abstract says that the new proof is much shorter than Ackerman's. It also says that the proof relaxes the conditions on the graph and its drawing. The proof moves charge between the faces of the drawing, a method called discharging (our own reading of its lemmas). The discharging steps remain detailed.
+**How the definition helps.** Our own guess at why the wider class helps: the proof can redraw and merge edges without leaving the class. The abstract says that the new proof is much shorter than Ackerman's. The proof moves charge between the faces of the drawing, a method called discharging (our own reading of its lemmas).
 
 **Paper or page:** [A Simplified Proof for the Edge-Density of 4-Planar Graphs](https://arxiv.org/abs/2509.20999). It says: “We provide a much shorter proof while at the same time relaxing the conditions on the graph and its embedding, i.e., allowing multi-edges and non-simple drawings.”
 
@@ -2558,7 +2558,7 @@
 
 **Problem.** For odd p, the chromatic number of the exact distance-p graph is at most the weak (2p − 1)-colouring number of G.
 
-**How the definition helps.** Our own summary: the weak colouring number gives one vertex order in which each vertex weakly reaches few vertices. The proof builds the colouring from this order. This gives a short proof that, for odd p, classes with bounded expansion have exact distance-p graphs of bounded chromatic number. The abstract says that the new proof also gives better bounds. For even p, the bound has an extra factor, the maximum degree. The real input is Zhu's theorem that classes with bounded expansion have bounded weak colouring numbers (our own remark).
+**How the definition helps.** The weak colouring number gives one vertex order in which each vertex weakly reaches few vertices, and the proof colours along this order (our own summary). Zhu's theorem says that classes with bounded expansion have bounded weak colouring numbers (our own remark). So, for odd p, their exact distance-p graphs have bounded chromatic number. The abstract says that the new proof also gives better bounds.
 
 **Paper or page:** [Chromatic Numbers of Exact Distance Graphs](https://arxiv.org/abs/1612.02160). It says: “Using the notion of generalised colouring numbers, we give a much simpler proof for the result of Nešetřil and Ossona de Mendez, which at the same time gives significantly better bounds.”
 
@@ -2574,7 +2574,7 @@
 
 **Definition.** A set of vertices of a hypergraph is independent when it contains no whole edge. The multivariate independence series adds, over all independent sets S, the product of the variables xᵥ for v in S. The empty set contributes 1. A multicoloring gives each vertex a set of colors, and no color may be common to all vertices of any edge.
 
-**Problem.** Fix q ≥ 0 and a vector m of nonnegative integers. In the q-th power of the series, the coefficient of the monomial with exponents m counts multicolorings with q colors where each vertex v gets mᵥ colors. The paper proves a more general version for marked hypergraphs, in which some vertices are special.
+**Problem.** Fix q ≥ 0 and a vector m of nonnegative integers. In the q-th power of the series, the coefficient of the monomial with exponents m counts multicolorings with q colors where each vertex v gets mᵥ colors.
 
 **How the definition helps.** The definition makes each factor of the power choose one legal color class, so expanding the power lists the colorings directly. In our own explanation, a product of q such choices is a list of q color classes. The exponent of xᵥ then counts the colors at v, and independence is exactly the coloring rule. The empty set lets a color go unused.
 
@@ -2611,9 +2611,9 @@
 
 **Definition.** An Eulerian digraph has in-degree equal to out-degree at every vertex. An Eulerian tour traverses each arc once and returns to its start. A ribbon structure fixes a cyclic order of the arcs at each vertex, for example from an embedding in a surface. A compatible Eulerian tour is one that agrees with this cyclic order at every vertex, in a sense that the paper makes precise.
 
-**Problem.** The sandpile group of a digraph is the group of chip configurations up to firing moves. For an Eulerian ribbon digraph, the paper defines an action of this group on compatible Eulerian tours. The action needs no choice of root, and exactly one group element takes any compatible tour to any other.
+**Problem.** For an Eulerian ribbon digraph, the sandpile group acts simply transitively on the compatible Eulerian tours, by an action that needs no choice of root. The sandpile group is the group of chip configurations up to firing moves.
 
-**How the definition helps.** A tour is a cycle with no first vertex, so an action on tours need not depend on a root. The known rotor-routing action on spanning trees needs a root vertex, and it depends on the root unless the graph is embedded in the plane. The paper cuts a tour at an arc to get a rooted spanning tree and uses the rotor-routing action there. The hard step proves that cutting at different arcs gives the same action. With this, the paper gives a new proof that rotor-routing is root-independent exactly for plane embeddings.
+**How the definition helps.** A tour is a cycle with no first vertex, so an action on tours need not depend on a root. The known rotor-routing action on spanning trees needs a root vertex, and it depends on the root unless the graph is embedded in the plane. The paper cuts a tour at an arc to get a rooted spanning tree and uses the rotor-routing action there. The hard step proves that cutting at different arcs gives the same action.
 
 **Paper or page:** [On canonical sandpile actions of embedded graphs](https://arxiv.org/abs/2504.05275v1). It says: “The tour-rotor action is a well-defined, canonical simply transitive action of the sandpile group of an Eulerian ribbon digraph on the set of compatible Eulerian tours.”
 
@@ -2630,9 +2630,9 @@
 
 **Definition.** A hypergraph allows an edge to contain any number of vertices. Fix a sink vertex q and give every other vertex a nonnegative number of chips. For a vertex i in a set T, count the edges that contain i and leave T. A configuration is an H-parking function when every nonempty set T of non-sink vertices has a vertex with fewer chips than this count.
 
-**Problem.** In the paper's chip-firing on hypergraphs, a fired vertex may choose where its chips go inside each edge. A set T is ready to fire exactly when each vertex of T has at least as many chips as its edges that leave T. A configuration is superstable when no nonempty set is ready to fire, and these are exactly the H-parking functions.
+**Problem.** In chip-firing on a hypergraph, where a fired vertex may choose where its chips go inside each edge, the superstable configurations are exactly the H-parking functions.
 
-**How the definition helps.** The cut definition is the exact negation of the firing test, so the corollary follows at once. The firing test is a separate lemma, Lemma 5.9, and the choice rule for chips is what makes it hold. Once that lemma is proved, “no set is ready to fire” says that every set has a vertex short of chips.
+**How the definition helps.** The cut definition is the exact negation of the firing test, so the result follows at once. The firing test is a separate lemma: a set T can fire exactly when each vertex of T has at least as many chips as its edges that leave T. The choice rule for chips is what makes that lemma hold.
 
 **Paper or page:** [Parking functions and chip-firing on hypergraphs](https://arxiv.org/abs/2508.09720v1), [Parking functions and chip-firing on hypergraphs](https://arxiv.org/abs/2508.09720v1), [Parking functions and chip-firing on hypergraphs](https://arxiv.org/abs/2508.09720v1). It says: “We also show how H-parking functions can be recovered as the superstable configurations in a version of chip-firing on H, where chips have a choice of where to go when fired.”
 
@@ -2648,7 +2648,7 @@
 
 **Definition.** An embedded graph here is a graph drawn on a surface without crossings, with every face a disk. Its dual has one vertex for each face and one edge across each edge. The paper builds a Tutte polynomial T(𝔾; x, y) for such graphs by deletion and contraction rules for embedded graphs. It is also known as the ribbon graph polynomial, or the two-variable Bollobás–Riordan polynomial.
 
-**Problem.** For plane graphs, the Tutte polynomial of the dual is the Tutte polynomial with x and y exchanged. The theorem gives the same identity for graphs on any surface.
+**Problem.** For every embedded graph 𝔾, the Tutte polynomial of the dual is the Tutte polynomial with x and y exchanged: T(𝔾\*; x, y) = T(𝔾; y, x).
 
 **How the definition helps.** The polynomial uses the embedding as well as the graph, so duality of embedded graphs becomes an exchange of the two variables. The ordinary Tutte polynomial of the abstract graph loses this identity off the plane. On the torus, the dual depends on the embedding, not only on the graph (our own remark). So the ordinary Tutte polynomials of a graph and its dual need not be related (our own remark). The work is in the choice of deletion and contraction rules that make a well-defined polynomial.
 
@@ -2666,7 +2666,7 @@
 
 **Definition.** A flag is a graph with a specified labeled subgraph. Multiply two flags by considering every possible union that shares exactly the labeled vertices. In each candidate, randomly partition the unlabeled vertices into ordered parts of the two required sizes. Its coefficient is the probability that these parts, together with the labels, induce the two given flags.
 
-**Problem.** For a convergent sequence of larger and larger graphs with fixed labeled part, limiting flag densities preserve flag products.
+**Problem.** Along a convergent sequence of larger and larger graphs, the limit density of a product of two flags equals the product of their limit densities. So each limit is a homomorphism of the flag algebra.
 
 **How the definition helps.** The product counts what two independent samples see, apart from accidental overlap (our own). That overlap has probability tending to zero for fixed sample sizes (our own). The work moves to showing that averaging a flag over larger samples gives the same limit (our own).
 
@@ -2684,7 +2684,7 @@
 
 **Definition.** Let ν be the Perron eigenvector of the adjacency matrix, the unit eigenvector for the largest eigenvalue λ₁ with nonnegative entries. Give each vertex u the weight νᵤ. The weighted edge count between sets S and T sums νᵤνᵥ over edges from u in S to v in T. The weight of a set S is the sum of νᵤ² over u in S.
 
-**Problem.** For any vertex sets S and T, the weighted edge count between them is close to λ₁ times the product of their weights. The error is at most λ times the square roots of the weights of S, T and their complements, multiplied together. Here λ is the largest absolute value among the other eigenvalues.
+**Problem.** For any vertex sets S and T, write e(S, T) for their weighted edge count and ν(S) for the weight of S. Then \|e(S, T) − λ₁ν(S)ν(T)\| ≤ λ √(ν(S)ν(Sᶜ)ν(T)ν(Tᶜ)), where λ is the largest absolute value among the other eigenvalues.
 
 **How the definition helps.** With these weights, the inner product of ν with ν restricted to S is the weight of S. In our own explanation, split ν restricted to S into its projection onto ν and a perpendicular part. The projections give the main term, λ₁ times the two set weights. The perpendicular parts give the error, at most λ times their lengths. Each length is the square root of the weight of a set times that of its complement, since ν has length one.
 
@@ -2702,9 +2702,9 @@
 
 **Definition.** The vertex expansion ψ of a graph measures how many outside neighbours every small vertex set has, relative to its size. The reweighted eigenvalue λ₂\* is the largest second-smallest Laplacian eigenvalue over all edge weightings. In each weighting, the weighted degree of each vertex is at most 1.
 
-**Problem.** Cheeger's inequality links edge expansion to the second Laplacian eigenvalue λ₂. No eigenvalue of the plain Laplacian controls vertex expansion in the same way (our own remark).
+**Problem.** For a graph with maximum degree d, ψ²/log d ≲ λ₂\* ≲ ψ. This is a Cheeger inequality for vertex expansion, which no eigenvalue of the plain Laplacian gives (our own remark).
 
-**How the definition helps.** Optimising over edge weights lets an eigenvalue measure vertex expansion, so a Cheeger-type inequality can be stated at all. The paper improves the bound to ψ²/log d ≲ λ₂\* ≲ ψ, with d the maximum degree. The abstract says this is optimal if the small-set expansion conjecture, a standard hardness assumption, is true. So the loss of a log d factor probably cannot be removed. The paper then finds vertex analogues of Trevisan's bipartiteness result, of higher-order Cheeger inequalities and of the improved Cheeger inequality.
+**How the definition helps.** Optimising over edge weights lets an eigenvalue measure vertex expansion, so a Cheeger-type inequality can be stated at all. The abstract says this bound is optimal if the small-set expansion conjecture, a standard hardness assumption, is true. So the loss of a log d factor probably cannot be removed.
 
 **Paper or page:** [Cheeger Inequalities for Vertex Expansion and Reweighted Eigenvalues](https://arxiv.org/abs/2203.06168). It says: “Recently, Olesker-Taylor and Zanetti discovered a Cheeger-type inequality ψ²/log\|V\| ≲ λ₂\* ≲ ψ connecting the vertex expansion ψ of a graph G=(V,E) and the maximum reweighted second smallest eigenvalue λ₂\* of the Laplacian matrix.”
 
@@ -2738,9 +2738,9 @@
 
 **Definition.** For a function x on the vertices of a graph, let I(x) be the sum over edges of \|x(i) − x(j)\|. The 1-Laplacian Δ₁ is the set-valued derivative of I, because I is not smooth. Its eigenvalues are the critical values of I on the set where the sum of d(i)\|x(i)\| is 1, with d(i) the degree. The Cheeger constant h(G) is the smallest ratio of cut edges to the volume of the smaller side.
 
-**Problem.** For the usual graph Laplacian, the second eigenvalue only bounds the Cheeger constant from above and below. One wants an eigenvalue that equals the Cheeger constant exactly.
+**Problem.** For every connected graph, the first nonzero eigenvalue μ₂ of the 1-Laplacian equals the Cheeger constant h(G).
 
-**How the definition helps.** Our own reason: the energy I uses absolute values, which is the same shape as the count of cut edges in the Cheeger constant. On the indicator function of a vertex set, I is exactly the number of edges that leave the set (our own remark). So the second eigenvalue problem and the cut problem become one problem (our own). Theorem 5.15 proves μ₂ = h(G) for every connected graph. The usual Laplacian uses squares, and it only gives the two-sided Cheeger inequalities. The proof of Theorem 5.15 still needs the paper's minimax theory for Δ₁ (our own judgement). Computation stays hard, because finding the Cheeger constant is NP-hard in general (our own).
+**How the definition helps.** The energy I uses absolute values, which is the same shape as the count of cut edges in the Cheeger constant (our own reason). On the indicator function of a vertex set, I is exactly the number of edges that leave the set (our own remark). So the eigenvalue problem and the cut problem become one problem (our own). The usual Laplacian uses squares, and it only gives the two-sided Cheeger inequalities.
 
 **Paper or page:** [Spectrum of the 1-Laplacian and Cheeger's constant on graphs](https://arxiv.org/abs/1412.1150), [Spectrum of the 1-Laplacian and Cheeger's constant on graphs](https://arxiv.org/abs/1412.1150). It says: “Cheeger's constant, which has only some upper and lower bounds in linear spectral theory, equals to the first non-zero Δ₁ eigenvalue for connected graphs.”
 
@@ -2757,9 +2757,9 @@
 
 **Definition.** The Laplacian of a graph is the diagonal matrix of degrees minus the adjacency matrix. With edge weights, both matrices use the weights. The Laplacian L admits a triangular rank-one perturbation if L + uvᵀ is triangular for some vectors u, v and some vertex order.
 
-**Problem.** The construction gives short proofs of weighted spanning-tree formulas for threshold graphs and Ferrers graphs. Build a threshold graph by adding vertices that meet all earlier vertices or none. In a Ferrers graph, the neighbor sets on one side of a bipartite graph are nested.
+**Problem.** If L + uvᵀ is triangular, the weighted number of spanning trees is the product of its diagonal entries divided by (∑u)(∑v). Threshold and Ferrers graphs admit such perturbations, which gives short proofs of their spanning-tree formulas.
 
-**How the definition helps.** A triangular matrix has determinant equal to the product of its diagonal entries, so det(L + uvᵀ) becomes an explicit product. In our own explanation, the matrix-tree theorem gives det(L + uvᵀ) = τ(∑u)(∑v). Here τ is the weighted number of spanning trees, and ∑u is the sum of the entries of u. The work moves to finding the vertex order and the two vectors. The paper shows this is possible exactly for special 2-threshold graphs.
+**How the definition helps.** A triangular matrix has determinant equal to the product of its diagonal entries. The matrix-tree theorem gives det(L + uvᵀ) = τ(∑u)(∑v), where τ is the weighted number of spanning trees (our own). The work moves to finding the vertex order and the two vectors. The paper shows this is possible exactly for special 2-threshold graphs.
 
 **Paper or page:** [Spanning tree enumeration via triangular rank-one perturbations of graph Laplacians](https://arxiv.org/abs/2103.13596v1), [Spanning tree enumeration via triangular rank-one perturbations of graph Laplacians](https://arxiv.org/abs/2103.13596v1), [Spanning tree enumeration via triangular rank-one perturbations of graph Laplacians](https://arxiv.org/abs/2103.13596v1), [Spanning tree enumeration via triangular rank-one perturbations of graph Laplacians](https://arxiv.org/abs/2103.13596v1). It says: “We present new short proofs of known spanning tree enumeration formulae for threshold and Ferrers graphs by showing that the Laplacian matrices of such graphs admit triangular rank-one perturbations.”
 
@@ -2812,9 +2812,9 @@
 
 **Definition.** A homomorphism from a graph F to a graph G is a map on vertices that sends edges to edges. Lovász's idea is to describe a graph G by the list of numbers Hom(F,G), one number for each graph F. Two graphs are homomorphism-indistinguishable over a class of graphs when these numbers agree for every F in the class.
 
-**Problem.** Colour refinement is a fast heuristic for graph isomorphism. It repeatedly colours each vertex by the multiset of its neighbours' colours. The question is exactly which pairs of graphs it cannot tell apart.
+**Problem.** Colour refinement repeatedly recolours each vertex by the multiset of its neighbours' colours. It fails to distinguish G and H exactly when every tree has equally many homomorphisms to G and to H.
 
-**How the definition helps.** Homomorphism counts give a precise algebraic name for the information that colour refinement collects. The theorem says that the algorithm fails on G and H exactly when every tree has the same number of homomorphisms into both graphs. The same theorem adds a third equivalent condition, fractional isomorphism, a linear-programming relaxation of isomorphism. Tinhofer proved that fractional isomorphism is equivalent to colour refinement, as the abstract says. The paper lifts this to graphs of treewidth k and the k-dimensional Weisfeiler–Leman algorithm; treewidth measures how close a graph is to a tree. A consequence is a quasi-linear time test for whether some tree has different counts. The work is in the proof of the equivalence, which uses Lovász's theory of homomorphism counts (our own summary).
+**How the definition helps.** Homomorphism counts give a precise algebraic name for the information that colour refinement collects. The same theorem adds a third equivalent condition, fractional isomorphism, a linear-programming relaxation of isomorphism. The paper lifts this to graphs of treewidth k and the k-dimensional Weisfeiler–Leman algorithm. The work is in the proof of the equivalence, which uses Lovász's theory of homomorphism counts (our own summary).
 
 **Paper or page:** [Lovász Meets Weisfeiler and Leman](https://arxiv.org/abs/1802.08876). It says: “We prove that two graphs G and H are indistinguishable by the color refinement algorithm if and only if, for all trees T, the number Hom(T,G) of homomorphisms from T to G equals the corresponding number Hom(T,H) for H.”
 
@@ -2830,9 +2830,9 @@
 
 **Definition.** A cut is the set of edges between a vertex set and its complement. A partition into cycles writes every edge in exactly one cycle. In an infinite graph, a cut can have infinitely many edges.
 
-**Problem.** Nash-Williams' theorem says that the edges of any graph split into cycles exactly when every cut is even or infinite. Thomassen conjectured a directed version: every vertex set must have as many edges going in as going out. The paper proves this conjecture.
+**Problem.** Nash-Williams' theorem: the edges of any graph split into cycles exactly when every cut is even or infinite.
 
-**How the definition helps.** The condition on cuts is the right replacement for even degrees, so the finite theorem extends to all graphs. For finite graphs, even degrees and even cuts are the same condition (our own remark). In an infinite graph, even degrees are not enough (our own example). A two-way infinite path has degree 2 at each vertex but contains no cycle. One side of a single edge gives a cut with exactly one edge, so the cut condition sees the problem (our own remark). The proof for infinite graphs is still hard, though Thomassen gave a simpler one.
+**How the definition helps.** The condition on cuts is the right replacement for even degrees, so the finite theorem extends to all graphs. For finite graphs, even degrees and even cuts are the same condition (our own remark). A two-way infinite path has degree 2 at each vertex but contains no cycle (our own example). One side of a single edge gives a cut with exactly one edge, so the cut condition sees the problem (our own remark).
 
 **Paper or page:** [On partitioning the edges of an infinite digraph into directed cycles](https://arxiv.org/abs/1704.08830). It says: “Nash-Williams proved that for an undirected graph G the set E(G) can be partitioned into cycles if and only if every cut has either even or infinite number of edges.”
 
@@ -2868,7 +2868,7 @@
 
 **Problem.** For a forbidden uniform hypergraph that covers pairs, its Turán density equals its Lagrangian density.
 
-**How the definition helps.** Pair coverage forces the vertices of any forbidden copy into distinct classes when vertices are duplicated (our own). Each edge uses at most one duplicate of each original vertex (our own). A forbidden copy would therefore project to a forbidden copy before duplication (our own). Approximating vertex weights by class proportions realizes normalized weighted mass as a limiting edge density (our own). Uniform weights give the reverse bound in the limit (our own). For a two-edge path, avoiding graphs are matchings, with limiting edge density zero (our own). A single edge with equal weights gives normalized mass one half (our own).
+**How the definition helps.** Pair coverage forces the vertices of any forbidden copy into distinct classes when vertices are duplicated, so blowing up creates no forbidden copy (our own). Approximating vertex weights by class proportions turns the weighted sum into a limiting edge density, and uniform weights give the reverse bound (our own). Without pair coverage the equality fails. For the two-edge path, avoiding graphs are matchings with edge density zero, but one edge with equal weights gives Lagrangian density one half (our own).
 
 **Paper or page:** [Lagrangian densities of some 3-uniform hypergraphs](https://arxiv.org/abs/2209.13250v1). It says: “In particular, if F covers pairs, then π(F) = πλ(F).”
 
@@ -2920,7 +2920,7 @@
 
 **Problem.** Take an edge-rooted unimodular Bienaymé–Galton–Watson tree, a random branching tree, whose offspring law has finite mean. Give the edges independent weights with finite mean and no atoms, so no single value has positive probability. Then an optimal unimodular matching exists, and its law is unique.
 
-**How the definition helps.** The expected weight at the root edge gives a finite quantity to maximize, so optimality makes sense on an infinite tree (our own). The total weight of a matching there is usually infinite (our own). Unimodularity stops a matching from treating the root differently from other edges (our own). With this definition, uniqueness in law can be stated and proved. The paper also shows that this law is the local limit of maximum-weight matchings on finite random graphs. That convergence needs separate work.
+**How the definition helps.** The expected weight at the root edge gives a finite quantity to maximize, so optimality makes sense on an infinite tree (our own). The total weight of a matching there is usually infinite (our own). Unimodularity stops a matching from treating the root differently from other edges (our own). With this definition, uniqueness in law can be stated and proved.
 
 **Paper or page:** [Optimal Unimodular Matching](https://arxiv.org/abs/2407.03141v2), [Optimal Unimodular Matching](https://arxiv.org/abs/2407.03141v2). It says: “in law, there is a unique optimal unimodular matching for a given unimodular tree.”
 
@@ -2936,7 +2936,7 @@
 
 **Definition.** The free product of connected graphs Γ₁, …, Γₙ is a tree-like graph built from copies of the factors. Each vertex lies in exactly one copy of each factor, as in the Cayley graph of a free product of groups. In our own reading, the construction records a vertex of each factor instead of always gluing at fixed base vertices. For vertex-transitive factors, where symmetries move any vertex to any other, it agrees with earlier definitions.
 
-**Problem.** For every connected factor Γⱼ, the automorphism group of Γⱼ embeds as a topological group in the automorphism group of the free product. The factors need not be vertex-transitive. The paper also gives conditions for the automorphism group of the free product to be non-discrete.
+**Problem.** For every connected factor Γⱼ, vertex-transitive or not, the automorphism group of Γⱼ embeds as a topological group in the automorphism group of the free product.
 
 **How the definition helps.** The paper designs the definition so that the automorphism group of the free product is as large as possible. In our own reading, a factor automorphism can then move the recorded vertices and carry the attached copies with it. With gluing at fixed base vertices, only automorphisms fixing those vertices would extend this directly (our own comparison). The paper proves that the extended maps are automorphisms and give a topological embedding.
 
@@ -2954,7 +2954,7 @@
 
 **Definition.** A minor comes from a subgraph by contracting edges. The bidimensionality of a vertex set X is the largest k for which the graph has a k × k grid minor rooted at X. Rooted means, roughly, that the grid minor uses X well. Apices and vortices are the extra vertices and the non-embedded pieces in the classical structure theorem.
 
-**Problem.** Graphs with no Kₖ minor are exactly those with a tree decomposition of a special kind, with bounds that depend on k. In each part, removing a set of bounded bidimensionality leaves a graph that embeds in a surface of bounded Euler genus.
+**Problem.** Every graph with no Kₖ minor has a tree decomposition of the following kind. In each part, removing a set of bounded bidimensionality leaves a graph that embeds in a surface of bounded Euler genus, with bounds that depend only on k.
 
 **How the definition helps.** One parameter, bidimensionality, replaces two kinds of exceptional structure, so the theorem states more simply. The classical Graph Minors Structure Theorem of Robertson and Seymour needs apex vertices and vortices. The new form also lets one define a surface version of treewidth, as the abstract says. The deep work of the original structure theorem is still used (our own remark).
 
@@ -3012,7 +3012,7 @@
 
 **Problem.** Take nonempty cross-intersecting families A and B of k-element subsets of an n-element set, with n ≥ 2k. Then \|A\| + \|B\| is at most the larger total of two constructions. Either both families are all sets through one point, or A is one set F and B is all k-sets meeting F.
 
-**How the definition helps.** The nonempty condition rules out the trivial answer of one full family and one empty family. In our own example, with n = 5 and k = 2, all ten pairs fit in A when B is empty. With both nonempty, the bound is 8, reached by either construction. The bound for t families is due to Shi, Frankl and Qian, and the cited paper restates it as Corollary 1.6. The hard part is proving that no other choice does better.
+**How the definition helps.** The nonempty condition rules out the trivial answer of one full family and one empty family. In our own example, with n = 5 and k = 2, all ten pairs fit in A when B is empty. With both nonempty, the bound is 8, reached by either construction. The hard part is proving that no other choice does better.
 
 **Paper or page:** [Non-empty pairwise cross-intersecting families](https://arxiv.org/abs/2306.03473v2). It says: “If 𝒜₁, 𝒜₂, …, 𝒜ₜ ⊂ \[n\] choose k are non-empty pairwise cross-intersecting families”
 
@@ -3046,9 +3046,9 @@
 
 **Definition.** Fix a cyclic group of order m acting on a finite set, and choose a primitive mth root of unity. Cyclic sieving means that evaluating a polynomial at each power of the root counts the points fixed by the corresponding generator power.
 
-**Problem.** A polynomial can take nonnegative integer values at every mth root of unity and still fail to describe any cyclic action. At each divisor of m, subtract the points already accounted for by smaller orbit sizes dividing it. The remainder must be nonnegative.
+**Problem.** If a cyclic group of order m acts on X with cyclic sieving for f, then for each divisor d of m the number ∑<sub>j∣d</sub> μ(d/j) f(ωₘʲ) is nonnegative. So nonnegative integer values of f at the roots of unity do not suffice.
 
-**How the definition helps.** Each orbit contributes its size exactly when that size divides the power of the generator (our own). Subtract contributions from smaller divisors to recover the number of points in orbits of each size (our own). These recovered counts must be nonnegative (our own). For order four, 4 + 2q + 2q³ gives four at i but zero at −1 (our own). Every point fixed by the generator must also be fixed by its square (our own). The converse requires proving that each recovered count is divisible by its orbit size (our own).
+**How the definition helps.** Points fixed by the jth power of the generator are those in orbits whose size divides j (our own). Möbius inversion over divisors recovers the number of points in orbits of each size, which cannot be negative (our own). For m = 4, f = 4 + 2q + 2q³ gives 4 at i but 0 at −1, yet every point fixed by the generator is fixed by its square (our own). The converse also needs each recovered count to be divisible by its orbit size (our own).
 
 **Paper or page:** [Skew Schur polynomials and cyclic sieving phenomenon](https://arxiv.org/abs/2112.12394v3). It says: “Then there exists an action of a cyclic group C of order m on X such that (X, C, f(q)) exhibits the cyclic sieving phenomenon if and only if for each d ∣ m, ∑\[j ∣ d\] μ(d/j)f(ωₘʲ) ≥ 0.”
 
@@ -3062,9 +3062,9 @@
 
 **Definition.** Fix a directed graph with chosen vertices s and t. Its path-free complex consists of the edge sets that contain no directed path from s to t. Its path-missing complex consists of the edge sets whose complement contains such a path. A useless edge lies on no directed path from s to t.
 
-**Problem.** Suppose the graph has a useless edge e and some directed path from s to t. Then adding e to any face of either complex gives another face, so both complexes are cones with apex e. A cone is contractible, so both complexes are contractible.
+**Problem.** If the graph has a useless edge e and some directed path from s to t, then both complexes are cones with apex e. So both complexes are contractible.
 
-**How the definition helps.** Membership in either complex depends only on which paths from s to t an edge set contains, and a useless edge lies on none. In our own explanation, adding or removing that edge never creates or destroys such a path. This settles the contractible case of the paper's result that each complex is contractible or homotopy equivalent to a sphere. The harder case, with every edge useful, uses discrete Morse theory, a combinatorial way to simplify complexes.
+**How the definition helps.** Membership in either complex depends only on which paths from s to t an edge set contains, and a useless edge lies on none. So adding e to any face of either complex gives another face (our own explanation). This settles the contractible case of the paper's result that each complex is contractible or homotopy equivalent to a sphere.
 
 **Paper or page:** [The path-missing and path-free complexes of a directed graph](https://arxiv.org/abs/2102.07894v3). It says: “Assume that G has a useless edge e. Then, both 𝒫ℱ(G) and 𝒫ℳ(G) are cones with apex e.”
 
@@ -3078,7 +3078,7 @@
 
 *True by definition.* MSC 05E45 (Combinatorial aspects of simplicial complexes), 05C50, 55U10. arXiv math.CO, math.AT. Level 4: research.
 
-**Definition.** A p-chain is a real combination of oriented p-simplices, such as edges or triangles, and each simplex has a positive weight. The paper defines effective resistance by a bilinear form taken from circuit theory. It proves that the resistance operator ∂\*(∂\*)⁺ is the orthogonal projection onto the chains perpendicular to all cycles. Here a cycle is a chain with zero boundary, ∂\* is the adjoint of the boundary map and ⁺ marks the pseudoinverse.
+**Definition.** On a finite weighted simplicial complex, a p-chain is a real combination of oriented p-simplices. The paper defines the effective resistance r(σ) of a simplex σ by a bilinear form taken from circuit theory. It proves that the resistance operator ∂\*(∂\*)⁺ is the orthogonal projection onto the chains perpendicular to all cycles, the chains with zero boundary.
 
 **Problem.** For a finite weighted simplicial complex and each degree p, the sum of w(σ)·r(σ) over all p-simplices σ equals the rank of the boundary map. Here w(σ) is the weight and r(σ) the effective resistance of σ. For a graph and p = 1 this is Foster's theorem: the sum equals the number of vertices minus the number of connected components.
 

@@ -90,9 +90,9 @@
 
 **Definition.** A formal power series is a sequence of coefficients a₀, a₁, a₂, …, written as Σ aₙXⁿ. Here X is an indeterminate (a symbol), not a number. Sums and products are defined coefficient by coefficient, as for polynomials.
 
-**Problem.** Manipulate generating functions (multiply, invert, differentiate, compose) to prove counting identities. This must work even when the series has radius of convergence zero, such as Σ n! Xⁿ.
+**Problem.** Generating functions can be multiplied, inverted, differentiated and composed as formal power series, where these operations are defined. The resulting identities hold even when the series has radius of convergence zero, such as Σ n! Xⁿ.
 
-**How the definition helps.** A formal power series is not a function, so there is nothing to converge. Products need no conditions about absolute, conditional or uniform convergence. Identities that you prove by algebra in the ring of formal power series are valid for every sequence. Analytic methods, such as finding asymptotics from singularities, still need convergence (our own remark).
+**How the definition helps.** A formal power series is not a function, so there is nothing to converge. Products need no conditions about absolute, conditional or uniform convergence. Analytic methods, such as finding asymptotics from singularities, still need convergence (our own remark).
 
 **Wikipedia:** [Generating function](https://en.wikipedia.org/wiki/Generating_function), [Formal power series](https://en.wikipedia.org/wiki/Formal_power_series). It says: “Unlike an ordinary series, the formal power series is not required to converge: in fact, the generating function is not actually regarded as a function, and the "variable" remains an indeterminate.”
 
@@ -110,7 +110,7 @@
 
 **Problem.** Krull's theorem (1929) says that every nonzero ring has at least one maximal ideal. A maximal ideal is a proper ideal that no larger proper ideal contains.
 
-**How the definition helps.** The 1 gives a simple test for being proper, and this test survives unions. An ideal is proper if and only if it does not contain 1. So the union of a chain of proper ideals does not contain 1, and it is still proper. Zorn's lemma then gives a maximal ideal. Without a 1 the theorem can fail. Our own example: the rational numbers ℚ with zero multiplication form a ring without 1, whose ideals are the additive subgroups, and ℚ has no maximal subgroup. Hodges showed that Krull's theorem in turn implies the axiom of choice.
+**How the definition helps.** The 1 gives a simple test for being proper, and this test survives unions. A union of a chain of ideals that miss 1 also misses 1, so Zorn's lemma gives a maximal ideal. Without a 1 the theorem can fail: ℚ with zero multiplication has the additive subgroups as ideals, and ℚ has no maximal subgroup (our own example). Hodges showed that Krull's theorem in turn implies the axiom of choice.
 
 **Wikipedia:** [Krull's theorem](https://en.wikipedia.org/wiki/Krull%27s_theorem), [Ring (mathematics)](https://en.wikipedia.org/wiki/Ring_%28mathematics%29). It says: “a union of ideals not containing 1 does not contain 1, so J ∈ S. By Zorn's lemma, S has a maximal element M.”
 
@@ -129,7 +129,7 @@
 
 **Problem.** Let I₁, …, Iₖ be ideals that are coprime in pairs. Then R/(I₁ ∩ … ∩ Iₖ) ≅ R/I₁ × … × R/Iₖ. In words, a system of congruences, one for each ideal, has a solution, and the solution is unique modulo the intersection.
 
-**How the definition helps.** The definition makes the one fact that the classical proof uses into the condition itself. For integers, people usually say that moduli are coprime when their gcd is 1. But in a general commutative ring, a greatest common divisor need not exist. The condition i + j = 1 is exactly the Bézout identity (1 written as a combination of the two moduli) that the classical proof uses. So the same proof works in any ring, including polynomial rings and rings of algebraic integers. For commutative rings, the intersection of ideals that are coprime in pairs also equals their product.
+**How the definition helps.** The definition makes the one fact that the classical proof uses into the condition itself. For integers, moduli are usually called coprime when their gcd is 1, but in a general commutative ring a greatest common divisor need not exist. The condition i + j = 1 is exactly the Bézout identity that the classical proof uses. So the same proof works in any ring, including polynomial rings and rings of algebraic integers.
 
 **Wikipedia:** [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem). It says: “This relation plays the role of Bézout's identity in the proofs related to this generalization, which otherwise are very similar.”
 
@@ -145,9 +145,9 @@
 
 **Definition.** A maximal ideal of a commutative ring R is an ideal that is maximal among the proper ideals (the ideals other than R). So the whole ring R is not a maximal ideal. A field is a ring in which 0 is not invertible and every other element is invertible. So the trivial ring, in which 0 = 1, is not a field.
 
-**Problem.** Show that an ideal M of R is maximal if and only if the quotient ring R/M is a field.
+**Problem.** An ideal M of a commutative ring R is maximal if and only if the quotient ring R/M is a field.
 
-**How the definition helps.** The two definitions exclude matching trivial cases, so the equivalence has no exception. The quotient R/R is the trivial ring. The whole ring R is not a maximal ideal, and the trivial ring is not a field. If one definition allowed its trivial case and the other did not, the theorem would fail for M = R. The nLab states both exclusions and the equivalence. The observation that they match is our own reading.
+**How the definition helps.** The two definitions exclude matching trivial cases, so the equivalence has no exception. The quotient R/R is the trivial ring; R is not a maximal ideal, and the trivial ring is not a field. If one definition allowed its trivial case and the other did not, the theorem would fail for M = R. The observation that the exclusions match is our own reading.
 
 **nLab:** [maximal ideal](https://ncatlab.org/nlab/show/maximal+ideal), [too simple to be simple](https://ncatlab.org/nlab/show/too+simple+to+be+simple), [field](https://ncatlab.org/nlab/show/field). It says: “The improper ideal is not a maximal ideal or even a prime ideal.”
 
@@ -163,7 +163,7 @@
 
 **Problem.** A polynomial over a commutative ring is nilpotent exactly when every coefficient is nilpotent.
 
-**How the definition helps.** The prime ideal definition lets us test nilpotence in quotient rings with no nonzero nilpotent polynomials. If f is nilpotent, its image modulo each prime is zero because the quotient is an integral domain. Thus each coefficient lies in every prime and is nilpotent. Conversely, a finite sum of nilpotent terms is nilpotent. This proof is our own. Starting only with powers, one can instead remove the nilpotent leading coefficient and use induction on degree. The work behind the prime ideal definition uses Zorn’s lemma to find a prime avoiding every power of a nonnilpotent element.
+**How the definition helps.** The prime ideal definition lets us test nilpotence in quotient rings with no nonzero nilpotent polynomials. If f is nilpotent, its image modulo each prime is zero because the quotient is an integral domain, so each coefficient lies in every prime (our own proof). Conversely, a finite sum of nilpotent terms is nilpotent. The work behind the prime ideal definition uses Zorn’s lemma to find a prime avoiding every power of a nonnilpotent element.
 
 **Wikipedia:** [Nilradical of a ring](https://en.wikipedia.org/wiki/Nilradical_of_a_ring). It says: “The nilradical of a commutative ring is the intersection of all prime ideals.”
 
@@ -179,7 +179,7 @@
 
 **Problem.** In a commutative ring with unity, every maximal ideal is a prime ideal.
 
-**How the definition helps.** The unity lets the proof write 1 as m + ra and multiply by b. Our own sketch: if ab ∈ M and a ∉ M, then M + Ra is an ideal larger than M, so it is R. Then 1 = m + ra for some m ∈ M and r ∈ R, and b = mb + rab lies in M. Our own counterexample shows the unity is needed. In the ring 2ℤ of even integers, the ideal 4ℤ has index 2, so it is maximal. But 2·2 = 4 lies in 4ℤ while 2 does not, so 4ℤ is not prime. Nothing hard remains once the ring has a unity.
+**How the definition helps.** The unity lets the proof write 1 as m + ra and multiply by b. Our own sketch: if ab ∈ M and a ∉ M, then M + Ra = R, so 1 = m + ra and b = mb + rab lies in M. Our own counterexample shows the unity is needed. In the ring 2ℤ, the ideal 4ℤ has index 2, so it is maximal, but 2·2 = 4 lies in 4ℤ while 2 does not.
 
 **Paper or page:** [Maximal Ideal of Commutative and Unitary Ring is Prime Ideal](https://proofwiki.org/wiki/Maximal_Ideal_of_Commutative_and_Unitary_Ring_is_Prime_Ideal). It says: “Let R be a commutative ring with unity. Let M be a maximal ideal of R. Then M is a prime ideal of R.”
 
@@ -197,7 +197,7 @@
 
 **Problem.** For a ring homomorphism f between commutative rings, the preimage of every prime ideal is a prime ideal. So every ring map gives a map between the sets of prime ideals, in the opposite direction.
 
-**How the definition helps.** Because f(1) = 1, the preimage of a prime ideal never contains 1, so it is a proper ideal. The other condition of a prime ideal (if ab is in it, then a or b is in it) pulls back by itself. Without the rule f(1) = 1, the zero map from R to a nonzero ring S keeps addition and multiplication. The page notes that the zero map is a ring homomorphism only when S is the zero ring. Its preimage of any prime ideal is all of R, which is not a prime ideal (our own). So this rule is what lets every ring map give a map between the sets of prime ideals (our own).
+**How the definition helps.** Because f(1) = 1, the preimage of a prime ideal never contains 1, so it is a proper ideal. The other condition of a prime ideal pulls back by itself. Without the rule f(1) = 1, the zero map from R to a nonzero ring S keeps addition and multiplication. Its preimage of any prime ideal is all of R, which is not a prime ideal (our own).
 
 **Wikipedia:** [Ring homomorphism](https://en.wikipedia.org/wiki/Ring_homomorphism). It says: “If R and S are commutative and P is a prime ideal of S then f⁻¹(P) is a prime ideal of R.”
 
@@ -213,7 +213,7 @@
 
 **Problem.** If B is integral over A and C is integral over B, then C is integral over A.
 
-**How the definition helps.** With this definition, a tower of two finitely generated steps is finitely generated, and that gives the theorem. Take x in C with a monic equation over B, with coefficients b₁, …, bₙ (our own). Each bᵢ is integral over A, so A\[b₁, …, bₙ\] is a finitely generated A-module (our own). The ring A\[b₁, …, bₙ, x\] is finitely generated over A\[b₁, …, bₙ\], because x satisfies a monic equation (our own). Products of the two sets of generators then generate it as an A-module, so x is integral over A (our own). The proof uses both definitions, so the work moves to their equivalence (our own).
+**How the definition helps.** With this definition, a tower of two finitely generated steps is finitely generated, and that gives the theorem. Take x in C with a monic equation over B with coefficients b₁, …, bₙ; then A\[b₁, …, bₙ\] is a finitely generated A-module (our own). The ring A\[b₁, …, bₙ, x\] is finitely generated over it, so products of the two sets of generators generate it over A (our own). The proof uses both definitions, so the work moves to their equivalence (our own).
 
 **Paper or page:** [Algebra, Lemma 10.36.6.](https://stacks.math.columbia.edu/tag/00GN). It says: “Suppose that R → S and S → T are integral ring maps. Then R → T is integral.”
 
@@ -229,7 +229,7 @@
 
 **Problem.** The elements of a commutative ring B that are integral over a subring A form a subring of B.
 
-**How the definition helps.** With this definition, closure under sums and products only needs one finite subring that holds both elements. Suppose x lies in C and y lies in D, and both are finitely generated A-modules. Products of their generators span the subring CD, so CD is also finitely generated. CD contains x + y, x − y and xy, so these are integral. Wikipedia gives this argument with A\[x\]A\[y\] in place of CD. The work moves to the equivalence of the two definitions. That proof uses the determinant trick to turn a finite module into a monic polynomial (our own).
+**How the definition helps.** With this definition, closure under sums and products only needs one finite subring that holds both elements. If x lies in C and y lies in D, both finitely generated A-modules, then products of their generators span the subring CD. CD contains x + y, x − y and xy, so these are integral. The work moves to the equivalence of the two definitions, which uses the determinant trick (our own).
 
 **Wikipedia:** [Integral element](https://en.wikipedia.org/wiki/Integral_element). It says: “there exists a subring C of B containing A\[b\] and which is a finitely generated A-module”
 
@@ -243,9 +243,9 @@
 
 **Definition.** The degree of the zero polynomial is set to −∞. Two rules govern −∞: max(a, −∞) = a and a + (−∞) = −∞. In words, −∞ is smaller than every number, and adding it to any number gives −∞.
 
-**Problem.** Two degree rules should hold for all polynomials f and g over an integral domain. The degree of a product is the sum of the degrees: deg(fg) = deg f + deg g. The degree of a sum is at most the larger degree: deg(f + g) ≤ max(deg f, deg g).
+**Problem.** Over an integral domain, deg(fg) = deg f + deg g and deg(f + g) ≤ max(deg f, deg g) for all polynomials f and g, including the zero polynomial.
 
-**How the definition helps.** The value −∞ lets both rules hold for every pair of polynomials, with no exception for zero. The zero polynomial has no nonzero terms, so strictly it has no degree. If you give it degree 0 or −1, the product rule fails: 0·(x² + 1) = 0, but the rule asks for degree 0 + 2 or −1 + 2. With −∞ and the two rules for −∞, both degree rules hold for every pair, as Axler says. The product rule still needs a coefficient ring with no zero divisors (nonzero elements whose product is zero).
+**How the definition helps.** The value −∞ lets both rules hold for every pair of polynomials, with no exception for zero. If you give the zero polynomial degree 0 or −1, the product rule fails: 0·(x² + 1) = 0, but the rule asks for degree 2 or 1. The product rule still needs a coefficient ring with no zero divisors.
 
 **Wikipedia:** [Degree of a polynomial](https://en.wikipedia.org/wiki/Degree_of_a_polynomial). It says: “The 0 polynomial is declared to have degree −∞ so that exceptions are not needed for various reasonable results.”
 
@@ -263,7 +263,7 @@
 
 **Problem.** The product of two primitive polynomials is primitive. A primitive polynomial is irreducible over ℤ if and only if it is irreducible over ℚ.
 
-**How the definition helps.** The primitive condition removes exactly the constant factors, which are what break the equivalence. Without it, the equivalence is false. The polynomial 2x + 2 is irreducible over ℚ. But over ℤ it factors as 2(x + 1), because 2 is not a unit in ℤ. For primitive polynomials, a short argument modulo a prime p proves the product statement, and the irreducibility statement follows. Gauss's own version in the Disquisitiones was about monic polynomials.
+**How the definition helps.** The primitive condition removes exactly the constant factors, which are what break the equivalence. The polynomial 2x + 2 is irreducible over ℚ, but over ℤ it factors as 2(x + 1), because 2 is not a unit in ℤ. For primitive polynomials, a short argument modulo a prime p proves the product statement, and the irreducibility statement follows.
 
 **Wikipedia:** [Gauss's lemma (polynomials)](https://en.wikipedia.org/wiki/Gauss%27s_lemma_%28polynomials%29). It says: “A non-constant polynomial in Z\[X\] is irreducible in Z\[X\] if and only if it is both irreducible in Q\[X\] and primitive in Z\[X\].”
 
@@ -277,7 +277,7 @@
 
 **Definition.** Let S be a multiplicative set in a commutative ring R: it contains 1 and is closed under products. The localization S⁻¹R is the set of fractions r/s with s in S. Two fractions r₁/s₁ and r₂/s₂ are equal when t(s₁r₂ − s₂r₁) = 0 for some t in S.
 
-**Problem.** The localization should be a ring in which every element of S has an inverse. Every ring map from R that sends S to units should factor through it in exactly one way.
+**Problem.** With this rule, S⁻¹R is a ring in which every element of S is invertible. Every ring map from R that sends S to units factors through it in exactly one way.
 
 **How the definition helps.** The factor t makes the relation an equivalence relation even when R has zero divisors. If as = 0 with a ≠ 0 and s in S, then a/1 must equal as/s = 0/s = 0/1. But the cross difference a·1 − 0·1 = a is not zero, so the naive rule cannot see this. Take ℤ/6 with S = {1, 2, 4}. The naive rule gives 3/1 = 0/2 and 0/2 = 0/1, but not 3/1 = 0/1, so it is not transitive (our own). In an integral domain t cancels, so the rule is the usual one for fractions.
 
@@ -357,11 +357,11 @@
 
 *Rules out counterexamples.* MSC 13C10 (Projective and free modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A ring has the invariant basis number property if Rⁿ ≅ Rᵐ implies n = m. Then the rank of a finite free module is well defined. In the Stacks Project, all rings are commutative with 1.
+**Definition.** A ring has the invariant basis number property if Rⁿ ≅ Rᵐ implies n = m. Then the rank of a finite free module is well defined.
 
-**Problem.** Show that a finite free module has only one rank. Over the zero ring every Rⁿ is the zero module, so this fails there.
+**Problem.** Every nonzero commutative ring has the invariant basis number property. The zero ring does not, because every Rⁿ is the zero module.
 
-**How the definition helps.** Excluding the zero ring removes the only commutative counterexample. The proof is then short (our own summary). A nonzero ring has a maximal ideal 𝔪, and tensoring with the field R/𝔪 reduces the claim to linear algebra. A second lemma in the data set (Tag 01C9) uses the same condition for sheaves. If every stalk of the structure sheaf is a nonzero ring, a locally free sheaf has a locally constant rank. For noncommutative rings the property can fail even for nonzero rings, for example for rings of column-finite infinite matrices (from Wikipedia).
+**How the definition helps.** Excluding the zero ring removes the only commutative counterexample. A nonzero ring has a maximal ideal 𝔪, and tensoring with the field R/𝔪 reduces the claim to linear algebra (our own summary). For noncommutative rings the property can fail even for nonzero rings, for example for rings of column-finite infinite matrices (from Wikipedia).
 
 **Wikipedia:** [Invariant basis number](https://en.wikipedia.org/wiki/Invariant_basis_number). It says: “any commutative ring (except the zero ring) satisfies IBN”
 
@@ -380,9 +380,9 @@
 
 **Definition.** A Dedekind domain is a Noetherian integral domain (every ideal is finitely generated) that is integrally closed and in which every nonzero prime ideal is maximal. Integrally closed means that each element of the fraction field that is a root of a monic polynomial over the ring is already in the ring. The product of two ideals is the ideal that all products of their elements generate.
 
-**Problem.** In rings of algebraic integers, a number need not factor uniquely into irreducibles. The task is to state and prove a unique-factorization theorem that holds in the ring of integers of every number field.
+**Problem.** In a Dedekind domain, every nonzero proper ideal is a product of prime ideals in exactly one way, up to order. The ring of integers of every number field is a Dedekind domain.
 
-**How the definition helps.** Unique factorization comes back when you factor ideals instead of elements. In a ring of integers such as ℤ\[√−5\], elements do not factor uniquely into irreducibles, so the fundamental theorem of arithmetic fails for elements. Dedekind replaced Kummer's ideal numbers by ideals, and in every Dedekind domain each nonzero proper ideal is a unique product of prime ideals. Also, the nonzero fractional ideals (ideals that may have denominators, that is, nonzero finitely generated submodules of the fraction field) form a group. A separate group, the ideal class group, measures how much factorization of elements fails: it is the group of fractional ideals modulo the principal ones. The ring of integers is a unique factorization domain exactly when this group is trivial. It is still necessary to prove that rings of integers are Dedekind domains.
+**How the definition helps.** Unique factorization comes back when you factor ideals instead of elements. In ℤ\[√−5\], elements do not factor uniquely into irreducibles, but ideals do factor uniquely into prime ideals. The ideal class group, the fractional ideals modulo the principal ones, measures how much factorization of elements fails; the ring is a unique factorization domain exactly when this group is trivial. It is still necessary to prove that rings of integers are Dedekind domains.
 
 **nLab:** [Dedekind ring](https://ncatlab.org/nlab/show/Dedekind+ring), [Dedekind domain](https://ncatlab.org/nlab/show/Dedekind+domain), [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut), [ideal class group](https://ncatlab.org/nlab/show/ideal+class+group), [Picard group](https://ncatlab.org/nlab/show/Picard+group). It says: “every ideal can be uniquely factored into prime ideals and the non-zero fractional ideals form a group under multiplication of ideals.”
 
@@ -400,7 +400,7 @@
 
 **Problem.** Every Euclidean domain is a principal ideal domain, that is, a ring in which every ideal is generated by one element. So every Euclidean domain is also a unique factorization domain.
 
-**How the definition helps.** The definition keeps exactly the step that the proof for the integers uses, so the proof carries over in one line. Take a nonzero ideal I and an element b of I with the smallest value of f. Divide any element a of I by b; the remainder r = a − bq is also in I. If r were nonzero, f(r) &lt; f(b) would contradict the choice of b, so b divides a. So I is principal, and unique factorization follows. The converse fails: Motzkin showed that the ring of integers of ℚ(√−19) is a principal ideal domain but not Euclidean. So it remains hard to decide which rings are Euclidean.
+**How the definition helps.** The definition keeps exactly the step that the proof for the integers uses, so the proof carries over in one line. Take a nonzero ideal I and an element b of I with the smallest value of f. The remainder of any a in I on division by b lies in I, so by the choice of b it is 0, and b divides a. The converse fails: Motzkin showed that the ring of integers of ℚ(√−19) is a principal ideal domain but not Euclidean.
 
 **Wikipedia:** [Euclidean domain](https://en.wikipedia.org/wiki/Euclidean_domain). It says: “if I is a nonzero ideal of R then any element a of I \\ {0} with minimal value (on that set) of f(a) is a generator of I.”
 
@@ -416,9 +416,9 @@
 
 **Definition.** Let R be an integral domain. A Dedekind–Hasse norm on R is a function v : R → ℕ with v(s) = 0 only for s = 0. It must satisfy this: for all a and all b ≠ 0, either b divides a, or there are p, q, r with pa = bq + r and 0 &lt; v(r) &lt; v(b). In words, after you multiply a by a suitable p, you can divide by b with a remainder smaller than b.
 
-**Problem.** We want to characterize principal ideal domains (PIDs: domains in which every ideal is generated by one element) by a division property. Euclidean domains are defined by such a property.
+**Problem.** An integral domain is a principal ideal domain, a domain in which every ideal is generated by one element, if and only if it has a Dedekind–Hasse norm.
 
-**How the definition helps.** The weaker division still runs the usual proof that Euclidean domains are PIDs. A Euclidean norm gives a PID, but many PIDs, such as ℤ\[(1 + √−19)/2\], are not Euclidean. Take an element b of smallest norm in a nonzero ideal I. It must divide every a in I, or else r = pa − bq would be an element of I with smaller norm. Conversely, every PID has such a norm: 2 to the power of the number of prime factors. So 'R is a PID if and only if R has a Dedekind–Hasse norm' holds, and the easy direction is the Euclidean argument word for word. This is a classical result: the nLab notes that it fails in constructive mathematics.
+**How the definition helps.** The weaker division still runs the usual proof that Euclidean domains are principal ideal domains. Take an element b of smallest norm in a nonzero ideal I; it divides every a in I, or else r = pa − bq would be an element of I with smaller norm. Conversely, in a principal ideal domain, 2 to the power of the number of prime factors is such a norm. Many principal ideal domains, such as ℤ\[(1 + √−19)/2\], are not Euclidean, so the weaker property is needed.
 
 **nLab:** [Dedekind-Hasse norm](https://ncatlab.org/nlab/show/Dedekind-Hasse+norm). It says: “a pid is like an Euclidean domain but with a weaker notion of Euclidean division.”
 
@@ -436,7 +436,7 @@
 
 **Problem.** Take a Noetherian domain, or any domain with the ascending chain condition on principal ideals. Then every nonzero non-unit is a finite product of irreducible elements. This is the existence half of unique factorization.
 
-**How the definition helps.** With the chain condition, existence takes two lines. If some element had no factorization, it would split into two non-units, one again without one; the principal ideals would grow forever (our own). Without a chain condition existence can fail, as in the ring of all algebraic integers. There every non-unit a is √a · √a, a product of two non-units, so there are no irreducible elements at all (our own). Uniqueness is a separate matter, since the Noetherian ring ℤ\[√−5\] has 6 = 2 · 3 = (1 + √−5)(1 − √−5). The page notes that the converse, from atomic to the chain condition, is false (Grams).
+**How the definition helps.** With the chain condition, existence takes two lines. If some element had no factorization, it would split into two non-units, one again without one, and the principal ideals would grow forever (our own). Without a chain condition existence can fail, as in the ring of all algebraic integers: every non-unit a is √a · √a, so there are no irreducible elements (our own). Uniqueness is a separate matter, since the Noetherian ring ℤ\[√−5\] has 6 = 2 · 3 = (1 + √−5)(1 − √−5).
 
 **Wikipedia:** [Atomic domain](https://en.wikipedia.org/wiki/Atomic_domain), [Noetherian ring](https://en.wikipedia.org/wiki/Noetherian_ring). It says: “More generally, any integral domain satisfying the ascending chain condition on principal ideals (ACCP) is an atomic domain.”
 
@@ -455,7 +455,7 @@
 
 **Problem.** In a unique factorization domain, every nonzero non-unit is a product of irreducible elements in exactly one way.
 
-**How the definition helps.** Uniqueness can only be true if factorizations that differ by units count as the same. For example (our own), 6 = 2·3 = (−2)·(−3) in ℤ. In the Gaussian integers (the numbers a + bi with a and b integers), 2 = (1+i)(1−i) = −i(1+i)². We compare factors up to associates, that is, up to multiplication by a unit. This removes these false counterexamples, so we can state uniqueness at all. The definition does not make every ring a unique factorization domain. In ℤ\[√−5\], 6 = 2·3 = (1+√−5)(1−√−5) gives two truly different factorizations into irreducible elements.
+**How the definition helps.** Uniqueness can only be true if factorizations that differ by units count as the same. For example (our own), 6 = 2·3 = (−2)·(−3) in ℤ, and 2 = (1+i)(1−i) = −i(1+i)² in the Gaussian integers. The definition does not make every ring a unique factorization domain. In ℤ\[√−5\], 6 = 2·3 = (1+√−5)(1−√−5) gives two truly different factorizations.
 
 **Wikipedia:** [Irreducible element](https://en.wikipedia.org/wiki/Irreducible_element), [Unique factorization domain](https://en.wikipedia.org/wiki/Unique_factorization_domain). It says: “If the irreducible factors of every non-zero non-unit element are uniquely defined, up to the multiplication by a unit, then the integral domain is called a unique factorization domain”
 
@@ -487,9 +487,9 @@
 
 **Definition.** An integral domain is a commutative ring with 1 ≠ 0 and no zero divisors. A unit is an element that has a multiplicative inverse.
 
-**Problem.** Find all units of the polynomial ring D\[X\].
+**Problem.** Over an integral domain D, the units of the polynomial ring D\[X\] are exactly the units of D.
 
-**How the definition helps.** Our own sketch: with no zero divisors, the product of two leading coefficients is nonzero, so degrees add. Then fg = 1 forces deg f + deg g = 0, so f and g are constants. ProofWiki gives the general rule for a nonzero commutative ring. There, P is a unit exactly when its constant term is a unit and its other coefficients are nilpotent. A nilpotent element is one with some power equal to 0. Our own example: in (ℤ/4)\[X\], (1 + 2X)(1 + 2X) = 1 + 4X + 4X² = 1. Our own remark: only the absence of nilpotent elements matters, so the same result holds over any reduced ring.
+**How the definition helps.** Our own sketch: with no zero divisors, the product of two leading coefficients is nonzero, so degrees add. Then fg = 1 forces deg f + deg g = 0, so f and g are constants. Over a general nonzero commutative ring, ProofWiki shows that P is a unit exactly when its constant term is a unit and its other coefficients are nilpotent. Our own example: in (ℤ/4)\[X\], (1 + 2X)² = 1.
 
 **Paper or page:** [Units of Ring of Polynomial Forms over Integral Domain](https://proofwiki.org/wiki/Units_of_Ring_of_Polynomial_Forms_over_Integral_Domain), [Units of Ring of Polynomial Forms over Commutative Ring](https://proofwiki.org/wiki/Units_of_Ring_of_Polynomial_Forms_over_Commutative_Ring). It says: “Then the group of units of D\[X\] is precisely the group of elements of D\[X\] of degree zero that are units of D.”
 
@@ -506,9 +506,9 @@
 
 **Definition.** A polynomial form is a finite list of coefficients, written with an indeterminate X. A polynomial function is the map from the ring to itself that the form defines by substitution.
 
-**Problem.** Over an integral domain D, the ring of polynomial forms D\[X\] need not be isomorphic to the ring of polynomial functions on D.
+**Problem.** Over a finite integral domain D, the ring of polynomial forms D\[X\] is not isomorphic to the ring of polynomial functions on D.
 
-**How the definition helps.** If polynomials were functions, over a finite field two different polynomials could be the same object. In our own example, over the field with p elements, Xᵖ and X give the same function, so Xᵖ − X would be zero. With forms, degree and coefficients are well defined over every ring. The slogan in the data set names finite domains as the case where the two rings differ. Our own remark is that over an infinite integral domain the two rings are isomorphic, so the choice only matters in the finite case.
+**How the definition helps.** If polynomials were functions, two different polynomials could be the same object. In our own example, over the field with p elements, Xᵖ and X give the same function, so Xᵖ − X would be zero. With forms, degree and coefficients are well defined over every ring. Our own remark is that over an infinite integral domain the two rings are isomorphic, so the choice only matters in the finite case.
 
 **Paper or page:** [Ring of Polynomial Forms is not necessarily Isomorphic to Ring of Polynomial Functions](https://proofwiki.org/wiki/Ring_of_Polynomial_Forms_is_not_necessarily_Isomorphic_to_Ring_of_Polynomial_Functions). It says: “Then it is not necessarily the case that D\[X\] is isomorphic with P(D).”
 
@@ -524,9 +524,9 @@
 
 **Definition.** The dual numbers over a ring S are S\[ε\]/(ε²): S with a new element ε added, where ε² = 0. Let δ : R\[\[X\]\] → R\[\[X\]\]\[ε\]/(ε²) be the unique continuous R-algebra map with δ(X) = X + ε. In words, δ substitutes X + ε for X. The derivative p′ of a power series p is the unique element with δ(p) = p + p′ε.
 
-**Problem.** Show that formal differentiation of power series is a derivation, which means that it obeys the Leibniz rule (pq)′ = p′q + pq′. Also show that it obeys the chain rule.
+**Problem.** The derivative defined by δ obeys the Leibniz rule (pq)′ = p′q + pq′ and the chain rule.
 
-**How the definition helps.** The map δ is a ring map, so the product rule comes out of multiplying two expressions. The coefficient of ε in δ(pq) = δ(p)δ(q) is p′q + pq′, because ε² = 0. So the Leibniz rule holds by construction. The nLab says this for polynomials, and the short computation for all power series is our own. The chain rule has a conceptual proof from the universal property of adic completion (R\[\[X\]\] is the completion of R\[X\] for the powers of X). The remaining work is to check that this p′ agrees with the coefficient formula Σ aₙ₊₁(n + 1)Xⁿ. The nLab leaves this check as an exercise with a hint.
+**How the definition helps.** The map δ is a ring map, so the product rule comes out of multiplying two expressions. The coefficient of ε in δ(pq) = δ(p)δ(q) is p′q + pq′, because ε² = 0 (our own computation for power series). The chain rule has a conceptual proof from the universal property of adic completion. The remaining work is to check that this p′ agrees with the coefficient formula Σ aₙ₊₁(n + 1)Xⁿ.
 
 **nLab:** [power series](https://ncatlab.org/nlab/show/power+series). It says: “the restriction of p ↦ p′ to R\[X\] is by construction a derivation such that X′ = 1”
 
@@ -558,7 +558,7 @@
 
 **Problem.** Let R be a commutative ring and P an ideal of R. Then R/P is an integral domain if and only if P is prime. In particular, for a positive integer n, ℤ/nℤ is an integral domain if and only if n is prime.
 
-**How the definition helps.** The two exclusions match, so the theorem has no exceptions. Suppose the zero ring were an integral domain. Then R/R would be an integral domain, but R is not a prime ideal. Also ℤ/1ℤ would be an integral domain, but 1 is not prime. When integral domains leave out the zero ring and prime ideals leave out the whole ring, both exceptions go away together. The article also notes that this agrees with defining a domain as a ring in which 0 is the only zero divisor.
+**How the definition helps.** The two exclusions match, so the theorem has no exceptions. If the zero ring were an integral domain, then R/R would be one, but R is not a prime ideal. Also ℤ/1ℤ would be one, but 1 is not prime. When integral domains leave out the zero ring and prime ideals leave out the whole ring, both exceptions go away together.
 
 **Wikipedia:** [Zero ring](https://en.wikipedia.org/wiki/Zero_ring), [Prime ideal](https://en.wikipedia.org/wiki/Prime_ideal). It says: “Second, this way, for a positive integer n, the ring Z/nZ is a domain if and only if n is prime, but 1 is not prime.”
 
@@ -574,7 +574,7 @@
 
 **Problem.** Let φ be a ring homomorphism from a ring with 1 to an integral domain. If φ is not the zero map, then φ sends 1 to 1.
 
-**How the definition helps.** The rule 'no zero divisors' leaves the image of 1 only two choices, 0 or 1. The element e = φ(1) satisfies e² = e, so e(e − 1) = 0. In an integral domain, this forces e = 0 or e = 1. If e = 0, then φ(r) = φ(r·1) = 0 for every r, so φ is the zero map. The rule excludes targets such as ℤ × ℤ. There, in our own example, the map n ↦ (n, 0) keeps sums and products but sends 1 to (1, 0). So for nonzero maps into a domain, the extra rule that 1 goes to 1 costs nothing.
+**How the definition helps.** The rule 'no zero divisors' leaves the image of 1 only two choices, 0 or 1. The element e = φ(1) satisfies e² = e, so e(e − 1) = 0, and e = 0 or e = 1. If e = 0, then φ(r) = φ(r·1) = 0 for every r. The rule excludes targets such as ℤ × ℤ, where in our own example n ↦ (n, 0) sends 1 to (1, 0).
 
 **Paper or page:** [Ring Homomorphism from Ring with Unity to Integral Domain Preserves Unity](https://proofwiki.org/wiki/Ring_Homomorphism_from_Ring_with_Unity_to_Integral_Domain_Preserves_Unity). It says: “Let φ: R → D be a ring homomorphism such that ker φ ≠ R where ker φ denotes the kernel of φ.”
 
@@ -592,7 +592,7 @@
 
 **Problem.** Every integral domain, and so every field, has characteristic 0 or a prime number.
 
-**How the definition helps.** The ban on zero divisors splits a composite characteristic into a smaller one, which is impossible. Our own sketch: let n = ab be least with n·1 = 0, where 1 &lt; a, b &lt; n. Then (a·1)(b·1) = 0, so a·1 = 0 or b·1 = 0. Our own example: the ring ℤ/6 has characteristic 6 and 2·3 = 0 there, so it is excluded because it has zero divisors. The condition 1 ≠ 0 removes the other exception. ProofWiki shows that the null ring, with one element, is the only ring of characteristic 1, and 1 is not a prime. So each clause of the definition removes one kind of exception, and the proof is three lines.
+**How the definition helps.** The ban on zero divisors splits a composite characteristic into a smaller one, which is impossible. Our own sketch: let n = ab be least with n·1 = 0, where 1 &lt; a, b &lt; n; then (a·1)(b·1) = 0, so a·1 = 0 or b·1 = 0. The ring ℤ/6 has characteristic 6 and is excluded because 2·3 = 0 there (our own example). The condition 1 ≠ 0 removes the null ring, the only ring of characteristic 1, as ProofWiki shows.
 
 **Paper or page:** [Characteristic of Integral Domain is Zero or Prime](https://proofwiki.org/wiki/Characteristic_of_Integral_Domain_is_Zero_or_Prime), [Null Ring iff Characteristic is One](https://proofwiki.org/wiki/Null_Ring_iff_Characteristic_is_One), [Characteristic of Field is Zero or Prime](https://proofwiki.org/wiki/Characteristic_of_Field_is_Zero_or_Prime). It says: “Let D be an integral domain. Let Char D be the characteristic of D. Then Char D is either 0 or a prime number.”
 
@@ -608,11 +608,11 @@
 
 *Rules out counterexamples.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Fix a monomial ordering, a total order of monomials with M ≤ MP, and with MP ≤ NP when M ≤ N. It is then a well-order. A Gröbner basis of an ideal I is a finite generating set whose leading monomials generate the ideal of all leading monomials of I. It is reduced if every element has leading coefficient 1 and no element can be reduced by the others.
+**Definition.** Fix a monomial ordering on k\[x₁, …, xₙ\]. A Gröbner basis of an ideal I is a finite generating set whose leading monomials generate the ideal of all leading monomials of I. It is reduced if every element has leading coefficient 1 and no element can be reduced by the others.
 
-**Problem.** Decide whether two ideals of k\[x₁, …, xₙ\], each given by a finite list of generators, are equal.
+**Problem.** For a fixed monomial ordering, each ideal of k\[x₁, …, xₙ\] has exactly one reduced Gröbner basis. So two ideals are equal exactly when they have the same reduced Gröbner basis.
 
-**How the definition helps.** Reduction removes redundant elements and terms, and the condition on leading coefficients removes rescaling. The page notes that without this condition, reduced bases are unique only up to multiplying by nonzero constants. For example, {x} and {2x} would both be reduced bases of the ideal (x) over ℚ (our own). With both conditions each ideal has one reduced basis, so equality of ideals becomes equality of two finite lists. Because the monomial order is a well-order, the reduction steps always stop (our own). The hard part is computing the basis, which Buchberger's algorithm does.
+**How the definition helps.** Reduction removes redundant elements and terms, and the condition on leading coefficients removes rescaling. Without this condition, reduced bases are unique only up to nonzero constants, as the page notes. For example, {x} and {2x} would both be reduced bases of the ideal (x) over ℚ (our own). The hard part is computing the basis, which Buchberger's algorithm does.
 
 **Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “All reduced Gröbner bases of an ideal (for a fixed monomial ordering) are equal. It follows that two ideals are equal if and only if they have the same reduced Gröbner basis.”
 
@@ -630,7 +630,7 @@
 
 **Problem.** The resultant res(A, B) is zero exactly when A and B have a common root in a field where both split. For nonconstant C over the same base field, res(A, BC) = res(A, B) res(A, C).
 
-**How the definition helps.** The product definition makes a common root exactly a zero factor, and it makes multiplication split the factors into two groups. The root list of BC combines the lists of B and C, including repeats. Its degree adds and its leading coefficients multiply, giving the stated product. The work is to prove that this product equals the Sylvester determinant, so it can be computed from coefficients without finding roots. Wikipedia starts with the determinant, and taking the root product as the definition is our own framing.
+**How the definition helps.** The product definition makes a common root exactly a zero factor, and it makes multiplication split the factors into two groups. The root list of BC combines the lists of B and C, its degree adds and its leading coefficients multiply, giving the stated product. The work is to prove that this product equals the Sylvester determinant, so it can be computed from coefficients without finding roots. Taking the root product as the definition is our own framing.
 
 **Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “The resultant of two polynomials with coefficients in an integral domain is zero if and only if they have a common root in an algebraically closed field containing the coefficients.”
 
@@ -662,7 +662,7 @@
 
 **Problem.** A domain is a Dedekind domain exactly when every nonzero fractional ideal is invertible. Then the fractional ideals form a group, and the class group is its quotient by the principal ones.
 
-**How the definition helps.** Ordinary ideals form only a monoid, a set with an associative product and a unit but no inverses. No proper ideal times an ideal gives R, so denominators must supply the inverses. With this definition the ideal class group is a quotient of groups, so it is a group by definition. The bad case is ℤ\[√−3\], which is not integrally closed (our own). There the ideal I = (2, 1 + √−3) satisfies I² = 2I, so I cannot be invertible (our own). What stays hard is the proof that rings of integers are Dedekind domains and that the class group is finite. Unique factorization of ideals is a separate entry.
+**How the definition helps.** Ordinary ideals form only a monoid: no proper ideal times an ideal gives R, so denominators must supply the inverses. With this definition the ideal class group is a quotient of groups, so it is a group by definition. The bad case is ℤ\[√−3\], which is not integrally closed; there I = (2, 1 + √−3) satisfies I² = 2I, so I cannot be invertible (our own). What stays hard is the proof that rings of integers are Dedekind domains and that the class group is finite.
 
 **Wikipedia:** [Fractional ideal](https://en.wikipedia.org/wiki/Fractional_ideal), [Ideal class group](https://en.wikipedia.org/wiki/Ideal_class_group). It says: “An integral domain is a Dedekind domain if and only if every non-zero fractional ideal is invertible.”
 
@@ -678,7 +678,7 @@
 
 **Problem.** Lasker–Noether theorem: in a Noetherian ring every ideal has an irredundant primary decomposition. The set of primes √Qᵢ depends only on I, and so do the components that belong to minimal primes.
 
-**How the definition helps.** The two conditions forbid padding a decomposition with spare pieces. Without them, the ideal (x) of k\[x, y\] could be written as (x) ∩ (x, y), which adds the prime (x, y) (our own). Two primary ideals with the same radical P meet in a P-primary ideal, so they can be merged (our own). Even for irredundant decompositions, the components of embedded primes are not unique: (x², xy) = (x) ∩ (x², xy, yⁿ) for every positive n. So uniqueness holds exactly for the primes and for the isolated components. The real work is the proof that the primes √Qᵢ do not depend on the chosen decomposition. The page says the theorem extends the fundamental theorem of arithmetic and splits each algebraic set uniquely into irreducible components.
+**How the definition helps.** The two conditions forbid padding a decomposition with spare pieces. Without them, the ideal (x) of k\[x, y\] could be written as (x) ∩ (x, y), which adds the prime (x, y) (our own). Even for irredundant decompositions, the components of embedded primes are not unique: (x², xy) = (x) ∩ (x², xy, yⁿ) for every positive n. The real work is the proof that the primes √Qᵢ do not depend on the chosen decomposition.
 
 **Wikipedia:** [Primary decomposition](https://en.wikipedia.org/wiki/Primary_decomposition). It says: “Removing any of the Qᵢ changes the intersection”
 
@@ -695,9 +695,9 @@
 
 **Definition.** A commutative ring is a Jacobson ring (or Hilbert ring) if every prime ideal is an intersection of maximal ideals.
 
-**Problem.** Hilbert's Nullstellensatz is a special case of this: the polynomial ring in finitely many variables over a field is a Jacobson ring. In general, every finitely generated algebra S over a Jacobson ring R is Jacobson. Every maximal ideal of S pulls back to a maximal ideal of R.
+**Problem.** Every finitely generated algebra S over a Jacobson ring R is a Jacobson ring, and every maximal ideal of S pulls back to a maximal ideal of R. Hilbert's Nullstellensatz is the case where R is a field.
 
-**How the definition helps.** The definition picks out the property that passes to finitely generated algebras. So the general theorem reduces to one hard step, from R to R\[x\], plus induction and quotients (our own). This explains why classical varieties over a field could use maximal ideals only. Local rings show the limit: let ℤ₍₂₎ be the ring of fractions with odd denominators. Its only maximal ideal is (2), so its zero ideal, a prime, is not an intersection of maximal ideals (our own). Also ℚ = ℤ₍₂₎\[1/2\] is finitely generated over it, yet the maximal ideal 0 of ℚ pulls back to a non-maximal ideal (our own). For such rings the page says that prime ideals give a cleaner theory.
+**How the definition helps.** The definition picks out the property that passes to finitely generated algebras. So the general theorem reduces to one hard step, from R to R\[x\], plus induction and quotients (our own). Local rings show the limit: in ℤ₍₂₎, the only maximal ideal is (2), so the prime ideal 0 is not an intersection of maximal ideals (our own). Also ℚ = ℤ₍₂₎\[1/2\] is finitely generated over it, yet the maximal ideal 0 of ℚ pulls back to a non-maximal ideal (our own).
 
 **Wikipedia:** [Jacobson ring](https://en.wikipedia.org/wiki/Jacobson_ring). It says: “A general form of the Nullstellensatz states that if R is a Jacobson ring, then so is any finitely generated R-algebra S.”
 
@@ -732,7 +732,7 @@
 
 **Problem.** Let R be Noetherian and M finitely generated. Then every proper submodule of M is a finite intersection of primary submodules. A submodule N is primary when each r in R acts on M/N either injectively or nilpotently.
 
-**How the definition helps.** The construction turns the module theorem into a case of the ideal theorem, so no separate proof is needed. Wikipedia says that this deduction is straightforward. In our own details, R ⊕ M is Noetherian because it is finite over R. Write the submodule as an intersection of primary ideals Q, then intersect each Q with M. Each intersection is M or a primary submodule, since rm in Q with m not in Q forces a power of r into Q. The real work stays in the Lasker–Noether theorem for ideals.
+**How the definition helps.** The construction turns the module theorem into a case of the ideal theorem, so no separate proof is needed. In our own details, R ⊕ M is Noetherian because it is finite over R, so the submodule is an intersection of primary ideals Q. Each Q ∩ M is M or a primary submodule, since rm in Q with m not in Q forces a power of r into Q. The real work stays in the Lasker–Noether theorem for ideals.
 
 **Wikipedia:** [Algebra over a field](https://en.wikipedia.org/wiki/Algebra_over_a_field). It says: “Similarly, unital zero algebras allow to deduce straightforwardly the Lasker–Noether theorem for modules”
 
@@ -748,7 +748,7 @@
 
 **Problem.** A field extension finitely generated as an algebra has finite dimension as a vector space over the base field.
 
-**How the definition helps.** Algebra generators allow only finitely many denominators in our own example, the rational function field ℚ(t). Any finite list of rational functions uses only finitely many irreducible denominator factors. Addition and multiplication cannot introduce another one, so the list misses 1/(t − a) for some rational a. Yet t generates ℚ(t) as a field, and its powers are linearly independent over ℚ. Zariski’s lemma proves that finite algebra generation excludes transcendental elements in every field extension.
+**How the definition helps.** Algebra generators allow only finitely many denominators, and that excludes transcendental elements. In our own example, a finite list of elements of ℚ(t) uses only finitely many irreducible denominator factors. Addition and multiplication add no new ones, so the algebra misses 1/(t − a) for some rational a, although t generates ℚ(t) as a field. Zariski’s lemma proves the theorem in every field extension.
 
 **Paper or page:** [ProofWiki, Zariski's Lemma](https://proofwiki.org/wiki/Zariski's_Lemma). It says: “Let L / k be a field extension. Let L be finitely generated as an algebra over k. Then L / k is a finite field extension.”
 
@@ -762,9 +762,9 @@
 
 **Definition.** In the Stacks Project, a ring R is normal if its localization at every prime ideal is a normal domain. A normal domain is an integral domain that is integrally closed in its fraction field. So a normal ring need not be a domain. The total ring of fractions inverts all nonzerodivisors.
 
-**Problem.** A normal scheme should be one whose local rings are normal domains. With the older definition 'integrally closed domain', the disjoint union of two normal varieties would fail. Its ring is not a domain.
+**Problem.** Let R be a reduced ring with finitely many minimal primes. Then R is normal exactly when it is a finite product of normal domains.
 
-**How the definition helps.** Defining normality one prime at a time makes it a local property by definition, so normal schemes can be defined by their local rings. The quoted lemma shows that, with finitely many minimal primes, this agrees with the older notions: it means a finite product of normal domains. For example (our own), k\[x\] × k\[y\] is normal but not a domain. The condition 'integrally closed in its total ring of fractions' alone is too weak (our own example). The ring k\[ε\]/(ε²) is its own total ring of fractions, so it is integrally closed there. But it is not reduced, so it is not normal.
+**How the definition helps.** Defining normality one prime at a time makes it a local property, so normal schemes can be defined by their local rings. The older definition 'integrally closed domain' would make the disjoint union of two normal varieties fail; for example (our own), k\[x\] × k\[y\] is normal but not a domain. The condition 'integrally closed in its total ring of fractions' alone is too weak (our own example). The ring k\[ε\]/(ε²) is its own total ring of fractions, but it is not reduced, so it is not normal.
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.37.16](https://stacks.math.columbia.edu/tag/030C). It says: “Assume R is reduced and has finitely many minimal primes. Then the following are equivalent: (1) R is a normal ring, … and (3) R is a finite product of normal domains.”
 
@@ -798,7 +798,7 @@
 
 **Problem.** The integral closure of an ideal is an ideal.
 
-**How the definition helps.** With this definition, the theorem follows from the fact that integral elements form a subring. If rt and st are integral over R\[It\], so is their sum (r + s)t (our own). For a in R, the product a·rt is integral, because a lies in R\[It\] (our own). Wikipedia states that the integral closure of R\[It\] in R\[t\] has degree-n part equal to the closure of Iⁿ times tⁿ. Its degree-one case says that the two definitions agree, and that is where the work goes. To turn an equation for rt into one for r, take its part of degree n in t (our own).
+**How the definition helps.** With this definition, the theorem follows from the fact that integral elements form a subring. If rt and st are integral over R\[It\], so is their sum (r + s)t (our own). For a in R, the product a·rt is integral, because a lies in R\[It\] (our own). The work goes into showing that the two definitions agree, which is the degree-one case of the description of the integral closure of R\[It\] in R\[t\].
 
 **Wikipedia:** [Integral closure of an ideal](https://en.wikipedia.org/wiki/Integral_closure_of_an_ideal). It says: “In particular, Ī is an ideal”
 
@@ -814,7 +814,7 @@
 
 **Problem.** The completion of R\[x\] at the ideal (x) is the ring R\[\[x\]\] of formal power series over R.
 
-**How the definition helps.** With this definition, the completion is visibly a ring of compatible truncations. A residue modulo xⁿ is a polynomial of degree below n (our own). Compatibility means that each truncation extends the one before, so the sequence fixes one power series (our own). Sums and products of residues follow the usual coefficient rules (our own). The work moves to showing that the Cauchy sequence completion is the same ring (our own). The nLab states the result and calls power series rings the archetypal completions.
+**How the definition helps.** With this definition, the completion is visibly a ring of compatible truncations. A residue modulo xⁿ is a polynomial of degree below n, and compatibility means that each truncation extends the one before, so the sequence fixes one power series (our own). Sums and products of residues follow the usual coefficient rules (our own). The work moves to showing that the Cauchy sequence completion is the same ring (our own).
 
 **nLab:** [completion of a ring](https://ncatlab.org/nlab/show/completion+of+a+ring). It says: “then the formal completion of R\[x\] at the ideal (x) generated by the free generator x is the ring of formal power series”
 
@@ -876,11 +876,11 @@
 
 *True by definition.* MSC 13B40 (Étale and flat extensions; Henselization; Artin approximation), 13B30. arXiv math.AC, math.AG. Level 3: graduate.
 
-**Definition.** A localization S⁻¹R is the ring obtained by making every element of a multiplicatively closed set S invertible. Let B be an R-algebra and I an ideal of B with some power equal to zero. The map R → A is formally étale if every R-algebra map A → B/I lifts uniquely to B, for all such B and I.
+**Definition.** A ring map R → A is formally étale if, for every R-algebra B and every ideal I of B with some power zero, each R-algebra map A → B/I lifts uniquely to B. The localization S⁻¹R makes every element of a multiplicatively closed set S invertible.
 
 **Problem.** For a commutative ring R and a multiplicatively closed subset S, the localization map R → S⁻¹R is formally étale.
 
-**How the definition helps.** The lifting test reduces the claim to checking that the denominators are units in B. If an element has an inverse modulo I, the product with a representative of that inverse differs from 1 by a nilpotent element. A finite geometric sum then gives an inverse in B. Thus S maps to units, and the localization property gives a unique lift. This direct proof is our own. For one denominator s, the classical étale test uses the equation st = 1 with invertible derivative s. An arbitrary localization need not have finite presentation, the condition under which the classical and lifting tests agree (Tag 00UR).
+**How the definition helps.** The lifting test reduces the claim to checking that the denominators are units in B. An element with an inverse modulo a nilpotent ideal I is a unit in B, by a finite geometric sum (our own proof). Thus S maps to units, and the universal property of localization gives a unique lift. An arbitrary localization need not have finite presentation, so the classical étale test does not apply directly (Tag 00UR).
 
 **Paper or page:** [Algebra, Lemma 10.150.5](https://stacks.math.columbia.edu/tag/04EG). It says: “Let R be a ring. Let S ⊂ R be any multiplicative subset. Then the ring map R → S⁻¹R is formally étale.”
 
@@ -897,9 +897,9 @@
 
 **Definition.** A ring map R → A is formally étale if every R-algebra map A → B/I lifts uniquely to B. This must hold for every R-algebra B and every ideal I of B with some power equal to zero. Unlike étale maps, formally étale maps need not have a presentation with finitely many generators and relations.
 
-**Problem.** Take a directed system of R-algebras that are formally étale over R. Its colimit combines the algebras along the maps in the system. The colimit is formally étale over R.
+**Problem.** The colimit of a directed system of formally étale R-algebras is formally étale over R.
 
-**How the definition helps.** The lifting definition makes a lift from the colimit a compatible family of lifts from the individual algebras. Each of those lifts exists and is unique. Uniqueness ensures that the lifts agree along the maps of the system. This is our own explanation. The usual étale definition also requires finite presentation, and that condition can fail in the colimit. For example, ℚ is the directed union of the étale ℤ-algebras ℤ\[1/n\], but it is not even finitely generated as a ℤ-algebra (our own). Tag 00UR proves that the two tests agree when finite presentation holds.
+**How the definition helps.** The lifting definition makes a lift from the colimit a compatible family of lifts from the individual algebras. Each of those lifts exists and is unique, and uniqueness makes them agree along the maps of the system (our own explanation). The usual étale definition also requires finite presentation, which can fail in the colimit. For example, ℚ is the directed union of the étale ℤ-algebras ℤ\[1/n\], but it is not finitely generated as a ℤ-algebra (our own).
 
 **Paper or page:** [Algebra, Lemma 10.150.4](https://stacks.math.columbia.edu/tag/031N). It says: “If each R → Sᵢ is formally étale, then S = \\(\\operatorname{colim}<sub>i\\in I</sub> S<sub>i</sub>\\) is formally étale over R”
 
@@ -916,9 +916,9 @@
 
 **Definition.** A prime 𝔭 is associated to a module M if 𝔭 is the annihilator of one element of M. It is weakly associated if 𝔭 is a minimal prime over the annihilator of one element. Every associated prime is weakly associated.
 
-**Problem.** Over a Noetherian ring, a module is zero exactly when it has no associated primes. Also, the zerodivisors on M form the union of the associated primes. One wants these facts over every ring.
+**Problem.** Over every ring, a module M is zero exactly when it has no weakly associated primes. The zerodivisors on M form the union of its weakly associated primes.
 
-**How the definition helps.** A nonzero element has a proper annihilator, and a proper ideal always has a minimal prime over it. The quoted lemma states this, and a second lemma (Tag 05C3) describes the zerodivisors, for every ring. With associated primes this fails (our own example). Let V be a valuation ring with value group ℚ and M = V/(t), where t has value 1. Each nonzero element of M has as annihilator the ideal of elements of value at least b, for some b &gt; 0. Such an ideal is never prime, so M has no associated prime. A third lemma (Tag 058A) shows that the two notions agree for Noetherian rings, so nothing is lost there.
+**How the definition helps.** A nonzero element has a proper annihilator, and a proper ideal always has a minimal prime over it. With associated primes this fails (our own example): let V be a valuation ring with value group ℚ and M = V/(t), where t has value 1. Each nonzero element of M has as annihilator the elements of value at least b, for some b &gt; 0, and such an ideal is never prime. For Noetherian rings the two notions agree (Tag 058A), so nothing is lost there.
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.66.5](https://stacks.math.columbia.edu/tag/0588), [Stacks Project, Algebra, Lemma 10.66.7](https://stacks.math.columbia.edu/tag/05C3), [Stacks Project, Algebra, Lemma 10.66.9](https://stacks.math.columbia.edu/tag/058A). It says: “Let R be a ring. Let M be an R-module. Then M = (0) ⇔ WeakAss(M) = ∅”
 
@@ -970,7 +970,7 @@
 
 **Problem.** Every divisible module over a principal ideal domain is injective.
 
-**How the definition helps.** With Baer's test, only principal ideals need checking, and there the extension is one division. A map f on a nonzero ideal (a) is fixed by f(a) (our own). Choose q with aq = f(a), which divisibility allows, and send 1 to q (our own). The zero ideal needs no work (our own). The work moves to Baer's criterion, which shows that the test agrees with the usual definition. The nLab proves that criterion with Zorn's lemma.
+**How the definition helps.** With Baer's test, only principal ideals need checking, and there the extension is one division. A map f on a nonzero ideal (a) is fixed by f(a) (our own). Choose q with aq = f(a), which divisibility allows, and send 1 to q (our own). The work moves to Baer's criterion, which the nLab proves with Zorn's lemma.
 
 **nLab:** [Baer's criterion](https://ncatlab.org/nlab/show/Baer%27s+criterion). It says: “any morphism g : I → Q in C can be extended to all of R along the inclusion I ↪︎ R.”
 
@@ -998,11 +998,11 @@
 
 *True by definition. Confidence: medium.* MSC 13C11 (Injective and flat modules and ideals in commutative rings), 13B40. arXiv math.AC. Level 3: graduate.
 
-**Definition.** A module M over R is flat if tensoring with M keeps exact sequences exact. It is faithfully flat if, in addition, a sequence is exact whenever it becomes exact after tensoring with M. Serre introduced flatness in his 1956 paper on algebraic and analytic geometry.
+**Definition.** A module M over R is flat if tensoring with M keeps exact sequences exact. It is faithfully flat if, in addition, a sequence is exact whenever it becomes exact after tensoring with M.
 
-**Problem.** To prove a property of R-modules, such as exactness or injectivity, one often wants to prove it after a change of ring R → S. Examples are completion, or passing to a product of localizations.
+**Problem.** Let S be a faithfully flat R-algebra. A sequence of R-modules is exact, or a map is injective, exactly when this holds after tensoring with S.
 
-**How the definition helps.** The definition says exactly that exactness can be tested after base change, so the reduction is free. The work moves into recognizing faithfully flat maps. A flat map R → S is faithfully flat exactly when every prime of R is the pullback of a prime of S. Field extensions and polynomial rings are faithfully flat over their coefficients. A product of localizations R\[1/tᵢ\] is faithfully flat exactly when the tᵢ generate the unit ideal, so Zariski open covers become a special case (our own). Grothendieck showed that a certain complex built from a faithfully flat map is exact, and this is the start of descent theory (our own).
+**How the definition helps.** The definition says exactly that exactness can be tested after base change, so the reduction is free. The work moves into recognizing faithfully flat maps: a flat map R → S is faithfully flat exactly when every prime of R is the pullback of a prime of S. A product of localizations R\[1/tᵢ\] is faithfully flat exactly when the tᵢ generate the unit ideal, so Zariski open covers become a special case (our own). This is the start of descent theory (our own).
 
 **Wikipedia:** [Flat module](https://en.wikipedia.org/wiki/Flat_module). It says: “A module is faithfully flat if taking the tensor product with a sequence produces an exact sequence if and only if the original sequence is exact.”
 
@@ -1052,7 +1052,7 @@
 
 **Problem.** Over every commutative ring, free modules are torsion-free. So are flat modules, the modules M for which tensoring with M keeps exact sequences exact.
 
-**How the definition helps.** With a regular element in the definition, the ring R itself is torsion-free as a module, so free modules are torsion-free. The older domain-only definition uses any nonzero element instead. Over a ring with zero divisors that definition fails for every nonzero module, as the page says. Suppose ab = 0 with a and b nonzero, and m ≠ 0. Then either bm = 0, or a kills the nonzero element bm (our own). Over an integral domain the two definitions agree. The converse stays false: the ideal (x, y) of k\[x, y\] is torsion-free but not flat.
+**How the definition helps.** With a regular element in the definition, the ring R itself is torsion-free as a module, so free modules are torsion-free. The older domain-only definition uses any nonzero element, and over a ring with zero divisors it fails for every nonzero module, as the page says. If ab = 0 with a and b nonzero, and m ≠ 0, then either bm = 0, or a kills the nonzero element bm (our own). The converse stays false: the ideal (x, y) of k\[x, y\] is torsion-free but not flat.
 
 **Wikipedia:** [Torsion-free module](https://en.wikipedia.org/wiki/Torsion-free_module). It says: “this does not work well over more general rings, for if the ring contains zero-divisors then the only module satisfying this condition is the zero module.”
 
@@ -1064,7 +1064,7 @@
 
 *Rules out counterexamples.* MSC 13C14 (Cohen-Macaulay modules). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A module’s support consists of the primes where localization leaves it nonzero. Test a finite module for Cohen–Macaulayness by requiring depth to equal dimension at every prime in its support. Local depth counts the longest sequence in the local maximal ideal acting injectively on successive quotients. For a Noetherian local ring, the localization theorem makes this equivalent to testing only at the maximal ideal.
+**Definition.** A finite module over a Noetherian ring is Cohen–Macaulay if its depth equals its dimension at every prime of its support. The support is the set of primes where the localized module is nonzero. Over a Noetherian local ring, it is equivalent to test only at the maximal ideal.
 
 **Problem.** Every associated prime of a finite Cohen–Macaulay module over a Noetherian local ring is minimal in its support. An associated prime consists of all scalars killing some particular nonzero element.
 
@@ -1100,11 +1100,11 @@
 
 *True by definition.* MSC 13C15 (Dimension theory, depth, related commutative rings (catenary, etc.)), 13D07. arXiv math.AC. Level 3: graduate.
 
-**Definition.** Let R be a Noetherian local ring, one with a single maximal ideal 𝔪 and finitely generated ideals, and let k = R/𝔪. Define the depth of a nonzero finitely generated module M as the least i with Extⁱ(k, M) ≠ 0. Here Ext is the derived functor of Hom, which measures how far Hom is from exact. The usual definition counts the longest sequence in the maximal ideal where each element is a nonzero divisor modulo the earlier ones.
+**Definition.** Let R be a Noetherian local ring with maximal ideal 𝔪, and let k = R/𝔪. Define the depth of a nonzero finitely generated module M as the least i with Extⁱ(k, M) ≠ 0. The usual definition counts the longest sequence in 𝔪 where each element is a nonzero divisor modulo the earlier ones.
 
 **Problem.** Let 0 → N′ → N → N″ → 0 be a short exact sequence of nonzero finitely generated modules over a Noetherian local ring. Then depth(N) ≥ min{depth(N′), depth(N″)}.
 
-**How the definition helps.** With this definition, the bound is read off from the long exact sequence of Ext. That sequence contains Extⁱ(k, N′) → Extⁱ(k, N) → Extⁱ(k, N″) (our own). Below both outer depths, the outer groups are zero, so the middle one is zero too (our own). The work moves to Stacks Lemma 10.72.5, which shows that the Ext definition agrees with the usual one. With regular sequences, the bound needs a separate induction (our own).
+**How the definition helps.** With this definition, the bound is read off from the long exact sequence Extⁱ(k, N′) → Extⁱ(k, N) → Extⁱ(k, N″) (our own). Below both outer depths, the outer groups are zero, so the middle one is zero too (our own). The work moves to Stacks Lemma 10.72.5, which shows that the Ext definition agrees with the usual one. With regular sequences, the bound needs a separate induction (our own).
 
 **Paper or page:** [Algebra, Lemma 10.72.6.](https://stacks.math.columbia.edu/tag/00LX), [Algebra, Lemma 10.72.5.](https://stacks.math.columbia.edu/tag/00LW). It says: “depth(N) ≥ min{depth(N′), depth(N″)}”
 
@@ -1120,7 +1120,7 @@
 
 **Problem.** Fitting ideals of finite modules commute with extension of scalars along every ring map.
 
-**How the definition helps.** Ring maps preserve determinants, so the same matrix gives the transformed ideal (our own). Tensoring a presentation still presents the module after extending scalars (our own). The work lies in showing that the ideal depends only on the module (our own). The zeroth Fitting ideal describes the same supporting primes as the annihilator, the ideal of scalars killing the module (our own). The annihilator can acquire extra elements after extending scalars (our own).
+**How the definition helps.** Ring maps preserve determinants, so the same matrix gives the transformed ideal (our own). Tensoring a presentation still presents the module after extending scalars (our own). The work lies in showing that the ideal depends only on the module (our own).
 
 **Paper or page:** [More Algebra, Lemma 15.8.4.](https://stacks.math.columbia.edu/tag/07ZA). It says: “If $R \\to R'$ is a ring map, then $\\text{Fit}<sub>k</sub>(M \\otimes<sub>R</sub> R')$ is the ideal of $R'$ generated by the image of $\\text{Fit}<sub>k</sub>(M)$.”
 
@@ -1134,9 +1134,9 @@
 
 **Definition.** Take a finitely generated module M with a presentation Rᵐ → Rⁿ → M → 0. Its k-th Fitting ideal is generated by the minors of size n − k of the presentation matrix. It does not depend on the presentation, and it commutes with base change.
 
-**Problem.** For a finite type quasi-coherent sheaf ℱ on a scheme S, find the universal subscheme over which ℱ becomes locally free of rank r. This is a first step towards flattening stratifications.
+**Problem.** Let ℱ be a finite type quasi-coherent sheaf on a scheme S, and let Zₖ be the closed subscheme cut out by its k-th Fitting ideal. The maps T → S over which the pullback of ℱ is locally free of rank r are exactly those that factor through Zᵣ₋₁ ∖ Zᵣ.
 
-**How the definition helps.** Fitting ideals are defined by minors, so they commute with base change. So a condition on them is automatically a condition over every T mapping to S. A finite module is locally free of rank r exactly when two conditions hold (our own). Its r-th Fitting ideal is the whole ring, and its (r − 1)-th is zero. The quoted lemma turns this into a locally closed subscheme. A pointwise test by fibre dimension would give the wrong scheme structure (our own example). Over R = k\[ε\]/(ε²), the module R/(ε) has fibre dimension 1 but is not free, and the rank-1 locus is the reduced point only.
+**How the definition helps.** Fitting ideals commute with base change, so a condition on them is automatically a condition over every T mapping to S. A finite module is locally free of rank r exactly when its r-th Fitting ideal is the whole ring and its (r − 1)-th is zero (our own). A pointwise test by fibre dimension would give the wrong scheme structure (our own example). Over k\[ε\]/(ε²), the module R/(ε) has fibre dimension 1 but is not free, and the rank-1 locus is the reduced point only.
 
 **Paper or page:** [Stacks Project, Divisors, Lemma 31.9.6](https://stacks.math.columbia.edu/tag/05P8). It says: “The closed subschemes … defined by the Fitting ideals of ℱ have the following properties … The functor Fᵣ … is representable by the locally closed subscheme Zᵣ₋₁ ∖ Zᵣ of S.”
 
@@ -1170,7 +1170,7 @@
 
 **Problem.** Let φ be a nonzero linear functional on a vector space over a field. Then its Koszul complex has zero homology in every degree. That is, every x with d(x) = 0 equals d(y) for some y.
 
-**How the definition helps.** With this definition, one short identity shows that every cycle is a boundary. Choose v with φ(v) = 1. The product rule gives d(v ∧ x) + v ∧ d(x) = x for every x. So if d(x) = 0, then x = d(v ∧ x). With the coordinate formula, the same identity needs an index computation. The work moves into showing that a map with these properties exists and agrees with the coordinate formula. These steps are our own, and the nLab gives the coordinate description.
+**How the definition helps.** With this definition, one short identity shows that every cycle is a boundary. Choose v with φ(v) = 1; the product rule gives d(v ∧ x) + v ∧ d(x) = x for every x. So if d(x) = 0, then x = d(v ∧ x). With the coordinate formula, the same identity needs an index computation (these steps are our own).
 
 **nLab:** [Koszul complex](https://ncatlab.org/nlab/show/Koszul+complex). It says: “The differential can be obtained from the faces of the obvious Koszul semi-simplicial R-module”
 
@@ -1184,9 +1184,9 @@
 
 **Definition.** A sequence f₁, …, fᵣ is regular if each fᵢ is a nonzerodivisor modulo the earlier ones. It is Koszul-regular if its Koszul complex, a standard finite complex of free modules built from the fᵢ, has no homology except in degree 0. The Koszul complex does not change, up to isomorphism, when the fᵢ are permuted.
 
-**Problem.** Define regular immersions, also called local complete intersections, for all schemes, so that the notion is local and independent of the chosen generators. Regular sequences fail this in general.
+**Problem.** Koszul-regularity of a sequence does not depend on its order, but regularity can. On a locally Noetherian scheme, regular and Koszul-regular ideal sheaves are the same.
 
-**How the definition helps.** The Koszul complex is symmetric in the fᵢ, so Koszul-regularity cannot depend on their order. Regular sequences can (our own, a standard example). In k\[x, y, z\], the sequence x, y(1 − x), z(1 − x) is regular, but y(1 − x), z(1 − x), x is not. The quoted lemma shows that the notions agree on locally Noetherian schemes, so nothing is lost there. Another lemma in the data set (Tag 08SJ) shows that a Koszul-regular kernel I gives the simple cotangent complex I/I²\[1\]. Outside the Noetherian case the four notions can differ, and one must choose (our own).
+**How the definition helps.** The Koszul complex is symmetric in the fᵢ, so Koszul-regularity cannot depend on their order. Regular sequences can (our own, a standard example): in k\[x, y, z\], the sequence x, y(1 − x), z(1 − x) is regular, but y(1 − x), z(1 − x), x is not. So Koszul-regularity gives a notion of regular immersion that is local and independent of the chosen generators. Outside the Noetherian case the notions can differ, and one must choose (our own).
 
 **Paper or page:** [Stacks Project, Divisors, Lemma 31.20.8](https://stacks.math.columbia.edu/tag/063I), [Stacks Project, Divisors, Lemma 31.20.1](https://stacks.math.columbia.edu/tag/063C), [Stacks Project, Cotangent, Lemma 92.14.2](https://stacks.math.columbia.edu/tag/08SJ). It says: “In particular, on a locally Noetherian scheme the notions of regular, Koszul-regular, H₁-regular, or quasi-regular ideal sheaf all agree.”
 
@@ -1220,9 +1220,9 @@
 
 **Definition.** A complex of R-modules is perfect if it is quasi-isomorphic to a bounded complex of finite projective modules. An object K of a triangulated category is compact if Hom(K, −) commutes with arbitrary direct sums. D(R) is the derived category of R-modules.
 
-**Problem.** Describe perfect complexes by a property of the derived category alone, without resolutions. Then the notion transfers to settings with few projective objects, such as schemes.
+**Problem.** For any ring R, a complex is perfect exactly when it is a compact object of D(R).
 
-**How the definition helps.** Compactness uses only Hom and direct sums, so it is kept by every equivalence of triangulated categories. The quoted proposition shows that it agrees with perfectness over any ring. On a scheme, finite projective modules do not give global resolutions, but compactness still makes sense (our own). Neeman used this to prove Grothendieck duality with Brown representability (our own summary of the cited paper). There, the compact objects for a quasi-compact separated scheme are the perfect complexes. The hard part there is to show that the perfect complexes generate the whole category (our own).
+**How the definition helps.** Compactness uses only Hom and direct sums, so it is kept by every equivalence of triangulated categories. On a scheme, finite projective modules do not give global resolutions, but compactness still makes sense (our own). Neeman used this to prove Grothendieck duality with Brown representability (our own summary of the cited paper). The hard part there is to show that the perfect complexes generate the whole category (our own).
 
 **Paper or page:** [Stacks Project, More Algebra, Proposition 15.79.3](https://stacks.math.columbia.edu/tag/07LT). It says: “Let R be a ring. For an object K of D(R) the following are equivalent (1) K is perfect, and (2) K is a compact object of D(R).”
 
@@ -1239,9 +1239,9 @@
 
 **Definition.** A complex of R-modules is pseudo-coherent if it is quasi-isomorphic to a bounded above complex of finite free modules. For a module, this means a resolution by finite free modules, as long as one likes. D⁻(R) is the derived category of complexes with bounded above cohomology.
 
-**Problem.** Over a Noetherian ring, complexes with finitely generated cohomology form a good class for duality and base change. Over a non-Noetherian ring this class is not closed under cones, because kernels of maps between finite modules need not be finite.
+**Problem.** Over a Noetherian ring R, a complex is pseudo-coherent exactly when it lies in D⁻(R) and all its cohomology modules are finitely generated.
 
-**How the definition helps.** Cones and derived base change keep resolutions by finite free modules (our own). So pseudo-coherent complexes form a good class over any ring. Finite cohomology is not kept (our own example). Over k\[x₁, x₂, …\], the map to k that sends every xᵢ to 0 has a kernel that is not finitely generated. The quoted lemma shows that over Noetherian rings the new notion is the old one, so classical results still apply. The idea is Illusie's, from SGA 6 (our own). In particular, over a Noetherian ring a module is pseudo-coherent exactly when it is finite, by the same lemma.
+**How the definition helps.** Cones and derived base change keep resolutions by finite free modules, so pseudo-coherent complexes form a good class over any ring (our own). Finite cohomology is not kept (our own example). Over k\[x₁, x₂, …\], the map to k that sends every xᵢ to 0 has a kernel that is not finitely generated. The theorem shows that over Noetherian rings the new notion is the old one, so classical results still apply.
 
 **Paper or page:** [Stacks Project, More Algebra, Lemma 15.65.17](https://stacks.math.columbia.edu/tag/066E). It says: “Let R be a Noetherian ring. Then … (2) A complex of R-modules K is pseudo-coherent if and only if K ∈ D⁻(R) and Hⁱ(K) is a finite R-module for all i.”
 
@@ -1257,9 +1257,9 @@
 
 **Definition.** The punctured spectrum consists of all prime ideals of a local ring except its maximal ideal. Local cohomology at the maximal ideal measures sections supported at that point and the higher groups obtained by deriving this operation. Depth is the first degree where these groups are nonzero.
 
-**Problem.** The punctured spectrum of a Noetherian local ring of depth at least two is connected. The punctured spectrum omits the maximal ideal.
+**Problem.** The punctured spectrum of a Noetherian local ring of depth at least two is connected.
 
-**How the definition helps.** The depth test makes the first two local cohomology groups vanish, so every section on the puncture extends uniquely (our own). This follows from the exact sequence for restriction (our own). A disconnection would give a section equal to one on one part and zero on the other (our own). Its extension would satisfy e² = e, but a local ring has only zero and one as such elements (our own). A comparison theorem identifies this depth with the longest regular sequence in the maximal ideal (our own). In depth one, removing the closed point of k\[\[x,y\]\]/(xy) separates the two axes (our own).
+**How the definition helps.** The depth test makes the first two local cohomology groups vanish, so every section on the puncture extends uniquely (our own). A disconnection would give a section equal to one on one part and zero on the other (our own). Its extension would satisfy e² = e, but a local ring has only zero and one as such elements (our own). In depth one, removing the closed point of k\[\[x,y\]\]/(xy) separates the two axes (our own).
 
 **Paper or page:** [Local Cohomology, Lemma 51.3.1.](https://stacks.math.columbia.edu/tag/0BLR). It says: “Let $A$ be a Noetherian local ring of depth $\\geq 2$. Then the punctured spectra of $A$, $A<sup>h$</sup>, and $A<sup>sh</sup>$ are connected.”
 
@@ -1325,7 +1325,7 @@
 
 **Problem.** Over a coherent ring, every finitely presented module has a free resolution with finite rank in each degree.
 
-**How the definition helps.** With this definition, each kernel in the resolution is again finitely presented, so the next step is again finite. Map a finite free module onto the given module (our own). Its kernel is finitely presented by the definition, so a finite free module maps onto it (our own). Repeating this step builds the resolution (our own). The work moves to proving that the condition on ideals forces such kernels to be finitely presented (our own). The nLab states a related form, with resolutions by finitely presented projective modules.
+**How the definition helps.** With this definition, each kernel in the resolution is again finitely presented, so the next step is again finite. Map a finite free module onto the given module; its kernel is finitely presented, so a finite free module maps onto it (our own). Repeating this step builds the resolution (our own). The work moves to proving that the condition on ideals forces such kernels to be finitely presented (our own).
 
 **nLab:** [coherent ring](https://ncatlab.org/nlab/show/coherent+ring). It says: “A ring is left coherent iff every finitely presented left module has a resolution by finitely presented projective left modules.”
 
@@ -1339,9 +1339,9 @@
 
 **Definition.** A module M is finitely presented if it is the cokernel of a map between finite free modules. It is flat if tensoring with M keeps injective maps injective. It is finite projective if it is a direct summand of a finite free module. It is finite locally free if it becomes free of finite rank after inverting suitable elements that generate the unit ideal.
 
-**Problem.** Over a Noetherian local ring, finite flat modules are free. Over a general ring, one wants to know when flat, projective and locally free agree.
+**Problem.** A module is finite projective exactly when it is finitely presented and flat. Finite projective modules are the same as finite locally free modules.
 
-**How the definition helps.** Finite presentation lets freeness at one prime spread to a neighbourhood, so a pointwise property becomes a local one (our own summary). A second lemma in the data set (Tag 00NX) lists eight equivalent forms of this. Finite generation alone is not enough (our own example). Let R be a product of infinitely many copies of a field and I the ideal of sequences with finitely many nonzero entries. Every R-module is flat, because R is absolutely flat, but R/I is not projective, since I is not generated by an idempotent. Finite presentation rules out exactly this, because then the ideal I would be finitely generated.
+**How the definition helps.** Finite presentation lets freeness at one prime spread to a neighbourhood, so a pointwise property becomes a local one (our own summary). Finite generation alone is not enough (our own example). Let R be a product of infinitely many copies of a field and I the ideal of sequences with finitely many nonzero entries. Every R-module is flat, but R/I is not projective, since I is not finitely generated and so R/I is not finitely presented.
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.83.1](https://stacks.math.columbia.edu/tag/058R), [Stacks Project, Algebra, Lemma 10.78.2](https://stacks.math.columbia.edu/tag/00NX). It says: “Let M be an R-module. Then M is finite projective if and only if M is finitely presented and flat.”
 
@@ -1356,11 +1356,11 @@
 
 *True by definition.* MSC 13E15 (Commutative rings and modules of finite generation or presentation; number of generators), 18A30. arXiv math.AC, math.CT. Level 3: graduate.
 
-**Definition.** A module is finitely presented if it is the cokernel of a map between finite free modules. A ring map R → S is of finite presentation if S is a polynomial ring in finitely many variables modulo a finitely generated ideal. A filtered colimit is a colimit over a directed system, such as the union of a chain.
+**Definition.** A module is finitely presented if it is the cokernel of a map between finite free modules. A filtered colimit is a colimit over a directed system, such as the union of a chain.
 
-**Problem.** Limit arguments reduce statements about a ring to statements about its finitely generated subrings. They need that maps out of an object into a filtered colimit come from a finite stage.
+**Problem.** An R-module N is finitely presented exactly when, for every filtered colimit M = colim Mᵢ, the map colim Hom(N, Mᵢ) → Hom(N, M) is bijective. So every map from N into M comes from a finite stage.
 
-**How the definition helps.** With finitely many generators and relations, a map into a colimit and its relations are all visible at one finite stage. Finite generation alone is not enough. Then the map of the lemma is injective but can fail to be surjective (our own). In category theory this property defines a compact, or finitely presented, object. The CRing Project states that the compact R-modules are the finitely presented ones. So the colimit statement becomes true by definition, and the work moves into the quoted lemma showing that the two notions agree. A second lemma (Tag 00QO) does the same for algebras of finite presentation.
+**How the definition helps.** With finitely many generators and relations, a map into a colimit and its relations are all visible at one finite stage. For N only finitely generated, the map is injective but can fail to be surjective (our own). In category theory this property defines a compact object, so the two notions of finitely presented agree. Limit arguments that reduce to finitely generated subrings rest on this.
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.11.4](https://stacks.math.columbia.edu/tag/0G8P), [Stacks Project, Algebra, Lemma 10.127.3](https://stacks.math.columbia.edu/tag/00QO), [The CRing Project, Various, Proposition 3.3](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Let N be an R-module. The following are equivalent (1) N is a finitely presented R-module, (2) for any filtered colimit M = colim Mᵢ of R-modules the map colim Hom(N, Mᵢ) → Hom(N, M) is bijective.”
 
@@ -1380,7 +1380,7 @@
 
 **Problem.** Let R be a Dedekind domain with fraction field K, and let L be a finite extension of K. Then the integral closure of R in L is again a Dedekind domain. Also, a Noetherian domain is Dedekind exactly when all its localizations at maximal ideals are.
 
-**How the definition helps.** The defining conditions pass to integral closures in finite extensions and to localizations, so the class is closed under the operations of number theory. The integral closure step uses the Krull–Akizuki theorem. Starting from ℤ, this shows at once that every ring of integers of a number field is Dedekind. Principal ideal domains fail the first property: ℤ is one, but its integral closure ℤ\[√−5\] in ℚ(√−5) is not (our own). So number theory takes Dedekind domains as its basic objects and measures the gap to principal ideal domains with the ideal class group.
+**How the definition helps.** The defining conditions pass to integral closures in finite extensions and to localizations, so the class is closed under the operations of number theory. The integral closure step uses the Krull–Akizuki theorem, and starting from ℤ it shows that every ring of integers of a number field is Dedekind. Principal ideal domains fail the first property: ℤ is one, but its integral closure ℤ\[√−5\] in ℚ(√−5) is not (our own).
 
 **Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “By the 20th century, algebraists and number theorists had come to realize that the condition of being a PID is rather delicate, whereas the condition of being a Dedekind domain is quite robust.”
 
@@ -1396,7 +1396,7 @@
 
 **Problem.** Over a Prüfer domain, the tensor product of two torsion-free modules is torsion-free.
 
-**How the definition helps.** With this definition, one factor is flat, so tensoring keeps multiplication by a scalar injective. Let M and N be torsion-free, and let a be a nonzero scalar (our own). Multiplication by a on N is injective (our own). Tensoring with the flat module M keeps it injective, and the result is multiplication by a on M ⊗ N (our own). The work moves to proving that this definition agrees with the usual one. Wikipedia lists both conditions, and the tensor property, among its equivalent conditions.
+**How the definition helps.** With this definition, one factor is flat, so tensoring keeps multiplication by a scalar injective. Let M and N be torsion-free, and let a be a nonzero scalar; multiplication by a on N is injective (our own). Tensoring with the flat module M keeps it injective, and the result is multiplication by a on M ⊗ N (our own). The work moves to proving that this definition agrees with the usual one.
 
 **Wikipedia:** [Prüfer domain](https://en.wikipedia.org/wiki/Pr%C3%BCfer_domain). It says: “If M and N are torsion-free R-modules then their tensor product M ⊗ᵣ N is torsion-free.”
 
@@ -1412,7 +1412,7 @@
 
 **Problem.** Newton–Puiseux theorem: take a polynomial equation P(x, y) = 0 with complex coefficients. Every solution y near x = 0 is a Puiseux series in x that converges near 0. In modern terms, Puiseux series over an algebraically closed field of characteristic 0 form an algebraically closed field.
 
-**How the definition helps.** Branch points need roots of x, and fractional exponents supply them, so every branch becomes an ordinary series in an n-th root of x. Ordinary power series cannot do it. The equation y² = x has the solutions ±√x, which are not power series in x (our own example). Bounded denominators keep the set a field, because each series lies in Laurent series in one n-th root of x. The result needs characteristic 0. In characteristic p, the equation yᵖ − y = 1/x has no Puiseux series root (our own). The proof uses the Newton polygon, which finds the leading exponent of each root.
+**How the definition helps.** Branch points need roots of x, and fractional exponents supply them, so every branch becomes an ordinary series in an n-th root of x. Ordinary power series cannot do it: y² = x has the solutions ±√x, which are not power series in x (our own example). Bounded denominators keep the set a field, because each series lies in Laurent series in one n-th root of x. The result needs characteristic 0: in characteristic p, yᵖ − y = 1/x has no Puiseux series root (our own).
 
 **Wikipedia:** [Puiseux series](https://en.wikipedia.org/wiki/Puiseux_series). It says: “Using modern terminology, Puiseux's theorem asserts that the set of Puiseux series over an algebraically closed field of characteristic 0 is itself an algebraically closed field, called the field of Puiseux series.”
 
@@ -1426,9 +1426,9 @@
 
 **Definition.** Let k be a commutative ring and G a linearly ordered abelian group. The Novikov ring is the set of functions f : G → k such that, for each y ∈ G, only finitely many x &lt; y have f(x) ≠ 0. Addition is pointwise. Multiplication is (f·g)(z) = Σ f(x)g(y), the sum over all x and y with x + y = z.
 
-**Problem.** We want a ring of formal series Σ f(x)tˣ with real or other non-integer exponents, in which the product is well defined. When k is a field, this ring should be a field.
+**Problem.** The Novikov ring is a ring: the product of two left-finite functions has finite sums as coefficients and is again left-finite.
 
-**How the definition helps.** Left-finiteness makes each coefficient of a product a finite sum. Without a support condition, the sum for (f·g)(z) can have infinitely many non-zero terms. An example is two series whose support is all of ℤ ⊂ ℝ. With left-finiteness, let y₀ be the least exponent of g. Then only the finitely many x ≤ z − y₀ in the support of f can contribute. The nLab notes that the argument needs G to be totally ordered and a group, and fails for partially ordered monoids. The page states, but does not prove, that a field k gives a field.
+**How the definition helps.** Left-finiteness makes each coefficient of a product a finite sum. Without a support condition, the sum for (f·g)(z) can have infinitely many nonzero terms, for example for two series whose support is all of ℤ ⊂ ℝ. With left-finiteness, let y₀ be the least exponent of g; then only the finitely many x ≤ z − y₀ in the support of f can contribute. The nLab notes that the argument needs G to be totally ordered and a group, and it states without proof that a field k gives a field.
 
 **nLab:** [Novikov field](https://ncatlab.org/nlab/show/Novikov+field). It says: “Left-finiteness of the support of f and g implies that the above sum is finite.”
 
@@ -1444,7 +1444,7 @@
 
 **Problem.** Every valuation ring D comes from a valuation, with D the set of elements of value at least 0.
 
-**How the definition helps.** With general ordered groups allowed, the value group can be taken as K×/D×, ordered by divisibility, so the theorem is almost a definition. The page credits this theorem to Krull. If values had to be real numbers, the theorem would fail. Valuation rings of Krull dimension 2 can have the value group ℤ × ℤ in lexicographic order (our own). That group does not embed in ℝ as an ordered group (our own). The page says that height one is exactly the case of subgroups of ℝ. What stays hard is the theory of value groups and the subgroups that match prime ideals.
+**How the definition helps.** With general ordered groups allowed, the value group can be taken as K×/D×, ordered by divisibility, so the theorem is almost a definition. If values had to be real numbers, the theorem would fail. Valuation rings of Krull dimension 2 can have the value group ℤ × ℤ in lexicographic order, which does not embed in ℝ as an ordered group (our own). The page says that height one is exactly the case of subgroups of ℝ.
 
 **Wikipedia:** [Valuation ring](https://en.wikipedia.org/wiki/Valuation_ring). It says: “take Γ to be the quotient K×/D× of the unit group of K by the unit group of D, and take ν to be the natural projection.”
 
@@ -1460,7 +1460,7 @@
 
 **Definition.** A discrete valuation ring is a Noetherian local domain whose maximal ideal has one nonzero generator. A local ring has one maximal ideal, and Noetherian means every ideal has finitely many generators.
 
-**Problem.** In a discrete valuation ring, each nonzero element is a unit times a power of the maximal ideal generator. Can this fail in a valuation ring whose maximal ideal still has one generator?
+**Problem.** In a discrete valuation ring, each nonzero element is a unit times a power of a generator of the maximal ideal. This can fail in a valuation ring that is not Noetherian, even when its maximal ideal has one generator.
 
 **How the definition helps.** The Noetherian condition forces the powers of the maximal ideal to have zero intersection, by Krull’s intersection theorem (our own). Without it, take pairs of integers ordered first by the first coordinate and then by the second (our own). In the iterated Laurent series field k((u))((t)), record the lowest t exponent and the lowest u exponent in its coefficient (our own). In the ring of nonnegative values, u has the smallest positive value, (0,1), so it generates the maximal ideal (our own). Yet t has value (1,0), so every power of u divides t (our own).
 
@@ -1496,7 +1496,7 @@
 
 **Problem.** In a valuation ring, any two ideals are comparable: one contains the other.
 
-**How the definition helps.** The inverse test compares ideals by comparing the quotient of two elements. Suppose a lies in I but not in J, and take a nonzero b in J. If a/b lies in A, then a lies in J, a contradiction. So b/a lies in A, which puts b in I. Thus J is contained in I. This argument is our own. The work behind the choice is the comparison with maximality for domination (Tags 00IB and 052K).
+**How the definition helps.** The inverse test compares ideals by comparing the quotient of two elements. Suppose a lies in I but not in J, and take a nonzero b in J. If a/b lies in A, then a lies in J, a contradiction; so b/a lies in A, which puts b in I (our own argument). The work behind the choice is the comparison with maximality for domination (Tags 00IB and 052K).
 
 **Wikipedia:** [Valuation ring](https://en.wikipedia.org/wiki/Valuation_ring). It says: “Another way to characterize the valuation rings of a field F is that valuation rings D of F have F as their field of fractions, and their ideals are totally ordered by inclusion”
 
@@ -1566,9 +1566,9 @@
 
 **Definition.** A valuation ring of a field K is a subring D such that, for every nonzero x in K, x or 1/x lies in D.
 
-**Problem.** Describe the integral closure of a domain A, the set of fractions that are roots of monic polynomials over A. Show that it is the intersection of all valuation rings of K that contain A.
+**Problem.** The integral closure of a domain A in its fraction field K is the intersection of all valuation rings of K that contain A.
 
-**How the definition helps.** The condition that x or 1/x lies in D makes it easy to show that valuation rings are integrally closed, as follows (our own). If x is integral over D but not in D, then 1/x is in D. Divide the monic equation of x by a power of x. This writes x as a polynomial in 1/x with coefficients in D, so x is in D after all. The other inclusion is the real work. For each x not integral over A, Zorn's lemma gives a valuation ring that contains A but not x. Krull proved that every such ring comes from a valuation with values in an ordered group.
+**How the definition helps.** The condition that x or 1/x lies in D makes it easy to show that valuation rings are integrally closed (our own). If x is integral over D but not in D, then 1/x is in D, and dividing the monic equation of x by a power of x writes x as a polynomial in 1/x over D. The other inclusion is the real work. For each x not integral over A, Zorn's lemma gives a valuation ring that contains A but not x.
 
 **Wikipedia:** [Valuation ring](https://en.wikipedia.org/wiki/Valuation_ring). It says: “In fact, the integral closure of an integral domain A in the field of fractions K of A is the intersection of all valuation rings of K containing A.”
 
@@ -1632,9 +1632,9 @@
 
 **Definition.** A Noetherian ring is excellent if three conditions hold. First, the map from each local ring to its completion is regular, a technical smoothness condition. Second, in every finitely generated algebra over it, the regular points form an open set. Third, in every finitely generated algebra, all maximal chains of primes between two given primes have the same length.
 
-**Problem.** Good properties should pass from a local ring to its completion and to finitely generated algebras. A normal (integrally closed) local ring should have a normal completion. The integral closure of a domain should be a finitely generated module, and the singular points should form a closed set.
+**Problem.** Let A be an excellent ring. If A is a domain, its integral closure is a finitely generated A-module. If A is a normal local ring, its completion is normal, and the singular points of every finitely generated A-algebra form a closed set.
 
-**How the definition helps.** Grothendieck in 1965 chose conditions that rule out the known bad Noetherian rings. The open regular set holds by definition, and other good properties follow as theorems, such as finite integral closures. One excluded ring is a normal Noetherian local ring whose completion is not normal. Another is a one-dimensional Noetherian domain whose integral closure is not finitely generated and whose singular points are not closed. A third is Nagata's local ring whose chains of primes have equal length, but not after passing to a finitely generated algebra. The work moves into showing that common rings are excellent: fields, ℤ, complete Noetherian local rings, and their finitely generated algebras and localizations. Quasi-excellent rings, those meeting the first two conditions, are conjectured to be where singularities can be resolved, that is, removed by a suitable birational map.
+**How the definition helps.** Grothendieck in 1965 chose conditions that rule out the known bad Noetherian rings. One excluded ring is a normal Noetherian local ring whose completion is not normal. Another is a one-dimensional Noetherian domain whose integral closure is not finitely generated and whose singular points are not closed. The work moves into showing that common rings are excellent: fields, ℤ, complete Noetherian local rings, and their finitely generated algebras and localizations.
 
 **Wikipedia:** [Excellent ring](https://en.wikipedia.org/wiki/Excellent_ring), [Nagata ring](https://en.wikipedia.org/wiki/Nagata_ring), [Catenary ring](https://en.wikipedia.org/wiki/Catenary_ring). It says: “At one time it seemed that the class of Noetherian rings might be an answer to this problem, but Masayoshi Nagata and others found several strange counterexamples showing that in general Noetherian rings need not be well-behaved”
 
@@ -1650,9 +1650,9 @@
 
 **Definition.** The Krull dimension of a ring is the length of its longest chain of prime ideals. A Noetherian local ring is regular if its maximal ideal has as many generators as this dimension. Serre proved that this is the same as finite global dimension. So every module has a finite projective resolution: a finite exact sequence of projective modules that ends in the module.
 
-**Problem.** Geometry suggests that a variety smooth at a point is smooth at nearby points. In algebra: the localization of a regular local ring at a prime ideal should be regular. Before homological methods this was unsolved.
+**Problem.** The localization of a regular local ring at a prime ideal is a regular local ring.
 
-**How the definition helps.** With Serre's homological description, the result needs only that localization keeps finite projective resolutions finite. Localization is exact and sends projective modules to projective modules, so this is short (our own). The work moves into Serre's theorem that the two definitions agree. The same homological methods let Auslander and Buchsbaum prove that every regular local ring is a unique factorization domain. Serre also used finite global dimension to define regular rings that are not local.
+**How the definition helps.** With Serre's homological description, the result needs only that localization keeps finite projective resolutions finite. Localization is exact and sends projective modules to projective modules, so this is short (our own). The work moves into Serre's theorem that the two definitions agree. Before homological methods this problem was open.
 
 **Wikipedia:** [Regular local ring](https://en.wikipedia.org/wiki/Regular_local_ring), [Global dimension](https://en.wikipedia.org/wiki/Global_dimension). It says: “It is easy to show that the property of having finite global dimension is preserved under localization, and consequently that localizations of regular local rings at prime ideals are again regular.”
 
@@ -1684,9 +1684,9 @@
 
 **Definition.** A Noetherian local ring is regular if its maximal ideal is generated by as many elements as its Krull dimension. The local ring of a variety at a point is made from the functions defined near the point.
 
-**Problem.** The Jacobian criterion defines a nonsingular point by the rank of a matrix of partial derivatives of chosen equations. It is not clear that the answer does not depend on the equations or on the embedding in affine space.
+**Problem.** Over a perfect field, a point of a variety is nonsingular by the Jacobian criterion exactly when its local ring is regular. So nonsingularity does not depend on the equations or on the embedding in affine space.
 
-**How the definition helps.** The local ring at a point depends only on the variety near the point, so a property of it cannot depend on equations. Zariski proved that, over a perfect field, a point is nonsingular by the Jacobian criterion exactly when its local ring is regular. So independence of the embedding is free once smoothness means regularity; the work moves into Zariski's theorem. Zariski observed that the equivalence can fail over fields that are not perfect. Krull had defined regular local rings in 1937, but Zariski's work made them important.
+**How the definition helps.** The local ring at a point depends only on the variety near the point, so a property of it cannot depend on equations. Zariski proved the equivalence with the Jacobian criterion, and the work moves into that theorem. Zariski observed that the equivalence can fail over fields that are not perfect.
 
 **Wikipedia:** [Regular local ring](https://en.wikipedia.org/wiki/Regular_local_ring). It says: “This implies that smoothness is an intrinsic property of the variety, in other words it does not depend on where or how the variety is embedded in affine space.”
 
@@ -1741,7 +1741,7 @@
 
 **Problem.** If R is Cohen–Macaulay and S is a multiplicatively closed subset, then S⁻¹R is Cohen–Macaulay.
 
-**How the definition helps.** Testing every prime makes the claim follow from how localizations compose. Each prime of S⁻¹R comes from a prime of R disjoint from S. Localizing at that prime of S⁻¹R gives the same local ring as localizing R at the corresponding prime. This is our own account of the argument. Starting with tests at maximal ideals alone, one needs the theorem that Cohen–Macaulay local rings stay Cohen–Macaulay at every prime. Tag 00NB proves this and thus shows why the two definitions agree.
+**How the definition helps.** Testing every prime makes the claim follow from how localizations compose. Each prime of S⁻¹R comes from a prime of R disjoint from S, and localizing at it gives the same local ring as localizing R at that prime (our own account). Starting with tests at maximal ideals alone, one needs the theorem that Cohen–Macaulay local rings stay Cohen–Macaulay at every prime. Tag 00NB proves this.
 
 **Paper or page:** [Homological Local, Theorem 4.18](https://math.uchicago.edu/~amathew/CRing.pdf), [Algebra, Lemma 10.104.5](https://stacks.math.columbia.edu/tag/00NB). It says: “That is, its localizations at any prime—or, though we haven't proved yet, at any maximal ideal—are.”
 
@@ -1759,7 +1759,7 @@
 
 **Problem.** Take a surjective degree-preserving map between two such Gorenstein algebras over the same field. If their highest nonzero degrees agree, the map is an isomorphism.
 
-**How the definition helps.** The socle line is the entire top degree, so a surjection nonzero there cannot have a nonzero kernel (our own). Every nonzero graded ideal meets the socle because its highest nonzero degree is killed by all positive degrees (our own). The comparison with self-injectivity is the zero-dimensional Gorenstein criterion (our own). If the socle has two dimensions, k\[x,y\]/(x²,xy,y²) can surject onto k\[y\]/(y²) without changing the highest degree (our own).
+**How the definition helps.** Every nonzero graded ideal meets the socle, because its part in its highest nonzero degree is killed by all positive degrees (our own). In a Gorenstein algebra the socle is one line, the whole top degree, so a nonzero kernel would contain the top degree (our own). Then the map would vanish in the top degree, which the target needs (our own). If the socle has dimension two, k\[x,y\]/(x²,xy,y²) surjects onto k\[y\]/(y²) with the same highest degree (our own).
 
 **Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “R is not Gorenstein because the socle has dimension 2 (not 1) as a k-vector space, spanned by x and y.”
 
@@ -1775,11 +1775,11 @@
 
 *Rules out counterexamples.* MSC 13H15 (Multiplicity theory and related topics). arXiv math.AC. Level 3: graduate.
 
-**Definition.** In a local ring of dimension d, a parameter ideal has d generators and only the maximal ideal contains it among prime ideals. A Noetherian local ring is Cohen–Macaulay exactly when every such list of parameters is regular. Regular means each element acts injectively after quotienting by its predecessors.
+**Definition.** A system of parameters in a local ring of dimension d is a list of d elements whose ideal has only the maximal ideal as a prime above it. A Noetherian local ring is Cohen–Macaulay when every system of parameters is a regular sequence. Regular means that each element is a nonzerodivisor modulo the earlier ones.
 
-**Problem.** In a Noetherian Cohen–Macaulay local ring, a parameter ideal has multiplicity equal to the length of its quotient. Length counts simple factors in a composition series. Multiplicity is the leading coefficient of the polynomial giving lengths modulo successive ideal powers, multiplied by the factorial of the ring dimension.
+**Problem.** In a Noetherian Cohen–Macaulay local ring R, the multiplicity of a parameter ideal I equals the length of R/I.
 
-**How the definition helps.** Regular parameters leave only the quotient in Serre’s alternating sum for multiplicity (our own). The other terms measure failures of exactness in the Koszul complex built from the parameters, and regularity makes them vanish (our own). The proof uses Serre’s formula and the characterization of Cohen–Macaulay rings by regular parameters (our own). For a counterexample, quotient the formal power series ring k\[\[t,u,v\]\] by the ideal (u²,uv,v²,tu,tv), with k a field (our own). Modulo t, the basis is 1, u, v (our own). Modulo its nth power, the length is n + 2 for n ≥ 1, giving multiplicity one (our own).
+**How the definition helps.** Serre's formula writes the multiplicity as an alternating sum of lengths of Koszul homology, and a regular sequence kills every term except R/I (our own). Without the Cohen–Macaulay condition the claim fails (our own). In k\[\[t,u,v\]\]/(u²,uv,v²,tu,tv), with k a field, the parameter t gives a quotient of length 3 (our own). The lengths modulo tⁿ are n + 2, so the multiplicity is 1 (our own).
 
 **Paper or page:** [Intersection, Theorem 43.15.5.](https://stacks.math.columbia.edu/tag/0AZZ). It says: “Then $$ e<sub>I</sub>(M, r) = \\sum (-1)<sup>i\\text{length}<sub>A</sub></sup> H<sub>i</sub>(K\_\\bullet(f<sub>1</sub>, \\ldots, f<sub>r</sub>) \\otimes<sub>A</sub> M) $$”
 
@@ -1795,7 +1795,7 @@
 
 **Problem.** Krull's intersection theorem: in a commutative Noetherian local ring with maximal ideal m, the intersection of all powers mⁿ is 0. So the powers of m separate the elements of the ring, and the ring embeds in its completion.
 
-**How the definition helps.** Building the Noetherian condition into the definition made Krull's theorem hold for every commutative local ring, with no extra hypothesis (our own). The Noetherian condition gives the Artin–Rees lemma, and together with Nakayama's lemma this shows that the intersection is 0. The page shows that the condition is needed. Take the ring of germs at 0 of smooth real functions, a local ring with maximal ideal m = (x). The nonzero function e to the power −1/x² lies in every power mⁿ, because it is still smooth after division by xⁿ. This ring is local but not Noetherian. The page, like most modern texts, drops the condition from the definition and states it as a hypothesis of the theorem.
+**How the definition helps.** Building the Noetherian condition into the definition made Krull's theorem hold for every local ring, with no extra hypothesis (our own). The proof uses the Artin–Rees lemma and Nakayama's lemma, which need the condition. The condition cannot be dropped: in the local ring of germs at 0 of smooth real functions, the nonzero germ of e to the power −1/x² lies in every power of the maximal ideal. Modern texts drop the condition from the definition and state it as a hypothesis of the theorem.
 
 **Wikipedia:** [Local ring](https://en.wikipedia.org/wiki/Local_ring). It says: “Before about 1960 many authors required that a local ring be (left and right) Noetherian, and (possibly non-Noetherian) local rings were called quasi-local rings.”
 
@@ -1811,9 +1811,9 @@
 
 **Definition.** A local ring is a ring with exactly one maximal ideal. The zero ring, where 0 = 1, has no maximal ideal, so it is not local.
 
-**Problem.** Local rings should be the rings whose spectrum has exactly one closed point. They should also be the rings in which, for each x, x or 1 − x is a unit.
+**Problem.** A ring is local exactly when its spectrum has exactly one closed point. It is also local exactly when it is not the zero ring and, for each x, x or 1 − x is a unit.
 
-**How the definition helps.** The definition 'exactly one maximal ideal' excludes the zero ring at once, and then the descriptions agree. The zero ring passes the element test, because there every element, even 0, is a unit. But its spectrum is empty and it has no maximal ideal. So the element test needs the extra clause 'R is not the zero ring', as the quoted lemma shows. The proof of the equivalence is then short: the non-units form the unique maximal ideal (our own summary).
+**How the definition helps.** The definition 'exactly one maximal ideal' excludes the zero ring at once, so it agrees with the one-closed-point test. The zero ring passes the element test, because there every element, even 0, is a unit, but its spectrum is empty. So the element test needs the extra clause 'R is not the zero ring', as the quoted lemma shows. The proof is then short: the non-units form the unique maximal ideal (our own summary).
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.18.3](https://stacks.math.columbia.edu/tag/00E9). It says: “The following are equivalent: (1) R is a local ring, (2) Spec(R) has exactly one closed point, … (4) R is not the zero ring and for every x ∈ R either x or 1 − x is invertible”
 
@@ -1831,7 +1831,7 @@
 
 **Problem.** Write ℤₚ for the ring of p-adic integers. For each n ≥ 1, the quotient ℤₚ/pⁿℤₚ is the ring ℤ/pⁿℤ of integers modulo pⁿ.
 
-**How the definition helps.** With residue sequences, the map to ℤ/pⁿℤ is just reading the n-th term (our own). It is onto, because an ordinary integer gives the sequence of its residues (our own). Its kernel consists of the sequences whose n-th term is zero (our own). For such a sequence, each term xₙ₊ₖ is divisible by pⁿ, and dividing gives a residue yₖ modulo pᵏ (our own). These yₖ form a p-adic integer y with x = pⁿy, so the kernel is pⁿℤₚ (our own). The nLab describes ℤₚ as this limit of rings. The work moves to proving that the residue model agrees with the metric completion (our own).
+**How the definition helps.** With residue sequences, the map to ℤ/pⁿℤ is just reading the n-th term (our own). It is onto, because an ordinary integer gives the sequence of its residues (our own). Its kernel is pⁿℤₚ, because a sequence with n-th term zero has later terms divisible by pⁿ, and dividing gives a p-adic integer (our own). The work moves to proving that the residue model agrees with the metric completion (our own).
 
 **nLab:** [p-adic integer](https://ncatlab.org/nlab/show/p-adic+integer). It says: “More abstractly, it is the limit lim ℤ/(pⁿ), in the category of (unital) rings”
 
@@ -1861,9 +1861,9 @@
 
 **Definition.** A commutative local ring R with maximal ideal m is Henselian if this holds for every monic polynomial over R. Every factorization of its image over R/m into coprime monic factors lifts to a factorization over R.
 
-**Problem.** Hensel's lemma lifts roots and factorizations from the residue field to the ring, for example from ℤ/p to the p-adic integers. One wants the class of local rings where this works, and a smallest such ring built from a given local ring.
+**Problem.** In a Henselian local ring, Hensel's lemma holds: coprime monic factorizations over the residue field lift. Complete local rings, such as the p-adic integers, are Henselian, and every local ring has a universal Henselian ring over it, its Henselization.
 
-**How the definition helps.** Hensel's lemma becomes true by definition, and the work moves into showing which rings are Henselian. The page lists complete Hausdorff local rings, such as the p-adic integers and power series rings over a field. A local ring is Henselian exactly when every finite ring extension of it is a product of local rings. A valued field is Henselian exactly when its valuation extends uniquely to every finite extension. Nagata's Henselization is the universal Henselian ring over a local ring A. It is an algebraic substitute for the completion, with the same completion and residue field as A.
+**How the definition helps.** Hensel's lemma becomes true by definition, and the work moves into showing which rings are Henselian. The page lists complete Hausdorff local rings, such as the p-adic integers and power series rings over a field. Nagata's Henselization is an algebraic substitute for the completion, with the same completion and residue field as A.
 
 **Wikipedia:** [Henselian ring](https://en.wikipedia.org/wiki/Henselian_ring). It says: “a Henselian ring (or Hensel ring) is a local ring in which Hensel's lemma holds.”
 
@@ -1910,11 +1910,11 @@
 
 *Rules out counterexamples.* MSC 13N05 (Modules of differentials), 58A10, 58A40. arXiv math.DG, math.AC. Level 3: graduate.
 
-**Definition.** A C∞-ring is a ring in which you can apply every smooth function f on ℝⁿ, not only polynomials; C∞(M) is the main example. A C∞-derivation of a C∞-ring A into an A-module M is a map d : A → M such that d(f(a₁,…,aₙ)) = Σᵢ (∂f/∂xᵢ)(a₁,…,aₙ) daᵢ for every smooth function f on ℝⁿ. This formula is the chain rule. The Kähler C∞-differentials are the universal target of such a derivation.
+**Definition.** A C∞-ring is a ring in which you can apply every smooth function f on ℝⁿ, not only polynomials; C∞(M) is the main example. A C∞-derivation of A into an A-module N is a map d with d(f(a₁,…,aₙ)) = Σᵢ (∂f/∂xᵢ)(a₁,…,aₙ) daᵢ for every smooth f. The Kähler C∞-differentials are the universal target of such a derivation.
 
-**Problem.** The module of Kähler differentials of C∞(M) should be the module of smooth 1-forms on M, that is, the sections of the cotangent bundle.
+**Problem.** For a smooth manifold M, the Kähler C∞-differentials of C∞(M) are exactly the smooth 1-forms on M, the sections of the cotangent bundle (Dubuc and Kock).
 
-**How the definition helps.** The chain rule for all smooth f fixes the derivative of non-polynomial functions such as exp. If you treat C∞(M) only as a commutative ring, its ordinary Kähler differentials are far too big. For M = ℝ one has d(exp(x)) ≠ exp(x) dx, because the Leibniz rule reaches only finite polynomial expressions. The known proof of this inequality uses the axiom of choice. Asking for the chain rule for all smooth f forces d(exp(x)) = exp(x) dx. With this definition, Dubuc and Kock proved that the Kähler C∞-differentials of C∞(M) are exactly the smooth 1-forms. That proof is a real theorem, not a tautology.
+**How the definition helps.** The chain rule for all smooth f forces d(exp(x)) = exp(x) dx, which the Leibniz rule alone cannot do. If C∞(M) is treated only as a commutative ring, its ordinary Kähler differentials are far too big. For M = ℝ one has d(exp(x)) ≠ exp(x) dx there, and the known proof of this uses the axiom of choice. With the C∞ definition the theorem holds, but its proof is real work, not a tautology.
 
 **nLab:** [Kähler C<sup>∞</sup>-differentials of smooth functions are differential 1-forms](https://ncatlab.org/nlab/show/K%C3%A4hler+C%5E%E2%88%9E-differentials+of+smooth+functions+are+differential+1-forms), [Kähler differential](https://ncatlab.org/nlab/show/K%C3%A4hler+differential). It says: “However, this is not a defect in the conceptual idea itself, but merely a failure to use the correct formalism.”
 
@@ -1930,9 +1930,9 @@
 
 **Definition.** The Newton polygon of a power series records the valuations of its coefficients as a convex function. A Newton polygon formalism on a ring R assigns such a convex function to each element of R. It comes from a family of valuations vₛ, indexed by s in a range such as (0, 1\].
 
-**Problem.** Theorem 4.8, after Du, needs a formalism on (0, 1\] that discretely approximates, in the paper’s sense, each suitable convex function g. Any ring with such a formalism has uncountable Krull dimension. The perfectoid Tate algebra over a perfectoid field has one, so it has an uncountable chain of prime ideals.
+**Problem.** Any ring with a Newton polygon formalism on (0, 1\] that discretely approximates each suitable convex function has uncountable Krull dimension (Theorem 4.8, after Du). The perfectoid Tate algebra over a perfectoid field has such a formalism, so it has an uncountable chain of prime ideals.
 
-**How the definition helps.** The formalism isolates the property of the ring that Du’s proof uses, so the proof applies to any ring that has it. Du’s cases include V\[\[x\]\] for a nondiscrete valuation ring V. For the perfectoid Tate algebra, the paper uses a nonstandard formalism in which the series variable x and the pseudo-uniformizer π switch roles. A pseudo-uniformizer is a nonzero element of absolute value less than one whose powers define the topology. The hard step is to check that this formalism approximates finely enough.
+**How the definition helps.** The formalism isolates the property of the ring that Du’s proof uses, so the proof applies to any ring that has it. Du’s cases include V\[\[x\]\] for a nondiscrete valuation ring V. For the perfectoid Tate algebra, the paper uses a nonstandard formalism in which the variable x and the pseudo-uniformizer π switch roles. The hard step is to check that this formalism approximates finely enough.
 
 **Paper or page:** [The perfectoid Tate algebra has uncountable Krull dimension](https://arxiv.org/abs/2212.13315v2). It says: “We prove a version of Du's theorem in the prescence of a sufficiently nondiscrete Newton polygon formalism.”
 
@@ -1966,9 +1966,9 @@
 
 **Definition.** In the 'heterodox' view, a torsion-free λ-ring is a torsion-free commutative ring with endomorphisms ψₚ, one for each prime p, that commute with each other. Each ψₚ must be a Frobenius lift: modulo p it equals the map x ↦ xᵖ. The orthodox definition instead uses operations λⁿ and six axioms written with universal polynomials.
 
-**Problem.** Decide whether a torsion-free ring carries a λ-ring structure. Also decide whether a ring map respects that structure.
+**Problem.** On a torsion-free ring, a λ-ring structure is the same as a family of commuting Frobenius lifts ψₚ, one for each prime p (Wilkerson). A ring map between torsion-free λ-rings is a λ-map exactly when it commutes with the ψₚ.
 
-**How the definition helps.** The Frobenius-lift view turns both questions into questions about endomorphisms modulo p. With the orthodox axioms, you must check identities with the complicated universal polynomials Pₙ and Pₘ,ₙ. Wilkerson's theorem says that on a torsion-free ring, a commuting family of Frobenius lifts determines a unique λ-structure whose Adams operations (the ring maps ψₚ that every λ-ring has) are these lifts. A ring map is then a λ-map exactly when it commutes with the Adams operations. The real content is Wilkerson's theorem. The page states it for torsion-free rings and says that the torsion-free assumption can later be removed. Borger uses the Frobenius-lift view to set up λ-algebraic geometry as geometry 'over the field with one element'.
+**How the definition helps.** The Frobenius-lift view turns both checks into checks about endomorphisms modulo p. With the orthodox axioms, you must check identities with the complicated universal polynomials Pₙ and Pₘ,ₙ. The real content is Wilkerson's theorem: the lifts determine a unique λ-structure whose Adams operations are these lifts. Borger uses this view to set up λ-algebraic geometry as geometry 'over the field with one element'.
 
 **nLab:** [Lambda-ring](https://ncatlab.org/nlab/show/Lambda-ring). It says: “Equivalently, it turns out (Wilkerson 82) that a λ-ring is a commutative ring equipped with an endomorphism that lifts the Frobenius endomorphism after reduction mod p at each prime number p.”
 
@@ -1984,11 +1984,11 @@
 
 *True by definition.* MSC 13B40 (Étale and flat extensions; Henselization; Artin approximation), 13C11. arXiv math.AC, math.AG. Level 4: research.
 
-**Definition.** A ring map A → B is flat if tensoring with B over A preserves injections of modules. It is weakly étale if both A → B and the multiplication map B ⊗ₐ B → B are flat. Over a field, an equivalent test asks whether B is a directed colimit of étale algebras.
+**Definition.** A ring map A → B is flat if tensoring with B over A preserves injections of modules. It is weakly étale if both A → B and the multiplication map B ⊗ₐ B → B are flat.
 
 **Problem.** Weakly étale ring maps remain weakly étale after composition or base change, which replaces A by A′ and B by B ⊗ₐ A′.
 
-**How the definition helps.** The two flatness tests turn base change and composition into familiar rules about flat maps. For base change, both maps in the test are obtained by tensoring the original maps with A′ over A. For composition A → B → C, factor multiplication as C ⊗ₐ C → C ⊗ᵦ C → C. The first map is a base change of B ⊗ₐ B → B, and the second is flat by assumption. This is our own account of the proof. A separate theorem gives the comparison with directed colimits of étale algebras over a field (Tag 092Q). We do not need that description over general base rings.
+**How the definition helps.** The two flatness tests turn base change and composition into familiar rules about flat maps. For base change, both maps in the test are obtained by tensoring the original maps with A′ over A. For composition A → B → C, factor multiplication as C ⊗ₐ C → C ⊗ᵦ C → C. The first map is a base change of B ⊗ₐ B → B, and the second is flat by assumption (our own account).
 
 **Paper or page:** [More Algebra, Lemma 15.105.7](https://stacks.math.columbia.edu/tag/092H), [More Algebra, Lemma 15.105.9](https://stacks.math.columbia.edu/tag/092J), [More Algebra, Lemma 15.105.16](https://stacks.math.columbia.edu/tag/092Q). It says: “If A → B is weakly étale, then A′ → B′ is weakly étale.”
 
@@ -2021,11 +2021,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 13C14 (Cohen-Macaulay modules), 13D02, 13D22. arXiv math.AC. Level 4: research.
 
-**Definition.** Over a Noetherian local ring R, a maximal Cohen–Macaulay (MCM) complex is a complex with finitely generated homology whose depth equals dim R. Depth is the length of a longest regular sequence, and the survey adds a nonvanishing condition in degree 0 (our own summary). Lemma 3.2 shows that the cohomology of an MCM complex lives in degrees 0 to dim R, with H⁰ nonzero. It plays the role of a big Cohen–Macaulay module, a module whose depth is dim R.
+**Definition.** Over a Noetherian local ring R, a maximal Cohen–Macaulay complex is a complex with finitely generated homology, nonzero in degree 0, whose depth equals dim R. Depth is the length of a longest regular sequence. Such a complex plays the role of a big Cohen–Macaulay module, a module whose depth is dim R.
 
-**Problem.** Hochster's homological conjectures, such as the new intersection theorem, follow from the existence of big Cohen–Macaulay modules. Such modules were hard to construct, and André's proof in mixed characteristic is deep.
+**Problem.** If R has a maximal Cohen–Macaulay complex, then the new intersection theorem holds for R. That is, a finite free complex F with H₀(F) ≠ 0 and finite-length homology has length at least dim R.
 
-**How the definition helps.** Complexes are easier to build than modules, and the conjectures only need the depth property (our own reading). Proposition 3.20 gives an example, for R essentially of finite type over a field of characteristic zero. There the derived pushforward of the structure sheaf along a resolution of singularities is MCM. Theorem 2.4 is the new intersection theorem: a finite free complex F with H₀(F) ≠ 0 and finite-length homology has length at least dim R. The abstract says that the existence of MCM complexes gives new proofs of some of these conjectures. In our own reading, the survey still uses deep inputs, such as André's theorem that big Cohen–Macaulay algebras exist (Theorem 2.3).
+**How the definition helps.** Complexes are easier to build than modules, and the proofs of the conjectures only need the depth property (our own reading). For R essentially of finite type over a field of characteristic zero, the derived pushforward of the structure sheaf along a resolution of singularities is such a complex (Proposition 3.20). In our own reading, the survey still uses deep inputs, such as André's theorem that big Cohen–Macaulay algebras exist.
 
 **Paper or page:** [Maximal Cohen-Macaulay complexes and their uses: A partial survey](https://arxiv.org/abs/2106.08173v1), [Maximal Cohen-Macaulay complexes and their uses: A partial survey](https://arxiv.org/abs/2106.08173v1), [Maximal Cohen-Macaulay complexes and their uses: A partial survey](https://arxiv.org/abs/2106.08173v1). It says: “Various constructions of maximal Cohen-Macaulay complexes are described, and their existence is applied to give new proofs of some of the homological conjectures, and also of certain results in birational geometry.”
 
@@ -2039,9 +2039,9 @@
 
 *True by definition.* MSC 13C14 (Cohen-Macaulay modules). arXiv math.AC. Level 4: research.
 
-**Definition.** Use a normalized dualizing complex, a complex giving double duality with degrees indexed so the residue field has dual in degree zero. The derived dual computes module maps into that complex together with their higher cohomology groups. A finite module of dimension d is Cohen–Macaulay exactly when its derived dual has cohomology only in degree −d.
+**Definition.** Let ω be a normalized dualizing complex over a Noetherian local ring A. A finite A-module M of dimension d is Cohen–Macaulay exactly when Extⁱ(M, ω) is nonzero only for i = −d.
 
-**Problem.** Fix a Noetherian local ring with such a dualizing complex. Taking degree −d cohomology of the dual sends finite Cohen–Macaulay modules of dimension d back to that class and reverses maps. Applying the operation twice recovers the original module naturally.
+**Problem.** The functor M ↦ Ext⁻ᵈ(M, ω) sends finite Cohen–Macaulay modules of dimension d to the same class and reverses maps. Applying it twice gives back M naturally, so it is an anti-equivalence of that class.
 
 **How the definition helps.** Concentration in one degree makes the first dual a single module placed in degree −d (our own). Double duality then puts the dual of that module in the same single degree (our own). The concentration criterion identifies its dimension and shows it too is Cohen–Macaulay (our own). Local duality relates this criterion to the usual equality between depth and dimension (our own).
 
@@ -2057,9 +2057,9 @@
 
 **Definition.** A module is Cohen–Macaulay when its depth, the length of a longest regular sequence on it, equals its dimension. A module is sequentially Cohen–Macaulay when it has a filtration whose quotients are Cohen–Macaulay with strictly increasing dimensions. Every Cohen–Macaulay module is sequentially Cohen–Macaulay.
 
-**Problem.** A direct sum of Cohen–Macaulay modules of different dimensions is not Cohen–Macaulay. So the class is not closed under direct sums. One wants a class that is.
+**Problem.** Over a Cohen–Macaulay ring with a canonical module, M ⊕ N is sequentially Cohen–Macaulay exactly when M and N are. Cohen–Macaulay modules lack this property: a direct sum of Cohen–Macaulay modules of different dimensions is not Cohen–Macaulay.
 
-**How the definition helps.** The filtration lets each dimension carry its own Cohen–Macaulay piece, which is the room that direct sums need. In our own reading, the easy direction merges the two filtrations dimension by dimension, since a sum of Cohen–Macaulay modules of one dimension is Cohen–Macaulay. The hard direction, that a direct summand is again sequentially Cohen–Macaulay, uses duality with the canonical module (our own reading). Corollary 2.14 assumes that R is Cohen–Macaulay with a canonical module, a module that gives a duality theory. Our own example: over the graded ring R = k\[x, y\], the module R ⊕ R/(x) has depth 1 and dimension 2. So it is not Cohen–Macaulay, yet it is sequentially Cohen–Macaulay. Corollary 2.9 shows that for unmixed modules, in our own gloss those whose associated primes all have full dimension, the two notions coincide.
+**How the definition helps.** The filtration lets each dimension carry its own Cohen–Macaulay piece, which is the room that direct sums need. The easy direction merges the two filtrations dimension by dimension (our own reading). The hard direction, that a direct summand is again sequentially Cohen–Macaulay, uses duality with the canonical module (our own reading). Our own example: over R = k\[x, y\], R ⊕ R/(x) has depth 1 and dimension 2, so it is not Cohen–Macaulay, yet it is sequentially Cohen–Macaulay.
 
 **Paper or page:** [On the notion of sequentially Cohen-Macaulay modules](https://arxiv.org/abs/2304.06609v1). It says: “Then, M and N are sequentially Cohen-Macaulay if and only if M ⊕ N is sequentially Cohen-Macaulay.”
 
@@ -2093,9 +2093,9 @@
 
 **Definition.** A finitely generated ideal is weakly proregular when, for a generating sequence, the Koszul homology of its powers is pro-zero in positive degrees. Koszul homology is the homology of a standard complex that measures how far a sequence is from being regular. Pro-zero means that each n has some m ≥ n for which the homology map from m-th powers to n-th powers is zero. Every ideal of a Noetherian ring has this property.
 
-**Problem.** Derived completion LΛ𝔞 is the left derived functor of 𝔞-adic completion Λ𝔞. For a complex P of 𝔞-adically flat modules, one wants the map from LΛ𝔞(P) to Λ𝔞(P) to be an isomorphism. Over a Noetherian ring this is known.
+**Problem.** Let 𝔞 be a weakly proregular ideal. For every complex P of 𝔞-adically flat modules, the map from the derived completion LΛ𝔞(P) to the 𝔞-adic completion Λ𝔞(P) is an isomorphism.
 
-**How the definition helps.** In our own reading, weak proregularity is the finiteness condition that the completion arguments use, so it replaces the Noetherian hypothesis. With it, Theorem 0.2 holds for every complex of 𝔞-adically flat modules, bounded or not. Without it, the theorem needs the complex to be bounded above. The abstract says that such ideals occur often in non-Noetherian rings from Hochschild and prismatic cohomology. The proof of the comparison itself, and the related Nakayama theorem, still take work.
+**How the definition helps.** In our own reading, weak proregularity is the finiteness condition that the completion arguments use, so it replaces the Noetherian hypothesis. Without it, the theorem needs the complex P to be bounded above. The abstract says that such ideals occur often in non-Noetherian rings from Hochschild and prismatic cohomology. The proof of the comparison itself still takes work.
 
 **Paper or page:** [Derived Complete Complexes at Weakly Proregular Ideals](https://arxiv.org/abs/2309.01687v4). It says: “Assume either of these two conditions hold: either the complex P is bounded above, or the ideal 𝔞 is weakly proregular. Then the canonical morphism … LΛ𝔞(P) → Λ𝔞(P) in D(A) is an isomorphism.”
 
@@ -2112,9 +2112,9 @@
 
 **Definition.** Take a sequence a₁, …, aᵣ in a commutative ring. It is weakly proregular when the Koszul homology of the powers a₁ⁿ, …, aᵣⁿ forms a pro-zero inverse system in positive degrees. Local cohomology is the derived functor of taking elements killed by a power of the ideal. Čech cohomology is the cohomology of an explicit complex of localizations.
 
-**Problem.** Local cohomology and Čech cohomology agree for every sequence in a Noetherian ring. One wants this comparison for rings that are not Noetherian.
+**Problem.** For a weakly proregular sequence in any commutative ring, local cohomology is naturally isomorphic to Čech cohomology. Every sequence in a Noetherian ring is weakly proregular, so this includes the classical case.
 
-**How the definition helps.** The definition asks for exactly the vanishing that makes the Čech functors effaceable, so they become the derived functors. A functor F is effaceable when each object A has an embedding u into some M with F(u) = 0 (Proposition 2.5). Proposition 4.4 proves that a sequence is weakly proregular exactly when Čech cohomology is an effaceable δ-functor. A δ-functor is a family of functors joined by connecting maps for short exact sequences. Corollary 4.8 shows that every sequence in a Noetherian ring is weakly proregular, so the classical case is included. The note avoids the derived categories that Schenzel used in his proof.
+**How the definition helps.** The definition asks for exactly the vanishing that makes the Čech functors effaceable, so they become the derived functors. A functor F is effaceable when each object A has an embedding u into some M with F(u) = 0. Proposition 4.4 proves that a sequence is weakly proregular exactly when Čech cohomology is an effaceable δ-functor. The note avoids the derived categories that Schenzel used in his proof.
 
 **Paper or page:** [A note on weakly proregular sequences and local cohomology](https://arxiv.org/abs/2105.07652v2). It says: “In this note, we give an elementary proof of the result given by Schenzel that there are functorial isomorphisms between local cohomology groups and Čech cohomology groups, by using weakly proregular sequences.”
 
@@ -2129,11 +2129,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: low.* MSC 13D07 (Homological functors on modules of commutative rings (Tor, Ext, etc.)), 13C40, 13D09. arXiv math.NT, math.AC. Level 4: research.
 
-**Definition.** Wiles's numerical criterion compares two numbers attached to a map from a local ring A to a ring 𝒪. The congruence module measures how much the part of A over 𝒪 meets the rest of A. The paper defines a version of this module that works when the kernel of the map has higher codimension.
+**Definition.** Wiles's numerical criterion uses the congruence module of a map from a local ring A to a ring 𝒪. It measures how much the part of A over 𝒪 meets the rest of A. The paper defines a congruence module that also works when the kernel of the map has higher codimension.
 
-**Problem.** Theorem 24 assumes a depth condition on a finitely generated A-module M. Then A is a complete intersection and M is μ copies of A plus a negligible part exactly when two lengths agree. In our own reading, these are μ times a length built from A and the length of the congruence module of M.
+**Problem.** Let M be a finitely generated A-module with a depth condition (Theorem 24). Then A is a complete intersection and M is μ copies of A plus a negligible part exactly when two lengths agree. In our own reading, these are μ times a length built from A and the length of the congruence module of M.
 
-**How the definition helps.** Our own reading: the new congruence module lets the criterion be stated as one equality of lengths in higher codimension. A complete intersection is a ring cut out by as many equations as its codimension (our own gloss). Wiles used the codimension-zero version in his work on Fermat's Last Theorem (our own note). The abstract says the definition proved useful beyond this criterion. Our own note: the proof of Theorem 24 needs commutative algebra beyond this record.
+**How the definition helps.** The new congruence module lets the criterion be stated as one equality of lengths in higher codimension (our own reading). A complete intersection is a ring cut out by as many equations as its codimension (our own gloss). Wiles used the codimension-zero version in his work on Fermat's Last Theorem (our own note). The proof of Theorem 24 still needs substantial commutative algebra (our own note).
 
 **Paper or page:** [The commutative algebra of congruence ideals and applications to number theory](https://arxiv.org/abs/2510.05418). It says: “A critical ingredient is a notion of congruence module in higher codimension: this has turned out to be a key definition whose utility extends beyond the role it plays in the numerical criterion.”
 
@@ -2150,9 +2150,9 @@
 
 **Definition.** Let I be a finitely generated ideal of a commutative ring R. I-adic completion sends a module M to the inverse limit of the quotients M/IⁿM. Let L be the 0th left derived functor of I-adic completion, which is the closest right exact functor to it. A module M is L-complete if the canonical map M → L(M) is an isomorphism.
 
-**Problem.** We want an abelian category of 'complete' modules, so that homological algebra works. The I-adically complete modules do not form one, because a quotient of complete modules need not be complete.
+**Problem.** Let I be weakly proregular, for example any ideal of a Noetherian ring. Then the L-complete modules form the smallest abelian subcategory of R-modules, closed under isomorphism and with the same kernels and cokernels, that contains the I-adically complete modules.
 
-**How the definition helps.** The left derived functor L of completion is right exact, and that repairs the failure at cokernels. The completion functor is not right exact, which is why cokernels of complete modules can fail to be complete. L is right exact by definition, and every complete module is L-complete. Salch proves a result for a weakly proregular ideal I (a technical condition that holds, for example, for any ideal of a Noetherian ring). For such I, L-complete modules form the smallest replete exact abelian subcategory of R-modules that contains the complete modules. Here replete means closed under isomorphism, and exact means that kernels and cokernels are those of R-modules. So the definition repairs the failure of abelianness; the proof of minimality is a real theorem.
+**How the definition helps.** The left derived functor L of completion is right exact, and that repairs the failure at cokernels. Completion itself is not right exact, so a quotient of complete modules can fail to be complete, and complete modules do not form an abelian category. Every complete module is L-complete. Salch's proof of minimality is a real theorem.
 
 **nLab:** [L-complete module](https://ncatlab.org/nlab/show/L-complete+module). It says: “The category of L-complete modules is the smallest abelian full subcategory of RMod which contains the I-adically complete modules.”
 
@@ -2205,7 +2205,7 @@
 
 **Definition.** A complex has Tor amplitude in an interval if its derived tensor product with every module has cohomology only in that interval. This tensor product uses a resolution by flat modules, whose tensor products preserve exact sequences. Equivalently, a complex of flat modules concentrated in that interval represents the original complex.
 
-**Problem.** Tor amplitude in a finite interval survives derived extension of scalars along any ring map.
+**Problem.** Let A → B be any ring map. If a complex K has Tor amplitude in \[a, b\] over A, then K ⊗ᴸ B has Tor amplitude in \[a, b\] over B.
 
 **How the definition helps.** The test-module definition makes each test over the new ring a test over the old ring by associativity of derived tensor (our own). The comparison with bounded flat complexes carries the work of truncating a flat resolution at the endpoints (our own).
 
@@ -2219,11 +2219,11 @@
 
 *True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 4: research.
 
-**Definition.** For a finitely generated ideal, use the augmented Čech complex to compute derived sections supported on the primes containing the ideal. Build this complex by tensoring the maps that invert each individual generator. Each map forms a complex in degrees zero and one.
+**Definition.** For an ideal I = (f₁, …, fᵣ) of a ring A, the augmented Čech complex is the tensor product of the two-term complexes A → A<sub>f</sub>ᵢ. Tensoring with it computes RΓ<sub>Z</sub>, the derived sections supported on Z = V(I).
 
-**Problem.** Extend scalars along any ring map, using a flat resolution to compute the derived tensor product. Taking derived sections with closed support commutes with this operation when the new support uses the images of the generators.
+**Problem.** Let A → B be any ring map and let Y = V(IB). Then RΓ<sub>Z</sub>(K) ⊗ᴸ B = RΓ<sub>Y</sub>(K ⊗ᴸ B), naturally in K.
 
-**How the definition helps.** The Čech definition makes the change term by term since localizations are flat and commute with extension of scalars (our own). The work lies in comparing this complex with derived sections on the closed support, without a Noetherian hypothesis (our own).
+**How the definition helps.** With the Čech definition, the change of rings goes term by term, because the Čech complex of the fᵢ becomes the Čech complex of their images in B (our own). The work lies in comparing this complex with derived sections on the closed support, without a Noetherian hypothesis (our own).
 
 **Paper or page:** [Dualizing, Lemma 47.9.3.](https://stacks.math.columbia.edu/tag/0ALZ). It says: “Then $$ R\\Gamma<sub>Z</sub>(K) \\otimes<sub>A</sub><sup>\\mathbf{L}</sup> B = R\\Gamma<sub>Y</sub>(K \\otimes<sub>A</sub><sup>\\mathbf{L}</sup> B) $$ functorially in $K \\in D(A)$.”
 
@@ -2251,9 +2251,9 @@
 
 *True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 4: research.
 
-**Definition.** Call a complex torsion for an ideal if some power of the ideal kills each individual cohomology element. Work in the derived category, where maps inducing cohomology isomorphisms become invertible. Derived local cohomology supplies a map from a torsion complex to the original complex. Every map from a torsion complex to the original complex factors uniquely through this map.
+**Definition.** Call a complex I-torsion if each element of its cohomology is killed by some power of the ideal I. In the derived category, RΓ<sub>I</sub>(K) → K is the universal map from an I-torsion complex to K. That is, every map from an I-torsion complex to K factors uniquely through it.
 
-**Problem.** For a Noetherian ring, derived ideal torsion acts as the identity on complexes whose cohomology is already ideal-power torsion.
+**Problem.** Over a Noetherian ring, the map RΓ<sub>I</sub>(K) → K is an isomorphism whenever K is I-torsion.
 
 **How the definition helps.** For a torsion complex, its identity map already has the required factorization property (our own). Uniqueness identifies the derived local cohomology map with that identity (our own). Over a Noetherian ring, the comparison theorem shows that deriving ordinary module torsion gives this same construction (our own).
 
@@ -2287,9 +2287,9 @@
 
 **Definition.** Lombardi and Quitté define a principal ideal domain as an integral domain that is Bézout and Noetherian. Bézout means that every finitely generated ideal is principal. They do not require that every ideal be principal.
 
-**Problem.** Show, in constructive mathematics, that the ring of integers ℤ is a principal ideal domain.
+**Problem.** In constructive mathematics, ℤ is Noetherian and Bézout, so it is a principal ideal domain in this sense. The classical statement that every ideal of ℤ is principal is equivalent to excluded middle.
 
-**How the definition helps.** The new definition drops the one requirement that needs excluded middle. With the classical definition, the statement that every ideal of ℤ is principal is equivalent to excluded middle. So constructively you cannot prove that ℤ is a principal ideal domain in the classical sense. Our own illustration of the reason: for a proposition P, the ideal {n \| n = 0, or P holds} has no generator that you can compute without deciding P. Classically the two definitions agree, so nothing is lost, and ℤ is constructively Noetherian and Bézout. The real work is then to develop the theory of principal ideal domains from the Noetherian Bézout definition.
+**How the definition helps.** The new definition drops the one requirement that needs excluded middle. Our own illustration: for a proposition P, the ideal {n \| n = 0, or P holds} has no generator that you can compute without deciding P. Classically the two definitions agree, so nothing is lost. The real work is then to develop the theory of principal ideal domains from the Noetherian Bézout definition.
 
 **nLab:** [noetherian ring](https://ncatlab.org/nlab/show/noetherian+ring), [principal ideal domain](https://ncatlab.org/nlab/show/principal+ideal+domain). It says: “the ring of integers is both Noetherian and Bézout, but it is a principal ideal domain if and only if excluded middle holds.”
 
@@ -2303,11 +2303,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 13F25 (Formal power series rings), 13C11, 13C15. arXiv math.AC, math.RA. Level 4: research.
 
-**Definition.** Let R be a ring of Krull dimension 0 that is integral over an Artinian subring R₀. Then R is a directed union of a family 𝓕 of Artinian subrings Rα (Proposition 2.1). The modified ring 𝓕⟦X₁, …, Xₙ⟧ takes only those power series whose coefficients all lie in one Rα (Lemma 2.4). Krull dimension is the greatest length of a chain of prime ideals.
+**Definition.** Let R be a ring of Krull dimension 0 that is integral over an Artinian subring R₀, so R is a directed union of Artinian subrings Rα. The modified power series ring 𝓕⟦X₁, …, Xₙ⟧ contains only the power series whose coefficients all lie in one Rα.
 
-**Problem.** Over a Noetherian ring, R⟦X₁, …, Xₙ⟧ is flat over R and has dimension dim R + n. Over a non-Noetherian ring, both facts can fail, even when dim R is finite. One wants a power series ring that keeps them.
+**Problem.** The modified ring 𝓕⟦X₁, …, Xₙ⟧ is faithfully flat over R and has Krull dimension n, which is dim R + n. Over a non-Noetherian ring, the full power series ring can fail to be flat and can have infinite dimension.
 
-**How the definition helps.** In our own reading, each power series lives over an Artinian ring, where power series behave well, so good properties pass to the union. Theorem 3.4 shows that the modified ring is faithfully flat over R. Theorem 4.6 shows that its dimension is exactly n, which is dim R + n because dim R = 0. The abstract says the paper also extends Krull's height theorem and unmixedness to this ring. The bad behaviour of the full power series ring is what the definition excludes. In our own reading, the hard part is the dimension count, which uses that R is integral over R₀.
+**How the definition helps.** Each power series lives over an Artinian ring, where power series behave well, so good properties pass to the union (our own reading). Theorem 3.4 gives faithful flatness, and Theorem 4.6 gives the dimension. In our own reading, the hard part is the dimension count, which uses that R is integral over R₀.
 
 **Paper or page:** [Power Series Rings over Zero-Dimensional Rings](https://arxiv.org/abs/2510.07496v1), [Power Series Rings over Zero-Dimensional Rings](https://arxiv.org/abs/2510.07496v1). It says: “A power series ring over non-Noetherian rings can fail to be flat over the base ring, and its dimension can be infinite, even when the dimension of the base ring is finite.”
 
@@ -2343,7 +2343,7 @@
 
 **Problem.** If the completion of a topological ring A is a field, then A is topologically simple. The converse holds when A is a Huber ring whose topology comes from an absolute value.
 
-**How the definition helps.** Topological simplicity is the condition on A that a field completion forces, so one direction is nearly immediate. In our own proof sketch, a nonzero closed ideal of A has a nonzero closure in the completion, which is then everything. So the ideal is dense and closed, hence all of A. In our own sketch of the converse, take a nonzero x in the completion and a nonzero a in A close to x. In our own sketch, the ideal aA is dense, so some ab is close to 1 and has an inverse by a geometric series. In our own sketch, the absolute value then makes x invertible as well, since x is close to the invertible a.
+**How the definition helps.** Topological simplicity is the condition on A that a field completion forces, so one direction is nearly immediate. A nonzero closed ideal of A has a nonzero closure in the completion, which is then everything, so the ideal is all of A (our own sketch). For the converse, a dense ideal contains an element close to 1, which is invertible by a geometric series (our own sketch). The absolute value then makes every nonzero element of the completion invertible (our own sketch).
 
 **Paper or page:** [Abhyankar valuations, Prüfer-Manis valuations, and perfectoid Tate algebras](https://arxiv.org/abs/2510.22678v2). It says: “If the completion of A is a field, then A is topologically simple. If A is a Huber ring and its topology is defined by an absolute value, then the converse is also true.”
 
@@ -2359,9 +2359,9 @@
 
 **Definition.** Let p be a prime that is not a zero divisor in the ring. In our own summary, a p-derivation is a map δ such that x ↦ xᵖ + pδ(x) is a ring map. The paper builds a mixed Jacobian matrix of f₁, …, fₐ. In the abstract's words, it includes a row coming from the values of a p-derivation.
 
-**Problem.** The Jacobian criterion finds the singular points of R = T/(f₁, …, fₐ) from the minors of the matrix of partial derivatives. It works over a perfect field, but over the p-adic integers, p is a direction with no derivative. So the criterion fails at primes that contain p.
+**Problem.** Let R = T/(f₁, …, fₐ), where the ideal has pure height h and T lies over an unramified base with algebraically closed residue field. For a prime 𝔭 of R that contains p, the mixed Jacobian matrix over κ(𝔭) has rank at most h, with equality exactly when R𝔭 is regular.
 
-**How the definition helps.** In our own reading, the p-derivation acts as a derivative with respect to p, so it fills the missing row. With this row, the paper's Theorem 4.11 makes regularity at a prime that contains p again a rank condition. It needs an ideal of pure height h and an unramified base with an algebraically closed residue field. At primes that do not contain p, the classical matrix is enough. Our own example of failure is ℤₚ\[x\]/(x² − p), the p-adic integers with a square root of p. It is regular, but the derivative 2x lies in the maximal ideal (p, x). To study the matching modules of differentials, the paper introduces perivations, roughly linearizations of p-derivations.
+**How the definition helps.** The p-derivation acts as a derivative with respect to p, so it fills the missing row (our own reading). The classical Jacobian criterion fails at primes that contain p, because p is a direction with no derivative. Our own example is ℤₚ\[x\]/(x² − p), which is regular although the derivative 2x lies in the maximal ideal (p, x). At primes that do not contain p, the classical matrix is enough.
 
 **Paper or page:** [A Jacobian criterion for nonsingularity in mixed characteristic](https://arxiv.org/abs/2106.01996v2), [A Jacobian criterion for nonsingularity in mixed characteristic](https://arxiv.org/abs/2106.01996v2). It says: “Let 𝔭 be a prime ideal of R with p∈𝔭. Then, the mixed Jacobian matrix J̃(f) considered in κ(𝔭) has rank at most h, and equality holds if and only if R𝔭 is regular.”
 
@@ -2377,9 +2377,9 @@
 
 **Definition.** A rewriting system reduces power series step by step, replacing leading terms with the help of a standard basis of an ideal. Topological confluence asks that any two reductions of a series can be continued to results that are arbitrarily close (our own paraphrase). Infinitary confluence asks that they can be joined exactly by possibly infinite, convergent reduction sequences (our own paraphrase). The abstract says that in general the second is strictly stronger.
 
-**Problem.** For polynomials, a Gröbner basis is the same as a confluent rewriting system. For formal power series one wants the same statement for standard bases. One must choose which notion of confluence to use.
+**Problem.** For formal power series with a monomial order compatible with degree, the rewriting system of a standard basis is infinitarily confluent exactly when it is topologically confluent.
 
-**How the definition helps.** A degree-compatible order compares monomials first by total degree, so in our own gloss reductions push terms to higher degree and converge. In that topology two series are close when they agree up to a high degree. Ideals of a formal power series ring are closed in it, so limits of reductions stay in the ideal. With such an order, the paper uses this closure to show that the two notions of confluence are equal. So one can check the weaker one and get the stronger one. The paper gives explicit examples where, in general, the two notions differ. The closure of ideals is the classical fact that power series rings are Zariski rings, and the paper gives a constructive proof of it.
+**How the definition helps.** A degree-compatible order pushes terms to higher degree, so reductions converge where series are close when they agree up to a high degree (our own gloss). Ideals of a formal power series ring are closed in this topology, so limits of reductions stay in the ideal. The paper uses this closure to prove the equivalence, so one can check the weaker notion and get the stronger one. In general the two notions differ, and the paper gives explicit examples.
 
 **Paper or page:** [Topological closure of formal power series ideals and application to topological rewriting theory](https://arxiv.org/abs/2402.05511v3). It says: “Using topological closure of ideals, we finally show that in the context of rewriting theory on commutative formal power series, infinitary and topological confluences are equivalent when the monomial order considered is compatible with the degree.”
 

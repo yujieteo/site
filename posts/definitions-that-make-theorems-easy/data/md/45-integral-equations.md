@@ -108,9 +108,9 @@
 
 **Definition.** On (−1,1), use densities p(t)/√(1 − t²) with polynomial numerator p. Record both the integral of the density and its finite Hilbert transform. The transform integrates the density against 1/(x − t), taking the limit after omitting equal lengths on both sides of x.
 
-**Problem.** Fix an integer n ≥ 0 and a real mass. Each polynomial forcing of degree at most n determines one numerator of degree at most n + 1 with that mass.
+**Problem.** Fix an integer n ≥ 0 and a real mass m. Let g be a polynomial of degree at most n. Then exactly one polynomial p of degree at most n + 1 gives a density p(t)/√(1 − t²) with mass m and finite Hilbert transform g.
 
-**How the definition helps.** Recording the mass determines the constant numerator that the transform cannot detect. The cited integral shows that the transform annihilates 1/√(1 − t²). In our own calculation, subtract p(x) from p(t) before dividing by x − t. For a monic numerator of degree d ≥ 1, the transformed polynomial has degree d − 1 and leading coefficient −π. Successive coefficient comparisons determine all nonconstant terms. The free constant changes the mass by π times its value.
+**How the definition helps.** Recording the mass determines the constant numerator that the transform cannot detect, since the transform annihilates 1/√(1 − t²). In our own calculation, a monic numerator of degree d ≥ 1 transforms to a polynomial of degree d − 1 with leading coefficient −π. So coefficient comparison determines all nonconstant terms, and the mass fixes the constant, which changes the mass by π times its value.
 
 **Paper or page:** [On the Local Regularity of the Hilbert Transform](https://arxiv.org/abs/2308.11947v3). It says: “p.v. ∫₋₁¹ 1/(√(1−t²) (x−t)) dt = 0 if \|x\|&lt;1,”
 
@@ -208,7 +208,7 @@
 
 **Definition.** On a real Hilbert space, call F monotone if ⟨F(u) − F(w),u − w⟩ ≥ 0 for every u,w. For maps F and K on this space, introduce v = F(u). Replace u + K(F(u)) = 0 by the zero equation for A(u,v) = (F(u) − v,K(v) + u).
 
-**Problem.** If F and K are monotone, then A is monotone for the sum of the coordinate inner products. If each pairing bounds the squared input difference below by a positive multiple, A keeps the smaller multiple.
+**Problem.** If F and K are monotone, then A is monotone for the sum of the coordinate inner products. If ⟨F(u) − F(w), u − w⟩ ≥ η₁‖u − w‖² and the same holds for K with η₂ &gt; 0, then A satisfies this bound with min{η₁, η₂}.
 
 **How the definition helps.** The opposite signs cancel the two cross terms in the pairing for A. In our own calculation, only the original pairings for F and K remain. Their lower bounds add. The remaining task is to solve the product equation using these separate bounds.
 
@@ -280,7 +280,7 @@
 
 **Problem.** A vector u minimizing ‖Ku − f‖ exists exactly when f belongs to this domain.
 
-**How the definition helps.** The actual range condition ensures that some input attains the closest output. In our own proof, project f onto the closure of R. This projection has a preimage exactly when it belongs to R. Our own example maps g in L²(\[0,1\]) to its integral from zero to x. The range contains every smooth function supported inside the interval, so it is dense. Its continuous outputs vanish at zero, so none equals the constant one almost everywhere.
+**How the definition helps.** The actual range condition ensures that some input attains the closest output. In our own proof, project f onto the closure of R; this projection has a preimage exactly when it lies in R. Our own example maps g in L²(\[0,1\]) to its integral from zero to x. Its range is dense, but no output equals the constant one almost everywhere, so the constant one has no least-squares solution.
 
 **Paper or page:** [Fredholm integral equations for function approximation and the training of neural networks](https://arxiv.org/abs/2303.05262v3). It says: “Assume that F ∈ R(𝒢) + R(𝒢)⊥ ⊂ L²(X).”
 

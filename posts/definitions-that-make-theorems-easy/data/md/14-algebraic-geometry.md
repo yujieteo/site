@@ -26,9 +26,9 @@
 
 **Definition.** A point of complex projective space ℂPⁿ is a line through the origin in ℂⁿ⁺¹. If a homogeneous polynomial vanishes at one nonzero point of a line through the origin, it vanishes on the whole line. So homogeneous ideals have zero sets in ℂPⁿ. The irrelevant ideal is (x₀, x₁, …, xₙ), the ideal of all polynomials with no constant term.
 
-**Problem.** Homogeneous ideals with the same nonempty projective zero set have the same radical. So projective varieties match homogeneous radical ideals, apart from one exception.
+**Problem.** Projective varieties in ℂPⁿ correspond bijectively to the homogeneous radical ideals of ℂ\[x₀, …, xₙ\] other than the irrelevant ideal.
 
-**How the definition helps.** The irrelevant ideal vanishes only at the origin of ℂⁿ⁺¹, and the origin is not a point of projective space (our own). So its projective zero set is empty, the same as for the whole ring (1). Both ideals are radical, so without the exclusion two different radical ideals would have the same zero set. Part (b) of Napkin's theorem shows that these are the only two radical ideals with empty zero set. Removing the irrelevant ideal leaves one ideal for the empty variety and restores the bijection. The real work is the affine Nullstellensatz, applied to the cone over the variety in ℂⁿ⁺¹ (our own).
+**How the definition helps.** The irrelevant ideal vanishes only at the origin of ℂⁿ⁺¹, and the origin is not a point of projective space (our own). So its projective zero set is empty, the same as for the whole ring (1), and both ideals are radical. Removing the irrelevant ideal leaves one ideal for the empty variety and restores the bijection. The real work is the affine Nullstellensatz, applied to the cone over the variety in ℂⁿ⁺¹ (our own).
 
 **Paper or page:** [An Infinitely Large Napkin: Alg Geom: Proj Var](https://venhance.github.io/napkin/Napkin.pdf). It says: “Thus there is a natural bijection between: projective varieties in ℂPⁿ, and homogeneous radical ideals of ℂ\[x₀, …, xₙ\] except for the irrelevant ideal.”
 
@@ -80,7 +80,7 @@
 
 **Problem.** If S is geometrically reduced over k and k′ is a field extension of k, then k′ ⊗ S is geometrically reduced over k′.
 
-**How the definition helps.** With this definition, the theorem is a change of scalars in two steps. Every field extension K of k′ is also a field extension of k (our own). Then K ⊗ (k′ ⊗ S) over k′ is K ⊗ S over k, which is reduced (our own). With the algebraic closure test, one must instead compare the algebraic closures of k and k′ (our own). The work moves to Stacks Lemma 10.44.4, which shows that the algebraic closure test agrees with this definition. Stacks Lemma 33.6.6 states the result for schemes, in both directions.
+**How the definition helps.** With this definition, the theorem is a change of scalars in two steps. Every field extension K of k′ is also a field extension of k, and K ⊗ (k′ ⊗ S) over k′ is K ⊗ S over k, which is reduced (our own). With the algebraic closure test, one must instead compare the algebraic closures of k and k′ (our own). The work moves to Stacks Lemma 10.44.4, which shows that the algebraic closure test agrees with this definition.
 
 **Paper or page:** [Varieties, Lemma 33.6.6.](https://stacks.math.columbia.edu/tag/0384), [Algebra, Lemma 10.44.4.](https://stacks.math.columbia.edu/tag/030V). It says: “In particular, X is geometrically reduced over k if and only if Xₖ′ is geometrically reduced over k′.”
 
@@ -94,9 +94,9 @@
 
 **Definition.** A space with k-valued functions is a space X with a sheaf of k-algebras of k-valued functions on X. A morphism of such spaces is a continuous map f such that every local function φ on the target pulls back to a function φ ∘ f in the structure sheaf of the source.
 
-**Problem.** Define abstract varieties by gluing affine pieces. A map should then be a morphism exactly when it is a morphism on each piece of an open cover.
+**Problem.** Let f be a continuous map between spaces with functions, and let open covers Uᵢ and Vᵢ satisfy f(Uᵢ) ⊂ Vᵢ. Then f is a morphism exactly when each restriction Uᵢ → Vᵢ is a morphism.
 
-**How the definition helps.** When the structure sheaf holds actual functions, being a morphism is only a property of the map, and one can check a property locally. For ringed spaces (spaces with a sheaf of rings that need not be functions), a morphism carries extra data, a map of sheaves, and one must glue this data. When the structure sheaf is a sheaf of actual functions, f alone fixes the pullback of functions. So being a morphism is only a property of the continuous map. The locality statement then follows at once. A map f is a morphism if and only if each restriction of f to a map Uᵢ → Vᵢ is one (Gathmann's lecture notes, Lemma 4.6, as cited by the nLab).
+**How the definition helps.** When the structure sheaf holds actual functions, f alone fixes the pullback of functions. So being a morphism is a property of the map, and a property can be checked locally. For ringed spaces, a morphism carries extra data, a map of sheaves, and one must glue this data. The statement is Lemma 4.6 of Gathmann's lecture notes, as cited by the nLab.
 
 **nLab:** [algebraic variety](https://ncatlab.org/nlab/show/algebraic+variety). It says: “The advantage of this notion of morphism between spaces with k-valued functions is that it is a property, rather than additional data (as in a morphism of ringed spaces).”
 
@@ -130,7 +130,7 @@
 
 **Problem.** Gelfand duality says that spaces correspond to their algebras of functions. The Serre–Swan theorem says that vector bundles correspond to finitely generated projective modules.
 
-**How the definition helps.** In algebraic geometry the space is defined as the dual of its ring, so Gelfand duality holds by definition. In topology, both results are real theorems: Gelfand duality needs C\*-algebra theory, and Swan's theorem needs compact Hausdorff spaces. Serre's form of the theorem is still a theorem. It says that locally free sheaves of finite rank on Spec R, the algebraic vector bundles, correspond to finitely generated projective R-modules. But it is stated in the same algebraic language as the definitions. If you allow all modules, not only projective ones, you get quasicoherent sheaves.
+**How the definition helps.** In algebraic geometry the space is defined as the dual of its ring, so Gelfand duality holds by definition. In topology both results are real theorems: Gelfand duality needs C\*-algebra theory, and Swan's theorem needs compact Hausdorff spaces. Serre's form is still a theorem: locally free sheaves of finite rank on Spec R correspond to finitely generated projective R-modules. But it is stated in the same algebraic language as the definitions.
 
 **nLab:** [module](https://ncatlab.org/nlab/show/module), [Serre-Swan theorem](https://ncatlab.org/nlab/show/Serre-Swan+theorem). It says: “notably in algebraic geometry Gelfand duality is taken to "hold by definition" in that an algebraic variety is essentially by definition the formal dual of a given ring”
 
@@ -163,9 +163,9 @@
 
 **Definition.** A morphism is proper if it is separated, of finite type and universally closed, which means closed after every base change. A monomorphism is a morphism that is injective on T-valued points for every scheme T; this is a property of the functor of points. A closed immersion identifies X with a closed subscheme of S.
 
-**Problem.** A closed immersion is defined by local data: a homeomorphism onto a closed set and a surjection of structure sheaves. One wants a test that uses only properties of the morphism as a whole.
+**Problem.** A morphism of schemes is a closed immersion exactly when it is a proper monomorphism. It is also one exactly when it is proper, unramified and universally injective.
 
-**How the definition helps.** A monomorphism is defined by maps into X alone, so with properness it gives a test that needs no structure sheaves (our own). The quoted lemma also gives the variants with unramified and universally injective. Universal closedness cannot be dropped (our own example). The affine line minus the origin, mapped into the affine line, is a monomorphism locally of finite type, but it is not a closed immersion. The hard part is the proof, which shows that a proper monomorphism is finite by Zariski's main theorem (our own summary).
+**How the definition helps.** A monomorphism is defined by maps into X alone, so with properness it gives a test that needs no structure sheaves (our own). Universal closedness cannot be dropped (our own example). The affine line minus the origin, mapped into the affine line, is a monomorphism locally of finite type, but it is not a closed immersion. The hard part is the proof, which shows that a proper monomorphism is finite by Zariski's main theorem (our own summary).
 
 **Paper or page:** [Stacks Project, Etale, Lemma 41.7.2](https://stacks.math.columbia.edu/tag/04XV). It says: “Let f : X → S be a morphism of schemes. The following are equivalent: (1) f is a closed immersion, (2) f is a proper monomorphism, (3) f is proper, unramified, and universally injective”
 
@@ -229,7 +229,7 @@
 
 **Definition.** Let ℰ be a vector bundle on S. Define its projective bundle by test maps. A map from T is a line bundle quotient of the pullback of ℰ to T. The graded construction takes the relative Proj of the symmetric algebra of ℰ. This glues the projective spectra of graded algebras over affine charts.
 
-**Problem.** For a vector bundle ℰ and a line bundle ℒ, the projective bundles of ℰ and ℰ ⊗ ℒ are canonically isomorphic. The Stacks Project proves a general form for graded algebras whose nth piece is twisted by the nth power of ℒ.
+**Problem.** For a vector bundle ℰ and a line bundle ℒ, the projective bundles of ℰ and ℰ ⊗ ℒ are canonically isomorphic.
 
 **How the definition helps.** With the quotient definition, the isomorphism is just a bijection between test maps (our own). Send a line quotient Q of ℰ to the quotient Q ⊗ ℒ of ℰ ⊗ ℒ. Tensoring with the dual of ℒ goes back. The real work moves into showing that the relative Proj of the symmetric algebra represents these quotients (our own). The isomorphism does not keep 𝒪(1) fixed, which changes by the pullback of ℒ, as the Stacks lemma records.
 
@@ -245,7 +245,7 @@
 
 **Definition.** Let f from Y to X be a map of schemes. Define the normalization of X in Y as the initial factorization of f through a scheme integral over X. Initial means it maps uniquely to every other such factorization. The usual construction takes the relative spectrum of the functions on Y that satisfy monic polynomials over the functions on X.
 
-**Problem.** Take a commutative square whose vertical maps Y₂ → X₂ and Y₁ → X₁ are quasi-compact and quasi-separated. These are finiteness conditions on a map and on its diagonal. Then a unique map from X′₂ to X′₁ between the normalizations makes the diagram commute.
+**Problem.** Take a commutative square with maps Y₂ → Y₁ and X₂ → X₁, and vertical maps Y₂ → X₂ and Y₁ → X₁ that are quasi-compact and quasi-separated. Then a unique map X′₂ → X′₁ between the normalizations makes the diagram commute.
 
 **How the definition helps.** With the universal definition, functoriality follows from the universal property alone (our own). Pull back X′₁ along X₂ → X₁. The result is still integral over X₂, and Y₂ maps into it, so the initial property gives the map (our own). The real work moves into proving that the integral closure construction has this universal property for quasi-compact, quasi-separated maps (our own).
 
@@ -313,7 +313,7 @@
 
 **Problem.** Finite limits, for example fiber products, exist in the category of schemes.
 
-**How the definition helps.** Allowing all rings fills the gaps that the nice objects leave, so the category gets its limits. Nice objects tend to form categories that lack limits and colimits. For example, fiber products of manifolds need not be manifolds, and coproducts of fields are rarely fields. As Deligne says, allowing all rings, including bizarre ones, gives a category of schemes with good properties. The nLab states the general principle; the fiber product of schemes is the standard example and is this record's own illustration, not a claim on the page. The price is that general schemes can be very pathological. The existence of fiber products is still a real construction by gluing (EGA I), not a tautology.
+**How the definition helps.** Allowing all rings fills the gaps that the nice objects leave, so the category gets its limits. Nice objects tend to form categories that lack limits; for example, fiber products of manifolds need not be manifolds. The nLab states the general principle, and the fiber product of schemes is our own illustration. The price is that general schemes can be pathological, and fiber products still need a real construction by gluing (EGA I).
 
 **nLab:** [dichotomy between nice objects and nice categories](https://ncatlab.org/nlab/show/dichotomy+between+nice+objects+and+nice+categories). It says: “If the decision to let every commutative ring define a scheme gives standing to bizarre schemes, allowing it gives a category of schemes with nice properties”
 
@@ -343,9 +343,9 @@
 
 **Definition.** A morphism f : X → S is integral if it is affine and integral over each affine open. That is, over each affine open Spec(A) of S, the ring of functions on the preimage is integral over A. A morphism is universally closed if every base change of it is a closed map.
 
-**Problem.** Give a geometric meaning to integral ring maps. The going-up theorem makes Spec(B) → Spec(A) closed for integral maps, but closedness alone does not characterize integrality.
+**Problem.** A morphism of schemes is integral exactly when it is affine and universally closed.
 
-**How the definition helps.** Asking for closedness after every base change, not only once, makes the condition strong enough to recover integrality. Plain closedness is too weak (our own example). The map Spec(k\[x\]) → Spec(k) is closed, since the target is a point, but k\[x\] is not integral over k. After base change to the affine line it becomes the projection of the plane to a line. This projection sends the hyperbola xy = 1 onto a set that is not closed. In the other direction, integral maps stay integral after base change and are closed by going up (our own). The remaining work is a ring lemma that tests closedness after adjoining one variable (our own summary).
+**How the definition helps.** Asking for closedness after every base change makes the condition strong enough to recover integrality. Plain closedness is too weak: Spec(k\[x\]) → Spec(k) is closed, but k\[x\] is not integral over k (our own example). After base change to the affine line it becomes the projection of the plane to a line, which sends the hyperbola xy = 1 onto a set that is not closed. Integral maps stay integral after base change and are closed by going up, and the remaining work is a ring lemma (our own summary).
 
 **Paper or page:** [Stacks Project, Morphisms, Lemma 29.44.7](https://stacks.math.columbia.edu/tag/01WM). It says: “Let f : X → S be a morphism of schemes. The following are equivalent (1) f is integral, and (2) f is affine and universally closed.”
 
@@ -361,9 +361,9 @@
 
 **Definition.** A locally ringed space is a space with a sheaf of rings whose stalks are local rings. A morphism of locally ringed spaces must give local homomorphisms on stalks: it must send the maximal ideal into the maximal ideal.
 
-**Problem.** Show that morphisms from any locally ringed space X to Spec(A) are the same as ring maps A → Γ(X, 𝒪ₓ). This makes Spec a right adjoint to global sections.
+**Problem.** For every locally ringed space X, morphisms X → Spec(A) of locally ringed spaces correspond bijectively to ring maps A → Γ(X, 𝒪ₓ). So Spec is right adjoint to global sections.
 
-**How the definition helps.** The locality condition forces each point of X to go to one prime: the inverse image of the maximal ideal of its stalk. So the map of spaces is fixed by the ring map. Without the condition the bijection fails (our own example). Let R be a discrete valuation ring with fraction field K. As a map of ringed spaces, the point Spec(K) can go to the closed point of Spec(R), with stalk map R → K. This gives the same map on global sections as the usual map to the generic point, so global sections do not fix the morphism. The quoted lemma, which EGA credits to Tate, holds for every locally ringed space X, not only for schemes.
+**How the definition helps.** The locality condition forces each point of X to go to one prime, the inverse image of the maximal ideal of its stalk. So the ring map fixes the map of spaces. Without the condition the bijection fails (our own example): for a discrete valuation ring R with fraction field K, the point Spec(K) can go to the closed point of Spec(R), with stalk map R → K. This gives the same map on global sections as the usual map to the generic point.
 
 **Paper or page:** [Stacks Project, Schemes, Lemma 26.6.4](https://stacks.math.columbia.edu/tag/01I1). It says: “Let X be a locally ringed space. Let Y be an affine scheme. The map Mor(X, Y) ⟶ Hom(Γ(Y, 𝒪), Γ(X, 𝒪)) which maps f to f♯ (on global sections) is bijective.”
 
@@ -377,7 +377,7 @@
 
 *Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A finite map of schemes has affine preimages of affine opens, with coordinate rings finite as modules over the corresponding base rings. A finite-type map locally uses finitely many algebra generators and has a finite affine cover over each affine open. A quasi-finite map has finite type and finite fibres. A proper map has finite type, has closed diagonal, and takes closed sets to closed sets after every change of base.
+**Definition.** A map of schemes is finite if preimages of affine opens are affine, with coordinate rings that are finite modules over the base rings. It is proper if it is separated, of finite type and universally closed.
 
 **Problem.** A morphism of schemes is finite if and only if it is proper and has finite fibres.
 
@@ -395,9 +395,9 @@
 
 **Definition.** A morphism f : X → S is quasi-compact if the preimage of each quasi-compact open is quasi-compact. It is quasi-separated if the diagonal X → X ×ₛ X is quasi-compact. Then two affine opens of X lying over one affine of S meet in a finite union of affines. A quasi-coherent sheaf is one that is locally the sheaf of a module.
 
-**Problem.** Show that the pushforward f⁎ℱ of a quasi-coherent sheaf ℱ is quasi-coherent. This fails for general morphisms.
+**Problem.** If f : X → S is quasi-compact and quasi-separated, then the pushforward f⁎ℱ of every quasi-coherent sheaf ℱ is quasi-coherent.
 
-**How the definition helps.** Over an affine of S, the two conditions give finitely many affines covering X and finitely many affines covering their overlaps. Then sections of f⁎ℱ are the kernel of a map between finite products of modules (our own summary). Localization commutes with finite products and kernels. Without quasi-compactness this fails (our own example). Let X be a disjoint union of infinitely many copies of Spec(ℤ) over S = Spec(ℤ). Then f⁎𝒪ₓ has sections ∏ℤ over S but ∏ℤ\[1/2\] over D(2), and (∏ℤ)\[1/2\] is smaller, since it misses (1/2, 1/4, 1/8, …). So the two conditions are exactly what the finite argument needs.
+**How the definition helps.** Over an affine of S, the two conditions give finitely many affines covering X and finitely many affines covering their overlaps. Then sections of f⁎ℱ are the kernel of a map between finite products of modules, and localization commutes with finite products and kernels (our own summary). Without quasi-compactness this fails (our own example). For X a disjoint union of infinitely many copies of Spec(ℤ) over Spec(ℤ), f⁎𝒪ₓ has sections ∏ℤ, but (∏ℤ)\[1/2\] misses (1/2, 1/4, 1/8, …) in ∏ℤ\[1/2\].
 
 **Paper or page:** [Stacks Project, Schemes, Lemma 26.24.1](https://stacks.math.columbia.edu/tag/01LC). It says: “Let f : X → S be a morphism of schemes. If f is quasi-compact and quasi-separated then f⁎ transforms quasi-coherent 𝒪ₓ-modules into quasi-coherent 𝒪ₛ-modules.”
 
@@ -413,9 +413,9 @@
 
 **Definition.** A morphism f : X → Y of schemes is separated if the diagonal map from X to the fibre product of X with itself over Y is a closed immersion. Here the fibre product is the product of schemes, and a closed immersion is the scheme version of the inclusion of a closed subset. The morphism f is proper if it is separated, of finite type and universally closed. Universally closed means that each base change of f maps closed sets to closed sets.
 
-**Problem.** Schemes are almost never Hausdorff as topological spaces. Still, one wants analogues of Hausdorff and compact. These analogues should give uniqueness and existence of limits.
+**Problem.** Let f : X → Y be quasi-separated and of finite type, and let A be a valuation ring with fraction field K. Then f is separated exactly when each map Spec K → X over Spec A → Y has at most one lift Spec A → X. It is proper exactly when that lift always exists and is unique.
 
-**How the definition helps.** The closed-diagonal test, with the product of schemes, gives a useful Hausdorff condition although the spaces are not Hausdorff. One copies the Hausdorff condition (a closed diagonal) but uses the fibre product of schemes, which is not the product of the underlying spaces. So the notion is useful even though the underlying space of a separated scheme is typically not Hausdorff. The valuative criteria then say that limits along valuation rings are unique (separated) or exist and are unique (proper). In terms of maps, this is the unique lifting property against Spec K → Spec A, where A is a valuation ring and K is its fraction field. The criteria themselves are theorems (EGA II 7.2.3 and 7.3.8, due to Chevalley for properness).
+**How the definition helps.** The closed-diagonal test copies the Hausdorff condition but uses the fibre product of schemes, which is not the product of the underlying spaces. So the notion is useful even though the underlying space of a separated scheme is typically not Hausdorff. The valuative criteria then turn separated and proper into uniqueness and existence of limits along valuation rings. The criteria themselves are theorems (EGA II 7.2.3 and 7.3.8, due to Chevalley for properness).
 
 **nLab:** [separated morphism of schemes](https://ncatlab.org/nlab/show/separated+morphism+of+schemes), [valuative criterion of separatedness](https://ncatlab.org/nlab/show/valuative+criterion+of+separatedness), [valuative criterion of properness](https://ncatlab.org/nlab/show/valuative+criterion+of+properness), [proper morphism](https://ncatlab.org/nlab/show/proper+morphism). It says: “For example, the underlying topological space of a separated scheme is typically not Hausdorff.”
 
@@ -429,11 +429,11 @@
 
 *True by definition.* MSC 14A15 (Schemes and morphisms), 54D10. arXiv math.AG, math.GN. Level 3: graduate.
 
-**Definition.** A generic point of a topological space is a point whose closure is the whole space. In a scheme, the prime ideal zero of an integral domain is the generic point of its spectrum. Each irreducible closed subset of a scheme is the closure of exactly one point.
+**Definition.** A generic point of a topological space is a point whose closure is the whole space. The spectrum of a ring has one point for each prime ideal. For an integral domain, the prime ideal zero is the generic point of its spectrum.
 
-**Problem.** A property that holds at almost every point of an irreducible variety should be a statement about one point. In a scheme, the irreducible closed subsets are in one-to-one match with the points.
+**Problem.** In a scheme, each irreducible closed subset is the closure of exactly one point, its generic point. So a property that holds at almost every point of an irreducible variety becomes a statement about one point.
 
-**How the definition helps.** Because Spec includes a point for every prime ideal, each irreducible closed set has its own point, and that point is unique. So a statement such as "the generic fibre is smooth" is a statement about one fibre. In Weil's older foundations, generic points were points with values in a very large field, and there were very many equally generic points. Zariski wanted them to be unique, and schemes made this so. In topological words, schemes are sober spaces (our own phrasing). The work moves into the short proof that the spectrum of a ring is sober. Our own remark: the hard work that stays is to spread a property from the generic point to an open set, as generic flatness does.
+**How the definition helps.** Because Spec includes a point for every prime ideal, each irreducible closed set has its own point, and that point is unique. In Weil's older foundations, there were very many equally generic points with values in a very large field. Zariski wanted them to be unique, and schemes made this so. The work moves into the short proof that the spectrum of a ring is sober, and into spreading a property from the generic point to an open set (our own remark).
 
 **Wikipedia:** [Generic point](https://en.wikipedia.org/wiki/Generic_point). It says: “Oscar Zariski, a colleague of Weil's at São Paulo just after World War II, always insisted that generic points should be unique.”
 
@@ -445,11 +445,11 @@
 
 *True by definition.* MSC 14A15 (Schemes and morphisms), 12F15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A morphism f : X → S is universally injective if every base change of f is injective on underlying points. It is radicial if it is injective and each residue field extension is purely inseparable. In characteristic p, purely inseparable means that each element has some pᵏ-th power in the smaller field. In characteristic 0, it means that the extension is trivial.
+**Definition.** A morphism f : X → S is universally injective if every base change of f is injective on underlying points. It is radicial if it is injective on points and each residue field extension is purely inseparable.
 
-**Problem.** Plain injectivity on points is not stable under base change. One wants a version that is stable and has a simple test.
+**Problem.** For a morphism of schemes, three conditions are equivalent: it is injective on K-valued points for every field K, it is universally injective, and it is radicial.
 
-**How the definition helps.** Defining the property through all base changes makes stability under base change true by definition. The work moves to the quoted lemma, which gives a test with field-valued points and the residue field condition. Plain injectivity is not enough (our own example): Spec(ℂ) → Spec(ℝ) is a bijection of one-point spaces. Its base change to ℂ is Spec(ℂ ⊗ ℂ) → Spec(ℂ), which has two points over one. The radicial condition rules this out, because ℂ over ℝ is separable, not purely inseparable.
+**How the definition helps.** Defining the property through all base changes makes stability under base change true by definition. The work moves to the quoted lemma, which gives a test with field-valued points and residue fields. Plain injectivity is not enough (our own example): Spec(ℂ) → Spec(ℝ) is a bijection of one-point spaces, but its base change to ℂ has two points over one. The radicial condition rules this out, because ℂ over ℝ is separable, not purely inseparable.
 
 **Paper or page:** [Stacks Project, Morphisms, Lemma 29.10.2](https://stacks.math.columbia.edu/tag/01S4). It says: “The following are equivalent: (1) For every field K the induced map Mor(Spec(K), X) → Mor(Spec(K), S) is injective. (2) The morphism f is universally injective. (3) The morphism f is radicial.”
 
@@ -465,9 +465,9 @@
 
 **Definition.** The spectrum Spec R of a commutative ring R is the set of all prime ideals of R. It has the Zariski topology, whose closed sets are the sets of primes that contain a given ideal. A ring homomorphism f from R to S gives a map from Spec S to Spec R. It sends a prime q to its inverse image under f.
 
-**Problem.** Every ring homomorphism should give a continuous map of spaces in the opposite direction. With this, Spec becomes a functor, and affine schemes are the same as commutative rings with the arrows reversed.
+**Problem.** Every ring homomorphism R → S gives a continuous map Spec S → Spec R. So Spec is a functor that reverses arrows, and with the structure sheaf, affine schemes are commutative rings with the arrows reversed.
 
-**How the definition helps.** The inverse image of a prime ideal is always prime, so the map on points is defined at once. Maximal ideals do not have this property. Take the inclusion of ℤ in ℚ (our own example). The zero ideal is maximal in ℚ, but its inverse image is the zero ideal of ℤ, which is not maximal. For an affine variety over an algebraically closed field, the maximal ideals are the ordinary points, by the Nullstellensatz. The prime ideals add one more point for each irreducible subvariety that is not a single point. The hard part that stays is the structure sheaf, which must be built so that its ring of global sections is R again.
+**How the definition helps.** The inverse image of a prime ideal is always prime, so the map on points is defined at once. Maximal ideals do not have this property (our own example). Under the inclusion of ℤ in ℚ, the zero ideal is maximal in ℚ, but its inverse image, the zero ideal of ℤ, is not maximal. The hard part that stays is the structure sheaf, which must be built so that its ring of global sections is R again.
 
 **Wikipedia:** [Spectrum of a ring](https://en.wikipedia.org/wiki/Spectrum_of_a_ring). It says: “since the inverse image of a prime ideal by a ring homomorphism is always a prime ideal.”
 
@@ -497,9 +497,9 @@
 
 **Definition.** An algebraic space is a quotient of a scheme by an étale equivalence relation. An étale map is one that is a local isomorphism in the algebraic sense, like a covering map. Some authors also require the space to be quasi-separated, a mild finiteness condition.
 
-**Problem.** The quotient of a space by a free action of a finite group should always exist. Moduli constructions, such as Hilbert schemes that classify subschemes of a variety, need such quotients.
+**Problem.** The quotient of an algebraic space by a free action of a finite group is an algebraic space. The quotient of a scheme by such an action need not be a scheme.
 
-**How the definition helps.** Algebraic spaces are defined as quotients by étale relations, so the quotient by a free group action is in the class by construction. Schemes are not closed under this. Hironaka's example gives a smooth proper threefold with a free action of a group of order 2. Its quotient is not a scheme. For this threefold, the page says that the Hilbert functor of subschemes is not represented by a scheme. The work moves into Artin's representability theorems, which say when a functor is an algebraic space (our own remark).
+**How the definition helps.** Algebraic spaces are defined as quotients by étale relations, so the quotient by a free group action is in the class by construction. Hironaka's example is a smooth proper threefold with a free action of a group of order 2 whose quotient is not a scheme. For this threefold, the page says that the Hilbert functor of subschemes is not represented by a scheme. The work moves into Artin's representability theorems, which say when a functor is an algebraic space (our own remark).
 
 **Wikipedia:** [Algebraic space](https://en.wikipedia.org/wiki/Algebraic_space), [Hironaka's example](https://en.wikipedia.org/wiki/Hironaka%27s_example). It says: “the quotient of an algebraic space by a discrete group acting freely is an algebraic space, but the quotient of a scheme by a discrete group acting freely need not be a scheme (even if the group is finite).”
 
@@ -513,11 +513,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A20 (Generalizations (algebraic spaces, stacks)), 14D22. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A stack is a sheaf of groupoids on schemes: it assigns to each scheme a groupoid (a category in which every map is invertible), and these glue along covers. A moduli stack is a stack whose value on a scheme S is the groupoid of families over S and their isomorphisms. A Deligne–Mumford stack is such a stack with an étale atlas by a scheme and with finite automorphism groups. An étale atlas is a scheme with a surjective étale map onto the stack, so the stack looks locally like that scheme.
+**Definition.** A stack is a sheaf of groupoids on schemes: it assigns to each scheme a groupoid, and these glue along covers. A moduli stack assigns to a scheme S the groupoid of families over S and their isomorphisms. It is a Deligne–Mumford stack if it has an étale atlas by a scheme and finite automorphism groups.
 
-**Problem.** Find a universal family for objects that have nontrivial automorphisms, such as elliptic curves. A universal family is one from which every family comes by pullback along a unique map. Its base would be a fine moduli space.
+**Problem.** A type of objects with nontrivial automorphisms, such as elliptic curves, has no fine moduli scheme. Its moduli stack is still fine: families over S are the same as maps from S to the stack.
 
-**How the definition helps.** A stack keeps the isomorphisms of the objects as data, so the moduli problem has a fine solution by definition. A scheme cannot do this. If an object has a nontrivial automorphism, one can glue a family that is locally trivial but globally nontrivial. In a subcanonical topology (one in which every representable functor is a sheaf), a representing scheme would classify this family by the trivial map, the same map as the trivial family. So no fine moduli scheme exists; the nLab gives this argument and notes that it needs the subcanonical assumption. The hard work is then to show that the stack is algebraic, that is, that it has an atlas. Deligne and Mumford did this for curves.
+**How the definition helps.** A stack keeps the isomorphisms of the objects as data, so the moduli problem has a fine solution by definition. A scheme cannot do this: with a nontrivial automorphism, one can glue a family that is locally trivial but globally nontrivial. In a subcanonical topology, a representing scheme would classify it by the same map as the trivial family. The hard work is to show that the stack is algebraic, that is, that it has an atlas, which Deligne and Mumford did for curves.
 
 **nLab:** [moduli space](https://ncatlab.org/nlab/show/moduli+space), [Deligne-Mumford stack](https://ncatlab.org/nlab/show/Deligne-Mumford+stack), [algebraic stack](https://ncatlab.org/nlab/show/algebraic+stack). It says: “A type of objects that has nontrivial automorphisms cannot have a fine moduli space.”
 
@@ -533,9 +533,9 @@
 
 **Definition.** A stack is like a sheaf, but it assigns groupoids instead of sets. Let a group G act on X. The quotient stack \[X/G\] has as objects over U the principal G-bundles P → U with a G-equivariant map P → X. It is the stack that corresponds to the action groupoid (objects are points of X, arrows are elements of G that move one point to another).
 
-**Problem.** Take the quotient of a group action that is not free, without losing information. Its cohomology should then be the equivariant cohomology.
+**Problem.** Let a Lie group G act on a manifold X, not necessarily freely. The cohomology of the quotient stack \[X/G\] is the equivariant cohomology of X.
 
-**How the definition helps.** A stack keeps the isomorphisms that record how the quotient was formed, and so it keeps the right cohomology. For a non-free action of a Lie group on a manifold, the quotient may not exist as a manifold. In sheaves of sets the quotient exists, but it has the wrong cohomology. In stacks the quotient keeps those isomorphisms, and its cohomology is the equivariant cohomology of X. If the action is proper with finite stabilisers, the quotient stack is an orbifold. The comparison with equivariant cohomology is a theorem about the stack, not part of the definition.
+**How the definition helps.** A stack keeps the isomorphisms that record how the quotient was formed, so it keeps the right cohomology. For a non-free action, the quotient may not exist as a manifold. In sheaves of sets the quotient exists, but it has the wrong cohomology. The comparison with equivariant cohomology is a theorem about the stack, not part of the definition.
 
 **nLab:** [derived stack](https://ncatlab.org/nlab/show/derived+stack), [quotient stack](https://ncatlab.org/nlab/show/quotient+stack). It says: “The cohomology of the stack is then indeed the equivariant cohomology of the original manifold.”
 
@@ -551,9 +551,9 @@
 
 **Definition.** The Zariski tangent space at a point with maximal ideal 𝔪 is the dual of the vector space 𝔪/𝔪². The dual numbers K\[t\]/(t²) form a ring with a nonzero element t whose square is 0. Their spectrum is one point with one tangent direction.
 
-**Problem.** Tangent spaces should be defined for any scheme, with no embedding in affine space and no derivatives. A morphism of schemes should give a map of tangent spaces automatically.
+**Problem.** For a scheme X over a field K, maps Spec K\[t\]/(t²) → X correspond to a rational point x with an element of the dual of 𝔪/𝔪² at x. So every morphism of schemes gives maps of tangent spaces, with no embedding needed.
 
-**How the definition helps.** Because schemes may have nilpotent functions, the dual numbers are a scheme, and a map from it is a point together with a first-order direction. Functoriality is then free, because composing with a morphism sends tangent vectors to tangent vectors. Among varieties without nilpotents this object does not exist, so one must use 𝔪/𝔪² or local equations. Our own remark: the same idea gives deformation theory, where maps from larger nilpotent thickenings give higher-order data. The work moves into one theorem (our own phrasing of the cited exercise). Maps from Spec K\[t\]/(t²) centred at x match the dual of 𝔪/𝔪².
+**How the definition helps.** Because schemes may have nilpotent functions, the dual numbers are a scheme, and a map from it is a point together with a first-order direction. Functoriality is then free, because composing with a morphism sends tangent vectors to tangent vectors. Among varieties without nilpotents this object does not exist, so one must use 𝔪/𝔪² or local equations. The work moves into matching such maps with the dual of 𝔪/𝔪² (our own phrasing of the cited exercise).
 
 **Wikipedia:** [Zariski tangent space](https://en.wikipedia.org/wiki/Zariski_tangent_space). It says: “morphisms from Spec K\[t\]/(t²) to a scheme X over K correspond to a choice of a rational point x ∈ X(k) and an element of the tangent space at x.”
 
@@ -565,11 +565,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14B12 (Local deformation theory, Artin approximation, etc.), 14D15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A local Artin algebra is a local ring of finite length, such as k\[ε\]/(ε²). A deformation functor is a functor F from local Artin algebras with residue field k to sets, with F(k) a single point, that behaves well with gluing over fibre products (conditions H1 and H2). The tangent space of F is F(k\[ε\]/(ε²)), the set of first-order deformations. A hull for F is a complete local ring R with a formally smooth map from its represented functor to F that is a bijection on tangent spaces. Formally smooth means that lifts along surjections of Artin algebras always exist.
+**Definition.** A deformation functor F goes from local Artin algebras with residue field k to sets, with F(k) a single point and good behaviour on fibre products (conditions H1 and H2). Its tangent space is F(k\[ε\]/(ε²)). A hull for F is a complete local ring R with a formally smooth map from its represented functor to F that is a bijection on tangent spaces.
 
-**Problem.** Decide when a complete local ring controls the local deformations of an object. This must work even though moduli functors are almost never representable.
+**Problem.** A deformation functor F has a hull exactly when H1, H2 and H3 hold, where H3 says that the tangent space is finite-dimensional (Schlessinger). F is prorepresentable exactly when H4 holds as well.
 
-**How the definition helps.** Schlessinger asks for less than representability, and then a simple test decides the question. He weakens representability to two notions: having a hull and being prorepresentable (represented by a complete local ring). F has a hull if and only if H1, H2 and H3 hold. H3 says that the tangent space is finite-dimensional. F is prorepresentable if and only if H4 holds as well. The node xy = 0 has a hull for its deformations, but its deformation functor is not prorepresentable. Objects with automorphisms are the usual cause of this failure.
+**How the definition helps.** Schlessinger asks for less than representability, and then a simple test decides the question. Moduli functors are almost never representable, but many have hulls. The node xy = 0 has a hull for its deformations, but its deformation functor is not prorepresentable. Objects with automorphisms are the usual cause of this failure.
 
 **nLab:** [deformation functor](https://ncatlab.org/nlab/show/deformation+functor). It says: “The main theorem of Schlessinger's paper says that (H1), (H2), and (H3) are satisfied if and only if F has a hull.”
 
@@ -601,9 +601,9 @@
 
 **Definition.** Let T be affine over S, and let T₀ be cut out of T by a nilpotent ideal. A scheme X over S is formally smooth if every map from T₀ to X extends to T. A morphism is smooth if it is formally smooth and locally of finite presentation. Equivalently, it is flat and locally of finite presentation, with regular geometric fibres.
 
-**Problem.** Smooth morphisms are stable under base change and composition. They should behave like submersions of manifolds.
+**Problem.** Smooth morphisms are stable under base change and composition.
 
-**How the definition helps.** A lifting property for maps into X transfers at once to the fibre product of X and S′ over S. So base change and composition need no proof. The work moves into the theorem that this lifting definition agrees with the geometric ones, such as flatness with regular geometric fibres. Regularity alone is not enough, because over an imperfect field a regular variety can become singular after a field extension (our own example). The geometric fibres in the definition, or the lifting property, rule this out. The structure theorem says that a smooth map is étale-locally an open piece of affine space over the base. It remains real work, and the page on étale morphisms states it.
+**How the definition helps.** A lifting property for maps into X transfers at once to the fibre product of X and S′ over S, so base change and composition need no proof. The work moves into the theorem that this lifting definition agrees with the geometric ones, such as flatness with regular geometric fibres. Regular fibres alone are not enough, because over an imperfect field a regular variety can become singular after a field extension (our own example). The structure theorem, that a smooth map is étale-locally an open piece of affine space, remains real work.
 
 **Wikipedia:** [Smooth morphism](https://en.wikipedia.org/wiki/Smooth_morphism), [Étale morphism](https://en.wikipedia.org/wiki/%C3%89tale_morphism). It says: “One can define smoothness without reference to geometry.”
 
@@ -621,7 +621,7 @@
 
 **Problem.** For a flat morphism of locally Noetherian schemes, the dimension at a point is the dimension of the base plus the dimension of the fibre. For a flat projective family over a connected base, all fibres have the same Hilbert polynomial, so the same degree and arithmetic genus.
 
-**How the definition helps.** Flatness is the algebraic condition that turns the vague idea of a family that varies continuously into a precise one. It excludes jumps such as the blowup of a point in the plane, where one fibre is a line and the others are points. Conversely, over a reduced connected base, a projective family with constant Hilbert polynomial is flat (our own addition, from standard texts). Flatness is also generic, so under some finiteness conditions every family is flat over a dense open subset of the base. The page calls the resulting flat cohomology a deep theory that is not easy to handle.
+**How the definition helps.** Flatness turns the vague idea of a family that varies continuously into a precise algebraic condition. It excludes jumps such as the blowup of a point in the plane, where one fibre is a line and the others are points. Conversely, over a reduced connected base, a projective family with constant Hilbert polynomial is flat (our own addition, from standard texts).
 
 **Wikipedia:** [Flat morphism](https://en.wikipedia.org/wiki/Flat_morphism). It says: “Another non-example of a flat morphism is a blowup since a flat morphism necessarily has equi-dimensional fibers.”
 
@@ -637,7 +637,7 @@
 
 **Definition.** A morphism is étale if it is flat, locally of finite presentation, and its fibres are disjoint unions of spectra of finite separable field extensions. It is universally injective if it stays injective on points after every base change. A monomorphism is a morphism that is injective on T-valued points for every scheme T.
 
-**Problem.** An étale morphism that is injective should be an open immersion. Plain injectivity on points is not enough for this.
+**Problem.** A morphism of schemes is an open immersion exactly when it is étale and universally injective. It is also one exactly when it is a flat monomorphism, locally of finite presentation.
 
 **How the definition helps.** Asking for injectivity after every base change rules out the bad case at once. The bad case (our own example) is Spec(L) → Spec(K) for a finite separable field extension of degree at least 2. It is étale and a bijection of one-point spaces, but it is not an isomorphism. After base change to L, the one point of Spec(L) has at least two points over it, so the map is not universally injective. The hard part is to show that a flat monomorphism of finite presentation is an open immersion (our own).
 
@@ -655,9 +655,9 @@
 
 **Definition.** An étale morphism is flat, locally of finite presentation and unramified. Unramified means that each fibre is a set of separate simple points. For smooth varieties, it is a map whose differential is an isomorphism at every point. The étale topology uses étale maps in place of open inclusions as its open covers.
 
-**Problem.** A map with invertible differential should be a local isomorphism. In the étale topology, a finite étale map becomes, near each point, a disjoint union of copies of the base.
+**Problem.** In the étale topology, a map with invertible differential is a local isomorphism. A finite étale map becomes, near each point, a disjoint union of copies of the base.
 
-**How the definition helps.** Étale neighbourhoods are small enough to contain square roots and other algebraic inverses, so maps with invertible differential get local inverses. Zariski open sets are too large for this. The page's example is the projection of the parabola y = x² to the y-axis. It is étale away from the origin, but it has no Zariski-local inverse. This needs a field where 2 is invertible (our own remark). The étale topology then supports étale cohomology and the étale fundamental group, which is where the hard work lies.
+**How the definition helps.** Étale neighbourhoods are small enough to contain square roots and other algebraic inverses, so maps with invertible differential get local inverses. Zariski open sets are too large for this. The projection of the parabola y = x² to the y-axis is étale away from the origin when 2 is invertible, but it has no Zariski-local inverse. The étale topology then supports étale cohomology and the étale fundamental group, which is where the hard work lies.
 
 **Wikipedia:** [Étale morphism](https://en.wikipedia.org/wiki/%C3%89tale_morphism). It says: “However, there is no (Zariski-)local inverse of f, just because the square root is not an algebraic map, not being given by polynomials. However, there is a remedy for this situation, using the étale topology.”
 
@@ -675,7 +675,7 @@
 
 **Problem.** Let X → Y → Z be maps of schemes. If Y → Z is formally unramified and X → Z is formally étale, then X → Y is formally étale.
 
-**How the definition helps.** The lifting definitions let us solve the problem over Z before checking it over Y. Lift T → X using the given map T′ → Z. The resulting map T′ → Y and the given one agree on T and over Z. Formal unramifiedness forces them to agree. Any second lift over Y would already be a second lift over Z. This is our own account of the proof. The comparison with the classical test using local equations and an invertible derivative matrix requires local finite presentation (Tag 02HM).
+**How the definition helps.** The lifting definitions let us solve the problem over Z before checking it over Y. Lift T → X using the given map T′ → Z. The resulting map T′ → Y and the given one agree on T and over Z, so formal unramifiedness forces them to agree. Any second lift over Y would already be a second lift over Z (our own account of the proof).
 
 **nLab:** [formally étale morphism](https://ncatlab.org/nlab/show/formally+%C3%A9tale+morphism). It says: “If there exists at most one such extension, it is called a formally unramified morphism. The formally étale morphisms are precisely those that are both formally smooth and formally unramified.”
 
@@ -696,7 +696,7 @@
 
 **Problem.** A map of schemes is formally étale exactly when it is formally smooth and formally unramified.
 
-**How the definition helps.** The lifting definitions reduce the theorem to splitting “exactly one” into existence and uniqueness. The classical smooth and étale tests instead use local equations and their matrices of derivatives. They also impose local finite presentation, meaning finitely many generators and relations on suitable open pieces. The work is in the comparison theorems, which recover smoothness and étaleness from the corresponding lifting tests and that finiteness condition. For unramified maps, the comparison uses local finite type, meaning finitely many generators but not necessarily finitely many relations.
+**How the definition helps.** The lifting definitions reduce the theorem to splitting “exactly one” into existence and uniqueness. The classical smooth and étale tests instead use local equations and their matrices of derivatives. The work is in the comparison theorems, which recover smoothness and étaleness from the lifting tests together with local finite presentation.
 
 **nLab:** [formally étale morphism](https://ncatlab.org/nlab/show/formally+%C3%A9tale+morphism). It says: “If there exists at least one such infinitesimal extension, it is called a formally smooth morphism. If there exists at most one such extension, it is called a formally unramified morphism.”
 
@@ -717,9 +717,9 @@
 
 **Definition.** The Stacks Project follows Raynaud. It calls a morphism of schemes unramified if it is locally of finite type and has zero relative differentials. EGA also asks for local finite presentation, and the Stacks Project calls that stronger notion G-unramified. Finite presentation means a quotient of a polynomial ring in finitely many variables by a finitely generated ideal.
 
-**Problem.** A closed immersion adds no new directions, so it should be unramified. Under the EGA definition this fails when the ideal of the closed subscheme is not locally finitely generated.
+**Problem.** With this definition, every closed immersion is unramified. Under the EGA definition, a closed immersion is unramified only when its ideal sheaf is of finite type.
 
-**How the definition helps.** Every closed immersion is of finite type, and a quotient ring has no relative differentials, so the proof takes two lines (our own). With the EGA definition, the quoted lemma shows that a closed immersion is unramified only when its ideal sheaf is of finite type. An example of the bad case (our own) is Spec(A/I) → Spec(A) with A = k\[x₁, x₂, …\] and I = (x₁, x₂, …). The cost is that results proved by Noetherian approximation must add finite presentation as a hypothesis (our own). Over a locally Noetherian base the two notions agree, so nothing changes there (our own).
+**How the definition helps.** Every closed immersion is of finite type, and a quotient ring has no relative differentials, so the proof takes two lines (our own). An example of the bad case for EGA (our own) is Spec(A/I) → Spec(A) with A = k\[x₁, x₂, …\] and I = (x₁, x₂, …). The cost is that results proved by Noetherian approximation must add finite presentation as a hypothesis (our own). Over a locally Noetherian base the two notions agree (our own).
 
 **Wikipedia:** [Unramified morphism](https://en.wikipedia.org/wiki/Unramified_morphism). It says: “an unramified morphism is a morphism f: X → Y of schemes such that (a) it is locally of finite presentation and (b)”
 
@@ -740,7 +740,7 @@
 
 **Problem.** Grothendieck showed that this functor is represented by a projective scheme. So every flat family of subschemes is pulled back from one universal family.
 
-**How the definition helps.** Allowing non-reduced subschemes gives every flat family a limit, so the parameter space can be projective. When two points of the plane move together, the flat limit is a double point with a tangent direction (our own example). This limit is a non-reduced scheme. If only reduced subvarieties were allowed, such limits would be missing and the space would not be compact. Grothendieck built the space inside a Grassmannian, a space of linear subspaces, using a high degree where all higher cohomology vanishes. The price is that Hilbert schemes can be very singular, even non-reduced at every point of some components.
+**How the definition helps.** Allowing non-reduced subschemes gives every flat family a limit, so the parameter space can be projective. When two points of the plane move together, the flat limit is a non-reduced double point with a tangent direction (our own example). If only reduced subvarieties were allowed, such limits would be missing and the space would not be compact. The price is that Hilbert schemes can be very singular, even non-reduced at every point of some components.
 
 **Wikipedia:** [Hilbert scheme](https://en.wikipedia.org/wiki/Hilbert_scheme). It says: “H is universal with respect to all flat families of subschemes of X having Hilbert polynomial P.”
 
@@ -756,9 +756,9 @@
 
 **Definition.** A Chow motive is a pair (X, p) of a smooth projective variety X and an idempotent correspondence p: an algebraic cycle (a formal sum of subvarieties) on X × X, taken up to rational equivalence, with p ∘ p = p. Morphisms are correspondences, composed by pullback, intersection and pushforward. Inverting the Lefschetz motive (the piece of the projective line in degree 2) gives the full category of pure Chow motives. Other adequate equivalence relations (relations on cycles that work with pullback, pushforward and intersection) give other categories of pure motives.
 
-**Problem.** The different Weil cohomologies of a variety (ℓ-adic, de Rham, Betti) behave alike. Explain why: find one object through which they all factor.
+**Problem.** Every Weil cohomology of smooth projective varieties, such as ℓ-adic, de Rham or Betti cohomology, factors uniquely through the category of Chow motives.
 
-**How the definition helps.** Correspondences act on every Weil cohomology, so a category built from correspondences is a common source for all of them. The action comes from the cycle class map that each Weil cohomology theory has. So the category whose morphisms are correspondences up to rational equivalence is built so that every Weil cohomology factors through it, uniquely; the nLab states this for Chow motives. This makes "motives are the common reason behind all Weil cohomologies" precise for smooth projective varieties. For coarser relations, such as numerical equivalence, the factorisation is not automatic. The hoped-for properties (an abelian, Tannakian category with the right Hom groups) depend on the standard conjectures and are still open. Mixed motives for general varieties are also still conjectural.
+**How the definition helps.** Correspondences act on every Weil cohomology through its cycle class map, so a category built from correspondences is a common source for all of them. The nLab states the factorisation for Chow motives. For coarser relations, such as numerical equivalence, the factorisation is not automatic. The hoped-for properties, such as an abelian Tannakian category with the right Hom groups, depend on the standard conjectures and are still open.
 
 **nLab:** [pure motive](https://ncatlab.org/nlab/show/pure+motive), [motive](https://ncatlab.org/nlab/show/motive), [Chow motive](https://ncatlab.org/nlab/show/Chow+motive). It says: “such that every good cohomology theory factors through the functor M.”
 
@@ -775,9 +775,9 @@
 
 **Definition.** An algebraic cycle is a finite integer combination of subvarieties. Two cycles are rationally equivalent if their difference is a sum of divisors of rational functions on subvarieties one dimension higher. The Chow group is cycles modulo rational equivalence.
 
-**Problem.** Let X be a smooth scheme over a field. Then the Chern character, a ring map built from Chern classes, is an isomorphism from K₀(X) to the Chow ring, after tensoring both with ℚ. Here K₀(X), the Grothendieck group, is the group of formal differences of vector bundles; the result is part of Grothendieck–Riemann–Roch.
+**Problem.** For a smooth scheme X over a field, the Chern character is an isomorphism from K₀(X) ⊗ ℚ, built from vector bundles, to the Chow ring of X tensored with ℚ.
 
-**How the definition helps.** Rational equivalence is the relation that the Chern character respects, so the comparison with K-theory can be an isomorphism (our own reading). Rational equivalence identifies the fibres over 0 and ∞ of a family over the projective line. Classes in K-theory obey the same rule (our own remark). Coarser relations, such as homological or numerical equivalence, lose information that K-theory keeps (our own remark). In codimension one, the Chow group is the divisor class group. On smooth schemes this equals the Picard group of line bundles. The hard part is the Grothendieck–Riemann–Roch theorem itself.
+**How the definition helps.** Rational equivalence is the relation that the Chern character respects, so the comparison with K-theory can be an isomorphism (our own reading). Rational equivalence identifies the fibres over 0 and ∞ of a family over the projective line, and classes in K-theory obey the same rule (our own remark). Coarser relations, such as homological or numerical equivalence, lose information that K-theory keeps (our own remark). The hard part is the Grothendieck–Riemann–Roch theorem itself.
 
 **Wikipedia:** [Chow group](https://en.wikipedia.org/wiki/Chow_group). It says: “This isomorphism shows the importance of rational equivalence, compared to any other adequate equivalence relation on algebraic cycles.”
 
@@ -795,7 +795,7 @@
 
 **Problem.** There is exactly one function with these properties. It equals the dimension of the local ring of the plane at p divided by the ideal (P, Q).
 
-**How the definition helps.** Defining the multiplicity by its rules makes the agreement of all the usual recipes a consequence of uniqueness. The page names several such recipes, for example the quotient-ring dimension and the count after a small perturbation. They all satisfy the rules, so they must agree. The rules also give an algorithm, because the last rule allows a Euclid-style reduction (our own remark, after Fulton's book, which the page cites). With this multiplicity, Bézout's theorem in the projective plane follows. The hard part that stays is the existence proof, that the local ring quotient satisfies every rule.
+**How the definition helps.** Defining the multiplicity by its rules makes the agreement of all the usual recipes a consequence of uniqueness. The page names several recipes, such as the quotient-ring dimension and the count after a small perturbation, and they all satisfy the rules. The last rule also allows a Euclid-style reduction, so the rules give an algorithm (our own remark, after Fulton's book). The hard part that stays is the existence proof, that the local ring quotient satisfies every rule.
 
 **Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “Although these properties completely characterize intersection multiplicity, in practice it is realised in several different ways.”
 
@@ -811,9 +811,9 @@
 
 **Definition.** A line bundle is very ample if its sections embed the variety in projective space. It is ample if some positive tensor power is very ample. Two curves are numerically equivalent if every line bundle has the same degree on both. The cone of curves is spanned by the curve classes in the finite-dimensional real space of these equivalence classes.
 
-**Problem.** Kleiman's criterion holds on a projective scheme. It says that a line bundle is ample exactly when it is positive on every nonzero class in the closed cone of curves. So ampleness depends only on the degrees of the bundle on curves.
+**Problem.** On a projective scheme, a line bundle is ample exactly when it is positive on every nonzero class in the closed cone of curves (Kleiman). So ampleness depends only on the degrees of the bundle on curves.
 
-**How the definition helps.** Ampleness asks only for some power, so it can depend on degrees on curves alone, and Kleiman proved that it does (our own reading). So the ample bundles form an open cone in a finite-dimensional real space. Very ampleness has no such description (our own remark). The closure of the cone is needed. Nagata and Mumford found bundles that are positive on every curve but are not ample. The criterion can fail for proper schemes that are not projective. Proving the numerical criteria is the real work.
+**How the definition helps.** Ampleness asks only for some power, so it can depend on degrees on curves alone, and Kleiman proved that it does (our own reading). Very ampleness has no such description (our own remark). The closure of the cone is needed: Nagata and Mumford found bundles that are positive on every curve but are not ample. The criterion can fail for proper schemes that are not projective.
 
 **Wikipedia:** [Ample line bundle](https://en.wikipedia.org/wiki/Ample_line_bundle). It says: “An ample line bundle on a projective variety X has positive degree on every curve in X. The converse is not quite true, but there are corrected versions of the converse, the Nakai–Moishezon and Kleiman criteria for ampleness.”
 
@@ -829,9 +829,9 @@
 
 **Definition.** An effective Cartier divisor on X is a closed subscheme cut out locally by one equation that is not a zero divisor. A relative effective Cartier divisor for a map from X to S is an effective Cartier divisor on X that is also flat over S. Flat is an algebraic condition which says that the fibres vary without jumps.
 
-**Problem.** A family of divisors should restrict, over each point of the base, to a divisor on the fibre. This is needed to build moduli spaces of divisors, such as Hilbert schemes of hypersurfaces.
+**Problem.** Let D be a relative effective Cartier divisor for X → S. After any base change S′ → S, the pullback of D is again an effective Cartier divisor, so D restricts to a divisor on each fibre.
 
-**How the definition helps.** Flatness keeps the local equation a non-zero-divisor after any base change, so the restriction is again a Cartier divisor. Without flatness this fails. Take the plane mapped to the line by (x, y) ↦ x, and the divisor x = 0 (our own example). That divisor is the whole fibre over 0, so on that fibre its equation is zero and gives no divisor. The page also notes that flatness is what keeps inverse images of Weil divisors in codimension one. What stays hard is to show that families defined in this way have a representing scheme (our own remark).
+**How the definition helps.** Flatness keeps the local equation a non-zero-divisor after any base change, so the restriction is again a Cartier divisor. Without flatness this fails (our own example). For the plane mapped to the line by (x, y) ↦ x, the divisor x = 0 is the whole fibre over 0, so on that fibre its equation is zero. What stays hard is to show that families defined in this way have a representing scheme (our own remark).
 
 **Wikipedia:** [Divisor (algebraic geometry)](https://en.wikipedia.org/wiki/Divisor_%28algebraic_geometry%29). It says: “A relative effective Cartier divisor for X over S is an effective Cartier divisor D on X which is flat over S.”
 
@@ -881,7 +881,7 @@
 
 **Problem.** Let D be a smooth hypersurface in a complex manifold X. Its canonical bundle is the restriction to D of the ambient canonical bundle tensored with the line bundle of D.
 
-**How the definition helps.** Taking top exterior powers turns the exact sequence of differentials into a product of line bundles. In our own calculation, restriction maps ambient differentials onto differentials along D. Its kernel is the conormal line, the dual of the hypersurface line bundle restricted to D. Moving that factor across gives the formula. The local equation for D identifies the kernel, and Serre duality identifies top forms with the bundle representing duality.
+**How the definition helps.** Taking top exterior powers turns the exact sequence of differentials into a product of line bundles. In our own calculation, restriction maps ambient differentials onto differentials along D, with kernel the conormal line. The local equation of D identifies the conormal line with the dual of the line bundle of D restricted to D. Moving that factor across gives the formula.
 
 **Wikipedia:** [Adjunction formula](https://en.wikipedia.org/wiki/Adjunction_formula). It says: “The conormal bundle I/I² is i\*O(−D), which, combined with the formula above, gives”
 
@@ -913,9 +913,9 @@
 
 **Definition.** The Weil divisor class group Cl(X) is the group of Weil divisors modulo principal divisors. A normal variety is one whose local rings are integrally closed domains. The canonical divisor of a smooth variety is the divisor of a nonzero rational differential form of top degree.
 
-**Problem.** A normal variety should have a canonical divisor class, even where it is singular. This class is needed to state adjunction and to run the minimal model programme.
+**Problem.** If Z has codimension at least 2 in X, restriction gives an isomorphism Cl(X) → Cl(X − Z). So a normal variety over a perfect field has a canonical divisor class, the canonical divisor of its smooth part extended uniquely.
 
-**How the definition helps.** Weil divisors are built only from codimension-one subvarieties, so throwing away a closed set of codimension two does not change them. On a normal variety over a perfect field, the singular set has codimension at least two. So one takes the canonical divisor of the smooth part and extends it uniquely to the whole variety. The resulting class need not be Cartier, and much of the minimal model programme is about when some multiple of it is Cartier. The fact behind this is that normal varieties are regular in codimension one, which Zariski proved for varieties (our own remark).
+**How the definition helps.** Weil divisors are built only from codimension-one subvarieties, so throwing away a closed set of codimension two does not change them. On a normal variety the singular set has codimension at least two, because normal varieties are regular in codimension one (Zariski, our own remark). The resulting class need not be Cartier, and much of the minimal model programme is about when some multiple of it is Cartier.
 
 **Wikipedia:** [Divisor (algebraic geometry)](https://en.wikipedia.org/wiki/Divisor_%28algebraic_geometry%29). It says: “If Z has codimension at least 2 in X, then the restriction Cl(X) → Cl(X − Z) is an isomorphism.”
 
@@ -965,9 +965,9 @@
 
 **Definition.** Let f : X → S be a morphism of schemes. The relative Picard functor sends an S-scheme T to Pic(X × T)/f\*Pic(T). This is the group of line bundles on X × T modulo those pulled back from T. The functor is then sheafified (made into a sheaf, so that local data glue) in the étale or fppf topology.
 
-**Problem.** Represent the Picard group of X by a scheme, the Picard scheme.
+**Problem.** The naive functor T ↦ Pic(X × T) is not even a sheaf, so it cannot be represented. Grothendieck proved that the relative Picard functor is represented by a scheme, under conditions such as f projective and flat with geometrically integral fibres.
 
-**How the definition helps.** Dividing by line bundles from T removes the classes that stop the functor from being a sheaf. The naive functor T ↦ Pic(X × T) cannot be representable, because it is not even a sheaf. Take a nontrivial line bundle on T and pull it back to X × T. It becomes trivial on some cover of T, so the restriction map to the cover is not injective. Dividing by f\*Pic(T) and sheafifying removes these classes. Grothendieck then proved representability under conditions such as f projective and flat with geometrically integral fibres. That existence theorem is the hard part.
+**How the definition helps.** Dividing by line bundles from T removes the classes that stop the functor from being a sheaf. A nontrivial line bundle on T, pulled back to X × T, becomes trivial on some cover of T. So the restriction map to the cover is not injective. Dividing by f\*Pic(T) and sheafifying removes these classes, and Grothendieck's existence theorem is the hard part.
 
 **nLab:** [Picard scheme](https://ncatlab.org/nlab/show/Picard+scheme). It says: “has no hope of being representable as it is not even a sheaf.”
 
@@ -997,11 +997,11 @@
 
 *Rules out counterexamples.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An algebraic simplex Δⁿ has coordinates whose sum is one. A face sets some coordinates to zero. A cycle is an integer combination of subvarieties. Each generator of codimension r must meet every X × F in codimension at least r there, for every face F.
+**Definition.** Bloch's cycle complex in degree n uses cycles on X × Δⁿ, where Δⁿ is the algebraic simplex with coordinates of sum one. A face of Δⁿ sets some coordinates to zero. A subvariety of codimension r is allowed if it meets X × F in codimension at least r there, for every face F.
 
-**Problem.** On a smooth variety X over a field, take the alternating sum of restrictions to the faces of codimension one. Applying this boundary twice gives zero.
+**Problem.** On a smooth variety X over a field, the boundary is the alternating sum of restrictions to the faces of codimension one. It maps allowed cycles to allowed cycles, and applying it twice gives zero.
 
-**How the definition helps.** Checking every face lets each restricted cycle satisfy the same rule on smaller faces. The face identities give each double restriction twice with opposite signs. Our own example takes X to be a point and the line t₁ + t₂ = 0 in Δ². It meets every edge properly but contains the vertex where both coordinates vanish. Its restriction to the first coordinate edge therefore fails the rule.
+**How the definition helps.** Checking every face lets each restricted cycle satisfy the same rule on smaller faces, so the boundary stays inside the complex. The face identities give each double restriction twice with opposite signs. Our own example: with X a point, the line t₁ + t₂ = 0 in Δ² meets every edge properly but contains the vertex where t₁ and t₂ vanish. So its restriction to the edge t₁ = 0 fails the rule.
 
 **Wikipedia:** [Bloch's higher Chow group](https://en.wikipedia.org/wiki/Bloch%27s_higher_Chow_group). It says: “the subgroup generated by closed subvarieties that intersect properly with X × F for each face F of Δᑫ.”
 
@@ -1034,11 +1034,11 @@
 
 *True by definition.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let X be smooth over a perfect field. The motive construction assigns an object M(X) to X and preserves the direction of maps. Represent a class of degree p and weight q by a map from M(X) to the coefficient object ℤ(q) shifted by p. Bloch’s alternative description uses subvarieties meeting all simplex faces in the expected dimension.
+**Definition.** For X smooth over a perfect field, write higher Chow groups as maps in the motivic category. A class of degree p and weight q is a map from the motive M(X) to ℤ(q) shifted by p. The rule X ↦ M(X) is a functor. Bloch's original description uses subvarieties meeting all simplex faces in the expected dimension.
 
-**Problem.** Every morphism between smooth schemes over a perfect field induces functorial pullback on higher Chow groups. Pullback preserves codimension and homological degree.
+**Problem.** Every morphism between smooth schemes over a perfect field induces a functorial pullback on higher Chow groups. The pullback preserves codimension and degree.
 
-**How the definition helps.** Writing classes as maps makes pullback composition with the map of motives. Our own example pulls the origin in the affine line back along its own inclusion. Its inverse image is the entire point, so codimension drops from one to zero. The comparison theorem identifies the map groups with higher Chow groups. The direct cycle construction must move representatives before taking intersections.
+**How the definition helps.** Writing classes as maps makes pullback composition with the map of motives. Naive pullback of cycles fails (our own example). Pulling the origin of the affine line back along its own inclusion gives the whole point, so codimension drops from one to zero. The comparison theorem identifies the map groups with higher Chow groups, while the direct cycle construction must move representatives before intersecting.
 
 **Wikipedia:** [Bloch's higher Chow group](https://en.wikipedia.org/wiki/Bloch%27s_higher_Chow_group). It says: “whenever Y is smooth, any map to Y is contravariant.”
 
@@ -1052,9 +1052,9 @@
 
 *True by definition. Confidence: medium.* MSC 14C30 (Transcendental methods, Hodge theory (algebro-geometric aspects)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A mixed Hodge–Tate structure has an increasing weight filtration W and a decreasing complex Hodge filtration F. Only even weight quotients occur. In weight 2p the induced Hodge filtration equals the whole quotient at step p and vanishes at step p + 1. Take the intersection of W₂ₚ over ℂ with the pth Hodge step.
+**Definition.** A mixed Hodge–Tate structure has an increasing weight filtration W and a decreasing Hodge filtration F, with only even weight quotients. On the quotient of weight 2p, the Hodge filtration is everything at step p and zero at step p + 1. The key subspace is the complex intersection W₂ₚ ∩ Fᵖ.
 
-**Problem.** Projection identifies each intersection with the complex weight quotient of weight 2p. Together the intersections split the weight filtration, and maps of mixed Hodge–Tate structures preserve this splitting.
+**Problem.** Projection maps W₂ₚ ∩ Fᵖ isomorphically onto the weight quotient of weight 2p. These subspaces split the weight filtration over ℂ, and maps of mixed Hodge–Tate structures preserve the splitting.
 
 **How the definition helps.** Intersecting the two steps selects one lift of each quotient vector without choosing complements (our own). By the definition of the induced filtration, the intersection maps onto the quotient because its induced pth Hodge step is the whole quotient (our own). Its kernel vanishes because every lower weight has zero pth step (our own). Maps preserve both filtrations and hence each intersection (our own).
 
@@ -1070,9 +1070,9 @@
 
 **Definition.** A real mixed Hodge complex has two filtrations, nested sequences of subspaces called weight and Hodge steps. Its defining conditions require each weight quotient numbered m to have pure cohomology of weight m + n in degree n. Purity means the two indices of every Hodge component have that sum.
 
-**Problem.** The weight spectral sequence computes cohomology in successive pages, using a differential on each page. For a mixed Hodge complex every differential from page two onward vanishes.
+**Problem.** For a mixed Hodge complex, the weight spectral sequence degenerates at page two: every differential from page two onward vanishes.
 
-**How the definition helps.** The purity condition assigns different weights to the source and target of each later differential (our own). At position (p, q) the first page has weight q. The first differential preserves q, so its cohomology still has weight q (our own). The mixed Hodge complex theorem makes the differentials maps of Hodge structures (our own). On page r the differential lands at second index q + 1 − r (our own). A map of pure Hodge structures of distinct weights vanishes (our own). This replaces computing the later differentials individually with checking the mixed Hodge complex conditions (our own).
+**How the definition helps.** The purity condition gives the source and target of each later differential different weights (our own). On the first page, position (p, q) has weight q, and the first differential keeps q (our own). On page r the differential lands at second index q + 1 − r, and it is a map of Hodge structures (our own). A map between pure Hodge structures of different weights vanishes (our own).
 
 **Paper or page:** [Variation of mixed Hodge structure and its applications](https://arxiv.org/abs/2304.00672). It says: “The spectral sequence associated to (K𝒪, W) degenerates at E₂-terms.”
 
@@ -1084,9 +1084,9 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 14D07 (Variation of Hodge structures (algebro-geometric aspects)), 32G20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A variation of Hodge structure of type (0, 0) here is a family of rational vector spaces with one Hodge component. Transport along paths identifies nearby fibers. A polarization in this type gives a positive definite symmetric form preserved by transport. An integral structure gives a full lattice in each fiber, also preserved by transport.
+**Definition.** A variation of Hodge structure of type (0, 0) is a local system of rational vector spaces with one Hodge component. A polarization gives a positive definite symmetric form preserved by monodromy. An integral structure gives a full lattice in each fiber, also preserved by monodromy.
 
-**Problem.** For such a polarized integral variation on a connected complex manifold, loops act on a fiber through a finite group. With rational coefficients alone, the group can be infinite.
+**Problem.** A polarized integral variation of type (0, 0) on a connected complex manifold has finite monodromy. With rational coefficients alone, the monodromy group can be infinite.
 
 **How the definition helps.** The lattice gives only finitely many possible images for each basis vector of a given norm (our own). A linear map is determined by those images, so only finitely many loop actions occur (our own). On an elliptic curve let one generating loop act by rotation with cosine 3/5 and sine 4/5, and the other by the identity (our own). This preserves the rational Euclidean form (our own). A finite-order matrix has algebraic-integer trace, whereas this rotation has trace 6/5 (our own).
 
@@ -1102,9 +1102,9 @@
 
 **Definition.** An algebraic stack is Deligne–Mumford if some scheme maps onto it by an étale surjective map. The diagonal 𝒳 → 𝒳 × 𝒳 encodes the automorphism groups of objects. Unramified means locally of finite type with zero relative differentials.
 
-**Problem.** Decide whether a moduli stack, such as the stack of stable curves, has an étale cover by a scheme. Building such a cover directly is hard.
+**Problem.** An algebraic stack is Deligne–Mumford exactly when its diagonal is unramified. This holds exactly when every point has a discrete and reduced stabilizer group.
 
-**How the definition helps.** The criterion turns the existence of an étale cover into a condition on stabilizer groups that one can check point by point. For stable curves of genus at least 2, Deligne and Mumford showed that automorphism group schemes are finite and reduced (our own summary). So the moduli stack is Deligne–Mumford. 'Reduced' cannot be dropped in characteristic p (our own example). The group scheme μₚ of p-th roots of unity is finite but not reduced there, and its classifying stack is not Deligne–Mumford. The hard part is the direction from unramified diagonal to an étale cover, which needs a slicing argument (our own).
+**How the definition helps.** The criterion turns the existence of an étale cover into a condition on stabilizer groups that one can check point by point. For stable curves of genus at least 2, automorphism group schemes are finite and reduced, so the moduli stack is Deligne–Mumford (our own summary). 'Reduced' cannot be dropped: in characteristic p, μₚ is finite but not reduced, and its classifying stack is not Deligne–Mumford (our own example). The hard part is the direction from unramified diagonal to an étale cover, which needs a slicing argument (our own).
 
 **Paper or page:** [J. Alper, Stacks and Moduli, Theorem 2.3 (Characterization of Deligne–Mumford Stacks)](https://sites.math.washington.edu//~jarod/moduli.pdf). It says: “Let 𝒳 be an algebraic stack. The following are equivalent: (1) the stack 𝒳 is a Deligne–Mumford; (2) the diagonal 𝒳 → 𝒳 × 𝒳 is unramified; and (3) every point of 𝒳 has a discrete and reduced stabilizer group.”
 
@@ -1121,9 +1121,9 @@
 
 **Definition.** Let I be the ideal sheaf of a closed subscheme of X, the sheaf of functions that vanish on it. The blowup of X along it is a morphism π to X such that I generates a locally principal ideal upstairs, given by a non-zero-divisor. Every morphism with this property must factor uniquely through π.
 
-**Problem.** The blowup should not depend on coordinates or on an embedding in projective space. It should be unique and should restrict well to open subsets.
+**Problem.** The blowup of X along a closed subscheme is unique up to unique isomorphism, so it does not depend on coordinates or on an embedding. The blowup of an open subset U is the restriction of the blowup of X over U.
 
-**How the definition helps.** A universal property fixes the object up to unique isomorphism, so independence of all choices is automatic. Classically, blowups were defined with coordinates and then through an embedding, so each such fact needed a separate check. Uniqueness also gives gluing, because the blowup of an open subset is the restriction of the blowup (our own remark). The work moves into existence. It is the Proj, the scheme of a graded algebra, of the sum of all powers of I (our own remark). The exceptional divisor is the subscheme cut out by the ideal that I generates on the blowup.
+**How the definition helps.** A universal property fixes the object up to unique isomorphism, so independence of all choices is automatic. Classically, blowups were defined with coordinates or through an embedding, so each such fact needed a separate check. The work moves into existence: the blowup is the Proj of the sum of all powers of I (our own remark).
 
 **Wikipedia:** [Blowing up](https://en.wikipedia.org/wiki/Blowing_up). It says: “From this perspective, a blowup is the universal (in the sense of category theory) way to turn a subvariety into a Cartier divisor.”
 
@@ -1137,9 +1137,9 @@
 
 **Definition.** A sheaf F of O-modules is coherent if it has two properties. First, it is locally finitely generated. Second, take any open set U and any map from Oᵖ to F on U: then the kernel of this map is finitely generated.
 
-**Problem.** On any ringed space, find an abelian category of sheaves with a finiteness condition. It must be closed under kernels, cokernels and extensions.
+**Problem.** On any ringed space, coherent sheaves form an abelian category that is closed under extensions. If two terms of a short exact sequence are coherent, so is the third.
 
-**How the definition helps.** The kernel condition makes coherence survive kernels, cokernels and extensions, on any ringed space. The naive notion, finitely presented, does not behave well outside noetherian schemes. The nLab notes that even the structure sheaf O can be finitely presented but not coherent. Coherent sheaves add the condition that all local modules of relations are finitely generated. By a basic result of Serre, if two terms of a short exact sequence are coherent, then so is the third, on any ringed space. So coherent sheaves form an abelian category that is closed under extensions. On noetherian schemes, the two notions agree, so you lose nothing there.
+**How the definition helps.** The kernel condition makes coherence survive kernels, cokernels and extensions, on any ringed space. The naive notion, finitely presented, does not behave well outside Noetherian schemes; the nLab notes that even the structure sheaf can be finitely presented but not coherent. The two-out-of-three property is a basic result of Serre. On Noetherian schemes the two notions agree, so nothing is lost there.
 
 **nLab:** [coherent sheaf](https://ncatlab.org/nlab/show/coherent+sheaf). It says: “this is not true on a general scheme or general analytic space; sometimes even the structure sheaf”
 
@@ -1153,11 +1153,11 @@
 
 *True by definition.* MSC 14F06 (Sheaves in algebraic geometry), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A ringed space has a sheaf of rings, which records local functions and how to restrict them. A sheaf of modules over those rings is quasi-coherent if locally it is a quotient of a free module by the image of another. An affine scheme is a scheme defined by one ring. On such a scheme, an alternative definition says the sheaf comes from a module over that ring.
+**Definition.** A sheaf of modules on a ringed space is quasi-coherent if locally it is the cokernel of a map between free modules. On an affine scheme, an alternative definition says the sheaf comes from a module over the ring.
 
 **Problem.** For a map of ringed spaces from X to Y, the pullback to X of a quasi-coherent module on Y is quasi-coherent.
 
-**How the definition helps.** Local presentations make pullback a direct application of how it acts on free modules and quotients. It preserves free modules and cokernels, which are quotients by images. This is our own account of the Stacks result. With the affine definition, one uses the theorem that the ring map A → B makes the pullback correspond to tensoring with B. The comparison theorem says that a local presentation on a scheme gives the sheaf associated to one module on each affine open.
+**How the definition helps.** Local presentations make pullback a direct application of how it acts on free modules and quotients. Pullback preserves free modules and cokernels (our own account of the Stacks result). With the affine definition, one needs the theorem that pullback along a ring map A → B corresponds to tensoring with B.
 
 **Paper or page:** [Modules, Lemma 17.10.4](https://stacks.math.columbia.edu/tag/01BG), [Modules, Lemma 17.16.3](https://stacks.math.columbia.edu/tag/01CC). It says: “The pullback \\(f<sup>\*\\mathcal{G}\\</sup>) of a quasi-coherent \\(\\mathcal{O}<sub>Y</sub>\\)-module is quasi-coherent.”
 
@@ -1176,7 +1176,7 @@
 
 **Definition.** Let X be a quasi-compact separated scheme over a ring A, and ℱ a quasi-coherent sheaf, one that comes from modules on affine charts. Compute cohomology with the Čech complex of a finite affine cover, built from sections over intersections of charts. Serre's 1955 paper defined cohomology this way. The usual modern definition derives the global sections functor.
 
-**Problem.** Let B be a flat A-algebra, and let X′ and ℱ′ be the base changes to B. Then Hⁱ(X, ℱ) ⊗ B over A is Hⁱ(X′, ℱ′) for every i. The Stacks Project proves this for quasi-compact, quasi-separated X.
+**Problem.** Let B be a flat A-algebra, and let X′ and ℱ′ be the base changes to B. Then Hⁱ(X, ℱ) ⊗ B over A is Hⁱ(X′, ℱ′) for every i.
 
 **How the definition helps.** With the Čech definition, the proof is short, because the Čech complex for X′ is the complex for X tensored with B (our own). Tensoring with a flat module commutes with taking cohomology of a complex. The real work moves into the theorem that Čech cohomology agrees with derived functor cohomology for quasi-coherent sheaves on separated schemes (our own). That theorem rests on the vanishing of higher cohomology on affine schemes.
 
@@ -1194,9 +1194,9 @@
 
 **Definition.** A Cohen–Macaulay scheme is one whose local rings have as long a regular sequence as their dimension allows. For such a scheme X of pure dimension n over a field, Grothendieck defined a coherent sheaf ω, the dualizing sheaf. On a smooth scheme it is the canonical line bundle of n-forms. On a Cohen–Macaulay subscheme of a smooth scheme Y, it is an Ext sheaf, a derived form of Hom, into the canonical bundle of Y.
 
-**Problem.** Let X be proper and Cohen–Macaulay of pure dimension n. Let E be a coherent sheaf, a sheaf that is locally given by finitely generated modules. Then Hⁱ(X, E) is dual to Extⁿ⁻ⁱ(E, ω), even for singular X such as complete intersections.
+**Problem.** Let X be proper, Cohen–Macaulay and of pure dimension n over a field, with dualizing sheaf ω. For every coherent sheaf E, Hⁱ(X, E) is dual to Extⁿ⁻ⁱ(E, ω), even for singular X such as complete intersections.
 
-**How the definition helps.** The canonical bundle uses differential forms, which behave badly at singular points, so Serre's theorem needs smoothness. The dualizing sheaf is chosen so that duality holds, and on smooth schemes it is the canonical bundle (our own reading). A local complete intersection is cut out locally by as many equations as its codimension. In a smooth Y, its ω is the canonical bundle of Y times the top power of the normal bundle. So ω is a line bundle, which means that the scheme is Gorenstein. For general schemes, duality needs a dualizing complex instead of one sheaf. The work moves into that general form, Grothendieck duality.
+**How the definition helps.** The canonical bundle uses differential forms, which behave badly at singular points, so Serre's theorem needs smoothness. The dualizing sheaf is chosen so that duality holds, and on smooth schemes it is the canonical bundle (our own reading). For a local complete intersection in a smooth Y, ω is the canonical bundle of Y times the top power of the normal bundle, a line bundle. For general schemes, duality needs a dualizing complex, and the work moves into Grothendieck duality.
 
 **Wikipedia:** [Serre duality](https://en.wikipedia.org/wiki/Serre_duality). It says: “As a first step in generalizing Serre duality, Grothendieck showed that this version works for schemes with mild singularities, Cohen–Macaulay schemes, not just smooth schemes.”
 
@@ -1211,9 +1211,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let f map one variety over a finite field to another. Start with a bounded constructible complex of ℓ-adic sheaves, meaning locally constant coefficient systems on finitely many pieces, with ℓ different from the characteristic. Its trace function adds the Frobenius traces in each degree with alternating signs. Frobenius here means the inverse of the field-size power map on geometric points.
+**Definition.** Let f map one variety over a finite field to another, and let K be a bounded constructible complex of ℓ-adic sheaves on the source, with ℓ different from the characteristic. Its trace function sends a rational point to the alternating sum of the Frobenius traces on the stalks of K there.
 
-**Problem.** At every rational point y, the trace of the compactly supported direct image equals the sum of the original traces above y. This equality holds over every finite extension.
+**Problem.** At every rational point y of the target, the trace function of the compactly supported direct image Rf!K equals the sum of the trace function of K over the rational points above y. The same holds over every finite extension.
 
 **How the definition helps.** The compactly supported direct image collects the cohomology with compact supports of each fiber into one complex on the target. Our own explanation uses the base change theorem to identify its value at y with that fiber cohomology. The Grothendieck trace formula then converts its alternating trace into the required sum.
 
@@ -1265,9 +1265,9 @@
 
 **Definition.** In the Stacks Project, a family {Tᵢ → T} is an fpqc covering if each map is flat and the images cover T. Also, each affine open of T must be the image of a quasi-compact open of the disjoint union of the Tᵢ. The name abbreviates the French 'fidèlement plat quasi-compact', which means faithfully flat and quasi-compact.
 
-**Problem.** Faithfully flat descent should include ordinary gluing along open covers. A naive definition by one faithfully flat quasi-compact map leaves out infinite open covers.
+**Problem.** With this definition, every Zariski, étale, smooth and fppf covering is an fpqc covering, including infinite open covers. Every representable functor is a sheaf for the fpqc topology.
 
-**How the definition helps.** The condition is checked over each affine open, and an affine is quasi-compact, so finitely many members of any open cover already reach it. This makes the quoted lemma short: Zariski, étale, smooth and fppf coverings are all fpqc coverings. A second lemma in the data set (Tag 023Q) says that every representable functor is a sheaf for this topology. So one theorem holds both ordinary gluing and faithfully flat descent. The hard part, descent along one faithfully flat affine map, is Grothendieck's theorem and is not changed by the definition (our own).
+**How the definition helps.** The condition is checked over each affine open, and an affine is quasi-compact, so finitely many members of any open cover already reach it. So one theorem covers both ordinary gluing and faithfully flat descent. A naive definition by one faithfully flat quasi-compact map would leave out infinite open covers. The hard part, descent along one faithfully flat affine map, is Grothendieck's theorem and is not changed by the definition (our own).
 
 **Paper or page:** [Stacks Project, Topologies, Lemma 34.9.7](https://stacks.math.columbia.edu/tag/022C), [Stacks Project, Descent, Lemma 35.13.7](https://stacks.math.columbia.edu/tag/023Q). It says: “Any fppf covering is an fpqc covering, and a fortiori, any syntomic, smooth, étale or Zariski covering is an fpqc covering.”
 
@@ -1284,9 +1284,9 @@
 
 **Definition.** An étale map is a map of schemes that is a local isomorphism in the algebraic sense, like a covering map. A family of étale maps Vᵢ → U is a Nisnevich cover if every field-valued point Spec k → U lifts to some Vᵢ. The lift must have the same residue field as the point.
 
-**Problem.** Find a topology with three properties. Algebraic K-theory satisfies descent in it, that is, K-theory of U can be computed from the pieces of a cover. Its cohomological dimension is at most the Krull dimension, and it still has étale-type excision for neighbourhoods.
+**Problem.** Algebraic K-theory satisfies descent in the Nisnevich topology, as in the Zariski topology but not in general in the étale topology. The Nisnevich topology has cohomological dimension at most the Krull dimension and étale-type excision for neighbourhoods.
 
-**How the definition helps.** The Nisnevich topology keeps the good properties of both the Zariski topology and the étale topology. Algebraic K-theory satisfies Zariski descent, but in general it does not satisfy étale descent. The Zariski topology is too coarse for excision results (results that let you replace X by a small neighbourhood of a closed subset Z). An example is the comparison of X/(X − Z) with the normal bundle. The condition that every point lifts with the same residue field gives both properties at once. The Nisnevich topology is the base of motivic homotopy theory. The descent theorem for K-theory is still a real theorem, by Thomason–Trobaugh and Nisnevich.
+**How the definition helps.** Lifting every point with the same residue field keeps Zariski-type descent while allowing étale neighbourhoods. Algebraic K-theory satisfies Zariski descent, but in general not étale descent. The Zariski topology is too coarse for excision results, such as comparing X/(X − Z) with the normal bundle of Z. The descent theorem for K-theory is still a real theorem, by Thomason–Trobaugh and Nisnevich.
 
 **nLab:** [Nisnevich site](https://ncatlab.org/nlab/show/Nisnevich+site), [motivic homotopy theory](https://ncatlab.org/nlab/show/motivic+homotopy+theory). It says: “Algebraic K-theory satisfies descent over the Nisnevich site -- as is true for the Zariski site but not in full generality for the etale site”
 
@@ -1302,9 +1302,9 @@
 
 **Definition.** The Tate twist ℤ/n(1) is the group μₙ of n-th roots of unity. The l-adic Tate twist ℤₗ(1) is the inverse limit of the groups of lⁱ-th roots of unity. For a coefficient module A, the twist A(k) is A tensored with the k-th tensor power of this twist group. For negative k, you use the dual of the twist group instead.
 
-**Problem.** l-adic cohomology is a cohomology theory for algebraic varieties with coefficients such as the l-adic integers ℤₗ. In it, Poincaré duality, the Thom isomorphism and the cycle map should hold canonically, with no choice of orientation. They should also be compatible with the action of the Galois group.
+**Problem.** In ℓ-adic cohomology, Poincaré duality, the Thom isomorphism and the cycle map hold canonically when written with Tate twists, with no choice of orientation. They also commute with the Galois action.
 
-**How the definition helps.** The twist supplies a canonical orientation, so you do not have to choose one. As a ℤₗ-module, ℤₗ(1) is isomorphic to ℤₗ, but not canonically, and not as a Galois representation. The group H²(ℙ¹, ℤₗ(1)) is canonically ℤₗ, so ℤₗ(1) is the correct orientation sheaf. So duality statements written with twists are canonical and Galois-equivariant (they commute with the Galois action). The nLab says that the rest follows 'with effort'; the twist makes the statement correct, not the proof short. Grothendieck built the twist into pure motives by inverting the Lefschetz motive (the degree-2 piece of the motive of ℙ¹).
+**How the definition helps.** The twist supplies a canonical orientation, so you do not have to choose one. As a ℤₗ-module, ℤₗ(1) is isomorphic to ℤₗ, but not canonically, and not as a Galois representation. The group H²(ℙ¹, ℤₗ(1)) is canonically ℤₗ, so ℤₗ(1) is the correct orientation sheaf. The nLab says that the rest follows 'with effort'; the twist makes the statement correct, not the proof short.
 
 **nLab:** [Tate twist](https://ncatlab.org/nlab/show/Tate+twist). It says: “Tate twists play an important role in cohomology theories with this dual geometric and arithmetic aspect, allowing one to express Poincaré duality canonically, that is, without choosing an orientation of one's geometric object”
 
@@ -1320,9 +1320,9 @@
 
 **Definition.** A Weil cohomology theory is a cohomology theory on smooth projective varieties over a field, with coefficients in a field of characteristic 0. It must satisfy a list of axioms. The axioms include finite dimensionality, Poincaré duality, a Künneth formula and a cycle class map (a map that sends each subvariety to a cohomology class). Together they give a Lefschetz fixed point formula.
 
-**Problem.** The Weil conjectures are about the zeta function of a variety over a finite field, a generating function for the numbers of points over the finite extension fields. They say that it is rational and satisfies a functional equation. They also say that its zeros and poles satisfy a Riemann hypothesis.
+**Problem.** Given a Weil cohomology theory, the zeta function of a smooth projective variety over a finite field is rational and satisfies a functional equation.
 
-**How the definition helps.** The axioms let one count points by traces, as in topology, so rationality and the functional equation follow formally. The points of X over the field with qⁿ elements are the fixed points of the n-th power of Frobenius (the map that raises coordinates to the q-th power) on X over the algebraic closure. The Lefschetz trace formula makes each count an alternating sum of traces of Frobenius on cohomology. So the zeta function is an alternating product of characteristic polynomials of Frobenius, and it is rational. Poincaré duality then gives the functional equation. The Riemann hypothesis does not follow formally; Deligne proved it separately. The real content moves into the theorem that ℓ-adic étale cohomology is a Weil cohomology theory.
+**How the definition helps.** The axioms let one count points by traces, as in topology, so rationality and the functional equation follow formally. The points over the field with qⁿ elements are the fixed points of the n-th power of Frobenius, and the Lefschetz formula makes each count an alternating sum of traces. So the zeta function is an alternating product of characteristic polynomials, and Poincaré duality gives the functional equation. The Riemann hypothesis does not follow formally, and the real content moves into proving that ℓ-adic cohomology is a Weil cohomology.
 
 **nLab:** [Weil cohomology theory](https://ncatlab.org/nlab/show/Weil+cohomology+theory), [Weil conjectures](https://ncatlab.org/nlab/show/Weil+conjectures), [Lefschetz trace formula](https://ncatlab.org/nlab/show/Lefschetz+trace+formula). It says: “It was realized that the all except one of the conjectures (the Riemann hypothesis) would follow formally from the existence of a suitable cohomology theory on algebraic varieties”
 
@@ -1340,7 +1340,7 @@
 
 **Problem.** Let n be invertible on a scheme X. Then first étale cohomology with coefficients in μₙ maps onto the line bundles whose nth power is trivial. The kernel is the global units modulo nth powers.
 
-**How the definition helps.** The étale topology makes 1 → μₙ → units → units → 1 exact, so the claim is read off its long exact sequence. Its first terms give global units modulo nth powers, and the next term is the n-torsion in H¹ of the units (our own). The work moves into Hilbert's Theorem 90, which says that étale H¹ of the units is the group of line bundles (our own). Adjoining an nth root of a unit is étale because n is invertible (our own). Zariski cohomology fails here (our own). For X = Spec ℚ and n = 2 it is zero, but ℚ\* modulo squares is not (our own).
+**How the definition helps.** The étale topology makes 1 → μₙ → units → units → 1 exact, so the claim is read off its long exact sequence (our own). Its terms give global units modulo nth powers, then H¹ of μₙ, then the n-torsion in H¹ of the units. The work moves into Hilbert's Theorem 90, which says that étale H¹ of the units is the group of line bundles (our own). Zariski cohomology fails here: for X = Spec ℚ and n = 2 it is zero, but ℚ\* modulo squares is not (our own).
 
 **nLab:** [Kummer sequence](https://ncatlab.org/nlab/show/Kummer+sequence). It says: “then if n is invertible over the site then there is a short exact sequence”
 
@@ -1370,9 +1370,9 @@
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Divided powers on an ideal are operations that obey the identities for xⁿ/n!, even when division by n! is impossible. The envelope of J receives a map from its ring that sends J into a divided power ideal. Every such map respecting the base operations factors uniquely through the envelope.
+**Definition.** Divided powers on an ideal are operations γₙ that obey the identities for xⁿ/n!, even when division by n! is impossible. The divided power envelope of an ideal J of B is the universal B-algebra in which J lands in a divided power ideal compatible with the base. Every such map from B factors uniquely through it.
 
-**Problem.** Let B′ → B be a surjection of algebras over a divided power base. For an ideal J of B containing the base divided power ideal, form the envelope of its inverse image in B′. The envelope in B is its quotient by all positive divided powers of elements of the kernel.
+**Problem.** Let B′ → B be a surjection of algebras over a divided power base, with kernel K. Let J be an ideal of B containing the base divided power ideal, and J′ its inverse image in B′. Then the envelope of J is the envelope of J′ modulo all γₙ(k) with n ≥ 1 and k in K.
 
 **How the definition helps.** The universal property identifies which relations to impose without computing a presentation (our own explanation). A map factors through the quotient ring exactly when it kills the kernel of B′ → B. Respecting divided powers then forces it to kill every positive divided power of each kernel element. The work is proving these relations allow the operations to descend to the quotient envelope (our own argument).
 
@@ -1609,7 +1609,7 @@
 
 **Problem.** Chevalley's theorem says that a finitely presented morphism of schemes sends locally constructible sets to locally constructible sets.
 
-**How the definition helps.** The image of a variety need not be open, closed or a variety, so a larger class of sets is needed to state anything. The map (x, y) ↦ (x, xy) of the plane has as image the set where x is not 0, plus the origin. This set is constructible but not locally closed. Constructible sets form the class generated by retrocompact open sets under finite unions and complements, and this class is closed under images. In general schemes the retrocompact condition is needed, and the page says the theorem fails without it. The proof, by induction on dimension with Noether normalization or generic flatness, stays real work (our own remark).
+**How the definition helps.** The image of a variety need not be open, closed or a variety, so a larger class of sets is needed to state anything. The map (x, y) ↦ (x, xy) of the plane has as image the set where x is not 0, plus the origin, which is constructible but not locally closed. In general schemes the retrocompact condition is needed, and the page says the theorem fails without it. The proof, by induction on dimension with Noether normalization or generic flatness, stays real work (our own remark).
 
 **Wikipedia:** [Constructible set (topology)](https://en.wikipedia.org/wiki/Constructible_set_%28topology%29). It says: “Chevalley's theorem in the generality stated above would fail if the simplified definition of constructible sets (without restricting to retrocompact open sets in the definition) were used.”
 
@@ -1627,7 +1627,7 @@
 
 **Problem.** If U is a closed part of X and V is its open complement, then ζ(X, s) = ζ(U, s)ζ(V, s). Also, ζ(X, s) is the product of the zeta functions of the reductions modulo all primes p. Both identities hold when the real part of s exceeds the dimension of X.
 
-**How the definition helps.** The closed-point definition gives both product formulas by partitioning the set of factors. Each closed point belongs to exactly one piece and to exactly one reduction modulo a prime. The work moves into proving absolute convergence in the stated region, which justifies regrouping the infinite product (our own). For a scheme over a finite field, another definition uses counts over its finite extensions. The closed-point definition packages those counts by grouping conjugate points into single factors (our own).
+**How the definition helps.** The closed-point definition gives both product formulas by partitioning the set of factors. Each closed point belongs to exactly one piece and to exactly one reduction modulo a prime. The work moves into proving absolute convergence in the stated region, which justifies regrouping the infinite product (our own).
 
 **Wikipedia:** [Arithmetic zeta function](https://en.wikipedia.org/wiki/Arithmetic_zeta_function). It says: “the zeta function of X is the product of the ones of the reduction of X modulo the primes p”
 
@@ -1657,11 +1657,11 @@
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 11G20. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Take a smooth projective geometrically connected curve over a field of size q. Its Jacobian parametrizes divisor classes of degree zero. Let F act on compatible prime-power torsion by raising point coordinates to the qth power. Write the zeta numerator as det(1 − tF) on the resulting rational vector space, using a prime different from the field characteristic.
+**Definition.** Take a smooth projective geometrically connected curve over a field of size q. Let F be the q-power Frobenius acting on the ℓ-adic Tate module of its Jacobian, for a prime ℓ different from the characteristic. The zeta numerator is det(1 − tF) on this module tensored with ℚ.
 
 **Problem.** The value of this numerator at one equals the number of rational points of the Jacobian.
 
-**How the definition helps.** In our own explanation, setting t equal to one gives the determinant of the map whose kernel consists of rational points. The derivative of 1 − F is the identity, so its degree counts the points in this kernel. The degree theorem identifies that degree with the determinant on the Tate module. The cited comparison connects this calculation to the zeta function defined by counting points on the curve over extensions.
+**How the definition helps.** Setting t equal to one gives det(1 − F), which the degree theorem identifies with the degree of the map 1 − F on the Jacobian (our own explanation). The differential of 1 − F is the identity, so its degree counts the points of its kernel. That kernel is exactly the set of rational points of the Jacobian. The cited comparison connects this numerator with the zeta function defined by counting points on the curve.
 
 **Paper or page:** [The Torelli locus and Newton polygons](https://arxiv.org/abs/2509.00998). It says: “The characteristic polynomial of the Frobenius endomorphism of Jac(C) is P(Jac(C)/𝔽q,T) = T²ᵍL(C/𝔽q,T⁻¹).”
 
@@ -1763,9 +1763,9 @@
 
 **Definition.** The Berkovich spectrum (analytic spectrum) of a normed ring A is the set of all non-zero bounded multiplicative seminorms on A. A seminorm is like a norm, but it can be zero on non-zero elements. The set has the weakest topology for which each map x ↦ \|a\|ₓ, for a in A, is continuous. Here \|a\|ₓ is the size that the point x gives to a.
 
-**Problem.** Build p-adic analytic geometry on actual topological spaces. Domains in ℚₚⁿ with the subspace topology are totally disconnected, so there would be no analytic continuation.
+**Problem.** Berkovich spaces, glued from the analytic spectra of affinoid algebras, are locally connected and even locally contractible. By contrast, domains in ℚₚⁿ with the subspace topology are totally disconnected.
 
-**How the definition helps.** Berkovich changes what a point is, and with the new points the spaces are locally connected. With the p-adic topology, the naive analytic spaces are totally disconnected; this is the problem. Tate's rigid geometry avoids it with a Grothendieck topology (the G-topology, a rule for which covers are allowed) instead of a topological space. Berkovich instead takes multiplicative seminorms as the points. The resulting spaces are well behaved, locally connected and even locally contractible. Local contractibility is a hard theorem; it does not follow from the definition. You get Berkovich spaces by gluing the analytic spectra of affinoid algebras (the p-adic analogues of rings of power series that converge on a closed disc).
+**How the definition helps.** Berkovich changes what a point is, and with the new points the spaces are locally connected. With the p-adic topology, the naive analytic spaces are totally disconnected, so there is no analytic continuation. Tate's rigid geometry avoids this with a Grothendieck topology instead of a topological space. Local contractibility is a hard theorem; it does not follow from the definition.
 
 **nLab:** [analytic spectrum](https://ncatlab.org/nlab/show/analytic+spectrum), [p-adic number](https://ncatlab.org/nlab/show/p-adic+number), [Berkovich space](https://ncatlab.org/nlab/show/Berkovich+space). It says: “Moreover, one may sensibly assign to an p-adic domain a topological space which is well behaved (in particular locally connected and even locally contractible), this is the analytic spectrum construction.”
 
@@ -1779,11 +1779,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 14G22 (Rigid analytic geometry), 14F20. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** A nonarchimedean field K is a field with an absolute value that satisfies \|x + y\| ≤ max(\|x\|, \|y\|), such as ℚₚ. A rigid analytic space over K is glued from affinoid spaces, which are the maximal spectra of quotients of Tate algebras (algebras of convergent power series). The gluing uses a Grothendieck topology (a rule that says which families of sets count as covers) called the G-topology. In the G-topology, only admissible open sets and finite or admissible covers count.
+**Definition.** A rigid analytic space over a nonarchimedean field K, such as ℚₚ, is glued from affinoid spaces, the maximal spectra of quotients of Tate algebras of convergent power series. The gluing uses the G-topology, a Grothendieck topology in which only admissible open sets and admissible covers count.
 
-**Problem.** Build analytic geometry over ℚₚ, the p-adic numbers. It must have analytic continuation, coherent sheaves and a working sheaf theory.
+**Problem.** In the G-topology, the closed unit disc over ℚₚ behaves as a connected space, and Tate's acyclicity theorem holds. So rigid analytic spaces have analytic continuation, coherent sheaves and a working sheaf theory.
 
-**How the definition helps.** Tate changed which covers count, and this makes sheaf theory work again. ℚₚ is totally disconnected, so domains in ℚₚⁿ with the subspace topology are totally disconnected too. The nLab says that the naive approach fails. If all open covers count, then locally constant functions are analytic, and sheaf theory is useless. Tate restricted the covers to the G-topology. Then the closed unit disc behaves as a connected space, and Tate's acyclicity theorem holds (these two facts are standard, from Tate and Conrad, not from the nLab page). Berkovich later gave another fix with honest, locally contractible topological spaces.
+**How the definition helps.** Tate changed which covers count, and this makes sheaf theory work again. ℚₚ is totally disconnected, so if all open covers count, locally constant functions are analytic and sheaf theory is useless. The connectedness of the disc and Tate's acyclicity theorem are standard facts, from Tate and Conrad, not from the nLab page. Berkovich later gave another fix with honest, locally contractible topological spaces.
 
 **nLab:** [rigid analytic geometry](https://ncatlab.org/nlab/show/rigid+analytic+geometry), [Berkovich space](https://ncatlab.org/nlab/show/Berkovich+space). It says: “regarded with their subspace topology, fails, as also all these domains are totally disconnected.”
 
@@ -1820,7 +1820,7 @@
 
 **Definition.** Over ℂ, mark each elliptic curve with an ordered basis of its N-torsion, the points killed by N, for N ≥ 3. The j-invariant alone records the isomorphism class of a single unmarked curve.
 
-**Problem.** One universal marked family gives all full-level families by pullback, uniquely up to marked isomorphism. The j-line cannot serve that role for unmarked families.
+**Problem.** For N ≥ 3, every family of elliptic curves with marked N-torsion bases is the pullback of one universal marked family, along a unique map. The j-line has no such universal family for unmarked curves.
 
 **How the definition helps.** Every automorphism preserving the marking fixes the entire torsion basis and must be the identity (our own). Without markings, one can glue a constant family along a connected double cover using negation (our own). For a curve with only the automorphisms ±1, this gives a nonconstant twist with constant j (our own). Constructing the parameter curve and its universal family still requires the full-level moduli theorem (our own).
 
@@ -1838,7 +1838,7 @@
 
 **Definition.** For the ring of integers of a number field, an arithmetic divisor assigns integer coefficients to finite primes and real coefficients to embeddings into ℂ. Only finitely many prime coefficients are nonzero, and conjugate embeddings have equal coefficients. Its degree sums each prime coefficient times the logarithm of its residue field size, then adds all embedding coefficients. A nonzero element a gives a principal divisor with prime coefficients its orders of vanishing and embedding coefficients −log\|σ(a)\| for each embedding σ.
 
-**Problem.** Adding a principal arithmetic divisor preserves the arithmetic degree.
+**Problem.** Every principal arithmetic divisor has degree zero. So the arithmetic degree is well defined on classes of arithmetic divisors.
 
 **How the definition helps.** Including the embedding coefficients makes their sum cancel the degree of the finite divisor, in our own explanation. Counting finite primes alone gives the logarithm of the absolute field norm of a. The product formula identifies that number with the sum of log\|σ(a)\| over all embeddings. Each complex conjugate pair contributes twice. The resulting degree therefore depends only on the divisor class.
 
@@ -1894,9 +1894,9 @@ $$”
 
 **Definition.** A stable curve of genus g with n marked points is a connected curve with three properties. Its only singularities are nodes (points where two smooth branches cross). Its n marked points are smooth points, and its automorphism group is finite. The stack M̄(g, n) classifies these curves (for 2g − 2 + n &gt; 0).
 
-**Problem.** The moduli stack M(g, n) of smooth curves is not proper (the stack version of not compact). So there is no intersection or integration theory on it. The goal is to prove global facts, such as the irreducibility of M(g).
+**Problem.** The stack M̄(g, n) of stable curves is a smooth proper Deligne–Mumford stack that contains the stack M(g, n) of smooth curves. Deligne and Mumford used it to prove that M(g) is irreducible.
 
-**How the definition helps.** Nodal curves fill in the missing limits, and finite automorphisms keep the stack well behaved. Admitting nodal curves adds the missing limits of families of curves. Requiring finite automorphisms excludes the unstable cases, which have infinite automorphism groups. The result M̄(g, n) is a smooth proper Deligne–Mumford stack (a stack whose points have finite automorphism groups). Deligne and Mumford proved that M(g) is irreducible by studying this compactification. Proving properness is still real work. For Gromov–Witten theory, Kontsevich's stable maps ask instead that the map, not the curve, has finite automorphisms; the nLab stable map page gives no definition, and in general the resulting stack is proper but not smooth.
+**How the definition helps.** Nodal curves fill in the missing limits of families, so the stack becomes proper. Requiring finite automorphisms excludes the unstable cases, which have infinite automorphism groups, so the stack stays Deligne–Mumford. Proving properness is still real work. Kontsevich's stable maps instead ask the map to have finite automorphisms, and their stack is proper but in general not smooth.
 
 **nLab:** [basic ideas of moduli stacks of curves and Gromov-Witten theory](https://ncatlab.org/nlab/show/basic+ideas+of+moduli+stacks+of+curves+and+Gromov-Witten+theory), [Deligne-Mumford compactification](https://ncatlab.org/nlab/show/Deligne-Mumford+compactification), [stable map](https://ncatlab.org/nlab/show/stable+map). It says: “Deligne and Mumford were able to prove many theorems about the ordinary moduli space of curves by studying instead the compactification. For example they were able to prove that M<sub>g</sub>,n is irreducible.”
 
@@ -1913,9 +1913,9 @@ $$”
 
 **Definition.** The arithmetic genus of a projective curve C over a field is the dimension of the first sheaf cohomology group H¹(C, 𝒪). For a smooth curve it equals the geometric genus, the number of independent holomorphic differentials. A Gorenstein curve is one whose local rings are Gorenstein rings, a mild kind of singularity that every plane curve has.
 
-**Problem.** Riemann–Roch says ℓ(D) − ℓ(K − D) = deg D − g + 1 for divisors D on a curve. For a projective curve over an algebraically closed field whose local rings are Gorenstein, the formula should hold even when the curve has singular points.
+**Problem.** For a projective Gorenstein curve over an algebraically closed field, Riemann–Roch ℓ(D) − ℓ(K − D) = deg D − g + 1 holds with g the arithmetic genus, even when the curve has singular points.
 
-**How the definition helps.** The arithmetic genus is defined by cohomology, so it is exactly the number that the cohomological proof of Riemann–Roch produces. The geometric genus counts differentials on the smooth model of the curve and does not see the singular points. A nodal plane cubic has geometric genus 0 and arithmetic genus 1 (our own example). Only the value 1 makes the formula correct. The Gorenstein condition makes the dualizing sheaf a line bundle (our own remark). This sheaf takes the place of the differentials, so a canonical divisor K still exists. On curves that are not Gorenstein one needs more general statements, which the page mentions only briefly.
+**How the definition helps.** The arithmetic genus is defined by cohomology, so it is exactly the number that the cohomological proof of Riemann–Roch produces. The geometric genus does not see the singular points: a nodal plane cubic has geometric genus 0 and arithmetic genus 1, and only 1 makes the formula correct (our own example). The Gorenstein condition makes the dualizing sheaf a line bundle, so a canonical divisor K still exists (our own remark).
 
 **Wikipedia:** [Riemann–Roch theorem](https://en.wikipedia.org/wiki/Riemann%E2%80%93Roch_theorem), [Arithmetic genus](https://en.wikipedia.org/wiki/Arithmetic_genus). It says: “the same statement as above holds, provided that the geometric genus as defined above is replaced by the arithmetic genus”
 
@@ -1933,7 +1933,7 @@ $$”
 
 **Problem.** An irreducible plane curve of degree d has arithmetic genus (d − 1)(d − 2)/2. With geometric genus the formula has exceptions at every singular curve.
 
-**How the definition helps.** The arithmetic genus depends only on the equation's degree, because it is computed from the cohomology of a degree d hypersurface in the plane. So it cannot see singular points, and the formula has no exceptions. With the geometric genus, the nodal cubic y² = x²(x + 1) gives 0 instead of 1 (our own example). The page gives the correction for the geometric genus. An ordinary singular point of multiplicity r lowers the genus by r(r − 1)/2. The hard part of the classical theory is this correction count, not the formula for the arithmetic genus.
+**How the definition helps.** The arithmetic genus is computed from the cohomology of a degree d hypersurface in the plane, so it depends only on d and cannot see singular points. With the geometric genus, the nodal cubic y² = x²(x + 1) gives 0 instead of 1 (our own example). The page gives the correction: an ordinary singular point of multiplicity r lowers the geometric genus by r(r − 1)/2. The hard part of the classical theory is this correction count.
 
 **Wikipedia:** [Genus–degree formula](https://en.wikipedia.org/wiki/Genus%E2%80%93degree_formula). It says: “If the curve is non-singular, then the geometric genus and the arithmetic genus are equal, but if the curve is singular, with only ordinary singularities, then the geometric genus is smaller.”
 
@@ -1949,7 +1949,7 @@ $$”
 
 **Problem.** An elliptic curve is an abelian variety with the marked point as identity. Over a number field its rational points form a finitely generated group (the Mordell–Weil theorem).
 
-**How the definition helps.** The marked point gives the identity, so the group law needs no further choice. A curve of genus one can have no rational point at all. Selmer's curve 3x³ + 4y³ + 5z³ = 0 has genus one and no rational points (our own example). So there is no group of rational points to study. Such a curve is a torsor under its Jacobian, which means the Jacobian, an elliptic curve, acts on it freely and transitively (our own remark). The hard part, deciding whether such a curve has a rational point, stays hard.
+**How the definition helps.** The marked point gives the identity, so the group law needs no further choice. A curve of genus one can have no rational point at all (our own example). Selmer's curve 3x³ + 4y³ + 5z³ = 0 has genus one and no rational points, so there is no group of rational points to study. Such a curve is a torsor under its Jacobian, an elliptic curve, and deciding whether it has a rational point stays hard (our own remark).
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “If P has degree four and is square-free this equation again describes a plane curve of genus one; however, it has no natural choice of identity element.”
 
@@ -1967,7 +1967,7 @@ $$”
 
 **Problem.** For a positive integer n, the points P with nP = 0 form a group isomorphic to (ℤ/nℤ) × (ℤ/nℤ). Thus there are n² such points.
 
-**How the definition helps.** The lattice quotient definition turns nP = 0 into a divisibility test on a representative. The equation holds for the class of z exactly when nz belongs to Λ. In our own computation the coefficients of z in a lattice basis are integer multiples of 1/n, taken modulo integers. This gives two independent coordinates in ℤ/nℤ. A cubic calculation would instead need to control the polynomial equations for multiplication by n. The work moves into identifying the complex cubic and its addition with the lattice quotient.
+**How the definition helps.** The lattice quotient definition turns nP = 0 into a divisibility test: the class of z is killed by n exactly when nz lies in Λ. In a lattice basis, z then has coordinates in (1/n)ℤ modulo ℤ, which gives two independent coordinates in ℤ/nℤ (our own computation). A cubic calculation would instead need to control the polynomial equations for multiplication by n. The work moves into identifying the complex cubic and its addition with the lattice quotient.
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “This also allows an easy understanding of the torsion points on an elliptic curve: if the lattice Λ is spanned by the fundamental periods ω₁ and ω₂, then the n-torsion points are the (equivalence classes of) points of the form”
 
@@ -1983,7 +1983,7 @@ $$”
 
 **Problem.** The Mordell–Weil theorem says that the group of rational points of an elliptic curve over ℚ is finitely generated.
 
-**How the definition helps.** The non-singular condition rules out cubics whose groups are the additive or multiplicative group of ℚ, which are not finitely generated. On the cuspidal cubic y² = x³, the smooth rational points form a group isomorphic to ℚ under addition (our own example). On the nodal cubic y² = x²(x + 1), they form ℚ\* under multiplication (our own example). Neither group is finitely generated. With the condition, the curve has genus one, and over ℂ it is a torus. The proof of Mordell–Weil, with the weak theorem and heights, stays real work.
+**How the definition helps.** The non-singular condition rules out cubics whose groups are the additive or multiplicative group of ℚ, which are not finitely generated. On the cuspidal cubic y² = x³, the smooth rational points form a group isomorphic to ℚ under addition (our own example). On the nodal cubic y² = x²(x + 1), they form ℚ\* under multiplication (our own example). The proof of Mordell–Weil, with the weak theorem and heights, stays real work.
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “The curve is required to be non-singular, which means that the curve has no cusps or self-intersections.”
 
@@ -1997,9 +1997,9 @@ $$”
 
 **Definition.** Let W be a Weierstrass curve over a field F, with coordinate ring F\[W\], the ring of polynomial functions on W. Send each nonsingular affine point (x, y) to the class of the ideal ⟨X − x, Y − y⟩ in the ideal class group Cl(F\[W\]). Send the point at infinity to the trivial class. The ideal class group is the group of invertible fractional ideals modulo principal ones.
 
-**Problem.** The chord-and-tangent rule adds points of an elliptic curve. Associativity of this addition is hard to check by direct algebra, because there are many cases (our own remark).
+**Problem.** The chord-and-tangent addition on the points of a Weierstrass elliptic curve over any field is associative, so the points form an abelian group.
 
-**How the definition helps.** Points become elements of a group that is already known to be associative, so the group law is inherited. The paper's Lemma 8 shows that the ideals of two points, times a principal ideal, equal the ideal of their sum times another principal ideal. So the map turns addition of points into multiplication of ideal classes. The quoted Lemma 11 says the map is injective, so the axioms of an abelian group carry over from the class group (Proposition 5). The proof works in any characteristic and avoids the Riemann–Roch theorem (our own remark). What stays hard is the injectivity, which needs a computation with norms and degrees (Lemmas 9 and 10).
+**How the definition helps.** Points become elements of a group that is already known to be associative, so the group law is inherited. The paper's Lemma 8 shows that the map turns addition of points into multiplication of ideal classes. The quoted Lemma 11 says that the map is injective, so the abelian group axioms carry over from the class group. The proof works in any characteristic and avoids Riemann–Roch, and what stays hard is the injectivity, a computation with norms and degrees (our own remark).
 
 **Paper or page:** [An Elementary Formal Proof of the Group Law on Weierstrass Elliptic Curves in any Characteristic](https://arxiv.org/abs/2302.10640v2), [An Elementary Formal Proof of the Group Law on Weierstrass Elliptic Curves in any Characteristic](https://arxiv.org/abs/2302.10640v2). It says: “The function W(F) → Cl(F\[W\]) is injective.”
 
@@ -2033,9 +2033,9 @@ $$”
 
 **Definition.** The slope of a vector bundle on a curve is its degree divided by its rank. A bundle is stable when every proper nonzero subbundle has strictly smaller slope. It is semistable when every such subbundle has slope at most that of the bundle.
 
-**Problem.** Take a compact Riemann surface X with a point x removed. Which holomorphic vector bundles on X come from unitary representations of the fundamental group of X minus x?
+**Problem.** A holomorphic vector bundle on a compact Riemann surface is stable exactly when it comes from an irreducible projective unitary representation of the fundamental group (Narasimhan–Seshadri).
 
-**How the definition helps.** A unitary flat structure forbids subbundles of larger slope, and stability asks for exactly this (our own). A bundle from a unitary representation is semistable (our own). The paper shows that such a bundle is stable exactly when the representation is irreducible. For an excluded case, take a point p and the bundle O(p) ⊕ O(−p) (our own). It has degree 0 but a subbundle of degree 1, so no unitary representation gives it (our own). The converse, that every stable bundle comes from an irreducible unitary representation, is the hard direction. Narasimhan and Seshadri proved it in 1965, and Donaldson later gave a proof by differential geometry.
+**How the definition helps.** A unitary flat structure forbids subbundles of larger slope, and stability asks for exactly this (our own). A bundle from a unitary representation is semistable, and the paper shows that it is stable exactly when the representation is irreducible. For an excluded case, O(p) ⊕ O(−p) has degree 0 but a subbundle of degree 1, so no unitary representation gives it (our own). The converse is the hard direction, proved by Narasimhan and Seshadri in 1965 and later by Donaldson with differential geometry.
 
 **Wikipedia:** [Narasimhan–Seshadri theorem](https://en.wikipedia.org/wiki/Narasimhan%E2%80%93Seshadri_theorem). It says: “says that a holomorphic vector bundle over a compact Riemann surface is stable if and only if it comes from an irreducible projective unitary representation of the fundamental group.”
 
@@ -2052,11 +2052,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H60 (Vector bundles on curves and their moduli), 53C07, 53D30. arXiv math.DG, math.AG. Level 3: graduate.
 
-**Definition.** A Higgs bundle on a compact Riemann surface is a holomorphic bundle E with a holomorphic map φ from E to E ⊗ K. Here K is the canonical bundle, the bundle of holomorphic one-forms. The Higgs bundle is stable if every φ-invariant proper subbundle has smaller slope. Subbundles that φ does not preserve are not tested.
+**Definition.** A Higgs bundle on a compact Riemann surface is a holomorphic bundle E with a holomorphic map φ from E to E ⊗ K, where K is the canonical bundle. It is stable if every φ-invariant proper subbundle has smaller slope; subbundles that φ does not preserve are not tested. It is polystable if it is a direct sum of stable Higgs bundles of the same slope.
 
-**Problem.** Hitchin's equations couple the curvature of a unitary connection with the Higgs field. The Chern connection is the unitary connection fixed by the metric and the holomorphic structure. One wants an algebraic test for the existence of solutions, and so a description of the moduli space.
+**Problem.** A Higgs bundle (E, φ) is polystable exactly when E has a Hermitian metric whose Chern connection, together with the Higgs field, solves Hitchin's equations.
 
-**How the definition helps.** Only φ-invariant subbundles can split off in a solution, so stability need only test those. On a surface of genus at least two, choose a line bundle L with L² = K (our own). The bundle L ⊕ L⁻¹ is unstable, since L has positive degree (our own). Let φ map L isomorphically onto L⁻¹ ⊗ K, which is L again (our own). Then L is not invariant, the Higgs bundle is stable, and Hitchin's solution gives the hyperbolic metric (our own). Polystability again makes the statement an exact equivalence. Solutions also give flat connections, and this correspondence is nonabelian Hodge theory.
+**How the definition helps.** Only φ-invariant subbundles can split off in a solution, so stability need only test those. On a surface of genus at least two, take L with L² = K; then L ⊕ L⁻¹ is unstable, since L has positive degree (our own). Let φ map L isomorphically onto L⁻¹ ⊗ K, which is L again (our own). Then L is not invariant, the Higgs bundle is stable, and Hitchin's solution gives the hyperbolic metric (our own).
 
 **Paper or page:** [The Algebraic and Analytic Compactifications of the Hitchin Moduli Space](https://arxiv.org/abs/2304.08198), [The moduli space of solutions to the Extended Bogomolny equations on Σ×ℝ₊](https://arxiv.org/abs/2401.10999). It says: “A Higgs bundle (E,φ) is polystable if and only if there exists a Hermitian metric H such that the corresponding Chern connection A and Higgs field ϕ=φ+φ† solve the Hitchin equations”
 
@@ -2091,9 +2091,9 @@ $$”
 
 **Definition.** An abelian variety over an algebraically closed field is a complete connected algebraic group. Complete means proper, which is the algebraic analogue of compact. For Mumford a variety is irreducible, so connectedness is part of the definition.
 
-**Problem.** Show that the group law on an abelian variety is commutative, without putting commutativity into the definition.
+**Problem.** Every complete connected algebraic group over an algebraically closed field is commutative.
 
-**How the definition helps.** Completeness lets the rigidity lemma apply, and the rigidity lemma forces commutativity. Mumford defines an abelian variety by completeness alone, with connectedness built into the word 'variety', and he does not assume commutativity. Connectedness is needed, since a finite non-commutative group is a complete algebraic group. The rigidity lemma for complete varieties then shows that every such group is commutative. Roughly, the lemma says that a map out of a product with a complete variety that is constant on one slice is constant on every slice. Non-complete groups such as GLₙ are not commutative, so completeness is what excludes them. The commutativity is a theorem (the rigidity lemma), not a tautology.
+**How the definition helps.** Completeness lets the rigidity lemma apply, and the rigidity lemma forces commutativity. Roughly, the lemma says that a map out of a product with a complete variety that is constant on one slice is constant on every slice. Connectedness is needed, since a finite non-commutative group is a complete algebraic group. Non-complete groups such as GLₙ are not commutative, so completeness is what excludes them.
 
 **nLab:** [abelian variety](https://ncatlab.org/nlab/show/abelian+variety). It says: “gives at least two proofs that every complete algebraic group over an algebraically closed field is automatically abelian.”
 
@@ -2146,9 +2146,9 @@ $$”
 
 **Definition.** Let R be a Dedekind domain, such as the integers or a ring of p-adic integers, with fraction field K. A Néron model of a smooth separated K-scheme A is a smooth separated R-scheme whose fibre over K is A. Let X be any smooth separated R-scheme. Then every K-morphism from the fibre of X over K to A must extend uniquely to an R-morphism from X.
 
-**Problem.** Every K-point of an abelian variety, a projective algebraic group, should extend to an R-point of its model. The model should be unique. Its fibre at each prime should give a well-defined reduction of the abelian variety.
+**Problem.** Every K-point of A extends uniquely to an R-point of its Néron model. A Néron model, if it exists, is unique up to unique isomorphism, so its fibre at each prime gives a well-defined reduction of A.
 
-**How the definition helps.** Both statements follow at once from the universal property, applied to X = Spec R. The work moves into Néron's existence theorem for abelian varieties. Asking for a smooth model, not a proper one, is what makes it work (our own remark). A proper model of an elliptic curve with bad reduction has a singular fibre at the bad prime (our own remark). The page builds the Néron model from such a model by removing the bad points. The fibre of the Néron model at a prime can be disconnected or a torus. Néron models do not exist for the additive group.
+**How the definition helps.** Both statements follow at once from the universal property; for points, apply it to X = Spec R. The work moves into Néron's existence theorem for abelian varieties. Asking for a smooth model, not a proper one, is what makes it work, since a proper model of an elliptic curve with bad reduction has a singular fibre at the bad prime (our own remark). Néron models do not exist for the additive group.
 
 **Wikipedia:** [Néron model](https://en.wikipedia.org/wiki/N%C3%A9ron_model). It says: “If a Néron model exists then it is unique up to unique isomorphism.”
 
@@ -2166,7 +2166,7 @@ $$”
 
 **Problem.** The Albanese variety of an abelian variety, pointed at its identity, is that same abelian variety.
 
-**How the definition helps.** With the universal property, the identity map is the candidate, and one only checks that it is universal. This holds because every pointed map between abelian varieties is a homomorphism (our own). That fact follows from the rigidity lemma (our own). The lemma says that a map out of a product of complete varieties, if constant on one slice, is constant on every parallel slice. With the Picard construction, the claim instead needs biduality, the theorem that the dual of the dual of A is A (our own). For general X, the work goes into proving that the Albanese exists (our own).
+**How the definition helps.** With the universal property, the identity map is the candidate, and one only checks that it is universal. This holds because every pointed map between abelian varieties is a homomorphism, by the rigidity lemma (our own). With the Picard construction, the claim instead needs biduality, the theorem that the dual of the dual of A is A (our own). For general X, the work goes into proving that the Albanese exists (our own).
 
 **nLab:** [Albanese variety](https://ncatlab.org/nlab/show/Albanese+variety). It says: “Moreover, the Albanese variety of the Albanese variety is the Albanese variety.”
 
@@ -2182,9 +2182,9 @@ $$”
 
 **Definition.** A one-dimensional commutative formal group law over a ring is a power series F(x, y) that behaves like a group operation: it is commutative, has a unit and is associative. The Lazard ring L is the commutative ring generated by symbols aᵢⱼ, divided by exactly the polynomial relations that make ℓ(x, y) = Σ aᵢⱼ xⁱ yʲ commutative, unital and associative. So ℓ is a formal group law over L by construction.
 
-**Problem.** There is a ring with a universal one-dimensional commutative formal group law. That is, every formal group law over any ring R is the image of it under exactly one ring map L → R.
+**Problem.** The Lazard ring L carries a universal one-dimensional commutative formal group law. That is, every formal group law over any ring R is the image of ℓ under exactly one ring map L → R.
 
-**How the definition helps.** L is built from exactly the equations that a formal group law must satisfy, so universality is immediate. A formal group law over R is a choice of coefficients cᵢⱼ in R that satisfy the same polynomial equations. The ring map must send aᵢⱼ to cᵢⱼ. This map is well defined because the relations of L are exactly those equations. The hard content is Lazard's theorem that L is a polynomial ring ℤ\[t₁, t₂, …\]. After that, Quillen's theorem says that L is the coefficient ring of complex cobordism MU (a cohomology theory built from stably complex manifolds).
+**How the definition helps.** L is built from exactly the equations that a formal group law must satisfy, so universality is immediate. A formal group law over R is a choice of coefficients cᵢⱼ in R that satisfy those equations, so sending aᵢⱼ to cᵢⱼ gives a well-defined ring map, and the only one. The hard content is Lazard's theorem that L is a polynomial ring ℤ\[t₁, t₂, …\]. Quillen's theorem then says that L is the coefficient ring of complex cobordism MU.
 
 **nLab:** [formal group](https://ncatlab.org/nlab/show/formal+group), [Lazard ring](https://ncatlab.org/nlab/show/Lazard+ring). It says: “But this is guaranteed by the vary choice of relations imposed in the definition of the Lazard ring.”
 
@@ -2199,11 +2199,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14L15 (Group schemes), 14H52. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** A group scheme is a scheme with multiplication, unit and inverse morphisms that satisfy the group laws. Its points with values in any ring form a group. A finite flat group scheme has a well-defined order, the rank of its ring of functions as a module.
+**Definition.** A group scheme is a scheme with multiplication, unit and inverse morphisms that satisfy the group laws. A finite flat group scheme has an order, the rank of its ring of functions as a module.
 
-**Problem.** The p-torsion of an elliptic curve should have order p² in every characteristic, as it does over ℂ. This uniformity is needed to study p-torsion in families.
+**Problem.** For an elliptic curve E over a field and a prime p, the p-torsion E\[p\] is a finite flat group scheme of order p². This holds in every characteristic, even when E\[p\] has fewer than p² points.
 
-**How the definition helps.** The order counts with the whole ring of functions, nilpotents included, so it stays constant in flat families. Nilpotents are functions with a power equal to 0. Over an algebraically closed field of characteristic p, a supersingular curve has only the identity as p-torsion point, and an ordinary one has p. The missing points survive as infinitesimal parts of the group scheme. In a family of curves, the page says that the supersingular locus is where the components of the p-torsion merge. In characteristic p, the p-th roots of unity form a single point of order p (our own example). So does the kernel of Frobenius on the additive group (our own example).
+**How the definition helps.** The order counts the whole ring of functions, nilpotent functions included, so it stays constant in flat families. Over an algebraically closed field of characteristic p, a supersingular curve has only the identity as p-torsion point, and an ordinary curve has p. The missing points survive as infinitesimal parts of the group scheme. In characteristic p, the p-th roots of unity form a single point of order p (our own example).
 
 **Wikipedia:** [Group scheme](https://en.wikipedia.org/wiki/Group_scheme). It says: “it is a finite flat group scheme of order p² that has either p connected components (if the curve is ordinary) or one connected component (if the curve is supersingular).”
 
@@ -2215,11 +2215,11 @@ $$”
 
 *True by definition.* MSC 14L15 (Group schemes), 16T05. arXiv math.QA, math.AG. Level 3: graduate.
 
-**Definition.** Fix a commutative ring k and read a commutative Hopf algebra H as a group object among affine schemes. Affine schemes form the opposite of the category of commutative k-algebras. A group object has multiplication, unit and inverse maps that satisfy the group laws as equations of maps. The comultiplication, counit and antipode of H give these maps with all arrows reversed.
+**Definition.** Read a commutative Hopf algebra H over a commutative ring k as a group object among affine k-schemes, the opposite of the category of commutative k-algebras. Its comultiplication, counit and antipode give the multiplication, unit and inverse, with all arrows reversed.
 
-**Problem.** Let H be a commutative Hopf algebra over k and R a commutative k-algebra. The algebra maps H → R form a group. Each algebra map R → R′ induces a group homomorphism.
+**Problem.** Let H be a commutative Hopf algebra over k. For each commutative k-algebra R, the algebra maps H → R form a group, naturally in R.
 
-**How the definition helps.** The group-object definition makes this an instance of a general fact. The maps from any object into a group object form a group, naturally in that object (our own). In the opposite category, these maps are the algebra maps H → R. The work moves into the fact that H ⊗ H is the coproduct of H with itself among commutative algebras. So H ⊗ H plays the role of the product of the scheme with itself, and Δ gives the multiplication (our own explanation). Concretely, the group product of f and g is f ⋆ g = m ∘ (f ⊗ g) ∘ Δ.
+**How the definition helps.** The maps from any object into a group object form a group, naturally in that object (our own). In the opposite category, these maps are the algebra maps H → R. The work moves into the fact that H ⊗ H is the coproduct of H with itself among commutative algebras, so Δ gives the multiplication (our own explanation). Concretely, the product of f and g is f ⋆ g = m ∘ (f ⊗ g) ∘ Δ.
 
 **nLab:** [Hopf algebra](https://ncatlab.org/nlab/show/Hopf+algebra). It says: “A commutative Hopf monoid in a symmetric monoidal category V is the same as a group object in the opposite category CMon(V)ᵒᵖ”
 
@@ -2233,9 +2233,9 @@ $$”
 
 **Definition.** Let a reductive group (a group such as GLₙ) act on a projective variety, with a linearised ample line bundle L. A linearisation is a lift of the group action to L. A point is semistable if some invariant section of a positive power of L does not vanish at it. A point is stable if it is semistable, its orbit is closed in the semistable locus, and its stabiliser is finite.
 
-**Problem.** Construct moduli spaces as quotients of varieties by group actions. This is needed when the naive orbit space is not a variety.
+**Problem.** Let a reductive group act on a projective variety with a linearised ample line bundle. Then the semistable points have a good quotient that is a projective variety, and on the stable points this quotient is geometric.
 
-**How the definition helps.** Removing the unstable points removes the orbits that spoil the quotient, so a good quotient exists. Orbit spaces of group actions are often not separated, because some orbits are not closed and lie in the closure of others. On the semistable points there is a good quotient (a quotient whose functions are exactly the invariant functions), and it is a projective variety. On the stable points this is a geometric quotient: its points are exactly the orbits. The quotient stack of the stable points is close to a variety, for example a Deligne–Mumford stack (an orbifold). For vector bundles, stability in geometric invariant theory matches slope stability, and this is how moduli spaces of bundles are built. The good-quotient statements are Mumford's theorems, and the nLab only summarises them.
+**How the definition helps.** Removing the unstable points removes the orbits that spoil the quotient. Naive orbit spaces are often not separated, because some orbits are not closed and lie in the closure of others. A good quotient is one whose functions are exactly the invariant functions, and a geometric quotient is one whose points are exactly the orbits. The good-quotient statements are Mumford's theorems, and the nLab only summarises them.
 
 **nLab:** [geometric invariant theory](https://ncatlab.org/nlab/show/geometric+invariant+theory). It says: “such that the quotient stack on these is "close" to being represented by another projective variety”
 
@@ -2251,9 +2251,9 @@ $$”
 
 **Definition.** A complex reductive group G, such as GLₙ(ℂ), acts linearly on a projective variety. A point is semistable if 0 is not in the closure of the orbit of a lift to the cone over the variety. It is polystable if that orbit is closed, and stable if it is also of finite stabilizer.
 
-**Problem.** The maximal compact subgroup K of G has a moment map μ, a map whose components generate the K-action as Hamiltonian flows. One wants to match the algebraic quotient by G with the symplectic quotient μ⁻¹(0)/K.
+**Problem.** Let K be a maximal compact subgroup of G, with moment map μ. Then an orbit of G is polystable exactly when it meets μ⁻¹(0), and it then meets μ⁻¹(0) in a single K-orbit.
 
-**How the definition helps.** Polystability picks exactly the closed orbits, and these are the orbits where the length of the lifted vector has a minimum, where μ vanishes. Semistable is too weak, as an example shows (our own). Let ℂ\* act on ℙ² with weights 1, −1, 0; the point \[1:0:1\] is semistable, but μ is never zero on its orbit (our own). Stable is too strong, since \[0:0:1\] has stabilizer ℂ\* but its orbit meets μ⁻¹(0) (our own). The quoted theorem adds that the intersection is a single K-orbit. So the GIT quotient of polystable points equals μ⁻¹(0)/K (our own). The Hilbert–Mumford criterion in the same source turns the condition into a test on one-parameter subgroups.
+**How the definition helps.** Polystability picks exactly the closed orbits, and these are the orbits on which the length of the lifted vector has a minimum, where μ vanishes. Semistable is too weak (our own example): let ℂ\* act on ℙ² with weights 1, −1, 0; the point \[1:0:1\] is semistable, but μ is never zero on its orbit. Stable is too strong (our own example): \[0:0:1\] has stabilizer ℂ\*, but its orbit meets μ⁻¹(0). So the GIT quotient of the polystable points equals μ⁻¹(0)/K (our own).
 
 **Paper or page:** [Stability conditions and canonical metrics](https://arxiv.org/abs/2302.04966), [Stability conditions and canonical metrics](https://arxiv.org/abs/2302.04966). It says: “A point x∈X is GIT polystable for the G action if and only if G·x intersects μ⁻¹(0). Furthermore, if x is polystable then G·x intersects μ⁻¹(0) is a unique K-orbit.”
 
@@ -2270,9 +2270,9 @@ $$”
 
 **Definition.** An affine integral variety has a coordinate ring that is a domain. It is normal if that ring contains each fraction satisfying a monic polynomial over the ring.
 
-**Problem.** Remove a closed subset of dimension at least two less than that of a normal affine integral variety. Every regular function on the remainder extends uniquely across the missing set. Regular means locally expressible as a fraction with nonvanishing denominator.
+**Problem.** Remove a closed subset of codimension at least two from a normal affine integral variety. Every regular function on the remainder extends uniquely across the missing set.
 
-**How the definition helps.** Normality makes it enough to test a fraction along the subsets of codimension one, in our own explanation. These subsets have dimension one less than the variety. The cited intersection theorem says their local rings together detect membership in the coordinate ring. In our own example, take the polynomials in ℚ\[x, y\] with no linear terms. Off the origin, the fractions x³/x² and (xy²)/y² define x wherever their denominators are nonzero. They cover the punctured surface, but x does not belong to its coordinate ring.
+**How the definition helps.** Normality makes it enough to test a fraction along the subsets of codimension one (our own explanation). The cited intersection theorem says that the local rings at these subsets together detect membership in the coordinate ring. In our own example, take the polynomials in ℚ\[x, y\] with no linear terms, a ring that is not normal. Off the origin, x³/x² and xy²/y² define the function x, but x is not in the ring.
 
 **Paper or page:** [Algebra, Lemma 10.157.6.](https://stacks.math.columbia.edu/tag/031T). It says: “R = \\bigcap\\nolimits\_{\\text{height}(\\mathfrak p) = 1} R<sub>\\mathfrak p</sub>”
 
@@ -2288,7 +2288,7 @@ $$”
 
 **Problem.** Zariski's main theorem says that a birational morphism with finite fibres to a normal variety is an isomorphism onto an open subset. A related form says that a normal point has only one branch.
 
-**How the definition helps.** For finite maps, the statement is almost the definition. A finite map is one given locally by a ring extension that is finitely generated as a module. A finite birational map then gives such an extension inside the same fraction field, and an integrally closed ring has none (our own). The page gives two bad cases, the cuspidal and the nodal cubic. The cusp is pinched, and the node glues two points of the line. The real content of Zariski's theorem is for maps with finite fibres that are not finite. Grothendieck later gave a structure theorem for quasi-finite morphisms, which are maps with finite fibres.
+**How the definition helps.** For finite maps, the statement is almost the definition. A finite birational map gives a ring extension, finitely generated as a module, inside the same fraction field, and an integrally closed ring has no proper such extension (our own). The page gives two bad cases: the cuspidal cubic is pinched, and the nodal cubic glues two points of the line. The real content of Zariski's theorem is for maps with finite fibres that are not finite.
 
 **Wikipedia:** [Normal scheme](https://en.wikipedia.org/wiki/Normal_scheme), [Zariski's main theorem](https://en.wikipedia.org/wiki/Zariski%27s_main_theorem). It says: “the cuspidal cubic curve X in the affine plane A² defined by x² = y³ is not normal, because there is a finite birational morphism A¹ → X (namely, t maps to (t³, t²)) which is not an isomorphism.”
 
@@ -2323,7 +2323,7 @@ $$”
 
 **Problem.** Take n Laurent polynomials in n unknowns, with generic coefficients for their given exponents. Then the number of solutions in the torus equals the mixed volume of their Newton polytopes. Here the mixed volume is scaled so that n copies of one polytope give n! times its volume.
 
-**How the definition helps.** In the torus, multiplying an equation by a monomial does not change its solutions. This matches the fact that shifting a polytope does not change volumes. In ℂⁿ, multiplying f by x adds the whole hyperplane x = 0 to the solutions (our own example). So no polytope count could be exact there. Bézout's bound, the product of the degrees, is often much larger than the true number for sparse systems. The count is exact only for generic coefficients, as the page says. Our own remark: the proofs use toric compactifications or tropical degenerations.
+**How the definition helps.** In the torus, multiplying an equation by a monomial does not change its solutions, just as shifting a polytope does not change volumes. In ℂⁿ, multiplying f by x adds the whole hyperplane x = 0 to the solutions, so no polytope count could be exact there (our own example). Bézout's bound, the product of the degrees, is often much larger than the true number for sparse systems. Our own remark: the proofs use toric compactifications or tropical degenerations.
 
 **Wikipedia:** [Bernstein–Kushnirenko theorem](https://en.wikipedia.org/wiki/Bernstein%E2%80%93Kushnirenko_theorem). It says: “the number of nonzero complex solutions of a system of Laurent polynomial equations f₁ = ⋯ = fₙ = 0 is equal to the mixed volume of the Newton polytopes of such polynomials”
 
@@ -2340,9 +2340,9 @@ $$”
 
 **Definition.** A toric variety contains an algebraic torus as a dense open set, and the torus action on itself extends to the whole variety. A fan is a set of strongly convex rational polyhedral cones, closed under taking faces, in which two cones meet in a common face. Some authors also require a toric variety to be normal.
 
-**Problem.** Normal toric varieties are in one-to-one match with fans. The variety is smooth when each cone is spanned by part of a lattice basis. It is complete when the fan covers the whole space.
+**Problem.** Normal toric varieties are in one-to-one match with fans.
 
-**How the definition helps.** Requiring normality makes the correspondence exact, because the toric variety built from a fan is always normal, as the page says. The reason is that each cone gives a semigroup ring that is integrally closed (our own remark). So a fan cannot give back a non-normal toric variety. The cuspidal cubic y² = x³ contains the torus as the points (t², t³), and the action extends (our own example). But this curve is not normal. The hard work that stays is the classification of fans themselves, for example of smooth complete fans with many rays.
+**How the definition helps.** The toric variety built from a fan is always normal, as the page says, so requiring normality makes the correspondence exact. Each cone gives a semigroup ring that is integrally closed (our own remark). The cuspidal cubic y² = x³ contains the torus as the points (t², t³), and the action extends, but this curve is not normal (our own example). The hard work that stays is the classification of fans themselves.
 
 **Wikipedia:** [Toric variety](https://en.wikipedia.org/wiki/Toric_variety). It says: “This correspondence is called the fundamental theorem for toric geometry, and it gives a one-to-one correspondence between normal toric varieties and fans of strongly convex rational cones.”
 
@@ -2357,7 +2357,7 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG, math.SG. Level 3: graduate.
 
-**Definition.** On a smooth complex projective variety, pair the small quantum product of two cohomology classes with a third using the genus-zero three-point curve counts. These counts integrate the three incidence conditions against the virtual class, which corrects for excess dimension. Sum over curve classes with formal weights that multiply when the classes add. The ordinary intersection pairing uniquely determines the product.
+**Definition.** On a smooth complex projective variety, the small quantum product a ∗ b is the class whose intersection pairing with each class c is a sum over curve classes β. The term for β is the genus-zero three-point Gromov–Witten invariant ⟨a, b, c⟩\_β times a formal weight, and the weights multiply when the curve classes add.
 
 **Problem.** The small quantum product of a smooth complex projective variety is associative.
 
@@ -2428,11 +2428,11 @@ $$”
 
 *True by definition.* MSC 14T10 (Foundations of tropical geometry and relations with algebra), 14T20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Tropicalization replaces each coefficient of a Laurent polynomial by its valuation, and sums and products by minimum and plus. The tropical hypersurface of the result is the set of points where the minimum among its terms is attained at least twice. For a variety in a torus over a valued field, there are three definitions of its tropical variety. They use these hypersurfaces, initial ideals, or the closure of the image of the valuation map.
+**Definition.** Tropicalization replaces each coefficient of a Laurent polynomial by its valuation, and sums and products by minimum and plus. The tropical hypersurface is the set of points where the minimum among the terms is attained at least twice. A variety in a torus over a valued field has three candidate tropical varieties: from these hypersurfaces, from initial ideals, or from the closure of the image of the valuation map.
 
-**Problem.** The fundamental theorem says the three definitions of the tropical variety agree. For a hypersurface, this is Kapranov's theorem. The closure of the valuations of the solutions is exactly the tropical hypersurface.
+**Problem.** Over an algebraically closed field with a nontrivial valuation, the three definitions of the tropical variety agree. For a hypersurface this is Kapranov's theorem: the closure of the valuations of the solutions is exactly the tropical hypersurface.
 
-**How the definition helps.** The "attained twice" definition makes one inclusion obvious. At a solution of f = 0 the terms must cancel, and terms with one strictly smallest valuation cannot cancel. So the valuations of solutions lie in the tropical hypersurface for free. The work moves to the other inclusion, that every tie comes from actual solutions. This needs an algebraically closed field with a nontrivial valuation. For other varieties, the hypersurfaces of a generating set of the ideal can cut out too big a set. A generating set need not be a tropical basis.
+**How the definition helps.** The 'attained twice' definition makes one inclusion obvious. At a solution of f = 0 the terms must cancel, and terms with one strictly smallest valuation cannot cancel. The work moves to the other inclusion, that every tie comes from actual solutions. For other varieties, the hypersurfaces of a generating set of the ideal can cut out too big a set, since a generating set need not be a tropical basis.
 
 **Wikipedia:** [Tropical geometry](https://en.wikipedia.org/wiki/Tropical_geometry). It says: “The equivalence of these definitions is referred to as the Fundamental Theorem of Tropical Geometry.”
 
@@ -2448,9 +2448,9 @@ $$”
 
 **Definition.** This entry uses one proposal for the 'field with one element' 𝔽₁. In it, a finite-dimensional vector space over 𝔽₁ is a pointed finite set (a finite set with one marked point that plays the role of zero). Then GL(n, 𝔽₁) is the symmetric group Σₙ.
 
-**Problem.** A slogan says that algebraic K-theory over 𝔽₁ is stable cohomotopy, the homotopy theory of the sphere spectrum 𝕊. We want to make sense of this slogan.
+**Problem.** If finite-dimensional 𝔽₁-vector spaces are pointed finite sets, then the algebraic K-theory K(𝔽₁) is the sphere spectrum 𝕊. So algebraic K-theory over 𝔽₁ is stable cohomotopy.
 
-**How the definition helps.** With this definition, K(𝔽₁) is the K-theory of finite sets, and a known theorem says that this is the sphere spectrum. Algebraic K-theory of a ring is the K-theory of its permutative category of modules (a category with a sum that is associative and unital exactly, and commutative up to coherent isomorphism). With 𝔽₁-modules defined as pointed finite sets, K(𝔽₁) is by definition the K-theory of finite sets. The real content is the Barratt–Priddy–Quillen theorem, in Segal's form. It says that the K-theory of the permutative category of finite sets is the sphere spectrum 𝕊. The page says that this is only one proposal. Connes and Consani use Γ-sets instead, and K(𝔽₁) is still 𝕊 there.
+**How the definition helps.** With this definition, K(𝔽₁) is by definition the K-theory of the permutative category of finite sets. The real content is the Barratt–Priddy–Quillen theorem, in Segal's form, which says that this K-theory is 𝕊. The page says that this is only one proposal. Connes and Consani use Γ-sets instead, and K(𝔽₁) is still 𝕊 there.
 
 **nLab:** [field with one element](https://ncatlab.org/nlab/show/field+with+one+element), [K-theory of a permutative category](https://ncatlab.org/nlab/show/K-theory+of+a+permutative+category). It says: “With the identification 𝔽₁ Mod ≃ FinSet∗/ from above it follows that the algebraic K-theory over 𝔽₁ is stable cohomotopy”
 
@@ -2466,11 +2466,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14A15 (Schemes and morphisms), 18F70, 18N60. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** Regard the spectrum of a commutative ring A as a locale, not as a set of prime ideals with a topology. A locale is a lattice of open sets that need not come from a set of points; here the basic opens U(f), one for each element f of A, generate it. More generally, regard the spectrum as the topos or ∞-topos of sheaves on this locale. A scheme is then a structured ∞-topos that is locally of this form.
+**Definition.** Regard the spectrum of a commutative ring A as a locale, a lattice of opens that need not come from points. The basic opens U(f), for f in A, generate it. More generally, regard it as the ∞-topos of sheaves on this locale, and a scheme as a structured ∞-topos that is locally of this form.
 
-**Problem.** Find one definition of the spectrum and of schemes that works without the axiom of choice, in relative situations and for the étale topology. It must still give back ordinary schemes. The 0-truncated, 0-localic schemes in this sense (those whose ∞-topos comes from a locale and whose structure sheaf has ordinary rings) are exactly the ordinary schemes (Lurie, Structured Spaces, Proposition 4.2.9).
+**Problem.** This definition of Spec A needs no axiom of choice, works in relative situations and extends to the étale topology. Its 0-truncated, 0-localic schemes are exactly the ordinary schemes (Lurie, Structured Spaces, Proposition 4.2.9).
 
-**How the definition helps.** In our own reading, the locale keeps all the open sets even when points are missing, so one topos-based definition treats all three cases in one way. Lurie's text, quoted on the nLab, gives three reasons. First, the locale has enough points (enough to tell the open sets apart) exactly when every non-zero commutative ring has a prime ideal, and this needs the axiom of choice. Second, in relative situations the construction can fail to have enough points even with choice, but the locale and its sheaf theory still behave well. Third, a topological space is not enough for the étale topology, because subobjects of the terminal object do not generate étale sheaves. The nLab states the theorem that the 0-truncated, 0-localic case gives back ordinary schemes.
+**How the definition helps.** The locale keeps all the open sets even when points are missing, so one definition covers all three cases (our own reading). The locale has enough points exactly when every non-zero commutative ring has a prime ideal, and this needs the axiom of choice. In relative situations the construction can lack enough points even with choice, but its sheaf theory still behaves well. For the étale topology a space is not enough, because subobjects of the terminal object do not generate étale sheaves.
 
 **nLab:** [scheme as a locally affine structured (infinity,1)-topos](https://ncatlab.org/nlab/show/scheme+as+a+locally+affine+structured+%28infinity%2C1%29-topos). It says: “it is in some sense coincidental that Spec A is described by a topological space. What arises more canonically is the lattice of open subsets of Spec A”
 
@@ -2520,11 +2520,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 16H05. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** Classically, an Azumaya algebra over a commutative ring R is an R-algebra that has an inverse up to Morita equivalence. Two algebras are Morita equivalent when their categories of modules are equivalent. The Brauer group Br(R) is the group of Morita classes of Azumaya algebras under ⊗. For a connective E∞ ring R (a commutative ring in the homotopical sense, with no homotopy in negative degrees), the Brauer ∞-group Br(R) is the group of invertible R-linear module ∞-categories of the form Mod(A). Antieau and Gepner show that these are given by derived Azumaya algebras modulo Morita equivalence.
+**Definition.** A derived Azumaya algebra over a connective E∞ ring R is an R-algebra A whose module ∞-category Mod(A) is invertible among R-linear module ∞-categories. The Brauer group is the group of such algebras modulo Morita equivalence, under ⊗. Classical Azumaya algebras are the ordinary algebras with this property.
 
-**Problem.** Classical Azumaya algebras give only part of the étale cohomology group H²(X, 𝔾ₘ), where 𝔾ₘ is the sheaf of units: at best the torsion part, by Gabber. The goal is an algebraic description of all of H².
+**Problem.** For a quasi-compact, quasi-separated scheme X, every class in étale H²(X, 𝔾ₘ) is represented by a derived Azumaya algebra, including the non-torsion classes (Toën). Classical Azumaya algebras give at most the torsion part.
 
-**How the definition helps.** The definition makes the Brauer classes a group automatically, with the opposite algebra as the inverse. The link to cohomology is real work: classical Br(R) embeds into the torsion part of étale H²(𝔾ₘ), with equality in many cases by Gabber. The nLab takes all of étale H²(𝔾ₘ) as the actual Brauer group, called the bigger Brauer group. Toën showed that derived Azumaya algebras represent all of it, including the classes that are not torsion. With the derived definition, Antieau and Gepner prove that Azumaya algebras are étale-locally trivial and that Br is an étale sheaf. They also prove that Br is the étale delooping of the Picard sheaf (the sheaf of invertible modules), a clean statement that the classical definition does not give. The proofs need derived algebraic geometry.
+**How the definition helps.** The definition makes Brauer classes a group automatically, with the opposite algebra as the inverse. Classical Br(R) embeds into the torsion part of étale H²(𝔾ₘ), with equality in many cases by Gabber. With the derived definition, Antieau and Gepner prove that Br is an étale sheaf and the étale delooping of the Picard sheaf. The proofs need derived algebraic geometry.
 
 **nLab:** [Brauer group](https://ncatlab.org/nlab/show/Brauer+group), [Azumaya algebra](https://ncatlab.org/nlab/show/Azumaya+algebra). It says: “as the "actual" Brauer group. This has been called the "bigger Brauer group”
 
@@ -2541,9 +2541,9 @@ $$”
 
 **Definition.** In derived algebraic geometry, the intersection of two subschemes is their derived fibre product. Its ring of functions is the derived tensor product of the two structure sheaves (the sheaves of functions on the subschemes). The homotopy groups of this derived ring are the Tor groups.
 
-**Problem.** The intersection number of two subvarieties should equal the product of their cohomology classes. This should hold even when the subvarieties do not meet transversally (that is, when their tangent spaces are not in general position where they meet).
+**Problem.** Let V and W be subvarieties of complementary dimension in a smooth projective variety that meet in finitely many points. Then the sum over these points of the alternating sums ∑ (−1)ⁱ length Torᵢ, Serre's multiplicities, equals the degree of the product of their cohomology classes.
 
-**How the definition helps.** The derived intersection carries the correction for a non-transverse intersection inside it, so the right count comes from the definition. When the intersection is not transverse, the plain tensor product of the structure sheaves gives the wrong count. Serre corrected the count with the alternating sum of the lengths of the Tor groups. The homotopy groups of the derived intersection are exactly these Tor groups, so the derived intersection gives Serre's alternating sum directly. The nLab states the general Bézout statement only as what should hold. The full statement depends on the theory of virtual fundamental classes.
+**How the definition helps.** The derived intersection carries the correction for a non-transverse intersection inside it. Its homotopy groups are exactly the Tor groups, so its length is Serre's alternating sum. The plain tensor product of the structure sheaves gives the wrong count when the intersection is not transverse. For intersections of excess dimension, the nLab states the general statement only as what should hold, since it depends on virtual fundamental classes.
 
 **nLab:** [intersection theory](https://ncatlab.org/nlab/show/intersection+theory), [derived algebraic geometry](https://ncatlab.org/nlab/show/derived+algebraic+geometry), [derived stack](https://ncatlab.org/nlab/show/derived+stack). It says: “the cup product of two virtual fundamental classes of mid-dimensional subspaces equals the fundamental class of their derived intersection”
 
@@ -2559,9 +2559,9 @@ $$”
 
 **Definition.** The derived loop space ℒX of a space X is the homotopy pullback of the diagonal map X → X × X along itself. In words, it is the intersection of the diagonal with itself, computed in derived geometry.
 
-**Problem.** Give Hochschild homology HH•(A) a geometric meaning, where A is the algebra of functions on X. Through the Hochschild–Kostant–Rosenberg theorem, this also gives a geometric meaning to the differential forms on X.
+**Problem.** Let A be the algebra of functions on X. Then the functions on the derived loop space ℒX are the Hochschild homology HH•(A).
 
-**How the definition helps.** The derived loop space makes Hochschild homology into functions on a space, because functions on a homotopy pullback form a derived tensor product. So the functions on ℒX are the derived tensor product of A with itself over A ⊗ A, and this is HH•(A). The nLab calls this, to some extent, a tautological dual reformulation. For a plain space, the underived loop space is X itself, so the derived version is essential. There are subtleties, such as putting an algebra structure back on the Hochschild complex. Further results, such as the S¹-invariant functions being closed forms, need real work (Toën–Vezzosi, Ben-Zvi–Nadler).
+**How the definition helps.** Functions on a homotopy pullback form a derived tensor product. So the functions on ℒX are the derived tensor product of A with itself over A ⊗ A, which is HH•(A), and the nLab calls this, to some extent, a tautological reformulation. The underived self-intersection of the diagonal is X itself, so the derived version is essential. Further results, such as the Hochschild–Kostant–Rosenberg link to differential forms, need real work (Toën–Vezzosi, Ben-Zvi–Nadler).
 
 **nLab:** [derived geometry](https://ncatlab.org/nlab/show/derived+geometry), [derived loop space](https://ncatlab.org/nlab/show/derived+loop+space). It says: “To some extent this is just the tautological dual reformulation of Hochschild homology as the (∞,1)-categorical (derived) tensor product”
 
@@ -2576,11 +2576,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 19E08, 14C35. arXiv math.AG, math.KT. Level 4: research.
 
-**Definition.** Let X be a derived scheme, and let t₀X be its underlying classical scheme. Suppose that the homotopy sheaves πᵢ O(X) of its structure sheaf are coherent and are zero for large i. The K-theoretic virtual class is the unique class \[X\] in the G-theory group G₀(t₀X) that maps to the class of the structure sheaf O(X) in G₀(X). G-theory is the K-theory of coherent sheaves, and the class \[X\] equals the alternating sum of the classes of the homotopy sheaves πᵢ O(X).
+**Definition.** The K-theoretic virtual class of a derived scheme X is the class of its structure sheaf O(X) in G-theory, the K-theory of coherent sheaves. It is moved to the underlying classical scheme t₀X.
 
-**Problem.** Find a canonical virtual fundamental class for a derived scheme.
+**Problem.** Let X be a derived scheme whose homotopy sheaves πᵢ O(X) are coherent and zero for large i. Then there is a unique class \[X\] in G₀(t₀X) that maps to the class of O(X) in G₀(X), and \[X\] = ∑ (−1)ⁱ \[πᵢ O(X)\].
 
-**How the definition helps.** When the moduli space is a derived scheme, the class is tautological: it is just the class of the structure sheaf. The work moves into the dévissage theorem. This theorem says that the map t₀X → X gives an isomorphism on G-theory, so you can move the class to the classical scheme. To get a class in Chow homology, you also need the Grothendieck–Riemann–Roch map and a correction by a Todd class. This step needs extra conditions on the cotangent complex. The nLab takes this account from Toën's 2014 survey.
+**How the definition helps.** When the moduli space is a derived scheme, the virtual class is just the class of the structure sheaf. The work moves into the dévissage theorem, which says that t₀X → X gives an isomorphism on G-theory. To get a class in Chow homology, you also need the Grothendieck–Riemann–Roch map and a Todd class correction. This step needs extra conditions on the cotangent complex.
 
 **nLab:** [virtual fundamental class](https://ncatlab.org/nlab/show/virtual+fundamental+class). It says: “In our hearts we all know that the fundamental class should be something tautological”
 
@@ -2597,9 +2597,9 @@ $$”
 
 **Definition.** A geometry 𝒢 is a small (∞,1)-category with finite limits, an admissibility structure and a topology. The admissibility structure is a chosen class of morphisms that play the role of open embeddings, such as Spec R\[1/r\] → Spec R. A 𝒢-structure on an (∞,1)-topos 𝒳 is a left-exact functor 𝒪 : 𝒢 → 𝒳 (a functor that preserves finite limits). It must send admissible covering families to effective epimorphisms.
 
-**Problem.** We want one notion of structured space that includes sheaves of rings and locally ringed spaces, and their derived versions.
+**Problem.** Take the geometry of commutative rings with Zariski covers. Then a structure on the topos of sheaves on a space X is exactly a sheaf of local rings on X, and without the cover condition it is a sheaf of rings.
 
-**How the definition helps.** Left exactness alone makes each value a ring, and the cover condition makes the ring local. A commutative ring is the same as a left-exact functor (Ringᶠⁱⁿ)ᵒᵖ → Set. So a left-exact functor into sheaves on X is by definition a sheaf of rings, and no admissibility structure is needed for this. Local rings do need it, because the covers come from the admissibility structure. Take elements rᵢ of R with Σ αᵢ rᵢ = 1, so that the Spec R\[1/rᵢ\] cover Spec R. The functor sends this cover to an epimorphism exactly when, in each stalk, the image of some rᵢ is invertible, and that is the local ring condition. So 'locally ringed' is the cover-preservation axiom. Local morphisms are also defined with the admissible morphisms, and Lurie's DAG V develops the general theory.
+**How the definition helps.** Left exactness alone makes each value a ring, and the cover condition makes the ring local. A commutative ring is the same as a left-exact functor (Ringᶠⁱⁿ)ᵒᵖ → Set, so a left-exact functor into sheaves on X is a sheaf of rings. If Σ αᵢ rᵢ = 1, the Spec R\[1/rᵢ\] cover Spec R. The functor sends this cover to an epimorphism exactly when, in each stalk, some rᵢ is invertible, and that is the local ring condition.
 
 **nLab:** [structured (infinity,1)-topos](https://ncatlab.org/nlab/show/structured+%28infinity%2C1%29-topos). It says: “Since rings can be identified with left-exact functors (Ringᶠⁱⁿ)ᵒᵖ → Set, we don't need to impose any admissibility structure in order to recover the notion of a sheaf of rings, since left-exactness is part of the definition of a "structure sheaf.”
 
@@ -2617,7 +2617,7 @@ $$”
 
 **Problem.** If the hypersurface defined by W is smooth as a scheme, every finite free matrix factorization of W is contractible.
 
-**How the definition helps.** Smoothness excludes a common zero of W and all its partial derivatives (our own). Differentiating d² gives d(∂d) + (∂d)d = (∂W)·1 for each coordinate derivative ∂ (our own). Taking h = d/2 gives dh + hd = W·1 (our own). The Nullstellensatz expresses 1 as a polynomial combination of W and its derivatives, giving the required h (our own). For W = x², take both maps equal to x (our own). Evaluating at zero shows that no such h exists (our own).
+**How the definition helps.** Smoothness excludes a common zero of W and all its partial derivatives (our own). Differentiating d² = W·1 gives d(∂d) + (∂d)d = (∂W)·1 for each partial derivative ∂, and h = d/2 gives dh + hd = W·1 (our own). The Nullstellensatz writes 1 as a polynomial combination of W and its derivatives, and the same combination of these operators gives the required h (our own). For W = x², take both maps equal to x; evaluating at zero shows that no such h exists (our own).
 
 **nLab:** [matrix factorization](https://ncatlab.org/nlab/show/matrix+factorization). It says: “For example, matrix factorization categories are related to derived categories of singularities.”
 
@@ -2631,9 +2631,9 @@ $$”
 
 *Rules out counterexamples.* MSC 14B05 (Singularities in algebraic geometry), 32S35. arXiv math.AG, math.CV. Level 4: research.
 
-**Definition.** Embed a reduced complex variety in a smooth space. Resolve its ideal without changing the exterior, so its full inverse image consists of smooth hypersurfaces meeting like coordinate planes. Take this inverse image without multiplicities. The strict transform instead takes the closure of the lifted smooth part.
+**Definition.** Take a log resolution of a reduced variety X in a smooth space. It is an isomorphism away from X, and the full inverse image of X is a divisor with simple normal crossings. The reduced total transform is this inverse image without multiplicities, and the strict transform keeps only the closure of the inverse image of the smooth part of X.
 
-**Problem.** Blow up the origin where two coordinate axes meet, replacing the origin by its projective line of directions. Functions on the reduced full inverse image descend exactly to functions on the original axes.
+**Problem.** Let X be the union of the two coordinate axes in the plane, and blow up the origin. Then the functions on the reduced total transform push forward to exactly the functions on X.
 
 **How the definition helps.** Keeping the line of directions forces the two branch values to agree at the crossing. In our own example, every regular function on that projective line is constant. Conversely, branch functions agreeing at the crossing extend across the line by that constant. The strict transform separates the branches and allows unequal values. Schwede’s theorem identifies when the full inverse image also recovers the original function sheaf with no higher cohomological corrections.
 
@@ -2651,9 +2651,9 @@ $$”
 
 **Definition.** A formal moduli problem is a functor X from small (Artinian) derived algebras to ∞-groupoids with two conditions. These algebras stand for infinitesimal thickenings of a point. First, X of the point is contractible. Second, X sends pullbacks along small maps to pullbacks.
 
-**Problem.** Prove the folklore principle of Deligne and others: in characteristic 0, a differential graded Lie algebra governs every deformation problem.
+**Problem.** Over a field of characteristic 0, formal moduli problems are equivalent to differential graded Lie algebras (Pridham, Lurie). So a differential graded Lie algebra governs every deformation problem, as Deligne's folklore principle says.
 
-**How the definition helps.** The pullback condition makes the folklore principle a theorem. This condition makes first order control the behaviour at every infinitesimal order, and an obstruction theory needs exactly that. With this definition, formal moduli problems over a field of characteristic 0 are equivalent to L∞ algebras, which are the same as differential graded Lie algebras up to homotopy. Pridham and Lurie proved this. In positive characteristic, you need partition Lie algebras instead (Brantner and Mathew).
+**How the definition helps.** The pullback condition makes the folklore principle a theorem. It makes first order control the behaviour at every infinitesimal order, and an obstruction theory needs exactly that. Up to homotopy, L∞ algebras are the same as differential graded Lie algebras. In positive characteristic, you need partition Lie algebras instead (Brantner and Mathew).
 
 **nLab:** [formal moduli problem](https://ncatlab.org/nlab/show/formal+moduli+problem). It says: “The clause about pullbacks is what makes the behaviour at arbitrary infinitesimal order be all controlled by that at first order”
 
@@ -2669,7 +2669,7 @@ $$”
 
 **Definition.** Clutching glues two marked points of curves into a node, where two branches cross like xy = 0. Extended clutching uses formal coordinates x and y at the points and the equation xy = q. The parameter q smooths the node to all orders.
 
-**Problem.** Work over ℚ, in the genus-two moduli space, near the boundary divisor of two elliptic curves joined at a node. The abstract states that its infinitesimal neighborhood is canonically that of the zero section in the normal bundle. Theorem 1.2 proves this at every order n after a pull-back, and at first order for genus at least 3.
+**Problem.** Over ℚ, in the moduli space of genus-two curves, take the boundary divisor of two elliptic curves joined at a node. After a pull-back, its n-th order neighborhood is canonically that of the zero section in its normal bundle, for every n (Theorem 1.2).
 
 **How the definition helps.** Extended clutching gives coordinates on all nearby smooth curves, not only on the nodal curve. The abstract says its advantage is control over changes of the formal parameters at the glued points. That control makes the identification canonical. Ordinary clutching is the case q = 0.
 
@@ -2687,9 +2687,9 @@ $$”
 
 **Definition.** The fiber-full scheme parametrizes closed subschemes of projective space whose sheaf cohomology dimensions are prescribed. The data are one function of the twist m for each cohomological degree i. Twisting by m means tensoring with the m-th power of the hyperplane line bundle.
 
-**Problem.** For prescribed cohomology functions, a quasi-projective scheme represents families with exactly those dimensions in every fiber. It is a locally closed subscheme of the Hilbert scheme. This existence theorem is Theorem A of the authors' earlier paper; this paper studies its tangent and obstruction theory.
+**Problem.** For prescribed cohomology functions, a quasi-projective scheme represents the families of subschemes with exactly those cohomology dimensions in every fiber. It is a locally closed subscheme of the Hilbert scheme.
 
-**How the definition helps.** The definition fixes exactly the data that a family must keep constant, so the moduli problem is precise. The Hilbert polynomial records only the alternating sum of these dimensions. Our own explanation is that it cannot see two adjacent degrees whose dimensions jump by the same amount. The fiber-full scheme separates such families. The earlier paper proves that the space exists. This paper uses it to give conditions for cohomology to stay constant under Gröbner degenerations.
+**How the definition helps.** The definition fixes exactly the data that a family must keep constant, so the moduli problem is precise. The Hilbert polynomial records only the alternating sum of these dimensions. In our own explanation, it cannot see two adjacent degrees whose dimensions jump by the same amount. The fiber-full scheme separates such families.
 
 **Paper or page:** [A local study of the fiber-full scheme](https://arxiv.org/abs/2202.06652v4), [A local study of the fiber-full scheme](https://arxiv.org/abs/2202.06652v4). It says: “We study some of the local properties of the fiber-full scheme, which is a fine moduli space that generalizes the Hilbert scheme by parametrizing closed subschemes with prescribed cohomological data.”
 
@@ -2724,9 +2724,9 @@ $$”
 
 **Definition.** Two algebraic cycles (formal sums of subvarieties) are numerically equivalent when they have the same intersection number with every cycle of complementary dimension. Numerical motives are the pure motives built with this equivalence relation.
 
-**Problem.** Grothendieck wanted the category of pure motives to be a semisimple abelian category, in which every object is a direct sum of simple objects.
+**Problem.** With coefficients in a field of characteristic 0, numerical motives form a semisimple abelian category (Jannsen). Conversely, numerical equivalence is the only adequate relation whose motives form a semisimple abelian category.
 
-**How the definition helps.** With numerical equivalence the category of motives is semisimple, and no other adequate relation gives this. Jannsen proved that with numerical equivalence, and coefficients in a field of characteristic 0, the category of pure motives is abelian and semisimple. He also proved the converse. If the category for an adequate equivalence relation (a relation on cycles that works with pullback, pushforward and intersection) is semisimple abelian, then that relation is numerical equivalence. Numerical equivalence is the coarsest adequate relation. Whether it agrees with homological equivalence (equality of cohomology classes) is still open; it is one of Grothendieck's standard conjectures.
+**How the definition helps.** Numerical equivalence is the coarsest adequate relation, and it kills exactly what intersection numbers cannot see. An adequate relation is one that works with pullback, pushforward and intersection. Whether numerical equivalence agrees with homological equivalence is still open; it is one of Grothendieck's standard conjectures.
 
 **nLab:** [numerical motive](https://ncatlab.org/nlab/show/numerical+motive), [pure motive](https://ncatlab.org/nlab/show/pure+motive). It says: “numerical equivalence is precisely the only adequate equivalence relation relation that gives the category of pure motives this property.”
 
@@ -2760,9 +2760,9 @@ $$”
 
 **Definition.** An admissible cover is a finite map of nodal curves that sends nodes to nodes, with equal branching on the two sides of each node. The H-tautological ring is built from moduli spaces of admissible Galois covers. Its new operations, restriction and corestriction, remember intermediate quotients of a cover.
 
-**Problem.** Some classes of Harris–Mumford admissible covers lie outside the tautological ring of moduli spaces of curves. How can one compute their intersections with tautological classes?
+**Problem.** The classes of Harris–Mumford admissible covers lie in the H-tautological ring, even those outside the tautological ring. Their intersections with tautological classes can be computed by an algorithm.
 
-**How the definition helps.** The larger ring puts these cover classes and the usual classes in one ring where intersections can be computed. The paper gives additive generators for the ring and shows that their intersections can be computed by an algorithm. As an application it computes integrals of Harris–Mumford loci against tautological classes of complementary dimension.
+**How the definition helps.** The larger ring puts these cover classes and the usual classes in one ring where intersections can be computed. The paper gives additive generators for the ring and computes their intersections by an algorithm. As an application, it computes integrals of Harris–Mumford loci against tautological classes of complementary dimension.
 
 **Paper or page:** [The H-tautological ring](https://arxiv.org/abs/2011.11565v2). It says: “In particular, our new framework includes classes of Harris-Mumford admissible covers on moduli spaces of curves, which are known in some (and speculatively many more) examples to lie outside the usual tautological ring.”
 
@@ -2778,9 +2778,9 @@ $$”
 
 **Definition.** Take a vector bundle on a closed submanifold and a resolution of it on the ambient manifold. A singular Bott–Chern class is a class of currents that measures how their Chern character forms differ. The paper defines a theory of such classes by axioms. A homogeneous theory adds one more condition, which in our own reading fixes the degrees of a basic class.
 
-**Problem.** The axioms allow many theories of singular Bott–Chern classes. Which one is the theory of Bismut, Gillet and Soulé?
+**Problem.** Among the theories of singular Bott–Chern classes that satisfy the axioms, exactly one is homogeneous (Theorem 9.3). It is the theory of Bismut, Gillet and Soulé (Theorem 9.30).
 
-**How the definition helps.** The homogeneity condition removes exactly the freedom that the axioms leave. For algebraic bundles, each transitive theory compatible with the projection formula differs from the homogeneous one by an additive genus (Corollary 9.38). It proves that only one theory is homogeneous (Theorem 9.3), and that it agrees with the theory of Bismut, Gillet and Soulé (Theorem 9.30). Our own reading is that a nonzero genus would add classes of the wrong degree.
+**How the definition helps.** The homogeneity condition removes exactly the freedom that the axioms leave. For algebraic bundles, each transitive theory compatible with the projection formula differs from the homogeneous one by an additive genus (Corollary 9.38). In our own reading, a nonzero genus would add classes of the wrong degree.
 
 **Paper or page:** [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2), [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2), [Singular Bott-Chern classes and the arithmetic Grothendieck-Riemann-Roch theorem for closed immersions](https://arxiv.org/abs/0902.0430v2). It says: “We identify the theory defined by Bismut, Gillet and Soule as the only one that satisfies the additional condition of being homogeneous.”
 
@@ -2794,11 +2794,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14C17 (Intersection theory, characteristic classes, intersection multiplicities in algebraic geometry), 14N35, 14A30. arXiv math.AG. Level 4: research.
 
-**Definition.** A moduli space is a space whose points stand for geometric objects, such as maps from curves. A virtual fundamental class is a homology class on a moduli space that comes from its obstruction theory or its derived structure, not from its actual dimension. An obstruction theory is data that measures how the space fails to be smooth of the expected dimension. The virtual class always lives in the expected dimension.
+**Definition.** An obstruction theory on a moduli space measures how the space fails to be smooth of the expected dimension. A virtual fundamental class is a homology class built from this theory or from a derived structure, not from the actual dimension of the space.
 
-**Problem.** Define Gromov–Witten invariants, which count curves in a target space. You get them by integrating over moduli spaces of stable maps. But these spaces can have components whose dimension is too large.
+**Problem.** The moduli space of stable maps to a target has a virtual fundamental class of the expected dimension, even when some components are too large. So Gromov–Witten invariants, integrals over this class, are defined for every target.
 
-**How the definition helps.** The virtual class always has the expected dimension, so you can define the invariants for every target. For example, take the moduli space M̄₁,₀(ℙ², 3) of maps of degree 3 from genus 1 curves to the plane. Its expected dimension is 9, but it has a boundary component of dimension 10. So its ordinary fundamental class is useless for integrating classes of codimension 9. Behrend and Fantechi built the virtual class from a perfect obstruction theory with the intrinsic normal cone. The derived view says that the moduli space is the truncation of a quasi-smooth derived space, which is smooth in a hidden sense. The nLab notes that this hidden smoothness is a heuristic, not a general rule.
+**How the definition helps.** The virtual class always has the expected dimension, so the invariants are defined for every target. For example, maps of degree 3 from genus 1 curves to ℙ² have expected dimension 9, but the space has a boundary component of dimension 10. Behrend and Fantechi built the virtual class from a perfect obstruction theory with the intrinsic normal cone. The derived view says that the moduli space is the truncation of a quasi-smooth derived space, but the nLab notes that this is a heuristic.
 
 **nLab:** [virtual fundamental class](https://ncatlab.org/nlab/show/virtual+fundamental+class), [perfect obstruction theory](https://ncatlab.org/nlab/show/perfect+obstruction+theory), [hidden smoothness principle](https://ncatlab.org/nlab/show/hidden+smoothness+principle). It says: “The virtual fundamental class always lives in the expected dimension.”
 
@@ -2813,11 +2813,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14C25 (Algebraic cycles), 19F27. arXiv math.AG. Level 4: research.
 
-**Definition.** Build cycles using products of the projective line with 1 removed, taking 0 and ∞ as faces. Normalized cycles have zero restriction to each face except possibly the last ∞ face. Rotate the branch cuts used to define logarithms, choosing each positive angle smaller than exp(−1 divided by the preceding angle). Keep cycles meeting every initial collection of cuts in the expected dimension, including on faces, for every permitted rotation below a fixed first-angle bound.
+**Definition.** A normalized cycle on products of ℙ¹ minus 1 has zero restriction to every face except possibly the last ∞ face. Li also requires the cycles to meet the branch cuts of logarithms properly, for every small rotation of the cuts. The rotation angles may be chosen independently, each smaller than exp(−1 divided by the preceding angle).
 
-**Problem.** For a smooth quasi-projective variety over a subfield of ℂ, Li constructs an integral regulator, a map from higher Chow groups to Deligne cohomology. This target combines integral topological classes with differential forms.
+**Problem.** For a smooth quasi-projective variety over a subfield of ℂ, these cycles give Li's integral regulator, a map from higher Chow groups to Deligne cohomology.
 
-**How the definition helps.** Normalization leaves just one boundary face, so taking the boundary drops only the last rotation angle. Our own explanation is that the same shorter list then works throughout the boundary formula. Li exhibits a cycle over ℚ(i) for which rotating all cuts together never suffices. He proves that the independently perturbed complexes exhaust the normalized cycles as the angle bounds shrink. Compatibility with boundaries and independence of the perturbations give the regulator.
+**How the definition helps.** Normalization leaves just one boundary face, so taking the boundary drops only the last rotation angle. In our own explanation, the same shorter list of angles then works throughout the boundary formula. Li gives a cycle over ℚ(i) for which rotating all cuts together never suffices. He proves that the independently rotated complexes exhaust the normalized cycles as the angle bounds shrink.
 
 **Paper or page:** [Integral Regulators for Higher Chow Complexes](https://arxiv.org/abs/1805.04646), [Integral Regulators for Higher Chow Complexes](https://arxiv.org/abs/1805.04646). It says: “is a morphism of complexes.”
 
@@ -2831,9 +2831,9 @@ $$”
 
 *Rules out counterexamples.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 4: research.
 
-**Definition.** Let C be a smooth projective integral curve over a perfect field. A nonzero effective divisor D marks finitely many closed points with positive multiplicities. On their complement U, form the free abelian group on closed points. Quotient by divisors of rational functions congruent to 1 along D, including to the indicated orders.
+**Definition.** Let C be a smooth projective curve over a perfect field and D a nonzero effective divisor on C. The Chow group of zero-cycles with modulus D is the group of zero-cycles on C − D modulo the divisors of rational functions f ≡ 1 modulo D.
 
-**Problem.** When each multiplicity is one, this group equals the zeroth Suslin homology of U. Suslin homology uses algebraic families over simplices to define boundaries. The equality can fail when a multiplicity exceeds one.
+**Problem.** If every multiplicity of D is one, this group equals the zeroth Suslin homology of C − D. The equality can fail when a multiplicity exceeds one.
 
 **How the definition helps.** With multiplicity one, the modulus tests only the values at the missing points, exactly the boundary condition in Suslin’s curve calculation. Our own example doubles the point at infinity on the projective line over ℚ. Requiring a function to equal one through first order leaves an extra additive copy of ℚ in the modulus group. The affine line has zeroth Suslin homology ℤ because Suslin homology is invariant under products with the affine line.
 
@@ -2868,7 +2868,7 @@ $$”
 
 *True by definition.* MSC 14D07 (Variation of Hodge structures (algebro-geometric aspects)), 33B30. arXiv math.AG. Level 4: research.
 
-**Definition.** On the sphere minus 0, 1 and ∞, start at 0 in the direction of 1. Use counterclockwise loops a around 0 and b around 1, approaching 1 along the real interval. In the rational loop algebra, J consists of sums whose coefficients add to zero. In the completed algebra, impose a − 1, J(b − 1) and the nth power of J as right ideal relations.
+**Definition.** The polylogarithm quotient is a quotient of the completed rational group algebra of loops on the sphere minus 0, 1 and ∞, based at 0 in the direction of 1. Let a and b be counterclockwise loops around 0 and 1, and let J be the ideal of sums whose coefficients add to zero. Divide by the right ideal generated by a − 1, J(b − 1) and the nth power of J.
 
 **Problem.** In this quotient, right multiplication by a fixes the class of 1. Right multiplication by b − 1 has rank at most one and square zero.
 
@@ -2906,9 +2906,9 @@ $$”
 
 **Definition.** A map π from an algebraic stack 𝒳 to an algebraic space X is a good moduli space if three things hold. π is quasi-compact, pushforward along π is exact on quasi-coherent sheaves, and π⁎𝒪 = 𝒪ₓ. Exactness of pushforward is called cohomological affineness. It holds, for example, for the quotient of an affine scheme by a linearly reductive group, where pushforward takes invariants.
 
-**Problem.** Geometric invariant theory (GIT) shows that good quotients are surjective, universally closed, match closed orbits with points, and are universal. One wants these properties for moduli stacks that are not given as global quotients.
+**Problem.** Let π : 𝒳 → X be a good moduli space with X quasi-separated. Then π is surjective and universally closed, and it gives a bijection between the closed points of 𝒳 and of X. If 𝒳 is Noetherian, π is also universal for maps to algebraic spaces.
 
-**How the definition helps.** The definition keeps only the two properties that the GIT proofs use: invariants are exact, and functions downstairs are the invariant functions (our own reading). From these, the quoted theorem derives surjectivity, universal closedness, the bijection of closed points, and, in the Noetherian case, the universal property. For example (our own), the quotient of the affine line by the multiplicative group acting by scaling has a point as its good moduli space. Its two orbits, {0} and the rest, both map to that point, because their closures meet. What stays hard is to prove that a given stack has a good moduli space (our own).
+**How the definition helps.** The definition keeps only the two properties that the GIT proofs use: invariants are exact, and functions downstairs are the invariant functions (our own reading). For example (our own), the quotient of the affine line by scaling has a point as its good moduli space. Its two orbits, {0} and the rest, both map to that point, because their closures meet. What stays hard is to prove that a given stack has a good moduli space (our own).
 
 **Paper or page:** [J. Alper, Stacks and Moduli, Theorem 2.9 (good moduli spaces)](https://sites.math.washington.edu//~jarod/moduli.pdf). It says: “If π : 𝒳 → X is a good moduli space with X quasi-separated, then (1) π is surjective and universally closed; … In particular, π induces a bijection between closed points in 𝒳 and closed points in X”
 
@@ -2925,9 +2925,9 @@ $$”
 
 **Definition.** A groupoid is a category in which every arrow is invertible. An involution is a map whose square is the identity. A fixed object of the involution σ is an object x with an isomorphism φ from x to σ(x) such that σ(φ)∘φ is the identity.
 
-**Problem.** Let 𝒳 be a separated Deligne–Mumford stack of finite type over ℝ, a moduli space whose points may have finite automorphism groups. Complex conjugation gives an involution of its complex groupoid. The isomorphism classes of fixed objects, with the quotient topology, are homeomorphic to the real points of 𝒳 with the real analytic topology.
+**Problem.** Let 𝒳 be a separated Deligne–Mumford stack of finite type over ℝ, and let complex conjugation act on its complex groupoid. Then the isomorphism classes of fixed objects, with the quotient topology, are homeomorphic to the real points of 𝒳 with the real analytic topology.
 
-**How the definition helps.** The fixed groupoid keeps the isomorphism φ, and this is exactly the data needed to descend an object from ℂ to ℝ. Our own example is the classifying stack of the group with two elements. Over ℂ it has one point up to isomorphism. Over ℝ it has two real points, the trivial and the nontrivial double cover. The naive fixed set of the one-point space sees only one of them. The hard part is the comparison of topologies.
+**How the definition helps.** The fixed groupoid keeps the isomorphism φ, and this is exactly the data needed to descend an object from ℂ to ℝ. Our own example is the classifying stack of the group with two elements. Over ℂ it has one point up to isomorphism, but over ℝ it has two real points, and the naive fixed set sees only one. The hard part is the comparison of topologies.
 
 **Paper or page:** [Topological groupoids with involution and real algebraic stacks](https://arxiv.org/abs/2504.02760v2), [Topological groupoids with involution and real algebraic stacks](https://arxiv.org/abs/2504.02760v2). It says: “We prove that when the topological groupoid with involution arises from a Deligne-Mumford stack over ℝ, this fixed locus coincides with the real locus of the stack.”
 
@@ -2943,9 +2943,9 @@ $$”
 
 **Definition.** A Noetherian algebraic stack is regular when it has a smooth cover by a regular scheme. A perfect complex is one that is locally a finite complex of vector bundles. The test compares perfect complexes with complexes whose cohomology is bounded and coherent.
 
-**Problem.** Serre showed that a Noetherian local ring is regular exactly when every finitely generated module has a finite free resolution. Does the same test describe regular algebraic stacks?
+**Problem.** A decent, quasi-compact, locally Noetherian algebraic stack is regular exactly when every complex with bounded coherent cohomology is perfect. This is Serre's regularity theorem moved from local rings to stacks.
 
-**How the definition helps.** With the derived test, a statement about perfect complexes is a statement about regularity, with no cover to choose. The paper proves that the cover definition and the derived test agree for decent, quasi-compact, locally Noetherian stacks. This is Serre's theorem moved to stacks, and the work moves into this comparison. With it, the authors prove stacky forms of conjectures of Antieau–Gepner–Heller and Bondal–Van den Bergh, which Neeman proved for schemes. Those forms still need extra hypotheses, such as finite Krull dimension and conditions on the diagonal.
+**How the definition helps.** With the derived test, a statement about perfect complexes is a statement about regularity, with no cover to choose. The work moves into the comparison of the cover definition with the derived test. With it, the authors prove stacky forms of conjectures of Antieau–Gepner–Heller and Bondal–Van den Bergh, which Neeman proved for schemes. Those forms still need extra hypotheses, such as finite Krull dimension.
 
 **Paper or page:** [Regularity and bounded t-structures for algebraic stacks](https://arxiv.org/abs/2504.02813v1). It says: “such a stack is regular if and only if all complexes with bounded and coherent cohomology are perfect. This naturally enables us to extend various statements known for schemes to algebraic stacks.”
 
@@ -2961,9 +2961,9 @@ $$”
 
 **Definition.** A semistable vector bundle on a curve has a Jordan–Hölder filtration whose quotients are stable bundles of the same slope. Two semistable bundles are S-equivalent when the direct sums of these quotients are isomorphic. Zhang extends the notion to points of any algebraic stack.
 
-**Problem.** The moduli space of semistable bundles has fewer points than there are isomorphism classes of bundles. Which bundles go to the same point?
+**Problem.** Two semistable bundles on a curve give the same point of the moduli space exactly when they are S-equivalent. Zhang proves the same for points of a locally reductive stack of finite type with an adequate moduli space.
 
-**How the definition helps.** S-equivalence groups bundles by the same rule that the moduli space uses, so the points of the moduli space become a clean statement. A non-split extension of two stable bundles of the same slope degenerates to their direct sum (our own). So a separated moduli space must give both one point (our own). With S-equivalence, the points of the moduli space are exactly the S-equivalence classes. Zhang defines S-equivalence for points of any algebraic stack, and proves the matching for locally reductive stacks of finite type with an adequate moduli space. He recovers the classical rule for bundles as a corollary and relates the notion to separatedness of the moduli space. The work moves into showing that the stacky definition matches the identification made by the moduli space.
+**How the definition helps.** S-equivalence groups bundles by the same rule that the moduli space uses. A non-split extension of two stable bundles of the same slope degenerates to their direct sum (our own). So a separated moduli space must give both one point (our own). The work moves into showing that the stacky definition matches the identification made by the moduli space.
 
 **Paper or page:** [S-equivalence for algebraic stacks](https://arxiv.org/abs/2411.04053v1). It says: “Two semistable vector bundles are identified in the adequate moduli space if and only if they are S-equivalent.”
 
@@ -2980,9 +2980,9 @@ $$”
 
 **Definition.** Arinkin and Gaitsgory change one side of the conjecture. They replace quasi-coherent sheaves on the stack Loc of ᴸG-local systems by ind-coherent sheaves whose singular support lies in the global nilpotent cone. Here ᴸG is the Langlands dual group, and the singular support of an ind-coherent sheaf measures how far it is from being quasi-coherent. The new category is slightly larger, and it is defined inside stable ∞-categories.
 
-**Problem.** The geometric Langlands conjecture, now a theorem, asks for an equivalence between two categories. One is sheaves on the moduli stack of ᴸG-local systems on a curve Σ. The other is D-modules (sheaves with an action of differential operators) on the moduli stack BunG(Σ) of G-bundles.
+**Problem.** For a reductive group G and a smooth projective curve Σ, D-modules on BunG(Σ) are equivalent to ind-coherent sheaves on the stack of ᴸG-local systems with nilpotent singular support. This is the geometric Langlands theorem.
 
-**How the definition helps.** The definition does not make the theorem easy; it makes the statement true. The original form, with plain quasi-coherent sheaves, is false. V. Lafforgue's computations (2009) show that it fails for G = SL₂ and Σ = ℙ¹. The refined category with nilpotent singular support is designed to remove this failure. With it, the conjecture can again be stated as an equivalence. Gaitsgory, Raskin and coauthors gave a proof in 2024–2025 in a series of long papers, and the real work is there.
+**How the definition helps.** The definition does not make the theorem easy; it makes the statement true. The original form, with plain quasi-coherent sheaves, is false. V. Lafforgue's computations (2009) show that it fails for G = SL₂ and Σ = ℙ¹. Gaitsgory, Raskin and coauthors gave a proof in 2024–2025 in a series of long papers, and the real work is there.
 
 **nLab:** [geometric Langlands correspondence](https://ncatlab.org/nlab/show/geometric+Langlands+correspondence). It says: “A refined formulation of the conjecture due to Arinkin &amp; Gaitsgory 12, meant to fix this failure, replaces plain quasicoherent sheaves with certain "nilpotent" ind-objects of quasicoherent sheaves”
 
@@ -2999,9 +2999,9 @@ $$”
 
 **Definition.** A weighted blow-up gives the coordinates different weights. It replaces the centre by a weighted projective space, so the result is a smooth Artin stack rather than a variety. A multi-weighted blow-up uses several weight vectors at once, in the style of toric geometry.
 
-**Problem.** Resolution of singularities in characteristic zero: make a singular subvariety of a smooth variety smooth by a sequence of blow-ups. In the logarithmic version, the singular locus must also become a simple normal crossings divisor.
+**Problem.** In characteristic zero, a sequence of multi-weighted blow-ups resolves a subvariety of a smooth variety, so that the singular locus becomes a simple normal crossings divisor. Each blow-up improves the singularity, so no record of earlier steps is needed.
 
-**How the definition helps.** Weights let the blow-up match the shape of the singularity, so one step already makes it better. With classical blow-ups, blowing up the worst locus need not improve the singularity (our own). So classical algorithms keep a record of earlier steps (our own). Abramovich, Temkin and Włodarczyk used weighted blow-ups to get an algorithm without such records for embedded resolution. Abramovich and Quek extend this to logarithmic resolution with multi-weighted blow-ups. At the end the singular locus becomes a simple normal crossings divisor. The price is that the ambient spaces are smooth Artin stacks, not varieties.
+**How the definition helps.** Weights let the blow-up match the shape of the singularity, so one step already makes it better. With classical blow-ups, blowing up the worst locus need not improve the singularity, so classical algorithms keep a record of earlier steps (our own). Abramovich, Temkin and Włodarczyk did this with weighted blow-ups for embedded resolution, and Abramovich and Quek extend it to logarithmic resolution. The price is that the ambient spaces are smooth Artin stacks, not varieties.
 
 **Paper or page:** [Logarithmic resolution via multi-weighted blow-ups](https://arxiv.org/abs/2112.06361v3). It says: “at each step we always blow up the worst singular locus of Xᵢ, and witness on Xᵢ₊₁ an immediate improvement in singularities”
 
@@ -3018,9 +3018,9 @@ $$”
 
 **Definition.** A pair is a normal variety X with an effective divisor Δ such that the canonical divisor plus Δ is ℝ-Cartier. A log canonical center is the image of a divisor whose discrepancy is −1, the worst value that log canonical singularities allow. A generalized pair adds to the boundary a second part M, the moduli part, which comes from a nef divisor on some birational model.
 
-**Problem.** Adjunction restricts the canonical divisor plus Δ to a subvariety W. It asks whether the pair is log canonical near W exactly when the restricted pair is log canonical. This is classical when W is a divisor.
+**Problem.** Let W be a log canonical center of a pair (X, Δ), of any codimension, with normalization Z. Then (X, Δ) is log canonical near W exactly when the induced generalized pair on Z is generalized log canonical (Fujino–Hashizume).
 
-**How the definition helps.** The extra nef part absorbs what the restriction leaves over, so an adjunction formula always exists. Let Z be the normalization of W. Fujino and Hashizume write the pullback of the canonical divisor plus Δ to Z as a sum. It is the canonical divisor of Z plus a boundary B plus a moduli part M. They prove that the pair is log canonical near W exactly when the generalized pair on Z is generalized log canonical. In codimension two, the moduli part is semi-ample, so an ordinary boundary exists. Semi-ampleness in higher codimension is not claimed.
+**How the definition helps.** The extra nef part absorbs what the restriction leaves over, so an adjunction formula always exists. Fujino and Hashizume write the pullback of K<sub>X</sub> + Δ to Z as the canonical divisor of Z plus a boundary B plus a moduli part M. In codimension two, the moduli part is semi-ample, so an ordinary boundary exists. Adjunction is classical when W is a divisor.
 
 **Paper or page:** [Adjunction and inversion of adjunction](https://arxiv.org/abs/2105.14531v2), [Adjunction and inversion of adjunction](https://arxiv.org/abs/2105.14531v2). It says: “We establish adjunction and inversion of adjunction for log canonical centers of arbitrary codimension in full generality.”
 
@@ -3036,9 +3036,9 @@ $$”
 
 **Definition.** A reflexive sheaf is a coherent sheaf that equals its double dual. Take an open embedding of a normal surface X into a normal surface whose complement is a finite set of points. X is codim-2-saturated when every such embedding is an isomorphism.
 
-**Problem.** Can a normal surface be recovered from its category of reflexive sheaves?
+**Problem.** Every normal surface has a canonical codim-2-saturated model. This model can be rebuilt from the category of reflexive sheaves on the surface.
 
-**How the definition helps.** Reflexive sheaves cannot see finitely many points, so the definition excludes exactly the surfaces that differ by such points. In our own example, the affine plane and the affine plane without the origin have equivalent categories of reflexive sheaves. The reason is that restriction to an open set with finite complement is an equivalence of categories of reflexive sheaves, as a data-set proposition states. So no reconstruction theorem can hold for all normal surfaces. The paper shows that every normal surface has a canonical codim-2-saturated model, and it rebuilds that model from the category. Surfaces that are proper over their affinisation are codim-2-saturated, but the converse fails. The hard part is categorical: the paper shows that the category is quasi-abelian and introduces weakly localising Serre subcategories.
+**How the definition helps.** Reflexive sheaves cannot see finitely many points, so the definition excludes exactly the surfaces that differ by such points. In our own example, the affine plane and the affine plane without the origin have equivalent categories of reflexive sheaves. So no reconstruction theorem can hold for all normal surfaces. The hard part is categorical: the paper shows that the category is quasi-abelian and introduces weakly localising Serre subcategories.
 
 **Paper or page:** [Reconstruction of a surface from the category of reflexive sheaves](https://arxiv.org/abs/2302.04635v3). It says: “We reconstruct the codim-2-saturated model of a normal surface X from the additive category of reflexive sheaves on X.”
 
@@ -3052,9 +3052,9 @@ $$”
 
 *True by definition.* MSC 14F06 (Sheaves in algebraic geometry), 32C35. arXiv math.AG. Level 4: research.
 
-**Definition.** A coherent sheaf describes locally presented modules of sections. Its dual consists of local linear maps into functions. A sheaf is reflexive when the natural map to its double dual is an isomorphism. The reflexive pullback takes the double dual after ordinary pullback.
+**Definition.** A coherent sheaf is reflexive when the natural map to its double dual is an isomorphism. The reflexive pullback of a sheaf is the double dual of its ordinary pullback.
 
-**Problem.** For a proper birational morphism between normal varieties, pushing forward the reflexive pullback of a coherent reflexive sheaf recovers that sheaf. Birational means the map identifies dense open subsets. Normal means the local rings are integrally closed domains.
+**Problem.** Let f be a proper birational morphism between normal varieties and F a reflexive coherent sheaf on the target. Then the pushforward along f of the reflexive pullback of F is F.
 
 **How the definition helps.** Taking the double dual removes sections supported entirely over the exceptional set, where the map fails to be an isomorphism. In our own proof, pullback gives a map from original sections to sections upstairs. Conversely, every section upstairs restricts to a section downstairs away from a subset of codimension at least two. Reflexive sections on a normal variety extend uniquely across such subsets. That extension theorem gives the inverse, since a section of the double dual is determined on a dense open set.
 
@@ -3072,7 +3072,7 @@ $$”
 
 **Definition.** Let X be a family over Spec R, where R is a regular ring with fraction field K. The generic fiber is the fiber over K. The Serre quotient of an abelian category by a Serre subcategory makes the objects of that subcategory zero. Here one divides the coherent sheaves on X by the R-torsion sheaves, which vanish on the generic fiber.
 
-**Problem.** Take a smooth separated family over a regular affine base. The paper proves that coherent sheaves on the generic fiber are those on X modulo R-torsion sheaves. As an application, it proves that derived equivalence of generic fibers spreads to an open set of the base.
+**Problem.** Let X be a smooth separated family over a regular affine base Spec R. Then coherent sheaves on the generic fiber are equivalent to coherent sheaves on X modulo the R-torsion sheaves.
 
 **How the definition helps.** The quotient describes sheaves on the generic fiber using only sheaves on the whole family. So a statement about the generic fiber can be moved to the family and then to an open set of the base. The paper uses this to prove that derived-equivalent generic fibers give derived-equivalent closed fibers over an open set (Corollary 6.9). Our own explanation is that torsion sheaves are supported over a proper closed subset of the base, so they miss the generic point.
 
@@ -3090,9 +3090,9 @@ $$”
 
 **Definition.** Let X be a presheaf or a stack on affine schemes. QC(X) is the limit of the categories Mod(R) over all maps Spec R → X. So a quasicoherent sheaf gives an R-module for each such map. These modules come with compatible isomorphisms under base change (tensor product along ring maps).
 
-**Problem.** Define quasicoherent sheaves on objects that are not ringed spaces, such as stacks, ind-schemes and derived stacks. The definition should agree with the classical one on schemes.
+**Problem.** This definition of QC(X) makes sense for any presheaf or stack, including ind-schemes and derived stacks. For a scheme, it agrees with the classical category of quasicoherent sheaves.
 
-**How the definition helps.** The functor-of-points definition needs only maps from affine schemes, so it applies to any presheaf or stack. The classical definition needs a ringed space. Every ingredient (sheaf, stack, limit of categories) has a higher-categorical version. So the same definition gives derived quasicoherent sheaves. The real content is in descent theorems. They show that this limit agrees with the classical category on schemes, and that it behaves well for flat covers of stacks, as Hollander proves.
+**How the definition helps.** The functor-of-points definition needs only maps from affine schemes, so it applies to any presheaf or stack. Every ingredient has a higher-categorical version, so the same definition gives derived quasicoherent sheaves. The real content is in descent theorems. They show that the limit agrees with the classical category on schemes and behaves well for flat covers of stacks, as Hollander proves.
 
 **nLab:** [quasicoherent sheaf](https://ncatlab.org/nlab/show/quasicoherent+sheaf). It says: “all notions involved, sheaf, stack, morphism of stacks, have natural, immediate and well understood generalizations to higher category theory.”
 
@@ -3108,9 +3108,9 @@ $$”
 
 **Definition.** An admissible subcategory of a triangulated category is a full subcategory whose inclusion functor has both adjoints. A categorical absorption of singularities of a variety X splits its derived category into two pieces. A small admissible piece carries the singularity, and the rest is smooth and proper as a category.
 
-**Problem.** A projective variety with ordinary double points can be the special fibre of a family whose other fibres are smooth. Which part of its derived category deforms to the smooth fibres?
+**Problem.** Under suitable assumptions, a projective variety with isolated ordinary double points has a categorical absorption of singularities. Then for any smoothing over a smooth curve, the smooth part extends to a smooth and proper family of subcategories of the fibres (Kuznetsov–Shinder).
 
-**How the definition helps.** Once the singular part is split off, the rest is smooth and proper, and such categories behave well in families (our own). Kuznetsov and Shinder construct absorptions for projective varieties with isolated ordinary double points, under suitable assumptions. For any smoothing over a smooth curve, the smooth part extends to a smooth and proper family of subcategories of the fibres. So a part of the derived category of the smooth fibres can be studied on the singular fibre (our own). The construction of absorptions for other singularities is not covered.
+**How the definition helps.** Once the singular part is split off, the rest is smooth and proper, and such categories behave well in families (our own). So a part of the derived category of the smooth fibres can be studied on the singular fibre (our own).
 
 **Paper or page:** [Categorical absorptions of singularities and degenerations](https://arxiv.org/abs/2207.06477v5). It says: “We introduce the notion of categorical absorption of singularities: an operation that removes from the derived category of a singular variety a small admissible subcategory responsible for singularity and leaves a smooth and proper category.”
 
@@ -3128,7 +3128,7 @@ $$”
 
 **Problem.** Bridgeland's deformation theorem, in the form with the support property, says the following. Every small change of the central charge lifts to a nearby stability condition. So the space of such stability conditions is a complex manifold.
 
-**How the definition helps.** The support property keeps the charges of semistable objects away from 0, so a small change of Z cannot make a semistable object's charge vanish. Without such a bound, charges of semistable classes can approach 0, and a small deformation could break the stability condition (our own). Bridgeland's own version, for locally finite conditions, lifts only changes inside a linear subspace (our own). So the support property is the standard condition under which the full deformation theorem holds. Kawatani uses a weaker deformation property from Bridgeland's paper to build a continuous family of glued stability conditions. He then shows that each member of the family satisfies the support property, by specialization. Checking the support property for a given condition is still the hard part.
+**How the definition helps.** The support property keeps the charges of semistable objects away from 0, so a small change of Z cannot make a semistable object's charge vanish. Without such a bound, charges of semistable classes can approach 0, and a small deformation could break the stability condition (our own). Bridgeland's own version, for locally finite conditions, lifts only changes inside a linear subspace (our own). Checking the support property for a given condition is still the hard part.
 
 **Paper or page:** [On a deformation of gluing stability conditions](https://arxiv.org/abs/2107.13367v2). It says: “Here the deformation property is weaker than the support property which is the standard solution for the continuousness.”
 
@@ -3145,9 +3145,9 @@ $$”
 
 **Definition.** Let X be a smooth scheme over a field k, with sheaf of functions O. The sheaf of crystalline differential operators is generated over O by the vector fields. Its only relations are v₁v₂ − v₂v₁ = \[v₁, v₂\] and v·f − f·v = v(f), for vector fields v, v₁, v₂ and functions f. It is the enveloping algebra of the tangent Lie algebroid.
 
-**Problem.** A D-module is a module over a ring D of differential operators. In positive characteristic, one wants D-modules to be the same thing as O-modules with an integrable (flat) connection. This fails for Grothendieck's full ring of differential operators.
+**Problem.** On a smooth scheme over a field of any characteristic, modules over crystalline differential operators are exactly the O-modules with a flat connection. For Grothendieck's full ring of differential operators this fails in characteristic p.
 
-**How the definition helps.** The crystalline ring has only the generators and relations that a flat connection uses, so its modules are flat connections by definition. Grothendieck's ring of differential operators in characteristic p contains divided powers such as (1/p!)(d/dt)ᵖ. So its modules carry more than a connection, and an O-coherent module is never D-coherent. A module over the crystalline ring, in contrast, is by definition an O-module with a flat connection. The price is that the ring has a large center and new phenomena such as p-curvature (the failure of the operator of the p-th power of a vector field to equal the p-th power of its operator). Bezrukavnikov, Mirković and Rumynin show that the ring is an Azumaya algebra over its center, that is, locally in the étale topology a matrix algebra over the center.
+**How the definition helps.** The crystalline ring has only the generators and relations that a flat connection uses, so its modules are flat connections by definition. Grothendieck's ring in characteristic p contains divided powers such as (1/p!)(d/dt)ᵖ, so its modules carry more than a connection. The price is that the crystalline ring has a large center and p-curvature. Bezrukavnikov, Mirković and Rumynin show that it is an Azumaya algebra over its center.
 
 **nLab:** [D-module](https://ncatlab.org/nlab/show/D-module), [crystalline differential operator](https://ncatlab.org/nlab/show/crystalline+differential+operator). It says: “In contrast, modules over the ring of crystalline differential operators are tautologically O<sub>X</sub>-modules equipped with an integrable connection.”
 
@@ -3183,7 +3183,7 @@ $$”
 
 **Problem.** Let X be smooth and geometrically connected over a field k of characteristic p. Suppose degree identifies zeroth Suslin homology with ℤ over every finitely generated extension of k. Then for each i, the curve-tame unramified classes of degree i + 1 with coefficients ℤ/p(i) all come from k.
 
-**How the definition helps.** The tame subgroup excludes classes that are wildly ramified at infinity, so the theorem needs no properness. Our own example is the affine line over k, which satisfies the Suslin hypothesis. The Artin–Schreier class of the cover yᵖ − y = t is unramified on the whole line. It is wildly ramified at infinity and does not come from k. So the theorem fails without tameness. The proof rests on a pairing between Suslin homology and this cohomology, Theorem 5.2 of the paper.
+**How the definition helps.** The tame subgroup excludes classes that are wildly ramified at infinity, so the theorem needs no properness. Our own example is the affine line over k, which satisfies the Suslin hypothesis. The Artin–Schreier class of yᵖ − y = t is unramified on the line but wildly ramified at infinity, and it does not come from k. The proof rests on a pairing between Suslin homology and this cohomology (Theorem 5.2).
 
 **Paper or page:** [On the mod p unramified cohomology of varieties having universally trivial Chow group of zero-cycles](https://arxiv.org/abs/2010.03808v3), [On the mod p unramified cohomology of varieties having universally trivial Chow group of zero-cycles](https://arxiv.org/abs/2010.03808v3). It says: “We also see that the properness assumption on the variety X can be dropped off by using the Suslin homology together with a certain tame subgroup of the unramified cohomology group.”
 
@@ -3197,11 +3197,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14F06. arXiv math.AG. Level 4: research.
 
-**Definition.** Take a closed conical subset C of the cotangent bundle of a smooth scheme X. A sheaf is micro-supported on C when test maps transversal to C are locally acyclic for it. Beilinson proved that each constructible sheaf has a smallest such C, its singular support, and that it has the dimension of X. Abbes and Saito call any sheaf holonomic when it is micro-supported on some C of dimension at most dim X (our reading).
+**Definition.** Take a closed conical subset C of the cotangent bundle of a smooth scheme X. A sheaf is micro-supported on C when test maps transversal to C are locally acyclic for it. Abbes and Saito call a sheaf holonomic when it is micro-supported on some C of dimension at most dim X (our reading).
 
-**Problem.** Beilinson proved that constructible étale sheaves have small singular support, that is, they are holonomic. Is every holonomic sheaf constructible?
+**Problem.** Over a perfect field, every holonomic étale sheaf is constructible (Abbes–Saito). This is the converse of Beilinson's theorem that constructible sheaves have singular support of dimension dim X.
 
-**How the definition helps.** The definition does not assume constructibility, so the converse of Beilinson's theorem can be asked at all. Abbes and Saito prove the converse over a perfect field: holonomic étale sheaves are constructible. So a finiteness property follows from a dimension bound in the cotangent bundle. The paper presents this as an étale analogue of Kashiwara's theorem on holonomic D-modules. It also shows that pushforward and pullback keep holonomicity over a perfect field. The work moves into the converse theorem, which needs the perfect base field.
+**How the definition helps.** The definition does not assume constructibility, so the converse of Beilinson's theorem can be stated at all. So a finiteness property follows from a dimension bound in the cotangent bundle. The paper presents this as an étale analogue of Kashiwara's theorem on holonomic D-modules. It also shows that pushforward and pullback keep holonomicity over a perfect field.
 
 **Paper or page:** [Holonomic étale sheaves are constructible](https://arxiv.org/abs/2410.04677v1). It says: “we introduce the notion of holonomicity for étale sheaves, without assuming a priori constructibility. Over a perfect base field, we establish the converse of Beilinson's result, showing that holonomic sheaves are indeed constructible.”
 
@@ -3236,9 +3236,9 @@ $$”
 
 **Definition.** An object of a monoidal category is dualizable when it has a dual with evaluation and coevaluation maps that satisfy the triangle identities. Hemo, Richarz and Scholbach call a proétale sheaf lisse when it is dualizable. A sheaf is constructible when it is lisse on each piece of some stratification.
 
-**Problem.** Constructible ℓ-adic sheaves had several technical definitions, one for each kind of coefficient ring. Is there one definition that works for all coefficients, even topological or condensed rings?
+**Problem.** This single definition of lisse and constructible sheaves works for every coefficient ring, including topological and condensed rings. It reproduces and extends the older definitions of constructible ℓ-adic sheaves.
 
-**How the definition helps.** Dualizability makes sense for any coefficient ring, so one definition covers all cases. For a discrete ring, the lisse objects are exactly the complexes that are pro-étale locally constant with perfect values. The paper shows that its notions reproduce and extend the older approaches to constructible ℓ-adic sheaves. Sheaves that are constructible in this sense satisfy proétale descent. What stays delicate is the t-structure. For a ring Λ, the natural t-structure restricts to perfect complexes exactly when Λ is regular coherent.
+**How the definition helps.** Dualizability makes sense for any coefficient ring, so one definition covers all cases. For a discrete ring, the lisse objects are exactly the pro-étale locally constant complexes with perfect values. What stays delicate is the t-structure. For a ring Λ, the natural t-structure restricts to perfect complexes exactly when Λ is regular coherent.
 
 **Paper or page:** [Constructible sheaves on schemes](https://arxiv.org/abs/2305.18131v1). It says: “This is accomplished by defining lisse sheaves to be the dualizable objects in the derived infinity-category of proétale sheaves, while constructible sheaves are those that are lisse on a stratification.”
 
@@ -3252,11 +3252,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 03G30. arXiv math.AG, math.LO. Level 4: research.
 
-**Definition.** A ring R is separably closed if every monic, unramifiable polynomial p of positive degree has a simple root (a root r with p′(r) invertible). The definition states 'unramifiable' without field extensions. It says that 1 lies in the ideal generated by the non-constant coefficients of the hyperdiscriminant polynomial ∏(1 + p′(sᵢ)x), where the sᵢ are formal roots of p. A strict local ring is a separably closed local ring.
+**Definition.** A monic polynomial p is unramifiable when 1 lies in the ideal of the non-constant coefficients of ∏(1 + p′(sᵢ)x), where the sᵢ are the formal roots of p. A strict local ring is a local ring in which every unramifiable p of positive degree has a simple root, a root r with p′(r) invertible.
 
-**Problem.** Which theory does the étale topos of Spec ℤ classify? A topos classifies a theory when its points are the models of that theory.
+**Problem.** The étale topos of Spec ℤ classifies strict local rings. So its points are the strict Henselian local rings (Hakim, Wraith).
 
-**How the definition helps.** The new definition is geometric, and only a geometric theory can have a classifying topos. A geometric theory uses only finite conjunctions, arbitrary disjunctions and existential quantifiers. The usual definition of a strict Henselian ring speaks about field extensions, so it is not geometric. The nLab reformulates it. In a local ring, 'some tᵢ is invertible' is the same as '1 is in the ideal of the non-constant coefficients of ∏(1 + tᵢx)', and this gives a geometric notion of unramifiable polynomial. With this definition, the étale topos classifies strict local rings, and its points are the strict Henselian rings (Hakim, Wraith). The classification theorem itself is still the main work.
+**How the definition helps.** The new definition is geometric, and only a geometric theory can have a classifying topos. The usual definition of a strict Henselian ring speaks about field extensions, so it is not geometric. In a local ring, 'some tᵢ is invertible' is the same as '1 is in the ideal of the non-constant coefficients of ∏(1 + tᵢx)'. The classification theorem itself is still the main work.
 
 **nLab:** [strict local ring](https://ncatlab.org/nlab/show/strict+local+ring), [classifying topos](https://ncatlab.org/nlab/show/classifying+topos). It says: “We need to knead the definition of strict Henselian ring into being geometric.”
 
@@ -3273,9 +3273,9 @@ $$”
 
 **Definition.** The pro-étale site of a scheme X has the weakly étale X-schemes as objects. A map is weakly étale when it is flat and its diagonal is also flat. The coverings are fpqc covers (faithfully flat, quasi-compact covers). Pro-étale cohomology is sheaf cohomology on this site.
 
-**Problem.** Define ℓ-adic cohomology Hⁱ(X, ℚℓ) as the sheaf cohomology of an actual sheaf. The usual definition is instead an inverse limit of cohomology with ℤ/ℓⁿ coefficients.
+**Problem.** For a quasi-compact, quasi-separated scheme X, ℚℓ is an actual sheaf on the pro-étale site, and its sheaf cohomology Hⁱ(X, ℚℓ) is ℓ-adic cohomology. No limit over ℤ/ℓⁿ coefficients is needed.
 
-**How the definition helps.** On the pro-étale site, ℚℓ is an actual sheaf, so the definition of ℓ-adic cohomology needs no limit. On the étale site, ℚℓ is not a sheaf whose cohomology gives ℓ-adic cohomology. There one must take a limit of torsion coefficients and then invert ℓ. On the pro-étale site, the ordinary sheaf cohomology of ℚℓ is ℓ-adic cohomology, and one can work with ℓ-adic sheaves in the normal way. The work is in the theory of w-contractible rings (rings over which every faithfully flat weakly étale cover has a section). This theory shows that the site has enough objects on which limits are exact.
+**How the definition helps.** On the étale site, ℚℓ is not a sheaf whose cohomology gives ℓ-adic cohomology. There one must take a limit of torsion coefficients and then invert ℓ. The work is in the theory of w-contractible rings, over which every faithfully flat weakly étale cover has a section. This theory shows that the site has enough objects on which limits are exact.
 
 **nLab:** [pro-étale site](https://ncatlab.org/nlab/show/pro-%C3%A9tale+site), [ℓ-adic cohomology](https://ncatlab.org/nlab/show/%E2%84%93-adic+cohomology). It says: “This is rectified by passing to pro-étale cohomology.”
 
@@ -3310,9 +3310,9 @@ $$”
 
 **Definition.** A ℤ-constructible sheaf on a scheme U is an étale sheaf that is locally constant on each piece of a finite partition of U. Its stalks are finitely generated abelian groups. The Weil–étale complex is a modified étale cohomology complex built for special value formulas. Its Euler characteristic combines orders of finite cohomology groups with a regulator, the determinant of a natural pairing.
 
-**Problem.** Let U be a regular irreducible scheme of finite type over ℤ, of dimension one. By Theorem C, for a ℤ-constructible sheaf F on U, the leading coefficient of L(F, s) at zero is ± its Weil–étale Euler characteristic. The sign is −1 to the rank of the generic stalk, and a second Euler characteristic gives the order of vanishing.
+**Problem.** Let U be a regular irreducible scheme of finite type over ℤ, of dimension one, and F a ℤ-constructible sheaf on U. Then the leading coefficient of L(F, s) at s = 0 is ± the Weil–étale Euler characteristic of F (Theorem C).
 
-**How the definition helps.** The Euler characteristic is defined to combine group orders and regulators, so the special value formula becomes one equation. In our own words, classical formulas list these factors separately. For an affine arithmetic curve X, Corollary 7.5 gives ζ\*(0) = −hR/ω, a class-number-type formula. Here h is the order of the Chow group of zero-cycles, R a regulator and ω the number of roots of unity. In our own reading, packaging the factors in one complex lets them behave well in exact sequences. The work is to construct the complex and to prove that its Euler characteristic matches the leading coefficient.
+**How the definition helps.** The Euler characteristic is defined to combine group orders and regulators, so the special value formula becomes one equation. Classical formulas list these factors separately (our own words). For an affine arithmetic curve, Corollary 7.5 gives ζ\*(0) = −hR/ω, a class-number-type formula. The work is to construct the complex and to prove that its Euler characteristic matches the leading coefficient.
 
 **Paper or page:** [Special values of L-functions on regular arithmetic schemes of dimension 1](https://arxiv.org/abs/2108.00811v1). It says: “We then give a formula for the special value at s=0 of the L-function associated to any ℤ-constructible sheaf on U in terms of Euler characteristics of Weil-étale cohomology”
 
@@ -3349,7 +3349,7 @@ $$”
 
 **Problem.** Every overconvergent one-form in one variable over ℚₚ has an overconvergent primitive. Thus the first Monsky–Washnitzer cohomology of the affine line over 𝔽ₚ vanishes.
 
-**How the definition helps.** Extra radius pays for the denominators introduced by integration (our own proof). Dividing the coefficient of degree n − 1 by n increases its p-adic absolute value by at most n. Shrinking the convergence radius slightly absorbs that factor while keeping the radius greater than one. On the unit disc alone, take the series with coefficient pᵏ in degree p²ᵏ − 1 for k ≥ 1 and zero elsewhere. Those coefficients tend to zero, but integration gives coefficients p⁻ᵏ, which do not. This series therefore has no convergent primitive on the closed unit disc (our own example).
+**How the definition helps.** Extra radius pays for the denominators introduced by integration (our own proof). Dividing the coefficient of degree n − 1 by n raises its p-adic absolute value by at most a factor n, and shrinking the radius slightly absorbs that factor. On the closed unit disc alone, take the series with coefficient pᵏ in degree p²ᵏ − 1 for k ≥ 1 (our own example). Its coefficients tend to zero, but integration gives coefficients p⁻ᵏ, so it has no convergent primitive there.
 
 **nLab:** [Monsky-Washnitzer cohomology](https://ncatlab.org/nlab/show/Monsky-Washnitzer+cohomology). It says: “Monsky-Washnitzer cohomology is a cohomology theory for affine algebraic schemes over fields of positive characteristic.”
 
@@ -3363,9 +3363,9 @@ $$”
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a bounded prism (A, I), a base ring with a lift of the pth power map and a distinguished ideal. Derived rings retain higher relations in operations such as tensor product. For a derived A/I-algebra R, form the universal complete derived δ-ring over A receiving a map from R after reduction modulo I. Here δ records the correction between the chosen Frobenius lift and the pth power.
+**Definition.** Fix a bounded prism (A, I). The derived prismatic construction sends a derived A/I-algebra R to the universal complete derived δ-ring P over A with a map from R to P modulo I. A δ-structure records a lift of the p-th power map.
 
-**Problem.** The derived prismatic construction preserves pushouts, which join two algebras along a common algebra. Form the pushouts in the corresponding complete derived categories.
+**Problem.** The derived prismatic construction sends pushouts of derived A/I-algebras to pushouts of complete derived δ-rings over A.
 
 **How the definition helps.** The universal mapping property describes maps out of either construction by the same pair of compatible maps (our own proof). This gives the pushout formula directly. The comparison theorem identifies the result on p-complete animated algebras with Bhatt and Scholze’s derived prismatic cohomology. Animated algebras here are derived commutative rings modeled by simplicial commutative rings.
 
@@ -3403,7 +3403,7 @@ $$”
 
 **Problem.** The ordered integral on the loop aba⁻¹b⁻¹ equals one, although every ordinary integral of a closed one-form on that loop vanishes.
 
-**How the definition helps.** Keeping the order of two measurements detects a commutator that ordinary winding integrals miss (our own). Extend the ordered integral linearly to formal sums of based loops (our own). Chen’s product formula evaluates (a − 1)(b − 1) as the α-period on a times the β-period on b, giving one (our own). Reversing the factors gives zero, and all products of three loop differences give zero (our own). Modulo those triple products, the commutator minus one equals the difference of the two ordered products (our own). The integral depends only on the loop class because α and β are closed and their wedge vanishes on this complex curve (our own).
+**How the definition helps.** Keeping the order of two measurements detects a commutator that ordinary winding integrals miss (our own). Extended linearly, Chen's product formula gives one on (a − 1)(b − 1), and zero on (b − 1)(a − 1) and on all products of three loop differences (our own). Modulo those triple products, the commutator minus one equals the difference of the two ordered products (our own). The integral depends only on the loop class because α and β are closed and α ∧ β = 0 on a complex curve (our own).
 
 **Paper or page:** [Higher order modular forms and mixed Hodge theory](https://arxiv.org/abs/0909.0714). It says: “⟨∫ ω₁ … ωᵣ, ∏ᵢ₌₁ˢ (αᵢ − 1)⟩ = { ∏ᵢ₌₁ˢ ∫αⱼ ωⱼ if r = s; 0 if r &lt; s }.”
 
@@ -3439,7 +3439,7 @@ $$”
 
 **Problem.** The periods form a subring of the complex numbers that contains the rational numbers.
 
-**How the definition helps.** The allowed domains are closed under products and disjoint unions, so the ring property is nearly built into the definition. A product of two integrals is one integral over the product of the domains, by Fubini's theorem (our own). A sum is one integral over the two domains placed apart in a larger space (our own). Every rational number is the volume of a box, so it is a period (our own). What stays hard is the other direction: no natural constant, such as e, is yet proved not to be a period. The Kontsevich–Zagier conjecture, that all relations between periods come from the rules of calculus, is open.
+**How the definition helps.** The allowed domains are closed under products and disjoint unions, so the ring property is nearly built into the definition. A product of two integrals is one integral over the product of the domains, by Fubini's theorem (our own). A sum is one integral over the two domains placed apart, and every rational number is the volume of a box (our own). What stays hard is the other direction: no natural constant, such as e, is yet proved not to be a period.
 
 **Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “Sums and products of periods remain periods, so that the periods form a ring”
 
@@ -3476,7 +3476,7 @@ $$”
 
 **Definition.** An F-zip is a vector bundle with two filtrations whose graded pieces match after a Frobenius twist. Frobenius raises functions to the p-th power in characteristic p. A derived F-zip uses filtered complexes in place of filtered bundles. The Hodge–de Rham spectral sequence computes de Rham cohomology from the cohomology of the sheaves of differential forms.
 
-**Problem.** Every smooth proper morphism in characteristic p gives a derived F-zip. The paper proves that this derived F-zip is strong exactly when the Hodge–de Rham spectral sequence degenerates and the Hodge sheaves are locally free.
+**Problem.** Every smooth proper morphism in characteristic p gives a derived F-zip. This derived F-zip is strong exactly when the Hodge–de Rham spectral sequence degenerates and the Hodge sheaves are locally free.
 
 **How the definition helps.** The derived definition needs no degeneration, so the construction works for every smooth proper map. The classical F-zip of de Rham cohomology needs the Hodge–de Rham spectral sequence to degenerate. Some Enriques surfaces in characteristic 2 have a non-degenerate spectral sequence, so the classical theory does not apply to them. In our own words, filtered complexes keep the information that passing to cohomology loses. The cited theorem says exactly when the derived object reduces to a classical one.
 
@@ -3510,9 +3510,9 @@ $$”
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 4: research.
 
-**Definition.** Fix an integer k ≥ 1 and put n = ⌊(k − 1)/2⌋. Use the differential system obtained from the degree-k symmetric products of Kloosterman solutions and the square-root twist. Its period matrix records integrals of basis differential forms along basis cycles whose coefficients decay rapidly at infinity.
+**Definition.** The period matrix of the degree-k symmetric power of the Kloosterman differential system, with a square-root twist, records the integrals of basis differential forms over basis cycles. The cycles have coefficients that decay rapidly at infinity.
 
-**Problem.** The matrix with entries ∫₀∞ I₀(t)ᵇ K₀(t)ᵏ⁻ᵇ t²ʲ dt, for 0 ≤ b,j ≤ n, is invertible. Here I₀ and K₀ are the order-zero modified Bessel functions.
+**Problem.** For k ≥ 1 and n = ⌊(k − 1)/2⌋, the matrix with entries ∫₀∞ I₀(t)ᵇ K₀(t)ᵏ⁻ᵇ t²ʲ dt, for 0 ≤ b, j ≤ n, is invertible. Here I₀ and K₀ are the order-zero modified Bessel functions.
 
 **How the definition helps.** Writing the integrals as a period matrix reduces invertibility to a perfect pairing, one that detects every nonzero vector on either side. Corollary 26 identifies the Bessel matrix with this matrix up to nonzero row and column factors. In our own argument, these factors preserve invertibility. Finding the bases and computing the integrals supply the substantive comparison.
 
@@ -3730,11 +3730,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14M17. arXiv math.AG, math.AT. Level 4: research.
 
-**Definition.** The quadric Q₂ₙ is the scheme over ℤ given by x₁y₁ + … + xₙyₙ = z(1−z). It has the 𝔸¹-homotopy type of a motivic sphere, a sphere in the homotopy theory of algebraic varieties. The paper shows it is a homogeneous space for the group SO₂ₙ₊₁ over ℤ.
+**Definition.** The quadric Q₂ₙ is the scheme over ℤ given by x₁y₁ + … + xₙyₙ = z(1 − z). It has the 𝔸¹-homotopy type of a motivic sphere, a sphere in the homotopy theory of algebraic varieties, and it is smooth over ℤ.
 
-**Problem.** Affine representability says that 𝔸¹-homotopy classes of maps from smooth affine schemes into a space are naive homotopy classes. Can one prove this for motivic spheres in every characteristic, including 2?
+**Problem.** Over every field, including fields of characteristic 2, Q₂ₙ satisfies affine representability (Theorem 2). That is, 𝔸¹-homotopy classes of maps from a smooth affine scheme into Q₂ₙ are naive homotopy classes.
 
-**How the definition helps.** One equation over ℤ gives a single model of the sphere that works in every characteristic. The paper shows that Q₂ₙ is a homogeneous space for SO₂ₙ₊₁ over ℤ. That gives affine representability for Q₂ₙ over any field (Theorem 2). Our own explanation is that the usual sphere, a sum of squares equal to 1, is not smooth in characteristic 2. Q₂ₙ is smooth over ℤ.
+**How the definition helps.** One equation over ℤ gives a single model of the sphere that works in every characteristic. The paper shows that Q₂ₙ is a homogeneous space for SO₂ₙ₊₁ over ℤ, and this gives affine representability. In our own explanation, the usual sphere, a sum of squares equal to 1, is not smooth in characteristic 2.
 
 **Paper or page:** [Affine representability of quadrics revisited](https://arxiv.org/abs/2104.08208v2). It says: “the identification as a homogeneous space allows us to give a characteristic independent affine representability statement for motivic spheres.”
 
@@ -3766,7 +3766,7 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14F20. arXiv math.AG. Level 4: research.
 
-**Definition.** Let X be smooth of pure dimension over a perfect field and let m be positive and invertible there. In weight n ≥ 0, compute étale cohomology modulo m on each ordinary open set, allowing unramified flat covers of finite presentation. The resulting complex of sheaves has two complementary truncations. One retains cohomology sheaves through degree n, and the other retains those above n.
+**Definition.** Let X be smooth over a perfect field and let m be invertible there. Push étale cohomology modulo m in weight n forward to a complex of Zariski sheaves on X. Cut this complex into its part through degree n and its part above degree n.
 
 **Problem.** The map from mod-m motivic cohomology to étale motivic cohomology fits into a long exact sequence. After étale motivic cohomology in degree i comes refined unramified cohomology in degree i and index i − n − 1. The next term is motivic cohomology in degree i + 1.
 
@@ -3785,7 +3785,7 @@ $$”
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 4: research.
 
-**Definition.** Let X be smooth over a field and let ℓ be a prime different from its characteristic. Étale cohomology allows covers by algebraic local isomorphisms. For weight j ≥ 0, use the j-fold tensor power of the ℓ-th roots of unity, starting with ℤ/ℓ. On ordinary open sets, truncate the resulting étale cohomology complex by keeping its cohomology sheaves only through degree j.
+**Definition.** Let X be smooth over a field and ℓ a prime different from its characteristic. Push étale cohomology with coefficients in the j-th tensor power of the ℓ-th roots of unity forward to a complex of Zariski sheaves on X. Truncate it by keeping its cohomology sheaves only through degree j.
 
 **Problem.** For j ≥ 0 the cycle map from motivic to étale cohomology is an isomorphism through degree j and injective in degree j + 1.
 
@@ -3841,7 +3841,7 @@ $$”
 
 **Definition.** Let K be the function field of a curve over a p-adic field. An adelic point of a variety Z is a family of points over all completions of K, integral at almost all places. Strong approximation away from a set S of places asks that rational points be dense in the adelic points without their S components. The reciprocity obstruction pairs adelic points with unramified degree-three cohomology classes of Z with coefficients ℚ/ℤ(2).
 
-**Problem.** Let Z = E/T, where T is a torus and E is a split, semisimple, simply connected group of the paper’s special kind. Fix a nonempty finite set S of places. Theorem 1.3 says the closure of Z(K) in the adelic points away from S is exactly the set of points that pass the reciprocity test.
+**Problem.** Let Z = E/T, where T is a torus in a split, semisimple, simply connected group E of the paper's special kind. For a nonempty finite set S of places, the closure of Z(K) in the adelic points away from S is exactly the set that passes the reciprocity test.
 
 **How the definition helps.** Defining the obstruction turns the claim that nothing else obstructs into a precise exact sequence of pointed sets. The paper first builds varieties on which strong approximation fails, so some obstruction is needed. The reciprocity obstruction accounts for that failure. The hard direction shows that it is the only obstruction for those varieties and for classifying varieties of tori.
 
@@ -3859,9 +3859,9 @@ $$”
 
 **Definition.** A rigid space is an analytic space over a non-archimedean field, such as the p-adic numbers. A Zariski-closed subset is one cut out by analytic equations. An étale sheaf is Zariski-constructible when it is locally constant on each piece of a locally finite stratification by such sets.
 
-**Problem.** On schemes, constructible sheaves are kept by Grothendieck's six operations, and perverse sheaves exist. Which class of sheaves on rigid spaces has the same properties?
+**Problem.** On rigid spaces over a non-archimedean field of characteristic zero, the six operations keep Zariski-constructible sheaves with coefficients ℤ/n. This needs conditions on the maps, such as properness for pushforward, and it gives a perverse t-structure (Bhatt–Hansen).
 
-**How the definition helps.** Strata cut out by analytic equations behave like strata of schemes, so arguments from algebraic geometry carry over. Bhatt and Hansen first prove generic smoothness for rigid spaces in characteristic zero. For this they introduce generic points of rigid spaces that suit spreading-out arguments, as in scheme theory. With it, the six operations keep Zariski-constructible sheaves with coefficients ℤ/n, under conditions on the maps, such as properness for pushforward. Consequences include dualizing complexes, a perverse t-structure and intersection cohomology. The characteristic zero assumption is essential, since generic smoothness fails in characteristic p (our own).
+**How the definition helps.** Strata cut out by analytic equations behave like strata of schemes, so arguments from algebraic geometry carry over. Bhatt and Hansen first prove generic smoothness for rigid spaces in characteristic zero, using generic points that suit spreading-out arguments. The characteristic zero assumption is essential, since generic smoothness fails in characteristic p (our own).
 
 **Paper or page:** [The six functors for Zariski-constructible sheaves in rigid geometry](https://arxiv.org/abs/2101.09759v2). It says: “As an application, we develop a six functor formalism for Zariski-constructible étale sheaves on characteristic zero rigid spaces. Among other things, this implies that characteristic zero rigid spaces support a well-behaved theory of perverse sheaves.”
 
@@ -3879,7 +3879,7 @@ $$”
 
 **Problem.** The representative functions on the geometric group that extend to arithmetic representative functions are exactly those whose Galois translates span a finite-dimensional space.
 
-**How the definition helps.** Our own proof uses functions with finite translation span in place of the abstract coordinate ring. Restriction preserves finite span under Galois conjugation because representative functions are matrix coefficients of finite-dimensional representations. Conversely, the tangent splits the arithmetic group into a geometric subgroup and a Galois factor. Extend the function by ignoring the Galois factor. Choose a basis of its finite Galois span and add the translation spans of those basis functions. The resulting finite-dimensional space contains all translates of the extension, viewed as functions of the geometric factor.
+**How the definition helps.** Our own proof uses functions with finite translation span in place of the abstract coordinate ring. Restriction keeps the Galois span finite, because representative functions are matrix coefficients of finite-dimensional representations. Conversely, the tangent splits the arithmetic group into the geometric subgroup and a Galois factor, and one extends the function by ignoring the Galois factor. The translation spans of a basis of its finite Galois span give a finite-dimensional space that contains all translates of the extension.
 
 **Paper or page:** [Universality of the Galois action on the fundamental group of ℙ¹ ∖ {0,1,∞}](https://arxiv.org/abs/2109.09301). It says: “is finite-dimensional”
 
@@ -3930,9 +3930,9 @@ $$”
 
 *True by definition.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)). arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Fix a prime ℓ and the tangent from 0 toward 1 on the projective line minus 0, 1 and ∞. Use finite covers with groups of ℓ-power order to form its geometric fundamental group. Abelianize its closed commutator subgroup and use the loop commutator c around 0 and 1 as basis over the completed group ring. This ring records compatible coefficients at all finite abelian levels.
+**Definition.** Take the pro-ℓ geometric fundamental group of the projective line minus 0, 1 and ∞, based at the tangent from 0 toward 1. Abelianize its closed commutator subgroup. This module is free over the completed group ring of the abelianized group, with basis the loop commutator c around 0 and 1.
 
-**Problem.** If σ(c) = b(σ)c, then b(στ) = b(σ)σ(b(τ)).
+**Problem.** For Galois elements σ and τ, define b(σ) by σ(c) = b(σ)c. Then b(στ) = b(σ)σ(b(τ)), so b is a cocycle.
 
 **How the definition helps.** Our own explanation reads b from the action on one basis vector, replacing a calculation with the power series coefficients. Acting on b(τ)c by σ changes both the coefficient and the basis vector. The substantive result identifies the commutator as a free basis over the completed group ring.
 
@@ -3970,9 +3970,9 @@ $$”
 
 **Definition.** Fix an odd prime ℓ and put m = ℓⁿ with n positive. Ihara’s series records how Galois acts on the loop commutator throughout the tower of Fermat curves of ℓ-power degree. A character sends each of the two covering transformations to an mth root of unity.
 
-**Problem.** Choose a primitive mth root ζ and an arithmetic Frobenius σ at a prime of ℚ(ζ) away from ℓ. Suppose a, b and a + b are nonzero modulo m, with at least one of a and b prime to ℓ. Evaluating σ’s series at (ζᵃ − 1, ζᵇ − 1) gives the corresponding Jacobi sum.
+**Problem.** Let σ be an arithmetic Frobenius at a prime of ℚ(ζ) away from ℓ, where ζ is a primitive mth root of unity. If a, b and a + b are nonzero modulo m, and a or b is prime to ℓ, then σ's series at (ζᵃ − 1, ζᵇ − 1) is the Jacobi sum.
 
-**How the definition helps.** The completed group ring combines all finite character evaluations in one series. In our own explanation, the chosen character selects one part of the Fermat curve’s homology. Arithmetic Frobenius acts on residue classes by raising them to the residue field size. Let q be the residue field size. The character χ raises each nonzero residue to the power (q − 1)/m and lifts the result to an mth root of unity. The Jacobi sum adds χ(x)ᵃχ(y)ᵇ over nonzero residue classes with x + y = −1. Ihara uses Weil’s theorem on Fermat curves to identify this sum with the scalar on that part.
+**How the definition helps.** The completed group ring combines all finite character evaluations in one series. In our own explanation, the chosen character selects one part of the Fermat curve's homology. The Jacobi sum adds χ(x)ᵃχ(y)ᵇ over nonzero residues with x + y = −1, where χ raises a residue to the power (q − 1)/m and q is the residue field size. Ihara uses Weil's theorem on Fermat curves to identify this sum with the scalar on that part.
 
 **Wikipedia:** [Iwasawa algebra](https://en.wikipedia.org/wiki/Iwasawa_algebra). It says: “More precisely, Λ(G) is the inverse limit of the group rings Zₚ(G/H) as H runs through the open normal subgroups of G.”
 
@@ -4023,11 +4023,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 18E35, 13C60. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a ring R and a flat ideal I with I² = I. For a perfectoid ring, one takes I generated by all p-power roots of a pseudo-uniformizer ϖ (a topologically nilpotent unit); the nLab page says only that a pseudo-uniformizer generates I. A module M is almost zero if I·M = 0. Almost modules are R-modules modulo almost-zero modules, so a map is an almost isomorphism if I kills its kernel and its cokernel.
+**Definition.** Fix a ring R and a flat ideal I with I² = I. For a perfectoid ring, one takes I generated by all p-power roots of a pseudo-uniformizer; the nLab page says only that a pseudo-uniformizer generates I. A module M is almost zero if I·M = 0, and almost modules are R-modules modulo almost-zero modules.
 
-**Problem.** On an affinoid perfectoid space, the higher cohomology of the sheaf 𝒪ₓ⁺/π should vanish. Here 𝒪ₓ⁺ is the sheaf of integral functions, those of absolute value at most 1. Then 𝒪⁺/π-coefficients can be used to build cohomology theories, for example Mann's p-adic six-functor formalism and mod-p Poincaré duality.
+**Problem.** On an affinoid perfectoid space, the higher cohomology of 𝒪ₓ⁺/π vanishes in almost modules. Here 𝒪ₓ⁺ is the sheaf of functions of absolute value at most 1.
 
-**How the definition helps.** In almost modules, an almost-zero module counts as zero, so almost vanishing becomes vanishing. Scholze proved that on an affinoid perfectoid space the higher cohomology of 𝒪⁺, and of 𝒪⁺/π, is almost zero, but not zero in general. This step is from Scholze's paper, not from the nLab pages. So in almost modules the sheaf is acyclic (it has no higher cohomology). Mann uses this with solid modules to build a p-adic six-functor formalism. The definition only moves the work: the real content is Scholze's almost-vanishing theorem.
+**How the definition helps.** In almost modules, an almost-zero module counts as zero, so almost vanishing becomes vanishing. Scholze proved that the higher cohomology of 𝒪⁺, and of 𝒪⁺/π, is almost zero, but not zero in general; this step is from Scholze's paper, not from the nLab pages. Mann uses this with solid modules to build a p-adic six-functor formalism. The definition only moves the work: the real content is Scholze's almost-vanishing theorem.
 
 **nLab:** [solid module](https://ncatlab.org/nlab/show/solid+module), [almost module](https://ncatlab.org/nlab/show/almost+module). It says: “The theory of almost modules is necessary in order to make the structure sheaf 𝒪ₓ⁺/π acyclic on affinoid perfectoid spaces”
 
@@ -4062,7 +4062,7 @@ $$”
 
 **Problem.** For any perfectoid field K, the absolute Galois groups of K and of its tilt are isomorphic. So a question about a mixed characteristic field becomes one about a characteristic p field.
 
-**How the definition helps.** The definition is what makes tilting work: finite étale algebras over K match those over K♭ one for one. A finite étale map to a field is a finite separable extension, so the Galois groups agree, as the page says. The non-discrete condition rules out fields like ℚₚ itself (our own). Fontaine and Wintenberger proved a special case earlier (our own). Scholze introduced the definitions in 2012. What stays hard is the almost purity theorem.
+**How the definition helps.** The definition is what makes tilting work: finite étale algebras over K match those over K♭ one for one. A finite étale algebra over a field is a product of finite separable extensions, so the Galois groups agree, as the page says. The non-discrete condition rules out fields like ℚₚ itself (our own). What stays hard is the almost purity theorem.
 
 **Wikipedia:** [Perfectoid space](https://en.wikipedia.org/wiki/Perfectoid_space). It says: “the almost purity theorem implies that for any perfectoid field K the absolute Galois groups of K and K♭ are isomorphic.”
 
@@ -4076,11 +4076,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A perfectoid ring is a complete Tate ring A with these conditions. Its power-bounded elements A° form a bounded set. There is a pseudo-uniformizer ϖ (a topologically nilpotent unit) such that ϖᵖ divides p in A°, and the Frobenius map x ↦ xᵖ from A°/ϖ to A°/ϖᵖ is an isomorphism. A perfectoid space is an adic space that spectra of perfectoid rings cover, and the tilt A♭ is the limit of A under x ↦ xᵖ, made into a ring of characteristic p.
+**Definition.** A perfectoid ring is a complete Tate ring A whose power-bounded elements A° form a bounded set. It has a pseudo-uniformizer ϖ with ϖᵖ dividing p in A°, such that Frobenius from A°/ϖ to A°/ϖᵖ is an isomorphism. Its tilt A♭ is the limit of A under x ↦ xᵖ, made into a ring of characteristic p.
 
-**Problem.** Fontaine and Wintenberger proved that some deeply ramified p-adic fields and their tilts in characteristic p have isomorphic absolute Galois groups. Extend this theorem from fields to rings and spaces.
+**Problem.** For a perfectoid ring R, tilting gives an equivalence between finite étale R-algebras and finite étale R♭-algebras. For a perfectoid space X, it gives an equivalence between the étale sites of X and of its tilt X♭.
 
-**How the definition helps.** The perfectoid condition is exactly what makes the tilt R♭ carry as much étale information as R. With it, tilting gives an equivalence between finite étale R-algebras and finite étale R♭-algebras. It also gives an isomorphism between the étale site Xₑₜ of X and the étale site X♭ₑₜ of its tilt. So you can move problems from mixed characteristic to characteristic p. The equivalence is a hard theorem that uses almost mathematics, and it is not a tautology.
+**How the definition helps.** The perfectoid condition is exactly what makes the tilt carry as much étale information as R. So you can move étale problems from mixed characteristic to characteristic p. This extends the theorem of Fontaine and Wintenberger on deeply ramified fields. The equivalence is a hard theorem that uses almost mathematics, and it is not a tautology.
 
 **nLab:** [perfectoid space](https://ncatlab.org/nlab/show/perfectoid+space). It says: “this is generalized by the statement that the perfectoid spaces over fields related this way are equivalent.”
 
@@ -4146,11 +4146,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14H30 (Coverings of curves, fundamental group), 14H40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** The paper works with curves that need not be connected. They also need not be geometrically connected, that is, connected after extension to an algebraic closure of the base field. The paper deduces the properties of such curves and their Jacobians from the connected case.
+**Definition.** In this paper, a curve need not be connected. It also need not be geometrically connected, that is, connected after extension to an algebraic closure of the base field.
 
-**Problem.** Proposition 4.1 states that the quotient X/G of such a curve by a finite group G is again a curve. The Jacobian of a curve is its group of degree-zero divisors up to linear equivalence (our own gloss). On Jacobians, pushforward after pullback is multiplication by \|G\|, and pullback after pushforward is the sum of the actions of G.
+**Problem.** For a finite group G acting on such a curve X, the quotient X/G is again a curve (Proposition 4.1). On Jacobians, pushforward after pullback is multiplication by \|G\|, and pullback after pushforward is the sum of the actions of G.
 
-**How the definition helps.** Our own reason: a Galois closure of a cover of curves can be disconnected. So, in our own reading, a theory of connected curves cannot even state results about it. The abstract gives this reason for the wider convention. With it, closures and quotients stay in the same class, and Proposition 4.1 holds without case distinctions (our own reading). The paper says it deduces the needed facts from the standard connected case. Our own note: that reduction is the remaining work.
+**How the definition helps.** Galois closures of covers of curves can be disconnected, as the abstract says. So a theory of connected curves cannot even state results about them (our own reading). With the wider convention, closures and quotients stay in the same class (our own reading). The paper deduces the needed facts from the standard connected case.
 
 **Paper or page:** [On Galois covers of curves and arithmetic of Jacobians](https://arxiv.org/abs/2407.18258). It says: “it is convenient to work throughout with curves that are not assumed to be geometrically connected (or even connected); such curves arise naturally when taking Galois closures of covers of curves.”
 
@@ -4236,9 +4236,9 @@ $$”
 
 **Definition.** A finite group scheme can be non-reduced, like the group of p-th roots of unity in characteristic p. Brion defines G-normal varieties for actions of such groups. For curves, G-normal means that the orbit of each closed point has an invertible ideal sheaf. That is, the orbit is locally cut out by one function.
 
-**Problem.** Every curve is birational to a unique normal projective curve. With an action of a finite group scheme, the normal projective model need not carry the action. Is there still a unique good model?
+**Problem.** Every curve with an action of a finite group scheme G has a unique projective G-normal model. A normal projective model with the action need not exist.
 
-**How the definition helps.** G-normality weakens normality to a condition that the action can respect, so a good model exists again. The paper states the bad case: an equivariant projective model always exists, but it need not be normal. With G-normality, every curve with a G-action has a unique projective G-normal model. Also, the quotient of a G-normal variety by G is normal, and a G-normal curve is a local complete intersection. In higher dimension the paper gets a G-normal projective model, but uniqueness is claimed only for curves.
+**How the definition helps.** G-normality weakens normality to a condition that the action can respect, so a good model exists again. The paper notes that an equivariant projective model always exists, but it need not be normal. The quotient of a G-normal variety by G is normal, and a G-normal curve is a local complete intersection. In higher dimension the paper gets a G-normal projective model, but uniqueness is claimed only for curves.
 
 **Paper or page:** [Actions of finite group schemes on curves](https://arxiv.org/abs/2207.08209v2). It says: “Every action of a finite group scheme G on a variety admits a projective equivariant model, but not necessarily a normal one. As a remedy, we introduce and explore the notion of G-normalization.”
 
@@ -4272,9 +4272,9 @@ $$”
 
 **Definition.** On a plane cubic curve, x ∗ y is the third point where the line through x and y meets the curve. If x = y, the line is the tangent line. An elliptic group is a set with an operation ∗ that obeys the rules of this operation, as axioms. For example, any abelian group A with a fixed element a gives one by x ∗ y = a − x − y.
 
-**Problem.** The usual group law on an elliptic curve needs a chosen zero point. Is there a structure that does not depend on this choice?
+**Problem.** In an elliptic group, for any element c, the rule x + y = c ∗ (x ∗ y) is an abelian group law with zero c. Different choices of c give isomorphic groups.
 
-**How the definition helps.** The operation ∗ uses lines only, so it needs no chosen point. Fix any point c, and put x + y = c ∗ (x ∗ y). The paper shows that this is an abelian group law with zero c. Another choice of zero gives an isomorphic group, by an explicit map. The elliptic group can also hold more than the group. A flex point is a point where the tangent meets the curve three times. Without a flex point, the abelian group does not determine the elliptic group.
+**How the definition helps.** The operation ∗ uses lines only, so it needs no chosen point. The paper gives an explicit isomorphism between the groups for two choices of zero. The elliptic group can also hold more than the group. If the curve has no flex point, a point where the tangent meets the curve three times, the abelian group does not determine the elliptic group.
 
 **Paper or page:** [Elliptic groups and rings](https://arxiv.org/abs/2201.05553v1), [Elliptic groups and rings](https://arxiv.org/abs/2201.05553v1). It says: “However, that very chord-tangent law allows us to define a rather more obscure algebraic structure, which we call an elliptic group, on the points of an elliptic curve.”
 
@@ -4379,7 +4379,7 @@ $$”
 
 **Problem.** Let X be an irreducible symplectic variety of dimension 2n. Let X map onto a normal projective B with connected fibres, where 0 &lt; dim B &lt; 2n. Then B has dimension n, and the general fibre is an abelian variety of dimension n.
 
-**How the definition helps.** The abstract says known results give the Fujiki relations, and the newer definition is then imposed for the fibration theorem. Fujiki relations are intersection identities for the generalized Beauville–Bogomolov form, and they control the dimensions. Our own example is the product of three K3 surfaces, each a simply connected surface with a nowhere-zero two-form. The product is symplectic of dimension 6. Projection onto one factor has fibres of dimension 4, not 3. The product fails the form condition already on itself, because it has three independent two-forms.
+**How the definition helps.** The form condition on every such cover rules out varieties with several independent two-forms, and the Fujiki relations then fix the dimensions (our own reading of the abstract). Fujiki relations are intersection identities for the generalized Beauville–Bogomolov form. Our own example is the product of three K3 surfaces, which is symplectic of dimension 6. Projection onto one factor has fibres of dimension 4, not 3, and the product fails the form condition because it has three independent two-forms.
 
 **Paper or page:** [Fujiki relations and fibrations of irreducible symplectic varieties](https://arxiv.org/abs/1701.09069v3), [Fujiki relations and fibrations of irreducible symplectic varieties](https://arxiv.org/abs/1701.09069v3). It says: “This enables us to study fibrations of these varieties; imposing the newer definition from \[GKP16, Definition 8.16.2\] we show that they behave much like irreducible symplectic manifolds.”
 
@@ -4396,9 +4396,9 @@ $$”
 
 **Definition.** Castelnuovo–Mumford regularity tests vanishing of cohomology of twists of a sheaf by the line bundles O(k) on projective space. On a smooth quadric hypersurface, Ballico and Malaspina also use the spinor bundles, the extra basic bundles of a quadric. A sheaf is m-Qregular when certain cohomology groups of its twists, and of its twists tensored with the spinor bundles, vanish.
 
-**Problem.** A bundle is ACM (arithmetically Cohen–Macaulay) when it has no intermediate cohomology in any twist. Knörrer proved that the ACM bundles on a smooth quadric are the direct sums of line bundles and twisted spinor bundles.
+**Problem.** On a smooth quadric hypersurface, a vector bundle with no intermediate cohomology in any twist is a direct sum of line bundles and twisted spinor bundles (Knörrer).
 
-**How the definition helps.** Qregularity puts the spinor bundles into the test, so it matches the cohomology of a quadric. The paper compares Qregularity of a sheaf with the ordinary regularity of its extension by zero to projective space. The second lies between the first and the first plus one. With Qregularity, the authors extend the Evans–Griffith criterion to quadrics. That criterion detects sums of line bundles from the vanishing of some cohomology. Knörrer's characterization then follows as a special case, by a short argument. The known cohomology of the spinor bundles is still needed as input (our own).
+**How the definition helps.** Qregularity puts the spinor bundles into the test, so it matches the cohomology of a quadric. With Qregularity, the authors extend the Evans–Griffith criterion, which detects sums of line bundles from the vanishing of some cohomology, to quadrics. Knörrer's characterization then follows as a special case by a short argument. The known cohomology of the spinor bundles is still needed as input (our own).
 
 **Paper or page:** [Qregularity and an Extension of Evans-Griffiths Criterion to Vector Bundles on Quadrics](https://arxiv.org/abs/0802.0451v1). It says: “We use our notion of Qregularity in order to prove an extension of Evans-Griffiths criterion to vector bundles on Quadrics. In particular we get a new and simple proof of the Knörrer's characterization of ACM bundles.”
 
@@ -4415,7 +4415,7 @@ $$”
 
 **Definition.** Start with a smooth space over a dense open part U of a base S. Assume functions on S are determined by their restrictions to U. A Néron model extends the space smoothly over S and separates distinct limits. For every smooth family over S, each map from its restriction over U extends uniquely to the model.
 
-**Problem.** A smooth change of base preserves the Néron model.
+**Problem.** Let N be the Néron model over S of a smooth space over U, and let S′ → S be smooth. Then the pullback of N to S′ is the Néron model over S′ of the pulled-back space.
 
 **How the definition helps.** The extension property lets us test the new model without constructing it again, in our own explanation. A smooth family over the new base is smooth over S because smooth maps compose. Extend its map using the original model, then pair the extension with the map to the new base. Uniqueness follows from uniqueness over S. Constructing a model with the extension property remains a separate existence problem.
 
@@ -4595,11 +4595,11 @@ $$”
 
 *True by definition.* MSC 14P10 (Semialgebraic sets and related spaces), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Let k ⊂ ℂ be algebraic over its real subfield. In any affine dimension, choose a closed set G given by real polynomial conditions over that subfield, oriented outside a lower-dimensional subset. Integrate exp(−f)ω using rational data over k, regular on G, with the degree of ω equal to the real dimension of G. Require f to have compact preimages of compact sets, bounded imaginary part, and real part bounded below.
+**Definition.** A naive exponential period over a subfield k of ℂ is an integral of exp(−f)ω over a closed set G, cut out by real polynomial conditions over the real subfield of k. G may lie in an affine space of any dimension, and f and ω are rational over k, regular on G, with ω of degree the real dimension of G. Also, f has compact preimages of compact sets, bounded imaginary part, and real part bounded below.
 
-**Problem.** For these naive exponential periods, replacing k by its algebraic closure in ℂ does not change the set of values.
+**Problem.** Let k ⊂ ℂ be algebraic over its real subfield. Then replacing k by its algebraic closure in ℂ does not change the set of naive exponential periods.
 
-**How the definition helps.** Allowing any ambient dimension lets an extra coordinate encode coefficients from a finite extension. Only finitely many coefficients occur, and one algebraic element generates their extension. Its polynomial cuts out the possible values of the new coordinate. Real polynomial conditions isolate the chosen complex root by its real and imaginary parts. This is our own summary of the descent in Lemma 6.6.
+**How the definition helps.** Allowing any ambient dimension lets an extra coordinate encode coefficients from a finite extension. Only finitely many coefficients occur, and one algebraic element generates their extension. Real polynomial conditions cut out its chosen complex root by its real and imaginary parts. This is our own summary of the descent in Lemma 6.6.
 
 **Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “the product of an algebraic function and the exponential of an algebraic function”
 
@@ -4613,7 +4613,7 @@ $$”
 
 *Rules out counterexamples.* MSC 14P10 (Semialgebraic sets and related spaces), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Integrate exp(−f)ω over a closed set G in complex affine space given by real polynomial conditions over ℚ. Orient its smooth part outside a lower-dimensional subset. Take f and ω rational over ℚ and regular on G, with the degree of ω equal to the real dimension of G. Require f to have compact preimages of compact sets on G, bounded imaginary part, and real part bounded below.
+**Definition.** An exponential period integral is the integral of exp(−f)ω over an oriented closed set G in complex affine space, cut out by real polynomial conditions over ℚ. Here f and ω are rational over ℚ and regular on G, and ω has degree equal to the real dimension of G. Also, f has compact preimages of compact sets on G, bounded imaginary part, and real part bounded below.
 
 **Problem.** Every such integral of exp(−f)ω converges absolutely. Without the phase bound, the imaginary axis with f(z)=z and ω=dz meets the other conditions but gives a divergent absolute integral.
 

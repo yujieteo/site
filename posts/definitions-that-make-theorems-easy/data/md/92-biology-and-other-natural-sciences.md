@@ -40,7 +40,7 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** For two unrooted evolutionary trees on the same labeled tips, list the partitions of tips obtained by cutting individual edges. Define their Robinson–Foulds distance as the number of partitions present in exactly one list. The original edit description counts internal edge contractions and their reversals.
+**Definition.** For two unrooted evolutionary trees on the same labeled tips, list the partitions of tips obtained by cutting individual edges. Their Robinson–Foulds distance is the number of partitions present in exactly one list.
 
 **Problem.** This distance is a metric on unweighted trees with the same labeled tips and no degree-two internal nodes. Identify trees when an isomorphism preserves their tip labels.
 
@@ -129,7 +129,7 @@
 
 **Definition.** Assign each descendant to one ancestor and assume at least one descendant exists. Define each ancestor’s relative fitness as its descendant count divided by the mean count per ancestor.
 
-**Problem.** The change in mean trait equals the covariance of relative fitness with ancestral trait plus a transmission term. Compute the covariance across equally weighted ancestors. For transmission, average each family’s mean trait change times relative fitness, counting childless families as zero.
+**Problem.** The change in mean trait equals the covariance of relative fitness with ancestral trait, plus a transmission term. The transmission term averages, over ancestors, relative fitness times the change from the ancestor's trait to its descendants' mean trait. Both averages weight ancestors equally, and childless ancestors add zero.
 
 **How the definition helps.** Using relative fitness gives weights with mean one, so reweighting ancestral traits adds exactly a covariance (our own). Add and subtract this reweighted ancestral mean when comparing the two generations (our own). The remaining difference measures change within families (our own). Predicting either term still requires a model of reproduction and transmission (our own).
 
@@ -218,7 +218,7 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology), 92B15. arXiv q-bio.QM. Level 3: graduate.
 
-**Definition.** On a rooted binary ancestry tree, take the difference between two child estimates and divide by the square root of their summed variances. Use variances conditional on the common parent’s trait value. Pass their inverse-variance weighted mean toward the root. Its variance for the next comparison is the reciprocal of the summed inverse variances plus the next branch variance.
+**Definition.** An independent contrast at a node of a rooted binary tree is the difference of its two child estimates, divided by the square root of their summed variances. These variances are conditional on the node's trait value. The node passes up the inverse-variance weighted mean of the two estimates, with variance equal to the reciprocal of the summed inverse variances plus the branch variance above.
 
 **Problem.** Suppose changes on separate branches are independent centered Gaussian variables with variance proportional to positive branch length. The standardized differences are independent centered Gaussian variables with variance one.
 
@@ -363,7 +363,7 @@
 
 *Rules out counterexamples.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology), 92D15. arXiv q-bio.PE. Level 4: research.
 
-**Definition.** An ancestral profile records, for each leaf label, the path counts from all internal vertices in a common vertex order. An orchard network can reach one leaf by repeatedly removing a sibling leaf or cutting a parent edge in a reticulated cherry. In such a cherry, one leaf’s branching parent also parents the other leaf’s parent, which has multiple incoming edges. A network is stack-free if no edge connects two vertices that both have multiple parents.
+**Definition.** An ancestral profile records, for each leaf label, the path counts from all internal vertices in a common vertex order. An orchard network is one that repeated cherry reductions can shrink to a single leaf. A network is stack-free if no edge connects two vertices that both have multiple parents.
 
 **Problem.** Among rooted phylogenetic networks on the same leaf labels, the ancestral profile determines a stack-free orchard network up to relabeling internal vertices.
 

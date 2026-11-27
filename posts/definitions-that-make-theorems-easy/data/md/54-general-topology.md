@@ -136,7 +136,7 @@
 
 **Problem.** Every metrizable space is Hausdorff. A space is metrizable when some metric gives its topology.
 
-**How the definition helps.** Because distinct points have positive distance, small balls separate them. Our own sketch: if d(x, y) = r &gt; 0, the balls of radius r/2 around x and y are disjoint. ProofWiki shows that the axiom is needed. A partition space, whose open sets are the unions of blocks of a fixed partition, is pseudometrizable. But when the partition is not into single points, it is not Hausdorff. Our own remark: two points in one block have pseudodistance 0, and every open set that holds one holds the other. Nothing hard remains.
+**How the definition helps.** Because distinct points have positive distance, small balls separate them. Our own sketch: if d(x, y) = r &gt; 0, the balls of radius r/2 around x and y are disjoint. ProofWiki shows that the axiom is needed: a partition space, whose open sets are unions of blocks of a fixed partition, is pseudometrizable. When some block has two points, those points have pseudodistance 0 and no open set separates them (our own remark).
 
 **Paper or page:** [Metrizable Space is Hausdorff](https://proofwiki.org/wiki/Metrizable_Space_is_Hausdorff), [Partition Space is Pseudometrizable](https://proofwiki.org/wiki/Partition_Space_is_Pseudometrizable), [Partition Topology is not Hausdorff](https://proofwiki.org/wiki/Partition_Topology_is_not_Hausdorff). It says: “Let T be a metrizable topological space. Then T is a T₂ (Hausdorff) space.”
 
@@ -170,7 +170,7 @@
 
 **Definition.** A metric d on a set gives distances that are symmetric, satisfy the triangle inequality, and are 0 only for equal points. A pseudometric drops the last condition, so distinct points can be at distance 0.
 
-**Problem.** In a metric space, a sequence has at most one limit. A pseudometric space is a metric space exactly when its topology is T₀. T₀ means that an open set can tell any two distinct points apart.
+**Problem.** In a metric space, a sequence has at most one limit.
 
 **How the definition helps.** If a sequence tends to x and to y, the triangle inequality gives d(x, y) = 0. The metric axiom then gives x = y. In our own example, take a pseudometric space with two points at distance 0. Every sequence that tends to one point also tends to the other. So the axiom excludes exactly the case where limits are not unique. ProofWiki shows that a pseudometric is a metric exactly when its topology is T₀.
 
@@ -207,9 +207,9 @@
 
 **Definition.** A sequence is a Cauchy sequence when its terms eventually stay arbitrarily close to each other. A metric space is complete when every Cauchy sequence in it converges.
 
-**Problem.** We want tests for convergence that use only the terms of a sequence or series. An example is the statement that an absolutely convergent series converges.
+**Problem.** A normed space is complete exactly when every absolutely convergent series in it converges.
 
-**How the definition helps.** The Cauchy condition uses only the terms, and completeness makes it enough to give a limit. The definition of convergence uses the limit itself, so it cannot prove that a limit exists. For example, take a normed space. The statement 'every absolutely convergent series converges' holds exactly when the space is complete. The article gives one direction, and the converse is our own addition. In the rational numbers the test fails. Rational approximations of √2 form a Cauchy sequence with no rational limit (our own example).
+**How the definition helps.** The Cauchy condition uses only the terms, and completeness makes it enough to give a limit. The definition of convergence uses the limit itself, so it cannot prove that a limit exists. The article gives one direction, and the converse is our own addition. In the rational numbers the test fails: rational approximations of √2 form a Cauchy sequence with no rational limit (our own example).
 
 **Wikipedia:** [Cauchy sequence](https://en.wikipedia.org/wiki/Cauchy_sequence), [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “The utility of Cauchy sequences lies in the fact that in a complete metric space (one where all such sequences are known to converge to a limit), the criterion for convergence depends only on the terms of the sequence itself”
 
@@ -305,9 +305,9 @@
 
 **Definition.** The boundary ∂S of a subset S of a space is its closure minus its interior. On closed sets, ∂ becomes the boundary operator of the co-Heyting algebra of closed subsets. A co-Heyting algebra is a lattice with an operation dual to the implication of a Heyting algebra.
 
-**Problem.** Prove the Leibniz rule ∂(A × B) = (∂A × B) ∪ (A × ∂B). It has the same shape as the product rule for derivatives.
+**Problem.** For closed subsets A and B, the boundary satisfies the Leibniz rule ∂(A × B) = (∂A × B) ∪ (A × ∂B). It has the same shape as the product rule for derivatives.
 
-**How the definition helps.** For closed A and B the rule holds, because the closure of A × B is A × B itself. The nLab says the rule must fail if A and B are not closed. Our own check is sharper: the rule still holds if at least one of A and B is closed. It fails when neither is closed and both are non-empty. Then take a point a in ∂A but not in A, and a point b in ∂B but not in B. The point (a, b) is in ∂(A × B) but not in the right side, so the right side is not closed, while a boundary is always closed. So restricting ∂ to the lattice of closed sets gives the rule, and this motivates the co-Heyting boundary operators of Zarycki and Lawvere.
+**How the definition helps.** For closed A and B the rule holds, because the closure of A × B is A × B itself. The nLab says the rule must fail if A and B are not closed. Our own check is sharper: the rule still holds if one of A and B is closed, and fails when neither is closed and both are non-empty. Restricting ∂ to the lattice of closed sets gives the rule, and this motivates the co-Heyting boundary operators of Zarycki and Lawvere.
 
 **nLab:** [boundary](https://ncatlab.org/nlab/show/boundary). It says: “Notice the conclusion must fail if A, B are not closed, since in this case (∂A × B) ∪ (A × ∂B) is not closed (it doesn't include ∂A × ∂B).”
 
@@ -323,9 +323,9 @@
 
 **Definition.** Let c be an adherent point of the domain of f, that is, a point in its closure. In Bourbaki's definition, L is the limit of f at c if for every neighbourhood V of L there is a neighbourhood U of c with f(x) ∈ V for all x in U where f is defined. This includes x = c. Weierstrass's usual definition leaves out x = c, so it uses a punctured neighbourhood.
 
-**Problem.** Show the chain rule for limits: the limit of a composite f ∘ g at c is the limit of f at the limit of g at c. Also show that f is continuous at c exactly when f(c) is its limit there.
+**Problem.** With Bourbaki's limit, the limit of a composite f ∘ g at c is the limit of f at the limit of g at c, whenever these limits exist. Also, f is continuous at c exactly when f(c) is its limit there.
 
-**How the definition helps.** Because the limit must agree with f(c), the chain rule needs no extra hypothesis. With the Weierstrass definition the chain rule needs an extra hypothesis, about g taking the value lim g near c. Our own illustration: let g = 0, and let f(u) = 1 for u ≠ 0 and f(0) = 0. The punctured limit of f at 0 is 1, but f ∘ g is constantly 0. With Bourbaki's definition f has no limit at 0 in this case, so the rule holds whenever its right side exists. Continuity at c also becomes 'f(c) is the limit', even at isolated points. The cost is that the limit can no longer ignore the value f(c).
+**How the definition helps.** Because the limit must agree with f(c), the chain rule needs no extra hypothesis. With the Weierstrass definition, it needs a hypothesis about g taking the value lim g near c. Our own illustration: let g = 0, and let f(u) = 1 for u ≠ 0 and f(0) = 0. The punctured limit of f at 0 is 1, but f ∘ g is constantly 0, while with Bourbaki's definition f has no limit at 0.
 
 **nLab:** [limit of a function](https://ncatlab.org/nlab/show/limit+of+a+function). It says: “Using the Bourbaki definition, the limit of a composite function f ∘ g approaching c is equal to the limit of f approaching the limit of g approaching c, if the latter exists”
 
@@ -360,7 +360,7 @@
 
 **Problem.** A function f between any two spaces is continuous exactly when it sends each net converging to x to a net converging to f(x). Also, a point is in the closure of a set exactly when some net in the set converges to it.
 
-**How the definition helps.** Nets are indexed by sets as large as the neighbourhood systems, so they can reach every point of a closure. This makes the familiar sequence tests from metric spaces true in every space. With sequences the tests fail outside first-countable or sequential spaces. The page gives an example in the space of all functions from ℝ to ℝ, with the product topology. Take the 0–1 functions that equal 1 except at finitely many points. The zero function is in their closure, but no sequence of them converges to it. The price is that subnets are more delicate than subsequences.
+**How the definition helps.** Nets are indexed by sets as large as the neighbourhood systems, so they can reach every point of a closure. This makes the familiar sequence tests from metric spaces true in every space. With sequences the tests fail: in the product space of all functions from ℝ to ℝ, the zero function is in the closure of the 0–1 functions that equal 1 except at finitely many points, but no sequence of them converges to it. The price is that subnets are more delicate than subsequences.
 
 **Wikipedia:** [Net (mathematics)](https://en.wikipedia.org/wiki/Net_%28mathematics%29). It says: “it is necessary to allow for directed sets other than just the natural numbers if X is not a first-countable space (or not a sequential space).”
 
@@ -394,9 +394,9 @@
 
 **Definition.** A filter on a set is a nonempty family of nonempty subsets that is closed under finite intersections and under taking supersets. An ultrafilter is a maximal filter: for each subset, it contains the subset or its complement. Henri Cartan introduced filters in 1937.
 
-**Problem.** Show that a product of compact spaces is compact.
+**Problem.** Tychonoff's theorem: a product of compact spaces is compact.
 
-**How the definition helps.** Ultrafilters push forward to ultrafilters, and convergence in a product is convergence in each coordinate. So an ultrafilter on the product projects to an ultrafilter on each factor. Each projection converges, and the tuple of limits is a limit of the original ultrafilter. Kelley gave the same proof with universal nets in place of ultrafilters. The work moves into two places. One must prove that compactness is the same as convergence of all ultrafilters, and one needs the ultrafilter lemma to have enough ultrafilters. Choosing the limits uses the axiom of choice, unless each factor is Hausdorff.
+**How the definition helps.** Ultrafilters push forward to ultrafilters, and convergence in a product is convergence in each coordinate. So each projection of an ultrafilter on the product converges, and the tuple of limits is a limit of the original ultrafilter. The work moves into proving that compactness is the same as convergence of all ultrafilters, and into the ultrafilter lemma. Choosing the limits uses the axiom of choice, unless each factor is Hausdorff.
 
 **Wikipedia:** [Tychonoff's theorem](https://en.wikipedia.org/wiki/Tychonoff%27s_theorem), [Filters in topology](https://en.wikipedia.org/wiki/Filters_in_topology), [Ultrafilter on a set](https://en.wikipedia.org/wiki/Ultrafilter_on_a_set). It says: “assuming the ultrafilter lemma, a space is compact if and only if each ultrafilter on the space converges. With this in hand, the proof becomes easy”
 
@@ -433,7 +433,7 @@
 
 **Problem.** A map into a product is continuous if and only if each of its coordinate maps is continuous.
 
-**How the definition helps.** The product topology has only the open sets needed to make the projections continuous, so a basic open set restricts only finitely many coordinates. Its preimage under f is then a finite intersection of preimages under the coordinate maps, which gives the theorem in one line. The more intuitive box topology, which allows all products of open sets, fails it. Take the map from ℝ to the countable product ℝ × ℝ × … that sends x to (x, x, x, …). Each coordinate map is the identity. Yet it is not continuous into the box topology, because the preimage of the product of the intervals (−1/n, 1/n) is only {0}. The two topologies agree for finite products.
+**How the definition helps.** A basic open set of the product topology restricts only finitely many coordinates. So its preimage under f is a finite intersection of preimages under the coordinate maps, which gives the theorem in one line. The box topology fails it: the diagonal map x ↦ (x, x, x, …) from ℝ has identity coordinates, but the preimage of the product of the intervals (−1/n, 1/n) is only {0}. The two topologies agree for finite products.
 
 **Wikipedia:** [Product topology](https://en.wikipedia.org/wiki/Product_topology), [Box topology](https://en.wikipedia.org/wiki/Box_topology). It says: “It follows from the above universal property that a map f : Y → X is continuous if and only if fᵢ = pᵢ ∘ f is continuous for all i ∈ I.”
 
@@ -517,9 +517,9 @@
 
 **Definition.** A continuous map f : X → Y is proper, in Bourbaki's sense, if it is universally closed: every pullback of f along any map is a closed map (a map that sends closed sets to closed sets). Equivalently, f × (identity of Z) is closed for every space Z. Also equivalently, f is closed and has compact fibres.
 
-**Problem.** Proper maps should be stable under base change: a pullback of a proper map should be proper. Also, the map from X to a point should be proper exactly when X is compact.
+**Problem.** A pullback of a proper map is proper. The map from a space X to a point is proper exactly when X is compact.
 
-**How the definition helps.** Bourbaki chose this definition so that stability under base change holds by definition. The older definition says that preimages of compact sets are compact. That definition is not stable under base change. Also, such maps are all closed only when every compactly closed subset of Y is closed (Whyburn, Palais); for Hausdorff Y, this means that Y is compactly generated. (A compactly closed set is one whose intersection with every compact set is closed.) Grothendieck's version adds separatedness, which plays the role of the Hausdorff condition. The content moves to the theorem that universally closed maps are exactly the closed maps with compact fibres.
+**How the definition helps.** Bourbaki chose this definition so that stability under base change holds by definition. The older definition, that preimages of compact sets are compact, is not stable under base change. Grothendieck's version adds separatedness, which plays the role of the Hausdorff condition. The content moves to the theorem that universally closed maps are exactly the closed maps with compact fibres.
 
 **nLab:** [proper map](https://ncatlab.org/nlab/show/proper+map). It says: “The second definition was introduced by Bourbaki to make proper maps closed under base changes.”
 
@@ -566,11 +566,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 54C35 (Function spaces in general topology), 54D30. arXiv math.GN, math.FA. Level 2: later undergraduate.
 
-**Definition.** A family F of functions is equicontinuous at a point x when one δ works for all functions in F at once. That is, for every ε &gt; 0 there is a δ &gt; 0 such that d(x, y) &lt; δ implies \|f(x) − f(y)\| &lt; ε for every f in F.
+**Definition.** A family F of functions on a space X is equicontinuous at a point x when one neighbourhood works for all functions in F at once. That is, for every ε &gt; 0 there is a neighbourhood U of x such that \|f(x) − f(y)\| &lt; ε for every y in U and every f in F.
 
 **Problem.** The Arzelà–Ascoli theorem. Let X be a compact Hausdorff space, and let C(X) be the space of continuous functions on X. Then a subset of C(X) is compact exactly when it is closed, pointwise bounded and equicontinuous.
 
-**How the definition helps.** Equicontinuity is exactly the extra condition that gives a test for compactness like the Heine–Borel theorem. Such a condition is necessary because in C\[0,1\] with the uniform norm, closed and bounded sets need not be compact. For example, the functions xⁿ are bounded, but no subsequence converges uniformly. The reason is that the pointwise limit is not continuous (our own example). A consequence of the theorem is that an equicontinuous sequence that converges pointwise also converges uniformly. The proof still needs the compactness of X (our own remark).
+**How the definition helps.** Equicontinuity is exactly the extra condition that gives a test for compactness like the Heine–Borel theorem. Such a condition is necessary because in C\[0,1\] with the uniform norm, closed and bounded sets need not be compact. For example, the functions xⁿ are bounded, but no subsequence converges uniformly, because the pointwise limit is not continuous (our own example). The proof still needs the compactness of X (our own remark).
 
 **Wikipedia:** [Equicontinuity](https://en.wikipedia.org/wiki/Equicontinuity). It says: “Equicontinuity appears in the formulation of Ascoli's theorem, which states that a subset of C(X), the space of continuous functions on a compact Hausdorff space X, is compact if and only if it is closed, pointwise bounded and equicontinuous.”
 
@@ -601,11 +601,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 54D05 (Connected and locally connected spaces (general aspects)). arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A space is connected if it is not the union of two disjoint nonempty open sets. A space is path-connected if any two points are joined by a continuous path. The definition by separations is due to Lennes, Riesz and Hausdorff.
+**Definition.** A space is connected if it is not the union of two disjoint nonempty open sets. A space is path-connected if any two points are joined by a continuous path.
 
 **Problem.** The closure of a connected set is connected. Continuous images of connected spaces are connected, which gives the intermediate value theorem.
 
-**How the definition helps.** A separation of the closure would restrict to a separation of the original set, because the original set is dense in its closure. Paths have no such property. The graph of sin(1/x) for x in (0, 1\] is path-connected. Its closure adds a segment of the y-axis, and no path joins that segment to the graph. So the closed topologist's sine curve is connected but not path-connected. The two notions agree for open subsets of ℝⁿ and in locally path-connected spaces. The intermediate value theorem itself still needs the fact that intervals are connected, which uses completeness of ℝ.
+**How the definition helps.** A separation of the closure would restrict to a separation of the original set, because the original set is dense in its closure. Paths have no such property. The graph of sin(1/x) for x in (0, 1\] is path-connected, but its closure adds a segment of the y-axis that no path joins to the graph. So the closed topologist's sine curve is connected but not path-connected.
 
 **Wikipedia:** [Connected space](https://en.wikipedia.org/wiki/Connected_space), [Locally connected space](https://en.wikipedia.org/wiki/Locally_connected_space), [Topologist's sine curve](https://en.wikipedia.org/wiki/Topologist%27s_sine_curve). It says: “The closure of a connected subset is connected. Furthermore, any subset between a connected subset and its closure is connected.”
 
@@ -617,11 +617,11 @@
 
 *True by definition.* MSC 54D05 (Connected and locally connected spaces (general aspects)), 54B15. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** Call a space locally connected if every connected component of every open subset is open. A component is a maximal connected subset. Another definition asks for a basis of connected open sets. In a quotient space, a set is open exactly when its inverse image is open.
+**Definition.** Call a space locally connected if every connected component of every open subset is open. Another definition asks for a basis of connected open sets.
 
 **Problem.** Every quotient of a locally connected space is locally connected.
 
-**How the definition helps.** With the component definition, one only has to show that a component of an open set has an open inverse image. Take an open set V in the quotient and a component C of V. Each component of the inverse image of V is open and has a connected image in V. If that image meets C, it lies inside C. So the inverse image of C is a union of open components, and C is open. The work goes into proving that the component definition agrees with the basis definition. The nLab gives the basis definition and proves the theorem by exactly this component argument.
+**How the definition helps.** With the component definition, one only has to show that a component C of an open set V in the quotient has an open inverse image. Each component of the inverse image of V is open and has a connected image in V, so if that image meets C, it lies inside C. So the inverse image of C is a union of open components, and C is open. The work goes into proving that the component definition agrees with the basis definition.
 
 **nLab:** [locally connected topological space](https://ncatlab.org/nlab/show/locally+connected+topological+space). It says: “every connected component of every open subspace of X is open;”
 
@@ -637,7 +637,7 @@
 
 **Problem.** If a Hausdorff space is path-connected, then any two distinct points are joined by an arc.
 
-**How the definition helps.** In a Hausdorff space the image of a path is a Peano continuum, and such continua are arc-connected (our own outline). A Peano continuum is a compact, connected, locally connected metric space. The Hausdorff condition rules out the line with two origins. There a path joins the two origins, but no arc does. An arc is Hausdorff, but the two origins cannot be separated in any connected set that holds both (our own explanation). In that space many familiar facts about path-connectedness fail for arcs, such as unions of overlapping arc-connected sets. The hard part is the proof that a Peano continuum is arc-connected.
+**How the definition helps.** In a Hausdorff space the image of a path is a Peano continuum, a compact, connected, locally connected metric space, and such continua are arc-connected (our own outline). The Hausdorff condition rules out the line with two origins. There a path joins the two origins, but no arc does, because an arc is Hausdorff and the two origins cannot be separated (our own explanation). The hard part is the proof that a Peano continuum is arc-connected.
 
 **Wikipedia:** [Connected space](https://en.wikipedia.org/wiki/Connected_space). It says: “Every Hausdorff space that is path-connected is also arc-connected; more generally this is true for a Δ-Hausdorff space, which is a space where each image of a path is closed.”
 
@@ -649,9 +649,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 54D05 (Connected and locally connected spaces (general aspects)), 54F50. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A loop cancellation chooses disjoint open time intervals whose endpoints have the same path value. The reduced path makes each cancelled interval constant. Order cancellations by inclusion of the open sets they cancel.
+**Definition.** A loop cancellation of a path chooses disjoint open time intervals whose endpoints have the same path value. The reduced path is constant on each cancelled interval. A maximal loop cancellation, from Zorn's lemma, is one that no larger cancellation contains.
 
-**Problem.** In a path-connected Hausdorff space, any two distinct points are joined by an arc, a subspace homeomorphic to the closed interval. The paper proves this with a maximal loop cancellation from Zorn's lemma. Its Theorem 7 extends the result to a wider class of spaces, with a weaker separation condition than Hausdorff.
+**Problem.** In a path-connected Hausdorff space, any two distinct points are joined by an arc, a subspace homeomorphic to the closed interval.
 
 **How the definition helps.** Maximality removes the need to choose an order in which to delete loops, in our own explanation. If the reduced path took one value at two distinct surviving times, the cancellation could be enlarged. So the reduced path of a maximal cancellation is injective, which is the paper's Proposition 2. The work is checking that each chain of cancellations has an upper bound and that collapsing the cancelled intervals gives a path. Our own final step uses that a continuous injection from a compact interval into a Hausdorff space is an embedding.
 
@@ -669,9 +669,9 @@
 
 **Definition.** A space is connected if it has exactly one connected component. Equivalently, in every decomposition X ≅ X₁ ⊔ X₂, exactly one of the two parts is empty. Another equivalent form is that hom(X, −) preserves coproducts.
 
-**Problem.** Every space decomposes uniquely into connected components, and X × Y is connected if and only if X and Y are connected. For categories, a category with pullbacks and equalizers has all finite connected limits (limits over connected diagrams), and a terminal object is not a connected limit.
+**Problem.** Every space decomposes uniquely into connected components, and X × Y is connected if and only if X and Y are connected. Likewise, a category with pullbacks and equalizers has all finite connected limits.
 
-**How the definition helps.** The 'exactly one component' definition excludes the empty space, so these theorems hold without exceptions. The naive definition says a space is connected if it does not split into two disjoint non-empty open sets. Under it the empty space is connected. Then unique decomposition fails, since X ⊔ Y = ∅ ⊔ X ⊔ Y, just as unique factorization would fail if 1 were prime. The product statement also fails, since X × ∅ = ∅ would be connected for every X. For categories, the same choice keeps the terminal object, a limit over the empty category, out of the connected limits; otherwise a category with pullbacks and equalizers would not have all connected limits. This is an instance of the principle that a trivial object is too simple to be simple.
+**How the definition helps.** The 'exactly one component' definition excludes the empty space, so these theorems hold without exceptions. Under the naive definition, no split into two disjoint non-empty open sets, the empty space is connected. Then unique decomposition fails, since X ⊔ Y = ∅ ⊔ X ⊔ Y, just as unique factorization would fail if 1 were prime. For categories, the same choice keeps the terminal object, a limit over the empty diagram, out of the connected limits.
 
 **nLab:** [empty space](https://ncatlab.org/nlab/show/empty+space), [connected space](https://ncatlab.org/nlab/show/connected+space), [too simple to be simple](https://ncatlab.org/nlab/show/too+simple+to+be+simple), [connected category](https://ncatlab.org/nlab/show/connected+category), [connected limit](https://ncatlab.org/nlab/show/connected+limit). It says: “If the empty space were (path-)connected, unique decomposition into (path-)connected components would fail”
 
@@ -705,7 +705,7 @@
 
 **Problem.** Most topological properties and structures hold for a space exactly when they hold for its Kolmogorov quotient, which is always T₀. So a theorem about T₀ spaces gives a theorem about all spaces. For example, a regular T₀ space is Hausdorff.
 
-**How the definition helps.** The quotient only merges points that no open set separates, so it keeps the open sets, the continuous real functions and most structure unchanged. Thus one can state theorems for T₀ spaces and remove the condition at the end. The same step turns a seminorm into a norm. It also turns square-integrable functions into the Hilbert space L², where functions equal almost everywhere are identified. For regular spaces the step is very strong: regular plus T₀ already gives Hausdorff. What stays as work is to check, for each property, that it really passes to the quotient.
+**How the definition helps.** The quotient only merges points that no open set separates, so it keeps the open sets, the continuous real functions and most structure unchanged. Thus one can state theorems for T₀ spaces and remove the condition at the end. The same step turns a seminorm into a norm, and square-integrable functions into the Hilbert space L². What stays as work is to check, for each property, that it really passes to the quotient.
 
 **Wikipedia:** [Kolmogorov space](https://en.wikipedia.org/wiki/Kolmogorov_space), [Regular space](https://en.wikipedia.org/wiki/Regular_space). It says: “The T₀ requirement can be added or removed arbitrarily using the concept of Kolmogorov quotient.”
 
@@ -773,7 +773,7 @@
 
 **Problem.** A. H. Stone's theorem says that every metric space is paracompact. So every metric space has partitions of unity for every open cover.
 
-**How the definition helps.** In a metric space, stars of small balls are easy to control, so full normality is easy to check there (our own explanation). The work moves into Stone's theorem that full normality and paracompactness agree for Hausdorff spaces. That step is hard, and early proofs were involved. Mary Ellen Rudin later found an elementary direct proof that metric spaces are paracompact. Dieudonné had introduced paracompactness in 1944. Tukey had defined full normality in 1940, before paracompactness.
+**How the definition helps.** In a metric space, stars of small balls are easy to control, so full normality is easy to check there (our own explanation). The work moves into Stone's theorem that full normality and paracompactness agree for Hausdorff spaces. That step is hard. Mary Ellen Rudin later found an elementary direct proof that metric spaces are paracompact.
 
 **Wikipedia:** [Paracompact space](https://en.wikipedia.org/wiki/Paracompact_space). It says: “The proof that all metrizable spaces are fully normal is easy. When it was proved by A.H. Stone that for Hausdorff spaces full normality and paracompactness are equivalent, he implicitly proved that all metrizable spaces are paracompact.”
 
@@ -789,7 +789,7 @@
 
 **Definition.** An open cover {Uᵢ} of a space X is locally finite if each point has a neighbourhood that meets only finitely many Uᵢ.
 
-**Problem.** The shrinking lemma: let X be a normal space and {Uᵢ} a locally finite open cover of X. Then there is an open cover {Vᵢ} with the closure of each Vᵢ inside Uᵢ. You use it to get partitions of unity on paracompact Hausdorff spaces (spaces in which every open cover has a locally finite refinement).
+**Problem.** The shrinking lemma: let X be a normal space and {Uᵢ} a locally finite open cover of X. Then there is an open cover {Vᵢ} with the closure of each Vᵢ inside Uᵢ.
 
 **How the definition helps.** Local finiteness makes sure that the smaller sets Vᵢ still cover X. For finite covers, the lemma follows by induction from the case of two sets. For an infinite countable cover, the induction does not show that the union of the sets Vᵢ is still a cover. A Dowker space (example due to Bešlagić) is a normal space with a countable cover that has no shrinking. Asking the cover to be locally finite removes this problem. For uncountable locally finite covers, the proof still needs Zorn's lemma.
 
@@ -821,9 +821,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 54D30 (Compactness), 54C10. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A space X is compact if and only if, for every space Y, the projection Y × X → Y is a closed map. A closed map is a map that sends closed sets to closed sets. In other words, the map from X to the one-point space is closed, and it stays closed after every pullback.
+**Definition.** Call a space X compact if, for every space Y, the projection Y × X → Y is a closed map, that is, it sends closed sets to closed sets. In other words, the map from X to the one-point space is closed, and it stays closed after every pullback.
 
-**Problem.** Prove Tychonoff's theorem: a product of any set of compact spaces is compact.
+**Problem.** Tychonoff's theorem: a product of any set of compact spaces is compact.
 
 **How the definition helps.** With this definition, compactness is a property of the map from X to a point that survives every pullback. So it also makes sense for maps (proper maps) and in other categories. With it, Clementino and Tholen prove Tychonoff's theorem by transfinite induction on closed maps, with no nets or ultrafilters. The real work is to show that this definition agrees with the open-cover definition. Its harder direction needs a cleverly built test space Y.
 
@@ -843,7 +843,7 @@
 
 **Problem.** Tychonoff's theorem says that any product of compact spaces is compact, with the product topology. The index set may be uncountable.
 
-**How the definition helps.** Open covers use only the open sets, so the definition works in every space and behaves well under products. Sequences describe a topology well only with countable neighbourhood bases, and uncountable products of Hausdorff spaces with two or more points lack them. The theorem fails for sequential compactness. The product of 𝔠 copies of \[0, 1\] is compact but not sequentially compact. In the other direction, the first uncountable ordinal is sequentially compact but not compact. For metric spaces the two notions agree, and Cantor's diagonal argument proves the countable case. The hard part is the general proof, which needs the axiom of choice.
+**How the definition helps.** Open covers use only the open sets, so the definition behaves well under products of any size. Sequences describe a topology well only with countable neighbourhood bases, and large products lack them. The theorem fails for sequential compactness: the product of 𝔠 copies of \[0, 1\] is compact but not sequentially compact. The hard part is the general proof, which needs the axiom of choice.
 
 **Wikipedia:** [Compact space](https://en.wikipedia.org/wiki/Compact_space), [Sequentially compact space](https://en.wikipedia.org/wiki/Sequentially_compact_space), [Tychonoff's theorem](https://en.wikipedia.org/wiki/Tychonoff%27s_theorem). It says: “It was this notion of compactness that became the dominant one, because it was not only a stronger property, but it could be formulated in a more general setting with a minimum of additional technical machinery”
 
@@ -859,11 +859,11 @@
 
 *True by definition.* MSC 54D30 (Compactness), 54C30. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A space is pseudocompact if every continuous real function on it is bounded. Many authors also require the space to be completely regular. Edwin Hewitt defined it in 1948.
+**Definition.** A space is pseudocompact if every continuous real function on it is bounded. Many authors also require the space to be completely regular.
 
 **Problem.** On a pseudocompact space, every continuous real function is bounded, and it attains its maximum and minimum. For metric spaces, pseudocompactness is the same as compactness.
 
-**How the definition helps.** The definition takes the conclusion of the extreme value theorem as the hypothesis, so boundedness is free. Attaining the bound also follows: if f never reached its supremum s, then 1/(s − f) would be continuous and unbounded (our own remark). The work moves into comparing it with compactness. Every countably compact space, where each countable open cover has a finite subcover, is pseudocompact. For normal Hausdorff spaces pseudocompact implies countably compact, and for metric spaces it implies compact. In general it is much weaker: an infinite set with the particular point topology is pseudocompact but not compact. There the open sets are the empty set and the sets that contain one fixed point.
+**How the definition helps.** The definition takes the conclusion of the extreme value theorem as the hypothesis, so boundedness is free. Attaining the bound also follows: if f never reached its supremum s, then 1/(s − f) would be continuous and unbounded (our own remark). The work moves into comparing it with compactness, which agrees for metric spaces. In general it is much weaker: an infinite set where the open sets are ∅ and the sets that contain one fixed point is pseudocompact but not compact.
 
 **Wikipedia:** [Pseudocompact space](https://en.wikipedia.org/wiki/Pseudocompact_space). It says: “a topological space is said to be pseudocompact if its image under any continuous function to R is bounded.”
 
@@ -879,9 +879,9 @@
 
 **Definition.** Let X be any topological space. Its one-point extension X\* is X with one new point ∞ added. The open sets of X\* are the open sets of X, and the sets (X ∖ K) ∪ {∞} where K is a closed compact subset of X.
 
-**Problem.** The one-point extension X\* should be a topological space, and a compact one, for every space X. It should not need X to be locally compact and Hausdorff.
+**Problem.** For every topological space X, the one-point extension X\* is a compact topological space. X need not be locally compact or Hausdorff.
 
-**How the definition helps.** In our reading of the nLab proof, the word 'closed' is what keeps the intersection of two open sets open. Suppose one allowed all compact sets K. An open set U of X meets (X ∖ K) ∪ {∞} in U ∖ K, which is open only when K is closed, and in a non-Hausdorff space compact sets need not be closed. With closed compact sets, the nLab proof that the open sets are closed under unions and finite intersections is a short check. The check uses the fact that closed subsets of compact sets are compact. For Hausdorff X one can leave out the word 'closed', because compact subsets of Hausdorff spaces are closed. The other properties still need their own short proofs; for example, X\* is Hausdorff exactly when X is locally compact Hausdorff.
+**How the definition helps.** The word 'closed' is what keeps the intersection of two open sets open, in our reading of the nLab proof. An open set U of X meets (X ∖ K) ∪ {∞} in U ∖ K, which is open only when K is closed, and in a non-Hausdorff space compact sets need not be closed. With closed compact sets, the check of the axioms is short and uses that closed subsets of compact sets are compact. For Hausdorff X one can leave out the word 'closed', because compact subsets of Hausdorff spaces are closed.
 
 **nLab:** [one-point compactification](https://ncatlab.org/nlab/show/one-point+compactification). It says: “If X is Hausdorff, then it is sufficient to speak of compact subsets in def. …, since compact subspaces of Hausdorff spaces are closed.”
 
@@ -899,7 +899,7 @@
 
 **Problem.** In a Hausdorff space, one compact neighbourhood at each point gives a base of closed compact neighbourhoods. Then locally compact Hausdorff spaces are Tychonoff and Baire: a countable union of nowhere dense sets has empty interior.
 
-**How the definition helps.** In a Hausdorff space compact sets are closed, and closed subsets of compact sets are compact, so the definitions collapse into one. Without Hausdorff they differ. Sierpiński space, two points with only one of them open, is compact, and so is the cofinite topology on an infinite set. Both are locally compact in the weak senses. But they are not regular, so they lack bases of closed compact neighbourhoods. The indiscrete topology on two or more points passes every sense except the one that asks for Hausdorff. Theorems such as the Baire category theorem need the strong form, which the page gives for locally compact regular spaces.
+**How the definition helps.** In a Hausdorff space compact sets are closed, and closed subsets of compact sets are compact, so the definitions collapse into one. Without Hausdorff they differ. Sierpiński space and the cofinite topology on an infinite set are compact, so they are locally compact in the weak sense. But they are not regular, so they lack bases of closed compact neighbourhoods.
 
 **Wikipedia:** [Locally compact space](https://en.wikipedia.org/wiki/Locally_compact_space). It says: “Condition (1) is probably the most commonly used definition, since it is the least restrictive and the others are equivalent to it when X is Hausdorff.”
 
@@ -911,11 +911,11 @@
 
 *True by definition.* MSC 54D55 (Sequential spaces), 54A20. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A set is sequentially closed if it contains every limit of every convergent sequence in it. A space is sequential if every sequentially closed set is closed. Franklin gave this definition in 1965.
+**Definition.** A set is sequentially closed if it contains every limit of every convergent sequence in it. A space is sequential if every sequentially closed set is closed.
 
 **Problem.** In a sequential space, a function to any space is continuous if and only if it preserves limits of sequences. Every first-countable space, such as every metric space, is sequential. The sequential spaces are exactly the quotients of metric spaces.
 
-**How the definition helps.** The definition says closed sets are detected by sequences, and continuity is a statement about closed sets. So the continuity test follows at once. Franklin got the definition by abstracting the property of first-countable spaces that makes sequence arguments work. The work moves to two other theorems. One shows that first-countable spaces are sequential. The other shows that sequential spaces are exactly the quotients of metric spaces. For example, the real line with the integers glued to one point is sequential but not first countable.
+**How the definition helps.** The definition says closed sets are detected by sequences, and continuity is a statement about closed sets. So the continuity test follows at once. The work moves to two other theorems: first-countable spaces are sequential, and sequential spaces are exactly the quotients of metric spaces. For example, the real line with the integers glued to one point is sequential but not first countable.
 
 **Wikipedia:** [Sequential space](https://en.wikipedia.org/wiki/Sequential_space). It says: “Franklin wanted to determine "the classes of topological spaces that can be specified completely by the knowledge of their convergent sequences”
 
@@ -931,9 +931,9 @@
 
 **Definition.** A family of subsets is locally finite if each point has a neighbourhood that meets only finitely many of them. A base is σ-locally finite if it is a union of countably many locally finite families.
 
-**Problem.** Nagata–Smirnov: a space is metrizable if and only if it is regular, Hausdorff, and has a σ-locally finite base. Urysohn's theorem, with a countable base, covers only separable metric spaces.
+**Problem.** Nagata–Smirnov: a space is metrizable if and only if it is regular, Hausdorff, and has a σ-locally finite base.
 
-**How the definition helps.** A countable base is too strong, because an uncountable discrete space is metric but has no countable base. A σ-locally finite base is the right weakening. Every metric space has one (our own outline). For each n, Stone's theorem gives a locally finite open refinement of the cover by balls of radius 1/n. Conversely, the countably many layers act like the countably many sets in Urysohn's proof. The construction of the metric is the hard part. Bing proved the same result with σ-discrete bases.
+**How the definition helps.** A countable base is too strong, because an uncountable discrete space is metric but has no countable base. A σ-locally finite base is the right weakening. Every metric space has one, since for each n Stone's theorem gives a locally finite open refinement of the cover by balls of radius 1/n (our own outline). Conversely, the countably many layers act like the countably many sets in Urysohn's proof, and building the metric is the hard part.
 
 **Wikipedia:** [Nagata–Smirnov metrization theorem](https://en.wikipedia.org/wiki/Nagata%E2%80%93Smirnov_metrization_theorem), [Metrizable space](https://en.wikipedia.org/wiki/Metrizable_space). It says: “Unlike Urysohn's metrization theorem, which provides only a sufficient condition for metrizability, this theorem provides both a necessary and sufficient condition for a topological space to be metrizable.”
 
@@ -948,11 +948,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 54E15 (Uniform structures and generalizations). arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A uniform structure on a set X is a filter of subsets of X × X, called entourages. Each entourage contains the diagonal, and the entourages satisfy symmetry and triangle-like axioms. It lets one say that x is as close to y as a is to b, anywhere in the space. André Weil gave the first definition in 1937.
+**Definition.** A uniform structure on a set X is a filter of subsets of X × X, called entourages. Each entourage contains the diagonal, and the entourages satisfy symmetry and triangle-like axioms. It lets one say that x is as close to y as a is to b, anywhere in the space.
 
-**Problem.** On a compact Hausdorff space, uniform continuity and completeness depend only on the topology. The space is complete in its unique uniformity.
+**Problem.** A compact Hausdorff space has exactly one uniform structure that gives its topology, and it is complete in it. So uniform continuity and completeness there depend only on the topology.
 
-**How the definition helps.** Uniform structures separate the 'how close' data from the topology, so one can ask when the topology alone fixes it. In general it does not. The metrics \|x − y\| and \|eˣ − eʸ\| give ℝ the same topology but different uniform structures. For compact Hausdorff spaces the answer is that only one uniformity fits, so uniform notions there are topological. Every continuous map from a compact Hausdorff space to a uniform space is then uniformly continuous, which extends the Heine–Cantor theorem (our own remark). Without a uniform structure, one could not even state these facts for spaces that have no metric.
+**How the definition helps.** Uniform structures separate the 'how close' data from the topology, so one can ask when the topology alone fixes it. In general it does not: the metrics \|x − y\| and \|eˣ − eʸ\| give ℝ the same topology but different uniform structures. For compact Hausdorff spaces only one uniformity fits, so uniform notions there are topological. So every continuous map from a compact Hausdorff space to a uniform space is uniformly continuous, which extends the Heine–Cantor theorem (our own remark).
 
 **Wikipedia:** [Uniform space](https://en.wikipedia.org/wiki/Uniform_space). It says: “In fact, for a compact Hausdorff space X the set of all neighbourhoods of the diagonal in X × X form the unique uniformity compatible with the topology.”
 
@@ -964,11 +964,11 @@
 
 *Rules out counterexamples.* MSC 54E15 (Uniform structures and generalizations), 54D35. arXiv math.GN. Level 2: later undergraduate.
 
-**Definition.** A uniform space is a set with a notion of when points are uniformly close, as in a metric space. A Cauchy filter on it is a family of sets that become arbitrarily small, like the tails of a Cauchy sequence. The space is complete if every Cauchy filter converges, and Hausdorff (also called separated) if every convergent filter has only one limit. The Hausdorff completion of X is a complete Hausdorff uniform space X̄ with a uniformly continuous map X → X̄ of dense image. Every uniformly continuous map from X to a complete Hausdorff space factors through this map in exactly one way.
+**Definition.** A uniform space is Hausdorff (separated) if every convergent filter has only one limit, and complete if every Cauchy filter converges. The Hausdorff completion of X is a complete Hausdorff uniform space X̄ with a uniformly continuous map X → X̄ of dense image.
 
-**Problem.** Every uniformly continuous map from X to a complete Hausdorff uniform space extends in exactly one way along X → X̄. In other words, complete Hausdorff uniform spaces form a reflective subcategory of Unif, the category of uniform spaces. A reflective subcategory is one in which every object of the larger category has a best approximation inside the subcategory.
+**Problem.** Every uniformly continuous map from X to a complete Hausdorff uniform space extends in exactly one way along X → X̄. So complete Hausdorff uniform spaces form a reflective subcategory of the category of uniform spaces.
 
-**How the definition helps.** The Hausdorff condition makes limits unique, so the extension to the completion is unique. You define the extension of a map by taking limits of Cauchy filters. Without the Hausdorff condition, a filter can converge to several points. Then the extension need not be unique. The nLab notes that you can define a completion without the Hausdorff condition. But it also notes that complete uniform spaces do not form a reflective subcategory of Unif. Asking the target to be Hausdorff removes exactly this failure.
+**How the definition helps.** The Hausdorff condition makes limits unique, so the extension to the completion, defined by taking limits of Cauchy filters, is unique. Without the Hausdorff condition, a filter can converge to several points, and the extension need not be unique. The nLab notes that complete uniform spaces without the Hausdorff condition do not form a reflective subcategory.
 
 **nLab:** [uniform space](https://ncatlab.org/nlab/show/uniform+space). It says: “In short, the category of complete Hausdorff uniform spaces is a reflective subcategory of Unif.”
 
@@ -986,7 +986,7 @@
 
 **Problem.** A topological space has a compatible uniform structure if and only if it is completely regular.
 
-**How the definition helps.** Allowing distance 0 lets each continuous function f give a pseudometric \|f(x) − f(y)\|, even when f does not separate points. In a completely regular space these pseudometrics together give back the topology. Conversely, each pseudometric topology is completely regular, and that property passes to the combined topology. A single metric cannot do this, because many completely regular spaces are not metrizable, such as uncountable products of intervals. A countable family of pseudometrics on a Hausdorff uniform space reduces to one metric. Weil introduced the description by pseudometrics.
+**How the definition helps.** Allowing distance 0 lets each continuous function f give a pseudometric \|f(x) − f(y)\|, even when f does not separate points. In a completely regular space these pseudometrics together give back the topology. Conversely, each pseudometric topology is completely regular, and that property passes to the combined topology. A single metric cannot do this, because many completely regular spaces, such as uncountable products of intervals, are not metrizable.
 
 **Wikipedia:** [Uniformizable space](https://en.wikipedia.org/wiki/Uniformizable_space), [Uniform space](https://en.wikipedia.org/wiki/Uniform_space). It says: “Showing that a space is uniformizable is much simpler than showing it is metrizable. In fact, uniformizability is equivalent to a common separation axiom: A topological space is uniformizable if and only if it is completely regular.”
 
@@ -1032,11 +1032,11 @@
 
 *True by definition.* MSC 54E50 (Complete metric spaces), 46E15. arXiv math.GN, math.MG. Level 2: later undergraduate.
 
-**Definition.** A Banach space is a complete normed vector space. For a nonempty metric space X, choose x₀ and send x to the bounded function y ↦ d(x, y) − d(x₀, y). Use the supremum norm on bounded real functions and define the completion as the closure of this image. The usual definition uses equivalence classes of Cauchy sequences.
+**Definition.** Fix a point x₀ of a nonempty metric space X, and send each x to the bounded function y ↦ d(x, y) − d(x₀, y). Define the completion of X as the closure of this image in the Banach space of bounded real functions with the supremum norm.
 
-**Problem.** The closure is complete and contains a dense copy of X with its original distances.
+**Problem.** This completion is a complete metric space that contains a dense copy of X with its original distances.
 
-**How the definition helps.** The closure definition gives completeness from the theorem that closed subspaces of complete metric spaces are complete. The triangle inequality bounds the distance between the images by d(x, z), and evaluating at y = z attains this bound (our own). The work lies in this distance check and in proving completeness of the function space by taking uniform limits of Cauchy sequences (our own). The Cauchy sequence construction instead needs a well-defined distance between classes and a separate proof of completeness (our own). Using the closure as the definition is our own combination of the two sources.
+**How the definition helps.** The closure definition gives completeness from the theorem that closed subspaces of complete metric spaces are complete. The triangle inequality bounds the distance between the images of x and z by d(x, z), and evaluating at y = z attains this bound (our own). The usual construction by classes of Cauchy sequences instead needs a well-defined distance between classes and a separate proof of completeness (our own). Using the closure as the definition is our own combination of the two sources.
 
 **Wikipedia:** [Complete metric space](https://en.wikipedia.org/wiki/Complete_metric_space), [Kuratowski embedding](https://en.wikipedia.org/wiki/Kuratowski_embedding). It says: “Let (X, d) be a complete metric space. If A ⊆ X is a closed set, then A is also complete.”
 
@@ -1068,7 +1068,7 @@
 
 **Problem.** Complete metric spaces and locally compact Hausdorff spaces are both Baire spaces. Many results need only this property, such as the open mapping theorem and the uniform boundedness principle. Another is that nonempty complete metric spaces without isolated points are uncountable.
 
-**How the definition helps.** The definition names exactly the conclusion that the applications use, so each application starts from 'X is a Baire space' and is short. The work moves into the Baire category theorem, which has two parts. One shows that complete metric spaces are Baire, and over ZF it is equivalent to the axiom of dependent choice. The other shows that locally compact Hausdorff spaces are Baire. Neither part implies the other: infinite-dimensional Banach spaces are not locally compact, and uncountable products of nontrivial compact Hausdorff spaces are not metrizable. Bourbaki introduced the name Baire space.
+**How the definition helps.** The definition names exactly the conclusion that the applications use, so each application starts from 'X is a Baire space' and is short. The work moves into the Baire category theorem, which has two parts. One shows that complete metric spaces are Baire, and the other shows that locally compact Hausdorff spaces are Baire. Neither part implies the other: infinite-dimensional Banach spaces are not locally compact, and uncountable products of nontrivial compact Hausdorff spaces are not metrizable.
 
 **Wikipedia:** [Baire space](https://en.wikipedia.org/wiki/Baire_space), [Baire category theorem](https://en.wikipedia.org/wiki/Baire_category_theorem). It says: “According to the Baire category theorem, compact Hausdorff spaces and complete metric spaces are examples of Baire spaces.”
 
@@ -1084,9 +1084,9 @@
 
 **Definition.** A property of maps in Cʳ(M, N) is generic if it holds on a residual set. A residual set contains a countable intersection of dense open sets. Its complement is called meagre.
 
-**Problem.** Typical behaviour is often a countable list of conditions, for example one condition for each period of a periodic orbit. One wants to say that a typical map satisfies all of them at once.
+**Problem.** A countable intersection of generic properties of maps in Cʳ(M, N) is again generic. Every generic property holds on a dense set of maps.
 
-**How the definition helps.** Each single condition often holds on an open dense set (our own). A countable intersection of open dense sets need not be open, but it is residual, and residual sets are closed under countable intersections by definition. The Baire category theorem then says that a residual set in Cʳ(M, N) is dense, so a generic property is never empty. The Kupka–Smale theorem, on hyperbolic periodic orbits and transversal invariant manifolds, is stated this way (our own). The hard part is to show that each single condition is open and dense.
+**How the definition helps.** Each single condition, such as one condition for each period of a periodic orbit, often holds on an open dense set (our own). A countable intersection of open dense sets need not be open, but it is residual, and residual sets are closed under countable intersections by definition. The Baire category theorem then says that a residual set in Cʳ(M, N) is dense. The Kupka–Smale theorem is stated this way (our own), and the hard part is to show that each single condition is open and dense.
 
 **Wikipedia:** [Generic property](https://en.wikipedia.org/wiki/Generic_property). It says: “The space Cʳ(M, N), of Cʳ mappings between M and N, is a Baire space, hence any residual set is dense. This property of the function space is what makes generic properties typical.”
 
@@ -1134,9 +1134,9 @@
 
 **Definition.** A continuum is a nonempty compact connected metric space, or, less often, a compact connected Hausdorff space.
 
-**Problem.** The intersection of a decreasing sequence of continua is again a continuum: nonempty, compact and connected. This is one of the two basic ways to build new continua.
+**Problem.** The intersection of a decreasing sequence of continua is again a continuum: nonempty, compact and connected.
 
-**How the definition helps.** Compactness makes the intersection nonempty and lets a separation of the intersection extend to a separation of some Xₙ (our own outline). Without compactness both parts fail (our own examples). The closed half-lines \[n, ∞) are connected and nested, but their intersection is empty. In the plane, let Xₙ be the lines x = 0 and x = 1 together with the strip \[0, 1\] × \[n, ∞). Each Xₙ is closed and connected, but the intersection is the two lines, which is disconnected. The other basic construction, inverse limits, also needs compactness.
+**How the definition helps.** Compactness makes the intersection nonempty and lets a separation of the intersection extend to a separation of some Xₙ (our own outline). Without compactness both parts fail (our own examples). The closed half-lines \[n, ∞) are connected and nested, but their intersection is empty. In the plane, the lines x = 0 and x = 1 together with the strip \[0, 1\] × \[n, ∞) are closed and connected, but their intersection is the two lines, which is disconnected.
 
 **Wikipedia:** [Continuum (topology)](https://en.wikipedia.org/wiki/Continuum_%28topology%29). It says: “If {Xₙ} is a nested family of continua, i.e. Xₙ ⊇ Xₙ₊₁, then their intersection is a continuum.”
 
@@ -1150,9 +1150,9 @@
 
 **Definition.** A continuum is a nonempty compact connected metric space. A Peano continuum is a continuum that is locally connected: every point has arbitrarily small connected neighbourhoods.
 
-**Problem.** The Hahn–Mazurkiewicz theorem says which spaces can be filled by a curve. A Hausdorff space is a continuous image of \[0, 1\] exactly when it is a Peano continuum.
+**Problem.** The Hahn–Mazurkiewicz theorem: a Hausdorff space is a continuous image of \[0, 1\] exactly when it is a Peano continuum.
 
-**How the definition helps.** Continuous images of \[0, 1\] keep local connectedness, so adding it to the definition of continuum gives an exact list. Without it the theorem fails. The closed topologist's sine curve is a continuum, but it is not locally connected, so no path fills it. The square is a Peano continuum, so Peano's space-filling curve is a special case. The second-countable form and the metrizable form are equivalent by Urysohn's metrization theorem. The hard direction is to build the curve from the four properties.
+**How the definition helps.** Continuous images of \[0, 1\] keep local connectedness, so adding it to the definition of continuum gives an exact list. Without it the theorem fails: the closed topologist's sine curve is a continuum, but it is not locally connected, so no path fills it. The square is a Peano continuum, so Peano's space-filling curve is a special case. The hard direction is to build the curve from the four properties.
 
 **Wikipedia:** [Space-filling curve](https://en.wikipedia.org/wiki/Space-filling_curve), [Continuum (topology)](https://en.wikipedia.org/wiki/Continuum_%28topology%29). It says: “A non-empty Hausdorff topological space is a continuous image of the unit interval if and only if it is a compact, connected, locally connected, second-countable space.”
 
@@ -1188,7 +1188,7 @@
 
 **Problem.** The complement of a Jordan curve in the plane has exactly two connected components. One is bounded, the other is unbounded, and the curve is the boundary of each.
 
-**How the definition helps.** Injectivity is what makes the count exactly two. A figure eight is a closed curve that crosses itself, and its complement has three components (our own example). A closed curve that is not injective can even fill a whole square (our own example). The Jordan–Brouwer separation theorem extends the count to spheres in higher dimensions. The proof is hard even with the definition fixed: the polygon case is easy, but approximating a general curve by polygons is not. Veblen's 1905 proof was long taken as the first rigorous one, but Hales argued that Jordan's own proof was essentially correct.
+**How the definition helps.** Injectivity is what makes the count exactly two. A figure eight is a closed curve that crosses itself, and its complement has three components (our own example). A closed curve that is not injective can even fill a whole square (our own example). The proof is still hard: the polygon case is easy, but approximating a general curve by polygons is not.
 
 **Wikipedia:** [Jordan curve theorem](https://en.wikipedia.org/wiki/Jordan_curve_theorem). It says: “asserts that every simple closed curve in the plane (known as a Jordan curve) divides the plane into two regions”
 
@@ -1204,9 +1204,9 @@
 
 **Definition.** A simple curve is the image of an interval or a circle under an injective continuous map. So a simple curve does not cross itself.
 
-**Problem.** Show that curves are one-dimensional: a curve cannot fill a region of the plane.
+**Problem.** A simple curve cannot fill a region of the plane. In particular, no simple curve is the whole unit square.
 
-**How the definition helps.** The injective condition excludes space-filling curves such as Peano's. Jordan's 1887 definition of a curve allows any continuous image of an interval. This admits Peano's 1890 curve, which passes through every point of the unit square. An injective continuous map from the compact interval is a homeomorphism onto its image. The interval has cut points (points whose removal disconnects it), but the square has none, so the square is not such an image. The definition does not exclude all strange behaviour: Osgood's 1903 Jordan curve has positive area.
+**How the definition helps.** The injective condition excludes space-filling curves such as Peano's, which Jordan's broader 1887 definition of a curve allows. An injective continuous map from a compact interval is a homeomorphism onto its image. The interval has cut points (points whose removal disconnects it), but the square has none, so the square is not such an image. The definition does not exclude all strange behaviour: Osgood's 1903 Jordan curve has positive area.
 
 **Wikipedia:** [Space-filling curve](https://en.wikipedia.org/wiki/Space-filling_curve), [Curve](https://en.wikipedia.org/wiki/Curve). It says: “A non-self-intersecting continuous curve cannot fill the unit square because that will make the curve a homeomorphism from the unit interval onto the unit square”
 
@@ -1225,7 +1225,7 @@
 
 **Problem.** Brouwer's theorem says that any two nonempty, perfect, compact, totally disconnected metrizable spaces are homeomorphic. So the Cantor set is the only such space up to homeomorphism.
 
-**How the definition helps.** The words perfect and totally disconnected name exactly what a construction by repeated splitting needs. Each piece splits into two smaller pieces that are both open and closed, as in a binary tree. Each condition rules out a known example. A finite space, or a convergent sequence with its limit, has isolated points. An interval is not totally disconnected, and the irrationals are not compact. The proof builds a homeomorphism by matching two trees of small open-and-closed pieces (our own outline). The page also says that every nonempty compact metric space is a continuous image of the Cantor set.
+**How the definition helps.** The words perfect and totally disconnected name exactly what a construction by repeated splitting needs. Each piece splits into two smaller pieces that are both open and closed, as in a binary tree. Each condition rules out a known example: a convergent sequence with its limit has an isolated point, an interval is not totally disconnected, and the irrationals are not compact. The proof builds a homeomorphism by matching two trees of small open-and-closed pieces (our own outline).
 
 **Wikipedia:** [Cantor space](https://en.wikipedia.org/wiki/Cantor_space). It says: “A topological space is a Cantor space if and only if it is non-empty, perfect, compact, totally disconnected, and metrizable.”
 
@@ -1239,11 +1239,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 54H05 (Descriptive set theory (topological aspects of Borel, analytic, projective, etc. sets)), 03E15. arXiv math.GN, math.LO. Level 2: later undergraduate.
 
-**Definition.** A subset of a space is perfect if it is closed and has no isolated points. A Polish space is a separable space whose topology comes from a complete metric. In a Polish space, every nonempty perfect set has the cardinality of the continuum.
+**Definition.** A subset of a space is perfect if it is closed and has no isolated points. A Polish space is a separable space whose topology comes from a complete metric.
 
 **Problem.** The Cantor–Bendixson theorem says that every closed subset of a Polish space is the disjoint union of a perfect set and a countable set. So no closed set of reals is a counterexample to the continuum hypothesis.
 
-**How the definition helps.** Perfect sets are exactly what remains after removing isolated points again and again, so the theorem names the remainder of that process. The perfect part is the set of points whose every neighbourhood holds uncountably many points of the set (our own remark). With a countable base, the remaining points form a countable set (our own outline). A nonempty perfect set in a Polish space contains a copy of the Cantor set, so it has size of the continuum (our own remark). Hence closed sets are either countable or of size of the continuum. The axiom of choice gives sets of reals without this property, such as Bernstein sets, which meet every uncountable closed set but contain none.
+**How the definition helps.** Perfect sets are exactly what remains after removing isolated points again and again, so the theorem names the remainder of that process. The perfect part is the set of points whose every neighbourhood holds uncountably many points of the set, and with a countable base the other points form a countable set (our own outline). A nonempty perfect set in a Polish space contains a copy of the Cantor set, so it has the size of the continuum (our own remark). The axiom of choice gives sets of reals without this property, such as Bernstein sets.
 
 **Wikipedia:** [Perfect set property](https://en.wikipedia.org/wiki/Perfect_set_property), [Perfect set](https://en.wikipedia.org/wiki/Perfect_set). It says: “any closed subset of X can be written uniquely as the disjoint union of a perfect set and a countable set.”
 
@@ -1259,9 +1259,9 @@
 
 **Definition.** A topological group is a group with a topology in which multiplication and inversion are continuous. A space is T₁ when each single point is a closed set. It is Hausdorff when distinct points have disjoint open neighbourhoods.
 
-**Problem.** Show that a topological group, or a topological vector space, is Hausdorff as soon as single points are closed.
+**Problem.** A topological group, or a topological vector space, is Hausdorff as soon as single points are closed.
 
-**How the definition helps.** Translations are homeomorphisms, so the space looks the same at every point, and one separation at the identity spreads everywhere. So authors who build the Hausdorff condition into the definition, as the nLab notes some do, could ask only that {e} be closed. Our own sketch: if x ≠ e, choose a neighbourhood U of e that misses x. Continuity gives a neighbourhood V of e with V V⁻¹ ⊆ U, and then V and xV are disjoint. ProofWiki gives the vector space version with a third test: each nonzero x lies outside some neighbourhood of 0. The proof is short.
+**How the definition helps.** Translations are homeomorphisms, so the space looks the same at every point, and one separation at the identity spreads everywhere. Our own sketch: if x ≠ e, choose a neighbourhood U of e that misses x. Continuity gives a neighbourhood V of e with V V⁻¹ ⊆ U, and then V and xV are disjoint. So authors who build the Hausdorff condition into the definition could ask only that {e} be closed.
 
 **nLab:** [topological group](https://ncatlab.org/nlab/show/topological+group). It says: “Sometimes topological groups are understood to be Hausdorff (e.g. Bredon 72, p. 1).”
 
@@ -1346,11 +1346,11 @@
 
 *True by definition.* MSC 54B20 (Hyperspaces in general topology), 68U05. arXiv cs.CG, math.MG. Level 3: graduate.
 
-**Definition.** The Hausdorff distance is the least radius for which each set lies within that distance of the other. Take nonempty compact plane sets A and B at Hausdorff distance one. Expand A by t and B by 1 − t, including every point within the stated distance. Intersect the expansions.
+**Definition.** The Hausdorff distance between two compact sets is the least r such that each lies within distance r of the other. For compact plane sets A and B at Hausdorff distance one and 0 ≤ t ≤ 1, let Mₜ be the set of points within t of A and within 1 − t of B.
 
-**Problem.** For 0 ≤ t ≤ 1, this intersection contains every compact set at distances t from A and 1 − t from B. It attains both distances itself.
+**Problem.** The set Mₜ is at Hausdorff distance t from A and 1 − t from B. It contains every compact set with these two distances.
 
-**How the definition helps.** Intersecting the two expansions keeps every point an intermediate set could contain. Our own proof starts with this candidate and derives the distance equations. From each point of A, choose a nearest point of B, and do the same starting from B. On each resulting segment, take the point a fraction t of the way from its A endpoint. It belongs to both expansions, since the segment has length at most one. Thus the Hausdorff distances are at most t and 1 − t. Their sum must be at least one by the triangle inequality, so both bounds are exact.
+**How the definition helps.** Intersecting the two expansions keeps every point an intermediate set could contain. Our own proof joins each point of A to a nearest point of B, and each point of B to a nearest point of A. The point a fraction t along each segment from its A end lies in Mₜ, so the distances from Mₜ to A and B are at most t and 1 − t. Their sum must be at least one by the triangle inequality, so both bounds are exact.
 
 **Paper or page:** [Between Shapes, Using the Hausdorff Distance](https://arxiv.org/abs/2009.14719v2). It says: “Sα is the maximal set that satisfies dH(A, Sα) = α and dH(B, Sα) = 1 − α.”
 
@@ -1386,7 +1386,7 @@
 
 **Problem.** Suppose singletons in X are closed, and let Y be any topological space. A map from X to Y is continuous exactly when its induced map on closed sets is continuous for the lower Vietoris topologies.
 
-**How the definition helps.** A test for meeting an open set pulls back to a test for meeting its preimage when the original map is continuous (our own). Taking closure preserves which open sets an image meets (our own). Conversely, sending x to its singleton is continuous because each hit test pulls back to the tested open set (our own). Composing with the induced map recovers the open preimage test for the original map (our own). Give two points the topology with only the empty set and the whole space open (our own). The identity into the discrete topology fails continuity, but its induced map has a one-point domain (our own).
+**How the definition helps.** A test for meeting an open set pulls back to a test for meeting its preimage when the original map is continuous, and taking closure does not change which open sets an image meets (our own). Conversely, sending x to its singleton is continuous, and composing with the induced map recovers the open preimage test for the original map (our own). Closed singletons are needed: give two points the indiscrete topology (our own). The identity into the discrete topology is not continuous, but its induced map has a one-point domain (our own).
 
 **Paper or page:** [Some notes on induced functions and group actions on hyperspaces](https://arxiv.org/abs/2104.12904v1). It says: “f is continuous if and only if f̃: CLᵥ⁻(X) → CLᵥ⁻(Y) is continuous.”
 
@@ -1402,9 +1402,9 @@
 
 **Definition.** Call a continuous map proper if the inverse image of each compact set is compact. Another definition asks for a closed map whose fibers, the inverse images of single points, are compact. The two definitions agree for maps between locally compact Hausdorff spaces.
 
-**Problem.** Let f be a proper map between locally compact Hausdorff spaces. The one-point compactification adds one point whose neighborhoods are complements of compact closed sets. Then f extends to a continuous map between their one-point compactifications that sends the added point to the added point.
+**Problem.** A proper map between locally compact Hausdorff spaces extends to a continuous map between their one-point compactifications that sends the added point to the added point.
 
-**How the definition helps.** With the compact-preimage definition, neighborhoods of the added point pull back to neighborhoods of the added point. Take an open neighborhood of the added point, the complement of a compact closed set K. Its inverse image is the complement of the inverse image of K. That set is compact, and it is closed because the space is Hausdorff. So the inverse image is an open neighborhood of the added point, and continuity elsewhere is unchanged. The work goes into proving that closed maps with compact fibers have compact preimages of compact sets. Wikipedia gives the compact-preimage definition, and this proof is our own.
+**How the definition helps.** With the compact-preimage definition, neighborhoods of the added point pull back to neighborhoods of the added point. A basic open neighborhood of the added point is the complement of a compact closed set K. Its inverse image is the complement of the inverse image of K, which is compact, and closed because the space is Hausdorff. The work goes into proving that closed maps with compact fibers have compact preimages of compact sets.
 
 **Wikipedia:** [Proper map](https://en.wikipedia.org/wiki/Proper_map). It says: “a function between topological spaces is called proper if inverse images of compact subsets are compact.”
 
@@ -1418,9 +1418,9 @@
 
 **Definition.** A map f : X → Y is proper if the preimage of every compact set is compact. The space of ends e(X) records the ways to go to infinity in X. It is the limit, over compact K ⊆ X, of the sets of connected components of the closures of X ∖ K.
 
-**Problem.** Make the ends of non-compact spaces, and homotopy at infinity, into functorial invariants. Functorial means that each suitable map of spaces gives a map of the invariants, in a way that respects composition.
+**Problem.** A proper map f : X → Y induces a continuous map e(X) → e(Y), and this respects composition. So the space of ends is a functor on spaces and proper maps.
 
-**How the definition helps.** Proper maps keep compact sets compact under preimage, so they send ends to ends. With all continuous maps, ends are not functorial. For example, the map ℝ → {0} is continuous, but ℝ has two ends and the point has none. The cause is that preimages under continuous maps need not keep compactness. A proper map gives a map of the inverse systems of component sets, and so a continuous map of end spaces. The cylinder maps are also proper, and this gives proper homotopy. The proper fundamental group then needs a further choice, a base ray instead of a base point.
+**How the definition helps.** Proper maps keep compact sets compact under preimage, so they send ends to ends. With all continuous maps, ends are not functorial. For example, the map ℝ → {0} is continuous, but ℝ has two ends and the point has none. The cylinder maps are also proper, and this gives proper homotopy and homotopy invariants at infinity.
 
 **nLab:** [proper homotopy theory](https://ncatlab.org/nlab/show/proper+homotopy+theory). It says: “The assignment sending X to e(X) cannot be functorial on the category of spaces and continuous maps, since the contracting map ℝ → {0} is continuous”
 
@@ -1456,7 +1456,7 @@
 
 **Problem.** Continuous maps from a hemicompact space to a metric space form a metrizable space in the compact-open topology.
 
-**How the definition helps.** One sequence suffices because every compact test set fits inside one member (our own). On each nonempty member, take the greatest distance between corresponding function values (our own). Cap each distance at one, multiply by 2⁻ⁿ and add the results (our own). Uniform convergence on compact sets gives the compact-open topology here (our own). The rationals have a countable cover by compact singletons (our own). Every compact subset of the rationals has empty interior, so choose a rational within 1/n of zero outside member n (our own). These points together with zero form a compact set that no member contains (our own).
+**How the definition helps.** One sequence suffices because every compact test set fits inside one member (our own). Take the greatest distance between the function values on member n, cap it at one, multiply by 2⁻ⁿ and add the results (our own). This metric gives uniform convergence on compact sets, which is the compact-open topology here (our own). The rationals are not hemicompact: for any sequence of compact sets, choosing a rational within 1/n of zero outside member n gives, with zero, a compact set that no member contains (our own).
 
 **Wikipedia:** [Hemicompact space](https://en.wikipedia.org/wiki/Hemicompact_space). It says: “defines a metric on C(X,M) which induces the compact-open topology.”
 
@@ -1486,11 +1486,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 54C65 (Selections in general topology), 54D20, 54B17. arXiv math.GN. Level 3: graduate.
 
-**Definition.** Michael's theorem: a T₁ space X (a space whose points are closed) is paracompact Hausdorff exactly when certain relations from X to Banach spaces always have a continuous selection. These relations are entire, lower semicontinuous, and have closed convex fibres. A relation is entire if every point of X is related to something, and lower semicontinuous if, for each open set U, the points related to something in U form an open set. A selection is a continuous section of the projection to X, so it chooses one related point for each point of X.
+**Definition.** Michael's selection theorem: a T₁ space X is paracompact Hausdorff exactly when every lower semicontinuous relation from X to a Banach space with nonempty closed convex fibres has a continuous selection. Lower semicontinuous means that, for each open U, the points related to something in U form an open set. A selection chooses one related point for each point of X.
 
-**Problem.** Show that a pushout of paracompact Hausdorff spaces along a closed embedding is again paracompact Hausdorff.
+**Problem.** A pushout of paracompact Hausdorff spaces along a closed embedding is again paracompact Hausdorff.
 
-**How the definition helps.** The selection property is about sections of maps, and sections are easy to move and glue. Sections pull back along continuous maps and extend along closed embeddings. To show that the pushout W is paracompact, pull a given relation back to the two pieces. Choose a selection on one piece, extend it over the other piece, and glue by the universal property of the pushout. In our own reading, partitions of unity or refinements of covers would be much harder to glue. You must also check that W is T₁, which is easy. The real work is Michael's theorem itself, which the nLab page does not prove.
+**How the definition helps.** The selection property is about sections of maps, and sections pull back along continuous maps and extend along closed embeddings. To show that the pushout W is paracompact, pull a given relation back to the two pieces. Choose a selection on one piece, extend it over the other piece, and glue by the universal property of the pushout. In our own reading, partitions of unity or refinements of covers would be much harder to glue.
 
 **nLab:** [colimits of paracompact Hausdorff spaces](https://ncatlab.org/nlab/show/colimits+of+paracompact+Hausdorff+spaces). It says: “The relevant result, due to Ernest Michael, is particularly well-adapted to the study of colimits.”
 
@@ -1538,9 +1538,9 @@
 
 **Definition.** A space X is weakly Hausdorff if the image of every continuous map K → X from a compact Hausdorff space K is closed in X. Every Hausdorff space is weakly Hausdorff. Every weakly Hausdorff space is T₁, which means that its points are closed sets.
 
-**Problem.** Find a category of nice spaces that is closed under the pushouts that homotopy theory uses. An example is attaching one space to another along a closed subspace.
+**Problem.** A pushout of weakly Hausdorff spaces along a closed inclusion is weakly Hausdorff. An example is attaching one space to another along a closed subspace.
 
-**How the definition helps.** Weak Hausdorff keeps the useful consequences of Hausdorff and makes the category closed under the needed pushouts. Steenrod chose compactly generated Hausdorff spaces. These are not closed under many colimits, for instance quotients, when the colimits are formed in Top. With weak Hausdorff in place of Hausdorff, the category becomes closed under pushouts along closed inclusions. The nLab quotes Peter May: his construction of iterated loop spaces uses these pushouts all through. The page gives no specific counterexample in compactly generated Hausdorff spaces.
+**How the definition helps.** Weak Hausdorff keeps the useful consequences of Hausdorff and makes the category closed under the pushouts that homotopy theory uses. Steenrod chose compactly generated Hausdorff spaces, which are not closed under many colimits, for instance quotients, formed in Top. With weak Hausdorff in place of Hausdorff, pushouts along closed inclusions stay in the category.
 
 **nLab:** [weakly Hausdorff topological space](https://ncatlab.org/nlab/show/weakly+Hausdorff+topological+space), [compactly generated topological space](https://ncatlab.org/nlab/show/compactly+generated+topological+space). It says: “The construction of pushouts is better behaved in CGWH than in CGH. Specifically, CHWH is closed under pushouts, one leg of which is the inclusion of a closed subspace. CGH does not have such nice behavior”
 
@@ -1622,11 +1622,11 @@
 
 *Rules out counterexamples.* MSC 54D30 (Compactness), 18C35, 18N40. arXiv math.GN, math.AT. Level 3: graduate.
 
-**Definition.** Ordinary compactness of an object Y asks that hom(Y, −) preserve all filtered colimits. Here we ask for less. hom(Y, −) must only preserve colimits of transfinite sequences of spaces in which each map is a closed inclusion of T₁-spaces (spaces whose points are closed) and each limit stage is the colimit of the earlier stages. This is compactness 'relative to' a class of maps.
+**Definition.** A space Y is compact relative to closed T₁ inclusions if hom(Y, −) preserves colimits of transfinite sequences in which each map is a closed inclusion of T₁-spaces (spaces whose points are closed). Ordinary compactness of an object asks that hom(Y, −) preserve all filtered colimits.
 
-**Problem.** If Y is a compact space, every map from Y into a CW complex, or into any colimit of closed T₁ inclusions, factors through a stage. The small object argument (the standard way to build factorizations of maps) for the model structure on topological spaces needs this.
+**Problem.** Every compact space Y is compact relative to closed T₁ inclusions. So every map from Y into a CW complex factors through some skeleton.
 
-**How the definition helps.** Restricting the class of colimits removes the examples where compact spaces fail to be compact objects. In the full sense, the only compact objects of Top are the finite discrete spaces. For example, the two-point indiscrete space is compact, but it is not compact as an object. It is a colimit of a sequence of spaces Xₙ, and its identity map factors through none of them. Colimits of closed inclusions of T₁-spaces exclude such sequences, and then a short argument shows that hom(Y, −) preserves the colimit for compact Y. This applies to the skeleta of CW complexes, so πₖ preserves such colimits.
+**How the definition helps.** Restricting the class of colimits removes the examples where compact spaces fail to be compact objects. In the full sense, the only compact objects of Top are the finite discrete spaces. For example, the two-point indiscrete space is compact, but it is a colimit of a sequence of spaces Xₙ and its identity map factors through none of them. Colimits of closed inclusions of T₁-spaces exclude such sequences, and then a short argument gives the result.
 
 **nLab:** [compact object](https://ncatlab.org/nlab/show/compact+object). It says: “If Y ∈ Top is a compact topological space, then hom(Y,-) preserves colimits of functors mapping out of limit ordinals, provided that the arrows of the cocone diagram, X\_α → X\_β, are closed inclusions of T₁-spaces”
 
@@ -1644,7 +1644,7 @@
 
 **Problem.** Let K be a Hausdorff compactification of X, that is, a compact Hausdorff space with a dense copy of X. Then a unique continuous surjection from βX onto K fixes the points of X.
 
-**How the definition helps.** With the universal property as the definition, the map from βX to K exists at once. It is the extension of the embedding of X into K. Its image is compact, so it is closed in K, and it contains the dense set X, so it is all of K. Uniqueness holds because continuous maps into a Hausdorff space that agree on a dense set are equal. The work goes into proving that the closure construction has the universal property. Wikipedia states the universal property and that every Hausdorff compactification is a quotient of βX. The proof is our own.
+**How the definition helps.** With the universal property as the definition, the map from βX to K exists at once: it is the extension of the embedding of X into K. Its image is compact, so it is closed in K, and it contains the dense set X, so it is all of K. Uniqueness holds because continuous maps into a Hausdorff space that agree on a dense set are equal. The work goes into proving that the closure construction has the universal property.
 
 **Wikipedia:** [Stone–Čech compactification](https://en.wikipedia.org/wiki/Stone%E2%80%93%C4%8Cech_compactification). It says: “any continuous map from X into any other compact Hausdorff space factors uniquely through βX.”
 
@@ -1676,11 +1676,11 @@
 
 *True by definition. Confidence: medium.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)), 43A40, 22B05. arXiv math.GN, math.FA. Level 3: graduate.
 
-**Definition.** The Bohr compactification is a map b from G to a compact Hausdorff group B. Every continuous group homomorphism from G to a compact Hausdorff group must pass uniquely through b. The dual is the group of continuous homomorphisms into the circle, with the topology of uniform convergence on compact sets. For locally compact Hausdorff abelian G, make its dual discrete to obtain H, then let B be the dual of H.
+**Definition.** The Bohr compactification of a topological group G is a compact Hausdorff group B with a map b : G → B through which every continuous homomorphism from G to a compact Hausdorff group factors uniquely. For a locally compact Hausdorff abelian group G, let H be its Pontryagin dual with the discrete topology.
 
-**Problem.** The dual of H, with the map from G given by evaluation, is the Bohr compactification of G.
+**Problem.** For a locally compact Hausdorff abelian group G, the dual of H, with the evaluation map from G, is the Bohr compactification of G.
 
-**How the definition helps.** The discrete dual gives a compact group, and duality turns the required extension into a map out of a discrete group. The identity map from H to the original dual is continuous, so its dual gives the evaluation map b. A map to a compact abelian K dualizes to a homomorphism from the discrete dual of K into H (our own). Dualizing back gives the unique extension (our own). For a general compact target, factor through the abelian closure of the image and use density of b(G) for uniqueness (our own). The image of b is dense because a proper closed subgroup of B would yield a nontrivial character trivial on b(G) (our own). The work lies in Pontryagin duality, rather than constructing B as a closure inside a product of circles (our own).
+**How the definition helps.** The discrete dual gives a compact group, and duality turns the required extension into a map out of a discrete group. A map to a compact abelian K dualizes to a homomorphism from the discrete dual of K into H, and dualizing back gives the unique extension (our own). For a general compact target, factor through the abelian closure of the image (our own). The work lies in Pontryagin duality, rather than in building B as a closure inside a product of circles (our own).
 
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality), [Bohr compactification](https://en.wikipedia.org/wiki/Bohr_compactification). It says: “is a morphism into a compact group which is easily shown to satisfy the requisite universal property.”
 
@@ -1694,9 +1694,9 @@
 
 **Definition.** For a subspace of a compact Hausdorff space, the Stone–Čech compactification contains that subspace densely and extends every bounded continuous real function. Pseudocompactness means that every continuous real function is bounded.
 
-**Problem.** Let X and Y be infinite subspaces of compact Hausdorff spaces. Compactifying each factor gives a natural map from the Stone–Čech compactification of X × Y to the product of the two Stone–Čech compactifications. This map is a homeomorphism exactly when X × Y is pseudocompact.
+**Problem.** Let X and Y be infinite subspaces of compact Hausdorff spaces. The natural map from the Stone–Čech compactification of X × Y to the product of the Stone–Čech compactifications of X and Y is a homeomorphism exactly when X × Y is pseudocompact.
 
-**How the definition helps.** The extension property turns the product comparison into a test on bounded continuous functions (our own). Glicksberg’s theorem connects that test to pseudocompactness. For two discrete copies of ℕ, take the function equal to one on the diagonal and zero elsewhere (our own). Choose an added point p in the Stone–Čech compactification of ℕ (our own). Any two neighborhoods of p overlap on infinitely many natural numbers (our own). Hence each product neighborhood of (p, p) meets both the diagonal and its complement, preventing continuous extension (our own).
+**How the definition helps.** The extension property turns the product comparison into a test on bounded continuous functions (our own). Glicksberg’s theorem connects that test to pseudocompactness. For two discrete copies of ℕ, the function equal to one on the diagonal and zero elsewhere does not extend (our own). Near any point (p, p) with p an added point, every product neighborhood meets both the diagonal and its complement (our own).
 
 **Paper or page:** [Functions on products of pseudocompact spaces](https://arxiv.org/abs/2109.09716v2). It says: “If X is pseudocompact and Φ is continuous, then Φ extends to a continuous function Φ̂: X̂ → ℝ.”
 
@@ -1731,9 +1731,9 @@
 
 **Definition.** Let V and U be open sets of a space X. Write V ≪ U ('V is way below U') if every open cover of U has a finite subfamily that covers V. X is core-compact if each open neighbourhood U of a point contains an open neighbourhood V of that point with V ≪ U. In lattice terms, the lattice of open sets of X (its frame) is a continuous lattice, that is, each element is the join of the elements way below it.
 
-**Problem.** Which spaces X are exponentiable in Top? That is, for which X does the functor X × (−) have a right adjoint? This right adjoint, when it exists, gives a space of continuous maps out of X.
+**Problem.** A space X is exponentiable in Top, that is, X × (−) has a right adjoint, if and only if X is core-compact.
 
-**How the definition helps.** Core-compactness turns the question into a clean equivalence, with no extra condition. Local compactness, suitably defined, is sufficient for exponentiability, but without the Hausdorff condition there are several inequivalent versions of it. Also, local compactness is a characterization only for sober spaces (spaces in which each irreducible closed set is the closure of exactly one point). Core-compactness is stated purely in terms of the lattice of open sets. With it, the answer is this: X is exponentiable if and only if it is core-compact. For Hausdorff spaces it reduces to local compactness. For locales (spaces described only by their lattice of open sets), the same idea gives the statement that the exponentiable locales are exactly the locally compact ones.
+**How the definition helps.** Core-compactness turns the question into a clean equivalence, with no extra condition. Local compactness is sufficient, but without the Hausdorff condition it has several inequivalent versions, and it characterizes exponentiability only for sober spaces. Core-compactness is stated purely in terms of the lattice of open sets, and for Hausdorff spaces it reduces to local compactness. For locales, the same idea says that the exponentiable locales are exactly the locally compact ones.
 
 **nLab:** [exponential law for spaces](https://ncatlab.org/nlab/show/exponential+law+for+spaces), [locally compact topological space](https://ncatlab.org/nlab/show/locally+compact+topological+space), [locally compact locale](https://ncatlab.org/nlab/show/locally+compact+locale). It says: “An object X of Top is exponentiable if and only if it is core-compact.”
 
@@ -1766,9 +1766,9 @@
 
 **Definition.** A space X is compactly generated, also called a k-space, if this holds: a subset U of X is open exactly when its preimage under every continuous map C → X from a compact Hausdorff space C is open. Equivalently, X is a quotient of a disjoint union of compact Hausdorff spaces.
 
-**Problem.** Find a category of spaces that contains the spaces of everyday topology, such as CW complexes, manifolds and locally compact Hausdorff spaces. In it, the exponential law Map(X × Y, Z) ≅ Map(X, Map(Y, Z)) must hold for all objects. In words, maps out of a product X × Y are the same as maps from X into the space of maps out of Y.
+**Problem.** The compactly generated spaces include CW complexes, manifolds and locally compact Hausdorff spaces, and they form a cartesian closed category. So Map(X × Y, Z) ≅ Map(X, Map(Y, Z)) holds for all compactly generated X, Y and Z.
 
-**How the definition helps.** In k-spaces the category is cartesian closed, so the exponential law holds for every pair of spaces. In Top only some spaces are exponentiable (a space Y is exponentiable if a mapping space out of Y with the exponential law exists), so the law cannot be stated for all spaces. In k-spaces, the product and the mapping space are both replaced by their k-ifications. The k-ification of a space makes open every set whose preimages under maps from compact Hausdorff spaces are open. The cost is that products and limits must be k-ified, so they differ from those in Top. Gale introduced k-spaces in 1950, and Steenrod made them the convenient category.
+**How the definition helps.** In k-spaces the category is cartesian closed, so the exponential law holds for every pair of spaces. In Top only some spaces are exponentiable, so the law cannot be stated for all spaces. The cost is that products, limits and mapping spaces must be k-ified, which makes open every set whose preimages under maps from compact Hausdorff spaces are open. So they differ from those in Top.
 
 **nLab:** [compactly generated topological space](https://ncatlab.org/nlab/show/compactly+generated+topological+space), [convenient category of topological spaces](https://ncatlab.org/nlab/show/convenient+category+of+topological+spaces). It says: “As opposed to general topological spaces, compactly generated spaces form a cartesian closed category while still being general enough for most purposes of general topology”
 
@@ -1787,7 +1787,7 @@
 
 **Problem.** The product X × Y of two CW complexes is again a CW complex. Its cells are the products of the cells of X with the cells of Y.
 
-**How the definition helps.** The compactly generated product removes the exceptions, so the statement holds for every pair of CW complexes. With the ordinary product topology, the product of two CW complexes need not be a CW complex. With the compactly generated product, the statement holds for all CW complexes. The two products agree when one factor is locally compact, or when both factors have countably many cells. So the change matters only for large complexes.
+**How the definition helps.** With the ordinary product topology, the product of two CW complexes need not be a CW complex. The compactly generated product removes these exceptions, so the statement holds for every pair. The two products agree when one factor is locally compact, or when both factors have countably many cells. So the change matters only for large complexes.
 
 **nLab:** [CW complex](https://ncatlab.org/nlab/show/CW+complex), [convenient category of topological spaces](https://ncatlab.org/nlab/show/convenient+category+of+topological+spaces), [compactly generated topological space](https://ncatlab.org/nlab/show/compactly+generated+topological+space). It says: “need not be a CW complex in the usual product topology, but it is in the compactly generated topology.”
 
@@ -1835,11 +1835,11 @@
 
 *True by definition.* MSC 54D60 (Realcompactness and realcompactification), 54B10. arXiv math.GN. Level 3: graduate.
 
-**Definition.** Call a space realcompact if it is homeomorphic to a closed subspace of a product of copies of the real line. An equivalent test for Tychonoff spaces, the subspaces of compact Hausdorff spaces, uses zero sets of continuous real functions. Take a maximal family of zero sets in which all finite intersections are nonempty. If all its countable intersections are nonempty, the test asks for a point common to the whole family.
+**Definition.** Call a space realcompact if it is homeomorphic to a closed subspace of a product of copies of the real line. For Tychonoff spaces, an equivalent test uses maximal families of zero sets of continuous real functions.
 
 **Problem.** Every product of realcompact spaces is realcompact.
 
-**How the definition helps.** With the embedding definition, a product of closed embeddings is again a closed embedding. Embed each factor as a closed subspace of a power of ℝ. The product of these embeddings is a closed embedding into a product of powers of ℝ. That product is itself a power of ℝ, indexed by the disjoint union of the index sets. The work goes into proving that the embedding test agrees with the zero-set test. Wikipedia states the embedding test, and the proof is our own.
+**How the definition helps.** With the embedding definition, a product of closed embeddings is again a closed embedding. Embed each factor as a closed subspace of a power of ℝ. The product of these embeddings is a closed embedding into a product of powers of ℝ, which is itself a power of ℝ. The work goes into proving that the embedding test agrees with the zero-set test.
 
 **Wikipedia:** [Realcompact space](https://en.wikipedia.org/wiki/Realcompact_space). It says: “as a closed subset in some (not necessarily finite) Cartesian power of the reals, with the product topology.”
 
@@ -1872,11 +1872,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 54E05 (Proximity structures and generalizations), 54D35. arXiv math.GN. Level 3: graduate.
 
-**Definition.** A proximity on a set is a relation 'A is near B' between subsets. Its axioms include symmetry, and that A is near B ∪ C exactly when A is near B or near C. It describes nearness of sets to sets, not only of points to sets. Efremovič axiomatized it in 1934, and Wallace found a version in 1941.
+**Definition.** A proximity on a set is a relation 'A is near B' between subsets. Its axioms include symmetry, and that A is near B ∪ C exactly when A is near B or near C. It describes nearness of sets to sets, not only of points to sets.
 
 **Problem.** The Hausdorff compactifications of a Tychonoff space correspond one-to-one, up to equivalence, with the separated proximities compatible with its topology. Two sets are near exactly when their closures meet in the compactification.
 
-**How the definition helps.** A compactification is determined by which pairs of sets have touching closures at infinity, and a proximity records exactly that data. So the classification becomes a statement about one relation on subsets. For a compact Hausdorff space, only one proximity fits: closures must meet. The Stone–Čech compactification corresponds to the proximity where two sets are near unless a continuous function separates them (our own remark). The hard part is to build the compactification from a proximity, by using maximal families of mutually near sets (our own remark). This correspondence is due to Smirnov (our own remark).
+**How the definition helps.** A compactification is determined by which pairs of sets have touching closures, and a proximity records exactly that data. So the classification becomes a statement about one relation on subsets. The Stone–Čech compactification corresponds to the proximity where two sets are near unless a continuous function separates them (our own remark). The hard part is to build the compactification from a proximity, by using maximal families of mutually near sets (our own remark).
 
 **Wikipedia:** [Proximity space](https://en.wikipedia.org/wiki/Proximity_space). It says: “Given a compact Hausdorff space, there is a unique proximity space whose corresponding topology is the given topology: A is near B if and only if their closures intersect. More generally, proximities classify the compactifications”
 
@@ -1976,7 +1976,7 @@
 
 **Problem.** A Hausdorff uniformity comes from a metric exactly when it has a countable base of close-pair relations.
 
-**How the definition helps.** A single metric supplies a countable base by taking distance bounds 1, ½, ⅓ and so on (our own). The uniform metrization theorem gives the converse (our own). On ℝ, let basic entourages bound the changes of finitely many continuous real functions (our own). Continuity and the identity function give the usual topology (our own). For each proposed basic entourage number n, continuity gives two distinct points in (n, n + 1) passing its tests (our own). Interpolate continuously between prescribed values zero and one on each successive pair (our own). Requiring this function to change by less than ½ excludes one pair from every proposed base member (our own).
+**How the definition helps.** A single metric supplies a countable base by taking distance bounds 1, ½, ⅓ and so on, and the uniform metrization theorem gives the converse (our own). On ℝ, the uniformity whose basic entourages bound the changes of finitely many continuous real functions gives the usual, metrizable topology (our own). But it has no countable base (our own). For any proposed sequence of basic entourages, one continuous function that moves from zero to one between suitable close pairs of points defeats every member (our own).
 
 **Paper or page:** [Uniform Space whose Topology is Metrizable is not necessarily Metrizable](https://proofwiki.org/wiki/Uniform_Space_whose_Topology_is_Metrizable_is_not_necessarily_Metrizable). It says: “Then it is not necessarily the case that 𝒰 is itself a metrizable uniformity.”
 
@@ -2026,9 +2026,9 @@
 
 **Definition.** A short map between metric spaces is a function f with d(f(a), f(b)) ≤ d(a, b) for all points a and b. So a short map never increases a distance. The category Met has Lawvere metric spaces as objects and short maps as morphisms. In a Lawvere metric space a distance may be infinite, need not be symmetric, and may be 0 between different points.
 
-**Problem.** The category of metric spaces should be complete: it should have all limits, in particular arbitrary products. Its isomorphisms should be exactly the isometries.
+**Problem.** The category Met of Lawvere metric spaces and short maps is complete, so in particular it has arbitrary products. Its isomorphisms are exactly the isometries.
 
-**How the definition helps.** Allowing infinite distances lets every product exist, and short maps make the isomorphisms exactly the isometries. The product of spaces Xᵢ should have the distance supᵢ d(xᵢ, yᵢ), the largest distance in any coordinate. For ordinary metric spaces this supremum can be infinite, so arbitrary products do not exist in that category. Lawvere metric spaces allow the value ∞, so Met is complete. Short maps, not continuous maps, isometries or distance-preserving maps, are the choice that gives both completeness and the isometries as the isomorphisms. One cost remains: the nLab notes that the topology of this product is not the product topology.
+**How the definition helps.** Allowing infinite distances lets every product exist, and short maps make the isomorphisms exactly the isometries. The product of spaces Xᵢ has the distance supᵢ d(xᵢ, yᵢ), the largest distance in any coordinate. For ordinary metric spaces this supremum can be infinite, so arbitrary products do not exist in that category. One cost remains: the nLab notes that the topology of this product is not the product topology.
 
 **nLab:** [short map](https://ncatlab.org/nlab/show/short+map), [metric space](https://ncatlab.org/nlab/show/metric+space). It says: “For example, Met<sub>ord</sub> fails to have arbitrary products ∏<sub>i ∈ I</sub> X<sub>i</sub>, on account of the finiteness axiom where the putative distance d((x<sub>i</sub>), (y<sub>i</sub>)) = sup<sub>i</sub> d(x<sub>i</sub>, y<sub>i</sub>) may not exist as a finite number.”
 
@@ -2046,7 +2046,7 @@
 
 **Problem.** The metric Heine–Borel theorem says that a metric space is compact exactly when it is complete and totally bounded. Here 'compact' means that every open cover has a finite subcover.
 
-**How the definition helps.** Brouwer made the metric theorem true by definition. Constructively, the open-cover form of the theorem is stronger than the fan theorem (a principle of intuitionism about finitely branching trees), and Brouwer could not prove it. So he defined 'compact' to mean complete and totally bounded. The price is that, constructively, such spaces need not have the open-cover property. The nLab adds that locale theory (topology built from the lattice of open sets, with no points needed) keeps the open-cover definition: every complete and totally bounded metric space gives a compact locale (Vickers), so the gap moves to the step from points to locales. The nLab also notes an earlier, similar history. 'Compact' first meant closed and bounded, and the open-cover definition came later as a name for the conclusion of the Heine–Borel theorem.
+**How the definition helps.** Brouwer made the metric theorem true by definition. Constructively, the open-cover form of the theorem is stronger than the fan theorem (a principle of intuitionism about finitely branching trees), and Brouwer could not prove it. So he defined 'compact' to mean complete and totally bounded. The price is that, constructively, such spaces need not have the open-cover property.
 
 **nLab:** [Heine-Borel theorem](https://ncatlab.org/nlab/show/Heine-Borel+theorem). It says: “Brouwer could not prove them, leading him to define 'compact' (for a metric space) to mean complete and totally bounded.”
 
@@ -2062,9 +2062,9 @@
 
 **Definition.** A linearly ordered space is a totally ordered set with its order topology. A generalized ordered space can be defined as a subspace of one, with the induced order. It can also be defined from inside, as a Hausdorff space whose topology has a sub-basis of upper and lower sets of its total order.
 
-**Problem.** Show that the inside definition gives exactly the subspaces of linearly ordered spaces.
+**Problem.** The spaces of the inside kind are exactly the subspaces of linearly ordered spaces, with the induced order.
 
-**How the definition helps.** With the subspace definition, facts such as 'a subspace of a generalized ordered space is one again' are true by definition. The inside definition is easier to check for a given space. ProofWiki's theorem does the work that joins the two. It embeds a space of the inside kind into a linearly ordered space, as an order embedding and a topological embedding, with dense image. Our own example: the Sorgenfrey line, the reals with the half-open intervals \[a, b) as a base, is a generalized ordered space. But its topology is not the order topology of any total order.
+**How the definition helps.** With the subspace definition, facts such as 'a subspace of a generalized ordered space is one again' are true by definition, while the inside definition is easier to check for a given space. ProofWiki's theorem does the work that joins the two. It embeds a space of the inside kind into a linearly ordered space, as an order embedding and a topological embedding, with dense image. Our own example: the Sorgenfrey line is a generalized ordered space, but its topology is not the order topology of any total order.
 
 **Paper or page:** [GO-Space Embeds Densely into Linearly Ordered Space](https://proofwiki.org/wiki/GO-Space_Embeds_Densely_into_Linearly_Ordered_Space). It says: “there is a linearly ordered space (X, ⪯′, τ′) and a mapping from Y to X which is a order embedding and a topological embedding.”
 
@@ -2082,7 +2082,7 @@
 
 **Problem.** Every continuum with more than one point has at least two non-cut points. A metric continuum with exactly two non-cut points is homeomorphic to \[0, 1\].
 
-**How the definition helps.** Compactness and metrizability rule out the spaces that copy the cut-point pattern of an interval without being one. The real line and the open interval have no non-cut points, and \[0, 1) has one, so the theorem needs compactness. The extended long line is a very long interval with two end points added. It is compact, connected and Hausdorff with exactly two non-cut points, but it is not an arc (our own example). So the Hausdorff version on the Cut point page needs the metric condition of the Continuum page. With these conditions, cut points order the space like a line, and separability makes the order a copy of \[0, 1\] (our own outline).
+**How the definition helps.** Compactness and metrizability rule out the spaces that copy the cut-point pattern of an interval without being one. The real line has no non-cut points, and \[0, 1) has one, so the theorem needs compactness. The extended long line, a very long interval with two end points, is compact, connected and Hausdorff with exactly two non-cut points, but it is not an arc (our own example). With these conditions, cut points order the space like a line, and separability makes the order a copy of \[0, 1\] (our own outline).
 
 **Wikipedia:** [Cut point](https://en.wikipedia.org/wiki/Cut_point), [Continuum (topology)](https://en.wikipedia.org/wiki/Continuum_%28topology%29). It says: “Every continuum with exactly two noncut-points is homeomorphic to the unit interval.”
 
@@ -2098,9 +2098,9 @@
 
 **Definition.** An open cover has order n + 1 if some point lies in n + 1 of its sets but no point lies in more. A space has covering dimension at most n if every finite open cover has an open refinement of order at most n + 1.
 
-**Problem.** Every compact metric space of covering dimension n embeds in ℝ²ⁿ⁺¹. For separable metric spaces the three usual dimensions agree, by Urysohn's theorem.
+**Problem.** Every compact metric space of covering dimension n embeds in ℝ²ⁿ⁺¹.
 
-**How the definition helps.** Covering dimension works directly with covers of order n + 1, and the proof needs exactly these (our own outline). Such a cover gives an n-dimensional complex of simplices, its nerve, and a map of the space onto it (our own). In general position, an n-dimensional complex embeds in ℝ²ⁿ⁺¹ (our own). The bound is sharp for n = 1, since the complete graph on five vertices does not embed in the plane (our own example). Nöbeling also built a universal space inside ℝ²ⁿ⁺¹: the points with at least n + 1 irrational coordinates (our own). The Nöbeling–Pontryagin theorem says that the finite-dimensional separable metric spaces are exactly the subspaces of Euclidean spaces. The hard part is to make the maps for finer and finer covers converge to an embedding.
+**How the definition helps.** Covering dimension works directly with covers of order n + 1, and the proof needs exactly these (our own outline). Such a cover gives an n-dimensional complex of simplices, its nerve, and a map of the space onto it, and in general position such a complex embeds in ℝ²ⁿ⁺¹ (our own). The bound is sharp for n = 1, since the complete graph on five vertices does not embed in the plane (our own example). The hard part is to make the maps for finer and finer covers converge to an embedding.
 
 **Wikipedia:** [Inductive dimension](https://en.wikipedia.org/wiki/Inductive_dimension), [Lebesgue covering dimension](https://en.wikipedia.org/wiki/Lebesgue_covering_dimension). It says: “The Menger–Nöbeling theorem (1932) states that if X is compact metric separable and of dimension n, then it embeds as a subspace of Euclidean space of dimension 2n + 1.”
 
@@ -2119,7 +2119,7 @@
 
 **Problem.** A nonempty space has inductive dimension 0 exactly when it has a base of sets that are both open and closed. For example, the rational numbers have dimension 0.
 
-**How the definition helps.** With ind(∅) = −1, 'boundary of dimension less than 0' just means 'empty boundary', which means the set is both open and closed. So the zero-dimensional case is true by definition. The rationals have such a base: the rationals between two irrational numbers form an open and closed set. In ℝⁿ the boundaries of balls are spheres, which gives ind ℝⁿ ≤ n by induction (our own). Covering dimension also gives the empty set dimension −1. The hard work is to show that ℝⁿ has dimension exactly n, which needs Brouwer-type fixed point or covering arguments.
+**How the definition helps.** With ind(∅) = −1, 'boundary of dimension less than 0' just means 'empty boundary', which means the set is both open and closed. So the zero-dimensional case is true by definition. The rationals have such a base: the rationals between two irrational numbers form an open and closed set. The hard work is to show that ℝⁿ has dimension exactly n, which needs Brouwer-type fixed point or covering arguments.
 
 **Wikipedia:** [Inductive dimension](https://en.wikipedia.org/wiki/Inductive_dimension), [Lebesgue covering dimension](https://en.wikipedia.org/wiki/Lebesgue_covering_dimension). It says: “We want the dimension of a point to be 0, and a point has empty boundary, so we start with ind(∅)=Ind(∅)=−1.”
 
@@ -2135,7 +2135,7 @@
 
 **Definition.** Small inductive dimension is at most n if every point has arbitrarily small open neighborhoods whose boundaries have dimension at most n − 1. The empty space starts the recursion at −1. Covering dimension instead measures how many sets of a refined cover can overlap.
 
-**Problem.** For a separable metric space, every subspace has covering dimension at most that of the whole space. Separable means that a countable subset is dense.
+**Problem.** For a separable metric space X, every subspace has small inductive dimension at most that of X. So every subspace also has covering dimension at most that of X.
 
 **How the definition helps.** The recursive boundary test passes to subspaces because restricting an open set can only shrink its boundary (our own). Induction therefore bounds the dimension of each restricted boundary by the original bound (our own). The cited subspace theorem gives this for small inductive dimension. The dimension comparison theorem identifies it with covering dimension for separable metric spaces and their subspaces (our own).
 
@@ -2207,7 +2207,7 @@
 
 **Problem.** The coset space of a closed subgroup of a first-countable topological group is metrizable. First countable means that each point has a countable neighborhood base.
 
-**How the definition helps.** In our own proof, closedness keeps the distance between different cosets positive. First divide out the closure of the identity, which lies in H and leaves the coset space unchanged. The Birkhoff–Kakutani theorem gives the resulting first-countable Hausdorff group a compatible metric preserved by right translations. Right translation by members of H moves each coset onto itself and acts transitively there. Thus the infimum distance between two cosets equals the distance from any point of the first to the closed second coset. Its open balls are images of group balls, so it gives the quotient topology. Our own counterexample is ℝ/ℚ, whose only open sets are the empty set and the whole space.
+**How the definition helps.** In our own proof, closedness keeps the distance between different cosets positive. After dividing out the closure of the identity, the Birkhoff–Kakutani theorem gives a compatible metric preserved by right translations. Then the distance between two cosets is the distance from any point of the first to the closed second coset, and its balls give the quotient topology. Our own counterexample is ℝ/ℚ, whose only open sets are the empty set and the whole space.
 
 **Paper or page:** [The quotient spaces of topological groups with a q-point](https://arxiv.org/abs/2311.08814v1). It says: “Let H be a closed subgroup of a first-countable topological group G (without any separator axiom on G). Then the quotient space G/H is metrizable.”
 
@@ -2219,7 +2219,7 @@
 
 *True by definition.* MSC 54H11 (Topological groups (topological aspects)), 54D15, 54E15. arXiv math.GN, math.GR. Level 3: graduate.
 
-**Definition.** A space is completely regular if each point x outside a closed set C admits a continuous function into \[0, 1\] separating them. The function takes value 0 at x and 1 on C. A uniformity is a system of closeness relations. In a group, use x⁻¹y ∈ U for each identity neighbourhood U.
+**Definition.** A space is completely regular if continuous functions into \[0, 1\] separate each point from each closed set that misses it. A topological group carries a uniformity: x and y are U-close when x⁻¹y ∈ U, for each neighbourhood U of the identity.
 
 **Problem.** Every Hausdorff topological group is completely regular.
 
@@ -2239,9 +2239,9 @@
 
 **Definition.** A pseudotopological (Choquet) space is a set with a convergence relation between filters and points. Each principal ultrafilter (the filter of all sets that contain a given point) converges to its point. A filter converges to x whenever every ultrafilter finer than it converges to x. Classically this is the same as a convergence relation on ultrafilters with only the centring axiom, the axiom that each principal ultrafilter converges to its point.
 
-**Problem.** Embed Top fully in a category that is locally cartesian closed (every slice category has function spaces). Then function spaces, and fibrewise function spaces over a base, exist for all objects.
+**Problem.** Pseudotopological spaces form a quasitopos that contains Top as a full reflective subcategory. So they form a locally cartesian closed category, with function spaces and fibrewise function spaces for all objects.
 
-**How the definition helps.** Dropping one axiom of topology gives a category with all these function spaces. PsTop is the category you get when you drop the associativity axiom that makes a convergence come from a topology. PsTop is a quasitopos (a category with most of the properties of a topos), so it is locally cartesian closed. It contains Top as a full reflective subcategory. Compactly generated spaces, by contrast, are cartesian closed but not locally cartesian closed. The cost is that PsTop is not locally presentable, and its objects are no longer topological spaces.
+**How the definition helps.** Dropping one axiom of topology gives a category with all these function spaces. PsTop is the category you get when you drop the associativity axiom that makes a convergence come from a topology. Compactly generated spaces, by contrast, are cartesian closed but not locally cartesian closed. The cost is that PsTop is not locally presentable, and its objects are no longer topological spaces.
 
 **nLab:** [pseudotopological space](https://ncatlab.org/nlab/show/pseudotopological+space), [nice category of spaces](https://ncatlab.org/nlab/show/nice+category+of+spaces). It says: “is a quasitopos and may be thought of as a nice category of spaces that includes Top as a full subcategory.”
 
@@ -2258,9 +2258,9 @@
 
 **Definition.** A sequential net in X is a multi-valued function from ℕ to X. Formally, it is a span ℕ ← A → X in which the map A → ℕ is surjective. Each n can have several values, and none of them is chosen.
 
-**Problem.** Without weak countable choice (a weak form of the axiom that lets you make countably many choices at once), many standard facts about metric spaces and sequential spaces fail for sequences. For example, a Dedekind real number need not be the limit of a Cauchy sequence of rationals.
+**Problem.** Without weak countable choice, a Dedekind real need not be the limit of a Cauchy sequence of rationals. But every located Dedekind real is represented by a sequential Cauchy net of rationals.
 
-**How the definition helps.** A sequential net keeps all candidate terms, so you never need to choose one term for each n. That choice is where countable choice was used. In our own words: for a real number x and each n, take as values all rationals within 1/n of x. Such rationals exist, but to pick one for each n needs countable choice. The page says that the usual properties hold again when sequential nets replace sequences; its example is that every located Dedekind real can be represented as a sequential Cauchy net. With weak countable choice, every sequential net is equivalent to a sequence, so classically nothing changes.
+**How the definition helps.** A sequential net keeps all candidate terms, so you never need to choose one term for each n. That choice is where countable choice was used. In our own words: for a real number x and each n, take as values all rationals within 1/n of x. With weak countable choice, every sequential net is equivalent to a sequence, so classically nothing changes.
 
 **nLab:** [sequential net](https://ncatlab.org/nlab/show/sequential+net), [sequence](https://ncatlab.org/nlab/show/sequence). It says: “Without weak countable choice, many of the usual properties of metric spaces and other sequential spaces fail, but they continue to hold using sequential nets in the place of sequences.”
 
@@ -2274,9 +2274,9 @@
 
 **Definition.** A subsequential space, or Kuratowski limit space, is a set with a relation 'the sequence (xₙ) converges to x'. The relation obeys three rules: constant sequences converge; subsequences of a convergent sequence converge to the same point; and (xₙ) converges to x whenever every subsequence has a further subsequence that converges to x. Continuous maps are maps that keep convergent sequences convergent.
 
-**Problem.** One wants a nice category of spaces that contains the usual spaces of homotopy theory without changing their constructions. Nice here means locally cartesian closed, complete and cocomplete.
+**Problem.** Subsequential spaces form a locally presentable quasitopos, so a locally cartesian closed, complete and cocomplete category. It contains the sequential spaces, such as metrizable spaces and CW complexes, and it keeps the colimits that build CW complexes.
 
-**How the definition helps.** Subsequential spaces form a quasitopos that holds the usual spaces and also keeps the colimits that build CW complexes. A quasitopos is a category with most of the good properties of a topos, among them local cartesian closure. Subsequential spaces form a locally presentable quasitopos. It contains sequential spaces (spaces whose topology is fixed by their convergent sequences), such as metrizable spaces and CW complexes, as a reflective subcategory. The embedding also keeps the colimits used to build CW complexes. So a CW complex is the same whether one builds it in Top, the category of all topological spaces, or here. The bigger quasitopos of all convergence spaces contains all of Top, but it does not keep those colimits and is not locally presentable.
+**How the definition helps.** Subsequential spaces hold the usual spaces of homotopy theory and also keep the colimits that build CW complexes. A quasitopos is a category with most of the good properties of a topos, among them local cartesian closure. So a CW complex is the same whether one builds it in Top or here. The bigger quasitopos of all convergence spaces contains all of Top, but it does not keep those colimits and is not locally presentable.
 
 **nLab:** [subsequential space](https://ncatlab.org/nlab/show/subsequential+space). It says: “thus it makes no difference whether you carry out the construction of a CW complex in Top and then regard the result as a subsequential space, or carry out the construction in SeqPsTop to begin with.”
 
@@ -2310,7 +2310,7 @@
 
 **Definition.** Give maps from ℕ to X the pointwise topology, which tests values at finitely many inputs. Identify maps when the closures of their ranges agree. The lower Vietoris topology tests whether a closed set meets a given open set.
 
-**Problem.** The map sending a sequence to the closure of its range is a quotient onto the nonempty closed sets with countable dense subsets. Give those sets the lower Vietoris topology.
+**Problem.** Give sequences the pointwise topology and closed sets the lower Vietoris topology. Then the map sending a sequence to the closure of its range is a quotient map onto the nonempty closed sets with countable dense subsets.
 
 **How the definition helps.** Forgetting the order turns finitely many coordinate requirements into an intersection of open hit tests (our own). A closed set passing those tests contains a point for each required coordinate (our own). Its remaining coordinates can list a dense sequence (our own). Thus the map takes basic open sets to open sets (our own). It is continuous because a hit test pulls back to a union of single-coordinate tests (our own). An open continuous surjection gives the quotient topology, where a set is open exactly when its preimage is open (our own).
 
@@ -2366,7 +2366,7 @@
 
 **Problem.** Every core-compact open well-filtered space is sober. Core-compact means every open neighborhood of a point contains a smaller open neighborhood that lies well inside it. Sober means every nonempty closed set that is not a union of two smaller closed sets is the closure of exactly one point.
 
-**How the definition helps.** By our own reading, the open-set condition is easy to use because core-compactness supplies exactly the well-inside open neighborhoods that the condition talks about. The paper proves that every well-filtered space is open well-filtered. Well-filtered means the same condition for filtered families of compact saturated sets, which are intersections of open sets. So the open problem of Jia and Jung, whether every core-compact well-filtered space is sober, is answered at once. The abstract calls this a 'relatively more straight forward' method than the earlier answer. The main work is still to find, for each such closed set, the point whose closure it is.
+**How the definition helps.** By our own reading, the open-set condition is easy to use because core-compactness supplies exactly the well-inside open neighborhoods that the condition talks about. The paper proves that every well-filtered space is open well-filtered. So it answers at once the question of Jia and Jung whether every core-compact well-filtered space is sober. The main work is still to find, for each such closed set, the point whose closure it is.
 
 **Paper or page:** [On open well-filtered spaces](https://arxiv.org/abs/2001.07397v4). It says: “Every core-compact open well-filtered space is sober.”
 
@@ -2382,9 +2382,9 @@
 
 **Definition.** A map i has the left lifting property against a map p if every commutative square from i to p has a diagonal filler. Most separation axioms can be stated as a lifting property of the map ∅ → X (or of a map into X) against a fixed map of finite topological spaces. That fixed map is the simplest counterexample to the axiom. So the axiom says that X has no copy of the counterexample.
 
-**Problem.** Show that classes of spaces or maps defined by separation conditions are closed under constructions such as transfinite composition. For example, a filtered colimit (transfinite composition) of closed inclusions of hereditarily normal spaces is hereditarily normal. A space is hereditarily normal if every subspace is normal.
+**Problem.** Any class of maps defined by a left lifting property is closed under pushouts, transfinite composition and retracts. So a transfinite composition of closed inclusions of hereditarily normal spaces is hereditarily normal.
 
-**How the definition helps.** Classes defined by a left lifting property are closed under such constructions for formal reasons. A formal diagram argument shows that any class of maps defined by a left lifting property against fixed maps is closed under pushouts, transfinite composition and retracts. A closed inclusion into a hereditarily normal space has the same left lifting property as ∅ → X, so the colimit statement follows at once. The hard part moves to checking that each axiom is equivalent to its lifting form. This is a direct but finite check. The method does not work for plain normality, because closed inclusions into normal spaces do not have the lifting property that defines normality.
+**How the definition helps.** Classes defined by a left lifting property are closed under such constructions for formal reasons, by a diagram argument. A closed inclusion into a hereditarily normal space has the same left lifting property as ∅ → X, so the colimit statement follows at once. The hard part moves to checking that each axiom is equivalent to its lifting form. The method does not work for plain normality, because closed inclusions into normal spaces do not have the lifting property that defines normality.
 
 **nLab:** [separation axioms in terms of lifting properties](https://ncatlab.org/nlab/show/separation+axioms+in+terms+of+lifting+properties). It says: “It is easy to check that a closed inclusion into a heridarily normal space has the same lifting property. As left lifting property is stable under colimits”
 
@@ -2400,9 +2400,9 @@
 
 **Definition.** A metric compact Hausdorff space is a metric space with a compact Hausdorff topology that is compatible with the metric. The topology need not be the one that the metric induces. The notion is a metric counterpart of Nachbin's compact ordered spaces.
 
-**Problem.** The category of compact metric spaces lacks many important properties, such as completeness and cocompleteness. One wants a category with these properties and with simple descriptions of embeddings, epimorphisms and quotients.
+**Problem.** For separated metric compact Hausdorff spaces, the regular monomorphisms are the embeddings and the epimorphisms are the surjective maps. The opposite of the category of metric compact Hausdorff spaces is Barr-exact.
 
-**How the definition helps.** Our own reading: the topology no longer has to come from the metric, and this freedom gives the better-behaved category that the abstract describes. A space is separated when distinct points never have distance zero in both directions. In the separated case, the regular monomorphisms are the embeddings and the epimorphisms are the surjective maps. Quotients of an object X are described by kernel metrics, the continuous metrics below the metric of X. The main result is that the opposite of this category is Barr-exact, a property that categories of algebras have. Our own remark: compact metric spaces are the special case where the topology is the induced one.
+**How the definition helps.** The topology no longer has to come from the metric, and this freedom gives the better-behaved category that the abstract describes (our own reading). A space is separated when distinct points never have distance zero in both directions. Quotients of an object X are described by kernel metrics, the continuous metrics below the metric of X. Compact metric spaces are the special case where the topology is the induced one (our own remark).
 
 **Paper or page:** [Barr-coexactness for metric compact Hausdorff spaces](https://arxiv.org/abs/2408.07039). It says: “These spaces maintain many important features of compact metric spaces, and, notably, the resulting category is much better behaved.”
 
@@ -2420,7 +2420,7 @@
 
 **Problem.** A continuous map from a proper metric space into a compact metric space extends over the Higson compactification exactly when it is slowly oscillating. For a map, measure variation by the diameter of the image.
 
-**How the definition helps.** Coordinates make extension automatic for each continuous slowly oscillating function into \[0, 1\] (our own). Embed the compact metric target in a product of intervals (our own). Each coordinate of a slowly oscillating map then oscillates slowly by uniform continuity on the target (our own). The extended coordinates land in the closed target image by density (our own). Conversely, compactness makes each target tolerance depend on finitely many coordinate tolerances (our own). Slow oscillation in those coordinates gives slow oscillation of the original map (our own). This proves the extension criterion from the coordinate construction, including continuity at the added points called the corona (our own).
+**How the definition helps.** Coordinates make extension automatic for each continuous slowly oscillating function into \[0, 1\] (our own). Embed the compact metric target in a product of intervals; each coordinate of a slowly oscillating map then oscillates slowly, and the extended coordinates land in the closed target image (our own). Conversely, compactness makes each target tolerance depend on finitely many coordinate tolerances (our own). Slow oscillation in those coordinates gives slow oscillation of the original map (our own).
 
 **Paper or page:** [Embedding of Higson compactification into the product of adelic solenoids](https://arxiv.org/abs/2205.03698v1). It says: “a continuous map f: X → C to a compact metric space C extends continuously to the Higson corona if and only if f is slowly oscillating.”
 
@@ -2434,7 +2434,7 @@
 
 *True by definition.* MSC 54D60 (Realcompactness and realcompactification). arXiv math.GN. Level 4: research.
 
-**Definition.** A realcompact space embeds as a closed subset of a product of real lines. An equivalent test uses maximal families of zero sets, the sets where continuous real functions vanish. If each finite intersection in such a family is nonempty, the test asks whether nonempty countable intersections force a common point.
+**Definition.** A realcompact space is one that embeds as a closed subset of a product of real lines. An equivalent test uses maximal families of zero sets of continuous real functions.
 
 **Problem.** Let f map a realcompact space X continuously into a Hausdorff space Y. If B is a realcompact subspace of Y, then f⁻¹\[B\] is realcompact.
 
@@ -2454,9 +2454,9 @@
 
 **Definition.** An entourage of a uniform space is a set of pairs of points that counts as 'close' at some scale. A uniform space X is uniformly regular if for every entourage U there is an entourage V with this property: each pair of points x, y is either U-close or not V-close. With excluded middle you can take V = U, so classically every uniform space is uniformly regular.
 
-**Problem.** In constructive mathematics, show three things about a uniform space. It is a regular space. Its inequality relation is an apartness relation (a positive form of inequality), and it can be described equally by entourages or by their complements.
+**Problem.** Constructively, a uniformly regular uniform space is a regular space, and its inequality relation is an apartness relation. It can be described equally by its entourages or by their complements.
 
-**How the definition helps.** Uniform regularity excludes the uniform spaces that make these statements fail constructively. Classically every uniform space is regular, but constructively this fails. A discrete uniform space is regular only if its set has decidable equality, so the statement 'every uniform space is regular' is equivalent to excluded middle. With uniform regularity, the space is regular and the inequality x \# y is an apartness relation. Also, uniformly regular uniform spaces correspond exactly to uniformly regular uniform apartness spaces. Metric spaces, compact regular spaces and regular topological groups are uniformly regular. It is unknown whether a regular uniform space can fail to be uniformly regular.
+**How the definition helps.** Uniform regularity excludes the uniform spaces that make these statements fail constructively. A discrete uniform space is regular only if its set has decidable equality, so 'every uniform space is regular' is equivalent to excluded middle. Metric spaces, compact regular spaces and regular topological groups are uniformly regular. It is unknown whether a regular uniform space can fail to be uniformly regular.
 
 **nLab:** [uniformly regular space](https://ncatlab.org/nlab/show/uniformly+regular+space). It says: “The notion of uniformly regular uniform space is an intermediate notion in between regularity and complete regularity for uniform spaces, which is frequently useful in the constructive theory of uniform spaces”
 
@@ -2508,7 +2508,7 @@
 
 **Problem.** Every nonempty product of spaces of small inductive dimension zero has small inductive dimension zero. Covering dimension zero does not have this permanence.
 
-**How the definition helps.** Products have a base of sets restricting finitely many coordinates, and clopen restrictions give clopen product sets (our own). For comparison, the Sorgenfrey line has a base of intervals \[a, b) (our own). These intervals are clopen, and each open cover has a countable subcover (our own). Thus any finite open cover has a countable clopen refinement (our own). Subtract earlier sets from each successive set, then group the disjoint pieces by the original cover members (our own). This proves covering dimension zero for the line (our own). Sipacheva proves that its square has infinite covering dimension.
+**How the definition helps.** Products have a base of sets restricting finitely many coordinates, and clopen restrictions give clopen product sets (our own). For comparison, the Sorgenfrey line has a base of clopen intervals \[a, b), and each open cover has a countable subcover (our own). Making a countable clopen refinement disjoint gives covering dimension zero for the line (our own). Sipacheva proves that its square has infinite covering dimension.
 
 **Paper or page:** [The Covering Dimension of the Sorgenfrey Plane](https://arxiv.org/abs/2110.08867v2). It says: “dim S × S = ∞.”
 
@@ -2524,9 +2524,9 @@
 
 **Definition.** An action of a Lie group G on a space X is Palais proper when each point x has a neighbourhood U with the following property. Each point y near x has a neighbourhood V such that the set of g in G for which g·U meets V has compact closure. On locally compact Hausdorff spaces this agrees with the usual notions of a proper action.
 
-**Problem.** The slice theorem says that through every point x of a G-space there is a slice S. That is, if H is the stabilizer of x, the induced space G ×ₕ S (the quotient of G × S by H) is homeomorphic to an open G-invariant neighbourhood of x. As a consequence, a free proper action gives a principal bundle.
+**Problem.** Palais's slice theorem: for a Palais proper action of a Lie group G on a completely regular space, every point x has a slice S. That is, with H the stabilizer of x, the space G ×ₕ S is homeomorphic to an open G-invariant neighbourhood of x.
 
-**How the definition helps.** Palais made the definition of a proper action stronger so that the slice theorem still holds without local compactness. For a proper action of a Lie group on a locally compact Hausdorff space, slices exist through every point. Without local compactness, the usual conditions for properness are no longer equivalent, so Palais strengthened the definition. The page says that Palais states the theorem in this wider setting, and that on locally compact spaces his statement reduces to the usual one. Our own note is that Palais still assumes the space is completely regular. The nLab names no specific counterexample that the stronger condition excludes. Its counterexample of Williams (1963) is about a different question: dropping the Lie assumption for compact groups.
+**How the definition helps.** Palais made the definition of a proper action stronger so that the slice theorem still holds without local compactness. For a proper action of a Lie group on a locally compact Hausdorff space, slices exist through every point. Without local compactness, the usual conditions for properness are no longer equivalent. The nLab names no specific counterexample that the stronger condition excludes.
 
 **nLab:** [slice theorem](https://ncatlab.org/nlab/show/slice+theorem), [proper action](https://ncatlab.org/nlab/show/proper+action). It says: “in which case the definition of "proper action" needs to be strengthened”
 

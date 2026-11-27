@@ -306,7 +306,7 @@
 
 **Problem.** Take one thin lens and sources at a fixed distance. Multiply the lens mass distribution by a positive factor λ and add a uniform sheet of convergence 1 − λ. This preserves reduced shear, so image shapes alone cannot distinguish the models.
 
-**How the definition helps.** Scaling the lens multiplies its shear by λ, while the uniform sheet adds no shear (our own). The new convergence is λκ + 1 − λ, so the denominator also gains a factor of λ (our own). The factors cancel, preserving reduced shear even though raw shear generally changes (our own). The lens equation supplies the link from reduced shear to observed image shapes (our own). An independent magnification measurement can break the ambiguity.
+**How the definition helps.** Scaling the lens multiplies its shear by λ, while the uniform sheet adds no shear (our own). The new convergence is λκ + 1 − λ, so 1 − κ also gains a factor of λ (our own). The factors cancel, so reduced shear is unchanged even though raw shear changes (our own). An independent magnification measurement can break the ambiguity.
 
 **Wikipedia:** [Gravitational lensing formalism](https://en.wikipedia.org/wiki/Gravitational_lensing_formalism). It says: “this degeneracy can be broken if an independent measurement of the magnification is available”
 

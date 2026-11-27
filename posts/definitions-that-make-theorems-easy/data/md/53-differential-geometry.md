@@ -8,7 +8,7 @@
 
 **Problem.** At each point of positive curvature, these three vectors form an orthonormal basis of three-dimensional space.
 
-**How the definition helps.** Our own check uses positive curvature to keep the normalizing denominator from vanishing. Our own counterexample is the straight line s ↦ (s, 0, 0), which has constant tangent and no principal normal. Our own check differentiates unit tangent length to prove the derivative is perpendicular to the tangent. Our own construction uses the cross product to complete the three perpendicular directions.
+**How the definition helps.** Positive curvature keeps the normalizing denominator of N from vanishing (our own check). Differentiating the constant length of T shows that dT/ds is perpendicular to T, and the cross product completes the basis. The straight line s ↦ (s, 0, 0) has constant tangent and no principal normal (our own counterexample).
 
 **Wikipedia:** [Frenet–Serret formulas](https://en.wikipedia.org/wiki/Frenet%E2%80%93Serret_formulas). It says: “The Frenet–Serret formulas apply to curves which are non-degenerate, which roughly means that they have nonzero curvature.”
 
@@ -24,7 +24,7 @@
 
 **Problem.** Arc length is well defined, and inscribed polygons approximate it.
 
-**How the definition helps.** Putting the vertices on the curve rules out approximations that converge to the curve but have the wrong length. If the vertices only need to be near the curve, the staircase paradox appears. Staircases of total length 2 converge to a diagonal of length √2. Requiring the vertices to lie on the curve excludes this. The same idea fails for surfaces. Schwarz's lantern, a surface of inscribed triangles, converges to a cylinder, while its area can tend to any larger value or to infinity. It refuted Serret's 1868 definition of surface area, so surface area needs another definition.
+**How the definition helps.** Putting the vertices on the curve rules out approximations that converge to the curve but have the wrong length. If the vertices only need to be near the curve, staircases of total length 2 converge to a diagonal of length √2. The same idea fails for surfaces: Schwarz's lantern of inscribed triangles converges to a cylinder while its area can tend to any larger value or to infinity.
 
 **Wikipedia:** [Schwarz lantern](https://en.wikipedia.org/wiki/Schwarz_lantern). It says: “However, for this to work correctly, the vertices of the polygonal chains must lie on the given curve, rather than merely near it.”
 
@@ -120,7 +120,7 @@
 
 **Problem.** An invertible affine map, a linear transformation followed by a translation, carries each tangent plane to the corresponding tangent plane of the image surface.
 
-**How the definition helps.** Our own argument applies the linear part to both partial derivatives, so it carries their span along. Our own calculation uses the chain rule and adds the translation only at the base point. Our own comparison with normals requires proving that they transform by the inverse transpose.
+**How the definition helps.** The linear part acts on both partial derivatives, so it carries their span along (our own argument). The chain rule gives this, and the translation enters only at the base point. The description by normals would need a proof that normals transform by the inverse transpose.
 
 **Wikipedia:** [Surface (mathematics)](https://en.wikipedia.org/wiki/Surface_%28mathematics%29). It says: “maps the tangent plane to the surface at a point to the tangent plane to the image of the surface at the image of the point.”
 
@@ -134,9 +134,9 @@
 
 **Definition.** The curvature κᵢ of a polygon at vertex i is its turning angle there. This is the angle between the direction of the incoming edge and the direction of the outgoing edge. The tangent indicatrix is the curve of unit tangent directions on the sphere.
 
-**Problem.** Fenchel's theorem says that a closed space curve has total curvature at least 2π, with equality only for plane convex curves.
+**Problem.** Fenchel's theorem: a closed space curve, smooth or polygonal, has total curvature at least 2π. Equality holds exactly when the curve is planar and convex.
 
-**How the definition helps.** With turning angles as curvature, the total curvature is the length of the tangent indicatrix, so Fenchel becomes a statement about spherical curves. The paper states this length fact as Lemma 1.4. For a polygon the indicatrix is a chain of great-circle arcs of lengths κᵢ (our own). Lemma 1.5 says the indicatrix of a closed curve lies in no open hemisphere. A closed curve on the sphere that lies in no open hemisphere has length at least 2π (our own). The same proof works for smooth and polygonal curves at once.
+**How the definition helps.** With turning angles as curvature, total curvature is the length of the tangent indicatrix, so Fenchel's theorem becomes a statement about spherical curves. For a polygon the indicatrix is a chain of great-circle arcs of lengths κᵢ (our own). The indicatrix of a closed curve lies in no open hemisphere, and such a closed spherical curve has length at least 2π (our own). The same proof covers smooth and polygonal curves at once.
 
 **Paper or page:** [Discrete curvature](https://arxiv.org/abs/2502.09353), [Discrete curvature](https://arxiv.org/abs/2502.09353). It says: “The total curvature of a closed space curve is bigger or equal 2π: ∫ₐᵇ κ dt ≥ 2π, respectively ∑ᵢ₌₁ⁿ κᵢ ≥ 2π. The equality takes place if and only if the curve is planar and convex.”
 
@@ -189,7 +189,7 @@
 
 **Problem.** Descartes's theorem: the defects of a polyhedron that is topologically a sphere add up to 4π. In general they add up to 2π times the Euler characteristic.
 
-**How the definition helps.** With curvature defined as defect, faces and edges have zero curvature, so the total curvature is just the sum of the defects. Descartes's theorem then becomes a discrete case of the Gauss–Bonnet theorem. It holds for nonconvex polyhedra too, where some defects are negative. A polyhedron shaped like a torus has total defect zero, because its Euler characteristic is 0. Alexandrov's theorem, a hard converse, says this. Take a surface that is flat except at finitely many points of positive defect, adding to 4π. Then it is the surface of a unique convex polyhedron.
+**How the definition helps.** With curvature defined as defect, faces and edges have zero curvature, so total curvature is the sum of the defects. Descartes's theorem then becomes a discrete case of the Gauss–Bonnet theorem. It holds for nonconvex polyhedra too, where some defects are negative. Alexandrov's theorem is a hard converse: a surface flat except at finitely many points of positive defect adding to 4π is the surface of a unique convex polyhedron.
 
 **Wikipedia:** [Angular defect](https://en.wikipedia.org/wiki/Angular_defect). It says: “the integral of curvature at a vertex is equal to the defect there (by definition).”
 
@@ -203,9 +203,9 @@
 
 **Definition.** An affine connection ∇ is a rule for differentiating vector fields along vector fields. It is metric-compatible if parallel transport keeps lengths and angles. In formulas, X(g(Y, Z)) = g(∇ₓY, Z) + g(Y, ∇ₓZ), where ∇ₓ means the derivative along X. It is torsion-free if the derivative of Y along X, minus the derivative of X along Y, is the Lie bracket \[X, Y\].
 
-**Problem.** A manifold carries many connections, so 'the' covariant derivative, 'the' geodesics and 'the' curvature of a metric need a canonical choice. One wants the choice to be fixed by the metric alone.
+**Problem.** On any Riemannian manifold there is exactly one affine connection that is torsion-free and metric-compatible, the Levi-Civita connection.
 
-**How the definition helps.** The two conditions are exactly strong enough to pin the connection down. In our own words, two connections differ by a tensor with three slots. Torsion-freeness makes this tensor symmetric in one pair of slots, and metric compatibility makes it skew in another pair. A tensor with both symmetries is zero. Adding the conditions for three vector fields gives the Koszul formula, which determines ∇ from g. So the Christoffel symbols, the geodesic equation and the Riemann curvature are all functions of the metric. Levi-Civita introduced the connection in 1917 to give parallel transport a geometric meaning.
+**How the definition helps.** The two conditions are exactly strong enough to pin the connection down. Two connections differ by a tensor with three slots; torsion-freeness makes it symmetric in one pair and metric compatibility makes it skew in another, so it is zero (our own words). Adding the conditions for three vector fields gives the Koszul formula, which determines ∇ from g. So the geodesics and the Riemann curvature are functions of the metric alone.
 
 **Wikipedia:** [Fundamental theorem of Riemannian geometry](https://en.wikipedia.org/wiki/Fundamental_theorem_of_Riemannian_geometry), [Levi-Civita connection](https://en.wikipedia.org/wiki/Levi-Civita_connection). It says: “on any Riemannian manifold (or pseudo-Riemannian manifold) there is a unique affine connection that is torsion-free and metric-compatible, called the Levi-Civita connection”
 
@@ -223,7 +223,7 @@
 
 **Problem.** Let M be a compact surface with boundary. The integral of its Gaussian curvature, plus the total geodesic curvature of the boundary, equals 2π times the Euler characteristic of M. For a geodesic triangle, the angle sum is π plus the total curvature inside.
 
-**How the definition helps.** Treating each corner as a concentrated bend lets one formula cover smooth regions and polygons alike. With this convention, one theorem gives all three angle sums. A flat triangle has angle sum π, a spherical one more than π, and a hyperbolic one less than π. The page checks it on a sphere octant: total curvature π/2 plus three right-angle turns of π/2 gives 2π. The theorem still needs compactness. The open unit disc is flat and has Euler characteristic 1, but it has no boundary to give the missing 2π. The proof itself still rests on the theorem of turning tangents.
+**How the definition helps.** Treating each corner as a concentrated bend lets one formula cover smooth regions and polygons alike. On a sphere octant, total curvature π/2 plus three right-angle turns of π/2 gives 2π. The theorem still needs compactness: the open unit disc is flat and has Euler characteristic 1, but has no boundary to give the missing 2π.
 
 **Wikipedia:** [Gauss–Bonnet theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Bonnet_theorem). It says: “plus the sum of the angles by which the smooth portions turn at the corners of the boundary.”
 
@@ -253,9 +253,9 @@
 
 **Definition.** A connected Riemannian manifold is complete if it is a complete metric space under its distance function. One equivalent form says that closed bounded sets are compact. Another says that every geodesic can be extended for all time. A geodesic is a curve that is locally the shortest path, travelled at constant speed.
 
-**Problem.** Many global theorems of Riemannian geometry need the manifold to be 'complete'. Without one agreed meaning, each theorem would need its own hypothesis. Under completeness, any two points are joined by a shortest geodesic.
+**Problem.** Hopf–Rinow theorem: for a connected Riemannian manifold, metric completeness, compactness of closed bounded sets and geodesic completeness are equivalent. Under these conditions any two points are joined by a shortest geodesic.
 
-**How the definition helps.** Once the three conditions are known to agree, 'complete' is one hypothesis that every theorem can share. The title of the 1931 paper is literally 'On the concept of the complete differential-geometric surface'. Our own example of the bad case is the punctured plane. There a geodesic runs into the hole, and two points on opposite sides of the hole have no shortest path. The work moves into the equivalence proof, which uses the exponential map. The theorem fails for infinite-dimensional manifolds, as Atkin showed. It also fails for Lorentzian manifolds, since the Clifton–Pohl torus is compact but not geodesically complete.
+**How the definition helps.** Once the three conditions agree, 'complete' is one hypothesis that every global theorem can share. In the punctured plane a geodesic runs into the hole, and two points on opposite sides of the hole have no shortest path (our own example). The work moves into the equivalence proof, which uses the exponential map. The theorem fails for Lorentzian manifolds: the Clifton–Pohl torus is compact but not geodesically complete.
 
 **Wikipedia:** [Hopf–Rinow theorem](https://en.wikipedia.org/wiki/Hopf%E2%80%93Rinow_theorem). It says: “Let (M, g) be a connected and smooth Riemannian manifold without boundary. Then the following statements are equivalent”
 
@@ -272,9 +272,9 @@
 
 **Definition.** The energy of a curve γ on \[a, b\] is E(γ) = ½ ∫ g(γ′, γ′) dt. Its length is L(γ) = ∫ √g(γ′, γ′) dt. A geodesic can be defined as a critical point of the energy.
 
-**Problem.** Find curves of shortest length and write a differential equation for them. Length does not change under reparametrization, so its minimizers form huge families and are not regular as maps.
+**Problem.** On curves over a fixed interval \[a, b\], the minimizers of energy are exactly the length minimizers travelled at constant speed. They satisfy the geodesic equation.
 
-**How the definition helps.** Energy breaks the reparametrization freedom, so its minimizers are single curves at constant speed. By the Cauchy–Schwarz inequality, L² ≤ 2(b − a)E, with equality exactly at constant speed. So every energy minimizer also minimizes length. The page calls the energy problem more robust, close to convex, so existence and regularity can be expected. Its Euler–Lagrange equation is the geodesic equation, with the Christoffel symbols, the coefficients of the connection in coordinates. Global existence of a minimizer still needs completeness, as in the Hopf–Rinow theorem.
+**How the definition helps.** Energy breaks the reparametrization freedom, so its minimizers are single curves at constant speed. By the Cauchy–Schwarz inequality, L² ≤ 2(b − a)E, with equality exactly at constant speed. So every energy minimizer also minimizes length. The Euler–Lagrange equation of the energy is the geodesic equation.
 
 **Wikipedia:** [Geodesic](https://en.wikipedia.org/wiki/Geodesic). It says: “paths that are minima of L can be arbitrarily re-parameterized (without changing their length), while minima of E cannot.”
 
@@ -324,7 +324,7 @@
 
 **Problem.** For a fixed volume form and vector fields X and Y, div\[X,Y\] = X(div Y) − Y(div X).
 
-**How the definition helps.** With the Lie-derivative definition, the formula follows from ℒ(\[X,Y\]) = ℒ(X)ℒ(Y) − ℒ(Y)ℒ(X). In our own calculation, ℒ(X) applied to (div Y)μ gives X(div Y)μ + (div Y)(div X)μ by the product rule. In our own calculation, subtracting the same expression with X and Y swapped cancels the product of the divergences. In our own comparison, the coordinate proof needs the second derivatives of the components to cancel. In our own account, the work moves to the commutator identity for Lie derivatives.
+**How the definition helps.** With the Lie-derivative definition, the formula follows from ℒ(\[X,Y\]) = ℒ(X)ℒ(Y) − ℒ(Y)ℒ(X). By the product rule, ℒ(X) applied to (div Y)μ gives X(div Y)μ + (div Y)(div X)μ (our own calculation). Subtracting the same expression with X and Y swapped cancels the product of the divergences. The coordinate proof would instead need second derivatives of the components to cancel.
 
 **Wikipedia:** [Divergence](https://en.wikipedia.org/wiki/Divergence). It says: “The divergence can be defined in terms of the Lie derivative as”
 
@@ -336,11 +336,11 @@
 
 *True by definition. Confidence: medium.* MSC 53B05 (Linear and affine connections), 53C05. arXiv math.DG. Level 3: graduate.
 
-**Definition.** View the identity map of the tangent bundle as a one-form θ with values in tangent vectors, called the solder form. Let D be the exterior covariant derivative, which extends a connection, a rule for differentiating vector fields, to such vector-valued forms. Define the torsion as Θ = Dθ. The directional definition takes the derivative of Y along X, minus that of X along Y, minus \[X,Y\].
+**Definition.** The solder form θ is the identity map of the tangent bundle, viewed as a one-form with values in tangent vectors. Define the torsion as Θ = Dθ, where D is the exterior covariant derivative of the connection. The usual definition is T(X,Y) = ∇<sub>X</sub> Y − ∇<sub>Y</sub> X − \[X,Y\].
 
 **Problem.** Let R be the curvature of a connection on the tangent bundle, which measures how covariant derivatives fail to commute. If the torsion is zero, then R(X,Y)Z + R(Y,Z)X + R(Z,X)Y = 0 for all vector fields X, Y and Z.
 
-**How the definition helps.** With the form definition, the first Bianchi identity is the derivative of the torsion. Wikipedia states that DΘ = Ω ∧ θ and Θ = Dθ, where Ω is the curvature form. If Θ = 0, then Ω ∧ θ = 0. In our own step, evaluating this three-form on X, Y and Z gives the cyclic sum. In our own comparison, the directional definition requires expanding the covariant derivatives and using the Jacobi identity for brackets. In our own account, the work moves to proving DΘ = Ω ∧ θ, which rests on D² acting by curvature.
+**How the definition helps.** With the form definition, the first Bianchi identity is the derivative of the torsion. Wikipedia states that DΘ = Ω ∧ θ, where Ω is the curvature form. If Θ = 0, then Ω ∧ θ = 0, and evaluating this three-form on X, Y and Z gives the cyclic sum (our own). The work moves to proving DΘ = Ω ∧ θ, which rests on D² acting by curvature, instead of expanding derivatives and using the Jacobi identity (our own).
 
 **Wikipedia:** [Torsion tensor](https://en.wikipedia.org/wiki/Torsion_tensor). It says: “the TM-valued one-form θ on M corresponding to the identity endomorphism of the tangent bundle”
 
@@ -400,11 +400,11 @@
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 58A30. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Let E → M be a fibre bundle. The vertical subspace at a point of E holds the vectors tangent to the fibre. An Ehresmann connection chooses a complementary horizontal subspace at each point of E. Its curvature takes two horizontal vector fields to the vertical part of their Lie bracket.
+**Definition.** An Ehresmann connection on a fibre bundle E → M chooses, at each point of E, a horizontal subspace complementary to the tangent space of the fibre. Its curvature takes two horizontal vector fields to the vertical part of their Lie bracket.
 
-**Problem.** A connection is flat if there is a local horizontal section through every point. One wants a clean test for flatness on any fibre bundle, not only on vector bundles.
+**Problem.** An Ehresmann connection on any fibre bundle is flat, meaning that a local horizontal section passes through every point, exactly when its curvature is zero.
 
-**How the definition helps.** With the connection given as a distribution of planes, flatness is the Frobenius theorem applied to that distribution. The curvature is exactly the obstruction to the horizontal planes being closed under Lie bracket. So curvature zero means the horizontal planes are tangent to local leaves, which are local horizontal sections. Ehresmann introduced the definition in 1950, and it works on any fibre bundle. The Frobenius theorem itself carries the analytic work. Global parallel transport may still fail unless the connection is complete.
+**How the definition helps.** With the connection given as a distribution of planes, flatness is the Frobenius theorem applied to that distribution. The curvature is exactly the obstruction to the horizontal planes being closed under Lie bracket. So zero curvature means the planes are tangent to local leaves, which are local horizontal sections. The Frobenius theorem carries the analytic work.
 
 **Wikipedia:** [Ehresmann connection](https://en.wikipedia.org/wiki/Ehresmann_connection). It says: “Thus the curvature is the integrability condition for the horizontal subbundle to yield transverse sections of the fiber bundle E → M.”
 
@@ -438,9 +438,9 @@
 
 **Definition.** Away from magnetic charges, the electromagnetic field is defined as a connection on a principal U(1)-bundle. In other words, it is a cocycle of degree 2 in ordinary differential cohomology. Its curvature is the field strength F. Its first Chern class is the magnetic charge.
 
-**Problem.** Prove Dirac charge quantization: magnetic charge comes in integer units, relative to the electric charge.
+**Problem.** Dirac charge quantization holds: in units where the electric charge is 1, the magnetic charge is an integer.
 
-**How the definition helps.** If the field is a U(1)-connection, quantization holds by definition. Take a sphere around a monopole, and use units where the electric charge is 1. The magnetic flux through the sphere, divided by 2π, is the first Chern number of the bundle, and that number is an integer. In our reading, the physical content moves into the reason to use a connection. Charged quantum particles need a well-defined phase (the holonomy of the connection), and this is Dirac's argument. The same idea extends to higher gauge fields, such as the B-field, the C-field and the RR-fields, when you choose a differential cohomology theory. The choice of theory is then the real physical hypothesis.
+**How the definition helps.** If the field is a U(1)-connection, quantization holds by definition. The magnetic flux through a sphere around a monopole, divided by 2π, is the first Chern number of the bundle, which is an integer. In our reading, the physical content moves into the reason to use a connection. Charged quantum particles need a well-defined phase, the holonomy of the connection, and this is Dirac's argument.
 
 **nLab:** [Dirac charge quantization](https://ncatlab.org/nlab/show/Dirac+charge+quantization), [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “Equivalently this means that the electromagnetic field is a cocycle in ordinary differential cohomology of degree 2.”
 
@@ -475,11 +475,11 @@
 
 *Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Choose one frame in one fiber of a principal bundle. Use only gauge transformations, or bundle changes of frame, that fix this frame. The ordinary gauge group need not fix it.
+**Definition.** The based gauge group consists of the gauge transformations, or bundle automorphisms, that fix one chosen frame in one fibre of a principal bundle.
 
-**Problem.** On a connected base, the based gauge group acts freely on the space of smooth connections. The full gauge group need not act freely, since constant changes preserve the product connection on a trivial bundle.
+**Problem.** On a connected base, the based gauge group acts freely on the space of smooth connections.
 
-**How the definition helps.** In our own proof, fixing one frame determines every symmetry that preserves the connection. Such a symmetry commutes with parallel transport, so it fixes a transported frame over every point of the connected base. A bundle automorphism fixing a frame fixes its entire fiber.
+**How the definition helps.** A symmetry that preserves the connection commutes with parallel transport (our own proof). So if it fixes one frame, it fixes a transported frame over every point of the connected base, and hence is the identity. The full gauge group need not act freely, since constant gauge transformations preserve the product connection on a trivial bundle.
 
 **nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “This means that we may identify connections on P with their parallel transport functors.”
 
@@ -599,9 +599,9 @@
 
 **Definition.** The slope of a holomorphic bundle is its degree divided by its rank. A bundle is stable if every proper subsheaf of lower rank has smaller slope. It is polystable if it is a direct sum of stable bundles of the same slope.
 
-**Problem.** A Hermite–Einstein metric is a Hermitian metric whose curvature, contracted with the Kähler form, is a constant times the identity. One wants an algebraic test for which holomorphic bundles over a compact Kähler manifold have one.
+**Problem.** A holomorphic vector bundle over a compact Kähler manifold has a Hermite–Einstein metric exactly when it is polystable. Such a metric has curvature whose contraction with the Kähler form is a constant times the identity.
 
-**How the definition helps.** A Hermite–Einstein metric splits off any subbundle of equal slope as an orthogonal summand, so the bundle must be polystable, not merely semistable (our own). On an elliptic curve, take the non-split extension of the trivial line bundle by itself (our own). It is semistable but not polystable, and it has no such metric (our own). Stability alone would wrongly exclude direct sums such as the trivial bundle of rank two (our own). With polystability the theorem is an exact equivalence, the Kobayashi–Hitchin correspondence. The hard direction, from polystable to a metric, is the theorem of Donaldson and of Uhlenbeck and Yau.
+**How the definition helps.** A Hermite–Einstein metric splits off any subbundle of equal slope as an orthogonal summand, so the bundle must be polystable, not merely semistable (our own). On an elliptic curve, the non-split extension of the trivial line bundle by itself is semistable but has no such metric (our own). Stability alone would wrongly exclude sums such as the trivial bundle of rank two (our own). The hard direction, from polystable to a metric, is the theorem of Donaldson and of Uhlenbeck and Yau.
 
 **Paper or page:** [Blowing-up Hermitian Yang--Mills connections](https://arxiv.org/abs/2301.00525), [Semi-stability and local wall-crossing for hermitian Yang-Mills connections](https://arxiv.org/abs/2304.05245). It says: “There exists a Hermite–Einstein metric on E with respect to ω if and only if E is polystable with respect to L”
 
@@ -620,7 +620,7 @@
 
 **Problem.** Instantons fall into topological sectors labelled by an integer, the instanton number. This integer equals the second Chern class c₂ of the bundle.
 
-**How the definition helps.** Every bundle on ℝ⁴ is trivial, but bundles on S⁴ can twist, so there is an integer to measure. ℝ⁴ is contractible, so no principal bundle on it can carry a topological charge. On S⁴ the isomorphism classes of SU(2)-bundles are π₄(BSU(2)) ≅ ℤ, and in dimension 4 only c₂ can be non-zero, so c₂ is the instanton number. By the clutching construction, you cover S⁴ by two hemispheres, so a bundle is one transition function S³ → SU(2) on the equator; physics books call it the 'large gauge transformation'. The real content is the classification of bundles and Chern–Weil theory. Our own remark: that a finite-action instanton on ℝ⁴ really extends to S⁴ is Uhlenbeck's removable singularity theorem. The existence of a self-dual connection in each sector (ADHM) is a separate hard theorem.
+**How the definition helps.** Every bundle on ℝ⁴ is trivial because ℝ⁴ is contractible, but bundles on S⁴ can twist. By clutching along the equator, an SU(2)-bundle on S⁴ is a map S³ → SU(2), and its class in π₄(BSU(2)) ≅ ℤ is c₂. The real content is the classification of bundles and Chern–Weil theory. That a finite-action instanton on ℝ⁴ extends to S⁴ is Uhlenbeck's removable singularity theorem (our own remark).
 
 **nLab:** [SU2-instantons from the correct maths to the traditional physics story](https://ncatlab.org/nlab/show/SU2-instantons+from+the+correct+maths+to+the+traditional+physics+story), [Yang-Mills instanton](https://ncatlab.org/nlab/show/Yang-Mills+instanton). It says: “It is this passage from ℝ⁴ to S⁴ which takes care of the subtleties that often tend to be glossed over.”
 
@@ -688,9 +688,9 @@
 
 **Definition.** A manifold is orientable when one can choose a consistent sense of rotation at every point. It is simply connected when every loop can shrink to a point. Sectional curvature measures whether geodesics that start in a two-dimensional direction spread apart or come together; positive means they come together.
 
-**Problem.** Find the topology that positive curvature forces on a compact manifold.
+**Problem.** Synge's theorem: a compact, orientable, even-dimensional Riemannian manifold with positive sectional curvature is simply connected.
 
-**How the definition helps.** The orientability condition removes the case that breaks the theorem, so the conclusion holds without exceptions. The real projective plane, the round sphere with opposite points identified, has positive curvature and is even-dimensional (our own). It is not simply connected and not orientable, so the condition must exclude it (our own). In the proof, one moves a vector around the shortest loop in a nontrivial loop class (our own). Orientation makes this motion a rotation of an odd-dimensional space, so some vector returns unchanged (our own). Positive curvature then shortens the loop, which is a contradiction (our own).
+**How the definition helps.** The orientability condition removes the case that breaks the theorem. The real projective plane has positive curvature and even dimension, but it is neither simply connected nor orientable (our own). In the proof, one moves a vector around the shortest loop in a nontrivial loop class, and orientation makes this a rotation of an odd-dimensional space, so some vector returns unchanged (our own). Positive curvature then shortens the loop, which is a contradiction (our own).
 
 **Paper or page:** [The curvature of convex sum of metrics and applications](https://arxiv.org/abs/2106.14781). It says: “Let (M,g) be a compact manifold with positive sectional curvature. Then, If M is even-dimensional and orientable, then it is simply-connected, If M is odd-dimensional, then it is orientable.”
 
@@ -707,9 +707,9 @@
 
 **Definition.** Define a Jacobi field along a geodesic γ as the derivative of a smooth family of geodesics through γ. The usual definition asks for a solution of the Jacobi equation J″ + R(J,γ′)γ′ = 0. Here R is the curvature tensor.
 
-**Problem.** Restrict a Killing field to a geodesic segment. A Killing field is a vector field whose flow preserves the metric. The restriction is a Jacobi field.
+**Problem.** The restriction of a Killing field, a vector field whose flow preserves the metric, to a geodesic is a Jacobi field.
 
-**How the definition helps.** The flow of a Killing field moves geodesics to geodesics, so it gives a family of geodesics at once (our own argument). The derivative of this family is the Killing field along the segment. With the equation definition, one must instead prove a second-order identity for Killing fields (our own comparison). The work moves to the theorem that the two definitions agree. Differentiating the geodesic equation gives the Jacobi equation, and smooth dependence on initial data gives the converse (our own).
+**How the definition helps.** The flow of a Killing field moves geodesics to geodesics, so it gives a family of geodesics at once, whose derivative is the Killing field (our own argument). With the equation definition, one must instead prove a second-order identity for Killing fields (our own comparison). The work moves to the theorem that the two definitions agree.
 
 **Wikipedia:** [Jacobi field](https://en.wikipedia.org/wiki/Jacobi_field). It says: “Take a smooth one parameter family of geodesics”
 
@@ -721,7 +721,7 @@
 
 *True by definition. Confidence: medium.* MSC 53C22 (Geodesics in global differential geometry), 53C05, 83C40. arXiv math.DG, gr-qc. Level 3: graduate.
 
-**Definition.** Use the metric to turn a vector field K into a linear functional on each tangent space. In the Killing equation, the covariant derivative of that functional is antisymmetric. The covariant derivative compares quantities at nearby points using the metric. The geometric definition instead says that the motion generated by K preserves the metric.
+**Definition.** A Killing field K is a vector field whose flow preserves the metric. In the Killing equation, the covariant derivative of the one-form g(K, ·) is antisymmetric.
 
 **Problem.** On an affinely parametrized geodesic, a path whose tangent U is parallel along itself, the metric product g(K, U) stays constant.
 
@@ -741,7 +741,7 @@
 
 **Problem.** A complete metric space is a length space exactly when every pair of points has an ε-midpoint for every ε &gt; 0.
 
-**How the definition helps.** By our own explanation, the midpoint test replaces a statement about paths with one about three points at a time. For the converse, our own construction inserts midpoints again and again, with errors chosen so the added length stays small. Completeness then lets this map from the dyadic rationals extend to a path. The rational line shows that completeness is needed: it has exact midpoints but no paths between distinct points. By our own remark, the three-point test survives small changes of distances. So it makes it easy to show that a complete Gromov–Hausdorff limit of length spaces is a length space.
+**How the definition helps.** The midpoint test replaces a statement about paths with one about three points at a time (our own explanation). For the converse, one inserts midpoints again and again, with errors chosen so the added length stays small, and completeness extends this map from the dyadic rationals to a path (our own construction). The rational line shows that completeness is needed: it has exact midpoints but no paths between distinct points.
 
 **Paper or page:** [A Gentle Introduction to CAT(0) Spaces](https://arxiv.org/abs/2406.09883v1). It says: “X is a length space if and only if it admits ε-midpoints for all ε &gt; 0.”
 
@@ -775,9 +775,9 @@
 
 **Definition.** A length space has curvature at least k if small triangles are at least as fat as comparison triangles on the sphere of curvature k. This is Alexandrov's definition. It uses only distances.
 
-**Problem.** Bonnet–Myers says that a complete manifold with Ricci curvature at least (n−1)k, k&gt;0, has diameter at most π/√k. The metric version asks the same for complete length spaces with curvature at least k.
+**Problem.** A complete length space of curvature at least k &gt; 0 and dimension at least two has diameter at most π/√k, as Bonnet–Myers gives for manifolds.
 
-**How the definition helps.** The theorem excludes the one-dimensional spaces by name, because they satisfy the definition but break the bound. In the real line every triangle is degenerate, so it is no thinner than any comparison triangle (our own). So the line has curvature at least k for every k, but it has infinite diameter (our own). In dimension two and higher, real triangles exist and the comparison forces the diameter bound. The paper proves a Lorentzian version for spaces with a global timelike curvature bound. There the exclusion becomes a condition: any two timelike related points span a non-degenerate timelike triangle. The step from local to global comparison stays the hard part.
+**How the definition helps.** The theorem must exclude one-dimensional spaces, because they satisfy the definition but break the bound. In the real line every triangle is degenerate, so the line has curvature at least k for every k but infinite diameter (our own). In dimension two and higher, real triangles exist and the comparison forces the bound. The paper proves a Lorentzian version, where the exclusion becomes the condition that timelike related points span a non-degenerate timelike triangle.
 
 **Paper or page:** [Alexandrov's Patchwork and the Bonnet--Myers Theorem for Lorentzian length spaces](https://arxiv.org/abs/2302.11615), [Alexandrov's Patchwork and the Bonnet--Myers Theorem for Lorentzian length spaces](https://arxiv.org/abs/2302.11615). It says: “Let X be a complete length space with (local) curvature bounded below by some k&gt;0, which is not one of the aforementioned 1-dimensional spaces. Then diam(X) ≤ π/√k.”
 
@@ -811,7 +811,7 @@
 
 **Definition.** A real fundamental cycle of a connected closed oriented manifold represents its orientation in top-dimensional homology. The norm of the cycle is the sum of the absolute values of its coefficients. Simplicial volume is the infimum of that norm over all real fundamental cycles.
 
-**Problem.** For a map f between connected closed oriented manifolds of the same dimension, show that ‖M‖ ≥ \|deg f\| · ‖N‖. Deduce that a self-map of absolute degree greater than one forces zero simplicial volume.
+**Problem.** For a map f from M to N between connected closed oriented manifolds of the same dimension, ‖M‖ ≥ \|deg f\| · ‖N‖. So a self-map of absolute degree greater than one forces zero simplicial volume.
 
 **How the definition helps.** In our own proof, the cycle norm gives the inequality because pushing a cycle forward can combine coefficients but cannot increase their absolute sum. A fundamental cycle maps to a cycle representing deg(f) times the target's orientation class. Scaling a real class scales its norm by the absolute factor. Taking the infimum gives the result.
 
@@ -947,9 +947,9 @@
 
 **Definition.** A connection is a rule for moving vectors along curves, called parallel transport. The holonomy group of a connection at a point x is the group of linear maps given by parallel transport around loops based at x. The restricted holonomy group uses only contractible loops, those that can be shrunk to a point.
 
-**Problem.** Relate holonomy to curvature: a connection should have zero curvature exactly when parallel transport around loops does nothing. The Ambrose–Singer theorem should give the Lie algebra of holonomy from curvature.
+**Problem.** A connection is flat exactly when its restricted holonomy group is trivial. More generally, by the Ambrose–Singer theorem, curvature values transported back to the base point span the Lie algebra of the holonomy group.
 
-**How the definition helps.** Restricting to contractible loops removes the topological part of holonomy, so what is left is controlled by curvature alone. The full holonomy can be nontrivial for a flat connection. For example, the flat cone or the flat Möbius band turns vectors around a loop that cannot be shrunk; this example is our own. The restricted group is always a connected Lie subgroup, and on a simply connected manifold the two groups agree. The Ambrose–Singer theorem (1953) then says the Lie algebra of the holonomy is spanned by curvature values transported back to the base point.
+**How the definition helps.** Restricting to contractible loops removes the topological part of holonomy, so curvature alone controls what is left. The full holonomy can be nontrivial for a flat connection: the flat Möbius band turns vectors around its central loop (our own example). The restricted group is always a connected Lie subgroup, and on a simply connected manifold the two groups agree.
 
 **Wikipedia:** [Holonomy](https://en.wikipedia.org/wiki/Holonomy). It says: “∇ is flat (i.e. has vanishing curvature) if and only if Hol⁰(∇) is trivial. In this case, Hol(∇) may still be nontrivial.”
 
@@ -1071,9 +1071,9 @@
 
 **Definition.** A Lorentzian manifold is a manifold with a metric that has one time direction, as in relativity. It is globally hyperbolic if it contains a Cauchy surface. A Cauchy surface is an embedded submanifold Σ with this property: every timelike curve (the path of an observer slower than light) can be extended to a timelike curve that meets Σ in exactly one point.
 
-**Problem.** Wave equations such as the Klein–Gordon equation should have unique advanced and retarded Green functions. These are the solutions for a point source that are zero in the future of the source, or in its past. Then fields evolve uniquely from initial data.
+**Problem.** On a globally hyperbolic spacetime, the Klein–Gordon equation has unique advanced and retarded Green functions, the point-source solutions supported in the causal past or the causal future of the source. So fields evolve uniquely from initial data.
 
-**How the definition helps.** Global hyperbolicity is the hypothesis that makes the theorem true in general; it does not make the analysis easy. On a globally hyperbolic spacetime, the Klein–Gordon operator is Green hyperbolic: its advanced and retarded Green functions exist and are unique (Bär–Ginoux–Pfäffle). The condition excludes spacetimes that are not globally hyperbolic, such as anti de Sitter space and the inner regions of Kerr and Reissner–Nordström. Geroch's theorem adds that the spacetime is then homeomorphic to ℝ × Σ, with each slice a Cauchy surface.
+**How the definition helps.** Global hyperbolicity is the hypothesis that makes the theorem true in general; it does not make the analysis easy. On such a spacetime the Klein–Gordon operator is Green hyperbolic (Bär–Ginoux–Pfäffle). The condition excludes spacetimes such as anti de Sitter space and the inner regions of Kerr and Reissner–Nordström. Geroch's theorem adds that the spacetime is then homeomorphic to ℝ × Σ.
 
 **nLab:** [globally hyperbolic Lorentzian manifold](https://ncatlab.org/nlab/show/globally+hyperbolic+Lorentzian+manifold), [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface), [Green hyperbolic partial differential equation](https://ncatlab.org/nlab/show/Green+hyperbolic+partial+differential+equation), [smooth Lorentzian space](https://ncatlab.org/nlab/show/smooth+Lorentzian+space). It says: “A Lorentzian manifold is called globally hyperbolic if it admits a well-defined time evolution from initial data of physical fields on it.”
 
@@ -1244,9 +1244,9 @@
 
 **Definition.** A symplectic form on a manifold is a 2-form ω that is closed (dω = 0) and nondegenerate. Nondegeneracy lets each smooth function H define a Hamiltonian vector field Vₕ by ι(Vₕ)ω = dH.
 
-**Problem.** In classical mechanics, the flow of any Hamiltonian H should preserve the phase-space structure. This gives Liouville's theorem that phase-space volume is conserved.
+**Problem.** For a nondegenerate 2-form ω, every Hamiltonian flow preserves ω exactly when ω is closed. Then the n-th power of ω is a preserved volume form, which gives Liouville's theorem.
 
-**How the definition helps.** With closedness in the definition, preservation of ω by every Hamiltonian flow is a one-line computation. Cartan's formula gives L(Vₕ) ω = d(ι(Vₕ) ω) + ι(Vₕ) dω = d(dH) + ι(Vₕ) dω = ι(Vₕ) dω. This vanishes for every H exactly when dω = 0. Liouville's theorem follows, because ω to the power n is then a preserved volume form. In dimension 2, every 2-form is closed, so any area form is symplectic. The nondegeneracy condition is what makes Vₕ exist at all.
+**How the definition helps.** With closedness in the definition, preservation of ω by every Hamiltonian flow is a one-line computation. Cartan's formula gives L(Vₕ) ω = d(ι(Vₕ) ω) + ι(Vₕ) dω = d(dH) + ι(Vₕ) dω = ι(Vₕ) dω. This vanishes for every H exactly when dω = 0. Nondegeneracy is what makes Vₕ exist at all.
 
 **Wikipedia:** [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold). It says: “the requirement for the vanishing Lie derivative along flows of Vₕ corresponding to arbitrary smooth H is equivalent to the requirement that ω should be closed.”
 
@@ -1262,7 +1262,7 @@
 
 **Problem.** Darboux's theorem: near every point of a 2n-dimensional symplectic manifold there are coordinates in which ω takes the standard form. So any two symplectic manifolds of the same dimension are locally the same.
 
-**How the definition helps.** Closedness is what lets Moser's trick deform any symplectic form into the standard one near a point. Moser's trick joins the two forms by a path and follows a flow along it. So symplectic geometry has no local invariants and is purely global. In Riemannian geometry, by contrast, curvature is a local invariant that stops most metrics from being flat near a point. Our own point: for a nondegenerate form that is not closed, dω is itself a local invariant. Darboux proved the theorem in 1882 as a solution of Pfaff's problem. The difficulty moves to global questions, such as Gromov's non-squeezing theorem.
+**How the definition helps.** Closedness is what lets Moser's trick deform any symplectic form into the standard one near a point, by joining the two forms by a path and following a flow along it. So symplectic geometry has no local invariants. In Riemannian geometry, by contrast, curvature is a local invariant. Our own point: for a nondegenerate form that is not closed, dω is itself a local invariant.
 
 **Wikipedia:** [Darboux's theorem](https://en.wikipedia.org/wiki/Darboux%27s_theorem). It says: “Darboux's theorem for symplectic manifolds implies that there are no local invariants in symplectic geometry”
 
@@ -1278,9 +1278,9 @@
 
 **Definition.** A pre-symplectic form is a closed two-form ω whose rank is the same at every point. The rank is the rank of ω as an antisymmetric matrix. Its kernel at each point is the set of vectors v with ω(v, w) = 0 for all w.
 
-**Problem.** Darboux coordinates write ω locally as dq¹∧dp₁ + … + dqʳ∧dpᵣ. One wants such coordinates for a closed two-form that is degenerate.
+**Problem.** Near each point, a closed two-form of constant rank 2r has coordinates q, p and z in which ω = dq¹∧dp₁ + … + dqʳ∧dpᵣ. In these coordinates the kernel is spanned by the fields ∂/∂zᴬ.
 
-**How the definition helps.** Constant rank makes the kernel a smooth subbundle that one can divide out, so the symplectic Darboux theorem applies to what remains (our own). Closedness of ω makes the kernel integrable (our own). The theorem says the kernel is spanned by the coordinate fields ∂/∂zᴬ. The form x dx∧dy on ℝ² is closed, but its rank drops from 2 to 0 on the line x = 0 (our own). No coordinates near the origin give it a standard form, so the condition must exclude it (our own). Forms whose rank changes need separate local models (our own).
+**How the definition helps.** Constant rank makes the kernel a smooth subbundle, and closedness makes it integrable, so one can divide it out and apply the symplectic Darboux theorem (our own). The form x dx∧dy on ℝ² is closed, but its rank drops from 2 to 0 on the line x = 0 (our own). No coordinates near the origin give it a standard form, so the condition must exclude it (our own).
 
 **Paper or page:** [A zoo of coisotropic embeddings](https://arxiv.org/abs/2509.19039). It says: “Let (M, ω) be a d-dimensional pre-symplectic manifold, with ω ∈ Ω²(M) a closed 2-form of constant rank 2r &lt; d. Then, for every point m ∈ M, there exists a coordinate chart (U, φ) around m”
 
@@ -1330,7 +1330,7 @@
 
 **Problem.** Assume the form has constant rank and its space of leaves is a smooth manifold. If the quotient projection has surjective derivative everywhere, the form descends to a unique closed nondegenerate two-form.
 
-**How the definition helps.** Identifying points along null directions specifies a quotient where the descended form can be nondegenerate. In our own proof, constant rank and closedness make the null directions tangent to connected submanifolds called leaves. The form vanishes when one argument is tangent to a leaf. Cartan’s formula and closedness show that motion along a leaf also preserves the form. These facts give descent through the smooth projection, and removing precisely the kernel gives nondegeneracy. Existence of the smooth quotient is a separate hypothesis.
+**How the definition helps.** Identifying points along null directions gives a quotient where the descended form can be nondegenerate. In our own proof, constant rank and closedness make the null directions tangent to leaves, and the form vanishes when one argument is tangent to a leaf. Cartan’s formula and closedness show that motion along a leaf preserves the form, so it descends. Existence of the smooth quotient is a separate hypothesis.
 
 **nLab:** [presymplectic structure](https://ncatlab.org/nlab/show/presymplectic+structure). It says: “the quotient of X by the flow of the vector fields in the kernel of ω is, if it exists in a reasonable way, a symplectic manifold.”
 
@@ -1428,7 +1428,7 @@
 
 **Definition.** Let ω = dλ be a symplectic form, a closed nondegenerate two-form with a chosen primitive λ. A Lagrangian is a half-dimensional submanifold on which ω restricts to zero. It is exact if λ restricts to the differential of a function.
 
-**Problem.** Choose a compatible complex structure on each tangent space so that ω(v, Jv) is positive for every nonzero vector v. A map from the usual complex disk whose derivative respects the complex structures must be constant if its boundary lies on an exact Lagrangian.
+**Problem.** Let J be a compatible complex structure, meaning that ω(v, Jv) &gt; 0 for every nonzero tangent vector v. Every J-holomorphic disk with boundary on an exact Lagrangian is constant.
 
 **How the definition helps.** Exactness makes the boundary integral of λ vanish, forcing the disk to have zero area. In our own proof, Stokes’ theorem identifies that integral with the integral of ω over the disk. The quoted energy identity then forces the disk to be constant. Without exactness, the ordinary unit disk in the complex plane gives a counterexample with boundary on the unit circle.
 
@@ -1462,7 +1462,7 @@
 
 **Definition.** A symplectic vector space has a skew-symmetric bilinear form that pairs every nonzero vector nontrivially with some vector. A Lagrangian is a half-dimensional subspace on which that form is zero. The space of Lagrangians in positive dimension has fundamental group ℤ, and the Maslov index is the integer of a loop class. Another definition counts signed crossings with subspaces that share a nonzero vector with a fixed Lagrangian.
 
-**Problem.** Show that the Maslov index stays fixed as a loop deforms. Show that joining two loops with a common starting point adds their indices.
+**Problem.** The Maslov index of a loop of Lagrangian subspaces does not change when the loop deforms. Joining two loops with a common starting point adds their indices.
 
 **How the definition helps.** The loop-class definition gives invariance because deforming a loop does not change its class. Even a moving starting point only conjugates the class, which has no effect in the abelian group ℤ. Joining loops is the group operation, so their integers add. In our own comparison, the crossing definition needs a proof that signed counts survive a deformation. The work shifts to computing the fundamental group, fixing a sign convention and matching the loop class with the crossing count.
 
@@ -1532,7 +1532,7 @@
 
 **Problem.** On a Poisson manifold, the operator \[π,−\] on multivector fields squares to zero. Its cohomology is called Poisson cohomology.
 
-**How the definition helps.** With the \[π,π\] = 0 definition, the square of \[π,−\] is a multiple of the bracket with \[π,π\], which is zero. In our own step, the graded Jacobi identity, the Jacobi identity with signs set by the degrees, gives \[π,\[π,X\]\] = ½\[\[π,π\],X\]. Wikipedia states that \[π,−\] squares to zero exactly when \[π,π\] = 0. In our own comparison, the Jacobi identity for functions must first be turned into \[π,π\] = 0 by a calculation in coordinates. Wikipedia says Lichnerowicz introduced Poisson cohomology in 1977. In our own account, the work moves to the graded Jacobi identity for the Schouten–Nijenhuis bracket.
+**How the definition helps.** With the \[π,π\] = 0 definition, the square of \[π,−\] is a multiple of the bracket with \[π,π\], which is zero. In our own step, the graded Jacobi identity gives \[π,\[π,X\]\] = ½\[\[π,π\],X\]. In our own comparison, the Jacobi identity for functions must first be turned into \[π,π\] = 0 by a calculation in coordinates. In our own account, the work moves to the graded Jacobi identity for the Schouten–Nijenhuis bracket.
 
 **Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “the condition d\_π ∘ d\_π = 0 is equivalent to \[π,π\]=0”
 
@@ -1550,7 +1550,7 @@
 
 **Problem.** Suppose a Lie group acts smoothly by Poisson maps, freely and properly. Then its orbit space has a unique Poisson bracket making the projection a Poisson map.
 
-**How the definition helps.** Using invariant functions gives the quotient bracket without constructing a tensor in quotient coordinates. In our own proof, the group preserves brackets, so the bracket of two invariant functions stays invariant. The bracket identities pass to the quotient because pullback identifies its functions with these invariant functions. The smooth quotient theorem supplies the manifold structure. Freeness means point stabilizers are trivial. Properness means the map sending (g, x) to (gx, x) has compact preimages of compact sets.
+**How the definition helps.** Using invariant functions gives the quotient bracket without constructing a tensor in quotient coordinates. In our own proof, the group preserves brackets, so the bracket of two invariant functions stays invariant. The bracket identities pass to the quotient because pullback identifies its functions with these invariant functions. The smooth quotient theorem for free and proper actions supplies the manifold structure.
 
 **Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “inherits a Poisson structure”
 
@@ -1598,9 +1598,9 @@
 
 **Definition.** Let 𝒜 be the space of connections on a bundle over a closed surface. A gauge transformation is a change of frame at each point, and the gauge group 𝒢 acts on 𝒜. A moment map for an action that preserves a symplectic form is a map whose components generate the action as Hamiltonian flows. The Hamiltonian reduction of 𝒜 by 𝒢 is the zero set of the moment map, divided by 𝒢.
 
-**Problem.** One wants a geometric structure on the moduli space of flat connections on a surface. A flat connection is a connection with zero curvature.
+**Problem.** For the Atiyah–Bott symplectic form on 𝒜, curvature is a moment map for 𝒢. So the moduli space of flat connections on a closed surface is the Hamiltonian reduction of 𝒜 by 𝒢, and it inherits a symplectic form where it is smooth.
 
-**How the definition helps.** Once the curvature is the moment map, flat connections are exactly its zero set, so their moduli space is a symplectic quotient by definition. General facts about such quotients then apply directly (our own). For example, the quotient inherits a symplectic form where it is smooth. The second source derives Goldman's symplectic structure in this way, through the Atiyah–Bott reduction. Atiyah and Bott used this picture to compare the flat moduli space with stable holomorphic bundles (our own). The hard work stays in infinite dimensions: the analysis of the gauge action on spaces of connections (our own).
+**How the definition helps.** Once the curvature is the moment map, flat connections are exactly its zero set, so their moduli space is a symplectic quotient by definition. General facts about such quotients then apply directly (our own). The second source derives Goldman's symplectic structure in this way. The hard work stays in infinite dimensions, in the analysis of the gauge action on spaces of connections (our own).
 
 **Paper or page:** [Higher Complex Structures and Higher Teichmüller Theory](https://arxiv.org/abs/2007.00382), [A Gentle Introduction to the Non-Abelian Hodge Correspondence](https://arxiv.org/abs/2208.05940). It says: “The action of gauge transforms on the space of connections is a Hamiltonian action and the moment map is the curvature. Thus, the Hamiltonian reduction 𝒜⫽𝒢 gives the moduli space of flat connections.”
 
@@ -1652,7 +1652,7 @@
 
 **Definition.** A moment map collects the energy functions generating a Lie group’s infinitesimal motions. Assume it respects the group action and the induced action on the dual Lie algebra. On a level of this map, identify points related by group elements fixing its value. An action is free when only the identity fixes a point.
 
-**Problem.** Choose a regular value, meaning that the moment map derivative is onto throughout its level. Properness means the map sending (g, x) to (gx, x) has compact preimages of compact sets. If the group fixing the value acts freely and properly there, the quotient is a smooth symplectic manifold.
+**Problem.** Take a regular value of the moment map, one where its derivative is onto throughout the level. If the group fixing the value acts freely and properly on the level, the quotient is a smooth symplectic manifold.
 
 **How the definition helps.** Freeness rules out leftover point symmetries in local quotient charts. In our own example, a circle rotates the two coordinates of ℂ² at speeds one and two. Use momentum (\|z\|² + 2\|w\|²)/2. On each positive level, a half-turn fixes points with z = 0 and negates their transverse coordinate. The local quotient thus retains an order-two symmetry. The free and proper action theorem supplies smooth quotient charts. The reduction theorem supplies their symplectic form.
 
@@ -1688,9 +1688,9 @@
 
 **Definition.** Let (X, ω) be a symplectic manifold and 𝔤 a Lie algebra. A Hamiltonian action of 𝔤 on X is a Lie algebra map ξ ↦ Φ(ξ) from 𝔤 to the smooth functions on X, with the Poisson bracket as the bracket on functions. Each ξ acts by the Hamiltonian flow of Φ(ξ), and Φ, seen as a map X → 𝔤\*, is the moment map. Time evolution is the Hamiltonian flow of a function H.
 
-**Problem.** Noether's theorem says that every continuous symmetry of a physical system gives a conserved quantity.
+**Problem.** Noether's theorem: if a Hamiltonian action Φ of 𝔤 preserves the energy H, then every charge Φ(ξ) is constant under time evolution.
 
-**How the definition helps.** In this setting the conserved quantity, or charge, is the moment map itself, so the proof is one line. Suppose the symmetry is a Hamiltonian action that preserves H, so {Φ(ξ), H} = 0: H does not change along the flow of Φ(ξ). The time derivative of Φ(ξ) is {H, Φ(ξ)}. The Poisson bracket is skew-symmetric, so this derivative is also zero. The nLab says the theorem is almost a tautology in this setting. In our reading, the real work is in the Lagrangian version (variational bicomplex, covariant phase space). That version is what turns a symmetry of a Lagrangian into a Hamiltonian action in the first place.
+**How the definition helps.** In this setting the conserved quantity, or charge, is the moment map itself, so the proof is one line. The action preserves H, so {Φ(ξ), H} = 0. The time derivative of Φ(ξ) is {H, Φ(ξ)}, which is zero by skew-symmetry of the Poisson bracket. In our reading, the real work is in the Lagrangian version, which turns a symmetry of a Lagrangian into a Hamiltonian action.
 
 **nLab:** [Noether's theorem](https://ncatlab.org/nlab/show/Noether%27s+theorem). It says: “Hence the "Hamiltonian Noether theorem" is all captured already by the very notion of Hamiltonian action and the statement that the Poisson bracket is skew-symmetric (is a Lie algebra bracket).”
 
@@ -1770,11 +1770,11 @@
 
 *True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG. Level 3: graduate.
 
-**Definition.** Use rational coefficients and formal powers of T with nonnegative real exponents, only finitely many below any fixed bound. In the small quantum product, pair the output with a third class by counting genus-zero curves through the three conditions. Each count uses the virtual class, which corrects for excess dimension, and carries the power of T given by its symplectic area.
+**Definition.** The small quantum product of a closed symplectic manifold deforms the cup product. It counts genus-zero curves through three cohomology classes, using the virtual class. Each count is weighted by T raised to the curve's symplectic area, with coefficients in the rational Novikov ring of series in T with nonnegative exponents.
 
 **Problem.** For a closed symplectic manifold, quotienting its small quantum cohomology ring by all series with zero constant term recovers its rational cohomology ring.
 
-**How the definition helps.** Weighting by area lets one extract ordinary multiplication by taking the constant coefficient (our own). An unweighted sum would lose that information (our own). Only constant curves have zero area. Their three marks fix the sphere, and all three evaluations return the same target point (our own). The degree-zero count therefore pairs the ordinary cup product with the third class (our own). Associativity of the full product requires a separate theorem (our own).
+**How the definition helps.** Weighting by area lets one extract ordinary multiplication by taking the constant coefficient (our own). Only constant curves have zero area, and all three evaluations of such a curve return the same point (our own). So the zero-area count pairs the ordinary cup product with the third class (our own). Associativity of the full product requires a separate theorem (our own).
 
 **Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The only pseudoholomorphic curves in class A = 0 are constant maps, whose images are points.”
 
@@ -1804,9 +1804,9 @@
 
 **Definition.** The path groupoid P₁(X) of a manifold X has the points of X as objects. Its morphisms are thin-homotopy classes of smooth paths with sitting instants, that is, paths that are constant near their end points. A thin homotopy is a homotopy of rank at most 1, so it sweeps out no area.
 
-**Problem.** A connection on a principal G-bundle (a bundle whose fibres are copies of the group G) should be the same thing as its parallel transport. Transport should respect composition of paths.
+**Problem.** Parallel transport of a connection on a principal G-bundle is a smooth functor on the path groupoid P₁(X). Principal G-bundles with connection are equivalent to such smooth transport functors (Schreiber and Waldorf).
 
-**How the definition helps.** Parallel transport does not change under thin homotopy, so it gives a well-defined functor on the path groupoid. With sitting instants, composition of paths is smooth, and it is associative after the quotient. So parallel transport becomes a smooth functor P₁(X) → At(P), or an anafunctor into BG, and this functor determines the connection uniquely. Here At(P) is the Atiyah groupoid of the bundle P, BG is the groupoid with one object and the elements of G as arrows, and an anafunctor is a generalized functor defined through a cover. Schreiber and Waldorf prove that smooth functors on the path groupoid are equivalent to bundles with connection; that equivalence is the real theorem. The functor factors through the fundamental groupoid exactly when the connection is flat.
+**How the definition helps.** Parallel transport does not change under thin homotopy, so it gives a well-defined functor on the path groupoid. With sitting instants, composition of paths is smooth, and it is associative after the quotient. Schreiber and Waldorf prove that the functor determines the connection, and that equivalence is the real theorem. The functor factors through the fundamental groupoid exactly when the connection is flat.
 
 **nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “noticed that the most elegant way to (re)state the maximal equivalence relation on paths which is respected by parallel transport is in terms of thin homotopy.”
 
@@ -1891,7 +1891,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** At an connection whose curvature equals its negative Hodge star, linearize the curvature equation and impose orthogonality to infinitesimal changes of frame. The resulting linear operator has finite-dimensional kernel and cokernel on a closed four-manifold. Define the virtual dimension as its index, the kernel dimension minus the cokernel dimension.
+**Definition.** At a connection whose curvature equals its negative Hodge star, linearize the curvature equation and impose orthogonality to infinitesimal changes of frame. The resulting linear operator has finite-dimensional kernel and cokernel on a closed four-manifold. Define the virtual dimension as its index, the kernel dimension minus the cokernel dimension.
 
 **Problem.** For SU(2) bundles over a fixed connected closed oriented four-manifold, increasing the second Chern number k by one increases the virtual dimension by eight.
 
@@ -1911,9 +1911,9 @@
 
 **Definition.** In the sense of Androulidakis and Skandalis, a singular foliation is a module of compactly supported vector fields. The module must be locally finitely generated and closed under the Lie bracket. The module, not the set of leaves, is the data. Two modules can give the same leaves.
 
-**Problem.** For a regular foliation, the holonomy groupoid records how leaves wind around each other. For singular foliations, such as orbits of a Lie group action, leaves change dimension, and the classical construction fails.
+**Problem.** Every singular foliation, in this module sense, has a holonomy groupoid H(F). It is minimal among the groupoids that integrate F.
 
-**How the definition helps.** The module keeps enough data near singular leaves to build holonomy, so a holonomy groupoid exists for every singular foliation. On the real line, the modules generated by x∂ₓ and by x²∂ₓ have the same three leaves but differ near 0 (our own). The quoted theorem also says that H(F) is minimal among groupoids that integrate F. What stays hard is smoothness: H(F) is in general only a topological groupoid, and it is often not Hausdorff (our own).
+**How the definition helps.** The module keeps enough data near singular leaves to build holonomy, where the classical construction for regular foliations fails because leaves change dimension. On the real line, the modules generated by x∂ₓ and by x²∂ₓ have the same three leaves but differ near 0 (our own). What stays hard is smoothness: H(F) is in general only a topological groupoid, and it is often not Hausdorff (our own).
 
 **Paper or page:** [The Holonomy Groupoids of Singularly Foliated Bundles](https://arxiv.org/abs/2006.14271). It says: “Let M be a manifold with a singular foliation F. Then there exists a topological groupoid H(F) for which the following hold. H(F) integrates the foliation F, in the sense that its orbits are the leaves of F.”
 
@@ -1930,9 +1930,9 @@
 
 **Definition.** For a metric with only one continuous derivative, the Ricci curvature has no pointwise values. It still exists as a distribution, a generalized function that one integrates against smooth test functions. Take any smooth vector field X with compact support. Ric ≥ 0 in this sense means that Ric(X,X) gives a nonnegative number against every nonnegative test function.
 
-**Problem.** The Cheeger–Gromoll theorem says that a complete manifold with Ric ≥ 0 that contains a line splits as a product with ℝ. A line is a geodesic that minimizes length between any two of its points. One wants this for metrics that are only C¹.
+**Problem.** A complete manifold with a C¹ metric, distributional Ric ≥ 0 and a line is C¹-isometric to a product of a C¹ manifold with ℝ. A line is a geodesic that minimizes length between any two of its points.
 
-**How the definition helps.** The distributional definition gives a C¹ metric a Ricci curvature with a sign, so the hypothesis of the theorem makes sense at all. The conclusion is a C¹ isometry to a product of a C¹ manifold with ℝ. The factor again has Ric ≥ 0 in the distributional sense, so the statement can repeat. The smooth proof uses second derivatives of distance functions (our own). The hard part is to replace these with weak estimates that survive the low regularity (our own).
+**How the definition helps.** The distributional definition gives a C¹ metric a Ricci curvature with a sign, so the hypothesis of the Cheeger–Gromoll theorem makes sense at all. The factor again has Ric ≥ 0 in the distributional sense, so the statement can repeat. The smooth proof uses second derivatives of distance functions, and the hard part is to replace these with weak estimates (our own).
 
 **Paper or page:** [Ricci curvature bounds and rigidity for non-smooth Riemannian and semi-Riemannian metrics](https://arxiv.org/abs/2406.06762). It says: “Let (M,g) be a complete, connected Riemannian manifold with metric of regularity C¹. Let Ric≥0 in the distributional sense”
 
@@ -1967,7 +1967,7 @@
 
 **Definition.** Let Γ be a finite graph. A metric space X satisfies the Γ-comparison if every placement of the vertices at points of X has a matching placement in a Hilbert space. In the matching placement, distances between vertices joined by an edge do not increase. Distances between vertices not joined by an edge do not decrease.
 
-**Problem.** For every finite graph Γ, either the Γ-comparison holds in every metric space, or it implies the C₄-comparison or the T₃-comparison. Here C₄ is the cycle with four vertices, and T₃ is another small graph in the paper. The paper also describes exactly which connected graphs give comparisons that hold in every space.
+**Problem.** For every finite graph Γ, either the Γ-comparison holds in every metric space, or it implies the C₄-comparison or the T₃-comparison. Here C₄ is the cycle with four vertices, and T₃ is another small graph in the paper.
 
 **How the definition helps.** The graph records the direction of each distance inequality in one finite object, so whole families of conditions can be classified at once. The paper uses a relation between graphs under which one comparison implies another. The main step is a lemma: a connected graph that contains neither C₄ nor T₃ in this sense is a 'multipath'. The paper then finds which of these give comparisons that hold in every space. They are paths with a complete graph attached at each end.
 
@@ -1985,9 +1985,9 @@
 
 **Definition.** A metric space with a measure satisfies CD(K,N) if the entropy of mass is suitably convex along shortest paths of optimal transport. On a smooth manifold this convexity holds exactly when Ricci curvature is at least K and dimension is at most N. RCD(K,N) adds the condition that the energy of functions is a quadratic form, as it is in Riemannian geometry.
 
-**Problem.** Limits of manifolds with Ricci curvature at least K and dimension at most N are usually not manifolds. The classical Ricci tensor is not defined on them. One wants a class of spaces that contains all these limits and is closed under limits.
+**Problem.** The class of RCD(K,N) spaces is closed under measured Gromov–Hausdorff limits. So it contains all such limits of manifolds with Ricci curvature at least K and dimension at most N, which are usually not manifolds.
 
-**How the definition helps.** The definition uses only distances and measures, and its convexity inequalities pass to limits, so the class is closed under limits. Measured Gromov–Hausdorff convergence means that the spaces and their measures come closer after a best possible matching of points. Gromov's precompactness theorem then gives the quoted compactness (our own). The quadratic-energy condition excludes normed spaces that are not Riemannian, which satisfy CD but not RCD (our own). The work moves into showing that the new bound agrees with the old one where both make sense. The second paper proves this for continuous metrics whose Christoffel symbols are locally square-integrable. There CD(K,N) holds exactly when a distributional Bakry–Émery Ricci tensor is at least K and the volume grows at most exponentially.
+**How the definition helps.** The definition uses only distances and measures, and its convexity inequalities pass to limits, so the class is closed under limits. The quadratic-energy condition excludes normed spaces that are not Riemannian, which satisfy CD but not RCD (our own). The work moves into showing that the new bound agrees with the old one where both make sense. The second paper proves this for continuous metrics whose Christoffel symbols are locally square-integrable.
 
 **Paper or page:** [On perimeter minimizing sets in manifolds with quadratic volume growth](https://arxiv.org/abs/2504.10413), [On the equivalence of distributional and synthetic Ricci curvature lower bounds](https://arxiv.org/abs/2402.06486). It says: “The class of pointed RCD(K,N) spaces with normalized measures is sequentially compact with respect to pointed measured Gromov-Hausdorff convergence.”
 
@@ -2006,9 +2006,9 @@
 
 **Definition.** A Hadamard space is a complete metric space with nonpositive curvature. Its geodesic triangles are at least as thin as flat triangles with the same side lengths. A sequence xₙ converges weakly to x if, for every geodesic through x, the nearest-point projections of xₙ onto that geodesic converge to x. For bounded sequences it agrees with Kirk and Panyanak's Δ-convergence, which the second paper uses (our own remark).
 
-**Problem.** In a Hilbert space, xₙ → x weakly means that ⟨xₙ, y⟩ → ⟨x, y⟩ for every y. A metric space has no inner product, so this weak convergence does not exist. With this definition, bounded sequences have weakly convergent subsequences and bounded closed convex sets are weakly sequentially compact, as minimizer proofs need.
+**Problem.** In a Hadamard space, every bounded sequence has a weakly convergent subsequence. Bounded closed convex sets are weakly sequentially compact.
 
-**How the definition helps.** Projections onto geodesics play the role of linear functionals, so the compactness statement can be made at all. Nonpositive curvature makes these projections exist and be unique (our own remark). The paper checks that in a Hilbert space this notion is the usual weak convergence. What stays hard is whether this convergence comes from a topology, and the paper answers this only for weakly proper spaces.
+**How the definition helps.** Projections onto geodesics play the role of linear functionals, which a metric space lacks, so the compactness statement can be made at all. Nonpositive curvature makes these projections exist and be unique (our own remark). In a Hilbert space this notion is the usual weak convergence. What stays hard is whether this convergence comes from a topology.
 
 **Paper or page:** [On a weak topology for Hadamard spaces and its applications](https://arxiv.org/abs/2204.01461v4), [On a weak topology for Hadamard spaces and its applications](https://arxiv.org/abs/2204.01461v4), [A product of strongly quasi-nonexpansive mappings in Hadamard spaces](https://arxiv.org/abs/2504.21402v1). It says: “Any bounded closed convex set K in a Hadamard space is weakly sequentially compact and therefore τw-sequentially compact.”
 
@@ -2043,9 +2043,9 @@
 
 **Definition.** An Alexandrov surface with bounded integral curvature has an intrinsic metric that is a limit of smooth metrics with bounded total absolute curvature. Its curvature is a signed measure, not a function. A Radon measure is a measure that is finite on compact sets. A cone point carries a point mass equal to its angle defect.
 
-**Problem.** Smooth surfaces and polyhedral surfaces both satisfy Gauss–Bonnet, but in different forms. One wants one class of surfaces that contains both, is closed under limits, and has a uniformization theorem.
+**Problem.** On a closed surface S with a fixed conformal structure, every signed Radon measure ω with ω(S) = 2πχ(S) and ω({x}) &lt; 2π at every point is the curvature of such a surface metric in that conformal class.
 
-**How the definition helps.** When curvature is a measure, Gauss–Bonnet becomes the single condition that the total mass is 2πχ(S). So the prescribed curvature theorem can be stated for all such surfaces at once. A smooth metric gives the measure K dA, and a polyhedral metric gives point masses at the vertices (our own). The condition ω({x}) &lt; 2π keeps every point at finite distance. Reshetnyak's Theorem 7.1 shows that a point with mass above 2π is at infinite distance, and a point with mass exactly 2π may be. The analysis stays in potential theory: the metric is exp(2u) times a smooth metric, where u is a difference of subharmonic functions (our own).
+**How the definition helps.** When curvature is a measure, Gauss–Bonnet becomes the single condition that the total mass is 2πχ(S). So smooth metrics, with measure K dA, and polyhedral metrics, with point masses at vertices, fall under one theorem (our own). The condition ω({x}) &lt; 2π keeps every point at finite distance. The analysis stays in potential theory: the metric is exp(2u) times a smooth metric, where u is a difference of subharmonic functions (our own).
 
 **Paper or page:** [On Alexandrov's Surfaces with Bounded Integral Curvature](https://arxiv.org/abs/2201.03354), [On Alexandrov's Surfaces with Bounded Integral Curvature](https://arxiv.org/abs/2201.03354). It says: “For any conformal structure on a closed surface S and any signed Radon measure dω on S such that ∫ₛ dω = 2πχ(S) and ω({x}) &lt; 2π for any point x ∈ S, there exists an Alexandrov metric”
 
@@ -2171,7 +2171,7 @@
 
 **Problem.** Suppose a globally hyperbolic spacetime satisfies timelike convergence and contains a complete timelike line. Such a line maximizes elapsed proper time between any two of its points and extends indefinitely in both directions. The spacetime then splits into time and space with metric −dt² + h, where the spatial metric h is independent of time.
 
-**How the definition helps.** Testing timelike directions excludes de Sitter spacetime, which passes every lightlike test and violates the product conclusion. In our own example, de Sitter curvature gives a Ricci tensor equal to a positive multiple of the metric with negative time sign. It therefore vanishes on lightlike vectors and is negative on timelike vectors. Fixed spatial positions in global coordinates give complete maximizing lines because spatial motion reduces elapsed proper time. A product would have zero Ricci curvature in its time direction. Galloway’s splitting theorem supplies the difficult implication under timelike convergence.
+**How the definition helps.** Testing timelike directions excludes de Sitter spacetime, which passes every lightlike test and violates the product conclusion. In our own example, the de Sitter Ricci tensor is a positive multiple of the metric, so it vanishes on lightlike vectors and is negative on timelike vectors. Its fixed spatial positions give complete maximizing lines, but a product would have zero Ricci curvature in its time direction. Galloway’s splitting theorem supplies the difficult implication under timelike convergence.
 
 **Paper or page:** [An elliptic proof of the splitting theorems from Lorentzian geometry](https://arxiv.org/abs/2410.12632v1). It says: “R(v,v) ≥ 0 for all timelike vectors”
 
@@ -2187,9 +2187,9 @@
 
 **Definition.** A Lorentzian length space is a space with a causal order and a time separation function, the analogue of a spacetime with no smooth metric. The time separation of two points is the largest length of a causal curve between them. The space has timelike curvature bounded below by K if its timelike triangles compare correctly with triangles in the model space of curvature K. The definition needs no derivatives of a metric.
 
-**Problem.** A curvature bound defined by the Riemann tensor needs two derivatives of the metric. So it cannot be stated for limits of spacetimes or for spacetimes with low regularity. One wants curvature bounds that survive limits.
+**Problem.** Timelike curvature bounds defined by triangle comparison are preserved under limits of causal diamonds, the sets of points between a past and a future point. On strongly causal smooth spacetimes, such a bound agrees with the matching bound on the curvature of timelike planes.
 
-**How the definition helps.** Triangle comparison is a closed condition on distances, so it passes to limits. The quoted stability theorem shows this for causal diamonds, the sets of points between a past point and a future point. The work moves into showing that the synthetic bound agrees with the smooth one. Beran, Kunzinger, Ohanyan and Rott prove this equivalence for timelike planes on strongly causal spacetimes. Our own remark: the smooth and synthetic settings use different sign conventions, so the direction of each bound needs care. The step from local to global comparison stays hard and needs global hyperbolicity.
+**How the definition helps.** Triangle comparison is a closed condition on distances, so it passes to limits, whereas a bound on the Riemann tensor needs two derivatives of the metric. Beran, Kunzinger, Ohanyan and Rott prove the agreement with the smooth bound for timelike planes. Our own remark: the smooth and synthetic settings use different sign conventions, so the direction of each bound needs care. The step from local to global comparison stays hard and needs global hyperbolicity.
 
 **Paper or page:** [A Toponogov globalisation result for Lorentzian length spaces](https://arxiv.org/abs/2309.12733), [The equivalence of smooth and synthetic notions of timelike sectional curvature bounds](https://arxiv.org/abs/2403.18077). It says: “If the sequence Jᵢ ∖ Sᵢ converges in the sense of Minguzzi–Suhr to some J, then J is a bounded Lorentzian length space with sectional curvature bounded below by K in the sense of Minguzzi–Suhr.”
 
@@ -2207,9 +2207,9 @@
 
 **Definition.** A weak metric keeps the triangle inequality but drops symmetry and allows distance zero between distinct points. A weak Finsler structure gives each tangent space a convex unit ball that contains the origin and need not be bounded or symmetric. The tautological structure on a convex domain Ω uses Ω itself, centred at the point, as the unit ball.
 
-**Problem.** The Funk metric of a convex domain is not symmetric, and on an unbounded domain it can vanish between distinct points. So it is not a metric in the usual sense. One wants it to arise as the length metric of a natural infinitesimal structure.
+**Problem.** On a convex domain Ω, the length metric of the tautological weak Finsler structure is exactly the Funk metric. Euclidean segments are shortest paths for it.
 
-**How the definition helps.** With the weak definitions, the domain itself is the unit ball, and the theorem says its length metric is exactly the Funk metric. Euclidean segments are then shortest paths. The usual definitions would exclude this structure, since the unit balls are not symmetric and may be unbounded. The Hilbert metric of projective geometry is the symmetrization of the Funk metric, so it enters the same frame (our own). Our own remark: other shortest paths exist when the boundary contains segments.
+**How the definition helps.** With the weak definitions, the domain itself can be the unit ball, so the Funk metric becomes a length metric of an infinitesimal structure. The usual definitions would exclude this structure, since its unit balls are not symmetric and may be unbounded. The Hilbert metric is the symmetrization of the Funk metric, so it enters the same frame (our own).
 
 **Paper or page:** [Weak Finsler Strutures and the Funk Metric](https://arxiv.org/abs/0804.0705), [Weak Finsler Strutures and the Funk Metric](https://arxiv.org/abs/0804.0705). It says: “We compute distances in the tautological weak Finsler structure of a domain and we show that these are given by the so-called Funk weak metric.”
 
@@ -2416,9 +2416,9 @@
 
 **Definition.** Spinᶜ quantization is also called quantization by push-forward. Take a compact symplectic manifold with a prequantum line bundle L (a line bundle whose curvature is given by the symplectic form). Its space of quantum states is the index of the spinᶜ Dirac operator twisted by L. This index is the push-forward of L to a point in K-theory, so it is a formal difference of two vector spaces.
 
-**Problem.** Geometric quantization with a Kähler polarization needs an extra choice to give correct results. This choice is the metaplectic correction, a square root of the canonical bundle. One wants a natural construction that includes it.
+**Problem.** On a compact Kähler manifold with a spin structure √K, the spinᶜ quantization of L is the alternating sum of the holomorphic cohomology groups of L ⊗ √K. So it includes the metaplectic correction of Kähler quantization automatically.
 
-**How the definition helps.** On a Kähler manifold the spinors already contain the square root of the canonical bundle, so the correction is built in and not added by hand. Let K be the canonical bundle. A spin structure is a square root √K, and the spinor bundle is the bundle of antiholomorphic forms tensored with √K. So the Dirac operator twisted by L is the Dolbeault operator twisted by the corrected bundle L ⊗ √K. The index is the alternating sum of the holomorphic cohomology groups of L ⊗ √K. It agrees with the space of polarized sections when the higher cohomology groups vanish, for example when the corrected bundle is positive. In general, the construction still needs a choice of spinᶜ structure.
+**How the definition helps.** On a Kähler manifold the spinors already contain the square root of the canonical bundle K, so the correction is built in and not added by hand. The spinor bundle is the bundle of antiholomorphic forms tensored with √K, so the Dirac operator twisted by L is the Dolbeault operator twisted by L ⊗ √K. The index agrees with the space of polarized sections when the higher cohomology groups vanish.
 
 **nLab:** [geometric quantization](https://ncatlab.org/nlab/show/geometric+quantization), [geometric quantization by push-forward](https://ncatlab.org/nlab/show/geometric+quantization+by+push-forward). It says: “while from the point of view of the Dirac operator it is just twisting by Lω, since tensoring with the square root line bundle √Ωⁿ,⁰ induces the isomorphism between the antiholomorphic differential form bundle and the actual spinor bundle”
 
@@ -2436,7 +2436,7 @@
 
 **Problem.** Guillemin and Sternberg stated that quantization commutes with reduction. Let a compact Lie group G act on a symplectic manifold in a Hamiltonian way. Then the G-invariant part of the quantization equals the quantization of the symplectic reduction.
 
-**How the definition helps.** Spinᶜ quantization needs no polarization, so the statement makes sense on every compact prequantized symplectic manifold. Guillemin and Sternberg proved the statement for compact Lie groups acting on compact Kähler manifolds, with Kähler polarization (a compatible complex structure, used to pick holomorphic sections as the quantum states). Our own reading: a general symplectic manifold may have no invariant Kähler polarization, so the statement could not be made there in that form. Spinᶜ quantization, also called quantization by push-forward, is defined for every compact prequantized symplectic manifold. The nLab says that the first proof in this setting, for compact groups and compact manifolds, is Meinrenken's. The proof needs real work, by symplectic surgery and index theory.
+**How the definition helps.** Spinᶜ quantization needs no polarization, so the statement makes sense on every compact prequantized symplectic manifold. Guillemin and Sternberg proved it for compact Kähler manifolds, using the Kähler polarization to pick holomorphic sections as quantum states. Our own reading: a general symplectic manifold may have no invariant Kähler polarization, so the statement could not be made there in that form. The nLab says that the first proof in the spinᶜ setting is Meinrenken's, by symplectic surgery and index theory.
 
 **nLab:** [Guillemin-Sternberg geometric quantization conjecture](https://ncatlab.org/nlab/show/Guillemin-Sternberg+geometric+quantization+conjecture), [geometric quantization by push-forward](https://ncatlab.org/nlab/show/geometric+quantization+by+push-forward). It says: “For the more powerful and more flexible geometric quantization by push-forward, the corresponding statement is widely known as the Guillemin-Sternberg conjecture.”
 
@@ -2545,9 +2545,9 @@
 
 **Definition.** Inverse mean curvature flow moves a surface outward with speed 1/H, where the mean curvature H is the sum of the principal curvatures. Huisken and Ilmanen defined a weak version by a function u whose level sets are the surfaces Σₜ. These surfaces minimize a certain energy. A surface is outer-minimizing when no surface that encloses it has smaller area.
 
-**Problem.** The smooth flow can break down, but the weak flow exists for all time. One wants the weak flow to keep the exact area growth of the smooth flow, for use in geometric inequalities. The paper works in hyperbolic space ℍⁿ.
+**Problem.** In hyperbolic space ℍⁿ, if the initial surface is outer-minimizing, the weak inverse mean curvature flow keeps the exact area growth \|Σₜ\| = eᵗ\|Σ₀\| of the smooth flow.
 
-**How the definition helps.** The weak flow jumps to a surface of least enclosing area, so an outer-minimizing start makes no jump (our own). For the smooth flow, the area grows like eᵗ because the speed is one over the mean curvature (our own). Otherwise the surface jumps at once to an enclosing surface of smaller area, so the formula fails (our own). The condition excludes exactly this case. The regularity of the surfaces Σₜ stays hard, and it holds only for n &lt; 8 or away from a small singular set.
+**How the definition helps.** The weak flow jumps to a surface of least enclosing area, so an outer-minimizing start makes no jump (our own). For the smooth flow, the area grows like eᵗ because the speed is one over the mean curvature (our own). Otherwise the surface jumps at once to an enclosing surface of smaller area, so the formula fails (our own). The regularity of the surfaces Σₜ stays hard, and it holds only for n &lt; 8 or away from a small singular set.
 
 **Paper or page:** [On weak inverse mean curvature flow and Minkowski-type inequalities in hyperbolic space](https://arxiv.org/abs/2404.08410). It says: “If Σ₀ is outer-minimizing, then the area of Σₜ is given by \|Σₜ\|=eᵗ\|Σ₀\|.”
 

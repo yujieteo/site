@@ -6,9 +6,9 @@
 
 **Definition.** A natural transformation α : F ⇒ G between functors C → D is a family of maps α(c) : F(c) → G(c), one for each object c. They must satisfy G(f) ∘ α(c) = α(c′) ∘ F(f) for every map f : c → c′. In words: applying f and then α gives the same result as applying α and then f. A natural isomorphism is one whose maps α(c) are all isomorphisms.
 
-**Problem.** State precisely an old observation. A finite-dimensional vector space V is isomorphic to its double dual V\*\* "canonically", but to its dual V\* only "by a choice of basis".
+**Problem.** On finite-dimensional vector spaces, the maps V → V\*\*, v ↦ (ω ↦ ω(v)), form a natural isomorphism. Over ℝ or ℂ, no family of isomorphisms V ≅ V\* is natural with respect to linear isomorphisms once dim V ≥ 2.
 
-**How the definition helps.** Naturality turns "canonical" into a condition one can check, and the double-dual map passes it while no family of maps to the dual does. Eilenberg and Mac Lane introduced categories, functors and natural transformations with this example on their first pages. The map V → V\*\*, v ↦ (ω ↦ ω(v)), is a natural transformation from the identity functor to the double-dual functor. The dual V ↦ V\* reverses the direction of maps, so to compare V with V\* one restricts to linear isomorphisms and lets an isomorphism g act on V\* by the inverse of its transpose. Then no family of isomorphisms V → V\* is natural once dim V ≥ 2, because such a family would be a bilinear form that every invertible linear map preserves. As the nLab puts it, each isomorphism V ≅ V\* needs a choice equivalent to an inner product. The isomorphisms V ≅ V\* exist one space at a time; they are only "unnatural", or objectwise, isomorphisms.
+**How the definition helps.** Naturality turns "canonical" into a condition one can check, and the double-dual map passes it while no family of maps to the dual does. The dual reverses maps, so an isomorphism g acts on V\* by the inverse of its transpose. A natural family V → V\* would then be a nondegenerate bilinear form that every invertible linear map preserves, and there is none.
 
 **nLab:** [natural transformation](https://ncatlab.org/nlab/show/natural+transformation), [unnatural isomorphism](https://ncatlab.org/nlab/show/unnatural+isomorphism). It says: “(right on the first pages) for introducing the notion of natural transformation (and with it category theory) in the first place.”
 
@@ -42,7 +42,7 @@
 
 **Definition.** A groupoid is a category in which every arrow is invertible. Its cardinality counts each isomorphism class with weight one divided by the number of invertible arrows from a representative to itself. In the action groupoid X//G, each group element gives an arrow from x to gx. The isomorphism classes are orbits, and the arrows from x to itself form the subgroup that fixes x.
 
-**Problem.** For any finite group G acting on a finite set X, show that \|X//G\| = \|X\|/\|G\|, even if the action is not free.
+**Problem.** For a finite group G acting on a finite set X, the action groupoid has cardinality \|X//G\| = \|X\|/\|G\|, even if the action is not free.
 
 **How the definition helps.** Groupoid cardinality makes division exact because each orbit's weight is its size divided by \|G\|. In our own proof, this is the orbit–stabilizer theorem, which relates orbit size to the subgroup fixing a point. Adding the orbit sizes counts every point once. Ordinary orbit counting gives each orbit weight 1 instead. For example, a group of order two fixing one point has one orbit, but the weighted count is ½.
 
@@ -127,9 +127,9 @@
 
 **Definition.** A reflexive graph (also called a reflexive quiver) is a directed graph in which every vertex has a chosen loop, its identity edge. Morphisms must send identity loops to identity loops.
 
-**Problem.** The set of vertices of a graph should be the set of maps from the terminal object, as it is for sets. Such maps are called global points.
+**Problem.** In the category of reflexive graphs, the maps from the terminal graph 1 to a graph G correspond exactly to the vertices of G.
 
-**How the definition helps.** In reflexive graphs the one loop of the terminal graph must go to an identity loop, so each map from it picks out exactly one vertex. In plain graphs the terminal object is one vertex with one loop. So a map from it needs a loop at the target vertex, and there may be none or many. In reflexive graphs the terminal object is one vertex with its identity loop, which must go to the identity loop. So the maps 1 → G are exactly the vertices of G. Both categories are presheaf toposes. In plain graphs the vertices are still represented, but by the graph with one vertex and no edges, not by the terminal graph.
+**How the definition helps.** The one loop of the terminal graph must go to an identity loop, so each map from it picks out exactly one vertex. In plain graphs the terminal object is also one vertex with one loop. But a map from it needs a loop at the target vertex, and there may be none or many. In plain graphs the vertices are still represented, but by the graph with one vertex and no edges, not by the terminal graph.
 
 **nLab:** [reflexive graph](https://ncatlab.org/nlab/show/reflexive+graph). It says: “One advantage of RefGph is that the set of vertices of a reflexive quiver G is representable: it is naturally isomorphic to hom(1,G).”
 
@@ -143,9 +143,9 @@
 
 **Definition.** A functor F : C → D is separable if each map C(x, y) → D(Fx, Fy) has a left inverse that is natural in x and y. Rafael's theorem gives a test for a right adjoint G, with left adjoint F. G is separable exactly when the counit ε : FG → id is a natural split epimorphism. That is, there is a natural ν : id → FG with ε∘ν = id.
 
-**Problem.** Maschke's theorem over a ring k says this. If \|G\| is invertible in k, an exact sequence of k\[G\]-modules splits if and only if it splits as a sequence of k-modules. Also, the splitting can be chosen functorially.
+**Problem.** If \|G\| is invertible in a ring k, the forgetful functor from k\[G\]-modules to k-modules is separable. So an exact sequence of k\[G\]-modules splits if and only if it splits as a sequence of k-modules.
 
-**How the definition helps.** The definition names the property that Maschke's theorem is about, so the theorem becomes one check on one functor. The definition abstracts the 'Maschke property' of the forgetful functor from k\[G\]-modules to k-modules. Maschke's theorem over rings then says that this forgetful functor is separable. Rafael's theorem reduces that to finding a natural section of the counit k\[G\] ⊗ M → M. The same notion covers separable ring extensions: they are exactly the extensions whose restriction-of-scalars functor is separable. In our own words (the nLab does not spell it out), the section comes from averaging over G: m ↦ (1/\|G\|) Σ g ⊗ g⁻¹m, the average of g ⊗ g⁻¹m over all g in G. The nLab page states Rafael's conditions the other way round, as a retraction of the counit; since the counit is onto, only a section is possible.
+**How the definition helps.** The definition names the property that Maschke's theorem is about, so the theorem becomes one check on one functor. Rafael's theorem reduces separability of the forgetful functor to finding a natural section of the counit k\[G\] ⊗ M → M. In our own words, the section comes from averaging over G: m ↦ (1/\|G\|) Σ g ⊗ g⁻¹m. The same notion covers separable ring extensions, whose restriction-of-scalars functors are separable.
 
 **nLab:** [separable functor](https://ncatlab.org/nlab/show/separable+functor), [Maschke's theorem](https://ncatlab.org/nlab/show/Maschke%27s+theorem). It says: “This "Maschke property" of the forgetful functor kG Mod → k Mod is what is generalized by the notion of separable functors.”
 
@@ -247,9 +247,9 @@
 
 **Definition.** A reflexive pair is a parallel pair f, g : A ⇉ B with a common section s : B → A, so f s = g s is the identity of B. A reflexive coequalizer is a coequalizer of such a pair.
 
-**Problem.** Suppose a functor of two variables preserves coequalizers in each variable separately. Does it preserve them in both variables together? This is needed to show that categories of monoids and of algebras are cocomplete.
+**Problem.** If a functor of two variables preserves reflexive coequalizers in each variable separately, then it preserves them in both variables together.
 
-**How the definition helps.** For reflexive coequalizers the answer is yes, by a 3 × 3 diagram lemma; for arbitrary coequalizers it is not true. Apply this to the tensor product of a cocomplete closed monoidal category. It shows that the free monoid monad preserves reflexive coequalizers. Linton's theorem then makes the category of monoids cocomplete. In Set, reflexive coequalizers commute with finite products. So every finitary monad on Set (a monad given by operations with finitely many arguments) preserves them.
+**How the definition helps.** The common section makes a 3 × 3 diagram lemma work; for arbitrary coequalizers the statement is not true. Apply this to the tensor product of a cocomplete closed monoidal category. It shows that the free monoid monad preserves reflexive coequalizers, and Linton's theorem then makes the category of monoids cocomplete. In Set, reflexive coequalizers commute with finite products, so every finitary monad on Set preserves them.
 
 **nLab:** [reflexive coequalizer](https://ncatlab.org/nlab/show/reflexive+coequalizer). It says: “In this case it implies that the free monoid monad on such a category preserves reflexive coequalizers, and thus (by Linton's theorem) the category of monoid objects in C is cocomplete.”
 
@@ -263,11 +263,11 @@
 
 *True by definition.* MSC 18A30 (Limits and colimits (products, sums, directed limits, pushouts, fiber products, equalizers, kernels, ends and coends, etc.)), 18A35. arXiv math.CT. Level 3: graduate.
 
-**Definition.** A small category D is sifted if colimits of shape D commute with finite products in Set. In symbols, the colimit over d of F(d) × G(d) is isomorphic to (colimit of F) × (colimit of G). More generally, for a class J of small categories, D is J-filtered if colimits of shape D commute with limits of shapes in J, in Set.
+**Definition.** A small category D is sifted if colimits of shape D commute with finite products in Set. That is, the colimit over d of F(d) × G(d) is isomorphic to (colimit of F) × (colimit of G).
 
-**Problem.** Find the shapes of colimits that commute with finite products in Set.
+**Problem.** A nonempty small category D is sifted exactly when its diagonal functor D → D × D is final. So every category with finite coproducts is sifted, and so is the shape of a reflexive coequalizer.
 
-**How the definition helps.** The commutation property is the definition itself, so the statement 'sifted colimits commute with finite products' is a tautology. The real content moves to recognising sifted categories. By Gabriel and Ulmer, an inhabited (non-empty) small category D is sifted exactly when its diagonal functor D → D × D is final. (A functor is final when restricting a diagram along it does not change the colimit.) From this, every category with finite coproducts is sifted. The shape of a reflexive coequalizer is sifted, but the bare parallel pair is not.
+**How the definition helps.** The definition turns the commutation property into a statement about the diagonal. In Set, (colimit of F) × (colimit of G) is the colimit over D × D of F(d) × G(d′), so the definition compares a colimit over D × D with its restriction to the diagonal (our own). That is a finality condition on the diagonal, and Gabriel and Ulmer prove the equivalence. The bare parallel pair is not sifted.
 
 **nLab:** [sifted category](https://ncatlab.org/nlab/show/sifted+category), [filtered category](https://ncatlab.org/nlab/show/filtered+category). It says: “A category D is called sifted if colimits of diagrams of shape D commute with finite products in Set”
 
@@ -284,7 +284,7 @@
 
 **Definition.** Take a commutative square with p : A → B, q : A → C, m : B → P and n : C → P. It is a split pushout if there are sections s, t, u with p s = 1, q t = 1 and m u = 1, such that p t = u n. All the data are morphisms and equations between them.
 
-**Problem.** Show that a split pushout is an absolute pushout. Absolute means that every functor out of the category sends it to a pushout.
+**Problem.** A split pushout is an absolute pushout: every functor out of the category sends it to a pushout.
 
 **How the definition helps.** The splitting consists only of morphisms and equations, and every functor keeps those. So any functor carries a split pushout to another split pushout. It is then enough to show once that a split pushout is a pushout, which is a short diagram chase. The splitting of p matters. In the original category, an epimorphism alone would be enough for the pushout property. But functors do not preserve epimorphisms, while they do preserve split ones. The nLab also gives a general, harder description of all absolute pushouts.
 
@@ -302,7 +302,7 @@
 
 **Definition.** An inverse system of abelian groups (Aᵢ) is Mittag-Leffler if, for each i, the images of the maps Aⱼ → Aᵢ eventually stop shrinking. Systems with surjective transition maps are the main example.
 
-**Problem.** Inverse limits keep injective maps injective but can lose surjectivity. One wants a simple condition on the kernels that makes the limit of a short exact sequence exact.
+**Problem.** Let 0 → Aᵢ → Bᵢ → Cᵢ → 0 be a short exact sequence of inverse systems of abelian groups indexed by the natural numbers. If (Aᵢ) is Mittag-Leffler, then 0 → lim Aᵢ → lim Bᵢ → lim Cᵢ → 0 is exact.
 
 **How the definition helps.** When the images are stable, an element of lim Cᵢ can be lifted step by step (our own summary). Each choice can be corrected inside the stable image. The standard counterexample uses 0 → pⁱℤ → ℤ → ℤ/pⁱ → 0, as on Wikipedia. The limits are 0, ℤ and the p-adic integers ℤₚ, and ℤ → ℤₚ is not surjective. Here the system (pⁱℤ) is not Mittag-Leffler, since its images shrink forever. The quoted lemma also needs a countable index set; for uncountable systems the result can fail (our own).
 
@@ -372,11 +372,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18A35 (Categories admitting limits (complete categories), functors preserving limits, completions), 18F10. arXiv math.CT. Level 3: graduate.
 
-**Definition.** A functor F : C → Set is flat if its category of elements is cofiltered. The category of elements has the pairs (c, x) with x in F(c) as objects, and cofiltered means that each finite diagram in it has a cone over it. Equivalently, F is flat if its extension along the Yoneda embedding, a functor from presheaves on C (functors Cᵒᵖ → Set) to Set, preserves finite limits. When C has finite limits, flat means the same as preserving them.
+**Definition.** A functor F : C → Set is flat if its category of elements, the pairs (c, x) with x in F(c), is cofiltered. Equivalently, its extension to presheaves on C preserves finite limits. When C has finite limits, flat means the same as preserving them.
 
-**Problem.** Describe the geometric morphisms E → PSh(C) from a topos E into the topos PSh(C) of presheaves on C, for each small category C. A geometric morphism is the topos version of a continuous map: a pair of adjoint functors whose left adjoint preserves finite limits. The description must also work when C lacks finite limits.
+**Problem.** Diaconescu's theorem: for every small category C and every topos E, the geometric morphisms E → PSh(C) correspond to the internally flat functors C → E.
 
-**How the definition helps.** Flatness asks for the right limits even when C lacks some of them, so the theorem needs no extra condition on C. If C lacks some finite limits, the condition 'preserves finite limits' still makes sense, but the nLab says that it may not be the correct one. Flatness asks for the limits that the functor would have to preserve after C is freely completed. With this definition, Diaconescu's theorem holds for each small C. It says that geometric morphisms E → PSh(C) are the same as internally flat functors C → E, that is, functors that are flat in the internal logic of E. When C has finite limits, flat means left exact (preserving finite limits), so the definition agrees with the naive one where the naive one makes sense.
+**How the definition helps.** Flatness asks for the right limits even when C lacks some of them, so the theorem needs no extra condition on C. If C lacks some finite limits, 'preserves finite limits' still makes sense, but the nLab says that it may not be the correct condition. Flatness asks for the limits that the functor would have to preserve after C is freely completed. When C has finite limits, the definition agrees with the naive one.
 
 **nLab:** [flat functor](https://ncatlab.org/nlab/show/flat+functor), [Diaconescu's theorem](https://ncatlab.org/nlab/show/Diaconescu%27s+theorem). It says: “lacks some finite limits, then this concept still makes sense, but it may not be the correct one.”
 
@@ -390,11 +390,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18A35 (Categories admitting limits (complete categories), functors preserving limits, completions), 18C20. arXiv math.CT. Level 3: graduate.
 
-**Definition.** A functor F : C → D strictly creates limits of a diagram J if the following holds. For every limit cone L over F∘J, there is exactly one cone over J that F sends to L exactly, not only up to isomorphism. That cone is a limit.
+**Definition.** A functor U : A → C strictly creates colimits of a diagram J if the following holds. For every colimit cocone over U∘J, exactly one cocone over J is sent to it exactly, not only up to isomorphism, and that cocone is a colimit. Strict creation of limits is defined dually.
 
-**Problem.** Characterize the category of algebras of a monad up to isomorphism of categories, not only up to equivalence. This is the strict form of Beck's monadicity theorem.
+**Problem.** A functor U : A → C is isomorphic, over C, to the forgetful functor from the algebras of a monad exactly when U has a left adjoint and strictly creates coequalizers of U-split pairs.
 
-**How the definition helps.** A notion that is not invariant under equivalence can detect a category up to isomorphism. The ordinary notion of creation, up to isomorphism, can only detect categories up to equivalence. The strict notion of Mac Lane's book is not invariant under equivalence. That is what lets the monadicity theorem state when a functor is isomorphic to the forgetful functor from the category of algebras. In that theorem the condition applies to colimits: the functor must strictly create coequalizers of split pairs (pairs whose image under the functor has a split coequalizer). Strict creation implies ordinary creation, and for amnestic isofibrations the two notions agree. An amnestic isofibration is a functor along which isomorphisms lift and which reflects identities among isomorphisms.
+**How the definition helps.** A notion that is not invariant under equivalence can detect a category up to isomorphism. Ordinary creation, up to isomorphism, can only detect categories up to equivalence. A U-split pair is a pair whose image under U has a split coequalizer. For amnestic isofibrations, strict creation and ordinary creation agree.
 
 **nLab:** [created limit](https://ncatlab.org/nlab/show/created+limit). It says: “This is used in stating the version of the monadicity theorem that characterizes the category of algebras for a monad up to isomorphism rather than equivalence of categories.”
 
@@ -542,11 +542,11 @@
 
 *True by definition.* MSC 18A40 (Adjoint functors (universal constructions, reflective subcategories, Kan extensions, etc.)), 03B38. arXiv math.CT, math.LO. Level 3: graduate.
 
-**Definition.** A functor F : A → B is a left adjoint when some functor G : B → A has a unit and a counit. These natural transformations satisfy the two triangle identities. A mere proposition is a type with at most one element up to equality. In a category in the HoTT Book, equalities of objects are the same as isomorphisms.
+**Definition.** A functor F : A → B is a left adjoint when some functor G : B → A has a unit and a counit that satisfy the two triangle identities. A mere proposition is a type with at most one element up to equality. In a univalent category, equalities of objects are the same as isomorphisms.
 
-**Problem.** Show that the type of right adjoints of F, together with unit and counit, has at most one element. The book proves the same for being a representable functor.
+**Problem.** Let F : A → B be a functor, where A is a univalent category and B is a precategory. Then "F is a left adjoint" is a mere proposition: any two right adjoints of F, with their units and counits, are equal.
 
-**How the definition helps.** Any two right adjoints of F are naturally isomorphic, by the usual argument (our own). The book shows that the functors from a precategory into a category form a category again. So that natural isomorphism is an equality, and the adjoint data are unique (our own outline). Only A, the codomain of the right adjoint, must be univalent. In an ordinary category the adjoint is unique only up to isomorphism, so “F is a left adjoint” carries data (our own comparison). What stays hard is to show that a given category is univalent, which is a separate theorem for each example (our own).
+**How the definition helps.** Any two right adjoints of F are naturally isomorphic, by the usual argument (our own). The book shows that the functors from a precategory into a univalent category form a univalent category again. So that natural isomorphism is an equality, and the adjoint data are unique (our own outline). In an ordinary category the adjoint is unique only up to isomorphism, so "F is a left adjoint" carries data (our own comparison).
 
 **Paper or page:** [HoTT Book: Categories](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Categories](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Categories](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “If A is a category (but B may be only a precategory), then the type “F is a left adjoint” is a mere proposition.”
 
@@ -597,9 +597,9 @@
 
 **Definition.** Let C be a small category. A presheaf on C is a functor Cᵒᵖ → Set, and a copresheaf is a functor C → Set. Send a presheaf X to the copresheaf O(X) whose value at c is the set of maps from X to the representable presheaf C(−, c). Send a copresheaf A to the presheaf Spec(A) whose value at c is the set of maps from A to the representable copresheaf C(c, −).
 
-**Problem.** Show that O, from presheaves to the opposite of copresheaves, is left adjoint to Spec. This is the abstract form of the duality between geometry and algebra.
+**Problem.** The functor O, from presheaves on C to the opposite of copresheaves on C, is left adjoint to Spec.
 
-**How the definition helps.** O and Spec both map into the same object C(−, −), so the adjunction comes from unwinding notation. The nLab gives proofs with ends (a kind of limit over both variables of a functor at once) and proofs without them. In our reading, both sides of the adjunction describe the same thing: a family of pairings X(d) × A(c) → C(d, c) that is natural in both variables. The nLab calls Isbell duality the archetype of dualities such as Gelfand duality and Stone duality. But each of those concrete dualities needs its own theorem and is not a tautology.
+**How the definition helps.** O and Spec both map into the same object C(−, −), so the adjunction comes from unwinding notation. In our reading, both sides of the adjunction describe the same thing: a family of pairings X(d) × A(c) → C(d, c) that is natural in both variables. The nLab calls Isbell duality the archetype of dualities such as Gelfand duality and Stone duality. Each of those concrete dualities still needs its own theorem.
 
 **nLab:** [Isbell duality](https://ncatlab.org/nlab/show/Isbell+duality). It says: “The proof is mostly a tautology after the notation is unwound.”
 
@@ -681,9 +681,9 @@
 
 **Definition.** A geometric theory T has axioms that are implications, called geometric sequents, between formulas built from equality, finite 'and', arbitrary 'or' and 'there exists'. The classifying topos of T contains a universal model U. A geometric sequent is deducible from T exactly when U satisfies it. Every model of T in any topos is a pullback of U along a geometric morphism.
 
-**Problem.** Suppose a geometric statement follows from a geometric theory by classical logic and the axiom of choice. Then it should also follow constructively.
+**Problem.** Barr's theorem: if a geometric sequent is deducible from a geometric theory using classical logic and the axiom of choice, then it is deducible from the theory in geometric logic, which is constructive.
 
-**How the definition helps.** The universal model reduces the question to one classical model. Barr's theorem gives a surjective geometric morphism to the classifying topos from a topos that satisfies the axiom of choice. The inverse image of a surjection is conservative: if a sequent holds after you apply it, the sequent already holds. So a sequent that holds in that classical model also holds in U, and so it is deducible in geometric logic. The universal model is what turns this into a short argument. The real content is Barr's theorem itself. The nLab notes that its proof uses Zorn's lemma in the base topos, so it does not directly give the constructive proof.
+**How the definition helps.** The universal model reduces the question to one classical model. Barr's theorem gives a surjective geometric morphism to the classifying topos from a topos that satisfies the axiom of choice. Its inverse image is conservative, so a sequent that holds in that classical model also holds in U, and is therefore deducible. The nLab notes that the proof of Barr's theorem uses Zorn's lemma in the base topos.
 
 **nLab:** [Barr's theorem](https://ncatlab.org/nlab/show/Barr%27s+theorem). It says: “In other words, if a statement in geometric logic is deducible from a geometric theory using classical logic and the axiom of choice, then it is also deducible from it in constructive mathematics.”
 
@@ -697,11 +697,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18B25 (Topoi), 18F10. arXiv math.CT, math.LO. Level 3: graduate.
 
-**Definition.** A Lawvere–Tierney topology on a topos E is a map j : Ω → Ω on the subobject classifier Ω. The subobject classifier is the object of truth values; in the category of sets it is {true, false}. The map j satisfies j ∘ true = true, j ∘ j = j and j ∘ ∧ = ∧ ∘ (j × j): it keeps 'true' true, applying it twice is the same as applying it once, and it commutes with 'and'. You read j as the logical operator 'it is locally the case that'.
+**Definition.** A Lawvere–Tierney topology on a topos E is a map j : Ω → Ω on the subobject classifier, the object of truth values. It satisfies j ∘ true = true, j ∘ j = j and j ∘ ∧ = ∧ ∘ (j × j). You read j as the logical operator 'it is locally the case that'.
 
-**Problem.** Define sheaves, sheafification and subtoposes for any elementary topos, not only for presheaves on a small site. An elementary topos is a category that has the main properties of the category of sets, such as a subobject classifier.
+**Problem.** In every elementary topos, a Lawvere–Tierney topology j defines j-sheaves and a sheafification functor, and the j-sheaves form a subtopos. For presheaves on a small category C, these topologies correspond exactly to the Grothendieck topologies on C.
 
-**How the definition helps.** The definition uses only the subobject classifier, so it makes sense in every elementary topos. For a small category C, Grothendieck topologies on C correspond exactly to Lawvere–Tierney topologies on the topos of presheaves on C. So nothing is lost. You can then define and study sheaves for j, the sheafification functor and the subtoposes of E in the same way for every topos. To construct sheafification in this generality is still real work.
+**How the definition helps.** The definition uses only the subobject classifier, so it makes sense in every elementary topos. The correspondence with Grothendieck topologies shows that nothing is lost for presheaf toposes. To construct sheafification in this generality is still real work.
 
 **nLab:** [Lawvere-Tierney topology](https://ncatlab.org/nlab/show/Lawvere-Tierney+topology). It says: “is equivalent to choosing a Lawvere--Tierney topology in the presheaf topos”
 
@@ -803,9 +803,9 @@
 
 **Definition.** A group contains an identity e, so it is never empty, and every homomorphism sends e to e. An initial object has exactly one arrow to every object, and a terminal object has exactly one arrow from every object. A zero object is both.
 
-**Problem.** Show that the trivial group is both an initial and a terminal object in the category of groups.
+**Problem.** The trivial group is a zero object of the category of groups: it is both initial and terminal.
 
-**How the definition helps.** Because a group is never empty and homomorphisms keep the identity, the only map out of {e} sends e to e. ProofWiki also shows that {e} is terminal, since every element must go to e. ProofWiki records that a monoid cannot be empty, which rules out an empty group as a rival initial object. Our own remark: in the category of semigroups, a map from the one-element semigroup to S can pick any idempotent of S. So the one-element semigroup is not initial there. Our own: because groups have a zero object, every pair of groups has a zero homomorphism through it, which kernels and exact sequences use.
+**How the definition helps.** Because a group is never empty and homomorphisms keep the identity, the only map out of {e} sends e to e. The trivial group is terminal, since every element must go to e. Our own remark: in the category of semigroups, a map from the one-element semigroup to S can pick any idempotent of S. So the one-element semigroup is not initial there.
 
 **Paper or page:** [Trivial Group is Initial Object](https://proofwiki.org/wiki/Trivial_Group_is_Initial_Object), [Trivial Group is Terminal Object of Category of Groups](https://proofwiki.org/wiki/Trivial_Group_is_Terminal_Object_of_Category_of_Groups), [Monoid is not Empty](https://proofwiki.org/wiki/Monoid_is_not_Empty). It says: “Let 1 = {e} be the trivial group. Then 1 is an initial object of Grp.”
 
@@ -823,9 +823,9 @@
 
 **Definition.** An algebraic theory is a set of operations and equations, such as the theory of groups. Two operations commute if the following holds for every matrix of elements: apply one operation to each column and then the other to the resulting row, and you get the same result as in the other order. A theory is commutative if all pairs of its operations commute. Equivalently, every operation is a homomorphism of algebras.
 
-**Problem.** For abelian groups, Hom(A, B) is again an abelian group. There is also a tensor product with Hom(A ⊗ B, C) ≅ Hom(A, Hom(B, C)), so maps out of A ⊗ B are the same as maps from A into Hom(B, C). Which algebraic theories have this structure?
+**Problem.** For a commutative algebraic theory, the set Hom(A, B) of homomorphisms between algebras is again an algebra. The category of algebras is closed symmetric monoidal, with Hom(A ⊗ B, C) ≅ Hom(A, Hom(B, C)), as for abelian groups.
 
-**How the definition helps.** Commutativity makes pointwise operations on homomorphisms give homomorphisms again. Apply an n-ary operation pointwise to n homomorphisms A → B; if the theory is commutative, the result is again a homomorphism. So Hom(A, B) is an algebra of the theory. The category of algebras is then closed (it has internal Hom objects), and maps that are homomorphisms in each variable separately define the tensor product, as for abelian groups. In monad terms, the condition is that the two natural maps T A × T B → T(A × B) agree, and such a monad is a commutative monad; Kock showed that commutative monads are the same as symmetric monoidal monads. The nLab warns that the operations of a commutative theory need not be symmetric in their arguments. For abelian groups, that extra fact comes from the Eckmann–Hilton argument.
+**How the definition helps.** Commutativity makes pointwise operations on homomorphisms give homomorphisms again. So Hom(A, B) is an algebra, and maps that are homomorphisms in each variable separately define the tensor product. In monad terms, the condition is that the two natural maps T A × T B → T(A × B) agree, which makes a commutative monad. The nLab warns that the operations of a commutative theory need not be symmetric in their arguments.
 
 **nLab:** [commutative algebraic theory](https://ncatlab.org/nlab/show/commutative+algebraic+theory). It says: “We discuss that the category of algebras for an algebraic theory over a commutative algebraic theory is canonically a closed symmetric monoidal category (Keigher 78, Seal 12).”
 
@@ -862,9 +862,9 @@
 
 **Definition.** A Lawvere theory is a category T with finite products in which every object is a finite power xⁿ of one generic object x. You can think of the maps xⁿ → x as the n-ary operations of the theory. A model of T in a category C with finite products is a functor T → C that preserves products.
 
-**Problem.** Define 'group', 'ring' or 'module' without a chosen presentation by generators and axioms. Also define topological groups, Lie groups and group objects in any category by the same definition.
+**Problem.** A group object in a category C with finite products is a product-preserving functor from the Lawvere theory of groups to C. In Set, Top and smooth manifolds these are the groups, topological groups and Lie groups. The theory, and so the definition, does not depend on a chosen presentation.
 
-**How the definition helps.** The theory of groups contains all derived operations (operations built from the basic ones) at once, so it does not depend on a chosen presentation. So two presentations of the same algebraic structure give the same Lawvere theory. A group object in C is then just a product-preserving functor from the theory of groups to C. In Set this is a group, in Top a topological group, and in smooth manifolds a Lie group. Statements about all such models become statements about functors. An example is the correspondence between Lawvere theories and finitary monads on Set (monads that preserve filtered colimits). The correspondence with monads is a separate theorem.
+**How the definition helps.** The theory of groups contains all derived operations at once, so two presentations of the same structure give the same Lawvere theory. So one definition, a product-preserving functor, covers models in every category. Statements about all such models become statements about functors. The correspondence between Lawvere theories and finitary monads on Set is a separate theorem.
 
 **nLab:** [Lawvere theory](https://ncatlab.org/nlab/show/Lawvere+theory). It says: “For example, a topological group may be identified with a functor”
 
@@ -964,7 +964,7 @@
 
 **Problem.** Beck's theorem says that distributive laws S T → T S correspond to liftings of T to the category of S-algebras. A lifting is a monad on S-algebras that becomes T when you forget the S-algebra structure. For example, the abelian group monad lifts to a monad on monoids, and the algebras of this lifted monad are rings.
 
-**How the definition helps.** The definition asks for exactly the one map that the composition needs. A composite monad T S needs a multiplication T S T S → T S. The only way to use the two given multiplications is to swap the middle S T into T S first. Beck's definition asks for this swap and for the axioms that it must satisfy. With it, the statement 'rings are to monoids as abelian groups are to sets' becomes a theorem about lifting monads. Our own remark: a distributive law does not keep all properties. The commutative monoid monad and the abelian group monad are both commutative monads (monads whose operations commute with each other), but their composite, the commutative ring monad, is not, because (a + b)(c + d) ≠ ac + bd.
+**How the definition helps.** The definition asks for exactly the one map that the composition needs. A composite monad T S needs a multiplication T S T S → T S, and the only way to use the two given multiplications is to swap the middle S T into T S first. With this swap, 'rings are to monoids as abelian groups are to sets' becomes a theorem about lifting monads. Our own remark: the composite need not keep all properties, since the commutative ring monad is not a commutative monad although its two parts are.
 
 **nLab:** [distributive law](https://ncatlab.org/nlab/show/distributive+law). It says: “Such a transformation λ: S T → T S, satisfying suitable axioms to make T S into a monad, is called a distributive law, because of the motivating example relating addition to multiplication in a ring.”
 
@@ -980,9 +980,9 @@
 
 **Definition.** A monad T is an endofunctor with a unit X → T(X) and a multiplication T(T(X)) → T(X) that obey associativity and unit laws; in programming, T(X) stands for computations that return a value in X. A strong monad on a monoidal category is a monad T with a natural map X ⊗ T(Y) → T(X ⊗ Y), called the strength. The strength must be compatible with the unit and the multiplication of T.
 
-**Problem.** Interpret Moggi's rule 'let x = t in u' in a category of computations. Here u uses x and also the other variables of the context Γ.
+**Problem.** A family of binding operations that interprets Moggi's rule 'let x = t in u' in every context Γ, where u may use the variables of Γ, is the same thing as a strong monad.
 
-**How the definition helps.** Binding needs a map that carries the context into a computation, and the strength is exactly that map. To bind x inside a term that also depends on Γ, you must turn a value of Γ and a computation of X into a computation of Γ ⊗ X. A plain monad does not give this map. The nLab shows that the family of binding operations for Moggi's typing rules is the same thing as a strong monad. On Set every monad is strong, so the condition only shows in other categories. Over a monoidal closed category, a left strength is the same as an enrichment of the monad, that is, an action of T on the internal hom-objects (Kock).
+**How the definition helps.** Binding needs a map that carries the context into a computation, and the strength is exactly that map. To bind x in a term that also depends on Γ, you must turn a value of Γ and a computation of X into a computation of Γ ⊗ X. A plain monad does not give this map. On Set every monad is strong, so the condition only shows in other categories.
 
 **nLab:** [strong monad](https://ncatlab.org/nlab/show/strong+monad). It says: “Such a structure is the same thing as a strong monad.”
 
@@ -1067,11 +1067,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18C35 (Accessible and locally presentable categories), 18A40. arXiv math.CT. Level 3: graduate.
 
-**Definition.** A category is locally presentable if it is locally small and cocomplete, and it has a small set of 'small' objects that generate it. Here 'small' means λ-presentable for some regular cardinal λ: maps out of the object commute with λ-filtered colimits (colimits over diagrams in which every set of fewer than λ objects has a cocone). Every object must be a λ-filtered colimit of these small objects. Examples are Set, Group and every presheaf category.
+**Definition.** A category is locally presentable if it is locally small and cocomplete, and every object is a λ-filtered colimit of objects from a small set of λ-presentable objects, for some regular cardinal λ. An object is λ-presentable when maps out of it commute with λ-filtered colimits. Examples are Set, Group and every presheaf category.
 
-**Problem.** When does a functor have an adjoint? Freyd's general adjoint functor theorem needs a 'solution set condition' that is hard to check. A functor that preserves limits need not have a left adjoint.
+**Problem.** Let F be a functor between locally presentable categories. Then F has a right adjoint if and only if it preserves small colimits. It has a left adjoint if and only if it is accessible and preserves small limits.
 
-**How the definition helps.** Between locally presentable categories, the solution set condition disappears for right adjoints. A functor between them has a right adjoint if and only if it preserves small colimits. It has a left adjoint if and only if it is accessible (it preserves λ-filtered colimits for some regular cardinal λ) and preserves small limits. So a condition on the functor is still needed for left adjoints. Mac Lane's example is the product, over all infinite cardinals κ, of Hom(G(κ), −) : Group → Set, where G(κ) is a simple group of size κ. This functor preserves limits but has no left adjoint, and accessibility is exactly what excludes it. The remaining work is in two theorems of Adámek and Rosický: accessible functors satisfy the solution set condition, and locally presentable categories are co-wellpowered (each object has only a set of quotients).
+**How the definition helps.** Between locally presentable categories, the solution set condition of Freyd's theorem disappears. Accessible means that F preserves λ-filtered colimits for some regular cardinal λ, and it is still needed for left adjoints. Mac Lane's example is the product of Hom(G(κ), −) : Group → Set over all infinite cardinals κ, with G(κ) a simple group of size κ; it preserves limits but has no left adjoint. The remaining work is in two theorems of Adámek and Rosický: accessible functors satisfy the solution set condition, and locally presentable categories are co-wellpowered.
 
 **nLab:** [adjoint functor theorem](https://ncatlab.org/nlab/show/adjoint+functor+theorem), [locally presentable category](https://ncatlab.org/nlab/show/locally+presentable+category). It says: “indicating the need for something more than just continuity to force a functor between locally presentable categories to be a right adjoint”
 
@@ -1087,7 +1087,7 @@
 
 **Definition.** An F-algebra is an object A with a map φ : F A → A, and the initial algebra (μF, in) has exactly one algebra homomorphism to every F-algebra. For an endofunctor F with an initial algebra, the catamorphism (fold) of an F-algebra φ is this unique algebra homomorphism cata φ : μF → A.
 
-**Problem.** Prove the fusion law: if h : A → B is an algebra map from φ to ψ, then h ∘ cata φ = cata ψ. More generally, structured recursion should define functions that are well defined.
+**Problem.** Fusion law: if h : A → B is an algebra map from φ to ψ, then h ∘ cata φ = cata ψ.
 
 **How the definition helps.** Uniqueness of maps out of the initial algebra proves the fusion law in one line. The composite h ∘ cata φ is an algebra map from the initial algebra to ψ. There is only one such map, cata ψ, so the two are equal. This is our own reading of the commuting diagram that the nLab gives in place of a proof. Defining recursion by initiality also makes every fold a total, well-defined function, unlike an unrestricted fixed-point operator (our own remark).
 
@@ -1105,9 +1105,9 @@
 
 **Definition.** Work in a category with finite products. A parametrized natural numbers object is an object N with maps z : 1 → N (zero) and s : N → N (successor), such that for all maps f : A → X and g : X → X there is exactly one φ : A × N → X with φ(a, 0) = f(a) and φ(a, n + 1) = g(φ(a, n)). In words, φ starts at f(a) and applies g once for each step. The plain definition is the case A = 1.
 
-**Problem.** Define functions by recursion with parameters, such as addition and multiplication. Then find exactly which functions this structure can define.
+**Problem.** With a parametrized natural numbers object, addition and multiplication are definable by recursion. In the free category with finite products and such an object, the maps Nᵐ → N give exactly the primitive recursive functions of m arguments (Román 1989).
 
-**How the definition helps.** Putting the parameter A into the definition makes recursion with extra inputs available without exponentials. In a cartesian closed category (a category with objects of maps), the parameter version follows from the plain one by currying, which turns a map A × N → X into a map N → Xᴬ. Without exponentials it does not, so the nLab says to build parameters into the definition. With it, one can define addition and multiplication by recursion. Our own remark is that recursion which also uses n then follows by a short argument. In the free category with finite products and such an object, the maps Nᵐ → N give exactly the primitive recursive functions of m arguments: each map gives one, and each one comes from at least one map (Román 1989). With cartesian closure, more functions become definable, for example the Ackermann function.
+**How the definition helps.** Putting the parameter A into the definition makes recursion with extra inputs available without exponentials. In a cartesian closed category, the parameter version follows from the plain one by currying, which turns a map A × N → X into a map N → Xᴬ. Without exponentials it does not, so the nLab says to build parameters into the definition. With cartesian closure, more functions become definable, for example the Ackermann function.
 
 **nLab:** [natural numbers object](https://ncatlab.org/nlab/show/natural+numbers+object). It says: “if E is not cartesian closed, then it is better to explicitly assume a stronger version of this definition "with parameters" (which follows automatically when E is cartesian closed, such as when E is a topos).”
 
@@ -1123,9 +1123,9 @@
 
 **Definition.** A hyperdoctrine assigns to each context A (roughly, a list of typed variables) a category, or a poset, P(A) of propositions or types. It assigns to each map f a substitution functor P(f). The existential and universal quantifiers along f are the left and right adjoints of P(f). They must satisfy two conditions, Frobenius reciprocity and the Beck–Chevalley condition.
 
-**Problem.** Give one algebraic account of the quantifiers and of their rules that works in all models of a logic.
+**Problem.** In a hyperdoctrine, the rules for ∃ and ∀ are sound, because they are the adjunctions ∃<sub>f</sub> ⊣ P(f) ⊣ ∀<sub>f</sub>. The Beck–Chevalley condition makes quantification commute with substitution of variables.
 
-**How the definition helps.** Adjointness fixes the quantifiers by a universal property, so one definition covers every model. This replaces separate rules for each model. The Beck–Chevalley condition is exactly the requirement that quantification commutes with substitution of variables. In syntax this is automatic. So to check that the quantifier rules are sound in a model, you check these adjunction conditions. Lawvere also treats equality and comprehension (forming the part of a type where a formula holds) in this adjoint style.
+**How the definition helps.** Adjointness fixes the quantifiers by a universal property, so one definition covers every model. In syntax, commuting with substitution is automatic, and the Beck–Chevalley condition is exactly this requirement in a model. So to check that the quantifier rules are sound in a model, you check these adjunction conditions. Lawvere also treats equality and comprehension in this adjoint style.
 
 **nLab:** [hyperdoctrine](https://ncatlab.org/nlab/show/hyperdoctrine), [Beck-Chevalley condition](https://ncatlab.org/nlab/show/Beck-Chevalley+condition). It says: “The Beck-Chevalley condition ensures that quantification interacts with substitution of variables as expected”
 
@@ -1172,11 +1172,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18D15 (Closed categories (closed monoidal and Cartesian closed categories, etc.)), 18A15, 03F40. arXiv math.CT, math.LO. Level 3: graduate.
 
-**Definition.** Work in a cartesian closed category, which has products and function objects Bᴬ. A global point of an object X is a map 1 → X from the terminal object. A map φ : A → Bᴬ is point-surjective if every global point of Bᴬ is the image under φ of some global point of A. Lawvere's theorem says: if such a φ exists, then every map f : B → B has a fixed point 1 → B.
+**Definition.** Work in a cartesian closed category. A global point of an object X is a map 1 → X from the terminal object. A map φ : A → Bᴬ is point-surjective if every global point of Bᴬ is φ of some global point of A.
 
-**Problem.** Give one argument that proves Cantor's theorem (no surjection X → P(X)), the halting theorem, Tarski's undefinability of truth and Gödel's incompleteness theorem.
+**Problem.** Lawvere's fixed point theorem: if a point-surjective map φ : A → Bᴬ exists, then every map f : B → B has a fixed point 1 → B. Cantor's theorem, the halting theorem, Tarski's undefinability of truth and Gödel's incompleteness theorem are contrapositives of it, for maps with no fixed point.
 
-**How the definition helps.** With point-surjectivity as the hypothesis, the diagonal argument becomes a three-line calculation. Name the map a ↦ f(φ(a)(a)), and lift it to a point p with φ(p) equal to this map; then φ(p)(p) is a fixed point of f by one beta-reduction (one step of substituting p into the map). Each classical result is then the contrapositive for a map with no fixed point. For example, Cantor's theorem in a topos follows because negation on the truth-value object Ω has no fixed point in a non-degenerate topos. The choice of hypothesis matters, and the nLab shows that 'epimorphism' does not work in its place. A countable dense map from ℕ into the space of sequences of points of the circle S¹ is an epimorphism of compactly generated Hausdorff spaces, but a non-trivial rotation of S¹ has no fixed point. For Gödel and Tarski, the nLab page does not show how to meet the hypothesis, and the work lies in building the category and the point-surjective map from arithmetic.
+**How the definition helps.** With point-surjectivity as the hypothesis, the diagonal argument is a three-line calculation. Lift the map a ↦ f(φ(a)(a)) to a point p with φ(p) equal to it; then φ(p)(p) is a fixed point of f. Epimorphism does not work in place of point-surjectivity: a countable dense map from ℕ into sequences in S¹ is an epimorphism, but a non-trivial rotation of S¹ has no fixed point. For Gödel and Tarski, the work lies in building the category and the point-surjective map from arithmetic.
 
 **nLab:** [Lawvere's fixed point theorem](https://ncatlab.org/nlab/show/Lawvere%27s+fixed+point+theorem). It says: “The statement need not hold if "(weakly) point-surjective" is replaced by "epimorphism".”
 
@@ -1193,9 +1193,9 @@
 
 **Definition.** Take a category C enriched in V, a diagram F : K → C and a weight W : K → V. The weighted limit is an object L with C(c, L) ≅ \[K, V\](W, C(c, F(−))), naturally in c. In words, maps from c to L correspond to natural transformations from W to C(c, F(−)), which are cones over F whose shape W prescribes. An ordinary (conical) limit is the case where W is constant at the unit object of V.
 
-**Problem.** Give a notion of completeness for categories enriched in V that is adequate. For example, it should include powers, also called cotensors, and homotopy limits. A power is the enriched version of a product of copies of one object, indexed by an object of V.
+**Problem.** An enriched category has all weighted limits exactly when it has conical limits and powers (cotensors). Powers, which conical limits cannot express, and Bousfield–Kan homotopy limits are both weighted limits.
 
-**How the definition helps.** Weighted limits let a cone use generalized elements of the hom-objects, and conical limits do not. A cone in an enriched category should pick generalized elements of the hom-objects (maps into them from any object of V), not only global elements (maps from the unit object). Conical limits pick only global elements, and Kelly's book has a section on 'the inadequacy of conical limits'. An enriched category has all weighted limits exactly when it has conical limits and powers; the conical limit page states this. Completeness under a class of weights cannot always be expressed by a class of diagrams. For example, having powers is not the same as having D-indexed limits for any class D. When V is simplicial sets and the weight is N(K/−), the functor that sends k to the nerve of the slice category K/k, the weighted limit of a diagram of fibrant objects is the Bousfield–Kan homotopy limit.
+**How the definition helps.** Weighted limits let a cone use generalized elements of the hom-objects, while conical limits use only global elements (maps from the unit object). Kelly's book has a section on 'the inadequacy of conical limits'. Completeness under a class of weights cannot always be expressed by a class of diagrams; having powers is not the same as having D-indexed limits for any class D. When V is simplicial sets and the weight is k ↦ N(K/k), the weighted limit of fibrant objects is the Bousfield–Kan homotopy limit.
 
 **nLab:** [weighted limit](https://ncatlab.org/nlab/show/weighted+limit), [conical limit](https://ncatlab.org/nlab/show/conical+limit). It says: “However, it is not true that completeness under a class of weights can always be expressed as completeness under a class of diagrams.”
 
@@ -1212,9 +1212,9 @@
 
 **Definition.** A functor p : E → B is a fibration if every arrow f : a → p(e) in B has a cartesian lift that ends at e. A cartesian lift is a universal lift: other arrows over a factor through it in a unique way. The fibres of p and the pullback functors f\* between them are then fixed up to isomorphism by this universal property.
 
-**Problem.** A pseudofunctor Bᵒᵖ → Cat must come with coherence isomorphisms (g∘f)\* ≅ f\*∘g\* and id\* ≅ id. These isomorphisms must satisfy coherence axioms, which are tedious to state and check.
+**Problem.** A fibration with a chosen cartesian lift for each arrow gives a pseudofunctor Bᵒᵖ → Cat, f ↦ f\*, whose coherence isomorphisms (g∘f)\* ≅ f\*∘g\* and id\* ≅ id satisfy the coherence axioms automatically. The Grothendieck construction turns every pseudofunctor into a fibration.
 
-**How the definition helps.** In a fibration, uniqueness from a universal property does the coherence work. The functors f\* are not extra data, because a universal property characterizes them. So the comparison isomorphisms are the unique ones that the universal property gives, and their coherence axioms hold automatically, by uniqueness. The Grothendieck construction turns any pseudofunctor into a fibration. A fibration with a chosen cleavage (one chosen cartesian lift for each arrow) turns back into a pseudofunctor. The real content is this correspondence. Once you know it, you can work with fibrations and never write coherence diagrams.
+**How the definition helps.** In a fibration, uniqueness in a universal property does the coherence work. The functors f\* are characterized by a universal property, so the comparison isomorphisms are the unique ones it gives, and their axioms hold by uniqueness. The real content is the correspondence between fibrations and pseudofunctors. Once you know it, you can work with fibrations and never write coherence diagrams.
 
 **nLab:** [Grothendieck fibration](https://ncatlab.org/nlab/show/Grothendieck+fibration). It says: “By contrast, pseudofunctors are an "algebraic" structure, since the functors f\* are specified, together with the necessary coherence data and axioms; the latter come for free in a fibration because of the universal property.”
 
@@ -1249,9 +1249,9 @@
 
 **Definition.** A category is semiadditive if it has a zero object and finite products and coproducts, and the canonical map from a ⊔ b to a × b is an isomorphism. Here ⊔ is the coproduct and × is the product. The object is then called a biproduct and written a ⊕ b.
 
-**Problem.** Show that a semiadditive category is enriched in commutative monoids: each hom-set has an addition that composition respects. So an additive category is a semiadditive category with a property (negatives exist), not with extra structure.
+**Problem.** A semiadditive category is enriched in commutative monoids: each hom-set has an addition that composition respects. So an additive category is a semiadditive category with a property (negatives exist), not with extra structure.
 
-**How the definition helps.** The biproduct lets you copy, act and merge, and this gives an addition on morphisms that is already there. Define f + g : a → b as the composite a → a × a ≅ a ⊕ a → b ⊕ b ≅ b ⊔ b → b. In words, copy a with the diagonal map, apply f and g side by side, and merge with the codiagonal map. The zero morphism is the unit. Associativity, commutativity and bilinearity are then short diagram checks. Functors that preserve the enrichment automatically preserve biproducts. Lack adds that any natural isomorphism from coproducts to products, not only the canonical one, already forces the canonical map to be invertible.
+**How the definition helps.** The biproduct lets you copy, act and merge, and this gives an addition on morphisms that is already there. Define f + g : a → b as a → a ⊕ a → b ⊕ b → b: copy with the diagonal, apply f and g side by side, and merge with the codiagonal. The zero morphism is the unit, and the monoid axioms are short diagram checks. Lack adds that any natural isomorphism from coproducts to products already forces the canonical map to be invertible.
 
 **nLab:** [biproduct](https://ncatlab.org/nlab/show/biproduct). It says: “A semiadditive category is automatically enriched over the monoidal category of commutative monoids with the usual tensor product, as follows.”
 
@@ -1265,11 +1265,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 18E08 (Regular categories, Barr-exact categories), 54D50, 18F60. arXiv math.CT, math.GN. Level 3: graduate.
 
-**Definition.** A regular category is a category with finite limits and with coequalizers of kernel pairs, in which regular epimorphisms are stable under pullback. The kernel pair of a map is the pullback of the map along itself. A regular epimorphism is a map that is the coequalizer of some pair of maps; in spaces these are the quotient maps. A compactly generated (Kelley) space is a space whose topology is determined by the maps into it from compact Hausdorff spaces.
+**Definition.** A regular category is a category with finite limits and coequalizers of kernel pairs, in which regular epimorphisms are stable under pullback. In spaces, the regular epimorphisms are the quotient maps. A compactly generated (Kelley) space is a space whose topology is determined by the maps into it from compact Hausdorff spaces.
 
-**Problem.** We want a good calculus of relations and images for spaces, which logicians call regular logic. For this, quotient maps must be stable under pullback.
+**Problem.** The category of compactly generated Hausdorff spaces is regular, so quotient maps in it are stable under pullback. Top is not regular.
 
-**How the definition helps.** Top itself is not regular, but the smaller category of compactly generated Hausdorff spaces is regular. The nLab shows the failure in Top with finite posets; finite preorders are the same as finite topological spaces. There, a quotient map of finite posets pulls back along an inclusion to a map that is an epimorphism but not a regular epimorphism. The category of compactly generated Hausdorff spaces is regular, and so is the category of compactly generated weakly Hausdorff spaces (Cagliari, Mantovani and Vitale). The category of Hausdorff Kelley spaces is still not exact (not every equivalence relation in it is a kernel pair). It is also not locally cartesian closed (its slice categories do not all have exponentials).
+**How the definition helps.** Restricting to compactly generated Hausdorff spaces removes the quotient maps of Top that fail to pull back to quotient maps. The nLab shows the failure in Top with finite posets, viewed as finite spaces: a quotient map pulls back along an inclusion to an epimorphism that is not regular. Compactly generated weakly Hausdorff spaces are also regular (Cagliari, Mantovani and Vitale). The category of Hausdorff Kelley spaces is still not exact and not locally cartesian closed.
 
 **nLab:** [regular category](https://ncatlab.org/nlab/show/regular+category). It says: “this example serves to show also that the category Top of all topological spaces is not regular.”
 
@@ -1285,9 +1285,9 @@
 
 **Definition.** A regular category is a category with finite limits in which kernel pairs have coequalizers and regular epimorphisms are stable under pullback. (The kernel pair of f is the pullback of f along itself. A regular epimorphism is a morphism that is the coequalizer of some pair of maps.) Then every morphism factors as a regular epimorphism followed by a monomorphism. This factorization is the image factorization, and it is stable under pullback.
 
-**Problem.** A relation from c to d in a category is a subobject of c × d. Relations should compose, with the composite given by the image of the pullback span. They should form a 2-category called an allegory, as relations do in Set.
+**Problem.** In a regular category, relations (subobjects of c × d) compose by taking the image of the pullback span, and this composition is associative. So relations form an allegory, as they do in Set.
 
-**How the definition helps.** Composing relations needs images, and regularity supplies images that behave well under pullback. The composite of r ⊆ c × d and s ⊆ d × e is the image of the map from the pullback of r and s over d to c × e. So you need images. To show that this composition is associative, you need images to be stable under pullback. This step is our own reading of the standard argument, which the nLab summarises as 'desirable properties'. Categories such as Top, Pos and Cat are not regular. The nLab gives an example of a regular epimorphism in Pos whose pullback is not regular.
+**How the definition helps.** Composing relations needs images, and regularity supplies images that are stable under pullback. The composite of r ⊆ c × d and s ⊆ d × e is the image of the map from the pullback of r and s over d to c × e. Associativity needs images to be stable under pullback (our own reading of the standard argument). Top, Pos and Cat are not regular; the nLab gives a regular epimorphism in Pos whose pullback is not regular.
 
 **nLab:** [Rel](https://ncatlab.org/nlab/show/Rel), [regular category](https://ncatlab.org/nlab/show/regular+category). It says: “the axioms of a regular category ensure that Rel(C) is a 2-category with desirable properties.”
 
@@ -1319,9 +1319,9 @@
 
 **Definition.** An abelian category is an additive category with all kernels and cokernels, with one more condition. Every monomorphism is the kernel of its cokernel, and every epimorphism is the cokernel of its kernel. Examples are the modules over a ring and the sheaves of abelian groups on a space or a site.
 
-**Problem.** Prove the diagram lemmas of homological algebra once, for modules, sheaves and all similar categories. These lemmas include the five lemma, the snake lemma and long exact sequences. In many of these categories, objects have no elements.
+**Problem.** Freyd–Mitchell theorem: every small abelian category has a full, faithful and exact embedding into the modules over some ring. So diagram lemmas such as the five lemma and the snake lemma, proved by chasing elements in modules, hold in every abelian category.
 
-**How the definition helps.** The axioms are enough to give exact sequences and homology a meaning, so you can state the diagram lemmas in this generality. The Freyd–Mitchell theorem says that every small abelian category has a full, faithful and exact embedding into the modules over some ring R. A statement about exactness in a finite diagram lives in a small abelian subcategory. So you can prove it by chasing elements in modules, and the exact embedding carries the result back. The real content is the embedding theorem, and its proof is long. You can also avoid the theorem and chase with generalized elements (maps into the object).
+**How the definition helps.** The axioms give exact sequences and homology a meaning, so the diagram lemmas can be stated in this generality. A statement about exactness in a finite diagram lives in a small abelian subcategory. So you can chase elements in modules, and the exact embedding carries the result back. The real content is the embedding theorem, whose proof is long; generalized elements (maps into the object) avoid it.
 
 **nLab:** [Freyd-Mitchell embedding theorem](https://ncatlab.org/nlab/show/Freyd-Mitchell+embedding+theorem), [abelian category](https://ncatlab.org/nlab/show/abelian+category). It says: “This implies for instance that proofs about exactness of sequences in an abelian category can always be obtained by a naive argument on elements -- called a "diagram chase”
 
@@ -1357,9 +1357,9 @@
 
 **Definition.** A Grothendieck category is an abelian category with a generator and all small colimits, in which filtered colimits keep exact sequences exact (axiom AB5). A generator is an object G such that maps out of G can tell any two different maps apart. Examples are the R-modules and the sheaves of abelian groups on any site (a category with a notion of covering, such as the open sets of a space).
 
-**Problem.** Define derived functors, such as sheaf cohomology, in the same way for modules and for sheaves of abelian groups on an arbitrary space. This needs injective resolutions. So the category must have enough injective objects, that is, each object must embed in an injective object.
+**Problem.** Every Grothendieck category has enough injectives: each object embeds in an injective object. So derived functors such as sheaf cohomology are defined in the same way for modules and for sheaves of abelian groups on any site.
 
-**How the definition helps.** Grothendieck chose the axioms so that one theorem gives injectives for modules and for sheaves at once. In the Tôhoku paper, he chose the axiom AB5 and a generator so that the category has enough injectives. Both module categories and sheaf categories satisfy these axioms. So one theorem gives injective resolutions in both cases. Sheaf cohomology then becomes a derived functor of global sections on every space. The proof that a Grothendieck category has an injective cogenerator is still real work.
+**How the definition helps.** Grothendieck chose the axioms so that one theorem gives injectives for modules and for sheaves at once. In the Tôhoku paper, he chose AB5 and a generator for this purpose, and both module and sheaf categories satisfy them. Sheaf cohomology then becomes a derived functor of global sections on every space. The proof that a Grothendieck category has an injective cogenerator is still real work.
 
 **nLab:** [Grothendieck category](https://ncatlab.org/nlab/show/Grothendieck+category), [Tôhoku](https://ncatlab.org/nlab/show/T%C3%B4hoku), [additive and abelian categories](https://ncatlab.org/nlab/show/additive+and+abelian+categories). It says: “as well as some additional axioms (including AB5) to abelian categories ensuring existence of sufficiently many injective objects, what is now called a Grothendieck category.”
 
@@ -1395,9 +1395,9 @@
 
 **Definition.** A category is semi-abelian if it is Barr-exact, has a zero object and finite coproducts, and is protomodular. Barr-exact means, roughly, that the category is regular and every equivalence relation is the kernel pair of a map. Protomodular means that the split short five lemma holds. Groups, non-unital rings and Lie algebras are examples.
 
-**Problem.** Prove the isomorphism theorems, the nine lemma and the snake lemma for groups, rings without unit and Lie algebras. These categories are not abelian.
+**Problem.** In every semi-abelian category, the isomorphism theorems, the nine lemma and the snake lemma hold. This covers groups, rings without unit and Lie algebras, which are not abelian categories.
 
-**How the definition helps.** The semi-abelian definition uses a few simple conditions, and in it the homological lemmas can be stated and proved once for all examples. The nine lemma and the snake lemma hold in the category of groups. But groups do not form an abelian category, so the usual categorical proofs do not apply. Earlier axiom systems for this were long and hard to check. Janelidze, Márki and Tholen gave the semi-abelian definition. The work is in the general proofs, which are harder than in the abelian case.
+**How the definition helps.** The semi-abelian definition uses a few simple conditions, and the homological lemmas can be proved once from them for all examples. Groups do not form an abelian category, so the usual categorical proofs do not apply. Earlier axiom systems for this were long and hard to check. The work is in the general proofs, which are harder than in the abelian case.
 
 **nLab:** [semi-abelian category](https://ncatlab.org/nlab/show/semi-abelian+category), [Malcev, protomodular, homological and semi-abelian categories](https://ncatlab.org/nlab/show/Malcev%2C+protomodular%2C+homological+and+semi-abelian+categories). It says: “the Nine Lemma, the Snake Lemma, which remain valid and strongly meaningful in the category”
 
@@ -1414,9 +1414,9 @@
 
 **Definition.** Let W be a class of morphisms in a category C. W admits a calculus of right fractions if it contains the identities, is closed under composition, satisfies the Ore condition, and satisfies a cancellation condition. The Ore condition says: a map into the target of a W-map can be pulled back along some W-map to make a commuting square. These conditions copy the conditions on a multiplicative set at which one localizes a ring.
 
-**Problem.** The localization C\[W⁻¹\] is the category you get from C when you force every map in W to become invertible. Describe it concretely: say what its morphisms are and how they compose.
+**Problem.** If W admits a calculus of right fractions, every morphism of the localization C\[W⁻¹\] from x to z is the class of one span x ← y → z whose left leg is in W. Two such spans compose into one span.
 
-**How the definition helps.** Under a calculus of fractions, every morphism of the localization is one span, so the morphisms have a simple description. In general, a morphism of C\[W⁻¹\] is a class of arbitrary zigzags of maps of C and inverted W-maps, and this construction is hard to use. Under a calculus of fractions, every morphism is the class of one span x ← y → z whose left leg is in W. So the hom-sets have an explicit description. They are also a colimit of the hom-sets C(y, z) over the W-maps y → x into the source. The Ore condition is exactly what lets two spans compose into one span. Even then, the localization need not be locally small (its hom-sets need not be sets); the nLab gives extra conditions under which it is.
+**How the definition helps.** The Ore condition is exactly what lets two spans compose into one span. Without it, a morphism of C\[W⁻¹\] is a class of arbitrary zigzags, which is hard to use. With it, the hom-sets are a colimit of the hom-sets C(y, z) over the W-maps y → x. Even then, the localization need not be locally small; the nLab gives extra conditions under which it is.
 
 **nLab:** [calculus of fractions](https://ncatlab.org/nlab/show/calculus+of+fractions), [category of fractions](https://ncatlab.org/nlab/show/category+of+fractions). It says: “A class W of weak equivalences in a category C is said to admit a calculus of fractions if it satisfies some axioms ensuring that its localization C\[W⁻¹\] can be constructed in a particularly simple way using 'one-step generalized morphisms.'”
 
@@ -1430,11 +1430,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18E50 (Categorical Galois theory), 14F35, 20E18. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** A Galois category is a category C with a functor F from C to finite sets, called the fiber functor, that has three properties. C has finite limits and finite colimits. Every map factors as a strict epimorphism followed by the inclusion of a summand. F preserves finite limits and finite colimits, and it reflects isomorphisms. Equivalently, C is the category of finite sets with a continuous action of some profinite group G.
+**Definition.** A Galois category is a category C with a fiber functor F from C to finite sets, with three properties. C has finite limits and finite colimits. Every map factors as a strict epimorphism followed by the inclusion of a summand. F preserves finite limits and colimits, and reflects isomorphisms.
 
-**Problem.** Find one statement that contains the Galois correspondence for fields and the classification of covering spaces by the fundamental group. It should also cover objects that are not connected.
+**Problem.** Every Galois category is equivalent to the category of finite sets with a continuous action of some profinite group G. For a field K, this gives an anti-equivalence between finite étale K-algebras and finite G-sets, with fields matching transitive G-sets.
 
-**How the definition helps.** Grothendieck's form matches all algebras with all G-sets, so objects that are not connected also get a meaning. Classical Galois theory matches intermediate fields with subgroups, which are the transitive G-sets only. Grothendieck matches all finite étale K-algebras (finite products of separable extensions) with all finite G-sets. This match is an anti-equivalence of categories, so it reverses the direction of maps. The same axioms apply to the finite étale covers of a scheme, and they define its étale fundamental group. The real work is to prove that the axioms give a pro-representable fiber functor and an equivalence.
+**How the definition helps.** Grothendieck's form matches all algebras with all G-sets, so objects that are not connected also get a meaning. Classical Galois theory matches intermediate fields with subgroups, which give only the transitive G-sets. The same axioms apply to the finite étale covers of a scheme, and define its étale fundamental group. The real work is to prove that the axioms give a pro-representable fiber functor and an equivalence.
 
 **nLab:** [Grothendieck's Galois theory](https://ncatlab.org/nlab/show/Grothendieck%27s+Galois+theory), [Galois category](https://ncatlab.org/nlab/show/Galois+category), [Galois theory](https://ncatlab.org/nlab/show/Galois+theory). It says: “Even for the classical case of the inclusion of fields, Grothendieck's Galois theorem gives more general statement than the previously known.”
 
@@ -1451,9 +1451,9 @@
 
 **Definition.** A coverage on a category gives each object a set of covering families. A covering family of an object U is a set of maps into U. The only axiom is about pullback: take a covering family of U and a map V → U. Then V has some covering family whose maps each factor through some member of the first family.
 
-**Problem.** A differentiably good open cover is one in which all finite intersections are diffeomorphic to ℝⁿ. These covers should make CartSp into a site, so that smooth sets and smooth ∞-groupoids can be defined as sheaves on it. CartSp is the category of Cartesian spaces ℝⁿ and smooth maps, and a site is a category with a notion of cover.
+**Problem.** Differentiably good open covers, whose finite intersections are all diffeomorphic to ℝⁿ, form a coverage on CartSp, the category of spaces ℝⁿ and smooth maps. So smooth sets can be defined as sheaves on CartSp with these covers.
 
-**How the definition helps.** A coverage only asks that a pulled-back cover is refined by a cover, and good covers meet that demand. Good open covers are not stable under pullback; for example, cover the plane by two overlapping half planes. Pull it back along the map t ↦ 2(cos 2πt, sin 2πt) from ℝ: each of the two sets is a union of infinitely many disjoint intervals. So good covers do not form a Grothendieck pretopology in the strict sense, which needs the pullback of a cover to be a cover. Every open cover can be refined by a good one, so good covers form a coverage. The nLab also says every coverage has a unique Grothendieck topology with the same sheaves, so nothing is lost. The refinement result itself (every open cover has a differentiably good refinement) is a separate theorem.
+**How the definition helps.** A coverage only asks that a pulled-back cover is refined by a cover, and good covers meet that demand. Good covers are not stable under pullback: pull two overlapping half planes back along t ↦ 2(cos 2πt, sin 2πt), and each set becomes infinitely many disjoint intervals. So they do not form a Grothendieck pretopology, but every open cover has a good refinement, which is a separate theorem. Every coverage has a unique Grothendieck topology with the same sheaves, so nothing is lost.
 
 **nLab:** [coverage](https://ncatlab.org/nlab/show/coverage), [geometry of physics -- coordinate systems](https://ncatlab.org/nlab/show/geometry+of+physics+--+coordinate+systems), [good open cover](https://ncatlab.org/nlab/show/good+open+cover). It says: “every pullback of a good open cover gives an open cover that may be refined by a good open cover. This is all we need in the definition of coverage.”
 
@@ -1467,11 +1467,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 18F20, 14A15. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** A site is a category with a chosen notion of covering, and a ringed site adds a sheaf of rings 𝒪. Condition (1) of the lemma asks: for each local section f, some covering has pieces where f or 1 − f is invertible. It contains no clause like 1 ≠ 0. A point of a site is a way of taking stalks, like a point of a topological space.
+**Definition.** A ringed site (C, 𝒪) satisfies the covering condition if, for each local section f of 𝒪, some covering has pieces on which f or 1 − f is invertible. A point of a site is a way of taking stalks, like a point of a topological space.
 
-**Problem.** Define 'locally ringed' for a sheaf of rings on a general site, which may have too few points to test stalks. The definition should agree with the stalk condition when there are enough points.
+**Problem.** If the covering condition holds, every stalk of 𝒪 at a point is a local ring or the zero ring. When the site has enough points, the covering condition is equivalent to this stalk condition.
 
-**How the definition helps.** The covering condition uses only sections and coverings, so it can be stated on any site. It passes to stalks, because stalks are colimits over neighbourhoods (our own). The quoted lemma shows that it gives stalks that are local rings or zero rings, and that the two agree when there are enough points. The covering condition alone allows zero stalks, because the zero ring passes the test 'x or 1 − x is a unit' (our own). A second lemma in the data set (Tag 05D8) restates the clause 1 ≠ 0 in the same way, as a condition on the sheaf. So each half of the definition of a local ring gets a form that needs no points (our own reading).
+**How the definition helps.** The covering condition uses only sections and coverings, so it can be stated on any site, even one with too few points. It passes to stalks because stalks are colimits over neighbourhoods (our own). It allows zero stalks, because the zero ring passes the test 'x or 1 − x is a unit' (our own). A second lemma (Tag 05D8) restates the clause 1 ≠ 0 as a condition on the sheaf.
 
 **Paper or page:** [Stacks Project, Sites Modules, Lemma 18.40.2](https://stacks.math.columbia.edu/tag/04ET), [Stacks Project, Sites Modules, Lemma 18.40.3](https://stacks.math.columbia.edu/tag/05D8). It says: “For every point p of 𝒞 the stalk 𝒪ₚ is either the zero ring or a local ring. We always have (1) ⇒ (2). If 𝒞 has enough points then (1) and (2) are equivalent.”
 
@@ -1488,9 +1488,9 @@
 
 **Definition.** A site is a category with a coverage: a choice of which families of maps count as covers. A morphism of sites C → D is a functor that preserves covering families and is covering-flat. Covering-flatness is a weaker form of representable flatness (roughly, preserving finite limits). It asks for flatness only relative to the coverage of D.
 
-**Problem.** Morphisms of sites should correspond to geometric morphisms between the sheaf toposes. A geometric morphism is a pair of adjoint functors between toposes whose left adjoint, the inverse image, preserves finite limits. Every geometric morphism whose inverse image sends representables to representables should come from a morphism of sites.
+**Problem.** Every morphism of sites C → D induces a geometric morphism between the sheaf toposes. Conversely, every geometric morphism whose inverse image sends representables to representables comes from a morphism of sites.
 
-**How the definition helps.** The covering-flat definition makes the correspondence hold in both directions in general. The nLab says that a morphism of sites is defined exactly so that it induces a geometric morphism. With the covering-flat definition, Shulman proves both directions: each morphism of sites gives a geometric morphism, and every geometric morphism that restricts to the sites comes from one. With the classical definition (representably flat functors), the converse holds only in special cases. One such case is when both sites have finite limits and D is subcanonical (every representable presheaf is a sheaf). The two definitions agree when C has finite limits and all covers in D are strong epimorphisms. So few practical examples see a difference.
+**How the definition helps.** The covering-flat definition makes the correspondence hold in both directions in general (Shulman). With the classical definition (representably flat functors), the converse holds only in special cases, for example when both sites have finite limits and D is subcanonical. The two definitions agree when C has finite limits and all covers in D are strong epimorphisms. So few practical examples see a difference.
 
 **nLab:** [morphism of sites](https://ncatlab.org/nlab/show/morphism+of+sites). It says: “Note that the general case would not be true for the classical definition of "morphism of sites".”
 
@@ -1506,9 +1506,9 @@
 
 **Definition.** A hypercovering is a simplicial object built from coverings. Its degree-0 part covers the space. In each higher degree, the pieces cover the overlaps of the previous level instead of being equal to them. The Čech nerve of one covering is the special case where no overlap is refined.
 
-**Problem.** Čech cohomology of ordinary coverings agrees with sheaf cohomology only under extra conditions, for example for quasi-coherent sheaves on separated schemes. One wants a Čech description of cohomology on every site.
+**Problem.** On a site with fibre products and products of pairs, the sheaf cohomology of an object with coefficients in an abelian sheaf is the colimit, over all its hypercoverings, of their Čech cohomology.
 
-**How the definition helps.** Letting each overlap have its own covering gives enough room for every cohomology class to appear. The quoted proposition proves this for sites with fibre products and products of pairs. Ordinary Čech cohomology over coverings can differ from sheaf cohomology in degree 2 and higher on general spaces (our own; a standard fact). Verdier introduced hypercoverings in SGA 4 for this purpose (from Wikipedia). What stays hard is the simplicial argument that hypercoverings are cofinal enough (our own).
+**How the definition helps.** Letting each overlap have its own covering gives enough room for every cohomology class to appear. Ordinary Čech cohomology over coverings can differ from sheaf cohomology in degree 2 and higher on general spaces (our own; a standard fact). Verdier introduced hypercoverings in SGA 4 for this purpose (from Wikipedia). What stays hard is the simplicial argument that hypercoverings are cofinal enough (our own).
 
 **Wikipedia:** [Hypercovering](https://en.wikipedia.org/wiki/Hypercovering). It says: “The original definition given for étale cohomology by Jean-Louis Verdier in SGA4, Expose V, Sec. 7, Thm. 7.4.1, to compute sheaf cohomology in arbitrary Grothendieck topologies.”
 
@@ -1590,11 +1590,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 18F10 (Grothendieck topologies and Grothendieck topoi), 18A20, 58A05. arXiv math.DG, math.CT. Level 3: graduate.
 
-**Definition.** A regular epimorphism is the category-theory version of a quotient map (formally, the coequalizer of some pair of maps). In the category Diff of smooth manifolds, one uses surjective submersions in place of regular epimorphisms. They are the largest class of regular epimorphisms whose pullbacks along all smooth maps exist.
+**Definition.** In the category Diff of smooth manifolds, use surjective submersions as the covering maps, in place of regular epimorphisms. A regular epimorphism is the category-theory version of a quotient map.
 
-**Problem.** We want a class of 'covering' maps in Diff that is stable under pullback. Then Lie groupoids and differentiable stacks can be built from them.
+**Problem.** In Diff, the pullback of a surjective submersion along any smooth map exists and is again a surjective submersion. So surjective submersions form a pullback-stable class of covers for Lie groupoids and differentiable stacks.
 
-**How the definition helps.** Pullbacks of surjective submersions always exist in Diff, and a class of covers needs exactly that. Every split epimorphism (a map with a right inverse) is regular, but in Diff pullbacks of split epimorphisms need not exist. So regular epimorphisms are badly behaved in Diff. A submersion is transverse to every smooth map, so pullbacks of surjective submersions always exist. This is why the source and target maps of a Lie groupoid must be surjective submersions. Then the space of composable pairs of arrows is a manifold. The nLab says surjective submersions are the largest class of regular epimorphisms with all pullbacks, but it gives no proof.
+**How the definition helps.** A submersion is transverse to every smooth map, so pullbacks of surjective submersions always exist. General regular epimorphisms do not have this property: even split epimorphisms in Diff can have pullbacks that do not exist. This is why the source and target maps of a Lie groupoid must be surjective submersions, so that composable pairs form a manifold. The nLab says surjective submersions are the largest class of regular epimorphisms with all pullbacks, but gives no proof.
 
 **nLab:** [regular epimorphism](https://ncatlab.org/nlab/show/regular+epimorphism). It says: “the usual procedure is to consider the largest class of arrows inside regular epis of which all pullbacks exist, namely the surjective submersions.”
 
@@ -1835,11 +1835,11 @@
 
 *True by definition.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)), 18N45. arXiv math.KT. Level 3: graduate.
 
-**Definition.** Let C be a category with cofibrations and weak equivalences: it has a class of maps that act like inclusions and a class that act like isomorphisms up to homotopy. Sₙ C is the category of chains 0 ↪︎ A₁ ↪︎ … ↪︎ Aₙ of cofibrations, together with chosen quotients Aⱼ/Aᵢ. The K-theory space is K(C) = Ω\|wS•C\|, the loop space of the realization of the weak equivalences in S•C. So Kₙ(C) = πₙ₊₁\|wS•C\|: the n-th K-group is the (n+1)-st homotopy group of that realization.
+**Definition.** Let C be a category with cofibrations (maps that act like inclusions) and weak equivalences. Waldhausen's Sₙ C is the category of chains 0 ↪︎ A₁ ↪︎ … ↪︎ Aₙ of cofibrations with chosen quotients Aⱼ/Aᵢ. The K-theory space is K(C) = Ω\|wS•C\|, the loop space of the realization of the weak equivalences in S•C.
 
-**Problem.** Define higher K-theory with three properties. K₀ is the Grothendieck group, and K-theory is a spectrum, not only a space. Short exact sequences, also called cofiber sequences, add in K-theory in all degrees.
+**Problem.** Waldhausen K-theory is a spectrum whose K₀ is the Grothendieck group. Additivity theorem: cofiber sequences A ↪︎ B ↠ B/A add in every K-group.
 
-**How the definition helps.** The construction puts the relation \[B\] = \[A\] + \[B/A\] into the space by hand. The realization \|S•C\| has one 2-simplex (a triangle) for each cofiber sequence A ↪︎ B ↠ B/A. So in the fundamental group the relation \[B\] = \[A\] + \[B/A\] holds by construction, and K₀ is the Grothendieck group by definition. Additivity in all degrees, the statement that cofiber sequences add in every K-group, is a real theorem (Waldhausen 1985, §1.4). It is what makes the K-theory spectrum an Ω-spectrum, a spectrum in which each space is the loop space of the next. For exact categories (additive categories with a chosen class of short exact sequences), \|iS•A\| ≃ \|QA\|, where i means that the weak equivalences are the isomorphisms. So this K-theory agrees with Quillen's Q-construction (Waldhausen 1985, §1.9).
+**How the definition helps.** The construction puts the relation \[B\] = \[A\] + \[B/A\] into the space by hand. The realization \|S•C\| has one 2-simplex for each cofiber sequence, so the relation holds in the fundamental group by construction. Additivity in all degrees is a real theorem (Waldhausen 1985, §1.4), and it makes the K-theory spectrum an Ω-spectrum. For exact categories, \|iS•A\| ≃ \|QA\|, so this agrees with Quillen's K-theory (Waldhausen 1985, §1.9).
 
 **nLab:** [Waldhausen S-construction](https://ncatlab.org/nlab/show/Waldhausen+S-construction), [Quillen Q-construction](https://ncatlab.org/nlab/show/Quillen+Q-construction), [algebraic K-theory](https://ncatlab.org/nlab/show/algebraic+K-theory), [Grothendieck group](https://ncatlab.org/nlab/show/Grothendieck+group). It says: “The difference is that it imposes additivity over all cofiber sequences, not just over direct sums”
 
@@ -1877,7 +1877,7 @@
 
 **Definition.** Synthetic differential geometry works in a smooth topos: a universe of sets in which infinitesimal quantities exist. Take such a topos with an ordered line R. The integration axiom says: for every function f on an interval \[a,b\], there is exactly one function ∫ₐf on \[a,b\] that has value 0 at a and has derivative f.
 
-**Problem.** Prove the fundamental theorem of calculus in synthetic differential geometry.
+**Problem.** In synthetic differential geometry with the integration axiom, the derivative of ∫ₐf is f. And if F′ = f on \[a,b\], then ∫ₐf = F − F(a).
 
 **How the definition helps.** The axiom defines the integral as the unique antiderivative that is 0 at a, so both parts of the theorem are almost free. The Kock–Lawvere axiom (every function on the infinitesimals is linear) gives derivatives, but it gives no integrals. The derivative of ∫ₐf is f, by the integration axiom. Now suppose F′ = f. Then F − F(a) is also an antiderivative that is 0 at a. So, by uniqueness, F − F(a) equals ∫ₐf (our own short step). The nLab says that, without this axiom, synthetic differential geometry has no fundamental theorem of calculus and indeed no integrals.
 
@@ -1893,11 +1893,11 @@
 
 *True by definition.* MSC 18F40 (Synthetic differential geometry, tangent categories, differential categories), 58A03. arXiv math.CT, math.DG. Level 3: graduate.
 
-**Definition.** Let R be a ring object in a topos (a category that behaves much like the category of sets). Let D = {x ∈ R \| x² = 0}, the infinitesimals whose square is 0. The Kock–Lawvere axiom says that the map R × R → Rᴰ, (x, d) ↦ (ε ↦ x + ε d), is an isomorphism, where Rᴰ is the object of maps D → R. So every map D → R has a unique form ε ↦ f(0) + ε f′(0).
+**Definition.** Let R be a ring object in a topos, and let D = {x ∈ R \| x² = 0}, the infinitesimals whose square is 0. The Kock–Lawvere axiom says that the map R × R → Rᴰ, (x, d) ↦ (ε ↦ x + εd), is an isomorphism. Here Rᴰ is the object of maps D → R.
 
-**Problem.** Define tangent vectors, tangent bundles and derivatives without limits. Make "every smooth map is linear to first order" a precise statement.
+**Problem.** Under the Kock–Lawvere axiom, every map g : D → R has the unique form g(ε) = g(0) + εd, so every map is linear to first order. The derivative of f at 0 is that d for g = f restricted to D, and the tangent bundle of X is the function space Xᴰ.
 
-**How the definition helps.** The axiom makes the derivative an algebraic fact, so no limits are needed. The derivative of f at 0 is simply the unique d with f(ε) = f(0) + ε d for all ε in D. The tangent bundle of any object X is defined as the exponential object Xᴰ, the object of maps D → X. A tangent vector is literally an infinitesimal path D → X. The Kock–Lawvere axiom is an axiom, not a definition, and it fails in ordinary sets. For R = ℝ in the category of sets, D = {0}, so the map R × R → Rᴰ forgets d and is not injective. The hard work moves into building well-adapted models: toposes that contain ordinary smooth manifolds and satisfy the axiom.
+**How the definition helps.** The axiom makes the derivative an algebraic fact, so no limits are needed. A tangent vector is literally an infinitesimal path D → X. The axiom fails in ordinary sets: for R = ℝ, D = {0}, so the map R × R → Rᴰ forgets d. The hard work moves into building well-adapted models, toposes that contain smooth manifolds and satisfy the axiom.
 
 **nLab:** [Kock-Lawvere axiom](https://ncatlab.org/nlab/show/Kock-Lawvere+axiom), [synthetic differential geometry](https://ncatlab.org/nlab/show/synthetic+differential+geometry). It says: “This linearity condition is what in synthetic differential geometry allows to identify the tangent bundle T X → X of a space X with its fiberwise linearity by simply the internal hom object X<sup>D</sup> → X.”
 
@@ -1931,9 +1931,9 @@
 
 **Definition.** A locale is a space given by its lattice of open sets alone, with no set of points assumed. A sublocale is a subspace in this pointless sense, and it need not have points. A nucleus j on the lattice of opens describes the sublocale; a nucleus is a closure operator that keeps finite meets. The sublocale is dense if j(0) = 0, that is, if the only open set that does not meet it is the empty one.
 
-**Problem.** Any intersection of dense subspaces is dense.
+**Problem.** Any intersection of dense sublocales of a locale is dense.
 
-**How the definition helps.** For sublocales the claim holds with no conditions, at the price of losing points. For topological subspaces it fails badly. The intersection of all dense subspaces is the set of isolated points. The Baire category theorem gives special conditions under which countable intersections of dense open sets stay dense. For sublocales, every intersection of dense sublocales is always dense. The price is that the intersection is usually not spatial (not given by a set of points). The intersection of all dense sublocales is the double-negation sublocale, which has no points except the isolated ones.
+**How the definition helps.** For sublocales the claim holds with no conditions, at the price of losing points. For topological subspaces it fails badly: the intersection of all dense subspaces is the set of isolated points. The Baire category theorem gives only special conditions under which countable intersections of dense open sets stay dense. The intersection of all dense sublocales is the double-negation sublocale, which is usually not spatial.
 
 **nLab:** [locale](https://ncatlab.org/nlab/show/locale), [dense subspace](https://ncatlab.org/nlab/show/dense+subspace). It says: “in the pointfree setting arbitrary intersections of dense sublocales are always dense.”
 
@@ -1965,9 +1965,9 @@
 
 **Definition.** A locale is a space given by its lattice of open sets alone, with no set of points assumed. The locale of real numbers is the real line given in this way. Its frame (its lattice of opens) is generated by open intervals (a, b) with rational ends, under the usual relations. An open cover of \[0, 1\] is a family of opens whose join (union) with (−∞, 0) and (1, ∞) is the whole line.
 
-**Problem.** The closed unit interval is compact (the Heine–Borel theorem). The claim is that this also holds in constructive mathematics.
+**Problem.** In constructive mathematics, the closed unit interval in the locale of real numbers is compact (Heine–Borel). For the set of real numbers, the theorem can fail constructively.
 
-**How the definition helps.** On the locale, the theorem is about opens, not points, and that makes the proof short. In constructive mathematics, the Heine–Borel theorem can fail for the set of real numbers. Its truth there is related to the fan theorem (a principle of intuitionistic mathematics about finitely branching trees). For opens of the locale of reals, the nLab gives a proof that is 'almost embarrassingly simple'. Joins of opens are built from finite zigzags, so a cover of a slightly larger interval already uses finitely many opens. What is lost is the statement about points. The localic theorem does not give the pointwise theorem without extra principles.
+**How the definition helps.** On the locale, the theorem is about opens, not points, and that makes the proof short. For the set of reals, its constructive truth is related to the fan theorem. For opens of the locale, the nLab gives a proof that is 'almost embarrassingly simple'. What is lost is the statement about points, which does not follow without extra principles.
 
 **nLab:** [locale of real numbers](https://ncatlab.org/nlab/show/locale+of+real+numbers), [locale](https://ncatlab.org/nlab/show/locale). It says: “But the beauty of the localic approach is that Heine--Borel necessarily holds when interpreted as a statement about opens in the locale of real numbers.”
 
@@ -1981,11 +1981,11 @@
 
 *True by definition.* MSC 18F70 (Frames and locales, pointfree topology, Stone duality), 06D22. arXiv math.GN, math.CT. Level 3: graduate.
 
-**Definition.** A space X is sober if every completely prime filter of open sets comes from exactly one point (a filter is completely prime if, whenever it contains a union of open sets, it contains one of them). Equivalently, every frame homomorphism from the opens of X to the two truth values comes from exactly one point; a frame homomorphism preserves finite intersections and arbitrary unions. Classically, sober means that every irreducible closed set (one that is not the union of two smaller closed sets) is the closure of a unique point.
+**Definition.** A space X is sober if every completely prime filter of open sets comes from exactly one point. A filter is completely prime if, whenever it contains a union of open sets, it contains one of them. Equivalently, every frame homomorphism from the opens of X to the two truth values comes from exactly one point.
 
-**Problem.** Continuous maps into a space should be determined by what they do on open sets. For Y sober, every frame homomorphism O(Y) → O(X) should be f⁻¹ for a unique continuous map f : X → Y. Here O(X) is the frame of open sets of X.
+**Problem.** If Y is sober, then for every space X, each frame homomorphism O(Y) → O(X) is f⁻¹ for a unique continuous map f : X → Y. Here O(X) is the frame of open sets of X.
 
-**How the definition helps.** Sobriety asks exactly that the points of X are the points of its locale of opens, so the statement is almost the definition. A locale is a frame regarded as a space, and its points are the frame homomorphisms to the truth values. The category of sober spaces is then equivalent to the category of locales with enough points. Sobrification is a reflection: it sends each space to its nearest sober space. The content moves to showing that important spaces are sober. Examples are Hausdorff spaces (classically) and the underlying spaces of schemes.
+**How the definition helps.** Sobriety asks exactly that the points of X are the points of its locale of opens, so the statement is almost the definition. The category of sober spaces is then equivalent to the category of locales with enough points. The content moves to showing that important spaces are sober, such as Hausdorff spaces and the underlying spaces of schemes.
 
 **nLab:** [sober topological space](https://ncatlab.org/nlab/show/sober+topological+space). It says: “It means that continuous functions between sober topological spaces are entirely determined by their inverse image functions on the frames of opens, disregarding the underlying sets of points.”
 
@@ -2000,11 +2000,11 @@
 
 *True by definition. Confidence: medium.* MSC 18F70 (Frames and locales, pointfree topology, Stone duality), 06D22, 06E15. arXiv math.GN, math.LO. Level 3: graduate.
 
-**Definition.** A frame is a lattice that behaves like the lattice of open sets of a space. It has all joins and finite meets, and finite meets distribute over joins. The category of locales is defined to be the opposite of the category of frames. Stone-type dualities are then stated for subcategories of locales: for example, coherent locales are dual to distributive lattices, and Stone locales to Boolean algebras.
+**Definition.** A frame is a lattice that behaves like the lattice of open sets of a space: it has all joins and finite meets, and finite meets distribute over joins. The category of locales is defined to be the opposite of the category of frames.
 
-**Problem.** Prove Stone duality between Boolean algebras or distributive lattices and spaces. Do it in constructive mathematics, or without the ultrafilter theorem. The ultrafilter theorem says that every filter extends to an ultrafilter; it is a weak form of the axiom of choice.
+**Problem.** Without the ultrafilter theorem, and even constructively, coherent locales are dual to distributive lattices and Stone locales are dual to Boolean algebras.
 
-**How the definition helps.** Locales do not need points, so the duality does not need choice to supply enough points. The duality between locales and frames is a tautology, because the category of locales is defined as the opposite of the category of frames. The interesting dualities are between subcategories, for example coherent locales and distributive lattices. For topological spaces, these dualities often need the ultrafilter theorem or another form of choice. The reason is that the locale must have enough points to be a space, which means that its points must tell its open sets apart. For locales, the duality holds even in constructive mathematics. What remains is to identify each subcategory, and choice is still needed to show that coherent locales have enough points (the prime ideal theorem).
+**How the definition helps.** Locales do not need points, so the duality does not need choice to supply enough points. The duality between locales and frames is a tautology, and the interesting dualities are between subcategories. For topological spaces, these dualities need the ultrafilter theorem or another form of choice, so that points tell open sets apart. Choice is still needed to show that coherent locales have enough points (the prime ideal theorem).
 
 **nLab:** [Stone duality](https://ncatlab.org/nlab/show/Stone+duality). It says: “In many cases, one requires the ultrafilter theorem (or other forms of the axiom of choice) in order for the duality to hold when applied to topological spaces, while the duality holds for locales even in constructive mathematics.”
 
@@ -2086,9 +2086,9 @@
 
 **Definition.** A frame is a complete lattice in which finite meets distribute over arbitrary joins, like the lattice of open sets of a space. A locale is a frame viewed as a space. Products of locales are coproducts of frames. A locale is compact if, whenever its top element is a directed join, the top element is already in the directed family.
 
-**Problem.** A product of any family of compact spaces is compact (Tychonoff's theorem).
+**Problem.** Without the axiom of choice, a product of any family of compact locales is compact (Tychonoff's theorem).
 
-**How the definition helps.** For locales the theorem is about opens and not points, and so it needs no choice. For topological spaces, Tychonoff's theorem is equivalent to the axiom of choice. For locales, the same statement has a constructive proof, through Johnstone and Vickers's theory of preframes (posets with finite meets and directed joins, where finite meets distribute over directed joins). The choice principle does not disappear. It moves into the separate statement that a product of spatial locales (locales given by points) is spatial. One needs that statement to get back to points.
+**How the definition helps.** For locales the theorem is about opens and not points, and so it needs no choice. For topological spaces, Tychonoff's theorem is equivalent to the axiom of choice. The constructive proof goes through Johnstone and Vickers's theory of preframes. Choice moves into the separate statement that a product of spatial locales is spatial, which is needed to get back to points.
 
 **nLab:** [Tychonoff theorem for locales](https://ncatlab.org/nlab/show/Tychonoff+theorem+for+locales), [Tychonoff theorem](https://ncatlab.org/nlab/show/Tychonoff+theorem). It says: “even in constructive mathematics, a Cartesian product of locales is compact if each of the locales is compact. From that perspective, the statement equivalent to the axiom of choice is this: a product of locales is spatial”
 
@@ -2120,9 +2120,9 @@
 
 **Definition.** An object I is injective relative to a class J of monomorphisms if every map A → I extends along every m : A → B in J. That is, there is a map B → I whose composite with m is the given map. A regular monomorphism is a monomorphism that is the equalizer of some pair of maps. In posets, the regular monomorphisms are the order embeddings.
 
-**Problem.** Characterize the injective objects in categories such as posets, Banach spaces and topological spaces. In these categories, injectivity against all monomorphisms gives only trivial objects.
+**Problem.** A poset is injective relative to order embeddings exactly when it is a complete lattice. Against all monomorphisms, only the one-point poset is injective.
 
-**How the definition helps.** Restricting to regular monomorphisms leaves out the monomorphisms that are not embeddings, and so many more objects become injective. Against all monomorphisms, the only injective poset is the one-point poset. The only injective Banach space (with contractions as maps) is 0, and among T₀ spaces only the terminal (one-point) spaces are injective. Against regular monomorphisms, the injective posets are the complete lattices. The injective Banach spaces are the spaces C(K) for an extremally disconnected compact Hausdorff space K (one in which the closure of every open set is open). The injective T₀ spaces are the continuous lattices with the Scott topology. Each characterization is still a theorem that needs proof; the poset case is the Banaschewski–Bruns result.
+**How the definition helps.** Restricting to regular monomorphisms leaves out the monomorphisms that are not embeddings, so many more objects become injective. The same happens elsewhere. Against regular monomorphisms, the injective Banach spaces are the spaces C(K) for K extremally disconnected, and the injective T₀ spaces are the continuous lattices with the Scott topology. Each characterization is still a theorem; the poset case is the Banaschewski–Bruns result.
 
 **nLab:** [injective object](https://ncatlab.org/nlab/show/injective+object). It says: “However, if we require injectives to satisfy the extension property only with respect to regular monomorphisms, then the injective objects are precisely the complete lattices.”
 
@@ -2204,9 +2204,9 @@
 
 **Definition.** A complex I is K-injective if every map from an acyclic complex (one with no cohomology) to I is homotopic to zero. A bounded below complex of injective objects is K-injective, but an unbounded one need not be. K(𝒜) is the category of complexes up to homotopy, and D(𝒜) is the derived category.
 
-**Problem.** Define right derived functors, such as RHom or derived pushforward, on all complexes, including unbounded ones. Classical injective resolutions work only for bounded below complexes.
+**Problem.** In a Grothendieck abelian category, every complex, bounded or not, has a K-injective resolution. So right derived functors such as RHom and derived pushforward exist on the whole unbounded derived category.
 
-**How the definition helps.** The definition names exactly what resolutions are for: homotopy classes of maps into I equal maps in the derived category. With it, the existence of RF is a formal step, as the quoted lemma shows. It rules out a real problem (our own example). Over ℤ/4, take the unbounded complex … → ℤ/4 → ℤ/4 → … in which every map is multiplication by 2. It is acyclic and made of injective modules, but it is not homotopic to zero. So 'complex of injectives' is not enough. The hard work moves to an existence theorem in the data set (Tag 079P): every complex in a Grothendieck abelian category has a K-injective resolution.
+**How the definition helps.** The definition names exactly what resolutions are for: homotopy classes of maps into I equal maps in the derived category. With it, the existence of RF is a formal step. 'Complex of injectives' is not enough (our own example). Over ℤ/4, the unbounded complex of copies of ℤ/4 with every map multiplication by 2 is acyclic and made of injectives, but it is not homotopic to zero.
 
 **Paper or page:** [Stacks Project, Derived, Lemma 13.31.7](https://stacks.math.columbia.edu/tag/070K), [Stacks Project, Injectives, Theorem 19.12.6](https://stacks.math.columbia.edu/tag/079P). It says: “Assume every complex has a quasi-isomorphism towards a K-injective complex. Then any exact functor F : K(𝒜) → 𝒟′ of triangulated categories has a right derived functor RF : D(𝒜) ⟶ 𝒟′”
 
@@ -2221,11 +2221,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 18G10 (Resolutions; derived functors (category-theoretic aspects)), 18G35, 18G05. arXiv math.KT, math.CT. Level 3: graduate.
 
-**Definition.** A projective object P is one where every map out of P lifts along every epimorphism. A projective resolution of an object X is an exact sequence ⋯ → P₁ → P₀ → X → 0 in which every Pᵢ is projective. More generally, you replace a chain complex by a quasi-isomorphic complex that is projective in each degree. A quasi-isomorphism is a chain map that induces isomorphisms on homology.
+**Definition.** A projective object P is one where every map out of P lifts along every epimorphism. A degreewise projective complex is a chain complex whose term in each degree is projective, such as a projective resolution ⋯ → P₁ → P₀ of an object.
 
-**Problem.** Chain maps into an exact complex should be null-homotopic (homotopic to the zero map), because an exact complex is quasi-isomorphic to 0. Then resolutions and derived functors would not depend on choices, up to homotopy.
+**Problem.** Every chain map, in non-negative degrees, from a degreewise projective complex into an exact complex is null-homotopic. So projective resolutions are unique up to chain homotopy.
 
-**How the definition helps.** Projective objects in the source supply the maps that a null-homotopy needs. The nLab gives a counterexample without them: the chain map from ℤ/2 in degree 0 into the exact complex ℤ → ℤ → ℤ/2 is not null-homotopic. The reason is that every homomorphism ℤ/2 → ℤ is zero. After you replace ℤ/2 by its free resolution ℤ → ℤ, the composite map has a null-homotopy. The lemma says: every chain map in non-negative degrees from a degreewise projective complex into an exact complex is null-homotopic. Dually, injective resolutions do the same for maps into them. This is what makes resolutions unique up to chain homotopy.
+**How the definition helps.** Projective objects in the source supply the maps that a null-homotopy needs. Without them it fails: the chain map from ℤ/2 in degree 0 into the exact complex ℤ → ℤ → ℤ/2 is not null-homotopic, since every map ℤ/2 → ℤ is zero. After you replace ℤ/2 by its free resolution ℤ → ℤ, the composite has a null-homotopy. Dually, injective resolutions do the same for maps into them.
 
 **nLab:** [projective resolution](https://ncatlab.org/nlab/show/projective+resolution), [homotopy category of chain complexes](https://ncatlab.org/nlab/show/homotopy+category+of+chain+complexes). It says: “This points to the problem: the components of the domain chain complex are not free enough to admit sufficiently many maps out of it.”
 
@@ -2273,9 +2273,9 @@
 
 **Definition.** An extension of A by B is a short exact sequence 0 → B → E → A → 0. Yoneda's Ext¹(A, B) is the set of such extensions up to equivalence, with the Baer sum, a standard way to add two extensions, as addition. Higher Ext groups use exact sequences of length n, up to an equivalence relation.
 
-**Problem.** Ext should exist in any abelian category, and Ext¹ should classify extensions. Such a category need not have enough projective or injective objects to build resolutions.
+**Problem.** In every abelian category, Yoneda Ext groups exist, and Ext¹(A, B) classifies extensions of A by B, with the split extension as zero. With enough projectives or injectives, they agree with Ext defined by resolutions.
 
-**How the definition helps.** Yoneda's definition uses only exact sequences, which exist in every abelian category, so it needs no resolutions at all. Such resolutions can be missing: finite abelian groups have no nonzero projective or injective objects (our own). Ext¹ classifies extensions by definition, and the split extension is the zero element. When there are enough projectives or injectives, it agrees with the definition by resolutions; this comparison is the real work. The splicing of sequences gives the Yoneda product, which is associative. Baer had already introduced Ext for abelian groups in 1934 through group extensions.
+**How the definition helps.** Yoneda's definition uses only exact sequences, which exist in every abelian category, so it needs no resolutions. Resolutions can be missing: finite abelian groups have no nonzero projective or injective objects (our own). The comparison with resolutions, when they exist, is the real work. Splicing sequences gives the Yoneda product, which is associative.
 
 **Wikipedia:** [Ext functor](https://en.wikipedia.org/wiki/Ext_functor). It says: “for objects A and B in any abelian category C; this agrees with the definition in terms of resolutions if C has enough projectives or enough injectives.”
 
@@ -2339,11 +2339,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18G35 (Chain complexes (category-theoretic aspects), dg categories). arXiv math.CT, math.KT. Level 3: graduate.
 
-**Definition.** In a double complex, take two extra quotients at each object A. The receptor is the elements killed by both outgoing maps, modulo the image of the incoming diagonal map (the composite of a horizontal and a vertical map). The donor is the elements killed by the outgoing diagonal map, modulo the images of both incoming maps. The salamander lemma says that these, with the horizontal and vertical homology, form one exact sequence along each map of the double complex.
+**Definition.** In a double complex, take two extra quotients at each object A. The receptor is the elements killed by both outgoing maps, modulo the image of the incoming diagonal map (a horizontal map composed with a vertical one). The donor is the elements killed by the outgoing diagonal map, modulo the images of both incoming maps.
 
-**Problem.** Prove the standard diagram lemmas of homological algebra. These are the 3×3 lemma, the four and five lemmas, the snake lemma and the long exact sequence in homology.
+**Problem.** Salamander lemma: along each map of a double complex, the donor, the receptors and the horizontal and vertical homology form one exact sequence. The 3×3 lemma, the four and five lemmas, the snake lemma and the long exact sequence in homology follow from it.
 
-**How the definition helps.** Donors and receptors turn each diagram lemma into small local checks of one kind. Every map of the double complex gives a map from a donor to a receptor, and these maps form long diagonal zigzags. A diagram lemma then says that each map in such a zigzag is an isomorphism. This follows from local exactness conditions, and the salamander lemma checks them one position at a time. So the traditional element chases, which the nLab calls elementary but not very illuminating, become short and uniform arguments. New lemmas, such as an n×n lemma, follow in the same way.
+**How the definition helps.** Donors and receptors turn each diagram lemma into small local checks of one kind. Every map of the double complex gives a map from a donor to a receptor, and these form long diagonal zigzags. A diagram lemma says that each map in such a zigzag is an isomorphism, and the salamander lemma checks this one position at a time. New lemmas, such as an n×n lemma, follow in the same way.
 
 **nLab:** [salamander lemma](https://ncatlab.org/nlab/show/salamander+lemma). It says: “all the standard diagram chasing lemmas of homological algebra are direct and transparent consequences of the salamander lemma, such as the 3x3 lemma, the four lemma, hence the five lemma, the snake lemma”
 
@@ -2493,9 +2493,9 @@
 
 **Definition.** A formal diagram in a monoidal category is built from instances of the associator, the unitors and identities. The associator is the isomorphism from A ⊗ (B ⊗ C) to (A ⊗ B) ⊗ C, and the unitors remove the unit object. In a formal diagram, words (bracketings) in free variables index the vertices, not actual objects. Equivalently, it is a diagram in the free monoidal category on a set of generators.
 
-**Problem.** Prove Mac Lane's coherence theorem: in any monoidal category, all diagrams of associators and unitors commute.
+**Problem.** Mac Lane's coherence theorem: in any monoidal category, every formal diagram of associators, unitors and identities commutes.
 
-**How the definition helps.** The restriction to formal diagrams is what makes the statement true. Read literally, 'every diagram of these maps commutes' is false. In a skeleton of Set, take a countable set D. Then D × (D × D) is equal to (D × D) × D, but the associator between them is not the identity (Isbell's example). So a diagram that compares the associator with the identity does not commute. Formal diagrams come from the free monoidal category, so this counterexample is not one of them, and the theorem then holds. The proof is still a real argument (Mac Lane 1963); the definition only makes the statement true.
+**How the definition helps.** The restriction to formal diagrams is what makes the statement true. Read literally, 'every diagram of these maps commutes' is false. In a skeleton of Set, take a countable set D. Then D × (D × D) equals (D × D) × D, but the associator between them is not the identity (Isbell's example), and this diagram is not formal. The proof is still a real argument (Mac Lane 1963).
 
 **nLab:** [Mac Lane's proof of the coherence theorem for monoidal categories](https://ncatlab.org/nlab/show/Mac+Lane%27s+proof+of+the+coherence+theorem+for+monoidal+categories), [coherence theorem](https://ncatlab.org/nlab/show/coherence+theorem), [coherence and strictification for monoidal categories](https://ncatlab.org/nlab/show/coherence+and+strictification+for+monoidal+categories). It says: “So, in order for coherence to work, we must change it to the statement that every "formal" diagram commutes.”
 
@@ -2511,9 +2511,9 @@
 
 **Definition.** The augmented simplex category Δₐ has the finite ordinals as objects: 0 = ∅, 1 = {0}, 2 = {0 &lt; 1}, and so on. Its morphisms are the order-preserving maps. Ordinal sum ⊕ (placing one order after the other) makes it a strict monoidal category, with the empty ordinal 0 as unit.
 
-**Problem.** Describe monoids in any strict monoidal category B, and monads in any 2-category, by a single universal object.
+**Problem.** Monoids in a strict monoidal category B are the same as strict monoidal functors Δₐ → B. Monads in a 2-category K are the same as 2-functors into K from BΔₐ, the one-object 2-category whose morphisms form Δₐ.
 
-**How the definition helps.** Δₐ holds one monoid and the monoid laws and nothing more, so a monoid anywhere is a functor out of Δₐ. In Δₐ the maps 0 → 1 and 2 → 1 make the one-element order 1 a monoid. The face and degeneracy maps are generated from these two maps under ∘ and ⊕, with exactly the monoid laws as relations. So monoids in B are the same as strict monoidal functors Δₐ → B. In the same way, monads in a 2-category K are the same as 2-functors into K from BΔₐ, the 2-category with one object whose morphisms form Δₐ. The empty ordinal is the unit object for ⊕ and the source of the unit map 0 → 1, so the statement needs it. The fact that the generators and relations are exactly the monoid laws is a real, if elementary, check.
+**How the definition helps.** Δₐ holds one monoid and the monoid laws and nothing more, so a monoid anywhere is a functor out of Δₐ. The maps 0 → 1 and 2 → 1 make the ordinal 1 a monoid. These two maps generate all maps under ∘ and ⊕, with exactly the monoid laws as relations; this is a real, if elementary, check. The empty ordinal is needed as the unit for ⊕ and the source of the unit map.
 
 **nLab:** [simplex category](https://ncatlab.org/nlab/show/simplex+category). It says: “thus becomes the universal category-equipped-with-a-monoid, in the sense that for any strict monoidal category”
 
@@ -2529,9 +2529,9 @@
 
 **Definition.** Let X be a dualizable object in a symmetric monoidal category: it has a dual X\* with a unit map and a counit map that satisfy the triangle identities. The Euler characteristic of X is the composite I → X ⊗ X\* ≅ X\* ⊗ X → I, where I is the unit object. In words, the composite uses the unit of the duality, then the symmetry that swaps the two factors, then the counit.
 
-**Problem.** Show that the different definitions of the Euler characteristic agree. These are the alternating sum of ranks of a chain complex, the alternating sum of Betti numbers of a space, and a definition directly on the space without homology.
+**Problem.** For a chain complex of finitely generated free modules, the Euler characteristic is the alternating sum of ranks. For a Euclidean neighbourhood retract X, Σ∞₊X is dualizable, and its Euler characteristic is the alternating sum of the Betti numbers of X.
 
-**How the definition helps.** One definition applies in every setting, and functors that keep the structure carry it from one setting to another. In chain complexes, the symmetry carries a sign that depends on the degrees, so the trace of the identity is automatically the alternating sum of ranks. Take a Euclidean neighborhood retract X (a retract of an open subset of some ℝⁿ), such as a finite CW complex or a compact manifold. Its suspension spectrum Σ∞₊X is dualizable in the stable homotopy category, so the same definition applies directly to the space. Chains and homology are symmetric monoidal functors, and such functors preserve traces. So all these Euler characteristics agree. In our own reading, the real work is the proof that Σ∞₊X is dualizable (Dold–Puppe duality).
+**How the definition helps.** One definition applies in every setting, and symmetric monoidal functors preserve it. In chain complexes, the symmetry carries a sign that depends on the degrees, so the trace of the identity is the alternating sum of ranks. Chains and homology are symmetric monoidal functors, so the Euler characteristic of Σ∞₊X agrees with that of its homology. In our own reading, the real work is the proof that Σ∞₊X is dualizable (Dold–Puppe duality).
 
 **nLab:** [Euler characteristic](https://ncatlab.org/nlab/show/Euler+characteristic). It says: “Since the categorical definition is purely in terms of the symmetric monoidal structure, Euler characteristics are preserved by any symmetric monoidal functor (as long as enough of its structure maps are isomorphisms).”
 
@@ -2581,9 +2581,9 @@
 
 **Definition.** A fusion category is a semisimple tensor category with duals and finitely many simple objects, and its fusion ring is the ring of isomorphism classes of its objects. For an object X, let N(X) be the matrix of multiplication by \[X\] on the basis of simple objects of the fusion ring. The Frobenius–Perron dimension FPdim(X) is the largest non-negative real eigenvalue of N(X). The Perron–Frobenius theorem says that this eigenvalue exists.
 
-**Problem.** Find a dimension function on every fusion category that is always defined, positive and multiplicative. Then it can be used in counting arguments and as an invariant.
+**Problem.** In every fusion category, FPdim is defined for every object and is multiplicative, FPdim(X ⊗ Y) = FPdim(X)·FPdim(Y). It is at least 1 for every nonzero object.
 
-**How the definition helps.** The Frobenius–Perron dimension uses only the fusion rules (the multiplication table of the fusion ring), so it exists for every fusion category. The obvious dimension is the quantum dimension, the trace of the identity. The quantum dimension needs a pivotal structure (an isomorphism from each object to its double dual) or a spherical structure, and even then it need not be positive in non-unitary examples. The Frobenius–Perron dimension is defined for every fusion ring, and it is at least 1 for every nonzero object. In the unitary case it agrees with the quantum dimension, so nothing is lost there. Theorems that use it, such as the divisibility results of Etingof, Nikshych and Ostrik, still need their own proofs.
+**How the definition helps.** The Frobenius–Perron dimension uses only the fusion rules, so it exists for every fusion category. The quantum dimension, the trace of the identity, needs a pivotal or spherical structure, and even then it need not be positive in non-unitary examples. In the unitary case the two agree, so nothing is lost there. Theorems that use FPdim, such as the divisibility results of Etingof, Nikshych and Ostrik, still need their own proofs.
 
 **nLab:** [Frobenius-Perron dimension](https://ncatlab.org/nlab/show/Frobenius-Perron+dimension). It says: “Even in spherical categories where there is a good notion of trace, there is no guarantee that the quantum dimension will be positive.”
 
@@ -2653,11 +2653,11 @@
 
 *Rules out counterexamples.* MSC 18M25 (Tannakian categories), 18A23, 16T05. arXiv math.QA, math.CT. Level 3: graduate.
 
-**Definition.** Tannaka reconstruction starts from the category of modules over an algebra A. It also keeps the fiber functor F, which forgets the action of A and keeps only the underlying object. The reconstruction then recovers A as End(F), the endomorphisms of F (the natural transformations from F to itself).
+**Definition.** For an algebra A, keep with the category of A-modules its fiber functor F, which forgets the action of A and keeps the underlying object. End(F) is the algebra of natural transformations from F to itself.
 
-**Problem.** Recover an algebra, a group or a Hopf algebra from its category of representations.
+**Problem.** Tannaka reconstruction: A ≅ End(F), where F is the fiber functor on the category of all A-modules. Without F, the module category alone does not determine A.
 
-**How the definition helps.** The fiber functor holds the information that the bare category of modules loses. With F in the data, the result A ≅ End(F) for the category of all modules is the enriched Yoneda lemma in disguise, as the nLab says. So it is nearly true by definition. Without the fiber functor, the statement is false. Morita-equivalent algebras, such as a field k and the matrix ring Mₙ(k) for n ≥ 2, have equivalent module categories but are not isomorphic. The hard part that remains is reconstruction from the smaller category of dualizable (finite-dimensional) modules.
+**How the definition helps.** The fiber functor holds the information that the bare category of modules loses. With F in the data, A ≅ End(F) is the enriched Yoneda lemma in disguise, as the nLab says. Without F, the statement is false: a field k and the matrix ring Mₙ(k), n ≥ 2, have equivalent module categories but are not isomorphic. The hard part that remains is reconstruction from the dualizable (finite-dimensional) modules.
 
 **nLab:** [Tannaka duality](https://ncatlab.org/nlab/show/Tannaka+duality). It says: “The fiber functor is necessary; for example, in the context of reconstruction of associative algebras, not remembering the underlying vector spaces results in reconstructing two different algebras with equivalent module categories (cf. Morita equivalence).”
 
@@ -2674,9 +2674,9 @@
 
 **Definition.** A cloning map on vector spaces would be a natural transformation A → A ⊗ A, for all spaces A at once. It must be coassociative and cocommutative, like the diagonal x ↦ (x, x) of a cartesian product. Naturality means that it commutes with every linear map.
 
-**Problem.** The no-cloning theorem: no physical process copies arbitrary quantum states.
+**Problem.** No-cloning theorem: there is no cloning map on vector spaces, because the tensor product of vector spaces is not cartesian (not a categorical product).
 
-**How the definition helps.** Naturality turns no-cloning into a short fact: the tensor product of vector spaces is not cartesian, that is, not a categorical product (Abramsky 2009, Thm. 11). Naturality is the essential condition. For a fixed space, a chosen basis gives a linear map \|b⟩ ↦ \|b⟩ ⊗ \|b⟩ that is coassociative and cocommutative. But this map copies only the basis states, not their superpositions. Such basis-copying maps are the 'classical structures' of categorical quantum mechanics. In the other direction, Abramsky shows that a natural diagonal on a compact closed category (a category in which every object has a dual, like finite-dimensional vector spaces) forces every endomorphism to be a scalar multiple of the identity.
+**How the definition helps.** Naturality turns no-cloning into a short fact about the tensor product (Abramsky 2009, Thm. 11). Naturality is the essential condition. For a fixed space, a chosen basis gives a coassociative, cocommutative map \|b⟩ ↦ \|b⟩ ⊗ \|b⟩, but it copies only the basis states, not their superpositions. Abramsky shows that a natural diagonal on a compact closed category forces every endomorphism to be a scalar multiple of the identity.
 
 **nLab:** [no-cloning theorem](https://ncatlab.org/nlab/show/no-cloning+theorem). It says: “Quantum theoretically, this effect is ultimately due to the non-cartesian nature of the tensor product of vector/Hilbert spaces of quantum states (category theoretically it refers to this tensor product lacking natural diagonal morphisms)”
 
@@ -2693,9 +2693,9 @@
 
 **Definition.** In linear logic, the exponential ! marks the formulas that you may copy and delete. A linear exponential comonad ! on a symmetric monoidal category is a lax monoidal comonad with one more condition. Every cofree !-coalgebra must carry, naturally, the structure of a comonoid in the category of coalgebras. A comonoid is an object X with a copy map X → X ⊗ X and a delete map X → I that satisfy the expected laws.
 
-**Problem.** Model the exponential ! of linear logic so that the non-linear (intuitionistic) types form a cartesian category. Do this without assuming that cartesian products exist in the linear category.
+**Problem.** For a linear exponential comonad !, every !-coalgebra is a comonoid, so the category of !-coalgebras is cartesian monoidal. If the linear category has finite products, the Seely isomorphism !(A × B) ≅ !A ⊗ !B follows.
 
-**How the definition helps.** It is enough to ask for copy and delete on the cofree coalgebras, because every coalgebra then has them too. Benton, Bierman, de Paiva and Hyland ask for comonoid structure only on the cofree coalgebras. It then follows that all !-coalgebras are comonoids. So the Eilenberg–Moore category of ! (its category of coalgebras) is cartesian monoidal. If the linear category has finite products, the Seely isomorphism !(A × B) ≅ !A ⊗ !B also follows, because the cofree-coalgebra functor is a right adjoint. In words, the Seely isomorphism says that ! turns products into tensor products. So Seely's earlier definition becomes a consequence.
+**How the definition helps.** It is enough to ask for copy and delete on the cofree coalgebras, because every coalgebra then has them too (Benton, Bierman, de Paiva and Hyland). So the non-linear types form a cartesian category without assuming products in the linear category. The Seely isomorphism follows because the cofree-coalgebra functor is a right adjoint. So Seely's earlier definition becomes a consequence.
 
 **nLab:** [!-modality](https://ncatlab.org/nlab/show/%21-modality). It says: “It follows automatically that all !-coalgebras are comonoids, and therefore that the category of all !-coalgebras (not just the cofree ones) is cartesian monoidal.”
 
@@ -2729,9 +2729,9 @@
 
 **Definition.** A multicategory has multimorphisms with a list of inputs and one output, like multilinear maps. A tensor product A ⊗ B is an object with a multimorphism A, B → A ⊗ B such that every multimorphism D₁, …, Dₘ, A, B, E₁, …, Eₙ → C factors uniquely through it, by a multimorphism D₁, …, Dₘ, A ⊗ B, E₁, …, Eₙ → C. In words, the pair A, B can be replaced by A ⊗ B inside any longer list of inputs. A multicategory with all such tensor products, and units, is called representable.
 
-**Problem.** A tensor product defined by a universal property should be associative and unital. Then it makes a monoidal category.
+**Problem.** In a representable multicategory, the tensor products defined by this universal property are associative and unital up to coherent isomorphism. So representable multicategories are equivalent to monoidal categories (Hermida).
 
-**How the definition helps.** Because the pair A, B can be replaced inside any longer list, both bracketings of three objects can be compared through the same maps. The plain universal property says that bilinear maps A, B → C factor through A ⊗ B. It defines the tensor product but is not enough to prove associativity and unitality. The version in context lets one compare (A ⊗ B) ⊗ C and A ⊗ (B ⊗ C) through the same ternary multimorphisms A, B, C → X. So the associator, the isomorphism between the two, comes from uniqueness. Hermida shows that representable multicategories are equivalent to monoidal categories. The coherence of the monoidal structure follows from the universal property.
+**How the definition helps.** Because the pair A, B can be replaced inside any longer list, both bracketings of three objects can be compared through the same maps. The plain universal property, for bilinear maps A, B → C alone, defines A ⊗ B but does not prove associativity. The version in context compares (A ⊗ B) ⊗ C and A ⊗ (B ⊗ C) through the ternary multimorphisms A, B, C → X. So the associator, and its coherence, come from uniqueness.
 
 **nLab:** [tensor product](https://ncatlab.org/nlab/show/tensor+product), [representable multicategory](https://ncatlab.org/nlab/show/representable+multicategory). It says: “For this we need the stronger property that any multilinear map D₁,…,Dₘ,A,B,E₁,…,Eₙ → C factors uniquely through A,B → A⊗B via a multilinear map D₁,…,Dₘ, A⊗B ,E₁,…,Eₙ → C.”
 
@@ -2764,11 +2764,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18M80 (Species, Hopf monoids, operads in combinatorics), 05A15. arXiv math.CO, math.CT. Level 3: graduate.
 
-**Definition.** A species is a functor from the groupoid of finite sets and bijections to finite sets. (A groupoid is a category in which every map is invertible.) The functor sends each finite set to the set of all structures of some kind on it. Its exponential generating function is ∑ \|F(n)\| xⁿ/n!, where F(n) is the set of structures on an n-element set: the coefficient of xⁿ/n! counts the structures on n points.
+**Definition.** A species is a functor from the groupoid of finite sets and bijections to finite sets. It sends each finite set to the set of all structures of some kind on it. Its exponential generating function is ∑ \|F(n)\| xⁿ/n!, where F(n) is the set of structures on an n-element set.
 
-**Problem.** Explain why operations on exponential generating functions (sum, product, composition) count combinatorial constructions. Then prove identities of generating functions by constructing bijections.
+**Problem.** Taking exponential generating functions sends the sum, product (Day convolution) and composition (plethysm) of species to the sum, product and composition of power series. So an isomorphism of species proves an identity of generating functions.
 
-**How the definition helps.** Taking generating functions turns each operation on species into the matching operation on power series, so a bijection of structures proves an identity. The operations on species are defined in terms of categories. They are the sum, Day convolution for the Cauchy product (split the set into two parts and put a structure on each part), and plethysm for composition. Taking generating functions sends each one to the matching operation on power series. So an isomorphism of species proves an identity of generating functions, and a natural isomorphism is a bijective proof. The nLab states these compatibilities. The use of species for proofs such as Cayley's formula for trees is in Joyal's paper, not on the nLab page.
+**How the definition helps.** The operations on species are defined in terms of categories, and the generating function forgets only the sizes. The Cauchy product splits the set into two parts and puts a structure on each part. A natural isomorphism of species is then a bijective proof of the identity. The use of species for proofs such as Cayley's formula for trees is in Joyal's paper, not on the nLab page.
 
 **nLab:** [species](https://ncatlab.org/nlab/show/species). It says: “since the generating function of the Cauchy product of species is the product of their generating functions.”
 
@@ -2784,9 +2784,9 @@
 
 **Definition.** An adjoint equivalence is a quadruple (f, g, η, ε). Here η: 1 ≅ g f and ε: f g ≅ 1 are 2-isomorphisms (invertible 2-cells). They must satisfy the zigzag (triangle) identities of an adjunction.
 
-**Problem.** Turn the property 'f is an equivalence' into algebraic structure without adding real choices. Then higher categories, such as tricategories, can be defined algebraically, and coherence theorems can be stated about free structures.
+**Problem.** For a fixed 1-cell f in a 2-category, the category of adjoint-equivalence data (g, η, ε) on f is either empty or equivalent to the terminal category. So these data carry no more information than the property that f is an equivalence.
 
-**How the definition helps.** Adjoint-equivalence data are unique up to unique isomorphism when they exist, so asking for them adds no real choice. For a fixed f, the category of adjoint-equivalence data is either empty or equivalent to the terminal category. So the data carry no more information than the property. Arbitrary pairs of isomorphisms η, ε do not have this property. For this reason, the Gordon–Power–Street definition of tricategory, which only asks for some coherence cells to be equivalences, is not monadic over 3-globular sets, so it is not algebraic. Asking for adjoint-equivalence data instead, as Gurski first did, makes the definition algebraic. The walking adjoint equivalence (the free 2-category on one adjoint equivalence) is also equivalent to the point, so it can serve as an interval object in 2Cat.
+**How the definition helps.** Adjoint-equivalence data are unique up to unique isomorphism when they exist, so asking for them adds no real choice. Arbitrary pairs of isomorphisms η, ε do not have this property. For this reason the Gordon–Power–Street tricategories are not algebraic, while Gurski's version with adjoint-equivalence data is. The walking adjoint equivalence is equivalent to the point, so it can serve as an interval object in 2Cat.
 
 **nLab:** [adjoint equivalence](https://ncatlab.org/nlab/show/adjoint+equivalence), [stuff, structure, property](https://ncatlab.org/nlab/show/stuff%2C+structure%2C+property). It says: “In other words, adjoint equivalences are the way to make the property of "being an equivalence" completely into "algebraic" structure.”
 
@@ -2802,9 +2802,9 @@
 
 **Definition.** A bicategory is like a 2-category, but composition is associative only up to coherent isomorphism. In a bicategory K, a morphism f : a → b is called a map if it has a right adjoint f\* : b → a. Map K is the sub-bicategory of K that keeps only the maps.
 
-**Problem.** Recover functions from relations, and the morphisms of C from spans in C, by a purely 2-categorical property. A span from x to y in C is a pair of maps x ← s → y.
+**Problem.** In the bicategory Rel, the maps are exactly the graphs of functions, so Map Rel ≃ Set. For C with finite limits, Map Span(C) ≃ C, where a span from x to y is a pair x ← s → y.
 
-**How the definition helps.** The definition turns 'being a function' into a property that you can state in any bicategory. In the bicategory Rel, a relation R has a right adjoint exactly when R is total and single-valued, that is, when R is the graph of a function. So Map Rel ≃ Set. In the same way, Map Span(C) ≃ C for C with finite limits. In Prof, the bicategory of profunctors, the maps into a Cauchy complete category (for ordinary categories, one in which every idempotent splits) are exactly the representable profunctors. This property is what lets Carboni and Walters, and later Lack, Walters and Wood, characterize bicategories of relations and spans abstractly. Those characterization theorems are the real work.
+**How the definition helps.** The definition turns 'being a function' into a property that you can state in any bicategory. A relation has a right adjoint exactly when it is total and single-valued. In Prof, the maps into a Cauchy complete category are exactly the representable profunctors. This property lets Carboni and Walters, and later Lack, Walters and Wood, characterize bicategories of relations and spans abstractly, which is the real work.
 
 **nLab:** [bicategory of maps](https://ncatlab.org/nlab/show/bicategory+of+maps). It says: “In the bicategory Rel of sets and relations, a relation is a map if and only if it is the graph of a function. Consequently, Map Rel is equivalent to Set.”
 
@@ -2820,9 +2820,9 @@
 
 **Definition.** A combinatorial model category is a model category that is cofibrantly generated and whose underlying category is locally presentable. Cofibrantly generated means that small sets of maps generate the cofibrations and the acyclic cofibrations. Locally presentable means that the category has all small colimits and that a set of small objects generates it under colimits.
 
-**Problem.** Build model structures, and their left Bousfield localizations, from a small amount of data. A left Bousfield localization keeps the cofibrations and adds weak equivalences. Also show that every such model category has a presentation by simplicial presheaves.
+**Problem.** Smith's theorem: on a locally presentable category, a class of weak equivalences and a set of generating cofibrations give a combinatorial model structure, under simple conditions. So left Bousfield localizations of left proper combinatorial model categories exist.
 
-**How the definition helps.** In a locally presentable category every object is small, so the small object argument (a standard way to factor maps by attaching cells) works for every set of maps. Smith's theorem then gives a combinatorial model structure from the weak equivalences and a set of generating cofibrations alone, under simple conditions. This is how one shows that left Bousfield localizations of left proper combinatorial model categories exist. Dugger's theorem says that combinatorial model categories are exactly, up to Quillen equivalence, localizations of simplicial presheaves. Top, with its standard model structure, is cofibrantly generated but not combinatorial, so these results do not apply to it directly.
+**How the definition helps.** In a locally presentable category every object is small, so the small object argument works for every set of maps. Dugger's theorem adds that combinatorial model categories are, up to Quillen equivalence, localizations of simplicial presheaves. A left Bousfield localization keeps the cofibrations and adds weak equivalences. Top with its standard model structure is cofibrantly generated but not combinatorial, so these results do not apply to it directly.
 
 **nLab:** [combinatorial model category](https://ncatlab.org/nlab/show/combinatorial+model+category). It says: “Jeff Smith's theorem characterizes combinatorial model categories just in terms of weak equivalences and generating cofibrations, hence using only two third of the input data explicitly required.”
 
@@ -2839,9 +2839,9 @@
 
 **Definition.** A cofibrantly generated model category has sets I and J of maps that generate its cofibrations and its trivial cofibrations. A cellular model category is a cofibrantly generated model category whose generating sets satisfy three conditions. The domains and codomains of I are compact relative to I, and the domains of J are small relative to I. Cofibrations are effective monomorphisms, that is, monomorphisms that are the equalizer of their own cokernel pair.
 
-**Problem.** Show that the left Bousfield localization of a model category C at an arbitrary set S of maps exists. This localization is a new model structure on C in which the maps in S become weak equivalences, in a universal way.
+**Problem.** In a left proper cellular model category C, the left Bousfield localization at any set S of maps exists (Hirschhorn). It is a model structure on C in which the maps in S become weak equivalences, in a universal way.
 
-**How the definition helps.** In our own reading, the compactness and smallness conditions on the cells are what Hirschhorn's construction uses. Hirschhorn proves that in a left proper cellular model category the left Bousfield localization of C at S exists for every set S of maps. Left proper means that pushout along a cofibration keeps weak equivalences. The conditions also pass to diagram categories with the projective structure and to over-categories, so the theorem applies widely. The existence proof itself is long. The definition makes it possible, not trivial.
+**How the definition helps.** In our own reading, the compactness and smallness conditions on the cells are what Hirschhorn's construction uses. Left proper means that pushout along a cofibration keeps weak equivalences. The conditions pass to diagram categories with the projective structure and to over-categories, so the theorem applies widely. The existence proof itself is long; the definition makes it possible, not trivial.
 
 **nLab:** [cellular model category](https://ncatlab.org/nlab/show/cellular+model+category). It says: “For cellular model categories C that are left proper model categories all left Bousfield localizations L<sub>S</sub> C at any set S of morphisms are guaranteed to exist.”
 
@@ -2857,9 +2857,9 @@
 
 **Definition.** A model category is a category with weak equivalences, fibrations and cofibrations, used to do homotopy theory. It is right proper if the pullback of a weak equivalence along a fibration is a weak equivalence. It is left proper if the pushout of a weak equivalence along a cofibration is a weak equivalence.
 
-**Problem.** We want to compute homotopy pullbacks and pushouts as ordinary ones, without first replacing objects by fibrant or cofibrant ones. We also want the slice category M/X to depend only on the weak equivalence class of X.
+**Problem.** In a right proper model category, an ordinary pullback along a fibration is a homotopy pullback, for all objects. M is right proper exactly when base change along every weak equivalence X → Y gives a Quillen equivalence M/X ⇄ M/Y (Rezk).
 
-**How the definition helps.** Properness makes ordinary pullbacks along fibrations homotopy pullbacks for all objects. In a general model category, this holds only between fibrant (or, for pushouts, cofibrant) objects. By Rezk's criterion, M is right proper exactly when base change along every weak equivalence X → Y gives a Quillen equivalence M/X ⇄ M/Y. A Quillen equivalence is an adjoint pair that gives the same homotopy theory on both sides. Some natural model categories fail this: simplicial associative algebras are not left proper. But Rezk shows they are Quillen equivalent to proper ones. The nLab page also notes that right properness is a property of the chosen presentation, not of the underlying (∞,1)-category.
+**How the definition helps.** Properness makes ordinary pullbacks along fibrations homotopy pullbacks without fibrant replacement. In a general model category this holds only between fibrant objects, and dually for pushouts. Some natural model categories are not proper; simplicial associative algebras are not left proper, but Rezk shows they are Quillen equivalent to proper ones. Right properness is a property of the presentation, not of the underlying (∞,1)-category.
 
 **nLab:** [proper model category](https://ncatlab.org/nlab/show/proper+model+category). It says: “In a left proper model category, ordinary pushouts along cofibrations are homotopy pushouts. Dually, in a right proper model category, ordinary pullbacks along fibrations are homotopy pullbacks.”
 
@@ -2911,11 +2911,11 @@
 
 *Rules out counterexamples.* MSC 18N40 (Homotopical algebra, Quillen model categories, derivators), 18N55. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** A model structure on a category with weak equivalences adds two more classes of maps, the fibrations and the cofibrations. These satisfy lifting and factorization axioms. Then the homotopy category is equivalent to the category of fibrant-cofibrant objects with homotopy classes of maps. (An object is fibrant-cofibrant when its map to the terminal object is a fibration and its map from the initial object is a cofibration.)
+**Definition.** A model structure on a category with weak equivalences adds two more classes of maps, the fibrations and the cofibrations, which satisfy lifting and factorization axioms. An object is fibrant-cofibrant when its map to the terminal object is a fibration and its map from the initial object is a cofibration.
 
-**Problem.** The localization C\[W⁻¹\] of a category C at its weak equivalences W (the category in which the weak equivalences are formally made invertible) should have a set, not a proper class, of morphisms between any two objects. Its morphisms should also be computable.
+**Problem.** If C has a model structure, every morphism of the homotopy category C\[W⁻¹\] is a homotopy class of maps between fibrant-cofibrant replacements. So C\[W⁻¹\] has a set of morphisms between any two objects when C does.
 
-**How the definition helps.** A model structure turns every morphism of the homotopy category into a homotopy class of ordinary maps, and these form a set. In a general localization, morphisms are zigzags in which the backward arrows are weak equivalences. So the homotopy category Ho(C) = C\[W⁻¹\] need not be locally small (have a set of morphisms between any two objects), even if C is. If C has a model structure, every morphism of Ho(C) is a homotopy class of maps between fibrant-cofibrant replacements. So the hom-sets are small. The model structure is extra data, and not every category with weak equivalences has one.
+**How the definition helps.** A model structure turns every morphism of the homotopy category into a homotopy class of ordinary maps, and these form a set. In a general localization, morphisms are zigzags whose backward arrows are weak equivalences. So C\[W⁻¹\] need not be locally small, even if C is. The model structure is extra data, and not every category with weak equivalences has one.
 
 **nLab:** [homotopy category of a model category](https://ncatlab.org/nlab/show/homotopy+category+of+a+model+category), [homotopy category](https://ncatlab.org/nlab/show/homotopy+category), [model category](https://ncatlab.org/nlab/show/model+category). It says: “A model category structure (𝒞(W,Fib,Cof)) on some category 𝒞 is a means to guarantee the local smallness and to improve the tractability of the homotopy category”
 
@@ -2931,9 +2931,9 @@
 
 **Definition.** A monoidal model category is a closed monoidal category with a model structure that satisfies two axioms. The pushout-product axiom says that the pushout-product of two cofibrations is a cofibration, and that it is acyclic (also a weak equivalence) if one of the two is acyclic. Here the pushout-product of f : A → B and g : C → D is the map to B ⊗ D from the pushout of A ⊗ D and B ⊗ C over A ⊗ C. The unit axiom says that QI ⊗ X → X is a weak equivalence for a cofibrant replacement QI of the unit I and every cofibrant X.
 
-**Problem.** The homotopy category of a monoidal model category should itself be a closed monoidal category. Its tensor product should be the derived tensor product ⊗ᴸ.
+**Problem.** The homotopy category of a monoidal model category is closed monoidal, with the derived tensor product ⊗ᴸ as its tensor product (Hovey).
 
-**How the definition helps.** The two axioms let the tensor product and its unit pass to the homotopy category. The pushout-product axiom makes the tensor product a left Quillen bifunctor, a functor of two variables that respects cofibrations and acyclic cofibrations in this joint way. So ⊗ has a left derived functor, and the associator descends to the homotopy category Ho(C) by the universal property of localization. The unit axiom ensures that the image of the unit is a unit for ⊗ᴸ. If the unit is cofibrant, the unit axiom already follows from the pushout-product axiom by Ken Brown's lemma (a functor that keeps acyclic cofibrations between cofibrant objects keeps all weak equivalences between them). Hovey added the unit axiom and proved the result about the homotopy category.
+**How the definition helps.** The two axioms let the tensor product and its unit pass to the homotopy category. The pushout-product axiom makes ⊗ a left Quillen bifunctor, so it has a left derived functor, and the associator descends. The unit axiom ensures that the unit stays a unit for ⊗ᴸ. If the unit is cofibrant, the unit axiom follows from the pushout-product axiom by Ken Brown's lemma.
 
 **nLab:** [monoidal model category](https://ncatlab.org/nlab/show/monoidal+model+category). It says: “In short, the pushout-product axiom is the model-category theoretic way to ensure that not just the tensor product, but also the internal hom as well as their joint relatin in a two-variable adjunction are homotopically meaningful.”
 
@@ -2971,9 +2971,9 @@
 
 **Definition.** A cosimplicial simplicial set X• is a sequence of simplicial sets X⁰, X¹, … with coface and codegeneracy maps between them. It is Reedy fibrant when each matching map Xⁿ → MⁿX is a Kan fibration (the simplicial form of a fibration). The matching object MⁿX is a limit built from the lower levels along the codegeneracy maps. The totalization Tot(X•) is the simplicial set of maps from Δ to X• in cosimplicial simplicial sets, where Δ is the cosimplicial simplicial set of standard simplices.
 
-**Problem.** Totalization should send degreewise weak equivalences of cosimplicial simplicial sets to weak equivalences.
+**Problem.** Totalization sends degreewise weak equivalences between Reedy fibrant cosimplicial simplicial sets to weak equivalences.
 
-**How the definition helps.** Tot is a mapping space out of a cofibrant object, and such mapping spaces respect weak equivalences between fibrant objects. In detail, Tot is an enriched hom out of the cosimplicial object Δ, which is Reedy cofibrant. A hom out of a cofibrant object into fibrant objects preserves weak equivalences. So Tot is homotopy invariant on Reedy-fibrant objects. Without the fibrancy condition, homotopy invariance fails in general. The page lists special cases where it still holds, such as cosimplicial groupoids and the restricted totalization of 2-groupoids.
+**How the definition helps.** Tot is a mapping space out of the Reedy cofibrant object Δ, and such mapping spaces respect weak equivalences between fibrant objects. So Tot is homotopy invariant on Reedy fibrant objects. Without the fibrancy condition, homotopy invariance fails in general. The page lists special cases where it still holds, such as cosimplicial groupoids.
 
 **nLab:** [model structure on cosimplicial simplicial sets](https://ncatlab.org/nlab/show/model+structure+on+cosimplicial+simplicial+sets). It says: “Since Δ is cofibrant in the Reedy model structure it follows that totalization of Reedy-fibrant cosimplicial simplicial sets preserves weak equivalences.”
 
@@ -2989,9 +2989,9 @@
 
 **Definition.** A model category is right proper if the pullback of a weak equivalence along a fibration is again a weak equivalence.
 
-**Problem.** Let φ : S → T be a weak equivalence. Is the base change adjunction between the slice model categories 𝒞/S and 𝒞/T a Quillen equivalence? The base change adjunction composes with φ in one direction and pulls back along φ in the other, and a Quillen equivalence is an adjunction that gives an equivalence of homotopy theories.
+**Problem.** A model category 𝒞 is right proper exactly when, for every weak equivalence φ : S → T, base change between 𝒞/S and 𝒞/T is a Quillen equivalence (Rezk). Base change composes with φ in one direction and pulls back along φ in the other.
 
-**How the definition helps.** Right properness asks for exactly the condition that base change needs, for all weak equivalences at once. The base change adjunction along φ is a Quillen equivalence exactly when every pullback of φ along a fibration is a weak equivalence. Right properness asks this for every weak equivalence φ. So a model category is right proper if and only if base change along every weak equivalence is a Quillen equivalence (Rezk). Without right properness, the slices over weakly equivalent objects can be homotopically different. The exceptions are when S and T are fibrant or φ is an acyclic fibration.
+**How the definition helps.** Right properness asks for exactly the condition that base change needs, for all weak equivalences at once. Base change along φ is a Quillen equivalence exactly when every pullback of φ along a fibration is a weak equivalence. Without right properness, the slices over weakly equivalent objects can be homotopically different, unless S and T are fibrant or φ is an acyclic fibration.
 
 **nLab:** [slice model structure](https://ncatlab.org/nlab/show/slice+model+structure). It says: “Notice that the property (∗) of φ is implied as soon as either: 𝒞 is right proper, or φ is an acyclic fibration, or both S and T are fibrant objects”
 
@@ -3027,9 +3027,9 @@
 
 **Definition.** Weak equivalences are the maps of a category that you want to treat as isomorphisms. A class W of morphisms satisfies 2-out-of-6 if the following holds for composable maps u, v, w: if the composites wv and vu are in W, then u, v, w and wvu are all in W. A homotopical category (Dwyer, Hirschhorn, Kan and Smith) has a class of weak equivalences that contains the identities and satisfies 2-out-of-6.
 
-**Problem.** One wants saturation: a morphism that becomes an isomorphism in the localization C\[W⁻¹\] should already be in W. The localization C\[W⁻¹\] is the category you get by formally inverting the maps in W. One also wants W to contain the isomorphisms and satisfy 2-out-of-3 (if two of f, g and gf are in W, so is the third) without extra axioms.
+**Problem.** If W contains the identities and satisfies 2-out-of-6, then W contains all isomorphisms and satisfies 2-out-of-3. If W also admits a calculus of fractions, 2-out-of-6 is equivalent to saturation: every map that becomes invertible in C\[W⁻¹\] is in W (Kashiwara–Schapira).
 
-**How the definition helps.** 2-out-of-6 is a simple property of isomorphisms that gives the other wanted axioms. Isomorphisms satisfy it, and it is the property that marks morphisms with a notion of inverse. If W contains the identities, 2-out-of-6 implies 2-out-of-3 and that every isomorphism is in W. If W admits a calculus of fractions (a way to write each map of C\[W⁻¹\] as a fraction of maps of C), then 2-out-of-6 is equivalent to saturation (Kashiwara–Schapira). A similar result holds when good cofibrations are present (Blumberg–Mandell). So the extra axiom turns saturation, a condition about the localization, into a check on chains of three maps. The equivalence with saturation needs these extra hypotheses; 2-out-of-6 alone does not give it.
+**How the definition helps.** 2-out-of-6 is a simple property of isomorphisms that gives the other wanted axioms. So it turns saturation, a condition about the localization, into a check on chains of three maps. A similar result holds when good cofibrations are present (Blumberg–Mandell). The equivalence with saturation needs these extra hypotheses; 2-out-of-6 alone does not give it.
 
 **nLab:** [two-out-of-six property](https://ncatlab.org/nlab/show/two-out-of-six+property), [category with weak equivalences](https://ncatlab.org/nlab/show/category+with+weak+equivalences). It says: “Suppose W admits a calculus of fractions. Then W satisfies two-out-of-six if and only if it is saturated.”
 
@@ -3065,9 +3065,9 @@
 
 **Definition.** A category of fibrant objects is a category with weak equivalences and fibrations in which every object is fibrant. Every object has a path object, which plays the role of the space of paths in it. There are no cofibrations.
 
-**Problem.** Build the homotopy category, and so a notion of cohomology, for structures that have no convenient model structure. An example is locally Kan simplicial sheaves (sheaves of simplicial sets that satisfy the Kan horn-filling condition locally).
+**Problem.** In a category of fibrant objects, every morphism of the homotopy category is a span of length one whose backward leg is an acyclic fibration (Brown). Locally Kan simplicial sheaves form such a category, and its hom-sets compute generalized sheaf cohomology.
 
-**How the definition helps.** Fibrations alone are enough to describe the homotopy category by short spans, so cofibrations are not needed. Brown dropped all axioms on cofibrations and kept only fibrations, with all objects fibrant. Then each morphism of the homotopy category is described by a span of length one, whose backward leg is an acyclic fibration (a fibration that is also a weak equivalence). For locally Kan simplicial sheaves, the hom-sets of this homotopy category compute generalized sheaf cohomology. Abelian sheaf cohomology is a special case. So the weaker definition reaches examples where cofibrations do not exist or are hard to use.
+**How the definition helps.** Fibrations alone are enough to describe the homotopy category by short spans, so cofibrations are not needed. Brown dropped all axioms on cofibrations and kept only fibrations, with all objects fibrant. Abelian sheaf cohomology is a special case of the generalized cohomology. So the weaker definition reaches examples where cofibrations do not exist or are hard to use.
 
 **nLab:** [category of fibrant objects](https://ncatlab.org/nlab/show/category+of+fibrant+objects). It says: “In particular, it is sufficient for giving a convenient construction of the homotopy category in terms of spans of length one.”
 
@@ -3083,9 +3083,9 @@
 
 **Definition.** A functor p: E → B is an isofibration if it lifts isomorphisms exactly. That is, for every object e of E and every isomorphism φ: p(e) ≅ b in B, there is an isomorphism ψ: e ≅ e' in E with p(ψ) = φ.
 
-**Problem.** The weak (pseudo) pullback of categories does not change when you replace a category by an equivalent one. The ordinary strict pullback in general does change. The goal is to compute the weak pullback by a strict pullback.
+**Problem.** If one of two functors into a category B is an isofibration, their strict pullback is equivalent to their weak (pseudo) pullback. So it does not change when a category is replaced by an equivalent one.
 
-**How the definition helps.** If one leg is an isofibration, the strict pullback is also a weak pullback, so you can compute with the strict one. A strict pullback of arbitrary functors can change when you replace a category by an equivalent one. So it is not a 2-categorical construction. The nLab explains the result by the role of isofibrations as the fibrations of the canonical model structure on Cat. The page notes that the definition deliberately breaks the principle of equivalence (the rule that statements about categories should not depend on equality of objects) for this purpose.
+**How the definition helps.** Lifting isomorphisms exactly lets the strict pullback capture every object of the weak pullback up to isomorphism. A strict pullback of arbitrary functors can change when you replace a category by an equivalent one, so it is not a 2-categorical construction. The nLab explains the result by the role of isofibrations as the fibrations of the canonical model structure on Cat. The definition deliberately breaks the principle of equivalence for this purpose.
 
 **nLab:** [isofibration](https://ncatlab.org/nlab/show/isofibration). It says: “For example, any strict pullback of an isofibration is also a weak pullback.”
 
@@ -3101,9 +3101,9 @@
 
 **Definition.** Augmented simplicial sets have an extra level of (−1)-simplices, called the augmentation. The join S ⋆ T of augmented simplicial sets is the Day convolution product (the standard extension of a monoidal product from a category to its presheaves) for ordinal sum on the augmented simplex category. Its n-simplices are pairs of an i-simplex of S and a j-simplex of T with i + j = n − 1, where i, j ≥ −1.
 
-**Problem.** Compute joins of horns and other colimits of simplices, as quasi-category theory needs.
+**Problem.** The join of augmented simplicial sets preserves colimits in each variable separately. So the join of a horn with a simplex is the union of the joins of the faces of the horn with that simplex.
 
-**How the definition helps.** As a Day convolution, the join of augmented simplicial sets preserves colimits in each variable separately. On plain simplicial sets, the join only commutes with connected colimits. So the augmented join preserves unions. Horns are unions of faces, so you can compute the join of a horn with a simplex piece by piece. For plain simplicial sets, one uses instead the functor S ⋆ (−) into S/sSet, which preserves colimits.
+**How the definition helps.** As a Day convolution, the join is a tensor product, and such products preserve colimits in each variable. On plain simplicial sets, the join commutes only with connected colimits. For plain simplicial sets, one uses instead the functor S ⋆ (−) into S/sSet, which preserves colimits.
 
 **nLab:** [join of simplicial sets](https://ncatlab.org/nlab/show/join+of+simplicial+sets). It says: “Recall that the join of augmented simplicial sets S ⋆ T is a cocontinuous functor in each of its separate arguments S and T (this is true generally of Day convolution products).”
 
@@ -3137,9 +3137,9 @@
 
 **Definition.** A Kan fibration is a map of simplicial sets with the lifting property for filling horns. A Kan fibration is minimal under this condition: take two simplices in the same fibre with the same boundary. If they are homotopic relative to their boundary, they must be equal.
 
-**Problem.** We want to show that the geometric realization of a Kan fibration is a Serre fibration. This is a key step in the Quillen equivalence between simplicial sets and topological spaces.
+**Problem.** Every minimal Kan fibration is locally trivial over each simplex of its base, so it is a fibre bundle. Hence the geometric realization of every Kan fibration is a Serre fibration.
 
-**How the definition helps.** A minimal fibration has no spare homotopic copies of simplices, so it is rigid enough to be locally trivial. Every Kan fibration deformation retracts onto a minimal one. For minimal fibrations, a short induction (lifting anodyne extensions, the maps built from horn inclusions) shows that a fibrewise homotopy equivalence between them is an isomorphism. So over a connected base all fibres are isomorphic, and the fibration is locally trivial over each simplex. The geometric realization of a fibre bundle is a fibre bundle and so a Serre fibration. The existence of the minimal retract also needs an inductive argument.
+**How the definition helps.** A minimal fibration has no spare homotopic copies of simplices, so it is rigid enough to be locally trivial. A short induction shows that a fibrewise homotopy equivalence between minimal fibrations is an isomorphism. Every Kan fibration deformation retracts onto a minimal one, which also needs an inductive argument. The realization of a fibre bundle is a fibre bundle, and so a Serre fibration.
 
 **nLab:** [minimal Kan fibration](https://ncatlab.org/nlab/show/minimal+Kan+fibration). It says: “Minimal Kan fibrations over connected bases happen to be fiber bundles, locally trivial over each simplex”
 
@@ -3154,11 +3154,11 @@
 
 *Rules out counterexamples.* MSC 18N50 (Simplicial sets, simplicial objects), 55U10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A simplicial topological space X• is proper if, in each degree n, the inclusion sXₙ ⊂ Xₙ of the degenerate simplices is a closed cofibration. Equivalently, X• is Reedy cofibrant for the Strøm model structure on Top (the model structure whose weak equivalences are homotopy equivalences and whose cofibrations are closed Hurewicz cofibrations). X• is good if every degeneracy map Xₙ₋₁ → Xₙ is a closed cofibration, and good implies proper.
+**Definition.** A simplicial topological space X• is proper if, in each degree n, the inclusion sXₙ ⊂ Xₙ of the degenerate simplices is a closed cofibration. X• is good if every degeneracy map Xₙ₋₁ → Xₙ is a closed cofibration, and good implies proper.
 
-**Problem.** Show that an objectwise weak homotopy equivalence X• → Y• between proper simplicial spaces gives a weak homotopy equivalence \|X•\| → \|Y•\| of geometric realizations.
+**Problem.** An objectwise weak homotopy equivalence X• → Y• between proper simplicial spaces gives a weak homotopy equivalence \|X•\| → \|Y•\| of geometric realizations.
 
-**How the definition helps.** Properness makes the realization a sequence of gluings along cofibrations, and such gluings respect weak equivalences. In our own reading, some condition is needed, because the realization is built by gluing along the degenerate parts. Gluing along a map that is not a cofibration need not respect weak equivalences. By the pushout-product axiom for the Strøm model structure, properness makes \|X•\| the colimit of a sequence of pushouts along Hurewicz cofibrations. Pushouts and sequential colimits along such cofibrations preserve weak homotopy equivalences. So an induction over the skeleta proves the theorem, with a further induction to show that the maps of degenerate parts are weak equivalences. What remains is to check properness in examples; goodness is often easier to check, and the page also gives a functorial good replacement \|Sing(X•)\|.
+**How the definition helps.** Properness makes the realization a sequence of gluings along cofibrations, and such gluings respect weak equivalences. Gluing along a map that is not a cofibration need not respect weak equivalences (our own reading). So an induction over the skeleta proves the theorem. Goodness is often easier to check than properness.
 
 **nLab:** [geometric realization of simplicial topological spaces](https://ncatlab.org/nlab/show/geometric+realization+of+simplicial+topological+spaces). It says: “If X• → Y• is an objectwise weak homotopy equivalence between proper simplicial spaces, then the induced map \|X•\| → \|Y•\| is a weak homotopy equivalence.”
 
@@ -3175,9 +3175,9 @@
 
 **Definition.** The k-th horn Λₖ\[n\] of the n-simplex Δ\[n\] is the union of all faces of Δ\[n\] except the k-th one. It is defined only for n ≥ 1, so the 0-simplex has no horn at all.
 
-**Problem.** A Kan complex is a simplicial set with fillers for all horns. The nerve of the empty groupoid should be a Kan complex, and every map out of the empty simplicial set should be a Kan fibration.
+**Problem.** The empty simplicial set, the nerve of the empty groupoid, is a Kan complex. Every map out of the empty simplicial set is a Kan fibration.
 
-**How the definition helps.** Because horns start at n ≥ 1, the empty simplicial set is never a horn, so nothing asks it for a filler. If one declared the empty simplicial set to be a 'horn' of Δ\[0\], then a filler for it would be a vertex. Then the empty simplicial set, which is the nerve of the empty groupoid, would fail to be Kan. With the definition as it is, every horn is inhabited (it has at least one vertex), and the empty case is not an exception. A side effect is that a Kan fibration need not be surjective, unlike an acyclic Kan fibration.
+**How the definition helps.** Because horns start at n ≥ 1, the empty simplicial set is never a horn, so nothing asks it for a filler. If one declared the empty simplicial set a horn of Δ\[0\], a filler would be a vertex, and the empty simplicial set would fail to be Kan. A side effect is that a Kan fibration need not be surjective, unlike an acyclic Kan fibration.
 
 **nLab:** [horn](https://ncatlab.org/nlab/show/horn). It says: “In particular one must not declare a would-be horn of the 0-simplex to be itself the empty simplicial set, as that would make the nerve of the empty groupoid fail to be a Kan complex”
 
@@ -3191,7 +3191,7 @@
 
 **Definition.** The singular simplicial set Sing(X) of a space X has the continuous maps from the standard n-simplex into X as its n-simplices. A map of topological spaces f : X → Y is a weak equivalence when the map Sing(X) → Sing(Y) is a weak equivalence of simplicial sets. This is the model structure on spaces transferred from simplicial sets along the adjunction \|−\| ⊣ Sing, where \|−\| is geometric realization.
 
-**Problem.** Show that the singular complex functor Sing : Top → sSet preserves weak equivalences.
+**Problem.** The singular complex functor Sing : Top → sSet preserves weak equivalences.
 
 **How the definition helps.** With the transferred model structure, the statement is true by definition. The traditional definitions say that a weak equivalence of simplicial sets is a map whose geometric realization is a weak homotopy equivalence. With those definitions, the proof needs two facts. One is the 2-out-of-3 property: if two of f, g and g ∘ f are weak equivalences, so is the third. The other is that \|Sing X\| → X is a weak homotopy equivalence (a CW replacement). With the transferred definition, the real content moves to the theorem that the transferred and the classical model structures agree.
 
@@ -3227,9 +3227,9 @@
 
 **Definition.** A Cartesian fibration of simplicial sets is an inner fibration p : X → Y (a map whose fibers are ∞-categories) such that every edge of Y has a p-Cartesian lift with any given target. Cartesian edges play the role of 'pullback along a morphism'.
 
-**Problem.** An inner fibration over D is a family of ∞-categories that is functorial only up to correspondences, a looser kind of relation than a functor. One wants a fibration that is the same as a functor Dᵒᵖ → (∞,1)Cat.
+**Problem.** In a Cartesian fibration over D, each morphism f : d₁ → d₂ gives a functor from the fiber over d₂ to the fiber over d₁, unique up to contractible choice. By the straightening theorem, Cartesian fibrations over D are equivalent to functors Dᵒᵖ → (∞,1)Cat.
 
-**How the definition helps.** Cartesian lifts give each morphism of the base a functor between fibers, so the family becomes functorial. Take a morphism f : d₁ → d₂. The supply of Cartesian lifts gives a functor from the fiber over d₂ to the fiber over d₁, unique up to a contractible choice. Cartesian fibrations are also stable under pullback. The precise equivalence between Cartesian fibrations over D and functors Dᵒᵖ → (∞,1)Cat is the straightening theorem, the (∞,1)-Grothendieck construction. That theorem is hard; the definition only makes it possible to state.
+**How the definition helps.** Cartesian lifts give each morphism of the base a functor between fibers, so the family becomes functorial. A bare inner fibration is functorial only up to correspondences. The straightening theorem, the (∞,1)-Grothendieck construction, is hard; the definition only makes it possible to state.
 
 **nLab:** [Cartesian fibration](https://ncatlab.org/nlab/show/Cartesian+fibration). It says: “Then the condition of p being a cartesian fibration ensures that the family is actually functorial.”
 
@@ -3245,9 +3245,9 @@
 
 **Definition.** An idempotent in an ∞-category C is a map Idem → C, where Idem is the nerve of the free category on one idempotent. So it carries all higher coherence data, not only an equivalence e ∘ e ≃ e. It is effective if it extends to the free retraction diagram Idem⁺.
 
-**Problem.** Show that an idempotent splits exactly when it has a limit, or equivalently a colimit, as in ordinary categories.
+**Problem.** A coherent idempotent Idem → C in an ∞-category is effective (splits) exactly when it has a limit, or equivalently a colimit (Lurie).
 
-**How the definition helps.** Because a coherent idempotent carries all its higher data, a limit is enough to split it. Lurie shows that a diagram Idem → C is effective exactly when it has an (∞,1)-limit, or equivalently an (∞,1)-colimit. An incoherent idempotent is a map that is idempotent only in the homotopy category, and it can fail to lift to a coherent one. Lurie's example (Higher Algebra, Warning 1.2.4.8) uses an injective, non-surjective group map λ : G → G with λ conjugate to λ². Then Bλ, the induced map of classifying spaces, is idempotent up to homotopy in ∞Gpd (the ∞-category of ∞-groupoids), but it is not a coherent idempotent. For stable ∞-categories, the two notions of idempotent completeness agree.
+**How the definition helps.** Because a coherent idempotent carries all its higher data, a limit is enough to split it. An idempotent only in the homotopy category can fail to lift to a coherent one. Lurie's example (Higher Algebra, Warning 1.2.4.8) uses an injective, non-surjective group map λ : G → G with λ conjugate to λ². Then Bλ is idempotent up to homotopy in ∞Gpd, but it is not a coherent idempotent.
 
 **nLab:** [idempotent complete (infinity,1)-category](https://ncatlab.org/nlab/show/idempotent+complete+%28infinity%2C1%29-category). It says: “In particular, being idempotent is no longer a property of a morphism, but structure on it.”
 
@@ -3264,9 +3264,9 @@
 
 **Definition.** A simplicial space X is a sequence of spaces X₀, X₁, X₂, … with face and degeneracy maps; think of Xₙ as the space of strings of n arrows. A Segal space is a Reedy-fibrant simplicial space (a technical condition that makes fibre products behave well) whose Segal maps are equivalences. The Segal map goes from Xₙ to the fibre product of n copies of X₁ over X₀, the space of n composable arrows. A Segal space is complete if the subspace of invertible arrows in X₁ is equivalent to the space of objects X₀.
 
-**Problem.** Model (∞,1)-categories so that weak equivalences of the model are exactly the equivalences of categories. In particular, a functor of ordinary categories should be an equivalence exactly when its model map is a levelwise weak equivalence.
+**Problem.** A functor of ordinary categories is an equivalence exactly when the induced map of Rezk's classifying diagrams, which are complete Segal spaces, is a levelwise weak equivalence. For plain nerves, which are complete only for gaunt categories, such a map detects only isomorphism of categories.
 
-**How the definition helps.** Completeness removes the models that do not respect equivalence of categories. The plain nerve of a category C is a complete Segal space only when C is gaunt, that is, when its only isomorphisms are identities. So a levelwise weak equivalence of plain nerves detects isomorphism of categories, not equivalence. Rezk's classifying diagram is built from groupoids of isomorphisms of diagrams, and it is complete. With it, a functor is an equivalence of categories exactly when the induced map is a levelwise weak equivalence. The model structure for complete Segal spaces then presents the (∞,1)-category of (∞,1)-categories.
+**How the definition helps.** Completeness removes the models that do not respect equivalence of categories. A category is gaunt when its only isomorphisms are identities. Rezk's classifying diagram is built from groupoids of isomorphisms of diagrams, and it is complete. The model structure for complete Segal spaces then presents the (∞,1)-category of (∞,1)-categories.
 
 **nLab:** [complete Segal space](https://ncatlab.org/nlab/show/complete+Segal+space), [Segal space](https://ncatlab.org/nlab/show/Segal+space). It says: “this says that if a morphism is an equivalence under the explicit composition operation then it is already a morphism in X₀”
 
@@ -3280,11 +3280,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18A30. arXiv math.CT, math.AT. Level 3: graduate.
 
-**Definition.** A colimit is van Kampen if it is stable under pullback and satisfies descent. Equivalently, the slice construction x ↦ C/x sends it to a limit of categories. In words, an object over the colimit is the same as a compatible system of objects over its pieces. An (∞,1)-topos is a presentable (∞,1)-category (one generated under colimits by a small set of objects) in which all colimits are van Kampen.
+**Definition.** A colimit is van Kampen if it is stable under pullback and satisfies descent. Equivalently, the slice construction x ↦ C/x sends it to a limit of categories. In words, an object over the colimit is the same as a compatible system of objects over its pieces.
 
-**Problem.** Compute loop spaces by descent. For example, Ω S¹ ≃ ℤ: the loop space of the circle is equivalent to the integers. Also characterize ∞-toposes intrinsically.
+**Problem.** A presentable (∞,1)-category is an ∞-topos exactly when all its colimits are van Kampen. So, with the circle as the coequalizer of 1 ⇉ 1, descent in ∞-groupoids gives ΩS¹ ≃ ℤ.
 
-**How the definition helps.** Because every colimit is van Kampen, descent computes loop spaces directly. In Set and other 1-toposes, not all colimits are van Kampen. For example, the coequalizer 1 ⇉ 1 → 1 is not. In an ∞-topos every colimit is van Kampen. So if you view the circle as a coequalizer of 1 ⇉ 1, descent gives at once that the loop space of S¹ is ℤ. The characterization 'presentable with all colimits van Kampen' follows from Theorem 6.1.3.9 of Higher Topos Theory, the descent characterization of ∞-toposes. The nLab notes that the exact ∞-categorical form of the van Kampen criterion may not be in the literature.
+**How the definition helps.** Because every colimit is van Kampen, descent computes loop spaces directly. In Set and other 1-toposes, not all colimits are van Kampen; the coequalizer 1 ⇉ 1 → 1 is not. The characterization follows from Theorem 6.1.3.9 of Higher Topos Theory. The nLab notes that this exact ∞-categorical form may not be in the literature.
 
 **nLab:** [van Kampen colimit](https://ncatlab.org/nlab/show/van+Kampen+colimit), [(infinity,1)-topos](https://ncatlab.org/nlab/show/%28infinity%2C1%29-topos). It says: “gives a concise proof that the loop space of the circle is equivalent to the integers”
 
@@ -3319,9 +3319,9 @@
 
 **Definition.** A marked simplicial set is a simplicial set with a chosen set of edges, called the marked edges. The marked edges must include all degenerate edges. The marking records which edges are meant to be Cartesian morphisms.
 
-**Problem.** One wants a model category whose fibrant objects are the Cartesian fibrations over a simplicial set S. A Cartesian fibration is the ∞-categorical version of a fibered category: a map along which morphisms of the base lift to Cartesian edges. Then the straightening (the Grothendieck construction for (∞,1)-categories) becomes a Quillen equivalence with presheaves.
+**Problem.** In Lurie's model structure on marked simplicial sets over S, with all edges of S marked, the fibrant objects are exactly the Cartesian fibrations X → S with their Cartesian edges marked. Straightening is then a Quillen equivalence with presheaves.
 
-**How the definition helps.** The marking lets a lifting property see which edges are Cartesian, so the fibrant objects are exactly the Cartesian fibrations. Lurie shows that a map X → S of marked simplicial sets has the right lifting property against the marked anodyne maps exactly when three things hold. First, it is an inner fibration (a map with fillers for inner horns). Also, its marked edges are the Cartesian edges over marked edges of S, and marked edges of S have Cartesian lifts. When all edges of S are marked, this says exactly that X is a Cartesian fibration with its Cartesian edges marked. So in the model structure on sSet⁺/S (marked simplicial sets over S), the fibrant objects are precisely the Cartesian fibrations, and every object is cofibrant. Lurie uses this to state the straightening equivalence as a Quillen equivalence. Over a point, the model structure is also enriched over Kan complexes, which the Joyal model structure (whose fibrant objects are the quasi-categories) is not. The existence of the model structure and the straightening theorem are substantial results in Higher Topos Theory.
+**How the definition helps.** The marking lets a lifting property see which edges are Cartesian, so the fibrant objects are exactly the Cartesian fibrations. A map has the lifting property against marked anodyne maps exactly when it is an inner fibration whose marked edges are the Cartesian lifts of marked edges. Every object is cofibrant. The existence of the model structure and the straightening theorem are substantial results in Higher Topos Theory.
 
 **nLab:** [model structure for Cartesian fibrations](https://ncatlab.org/nlab/show/model+structure+for+Cartesian+fibrations). It says: “Every object is cofibrant and the fibrant objects of SSet⁺/S are precisely the Cartesian fibrations over S.”
 
@@ -3335,11 +3335,11 @@
 
 *Rules out counterexamples.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18G80. arXiv math.CT, math.AT. Level 3: graduate.
 
-**Definition.** An (∞,1)-category is a category with higher homotopies between morphisms, all of them invertible. A stable (∞,1)-category is a pointed (∞,1)-category (one with a zero object) with finite limits and colimits, in which a square is a pullback exactly when it is a pushout. Equivalently, the loop functor Ω is an equivalence. Being stable is a property of the ∞-category, not extra structure, and its homotopy category has a triangulated structure.
+**Definition.** A stable (∞,1)-category is a pointed (∞,1)-category (one with a zero object) with finite limits and colimits, in which a square is a pullback exactly when it is a pushout. Equivalently, the loop functor Ω is an equivalence. Being stable is a property of the ∞-category, not extra structure.
 
-**Problem.** Get the triangulated structure on derived categories and on the stable homotopy category from simple conditions. This includes the octahedral axiom and cones that are functorial.
+**Problem.** The homotopy category of a stable ∞-category is triangulated, and the octahedral axiom holds (Lurie). In the stable ∞-category itself, the cone of a morphism is a pushout, so it is functorial.
 
-**How the definition helps.** In a stable ∞-category the cone of a morphism (its cofibre) is a pushout, so a universal property fixes it and it is functorial. In a triangulated category, the cone is unique only up to an isomorphism that is not unique. So there the cone is not functorial, and homotopy limits and colimits are lost. Lurie proves that the homotopy category of a stable ∞-category is triangulated, and the octahedral axiom follows. The nLab says that the bad behaviour of triangulated categories comes from passing to the homotopy category. Not every triangulated category arises this way: Muro, Schwede and Strickland give triangulated categories that are not a full triangulated subcategory of the homotopy category of any stable model category. In our reading, this means they also come from no stable ∞-category.
+**How the definition helps.** In a stable ∞-category the cone of a morphism is a pushout, so a universal property fixes it. In a triangulated category, the cone is unique only up to a non-unique isomorphism, so it is not functorial. The nLab says that this bad behaviour comes from passing to the homotopy category. Not every triangulated category arises this way, by examples of Muro, Schwede and Strickland.
 
 **nLab:** [stable (infinity,1)-category](https://ncatlab.org/nlab/show/stable+%28infinity%2C1%29-category), [triangulated category](https://ncatlab.org/nlab/show/triangulated+category), [enhanced triangulated category](https://ncatlab.org/nlab/show/enhanced+triangulated+category). It says: “The complexity and bad behavior of triangulated categories comes from them being the decategorification of a structure that is natural in higher category theory.”
 
@@ -3356,9 +3356,9 @@
 
 **Definition.** An (∞,1)-category has a space of maps between any two objects. Its Ho-enriched homotopy category keeps, for each pair of objects, this mapping space as an object of Ho, the homotopy category of spaces. The ordinary homotopy category keeps only the set of path components of the mapping space.
 
-**Problem.** When does an adjunction between homotopy categories come from an adjunction of (∞,1)-functors? Lurie's Higher Topos Theory, Proposition 5.2.2.12, answers this. If the induced functor of Ho-enriched homotopy categories has a right adjoint, then the ∞-functor has one too.
+**Problem.** If an ∞-functor induces a functor of Ho-enriched homotopy categories that has a right adjoint, then the ∞-functor has a right adjoint (Lurie, HTT Prop. 5.2.2.12). The same claim with ordinary homotopy categories is false.
 
-**How the definition helps.** The enriched homotopy category keeps enough of the mapping spaces to exclude adjunctions that do not lift. With ordinary homotopy categories the statement is false. In the ordinary category Ho, π₀ : Ho → Set, which sends a space to its set of path components, is both left and right adjoint to the inclusion Set ⊆ Ho. But π₀ : ∞Gpd → Set, on the (∞,1)-category of ∞-groupoids (spaces), has no left adjoint, so the right adjunction does not lift. In our own reading, the enriched version excludes this example. The mapping space from a discrete set S to X is Xˢ, which is not discrete, so π₀ is not an enriched right adjoint. The real content is Lurie's proposition.
+**How the definition helps.** The enriched homotopy category keeps enough of the mapping spaces to exclude adjunctions that do not lift. In the ordinary category Ho, π₀ is both left and right adjoint to the inclusion Set ⊆ Ho. But π₀ : ∞Gpd → Set has no left adjoint, so that adjunction does not lift. In our own reading, the enriched version excludes this example, since the mapping space from a discrete set S to X is Xˢ, which is not discrete.
 
 **nLab:** [adjoint (infinity,1)-functor](https://ncatlab.org/nlab/show/adjoint+%28infinity%2C1%29-functor). It says: “For a counterexample, when Ho is considered as an ordinary category, π₀ : Ho → Set is both left and right adjoint to the inclusion Set ⊆ Ho. However, π₀ : ∞Gpd → Set does not have a left adjoint.”
 
@@ -3374,9 +3374,9 @@
 
 **Definition.** A simplicially enriched category C is a category whose hom-sets are simplicial sets. Its homotopy coherent nerve N(C) is the simplicial set whose n-simplices are the simplicial functors from S\[Δⁿ\] into C. Here S\[Δⁿ\] is a simplicial resolution of the ordered set \[n\] = {0, …, n}, built from free categories. It adds homotopies between composites, then homotopies between those homotopies, and so on.
 
-**Problem.** Define homotopy coherent diagrams of shape A in any simplicially enriched category. Then compare simplicially enriched categories with quasi-categories, which are simplicial sets in which every inner horn has a filler.
+**Problem.** Cordier–Porter theorem: if every hom-object of C is a Kan complex, then the homotopy coherent nerve N(C) is a quasi-category. Here a homotopy coherent diagram of shape A in C is a simplicial map from the nerve of A to N(C).
 
-**How the definition helps.** The nerve turns a homotopy coherent diagram, which is hard to define directly, into a plain map of simplicial sets. Vogt defined homotopy coherent diagrams of shape A in Top. Cordier saw that these are exactly the simplicial functors S\[A\] → Top. So a homotopy coherent diagram in any simplicial category C can be defined as a simplicial map from the nerve of A to N(C). With this definition, the Cordier–Porter theorem can be stated and proved: if C is locally Kan (every hom-object of C is a Kan complex), then N(C) is a quasi-category. This theorem was one of the first links between two models of (∞,1)-categories.
+**How the definition helps.** The nerve turns a homotopy coherent diagram, which is hard to define directly, into a plain map of simplicial sets. Vogt defined homotopy coherent diagrams in Top, and Cordier saw that these are exactly the simplicial functors S\[A\] → Top. A quasi-category is a simplicial set in which every inner horn has a filler. This theorem was one of the first links between two models of (∞,1)-categories.
 
 **nLab:** [homotopy coherent nerve](https://ncatlab.org/nlab/show/homotopy+coherent+nerve). It says: “This allowed a good definition of homotopy coherent diagrams in arbitrary simplicially enriched categories to be given.”
 
@@ -3392,9 +3392,9 @@
 
 **Definition.** A preset is a collection of things with no equality relation given. In this approach a category has only a preset of objects. Each hom-set is still a genuine set, with equality. A strict category is one whose objects get the extra structure of a set.
 
-**Problem.** The principle of equivalence says two things. Every property that you can state about objects of a category does not change under isomorphism. Every construction respects equivalence of categories.
+**Problem.** In Makkai's first-order logic with dependent sorts (FOLDS), which has no equality of objects, every sentence is invariant under the matching notion of equivalence. So no statable property of objects can tell isomorphic objects apart.
 
-**How the definition helps.** If you cannot write an equation between objects, you lose the main way to break the principle of equivalence. Most violations of the principle come from equations between objects. The nLab says that the principle should be the conclusion of a theorem: a language without equality of objects cannot say anything that violates it. Makkai's first-order logic with dependent sorts (FOLDS) is such a language. He proves that its sentences do not change under the matching notion of equivalence. A category with only a preset of objects builds this restriction into the definition. When you want equality of objects, you must add it as explicit structure, and that is what a strict category is.
+**How the definition helps.** If you cannot write an equation between objects, you lose the main way to break the principle of equivalence. The nLab says that the principle should be the conclusion of such a theorem. A category with only a preset of objects builds this restriction into the definition. When you want equality of objects, you must add it as explicit structure, and that is what a strict category is.
 
 **nLab:** [preset](https://ncatlab.org/nlab/show/preset), [principle of equivalence](https://ncatlab.org/nlab/show/principle+of+equivalence), [strict category](https://ncatlab.org/nlab/show/strict+category). It says: “To make the principle of equivalence hold automatically, a category should have only a preset of objects and only its hom-sets as sets.”
 
@@ -3410,9 +3410,9 @@
 
 **Definition.** In homotopy type theory, a precategory is a category whose hom-types are sets, with no condition on the type of objects. A precategory C is skeletal if, for all objects a and b, the canonical map (a = b) → ‖a ≅ b‖ is an equivalence. Here ‖–‖ is propositional truncation: it turns a type into a proposition that says only whether the type has an element.
 
-**Problem.** One wants 'skeletal' to be a property, not extra structure. One also wants to relate it to univalence and to gaunt categories, which are categories whose only isomorphisms are identities.
+**Problem.** In homotopy type theory, a skeletal precategory is a strict category, so being skeletal is a property. If it is also univalent, it is gaunt: its only isomorphisms are identities.
 
-**How the definition helps.** The definition has the same form as univalence, with the isomorphisms truncated, so the two conditions combine directly. The first guess, a map ‖a ≅ b‖ → (a = b), is structure, not a property, when the objects do not form a set. With the chosen definition, a = b is equivalent to a proposition, so the objects form a set and C is a strict category. Univalence says that the map (a = b) → (a ≅ b) is an equivalence. If both hold, then a ≅ b is equivalent to its own truncation, so it is a proposition, and this means that C is gaunt. So 'gaunt = skeletal + univalent' follows almost by comparing the two definitions. The page warns that without set-level foundations, not every category has a skeleton.
+**How the definition helps.** The definition has the same form as univalence, with the isomorphisms truncated, so the two conditions combine directly. The first guess, a map ‖a ≅ b‖ → (a = b), is structure, not a property, when objects do not form a set. With the chosen definition, a = b is a proposition, so the objects form a set. Univalence then makes a ≅ b equivalent to its own truncation, so isomorphisms are unique and are identities.
 
 **nLab:** [skeletal category](https://ncatlab.org/nlab/show/skeletal+category). It says: “It follows that if a precategory is both skeletal and univalent, then a≅b is always a proposition (since it is equivalent to its propositional truncation), and thus the category is gaunt.”
 
@@ -3426,9 +3426,9 @@
 
 **Definition.** A simple graph is a set V of vertices with a reflexive, symmetric relation E on V. An edge is a pair of distinct vertices x and y with E(x, y). A morphism from (V, E) to (W, F) is a function f such that E(x, y) implies F(f(x), f(y)). So a morphism may send an edge to a single vertex.
 
-**Problem.** We want the category of simple graphs to behave well. Edge contractions should be quotients. The category should be a Grothendieck quasitopos: regular, with a regular opposite category, and extensive (coproducts behave like disjoint unions).
+**Problem.** With these morphisms, the category of simple graphs is a Grothendieck quasitopos, and every edge contraction is a quotient.
 
-**How the definition helps.** This definition makes simple graphs a special kind of presheaf, and a quasitopos is essentially a category of such presheaves. In detail, simple graphs are exactly the presheaves X on a small category of the sets 1 and 2 whose source-target map X(2) → X(1) × X(1) is injective. These are the ¬¬-separated presheaves, that is, the presheaves that are separated for the double-negation topology. A Grothendieck quasitopos is essentially by definition a category of separated presheaves, so the theorem follows almost at once. The same choice of morphism makes every edge contraction a quotient. This is not possible if morphisms must send edges to edges.
+**How the definition helps.** This definition makes simple graphs a special kind of presheaf, and a quasitopos is essentially a category of such presheaves. Simple graphs are exactly the presheaves on a small category of the sets 1 and 2 whose map X(2) → X(1) × X(1) is injective. These are the ¬¬-separated presheaves, so the theorem follows almost at once. If morphisms had to send edges to edges, edge contractions would not be quotients.
 
 **nLab:** [category of simple graphs](https://ncatlab.org/nlab/show/category+of+simple+graphs). It says: “On the other hand, a Grothendieck quasitopos is, essentially by definition, the category of separated presheaves for a topology on a presheaf topos, in this case the ¬¬-topology.”
 
@@ -3444,9 +3444,9 @@
 
 **Definition.** An anafunctor F : C → D assigns to each object c a non-empty set of 'specified values' in D, instead of one chosen value. Specified isomorphisms join these values. Formally, an anafunctor is a span of functors C ← F̄ → D whose left leg is fully faithful and surjective on objects.
 
-**Problem.** Prove that every fully faithful and essentially surjective functor is an equivalence of categories.
+**Problem.** Without the axiom of choice, every fully faithful and essentially surjective functor has an inverse anafunctor, so it is an equivalence of categories in the sense of anafunctors.
 
-**How the definition helps.** An anafunctor does not need to choose, so the inverse exists without the axiom of choice. With ordinary functors, the statement is equivalent to the axiom of choice, because the inverse functor must choose, for each d, an object c with F(c) ≅ d. Without choice, and also for internal categories in a topos or for Lie groupoids, some fully faithful, essentially surjective functors have no inverse functor. An anafunctor instead takes all pairs of an object c and an isomorphism F(c) ≅ d at once. Any two such pairs are joined by a unique isomorphism, but the objects c themselves need not be unique. With anafunctors in place of functors, the theorem holds without choice. The cost is that composing anafunctors needs a pullback, so the theory is a little heavier.
+**How the definition helps.** An anafunctor does not need to choose, so the inverse exists without the axiom of choice. With ordinary functors, the statement is equivalent to the axiom of choice, because the inverse must choose, for each d, an object c with F(c) ≅ d. An anafunctor instead takes all such pairs at once, and any two are joined by a unique isomorphism. The cost is that composing anafunctors needs a pullback.
 
 **nLab:** [anafunctor](https://ncatlab.org/nlab/show/anafunctor). It says: “The notion of \*anafunctor\* is a generalization of the usual notion of \*functor\*, which enables us to recover a version of this statement without the axiom of choice.”
 
@@ -3462,9 +3462,9 @@
 
 **Definition.** A coherent functor, in Auslander's sense, is a functor that is the cokernel of a map between representable functors. A ring is right coherent when its finitely generated right ideals are finitely presented. Krause works with finitely presented graded modules over such rings instead of finitely generated modules over noetherian rings.
 
-**Problem.** Serre proved that coherent sheaves on a projective variety are graded modules over the homogeneous coordinate ring, modulo modules of finite length. Which abelian categories have such a description?
+**Problem.** Let an abelian category have an object C and an autoequivalence σ, and let R be the graded ring of the groups Hom(C, σⁿC), n ≥ 0. If R is right coherent and semiperfect, Krause gives a necessary and sufficient criterion for the category to be finitely presented graded R-modules modulo finite length modules.
 
-**How the definition helps.** Finitely presented modules over a coherent ring form an abelian category, so the quotient makes sense without noetherian rings. Krause starts from an abelian category with a distinguished object C and an autoequivalence σ, like the structure sheaf and the twist by O(1). The graded ring is the sum of the groups Hom(C, σⁿC) for n ≥ 0. When this ring is right coherent and semiperfect, he gives a necessary and sufficient criterion for the equivalence. The criterion says when the category is finitely presented graded modules modulo finite length modules. Coherent sheaves on a projective variety are one case, and a theorem of Lenzing on hereditary algebras is another.
+**How the definition helps.** Finitely presented modules over a coherent ring form an abelian category, so the quotient makes sense without noetherian rings. C and σ play the roles of the structure sheaf and the twist by O(1). Serre's theorem on coherent sheaves on a projective variety is one case. A theorem of Lenzing on hereditary algebras is another.
 
 **Paper or page:** [Serre's theorem for coherent sheaves via Auslander's techniques](https://arxiv.org/abs/2312.13755v2). It says: “A particular example is the category of coherent sheaves on a projective variety, following a theorem of Serre from 1955. The proof uses Auslander's theory of coherent functors, and there are no noetherianess assumptions.”
 
@@ -3480,9 +3480,9 @@
 
 **Definition.** An orthogonal factorization system (L, R) on a category is a pair of classes of morphisms such that every morphism factors as an L-map followed by an R-map, uniquely up to unique isomorphism. A ternary factorization system is a pair of such systems (L₁, R₁) and (L₂, R₂) with L₁ ⊆ L₂. Its three classes are E = L₁, F = L₂ ∩ R₁ and M = R₂.
 
-**Problem.** Every morphism should factor as an E-map, then an F-map, then an M-map. This factorization should be unique up to unique isomorphism. For example, in Top (the category of topological spaces) every continuous map factors as a quotient map, then a continuous bijection, then a subspace embedding.
+**Problem.** In a ternary factorization system, every morphism factors as an E-map, then an F-map, then an M-map, uniquely up to unique isomorphism. In Top, this is a quotient map, then a continuous bijection, then a subspace embedding.
 
-**How the definition helps.** With this definition, uniqueness of the three-step factorization is a short exercise about orthogonality. You can factor in the two possible orders, and the results are isomorphic. So the middle map lies in both L₂ and R₁. One might hope to describe strict ternary factorization systems as iterated distributive laws in spans. This fails in general: the class R₂L₁ of maps that factor as an L₁-map followed by an R₂-map need not be closed under composition. Top is a concrete example. The nested-pair definition avoids this problem.
+**How the definition helps.** With this definition, uniqueness of the three-step factorization is a short exercise about orthogonality. You can factor in the two possible orders, and the results are isomorphic, so the middle map lies in both L₂ and R₁. Describing such systems as iterated distributive laws fails in general, because the class R₂L₁ need not be closed under composition. Top is a concrete example.
 
 **nLab:** [ternary factorization system](https://ncatlab.org/nlab/show/ternary+factorization+system). It says: “It turns out that a convenient way to state the definition is in terms of a pair of ordinary (orthogonal) factorization systems.”
 
@@ -3498,9 +3498,9 @@
 
 **Definition.** Take a functorial factorization, which sends each arrow f to a left factor followed by a right factor. View it as a pointed endofunctor R on the arrow category. An R-algebra structure on an arrow is a choice of lifts for it. A right weak composition law is a functor that composes R-algebra structures along composable arrows; it must be compatible with morphisms of algebras, but it need not be associative.
 
-**Problem.** Find when a functorial factorization extends to an algebraic weak factorization system. In such a system, the left and right factors form a comonad and a monad, with a distributive law between them.
+**Problem.** A functorial factorization with a right weak composition law freely generates an algebraic weak factorization system, through the algebraically free monad 𝔽(R) on R (Garner–Riehl).
 
-**How the definition helps.** The free monad on R turns a weak composition law into a strong one with no extra work. Garner and Riehl show that if R is a monad, the factorization is an algebraic weak factorization system exactly when it has a strong composition law. Given only a weak composition law for the pointed endofunctor R, one passes to the algebraically free monad 𝔽(R). By definition, the algebras of 𝔽(R) are the same as R-algebras. So the weak law is already a strong law for 𝔽(R), and the first theorem applies. The second theorem is thus nearly a tautology. The work is in the first theorem and in building 𝔽(R) by a transfinite construction.
+**How the definition helps.** The free monad on R turns a weak composition law into a strong one with no extra work. Garner and Riehl show that if R is a monad, the factorization is an algebraic weak factorization system exactly when it has a strong composition law. The algebras of 𝔽(R) are by definition the R-algebras, so the weak law is a strong law for 𝔽(R). The work is in the first theorem and in building 𝔽(R) by a transfinite construction.
 
 **nLab:** [composition law for factorizations](https://ncatlab.org/nlab/show/composition+law+for+factorizations). It says: “By definition, the algebraically-free monad 𝔽(R) satisfies 𝔽(R) Alg = R Alg. Thus, the weak composition law for R extends to a strong one for 𝔽(R); now we can apply the previous theorem.”
 
@@ -3517,9 +3517,9 @@
 
 **Definition.** A locally small category C is total if its Yoneda embedding C → \[Cᵒᵖ, Set\] has a left adjoint. Equivalently, C has every colimit of the identity functor weighted by any presheaf W : Cᵒᵖ → Set. The left adjoint sends a presheaf W to this weighted colimit, the object of C that best approximates W.
 
-**Problem.** When does a functor that preserves colimits have a right adjoint?
+**Problem.** If C is total, every functor from C to a locally small category that preserves large colimits has a right adjoint. No solution-set condition is needed.
 
-**How the definition helps.** For a total category, preserving all large colimits is already enough to have a right adjoint. The usual adjoint functor theorem also needs a solution-set condition (a smallness condition on the functor). Here, any functor from a total category to a locally small category that preserves large colimits has a right adjoint. Totality also gives all small limits and colimits for free. Most familiar categories of structures are total: Set, Grp, Top, locally presentable categories, and anything monadic or topological over Set. So the theorem applies widely. The work moves into proving that a given category is total, and Day and Tholen give criteria for that.
+**How the definition helps.** For a total category, preserving all large colimits is already enough to have a right adjoint. The usual adjoint functor theorem also needs a solution-set condition. Most familiar categories of structures are total: Set, Grp, Top, locally presentable categories, and anything monadic or topological over Set. The work moves into proving that a given category is total, and Day and Tholen give criteria for that.
 
 **nLab:** [total category](https://ncatlab.org/nlab/show/total+category). It says: “Total categories satisfy a very satisfactory adjoint functor theorem: any large-colimit-preserving functor from a total category to a locally small category has a right adjoint.”
 
@@ -3536,9 +3536,9 @@
 
 **Definition.** A set functor F describes a type of system, such as nondeterministic or probabilistic transitions. Its Barr extension sends a relation R ⊆ X × Y to the image of F(R) in F(X) × F(Y). A lax extension lifts relations monotonically, respects F on functions, and lifts a composite at least as large as the composite of the lifts. It is normal if it sends identity relations to identity relations.
 
-**Problem.** One generic notion of bisimulation for all system types says: related states have successors related by the lifted relation. For this to behave, the lifting must keep identity relations and work well with composition.
+**Problem.** If a set functor F preserves weak pullbacks, its Barr extension preserves composition of relations and identity relations. So the generic bisimulation, in which related states have successors related by the lifted relation, behaves well.
 
-**How the definition helps.** A functor that preserves weak pullbacks, which are pullbacks without the uniqueness condition, lifts composites of relations exactly. This is because a composite of relations comes from a pullback of their pairs (our own explanation). Then the Barr extension is strict and normal, as the quote says, and the generic bisimulation behaves well. Some useful functors fail this condition, such as those for neighbourhood systems and for some weighted systems (our own remark). The paper shows that functors with a normal lax extension still preserve a weaker class of pullbacks, the 1/4-iso pullbacks. It also gives sufficient conditions beyond weak pullbacks, so the hard cases need these new criteria.
+**How the definition helps.** A composite of relations comes from a pullback of their pairs, so preserving weak pullbacks lifts composites exactly (our own explanation). Some useful functors fail this condition, such as those for neighbourhood systems (our own remark). The paper shows that functors with a normal lax extension still preserve a weaker class of pullbacks, the 1/4-iso pullbacks. It also gives sufficient conditions beyond weak pullbacks for the hard cases.
 
 **Paper or page:** [Identity-Preserving Lax Extensions and Where to Find Them](https://arxiv.org/abs/2410.14440v2). It says: “It is known that preservation of weak pullbacks is a sufficient condition for a functor to admit a normal lax extension (the Barr extension, which in fact is then even strict)”
 
@@ -3554,7 +3554,7 @@
 
 **Definition.** A topos is a category that behaves like the category of sets and has its own internal logic. A sheaf on a space is flabby when every section over an open set extends to the whole space. The paper defines flabby objects in any elementary topos. For sheaves on a space, and more generally in localic toposes, the notion reduces to flabby sheaves.
 
-**Problem.** An object of a topos can be injective in the internal logic, or injective as seen from outside. One wants to know whether the two notions agree. For projective objects they do not agree.
+**Problem.** In an elementary topos, an object is injective in the internal logic exactly when it is injective as seen from outside. The analogous statement fails for projective objects.
 
 **How the definition helps.** Our own reading: both the internal and the external view can use flabby objects, so the two kinds of injectivity can be compared. With this tool, the paper shows that the two notions of injective object coincide. The abstract notes that the analogous statement fails for projective objects. As an application, higher direct images become internal cohomology. The paper also gives a definition of flabby sheaves that does not depend on the site.
 
@@ -3572,9 +3572,9 @@
 
 **Definition.** The Freyd cover (or scone) of a category T with a terminal object is the comma category Set ↓ Γ, where Γ = T(1, −) is the global sections functor. An object of the cover is a set X, an object U of T, and a function X → Γ(U).
 
-**Problem.** Show that in the free (initial) topos, the terminal object is connected and projective, that is, Γ preserves finite colimits. This gives the disjunction property and the existence property of intuitionistic higher-order logic.
+**Problem.** In the free topos, the global sections functor Γ preserves finite colimits, so the terminal object is connected and projective. Hence its logic has the disjunction property and the existence property.
 
-**How the definition helps.** The result is easy in the Freyd cover, and the initial topos inherits it as a retract. In the cover, the terminal object is projective by a short argument, because Γ there is a representable functor that preserves colimits. The cover is again a topos. The initial topos T is a retract of its cover through logical functors (functors that preserve all the topos structure). So Γ on T is a retract of a functor that preserves finite colimits. Hence if P ∨ Q is provable, one of P and Q is provable, and if ∃x.P(x) is provable, then P(a) is provable for some global element a. These facts were first proved by syntactic means; the scone gives a short conceptual proof, due to Freyd.
+**How the definition helps.** The result is easy in the Freyd cover, and the initial topos inherits it as a retract. In the cover, Γ is representable and preserves colimits. The cover is again a topos, and the initial topos is a retract of it through logical functors. So if P ∨ Q is provable, one of P and Q is provable, and if ∃x.P(x) is provable, then P(a) is provable for some global element a.
 
 **nLab:** [Freyd cover](https://ncatlab.org/nlab/show/Freyd+cover). It says: “They were originally proved by syntactic means; the conceptual proofs of the lemma and theorem below are due to Freyd.”
 
@@ -3590,9 +3590,9 @@
 
 **Definition.** A category is adhesive if it has pullbacks, it has pushouts along monomorphisms, and these pushouts are van Kampen. Van Kampen means this: take a cube whose bottom face is such a pushout and whose back and left faces are pullbacks. Then the top face is a pushout exactly when the front and right faces are pullbacks. Every topos is adhesive.
 
-**Problem.** Double-pushout graph rewriting deletes part of an object by taking a pushout complement. A pushout complement is the missing corner that completes a pushout square from two given maps. The rewrite is well defined only if this pushout complement, when it exists, is unique.
+**Problem.** In an adhesive category, a pushout complement of a monomorphism followed by any map, when it exists, is unique up to unique isomorphism. So double-pushout rewriting with rules whose left leg is a monomorphism is well defined.
 
-**How the definition helps.** Lack and Sobociński chose the definition of adhesive categories so that the facts used in graph rewriting hold. Pushouts preserve monomorphisms. A pushout square of monomorphisms is also a pullback. A pushout complement of a monomorphism followed by any map is unique up to unique isomorphism. This uniqueness needs the left leg of the rule to be a monomorphism. The nLab lists Cat, posets, topological spaces and groupoids as categories that are not adhesive. In those categories the uniqueness result is not available.
+**How the definition helps.** Lack and Sobociński chose the definition so that the facts used in graph rewriting hold. Pushouts preserve monomorphisms, and a pushout square of monomorphisms is also a pullback. A pushout complement is the missing corner that completes a pushout square from two given maps. Cat, posets, topological spaces and groupoids are not adhesive, and there the uniqueness result is not available.
 
 **nLab:** [adhesive category](https://ncatlab.org/nlab/show/adhesive+category), [span rewriting](https://ncatlab.org/nlab/show/span+rewriting). It says: “In an adhesive category, if m: C → A is mono and g: A → D is any morphism, then if a pushout complement exists, it is unique up to unique isomorphism.”
 
@@ -3609,9 +3609,9 @@
 
 **Definition.** In double-pushout rewriting, a rule L ← K → R replaces a copy of L in a graph by R, keeping K. A pushout glues two objects along a common part, and a monomorphism is an arrow that behaves like an injective map. An adhesive category is one where pushouts along monomorphisms behave like unions of sets: they are stable under pullback and are also pullbacks. M-adhesive categories ask this only for a chosen class M of monomorphisms.
 
-**Problem.** To study rewriting systems, one composes two rules along an overlap to get one rule that does both steps. One wants this composition to be associative, so that rules form an algebra.
+**Problem.** In an M-adhesive category with the extra conditions the paper names, such as finitarity and effective unions, composing rewriting rules along overlaps is associative. So the rules form a rule algebra, which has a unit when there is an M-initial object.
 
-**How the definition helps.** The adhesive conditions make pushouts and pullbacks along M-morphisms fit together like unions and intersections of sets (our own explanation). Associativity of overlapping compositions needs this (our own). The paper shows this associativity in general M-adhesive categories, and the abstract says it complements the classical Concurrency Theorem of double-pushout rewriting. Associativity then lets the paper define rule algebras; they have a unit when there is an M-initial object. These algebras give a way to compute how statistical moments, such as averages, evolve in stochastic rewriting systems. The abstract names extra conditions, such as finitarity and effective unions, and checking them in each category stays hard (our own remark).
+**How the definition helps.** The adhesive conditions make pushouts and pullbacks along M-morphisms fit together like unions and intersections of sets (our own explanation). The abstract says this complements the classical Concurrency Theorem of double-pushout rewriting. The rule algebras give a way to compute how statistical moments evolve in stochastic rewriting systems. Checking the extra conditions in each category stays hard (our own remark).
 
 **Paper or page:** [Rule Algebras for Adhesive Categories](https://arxiv.org/abs/1807.00785v4). It says: “We demonstrate that the most well-known approach to rewriting graphical structures, the Double-Pushout (DPO) approach, possesses a notion of sequential compositions of rules along an overlap that is associative in a natural sense.”
 
@@ -3625,11 +3625,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18C10 (Theories (e.g., algebraic theories), structure, and semantics), 46A99. arXiv math.FA, math.CT. Level 4: research.
 
-**Definition.** Use the two-sorted theory of vector spaces. This theory has two sorts (kinds of variables): one sort k for scalars and one sort X for vectors. It has operations such as scalar multiplication k × X → X. A topological vector space is a model of this theory in Top (the category of topological spaces), where the scalar sort is the topological ground field.
+**Definition.** Use the two-sorted theory of vector spaces. It has one sort k for scalars and one sort X for vectors, and operations such as scalar multiplication k × X → X. Interpret it in Top, with the topological ground field as the scalar sort.
 
-**Problem.** Make exact the slogan 'a topological vector space is a vector space internal to Top'. Here 'internal to Top' means that the sets are spaces and the operations are continuous maps. The slogan should work in the same way as 'a topological group is a group object in Top'.
+**Problem.** Topological vector spaces are exactly the models of the two-sorted theory of vector spaces in Top. So a topological vector space is a vector space internal to Top, as a topological group is a group object in Top.
 
-**How the definition helps.** With two sorts, the continuity of scalar multiplication becomes part of the definition. In our own reading, the problem with the usual one-sorted theory is this. That theory has a separate unary operation for each scalar. So if you interpret it in Top, scalar multiplication is only continuous for the discrete topology on k. That is weaker than the usual condition that scalar multiplication k × X → X is jointly continuous. In the two-sorted theory, the scalar sort is the topological field, so the continuity of k × X → X is part of the model, and the slogan becomes exact.
+**How the definition helps.** With two sorts, the joint continuity of scalar multiplication k × X → X is part of the model. The usual one-sorted theory has a separate unary operation for each scalar (our own reading). Interpreted in Top, it makes scalar multiplication continuous only for the discrete topology on k.
 
 **nLab:** [topological vector space](https://ncatlab.org/nlab/show/topological+vector+space). It says: “Much as a topological group is a group object in Top, so a TVS is the same as a vector space internal to Top ... provided that we use the two-sorted notion of vector space (k, X)”
 
@@ -3643,9 +3643,9 @@
 
 **Definition.** The paper works in any category with finite products. It uses a binary operation ⊕ that behaves like taking the midpoint, with laws such as x⊕x = x and x⊕y = y⊕x. An interval object is, roughly, the universal such structure with two chosen end points; the paper also needs infinite iterated averages (our own summary). The definition is a universal property, so it fixes the object up to isomorphism.
 
-**Problem.** One wants to define functions on a closed interval and prove identities between them. Usually this needs the real numbers first. In the category of sets, the definition should pick out the intervals \[a,b\].
+**Problem.** Two midpoint-preserving maps out of an interval object that agree on the end points are equal. In the category of sets, the interval objects are the closed intervals \[a,b\] with a &lt; b and their midpoint operation.
 
-**How the definition helps.** A universal property gives a unique structure-preserving map into any suitable target with two chosen points, so it defines functions out of the interval. Two such functions that agree on the end points must be equal, so identities follow from uniqueness. The abstract also says that the definition does not assume real numbers. In sets, the property picks out the closed intervals of real numbers with nonempty interior. Corollary 4.19 confirms that \[a,b\] with a &lt; b and the midpoint is an interval object. Our own remark: the nonempty interior condition excludes the one-point interval \[a,a\].
+**How the definition helps.** A universal property gives a unique structure-preserving map into any suitable target with two chosen points, so it defines functions out of the interval. Identities between such functions follow from uniqueness. The definition does not assume the real numbers. Corollary 4.19 confirms that \[a,b\] with a &lt; b is an interval object; the condition a &lt; b excludes the one-point interval (our own remark).
 
 **Paper or page:** [Euclidean interval objects in categories with finite products](https://arxiv.org/abs/2504.21551), [Euclidean interval objects in categories with finite products](https://arxiv.org/abs/2504.21551). It says: “The universal property characterises such structures up to isomorphism, supports the definition of functions between intervals, and provides a means of verifying identities between functions.”
 
@@ -3661,9 +3661,9 @@
 
 **Definition.** A Lawvere theory is an algebraic theory, given as a category whose objects are the powers of one object. A Fermat theory is a Lawvere theory that extends the theory of commutative rings, such that each operation f has a unique operation f̃ (its Hadamard quotient) with f(x + y, z) = f(x, z) + y · f̃(x, y, z). In words, the change in f when x moves by y is y times another operation. The derivative of f is then f̃(x, 0, z), and the theory of C∞-rings is the main example.
 
-**Problem.** Get the rules of calculus by algebra alone, with no limits. These include the sum, product and chain rules, partial derivatives as derivations, Kähler differentials, and modules over smooth algebras.
+**Problem.** In a Fermat theory, with the derivative of f defined as f̃(x, 0, z), the sum, product and chain rules follow by algebra alone. Each partial derivative is a derivation of the free algebra T(n).
 
-**How the definition helps.** The derivative is the value of an operation, so the rules of calculus follow from one equation by algebra. Once the derivative is f̃(x, 0), the sum, product and chain rules follow from the defining equation, with no limits. Each partial derivative is a derivation (a linear map that obeys the product rule) of the ring T(n), the free algebra on n generators. The nLab uses these partial derivatives to define derivations of any T-algebra, and from them Kähler differentials (the algebraic form of 1-forms) that fit the theory. The tangent category page uses the same property to show that abelian group objects over a smooth algebra are just modules over its underlying ring. The real work is to show that smooth functions form a Fermat theory at all, and this is Hadamard's lemma.
+**How the definition helps.** The derivative is the value of an operation, so the rules of calculus follow from one equation by algebra. The nLab uses these partial derivatives to define derivations of any T-algebra, and from them Kähler differentials. The tangent category page shows that abelian group objects over a smooth algebra are modules over its underlying ring. The real work is to show that smooth functions form a Fermat theory at all, which is Hadamard's lemma.
 
 **nLab:** [Fermat theory](https://ncatlab.org/nlab/show/Fermat+theory), [tangent category](https://ncatlab.org/nlab/show/tangent+category), [Hadamard lemma](https://ncatlab.org/nlab/show/Hadamard+lemma). It says: “is in fact a Fermat theory in that Hadamard's lemma holds for smooth functions in particular on Cartesian spaces.”
 
@@ -3679,9 +3679,9 @@
 
 **Definition.** A comonad on graphs is a functor G with maps G(A) → A and G(A) → G(G(A)), with laws dual to those of a monad. A graph parameter assigns a number to each graph, such as its treewidth. The paper builds a comonad for each standard graph parameter by a Kan extension formula. This comonad classifies the same class of graphs as the parameter, which means that the graphs in the class are those that carry a coalgebra structure.
 
-**Problem.** A homomorphism-counting theorem says that two structures are equivalent exactly when they have the same number of homomorphisms from each structure in a class. Earlier such theorems came from particular comonads built from model comparison games.
+**Problem.** For each standard graph parameter, the comonad built by the Kan extension is the initial comonad whose coalgebras are the graphs in the class. It automatically has a homomorphism-counting theorem: two structures are equivalent for it exactly when they have equally many homomorphisms from each graph in the class.
 
-**How the definition helps.** The Kan extension builds the comonad from exactly the graphs that the parameter allows, so the counting theorem comes with the construction. The abstract says that the comonad is the initial solution and that it automatically admits a homomorphism-counting theorem. Initial means that it has a unique map to any other comonad that solves the same problem. The construction works whether or not any model comparison game is involved. Our own remark: the hard work sits in the general theorem that links comonads of this form to homomorphism counts.
+**How the definition helps.** The Kan extension builds the comonad from exactly the graphs that the parameter allows, so the counting theorem comes with the construction. Initial means that it has a unique map to any other comonad that solves the same problem. Earlier counting theorems came from particular comonads built from model comparison games, and this construction needs no game. The hard work sits in the general theorem that links comonads of this form to homomorphism counts (our own remark).
 
 **Paper or page:** [Discrete density comonads and graph parameters](https://arxiv.org/abs/2205.06589). It says: “This comonad is constructed via a simple Kan extension formula, making it the initial solution to this problem and, furthermore, automatically admitting a homomorphism-counting theorem.”
 
@@ -3713,9 +3713,9 @@
 
 **Definition.** A monad T on a category with pullbacks is cartesian if T preserves pullbacks. Also, every naturality square of its unit and multiplication must be a pullback square.
 
-**Problem.** For a monad T, the spans T E ← M → E′ (T-spans) should form a bicategory (a 2-category in which composition is associative and unital only up to isomorphism). Then you can define a T-multicategory as a monad in that bicategory, just as an ordinary category is a monad in spans of sets.
+**Problem.** If T is a cartesian monad, the T-spans T E ← M → E′ form a bicategory, with composition by pullback and the multiplication of T. A T-multicategory is then a monad in this bicategory, as a category is a monad in spans of sets.
 
-**How the definition helps.** The cartesian condition makes the composition of T-spans coherent, so the bicategory exists. Composition of T-spans uses pullbacks and the multiplication of T. The associativity and unit 2-cells come from the universal property of pullbacks. For a general monad these 2-cells need not be invertible, so T-spans do not form a bicategory. The nLab says that the cartesian condition is exactly what makes these coherence 2-cells isomorphisms. With it, Leinster's T-multicategories, and globular operads for T the free strict ω-category monad, have a one-line definition. The free commutative monoid monad is not cartesian, so symmetric multicategories do not fit this scheme directly.
+**How the definition helps.** The cartesian condition makes the coherence 2-cells of T-span composition invertible, so the bicategory exists. These 2-cells come from the universal property of pullbacks, and for a general monad they need not be invertible. With it, Leinster's T-multicategories and globular operads have a one-line definition. The free commutative monoid monad is not cartesian, so symmetric multicategories do not fit this scheme directly.
 
 **nLab:** [cartesian monad](https://ncatlab.org/nlab/show/cartesian+monad). It says: “In fact, it turns out that requiring the monad T to be cartesian is exactly what is needed to ensure that the coherence 2-cells are isomorphisms, and hence that T-spans do in fact form a bicategory.”
 
@@ -3767,9 +3767,9 @@
 
 **Definition.** A monad on a category ℰ describes a kind of algebraic structure on its objects. Here ℰ is a locally presentable enriched category, and every object is a canonical colimit of a small full subcategory 𝒜 of arities. A monad is 𝒜-nervous when the conclusions of Weber's nerve theorem hold for it. These conclusions say that its algebras are exactly certain presheaves on an associated theory.
 
-**Problem.** A monad–theory correspondence matches suitable monads with suitable theories, as Lawvere did for finitary monads on sets. Earlier correspondences each needed their own conditions and proofs.
+**Problem.** The constructions between monads and theories form an adjunction whose fixed points are exactly the nervous monads and the theories. So nervous monads correspond to theories, and every monad with arities is nervous (Theorem 43).
 
-**How the definition helps.** The definition is the conclusion of the nerve theorem, so the theorem holds for nervous monads by definition. The work moves to another place. One must show that the two constructions between monads and theories form an adjunction. One must also show that its fixed points are exactly the nervous monads and the theories. The paper says that the resulting equivalence is best possible in a precise sense. Known classes still need a proof that they qualify: Theorem 43 shows that monads with arities are nervous. Theorem 50 shows that monads with arities need not be closed under colimits.
+**How the definition helps.** The definition is the conclusion of the nerve theorem, so the theorem holds for nervous monads by definition. The work moves to proving the adjunction and identifying its fixed points. The paper says that the resulting equivalence is best possible in a precise sense. Theorem 50 shows that monads with arities need not be closed under colimits.
 
 **Paper or page:** [Monads and theories](https://arxiv.org/abs/1805.04346), [Monads and theories](https://arxiv.org/abs/1805.04346). It says: “The fixpoints of the adjunction are characterised as the 𝒜-nervous monads—those for which the conclusions of Weber's nerve theorem hold—and the 𝒜-theories, which we introduce here.”
 
@@ -3785,7 +3785,7 @@
 
 **Definition.** A monad T on a category D describes a kind of algebraic structure, and its Eilenberg–Moore algebras are the structures of that kind. A profinite term is, roughly, a term that is known only through its values in all finite algebras. The profinite monad of T collects the spaces of profinite terms into one monad.
 
-**Problem.** Reiterman's theorem says that a class of finite algebras is a pseudovariety exactly when profinite equations define it. A pseudovariety is a class of finite algebras closed under finite products, subalgebras and quotients. The paper proves this for finite algebras of a monad T on a category D.
+**Problem.** Reiterman's theorem holds for finite algebras of a monad T on a category D: a class of finite T-algebras is a pseudovariety exactly when profinite equations define it. A pseudovariety is closed under finite products, subalgebras and quotients.
 
 **How the definition helps.** The profinite monad turns profinite terms into a categorical object, so the classical argument can be stated for any monad. Our own remark: ordinary equations are too weak to define pseudovarieties, which is why profinite equations are needed. The abstract calls profinite equations an indispensable tool for the algebraic classification of formal languages. Our own remark: the main technical work is to construct the profinite monad and prove its properties.
 
@@ -3803,9 +3803,9 @@
 
 **Definition.** A monad models a computational effect, such as nondeterministic choice (the powerset monad) or weighted choice (the semimodule monad of finite weighted sums). A distributive law between two monads is a natural map that swaps them and satisfies four laws. Beck showed that it makes the composite a monad. A weak distributive law keeps three of the four laws and drops one law about a unit.
 
-**Problem.** Programs that make both nondeterministic and probabilistic choices need one monad for both effects. The natural attempt is a distributive law between the powerset monad and the distribution monad.
+**Problem.** No ordinary distributive law combines the powerset monad with the distribution monad (Plotkin). For a class of semirings containing the positive semifields, a weak distributive law combines the powerset and semimodule monads into the monad of convex sets of weighted sums.
 
-**How the definition helps.** The weak definition drops one unit law, and a combined monad becomes possible again (our own summary). No ordinary distributive law of this kind exists: this is a counterexample attributed to Plotkin, which the no-go paper generalizes. A weak distributive law still produces a combined monad, by a construction of Garner and others (our own summary). For the powerset and semimodule monads, the quoted paper describes the weak law δ as a convex closure. The result is the monad of convex sets of weighted sums, close to models that semanticists already used (our own comparison). What stays hard is the condition on the weights, which live in a semiring, a number system with addition and multiplication but perhaps no subtraction. The paper needs a class of semirings that contains the positive semifields, such as the nonnegative real numbers.
+**How the definition helps.** The weak definition drops one unit law, and a combined monad becomes possible again (our own summary). A weak distributive law still produces a combined monad, by a construction of Garner and others. The quoted paper describes the weak law as a convex closure. What stays hard is the condition on the semiring of weights.
 
 **Paper or page:** [Convexity via Weak Distributive Laws](https://arxiv.org/abs/2108.10718v4), [No-Go Theorems for Distributive Laws](https://arxiv.org/abs/2003.12531v4). It says: “Using the abstract theory of weak distributive laws, we compose the powerset and the semimodule monads via δ, obtaining the monad of convex subsets of the free semimodule.”
 
@@ -3823,9 +3823,9 @@
 
 **Definition.** In programming, a thunk is a suspended computation, and forcing it runs it. A thunk-force category is a category K with a functor L, a natural transformation ε : L → Id called force, and a transformation θ : Id → L called thunk that need not be natural. These satisfy four equations: (L, ε, θL) is a comonad, and each component of θ makes its object A a coalgebra. A morphism f is thunkable if (Lf)θ = θf, that is, if θ is natural at f.
 
-**Problem.** Axiomatize the Kleisli category of a monad directly, and recover from it the original category of pure (effect-free) maps. The maps of the Kleisli category are the programs that may have effects.
+**Problem.** In a thunk-force category, the thunkable maps form a subcategory with a monad on it. Thunk-force categories correspond to the monads whose unit is an equalizer, which form a reflective subcategory of all monads (Führmann).
 
-**How the definition helps.** Because θ need not be natural, the places where naturality holds pick out the pure maps. Thunkable morphisms are, by definition, those for which naturality holds. So 'θ is natural' says exactly that every morphism is pure, as in the Kleisli category of the identity monad. In the Kleisli category of the maybe monad (the monad for partial functions), the thunkable maps are exactly the total functions. The thunkable maps form a subcategory with a monad on it. Thunk-force categories form a reflective subcategory of monads, namely those monads whose unit is an equalizer. That last equivalence is Führmann's theorem and is real work.
+**How the definition helps.** Because θ need not be natural, the places where naturality holds pick out the pure maps. So 'θ is natural' says that every morphism is pure, as in the Kleisli category of the identity monad. In the Kleisli category of the maybe monad, the thunkable maps are exactly the total functions. Führmann's theorem is real work.
 
 **nLab:** [thunk-force category](https://ncatlab.org/nlab/show/thunk-force+category). It says: “The presence of non-thunkable morphisms makes θ fail to be natural overall; naturality of θ is exactly the same as saying all morphisms are thunkable.”
 
@@ -3841,9 +3841,9 @@
 
 **Definition.** A convex space is a set in which you can form weighted averages ∑ pᵢ xᵢ, with pᵢ ≥ 0 and ∑ pᵢ = 1. A measurable convex space is a convex space with a measurable structure in which all finite affine sums are measurable. It must also have enough affine measurable maps to ℝ∞ to separate its points: for any two different points, some such map takes different values on them.
 
-**Problem.** Describe the Eilenberg–Moore algebras of the Giry monad, which sends a measurable space to its space of probability measures. An algebra is a space X with a map G(X) → X, compatible with the monad, that turns each probability measure into a point.
+**Problem.** By a recent claim of Sturtz, the Eilenberg–Moore algebras of the Giry monad are exactly the measurable convex spaces. The Giry monad sends a measurable space to its space of probability measures.
 
-**How the definition helps.** In our own reading, the separation condition makes the barycentre (expected value) of a probability measure a well-defined unique point. Every Giry algebra G(X) → X makes X a convex space. It sends ∑ pᵢ xᵢ to the image of ∑ pᵢ δ(xᵢ), where δ(x) is the point mass at x. With the separation condition, the nLab follows a recent preprint by Sturtz and applies Beck's monadicity theorem. This shows that the comparison functor from measurable convex spaces to Giry algebras is an equivalence. This is a recent claim, not yet a standard result.
+**How the definition helps.** In our own reading, the separation condition makes the barycentre of a probability measure a well-defined unique point. Every Giry algebra G(X) → X makes X a convex space, sending ∑ pᵢ xᵢ to the image of ∑ pᵢ δ(xᵢ). With the separation condition, Beck's monadicity theorem shows that the comparison functor is an equivalence. This is a recent claim, not yet a standard result.
 
 **nLab:** [Giry monad](https://ncatlab.org/nlab/show/Giry+monad). It says: “Moreover, we require that each object in Meas ∩ Cvx have enough affine measurable functions X → ℝ<sub>∞</sub> to coseparate the points of X.”
 
@@ -3860,9 +3860,9 @@
 
 **Definition.** Constructively, an extended natural number is an infinite monotone sequence of bits: once a 1 appears, all later bits are 1. The number n is n zeros followed by ones. ∞ is the sequence of all zeros.
 
-**Problem.** The set ℕ̄ of extended natural numbers should be the terminal coalgebra of X ↦ 1 + X. Such a coalgebra is a set with a map that sends each element to 'zero' or to a predecessor, and the terminal one is the type of possibly infinite counts. This should hold in constructive mathematics and in any topos.
+**Problem.** In constructive mathematics and in any topos, the set ℕ̄ of monotone bit sequences is the terminal coalgebra of X ↦ 1 + X. Its coalgebra map sends a sequence starting with 1 to zero, and any other sequence to its shift by one place.
 
-**How the definition helps.** With monotone sequences, the predecessor map only looks at the first bit, so the universal property of the terminal coalgebra holds constructively. The classical definition ℕ ⊔ {∞} fails constructively, because one cannot decide whether a given count is finite or infinite. The page uses exactly this universal property to justify the definition. The same set is also compact Hausdorff without the fan theorem, a compactness principle that constructive mathematics does not prove in general.
+**How the definition helps.** With monotone sequences, the predecessor map only looks at the first bit, so the universal property holds constructively. The classical definition ℕ ⊔ {∞} fails constructively, because one cannot decide whether a given count is finite or infinite. The same set is also compact Hausdorff without the fan theorem.
 
 **nLab:** [extended natural number](https://ncatlab.org/nlab/show/extended+natural+number). It says: “Note that this universal property also holds constructively (which is why we can be sure that the constructive definition above is correct).”
 
@@ -3897,9 +3897,9 @@
 
 **Definition.** An algebra for an endofunctor F is an object X with a map F(X) → X, and a coalgebra is an object X with a map X → F(X). A category is algebraically compact if every endofunctor F has an initial algebra and a final coalgebra, and the canonical map from the initial algebra to the final coalgebra is an isomorphism.
 
-**Problem.** Solve recursive type equations X ≅ T(X, X), where T : Cᵒᵖ × C → C has mixed variance: it is contravariant in its first argument and covariant in its second. An example is X ≅ (X → X) for the untyped lambda calculus.
+**Problem.** If C is algebraically compact, every mixed-variance equation X ≅ T(X, X), for a functor T : Cᵒᵖ × C → C, has a solution. An example is X ≅ (X → X) for the untyped lambda calculus.
 
-**How the definition helps.** Algebraic compactness passes to Cᵒᵖ × C, and there a mixed-variance equation becomes an ordinary fixed-point equation. Freyd showed that algebraic compactness is stable under products and under taking the opposite category, so Cᵒᵖ × C is algebraically compact when C is. A mixed-variance equation then becomes a fixed point of the covariant endofunctor (X, Y) ↦ (T(Y, X), T(X, Y)) on Cᵒᵖ × C, and its initial algebra gives the solution. A symmetry argument of Freyd shows that the two parts of this fixed point agree, so one gets an X with X ≅ T(X, X). Few categories are algebraically compact in the classical sense. So in practice one restricts to enriched functors, for example on pointed complete partial orders with strict maps (maps that keep the least element).
+**How the definition helps.** Algebraic compactness passes to Cᵒᵖ × C, and there a mixed-variance equation becomes an ordinary fixed-point equation. The fixed point is the initial algebra of (X, Y) ↦ (T(Y, X), T(X, Y)). A symmetry argument of Freyd shows that its two parts agree, which gives X ≅ T(X, X). Few categories are algebraically compact in the classical sense, so in practice one restricts to enriched functors, for example on pointed complete partial orders.
 
 **nLab:** [algebraically compact category](https://ncatlab.org/nlab/show/algebraically+compact+category). It says: “If C and D are algebraically compact, so is C×D. If C is algebraically compact, so is the dual category Cᵒᵖ.”
 
@@ -3913,11 +3913,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 18C50 (Categorical semantics of formal languages), 65D25, 18D30. arXiv cs.PL, math.CT. Level 4: research.
 
-**Definition.** Fix a kind of structure S, such as products, function types and primitive operations. Take the source programming language to be Syn, the initial S-category: the category with structure S that has exactly one S-preserving functor to every other such category. Forward and reverse automatic differentiation are then the unique S-preserving functors from Syn into two categories, Σ(C, L) and Σ(C, Lᵒᵖ). The Grothendieck construction builds these two categories; it glues a family of categories indexed by C into one category.
+**Definition.** Take the source language to be Syn, the initial category with structure S, such as products, function types and primitive operations. Forward and reverse CHAD are the unique S-preserving functors from Syn into two categories, Σ(C, L) and Σ(C, Lᵒᵖ), built by the Grothendieck construction.
 
-**Problem.** Show that automatic differentiation computes the correct derivative of every composite program, including higher-order programs. For reverse mode, the correct result is the transposed derivative.
+**Problem.** For programs between first-order types, which may be higher-order inside, forward CHAD computes the correct derivative and reverse CHAD the transposed derivative. This assumes that the derivatives of the primitive operations are correct.
 
-**How the definition helps.** Because Syn is initial, automatic differentiation is compositional by definition: its values on the primitive operations fix it everywhere. The correctness theorem says that the meaning of the differentiated program is the meaning of the program together with its derivative. The nLab says that the proof is a standard logical relations argument (an induction over types with a chosen predicate for each type). It also says that, viewed abstractly, the proof follows automatically, because the Artin gluing of an S-category is again an S-category. Artin gluing builds a new category from a functor; its objects pair an object with extra data over it. The theorem holds for programs between first-order types, and these programs may be higher-order inside. It assumes that the derivatives of the primitive operations are implemented correctly.
+**How the definition helps.** Because Syn is initial, automatic differentiation is compositional by definition: its values on the primitive operations fix it everywhere. The nLab says that the proof is a standard logical relations argument. Viewed abstractly, it follows because the Artin gluing of an S-category is again an S-category.
 
 **nLab:** [automatic differentiation](https://ncatlab.org/nlab/show/automatic+differentiation). It says: “Viewed more abstractly, the proof follows automatically because the Artin gluing along a representable functor (like the hom out of the real numbers) of an S-category is itself again an S-category, for common most choices of S.”
 
@@ -3934,9 +3934,9 @@
 
 **Definition.** A comprehension category is a fibration E → C of dependent types over a category C of contexts, together with a functor to the arrow category of C. A fibration lets you reindex (pull back) a type along a map of contexts. The comprehension category is split when the fibration is split. Then reindexing along a composite is exactly equal to the composite of the reindexings.
 
-**Problem.** Interpret dependent type theory soundly in a category, with substitution interpreted as pullback.
+**Problem.** Dependent type theory has a sound interpretation in split comprehension categories, with substitution interpreted as reindexing, which is strictly associative there. Hofmann's construction strictifies a locally cartesian closed category into such a structure.
 
-**How the definition helps.** Split comprehension categories, and related structures, have strictly associative substitution, so they match the syntax directly. In syntax, substitution is strictly associative, and type formers commute with it strictly. But a category defines pullback only up to isomorphism. That mismatch breaks a direct interpretation, for example in a locally cartesian closed category. The remaining work is the coherence theorem: you can strictify any suitable category into such a structure, for example by Hofmann's construction.
+**How the definition helps.** Split comprehension categories have strictly associative substitution, so they match the syntax directly. In syntax, substitution is strictly associative, and type formers commute with it strictly. But a category defines pullback only up to isomorphism, which breaks a direct interpretation in a locally cartesian closed category. The remaining work is the coherence theorem that strictifies such categories.
 
 **nLab:** [categorical semantics of dependent type theory](https://ncatlab.org/nlab/show/categorical+semantics+of+dependent+type+theory). It says: “The way this is generally dealt with is to introduce a category-theoretic structure which does have a "substitution" operation which is strictly associative, hence does correspond directly to type theory”
 
@@ -3954,9 +3954,9 @@
 
 **Definition.** A C\*-category is a category enriched in Banach spaces with an involution a ↦ a\*. It satisfies the C\*-identity ‖a\*a‖ = ‖a‖² and the bound ‖ba‖ ≤ ‖b‖‖a‖. In addition, for every arrow a : x → y there must be an arrow b : x → x with a\*a = b\*b. So every a\*a is a positive element.
 
-**Problem.** Show that every small C\*-category has a faithful \*-functor into the category Hilb of Hilbert spaces. This is an analogue of the Gelfand–Naimark–Segal (GNS) representation of a C\*-algebra.
+**Problem.** Every small C\*-category has a faithful \*-functor into the category Hilb of Hilbert spaces, an analogue of the GNS representation of a C\*-algebra.
 
-**How the definition helps.** The extra axiom gives back the positivity of a\*a that the C\*-identity no longer gives, and a representation on Hilbert spaces needs that positivity. For a C\*-algebra, positivity of a\*a follows from the C\*-identity, but for categories it does not. Take two objects with every hom-space a copy of ℂ, and put a\* = conj(a) on endomorphisms but a\* = −conj(a) on arrows between different objects. Then a\*a is negative, so no faithful representation on Hilbert spaces can exist, because there a\*a is always positive. The extra axiom excludes this example. With the axiom, the GNS-type construction gives the faithful functor into Hilb. That the axiom is what the representation theorem needs is our reading of the page, which states the axiom, the counterexample and the theorem side by side.
+**How the definition helps.** The extra axiom gives back the positivity of a\*a that the C\*-identity no longer gives, and a representation on Hilbert spaces needs it. Take two objects with every hom-space ℂ, and put a\* = conj(a) on endomorphisms but a\* = −conj(a) on arrows between different objects. Then a\*a is negative, so no faithful representation on Hilbert spaces exists. That the axiom is what the theorem needs is our reading of the page.
 
 **nLab:** [C-star-category](https://ncatlab.org/nlab/show/C-star-category). It says: “Unlike C\*-algebras, this does not follow automatically, as can be seen by considering the category with two objects x,y with all morphism sets a copy of ℂ”
 
@@ -3972,9 +3972,9 @@
 
 **Definition.** A Lawvere metric space has a distance d into \[0,∞\] with d(x,x) = 0 and the triangle inequality, but not always symmetry. It is a category enriched over \[0,∞\], so complete has its categorical meaning: suitable enriched limits exist, which is stronger than Cauchy completeness. Isbell convexity is a geometric condition from Kemajou, Künzi and Otafudu. Our own summary: suitable families of balls whose radii fit the distances between their centres have a common point.
 
-**Problem.** A metric space is injective when every distance-non-increasing map into it extends along any distance-preserving embedding. One wants a clear description of the injective spaces.
+**Problem.** For any quantale 𝒬, a 𝒬-category is skeletal and complete exactly when it is injective for fully faithful 𝒬-functors. For Lawvere metric spaces, this gives the theorem of Kemajou, Künzi and Otafudu on injective spaces.
 
-**How the definition helps.** Completeness is a categorical notion, so one injectivity theorem for enriched categories covers metric spaces at once. The paper proves that, for any quantale 𝒬, a 𝒬-category is skeletal and complete exactly when it is injective for fully faithful 𝒬-functors. A quantale is a complete lattice with a compatible multiplication; here it is \[0,∞\] with addition. Skeletal means that distance zero in both directions forces equality. The abstract says that this is a special case of theorems of Hofmann and Stubbe, with a different proof. For metric spaces it gives the results of Kemajou, Künzi and Otafudu. The proof uses the MacNeille completion as the injective envelope.
+**How the definition helps.** Completeness is a categorical notion, so one injectivity theorem for enriched categories covers metric spaces at once. A quantale is a complete lattice with a compatible multiplication; here it is \[0,∞\] with addition. Skeletal means that distance zero in both directions forces equality. The proof uses the MacNeille completion as the injective envelope, and the result is a special case of theorems of Hofmann and Stubbe.
 
 **Paper or page:** [Completeness and injectivity](https://arxiv.org/abs/2005.05311), [Completeness and injectivity](https://arxiv.org/abs/2005.05311). It says: “A Lawvere metric space is Isbell convex if and only if it is complete”
 
@@ -3990,9 +3990,9 @@
 
 **Definition.** A Lawvere metric space is a category enriched in (\[0,∞\], ≥, +, 0). (An enriched category has hom-objects taken from a monoidal category instead of hom-sets.) So the hom-object d(x, y) is a number. Composition is the triangle inequality d(x, y) + d(y, z) ≥ d(x, z), and identities give d(x, x) = 0.
 
-**Problem.** Express metric completeness as a general categorical notion. Then Cauchy completion of metric spaces and idempotent completion of categories are the same construction.
+**Problem.** A metric space is complete in the usual sense exactly when it is Cauchy complete as an enriched category: every adjoint pair of bimodules comes from a functor (Lawvere). For ordinary categories, the same notion is idempotent completeness.
 
-**How the definition helps.** Once metric spaces are enriched categories, the enriched notion of Cauchy completeness applies to them. In that notion, a category is Cauchy complete when every adjoint pair of bimodules comes from a functor. (A bimodule between two enriched categories gives a hom-object from each object of one to each object of the other.) Lawvere found that an ordinary metric space is complete in the usual sense exactly when it is Cauchy complete in this enriched sense. For ordinary categories, the same definition gives idempotent completion, and it relates to Morita equivalence. The equivalence with Cauchy sequences is Lawvere's theorem, not a tautology.
+**How the definition helps.** Once metric spaces are enriched categories, the enriched notion of Cauchy completeness applies to them. A bimodule between two enriched categories gives a hom-object from each object of one to each object of the other. For ordinary categories, the same notion relates to Morita equivalence. The equivalence with Cauchy sequences is Lawvere's theorem, not a tautology.
 
 **nLab:** [metric space](https://ncatlab.org/nlab/show/metric+space), [complete space](https://ncatlab.org/nlab/show/complete+space), [triangle inequality](https://ncatlab.org/nlab/show/triangle+inequality), [Cauchy complete category](https://ncatlab.org/nlab/show/Cauchy+complete+category). It says: “he found that a metric space was complete if and only if every adjunction of bimodules over the enriched category is induced by an enriched functor.”
 
@@ -4006,11 +4006,11 @@
 
 *True by definition. Confidence: medium.* MSC 18D25 (Actions of a monoidal category, tensorial strength), 18C15, 18C50. arXiv cs.LO, math.CT. Level 4: research.
 
-**Definition.** A strength for a functor T is a natural map from Γ × TX to T(Γ × X). It lets a computation use a variable from its context Γ, and it must respect the product structure. 'Functionally complete' is the paper's condition on the action ▷ of D. Roughly, it says that maps are determined by their values on global elements.
+**Definition.** A strength for a functor T is a natural map from Γ × TX to T(Γ × X) that respects the product structure. It lets a computation use a variable from its context Γ. The paper's condition, functional completeness, says roughly that maps are determined by their values on global elements, as in sets.
 
-**Problem.** Moggi's semantics of effects uses strong monads, because a program must sequence computations that have free variables. In general, a monad may have no strength or several strengths.
+**Problem.** Over sets, every functor has exactly one strength, and every natural transformation is strong. So every monad on sets is strong in exactly one way, as Moggi's semantics of effects needs.
 
-**How the definition helps.** When maps are determined by their action on points, the strength has only one possible value. In sets it must send (γ, t) to the result of applying T to the map x ↦ (γ, x) at t (our own formula). The quoted proposition gives the general condition for this, with sets as the main example (our own reading). It also makes every natural transformation strong, so the unit and multiplication of a monad respect the strength. So for monads on sets, strength is not extra data, and every such monad is strong in exactly one way. The work moves into the general case, where the paper gives several equivalent characterizations and conditions for strength to exist.
+**How the definition helps.** When maps are determined by their action on points, the strength has only one possible value. In sets it must send (γ, t) to the result of applying T to the map x ↦ (γ, x) at t (our own formula). In general, a monad may have no strength or several. The paper gives several equivalent characterizations and conditions for strength to exist.
 
 **Paper or page:** [What Makes a Strong Monad?](https://arxiv.org/abs/2207.00851v1). It says: “If ▷ᴅ is functionally complete, then every functor F : C → D has a unique strength, and every natural transformation τ : F ⇒ G of functors C → D is strong.”
 
@@ -4027,9 +4027,9 @@
 
 **Definition.** A displayed category over C gives a fibre category D(a) for each object a of C. It also gives a set of morphisms over each arrow f of C, with identities and composition that lie over those of C. Equivalently, it is a normal lax functor from C to the bicategory of profunctors. A profunctor is a kind of relation between categories, and a normal lax functor keeps identities but has only comparison maps, not isomorphisms, for composites.
 
-**Problem.** The ordinary Grothendieck construction matches only pseudofunctors Cᵒᵖ → Cat (functors that keep composition up to coherent isomorphism) with fibrations over C. We want a correspondence that covers all functors D → C.
+**Problem.** Displayed categories over C are equivalent to the slice Cat/C, that is, to all functors into C (Bénabou). The ordinary Grothendieck construction covers only the fibrations, which come from pseudofunctors Cᵒᵖ → Cat.
 
-**How the definition helps.** Displayed categories let the fibre over an arrow be a profunctor instead of a functor, and let composition be only lax, so they match every functor into C. With these choices, displayed categories are equivalent to the slice category Cat/C, that is, to all functors into C. The old cases come back as special cases. If the lax functor factors through Catᵒᵖ, it is a cloven prefibration. If it is a pseudofunctor, it is a Conduché (exponentiable) functor. Bénabou observed the correspondence in 1972. In type theory, a displayed category gives a functor whose identity and composition laws hold by definitional equality.
+**How the definition helps.** Displayed categories let the fibre over an arrow be a profunctor instead of a functor, and let composition be only lax, so they match every functor into C. The old cases come back as special cases. If the lax functor factors through Catᵒᵖ, it is a cloven prefibration, and if it is a pseudofunctor, it is a Conduché functor. In type theory, a displayed category gives a functor whose laws hold by definitional equality.
 
 **nLab:** [displayed category](https://ncatlab.org/nlab/show/displayed+category), [Grothendieck construction](https://ncatlab.org/nlab/show/Grothendieck+construction). It says: “Instead of fibrations over C, such normal lax functors correspond to arbitrary functors into C.”
 
@@ -4045,9 +4045,9 @@
 
 **Definition.** A cartesian morphism is a morphism in E through which other morphisms with the same target factor uniquely, in a way that is compatible with p. A functor p : E → B is a Street fibration if this holds: for every morphism f : a → p(e) in B, there is a cartesian morphism φ : e′ → e and an isomorphism h : p(e′) ≅ a with f ∘ h = p(φ). In words, f lifts to E up to an isomorphism at its source. A Grothendieck fibration asks for h to be an identity.
 
-**Problem.** We want a notion of fibration that does not change under equivalence of categories. It should make sense inside a bicategory (a 2-category in which composition is associative only up to isomorphism). It should still give the correspondence between fibrations over B and pseudofunctors from Bᵒᵖ to Cat (functors that respect composition only up to coherent isomorphism).
+**Problem.** A functor equivalent to a Street fibration is again a Street fibration, so the notion makes sense in any bicategory. Over B, the 2-category of Street fibrations is equivalent to the 2-category of pseudofunctors Bᵒᵖ → Cat.
 
-**How the definition helps.** Street fibrations ask for a lift only up to isomorphism, so an equivalence of categories cannot break the property. Being a Grothendieck fibration does not respect equivalence: an equivalence of categories is in general not a Grothendieck fibration. Street fibrations are closed under composition and include all equivalences, so any functor equivalent to a Street fibration is again one. Because of this, the notion makes sense inside a bicategory, where strict lifts do not make sense. You must use essential fibres instead of strict fibres (the essential fibre over b holds the objects whose image is isomorphic to b, not equal to it). With essential fibres, every Street fibration gives a pseudofunctor Bᵒᵖ → Cat, and the 2-category of Street fibrations is equivalent to the 2-category of pseudofunctors. In Cat the gain is mostly philosophical, because every Street fibration is an equivalence followed by a Grothendieck fibration.
+**How the definition helps.** Street fibrations ask for a lift only up to isomorphism, so an equivalence of categories cannot break the property. Grothendieck fibrations do not respect equivalence: an equivalence is in general not a Grothendieck fibration. Street fibrations are closed under composition and include all equivalences. For the correspondence with pseudofunctors you must use essential fibres (objects whose image is isomorphic to b, not equal to it).
 
 **nLab:** [Street fibration](https://ncatlab.org/nlab/show/Street+fibration). It says: “A Street fibration, or weak fibration, is a generalization of a Grothendieck fibration which obeys the principle of equivalence, i.e. covariant under equivalence of categories.”
 
@@ -4064,9 +4064,9 @@
 
 **Definition.** An equipment is a 2-category with an extra kind of arrow, called proarrows, that behave like profunctors. A profunctor is a functor of two variables, contravariant in one of them, that generalizes a hom-functor. In an equipment, a J-weighted limit uses a proarrow J as its weight. A pointwise right Kan extension along k : D → A is then a limit weighted by the proarrow A(1,k).
 
-**Problem.** Give a formal definition of Kan extension that is correct for enriched categories (categories whose homs are objects of a monoidal category V). For them, the Kan extension of bare 2-category theory is not the right notion. Also make enriched weighted limits statable formally at all.
+**Problem.** In an equipment, a pointwise right Kan extension along k : D → A is a limit weighted by the proarrow A(1,k). In the equipment of V-categories this gives the correct enriched pointwise Kan extension.
 
-**How the definition helps.** Proarrows give the weights a place to live, so weighted limits and pointwise Kan extensions can be stated. In our own reading, a bare 2-category such as V Cat does not directly see V-valued homs. So the usual weighted limits cannot be expressed directly there, and its internal Kan extensions need not be pointwise. With the proarrows as weights, weighted limits become statable, and pointwise Kan extensions are a special case of them, as in the enriched theory. Every pointwise Kan extension is an internal Kan extension, but the converse fails in V Cat. So the definition excludes the wrong ones. The cited papers do the work of showing that this matches the classical enriched notion.
+**How the definition helps.** Proarrows give the weights a place to live, so weighted limits and pointwise Kan extensions can be stated. In our own reading, the bare 2-category V Cat does not see V-valued homs, so its internal Kan extensions need not be pointwise. Every pointwise Kan extension is an internal one, but the converse fails in V Cat. The cited papers show that the formal notion matches the classical enriched one.
 
 **nLab:** [2-category equipped with proarrows](https://ncatlab.org/nlab/show/2-category+equipped+with+proarrows). It says: “That is, the extra data of a proarrow equipment lets us define the good notion of Kan extension (even in the enriched case) as a special case of a general notion of limit.”
 
@@ -4081,11 +4081,11 @@
 
 *Rules out counterexamples.* MSC 18D65 (Proarrow equipments, Yoneda structures, KZ doctrines (lax idempotent monads)), 18D20, 18A22. arXiv math.CT. Level 4: research.
 
-**Definition.** A 2-category equipped with proarrows has a 2-category K, a second 2-category M of proarrows, and a 2-functor K → M that is bijective on objects and locally fully faithful. A typical proarrow is a profunctor, which is like a relation between two categories. In M, the image B(1,f) of each arrow f must have a right adjoint B(f,1). An arrow f : A → B is fully faithful in the equipment when the canonical map from the identity proarrow of A to B(f,f) is an isomorphism.
+**Definition.** An equipment is a 2-category K with a second 2-category M of proarrows (such as profunctors) and a 2-functor K → M, bijective on objects and locally fully faithful. Each arrow f : A → B gives a proarrow B(1,f) with a right adjoint B(f,1). The arrow f is fully faithful in the equipment when the canonical map from the identity proarrow of A to B(f,f) is an isomorphism.
 
-**Problem.** Find a formal, 2-categorical definition of a fully faithful functor. It must give the correct notion of V-fully-faithful V-functor between categories enriched over V.
+**Problem.** In the equipment of V-categories and V-profunctors, an arrow is fully faithful exactly when it is a V-fully-faithful V-functor.
 
-**How the definition helps.** The equipment supplies the V-valued homs, so the definition can ask directly that f preserves them. The naive internal definition in the bare 2-category V Cat asks that K(X,A) → K(X,B) be fully faithful for all X. This is weaker than V-fully-faithfulness, so it lets in functors that are not V-fully faithful. The equipment supplies the V-valued hom-profunctors B(f,f), and asking that A(–,–) → B(f–,f–) be an isomorphism is exactly V-fully-faithfulness. Every arrow that is fully faithful in this sense is internally fully faithful, and the two notions agree when f has a left or a right adjoint. The nLab page does not name a specific counterexample to the converse.
+**How the definition helps.** The equipment supplies the V-valued homs B(f,f), so the definition can ask directly that f preserves them. The naive internal definition in the bare 2-category V Cat asks that K(X,A) → K(X,B) be fully faithful for all X. This is weaker, so it lets in functors that are not V-fully faithful. The two notions agree when f has a left or a right adjoint.
 
 **nLab:** [2-category equipped with proarrows](https://ncatlab.org/nlab/show/2-category+equipped+with+proarrows). It says: “is said to be fully faithful if the canonical morphism U(A) → B(f,f) is an isomorphism of proarrows A → A. In V Cat this recaptures the correct notion of V-fully-faithful V-functor.”
 
@@ -4102,9 +4102,9 @@
 
 **Definition.** A 2-monad T is lax-idempotent (also called Kock–Zöberlein) if every morphism f : A → B between T-algebras carries exactly one 2-cell that makes it a lax T-morphism. A lax T-morphism is a map together with a 2-cell, not necessarily invertible, that compares the two ways round the algebra square. The model case is the 2-monad of free cocompletion under some class of colimits.
 
-**Problem.** Some structures, like 'having finite colimits', are really properties. When they exist, they are unique up to unique isomorphism. One wants a precise statement of this and a test for it.
+**Problem.** For a lax-idempotent 2-monad T, every algebra structure TA → A is left adjoint to the unit A → TA. So an object carries at most one pseudo-algebra structure, up to unique isomorphism.
 
-**How the definition helps.** The definition puts the canonical comparison map into the axioms, and uniqueness of structure then comes from an adjunction. Take a functor between categories with the chosen colimits. Its unique lax structure is the comparison map colim(F∘D) → F(colim D), and the functor preserves the colimits exactly when this map is invertible. From the definition, a short argument shows that each algebra structure a : TA → A is left adjoint to the unit η : A → TA. A further theorem says that a pseudo-algebra structure on A is the same as a left adjoint to that unit with invertible counit. So an object carries at most one pseudo-algebra structure, up to unique isomorphism. This is the 'property-like structure' of Kelly and Lack.
+**How the definition helps.** The definition puts the canonical comparison map into the axioms, and uniqueness of structure then comes from an adjunction. For a functor F between categories with chosen colimits, the unique lax structure is the map colim(F∘D) → F(colim D). F preserves the colimits exactly when this map is invertible. A pseudo-algebra structure on A is the same as a left adjoint to the unit with invertible counit, which is unique up to unique isomorphism.
 
 **nLab:** [lax-idempotent 2-monad](https://ncatlab.org/nlab/show/lax-idempotent+2-monad), [lax morphism](https://ncatlab.org/nlab/show/lax+morphism). It says: “If T is a lax-idempotent 2-monad, then (by definition) every morphism in the underlying 2-category K between (the objects underlying) T-algebras has a unique structure of lax T-morphism.”
 
@@ -4121,9 +4121,9 @@
 
 **Definition.** A virtual double category has squares whose top side is a composable string of proarrows (arrows such as profunctors). So proarrows need not have composites. A virtual equipment is a virtual double category in which all units and all restrictions exist. A restriction is the proarrow that you get when you pull a proarrow back along ordinary arrows at its two ends.
 
-**Problem.** Do formal category theory for categories enriched in any monoidal category V. Do the same for internal categories in any category with pullbacks. Do this without extra conditions.
+**Problem.** For every monoidal category V, V-categories and V-profunctors form a virtual equipment. Internal categories in any category with pullbacks also form one.
 
-**How the definition helps.** The virtual definition never composes proarrows, so it needs no conditions that make composition exist. To make V-profunctors into an ordinary equipment (a double category in which proarrows compose and all restrictions exist), profunctor composition must exist and be associative. That needs V to be cocomplete, with ⊗ preserving colimits on both sides. For internal categories, one needs finite limits and coequalizers that are stable under pullback. Without these conditions, V Cat is still a virtual equipment for every monoidal V. The nLab says that most of category theory can still be done in this setting. The details are in Cruttwell and Shulman.
+**How the definition helps.** The virtual definition never composes proarrows, so it needs no conditions that make composition exist. To make V-profunctors an ordinary equipment, V must be cocomplete with ⊗ preserving colimits on both sides. For internal categories, one needs finite limits and coequalizers that are stable under pullback. The nLab says that most of category theory can still be done in the virtual setting.
 
 **nLab:** [2-category equipped with proarrows](https://ncatlab.org/nlab/show/2-category+equipped+with+proarrows), [virtual equipment](https://ncatlab.org/nlab/show/virtual+equipment). It says: “One can formulate a generalized notion of equipment which includes V Cat for any monoidal category V (and in fact, any multicategory), and Cat(S) for any category S with pullbacks.”
 
@@ -4157,9 +4157,9 @@
 
 **Definition.** A 2-congruence in a finitely complete 2-category K is a homwise-discrete internal category D. That is, D has an object D₀, a discrete morphism D₁ → D₀ × D₀, and composition and identities that satisfy the category axioms up to isomorphism. 'Discrete' means that D₁ behaves like a family of sets of arrows, not of categories. D must also be a two-sided fibration D₀ ← D₁ → D₀; equivalently, there is a functor from the kernel of D₀ to D that is the identity on D₀.
 
-**Problem.** Exactness for 2-categories asks that every internal 'equivalence relation' is the kernel of some morphism, as in an exact 1-category. In particular, Cat should be exact in this sense.
+**Problem.** In a finitely complete 2-category, the comma object f/f of any morphism f is a 2-congruence, its kernel. In Cat every 2-congruence is a kernel, so Cat is 2-exact.
 
-**How the definition helps.** The two restrictions remove the internal categories that are not kernels. The obvious analogue of an equivalence relation, an arbitrary internal category, is too general. Internal categories in Cat are double categories, and not all of them come from 1-categories as kernels. With this definition, the comma object f/f of any morphism f is a 2-congruence, its kernel, and the nLab states that Cat is 2-exact: every 2-congruence is a kernel. As a bonus, D₁ → D₀ × D₀ is discrete, so all coherence axioms for the structural isomorphisms hold automatically. The nLab calls the definition '(almost) correct' as Street first wrote it. It notes that 2-exactness is not a conservative extension of 1-exactness.
+**How the definition helps.** The two restrictions remove the internal categories that are not kernels. An arbitrary internal category in Cat is a double category, and not all of them come from 1-categories as kernels. Because D₁ → D₀ × D₀ is discrete, the coherence axioms for the structural isomorphisms hold automatically. The nLab notes that 2-exactness is not a conservative extension of 1-exactness.
 
 **nLab:** [2-congruence](https://ncatlab.org/nlab/show/2-congruence), [exact 2-category](https://ncatlab.org/nlab/show/exact+2-category). It says: “But internal categories in Cat are double categories, so we need to somehow cut down the double categories to those that really represent honest 1-categories. These are the 2-congruences.”
 
@@ -4175,9 +4175,9 @@
 
 **Definition.** A finitely cocomplete category has all finite colimits. A right exact functor is a functor that preserves finite colimits. Kelly's tensor product A ⊠ B of two finitely cocomplete categories is the finitely cocomplete category with this property: right exact functors A ⊠ B → C are the same as functors A × B → C that are right exact in each variable.
 
-**Problem.** We want a tensor product for abelian categories that always exists, at least as a finitely cocomplete category. It should agree with Deligne's tensor product of finite abelian categories (roughly, categories of finite-dimensional modules over a finite-dimensional algebra).
+**Problem.** Kelly's tensor product of two finitely cocomplete categories always exists. It agrees with Deligne's tensor product of finite abelian categories whenever the latter exists.
 
-**How the definition helps.** In the larger world of finitely cocomplete categories, the tensor product always exists, so no finiteness conditions are needed. Deligne's tensor product exists for finite abelian categories, but not for all abelian categories. López Franco shows that Kelly's tensor product of finitely cocomplete categories always exists, and that it agrees with Deligne's product when that exists. The nLab does not claim that the result is again abelian; it is a finitely cocomplete category that always exists. So you can state results such as A-Mod ⊠ B-Mod ≃ (A ⊗ B)-Mod with no finiteness conditions, as Chirvasitu and Johnson-Freyd do.
+**How the definition helps.** In the larger world of finitely cocomplete categories, the tensor product always exists, so no finiteness conditions are needed. Deligne's tensor product exists for finite abelian categories, but not for all abelian categories. The result need not be abelian. So one can state A-Mod ⊠ B-Mod ≃ (A ⊗ B)-Mod with no finiteness conditions, as Chirvasitu and Johnson-Freyd do.
 
 **nLab:** [Deligne tensor product of abelian categories](https://ncatlab.org/nlab/show/Deligne+tensor+product+of+abelian+categories). It says: “He argues that in this case it is better to use Kelly's tensor product of finitely cocomplete categories, because it always exists, and it agrees with Deligne's tensor product when the latter exists.”
 
@@ -4231,9 +4231,9 @@
 
 **Definition.** A geometric morphism is the usual notion of map between toposes. It is a (weak) homotopy equivalence of toposes if it induces an equivalence of fundamental ∞-groupoids, or more generally of shapes. For locally ∞-connected 1-toposes, this agrees with the classical notion. The classical notion asks for isomorphisms on cohomology with locally constant abelian coefficients, and on nonabelian cohomology in degree one.
 
-**Problem.** Show that every local geometric morphism, and every totally connected geometric morphism, is a homotopy equivalence of toposes. (A local geometric morphism has a direct image functor with a further fully faithful right adjoint. A totally connected one has an inverse image functor with a left adjoint that preserves finite limits.)
+**Problem.** Every local geometric morphism and every totally connected geometric morphism is a homotopy equivalence of toposes.
 
-**How the definition helps.** The fundamental ∞-groupoid sends adjunctions to equivalences, and these geometric morphisms are parts of adjunctions. The fundamental ∞-groupoid Π∞ is a 2-functor from the 2-category of toposes to ∞Grpd, the ∞-category of ∞-groupoids. In ∞Grpd every 2-morphism is invertible. So Π∞ sends an adjunction of geometric morphisms to an adjunction in ∞Grpd, and such an adjunction must be an equivalence. A local or totally connected geometric morphism is part of such an adjunction, so it is a homotopy equivalence with no further work. The agreement of this definition with the classical one through cohomology uses the Artin–Mazur theorem.
+**How the definition helps.** The fundamental ∞-groupoid sends adjunctions to equivalences, and these geometric morphisms are parts of adjunctions. Π∞ is a 2-functor from toposes to ∞-groupoids, where every 2-morphism is invertible. An adjunction in ∞-groupoids must be an equivalence. The agreement with the classical cohomological notion uses the Artin–Mazur theorem.
 
 **nLab:** [homotopy equivalence of toposes](https://ncatlab.org/nlab/show/homotopy+equivalence+of+toposes). It says: “One important thing to note is that any adjunction in the 2-category Topos induces a homotopy equivalence in any of the above senses.”
 
@@ -4249,9 +4249,9 @@
 
 **Definition.** A profinite set is a compact Hausdorff totally disconnected space, such as the Cantor set. A condensed set is a sheaf of sets on profinite sets, where a cover is a finite family of jointly surjective maps. A condensed abelian group is an abelian group object in condensed sets. Pyknotic sets, by Barwick and Haine, are a close variant. Under mild conditions, topological abelian groups sit inside condensed abelian groups as a full subcategory.
 
-**Problem.** Do homological algebra with topological abelian groups and topological vector spaces. This means kernels, cokernels, exact sequences and derived functors.
+**Problem.** Condensed abelian groups form an abelian category, with all limits and colimits and enough compact projective objects. Topological abelian groups do not form an abelian category.
 
-**How the definition helps.** Condensed abelian groups form an abelian category, so exact sequences and derived functors of topological objects can be stated in the usual way. Topological abelian groups do not form an abelian category. Scholze's example is the identity map from ℝ with the discrete topology to ℝ with the usual topology. It has zero kernel and zero cokernel, but it is not an isomorphism. In an abelian category, this failure must show up as a kernel or a cokernel. Condensed abelian groups have all limits and colimits, exact products and filtered colimits, and enough compact projective objects; there, the cokernel of this map is a nonzero condensed group. Making functional analysis work in this setting needs further hard theorems, about solid and liquid modules.
+**How the definition helps.** Condensed abelian groups form an abelian category, so exact sequences and derived functors of topological objects can be stated in the usual way. Scholze's counterexample for topological groups is the identity map from discrete ℝ to ℝ with its usual topology. It has zero kernel and zero cokernel, but it is not an isomorphism. In condensed abelian groups its cokernel is nonzero.
 
 **nLab:** [condensed mathematics](https://ncatlab.org/nlab/show/condensed+mathematics), [condensed abelian group](https://ncatlab.org/nlab/show/condensed+abelian+group), [condensed set](https://ncatlab.org/nlab/show/condensed+set), [pyknotic set](https://ncatlab.org/nlab/show/pyknotic+set). It says: “For instance, the category of topological abelian groups is not abelian, which means for instance that it lacks a good theory of exact sequences. But the category of condensed abelian groups is abelian”
 
@@ -4286,9 +4286,9 @@
 
 **Definition.** A cohesive site is a site C with the following properties, and a few more. It is locally connected (every covering sieve is connected) and cosifted (for example, it has finite products). Every object has a point. The sheaf topos on such a site is then cohesive.
 
-**Problem.** The sheaf topos Sh(C) should be cohesive. A cohesive topos has a chain of adjoint functors to Set that give, among other things, the points and the connected pieces of each space. In particular, the functor Π₀ of connected components should preserve finite products.
+**Problem.** On a locally connected site C, the functor Π₀ : Sh(C) → Set preserves finite products exactly when C is cosifted. In particular, this holds when C has finite products.
 
-**How the definition helps.** The axiom on the site is a restatement of the property that Π₀ needs. Local connectedness makes constant presheaves into sheaves, so Π₀ exists and is the colimit over Cᵒᵖ. Colimits over Cᵒᵖ commute with finite products exactly when C is cosifted. A category with finite products is cosifted. The rest of cohesiveness still needs short separate arguments. This includes being a local topos and the points-to-pieces map being an epimorphism.
+**How the definition helps.** The axiom on the site is a restatement of the property that Π₀ needs. Local connectedness makes constant presheaves into sheaves, so Π₀ exists and is the colimit over Cᵒᵖ. Colimits over Cᵒᵖ commute with finite products exactly when C is cosifted. The rest of cohesiveness still needs short separate arguments.
 
 **nLab:** [cohesive site](https://ncatlab.org/nlab/show/cohesive+site), [categories with finite products are cosifted](https://ncatlab.org/nlab/show/categories+with+finite+products+are+cosifted). It says: “The condition that Π₀ preserves finite products is precisely the condition that C be a cosifted category.”
 
@@ -4304,9 +4304,9 @@
 
 **Definition.** The topological topos is a topos of sheaves on a small full subcategory of Top. That subcategory has two objects: the point and ℕ⁺, the one-point compactification of the natural numbers (a convergent sequence together with its limit). The sheaves are taken for the canonical topology. Sequential spaces (spaces whose topology is fixed by their convergent sequences) sit inside it as a full subcategory.
 
-**Problem.** Geometric realization of simplicial sets should preserve finite limits. It should also be part of a geometric morphism of toposes (a pair of adjoint functors whose left adjoint, the inverse image, preserves finite limits).
+**Problem.** In the topological topos ℰ, geometric realization sSet → ℰ is the inverse image of a geometric morphism. So it preserves finite limits.
 
-**How the definition helps.** In the topological topos, realization is an inverse image, and inverse images preserve finite limits. In detail, write ℰ for the topological topos. Geometric realization sSet → ℰ is the inverse-image part of a geometric morphism from ℰ to simplicial sets. So it preserves finite limits automatically. Johnstone points out that this fails for the big topos on Top and for Lawvere's topos for continuum mechanics. The price is that the objects are generalized sequential spaces, not all topological spaces.
+**How the definition helps.** In the topological topos, realization is an inverse image, and inverse images preserve finite limits. Johnstone points out that this fails for the big topos on Top and for Lawvere's topos for continuum mechanics. The price is that the objects are generalized sequential spaces, not all topological spaces.
 
 **nLab:** [Johnstone's topological topos](https://ncatlab.org/nlab/show/Johnstone%27s+topological+topos), [nice category of spaces](https://ncatlab.org/nlab/show/nice+category+of+spaces). It says: “following an idea by Joyal, the topological topos ℰ ≔ Sh<sub>J</sub>(Σ) allows one to represent the geometric realization functor sSet → ℰ as the inverse image of a geometric morphism”
 
@@ -4322,9 +4322,9 @@
 
 **Definition.** A locally small category 𝒞 is total if its Yoneda embedding 𝒞 → \[𝒞ᵒᵖ, Set\] has a left adjoint. It is lex total if that left adjoint also preserves finite limits. 'Lex' is short for left exact, which means 'preserves finite limits'.
 
-**Problem.** Characterize Grothendieck toposes intrinsically, without choosing a site. A site is a small category with a notion of covering, from which one builds a topos of sheaves.
+**Problem.** A lex total category is a Grothendieck topos exactly when it has a small set of generators (Street and Walters).
 
-**How the definition helps.** Lex totality states Giraud's property for 𝒞 itself, so no site has to be chosen. Giraud's theorem presents Grothendieck toposes as left exact localizations of presheaf toposes on some small site. Lex totality asks for that property with the large presheaf category of 𝒞 itself. The Street–Walters theorem then says that a lex total category is a Grothendieck topos exactly when it has a small set of generators. So the only remaining condition is about size. Proving that theorem needs care with size, but the definition makes the clean statement possible.
+**How the definition helps.** Lex totality states Giraud's property for 𝒞 itself, so no site has to be chosen. Giraud's theorem presents Grothendieck toposes as left exact localizations of presheaf toposes on some small site. Lex totality asks for this with the large presheaf category of 𝒞 itself. So the only remaining condition is about size.
 
 **nLab:** [lex total category](https://ncatlab.org/nlab/show/lex+total+category). It says: “A lex total category ℰ is a Grothendieck topos iff ℰ has a small set of generators.”
 
@@ -4340,9 +4340,9 @@
 
 **Definition.** An extensive category is a category whose coproducts are disjoint and stable under pullback. A Grothendieck topology on it is superextensive if it contains the extensive topology, whose covering families are the families of coproduct injections, and every covering family is generated by a finite (or small) one. Then you can replace each covering family (Uᵢ → B) by the single cover ∐ᵢ Uᵢ → B.
 
-**Problem.** Compute the sheaves for a topology T in two steps. First impose the coproduct (extensive) condition, then sheafify for single covers. The second step must not destroy the first.
+**Problem.** Let T be a superextensive topology whose covers are stable under finite coproducts. Then sheafifying an extensive sheaf for the single covers of T gives an extensive sheaf, and hence a T-sheaf.
 
-**How the definition helps.** For a superextensive topology the two conditions do not interfere, so you can impose them one after the other. For two arbitrary topologies T₁ and T₂, sheafification for T₂ need not preserve sheaves for T₁. The nLab's counterexample is the walking arrow 0 → 1 (the category with two objects and one arrow between them), with one topology that inverts the arrow and another that makes 0 terminal. Write T(cov) for the topology generated by the single covers and T(ext) for the extensive topology. For a superextensive T whose covers are stable under finite coproducts, the T(cov)-sheafification of a T(ext)-sheaf is again a T(ext)-sheaf, so it is a T-sheaf; the proof uses extensivity to split covers over c₁ + c₂. Note that T is determined by its single covers but not generated by them, so T(ext) is still needed. Roberts uses this for stacks of internal categories and anafunctors.
+**How the definition helps.** For a superextensive topology the two conditions do not interfere, so you can impose them one after the other. For two arbitrary topologies, sheafification for one need not preserve sheaves for the other. The nLab's counterexample is the walking arrow 0 → 1, with one topology that inverts the arrow and another that makes 0 terminal. The proof uses extensivity to split covers over a coproduct c₁ + c₂.
 
 **nLab:** [superextensive site](https://ncatlab.org/nlab/show/superextensive+site). It says: “In general, it is not true, for two Grothendieck topologies T₁ and T₂ on the same category, that T₂-sheafification preserves T₁-sheaves”
 
@@ -4360,7 +4360,7 @@
 
 **Problem.** For every atomic site (C, Jₐₜ), the sheaf topos Sh(C, Jₐₜ) is an atomic Grothendieck topos.
 
-**How the definition helps.** Defining the topology as the one generated, instead of as the nonempty sieves, removes the hypothesis from the statement. In the classical approach (Barr–Diaconescu, Mac Lane–Moerdijk), the nonempty sieves form a Grothendieck topology only when C satisfies the Ore condition, so the statement carries that hypothesis. Caramello's definition makes sense on any category, and the statement then holds with no hypothesis. The proof reduces to the Ore case: the full subcategory C′ of objects that the empty sieve does not cover satisfies the Ore condition, and the comparison lemma gives Sh(C′, J′) ≃ Sh(C, Jₐₜ). So the work moves into that reduction. The topos can be degenerate. On the walking cospan (the category with two arrows a → c ← b) the generated topology contains the empty sieve, and the sheaf topos is trivial.
+**How the definition helps.** Defining the topology as the one generated, instead of as the nonempty sieves, removes the Ore hypothesis from the statement. Classically, the nonempty sieves form a topology only when C satisfies the Ore condition. The proof reduces to the Ore case: the objects that the empty sieve does not cover form a full subcategory with the Ore condition, and the comparison lemma finishes. The topos can be degenerate, for example on the walking cospan a → c ← b.
 
 **nLab:** [atomic site](https://ncatlab.org/nlab/show/atomic+site). It says: “it was observed by O. Caramello (2012) that the atomic topology can in fact be defined on arbitrary categories not only on those satisfying the Ore condition.”
 
@@ -4376,9 +4376,9 @@
 
 **Definition.** A (2,1)-topos is a setting like the stacks of groupoids on a site, where objects can have internal symmetries. In a (2,1)-topos H, a G-principal bundle over X is a map P → X with a G-action that makes X the homotopy quotient of P by G. Such bundles are equivalent to cocycles X → BG, which are maps into the delooping BG of G (the object with one point whose loops form G).
 
-**Problem.** For topological spaces, the different definitions of principal bundle do not agree. A free action with a topological quotient, called a principal bundle in the wide sense or a Cartan principal bundle, need not be locally trivial.
+**Problem.** In a (2,1)-topos, every G-principal bundle is locally trivial. In topological spaces, a free action with a quotient, a Cartan principal bundle, need not be locally trivial.
 
-**How the definition helps.** In a (2,1)-topos, quotients are homotopy quotients, so local triviality follows fairly directly from the axioms. In topological spaces, take the infinite product of circles and divide it by the product of their subgroups of order 2. This is a free quotient with no local sections, so it is not locally trivial (Karube). In a (2,1)-topos, every G-principal bundle is locally trivial, and the principality condition is equivalent to the quotient condition. The nLab calls these fairly direct consequences of the Giraud axioms (the axioms that characterize toposes). The nLab explains that the mismatch of definitions in spaces becomes the fact that the quotients are 'corrected' to homotopy quotients. If an action is not suitably free, the base is replaced by a groupoid or stack, and every action becomes principal over its homotopy quotient. So the definition does not solve the classical problem inside topological spaces; it changes what the base of the bundle is.
+**How the definition helps.** In a (2,1)-topos, quotients are homotopy quotients, so local triviality follows fairly directly from the Giraud axioms. In topological spaces, take the infinite product of circles divided by the product of their subgroups of order 2 (Karube). This is a free quotient with no local sections. The definition does not fix the classical problem in spaces; it changes the base to a homotopy quotient.
 
 **nLab:** [principal bundle](https://ncatlab.org/nlab/show/principal+bundle), [principal infinity-bundle](https://ncatlab.org/nlab/show/principal+infinity-bundle). It says: “every G-principal bundle is locally trivial in a (2,1)-topos H; accordingly there is no mismatch between the various definitions anymore as in the context of topological spaces”
 
@@ -4413,9 +4413,9 @@
 
 **Definition.** A smooth ∞-groupoid is an ∞-sheaf on CartSp: a presheaf of spaces on CartSp that glues correctly over covers. CartSp is the category whose objects are the Cartesian spaces ℝⁿ and whose morphisms are smooth maps, with good open covers as its covers. For a Lie group G, BG is the presheaf of groupoids with one object, whose morphisms over a test space are the smooth functions from that space to G.
 
-**Problem.** Is the simple presheaf BG already an ∞-stack? An ∞-stack is a presheaf that satisfies descent: data given on the pieces of a cover glue, up to coherent homotopy, to data on the whole space.
+**Problem.** On the site CartSp, the presheaf BG satisfies descent, so it is already an ∞-stack. On the site of all manifolds it fails descent, and its stackification is the stack of principal G-bundles.
 
-**How the definition helps.** On CartSp, BG needs no correction, because every G-bundle on ℝⁿ is trivial and there is nothing to glue. On the site of all manifolds, BG fails descent. There, its stackification (the stack that best approximates it) is the stack of principal G-bundles. On CartSp, BG already satisfies descent, so no stackification is needed. More generally, the descent condition over CartSp is often trivial, so fibrant objects (the objects that satisfy descent) are close to ∞-groupoids internal to smooth spaces. The gluing has not gone away. It comes back when you map a manifold X that is not contractible into BG, and these maps give G-bundles on X.
+**How the definition helps.** On CartSp, BG needs no correction, because every G-bundle on ℝⁿ is trivial and there is nothing to glue. The gluing has not gone away. It comes back when you map a manifold X that is not contractible into BG, and these maps give G-bundles on X.
 
 **nLab:** [smooth infinity-stack](https://ncatlab.org/nlab/show/smooth+infinity-stack). It says: “But restricted to the site CartSp the simplicial sheaf BG does satisfy descent: there is up to isomorphism only a single G-bundle on ℝⁿ”
 
@@ -4429,9 +4429,9 @@
 
 **Definition.** Let C be a locally small category that may be large. A presheaf F : Cᵒᵖ → Set is small when it is a small colimit of representable presheaves. Equivalently, it is the left Kan extension of a functor defined on a small category.
 
-**Problem.** Construct the free cocompletion of a large category C as a locally small category, without a Grothendieck universe. The free cocompletion is the category that you get when you freely add all small colimits to C.
+**Problem.** For a locally small category C, possibly large, the small presheaves on C form a locally small category. It is the free cocompletion of C.
 
-**How the definition helps.** Small presheaves come from small data, so they form a locally small category, and no universe is needed. The category of all presheaves on a large C is not locally small, and you need a universe to define it. The category P C of small presheaves can be defined with small diagrams in C. It is locally small and has a Yoneda embedding. It is cocomplete, because small colimits of small colimits are small. So it is the free cocompletion of C. Completeness of P C is not automatic; Day and Lack characterize when it holds.
+**How the definition helps.** Small presheaves come from small data, so they form a locally small category, and no universe is needed. The category of all presheaves on a large C is not locally small. Small presheaves are cocomplete, because small colimits of small colimits are small. Completeness is not automatic; Day and Lack characterize when it holds.
 
 **nLab:** [small presheaf](https://ncatlab.org/nlab/show/small+presheaf). It says: “Since small colimits of small colimits are small colimits, P C is cocomplete. In fact, it is easily seen to be the free cocompletion of C, even when C is not small.”
 
@@ -4447,9 +4447,9 @@
 
 **Definition.** A profinite set is a compact, totally disconnected Hausdorff space, such as the Cantor set. A condensed A-module is a sheaf of A-modules on profinite sets; it plays the role of a topological module. A complex M of condensed A-modules is solid if, for every profinite set S, maps from the free module A\[S\] to M extend uniquely along A\[S\] → A■\[S\]. Here A■\[S\] is a completed version of A\[S\]. Solid modules form a full subcategory D■(A).
 
-**Problem.** Coherent cohomology of schemes should have a six-functor formalism: six standard operations (such as pullback, pushforward and their exceptional versions) with fixed rules between them. In particular, for an open immersion j, the pullback j\* needs a left adjoint j₍!₎. Then you can define the exceptional pushforward f₍!₎ and its right adjoint f⁽!⁾, with a Grothendieck-type duality for smooth maps.
+**Problem.** On solid quasi-coherent modules, the pullback j\* along an open immersion has a left adjoint j₍!₎. This gives an exceptional pushforward f₍!₎ with a right adjoint f⁽!⁾, and a coherent duality theorem (Scholze, Theorem 11.1).
 
-**How the definition helps.** On solid modules, j\* has a left adjoint, so you can build f₍!₎ from it. On solid quasi-coherent modules, Scholze shows that j\* has a left adjoint j₍!₎ (Proposition 11.2). Here j is the open immersion of the adic space of X into a relative compactification over Y. You then define f₍!₎ as the pushforward from that compactification composed with j₍!₎. This f₍!₎ commutes with direct sums, so its right adjoint f⁽!⁾ exists. The resulting coherent duality theorem is Theorem 11.1 of Scholze's lectures. The real work is in the theory of condensed and solid modules.
+**How the definition helps.** On solid modules, j\* has a left adjoint, so you can build f₍!₎ from it. You define f₍!₎ as the pushforward from a relative compactification composed with j₍!₎. This f₍!₎ commutes with direct sums, so its right adjoint f⁽!⁾ exists. The real work is in the theory of condensed and solid modules.
 
 **nLab:** [solid module](https://ncatlab.org/nlab/show/solid+module). It says: “The functor f₍!₎ has to be constructed, and f⁽!⁾ will be defined to be its right adjoint.”
 
@@ -4482,11 +4482,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)), 18N60. arXiv math.KT, math.CT. Level 4: research.
 
-**Definition.** Blumberg, Gepner and Tabuada define a universal functor U from small stable ∞-categories to a stable ∞-category of noncommutative motives. (A stable ∞-category is a homotopy-theoretic category in which fiber sequences and cofiber sequences are the same, as for chain complexes.) U preserves filtered colimits and sends split exact sequences to cofiber sequences; functors with these two properties are called additive invariants. The algebraic K-theory of A is then the mapping spectrum Hom(U(finite spectra), U(A)), where 'finite spectra' is the ∞-category of finite spectra.
+**Definition.** An additive invariant is a functor from small stable ∞-categories to a stable ∞-category that preserves filtered colimits and sends split exact sequences to cofiber sequences. Blumberg, Gepner and Tabuada define the universal additive invariant U, with values in noncommutative motives.
 
-**Problem.** Characterize higher algebraic K-theory by a universal property instead of by a particular construction. Then compare it with other additive invariants, such as topological Hochschild homology.
+**Problem.** Waldhausen K-theory of A is the mapping spectrum from U(finite spectra) to U(A). So natural transformations from K-theory to an additive invariant E are the same as elements of E(finite spectra).
 
-**How the definition helps.** A universal property makes maps out of K-theory easy to describe. Blumberg, Gepner and Tabuada define noncommutative motives by a universal property. K-theory is corepresented by the motive of the sphere, that is, of the ∞-category of finite spectra: maps out of that motive compute K-theory. So, by the Yoneda lemma, a natural transformation from K-theory to another additive invariant E is the same as an element of E(finite spectra). The authors use this to classify all maps from K-theory to topological Hochschild homology and to describe the cyclotomic trace. The real content is their theorem that this mapping spectrum agrees with Waldhausen K-theory. Under this comparison, Waldhausen's S•-construction becomes suspension.
+**How the definition helps.** A universal property makes maps out of K-theory easy to describe. K-theory is corepresented by the motive of finite spectra, so the Yoneda lemma classifies maps out of it. The authors use this to classify maps from K-theory to topological Hochschild homology and to describe the cyclotomic trace. The real content is the comparison with Waldhausen K-theory.
 
 **nLab:** [K-theory of a stable (∞,1)-category](https://ncatlab.org/nlab/show/K-theory+of+a+stable+%28%E2%88%9E%2C1%29-category), [algebraic K-theory](https://ncatlab.org/nlab/show/algebraic+K-theory), [Waldhausen S-construction](https://ncatlab.org/nlab/show/Waldhausen+S-construction). It says: “universal with the property that it respects filtered colimits and exact sequences in a suitable way.”
 
@@ -4539,9 +4539,9 @@
 
 **Definition.** A C∞-ring is a ring in which you can apply every smooth function ℝⁿ → ℝ, not only polynomials. A (coconnective) differential graded C∞-ring is a commutative differential graded real algebra A whose degree 0 part A₀ is a C∞-ring. The differential A₀ → A₁ must be a C∞-derivation, so it obeys the chain rule for all smooth functions, not only for polynomials.
 
-**Problem.** We want to recover the de Rham complex of a manifold M algebraically from C∞(M). We also want to prove the Poincaré lemma: Ω(ℝⁿ) is quasi-isomorphic to ℝ in degree 0.
+**Problem.** The free differential graded C∞-ring on C∞(M) is the de Rham complex Ω(M). As a consequence, Ω(ℝⁿ) is quasi-isomorphic to ℝ in degree 0 (the Poincaré lemma).
 
-**How the definition helps.** The chain-rule condition makes the free object the de Rham complex, and then the Poincaré lemma is a formal fact about free objects. With this definition, the free differential graded C∞-ring on C∞(M) is the de Rham complex Ω(M). The ordinary free commutative differential graded algebra does not give Ω(M), because ordinary Kähler differentials (the algebraic differentials da) are wrong for smooth functions. For the Poincaré lemma, Ω(ℝⁿ) is free on the contractible cochain complex V\* → V\*, and the free functor preserves cochain homotopy equivalences. A weaker definition, which puts a C∞-structure only on degree 0 cocycles, is not enough for this theorem. The real content is the Dubuc–Kock theorem on Kähler C∞-differentials.
+**How the definition helps.** The chain-rule condition makes the free object the de Rham complex, and then the Poincaré lemma is a formal fact about free objects. The ordinary free commutative differential graded algebra does not give Ω(M), because ordinary Kähler differentials are wrong for smooth functions. Ω(ℝⁿ) is free on a contractible cochain complex, and the free functor preserves cochain homotopy equivalences. The real content is the Dubuc–Kock theorem on Kähler C∞-differentials.
 
 **nLab:** [differential graded C<sup>∞</sup>-ring](https://ncatlab.org/nlab/show/differential+graded+C%5E%E2%88%9E-ring), [smooth differential forms form the free C<sup>∞</sup>-DGA on smooth functions](https://ncatlab.org/nlab/show/smooth+differential+forms+form+the+free+C%5E%E2%88%9E-DGA+on+smooth+functions). It says: “The stronger condition is essential for some theorems about coconnective differential graded C<sup>∞</sup>-rings, such as the one that states that smooth differential forms form the free C<sup>∞</sup>-DGA on smooth functions.”
 
@@ -4558,9 +4558,9 @@
 
 **Definition.** A C∞-ring is a set A with an operation Aⁿ → A for every smooth function ℝⁿ → ℝ. Composition of smooth functions must go to composition of operations. Equivalently, a C∞-ring is a functor that preserves products, from the category of Cartesian spaces ℝⁿ with smooth maps to the category of sets.
 
-**Problem.** The algebra C∞(X × Y) of smooth functions on a product should be the tensor product of C∞(X) and C∞(Y). Also, C∞(−) should turn transversal pullbacks of manifolds into pushouts of algebras. A transversal pullback is a fibre product of manifolds over two transversal maps, so the result is again a manifold.
+**Problem.** For manifolds X and Y, the coproduct of C∞-rings C∞(X) ⊗∞ C∞(Y) is C∞(X × Y). More generally, C∞(−) sends transversal pullbacks of manifolds to pushouts of C∞-rings.
 
-**How the definition helps.** The coproduct of C∞-rings already gives all smooth functions on the product, so no separate completion step is needed. For the ordinary algebraic tensor product of ℝ-algebras the statement fails. In general C∞(X) ⊗ C∞(Y) is only a proper subalgebra of C∞(X × Y), and analysts have to complete it. For Cartesian spaces the statement is true by definition, because C∞(ℝⁿ) is the free C∞-ring on n generators and a coproduct of free C∞-rings is free. So C∞(ℝⁿ) ⊗∞ C∞(ℝᵐ) = C∞(ℝⁿ⁺ᵐ), where ⊗∞ is the coproduct of C∞-rings. For general manifolds the coproduct C∞(X) ⊗∞ C∞(Y) is again C∞(X × Y). The nLab cites Moerdijk and Reyes for the proof that C∞(−) sends transversal pullbacks to pushouts and is fully faithful on manifolds; that proof still needs analysis.
+**How the definition helps.** The coproduct of C∞-rings already gives all smooth functions on the product, so no separate completion step is needed. The algebraic tensor product C∞(X) ⊗ C∞(Y) is in general a proper subalgebra of C∞(X × Y). For Cartesian spaces the statement holds by definition, because C∞(ℝⁿ) is the free C∞-ring on n generators. The general case, by Moerdijk and Reyes, still needs analysis.
 
 **nLab:** [C<sup>∞</sup>-ring](https://ncatlab.org/nlab/show/C%5E%E2%88%9E-ring). It says: “The smooth tensor product is automatically the completed tensor product.”
 
@@ -4576,7 +4576,7 @@
 
 **Definition.** Poset cocalculus takes a functor from a distributive lattice, such as the subsets of a set, to a model category. A model category is a setting for homotopy theory. The method gives codegree n approximations, and a codegree n functor sends strongly bicartesian (n+1)-cubes to homotopy cocartesian ones. The Čech complex has a simplex for each set of points whose r-balls meet, and Vietoris–Rips for each set pairwise within 2r.
 
-**Problem.** Explain how the Vietoris–Rips filtration relates to the Čech filtration. Vietoris–Rips needs only pairwise distances, but it need not have the shape of the union of balls.
+**Problem.** In poset cocalculus, the Vietoris–Rips filtration is precisely the codegree 2 approximation of the Čech filtration.
 
 **How the definition helps.** The codegree n approximation keeps only the information from small subsets (our own). The Vietoris–Rips filtration checks only pairs of points, so it appears as the codegree 2 case (our own). The paper also proves that the approximations are stable under interleaving distance. The hard part is the construction of the cocalculus tower.
 
@@ -4594,9 +4594,9 @@
 
 **Definition.** A space X is Δ-generated if its topology is the final topology for all continuous maps from the topological simplices Δⁿ into X. In other words, a set is open when its preimage under every continuous map Δⁿ → X is open.
 
-**Problem.** Find a convenient category of spaces that is also locally presentable. Locally presentable means, roughly, that the category has all colimits and every object is built by colimits from a small set of small objects. Then general tools, such as combinatorial model structures, apply.
+**Problem.** Δ-generated spaces form a coreflective, cartesian closed subcategory of Top that contains all CW complexes. This category is also locally presentable (Fajstrup and Rosický).
 
-**How the definition helps.** The definition tests open sets with a small set of spaces, the simplices, instead of all compact Hausdorff spaces. The result is a coreflective, cartesian closed subcategory of Top that contains all CW complexes. Coreflective means that every space has a best Δ-generated approximation that maps to it. Fajstrup and Rosický show that this subcategory is also locally presentable. The page also shows that these spaces are exactly the D-topologies of diffeological spaces (the topologies that these generalised smooth spaces get from their smooth maps).
+**How the definition helps.** The definition tests open sets with a small set of spaces, the simplices, instead of all compact Hausdorff spaces. A small set of generators is what local presentability needs. Coreflective means that every space has a best Δ-generated approximation that maps to it.
 
 **nLab:** [Delta-generated topological space](https://ncatlab.org/nlab/show/Delta-generated+topological+space), [nice category of spaces](https://ncatlab.org/nlab/show/nice+category+of+spaces). It says: “The subcategory of Delta-generated topological spaces is also both cartesian closed and locally presentable.”
 
@@ -4613,9 +4613,9 @@
 
 **Definition.** A class 𝒞 of spaces is productive if two conditions hold. Every member is exponentiable in Top, that is, function spaces out of it satisfy the exponential law. And the product of any two members is a colimit in Top of members of 𝒞, so it is glued from members. A space is 𝒞-generated if it is a colimit in Top of spaces in 𝒞.
 
-**Problem.** For which choices of test spaces is the category of spaces generated by them cartesian closed? Cartesian closed means that it has function spaces: maps Z × X → Y correspond to maps from Z to the space of maps X → Y.
+**Problem.** For a productive class 𝒞, the 𝒞-generated spaces form a coreflective, cartesian closed subcategory of Top. Its internal hom is the coreflection of the compact-open topology.
 
-**How the definition helps.** The definition isolates two properties that the classical proof for compactly generated spaces uses, so one proof covers many cases. This is our reading. With it, one theorem covers k-spaces, Δ-generated spaces (spaces generated by the standard simplices) and others at once. The 𝒞-generated spaces are coreflective in Top: each space has a best 𝒞-generated approximation that maps to it. They are also cartesian closed, and their internal hom (function space) is the coreflection of the compact-open topology. Vogt had given a similar axiom in 1971. The real work is the theorem of Escardó, Lawson and Simpson that the definition implies cartesian closure.
+**How the definition helps.** The definition isolates two properties that the classical proof for compactly generated spaces uses, so one proof covers many cases (our reading). One theorem then covers k-spaces, Δ-generated spaces and others at once. The real work is the theorem of Escardó, Lawson and Simpson.
 
 **nLab:** [convenient category of topological spaces](https://ncatlab.org/nlab/show/convenient+category+of+topological+spaces). It says: “cartesian closed, with the internal hom given by the coreflection of the usual mapping space with its compact-open topology.”
 
@@ -4632,9 +4632,9 @@
 
 **Definition.** Give the category of compact Hausdorff spaces the coverage of finite jointly surjective families. That is, a cover is a finite family of maps whose images together cover the target. A quasi-topological space is a concrete sheaf on this site. It is a set X with a compatible choice, for each compact Hausdorff space C, of which functions C → X count as continuous.
 
-**Problem.** Find a replacement for Top that is complete, cocomplete and cartesian closed, for use in algebraic topology. Cartesian closed means that mapping spaces exist and satisfy the exponential law.
+**Problem.** Quasi-topological spaces form a complete, cocomplete and cartesian closed category.
 
-**How the definition helps.** Defining a space by its compact Hausdorff probes (maps in from compact Hausdorff spaces) makes it a concrete sheaf. Concrete sheaves on a site form a quasitopos, a weaker relative of a topos, so they have all limits, colimits and exponentials. So the exponential law holds for all quasi-topological spaces. In Top this law, Map(X × Y, Z) ≅ Map(X, Map(Y, Z)), fails in general, because Top is not cartesian closed. The price is size: there is no small site, so the quasitopos property needs care. The category is mostly of historical interest today.
+**How the definition helps.** Defining a space by its maps in from compact Hausdorff spaces makes it a concrete sheaf. Concrete sheaves on a site form a quasitopos, so they have all limits, colimits and exponentials. Top is not cartesian closed. The price is size: there is no small site, so the quasitopos property needs care.
 
 **nLab:** [quasi-topological space](https://ncatlab.org/nlab/show/quasi-topological+space). It says: “In particular, quasi-topological spaces form a complete and cocomplete cartesian closed category.”
 
@@ -4650,9 +4650,9 @@
 
 **Definition.** A functor U : C → D is topological if every family of maps fᵢ : X → U(Sᵢ) has an initial lift. Here the Sᵢ are objects of C, and the family may be large, that is, indexed by a proper class. An initial lift is an object T of C over X through which the fᵢ become maps of C, in a universal way. For the forgetful functor Top → Set, the initial lift is the coarsest topology that makes the fᵢ continuous.
 
-**Problem.** A topological functor should be faithful, so that C is concrete over D. The notion should also be self-dual, so that final lifts such as quotient topologies also exist.
+**Problem.** Every topological functor is faithful. The notion is self-dual: U is topological exactly when every large family of maps U(Sᵢ) → X has a final lift.
 
-**How the definition helps.** When the definition allows large families, faithfulness and self-duality follow as theorems. If it allowed only small families, they would fail. For example, take a large category C with all small products, and the functor from C to the category 1 with one object and one map. This functor lifts all small families. But it need not lift the dual families unless C has all small coproducts, and it need not be faithful. The nLab compares self-duality to the fact that a complete semilattice is a complete lattice. The proof of faithfulness is in Adámek, Herrlich and Strecker.
+**How the definition helps.** When the definition allows large families, faithfulness and self-duality follow as theorems. With only small families they fail. Take a large category C with all small products and the functor from C to the one-object category. It lifts all small families, but it need not be faithful, and it need not lift the dual families unless C has all small coproducts.
 
 **nLab:** [topological concrete category](https://ncatlab.org/nlab/show/topological+concrete+category). It says: “However, it need not satisfy the dual property (unless C also has all small coproducts) nor need it be faithful.”
 
@@ -4668,9 +4668,9 @@
 
 **Definition.** A pointfree topology is given by a set of basic opens and a covering relation between them, without assuming points. An operation on points is called continuous if a relation between basic opens induces it. The principle of pointfree continuity says that every relation that induces a continuous operation on points is a morphism of pointfree topologies.
 
-**Problem.** Brouwer's continuity principle says that every function from infinite sequences of natural numbers to natural numbers is continuous. It is not provable in constructive mathematics, and it is false classically. One wants a precise statement of when it holds.
+**Problem.** The principle of pointfree continuity holds when the source is bi-spatial. For the formal Baire space or the formal unit interval, mapped to the natural numbers, it is equivalent to spatiality of the source.
 
-**How the definition helps.** Because continuity is defined through bases, the principle becomes a statement that one can prove or refute for each pair of spaces. The abstract says that it holds when the source is bi-spatial, a strong form of having enough points (our own gloss). For the formal Baire space or the formal unit interval, mapped to the natural numbers, the principle is equivalent to spatiality of the source. Spatiality is the plain condition that the space has enough points (our own gloss). So known links between spatiality, bar induction and compactness of the unit interval are restated in terms of this principle. What stays hard is spatiality itself, which is not provable without extra principles such as bar induction (our own remark).
+**How the definition helps.** Because continuity is defined through bases, Brouwer's principle becomes a statement that one can prove or refute for each pair of spaces. Bi-spatial is a strong form of having enough points, and spatial is the plain form (our own gloss). Known links between spatiality, bar induction and compactness of the unit interval are restated in terms of this principle. Spatiality itself stays hard (our own remark).
 
 **Paper or page:** [The principle of pointfree continuity](https://arxiv.org/abs/1802.04512v4). It says: “An operation between points of pointfree topologies is continuous if it is induced by a relation between the bases of the topologies; this gives a rigorous condition for Brouwer's continuity principle to hold.”
 
@@ -4686,9 +4686,9 @@
 
 **Definition.** In the localic approach, a continuous function between spaces of real numbers is a map of locales, or of formal topologies, not a function on points. A locale is a space described by its lattice of open sets, with no points needed. A formal topology is a predicative version of a locale. On the locale ℝ, these maps are the same as Bishop's locally uniformly continuous functions.
 
-**Problem.** Find a notion of continuous function on subsets of ℝ with three properties. It is closed under composition and agrees with uniform continuity on closed intervals. It also contains x ↦ 1/x.
+**Problem.** Maps of locales give a constructive notion of continuous function that is closed under composition and contains x ↦ 1/x. On ℝ they are exactly Bishop's locally uniformly continuous functions (Palmgren).
 
-**How the definition helps.** Locale maps have all three properties, while a notion of continuity on points needs the fan theorem to have them. Waaldijk showed that any notion of continuous function between subsets of ℝ with these three properties implies the fan theorem (a principle of Brouwer about finitely branching trees). Bishop rejected the fan theorem. His own books use two definitions of continuity that agree only under the fan theorem. Locale maps avoid this problem: they are closed under composition and include x ↦ 1/x. Palmgren showed that on ℝ they agree with Bishop's functions. Here the hard part moves into building the theory of locales.
+**How the definition helps.** Locale maps have these properties, while a notion of continuity on points needs the fan theorem to have them. Waaldijk showed that a pointwise notion that is closed under composition, contains x ↦ 1/x and agrees with uniform continuity on closed intervals implies the fan theorem. Bishop rejected the fan theorem. The hard part moves into building the theory of locales.
 
 **nLab:** [Bishop's constructive mathematics](https://ncatlab.org/nlab/show/Bishop%27s+constructive+mathematics). It says: “Palmgren shows that the continuous endomaps of the locale of real numbers ℝ coincide with Bishop's locally uniformly continuous functions, whereas for spaces other than ℝ itself locale maps are better-behaved than Bishops'”
 
@@ -4704,9 +4704,9 @@
 
 **Definition.** Replace the topological space of functionals, or the Gelfand spectrum (the space of characters of a commutative C\*-algebra), by a locale. A locale is a space described only by its lattice of open sets. We do not ask it to have enough points.
 
-**Problem.** The Banach–Alaoglu theorem, the Hahn–Banach theorem and Gelfand duality are equivalent to, or use, forms of the axiom of choice. So, as usually stated, they fail in constructive mathematics.
+**Problem.** Stated with locales, the Hahn–Banach and Banach–Alaoglu theorems hold constructively. Gelfand duality between commutative C\*-algebras and compact regular locales also holds constructively, and so in any topos.
 
-**How the definition helps.** These theorems need choice only to produce points, such as functionals or characters, and a locale does not need its points. Pelletier built a locale of functionals whose points are the unit ball of the dual space. He proved constructively that this locale is compact and completely regular, and this gives localic Hahn–Banach and Banach–Alaoglu theorems. Gelfand duality between commutative C\*-algebras and compact regular locales also holds constructively, and so it holds in any topos. Banaschewski and Mulvey gave a proof that still used Barr's theorem (which covers any Grothendieck topos by one in which choice holds). Coquand and Spitters gave a fully constructive proof. The classical theorems come back only when choice gives the locale enough points.
+**How the definition helps.** These theorems need choice only to produce points, such as functionals or characters, and a locale does not need its points. Pelletier built a compact, completely regular locale of functionals whose points are the unit ball of the dual space. Coquand and Spitters gave a fully constructive proof of Gelfand duality. The classical theorems come back only when choice gives the locale enough points.
 
 **nLab:** [Banach-Alaoglu theorem](https://ncatlab.org/nlab/show/Banach-Alaoglu+theorem), [Hahn-Banach theorem](https://ncatlab.org/nlab/show/Hahn-Banach+theorem), [constructive Gelfand duality theorem](https://ncatlab.org/nlab/show/constructive+Gelfand+duality+theorem). It says: “As usual, when formulating the theorem using locales instead of topological spaces the theorem holds constructively”
 
@@ -4723,9 +4723,9 @@
 
 **Definition.** Locale theory is point-free topology: it describes a space through its lattice of open sets, not through its points. In this approach, a continuously differentiable map on \[a,b\] is given by two pieces of data. One is a continuous map, its derivative, and the other is a real number, its value at a. The map itself is then the indefinite integral of the derivative.
 
-**Problem.** Prove the fundamental theorem of calculus. It says that indefinite integrals are antiderivatives, and that antiderivatives are indefinite integrals.
+**Problem.** In point-free calculus, the fundamental theorem of calculus holds: indefinite integrals are antiderivatives, and antiderivatives are indefinite integrals.
 
-**How the definition helps.** A differentiable map is given by its derivative and its initial value, so it equals the integral of its derivative by construction. Two things remain to prove. First, indefinite integrals must exist directly as locale maps; a definite integral up to each point is not enough. Second, differentiation must have its usual properties. Vickers proves a point-free fundamental theorem of calculus in geometric logic, a restricted form of logic that suits point-free spaces. He uses it for the derivatives of powers, exponentials and logarithms.
+**How the definition helps.** A differentiable map is given by its derivative and its initial value, so it equals the integral of its derivative by construction. Two things remain to prove. Indefinite integrals must exist directly as locale maps, and differentiation must have its usual properties. Vickers does this in geometric logic.
 
 **nLab:** [fundamental theorem of calculus](https://ncatlab.org/nlab/show/fundamental+theorem+of+calculus). It says: “In the locale-theoretic approach, we essentially define an antiderivative to be an indefinite integral.”
 
@@ -4741,9 +4741,9 @@
 
 **Definition.** A surjective progroup is a cofiltered system of groups whose transition maps are surjective. Cofiltered means that any two stages receive maps from a common stage. A prodiscrete localic group is a group in locales that is a cofiltered limit of discrete groups with surjective transition maps, computed in the category of locales and not of spaces. A locale is a space described only by its lattice of open sets, which need not have enough points.
 
-**Problem.** Identify progroups with actual limit objects, in the way profinite groups are identified with Stone topological groups. The aim is that the category of surjective progroups is equivalent to a category of group objects.
+**Problem.** The category of prodiscrete localic groups is equivalent to the category of surjective progroups (Moerdijk). Taken in groups or topological groups instead, the limit of a nontrivial surjective progroup can be trivial.
 
-**How the definition helps.** Locales make the limit work because, in locales, the maps from a limit of surjections to its stages are again surjections. In groups or topological groups, the limit can lose all information. Higman and Stone give an ω₁-indexed system of sets of strictly increasing functions, with surjective restriction maps and an empty limit. The free vector spaces on these sets form a nontrivial surjective progroup whose limit in groups or in topological groups is trivial. In locales this collapse cannot happen. Then the category of prodiscrete localic groups is equivalent to the category of surjective progroups, and these groups classify Galois toposes. The real content is Moerdijk's theorem and the fact about limits of locales.
+**How the definition helps.** In locales, the maps from a limit of surjections to its stages are again surjections, so no information is lost. Higman and Stone give an ω₁-indexed system of sets with surjective maps and an empty limit. The free vector spaces on these sets form a nontrivial surjective progroup whose limit in topological groups is trivial.
 
 **nLab:** [progroup](https://ncatlab.org/nlab/show/progroup), [Galois topos](https://ncatlab.org/nlab/show/Galois+topos). It says: “However, we do get an embedding on pro-groups with surjective transition maps if instead of Top we take the limit in the category Loc of locales.”
 
@@ -4759,9 +4759,9 @@
 
 **Definition.** A locale is a space given by its lattice of open sets alone, with no set of points assumed. A locale is paracompact if it is regular and every open cover has a locally finite refinement. A locally finite refinement is a finer cover that has only finitely many of its opens near each place.
 
-**Problem.** A product of paracompact spaces is paracompact.
+**Problem.** A product of paracompact locales is paracompact.
 
-**How the definition helps.** Paracompact locales form a reflective subcategory of all locales, so products come for free. For topological spaces the statement is false: products of paracompact spaces need not be paracompact. A standard example, not on the nLab page, is the Sorgenfrey line (the real line with half-open intervals \[a, b) as basic open sets). It is paracompact, but its square is not even normal. A reflective subcategory is one in which every locale has a best approximation from inside it. Such a subcategory is closed under limits, so products of paracompact locales are paracompact. The work is in the reflection theorem, and in accepting that the localic product can differ from the spatial product.
+**How the definition helps.** Paracompact locales form a reflective subcategory of all locales, and a reflective subcategory is closed under limits. For topological spaces the statement is false. A standard example, not on the nLab page, is the Sorgenfrey line: it is paracompact, but its square is not even normal. The price is that the localic product can differ from the spatial product.
 
 **nLab:** [paracompact locale](https://ncatlab.org/nlab/show/paracompact+locale). It says: “This last property clearly distinguishes paracompact locales from paracompact spaces, since products of paracompact spaces need not be paracompact.”
 
@@ -4777,9 +4777,9 @@
 
 **Definition.** Treat spaces as locales, and take the parts of a space to be its sublocales, not only its subsets. A locale is a space described by its lattice of open sets, without a set of points. A sublocale is a part of a locale, and it need not be determined by its points.
 
-**Problem.** Under the axiom of choice, a ball in ℝ³ can be cut into finitely many pieces that reassemble into two balls (the Banach–Tarski paradox), and Vitali sets have no Lebesgue measure. Can a measure be additive on all parts?
+**Problem.** With sublocales as parts, the pieces of the Vitali and Banach–Tarski partitions are not disjoint. So additivity does not apply to them, and the paradox does not arise.
 
-**How the definition helps.** With sublocales as parts, the paradoxical pieces overlap, so additivity does not apply to them. Simpson shows this for the pieces of the Vitali and Banach–Tarski partitions. The pieces share no point, but they overlap on the topological 'glue' between points. So the paradox does not arise. Leroy had made the same observation earlier, in his measure theory on regular locales. The work moves into building measure theory on sublocales. This entry claims only what the nLab quotes from Simpson.
+**How the definition helps.** With sublocales as parts, the paradoxical pieces overlap, so additivity does not apply to them. The pieces share no point, but they overlap on the topological 'glue' between points (Simpson). Leroy made the same observation earlier for regular locales. The work moves into building measure theory on sublocales.
 
 **nLab:** [Banach-Tarski paradox](https://ncatlab.org/nlab/show/Banach-Tarski+paradox). It says: “According to our notion of "part", two such intertangled pieces are not disjoint from each other, so additivity does not apply.”
 
@@ -4796,9 +4796,9 @@
 
 **Definition.** Let 𝒜 be an abelian category with enough injectives. It satisfies Roos's axiom (Ab.4\*)-k when the derived functors of infinite products vanish above degree k. For k = 0 this says that products are exact. Module categories satisfy it with k = 0.
 
-**Problem.** One builds a resolution of an unbounded complex as a limit of resolutions of its truncations. This works for modules. The paper gives a simple complex for which the usual explicit methods fail.
+**Problem.** Let an abelian category with enough injectives satisfy (Ab.4\*)-k. Then the limit of a tower of partial injective resolutions of an unbounded complex is an injective resolution. Without the axiom, the usual methods fail on a simple explicit complex.
 
-**How the definition helps.** The axiom bounds how far infinite products are from being exact, and the limit step of the construction only needs that bound. So it rules out the paper's poisonous example. The example lives in a quotient of the module category over Nagata's Noetherian ring of infinite dimension (our own reading of Lemmas 3.1 and 3.2). In our own reading, products in that category are not exact in any bounded degree. Theorem 2.10 shows that with the axiom, the limit of a tower of partial resolutions of a complex is an injective resolution. Checking the axiom in a given category is the remaining work.
+**How the definition helps.** The axiom bounds how far infinite products are from being exact, and the limit step of the construction only needs that bound. The paper's counterexample lives in a quotient of the module category over Nagata's Noetherian ring of infinite dimension (our own reading of Lemmas 3.1 and 3.2). In our own reading, products there are not exact in any bounded degree.
 
 **Paper or page:** [A poisonous example to explicit resolutions of unbounded complexes](https://arxiv.org/abs/2407.09741v3). It says: “We show that various methods for explicitly building resolutions of unbounded complexes in fact fail when applied to a rather simple and explicit complex. We show that one way to rescue these methods is to assume Roos (Ab.4\*)-k axiom.”
 
@@ -4833,9 +4833,9 @@
 
 **Definition.** A crossed module is a group homomorphism X₁ → X₀ with an action of X₀ on X₁, and crossed modules model strict 2-groups. A butterfly between crossed modules X₁ → X₀ and Y₁ → Y₀ is a group P with homomorphisms X₁ → P → X₀ and Y₁ → P → Y₀ that form a crossed profunctor. In addition, the diagonal Y₁ → P → X₀ must be a group extension (a short exact sequence).
 
-**Problem.** We want to describe all weak 2-functors between strict 2-groups, and their composition, with only groups and homomorphisms. Strict maps of crossed modules are too few for this.
+**Problem.** Weak 2-functors between strict 2-groups correspond to butterflies between their crossed modules (Noohi, Aldrovandi–Noohi). Strict maps of crossed modules give only the strict 2-functors.
 
-**How the definition helps.** Butterflies capture exactly the weak 2-functors, and they are still diagrams of ordinary groups. Strict morphisms of crossed modules give only strict 2-functors, so in those terms many weak morphisms of 2-groups are invisible. Crossed modules correspond to categories internal to groups. Under this correspondence, butterflies are the saturated anafunctors internal to Grp, where an anafunctor is a functor defined through a cover instead of directly. So the weak maps become explicit diagrams of ordinary groups. The page says that split butterflies give representable profunctors; our own gloss is that these are the strict maps. Noohi and Aldrovandi–Noohi prove the equivalence, and the definition is what makes it simple to state.
+**How the definition helps.** Butterflies capture exactly the weak 2-functors, and they are still diagrams of ordinary groups. Crossed modules correspond to categories internal to groups. Under this correspondence, butterflies are the saturated anafunctors internal to groups, functors defined through a cover instead of directly.
 
 **nLab:** [butterfly](https://ncatlab.org/nlab/show/butterfly). It says: “Under the correspondence between crossed modules and categories internal to Grp, butterflies are precisely the saturated anafunctors internal to Grp, using the Grothendieck pretopology of surjective homomorphisms.”
 
@@ -4852,9 +4852,9 @@
 
 **Definition.** A filtered space is a space X with an increasing chain of subspaces X₀ ⊆ X₁ ⊆ …. Its fundamental crossed complex ΠX records the relative homotopy groups of the filtration, together with the action of the fundamental groupoid on them. A crossed complex is equivalent to a strict ω-groupoid (a groupoid with morphisms in every dimension, where all laws hold exactly).
 
-**Problem.** We want a van Kampen theorem in all dimensions. Glue a space from pieces. Then compute homotopy invariants of the space as a colimit of the invariants of the pieces.
+**Problem.** Take an open cover of a filtered space whose finite intersections are all connected filtered spaces. Then the fundamental crossed complex Π sends the coequaliser of the cover to a coequaliser (Brown and Higgins).
 
-**How the definition helps.** A filtered space carries enough structure that the invariant Π turns gluing into a colimit, which plain homotopy groups do not do. Brown and Higgins show that the functor Π, from filtered spaces to crossed complexes, sends the coequaliser of an open cover to a coequaliser. The condition is that all finite intersections of the pieces are connected filtered spaces. The proof goes through cubical ω-groupoids with connections (extra degeneracy maps on cubes), where subdivision of cubes has an algebraic inverse, and it follows the proof of the van Kampen theorem for groupoids. The consequences include the relative Hurewicz theorem, without singular homology. The price is that strict structures lose some homotopy information.
+**How the definition helps.** A filtered space carries enough structure that Π turns gluing into a colimit, which plain homotopy groups do not do. The proof goes through cubical ω-groupoids with connections, where subdivision of cubes has an algebraic inverse. Consequences include the relative Hurewicz theorem without singular homology. The price is that strict structures lose some homotopy information.
 
 **nLab:** [Nonabelian Algebraic Topology](https://ncatlab.org/nlab/show/Nonabelian+Algebraic+Topology), [higher homotopy van Kampen theorem](https://ncatlab.org/nlab/show/higher+homotopy+van+Kampen+theorem). It says: “the Seifert-van Kampen theorem is most naturally understood as being not about homotopy groups, but about the cubical fundamental omega-groupoid of a filtered space and may be generalized to a higher homotopy van Kampen theorem this way.”
 
@@ -4871,9 +4871,9 @@
 
 **Definition.** Take spaces C ⊆ A ⊆ X. The double groupoid ρ(X, A, C) has as elements the homotopy classes, rel vertices (keeping the four corners fixed), of maps I² → X that send the edges of the square into A and the vertices into C. It has two partial compositions of squares, and extra structure called connections.
 
-**Problem.** Get a strict algebraic object made of homotopy squares. Then prove a van Kampen theorem in dimension 2, that is, a theorem that computes an invariant of a union from the invariants of its pieces. It should compute nonabelian second relative homotopy groups.
+**Problem.** The homotopy squares ρ(X, A, C) form a strict double groupoid with connections. It satisfies a van Kampen theorem in dimension 2, which computes nonabelian second relative homotopy groups.
 
-**How the definition helps.** Brown and Higgins saw that fixing where the edges and vertices go makes the compositions of squares work fairly easily. The nLab presents squares in a bare space as the problem, and in our own reading they do not form a strict double groupoid. The resulting double groupoid with connections is equivalent to a crossed module of groupoids (a map of groupoids with an action that behaves like conjugation), which holds the groups π₂(X, A, c). So a van Kampen theorem for ρ gives one for crossed modules. It computes nonabelian second relative homotopy groups that were out of reach before. The nLab says that the proof that the compositions are inherited is still 'not quite trivial'.
+**How the definition helps.** Fixing where the edges and vertices go makes the compositions of squares work fairly easily (Brown and Higgins). In our own reading, squares in a bare space do not form a strict double groupoid. The double groupoid with connections is equivalent to a crossed module of groupoids, which holds the groups π₂(X, A, c). The nLab says that proving the compositions are inherited is still 'not quite trivial'.
 
 **nLab:** [higher dimensional algebra](https://ncatlab.org/nlab/show/higher+dimensional+algebra). It says: “Brown and Higgins realised in 1974 that this could be achieved fairly easily in a relative situation”
 
@@ -5013,9 +5013,9 @@
 
 **Definition.** A monoidal category is semicartesian when its tensor unit I is a terminal object. Affine logic is linear logic with the weakening rule, which lets you drop an unused hypothesis. Its intended models are semicartesian monoidal categories.
 
-**Problem.** We want the right categorical meaning for the weakening rule, so that weakening behaves well. For example, if you add a dummy variable and then substitute a closed term for it, the meaning should not change.
+**Problem.** A monoidal category has a monoidal natural family of maps A → I exactly when I is terminal, that is, when it is semicartesian. So semicartesian categories are the models in which weakening behaves well.
 
-**How the definition helps.** If weakening must respect the tensor product, the unit must be terminal, and this rules out the bad models. A more general idea is to use any monoidal category with a natural family of maps A → I. This lets in bad models. In Rel (sets and relations) with the cartesian product as tensor, the empty relations form such a family, and then every weakening gives the empty relation. Now require the family to be a monoidal transformation too. Then its component at I is the identity, and this forces I to be terminal. So the good condition is exactly the semicartesian definition, and it excludes the bad Rel example.
+**How the definition helps.** If weakening must respect the tensor product, the unit must be terminal, and this rules out the bad models. A merely natural family of maps A → I lets in bad models. In Rel with the cartesian product as tensor, the empty relations form such a family, and every weakening becomes empty. A monoidal family has the identity as its component at I, and this forces I to be terminal.
 
 **nLab:** [affine logic](https://ncatlab.org/nlab/show/affine+logic), [semicartesian monoidal category](https://ncatlab.org/nlab/show/semicartesian+monoidal+category). It says: “unless one additionally requires these natural transformations to be monoidal, but it can be shown that this additional requirement already forces the tensor unit to be terminal (specifically, this follows from the component at I being the identity).”
 
@@ -5248,9 +5248,9 @@
 
 **Definition.** A fusion category is a semisimple linear monoidal category with duals, finitely many simple objects and a simple unit object. Its 6j-symbols are the numbers that describe its associativity maps in chosen bases. A veined fusion category is generated by a finite set of simple objects but is larger than its skeleton. Every fusion category contains veined subcategories that are monoidally equivalent to it.
 
-**Problem.** The 6j-symbols should have the symmetries of a tetrahedron. Earlier proofs assumed extra structure, such as a pivotal structure or unitarity (our own remark). A pivotal structure is a coherent choice of isomorphisms between each object and its double dual.
+**Problem.** In every fusion category, with no pivotal structure or unitarity assumed, the 6j-symbols have the symmetries of a tetrahedron.
 
-**How the definition helps.** The veined category is a convenient tool that does not need a pivotal structure, so the symmetry can be proved under minimal assumptions. The abstract says that the paper proves tetrahedral symmetries of 6j-symbols for arbitrary fusion categories. Unitarity is a stronger assumption than a pivotal structure, so the result also covers non-unitary categories. Veined subcategories are monoidally equivalent to the whole category, so many properties computed there hold for the whole category. Our own remark: a skeleton has one object in each isomorphism class, which leaves little freedom in the calculations.
+**How the definition helps.** The veined category does not need a pivotal structure, so the symmetry can be proved under minimal assumptions. Veined subcategories are monoidally equivalent to the whole category, so properties computed there hold for the whole category. Our own remark: a skeleton has one object in each isomorphism class, which leaves little freedom in the calculations.
 
 **Paper or page:** [Tetrahedral symmetry of 6j-symbols in fusion categories](https://arxiv.org/abs/2106.16186). It says: “The notion of a veined fusion category does not assume the presence of a pivotal structure, and thus in particular does not assume unitarity.”
 
@@ -5266,9 +5266,9 @@
 
 **Definition.** A tensor category is a category with a tensor product ⊗ that behaves like the tensor product of vector spaces. Here it is k-linear and symmetric. It has subexponential growth if each object X has a number N, which depends on X, such that each tensor power X⊗ⁿ has length at most Nⁿ. The length of an object is the number of simple pieces in a composition series (a chain of subobjects whose successive quotients are simple).
 
-**Problem.** Take an algebraically closed field of characteristic zero. Show that a tensor category over this field is the category of finite-dimensional representations of an affine supergroup. An affine supergroup is the super version of an affine algebraic group: its coordinate ring has an even part and an odd part.
+**Problem.** Over an algebraically closed field of characteristic zero, every tensor category of subexponential growth is equivalent to Rep(G, ε) for an affine supergroup G (Deligne). In Rep(G, ε), a fixed element ε of order 2 acts as +1 on the even part and −1 on the odd part.
 
-**How the definition helps.** The growth bound is a weak condition that is easy to state, and it is enough to recover a supergroup. Deligne proves that each such tensor category with subexponential growth is equivalent to Rep(G, ε) for an affine algebraic supergroup G. Here Rep(G, ε) is the category of representations of G on which a fixed element ε of order 2 acts as +1 on the even part and −1 on the odd part. Without the growth condition the statement is false. The interpolation categories, now called Deligne categories, such as Rep(Sₜ) for a non-integer t, are tensor categories whose objects grow too fast to be representations of any supergroup. The condition is mild, because it is only a bound on lengths, not a fiber functor (a functor to vector spaces that keeps the tensor product). The proof itself is long, and the definition does not make it easy.
+**How the definition helps.** The growth bound is a weak condition that is easy to state, and it is enough to recover a supergroup. Without it the statement is false. Deligne categories such as Rep(Sₜ) for non-integer t grow too fast to be representations of any supergroup. The proof itself is long, and the definition does not make it easy.
 
 **nLab:** [Deligne's theorem on tensor categories](https://ncatlab.org/nlab/show/Deligne%27s+theorem+on+tensor+categories), [Tannakian category](https://ncatlab.org/nlab/show/Tannakian+category). It says: “Categories that do not satisfy sub-exponential growth have come to be known as Deligne categories”
 
@@ -5285,9 +5285,9 @@
 
 **Definition.** The object is a symmetric tensor ∗-category with conjugates, direct sums, subobjects and End(𝟙) = ℂ. The last condition says that the unit object has only scalar endomorphisms. The symmetry is a braiding c with c∘c = id, and it is part of the data.
 
-**Problem.** We want to reconstruct a compact group (or supergroup) from its category of representations, with no fiber functor given. A fiber functor is a functor to vector spaces that gives the underlying space of each representation.
+**Problem.** Every such symmetric tensor ∗-category is equivalent to the representations of a compact supergroup, unique up to isomorphism (Doplicher–Roberts, Müger). No fiber functor needs to be given.
 
-**How the definition helps.** Putting the symmetry into the definition rules out the known counterexamples. The theorem (Doplicher and Roberts, with the supergroup form and a simpler proof due to Müger) says that every such symmetric category is equivalent to the representations of a compact supergroup. This supergroup is unique up to isomorphism. The symmetric structure is essential. Etingof and Gelaki found non-isomorphic finite groups whose representation categories are equivalent as tensor categories alone, and the symmetry rules out these isocategorical counterexamples. The reconstruction itself is still a hard theorem.
+**How the definition helps.** Putting the symmetry into the definition rules out the known counterexamples. Etingof and Gelaki found non-isomorphic finite groups whose representation categories are equivalent as tensor categories alone. The symmetry rules out these isocategorical counterexamples. The reconstruction itself is still a hard theorem.
 
 **nLab:** [Doplicher-Roberts reconstruction theorem](https://ncatlab.org/nlab/show/Doplicher-Roberts+reconstruction+theorem). It says: “Beware that there are non-isomorphic finite groups whose categories of representations are equivalent considered merely as tensor categories, ignoring the symmetric structure”
 
@@ -5304,9 +5304,9 @@
 
 **Definition.** A super vector space is a vector space split into an even part and an odd part (a ℤ/2-graded vector space), with a sign rule: swapping two odd elements in a tensor product gives a minus sign. A supergroup acts on super vector spaces. Here a tensor category is a symmetric rigid monoidal abelian k-linear category, with k algebraically closed of characteristic zero; rigid means that each object has a dual. It has subexponential growth if each object X has a number N with length(X⊗ⁿ) ≤ Nⁿ for all n, where the length counts the simple pieces of an object.
 
-**Problem.** Tannaka reconstruction asks which tensor categories are categories of representations of some symmetry group. In physics, the question is this: what is the most general symmetry of particle species that combine by tensor product?
+**Problem.** Every tensor category of subexponential growth is the representation category of an affine supergroup (Deligne). So supergroups are the most general symmetries for which this reconstruction works.
 
-**How the definition helps.** Once symmetries may be supergroups, a mild growth bound is the only condition that reconstruction needs. If one allows symmetries to be supergroups, with representations in super vector spaces, Deligne's theorem applies. It says that each tensor category of subexponential growth is the representation category of an affine supergroup. So the only hypothesis is the growth bound, and the nLab concludes that supersymmetry is the most general setting in which the reconstruction works. The nLab notes that categories which fail subexponential growth have come to be called Deligne categories. The proof is Deligne's hard 2002 theorem.
+**How the definition helps.** Once symmetries may be supergroups, a mild growth bound is the only condition that reconstruction needs. The nLab concludes that supersymmetry is the most general setting in which reconstruction works. Categories that fail subexponential growth are called Deligne categories. The proof is Deligne's hard 2002 theorem.
 
 **nLab:** [Deligne's theorem on tensor categories](https://ncatlab.org/nlab/show/Deligne%27s+theorem+on+tensor+categories). It says: “Deligne's theorem then gives that supersymmetry is the most general context in which this works out.”
 
@@ -5322,9 +5322,9 @@
 
 **Definition.** A dagger category has an operation † that turns each map f from A to B into a map f† from B to A. It acts like the adjoint of a linear map. Heunen and Kornell gave axioms on a monoidal dagger category that pick out real or complex Hilbert spaces. Lack and Tobin give axioms without a monoidal structure.
 
-**Problem.** One wants purely categorical axioms that pick out the category of Hilbert spaces and bounded linear maps. Solèr's theorem says that a Hermitian space over a division ring with certain orthomodularity conditions is a Hilbert space. Its scalars are then the reals, the complex numbers or the quaternions.
+**Problem.** Lack and Tobin's axioms on a dagger category, with no monoidal structure, characterise the categories of Hilbert spaces over the reals, the complex numbers or the quaternions.
 
-**How the definition helps.** The monoidal assumption is what ruled out the quaternions, so without it one characterisation covers all three cases of Solèr's theorem. Our own remark: the quaternions do not commute, so quaternionic Hilbert spaces have no good tensor product. In the new approach, Theorem 6.8 shows that a functor C(K,−) is an equivalence onto Hilbert spaces over the scalars C(K,K). Solèr's theorem still does the hard work of fixing the scalars.
+**How the definition helps.** The monoidal assumption is what ruled out the quaternions, so without it one characterisation covers all three cases of Solèr's theorem. Our own remark: the quaternions do not commute, so quaternionic Hilbert spaces have no good tensor product. Theorem 6.8 shows that C(K,−) is an equivalence onto Hilbert spaces over the scalars C(K,K). Solèr's theorem still fixes the scalars.
 
 **Paper or page:** [A characterisation for the category of Hilbert spaces](https://arxiv.org/abs/2412.03776), [A characterisation for the category of Hilbert spaces](https://arxiv.org/abs/2412.03776). It says: “The characterisation by Heunen and Kornell makes use of a monoidal structure, which in turn excludes the category of quaternionic Hilbert spaces. We provide an alternative characterisation without the assumption of monoidal structure on the category.”
 
@@ -5340,9 +5340,9 @@
 
 **Definition.** The ZX-calculus is a graphical language for quantum circuits. In it, each of the two qubit bases, Z and X, gives a special commutative Frobenius algebra structure on ℂ², drawn as green or red dots. A Frobenius algebra has a multiplication and a comultiplication that satisfy a compatibility law, and 'special' means that comultiplying and then multiplying gives the identity. A connected diagram made only of the multiplications, comultiplications, units and counits of one colour is drawn as one 'spider' with some inputs and outputs.
 
-**Problem.** Simplify diagrams of quantum circuits built from the maps that copy and delete basis states.
+**Problem.** Two connected diagrams of one colour are equal exactly when they have the same numbers of inputs and outputs (Coecke and Duncan, Theorem 1). So each such diagram is a single spider.
 
-**How the definition helps.** The Frobenius laws make a connected one-colour diagram depend only on its numbers of inputs and outputs. Coecke and Duncan (Theorem 1) show that two connected diagrams of one colour are equal exactly when they have the same numbers of inputs and outputs. So the axioms collapse such a diagram to a spider. Spider fusion, which merges two connected spiders of one colour into one, then replaces long algebraic checks. The real content is this normal-form theorem, and it needs the algebras to be special and commutative. In the full ZX-calculus, spiders also carry phases, which add when spiders fuse.
+**How the definition helps.** The Frobenius laws make a connected one-colour diagram depend only on its numbers of inputs and outputs. Spider fusion, which merges two connected spiders of one colour, then replaces long algebraic checks. The result needs the algebras to be special and commutative. In the full ZX-calculus, spiders also carry phases, which add when spiders fuse.
 
 **nLab:** [ZX-calculus](https://ncatlab.org/nlab/show/ZX-calculus). It says: “since the Frobenius algebra-property ensures --- recalled as Coecke &amp; Duncan (2011), Theorem 1 --- that any connected diagrams are equal iff they have the same number of in/outputs”
 
@@ -5358,9 +5358,9 @@
 
 **Definition.** A rig is a ring without negatives, like ℕ. A symmetric rig category is a category with two symmetric monoidal structures, ⊕ and ⊗, where ⊗ distributes over ⊕ up to coherent natural isomorphisms. A symmetric monoidal structure is a product of objects that is associative and commutative up to coherent isomorphism. The morphisms between symmetric rig categories must preserve both structures up to coherent isomorphism.
 
-**Problem.** Baez conjectured that the groupoid of finite sets and bijections is initial (bi-initial) among symmetric rig categories, just as ℕ is the initial commutative rig.
+**Problem.** The groupoid of finite sets and bijections is the bi-initial symmetric rig category, just as ℕ is the initial commutative rig. Baez conjectured this, and Elgueta proved it in 2021.
 
-**How the definition helps.** The right definitions make the conjecture possible to state, but its proof is real coherence work. The statement is only true for a suitably weak notion of 'initial' and with the correct definition of the 2-category of symmetric rig categories and their morphisms. With those definitions, the map out of the groupoid of finite sets is unique up to an equivalence, and that equivalence is unique up to a unique isomorphism. Elgueta proved the conjecture in 2021. Comfort, Delpeuch and Hedges give another proof with sheet diagrams. Johnson and Yau give a detailed proof of a restricted version.
+**How the definition helps.** The right definitions make the statement possible, but its proof is real coherence work. It is only true for a weak notion of 'initial' and with the correct 2-category of symmetric rig categories. The map out of finite sets is unique up to an equivalence, which is unique up to a unique isomorphism. Comfort, Delpeuch and Hedges give another proof with sheet diagrams.
 
 **nLab:** [rig category](https://ncatlab.org/nlab/show/rig+category). It says: “Using the correct definition of the 2-category of symmetric rig categories, the groupoid FinSet× of finite sets and bijections is the initial symmetric rig category, just as ℕ is the initial commutative rig.”
 
@@ -5378,7 +5378,7 @@
 
 **Problem.** Coherence is the question of which diagrams of canonical maps commute. Coherence for symmetric monoidal closed categories, and for similar structures with right adjoints, can be described by a club. Coherence for compact closed categories cannot.
 
-**How the definition helps.** The junk basepoint catches every composite that makes a loop, and the club is not allowed to use it. In a compact closed category, a composite of extranatural transformations (natural in variables that can appear once covariantly and once contravariantly) can produce a loop. An example is a value that depends on c, such as dim(c) for finite-dimensional vector spaces. Then composition is not well defined. Kelly's definition sends such composites to the basepoint and requires that no morphism of the club lands there, so it excludes this case. The definition does not make the theorem free. The fact that no loops ('islands') appear for the doctrine of symmetric monoidal closed categories is nontrivial, and it rests on Kelly's cut-elimination theorem.
+**How the definition helps.** The junk basepoint catches every composite that makes a loop, and the club is not allowed to use it. In a compact closed category, a composite of extranatural transformations can produce a loop, such as dim(c) for finite-dimensional vector spaces. Then composition is not well defined. That no loops appear for symmetric monoidal closed categories is nontrivial and rests on Kelly's cut-elimination theorem.
 
 **nLab:** [club](https://ncatlab.org/nlab/show/club). It says: “The lesson learned is that the doctrine of compact closed categories is not describable by a club, and that for the purposes of clubs there is no use for compositions of graphs which produce loops.”
 
@@ -5394,9 +5394,9 @@
 
 **Definition.** A Feynman category is a symmetric strong monoidal functor τ : C⊗ → M, where C⊗ is the free symmetric monoidal category on a groupoid C. The isomorphisms of M are exactly those of C⊗. The hereditary condition says that every morphism of M splits, up to isomorphism, as a tensor product of morphisms whose targets are single objects of C. There is also a size condition.
 
-**Problem.** M encodes an operad-like structure (operations with several inputs and one output). Restriction of monoidal functors from M to C should have a left adjoint, which builds free algebras, and a monadicity theorem should hold. Push-forward along morphisms of Feynman categories should be strong monoidal.
+**Problem.** For a hereditary Feynman category τ : C⊗ → M, restriction of monoidal functors from M to C has a left adjoint, which builds free algebras. Strong monoidal functors out of M are the algebras over the resulting monad.
 
-**How the definition helps.** The hereditary condition makes the left Kan extension along τ strong monoidal, and this one fact gives the free algebras. Getzler's pattern condition on Day convolution does the same job. The left Kan extension gives the free functor from C-modules to M-algebras. Strong monoidal functors out of M then become algebras over the resulting monad. So operads, cyclic operads, modular operads and similar notions get free constructions and push-forwards from one theorem. Equivalence with coloured operads is a separate result (Caviglia; Batanin, Kock and Weber).
+**How the definition helps.** The hereditary condition makes the left Kan extension along τ strong monoidal, and this one fact gives the free algebras. Getzler's pattern condition on Day convolution does the same job. So operads, cyclic operads, modular operads and similar notions get free constructions from one theorem.
 
 **nLab:** [Feynman category](https://ncatlab.org/nlab/show/Feynman+category). It says: “The condition of a pattern or that of being hereditary guarantees that there is a left adjoint free functor for the forgetful functor of restricting a monoidal functor from M to C.”
 
@@ -5430,9 +5430,9 @@
 
 **Definition.** Let T be a cartesian monad on a category V with pullbacks (its functor preserves pullbacks, and its unit and multiplication have pullback naturality squares). A T-span from X to Y is a span X ← R → TY. A T-multicategory is a monoid, or monad, among T-spans. The better definition takes it to be a monoid in the double category whose horizontal arrows are T-spans and whose vertical arrows are maps of V.
 
-**Problem.** Give one definition of generalized multicategory whose morphisms are automatically the right functors. It should work in all examples: categories, multicategories, globular operads and virtual double categories.
+**Problem.** Take a T-multicategory to be a monoid in the double category of T-spans and maps of V. Then monoid homomorphisms are exactly the correct functors in all examples, such as categories, multicategories and globular operads.
 
-**How the definition helps.** The vertical arrows of the double category supply the maps of objects that a functor needs. In the bicategory of T-spans, a T-multicategory is a monad, but no standard kind of monad morphism gives the intended functors. The nearest one, a colax morphism of monads, lets the object part be an arbitrary span instead of a map of V. Adding the maps of V as vertical arrows of a pseudo double category makes the squares exactly the diagrams that a functor must give. Then monoid homomorphisms in the double category are exactly the correct functors, with no special case. Going further to virtual double categories (Cruttwell and Shulman) also covers symmetric multicategories, and topological spaces as U-monoids in Rel, where U is the ultrafilter monad and Rel is sets and relations.
+**How the definition helps.** The vertical arrows of the double category supply the maps of objects that a functor needs. In the bicategory of T-spans, no standard kind of monad morphism gives the intended functors. The nearest one, a colax morphism of monads, lets the object part be an arbitrary span instead of a map of V. Virtual double categories (Cruttwell and Shulman) also cover symmetric multicategories.
 
 **nLab:** [generalized multicategory](https://ncatlab.org/nlab/show/generalized+multicategory). It says: “Thus, a better definition of T-multicategory is "a monoid in the double category Span(V,T)," since this definition recovers the correct morphisms immediately.”
 
@@ -5448,9 +5448,9 @@
 
 **Definition.** An abstract Schur functor is a pseudonatural transformation of the forgetful 2-functor U : SymMonLinCauch → Cat. In words, it is a functor on every symmetric monoidal, linear, Cauchy complete category C. It must be compatible, up to coherent isomorphism, with every symmetric monoidal linear functor G : C → D. For a linear category, Cauchy complete means that it has direct sums and that idempotents split.
 
-**Problem.** Identify Schur functors with polynomial species (sequences of finite-dimensional representations of the symmetric groups, nonzero in only finitely many degrees). Also show that composition of Schur functors, called plethysm, gives an associative, unital monoidal structure on polynomial species.
+**Problem.** Abstract Schur functors are equivalent to polynomial species. Composition of Schur functors, called plethysm, makes polynomial species an associative, unital monoidal category.
 
-**How the definition helps.** Composition of functors is already associative, and the universal property turns plethysm into composition. U is represented by k̄ℙ, the Cauchy completion of the linearized permutation groupoid. So Schur functors are equivalent to objects of k̄ℙ, that is, to polynomial species. Functors 1 → k̄ℙ are then equivalent to symmetric monoidal linear endofunctors of k̄ℙ, so the plethystic product G ⊠ F corresponds to composition. The associator, the unitors, the pentagon and invertibility all come from this universal property (an argument after Kelly), not from computation with Young symmetrizers. The real content is the representability theorem, which the page only sketches.
+**How the definition helps.** Composition of functors is already associative, and the universal property turns plethysm into composition. U is represented by the Cauchy completion of the linearized permutation groupoid, so Schur functors are polynomial species. The associator, unitors and pentagon come from this universal property, not from Young symmetrizers. The real content is the representability theorem, which the page only sketches.
 
 **nLab:** [Schur functor](https://ncatlab.org/nlab/show/Schur+functor). It says: “the Schur functors S<sub>R</sub> are precisely those functors that are defined on all symmetric monoidal Cauchy complete linear C and that are pseudonatural with respect to change of base G: C → D!”
 
@@ -5466,9 +5466,9 @@
 
 **Definition.** A bicategory has objects, morphisms between them, and 2-morphisms between morphisms; rings with bimodules form one. A shadow, introduced by Ponto, assigns a value to each endomorphism, with a trace-like isomorphism between the values of MN and NM. The paper defines Hochschild homology of a bicategory so that every shadow factors through one universal shadow.
 
-**Problem.** Morita invariance says that rings with equivalent module categories have the same Hochschild homology. Hochschild homology has many variants. Ponto's shadows already give Morita invariance for each shadow, but the known cases were proved separately.
+**Problem.** Morita invariance holds for the universal shadow on the free adjunction bicategory. Every known Morita invariance result for Hochschild homology and its variants is an immediate corollary.
 
-**How the definition helps.** Every shadow factors through the universal shadow, so a fact proved for the universal shadow passes to all shadows. The paper proves Morita invariance once, for the universal shadow on the free adjunction bicategory. This bicategory is the smallest one that contains an adjunction. Our own explanation: any adjunction in another bicategory is the image of this one under a functor, so the result transfers. The abstract says that all known cases are then immediate corollaries. The hard part is to compute the Hochschild homology of the free adjunction bicategory, which the paper does.
+**How the definition helps.** Every shadow factors through the universal shadow, so a fact proved for the universal shadow passes to all shadows. The free adjunction bicategory is the smallest one that contains an adjunction. Our own explanation: any adjunction in another bicategory is its image under a functor. The hard part is to compute the Hochschild homology of the free adjunction bicategory.
 
 **Paper or page:** [Shadows are Bicategorical Traces](https://arxiv.org/abs/2109.02144). It says: “Using the universal shadow on the free adjunction bicategory, we can then establish a universal Morita invariance theorem, of which all known cases are immediate corollaries.”
 
@@ -5484,9 +5484,9 @@
 
 **Definition.** A 2-monad T is a monad on a 2-category; for example, monoidal categories are the algebras of a 2-monad. A lax T-morphism preserves the structure up to a comparison map in one direction, and a colax T-morphism up to a comparison map in the other direction. A double category has two kinds of arrows, horizontal and vertical, and squares between them; the double category T-Alg has T-algebras as objects, lax T-morphisms as horizontal arrows and colax T-morphisms as vertical arrows. A conjunction in a double category is a vertical arrow and a horizontal arrow that are adjoint across the two directions.
 
-**Problem.** Kelly's doctrinal adjunction says that, for an adjunction f ⊣ u, lax structures on u correspond to colax structures on f by mates (the bijection between 2-cells that an adjunction gives). The adjunction lifts to lax algebra maps exactly when the left adjoint is strong (preserves the structure up to isomorphism). For example, if R is lax monoidal, then its left adjoint is oplax monoidal.
+**Problem.** Kelly's doctrinal adjunction: for an adjunction f ⊣ u of T-algebras, lax structures on u correspond by mates to colax structures on f. In T-Alg this says that the forgetful double functor creates conjunctions.
 
-**How the definition helps.** In T-Alg, lax and colax morphisms live in one structure, so the theorem becomes a statement about conjunctions. In 2-category terms, the statement mixes lax and colax morphisms that live in two different 2-categories. In the double category T-Alg, a conjunction is exactly an adjunction with colax left adjoint and lax right adjoint whose structure maps are mates. Kelly's first result becomes: the forgetful double functor to squares creates conjunctions. His second result becomes: from any two of three data (a companion, a conjoint, a horizontal adjunction), you can uniquely build the third; a companion and a conjoint are vertical arrows that match a horizontal arrow in the two possible ways. Strong morphisms are exactly the arrows that have companions. The mate calculus still does the work; the double category gives it a clean statement.
+**How the definition helps.** In T-Alg, lax and colax morphisms live in one structure, so the theorem becomes a statement about conjunctions. In 2-category terms, the statement mixes morphisms from two different 2-categories. Strong morphisms are exactly the arrows that have companions. The mate calculus still does the work; the double category gives it a clean statement.
 
 **nLab:** [doctrinal adjunction](https://ncatlab.org/nlab/show/doctrinal+adjunction), [monoidal adjunction](https://ncatlab.org/nlab/show/monoidal+adjunction). It says: “Doctrinal adjunction can be stated cleanly in terms of double categories.”
 
@@ -5503,9 +5503,9 @@
 
 **Definition.** A colimit of a diagram of categories glues the categories together along the functors. A zig-zag is a chain of morphisms that point in alternate directions. The paper introduces double categories of zig-zags to keep track of which composites the colimit identifies. A double category has objects, two kinds of morphisms, and squares between them.
 
-**Problem.** The necklace theorem of Dugger and Spivak describes the mapping spaces of the simplicial category made from a simplicial set. This simplicial category comes from the left adjoint of the homotopy coherent nerve. A necklace is a chain of simplices joined end to end.
+**Problem.** The necklace theorem of Dugger and Spivak follows by a direct computation with double categories of zig-zags. It describes the mapping spaces of the simplicial category made from a simplicial set through necklaces, chains of simplices joined end to end.
 
-**How the definition helps.** The zig-zag description computes any colimit of categories directly, so the necklace description follows by a direct computation in each simplicial degree. The abstract says that this gives a shorter proof of the necklace theorem. The author says that the double categories were necessary for the identifications, but also explanatory. Our own remark: the simplicial category made from a simplicial set is a colimit of simple pieces, one for each simplex. This is why a general colimit formula applies.
+**How the definition helps.** The zig-zag description computes any colimit of categories directly, so the necklace description follows by a computation in each simplicial degree. Our own remark: the simplicial category made from a simplicial set is a colimit of simple pieces, one for each simplex. This is why a general colimit formula applies.
 
 **Paper or page:** [Colimits of categories, zig-zags and necklaces](https://arxiv.org/abs/2309.00337). It says: “When applied pointwise in the simplicially enriched setting, our constructions offer a shorter proof of the necklace theorem of Dugger and Spivak by direct computation.”
 
@@ -5521,9 +5521,9 @@
 
 **Definition.** An enhanced 2-category, also called an 𝓕-category, is a 2-category with two kinds of 1-morphisms, tight and loose. Being tight is a property of a loose morphism, and both kinds share the same 2-cells. Formally, it is a category enriched in the category 𝓕 of full embeddings of categories.
 
-**Problem.** A 2-monad has categories of algebras with lax, pseudo or colax morphisms, which preserve the structure only up to a comparison 2-cell. Each of these categories has a forgetful functor. Describe which 2-limits these forgetful functors create.
+**Problem.** For a 2-monad, the forgetful functors from the 𝓕-categories of algebras with strict, pseudo, lax or colax morphisms create a class of 𝓕-weighted limits, the rigged limits (Lack and Shulman).
 
-**How the definition helps.** Tight morphisms let a limit record which of its projections are strict. In a plain 2-category of algebras and lax morphisms, you cannot say that some limit projections are strict morphisms and jointly detect strictness. The 𝓕-category structure records this, so 𝓕-weighted limits can state it. Lack and Shulman then define rigged limits as exactly the 𝓕-weighted limits that these forgetful functors create. The 2-monad theory that proves creation is still needed. The definition makes the result statable in one form.
+**How the definition helps.** Tight morphisms let a limit record which of its projections are strict. In a plain 2-category of algebras and lax morphisms, you cannot say that some limit projections are strict and jointly detect strictness. The 2-monad theory that proves creation is still needed.
 
 **nLab:** [enhanced 2-category](https://ncatlab.org/nlab/show/enhanced+2-category). It says: “they allow us to define the classes of rigged limits, which are the 𝓕-weighted limits that are created by the forgetful functors from the various 𝓕-categories of algebras and strict/pseudo/lax/colax morphisms over a 2-monad”
 
@@ -5539,9 +5539,9 @@
 
 **Definition.** A weighted limit uses a weight Φ, a functor that sets the shape of the cones. A flexible limit is a strict 2-limit whose weight Φ is cofibrant. Cofibrant here means that the canonical map q : QΦ → Φ has a section. QΦ is the pseudo-morphism classifier of Φ: strict maps out of QΦ correspond to pseudo-natural maps out of Φ (maps that are natural up to coherent invertible 2-cells).
 
-**Problem.** Show that a strict 2-category has all weak 2-limits, called bilimits, even when it lacks many strict 2-limits. A bilimit is a 2-limit whose universal property holds only up to equivalence.
+**Problem.** A strict 2-category with all flexible limits has all bilimits. An example is the 2-category of algebras for a 2-monad with pseudo morphisms, which lacks many strict 2-limits.
 
-**How the definition helps.** Flexible limits are already bilimits, and they are enough to build every bilimit. The class includes all PIE-limits (limits built from products, inserters and equifiers) and all strict pseudo-limits. Every bilimit can be computed as a strict pseudo-limit. So a strict 2-category with all flexible limits has all bilimits. Many naturally occurring 2-categories have flexible limits but not all strict 2-limits. An example is the 2-category of algebras for a 2-monad with pseudo morphisms. For these, the definition gives a short route to their bilimits (Bird, Kelly, Power, Street).
+**How the definition helps.** Flexible limits are already bilimits, and they are enough to build every bilimit. The class includes all PIE-limits (built from products, inserters and equifiers) and all strict pseudo-limits. Every bilimit can be computed as a strict pseudo-limit (Bird, Kelly, Power, Street).
 
 **nLab:** [flexible limit](https://ncatlab.org/nlab/show/flexible+limit). It says: “Furthermore, all PIE-limits and therefore all strict pseudo-limits are flexible; thus any strict 2-category which admits all flexible limits also admits all 2-limits.”
 
@@ -5557,9 +5557,9 @@
 
 **Definition.** An 𝓕-category is a 2-category in which some 1-cells are marked as tight. A lax 𝓕-adjunction has a unit and a counit that are lax natural in general but pseudo natural on tight morphisms. Lax natural means that the naturality squares commute only up to a 2-cell in one direction, and pseudo natural means that they commute up to an invertible 2-cell. The triangle identities hold up to isomorphism.
 
-**Problem.** Show that adjoints are unique: two lax right adjoints of the same functor should be equivalent.
+**Problem.** Two lax 𝓕-right adjoints of the same functor are equivalent.
 
-**How the definition helps.** The tight components make the needed squares commute up to isomorphism, so the usual proof works. The usual proof of uniqueness slides units past counits with naturality squares. If those squares commute only laxly, the proof fails. The theorem seems to fail for 2-adjunctions whose unit and counit are only lax. In a lax 𝓕-adjunction the components are tight and the transformations are pseudo on tight morphisms, so the needed squares commute up to isomorphism and the usual proof goes through. Johnstone used this to characterize fibrations in a 2-category. They are the maps p for which composition with p has a right semi-lax 𝓕-adjoint.
+**How the definition helps.** The tight components make the needed squares commute up to isomorphism, so the usual proof of uniqueness works. That proof slides units past counits with naturality squares. If the squares commute only laxly, as in a 2-adjunction with lax unit and counit, the proof fails. Johnstone used lax 𝓕-adjunctions to characterize fibrations in a 2-category.
 
 **nLab:** [lax F-adjunction](https://ncatlab.org/nlab/show/lax+F-adjunction). It says: “The following theorem seems to fail for 2-adjunctions involving lax transformations; the fact that it holds for lax 𝓕-adjunctions thus means that they are significantly better-behaved and more interesting.”
 
@@ -5575,9 +5575,9 @@
 
 **Definition.** A club is a description of a kind of structure on categories, such as monoidal structure, that is more general than an operad. Kelly's most general clubs are monoids for a substitution product on the lax slice 2-category CAT⫽Cat, not on the ordinary slice category CAT/Cat. In the lax slice, the triangles that define morphisms need to commute only up to a natural transformation. The Grothendieck construction lets the substitution product still work there.
 
-**Problem.** The functor from clubs to monads on Cat should be fully faithful. Then a morphism of the corresponding monads is the same as a morphism of clubs.
+**Problem.** For Kelly's clubs over the lax slice, the functor Mon(CAT⫽Cat, ∘) → Mnd(Cat) from clubs to monads on Cat is fully faithful.
 
-**How the definition helps.** The lax slice has enough morphisms that no monad morphism is lost. For the earlier notions of club, over the symmetric monoidal monad or over FinSet, the functor from clubs to monads on Cat is not fully faithful. So some monad morphisms are not visible as club morphisms. With Kelly's lax-slice definition, the functor Mon(CAT⫽Cat, ∘) → Mnd(Cat) is fully faithful. The nLab notes that Kelly gave no interesting new examples in this generality. It adds that there could be interesting morphisms between clubs over FinSet that are only visible as morphisms of monads.
+**How the definition helps.** The lax slice has enough morphisms that no monad morphism is lost. For the earlier notions of club, over the symmetric monoidal monad or over FinSet, the functor to monads is not fully faithful. The nLab notes that Kelly gave no interesting new examples in this generality.
 
 **nLab:** [club](https://ncatlab.org/nlab/show/club). It says: “This has the advantage that the resulting functor Mon(CAT⫽Cat,∘) → Mnd(Cat) from clubs to monads on Cat is fully faithful, which it is not for the previous notions of club.”
 
@@ -5593,9 +5593,9 @@
 
 **Definition.** A Gray-category is a semi-strict 3-category. Its composition is strictly associative and unital. Only the interchange law holds up to coherent isomorphism instead of strictly. The interchange law says that, for 2-cells, you get the same result if you compose side by side first or one after the other first.
 
-**Problem.** Prove a coherence (strictification) theorem for tricategories, which are weak 3-categories. It says that every tricategory is equivalent to some simpler, more strict kind of 3-category.
+**Problem.** Every tricategory is equivalent to a Gray-category (Gordon, Power and Street). Not every tricategory is equivalent to a strict 3-category.
 
-**How the definition helps.** Gray-categories weaken only the interchange law, and this is enough to make every tricategory equivalent to one. Every bicategory is equivalent to a strict 2-category, but this fails one dimension up. A doubly degenerate braided monoidal category that is not symmetric gives a tricategory that is not equivalent to any strict 3-category. (Doubly degenerate means that the tricategory has one object and one 1-cell.) Weakening only the interchange law removes this obstruction. Gordon, Power and Street proved that every tricategory is equivalent to a Gray-category. The proof of this coherence theorem is still long.
+**How the definition helps.** Gray-categories weaken only the interchange law, and this is enough to make every tricategory equivalent to one. A braided monoidal category that is not symmetric gives a tricategory with one object and one 1-cell. That tricategory is not equivalent to any strict 3-category. The proof of the coherence theorem is still long.
 
 **nLab:** [Gray-category](https://ncatlab.org/nlab/show/Gray-category), [tricategory](https://ncatlab.org/nlab/show/tricategory), [semi-strict infinity-category](https://ncatlab.org/nlab/show/semi-strict+infinity-category). It says: “Not every tricategory is equivalent to a fully strict 3-category; any doubly-degenerate braided monoidal category which is not symmetric is an example.”
 
@@ -5611,9 +5611,9 @@
 
 **Definition.** A weak ω-category has cells of every dimension, with composition laws that hold only up to higher cells. A computad is a presentation of a free ω-category by generating cells. The paper defines computads and their free words, the formal composites of cells, by one explicit inductive definition, without globular operads.
 
-**Problem.** Two results need proof: every ω-category is equivalent to a free one, and computads with generator-preserving maps form a presheaf topos. A presheaf topos is the category of set-valued functors on some small category. One also needs the new ω-categories to agree with the older definition of Batanin and Leinster.
+**Problem.** Every ω-category is equivalent to a free one. Computads with generator-preserving maps form a presheaf topos, whose index category the induction describes directly.
 
-**How the definition helps.** An inductive definition comes with a principle of structural induction, so a property of all words follows from a check at each step of construction. The abstract says that this gives new proofs that every ω-category is equivalent to a free one. It also gives a direct description of the index category of the presheaf topos. The work then moves into a comparison theorem. The new definition agrees with that of Batanin and Leinster, and the induced cofibrant replacement coincides with Garner's.
+**How the definition helps.** An inductive definition comes with structural induction, so a property of all words follows from a check at each step of construction. The work then moves into a comparison theorem. It shows that the new definition agrees with that of Batanin and Leinster, and that the cofibrant replacement coincides with Garner's.
 
 **Paper or page:** [Computads for weak ω-categories as an inductive type](https://arxiv.org/abs/2208.08719). It says: “Our framework permits direct proofs of important results via structural induction, and we use this to give new proofs that every ω-category is equivalent to a free one”
 
@@ -5629,9 +5629,9 @@
 
 **Definition.** A stratified simplicial set is a simplicial set with a chosen set of 'thin' simplices, which includes all degenerate simplices. A complicial set is a stratified simplicial set in which every complicial horn has a unique thin filler. A horn is a simplex with one face and its interior missing, and complicial horns are a special kind of horn. Also, when all the other faces of such a filler are thin, the missing face is thin too.
 
-**Problem.** The Street–Roberts conjecture says that the nerves of strict ω-categories are exactly the complicial sets. A strict ω-category has morphisms between morphisms in all dimensions, and all its laws hold exactly.
+**Problem.** The nerves of strict ω-categories are exactly the complicial sets. This is the Street–Roberts conjecture, proved by Verity.
 
-**How the definition helps.** In our own reading, thin simplices help because they record which simplices are composites or identities. A plain simplicial set cannot tell this, so it has no clean horn-filling description of strict ω-categories. Street's nerve comes with thin simplices. With this extra structure, unique thin fillers describe the image of the nerve. Verity proved the conjecture, and the real work is in his long proof. If you drop uniqueness, you get weak complicial sets, which are a proposed model for weak ω-categories.
+**How the definition helps.** In our own reading, thin simplices help because they record which simplices are composites or identities. A plain simplicial set cannot tell this, so it has no clean horn-filling description of strict ω-categories. The real work is in Verity's long proof. Dropping uniqueness gives weak complicial sets, a proposed model for weak ω-categories.
 
 **nLab:** [thin element](https://ncatlab.org/nlab/show/thin+element). It says: “Street and Roberts conjectured that the nerves of strict ω-categories could be characterized as stratified simplicial sets such that”
 
@@ -5645,11 +5645,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N40 (Homotopical algebra, Quillen model categories, derivators), 18A32. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** A premodel category is a category with all limits and colimits and two weak factorization systems. A weak factorization system is a pair of classes of maps: every map factors as a map in the first class followed by a map in the second, and the two classes have lifting properties against each other. The two systems are (C, AF) and (AC, F), with AC ⊆ C; maps in C are cofibrations, and maps in AC are anodyne cofibrations. The premodel category is cylindrical if three things hold: it has a functorial cylinder with a right adjoint; both systems are closed under pushout application (the pushout-product) with the cylinder boundary; and pushout application with each end inclusion δ₀ and δ₁ sends cofibrations to anodyne cofibrations.
+**Definition.** A premodel category is a category with all limits and colimits and two weak factorization systems (C, AF) and (AC, F), with AC ⊆ C. Maps in C are cofibrations, and maps in AC are anodyne cofibrations. It is cylindrical if it has a functorial cylinder with a right adjoint, and both systems are closed under pushout-product with the cylinder boundary. Also, pushout-product with each end inclusion must send cofibrations to anodyne cofibrations.
 
-**Problem.** Decide when a premodel category is a model category. This happens exactly when W = AF ∘ AC satisfies 2-out-of-3. Here W is the class of maps that factor as a map in AC followed by a map in AF, and 2-out-of-3 means: if two of f, g and g ∘ f are in W, then so is the third.
+**Problem.** A premodel category is a model category exactly when W = AF ∘ AC satisfies 2-out-of-3. In a cylindrical premodel category, this reduces to two conditions instead of three (Cavallo and Sattler).
 
-**How the definition helps.** The cylinder makes one condition follow from another, so there is less to check. Cavallo and Sattler show that, in a general premodel category, 2-out-of-3 for W reduces to three special conditions. In a cylindrical premodel category, the first condition implies the second. So only two conditions remain to check. This is a step toward building model structures, for example on cubical sets. The remaining two conditions still need a proof in each case.
+**How the definition helps.** The cylinder makes one condition follow from another, so there is less to check. In a cylindrical premodel category, the first of the three conditions implies the second (Lemma 3.22). This is a step toward building model structures, for example on cubical sets. The remaining two conditions still need a proof in each case.
 
 **nLab:** [premodel category](https://ncatlab.org/nlab/show/premodel+category). It says: “In a cylindrical premodel structure, the first condition of Proposition 1 implies the second (Cavallo &amp; Sattler 2022, Lemma 3.22), yielding a simplified recognition theorem”
 
@@ -5666,9 +5666,9 @@
 
 **Definition.** Take a cofibrantly generated model category C (one where small sets of maps generate the cofibrations and the acyclic cofibrations) whose acyclic cofibrations are monomorphisms. An algebraic fibrant object is a fibrant object together with a chosen filler for every lifting problem against the generating acyclic cofibrations. Morphisms must preserve the chosen fillers. For simplicial sets these are Kan complexes with chosen horn fillers.
 
-**Problem.** Find a model category that is Quillen equivalent to C and in which every object is fibrant. Its underlying category should have all limits and colimits.
+**Problem.** Under mild conditions, algebraic fibrant objects form a model category that is Quillen equivalent to C, and in which every object is fibrant. It has all limits and colimits that C has.
 
-**How the definition helps.** Chosen fillers make fibrant objects into algebras for a monad, and the category of algebras has the limits and colimits that fibrant objects lack. Fibrant objects alone are not closed under colimits. But Alg C, the category of algebraic fibrant objects, has all limits and colimits that C has, and it is locally presentable when C is. Limits and filtered colimits are computed as in C, because the chosen fillers pass to them. Nikolaus then transfers the model structure along the adjunction between the free and the forgetful functor. The result is Quillen equivalent to C, and all its objects are fibrant. The hard part is a pushout lemma that shows the transfer works.
+**How the definition helps.** Chosen fillers make fibrant objects into algebras for a monad, and the category of algebras has the limits and colimits that fibrant objects lack. Limits and filtered colimits are computed as in C. Nikolaus transfers the model structure along the free and forgetful adjunction. The hard part is a pushout lemma that shows the transfer works.
 
 **nLab:** [model structure on algebraic fibrant objects](https://ncatlab.org/nlab/show/model+structure+on+algebraic+fibrant+objects). It says: “Under mild conditions, the category Alg C of algebraic fibrant objects in a model category C forms itself naturally a model category which is Quillen equivalent to C, and in which all objects are fibrant.”
 
@@ -5684,9 +5684,9 @@
 
 **Definition.** A basic localizer is a class W of functors between small categories that contains the identities, has the 2-out-of-3 property and is weakly saturated. The 2-out-of-3 property says that if two of f, g and g ∘ f are in W, so is the third. Weak saturation is a closure condition about functors that have a left inverse. W must also contain the functor A → 1 whenever A has a terminal object. Last, take a functor A → B that commutes with given functors to a category C. If each induced functor A/c → B/c of comma categories is in W, then A → B is in W. Here A/c is the category of objects of A with a map to c.
 
-**Problem.** Grothendieck conjectured that the smallest basic localizer is the class of functors whose nerve is a weak homotopy equivalence. The nerve of a category is the simplicial set, and so the space, built from its chains of arrows. Then the axioms alone would pick out classical homotopy theory among homotopy theories of small categories.
+**Problem.** The smallest basic localizer is the class of functors whose nerve is a weak homotopy equivalence. Grothendieck conjectured this, and Cisinski proved it.
 
-**How the definition helps.** The definition uses only closure conditions, so any intersection of basic localizers is again a basic localizer. So a smallest basic localizer exists, and the conjecture makes sense at all. The last axiom is a form of Quillen's Theorem A, which detects weak equivalences through comma categories. So facts such as 'every functor with an adjoint is a weak equivalence' follow in a few lines. Grothendieck found that a weaker form of these axioms was enough for all his results on test categories (small categories whose presheaves model homotopy types). The identification of the smallest basic localizer with the nerve weak equivalences is a real theorem, proved by Cisinski.
+**How the definition helps.** The definition uses only closure conditions, so any intersection of basic localizers is again one, and a smallest one exists. The last axiom is a form of Quillen's Theorem A. So facts such as 'every functor with an adjoint is a weak equivalence' follow in a few lines. The identification with nerve weak equivalences is a real theorem.
 
 **nLab:** [basic localizer](https://ncatlab.org/nlab/show/basic+localizer). It says: “Since the definition consists merely of closure conditions, the intersection of any family of basic localizers is again a basic localizer. It follows that there is a unique smallest basic localizer.”
 
@@ -5703,9 +5703,9 @@
 
 **Definition.** This is a constructive version of the usual model structure on simplicial sets. A fibration is a map with a chosen way to fill horns (a horn is a simplex with one face and its interior missing): a section of the map from solutions of lifting problems to lifting problems. A cofibration is a levelwise decidable inclusion (each simplex is provably either in the image or not) whose new degenerate simplices also form a decidable subset. Weak equivalences are first defined between cofibrant Kan complexes as homotopy equivalences, and then extended to all maps by replacement.
 
-**Problem.** The classical model structure on simplicial sets should exist in constructive mathematics, that is, without excluded middle and the axiom of choice. Homotopy type theory needs this to have a constructive interpretation.
+**Problem.** With these definitions, the Kan–Quillen model structure on simplicial sets exists constructively, without excluded middle or choice. With excluded middle and choice, it is the classical one (Henry; Gambino, Sattler and Szumiło).
 
-**How the definition helps.** The definitions put the needed choices into the data, so the proofs no longer need excluded middle or choice. The classical proofs use excluded middle and the axiom of choice, for example to show that every simplicial set is cofibrant. In the constructive definitions, lifting is structure, not mere existence. Also, only simplicial sets with decidable degeneracies are cofibrant. With these definitions, Henry, and then Gambino, Sattler and Szumiło, proved that the model structure exists. They also proved that it is the classical one when excluded middle and choice hold. The proofs are still long: the definitions make the statement true constructively, but not trivial.
+**How the definition helps.** The definitions put the needed choices into the data, so the proofs no longer need excluded middle or choice. The classical proofs use them, for example to show that every simplicial set is cofibrant. Constructively, only simplicial sets with decidable degeneracies are cofibrant. The proofs are still long.
 
 **nLab:** [constructive model structure on simplicial sets](https://ncatlab.org/nlab/show/constructive+model+structure+on+simplicial+sets). It says: “due to the constructive nature of the existential quantifier, being an (acyclic) fibration means we have a section of the map from the set of solutions to lifting problems to the set of lifting problems.”
 
@@ -5740,9 +5740,9 @@
 
 **Definition.** A derivator sends each small category A to a category D(A), which holds the A-shaped diagrams up to homotopy. The restriction functors between these categories must have adjoints, called homotopy Kan extensions, and these adjoints must be computed pointwise. A derivator must also satisfy some conditions like those of a sheaf. The definition needs only ordinary 2-category theory.
 
-**Problem.** A homotopy type is a space up to weak equivalence. Why are homotopy types the natural thing over which every homotopy theory is enriched?
+**Problem.** The free derivator under homotopy colimits on the terminal category is the derivator of simplicial sets (Cisinski). So homotopy types act on every derivator.
 
-**How the definition helps.** Derivators let you ask this question inside ordinary category theory, and a universal property then answers it. The question becomes: what is the free derivator, under homotopy colimits, on the terminal category? Cisinski's theorem says that it is the derivator of simplicial sets. So Ho(sSet), the homotopy category of simplicial sets, appears from a universal property alone. The point acts on every derivator, so homotopy types then act on every derivator. The definition only makes the question possible to state. The identification of the free cocompletion with simplicial presheaves is a real theorem.
+**How the definition helps.** Derivators let you ask the question inside ordinary category theory, and a universal property then answers it. The point acts on every derivator, so homotopy types then act on every derivator. The definition only makes the question possible to state. The identification of the free cocompletion is a real theorem.
 
 **nLab:** [derivator](https://ncatlab.org/nlab/show/derivator). It says: “Note that in order to conclude this, we didn't take for granted that homotopy types should be important: its universal property is formulated purely with ordinary category theory.”
 
@@ -5759,9 +5759,9 @@
 
 **Definition.** Cartesian cubical sets are presheaves on a category of cubes whose maps include diagonals and permutations of coordinates. The equivariant fibration model structure on them asks that fibrations have fillers that are compatible with the symmetries of the cubes, that is, with the permutations of coordinates. It is not enough to have a filler for each open box (a cube with one face and its interior missing) separately.
 
-**Problem.** Cubical type theory gives a model structure on cubical sets. Does this model structure present classical homotopy theory? That is, is it Quillen equivalent to simplicial sets (equivalent as a homotopy theory through a pair of adjoint functors)?
+**Problem.** The equivariant fibration model structure on cartesian cubical sets is Quillen equivalent to simplicial sets, so it presents classical homotopy theory. The plain cartesian cubical model structure does not.
 
-**How the definition helps.** Asking fillers to respect the cube symmetries turns a negative answer into a positive one. For the plain cartesian cubical model structure, the answer is no. For De Morgan cubes, geometric realization is not a Quillen equivalence, because of the reversal map. With the equivariance condition on fibrations, the model structure agrees with the test model structure (the one that Grothendieck's theory of test categories gives) and presents classical homotopy theory (Awodey, Cavallo, Coquand, Riehl and Sattler). Cavallo and Sattler then found a second model structure of this kind, on cartesian cubes with one connection (an extra map of cubes, such as the maximum of two coordinates). The proofs that these structures present homotopy types are substantial papers. They are not consequences of the definition alone.
+**How the definition helps.** Asking fillers to respect the cube symmetries turns a negative answer into a positive one. With equivariance, the model structure agrees with the test model structure (Awodey, Cavallo, Coquand, Riehl and Sattler). Cavallo and Sattler found a second such structure on cartesian cubes with one connection. The proofs are substantial papers, not consequences of the definition alone.
 
 **nLab:** [cubical-type model category](https://ncatlab.org/nlab/show/cubical-type+model+category). It says: “A modified model structure for cartesian cubes, the equivariant fibration model structure, does present classical homotopy theory”
 
@@ -5778,9 +5778,9 @@
 
 **Definition.** A curved algebra has a map d of degree −1, called a predifferential, whose square is not zero. Instead, d² is the bracket with a fixed element, the curvature. So the homology of d is not defined. The paper puts a complete filtration on the modules and asks that d becomes a true differential on the associated graded pieces.
 
-**Problem.** Define André-Quillen cohomology, a cohomology theory for algebras, for curved algebras. This needs a notion of weak equivalence, which quasi-isomorphism cannot give.
+**Problem.** Filtered complete modules, with weak equivalences detected on the associated graded, give curved algebras a homotopy theory with resolutions. In it, André-Quillen cohomology of curved algebras can be defined and computed.
 
-**How the definition helps.** On the associated graded, d squares to zero, so homology makes sense there and gives a notion of weak equivalence. The paper says this setting gives an appropriate notion of weak equivalence, which plain modules cannot. With it, the paper builds resolutions and computes André-Quillen cohomology. The hard part is the theory of curved operads that are not augmented, with bar and cobar constructions and Koszul duality.
+**How the definition helps.** On the associated graded, d squares to zero, so homology makes sense there and gives a notion of weak equivalence. Quasi-isomorphism cannot give one, because d² is not zero. The hard part is the theory of curved operads that are not augmented, with bar and cobar constructions and Koszul duality.
 
 **Paper or page:** [André-Quillen cohomology in the context of curved algebras](https://arxiv.org/abs/2401.14309). It says: “For curved algebras however, the notion of quasi-isomorphism is meaningless. … To get a homotopical context with an appropriate notion of weak equivalence, we consider filtered complete modules with a predifferential inducing a differential on the associated graded.”
 
@@ -5796,9 +5796,9 @@
 
 **Definition.** A Reedy category has a degree on its objects, a subcategory R₊ of maps that raise the degree and a subcategory R₋ of maps that lower it. A Berger–Moerdijk generalized Reedy category has the same R₊ and R₋, but it allows isomorphisms. Isomorphisms keep the degree and lie in both R₊ and R₋, and the factorization of a map is unique only up to isomorphism. One extra condition says: if θ is an isomorphism, f is in R₋ and θ ∘ f = f, then θ is the identity.
 
-**Problem.** Some shape categories have nontrivial automorphisms. Examples are Segal's category Γ, Connes' cycle category Λ and the tree category Ω of dendroidal sets. Diagrams on these shapes should carry a model structure of Reedy type.
+**Problem.** For a generalized Reedy category R, diagrams on R with values in a suitable model category carry a Reedy model structure. This covers Segal's Γ, Connes' Λ and the tree category Ω.
 
-**How the definition helps.** The generalized definition lets isomorphisms in, and the nLab says it still gives the main theorem: the Reedy model structure exists. An ordinary Reedy category can contain no isomorphism other than identities, so Γ, Λ and Ω do not fit that definition. The extra condition on isomorphisms and R₋ rules out the bad cases. The nLab proof of the model structure says this condition is used in exactly one lemma, about matching objects. The proof still needs real work: it uses latching and matching objects with group actions, following Berger and Moerdijk. (The latching and matching objects of an object are the colimit and the limit of the diagram over the lower-degree maps into it and out of it.) Cisinski's stronger variant asks that maps in R₋ be split epimorphisms, and the nLab notes that the Berger–Moerdijk condition is strictly weaker.
+**How the definition helps.** The generalized definition lets isomorphisms in and still gives the Reedy model structure. An ordinary Reedy category has no isomorphisms other than identities, so Γ, Λ and Ω do not fit it. The extra condition on isomorphisms and R₋ is used in exactly one lemma, about matching objects. The proof uses latching and matching objects with group actions, following Berger and Moerdijk.
 
 **nLab:** [generalized Reedy category](https://ncatlab.org/nlab/show/generalized+Reedy+category), [generalized Reedy model structure](https://ncatlab.org/nlab/show/generalized+Reedy+model+structure). It says: “The notion of generalized Reedy category lifts this restriction, while maintaining the truth of the main theorem about Reedy categories: the existence of the Reedy model structure.”
 
@@ -5816,7 +5816,7 @@
 
 **Problem.** Grothendieck's hypothèse inspiratrice (inspiring assumption) has two parts. Every self-equivalence of the homotopy theory of homotopy types is isomorphic to the identity. Also, the identity has no nontrivial automorphisms.
 
-**How the definition helps.** In the richer models, homotopy types are freely built from a point, so an equivalence is fixed by where it sends the point. For Set the proof is short: Set is the free cocompletion of the point (what you get by freely adding all colimits to one object). An equivalence preserves colimits and the terminal object, so its value on the point determines it. The same argument works for ∞-groupoids, which are the free homotopy cocompletion of the point. But the argument needs homotopy colimits, and the ordinary homotopy category cannot express them. Cisinski (for derivators) and Toën–Vezzosi (for Segal categories) prove the lifted statements. The original statement about the 1-category Hot is still not proven in that form.
+**How the definition helps.** In the richer models, homotopy types are freely built from a point, so an equivalence is fixed by where it sends the point. For Set the argument is short, because Set is the free cocompletion of the point. The same argument works for ∞-groupoids, but it needs homotopy colimits, which Hot cannot express. Cisinski (for derivators) and Toën–Vezzosi (for Segal categories) prove the lifted statements; the statement for Hot is still open.
 
 **nLab:** [hypothèse inspiratrice](https://ncatlab.org/nlab/show/hypoth%C3%A8se+inspiratrice). It says: “The hypothèse inspiratrice can be proven relatively easily if one re-formulates the question for a lift of the homotopy category to derivators, (∞,1)-category theory, or some other such setting for homotopy theory.”
 
@@ -5833,9 +5833,9 @@
 
 **Definition.** A Reedy category (a category with degree-raising and degree-lowering maps, like the simplex category) R is elegant if a certain gluing map is always a monomorphism. Take a monomorphism A ↪︎ B of presheaves of sets on R and an object x, and let Lₓ be the latching object at x (the part of a presheaf at x that comes from lower degrees). Then the map from the pushout of Aₓ and LₓB over LₓA to Bₓ must be a monomorphism. Equivalently, every element of a presheaf on R is a degeneracy of exactly one nondegenerate element, in exactly one way.
 
-**Problem.** Show that the Reedy model structure and the injective model structure on presheaves over R are the same model structure. (In the injective model structure, the cofibrations are the objectwise monomorphisms.)
+**Problem.** For an elegant Reedy category R, the Reedy and injective model structures on presheaves over R coincide. This holds for values in simplicial sets, or in any Cisinski model category.
 
-**How the definition helps.** Elegance makes the Reedy cofibrations the same as the monomorphisms, so the two model structures match. Both model structures have the objectwise weak equivalences, so they agree exactly when their cofibrations agree. For presheaves of sets, the first form of the definition says directly that every monomorphism is a Reedy cofibration, so the theorem holds by definition there. The real work moves into two steps: the proof that the three forms of the definition agree, and the step from sets to a Grothendieck topos, which uses that degeneracies split and that colimits are stable under pullback. The theorem then holds for presheaves with values in a Cisinski model category (a model structure on a Grothendieck topos whose cofibrations are the monomorphisms), such as simplicial sets. The nLab says it does not hold for every model category of values. Examples are the simplex category Δ and Joyal's categories Θₙ, so every simplicial presheaf on them is Reedy cofibrant.
+**How the definition helps.** Elegance makes the Reedy cofibrations the same as the monomorphisms, so the two model structures match. Both have the objectwise weak equivalences, so they agree exactly when their cofibrations agree. The real work is to show that the forms of the definition agree and to pass from sets to a Grothendieck topos. Examples are Δ and Joyal's Θₙ, so every simplicial presheaf on them is Reedy cofibrant.
 
 **nLab:** [elegant Reedy category](https://ncatlab.org/nlab/show/elegant+Reedy+category). It says: “The principal theorem about elegant Reedy categories is that the Reedy model structure on presheaves (i.e. contravariant diagrams) over an elegant Reedy category coincides with the injective model structure.”
 
@@ -5851,9 +5851,9 @@
 
 **Definition.** The nerve of a category is the simplicial set whose n-simplices are strings of n composable morphisms. A functor between small categories is a Thomason weak equivalence if its nerve is a weak homotopy equivalence of simplicial sets. The Thomason model structure on Cat has these weak equivalences.
 
-**Problem.** Show that ordinary 1-categories can model all homotopy types, not only homotopy 1-types. A homotopy 1-type is a space with no homotopy groups above π₁.
+**Problem.** Thomason weak equivalences give a model structure on Cat that is Quillen equivalent to simplicial sets. So small categories model all homotopy types, not only homotopy 1-types.
 
-**How the definition helps.** The Thomason definition judges a functor by its nerve, so the claim that categories model all homotopy types gets a meaning. With the usual equivalence of categories as the notion of sameness, groupoids model only homotopy 1-types. The real content is Thomason's theorem. It says that these weak equivalences give a model structure on Cat (a framework for doing homotopy theory). This model structure is Quillen equivalent to the classical model structure on simplicial sets, so the two have the same homotopy theory.
+**How the definition helps.** The Thomason definition judges a functor by its nerve, so the claim that categories model all homotopy types gets a meaning. With equivalence of categories as sameness, groupoids model only homotopy 1-types. The real content is Thomason's theorem.
 
 **nLab:** [Thomason model structure](https://ncatlab.org/nlab/show/Thomason+model+structure), [homotopy hypothesis](https://ncatlab.org/nlab/show/homotopy+hypothesis). It says: “if we declare a functor between categories to be a weak equivalence iff its nerve is a weak equivalence of simplicial sets, then all homotopy types can be modeled by 1-categories in this way”
 
@@ -5887,9 +5887,9 @@
 
 **Definition.** A symmetric monoidal model category satisfies the commutative monoid axiom if a condition holds for every trivial cofibration h. A trivial cofibration is a cofibration that is also a weak equivalence. The pushout product is the standard way to multiply maps in such a category. The condition is that the n-fold pushout product of h, taken modulo the action of the symmetric group Σₙ, is again a trivial cofibration. This wording is our own summary of White's definition, because the nLab page leaves the axiom unstated. Lurie's 'freely powered' condition is a related, stronger hypothesis.
 
-**Problem.** Let C be a symmetric monoidal model category. Commutative monoids in C should form a model category, with weak equivalences and fibrations taken from C.
+**Problem.** Let a symmetric monoidal model category C satisfy smallness conditions, the monoid axiom and the commutative monoid axiom. Then commutative monoids in C carry the model structure transferred from C (White, Theorem 3.2).
 
-**How the definition helps.** The commutative monoid axiom controls the symmetric powers that appear when one glues cells in commutative monoids. The operad Comm, which describes commutative monoids, is not cofibrant. So the monoid axiom alone does not give a model structure on commutative monoids. This is unlike the case of E∞-monoids, which are commutative only up to coherent homotopy. With smallness conditions and the monoid axiom, the commutative monoid axiom gives the transferred model structure (White, Theorem 3.2). It excludes chain complexes over a field of positive characteristic, where commutative dg-algebras have no such model structure. Whether the result agrees with E∞-monoids (rectification) is a separate question.
+**How the definition helps.** The commutative monoid axiom controls the symmetric powers that appear when one glues cells in commutative monoids. The operad Comm is not cofibrant, so the monoid axiom alone does not give a model structure on commutative monoids. The axiom excludes chain complexes over a field of positive characteristic, where commutative dg-algebras have no such model structure. Rectification with E∞-monoids is a separate question.
 
 **nLab:** [commutative monoid in a symmetric monoidal model category](https://ncatlab.org/nlab/show/commutative+monoid+in+a+symmetric+monoidal+model+category). It says: “This is why the model structure on commutative monoids may not always exist even when the model structure on E-infinity monoids in a symmetric monoidal model category does.”
 
@@ -5905,9 +5905,9 @@
 
 **Definition.** A weak factorization system factors every map as a left map followed by a right map; here the right maps act as fibrations. The system satisfies the Frobenius condition when pulling a left map back along a fibration gives a left map. Uniform fibrations are fibrations with chosen lifts that are compatible with pullback.
 
-**Problem.** A model structure is right proper when pulling a weak equivalence back along a fibration gives a weak equivalence. For Kan complexes, the classical proofs use topological realization or minimal fibrations.
+**Problem.** The Quillen model structure for Kan complexes is right proper. Through the Frobenius condition, this follows without topological realization or minimal fibrations (Gambino and Sattler).
 
-**How the definition helps.** Our own summary: the Frobenius condition lets both halves of a factorisation survive pullback along a fibration, so right properness follows. First factor a weak equivalence as a trivial cofibration followed by a trivial fibration. Pullback along a fibration keeps trivial fibrations, and the Frobenius condition keeps trivial cofibrations, so the pullback is again a weak equivalence. Gambino and Sattler build weak factorization systems that satisfy the Frobenius condition, and so obtain the new proof. They also prove constructively that pushforward along Kan fibrations preserves Kan fibrations, an open problem for Voevodsky's model of type theory. Barton later gave a short diagrammatic proof of the Frobenius property for generic fibrations, with no extra structure on the interval object.
+**How the definition helps.** Our own summary: the Frobenius condition lets both halves of a factorisation survive pullback along a fibration, so right properness follows. Factor a weak equivalence as a trivial cofibration followed by a trivial fibration. Pullback along a fibration keeps trivial fibrations, and the Frobenius condition keeps trivial cofibrations. Gambino and Sattler build weak factorization systems with the Frobenius condition from uniform fibrations.
 
 **Paper or page:** [The Frobenius Condition, Right Properness, and Uniform Fibrations](https://arxiv.org/abs/1510.00669), [A short proof of the Frobenius property for generic fibrations](https://arxiv.org/abs/2402.04227). It says: “we obtain a new proof that the Quillen model structure for Kan complexes is right proper, avoiding entirely the use of topological realization and minimal fibrations”
 
@@ -5924,9 +5924,9 @@
 
 **Definition.** A model category has three classes of maps (weak equivalences, fibrations and cofibrations) that let one do homotopy theory. An acyclic cofibration is a cofibration that is also a weak equivalence. A monoidal model category satisfies the monoid axiom if this holds: take maps of the form (acyclic cofibration) ⊗ (any object), form pushouts of them, and compose these pushouts in a transfinite sequence. The result is always a weak equivalence.
 
-**Problem.** The category of monoids in a monoidal model category should have a model structure transferred from the underlying category. Ring spectra are an example of such monoids. 'Transferred' means that a map of monoids is a weak equivalence or a fibration when its underlying map is one.
+**Problem.** Let a monoidal model category be cofibrantly generated, have all objects small, and satisfy the monoid axiom. Then monoids in it carry the transferred model structure (Schwede and Shipley).
 
-**How the definition helps.** The monoid axiom gives the extra control that the transfer of the model structure needs. The pushout-product axiom only controls tensor products of cofibrations with cofibrant objects. The monoid axiom asks more: tensoring an acyclic cofibration with any object, then forming pushouts and transfinite compositions, gives a weak equivalence. Schwede and Shipley prove that the transferred model structure on monoids exists under three conditions: the monoid axiom, cofibrant generation (the model structure is generated by sets of maps), and smallness of all objects. For a cofibrantly generated model category, it is enough to check the axiom on the generating acyclic cofibrations. Simplicial sets, connective chain complexes and symmetric spectra satisfy it.
+**How the definition helps.** The monoid axiom gives the extra control that the transfer of the model structure needs. The pushout-product axiom only controls tensor products of cofibrations with cofibrant objects. For a cofibrantly generated model category, it is enough to check the axiom on the generating acyclic cofibrations. Simplicial sets, connective chain complexes and symmetric spectra satisfy it.
 
 **nLab:** [monoid axiom in a monoidal model category](https://ncatlab.org/nlab/show/monoid+axiom+in+a+monoidal+model+category), [monoidal model category](https://ncatlab.org/nlab/show/monoidal+model+category). It says: “The monoid axiom is an extra condition on a monoidal model category that helps to make its model structure on monoids in a monoidal model category exist and be well behaved.”
 
@@ -5960,9 +5960,9 @@
 
 **Definition.** A type-theoretic model category is a model category with extra conditions. Examples are: it is right proper (pullback along a fibration keeps weak equivalences), pullback along a fibration has a right adjoint, and cofibrations are closed under limits (or are exactly the monomorphisms). Several variants exist (Shulman; Arndt–Kapulkin; Gepner–Kock; Lumsdaine–Shulman).
 
-**Problem.** Interpret type theory in the fibrant objects of a model category. The type theory should then be valid in the (∞,1)-category that the model category presents. This includes Π-types with function extensionality, identity types and univalent universes.
+**Problem.** The fibrant objects of a type-theoretic model category interpret type theory validly in the (∞,1)-category that it presents. For example, Π-types satisfy function extensionality when pullback along fibrations preserves cofibrations (Shulman, Lemma 5.9).
 
-**How the definition helps.** With the extra conditions, the strict 1-categorical constructions (pullback, pushforward along fibrations, path objects) present the (∞,1)-categorical ones. For example, Π-types satisfy function extensionality when pullback along fibrations preserves cofibrations (Shulman, Lemma 5.9). Stronger conditions of this kind are meant to rule out cases like Bordg's counterexample. There, the fibrant objects of the projective model structure on groupoids with a ℤ/2-action form a tribe (Joyal's notion of a category with fibrations that models type theory) with Π-types and a universe. But function extensionality and univalence fail, although the presented (∞,1)-category is locally cartesian closed. The nLab does not say which condition fails there. It says that there is no single agreed 'correct' definition yet.
+**How the definition helps.** With the extra conditions, the strict constructions (pullback, pushforward along fibrations, path objects) present the (∞,1)-categorical ones. Stronger conditions of this kind are meant to rule out Bordg's counterexample. There, groupoids with a ℤ/2-action give a model with Π-types and a universe, but function extensionality and univalence fail. The nLab says that there is no single agreed definition yet.
 
 **nLab:** [type-theoretic model category](https://ncatlab.org/nlab/show/type-theoretic+model+category). It says: “the universe fails to be univalent and indeed that function extensionality fails to hold, even though the (∞,1)-category presented by this model structure is locally cartesian closed and has an object classifier for discrete objects.”
 
@@ -5979,9 +5979,9 @@
 
 **Definition.** Define the fibrations of a model of type theory as the maps with the right lifting property against a class of generating left maps. Ask that this class is stable under pullback. Then the fibrations form the right class of an algebraic weak factorization system (a functorial way to factor each map into a left map and a right map, with lifts given as structure).
 
-**Problem.** In a model of dependent type theory, two properties are wanted. A Π-type (a type of dependent functions) should be fibrant when its codomain is fibrant. Fibrant replacement should commute with substitution, so that it can be internalized as a monad on types.
+**Problem.** If the generating left maps are stable under pullback, a Π-type with fibrant codomain is fibrant. Fibrant replacement then commutes with substitution, so it can be internalized as a monad on types.
 
-**How the definition helps.** If the generating left maps are stable under pullback, then both properties hold. Kan fibrancy, as used in models of homotopy type theory, and Segal fibrancy do not have them. The reason is that a horn or open box is filled above a cell that is not part of it. Boulier and Tabareau's contextual Kan fibrancy is an instance of Nuyts's damped algebraic weak factorization systems. The nLab says that these give a form of the two properties. The nLab says 'one way to guarantee', so this is a sufficient condition, not a characterization.
+**How the definition helps.** Pullback-stable generating maps make fibrancy survive substitution, so both properties hold. Kan fibrancy and Segal fibrancy do not have them, because a horn or open box is filled above a cell that is not part of it. The nLab says 'one way to guarantee', so this is a sufficient condition, not a characterization.
 
 **nLab:** [contextual fibrancy](https://ncatlab.org/nlab/show/contextual+fibrancy). It says: “One way to guarantee that properties 1-2 hold, is by defining fibrations as the right class of an algebraic weak factorization system generated by a class of generating left maps whose pullback is again a left map”
 
@@ -5998,9 +5998,9 @@
 
 **Definition.** The Barratt nerve Ba(X) of a simplicial set X is the nerve of the poset of non-degenerate simplices of X, ordered by the face relation. A simplicial set is non-singular when its non-degenerate simplices are embedded, that is, the map from the standard simplex is injective. It is regular when each non-degenerate simplex is embedded along its last face.
 
-**Problem.** We want to model the homotopy type of every simplicial set by the nerve of a poset.
+**Problem.** For every simplicial set X, the map Ba(Sd X) → X is a weak homotopy equivalence, in fact a triangulation. So every homotopy type is modelled by the nerve of a poset.
 
-**How the definition helps.** Subdivision makes every simplicial set regular, and on regular simplicial sets the Barratt nerve gives the right homotopy type. On general simplicial sets the Barratt nerve fails. For example, the simplicial sphere Δⁿ/∂Δⁿ has Barratt nerve Δ¹, which is contractible. The nLab says that on nicer simplicial sets, such as those that subdivision produces, Ba is well behaved. Fjellbo's paper makes this precise with regularity: Kan subdivision Sd makes every simplicial set regular, and Ba X → X is a triangulation whenever X is regular. So Ba(Sd X) → X is a weak homotopy equivalence, in fact a triangulation. Composing with subdivision removes the counterexample.
+**How the definition helps.** Subdivision makes every simplicial set regular, and on regular simplicial sets the Barratt nerve gives the right homotopy type. On general simplicial sets it fails: the sphere Δⁿ/∂Δⁿ has Barratt nerve Δ¹, which is contractible. Fjellbo shows that Ba X → X is a triangulation whenever X is regular.
 
 **nLab:** [Barratt nerve](https://ncatlab.org/nlab/show/Barratt+nerve). It says: “But on "non-singular" simplicial sets such as produced by subdivision Sd : sSet → sSet, the Barratt nerve produces weakly homotopy equivalent types”
 
@@ -6016,9 +6016,9 @@
 
 **Definition.** The π∗-Kan condition (Bousfield–Friedlander, B.3) is a condition on a bisimplicial set, or a simplicial space. Roughly, for each n ≥ 1, the homotopy groups πₙ of the levels, taken at all base points together, form a simplicial set. The condition asks that the map from this simplicial set to the simplicial set of base points be a Kan fibration. A Kan fibration is a map of simplicial sets with the horn-filling property that a fibration of spaces has.
 
-**Problem.** Geometric realization turns a simplicial space into a single space. In general it does not preserve homotopy pullbacks. When does it?
+**Problem.** Let f : X• → Y• be a map of simplicial spaces that satisfy the π∗-Kan condition, with π₀(f)• a Kan fibration. Then realization takes every homotopy pullback square along f to a homotopy pullback (Bousfield–Friedlander, Theorem B.4).
 
-**How the definition helps.** The π∗-Kan condition is a hypothesis under which realization does preserve homotopy pullbacks. Bousfield and Friedlander prove this as Theorem B.4. Let f : X• → Y• be a map such that π₀(f)• is a Kan fibration of simplicial sets, and X• and Y• satisfy the π∗-Kan condition. Then realization takes every homotopy pullback square of f to a homotopy pullback. Without such conditions, realization does not preserve homotopy pullbacks. Anderson, Rezk and others later gave other sufficient conditions. Rezk's condition (π₀ of the base is constant) is often easier to check.
+**How the definition helps.** The π∗-Kan condition is a hypothesis under which realization does preserve homotopy pullbacks. Without such conditions, it does not. Anderson, Rezk and others later gave other sufficient conditions. Rezk's condition (π₀ of the base is constant) is often easier to check.
 
 **nLab:** [π-Kan condition](https://ncatlab.org/nlab/show/%CF%80-Kan+condition), [geometric realization of simplicial topological spaces](https://ncatlab.org/nlab/show/geometric+realization+of+simplicial+topological+spaces). It says: “The π∗-Kan condition (Bousfield &amp; Friedlander 1978, B.3) on a bisimplicial set guarantees that its geometric realization behaves well with respect to homotopy pullback”
 
@@ -6036,7 +6036,7 @@
 
 **Problem.** Ashley's theorem, which Dakin conjectured, says that simplicial T-complexes are equivalent to crossed complexes. A crossed complex is an algebraic object: a sequence of groups and groupoids with boundary maps and actions, a nonabelian kind of chain complex.
 
-**How the definition helps.** In our own reading, unique thin fillers make composition well defined, and so the structure can be equivalent to an algebraic one. A Kan complex (a simplicial set in which every horn has a filler) has many horn fillers and no algebra. Ashley's thesis calls the result a nonabelian version of the Dold–Kan theorem, which says that simplicial abelian groups are the same as chain complexes. In the cubical setting, Brown and Higgins proved that cubical T-complexes are equivalent to crossed complexes. There, any composite of thin elements is thin, and this is a key tool. The proof of Ashley's theorem is long. The definition makes the theorem possible to state, not easy to prove.
+**How the definition helps.** In our own reading, unique thin fillers make composition well defined, and so the structure can be equivalent to an algebraic one. A Kan complex has many horn fillers and no algebra. Ashley calls the result a nonabelian Dold–Kan theorem. The proof is long; the definition makes the theorem possible to state, not easy to prove.
 
 **nLab:** [thin element](https://ncatlab.org/nlab/show/thin+element). It says: “Ashley's theorem, conjectured by Dakin, is that the category of such T-complexes is equivalent to that of crossed complexes.”
 
@@ -6070,7 +6070,7 @@
 
 **Definition.** An (∞,1)-topos H is ∞-connected if the constant-sheaf functor LConst : ∞Grpd → H is fully faithful. Here ∞Grpd is the (∞,1)-category of ∞-groupoids, and LConst is the inverse image of the global sections morphism. Fully faithful means that LConst does not change the spaces of maps between ∞-groupoids.
 
-**Problem.** Show that an ∞-connected (∞,1)-topos is contractible. Here contractible means that its shape is the shape of the point.
+**Problem.** An ∞-connected (∞,1)-topos has the shape of the point.
 
 **How the definition helps.** The definition already says that the shape is the identity, which is the shape of the point. LConst is fully faithful exactly when the unit Id → Γ ∘ LConst is an equivalence, where Γ is the global sections functor. The shape of H is the functor Γ ∘ LConst : ∞Grpd → ∞Grpd. So the definition says that this shape is the identity. When H is also locally ∞-connected, the condition is the same as this: the fundamental ∞-groupoid functor Π preserves the terminal object.
 
@@ -6142,9 +6142,9 @@
 
 **Definition.** The orbit category of a group G has the transitive G-sets G/H as objects and the G-maps between them as morphisms. A G-∞-category is a functor from the opposite of the orbit category to the ∞-category of ∞-categories. So it is a system of ∞-categories, one for each subgroup H, with restriction functors between them.
 
-**Problem.** Elmendorf's theorem says that G-spaces are equivalent to presheaves of spaces on the orbit category of G. The goal is a theory of G-∞-categories in which this holds.
+**Problem.** G-∞-categories satisfy Elmendorf's theorem. G-spaces form a G-∞-category whose value at G/H is the ∞-category of H-spaces, with restriction as transition maps.
 
-**How the definition helps.** The definition takes the conclusion of Elmendorf's theorem as its starting point, so the theorem follows by unwinding definitions. Barwick, Dotto, Glasman, Nardin and Shah define a G-∞-category as a presheaf of ∞-categories on the orbit category of G. Take the G-∞-category of G-spaces, built fiberwise from presheaves on the orbit category of H. Its value at G/H is the ∞-category of H-spaces, and its transition maps are restriction. This is a form of Elmendorf's theorem. The real content is the classical Elmendorf theorem, which says that this definition agrees with genuine G-spaces.
+**How the definition helps.** The definition takes the conclusion of Elmendorf's theorem as its starting point, so the theorem follows by unwinding definitions. This is the approach of Barwick, Dotto, Glasman, Nardin and Shah. The real content is the classical Elmendorf theorem, which says that this agrees with genuine G-spaces.
 
 **nLab:** [G-∞-category](https://ncatlab.org/nlab/show/G-%E2%88%9E-category). It says: “The starting point of Parametrized Higher Category Theory and Higher Algebra is to define G-∞-categories so that they satisfy Elmendorf's theorem.”
 
@@ -6178,9 +6178,9 @@
 
 **Definition.** Let S be a class of morphisms that is stable under pullback. An S-classifier is a morphism Û → U such that every morphism in S is a pullback of it along an essentially unique map. In an ∞-topos, pullbacks are homotopy pullbacks, and 'unique' means unique up to a contractible space of choices.
 
-**Problem.** We want one object to classify all (small) morphisms, not only the monomorphisms. A universe does this in type theory.
+**Problem.** An ∞-topos has a classifier for relatively κ-compact morphisms for every sufficiently large regular cardinal κ. Conversely, a presentable ∞-category with universal colimits and such classifiers is an ∞-topos (Rezk; Lurie, HTT 6.1.6.8).
 
-**How the definition helps.** In an ∞-topos, uniqueness is only up to equivalence, and automorphisms become part of the classifying space instead of blocking it. In a 1-topos only monomorphisms are classified. The reason is that an object of a 1-category can classify only a poset of maps, and monomorphisms have no automorphisms. Other maps have automorphisms, so a classifying map for them would not be unique. Rezk's theorem (Lurie, HTT 6.1.6.8) then characterizes ∞-toposes. They are the presentable ∞-categories with universal colimits that have classifiers for relatively κ-compact morphisms, for all sufficiently large regular cardinals κ. That characterization is a real theorem.
+**How the definition helps.** In an ∞-topos, uniqueness is only up to equivalence, so automorphisms become part of the classifying object instead of blocking it. In a 1-topos only monomorphisms are classified. An object of a 1-category can classify only a poset of maps, and maps with automorphisms would have non-unique classifying maps. Rezk's characterization is a real theorem.
 
 **nLab:** [(sub)object classifier in an (infinity,1)-topos](https://ncatlab.org/nlab/show/%28sub%29object+classifier+in+an+%28infinity%2C1%29-topos). It says: “When one passes all the way to ∞-toposes, there should be objects that classify all morphisms, subject to some bound on size.”
 
@@ -6196,9 +6196,9 @@
 
 **Definition.** Let H be an ∞-topos (an ∞-category that behaves like the ∞-category of spaces or of ∞-sheaves), and let G be a group in H. A G-principal ∞-bundle over X is a map P → X with a G-action on P such that X is the quotient of the action. Here the quotient is the ∞-colimit of the action groupoid. A cocycle is a map X → 𝐁G, where 𝐁G is the delooping of G (the object whose loop object is G).
 
-**Problem.** Show that G-principal ∞-bundles over X are equivalent to cocycles X → 𝐁G. Then the nonabelian cohomology H(X, 𝐁G) classifies them.
+**Problem.** In an ∞-topos, G-principal ∞-bundles over X are equivalent to cocycles X → 𝐁G. So the nonabelian cohomology H(X, 𝐁G) classifies them.
 
-**How the definition helps.** The classification follows from the axioms of an ∞-topos alone. From a cocycle g : X → 𝐁G you take its homotopy fiber P. In an ∞-topos every groupoid object is effective (it can be recovered from its own quotient map), and colimits are stable under pullback; these are the Giraud axioms. So the bundle and the cocycle determine each other. Our own remark: the theorem assumes no paracompactness or numerable covers, which the classical theorem for topological spaces needs. The work is in Lurie's theory of ∞-toposes, and in comparing the result with concrete models such as simplicial principal bundles.
+**How the definition helps.** The classification follows from the Giraud axioms of an ∞-topos alone. From a cocycle X → 𝐁G you take its homotopy fiber P. Every groupoid object is effective and colimits are stable under pullback, so the bundle and the cocycle determine each other. Our own remark: no paracompactness or numerable covers are needed, unlike the classical theorem for spaces.
 
 **nLab:** [principal infinity-bundle](https://ncatlab.org/nlab/show/principal+infinity-bundle). It says: “In words this says that the cohomology on X with coefficients in G classified G-principal ∞-bundles, and in fact does so on the level of cocycles.”
 
@@ -6214,9 +6214,9 @@
 
 **Definition.** An elementary (∞,1)-topos is an (∞,1)-category with finite limits, finite colimits, local cartesian closure and a subobject classifier. Local cartesian closure means that every slice category is cartesian closed. In addition, every morphism must be classified by some universe (an object classifier) that is closed under finite limits, finite colimits, sums and products.
 
-**Problem.** Ask whether the good exactness properties of Grothendieck ∞-toposes hold in this elementary setting. These properties include disjoint coproducts, descent for finite colimits and a natural numbers object.
+**Problem.** In an elementary (∞,1)-topos, the initial object is strict, coproducts are disjoint, and all finite colimits are van Kampen.
 
-**How the definition helps.** The universe axiom does much of the work. A strict initial object and disjoint coproducts follow as they do for 1-toposes. Each finite family of maps is classified by one universe, so the page proves in a few lines that all finite colimits are van Kampen. A colimit is van Kampen when maps into it are the same as compatible families of maps into its pieces; this is the descent property. The page also states that a natural numbers object exists, but it builds it in type theory, so this part depends on a translation of type theory into (∞,1)-categories. Finite colimits must stay in the definition: Frey and Rasekh show that local cartesian closure and a subobject classifier do not give pushouts.
+**How the definition helps.** The universe axiom does much of the work. Each finite family of maps is classified by one universe, so a few lines show that finite colimits are van Kampen (they satisfy descent). The page also builds a natural numbers object, but in type theory, so that part depends on a translation. Finite colimits must stay in the definition: Frey and Rasekh show that the other axioms do not give pushouts.
 
 **nLab:** [elementary (infinity,1)-topos](https://ncatlab.org/nlab/show/elementary+%28infinity%2C1%29-topos). It says: “However, there is still a good deal of extra structure that "comes for free" from the above definition.”
 
@@ -6266,9 +6266,9 @@
 
 **Definition.** An ∞-group is a group up to coherent homotopy. In homotopy type theory, an action of an ∞-group G is a type family X over BG, the classifying type of G. The action is regular if its homotopy quotient Σ (b : BG), X(b) is contractible. This homotopy quotient is the total type of the family: it collects all the fibers X(b) into one type.
 
-**Problem.** Define free and transitive actions together, called regular actions or torsors, for higher groups. For higher groups, 'free' and 'transitive' do not have their usual meaning for sets.
+**Problem.** For a group acting on a set, the homotopy quotient is contractible exactly when the action is free and transitive. So regular actions extend torsors to every ∞-group.
 
-**How the definition helps.** One condition, a contractible homotopy quotient, does the work of both 'free' and 'transitive', and it makes sense for any ∞-group. For a group acting on a set, transitivity says that all points of the homotopy quotient are connected. Freeness says that the paths between two points form a contractible space. Together these say that the homotopy quotient is contractible. With this definition, results such as 'if X is regular then the action of the automorphism group of X is regular' get short proofs in homotopy type theory. The nLab page gives no primary source for this definition.
+**How the definition helps.** One condition, a contractible homotopy quotient, does the work of both 'free' and 'transitive', and it makes sense for any ∞-group. Transitivity says that all points of the homotopy quotient are connected. Freeness says that the paths between two points form a contractible space. With this definition, results such as the regularity of the automorphism group action get short proofs in homotopy type theory.
 
 **nLab:** [regular action](https://ncatlab.org/nlab/show/regular+action). It says: “Transitivity ensures that all the points in the homotopy quotient are connected by equivalences, while freeness means that the space of equivalences between two points is itself contractible.”
 
@@ -6334,9 +6334,9 @@
 
 **Definition.** The Barwick–Schommer-Pries axioms describe an (∞,1)-category of (∞,n)-categories. It must be presentable, that is, generated under colimits by a small set of objects. It must be strongly generated by a set of strict n-categories, such as globes and their pastings. It must also respect certain basic pushouts, have certain base-change adjoints, and be universal with these properties.
 
-**Problem.** There are many models of (∞,n)-categories, such as complete Segal Θₙ-spaces and iterated complete Segal spaces. Show that they all give the same homotopy theory. Also compute the automorphisms of that theory.
+**Problem.** The Barwick–Schommer-Pries axioms determine the (∞,1)-category of (∞,n)-categories up to equivalence. So all models that satisfy them, such as complete Segal Θₙ-spaces and iterated complete Segal spaces, give the same homotopy theory.
 
-**How the definition helps.** With the axioms, uniqueness is almost immediate, so comparing models reduces to checking axioms. Under the Barwick–Schommer-Pries axioms, the (∞,1)-category of (∞,n)-categories is unique up to equivalence almost by the first axiom. Its automorphism ∞-group can be computed from the axioms. To compare two models, one then only checks that each model satisfies the axioms. That check is the remaining hard work for each model.
+**How the definition helps.** With the axioms, uniqueness is almost immediate from the first axiom, so comparing models reduces to checking axioms. The automorphism ∞-group of the theory can also be computed from the axioms. Checking that each model satisfies the axioms is the remaining hard work.
 
 **nLab:** [(infinity,n)-category](https://ncatlab.org/nlab/show/%28infinity%2Cn%29-category). It says: “By the first axiom, the localization demanded in the universal property is essentially unique.”
 
@@ -6391,9 +6391,9 @@
 
 **Definition.** An (∞,n)-category is a higher category with morphisms in all levels, in which the morphisms above level n are invertible. An object of a symmetric monoidal (∞,n)-category is fully dualizable if it has a dual, and the unit and counit of the duality have adjoints, which have adjoints in turn, and so on up to level n−1. The framed bordism (∞,n)-category Bordₙᶠʳ has framed points as objects, cobordisms between them as morphisms, and higher cobordisms as higher morphisms.
 
-**Problem.** The cobordism hypothesis says that Bordₙᶠʳ is the free symmetric monoidal (∞,n)-category with duals on one object. So a framed fully extended TQFT Z (topological quantum field theory, here a symmetric monoidal functor out of the bordism category) is determined by its value Z(point). Also, every fully dualizable object gives such a TQFT.
+**Problem.** Cobordism hypothesis: evaluation at the point is an equivalence from symmetric monoidal functors Bordₙᶠʳ → C to the ∞-groupoid of fully dualizable objects of C. So a framed fully extended TQFT is determined by its value on the point.
 
-**How the definition helps.** Full dualizability gives the hypothesis an exact meaning, but it does not prove it. Baez and Dolan stated the hypothesis in 1995, before definitions of the needed higher categories existed. With (∞,n)-categories and full dualizability, the statement becomes precise. Evaluation at the point is an equivalence from symmetric monoidal functors Bordₙᶠʳ → C to the ∞-groupoid (a higher category in which all morphisms are invertible) of fully dualizable objects of C. The proof is hard, and the nLab calls Lurie's account a detailed but incomplete sketch. Other tangential structures, such as orientation or spin, follow from the framed case. The fully dualizable objects carry an O(n)-action, and theories with a G-structure are classified by the homotopy fixed points of the induced G-action.
+**How the definition helps.** Full dualizability gives the hypothesis an exact meaning, but it does not prove it. Baez and Dolan stated the hypothesis in 1995, before the needed higher categories were defined. The proof is hard, and the nLab calls Lurie's account a detailed but incomplete sketch. Other tangential structures follow from the framed case through homotopy fixed points of an O(n)-action.
 
 **nLab:** [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis), [fully dualizable object](https://ncatlab.org/nlab/show/fully+dualizable+object), [functorial field theory](https://ncatlab.org/nlab/show/functorial+field+theory). It says: “before definitions of these higher category theoretical notions were available.”
 
@@ -6410,9 +6410,9 @@
 
 **Definition.** A k-tuply monoidal n-category is a pointed (k−1)-connected (n+k)-category. Here (k−1)-connected means that any two parallel j-morphisms are equivalent for every j less than k. The basepoint is extra data. Functors and transformations must respect the basepoint.
 
-**Problem.** The claim is that the entries of the Baez–Dolan periodic table hold as equivalences of higher categories. For example, 1-tuply monoidal 0-categories are monoids, and 2-tuply monoidal 0-categories are commutative monoids.
+**Problem.** With pointed functors and pointed transformations, the entries of the Baez–Dolan periodic table hold as equivalences. For example, 1-tuply monoidal 0-categories are monoids, and 2-tuply monoidal 0-categories are commutative monoids.
 
-**How the definition helps.** The basepoint removes extra transformations, so the expected equivalences hold. Without the basepoint, take two functors f and g between one-object categories. A natural transformation from f to g is then an element y with f(x)y = y g(x) for all x. So the 2-category of connected 1-categories is not the 1-category of monoids. In the same way, for doubly degenerate bicategories, the modifications that are not identities stop the tricategory from being the category of commutative monoids (Cheng and Gurski). Pointed functors and pointed transformations remove these extra cells, and then the expected equivalences hold. The Eckmann–Hilton argument still does the work of making the monoid commutative.
+**How the definition helps.** The basepoint removes extra transformations, so the expected equivalences hold. Without it, a transformation between functors f and g of one-object categories is an element y with f(x)y = y g(x) for all x. So connected 1-categories do not form the 1-category of monoids. For doubly degenerate bicategories, nonidentity modifications cause the same problem (Cheng and Gurski).
 
 **nLab:** [k-tuply monoidal n-category](https://ncatlab.org/nlab/show/k-tuply+monoidal+n-category), [periodic table](https://ncatlab.org/nlab/show/periodic+table). It says: “However, the nonidentity modifications do screw things up, so the tricategory of 1-connected bicategories is not equivalent to the 1-category of commutative monoids.”
 
@@ -6429,9 +6429,9 @@
 
 **Definition.** A semi-strict ∞-category in Simpson's sense has strictly associative composition and strict interchange laws (the rule that composing horizontally then vertically gives the same result as the other order). Only its unit laws hold weakly, that is, up to equivalence.
 
-**Problem.** Simpson's conjecture says that every weak ∞-category is equivalent to one in which only the unit laws are weak. In particular, such structures model all homotopy types.
+**Problem.** One-object 3-groupoids that are strict except for weak units model all connected, simply connected homotopy 3-types (Joyal and Kock). Simpson conjectures that every weak ∞-category is equivalent to one in which only the unit laws are weak.
 
-**How the definition helps.** Making only the units weak is Simpson's proposed way around a known obstruction. Kapranov and Voevodsky claimed that ∞-groupoids that are strict except for inverses model all homotopy types. Simpson proved that no strict n-groupoid, for n ≥ 3, realizes the n-type of the 2-sphere, for any realization functor that is compatible with homotopy groups. The nLab says this makes the claim seem wrong. Simpson suggested that weakening only the units would avoid the problem. Joyal and Kock proved a version in dimension 3: one-object 3-groupoids that are strict except for weak identity arrows model all connected, simply connected homotopy 3-types. The general case is open, so this definition is a proposed fix, not a finished theorem.
+**How the definition helps.** Making only the units weak is Simpson's proposed way around a known obstruction. Simpson proved that no strict n-groupoid, for n ≥ 3, realizes the n-type of the 2-sphere, under a realization compatible with homotopy groups. So fully strict groupoids, except for inverses, cannot model all homotopy types. The general case is open, so the definition is a proposed fix, not a finished theorem.
 
 **nLab:** [Simpson's conjecture](https://ncatlab.org/nlab/show/Simpson%27s+conjecture), [semi-strict infinity-category](https://ncatlab.org/nlab/show/semi-strict+infinity-category). It says: “Simpson's conjecture is proven up to the case of 3-categories with a single object.”
 
@@ -6448,9 +6448,9 @@
 
 **Definition.** An operad is a family of spaces of k-input operations together with a way to compose them. Let T be the operad of ways to cut the unit interval into k pieces: Tₖ is the space of continuous maps \[0,1\] → \[0,k\] that send 0 to 0 and 1 to k. A Trimble 0-category is a set. A Trimble (n+1)-category is a set of objects with an n-category of morphisms between each pair, which together form an algebra over the operad ΠₙT; here Πₙ is the fundamental n-groupoid functor, applied to T.
 
-**Problem.** Give an algebraic definition of weak n-category such that every space X has a fundamental n-groupoid ΠₙX that is functorial in X. The fundamental n-groupoid records the points, the paths, the homotopies between paths, and so on up to dimension n.
+**Problem.** Every space X has a fundamental n-groupoid ΠₙX that is a Trimble n-category and is functorial in X.
 
-**How the definition helps.** Paths in X glue in the ways that T allows, so the fundamental n-groupoid of X fits the definition with no extra work. The paths in X form a T-algebra in an obvious way, and applying Πₙ to it gives a ΠₙT-algebra. By definition, this is a Trimble (n+1)-category, namely Πₙ₊₁X. For n = 0, Π₀T is the associative operad, so this gives the usual fundamental groupoid. The induction needs one real theorem: Πₙ₊₁ preserves finite products and coproducts. The definition does not prove the homotopy hypothesis, which says that ∞-groupoids are the same as spaces up to homotopy. The nLab page on that hypothesis says that, even with the fundamental ∞-groupoid built in, it is unclear how to prove it for Trimble ∞-groupoids.
+**How the definition helps.** Paths in X glue in the ways that T allows, so the fundamental n-groupoid fits the definition with no extra work. The paths form a T-algebra, and applying Πₙ gives a ΠₙT-algebra, which is Πₙ₊₁X. For n = 0, Π₀T is the associative operad, so this gives the usual fundamental groupoid. The induction needs one real theorem: Πₙ₊₁ preserves finite products and coproducts.
 
 **nLab:** [Trimble n-category](https://ncatlab.org/nlab/show/Trimble+n-category), [homotopy hypothesis](https://ncatlab.org/nlab/show/homotopy+hypothesis). It says: “This definition was introduced in order to give an algebraic notion of fundamental n-groupoid”
 

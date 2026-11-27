@@ -8,7 +8,7 @@
 
 **Problem.** For every locally integrable g on ℝ, the traveling wave u(t, x) = g(x − t) is a weak solution. In particular, \|x − t\| is a solution even though it has a kink at x = t.
 
-**How the definition helps.** The weak definition lets us state the claim for any locally integrable profile because it differentiates only the test function. In our own proof, substitute y = x − t. The integrand becomes g(y) times the time derivative of φ(t, y + t) with y fixed. The time integral is zero because φ has compact support. The work moves into the integration-by-parts formula that recovers the classical equation for smooth functions.
+**How the definition helps.** The weak definition differentiates only the test function, so the claim holds for any locally integrable profile. In our own proof, the substitution y = x − t turns the integrand into g(y) times the t-derivative of φ(t, y + t) at fixed y. That time integral is zero because φ has compact support. The work moves into the integration-by-parts formula that recovers the classical equation for smooth functions.
 
 **Wikipedia:** [Weak solution](https://en.wikipedia.org/wiki/Weak_solution). It says: “The key to the concept of weak solution is that there exist functions u that satisfy equation (2) for any φ, but such u may not be differentiable and so cannot satisfy equation (1).”
 
@@ -38,7 +38,7 @@
 
 **Definition.** For ν &gt; 0, evolve the exponential of minus the initial potential divided by 2ν by the linear heat equation. Define the evolved potential as −2ν times the logarithm of that heat solution.
 
-**Problem.** For smooth bounded initial potentials on the line, this prescription solves ∂u/∂t + \|∂u/∂x\|² ÷ 2 = ν ∂²u/∂x².
+**Problem.** For smooth bounded initial potentials on the line, the evolved potential u solves ∂u/∂t + (∂u/∂x)²/2 = ν ∂²u/∂x².
 
 **How the definition helps.** The exponential change of variable cancels the squared derivative term, leaving the linear heat equation. In our own calculation, differentiate u = −2ν log v and substitute the heat equation for v. The heat kernel averages positive initial values, so the logarithm exists. The work lies in finding the substitution and solving the linear heat equation.
 
@@ -58,7 +58,7 @@
 
 **Problem.** On a smooth bounded connected domain, prescribe a smooth outward normal derivative whose integral over the boundary is zero. Exactly one function with zero Laplacian and mean zero has that derivative.
 
-**How the definition helps.** Fixing the mean removes the constant shifts that the boundary derivative cannot detect. In our own example, zero and one both have zero boundary derivative. In our own proof, integration by parts shows that the difference of two solutions has zero gradient. Connectedness makes it constant, and its mean makes it zero. The Neumann existence theorem supplies a solution, from which we subtract its mean.
+**How the definition helps.** Fixing the mean removes the constant shifts that the boundary derivative cannot detect, such as the gap between the solutions 0 and 1 for zero data (our own). Integration by parts gives the difference of two solutions zero gradient (our own). Connectedness makes it constant, and its mean makes it zero. The Neumann existence theorem supplies a solution, from which we subtract its mean.
 
 **Wikipedia:** [Laplace's equation](https://en.wikipedia.org/wiki/Laplace%27s_equation). It says: “For the Neumann problem, uniqueness holds only up to an additive constant.”
 
@@ -72,7 +72,7 @@
 
 **Definition.** Fix a constant wave speed c &gt; 0. Use x + ct and x − ct as coordinates. Each stays constant along one family of lines traveled by waves.
 
-**Problem.** Every twice continuously differentiable solution of ∂²u/∂t² = c² ∂²u/∂x² on the whole line splits into two oppositely traveling profiles.
+**Problem.** Every twice continuously differentiable solution of ∂²u/∂t² = c² ∂²u/∂x² on the whole line has the form F(x + ct) + G(x − ct). This is a sum of two oppositely traveling profiles.
 
 **How the definition helps.** In the moving coordinates, the wave equation says that one mixed derivative vanishes. Integrate once in each coordinate to obtain one profile for each direction. In our own explanation, the work lies in the chain rule that converts the original second derivatives into this mixed derivative.
 
@@ -86,7 +86,7 @@
 
 *True by definition.* MSC 35A08 (Fundamental solutions to PDEs), 46F10. arXiv math.AP. Level 3: graduate.
 
-**Definition.** Let P be a nonzero linear differential operator with constant coefficients. A fundamental solution is a distribution E with PE = δ, where δ evaluates a test function at zero. A distribution is a continuous linear functional on smooth test functions of compact support. The classical Newtonian potential for the Laplacian instead starts with an explicit integral kernel.
+**Definition.** Let P be a nonzero linear differential operator with constant coefficients. A fundamental solution is a distribution E with PE = δ, where δ evaluates a test function at zero. The classical Newtonian potential for the Laplacian instead starts with an explicit integral kernel.
 
 **Problem.** If f is a distribution with compact support, the convolution u = E ∗ f satisfies Pu = f as distributions.
 
@@ -102,7 +102,7 @@
 
 *True by definition.* MSC 35A08 (Fundamental solutions to PDEs), 53C50. arXiv math-ph, gr-qc. Level 3: graduate.
 
-**Definition.** A Green operator for a linear wave operator P sends a smooth, compactly supported function f to a solution of Pu = f. The retarded operator gives a solution supported in the causal future of the source, the region reachable along future lightlike or timelike paths. The advanced operator uses the causal past. The causal propagator is their difference, with the retarded operator first.
+**Definition.** A Green operator for a linear wave operator P sends a smooth, compactly supported function f to a solution of Pu = f. The retarded and advanced operators give solutions supported in the causal future and causal past of the source, the points reachable along causal paths. The causal propagator is their difference, with the retarded operator first.
 
 **Problem.** For a wave operator with both Green operators, the causal propagator sends every smooth compactly supported source to a solution with zero source.
 
@@ -122,7 +122,7 @@
 
 **Problem.** An analytic equation in this normal form has a unique local analytic solution for analytic initial time derivatives through order k minus one.
 
-**How the definition helps.** Solving for the highest time derivative determines each time coefficient from earlier ones. The work lies in proving convergence by bounding the coefficients with a convergent comparison series. Our own example uses the heat equation, whose second spatial derivative exceeds its first time order. For initial profile 1/(1 − x), the coefficient of time degree j at x = 0 is (2j)!/j!. The resulting series has radius of convergence zero.
+**How the definition helps.** Solving for the highest time derivative determines each time coefficient from earlier ones. The work lies in proving convergence by bounding the coefficients with a convergent comparison series. Without normal form it fails: the heat equation has a second spatial derivative but only a first time derivative (our own). For initial profile 1/(1 − x), the coefficient of time degree j at x = 0 is (2j)!/j!, so the series has radius of convergence zero.
 
 **Wikipedia:** [Cauchy–Kovalevskaya theorem](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Kovalevskaya_theorem). It says: “However this formal power series does not converge for any non-zero values of t”
 
@@ -156,7 +156,7 @@
 
 **Problem.** For every continuous linear functional F on the test space, there is exactly one trial vector u satisfying B(u,v) = F(v) for every test v.
 
-**How the definition helps.** The two conditions make the range of the pairing operator both closed and dense. In our own proof, the uniform lower bound gives injectivity and closed range. The second condition gives density by Hilbert space duality. Our own counterexample pairs the right shift of a square-summable sequence with a test sequence by the inner product. The shift preserves norms, but its range misses the first coordinate vector.
+**How the definition helps.** The two conditions make the range of the pairing operator both closed and dense. The uniform lower bound gives injectivity and closed range, and the second condition gives density by Hilbert space duality (our own). Without the second condition it fails: pair the right shift of a square-summable sequence with a test sequence by the inner product (our own). The shift preserves norms, but its range misses the first coordinate vector.
 
 **Wikipedia:** [Babuška–Lax–Milgram theorem](https://en.wikipedia.org/wiki/Babu%C5%A1ka%E2%80%93Lax%E2%80%93Milgram_theorem). It says: “Suppose also that B is weakly coercive”
 
@@ -188,11 +188,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs), 46F10. arXiv math.AP. Level 3: graduate.
 
-**Definition.** The wave front set WF(u) of a distribution u is the set of points x with covector directions k such that the Fourier transform of u, localized near x, does not decay rapidly in direction k. So it records where u is singular and in which directions. It is a subset of the cotangent bundle minus the zero section.
+**Definition.** The wave front set WF(u) of a distribution u consists of points x with covector directions k. A pair (x, k) belongs to it when the Fourier transform of u, localized near x, does not decay rapidly in direction k. It is a subset of the cotangent bundle minus the zero section.
 
-**Problem.** When is the product u · v of two distributions defined?
+**Problem.** Hörmander’s criterion: the product u · v of two distributions is defined when WF(u) + WF(v) does not meet the zero section. In words, at no point does a direction in one wave front set have its opposite in the other.
 
-**How the definition helps.** The wave front set gives a simple test for when a product of distributions exists. In general, two distributions cannot be multiplied. Hörmander's criterion says that the product exists when WF(u) + WF(v) does not meet the zero section. In words: at no point does a direction in one wave front set have its opposite in the other. The product is then the pullback of the tensor product along the diagonal. Without the wave front set there is no clean general statement. This criterion is the basis of the rigorous treatment of products of propagators in perturbative quantum field theory.
+**How the definition helps.** The wave front set gives a simple test for when a product of distributions exists, although in general two distributions cannot be multiplied. The product is then the pullback of the tensor product along the diagonal. Without the wave front set there is no clean general statement. This criterion is the basis of the rigorous treatment of products of propagators in perturbative quantum field theory.
 
 **nLab:** [product of distributions](https://ncatlab.org/nlab/show/product+of+distributions), [Hörmander's criterion](https://ncatlab.org/nlab/show/H%C3%B6rmander%27s+criterion). It says: “the condition that the product of two distributions is well defined is that for each wave vector direction in the wave front set of one of the two distributions, the opposite direction must not be an element”
 
@@ -244,7 +244,7 @@
 
 **Problem.** On a smooth bounded connected domain, suppose V is bounded and the lowest eigenvalue is positive. Any weak solution of −Δu + Vu = f with nonnegative square-integrable f and nonnegative boundary values is nonnegative almost everywhere.
 
-**How the definition helps.** Positive energy for every nonzero competitor rules out a negative part in our own proof. Test the integrated equation with max(−u,0), which vanishes at the boundary. Its energy is nonpositive, so it vanishes. At eigenvalue zero, the negative of a positive first eigenfunction gives a counterexample with zero forcing and boundary values. Existence of that eigenfunction uses elliptic spectral theory.
+**How the definition helps.** Positive energy for every nonzero competitor rules out a negative part (our own). Testing the integrated equation with max(−u,0), which vanishes at the boundary, shows that its energy is nonpositive, so it vanishes. At eigenvalue zero, the negative of a positive first eigenfunction is a counterexample with zero forcing and boundary values. Existence of that eigenfunction uses elliptic spectral theory.
 
 **Paper or page:** [Positive solutions of quasilinear elliptic equations with Fuchsian potentials in Wolff class](https://arxiv.org/abs/2204.08061v1). It says: “The weak maximum principle for $Q<sub>p,A,V</sub>$ holds true in ω:”
 
@@ -274,9 +274,9 @@
 
 **Definition.** A Leray weak solution is a divergence-free velocity field with finite energy and a square-integrable gradient. It satisfies the equations after integration against smooth divergence-free test fields. It also obeys an energy inequality (our own).
 
-**Problem.** Leray proved in 1934 that the three-dimensional Navier–Stokes equations have a weak solution for all time, from every initial velocity of finite energy. Whether smooth solutions exist for all time is open, and it is a Millennium Prize problem.
+**Problem.** The three-dimensional Navier–Stokes equations have a Leray weak solution for all time, from every initial velocity of finite energy (Leray, 1934).
 
-**How the definition helps.** The weak form asks only for bounds that the energy estimate supplies, so limits of approximate solutions are again solutions (our own). So Leray could prove in 1934 that weak solutions exist for all time and for all finite-energy data. Their uniqueness and smoothness remain open, and that is the hard part. The definition thus splits the problem into an easy global existence and an open regularity question.
+**How the definition helps.** The weak form asks only for bounds that the energy estimate supplies, so limits of approximate solutions are again solutions (our own). Uniqueness and smoothness of weak solutions remain open, and that is the hard part. The definition thus splits the problem into an easy global existence and an open regularity question.
 
 **Wikipedia:** [Navier–Stokes existence and smoothness](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_existence_and_smoothness). It says: “He also proved the existence of so-called weak solutions to the Navier–Stokes equations, which may not satisfy the equations pointwise but do satisfy them in mean value.”
 
@@ -290,11 +290,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 35D30 (Weak solutions to PDEs), 35J25, 46E35. arXiv math.AP. Level 3: graduate.
 
-**Definition.** The weak formulation of −Δu = f, with u = 0 on the boundary, asks for u in the Sobolev space H¹₀(Ω) with ∫ ∇u · ∇v = ∫ f v for every v in H¹₀(Ω). H¹₀(Ω) is the space of functions that vanish on the boundary and have square-integrable weak derivatives. A weak derivative is a derivative defined through integration by parts against smooth test functions.
+**Definition.** The weak formulation of −Δu = f with u = 0 on the boundary asks for u in the Sobolev space H¹₀(Ω). It requires ∫ ∇u · ∇v = ∫ f v for every v in H¹₀(Ω). H¹₀(Ω) consists of the functions that vanish on the boundary and have square-integrable weak derivatives.
 
-**Problem.** We want existence and uniqueness of a solution of Poisson's equation with zero boundary values. We also want an estimate of the solution in terms of f.
+**Problem.** On a bounded domain Ω and for f in L²(Ω), the weak formulation has exactly one solution u in H¹₀(Ω). Its norm is at most a constant times the norm of f.
 
-**How the definition helps.** In H¹₀ the problem fits the Lax–Milgram theorem exactly, so the theorem gives the solution at once. In this space the left side is a bounded and coercive bilinear form; coercive means that the form of u with itself is at least c‖u‖² for some c &gt; 0. So the Lax–Milgram theorem (1954) gives a unique solution and the bound ‖u‖ ≤ ‖f‖/c. Our own remark: for a symmetric form, as here, the result is just the Riesz representation theorem for the inner product given by the form. The article shows that the same theorem covers a finite linear system. The choice of space does the work: its elements vanish on the boundary and have square-integrable weak derivatives, which is exactly what the weak equation needs. Showing that the weak solution is a classical solution is a separate regularity question.
+**How the definition helps.** In H¹₀ the left side is a bounded coercive bilinear form, so the Lax–Milgram theorem gives a unique solution and the bound ‖u‖ ≤ ‖f‖/c. Coercive means that the form of u with itself is at least c‖u‖² for some c &gt; 0. For a symmetric form, as here, this is just the Riesz representation theorem for the inner product given by the form (our own). Showing that the weak solution is classical is a separate regularity question.
 
 **Wikipedia:** [Weak formulation](https://en.wikipedia.org/wiki/Weak_formulation), [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “The appropriate space to satisfy these requirements is the Sobolev space H¹₀(Ω) of functions with weak derivatives in L²(Ω) and with zero boundary conditions”
 
@@ -310,9 +310,9 @@
 
 **Definition.** A weak solution of Lu = 0 is a locally integrable function u with ∫ u · L\*φ = 0 for every test function φ. A test function is a smooth function that is 0 outside a compact set. L\* is the formal adjoint of L, which you get by integrating by parts.
 
-**Problem.** Show existence and regularity for elliptic equations. In particular, show that weak solutions of Laplace's equation are smooth harmonic functions.
+**Problem.** Weyl’s lemma: every weak solution of Laplace’s equation agrees almost everywhere with a smooth harmonic function.
 
-**How the definition helps.** Weak solutions let you find a solution first and prove that it is smooth later. Weak solutions, for example of the Dirichlet problem, are easier to find by Hilbert-space methods, because u does not need derivatives (our own remark). Weyl's lemma then says that every weak solution of Laplace's equation equals a smooth solution after a change on a set of measure zero. So the problem splits into easy existence and a separate regularity theorem. The regularity step does not always work: the wave equation has weak solutions that are not smooth. Hypoellipticity is the name for operators where the regularity step works.
+**How the definition helps.** Weak solutions let you find a solution first and prove that it is smooth later. They are easier to find by Hilbert-space methods, because u needs no derivatives (our own remark). Weyl’s lemma then supplies the regularity step for Laplace’s equation. That step can fail: the wave equation has weak solutions that are not smooth, and operators where it works are called hypoelliptic.
 
 **Wikipedia:** [Weyl's lemma (Laplace equation)](https://en.wikipedia.org/wiki/Weyl%27s_lemma_%28Laplace_equation%29), [Weak solution](https://en.wikipedia.org/wiki/Weak_solution), [Hypoelliptic operator](https://en.wikipedia.org/wiki/Hypoelliptic_operator). It says: “Weyl's lemma, named after Hermann Weyl, states that every weak solution of Laplace's equation is a smooth solution.”
 
@@ -328,7 +328,7 @@
 
 **Definition.** The upper half-relaxed limit takes the limit superior while the approximation parameter tends to zero and the evaluation point tends to x. The lower limit takes the corresponding limit inferior. Pointwise limits would hold x fixed.
 
-**Problem.** Consider locally uniformly bounded viscosity solutions on a common open domain, with continuous operators converging locally uniformly in all arguments. Assume each operator decreases weakly when the matrix of second derivatives increases. The upper limit satisfies the limiting inequality at smooth upper touches, and the lower limit satisfies the reverse inequality at smooth lower touches.
+**Problem.** Take locally uniformly bounded viscosity solutions on a common open domain, for continuous operators that are nonincreasing in the second-derivative matrix and converge locally uniformly. Then the upper half-relaxed limit is a viscosity subsolution of the limit equation, and the lower one is a supersolution.
 
 **How the definition helps.** In our own proof, allowing the evaluation point to move captures nearby points where a smooth test touches an approximation. A strict local touch at the limit gives nearby extrema along a sequence realizing the limit. The inequalities at those extrema pass to the limit by operator convergence. Identifying both limits as one solution also requires comparison and compatible boundary bounds.
 
@@ -348,7 +348,7 @@
 
 **Problem.** Consider a second-order equation whose left side cannot increase when a positive semidefinite matrix is added to the matrix of second derivatives. The maximum of two viscosity subsolutions of this equation is again a viscosity subsolution.
 
-**How the definition helps.** A test touching the maximum from above also touches a branch attaining that maximum. In our own proof, the branch supplies the required inequality, and the maximum retains the upper-limit bound. The maximum can have a corner even when both branches are smooth. Testing smooth functions from above avoids differentiating that corner. The matrix condition ensures the test definition agrees with the pointwise inequality for smooth functions.
+**How the definition helps.** A test touching the maximum from above also touches a branch attaining that maximum, and that branch supplies the required inequality (our own). The maximum can have a corner even when both branches are smooth, and testing from above avoids differentiating that corner. The matrix condition makes the test definition agree with the pointwise inequality for smooth functions.
 
 **Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution). It says: “if for any point x₀ ∈ Ω and any C² function φ such that φ(x₀) = u(x₀) and φ ≥ u in a neighborhood of x₀”
 
@@ -360,11 +360,11 @@
 
 *Rules out counterexamples.* MSC 35D40 (Viscosity solutions to PDEs), 35F21, 35J60. arXiv math.AP. Level 3: graduate.
 
-**Definition.** Let F(x, u, Du, D²u) = 0 be a degenerate elliptic equation. A continuous function u is a viscosity solution if, at each point, two conditions hold. Every smooth function that touches u from above satisfies F ≤ 0 there. Every smooth function that touches u from below satisfies F ≥ 0 there.
+**Definition.** A continuous u is a viscosity solution of a degenerate elliptic equation F(x, u, Du, D²u) = 0 if two conditions hold at each point. Every smooth function that touches u from above satisfies F ≤ 0 there, and every one that touches u from below satisfies F ≥ 0 there.
 
-**Problem.** Existence, uniqueness and stability under uniform limits for nonsmooth solutions of first-order Hamilton–Jacobi equations and of fully nonlinear second-order equations.
+**Problem.** For a large class of Hamilton–Jacobi and fully nonlinear second-order equations, viscosity solutions exist, are unique, and are stable under uniform limits. For example, \|u′\| = 1 on (−1, 1) with u(±1) = 0 has exactly one viscosity solution, 1 − \|x\|.
 
-**How the definition helps.** The viscosity conditions accept some corners and reject others, so only one solution remains. Our own remark: take \|u′\| = 1, written as \|u′\| − 1 = 0, on (−1, 1) with u(±1) = 0. There is no classical solution, and many zigzag functions satisfy the equation almost everywhere, so such solutions are not unique. Our own reading: the viscosity conditions accept peak-shaped corners, like the corner of 1 − \|x\| at 0, and reject valley-shaped ones. The article states that 1 − \|x\| is the unique viscosity solution. It is also the limit of the vanishing-viscosity problems. Uniqueness comes from a comparison principle, which for second-order equations was open until Jensen's proof in 1988.
+**How the definition helps.** The viscosity conditions accept some corners and reject others, so only one solution remains. For \|u′\| = 1 on (−1, 1) with u(±1) = 0 there is no classical solution, and many zigzag functions satisfy the equation almost everywhere (our own). The viscosity conditions accept peaks like the corner of 1 − \|x\| at 0 and reject valleys (our own reading). Uniqueness comes from a comparison principle, which for second-order equations was open until Jensen’s proof in 1988.
 
 **Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution), [Weak solution](https://en.wikipedia.org/wiki/Weak_solution). It says: “The definition allows only for certain kind of singularities, so that existence, uniqueness, and stability under uniform limits, hold for a large class of equations.”
 
@@ -380,11 +380,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 35E05 (Fundamental solutions to PDEs and systems of PDEs with constant coefficients), 46F10. arXiv math.AP. Level 3: graduate.
 
-**Definition.** A fundamental solution (Green's function) of a linear differential operator P(∂) is a distribution E with P(∂)E = δ, the Dirac delta. A distribution is a generalized function, defined by how it acts on smooth test functions. The Dirac delta is the distribution that gives the value of a test function at 0. In words, E is the response of the operator to a unit point source at the origin.
+**Definition.** A fundamental solution of a linear differential operator P(∂) is a distribution E with P(∂)E = δ. A distribution is a generalized function, defined by how it acts on smooth test functions, and δ gives the value of a test function at 0. In words, E is the response of the operator to a unit point source at the origin.
 
 **Problem.** The Malgrange–Ehrenpreis theorem says that every nonzero linear differential operator with constant coefficients has a fundamental solution. So P(∂)u = f has a solution for every compactly supported distribution f.
 
-**How the definition helps.** Distributions give the equation P(∂)E = δ a meaning, so the theorem can be stated at all. δ is not a function, and fundamental solutions are often not functions either. With distributions, Ehrenpreis and Malgrange proved the theorem independently in 1954–1956. Their proofs used the Hahn–Banach theorem, and explicit proofs came later. The constant-coefficient condition cannot be dropped. Lewy's 1957 example is a first-order equation with polynomial coefficients. For a suitable smooth right-hand side, it has no solution on any open set.
+**How the definition helps.** Distributions give the equation P(∂)E = δ a meaning, though neither δ nor E need be a function. Ehrenpreis and Malgrange proved the theorem independently in 1954–1956, using the Hahn–Banach theorem. The constant-coefficient condition cannot be dropped. Lewy’s 1957 first-order equation with polynomial coefficients has, for a suitable smooth right-hand side, no solution on any open set.
 
 **Wikipedia:** [Malgrange–Ehrenpreis theorem](https://en.wikipedia.org/wiki/Malgrange%E2%80%93Ehrenpreis_theorem), [Lewy's example](https://en.wikipedia.org/wiki/Lewy%27s_example). It says: “It states that every non-zero linear differential operator with constant coefficients has a Green's function.”
 
@@ -422,7 +422,7 @@
 
 **Problem.** Outside a bounded smooth obstacle with connected exterior, two radiating solutions of Δu + k²u = 0 with the same boundary values agree.
 
-**How the definition helps.** The radiation condition rules out standing waves with zero boundary values. Outside a ball of radius a, sin(k(r − a))/r gives such a wave in our own example. In our own proof, integrate by parts and use the radiation condition. The integral of the squared magnitude of the difference then tends to zero on distant spheres. Rellich’s uniqueness theorem then forces the difference to vanish.
+**How the definition helps.** The radiation condition rules out standing waves with zero boundary values, such as sin(k(r − a))/r outside a ball of radius a (our own). In our own proof, integrate by parts and use the radiation condition. Then the integral of the squared magnitude of the difference over distant spheres tends to zero, and Rellich’s uniqueness theorem forces the difference to vanish.
 
 **Wikipedia:** [Sommerfeld radiation condition](https://en.wikipedia.org/wiki/Sommerfeld_radiation_condition). It says: “The Sommerfeld radiation condition is used to solve uniquely the Helmholtz equation.”
 
@@ -438,7 +438,7 @@
 
 **Problem.** On a bounded domain with locally Lipschitz boundary graphs, suppose the vector field F and its weak divergence are square-integrable. The integral defines a continuous functional on boundary traces, independent of the chosen extension v.
 
-**How the definition helps.** In our own proof, changing the extension adds a function with zero trace. The trace theorem approximates it in value and first derivatives by smooth functions supported inside. The definition of weak divergence cancels the integral for each approximation. Cauchy–Schwarz passes this cancellation to the limit and bounds the functional by the least extension norm. For smooth fields, integration by parts recovers the classical outward component.
+**How the definition helps.** Changing the extension adds a function with zero trace (our own). The trace theorem approximates it by smooth functions supported inside, and the definition of weak divergence makes the integral vanish for each of them. Cauchy–Schwarz passes this to the limit and bounds the functional by the least extension norm. For smooth fields, integration by parts recovers the classical outward component.
 
 **Wikipedia:** [Green's identities](https://en.wikipedia.org/wiki/Green%27s_identities). It says: “is essentially the higher dimensional equivalent of integration by parts”
 
@@ -454,7 +454,7 @@
 
 **Problem.** Where a continuous minimizer lies strictly above a continuous obstacle, it is harmonic, meaning that its Laplacian vanishes.
 
-**How the definition helps.** Minimization permits a two-sided test wherever the obstacle leaves a gap. On each compact test support in that region, continuity gives a positive minimum gap in our own argument. Adding or subtracting a sufficiently small multiple of the test therefore respects the obstacle. Differentiating the energy gives zero for the integral of the two gradients’ dot product. Interior regularity turns this integral identity into the classical Laplace equation.
+**How the definition helps.** Minimization permits a two-sided test wherever the obstacle leaves a gap. On a compact test support in that region, continuity gives a positive minimum gap, so small multiples of the test can be added or subtracted (our own). Differentiating the energy then gives zero for the integral of the dot product of the two gradients. Interior regularity turns this integral identity into the classical Laplace equation.
 
 **Wikipedia:** [Obstacle problem](https://en.wikipedia.org/wiki/Obstacle_problem). It says: “A variational argument shows that, away from the contact set, the solution to the obstacle problem is harmonic.”
 
@@ -468,9 +468,9 @@
 
 **Definition.** Fix boundary values and a lower bound called the obstacle. Among functions above the obstacle with those boundary values, minimize the integral of the squared gradient. Competitors and their weak first derivatives must be square-integrable.
 
-**Problem.** Take two ordered obstacles on a bounded domain with locally Lipschitz boundary graphs. Suppose each problem admits a competitor with the prescribed common boundary values. Then the two minimizers have the same order almost everywhere.
+**Problem.** On a bounded domain with locally Lipschitz boundary graphs, take two ordered obstacles whose problems both admit a competitor with the same boundary values. Then the two minimizers are ordered in the same way almost everywhere.
 
-**How the definition helps.** In our own proof, sorting the minimizers produces two competitors with the same total energy. Their minimum clears the lower obstacle, and their maximum clears the higher one. Minimality forces each sorted competitor to attain the original minimum for its problem. Strict convexity with fixed boundary data gives uniqueness and hence the ordering. The minimization formula avoids comparing the two differential inequalities directly.
+**How the definition helps.** Sorting the minimizers by taking their minimum and maximum gives two competitors with the same total energy (our own). The minimum clears the lower obstacle and the maximum clears the higher one, so minimality makes each a minimizer of its problem. Strict convexity with fixed boundary data gives uniqueness, hence the ordering. The minimization formula avoids comparing the two differential inequalities directly.
 
 **Wikipedia:** [Obstacle problem](https://en.wikipedia.org/wiki/Obstacle_problem). It says: “A solution to the obstacle problem is a function u ∈ K which minimizes the energy integral”
 
@@ -484,9 +484,9 @@
 
 **Definition.** A Lipschitz constant bounds the ratio of change in value to distance between points. An absolutely minimizing extension minimizes that constant on each interior subdomain among functions agreeing on its boundary.
 
-**Problem.** For a bounded Euclidean domain with Lipschitz boundary data, absolute minimizers solve the infinity Laplace equation. Its viscosity formulation checks the second derivative along the gradient using smooth functions touching from above or below. A minimizer of the global Lipschitz constant can fail this equation.
+**Problem.** For a bounded Euclidean domain with Lipschitz boundary data, absolute minimizers solve the infinity Laplace equation in the viscosity sense. A function that only minimizes the global Lipschitz constant can fail this equation.
 
-**How the definition helps.** Local minimization tests slopes even where the boundary data leave room for a bump. In our own example, prescribe max(x,0) on the boundary of the square (−2,2)². Add a nonzero smooth bump with gradient magnitude at most one inside a disk in the left half. The resulting function still has global Lipschitz constant one, which the boundary values require. On the disk, replacing the bump by zero improves the local constant. The equivalence with viscosity solutions supplies the differential conclusion.
+**How the definition helps.** Local minimization tests slopes even where the boundary data leave room for a bump. Prescribe max(x,0) on the boundary of the square (−2,2)² (our own). Add to max(x,0) a nonzero smooth bump with gradient magnitude at most one inside a disk in the left half. The result still has global Lipschitz constant one, but replacing the bump by zero improves the local constant on the disk. The equivalence with viscosity solutions supplies the differential conclusion.
 
 **Paper or page:** [Comparison Principles for the Finsler Infinity Laplacian with Applications to Minimal Lipschitz Extensions](https://arxiv.org/abs/2405.05684v1). It says: “In addition to the equivalences (i), (ii), and (iii) stated above, $\\varphi$-AMLE are characterized by the following condition: (iv) $u \\in \\mathrm{Sub}<sub>\\varphi</sub>(U) \\cap \\mathrm{Super}<sub>\\varphi</sub>(U)$.”
 
@@ -504,7 +504,7 @@
 
 **Problem.** On a bounded convex domain, suppose two convex solutions are twice continuously differentiable inside and continuous up to the boundary. They agree if their determinants equal the same positive function and their boundary values agree.
 
-**How the definition helps.** Convexity and the positive determinant make both matrices positive definite, allowing a maximum principle. In our own proof, differentiate the determinant along the line segment joining the two matrices. Averaging the resulting positive definite coefficient matrices gives a linear elliptic equation for the difference. Its maximum principle gives uniqueness. On the unit disk, both signs of (\|x\|² − 1)/2 give determinant one and zero boundary values in our own example.
+**How the definition helps.** Convexity and the positive determinant make both matrices of second derivatives positive definite, which allows a maximum principle. Differentiating the determinant along the segment between the two matrices gives a linear elliptic equation for the difference (our own). Its maximum principle gives uniqueness. Without convexity it fails: on the unit disk, both signs of (\|x\|² − 1)/2 give determinant one and zero boundary values (our own).
 
 **Wikipedia:** [Monge–Ampère equation](https://en.wikipedia.org/wiki/Monge%E2%80%93Amp%C3%A8re_equation). It says: “this equation is elliptic if f is a positive function and solutions satisfy the constraint of being uniformly convex.”
 
@@ -548,7 +548,7 @@
 
 *True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 3: graduate.
 
-**Definition.** To solve the heat equation with absorption at position x and time t, start a diffusion path at x. Use Brownian motion with variance 2t per coordinate at time t, corresponding to Δ in the equation. Sample the initial value at the path’s endpoint and multiply by the exponential of minus the absorption accumulated along the path. Average over paths.
+**Definition.** To solve the heat equation with absorption at position x and time t, run Brownian motion from x with variance 2t per coordinate, matching Δ in the equation. Take the initial value at the path’s endpoint times the exponential of minus the absorption accumulated along the path. Average over paths.
 
 **Problem.** For smooth bounded nonnegative absorption rates depending on position and common bounded measurable nonnegative initial data, a larger rate gives a smaller or equal solution.
 
@@ -640,7 +640,7 @@
 
 **Problem.** On the real line, consider ∂ₜu + A∂ₓu = 0 with square-integrable initial data. Strong hyperbolicity bounds the solution norm by a fixed multiple of the initial norm at every time.
 
-**How the definition helps.** In our own proof, the eigenbasis separates the system into scalar equations that translate their data without changing norms. The work in our own proof is finding the eigenbasis, or choosing a positive inner product that makes A symmetric. Our own counterexample uses the two-by-two Jordan block with zero diagonal and upper-right entry 1. The solution’s first component then contains minus time times the derivative of the second initial component. That derivative is not bounded by the square-integral norm of the data.
+**How the definition helps.** The eigenbasis separates the system into scalar equations that translate their data without changing norms (our own). Without it the bound fails. For the Jordan block with zero diagonal and upper-right entry 1, the first component contains −t times the derivative of the second initial component. That derivative is not bounded by the square-integral norm of the data (our own).
 
 **Wikipedia:** [Hyperbolic partial differential equation](https://en.wikipedia.org/wiki/Hyperbolic_partial_differential_equation). It says: “has only real eigenvalues and is diagonalizable.”
 
@@ -652,11 +652,11 @@
 
 *Rules out counterexamples.* MSC 35L67 (Shocks and singularities for hyperbolic equations), 35L65, 35D30. arXiv math.AP. Level 3: graduate.
 
-**Definition.** A conservation law wₜ + f(w)ₓ = 0 has weak solutions that jump across a curve. Each jump must obey the Rankine–Hugoniot condition on its speed. The Lax entropy condition also demands that the characteristic lines on both sides run into the jump. The characteristic speeds f′(w) on the two sides must lie on opposite sides of the shock speed.
+**Definition.** A conservation law wₜ + f(w)ₓ = 0 has weak solutions that jump across a curve, and each jump must obey the Rankine–Hugoniot condition on its speed. The Lax entropy condition also demands that the characteristic lines on both sides run into the jump. So the characteristic speeds f′(w) on the two sides lie on opposite sides of the shock speed.
 
-**Problem.** Weak solutions alone are not unique. For Burgers' equation with a rising step as data, both a smooth fan (a rarefaction wave) and a moving jump are weak solutions (our own). With an entropy condition the solution is unique, and for scalar laws in any dimension Kružkov proved this in 1970.
+**Problem.** For scalar conservation laws in any dimension with bounded initial data, exactly one weak solution satisfies an entropy condition (Kružkov, 1970). Without it uniqueness fails: for Burgers’ equation with a rising step as data, both a rarefaction fan and a moving jump are weak solutions (our own).
 
-**How the definition helps.** The entropy condition removes the jumps that physics forbids, so only one weak solution is left. For Burgers' equation, the removed case is a jump up, where characteristics leave the jump (our own). The page notes that in gas dynamics such a rarefaction shock contradicts the second law of thermodynamics. The hard part is the uniqueness proof. For scalar laws, Kružkov used a whole family of entropy inequalities and an L¹ contraction estimate (our own). For systems in several space dimensions, entropy solutions can fail to be unique (our own).
+**How the definition helps.** The entropy condition removes the jumps that physics forbids, so only one weak solution is left. For Burgers’ equation, the removed case is a jump up, where characteristics leave the jump (our own). In gas dynamics such a rarefaction shock contradicts the second law of thermodynamics. Kružkov’s proof uses a whole family of entropy inequalities and an L¹ contraction estimate (our own). For systems in several space dimensions, entropy solutions can fail to be unique (our own).
 
 **Wikipedia:** [Rankine–Hugoniot conditions](https://en.wikipedia.org/wiki/Rankine%E2%80%93Hugoniot_conditions). It says: “a requirement for a unique single-valued solution is that the solution should satisfy the admissibility condition or entropy condition.”
 
@@ -689,11 +689,11 @@
 
 *True by definition. Confidence: medium.* MSC 35P15 (Estimates of eigenvalues in context of PDEs), 49R05. arXiv math.AP, math.SP. Level 3: graduate.
 
-**Definition.** Use the norm that sums the square-integral norms of a function and its first weak derivatives. Let H¹₀(Ω) be the closure of smooth functions of compact support in Ω in this norm. Define the k-th eigenvalue by minimizing the largest quotient ∫ \|∇u\|² / ∫ \|u\|² for nonzero u in each k-dimensional subspace of H¹₀(Ω). The usual definition solves −Δu = λu, with zero boundary values understood by taking u in H¹₀(Ω).
+**Definition.** Let H¹₀(Ω) be the closure of smooth compactly supported functions in Ω, in the norm that adds the square-integral norms of a function and its first weak derivatives. The k-th eigenvalue is the minimum, over k-dimensional subspaces of H¹₀(Ω), of the largest quotient ∫\|∇u\|²/∫\|u\|² on the subspace. The usual definition solves −Δu = λu with u in H¹₀(Ω).
 
 **Problem.** Let Ω ⊂ Ω′ be nonempty bounded open sets. For every k ≥ 1, the k-th Dirichlet eigenvalue on Ω′ is at most the k-th on Ω.
 
-**How the definition helps.** The variational definition makes domain growth enlarge the set of trial subspaces, in our own proof. Extending a function by zero takes H¹₀(Ω) into H¹₀(Ω′) and preserves both integrals in the quotient. Every trial subspace for Ω then gives the same value for Ω′. The work moves into the min-max theorem, which identifies these minima with the eigenvalues. Its application uses the compact inclusion of H¹₀ into the space of square-integrable functions.
+**How the definition helps.** The variational definition makes domain growth enlarge the set of trial subspaces (our own). Extending a function by zero takes H¹₀(Ω) into H¹₀(Ω′) and preserves both integrals in the quotient. The work moves into the min-max theorem, which identifies these minima with the eigenvalues. Its application uses the compact inclusion of H¹₀ into the square-integrable functions.
 
 **Wikipedia:** [Dirichlet eigenvalue](https://en.wikipedia.org/wiki/Dirichlet_eigenvalue). It says: “the first eigenvalue λ₁ minimizes the Dirichlet energy.”
 
@@ -705,11 +705,11 @@
 
 *True by definition. Confidence: medium.* MSC 35P15 (Estimates of eigenvalues in context of PDEs), 49R05. arXiv math.AP, math.SP. Level 3: graduate.
 
-**Definition.** Let Ω be a bounded domain that locally lies on one side of a boundary graph with bounded difference quotients. Let H¹ consist of square-integrable functions whose weak first derivatives are square-integrable. For each k, minimize the largest quotient ∫ \|∇u\|² / ∫ \|u\|² for nonzero u in each k-dimensional trial subspace. Neumann uses trial subspaces in H¹, while Dirichlet uses the closure in H¹ of smooth functions of compact support.
+**Definition.** Let Ω be a bounded Lipschitz domain, and let H¹ consist of square-integrable functions with square-integrable weak first derivatives. The k-th eigenvalue is the minimum, over k-dimensional trial subspaces, of the largest quotient ∫\|∇u\|²/∫\|u\|². Neumann uses subspaces of H¹, and Dirichlet uses subspaces of the closure in H¹ of smooth compactly supported functions.
 
 **Problem.** The k-th Neumann eigenvalue is at most the k-th Dirichlet eigenvalue for each k ≥ 1, counting multiplicities.
 
-**How the definition helps.** The variational definitions give both eigenvalues the same quotient and give the Neumann problem more trial subspaces, in our own proof. Minimizing over more subspaces cannot increase the result. The usual differential equation definitions impose zero normal derivative for Neumann and zero boundary values for Dirichlet. The work moves into the min-max theorem and placing each boundary condition in its weak form by integration by parts. The Lipschitz assumption gives compact inclusion of H¹ into the square-integrable functions, as needed for the eigenvalue characterization.
+**How the definition helps.** Both definitions use the same quotient, and the Neumann problem has more trial subspaces (our own). Minimizing over more subspaces cannot increase the result. The work moves into the min-max theorem and the weak forms of the two boundary conditions. The Lipschitz assumption gives the compact inclusion of H¹ into the square-integrable functions that the eigenvalue characterization needs.
 
 **Wikipedia:** [Dirichlet eigenvalue](https://en.wikipedia.org/wiki/Dirichlet_eigenvalue). It says: “Dirichlet eigenvalues are contrasted with Neumann eigenvalues: eigenvalues for the corresponding Neumann problem.”
 
@@ -721,7 +721,7 @@
 
 *True by definition. Confidence: medium.* MSC 35P15 (Estimates of eigenvalues in context of PDEs), 35J10. arXiv math.AP, math.SP. Level 3: graduate.
 
-**Definition.** On a nonempty bounded open set Ω, let V be a bounded real potential, the coefficient in the term Vu. Let H¹₀(Ω) be the closure of smooth functions of compact support in the norm of the function and its first derivatives. Define the k-th eigenvalue by minimizing, over k-dimensional subspaces of H¹₀(Ω), the largest value of ∫ (\|∇u\|² + V\|u\|²) divided by ∫ \|u\|². The differential equation definition asks for a nonzero solution of −Δu + Vu = λu with zero boundary values in the weak sense.
+**Definition.** On a nonempty bounded open set Ω, let V be a bounded real potential. Define the k-th eigenvalue as the minimum, over k-dimensional subspaces of H¹₀(Ω), of the largest value of ∫(\|∇u\|² + V\|u\|²)/∫\|u\|². The differential equation definition asks for a nonzero weak solution of −Δu + Vu = λu with zero boundary values.
 
 **Problem.** Let V and W be bounded real potentials with V ≤ W almost everywhere. Then each Dirichlet eigenvalue for V is at most the matching eigenvalue for W.
 
@@ -807,9 +807,9 @@
 
 **Definition.** For 0 &lt; s &lt; 1, the integral fractional Laplacian compares a value at x with values at all other points. Its Dirichlet problem prescribes the function everywhere outside the interval. The energy adds squared differences between values at pairs of points, weighted more heavily at shorter distances.
 
-**Problem.** A smooth function of compact support supplies exterior values on the complement of a bounded interval. There is a unique energy-minimizing extension, up to equality almost everywhere. Endpoint values alone do not determine the interior solution.
+**Problem.** Smooth compactly supported exterior values on the complement of a bounded interval have a unique energy-minimizing extension, up to equality almost everywhere. Endpoint values alone do not determine the interior solution.
 
-**How the definition helps.** Full exterior data fix the outside values in every pairwise comparison. In our own example, compare zero data with a nonnegative, nonzero smooth bump supported away from the interval. Both vanish at the endpoints. Extending the bump by zero inside gives a strictly negative fractional Laplacian there. The cited existence and uniqueness theorem supplies the extension whose fractional Laplacian vanishes.
+**How the definition helps.** Full exterior data fix the outside values in every pairwise comparison. Compare zero data with a nonnegative, nonzero smooth bump supported away from the interval, which also vanishes at the endpoints (our own). Extending the bump by zero inside gives a strictly negative fractional Laplacian there, so zero inside is not its solution. The cited existence and uniqueness theorem supplies the extension whose fractional Laplacian vanishes.
 
 **Paper or page:** [Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3). It says: “and in particular Hg ≡ g outside Ω.”
 
@@ -897,7 +897,7 @@
 
 **Definition.** On a smooth bounded domain, record a harmonic function’s boundary value and outward normal derivative as a pair. The interior Calderón operator takes a proposed pair, reconstructs a harmonic function by boundary integration, and records its pair.
 
-**Problem.** Let V give the boundary value of the potential formed from a surface density. Let K give the averaged boundary value when the kernel uses a normal derivative at the source, and let K′ be its adjoint. These boundary operators satisfy KV = VK′.
+**Problem.** Let V give the boundary value of the potential of a surface density, and K the averaged boundary value when the kernel uses a normal derivative at the source. With K′ the adjoint of K, these operators satisfy KV = VK′.
 
 **How the definition helps.** Reconstruction followed by taking boundary values gives a projection, so its matrix equals its square. Our own calculation reads the upper-right entry of this identity as V − KV + VK′ = V. This avoids comparing the two composed integral kernels directly. The work lies in Green’s representation formula, which recovers each harmonic function from its boundary pair.
 
@@ -911,11 +911,11 @@
 
 *True by definition.* MSC 35A08 (Fundamental solutions to PDEs). arXiv math.AP. Level 4: research.
 
-**Definition.** A retarded Green operator inverts a differential operator on smooth compactly supported inputs and confines each response to the source’s causal future. The causal future consists of points reachable at or below light speed. An advanced operator uses the causal past. Green hyperbolicity requires both inverses for the operator and its formal adjoint, obtained by integration by parts.
+**Definition.** A retarded Green operator inverts a differential operator on smooth compactly supported inputs, and each response lies in the causal future of its source. The causal future consists of points reachable at or below light speed, and an advanced operator uses the causal past instead. Green hyperbolicity requires both inverses for the operator and for its formal adjoint.
 
-**Problem.** On a globally hyperbolic spacetime, a Green hyperbolic operator has unique advanced and retarded inverses. Global hyperbolicity rules out causal loops and makes causal diamonds compact.
+**Problem.** On a globally hyperbolic spacetime, which has no causal loops and has compact causal diamonds, a Green hyperbolic operator has unique advanced and retarded inverses.
 
-**How the definition helps.** Requiring inverses for the adjoint gives a direct test for uniqueness without an equation-specific energy estimate. In our own proof, subtract two retarded responses to the same compact source. Their difference solves the equation with zero source. Apply the advanced adjoint inverse to an arbitrary smooth compactly supported test function. Its support meets the difference’s support in a compact set, so integration by parts gives zero against the original test. Reversing time gives advanced uniqueness.
+**How the definition helps.** Requiring inverses for the adjoint gives a direct uniqueness test without an equation-specific energy estimate. The difference of two retarded responses to the same source solves the equation with zero source (our own). Pair it with the advanced adjoint inverse of any test function. The supports meet in a compact set, so integration by parts gives zero against the test, and reversing time gives advanced uniqueness.
 
 **nLab:** [Green hyperbolic partial differential equation](https://ncatlab.org/nlab/show/Green+hyperbolic+partial+differential+equation). It says: “advanced and retarded Green functions of Green hyperbolic differential operator are unique”
 
@@ -929,7 +929,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 35A08 (Fundamental solutions to PDEs), 35K90. arXiv math.AP. Level 4: research.
 
-**Definition.** Here a fundamental solution is a family Γ(t, s) of bounded operators on the space of initial data H, for s ≤ t. For each a in H, the curve t ↦ Γ(t, s)a is the weak solution with source δₛ ⊗ a. This source is a point mass at time s with value a. The definition uses operators, not a kernel function of the space variables.
+**Definition.** Here a fundamental solution is a family Γ(t, s), for s ≤ t, of bounded operators on the space H of initial data. For each a in H, t ↦ Γ(t, s)a is the weak solution with source δₛ ⊗ a, a point mass at time s with value a. The definition uses operators, not a kernel function of the space variables.
 
 **Problem.** Under the paper's assumptions on the time-dependent elliptic part, the parabolic operator has exactly one fundamental solution. It equals the family that evolves initial data when the source is zero, and it represents all weak solutions.
 
@@ -951,7 +951,7 @@
 
 **Problem.** Theorem 2.5 takes an energy-variational solution whose initial energy equals the energy of its initial data. If a classical solution with the stated regularity has the same initial data, the two agree on its interval of existence.
 
-**How the definition helps.** The definition already contains an inequality that compares the rough solution with any regular pair of fields (our own). Putting the classical solution in as that pair gives the relative energy inequality of Theorem 2.5. Its left side measures the squared distance between the two solutions. Its right side is that distance at time zero times an exponential factor, so equal initial data force equality later. The real work is to show that such solutions exist, which the paper does for one choice of weight through a discretization.
+**How the definition helps.** The definition already contains an inequality comparing the rough solution with any regular pair of fields (our own). Putting the classical solution in as that pair gives the relative energy inequality of Theorem 2.5. It bounds the squared distance between the two solutions by its value at time zero times an exponential factor, so equal initial data force equality. The real work is to show that such solutions exist, which the paper does for one choice of weight through a discretization.
 
 **Paper or page:** [Analysis and numerical approximation of energy-variational solutions to the Ericksen--Leslie equations](https://arxiv.org/abs/2210.17242v1). It says: “This solution concept is finer than dissipative solutions and satisfies the weak-strong uniqueness property.”
 
@@ -969,7 +969,7 @@
 
 **Problem.** Let a smooth embedded submanifold have positive dimension and codimension c, the number of missing dimensions. If s &gt; c/2 and the order-s wave front set avoids its conormal covectors, the distribution has a restriction. Its order-(s − c/2) wave front set lies among the tangential restrictions of the original singular covectors over the submanifold.
 
-**How the definition helps.** Excluding conormal directions gives the Fourier control needed in the directions that restriction integrates out. This explanation is our own. The work lies in the cited continuous extension theorem for pullbacks, applied to the inclusion of the submanifold. Our own counterexample is mass distributed along a line in the plane. Its singular covectors are normal to the line, and smooth approximations can diverge there.
+**How the definition helps.** Excluding conormal directions gives the Fourier control needed in the directions that restriction integrates out (our own). The work lies in the cited continuous extension theorem for pullbacks, applied to the inclusion of the submanifold. Mass spread along a line in the plane shows the need: its singular covectors are normal to the line, and smooth approximations can diverge there (our own).
 
 **Paper or page:** [Spaces of distributions with Sobolev wave front in a fixed conic set: compactness, pullback by smooth maps and the compensated compactness theorem](https://arxiv.org/abs/2408.10741v1). It says: “If f has constant rank l ≥ 1, then this is valid when r₂ − r₁ ≥ (n − l)/2 and r₂ &gt; (n − l)/2.”
 
@@ -983,11 +983,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 35D40 (Viscosity solutions to PDEs), 65N12. arXiv math.AP, math.NA. Level 4: research.
 
-**Definition.** Take a continuous function u and the equation F(x, u, Du, D²u) = 0. Then u is a viscosity subsolution if F ≤ 0 holds wherever a smooth φ touches u from above. Here the derivatives of φ replace those of u. A supersolution uses smooth functions that touch from below, and F ≥ 0, and a solution is both.
+**Definition.** A continuous u is a viscosity subsolution of F(x, u, Du, D²u) = 0 if F ≤ 0 holds wherever a smooth φ touches u from above. In that test the derivatives of φ replace those of u. A supersolution uses functions touching from below and F ≥ 0, and a solution is both.
 
 **Problem.** Barles–Souganidis theorem (1991): let the equation have a strong comparison principle. Then a monotone, stable and consistent scheme converges locally uniformly to the viscosity solution.
 
-**How the definition helps.** The definition asks nothing of the derivatives of u, so it passes to locally uniform limits. It even passes to half-relaxed limits, the upper and lower limits taken over nearby points and small mesh sizes. So these limits of the numerical solutions are a subsolution and a supersolution, with no regularity estimates (our own). The comparison principle then forces the two limits to be equal, which gives convergence (our own). The hard part moves to the comparison principle for each equation.
+**How the definition helps.** The definition asks nothing of the derivatives of u, so it passes to locally uniform limits. It even passes to half-relaxed limits over nearby points and small mesh sizes, so these limits of numerical solutions are a subsolution and a supersolution (our own). The comparison principle then forces the two limits to be equal, which gives convergence (our own). The hard part moves to the comparison principle for each equation.
 
 **Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution). It says: “Based on their stability properties, Barles and Souganidis obtained a very simple and general proof of convergence of finite difference schemes.”
 
@@ -1023,7 +1023,7 @@
 
 **Problem.** On a smooth bounded convex domain, prescribe zero boundary values and square-integrable forcing f. Under the Cordès condition, the equation ∑ᵢⱼ Aᵢⱼ ∂ᵢ∂ⱼu = f holds almost everywhere and has a unique solution with square-integrable derivatives through order two.
 
-**How the definition helps.** In our own proof, the uniform bound makes the rescaled equation a contraction around the Laplacian. This uses solvability for the Laplacian and the convex-domain estimate bounding second derivatives by the Laplacian in square mean. In our own counterexample on the three-dimensional unit ball, take radial eigenvalue six and tangential eigenvalues one. The function u(r) = ∛(r²) − 1, where r is radius, has zero boundary values and solves the homogeneous equation almost everywhere. Its second derivatives grow like \|x\| to the power −4/3, so they are square-integrable.
+**How the definition helps.** The uniform bound makes the rescaled equation a contraction around the Laplacian (our own). This uses solvability for the Laplacian and the convex-domain estimate bounding second derivatives by the Laplacian in square mean. In our own counterexample on the three-dimensional unit ball, take radial eigenvalue six and tangential eigenvalues one. Then u = ∛(r²) − 1 has zero boundary values, solves the homogeneous equation almost everywhere, and has square-integrable second derivatives, which grow like \|x\| to the power −4/3.
 
 **Paper or page:** [A least-squares Galerkin approach to gradient and Hessian recovery for nondivergence-form elliptic equations](https://arxiv.org/abs/1909.00491v2). It says: “satisfies the Cordes condition with λ = 0”
 
@@ -1057,7 +1057,7 @@
 
 **Definition.** A distance cone has the form a + b d(x,z), where z is its vertex. Two-sided cone comparison passes upper and lower cone bounds from the boundary of each relatively compact open test region to its interior. The vertex must lie outside the region.
 
-**Problem.** Suppose both metric spaces have shortest paths and compact closed bounded sets. Let continuous functions u and v satisfy two-sided cone comparison on open domains in the respective spaces. Then u(x)+v(y) satisfies the same comparison on their product when distances add.
+**Problem.** Suppose both metric spaces have shortest paths and compact closed bounded sets, and give their product the sum of the two distances. If continuous u and v satisfy two-sided cone comparison on open domains in the two spaces, then u(x) + v(y) satisfies it on the product.
 
 **How the definition helps.** Cone comparison states the product theorem using distances alone, even on spaces without derivatives. In our own reading, adding the distances splits every product cone into separate distance terms with the same slope. The cited theorem proves that comparison on the two factors passes to their disjoint sum. That passage requires an argument because the product vertex can project inside a test section.
 
@@ -1073,7 +1073,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 35L65 (Hyperbolic conservation laws), 35Q93. arXiv math.AP, math.OC. Level 4: research.
 
-**Definition.** A scalar conservation law moves a quantity at a rate set by its flux. Here the flux changes at the point x = 0. A connection (A, B) is a pair of states, one on each side, with equal flux. It selects which jumps at x = 0 are allowed.
+**Definition.** A scalar conservation law moves a quantity at a rate set by its flux, and here the flux changes at the point x = 0. A connection (A, B) is a pair of states, one on each side, with equal flux. It selects which jumps at x = 0 are allowed.
 
 **Problem.** Suppose the flux is uniformly convex on each side of x = 0. A bounded profile is reachable at time T exactly when evolving it backward to time 0 and then forward to time T returns it.
 
@@ -1091,11 +1091,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 35P15 (Estimates of eigenvalues in context of PDEs), 35K57, 35B08. arXiv math.AP. Level 4: research.
 
-**Definition.** A generalized principal eigenvalue of a parabolic operator P = ∂ₜ − (elliptic part) is defined through the maximum principle. It is an extreme value λ for which a positive function φ satisfies an inequality such as Pφ ≥ λφ. No time-independent or time-periodic eigenfunction is needed. The paper uses several variants, which differ in the boundedness and positivity required of φ.
+**Definition.** A generalized principal eigenvalue of a parabolic operator P = ∂ₜ − (elliptic part) is defined through the maximum principle. It is an extreme value λ for which some positive φ satisfies an inequality such as Pφ ≥ λφ, so no periodic eigenfunction is needed. The paper’s variants differ in the boundedness and positivity required of φ.
 
-**Problem.** The Fisher–KPP equation models growth with diffusion, with coefficients that depend on space and time. Take a bounded C²ᵅ domain and all times t ∈ ℝ. A bounded entire solution, defined for all past and future times and positive on compact sets, exists exactly when μ₍b,p₎(ℝ) &lt; 0.
+**Problem.** For a Fisher–KPP equation on a bounded C²ᵅ domain, with coefficients that depend on space and time, a bounded entire solution positive on compact sets exists exactly when μ₍b,p₎(ℝ) &lt; 0. Here μ₍b,p₎(ℝ) is the generalized principal eigenvalue of the equation linearised at zero.
 
-**How the definition helps.** The generalized eigenvalue gives one number whose sign can be tested even when the coefficients are not periodic in time. For periodic coefficients the classical periodic principal eigenvalue plays this role, but general time dependence has none. This comparison is our own. Here μ₍b,p₎(ℝ) is the eigenvalue of the equation linearised at the zero solution. The quote says these eigenvalues are the key to entire solutions and large-time behaviour. Showing that the sign of the linear quantity controls the nonlinear equation is the main work of the proof.
+**How the definition helps.** The generalized eigenvalue gives one number whose sign can be tested even when the coefficients are not periodic in time. For periodic coefficients the classical periodic principal eigenvalue plays this role, but general time dependence has none (our own comparison). Showing that the sign of the linear quantity controls the nonlinear equation is the main work of the proof.
 
 **Paper or page:** [Generalized principal eigenvalues for parabolic operators in bounded domains](https://arxiv.org/abs/2502.16522v1). It says: “We first show that these eigenvalues hold the key to understanding the large time behavior and entire solutions of heterogeneous Fisher-KPP type equations.”
 
@@ -1111,9 +1111,9 @@
 
 **Definition.** A weak flow satisfies the momentum equation after integration against smooth test fields. An energy-admissible flow also bounds its kinetic energy plus accumulated viscous loss by its initial energy when no force acts.
 
-**Problem.** Can an unforced fluid start moving from rest if its weak solution satisfies the energy inequality?
+**Problem.** An unforced energy-admissible weak flow that starts from rest has zero velocity almost everywhere at almost every later time.
 
-**How the definition helps.** The energy inequality bounds two nonnegative quantities by zero in our own argument. Zero kinetic energy forces the velocity to vanish almost everywhere. For a specific model with strengthened viscosity on the three-dimensional torus, the cited theorem gives infinitely many weak flows starting from rest.
+**How the definition helps.** The energy inequality bounds two nonnegative quantities by zero (our own). Zero kinetic energy forces the velocity to vanish almost everywhere. Without energy admissibility the claim fails: for a model with strengthened viscosity on the three-dimensional torus, the cited theorem gives infinitely many weak flows starting from rest.
 
 **Paper or page:** [Non-uniqueness of weak solutions for a logarithmically supercritical hyperdissipative Navier-Stokes system](https://arxiv.org/abs/2406.05853v1). It says: “In particular, there are infinitely many weak solutions with zero initial condition.”
 
@@ -1163,11 +1163,11 @@
 
 *True by definition.* MSC 35R02 (PDEs on graphs and networks (ramified or polygonal spaces)). arXiv math.AP. Level 4: research.
 
-**Definition.** The Airy operator differentiates three times along each edge of a graph. At the junction of a loop and half-lines, collect endpoint values and their first two derivatives into two vectors. Prescribe the allowed traces, or endpoint data, by a linear map between these vectors. Each trace space has a quadratic form that can take either sign.
+**Definition.** On a graph made of a loop and half-lines, the Airy operator takes three derivatives along each edge. Boundary conditions are given by a linear map ℒ from incoming to outgoing endpoint data, each carrying a quadratic form that can take either sign. ℒ is a contraction for these forms if the output form of ℒv never exceeds the input form of v.
 
-**Problem.** The resulting operator A satisfies Re⟨Au,u⟩ ≤ 0 for every allowed u exactly when the output form never exceeds the input form.
+**Problem.** The Airy operator A with boundary map ℒ is dissipative, meaning Re⟨Au,u⟩ ≤ 0 for every u in its domain, exactly when ℒ is a contraction for the two forms.
 
-**How the definition helps.** The boundary map turns the energy test for an entire function into one inequality on its traces. In our own explanation, integration by parts gives the output form minus the input form, up to a positive factor. The converse uses the fact that functions on the edges can realize the allowed traces.
+**How the definition helps.** The contraction condition is the energy test written on the boundary data. In our own explanation, integration by parts gives the output form minus the input form, up to a positive factor. The converse uses the fact that functions on the edges can realize the allowed endpoint data.
 
 **Paper or page:** [Airy and Schrödinger-type equations on looping-edge graphs](https://arxiv.org/abs/2410.11729v3). It says: “Aℒ is dissipative if and only if ℒ is a (𝒞₁,𝒞₀)-contraction.”
 
@@ -1199,9 +1199,9 @@
 
 *Rules out counterexamples.* MSC 35R11 (Fractional partial differential equations). arXiv math.AP. Level 4: research.
 
-**Definition.** Fix 0 &lt; s &lt; 1. Write L for the fractional Laplacian, which compares a function’s value with values everywhere, giving nearby points greater weight. Require opposite values at mirror points across a plane and nonnegative values throughout one half-space.
+**Definition.** Fix 0 &lt; s &lt; 1 and let L be the fractional Laplacian of order s, which compares a function's value with its values everywhere. A function is antisymmetric across a plane if it takes opposite values at mirror points. The key condition is that u ≥ 0 on the whole half-space on one side, not only in the domain.
 
-**Problem.** Let Ω be an open subset of that half-space. Suppose Lu exists pointwise there and Lu + c(x)u ≥ 0 for a real function c. Then u is positive throughout Ω or zero almost everywhere in the whole space.
+**Problem.** Let Ω be an open subset of the half-space, and let u be antisymmetric and nonnegative on the half-space. If Lu exists pointwise and Lu + c(x)u ≥ 0 in Ω for a real function c, then u &gt; 0 in Ω or u = 0 almost everywhere.
 
 **How the definition helps.** Nonnegativity on the whole half-space gives every reflected pair the same sign in our own proof. At an interior zero, a positive value contributes more than its more distant negative reflection. The integral is therefore negative unless u vanishes almost everywhere. Corollary 1.4 shows that requiring nonnegativity only inside the open subset permits an interior zero.
 

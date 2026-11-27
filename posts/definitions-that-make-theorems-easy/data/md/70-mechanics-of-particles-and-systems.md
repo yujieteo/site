@@ -6,9 +6,9 @@
 
 **Definition.** Ludwig Lange defined an inertial frame in 1885 by free motion. In such a frame, free mass points thrown from one point in three directions, not all in one plane, move in straight lines. He wanted an operational definition to replace Newton's absolute space and time.
 
-**Problem.** Newton's first law says that a body with no net force moves in a straight line at constant speed. In Lange's inertial frames this holds by definition for three free bodies. The physical content that remains is that such frames exist and that every other free body then also moves straight.
+**Problem.** In a Lange inertial frame, three free bodies thrown in non-coplanar directions move in straight lines by definition. The physical content of Newton's first law is that such frames exist and that every other free body then also moves in a straight line.
 
-**How the definition helps.** Lange's definition uses only observable free motion, so the first law stops depending on absolute space. Part of the law is then true by definition, and the claim about all other free bodies is the real physical statement (our own reading). The page notes that the definition belongs to Newtonian mechanics and ignores relativistic effects. What stays hard is to know that a body is free of force, which leads back to the second law (our own). General relativity gives up global inertial frames altogether (our own).
+**How the definition helps.** Lange's definition uses only observable free motion, so the first law stops depending on absolute space. Part of the law is then true by definition, and the claim about all other free bodies is the real physical statement (our own reading). What stays hard is to know that a body is free of force, which leads back to the second law (our own).
 
 **Wikipedia:** [Inertial frame of reference](https://en.wikipedia.org/wiki/Inertial_frame_of_reference). It says: “A reference frame in which a mass point thrown from the same point in three different (non co-planar) directions follows rectilinear paths each time it is thrown, is called an inertial frame.”
 
@@ -38,9 +38,9 @@
 
 **Definition.** A force field is conservative if the work it does in moving a particle between two points does not depend on the path. Equivalently, the work around every closed path is zero.
 
-**Problem.** A conservative force is the negative gradient of a potential energy, F = −∇Φ, so mechanical energy is conserved. The test 'curl F = 0' is equivalent to this only on simply connected regions, where every loop can shrink to a point.
+**Problem.** A conservative force is the negative gradient of a potential energy, F = −∇Φ, so mechanical energy is conserved.
 
-**How the definition helps.** Path independence is exactly what makes 'minus the work from a base point to x' a well-defined function Φ(x) (our own sketch). Then F = −∇Φ follows by differentiating, so a potential exists almost by definition. The curl test is a separate theorem, proved with Stokes's theorem, and it needs a region in which every loop bounds a surface. Our own counterexample: the field (−y, x)/(x² + y²) around the origin has zero curl, but it does work 2π around the unit circle. What stays hard is this topology: curl-free fields modulo gradients are measured by de Rham cohomology (our own).
+**How the definition helps.** Path independence is exactly what makes 'minus the work from a base point to x' a well-defined function Φ(x), and F = −∇Φ follows by differentiating (our own sketch). The test curl F = 0 is a separate theorem, which needs a simply connected region. Our own counterexample: the field (−y, x)/(x² + y²) has zero curl, but it does work 2π around the unit circle.
 
 **Wikipedia:** [Conservative force](https://en.wikipedia.org/wiki/Conservative_force). It says: “In physics, a conservative force is a force with the property that the total work done by the force in moving a particle between two points is independent of the path taken.”
 
@@ -234,7 +234,7 @@
 
 *True by definition.* MSC 70F15 (Celestial mechanics). arXiv astro-ph.EP. Level 2: later undergraduate.
 
-**Definition.** For a noncircular elliptical Kepler orbit, draw the circle whose diameter is the major axis. Scale perpendicular distances from that axis by the ratio of minor to major axis lengths. This maps the circle to the ellipse. Measure E at the circle’s center, from the closest-approach direction to the orbiting body’s circle point, following orbital motion.
+**Definition.** For an elliptical, noncircular Kepler orbit, draw the circle whose diameter is the major axis. Squeezing this circle toward the major axis by the ratio of the axis lengths maps it onto the ellipse. The eccentric anomaly E is the angle at the center from the closest-approach direction to the circle point that maps to the body.
 
 **Problem.** During one revolution, the elapsed fraction of a period since closest approach is (E − e sin E)/(2π). Here e is the eccentricity.
 
@@ -350,7 +350,7 @@
 
 **Definition.** On the punctured plane, scale squared Euclidean length by r⁻ᵅ, where r is distance from the origin and 0 &lt; α &lt; 2. Put c = 1 − α/2. Use radius ρ = rᶜ/c and angle φ = cθ, with angles identified modulo 2πc.
 
-**Problem.** These coordinates turn geodesics, the locally straight paths of the given metric, into straight lines on each unfolded patch of a cone. They describe the unparameterized zero-level orbits of the Hamiltonian H = \|p\|²/2 − r⁻ᵅ.
+**Problem.** In these coordinates the metric r⁻ᵅ times squared Euclidean length becomes the flat cone metric dρ² + ρ²dφ². So its geodesics are straight lines on the unfolded cone, and they are the zero-energy orbits of H = \|p\|²/2 − r⁻ᵅ up to a change of time.
 
 **How the definition helps.** The new radius absorbs the radial length factor, and the new angle gives the matching angular factor (our own). Substitution gives dρ² + ρ²dφ², the Euclidean length rule in polar coordinates (our own). The Jacobi–Maupertuis theorem identifies geodesics of this metric with the zero-level Hamiltonian orbits up to time change.
 
@@ -398,7 +398,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 70F16 (Collisions in celestial mechanics, regularization), 70F05. arXiv math.DS, physics.class-ph. Level 3: graduate.
 
-**Definition.** Identify the plane with the complex numbers and write position as q = u². Away from collision choose momentum v so that momentum paired with displacement stays the same in both coordinates. For unit mass write the energy as H = \|p\|²/2 − k/\|q\| with k &gt; 0. At fixed energy E use K = \|u\|²(H − E), with physical time advancing by \|u\|² per unit of new time.
+**Definition.** Levi-Civita regularization writes the planar position as a complex square, q = u², with the matching momentum v. At fixed energy E it uses the new Hamiltonian K = \|u\|²(H − E), where H = \|p\|²/2 − k/\|q\| and k &gt; 0. Physical time advances by \|u\|² per unit of new time.
 
 **Problem.** At negative energy the planar Kepler problem becomes a harmonic oscillator in the new variables. The oscillator trajectory extends smoothly through u = 0.
 
@@ -420,7 +420,7 @@
 
 **Problem.** On this energy surface, the coordinate change takes Hamiltonian orbits to unit spherical covectors tracing great circles, up to a change of time. The spherical flow continues through the missing pole.
 
-**How the definition helps.** The new Hamiltonian measures spherical length, so its unit level carries the geodesic flow of the round sphere (our own). The coordinate swap preserves the canonical symplectic form, which pairs position and momentum directions (our own). The identity K − 1 = \|q\|(H + 1/2) gives dK = \|q\|dH on the chosen level (our own). Thus the two Hamiltonian fields trace the same curves there (our own). The geometric work is deriving the spherical length formula from stereographic projection (our own).
+**How the definition helps.** The new Hamiltonian measures spherical length, so its unit level carries the geodesic flow of the round sphere (our own). The coordinate swap preserves the symplectic form (our own). The identity K − 1 = \|q\|(H + 1/2) gives dK = \|q\|dH on the chosen level, so the two Hamiltonian fields trace the same curves there (our own).
 
 **Wikipedia:** [Moser regularization](https://en.wikipedia.org/wiki/Moser_regularization). It says: “into a geodesic flow on the sphere using the Moser (regularization) map”
 
@@ -570,7 +570,7 @@
 
 **Problem.** For an autonomous Hamiltonian flow, the return map preserves the restricted symplectic form on this section. That form pairs each nonzero tangent vector nontrivially with some other tangent vector.
 
-**How the definition helps.** Fixing energy removes one dimension before taking the section, so the section can carry a nondegenerate alternating form (our own). A hypersurface in the full phase space has odd dimension and cannot carry such a form (our own). On the energy surface, precisely the flow direction pairs to zero with every tangent vector (our own). Crossing that direction removes the degeneracy (our own). Variable return time adds only multiples of that direction to transported tangent vectors (our own). Preservation now follows from preservation of the full form by the Hamiltonian flow (our own).
+**How the definition helps.** Fixing energy removes one dimension before taking the section, so the section can carry a nondegenerate form, which no odd-dimensional hypersurface of phase space can (our own). On the energy surface, only the flow direction pairs to zero with every tangent vector, and the section omits that direction (our own). Variable return time adds only multiples of the flow direction, so preservation follows from that of the full form (our own).
 
 **Wikipedia:** [Poincaré map](https://en.wikipedia.org/wiki/Poincar%C3%A9_map). It says: “the Poincaré section, transversal to the flow of the system.”
 
@@ -732,7 +732,7 @@
 
 **Definition.** A Jacobi bracket is a Lie bracket on smooth functions that differentiates each argument to at most first order. Let a Lie group act by transformations that preserve this bracket. Assume its orbit space is smooth and the projection π has surjective derivative everywhere. Define the bracket of f and g downstairs by requiring its pullback to equal the bracket of f ∘ π and g ∘ π.
 
-**Problem.** For a symmetry that preserves the Jacobi bracket and Hamiltonian, the flow projects to the reduced Hamiltonian flow. Assume the orbit space is smooth and the projection is a submersion.
+**Problem.** For a symmetry that preserves the Jacobi bracket and the Hamiltonian, the flow projects to the flow of the reduced Hamiltonian under the reduced bracket.
 
 **How the definition helps.** The pullback rule lets us compare the two flows on functions without finding coordinates on the orbit space (our own). The evolution rule uses the bracket with the Hamiltonian and a correction involving the constant function one (our own). Pullback preserves both terms (our own). Existence requires proving that brackets of invariant functions descend to smooth functions on the quotient (our own).
 
@@ -816,7 +816,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 70F25 (Nonholonomic systems related to the dynamics of a system of particles), 37J60. arXiv math-ph, math.DS. Level 4: research.
 
-**Definition.** A Chaplygin system has velocity constraints and symmetries that allow fewer variables to describe its motion. In these variables a nondegenerate alternating form Ω pairs the motion field X with other directions to give the energy derivative. Consider the condition that multiplying Ω by exp(φ) gives a closed form, one with zero exterior derivative. Here φ depends only on position.
+**Definition.** A Chaplygin system has velocity constraints and symmetries, so its motion reduces to a flow X on fewer variables. There a nondegenerate alternating form Ω pairs X with other directions to give the energy derivative. The key condition is that exp(φ)Ω is closed for some function φ of position alone.
 
 **Problem.** Under this condition in dimension 2m, the reduced flow preserves exp((m − 1)φ) times the exterior product of m copies of Ω.
 
@@ -854,9 +854,9 @@
 
 **Definition.** Usually a field configuration is a section of a field bundle E → X over spacetime X. Here a field configuration is instead a map from X to a moduli stack of fields. A stack is a space-like object that also records the symmetries, here the gauge transformations, of its points. For Yang–Mills theory with gauge group G, the target is the moduli stack of G-principal bundles with connection.
 
-**Problem.** Locality says that you get the field configurations on X by gluing the configurations on the sets of a cover of X. This must include all instanton sectors, that is, all topological types of principal bundle. In algebraic quantum field theory this shows up as the isotony axiom of a local net of observables (the axiom that the algebra of a smaller region embeds in the algebra of a larger region).
+**Problem.** When Yang–Mills fields are maps into the moduli stack of G-connections, the field configurations on X are glued from those on the sets of any cover of X, including all instanton sectors. No field bundle has this gluing property for Yang–Mills fields.
 
-**How the definition helps.** The definition makes gluing automatic, because maps into a stack glue by the definition of a stack. In detail, the field bundle for Yang–Mills fields is a disjoint union, over instanton sectors, of the bundles of connections on each principal bundle. You cannot glue this field bundle from a cover, because every principal bundle is trivial locally, so locally there is only one sector. Benini, Dappiaggi and Schenkel found that the resulting net of observables can fail isotony. When fields are maps into the moduli stack of G-connections, the sheaf (stack) condition holds by construction. Benini, Schenkel and Szabo later used such stacks of fields. The analytic work of quantization still has to be done.
+**How the definition helps.** The definition makes gluing automatic, because maps into a stack glue by the definition of a stack. The usual field bundle is a disjoint union over instanton sectors, and it cannot be glued from a cover, because every principal bundle is trivial locally. Benini, Dappiaggi and Schenkel found that the resulting net of observables can fail isotony, the axiom that the algebra of a smaller region embeds in that of a larger one. The analytic work of quantization still has to be done.
 
 **nLab:** [field (physics)](https://ncatlab.org/nlab/show/field+%28physics%29), [field bundle](https://ncatlab.org/nlab/show/field+bundle). It says: “In summary: there cannot be a fiber bundle such that its sheaf of local sections is the sheaf of configurations of the Yang-Mills field. But there is a fiber 2-bundle whose stack of sections is the stack of configurations of the Yang-Mills field.”
 

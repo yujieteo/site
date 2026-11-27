@@ -56,7 +56,7 @@
 
 **Definition.** Let γ be a closed path in the plane that avoids a point a. Choose a continuous real angle s along γ about a, measured in full turns. The winding number is s(1) − s(0). For a piecewise smooth path, another definition is the integral (1/2πi)∮ dz/(z − a).
 
-**Problem.** Show that the winding number of a closed path around a point is an integer.
+**Problem.** The winding number of a closed path around a point is an integer.
 
 **How the definition helps.** The angle lift makes integrality immediate because the endpoint and start represent the same direction. Their real angles therefore differ by an integer number of turns. In our own comparison, the integral definition has the same value by differentiating the polar form along a piecewise smooth path. The work is proving that a continuous real angle exists once the starting angle is chosen.
 
@@ -70,11 +70,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** For a space X and a subspace A, define the relative chain complex as the quotient C•(X)/C•(A) of singular chain complexes. Relative homology Hₙ(X, A) is the homology of this quotient. A different definition takes the reduced homology of the quotient space X/A. The two agree only for good pairs, where A is closed and is a deformation retract of a neighborhood.
+**Definition.** For a space X and a subspace A, define the relative chain complex as the quotient C•(X)/C•(A) of singular chain complexes. Relative homology Hₙ(X, A) is its homology. A different definition takes the reduced homology of the quotient space X/A, which agrees for good pairs.
 
 **Problem.** Every pair (X, A) has a natural long exact sequence … → Hₙ(A) → Hₙ(X) → Hₙ(X, A) → Hₙ₋₁(A) → …
 
-**How the definition helps.** The quotient definition gives a short exact sequence 0 → C•(A) → C•(X) → C•(X)/C•(A) → 0 of chain complexes. The nLab defines relative chains as this quotient, the cokernel of the inclusion. In our own account, the long exact sequence then follows from a general algebraic lemma, sometimes called the zigzag lemma. That lemma builds a connecting map for any short exact sequence of chain complexes. With the quotient-space definition, exactness would need a good pair and excision. So the work moves into the zigzag lemma, which is pure algebra.
+**How the definition helps.** The quotient definition gives a short exact sequence 0 → C•(A) → C•(X) → C•(X)/C•(A) → 0 of chain complexes. In our own account, the long exact sequence then follows from the zigzag lemma, which builds a connecting map for any short exact sequence of chain complexes. With the quotient-space definition, exactness would need a good pair and excision. So the work moves into the zigzag lemma, which is pure algebra.
 
 **nLab:** [relative homology](https://ncatlab.org/nlab/show/relative+homology). It says: “The cokernel of this inclusion, hence the quotient C•(X)/C•(A) of C•(X) by the image of C•(A) under the inclusion”
 
@@ -108,9 +108,9 @@
 
 **Definition.** Let X be a space and X₀ a set of points of X. The fundamental groupoid Π₁(X, X₀) is a groupoid (a category in which every morphism is invertible) with the points of X₀ as objects. Its morphisms are homotopy classes of paths between points of X₀. It is the full subgroupoid of the fundamental groupoid Π₁(X) on the objects in X₀.
 
-**Problem.** Compute the fundamental group of a union U ∪ V when U ∩ V is not path-connected. An example is the circle as a union of two arcs.
+**Problem.** Let X be the union of open sets U and V, and let X₀ meet every path component of U, V and U ∩ V. Then Π₁(X, X₀) is the pushout of Π₁(U, X₀) and Π₁(V, X₀) over Π₁(U ∩ V, X₀).
 
-**How the definition helps.** With several base points, the theorem no longer needs U ∩ V to be path-connected. The classical van Kampen theorem for groups needs this, so it does not apply to the circle covered by two arcs. Choose a set of base points that meets every path component of U, V and U ∩ V. Then Π₁ takes the cover to a strict pushout of groupoids. For the circle with two base points, this pushout gives π₁(S¹) ≅ ℤ directly. The nLab notes that the groupoid theorem does not reduce to a theorem about groups.
+**How the definition helps.** With several base points, the theorem no longer needs U ∩ V to be path-connected. The classical van Kampen theorem for groups needs this, so it does not apply to the circle covered by two arcs. For the circle with two base points, this pushout gives π₁(S¹) ≅ ℤ directly. The nLab notes that the groupoid theorem does not reduce to a theorem about groups.
 
 **nLab:** [van Kampen theorem](https://ncatlab.org/nlab/show/van+Kampen+theorem). It says: “Note that the version of the theorem for fundamental groups does not apply, since U ∩ V is not path-connected.”
 
@@ -127,9 +127,9 @@
 
 **Definition.** A space X is semi-locally simply connected if every point has a neighbourhood U with this property: every loop in U can be contracted in X. The contraction may leave U. In other words, the map π₁(U, x) → π₁(X, x) is trivial.
 
-**Problem.** Prove the fundamental theorem of covering spaces. Let X be locally path-connected and semi-locally simply connected. Then covering spaces of X are the same as actions of the fundamental groupoid of X on sets.
+**Problem.** Let X be locally path-connected and semi-locally simply connected. Then covering spaces of X are the same as actions of the fundamental groupoid of X on sets.
 
-**How the definition helps.** In our own reading of the nLab proof, the condition is used at one point only, to give the rebuilt covering space the right topology. With these hypotheses, two functors are inverse to each other. One takes a covering to its monodromy action, which says how paths move the points of the fibers. The other rebuilds a covering from an action. The rest of the nLab proof is mostly unwinding of definitions. The Hawaiian earring (circles of radius 1/n that all touch at one point) fails the condition, because every neighbourhood of its wedge point holds loops that are not contractible. The condition is weaker than local simple connectivity, so the theorem covers more spaces; for example, the cone on the Hawaiian earring satisfies it.
+**How the definition helps.** In our own reading of the nLab proof, the condition is used at one point only, to give the covering space rebuilt from an action the right topology. The rest of the proof, which matches a covering with its monodromy action, is mostly unwinding of definitions. The Hawaiian earring fails the condition, because every neighbourhood of its wedge point holds loops that are not contractible. The condition is weaker than local simple connectivity: for example, the cone on the Hawaiian earring satisfies it.
 
 **nLab:** [semi-locally simply-connected topological space](https://ncatlab.org/nlab/show/semi-locally+simply-connected+topological+space), [fundamental theorem of covering spaces](https://ncatlab.org/nlab/show/fundamental+theorem+of+covering+spaces), [Hawaiian earring space](https://ncatlab.org/nlab/show/Hawaiian+earring+space). It says: “Semi-local simple connectedness is the crucial condition needed to have a good theory of covering spaces”
 
@@ -164,7 +164,7 @@
 
 **Problem.** If Λ(f) is not zero, then f has a fixed point. For the disk all higher homology vanishes, so Λ(f) = 1 for every map, which gives the Brouwer fixed point theorem.
 
-**How the definition helps.** The Lefschetz number depends only on homology, so it is a homotopy invariant and is easy to compute. The proof first treats simplicial maps, where the trace on chains counts simplices sent to themselves. Then the simplicial approximation theorem extends it to continuous maps. For a map homotopic to the identity, Λ(f) is the Euler characteristic. So if the Euler characteristic is not zero, such a map has a fixed point. The theorem extends to compact absolute neighborhood retracts, such as compact manifolds. What stays hard is the converse, since Λ(f) = 0 does not mean f has no fixed point.
+**How the definition helps.** The Lefschetz number depends only on homology, so it is a homotopy invariant and is easy to compute. The proof first treats simplicial maps, where the trace on chains counts simplices sent to themselves. Then the simplicial approximation theorem extends it to continuous maps. What stays hard is the converse, since Λ(f) = 0 does not mean f has no fixed point.
 
 **Wikipedia:** [Lefschetz fixed-point theorem](https://en.wikipedia.org/wiki/Lefschetz_fixed-point_theorem). It says: “since for compact and triangulable space from some point the homologies are trivial and traces are zeros, this sum is finite and well-defined.”
 
@@ -233,7 +233,7 @@
 
 **Definition.** For a closed, connected, oriented m-manifold X, an orientation is a chosen generator \[X\] of the top homology group, which is ℤ. The degree of a map f from X to Y is the integer d such that the induced map sends \[X\] to d times \[Y\].
 
-**Problem.** Let M be a closed, connected, oriented n-manifold. Hopf's theorem says that two maps from M to the n-sphere are homotopic if and only if they have the same degree. This theorem comes from Hopf's paper, not from the page.
+**Problem.** Hopf's theorem: let M be a closed, connected, oriented n-manifold. Two maps from M to the n-sphere are homotopic if and only if they have the same degree.
 
 **How the definition helps.** Choosing a generator turns the induced map on top homology into multiplication by a well-defined integer. Without an orientation the integer is only defined up to sign, and for a nonorientable manifold the top integral homology is zero. Then only the degree mod 2 exists. The degree is also a signed count of preimages at a regular value, which makes it easy to compute. What stays hard is Hopf's converse, that equal degree gives a homotopy.
 
@@ -287,7 +287,7 @@
 
 **Problem.** The empty space has reduced homology ℤ in degree −1 and zero in all other degrees. Every nonempty space has zero reduced homology in degree −1.
 
-**How the definition helps.** The augmented definition makes reduced homology in degree −1 the cokernel of one map, so the answer can be read off. For the empty space, degree 0 is zero, so the cokernel is ℤ. For a nonempty space, the map is onto, so the cokernel is zero. Another common definition uses homology relative to a base point, which the empty space does not have. Take the suspension of a space to be its join with two points, so the empty space has two points as suspension. The suspension isomorphism, which raises reduced homology by one degree, then also holds for the empty space. These consequences are our own, and the page gives only the definition.
+**How the definition helps.** The augmented definition makes reduced homology in degree −1 the cokernel of one map, so the answer can be read off. For the empty space, degree 0 is zero, so the cokernel is ℤ. For a nonempty space, the map is onto, so the cokernel is zero. These consequences are our own, and the page gives only the definition.
 
 **nLab:** [reduced homology](https://ncatlab.org/nlab/show/reduced+homology). It says: “is the chain homology of the augmented chain complex”
 
@@ -405,9 +405,9 @@
 
 **Definition.** The homology of a space X is a sequence of groups Hₙ(X). The Betti numbers are only the numbers bₙ(X) = dim Hₙ(X;ℚ), the dimensions of the rational homology. A continuous map f: X → Y gives homomorphisms Hₙ(f): Hₙ(X) → Hₙ(Y).
 
-**Problem.** Prove statements about maps, not only about spaces, in algebraic topology. Our own example is the Brouwer fixed-point theorem. A retraction Dⁿ → Sⁿ⁻¹ (a map that is the identity on the sphere) would make the identity of Hₙ₋₁(Sⁿ⁻¹) ≅ ℤ factor through Hₙ₋₁(Dⁿ) = 0, which is impossible.
+**Problem.** Homology is a functor: each map f: X → Y gives homomorphisms Hₙ(f), compatible with composition. So, for n ≥ 2, there is no retraction Dⁿ → Sⁿ⁻¹, since the identity of Hₙ₋₁(Sⁿ⁻¹) ≅ ℤ would factor through Hₙ₋₁(Dⁿ) = 0 (our own example).
 
-**How the definition helps.** Groups keep the maps, and numbers forget them. A Betti number is the dimension of a vector space, and taking the dimension forgets maps. Noether's emphasis on homology groups keeps the maps, so one can state and use functoriality: maps of spaces give maps of groups. Betti numbers alone cannot express the Brouwer argument. Baez presents this as a case of categorification (replacing numbers by richer structures that have maps between them). His text, quoted on the nLab, says that the history is more complicated than this parable.
+**How the definition helps.** Groups keep the maps, and numbers forget them. A Betti number is the dimension of a vector space, and taking the dimension forgets maps. Noether's emphasis on homology groups keeps the maps, so one can state and use functoriality. Betti numbers alone cannot express the no-retraction argument.
 
 **nLab:** [decategorification](https://ncatlab.org/nlab/show/decategorification). It says: “Noether noted that if we work with homology groups rather than Betti numbers, we can solve more problems, because we obtain invariants not only of spaces, but also of maps.”
 
@@ -423,9 +423,9 @@
 
 **Definition.** The reduced singular homology H̃•(X) is the homology of the augmented chain complex … → C₁(X) → C₀(X) → ℤ → 0. The map C₀(X) → ℤ adds up the coefficients of a 0-chain.
 
-**Problem.** State cleanly that contractible spaces have no homology. Also state cleanly that the homology of a wedge sum is the direct sum of the homologies of its pieces.
+**Problem.** Contractible spaces have zero reduced homology in every degree. For spaces with good base points, the reduced homology of a wedge sum is the direct sum of the reduced homologies of its pieces.
 
-**How the definition helps.** Reduced homology removes exactly the ℤ in degree 0 that forces exceptions in ordinary homology. Ordinary homology of a point is ℤ in degree 0, so statements about points, spheres and wedges need an exception in degree 0. For non-empty X, H₀(X) ≅ H̃₀(X) ⊕ ℤ, and Hₙ = H̃ₙ for n ≥ 1. So H̃ of a contractible space is zero in all degrees. Also, the map ⊕ᵢ H̃ₙ(Xᵢ) → H̃ₙ(∨ᵢ Xᵢ) is an isomorphism for all n, with no special case. This needs good base points: Hatcher assumes that each base point has a neighbourhood that deformation retracts onto it, and the nLab leaves this condition out. Reduced homology also equals relative homology with respect to a base point.
+**How the definition helps.** Reduced homology removes exactly the ℤ in degree 0 that forces exceptions in ordinary homology. For non-empty X, H₀(X) ≅ H̃₀(X) ⊕ ℤ, and Hₙ = H̃ₙ for n ≥ 1. So both statements hold in all degrees with no special case. Good base points means, as in Hatcher, that each base point has a neighbourhood that deformation retracts onto it.
 
 **nLab:** [reduced homology](https://ncatlab.org/nlab/show/reduced+homology). It says: “For some applications, though, it is convenient to divide out that contribution such as to have the homology of the point be entirely trivial.”
 
@@ -475,9 +475,9 @@
 
 **Definition.** Topological K-theory K(X) is the Grothendieck group of vector bundles on X. You take isomorphism classes of vector bundles, add them by direct sum, and formally add negatives. Here the base space X is compact Hausdorff.
 
-**Problem.** Every element of K(X) should be a formal difference \[E\] − \[trivial bundle\]. The classes of actual bundles in K(X) should be exactly the stable equivalence classes of bundles. (Two bundles are stably equivalent when they become isomorphic after you add the same trivial bundle to each.)
+**Problem.** For a compact Hausdorff space X, every element of K(X) is a formal difference \[E\] − \[trivial bundle\]. Two bundles have the same class in K(X) exactly when they are stably equivalent, that is, isomorphic after adding the same trivial bundle to each.
 
-**How the definition helps.** Over a compact Hausdorff base, every bundle has a complement, and this lets you move the whole negative part into a trivial bundle. The lemma says: every vector bundle E has a bundle Ẽ such that E ⊕ Ẽ is trivial. With the lemma, you rewrite a difference \[E₊\] − \[E₋\] as \[E₊ ⊕ Ẽ₋\] − \[trivial\], and the classes of actual bundles in K(X) are then exactly the stable equivalence classes. The nLab calls the lemma crucial. It uses the lemma again to make reduced K-theory a direct summand of K(X). The nLab gives no counterexample for a non-compact base. Our own example: on the discrete space ℕ, take the bundle with fibre ℝⁿ over the point n; its rank has no bound, so it is not a summand of any trivial bundle of finite rank.
+**How the definition helps.** Over a compact Hausdorff base, every vector bundle E has a bundle Ẽ such that E ⊕ Ẽ is trivial. With this lemma, you rewrite a difference \[E₊\] − \[E₋\] as \[E₊ ⊕ Ẽ₋\] − \[trivial\], so the whole negative part moves into a trivial bundle. The nLab gives no counterexample for a non-compact base. Our own example: on the discrete space ℕ, the bundle with fibre ℝⁿ over the point n has unbounded rank, so it is not a summand of any trivial bundle of finite rank.
 
 **nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “For the most part below we will invoke the assumption that the base topological space X is a compact Hausdorff space. Because then the following statement holds, which is crucial in some places:”
 
@@ -525,9 +525,9 @@
 
 **Definition.** A generalized (Eilenberg–Steenrod) cohomology theory is a functor that satisfies all the Eilenberg–Steenrod axioms except the dimension axiom. The dimension axiom says that the cohomology of a point is zero outside degree 0. So in a generalized theory, the value on a point may be non-zero in many degrees.
 
-**Problem.** State that K-theory, cobordism and other spectra give cohomology theories, and that every such theory comes from a spectrum. (A spectrum is a sequence of pointed spaces Eₙ with maps from the suspension of each Eₙ to the next one.)
+**Problem.** Every spectrum gives a generalized cohomology theory, for example K-theory and cobordism. Conversely, by Brown representability, every additive generalized cohomology theory on CW complexes comes from a spectrum.
 
-**How the definition helps.** Dropping only the dimension axiom lets in many new examples, and each of them still comes from a spectrum. With the dimension axiom, an additive theory on CW complexes is ordinary cohomology with the coefficient group of the point, so no new examples appear. Without it, G. W. Whitehead observed that every spectrum gives an example, such as K-theory and cobordism. Brown representability then gives the converse: a spectrum represents every such theory. The match is not perfect. Because of phantom maps, maps of cohomology theories need not come from unique maps of spectra. (A phantom map is a non-zero map of spectra that is zero on every finite CW complex.)
+**How the definition helps.** Dropping only the dimension axiom lets in many new examples, and each of them still comes from a spectrum. With the dimension axiom, an additive theory on CW complexes is ordinary cohomology with the coefficient group of the point, so no new examples appear. The match is not perfect. Because of phantom maps, maps of cohomology theories need not come from unique maps of spectra.
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology), [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “This entry here is concerned with the generalization obtained from the Eilenberg-Steenrod axioms by just discarding the dimension axiom.”
 
@@ -560,9 +560,9 @@
 
 **Definition.** A reduced generalized cohomology theory Ẽ (one that satisfies the Eilenberg–Steenrod axioms except perhaps the dimension axiom) is additive if it satisfies the wedge axiom. The wedge axiom says: for every set of pointed CW complexes Xᵢ, the map Ẽ(∨ᵢ Xᵢ) → ∏ᵢ Ẽ(Xᵢ) is an isomorphism. In words, the theory takes a wedge sum to the product of its values on the pieces.
 
-**Problem.** Take a natural transformation of cohomology theories that is an isomorphism on the 0-sphere S⁰. Then it is an isomorphism on all CW complexes.
+**Problem.** Take a natural transformation of additive cohomology theories that is an isomorphism on the 0-sphere S⁰. Then it is an isomorphism on all CW complexes.
 
-**How the definition helps.** The wedge axiom is what carries the isomorphism from finite complexes to infinite ones. Without the wedge axiom, the nLab states the isomorphism only on CW complexes with finitely many cells. If both theories satisfy the wedge axiom, the isomorphism holds on every CW complex. Our own counterexample without the axiom (not from the nLab) compares E(X) = H\*(X; ℤ) ⊗ ℚ with H\*(X; ℚ). Tensoring with ℚ is exact, so E is a cohomology theory, and the map is an isomorphism on S⁰. But on an infinite wedge of circles, (∏ℤ) ⊗ ℚ is smaller than ∏ℚ, because E fails the wedge axiom. The general proof uses the finite case together with the Atiyah–Hirzebruch spectral sequence, or a direct argument (Switzer, Kochman).
+**How the definition helps.** The wedge axiom is what carries the isomorphism from finite complexes to infinite ones. Without it, the isomorphism holds only on CW complexes with finitely many cells. Our own counterexample (not from the nLab) compares E(X) = H\*(X; ℤ) ⊗ ℚ with H\*(X; ℚ). The map is an isomorphism on S⁰, but on an infinite wedge of circles, (∏ℤ) ⊗ ℚ is smaller than ∏ℚ.
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology), [wedge axiom](https://ncatlab.org/nlab/show/wedge+axiom). It says: “Then φ(X): E(X) → F(X) is an isomorphism for X any CW-complex with a finite number of cells. If both E and F satisfy the wedge axiom, then φ(X) is an isomorphism for X any CW-complex, not necessarily finite.”
 
@@ -618,9 +618,9 @@
 
 **Definition.** A formal group law (a power series F(x, y) that behaves like a group law) over a graded ring R is classified by a ring map from the Lazard ring L ≅ MU•(∗) to R, where MU is complex cobordism. The formal group law is Landweber exact if, for every prime p, the elements v₀ = p, v₁, v₂, … form a regular sequence on R. Here vᵢ is the coefficient of x to the power pⁱ in the p-series \[p\](x), the formal sum of x with itself p times. Regular sequence means that each vᵢ acts injectively on R modulo the earlier ones.
 
-**Problem.** Decide when the functor X ↦ MU•(X) ⊗ R, with the tensor product over L, is a generalized homology theory. A spectrum then represents it.
+**Problem.** Landweber exact functor theorem: if a formal group law over R is Landweber exact, then X ↦ MU•(X) ⊗ R, with the tensor product over L, is a generalized homology theory. A spectrum then represents it.
 
-**How the definition helps.** Landweber exactness is the regularity condition that makes the tensor product keep the needed exact sequences. Tensoring is not exact in general, so this functor can fail the exactness axiom of a homology theory, and then no spectrum represents it. The Landweber exact functor theorem says that, under this condition, the functor is a homology theory. For example, the additive formal group law is Landweber exact over R only if R contains ℚ. So ordinary integral homology does not arise this way. The hard part is Landweber's theorem on comodules over MU•MU. The definition isolates exactly what that theorem needs.
+**How the definition helps.** Landweber exactness is the regularity condition that makes the tensor product keep the needed exact sequences. Tensoring is not exact in general, so without it the functor can fail the exactness axiom of a homology theory. For example, the additive formal group law is Landweber exact over R only if R contains ℚ, so ordinary integral homology does not arise this way. The hard part is Landweber's theorem on comodules over MU•MU.
 
 **nLab:** [Landweber exact functor theorem](https://ncatlab.org/nlab/show/Landweber+exact+functor+theorem), [Landweber exactness](https://ncatlab.org/nlab/show/Landweber+exactness). It says: “Landweber exactness is a sufficient condition on R for E ≔ MU•(−) ⊗ L R to be indeed a generalized homology theory”
 
@@ -636,9 +636,9 @@
 
 **Definition.** Let E be a multiplicative cohomology theory (a cohomology theory with products). A complex orientation of E is a class c₁ in the reduced group Ẽ²(BU(1)), where BU(1) ≃ ℂP∞. Its pullback along the inclusion i : S² = ℂP¹ → ℂP∞ must be the unit 1 in Ẽ²(S²) ≅ π₀(E). E is complex orientable if such a class exists.
 
-**Problem.** Attach a formal group law (a power series F(x, y) that behaves like the addition of a group) to every complex oriented cohomology theory. Show that complex cobordism MU is the universal complex oriented theory.
+**Problem.** Every complex oriented cohomology theory carries a formal group law, from the first Chern class of a tensor product of line bundles. For a homotopy commutative ring spectrum E, complex orientations correspond exactly to ring maps MU → E, so MU is the universal complex oriented theory.
 
-**How the definition helps.** This minimal definition asks for one class on one space, and that class already gives the rest. It gives Thom classes for all complex line bundles and Chern classes for all complex vector bundles. It gives a formal group law from the first Chern class of a tensor product of line bundles. For a homotopy commutative ring spectrum E, complex orientations correspond exactly to ring maps MU → E. The deep part is Quillen's theorem that the formal group law of MU is universal, so that π•(MU) is the Lazard ring (the ring that carries the universal formal group law). The bijection does not lift to E∞ ring maps. Ando showed that not every complex orientation gives an H∞ ring map out of MU.
+**How the definition helps.** This minimal definition asks for one class on one space, and that class already gives Thom classes and Chern classes for all complex bundles. The formal group law then comes from the first Chern class of a tensor product of line bundles. The deep part is Quillen's theorem that the formal group law of MU is universal, so that π•(MU) is the Lazard ring. The bijection does not lift to E∞ ring maps.
 
 **nLab:** [complex oriented cohomology theory](https://ncatlab.org/nlab/show/complex+oriented+cohomology+theory), [Milnor-Quillen theorem on MU](https://ncatlab.org/nlab/show/Milnor-Quillen+theorem+on+MU). It says: “For E a homotopy commutative ring spectrum, there is a bijection between complex orientations of E-cohomology and homotopy commutative ring spectrum-homomorphisms MU ⟶ E out of MU.”
 
@@ -654,7 +654,7 @@
 
 **Definition.** Take a locally compact semialgebraic set, one cut out by finite combinations of polynomial equalities and inequalities. Its compactly supported Euler characteristic is the alternating sum of dimensions of its compactly supported cohomology over ℚ. This cohomology uses classes with support inside compact subsets and agrees with ordinary cohomology on compact spaces.
 
-**Problem.** Let U be an open semialgebraic subset of X with complement Z. Show that the compactly supported Euler characteristic of X is the sum of those of U and Z.
+**Problem.** Let U be an open semialgebraic subset of X with complement Z. Then the compactly supported Euler characteristic of X is the sum of those of U and Z.
 
 **How the definition helps.** The compact-support definition makes the sum rule easy because its cohomology gives a long exact sequence for an open set and its closed complement. In our own proof, the groups are finite-dimensional and vanish in high degrees, so the alternating sum along the exact sequence is zero. Ordinary Euler characteristic fails on the line split into one point and two open half-lines. It gives 1 for the line but 1 + 2 for the pieces. Compact supports give −1 for the line and 1 − 2 for the pieces. The work shifts to proving the exact sequence and the finiteness of the groups.
 
@@ -707,11 +707,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N33 (Intersection homology and cohomology in algebraic topology), 14F43, 14F08. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** A stratified space is a space divided into pieces called strata, and the singular strata hold its singular points. Intersection homology of a stratified space uses only the chains that meet each singular stratum in at most a controlled excess dimension. A function called the perversity sets this control. Perverse sheaves are complexes of constructible sheaves (sheaves that are locally constant on each stratum) that generalise the intersection complexes.
+**Definition.** Intersection homology of a stratified space uses only the chains that meet each singular stratum in at most a controlled excess dimension. A function on the strata, called the perversity, sets this control.
 
-**Problem.** Prove Poincaré duality, and the Lefschetz and Hodge theorems, for singular varieties. Ordinary cohomology does not satisfy duality for these varieties.
+**Problem.** On a compact oriented pseudomanifold, the intersection homologies for complementary perversities are dual. For a complex variety the middle perversity is self-dual, so intersection cohomology satisfies Poincaré duality over a field, although ordinary cohomology does not.
 
-**How the definition helps.** Intersection cohomology uses only chains that meet the singular set in a controlled way, and this restores duality. The nLab says that Poincaré duality fails for singular spaces, and that intersection cohomology repairs duality by taking the codimension of the singular strata into account. The nLab also says that two special perversities give ordinary homology and ordinary cohomology. The details are standard and not on the page (our summary): Goresky and MacPherson proved that on a compact oriented pseudomanifold (roughly, a space that is a manifold outside a singular set of codimension at least 2), the theories for complementary perversities are dual. So the middle perversity is self-dual over a field. Later theorems, such as the hard Lefschetz theorem and the decomposition theorem for intersection cohomology, are stated in terms of perverse sheaves and are hard.
+**How the definition helps.** Intersection cohomology uses only chains that meet the singular set in a controlled way, and this restores duality by taking the codimension of the singular strata into account. Two special perversities give ordinary homology and ordinary cohomology. Duality for complementary perversities is the theorem of Goresky and MacPherson (our summary). Later theorems, such as the hard Lefschetz theorem and the decomposition theorem, are stated with perverse sheaves and are hard.
 
 **nLab:** [intersection cohomology](https://ncatlab.org/nlab/show/intersection+cohomology), [perverse sheaf](https://ncatlab.org/nlab/show/perverse+sheaf). It says: “While for smooth manifolds there is a Poincaré duality relating singular homology and singular cohomology, this fails for singular spaces.”
 
@@ -796,11 +796,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 55P91, 19A22. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A genuine G-equivariant cohomology theory (a cohomology theory for spaces with an action of the group G) has degrees that are not only integers but also real representations V of G. So its degrees form the additive group of the representation ring RO(G), whose elements are formal differences of representations. A shift of degree by V matches the smash product with the representation sphere Sⱽ. The representation sphere Sⱽ is the one-point compactification of V.
+**Definition.** A genuine G-equivariant cohomology theory, for spaces with an action of the group G, has degrees that are real representations V of G and not only integers. So its degrees form the representation ring RO(G), whose elements are formal differences of representations. The representation sphere Sⱽ is the one-point compactification of V.
 
-**Problem.** The equivariant suspension isomorphism should hold for every real representation V of G. It says that the smash product of a G-space X with the representation sphere Sⱽ shifts the cohomology of X by the degree V. This should hold also when G acts nontrivially on the sphere.
+**Problem.** In a genuine G-equivariant cohomology theory, Eᴳ•(X) ≅ Eᴳ•⁺ⱽ(Sⱽ ∧ X) for every real representation V of G. This holds also when G acts nontrivially on the sphere.
 
-**How the definition helps.** Grading by representations gives a degree V to shift by, so the theorem can be stated at all. With only integer grading, the suspension isomorphism can be stated only for spheres on which G acts trivially. Grading by RO(G) gives the isomorphism Eᴳ•(X) ≅ Eᴳ•⁺ⱽ(Sⱽ ∧ X). In words, the cohomology of X in each degree equals the cohomology of Sⱽ ∧ X in that degree plus V. This isomorphism is part of what makes a theory genuine. The nLab adds, quoting May, that the most intrinsic grading is by the Picard group (the group of invertible objects) of the stable G-homotopy category. But RO(G) is much more convenient.
+**How the definition helps.** Grading by representations gives a degree V to shift by, so the theorem can be stated at all. With only integer grading, the suspension isomorphism can be stated only for spheres on which G acts trivially. This isomorphism is part of what makes a theory genuine. The nLab adds, quoting May, that the most intrinsic grading is by the Picard group of the stable G-homotopy category, but RO(G) is much more convenient.
 
 **nLab:** [RO(G)-grading](https://ncatlab.org/nlab/show/RO%28G%29-grading). It says: “this leads one to demand that E• is graded not just by the integers, but by any linear representation V, so that one has equivariant suspension isomorphisms”
 
@@ -834,7 +834,7 @@
 
 **Problem.** In compactly generated spaces, the pushout of a Hurewicz cofibration along any map is a Hurewicz cofibration.
 
-**How the definition helps.** The path lifting description makes this a general fact about maps defined by left lifting tests (our own explanation). A square for the pushout restricts to one for the original map. Its filler extends by the defining property of the pushout. For a closed inclusion, the direct cylinder test instead asks for a retraction onto the union of X × {0} and A × \[0,1\]. To get that retraction, take the union as the target of the homotopy extension test.
+**How the definition helps.** The path-space description makes this a general fact about maps defined by a left lifting test (our own explanation). A square for the pushout restricts to a square for the original map. Its filler then extends over the pushout by the universal property of the pushout.
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “A map (continuous function) i : A → X between topological spaces is a Hurewicz cofibration if it satisfies the homotopy extension property for all spaces”
 
@@ -848,11 +848,11 @@
 
 *True by definition.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology). arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Hurewicz cofibration is an inclusion A → X with the homotopy extension property. That is, a homotopy on A extends to X once its start on X is given. For a closed inclusion, an equivalent criterion asks that X × {0} ∪ A × \[0,1\] be a retract of the cylinder X × \[0,1\]. A retraction onto a subspace is a map onto it that fixes each of its points.
+**Definition.** A Hurewicz cofibration is an inclusion A → X with the homotopy extension property. A closed inclusion A → X is a Hurewicz cofibration exactly when X × {0} ∪ A × \[0,1\] is a retract of the cylinder X × \[0,1\].
 
-**Problem.** Let A → X be a closed Hurewicz cofibration of compactly generated spaces, and let Y be compactly generated. Then Y × A → Y × X is a Hurewicz cofibration. Here a space is compactly generated if maps from compact Hausdorff spaces detect its closed sets, and products carry the matching topology.
+**Problem.** If A → X is a closed Hurewicz cofibration of compactly generated spaces and Y is compactly generated, then Y × A → Y × X is a Hurewicz cofibration.
 
-**How the definition helps.** The retraction criterion asks for one map, and the identity of Y times that map is the needed retraction. The nLab proves the result this way, extending the retraction as a constant function in Y. Compactly generated spaces form a cartesian closed category, so Y × (−) preserves the gluing that builds the subspace. The work moves into the criterion, which says that one retraction gives the homotopy extension property for all targets. In our own account, the criterion holds because composing with the retraction extends any homotopy.
+**How the definition helps.** The retraction criterion asks for one map, and the identity of Y times that map is the needed retraction. Compactly generated spaces form a cartesian closed category, so Y × (−) preserves the gluing that builds the subspace. The work moves into the criterion, which says that one retraction gives the homotopy extension property for all targets.
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “to yield a retract that exhibits the cofibration property of Y × i.”
 
@@ -864,11 +864,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology), 54D50. arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** A map i : A → X is a Hurewicz cofibration if it has the homotopy extension property for all target spaces. That is, a map on X and a homotopy of its restriction to A always extend to a homotopy on X. Many topologists work in the category of compactly generated weak Hausdorff spaces. In it, every space satisfies a mild separation condition: the image of each map from a compact Hausdorff space is closed.
+**Definition.** A space is weak Hausdorff if the image of each map from a compact Hausdorff space into it is closed. Many topologists work in compactly generated weak Hausdorff spaces.
 
-**Problem.** The two standard characterizations of cofibrations are proved only for closed inclusions. One is a retraction of X × \[0,1\] onto X × {0} ∪ A × \[0,1\], and the other is a neighbourhood deformation retract (an NDR pair). You want to use them for every cofibration.
+**Problem.** In compactly generated weak Hausdorff spaces, the image of every Hurewicz cofibration is closed. So the retraction and NDR-pair characterizations, proved for closed inclusions, apply to every cofibration.
 
-**How the definition helps.** The separation condition rules out cofibrations whose image is not closed. In Top, the category of all topological spaces, a cofibration need not have closed image. Strøm's counterexample is the inclusion of a point into a two-point space with the codiscrete topology (only the empty set and the whole space are open). In compactly generated weak Hausdorff spaces, and in Hausdorff spaces, the image of every Hurewicz cofibration is closed. So the characterizations for closed inclusions apply to all cofibrations. The work of proving those characterizations (Strøm's work) still remains.
+**How the definition helps.** The separation condition rules out cofibrations whose image is not closed. In the category of all topological spaces, Strøm's counterexample is the inclusion of a point into a two-point space with the codiscrete topology. The work of proving the characterizations for closed inclusions (Strøm's work) still remains.
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “In the category of weakly Hausdorff compactly generated spaces, the image i(A) of a Hurewicz cofibration is always closed.”
 
@@ -884,9 +884,9 @@
 
 **Definition.** A pointed space (X, x) is well-pointed if the inclusion {x} → X of the base point is a closed Hurewicz cofibration (an inclusion with the homotopy extension property). A topological group is well-pointed if it is well-pointed at its neutral element.
 
-**Problem.** Classifying-space theory needs the plain geometric realization of a simplicial space, such as the nerve of a group, to compute the homotopy colimit.
+**Problem.** For a well-pointed topological group in compactly generated weak Hausdorff spaces, the plain geometric realization of its nerve is homotopy equivalent to the fat realization. So the plain realization computes the homotopy colimit.
 
-**How the definition helps.** Well-pointedness makes the nerve a good simplicial space, and for good simplicial spaces the plain realization computes the homotopy colimit. Take a well-pointed group in compactly generated weak Hausdorff spaces. The nerve of its delooping groupoid is then a good simplicial space: its degeneracy maps are closed cofibrations. For a good simplicial space, the map from the fat realization to the plain realization is a homotopy equivalence (Segal 1974, Proposition A.1). The fat realization (which glues along face maps only, not degeneracies) models the homotopy colimit. The real work is in that theorem on good simplicial spaces. The page names no explicit counterexample for groups that are not well-pointed.
+**How the definition helps.** Well-pointedness makes the degeneracy maps of the nerve closed cofibrations, so the nerve is a good simplicial space. For a good simplicial space, the map from the fat to the plain realization is a homotopy equivalence (Segal 1974, Proposition A.1). The fat realization glues along face maps only and models the homotopy colimit. The real work is in that theorem on good simplicial spaces.
 
 **nLab:** [well-pointed topological space](https://ncatlab.org/nlab/show/well-pointed+topological+space). It says: “These facts explain the key role of well-pointedness in classifying space-theory, where it ensures that plain topological realization of simplicial topological spaces coincides, up to weak homotopy equivalence, with fat geometric realization”
 
@@ -903,9 +903,9 @@
 
 **Definition.** A weak homotopy equivalence is a map that induces isomorphisms on all homotopy groups. Two spaces X and Y have the same weak homotopy type if a zigzag X ← · → · ← … → Y of weak homotopy equivalences joins them. Equivalently, X and Y become isomorphic in the homotopy category Ho(Top), where weak homotopy equivalences are made invertible.
 
-**Problem.** Make "X and Y have the same weak homotopy type" an equivalence relation.
+**Problem.** The relation "X and Y have the same weak homotopy type" is an equivalence relation.
 
-**How the definition helps.** A zigzag can be read backwards, so the relation is symmetric by definition. The relation "there is a weak homotopy equivalence X → Y" is reflexive and transitive, but it is not symmetric. The counterexample is the circle S¹ and the pseudocircle 𝕊, a space with four points. A weak homotopy equivalence S¹ → 𝕊 exists, but every map 𝕊 → S¹ is trivial on π₁. With zigzags, the circle and the pseudocircle have the same weak homotopy type. To compute with zigzags, one then needs a model structure or CW approximation.
+**How the definition helps.** A zigzag can be read backwards, so the relation is symmetric by definition. The relation "there is a weak homotopy equivalence X → Y" is reflexive and transitive, but not symmetric. The counterexample is the circle S¹ and the four-point pseudocircle 𝕊: a weak homotopy equivalence S¹ → 𝕊 exists, but every map 𝕊 → S¹ is trivial on π₁.
 
 **nLab:** [weak homotopy equivalence](https://ncatlab.org/nlab/show/weak+homotopy+equivalence). It says: “There is a continuous function S¹ → 𝕊 which is a weak homotopy equivalence, hence in particular π₁(𝕊) ≃ ℤ. But every continuous map the other way round has to induce the trivial map on π₁.”
 
@@ -919,11 +919,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P25 (Spanier-Whitehead duality), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Spectra are the objects of stable homotopy theory, and the smash product is their tensor product. In a symmetric monoidal category with unit 1, an object X is dualizable if it has a dual object DX with maps DX ⊗ X → 1 and 1 → X ⊗ DX that satisfy the two triangle identities. Spanier–Whitehead duality (S-duality) is this duality in the stable homotopy category, with the smash product as the tensor product. So the S-dual of a spectrum X is its dual object DX for the smash product.
+**Definition.** In a symmetric monoidal category with unit 1, an object X is dualizable if it has a dual DX with maps DX ⊗ X → 1 and 1 → X ⊗ DX. These maps must satisfy the two triangle identities. Spanier–Whitehead duality (S-duality) is this duality in the stable homotopy category, with the smash product as tensor product.
 
-**Problem.** Express Atiyah duality, and show that the Euler characteristic of a closed manifold is a categorical trace.
+**Problem.** For a closed smooth manifold X, the S-dual of the suspension spectrum Σ∞₊X is the Thom spectrum of the stable normal bundle of X (Atiyah duality). The trace of the identity on Σ∞₊X is the Euler characteristic of X.
 
-**How the definition helps.** Because S-duality is ordinary monoidal duality, the general notions of trace and dimension apply to spectra. Spanier and Whitehead introduced the duality in the 1950s. The nLab says that the reading as ordinary monoidal duality in the stable homotopy category is apparently due to Dold and Puppe. With this definition, Atiyah duality says this: for a closed smooth manifold X, the dual of the suspension spectrum Σ∞₊X (the spectrum of X with a disjoint base point added) is the Thom spectrum of the stable normal bundle of X. The trace of the identity on Σ∞₊X is its categorical dimension, and it is the Euler characteristic of X. The geometric content is in identifying the dual as a Thom spectrum.
+**How the definition helps.** Because S-duality is ordinary monoidal duality, the general notions of trace and dimension apply to spectra. The nLab says that this reading is apparently due to Dold and Puppe. The geometric content is in identifying the dual as a Thom spectrum.
 
 **nLab:** [Spanier-Whitehead duality](https://ncatlab.org/nlab/show/Spanier-Whitehead+duality). It says: “Using this one shows that the trace on the identity on Σ<sup>∞</sup>₊X -- its categorical dimension -- is the Euler characteristic of X.”
 
@@ -974,9 +974,9 @@
 
 **Definition.** A spectrum is a sequence of pointed spaces Xₙ with structure maps from the suspension of Xₙ to Xₙ₊₁. An orthogonal spectrum is a spectrum where the orthogonal group O(n) acts on each Xₙ, and the structure maps are compatible with these actions. A symmetric spectrum is the same, with the symmetric group Σₙ in place of O(n).
 
-**Problem.** The stable equivalences of spectra should be exactly the maps that give isomorphisms on the naive stable homotopy groups. The naive stable homotopy group πₙ(X) is the colimit over k of the groups πₖ₊ₙ(Xₖ).
+**Problem.** A map of orthogonal spectra is a stable equivalence exactly when it is an isomorphism on the naive stable homotopy groups πₙ(X) = colimₖ πₖ₊ₙ(Xₖ).
 
-**How the definition helps.** For orthogonal spectra, the naive groups work, because the quotients O(q)/O(q − n) of orthogonal groups become highly connected for large q. The quotients Σ(q)/Σ(q − n) of symmetric groups do not. So for symmetric spectra, the naive stable homotopy groups are not correct in homotopy theory. The counterexample is the canonical map λ from F₁S¹ to F₀S⁰, between free symmetric spectra. It is a stable equivalence, but it is not an isomorphism on the naive stable homotopy groups. So for a symmetric spectrum, you must first replace it by a semistable one. The cost is that orthogonal spectra need topological spaces, and they have no version with simplicial sets.
+**How the definition helps.** For orthogonal spectra the naive groups work, because the quotients O(q)/O(q − n) become highly connected for large q. The quotients Σ(q)/Σ(q − n) of symmetric groups do not. The counterexample for symmetric spectra is the map λ : F₁S¹ → F₀S⁰ of free symmetric spectra, a stable equivalence that is not an isomorphism on naive stable homotopy groups.
 
 **nLab:** [symmetric spectrum](https://ncatlab.org/nlab/show/symmetric+spectrum), [orthogonal spectrum](https://ncatlab.org/nlab/show/orthogonal+spectrum), [Model categories of diagram spectra](https://ncatlab.org/nlab/show/Model+categories+of+diagram+spectra), [semistable symmetric spectrum](https://ncatlab.org/nlab/show/semistable+symmetric+spectrum). It says: “Among the various (now) common models for spectra, this issue is unique to symmetric spectra”
 
@@ -993,9 +993,9 @@
 
 **Definition.** Let E be a homotopy commutative ring spectrum. Its coefficient ring is π•(E), its homotopy groups. Its self-homology E•(E) is the E-homology of E itself. E is flat if E•(E) is a flat module over π•(E).
 
-**Problem.** The E-Adams spectral sequence computes maps from X to Y. We want its second page, the E₂-term, in terms of algebra alone.
+**Problem.** Let E be a flat ring spectrum and let E•(X) be projective over π•(E). Then E•(E) is a Hopf algebroid, and the E₂-term of the E-Adams spectral sequence for maps X → Y is Ext over E•(E) from the comodule E•(X) to E•(Y).
 
-**How the definition helps.** Flatness gives the isomorphism E•(E) ⊗ E•(X) ≅ π•(E ∧ E ∧ X), and this turns E-homology into algebra with a good Ext. Because of this isomorphism, E•(E) is a Hopf algebroid (a generalization of a Hopf algebra with two unit maps from π•(E)), and each E•(X) is a comodule over it. These comodules form an abelian category with enough injectives. So the E₂-term is Ext over E•(E) from E•(X) to E•(Y). The nLab theorem also needs E•(X) to be a projective π•(E)-module. The nLab lists the sphere spectrum, H𝔽ₚ (Steenrod algebra), MO, MU, MSp, KO and KU as flat. Convergence of the spectral sequence is a separate question.
+**How the definition helps.** Flatness gives the isomorphism E•(E) ⊗ E•(X) ≅ π•(E ∧ E ∧ X), and this turns E-homology into algebra with a good Ext. Because of it, E•(E) is a Hopf algebroid and each E•(X) is a comodule over it. These comodules form an abelian category with enough injectives. Convergence of the spectral sequence is a separate question.
 
 **nLab:** [Adams spectral sequence](https://ncatlab.org/nlab/show/Adams+spectral+sequence). It says: “the d₁-cohomology of the first page computes the Ext-groups from the E-homology of Y to the E-homology of X, regarded as E•(E)-comodules.”
 
@@ -1011,9 +1011,9 @@
 
 **Definition.** A Γ-space is a functor X from finite pointed sets to spaces. It is special if X(0) is contractible and every Segal map X(n) → X(1) × … × X(1) is a weak equivalence. The Segal map is built from the n maps that keep one point and collapse the others. It is very special if, in addition, the monoid π₀X(1) is a group.
 
-**Problem.** We want a model of E∞-spaces and of infinite loop spaces (connective spectra) in which the multiplication and its delooping are easy to write down. An E∞-space is a space with a multiplication that is commutative up to all higher homotopies.
+**Problem.** For a special Γ-space X, the maps of finite pointed sets make X(1) a multiplication that is unital, associative and commutative up to coherent homotopy. If X is very special, X presents an infinite loop space (Segal's theorem).
 
-**How the definition helps.** The Segal condition turns X(n) into the n-fold product of X(1), and that gives the multiplication. A bare functor on finite pointed sets carries no product structure, so X(n) need not have anything to do with powers of X(1). The Segal condition forces X(n) to be a model of the n-fold product. Then the maps between finite pointed sets give a multiplication on X(1) that is unital, associative and commutative up to coherent homotopy. With the group condition added, Segal's theorem says that the Γ-space presents an infinite loop space. Delooping is then a short formula: a homotopy colimit of a simplicial object. The real content is Segal's theorem; the definition makes it possible to state it.
+**How the definition helps.** The Segal condition turns X(n) into the n-fold product of X(1), and that gives the multiplication. A bare functor on finite pointed sets carries no product structure, so X(n) need not relate to powers of X(1). Delooping is then a homotopy colimit of a simplicial object. The real content is Segal's theorem; the definition makes it statable.
 
 **nLab:** [Gamma-space](https://ncatlab.org/nlab/show/Gamma-space). It says: “In order for this to be valid, and thus for X to present an infinite loop space, a Γ-space must satisfy the further condition that all the Segal maps … are weak equivalences.”
 
@@ -1029,9 +1029,9 @@
 
 **Definition.** An Eₖ-algebra is a space with an action of the little k-cubes operad. This operad describes the ways to place several small k-dimensional cubes, without overlap, inside one big cube. An Eₖ-algebra is grouplike if its monoid of components π₀ is a group.
 
-**Problem.** Find which spaces are k-fold loop spaces Ωᵏ X, up to homotopy.
+**Problem.** A space is a k-fold loop space up to homotopy exactly when it is a grouplike Eₖ-algebra (May 1972).
 
-**How the definition helps.** The little cubes operad encodes exactly the operations that a k-fold loop space has. So the answer can be stated as: grouplike Eₖ-spaces are k-fold loop spaces (May 1972). The grouplike condition is needed. A non-grouplike monoid can also be delooped, but its delooping recovers it only up to group completion. In any ∞-topos, Lurie proves the same statement as an equivalence between Eₖ-groups (grouplike Eₖ-algebras) and pointed (k−1)-connected objects.
+**How the definition helps.** The little cubes operad encodes exactly the operations that a k-fold loop space has. The grouplike condition is needed: a non-grouplike monoid deloops, but its delooping recovers it only up to group completion. In any ∞-topos, Lurie proves the analogue as an equivalence between grouplike Eₖ-algebras and pointed (k−1)-connected objects.
 
 **nLab:** [May recognition theorem](https://ncatlab.org/nlab/show/May+recognition+theorem), [little cubes operad](https://ncatlab.org/nlab/show/little+cubes+operad), [delooping hypothesis](https://ncatlab.org/nlab/show/delooping+hypothesis). It says: “iterated loop spaces as "grouplike" En-algebras in the classical homotopy theory of spaces (∞Grpd)”
 
@@ -1048,9 +1048,9 @@
 
 **Definition.** The shape of a compact metric space X is its system of neighbourhoods, or of nerves of open covers. You regard this system, up to homotopy, as a pro-object (an inverse system) of nice spaces, such as ANRs (absolute neighbourhood retracts) or polyhedra. Shape maps are compatible families of maps between these approximations.
 
-**Problem.** Find a homotopy invariant of 'bad' compact spaces that agrees with the homotopy type on nice spaces. It should let you state results such as Chapman's complement theorem.
+**Problem.** Shape agrees with homotopy type on ANRs. The Warsaw circle has the shape of the circle S¹, although its weak homotopy type sees no circle.
 
-**How the definition helps.** Shape sees the Warsaw circle (a topologist's sine curve closed up by an arc) as a circle, because its small neighbourhoods are circles up to homotopy. The Warsaw circle has two path components and trivial π₁. A map from the two-point space S⁰ to it is a weak homotopy equivalence, so weak homotopy type sees no circle. Its small neighbourhoods in the plane are almost annuli, each with the homotopy type of a circle, and the inclusions between them are homotopy equivalences. So its shape is the shape of S¹, and shape agrees with homotopy type on ANRs. Chapman's complement theorem uses shape: compacta in the pseudo-interior of the Hilbert cube have the same shape exactly when their complements are homeomorphic. That theorem itself is a hard result.
+**How the definition helps.** Shape sees the Warsaw circle as a circle, because its small neighbourhoods in the plane are annuli up to homotopy. The inclusions between these neighbourhoods are homotopy equivalences. The Warsaw circle is path-connected with trivial homotopy groups, so the map from a point is a weak homotopy equivalence. Shape also lets one state Chapman's complement theorem, which is itself a hard result.
 
 **nLab:** [shape theory](https://ncatlab.org/nlab/show/shape+theory), [Warsaw circle](https://ncatlab.org/nlab/show/Warsaw+circle). It says: “the weak homotopy type fails to give useful information for 'bad' spaces, of which classical examples include the Warsaw Circle”
 
@@ -1064,11 +1064,11 @@
 
 *Rules out counterexamples.* MSC 55P60 (Localization and completion in homotopy theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** A connected space is nilpotent if π₁ is a nilpotent group (repeated commutators become trivial after finitely many steps) and acts nilpotently on each higher homotopy group πₙ (the action becomes trivial after finitely many steps of a filtration). Let T be a set of primes. A nilpotent space is T-local if it satisfies any one of three conditions: a homology condition, local homotopy groups, or local homology groups. For nilpotent spaces the three conditions are equivalent, and an abelian group is T-local when multiplication by each prime outside T is a bijection.
+**Definition.** A connected space is nilpotent if π₁ is a nilpotent group and acts nilpotently on each higher homotopy group. Let T be a set of primes. An abelian group is T-local if multiplication by each prime outside T is a bijection.
 
-**Problem.** Localize a space at a set of primes, as one localizes ℤ. The result should be unique. It should also be computable from homotopy groups or from homology.
+**Problem.** For nilpotent spaces, three conditions for being T-local agree: a homology condition, T-local homotopy groups and T-local homology groups. Every nilpotent space has a T-localization, unique up to homotopy, that localizes each homotopy group and each homology group.
 
-**How the definition helps.** For nilpotent spaces the natural definitions agree, so the theory is well defined. For these spaces, the three characterizations of T-local spaces agree, and the T-localization exists and is unique up to homotopy. It localizes each homotopy group and each homology group. For spaces that are not nilpotent, the nLab lists several inequivalent definitions (Bousfield, Bousfield–Kan, Casacuberta–Peschke). Then Sullivan's homotopy-group and homology characterizations are no longer equivalent. It is also not clear that the corresponding localizations exist. So nilpotence is the condition that makes the theory well defined.
+**How the definition helps.** For nilpotent spaces the natural definitions agree, so the theory is well defined. For spaces that are not nilpotent, the nLab lists several inequivalent definitions (Bousfield, Bousfield–Kan, Casacuberta–Peschke). Then Sullivan's homotopy-group and homology characterizations are no longer equivalent, and it is not clear that the localizations exist.
 
 **nLab:** [localization of a space](https://ncatlab.org/nlab/show/localization+of+a+space), [nilpotent topological space](https://ncatlab.org/nlab/show/nilpotent+topological+space). It says: “For non-nilpotent spaces, there are multiple inequivalent definitions of localization”
 
@@ -1083,11 +1083,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P62 (Rational homotopy theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Sullivan algebra is a free graded-commutative algebra ∧V with a differential. Graded-commutative means xy = ±yx, with the sign given by the degrees. Here V has a well-ordered basis, and the differential of each basis element lies in the subalgebra generated by earlier basis elements. The algebra is minimal when, in addition, an earlier generator never has higher degree than a later one; for simply connected spaces, this is the same as saying that the differential has no linear part.
+**Definition.** A Sullivan algebra is a free graded-commutative algebra ∧V with a differential. Here V has a well-ordered basis, and each basis element has its differential in the subalgebra generated by earlier ones. It is minimal when the degrees of the generators never decrease along the order. For simply connected spaces, this means the differential has no linear part.
 
-**Problem.** Find one representative for each rational homotopy type of simply connected spaces of finite type. A rational homotopy type is a homotopy type up to maps that are isomorphisms on rational homotopy groups. The rational homotopy groups should be easy to read off from the representative.
+**Problem.** Minimal Sullivan algebras correspond bijectively, up to isomorphism, to rational homotopy types of simply connected spaces of finite type. The generators of the minimal model are dual to the rational homotopy groups.
 
-**How the definition helps.** Minimality makes the model unique up to isomorphism, so you can read invariants straight off it. Any Sullivan model gives the rational homotopy type, but there are many non-isomorphic Sullivan models. Minimal Sullivan algebras correspond bijectively to rational homotopy types. The generators of the minimal model then match the rational homotopy groups, dually. The deep part is Sullivan's theorem that rational homotopy types of such spaces are equivalent to these algebras.
+**How the definition helps.** Minimality makes the model unique up to isomorphism, so invariants can be read straight off it. Any Sullivan model gives the rational homotopy type, but there are many non-isomorphic ones. The deep part is Sullivan's theorem that rational homotopy types of such spaces are equivalent to these algebras.
 
 **nLab:** [Sullivan model](https://ncatlab.org/nlab/show/Sullivan+model). It says: “Conversely, every rational space can be obtained from a dg-algebra and the minimal Sullivan algebras provide convenient representatives that correspond bijectively to rational homotopy types under this correspondence.”
 
@@ -1104,9 +1104,9 @@
 
 **Definition.** A group is nilpotent if repeated commutators become trivial after finitely many steps. A connected space is nilpotent if its fundamental group is nilpotent and acts nilpotently on the higher homotopy groups: each higher homotopy group has a finite chain of subgroups, and π₁ acts trivially on each successive quotient. Simply connected spaces are nilpotent. A space is of finite type if its rational homology is finite-dimensional in each degree.
 
-**Problem.** Sullivan's theorem says that piecewise polynomial differential forms give an equivalence between rational homotopy types and minimal Sullivan algebras. A Sullivan algebra is a free graded-commutative differential algebra over ℚ of a special form, and it serves as the algebraic model of a space.
+**Problem.** For nilpotent spaces of finite type, piecewise polynomial differential forms give an equivalence between rational homotopy types and minimal Sullivan algebras over ℚ (Sullivan's theorem).
 
-**How the definition helps.** The conditions exclude spaces that cohomology cannot see. The excluded counterexamples are the classifying spaces BΓ of acyclic groups Γ, that is, groups with the homology of the trivial group. These spaces have the rational cohomology of a point, so their Sullivan algebras cannot be told apart from those of a contractible space. But BΓ is not contractible, because π₁(BΓ) ≅ Γ. If the space is simply connected, the Hurewicz theorem makes such an acyclic space contractible. The nLab states the equivalence itself for rational nilpotent spaces of finite type, following Bousfield and Gugenheim.
+**How the definition helps.** The conditions exclude spaces that cohomology cannot see. The excluded counterexamples are the classifying spaces BΓ of acyclic groups Γ, which have the rational cohomology of a point but π₁(BΓ) ≅ Γ. Their Sullivan algebras cannot be told apart from those of a contractible space. For simply connected spaces, the Hurewicz theorem makes every acyclic space contractible.
 
 **nLab:** [rational homotopy theory](https://ncatlab.org/nlab/show/rational+homotopy+theory), [nilpotent topological space](https://ncatlab.org/nlab/show/nilpotent+topological+space). It says: “But by Hurewicz theorem asking that all spaces be simply connected precisely makes all "acyclic spaces" be contractible.”
 
@@ -1126,7 +1126,7 @@
 
 **Problem.** Brown representability says that every Brown functor is representable: F is \[−, Y\], the homotopy classes of maps into some space Y. In particular, a spectrum represents every additive reduced generalized cohomology theory.
 
-**How the definition helps.** The restriction to connected pointed spaces is what makes the theorem true. Without it, the theorem is false for both pointed and unpointed spaces. Freyd and Heller showed that an endomorphism of the classifying space of Thompson's group F does not split in the homotopy category of spaces (it does not factor as a map onto a retract followed by the inclusion of that retract). A retract of a representable functor that splits this endomorphism satisfies the Brown conditions, but it is not representable. A second example of Heller fails for reasons of cardinality. With the restriction, the theorem holds. But its proof is still a real construction that attaches cells.
+**How the definition helps.** The restriction to connected pointed spaces is what makes the theorem true. Freyd and Heller found an endomorphism of the classifying space of Thompson's group F that does not split in the homotopy category. A retract of a representable functor that splits it satisfies the Brown conditions but is not representable. With the restriction, the proof is still a real construction that attaches cells.
 
 **nLab:** [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “In particular, there is no Brown representability theorem for functors from the homotopy category of pointed not-necessarily-connected spaces to pointed sets, or for functors from the homotopy category of unpointed spaces to sets.”
 
@@ -1162,9 +1162,9 @@
 
 **Definition.** A Moore path in X is a path γ together with a length r ≥ 0, where γ is constant after time r. Two Moore paths compose by running one after the other, and their lengths add. The constant path of length 0 is the identity.
 
-**Problem.** Paths in a space should form a strict category, with strictly associative composition and strict units. Also, the path-space factorization of a map should be functorial, and it should give an algebraic description of Hurewicz fibrations (maps with the homotopy lifting property for all spaces).
+**Problem.** Moore paths in a space form a strict category, with strictly associative composition and strict units. The Moore path space factors each map functorially into a trivial Hurewicz cofibration followed by a Hurewicz fibration.
 
-**How the definition helps.** Variable lengths remove the need to reparametrize, so composition is strictly associative. Ordinary paths on \[0,1\] compose only up to a homotopy that reparametrizes them. With variable length, concatenation is strictly associative and the length-0 path is a strict unit. So the Moore paths form a strict internal category (a category object in spaces), and even a †-category, where † reverses each path. Barthel and Riehl use the Moore mapping path space to factor each map functorially into a trivial Hurewicz cofibration followed by a Hurewicz fibration. They show that a map is a Hurewicz fibration exactly when it is an algebra for the pointed endofunctor R of this factorization.
+**How the definition helps.** Variable lengths remove the need to reparametrize, so concatenation is strictly associative and the length-0 path is a strict unit. Ordinary paths on \[0,1\] compose only up to a reparametrizing homotopy. Barthel and Riehl also show that a map is a Hurewicz fibration exactly when it is an algebra for the pointed endofunctor of this factorization.
 
 **nLab:** [Moore path category](https://ncatlab.org/nlab/show/Moore+path+category), [schedule](https://ncatlab.org/nlab/show/schedule). It says: “The classical Moore path category of a topological space X is a variant on the usual space of paths I → X, but one which yields a strict category (even an internal †-category in Top).”
 
@@ -1200,7 +1200,7 @@
 
 **Problem.** Suspension gives a natural isomorphism from πₙˢ(X) to πₙ₊₁ˢ(ΣX).
 
-**How the definition helps.** With the colimit definition, the sequence for ΣX is the sequence for X without its first term. Dropping a first term does not change a colimit. The nLab gives this colimit definition. In our own account, the k-th term for ΣX is πₙ₊₁₊ₖ(Σᵏ⁺¹X), which is the (k+1)-th term for X. With the single-group definition, the result needs the Freudenthal suspension theorem. Hatcher proves it and states the case of spheres as Corollary 4.24. The work moves into Freudenthal's theorem, which shows that the single-group and colimit definitions agree.
+**How the definition helps.** With the colimit definition, the sequence for ΣX is the sequence for X without its first term, and dropping a first term does not change a colimit. In our own account, the k-th term for ΣX is πₙ₊₁₊ₖ(Σᵏ⁺¹X), the (k+1)-th term for X. With the single-group definition, the result needs the Freudenthal suspension theorem. The work moves into Freudenthal's theorem, which shows that the two definitions agree.
 
 **nLab:** [homotopy group of a spectrum](https://ncatlab.org/nlab/show/homotopy+group+of+a+spectrum). It says: “Given a pointed topological space X, its stable homotopy groups are the colimit of ordinary homotopy groups of its reduced suspensions”
 
@@ -1230,11 +1230,11 @@
 
 *True by definition.* MSC 55Q15 (Whitehead products and generalizations), 55S36. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The product Sᵐ × Sⁿ is the wedge Sᵐ ∨ Sⁿ with one cell of dimension m + n attached by a map w. The wedge is the two spheres joined at their base points. For based maps f and g from these spheres to X, the Whitehead product \[f, g\] is the class of (f ∨ g) ∘ w. Another definition, the Samelson product, uses a commutator of maps into the loop space.
+**Definition.** The product Sᵐ × Sⁿ is the wedge Sᵐ ∨ Sⁿ with one cell of dimension m + n attached by a map w. For based maps f and g from these spheres to X, the Whitehead product \[f, g\] is the class of (f ∨ g) ∘ w.
 
 **Problem.** For m, n ≥ 1, the map f ∨ g on the wedge extends to Sᵐ × Sⁿ exactly when \[f, g\] = 0.
 
-**How the definition helps.** With this definition, the claim is a basic fact: a map extends over an attached cell exactly when it kills the attaching map. That is, its composite with the attaching map is nullhomotopic, which means it deforms to a constant map. The nLab gives the attaching map that builds the product from the wedge. In our own account, an extension over the top cell is a map from the disk that extends (f ∨ g) ∘ w. Such a map is a nullhomotopy. The work moves to identifying the attaching map w and to comparing this definition with the Samelson product.
+**How the definition helps.** With this definition, the claim is a basic fact: a map extends over an attached cell exactly when its composite with the attaching map is nullhomotopic. In our own account, an extension over the top cell is a map from the disk that extends (f ∨ g) ∘ w, which is a nullhomotopy. The work moves to identifying the attaching map w and to comparing this definition with the Samelson product.
 
 **nLab:** [Whitehead product](https://ncatlab.org/nlab/show/Whitehead+product). It says: “as the result of a cell attachment to the wedge sum”
 
@@ -1250,7 +1250,7 @@
 
 **Problem.** Let n ≥ 2 and let g: Sⁿ → Sⁿ have degree d. Then H(g ∘ f) = d² H(f).
 
-**How the definition helps.** With the cup-product definition, g induces a map of mapping cones C(f) → C(g ∘ f) whose action on cohomology is simple. In our own account, this map is g on Sⁿ and the identity on the disk. So it sends the degree-n generator to dα and the degree-2n generator to β. Cup products are natural, so (dα) ∪ (dα) = H(g ∘ f) β, which gives H(g ∘ f) = d² H(f). Hatcher sets this formula as an exercise in §4.B. The work moves to comparing the cup-product definition with the linking-number definition.
+**How the definition helps.** With the cup-product definition, g induces a map of mapping cones C(f) → C(g ∘ f) whose action on cohomology is simple. In our own account, this map is g on Sⁿ and the identity on the disk, so it sends the degree-n generator to dα and fixes β. Cup products are natural, so (dα) ∪ (dα) = H(g ∘ f) β, which gives H(g ∘ f) = d² H(f). The work moves to comparing the cup-product definition with the linking-number definition.
 
 **nLab:** [Hopf invariant](https://ncatlab.org/nlab/show/Hopf+invariant). It says: “there exists an integer HI(f) which expresses the cup product square”
 
@@ -1264,11 +1264,11 @@
 
 *True by definition.* MSC 55Q25 (Hopf invariants), 55N45. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For n &gt; 1, attach a 2n-dimensional disk to the n-sphere along the map φ from the (2n−1)-sphere. The resulting space has integral cohomology generators α in degree n and β in degree 2n, with β fixed by the disk orientation. The Hopf invariant h(φ) is the integer such that α ⌣ α = h(φ)β, where ⌣ is the cohomology product. The geometric definition links the preimages of two regular values of a smooth representative.
+**Definition.** For a map φ from the (2n−1)-sphere to the n-sphere, attach a 2n-disk to the n-sphere along φ. Its cohomology has generators α in degree n and β in degree 2n. The Hopf invariant h(φ) is the integer with α ⌣ α = h(φ)β.
 
-**Problem.** Show that the Hopf invariant of φ is zero when the target sphere has odd dimension.
+**Problem.** For odd n &gt; 1, every map from the (2n−1)-sphere to the n-sphere has Hopf invariant zero.
 
-**How the definition helps.** In our own short proof, the cup-square definition gives zero because an odd-degree class has a square equal to its own negative. Thus 2h(φ)β = 0. The group generated by β is ℤ, so h(φ) = 0. The geometric definition instead needs a sign rule for exchanging the two preimages. The work shifts to computing the cohomology groups and proving that the cup-square and linking definitions agree.
+**How the definition helps.** In our own short proof, the cup-square definition gives zero because an odd-degree class has a square equal to its own negative. Thus 2h(φ)β = 0, and β generates a copy of ℤ, so h(φ) = 0. The geometric definition instead needs a sign rule for exchanging the two preimages.
 
 **Wikipedia:** [Hopf invariant](https://en.wikipedia.org/wiki/Hopf_invariant). It says: “The integer h(φ) is the Hopf invariant of the map φ.”
 
@@ -1306,7 +1306,7 @@
 
 **Problem.** A Serre fibration lifts every homotopy of a CW complex, once a lift at time 0 is given.
 
-**How the definition helps.** With the disk definition, the result follows from general facts about lifting properties. The nLab proves, by closure properties of lifting, that a Serre fibration lifts against all retracts of cell complexes built from these inclusions. The maps that p lifts against are closed under gluing, under composing in a sequence, and under retracts. In our own account, for a CW complex X the inclusion X × {0} → X × \[0,1\] is such a relative cell complex. Each cell Dⁿ × \[0,1\] is attached along Dⁿ × {0} ∪ ∂Dⁿ × \[0,1\]. That pair is homeomorphic to the pair (Dⁿ × \[0,1\], Dⁿ × {0}). The work moves into the closure properties and this homeomorphism.
+**How the definition helps.** With the disk definition, the result follows from closure properties of lifting. The maps that p lifts against are closed under gluing, under composing in a sequence and under retracts. In our own account, for a CW complex X, the inclusion X × {0} → X × \[0,1\] is built by gluing cells along Dⁿ × {0} ∪ ∂Dⁿ × \[0,1\]. This pair is homeomorphic to (Dⁿ × \[0,1\], Dⁿ × {0}). The work moves into the closure properties and this homeomorphism.
 
 **nLab:** [Serre fibration](https://ncatlab.org/nlab/show/Serre+fibration). It says: “A Serre fibration has the right lifting property against all retracts”
 
@@ -1322,9 +1322,9 @@
 
 **Definition.** A schedule is a finite list of pairs (label, length), where each label names an open set of a cover. A path fits a schedule if it spends each successive time interval inside the named open set. A Hurewicz connection for p : E → B is a continuous rule that lifts every path in B, once one gives a starting point in E.
 
-**Problem.** Prove the globalisation theorem. Let B have a locally finite cover by numerable open sets (open sets that come from a partition of unity). If p : Y → B restricts to a Hurewicz fibration (a map with the homotopy lifting property for all spaces) over each set of the cover, then p itself is a Hurewicz fibration.
+**Problem.** Let B have a locally finite numerable open cover. If p : Y → B restricts to a Hurewicz fibration over each set of the cover, then p is a Hurewicz fibration (the globalisation theorem).
 
-**How the definition helps.** A continuous timetable for each path lets one join the local path lifts piece by piece. The schedule theorem of Dyer and Eilenberg says that one can choose, continuously over all paths, how to cut a path into pieces that each lie in one open set of the cover. A map is a Hurewicz fibration exactly when it has a Hurewicz connection. With such a timetable, one applies the local connections piece by piece to get a global connection. The hard work is the schedule theorem itself, which uses the locally finite numerable cover.
+**How the definition helps.** A continuous timetable for each path lets one join the local path lifts piece by piece. The schedule theorem of Dyer and Eilenberg chooses, continuously over all paths, how to cut a path into pieces that each lie in one open set of the cover. A map is a Hurewicz fibration exactly when it has a Hurewicz connection, so the local connections join into a global one. The hard work is the schedule theorem itself.
 
 **nLab:** [schedule](https://ncatlab.org/nlab/show/schedule), [Hurewicz connection](https://ncatlab.org/nlab/show/Hurewicz+connection). It says: “The original motivation for the notion of schedules was to prove the globalisation theorem for (Hurewicz) fibrations.”
 
@@ -1338,11 +1338,11 @@
 
 *True by definition. Confidence: medium.* MSC 55R05 (Fiber spaces in algebraic topology), 55P35, 18N60. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** An (∞,1)-category is a category in which morphisms have homotopies between them, these homotopies have homotopies, and so on. In such a category, the homotopy fiber of a map f : A → B is the homotopy pullback of the point \* → B along f. (A homotopy pullback is a pullback whose square commutes only up to a chosen homotopy.) Another name for the homotopy fiber is the homotopy kernel, written ker(f). The loop space ΩB is the homotopy fiber of the map \* → B.
+**Definition.** In an (∞,1)-category, the homotopy kernel ker(f) of a map f : A → B is the homotopy pullback of the point \* → B along f. The loop space ΩB is the homotopy kernel of \* → B.
 
-**Problem.** Every map f : A → B should continue to the left in a long fiber sequence … → ΩA → ΩB → ker(f) → A → B. This sequence gives the long exact sequence of homotopy groups.
+**Problem.** The homotopy kernel of ker(f) → A is the loop space ΩB. So every map f : A → B continues to the left in a long fiber sequence … → ΩA → ΩB → ker(f) → A → B.
 
-**How the definition helps.** With homotopy pullbacks, the kernel of a kernel is a loop space, so the sequence never stops. For ordinary kernels, the kernel of a kernel is trivial, so short exact sequences stop. With the homotopy pullback as the definition, you compute the homotopy kernel of ker(f) → A by pasting two homotopy pullback squares side by side. The outer rectangle is the square that defines ΩB. So the pasting law gives ker(ker(f)) ≃ ΩB, and repeating this step gives the long sequence. The pasting law says: if the right square is a homotopy pullback, then the left square is one exactly when the outer rectangle is one. The nLab notes one subtlety: ker(ker(f)) is ΩB only up to a reversal of the direction of the loops. The real input is the pasting law for homotopy pullbacks.
+**How the definition helps.** With homotopy pullbacks, the kernel of a kernel is a loop space, so the sequence never stops. For ordinary kernels, the kernel of a kernel is trivial. Pasting the two homotopy pullback squares gives the outer square that defines ΩB, so the pasting law gives ker(ker(f)) ≃ ΩB. The nLab notes that the loops are reversed in direction.
 
 **nLab:** [fiber sequence](https://ncatlab.org/nlab/show/fiber+sequence). It says: “in contrast to the ordinary kernel of a kernel, which is necessarily trivial, the homotopy kernel of a homotopy kernel is typically far from trivial, but is a loop space object.”
 
@@ -1374,9 +1374,9 @@
 
 **Definition.** An open cover is numerable if it has a subordinate partition of unity. A fibre bundle is numerable if it is locally trivial over a numerable open cover.
 
-**Problem.** Show that classifying spaces classify bundles over any base space. Also show that bundle projections are Hurewicz fibrations (maps with the homotopy lifting property for all spaces) over any base space.
+**Problem.** Over any base space, numerable principal bundles are classified by maps to the classifying space. Also, the projection of a numerable fibre bundle is a Hurewicz fibration.
 
-**How the definition helps.** Dold's condition asks for a partition of unity only where the proofs use one. The usual proofs assume a paracompact base, where every open cover is numerable. Dold asks for a partition of unity only on the cover that trivializes the bundle, not on every open cover of the base. With this condition, the theorems hold for numerable bundles over any space. The nLab notes that the results generalize only to numerable bundles, not to all bundles. It names no specific counterexample.
+**How the definition helps.** Dold asks for a partition of unity only on the cover that trivializes the bundle, which is where the proofs use one. The usual proofs assume a paracompact base, where every open cover is numerable. The nLab notes that the results generalize only to numerable bundles, but it names no specific counterexample.
 
 **nLab:** [numerable fiber bundle](https://ncatlab.org/nlab/show/numerable+fiber+bundle), [numerable open cover](https://ncatlab.org/nlab/show/numerable+open+cover). It says: “For the theory of fiber bundles to be well-behaved one typically needs to restrict to those that have a local trivialization not just over any open cover but over a numerable open cover”
 
@@ -1390,11 +1390,11 @@
 
 *True by definition.* MSC 55R15 (Classification of fiber spaces or bundles in algebraic topology), 55R40, 55P20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Infinite complex projective space BU(1) classifies complex line bundles by pullback of its universal line bundle. The space K(ℤ, 2) represents integral cohomology in degree two, so its maps represent those cohomology classes up to deformation. The universal first Chern class is the equivalence from BU(1) to K(ℤ, 2) with the sign fixed by the universal line bundle.
+**Definition.** The universal first Chern class is the weak homotopy equivalence c₁ : BU(1) → K(ℤ, 2). Here BU(1), infinite complex projective space, classifies complex line bundles. K(ℤ, 2) represents degree-two integral cohomology.
 
-**Problem.** Show that the first Chern class identifies complex line bundles on a CW complex X with H²(X, ℤ).
+**Problem.** For a CW complex X, the first Chern class is a bijection from isomorphism classes of complex line bundles on X to H²(X, ℤ).
 
-**How the definition helps.** The universal definition gives a bijection because composition with an equivalence gives a bijection on homotopy classes of maps. In our own proof, a map to BU(1) classifies the line bundle and its composite to K(ℤ, 2) represents its class. The Euler-class definition instead needs a proof that its universal Euler class corresponds to the same map. The work lies in building both classifying spaces and showing that the universal first Chern class gives the equivalence. One uses the circle bundle over BU(1) with contractible total space to compute its homotopy groups.
+**How the definition helps.** Composition with an equivalence gives a bijection on homotopy classes of maps, so the universal definition gives the bijection at once. In our own proof, a map to BU(1) classifies the line bundle and its composite to K(ℤ, 2) represents its class. The work lies in building both classifying spaces and showing that c₁ is an equivalence.
 
 **nLab:** [first Chern class](https://ncatlab.org/nlab/show/first+Chern+class). It says: “As a universal characteristic class, the first Chern class is the weak homotopy equivalence c₁ : BU(1) ≃→ K(ℤ,2).”
 
@@ -1422,11 +1422,11 @@
 
 *True by definition.* MSC 55R40 (Homology of classifying spaces and characteristic classes in algebraic topology), 55R35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Fix a topological group G, and use a cell complex BG that classifies its principal bundles. A principal G-bundle has fibers on which G acts freely and transitively. Over spaces built from cells, all such bundles are pullbacks of the universal bundle over BG, along maps unique up to homotopy. A characteristic class assigns a cohomology class to each bundle and commutes with pullback.
+**Definition.** For a topological group G, the universal bundle over BG classifies principal G-bundles over CW complexes by pullback, along maps unique up to homotopy. A characteristic class assigns a cohomology class to each bundle and commutes with pullback.
 
-**Problem.** Show that degree-k characteristic classes correspond to degree-k cohomology classes on BG, with fixed coefficients.
+**Problem.** Degree-k characteristic classes of principal G-bundles, with fixed coefficients, correspond bijectively to degree-k cohomology classes on BG.
 
-**How the definition helps.** The naturality definition makes one universal value sufficient because every bundle comes from the universal bundle by pullback. In our own proof, evaluate the characteristic class on that bundle to get a class on BG. Conversely, pull any class on BG back along each bundle's classifying map. Homotopy invariance makes the result independent of the choice of map. Unlike axioms for individual families of classes, this definition classifies all natural assignments at once. The work is building the universal bundle and proving that it classifies bundles.
+**How the definition helps.** Every bundle comes from the universal bundle by pullback, so one universal value fixes the class. In our own proof, evaluating the class on the universal bundle gives a class on BG. Conversely, pull a class on BG back along each classifying map; homotopy invariance makes this independent of the map. The work is building the universal bundle and proving that it classifies bundles.
 
 **Wikipedia:** [Characteristic class](https://en.wikipedia.org/wiki/Characteristic_class). It says: “Once the cohomology H\*(BG) was calculated, once and for all, the contravariance property of cohomology meant that characteristic classes for the bundle would be defined in H\*(X) in the same dimensions.”
 
@@ -1464,7 +1464,7 @@
 
 **Problem.** Cohomology operations Hᵐ(−; G) → Hⁿ(−; H), meaning natural maps, correspond exactly to classes in Hⁿ(K(G, m); H). The correspondence sends an operation Θ to Θ(ι), where ι is the fundamental class of K(G, m).
 
-**How the definition helps.** With the representing space, this is the Yoneda lemma, which fixes a natural map by its value on the identity map. The nLab states the bijection by the Yoneda lemma. Hatcher proves it as Proposition 4L.1, using CW approximation to reduce to CW complexes. Each class α is ϕ\*(ι) for a map ϕ: X → K(G, m), so Θ(α) = ϕ\*(Θ(ι)). Conversely, a class in Hⁿ(K(G, m); H) is a map to K(H, n), and composing with it gives an operation. The work moves to Theorem 4.57, which shows that maps to K(G, m) represent cohomology. The operations need not be additive.
+**How the definition helps.** With the representing space, this is the Yoneda lemma, which fixes a natural map by its value on the identity map. Each class α is ϕ\*(ι) for a map ϕ: X → K(G, m), so Θ(α) = ϕ\*(Θ(ι)). The work moves to the theorem that maps to K(G, m) represent cohomology. The operations need not be additive.
 
 **nLab:** [cohomology operation](https://ncatlab.org/nlab/show/cohomology+operation). It says: “(non-abelian/unstable) cohomology operations are in natural bijection with homotopy classes of maps between classifying spaces.”
 
@@ -1483,7 +1483,7 @@
 
 **Problem.** Truncating first at one nonnegative degree and then at another is equivalent to truncating once at the lower degree.
 
-**How the definition helps.** In our own words, every type at the lower cutoff satisfies the higher cutoff too. In our own words, test maps to all types at the lower cutoff and apply the universal property twice. In our own account, the work moves to proving the universal property for the Postnikov construction.
+**How the definition helps.** In our own words, every type at the lower cutoff also satisfies the higher cutoff. So test maps into types at the lower cutoff and apply the universal property twice. The work moves to proving the universal property for the Postnikov construction.
 
 **nLab:** [n-truncated object of an (infinity,1)-category](https://ncatlab.org/nlab/show/n-truncated+object+of+an+%28infinity%2C1%29-category). It says: “Under mild conditions there is for each n a universal way to send an arbitrary object A to its n-truncation”
 
@@ -1501,7 +1501,7 @@
 
 **Problem.** Every compact subset of a CW complex lies in a finite subcomplex. So a map from a sphere, or a homotopy, only sees finitely many cells.
 
-**How the definition helps.** The weak topology makes any set that picks one point from infinitely many cells closed and discrete, so it cannot lie in a compact set. With closure-finiteness, the finite set of cells that a compact set meets grows to a finite subcomplex. Our own example: the Hawaiian earring is a shrinking sequence of circles in the plane that touch at one point. Split into one point and infinitely many 1-cells, it is closure-finite and compact but meets infinitely many cells. This is because its topology is not the weak topology. Our own remark: this result lets homotopy groups of a CW complex be computed from its finite subcomplexes. What stays hard is the topology of products, which need not be a CW topology without extra conditions.
+**How the definition helps.** The weak topology makes any set that picks one point from infinitely many cells closed and discrete, so no compact set contains one. With closure-finiteness, the finitely many cells that a compact set meets grow to a finite subcomplex. Our own example: the Hawaiian earring, split into one point and infinitely many 1-cells, is closure-finite and compact. It meets infinitely many cells, because its topology is not the weak topology.
 
 **Wikipedia:** [CW complex](https://en.wikipedia.org/wiki/CW_complex). It says: “A compact subspace of a CW complex is always contained in a finite subcomplex.”
 
@@ -1519,7 +1519,7 @@
 
 **Problem.** Whitehead's theorem says that a map between connected CW complexes which gives isomorphisms on all homotopy groups is a homotopy equivalence. A homotopy equivalence is a map with an inverse up to continuous deformation.
 
-**How the definition helps.** The cell structure lets you build an inverse map one cell at a time, so isomorphisms on homotopy groups are enough. The Warsaw circle is the bad case that the restriction excludes. Our own description: it is a closed loop in the plane with one piece that oscillates like the curve sin(1/x). No continuous loop can go around it, so all its homotopy groups vanish, but it is not contractible. The theorem holds for every space homotopy equivalent to a CW complex (our own remark). Whitehead introduced CW complexes and proved this theorem in his 1949 papers. What stays hard is to know whether a given space has the homotopy type of a CW complex.
+**How the definition helps.** The cell structure lets you build an inverse map one cell at a time, so isomorphisms on homotopy groups are enough. The Warsaw circle is the bad case that the restriction excludes. Our own description: it is a closed loop in the plane with one piece that oscillates like sin(1/x). All its homotopy groups vanish, but it is not contractible.
 
 **Wikipedia:** [Whitehead theorem](https://en.wikipedia.org/wiki/Whitehead_theorem), [CW complex](https://en.wikipedia.org/wiki/CW_complex). It says: “For example, the Warsaw circle, a compact subset of the plane, has all homotopy groups zero, but the map from the Warsaw circle to a single point is not a homotopy equivalence.”
 
@@ -1537,7 +1537,7 @@
 
 **Problem.** Every continuous map between finite simplicial complexes is homotopic to a simplicial map from a subdivision of the domain. As a consequence, the homotopy group πₖ(Sⁿ) is zero when k is less than n.
 
-**How the definition helps.** Subdivision makes the simplices of the domain as small as needed, so each one can be sent near a single vertex. Without subdivision the statement is false, since a map from a coarse complex can wrap around many simplices. Then the star of each vertex lands inside the star of a vertex of the target, the union of the open simplices that contain it. A map from Sᵏ to Sⁿ with k &lt; n becomes a simplicial map. For dimension reasons it misses a point, so it is homotopic to a constant map. What stays hard is to choose the subdivision, which depends on the map and not only on the spaces.
+**How the definition helps.** Subdivision makes the simplices of the domain small enough that the star of each vertex lands inside the star of a vertex of the target. Without subdivision the statement is false, since a coarse simplex may have to wrap around many simplices. A map from Sᵏ to Sⁿ with k &lt; n then becomes simplicial, misses a point for dimension reasons, and so is homotopic to a constant map.
 
 **Wikipedia:** [Simplicial approximation theorem](https://en.wikipedia.org/wiki/Simplicial_approximation_theorem). It says: “In short, the theorem says any continuous map between simplicial complexes is the geometric realization of a simplicial mapping up to homotopy and subdivision.”
 
@@ -1551,11 +1551,11 @@
 
 *True by definition. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 55U05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A simplex of a simplicial set is degenerate if it comes from a lower-dimensional simplex by a degeneracy map, which repeats a vertex. The nLab notes that every monomorphism of simplicial sets, such as ∅ → K, is built by adjoining nondegenerate simplices step by step. Realization sends each such step to a gluing and sends Δ\[n\] to the disk Δⁿ. The direct definition glues all simplices, degenerate ones included, at once.
+**Definition.** A simplex of a simplicial set is degenerate if a degeneracy map, which repeats a vertex, sends a lower-dimensional simplex to it. Every simplicial set is built from the empty set by adjoining nondegenerate simplices along their boundaries, step by step.
 
 **Problem.** The geometric realization of a simplicial set is a CW complex with one n-cell for each nondegenerate n-simplex.
 
-**How the definition helps.** Each step of the build attaches Δ\[n\] along its boundary, and realization turns this into attaching an n-cell along its boundary sphere. In our own account, realization keeps these gluings because it is a left adjoint. Hatcher builds the same cell structure directly, by first collapsing the degenerate simplices. The work moves to the Eilenberg–Zilber lemma, which says that each simplex is a degeneracy of exactly one nondegenerate simplex, in exactly one way. Hatcher proves this uniqueness in the same appendix.
+**How the definition helps.** Each step attaches Δ\[n\] along its boundary, and realization, a left adjoint, turns this into attaching an n-cell along its boundary sphere. The direct definition glues all simplices, degenerate ones included, at once. The work moves to the Eilenberg–Zilber lemma: each simplex is a degeneracy of exactly one nondegenerate simplex, in exactly one way.
 
 **nLab:** [geometric realization](https://ncatlab.org/nlab/show/geometric+realization). It says: “can be seen as the result of iteratively adjoining nondegenerate n-simplices.”
 
@@ -1587,9 +1587,9 @@
 
 **Definition.** A Δ-complex is a space glued from simplices along face maps that obey the usual composition rule. Its combinatorial data is a Δ-set, also called a semi-simplicial set. Unlike a simplicial complex, a simplex need not be determined by its vertices. Two edges may share both end points, and one edge may have both ends at the same vertex.
 
-**Problem.** Compute the homology groups of the torus by hand. The answer is ℤ in degree 0, ℤ² in degree 1 and ℤ in degree 2.
+**Problem.** The torus is a Δ-complex with one vertex, three edges and two triangles. Its homology is ℤ in degree 0, ℤ² in degree 1 and ℤ in degree 2.
 
-**How the definition helps.** Allowing repeated vertices shrinks the number of simplices, so the chain complex is small enough to compute by hand. The torus gets one vertex, three edges and two triangles, six simplices in total. A true simplicial complex for the torus needs at least 42 simplices. Simplicial homology works the same way for Δ-complexes, so nothing is lost. What stays hard is to prove that this homology agrees with singular homology, which is a separate theorem.
+**How the definition helps.** Allowing repeated vertices shrinks the number of simplices, so the chain complex is small enough to compute by hand. A true simplicial complex for the torus needs at least 42 simplices. What stays hard is to prove that this homology agrees with singular homology, which is a separate theorem.
 
 **Wikipedia:** [Delta set](https://en.wikipedia.org/wiki/Delta_set). It says: “It is worth highlighting that the minimum number of simplices needed to endow T² with the structure of a simplicial complex is 7 vertices, 21 edges, and 14 2-simplices, for a total of 42 simplices.”
 
@@ -1606,7 +1606,7 @@
 
 **Definition.** Let R be a relation between sets X and Y. The first Dowker complex has as faces the finite subsets of X whose members all relate to one common element of Y. The second complex swaps the roles of X and Y. A simplicial complex is a family of finite sets, called faces, closed under taking subsets.
 
-**Problem.** The geometric realizations of the two Dowker complexes are homotopy equivalent. So they have the same shape up to continuous deformation.
+**Problem.** The geometric realizations of the two Dowker complexes of a relation are homotopy equivalent.
 
 **How the definition helps.** The common-partner rule makes each complex the nerve of a cover of the other, so the nerve theorem applies. In our own finite-case proof, cover the first complex by one simplex for each related y in Y, spanned by the elements related to y. A nonempty intersection of these simplices is again a simplex, so it is contractible. The nerve of a cover records which sets of members meet, and here that is exactly the second complex. The real work is in the nerve theorem, which says such a cover has the homotopy type of its nerve.
 
@@ -1625,9 +1625,9 @@
 
 **Definition.** A Kan complex is a simplicial set X in which every horn Λᵏ\[n\] → X extends to a full simplex Δ\[n\] → X. The horn Λᵏ\[n\] is the boundary of the n-simplex with its k-th face removed. This is the extension condition.
 
-**Problem.** Define homotopy groups of a simplicial set, and homotopy between simplicial maps, in a purely combinatorial way. They should behave as they do for spaces.
+**Problem.** For maps into a Kan complex, simplicial homotopy is an equivalence relation. The homotopy groups of a Kan complex can be defined combinatorially, from simplices whose boundary sits at the base point.
 
-**How the definition helps.** Horn fillers supply the compositions that homotopy theory needs. For maps into a Kan complex, simplicial homotopy is an equivalence relation. Homotopy groups can be defined as classes of simplices whose boundary sits at the base point. The horn fillers give the composite of two such classes, and this composite is the group product. For a simplicial set that is not Kan, the nLab defines its homotopy groups as those of a Kan fibrant replacement (a Kan complex that it maps into by a weak equivalence). The real link to spaces is the theorem that these groups agree with the homotopy groups of the geometric realization.
+**How the definition helps.** Horn fillers supply the compositions that homotopy theory needs. They give the composite of two classes of simplices, and this composite is the group product. For a simplicial set that is not Kan, the nLab uses a Kan fibrant replacement. The real link to spaces is the theorem that these groups agree with those of the geometric realization.
 
 **nLab:** [Kan complex](https://ncatlab.org/nlab/show/Kan+complex), [simplicial homotopy group](https://ncatlab.org/nlab/show/simplicial+homotopy+group), [simplicial homotopy](https://ncatlab.org/nlab/show/simplicial+homotopy). It says: “For such complexes, usually called Kan complexes, homotopy groups may be defined, and, further, the notion of homotopy between maps of an arbitrary semi-simplicial complex into a Kan complex is an equivalence relation.”
 
@@ -1641,11 +1641,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 18N50. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The décalage Dec₀ X of a simplicial set X is X with its last face and degeneracy maps removed and the degrees shifted down by one. So the n-simplices of Dec₀ X are the (n+1)-simplices of X. An n-simplex of Dec₀ X is a map to X from the cone Δ\[n\] ⋆ Δ\[0\] = Δ\[n+1\]. Here ⋆ is the join, which adds one new vertex joined to every simplex.
+**Definition.** The décalage Dec₀ X of a simplicial set X is X with its last face and degeneracy maps removed and the degrees shifted down by one. So an n-simplex of Dec₀ X is an (n+1)-simplex of X, a map from the cone Δ\[n\] ⋆ Δ\[0\] = Δ\[n+1\].
 
-**Problem.** For a Kan complex X, replace the inclusion of the vertices X₀ → X by a Kan fibration. A Kan complex is a simplicial set in which every horn (a simplex with one face and its interior missing) has a filler, and a Kan fibration is the relative version of this.
+**Problem.** For a Kan complex X, the last face map Dec₀ X → X is a Kan fibration, and Dec₀ X deformation retracts onto the vertex set X₀. So Dec₀ X → X replaces the inclusion X₀ → X by a Kan fibration.
 
-**How the definition helps.** A lifting problem for the décalage is a single horn-filling problem in X, and a Kan complex can solve it. The last face map Dec₀ X → X is a Kan fibration when X is a Kan complex, and Dec₀ X deformation retracts onto the discrete set X₀. The cone Δ\[n\] ⋆ Δ\[0\] is just Δ\[n+1\]. So a horn-lifting problem against Dec₀ X → X is the same as filling one (n+1)-dimensional horn in X. The usual path space, the pullback of Xᴵ → X along X₀ → X, uses a larger cone made from the cylinder Δ\[n\] × Δ\[1\]. That the décalage proof is shorter is our reading; the nLab says only that the décalage is "often more convenient".
+**How the definition helps.** A lifting problem against Dec₀ X → X is the same as filling one (n+1)-dimensional horn in X, and a Kan complex can do that. The usual path space, the pullback of Xᴵ → X along X₀ → X, uses a larger cone made from the cylinder Δ\[n\] × Δ\[1\]. That the décalage proof is shorter is our reading; the nLab says only that the décalage is "often more convenient".
 
 **nLab:** [decalage](https://ncatlab.org/nlab/show/decalage). It says: “As a result, the décalage construction is often more convenient than forming X<sup>I</sup> ×<sub>X</sub> X<sub>0</sub>.”
 
@@ -1661,9 +1661,9 @@
 
 **Definition.** A good open cover of a space X is an open cover in which every set is contractible. Every inhabited (nonempty) finite intersection of the sets must also be contractible.
 
-**Problem.** The homotopy type of a paracompact space should be the geometric realization of the nerve of an open cover, at least for a suitable kind of cover. The nerve is the simplicial set with one simplex for each nonempty finite intersection of the sets.
+**Problem.** For a good open cover of a paracompact space X, the geometric realization of the nerve is homotopy equivalent to X (the nerve theorem).
 
-**How the definition helps.** If all the pieces and all their overlaps are contractible, the nerve loses no information about their shape. With this condition the nerve theorem holds: the realization of the nerve is homotopy equivalent to X. The proof uses partitions of unity. For a general open cover, the nerve forgets the topology of the pieces and of their overlaps, so the statement needs the condition. Our own example: cover a circle by two arcs that meet in two arcs, and the nerve is an interval. Good covers exist on paracompact smooth manifolds, which is a separate result (de Rham, Weil).
+**How the definition helps.** If all the pieces and all their overlaps are contractible, the nerve loses no information about their shape. For a general open cover, the nerve forgets the topology of the pieces and their overlaps. Our own example: cover a circle by two arcs that meet in two arcs, and the nerve is an interval. The proof uses partitions of unity.
 
 **nLab:** [nerve theorem](https://ncatlab.org/nlab/show/nerve+theorem), [good open cover](https://ncatlab.org/nlab/show/good+open+cover). It says: “The nerve theorem asserts that the homotopy type of a sufficiently nice topological space is encoded in the Čech nerve of a good open cover”
 
@@ -1682,7 +1682,7 @@
 
 **Problem.** The homotopy hypothesis says that ∞-groupoids are equivalent to topological spaces up to weak homotopy equivalence. The fundamental ∞-groupoid of a space gives the equivalence.
 
-**How the definition helps.** The definition decides whether the hypothesis is a tautology, a theorem or an open problem. If an ∞-groupoid is by definition a space up to weak homotopy equivalence, the hypothesis is a tautology. With Kan complexes, the hypothesis becomes Quillen's theorem that geometric realization and the singular complex give a Quillen equivalence (an equivalence of homotopy theories) between topological spaces and simplicial sets. The nLab calls this proof non-trivial but fairly tractable, and algebraic Kan complexes also have a proof. For other algebraic definitions, such as Trimble ∞-groupoids, the nLab says it is unclear how to prove the hypothesis. For Grothendieck ∞-groupoids, Henry and Lanari reduced it to a conjecture. That conjecture is proved only up to dimension 3.
+**How the definition helps.** The definition decides whether the hypothesis is a tautology, a theorem or an open problem. If an ∞-groupoid is a space up to weak homotopy equivalence, the hypothesis is a tautology. With Kan complexes, it becomes Quillen's theorem that realization and the singular complex give a Quillen equivalence between spaces and simplicial sets. For Grothendieck ∞-groupoids, Henry and Lanari reduced it to a conjecture that is proved only up to dimension 3.
 
 **nLab:** [homotopy hypothesis](https://ncatlab.org/nlab/show/homotopy+hypothesis), [Kan complex](https://ncatlab.org/nlab/show/Kan+complex). It says: “For instance there is some justification for defining an ∞-groupoid to be equivalently a topological space considered modulo weak homotopy equivalence (see at classical model structure on topological spaces). For this definition the homotopy hypothesis is of course a tautology.”
 
@@ -1699,9 +1699,9 @@
 
 **Definition.** The homotopy category formally turns weak equivalences into isomorphisms. For diagrams, a weak equivalence means a map that is a weak equivalence at every entry. The homotopy limit is the right derived functor of the ordinary limit, taken with respect to these weak equivalences. Unlike the ordinary limit, this derived functor acts on homotopy categories.
 
-**Problem.** Where the derived functors exist, homotopy limits and colimits send weak equivalences of diagrams to isomorphisms in the homotopy category. Ordinary pushouts can fail this test. Gluing two disks along their common boundary gives a sphere, but replacing both disks by points gives a point (our own example).
+**Problem.** Where the derived functors exist, homotopy limits and colimits send objectwise weak equivalences of diagrams to isomorphisms in the homotopy category.
 
-**How the definition helps.** The derived definition makes invariance automatic because the input maps are already isomorphisms in the domain. A functor preserves isomorphisms. An explicit construction, such as the double mapping cylinder for a homotopy pushout, needs its own invariance proof. The work moves into proving the derived functor exists and that an explicit construction computes it.
+**How the definition helps.** The derived definition makes invariance automatic, because the input maps are already isomorphisms in the domain. Ordinary pushouts fail this test: gluing two disks along their boundary gives a sphere, but replacing both disks by points gives a point (our own example). An explicit construction, such as the double mapping cylinder, needs its own invariance proof. The work moves into proving that the derived functor exists and that an explicit construction computes it.
 
 **nLab:** [homotopy limit](https://ncatlab.org/nlab/show/homotopy+limit). It says: “The homotopy limit of a functor F : D → C is, if it exists, the image of F under the right derived functor of the limit functor”
 
@@ -1719,9 +1719,9 @@
 
 **Definition.** For pointed spaces A and B, the smash product A ∧ B is the quotient (A × B)/(A ∨ B). It is the product with the wedge A × {b₀} ∪ {a₀} × B collapsed to one point. A convenient category of spaces, such as compactly generated spaces, is one that is cartesian closed. That means every pair of spaces has a mapping space with the exponential law.
 
-**Problem.** The smash product is associative: A ∧ (B ∧ C) ≅ (A ∧ B) ∧ C.
+**Problem.** In a convenient category of pointed spaces, the smash product is associative: A ∧ (B ∧ C) ≅ (A ∧ B) ∧ C.
 
-**How the definition helps.** In a cartesian closed category, A ∧ (−) is a left adjoint, so it keeps quotients, and associativity follows. In the category Top of all spaces, the natural map A ∧ (B ∧ C) → (A ∧ B) ∧ C is a homeomorphism only under extra conditions. For example, it is a homeomorphism when A and C are locally compact Hausdorff; in general associativity fails. In a cartesian closed category of pointed spaces, A ∧ (−) preserves the quotient that defines B ∧ C, so associativity holds for all objects. The cost is that products and quotients must be taken in the convenient category, so they can differ from those in Top. The nLab page does not name an explicit counterexample in Top.
+**How the definition helps.** In a cartesian closed category, A ∧ (−) is a left adjoint, so it keeps the quotient that defines B ∧ C, and associativity follows. In the category Top of all spaces, the natural map is a homeomorphism only under extra conditions, for example when A and C are locally compact Hausdorff. The cost is that products and quotients must be taken in the convenient category. The nLab page does not name an explicit counterexample in Top.
 
 **nLab:** [smash product](https://ncatlab.org/nlab/show/smash+product). It says: “Associativity fails in general for the category Top of all topological spaces; however, it is satisfied for pointed objects in any convenient category of topological spaces, since such a category is cartesian closed.”
 
@@ -1735,11 +1735,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55M30 (Lyusternik-Shnirel'man category of a space, topological complexity à la Farber, topological robotics (topological aspects)), 55S40. arXiv math.AT. Level 4: research.
 
-**Definition.** The sectional category of a map is the least number of open sets, minus one, that cover the base with local sections. Topological complexity of a space is the sectional category of its path fibration, and it measures motion planning. The paper builds all these invariants from three simple axioms. It also defines a lifting category, which has all three invariants as special cases.
+**Definition.** The sectional category of a map is the least number of open sets, minus one, that cover the base with local sections. Topological complexity is the sectional category of the path fibration of a space. The paper defines a lifting category that has these invariants and homotopic distance as special cases, and derives their properties from three simple axioms.
 
-**Problem.** Sectional category, topological complexity and homotopic distance have many variants: pointed, fibrewise, equivariant, or algebraic. Each variant needs the same basic properties proved again.
+**Problem.** The many properties of sectional category, topological complexity and homotopic distance follow from three basic axioms. So they hold for every variant that satisfies the axioms: pointed, fibrewise, equivariant or algebraic.
 
-**How the definition helps.** With the lifting category defined by three axioms, a property proved from the axioms holds for every variant at once. The paper says the other properties then follow without further topology. The work moves into checking the three axioms for each variant (our own).
+**How the definition helps.** A property proved from the axioms holds for every variant at once, without further topology. The work moves into checking the three axioms for each variant (our own).
 
 **Paper or page:** [Axiomatic Sectional category, Topological complexity, and Homotopic distance](https://arxiv.org/abs/2503.06969). It says: “Many of the properties of sectional category, topological complexity and homotopic distance are in fact derived from a small number of basic properties, which, once established, lead to all the others without further recourse to topology.”
 
@@ -1755,9 +1755,9 @@
 
 **Definition.** A pseudocycle is a smooth map from a manifold whose limit set at infinity is small. The limit set must have dimension at least two less than the manifold. Borel–Moore homology is homology built from locally finite chains, so it suits noncompact spaces. The paper weakens the conditions on pseudocycles and on their equivalence.
 
-**Problem.** Find geometric objects that represent all Borel–Moore homology classes of a manifold. Each class should come from exactly one equivalence class of these objects.
+**Problem.** There is a natural isomorphism between equivalence classes of the weaker pseudocycles on a manifold and its Borel–Moore homology.
 
-**How the definition helps.** The weaker conditions let pseudocycles be noncompact, so they match the locally finite chains of Borel–Moore homology (our own reading). With them, a natural isomorphism to Borel–Moore homology can be stated. Pseudocycles are used in symplectic topology to count curves, so this gives a geometric home for such counts on noncompact spaces (our own). The work moves into the construction of the natural isomorphism.
+**How the definition helps.** The weaker conditions let pseudocycles be noncompact, so they match the locally finite chains of Borel–Moore homology (our own reading). Pseudocycles are used in symplectic topology to count curves, so this gives such counts a geometric home on noncompact spaces (our own). The work moves into the construction of the natural isomorphism.
 
 **Paper or page:** [Pseudocycles for Borel-Moore Homology](https://arxiv.org/abs/2209.10036). It says: “We define weaker versions of the standard notions of pseudocycle and pseudocycle equivalence and then describe a natural isomorphism between the set of equivalence classes of these weaker pseudocycles and the Borel-Moore homology.”
 
@@ -1771,11 +1771,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 18N60, 53C08. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** Differential cohomology combines a topological cohomology class with differential-form data, such as the curvature of a connection. Here it is defined as the intrinsic cohomology of stable homotopy types in a cohesive (∞,1)-topos. A cohesive topos is a setting for homotopy theory where each object also has a smooth structure, for example sheaves of spectra on the site of smooth manifolds. Two operations of cohesion, the shape modality and the flat modality, give the maps to the underlying topological classes and to the flat classes.
+**Definition.** Differential cohomology combines a topological cohomology class with differential-form data, such as the curvature of a connection. Here it is defined as the intrinsic cohomology of stable homotopy types in a cohesive (∞,1)-topos, such as sheaves of spectra on smooth manifolds. The shape and flat modalities of cohesion give the maps to the topological classes and to the flat classes.
 
-**Problem.** Every differential cohomology theory, such as Deligne cohomology, Cheeger–Simons characters and differential K-theory, should fit in the differential cohomology hexagon. The hexagon is a diagram of two fibre sequences that link curvature, characteristic class, flat classes and forms. The different models of each theory should also agree.
+**Problem.** Every stable homotopy type in a cohesive ∞-topos sits in a differential cohomology hexagon (Bunke, Nikolaus and Völkl). The hexagon is a diagram of two fibre sequences that link curvature, characteristic class, flat classes and forms.
 
-**How the definition helps.** With this definition, the hexagon is a general theorem and not a separate fact for each theory. Mathematicians first saw the hexagon case by case: Simons and Sullivan found it for ordinary differential cohomology and for differential K-theory. Bunke, Nikolaus and Völkl showed that every stable homotopy type in a cohesive ∞-topos sits in such a hexagon. Simons and Sullivan also showed that, for ordinary differential cohomology, the exact sequences determine the theory up to a unique isomorphism, so all models agree. The content is in these theorems, and the definition only makes them uniform.
+**How the definition helps.** With this definition, the hexagon is one general theorem and not a separate fact for each theory. Simons and Sullivan first found it case by case, for ordinary differential cohomology and differential K-theory. They also showed that, for ordinary differential cohomology, the exact sequences determine the theory up to unique isomorphism. The content is in these theorems; the definition makes them uniform.
 
 **nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology), [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “It is therefore natural to define differential cohomology to be the intrinsic cohomology of cohesive (∞,1)-toposes.”
 
@@ -1795,7 +1795,7 @@
 
 **Problem.** Suppose the family of translations that defines the interleaving distance satisfies three conditions from the paper. Then the distance from a module M to the zero module is zero exactly when M is ephemeral. For Scott sheaves, the distance to zero is zero only for the zero sheaf.
 
-**How the definition helps.** An ephemeral module is defined so that every shift kills it, so its interleaving distance to zero is zero almost by definition (our own). The paper shows that the quotient by ephemeral modules is equivalent to the category of Scott sheaves. On Scott sheaves, the distance to zero then detects the zero sheaf. So the work moves into that equivalence of categories. The interleaving distance is otherwise only an extended pseudometric on modules (our own).
+**How the definition helps.** An ephemeral module is defined so that every shift kills it, so its interleaving distance to zero is zero almost by definition (our own). The paper shows that the quotient by ephemeral modules is equivalent to the category of Scott sheaves. So on Scott sheaves, the distance to zero detects the zero sheaf, and the work moves into that equivalence.
 
 **Paper or page:** [Ephemeral Modules and Scott Sheaves on a Continuous Poset](https://arxiv.org/abs/2411.16235). It says: “dₐ(M, 0) = 0 if and only if M is ephemeral; dσ(ℱ, 0) = 0 if and only if ℱ = 0”
 
@@ -1809,11 +1809,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N31 (Persistent homology and applications, topological data analysis), 06A07. arXiv math.AT, math.CO. Level 4: research.
 
-**Definition.** Möbius homology is a homology theory for representations of a finite poset in an abelian category. Its Euler characteristic, the alternating sum of the ranks of its groups, equals the Möbius inversion of the dimension function of the representation.
+**Definition.** Möbius homology is a homology theory for representations of a finite poset in an abelian category. The persistence diagram of a representation is defined as the Möbius inversion of its dimension function, over a poset of intervals.
 
-**Problem.** Over a general finite poset, a persistence module need not split into intervals. So the persistence diagram needs a definition that still works and still has structure.
+**Problem.** The persistence diagram is the Euler characteristic of Möbius homology. So Möbius homology categorifies the persistence diagram.
 
-**How the definition helps.** With the diagram defined by Möbius inversion, it becomes the Euler characteristic of a homology theory, so it gains extra homological structure. The paper then proves a homological version of Rota's Galois connection theorem and uses it to get results on diagrams. Over general posets, modules can be indecomposable without being intervals, so the barcode approach fails (our own). The Euler characteristic can lose information, so the homology groups can give a finer invariant (our own).
+**How the definition helps.** With the diagram defined by Möbius inversion, it becomes the Euler characteristic of a homology theory and gains homological structure. Over general posets, modules can be indecomposable without being intervals, so the barcode approach fails (our own). The paper also proves a homological version of Rota's Galois connection theorem and uses it to get results on diagrams.
 
 **Paper or page:** [Möbius Homology](https://arxiv.org/abs/2307.01040). It says: “We prove that, under a suitable definition, the persistence diagram arises as an Euler characteristic over a poset of intervals, and thus Möbius homology provides a categorification of the persistence diagram.”
 
@@ -1849,9 +1849,9 @@
 
 **Definition.** In homotopy type theory, the cohomology of a type A in degree n is built from maps from A into the Eilenberg–MacLane type K(G,n). Homotopic maps count as the same class. The cup product is a map K(G,n) × K(G,m) → K(G,n+m). The paper gives a new definition of this map that is easier to compute with.
 
-**Problem.** Show in a proof assistant that the cohomology groups, with the cup product, form a graded commutative ring. This means associativity, unit laws and graded commutativity.
+**Problem.** With the new cup product, the cohomology groups of a type form a graded commutative ring, and the paper fully formalises the ring axioms in a proof assistant.
 
-**How the definition helps.** The new cup product is easier to compute with, so the ring laws become checkable (our own reading). The abstract says that the new definitions greatly simplify many earlier proofs. This lets the full set of ring axioms be formalised, for the first time according to the paper. Earlier definitions made the proofs of graded commutativity and associativity very long (our own). The hard work moves into the theory of the Eilenberg–MacLane types (our own).
+**How the definition helps.** The new cup product is easier to compute with, so the ring laws become checkable (our own reading). The abstract says that the new definitions greatly simplify many earlier proofs. Earlier definitions made the proofs of graded commutativity and associativity very long (our own).
 
 **Paper or page:** [Computational Synthetic Cohomology Theory in Homotopy Type Theory](https://arxiv.org/abs/2401.16336). It says: “the new definition of the cup product allows us to give the first complete formalisation of the axioms needed to turn the cohomology groups into a graded commutative ring.”
 
@@ -1865,11 +1865,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 55P91. arXiv math.AT. Level 4: research.
 
-**Definition.** Let G be a group that acts on spaces. An RO(G)-graded cohomology theory on G-spaces has groups Hᵅ(X; A) for every formal difference α of finite-dimensional real representations of G. It uses loop spaces Ωⱽ = Map(Sⱽ, −), where Sⱽ is the representation sphere, the one-point extension of the representation V. It does not use only the loop spaces Ωⁿ of ordinary spheres.
+**Definition.** An RO(G)-graded cohomology theory on G-spaces has groups Hᵅ(X; A) for every formal difference α of finite-dimensional real representations of G. It loops by representation spheres Sⱽ, the one-point compactifications of representations V, and not only by ordinary spheres.
 
-**Problem.** Prove a Poincaré duality theorem for G-manifolds. Also explain the unexpected torsion in integer-graded Bredon cohomology (ordinary cohomology for spaces with a G-action).
+**Problem.** In RO(G)-graded Bredon cohomology, with coefficients in a Mackey functor, a G-manifold satisfies Poincaré duality, with a dimension shift by an element α of RO(G).
 
-**How the definition helps.** The duality shift for a G-manifold is a representation, not a number, so the theorem needs grading by representations. With integer grading, Bredon cohomology shows torsion in odd places, and Poincaré duality for G-manifolds fails. A Bredon theory extends to an RO(G)-graded one exactly when its coefficient system extends to a Mackey functor (a coefficient system that also has transfer maps). A G-manifold M embeds in a representation V, usually not a trivial one. Thom space arguments then give a duality isomorphism that shifts dimension by an element α of RO(G). This α is usually not an integer, so one cannot state the theorem without the wider grading. The cost is that RO(G)-graded Bredon cohomology is hard to compute, and the nLab notes that α is apparently not even uniquely determined by M.
+**How the definition helps.** The duality shift for a G-manifold is a representation, not a number, so the theorem needs grading by representations. A G-manifold M embeds in a representation V, usually not a trivial one, and Thom space arguments give the duality. With integer grading, Poincaré duality for G-manifolds fails. A Bredon theory extends to an RO(G)-graded one exactly when its coefficient system extends to a Mackey functor.
 
 **nLab:** [equivariant cohomology](https://ncatlab.org/nlab/show/equivariant+cohomology), [RO(G)-grading](https://ncatlab.org/nlab/show/RO%28G%29-grading). It says: “It would also be nice to have a Poincare duality theorem for G-manifolds, but that fails with these theories. The solution people have come up with is to widen the notion of "looping" and "delooping" and thereby the grading”
 
@@ -1901,9 +1901,9 @@
 
 **Definition.** A spectrum is the basic object of stable homotopy theory: a sequence of spaces linked by suspension maps. A symmetric monoidal model category of spectra is a model category whose homotopy category is the stable homotopy category. Its smash product (the tensor product of spectra) must be associative, unital and commutative up to coherent isomorphism already at the point-set level. S-modules, symmetric spectra and orthogonal spectra are examples.
 
-**Problem.** Find a category of spectra with a strictly symmetric monoidal smash product. Then A∞ and E∞ ring spectra (whose multiplication is associative, or commutative, up to all higher homotopies) are just monoids and commutative monoids.
+**Problem.** S-modules, symmetric spectra and orthogonal spectra are symmetric monoidal model categories that model the stable homotopy category. In them, A∞ and E∞ ring spectra are just monoids and commutative monoids.
 
-**How the definition helps.** In these categories an E∞ ring spectrum is simply a commutative monoid, because the monoidal structure absorbs the higher coherent homotopies that an E∞ operad used to supply. Lewis proved in 1991 that no symmetric monoidal category of spectra can model the stable homotopy category and also meet a couple of other natural requirements. In the 1990s, new definitions dropped one or another of these requirements: S-modules (EKMM), then symmetric and orthogonal spectra. S-modules show the step most directly. An S-module is an 𝕃-spectrum E (a coordinate-free spectrum with an action of the linear isometries monad 𝕃) for which the unit map S ∧ E → E is an isomorphism. On 𝕃-spectra the smash product is associative up to isomorphism but unital only up to weak equivalence, so keeping only the objects on which the unit map is an isomorphism makes unitality hold by definition. The price is a more complex point-set definition, and the real work is to show that each new category still models the stable homotopy category with a good model structure. All these models are symmetric-monoidally Quillen equivalent.
+**How the definition helps.** The monoidal structure absorbs the higher coherent homotopies that an A∞ or E∞ operad used to supply. Lewis proved in 1991 that no symmetric monoidal category of spectra can model the stable homotopy category and also meet a few other natural requirements. Each new model drops one of these requirements. The real work is to show that each new category still models the stable homotopy category with a good model structure.
 
 **nLab:** [symmetric smash product of spectra](https://ncatlab.org/nlab/show/symmetric+smash+product+of+spectra), [S-module](https://ncatlab.org/nlab/show/S-module), [symmetric spectrum](https://ncatlab.org/nlab/show/symmetric+spectrum), [orthogonal spectrum](https://ncatlab.org/nlab/show/orthogonal+spectrum). It says: “Moreover, in all of these cases, the monoidal structure on the model category 𝒮 absorbs all the higher coherent homotopies that used to be supplied by the action of an A∞ or E∞ operad.”
 
@@ -1921,9 +1921,9 @@
 
 **Definition.** A pre-excisive functor is a pointed, topologically enriched functor from finite pointed CW complexes to pointed spaces. Topologically enriched means that the functor is continuous on spaces of maps. The smash product of two such functors is their Day convolution, the product on functors that the smash product of spaces induces. Its unit is the sphere functor 𝕊, the inclusion of finite complexes into all spaces.
 
-**Problem.** Give a closed symmetric monoidal smash product of spectra, and explain why sequential spectra do not have one. Closed means that the product has a matching internal function object.
+**Problem.** Day convolution gives pre-excisive functors a closed symmetric monoidal smash product, with unit the sphere functor 𝕊. Restricting to sequential spectra loses this symmetric monoidal product.
 
-**How the definition helps.** On pre-excisive functors, Day convolution gives a closed symmetric monoidal product almost tautologically. Restricting to sequential spectra breaks the symmetric monoidal product. This shows why sequential spectra have no functorial smash product. Orthogonal and symmetric spectra lie between the two extremes. They are still concrete, but they keep the product inherited from pre-excisive functors. The hard part that remains is to give these categories stable model structures that model the stable homotopy category. (A model structure is the extra data that lets you do homotopy theory in a category.)
+**How the definition helps.** On pre-excisive functors, Day convolution gives the closed symmetric monoidal product almost tautologically. Orthogonal and symmetric spectra lie between pre-excisive functors and sequential spectra: they are still concrete, but they keep the inherited product. The hard part that remains is to give these categories stable model structures that model the stable homotopy category.
 
 **nLab:** [model structure on orthogonal spectra](https://ncatlab.org/nlab/show/model+structure+on+orthogonal+spectra), [Introduction to Stable homotopy theory -- 1-2](https://ncatlab.org/nlab/show/Introduction+to+Stable+homotopy+theory+--+1-2), [symmetric smash product of spectra](https://ncatlab.org/nlab/show/symmetric+smash+product+of+spectra). It says: “We consider an almost tautological construction of a pointed topologically enriched category equipped with a closed symmetric monoidal product: the category of pre-excisive functors.”
 
@@ -1955,9 +1955,9 @@
 
 **Definition.** The paper defines unramified and totally ramified maps for commutative rings, schemes, ring spectra and derived schemes. Ring spectra are the homotopy-theory version of rings. Topological Hochschild homology, THH, is a version of Hochschild homology taken over the sphere spectrum instead of the integers.
 
-**Problem.** Compute THH(R) for the ring of integers R of a number field. The paper shows that THH(R) is a cofiber of an explicit map, which gives a long exact sequence.
+**Problem.** For the ring of integers R of a number field, THH(R) is the cofiber of an explicit map, and this gives a long exact sequence.
 
-**How the definition helps.** The new definition works in homotopy theory, so it can be fed directly into THH, and the calculation needs no computational techniques. The work moves into the proof that the new notion agrees with classical ramification for rings of integers. The paper also gets a descent method for THH along composites of unramified and totally ramified extensions. Earlier computations of THH of number rings used heavier computational tools (our own).
+**How the definition helps.** The new definition works in homotopy theory, so it can be fed directly into THH, and the calculation needs no computational techniques. The work moves into the proof that the new notion agrees with classical ramification for rings of integers. Earlier computations of THH of number rings used heavier computational tools (our own).
 
 **Paper or page:** [Ramification and descent in homotopy theory and derived algebraic geometry](https://arxiv.org/abs/2112.14568). It says: “We prove that the definition is equivalent to the classical definition in the case of rings of integers in number fields. The new definition leads directly (without computational techniques) to a calculation of topological Hochschild homology for rings of integers.”
 
@@ -1973,9 +1973,9 @@
 
 **Definition.** A spectrum is the object that represents a cohomology theory. An E∞-ring spectrum is a spectrum with a multiplication that is commutative up to all higher coherent homotopies. E∞-ring spectra form an (∞,1)-category with good limits. The category of multiplicative cohomology theories does not have such limits.
 
-**Problem.** Each flat elliptic curve Spec R → M₁,₁ gives an elliptic cohomology theory, where M₁,₁ is the moduli stack of elliptic curves. One wants a single universal theory, given as the global sections of this family.
+**Problem.** The presheaf of elliptic cohomology theories on flat elliptic curves Spec R → M₁,₁ lifts to a sheaf of E∞-ring spectra, unique up to homotopy (Goerss–Hopkins–Miller). Its global sections give one universal theory, topological modular forms.
 
-**How the definition helps.** E∞-ring spectra live in a setting with limits, so gluing makes sense there. Cohomology theories, as functors, lack the limits needed for gluing, so 'a sheaf of cohomology theories' has no meaning. Lifting the presheaf to E∞-ring spectra puts it in an (∞,1)-category where sheaves and global sections are defined. The global sections of the lifted sheaf give tmf\[Δ⁻¹\], topological modular forms with the discriminant Δ inverted. The same construction over the Deligne–Mumford compactification gives the spectrum Tmf, and tmf is its connective cover. The definition only makes this possible to state. The hard part is the Goerss–Hopkins–Miller theorem, which says that the lift exists and is unique up to homotopy.
+**How the definition helps.** E∞-ring spectra live in a setting with limits, so gluing makes sense there. Cohomology theories, as functors, lack these limits, so "a sheaf of cohomology theories" has no meaning. The same construction over the Deligne–Mumford compactification gives Tmf, and tmf is its connective cover. The definition only makes this statable; the hard part is the Goerss–Hopkins–Miller theorem.
 
 **nLab:** [A Survey of Elliptic Cohomology - E-infinity rings and derived schemes](https://ncatlab.org/nlab/show/A+Survey+of+Elliptic+Cohomology+-+E-infinity+rings+and+derived+schemes). It says: “To get a single cohomology theory from that we want to take global sections, but there is no good way to say what a global section of a cohomology-theoy valued functor would be.”
 
@@ -2009,9 +2009,9 @@
 
 **Definition.** For a finite group G and a real G-representation V, an 𝔼ᵥ-algebra is a G-space with operations given by embeddings of V-framed G-disks. It is group-like at a subgroup H when the monoid of components of its H-fixed points is a group. The condition is asked only for subgroups H whose fixed space Vᴴ has dimension at least 1.
 
-**Problem.** When is an 𝔼ᵥ-algebra the V-fold loop space of a G-space? Earlier results needed V to contain a trivial summand.
+**Problem.** An 𝔼ᵥ-algebra A is equivalent to a V-fold loop space exactly when Aᴴ is group-like for every subgroup H with dim Vᴴ ≥ 1. This holds for every V; earlier results needed a trivial summand in V.
 
-**How the definition helps.** The condition asks for group-like fixed points exactly where the fixed points carry a multiplication, so the theorem holds for every representation V. The fixed points Aᴴ are algebras over the little-disks operad of dimension dim Vᴴ (our own summary of the abstract). Where Vᴴ is zero, there is no multiplication and no condition to ask (our own). The hard part is the equivariant approximation theorem for all V and all based G-spaces. This is the equivariant form of the non-equivariant theorem that grouplike Eₖ-algebras are k-fold loop spaces.
+**How the definition helps.** The condition asks for group-like fixed points exactly where the fixed points carry a multiplication. The fixed points Aᴴ are algebras over the little-disks operad of dimension dim Vᴴ (our own summary of the abstract). Where Vᴴ is zero, there is no multiplication and no condition to ask (our own). The hard part is the equivariant approximation theorem for all V and all based G-spaces.
 
 **Paper or page:** [A genuine equivariant recognition principle for finite groups](https://arxiv.org/abs/2508.04421). It says: “We prove that an 𝔼ᵥ-algebra is equivalent to a V-fold loop space if and only if Aᴴ is group-like for all H such that dim Vᴴ ≥ 1. This generalizes a result by Guillou and May”
 
@@ -2028,7 +2028,7 @@
 
 **Definition.** A right Com-module is a symmetric sequence of spectra with a right action of the commutative operad. The circle product of such a module with a nonunital commutative ring spectrum gives a new spectrum. Topological André–Quillen homology TQ is one such construction.
 
-**Problem.** Two filtrations of TQ(I), built from I and the spaces of the Lie cooperad, appear in the literature. Do they agree?
+**Problem.** The two filtrations of TQ(I) in the literature, built from I and the Lie cooperad, by the author and by Behrens and Rezk, agree.
 
 **How the definition helps.** Both filtrations come from one natural filtration of right Com-modules, so their agreement follows from comparing the modules, not the spectra (our own). The paper says its setting makes the proof easy. The hard part is to express each construction as a derived circle product with the right module (our own).
 
@@ -2046,7 +2046,7 @@
 
 **Definition.** An Eₙ-monoid is a space with multiplication operations parametrized by configurations of little n-dimensional cubes. Its action category has points as objects. An arrow from x to y gives a multiplier k and a path from kx to y, with higher homotopies retained.
 
-**Problem.** Let n ≥ 2, and let Xᵍᵖ denote the space obtained by freely adjoining inverses to X. The loop space at its unit is the colimit of the loop groups at points of X over the action category. This colimit combines the groups up to homotopy and retains their multiplication.
+**Problem.** Let X be an Eₙ-monoid with n ≥ 2, and let Xᵍᵖ be its group completion. Then the loop space ΩXᵍᵖ is the colimit, in E₁-groups, of the automorphism groups Aut(x) over the action category.
 
 **How the definition helps.** In our own explanation, the action category specifies how to compare loops at different points. Multiply a loop at x by k and transport it along the chosen path to y. Lehner’s theorem identifies the universal group built from these comparisons with the loops on Xᵍᵖ.
 
@@ -2064,9 +2064,9 @@
 
 **Definition.** For a finite group G, an N∞ operad is a G-operad whose algebras are commutative up to coherent homotopy. Its algebras also have some norm maps, which are multiplicative transfers. A transfer system is a partial order on the subgroups of G that refines inclusion and is closed under conjugation and restriction.
 
-**Problem.** Classify N∞ operads up to homotopy. A priori, they form a large homotopy category.
+**Problem.** The homotopy category of G-N∞ operads is equivalent to the lattice of transfer systems on G.
 
-**How the definition helps.** The homotopy type of an N∞ operad depends only on which norms its algebras have, and the transfer system records exactly those norms. So the classification becomes a question about a finite lattice. The paper then studies transfer systems for the groups Cₚ × Cₚ, the rank two elementary abelian groups. The theorem is due to Blumberg and Hill and to Rubin. The hard part, that every transfer system comes from an operad, is due to Rubin and to others (our own).
+**How the definition helps.** The homotopy type of an N∞ operad depends only on which norms its algebras have, and the transfer system records exactly those norms. So the classification becomes a question about a finite lattice. The theorem is due to Blumberg and Hill and to Rubin. The hard part, that every transfer system comes from an operad, is due to Rubin and to others (our own).
 
 **Paper or page:** [Transfer systems for rank two elementary Abelian groups: characteristic functions and matchstick games](https://arxiv.org/abs/2310.13835). It says: “There is a functor from the category of G-N∞ operads to (the category induced by) the lattice Tr(G) that induces an equivalence between the homotopy category of G-N∞ operads and Tr(G).”
 
@@ -2081,11 +2081,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55P60 (Localization and completion in homotopy theory), 55P62, 55N30. arXiv math.AT. Level 4: research.
 
-**Definition.** Brown and Szczarba make two replacements. They replace plain real cohomology by continuous real cohomology, which uses the topology of ℝ. They also replace plain differential graded commutative algebras over ℝ by topological algebras.
+**Definition.** Brown and Szczarba replace plain real cohomology by continuous real cohomology, which uses the topology of ℝ. They also replace plain differential graded commutative algebras over ℝ by topological algebras.
 
-**Problem.** One wants a direct real homotopy theory, built like the Postnikov-tower construction of rational homotopy theory (which builds a space one homotopy group at a time). But the usual PL de Rham adjunction over ℝ does not model localization at ℝ. This adjunction links spaces and commutative differential graded algebras through polynomial differential forms on simplices.
+**Problem.** With these replacements, Brown and Szczarba get a direct real homotopy theory, built like the Postnikov-tower construction of rational homotopy theory. The usual PL de Rham adjunction over ℝ cannot give this, because it does not model localization at ℝ.
 
-**How the definition helps.** The new definition lets the theory see the topology of ℝ, which the standard construction ignores. Over ℚ, the PL de Rham adjunction models rationalization, but for other fields k it fails. Algebraically, k is not a solid ring (a ring R for which the multiplication R ⊗ R → R is an isomorphism, as for ℚ). So tensoring homotopy groups with k twice is in general not the same as tensoring once (in our own words: k ⊗ k is not k). Topologically, the standard adjunction ignores the topology of ℝ. Brown and Szczarba build this topology into the definition through continuous cohomology, and so get a direct real homotopy theory, not a formal tensoring of the rational theory with ℝ. This record follows the nLab summary and its quoted review; the details of the construction are in the original papers.
+**How the definition helps.** The new definition lets the theory see the topology of ℝ, which the standard construction ignores. Over ℚ, the PL de Rham adjunction models rationalization, but over ℝ it fails. Algebraically, ℝ is not a solid ring: ℝ ⊗ ℝ is not ℝ (our own words), so tensoring homotopy groups with ℝ twice is not the same as tensoring once. The details of the construction are in the original papers.
 
 **nLab:** [real homotopy theory](https://ncatlab.org/nlab/show/real+homotopy+theory). It says: “the real numbers k = ℝ are naturally a topological ring, whose topology, however, is ignored in the standard Quillen adjunction between simplicial sets and connective dgc-algebras over the real numbers.”
 
@@ -2102,9 +2102,9 @@
 
 **Definition.** An enriched differential graded Lie algebra is, roughly, a differential graded Lie algebra that is an inverse limit of finite-dimensional nilpotent ones. The category of these algebras has a homotopy theory like the one Sullivan built for commutative differential graded algebras.
 
-**Problem.** Many results of rational homotopy theory were proved only for simply connected spaces. The aim is to extend them to all path connected spaces.
+**Problem.** Every connected space has a unique minimal enriched Lie model, and an algebraic process connects it to the minimal Sullivan model. This extends results known only for simply connected spaces to all connected spaces.
 
-**How the definition helps.** Every connected space has a unique minimal model of this kind, so the theorems can be stated for all connected spaces. The paper says the interplay with Sullivan models extends results previously known only for simply connected spaces. The work moves into the construction of the homotopy theory of these algebras. The fundamental group is still seen only through its Malcev completion (our own).
+**How the definition helps.** Minimal models exist for every connected space, so the theorems can be stated without the simply connected condition. The work moves into the construction of the homotopy theory of these algebras. The fundamental group is still seen only through its Malcev completion (our own).
 
 **Paper or page:** [Enriched Differential Lie Algebras in Topology](https://arxiv.org/abs/2208.12171). It says: “Each connected space has a unique minimal edgl model, and an algebraic process connects this to the minimal Sullivan model.”
 
@@ -2190,9 +2190,9 @@
 
 **Definition.** Let a locally compact group G act freely on a completely regular space P. The quotient map P → P/G is a Cartan principal bundle if the division map is continuous. The division map goes from the pairs (p, q) in the same fiber to G, and sends (p, q) to the unique g with q = p·g. The definition does not ask for local triviality.
 
-**Problem.** When is the quotient map P → P/G of a free action a locally trivial principal bundle, that is, a product U × G over small open sets U? For example, is G → G/H one for every closed Lie subgroup H of a topological group G?
+**Problem.** If a Lie group G acts freely on a completely regular space P, then P → P/G is locally trivial exactly when it is a Cartan principal bundle (Palais). So P → P/G is locally trivial for every closed Lie subgroup G of a topological group P.
 
-**How the definition helps.** The Cartan condition is exactly what Palais's theorem needs, so the theorem has a clean statement. Let a Lie group G act freely on a completely regular space P. Then the quotient map is locally trivial exactly when the division map is continuous. A corollary is that P → P/G is a locally trivial principal bundle for every closed Lie subgroup G of a topological group P. The Lie condition matters. Karube's example, an infinite product of circles divided by the product of their order-2 subgroups, has no local sections. The hard part is Palais's slice theorem, not the definition.
+**How the definition helps.** The Cartan condition is exactly what Palais's theorem needs, so the theorem has a clean statement. The Lie condition matters. Karube's example, an infinite product of circles divided by the product of their order-2 subgroups, has no local sections. The hard part is Palais's slice theorem, not the definition.
 
 **nLab:** [principal bundle](https://ncatlab.org/nlab/show/principal+bundle). It says: “Then the quotient map P → P/G is a G-principal bundle -- in that it is locally trivial -- precisely if the division map”
 
@@ -2208,7 +2208,7 @@
 
 **Definition.** A semi-simplicial set is like a simplicial complex, but a simplex need not be determined by its vertices. Several simplices may share the same vertices. The Euler class of a circle bundle is a degree-two cohomology class that measures its twisting.
 
-**Problem.** Which circle bundles over a triangulated base can be triangulated over that base? The answer should be a condition on the Euler class.
+**Problem.** A circle bundle over a finite semi-simplicial base B can be semi-simplicially triangulated over B exactly when its integer Euler class has a special representative (Mnëv). The representative is a simplicial cocycle with values 0 and 1 on the 2-simplices of B.
 
 **How the definition helps.** The looser semi-simplicial notion removes extra combinatorial conditions (our own reading). So the criterion becomes a simple condition on a cocycle with values 0 and 1. For classical simplicial triangulations, the same theorem says that this condition is necessary but not sufficient. The theorem is due to Mnëv, and the paper quotes it as its starting point.
 
@@ -2227,9 +2227,9 @@
 
 **Definition.** In homotopy type theory, a covering space of a type X is a type family C : X → Sets. Here Sets is the type of sets, so C gives a set C(x) for each point x of X. The usual bundle is the first projection from the dependent sum type Σ (x : X), C(x) to X. This dependent sum is the type of pairs (x, c) with c in C(x).
 
-**Problem.** Prove the fundamental theorem of covering spaces. It says that covering spaces of X are equivalent to sets with an action of the fundamental groupoid of X.
+**Problem.** Covering spaces of X are equivalent to sets with an action of the fundamental groupoid of X (the fundamental theorem of covering spaces).
 
-**How the definition helps.** With this definition, the theorem is a special case of a general fact about 1-truncation. The 1-truncation ‖X‖₁ of X keeps the points and paths of X and forgets all higher structure, so it is the fundamental groupoid of X. Sets is a 1-type (a type whose identity types are sets), so by the universal property of 1-truncation, maps X → Sets are the same as maps ‖X‖₁ → Sets. In classical topology, the theorem needs X to be locally path-connected and semi-locally simply connected. The classical proof also builds a topology on the reconstructed covering space. In the type-theoretic version, this work moves into the definition of covering space. To get back the topological statement, one uses the shape modality of cohesive homotopy type theory (Cherubini and Rijke).
+**How the definition helps.** With this definition, the theorem is a special case of the universal property of 1-truncation. The 1-truncation ‖X‖₁ is the fundamental groupoid of X, and Sets is a 1-type, so maps X → Sets are the same as maps ‖X‖₁ → Sets. Classically, the theorem needs X locally path-connected and semi-locally simply connected, and the proof builds a topology on the covering space. In type theory, this work moves into the definition.
 
 **nLab:** [fundamental theorem of covering spaces](https://ncatlab.org/nlab/show/fundamental+theorem+of+covering+spaces). It says: “In homotopy type theory, the fundamental theorem of covering spaces is really just a special case of the universal property of 1-truncation.”
 
@@ -2245,9 +2245,9 @@
 
 **Definition.** Define ℝPⁿ and its tautological bundle of 2-element sets together, by induction on n. ℝP⁻¹ is the empty type. ℝPⁿ⁺¹ is the mapping cone (the space made by attaching a cone along a map) of the projection of the tautological bundle on ℝPⁿ. Univalence, the rule that equivalent types are equal, then gives the bundle on ℝPⁿ⁺¹.
 
-**Problem.** Construct the real projective spaces in homotopy type theory. Show that ℝPⁿ⁺¹ is ℝPⁿ with one (n+1)-cell attached. Show that ℝP∞ is K(ℤ/2, 1), the space whose only nonzero homotopy group is ℤ/2 in degree 1.
+**Problem.** In homotopy type theory, ℝPⁿ⁺¹ is ℝPⁿ with one (n+1)-cell attached. The colimit ℝP∞ is K(ℤ/2, 1), the space whose only nonzero homotopy group is ℤ/2 in degree 1.
 
-**How the definition helps.** Each step is a mapping cone, so the cell structure is built into the definition. The classical definition, the quotient of the n-sphere by the antipodal map, does not translate directly to homotopy type theory. Defining the space together with its bundle makes the inductive step a mapping cone. The work that remains is to show that the total space of the tautological bundle on ℝPⁿ is the n-sphere. Then ℝP∞, the colimit, is the type of 2-element types. This type classifies 0-sphere bundles, and it is K(ℤ/2, 1).
+**How the definition helps.** Each step is a mapping cone, so the cell structure is built into the definition. The classical quotient of the n-sphere by the antipodal map does not translate directly to homotopy type theory. The work that remains is to show that the total space of the tautological bundle on ℝPⁿ is the n-sphere. Then ℝP∞ is the type of 2-element types, which is K(ℤ/2, 1).
 
 **nLab:** [The real projective spaces in homotopy type theory](https://ncatlab.org/nlab/show/The+real+projective+spaces+in+homotopy+type+theory). It says: “The classical definition of ℝPⁿ, as the quotient space identifying antipodal points of the n-sphere, does not translate directly to homotopy type theory. Instead, we define ℝPⁿ by induction on n simultaneously with its tautological bundle of 2-element sets.”
 
@@ -2281,9 +2281,9 @@
 
 **Definition.** PSL(2,ℝ) acts on the circle. So a representation of a closed oriented surface group into PSL(2,ℝ) gives a flat circle bundle over the surface. Its Euler class e is the integer Euler number of that bundle, and Milnor–Wood says χ(Σ) ⩽ e ⩽ −χ(Σ). For punctured surfaces a relative Euler class plays the same role.
 
-**Problem.** How many connected components does the space of representations of a surface group into PSL(2,ℝ) have, and how can one tell them apart?
+**Problem.** Let Σ be a closed oriented surface of genus at least 2. The Euler class gives a bijection from the connected components of the space of representations into PSL(2,ℝ) to the integers e with χ(Σ) ⩽ e ⩽ −χ(Σ) (Goldman).
 
-**How the definition helps.** The Euler class is an integer that varies continuously, so it is constant on each component (our own remark). Goldman proved the converse: each value allowed by Milnor–Wood gives exactly one nonempty connected component. The paper quotes a version of this as Theorem 2.1. For a closed surface of genus g ⩾ 2 this gives 4g − 3 components (our own remark). Ryu and Yang treat type-preserving representations of punctured surfaces. There they also need the signs of the peripheral images, and punctured spheres have extra totally non-hyperbolic components. The hard part is to prove that each level set is connected.
+**How the definition helps.** The Euler class is an integer that varies continuously, so it is constant on each component (our own remark). Goldman proved the converse: each value allowed by Milnor–Wood gives exactly one nonempty component. For punctured surfaces, Ryu and Yang also need the signs of the peripheral images. The hard part is to prove that each level set is connected.
 
 **Paper or page:** [Connected components of the space of type-preserving representations](https://arxiv.org/abs/2507.07391), [Connected components of the space of type-preserving representations](https://arxiv.org/abs/2507.07391). It says: “We show that the connected components are indexed by the relative Euler classes and the signs of the images of the peripheral elements satisfying a generalized Milnor-Wood inequality”
 
@@ -2300,9 +2300,9 @@
 
 **Definition.** Take a cohomology theory with a classifying space A, so that cohomology classes are homotopy classes of maps into A. Take a fiber bundle X → B. Form the fiberwise mapping space from X into B × A over B, and reduce each fiber to its set of connected components. Over each point b this set is the cohomology of the fiber over b, and the result is a covering space of B.
 
-**Problem.** The cohomology groups of the fibers of a fiber bundle form a local system, that is, they carry a flat connection, the Gauss–Manin connection. This should hold also for twisted, generalized and non-abelian cohomology theories.
+**Problem.** Take any cohomology theory with a classifying space, including twisted, generalized and non-abelian ones. Then the cohomology groups of the fibers of a fiber bundle form a covering space of the base. Over a locally path-connected, semi-locally simply connected base, this is a local system, the Gauss–Manin connection.
 
-**How the definition helps.** The bundle of fiber cohomology groups is a covering space by construction, and a covering space is already a flat connection. Classically, one builds the Gauss–Manin connection from local trivializations, or from de Rham theory in the smooth case. When cohomology is homotopy classes of maps into a classifying space, the bundle of fiber cohomology groups is directly the fiberwise 0-truncation (the set of components in each fiber) of a fiberwise mapping space. After a fibrant replacement (a replacement by an equivalent fibration), such a truncation is a covering space. Over a suitably nice base (locally path-connected and semi-locally simply connected), a covering space is the same as a local system, that is, a flat connection. The same argument works for any theory with a classifying space, and it reads naturally in homotopy type theory. The nLab calls the argument non-standard, and notes that this simple case still covers the hypergeometric solutions of the Knizhnik–Zamolodchikov equation.
+**How the definition helps.** The bundle of fiber cohomology groups is a covering space by construction, and a covering space is already a flat connection. Classically, one builds the Gauss–Manin connection from local trivializations, or from de Rham theory in the smooth case. Here the bundle is the set of components of each fiber of a fiberwise mapping space, which after fibrant replacement is a covering space. The argument reads naturally in homotopy type theory.
 
 **nLab:** [Gauss-Manin connection](https://ncatlab.org/nlab/show/Gauss-Manin+connection). It says: “In fact, in that formal language the following construction of the Gauss-Manin connection for twisted cohomology on fibers of a fiber bundle is so simple that it becomes essentially a tautology.”
 
@@ -2320,7 +2320,7 @@
 
 **Problem.** Take any subgroup H ⊂ G. Then the H-fixed locus Pᴴ → Xᴴ of an equivariant principal bundle is again an equivariant principal bundle. Its group is Γᴴ, and it is equivariant for the Weyl group N(H)/H, where N(H) is the normalizer of H.
 
-**How the definition helps.** The internal definition uses only limits, and taking fixed points preserves limits, so the whole structure passes to fixed loci at once. Taking H-fixed points is a right adjoint functor, so it preserves all limits, in particular products and fiber products. The internal definition uses only such limits: a group object, an action and the principality condition. To keep the definition limit-only, the nLab does not ask that the base is the quotient of the total space, and it allows empty bundles. Empty bundles often appear as fixed loci. The nLab shows that the internal definition agrees with tom Dieck's explicit one through the semidirect product Γ ⋊ G. The harder questions, such as local triviality and classification, are left to later work.
+**How the definition helps.** The internal definition uses only limits, and taking fixed points preserves limits, so the whole structure passes to fixed loci at once. Taking H-fixed points is a right adjoint, so it preserves products and fiber products. To keep the definition limit-only, the nLab does not ask that the base be the quotient of the total space. It also allows empty bundles, which often appear as fixed loci.
 
 **nLab:** [equivariant bundle](https://ncatlab.org/nlab/show/equivariant+bundle). It says: “serves to make manifest that they have good behaviour under passage to fixed loci”
 
@@ -2336,9 +2336,9 @@
 
 **Definition.** A spectral sequence can come from an unrolled exact couple: a sequence of maps … → D² → D¹ → D⁰ together with exact sequences that connect them to the pages. The spectral sequence converges conditionally to D⁰ when this filtration is complete: the limit of the Dˢ is 0, and lim¹ of the Dˢ is 0. Here lim¹ is the first derived functor of the limit; it measures how far the limit fails to be exact. This is a condition on the target filtration only, not on the pages.
 
-**Problem.** Give a usable notion of convergence for spectral sequences that are not in the first or third quadrant, such as Adams spectral sequences. Also give a test for strong convergence.
+**Problem.** A conditionally convergent spectral sequence converges strongly when lim¹ of its pages vanishes (Boardman). This applies to half-plane spectral sequences, such as Adams spectral sequences.
 
-**How the definition helps.** Boardman splits convergence into two parts, and only one part depends on the pages. The first part, conditional convergence, is a condition that you can check in practice. The second part is one extra condition on the pages. His theorem says that a conditionally convergent spectral sequence converges strongly when lim¹ of the pages vanishes. This lets you state convergence theorems for half-plane spectral sequences. An example is the E-Adams spectral sequence, which in general converges only conditionally, to the E-nilpotent completion.
+**How the definition helps.** Boardman splits convergence into two parts, and only one part depends on the pages. Conditional convergence is a condition on the target filtration that you can check in practice. The second part is one extra condition on the pages. For example, the E-Adams spectral sequence in general converges only conditionally, to the E-nilpotent completion.
 
 **nLab:** [conditional convergence of spectral sequences](https://ncatlab.org/nlab/show/conditional+convergence+of+spectral+sequences). It says: “that converges conditionally, then sufficient condition that it converges strongly (def.) is that also the lim¹ over its pages vanishes”
 
@@ -2354,9 +2354,9 @@
 
 **Definition.** A cubical set is like a simplicial set, but it is built from cubes instead of simplices. A cubical set with connections has extra degeneracy maps Γ, called connections. A connection makes an n-cube into an (n+1)-cube by folding, like the maps (s,t) ↦ max(s,t) or (s,t) ↦ min(s,t) on the square. Brown and Higgins added them.
 
-**Problem.** Show that every cubical group is a Kan complex (every horn in it has a filler). Also show that geometric realization sends products of cubical sets to products of the right homotopy type.
+**Problem.** Every cubical group with connections is a Kan complex (Tonks). The cube category with connections is a strict test category, so products of cubical sets have the correct homotopy type (Maltsiniotis).
 
-**How the definition helps.** Connections supply the extra structure that two later theorems use. Plain cubical sets fail both claims: cubical groups need not be Kan, and the realization of the product I × I of cubical sets has non-trivial homotopy groups. So that realization is not the contractible square. These failures were one reason that people gave up Kan's cubical approach for simplicial sets. With connections, Tonks proved that cubical groups are Kan. Maltsiniotis proved that the cube category with connections is a strict test category, so products have the correct homotopy type. A strict test category is a category of shapes whose presheaves model homotopy types and respect products. The real content is in those two theorems.
+**How the definition helps.** Connections supply the extra structure that both theorems use. Plain cubical sets fail both claims: cubical groups need not be Kan, and the realization of the cubical product I × I has non-trivial homotopy groups. These failures were one reason that people gave up Kan's cubical approach for simplicial sets. The real content is in the two theorems.
 
 **nLab:** [cubical set](https://ncatlab.org/nlab/show/cubical+set), [connection on a cubical set](https://ncatlab.org/nlab/show/connection+on+a+cubical+set). It says: “Another reason was that cubical groups were in general not Kan complexes; however cubical groups with connection are Kan complexes.”
 
@@ -2373,9 +2373,9 @@
 
 **Definition.** A cubical set has connections if it has extra (n+1)-cells besides the degenerate ones. For each n-cell f : a → b, such a cell has f on two adjacent sides of its boundary and degenerate cells (identities) on the other two. Connections are extra operations of the same kind as degeneracies.
 
-**Problem.** Brown and Higgins wanted an equivalence between cubical ∞-groupoids and crossed complexes. A crossed complex is an algebraic structure like a chain complex, with a groupoid at the bottom and groupoid actions above it. They also wanted a usable notion of a commutative n-shell, that is, a commuting cube.
+**Problem.** Cubical ω-groupoids with connections are equivalent to crossed complexes (Brown and Higgins). A crossed complex is like a chain complex, with a groupoid at the bottom and groupoid actions above it.
 
-**How the definition helps.** Connections supply the 'thin' cells that a cubical set needs for this equivalence. Plain cubical sets have only the degeneracies, which repeat a cell along a new direction. Connections add cells that fold a cell onto two adjacent sides. The nLab says they are also needed for the notion of a commutative n-shell. With connections, Brown and Higgins proved that cubical ω-groupoids with connections are equivalent to crossed complexes. In dimension 2 the same idea gives the Brown–Spencer equivalence of crossed modules (a group homomorphism with a compatible action) with edge-symmetric double groupoids with connection.
+**How the definition helps.** Connections supply the thin cells that a cubical set needs for this equivalence. Plain cubical sets have only degeneracies, which repeat a cell along a new direction. The nLab says that connections are also needed to define a commutative n-shell. In dimension 2, the same idea gives the Brown–Spencer equivalence of crossed modules with edge-symmetric double groupoids with connection.
 
 **nLab:** [connection on a cubical set](https://ncatlab.org/nlab/show/connection+on+a+cubical+set). It says: “Such connections on cubical sets were introduced in 1981 by Brown and Higgins in order to obtain the equivalence of their "cubical ∞-groupoids" with crossed complexes.”
 
@@ -2391,9 +2391,9 @@
 
 **Definition.** Let A be a small category. A presheaf on A is aspherical if the nerve of its category of elements is contractible (the nerve is the simplicial set whose n-simplices are strings of n composable arrows). A is a weak test category if, for every category D with a terminal object, the presheaf a ↦ Hom(A/a, D) is aspherical; here A/a is the slice category of objects over a. A is a test category if A itself has a contractible nerve and every slice A/a is a weak test category.
 
-**Problem.** Find which shape categories, such as simplices, cubes or cells, have presheaf categories that model all homotopy types.
+**Problem.** For a weak test category A, the homotopy category of presheaves on A is equivalent to the homotopy category of small categories. So presheaves on a test category model homotopy types.
 
-**How the definition helps.** The axioms make the comparison with categories almost automatic. For a weak test category A, the comparison with Cat, the category of small categories, gives an equivalence Ho(A-Set) ≅ Ho(Cat). Here A-Set is the category of presheaves on A, and Ho means that weak equivalences are inverted. This follows by a short argument (Maltsiniotis, Lemme 1.3.8 and Proposition 1.3.9), so presheaves on a test category model homotopy types almost by definition. The real work moves to two places: proving that Cat models homotopy types through nerves, and checking that particular categories, such as the simplex category Δ, are test categories. Cisinski later built the model structure on presheaves over a test category.
+**How the definition helps.** The axioms make the comparison with small categories almost automatic: it follows by a short argument (Maltsiniotis, Lemme 1.3.8 and Proposition 1.3.9). The real work moves to two places. One must prove that small categories model homotopy types through nerves, and check that categories such as the simplex category Δ are test categories.
 
 **nLab:** [test category](https://ncatlab.org/nlab/show/test+category), [Pursuing Stacks](https://ncatlab.org/nlab/show/Pursuing+Stacks). It says: “In other words, presheaves over a (weak) test category are models for homotopy types of ∞-groupoids.”
 

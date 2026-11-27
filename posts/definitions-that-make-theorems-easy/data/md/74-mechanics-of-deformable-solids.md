@@ -340,9 +340,9 @@
 
 *True by definition.* MSC 74B20 (Nonlinear elasticity). arXiv math.AP, physics.class-ph. Level 3: graduate.
 
-**Definition.** An elastic energy is polyconvex if it is a convex function of the minors of the deformation gradient. Minors are determinants of square submatrices. The deformation gradient F is the derivative of the deformation map. For a volume-only energy, write W(F) = h(det F).
+**Definition.** An elastic energy W(F) of the deformation gradient F is polyconvex if it is a convex function of the minors of F, the determinants of its square submatrices. It is rank-one convex if it is convex along every line whose direction matrix has rank one. A volume-only energy has the form W(F) = h(det F).
 
-**Problem.** For energies W(F) = h(det F) on all real square matrices of a fixed size, three convexity tests agree with scalar convexity of h. Quasiconvexity means that gradient perturbations fixing the boundary cannot lower the average energy of a constant gradient. Rank-one convexity tests lines whose direction matrix has rank one.
+**Problem.** For W(F) = h(det F) on all real square matrices of a fixed size, polyconvexity, quasiconvexity and rank-one convexity of W are each equivalent to convexity of h.
 
 **How the definition helps.** In our own proof, convexity of h gives polyconvexity immediately because the determinant itself is a minor. The usual implications then give quasiconvexity and rank-one convexity. Conversely, vary the first diagonal entry of the identity matrix. The resulting rank-one test is exactly scalar convexity of h.
 
@@ -410,7 +410,7 @@
 
 **Definition.** Represent the displacement in a plane by two scalar functions called potentials. Add the gradient of the first to the gradient of the second rotated through a right angle.
 
-**Problem.** Consider waves at a fixed nonzero frequency in a uniform, isotropic linear elastic solid with no body force. Scalar waves at the compression and shear speeds give an interior displacement solution through these potentials. The boundary conditions can still couple them.
+**Problem.** In a uniform, isotropic linear elastic solid with no body force, at a fixed nonzero frequency, let the first potential solve the scalar wave equation at the compression speed and the second at the shear speed. Then the resulting displacement solves the elastic wave equation in the interior, though boundary conditions can still couple the two.
 
 **How the definition helps.** Each potential produces just one wave type, so each solves a scalar equation. In our own calculation, the gradient has zero curl and the rotated gradient has zero divergence. Their sum therefore solves the elastic wave equation. Recovering the potentials from a given displacement requires a decomposition theorem.
 
@@ -512,9 +512,9 @@
 
 *Rules out counterexamples.* MSC 74A10 (Stress). arXiv math.AP. Level 4: research.
 
-**Definition.** Take square-integrable stress matrices on a bounded connected body whose boundary is locally the graph of a Lipschitz function. Choose a closed linear subspace that excludes the constant identity matrix.
+**Definition.** Pressure normalization restricts square-integrable stress fields on a bounded connected Lipschitz body to a closed linear subspace that excludes the constant identity matrix. The identity matrix is a constant pressure.
 
-**Problem.** In this subspace, the square-integral norm of the trace is bounded by a constant times the sum of two norms. One is the square-integral norm after subtracting the scalar part of the stress. The other measures divergence against test fields vanishing at the boundary with gradient norm at most one.
+**Problem.** On this subspace, the square-integral norm of the trace of the stress is at most a constant times the sum of two norms. These are the square-integral norm of its deviatoric part, the stress minus its scalar part, and the norm of its divergence against test fields that vanish on the boundary and have gradient norm at most one.
 
 **How the definition helps.** The subspace excludes constant pressure, which both norms on the right miss. The identity matrix illustrates this obstruction in our own example. The estimate still requires a bound on the variable part of the trace and control of its mean.
 

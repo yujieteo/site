@@ -122,7 +122,7 @@
 
 **Problem.** For bounded continuous f, Aₙ(t) tends to f(t). This average equals the nth derivative of F at n/t multiplied by (−1)ⁿ(n/t)ⁿ⁺¹/n!.
 
-**How the definition helps.** The probability density turns inversion by high derivatives into averaging near t (our own). The gamma integral gives mean (n + 1)t/n and variance (n + 1)t²/n² (our own). Chebyshev’s inequality makes the probability outside any fixed neighborhood of t tend to zero (our own). Continuity controls the average inside that neighborhood, and boundedness controls the rest (our own). Differentiating under the Laplace integral identifies this average with the derivative formula (our own).
+**How the definition helps.** The probability density turns inversion by high derivatives into averaging near t (our own). The gamma density has mean (n + 1)t/n and variance (n + 1)t²/n², so by Chebyshev's inequality its mass outside any fixed neighborhood of t tends to zero (our own). Continuity controls the average inside that neighborhood, and boundedness controls the rest (our own). Differentiating under the Laplace integral identifies the average with the derivative formula (our own).
 
 **Paper or page:** [Multidimensional vector-valued Laplace transform and applications](https://arxiv.org/abs/2506.18909v1). It says: “Then the following Post-Widder inversion formula holds”
 
@@ -270,9 +270,9 @@
 
 *Rules out counterexamples.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Start with the Hilbert kernel 1/(x − t). Add 1/t when \|t\| &gt; 1, then divide the kernel by π. Integrate against f(t), omitting a symmetric interval about x and taking the limit as its width tends to zero.
+**Definition.** The modified Hilbert transform of f at x integrates f(t) against (1/π)(1/(x − t) + 1/t) for \|t\| &gt; 1 and against (1/π)·1/(x − t) for \|t\| ≤ 1. The integral is a principal value: a symmetric interval about x is omitted, and its width tends to zero.
 
-**Problem.** The modified integral exists at every x for bounded, locally Hölder continuous functions. On each compact interval their increments satisfy \|f(t) − f(x)\| ≤ C\|t − x\|ᵅ for constants C, α &gt; 0.
+**Problem.** For every bounded, locally Hölder continuous function f on ℝ, the modified Hilbert transform exists at every x.
 
 **How the definition helps.** Adding 1/t makes the distant kernel decay quadratically, so bounded inputs give integrable tails (our own). Near x, symmetric integration cancels the constant f(x), and the Hölder bound makes the remainder integrable (our own). For f(t) = tanh(t), the uncorrected integrand at x = 0 behaves like −1/\|t\| at both ends (our own).
 

@@ -8,7 +8,7 @@
 
 **Problem.** To show that a structure is a group, it is enough to check associativity, a left identity and left inverses. The left inverses are then two-sided, and so is the identity.
 
-**How the definition helps.** The weaker axioms halve the work of checking a group, and associativity supplies the other side. Our own sketch: if yx = e and zy = e, then xy = (zy)(xy) = z(yx)y = zy = e. So left inverses are right inverses, and then xe = x(yx) = (xy)x = ex = x. ProofWiki shows that a left identity in a semigroup need not be unique. Our own example: on a set with two or more elements, let xy = y. Then every element is a left identity and has a right inverse, but this is not a group. The proof that the two schemes agree is a short computation.
+**How the definition helps.** The weaker axioms halve the work of checking a group, and associativity supplies the other side. Our own sketch: if yx = e and zy = e, then xy = (zy)(xy) = z(yx)y = zy = e, and then xe = x(yx) = (xy)x = ex = x. The two sides must match: on a set with two or more elements, put xy = y. Then every element is a left identity and has a right inverse, but the set is not a group (our own example).
 
 **Paper or page:** [Equivalence of Axiom Schemata for Groups](https://proofwiki.org/wiki/Equivalence_of_Axiom_Schemata_for_Groups), [Left Identity in Semigroup may not be Unique](https://proofwiki.org/wiki/Left_Identity_in_Semigroup_may_not_be_Unique). It says: “there exists at least one element e ∈ G such that e is a left identity; For any element g in a group G, there exists at least one left inverse of g.”
 
@@ -41,9 +41,9 @@
 
 **Definition.** A subgroup of a group G is a subset H that is a group under the operation of G. A group always contains an identity, so it is never empty.
 
-**Problem.** Give a short test for a subset H of a group G to be a subgroup.
+**Problem.** A subset H of a group G is a subgroup exactly when H is nonempty, closed under products and closed under inverses.
 
-**How the definition helps.** Closure under products and inverses holds vacuously for the empty set, so the nonempty clause is what brings the identity into H. Our own sketch: with some a in H, closure gives a⁻¹ in H, and then e = aa⁻¹ is in H. ProofWiki records that the empty set is a submagma of any magma, a set with one operation. So without clause (1), the test would accept ∅, which is not a group. ProofWiki also records that a monoid cannot be empty, which is why groups and their subgroups are nonempty. Nothing hard remains.
+**How the definition helps.** Closure under products and inverses holds vacuously for the empty set, so the nonempty clause is what brings the identity into H. Our own sketch: with some a in H, closure gives a⁻¹ in H, and then e = aa⁻¹ is in H. Without the nonempty clause, the test would accept ∅, which is not a group. Nothing hard remains.
 
 **Paper or page:** [Two-Step Subgroup Test](https://proofwiki.org/wiki/Two-Step_Subgroup_Test), [Empty Set is Submagma of Magma](https://proofwiki.org/wiki/Empty_Set_is_Submagma_of_Magma), [Monoid is not Empty](https://proofwiki.org/wiki/Monoid_is_not_Empty). It says: “(1): H ≠ ∅, that is, H is non-empty (2): a, b ∈ H ⟹ a ∘ b ∈ H (3): a ∈ H ⟹ a⁻¹ ∈ H.”
 
@@ -61,9 +61,9 @@
 
 **Definition.** An action of a group G on a set X is transitive when, for all x and y in X, there is g in G with y = g · x. Often one also requires X to be inhabited, that is, nonempty.
 
-**Problem.** Show that every transitive G-set is isomorphic to a coset space G/H. Also show that the transitive G-sets are the connected objects of the category of G-sets. A connected object is not empty and does not split as a coproduct of two nonempty objects.
+**Problem.** Let G act transitively on an inhabited set X, and let H be the stabilizer of a point. Then X is isomorphic to the coset space G/H, and the transitive inhabited G-sets are exactly the connected objects of the category of G-sets.
 
-**How the definition helps.** Asking for at least one point removes the empty set, which is the one case that breaks both statements. By the literal definition, the empty set carries a transitive action. But it is not a coset space G/H, and it is not a connected object. When X is inhabited, pick x in X and let H be its stabilizer, the subgroup of elements that fix x. Transitivity makes the map gH ↦ g · x a bijection G/H → X. Every G-set then splits uniquely as a coproduct of transitive ones.
+**How the definition helps.** Asking for at least one point removes the empty set, the one case that breaks both statements. The empty set carries a transitive action by the literal definition, but it is not a coset space and not a connected object. For inhabited X, pick x and let H be its stabilizer; transitivity makes gH ↦ g · x a bijection G/H → X. Every G-set splits uniquely as a coproduct of transitive ones, which gives the second claim.
 
 **nLab:** [transitive action](https://ncatlab.org/nlab/show/transitive+action). It says: “Let \* : G × X → X be a transitive action and suppose that X is inhabited. Then \* is equivalent to the action of G by multiplication on a coset space G/H”
 
@@ -127,7 +127,7 @@
 
 **Problem.** In a finite group, every p-subgroup lies in some Sylow p-subgroup. Sylow's theorems add that all Sylow p-subgroups are conjugate and have order pⁿ, the largest power of p that divides the order of G.
 
-**How the definition helps.** With the maximal definition, the containment statement is almost automatic. In a finite group, enlarge a p-subgroup step by step until it cannot grow. The work moves into Sylow's other theorems: a subgroup of order pⁿ exists, and all maximal p-subgroups are conjugate to it. Modern proofs of conjugacy let a p-subgroup act on the cosets of a Sylow subgroup and count fixed points. The page uses the same definition in infinite groups, where there is no order to compare. There, conjugacy can fail (our own). In the infinite dihedral group, each reflection generates a maximal 2-subgroup of order 2, and these subgroups form two conjugacy classes (our own).
+**How the definition helps.** With the maximal definition the containment is almost automatic: in a finite group, enlarge a p-subgroup step by step until it cannot grow. The work moves into Sylow's other theorems, that a subgroup of order pⁿ exists and that all maximal p-subgroups are conjugate to it. The same definition makes sense in infinite groups, but there conjugacy can fail (our own). In the infinite dihedral group, each reflection generates a maximal 2-subgroup of order 2, and these form two conjugacy classes (our own).
 
 **Wikipedia:** [Sylow theorems](https://en.wikipedia.org/wiki/Sylow_theorems). It says: “A Sylow p-subgroup of a group G is a maximal p-subgroup—that is, a p-subgroup of G not contained in any strictly larger p-subgroup.”
 
@@ -159,9 +159,9 @@
 
 **Definition.** A subgroup N of G is normal if gNg⁻¹ = N for all g ∈ G. Equivalently, the coset g₁g₂N of a product depends only on the cosets g₁N and g₂N.
 
-**Problem.** Give the set G/N of cosets a group structure. Match normal subgroups with congruences, the equivalence relations that respect multiplication.
+**Problem.** For a subgroup N of G, the rule (g₁N)(g₂N) = g₁g₂N makes the cosets G/N a group exactly when N is normal. Normal subgroups are then the same as kernels of homomorphisms and as congruences on G.
 
-**How the definition helps.** Normality is exactly the condition that makes coset multiplication well defined. For an arbitrary subgroup, multiplying cosets is not well defined. For a normal subgroup, G/N is a group and N is the kernel of G → G/N; conversely, every kernel is normal. So normal subgroups are the same as kernels and as congruences on G. Congruences on a group commute with each other, because groups form a Mal'cev category. So the normal subgroups of a group form a modular lattice (a lattice where a ≤ c implies a ∨ (b ∧ c) = (a ∨ b) ∧ c). The lattice of all subgroups need not be modular; for the dihedral group of order 8 it contains a pentagon, the five-element lattice that is not modular.
+**How the definition helps.** Normality is exactly the condition that makes coset multiplication well defined; for an arbitrary subgroup it is not. For normal N, G/N is a group and N is the kernel of G → G/N. Conversely, every kernel is normal, so normal subgroups, kernels and congruences match.
 
 **nLab:** [normal subgroup](https://ncatlab.org/nlab/show/normal+subgroup). It says: “Thus normal subgroups may also be defined as kernels f⁻¹(e) of group homomorphisms G → H (e ∈ H is the identity), and this is largely the point of normal subgroups: they are equivalent to congruence relations in the category of groups.”
 
@@ -209,9 +209,9 @@
 
 **Definition.** A group G is simple if it has exactly two normal subgroups: the trivial subgroup and G itself. So the trivial group is not simple, because it has only one normal subgroup.
 
-**Problem.** The Jordan–Hölder theorem says that any two composition series of a finite group have the same length and the same simple factors, up to order. A composition series is a chain of subgroups, each normal in the next, whose successive quotients (the factors) are simple. The problem also includes the classification of finite simple groups as the building blocks of all finite groups.
+**Problem.** Any two composition series of a finite group have the same length and the same simple factors, up to order (the Jordan–Hölder theorem). A composition series is a chain of subgroups, each normal in the next, whose successive quotients are simple.
 
-**How the definition helps.** The 'exactly two' rule forbids trivial factors, so the length of a composition series is well defined. If the trivial group counted as simple, one could pad a composition series by repeating a term, which adds a trivial factor. With the 'exactly two' definition, each composition factor is nontrivial, so the Jordan–Hölder theorem holds without exceptions, and the list of finite simple groups has no trivial entry. The nLab calls this example the namer of the principle 'too simple to be simple'. It compares it with 1 not being prime: for cyclic groups, simple groups match prime numbers and composition series match prime factorizations. The padding argument is our own reading; the nLab states the exclusion and the theorem separately. The proof of Jordan–Hölder is still an induction on the order of the group.
+**How the definition helps.** The rule of exactly two normal subgroups forbids trivial factors, so the length of a composition series is well defined. If the trivial group counted as simple, one could pad a series by repeating a term, which adds a trivial factor (our own reading). The nLab compares this with 1 not being prime: for cyclic groups, composition series match prime factorizations. The proof of Jordan–Hölder is still an induction on the order of the group.
 
 **nLab:** [simple group](https://ncatlab.org/nlab/show/simple+group), [too simple to be simple](https://ncatlab.org/nlab/show/too+simple+to+be+simple), [Jordan-Hölder theorem](https://ncatlab.org/nlab/show/Jordan-H%C3%B6lder+theorem). It says: “Note that the trivial group does not itself count as simple, on the grounds that it has only \*one\* quotient group (or only one normal subgroup).”
 
@@ -229,7 +229,7 @@
 
 **Problem.** If H is characteristic in K and K is normal in G, then H is normal in G. Also, a characteristic subgroup of a characteristic subgroup is characteristic.
 
-**How the definition helps.** A characteristic subgroup is fixed by all automorphisms, so it survives conjugation from a larger group, and the proof is one line (our own). Conjugation by an element of G restricts to an automorphism of the normal subgroup K (our own). That automorphism need not be inner in K, but it still fixes H (our own). Plain normality fails in the dihedral group of order 8 (our own). There a reflection generates a subgroup that is normal in a Klein four-subgroup, which is normal in the whole group (our own). But the subgroup of the reflection is not normal in the whole group (our own). This is why induction proofs often use centers, commutator subgroups and Fitting subgroups, which are characteristic (our own).
+**How the definition helps.** A characteristic subgroup is fixed by all automorphisms, so it survives conjugation from a larger group, and the proof is one line (our own). Conjugation by an element of G restricts to an automorphism of the normal subgroup K, which need not be inner but still fixes H (our own). Plain normality fails in the dihedral group of order 8 (our own). There a reflection generates a subgroup that is normal in a Klein four-subgroup, which is normal in the whole group, but the reflection subgroup is not normal in the whole group (our own).
 
 **Wikipedia:** [Characteristic subgroup](https://en.wikipedia.org/wiki/Characteristic_subgroup). It says: “Moreover, while normality is not transitive, it is true that every characteristic subgroup of a normal subgroup is normal.”
 
@@ -355,11 +355,11 @@
 
 *True by definition.* MSC 20B15 (Primitive groups), 20E28. arXiv math.GR. Level 2: later undergraduate.
 
-**Definition.** A transitive action of G on a set X is primitive if it preserves no partition of X except the two trivial ones. These are the partition into one block and the partition into single points. Galois introduced the term in his last letter.
+**Definition.** A transitive action of G on a set X is primitive if it preserves no partition of X except the two trivial ones. These are the partition into one block and the partition into single points.
 
 **Problem.** A transitive action of G on the cosets G/H is primitive if and only if H is a maximal subgroup of G. So listing the primitive actions of G is the same as listing its maximal subgroups up to conjugacy.
 
-**How the definition helps.** The blocks that contain the base point correspond to the subgroups between H and G, so the equivalence is almost a restatement (our own). A subgroup K with H &lt; K &lt; G gives the block of cosets kH for k in K (our own). Every block that contains the base point arises this way (our own). The transitivity condition in the definition excludes one bad case. The trivial group acting on a two-element set preserves only trivial partitions but is not transitive. The hard work moves to the structure of primitive groups and to the lists of maximal subgroups of the simple groups (our own).
+**How the definition helps.** The blocks that contain the base point correspond to the subgroups between H and G, so the equivalence is almost a restatement (our own). A subgroup K with H &lt; K &lt; G gives the block of cosets kH for k in K, and every block that contains the base point arises this way (our own). Transitivity in the definition excludes one bad case: the trivial group on a two-element set preserves only trivial partitions but is not transitive. The hard work moves to the lists of maximal subgroups of the simple groups (our own).
 
 **Wikipedia:** [Primitive permutation group](https://en.wikipedia.org/wiki/Primitive_permutation_group). It says: “A group action is primitive if it is isomorphic to G/H for a maximal subgroup H of G, and imprimitive otherwise”
 
@@ -387,11 +387,11 @@
 
 *True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)), 16D20. arXiv math.RT, math.GR. Level 2: later undergraduate.
 
-**Definition.** Let H be a subgroup of a group G, and let V be a representation of H. The induced representation Ind V is the tensor product 𝕂\[G\] ⊗ V, taken over the group algebra 𝕂\[H\]. Induction is left adjoint to restriction (it is the best approximation from the left), where restriction takes a representation of G to a representation of H.
+**Definition.** Let H be a subgroup of a group G, and let V be a representation of H. The induced representation Ind V is the tensor product 𝕂\[G\] ⊗ V over the group algebra 𝕂\[H\].
 
-**Problem.** Prove Frobenius reciprocity. In words, maps of G-representations from Ind V to W match maps of H-representations from V to the restriction Res W. The same holds for characters: the inner product over G of Ind χ and ψ equals the inner product over H of χ and Res ψ.
+**Problem.** Maps of G-representations from Ind V to W correspond naturally to maps of H-representations from V to the restriction Res W. For finite groups over ℂ, the inner product over G of Ind χ and ψ equals the inner product over H of χ and Res ψ.
 
-**How the definition helps.** With this definition, Frobenius reciprocity is a case of the tensor–hom adjunction for modules, so it holds almost by definition. The tensor–hom adjunction says that maps out of a tensor product M ⊗ V match maps from V into a module of maps out of M. For finite groups over ℂ, the identity for characters follows when you take the dimensions of the two spaces of maps. Two things stay hard. For a subgroup of finite index, you must prove that the left and right induced representations agree (an ambidextrous adjunction, where one functor is both a left and a right adjoint). You must also prove Mackey's formula, which describes the restriction of an induced representation.
+**How the definition helps.** With this definition, Frobenius reciprocity is a case of the tensor–hom adjunction for modules, so it holds almost by definition. That adjunction says that maps out of M ⊗ V match maps from V into the module of maps out of M. For finite groups over ℂ, the character identity follows by taking dimensions of the two spaces of maps. What stays hard is, for example, Mackey's formula for the restriction of an induced representation.
 
 **nLab:** [induced representation](https://ncatlab.org/nlab/show/induced+representation), [Frobenius reciprocity](https://ncatlab.org/nlab/show/Frobenius+reciprocity). It says: “is the statement that the induction functor for representations of groups (or in some other algebraic categories) is left adjoint to the restriction functor.”
 
@@ -409,7 +409,7 @@
 
 **Problem.** Over the complex numbers, ℂ\[G\] is a product of matrix algebras, one for each irreducible representation, of size its dimension. So the squares of the dimensions of the irreducible representations add up to the order of G. The number of irreducible representations equals the number of conjugacy classes.
 
-**How the definition helps.** Viewing representations as modules over one algebra lets ring theory, here the Wedderburn–Artin theorem, do the counting. That theorem says that a semisimple algebra is a product of matrix algebras over division rings. Comparing dimensions of the two sides of the product gives the sum of squares (our own). Comparing the dimensions of the centers gives the count of conjugacy classes, since the center of K\[G\] has a basis of class sums (our own). The page adds that over ℝ or ℚ the factors become matrix algebras over division rings. In the modular case, where the characteristic divides the order, the algebra is not semisimple. Then the module view is still the right frame, but the structure is much harder.
+**How the definition helps.** Viewing representations as modules over one algebra lets the Wedderburn–Artin theorem do the counting. That theorem says that a semisimple algebra is a product of matrix algebras over division rings, which over ℂ are ℂ itself. Comparing dimensions gives the sum of squares, and comparing the dimensions of the centers gives the count of conjugacy classes, since the center of ℂ\[G\] has a basis of class sums (our own). When the characteristic divides the order, the algebra is not semisimple and the structure is much harder.
 
 **Wikipedia:** [Maschke's theorem](https://en.wikipedia.org/wiki/Maschke%27s_theorem), [Group ring](https://en.wikipedia.org/wiki/Group_ring). It says: “The importance of this result stems from the well developed theory of semisimple rings, in particular, their classification as given by the Wedderburn–Artin theorem.”
 
@@ -425,7 +425,7 @@
 
 **Definition.** Let ρ and σ be representations of a finite group G on complex vector spaces V and W. On the space of all linear maps f from V to W, define the action of g by f ↦ σ(g) f ρ(g⁻¹). One can instead describe maps of representations directly by the equations σ(g) f = f ρ(g).
 
-**Problem.** Take the space of maps that respect both actions. Its dimension is the average over g in G of the product of the traces of ρ(g⁻¹) and σ(g).
+**Problem.** The space of G-equivariant maps from V to W has dimension equal to the average over g in G of trace ρ(g⁻¹) times trace σ(g).
 
 **How the definition helps.** The action on all linear maps turns the theorem into the general formula for the dimension of fixed vectors (our own). Its fixed-vector equation is exactly the direct equation for a map of representations (our own). Averaging the action gives a projection onto the fixed vectors, and the projection has trace equal to its rank (our own). The other step computes the trace of f ↦ σ(g) f ρ(g⁻¹) as the product of the two traces (our own).
 
@@ -459,7 +459,7 @@
 
 **Problem.** The induced class function θᴳ is a character of G, that is, the character of an actual representation.
 
-**How the definition helps.** The definition fixes the coefficients of θᴳ in the basis of irreducible characters. Each coefficient is ⟨θ, χ restricted to H⟩, an inner product of two characters of H, so it is a nonnegative integer. So θᴳ is a character. This runs the other way from defining induction as a tensor product, where reciprocity is the theorem. Here reciprocity is the definition, and the work moves into the theorem that irreducible characters form an orthonormal basis of class functions. The explicit formula for θᴳ as a sum over coset representatives is then a separate result. Frobenius found the matrix construction of the induced representation later.
+**How the definition helps.** The definition fixes the coefficients of θᴳ in the basis of irreducible characters. Each coefficient is ⟨θ, χ restricted to H⟩, an inner product of two characters of H, so it is a nonnegative integer, and θᴳ is a character. Here reciprocity is the definition, so the work moves into the theorem that irreducible characters form an orthonormal basis of class functions. The explicit formula for θᴳ as a sum over coset representatives is a separate result.
 
 **Wikipedia:** [Character theory](https://en.wikipedia.org/wiki/Character_theory). It says: “this definition makes it clear that θᴳ is a non-negative integer combination of irreducible characters of G, so is indeed a character of G.”
 
@@ -475,7 +475,7 @@
 
 **Problem.** The indicator is 1 if V admits a nonzero invariant symmetric form, −1 if it admits a nonzero invariant alternating form, and 0 otherwise.
 
-**How the definition helps.** Counting forms makes the three values immediate once Schur’s lemma bounds the total dimension by one (our own). Invariant forms are maps of representations from V to its dual, so Schur’s lemma gives that bound (our own). The symmetric and alternating parts of an invariant form are both invariant (our own). To compare definitions, average the traces on the full spaces of symmetric and alternating forms. The two averages count the invariant dimensions because group averaging projects onto invariant forms (our own). In a basis where g acts diagonally, the trace difference is χ(g⁻²) because the terms from pairs of distinct basis vectors cancel (our own). Its average equals the average of χ(g²) by inversion (our own).
+**How the definition helps.** Counting forms makes the three values immediate once Schur's lemma bounds the total dimension by one (our own). Invariant forms are maps of representations from V to its dual, so Schur's lemma gives that bound, and the symmetric and alternating parts of an invariant form are both invariant (our own). To compare with the character definition, group averaging projects onto invariant forms, so the average trace difference on symmetric and alternating forms counts the indicator (our own). That trace difference is χ(g⁻²), whose average equals the average of χ(g²) (our own).
 
 **Wikipedia:** [Frobenius–Schur indicator](https://en.wikipedia.org/wiki/Frobenius%E2%80%93Schur_indicator). It says: “The inner product counts the multiplicities of direct summands; the equivalence of the definitions then follows immediately.”
 
@@ -519,11 +519,11 @@
 
 *True by definition. Confidence: medium.* MSC 20C15 (Ordinary representations and characters), 16S34. arXiv math.RT. Level 2: later undergraduate.
 
-**Definition.** A complex representation of a finite group G is a module over ℂ\[G\], the group algebra with basis G. Its centre consists of sums whose coefficients are constant on conjugacy classes, the sets of group elements related by conjugation. The character approach instead counts independent trace functions on those classes.
+**Definition.** A complex representation of a finite group G is a module over the group algebra ℂ\[G\], which has basis G. The centre of ℂ\[G\] consists of the sums whose coefficients are constant on conjugacy classes. The character approach instead counts independent class functions.
 
 **Problem.** There are as many irreducible complex representations of a finite group, up to isomorphism, as there are conjugacy classes.
 
-**How the definition helps.** The group-algebra model lets both counts be read from the dimension of its centre (our own). Sums of the elements in each conjugacy class form a basis of the centre (our own). The work lies in the matrix-block decomposition of ℂ\[G\] (our own). Maschke’s theorem gives complete reducibility, and the Wedderburn–Artin theorem then gives one full matrix algebra per irreducible representation (our own). Each full matrix algebra has a one-dimensional centre consisting of scalar matrices (our own). The character proof instead shows that irreducible characters form a basis of the functions constant on conjugacy classes (our own).
+**How the definition helps.** The group-algebra model lets both counts be read from the dimension of the centre of ℂ\[G\] (our own). The conjugacy class sums form a basis of the centre, so this dimension is the number of classes (our own). Maschke's theorem and the Wedderburn–Artin theorem split ℂ\[G\] into one full matrix algebra per irreducible representation, and each has a one-dimensional centre of scalars (our own). The character proof instead shows that the irreducible characters form a basis of the class functions (our own).
 
 **Wikipedia:** [Group ring](https://en.wikipedia.org/wiki/Group_ring). It says: “The center is equal to the set of class functions, that is the set of elements that are constant on each conjugacy class”
 
@@ -539,7 +539,7 @@
 
 **Problem.** Hall (1928): if G is finite and solvable, then for every set of primes π, G has a Hall π-subgroup, and any two are conjugate. Conversely, a finite group with a Hall π-subgroup for every π is solvable.
 
-**How the definition helps.** The coprime condition rules out divisors such as 6 in A₄, where existence fails, so Sylow's theorem extends to solvable groups with no exceptions. The divisor 6 of 12 is not allowed, because 6 and the index 2 share the factor 2, so A₄ is no counterexample. Sylow subgroups are the case where π has one prime. The converse shows that solvability is needed: A₅ has no subgroups of order 15 or 20, although these orders are coprime to their indices. The converse uses Burnside's theorem on groups of order pᵃqᵇ, so it gives no new proof of that theorem.
+**How the definition helps.** The coprime condition rules out divisors such as 6 in A₄, where existence fails, so Sylow's theorem extends to solvable groups with no exceptions. The divisor 6 is not allowed, because 6 and its index 2 share the factor 2. Sylow subgroups are the case where π has one prime. The converse shows that solvability is needed: A₅ has no subgroups of order 15 or 20, although these orders are coprime to their indices.
 
 **Wikipedia:** [Hall subgroup](https://en.wikipedia.org/wiki/Hall_subgroup). It says: “The alternating group A₄ of order 12 is solvable but has no subgroups of order 6 even though 6 divides 12, showing that Hall's theorem (see below) cannot be extended to all divisors of the order of a solvable group.”
 
@@ -557,7 +557,7 @@
 
 **Problem.** Schur–Zassenhaus theorem: let N be a normal subgroup of a finite group G, with \|N\| and \|G/N\| coprime. Then N has a complement, and all complements are conjugate.
 
-**How the definition helps.** The coprime condition rules out the extensions in which N and the quotient share a prime, so a complement always exists. In C₄ with normal subgroup C₂, a complement would need a second element of order 2, and C₄ has only one. The quaternion group also fails: it has normal subgroups of order 2 and 4 but is not a semidirect product. When N is abelian, the proof is a cohomology calculation: H²(G/N, N) and H¹(G/N, N) vanish because the orders are coprime. Conjugacy was first proved when N or G/N is solvable. That condition always holds, because one of the two orders is odd. But the proof of this uses the Feit–Thompson theorem, which says groups of odd order are solvable and is far harder.
+**How the definition helps.** The coprime condition rules out the extensions in which N and the quotient share a prime, so a complement always exists. In C₄ with normal subgroup C₂, a complement would need a second element of order 2, and C₄ has only one. When N is abelian, existence and conjugacy come from the vanishing of H²(G/N, N) and H¹(G/N, N), because the orders are coprime. In general, conjugacy needs N or G/N to be solvable, which always holds but only by the Feit–Thompson theorem.
 
 **Wikipedia:** [Schur–Zassenhaus theorem](https://en.wikipedia.org/wiki/Schur%E2%80%93Zassenhaus_theorem), [Hall subgroup](https://en.wikipedia.org/wiki/Hall_subgroup). It says: “If we do not impose the coprime condition, the theorem is not true: consider for example the cyclic group C₄ and its normal subgroup C₂.”
 
@@ -571,9 +571,9 @@
 
 **Definition.** The Frattini subgroup Φ(G) is the intersection of all maximal subgroups of G. If G has no maximal subgroups, the convention is Φ(G) = G. A non-generator is an element that can be removed from every generating set that contains it.
 
-**Problem.** For every group G, Φ(G) is exactly the set of non-generators. For finite G, Φ(G) is also nilpotent.
+**Problem.** For every group G, Φ(G) is exactly the set of non-generators.
 
-**How the definition helps.** The convention is the usual rule that an empty intersection is everything, and it keeps the non-generator description true with no exception. Take the Prüfer p-group, the group of all complex roots of unity of p-power order (our own). Every proper subgroup of it is finite, so it has no maximal subgroup (our own). There every element is a non-generator, because every generating set is infinite (our own). If one element is removed, the rest still generates an infinite subgroup, which must be the whole group (our own). So Φ(G) = G is the right answer there. The nilpotency of Φ(G) for finite groups is a separate theorem.
+**How the definition helps.** The convention is the usual rule that an empty intersection is everything, and it keeps the non-generator description true with no exception. In our own example, the Prüfer p-group has only finite proper subgroups, so it has no maximal subgroup. Every generating set of it is infinite, and removing one element leaves an infinite set that still generates the whole group (our own). So every element is a non-generator, and Φ(G) = G is the right answer.
 
 **Wikipedia:** [Frattini subgroup](https://en.wikipedia.org/wiki/Frattini_subgroup). It says: “For the case that G has no maximal subgroups, for example the trivial group {e} or a Prüfer group, it is defined by Φ(G)=G.”
 
@@ -589,7 +589,7 @@
 
 **Problem.** Let F be the free group on a set X. Then the abelianization of F is the free abelian group on X.
 
-**How the definition helps.** Both free groups and abelianizations are defined by maps out, so their composite is too. A function from X to an abelian group A extends uniquely to a homomorphism from F to A. That homomorphism then factors uniquely through the abelianization of F. So homomorphisms from the abelianization to A match functions from X to A, which is the definition of free abelian on X. ProofWiki states the theorem in these terms; the argument here is our own. The work moves to showing that the commutator quotient has the mapping property. That needs every map into an abelian group to kill all commutators, and the quotient to be abelian.
+**How the definition helps.** Both free groups and abelianizations are defined by maps out, so their composite is too. A function from X to an abelian group A extends uniquely to a homomorphism from F, which then factors uniquely through the abelianization (our own). So homomorphisms from the abelianization to A match functions from X to A, which is the definition of free abelian on X (our own). The work moves to showing that the commutator quotient has this mapping property.
 
 **Paper or page:** [Abelianization of Free Group is Free Abelian Group](https://proofwiki.org/wiki/Abelianization_of_Free_Group_is_Free_Abelian_Group). It says: “is a free abelian group on X.”
 
@@ -605,7 +605,7 @@
 
 **Problem.** Any two free bases of the same free group have the same size.
 
-**How the definition helps.** The definition counts homomorphisms out of F at once. A homomorphism from F to the two-element group ℤ/2 is any function from S to ℤ/2. So if S has n elements, there are exactly 2ⁿ such homomorphisms, and this number depends only on F. If one basis is infinite, the other must be too, and counting the elements of F finishes the proof. Wikipedia states the match between homomorphisms and functions; the count is our own. The work moves to proving that reduced words have the extension property.
+**How the definition helps.** The definition counts homomorphisms out of F at once. A homomorphism from F to ℤ/2 is any function from S to ℤ/2, so a basis of n elements gives exactly 2ⁿ of them, a number that depends only on F (our own count). If one basis is infinite, so is the other, and counting the elements of F finishes the proof (our own). The work moves to proving that reduced words have the extension property.
 
 **Wikipedia:** [Free group](https://en.wikipedia.org/wiki/Free_group). It says: “That is, homomorphisms F<sub>S</sub>→G are in one-to-one correspondence with functions S→G.”
 
@@ -621,7 +621,7 @@
 
 **Problem.** Every surjective homomorphism p from a group G onto a free group F(S) has a homomorphism s back with p∘s the identity.
 
-**How the definition helps.** The definition says that a homomorphism out of F(S) is only a choice of images for the generators. So choose a preimage in G of each generator, and extend this choice to a homomorphism s. Then p∘s fixes every generator, and the uniqueness in the definition makes p∘s the identity. If S is infinite, choosing the preimages uses the axiom of choice. The nLab gives this definition; the splitting argument is our own. The work moves to proving that reduced words form a group with this extension property.
+**How the definition helps.** The definition says that a homomorphism out of F(S) is only a choice of images for the generators. So choose a preimage in G of each generator and extend this choice to a homomorphism s (our own). Then p∘s fixes every generator, and uniqueness in the definition makes p∘s the identity (our own). The work moves to proving that reduced words form a group with this extension property.
 
 **nLab:** [free group](https://ncatlab.org/nlab/show/free+group). It says: “The free group on a given set S is the free object on S in the category of groups.”
 
@@ -633,11 +633,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 20E05 (Free nonabelian groups), 18B40. arXiv math.GR, math.AT. Level 2: later undergraduate.
 
-**Definition.** A groupoid is a category in which every morphism is invertible. The free groupoid on a directed graph is the groupoid generated by the edges, with no relations. The free group F(S) is the fundamental group of the free groupoid on a bouquet of S loops (one vertex with one loop for each element of S). Its universal cover is the action groupoid F(S)//F(S), the groupoid of F(S) acting on itself.
+**Definition.** A groupoid is a category in which every morphism is invertible. The free groupoid on a directed graph is generated by its edges with no relations. The free group F(S) is the vertex group of the free groupoid on a bouquet of S loops.
 
 **Problem.** The Nielsen–Schreier theorem says that every subgroup H of a free group is free. If H has index n and the free group has rank k, then H has rank nk − n + 1.
 
-**How the definition helps.** The groupoid version replaces covering spaces of graphs and their point-set topology with a short algebraic argument. The quotient of the universal cover groupoid by H is again a free groupoid, on the quotient of the Cayley graph by H. A connected free groupoid has a free vertex group (the group of loops at one vertex), and this gives that H is free. The original algebraic proof by Nielsen cancellation was long. Our own remark: the fact that a connected free groupoid has a free vertex group still needs a maximal tree, chosen with Zorn's lemma. The nLab names this step only in the topological proof.
+**How the definition helps.** The groupoid version replaces covering spaces of graphs and their point-set topology with a short algebraic argument. The quotient of the universal cover groupoid F(S)//F(S) by H is again a free groupoid, on the quotient of the Cayley graph by H. A connected free groupoid has a free vertex group, so H is free. Our own remark: this last fact still needs a maximal tree, chosen with Zorn's lemma.
 
 **nLab:** [Nielsen-Schreier theorem](https://ncatlab.org/nlab/show/Nielsen-Schreier+theorem). It says: “The second proof is quite similar in spirit but is based on groupoids (another way of viewing homotopy 1-types), and has the advantage that it circumvents the point-set topology considerations inherent to covering space theory.”
 
@@ -672,7 +672,7 @@
 
 **Problem.** Every group has a presentation. Von Dyck: a map from S to G gives a homomorphism from ⟨S \| R⟩ exactly when it sends every word in R to 1.
 
-**How the definition helps.** Both facts follow almost at once from the universal property and the definition as a quotient. Take S to be the set G itself, and extend the identity function to a surjection from F(G) onto G. If K is its kernel, then G is isomorphic to ⟨G \| K⟩. For von Dyck's theorem, the homomorphism from F(S) sends R to 1, so it is trivial on the normal subgroup that R generates (our own). So it factors through the quotient (our own). The work moves elsewhere: one must show that free groups exist, for example as reduced words. Presentations can still hide a lot: for some finite presentations, no algorithm decides whether a word is trivial (Novikov–Boone).
+**How the definition helps.** Both facts follow almost at once from the universal property and the definition as a quotient. Take S to be the set G itself, and extend the identity function to a surjection from F(G) onto G with kernel K, so G is isomorphic to ⟨G \| K⟩. For von Dyck's theorem, the homomorphism from F(S) kills R, so it kills the normal subgroup that R generates and factors through the quotient (our own). The work moves to showing that free groups exist, for example as reduced words.
 
 **Wikipedia:** [Presentation of a group](https://en.wikipedia.org/wiki/Presentation_of_a_group), [Free group](https://en.wikipedia.org/wiki/Free_group). It says: “Formally, the group G is said to have the above presentation if it is isomorphic to the quotient of a free group on S by the normal subgroup generated by the relations R.”
 
@@ -690,7 +690,7 @@
 
 **Problem.** Each factor Gⱼ maps injectively into the free product. There is also a homomorphism back onto Gⱼ whose composite with this map is the identity on Gⱼ.
 
-**How the definition helps.** The definition builds the map back from one choice of homomorphism per factor. Take the identity on Gⱼ and the trivial map on every other factor. These extend to a homomorphism r from the free product to Gⱼ, and r fixes Gⱼ. So the map from Gⱼ is injective, because it has a left inverse. In the word model, injectivity needs the normal form theorem: each element has exactly one reduced word. The nLab gives the definition; this argument is our own. The work moves to proving that reduced words have the extension property.
+**How the definition helps.** The definition builds the map back from one choice of homomorphism per factor. Take the identity on Gⱼ and the trivial map on every other factor; these extend to a homomorphism r onto Gⱼ that fixes Gⱼ (our own). So the map from Gⱼ is injective, because it has a left inverse (our own). In the word model, injectivity instead needs the normal form theorem.
 
 **nLab:** [free product of groups](https://ncatlab.org/nlab/show/free+product+of+groups). It says: “is universal with this property”
 
@@ -706,7 +706,7 @@
 
 **Problem.** Every finitely generated residually finite group has the Hopf property.
 
-**How the definition helps.** Residual finiteness gives a finite test for each nontrivial element, so a nontrivial kernel element can be caught, in our own explanation. Fix a finite group F. Because the group Γ is finitely generated, there are only finitely many homomorphisms from Γ to F. Precomposition with a surjection φ is injective on this finite set, so it is also onto, by our own argument. So every homomorphism to F factors through φ and kills the kernel of φ. Residual finiteness then forces the kernel to be trivial.
+**How the definition helps.** Residual finiteness gives a finite test for each nontrivial element, so a nontrivial kernel element would be caught (our own). For a finite group F, there are only finitely many homomorphisms from the finitely generated group Γ to F. Precomposition with the surjection φ is injective on this finite set, so it is onto, and every homomorphism to F kills the kernel of φ (our own). Residual finiteness then forces the kernel to be trivial.
 
 **Paper or page:** [Chasing finite shadows of infinite groups through geometry](https://arxiv.org/abs/2504.11684v1). It says: “If a finitely generated group Γ is residually finite, then it has the Hopf property, i.e. every epimorphism φ∶Γ→Γ is an isomorphism.”
 
@@ -724,7 +724,7 @@
 
 **Problem.** Add a new generator y and a new relation y = w, where w is a word in the old generators. The new presentation defines the same group.
 
-**How the definition helps.** With this definition, it is enough to compare the maps out of the two presentations. Each valid assignment of the old generators allows exactly one image for y, namely the image of w. So the valid assignments of the two presentations match, for every target group H. Groups with the same maps out are isomorphic, by the Yoneda lemma. Wikipedia states the move; this argument is our own. The work moves to proving that the free group quotient has this mapping property.
+**How the definition helps.** With this definition, it is enough to compare the maps out of the two presentations. Each valid assignment of the old generators allows exactly one image for y, namely the image of w (our own). So the valid assignments match for every target group, and the Yoneda lemma makes the groups isomorphic (our own). The work moves to proving that the free group quotient has this mapping property.
 
 **Wikipedia:** [Tietze transformations](https://en.wikipedia.org/wiki/Tietze_transformations). It says: “Given a presentation it is possible to add a new generator that is expressed as a word in the original generators.”
 
@@ -742,7 +742,7 @@
 
 **Problem.** Let each group Gᵢ have a presentation ⟨Sᵢ \| Rᵢ⟩. Then the disjoint union of the Sᵢ and of the Rᵢ presents the free product of the Gᵢ.
 
-**How the definition helps.** Both sides are defined by maps out, so it is enough to match their maps to any group H. A function on the disjoint union of the Sᵢ is one function on each Sᵢ. It sends all the relators to the identity exactly when each part does so for its own Rᵢ. So it is one homomorphism from each Gᵢ, which is the same as one homomorphism from the free product. The nLab states the result; this matching argument is our own. The work moves to showing that the free group quotient has this mapping property.
+**How the definition helps.** Both sides are defined by maps out, so it is enough to match their maps to any group H. A function on the disjoint union of the Sᵢ is one function on each Sᵢ, and it kills all relators exactly when each part kills its own Rᵢ (our own). So it is one homomorphism from each Gᵢ, which is one homomorphism from the free product (our own). The work moves to showing that the free group quotient has this mapping property.
 
 **nLab:** [free product of groups](https://ncatlab.org/nlab/show/free+product+of+groups). It says: “If all the Gᵢ have group presentations, then their free product ⋆ᵢ Gᵢ has a group presentation as follows:”
 
@@ -758,7 +758,7 @@
 
 **Problem.** Let N be a normal subgroup of G. If N and G/N are solvable, then G is solvable.
 
-**How the definition helps.** With this definition the theorem is one of the closure rules, so it holds by definition. The work moves to a comparison theorem: the two definitions give the same groups. In one direction, suppose the derived series of G/N ends after k steps. Then the k-th term of the derived series of G lies inside N, and the series of N finishes the job. In the other direction, a group with a finite derived series is built from its abelian layers by extensions. The nLab defines the class inductively in this way; the comparison is our own summary of standard results.
+**How the definition helps.** With this definition the theorem is one of the closure rules, so it holds by definition. The work moves to showing that this class equals the usual one, defined by the derived series (our own summary). If the derived series of G/N ends after k steps, the k-th term of the series of G lies in N, and the series of N finishes the job. Conversely, a group with a finite derived series is built from its abelian layers by extensions.
 
 **nLab:** [solvable group](https://ncatlab.org/nlab/show/solvable+group). It says: “If 1 → G′ → G → G″ → 1 is a group extension and both G′ and G″ are solvable, then G is solvable.”
 
@@ -774,7 +774,7 @@
 
 **Problem.** Every maximal proper subgroup of a finite supersolvable group has prime index.
 
-**How the definition helps.** A prime-order first step leaves only one possible index when it lies outside a maximal subgroup, in our own proof. Let N be that first step and H a maximal subgroup. If N lies in H, use induction in the quotient by N. Otherwise HN is the whole group and H meets N trivially, so the index equals the order of N. In our own counterexample, the solvable alternating group A₄ has a maximal subgroup of order three and index four.
+**How the definition helps.** Supersolvability gives a normal subgroup N of prime order, and N either lies in a maximal subgroup H or meets it trivially (our own proof). If N lies in H, use induction in the quotient by N. Otherwise HN is the whole group and H meets N trivially, so the index of H equals the prime order of N. In our own counterexample, the solvable group A₄ has a maximal subgroup of order three and index four.
 
 **Wikipedia:** [Supersolvable group](https://en.wikipedia.org/wiki/Supersolvable_group). It says: “Every maximal subgroup in a supersolvable group has prime index.”
 
@@ -790,7 +790,7 @@
 
 **Problem.** Over a field of characteristic 0, a polynomial equation is solvable by radicals if and only if its Galois group is solvable. Solvable by radicals means that we can write the roots with field operations and n-th roots.
 
-**How the definition helps.** The definition of a solvable group records exactly the shape that radicals give, so Galois's criterion has a clean statement. In our own summary of the standard proof, we first add the roots of unity. After that, adding one radical gives an extension whose Galois group is abelian, and in fact cyclic. So a tower of radicals gives a chain of groups with abelian quotients. The insolvability of the general quintic then reduces to a fact about groups. The fact is that S₅ is not solvable, because A₅ is simple and not abelian.
+**How the definition helps.** The definition of a solvable group records exactly the shape that radicals give, so Galois's criterion has a clean statement. In our own summary, after adding the roots of unity, each radical gives an extension with cyclic Galois group. So a tower of radicals gives a chain of groups with abelian quotients. The insolvability of the general quintic then reduces to the fact that S₅ is not solvable, because A₅ is simple and not abelian.
 
 **Wikipedia:** [Solvable group](https://en.wikipedia.org/wiki/Solvable_group). It says: “Historically, the word "solvable" arose from Galois theory and the proof of the general unsolvability of quintic equations.”
 
@@ -808,7 +808,7 @@
 
 **Problem.** Let G be a central extension of a nilpotent group Q. Then G is nilpotent. Its nilpotency class, the least number of steps needed, is at most one more than that of Q.
 
-**How the definition helps.** With this definition the theorem holds by definition, since G adds one more central extension. The bound on the class also holds by definition, if the class is the least number of central extensions needed. The work moves to a comparison theorem with the usual definition. A central series is a chain of normal subgroups whose successive quotients are central. A chain of central extensions gives one, and the lower central series descends at least as fast as any central series. So both definitions give the same groups and the same class. The nLab defines the class inductively in this way; the comparison is our own summary.
+**How the definition helps.** With this definition the theorem holds by definition, since G adds one more central extension, and so does the bound on the class. The work moves to a comparison with the usual definition (our own summary). A chain of central extensions gives a central series, and the lower central series descends at least as fast as any central series. So both definitions give the same groups and the same class.
 
 **nLab:** [nilpotent group](https://ncatlab.org/nlab/show/nilpotent+group). It says: “If 1 → G′ → G → G″ → 1 is a central extension (so that in particular, G′ is abelian) and G″ is nilpotent, then G is nilpotent.”
 
@@ -840,7 +840,7 @@
 
 **Problem.** For n ≥ 2, the abelianization of Bₙ is ℤ. The quotient makes all braids commute and sends each σᵢ to 1.
 
-**How the definition helps.** Artin's presentation makes abelianization a matter of adding commutativity to the given relations (our own). In additive notation the adjacent relation becomes 2σᵢ + σᵢ₊₁ = σᵢ + 2σᵢ₊₁, so the two generators agree (our own). One generator remains, and the map to ℤ that sends it to 1 shows it has infinite order. With geometric braids one would need to show that crossing signs give an invariant and that it gives the full abelianization (our own). The work shifts to Artin's theorem that the presentation describes geometric braids (our own).
+**How the definition helps.** Artin's presentation makes abelianization a matter of adding commutativity to the given relations (our own). In additive notation the adjacent relation becomes 2σᵢ + σᵢ₊₁ = σᵢ + 2σᵢ₊₁, so the two generators agree (our own). One generator remains, and the map to ℤ that sends it to 1 shows it has infinite order. The work shifts to Artin's theorem that the presentation describes geometric braids (our own).
 
 **Wikipedia:** [Braid group](https://en.wikipedia.org/wiki/Braid_group). It says: “There is a homomorphism Bₙ → ℤ defined by σᵢ ↦ 1.”
 
@@ -858,7 +858,7 @@
 
 **Problem.** The map sending w to −1 raised to the length ℓ(w) is a group homomorphism from the Weyl group to {±1}.
 
-**How the definition helps.** The determinant of a product is the product of the determinants. That is our own argument. In our own account, the work moves to comparing the two signs. Each simple reflection has determinant −1, so every word for w has length of the same parity as ℓ(w). Wikipedia states that this map generalizes the sign of a permutation. The route through the Coxeter presentation is also short, but it needs the theorem that Weyl groups have that presentation, in our own comparison.
+**How the definition helps.** The determinant of a product is the product of the determinants, so the determinant sign is a homomorphism (our own). The work moves to showing that the two signs agree (our own). Each simple reflection has determinant −1, so every word for w has length of the same parity as ℓ(w). The route through the Coxeter presentation is also short, but it needs the theorem that Weyl groups have that presentation (our own comparison).
 
 **Wikipedia:** [Coxeter group](https://en.wikipedia.org/wiki/Coxeter_group). It says: “the minimum number of uses of generators required to express a group element”
 
@@ -890,7 +890,7 @@
 
 **Problem.** A commutative monoid M maps to its group completion by a ↦ (a, 0). This map is injective exactly when M has cancellation, that is, a + k = b + k implies a = b.
 
-**How the definition helps.** With pairs, (a, 0) equals (b, 0) exactly when a + k = b + k for some k, so injectivity is cancellation (our own). In the presentation by generators and relations, it is hard to see which elements become equal (our own). Wikipedia states the result but not this reasoning. The work moves to two checks (our own). The pair relation must be an equivalence relation, which needs the extra k. The pair group must also have the universal property, so that it agrees with the presentation.
+**How the definition helps.** With pairs, (a, 0) equals (b, 0) exactly when a + k = b + k for some k, so injectivity is cancellation (our own). In the presentation by generators and relations, it is hard to see which elements become equal (our own). The work moves to two checks (our own). The pair relation must be an equivalence relation, which needs the extra k, and the pair group must have the universal property of the presentation.
 
 **Wikipedia:** [Grothendieck group](https://en.wikipedia.org/wiki/Grothendieck_group). It says: “For a commutative monoid M, the map i : M → K is injective if and only if M has the cancellation property”
 
@@ -906,7 +906,7 @@
 
 **Problem.** Every heap is a torsor for a group, its structure group. Also, the category of heaps is equivalent to the category of pairs (G, H) of a group G and a G-torsor H.
 
-**How the definition helps.** The inhabited condition removes the one heap that has no structure group. The empty set carries a unique heap structure, and allowing it would make heaps an algebraic category (one defined only by operations and equations). But the empty heap has no structure group: a group must have a unit element, and an empty heap gives no element to use. So some theorems that relate heaps to groups break down for it. For this reason, heaps are usually required to be inhabited. The nLab also shows the other repair: allow an 'empty group', that is, an invertible semigroup or associative quasigroup. Then the correspondence holds for heaps that may be empty.
+**How the definition helps.** The inhabited condition removes the one heap that has no structure group. The empty set carries a unique heap structure, but a group needs a unit element, and the empty heap gives no element to use. Allowing it would make heaps an algebraic category, defined only by operations and equations, but some theorems relating heaps to groups would break down. The nLab also shows the other repair: allow an 'empty group', an invertible semigroup or associative quasigroup, and the correspondence then holds for all heaps.
 
 **nLab:** [heap](https://ncatlab.org/nlab/show/heap), [torsor](https://ncatlab.org/nlab/show/torsor). It says: “However, in this case, some of the above theorems relating heaps to groups break down.”
 
@@ -943,9 +943,9 @@
 
 **Definition.** For a finite group G, a span of finite G-sets is a pair of maps A ← U → B. The Burnside category has finite G-sets as objects and spans as morphisms. A Mackey functor is a functor from the Burnside category to an additive category that preserves products. A span G/H ← U → G/K encodes a restriction followed by a transfer.
 
-**Problem.** Prove the double coset formula. It says that restriction from H to J of a transfer from K to H equals a sum, over the double cosets JxK, of transfers after restrictions.
+**Problem.** In a Mackey functor, for subgroups J and K of H, restriction from H to J of a transfer from K to H equals a sum over the double cosets JxK in H. Each term is a transfer after a restriction.
 
-**How the definition helps.** With this definition the formula comes from composing spans, so it is not an axiom to check. In Dress's original definition the double coset formula is an axiom that you must check. The nLab states that a product-preserving functor on spans breaks down into restrictions and transfers that satisfy the double coset formula. Our own explanation, which the nLab does not spell out, is that you compose spans by a pullback of finite G-sets. The pullback of G/J → G/H ← G/K splits into orbits, one for each double coset in J∖H/K. Barwick uses the same definition in ∞-categories. The comparison with genuine G-spectra (Guillou–May, Barwick) is a real theorem.
+**How the definition helps.** With this definition the formula comes from composing spans, so it is not an axiom to check, as it is in Dress's original definition. Spans compose by a pullback of finite G-sets (our own explanation, which the nLab does not spell out). The pullback of G/J → G/H ← G/K splits into orbits, one for each double coset in J∖H/K (our own). The work moves to the nLab's statement that a product-preserving functor on spans breaks down into restrictions and transfers.
 
 **nLab:** [Mackey functor](https://ncatlab.org/nlab/show/Mackey+functor). It says: “writing Rᴴⱼ for the contravariant effect of in inclusion J ⊂ H and Iᴴⱼ for the covariant effect, M satisfies the double coset formula”
 
@@ -965,7 +965,7 @@
 
 **Problem.** The Temperley–Lieb algebra TLₙ(δ) has dimension equal to the nth Catalan number (2n)!/(n!(n + 1)!).
 
-**How the definition helps.** In the diagram definition, the dimension is the number of basis diagrams (our own). Noncrossing pairings of 2n points satisfy the Catalan recurrence, found by splitting at the partner of the first point (our own). The work moves into the theorem that the diagram algebra has the generator presentation. That theorem shows that the generators span all diagrams and that no further relations hold. The cited paper studies such presentations, and Wikipedia states the Catalan dimension.
+**How the definition helps.** In the diagram definition, the dimension is the number of basis diagrams (our own). Noncrossing pairings of 2n points satisfy the Catalan recurrence, found by splitting at the partner of the first point (our own). The work moves into the theorem that the diagram algebra has the generator presentation. That theorem shows that the generators span all diagrams and that no further relations hold.
 
 **Wikipedia:** [Temperley–Lieb algebra](https://en.wikipedia.org/wiki/Temperley%E2%80%93Lieb_algebra). It says: “the vector space over noncrossing pairings of 2n points on two opposite sides of a rectangle”
 
@@ -983,7 +983,7 @@
 
 **Problem.** The Hecke algebra is an associative unital algebra over k. It has a basis indexed by the double cosets KgK.
 
-**How the definition helps.** The self-map definition makes associativity and the unit automatic because it uses composition (our own). In the function model one instead expands the two iterated convolution sums (our own). The comparison sends a function F to the operator with matrix entry F(x⁻¹y) at cosets xK and yK (our own). Equivariance says precisely that an entry depends only on the double coset Kx⁻¹yK (our own). Multiplying these matrices gives the convolution sum over G/K, with no division by \|K\| (our own).
+**How the definition helps.** The self-map definition makes associativity and the unit automatic because it uses composition (our own). In the function model one instead expands the two iterated convolution sums (our own). The comparison sends a function F to the operator with matrix entry F(x⁻¹y) at cosets xK and yK (our own). Equivariance says precisely that an entry depends only on the double coset Kx⁻¹yK (our own).
 
 **nLab:** [Hecke algebra](https://ncatlab.org/nlab/show/Hecke+algebra). It says: “Typically the term refers to an algebra which is the endomorphisms of a permutation representation of a topological group”
 
@@ -1001,7 +1001,7 @@
 
 **Problem.** The Hecke algebra is commutative exactly when each irreducible representation occurs at most once in ℂ\[G/K\]. This is the criterion for a Gelfand pair.
 
-**How the definition helps.** The self-map definition makes commutativity a test on the sizes of matrix blocks (our own). By Maschke’s theorem, ℂ\[G/K\] splits into irreducible representations (our own). Schur’s lemma makes maps between distinct irreducible representations vanish and self-maps scalar (our own). Thus m copies of one irreducible representation give a full m × m matrix block of self-maps (our own). Such a block is commutative exactly when m = 1 (our own). For the convolution definition, the extra work is identifying the product of functions with composition of these maps (our own).
+**How the definition helps.** The self-map definition makes commutativity a test on the sizes of matrix blocks (our own). By Maschke's theorem and Schur's lemma, m copies of one irreducible representation in ℂ\[G/K\] give a full m × m matrix block of self-maps (our own). Such a block is commutative exactly when m = 1 (our own). For the convolution definition, the extra work is identifying the product of functions with composition of these maps (our own).
 
 **Wikipedia:** [Gelfand pair](https://en.wikipedia.org/wiki/Gelfand_pair). It says: “The centralizer algebra (Schur algebra) of the permutation representation is commutative.”
 
@@ -1015,9 +1015,9 @@
 
 **Definition.** For an irreducible complex representation V, each central element of ℂ\[G\] acts as a scalar by Schur’s lemma. These scalars give a ring map from the centre to ℂ, called the central character. For x in G, apply that map to the sum of the h elements conjugate to x, rather than taking the trace of x directly.
 
-**Problem.** For a finite group G, let χ(x) be the trace of x on V. Then h·χ(x)/χ(1) is an algebraic integer, meaning it satisfies a monic polynomial with integer coefficients. This is one step in showing that χ(1) divides \|G\|.
+**Problem.** Let G be a finite group, V an irreducible complex representation and χ its character. For x in G with h conjugates, h·χ(x)/χ(1) is an algebraic integer, a root of a monic polynomial with integer coefficients.
 
-**How the definition helps.** As a central character value, the number is the image of an integral element under a ring map (our own). Class sums form an integer basis of the centre of ℤ\[G\] (our own). Multiplication by a class sum is an integer matrix, and its characteristic polynomial annihilates the class sum (our own). Taking traces of the scalar action identifies the image with h·χ(x)/χ(1) (our own). Ordinary character values are sums of roots of unity, but that alone does not justify dividing by χ(1) (our own). The remaining divisibility argument uses character orthogonality to express \|G\|/χ(1) as a sum of products of algebraic integers (our own).
+**How the definition helps.** As a central character value, the number is the image of an integral element under a ring map (our own). Multiplication by a class sum is an integer matrix on the class sums, so its characteristic polynomial annihilates the class sum (our own). Taking traces of the scalar action identifies the image with h·χ(x)/χ(1) (our own). Ordinary character values are sums of roots of unity, but that alone does not justify dividing by χ(1) (our own).
 
 **Wikipedia:** [Character theory](https://en.wikipedia.org/wiki/Character_theory). It says: “If F = ℂ and χ is irreducible, then \[G:C<sub>G</sub>(x)\]\\frac{\\chi(x)}{\\chi(1)} is an algebraic integer for all x in G.”
 
@@ -1065,7 +1065,7 @@
 
 **Problem.** Over the complex numbers, every representation of a finite group G is an integer combination of representations induced from one-dimensional representations of subgroups. The integers may be negative.
 
-**How the definition helps.** Allowing negative coefficients is what makes the statement true (our own). An irreducible representation that is not induced from a line needs a negative coefficient, for example a two-dimensional one of SL(2, 3) (our own). In the representation ring the question becomes whether certain classes generate the ring, which is a question about characters. Brauer used it to show that Artin L-functions are meromorphic (our own). The page notes that the expansion is not unique, but that natural choices exist. The page notes that elementary subgroups suffice, that is, products of a p-group and a cyclic group. The proof through them remains the hard part.
+**How the definition helps.** Allowing negative coefficients is what makes the statement true (our own). An irreducible representation that is not induced from a line needs a negative coefficient, for example a two-dimensional one of SL(2, 3) (our own). In the representation ring the question becomes whether certain classes generate the ring, which is a question about characters. The hard part remains the proof through elementary subgroups, products of a p-group and a cyclic group.
 
 **nLab:** [Brauer induction theorem](https://ncatlab.org/nlab/show/Brauer+induction+theorem). It says: “finite-dimensional linear representations V of a finite group G all arise as virtual combinations of induced representations … of just 1-dimensional representations”
 
@@ -1083,7 +1083,7 @@
 
 **Problem.** The Brauer character of a representation determines its composition factors, the simple modules in a composition series. Restricted to elements of order prime to p, each ordinary irreducible character is a unique nonnegative integer combination of irreducible Brauer characters.
 
-**How the definition helps.** The ordinary trace in characteristic p loses information, because it only records a sum in K. For example, p copies of the trivial representation have trace p = 0, the same as the zero representation (our own). The Brauer character keeps the eigenvalues as complex numbers, so the methods of complex characters work again. It is defined only on elements of order prime to p. The p-part of an element has only the eigenvalue 1 in characteristic p, so other elements give no new data (our own). The page warns that it fixes composition factors, not the isomorphism class. The decomposition numbers that relate the two kinds of character remain hard to compute.
+**How the definition helps.** The ordinary trace in characteristic p loses information, because it only records a sum in K. For example, p copies of the trivial representation have trace p = 0, the same as the zero representation (our own). The Brauer character keeps the eigenvalues as complex numbers, so the methods of complex characters work again. It fixes composition factors, not the isomorphism class.
 
 **Wikipedia:** [Modular representation theory](https://en.wikipedia.org/wiki/Modular_representation_theory). It says: “the Brauer character of a representation assigns to each group element of order coprime to p the sum of complex roots of unity corresponding to the eigenvalues (including multiplicities) of that element in the given representation.”
 
@@ -1101,7 +1101,7 @@
 
 **Problem.** Every projective representation of G is the image of an ordinary linear representation of some central extension of G. Whether it lifts to G itself is measured by a class in the second cohomology group H²(G, F\*).
 
-**How the definition helps.** Allowing a central extension absorbs the scalar ambiguity into the group, so projective representations are studied with the tools for linear ones. The page builds H as the pairs (g, A) with A in GL(V) mapping to ρ(g). Choosing a lift L(g) in GL(V) for each g gives scalars c(g, h) with L(g)L(h) = c(g, h)L(gh). This c is a 2-cocycle, and a different choice of lifts changes it only by a coboundary. For a perfect group, one that equals its own commutator subgroup, one universal central extension serves all projective representations. The standard example is the rotation group SO(3), whose spin representations become linear on its double cover SU(2). What stays hard is computing the Schur multiplier, as Schur did for symmetric and alternating groups.
+**How the definition helps.** Allowing a central extension absorbs the scalar ambiguity into the group, so projective representations are studied with the tools for linear ones. The page builds H as the pairs (g, A) with A in GL(V) mapping to ρ(g). Choosing a lift L(g) for each g gives scalars c(g, h) with L(g)L(h) = c(g, h)L(gh), and c is a 2-cocycle, defined up to a coboundary. The standard example is SO(3), whose spin representations become linear on its double cover SU(2).
 
 **Wikipedia:** [Projective representation](https://en.wikipedia.org/wiki/Projective_representation). It says: “However, one can lift a projective representation ρ of G to a linear representation of a different group H, which will be a central extension of G.”
 
@@ -1119,7 +1119,7 @@
 
 **Problem.** For every finite group G, the centralizer of F\*(G) lies inside F\*(G). So G modulo the center of F\*(G) embeds in the automorphism group of F\*(G), and only finitely many groups have a given F\*(G).
 
-**How the definition helps.** The definition adds exactly the pieces that the plain Fitting subgroup misses, so the self-centralizing property holds for every finite group. For solvable groups, F(G) already contains its centralizer, and F\*(G) = F(G). For a nonabelian simple group such as A₅, F(G) is trivial, so its centralizer is the whole group (our own). The page explains the choice by looking at a minimal piece of the centralizer that lies outside. That piece is a product of cyclic groups, which F(G) absorbs, or of nonabelian simple groups, which the components absorb. Bender built his method for the classification of simple groups on this subgroup. To know the possible components still needs the list of simple groups (our own).
+**How the definition helps.** The definition adds exactly the pieces that the plain Fitting subgroup misses, so the self-centralizing property holds for every finite group. For a nonabelian simple group such as A₅, F(G) is trivial, so its centralizer is the whole group (our own). A minimal piece of the centralizer outside F\*(G) is a product of cyclic groups, which F(G) absorbs, or of nonabelian simple groups, which the components absorb. For solvable groups, F\*(G) = F(G).
 
 **Wikipedia:** [Fitting subgroup](https://en.wikipedia.org/wiki/Fitting_subgroup), [Quasisimple group](https://en.wikipedia.org/wiki/Quasisimple_group). It says: “More generally, if G is a finite group, then the generalized Fitting subgroup contains its own centralizer.”
 
@@ -1155,7 +1155,7 @@
 
 **Problem.** Let H be a subgroup of index n in a free group of finite rank k. Then H is free of rank nk − n + 1.
 
-**How the definition helps.** The graph model turns the rank of H into a count of edges. H is the fundamental group of a covering graph, which maps onto the one-vertex graph and looks the same near each point. It has n vertices, one for each coset, and nk edges, k leaving each vertex. A spanning tree uses n − 1 edges, which leaves nk − n + 1 generators. The nLab gives this proof in the language of Euler characteristics. The work moves to covering space theory, which gives H its covering graph. It also moves to the theorem that a connected graph has a fundamental group that is free on the edges outside a spanning tree.
+**How the definition helps.** The graph model turns the rank of H into a count of edges. H is the fundamental group of an n-sheeted covering graph, with n vertices and nk edges. A spanning tree uses n − 1 edges, which leaves nk − n + 1 generators. The work moves to covering space theory and to the theorem that a connected graph has a free fundamental group on the edges outside a spanning tree.
 
 **nLab:** [Nielsen-Schreier theorem](https://ncatlab.org/nlab/show/Nielsen-Schreier+theorem). It says: “then H is free on n k − n + 1 generators.”
 
@@ -1191,7 +1191,7 @@
 
 **Problem.** Kurosh (1934): let H be a subgroup of a free product A ∗ B. Then H is a free product of a free group and of intersections of H with conjugates of A and B.
 
-**How the definition helps.** Bass–Serre theory turns a free product into an action on a tree, and every subgroup acts on the same tree. The group A ∗ B acts on its Bass–Serre tree with vertex stabilizers conjugate to A or B and trivial edge stabilizers. A subgroup H acts on that tree too (our own). So the structure theorem writes H as the fundamental group of a graph of groups with trivial edge groups (our own). Such a group is a free product of the vertex groups and a free group (our own). The hard part is the structure theorem itself, set out in Serre's book Trees.
+**How the definition helps.** Bass–Serre theory turns a free product into an action on a tree, and every subgroup acts on the same tree. The group A ∗ B acts on its Bass–Serre tree with vertex stabilizers conjugate to A or B and trivial edge stabilizers. So the structure theorem writes H as the fundamental group of a graph of groups with trivial edge groups, which is a free product of the vertex groups and a free group (our own). The hard part is the structure theorem itself, set out in Serre's book Trees.
 
 **Wikipedia:** [Kurosh subgroup theorem](https://en.wikipedia.org/wiki/Kurosh_subgroup_theorem), [Bass–Serre theory](https://en.wikipedia.org/wiki/Bass%E2%80%93Serre_theory). It says: “In modern terms, the Kurosh subgroup theorem is a straightforward corollary of the basic structural results of Bass–Serre theory about groups acting on trees.”
 
@@ -1309,7 +1309,7 @@
 
 **Problem.** Consider two inverse systems of profinite groups indexed by the same directed set, where any two indices have a common later index. Compatible continuous surjections at each index give a surjection between the inverse limits.
 
-**How the definition helps.** Viewing the groups as compact spaces turns simultaneous lifting into a finite compatibility test (our own). Fix a target tuple and take the product of its nonempty compact coordinate fibers (our own). Each compatibility equation defines a closed subset because the maps are continuous and the groups are Hausdorff (our own). For finitely many equations, lift at a common later index and project to the required coordinates (our own). Compactness gives a lift satisfying all equations (our own). The finite-group definition supplies compactness through the theorem that products of compact spaces are compact (our own).
+**How the definition helps.** Viewing the groups as compact spaces turns simultaneous lifting into a finite compatibility test (our own). Fix a target tuple and take the product of its nonempty compact coordinate fibers, in which each compatibility equation defines a closed subset (our own). For finitely many equations, lift at a common later index and project to the required coordinates (our own). Compactness then gives a lift satisfying all equations (our own).
 
 **nLab:** [profinite group](https://ncatlab.org/nlab/show/profinite+group). It says: “The projective limit of a system of profinite groups is an exact functor”
 
@@ -1357,7 +1357,7 @@
 
 **Problem.** Let A be an abelian group. The equivalence classes of central extensions with kernel A and quotient G correspond one-to-one to the elements of H²(G, A). The split extension A × G corresponds to 0.
 
-**How the definition helps.** Equivalence keeps the identifications of K and H fixed, so an extension becomes a 2-cocycle up to a coboundary (our own). These classes then form a group (our own). Isomorphism of the middle groups forgets the identifications, and the count then has no group structure (our own). The page gives an example: there are 8 inequivalent extensions of the Klein four-group by ℤ/2ℤ. But only four groups of order 8 arise as middle groups, up to isomorphism. What stays hard is to decide which middle groups are isomorphic. For a nonabelian kernel, the classification needs an existence condition in H³ of the quotient, with coefficients in the center of the kernel.
+**How the definition helps.** Equivalence keeps the identifications of K and H fixed, so an extension becomes a 2-cocycle up to a coboundary, and these classes form a group (our own). Isomorphism of the middle groups forgets the identifications, and the count then has no group structure (our own). For example, there are 8 inequivalent central extensions of the Klein four-group by ℤ/2ℤ, but only four groups of order 8 arise as middle groups. What stays hard is to decide which middle groups are isomorphic.
 
 **Wikipedia:** [Group extension](https://en.wikipedia.org/wiki/Group_extension). It says: “It may happen that the extensions 1→K→G→H→1 and 1→K→G′→H→1 are inequivalent but G and G′ are isomorphic as groups.”
 
@@ -1389,7 +1389,7 @@
 
 **Problem.** A group has a universal central extension exactly when it is perfect. For a finite perfect group, this extension is unique up to isomorphism and is itself perfect. Its kernel is the Schur multiplier, the second homology group H₂(G, ℤ).
 
-**How the definition helps.** For a perfect group, maps between perfect central extensions are unique, so a universal one can exist (our own). Without a condition, size gives no answer: G × A is a central extension of G for every abelian group A. For a perfect group, the page builds the extension from a free presentation G = F/R as \[F,F\]/\[F,R\]. Because of this simplicity, textbooks such as Aschbacher's treat the perfect case first. That non-perfect groups have no universal central extension is a standard fact that the pages do not state (our own). For finite groups that are not perfect, Schur covers still exist, but they are unique only up to isoclinism. What stays hard is to compute the multiplier of each simple group.
+**How the definition helps.** Perfectness removes the abelian factors that block a universal extension: G × A is a central extension of G for every abelian group A. The maps from a universal extension U to these over G must be unique, and this forces U, and so G, to be perfect (our own). For a perfect group, the page builds the extension from a free presentation G = F/R as \[F,F\]/\[F,R\]. What stays hard is to compute the multiplier of each simple group.
 
 **Wikipedia:** [Schur multiplier](https://en.wikipedia.org/wiki/Schur_multiplier), [Perfect group](https://en.wikipedia.org/wiki/Perfect_group). It says: “It is also called more briefly a universal central extension, but note that there is no largest central extension, as the direct product of G and an abelian group form a central extension of G of arbitrary size.”
 
@@ -1437,11 +1437,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 20E42 (Groups with a \\(BN\\)-pair; buildings), 20D06. arXiv math.GR. Level 3: graduate.
 
-**Definition.** A BN pair in G is a pair of subgroups B and N that generate G, with T = B ∩ N normal in N. The quotient W = N/T is generated by a set S of elements of order 2. For s in S and w in W, sBw ⊆ BswB ∪ BwB, and no s in S normalizes B. Jacques Tits introduced these axioms.
+**Definition.** A BN pair in G is a pair of subgroups B and N that generate G, with T = B ∩ N normal in N. The quotient W = N/T is generated by a set S of elements of order 2. For s in S and w in W, sBw ⊆ BswB ∪ BwB, and no s in S normalizes B.
 
 **Problem.** Tits's simplicity theorem: let G have a BN pair with B solvable and with trivial intersection of all conjugates of B. Suppose also that S does not split into two nonempty sets that commute with each other. Then G is simple whenever it is perfect, that is, equal to its commutator subgroup.
 
-**How the definition helps.** The axioms capture what every group of Lie type shares with GL(n), so one proof covers every family. In GL(n), B is the group of upper triangular matrices and N the group of monomial matrices. The Bruhat decomposition G = BWB also follows directly from the axioms. In practice all the conditions except perfectness are easy to check. Perfectness needs some messy calculations, and it fails for a few small groups of Lie type. The same axioms lead to Tits's buildings (our own).
+**How the definition helps.** The axioms capture what every group of Lie type shares with GL(n), so one proof covers every family. In GL(n), B is the group of upper triangular matrices and N the group of monomial matrices. In practice all the conditions except perfectness are easy to check. Perfectness needs some messy calculations, and it fails for a few small groups of Lie type.
 
 **Wikipedia:** [(B, N) pair](https://en.wikipedia.org/wiki/%28B%2C_N%29_pair), [Group of Lie type](https://en.wikipedia.org/wiki/Group_of_Lie_type). It says: “a (B, N) pair is a structure on groups of Lie type that allows one to give uniform proofs of many results, instead of giving a large number of case-by-case proofs.”
 
@@ -1477,7 +1477,7 @@
 
 **Problem.** A retract of a finitely presented group is finitely presented. H is a retract of G when maps i from H to G and r from G to H satisfy r∘i = identity.
 
-**How the definition helps.** With this definition the proof is formal, because the maps out of H are a retract of the maps out of G. Take a map f from H to a filtered colimit. First make f∘r come from a stage, then compose that stage map with i. Two stage maps that agree in the colimit are handled in the same way. The work moves to a comparison theorem: a group is compact exactly when it is finitely presented. The nLab states this comparison for groups and for any variety of algebras. The argument for retracts is our own.
+**How the definition helps.** With this definition the proof is formal, because the maps out of H are a retract of the maps out of G (our own). Take a map f from H to a filtered colimit, make f∘r come from a stage, and compose that stage map with i (our own). Two stage maps that agree in the colimit are handled in the same way. The work moves to the comparison theorem, stated by the nLab, that a group is compact exactly when it is finitely presented.
 
 **nLab:** [compact object](https://ncatlab.org/nlab/show/compact+object). It says: “In C = Grp an object is compact precisely if it is finitely presented as a group.”
 
@@ -1493,7 +1493,7 @@
 
 **Problem.** For every element u of ℤF, u − ε(u) equals the sum over i of (∂u/∂xᵢ)(xᵢ − 1).
 
-**How the definition helps.** With this definition, the formula only expands u − ε(u) in the basis, so it holds by definition. The usual definition gives Fox derivatives by rules: ∂xⱼ/∂xᵢ is 1 or 0, and ∂(uv) = ∂u + u∂v for group elements u and v. The work moves to the standard theorem that the elements xᵢ − 1 form a basis; this step is our own account. The product rule then follows from the identity uv − 1 = (u − 1) + u(v − 1). The nLab gives the rule-based definition and derives the formula; the coordinate definition is our own framing.
+**How the definition helps.** With this definition, the formula only expands u − ε(u) in the basis, so it holds by definition (our own framing). The usual definition gives Fox derivatives by rules: ∂xⱼ/∂xᵢ is 1 or 0, and ∂(uv) = ∂u + u∂v for group elements u and v. The work moves to the standard theorem that the elements xᵢ − 1 form a basis (our own account). The product rule then follows from the identity uv − 1 = (u − 1) + u(v − 1).
 
 **nLab:** [Fox derivative](https://ncatlab.org/nlab/show/Fox+derivative). It says: “u − ε(u) 1<sub>F</sub> = ∑ᵢ (∂u/∂xᵢ)(xᵢ − 1)”
 
@@ -1511,7 +1511,7 @@
 
 **Problem.** For a C′(1/6) presentation, a freely reduced word equals the identity if and only if Dehn's algorithm reduces it to the empty word. So the word problem is solvable for finite C′(1/6) presentations.
 
-**How the definition helps.** The number 1/6 is chosen so that Greendlinger's lemma gives a subword longer than half a relator, which is exactly what Dehn's algorithm needs. Each step of the algorithm then makes the word shorter, so it ends after finitely many steps (our own). The hard part is Greendlinger's lemma itself, proved with van Kampen diagrams and a combinatorial Gauss–Bonnet argument. The idea goes back to Dehn's solution of the word problem for surface groups. Finitely presented groups with strong enough small cancellation are hyperbolic, which inspired Gromov's definition.
+**How the definition helps.** The number 1/6 is chosen so that Greendlinger's lemma gives a subword longer than half a relator, which is exactly what Dehn's algorithm needs. Each step of the algorithm then makes the word shorter, so it ends after finitely many steps (our own). The hard part is Greendlinger's lemma itself, proved with van Kampen diagrams and a combinatorial Gauss–Bonnet argument.
 
 **Wikipedia:** [Small cancellation theory](https://en.wikipedia.org/wiki/Small_cancellation_theory). It says: “Note that the assumption λ ≤ 1/6 implies that (1 − 3λ) ≥ 1/2, so that w contains a subword more than a half of some defining relator.”
 
@@ -1545,7 +1545,7 @@
 
 **Problem.** In a subgroup separable Artin group given by a finite presentation, an algorithm decides membership in any subgroup given by finitely many generators.
 
-**How the definition helps.** Subgroup separability lets a finite quotient certify a negative answer, in our own proof. Search through maps to finite groups that satisfy the defining relations. At the same time, enumerate subgroup words and proofs that they equal the input word. One search must find a certificate. The cited theorem also covers sets described by finite automata, which include finitely generated subgroups. In our own comparison, Mihailova constructed a finitely generated subgroup with undecidable membership in the product of two rank-two free groups.
+**How the definition helps.** Subgroup separability lets a finite quotient certify a negative answer, in our own proof. Search through maps to finite groups that satisfy the defining relations, and at the same time enumerate subgroup words and proofs that they equal the input word. One search must find a certificate. In our own comparison, Mihailova constructed a finitely generated subgroup with undecidable membership in the product of two rank-two free groups.
 
 **Paper or page:** [Membership problems in braid groups and Artin groups](https://arxiv.org/abs/2409.11335v3). It says: “Every subgroup separable Artin group has decidable rational subset membership problem.”
 
@@ -1557,11 +1557,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 20F12 (Commutator calculus), 20C25. arXiv math.GR, math.RT. Level 3: graduate.
 
-**Definition.** The commutator map of G sends two cosets of the center Z(G) to the commutator of their representatives. Two groups are isoclinic if isomorphisms between the quotients by the centers and between the commutator subgroups match these maps. Philip Hall introduced isoclinism in 1940 to help classify p-groups.
+**Definition.** The commutator map of G sends two cosets of the center Z(G) to the commutator of their representatives. Two groups are isoclinic if isomorphisms between the quotients by the centers and between the commutator subgroups match these maps.
 
 **Problem.** Every finite group G has a Schur cover. This is a central extension C of G of least order to which every projective representation of G (a representation up to scalar factors) lifts. Schur covers need not be isomorphic, but all Schur covers of G are isoclinic.
 
-**How the definition helps.** Isoclinism compares groups only through their central quotients and commutator subgroups, so the differences between Schur covers disappear. For example, the dihedral and quaternion groups of order 8 are both Schur covers of the Klein four-group (our own). They are not isomorphic, but the page notes that dihedral and quaternion groups of order 2ⁿ are isoclinic. The page also says that isoclinism has consequences for character theory, as described in the ATLAS of finite groups. For a perfect group, the Schur cover is unique up to isomorphism, so the weaker relation is needed only for the other groups.
+**How the definition helps.** Isoclinism compares groups only through their central quotients and commutator subgroups, so the differences between Schur covers disappear. For example, the dihedral and quaternion groups of order 8 are both Schur covers of the Klein four-group (our own). They are not isomorphic, but the page notes that they are isoclinic. For a perfect group, the Schur cover is unique up to isomorphism, so the weaker relation is needed only for the other groups.
 
 **Wikipedia:** [Schur multiplier](https://en.wikipedia.org/wiki/Schur_multiplier), [Isoclinism of groups](https://en.wikipedia.org/wiki/Isoclinism_of_groups). It says: “The Schur cover of a perfect group is uniquely determined up to isomorphism, but the Schur cover of a general finite group is only determined up to isoclinism.”
 
@@ -1579,7 +1579,7 @@
 
 **Problem.** Every polycyclic group has a presentation using finitely many generators and relations.
 
-**How the definition helps.** Cyclic layers let us build a finite presentation one layer at a time, in our own explanation. The extension theorem gives a finite presentation when both the normal subgroup and its quotient have finite presentations. Every cyclic group has one. The lamplighter group allows a walker on ℤ to move or switch a lamp of order two. This group is solvable and finitely generated, yet has no finite presentation. Its lamp changes alone form a subgroup requiring infinitely many generators, which a polycyclic group cannot contain (our own explanation).
+**How the definition helps.** Cyclic layers let us build a finite presentation one layer at a time, in our own explanation. An extension has a finite presentation when both the normal subgroup and the quotient have one, and every cyclic group has one. The lamplighter group, ℤ/2 wreath ℤ, is solvable and finitely generated, yet has no finite presentation. Its lamp changes alone form a subgroup requiring infinitely many generators, which a polycyclic group cannot contain (our own explanation).
 
 **Wikipedia:** [Polycyclic group](https://en.wikipedia.org/wiki/Polycyclic_group), [Lamplighter group](https://en.wikipedia.org/wiki/Lamplighter_group). It says: “Polycyclic groups are finitely presented, which makes them interesting from a computational point of view.”
 
@@ -1597,7 +1597,7 @@
 
 **Problem.** Gromov (1981): a finitely generated group has polynomial growth if and only if it has a nilpotent subgroup of finite index.
 
-**How the definition helps.** Growth does not change when one passes to a subgroup of finite index, so an exact description must use a property with the same freedom. Plain nilpotency fails: every finite group has polynomial growth, but the symmetric group S₃ is not nilpotent (our own). The infinite dihedral group has linear growth but is not nilpotent, because its lower central series never reaches the trivial group (our own). The easy direction, that finitely generated nilpotent groups grow polynomially, is due to Wolf. The hard direction is Gromov's, and the Tits alternative settles the special case of linear groups.
+**How the definition helps.** Growth does not change when one passes to a subgroup of finite index, so an exact description must use a property with the same freedom. Plain nilpotency fails: every finite group has polynomial growth, but the symmetric group S₃ is not nilpotent (our own). The infinite dihedral group has linear growth but is not nilpotent, because its lower central series never reaches the trivial group (our own). The easy direction is due to Wolf, and the hard direction is Gromov's.
 
 **Wikipedia:** [Virtually](https://en.wikipedia.org/wiki/Virtually), [Gromov's theorem on groups of polynomial growth](https://en.wikipedia.org/wiki/Gromov%27s_theorem_on_groups_of_polynomial_growth). It says: “Gromov's theorem states that the finitely generated groups with polynomial growth are precisely the finitely generated virtually nilpotent groups.”
 
@@ -1615,7 +1615,7 @@
 
 **Problem.** Tits (1972): a finitely generated linear group either is virtually solvable or contains a free group on two generators.
 
-**How the definition helps.** Finite groups are the obstacle to a plain alternative, and the word virtually absorbs them. A finite simple group such as A₅ is linear and contains no free subgroup (our own). It is not solvable, so the statement with solvable alone would be false (our own). Every finite group is virtually solvable, since the trivial subgroup has finite index. The alternative then proves the von Neumann conjecture here: a finitely generated linear group is not amenable exactly when it contains a free group. The hard part is Tits's construction of free subgroups, which uses algebraic geometry.
+**How the definition helps.** Finite groups are the obstacle to a plain alternative, and the word virtually absorbs them. A finite simple group such as A₅ is linear, contains no free subgroup and is not solvable, so the statement with solvable alone would be false (our own). Every finite group is virtually solvable, since the trivial subgroup has finite index. The hard part is Tits's construction of free subgroups, which uses algebraic geometry.
 
 **Wikipedia:** [Tits alternative](https://en.wikipedia.org/wiki/Tits_alternative), [Amenable group](https://en.wikipedia.org/wiki/Amenable_group), [Virtually](https://en.wikipedia.org/wiki/Virtually). It says: “every subgroup of GL(n,k) with k a field either has a normal solvable subgroup of finite index (and therefore is amenable) or contains the free group on two generators.”
 
@@ -1633,7 +1633,7 @@
 
 **Problem.** Bₙ has no nonidentity element of finite order.
 
-**How the definition helps.** The configuration space gives Bₙ a finite-dimensional classifying space, a space with fundamental group Bₙ and contractible universal cover (our own). Here that space has dimension 2n (our own). A finite cyclic subgroup would have its own classifying space given by a covering of the same dimension (our own). But a nontrivial finite cyclic group has nonzero integral cohomology in arbitrarily high degrees (our own). A 2n-dimensional manifold has no cohomology above degree 2n, so such a subgroup cannot occur (our own). The work lies in proving the universal cover contractible via the Fadell–Neuwirth bundles that forget a point (our own).
+**How the definition helps.** The configuration space is a classifying space for Bₙ of dimension 2n, a space with fundamental group Bₙ and contractible universal cover (our own). A finite cyclic subgroup would have its own classifying space, a covering of the same dimension (our own). But a nontrivial finite cyclic group has nonzero integral cohomology in arbitrarily high degrees, and a 2n-dimensional manifold has none above degree 2n (our own). The work lies in proving the universal cover contractible via the Fadell–Neuwirth bundles that forget a point (our own).
 
 **Wikipedia:** [Configuration space (mathematics)](https://en.wikipedia.org/wiki/Configuration_space_%28mathematics%29), [Braid group](https://en.wikipedia.org/wiki/Braid_group). It says: “It follows from this definition and the fact that Confₙ(ℝ²) and UConfₙ(ℝ²) are Eilenberg–MacLane spaces of type K(π,1), that the unordered configuration space of the plane UConfₙ(ℝ²) is a classifying space for the Artin braid group”
 
@@ -1651,7 +1651,7 @@
 
 **Problem.** For n ≥ 2, the sequence 1 → Fₙ₋₁ → Pₙ → Pₙ₋₁ → 1 splits. Here Fₙ₋₁ is the free group on n − 1 generators.
 
-**How the definition helps.** The configuration definition shows the kernel and a splitting in the same map, the projection that forgets the last point (our own). Its fiber, the plane minus n − 1 points, has free fundamental group on n − 1 loops (our own). The projection is a locally trivial bundle, so its homotopy sequence gives an exact sequence of fundamental groups (our own). A section adds a point on the positive horizontal axis beyond all the existing points (our own). The section makes the boundary map from second homotopy zero and splits the group sequence (our own). The real work is the Fadell–Neuwirth theorem that the projection is a bundle (our own).
+**How the definition helps.** The configuration definition shows the kernel and a splitting in the same map, the projection that forgets the last point (our own). Its fiber, the plane minus n − 1 points, has free fundamental group on n − 1 loops, and the homotopy sequence of the bundle gives the exact sequence (our own). A section adds a point on the positive horizontal axis beyond all the existing points, and it splits the sequence (our own). The real work is the Fadell–Neuwirth theorem that the projection is a bundle (our own).
 
 **Wikipedia:** [Braid group](https://en.wikipedia.org/wiki/Braid_group). It says: “Pure braid groups fit into a short exact sequence 1 → Fₙ₋₁ → Pₙ → Pₙ₋₁ → 1. This sequence splits and therefore pure braid groups are realized as iterated semi-direct products of free groups.”
 
@@ -1688,7 +1688,7 @@
 
 **Problem.** The reduced Burau matrices give a group homomorphism from Bₙ into the invertible matrices over ℤ\[t, t⁻¹\].
 
-**How the definition helps.** The covering definition makes the action a homomorphism by choosing lifts that respect composition (our own). Disk homeomorphisms in the definition preserve the puncture-loop map to ℤ, so they lift and commute with t (our own). Fix a lift of a boundary point to choose one lift of each homeomorphism (our own). This choice respects composition, and isotopies fixing the boundary lift to isotopies fixing that point (our own). Taking first homology now gives the reduced Burau action. The work left is to choose a basis for the free module of rank n − 1 and recover Burau's generator matrices (our own).
+**How the definition helps.** The covering definition makes the action a homomorphism by choosing lifts that respect composition (our own). Disk homeomorphisms preserve the puncture-loop map to ℤ, so they lift to C and commute with t (our own). Fixing a lift of a boundary point chooses one lift of each homeomorphism, and this choice respects composition and isotopy (our own). The work left is to choose a basis for the free module of rank n − 1 and recover Burau's generator matrices (our own).
 
 **Wikipedia:** [Burau representation](https://en.wikipedia.org/wiki/Burau_representation). It says: “By the basic theory of covering spaces, Bₙ acts on H₁(Cₙ), and this representation is called the reduced Burau representation.”
 
@@ -1704,7 +1704,7 @@
 
 **Problem.** Coxeter (1934, 1935): the finite groups generated by reflections of Euclidean space are exactly the finite Coxeter groups. They are classified by their Coxeter diagrams.
 
-**How the definition helps.** The presentation records only the angle between each pair of mirrors, so a whole reflection group is coded by a small labelled graph. The classification then becomes a question about which graphs give a finite group, which Coxeter answered by listing diagrams. The definition is for abstract groups, so it also covers infinite cases such as the triangle groups of tilings of the plane. Not every infinite Coxeter group is a reflection group of Euclidean space, so the clean equality holds only for finite groups. The hard step is to show that the reflection group satisfies no extra relations beyond those in the presentation (our own).
+**How the definition helps.** The presentation records only the angle between each pair of mirrors, so a whole reflection group is coded by a small labelled graph. The classification then becomes a question about which graphs give a finite group, which Coxeter answered by listing diagrams. Not every infinite Coxeter group is a reflection group of Euclidean space, so the clean equality holds only for finite groups. The hard step is to show that the reflection group satisfies no extra relations beyond those in the presentation (our own).
 
 **Wikipedia:** [Coxeter group](https://en.wikipedia.org/wiki/Coxeter_group). It says: “In this way, every reflection group may be presented as a Coxeter group. The converse is partially true: every finite Coxeter group admits a faithful representation as a finite reflection group of some Euclidean space.”
 
@@ -1721,9 +1721,9 @@
 
 **Definition.** Define the affine Weyl group of a reduced crystallographic root system as Q∨ ⋊ W. Here Q∨ is the integer span of the coroots α∨ = 2α/(α, α), acting by translations. W is the finite group generated by the root reflections. The geometric definition generates the group by the reflections in the hyperplanes where a root takes an integer value.
 
-**Problem.** A root system is a finite set of vectors preserved by its own reflections. In its affine Weyl group, the translations form the coroot lattice. The quotient by them is the finite Weyl group, and the linear reflections give a section.
+**Problem.** In the affine Weyl group of a root system, the translations form the coroot lattice Q∨. The quotient by them is the finite Weyl group W, and the linear reflections give a section.
 
-**How the definition helps.** In a semidirect product, the normal factor, the quotient and the section are all part of the definition. That is our own argument; the quoted paper only uses this definition. In our own account, the work moves to comparing it with the geometric definition. The reflection in the hyperplane where α equals k is the translation by kα∨ after the linear reflection in α. So two parallel reflections give a translation by a coroot.
+**How the definition helps.** In a semidirect product, the normal factor, the quotient and the section are all part of the definition (our own argument; the quoted paper only uses this definition). The work moves to comparing it with the geometric definition (our own account). The reflection in the hyperplane where α equals k is the translation by kα∨ after the linear reflection in α. So two parallel reflections give a translation by a coroot.
 
 **Paper or page:** [Affine Kazhdan-Lusztig polynomials on the subregular cell in non simply-laced Lie algebras: with an application to character formulae (with an appendix by Roman Bezrukavnikov, Vasily Krylov, and Kenta Suzuki), Proposition 3.7](https://arxiv.org/abs/2401.06605v2). It says: “Let Ŵ = Q∨ ⋊ W be the affine Weyl group of type C.”
 
@@ -1774,7 +1774,7 @@
 
 **Problem.** Homogeneous quasimorphisms are constant on conjugacy classes. Quasimorphisms without the power condition need not be.
 
-**How the definition helps.** Homogeneity lets one divide away a bounded error to obtain exact conjugacy invariance (our own). Conjugation changes the value on any positive power by at most twice the addition error bound, since f(h⁻¹) = −f(h) (our own). Divide by the exponent and let it grow (our own). In S₃ the indicator of one transposition is bounded, hence a quasimorphism, and distinguishes conjugates (our own). Separately, homogenization constructs a homogeneous quasimorphism by taking the limit of values on powers divided by their exponents.
+**How the definition helps.** Homogeneity lets one divide away a bounded error to obtain exact conjugacy invariance (our own). Conjugation changes the value on any positive power by at most twice the addition error bound, since f(h⁻¹) = −f(h); divide by the exponent and let it grow (our own). In S₃ the indicator of one transposition is bounded, hence a quasimorphism, and it distinguishes conjugates (our own).
 
 **Wikipedia:** [Quasimorphism](https://en.wikipedia.org/wiki/Quasimorphism). It says: “It is constant on conjugacy classes”
 
@@ -1808,7 +1808,7 @@
 
 **Problem.** Being hyperbolic is a property of the group, not of a generating set. A group is hyperbolic if and only if it acts properly discontinuously, with compact quotient, on a proper hyperbolic length space.
 
-**How the definition helps.** Gromov chose a condition that survives quasi-isometry, that is, maps that distort distances by at most a fixed factor plus a constant. Cayley graphs for two finite generating sets are quasi-isometric, so hyperbolicity does not depend on the choice. The constant δ itself does change, so only the existence of some δ is a property of the group. The work moves into a theorem: a geodesic space that is quasi-isometric to a hyperbolic one is hyperbolic. Its proof uses the Morse lemma, which says that quasi-geodesics stay near true geodesics in hyperbolic spaces.
+**How the definition helps.** Gromov chose a condition that survives quasi-isometry, that is, maps that distort distances by at most a fixed factor plus a constant. Cayley graphs for two finite generating sets are quasi-isometric, so hyperbolicity does not depend on the choice. The constant δ itself does change, so only the existence of some δ is a property of the group. The work moves into the theorem that a geodesic space quasi-isometric to a hyperbolic one is hyperbolic, which uses the Morse lemma.
 
 **Wikipedia:** [Hyperbolic group](https://en.wikipedia.org/wiki/Hyperbolic_group), [Quasi-isometry](https://en.wikipedia.org/wiki/Quasi-isometry). It says: “Thus we can legitimately speak of a finitely generated group G being hyperbolic without referring to a generating set.”
 
@@ -1826,7 +1826,7 @@
 
 **Problem.** The growth rate does not depend on the finite generating set. So polynomial growth, its degree, and exponential growth are properties of the group itself.
 
-**How the definition helps.** Changing generators changes word lengths by at most a constant factor, and the equivalence is chosen to absorb exactly such factors. So 2ⁿ and 3ⁿ are equivalent, and all exponential rates form one class. With this, statements like Gromov's theorem on groups of polynomial growth have a meaning. What stays hard is to know which growth types occur. Grigorchuk found the first group of intermediate growth, faster than every polynomial but slower than every exponential (our own).
+**How the definition helps.** Changing generators changes word lengths by at most a constant factor, and the equivalence is chosen to absorb exactly such factors. So 2ⁿ and 3ⁿ are equivalent, and all exponential rates form one class. With this, statements like Gromov's theorem on groups of polynomial growth have a meaning. What stays hard is to know which growth types occur.
 
 **Wikipedia:** [Word metric](https://en.wikipedia.org/wiki/Word_metric), [Growth rate (group theory)](https://en.wikipedia.org/wiki/Growth_rate_%28group_theory%29). It says: “The bilipschitz equivalence of word metrics implies in turn that the growth rate of a finitely generated group is a well-defined isomorphism invariant of the group, independent of the choice of a finite generating set.”
 
@@ -1844,7 +1844,7 @@
 
 **Problem.** The equivalence class of the Dehn function depends only on the group, not on the finite presentation; it is even a quasi-isometry invariant. Gromov: a finitely presented group is hyperbolic if and only if its Dehn function is linear.
 
-**How the definition helps.** Different finite presentations of a group change the area of words only by bounded rescalings, so the equivalence class is a property of the group. Without the equivalence, no statement like linear Dehn function could be about the group. Dehn's algorithm for closed surface groups of genus at least two shows that Dehn(n) ≤ n for their standard presentations. The hard part is the isoperimetric gap: a Dehn function that grows slower than n² is already linear. Gromov proved this, with later proofs by Olshanskii and Bowditch. At the other extreme, a finitely presented group with unsolvable word problem has a Dehn function that no recursive function bounds.
+**How the definition helps.** Different finite presentations of a group change the area of words only by bounded rescalings, so the equivalence class is a property of the group. Without the equivalence, no statement like 'linear Dehn function' could be about the group. Dehn's algorithm for closed surface groups of genus at least two shows that Dehn(n) ≤ n for their standard presentations. The hard part is Gromov's isoperimetric gap: a Dehn function that grows slower than n² is already linear.
 
 **Wikipedia:** [Dehn function](https://en.wikipedia.org/wiki/Dehn_function), [Hyperbolic group](https://en.wikipedia.org/wiki/Hyperbolic_group). It says: “A finitely presented group is word-hyperbolic group if and only if its Dehn function is equivalent to n, that is, if and only if every finite presentation of this group satisfies a linear isoperimetric inequality.”
 
@@ -1863,7 +1863,7 @@
 
 **Problem.** Over an algebraically closed field, any two Borel subgroups of a connected linear algebraic group are conjugate.
 
-**How the definition helps.** Let B and B′ be two such subgroups. B′ acts on the complete variety G/B. The Borel fixed point theorem says that a connected solvable group acting on a complete variety has a fixed point. So B′ fixes a coset gB, which means that B′ lies in gBg⁻¹. Likewise B lies in a conjugate of B′, so equal dimensions and connectedness give B′ = gBg⁻¹. That argument is our own; the work goes into the fixed point theorem and into proving that the two definitions agree (Milne 18.4 and 18.12).
+**How the definition helps.** The definition puts a complete variety G/B in place, so the Borel fixed point theorem applies at once (our own argument). B′ acts on G/B and, being connected and solvable, fixes a coset gB, so B′ lies in gBg⁻¹ (our own). Likewise B lies in a conjugate of B′, so equal dimensions and connectedness give B′ = gBg⁻¹ (our own). The work goes into the fixed point theorem and into proving that the two definitions agree (Milne 18.4 and 18.12).
 
 **nLab:** [Borel subgroup](https://ncatlab.org/nlab/show/Borel+subgroup). It says: “the Borel subgroup B ⊂ G is a solvable connected subgroup such that G/B is a complete (equivalently projective) variety.”
 
@@ -1877,11 +1877,11 @@
 
 *True by definition.* MSC 20G07 (Structure theory for linear algebraic groups), 20G20. arXiv math.RT, math.AG. Level 3: graduate.
 
-**Definition.** Define the Langlands dual of a connected complex reductive group by its root datum with the two halves swapped. The root datum lists the characters and the one-parameter subgroups of a maximal torus, a largest subgroup isomorphic to a product of copies of ℂ×. It also lists the roots and the coroots, which give the reflections of the Weyl group. Reductive means that no nontrivial connected normal subgroup consists of unipotent elements, whose eigenvalues all equal one.
+**Definition.** Define the Langlands dual of a connected complex reductive group by its root datum with the two halves swapped. The root datum lists the characters and the one-parameter subgroups of a maximal torus, and the roots and the coroots.
 
 **Problem.** The Langlands dual of the Langlands dual of a connected complex reductive group is isomorphic to the original group.
 
-**How the definition helps.** With the swap definition, the double dual has literally the same root datum as the group. In our own account, the work is in the classification of reductive groups by root data. Existence gives a group for each root datum, so the dual is defined at all. The isomorphism theorem says that the root datum determines the group up to isomorphism. The geometric Satake equivalence gives another route to the dual group. It builds the representations of the dual from sheaves on the affine Grassmannian, a space of lattices in a loop group. In our own comparison, that route does not show the double dual directly.
+**How the definition helps.** With the swap definition, the double dual has literally the same root datum as the group. In our own account, the work is in the classification of reductive groups by root data. Existence gives a group for each root datum, so the dual is defined at all. The isomorphism theorem says that the root datum determines the group up to isomorphism.
 
 **nLab:** [geometric Satake equivalence](https://ncatlab.org/nlab/show/geometric+Satake+equivalence). It says: “The geometric Satake equivalence categorifies the Satake isomorphism in the setting of local geometric Langlands.”
 
@@ -1897,11 +1897,11 @@
 
 *True by definition.* MSC 20G07 (Structure theory for linear algebraic groups), 14M17. arXiv math.AG, math.GR. Level 3: graduate.
 
-**Definition.** Over an algebraically closed field, call a closed subgroup P of a connected linear algebraic group G parabolic if G/P is complete. Complete means proper over the field, the algebraic analogue of compact; for these quotients it is the same as projective. Define a Borel subgroup in the same way, as a connected solvable subgroup B with G/B complete. Solvable means that repeated commutator subgroups end at the trivial group, and the usual Borel definition is maximal among closed, connected, solvable subgroups.
+**Definition.** Over an algebraically closed field, a closed subgroup P of a connected linear algebraic group G is parabolic if G/P is complete, the algebraic analogue of compact. A Borel subgroup is a closed connected solvable subgroup B with G/B complete. The usual definition takes B maximal among closed connected solvable subgroups.
 
 **Problem.** Over an algebraically closed field, a closed subgroup that contains a Borel subgroup is parabolic. So its quotient is projective.
 
-**How the definition helps.** With both definitions, the map G/B → G/P is surjective, and the image of a complete variety is complete. Milne gives this argument in the proof of his Theorem 18.21. The work goes into the Borel subgroups. One must prove that a maximal connected solvable subgroup has a complete quotient (Milne Theorem 18.12). Milne also uses that a complete quotient is projective (his 9.39).
+**How the definition helps.** With both definitions, G/B maps onto G/P, and the image of a complete variety is complete (Milne, proof of Theorem 18.21). The work goes into the Borel subgroups. One must prove that a maximal connected solvable subgroup has a complete quotient (Milne Theorem 18.12). The step from complete to projective uses Milne 9.39.
 
 **nLab:** [parabolic subgroup](https://ncatlab.org/nlab/show/parabolic+subgroup), [Borel subgroup](https://ncatlab.org/nlab/show/Borel+subgroup). It says: “A minimal (with respect to inclusion) parabolic subgroup of a linear algebraic group is called a Borel subgroup; in fact, given a Borel subgroup B, any closed subgroup P ⊃ B is parabolic. \| This is equivalent, and taken as a definition for arbitrary algebraic groups, to saying that the Borel subgroup B ⊂ G is a solvable connected subgroup such that G/B is a complete (equivalently projective) variety.”
 
@@ -1955,7 +1955,7 @@
 
 **Problem.** Every finitely generated complex linear group is residually finite. Thus each nonidentity element survives in some finite quotient.
 
-**How the definition helps.** Finite generation places the entries of all group elements in one finitely generated ring, in our own explanation. Use the entries of the generating matrices and their inverses as ring generators over ℤ. Malcev’s proof reduces this ring to a finite field where a chosen matrix still differs from the identity. In our own counterexample, upper triangular two-by-two matrices with diagonal entries one and rational upper entry form a copy of the additive group ℚ. For a finite image of order n, write each rational as n times another rational. Its image is then zero.
+**How the definition helps.** Finite generation places the entries of all group elements in one finitely generated ring, in our own explanation. Malcev's proof reduces this ring to a finite field where a chosen matrix still differs from the identity. In our own counterexample, the unitriangular two-by-two matrices with rational upper entry form a copy of the additive group ℚ. Every rational is n times another rational, so every homomorphism from ℚ to a finite group of order n is trivial.
 
 **Paper or page:** [Residual finiteness and discrete subgroups of Lie groups](https://arxiv.org/abs/2407.07680v2). It says: “Let $\\Gamma$ be a finitely generated subgroup of $\\operatorname{GL}<sub>N</sub>(\\mathbb{C})$ for some $N \\ge 1$. Then $\\Gamma$ is residually finite.”
 
@@ -2003,7 +2003,7 @@
 
 **Problem.** Let H be a subgroup of G and N a left ℤ\[H\]-module. The cohomology of G with coefficients in the coinduced module, the ℤ\[H\]-linear maps ℤ\[G\] → N, equals the cohomology of H with coefficients in N.
 
-**How the definition helps.** With Ext, Shapiro’s lemma is the same correspondence of maps in every term of a resolution (our own). Coinduction is right adjoint to restriction, meaning maps into the coinduced module are the same as restricted maps into N (our own). Restrict a projective resolution of ℤ from G to H (our own). It stays projective because ℤ\[G\] is free as a left ℤ\[H\]-module by the right coset decomposition (our own). The correspondence respects the differentials, so the two complexes give the same cohomology (our own). The comparison with group cochains uses the bar resolution, whose free modules have bases indexed by tuples of group elements (our own).
+**How the definition helps.** With Ext, Shapiro's lemma is the same correspondence of maps in every term of a resolution (our own). Coinduction is right adjoint to restriction, so maps into the coinduced module are the same as restricted maps into N (our own). A projective resolution of ℤ over ℤ\[G\] stays projective over ℤ\[H\], because ℤ\[G\] is free over ℤ\[H\] by the coset decomposition (our own). The correspondence respects the differentials, so the two complexes give the same cohomology (our own).
 
 **nLab:** [group cohomology](https://ncatlab.org/nlab/show/group+cohomology). It says: “For A an abelian group equipped with a G-action, the degree-n group cohomology of G with coefficients in A is the nth-Ext-group”
 
@@ -2038,9 +2038,9 @@
 
 **Definition.** Let G be a group and A a G-module. The group cohomology Hⁿ(G, A) is Extⁿ(ℤ, A), computed over the group ring ℤ\[G\]. These groups are the right derived functors of the invariants functor, which sends A to Aᴳ = Hom(ℤ, A) over ℤ\[G\]. Equivalently, Hⁿ(G, A) is the cohomology of the classifying space BG with local coefficients in A.
 
-**Problem.** Get a long exact sequence in group cohomology from every short exact sequence of G-modules. Show that the cohomology does not depend on the choice of resolution.
+**Problem.** Every short exact sequence of G-modules gives a long exact sequence in group cohomology. The cohomology does not depend on the choice of projective resolution.
 
-**How the definition helps.** Derived functors have these properties in general, so group cohomology gets them by definition. Right derived functors of a left exact functor form a universal δ-functor (Grothendieck). A δ-functor is a family of functors with connecting maps that give long exact sequences, and a universal one is unique up to unique isomorphism. So the long exact sequence and independence of the resolution hold for every such functor. Computations can then use any convenient projective resolution of ℤ. An example is the periodic resolution that gives the cohomology of a cyclic group. That H² classifies extensions is a separate theorem, proved with explicit cocycles.
+**How the definition helps.** Derived functors have these properties in general, so group cohomology gets them by definition. Right derived functors of a left exact functor form a universal δ-functor (Grothendieck), a family with connecting maps that give long exact sequences and that is unique up to unique isomorphism. So computations can use any convenient projective resolution of ℤ, such as the periodic resolution for a cyclic group. That H² classifies extensions is a separate theorem, proved with explicit cocycles.
 
 **nLab:** [group cohomology](https://ncatlab.org/nlab/show/group+cohomology), [derived functor in homological algebra](https://ncatlab.org/nlab/show/derived+functor+in+homological+algebra), [delta-functor](https://ncatlab.org/nlab/show/delta-functor), [Ext](https://ncatlab.org/nlab/show/Ext). It says: “powerful tools of homological algebra can be applied and group cohomology of ordinary groups may be computed in terms of of Ext-functors.”
 
@@ -2059,7 +2059,7 @@
 
 **Problem.** Suppose that for every subgroup H, H¹(H, A) = 0 and H²(H, A) is cyclic of order \|H\|, generated by the restriction of one class. Then cup product with that class is an isomorphism from Ĥⁿ(G, ℤ) to Ĥⁿ⁺²(G, A) for every n.
 
-**How the definition helps.** With one sequence in all degrees, a single cup product can be an isomorphism everywhere, including negative degrees. Take degree −2, where the group with ℤ coefficients is the abelianization of G (our own). The isomorphism then gives the local reciprocity law: K× modulo norms is isomorphic to the abelianized Galois group (our own). Ordinary cohomology has no degree −2, so this case could not be stated. The page says the zeroth Tate group measures the fixed points that are not norms. What stays hard is to check Tate's conditions, which is the main work of local class field theory.
+**How the definition helps.** With one sequence in all degrees, a single cup product can be an isomorphism everywhere, including negative degrees. In degree −2, the group with ℤ coefficients is the abelianization of G (our own). The isomorphism then gives the local reciprocity law: K× modulo norms is isomorphic to the abelianized Galois group (our own). Ordinary cohomology has no degree −2, so this case could not be stated.
 
 **Wikipedia:** [Tate cohomology group](https://en.wikipedia.org/wiki/Tate_cohomology_group). It says: “Tate cohomology groups are a slightly modified form of the usual cohomology groups of a finite group that combine homology and cohomology groups into one sequence.”
 
@@ -2089,7 +2089,7 @@
 
 *Rules out counterexamples.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
 
-**Definition.** Integral cohomological dimension is the supremum of degrees with nonzero group cohomology for some coefficients. Group cohomology measures, degree by degree, how taking fixed elements of a group action can fail to preserve exact sequences of modules. For a torsion-free subgroup H of finite index in G, define the virtual cohomological dimension of G as the integral cohomological dimension of H. Torsion-free means that only the identity has finite order.
+**Definition.** The integral cohomological dimension of a group is the largest degree with nonzero group cohomology for some coefficient module. If G has a torsion-free subgroup H of finite index, the virtual cohomological dimension of G is the integral cohomological dimension of H. Torsion-free means that only the identity has finite order.
 
 **Problem.** The group SL₂(ℤ) has virtual cohomological dimension one but infinite integral cohomological dimension.
 
@@ -2241,7 +2241,7 @@
 
 **Problem.** The category of left actions of any monoid M on sets is a Grothendieck topos. This means it is equivalent to a category of sheaves on a small category with a notion of covering.
 
-**How the definition helps.** The functor definition identifies actions with presheaves on the opposite of the one-object category for M. A presheaf on a category is a functor from its opposite category to sets. A natural transformation here is a map of sets that commutes with the action. This avoids constructing the topos operations separately for monoid actions. The work moves into the general theorem that presheaves on a small category form a topos. Our own check uses that the functor laws give exactly the two elementwise action laws.
+**How the definition helps.** The functor definition identifies actions with presheaves on the opposite of the one-object category for M, and natural transformations with maps of sets that commute with the action. This avoids constructing the topos operations separately for monoid actions. The work moves into the general theorem that presheaves on a small category form a topos. Our own check uses that the functor laws give exactly the two elementwise action laws.
 
 **nLab:** [action](https://ncatlab.org/nlab/show/action), [category](https://ncatlab.org/nlab/show/category). It says: “The category of actions of M in C is then defined to be the functor category C<sup>(𝐁M)</sup>. When C is Set this is called MSet.”
 
@@ -2273,9 +2273,9 @@
 
 **Definition.** A quasigroup is a set with three binary operations: product, right division / and left division ∖. They satisfy four equations: (x / y) y = x, x (x ∖ y) = y, (x y) / y = x and x ∖ (x y) = y.
 
-**Problem.** The first definition says that the equations a x = b and y a = b have unique solutions, and this is not an equation. We want quasigroups to form a variety (a class of algebras defined by equations only). Then you can define quasigroups inside any category with finite products.
+**Problem.** With the two divisions as operations, quasigroups form a variety, a class of algebras defined by equations only. This matches the first definition, in which a x = b and y a = b have unique solutions. So quasigroups can be defined inside any category with finite products.
 
-**How the definition helps.** A unique-solution condition is not an equation, but four equations can be read in any category with finite products. In the first definition you must state unique solvability, because without associativity you cannot prove it. Making the two divisions into operations turns the unique-solution condition into four equations. Then quasigroups are the models of a Lawvere theory (an algebraic theory given by operations and equations), so you can internalize them in any cartesian monoidal category. The general results on varieties also apply: for example, by Birkhoff's theorem, subalgebras, products and homomorphic images of quasigroups are again quasigroups. Our own example of what fails without the extra operations: ℕ is closed under + inside the group ℤ, but (ℕ, +) is not a quasigroup.
+**How the definition helps.** A unique-solution condition is not an equation, but four equations can be read in any category with finite products. Making the two divisions into operations turns unique solvability into these equations; without associativity it cannot be derived from the product alone. Then quasigroups are the models of a Lawvere theory, so they can be internalized in any cartesian monoidal category. By Birkhoff's theorem, subalgebras, products and homomorphic images of quasigroups are again quasigroups.
 
 **nLab:** [quasigroup](https://ncatlab.org/nlab/show/quasigroup). It says: “Thus quasigroups are described by a Lawvere theory and can therefore be internalized into any cartesian monoidal category.”
 
@@ -2365,9 +2365,9 @@
 
 **Definition.** A p-local subgroup of G is the normalizer of a nontrivial p-subgroup. G has characteristic p type if the generalized Fitting subgroup F\*(Y) is a p-group for every p-local subgroup Y. Here F\*(Y) is the subgroup generated by the largest normal nilpotent subgroup and the subnormal quasisimple subgroups.
 
-**Problem.** The classification of finite simple groups splits the simple groups whose 2-rank is not small into two classes. The 2-rank is the largest rank of an elementary abelian 2-subgroup, and the two classes are component type and characteristic 2 type. Groups of characteristic 2 type are roughly the groups of Lie type over fields of characteristic 2, with a handful of others.
+**Problem.** In the classification of finite simple groups, every simple group whose 2-rank is not small is of component type or of characteristic 2 type. The 2-rank is the largest rank of an elementary abelian 2-subgroup. The groups of characteristic 2 type are roughly the groups of Lie type over fields of characteristic 2, with a handful of others.
 
-**How the definition helps.** The definition copies a property that every group of Lie type in characteristic p has, so the class is built to catch exactly these groups. With it, the classification can state a split into two cases and treat each with its own tools. The split itself is a theorem. For sectional 2-rank at least 5, MacWilliams showed that the Sylow 2-subgroups are connected, and the balance theorem then gives the two cases. A few groups are of characteristic p type for more than one p. A notorious part of this case was the quasithin groups, finished by Aschbacher and Smith in 2004.
+**How the definition helps.** The definition copies a property that every group of Lie type in characteristic p has, so the class is built to catch exactly these groups. With it, the classification can state a split into two cases and treat each with its own tools. The split itself is a theorem: for sectional 2-rank at least 5, MacWilliams showed that the Sylow 2-subgroups are connected, and the balance theorem then gives the two cases. A notorious part of this case was the quasithin groups, finished by Aschbacher and Smith in 2004.
 
 **Wikipedia:** [Fitting subgroup](https://en.wikipedia.org/wiki/Fitting_subgroup), [Classification of finite simple groups](https://en.wikipedia.org/wiki/Classification_of_finite_simple_groups). It says: “A finite group is said to be of characteristic p type if F\*(G) is a p-group for every p-local subgroup, because any group of Lie type defined over a field of characteristic p has this property.”
 
@@ -2419,7 +2419,7 @@
 
 **Definition.** Fix a free group on two letters a and b. Take its reduced words whose letters alternate between a or a⁻¹ and b or b⁻¹. A letter quasimorphism maps a group to these alternating words and is a homomorphism up to a tightly restricted error. The stable commutator length scl(g) is the limit of cl(gⁿ)/n, where cl(h) is the least number of commutators with product h.
 
-**Problem.** Let g be a nontrivial group element, and let a letter quasimorphism Φ satisfy Φ(g) ≠ 1 and Φ(gⁿ) = Φ(g)ⁿ for all integers n. Then scl(g) ≥ 1/2, a theorem of Heuer. Main examples are right-angled Artin groups, whose only relations say that some pairs of generators commute.
+**Problem.** Let g be a nontrivial group element, and let a letter quasimorphism Φ satisfy Φ(g) ≠ 1 and Φ(gⁿ) = Φ(g)ⁿ for all integers n. Then scl(g) ≥ 1/2, a theorem of Heuer.
 
 **How the definition helps.** The alternating words give labels from which the proof builds angles on each surface that bounds a power of g. The paper proves that these angle structures have total curvature at most −2π times the number of times the boundary winds around g. A discrete Gauss–Bonnet formula turns this into a bound on Euler characteristic, which gives scl(g) ≥ 1/2, in our own account. The paper says this generalises the proof of Duncan and Howie for free groups.
 
@@ -2473,9 +2473,9 @@
 
 **Definition.** Fix a function κ that grows more slowly than linearly. A geodesic ray is κ-Morse if quasi-geodesics, paths with bounded linear distortion, that end on it stay near it. The allowed distance may grow like κ of the distance from the base point. The κ-Morse boundary is the set of such rays, up to rays that stay sublinearly close.
 
-**Problem.** We want a group boundary that does not depend on the space the group acts on, and that holds the directions of random walks. A CAT(0) space is one whose triangles are at least as thin as flat ones. Its visual boundary can change under quasi-isometry (our own remark, Croke and Kleiner).
+**Problem.** The κ-Morse boundary is a quasi-isometry invariant, so it is a boundary of the group and not of the space it acts on (Qing, Rafi and Tiozzo). In a broad context it also holds the generic directions, those of random walks.
 
-**How the definition helps.** Random walks track geodesic rays only up to a sublinear error, as the abstract says, so asking for bounded error would miss them. Allowing a sublinear error is just enough room for random walks. It is still rigid enough to pass through quasi-isometries, so examples like those of Croke and Kleiner no longer give different boundaries (our own remark). Durham and Zalloum show that, for mapping class groups and Teichmüller space, the boundary injects continuously into the boundary of the curve graph. Abbott and Incerti-Medici show that, for CAT(0) cubical groups with a factor system, the boundary with the visual topology is well defined up to homeomorphism. What stays hard is the choice of topology on this boundary.
+**How the definition helps.** Random walks track geodesic rays only up to a sublinear error, as the abstract says, so asking for bounded error would miss them. Allowing a sublinear error is still rigid enough to pass through quasi-isometries. So examples of Croke and Kleiner, where the visual boundary of a CAT(0) space changes under quasi-isometry, no longer give different boundaries (our own remark). What stays hard is the choice of topology on this boundary.
 
 **Paper or page:** [The geometry of genericity in mapping class groups and Teichmüller spaces via CAT(0) cube complexes](https://arxiv.org/abs/2207.06516), [Hyperbolic projections and topological invariance of sublinearly Morse boundaries](https://arxiv.org/abs/2212.09539). It says: “Qing-Rafi-Tiozzo recently introduced the sublinearly Morse boundary and proved that this boundary is a quasi-isometry invariant which captures a notion of generic direction in a broad context.”
 
@@ -2584,9 +2584,9 @@
 
 **Definition.** A monoid is atomic when every non-unit is a product of irreducible elements, also called atoms. The ascending chain condition on principal ideals (ACCP) says that no infinite strictly increasing chain of principal ideals exists. Here it is asked only of single elements. An element satisfies the ACCP when every such chain that starts at its ideal stops.
 
-**Problem.** Cohn claimed that a domain is atomic exactly when it satisfies ACCP. Grams gave a counterexample in 1974. The question of a sensible characterization of atomicity stayed open.
+**Problem.** An acyclic monoid is atomic exactly when it has a generating set each of whose elements satisfies the ACCP. Acyclic means that x = uxv only when u and v are units.
 
-**How the definition helps.** Asking ACCP only of a generating set, not of every element, gives the exact condition for atomicity. Corollary 2.6 assumes that the monoid is acyclic. In our own summary, acyclic means that x = uxv only when u and v are units. In our own reading, one direction is easy, because the atoms and units generate an atomic monoid and each atom satisfies the ACCP. In our own reading, the work is in the converse, which rests on Theorem 2.4 on monoids with a preorder, a reflexive and transitive relation. The abstract says that the question was open in the 2006 monograph of Geroldinger and Halter-Koch.
+**How the definition helps.** Asking ACCP only of a generating set, not of every element, gives the exact condition for atomicity. This answers a question left open after Grams's 1974 counterexample to Cohn's claim that atomic domains satisfy ACCP. In our own reading, one direction is easy, because the atoms and units generate an atomic monoid and each atom satisfies the ACCP. The work is in the converse, which rests on Theorem 2.4 on monoids with a preorder (our own reading).
 
 **Paper or page:** [A characterization of atomicity](https://arxiv.org/abs/2209.05238v2). It says: “An acyclic monoid is atomic if and only if it has a generating set each of whose elements satisfies the ACCP.”
 

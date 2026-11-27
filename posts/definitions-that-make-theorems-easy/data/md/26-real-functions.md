@@ -68,11 +68,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 30B10. arXiv math.CA, math.CV. Level 1: early undergraduate.
 
-**Definition.** The limit superior (lim sup) of a sequence is the limit of the suprema of its tails. A tail is the part of the sequence from some term on. In the extended real numbers the lim sup always exists. For non-negative values, the rules 1/0 = +∞ and 1/(+∞) = 0 apply.
+**Definition.** The limit superior (lim sup) of a sequence is the limit of the suprema of its tails. In the extended real numbers the lim sup always exists. For non-negative values, the rules 1/0 = +∞ and 1/(+∞) = 0 apply.
 
 **Problem.** The radius of convergence R of a power series Σcₙ(z − a)ⁿ is given by 1/R = lim sup ⁿ√\|cₙ\|. In words, 1/R is the largest limit point of the nth roots of the sizes of the coefficients.
 
-**How the definition helps.** The lim sup always exists, so the formula has no exceptions. The ordinary limit of ⁿ√\|cₙ\| need not exist, for example when every odd coefficient is 0 (our own example). So a formula with an ordinary limit would have exceptions. With 1/0 = +∞, the same formula also covers series that converge everywhere (R = ∞) and series that converge only at the centre (R = 0). Cauchy published the result in 1821. Hadamard found it again in 1888 and put it in his 1892 thesis. The formula says nothing about convergence on the circle \|z − a\| = R, which stays a separate question (our own remark).
+**How the definition helps.** The lim sup always exists, so the formula has no exceptions. The ordinary limit of ⁿ√\|cₙ\| need not exist, for example when every odd coefficient is 0 (our own example). With 1/0 = +∞, the same formula also covers series that converge everywhere (R = ∞) and series that converge only at the centre (R = 0).
 
 **Wikipedia:** [Cauchy–Hadamard theorem](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Hadamard_theorem), [Extended real number line](https://en.wikipedia.org/wiki/Extended_real_number_line). It says: “Thus, if one allows 1/0 to take the value +∞, then one can use this formula regardless of whether the limit-supremum is 0 or not.”
 
@@ -88,9 +88,9 @@
 
 **Definition.** A real number is a Dedekind cut. A cut is a set of rational numbers that is non-empty, not all of ℚ, closed downward and without a greatest element. Closed downward means that if a rational number is in the set, every smaller rational number is too. One real number is at most another when it is a subset of the other.
 
-**Problem.** Prove the least-upper-bound property: every non-empty set of real numbers with an upper bound has a least upper bound.
+**Problem.** Every non-empty set S of real numbers with an upper bound has a least upper bound, namely the union ⋃S of its cuts.
 
-**How the definition helps.** When real numbers are cuts ordered by inclusion, the least upper bound of a set is simply its union. The rational numbers lack this property: the set of rationals x with x² &lt; 2 has upper bounds but no least one. Let S be a non-empty set of cuts with an upper bound. Its least upper bound is the union ⋃S, and a check of a few lines shows that this union is a cut. The intermediate value theorem and the Bolzano–Weierstrass theorem follow from this property. In this construction the arithmetic stays hard, especially multiplication. Even the proof that the cut for √2 squares to 2 is not immediate.
+**How the definition helps.** When real numbers are cuts ordered by inclusion, the least upper bound of a set is simply its union. A check of a few lines shows that this union is a cut. The rational numbers lack the property: the rationals x with x² &lt; 2 have upper bounds but no least one. In this construction the work moves to arithmetic, especially multiplication.
 
 **Wikipedia:** [Construction of the real numbers](https://en.wikipedia.org/wiki/Construction_of_the_real_numbers), [Least-upper-bound property](https://en.wikipedia.org/wiki/Least-upper-bound_property). It says: “If a nonempty set S of real numbers has any upper bound in R, then it has a least upper bound in R that is equal to ⋃S.”
 
@@ -154,9 +154,9 @@
 
 **Definition.** For a &gt; 0, the natural logarithm ln a is the integral of 1/t from 1 to a. For a between 0 and 1 the integral is negative.
 
-**Problem.** Show that ln(xy) = ln x + ln y for all positive x and y. Show also that ln′(x) = 1/x, and that ln is a bijection onto the real line.
+**Problem.** For all positive x and y, ln(xy) = ln x + ln y. Also ln′(x) = 1/x, and ln is a bijection onto the real line.
 
-**How the definition helps.** With the integral definition, the product law is a change of variables. Split the integral from 1 to xy at the point x (our own). The substitution t = xs turns the second part into the integral from 1 to y (our own). The rule ln′(x) = 1/x is the fundamental theorem of calculus. The exponential function is then defined as the inverse of ln, and its rules follow from the rules of ln. Gregoire de Saint-Vincent and Alphonse Antonio de Sarasa first saw that areas under the hyperbola xy = 1 behave like logarithms. What stays hard is that the integral exists, which needs the theory of the Riemann integral of a continuous function.
+**How the definition helps.** With the integral definition, the product law is a change of variables. Split the integral from 1 to xy at the point x, and substitute t = xs in the second part to get the integral from 1 to y (our own). The rule ln′(x) = 1/x is the fundamental theorem of calculus. What stays hard is that the integral exists, which needs the Riemann integral of a continuous function.
 
 **Wikipedia:** [Natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function). It says: “The simplicity of this definition, which is matched in many other formulas involving the natural logarithm, leads to the term "natural".”
 
@@ -170,11 +170,11 @@
 
 *Rules out counterexamples.* MSC 26A09 (Elementary functions), 39B22. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The exponential function is the unique f with f(x+y) = f(x)f(y), f(1) = e, and one regularity condition. The condition can be continuity at one point. It can also be monotonicity on some interval, or Lebesgue measurability.
+**Definition.** Characterize the exponential function by the functional equation f(x+y) = f(x)f(y) with f(1) = e, together with one regularity condition. The condition can be continuity at one point, monotonicity on some interval, or Lebesgue measurability.
 
-**Problem.** Show that the multiplicative property, f(1) = e and one regularity condition give exactly one function, namely eˣ.
+**Problem.** Every function with f(x+y) = f(x)f(y), f(1) = e and one such regularity condition equals eˣ.
 
-**How the definition helps.** The regularity condition rules out the only solutions that are not eˣ. Those solutions come from a Hamel basis, which is a basis of the real numbers as a vector space over the rationals. Georg Hamel built such additive solutions in 1905, and their exponentials are multiplicative (our own). They need the axiom of choice and are not measurable (our own). Once any regularity condition holds, f is continuous everywhere, and f agrees with eˣ on the rationals, so f equals eˣ. The same story holds for additive functions f(x+y) = f(x) + f(y), whose regular solutions are exactly f(x) = cx.
+**How the definition helps.** The regularity condition rules out the only solutions that are not eˣ. Those solutions come from a Hamel basis, a basis of the reals as a vector space over the rationals, and they are not measurable (our own). Once a regularity condition holds, f is continuous everywhere and agrees with eˣ on the rationals, so f equals eˣ.
 
 **Wikipedia:** [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function), [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “For the uniqueness, one must impose some regularity condition, since other functions satisfying f(x+y)=f(x)f(y) can be constructed using a basis for the real numbers over the rationals, as described by Hewitt and Stromberg.”
 
@@ -276,9 +276,9 @@
 
 **Definition.** A function f with domain D is continuous at a point x₀ of D if each ε &gt; 0 has a matching δ &gt; 0. The condition is \|f(x) − f(x₀)\| &lt; ε for all x in D with \|x − x₀\| &lt; δ. Only points of the domain are tested.
 
-**Problem.** Functions on a closed interval \[a, b\] should be continuous at a and b. The restriction of a continuous function to a subset should stay continuous. The reciprocal 1/f should be continuous wherever it is defined.
+**Problem.** With this definition, a function on \[a, b\] can be continuous at a and b, and the restriction of a continuous function to any subset is continuous. For a continuous f, 1/f is continuous at every point where it is defined.
 
-**How the definition helps.** Jordan's version asks nothing about points outside the domain, so endpoints and restrictions cause no exceptions. With Weierstrass's condition, no function on \[a, b\] could be continuous at a, because no interval around a lies inside \[a, b\] (our own). Then the extreme value theorem and the intermediate value theorem for \[a, b\] would need special wording (our own). With Jordan's definition, 1/x is continuous on its domain, the reals without 0. Every function on the integers is continuous, because each point is isolated. The same idea is the general definition of continuity for subspaces of topological spaces.
+**How the definition helps.** Jordan's version asks nothing about points outside the domain, so endpoints and restrictions cause no exceptions. With Weierstrass's condition, no function on \[a, b\] could be continuous at a, because no interval around a lies inside \[a, b\] (our own). Then the extreme value and intermediate value theorems for \[a, b\] would need special wording (our own). The same idea is the general definition of continuity on subspaces of topological spaces.
 
 **Wikipedia:** [Continuous function](https://en.wikipedia.org/wiki/Continuous_function). It says: “Weierstrass had required that the interval x₀ − δ &lt; x &lt; x₀ + δ be entirely within the domain D, but Jordan removed that restriction.”
 
@@ -294,7 +294,7 @@
 
 **Problem.** Every continuous function on a closed bounded interval \[a,b\] is Riemann integrable, in Darboux's form with upper and lower sums.
 
-**How the definition helps.** One δ for the whole interval controls all pieces of a partition at once. Our own detail: in any partition into pieces shorter than δ, the upper and lower sums differ by at most ε(b − a), so the integral exists. Plain continuity gives a δ that depends on the point, and that does not control all pieces at once. The Heine–Cantor theorem says that a continuous function on a compact set is uniformly continuous. Bolzano had the definition earlier, Dirichlet used the idea in his 1854 lectures, and Heine published the definition in 1870. The hard step moves into the Heine–Cantor theorem, which needs the compactness of \[a,b\].
+**How the definition helps.** One δ for the whole interval controls all pieces of a partition at once. In our own detail, for any partition into pieces shorter than δ, the upper and lower sums differ by at most ε(b − a). Plain continuity gives a δ that depends on the point, and that does not control all pieces at once. The hard step moves into the Heine–Cantor theorem, which uses the compactness of \[a,b\].
 
 **Wikipedia:** [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “The Darboux integrability of continuous functions follows almost immediately from this theorem.”
 
@@ -358,9 +358,9 @@
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For degree k, use the kth power of x − c divided by k!. In this basis, give the degree k term the coefficient equal to the kth derivative at c. For k = 0, use the function value at c.
+**Definition.** The Taylor polynomial of degree n of f at c is the sum, over k from 0 to n, of f⁽ᵏ⁾(c)(x − c)ᵏ/k!. It writes the polynomial in the basis (x − c)ᵏ/k!, so its coefficients are the derivatives of f at c.
 
-**Problem.** Suppose f has derivatives through order n at c. Its Taylor polynomial matches all these derivatives and the value at c. It is the unique polynomial of degree at most n with those values.
+**Problem.** If f has derivatives through order n at c, its Taylor polynomial of degree n is the unique polynomial of degree at most n whose value and first n derivatives at c match those of f.
 
 **How the definition helps.** The kth derivative at the center is one for the normalized power of degree k and zero for all the others (our own). The work of approximation is separate and belongs to Taylor’s remainder theorem (our own).
 
@@ -496,9 +496,9 @@
 
 **Definition.** The Riemann integral from a to b is first defined only for a &lt; b. By convention, the integral from b to a is minus the integral from a to b, and the integral from a to a is 0.
 
-**Problem.** The integral from a to c should equal the integral from a to b plus the integral from b to c. This should hold for all a, b and c in any order. The fundamental theorem of calculus, F(x) = ∫ from a to x of f, should hold for x on either side of a.
+**Problem.** With this convention, the integral from a to c equals the integral from a to b plus the integral from b to c, for a, b and c in any order. So F(x), the integral of f from a to x, is defined on both sides of a, and F′ = f there for continuous f.
 
-**How the definition helps.** With signed integrals, the addition rule holds for every order of a, b and c, so proofs need no case split. Without the convention, the rule holds only when b lies between a and c. The page shows that the rule then holds for any cyclic permutation of a, b and c. Then F(x), the integral of f from a to x, is defined on both sides of a (our own). For continuous f, its derivative is f everywhere (our own). The same sign rule becomes the orientation of the interval in the theory of differential forms (our own).
+**How the definition helps.** With signed integrals, the addition rule holds for every order of a, b and c, so proofs need no case split. Without the convention, the rule holds only when b lies between a and c. The page shows that the rule then holds for any cyclic permutation of a, b and c.
 
 **Wikipedia:** [Integral](https://en.wikipedia.org/wiki/Integral). It says: “The first convention is necessary in consideration of taking integrals over subintervals of \[a, b\]; the second says that an integral taken over a degenerate interval, or a point, should be zero.”
 
@@ -628,9 +628,9 @@
 
 **Definition.** A map f from an open set in ℝⁿ to ℝᵐ is twice differentiable if it is differentiable and its derivative df is again differentiable. Here df is a map from the open set into the space of linear maps from ℝⁿ to ℝᵐ. The second derivative d(df) at a point is then a bilinear map.
 
-**Problem.** Show that the mixed partial derivatives are equal: ∂²f/∂xᵢ∂xⱼ = ∂²f/∂xⱼ∂xᵢ. In words, the order in which you take the two partial derivatives does not matter.
+**Problem.** If f is twice differentiable, its mixed partial derivatives are equal: ∂²f/∂xᵢ∂xⱼ = ∂²f/∂xⱼ∂xᵢ. Equivalently, the bilinear map d(df) is symmetric at every point.
 
-**How the definition helps.** With this definition the theorem needs no continuity hypothesis, because the second derivative is one bilinear map that a symmetric difference approximates. Look at the second-order difference f(x+v+w) − f(x+v) − f(x+w) + f(x). It is symmetric in v and w. The mean value theorem shows that it equals d(df)(v,w) up to a small error, so the bilinear map is symmetric. The definition excludes the classical counterexample f(x,y) = xy(x² − y²)/(x² + y²). All second partial derivatives of this function exist at (0,0), but its two mixed partials differ there. The textbook version, with continuous second partials, then follows as a corollary.
+**How the definition helps.** With this definition the theorem needs no continuity hypothesis, because the second derivative is one bilinear map that a symmetric difference approximates. The difference f(x+v+w) − f(x+v) − f(x+w) + f(x) is symmetric in v and w, and the mean value theorem shows that it equals d(df)(v,w) up to a small error. The definition excludes f(x,y) = xy(x² − y²)/(x² + y²), whose second partials all exist at (0,0) but whose mixed partials differ there.
 
 **nLab:** [differentiable map](https://ncatlab.org/nlab/show/differentiable+map). It says: “However, the theorem shows that if we require f to actually be twice differentiable rather than merely having second-order partial derivatives, then this cannot happen.”
 
@@ -660,7 +660,7 @@
 
 *True by definition.* MSC 26B12 (Calculus of vector functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Measure progress along a smooth curve by length traveled from its starting point. This replaces a parameter that may run at varying speed. For a regular curve, its original velocity never vanishes.
+**Definition.** A curve is parametrized by arc length when its parameter is the length traveled from its starting point. Then its velocity has length one everywhere. A regular curve, whose velocity never vanishes, can be reparametrized this way.
 
 **Problem.** When a twice continuously differentiable regular curve is measured by arc length, its acceleration is perpendicular to its velocity.
 
@@ -698,7 +698,7 @@
 
 **Definition.** For a positive boundary, walk with the region to your left. This rule sends you counterclockwise around the outside and clockwise around any hole. The simpler rule “walk counterclockwise” works only for an outside boundary.
 
-**Problem.** Take a bounded plane region whose boundary consists of finitely many disjoint, simple, piecewise smooth closed curves. Suppose a vector field has continuous first derivatives on a neighborhood of the closed region. Green’s theorem equates circulation around the oriented boundary with the area integral of the scalar curl, the local rotation rate.
+**Problem.** Let a bounded plane region have a boundary of finitely many disjoint, simple, piecewise smooth closed curves, oriented positively. For a vector field with continuous first derivatives near the closed region, the circulation around this boundary equals the area integral of the scalar curl.
 
 **How the definition helps.** The left-hand rule makes the two copies of every cut run in opposite directions, so their integrals cancel (our own). On a ring centered at the origin, the field (−y, x)/(x² + y²) has zero curl (our own). Each counterclockwise circle contributes 2π, so the inner circle must run clockwise (our own). Green’s theorem on the pieces supplies the integral identity (our own).
 
@@ -848,7 +848,7 @@
 
 **Problem.** A real-valued lower semicontinuous function on a nonempty compact interval attains its minimum.
 
-**How the definition helps.** Closed sublevel sets let compactness turn arbitrarily close approximations into a minimum (our own). If the infimum were minus infinity, all sublevel sets at heights −n would be nonempty (our own). Compactness would put one point in all of them, impossible for a real value (our own). For finite infimum m, the nonempty closed sublevel sets at heights m + 1/n likewise intersect (our own). Every point in their intersection attains m (our own). From the sequential definition, one first proves that each sublevel set contains the limits of its convergent sequences (our own).
+**How the definition helps.** Closed sublevel sets let compactness turn near-minimizers into a minimizer (our own). Let m be the infimum. The sublevel sets at heights m + 1/n are nonempty, closed and nested, so they share a point, and that point attains m (our own). If m were −∞, the same argument at heights −n would give a point with no real value (our own).
 
 **nLab:** [semicontinuous map](https://ncatlab.org/nlab/show/semicontinuous+map). It says: “for each y ∈ U, f(y) &gt; a.”
 
@@ -864,7 +864,7 @@
 
 **Problem.** For any function f on the real line, the set of points where f is continuous is a countable intersection of open sets. So no function is continuous exactly at the rational numbers.
 
-**How the definition helps.** Oscillation turns continuity at a point into a number, so the set of continuity points is a level set. The set where the oscillation is less than 1/n is open. Their intersection over all n is the set of continuity points, which is therefore a G-delta set. The rationals are not a G-delta set (our own). This follows from the Baire category theorem (our own), which says that a countable intersection of dense open sets of reals is dense. So no function is continuous exactly on the rationals, although Thomae's function is continuous exactly on the irrationals (our own). The same tool proves one direction of Lebesgue's test for Riemann integrability.
+**How the definition helps.** Oscillation turns continuity at a point into a number, so the set of continuity points is a level set. The set where the oscillation is less than 1/n is open, and the intersection over all n is the set of continuity points. The rationals are not a G-delta set, by the Baire category theorem (our own). So no function is continuous exactly on the rationals, although Thomae's function is continuous exactly on the irrationals (our own).
 
 **Wikipedia:** [Oscillation (mathematics)](https://en.wikipedia.org/wiki/Oscillation_%28mathematics%29). It says: “the continuous points are the intersection of the sets where the oscillation is less than ε (hence a Gδ set) – and gives a very quick proof of one direction of the Lebesgue integrability condition.”
 
@@ -880,7 +880,7 @@
 
 **Problem.** A real function on any nonempty subset of the line with Lipschitz constant L extends to the whole line with the same bound.
 
-**How the definition helps.** Taking the infimum of distance bounds enforces the same Lipschitz inequality everywhere at once (our own). The triangle inequality bounds the change in each expression by L times the distance between inputs (our own). Taking infima preserves this bound in both directions (our own). Fix an original point b (our own). The Lipschitz and triangle inequalities bound every expression below by f(b) − L\|x − b\| (our own). Choosing a = b gives a finite upper bound (our own). At any original point x, the bounds all exceed or equal f(x), with equality when a = x (our own).
+**How the definition helps.** Taking the infimum of distance bounds enforces the Lipschitz inequality everywhere at once (our own). Each expression f(a) + L\|x − a\| changes by at most L times the change in x, and infima keep this bound (our own). Every expression is at least f(b) − L\|x − b\| for a fixed original point b, so the infimum is finite (our own). At an original point x, the infimum is f(x), attained at a = x (our own).
 
 **nLab:** [Lipschitz map](https://ncatlab.org/nlab/show/Lipschitz+map). It says: “d(f(a), f(b)) ≤ K d(a, b)”
 
@@ -946,7 +946,7 @@
 
 **Definition.** A gauge on \[a, b\] is a function δ : \[a, b\] → (0, ∞\]. A tagged partition (a partition with one chosen point, the tag, in each piece) is δ-fine if each piece lies within δ(t) of its tag t. The number I is the Henstock integral of f if for every ε &gt; 0 there is a gauge δ such that every δ-fine tagged partition has a Riemann sum within ε of I. With constant gauges this is the Riemann integral.
 
-**Problem.** If f is differentiable on \[a, b\], then f′ should be integrable, and the integral of f′ from a to b should be f(b) − f(a). This should hold with no further hypothesis on f′.
+**Problem.** If f is differentiable on \[a, b\], then f′ is Henstock integrable and its integral from a to b is f(b) − f(a). No further hypothesis on f′ is needed.
 
 **How the definition helps.** The gauge can be made very small near the bad points of f′, so every derivative is Henstock integrable. So the fundamental theorem of calculus holds in this clean form. With the Riemann or Lebesgue integral, the same statement needs extra hypotheses on f′. Cousin's lemma is still needed: it shows that δ-fine partitions exist. That is what makes the integral not trivial and unique.
 
@@ -964,9 +964,9 @@
 
 **Definition.** A gauge on \[a, b\] is a function δ from \[a, b\] to the positive numbers. A tagged partition splits \[a, b\] into pieces and picks a point, the tag, in each piece; it is δ-fine if each piece with tag t lies within distance δ(t) of t. A function f is Henstock integrable on \[a, b\], with integral I, if this holds: for each ε &gt; 0, some gauge δ makes every δ-fine Riemann sum of f lie within ε of I.
 
-**Problem.** An improper integral is the limit of ∫ₐᶜ f as c tends to b from below. It should be the same as the proper integral ∫ₐᵇ f. Then no separate definition of improper integrals is needed.
+**Problem.** Hake's theorem: let f be Henstock integrable on each \[a, c\] with c &lt; b. Then ∫ₐᵇ f exists exactly when the limit of ∫ₐᶜ f as c tends to b from below exists, and then the two are equal.
 
-**How the definition helps.** A gauge can be very small near b, so the Henstock integral already deals with the bad endpoint. Hake's theorem states this. Suppose f is Henstock integrable on each \[a, c\] with c &lt; b. Then ∫ₐᵇ f exists exactly when the limit of ∫ₐᶜ f as c → b from below exists, and then the two are equal. So what is a definition for the improper Riemann integral is a theorem for the Henstock integral. A corollary is that changing f at finitely many points changes no integral. The proof of Hake's theorem is the real work.
+**How the definition helps.** A gauge can be very small near b, so the Henstock integral already deals with the bad endpoint. So what is a definition for the improper Riemann integral is a theorem for the Henstock integral, and no separate definition is needed. The proof of Hake's theorem is the real work.
 
 **nLab:** [Henstock integral](https://ncatlab.org/nlab/show/Henstock+integral). It says: “in the strong sense that if either side exists, then so does the other, and they are equal.”
 
@@ -984,7 +984,7 @@
 
 **Problem.** Every Darboux integrable function on a compact interval is Lebesgue integrable with the same integral.
 
-**How the definition helps.** Darboux sums supply pointwise step bounds, while individual tagged Riemann sums need not bound the function (our own). Choose successively finer partitions whose upper and lower integrals differ by less than 1/n (our own). The bounded step functions converge from above and below, apart from countably many partition endpoints (our own). Bounded convergence shows that the limiting bounds have equal integrals (our own). Their nonnegative difference therefore vanishes almost everywhere (our own). Lebesgue measurability follows because the function agrees almost everywhere with the measurable lower limit (our own). The common integral equals the Darboux integral (our own).
+**How the definition helps.** Darboux sums supply pointwise step bounds, while single tagged Riemann sums need not bound the function (our own). Take finer and finer partitions whose upper and lower integrals differ by less than 1/n (our own). The step functions converge from above and below, and bounded convergence gives the limits equal integrals (our own). So the function equals a measurable limit almost everywhere, with the Darboux integral as its Lebesgue integral (our own).
 
 **Paper or page:** [Lebesgue Integral is Extension of Darboux Integral](https://proofwiki.org/wiki/Lebesgue_Integral_is_Extension_of_Darboux_Integral). It says: “Then it is also Lebesgue integrable, and furthermore:”
 
@@ -998,9 +998,9 @@
 
 **Definition.** In Pollard's generalized Riemann–Stieltjes integral, each ε needs a partition P with one property. Every partition that contains the points of P gives sums within ε of the value, for every choice of tags. The usual definition asks this for every partition whose pieces are all short enough.
 
-**Problem.** Give a value to ∫ f dg when f and g jump at the same point. At that point one function is continuous from the left, and the other from the right.
+**Problem.** With Pollard's definition, ∫ f dg can exist when f and g jump at the same point, if one is continuous from the left there and the other from the right. With the usual definition, ∫ f dg does not exist when f and g share a discontinuity.
 
-**How the definition helps.** Refinement lets the partition keep a common jump point as a division point, so the tag cannot fall on the wrong side of the jump. With the usual definition, a partition can put the jump inside a piece, and the sum then changes with the choice of tag. So the ordinary integral does not exist when f and g share a discontinuity. Suppose f is continuous from the right and g from the left at the jump. Then the refinement sums no longer depend on the tags (our own). If both are continuous from the same side, the sums still depend on the tag, so not every shared jump is saved (our own). Pollard introduced the refinement version in 1920.
+**How the definition helps.** Refinement lets the partition keep a common jump point as a division point, so the tag cannot fall on the wrong side of the jump. With the usual definition, a partition can put the jump inside a piece, and the sum then changes with the choice of tag. If f is continuous from the right and g from the left at the jump, the refinement sums no longer depend on the tags (our own). If both are continuous from the same side, the sums still depend on the tag (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “A consequence is that with this definition, the integral ∫ f(x) dg(x) can still be defined in cases where f and g have a point of discontinuity in common.”
 
@@ -1030,9 +1030,9 @@
 
 **Definition.** A regulated function on \[a, b\] is a uniform limit of step functions. Its integral is the limit of the integrals of the step functions. Bourbaki and Dieudonné advocated this integral instead of the Riemann integral.
 
-**Problem.** Show that the integral of a regulated function exists and does not depend on the approximating sequence. Show also that the integral of a uniform limit is the limit of the integrals.
+**Problem.** The integral of a regulated function exists and does not depend on the approximating sequence. The integral of a uniform limit of regulated functions is the limit of their integrals.
 
-**How the definition helps.** The integral on step functions is a bounded linear map, so it extends uniquely to the closure of the step functions. Existence and independence of the sequence are then one theorem from functional analysis. Passing to uniform limits is built into the definition. Continuous functions are regulated by uniform continuity, so they are integrable (our own). Regulated functions are exactly those with one-sided limits at every point (our own). The cost is a smaller class than the Riemann integrable functions. A gain is that the definition works unchanged for values in a Banach space, a complete normed vector space.
+**How the definition helps.** The integral on step functions is a bounded linear map, so it extends uniquely to the closure of the step functions. Existence and independence of the sequence are then one theorem from functional analysis. Passing to uniform limits is built into the definition. The cost is a smaller class than the Riemann integrable functions.
 
 **Wikipedia:** [Regulated integral](https://en.wikipedia.org/wiki/Regulated_integral). It says: “One must check that this limit exists and is independent of the chosen sequence, but this is an immediate consequence of the continuous linear extension theorem of elementary functional analysis”
 
@@ -1048,9 +1048,9 @@
 
 **Definition.** The Riemann–Stieltjes integral ∫ f dg is the limit of the sums Σ f(cᵢ)(g(xᵢ) − g(xᵢ₋₁)) as the partitions get finer. Each term multiplies a value of f by the increase of g over one small interval. So the integral uses the increments of a function g instead of length.
 
-**Problem.** One formula should give the expected value E\[f(X)\] of every real random variable X, whether X is discrete, continuous or neither, for each f for which the integral exists. A second aim is to describe the continuous linear functionals on C\[a,b\], the space of continuous functions on \[a,b\].
+**Problem.** Let X be a real random variable with distribution function g(x) = P(X ≤ x). Then E\[f(X)\] = ∫ f(x) dg(x) whenever the integral exists, whether X is discrete, continuous or neither.
 
-**How the definition helps.** The Stieltjes integral needs only the distribution function g(x) = P(X ≤ x), which every random variable has, so no density is needed. The density formula E\[f(X)\] = ∫ f(x) g′(x) dx fails when X is discrete. It also fails when g is continuous but not absolutely continuous (not the integral of its derivative), such as the Cantor function. With the Stieltjes integral, E\[f(X)\] = ∫ f(x) dg(x) holds for every distribution function g, however badly it behaves. F. Riesz used the same integral to state his theorem about C\[a,b\]. It says that every continuous linear functional on C\[a,b\] is a Stieltjes integral against a function of bounded variation (a function whose total up-and-down movement is finite). The theorem was later restated with measures.
+**How the definition helps.** The Stieltjes integral needs only the distribution function, which every random variable has, so no density is needed. The density formula E\[f(X)\] = ∫ f(x) g′(x) dx fails when X is discrete. It also fails when g is continuous but not absolutely continuous, such as the Cantor function.
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “holds if g is any cumulative probability distribution function on the real line, no matter how ill-behaved.”
 
@@ -1084,7 +1084,7 @@
 
 **Problem.** Let f be 2π-periodic and of bounded variation on a period. Then the Fourier series of f converges at every point x to (f(x+) + f(x−))/2. This value is the average of the limits of f from the right and from the left.
 
-**How the definition helps.** A function of bounded variation is a difference of monotone functions, so a result for monotone functions carries over to it. Dirichlet proved convergence in 1829 for piecewise monotone functions. Jordan introduced functions of bounded variation in 1881, in a paper on Fourier series, and the Jordan decomposition shows that they are differences of monotone functions. The partial sums of a Fourier series depend linearly on the function, so Dirichlet's result carries over to the differences at once (our own remark on why the extension is short). If f is also continuous everywhere, the convergence is uniform. Continuous functions that do not have bounded variation can have divergent Fourier series (our own remark).
+**How the definition helps.** A function of bounded variation is a difference of monotone functions, so a result for monotone functions carries over to it. Dirichlet proved convergence for piecewise monotone functions. The partial sums of a Fourier series depend linearly on the function, so his result passes to differences at once (our own remark). Jordan introduced bounded variation for exactly this extension.
 
 **Wikipedia:** [Dirichlet–Jordan test](https://en.wikipedia.org/wiki/Dirichlet%E2%80%93Jordan_test), [Bounded variation](https://en.wikipedia.org/wiki/Bounded_variation). It says: “It was extended in the late 19th century by Camille Jordan to functions of bounded variation in each period (any function of bounded variation is the difference of two monotonically increasing functions).”
 
@@ -1132,9 +1132,9 @@
 
 **Definition.** A function f on \[a,b\] is absolutely continuous if, for every ε &gt; 0, there is a δ &gt; 0 with this property. For every finite family of disjoint subintervals (xᵢ, yᵢ) with total length Σ(yᵢ − xᵢ) &lt; δ, we have Σ\|f(yᵢ) − f(xᵢ)\| &lt; ε. In words, intervals of small total length give a small total change in f.
 
-**Problem.** The fundamental theorem of calculus for the Lebesgue integral: f(x) = f(a) + ∫ₐˣ f′(t) dt. In words, integrating the derivative of f gives back f.
+**Problem.** Fundamental theorem of calculus for the Lebesgue integral: if f is absolutely continuous on \[a,b\], then f′ exists almost everywhere and f(x) = f(a) + ∫ₐˣ f′(t) dt for all x in \[a,b\].
 
-**How the definition helps.** The definition leaves out the functions for which the formula fails, such as the Cantor function. The Cantor function is continuous, even uniformly continuous, and its derivative is 0 almost everywhere. But it rises from 0 to 1, so ∫₀¹ f′ = 0 while f(1) − f(0) = 1. Lebesgue's theorem then says that f is absolutely continuous exactly when f is the indefinite Lebesgue integral of some function, and that function is then f′. The Banach–Zarecki theorem gives an equivalent test: f is continuous, of bounded variation, and has the Luzin N property (f maps sets of measure zero to sets of measure zero). The proof still needs the theorem that such functions are differentiable almost everywhere (our own remark on where the work lies).
+**How the definition helps.** The definition leaves out the functions for which the formula fails, such as the Cantor function. The Cantor function is continuous and has derivative 0 almost everywhere, yet it rises from 0 to 1. So ∫₀¹ f′ = 0 while f(1) − f(0) = 1. The proof still needs the theorem that absolutely continuous functions are differentiable almost everywhere (our own remark).
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity), [Cantor function](https://en.wikipedia.org/wiki/Cantor_function). It says: “The notion of absolute continuity allows one to generalize the fundamental theorem of calculus, originally in the framework of Riemann integration, to Lebesgue integration.”
 
@@ -1182,7 +1182,7 @@
 
 **Problem.** A continuous midpoint-convex function on a real interval is convex.
 
-**How the definition helps.** Continuity lets the midpoint test determine the inequality at every weight (our own). Repeated halving gives the inequality for fractions whose denominator is a power of two (our own). These fractions are dense, so continuity gives the remaining weights (our own). For a counterexample, take a basis of the reals over the rationals containing 1 and √2 (our own). Define a rational-linear map sending √2 to one and every other basis element to zero (our own). It has midpoint equality but is discontinuous because it vanishes on the rationals without vanishing everywhere (our own). Every finite convex function on the line is continuous (our own).
+**How the definition helps.** Continuity lets the midpoint test determine the inequality at every weight (our own). Repeated halving gives the inequality for weights whose denominator is a power of two, and these are dense (our own). Without continuity, a rational-linear map built from a basis of the reals over the rationals has midpoint equality but is not convex (our own).
 
 **Wikipedia:** [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “Such functions are sometimes called Hamel functions.”
 
@@ -1216,7 +1216,7 @@
 
 **Problem.** The gamma function is the only positive function f on x &gt; 0 with three properties. The properties are f(1) = 1, f(x + 1) = x·f(x), and f is log-convex.
 
-**How the definition helps.** Log-convexity squeezes f between bounds that close up, so only one function is possible. The conditions f(1) = 1 and f(x + 1) = x·f(x) alone do not determine f. Our own example: Γ(x)·p(x) satisfies them for any positive function p with period 1 and p(1) = 1. Log-convexity traps f(x) between bounds that depend on a whole number n and converge to the same limit as n grows. So the proof both shows uniqueness and gives a formula for Γ. Bohr and Mollerup put the theorem in a textbook in 1922, because they thought someone had already proved it.
+**How the definition helps.** Log-convexity squeezes f between bounds that close up, so only one function is possible. The conditions f(1) = 1 and f(x + 1) = x·f(x) alone do not determine f. For example, Γ(x)·p(x) satisfies them for any positive p with period 1 and p(1) = 1 (our own). Log-convexity traps f(x) between bounds that depend on a whole number n and converge to the same limit, which also gives a formula for Γ.
 
 **Wikipedia:** [Bohr–Mollerup theorem](https://en.wikipedia.org/wiki/Bohr%E2%80%93Mollerup_theorem). It says: “Therefore, there is no other function defined on x &gt; 0 with all the properties assigned to Γ(x).”
 
@@ -1284,7 +1284,7 @@
 
 **Problem.** Write ι for the indicator function of A. Minimizing a convex f over a convex set A is the same as minimizing f + ι over the whole space. Theorems about unconstrained minima then apply directly to constrained ones.
 
-**How the definition helps.** With the value +∞, a constraint becomes a term of the function, so one theory covers both cases. The indicator function is convex exactly when A is convex, and lower semicontinuous exactly when A is closed. The sum of the indicator functions of A and B is the indicator function of their intersection. The subgradients of the indicator function of A at a point x form the normal cone of A at x. That cone holds the vectors p with ⟨p, y − x⟩ ≤ 0 for all y in A (our own). So the condition 0 ∈ ∂(f + ι) gives the usual condition for a constrained minimum, when the sum rule for subdifferentials applies (our own). The definition of convexity uses only weights t strictly between 0 and 1, so that the undefined product 0 · ∞ never appears.
+**How the definition helps.** With the value +∞, a constraint becomes a term of the function, so one theory covers both cases. The indicator function is convex exactly when A is convex. Its subgradients at x form the normal cone of A at x, so 0 ∈ ∂(f + ι) gives the usual condition for a constrained minimum when the sum rule applies (our own).
 
 **Wikipedia:** [Indicator function (convex analysis)](https://en.wikipedia.org/wiki/Indicator_function_%28convex_analysis%29), [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “It is similar to the indicator function used in probability, but assigns +∞ instead of 0 to the outside elements.”
 
@@ -1334,7 +1334,7 @@
 
 **Problem.** If a positive, continuous, strictly increasing function varies regularly with index ρ &gt; 0, its inverse varies regularly with index 1/ρ.
 
-**How the definition helps.** Ratios express the inverse law even when a power alone does not describe growth (our own). Fix a positive multiplier a and choose positive numbers b and c straddling a raised to 1/ρ (our own). For large x, regular variation gives f(bx) &lt; a f(x) &lt; f(cx) (our own). Taking inverses and dividing by x traps the inverse ratio between b and c (our own). The positive index and monotonicity imply unbounded growth, so the inverse covers every sufficiently large argument (our own). Bringing b and c together gives the limit (our own).
+**How the definition helps.** Ratios express the inverse law even when a power alone does not describe growth (our own). For b &lt; a<sup>(1/ρ)</sup> &lt; c, regular variation gives f(bx) &lt; a f(x) &lt; f(cx) for large x (our own). Applying the inverse traps the inverse ratio between b and c, and unbounded growth makes this cover every large argument (our own). Bringing b and c together gives the limit (our own).
 
 **Wikipedia:** [Slowly varying function](https://en.wikipedia.org/wiki/Slowly_varying_function). It says: “Similarly, a regularly varying function is a function of a real variable whose behaviour at infinity is similar to the behaviour of a power law function”
 
@@ -1366,7 +1366,7 @@
 
 **Problem.** A real function approximately continuous at every point of an open interval takes every value between any two of its values.
 
-**How the definition helps.** In our own proof, approximate continuity everywhere makes each bounded function in this class the derivative of its indefinite integral. At every point, the average absolute difference from the point value tends to zero on shrinking intervals. This gives the derivative there. Darboux’s theorem says derivatives take every intermediate value. For an unbounded function, first apply arctangent, which is bounded, continuous, and strictly increasing. Our own counterexample takes zero on the negative half-line and one elsewhere. It is approximately continuous almost everywhere but skips one half.
+**How the definition helps.** In our own proof, approximate continuity everywhere makes each bounded function in this class the derivative of its indefinite integral. Darboux’s theorem says derivatives take every intermediate value. For an unbounded function, first apply arctangent, which is bounded, continuous and strictly increasing. Our own counterexample is the function that is zero on the negative half-line and one elsewhere, which is approximately continuous almost everywhere but skips values.
 
 **Wikipedia:** [Approximately continuous function](https://en.wikipedia.org/wiki/Approximately_continuous_function). It says: “when f is essentially bounded, its points of approximate continuity coincide with its Lebesgue points.”
 
@@ -1382,7 +1382,7 @@
 
 **Problem.** Every continuous function on a closed bounded interval is uniformly continuous.
 
-**How the definition helps.** The two definitions differ only in which points are tested, so the theorem reduces to finding a real point near any hyperreal point. On a closed bounded interval, every hyperreal point x has a standard part st(x) in I. If x and y are infinitely close, both are infinitely close to st(x). By continuity at st(x), f(x) and f(y) are then infinitely close to f(st(x)). The definition needs two quantifiers, while the epsilon-delta definition needs four (our own). The squaring function on the reals fails the test at an infinite hyperreal point N. The work moves into building the hyperreals and proving the transfer principle. That principle says a first-order statement holds for the reals exactly when it holds for the hyperreals.
+**How the definition helps.** The two definitions differ only in which points are tested, so the theorem reduces to finding a real point near any hyperreal point. On a closed bounded interval, every hyperreal point x of I\* has a standard part st(x) in I. If x and y are infinitely close, both are infinitely close to st(x), so continuity there makes f(x) and f(y) infinitely close. The work moves into building the hyperreals and proving the transfer principle.
 
 **Wikipedia:** [Nonstandard calculus](https://en.wikipedia.org/wiki/Nonstandard_calculus), [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “The fact that a continuous function on a compact interval I is necessarily uniformly continuous (the Heine–Cantor theorem) admits a succinct hyperreal proof.”
 
@@ -1400,7 +1400,7 @@
 
 **Problem.** Every Baire class one real function on the real line is continuous on a dense set of points.
 
-**How the definition helps.** Continuous approximations give closed sets where every pair of terms after index N differs by at most ε (our own). Pointwise convergence makes these sets cover every closed interval (our own). The Baire category theorem gives one such set containing a smaller interval of positive length (our own). There the limit stays within ε of one continuous term (our own). Shrink the interval until that term varies by less than ε, so the limit varies by at most 3ε (our own). For each ε the resulting open intervals have dense union (our own). Baire’s theorem gives a dense intersection for ε = 1/n, and the limit is continuous at every point there (our own).
+**How the definition helps.** Continuous approximations give closed sets where all terms after index N differ by at most ε, and these sets cover every closed interval (our own). The Baire category theorem gives one such set containing a smaller interval, where the limit stays within 3ε of a nearly constant continuous term (our own). So for each ε the points of small oscillation contain a dense open set (our own). Baire’s theorem for ε = 1/n gives a dense set of continuity points (our own).
 
 **Wikipedia:** [Baire function](https://en.wikipedia.org/wiki/Baire_function). It says: “the pointwise limit of a sequence of Baire class 0 functions.”
 
@@ -1416,7 +1416,7 @@
 
 **Problem.** Take any real function f on an interval. At almost every point, either f has a finite derivative, or the Dini derivatives follow one of three fixed patterns.
 
-**How the definition helps.** A lim sup or lim inf always exists in the extended reals, so the four Dini derivatives are defined for every function at every point. This lets a theorem speak about arbitrary functions, with no assumption of differentiability. A function is differentiable at a point exactly when all four agree and are finite. Denjoy proved the theorem for continuous functions in 1915. Grace Chisholm Young extended it to measurable functions in 1917, and Saks to all functions in 1924. Those proofs are still long (our own).
+**How the definition helps.** A lim sup or lim inf always exists in the extended reals, so the four Dini derivatives are defined for every function at every point. This lets a theorem speak about arbitrary functions, with no assumption of differentiability. A function is differentiable at a point exactly when all four agree and are finite. The proofs are still long (our own).
 
 **Wikipedia:** [Dini derivative](https://en.wikipedia.org/wiki/Dini_derivative), [Denjoy–Young–Saks theorem](https://en.wikipedia.org/wiki/Denjoy%E2%80%93Young%E2%80%93Saks_theorem). It says: “The functions are defined in terms of the infimum and supremum in order to make the Dini derivatives as "bullet proof" as possible, so that the Dini derivatives are well-defined for almost all functions”
 
@@ -1502,7 +1502,7 @@
 
 **Problem.** A function on \[a, b\] is McShane integrable exactly when it is Lebesgue integrable, with the same integral.
 
-**How the definition helps.** Free tags make the McShane integral absolute: if f is integrable, so is \|f\|. This rules out the conditionally convergent integrals that the Henstock–Kurzweil integral allows, such as some derivatives. So the Lebesgue integral gets a definition by Riemann sums, with no measure theory. The page cites McShane's 1973 paper, A Unified Theory of Integration. The work moves into the proof that McShane and Lebesgue integrability agree. The cost is the fundamental theorem of calculus for every derivative, which holds for Henstock–Kurzweil but not for McShane.
+**How the definition helps.** Free tags make the McShane integral absolute: if f is integrable, so is \|f\|. This rules out the conditionally convergent integrals that the Henstock–Kurzweil integral allows. So the Lebesgue integral gets a definition by Riemann sums, with no measure theory. The work moves into the proof that McShane and Lebesgue integrability agree.
 
 **Wikipedia:** [McShane integral](https://en.wikipedia.org/wiki/McShane_integral). It says: “The fact that the tags are allowed to be outside the subintervals is why the partition is called free. It's also the only difference between the definitions of the Henstock-Kurzweil integral and the McShane integral.”
 
@@ -1520,7 +1520,7 @@
 
 **Problem.** Every continuous linear functional A on C\[0, 1\] has the form A(f) = ∫ f dα for some function α of bounded variation.
 
-**How the definition helps.** The Stieltjes integral gives one formula for point masses, densities and mixtures, so every functional fits one statement. Evaluation at a point, f ↦ f(1/2), is a continuous linear functional with no density. With a step function α that jumps by 1 at 1/2, it becomes ∫ f dα (our own). The existence theorem says ∫ f dg exists when f is continuous and g has bounded variation. Riesz proved the theorem in 1909. Later the theorem was restated with measures, which extends it to locally compact spaces.
+**How the definition helps.** The Stieltjes integral gives one formula for point masses, densities and mixtures, so every functional fits one statement. Evaluation at a point, f ↦ f(1/2), is a continuous linear functional with no density. With a step function α that jumps by 1 at 1/2, it becomes ∫ f dα (our own). The existence theorem says ∫ f dg exists when f is continuous and g has bounded variation.
 
 **Wikipedia:** [Riesz–Markov–Kakutani representation theorem](https://en.wikipedia.org/wiki/Riesz%E2%80%93Markov%E2%80%93Kakutani_representation_theorem), [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “The Riemann–Stieltjes integral appears in the original formulation of F. Riesz's theorem which represents the dual space of the Banach space C\[a,b\] of continuous functions in an interval \[a,b\] as Riemann–Stieltjes integrals against functions of bounded variation.”
 
@@ -1718,9 +1718,9 @@
 
 **Definition.** A convex function with values in \[−∞, +∞\] is proper if it never takes the value −∞ and is finite at some point. It is lower semicontinuous, or closed, if f(x) ≤ lim inf f(xₙ) whenever xₙ → x.
 
-**Problem.** When is f equal to its biconjugate f\*\*, the conjugate of its conjugate? Always f\*\* ≤ f.
+**Problem.** In a Hausdorff locally convex space, such as a normed space, f equals its biconjugate f\*\* exactly when f is proper, closed and convex, or f is identically +∞ or −∞. Always f\*\* ≤ f.
 
-**How the definition helps.** The conditions exclude exactly the functions that the supporting lines of the graph cannot recover. In a Hausdorff locally convex space, a setting that includes all normed spaces, f = f\*\* holds exactly when f is proper, closed and convex. The only other cases are f identically +∞ or −∞. A convex function that is −∞ on part of its domain has conjugate +∞ everywhere, so its biconjugate is −∞ everywhere (our own). A convex function with a jump up at the end of an interval is not lower semicontinuous, and f\*\* lowers that value (our own). Properness also excludes minimization problems that are trivial, where −∞ is the minimum. Every proper convex function on ℝⁿ also has an affine function below it (our own).
+**How the definition helps.** The conditions exclude exactly the functions that the supporting lines of the graph cannot recover. A convex function that is −∞ on part of its domain has conjugate +∞ everywhere, so its biconjugate is −∞ everywhere (our own). A convex function with a jump up at the end of an interval is not lower semicontinuous, and f\*\* lowers that value (our own).
 
 **Wikipedia:** [Fenchel–Moreau theorem](https://en.wikipedia.org/wiki/Fenchel%E2%80%93Moreau_theorem), [Proper convex function](https://en.wikipedia.org/wiki/Proper_convex_function). It says: “a proper convex function is an extended real-valued convex function with a non-empty domain, that never takes on the value −∞ and also is not identically equal to +∞.”
 
@@ -1771,7 +1771,7 @@
 
 **Problem.** Let f(x, y) be jointly convex and let C be a convex set. If the infimum of f(x, y) over y in C is never −∞, then it is convex as a function of x.
 
-**How the definition helps.** The strict-epigraph definition turns partial minimization into a linear projection, which preserves convexity. Our own proof is that a height above the infimum exceeds f(x, y) for at least one y in C. Thus the strict epigraph is the projection obtained by omitting y after restricting it to C. The ordinary epigraph need not project to the ordinary epigraph if the infimum is not attained. The chord proof instead needs two near-minimizers and a limit. The work in relating the definitions is the short proof that convexity of the strict epigraph is equivalent to the chord inequality.
+**How the definition helps.** The strict-epigraph definition turns partial minimization into a linear projection, which preserves convexity. In our own proof, a height above the infimum exceeds f(x, y) for at least one y in C. So the strict epigraph of the infimum is the projection, omitting y, of the strict epigraph restricted to y in C. The ordinary epigraph need not project onto the ordinary epigraph when the infimum is not attained.
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “provided that C is a convex set and that g(x) ≠ −∞.”
 
@@ -1803,7 +1803,7 @@
 
 **Problem.** If f is convex, its perspective is jointly convex in (x, t).
 
-**How the definition helps.** The epigraph definition makes the proof a cone construction on a convex set. Our own argument is that a point (x, t, s) lies in the epigraph of g exactly when (x/t, s/t) lies in that of f. Thus the new epigraph consists of positive multiples of the old one placed at height one. Positive combinations of these points remain in the set, by dividing by their new height and using convexity at height one. The chord definition instead requires computing the new weights on the divided inputs. The work in switching definitions is the equivalence of the epigraph and chord tests.
+**How the definition helps.** The epigraph definition makes the proof a cone construction on a convex set. In our own argument, (x, t, s) lies in the epigraph of g exactly when (x/t, s/t) lies in that of f. So the new epigraph is the cone of positive multiples of the old one placed at height one, and such a cone over a convex set is convex. The chord definition instead requires computing new weights on the divided inputs.
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “If f is convex, then its perspective g(x, t) = t f(x/t) with domain {(x,t) : x/t ∈ Dom(f), t &gt; 0} is convex.”
 
@@ -1953,11 +1953,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26E15 (Calculus of functions on infinite-dimensional spaces), 58B10. arXiv math.FA, math.DG. Level 3: graduate.
 
-**Definition.** A convenient vector space is a locally convex vector space E with one extra property: a curve c : ℝ → E is smooth whenever l ∘ c is smooth for every continuous linear map l : E → ℝ. An equivalent condition is that every Mackey–Cauchy sequence in E converges (a Mackey–Cauchy sequence is one whose differences shrink to zero inside multiples of one fixed bounded set). A map between such spaces is smooth if it sends smooth curves to smooth curves.
+**Definition.** A convenient vector space is a locally convex space E in which a curve c : ℝ → E is smooth whenever l ∘ c is smooth for every continuous linear functional l. A map between such spaces is smooth if it sends smooth curves to smooth curves.
 
-**Problem.** Smooth maps between infinite-dimensional spaces should satisfy the exponential law C∞(X × Y, Z) ≅ C∞(X, C∞(Y, Z)). In words, a smooth map of two variables should be the same as a smooth map from X into the space of smooth maps from Y to Z.
+**Problem.** For convenient vector spaces X, Y and Z, the exponential law C∞(X × Y, Z) ≅ C∞(X, C∞(Y, Z)) holds. So the category of convenient vector spaces and smooth maps is cartesian closed.
 
-**How the definition helps.** Testing smoothness on curves makes the space of smooth maps a space of the same kind, so the exponential law holds. In detail, the space C∞(X, Y) of smooth maps is again a convenient vector space. The category of convenient vector spaces and smooth maps is cartesian closed (it has products and function spaces that obey the exponential law). This cartesian closedness is the main theorem of Kriegl and Michor, who do the real work of building calculus in this setting. In our own reading, not the nLab's, Banach-space or Fréchet-space calculus has no such general exponential law, because spaces of smooth maps leave those classes. Boman's theorem shows that in finite dimensions the curve test gives the usual smoothness. So nothing is lost there.
+**How the definition helps.** Testing smoothness on curves makes the space C∞(X, Y) of smooth maps again a convenient vector space, so the exponential law can hold. Kriegl and Michor do the real work of building calculus in this setting. In our own reading, Banach-space or Fréchet-space calculus has no such general law, because spaces of smooth maps leave those classes. Boman's theorem shows that in finite dimensions the curve test gives the usual smoothness.
 
 **nLab:** [convenient vector space](https://ncatlab.org/nlab/show/convenient+vector+space), [Boman's theorem](https://ncatlab.org/nlab/show/Boman%27s+theorem), [manifold structure of mapping spaces](https://ncatlab.org/nlab/show/manifold+structure+of+mapping+spaces). It says: “The category of convenient vector spaces and smooth functions between them is a cartesian closed category.”
 
@@ -1974,9 +1974,9 @@
 
 **Definition.** The hyperreal numbers \*ℝ are an ultrapower of ℝ (classes of sequences of reals, compared along an ultrafilter). They contain infinitesimals and infinite numbers. Every finite hyperreal x is infinitely close to a unique real number st(x), its standard part. The set of hyperreals infinitely close to a real number r is the monad of r.
 
-**Problem.** Give short characterizations of open, closed and compact subsets of ℝ. Each should use one quantifier over hyperreal points instead of nested ε–δ conditions.
+**Problem.** Let E ⊆ ℝ have extension \*E to the hyperreals. E is open exactly when the monad of each point of E lies in \*E, and closed exactly when st(x) ∈ E for every finite x in \*E. E is compact exactly when every x in \*E is finite with st(x) ∈ E.
 
-**How the definition helps.** Monads and standard parts replace each nested ε–δ condition by one check on hyperreal points. Let E ⊆ ℝ, and let \*E be its extension to the hyperreals. E is open if and only if the monad of each point of E lies in \*E. E is closed if and only if st(x) ∈ E for every finite x in \*E. E is compact if and only if every x in \*E is finite with st(x) ∈ E. The nLab calls these an elementary fact. The real content is the transfer principle, which follows from Łoś's theorem on ultraproducts and lets statements move between ℝ and \*ℝ.
+**How the definition helps.** Monads and standard parts replace each nested ε–δ condition by one check on hyperreal points. The nLab calls these an elementary fact. The real content is the transfer principle, which follows from Łoś's theorem on ultraproducts.
 
 **nLab:** [nonstandard analysis](https://ncatlab.org/nlab/show/nonstandard+analysis), [ultraproduct](https://ncatlab.org/nlab/show/ultraproduct). It says: “a subset E ⊂ ℝ is open iff μ(r) ⊂ \*E for all r ∈ E; E is closed iff st(x) ∈ E for all finite x ∈ \*E; and E is compact iff, for all x ∈ \*E, x is finite and st(x) ∈ E.”
 
@@ -1990,11 +1990,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26E40 (Constructive real analysis), 03F60, 26A15. arXiv math.CA, math.LO. Level 3: graduate.
 
-**Definition.** Add a hypothesis to the intermediate value theorem. The function f is uniformly continuous, and between any two points a &lt; b there is a point c with \|f(c)\| &gt; 0. In words, the set where f is not zero is dense. Related versions ask that f be locally nonzero.
+**Definition.** Say that f has dense non-zeros when, between any two points a &lt; b, there is a point c with \|f(c)\| &gt; 0.
 
-**Problem.** The intermediate value theorem says: if f : \[0,1\] → ℝ is continuous with f(0) &lt; 0 &lt; f(1), then f(c) = 0 for some c. As usually stated, it cannot be proved in constructive mathematics (mathematics without the law of excluded middle).
+**Problem.** Constructively, a uniformly continuous f : \[0,1\] → ℝ with f(0) &lt; 0 &lt; f(1) and dense non-zeros has a zero. The usual intermediate value theorem, without the extra hypothesis, cannot be proved constructively.
 
-**How the definition helps.** The extra hypothesis lets the bisection method always step to a point where the sign of f is known. So the search for the zero converges constructively. Our own reading of the trouble that the hypothesis removes: a function can stay at or near zero on a whole interval, and then no finite computation can decide on which side the zero is. Classically the extra hypothesis costs nothing. If \|f(c)\| &gt; 0 for every c, the hypothesis holds and gives a zero, which is a contradiction. So the classical theorem follows. Even read classically, the constructive versions are at first sight weaker results, as the nLab notes.
+**How the definition helps.** The extra hypothesis lets the bisection method always step to a point where the sign of f is known, so the search converges constructively. Without it, f can stay at or near zero on a whole interval, and no finite computation decides which side the zero is on (our own reading). Classically the hypothesis costs nothing: if f had no zero, the hypothesis would hold and give a zero.
 
 **nLab:** [intermediate value theorem](https://ncatlab.org/nlab/show/intermediate+value+theorem). It says: “As normally stated, the IVT is not valid in constructive mathematics, although there are constructively valid versions. These versions either weaken the conclusion to an approximate zero, or to strengthen the hypothesis”
 
@@ -2009,11 +2009,11 @@
 
 *Rules out counterexamples.* MSC 26E40 (Constructive real analysis), 03F60. arXiv math.LO, math.CA. Level 3: graduate.
 
-**Definition.** A Dedekind real number is a pair (L, U) of sets of rationals: the rationals below the number and the rationals above it. Both sets are inhabited (have an element), L has no largest element, U has no smallest, and every element of L is below every element of U. The pair is also located: for rationals a &lt; b, either a is in L or b is in U. A Cauchy real number is an equivalence class of Cauchy sequences of rationals, with or without a given modulus of convergence (a function that says how far along the sequence one must go for a given accuracy).
+**Definition.** A Dedekind real number is a located cut (L, U): L is the set of rationals below the number and U the set of rationals above it. Located means that for rationals a &lt; b, either a is in L or b is in U. A Cauchy real number is instead an equivalence class of Cauchy sequences of rationals.
 
-**Problem.** The real numbers should be Cauchy complete: every Cauchy sequence of real numbers converges to a real number.
+**Problem.** The Dedekind real numbers are Cauchy complete, even without countable choice: every Cauchy sequence of Dedekind reals converges to a Dedekind real.
 
-**How the definition helps.** A cut describes a real number by all its rational bounds at once, so no sequence of choices is needed. In constructive mathematics without countable choice, a Cauchy sequence of Cauchy real numbers need not converge to a Cauchy real number. The problem is that one cannot lift it to a sequence of representing sequences in order to diagonalize. Lubarsky constructs a countermodel. The Dedekind real numbers are always Cauchy complete, so the problem disappears with them. The modulated Cauchy reals (those with a given modulus) keep some advantages. For example, they make sense in predicative mathematics (mathematics that avoids power sets), where the Dedekind reals need power sets.
+**How the definition helps.** A cut describes a real number by all its rational bounds at once, so no sequence of choices is needed. Without countable choice, a Cauchy sequence of Cauchy reals need not converge to a Cauchy real. One cannot lift it to a sequence of representing sequences in order to diagonalize, and Lubarsky constructs a countermodel. The Cauchy reals keep one advantage: they make sense in predicative mathematics, where the Dedekind reals need power sets.
 
 **nLab:** [Cauchy real number](https://ncatlab.org/nlab/show/Cauchy+real+number), [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut). It says: “a Cauchy sequence (even a modulated one) of Cauchy real numbers need not converge to another Cauchy real number (though it always does converge to a Dedekind real number, since the Dedekind real numbers are always Cauchy complete).”
 
@@ -2029,9 +2029,9 @@
 
 **Definition.** A lower real number is an inhabited, open, downward-closed set of rational numbers: the set of rationals below the number. Inhabited means that one can show an element of the set, and open means that the set has no largest element. The set may be all of ℚ, which stands for +∞. Upper reals are defined in the same way with upward-closed sets.
 
-**Problem.** In constructive mathematics (mathematics without the law of excluded middle), a bounded inhabited set of real numbers need not have a supremum. One wants a kind of number in which every inhabited set has a supremum.
+**Problem.** Constructively, every inhabited set of lower reals has a supremum, namely the union of their sets of rationals. For the usual real numbers, a bounded inhabited set need not have a supremum constructively.
 
-**How the definition helps.** For lower reals, the supremum of an inhabited set is simply the union of their sets of rationals, and this union is again a lower real. It is a bounded lower real exactly when the set has a bounded upper bound; otherwise it is +∞. A side benefit concerns the sheaf topos on a space X. There, the internal extended lower reals correspond exactly to the lower semicontinuous functions from X to ℝ ∪ {+∞} (Mulvey, Reichman). The price is that, constructively, the order on lower reals is not total and the comparison law for &lt; fails. The comparison law says that if a &lt; b, then a &lt; c or c &lt; b for every c. So lower reals are less well behaved than the usual located reals, where for any rationals q &lt; r, q is below the number or r is above it.
+**How the definition helps.** For lower reals, the supremum of an inhabited set is simply the union of their sets of rationals, and this union is again a lower real. The price is that, constructively, the order on lower reals is not total. The comparison law, that a &lt; b implies a &lt; c or c &lt; b, also fails. So lower reals are less well behaved than the usual located reals.
 
 **nLab:** [one-sided real number](https://ncatlab.org/nlab/show/one-sided+real+number). It says: “Explicitly, the supremum of any inhabited set of lower reals is a lower real and the infimum of any inhabited set of upper reals is an upper real.”
 
@@ -2045,11 +2045,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A39 (Denjoy and Perron integrals, other special integrals), 58A10. arXiv math.CA, math.DG. Level 4: research.
 
-**Definition.** A cogerm differential 1-form on X gives a number for each germ of a curve in X (the behaviour of the curve near one point). Examples are dx, \|dx\|, dx² and d²x. The genuine integral of a form ω along a curve c is the limit of Riemann sums Σ⟨ω \| Δtᵢ · c at tᵢ\*⟩ over fine tagged partitions: each term applies ω to the germ of c at the tag tᵢ\*, scaled by the step Δtᵢ. The limit is taken in the Henstock style, with gauges (functions that set how fine the partition must be near each point).
+**Definition.** A cogerm 1-form ω, such as dx, \|dx\|, dx² or d²x, assigns a number to each germ of a curve. Its genuine integral along a curve is the gauge limit of Riemann sums of ω applied to the small steps of the curve. Call ω o(dx) if its value on a step of size h is much smaller than h.
 
-**Problem.** Forms such as dx² and d²x are 'second-order', and they should integrate to zero. Then integrands from better approximations give the same integral as f(x) dx. An example is the trapezoid rule integrand f(x) dx + ½ f′(x) dx².
+**Problem.** The genuine integral of every o(dx) form, such as dx² or d²x, is zero. So the trapezoid integrand f(x) dx + ½ f′(x) dx² has the same genuine integral as f(x) dx.
 
-**How the definition helps.** The genuine integral uses Riemann sums of ω itself, so terms that are small on each step add up to something small. Call ω o(dx) if ⟨ω \| h·c⟩/h → 0 as h → 0, that is, if ω on a step of size h is much smaller than h. Then, on a fine enough partition, each term of the sum is smaller than ε·Δtᵢ. So the integral of an o(dx) form is 0, by a short argument from the definition. The naive integral ∫ ⟨ω \| cₜ⟩ dt does not have this property: it gives d²x the integral (x∘c)′(b) − (x∘c)′(a), which is in general not zero. The cost is that the genuine integral satisfies the fundamental theorem of calculus only for differentials of functions. Also, its existence needs extra conditions on the form.
+**How the definition helps.** The genuine integral uses Riemann sums of ω itself, so terms that are small on each step add up to something small. On a fine enough partition, each term of the sum for an o(dx) form is smaller than ε·Δtᵢ. The naive integral ∫ ⟨ω \| cₜ⟩ dt gives d²x the integral (x∘c)′(b) − (x∘c)′(a), which is in general not zero. The cost is that the genuine integral satisfies the fundamental theorem of calculus only for differentials of functions.
 
 **nLab:** [cogerm differential form](https://ncatlab.org/nlab/show/cogerm+differential+form). It says: “The answer 0 given by the genuine integral is preferable if we regard dx as a "first-order change in x", so that dx² or d²x are "second-order" quantities and hence ought to be negligible.”
 
@@ -2063,9 +2063,9 @@
 
 **Definition.** Consider a finite convex function on Euclidean space. Its graph contains a full line if the function is affine along some entire straight line. A locally Lipschitz gradient changes by at most a constant times distance near each point.
 
-**Problem.** For every ε &gt; 0, seek a convex approximation whose gradient is locally Lipschitz and whose disagreement set has measure below ε. Unless the original gradient already has this regularity, such approximations exist exactly when the graph contains no full line.
+**Problem.** Let f be a convex function on Euclidean space whose gradient is not already locally Lipschitz. For every ε &gt; 0, some convex function with locally Lipschitz gradient differs from f on a set of measure below ε exactly when the graph of f contains no full line.
 
-**How the definition helps.** Excluding full lines rules out a corner that repeats unchanged along an infinite direction (our own). For f(x,y) = \|x\|, finite disagreement area gives finite disagreement length on almost every vertical line (our own). On each such line the approximation equals \|x\| at points arbitrarily far in both directions (our own). Convexity then forces that vertical restriction to be constant (our own). Continuity gives agreement everywhere, including the corner (our own). The cited theorem proves sufficiency.
+**How the definition helps.** Excluding full lines rules out a corner that repeats unchanged along an infinite direction (our own). For f(x,y) = \|x\|, a small disagreement area forces agreement at points arbitrarily far up and down almost every vertical line (our own). Convexity then makes the approximation constant on those lines, so it agrees with \|x\| everywhere, corner included (our own). The cited theorem proves sufficiency.
 
 **Paper or page:** [C²-Lusin approximation of convex functions: one variable case](https://arxiv.org/abs/2505.22975v2). It says: “The graph of f does not contain any line isometric to ℝ.”
 
@@ -2133,7 +2133,7 @@
 
 **Problem.** Two functions in this class on a closed interval coincide if their values and all their derivatives agree at one interior point.
 
-**How the definition helps.** The Denjoy–Carleman theorem makes the divergent sum a test for uniqueness from derivatives at one point. Our own counterexample for a convergent sum is the smooth bump exp(−1/(1 − x²)) on \|x\| &lt; 1, extended by zero. On \[−2,2\], let Dₖ be the maximum absolute kth derivative. Starting with M₀ = 1, choose nondecreasing successive ratios so that Mₖ ≥ Dₖ and Mₖ/Mₖ₋₁ ≥ k² for k ≥ 1. These weights bound every derivative of the bump, yet the reciprocals of their ratios have finite sum. At the interior point 1 the bump and zero have identical derivatives of every order.
+**How the definition helps.** The Denjoy–Carleman theorem makes the divergent sum a test for uniqueness from derivatives at one point. Our own counterexample for a convergent sum is the smooth bump exp(−1/(1 − x²)) on \|x\| &lt; 1, extended by zero. Weights that bound its derivatives on \[−2,2\] can be chosen with ratios at least k², so the reciprocal sum is finite. At the interior point 1 the bump and zero have the same derivatives of every order.
 
 **Wikipedia:** [Quasi-analytic function](https://en.wikipedia.org/wiki/Quasi-analytic_function). It says: “the only function in it having all its partial derivatives equal to zero at a point is the function identically equal to zero.”
 
@@ -2149,9 +2149,9 @@
 
 **Definition.** Read 'the sequence fₙ(x) converges for every x' so that x also ranges over hyperreal points. The hyperreals are the numbers of nonstandard analysis, and they include points infinitely close to a real number. Then fₙ(x + h) must be infinitely close to the limit f∞(x + h) for every infinite n, even when h is infinitesimal.
 
-**Problem.** Cauchy's 1821 sum theorem, with his own proof: a convergent sum of continuous functions is continuous.
+**Problem.** If continuous functions fₙ converge at every hyperreal point, their limit is continuous. Under this reading, Cauchy's 1821 proof of his sum theorem works as written.
 
-**How the definition helps.** If 'everywhere' includes nonstandard points, then Cauchy's hypothesis is uniform convergence, and his proof works. In nonstandard analysis, a sequence converges uniformly exactly when it converges at every hyperreal point. So under this reading, his proof with infinitesimals becomes correct. The counterexamples, such as the Fourier series near x = 1/n, fail to converge at some nonstandard point, which fits how Cauchy rejected them. This hyperreal reading is Robinson's. Lakatos held it to be ahistorical and read Cauchy as asking for convergence at 'variable' points, which again amounts to uniform convergence. It is a reading of history, not a new theorem: the mathematical content is the equivalence of the nonstandard and the ε–N forms of uniform convergence.
+**How the definition helps.** In nonstandard analysis, a sequence converges uniformly exactly when it converges at every hyperreal point. So under this reading Cauchy's hypothesis is uniform convergence, and his proof with infinitesimals is correct. The counterexamples, such as the Fourier series near x = 1/n, fail to converge at some nonstandard point. This is a reading of history; the mathematical content is the equivalence of the nonstandard and the ε–N forms of uniform convergence.
 
 **nLab:** [Cauchy sum theorem](https://ncatlab.org/nlab/show/Cauchy+sum+theorem). It says: “By this analysis, Cauchy's notion of convergence everywhere is our modern notion of uniform convergence, not pointwise convergence, and his theorem is true”
 
@@ -2168,9 +2168,9 @@
 
 **Definition.** The HoTT book real numbers are a higher inductive-inductive type. Such a type is generated by constructors for its points and for equalities between them, defined together with a relation. Here the generators are the rationals, a limit lim for every Cauchy approximation, and a rule that identifies two points that are ε-close for every ε &gt; 0. Equivalently, they are the initial sequentially complete Archimedean ordered field.
 
-**Problem.** The real numbers should be sequentially Cauchy complete, even without countable choice. Then analytic functions such as exp, sin and cos are well defined.
+**Problem.** The HoTT book real numbers are sequentially Cauchy complete, even without countable choice. So analytic functions such as exp, sin and cos are well defined on them.
 
-**How the definition helps.** In the higher inductive-inductive type, limits are constructors, so completeness holds by definition and you need no choice. Compare the naive quotient of regular Cauchy sequences. It is complete only if you can lift every sequence of real numbers to a sequence of Cauchy sequences that represent them, and this needs countable choice. That is why Bishop's constructive analysis stays with setoids (sets with an explicit equivalence relation) and does not pass to the quotient. The remaining work is to develop the order and the arithmetic on this type, and the HoTT book does this in Section 11.3.
+**How the definition helps.** In the higher inductive-inductive type, limits are constructors, so completeness holds by definition and no choice is needed. The naive quotient of regular Cauchy sequences is complete only if every sequence of reals lifts to a sequence of representing Cauchy sequences. That lift needs countable choice. The remaining work is to develop the order and the arithmetic on this type.
 
 **nLab:** [HoTT book real number](https://ncatlab.org/nlab/show/HoTT+book+real+number). It says: “The analytic functions, such as the exponential function, the sine function, and the cosine function are well defined in the HoTT book real numbers, since all regular Cauchy sequences converge in the HoTT book real numbers.”
 
@@ -2203,9 +2203,9 @@
 
 **Definition.** A time scale is any nonempty closed subset of the real line. The paper uses the nabla derivative, which looks backward. If t has a nearest point ρ(t) &lt; t on its left, the derivative is (f(t) − f(ρ(t)))/(t − ρ(t)). Otherwise it is the usual limit of difference quotients, so on ℝ it is the usual derivative and on ℤ a backward difference.
 
-**Problem.** Weyl–Titchmarsh theory sorts singular linear Hamiltonian systems on a half-line into limit point and limit circle cases, using nested matrix discs. The paper proves this once for systems on a class of time scales. This covers differential and difference equations together.
+**Problem.** Weyl–Titchmarsh theory holds for singular linear Hamiltonian systems on a half-line of a Sturmian time scale: nested matrix discs sort them into limit point and limit circle cases. On ℝ and on ℤ this gives the continuous and the discrete theories at once.
 
-**How the definition helps.** A single derivative that is a limit on ℝ and a difference on ℤ lets one proof cover both settings. The quote says that the results unify the continuous and the discrete cases. Our own remark is that the two theories had parallel but separate proofs before. Our own remark is that the price is extra terms in product rules, from the gap to the neighbouring point. The Floquet paper uses the same idea to treat discrete, continuous and hybrid periodic systems with one algorithm.
+**How the definition helps.** A single derivative that is a limit on ℝ and a difference on ℤ lets one proof cover both settings. Before, the two theories had parallel but separate proofs (our own remark). The price is extra terms in product rules, from the gap to the neighbouring point (our own remark).
 
 **Paper or page:** [Unifying discrete and continuous Weyl-Titchmarsh theory via a class of linear Hamiltonian systems on Sturmian time scales](https://arxiv.org/abs/1001.4040v1), [Floquet multipliers and the stability of periodic linear differential equations: a unified algorithm and its computer realization](https://arxiv.org/abs/2201.04447v8). It says: “These results unify and extend certain classic and recent results on the subject in the continuous and discrete cases, respectively, to Sturmian time scales.”
 

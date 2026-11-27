@@ -42,7 +42,7 @@
 
 **Problem.** The preimage of every target Haar-null set is Haar-null exactly when the homomorphism has open image.
 
-**How the definition helps.** Our own explanation is that an open image carries the restriction of target Haar measure, up to a constant. Integration along the kernel then shows that preimages of null sets have measure zero. Conversely, the image is a countable union of compact sets. If preimages preserve null sets, the image must have positive measure because its preimage is the entire group. A measurable subgroup of positive Haar measure is open. For our own counterexample, the inclusion of ℤ in ℝ pulls the Lebesgue-null singleton {0} back to a set of counting measure one.
+**How the definition helps.** An open image carries the restriction of target Haar measure, up to a constant, and integration along the kernel then shows that preimages of null sets are null (our own explanation). Conversely, the image is a countable union of compact sets and its preimage is the whole group, so preserving null sets forces the image to have positive measure. A measurable subgroup of positive Haar measure is open. For our own counterexample, the inclusion of ℤ in ℝ pulls the null set {0} back to a set of counting measure one.
 
 **Paper or page:** [Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005). It says: “The following are equivalent: (i) θ∗(μ) ≪ ν (ii) θ(G) is an open subgroup of H.”
 
@@ -72,7 +72,7 @@
 
 *True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups), 37A15. arXiv math.GR, math.DS. Level 3: graduate.
 
-**Definition.** A locally compact group G is amenable if it admits a left-invariant mean on bounded right uniformly continuous functions. These are functions for which small left translations make uniformly small changes. The mean is a positive linear functional that sends the constant one to one and is unchanged by left translation. Equivalently, every continuous action preserving convex combinations on a nonempty compact convex subset of a locally convex space has a fixed point.
+**Definition.** A locally compact group G is amenable if every continuous action of G by affine maps on a nonempty compact convex subset of a locally convex space has a fixed point. Day's theorem shows that this is equivalent to the existence of a left-invariant mean on bounded right uniformly continuous functions.
 
 **Problem.** If an amenable group acts continuously on a nonempty compact metric space X, then X has an invariant Borel probability measure.
 
@@ -90,11 +90,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups), 20F65. arXiv math.GR, math.FA. Level 3: graduate.
 
-**Definition.** A discrete group G is amenable if there is a finitely additive probability measure on all subsets of G that is invariant under left translation. Von Neumann introduced the idea in 1929 in response to the Banach–Tarski paradox. Day named it amenable in 1949.
+**Definition.** A discrete group G is amenable if there is a finitely additive probability measure on all subsets of G that is invariant under left translation.
 
 **Problem.** Banach–Tarski: a ball in ℝ³ can be cut into finitely many pieces and moved by rigid motions into two copies of itself. No such paradox exists for a disc in the plane or an interval on the line.
 
-**How the definition helps.** The definition names the property of the group of motions that blocks paradoxes, so the difference between dimensions becomes a statement about groups. The rotation group SO(3) contains a free group on two generators, which is not amenable. The groups of rigid motions of the line and the plane are solvable, so they are amenable (our own). An invariant mean then rules out a paradoxical decomposition (our own). Tarski later proved that an action has a paradoxical decomposition exactly when no invariant finitely additive measure exists (our own). What stays hard: the converse guess of von Neumann, that every nonamenable group contains a free subgroup, is false, as Olshanskii showed in 1980.
+**How the definition helps.** The definition names the property of the group of motions that blocks paradoxes, so the difference between dimensions becomes a statement about groups. The rotation group SO(3) contains a free group on two generators, which is not amenable. The groups of rigid motions of the line and the plane are solvable, hence amenable, and an invariant mean rules out a paradoxical decomposition (our own). Tarski later proved that a paradoxical decomposition exists exactly when no invariant finitely additive measure exists (our own).
 
 **Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group), [Paradoxical set](https://en.wikipedia.org/wiki/Paradoxical_set). It says: “The critical step in the Banach–Tarski paradox construction is to find inside the rotation group SO(3) a free subgroup on two generators. Amenable groups cannot contain such groups, and do not allow this kind of paradoxical construction.”
 
@@ -126,7 +126,7 @@
 
 *True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups). arXiv math.FA. Level 3: graduate.
 
-**Definition.** A discrete group satisfies the Følner test if every finite list of translations passes the following test for every ε &gt; 0. Some nonempty finite set F satisfies \|gF △ F\| &lt; ε\|F\| for each listed translation g. The symmetric difference gF △ F contains the elements belonging to exactly one of these sets. The equivalent mean definition requires a positive translation-invariant linear functional on bounded functions taking one to one.
+**Definition.** A discrete group satisfies the Følner condition if, for every finite set of elements g and every ε &gt; 0, some nonempty finite set F has \|gF △ F\| &lt; ε\|F\| for each listed g. Følner's theorem shows that this is equivalent to having a translation-invariant mean.
 
 **Problem.** A directed union of amenable discrete subgroups is amenable. Directed means any two subgroups in the family lie in a third.
 
@@ -144,7 +144,7 @@
 
 *True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Amenability usually means that bounded functions admit a positive normalized average invariant under translation, using essentially bounded measurable functions for locally compact groups. Day’s equivalent test uses a nonempty compact convex set in a locally convex space, where convex neighborhoods form a base at zero. Every separately continuous group action preserving convex combinations must fix a point.
+**Definition.** Day's fixed-point test says that a locally compact group is amenable when every separately continuous affine action on a nonempty compact convex subset of a locally convex space has a fixed point. Day's theorem shows that this is equivalent to the usual definition by a translation-invariant mean.
 
 **Problem.** A locally compact group with a closed normal amenable subgroup and an amenable quotient is amenable.
 
@@ -166,7 +166,7 @@
 
 **Problem.** For any finite subset of an amenable discrete group, normalized positive definite functions of finite support approximate one uniformly there. Normalized means φ(e) = 1, and positive definite means each finite matrix with entries φ(x⁻¹y) is positive semidefinite.
 
-**How the definition helps.** Our own proof uses the Følner definition to make approximation by overlap fractions immediate. The fraction is one minus half the relative size of the symmetric difference between F and gF. It vanishes unless g belongs to the finite set FF⁻¹. Positive definiteness follows because the test matrix records inner products of normalized indicators of translates of F. Følner’s theorem connects the finite set test to the invariant mean definition. The quoted paper gives a related approximation theorem for second-countable unimodular groups, whose left invariant measure is also right invariant.
+**How the definition helps.** Our own proof uses the Følner definition to make approximation by overlap fractions immediate. The fraction is one minus half the relative size of F △ gF, and it vanishes unless g lies in the finite set FF⁻¹. Positive definiteness holds because φ(x⁻¹y) is the inner product of the normalized indicators of xF and yF. Følner's theorem connects this test to the invariant mean definition.
 
 **Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “For every finite (or compact) subset F of G there is a measurable subset U of G with finite positive Haar measure”
 
@@ -186,7 +186,7 @@
 
 **Problem.** Let G be amenable and N a closed normal subgroup. Then the quotient G/N is amenable.
 
-**How the definition helps.** The mean definition lets us use the same functional on functions pulled back from the quotient (our own). Pullback preserves right uniform continuity and commutes with left translations (our own). The composite functional is therefore again a translation invariant mean (our own). For discrete groups, the alternative Følner definition uses finite sets nearly invariant under translations (our own). Their images in a quotient may have unequal fibre sizes, so the same direct argument does not apply to those sets (our own). The work lies in the equivalence of the mean and Følner definitions.
+**How the definition helps.** The mean definition lets us apply the same functional to functions pulled back from the quotient (our own). Pullback preserves right uniform continuity and commutes with left translations, so the composite is again an invariant mean (our own). With the Følner definition for discrete groups, images of nearly invariant finite sets may have unequal fibre sizes, so this direct argument fails (our own). The work lies in the equivalence of the mean and Følner definitions.
 
 **Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “Every quotient of an amenable group is amenable.”
 
@@ -238,7 +238,7 @@
 
 **Problem.** The integers are amenable. So are finitely generated groups of subexponential growth, meaning their balls in a finite generating set grow more slowly than every exponential.
 
-**How the definition helps.** The Følner definition reduces amenability to finding finite sets with small changes under shifts. In ℤ, shifting {1, …, n} by g changes at most 2\|g\| elements, so the relative change tends to zero (our own). In a group of subexponential growth, a suitable subsequence of balls works. For each fixed k, there are arbitrarily large radii r at which the ball of radius r + k is barely larger (our own). Otherwise the sizes would grow exponentially in steps of length k (our own). A shift of length at most k puts the ball in the larger one, making the change at most twice the size difference (our own). The work lies in Følner’s equivalence with invariant means, which a direct proof for ℤ instead constructs by Hahn–Banach.
+**How the definition helps.** The Følner definition reduces amenability to finding finite sets that change little under shifts. In ℤ, shifting {1, …, n} by g changes at most 2\|g\| elements (our own). In a group of subexponential growth, for each k there are arbitrarily large r at which the ball of radius r + k is barely larger than the ball of radius r, or else sizes would grow exponentially (our own). A shift of length at most k moves the smaller ball into the larger, so its relative change is small (our own).
 
 **Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “The group of integers is amenable (a sequence of intervals of length tending to infinity is a Følner sequence).”
 
@@ -355,9 +355,9 @@
 
 **Definition.** The spectrum of a commutative complex Banach algebra is the set of its nonzero multiplicative linear functionals, with convergence tested separately at each algebra element. The Gelfand transform of an element evaluates each functional at that element. The Fourier transform of an integrable function uses its integral against the conjugate of each character, a continuous homomorphism to the circle.
 
-**Problem.** For a locally compact Hausdorff abelian group G, the Fourier transform of each integrable function is continuous on the character group and vanishes at infinity. This means that for every ε &gt; 0, the set where its modulus is at least ε is compact. Its modulus is bounded by the integral of the original function’s modulus.
+**Problem.** Let G be a locally compact Hausdorff abelian group and f an integrable function on G. Then the Fourier transform of f is continuous on the character group, vanishes at infinity, and has modulus at most ‖f‖₁.
 
-**How the definition helps.** The Gelfand description gives continuity and vanishing at infinity from one theorem for commutative Banach algebras (our own). The same theorem also bounds each transformed value by the norm of the algebra element (our own). Form the group algebra of integrable functions with convolution, which multiplies functions by averaging their translates against one another. Its nonzero multiplicative functionals are exactly the integrals against conjugate characters. The work lies in proving that correspondence and showing that the spectrum topology agrees with uniform convergence on compact subsets of G (our own). The usual integral proof instead establishes decay by direct estimates and approximation (our own).
+**How the definition helps.** The Gelfand description gives continuity, vanishing at infinity and the norm bound from one theorem for commutative Banach algebras (our own). Apply it to the convolution algebra of integrable functions, whose nonzero multiplicative functionals are exactly the integrals against conjugate characters. The work lies in proving that correspondence and in showing that the spectrum topology agrees with uniform convergence on compact sets (our own). The usual integral proof instead establishes decay by direct estimates and approximation (our own).
 
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality). It says: “This means the Fourier transform is a special case of the Gelfand transform.”
 
@@ -511,7 +511,7 @@
 
 **Problem.** The dual of a compact Hausdorff abelian group is discrete.
 
-**How the definition helps.** For compact G, the compact-open topology lets one test closeness on the whole group at once. The characters whose values stay within distance 1 of 1 form an open set. No nontrivial subgroup lies in that arc, since a suitable power of any point other than 1 leaves it (our own). Thus the constant character 1 is isolated, and multiplication by other characters isolates them too (our own). Pointwise convergence does not isolate the constant character on the circle group (our own). On any finite set of circle points, some nonzero power is arbitrarily close to 1 simultaneously, by the pigeonhole principle (our own). The work is in the arc argument and the description of the compact-open topology as uniform convergence on compact sets (our own).
+**How the definition helps.** For compact G, the compact-open topology tests closeness on the whole group at once, so the characters with all values within distance 1 of 1 form an open set. No nontrivial subgroup of the circle lies in that arc, so the only such character is the constant 1, which is therefore isolated (our own). Multiplication by a character carries this to every other character (our own). Pointwise convergence would not suffice: on the circle group, by the pigeonhole principle, some nonzero power is close to 1 at any finite set of points (our own).
 
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality). It says: “That G being compact implies Ĝ is discrete or that G being discrete implies that Ĝ is compact is an elementary consequence of the definition of the compact-open topology on Ĝ and does not need Pontryagin duality.”
 
@@ -529,7 +529,7 @@
 
 **Problem.** Every discrete abelian group has a compact dual.
 
-**How the definition helps.** The compact-open topology identifies Ĝ with a closed subspace of a compact product. The product has one copy of T for each element of G and is compact by Tychonoff’s theorem. Each equation χ(x + y) = χ(x)χ(y) is a closed condition on three coordinates (our own). These equations give precisely the characters, so the dual is compact (our own). Uniform convergence on all of G would isolate every character by the circle arc argument, so an infinite dual would not be compact (our own). The work in this proof lies in Tychonoff’s theorem, not the duality theorem (our own).
+**How the definition helps.** The compact-open topology identifies Ĝ with a closed subspace of the product of one circle for each element of G, which is compact by Tychonoff's theorem. Each equation χ(x + y) = χ(x)χ(y) is a closed condition on three coordinates, and these equations cut out exactly the characters (our own). Uniform convergence on all of G would isolate every character by the circle arc argument, so an infinite dual would not be compact (our own). The work lies in Tychonoff's theorem, not in the duality theorem (our own).
 
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality). It says: “That G being compact implies Ĝ is discrete or that G being discrete implies that Ĝ is compact is an elementary consequence of the definition of the compact-open topology on Ĝ and does not need Pontryagin duality.”
 
@@ -689,7 +689,7 @@
 
 **Definition.** A set is boundary coherent if every neighborhood of each boundary point meets the exterior of its closure. The positive set of a real function consists of points where its value exceeds zero. Define the negative set using values below zero.
 
-**Problem.** Consider continuous real functions on a locally compact abelian group with prescribed symmetric sets for the two signs. Assume both sets are boundary coherent and the positive constraint set contains a neighborhood of zero. Requiring each sign set to lie in its prescribed set is equivalent to requiring containment of their respective closures.
+**Problem.** Let Ω₊ and Ω₋ be boundary-coherent symmetric subsets of a locally compact abelian group, with Ω₊ a neighborhood of 0. For a continuous real function, the positive set lies in Ω₊ and the negative set in Ω₋ exactly when they lie in the closures of Ω₊ and Ω₋.
 
 **How the definition helps.** A positive boundary value would force positive values outside the prescribed closure by continuity and boundary coherence (our own). Apply the same argument to the negative of the function for the other sign (our own). Removing ±1 from ℝ leaves its closure unchanged, so a positive Gaussian passes only the closure test (our own).
 
@@ -759,7 +759,7 @@
 
 **Definition.** Start with a closed set E of n-tuples in a compact group G. Its lift contains exactly those longer tuples whose list of consecutive differences belongs to E. For neighboring entries x and y, the difference is xy⁻¹. A common right translation leaves every difference unchanged.
 
-**Problem.** The multidimensional Fourier algebra is a normed algebra of functions on tuples of group elements. A closed set admits spectral synthesis when functions vanishing there are norm limits of functions vanishing on neighborhoods of it. The theorem says that E admits synthesis exactly when its lift admits synthesis in the next dimension.
+**Problem.** A closed set of tuples admits spectral synthesis when every function in the multidimensional Fourier algebra vanishing on it is a norm limit of functions vanishing near it. Then E admits spectral synthesis for Aⁿ(G) exactly when its lift admits spectral synthesis for Aⁿ⁺¹(G).
 
 **How the definition helps.** Our own explanation is that the lift gives both vanishing conditions the same meaning in difference coordinates. The paper proves that composing with the difference map preserves norms and identifies functions unchanged by common right translations. Its transfer theorem handles approximation by functions vanishing on neighborhoods.
 
@@ -795,7 +795,7 @@
 
 **Definition.** A tempered distribution on the integers acts continuously on rapidly decreasing test sequences. Treat distributions that differ by a polynomial sequence as the same object.
 
-**Problem.** The discrete Laplacian takes second differences, with a minus sign. A smooth partition of its positive square-root frequencies into bands by powers of two reconstructs each distribution modulo polynomials.
+**Problem.** Split the frequencies of the square root of the discrete Laplacian into smooth bands by powers of two. Then the band pieces of each tempered distribution on ℤ sum to it modulo polynomial sequences.
 
 **How the definition helps.** Identifying polynomial differences removes precisely what every band misses at frequency zero. In our own example, every band sends the constant sequence to zero. The proof still needs convergence against test sequences whose moments all vanish. In our own explanation, the missing distributions have Fourier transforms supported at zero, hence are polynomial sequences.
 

@@ -40,7 +40,7 @@
 
 **Problem.** For mutually independent random variables, the joint law is the product of the marginal laws. So the expectation of a product of several integrable ones is the product of their expectations. Functions of disjoint groups of them are again independent.
 
-**How the definition helps.** Mutual independence is exactly the statement that the joint law is the product measure, so the product rules follow at once. Pairwise independence does not give this. Toss two fair coins and let C be the event that they agree (our own example). Each pair of the three events is independent, but the first two events together force C. The page credits Bohlmann with the first such example, in 1908. Pairwise independence is still enough for some results, such as adding variances (our own). For infinite families, the π-λ theorem reduces the check to generating π-systems.
+**How the definition helps.** Mutual independence says exactly that the joint law is the product measure, so the product rules follow at once. Pairwise independence does not give this. Toss two fair coins, let A and B be heads on the first and on the second coin, and let C be the event that they agree (our own example). Each pair of A, B, C is independent, but A and B together force C.
 
 **Wikipedia:** [Independence (probability theory)](https://en.wikipedia.org/wiki/Independence_%28probability_theory%29). It says: “For example, he gave the first example showing that pairwise independence does not imply mutual independence.”
 
@@ -72,9 +72,9 @@
 
 **Definition.** Events A and B are independent when Pr(A ∩ B) = Pr(A) Pr(B). The other definition asks Pr(A \| B) = Pr(A), which needs Pr(B) &gt; 0.
 
-**Problem.** The definitions of independence should agree, and independence should be symmetric in A and B.
+**Problem.** With the product rule, independence is symmetric in A and B, and an event of probability 0 is independent of every event (our own). When Pr(A) &gt; 0 and Pr(B) &gt; 0, the product rule agrees with the conditional definition.
 
-**How the definition helps.** The product form needs no division, so it makes sense for every pair of events and is visibly symmetric. ProofWiki proves that the two definitions agree only under the hypothesis that Pr(A) &gt; 0 and Pr(B) &gt; 0. This shows where the conditional form breaks. Wikipedia gives both reasons for preferring the product form. Our own remark: with the product form, an event of probability 0 is independent of every event. When both forms make sense, their agreement is one line of algebra.
+**How the definition helps.** The product form needs no division, so it makes sense for every pair of events and is visibly symmetric. The conditional form breaks down when the conditioning event has probability 0. When both forms make sense, their agreement is one line of algebra.
 
 **Wikipedia:** [Independence (probability theory)](https://en.wikipedia.org/wiki/Independence_%28probability_theory%29). It says: “Although the derived expressions may seem more intuitive, they are not the preferred definition, as the conditional probabilities may be undefined if P(A) or P(B) are 0.”
 
@@ -92,9 +92,9 @@
 
 **Definition.** Xₙ converges in distribution to X when Fₙ(x) → F(x) at every point x where the distribution function F of X is continuous. The definition leaves out the points where F jumps on purpose.
 
-**Problem.** We want obvious cases to converge. An example is a random variable spread more and more tightly on (0, 1/n), which should converge to the constant 0.
+**Problem.** If Xₙ is uniform on (0, 1/n), then Xₙ converges in distribution to the constant 0.
 
-**How the definition helps.** Leaving out the jump points of F removes exactly the failure in obvious cases. Let Xₙ be uniform on (0, 1/n). Then Fₙ(0) = 0 for every n, but the limit, the constant 0, has F(0) = 1. So the distribution functions do not converge at every x, although the sequence clearly piles up at 0. With this definition, the convergence also matches the test with bounded continuous functions. That equivalence still needs a proof.
+**How the definition helps.** Leaving out the jump points of F removes exactly the failure in this example. Here Fₙ(0) = 0 for every n, but the limit has F(0) = 1. At every other x the distribution functions converge. With this definition, convergence in distribution also matches the test with bounded continuous functions, but that equivalence needs a proof.
 
 **Wikipedia:** [Convergence of random variables](https://en.wikipedia.org/wiki/Convergence_of_random_variables). It says: “The requirement that only the continuity points of F should be considered is essential.”
 
@@ -224,9 +224,9 @@
 
 **Definition.** Random variables X and Y are jointly normal (bivariate normal) when every linear combination aX + bY is normally distributed.
 
-**Problem.** For normal random variables, zero correlation should imply independence.
+**Problem.** If X and Y are jointly normal and uncorrelated, then they are independent.
 
-**How the definition helps.** For jointly normal variables, the mean and covariance fix the joint law, so zero covariance gives a product law. Without joint normality this fails. Let X be standard normal, and let W be ±1 with equal probability, independent of X. Let Y = WX. Then X and Y are each standard normal and uncorrelated, but \|Y\| = \|X\|, so they are not independent. Requiring every linear combination to be normal excludes this example, because X + Y is 0 with probability 1/2.
+**How the definition helps.** For jointly normal variables, the mean and covariance fix the joint law, so zero covariance gives a product law. Without joint normality this fails. Let X be standard normal, W be ±1 with equal probability independent of X, and Y = WX; then X and Y are standard normal and uncorrelated, but \|Y\| = \|X\|. Joint normality excludes this example, because X + Y is 0 with probability 1/2.
 
 **Wikipedia:** [Misconceptions about the normal distribution](https://en.wikipedia.org/wiki/Misconceptions_about_the_normal_distribution). It says: “In that case, if X and Y are uncorrelated then they are independent.”
 
@@ -272,9 +272,9 @@
 
 **Definition.** The quantile function of a distribution function F is Q(p) = inf{x : F(x) ≥ p} for p in (0, 1). In words, Q(p) is the smallest x at which F reaches p. It is the unique function with Q(p) ≤ x if and only if p ≤ F(x).
 
-**Problem.** Let U be uniform on (0, 1). Then Q(U) should have distribution F, for every distribution, including distributions whose F has jumps and flat parts.
+**Problem.** If U is uniform on (0, 1), then Q(U) has distribution function F. This holds for every F, including those with jumps and flat parts.
 
-**How the definition helps.** The infimum definition works for every F, so the theorem follows directly from the definition. The ordinary inverse F⁻¹ exists only when F is continuous and strictly increasing, so it fails for discrete distributions. Our own one-line proof from the article's Galois inequality (the equivalence Q(p) ≤ x if and only if p ≤ F(x)): P(Q(U) ≤ x) = P(U ≤ F(x)) = F(x). The first step uses the Galois inequality, and the second step uses that U is uniform.
+**How the definition helps.** The equivalence Q(p) ≤ x if and only if p ≤ F(x) gives P(Q(U) ≤ x) = P(U ≤ F(x)) = F(x) in one line (our own). The ordinary inverse F⁻¹ exists only when F is continuous and strictly increasing, so it fails for discrete distributions.
 
 **Wikipedia:** [Quantile function](https://en.wikipedia.org/wiki/Quantile_function). It says: “the quantile function returns the minimum value of x from amongst all those values whose c.d.f value exceeds p”
 
@@ -288,9 +288,9 @@
 
 **Definition.** A state of a Markov chain has period k when every return to it takes a multiple of k steps, and k is the largest such number. The chain is aperiodic when the period is 1.
 
-**Problem.** Take a finite irreducible Markov chain, in which every state can reach every other state. From any start, the distribution after k steps should converge to the stationary distribution.
+**Problem.** For a finite, irreducible and aperiodic Markov chain, the distribution after k steps converges to the stationary distribution from any start. Irreducible means that every state can reach every other state.
 
-**How the definition helps.** Aperiodicity removes the periodic behaviour that blocks convergence. The chain that swaps two states at every step has the stationary distribution (1/2, 1/2). But its k-step transition matrix Pᵏ alternates between the identity and the swap, so it has no limit. Irreducibility alone gives a unique stationary distribution, but not convergence. With aperiodicity, Pᵏ converges to the rank-one matrix whose rows are the stationary distribution (Perron–Frobenius). For infinite state spaces, one also needs positive recurrence, which means that the expected time to return to a state is finite.
+**How the definition helps.** Aperiodicity removes the periodic behaviour that blocks convergence. The chain that swaps two states at every step has stationary distribution (1/2, 1/2), but its k-step matrix Pᵏ alternates between the identity and the swap. Irreducibility alone gives a unique stationary distribution, but not convergence. With aperiodicity, Pᵏ converges to the rank-one matrix whose rows are the stationary distribution.
 
 **Wikipedia:** [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “If the Markov chain is additionally irreducible and aperiodic, then there is a unique stationary distribution π. In this case Pᵏ converges to a rank-one matrix in which each row is the stationary distribution π”
 
@@ -306,7 +306,7 @@
 
 **Problem.** If π satisfies detailed balance, then π is a stationary distribution: πP = π. The Metropolis–Hastings algorithm uses this to sample from a given distribution.
 
-**How the definition helps.** Summing the detailed balance equation over i gives the stationarity equation at once, because each row of P sums to 1. The condition is local, one pair at a time, so the designer of a sampler can check it without solving πP = π. The page says that Metropolis–Hastings and Gibbs sampling use it as a simple and reliable condition. The price is that it is stronger than needed: some chains have a stationary distribution without detailed balance. Kolmogorov's criterion, on products around cycles, decides when a chain is reversible.
+**How the definition helps.** Summing the detailed balance equation over i gives the stationarity equation at once, because each row of P sums to 1. The condition is local, one pair at a time, so the designer of a sampler can check it without solving πP = π. The price is that it is stronger than needed, since some chains have a stationary distribution without detailed balance.
 
 **Wikipedia:** [Detailed balance](https://en.wikipedia.org/wiki/Detailed_balance). It says: “The detailed balance condition is stronger than that required merely for a stationary distribution, because there are Markov processes with stationary distributions that do not have detailed balance.”
 
@@ -342,7 +342,7 @@
 
 **Problem.** If X and Y are independent and f and g are measurable functions, then f(X) and g(Y) are independent. Also, a random variable that is almost surely constant is independent of every other random variable.
 
-**How the definition helps.** The σ-algebra generated by f(X) lies inside the σ-algebra generated by X. So independence of the larger σ-algebras gives independence of the smaller ones at once (our own). The page gives the constant case: a constant generates the trivial σ-algebra {∅, Ω}, which is independent of everything. With the definition by distribution functions, each of these facts would need a separate computation (our own). The work moves into checking independence in practice. The π-λ theorem shows that it is enough to check generating π-systems, such as the events that X ≤ x.
+**How the definition helps.** The σ-algebra generated by f(X) lies inside the σ-algebra generated by X, so independence of the larger σ-algebras passes to the smaller ones at once (our own). A constant generates the trivial σ-algebra {∅, Ω}, which is independent of everything. With the definition by distribution functions, each fact would need a separate computation (our own). The work moves into checking independence in practice, where the π-λ theorem reduces it to generating π-systems such as the events X ≤ x.
 
 **Wikipedia:** [Independence (probability theory)](https://en.wikipedia.org/wiki/Independence_%28probability_theory%29), [Pi-system](https://en.wikipedia.org/wiki/Pi-system). It says: “Two random variables X and Y defined over Ω are independent (in the old sense) if and only if the σ-algebras that they generate are independent (in the new sense).”
 
@@ -376,7 +376,7 @@
 
 **Problem.** If g is measurable and nonnegative, or if g(X) is integrable, E\[g(X)\] equals the integral of g against the law of X.
 
-**How the definition helps.** The image measure definition makes both integrals equal for an indicator of B (our own explanation). Their common value is P(X ∈ B) (our own explanation). Additivity handles finite sums of indicators, and monotone convergence extends it to nonnegative functions by increasing approximation (our own explanation). For an integrable signed function, apply the result to its positive and negative parts (our own explanation). Computing the law of g(X) first can require a change of variables, which the image measure proof avoids.
+**How the definition helps.** The image measure definition makes both integrals equal P(X ∈ B) when g is the indicator of B (our own explanation). Additivity and monotone convergence extend this to all nonnegative g, and positive and negative parts handle integrable g (our own explanation). Computing the law of g(X) first can require a change of variables, which this proof avoids.
 
 **Wikipedia:** [Law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician). It says: “However, in the framework of measure theory, the discrete case generalizes straightforwardly to general (not necessarily discrete) random elements”
 
@@ -438,9 +438,9 @@
 
 **Definition.** The characteristic function of a random variable X is φ(t) = E(exp(itX)) for real t.
 
-**Problem.** Prove limit theorems, such as the central limit theorem, for all distributions, including distributions without moments.
+**Problem.** Every random variable has a characteristic function. By Lévy's continuity theorem, Xₙ converges in distribution if and only if their characteristic functions converge pointwise to a function that is continuous at 0.
 
-**How the definition helps.** The factor i in the exponent makes the integrand bounded, so φ exists for every distribution. The moment-generating function E(exp(tX)) can be infinite. Our own example is the Cauchy distribution, where it is infinite for every t ≠ 0. Lévy's continuity theorem then turns convergence in distribution into pointwise convergence of characteristic functions to a function that is continuous at 0. The continuity condition at 0 is still needed: it excludes probability mass that escapes to infinity.
+**How the definition helps.** The factor i makes \|exp(itX)\| = 1, so φ exists for every distribution, even one without moments. The moment-generating function E(exp(tX)) can be infinite; for the Cauchy distribution it is infinite for every t ≠ 0 (our own example). The continuity condition at 0 is still needed, because it excludes probability mass that escapes to infinity.
 
 **Wikipedia:** [Characteristic function (probability theory)](https://en.wikipedia.org/wiki/Characteristic_function_%28probability_theory%29). It says: “The characteristic function always exists when treated as a function of a real-valued argument, unlike the moment-generating function.”
 
@@ -504,9 +504,9 @@
 
 **Definition.** A filtration (𝓕ₙ) records the information known at each time n, and this information grows with n. A random time τ is a stopping time for the filtration if the event {τ ≤ n} is in 𝓕ₙ for every n. So the decision to stop at time n uses only the information known at time n.
 
-**Problem.** The optional stopping theorem: for a martingale X and a suitable random time τ, the expected value of X at time τ equals E(X₀). So no stopping rule beats a fair game. A martingale is a process whose expected next value, given the past, equals its present value.
+**Problem.** Let X be a martingale, a process whose expected next value given the past equals its present value. If τ is a bounded stopping time, then E(X\_τ) = E(X₀), so no such stopping rule beats a fair game.
 
-**How the definition helps.** The definition makes the theorem possible, because it excludes rules that look into the future. For example, the rule 'stop when the fortune is at its largest value ever' would give a stopped value above E(X₀) on average. But that rule needs knowledge of the future. Even for stopping times, the theorem needs one more condition. Examples are a bounded time, bounded increments with finite expected time, or uniform integrability. The doubling strategy shows why: you double the bet after each loss and stop at the first win.
+**How the definition helps.** The definition excludes rules that look into the future, which the theorem cannot allow. The rule 'stop when the fortune is at its largest value ever' would give a stopped value above E(X₀) on average, but it needs knowledge of the future. Even for stopping times, the theorem needs an extra condition, such as a bounded time or uniform integrability. The doubling strategy, which doubles the bet after each loss and stops at the first win, shows why.
 
 **Wikipedia:** [Stopping time](https://en.wikipedia.org/wiki/Stopping_time), [Optional stopping theorem](https://en.wikipedia.org/wiki/Optional_stopping_theorem), [Martingale (betting system)](https://en.wikipedia.org/wiki/Martingale_%28betting_system%29). It says: “Playing until they obtain the maximum amount ahead they will ever be is not a stopping rule and does not provide a stopping time, as it requires information about the future as well as the present and past.”
 
@@ -520,9 +520,9 @@
 
 **Definition.** A process (Aₙ) is predictable when each Aₙ is 𝓕ₙ₋₁-measurable. Here 𝓕ₙ₋₁ is the information available at time n − 1. So the value at time n is known one step ahead.
 
-**Problem.** Split an adapted integrable process X into a martingale plus a 'drift' part, in only one way. Adapted means that each Xₙ is known at time n.
+**Problem.** Every adapted integrable process X splits in exactly one way as X = M + A, where M is a martingale and A is predictable with A₀ = 0. Adapted means that each Xₙ is known at time n.
 
-**How the definition helps.** Asking the drift to be predictable and to start at zero makes the split unique. Without this, any process is trivially 'a martingale plus something'. Our own short argument: suppose M + A = M′ + A′. Then A − A′ is a martingale that is also predictable, so each increment equals its own conditional mean, which is zero. So A = A′. The continuous-time version needs class D (the values at all finite stopping times form a uniformly integrable family) and is much harder.
+**How the definition helps.** Asking the drift to be predictable and to start at zero makes the split unique. Suppose M + A = M′ + A′ (our own argument). Then A − A′ is a predictable martingale, so each increment equals its own conditional mean, which is zero. The continuous-time version needs class D and is much harder.
 
 **Wikipedia:** [Doob decomposition theorem](https://en.wikipedia.org/wiki/Doob_decomposition_theorem). It says: “the Doob decomposition theorem gives a unique decomposition of every adapted and integrable stochastic process as the sum of a martingale and a predictable process (or "drift") starting at zero.”
 
@@ -538,7 +538,7 @@
 
 **Problem.** If X → Y → Z is a Markov chain, then I(X;Y) ≥ I(X;Z). So no processing of Y, random or not, increases the information that it carries about X.
 
-**How the definition helps.** The Markov condition says exactly that the conditional mutual information I(X;Z\|Y) is zero, and this is the one term that the proof must remove. The page applies the chain rule for mutual information in two ways to I(X;Y,Z). One way gives I(X;Z) + I(X;Y\|Z), and the other gives I(X;Y) + I(X;Z\|Y). Since the last term is zero and the others are nonnegative, the inequality follows. The page also states the equality case. Our own: the discrete proof has no hard step, and the general case needs care with conditional distributions.
+**How the definition helps.** The Markov condition says exactly that the conditional mutual information I(X;Z\|Y) is zero, and this is the one term the proof must remove. The chain rule expands I(X;Y,Z) in two ways, as I(X;Z) + I(X;Y\|Z) and as I(X;Y) + I(X;Z\|Y). Since the last term is zero and the others are nonnegative, the inequality follows.
 
 **Wikipedia:** [Data processing inequality](https://en.wikipedia.org/wiki/Data_processing_inequality). It says: “Let three random variables form the Markov chain X → Y → Z, implying that the conditional distribution of Z depends only on Y and is conditionally independent of X.”
 
@@ -554,7 +554,7 @@
 
 **Problem.** An irreducible chain on a countable state space has a stationary distribution if and only if it is positive recurrent. The distribution is then unique and equals πᵢ = 1/E\[Tᵢ\].
 
-**How the definition helps.** Positive recurrence gives each state a finite mean return time. Its inverse is the long-run fraction of time spent there, so the formula for π is almost forced. Each condition excludes one bad case (our own). A chain with two absorbing states is not irreducible and has many stationary distributions. The simple random walk on the integers is irreducible and recurrent, but null recurrent, and it has no stationary distribution. On a finite state space, irreducibility alone suffices, as the page says. Our own: what stays hard is to decide positive recurrence for a given infinite chain.
+**How the definition helps.** Positive recurrence gives each state a finite mean return time, whose inverse is the long-run fraction of time spent there, so the formula for π is almost forced. A chain with two absorbing states is not irreducible and has many stationary distributions (our own). The simple random walk on the integers is irreducible and recurrent but null recurrent, and it has no stationary distribution (our own). On a finite state space, irreducibility alone suffices.
 
 **Wikipedia:** [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “If a finite Markov chain is irreducible, then all states are positive recurrent, and it has a unique stationary distribution given by πᵢ = 1/E\[Tᵢ\].”
 
@@ -586,9 +586,9 @@
 
 **Definition.** A conditional probability given a random variable is defined relative to the σ-algebra that the variable generates, not relative to one event alone. This σ-algebra matches a decomposition of the space into the level sets of the variable. An event {Y = y} of probability zero gets a conditional distribution only as one piece of such a decomposition.
 
-**Problem.** The Borel–Kolmogorov paradox: take a uniform random point on a sphere and condition on a great circle. The 'conditional distribution on the great circle' comes out uniform when the circle is the equator. It comes out proportional to cos φ when the circle is a meridian, where φ is the latitude.
+**Problem.** Condition a uniform random point on a sphere on a great circle. Taken as the equator in the family of latitude circles, the circle gets the uniform law. Taken as a meridian in the family of meridians, it gets density proportional to cos φ, where φ is the latitude.
 
-**How the definition helps.** Kolmogorov's definition makes the answer depend on the whole decomposition, so the two answers no longer conflict. The two answers come from two different limits. One limit uses thin rings around the equator, and the other uses thin lunes (wedges between two meridians) around the meridian. So the two answers belong to two different σ-algebras, and no contradiction remains. The definition does not pick a 'correct' answer for a single circle. It says that the question is not well posed.
+**How the definition helps.** Kolmogorov's definition makes the answer depend on the whole decomposition, so the two answers no longer conflict. One answer is the limit over thin rings around the equator, and the other is the limit over thin lunes around the meridian. These belong to two different σ-algebras. The definition does not pick a 'correct' answer for a single circle; it says that the question is not well posed.
 
 **Wikipedia:** [Borel–Kolmogorov paradox](https://en.wikipedia.org/wiki/Borel%E2%80%93Kolmogorov_paradox), [Conditional expectation](https://en.wikipedia.org/wiki/Conditional_expectation). It says: “The concept of a conditional probability with regard to an isolated hypothesis whose probability equals 0 is inadmissible.”
 
@@ -606,7 +606,7 @@
 
 **Problem.** Among all ℋ-measurable square-integrable random variables Y, E(X \| ℋ) minimizes the mean squared error E((X − Y)²). In regression language, the conditional mean of X given another variable Z is the best predictor of X from Z.
 
-**How the definition helps.** An orthogonal projection is by definition the nearest point of the subspace, so the least-squares property is the Pythagorean theorem in L². The page notes that in the L² setting conditional expectation is also called regression. The same picture gives the tower property as composition of nested projections (our own). The work moves into extending the definition to integrable variables that are not square-integrable. This uses the orthogonality condition against indicator functions and a limit argument, or the Radon–Nikodym theorem.
+**How the definition helps.** An orthogonal projection is by definition the nearest point of the subspace, so the least-squares property is the Pythagorean theorem in L². The same picture gives the tower property as composition of nested projections (our own). The work moves into extending the definition to integrable variables that are not square-integrable, by a limit argument or the Radon–Nikodym theorem.
 
 **Wikipedia:** [Conditional expectation](https://en.wikipedia.org/wiki/Conditional_expectation). It says: “This allows to define and prove the existence of the conditional expectation based on the Hilbert projection theorem.”
 
@@ -622,7 +622,7 @@
 
 **Problem.** If E\[X²\] is finite, then Var(X) = E\[Var(X \| G)\] + Var(E\[X \| G\]). Here Var(X \| G) = E\[(X − E\[X \| G\])² \| G\].
 
-**How the definition helps.** The projection definition makes the two parts of the centered variable perpendicular, so Pythagoras gives the variance identity (our own explanation). The parts are the error X − E\[X \| G\] and the centered prediction E\[X \| G\] − E\[X\] (our own explanation). Their squared lengths are the expected conditional variance and the variance of the prediction (our own explanation). With event averages, one must show that the cross term vanishes (our own comparison). The definitions agree because projection makes the error orthogonal to indicators of all events in G (our own explanation).
+**How the definition helps.** The projection definition makes the error X − E\[X \| G\] perpendicular to the centered prediction E\[X \| G\] − E\[X\], so Pythagoras gives the identity (our own explanation). Their squared lengths are the expected conditional variance and the variance of the prediction (our own explanation). With event averages, one must instead show that the cross term vanishes (our own comparison).
 
 **Wikipedia:** [Conditional expectation](https://en.wikipedia.org/wiki/Conditional_expectation), [Law of total variance](https://en.wikipedia.org/wiki/Law_of_total_variance). It says: “This allows to define and prove the existence of the conditional expectation based on the Hilbert projection theorem.”
 
@@ -636,9 +636,9 @@
 
 **Definition.** Let 𝓗 be a sub-σ-algebra. Then E(X \| 𝓗) is an 𝓗-measurable random variable whose integral over every set in 𝓗 equals the integral of X over that set. Equivalently, it is a Radon–Nikodym derivative. The measure is the one on 𝓗 that sends A to the integral of X over A, and the reference measure is P restricted to 𝓗.
 
-**Problem.** Conditioning on a continuous random variable. Here each event {Y = y} has probability zero, so the elementary formula P(A ∩ B)/P(B) is undefined.
+**Problem.** For every integrable X and every sub-σ-algebra 𝓗, E(X \| 𝓗) exists and is unique up to a null set. In particular, one can condition on a continuous random variable Y, although each event {Y = y} has probability zero.
 
-**How the definition helps.** Kolmogorov's definition does not divide by a probability, so events of probability zero cause no problem. The elementary definition divides by P(B), so it says nothing about events of probability zero. Kolmogorov's definition asks only for an equality of integrals over the sets of a σ-algebra. The Radon–Nikodym theorem then gives existence for every integrable X and every sub-σ-algebra. Uniqueness holds up to a null set. What stays hard is to choose versions that fit together into a conditional distribution (regular conditional probabilities), which needs extra conditions on the space (our own remark).
+**How the definition helps.** Kolmogorov's definition asks only for an equality of integrals and never divides by a probability, so events of probability zero cause no problem. The Radon–Nikodym theorem then gives existence at once. What stays hard is to choose versions that fit together into a regular conditional distribution, which needs extra conditions on the space (our own remark).
 
 **Wikipedia:** [Conditional expectation](https://en.wikipedia.org/wiki/Conditional_expectation), [Conditional probability](https://en.wikipedia.org/wiki/Conditional_probability). It says: “It was Andrey Kolmogorov who, in 1933, formalized it using the Radon–Nikodym theorem.”
 
@@ -656,7 +656,7 @@
 
 **Problem.** If H and G are σ-algebras with H contained in G, then E\[E\[X \| G\] \| H\] = E\[X \| H\] almost surely.
 
-**How the definition helps.** The event-average definition makes the tower property a consequence of matching integrals on the smaller family of events (our own explanation). Every event in H is in G, so E\[X \| G\] already matches the integral of X there (our own explanation). Uniqueness then gives the identity (our own explanation). The discrete formula instead groups the conditional means by the coarser observations and sums with conditional probabilities (our own comparison). Existence for integrable X uses the Radon–Nikodym theorem, which represents the event integrals by a measurable function.
+**How the definition helps.** Every event in H is in G, so E\[X \| G\] already matches the integral of X over every event in H (our own explanation). Uniqueness up to null events then gives the identity (our own explanation). The discrete formula instead groups the conditional means by the coarser observations and sums with conditional probabilities (our own comparison). Existence for integrable X uses the Radon–Nikodym theorem.
 
 **nLab:** [conditional expectation](https://ncatlab.org/nlab/show/conditional+expectation). It says: “Note that it does not follow from the preceding definition that the conditional expectation exists. This is a consequence of the Radon-Nikodym theorem”
 
@@ -674,7 +674,7 @@
 
 **Problem.** If Xₙ converges in distribution to X and g is continuous, then g(Xₙ) converges in distribution to g(X). The full Mann–Wald theorem allows g to be discontinuous on a set that X hits with probability zero.
 
-**How the definition helps.** If f is bounded and continuous, then so is f ∘ g. So the definition of convergence for Xₙ, applied to f ∘ g, gives the claim at once. With distribution functions, each g would need a separate argument, and only on the real line. The test-function definition also works on any metric space, such as spaces of paths (our own). The page notes that the general case, with g discontinuous on a null set, is slightly more technical. Our own: that case uses the portmanteau theorem with closed sets.
+**How the definition helps.** If f is bounded and continuous, then so is f ∘ g, so the definition applied to f ∘ g gives the claim at once. With distribution functions, each g would need a separate argument, and only on the real line. The test-function definition also works on any metric space, such as spaces of paths (our own). The case with g discontinuous on a null set needs the portmanteau theorem with closed sets (our own).
 
 **Wikipedia:** [Continuous mapping theorem](https://en.wikipedia.org/wiki/Continuous_mapping_theorem), [Convergence of measures](https://en.wikipedia.org/wiki/Convergence_of_measures). It says: “Note that F = f ∘ g is itself a bounded continuous functional. And so the claim follows from the statement above.”
 
@@ -690,9 +690,9 @@
 
 **Definition.** Let μ and ν be probability measures on a metric space. Let Aᵋ be the set of points within distance ε of a set A. Their Lévy–Prokhorov distance is the infimum of ε &gt; 0 with μ(A) ≤ ν(Aᵋ) + ε and ν(A) ≤ μ(Aᵋ) + ε for each Borel set A.
 
-**Problem.** On a separable metric space, the space of probability measures with weak convergence is a metric space. If the base space is Polish, so is the space of probability measures, and compactness of a family can be tested by sequences.
+**Problem.** On a separable metric space, convergence in the Lévy–Prokhorov metric is the same as weak convergence. If the base space is Polish, so is the space of probability measures with this metric.
 
-**How the definition helps.** The metric builds in both ways two laws can be close: mass moved by a small distance and a small amount of mass moved anywhere. So weak convergence becomes ordinary convergence in a metric. Then compactness, completeness and separability of the space of laws are metric facts, and Prokhorov's theorem reads as a compactness criterion in a Polish space. The page notes that, on a separable space, the metric equals the infimum of the Ky Fan distances between random variables with the given laws. What stays hard is the proof that the metric gives exactly the weak topology.
+**How the definition helps.** The metric builds in both ways two laws can be close, by moving mass a small distance or moving a small amount of mass anywhere. So weak convergence becomes convergence in a metric, and compactness of a family can be tested by sequences. What stays hard is the proof that the metric gives exactly the weak topology.
 
 **Wikipedia:** [Lévy–Prokhorov metric](https://en.wikipedia.org/wiki/L%C3%A9vy%E2%80%93Prokhorov_metric), [Convergence of measures](https://en.wikipedia.org/wiki/Convergence_of_measures). It says: “If (M, d) is separable, convergence of measures in the Lévy–Prokhorov metric is equivalent to weak convergence of measures.”
 
@@ -724,9 +724,9 @@
 
 **Definition.** A family of probability measures is tight if, for every ε &gt; 0, there is one compact set K with mass at least 1 − ε under every measure in the family.
 
-**Problem.** Prokhorov's theorem: which families of probability measures have weakly convergent subsequences? Here μₙ converges weakly to μ when ∫ f dμₙ tends to ∫ f dμ for every bounded continuous f.
+**Problem.** Prokhorov's theorem. On a Polish space, a family of probability measures is tight if and only if every sequence in it has a weakly convergent subsequence. Here μₙ converges weakly to μ when ∫ f dμₙ tends to ∫ f dμ for every bounded continuous f.
 
-**How the definition helps.** Tightness rules out mass that runs off to infinity, which is what stops subsequences from converging. On the real line, the point masses δₙ at n = 1, 2, 3, … have no weakly convergent subsequence, because the mass runs off to infinity. Tightness excludes exactly this. On a Polish space (a separable space with a complete metric), a family is tight if and only if it is relatively compact for weak convergence. The main work is to prove that a tight family has a weakly convergent subsequence. The reverse direction needs the space to be Polish (our own remark).
+**How the definition helps.** Tightness rules out mass that runs off to infinity, which is what stops subsequences from converging. On the real line, the point masses δₙ at n = 1, 2, 3, … have no weakly convergent subsequence. The main work is to prove that a tight family has a weakly convergent subsequence. The reverse direction needs the space to be Polish (our own remark).
 
 **Wikipedia:** [Tightness of measures](https://en.wikipedia.org/wiki/Tightness_of_measures). It says: “The intuitive idea is that a given collection of measures does not "escape to infinity".”
 
@@ -744,7 +744,7 @@
 
 **Problem.** On a compact metric space, every sequence of Borel probability measures has a weakly convergent subsequence with a probability measure as its limit.
 
-**How the definition helps.** The functional definition puts the measures in the weak-star compact dual unit ball (our own explanation). Positivity and the requirement that the constant one has integral one are closed conditions there (our own explanation). Continuous functions on a compact metric space have a countable dense subset in the uniform norm (our own explanation). Thus weak-star convergence on the ball comes from a metric, so compactness gives a convergent subsequence (our own explanation). The Banach–Alaoglu theorem supplies compactness, and the Riesz representation theorem makes the limit functional a measure (our own explanation). The measure-space approach instead invokes Prokhorov's theorem after checking that the whole space is compact (our own comparison).
+**How the definition helps.** The functional definition puts the measures in the dual unit ball, which is weak-star compact by the Banach–Alaoglu theorem (our own explanation). Positivity and the condition that the constant one has integral one are closed conditions there (our own explanation). Continuous functions on a compact metric space have a countable dense subset, so the ball is metrizable and compactness gives a convergent subsequence (our own explanation). The Riesz representation theorem makes the limit a measure (our own explanation).
 
 **Wikipedia:** [Convergence of measures](https://en.wikipedia.org/wiki/Convergence_of_measures), [Prokhorov's theorem](https://en.wikipedia.org/wiki/Prokhorov%27s_theorem). It says: “in this case weak convergence of measures is a special case of weak-\* convergence.”
 
@@ -850,7 +850,7 @@
 
 **Problem.** If B is a mean-preserving spread of A, then A dominates B in the second order.
 
-**How the definition helps.** The utility definition makes the proof an application of conditional Jensen’s inequality. For a concave utility, the expected utility after adding noise is at most the utility of the conditional mean, which is A. Taking expectations gives the required comparison for each utility. Our own comparison is that the integral definition instead calls for an inequality involving the two distributions. The harder result goes in reverse when the means agree. It must put the two payoffs on a common probability space so that the difference is fair noise.
+**How the definition helps.** The utility definition makes the proof an application of conditional Jensen’s inequality. For a concave utility, the conditional expected utility after adding fair noise is at most the utility of A. Taking expectations gives the comparison for each utility. The integral definition instead needs an inequality between the two distributions (our own comparison).
 
 **Wikipedia:** [Stochastic dominance](https://en.wikipedia.org/wiki/Stochastic_dominance). It says: “If B is a mean-preserving spread of A, then A second-order stochastically dominates B.”
 
@@ -886,7 +886,7 @@
 
 **Problem.** If the same laws at the same scale satisfy a large deviation principle with two rate functions on a metric space, those functions coincide.
 
-**How the definition helps.** Lower semicontinuity lets bounds on shrinking balls recover the value at their center (our own). Apply the lower bound for I to an open ball and the upper bound for J to its closure (our own). As the radius shrinks, these inequalities give J(x) ≤ I(x), and reversing the roles gives equality (our own). Without the condition, take the uniform law on \[0, 1\] at every scale, and use zero as the rate everywhere (our own). Raising just the rate at 0 to 1 still gives both bounds on \[0, 1\], since the singleton has no mass (our own).
+**How the definition helps.** Lower semicontinuity lets bounds on shrinking balls recover the value at their center (our own). Apply the lower bound for I to an open ball and the upper bound for J to its closure; as the radius shrinks, this gives J(x) ≤ I(x), and symmetry gives equality (our own). Without the condition, take the uniform law on the space \[0, 1\] at every scale, with rate zero everywhere (our own). Raising the rate at 0 alone to 1 still gives both bounds, since the singleton has no mass (our own).
 
 **Wikipedia:** [Rate function](https://en.wikipedia.org/wiki/Rate_function). It says: “given a sequence of probability measures (μδ)δ&gt;0 on X satisfying the large deviation principle for two rate functions I and J, it follows that I(x) = J(x) for all x ∈ X.”
 
@@ -902,7 +902,7 @@
 
 **Problem.** Let Xε satisfy the Laplace principle with good rate I. For a continuous map f between complete separable metric spaces, f(Xε) satisfies it with rate J(y) = inf{I(x) \| f(x) = y}. The infimum of the empty set is infinity.
 
-**How the definition helps.** The Laplace definition makes contraction a substitution of h composed with f for h (our own explanation). This substitution groups the original infimum by the value of f, giving inf(h + J) (our own explanation). Each finite sublevel set of J is the image of the corresponding compact sublevel set of I (our own explanation). Hence J is a good rate function (our own explanation). Varadhan's lemma and Bryc's converse connect this formulation to the usual large deviation bounds. A proof from set bounds instead checks the open and closed preimages separately (our own comparison).
+**How the definition helps.** The Laplace definition makes contraction a substitution of h ∘ f for h (our own explanation). This substitution groups the original infimum by the value of f, giving inf(h + J) (our own explanation). Each finite sublevel set of J is the image of a compact sublevel set of I, so J is good (our own explanation). A proof from set bounds instead checks open and closed preimages separately (our own comparison).
 
 **Wikipedia:** [Contraction principle (large deviations theory)](https://en.wikipedia.org/wiki/Contraction_principle_%28large_deviations_theory%29). It says: “the contraction principle is a theorem that states how a large deviation principle on one space "pushes forward”
 
@@ -920,9 +920,9 @@
 
 **Definition.** A family of random variables is uniformly integrable when sup E(\|X\|·1{\|X\| ≥ K}) tends to 0 as K → ∞. The sup is over all X in the family, and 1{\|X\| ≥ K} is 1 where \|X\| ≥ K and 0 elsewhere. In words, no member can hide a fixed amount of mass at large values.
 
-**Problem.** When does convergence in probability give convergence in L¹, that is, E\|Xₙ − X\| → 0?
+**Problem.** Vitali convergence theorem. On a probability space, integrable Xₙ converge to X in L¹, that is E\|Xₙ − X\| → 0, if and only if they converge in probability and form a uniformly integrable family.
 
-**How the definition helps.** Uniform integrability is the exact extra condition that convergence in probability needs. Take Xₙ = n on (0, 1/n) and 0 elsewhere. This sequence tends to 0 at every point, but E(Xₙ) = 1 for all n, and it is not uniformly integrable. On a finite measure space, and so for probability, the Vitali convergence theorem gives an equivalence. Xₙ converges in L¹ if and only if it converges in probability and is uniformly integrable. This replaces the one-way dominated convergence theorem by an exact equivalence.
+**How the definition helps.** Uniform integrability is the exact extra condition that convergence in probability needs. Take Xₙ = n on (0, 1/n) and 0 elsewhere. This sequence tends to 0 at every point, but E(Xₙ) = 1 for all n, and it is not uniformly integrable. The theorem replaces the one-way dominated convergence theorem by an exact equivalence.
 
 **Wikipedia:** [Uniform integrability](https://en.wikipedia.org/wiki/Uniform_integrability), [Vitali convergence theorem](https://en.wikipedia.org/wiki/Vitali_convergence_theorem). It says: “In probability terms, a sequence of random variables converging in probability also converge in the mean if and only if they are uniformly integrable.”
 
@@ -940,7 +940,7 @@
 
 **Problem.** Take a starting law and a sequence of Markov kernels on arbitrary measurable spaces. Then there is a unique probability measure on the infinite product whose finite-dimensional laws are built step by step from the kernels. This constructs Markov chains and Markov decision processes on any state space.
 
-**How the definition helps.** The kernels give the conditional laws in advance. So countable additivity on the infinite product can be proved by conditioning one step at a time. Kolmogorov's extension theorem, by contrast, starts from finite-dimensional laws alone and needs inner regularity, so it needs topology (our own comparison). The theorem works for countably many steps, ordered in time. What stays hard is when only joint laws are given. Then one must first get kernels from them, which needs regular conditional probabilities and so standard Borel spaces (our own).
+**How the definition helps.** The kernels give the conditional laws in advance, so countable additivity on the infinite product can be proved by conditioning one step at a time. Kolmogorov's extension theorem starts from finite-dimensional laws alone and needs inner regularity, so it needs topology (our own comparison). What stays hard is the case where only joint laws are given, since getting kernels from them needs regular conditional probabilities (our own).
 
 **Wikipedia:** [Ionescu-Tulcea theorem](https://en.wikipedia.org/wiki/Ionescu-Tulcea_theorem), [Kolmogorov extension theorem](https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem). It says: “In particular, the individual events may be independent or dependent with respect to each other. Thus, the statement goes beyond the mere existence of countable product measures.”
 
@@ -956,7 +956,7 @@
 
 **Problem.** Let X be progressively measurable and let τ be a stopping time. Then, where τ is finite, the value of X at time τ is measurable for the σ-algebra of events known at time τ. Every adapted process with right- or left-continuous paths is progressively measurable.
 
-**How the definition helps.** The value at a random time is the joint map (s, ω) ↦ Xₛ(ω) composed with ω ↦ (τ(ω), ω). So joint measurability up to each time is exactly what the proof needs. An adapted process need not be jointly measurable in time and chance, and then this composition can fail to be measurable (our own). The work moves into showing that common processes are progressive. The page states that adapted processes with one-sided continuous paths are. It also states that every measurable adapted process has a progressive modification.
+**How the definition helps.** The value at a random time is the joint map (s, ω) ↦ Xₛ(ω) composed with ω ↦ (τ(ω), ω). So joint measurability up to each time is exactly what the proof needs. An adapted process need not be jointly measurable in time and chance, and then this composition can fail to be measurable (our own). The work moves into showing that common processes, such as those with one-sided continuous paths, are progressive.
 
 **Wikipedia:** [Progressively measurable process](https://en.wikipedia.org/wiki/Progressively_measurable_process). It says: “A progressively measurable process, while defined quite technically, is important because it implies the stopped process is measurable.”
 
@@ -972,9 +972,9 @@
 
 **Definition.** A process (Xₜ), with t in an interval, is separable when there is a countable dense set U of times with this property. Outside one null set (an event of probability zero), the values of the path at the times in U determine its behaviour on any open set of times.
 
-**Problem.** Events such as 'the path is continuous' or 'sup Xₜ ≤ c' depend on uncountably many times. So they need not be events at all, that is, they need not be measurable.
+**Problem.** For a separable process, events and functionals that involve uncountably many times, such as 'sup Xₜ ≤ c', are measurable. By Doob's theorem, every real-valued continuous-time process has a separable modification, with values in the extended real line.
 
-**How the definition helps.** Separability reduces every question about the path to countably many times, so functionals such as the supremum become measurable. The finite-dimensional distributions, the joint laws at finitely many times, do not fix path properties. For example, the left-continuous and right-continuous versions of a Poisson process have the same finite-dimensional laws. Doob's separability theorem says that every real-valued continuous-time process has a separable modification. A modification is a second process that equals the first with probability 1 at each time, so nothing is lost in distribution. The page says that separability is now less used. Instead, one often assumes continuous or càdlàg paths (right-continuous paths with left limits).
+**How the definition helps.** Separability reduces every question about the path to countably many times. Without it, the finite-dimensional laws do not fix path properties. The left-continuous and right-continuous versions of a Poisson process have the same finite-dimensional laws. A modification equals the original process with probability 1 at each time, so nothing is lost in distribution.
 
 **Wikipedia:** [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process). It says: “Furthermore, if a stochastic process is separable, then functionals of an uncountable number of points of the index set are measurable and their probabilities can be studied.”
 
@@ -992,7 +992,7 @@
 
 **Problem.** Time shifts are ergodic exactly when the spectral measure gives zero mass to each frequency. Ergodicity means every event invariant up to null sets under all shifts has probability zero or one. A nondegenerate Gaussian random constant has an atom at frequency zero and fails this test.
 
-**How the definition helps.** The spectral measure turns a condition on every invariant event into a test for individual frequencies. In our own explanation, an atom supplies a Gaussian frequency component whose squared amplitude is invariant and nonconstant. Conversely, expand square-integrable observations in orthogonal Gaussian polynomials. At positive degree, frequencies add and their distribution is described by repeated convolution of the spectral measure. Convolving an atomless finite measure never creates an atom at zero. The spectral representation and the completeness of the polynomial expansion supply the main work.
+**How the definition helps.** The spectral measure turns a condition on every invariant event into a test for individual frequencies. An atom supplies a frequency component whose squared amplitude is invariant and nonconstant (our own explanation). Conversely, expand square-integrable observations in orthogonal Gaussian polynomials, whose frequencies are governed by repeated convolutions of the spectral measure. Convolving an atomless finite measure never creates an atom at zero.
 
 **Paper or page:** [Langevin equation and fractional dynamics](https://arxiv.org/abs/1810.02412). It says: “A stationary Gaussian process is ergodic if and only if its spectral measure has no atoms.”
 
@@ -1010,7 +1010,7 @@
 
 **Problem.** Let (Xₙ) be stationary and let F be a measurable function of a path. Then Yₙ = F(Xₙ, Xₙ₊₁, Xₙ₊₂, …) is stationary.
 
-**How the definition helps.** The path-space definition makes stationarity pass to the output because the map on paths commutes with the shift (our own). If σ is the left shift, the output path at x consists of the values F(σⁿx). Shifting before or after forming these values gives the same path. Thus taking the law of the output commutes with shifting, so the output law is unchanged by a shift. The finite-tuple definition does not directly handle F depending on infinitely many input times. The definitions agree because the law of an existing process is determined by its values on events that specify finitely many coordinates.
+**How the definition helps.** The path-space definition makes stationarity pass to the output because the map on paths commutes with the shift (our own). If σ is the left shift, the output path at x consists of the values F(σⁿx), and shifting before or after gives the same path. The finite-tuple definition does not directly handle F depending on infinitely many input times. The definitions agree because a law on paths is determined by events on finitely many coordinates.
 
 **nLab:** [stationary stochastic process](https://ncatlab.org/nlab/show/stationary+stochastic+process), [shift](https://ncatlab.org/nlab/show/shift). It says: “Equivalently, it is stationary if the complete joint distribution on Xᵀ is shift-invariant, i.e. it is a measure-preserving dynamical system.”
 
@@ -1026,7 +1026,7 @@
 
 **Problem.** The process B has independent increments, and B(t) − B(s) is normal with mean zero and variance t − s for s &lt; t. It has a Brownian version with continuous paths that agrees with B almost surely at each fixed time.
 
-**How the definition helps.** The covariance definition makes independence of increments follow from orthogonality of disjoint interval indicators (our own explanation). Linearity for any fixed combination of indices follows because the putative linearity error has variance zero (our own explanation). The squared norm of an interval indicator is its length, which gives the variance (our own explanation). In the direct Brownian construction, independent normal increments are specified first and a consistency theorem constructs the process (our own comparison). Here the work lies in constructing the indexed Gaussian family and in applying Kolmogorov's continuity theorem to obtain continuous paths (our own explanation).
+**How the definition helps.** The covariance definition makes independence of increments follow from orthogonality of disjoint interval indicators, because uncorrelated jointly normal variables are independent (our own explanation). The squared norm of an interval indicator is its length, which gives the variance (our own explanation). The direct construction instead specifies independent normal increments and uses a consistency theorem (our own comparison). Here the work lies in constructing the Gaussian family and in Kolmogorov's continuity theorem for continuous paths (our own explanation).
 
 **Paper or page:** [Limit theorems for Gaussian fields via Chaos Expansions and Applications, Proposition 2.2.2](https://arxiv.org/abs/2406.15801v2). It says: “Then there exists an isonormal Gaussian field over H. Moreover, when X, X' are isonormal Gaussian field over H, they are equal in law.”
 
@@ -1062,7 +1062,7 @@
 
 **Problem.** Suppose E\[d(Xₜ, Xₛ) to the power α\] is at most K\|t − s\| to the power 1 + β, for positive constants α, β and K. Then X has a modification with continuous paths, which are even Hölder continuous of every order below β/α. For Brownian motion this gives continuous paths.
 
-**How the definition helps.** Moment bounds see only finitely many times at once, so they cannot control paths. The notion of a modification lets the theorem speak about paths anyway. Our own: let U be uniform on \[0, 1\] and let Xₜ be 1 when t = U and 0 otherwise. Every path of X is discontinuous at one point, yet X is a modification of the zero process. So the statement must be about a version, not about the process itself. Our own: the proof defines the version on the dyadic rationals and extends it by continuity. The hard part is the estimate that gives the Hölder bound.
+**How the definition helps.** Moment bounds see only finitely many times at once, so they cannot control paths, and the notion of a modification lets the theorem speak about paths anyway. Let U be uniform on \[0, 1\] and let Xₜ be 1 when t = U and 0 otherwise (our own example). Every path of X is discontinuous, yet X is a modification of the zero process. The proof defines the version on the dyadic rationals and extends it by continuity (our own).
 
 **Wikipedia:** [Kolmogorov continuity theorem](https://en.wikipedia.org/wiki/Kolmogorov_continuity_theorem). It says: “a stochastic process that satisfies certain constraints on the moments of its increments will be continuous (or, more precisely, have a "continuous version").”
 
@@ -1078,7 +1078,7 @@
 
 **Problem.** Any two almost surely continuous modifications of the same process are indistinguishable. So the continuous version of a process is unique up to a null set. The law of Brownian motion is then one measure, Wiener measure, on the space of continuous paths.
 
-**How the definition helps.** Continuous paths are fixed by their values at rational times, so two continuous modifications that agree at each rational time agree everywhere. Finite-dimensional laws alone cannot do this. The page notes that the left- and right-continuous versions of a Poisson process have the same finite-dimensional laws. Kolmogorov's extension theorem gives only a measure on all functions with the product σ-algebra, where continuity of a path is not an event. Putting continuity into the definition moves the work into Kolmogorov's continuity theorem. It says that moment bounds on increments give a continuous, even Hölder continuous, modification.
+**How the definition helps.** Continuous paths are fixed by their values at rational times, so two continuous modifications that agree at each rational time agree everywhere. Finite-dimensional laws alone cannot do this, since the left- and right-continuous versions of a Poisson process have the same finite-dimensional laws. Kolmogorov's extension theorem gives only a measure on all functions, where continuity of a path is not an event. Putting continuity into the definition moves the work into Kolmogorov's continuity theorem.
 
 **Wikipedia:** [Wiener process](https://en.wikipedia.org/wiki/Wiener_process), [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process), [Kolmogorov continuity theorem](https://en.wikipedia.org/wiki/Kolmogorov_continuity_theorem). It says: “Pre-Brownian motions do not necessarily have continuous paths, but by Kolmogorov's continuity criterion, there exists a modification of W̃ that does. Therefore, the Wiener process W can be defined as a pre-Brownian motion that has continuous paths.”
 
@@ -1096,7 +1096,7 @@
 
 **Problem.** With the Skorokhod topology, the space of càdlàg paths is Polish, that is separable with a complete compatible metric. So Prokhorov's theorem and tightness criteria apply, and limit theorems for processes with jumps can be stated as weak convergence on this space.
 
-**How the definition helps.** Allowing a small time shift makes a jump at time 1 + 1/n close to a jump at time 1, as intuition demands. Under the uniform metric, the indicator paths of \[t, 1\] for different t are all at distance 1. So with that metric the space is not separable (our own). The page notes that the Skorokhod metric itself is not complete, but an equivalent metric is. It also notes a cost: addition is not continuous, so the space is not a topological group. Tightness criteria in this space still need an Arzelà–Ascoli type argument.
+**How the definition helps.** Allowing a small time distortion makes a jump at time 1 + 1/n close to a jump at time 1. Under the uniform metric, the indicator paths of \[t, 1\] for different t are all at distance 1, so the space is not separable (our own). The Skorokhod metric itself is not complete, but an equivalent metric is. A cost is that addition is not continuous.
 
 **Wikipedia:** [Càdlàg](https://en.wikipedia.org/wiki/C%C3%A0dl%C3%A0g), [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process). It says: “Skorokhod space can be assigned a topology that intuitively allows us to "wiggle space and time a bit" (whereas the traditional topology of uniform convergence only allows us to "wiggle space a bit").”
 
@@ -1114,7 +1114,7 @@
 
 **Problem.** For two stopping times of the same filtration, their minimum and their maximum are stopping times.
 
-**How the definition helps.** The cumulative test turns the minimum and maximum into a union and an intersection of events already known at time t. The minimum has occurred if either stop has occurred, and the maximum if both have occurred. At integer times, use a finite union of exact-time events to get the cumulative event. Conversely, remove the previous cumulative event to get the exact-time event. In continuous time the same comparison fails because a σ-algebra need not contain an uncountable union of its events. This proof and comparison are our own.
+**How the definition helps.** The cumulative test turns the minimum and maximum into a union and an intersection of events already known at time t (our own). The minimum has occurred if either stop has occurred, and the maximum if both have occurred (our own). At integer times, the two definitions agree through finite unions and differences of exact-time events (our own). In continuous time the exact-time test fails, because a σ-algebra need not contain an uncountable union of its events (our own).
 
 **Wikipedia:** [Stopping time](https://en.wikipedia.org/wiki/Stopping_time). It says: “then their minimum τ₁ ∧ τ₂, their maximum τ₁ ∨ τ₂, and their sum τ₁ + τ₂ are also stopping times.”
 
@@ -1128,9 +1128,9 @@
 
 **Definition.** A filtration is a growing family of σ-algebras that records the information known up to each time. It is right-continuous if the information just after time t equals that at time t. It is complete if each σ-algebra contains all events of probability zero. With both properties, it satisfies the usual conditions (it is augmented).
 
-**Problem.** The début theorem says that the first time a progressively measurable process enters a measurable set is a stopping time. A stopping time is a random time τ for which the event that τ ≤ t is known at time t.
+**Problem.** The début theorem. For a filtration with the usual conditions, the first time a progressively measurable process enters a measurable set is a stopping time. A stopping time is a random time τ for which the event that τ ≤ t is known at time t.
 
-**How the definition helps.** The usual conditions give the filtration enough events that a first entry time, which depends on the whole path, is measurable at each time. Right-continuity is needed even in simple cases. A continuous path may enter an open set just after time t (our own). So for the raw filtration, its entry time is only an optional time. Completeness is needed because the proof uses analytic sets, whose measurability is only up to null sets. The page says the proof is rather involved. So the work moves into the theory of analytic sets and capacities.
+**How the definition helps.** The usual conditions give the filtration enough events that a first entry time, which depends on the whole path, is measurable at each time. Right-continuity is needed even in simple cases, because a continuous path may enter an open set just after time t (our own). Completeness is needed because the proof uses analytic sets, which are measurable only up to null sets. The work moves into the theory of analytic sets and capacities.
 
 **Wikipedia:** [Hitting time](https://en.wikipedia.org/wiki/Hitting_time), [Filtration (probability theory)](https://en.wikipedia.org/wiki/Filtration_%28probability_theory%29). It says: “The Début theorem says that the hitting time of a measurable set F, for a progressively measurable process with respect to a right continuous and complete filtration, is a stopping time.”
 
@@ -1146,9 +1146,9 @@
 
 **Definition.** Let τ be a stopping time. The σ-algebra at time τ holds each event A such that A ∩ {τ ≤ t} is known at time t, for every t. It holds the information available up to the random time τ.
 
-**Problem.** A process is strong Markov if its future after a finite stopping time τ depends on the past only through its value at τ. Here the past is the σ-algebra at τ. For Brownian motion, the increments after a finite stopping time form a new Brownian motion, independent of that past.
+**Problem.** Brownian motion has the strong Markov property. Its increments after a finite stopping time τ form a new Brownian motion, independent of the σ-algebra at τ.
 
-**How the definition helps.** The definition turns the vague idea of the past before a random time into a σ-algebra, so conditional independence given it is meaningful. The ordinary Markov property is the case of constant τ. In discrete time, the strong and ordinary properties are equivalent, as the page says. In continuous time they differ (our own example). A process that waits an exponential time at 0 and then moves at unit speed is Markov but not strong Markov. For Brownian motion, the strong Markov property gives the reflection principle (our own).
+**How the definition helps.** The definition turns the vague idea of the past before a random time into a σ-algebra, so conditional independence given it is meaningful. The ordinary Markov property is the case of constant τ. In continuous time the two properties differ (our own example). A process that waits an exponential time at 0 and then moves at unit speed is Markov but not strong Markov.
 
 **Wikipedia:** [Markov property](https://en.wikipedia.org/wiki/Markov_property), [Stopping time](https://en.wikipedia.org/wiki/Stopping_time). It says: “The term strong Markov property is similar to the Markov property, except that the meaning of "present" is defined in terms of a random variable known as a stopping time.”
 
@@ -1185,7 +1185,7 @@
 
 **Problem.** The Doob–Meyer theorem: a right-continuous submartingale of class D is, in a unique way, a uniformly integrable martingale plus a predictable increasing process. A predictable process is one whose value at each time is known just before that time.
 
-**How the definition helps.** Meyer chose the name and the condition to fit his theorem, so the theorem holds for class D by design. Class D is also necessary. A sum of a uniformly integrable martingale and an integrable increasing process is of class D, so the condition is exactly right. A local version exists for submartingales that are only locally of class D. The hard step is to build the predictable increasing part in continuous time.
+**How the definition helps.** Meyer chose the name and the condition to fit his theorem, so the theorem holds for class D by design. Class D is also necessary, because a uniformly integrable martingale plus an integrable increasing process is of class D. The hard step is to build the predictable increasing part in continuous time.
 
 **Wikipedia:** [Doob–Meyer decomposition theorem](https://en.wikipedia.org/wiki/Doob%E2%80%93Meyer_decomposition_theorem). It says: “In honor of Doob, Meyer used the term "class D" to refer to the class of supermartingales for which his unique decomposition theorem applied.”
 
@@ -1203,7 +1203,7 @@
 
 **Problem.** Lévy's characterization: a continuous local martingale starting at 0 with quadratic variation t at time t is a standard Brownian motion. No Gaussian assumption is made.
 
-**How the definition helps.** Itô's formula for a continuous local martingale uses only the path and its quadratic variation, so fixing the quadratic variation fixes the law. With it, Itô's formula shows that exp(iuWₜ + u²t/2) is a martingale, which forces Gaussian independent increments (our own). Continuity of paths is essential (our own example). The compensated Poisson process Nₜ − t is a martingale whose predictable quadratic variation is t. Yet it is not Brownian motion, since it jumps. The work moves into the existence of quadratic variation and into stochastic calculus.
+**How the definition helps.** Itô's formula for a continuous local martingale uses only the path and its quadratic variation, so fixing the quadratic variation fixes the law. With it, exp(iuWₜ + u²t/2) is a martingale, which forces Gaussian independent increments (our own). Continuity of paths is essential (our own example). The compensated Poisson process Nₜ − t is a martingale with predictable quadratic variation t, but it jumps.
 
 **Wikipedia:** [Wiener process](https://en.wikipedia.org/wiki/Wiener_process). It says: “A continuous (local) martingale W with W₀ = 0 is a Wiener process if and only if its quadratic variation is \[W, W\]ₜ = t”
 
@@ -1221,7 +1221,7 @@
 
 **Problem.** Let M be a continuous local martingale with M₀ = 0 whose quadratic variation ⟨M⟩ tends to infinity. Then B, the value of M at time Tₜ, is a Brownian motion. And M at time t equals B at time ⟨M⟩ₜ.
 
-**How the definition helps.** Measuring time by quadratic variation makes the time-changed process have quadratic variation exactly t, so Lévy's characterization finishes the proof. The condition that ⟨M⟩ tends to infinity makes every Tₜ finite. Without it, the page says one may need to enlarge the probability space to supply the missing Brownian motion. The Brownian motion B is adapted to the time-changed filtration, not the original one. So the theorem moves questions about paths of continuous martingales, such as their oscillation, to Brownian motion.
+**How the definition helps.** Measuring time by quadratic variation gives the time-changed process quadratic variation exactly t, so Lévy's characterization finishes the proof. The condition that ⟨M⟩ tends to infinity makes every Tₜ finite. Without it, one may need to enlarge the probability space. The Brownian motion B is adapted to the time-changed filtration, not to the original one.
 
 **Wikipedia:** [Dubins–Schwarz theorem](https://en.wikipedia.org/wiki/Dubins%E2%80%93Schwarz_theorem). It says: “the Dubins–Schwarz theorem (or Dambis–Dubins–Schwarz theorem) is a theorem that says all continuous local martingales and martingales are time-changed Brownian motions.”
 
@@ -1235,11 +1235,11 @@
 
 *True by definition.* MSC 60G48 (Generalizations of martingales), 60H05. arXiv math.PR. Level 3: graduate.
 
-**Definition.** A semimartingale is an adapted càdlàg process that is a local martingale plus an adapted process of finite variation. Adapted means that the value at time t depends only on information up to time t, and càdlàg means that the paths are right-continuous with left limits. A local martingale is a process that becomes a martingale when it is stopped at suitable random times. Equivalently, for each time t, its integrals up to t against simple predictable processes (step processes whose value on each interval is fixed at its start) bounded by 1 form a set that is bounded in probability.
+**Definition.** A semimartingale is an adapted càdlàg process that is a local martingale plus an adapted process of finite variation. A good integrator is an adapted càdlàg process X such that, for each time t, the integrals up to t of simple predictable processes bounded by 1 against X form a set bounded in probability.
 
-**Problem.** Find the largest class of integrators for which the stochastic integral can be defined with a reasonable continuity property.
+**Problem.** By the Bichteler–Dellacherie theorem, an adapted càdlàg process is a semimartingale if and only if it is a good integrator. So semimartingales are the largest class of integrators for which the stochastic integral has this continuity.
 
-**How the definition helps.** The second definition puts a bound on integrals into the definition itself. It says that integrals of simple integrands bounded by 1 stay bounded in probability. Our own reading is that this is the continuity needed to extend the integral to general integrands. The Bichteler–Dellacherie theorem shows that this class equals the class of 'local martingale plus finite variation'. So the decomposition is a theorem, not an assumption. This makes 'semimartingales form the largest class of good integrators' close to true by definition. The equivalence itself is the hard step.
+**How the definition helps.** The good-integrator definition puts the continuity of the integral into the definition itself. Our own reading is that this is the continuity needed to extend the integral to general integrands. The decomposition into a local martingale and a finite-variation part then becomes a theorem, not an assumption. The equivalence itself is the hard step.
 
 **Wikipedia:** [Semimartingale](https://en.wikipedia.org/wiki/Semimartingale). It says: “Semimartingales are "good integrators", forming the largest class of processes with respect to which the Itô integral and the Stratonovich integral can be defined.”
 
@@ -1257,7 +1257,7 @@
 
 **Problem.** If Q is absolutely continuous with respect to P, then every P-semimartingale is a Q-semimartingale. For Brownian motion, Girsanov's theorem gives the explicit new drift.
 
-**How the definition helps.** The class of semimartingales absorbs the drift that a change of measure creates, so the class is stable although martingales are not. The page shows the mechanism when the density is ℰ(X), the stochastic exponential of a local martingale X. Then the local martingale part M changes by the finite variation process \[M, X\], which joins the finite variation part. Our own: a P-martingale is usually not a Q-martingale, so a theory of integration with martingale integrators alone would not survive the change. This stability is why stochastic integrals and pricing in finance can move between measures. What stays hard is to know when the density process is a true martingale, for which the page gives Novikov's condition.
+**How the definition helps.** The class of semimartingales absorbs the drift that a change of measure creates, so the class is stable although martingales are not. When the density is the stochastic exponential ℰ(X), the local martingale part M changes by the finite-variation process \[M, X\]. A P-martingale is usually not a Q-martingale, so a theory with martingale integrators alone would not survive the change (our own). What stays hard is to know when the density process is a true martingale.
 
 **Wikipedia:** [Girsanov theorem](https://en.wikipedia.org/wiki/Girsanov_theorem). It says: “if Q is a measure being absolutely continuous with respect to P, then every P-semimartingale is also a Q-semimartingale.”
 
@@ -1275,7 +1275,7 @@
 
 **Problem.** Let X be a semimartingale for filtration F. If X is also adapted to a smaller filtration G, then X is also a semimartingale for G.
 
-**How the definition helps.** The good integrator definition tests fewer integrands when the filtration shrinks (our own explanation). Each simple integrand uses only information known at the start of a step (our own explanation). Thus every test for G is also a test for F, with the same integral (our own explanation). So the probability of exceeding a large bound stays uniformly small across the tests (our own explanation). The decomposition proof is harder because its original local martingale part need not be adapted to G (our own comparison). The Bichteler–Dellacherie theorem does the work of showing the two definitions agree.
+**How the definition helps.** The good integrator definition tests fewer integrands when the filtration shrinks (our own explanation). Each simple integrand for G uses only information in G, so it is also a test for F, with the same integral (our own explanation). The decomposition proof is harder because the original local martingale part need not be adapted to G (our own comparison). The Bichteler–Dellacherie theorem shows that the two definitions agree.
 
 **Wikipedia:** [Semimartingale](https://en.wikipedia.org/wiki/Semimartingale). It says: “The property of being a semimartingale is preserved under shrinking the filtration.”
 
@@ -1291,9 +1291,9 @@
 
 **Definition.** A Lévy process starts at 0 and has independent and stationary increments. It is also continuous in probability. That is, for every ε &gt; 0, the probability that \|Xₜ₊ₕ − Xₜ\| &gt; ε tends to 0 as h tends to 0.
 
-**Problem.** Every Lévy process has a version with right-continuous paths that have left limits. This regularity is the starting point of the Lévy–Itô decomposition. That theorem splits the process into Brownian motion with drift and independent jump parts.
+**Problem.** Every Lévy process has a version with right-continuous paths that have left limits.
 
-**How the definition helps.** Our own: continuity in probability is a weak condition, but it rules out processes whose paths have no regularity at all. Our own: take an additive function f on the reals that is not linear, which exists by the axiom of choice. The process Xₜ = f(t) is deterministic, so its increments are independent and stationary. But it is not continuous in probability, and its paths are unbounded on every interval. With the condition, the page says every Lévy process has a right-continuous version with left limits. Our own: what stays hard is the Lévy–Itô decomposition of the jumps into Poisson parts.
+**How the definition helps.** Continuity in probability is a weak condition, but it rules out processes whose paths have no regularity at all (our own). Take an additive function f on the reals that is not linear, which exists by the axiom of choice (our own). The deterministic process Xₜ = f(t) has independent and stationary increments. But it is not continuous in probability, and its paths are unbounded on every interval.
 
 **Wikipedia:** [Lévy process](https://en.wikipedia.org/wiki/L%C3%A9vy_process). It says: “If X is a Lévy process then one may construct a version of X such that t ↦ Xₜ is almost surely right-continuous with left limits.”
 
@@ -1325,9 +1325,9 @@
 
 **Definition.** A Feller process is a time-homogeneous Markov process whose transition operators map continuous functions vanishing at infinity to such functions, and are continuous in time. An augmented filtration is complete and right-continuous; these are the usual conditions.
 
-**Problem.** Let X be a Feller process for an augmented filtration. Then X has a modification with càdlàg paths, and this modification has the strong Markov property. Standard texts take the state space locally compact and separable, so that continuous functions vanishing at infinity make sense; the page says Polish.
+**Problem.** Let X be a Feller process for an augmented filtration, on a locally compact separable state space. Then X has a modification with càdlàg paths, and this modification has the strong Markov property.
 
-**How the definition helps.** The usual conditions give the filtration enough events to hold the right limits of the paths. So a regular version of the process can be built inside the filtration. Feller continuity then makes the Markov property pass to stopping times, which can be approximated from the right by discrete times (our own). The page says that, for this reason, Feller processes are often assumed to be right-continuous strong Markov processes without mention. The Markov property alone does not give the strong Markov property. What stays hard is the regularization, which uses supermartingale convergence along rational times.
+**How the definition helps.** The usual conditions give the filtration enough events to hold the right limits of the paths, so a regular version can be built inside the filtration. Feller continuity then makes the Markov property pass to stopping times, which can be approximated from the right by discrete times (our own). The Markov property alone does not give the strong Markov property. The regularization uses supermartingale convergence along rational times.
 
 **Wikipedia:** [Markov property](https://en.wikipedia.org/wiki/Markov_property), [Feller process](https://en.wikipedia.org/wiki/Feller_process), [Filtration (probability theory)](https://en.wikipedia.org/wiki/Filtration_%28probability_theory%29). It says: “If the filtration (𝓕ₜ)ₜ≥₀ is augmented, then X has a modification with right-continuous (even càdlàg) paths, and this modification has the strong Markov property.”
 
@@ -1381,7 +1381,7 @@
 
 **Problem.** Superpose independent Poisson point processes by adding their counting measures on the same space. If the sum of their mean measures is finite on bounded sets, the result is Poisson with that summed mean measure.
 
-**How the definition helps.** The count definition makes superposition ordinary addition of independent Poisson variables (our own explanation). On a bounded set, their sum is Poisson with the summed mean, also for countably many processes by taking limits (our own explanation). Counts on disjoint sets depend on separate independent groups of variables (our own explanation). Merging streams defined by waiting times instead needs the memoryless property of exponential waiting times (our own comparison). The count proof relies on the Poisson addition rule, which follows by multiplying probability generating functions (our own explanation).
+**How the definition helps.** The count definition makes superposition ordinary addition of independent Poisson variables (our own explanation). On a bounded set, their sum is Poisson with the summed mean, and counts on disjoint sets depend on separate independent groups of variables (our own explanation). Merging streams defined by waiting times instead needs the memoryless property of exponential waits (our own comparison).
 
 **Wikipedia:** [Poisson point process](https://en.wikipedia.org/wiki/Poisson_point_process). It says: “will also be a Poisson point process with mean measure”
 
@@ -1437,7 +1437,7 @@
 
 **Problem.** A deterministic distributional shift preserves the null sets of this field law exactly when it belongs to that energy space. In particular, a nonzero constant shift gives a mutually singular law.
 
-**How the definition helps.** The energy space includes the boundary condition that prevents a constant shift from qualifying. The Cameron–Martin theorem says that shifts preserving Gaussian null sets form a Hilbert space. Every shift outside it gives a mutually singular law, meaning the two laws concentrate on disjoint sets. Our own explanation identifies this space by expanding the inverse Laplacian in its eigenfunctions. A nonzero constant fails the zero boundary condition.
+**How the definition helps.** The energy space builds in the zero boundary condition, which a nonzero constant fails. The Cameron–Martin theorem says that the shifts preserving Gaussian null sets form a Hilbert space, and every other shift gives a mutually singular law. Our own explanation identifies this space with the energy space by expanding the inverse Laplacian in its eigenfunctions.
 
 **Wikipedia:** [Cameron–Martin theorem](https://en.wikipedia.org/wiki/Cameron%E2%80%93Martin_theorem). It says: “If $h\\not\\in H\_\\gamma$ the two measures are singular.”
 
@@ -1490,9 +1490,9 @@
 
 **Definition.** The Itô integral is the limit of Riemann sums that evaluate the integrand at the left end of each time step. The integrand must be adapted or predictable (its value at each time depends only on the past). A local martingale is a process that becomes a martingale when you stop it along some sequence of stopping times that increase to infinity.
 
-**Problem.** The integral of a predictable process against a martingale should again be a fair game, without extra integrability assumptions.
+**Problem.** If M is a local martingale and H is locally bounded and predictable, then the Itô integral H · M is a local martingale.
 
-**How the definition helps.** The left end makes each term of the sum a fair bet, and local martingales are a class wide enough to hold the result. At the left end, each increment is multiplied by a quantity already known, so each term of the Riemann sum has mean zero; this link is our own explanation. In general the integral need not be integrable, so it need not be a true martingale. With local martingales the clean statement holds. If M is a local martingale and H is locally bounded and predictable, then the integral H · M is a local martingale. To get a true martingale, you still need conditions such as square integrability.
+**How the definition helps.** At the left end, each increment is multiplied by a quantity already known, so each term of the Riemann sum has mean zero (our own explanation). In general the integral need not be integrable, so it need not be a true martingale, and local martingales are a class wide enough to hold it. To get a true martingale, one still needs conditions such as square integrability.
 
 **Wikipedia:** [Itô calculus](https://en.wikipedia.org/wiki/It%C3%B4_calculus), [Local martingale](https://en.wikipedia.org/wiki/Local_martingale). It says: “An important property of the Itô integral is that it preserves the local martingale property.”
 
@@ -1524,9 +1524,9 @@
 
 **Definition.** The Stratonovich integral is a limit of Riemann sums. Each sum uses the average of the values of the integrand at the two ends of each small time step. The Itô integral uses the value at the left end instead.
 
-**Problem.** We want a change-of-variables formula for f(Wₜ), where W is Brownian motion.
+**Problem.** For a smooth function f and Brownian motion W, the Stratonovich integral satisfies the ordinary chain rule df(Wₜ) = f′(Wₜ) ∘ dWₜ.
 
-**How the definition helps.** The averaging cancels the extra term that the Itô integral puts into the chain rule. With the Itô integral, the chain rule gains a second-order term from the quadratic variation of Brownian motion. This is Itô's lemma. The Stratonovich choice absorbs that term, so df(X) = f′(X) ∘ dX holds as in ordinary calculus. This is why physics and geometry on manifolds often prefer it. The cost: Stratonovich integrals of martingales are generally not martingales. The article states only the Itô side of this, so the point is our own.
+**How the definition helps.** The averaging cancels the extra term that the Itô integral puts into the chain rule. With the Itô integral, Itô's lemma adds a second-order term from the quadratic variation of Brownian motion. This is why physics and geometry on manifolds often prefer the Stratonovich integral. The cost is that Stratonovich integrals of martingales are generally not martingales (our own).
 
 **Wikipedia:** [Stratonovich integral](https://en.wikipedia.org/wiki/Stratonovich_integral), [Itô calculus](https://en.wikipedia.org/wiki/It%C3%B4_calculus). It says: “Unlike the Itô calculus, Stratonovich integrals are defined such that the chain rule of ordinary calculus holds.”
 
@@ -1562,7 +1562,7 @@
 
 **Problem.** Tanaka's equation dXₜ = sgn(Xₜ) dBₜ, with X₀ = 0, has a weak solution that is unique in law. It has no strong solution.
 
-**How the definition helps.** The weak notion lets you build the noise from the solution, not the solution from the noise. For Tanaka's equation, take X to be a Brownian motion and define the new Brownian motion as the integral of sgn(X) dX. The page shows that X then solves the equation. The sign function is not Lipschitz, so the usual existence theorem for strong solutions does not apply. The Yamada–Watanabe theorem links the two notions: weak existence plus pathwise uniqueness gives a strong solution. Tanaka's equation does not have pathwise uniqueness (our own), so the theorem gives no strong solution there.
+**How the definition helps.** The weak notion lets you build the noise from the solution, not the solution from the noise. Take X to be a Brownian motion and define the new Brownian motion as the integral of sgn(X) dX; then X solves the equation. The sign function is not Lipschitz, so the usual existence theorem for strong solutions does not apply. Tanaka's equation lacks pathwise uniqueness (our own), so the Yamada–Watanabe theorem gives no strong solution.
 
 **Wikipedia:** [Tanaka equation](https://en.wikipedia.org/wiki/Tanaka_equation), [Yamada–Watanabe theorem](https://en.wikipedia.org/wiki/Yamada%E2%80%93Watanabe_theorem). It says: “Tanaka's equation is an example of a stochastic differential equation which admits a weak solution but has no strong solution.”
 
@@ -1598,7 +1598,7 @@
 
 **Problem.** An aperiodic recurrent Harris chain with stationary distribution π converges to π in total variation from every start. Total variation distance is the largest difference between the probabilities that two distributions give to one event.
 
-**How the definition helps.** The definition replaces a single recurrent state by a set A. In A, the chain can forget its past with a coin flip of probability ε, and this gives the coupling arguments of the countable case. The page couples two copies of the chain: in A they use the same coin flip, so they meet with probability at least ε. Our own: on an uncountable space with continuous transition densities, the chain hits each single point with probability 0. So the countable definition of a recurrent state would apply to no state at all. What stays hard is to find a suitable set A and measure ρ for a given chain.
+**How the definition helps.** The definition replaces a single recurrent state by a set A where the chain can forget its past with a coin flip of probability ε. Two coupled copies use the same coin flip in A, so they meet with probability at least ε at each joint visit. On an uncountable space with continuous transition densities, the chain hits each single point with probability 0, so the countable notion of a recurrent state applies to no state (our own). What stays hard is to find a suitable A and ρ for a given chain.
 
 **Wikipedia:** [Harris chain](https://en.wikipedia.org/wiki/Harris_chain), [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “Many results for discrete-time Markov chains with finite state space can be generalized to chains with uncountable state space through Harris chains.”
 
@@ -1646,7 +1646,7 @@
 
 **Problem.** Couple continuous-time copies of a Markov chain on a countable set, one from a fixed state and one from a stationary law π. The second copy has law π at all times. If they stay together after meeting at time T, the first copy’s distance from π at time t is at most P(T &gt; t).
 
-**How the definition helps.** The coupling definition gives the bound because a pair that has met cannot disagree later (our own). At time t the two states form one coupling, so their disagreement probability bounds the minimum (our own). The work shifts from comparing all events to proving the two definitions agree (our own). One direction follows since any event distinguishes the states only if they differ (our own). For the other direction, a coupling can make the states agree on all the mass the laws share (our own).
+**How the definition helps.** The coupling definition gives the bound because a pair that has met cannot disagree later (our own). At time t the two states form one coupling, so their disagreement probability P(T &gt; t) bounds the minimum (our own). The work shifts to proving that the coupling and event definitions agree (our own).
 
 **Wikipedia:** [Total variation distance of probability measures](https://en.wikipedia.org/wiki/Total_variation_distance_of_probability_measures). It says: “The total variation distance (or half the norm) arises as the optimal transportation cost”
 
@@ -1664,7 +1664,7 @@
 
 **Problem.** For Brownian motion B started at zero, \|B\| is the sum of the martingale ∫₀ᵗ sgn(B(s)) dB(s) and the increasing process L(t). The process L can increase only when B is zero.
 
-**How the definition helps.** Tanaka's definition directly identifies the candidate increasing term by subtracting the stochastic integral from \|B\|. The integral is a martingale because its integrand is bounded (our own explanation). With the occupation definition, one must prove that the limit of occupation times equals this residual (our own comparison). The residual definition does not prove that L increases or that it grows only at zeros (our own explanation). The work is in proving the occupation limit and identifying it with L, which gives those properties (our own explanation).
+**How the definition helps.** Tanaka's definition identifies the increasing term directly by subtracting the stochastic integral from \|B\|. The integral is a martingale because its integrand is bounded (our own explanation). The residual definition does not by itself show that L increases or that it grows only at zeros (our own explanation). That work goes into proving the occupation limit and identifying it with L (our own explanation).
 
 **Wikipedia:** [Local time (mathematics)](https://en.wikipedia.org/wiki/Local_time_%28mathematics%29). It says: “Tanaka's formula provides the explicit Doob–Meyer decomposition for the one-dimensional reflecting Brownian motion”
 
@@ -1682,7 +1682,7 @@
 
 **Problem.** For Brownian motion W, the process (σ/√(2θ)) exp(−θt) W(exp(2θt) − 1) has the law of the Ornstein–Uhlenbeck process started at zero.
 
-**How the definition helps.** The covariance definition identifies the time-changed process by one computation. The process is continuous and Gaussian with zero mean. For s ≤ t its covariance equals (σ²/2θ) exp(−θ(s + t))(exp(2θs) − 1), which simplifies to the defining covariance. An equation-based proof instead solves the linear equation and computes covariance by the Itô isometry (our own comparison). This isometry gives second moments of stochastic integrals (our own explanation). This calculation also proves that the solution and the Gaussian definition agree (our own explanation).
+**How the definition helps.** The covariance definition identifies the time-changed process by one computation. The process is continuous and Gaussian with zero mean. For s ≤ t its covariance is (σ²/2θ) exp(−θ(s + t))(exp(2θs) − 1), which simplifies to the defining covariance. An equation-based proof instead solves the linear equation and computes the covariance by the Itô isometry (our own comparison).
 
 **Wikipedia:** [Ornstein–Uhlenbeck process](https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process). It says: “can be represented as a scaled, time-transformed Wiener process”
 
@@ -1716,7 +1716,7 @@
 
 **Problem.** The entire bridge B is independent of W(1). Thus W(t) splits into B(t) and the independent random line t·W(1).
 
-**How the definition helps.** Subtracting the endpoint line gives a Gaussian residual with zero covariance with W(1) (our own explanation). For each t, that covariance is t − t = 0 (our own calculation). Every finite vector of bridge values is jointly normal with W(1), so zero covariance gives independence of the vector and the endpoint (our own explanation). Continuous paths let us pass from rational-time values to the entire bridge (our own explanation). The split also constructs the conditional law given an endpoint y, namely the law of B(t) + ty (our own explanation).
+**How the definition helps.** Subtracting the endpoint line gives a Gaussian residual with zero covariance with W(1), since Cov(B(t), W(1)) = t − t = 0 (our own calculation). Every finite vector of bridge values is jointly normal with W(1), so zero covariance gives independence (our own explanation). Continuous paths pass this from rational times to the entire bridge (our own explanation). The split also gives the conditional law given an endpoint y, namely the law of B(t) + ty (our own explanation).
 
 **Wikipedia:** [Brownian bridge](https://en.wikipedia.org/wiki/Brownian_bridge). It says: “is a standard Brownian bridge, independent of W(1).”
 
@@ -1748,9 +1748,9 @@
 
 **Definition.** The signature of a path x of bounded variation in ℝᵈ on \[s, t\] lists all its iterated integrals. The level-k term is the integral of dx(t₁) ⊗ … ⊗ dx(tₖ) over s &lt; t₁ &lt; … &lt; tₖ &lt; t. Together the terms form one element of the tensor algebra, the algebra of formal sums of tensors of every degree.
 
-**Problem.** Chen's identity says that the signature of two joined paths is the tensor product of their signatures. The abstract says the signature is a homomorphism from the monoid of paths into grouplike elements of a tensor algebra. The monoid operation joins the end of one path to the start of the next.
+**Problem.** Chen's identity says that the signature of two joined paths is the tensor product of their signatures. So the signature is a homomorphism from the monoid of paths, under joining end to start, into the grouplike elements of the tensor algebra.
 
-**How the definition helps.** With signatures defined as integrals over ordered times, the identity reduces to splitting the region of ordered times at the join (our own). Each ordered tuple of times has its first few entries before the join and the rest after it (our own). Summing over the split point gives exactly the degree-k part of the tensor product (our own). Chen proved this identity in 1954 (our own note, from the cited paper). The harder converse question is how much of the path the signature remembers. The abstract cites Hambly and Lyons: for paths of bounded variation, the signature determines the path up to null modifications. These include pieces that retrace themselves (our own gloss).
+**How the definition helps.** With signatures defined as integrals over ordered times, the identity reduces to splitting the region of ordered times at the join (our own). Each ordered tuple of times has its first entries before the join and the rest after it (our own). Summing over the split point gives exactly the degree-k part of the tensor product (our own). The harder converse question is how much of the path the signature remembers.
 
 **Paper or page:** [Rough paths, Signatures and the modelling of functions on streams](https://arxiv.org/abs/1405.4537v1). It says: “The Signature is a homomorphism from the monoid of paths into the grouplike elements of a closed tensor algebra.”
 
@@ -1767,9 +1767,9 @@
 
 **Definition.** Cox's theorem derives the rules of probability from postulates about 'plausibility'. The postulates say that plausibility is a real number, that it varies sensibly, and that it is consistent. Later authors add further postulates, for example about how many values plausibility can take.
 
-**Problem.** Cox claimed that any consistent real-valued measure of plausibility must obey the sum and product rules of probability.
+**Problem.** With the added postulates, every real-valued plausibility measure that satisfies Cox's postulates obeys the sum and product rules of probability.
 
-**How the definition helps.** The extra postulates rule out a known counterexample, so the theorem becomes true. Halpern published this counterexample: a plausibility measure that meets Cox's postulates as stated but does not obey the rules of probability. The page says that Cox's postulates were not mathematically rigorous. Further mathematical assumptions, or the 'common sense' postulates of Arnborg and Sjödin, rule out Halpern's example and restore the theorem. Our own detail: Halpern's example lives on a finite domain. Which extra assumption is the most natural is still debated.
+**How the definition helps.** The extra postulates rule out a known counterexample, so the theorem becomes true. Halpern published a plausibility measure that meets Cox's postulates as stated but does not obey the rules of probability. Further assumptions, or the 'common sense' postulates of Arnborg and Sjödin, rule out Halpern's example. Which extra assumption is the most natural is still debated.
 
 **Wikipedia:** [Cox's theorem](https://en.wikipedia.org/wiki/Cox%27s_theorem). It says: “However Arnborg and Sjödin suggest additional "common sense" postulates, which would allow the assumptions to be relaxed in some cases while still ruling out the Halpern example.”
 
@@ -1785,9 +1785,9 @@
 
 **Definition.** Work in a Markov category (a category of random functions that can copy and discard information). Take objects Xⱼ for j in J, write X(J) for their infinite tensor product, and write X(F) for the product over a finite subset F. X(J) is a Kolmogorov product if every projection X(J) → X(F) is deterministic, that is, it commutes with copying and so behaves like an ordinary function. In words, it is an infinite tensor product that is the limit of its finite marginals.
 
-**Problem.** State and prove the Kolmogorov extension theorem and the zero-one laws of Kolmogorov and Hewitt–Savage for general Markov categories.
+**Problem.** Fritz and Rischel prove abstract versions of the zero-one laws of Kolmogorov and Hewitt–Savage in Markov categories with Kolmogorov products. The classical laws follow because Markov kernels on standard Borel spaces have countable Kolmogorov products.
 
-**How the definition helps.** Taking the extension theorem as an axiom lets the zero-one laws be proved abstractly. Consider the category of Markov kernels on standard Borel spaces (measurable spaces that come from complete separable metric spaces). There the Kolmogorov extension theorem says exactly that the countable product is the limit of the finite products. So that product is a Kolmogorov product. Fritz and Rischel take this as an axiom and prove the two zero-one laws abstractly. The classical extension theorem is still needed to show that the concrete category satisfies the axiom. Also, uncountable products of standard Borel spaces are not standard Borel.
+**How the definition helps.** Taking the extension theorem as an axiom lets the zero-one laws be proved abstractly. For Markov kernels on standard Borel spaces, the Kolmogorov extension theorem says exactly that the countable product is the limit of the finite products. So the classical extension theorem is still needed, but only to show that the concrete category satisfies the axiom.
 
 **nLab:** [Kolmogorov extension theorem](https://ncatlab.org/nlab/show/Kolmogorov+extension+theorem), [Markov category](https://ncatlab.org/nlab/show/Markov+category), [zero-one law](https://ncatlab.org/nlab/show/zero-one+law). It says: “In Markov categories the Kolmogorov extension theorem appears in the form of an axiom that the category can satisfy, an abstraction of the universal property in the category of Markov kernels given above.”
 
@@ -1803,9 +1803,9 @@
 
 **Definition.** A Markov category is a symmetric monoidal category in which every object has a copy map and a discard map. These maps form commutative comonoids: copying is associative and commutative, and discarding one copy gives back the identity. The discard maps are natural, so any map followed by discard equals discard. The main example is measurable spaces with Markov kernels (measurable maps that send each point to a probability measure).
 
-**Problem.** Prove classical theorems of statistics about sufficient statistics (summaries of the data that keep all information about the unknown parameter). Examples are the Fisher–Neyman factorization theorem, Basu's theorem and Bahadur's theorem.
+**Problem.** The Fisher–Neyman factorization theorem, Basu's theorem and Bahadur's theorem on sufficient statistics hold in Markov categories that satisfy suitable axioms, such as having conditionals. A sufficient statistic is a summary of the data that keeps all information about the unknown parameter.
 
-**How the definition helps.** Inside a Markov category these theorems need no measure theory in the proof. You define conditional independence, almost-sure equality and sufficiency inside the category. Then you state and prove the theorems by string-diagram arguments (pictures of composed maps). The measure-theoretic versions follow when you check that the category of Markov kernels on suitable spaces satisfies the axioms used. One such axiom is that the category has conditionals: every joint distribution splits into a marginal and a conditional kernel. That check uses the disintegration theorem. It is where the measure-theoretic work remains.
+**How the definition helps.** Inside a Markov category, conditional independence, almost-sure equality and sufficiency are defined by maps, so these theorems have string-diagram proofs with no measure theory. The measure-theoretic versions follow once the category of Markov kernels on suitable spaces satisfies the axioms. One such axiom is that every joint distribution splits into a marginal and a conditional kernel. That check uses the disintegration theorem, and the measure-theoretic work remains there.
 
 **nLab:** [Markov category](https://ncatlab.org/nlab/show/Markov+category), [category-theoretic approaches to probability theory](https://ncatlab.org/nlab/show/category-theoretic+approaches+to+probability+theory). It says: “One looks for structures and axioms which can be thought of as "fundamental" in probability and statistics, and which one can use to prove theorems, without having to use measure theory directly.”
 
@@ -1821,9 +1821,9 @@
 
 **Definition.** A quasi-Borel space is a set X with a chosen set M of maps ℝ → X, called the random elements. M contains the constant maps. M is closed under precomposition with measurable maps ℝ → ℝ. M is closed under gluing along countable Borel partitions of ℝ: if ℝ is cut into countably many Borel pieces with a random element on each piece, the glued map is a random element.
 
-**Problem.** Higher-order probabilistic programs (programs that take functions as inputs) need function spaces. They need a space of functions X → Y with measurable evaluation, and a space of probability measures on any space.
+**Problem.** Quasi-Borel spaces form a cartesian closed category, so they have function spaces X → Y with measurable evaluation. They carry a probability monad that agrees with the Giry monad on standard Borel spaces.
 
-**How the definition helps.** Quasi-Borel spaces have the function spaces that measurable spaces lack. The category of measurable spaces is not cartesian closed, so the function space that such programs need does not exist there. Quasi-Borel spaces form a cartesian closed category. In fact they form a quasitopos (a category with most of the properties of a topos) of concrete sheaves on standard Borel spaces. They carry a probability monad that agrees with the Giry monad, the usual space of probability measures, on standard Borel spaces. The price is that a probability measure is now a random element modulo equality of laws, not a function on sets.
+**How the definition helps.** Defining a space by its random elements, not its measurable sets, gives the function spaces that measurable spaces lack. The category of measurable spaces is not cartesian closed, so higher-order probabilistic programs, which take functions as inputs, have no function space there. The price is that a probability measure is now a random element modulo equality of laws, not a function on sets.
 
 **nLab:** [quasi-Borel space](https://ncatlab.org/nlab/show/quasi-Borel+space). It says: “The category of quasi-Borel spaces is cartesian closed, unlike the category of measurable spaces.”
 
@@ -1841,7 +1841,7 @@
 
 **Problem.** Every measure-preserving Markov kernel k: (X, p) → (Y, q) has a Bayesian inverse k†: (Y, q) → (X, p), unique up to almost sure equality. The Bayesian inverse gives the conditional distribution of x given y. Taking inverses is a dagger structure (an involution that reverses the direction of morphisms).
 
-**How the definition helps.** With couplings as morphisms, the Bayesian inverse is the same joint measure read the other way. For bare Markov kernels, a Bayesian inverse can fail to exist outside nice cases, because a conditional expectation need not give a probability measure for each y. If morphisms are couplings, the Bayesian inverse is just the same joint measure with the two factors swapped. So existence and the dagger structure are immediate. The work moves elsewhere. Composing couplings, and the equivalence with kernels modulo almost sure equality, use regular conditional distributions (conditional probabilities chosen as a measurable family of measures). That is why the objects are standard Borel spaces.
+**How the definition helps.** With couplings as morphisms, the Bayesian inverse is the same joint measure with the two factors swapped, so existence and the dagger structure are immediate. For bare Markov kernels, a Bayesian inverse can fail to exist outside nice cases. The work moves into composing couplings and into the equivalence with kernels modulo almost sure equality. These use regular conditional distributions, which is why the objects are standard Borel spaces.
 
 **nLab:** [Bayesian inversion](https://ncatlab.org/nlab/show/Bayesian+inversion), [category of couplings](https://ncatlab.org/nlab/show/category+of+couplings). It says: “Categorical abstractions of the category of coupling via dagger categories have therefore the concept of Bayesian inversion already built in.”
 
@@ -1875,9 +1875,9 @@
 
 **Definition.** Jaynes asks that the probability distribution of a 'random chord' stay the same when the circle is moved or rescaled. The reason is that the problem gives neither the position nor the size of the circle.
 
-**Problem.** Bertrand's paradox asks for the probability that a random chord of a circle is longer than the side of the inscribed equilateral triangle. The answer comes out as 1/3, 1/2 or 1/4, depending on how the chord is chosen.
+**Problem.** Invariance under rotation, scaling and translation leaves exactly one distribution of random chords, the 'random radius' method. With it, the probability that a chord is longer than the side of the inscribed equilateral triangle is 1/2.
 
-**How the definition helps.** Invariance gives conditions strong enough to leave only one distribution. The three classical methods are all 'uniform' in some sense, so the principle of indifference (give equal probability to equal cases) cannot choose among them. Jaynes asked for invariance under rotation, scaling and translation, and he solved the resulting integral equations. He found a unique solution, the 'random radius' method, with answer 1/2. Whether this settles the paradox is disputed. Drory (2015) argues that Jaynes's principle can also give Bertrand's other two answers.
+**How the definition helps.** Invariance gives conditions strong enough to leave only one distribution. The three classical methods give 1/3, 1/2 or 1/4, and the principle of indifference cannot choose among them. Jaynes solved the integral equations that invariance imposes. Whether this settles the paradox is disputed.
 
 **Wikipedia:** [Bertrand paradox (probability)](https://en.wikipedia.org/wiki/Bertrand_paradox_%28probability%29). It says: “Jaynes pointed out that Bertrand's problem does not specify the position or size of the circle and argued that therefore any definite and objective solution must be "indifferent" to size and position.”
 
@@ -1912,7 +1912,7 @@
 
 **Definition.** A Borel data structure assigns a Borel space of possible observations to each finite set of labels. It also gives compatible maps that relabel observations and restrict them to fewer labels. In category theory terms, it is a functor. An exchangeable law assigns a probability law to each finite label set, unchanged by relabeling and consistent under restriction.
 
-**Problem.** Theorem 1 says that, when exchangeable laws exist, the ergodic ones form a measurable set. Every exchangeable law is then a unique mixture of ergodic exchangeable laws. Ergodic laws are the extreme points, which are not proper mixtures of other exchangeable laws.
+**Problem.** For a Borel data structure that has exchangeable laws, the ergodic exchangeable laws form a measurable set. Every exchangeable law is a unique mixture of them. Ergodic laws are the extreme points, which are not proper mixtures of other exchangeable laws.
 
 **How the definition helps.** The definition covers any data shape through its relabeling and restriction maps, so one theorem covers sequences, graphs and arrays (our own). De Finetti's theorem for sequences is the case where each label carries a single value (our own). The proof must still show that ergodic laws form a measurable set and that the mixture exists and is unique. The paper's representation theorems rest on Hoover's representation of exchangeable arrays.
 
@@ -1928,11 +1928,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 60G09 (Exchangeability for stochastic processes), 60A05, 18M05. arXiv math.PR, math.CT. Level 4: research.
 
-**Definition.** A probability measure on the sequence space Xᴺ is exchangeable if every finite permutation of the coordinates leaves it unchanged. P X is the space of probability measures on X (the Giry monad). It comes with the iid sampling map P X → Xᴺ, which sends p to the law of an independent sequence whose terms all have law p; this map is exchangeable. The categorical statement is that P X, with this map, is the limit of the diagram of finite permutations of Xᴺ, in the category of Markov kernels between standard Borel spaces (measurable spaces that come from complete separable metric spaces).
+**Definition.** A probability measure on the sequence space Xᴺ is exchangeable if every finite permutation of the coordinates leaves it unchanged. P X is the space of probability measures on X. The iid sampling map P X → Xᴺ sends p to the law of an independent sequence whose terms all have law p.
 
-**Problem.** Show that every exchangeable probability measure on Xᴺ is a unique mixture of iid measures.
+**Problem.** For standard Borel X, P X with the iid sampling map is the limit of the diagram of finite permutations of Xᴺ, in the category of Markov kernels. Equivalently, every exchangeable probability measure on Xᴺ is a unique mixture of iid measures.
 
-**How the definition helps.** Stated as a limit, de Finetti's theorem takes one line: every exchangeable kernel into Xᴺ factors uniquely through P X. The uniqueness of the mixture is then the uniqueness in the universal property. The limit language does not prove the theorem. For standard Borel spaces the classical proof is still the content. Its gain is a short statement that generalizes. The same proof works in Markov categories that are representable and have conditionals and Kolmogorov products (Fritz, Gonda, Perrone); these axioms ask for spaces of distributions, splitting of joint distributions, and infinite products that are limits of their finite parts. The nLab says this lets one define P X by its universal property.
+**How the definition helps.** Stated as a limit, de Finetti's theorem says in one line that every exchangeable kernel into Xᴺ factors uniquely through P X. The uniqueness of the mixture is the uniqueness in the universal property. The limit language does not prove the theorem, and for standard Borel spaces the classical proof is still the content. The same proof works in Markov categories that are representable and have conditionals and Kolmogorov products (Fritz, Gonda, Perrone).
 
 **nLab:** [de Finetti's theorem](https://ncatlab.org/nlab/show/de+Finetti%27s+theorem). It says: “The Giry monad is the limit of an exchangeable process in the category of Markov kernels.”
 
@@ -1949,9 +1949,9 @@
 
 **Definition.** Exchangeability means that permuting the observations leaves their joint law unchanged. Show the next two observations as an unordered pair. Then bet on which of the two orders actually happened, and update the wealth when the order is revealed.
 
-**Problem.** The wealth from these pair bets is a nontrivial test martingale for exchangeability. A test martingale is a nonnegative wealth process that is fair when the hypothesis holds. The test stays valid under continuous monitoring and has power one against a broad class of alternatives.
+**Problem.** The wealth from these pair bets, checked after each complete pair, is a nontrivial test martingale for exchangeability. A test martingale is a nonnegative wealth process that is fair when the hypothesis holds. The test stays valid under continuous monitoring and has power one against a broad class of alternatives.
 
-**How the definition helps.** The bet is fair by definition, because exchangeability makes the two orders of a pair equally likely given the past (our own unpacking). So the wealth is a martingale under the hypothesis with no further work. The abstract says that betting on single observations is powerless. Hiding the order inside a pair shrinks the available information only slightly, but enough to make betting possible. The abstract says that stopping is allowed only at even times, after a complete pair. Proving that wealth grows under alternatives still takes work.
+**How the definition helps.** The bet is fair by definition, because exchangeability makes the two orders of a pair equally likely given the past (our own unpacking). So the wealth is a martingale under the hypothesis with no further work. Betting on single observations is powerless, and hiding the order inside a pair removes just enough information to make betting possible. Proving that wealth grows under alternatives still takes work.
 
 **Paper or page:** [Testing exchangeability by pairwise betting](https://arxiv.org/abs/2310.14293v2). It says: “Despite the fact that betting on individual observations is futile, we show that betting on pairs of observations is not.”
 
@@ -2003,9 +2003,9 @@
 
 **Definition.** A localization scheme assigns to each probability measure ν a martingale of probability measures νₜ that starts at ν. Martingale means that the expected future measure, given the present, equals the present measure. As time grows, the measures νₜ concentrate on smaller and smaller regions.
 
-**Problem.** Spectral independence and entropic independence are conditions that limit how strongly the coordinates of a random configuration influence one another. Their main theorems say that such conditions give fast mixing of Markov chains such as Glauber dynamics. Glauber dynamics updates one randomly chosen coordinate at a time.
+**Problem.** Localization schemes recover the main theorems of spectral and entropic independence by simple martingale arguments. These conditions limit how strongly the coordinates of a random configuration influence one another. The theorems say that they give fast mixing of Markov chains such as Glauber dynamics, which updates one random coordinate at a time.
 
-**How the definition helps.** Each localization scheme comes with a Markov chain, so a mixing bound for the chain becomes a statement about the martingale. The abstract says the authors recover the main theorems of both frameworks by simple martingale arguments. These arguments bypass high-dimensional expanders, the combinatorial theory used in earlier proofs. Each application must still relate its chain to a scheme and bound how fast variance or entropy decays (our own).
+**How the definition helps.** Each localization scheme comes with a Markov chain, so a mixing bound for the chain becomes a statement about the martingale. These arguments bypass high-dimensional expanders, the combinatorial theory used in earlier proofs. Each application must still relate its chain to a scheme and bound how fast variance or entropy decays (our own).
 
 **Paper or page:** [Localization Schemes: A Framework for Proving Mixing Bounds for Markov Chains](https://arxiv.org/abs/2203.04163v2). It says: “we recover the main theorems in the spectral and entropic independence frameworks via simple martingale arguments”
 
@@ -2023,7 +2023,7 @@
 
 **Problem.** Every generalized Feller semigroup is strongly continuous. That is, P(t)f tends to f in the weighted norm as t tends to zero, for every f in Bρ(E).
 
-**How the definition helps.** The definition asks only for conditions that are easy to check in examples, yet it is strong enough for the strong continuity theorem. The paper also gives a counterexample showing that no condition of the definition can be dropped. Our own example shows why continuity at zero matters. On a two-point space {a, b}, let P(0) be the identity and let P(t)f be the constant f(a) for t &gt; 0. This is a positive contraction semigroup, but P(t)f(b) does not tend to f(b). The real work is in Theorem 2.8, which upgrades pointwise convergence to convergence in norm.
+**How the definition helps.** The definition asks only for conditions that are easy to check in examples, yet it is strong enough for strong continuity. The paper shows that no condition of the definition can be dropped. On a two-point space {a, b}, let P(t)f be the constant f(a) for t &gt; 0 (our own example). This is a positive contraction semigroup, but P(t)f(b) does not tend to f(b).
 
 **Paper or page:** [Ramifications of generalized Feller theory](https://arxiv.org/abs/2308.03858v1), [Ramifications of generalized Feller theory](https://arxiv.org/abs/2308.03858v1). It says: “We also provide a counterexample, which shows that no condition of the basic definition of generalized Feller semigroups can be dropped.”
 
@@ -2041,7 +2041,7 @@
 
 **Problem.** With one free boundary, every correlation function is the Pfaffian of a matrix built from a 2 × 2 kernel. A Pfaffian is a polynomial in the entries of an antisymmetric matrix whose square is the determinant. With two free boundaries the process is not Pfaffian, but Theorem 2.5 shows that the shifted process is.
 
-**How the definition helps.** The shifted process gives an object for which a Pfaffian formula can be stated at all. The abstract says the unshifted process is not Pfaffian. The abstract says the authors compute correlations with free fermions, an algebraic tool from physics, extended to free boundary states. Theorem 2.5 gives the kernel of the shifted process explicitly, through contour integrals of products of theta functions, a kind of special function. Computing that kernel is the main work (our own).
+**How the definition helps.** The shifted process gives an object for which a Pfaffian formula can be stated at all, since the unshifted process is not Pfaffian. The authors compute correlations with free fermions, an algebraic tool from physics, extended to free boundary states. The kernel of the shifted process is explicit, through contour integrals of products of theta functions. Computing that kernel is the main work (our own).
 
 **Paper or page:** [The free boundary Schur process and applications I](https://arxiv.org/abs/1704.05809v3), [The free boundary Schur process and applications I](https://arxiv.org/abs/1704.05809v3). It says: “For the case of two free boundaries, we find that the process is not pfaffian, but a closely related process is.”
 
@@ -2077,7 +2077,7 @@
 
 **Problem.** Let φ be a conformal bijection between planar domains, so it preserves angles. It transports the zero-boundary Gaussian free field on one domain to the field on the other.
 
-**How the definition helps.** Defining covariance by the Dirichlet inner product makes conformal invariance follow from invariance of that product. The change of area in the integral cancels the two gradient factors (our own explanation). A jointly normal family is determined by its means and covariances (our own explanation). Another construction uses a Green function, which measures the response to a point source, as an integral kernel for covariance (our own comparison). That approach must transform the kernel and the test functions together (our own comparison). Relating the two constructions uses the Green operator, which solves the zero-boundary Poisson equation (our own explanation).
+**How the definition helps.** Defining covariance by the Dirichlet inner product makes conformal invariance follow from invariance of that product. Under a conformal map, the change of area cancels the two gradient factors (our own explanation). A jointly normal family is determined by its means and covariances (our own explanation). A construction with a Green function as covariance kernel must instead transform the kernel and the test functions together (our own comparison).
 
 **Wikipedia:** [Gaussian free field](https://en.wikipedia.org/wiki/Gaussian_free_field). It says: “the conformal invariance of the continuum GFF is clear from the invariance of the Dirichlet inner product.”
 
@@ -2116,9 +2116,9 @@
 
 **Definition.** A semimartingale S is a random process that can serve as a stochastic integrator, such as Brownian motion. A measure-valued integrand φ gives, at each time and in each outcome, a measure on a parameter space. The integral φ • S is again a measure on the parameter space at each time.
 
-**Problem.** The classic stochastic Fubini theorem swaps a fixed mixture over a parameter with stochastic integration against S. Theorems 4.3 and 4.4 of the paper let the mixture be a random kernel instead. They give (φ • S)(f) = φ(f) • S for each test function f, so testing commutes with integration.
+**Problem.** Let the mixing weights φ be a random kernel. Then (φ • S)(f) = φ(f) • S for each test function f, so testing commutes with stochastic integration. This extends the classic stochastic Fubini theorem, which needs a fixed mixing measure.
 
-**How the definition helps.** Because the new integral is itself measure-valued, the Fubini statement can compare testing before and after integration. The abstract says a fixed mixing measure is too restrictive for Volterra processes, whose weights must form a stochastic kernel. Volterra processes have the form X(t) = ∫ Ψ(t, s) dS(s) over 0 ≤ s ≤ t. The proof must still construct the integral as a measure and prove the Fubini identity.
+**How the definition helps.** Because the new integral is itself measure-valued, the Fubini statement can compare testing before and after integration. A fixed mixing measure is too restrictive for Volterra processes X(t) = ∫ Ψ(t, s) dS(s), whose weights form a stochastic kernel. The proof must still construct the integral as a measure and prove the Fubini identity.
 
 **Paper or page:** [New Stochastic Fubini Theorems](https://arxiv.org/abs/2403.13791v1), [New Stochastic Fubini Theorems](https://arxiv.org/abs/2403.13791v1). It says: “To handle that situation and prove a corresponding new stochastic Fubini theorem, we introduce a new notion of measure-valued stochastic integration with respect to a general multidimensional semimartingale.”
 
@@ -2134,7 +2134,7 @@
 
 **Definition.** A function–measure kernel K on a set D ⊂ ℝᵈ gives a real Radon measure K(x, ·) for each point x, varying continuously in x. Its self-integral ∫ K(x, dx) over D is a limit of sums Σ K(xᵢ, Aᵢ) over partitions {Aᵢ} of D with xᵢ in Aᵢ. A Radon measure is a locally finite signed Borel measure. K is self-integrable when this limit exists and does not depend on the choices.
 
-**Problem.** Let Z be a mean-square continuous random field and M a random measure, jointly Gaussian. Theorem 5.1 says that ∫ Z dM is uniquely defined in mean square exactly when two kernels pass a test. The cross-covariance kernel of Z and M must be self-integrable. A second kernel on D × D must pass a weaker form of the same test.
+**Problem.** Let Z be a mean-square continuous random field and M a random measure, jointly Gaussian. Then ∫ Z dM is uniquely defined in mean square exactly when the cross-covariance kernel of Z and M is self-integrable and a second kernel on D × D passes a weaker form of the same test.
 
 **How the definition helps.** For Gaussian inputs, mean-square convergence of the Riemann sums depends only on second moments, which are built from covariance kernels (our own). So a question about random limits becomes a test on deterministic kernels. The abstract says the self-integral of the cross-covariance kernel is the expected value of the integral when both are uniquely defined. The second kernel controls products of two Riemann sums, so it compares pairs of partitions (our own). The hard part is checking these limits for given inputs (our own).
 
@@ -2190,7 +2190,7 @@
 
 **Problem.** Every such mean reversiblization is π-reversible. That is, π(x) times the new rate from x to y equals π(y) times the new rate from y to x.
 
-**How the definition helps.** The definition builds the target law into the reversed rate, so detailed balance follows from two properties of the mean. Our own proof is short. Homogeneity gives π(x)M(L(x,y), L\*(x,y)) = M(π(x)L(x,y), π(y)L(y,x)). Symmetry of M makes this expression unchanged when x and y swap. The paper states this for the Cauchy mean and the dual mean in Theorems 4.1 and 4.4. Its harder results compare these generators by information divergences.
+**How the definition helps.** The definition builds the target law into the reversed rate, so detailed balance follows from two properties of the mean (our own proof). Homogeneity gives π(x)M(L(x,y), L\*(x,y)) = M(π(x)L(x,y), π(y)L(y,x)). Symmetry of M makes this expression unchanged when x and y swap. The paper's harder results compare these generators by information divergences.
 
 **Paper or page:** [Systematic approaches to generate reversiblizations of Markov chains](https://arxiv.org/abs/2303.03650v4). It says: “In this second approach, we construct new reversiblizations via different natural notions of generalized means such as the Cauchy mean or the dual mean.”
 
@@ -2208,7 +2208,7 @@
 
 **Problem.** A weak Poincaré inequality for a reversible-type operator built from the chain gives explicit bounds on how fast the chain approaches equilibrium. The bounds can be slower than geometric, which covers cases such as pseudo-marginal methods.
 
-**How the definition helps.** The remainder lets the inequality hold without a fixed contraction factor, and a short recursion then gives the rate (our own explanation). One step lowers the variance of a function by the energy of the chain run forward and then backward (our own calculation). The weak inequality turns that drop into a recursion for the variance (our own unpacking). Choosing r at each step and solving the recursion gives the rate. The abstract says that these proofs are simpler than proofs by drift and minorization conditions.
+**How the definition helps.** The remainder lets the inequality hold without a fixed contraction factor, and a short recursion then gives the rate (our own explanation). One step lowers the variance of a function by the energy of the chain run forward and then backward (our own calculation). The weak inequality turns that drop into a recursion for the variance, and choosing r at each step solves it (our own unpacking). These proofs are simpler than proofs by drift and minorization conditions.
 
 **Paper or page:** [Comparison of Markov chains via weak Poincaré inequalities with application to pseudo-marginal MCMC](https://arxiv.org/abs/2112.05605v2). It says: “Associated proofs are simpler than those relying on drift/minorization conditions and the tools developed allow us to recover and further extend known results as particular cases.”
 
@@ -2224,9 +2224,9 @@
 
 **Definition.** A rough path records a path's increments and repeated integrals along that path. Its p-variation metric controls changes in this data over partitions of the time interval. The rough path definition of the solution uses this data as input to a deterministic differential equation. The usual stochastic integral definition does not equip the ordinary Brownian path with this extra data.
 
-**Problem.** On a finite interval, take a Stratonovich equation with fixed initial value, smooth bounded coefficients with bounded derivatives, and Brownian noise scaled by √ε. Its Freidlin–Wentzell rate at a path is the least driving energy needed to produce that path. The energy is half the integral of the squared derivative of an absolutely continuous driving path starting at zero.
+**Problem.** Take a Stratonovich equation on a finite interval with fixed initial value, smooth bounded coefficients with bounded derivatives, and Brownian noise scaled by √ε. Its solutions satisfy a large deviation principle with the Freidlin–Wentzell rate. The rate at a path is the least energy ½∫\|ḣ\|² of an absolutely continuous driving path h from zero that produces it.
 
-**How the definition helps.** The rough path formulation makes the solution's rate the infimum of the driving energies over all driving paths that produce it (our own explanation). The solution map need not be continuous in the uniform metric on ordinary paths (our own comparison). Lyons' universal limit theorem gives continuity in the rough path metric. A separate large deviation theorem gives the exponential probability scale for enhanced Brownian motion. The contraction principle then transfers that rate to the solutions.
+**How the definition helps.** The rough path formulation makes the solution map continuous, so the rate is the infimum of driving energies over the paths that produce it (our own explanation). The solution map need not be continuous in the uniform metric on ordinary paths (our own comparison). Lyons' universal limit theorem gives continuity in the rough path metric, and a large deviation theorem for enhanced Brownian motion gives the input rate. The contraction principle then transfers that rate to the solutions.
 
 **Wikipedia:** [Rough path](https://en.wikipedia.org/wiki/Rough_path). It says: “Therefore, the Contraction principle in large deviations theory reduces Freidlin–Wentzell's problem to demonstrating the large deviation principle for (t,√εBₜ) in the p-variation topology.”
 
@@ -2261,7 +2261,7 @@
 
 **Definition.** A geometric p-rough path X records an irregular path with its iterated integrals up to order p. A two-parameter path Y(r, r′) is controlled by X when its increments in each variable expand in increments of X. The coefficients must match and the remainders must be small. For such Y, the paper defines a joint integral over a rectangle as a limit of two-dimensional sums.
 
-**Problem.** Theorem 3.2 says that, under the conditions for the joint integral to exist, it equals both iterated rough integrals. So integrating over the rectangle at once, or one variable at a time in either order, gives the same answer.
+**Problem.** Under the conditions for the joint integral to exist, it equals both iterated rough integrals. So integrating over the rectangle at once, or one variable at a time in either order, gives the same answer.
 
 **How the definition helps.** Joint control gives the rectangle sums and both iterated sums the same local expansion, so all three can be compared term by term (our own). The abstract stresses that the three integrals have distinct definitions a priori. The key estimate is a two-parameter Young–Towghi inequality, a bound on two-dimensional sums against rough increments, which the authors extend. It gives a maximal bound on the discrete sums that approximate the joint integral.
 
@@ -2281,7 +2281,7 @@
 
 **Problem.** Two continuous paths of finite variation have the same signature exactly when they are tree-like equivalent (Hambly and Lyons). So the signature is one-to-one on unparameterised paths.
 
-**How the definition helps.** In our own words, the signature cannot see a change of speed or a retraced piece, so the relation is chosen to forget exactly these. Our own example of the bad case is a segment followed by the same segment backwards. Its signature is that of the constant path, so the signature is not one-to-one on plain paths. Our own remark is that equivalent paths have equal signatures. The reason is that a tree-like loop has trivial signature, and signatures multiply when paths are joined. The hard half, that equal signatures force tree-like equivalence, is the theorem of Hambly and Lyons.
+**How the definition helps.** The signature cannot see a change of speed or a retraced piece, so the relation is chosen to forget exactly these (our own). A segment followed by the same segment backwards has the signature of the constant path, so the signature is not one-to-one on plain paths (our own example). Equivalent paths have equal signatures, because a tree-like loop has trivial signature and signatures multiply when paths are joined (our own). The hard half, that equal signatures force tree-like equivalence, is the theorem of Hambly and Lyons.
 
 **Paper or page:** [Topologies on unparameterised path space](https://arxiv.org/abs/2206.11153v2). It says: “The 2010 paper \[12\] of Hambly and Lyons showed that the signature is injective on the space of continuous finite-variation paths up to a general notion of reparameterisation called tree-like equivalence.”
 

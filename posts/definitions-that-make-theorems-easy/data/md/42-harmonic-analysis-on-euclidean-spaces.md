@@ -40,7 +40,7 @@
 
 **Problem.** Each Fejér kernel is nonnegative everywhere, and its average over one period is one.
 
-**How the definition helps.** As a squared absolute value divided by n, the kernel is nonnegative with no calculation. Its average is one because the exponentials are orthogonal, so the average of the square is n. From the average of Dirichlet kernels, nonnegativity usually needs the closed formula (1/n)(sin(nx/2)/sin(x/2))². The work moves to showing that the square equals that average. Expanding the square gives n − \|j\| pairs of frequencies with difference j, and this matches the average. These proof steps are our own; Wikipedia states only that the kernel is a positive summability kernel.
+**How the definition helps.** As a squared absolute value divided by n, the kernel is nonnegative with no calculation. Its average is one because the exponentials are orthogonal, so the average of the square is n. From the average of Dirichlet kernels, nonnegativity usually needs the closed formula (1/n)(sin(nx/2)/sin(x/2))². The work moves to showing that the square equals that average, by counting the n − \|j\| pairs of frequencies with difference j; these steps are our own.
 
 **Wikipedia:** [Fejér kernel](https://en.wikipedia.org/wiki/Fej%C3%A9r_kernel). It says: “The Fejér kernel is a positive summability kernel.”
 
@@ -56,7 +56,7 @@
 
 **Problem.** For 0 &lt; r, s &lt; 1, the convolution of Pᵣ and Pₛ over the circle, with normalized measure, is the kernel at radius rs.
 
-**How the definition helps.** Convolution turns into multiplication of Fourier coefficients, as the Wikipedia text says. So the coefficients of the convolution are r raised to \|k\| times s raised to \|k\|, which are the coefficients at radius rs. With the rational formula, the same identity needs a hard integral. The work moves to showing that the coefficient definition gives the rational formula. Summing the two geometric series over positive and negative frequencies does this. The last three steps are our own.
+**How the definition helps.** Convolution turns into multiplication of Fourier coefficients, as the source says. So the coefficients of the convolution are r<sup>\|k\|</sup> s<sup>\|k\|</sup> = (rs)<sup>\|k\|</sup>, the coefficients at radius rs. With the rational formula, the same identity needs a hard integral. The work moves to deriving the rational formula by summing two geometric series; these last steps are our own.
 
 **Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “After the Fourier transform, convolution with Pᵣ(θ) becomes multiplication by the sequence”
 
@@ -88,7 +88,7 @@
 
 **Problem.** If the transform is supported in \[−½,½\], the signal is uniquely determined by its values at the integers.
 
-**How the definition helps.** In our own explanation, the support condition makes the samples into Fourier coefficients on a single interval. Completeness of the Fourier basis does the reconstruction work in our own explanation. Our own counterexample starts with a nonzero bandlimited signal and multiplies it by exp(2πit). In our own example this shifts the spectrum but leaves every sample at integer t unchanged.
+**How the definition helps.** The support condition makes the samples the Fourier coefficients of the spectrum on one interval, and completeness of the Fourier basis does the reconstruction (our own explanation). Our own counterexample multiplies a nonzero bandlimited signal by exp(2πit). This shifts the spectrum off \[−½, ½\] but leaves every sample at an integer t unchanged.
 
 **Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “Then f can be reconstructed from its samples on ℤ by the formula”
 
@@ -140,7 +140,7 @@
 
 **Problem.** If two integrable circle functions agree near a point, the difference of their Fourier partial sums tends to zero at that point.
 
-**How the definition helps.** The kernel formula puts the vanishing difference and all frequency dependence in one integral (our own). In the shift variable t, the difference vanishes near zero, where the denominator sin(t/2) could vanish (our own). Dividing by that denominator therefore leaves an integrable function on \[−π,π\] (our own). The numerator oscillates at frequency n + ½ (our own). The Riemann–Lebesgue lemma says that integrating an integrable function against these increasingly rapid oscillations gives a limit of zero (our own).
+**How the definition helps.** The kernel formula puts the vanishing difference and all frequency dependence in one integral (our own). The difference vanishes near zero shift, where sin(t/2) vanishes, so dividing by sin(t/2) leaves an integrable function (our own). The numerator oscillates at frequency n + ½ (our own). The Riemann–Lebesgue lemma then sends the integral to zero (our own).
 
 **Wikipedia:** [Dirichlet kernel](https://en.wikipedia.org/wiki/Dirichlet_kernel). It says: “The convolution of Dₙ(x) with any function f of period 2π is the nth-degree Fourier series approximation to f”
 
@@ -220,7 +220,7 @@
 
 **Problem.** A function in the Wiener algebra has its reciprocal in that algebra if it is nowhere zero on the circle.
 
-**How the definition helps.** The algebra definition turns reciprocal closure into a test for invertibility. In our own explanation, a character is a nonzero multiplicative linear functional on the algebra. A general theorem for complete commutative normed algebras says that an element is invertible exactly when every character takes a nonzero value there. The circle coordinate and its inverse both have norm one, so each character sends the coordinate to a point on the circle. Finite Fourier sums are dense, and characters are continuous. Thus every character evaluates at its corresponding point.
+**How the definition helps.** The algebra definition turns reciprocal closure into a test for invertibility. By Gelfand theory for complete commutative normed algebras, an element is invertible exactly when every character, a nonzero multiplicative linear functional, is nonzero on it (our own explanation). The circle coordinate and its inverse both have norm one, so each character sends the coordinate to a point of the circle. Since finite Fourier sums are dense, every character is evaluation at that point.
 
 **Wikipedia:** [Wiener algebra](https://en.wikipedia.org/wiki/Wiener_algebra). It says: “if f has absolutely convergent Fourier series and is never zero, then its reciprocal 1/f also has an absolutely convergent Fourier series.”
 
@@ -257,7 +257,7 @@
 
 **Problem.** Plancherel's theorem: the Fourier transform is a unitary map of L²(ℝ) onto itself. This holds even though the Fourier integral of a general L² function need not converge.
 
-**How the definition helps.** The definition never uses the integral where it diverges, so divergence causes no exceptions. For f in L² but not in L¹, the integral ∫ f(x) exp(−2πixξ) dx need not converge. Plancherel showed that on L¹ ∩ L² the transform preserves the L² norm, and L¹ ∩ L² is dense in L². So the transform extends uniquely to an isometry of L², and this extension is unitary; that it is onto needs the inversion formula (our own remark). So the theorem has no exception for functions with a divergent Fourier integral. Pointwise questions remain hard, such as almost-everywhere convergence of the inversion integral (Carleson); our own remark.
+**How the definition helps.** The definition never uses the integral where it diverges, so divergence causes no exceptions. Plancherel showed that the transform preserves the L² norm on the dense subspace L¹ ∩ L², so it extends uniquely to an isometry of L². That the isometry is onto needs the inversion formula (our own remark). Pointwise questions remain hard, such as almost-everywhere convergence of the inversion integral (Carleson); our own remark.
 
 **Wikipedia:** [Plancherel theorem](https://en.wikipedia.org/wiki/Plancherel_theorem). It says: “In effect, this makes it possible to speak of Fourier transforms of L² functions.”
 
@@ -343,7 +343,7 @@
 
 **Problem.** For a uniformly almost periodic function, the averages over \[−T, T\] converge as T tends to infinity. Their limit is translation invariant and equals the integral of the extension to bℝ.
 
-**How the definition helps.** The compactification lets us define the mean as an integral with respect to Haar probability measure, the translation invariant probability measure on bℝ (our own). Translation invariance then follows from the measure itself (our own). To compare with interval averages, first check a single wave (our own). Both the averages in the limit and the integral give 0 for λ ≠ 0 and 1 for λ = 0 (our own). Both operations have norm at most 1, so uniform approximation gives the equality for all these functions (our own). The work lies in the identification with continuous functions on bℝ and the existence of Haar measure.
+**How the definition helps.** The compactification lets us define the mean as the integral against Haar probability measure on bℝ, so translation invariance comes from the measure itself (our own). To compare with interval averages, check a single wave: both give 0 for λ ≠ 0 and 1 for λ = 0 (our own). Both operations have norm at most 1, so uniform approximation gives equality for all these functions (our own). The work lies in the identification with continuous functions on bℝ and the existence of Haar measure.
 
 **Wikipedia:** [Almost periodic function](https://en.wikipedia.org/wiki/Almost_periodic_function). It says: “The space of uniform almost periodic functions on G can be identified with the space of all continuous functions on the Bohr compactification of G.”
 
@@ -375,11 +375,11 @@
 
 *Rules out counterexamples.* MSC 42A82 (Positive definite functions in one variable harmonic analysis), 43A35. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Require a positive definite function on ℝ to be continuous at zero. Positive definiteness alone only requires the matrices with entries f(xᵢ − xⱼ) to be positive semidefinite. A positive semidefinite matrix gives a nonnegative quadratic form.
+**Definition.** A function f on ℝ is positive definite if every matrix with entries f(xᵢ − xⱼ) is positive semidefinite. Bochner's theorem adds the requirement that f be continuous at zero.
 
 **Problem.** A positive definite function on ℝ continuous at zero is the Fourier transform of a finite positive measure.
 
-**How the definition helps.** Continuity at zero excludes the function equal to one at zero and zero elsewhere (our own). Grouping equal inputs shows that its test matrices have positive semidefinite all-ones blocks (our own). Every finite measure has a continuous transform by dominated convergence (our own). For positive definite functions, the matrix test gives \|f(x+h)−f(x)\|² ≤ 2f(0)(f(0)−Re f(h)), so continuity at zero suffices (our own). Bochner’s theorem then gives the measure.
+**How the definition helps.** Continuity at zero excludes the function equal to one at zero and zero elsewhere, which is positive definite because its test matrices are made of all-ones blocks (our own). Every finite measure has a continuous transform by dominated convergence (our own). For positive definite f, the matrix test gives \|f(x+h) − f(x)\|² ≤ 2f(0)(f(0) − Re f(h)), so continuity at zero suffices (our own). Bochner's theorem then gives the measure.
 
 **Wikipedia:** [Positive-definite function](https://en.wikipedia.org/wiki/Positive-definite_function). It says: “any continuous positive-definite function on the real line is the Fourier transform of a (positive) measure.”
 
@@ -431,7 +431,7 @@
 
 **Problem.** The Leray map is the orthogonal projection onto the fields with zero divergence. It sends ∇φ to zero for every smooth φ of compact support.
 
-**How the definition helps.** The multiplier definition reduces this orthogonal splitting to projection in a finite-dimensional vector space, in our own proof. For each nonzero ξ, the matrix projects onto the vectors perpendicular to ξ. Fourier transformation turns divergence into a scalar multiple of the dot product with ξ, so these are exactly the vectors that give zero divergence. Fourier transforms of gradients are parallel to ξ, so the matrix sends gradients to zero. The work moves into Plancherel’s norm identity, which makes the pointwise orthogonal projection an orthogonal projection of square-integrable fields. This identifies the map with the Helmholtz projection.
+**How the definition helps.** The multiplier definition reduces the splitting to a projection in a finite-dimensional space at each frequency (our own proof). For each nonzero ξ, the matrix projects onto the vectors perpendicular to ξ, and the Fourier transform of the divergence is a multiple of the dot product with ξ. Fourier transforms of gradients are parallel to ξ, so the matrix sends gradients to zero. The work moves into Plancherel's identity, which makes this pointwise projection an orthogonal projection of square-integrable fields.
 
 **Wikipedia:** [Leray projection](https://en.wikipedia.org/wiki/Leray_projection). It says: “This definition must be understood in the sense of pseudo-differential operators: its matrix valued Fourier multiplier m(ξ) is given by”
 
@@ -551,9 +551,9 @@
 
 **Definition.** A weight is a positive locally integrable function w. Let a(Q) be the average of w over a cube Q, and let b(Q) be the average of w to the power −1/(p − 1). For 1 &lt; p &lt; ∞, w is in Aₚ if a(Q) times b(Q) to the power p − 1 is bounded over all cubes. The class A₁ asks that a(Q) ≤ C w(x) for almost every x in Q.
 
-**Problem.** The Hardy–Littlewood maximal operator M sends f to the largest average of \|f\| over cubes that contain the point. A weak type (p, p) bound says that the set where Mf &gt; λ has w-measure at most C/λᵖ times ∫\|f\|ᵖ w. The theorem says that M has this bound exactly when w is in Aₚ.
+**Problem.** Let 1 ≤ p &lt; ∞, and let M be the Hardy–Littlewood maximal operator over cubes. Then w({Mf &gt; λ}) ≤ (C/λᵖ)∫\|f\|ᵖw for all f and λ &gt; 0 exactly when w is in Aₚ.
 
-**How the definition helps.** The Aₚ condition comes from testing the maximal inequality on one function that lives on one cube. So it is necessary almost by construction (our own remark). The theorem says that this one-cube test is also enough, so a hard inequality becomes a simple condition on averages. The condition sorts even simple weights. For p &gt; 1, the power weight \|x\|ᵃ on ℝⁿ is in Aₚ exactly when −n &lt; a &lt; n(p − 1) (our own remark). For the weak bound, sufficiency follows from Hölder's inequality and a covering lemma (our own remark). For p &gt; 1, Muckenhoupt also proved the strong bound, which needs more work.
+**How the definition helps.** The Aₚ condition comes from testing the maximal inequality on one function that lives on one cube, so it is necessary almost by construction (our own remark). The theorem says that this one-cube test is also enough, so a hard inequality becomes a simple condition on averages. For the weak bound, sufficiency follows from Hölder's inequality and a covering lemma (our own remark). For p &gt; 1, the power weight \|x\|ᵃ on ℝⁿ is in Aₚ exactly when −n &lt; a &lt; n(p − 1) (our own remark).
 
 **Paper or page:** [Weighted weak (1,1) estimate for non-commutative square function](https://arxiv.org/abs/2410.00987v3). It says: “For 1≤p&lt;∞, the weak type (p,p) inequality … is true if and only if w satisfies the Muckenhoupt's Aₚ condition.”
 
@@ -572,7 +572,7 @@
 
 **Problem.** The Hilbert transform uses the kernel 1/(πx), omitting a symmetric interval around its singularity and taking a limit. It maps H¹ boundedly into the integrable functions on the line.
 
-**How the definition helps.** The zero integral lets us subtract a constant from the kernel when testing it against an atom. In our own proof, this improves decay far from the interval from inverse distance to inverse distance squared. The square-integrable bound handles points near the interval. Together these bounds give a uniform integral estimate per atom, which absolute summability extends to the whole space. Our own counterexample is the indicator of \[0,1\], whose transform decays only like 1/\|x\|. The atomic decomposition theorem identifies this space with the Hardy space defined using maximal averages.
+**How the definition helps.** The zero integral lets us subtract a constant from the kernel when testing it against an atom. In our own proof, this improves the decay far from the interval from 1/distance to 1/distance², and the square-integrable bound handles points near the interval. This gives a uniform integral bound per atom, which absolute summability extends to the whole space. Our own counterexample is the indicator of \[0, 1\], whose transform decays only like 1/\|x\|.
 
 **Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “When 0 &lt; p ≤ 1, any element f of Hᵖ has an atomic decomposition as a convergent infinite combination of Hᵖ-atoms,”
 
@@ -606,7 +606,7 @@
 
 **Problem.** On ℝ, the dyadic deviation bound together with the adjacent mean bound implies bounded mean oscillation over all intervals.
 
-**How the definition helps.** The adjacent mean bound controls the gap when an interval crosses a grid boundary (our own). Choose the smallest grid length at least as long as the interval, then cover it by two neighboring grid intervals (our own). Their combined length is at most four times the original length (our own). Compare with the mean on the first grid interval, using both bounds, then with the original interval’s mean (our own). The function equal to log x for x &gt; 0 and zero elsewhere passes the dyadic test. Its means on opposite sides of zero differ without bound as the intervals shrink (our own).
+**How the definition helps.** The adjacent mean bound controls the gap when an interval crosses a grid boundary (our own). Cover the interval by two neighboring grid intervals of the smallest grid length at least its length, with total length at most four times its own (our own). Comparing means through the first grid interval, using both bounds, gives the oscillation bound (our own). The function equal to log x for x &gt; 0 and zero elsewhere passes the dyadic test, but its means on the two sides of zero differ without bound (our own).
 
 **Wikipedia:** [Bounded mean oscillation](https://en.wikipedia.org/wiki/Bounded_mean_oscillation). It says: “is a function that is in dyadic BMO but not in BMO.”
 
@@ -624,7 +624,7 @@
 
 **Problem.** For these monic orthogonal polynomials, x·pₙ = pₙ₊₁ + bₙpₙ + aₙpₙ₋₁ with constants bₙ and aₙ &gt; 0, where p₋₁ = 0.
 
-**How the definition helps.** With orthogonality as the definition, multiplication by x moves across the inner product. So the inner product of x·pₙ with pₖ equals that of pₙ with x·pₖ, which is zero when k + 1 &lt; n. Hence only three terms of the expansion of x·pₙ survive. With the recurrence as the definition, the recurrence is free but orthogonality is hard. That converse is Favard’s theorem, which Wikipedia names; it builds a positive measure from the recurrence. The proof steps are our own.
+**How the definition helps.** With orthogonality as the definition, multiplication by x moves across the inner product. So ⟨x·pₙ, pₖ⟩ = ⟨pₙ, x·pₖ⟩, which is zero when k + 1 &lt; n, and only three terms of the expansion of x·pₙ survive. With the recurrence as the definition, orthogonality is the hard direction, Favard's theorem, which builds a positive measure from the recurrence. The proof steps are our own.
 
 **Wikipedia:** [Orthogonal polynomials](https://en.wikipedia.org/wiki/Orthogonal_polynomials). It says: “These recurrence relations are key for deriving properties of orthogonal polynomials.”
 
@@ -676,7 +676,7 @@
 
 **Problem.** P has n distinct simple roots in the interior of the smallest interval containing the support.
 
-**How the definition helps.** In our own proof, positivity makes a polynomial of constant sign have nonzero integral unless it vanishes throughout the support. Form Q by multiplying one linear factor for each interior root where P changes sign. Then PQ has constant sign throughout the interval and vanishes at only finitely many points. If Q had degree below n, orthogonality would force its product with P to have zero integral. Thus P has n sign changes and every root is simple. In our own example, weights 1, −4, 1 at −1, 0, 1 make x² + 1 orthogonal to both 1 and x.
+**How the definition helps.** In our own proof, positivity gives a nonzero integral to any polynomial of constant sign that is not zero on the support. Let Q be the product of one linear factor for each interior root where P changes sign, so PQ has constant sign. If Q had degree below n, orthogonality would force the integral of PQ to vanish, so P has n sign changes and every root is simple. In our own example, the signed weights 1, −4, 1 at −1, 0, 1 make x² + 1 orthogonal to both 1 and x.
 
 **Wikipedia:** [Orthogonal polynomials](https://en.wikipedia.org/wiki/Orthogonal_polynomials). It says: “If the measure dα is supported on an interval \[a,b\], all the zeros of Pₙ lie in \[a,b\].”
 
@@ -708,7 +708,7 @@
 
 **Problem.** Distinct Walsh functions are orthogonal for uniform measure on \[0, 1).
 
-**How the definition helps.** Characters of a compact group are orthogonal by a general translation argument. If χ ≠ ψ, then χψ̄ is a nontrivial character, so some translation multiplies it by a number other than one. The measure does not change under translation, so the integral of χψ̄ is zero. On \[0, 1), the usual proof instead uses the independence of binary digits. The work moves to the identification that Wikipedia describes. The binary expansion carries the product measure to the uniform measure, and it fails to be one-to-one only on a set of measure zero. The translation argument is our own.
+**How the definition helps.** Characters of a compact group are orthogonal by a translation argument (our own). If χ ≠ ψ, then χψ̄ is a nontrivial character, so some translation multiplies it by a number other than one. The measure is translation invariant, so the integral of χψ̄ is zero. The work moves to the identification with \[0, 1): the binary expansion carries the product measure to uniform measure and is one-to-one off a set of measure zero.
 
 **Wikipedia:** [Walsh function](https://en.wikipedia.org/wiki/Walsh_function). It says: “Elements of 𝔻̂ are readily identified with Walsh functions.”
 
@@ -843,11 +843,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 28A80. arXiv math.CA. Level 4: research.
 
-**Definition.** The Fourier dimension of a compact subset of the line is the supremum of exponents s in \[0,1\] satisfying this test. Some probability measure supported on the set has Fourier transform bounded in magnitude by C times (1 + \|ξ\|) raised to −s/2.
+**Definition.** The Fourier dimension of a compact set E ⊂ ℝ is the supremum of the s in \[0, 1\] for which some probability measure μ on E has \|μ̂(ξ)\| ≤ C(1 + \|ξ\|)<sup>(−s/2)</sup>.
 
 **Problem.** If a compact set has Fourier dimension greater than one half, the set of all sums of two of its points has positive length.
 
-**How the definition helps.** In our own proof the definition supplies enough decay for the fourth power of the transform to be integrable. The distribution of the sum of two independent samples has Fourier transform equal to the square of the original transform. Plancherel’s theorem therefore gives this sum a square-integrable density. Its support must have positive length because the density has integral one. Our own counterexample for Hausdorff dimension, which measures size by covers at small scales, uses base-nine digits zero through three. Its dimension is log(4)/log(9), yet sums use only seven digits and lie in a set of length zero.
+**How the definition helps.** In our own proof, the definition gives enough decay for \|μ̂\|⁴ to be integrable. The sum of two independent samples has distribution μ ∗ μ, whose transform is μ̂², so Plancherel gives it a square-integrable density. A density with integral one is supported on a set of positive length. Our own counterexample for Hausdorff dimension uses base-nine digits 0 to 3: it has dimension log 4/log 9, but its sums use only seven digits and form a set of length zero.
 
 **Paper or page:** [Fourier Dimension and Translation Invariant Linear Equations](https://arxiv.org/abs/2411.06302v1). It says: “Let E ⊂ \[0,1\] be a closed set and μ be a probability measure supported on E satisfying \|μ̂(ξ)\| ≤ C (1+\|ξ\|)⁻ᵝ for some finite positive constant C and β &gt; 1/4.”
 
@@ -879,9 +879,9 @@
 
 **Definition.** A weight w is in the Muckenhoupt class A₁ when the Hardy–Littlewood maximal function of w is at most a constant times w almost everywhere. A set E is porous when every ball contains a hole, a ball that misses E, with a fixed fraction of its radius. Weak porosity is a weaker condition on the holes of E inside each ball. Our own summary, unchecked in the data, is that holes not much smaller than the largest one must fill a fixed fraction of the ball.
 
-**Problem.** For which nonempty sets E ≠ ℝⁿ is the weight dist(x,E)⁻ᵅ in A₁ for some α &gt; 0? Such weights matter because the maximal operator and singular integrals are bounded on the weighted spaces.
+**Problem.** Let E ⊂ ℝⁿ be nonempty with E ≠ ℝⁿ. The distance weight dist(x, E)⁻ᵅ is in A₁ for some α &gt; 0 exactly when E is weakly porous.
 
-**How the definition helps.** Weak porosity asks for exactly as much empty space as the A₁ averages need, so the answer is one equivalence; this reading is our own. Our own summary of the history is that porous sets were known to give A₁ distance weights, but porosity is not necessary. The paper also measures the best exponent α by a number it calls the Muckenhoupt exponent of E. Our own remark is that the proof still takes real work with cube decompositions. The abstract gives a set E in ℝ that is not weakly porous. For each 0 &lt; α &lt; 1, its weight is in every Aₚ with p &gt; 1 but not in A₁. So for the classes Aₚ with p &gt; 1, weak porosity is not the right condition.
+**How the definition helps.** Weak porosity asks for exactly as much empty space as the A₁ averages need; this reading is our own. Our own summary of the history is that porous sets were known to give A₁ distance weights, but porosity is not necessary. The abstract gives a set E in ℝ that is not weakly porous whose weight, for each 0 &lt; α &lt; 1, is in every Aₚ with p &gt; 1 but not in A₁. So weak porosity is not the right condition for the classes Aₚ with p &gt; 1.
 
 **Paper or page:** [Weakly porous sets and Muckenhoupt Aₚ distance functions](https://arxiv.org/abs/2209.06284v2). It says: “As our first main result we show that the distance weight w(x)=dist(x,E)⁻ᵅ belongs to the Muckenhoupt class A₁, for some α&gt;0, if and only if E⊂ℝⁿ is weakly porous.”
 
@@ -917,7 +917,7 @@
 
 **Problem.** Two square-integrable signals with identical measurements differ only by a constant factor of magnitude one. This can fail at rational multiples of π.
 
-**How the definition helps.** In our own proof, reflecting across the two measurement lines gives a rotation whose powers are dense among all rotations. The Bargmann transform represents each signal by a function analytic on the complex plane and converts the measurements to magnitudes with a known factor. If either transform vanishes identically, agreement on a line forces both to vanish. Otherwise reflection across either line sends the quotient of the transforms to its conjugate reciprocal, wherever defined. Composing the reflections leaves the quotient invariant, forcing it to be constant with magnitude one. At angle π/m for a positive integer m, the polynomials zᵐ + i and zᵐ − i give our own counterexample through the Bargmann correspondence.
+**How the definition helps.** In our own proof, reflecting across the two measurement lines gives a rotation whose powers are dense among all rotations. The Bargmann transform turns each signal into an entire function and the measurements into its magnitudes, up to a known factor. Reflection across either line sends the quotient of the two transforms to its conjugate reciprocal, so the dense rotations leave it invariant and it is a constant of magnitude one. At angle π/m, the polynomials zᵐ + i and zᵐ − i give our own counterexample through the Bargmann correspondence.
 
 **Paper or page:** [Phase retrieval of entire functions and its implications for Gabor phase retrieval](https://arxiv.org/abs/2202.03733v5). It says: “Then, there exists an α ∈ ℝ such that f = eⁱᵅ g.”
 

@@ -24,7 +24,7 @@
 
 **Definition.** For each customer, measure the part of their stay inside the observation window. Define observed customer time as the sum of these lengths.
 
-**Problem.** For finitely many visits, observed customer time equals the integral of the number present. Suppose the arrival rate and the average full stay of arrivals have finite limits as the window grows. Their product gives mean occupancy if the difference between total full and observed customer time divided by window length tends to zero.
+**Problem.** For finitely many visits, observed customer time equals the integral over the window of the number present. Suppose the arrival rate and the average stay have finite limits as the window grows. If the customer time lost at the window edges is small compared with the window length, mean occupancy is the product of the two limits.
 
 **How the definition helps.** In our own proof, clipping each visit lets us count the same pairs of customers and times in either order. Summing by customer gives observed customer time. Summing by time gives the occupancy integral. The work in passing to full stays is controlling the visits crossing the window boundaries.
 
@@ -62,7 +62,7 @@
 
 **Problem.** The earliest project finish equals the longest weighted path from the start to the finish event.
 
-**How the definition helps.** In our own proof, the graph makes earliest event times and longest path lengths satisfy the same rule. Start the clock at zero. At each later event, take the largest predecessor time plus the duration of its connecting task, maximizing over incoming tasks. Applying this rule in dependency order gives both quantities. The modeling work is encoding every precedence constraint and accounting for resource limits.
+**How the definition helps.** In our own proof, earliest event times and longest path lengths satisfy the same rule. Each event takes the largest value, over incoming tasks, of the predecessor's time plus the task duration. Applying this rule in dependency order from zero at the start gives both quantities. The modeling work is encoding every precedence constraint and the resource limits.
 
 **Wikipedia:** [Critical path method](https://en.wikipedia.org/wiki/Critical_path_method). It says: “A critical path is determined by identifying the longest stretch of dependent activities”
 
@@ -80,7 +80,7 @@
 
 **Problem.** If any schedule meets all release times and deadlines, the preemptive earliest deadline rule does too.
 
-**How the definition helps.** Allowing pauses lets an earlier deadline take priority even when a later job has already started. In our own exchange argument, move ready work with the earliest deadline forward, shifting the displaced work into its later slot. That slot still meets the displaced job’s deadline. For our own counterexample, a three-unit job arrives at zero and is due at five. A one-unit job arrives at one and is due at two. Without pauses, starting the first job immediately misses the second deadline, though idling until one would meet both.
+**How the definition helps.** Allowing pauses lets an earlier deadline take priority even when a later job has already started. In our own exchange argument, move ready work with the earliest deadline forward; the displaced work still meets its deadline. In our own counterexample, a three-unit job arrives at zero, due at five, and a one-unit job arrives at one, due at two. Without pauses, starting the first job at once misses the second deadline, but idling until one meets both.
 
 **Wikipedia:** [Earliest deadline first scheduling](https://en.wikipedia.org/wiki/Earliest_deadline_first_scheduling). It says: “EDF is an optimal scheduling algorithm on preemptive uniprocessors”
 
@@ -114,7 +114,7 @@
 
 **Problem.** If a linear program in standard form has an optimal solution, then it has an optimal basic feasible solution. Each basic feasible solution is a vertex of the feasible polyhedron.
 
-**How the definition helps.** The algebraic definition can be checked with linear algebra, and its geometric meaning, a vertex, is where optima lie. Together they turn optimization into a finite search. A linear objective on a convex polyhedron with vertices reaches its best value at a vertex, if it reaches it at all. The page says that the simplex method travels from one basic feasible solution to another until it finds an optimum. What stays hard is that there can be exponentially many vertices (our own). At degenerate vertices the simplex method can also cycle, unless a pivoting rule such as Bland's rule is used (our own).
+**How the definition helps.** The algebraic definition can be checked with linear algebra, and its geometric meaning, a vertex, is where optima lie. Together they turn optimization into a finite search. The simplex method moves from one basic feasible solution to another until it finds an optimum. What stays hard is that there can be exponentially many vertices (our own).
 
 **Wikipedia:** [Basic feasible solution](https://en.wikipedia.org/wiki/Basic_feasible_solution), [Linear programming](https://en.wikipedia.org/wiki/Linear_programming). It says: “Geometrically, each BFS corresponds to a vertex of the polyhedron of feasible solutions. If there exists an optimal solution, then there exists an optimal BFS.”
 
@@ -130,7 +130,7 @@
 
 **Problem.** If A is totally unimodular and b is an integer vector, every vertex of {x : Ax ≤ b} has integer entries. So the linear program 'maximize cᵀx subject to Ax ≤ b' has an integer optimum whenever it has an optimum, for every c.
 
-**How the definition helps.** The definition asks exactly for the determinants that Cramer's rule divides by, so vertices come out integral. A vertex solves a square subsystem Bx = b′ taken from the rows of A, with B invertible (our own explanation). Cramer's rule writes each entry of x as a determinant divided by det B = ±1, so x is integral. Hoffman and Kruskal proved a converse in 1956 for the polyhedra {x ≥ 0 : Ax ≤ b} (our own; not on the page). If these are integral for every integer b, then the integer matrix A is totally unimodular. So integer problems with such matrices, like bipartite matching, can be solved as linear programs. What stays hard is recognizing total unimodularity efficiently, which uses Seymour's decomposition of regular matroids (our own link).
+**How the definition helps.** The definition asks exactly for the determinants that Cramer's rule divides by, so vertices come out integral. A vertex solves a square invertible subsystem Bx = b′ taken from the rows of A (our own explanation). Cramer's rule writes each entry of x as a determinant divided by det B = ±1, so x is integral. So integer problems with such matrices, like bipartite matching, can be solved as linear programs.
 
 **Wikipedia:** [Unimodular matrix](https://en.wikipedia.org/wiki/Unimodular_matrix). It says: “Hence if A is totally unimodular and b is integral, every extreme point of the feasible region (e.g. {x \| Ax ≥ b}) is integral and thus the feasible region is an integral polyhedron.”
 
@@ -166,7 +166,7 @@
 
 **Problem.** Choose a budget k from one to the number of items. After k steps, the gain above the empty-set score is at least 1 − 1/e times the best gain with that budget.
 
-**How the definition helps.** Diminishing returns bounds the remaining improvement by k times the best single gain. In our own proof, add the missing optimal items to the current set, one by one. Their gains can only shrink, and the union scores at least as highly as the optimal set. Thus each greedy step removes at least a fraction 1/k of the remaining gap. In our own counterexample, two special items together earn 100, and a third item independently earns one. With budget two, greedy earns one because neither special item earns anything alone.
+**How the definition helps.** Diminishing returns bounds the remaining improvement by k times the best single gain. In our own proof, adding the missing optimal items one by one gives gains that can only shrink, so each greedy step removes at least a fraction 1/k of the remaining gap. In our own counterexample without diminishing returns, two special items together earn 100, and a third item alone earns one. With budget two, greedy earns one, because neither special item earns anything alone.
 
 **Paper or page:** [Incremental space-filling design based on coverings and spacings: improving upon low discrepancy sequences](https://arxiv.org/abs/2106.05833v1). It says: “Let f be a non-decreasing submodular set function, then, for any given k, 1 ≤ k ≤ C, Algorithm 1 returns a set Xₖ with bounded optimality gap”
 
@@ -239,7 +239,7 @@
 
 **Problem.** In a finite graph with nonnegative edge costs and a reachable goal, A\* selects the vertex with least cost so far plus estimated remaining cost. With consistent estimates it can permanently close each selected vertex and return a shortest path.
 
-**How the definition helps.** Consistency makes every adjusted edge cost nonnegative when we add the head estimate and subtract the tail estimate. Along a path, the adjustments cancel except at its endpoints. Dijkstra’s theorem now guarantees that each selected vertex already has its cheapest path. Our own example gives s→a, s→b, b→a and a→g costs 3, 1, 1 and 3. Set the estimate at b to four and all others to zero. These estimates are admissible, yet closing a permanently returns six instead of five.
+**How the definition helps.** Consistency makes every edge cost nonnegative after adding the head estimate and subtracting the tail estimate. Along a path these adjustments cancel except at the ends, so Dijkstra's theorem applies. Our own example has edges s→a, s→b, b→a and a→g with costs 3, 1, 1 and 3, estimate four at b and zero elsewhere. These estimates are admissible, yet closing a permanently returns six instead of five.
 
 **Wikipedia:** [Consistent heuristic](https://en.wikipedia.org/wiki/Consistent_heuristic). It says: “A consistent heuristic is also admissible, i.e. it never overestimates the cost of reaching the goal”
 
@@ -296,7 +296,7 @@
 
 **Problem.** Let the objective and constraints be smooth on an open subset of finite-dimensional space. At a constrained local extremum with independent constraint gradients, some multiplier makes every first derivative of the Lagrangian zero.
 
-**How the definition helps.** The Lagrangian combines feasibility and gradient balance in one equation saying that its derivative vanishes. Its derivatives in the weights give the constraints. Its derivatives in the original variables give gradient balance. The implicit function theorem identifies the tangent space with the kernel of the constraint derivative. Our own example minimizes x subject to x² = 0. At zero the constraint gradient vanishes, so no multiplier can cancel the objective gradient.
+**How the definition helps.** The Lagrangian combines feasibility and gradient balance in one equation saying that its derivative vanishes. Its derivatives in the weights give the constraints, and its derivatives in the original variables give gradient balance. The implicit function theorem identifies the tangent space with the kernel of the constraint derivative. Our own example, minimizing x subject to x² = 0, has a zero constraint gradient at zero, so no multiplier exists.
 
 **nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “Then there is a function(al) l in Y\* such that x is a critical point of the function F − l∘G.”
 
@@ -330,7 +330,7 @@
 
 **Problem.** In a stationary queue with this property, an arrival sees the same state probabilities as a random time.
 
-**How the definition helps.** A constant arrival rate given the entire past weights every pre-arrival state in proportion to the time spent there. Our own argument counts arrivals occurring while the queue has a specified state. Its expected count equals the arrival rate times the expected time in that state. Justifying this identity uses the conditional arrival rate. In our own counterexample, arrivals come two time units apart with uniform random phase, and each service lasts one unit. Every arrival finds the server idle, although it works half the time.
+**How the definition helps.** A constant arrival rate given the entire past weights every pre-arrival state in proportion to the time spent there. In our own argument, the expected number of arrivals in a given state equals the arrival rate times the expected time in that state. In our own counterexample, arrivals come two time units apart with uniform random phase, and each service lasts one unit. Every arrival finds the server idle, although it works half the time.
 
 **Wikipedia:** [Arrival theorem](https://en.wikipedia.org/wiki/Arrival_theorem). It says: “the probability of the state as seen by an outside random observer is the same as the probability of the state seen by an arriving customer.”
 
@@ -380,11 +380,11 @@
 
 *True by definition. Confidence: medium.* MSC 90C11 (Mixed integer programming), 90C20. arXiv math.OC. Level 3: graduate.
 
-**Definition.** Let z indicate whether production is on, x denote output, and t denote a cost bound. When off, x = 0 and t ≥ 0. When on, t ≥ x². The closed perspective equals x²/z for z &gt; 0, zero at the origin, and infinity for nonzero x at z = 0.
+**Definition.** The on–off set is the union of the off set, where z = 0, x = 0 and t ≥ 0, and the on set, where z = 1 and t ≥ x². The closed perspective of x² is x²/z for z &gt; 0, zero at the origin, and infinity for nonzero x at z = 0.
 
-**Problem.** Allow any real output when production is on. The convex hull consists exactly of points with activation between zero and one and cost bound at least the closed perspective.
+**Problem.** The convex hull of the on–off set consists exactly of the points with 0 ≤ z ≤ 1 and t at least the closed perspective.
 
-**How the definition helps.** Our own proof interprets z as the weight of the on state, which must then produce x/z on average. Convexity of the square gives the cost bound z(x/z)² for z &gt; 0, even when several on states are mixed. One on state producing x/z attains the bound, and increasing its cost bound gives every larger value. At z = 0 only off states contribute. Coupled switches need a separate argument.
+**How the definition helps.** Our own proof reads z as the weight of the on state, which must then produce x/z on average. Convexity of the square gives the cost bound z(x/z)² = x²/z, even when several on states are mixed. One on state producing x/z attains the bound, and raising its cost bound gives every larger value. At z = 0 only off states contribute.
 
 **Paper or page:** [A note on quadratic constraints with indicator variables: Convex hull description and perspective relaxation](https://arxiv.org/abs/2209.01433v1). It says: “x²/z = maxₚ∈ℝ (px − p²z/4).”
 
@@ -402,7 +402,7 @@
 
 **Problem.** Minimize a finite convex cost on Euclidean space over a nonempty closed convex set. The minimizer set is nonempty and compact exactly when the recession cost is positive in every nonzero recession direction.
 
-**How the definition helps.** The recession cost tests whether a whole feasible ray can stay below one cost level. In our own convex specialization, every nonempty unbounded closed convex set contains a ray, by compactness of the unit sphere. Apply this fact to the feasible points below a given cost level. Convexity makes the slopes along a ray increase toward its recession cost, whose value does not depend on the starting point. Positivity therefore makes every nonempty feasible set of points at or below a fixed cost level compact, and continuity gives a minimizer. Conversely, a feasible direction with nonpositive recession cost gives a whole ray of minimizers from any minimizer.
+**How the definition helps.** The recession cost tests whether a whole feasible ray can stay below one cost level. In our own argument, convexity makes the slopes along a ray increase toward the recession cost, which does not depend on the starting point. Positivity therefore makes each nonempty feasible sublevel set bounded, hence compact, and continuity gives a minimizer. Conversely, a feasible direction with nonpositive recession cost gives a whole ray of minimizers from any minimizer.
 
 **Paper or page:** [Weak sharp minima at infinity and solution stability in mathematical programming via asymptotic analysis](https://arxiv.org/abs/2410.04695). It says: “is nonempty and compact.”
 
@@ -418,7 +418,7 @@
 
 **Problem.** Take a step size η and a gradient estimate g. With negative entropy, the mirror descent step makes the new p(x) proportional to p(x) exp(−η g(x)). Dividing by the sum over x makes the result a probability vector.
 
-**How the definition helps.** Negative entropy makes the penalty a sum of one-variable terms, so the minimization splits by coordinate. Our own proof sketch sets the derivative of each term to zero. This makes the new log-probability equal to the old one minus η g(x), plus a constant. The constant comes from the constraint that the probabilities sum to one. Exponentiating gives the multiplicative update, which is the classical exponential weights algorithm.
+**How the definition helps.** Negative entropy makes the penalty a sum of one-variable terms, so the minimization splits by coordinate. In our own sketch, setting each derivative to zero makes the new log-probability equal the old one minus η g(x), plus a constant. The constant comes from the constraint that the probabilities sum to one. Exponentiating gives the classical exponential weights update.
 
 **Paper or page:** [Distances for Markov chains from sample streams](https://arxiv.org/abs/2505.18005v1). It says: “When 𝒵 = Δ\_𝒳 is the probability simplex on a finite set 𝒳 and Ψ is the negative entropy defined as Ψ(p) = ∑ₓ p(x) log p(x), p ∈ Δ\_𝒳, the OSMD update reduces to”
 
@@ -470,7 +470,7 @@
 
 **Problem.** A point x satisfies prox(x) = x exactly when x minimizes f.
 
-**How the definition helps.** The subgradient definition turns a fixed point directly into the condition that zero is a subgradient at x. That condition says f(x) is a global minimum. Our own comparison is that the minimization definition first needs an optimality argument to remove the quadratic penalty. To relate the definitions, first prove that the quadratic problem has a unique answer. Then show that its optimality condition is the subgradient test.
+**How the definition helps.** The subgradient definition turns a fixed point directly into the condition that zero is a subgradient at x. That condition says f(x) is a global minimum. The minimization definition first needs an optimality argument to remove the quadratic penalty (our own comparison). To relate the definitions, prove that the quadratic problem has a unique answer whose optimality condition is the subgradient test.
 
 **Wikipedia:** [Proximal operator](https://en.wikipedia.org/wiki/Proximal_operator). It says: “Fixed points of prox<sub>f</sub> are minimizers of f”
 
@@ -542,7 +542,7 @@
 
 **Problem.** For a finite sum of positive ratios, the enlarged minimization has the same infimum. Its minimizers give exactly the original minimizers after discarding the extra variables.
 
-**How the definition helps.** In our own proof, the extra variable makes the product of the two new terms independent of that variable. Their sum is least when they agree, at y = 1/(2ab). The minimum is then a/b. Choosing a separate y for each ratio attains every original objective value at its original input. Solving the enlarged problem can still be difficult because its objective need not be convex.
+**How the definition helps.** In our own proof, the product of the two new terms does not depend on y, so their sum is least when they agree, at y = 1/(2ab). The minimum is then a/b. Choosing a separate y for each ratio attains every original objective value at its original input. The enlarged problem can still be hard, because its objective need not be convex.
 
 **Paper or page:** [Transforms for Multiplicative and Fractional Programming with Broad Applications in Edge Computing and Communication Networks](https://arxiv.org/abs/2312.06202v1). It says: “Fₖ(x,yₖ) ≔ \[Aₖ(x)\]²yₖ + 1/(4\[Bₖ(x)\]²yₖ)”
 
@@ -594,7 +594,7 @@
 
 **Problem.** Strong duality says that the optimal value of a convex program equals the optimal value of its dual. It can fail for convex programs in general. Under Slater's condition it holds, and a finite dual value is attained.
 
-**How the definition helps.** A strictly feasible point leaves room inside the feasible set, and that room makes Lagrange multipliers exist (our own explanation). In the proof, a hyperplane separates the attainable values from better ones, and the interior point stops it from being vertical. Our own example: minimize x subject to x² ≤ 0. The only feasible point is 0, so no point is strictly feasible. The dual values −1/(4λ) approach 0, but no multiplier λ reaches it, so the dual optimum is not attained. Boyd and Vandenberghe give a convex program with primal value 1 and dual value 0, where Slater's condition also fails (our own). What stays hard is to find a strictly feasible point, which is itself an optimization problem.
+**How the definition helps.** A strictly feasible point leaves room inside the feasible set, and that room makes Lagrange multipliers exist (our own explanation). In the proof, a hyperplane separates the attainable values from better ones, and the interior point stops it from being vertical. Our own example minimizes x subject to x² ≤ 0, where no point is strictly feasible. The dual values −1/(4λ) approach 0, but no multiplier λ reaches it, so the dual optimum is not attained.
 
 **Wikipedia:** [Slater's condition](https://en.wikipedia.org/wiki/Slater%27s_condition), [Strong duality](https://en.wikipedia.org/wiki/Strong_duality). It says: “In particular, if Slater's condition holds for the primal problem, then the duality gap is zero, and if the dual value is finite then it is attained.”
 
@@ -609,11 +609,11 @@
 
 *Rules out counterexamples.* MSC 90C46 (Optimality conditions and duality in mathematical programming). arXiv math.OC. Level 3: graduate.
 
-**Definition.** In finite dimensions, let admissible right sides form the linear image of a nonempty convex cone. A convex cone contains all nonnegative linear combinations of its points. Require the image to contain its limits.
+**Definition.** A conic linear system asks for x in a nonempty convex cone K with Ax = b, in finite dimensions. It is solvable exactly when b lies in the image cone A(K). The key condition is that A(K) is closed.
 
-**Problem.** For a closed image cone, each unattainable right side has a certificate. A linear functional is nonnegative on the cone but strictly negative on that right side.
+**Problem.** If A(K) is closed and b lies outside it, there is a certificate of infeasibility. This is a linear functional that is nonnegative on A(K) and negative at b.
 
-**How the definition helps.** Closedness lets a separating hyperplane distinguish every point outside the image from all attainable points. Our own example sends a symmetric matrix with nonnegative eigenvalues to its upper-left and off-diagonal entries. The pair (ε, 1) occurs for ε &gt; 0 by choosing lower-right entry 1/ε. The pair (0, 1) cannot occur because the determinant would be negative. Continuity therefore rules out a certificate there.
+**How the definition helps.** Closedness lets a separating hyperplane split every point outside the image from all attainable points. Our own example sends a positive semidefinite 2 × 2 matrix to its upper-left and off-diagonal entries. The pair (ε, 1) occurs for every ε &gt; 0, but (0, 1) does not, since the determinant would be negative. So the image is not closed, and continuity rules out a certificate for (0, 1).
 
 **Wikipedia:** [Farkas' lemma](https://en.wikipedia.org/wiki/Farkas%27_lemma). It says: “The closedness condition is necessary”
 
@@ -629,7 +629,7 @@
 
 **Problem.** Suppose a point minimizes a smooth function under smooth inequality and equality constraints, and a constraint qualification holds there. Then Lagrange multipliers exist, nonnegative for the inequalities and zero for the inactive ones. These are the Karush–Kuhn–Tucker (KKT) conditions.
 
-**How the definition helps.** The qualification makes the linear approximation of the constraints describe the true feasible directions, and then Farkas's lemma gives the multipliers (our own summary). Without it the linear picture can be wrong. Our own example: minimize x subject to x² ≤ 0. The minimizer is 0, but the constraint gradient there is 0, so the KKT equation 1 + 2λ·0 = 0 has no solution. The Fritz John conditions need no qualification, because they put a weight on the objective too, but that weight may be zero. What stays hard is to choose a qualification weak enough for the problem at hand; the page lists a chain of weaker and weaker ones.
+**How the definition helps.** The qualification makes the linear approximation of the constraints describe the true feasible directions, and then Farkas's lemma gives the multipliers (our own summary). Our own example minimizes x subject to x² ≤ 0. The minimizer is 0, but the constraint gradient there is 0, so 1 + 2λ·0 = 0 has no solution. The Fritz John conditions need no qualification, because they also weight the objective, but that weight may be zero.
 
 **Wikipedia:** [Karush–Kuhn–Tucker conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions). It says: “For the constrained case, the situation is more complicated, and one can state a variety of (increasingly complicated) "regularity" conditions under which a constrained minimizer also satisfies the KKT conditions.”
 
@@ -647,7 +647,7 @@
 
 **Problem.** Let Q lie in the Euclidean unit ball and let E be unchanged by permuting coordinates. For 2 ≤ q ≤ ∞, the margin has variance at most C/(1 + (1/2 − 1/q) log M), with C universal. This gives sharp thresholds for random integer feasibility, discrepancy, perceptron and matrix balancing problems.
 
-**How the definition helps.** The margin is one real number that encodes each yes-or-no feasibility problem, so one concentration theorem covers all of them. The paper says that concentration of the margin gives new sharp thresholds and simplifies known results. Our own explanation is that a near miss has a small positive margin, which a yes-or-no test cannot see. The real work is the variance bound in Theorem 1. For q = ∞ it needs permutation symmetry, because classical concentration tools do not reach that case.
+**How the definition helps.** The margin is one real number that encodes each yes-or-no feasibility problem, so one concentration theorem covers all of them. Our own explanation is that a near miss has a small positive margin, which a yes-or-no test cannot see. The real work is the variance bound in Theorem 1. For q = ∞ it needs permutation symmetry, because classical concentration tools do not reach that case.
 
 **Paper or page:** [Zero-One Laws for Random Feasibility Problems](https://arxiv.org/abs/2309.13133v3). It says: “Concentration of the margin implies a host of new sharp threshold results in these models, and also greatly simplifies and extends some key known results.”
 
@@ -665,7 +665,7 @@
 
 **Problem.** Let n ≥ 3 and let S be the set where finitely many quadratics are all negative. Suppose S is nonempty and its convex hull is not all of ℝⁿ. Under HHC, the convex hull of S is the intersection of the sets given by suitable aggregations.
 
-**How the definition helps.** HHC puts convexity where the proof must separate, which is in the space of constraint values on a hyperplane. A valid linear inequality for the hull gives a hyperplane that misses the homogenized set, by Lemma 5.4 of the paper. On that hyperplane the image is convex and misses the negative orthant. So a separating weight vector exists, and it gives the aggregation, by our own reading. In our own reading, the two-form case of Corollary 2.6 matches Dines' classical convexity theorem.
+**How the definition helps.** HHC puts convexity where the proof must separate, which is in the space of constraint values on a hyperplane. A valid linear inequality for the hull gives a hyperplane that misses the homogenized set, by Lemma 5.4 of the paper. On that hyperplane the image is convex and misses the negative orthant. So a separating weight vector exists, and it gives the aggregation, by our own reading.
 
 **Paper or page:** [Aggregations of quadratic inequalities and hidden hyperplane convexity](https://arxiv.org/abs/2210.01722v2), [Aggregations of quadratic inequalities and hidden hyperplane convexity](https://arxiv.org/abs/2210.01722v2), [Aggregations of quadratic inequalities and hidden hyperplane convexity](https://arxiv.org/abs/2210.01722v2). It says: “We show that if the quadratic map associated with S satisfies HHC, then the convex hull of S is defined by special aggregations.”
 
@@ -700,7 +700,7 @@
 
 **Problem.** When the metric is the Hessian of ψ, the end points of these steps are exactly the mirror descent iterates. The flow also makes sense for a Riemannian metric that is not a Hessian, where no dual coordinates exist.
 
-**How the definition helps.** With the gradient frozen, ∇ψ(w) moves at constant velocity, so the equality has a one-line proof. In our own explanation, the chain rule gives d∇ψ(w)/dt = H(w)dw/dt = −∇L(wₖ). After time η, ∇ψ has changed by −η∇L(wₖ), which is the mirror descent update. The definition uses only the metric, so it extends to metrics without a potential. For such metrics one must still solve the flow.
+**How the definition helps.** With the gradient frozen, ∇ψ(w) moves at constant velocity, so the equality has a one-line proof. In our own explanation, the chain rule gives d∇ψ(w)/dt = H(w)dw/dt = −∇L(wₖ). After time η, ∇ψ has changed by −η∇L(wₖ), which is the mirror descent update. The definition uses only the metric, so it extends to metrics without a potential.
 
 **Paper or page:** [Mirrorless Mirror Descent: A Natural Derivation of Mirror Descent](https://arxiv.org/abs/2004.01025v3). It says: “Let ψ:𝒲→ℝ be strictly convex and twice differentiable and let H(𝐰)=∇²ψ(𝐰) be invertible everywhere. … Then 𝐰⁽ᵏ⁾ are the same as the Mirror Descent updates 𝐰<sub>MD</sub>⁽ᵏ⁾ … obtained with ψ as the potential function and the same initialization and stepsize.”
 
@@ -714,7 +714,7 @@
 
 *True by definition.* MSC 90C25 (Convex programming). arXiv math.OC. Level 4: research.
 
-**Definition.** On Euclidean space let q(x) = ‖x‖²/2. The proximal step at x minimizes f(y) + q(y − x) over y. The convex conjugate of g at x is the supremum of x·y − g(y) over y. Add q to each function, take conjugates, average with fixed positive weights summing to one, take the conjugate again, then subtract q.
+**Definition.** The proximal step of f at x minimizes f(y) + ‖y − x‖²/2 over y. The proximal average of f₁ and f₂ with weights α and 1 − α is built in four moves. Add ‖x‖²/2 to each function and take convex conjugates. Average the conjugates with these weights, take the conjugate again, and subtract ‖x‖²/2.
 
 **Problem.** Take two convex functions that never equal −∞ and each take a finite value somewhere. Assume each function’s sets below or at any real level are closed. The proximal step of their proximal average equals the same weighted average of their proximal steps.
 
@@ -734,7 +734,7 @@
 
 **Definition.** Let 𝒳 be a feasible set and f an objective on it. A concave tent is a concave function g on the convex hull of 𝒳 that equals f on 𝒳. The convex hull is the set of finite convex combinations of points of 𝒳.
 
-**Problem.** Let 𝒳 be compact and suppose f has a concave tent g. Then the infimum of f over 𝒳 equals the infimum of g over the convex hull of 𝒳. The two problems also have the same global minimizers.
+**Problem.** Let 𝒳 be compact and suppose f has a concave tent g. Then the infimum of f over 𝒳 equals the infimum of g over the convex hull of 𝒳. Every global minimizer of f is a global minimizer of g.
 
 **How the definition helps.** Concavity gives the inequality directly, so the equality of infima follows from the definition. If x = Σλᵢxᵢ with xᵢ in 𝒳, then g(x) ≥ Σλᵢ f(xᵢ) ≥ inf f, by our own calculation. Points of 𝒳 give the reverse bound because g equals f there. Finding a usable tent is the hard part, and minimizing a concave function can itself be hard.
 
@@ -844,7 +844,7 @@
 
 **Problem.** Let 𝒫 be compact. State-by-state worst-case Bellman evaluation gives the true robust value for every stationary policy, reward and discount exactly when simultaneous solvability holds. If 𝒫 is also convex, this happens exactly when 𝒫 is s-rectangular.
 
-**How the definition helps.** Simultaneous solvability states exactly what state-by-state evaluation needs: the separate worst cases fit together into one model. That is Theorem 1. For a product set this is clear, because each state's worst row can be chosen independently, by our own explanation. When rows are coupled, two states can prefer incompatible models, by our own example of one shared parameter. The hard direction of Theorem 2 uses convexity to turn the property back into a product structure.
+**How the definition helps.** Simultaneous solvability states exactly what state-by-state evaluation needs: the separate worst cases fit together into one model. For a product set this is clear, because each state's worst row can be chosen independently (our own explanation). When rows are coupled, two states can prefer incompatible models, as with one shared parameter (our own example). The hard direction of Theorem 2 uses convexity to turn the property back into a product structure.
 
 **Paper or page:** [Tractable Robust Markov Decision Processes](https://arxiv.org/abs/2411.08435v1), [Tractable Robust Markov Decision Processes](https://arxiv.org/abs/2411.08435v1), [Tractable Robust Markov Decision Processes](https://arxiv.org/abs/2411.08435v1). It says: “our proof techniques rely on identifying a novel simultaneous solvability property, which we show is at the heart of several important properties of RMDPs, including the existence of stationary optimal policies and dynamic programming-based formulations.”
 
@@ -934,7 +934,7 @@
 
 **Problem.** Substituting Ax + b for the argument of a self-concordant function preserves the same constant on the nonempty domain of the new function.
 
-**How the definition helps.** The Hessian-based bound is unchanged because both directional derivatives after substitution are the old derivatives along the same transformed direction. This is the chain rule along a line. A bound on changes of the Hessian in a fixed Euclidean norm can instead change its constant under a rescaling. The work in the theory is not invariance. It is using the new bound to control Newton steps, which use first and second derivatives to move toward a minimum.
+**How the definition helps.** The Hessian-based bound is unchanged because both directional derivatives after substitution are the old derivatives along the transformed direction. This is the chain rule along a line. A bound on Hessian changes in a fixed Euclidean norm can instead change its constant under a rescaling. The real work in the theory is using the bound to control Newton steps.
 
 **Wikipedia:** [Self-concordant function](https://en.wikipedia.org/wiki/Self-concordant_function). It says: “The authors note that the right hand side can be made also invariant if we replace the Euclidean metric by the scalar product defined by the Hessian of f”
 

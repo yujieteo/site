@@ -38,9 +38,9 @@
 
 **Definition.** A subgradient of a convex function f at x₀ is a number c with f(x) − f(x₀) ≥ c(x − x₀) for all x. The set of all subgradients at x₀ is the subdifferential. For f(x) = \|x\| the subdifferential at 0 is the interval \[−1, 1\].
 
-**Problem.** State Fermat's rule, that the slope is zero at a minimum, for convex functions with corners.
+**Problem.** A point x₀ is a global minimum of a convex function f exactly when 0 is a subgradient of f at x₀. This is Fermat's rule for convex functions with corners.
 
-**How the definition helps.** Put c = 0 in the definition, and the inequality says f(x) ≥ f(x₀) for all x. So the rule holds by definition, and it gives a global minimum, not only a local one. The derivative version fails at corners such as the minimum of \|x\|, where no derivative exists. A convex function is differentiable at x₀ exactly when the subdifferential has one element. What stays hard is computing subdifferentials of sums and compositions, which needs convex analysis.
+**How the definition helps.** Put c = 0 in the definition, and the inequality says f(x) ≥ f(x₀) for all x. So the rule holds by definition, and it gives a global minimum, not only a local one. The derivative version fails at corners, such as the minimum of \|x\|, where no derivative exists. What stays hard is computing subdifferentials of sums and compositions.
 
 **Wikipedia:** [Subderivative](https://en.wikipedia.org/wiki/Subderivative). It says: “A point x₀ is a global minimum of a convex function f if and only if zero is contained in the subdifferential.”
 
@@ -92,7 +92,7 @@
 
 **Definition.** Fix a rule for choosing actions from the current state. Its Bellman update adds the expected immediate reward to γ times the expected trial value at the next state. The discount γ satisfies 0 ≤ γ &lt; 1.
 
-**Problem.** In a finite decision process with bounded rewards, the largest absolute difference after an update is at most γ times the previous difference. The unique fixed point gives the expected sum of discounted rewards.
+**Problem.** In a finite decision process with bounded rewards, the update shrinks the largest absolute difference between any two trial value functions by at least the factor γ. Its unique fixed point is the expected sum of discounted rewards.
 
 **How the definition helps.** Discounting makes the expected next-step difference strictly smaller in maximum norm whenever the trial values differ (our own). The rewards cancel, and averaging cannot increase the largest absolute difference (our own). The contraction theorem gives uniqueness. Conditioning on the first reward shows that the expected discounted sum is a fixed point (our own). At γ = 1, a single state with zero reward makes every value a fixed point (our own).
 
@@ -124,7 +124,7 @@
 
 **Definition.** On a finite interval, represent a relaxed control by a measure on pairs of times and actions. Its time coordinate has length measure as its distribution. Conditional on the time, actions can follow any probability distribution. An ordinary control concentrates that distribution on one action.
 
-**Problem.** Our own compact-action version uses a compact metric action space. Weak limits of relaxed controls are relaxed controls, where weak convergence tests integrals of continuous functions of time and action.
+**Problem.** For a compact metric action space, a weak limit of relaxed controls is again a relaxed control. Here weak convergence tests integrals of continuous functions of time and action. This compact-action version is our own.
 
 **How the definition helps.** The fixed distribution of time passes to the limit by testing with functions of time alone. In our own account, a conditional probability theorem recovers the action distribution at almost every time. In our own counterexample, let actions alternate faster and faster between −1 and 1 in equal proportions. The limit puts half the mass on each action at every time, so it is not an ordinary control.
 
@@ -236,9 +236,9 @@
 
 *True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 3: graduate.
 
-**Definition.** At x, compare the decrease max(0,F(x) − F(y)) with the distance d(x,y). The local slope takes the upper limit of this ratio as y approaches x through other points. The global slope takes its supremum over every y ≠ x. Both slopes are zero at an isolated point in a geodesic space.
+**Definition.** At x, compare the decrease max(0, F(x) − F(y)) with the distance d(x, y). The local slope takes the upper limit of this ratio as y approaches x. The global slope takes its supremum over every y ≠ x.
 
-**Problem.** Suppose F is finite and convex along constant-speed shortest paths in a space where such a path joins every pair of points. If F is lower semicontinuous, its local slope is lower semicontinuous. This means the value at a limit point never exceeds the lower limit of nearby values.
+**Problem.** Let F be finite, lower semicontinuous and convex along constant-speed shortest paths, in a space where such a path joins every pair of points. Then the local slope of F is lower semicontinuous.
 
 **How the definition helps.** The global formula allows each comparison point to stay fixed while x varies. In our own proof, lower semicontinuity gives the bound for each fixed y ≠ x. Taking the supremum proves the claim. Convexity along the path from x to y identifies the local and global slopes, which is the essential preceding result.
 
@@ -304,9 +304,9 @@
 
 **Definition.** Take a bounded sequence of functions fₙ. After passing to a subsequence, it has a Young measure: a probability measure νₓ on the values for each point x. For every continuous F, F(fₙ) then tends weak-\* to the function whose value at x is the average of F against νₓ.
 
-**Problem.** The Bolza problem minimizes the integral of (u′² − 1)² + u² over \[0, 1\], with u(0) = u(1) = 0. The infimum is 0, but no function attains it: that would need u = 0 and \|u′\| = 1 at once (our own).
+**Problem.** The Bolza problem minimizes the integral of (u′² − 1)² + u² over \[0, 1\], with u(0) = u(1) = 0. No function attains the infimum 0, but the relaxed problem attains it at u = 0 with Young measure ½δ₋₁ + ½δ₁ for u′ at every point (our own).
 
-**How the definition helps.** A minimizing sequence uses zigzags with slopes ±1 that get finer and finer, so u tends to 0 while u′ keeps oscillating. The ordinary weak limit of u′ is 0 and loses the information that \|u′\| = 1 (our own). The Young measure keeps it: the page says it is ½δ₋₁ + ½δ₁ at every point, where δₐ is the point mass at a. With generalized solutions of this kind, the relaxed problem has a minimizer, which is L. C. Young's existence theorem for generalized curves (our own). The hard part is to find out when a Young measure comes from a true function.
+**How the definition helps.** A minimizing sequence uses zigzags with slopes ±1 that get finer and finer, so u tends to 0 while u′ keeps oscillating. The ordinary weak limit of u′ is 0 and loses the information that \|u′\| = 1 (our own). The Young measure keeps it, as the page says. The hard part is to find out when a Young measure comes from a true function.
 
 **Wikipedia:** [Young measure](https://en.wikipedia.org/wiki/Young_measure). It says: “This captures the essential features of all minimizing sequences to this problem, namely, their derivatives u′ₖ(x) will tend to concentrate along the minima {−1, 1} of the integrand”
 
@@ -320,7 +320,7 @@
 
 *True by definition.* MSC 49J52 (Nonsmooth analysis), 52A41. arXiv math.OC. Level 3: graduate.
 
-**Definition.** Let f be convex and have a closed epigraph, with at least one finite value and no value of −∞. Its conjugate f⁎(p) is the supremum of ⟨p, z⟩ − f(z) over z. A subgradient p at x is the slope of an affine function that touches f at x and lies below it. The equivalent equality test is f(x) + f⁎(p) = ⟨p, x⟩ at finite f(x) and f⁎(p).
+**Definition.** Let f be a convex function with a closed epigraph that is somewhere finite and never −∞. Its conjugate f⁎(p) is the supremum of ⟨p, z⟩ − f(z) over z. The equality test says that p is a subgradient of f at x exactly when f(x) + f⁎(p) = ⟨p, x⟩.
 
 **Problem.** A vector p is a subgradient of f at x exactly when x is a subgradient of f⁎ at p.
 
@@ -427,7 +427,7 @@
 
 **Definition.** In the maximum principle, a multiplier consists of a time-dependent vector and a scalar multiplying the cost. An abnormal multiplier has zero cost scalar. For x′ = Ax + Bu with constant matrices, controllability means the columns of B, AB, …, Aⁿ⁻¹B span the n-dimensional state space.
 
-**Problem.** In our own fixed-endpoint version, minimize a smooth running cost with these linear dynamics and no state constraints. Let the action set be open. Then a controllable system admits no abnormal multiplier.
+**Problem.** Minimize a smooth running cost with these linear dynamics, fixed endpoints, an open action set and no state constraints. If the system is controllable, it admits no abnormal multiplier. This fixed-endpoint version is our own.
 
 **How the definition helps.** Controllability makes orthogonality to every propagated input direction force the multiplier vector to vanish. In our own proof, suppose the cost scalar vanishes and call the vector p. Stationarity in the open action set gives pᵀB = 0 almost everywhere, hence everywhere by continuity. The multiplier equation becomes p′ = −Aᵀp. Repeated differentiation gives pᵀAB = 0 and all the remaining column conditions. The span condition forces p = 0, contradicting the maximum principle’s requirement that the multiplier pair be nonzero.
 
@@ -515,9 +515,9 @@
 
 **Definition.** For the problem of minimizing f(x), choose a perturbation F(x, y) with F(x, 0) = f(x). Let v(y) be the infimum of F(x, y) over x. The perturbation dual takes the supremum at y = 0 of all affine functions lying below v.
 
-**Problem.** The dual value cannot exceed the primal value v(0). The two agree if v is convex, never equals −∞, and is finite at zero. For equality, also require lower semicontinuity at zero, so the value there cannot exceed the lower limit nearby.
+**Problem.** The perturbation dual value never exceeds the primal value v(0). The two are equal when v is convex, never −∞, finite at zero and lower semicontinuous at zero.
 
-**How the definition helps.** The affine-lower-bound definition makes weak duality immediate because each affine bound lies below v at zero. The usual Lagrange dual instead forms bounds by putting multipliers on the constraints and minimizing over x. Our own connection is that shifting the constraints lets the multipliers serve as slopes of the affine bounds. The work for equality is the convex analysis theorem that recovers a convex value from its closed lower boundary. One still needs assumptions that give the required regularity at zero.
+**How the definition helps.** The affine-lower-bound definition makes weak duality immediate, because each affine bound lies below v at zero. The usual Lagrange dual instead puts multipliers on the constraints and minimizes over x. Our own connection is that shifting the constraints lets the multipliers serve as slopes of the affine bounds. The work for equality is the convex analysis theorem that recovers a closed convex function from its affine lower bounds.
 
 **Wikipedia:** [Perturbation function](https://en.wikipedia.org/wiki/Perturbation_function). It says: “For any choice of perturbation function F weak duality holds.”
 
@@ -569,7 +569,7 @@
 
 **Problem.** For 1 ≤ p &lt; q, probability measures on Euclidean space with qth moment at most K form a compact set in p-Wasserstein distance.
 
-**How the definition helps.** The higher moment bound controls both distant mass and its contribution to the pth moment. In our own proof, the mass outside radius R is at most K divided by the qth power of R. This uniform bound gives a weakly convergent subsequence by Prokhorov’s theorem, where weak convergence tests bounded continuous functions. The limit inherits the qth moment bound by truncation. Outside radius R, the pth moment is at most K times R to the power p − q. Truncation now gives convergence of pth moments, which together with weak convergence gives Wasserstein convergence. Our own counterexample puts mass n⁻ᵖ at n and the rest at zero, so the weak limit loses the entire pth moment.
+**How the definition helps.** The higher moment bound controls both distant mass and its share of the pth moment. In our own proof, the mass outside radius R is at most K/R<sup>q</sup>, so Prokhorov’s theorem gives a weakly convergent subsequence. Outside radius R, the pth moment is at most K·R<sup>(p − q)</sup>, so pth moments converge too, and this with weak convergence gives Wasserstein convergence. Our own counterexample puts mass n⁻ᵖ at n and the rest at zero, so the weak limit loses the entire pth moment.
 
 **Paper or page:** [Viscosity Solutions of Fully second-order HJB Equations in the Wasserstein Space](https://arxiv.org/abs/2501.01612). It says: “Let K &gt; 0 and p₂ &gt; p₁ ≥ 1.”
 
@@ -686,9 +686,9 @@
 
 *True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 4: research.
 
-**Definition.** Take a continuous path x(t) in a metric space. On each closed interval of positive times, require distance traveled to be bounded by the integral of some integrable speed bound over every subinterval. For each fixed comparison point y, put D(t) = d(x(t),y)². Require D′(t)/2 + λD(t)/2 ≤ F(y) − F(x(t)) almost everywhere.
+**Definition.** A locally absolutely continuous path x(t) in a metric space solves the evolution variational inequality for F and λ if the following holds for every point y. The function D(t) = d(x(t), y)² satisfies D′(t)/2 + λD(t)/2 ≤ F(y) − F(x(t)) for almost every t &gt; 0.
 
-**Problem.** Let F be finite and lower semicontinuous, meaning values cannot jump upward at a limit point. Two such paths for F and λ satisfy d(x(t),z(t)) ≤ exp(−λt)d(x(0),z(0)) for t ≥ 0.
+**Problem.** Let F be finite and lower semicontinuous. Any two solutions x and z of the evolution variational inequality for F and λ satisfy d(x(t), z(t)) ≤ exp(−λt)d(x(0), z(0)) for t ≥ 0.
 
 **How the definition helps.** The distance formulation gives opposite energy differences when each path serves as comparison for the other. For smooth convex energies it replaces the differential equation x′ = −∇F(x) when λ = 0. In our own proof outline, vary the two times independently before restricting to equal times. The energy terms cancel, and integrating the remaining differential inequality gives the bound. Existence of paths satisfying the comparison requires a separate theorem.
 
@@ -903,7 +903,7 @@
 
 **Definition.** Classical optimal transport moves a law μ to a law ν at least total cost. Weak optimal transport, due to Gozlan, Roberto, Samson and Tetali, lets the cost at x depend on the whole conditional law πₓ of the destination. A barycentric cost depends only on the mean of πₓ, for example \|x − mean(πₓ)\|².
 
-**Problem.** The Brenier–Strassen theorem of Gozlan and Juillet concerns the quadratic barycentric problem for laws on ℝᵈ with finite second moments. In our own summary, the map x ↦ mean(πₓ) of an optimal coupling is unique μ-almost everywhere. It is the gradient of a convex function and is 1-Lipschitz, so it does not increase distances.
+**Problem.** Take laws μ and ν on ℝᵈ with finite second moments and the quadratic barycentric cost. For an optimal coupling, the map x ↦ mean(πₓ) is unique μ-almost everywhere, is the gradient of a convex function, and is 1-Lipschitz. This is the Brenier–Strassen theorem of Gozlan and Juillet, in our own summary.
 
 **How the definition helps.** Once the problem is a weak transport problem, the paper's general duality theorem applies to it directly. The abstract says that the authors use this to give a concise derivation of the Brenier–Strassen theorem. The general theorem gives strong duality and describes optimizers by a complementary slackness condition, as in classical transport. Proving that general theorem for non-linear costs is the real work (our own).
 
@@ -923,9 +923,9 @@
 
 **Definition.** The horizontal de Rham complex of a field bundle is the de Rham complex in the spacetime directions, for forms that depend on the fields and their derivatives. The Euler–Lagrange complex extends this complex by two more maps: first the Euler–Lagrange derivative, which sends a Lagrangian to its equations of motion, then the Helmholtz operator. On a trivial vector bundle over Minkowski spacetime, this complex is exact (the image of each map is the kernel of the next).
 
-**Problem.** This is the inverse problem of the calculus of variations. Given a system of partial differential equations, decide whether it is the Euler–Lagrange equation of some Lagrangian.
+**Problem.** On a trivial vector bundle over Minkowski spacetime, a system of partial differential equations is the Euler–Lagrange equation of some Lagrangian exactly when the Helmholtz operator sends its source form to zero. This solves the inverse problem of the calculus of variations.
 
-**How the definition helps.** Exactness of the complex turns the inverse problem into a single check. A source form (a system of equations written as a form) is variational, that is, it comes from a Lagrangian, exactly when the Helmholtz operator sends it to zero. The same exactness says that a Lagrangian with zero Euler–Lagrange form is a total derivative. The real content is the exactness theorem for the variational bicomplex (Anderson, theorem 5.1, cited on the page). This theorem holds for trivial bundles and needs topological corrections in general (Anderson and Duchamp). The page does not name the inverse problem; that link is our own.
+**How the definition helps.** Exactness of the complex turns the inverse problem into a single check: the kernel of the Helmholtz operator is the image of the Euler–Lagrange derivative. The same exactness says that a Lagrangian with zero Euler–Lagrange form is a total derivative. The real content is the exactness theorem for the variational bicomplex (Anderson, theorem 5.1, cited on the page), which needs topological corrections for nontrivial bundles. The page does not name the inverse problem; that link is our own.
 
 **nLab:** [A first idea of quantum field theory -- Lagrangians](https://ncatlab.org/nlab/show/A+first+idea+of+quantum+field+theory+--+Lagrangians). It says: “By definition of exact sequence, the Helmholtz operator detects whether a partial differential equation on field histories, induced by a variational differential form”
 

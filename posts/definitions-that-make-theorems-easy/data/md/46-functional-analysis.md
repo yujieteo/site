@@ -6,9 +6,9 @@
 
 **Definition.** For 0 &lt; p ≤ 1, set ‖x‖ = Σ \|xᵢ\|ᵖ, without taking the p-th root. For p = 1 this is the usual 1-norm.
 
-**Problem.** For 0 &lt; p &lt; 1, the usual p-norm fails the triangle inequality, because Minkowski's inequality fails. So it gives no metric.
+**Problem.** For 0 &lt; p ≤ 1, d(x, y) = Σ \|xᵢ − yᵢ\|ᵖ is a metric. For 0 &lt; p &lt; 1 the usual p-norm, with the root, fails the triangle inequality.
 
-**How the definition helps.** Without the root, the triangle inequality follows from a simple inequality for single numbers. For 0 &lt; p ≤ 1 the function t ↦ tᵖ is subadditive: (s + t)ᵖ ≤ sᵖ + tᵖ for s, t ≥ 0. So Σ \|xᵢ + yᵢ\|ᵖ is at most Σ \|xᵢ\|ᵖ + Σ \|yᵢ\|ᵖ, and d(x, y) = ‖x − y‖ is a metric. The cost is that ‖x‖ is homogeneous of degree p, not 1: ‖cx‖ = \|c\|ᵖ ‖x‖. So it is an F-norm (it satisfies the triangle inequality but does not scale linearly), not a norm. The subadditivity step is standard, and the nLab states the result without proof.
+**How the definition helps.** Without the root, the triangle inequality follows from one inequality for numbers. For 0 &lt; p ≤ 1 and s, t ≥ 0, (s + t)ᵖ ≤ sᵖ + tᵖ, so Σ \|xᵢ + yᵢ\|ᵖ ≤ Σ \|xᵢ\|ᵖ + Σ \|yᵢ\|ᵖ. The cost is that ‖cx‖ = \|c\|ᵖ ‖x‖, so ‖·‖ is not a norm. The subadditivity step is standard, and the nLab states the result without proof.
 
 **nLab:** [p-norm](https://ncatlab.org/nlab/show/p-norm). It says: “A variant definition for 0 &lt; p ≤ 1 (which agrees with the usual definition for p = 1, preserving continuity in p) leaves out the pth root; then the result satisfies the triangle inequality (and indeed is a metric)”
 
@@ -22,9 +22,9 @@
 
 **Definition.** An inner product space is a real vector space with a symmetric, positive definite bilinear form ⟨−,−⟩. The length of v is \|v\| = √⟨v,v⟩. The vectors v and w are perpendicular, written v ⊥ w, when ⟨v,w⟩ = 0.
 
-**Problem.** Prove the Pythagorean theorem: for a right triangle with legs a, b and hypotenuse c, a² + b² = c².
+**Problem.** In an inner product space, if v ⊥ w then \|v + w\|² = \|v\|² + \|w\|².
 
-**How the definition helps.** Perpendicularity and length both come from one inner product, so the theorem is one line of algebra. Expand \|a + b\|² = \|a\|² + \|b\|² + 2⟨a,b⟩. In words, the squared length of a sum is the sum of the squared lengths plus a cross term. The cross term is zero when a ⊥ b. So the theorem is a special case of the law of cosines and needs only algebra. The nLab notes that the real work moves elsewhere. One must show that Euclidean geometry, as given by its axioms, does carry an inner product structure.
+**How the definition helps.** Perpendicularity and length both come from one inner product, so the theorem is one line of algebra. Expand \|v + w\|² = \|v\|² + \|w\|² + 2⟨v,w⟩, and the cross term is zero when v ⊥ w. The nLab notes that the real work moves elsewhere: one must show that Euclidean geometry carries an inner product structure.
 
 **nLab:** [Pythagorean theorem](https://ncatlab.org/nlab/show/Pythagorean+theorem). It says: “That the Pythagorean Theorem holds in an inner product space is trivial; all that matters is establishing that one is, in fact, working in an inner product space.”
 
@@ -38,9 +38,9 @@
 
 **Definition.** A seminorm is like a norm, but it may vanish at a nonzero vector. A norm vanishes only at the zero vector. C\[a, b\] is the space of continuous real functions on the closed interval \[a, b\].
 
-**Problem.** On a space of functions, the integral of \|x\| should be a norm. For all integrable functions it is only a seminorm.
+**Problem.** On C\[a, b\], ‖x‖₁ = ∫ₐᵇ \|x(t)\| dt is a norm. On all integrable functions it is only a seminorm.
 
-**How the definition helps.** Continuity rules out functions that are nonzero only on a set too small for the integral to see. Our own sketch: if x(t₀) ≠ 0 and x is continuous, then \|x\| &gt; \|x(t₀)\|/2 on some interval, so the integral of \|x\| is positive. Our own counterexample: the function that is 1 at one point and 0 elsewhere has integral 0 but is not the zero function. So on all integrable functions, the 1-seminorm is not a norm. The usual fix for L¹ is to identify functions that agree almost everywhere. Our own remark: on C\[a, b\] no such identification is needed, but the space is not complete under this norm.
+**How the definition helps.** Continuity rules out nonzero functions that the integral cannot see. Our own sketch: if x(t₀) ≠ 0, then \|x\| &gt; \|x(t₀)\|/2 on some interval, so the integral of \|x\| is positive. Our own counterexample: the function that is 1 at one point and 0 elsewhere has integral 0. So on C\[a, b\] no identification of functions almost everywhere is needed, as it is for L¹.
 
 **Paper or page:** [1-Seminorm on Continuous on Closed Interval Real-Valued Functions is Norm](https://proofwiki.org/wiki/1-Seminorm_on_Continuous_on_Closed_Interval_Real-Valued_Functions_is_Norm). It says: “Let ‖x‖₁ := ∫ₐᵇ \|x(t)\| dt be the 1-seminorm. Then ‖·‖₁ is a norm on C\[a, b\].”
 
@@ -77,7 +77,7 @@
 
 **Problem.** Let X be a compact Hausdorff space, and let C(X, ℝ) be the algebra of continuous real functions on X. A subalgebra of C(X, ℝ) that contains a non-zero constant function is dense in the uniform norm exactly when it separates points.
 
-**How the definition helps.** The condition is both necessary and enough, so one easy check settles density. Stone showed that a subalgebra with a non-zero constant is dense exactly when it separates points. Weierstrass's theorem on polynomials on \[a,b\] becomes a special case. For complex-valued functions, the subalgebra must also be closed under complex conjugation. For example, the polynomials in z on the closed unit disc separate points but are not dense (our own example). The reason is that their uniform limits are holomorphic inside the disc.
+**How the definition helps.** The condition is both necessary and enough, so one easy check settles density. Weierstrass's theorem on polynomials on \[a,b\] becomes a special case. For complex-valued functions the subalgebra must also be closed under complex conjugation. For example, the polynomials in z on the closed unit disc separate points but are not dense, because their uniform limits are holomorphic inside (our own example).
 
 **Wikipedia:** [Stone–Weierstrass theorem](https://en.wikipedia.org/wiki/Stone%E2%80%93Weierstrass_theorem). It says: “It turns out that the crucial property that a subalgebra must satisfy is that it separates points”
 
@@ -93,9 +93,9 @@
 
 **Definition.** Index the Lebesgue spaces by the reciprocal of the usual exponent. Write M(a) for the space Lᵖ with p = 1/a. So M(0) = L∞, M(1/2) = L² and M(1) = L¹.
 
-**Problem.** Hölder's inequality says this: take a function in Lᵖ and a function in the Lebesgue space with exponent q. If 1/p + 1/q = 1/r, then their product lies in Lʳ.
+**Problem.** If f lies in M(a) and g lies in M(b), then fg lies in M(a + b). In the usual indexing this is Hölder's rule 1/p + 1/q = 1/r.
 
-**How the definition helps.** With the reciprocal grading, the degrees simply add when you multiply functions. Multiplication of functions maps M(a) × M(b) to M(a + b), so the spaces form a graded algebra. The odd-looking formula 1/p + 1/q = 1/r becomes the plain addition of degrees. The inequality itself still needs a proof; the new indexing only makes its form natural. The nLab also uses this grading to define these spaces from a measurable space with negligible sets (a chosen family of sets that count as measure zero), without a chosen measure.
+**How the definition helps.** With the reciprocal grading, degrees simply add when you multiply functions. So multiplication maps M(a) × M(b) to M(a + b), and the spaces form a graded algebra. The inequality itself still needs a proof; the new indexing only makes its form natural.
 
 **nLab:** [Lebesgue space](https://ncatlab.org/nlab/show/Lebesgue+space). It says: “If we take M<sup>p=L^</sup>(1/p), the spaces M<sup>p</sup> form a C-graded algebra, where C denotes complex numbers. This is a conceptual explanation for the appearance of formulas like 1/p+1/q=1/r in Hölder's inequality.”
 
@@ -111,7 +111,7 @@
 
 **Problem.** The quantity ‖f‖ₚ = (∫\|f\|ᵖ)¹ᐟᵖ is a norm. Lᵖ is complete for this norm, so it is a Banach space (the Riesz–Fischer theorem).
 
-**How the definition helps.** Treating functions that agree almost everywhere as equal turns ‖·‖ₚ into a true norm. On functions, ‖f‖ₚ = 0 does not imply f = 0. For example, the indicator function of a non-empty set of measure zero has norm 0. So on functions ‖·‖ₚ is only a seminorm (it has every property of a norm, except that a nonzero function can have norm 0). The quotient by the functions that are 0 almost everywhere makes it a norm, and then you can state and prove completeness. The cost is that the value of an element at a single point has no meaning. To talk about point values you need extra results (our own remark).
+**How the definition helps.** Treating functions that agree almost everywhere as equal turns ‖·‖ₚ into a true norm. On functions, the indicator of a non-empty set of measure zero is nonzero but has norm 0, so ‖·‖ₚ is only a seminorm. The quotient makes it a norm, and then completeness can be stated and proved. The cost is that the value of an element at a single point has no meaning (our own remark).
 
 **Wikipedia:** [Lp space](https://en.wikipedia.org/wiki/Lp_space). It says: “Hence, strictly speaking Lᵖ(S, μ) consists of equivalence classes of functions.”
 
@@ -127,9 +127,9 @@
 
 **Definition.** A sequence of functions gₙ converges to f in the L² norm, or in mean square, when ∫\|gₙ − f\|² → 0. In words, the integral of the squared error tends to 0.
 
-**Problem.** The Fourier series of every square-integrable function converges to the function.
+**Problem.** The Fourier series of every square-integrable function converges to the function in the L² norm.
 
-**How the definition helps.** Measuring the error in the L² norm makes the statement true for every square-integrable function. Pointwise, the statement is false: there are continuous functions whose Fourier series diverges at some points. Kolmogorov even found an L¹ function (an integrable function) whose Fourier series diverges almost everywhere. In the L² norm, the partial sums of the Fourier series of every L² function converge to it, by the Riesz–Fischer theorem. Conversely, every square-summable sequence of coefficients is the Fourier series of some L² function. Our own remark: once one knows that the trigonometric functions form a complete orthonormal system, the proof uses only facts about Hilbert spaces. The pointwise question stayed hard until 1966, when Carleson proved that the Fourier series of an L² function converges almost everywhere.
+**How the definition helps.** Measuring the error in the L² norm makes the statement true for every square-integrable function. Pointwise it is false: some continuous functions have Fourier series that diverge at some points. In the L² norm, the partial sums converge by the Riesz–Fischer theorem. Our own remark: once the trigonometric functions are known to form a complete orthonormal system, the proof uses only facts about Hilbert spaces.
 
 **Wikipedia:** [Convergence of Fourier series](https://en.wikipedia.org/wiki/Convergence_of_Fourier_series), [Lp space](https://en.wikipedia.org/wiki/Lp_space). It says: “According to the Riesz–Fischer theorem, if ƒ is square-integrable then S<sub>N</sub>(f) converges to ƒ in the L²-norm”
 
@@ -145,9 +145,9 @@
 
 **Definition.** L² is the space of measurable functions whose square has finite Lebesgue integral. Two functions count as the same when they are equal almost everywhere. The inner product is ⟨f, g⟩ = ∫ f̄ g.
 
-**Problem.** L² is complete (Riesz–Fischer, 1907). So the classical results of Fourier, Bessel and Parseval on Fourier series carry over to abstract Hilbert spaces.
+**Problem.** L² is complete (Riesz–Fischer, 1907). So every series in an orthonormal system with square-summable coefficients has a sum in L².
 
-**How the definition helps.** The Lebesgue integral admits enough functions that limits stay in the space. With the Riemann integral, the square-integrable functions do not form a complete space, because not enough functions are Riemann integrable. Lebesgue's integral (1904) enlarges the class. In 1907, Riesz and Fischer independently proved completeness. Then a series in an orthonormal system with square-summable coefficients always has a sum in the space. The article says that completeness is the missing ingredient in eigenfunction expansions that fail to converge in L².
+**How the definition helps.** The Lebesgue integral admits enough functions that limits stay in the space. With the Riemann integral, the square-integrable functions do not form a complete space, because not enough functions are Riemann integrable. The article says that completeness is the missing ingredient in eigenfunction expansions that fail to converge in L².
 
 **Wikipedia:** [Hilbert space](https://en.wikipedia.org/wiki/Hilbert_space). It says: “The Lebesgue integral is essential to ensure completeness: on domains of real numbers, for instance, not enough functions are Riemann integrable.”
 
@@ -177,11 +177,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 46A03 (General theory of locally convex spaces), 46A22. arXiv math.FA. Level 3: graduate.
 
-**Definition.** A locally convex space is a topological vector space whose topology has a base of convex neighbourhoods of zero. Equivalently, a family of seminorms gives its topology. A seminorm is like a norm, except that a nonzero vector can have seminorm 0. Von Neumann gave the general definition in 1935.
+**Definition.** A locally convex space is a topological vector space whose topology has a base of convex neighbourhoods of zero. Equivalently, a family of seminorms gives its topology.
 
-**Problem.** The Hahn–Banach extension property: every continuous linear functional on a subspace extends to the whole space. Then there are enough continuous functionals to separate points.
+**Problem.** In a Hausdorff locally convex space, every continuous linear functional on a subspace extends to a continuous linear functional on the whole space. So the continuous linear functionals separate points.
 
-**How the definition helps.** The Hahn–Banach theorem holds in every Hausdorff locally convex space, where the seminorms give the bounds that the extension needs. Without convexity it fails. In Lᵖ\[0, 1\] with 0 &lt; p &lt; 1, the only convex neighbourhood of zero is the whole space. Our own remark: so the only continuous linear functional there is zero, and no nonzero functional on a subspace extends. Kalton's theorem gives a converse: a complete metrizable topological vector space with the extension property is locally convex.
+**How the definition helps.** The seminorms give the bounds that the Hahn–Banach extension needs. Without convexity the theorem fails. In Lᵖ\[0, 1\] with 0 &lt; p &lt; 1, the only convex neighbourhood of zero is the whole space, so the only continuous linear functional is zero (our own remark). Kalton's theorem gives a converse for complete metrizable spaces.
 
 **Wikipedia:** [Locally convex topological vector space](https://en.wikipedia.org/wiki/Locally_convex_topological_vector_space). It says: “They are not locally convex, since the only convex neighborhood of zero is the whole space.”
 
@@ -195,11 +195,11 @@
 
 *True by definition.* MSC 46A08 (Barrelled spaces, bornological spaces). arXiv math.FA. Level 3: graduate.
 
-**Definition.** A set is balanced when it contains tx for each of its points x and each scalar with \|t\| ≤ 1. It is absorbing when every vector lies in some multiple of it. A barrel is a closed, convex, balanced and absorbing set, and a space is barrelled when every barrel is a neighbourhood of zero. Bourbaki introduced the notion in 1950.
+**Definition.** A barrel is a closed, convex, balanced and absorbing set. Balanced means that it contains tx for each of its points x and each scalar t with \|t\| ≤ 1. Absorbing means that every vector lies in some multiple of it. A locally convex space is barrelled when every barrel is a neighbourhood of zero.
 
-**Problem.** The uniform boundedness principle says that a family of continuous linear maps that is bounded at each point is equicontinuous. For Banach spaces it follows from the Baire category theorem. One wants it for spaces of test functions and other spaces that are not normed.
+**Problem.** In a barrelled locally convex space, every family of continuous linear functionals that is bounded at each point is equicontinuous.
 
-**How the definition helps.** The definition copies the step of the proof that needs completeness, so the principle is almost the definition. For a pointwise bounded family of functionals, the set where all of them are at most 1 is a barrel (our own sketch). In a barrelled space that set is a neighbourhood of zero, and this is equicontinuity. The work moves into a different theorem: Banach spaces, Fréchet spaces and all spaces of the second category are barrelled. The page also gives a normed space that is not barrelled: L² of \[0, 1\] with the L¹ norm.
+**How the definition helps.** The definition copies the step of the proof that needs completeness, so the principle is almost the definition. For a pointwise bounded family, the set where all the functionals are at most 1 in absolute value is a barrel (our own sketch). In a barrelled space it is a neighbourhood of zero, which is equicontinuity. The work moves into showing that Banach and Fréchet spaces are barrelled.
 
 **Wikipedia:** [Barrelled space](https://en.wikipedia.org/wiki/Barrelled_space). It says: “It follows from the above two characterizations that in the class of locally convex TVS, barrelled spaces are exactly those for which the uniform boundedness principle holds.”
 
@@ -215,9 +215,9 @@
 
 **Definition.** A subset of a topological vector space is bounded when every neighbourhood of zero absorbs it after scaling. A locally convex space is bornological when every convex balanced set that absorbs all bounded sets is a neighbourhood of zero. Normed spaces, metrizable locally convex spaces and their inductive limits are bornological.
 
-**Problem.** For normed spaces, a linear map is continuous exactly when it sends bounded sets to bounded sets. In general locally convex spaces this can fail. One wants a class of spaces where the normed-space rule still holds.
+**Problem.** A linear map from a bornological space into a locally convex space is continuous exactly when it sends bounded sets to bounded sets.
 
-**How the definition helps.** The definition asks for exactly the neighbourhoods that a bounded map pulls back, so the rule holds by unwinding it. If a linear map sends bounded sets to bounded sets, the preimage of a convex neighbourhood absorbs every bounded set (our own sketch). In a bornological space such a preimage is a neighbourhood of zero, so the map is continuous (our own sketch). The work moves into a different theorem: metrizable spaces and their inductive limits are bornological. The space of test functions is an example (our own). A space with the weak topology of an infinite-dimensional normed space is not bornological (our own example).
+**How the definition helps.** The definition asks for exactly the neighbourhoods that a bounded map pulls back. If a linear map sends bounded sets to bounded sets, the preimage of a convex balanced neighbourhood absorbs every bounded set (our own sketch). In a bornological space that preimage is a neighbourhood of zero, so the map is continuous (our own sketch). The work moves into showing that metrizable spaces and their inductive limits are bornological.
 
 **Wikipedia:** [Bornological space](https://en.wikipedia.org/wiki/Bornological_space). It says: “Bornological spaces are distinguished by the property that a linear map from a bornological space into any locally convex spaces is continuous if and only if it is a bounded linear operator.”
 
@@ -229,11 +229,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46A11 (Spaces determined by compactness or summability properties (nuclear spaces, Schwartz spaces, Montel spaces, etc.)), 46A32, 46F05. arXiv math.FA. Level 3: graduate.
 
-**Definition.** A locally convex space is a topological vector space whose topology comes from a family of seminorms. It is nuclear if for every seminorm p there is a larger seminorm q such that the natural map from the Banach space completed for q to the Banach space completed for p is a nuclear operator. (A nuclear operator is an absolutely summable series of rank-one operators.) Informally, every neighbourhood of zero contains a much smaller one. Grothendieck introduced nuclear spaces.
+**Definition.** A locally convex space is nuclear if each seminorm p has a larger seminorm q for which the natural map from the q-completion to the p-completion is a nuclear operator. A nuclear operator is an absolutely summable series of rank-one operators. Informally, every neighbourhood of zero contains a much smaller one.
 
-**Problem.** The Schwartz kernel theorem says that every continuous linear map from test functions on Ω₂ to distributions on Ω₁ is given by a distribution on Ω₁ × Ω₂. It also says that 𝒟′(Ω₁ × Ω₂) ≅ 𝒟′(Ω₁) ⊗̂ 𝒟′(Ω₂), where ⊗̂ is the completed tensor product. (Test functions are smooth functions with compact support, and distributions are continuous linear functionals on them.)
+**Problem.** Every continuous linear map from test functions on Ω₂ to distributions on Ω₁ is given by a distribution on Ω₁ × Ω₂, its kernel. Also 𝒟′(Ω₁ × Ω₂) ≅ 𝒟′(Ω₁) ⊗̂ 𝒟′(Ω₂), where ⊗̂ is the completed tensor product.
 
-**How the definition helps.** Nuclearity is the property that Grothendieck found to explain why the kernel theorem holds. The kernel theorem is false if test functions and distributions are replaced by the Hilbert space L² and its dual. Grothendieck asked why it holds for distributions but not for L², and the answer was the property he called nuclearity. The article notes that for a nuclear space the projective and injective tensor products agree. (These are the two standard ways to give a tensor product of locally convex spaces a topology.) So there is only one natural choice of completed tensor product. The article also lists isomorphisms of nuclear spaces such as C∞(M) ⊗ C∞(N) ≅ C∞(M × N) for smooth manifolds.
+**How the definition helps.** Nuclearity is the property that Grothendieck found to explain why the kernel theorem holds. The theorem fails if test functions and distributions are replaced by L² and its dual. For a nuclear space the projective and injective tensor products agree, so there is only one natural completed tensor product.
 
 **Wikipedia:** [Nuclear space](https://en.wikipedia.org/wiki/Nuclear_space). It says: “Much of the theory of nuclear spaces was developed by Alexander Grothendieck while investigating the Schwartz kernel theorem”
 
@@ -269,7 +269,7 @@
 
 **Problem.** The Banach–Alaoglu theorem: the closed unit ball of X′ is compact in the weak-\* topology. This gives limits of bounded sequences of functionals or measures.
 
-**How the definition helps.** The weak-\* topology has so few open sets that Tychonoff's theorem applies to the unit ball. In the norm topology, the unit ball is compact only in finite dimensions (F. Riesz's theorem), so compactness arguments fail in infinite dimensions. The weak-\* topology is the topology of pointwise convergence on X. So the dual ball sits inside a product of compact discs, one disc for each x in X, and Tychonoff's theorem gives compactness. Banach had a sequential version in 1932 for separable spaces, and Alaoglu proved the general case in 1940. Our own remark: the cost is that weak-\* limits keep less information; for example, the norm can drop in the limit.
+**How the definition helps.** The weak-\* topology has so few open sets that Tychonoff's theorem applies to the unit ball. It is the topology of pointwise convergence on X, so the dual ball sits inside a product of compact discs, one for each x in X. In the norm topology the unit ball is compact only in finite dimensions, by F. Riesz's theorem. Our own remark: the cost is that weak-\* limits keep less information; the norm can drop in the limit.
 
 **Wikipedia:** [Banach–Alaoglu theorem](https://en.wikipedia.org/wiki/Banach%E2%80%93Alaoglu_theorem). It says: “This theorem is one example of the utility of having different topologies on the same vector space.”
 
@@ -287,7 +287,7 @@
 
 **Problem.** If x₀ is outside C, there is a continuous linear functional f such that f(x) &lt; f(x₀) for every x in C.
 
-**How the definition helps.** The gauge expresses membership as p(x) &lt; 1, so the separation question becomes one about a linear functional bounded by p. Our own proof starts with f(t·x₀) = t, which is at most p(t·x₀) since p(x₀) ≥ 1 and p is nonnegative. The analytic Hahn–Banach theorem extends this functional to the whole space without losing that bound. On C, f is below one, while f(x₀) is one. Since C contains a ball about zero, a constant times the norm bounds both p(x) and p(−x), so f is continuous. The hard step is the extension theorem, not the translation from the bound to separation.
+**How the definition helps.** The gauge expresses membership as p(x) &lt; 1, so separation becomes a question about a linear functional bounded by p. Our own proof starts with f(t·x₀) = t on the line through x₀, which is at most p(t·x₀). The analytic Hahn–Banach theorem extends f to the whole space with f ≤ p, so f &lt; 1 on C while f(x₀) = 1. Since C contains a ball about zero, p is bounded by a constant times the norm, so f is continuous.
 
 **Paper or page:** [Minkowski Functional of Open Convex Set in Normed Vector Space recovers Set](https://proofwiki.org/wiki/Minkowski_Functional_of_Open_Convex_Set_in_Normed_Vector_Space_recovers_Set), [Minkowski Functional of Convex Absorbing Set is Sublinear](https://proofwiki.org/wiki/Minkowski_Functional_of_Convex_Absorbing_Set_is_Sublinear). It says: “Let C be an open convex subset of X with 0 ∈ C. Let p<sub>C</sub> be the Minkowski functional for C. Then: C = {x ∈ X : p<sub>C</sub>(x) &lt; 1}”
 
@@ -303,7 +303,7 @@
 
 **Problem.** The open mapping theorem says that a bounded linear surjection between Banach spaces is open. So a bounded linear bijection between Banach spaces has a bounded inverse.
 
-**How the definition helps.** Completeness of the target gives the Baire category theorem, and completeness of the domain turns 'nearly open' into 'open' by summing a series. The page gives the counterexample. On the finitely supported sequences with the sup norm, T x = (x₁, x₂/2, x₃/3, …) is bounded, linear and bijective. Its inverse multiplies the n-th entry by n, so it is unbounded. That space is not complete, so the theorem does not apply. The page says the same proof works for Fréchet spaces, which are complete and metrizable.
+**How the definition helps.** Completeness of the target gives the Baire category theorem, and completeness of the domain turns 'nearly open' into 'open' by summing a series. The page gives a counterexample on the finitely supported sequences with the sup norm. There T x = (x₁, x₂/2, x₃/3, …) is a bounded linear bijection, but its inverse multiplies the n-th entry by n and is unbounded. The page says the same proof works for Fréchet spaces.
 
 **Wikipedia:** [Open mapping theorem (functional analysis)](https://en.wikipedia.org/wiki/Open_mapping_theorem_%28functional_analysis%29). It says: “The statement of the theorem is no longer true if either space is assumed to be only a normed vector space”
 
@@ -336,9 +336,9 @@
 
 **Definition.** An isometry is a map that keeps all distances. It is surjective if every point of the target is hit. It is affine if it keeps all weighted averages of two points.
 
-**Problem.** The Mazur–Ulam theorem says that a surjective isometry between real normed spaces is affine, so it is a linear map plus a translation. The quoted result also gives Mankiewicz's extension of local isometries.
+**Problem.** The Mazur–Ulam theorem says that a surjective isometry between real normed spaces is affine. So it is a real-linear map plus a translation.
 
-**How the definition helps.** Surjectivity lets the proof reflect through midpoints using the inverse map, so midpoints are kept (our own account of the standard proof). Without it the theorem is false. In our own example, take the map t ↦ (t, sin t) from ℝ into ℝ² with the maximum norm. It keeps distances, because sin changes by at most \|t − s\|. But it is not affine. The theorem gives real-linear maps only. For example, complex conjugation on ℂ is an onto isometry that is not complex-linear (our own remark).
+**How the definition helps.** Surjectivity lets the proof reflect through midpoints using the inverse map, so midpoints are kept (our own account of the standard proof). Without it the theorem is false. In our own example, t ↦ (t, sin t) from ℝ into ℝ² with the maximum norm keeps distances but is not affine.
 
 **Paper or page:** [Weighted composition operators preserving various Lipschitz constants](https://arxiv.org/abs/2306.12824v1). It says: “Every surjective isometry T: M→N between normed linear spaces is affine; namely, T(λx+(1−λ)y)= λTx+(1−λ)Ty, for all x,y∈M and 0≤λ≤1.”
 
@@ -352,11 +352,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46B04 (Isometric theory of Banach spaces), 18D15. arXiv math.FA, math.CT. Level 3: graduate.
 
-**Definition.** In the category Ban, a morphism between Banach spaces is a short linear map. A short linear map is a linear map f with operator norm ‖f‖ ≤ 1, so it never makes a vector longer. Analysts call this the 'isometric category'. The other choice, with all bounded linear maps, is the 'isomorphic category'.
+**Definition.** In the category Ban, a morphism between Banach spaces is a short linear map, meaning a linear map f with operator norm ‖f‖ ≤ 1. Analysts call this the isometric category; with all bounded linear maps it is the isomorphic category.
 
-**Problem.** You want a category of Banach spaces whose isomorphisms are the isometric isomorphisms. It should also have good categorical structure: limits, colimits and a closed monoidal structure (a tensor product with a matching space of maps).
+**Problem.** In Ban with short linear maps, the isomorphisms are exactly the surjective linear isometries. This category also has all small limits and colimits and is symmetric monoidal closed.
 
-**How the definition helps.** If neither f nor its inverse can stretch a vector, then f keeps every length. An isomorphism f has ‖f‖ ≤ 1 and ‖f⁻¹‖ ≤ 1, so it is a surjective linear isometry. With bounded maps, isomorphisms only preserve the topology. The nLab states that Ban with short maps is small complete, small cocomplete and symmetric monoidal closed. Its products are the uniformly bounded tuples (with the ℓ∞ norm), and its coproducts are the completed ℓ¹ sums. Our own reading: these norms work because the projections and injections must be short; the nLab page does not compare with the bounded-map category. The same choice is made for Jordan–Banach algebras 'to get the right notion of isomorphism'.
+**How the definition helps.** If neither f nor its inverse can stretch a vector, then f keeps every length. An isomorphism has ‖f‖ ≤ 1 and ‖f⁻¹‖ ≤ 1, so it is a surjective linear isometry. With bounded maps, isomorphisms only preserve the topology. The nLab states the limits, colimits and closed monoidal structure; products carry the ℓ∞ norm and coproducts the completed ℓ¹ norm.
 
 **nLab:** [Banach space](https://ncatlab.org/nlab/show/Banach+space), [Jordan-Banach algebra](https://ncatlab.org/nlab/show/Jordan-Banach+algebra). It says: “Another natural notion of isomorphism is a surjective linear isometry. In this case, we take a morphism to be a short linear map, or linear contraction: a linear map f such that ‖f‖ ≤ 1.”
 
@@ -372,7 +372,7 @@
 
 **Problem.** Kakutani's theorem says that a Banach space is reflexive exactly when its closed unit ball is weakly compact. Reflexive spaces also have the property that bounded closed convex sets are weakly compact.
 
-**How the definition helps.** The canonical map turns the weak topology of X into the weak-\* topology of the bidual (our own summary). So weak compactness of the ball comes from the Banach–Alaoglu theorem (our own summary). Some other isomorphism with the bidual does not carry the topologies in this way (our own summary). James' space from 1951 is isometric to its bidual, but its canonical image has codimension one. So its unit ball is not weakly compact, and a definition by any isomorphism would break Kakutani's theorem (our own conclusion). The hard direction of Kakutani's theorem, from weak compactness to reflexivity, still needs Goldstine's theorem (our own).
+**How the definition helps.** The canonical map turns the weak topology of X into the weak-\* topology of the bidual, so the Banach–Alaoglu theorem gives weak compactness of the ball (our own summary). Some other isomorphism with the bidual does not carry the topologies in this way (our own summary). James' space is isometric to its bidual, but its canonical image has codimension one, so its unit ball is not weakly compact (our own conclusion). The hard direction of Kakutani's theorem still needs Goldstine's theorem (our own).
 
 **Wikipedia:** [Reflexive space](https://en.wikipedia.org/wiki/Reflexive_space). It says: “So importantly, for a Banach space to be reflexive, it is not enough for it to be isometrically isomorphic to its bidual; it is the canonical evaluation map in particular that has to be a homeomorphism.”
 
@@ -390,7 +390,7 @@
 
 **Problem.** Each coordinate functional of a Schauder basis in a Banach space is bounded. It sends a vector to its coefficient at a fixed basis position.
 
-**How the definition helps.** In our own proof, completeness lets the bounded inverse theorem transfer continuity from coefficient sequences to vectors. Give each convergent expansion the supremum of its partial-sum norms. This makes the coefficient space complete, and summation gives a bounded bijection onto the Banach space. Each individual term is a difference of partial sums, so each coefficient is continuous in that norm. Our own counterexample uses finite sequences with the Euclidean norm and the usual unit vectors eₙ. Use the basis e₁ followed by e₁ + eₙ for n ≥ 2. A unit vector with first entry zero and N later entries equal to 1/√N needs first coefficient −√N to cancel their sum.
+**How the definition helps.** In our own proof, completeness lets the bounded inverse theorem transfer continuity from coefficient sequences to vectors. Give each convergent expansion the supremum of its partial-sum norms, which makes the coefficient space complete. Summation is then a bounded bijection onto the space, and each coefficient is continuous in that norm. Our own counterexample uses finite sequences with the Euclidean norm and the basis e₁ followed by e₁ + eₙ for n ≥ 2. A unit vector with first entry zero and N later entries 1/√N has first coefficient −√N.
 
 **Paper or page:** [Coordinate Functionals Associated with Schauder Basis of Banach Space are Bounded](https://proofwiki.org/wiki/Coordinate_Functionals_Associated_with_Schauder_Basis_of_Banach_Space_are_Bounded). It says: “Then each linear functional eₙ∗ is bounded.”
 
@@ -406,7 +406,7 @@
 
 **Problem.** Every vector has a unique square-summable coefficient sequence in a Riesz basis. The map to coefficients and the map back are both bounded.
 
-**How the definition helps.** In our own proof, the lower bound prevents large coefficient changes from producing small changes in the vector. The upper bound extends finite sums to a bounded map from square-summable sequences. The lower bound makes this map injective with closed range and bounded inverse on its range. Density gives the whole Hilbert space as its range. Our own counterexample divides the nth unit vector in the square-summable sequence space by n. These vectors still span densely and satisfy the upper bound, but recovering the nth unit vector requires a coefficient of size n.
+**How the definition helps.** In our own proof, the lower bound prevents large coefficient changes from producing small changes in the vector. The upper bound extends finite sums to a bounded map from square-summable sequences, and the lower bound makes it injective with closed range. Density then gives the whole Hilbert space as its range. Our own counterexample divides the nth unit vector of ℓ² by n. These vectors span densely and satisfy the upper bound, but recovering the nth unit vector needs a coefficient of size n.
 
 **Wikipedia:** [Riesz sequence](https://en.wikipedia.org/wiki/Riesz_sequence). It says: “is an orthonormal basis for H and U : H → H is a bounded bijective operator.”
 
@@ -420,9 +420,9 @@
 
 **Definition.** A series in a normed space converges unconditionally when every reordering of its terms converges. All the reorderings must also have the same sum.
 
-**Problem.** Which series in a Banach space have a sum that does not depend on the order of the terms? In finite dimensions they are exactly the absolutely convergent series. In every infinite-dimensional Banach space there are more of them; this is the Dvoretzky–Rogers theorem.
+**Problem.** In a finite-dimensional space, a series converges unconditionally exactly when it converges absolutely. Every infinite-dimensional Banach space has an unconditionally convergent series that does not converge absolutely (the Dvoretzky–Rogers theorem).
 
-**How the definition helps.** With this definition, independence of order is true by definition. In finite-dimensional spaces, unconditional convergence is the same as absolute convergence, by the Riemann series theorem and its extensions. In every Banach space, an absolutely convergent series converges unconditionally. But Dvoretzky and Rogers proved that every infinite-dimensional Banach space has an unconditionally convergent series that does not converge absolutely. In ℓ² (the space of square-summable sequences), our own example is Σ eₙ/n, where the eₙ are the unit basis vectors. So in infinite dimensions, absolute convergence is too strong to serve as the definition. The hard work moves into the Dvoretzky–Rogers theorem.
+**How the definition helps.** With this definition, independence of order is true by definition. In every Banach space, absolute convergence implies unconditional convergence, and in finite dimensions the converse holds. In ℓ², our own example Σ eₙ/n converges unconditionally but not absolutely. So in infinite dimensions absolute convergence is too strong to serve as the definition, and the work moves into the Dvoretzky–Rogers theorem.
 
 **Wikipedia:** [Unconditional convergence](https://en.wikipedia.org/wiki/Unconditional_convergence), [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “A theorem of A. Dvoretzky and C. A. Rogers asserts that every infinite-dimensional Banach space has an unconditionally convergent series that is not absolutely convergent.”
 
@@ -457,9 +457,9 @@
 
 **Definition.** A normed space is strictly convex if ‖x + y‖ &lt; 2 for any two different unit vectors x and y. So the unit sphere contains no line segment. Take a functional f on a subspace. A Hahn–Banach extension of f is a functional on the whole space that agrees with f and has the same norm.
 
-**Problem.** The Hahn–Banach theorem gives at least one norm-preserving extension. When is there exactly one? The paper shows: whenever the dual space is strictly convex, for example in Lᵖ with 1 &lt; p &lt; ∞.
+**Problem.** Let X be a Banach space with strictly convex dual X\*. Then every bounded linear functional on a subspace of X has exactly one Hahn–Banach extension. This applies, for example, to Lᵖ with 1 &lt; p &lt; ∞.
 
-**How the definition helps.** The norm-preserving extensions of f form a convex set that lies on the sphere of radius ‖f‖ in X\*. A strictly convex sphere contains no segment, so this convex set has only one point (our own account of the proof). The condition excludes flat spheres. In our own example, take ℝ² with the norm \|a\| + \|b\|. The functional (t, 0) ↦ t has the extensions (a, b) ↦ a + cb for every c in \[−1, 1\]. The existence part is still the Hahn–Banach theorem itself.
+**How the definition helps.** The norm-preserving extensions of f form a convex set on the sphere of radius ‖f‖ in X\*. A strictly convex sphere contains no segment, so this set has only one point (our own account of the proof). In our own example, take ℝ² with the norm \|a\| + \|b\|. The functional (t, 0) ↦ t has the extensions (a, b) ↦ a + cb for every c in \[−1, 1\].
 
 **Paper or page:** [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1), [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1). It says: “Let X be a Banach space with strictly convex dual X\*. Suppose U⊂X is a subspace and f:U→𝕂 a bounded linear functional. Then f has a unique Hahn–Banach extension in X\*.”
 
@@ -477,7 +477,7 @@
 
 **Problem.** Let each Tᵢ be a linear map of norm at most one from a Banach space Xᵢ into one Banach space Z. Then exactly one bounded linear map on the ℓ¹ sum agrees with every Tᵢ. It has norm at most one.
 
-**How the definition helps.** The ℓ¹ norm is the sum of the component norms, so ‖Σ Tᵢxᵢ‖ ≤ Σ‖xᵢ‖ by the triangle inequality. Completeness of Z makes this absolutely convergent series converge. Families with finitely many nonzero terms are dense, so the extension is unique. With the ℓ² norm the claim fails: take every Xᵢ and Z equal to ℂ and every Tᵢ the identity. Then the sum map is not bounded on ℓ². The nLab states the result as the fact that the ℓ¹ sum is the coproduct for maps of norm at most one. The counterexample is our own.
+**How the definition helps.** The ℓ¹ norm is the sum of the component norms, so ‖Σ Tᵢxᵢ‖ ≤ Σ‖xᵢ‖ by the triangle inequality. Completeness of Z makes this absolutely convergent series converge, and density of finitely supported families gives uniqueness. With the ℓ² norm the claim fails: if every Xᵢ and Z is ℂ and every Tᵢ is the identity, the sum map is unbounded (our own counterexample). The nLab states the result as the fact that the ℓ¹ sum is the coproduct for maps of norm at most one.
 
 **nLab:** [direct sum of Banach spaces](https://ncatlab.org/nlab/show/direct+sum+of+Banach+spaces). It says: “If short linear maps are taken as the morphisms in the category of Banach spaces, then the ℓ¹-direct sum is the coproduct, and the ℓ∞-direct sum is the product.”
 
@@ -489,11 +489,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46B20 (Geometry and structure of normed linear spaces). arXiv math.FA. Level 3: graduate.
 
-**Definition.** A Banach space is uniformly convex if each ε &gt; 0 has a δ &gt; 0 with this property. Unit vectors x and y with ‖x − y‖ ≥ ε have ‖(x + y)/2‖ ≤ 1 − δ. Here Y is a closed subspace, which contains the limits of its convergent sequences. A closest point to f in Y is a point g of Y with ‖f − g‖ equal to the distance from f to Y.
+**Definition.** A Banach space is uniformly convex if, for each ε &gt; 0, some δ &gt; 0 gives ‖(x + y)/2‖ ≤ 1 − δ for all unit vectors x and y with ‖x − y‖ ≥ ε. A closest point to f in a subspace Y is a point g of Y with ‖f − g‖ equal to the distance from f to Y.
 
-**Problem.** In a Hilbert space, every point has exactly one closest point in a closed subspace, the orthogonal projection. The paper shows the same for closed subspaces of Lᵖ with 1 &lt; p &lt; ∞, where there is no inner product.
+**Problem.** In a uniformly convex Banach space, such as Lᵖ with 1 &lt; p &lt; ∞, every point has exactly one closest point in each closed subspace.
 
-**How the definition helps.** Uniform convexity says that two almost-closest points that are far apart would have a midpoint that is closer still, which is impossible. So every minimizing sequence is a Cauchy sequence, as the paper's Corollary 21 states for sequences whose midpoints have norm near 1. Completeness then gives the closest point, and the same argument gives uniqueness. The condition rules out balls with flat pieces. In our own example, take ℝ² with the maximum norm. Every point (0, t) with \|t\| ≤ 1 on the vertical axis is closest to (1, 0). Proving that Lᵖ is uniformly convex still takes Clarkson's inequalities.
+**How the definition helps.** Two almost-closest points that are far apart would have a midpoint that is closer still, which is impossible. So every minimizing sequence is a Cauchy sequence, and completeness gives the closest point; the same argument gives uniqueness. In our own example, ℝ² with the maximum norm is not uniformly convex: every point (0, t) with \|t\| ≤ 1 is closest to (1, 0). Proving that Lᵖ is uniformly convex still takes Clarkson's inequalities.
 
 **Paper or page:** [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1), [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1). It says: “Let Y be a closed subspace of Lᵖ (1&lt;p&lt;∞). Then, for any f∉Y there is a unique closest point g∈Y, to f”
 
@@ -528,33 +528,15 @@
 
 **Definition.** A Banach space is uniformly convex if unit vectors whose midpoint has norm near 1 must be close to each other. A Riesz–Radon space is one where xₙ → x weakly and ‖xₙ‖ → ‖x‖ together imply ‖xₙ − x‖ → 0. Here xₙ → x weakly means that f(xₙ) → f(x) for every continuous linear functional f.
 
-**Problem.** Weak convergence does not imply norm convergence. The extra condition that norms converge is enough in every uniformly convex space, such as Lᵖ with 1 &lt; p &lt; ∞.
+**Problem.** In a uniformly convex Banach space, such as Lᵖ with 1 &lt; p &lt; ∞, weak convergence xₙ → x together with ‖xₙ‖ → ‖x‖ gives ‖xₙ − x‖ → 0. So every uniformly convex space is a Riesz–Radon space.
 
-**How the definition helps.** The proof is almost the definition. If xₙ → x weakly, then (xₙ + x)/2 → x weakly, so its norm is at least about ‖x‖ in the limit. Uniform convexity then forces xₙ and x to be close, as the paper's Lemma 20 states. The condition excludes spaces like L¹. In our own example, the functions 1 + sin(nt) on \[0, 2π\] converge weakly to 1. They have the same L¹ norm as 1, but do not converge in norm.
+**How the definition helps.** The proof is almost the definition. If xₙ → x weakly, then (xₙ + x)/2 → x weakly, so the limit of its norms is at least ‖x‖. Uniform convexity then forces xₙ and x to be close. The condition excludes spaces like L¹. In our own example, the functions 1 + sin(nt) on \[0, 2π\] converge weakly to 1 and have the same L¹ norm as 1, but do not converge in norm.
 
 **Paper or page:** [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1), [Exploring Convexity in Normed Spaces](https://arxiv.org/abs/2405.13463v1). It says: “Every uniformly convex Banach space is a Riesz–Radon space.”
 
 **Sources:**
 
 - [Ryan L. Acosta Babb, Exploring Convexity in Normed Spaces, arXiv:2405.13463 (2024), Amer. Math. Monthly 132 (2025) 291–302](https://arxiv.org/abs/2405.13463v1)
-
-### The Radon–Nikodym property names the Banach spaces where Radon–Nikodym holds
-
-**Remember:** Densities of vector measures exist exactly in Radon–Nikodym spaces, by definition.
-
-*True by definition. Confidence: medium.* MSC 46B22 (Radon-Nikodým, Kre?n-Milman and related properties), 46G10. arXiv math.FA. Level 3: graduate.
-
-**Definition.** Let μ be a finite measure, and let γ be a B-valued measure of bounded variation that is absolutely continuous with respect to μ. B has the Radon–Nikodym property when every such γ has a Bochner integrable density. The Bochner integral is the Lebesgue integral for functions with values in a Banach space.
-
-**Problem.** One wants a Radon–Nikodym theorem for measures with values in a Banach space B. The scalar proof does not carry over to all Banach spaces. If B\* has the property, the dual of Lᵖ(μ; B) for 1 &lt; p &lt; ∞ is the matching B\*-valued space (our own).
-
-**How the definition helps.** The definition makes the theorem true in the named class by fiat, so the theorem itself needs no proof. The work moves to other theorems that say which spaces are in the class. The page says that reflexive spaces and separable dual spaces have the property, the second by the Dunford–Pettis theorem. It also says that c₀, C(K) for infinite compact K, and L¹ and L∞ of a bounded open subset of ℝⁿ do not. For c₀, take the measure A ↦ (integral over A of sin(2ⁿπt) dt)ₙ on \[0, 1\], in c₀ by the Riemann–Lebesgue lemma (our own example). Its only possible density is t ↦ (sin(2ⁿπt))ₙ, which for almost every t does not tend to 0 (our own example). One equivalent form on the page says that B-valued functions of bounded variation are differentiable almost everywhere.
-
-**Wikipedia:** [Bochner integral](https://en.wikipedia.org/wiki/Bochner_integral). It says: “An important fact about the Bochner integral is that the Radon–Nikodym theorem fails to hold in general, and instead is a property (the Radon–Nikodym property) defining an important class of ″nice″ Banach spaces.”
-
-**Sources:**
-
-- [N. Dunford and B. J. Pettis, Linear operations on summable functions, Transactions of the AMS 47 (1940), 323–392](https://doi.org/10.1090/S0002-9947-1940-0002020-4)
 
 ### The approximation property makes compact operators limits of finite-rank operators
 
@@ -564,9 +546,9 @@
 
 **Definition.** Take a compact set K in a Banach space X and a number ε &gt; 0. X has the approximation property when, for all such K and ε, some finite-rank operator T moves each point of K by less than ε. A compact operator maps bounded sets to sets with compact closure. A finite-rank operator has a finite-dimensional range.
 
-**Problem.** On a Hilbert space, every compact operator is a norm limit of finite-rank operators. For a long time it was open whether this holds on every Banach space.
+**Problem.** If a Banach space X has the approximation property, then every compact operator from a Banach space into X is a norm limit of finite-rank operators.
 
-**How the definition helps.** The definition asks for finite-rank approximation of the identity on compact sets, and this is nearly the wanted theorem. A compact operator S into X maps the unit ball into a set with compact closure (our own sketch). A T as in the definition for that set gives a finite-rank operator TS close to S (our own sketch). The work moves to Grothendieck's equivalence theorems and to Enflo's example. Enflo published a Banach space without the property in 1973, so the theorem has true exceptions. Szankowski later showed that the bounded operators on an infinite-dimensional Hilbert space also fail the property. Every space with a Schauder basis has it.
+**How the definition helps.** The definition asks for finite-rank approximation of the identity on compact sets, and this is nearly the wanted theorem. A compact operator S maps the unit ball into a set K with compact closure (our own sketch). A finite-rank T that moves each point of K by less than ε gives ‖TS − S‖ ≤ ε (our own sketch). Enflo's 1973 example of a space without the property shows that the hypothesis is needed.
 
 **Wikipedia:** [Approximation property](https://en.wikipedia.org/wiki/Approximation_property), [Compact operator](https://en.wikipedia.org/wiki/Compact_operator). It says: “a Banach space is said to have the approximation property (AP) if every compact operator is a limit of finite-rank operators. The converse is always true.”
 
@@ -599,9 +581,9 @@
 
 **Definition.** Write a tensor x in V ⊗ W as a sum Σ αᵢ vᵢ ⊗ wᵢ. Its projective norm is the infimum of Σ\|αᵢ\|‖vᵢ‖‖wᵢ‖ over all such sums. The projective tensor product is the completion under this norm. A short linear map is one of norm at most 1.
 
-**Problem.** One wants a tensor product of Banach spaces with a universal property. Short maps from the tensor product of V and W to U should match short maps from V into bounded maps from W to U.
+**Problem.** With the projective tensor product, short linear maps from V ⊗ W to U correspond exactly to short linear maps from V into the bounded linear maps from W to U. So Banach spaces with short linear maps form a closed symmetric monoidal category.
 
-**How the definition helps.** The projective norm is an infimum over all ways to write a tensor, so bounded bilinear maps extend with the same norm (our own). So short linear maps out of the tensor product are short bilinear maps, which are short maps into a space of operators (our own). This is the statement that the category is closed symmetric monoidal. A cross norm is one with ‖v ⊗ w‖ = ‖v‖‖w‖, and the page shows that the projective norm is the largest one. The injective norm, the smallest one, does not make the category closed (our own remark). What stays hard is comparing the norms, and Grothendieck's approximation property and nuclear spaces come from asking when they agree.
+**How the definition helps.** The projective norm is an infimum over all ways to write a tensor, so bounded bilinear maps extend with the same norm (our own). So short linear maps out of the tensor product are short bilinear maps, which are short maps into a space of operators (our own). The injective norm, the smallest cross norm, does not make the category closed (our own remark).
 
 **nLab:** [tensor product of Banach spaces](https://ncatlab.org/nlab/show/tensor+product+of+Banach+spaces). It says: “One of these, the projective tensor product, makes Ban (the category of Banach spaces and short linear maps) into a closed symmetric monoidal category”
 
@@ -615,11 +597,11 @@
 
 *Rules out counterexamples.* MSC 46B50 (Compactness in Banach (or normed) spaces), 46E30. arXiv math.FA. Level 3: graduate.
 
-**Definition.** A family of integrable functions u is uniformly integrable if this holds. The integral of \|u\| over a set A is small for all u at once, when A has small measure. It is tight if, for each ε &gt; 0, one set of finite measure carries all but ε of the integral of every \|u\|.
+**Definition.** A family of integrable functions is uniformly integrable if the integral of \|u\| over A is small for all u at once whenever A has small measure. It is tight if, for each ε &gt; 0, one set of finite measure carries all but ε of the integral of every \|u\|.
 
-**Problem.** The Dunford–Pettis theorem says when a bounded sequence in L¹ has a weakly convergent subsequence. Boundedness alone is not enough, because L¹ is not reflexive. A sequence uₙ converges weakly to u if ∫uₙg → ∫ug for every bounded measurable function g.
+**Problem.** A sequence in L¹ is relatively weakly compact exactly when it is bounded, uniformly integrable and tight (the Dunford–Pettis theorem).
 
-**How the definition helps.** The two conditions name exactly the two ways that a bounded sequence in L¹ can lose its weak limit. Uniform integrability excludes concentration. In our own example, n times the indicator of \[0, 1/n\] has norm 1. But it tends to a point mass, which is not in L¹. Tightness excludes escape: the indicators of \[n, n + 1\] have norm 1 but drift off to infinity. With both excluded, the theorem is an equivalence. Proving that the conditions are sufficient still takes real work (our own remark).
+**How the definition helps.** The two conditions name exactly the two ways that a bounded sequence in L¹ can lose its weak limit. Uniform integrability excludes concentration: n times the indicator of \[0, 1/n\] has norm 1 but tends to a point mass (our own example). Tightness excludes escape: the indicators of \[n, n + 1\] have norm 1 but drift off to infinity. Proving that the conditions are sufficient still takes real work (our own remark).
 
 **Paper or page:** [Banach-Saks Theorem for L¹ revisited](https://arxiv.org/abs/2311.07319v1). It says: “For sequence (uₙ)ₙ⊂L¹(X), the following assertions are equivalent. (i) The sequence (uₙ)ₙ is relatively weakly compact in L¹(X). (ii) The sequence (uₙ)ₙ is bounded in L¹(X), uniformly integrable and tight.”
 
@@ -633,11 +615,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46B70 (Interpolation between normed linear spaces), 42B25. arXiv math.FA, math.CA. Level 3: graduate.
 
-**Definition.** An operator T is of weak type (p, p) if this holds for every λ &gt; 0. The set where \|Tf\| &gt; λ has measure at most (C‖f‖ₚ/λ)ᵖ. It is of strong type (p, p) if it is bounded on Lᵖ. Every strong-type bound gives a weak-type bound by Chebyshev's inequality.
+**Definition.** An operator T is of weak type (p, p) if, for every λ &gt; 0, the set where \|Tf\| &gt; λ has measure at most (C‖f‖ₚ/λ)ᵖ. It is of strong type (p, p) if it is bounded on Lᵖ. Every strong-type bound gives a weak-type bound by Chebyshev's inequality.
 
-**Problem.** The Hardy–Littlewood maximal operator is not bounded on L¹. But it is of weak type (1, 1), and it is trivially bounded on L∞. The Marcinkiewicz theorem then shows that it is bounded on Lᵖ for every p &gt; 1.
+**Problem.** If a sublinear operator is of weak type (p₀, p₀) and (p₁, p₁), with 1 ≤ p₀ &lt; p₁ ≤ ∞, then it is of strong type (p, p) for every p strictly between. The Hardy–Littlewood maximal operator is of weak type (1, 1) and bounded on L∞. So it is bounded on Lᵖ for every p &gt; 1.
 
-**How the definition helps.** The weak-type definition asks only for a bound on the size of level sets, and that is what endpoint operators satisfy. So an interpolation theorem can start from an endpoint where the strong bound is false. In our own example, the maximal function of the indicator of \[0, 1\] decays like a constant times 1/\|x\|. So it is not in L¹, but it does satisfy the weak bound. The proof that weak bounds interpolate needs only a splitting of f at height λ (our own remark). The weak (1, 1) bound itself still needs a covering lemma.
+**How the definition helps.** The weak-type definition asks only for a bound on the size of level sets, and that is what endpoint operators satisfy. So the interpolation can start from an endpoint where the strong bound is false. In our own example, the maximal function of the indicator of \[0, 1\] decays like 1/\|x\|, so it is not in L¹ but satisfies the weak bound. The interpolation proof needs only a splitting of f at height λ (our own remark).
 
 **Paper or page:** [Embeddings of Weighted Morrey Spaces](https://arxiv.org/abs/2508.03387v1). It says: “Let 1≤p₀&lt;p₁≤∞ and an operator T: ℝⁿ→ℝⁿ be sublinear and of weak-type (p₀,p₀) and weak-type (p₁,p₁). Then T is of strong-type (p,p) for all p₀&lt;p&lt;p₁.”
 
@@ -653,9 +635,9 @@
 
 **Definition.** A Hilbert space is an inner product space that is complete for the distance defined by the inner product. Complete means that every Cauchy sequence converges to a point of the space.
 
-**Problem.** Two theorems should hold in a Hilbert space H. The Riesz representation theorem says that every continuous linear functional on H is the inner product with a fixed vector. The projection theorem says that every point has a unique nearest point in a nonempty closed convex set.
+**Problem.** In a Hilbert space H, every continuous linear functional is the inner product with a fixed vector. Every point of H has a unique nearest point in each nonempty closed convex set.
 
-**How the definition helps.** The proofs need limits of Cauchy sequences, and completeness makes sure that these limits are in the space. The proof of the projection theorem takes a minimizing sequence (points whose distances approach the smallest possible distance). It shows that the sequence is Cauchy by the parallelogram law, and it uses completeness to get a limit. Without completeness the limit may be missing. The article notes that the dual (the space of continuous linear functionals) of any inner product space is identified with its completion. So in an incomplete space, some continuous functionals are not the inner product with any vector of the space. Completeness also makes orthogonal series with square-summable coefficients converge.
+**How the definition helps.** The proofs need limits of Cauchy sequences, and completeness makes sure that these limits are in the space. For the projection theorem, the parallelogram law shows that a minimizing sequence is Cauchy, and completeness gives its limit. The article notes that the dual of any inner product space is identified with its completion. So in an incomplete space, some continuous functionals are not the inner product with any vector of the space.
 
 **Wikipedia:** [Hilbert space](https://en.wikipedia.org/wiki/Hilbert_space). It says: “The Riesz representation theorem relies fundamentally not just on the presence of an inner product, but also on the completeness of the space.”
 
@@ -688,9 +670,9 @@
 
 **Definition.** A kernel K on a set A is positive definite if every matrix (K(xᵢ, xⱼ)) built from finitely many points is positive semidefinite. A reproducing kernel Hilbert space is a Hilbert space of functions on A. In it, f(x) equals the inner product of f with the function Kₓ = K(·, x).
 
-**Problem.** The Moore–Aronszajn theorem says that each positive definite kernel is the reproducing kernel of exactly one Hilbert space of functions. This lets one build function spaces, for example in machine learning, by choosing a kernel.
+**Problem.** Each positive definite kernel on a set A is the reproducing kernel of exactly one Hilbert space of functions on A (the Moore–Aronszajn theorem).
 
-**How the definition helps.** The reproducing property fixes the inner product of any two functions Kₓ and Kᵧ as a value of K, as in the quoted construction. So it fixes the inner product on all finite sums of such functions. This makes uniqueness almost immediate. Positive definiteness is exactly the condition that makes this formula a valid inner product (our own remark). The remaining work is to show that the completion is still a space of functions. Point evaluation is bounded, and a limit that is zero at every point must have norm zero (our own remark).
+**How the definition helps.** The reproducing property fixes the inner product of Kₓ and Kᵧ as the value K(y, x). So it fixes the inner product on all finite sums of such functions, which makes uniqueness almost immediate. Positive definiteness is exactly the condition that makes this formula a valid inner product (our own remark). The remaining work is to show that the completion is still a space of functions, because point evaluation is bounded (our own remark).
 
 **Paper or page:** [Natural methods of unsupervised topological alignment](https://arxiv.org/abs/2510.26631v1). It says: “Suppose that K(x,y) is a Hermitian symmetric, positive definite kernel on the set 𝔄×𝔄. Then there exists a unique Hilbert space ℌ of functions defined on 𝔄, for which K is the reproducing kernel.”
 
@@ -707,9 +689,9 @@
 
 **Definition.** A reproducing kernel Hilbert space is a Hilbert space H of functions on a set X with one extra property. For every x in X, the evaluation map f ↦ f(x) is a continuous linear functional.
 
-**Problem.** There is a kernel K with f(x) = ⟨f, K(·, x)⟩ for every f in H. In words, the value of f at x is the inner product of f with one fixed function for that x. Conversely, every symmetric positive-definite kernel defines a unique such space (the Moore–Aronszajn theorem).
+**Problem.** Every reproducing kernel Hilbert space H has a kernel K with f(x) = ⟨f, K(·, x)⟩ for every f in H and every x in X.
 
-**How the definition helps.** The kernel comes straight from the Riesz representation theorem, so the definition already gives it. By that theorem, each continuous evaluation functional is the inner product with a unique vector Kₓ. Then K(y, x) = Kₓ(y) is the reproducing kernel. The article says that a kernel exists if and only if every evaluation functional is continuous. Our own remark: L²(ℝ) is not such a space. Its elements are classes of functions that are equal almost everywhere, so f(x) has no meaning. The converse, building the space from a positive-definite kernel, is the substantial Moore–Aronszajn theorem.
+**How the definition helps.** The kernel comes straight from the Riesz representation theorem. Each continuous evaluation functional is the inner product with a unique vector Kₓ, and K(y, x) = Kₓ(y) is the reproducing kernel. Our own remark: L²(ℝ) is not such a space, because its elements are classes of functions and f(x) has no meaning. The converse, building the space from a positive-definite kernel, is the substantial Moore–Aronszajn theorem.
 
 **Wikipedia:** [Reproducing kernel Hilbert space](https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space). It says: “Such a reproducing kernel exists if and only if every evaluation functional is continuous.”
 
@@ -759,7 +741,7 @@
 
 **Problem.** On a finite measure space, measurable functions taking finitely many values are dense in the Orlicz space when Φ satisfies the doubling condition.
 
-**How the definition helps.** In our own proof, repeated doubling makes Φ(c\|f\|) integrable at every positive scale c. Truncation and approximation by finite-valued functions then give errors whose integrals at any fixed scale tend to zero by dominated convergence. Our own counterexample on (0,1) uses Lebesgue measure, Φ(t) = exp(t) − 1, and f(x) = log(1/x). The integral of Φ(\|f\|/2) is finite. For every bounded simple function g, the integral of Φ(\|f − g\|) diverges by comparison with 1/x near zero. The Luxemburg norm is the infimum of positive divisors that make the integral of Φ applied to the divided absolute error at most one. Thus every such g has error norm at least one.
+**How the definition helps.** In our own proof, repeated doubling makes Φ(c\|f\|) integrable at every positive scale c. Truncation and approximation by finite-valued functions then give errors whose integrals at any fixed scale tend to zero by dominated convergence. Our own counterexample on (0,1) uses Φ(t) = exp(t) − 1 and f(x) = log(1/x), for which Φ(\|f\|/2) is integrable. For every bounded simple g, the integral of Φ(\|f − g\|) diverges like that of 1/x near zero, so the Luxemburg norm of f − g is at least one.
 
 **Paper or page:** [Convolutions of Orlicz spaces and Orlicz Schatten classes, with applications to Toeplitz operators](https://arxiv.org/abs/2505.01707v2). It says: “if $\\Phi$ is a quasi-Young function which satisfies a $\\Delta<sub>2</sub>$-condition, then the simple functions are dense in $L<sup>\\Phi</sup>(d\\mu)$;”
 
@@ -771,11 +753,11 @@
 
 *True by definition. Confidence: medium.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 42A16. arXiv math.AP, math.FA. Level 3: graduate.
 
-**Definition.** A distribution acts linearly and continuously on smooth test functions. On the circle, Hˢ consists of distributions with Fourier coefficients f̂(n) for which the sum of (1 + n²)ˢ\|f̂(n)\|² is finite. For nonnegative integers s, the usual definition asks that weak derivatives through order s be square-integrable. A weak derivative moves differentiation onto smooth test functions by integration by parts.
+**Definition.** On the circle, Hˢ consists of the distributions whose Fourier coefficients f̂(n) make the sum of (1 + n²)ˢ\|f̂(n)\|² finite. For nonnegative integers s, the usual definition asks instead for square-integrable weak derivatives through order s.
 
 **Problem.** For real s &gt; t, the inclusion Hˢ → Hᵗ on the circle is compact. This means it maps bounded sets to sets with compact closure.
 
-**How the definition helps.** Fourier weights make the inclusion diagonal with entries tending to zero, in our own proof. Rescale the coefficients by the weights in each norm to get diagonal entries (1 + n²) to the power (t − s)/2. Keeping finitely many frequencies gives finite-dimensional approximations whose operator-norm errors tend to zero. The work moves into Parseval’s identity, which equates the function norm and the coefficient norm, and the Fourier rule for derivatives.
+**How the definition helps.** Fourier weights make the inclusion diagonal with entries tending to zero, in our own proof. In coefficient terms the diagonal entries are (1 + n²) to the power (t − s)/2. Keeping finitely many frequencies gives finite-rank approximations whose operator-norm errors tend to zero. The work moves into Parseval’s identity and the Fourier rule for derivatives.
 
 **Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “Both representations follow easily from Parseval's theorem and the fact that differentiation is equivalent to multiplying the Fourier coefficient by in.”
 
@@ -787,7 +769,7 @@
 
 *True by definition. Confidence: medium.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 46F12. arXiv math.AP. Level 3: graduate.
 
-**Definition.** A tempered distribution acts continuously and linearly on smooth test functions whose derivatives, including the functions themselves, decay faster than any inverse power. The Sobolev space Hˢ(ℝⁿ) consists of tempered distributions whose Fourier transforms are square-integrable after multiplication by (1 + \|ξ\|²) to the power s/2. The usual integer-order definition uses weak derivatives, which move differentiation onto test functions, and does not cover negative orders on its own.
+**Definition.** The Sobolev space Hˢ(ℝⁿ), for real s, consists of the tempered distributions whose Fourier transforms are square-integrable after multiplication by (1 + \|ξ\|²) to the power s/2. The usual integer-order definition uses weak derivatives and does not cover negative orders on its own.
 
 **Problem.** The Dirac delta δ, which evaluates a test function at zero, belongs to Hˢ(ℝⁿ) exactly when s &lt; −n/2.
 
@@ -803,7 +785,7 @@
 
 *True by definition. Confidence: medium.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 42B10. arXiv math.AP. Level 3: graduate.
 
-**Definition.** For s &gt; 0, Hˢ(ℝⁿ) consists of square-integrable functions whose Fourier transforms remain square-integrable after multiplication by (1 + \|ξ\|²) to the power s/2. The norm is the square-integral norm of that product. The usual integer-order definition requires square-integrable weak derivatives through that order. A weak derivative moves differentiation onto smooth test functions by integration by parts.
+**Definition.** For s &gt; 0, Hˢ(ℝⁿ) consists of the square-integrable functions whose Fourier transforms remain square-integrable after multiplication by (1 + \|ξ\|²) to the power s/2. The norm is the square-integral norm of that product. The usual integer-order definition requires square-integrable weak derivatives through that order.
 
 **Problem.** If s &gt; n/2, each f in Hˢ(ℝⁿ) agrees almost everywhere with a bounded continuous function. Its supremum norm is bounded by a constant times the Hˢ norm of f.
 
@@ -823,7 +805,7 @@
 
 **Problem.** Let P be elliptic and have constant coefficients on ℝⁿ. If u is in Hᵗ and Pu is in Hˢ for real s and t, then u is in Hˢ⁺ᵐ.
 
-**How the definition helps.** Fourier weights make global regularity an estimate on the polynomial symbol, in our own proof. Ellipticity and compactness of the unit sphere give a lower bound by a positive multiple of \|ξ\| to the power m at high frequencies. Dividing by that bound controls the Hˢ⁺ᵐ weight of û by the Hˢ weight of the transform of Pu. On bounded frequencies, the Hᵗ assumption controls the Hˢ⁺ᵐ weight. The work moves into proving the lower bound and using Plancherel to recover the weak-derivative interpretation at integer orders. Variable coefficients need a different argument because Fourier transformation does not turn them into scalar multipliers.
+**How the definition helps.** Fourier weights make global regularity an estimate on the polynomial symbol, in our own proof. Ellipticity and compactness of the unit sphere bound the symbol below by a positive multiple of \|ξ\|ᵐ at high frequencies. Dividing by that bound controls the Hˢ⁺ᵐ weight of û by the Hˢ weight of the transform of Pu, and on bounded frequencies the Hᵗ assumption gives control. Variable coefficients need a different argument because Fourier transformation does not turn them into scalar multipliers.
 
 **Wikipedia:** [Elliptic operator](https://en.wikipedia.org/wiki/Elliptic_operator), [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “The elliptic regularity theorem guarantees that, provided f is square-integrable, u will in fact have 2k square-integrable weak derivatives.”
 
@@ -839,7 +821,7 @@
 
 **Problem.** Let n ≥ 2 and s &gt; 1/2. The trace extends from smooth, rapidly decreasing functions to a bounded linear map Hˢ(ℝⁿ) → Hˢ⁻¹⁄²(ℝⁿ⁻¹).
 
-**How the definition helps.** Fourier inversion turns restriction into integration over one frequency, and the weight gives the loss directly in our own proof. Write ξ = (ξ′, ξₙ) and fix the Fourier convention with 2π in the exponent. The transform of the trace is the integral of û(ξ′, ξₙ) over ξₙ. Apply Cauchy–Schwarz with the Hˢ weight and its reciprocal. The squared reciprocal integrates to a constant times (1 + \|ξ′\|²) to the power 1/2 − s. Integrating the bound in ξ′ gives the trace estimate. The work moves into Fourier inversion and density of the smooth, rapidly decreasing functions in Hˢ.
+**How the definition helps.** Fourier inversion turns restriction into integration over one frequency, and the weight gives the loss directly in our own proof. The transform of the trace at ξ′ is the integral of û(ξ′, ξₙ) over ξₙ. Cauchy–Schwarz with the Hˢ weight and its reciprocal bounds it, and the squared reciprocal integrates to a constant times (1 + \|ξ′\|²) to the power 1/2 − s. Integrating the bound in ξ′ gives the trace estimate.
 
 **Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “Intuitively, taking the trace costs 1/p of a derivative.”
 
@@ -851,11 +833,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 35J25, 49J05. arXiv math.FA, math.AP. Level 3: graduate.
 
-**Definition.** A Sobolev space Wᵏ,ᵖ contains the Lᵖ functions whose weak derivatives up to order k are also in Lᵖ. A function v is the weak derivative Dᵅu when ∫ u Dᵅφ = ± ∫ v φ for every test function φ (a smooth function that is zero outside a compact subset of the domain). The sign is + when the order \|α\| is even and − when it is odd; this is integration by parts with no boundary terms. With weak derivatives the space is complete, and for 1 &lt; p &lt; ∞ it is reflexive (the dual of its dual is the space itself).
+**Definition.** A Sobolev space Wᵏ,ᵖ contains the Lᵖ functions whose weak derivatives up to order k are also in Lᵖ. A weak derivative is defined by integration by parts against smooth test functions with compact support. With weak derivatives the space is complete, and for 1 &lt; p &lt; ∞ it is reflexive.
 
-**Problem.** Dirichlet's principle: a function that minimizes the Dirichlet energy exists. This function solves the Poisson or Laplace equation with the given boundary values.
+**Problem.** On a bounded domain, among the functions in W¹,² with given boundary values, the Dirichlet energy ∫\|∇u\|² attains its minimum (Dirichlet's principle). The minimizer is a weak solution of the Laplace equation with those boundary values.
 
-**How the definition helps.** In a Sobolev space, a bounded minimizing sequence has a weakly convergent subsequence (one that converges when tested against each continuous linear functional), so a minimizer can exist. Riemann took for granted that the Dirichlet integral, which is bounded below, attains its minimum. In 1870 Weierstrass gave a functional, ∫ (x φ′)² dx on \[−1, 1\] with different boundary values at the two ends, whose infimum 0 is not attained. It is a different integral, but it broke the reasoning, and Hilbert later justified the principle with the direct method. A convex energy is weakly lower semicontinuous (the energy of the limit is at most the limit of the energies), so the limit is a minimizer and a weak solution. Spaces of C² functions with their usual norms are not reflexive, so this argument fails there. What stays hard is regularity: to show that the weak minimizer is smooth.
+**How the definition helps.** In a reflexive Sobolev space, a bounded minimizing sequence has a weakly convergent subsequence. The convex energy is weakly lower semicontinuous, so the limit is a minimizer and a weak solution. Weierstrass's 1870 example, ∫ (x φ′)² dx on \[−1, 1\] with different end values, has infimum 0 that is not attained, which broke Riemann's reasoning. What stays hard is regularity: to show that the weak minimizer is smooth.
 
 **Wikipedia:** [Dirichlet's principle](https://en.wikipedia.org/wiki/Dirichlet%27s_principle), [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space), [Direct method in the calculus of variations](https://en.wikipedia.org/wiki/Direct_method_in_the_calculus_of_variations). It says: “Their importance comes from the fact that weak solutions of some important partial differential equations exist in appropriate Sobolev spaces, even when there are no strong solutions in spaces of continuous functions with the derivatives understood in the classical sense.”
 
@@ -925,7 +907,7 @@
 
 **Problem.** For this norm, there is a linear map E from boundary values to H¹(Ω) such that Eg has trace g and ‖Eg‖ = ‖g‖. With the Sobolev–Slobodeckij norm, such a map is only bounded.
 
-**How the definition helps.** With the quotient norm, the space of boundary values is H¹(Ω) divided by the kernel H¹₀(Ω) of the trace. In a Hilbert space, each coset of a closed subspace has exactly one shortest element, the one perpendicular to the subspace. Sending g to that element is linear and keeps norms. The work is the trace theorem, which makes the trace continuous, so its kernel is closed. It also identifies the image with H½(∂Ω) under an equivalent norm. Wikipedia states the trace theorem; the extension argument is our own.
+**How the definition helps.** With the quotient norm, the space of boundary values is H¹(Ω) divided by the kernel H¹₀(Ω) of the trace. In a Hilbert space, each coset of a closed subspace has exactly one shortest element, the one perpendicular to the subspace. Sending g to that element is linear and keeps norms. The work is the trace theorem, which makes the trace continuous and identifies the image with H½(∂Ω) under an equivalent norm. Wikipedia states the trace theorem; the extension argument is our own.
 
 **Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “it maps continuously onto the Sobolev–Slobodeckij space”
 
@@ -941,7 +923,7 @@
 
 **Problem.** For any open Ω and 1 ≤ p ≤ ∞, W¹,ᵖ(Ω) is a Banach space, meaning a complete normed space.
 
-**How the definition helps.** The weak-derivative definition gives an integral identity that passes to limits, in our own proof. In a Sobolev Cauchy sequence, the functions and each of their first derivatives are Cauchy in Lᵖ. By completeness of Lᵖ they have limits u and gⱼ. Hölder’s inequality lets both sides of the defining identity pass to the limit. Thus gⱼ is the weak derivative of u, and the sequence converges in the Sobolev norm. For finite p on (−1, 1), smooth functions √(x² + ε²) converge in this norm to \|x\|, which lacks a classical derivative at zero. The work moves into completeness of Lᵖ and Hölder’s bound for integration against the test functions.
+**How the definition helps.** The weak-derivative definition gives an integral identity that passes to limits, in our own proof. In a Sobolev Cauchy sequence, the functions and their first derivatives are Cauchy in Lᵖ, so they have limits u and gⱼ. Hölder’s inequality lets both sides of the defining identity pass to the limit, so gⱼ is the weak derivative of u. For finite p on (−1, 1), smooth functions √(x² + ε²) converge in this norm to \|x\|, which lacks a classical derivative at zero.
 
 **Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “The derivatives are understood in a suitable weak sense to make the space complete, i.e. a Banach space.”
 
@@ -1021,7 +1003,7 @@
 
 **Problem.** If distributions Tₙ converge to T in this sense, then Tₙ′ converges to T′.
 
-**How the definition helps.** Each Tₙ′(φ) equals −Tₙ(φ′), and φ′ is again a fixed test function, so the limit passes through. This one-line proof is our own. Classical derivatives can fail this: sin(n²x)/n tends to zero uniformly, but its derivatives n cos(n²x) do not converge, in our own example. The work moves to showing that T′ is a distribution, which needs φ ↦ φ′ to be continuous on test functions.
+**How the definition helps.** Each Tₙ′(φ) equals −Tₙ(φ′), and φ′ is again a fixed test function, so the limit passes through. This one-line proof is our own. Classical derivatives can fail this: sin(n²x)/n tends to zero uniformly, but its derivatives n cos(n²x) do not converge pointwise, in our own example. The work moves to showing that T′ is a distribution, which needs φ ↦ φ′ to be continuous on test functions.
 
 **Paper or page:** [Distributional Derivative on Distributions is Continuous Operator](https://proofwiki.org/wiki/Distributional_Derivative_on_Distributions_is_Continuous_Operator). It says: “The distributional derivative on Schwartz distributions is a continuous operator.”
 
@@ -1069,7 +1051,7 @@
 
 **Problem.** Every distribution has derivatives of every order, and the usual rules for derivatives hold. So every locally integrable function also has such derivatives.
 
-**How the definition helps.** The definition moves the derivative onto the test function, and a test function can always be differentiated. The formula copies integration by parts. So for a smooth function f, the derivative of the distribution of f is the distribution of f′. Because φ′ is again a test function, the formula always makes sense. So every distribution is infinitely differentiable with no extra work. For example, the derivative of the Heaviside step function is the Dirac delta (our own example). The cost comes elsewhere: Schwartz's impossibility theorem shows that no product of general distributions extends the pointwise product and keeps its algebraic rules.
+**How the definition helps.** The definition moves the derivative onto the test function, and φ′ is again a test function, so the formula always makes sense. The formula copies integration by parts, so for smooth f the derivative of the distribution of f is the distribution of f′. For example, the derivative of the Heaviside step function is the Dirac delta (our own example). The cost comes elsewhere: Schwartz's impossibility theorem shows that no product of general distributions keeps all the algebraic rules of the pointwise product.
 
 **Wikipedia:** [Distribution (mathematical analysis)](https://en.wikipedia.org/wiki/Distribution_%28mathematical_analysis%29). It says: “It turns out that this is the proper definition; it extends the ordinary definition of derivative, every distribution becomes infinitely differentiable and the usual properties of derivatives hold.”
 
@@ -1083,9 +1065,9 @@
 
 **Definition.** The Cauchy principal value of f is the limit as ε → 0 of the integral of f over the real line without (−ε, ε). The distribution PV(1/x) sends a smooth function b with compact support to the principal value of b(x)/x.
 
-**Problem.** Find all distributions F on the real line with x·F = 1. The function 1/x is not integrable near 0, so integration against 1/x does not define a distribution.
+**Problem.** The principal value PV(1/x) is a distribution with x·PV(1/x) = 1. The distributions F on ℝ with x·F = 1 are exactly PV(1/x) + cδ for constants c, where δ is the Dirac delta.
 
-**How the definition helps.** Cutting a symmetric gap makes the large positive and negative parts near 0 cancel, so the limit exists for every smooth test function. Then x·PV(1/x) = 1 as distributions. Since x·δ = 0, every PV(1/x) + cδ is also a solution, with δ the Dirac delta. These are all the solutions, because x·G = 0 forces G = cδ (our own). The page also shows that PV(1/x) is the distributional derivative of ln\|x\|. The Sokhotski–Plemelj formula says that 1/(x ± i0) equals PV(1/x) ∓ iπδ. The cost is that the principal value depends on the symmetry of the gap.
+**How the definition helps.** Cutting a symmetric gap makes the large positive and negative parts near 0 cancel, so the limit exists for every smooth test function. Integration against 1/x itself defines no distribution, because 1/x is not integrable near 0. Since x·δ = 0, every PV(1/x) + cδ is a solution, and these are all, because x·G = 0 forces G = cδ (our own).
 
 **nLab:** [Cauchy principal value](https://ncatlab.org/nlab/show/Cauchy+principal+value). It says: “When the Cauchy principal value exists but the full integral does not (hence when the full integral "diverges") one may think of the Cauchy principal value as "exracting a finite value from a diverging quantity".”
 
@@ -1115,9 +1097,9 @@
 
 **Definition.** The Schwartz space holds the smooth functions that, with all their derivatives, decay faster than any power. A tempered distribution is a continuous linear functional on the Schwartz space. The Fourier transform of a tempered distribution u is the distribution û given by û(f) = u(f̂) for every Schwartz function f. This makes sense because the Fourier transform maps the Schwartz space to itself.
 
-**Problem.** Extend the Fourier transform from functions to distributions. The new transform must agree with the old transform on functions, and Fourier inversion must still hold.
+**Problem.** On a tempered distribution given by a Schwartz function f, this Fourier transform gives the distribution of f̂. Fourier inversion holds for every tempered distribution.
 
-**How the definition helps.** The definition moves the transform onto the test function, so every result comes from the case of Schwartz functions. The definition copies the identity ∫ f ĝ = ∫ f̂ g, which holds for Schwartz functions. In words, you can move the hat from one factor to the other inside the integral. So for a distribution that comes from a Schwartz function f, the new transform is the distribution of f̂. Every step here is a definition, except that one identity. Fourier inversion for tempered distributions then follows at once from Fourier inversion for Schwartz functions. The real work is in the function case and in showing that the Fourier transform preserves the Schwartz space.
+**How the definition helps.** The definition moves the transform onto the test function, so every result comes from the case of Schwartz functions. The definition copies the identity ∫ f ĝ = ∫ f̂ g for Schwartz functions, so on such f the new transform gives f̂. Fourier inversion for tempered distributions then follows at once from inversion for Schwartz functions. The real work is in the function case and in showing that the Fourier transform preserves the Schwartz space.
 
 **nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “Property \[…\] of the ordinary Fourier transform on functions with rapidly decreasing partial derivatives motivates and justifies the fullowing generalization”
 
@@ -1131,7 +1113,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46F12 (Integral transforms in distribution spaces), 46F10. arXiv math.FA, math.CA. Level 3: graduate.
 
-**Definition.** A tempered distribution S acts continuously and linearly on smooth test functions whose derivatives, including the functions themselves, decay faster than any inverse power. Set φₜ(x) = t⁻ⁿφ(x/t) for t &gt; 0. Call S homogeneous of degree m if S(φₜ) = tᵐS(φ) for all φ and t. Its Fourier transform is defined by duality, Ŝ(φ) = S(φ̂).
+**Definition.** A tempered distribution S is a continuous linear functional on the Schwartz space of smooth, rapidly decreasing functions. Set φₜ(x) = t⁻ⁿφ(x/t) for t &gt; 0, and call S homogeneous of degree m if S(φₜ) = tᵐS(φ) for all φ and t. Its Fourier transform is defined by duality, Ŝ(φ) = S(φ̂).
 
 **Problem.** If a tempered distribution S on ℝⁿ is homogeneous of degree m, then Ŝ is homogeneous of degree −n − m.
 
@@ -1147,7 +1129,7 @@
 
 *True by definition.* MSC 46F12 (Integral transforms in distribution spaces), 42B10. arXiv math.FA, math.CA. Level 3: graduate.
 
-**Definition.** A tempered distribution T acts continuously and linearly on smooth test functions whose derivatives, including the functions themselves, decay faster than any inverse power. Define its Fourier transform by T̂(φ) = T(φ̂). For test functions, use the Fourier integral with kernel exp(−2πix·ξ). That integral does not converge for the constant function 1.
+**Definition.** A tempered distribution T is a continuous linear functional on the Schwartz space of smooth, rapidly decreasing functions. Define its Fourier transform by T̂(φ) = T(φ̂), with the Fourier integral with kernel exp(−2πix·ξ) on test functions. That integral does not converge for the constant function 1.
 
 **Problem.** The Fourier transform of the constant function 1 is the Dirac delta δ, which acts by δ(φ) = φ(0).
 
@@ -1165,7 +1147,7 @@
 
 *True by definition.* MSC 46F12 (Integral transforms in distribution spaces), 42B10. arXiv math.FA, math.CA. Level 3: graduate.
 
-**Definition.** A tempered distribution u acts continuously and linearly on smooth test functions whose derivatives, including the functions themselves, decay faster than any inverse power. Define (∂ⱼu)(φ) = −u(∂ⱼφ) and û(φ) = u(φ̂). For ordinary integrable functions, the usual Fourier transform uses the integral with kernel exp(−2πix·ξ).
+**Definition.** A tempered distribution u is a continuous linear functional on the Schwartz space of smooth, rapidly decreasing functions. Define (∂ⱼu)(φ) = −u(∂ⱼφ) and û(φ) = u(φ̂), with the Fourier integral with kernel exp(−2πix·ξ) on test functions.
 
 **Problem.** For every tempered distribution u on ℝⁿ, the Fourier transform of ∂ⱼu is 2πiξⱼû.
 
@@ -1183,9 +1165,9 @@
 
 **Definition.** A map f between normed spaces is Fréchet differentiable at x if some bounded linear map A makes the error small. The error is ‖f(x+h) − f(x) − Ah‖, and the error divided by ‖h‖ must tend to 0 as h → 0. The weaker Gateaux derivative asks only that each directional derivative exists.
 
-**Problem.** A differentiable function should be continuous, and the chain rule should hold for compositions.
+**Problem.** A map that is Fréchet differentiable at x is continuous at x. A composition of Fréchet differentiable maps is Fréchet differentiable, and its derivative is the composition of the derivatives.
 
-**How the definition helps.** The Fréchet definition asks the error to be small uniformly in all directions, so differentiability implies continuity and the chain rule. The directional version can fail both (our own for the chain rule). The function x³y / (x⁶ + y²), with value 0 at the origin, has all directional derivatives equal to 0 at the origin. But it is not continuous there, as the curve (t, t³) shows. In infinite dimensions, a discontinuous linear functional gives a further bad example. A separate theorem gives a practical test: continuous partial derivatives imply Fréchet differentiability.
+**How the definition helps.** The Fréchet definition asks the error to be small uniformly in all directions, so continuity and the chain rule follow. The directional version can fail both (our own for the chain rule). The function x³y/(x⁶ + y²), with value 0 at the origin, has all directional derivatives equal to 0 there. But it is not continuous there, since it equals 1/2 on the curve (t, t³).
 
 **Wikipedia:** [Fréchet derivative](https://en.wikipedia.org/wiki/Fr%C3%A9chet_derivative). It says: “This is analogous to the fact that the existence of all directional derivatives at a point does not guarantee total differentiability (or even continuity) at that point.”
 
@@ -1203,7 +1185,7 @@
 
 **Problem.** A strongly measurable Banach-space-valued function with integrable norm has a Bochner integral. This is the norm limit of integrals of simple functions that approximate it in integrated norm.
 
-**How the definition helps.** Strong measurability supplies the simple approximations needed for the Bochner integrability criterion. Our own example sends t in \[0,1\], with Lebesgue measure, to the unit vector indexed by t in ℓ²(\[0,1\]). This Hilbert space consists of square-summable families indexed by the interval. Every bounded linear functional has only countably many nonzero coordinates, so each scalar test is measurable. Every vector in the example has norm one. A sequence of finite-valued approximations uses only countably many vectors, which together involve only countably many coordinates. Outside those coordinates it cannot approximate the assigned unit vectors, so the function has no Bochner integral.
+**How the definition helps.** Strong measurability supplies the simple approximations needed for the Bochner integrability criterion. Our own example sends t in \[0,1\] to the unit vector indexed by t in ℓ²(\[0,1\]). Each bounded linear functional has only countably many nonzero coordinates, so the function is weakly measurable, and its norm is one. Finite-valued approximations use only countably many coordinates, so they cannot approximate the other unit vectors, and the function has no Bochner integral.
 
 **Wikipedia:** [Bochner integral](https://en.wikipedia.org/wiki/Bochner_integral). It says: “a Bochner-measurable function f : X → B is Bochner integrable if and only if ∫₍X₎ ∥f∥ʙ dμ &lt; ∞.”
 
@@ -1215,7 +1197,7 @@
 
 *True by definition.* MSC 46G10 (Vector-valued measures and integration), 28B05. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Let f map a measure space into a Banach space V. Call f Pettis integrable when each measurable set A has a vector e in V with this property. Every continuous linear functional φ sends e to the integral of φ ∘ f over A. The Bochner integral instead approximates f by simple functions in the integral of the norm.
+**Definition.** Let f map a measure space into a Banach space V. Call f Pettis integrable when, for each measurable set A, some vector e<sub>A</sub> in V satisfies φ(e<sub>A</sub>) = ∫<sub>A</sub> φ ∘ f dμ for every continuous linear functional φ. The Bochner integral instead approximates f by simple functions in the integral of the norm.
 
 **Problem.** Let T be a continuous linear operator between Banach spaces and f be Pettis integrable. Then T ∘ f is Pettis integrable, and its integral is T applied to the integral of f.
 
@@ -1233,7 +1215,7 @@
 
 **Definition.** A Banach algebra is an algebra with a complete norm that satisfies ‖ab‖ ≤ ‖a‖‖b‖. A division algebra is one in which every nonzero element has an inverse. The Gelfand–Mazur theorem is about unital Banach algebras with complex scalars.
 
-**Problem.** The Gelfand–Mazur theorem says that a complex unital Banach algebra in which every nonzero element is invertible is isometrically isomorphic to ℂ. The Gelfand representation page says the bijection between characters and maximal ideals relies on it.
+**Problem.** The Gelfand–Mazur theorem says that a complex unital Banach algebra in which every nonzero element is invertible is isomorphic to ℂ.
 
 **How the definition helps.** With complex scalars, every element a has some λ in its spectrum, so a − λ1 is not invertible and must be zero. The nonempty spectrum comes from complex analysis of the resolvent, which is why the scalars must be complex. Over the real numbers the quaternions are a Banach division algebra that is not ℝ or ℂ. The page says that the real case has exactly three answers: ℝ, ℂ and the quaternions. So the choice of complex scalars is what makes the answer unique.
 
@@ -1251,7 +1233,7 @@
 
 **Problem.** Let a be an element of a commutative unital complex Banach algebra, and let p be a polynomial. Then the spectrum of p(a) is the set of values p(λ) for λ in the spectrum of a.
 
-**How the definition helps.** With the character definition the proof is one line, because φ(p(a)) = p(φ(a)) for every character φ. The work moves to the theorem that the two definitions agree. That theorem says that every maximal ideal is the kernel of a character. It uses the Gelfand–Mazur theorem, which says that every complex Banach division algebra is ℂ. The usual definition also gives a short proof, by factoring p(a) − λ into linear factors, and that proof works without commutativity. ProofWiki states the agreement of the definitions; the comparison is our own.
+**How the definition helps.** With the character definition the proof is one line, because φ(p(a)) = p(φ(a)) for every character φ. The work moves to the theorem that the two definitions agree, which rests on the Gelfand–Mazur theorem. The usual definition also gives a short proof, by factoring p(a) − λ into linear factors, and that proof works without commutativity. ProofWiki states the agreement of the definitions; the comparison is our own.
 
 **Paper or page:** [Spectrum of Element of Unital Commutative Banach Algebra](https://proofwiki.org/wiki/Spectrum_of_Element_of_Unital_Commutative_Banach_Algebra). It says: “σₐ(x) = {φ(x) : φ ∈ Φₐ}”
 
@@ -1263,11 +1245,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
-**Definition.** For a non-unital C\*-algebra A, the unitization is A⁺ = A ⊕ ℂ with product (a, z)(b, w) = (ab + wa + zb, zw). It has a C\*-norm and a homomorphism A⁺ → ℂ that sends (a, z) to z. For a locally compact space X, the unitization of C₀(X) is C(X⁺), with X⁺ the one-point compactification.
+**Definition.** For a non-unital C\*-algebra A, the unitization is A⁺ = A ⊕ ℂ with product (a, z)(b, w) = (ab + wa + zb, zw). It has a C\*-norm and a homomorphism A⁺ → ℂ that sends (a, z) to z. Define K₀(A) as the kernel of the induced map K₀(A⁺) → K₀(ℂ) = ℤ. For a locally compact space X, the unitization of C₀(X) is C(X⁺), with X⁺ the one-point compactification.
 
-**Problem.** Operator K-theory first defines the group K₀ from projections, that is self-adjoint idempotents, in matrices over a unital algebra. One wants K-groups for non-unital algebras, such as C₀(X), that give K-theory with compact support.
+**Problem.** For a locally compact space X, the group K₀(C₀(X)) is the K-theory of X with compact support.
 
-**How the definition helps.** The unitization moves the problem to a unital algebra, and the map to ℂ remembers what was added. The page defines the K-theory of A as the kernel of the map from K₀(A⁺) to K₀(ℂ) = ℤ. For A = C₀(X), this is the kernel of the map induced by the point at infinity. The page calls this compactly supported K-theory and cites Emerson for a precise form. Every C\*-algebra map then has an induced map on K-groups (our own). Exactness and Bott periodicity for the new groups still need proofs (our own).
+**How the definition helps.** The unitization moves the problem to a unital algebra, and the map to ℂ remembers what was added. For A = C₀(X), the map to ℂ is evaluation at the point at infinity of X⁺. So the kernel is what the page calls compactly supported K-theory. Exactness and Bott periodicity for the new groups still need proofs (our own).
 
 **nLab:** [unitization of a C-star-algebra](https://ncatlab.org/nlab/show/unitization+of+a+C-star-algebra). It says: “The generalization of the process of one-point compactification of possibly non-compact topological spaces from topology to non-commutative topology is the process of adding units to possibly non-unital C\*-algebras”
 
@@ -1281,9 +1263,9 @@
 
 **Definition.** The spectrum of a commutative C\*-algebra A is the set of nonzero \*-homomorphisms from A to ℂ. It carries the weak-\* topology, the topology of pointwise convergence on A.
 
-**Problem.** One wants the spectrum to be a locally compact Hausdorff space, compact when A has a unit. Then A is the algebra of functions vanishing at infinity on its spectrum.
+**Problem.** The spectrum of a commutative C\*-algebra A is a locally compact Hausdorff space. It is compact when A has a unit.
 
-**How the definition helps.** The characters and the zero map form a weak-\* closed part of the dual unit ball. So they form a compact set by the Banach–Alaoglu theorem (our own step). Removing the one point 0 leaves a locally compact space. When A has a unit, every character sends 1 to 1, so no net of characters can converge to zero. Then the spectrum is closed, hence compact. The zero map plays the part of the point at infinity of the one-point compactification (our own remark).
+**How the definition helps.** The characters and the zero map form a weak-\* closed part of the dual unit ball. So they form a compact set by the Banach–Alaoglu theorem (our own step), and removing the one point 0 leaves a locally compact space. When A has a unit, every character sends 1 to 1, so no net of characters converges to zero, and the spectrum is compact. The zero map plays the part of the point at infinity (our own remark).
 
 **Wikipedia:** [Gelfand representation](https://en.wikipedia.org/wiki/Gelfand_representation). It says: “In the unital case, i.e. where the C\*-algebra has a multiplicative unit element 1, all characters f must be unital, i.e. f(1) is the complex number one. This excludes the zero homomorphism.”
 
@@ -1299,7 +1281,7 @@
 
 **Problem.** Every homomorphism between C\*-algebras that preserves adjoints sends positive elements to positive elements.
 
-**How the definition helps.** With the b\*b definition, φ(b\*b) = φ(b)\*φ(b), which is positive by definition. The work moves to the theorem that the two definitions agree. One direction is the Fukamiya–Kaplansky theorem that b\*b has spectrum in \[0, ∞), which is the hard step. The other direction builds a square root of a positive element with the continuous functional calculus. With the spectral definition, the proof instead uses the fact that a homomorphism does not enlarge spectra, apart from adding 0. Wikipedia states that the two definitions agree; the comparison is our own.
+**How the definition helps.** With the b\*b definition, φ(b\*b) = φ(b)\*φ(b), which is positive by definition. The work moves to the theorem that the two definitions agree. Its hard step is the Fukamiya–Kaplansky theorem that b\*b has spectrum in \[0, ∞). Wikipedia states that the two definitions agree; the comparison is our own.
 
 **Wikipedia:** [C\*-algebra](https://en.wikipedia.org/wiki/C%2A-algebra). It says: “Elements of this cone are called non-negative (or sometimes positive”
 
@@ -1313,9 +1295,9 @@
 
 **Definition.** A C\*-algebra is a Banach \*-algebra that satisfies the C\*-identity ‖A\*A‖ = ‖A\*‖ ‖A‖. Here a Banach \*-algebra has an involution A ↦ A\* that is an isometry: ‖A\*‖ = ‖A‖. Equivalently, a C\*-algebra satisfies the B\*-identity ‖A\*A‖ = ‖A‖².
 
-**Problem.** Show that the C\*-identity and the B\*-identity define the same class of algebras.
+**Problem.** In a Banach \*-algebra whose involution is an isometry, the C\*-identity holds exactly when the B\*-identity holds.
 
-**How the definition helps.** If the involution is an isometry by definition, the two identities are visibly the same. The reason is that ‖A\*‖ ‖A‖ = ‖A‖² when ‖A\*‖ = ‖A‖. Many texts leave this clause out of the definition of a Banach \*-algebra. Then the isometry still follows easily from the B\*-identity. From the C\*-identity, it follows only after some difficulty, as the nLab says. So the clause moves the hard part out of the equivalence. That hard part is the theorem that the C\*-identity alone forces the involution to be an isometry.
+**How the definition helps.** If the involution is an isometry, ‖A\*‖ ‖A‖ = ‖A‖², so the two identities are visibly the same. Many texts leave this clause out of the definition of a Banach \*-algebra. Then the isometry follows easily from the B\*-identity, but from the C\*-identity only after some difficulty, as the nLab says. So the clause moves the hard part out of the equivalence.
 
 **nLab:** [C-star-algebra](https://ncatlab.org/nlab/show/C-star-algebra). It says: “Often one sees the definition without the clause (which should be in the definition of Banach \*-algebra) that the involution is an isometry (so that ‖A\*‖ = ‖A‖, which is key for the equivalence of the B\* and C\* identities).”
 
@@ -1333,7 +1315,7 @@
 
 **Problem.** The commutative Gelfand–Naimark theorem says that every commutative C\*-algebra is isometrically isomorphic to C₀(X), the continuous functions vanishing at infinity on its character space X.
 
-**How the definition helps.** The C\*-identity makes the norm of a self-adjoint element equal to its spectral radius (our own summary). The spectral radius is the supremum of the Gelfand transform (our own summary). For a general commutative Banach algebra, the transform kills the Jacobson radical, the intersection of all maximal ideals. So nilpotent elements, and radical algebras such as the Volterra integration algebra, are sent to zero (our own examples). The C\*-identity excludes these, and the page says the transform is then an isometric isomorphism. The Stone–Weierstrass theorem then shows that the image is all of C₀(X) (our own summary of the proof).
+**How the definition helps.** The C\*-identity makes the norm of a self-adjoint element equal to its spectral radius, which is the supremum of its Gelfand transform (our own summary). For a general commutative Banach algebra, the transform kills the Jacobson radical, the intersection of all maximal ideals. So nilpotent elements and radical algebras such as the Volterra integration algebra go to zero (our own examples). The C\*-identity excludes these, and the page says the transform is then an isometric isomorphism. The Stone–Weierstrass theorem shows that the image is all of C₀(X) (our own summary of the proof).
 
 **Wikipedia:** [Gelfand representation](https://en.wikipedia.org/wiki/Gelfand_representation). It says: “Thus the Gelfand representation is injective if and only if A is (Jacobson) semisimple.”
 
@@ -1351,7 +1333,7 @@
 
 **Problem.** For each complex number z with \|z\| = 1, there is an automorphism of Oₙ that sends each sᵢ to zsᵢ. These automorphisms form a continuous action of the circle.
 
-**How the definition helps.** The elements zsᵢ are again isometries whose range projections sum to 1, so the universal property gives a homomorphism. The homomorphism for z̄ is its inverse, and the group law holds on the generators. Continuity holds on polynomials in the generators and their adjoints, which are dense. With the concrete definition, as the algebra generated by one chosen family of isometries, one needs Cuntz's uniqueness theorem. That theorem says that any two such families generate isomorphic C\*-algebras, and it is the work behind the universal definition. Wikipedia gives both definitions and Cuntz's theorem; the circle action argument is our own.
+**How the definition helps.** The elements zsᵢ are again isometries whose range projections sum to 1, so the universal property gives a homomorphism. The homomorphism for z̄ is its inverse, and continuity holds on the dense polynomials in the generators and their adjoints. With the concrete definition, one needs Cuntz's uniqueness theorem that any two such families generate isomorphic C\*-algebras. Wikipedia gives both definitions and Cuntz's theorem; the circle action argument is our own.
 
 **Wikipedia:** [Cuntz algebra](https://en.wikipedia.org/wiki/Cuntz_algebra). It says: “This universal C\*-algebra is called the Cuntz algebra”
 
@@ -1369,7 +1351,7 @@
 
 **Problem.** Let a C\*-algebra D contain A as an essential ideal. Then the canonical homomorphism from D to M(A) is injective.
 
-**How the definition helps.** The universal property gives the map, and the map is the identity on A. So its kernel is a closed ideal J of D that meets A only in 0. Then JA lies in J ∩ A = 0, so every element of J multiplies A to zero. Because A is essential, J = 0. The work is the construction of M(A) from double centralizers and the proof of its universal property. Wikipedia says the result follows from the definition; the kernel argument is our own.
+**How the definition helps.** The universal property gives the map, and the map is the identity on A. So its kernel J is a closed ideal with J ∩ A = 0, and then JA ⊆ J ∩ A = 0. Because A is essential, J = 0. The work is the construction of M(A) from double centralizers; Wikipedia says the result follows from the definition, and the kernel argument is our own.
 
 **Wikipedia:** [Multiplier algebra](https://en.wikipedia.org/wiki/Multiplier_algebra). It says: “It also follows from the definition that for any D containing A as an essential ideal, the multiplier algebra M(A) contains D as a C\*-subalgebra.”
 
@@ -1385,7 +1367,7 @@
 
 **Problem.** If A and B are nuclear, then their spatial tensor product A ⊗min B is nuclear.
 
-**How the definition helps.** Take any C. Since A ⊗min B = A ⊗max B and the maximal norm is associative, (A ⊗min B) ⊗max C equals A ⊗max (B ⊗max C). Nuclearity of B, and then of A, turns both maximal norms into minimal ones. The minimal norm is also associative, so the result is (A ⊗min B) ⊗min C. The work is the associativity of the two norms. With the approximation definition, one must tensor the approximating maps, which needs the fact that tensor products of completely positive maps stay completely positive. The nLab gives the norm definition; the proof and comparison are our own.
+**How the definition helps.** The norm definition reduces the claim to associativity of the minimal and maximal tensor norms (our own). For any C, (A ⊗min B) ⊗max C = A ⊗max (B ⊗max C), and nuclearity of B and then of A turns both maximal norms into minimal ones. With the approximation definition, one must tensor the approximating maps and show that they stay completely positive. The nLab gives the norm definition; the proof and comparison are our own.
 
 **nLab:** [spatial tensor product](https://ncatlab.org/nlab/show/spatial+tensor+product). It says: “the maximal and minimal tensor norms on the algebraic tensor product A ⊗ B coincide”
 
@@ -1403,7 +1385,7 @@
 
 **Problem.** Let Φ be a completely positive map from a unital C\*-algebra A to the bounded operators on H. Stinespring's theorem says that Φ(a) = V\*π(a)V. Here π is a \*-representation of A on another Hilbert space and V is a bounded operator.
 
-**How the definition helps.** Complete positivity is exactly the property that a map of the form V\*π(·)V has, so the theorem can hold with no exceptions. Its proof builds an inner product on A ⊗ H, like the Gelfand–Naimark–Segal construction does for a state. Positivity of that inner product needs positivity of Φ on all matrix sizes. The transpose of matrices is positive but fails to be 2-positive, so it has no Stinespring form. For a state, the theorem gives back that Gelfand–Naimark–Segal representation. On commutative C\*-algebras, positive maps are automatically completely positive (our own remark).
+**How the definition helps.** Complete positivity is exactly the property that a map of the form V\*π(·)V has, so the theorem can hold with no exceptions. Its proof builds an inner product on A ⊗ H, as the Gelfand–Naimark–Segal construction does for a state. Positivity of that inner product needs positivity of Φ on all matrix sizes. The transpose of matrices is positive but not 2-positive, so it has no Stinespring form. On commutative C\*-algebras, positive maps are automatically completely positive (our own remark).
 
 **Wikipedia:** [Stinespring dilation theorem](https://en.wikipedia.org/wiki/Stinespring_dilation_theorem), [Completely positive map](https://en.wikipedia.org/wiki/Completely_positive_map). It says: “This is one way to see that completely positive maps, rather than merely positive ones, are the true generalizations of positive functionals.”
 
@@ -1420,9 +1402,9 @@
 
 **Definition.** A W\*-algebra is a C\*-algebra that is, as a Banach space, the dual of some Banach space. That Banach space is called the predual. For a von Neumann algebra on a Hilbert space, the predual consists of the functionals of the form Σ⟨Txₙ, yₙ⟩ with Σ‖xₙ‖‖yₙ‖ finite. These are the ultraweakly continuous functionals.
 
-**Problem.** The ultraweak topology seems to depend on the Hilbert space on which the algebra acts. One wants the theory of von Neumann algebras to be intrinsic to the algebra.
+**Problem.** The predual of a W\*-algebra is unique up to canonical isomorphism, so its weak-\* topology depends only on the algebra. Every W\*-algebra acts faithfully on some Hilbert space as a von Neumann algebra (Sakai's theorem).
 
-**How the definition helps.** With Sakai's definition, the weak-\* topology from the predual is part of the data, so it cannot depend on a Hilbert space. The page says the predual is unique up to a canonical isomorphism. It can also be described as the span of the positive normal functionals, which uses only the order structure. The work moves into Sakai's theorem that every such C\*-algebra acts faithfully on a Hilbert space as a weakly closed algebra. The predual is usually smaller than the full dual. For ℓ∞(ℤ), free ultrafilters give functionals outside the predual.
+**How the definition helps.** With Sakai's definition, the weak-\* topology from the predual is part of the data, so it cannot depend on a Hilbert space. The predual can also be described as the span of the positive normal functionals, which uses only the order structure. The work moves into Sakai's theorem that every such algebra has a faithful representation as a weakly closed algebra.
 
 **Wikipedia:** [Von Neumann algebra](https://en.wikipedia.org/wiki/Von_Neumann_algebra). It says: “Sakai (1971) showed that von Neumann algebras can also be defined abstractly as C\*-algebras that have a predual”
 
@@ -1438,9 +1420,9 @@
 
 **Definition.** The commutant S′ of a set S of operators is the set of all bounded operators that commute with every element of S. A von Neumann algebra is a \*-algebra of operators that contains the identity and is weakly closed. Weakly closed means it contains T whenever a net Tᵢ in it has ⟨Tᵢx, y⟩ → ⟨Tx, y⟩ for all x, y.
 
-**Problem.** One wants simple closure facts. The commutant of any set closed under adjoints is a von Neumann algebra. A von Neumann algebra contains the spectral projections of its self-adjoint elements.
+**Problem.** The commutant of any set of operators closed under adjoints is a von Neumann algebra. A von Neumann algebra contains the spectral projections of its self-adjoint elements.
 
-**How the definition helps.** With the algebraic definition M = M″, these facts are almost immediate, because commutants are easy to compute with. A spectral projection of a self-adjoint a in M commutes with every operator that commutes with a. So it lies in M″, which is M (our own example). The commutant S′ of any self-adjoint set is weakly closed and satisfies S′ = S‴ (our own). The work moves into the bicommutant theorem. It shows that the weak closure of a unital \*-algebra equals its bicommutant. A norm-closed algebra such as the compact operators is not weakly closed, so it is a C\*-algebra but not a von Neumann algebra.
+**How the definition helps.** With the algebraic definition M = M″, these facts are almost immediate, because commutants are easy to compute with. A spectral projection of a self-adjoint a in M commutes with every operator that commutes with a, so it lies in M″ = M (our own example). The commutant S′ of a self-adjoint set is weakly closed and satisfies S′ = S‴ (our own). The work moves into the bicommutant theorem, which says that the weak closure of a unital \*-algebra equals its bicommutant.
 
 **Wikipedia:** [Von Neumann bicommutant theorem](https://en.wikipedia.org/wiki/Von_Neumann_bicommutant_theorem), [Von Neumann algebra](https://en.wikipedia.org/wiki/Von_Neumann_algebra). It says: “His double commutant theorem shows that the analytic definition is equivalent to a purely algebraic definition as an algebra of symmetries.”
 
@@ -1456,9 +1438,9 @@
 
 **Definition.** An AF algebra is a C\*-algebra that is an inductive limit of a sequence of finite-dimensional C\*-algebras. Its K₀ group is built from classes of projections in matrices over the algebra. The positive cone is the set of classes of actual projections.
 
-**Problem.** Elliott's theorem says that two unital AF algebras are isomorphic exactly when their ordered K₀ groups, with the class of the unit, are isomorphic. The page states the general case with the scale, the set of classes of projections in the algebra. The Effros–Handelman–Shen theorem says which ordered groups occur.
+**Problem.** Elliott's theorem says that two unital AF algebras are isomorphic exactly when their ordered K₀ groups, together with the class of the unit, are isomorphic.
 
-**How the definition helps.** Keeping the order on K₀ turns the multiplicity matrices of the limit into maps of ordered groups, so the invariant keeps the construction. For example, ℂ ⊕ ℂ and each Effros–Shen algebra, built from an irrational θ, have K₀ ≅ ℤ² as a group (our own example). The positive cone is ℕ² for the first, and comes from ℤ + θℤ inside ℝ for the second (our own example). Only the order tells them apart. The page says the proof has an existence part and a uniqueness part. Existence lifts maps of invariants to homomorphisms of algebras, and uniqueness shows that two lifts are close to unitarily equivalent. For unital AF algebras, the page says both parts follow from cancellation of projections.
+**How the definition helps.** Keeping the order on K₀ turns the multiplicity matrices of the limit into maps of ordered groups, so the invariant keeps the construction. For example, ℂ ⊕ ℂ and each Effros–Shen algebra, built from an irrational θ, have K₀ ≅ ℤ² as a group (our own example). The positive cone is ℕ² for the first, and comes from ℤ + θℤ inside ℝ for the second, so only the order tells them apart (our own example). The page says that for unital AF algebras the proof rests on cancellation of projections.
 
 **Wikipedia:** [Approximately finite-dimensional C\*-algebra](https://en.wikipedia.org/wiki/Approximately_finite-dimensional_C%2A-algebra). It says: “Later, George A. Elliott gave a complete classification of AF algebras using the K₀ functor whose range consists of ordered abelian groups with sufficiently nice order structure.”
 
@@ -1556,11 +1538,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including \\(B\\)-, \\(B<sub>r</sub>\\)-completeness)). arXiv math.FA. Level 4: research.
 
-**Definition.** A web on a locally convex space is a countable tree of convex balanced sets. The children of each set together absorb it, each child lies in half of its parent, and series along a branch converge. A space with a web is webbed. De Wilde developed the theory in 1978.
+**Definition.** A web on a locally convex space is a countable tree of convex balanced sets. The children of each set together absorb it, each child lies in half of its parent, and series along a branch converge. A space with a web is webbed.
 
-**Problem.** The closed graph theorem says that a linear map with closed graph between Fréchet spaces is continuous. Spaces of distributions are not Fréchet spaces. One wants the theorem for maps into such spaces.
+**Problem.** A linear map with closed graph from an ultrabornological space into a webbed space is continuous (De Wilde's closed graph theorem).
 
-**How the definition helps.** A web packages exactly the countable structure that the Baire category proof uses, so the old proof works again (our own reading). The page's closed graph theorem says that a linear map with closed graph from an ultrabornological space into a webbed space is continuous. Ultrabornological spaces include Fréchet spaces and their inductive limits. The countable tree replaces the sequence of balls of a metric space (our own reading). The convergence condition replaces completeness (our own reading). What stays hard is to show that the spaces in use have webs. The page lists Fréchet spaces and strong duals of metrizable spaces, which cover spaces of distributions.
+**How the definition helps.** A web packages exactly the countable structure that the Baire category proof uses, so the old proof works again (our own reading). The countable tree replaces the sequence of balls of a metric space, and the convergence condition replaces completeness (our own reading). Ultrabornological spaces include Fréchet spaces and their inductive limits. What stays hard is to show that the spaces in use have webs; the page lists Fréchet spaces and strong duals of metrizable spaces, which cover spaces of distributions.
 
 **Wikipedia:** [Webbed space](https://en.wikipedia.org/wiki/Webbed_space). It says: “a webbed space is a topological vector space designed with the goal of allowing the results of the open mapping theorem and the closed graph theorem to hold for a wider class of linear maps whose codomains are webbed spaces.”
 
@@ -1572,11 +1554,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46B09 (Probabilistic methods in Banach space theory), 42B30, 60G46. arXiv math.FA, math.CA. Level 4: research.
 
-**Definition.** A martingale is a sequence of random variables in which each step has conditional mean zero, given the past. A Banach space X has the UMD property (unconditional martingale differences) when the following holds for some 1 &lt; p &lt; ∞. Changing the signs of the steps of any X-valued martingale in Lᵖ changes its Lᵖ norm by at most a fixed factor. Hilbert spaces and Lᵖ with 1 &lt; p &lt; ∞ have UMD, but L¹, ℓ¹ and c₀ do not.
+**Definition.** A martingale is a sequence of random variables in which each step has conditional mean zero, given the past. A Banach space X has the UMD property (unconditional martingale differences) if the following holds for some 1 &lt; p &lt; ∞. Changing the signs of the steps of any X-valued martingale changes its Lᵖ norm by at most a fixed factor.
 
-**Problem.** For which Banach spaces X is the Riesz projection, which keeps only the nonnegative frequencies of a function, bounded on X-valued Lᵖ functions? The survey states the answer on any Dirichlet group: exactly the UMD spaces. It then uses this to bound partial sums of X-valued Dirichlet series.
+**Problem.** Let G be a Dirichlet group and 1 &lt; p &lt; ∞. The Riesz projection, which keeps only the nonnegative frequencies, is bounded on X-valued Lᵖ functions on G exactly when X has the UMD property.
 
-**How the definition helps.** The UMD condition names, in one probabilistic inequality, the whole class of spaces where Fourier projections stay bounded. So the vector-valued theorem becomes an if-and-only-if instead of a list of good examples. For scalar functions the Riesz projection is bounded on Lᵖ for 1 &lt; p &lt; ∞. For functions with values in ℓ¹ or c₀ it is not (our own remark). The hard work is the two directions of the equivalence, due to Burkholder and Bourgain for the circle (our own remark).
+**How the definition helps.** The UMD condition names, in one probabilistic inequality, the whole class of spaces where Fourier projections stay bounded. So the vector-valued theorem becomes an if-and-only-if instead of a list of good examples. For functions with values in ℓ¹ or c₀ the Riesz projection is not bounded (our own remark). The hard work is the two directions of the equivalence, due to Burkholder and Bourgain for the circle (our own remark).
 
 **Paper or page:** [Hardy spaces of general Dirichlet series - a survey](https://arxiv.org/abs/1902.02073v1), [Hardy spaces of general Dirichlet series - a survey](https://arxiv.org/abs/1902.02073v1). It says: “Let G be a Dirichlet group, X a Banach space and 1&lt;p&lt;∞. Then X has UMD if and only if the Riesz projection … is bounded.”
 
@@ -1590,11 +1572,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46B09 (Probabilistic methods in Banach space theory), 46C15. arXiv math.FA. Level 4: research.
 
-**Definition.** A Banach space has type 2 if a constant C works for all finite lists of vectors x₁, …, xₙ. Averaged over all choices of signs, ‖±x₁ ± ⋯ ± xₙ‖² is at most C(‖x₁‖² + ⋯ + ‖xₙ‖²). It has cotype 2 if the reverse inequality holds with another constant. In a Hilbert space the average equals the sum exactly, by the parallelogram law.
+**Definition.** A Banach space has type 2 if some constant C bounds the average over signs of ‖±x₁ ± ⋯ ± xₙ‖² by C(‖x₁‖² + ⋯ + ‖xₙ‖²), for every finite list of vectors. It has cotype 2 if the reverse inequality holds with another constant. In a Hilbert space the average equals the sum exactly, by the parallelogram law.
 
-**Problem.** Which Banach spaces are isomorphic to a Hilbert space, that is, have an equivalent norm that comes from an inner product? Kwapień's theorem says: exactly the spaces of type 2 and cotype 2.
+**Problem.** A Banach space is isomorphic to a Hilbert space exactly when it has type 2 and cotype 2 (Kwapień's theorem).
 
-**How the definition helps.** Type and cotype split the parallelogram law into two one-sided inequalities with constants, and inequalities with constants survive a change to an equivalent norm. So the definitions give a statement about Hilbert spaces that does not depend on the choice of norm. The exact parallelogram law cannot do this. In our own example, ℓ² with the equivalent norm max(‖x‖, 2\|x₁\|) fails the law. But it keeps type 2 and cotype 2. The same scale also sorts other spaces: Lᵖ with 1 ≤ p &lt; ∞ has type min(p, 2) and cotype max(p, 2) (our own remark). The hard direction, that the two inequalities give an inner product norm, needs Kwapień's factorization argument (our own remark).
+**How the definition helps.** Type and cotype split the parallelogram law into two one-sided inequalities with constants, and such inequalities survive a change to an equivalent norm. The exact parallelogram law cannot do this. In our own example, ℓ² with the equivalent norm max(‖x‖, 2\|x₁\|) fails the law but keeps type 2 and cotype 2. The hard direction, that the two inequalities give an inner product norm, needs Kwapień's factorization argument (our own remark).
 
 **Paper or page:** [Characterization of Hilbertizable spaces via convex functions](https://arxiv.org/abs/2506.04686v1). It says: “A space is isomorphic to a Hilbert space if and only if it is of type 2 and cotype 2.”
 
@@ -1609,11 +1591,11 @@
 
 *True by definition. Confidence: medium.* MSC 46B10 (Duality and reflexivity in normed linear and Banach spaces). arXiv math.FA. Level 4: research.
 
-**Definition.** A Banach space X is a Grothendieck space if every sequence in the dual X\* that converges weak-\* also converges weakly. Weak-\* convergence of functionals means convergence at each point of X, and weak convergence means convergence against each element of the double dual X\*\*. The abstract describes them as spaces for which weak- and weak\*-sequential convergences in the dual space coincide. Grothendieck showed that ℓ∞ has this property.
+**Definition.** A Banach space X is a Grothendieck space if every sequence in the dual X\* that converges weak-\* also converges weakly. Weak-\* convergence means convergence at each point of X, and weak convergence means convergence against each element of X\*\*.
 
-**Problem.** Which separable Banach spaces are Grothendieck spaces? Only the reflexive ones, and the quoted result says more. A non-reflexive Grothendieck space has density, the least size of a dense set, at least the uncountable cardinal 𝔭 of set theory.
+**Problem.** Every separable Grothendieck space is reflexive. More generally, a non-reflexive Grothendieck space has density at least the uncountable cardinal 𝔭.
 
-**How the definition helps.** The definition supplies exactly the step that a reflexivity proof needs, because it turns weak-\* convergence into weak convergence. In a separable space the dual unit ball is weak-\* sequentially compact. The Grothendieck property turns this directly into weak sequential compactness, and the Eberlein–Šmulian theorem then makes X\* and so X reflexive (our own sketch). So the separable case follows nearly from the definition, and the work moves into finding non-reflexive examples. These must be large spaces, such as ℓ∞ and C(K) for some compact spaces K. The space c₀ is not a Grothendieck space (our own remark).
+**How the definition helps.** The definition supplies exactly the step that a reflexivity proof needs. In a separable space the dual unit ball is weak-\* sequentially compact. The Grothendieck property makes it weakly sequentially compact, and the Eberlein–Šmulian theorem then makes X\* and so X reflexive (our own sketch). So the work moves into finding non-reflexive examples, which must be large spaces such as ℓ∞.
 
 **Paper or page:** [Grothendieck spaces: the landscape and perspectives](https://arxiv.org/abs/2102.03838v3), [Grothendieck spaces: the landscape and perspectives](https://arxiv.org/abs/2102.03838v3). It says: “A non-reflexive Grothendieck space has density at least 𝔭⩾ω₁.”
 
@@ -1630,9 +1612,9 @@
 
 **Definition.** Let M and N be nonzero closed subspaces of a Hilbert space, with orthogonal projections P and Q. Restrict PQ to M to get a self-adjoint operator on M. The angles from M to N are the inverse cosines of the square roots of the points in its spectrum.
 
-**Problem.** Use M as the trial subspace and Q as the operator in the Rayleigh–Ritz method. The Ritz values are then exactly the squared cosines of the angles from M to N. The paper then bounds how Ritz values move when the trial subspace changes.
+**Problem.** In the Rayleigh–Ritz method with trial subspace M and operator Q, the Ritz values are exactly the squared cosines of the angles from M to N.
 
-**How the definition helps.** The angles come from the spectrum of PQ restricted to M, and the Ritz values are the spectrum of that same operator (our own). So the equality holds by definition (our own). The work moves to perturbation bounds for angles, which then bound Ritz values by a constant times the gap between trial subspaces. The paper also shows that these angles recover the classical gaps and angles of Dixmier and Friedrichs.
+**How the definition helps.** The angles come from the spectrum of PQ restricted to M, and the Ritz values are the spectrum of that same operator (our own). So the equality holds by definition (our own). The work moves to perturbation bounds for angles, which then bound how Ritz values move when the trial subspace changes.
 
 **Paper or page:** [Angles Between Infinite Dimensional Subspaces with Applications to the Rayleigh-Ritz and Alternating Projectors Methods](https://arxiv.org/abs/0705.1023v2). It says: “We show that the squared cosines of the angles from one subspace to another can be interpreted as Ritz values in the Rayleigh-Ritz method”
 
@@ -1648,7 +1630,7 @@
 
 **Definition.** A reproducing kernel Hilbert space is a Hilbert space of functions in which each point evaluation f ↦ f(w) is continuous. Then f(w) = ⟨f, K(w, ·)⟩ for a unique kernel K. Here the space holds entire functions that grow at most like exp(πΔ\|z\|). Its norm is weighted by the one-level density of the family’s symmetry type, which describes how low-lying zeros are spread.
 
-**Problem.** Assume the generalized Riemann hypothesis for a family of L-functions with symmetry type G. Assume also a one-level density estimate for test functions whose Fourier transforms have support in (−Δ, Δ). Then Theorem 2 bounds the average order of vanishing at the central point by 1/K(0, 0), with a similar bound at low heights.
+**Problem.** Assume the generalized Riemann hypothesis for a family of L-functions with symmetry type G. Assume also a one-level density estimate for test functions whose Fourier transforms have support in (−Δ, Δ). Then the average order of vanishing at the central point is bounded by 1/K(0, 0).
 
 **How the definition helps.** Writing evaluation as an inner product turns the Fourier optimization problem into the Cauchy–Schwarz inequality, so the kernel gives the answer. In our own calculation, \|f(0)\|² ≤ ‖f‖²K(0, 0), so a test function with f(0) = 1 has ‖f‖² ≥ 1/K(0, 0). The function K(0, ·)/K(0, 0) attains equality. For unitary symmetry the kernel is the sine kernel, and K(0, 0) = Δ. In our own account, the paper must still link this minimum to the zero count and compute the kernel for each symmetry type.
 
@@ -1666,9 +1648,9 @@
 
 **Definition.** A multiplier of a space of functions is a function φ such that φf is in the space for every f in it. A reproducing kernel Hilbert space has the complete Pick property when a positivity test on its kernel alone solves the Nevanlinna–Pick problem for its multipliers. This also holds for matrix-valued multipliers. The Hardy space of the disc is the classical example.
 
-**Problem.** A sequence is interpolating for a space when every sequence of values of the right size is matched by a function in the space. The same idea works for the multiplier algebra. In spaces with the complete Pick property, such as some Besov–Sobolev spaces on the unit ball, the two notions give the same sequences.
+**Problem.** Call a sequence interpolating for a space if every sequence of values of the right size is attained by a function in the space. In a space with the complete Pick property, the interpolating sequences for the space and for its multiplier algebra are the same.
 
-**How the definition helps.** In our own words, the Pick property turns a question about bounded multipliers into one about positive matrices built from the kernel. So interpolation in the multiplier algebra reduces to interpolation in the space; this is also our own summary. The coincidence itself is a separate known theorem about complete Pick spaces, which the paper uses; this remark is our own. The abstract says that the same coincidence fails for the Hardy space of the polydisc and its algebra of bounded functions. There the paper gets only separate sufficient and necessary conditions for random sequences. In the ball, the coincidence gives one zero-one law for both kinds.
+**How the definition helps.** In our own words, the Pick property turns a question about bounded multipliers into one about positive matrices built from the kernel. So interpolation in the multiplier algebra reduces to interpolation in the space (our own summary). The abstract says that the coincidence fails for the Hardy space of the polydisc and its algebra of bounded functions.
 
 **Paper or page:** [Random Interpolating Sequences in the Polydisc and the Unit Ball](https://arxiv.org/abs/2012.05381v4). It says: “For those spaces, such interpolating sequences coincide with interpolating sequences for their multiplier algebras, thanks to the Pick property. This is not the case for the Hardy space H²(𝔻ᵈ) and its multiplier algebra H∞(𝔻ᵈ)”
 
@@ -1740,7 +1722,7 @@
 
 **Problem.** Let Ω be a bounded Lipschitz domain in ℝᴺ with N ≥ 2, so its boundary is locally the graph of a Lipschitz function. If u ∈ H¹ᐟ²(Ω) is harmonic and its trace on Γ is zero, then u = 0 in Ω.
 
-**How the definition helps.** The new trace gives a precise meaning to u = 0 on Γ at a regularity where the usual trace does not exist. The paper says this trace replaces the non-tangential limits used in the literature since the 1980s. The paper also shows that the kernel of this trace on E is H¹ᐟ²₀₀(Ω). Our own reading is that a harmonic function in H¹ᐟ²(Ω) must first be shown to lie in E. The uniqueness proof still needs the paper's estimates. Some claims of this paper go against the literature, so the result should be read with care.
+**How the definition helps.** The new trace gives a precise meaning to u = 0 on Γ at a regularity where the usual trace does not exist. Our own reading is that a harmonic function in H¹ᐟ²(Ω) must first be shown to lie in E. The uniqueness proof still needs the paper's estimates. Some claims of this paper go against the literature, so the result should be read with care.
 
 **Paper or page:** [Maximal regularity of Dirichlet problem for the Laplacian in Lipschitz domains](https://arxiv.org/abs/2509.08543v2). It says: “If u ∈ H¹⁄²(Ω) is harmonic and u = 0 on Γ, then u = 0 in Ω.”
 
@@ -1754,11 +1736,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 46E36 (Sobolev (and similar kinds of) spaces of functions on metric spaces; analysis on metric spaces), 30L99. arXiv math.FA, math.MG. Level 4: research.
 
-**Definition.** A Borel function g ≥ 0 is an upper gradient of u if this holds for every rectifiable curve from x to y. The value \|u(x) − u(y)\| is at most the integral of g along the curve. The Newtonian space N¹,ᵖ consists of the functions u in Lᵖ that have an upper gradient in Lᵖ. The definition uses only distances, lengths of curves and a measure, so it works on any metric measure space.
+**Definition.** A Borel function g ≥ 0 is an upper gradient of u if \|u(x) − u(y)\| is at most the integral of g along every rectifiable curve from x to y. The Newtonian space N¹,ᵖ consists of the functions u in Lᵖ that have an upper gradient in Lᵖ. The definition uses only distances, lengths of curves and a measure, so it works on any metric measure space.
 
-**Problem.** Sobolev spaces are usually defined with weak derivatives, which need a linear or smooth structure. On a general metric measure space there are no derivatives, so one needs another definition. It must agree with the classical space where both exist, as the quoted theorem shows for Carnot groups.
+**Problem.** On a Carnot group, the Newtonian space N¹,ᵖ agrees with the usual horizontal Sobolev space.
 
-**How the definition helps.** An upper gradient controls a function along curves, and curves exist in any metric space, so the Sobolev space can be defined at all. On a Carnot group, a space with a sub-Riemannian distance, the quoted theorem says that the new space equals the usual horizontal Sobolev space. So theorems proved for Newtonian spaces apply to the classical spaces too. The work moves into that agreement theorem, which goes back to Shanmugalingam for ℝⁿ (our own remark). Good behaviour, such as density of Lipschitz functions, still needs extra assumptions like a Poincaré inequality (our own remark).
+**How the definition helps.** An upper gradient controls a function along curves, and curves exist in any metric space, so the Sobolev space can be defined at all. Because the new space agrees with the classical one on Carnot groups, theorems proved for Newtonian spaces apply to the classical spaces too. The work moves into that agreement theorem, which goes back to Shanmugalingam for ℝⁿ (our own remark). Good behaviour, such as density of Lipschitz functions, still needs extra assumptions like a Poincaré inequality (our own remark).
 
 **Paper or page:** [On some intrinsic differentiability properties for Absolutely continuous functions between Carnot groups and the Area formula](https://arxiv.org/abs/2405.05024v2). It says: “Let 1&lt;p&lt;∞ and Ω⊂𝔾 be an open set of a Carnot group 𝔾≡ℝⁿ. Then N¹,ᵖ𝔾(Ω)= W¹,ᵖ𝔾(Ω)”
 
@@ -1776,9 +1758,9 @@
 
 **Definition.** The scaling degree of a distribution u at a point measures how singular u is there. It is the infimum of the numbers ω such that λ to the power ω times u(λx) tends to 0 as λ → 0. The degree of divergence is the scaling degree minus the dimension of the space.
 
-**Problem.** Take a distribution on ℝⁿ ∖ {0} with finite scaling degree at 0. It should extend to a distribution on all of ℝⁿ. We want to know how many extensions there are.
+**Problem.** Let u be a distribution on ℝⁿ ∖ {0} with finite scaling degree at 0. Its extensions to ℝⁿ with the same scaling degree form a finite-dimensional affine space, indexed by finitely many derivatives of the delta distribution. The extension is unique when the degree of divergence is negative.
 
-**How the definition helps.** If the extension must keep the scaling degree, only a finite amount of choice remains. Without this condition, extensions are far from unique: you can add any combination of derivatives of the delta distribution. With the condition, the extension is unique when the degree of divergence is negative. In general, the extensions form a finite-dimensional affine space, indexed by finitely many derivatives of the delta distribution. In perturbative quantum field theory, this finite freedom is the renormalization freedom. The proof that an extension exists is the real work.
+**How the definition helps.** If the extension must keep the scaling degree, only a finite amount of choice remains. Without this condition, you can add any combination of derivatives of the delta distribution. In perturbative quantum field theory, this finite freedom is the renormalization freedom. The proof that an extension exists is the real work.
 
 **nLab:** [extension of distributions](https://ncatlab.org/nlab/show/extension+of+distributions), [scaling degree of a distribution](https://ncatlab.org/nlab/show/scaling+degree+of+a+distribution). It says: “However, if one requires that the scaling degree of the extended distribution at the given point is compatible with that of the original distribution, then there is only a finite set of possible extensions”
 
@@ -1794,9 +1776,9 @@
 
 **Definition.** A differential algebra is an algebra with a derivative that obeys the Leibniz rule. A Colombeau algebra is an associative differential algebra that contains the distributions. Its product agrees with the pointwise product of smooth functions. It need not agree with the pointwise product of continuous functions.
 
-**Problem.** Nonlinear equations with singular data need products of distributions. Schwartz's impossibility result of 1954 seems to rule these out.
+**Problem.** No associative algebra with unit 1 that contains the distributions, with a Leibniz derivative extending theirs, has a product extending the pointwise product of continuous functions (Schwartz, 1954). Colombeau algebras show that such an algebra does exist if the product need only extend the pointwise product of smooth functions.
 
-**How the definition helps.** Colombeau's definition drops just one of Schwartz's requirements, and then a product exists. Schwartz showed that four natural requirements cannot hold together. They are: an associative algebra that contains the distributions, with 1 as unit; a derivative that obeys the Leibniz rule and extends the derivative of distributions; and a product that extends the pointwise product of continuous functions. Colombeau's definition weakens only the last requirement, from continuous to smooth functions, and then such an algebra exists. The article notes that people often misread Schwartz's result as saying that no multiplication is possible at all. The cost is this: in the algebra, the product of continuous functions that are not smooth need not agree with their pointwise product.
+**How the definition helps.** Colombeau's definition drops just one of Schwartz's requirements, and then a product exists. It weakens only the requirement on the product, from continuous to smooth functions. The article notes that people often misread Schwartz's result as saying that no multiplication is possible at all. The cost is that the product of continuous functions that are not smooth need not agree with their pointwise product.
 
 **Wikipedia:** [Colombeau algebra](https://en.wikipedia.org/wiki/Colombeau_algebra), [Distribution (mathematical analysis)](https://en.wikipedia.org/wiki/Distribution_%28mathematical_analysis%29). It says: “However, if one only wants to preserve the product of smooth functions instead such a construction becomes possible, as demonstrated first by Colombeau.”
 
@@ -1810,9 +1792,9 @@
 
 **Definition.** The scalars form a ring of nets of real numbers indexed by a small parameter ε, taken modulo nets that tend to 0 fast enough. This ring contains infinitesimals and infinitely large numbers. A generalized smooth function is a map on points of this ring. For each ε, an ordinary smooth function gives it, with suitable bounds on all derivatives.
 
-**Problem.** Schwartz distributions are not functions, so they have no point values and cannot be composed or multiplied in general. The paper's generalized smooth functions contain the distributions. They form a category, so they can be composed, and they keep calculus theorems such as the extreme value theorem on suitable compact sets.
+**Problem.** Generalized smooth functions contain the Schwartz distributions and form a category, so they can be composed. They keep calculus theorems such as the extreme value theorem on suitable compact sets.
 
-**How the definition helps.** Because the new objects are true set-theoretical maps, composition and point values make sense by definition. Each map comes from a net of smooth functions, so many classical theorems pass over one ε at a time. For example, the paper shows that such a function attains a minimum and a maximum on a suitable compact set. The price is the new ring of scalars, which is not a field and is not totally ordered (our own remark). The embedding of distributions depends on the choice of an infinite number, as the paper's results on the embedding show.
+**How the definition helps.** Because the new objects are true set-theoretical maps, composition and point values make sense by definition. Each map comes from a net of smooth functions, so many classical theorems pass over one ε at a time. The price is the new ring of scalars, which is not a field and is not totally ordered (our own remark).
 
 **Paper or page:** [A Grothendieck topos of generalized functions I: basic theory](https://arxiv.org/abs/2101.04492v2), [A Grothendieck topos of generalized functions I: basic theory](https://arxiv.org/abs/2101.04492v2), [A Grothendieck topos of generalized functions I: basic theory](https://arxiv.org/abs/2101.04492v2). It says: “We introduce a category of generalized functions as smooth set-theoretical maps on (multidimensional) points of a ring of scalars containing infinitesimals and infinities. This category extends Schwartz distributions.”
 
@@ -1830,7 +1812,7 @@
 
 **Problem.** Take a Hamiltonian with an edge whose bulk part has a spectral gap around zero. If it is strongly affiliated to the edge algebra, the bulk and edge invariants correspond under the boundary map of K-theory. K-theory classes are invariants built from projections in the algebra.
 
-**How the definition helps.** Strong affiliation puts a bounded function of the Hamiltonian inside the algebra, so the bulk invariant can be defined. With a gap at zero, the projection onto negative energies then lies in the algebra and gives a K-theory class (Lemma 3.5 of the paper). In our own words, this projection is a continuous function of F(H) on its spectrum. Theorem 3.7 of the paper then proves that the edge class is the image of the bulk class. Some boundary conditions for unbounded operators give known violations of the correspondence. Under weaker conditions the paper proves only a relative correspondence for pairs of Hamiltonians.
+**How the definition helps.** Strong affiliation puts a bounded function of the Hamiltonian inside the algebra, so the bulk invariant can be defined. With a gap at zero, the projection onto negative energies is a continuous function of F(H) on its spectrum (our own words). So it lies in the algebra and gives a K-theory class, and the paper proves that the edge class is the image of the bulk class. Some boundary conditions for unbounded operators give known violations of the correspondence.
 
 **Paper or page:** [The role of self-adjoint extensions in the bulk-edge correspondence](https://arxiv.org/abs/2510.01368v1). It says: “More generally, if Ĥ is not necessarily bounded from below then the K-theoretic bulk-edge correspondence holds under the strong affiliation condition F(Ĥ)= Ĥ(1+Ĥ²)<sup>-1/2</sup> ∈ M<sub>N</sub>(𝒜̂<sup>∼</sup>) where 𝒜̂<sup>∼</sup> is the conditional unitization.”
 
@@ -1844,11 +1826,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 46L07 (Operator spaces and completely bounded maps), 47B65, 15A30. arXiv math.OA. Level 4: research.
 
-**Definition.** For a linear map φ on n × n matrices, the Choi matrix is the sum of eᵢⱼ ⊗ φ(eᵢⱼ), with eᵢⱼ the matrix units. One can build the same sum from another basis {bᵢⱼ} of the n × n matrices. Theorem 2 shows the correspondence survives exactly when bᵢⱼ = \|ζᵢ⟩⟨ζⱼ\| for some basis ζ₁,…,ζₙ of ℂⁿ.
+**Definition.** For a linear map φ on n × n matrices, the Choi matrix is the sum of eᵢⱼ ⊗ φ(eᵢⱼ), with eᵢⱼ the matrix units. Choi's theorem says that φ is completely positive exactly when this matrix is positive. One can build the same sum from another basis {bᵢⱼ} of the n × n matrices.
 
-**Problem.** Choi's theorem says a map is completely positive exactly when its Choi matrix is positive. Paulsen and Shultz asked which other bases keep this true, and gave a sufficient condition.
+**Problem.** Let {bᵢⱼ} be a basis of the n × n matrices. The sum of bᵢⱼ ⊗ φ(bᵢⱼ) is positive exactly for the completely positive φ if and only if bᵢⱼ = \|ζᵢ⟩⟨ζⱼ\| for some basis ζ₁, …, ζₙ of ℂⁿ.
 
-**How the definition helps.** Our own reason: a basis of the form \|ζᵢ⟩⟨ζⱼ\| is the matrix-unit basis after a change of basis S of ℂⁿ. So the new Choi matrix of φ is a congruence of the ordinary Choi matrix of φ composed with conjugation by S (our own). Congruence by an invertible matrix keeps positivity, and the composed map is completely positive exactly when φ is (our own). So Choi's theorem carries over. The paper shows this rank-one product shape is also necessary, so the Paulsen–Shultz condition cannot be weakened. The original Choi theorem is still the hard part.
+**How the definition helps.** Our own reason: a basis of the form \|ζᵢ⟩⟨ζⱼ\| is the matrix-unit basis after a change of basis S of ℂⁿ. So the new Choi matrix of φ is a congruence of the ordinary Choi matrix of φ composed with conjugation by S (our own). Congruence by an invertible matrix keeps positivity, and the composed map is completely positive exactly when φ is (our own). The paper shows that this shape is also necessary, so the Paulsen–Shultz sufficient condition cannot be weakened.
 
 **Paper or page:** [Choi matrices revisited](https://arxiv.org/abs/2206.09324), [Choi matrices revisited](https://arxiv.org/abs/2206.09324). It says: “considered the question if one can replace matrix units by another basis of matrix algebras in the definition of Choi matrix to retain the correspondence between complete positivity of maps and positivity of Choi matrices”
 
@@ -1863,11 +1845,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L07 (Operator spaces and completely bounded maps), 18A30. arXiv math.OA, math.FA. Level 4: research.
 
-**Definition.** An operator system is a self-adjoint subspace of a C\*-algebra that contains the unit, with the order on its matrices. It is nuclear when its identity map is a limit of completely positive maps through matrix algebras (our own summary). An inductive system is a family of spaces with connecting maps jₙₘ, and usually these maps must compose exactly. A soft inductive system asks this only asymptotically, and a strict one asks it exactly (our own reading of the word).
+**Definition.** An operator system is a self-adjoint subspace of a C\*-algebra that contains the unit, with the order on its matrices. It is nuclear when its identity map is a limit of completely positive maps through matrix algebras (our own summary). A soft inductive system asks its connecting maps to compose only asymptotically, and a strict one asks this exactly (our own reading of the word).
 
-**Problem.** Lazar and Lindenstrauss showed that a separable function system is nuclear exactly when it is an inductive limit of finite-dimensional commutative algebras. Nuclear operator systems have completely positive approximations through matrix algebras. But these maps do not compose exactly, so they do not form an inductive system in the usual sense.
+**Problem.** Every nuclear operator system is a soft inductive limit of matrix algebras. A separable operator system is nuclear exactly when it is an inductive limit of matrix algebras, which generalizes the theorem of Lazar and Lindenstrauss for function systems.
 
-**How the definition helps.** The completely positive approximations of a nuclear system already form a soft inductive system, so nuclear systems are soft limits of matrix algebras. Theorem 24 states this, and for separable systems it already gives a strict sequence indexed by ℕ. Theorem 27 states that a separable operator system is nuclear exactly when it is a strict inductive limit of matrix algebras. So Theorem 27 adds the converse to Theorem 24, that such limits are nuclear (our own reading). The abstract credits the separable result to an argument of Ding and Peterson, which in our own reading is where the main work lies.
+**How the definition helps.** The completely positive approximations of a nuclear system already form a soft inductive system, so nuclear systems are soft limits of matrix algebras. For separable systems the paper upgrades this to a strict sequence, and conversely shows such limits are nuclear (our own reading). The abstract credits the separable result to an argument of Ding and Peterson, which in our own reading is where the main work lies.
 
 **Paper or page:** [Soft inductive limits of operator systems and a noncommutative Lazar-Lindenstrauss theorem](https://arxiv.org/abs/2510.02019), [Soft inductive limits of operator systems and a noncommutative Lazar-Lindenstrauss theorem](https://arxiv.org/abs/2510.02019), [Soft inductive limits of operator systems and a noncommutative Lazar-Lindenstrauss theorem](https://arxiv.org/abs/2510.02019). It says: “we utilize an argument of Ding and Peterson to show that a separable operator system is nuclear if and only if it is an inductive limit of matrix algebras, generalizing a classic Theorem of Lazar and Lindenstrauss”
 
@@ -1881,11 +1863,11 @@
 
 *True by definition.* MSC 46L09 (Free products of \\(C<sup>\*\\</sup>)-algebras), 46L35, 46L54. arXiv math.OA. Level 4: research.
 
-**Definition.** Let A ≠ ℂ be a unital C\*-algebra with a state ρ whose GNS representation is faithful, which is a C\*-probability space. Theorem 2.6 shows that (A,ρ) is selfless exactly when A embeds existentially, as first factor, in the reduced free product of (A,ρ) with C\*ᵣ(F∞). Here C\*ᵣ(F∞) is the reduced C\*-algebra of the free group on countably many generators. Existential means, roughly, that systems of polynomial equations with approximate solutions in the free product already have approximate solutions in A.
+**Definition.** Let A ≠ ℂ be a unital C\*-algebra with a state ρ whose GNS representation is faithful. Call (A, ρ) selfless when A embeds existentially, as first factor, in the reduced free product of (A, ρ) with C\*ᵣ(F∞). Here C\*ᵣ(F∞) is the reduced C\*-algebra of the free group on countably many generators. Existential means, roughly, that polynomial equations with approximate solutions in the free product already have approximate solutions in A.
 
-**Problem.** Strict comparison says that traces decide when one positive element is smaller than another in the Cuntz sense. It is a key regularity property in the classification of simple C\*-algebras. It was open for the reduced C\*-algebra of the free group Fₙ.
+**Problem.** If (A, ρ) is selfless and ρ is a trace, then A is simple, ρ is its unique tracial state, and A has stable rank one and strict comparison.
 
-**How the definition helps.** Our own reading: the definition lets one solve a problem in the free product, where free independence helps. The approximate answer can then be copied back into A (our own reading). So, by Theorem 3.1, simplicity and uniqueness of the trace follow from one structural property. In the trace case, Theorem 3.1 also gives stable rank one and strict comparison. If ρ is faithful and not a trace, it gives pure infiniteness instead. Amrutam, Gao, Kunnawalkam Elayavalli and Patchell later proved that C\*ᵣ(Fₙ) is selfless for n ≥ 2, so it has strict comparison. That proof of selflessness is the hard part, and the definition moves the work there.
+**How the definition helps.** Our own reading: the definition lets one solve a problem in the free product, where free independence helps, and copy the approximate answer back into A. So simplicity, uniqueness of the trace and strict comparison follow from one structural property. Amrutam, Gao, Kunnawalkam Elayavalli and Patchell later proved that C\*ᵣ(Fₙ) is selfless for n ≥ 2, so it has strict comparison. That proof of selflessness is the hard part, and the definition moves the work there.
 
 **Paper or page:** [Selfless C\*-algebras](https://arxiv.org/abs/2309.14188), [Selfless C\*-algebras](https://arxiv.org/abs/2309.14188), [Strict comparison in reduced group C\*-algebras](https://arxiv.org/abs/2412.06031). It says: “In particular, A is a simple C\*-algebra that is either traceless, if ρ is not a trace, or such that ρ is the unique tracial state on A.”
 
@@ -1901,11 +1883,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L10 (General theory of von Neumann algebras), 46L36, 46L55. arXiv math.OA. Level 4: research.
 
-**Definition.** A von Neumann algebra is an algebra of operators on a Hilbert space that is closed under adjoints and weak limits. In our own summary, Ozawa calls a group Γ biexact when Γ is exact and Γ × Γ acts amenably on a boundary. Ding and Peterson define biexactness for any von Neumann algebra through a weak form of nuclear embeddings. M is solid when every diffuse subalgebra A, one without minimal projections, has an amenable (injective) relative commutant A′ ∩ M.
+**Definition.** In our own summary, Ozawa calls a group Γ biexact when Γ is exact and Γ × Γ acts amenably on a boundary. Ding and Peterson define biexactness for any von Neumann algebra through a weak form of nuclear embeddings. A von Neumann algebra M is solid when every diffuse subalgebra A has an amenable relative commutant A′ ∩ M.
 
-**Problem.** Ozawa proved that the von Neumann algebra LΓ of a biexact group Γ is solid. Many other algebras were shown solid by separate arguments. One wants one property of the algebra itself that gives solidity.
+**Problem.** Every σ-finite biexact von Neumann algebra is solid. For an exact group Γ, the algebra LΓ is biexact exactly when Γ is biexact.
 
-**How the definition helps.** Because the property belongs to the algebra and not to a group, one proof of solidity covers every biexact algebra. Theorem 6.9 shows that every σ-finite biexact von Neumann algebra is 𝒰-solid, a solidity property stated through ultrapowers. Corollary 7.18 shows that for an exact group Γ, biexactness of LΓ coincides with biexactness of Γ, so the new notion loses nothing. The abstract says many known solid algebras are in fact biexact. It also gives solid crossed products that are not biexact, so the converse fails. The work is in the theory of weak nuclear embeddings that the definition uses.
+**How the definition helps.** Because the property belongs to the algebra and not to a group, one proof of solidity covers every biexact algebra. The second statement shows that the new notion loses nothing for groups. The abstract gives solid crossed products that are not biexact, so the converse fails. The work is in the theory of weak nuclear embeddings that the definition uses.
 
 **Paper or page:** [Biexact von Neumann algebras](https://arxiv.org/abs/2309.10161), [Biexact von Neumann algebras](https://arxiv.org/abs/2309.10161), [Biexact von Neumann algebras](https://arxiv.org/abs/2309.10161). It says: “We introduce the notion of biexactness for general von Neumann algebras, naturally extending the notion from group theory. We show that biexactness implies solidity for von Neumann algebras”
 
@@ -1921,9 +1903,9 @@
 
 **Definition.** A C\*-category is a category whose hom-sets are Banach spaces with an adjoint operation, like bounded operators between Hilbert spaces. A W\*-category is a C\*-category whose hom-spaces each have a predual (a Banach space whose dual is the hom-space). Between W\*-functors one uses only bounded natural transformations. These are the natural transformations whose components tₓ have norms below one bound for all objects X.
 
-**Problem.** Find a 2-categorical setting in which infinite direct sums are a universal property. It should work for the category of Hilbert spaces, and also for Hilbert W\*-modules and W\*-representations of von Neumann algebras.
+**Problem.** In the bicategory of W\*-categories, W\*-functors and bounded natural transformations, the category of Hilbert spaces has infinite direct sums defined by a universal property.
 
-**How the definition helps.** Restricting to bounded natural transformations makes infinite direct sums exist as a universal property. In the ordinary 2-category of categories, functors and all natural transformations, the nLab says that the category of Hilbert spaces has only finite limits and finite colimits. Restrict the 2-cells to bounded natural transformations. Then W\*-categories, W\*-functors and these 2-cells form a bicategory in which infinite direct sums exist, and these generalize biproducts to infinite families. In our own reading, the definitions take over the analytic work (the predual and the boundedness).
+**How the definition helps.** Restricting to bounded natural transformations makes infinite direct sums exist as a universal property. With all natural transformations, the nLab says that the category of Hilbert spaces has only finite limits and finite colimits. These infinite direct sums generalize biproducts to infinite families. In our own reading, the definitions take over the analytic work (the predual and the boundedness).
 
 **nLab:** [W\*-category](https://ncatlab.org/nlab/show/W%2A-category), [C-star-category](https://ncatlab.org/nlab/show/C-star-category). It says: “In particular, in this bicategory, the category of Hilbert spaces has infinite direct sums (generalizing the definition of a biproduct to infinite families of objects)”
 
@@ -1955,11 +1937,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L30 (States of selfadjoint operator algebras), 47A10. arXiv math.OA, math.FA. Level 4: research.
 
-**Definition.** A C\*-algebra is an algebra of operators that is closed under adjoints and norm limits. A state is a positive linear functional E with E(1) = 1. The paper calls E an eigenstate of x with eigenvalue λ when E(yx) = λE(y) for every y. Theorem 2 shows this means E((x − λ)\*(x − λ)) = 0, and Theorem 3 shows it matches eigenvectors for vector states.
+**Definition.** A state on a unital C\*-algebra is a positive linear functional E with E(1) = 1. The paper calls E an eigenstate of x with eigenvalue λ when E(yx) = λE(y) for every y. This holds exactly when E((x − λ)\*(x − λ)) = 0.
 
-**Problem.** On an infinite-dimensional Hilbert space, a point of the spectrum need not be an eigenvalue. Multiplication by x on L²\[0,1\] has spectrum \[0,1\] but no eigenvectors. One wants a notion of eigenvalue that covers the whole spectrum.
+**Problem.** If x is a self-adjoint element of a unital C\*-algebra, then every point of its spectrum is the eigenvalue of some eigenstate of x.
 
-**How the definition helps.** Our own reading: the definition asks a state to vanish on one left ideal, so the Hahn–Banach theorem can supply it. The proof looks for a state that vanishes on the left ideal A(x − λ). Since x − λ is self-adjoint and not invertible, every element of this ideal has distance at least 1 from the unit. So a state that kills the ideal exists. In the multiplication example, evaluation at the point λ is such an eigenstate (our own example). The theorem needs x to be self-adjoint, and an eigenstate gives no vector in the original Hilbert space (our own note).
+**How the definition helps.** Our own reading: the definition asks a state to vanish on one left ideal, so the Hahn–Banach theorem can supply it. Since x − λ is self-adjoint and not invertible, the left ideal A(x − λ) is proper and stays at distance at least 1 from the unit. So a state that kills the ideal exists. For multiplication by x on L²\[0,1\], which has no eigenvectors, evaluation at λ is such an eigenstate (our own example).
 
 **Paper or page:** [Eigenstates of C\*-Algebras](https://arxiv.org/abs/2102.07049), [Eigenstates of C\*-Algebras](https://arxiv.org/abs/2102.07049). It says: “We introduce the notion of eigenstate of an operator in an abstract C\*-algebra, and prove several properties. Most significantly, if the operator is self-adjoint, then every element of its spectrum has a corresponding eigenstate.”
 
@@ -1975,7 +1957,7 @@
 
 **Definition.** A state on a C\*-algebra is a positive linear functional of norm one, which gives an expectation for each observable. The Gelfand–Naimark–Segal (GNS) construction turns a state into a representation on a Hilbert space with a distinguished unit vector. A weak natural transformation is a 1-morphism in a 2-category whose naturality holds up to given comparison maps.
 
-**Problem.** Restricting a representation to a unit vector gives a state on the algebra. The paper shows that GNS is left adjoint to this restriction. The adjunction holds when GNS is a weak natural transformation in a suitable 2-category, not a functor between categories.
+**Problem.** Restricting a representation to a unit vector gives a state. Viewed as a weak natural transformation in a suitable 2-category, GNS is left adjoint to this restriction.
 
 **How the definition helps.** Weak naturality lets GNS vary with the algebra through comparison maps instead of equalities, so the adjunction can be stated. In our own words, changing the algebra can change the Hilbert space that a vector generates, so equality is too strong. The abstract says that weak naturality encodes functoriality, and that the universal property encodes the defining features of GNS. One still has to prove the universal property and check that the comparison maps fit together.
 
@@ -1994,9 +1976,9 @@
 
 **Definition.** Here ℳ₁,∞ is the ideal of compact operators whose first n singular values add up to at most a constant times log n. An extended limit ω is a linear functional on bounded sequences that extends the ordinary limit. A Dixmier trace sends a positive T to ω applied to (1/log n) times the sum of its first n singular values. In our own summary, a Connes–Dixmier trace uses only those ω that factor through a logarithmic Cesàro mean, a kind of averaging.
 
-**Problem.** Lidskii's theorem says the trace of a trace-class operator is the sum of its eigenvalues. For singular traces, one wants a formula in terms of eigenvalues that holds even for operators that are not normal.
+**Problem.** For every Connes–Dixmier trace τω and every T in ℳ₁,∞, τω(T) = ω(aₙ). Here aₙ is (1/log n) times the sum of the eigenvalues λ of T with \|λ\| &gt; 1/n.
 
-**How the definition helps.** The extra Cesàro averaging smooths the sequence of eigenvalue sums, so the eigenvalue formula holds for every Connes–Dixmier trace (our own reading). Theorem 2 gives the formula on all of ℳ₁,∞, with the sum over the eigenvalues λ with \|λ\| &gt; 1/n. Theorem 5 works with functions in the matching function space M₁,∞. It gives a positive function and a Dixmier trace for which a continuous form of the formula fails. So, at least in this function setting, the restriction to Connes–Dixmier traces excludes such cases. The hard part is the control of operators that are not normal (T\*T ≠ TT\*), whose eigenvalues and singular values differ (our own).
+**How the definition helps.** The extra Cesàro averaging smooths the sequence of eigenvalue sums, so the eigenvalue formula holds for every Connes–Dixmier trace (our own reading). In the matching function space M₁,∞, the paper gives a positive function and a Dixmier trace for which a continuous form of the formula fails. So, at least in this function setting, the restriction to Connes–Dixmier traces excludes such cases. The hard part is the control of operators that are not normal, whose eigenvalues and singular values differ (our own).
 
 **Paper or page:** [Lidskii-type formulae for Dixmier traces](https://arxiv.org/abs/1003.1813), [Lidskii-type formulae for Dixmier traces](https://arxiv.org/abs/1003.1813). It says: “Let τω be a Connes-Dixmier trace on ℳ₁,∞. We have τω(T) = ω(1/log(n) Σ\|λ\|&gt;1/n, λ∈σ(T) λ), T ∈ ℳ₁,∞.”
 
@@ -2046,7 +2028,7 @@
 
 *True by definition.* MSC 46L53 (Noncommutative probability and statistics), 46L10. arXiv math.OA. Level 4: research.
 
-**Definition.** Represent faithful normal states φ and ψ on a von Neumann algebra M by unit vectors ξ and η in its standard positive cone. This cone selects a unique vector for each state that preserves bounded increasing suprema, and faithfulness means detecting every nonzero positive operator. Close the antilinear map xξ ↦ x\*η for x ∈ M, call its closure S, and set Δ = S\*S. The Araki relative entropy of φ with respect to ψ integrates −log λ against the spectral probability measure of Δ in ξ.
+**Definition.** Let φ and ψ be faithful normal states on a von Neumann algebra M, with vector representatives ξ and η. The relative modular operator is Δ = S\*S, where S is the closure of xξ ↦ x\*η for x ∈ M. The Araki relative entropy of φ with respect to ψ is the integral of −log λ against the spectral measure of Δ in ξ.
 
 **Problem.** The Araki relative entropy of any faithful normal state relative to another is nonnegative, even when it is infinite.
 
@@ -2064,7 +2046,7 @@
 
 *True by definition.* MSC 46L53 (Noncommutative probability and statistics). arXiv math.OA. Level 4: research.
 
-**Definition.** Let M be a weakly closed unital adjoint algebra of bounded operators with a faithful normal tracial state τ. Here τ detects nonzero positive elements, preserves bounded increasing suprema, and satisfies τ(ab) = τ(ba). For a normal state ω, define its entropy relative to τ as the supremum of ω(h) − log τ(exp h) over self-adjoint h ∈ M.
+**Definition.** Let M be a von Neumann algebra with a faithful normal tracial state τ. For a normal state ω on M, its entropy relative to τ is the supremum of ω(h) − log τ(exp h) over self-adjoint h ∈ M.
 
 **Problem.** Let N be a unital von Neumann subalgebra of M. If ω has finite entropy, restricting both ω and τ to N cannot increase that entropy.
 
@@ -2098,11 +2080,11 @@
 
 *Rules out counterexamples.* MSC 46L55 (Noncommutative dynamical systems), 46L05, 05C20. arXiv math.OA. Level 4: research.
 
-**Definition.** Graph C\*-algebras and their relatives are C\*-algebras generated by projections and partial isometries that follow the edges of a graph or a similar system. For a directed graph, Condition (L) says that every cycle has an exit, an edge that leaves the cycle. Carlsen and Kang use the analogue of this condition for generalized Boolean dynamical systems.
+**Definition.** Graph C\*-algebras are generated by projections and partial isometries that follow the edges of a graph. Condition (L) says that every cycle has an exit, an edge that leaves the cycle. Carlsen and Kang use the analogue of this condition for generalized Boolean dynamical systems.
 
-**Problem.** A uniqueness theorem says when a homomorphism out of the algebra is injective. One wants the simplest test: the map is injective when it kills none of the generating projections pA.
+**Problem.** For a generalized Boolean dynamical system with Condition (L), a homomorphism out of its C\*-algebra is injective when it kills none of the generating projections pA. Conversely, if this test holds for every homomorphism, Condition (L) holds.
 
-**How the definition helps.** Our own reason: Condition (L) is chosen so that the simple test works, and Theorem 3.6 shows that it is also necessary. So the test has no exceptions in either direction. The bad case is a cycle with no exit: one vertex with one loop gives C(𝕋), the continuous functions on the circle (our own example). Restriction to a closed arc is then a homomorphism that is not injective but keeps the vertex projection nonzero (our own). Wikipedia states the classical Cuntz–Krieger uniqueness theorem for graphs with Condition (L) as its hypothesis. Proposition 3.5 of the paper shows that Condition (L) means the associated topological graph is topologically free. The uniqueness proof itself, in this general setting, is the remaining work (our own).
+**How the definition helps.** Our own reason: Condition (L) is exactly what makes the simple test work, and Theorem 3.6 shows that it is also necessary. The bad case is a cycle with no exit: one vertex with one loop gives C(𝕋), the continuous functions on the circle. Restriction to a closed arc is then not injective but keeps the vertex projection nonzero (our own example). Proposition 3.5 shows that Condition (L) means the associated topological graph is topologically free, and the uniqueness proof is the remaining work (our own).
 
 **Wikipedia:** [https://en.wikipedia.org/wiki/Graph<sub>C</sub>\*-algebra](https://en.wikipedia.org/wiki/https%3A//en.wikipedia.org/wiki/Graph_C%2A-algebra). It says: “Let E be a graph satisfying Condition (L), and let C\*(E) be the associated graph C\*-algebra.”
 
@@ -2119,7 +2101,7 @@
 
 *True by definition.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
 
-**Definition.** Let M be a von Neumann algebra, a weakly closed unital algebra of bounded operators closed under adjoints. A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular group σ is the canonical time evolution from Tomita–Takesaki theory. At each time, take the class of σₜ modulo conjugations by unitaries of M.
+**Definition.** Let σ be the modular group of a faithful normal state on a von Neumann algebra M, from Tomita–Takesaki theory. The outer modular flow sends each time t to the class of σₜ modulo conjugations by unitaries of M.
 
 **Problem.** The resulting homomorphism from real time to the outer automorphism group is independent of the faithful normal state.
 
@@ -2137,11 +2119,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
 
-**Definition.** A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular flow σ is the canonical time evolution on its von Neumann algebra M. The continuous core is the von Neumann crossed product in the regular representation, generated by M and time translation unitaries implementing σ. The dual action fixes M and multiplies the time translation unitaries by the corresponding characters of real time.
+**Definition.** Let σ be the modular flow of a faithful normal state on a von Neumann algebra M. The continuous core is the crossed product of M by σ, generated by M and time translation unitaries that implement σ. Its dual action fixes M and multiplies the time translation unitaries by the characters of real time.
 
 **Problem.** The continuous cores built from two faithful normal states are isomorphic by a map that fixes the embedded algebra and respects the dual actions.
 
-**How the definition helps.** The crossed product includes implementing unitaries that can absorb the change in modular flow. Connes’s theorem gives unitaries uₜ in M relating the two flows by conjugation. Our own proof corrects each implementing unitary by uₜ, choosing the cocycle from the second flow to the first. The cocycle identity makes these corrected operators a unitary group. In the regular representations this change is implemented by pointwise unitary multiplication, giving a normal isomorphism. Correcting by elements of M leaves the character factors in the dual action unchanged.
+**How the definition helps.** The crossed product contains implementing unitaries that can absorb a change of modular flow. Connes’s theorem gives unitaries uₜ in M that relate the two flows by conjugation. Our own proof corrects each implementing unitary by uₜ; the cocycle identity makes the corrected operators a unitary group, which gives the isomorphism. Correcting by elements of M leaves the dual action unchanged.
 
 **Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “the modular automorphisms differ by inner automorphisms”
 
@@ -2155,9 +2137,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 46L60 (Applications of selfadjoint operator algebras to physics), 82B10. arXiv math.OA, math-ph. Level 4: research.
 
-**Definition.** Let αₜ be a weakly continuous automorphism group on B(H), the bounded operators on a Hilbert space. At inverse temperature β &gt; 0, equilibrium requires a bounded continuous F on 0 ≤ Im z ≤ β for every A,B ∈ B(H). It must be holomorphic inside, with boundary values F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A). A faithful normal state has the form ω(A) = Tr(ρA) for a positive trace-one operator ρ with zero kernel.
+**Definition.** Let αₜ be a weakly continuous automorphism group on B(H). A state ω is a KMS state at inverse temperature β &gt; 0 when, for all A, B ∈ B(H), some bounded continuous F on 0 ≤ Im z ≤ β is holomorphic inside, with F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A). A faithful normal state has the form ω(A) = Tr(ρA), with ρ a positive trace-one operator with zero kernel.
 
-**Problem.** For a faithful normal equilibrium state, set K = −(log ρ)/β by spectral calculus. Then αₜ(A) = exp(itK)A exp(−itK), and exp(−βK) = ρ.
+**Problem.** Let ω(A) = Tr(ρA) be a faithful normal KMS state at inverse temperature β. Put K = −(log ρ)/β. Then αₜ(A) = exp(itK)A exp(−itK), and exp(−βK) = ρ.
 
 **How the definition helps.** The two boundary values characterize time evolution, allowing the density operator to determine a generator. Takesaki’s uniqueness theorem identifies the dynamics with the reverse modular flow at time t/β. For B(H), the modular flow at time s is conjugation by exp(is log ρ). Our own calculation substitutes s = −t/β and obtains K. Adding a scalar to K gives the same dynamics.
 
@@ -2175,9 +2157,9 @@
 
 **Definition.** A quantum graph replaces the vertex set by a finite-dimensional C\*-algebra B with a state ψ, here tracial, that is, ψ(ab) = ψ(ba). It replaces the adjacency matrix by an operator A on B. The paper defines connectedness and bipartiteness of quantum graphs in terms of graph homomorphisms. For classical graphs, bipartite means that there is a homomorphism to the graph with two vertices and one edge.
 
-**Problem.** A d-regular classical graph has a bipartite component exactly when −d is an eigenvalue of its adjacency matrix. One wants the same test for quantum graphs, which have no vertices to colour.
+**Problem.** A d-regular undirected tracial quantum graph has a bipartite component exactly when −d is in the spectrum of its adjacency operator A. This is the same test as for d-regular classical graphs.
 
-**How the definition helps.** Our own reason: the definition copies the classical one through homomorphisms, so the classical spectral test can survive. The abstract says regular tracial quantum graphs have the same algebraic characterization of connectedness and bipartiteness as classical graphs. The case d = 0 needs one extra condition, that 0 has multiplicity at least two, so dim B ≥ 2. The paper also proves that bipartiteness equals two-colorability. That needs a comparison of two kinds of homomorphism, one for adjacency matrices and one for edge spaces. Our own judgement: this comparison is where the work is.
+**How the definition helps.** Our own reason: the definition copies the classical one through homomorphisms, so the classical spectral test can survive. The abstract says regular tracial quantum graphs have the same algebraic characterization of connectedness and bipartiteness as classical graphs. The case d = 0 needs the extra condition that 0 has multiplicity at least two. Our own judgement: the work lies in comparing homomorphisms of adjacency matrices with homomorphisms of edge spaces.
 
 **Paper or page:** [Algebraic connectedness and bipartiteness of quantum graphs](https://arxiv.org/abs/2310.09500), [Algebraic connectedness and bipartiteness of quantum graphs](https://arxiv.org/abs/2310.09500). It says: “Let 𝒢 = (B,ψ,A) be a d-regular undirected tracial quantum graph. The following are equivalent: (1) 𝒢 has a bipartite component. (2) −d ∈ spec(A).”
 

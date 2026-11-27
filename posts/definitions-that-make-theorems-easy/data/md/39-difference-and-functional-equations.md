@@ -40,7 +40,7 @@
 
 **Problem.** Let the forcing equal μ to the power n times a polynomial in n of degree at most s. If μ is nonresonant, the recurrence has exactly one particular solution of that same form and degree bound.
 
-**How the definition helps.** Nonresonance makes every diagonal entry of the matrix for P(S) nonzero. In our own proof, use the basis formed by μⁿ times successive powers of n through degree s. Shifting n to n+1 preserves the leading polynomial coefficient, while shifting μⁿ contributes μ. Thus S is triangular with diagonal μ, and P(S) is triangular with diagonal P(μ). This proves invertibility in the stated space. At resonance, yₙ₊₁−yₙ=1 has no constant solution.
+**How the definition helps.** Nonresonance makes every diagonal entry of the matrix for P(S) nonzero. In our own proof, in the basis of μⁿ times the powers of n up to degree s, the shift S is triangular with diagonal μ. So P(S) is triangular with diagonal P(μ) and is invertible on that space. At resonance, yₙ₊₁ − yₙ = 1 has no constant solution.
 
 **Paper or page:** [Algebraic Modification of the Method of Undetermined Coefficients For Solving Nonhomogeneous Linear Difference Equations](https://arxiv.org/abs/2307.07182v1). It says: “and the system in question has a unique solution.”
 
@@ -58,7 +58,7 @@
 
 **Problem.** Let S shift a sequence forward by one index, and let I be the identity. For each positive integer d, the sequences uⱼ with 0 ≤ j &lt; d form a basis for solutions of (S − rI)ᵈu = 0.
 
-**How the definition helps.** Taking polynomial coefficients gives one basis even when the repeated root is zero. Our own construction uses the fact that shifting n multiplies the polynomial by r+t. Subtracting r times the original polynomial leaves multiplication by t. After d repetitions, every coefficient below degree d vanishes. The first d values of the proposed sequences form a triangular matrix with ones on its diagonal. They therefore realize all initial values, which determine a forward solution uniquely.
+**How the definition helps.** Taking polynomial coefficients gives one basis even when the repeated root is zero. In our own construction, shifting n multiplies (r + t)ⁿ by r + t, so S − rI sends uⱼ to uⱼ₋₁, with u₋₁ = 0. After d repetitions, each uⱼ with j &lt; d becomes zero, so it is a solution. Their first d values form a triangular matrix with ones on the diagonal, so they realize all initial values.
 
 **Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “the terms in this formula corresponding to the second and later occurrences of the same root are multiplied by increasing powers of n.”
 
@@ -74,7 +74,7 @@
 
 **Problem.** For nonzero x in the stated interval, the q-exponential is its own q-derivative. This derivative divides the value at x minus the value at qx by (1−q)x.
 
-**How the definition helps.** Replacing x by qx drops exactly the first factor of the product. Thus E(qx) = (1 − (1 − q)x)E(x), which gives the stated difference quotient. Our own explanation compares this product with the usual definition by a power series. The factors converge to one with geometrically decreasing errors, giving a convergent product on the stated interval. Comparing coefficients in the shift equation recovers the usual series from E(0) = 1.
+**How the definition helps.** Replacing x by qx drops exactly the first factor of the product. Thus E(qx) = (1 − (1 − q)x)E(x), which gives the stated difference quotient. In our own explanation, comparing coefficients in this shift equation, with E(0) = 1, recovers the usual power series.
 
 **Wikipedia:** [Q-exponential](https://en.wikipedia.org/wiki/Q-exponential). It says: “e<sub>q</sub>(x)=\\left(\\prod<sub>k=0</sub><sup>\\infty</sup>(1-q<sup>k</sup>(1-q)x)\\right)<sup>-1</sup>.”
 
@@ -90,7 +90,7 @@
 
 **Problem.** Let f be continuous on \[0,A\], where A &gt; 0. Its Jackson integral F satisfies (F(x) − F(qx))/((1 − q)x) = f(x) for 0 &lt; x ≤ A.
 
-**How the definition helps.** The chosen weights make F(qx) the tail of F(x), so subtraction isolates the first term. Our own explanation compares this sum with an ordinary integral over the same interval. An ordinary integral averages across each grid gap, while the Jackson sum uses its upper endpoint. The grid spacings sum to x, so boundedness of f gives absolute convergence. The first term equals (1 − q)xf(x).
+**How the definition helps.** The chosen weights make F(qx) the tail of F(x), so subtraction leaves only the first term, (1 − q)xf(x). In our own explanation, the grid spacings sum to x, so boundedness of f gives absolute convergence. An ordinary integral averages across each grid gap, while the Jackson sum uses its upper endpoint.
 
 **Wikipedia:** [Jackson integral](https://en.wikipedia.org/wiki/Jackson_integral). It says: “then the Jackson integral converges to a function F(x) on \[0,A) which is a q-antiderivative of f(x).”
 
@@ -160,7 +160,7 @@
 
 **Problem.** Every solution of a homogeneous constant-coefficient recurrence tends to zero exactly when every characteristic root has modulus below one.
 
-**How the definition helps.** The state definition turns decay for all initial data into decay of the powers of one matrix. In our own proof, put the matrix into Jordan form, which groups repeated eigenvalues into triangular blocks. Each nonzero eigenvalue contributes powers multiplied by polynomials in the time index. Blocks for zero vanish after finitely many steps. All blocks therefore decay when every root has modulus below one. An eigenvector for a root of modulus at least one gives a state that fails to decay.
+**How the definition helps.** The state definition turns decay for all initial data into decay of the powers of one matrix. In our own proof, Jordan form shows that each nonzero eigenvalue contributes its powers times polynomials in the time index. Blocks for the eigenvalue zero vanish after finitely many steps. An eigenvector for a root of modulus at least one gives a state that does not decay.
 
 **Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “Linear recurrences with constant coefficients can also be solved using matrix methods.”
 
@@ -204,11 +204,11 @@
 
 *True by definition.* MSC 39A70 (Difference operators), 05A10. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** The falling factorial (x)ₘ is the product x(x − 1)⋯(x − m + 1) for a positive integer m, with (x)₀ = 1. The forward difference of a function f is Δf(x) = f(x + 1) − f(x). Instead of usual powers xᵐ, one can use falling factorials to write polynomials.
+**Definition.** The falling factorial (x)ₘ is the product x(x − 1)⋯(x − m + 1) for a positive integer m, with (x)₀ = 1. The forward difference of a function f is Δf(x) = f(x + 1) − f(x).
 
 **Problem.** For m ≥ 1, Δ(x)ₘ = m(x)ₘ₋₁. The sum of (k)ₘ for k = 0, …, n − 1 is (n)ₘ₊₁/(m + 1) for integers m ≥ 0 and n ≥ 1.
 
-**How the definition helps.** The falling-factorial definition gives the difference rule because the two products share all but one factor. Factoring out (x)ₘ₋₁ leaves the difference (x + 1) − (x − m + 1) = m (our own calculation). Adding consecutive differences cancels the intermediate terms and gives the sum, since (0)ₘ₊₁ = 0. The difference of an ordinary power instead gives several terms by the binomial theorem. For general polynomial sums, the work moves into rewriting the polynomial in falling factorials (our own comparison).
+**How the definition helps.** The falling-factorial definition gives the difference rule because the two products share all but one factor. Factoring out (x)ₘ₋₁ leaves (x + 1) − (x − m + 1) = m (our own calculation). Adding consecutive differences cancels the intermediate terms and gives the sum, since (0)ₘ₊₁ = 0. For an ordinary power, the binomial theorem gives several terms instead.
 
 **Wikipedia:** [Falling and rising factorials](https://en.wikipedia.org/wiki/Falling_and_rising_factorials). It says: “In this formula, the falling factorial (x)ₙ in the calculus of finite differences plays the role of xⁿ in differential calculus.”
 
@@ -240,9 +240,9 @@
 
 **Definition.** Represent a real number x by the angle with tangent x, counting angles that differ by π as equal. Only π/2 has no finite tangent. Choose an angle uniformly from this circle.
 
-**Problem.** Suppose a real function f satisfies f((x+y)/(1−xy))=f(x)+f(y) whenever xy≠1. Assume f is Borel measurable, so inverse images of open sets belong to the family generated from intervals by countable unions and complements. Then f vanishes everywhere.
+**Problem.** If a Borel measurable real function f satisfies f((x+y)/(1−xy)) = f(x) + f(y) whenever xy ≠ 1, then f is zero everywhere.
 
-**How the definition helps.** The angle coordinate turns the input operation into a rotation, which preserves uniform probability. In our own proof, fix y and rotate a uniform angle by the angle representing y. The exceptional angles have probability zero. The equation says this adds f(y) to the output without changing its probability distribution. A real probability distribution cannot equal a translate of itself by a nonzero amount. Hence f(y)=0.
+**How the definition helps.** The angle coordinate turns the input operation into a rotation, which preserves uniform probability. In our own proof, fix y and rotate a uniform angle by the angle of y, ignoring exceptional angles of probability zero. The equation says that this adds f(y) to the output without changing its distribution. A real probability distribution cannot equal a translate of itself by a nonzero amount, so f(y) = 0.
 
 **Paper or page:** [Non-existence of measurable solutions of certain functional equations via probabilistic approaches](https://arxiv.org/abs/2105.09804v1). It says: “is limited to the function f(x) = 0 for every x ∈ ℝ.”
 
@@ -260,7 +260,7 @@
 
 **Problem.** Every additive real function continuous at zero has the form f(x)=cx.
 
-**How the definition helps.** Continuity extends the formula fixed by additivity on the rationals to the whole real line. In our own proof, additivity gives f(q)=qf(1) for rational q and transports continuity at zero to every point. Approximate each real number by rationals. Without continuity, choose a basis of the reals over the rationals containing 1 and √2. Assign value zero to 1 and all other basis elements except √2, which receives value one. Extending by rational linearity gives our own counterexample.
+**How the definition helps.** Continuity extends the formula fixed by additivity on the rationals to the whole real line. In our own proof, additivity gives f(q) = qf(1) for rational q and carries continuity at zero to every point. Without continuity, take a basis of the reals over the rationals that contains 1 and √2. The rationally linear map that sends √2 to one and the other basis elements to zero is our own counterexample.
 
 **Wikipedia:** [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “there are infinitely many other functions that satisfy the equation.”
 
@@ -294,7 +294,7 @@
 
 **Problem.** For a real subadditive sequence, aₙ/n tends to the infimum of those ratios. This limit may be −∞.
 
-**How the definition helps.** Subadditivity bounds a long block by copies of any fixed block and one short remainder. In our own proof, fix the block length m and divide this bound by the total length n. The remainder contributes at most a constant divided by n. The upper limit is therefore at most aₘ/m for every m. The infimum of the ratios already bounds each ratio below. Without subadditivity, taking aₙ=n for odd n and zero otherwise gives our own counterexample.
+**How the definition helps.** Subadditivity bounds a long block by copies of any fixed block and one short remainder. In our own proof, dividing this bound by the length n shows that the upper limit of aₙ/n is at most aₘ/m for every m. The infimum already bounds each ratio below. Without subadditivity, aₙ = n for odd n and 0 otherwise is our own counterexample.
 
 **Wikipedia:** [Fekete's lemma](https://en.wikipedia.org/wiki/Fekete%27s_lemma). It says: “converges to its infimum. Note that this infimum may be −∞.”
 
@@ -362,11 +362,11 @@
 
 *Rules out counterexamples.* MSC 39A06 (Linear difference equations). arXiv math.NT. Level 3: graduate.
 
-**Definition.** For a linear recurrence sequence over a field of characteristic zero, let S shift the sequence forward by one place. Its minimal recurrence polynomial is the monic polynomial P of least degree for which P(S) sends the sequence to zero. Require all roots of P to be nonzero. Call the recurrence nondegenerate if no ratio of distinct roots has a positive integer power equal to one.
+**Definition.** For a linear recurrence sequence over a field of characteristic zero, take its minimal recurrence polynomial P, and require all roots of P to be nonzero. The recurrence is nondegenerate if no ratio of distinct roots of P is a root of unity.
 
 **Problem.** A nonzero sequence indexed by the nonnegative integers and satisfying such a nondegenerate linear recurrence has only finitely many zeros.
 
-**How the definition helps.** Nondegeneracy keeps distinct roots distinct after raising them to any common positive integer power. Our own argument writes the sequence as a sum of terms p(n)λⁿ, one for each root λ, over a field containing the roots. On a progression of step d, the new exponential bases are the distinct numbers λᵈ. Independence of polynomial multiples of distinct exponentials prevents the restricted sequence from vanishing identically. The Skolem–Mahler–Lech theorem supplies the difficult implication that infinitely many zeros would contain an infinite arithmetic progression. Our own example 1−(−1)ⁿ vanishes at every even index.
+**How the definition helps.** Nondegeneracy keeps distinct roots distinct after raising them to any common positive integer power. In our own argument, write the sequence as a sum of terms p(n)λⁿ, one for each root λ. On a progression of step d, the bases λᵈ stay distinct, so the restricted sequence cannot vanish identically. The Skolem–Mahler–Lech theorem supplies the hard step, that infinitely many zeros would contain an infinite arithmetic progression, and the degenerate example 1 − (−1)ⁿ vanishes at every even index (our own).
 
 **Wikipedia:** [Skolem–Mahler–Lech theorem](https://en.wikipedia.org/wiki/Skolem%E2%80%93Mahler%E2%80%93Lech_theorem). It says: “is equal to the union of finitely many arithmetic progressions and a finite set.”
 
@@ -384,7 +384,7 @@
 
 **Problem.** The difference operator is self-adjoint for the inner product weighted by w. Every eigenvalue is real and nonnegative.
 
-**How the definition helps.** Balanced weights give the same coefficient to both directions of each edge. In our own proof, combine these two terms in the weighted inner product of f with the operator applied to g. Each edge contributes w(x)r(x,y)(f(x)−f(y))(g(x)−g(y)) for real functions. This expression is symmetric in f and g, so the operator is self-adjoint. Taking g=f gives a sum of nonnegative squares, which forces nonnegative eigenvalues. The work lies in finding balancing weights. The quoted Hahn theorem also describes symmetric matrices obtained after changing coordinates.
+**How the definition helps.** Balanced weights give the same coefficient to both directions of each edge. In our own proof, the weighted inner product of f with the operator applied to g becomes a sum over edges of w(x)r(x,y)(f(x)−f(y))(g(x)−g(y)). This is symmetric in f and g, so the operator is self-adjoint. Taking g = f gives a sum of squares, so the eigenvalues are nonnegative.
 
 **Paper or page:** [Multivariate Hahn polynomials and difference equations](https://arxiv.org/abs/2305.09170v3). It says: “are real symmetric positive semi-definite matrices and the eigenvalues are real and non-negative.”
 
@@ -420,7 +420,7 @@
 
 **Problem.** The recurrence has forward shadowing exactly when A is hyperbolic. For every ε &gt; 0, some δ &gt; 0 must work for every sequence with errors ‖yₙ₊₁ − Ayₙ‖ ≤ δ. Some exact orbit must then stay within ε of that sequence at every step.
 
-**How the definition helps.** Hyperbolicity splits the space into directions that shrink under forward or backward iteration. In our own proof, we sum past errors on the forward-shrinking part and future errors on the backward-shrinking part. Both sums have a uniform bound proportional to δ. For an eigenvalue λ of modulus one, a left eigenvector gives a scalar coordinate evolving by multiplication by λ. Small errors aligned with successive powers of λ accumulate linearly in that coordinate. No exact orbit can shadow that drift.
+**How the definition helps.** Hyperbolicity splits the space into directions that shrink under forward or backward iteration. In our own proof, sum past errors on the forward-shrinking part and future errors on the backward-shrinking part, each bounded by a multiple of δ. For an eigenvalue λ of modulus one, a left eigenvector gives a coordinate that is multiplied by λ at each step. Small errors aligned with the powers of λ then accumulate linearly, and no exact orbit can shadow that drift.
 
 **Paper or page:** [Shadowing and hyperbolicity for linear delay difference equations](https://arxiv.org/abs/2401.10767v2). It says: “has no root on the unit circle \|λ\| = 1”
 
@@ -510,7 +510,7 @@
 
 **Problem.** Choose any c strictly between a and F(a). Some continuous strictly increasing map g from \[a,b\] into itself satisfies g(a) = c and g∘g = F.
 
-**How the definition helps.** In the extended coordinate, one application of F adds one, so adding one half gives a square root. Our own construction chooses h(c) = 1/2. The successive endpoints Fⁿ(a) increase to b because their limit must be a fixed point. Adjacent intervals agree on the coordinate of their shared endpoint, giving a continuous increasing bijection from \[a,b) onto \[0,∞). Pulling translation by one half back through h defines g below b. Setting g(b) = b gives continuity there because h tends to infinity at b.
+**How the definition helps.** In the extended coordinate, one application of F adds one, so adding one half gives a square root. Our own construction chooses h(c) = 1/2. The endpoints Fⁿ(a) increase to b, so h becomes a continuous increasing bijection from \[a, b) onto \[0, ∞). Pulling translation by one half back through h defines g below b, and setting g(b) = b keeps g continuous.
 
 **Paper or page:** [A sufficient condition for existence of iterative roots of PM functions without the characteristic endpoints condition](https://arxiv.org/abs/2109.12747v1). It says: “has a continuous and strictly increasing iterative root φ of order 2”
 
@@ -528,7 +528,7 @@
 
 **Problem.** Take p successive differences with arbitrary increments. For the diagonal function this gives p factorial times F applied to the p increments. All higher differences vanish.
 
-**How the definition helps.** The diagonal definition turns repeated differences into a count of occupied slots. In our own proof, expand by additivity. Each difference cancels terms missing its increment, so only the p! permutations survive after p differences. Symmetry gives the same value for each permutation. One further difference kills the constant result. Starting from difference identities instead requires a reconstruction theorem to recover the symmetric additive function.
+**How the definition helps.** The diagonal definition turns repeated differences into a count of occupied slots. In our own proof, expand by additivity, and note that each difference cancels the terms that miss its increment. After p differences, only the p! ways to put the increments into the slots survive, and symmetry gives each the same value. One further difference kills this constant.
 
 **Paper or page:** [Hyers--Ulam stability of derivations and linear functions](https://arxiv.org/abs/1307.0638v1). It says: “and let f: ℝ → ℝ be the diagonalization of F.”
 
@@ -562,7 +562,7 @@
 
 **Definition.** Fix integers p &gt; 1 and λ. Write a rational function f in partial fractions. Group its poles into classes whose members are related by repeated pth powers or pth roots. The λ-twisted Mahler discrete residues are built from the partial-fraction coefficients along these classes.
 
-**Problem.** Let f be a rational function over the paper’s base field 𝕂. The question is whether f(x) equals p to the power λ times g(xᵖ), minus g(x), for some rational function g. Theorem 1.1 says this holds exactly when every λ-twisted Mahler discrete residue of f is zero.
+**Problem.** A rational function f over the paper's base field 𝕂 equals p<sup>λ</sup> g(xᵖ) − g(x) for some rational function g exactly when every λ-twisted Mahler discrete residue of f is zero.
 
 **How the definition helps.** The residues turn an equation with an unknown rational function g into a finite list of tests on f. In our own explanation, the substitution x ↦ xᵖ moves poles only within a class, so g can cancel f only class by class. In our own account, one direction is direct, and the harder direction builds g when all residues vanish. The case λ = 0 is the untwisted Mahler summability problem from the authors’ earlier work.
 
@@ -580,9 +580,9 @@
 
 **Definition.** Fix an integer p &gt; 1. A rational function f(x) is Mahler summable if f(x) = g(xᵖ) − g(x) for some rational function g. Mahler discrete residues are vectors computed from f, one for each group of poles of f and each order k. Our own note: poles α and β share a group when α raised to pʳ equals β raised to pˢ for some r and s.
 
-**Problem.** Decide whether a given rational function is Mahler summable. The paper shows that f is Mahler summable exactly when all its Mahler discrete residues are zero. Proposition 4.18 states this one component at a time.
+**Problem.** A rational function f is Mahler summable exactly when all its Mahler discrete residues are zero.
 
-**How the definition helps.** Our own reason: the residues turn a search for an unknown g into a check that some vectors are zero. Our own analogy: a rational function is the derivative of a rational function exactly when all its ordinary residues are zero. The abstract says that the paper extends known discrete residues to the Mahler case. Our own note: Chen and Singer introduced such residues for the shift case. What stays hard is to find the right grouping of poles, so that the residues are complete (our own).
+**How the definition helps.** Our own reason: the residues turn a search for an unknown g into a check that some vectors are zero. Our own analogy: a rational function is the derivative of a rational function exactly when all its ordinary residues are zero. The paper extends known discrete residues, which Chen and Singer introduced for the shift case (our own note), to the Mahler case. What stays hard is to find the right grouping of poles, so that the residues are complete (our own).
 
 **Paper or page:** [Mahler discrete residues and summability for rational functions](https://arxiv.org/abs/2202.09805). It says: “We construct Mahler discrete residues for rational functions and show that they comprise a complete obstruction to the Mahler summability problem”
 
@@ -619,7 +619,7 @@
 
 **Problem.** Suppose two positive functions on a 2-divisible abelian group satisfy the Kac–Bernstein equation. Their logarithms have one shared quadratic part, separate additive parts and separate constants. A quadratic part Q satisfies Q(x+y)+Q(x−y)=2Q(x)+2Q(y).
 
-**How the definition helps.** When every group element is a double, a function constant on each translate of the doubles must be constant everywhere. The cited classification gives precisely such an extra term in each logarithm. An additive part preserves sums. In our own counterexample on the integers, set f=1 on even numbers, f=e on odd numbers and g=1/f. The arguments x+y and x−y have the same parity, so both sides of the equation equal one. On the integers a quadratic plus an additive function has the form an²+bn. Adding a constant cannot make that expression both bounded and nonconstant.
+**How the definition helps.** When every element is a double, a function constant on each coset of the doubles must be constant everywhere. The cited classification gives exactly such an extra term in each logarithm. Our own counterexample on the integers sets f = 1 on even numbers, f = e on odd numbers and g = 1/f. Since x + y and x − y have the same parity, both sides equal one, but log f is bounded and nonconstant, so it is not of the form an² + bn + c.
 
 **Paper or page:** [Solution of the Kac--Bernstein functional equation on Abelian groups in the class of positive functions](https://arxiv.org/abs/2102.01592v1). It says: “the function r(x) is a constant on each of the cosets of the subgroup X⁽²⁾ in X.”
 

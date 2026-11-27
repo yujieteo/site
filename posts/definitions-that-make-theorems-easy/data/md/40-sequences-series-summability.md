@@ -6,9 +6,9 @@
 
 **Definition.** A series Σaₙ converges absolutely when the series of absolute values Σ\|aₙ\| converges.
 
-**Problem.** Every rearrangement of a convergent series has the same sum.
+**Problem.** Every rearrangement of an absolutely convergent series has the same sum.
 
-**How the definition helps.** Absolute convergence is exactly the condition under which, for real series, the order of the terms does not change the sum. The statement is false for convergent series in general. Cauchy (1833) found that a rearrangement of the alternating harmonic series can have a different sum. Dirichlet saw that absolute convergence rules this out. Riemann showed that the condition is sharp for real series. A convergent real series that does not converge absolutely can be rearranged to give any real sum, or to diverge. In ℝⁿ the picture is harder: Lévy and Steinitz showed that the set of sums of all rearrangements is an affine subspace.
+**How the definition helps.** Absolute convergence is exactly the condition under which, for real series, the order of the terms does not change the sum. For convergent series in general the statement is false, and Cauchy (1833) found a rearrangement of the alternating harmonic series with a different sum. Riemann showed that a convergent real series that does not converge absolutely can be rearranged to give any real sum, or to diverge. In ℝⁿ, Lévy and Steinitz showed that the set of sums of all rearrangements is an affine subspace.
 
 **Wikipedia:** [Riemann series theorem](https://en.wikipedia.org/wiki/Riemann_series_theorem), [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “Around the same time, Peter Gustav Lejeune Dirichlet highlighted that such phenomena are ruled out in the context of absolute convergence, and gave further examples of Cauchy's phenomenon for some other series which fail to be absolutely convergent.”
 
@@ -137,9 +137,9 @@
 
 **Definition.** Take an infinite product ∏ aₖ with at most finitely many zero factors. It converges if the partial products of its non-zero factors have a limit, and this limit is not zero. Its value is 0 if some factor is 0. Otherwise its value is that limit.
 
-**Problem.** Get the analogue of the test for series. If ∑ aₖ converges, then aₖ → 0. The analogue says that if ∏ aₖ converges, then aₖ → 1.
+**Problem.** If an infinite product ∏ aₖ converges, then aₖ → 1. A convergent product is zero only if some factor is zero.
 
-**How the definition helps.** The demand for a non-zero limit removes the two ways in which the naive definition breaks the test. With the naive definition, a product converges if the limit of its partial products exists. First, a single factor 0 then makes each later partial product 0, whatever the aₖ do. Second, factors with \|aₖ\| ≤ M &lt; 1 push the partial products to 0, although aₖ need not tend to 1. The non-zero limit of the non-zero factors rules out both. Then the expected theorems hold. For example, convergence implies aₖ → 1, and a convergent product is zero only if some factor is zero.
+**How the definition helps.** The demand for a non-zero limit removes the two ways in which the naive definition, which only asks the partial products to have a limit, breaks this test. A single factor 0 makes every later partial product 0, whatever the aₖ do. Factors with \|aₖ\| ≤ M &lt; 1 push the partial products to 0, although aₖ need not tend to 1. The non-zero limit of the non-zero factors rules out both.
 
 **nLab:** [infinite product](https://ncatlab.org/nlab/show/infinite+product). It says: “To avoid these "pathological" situations, we make the following modified definition.”
 
@@ -173,9 +173,9 @@
 
 **Definition.** A sequence of functions fₙ converges uniformly to f∞ if, for every ε &gt; 0, there is one N with \|fₙ(x) − f∞(x)\| &lt; ε for all n ≥ N and all x at the same time. Pointwise convergence lets N depend on x.
 
-**Problem.** Cauchy's sum theorem of 1821 says this: if a sequence of continuous functions converges, then its limit is continuous.
+**Problem.** If a sequence of continuous functions converges uniformly, then its limit is continuous. This repairs Cauchy's sum theorem of 1821, which claimed it for every convergent sequence.
 
-**How the definition helps.** Uniform convergence gives one N for all nearby points, and the standard proof needs exactly that. With pointwise convergence the statement is false. For example, fₙ(x) = xⁿ on \[0,1\], the sawtooth Fourier series and exp(−n\|x\|) all have continuous terms and a discontinuous limit. The ε/3 proof fails because the N for the point x + h depends on h, while the δ for continuity depends on n. Uniform convergence makes N independent of h, and then the same ε/3 argument is a valid proof (Seidel 1847). Equicontinuity (one δ for all the functions fₙ at once) is a second repair: it makes δ independent of n.
+**How the definition helps.** Uniform convergence gives one N for all nearby points, and the standard ε/3 proof needs exactly that. With pointwise convergence the statement is false, since fₙ(x) = xⁿ on \[0,1\] has continuous terms and a discontinuous limit. Cauchy's proof fails because the N for the point x + h depends on h, and uniform convergence removes that dependence (Seidel 1847). Equicontinuity, one δ for all the functions fₙ at once, is a second repair.
 
 **nLab:** [Cauchy sum theorem](https://ncatlab.org/nlab/show/Cauchy+sum+theorem). It says: “Analysing this argument, Philipp von Seidel (first, and others afterwards) realised that it could be fixed if f converges to f∞ uniformly, so that n is independent of h.”
 
@@ -241,7 +241,7 @@
 
 **Problem.** If those local slopes converge to a finite limit, the ratios a(n)/b(n) converge to the same limit.
 
-**How the definition helps.** Positive increments make the slope over a long interval a weighted average of the individual slopes. Our own proof sums the changes in a and b separately. Any fixed initial contribution vanishes after division by b(n), so the average approaches the limiting slope. Our own counterexample sets a(n) = n, b(2k) = k and b(2k+1) = (k+1)² + 1. The increments of b grow in absolute value, so the local slopes approach zero. Yet a(2k)/b(2k) = 2 for every positive k.
+**How the definition helps.** Positive increments make the slope over a long interval a weighted average of the individual slopes. In our own proof, any fixed initial contribution vanishes after division by b(n), so the average approaches the limiting slope. Our own counterexample sets a(n) = n, b(2k) = k and b(2k+1) = (k+1)² + 1. The local slopes tend to zero because the increments of b grow in size, yet a(2k)/b(2k) = 2 for every positive k.
 
 **Wikipedia:** [Stolz–Cesàro theorem](https://en.wikipedia.org/wiki/Stolz%E2%80%93Ces%C3%A0ro_theorem). It says: “Since (bₙ) is strictly increasing, bₙ₊₁ − bₙ &gt; 0”
 
@@ -273,7 +273,7 @@
 
 **Problem.** Every infinite simple continued fraction with positive integer digits after the first has convergent finite truncations.
 
-**How the definition helps.** The matrix determinant gives the gap between consecutive fractions, including its sign. In our own proof, multiplying by one more digit matrix reverses the determinant’s sign. The gap therefore alternates in sign and has magnitude one divided by the product of adjacent denominators. Each new denominator equals the latest digit times the preceding denominator plus the one before it. The positive digits force the denominators to grow without bound. The alternating series test now gives convergence.
+**How the definition helps.** The matrix determinant gives the gap between consecutive fractions, including its sign. In our own proof, each new digit matrix reverses the determinant's sign, so the gap alternates and has size 1/(qₖqₖ₋₁). The recursion qₖ = aₖqₖ₋₁ + qₖ₋₂ with positive digits makes the denominators grow without bound. The alternating series test then gives convergence.
 
 **Paper or page:** [Difference between Adjacent Convergents of Simple Continued Fraction](https://proofwiki.org/wiki/Difference_between_Adjacent_Convergents_of_Simple_Continued_Fraction). It says: “Cₖ − Cₖ₋₁ = pₖ/qₖ − pₖ₋₁/qₖ₋₁ = (−1)ᵏ⁺¹/(qₖ qₖ₋₁)”
 
@@ -351,7 +351,7 @@
 
 **Definition.** A summation method is linear if it respects sums and scalar multiples of series. It is stable if putting a term in front of the series raises the value by that term.
 
-**Problem.** Show that the value −1/12 for 1 + 2 + 3 + ⋯ cannot come from any stable linear method.
+**Problem.** No stable linear summation method gives 1 + 2 + 3 + ⋯ a finite value. So the value −1/12 must come from a method that is not stable or not linear.
 
 **How the definition helps.** With the axioms written down, a few lines of algebra settle the question. Suppose a stable linear method gives 1 + 2 + 3 + ⋯ the value s. Putting 0 in front by stability and subtracting by linearity gives 1 + 1 + 1 + ⋯ the value 0. Doing the same again gives 1 + 0 + 0 + ⋯ the value 0, but stability says its value is 1. So zeta function regularization and Ramanujan summation, which give −1/12, must fail linearity or stability. The page notes that zeta regularization is not linear.
 
@@ -421,7 +421,7 @@
 
 **Problem.** A series with an Abel sum and n a(n) tending to zero converges ordinarily to its Abel sum.
 
-**How the definition helps.** The condition k aₖ → 0 makes the difference between the weighted sum and the ordinary partial sum tend to zero. Our own proof takes r = 1 − 1/n. Any fixed initial block contributes a difference tending to zero. Given ε &gt; 0, choose the block large enough that \|k aₖ\| ≤ ε thereafter. Through index n, use 1 − rᵏ ≤ k/n to bound the remaining difference by ε. Beyond n, use \|aₖ\| ≤ ε/n and sum the geometric weights to get another bound of ε. Our own counterexample is 1 − 1 + 1 − ⋯, which diverges despite its Abel sum of one half.
+**How the definition helps.** The condition k aₖ → 0 makes the difference between the weighted sum and the ordinary partial sum tend to zero. In our own proof, take r = 1 − 1/n and fix a block after which \|k aₖ\| ≤ ε. Up to index n, the bound 1 − rᵏ ≤ k/n controls the difference, and beyond n the geometric weights do. Our own counterexample is 1 − 1 + 1 − ⋯, which diverges despite its Abel sum of one half.
 
 **Wikipedia:** [Abelian and Tauberian theorems](https://en.wikipedia.org/wiki/Abelian_and_Tauberian_theorems). It says: “if the Abel sum of a series exists and the coefficients are sufficiently small (o(1/n)) then the series converges to the Abel sum.”
 
@@ -435,11 +435,11 @@
 
 *Rules out counterexamples.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods), 42A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let s₀, s₁, s₂, … be the partial sums of a series. The series is Cesàro summable to s when the averages σₙ = (s₀ + s₁ + … + sₙ)/(n + 1) converge to s. In words, σₙ is the mean of the first n + 1 partial sums. If the partial sums converge to s, the averages also converge to s.
+**Definition.** Let s₀, s₁, s₂, … be the partial sums of a series. The series is Cesàro summable to s when the means σₙ = (s₀ + s₁ + … + sₙ)/(n + 1) converge to s. If the partial sums converge to s, so do the means.
 
-**Problem.** Every continuous function with period 2π should be recovered from its Fourier series, uniformly.
+**Problem.** Fejér's theorem: the Cesàro means of the Fourier series of a continuous 2π-periodic function converge to it uniformly.
 
-**How the definition helps.** Averaging the partial sums smooths out the failures of ordinary convergence, and it loses nothing. With ordinary partial sums the statement is false: some continuous functions have a Fourier series that diverges at a point. The classical example is du Bois-Reymond's from 1873 (our own detail). Fejér (1900) showed that the Cesàro means of the Fourier series of a continuous function converge to it uniformly. Our own remark: a kernel is the function whose convolution with f gives the partial sums or their means; the Dirichlet kernel for the partial sums is not positive and its L¹ norms are unbounded, while the Fejér kernel for the means is positive. Because Cesàro summation gives the ordinary sum whenever that exists, nothing is lost. The question for ordinary partial sums stays hard: Carleson proved in 1966 that the Fourier series of an L² function converges almost everywhere.
+**How the definition helps.** Averaging the partial sums smooths out the failures of ordinary convergence, and it loses nothing. With ordinary partial sums the statement is false, since some continuous functions have a Fourier series that diverges at a point, as du Bois-Reymond showed in 1873 (our own detail). Our own remark: the Dirichlet kernel for the partial sums is not positive and has unbounded L¹ norms, while the Fejér kernel for the means is positive. Because Cesàro summation gives the ordinary sum whenever that exists, nothing is lost.
 
 **Wikipedia:** [Fejér's theorem](https://en.wikipedia.org/wiki/Fej%C3%A9r%27s_theorem), [Convergence of Fourier series](https://en.wikipedia.org/wiki/Convergence_of_Fourier_series). It says: “Sadly however, the theorem does not work in a general sense when we replace the sequence σₙ(f,x) with sₙ(f,x). This is because there exist functions whose Fourier series fails to converge at some point.”
 
@@ -553,7 +553,7 @@
 
 **Problem.** Let G be a commutative topological semigroup, which has a continuous addition. Let I and J be disjoint index sets, and let the generalized sums over I and over J converge. Then the sum over I ∪ J converges and equals the sum of the two sums.
 
-**How the definition helps.** Because the definition uses all finite subsets and no ordering, rearranging the terms cannot change the sum. A finite subset of I ∪ J splits into a finite part of I and a finite part of J. So the theorem then needs only the continuity of addition. Our own comparison is with ordinary series in ℝ, where the order of the terms matters. By the Riemann rearrangement theorem, a conditionally convergent series can be rearranged to have any real sum. Our own remark is that in ℝ a family has a generalized sum exactly when it is absolutely summable.
+**How the definition helps.** Because the definition uses all finite subsets and no ordering, rearranging the terms cannot change the sum. A finite subset of I ∪ J splits into a finite part of I and a finite part of J, so the theorem needs only the continuity of addition. Our own comparison is with ordinary series in ℝ, where a conditionally convergent series can be rearranged to have any real sum. In ℝ, a family has a generalized sum exactly when it is absolutely summable (our own).
 
 **Paper or page:** [Generalized Sum over Union of Disjoint Index Sets](https://proofwiki.org/wiki/Generalized_Sum_over_Union_of_Disjoint_Index_Sets). It says: “the generalized sum ∑ₖ gₖ converges and: ∑ₖ gₖ = (∑ᵢ gᵢ) + (∑ⱼ gⱼ)”
 
@@ -571,7 +571,7 @@
 
 **Problem.** These averages preserve every ordinary limit exactly when pₙ/Pₙ tends to zero.
 
-**How the definition helps.** The weights expose the exact obstruction in our own proof by showing how much influence the first partial sum retains. Testing the sequence 1, 0, 0, … shows necessity. Conversely, each fixed earlier index has weight bounded by the corresponding shifted ratio because the totals increase. Every fixed prefix therefore loses its weight, while all sufficiently late terms lie close to the limit. Doubling weights leave half the mass on the first term in the limit.
+**How the definition helps.** The weight pₙ/Pₙ on the first partial sum is the only obstruction (our own proof). The sequence 1, 0, 0, … tends to zero but has average pₙ/Pₙ, so the condition is necessary. Conversely, since the totals increase, a fixed index k has weight pₙ₋ₖ/Pₙ ≤ pₙ₋ₖ/Pₙ₋ₖ, which tends to zero. Doubling weights pₙ = 2ⁿ leave half the mass on the first term in the limit.
 
 **Wikipedia:** [Divergent series](https://en.wikipedia.org/wiki/Divergent_series). It says: “The Nørlund mean is regular, linear, and stable.”
 
@@ -653,9 +653,9 @@
 
 **Definition.** An ideal on ℕ is a family of sets of indices that counts as negligible; it is closed under subsets and finite unions. A sequence tends to L along the ideal when, for each ε &gt; 0, the n with \|xₙ − L\| ≥ ε are negligible. The summable ideal holds the sets A for which the sum of 1/n over n in A is finite.
 
-**Problem.** Olivier's theorem says that n aₙ → 0 when (aₙ) is positive and nonincreasing and ∑ aₙ &lt; ∞. Šalát and Toma found when monotonicity can be dropped. Their theorem says when n aₙ → 0 along an ideal for every convergent positive series: exactly when the ideal contains the summable ideal.
+**Problem.** Let I be an ideal on ℕ. Then n aₙ → 0 along I for every convergent series ∑ aₙ of positive terms exactly when I contains the summable ideal. This removes the monotonicity hypothesis of Olivier's theorem.
 
-**How the definition helps.** Ideal convergence ignores a negligible set of indices, and the set where n aₙ stays large always has a finite harmonic sum. Our own one-line proof follows. If n aₙ ≥ ε on A, then the sum of 1/n over A is at most (1/ε)·∑ aₙ. Our own counterexample to plain convergence takes aₙ = 1/n when n is a square and aₙ = 1/n² otherwise. The series converges, but n aₙ = 1 on the squares, and the squares form a set in the summable ideal. Our own remark: sets with finite harmonic sum have density zero, so n aₙ → 0 in the statistical sense for every convergent positive series.
+**How the definition helps.** Ideal convergence ignores a negligible set of indices, and the set where n aₙ stays large always has a finite harmonic sum. In our own one-line proof, if n aₙ ≥ ε on A, then the sum of 1/n over A is at most (1/ε)·∑ aₙ. Our own counterexample to plain convergence takes aₙ = 1/n on the squares and aₙ = 1/n² elsewhere. The series converges, but n aₙ = 1 on the squares, a set in the summable ideal.
 
 **Paper or page:** [The ideal test for the divergence of a series](https://arxiv.org/abs/2307.01506v1), [The ideal test for the divergence of a series](https://arxiv.org/abs/2307.01506v1). It says: “we either drop the monotonicity assumption completely or we relax it to the monotonicity on a large set of indices. In both cases, the convergence of (n aₙ) is replaced by ideal convergence.”
 
@@ -671,9 +671,9 @@
 
 **Definition.** An ideal on the natural numbers is a family of index sets, closed under subsets and finite unions, whose members count as negligible. A sequence converges to x for the ideal if, for each neighborhood of x, the indices of terms outside it form a negligible set. A set of indices M is nonthin if it is not negligible. On M, the restricted ideal consists of the negligible sets inside M, and the subsequence keeps its original indices.
 
-**Problem.** Our own statement of the result is this. Restrict an ideal-convergent sequence to a nonthin set of indices. Then it converges to the same limit for the restricted ideal.
+**Problem.** Let a sequence converge to x for an ideal, and let M be a nonthin set of indices. Then the subsequence on M, with its original indices, converges to x for the restricted ideal on M.
 
-**How the definition helps.** Keeping the original indices makes the result true by definition, by our own proof. The bad indices of the restricted sequence are the original bad indices inside M, which form a negligible set inside M. Our own example shows what goes wrong after renumbering. Let the sequence be one at the squares and zero elsewhere. The squares have density zero, so the sequence converges to zero for the ideal of density-zero sets. Renumbered, the subsequence at the squares is constantly one, so it converges to one instead. Here the set of squares is not nonthin, so the paper's definition excludes it.
+**How the definition helps.** Keeping the original indices makes the result true by definition (our own statement and proof). The bad indices of the subsequence are the original bad indices inside M, so they are negligible inside M. Our own example shows what renumbering breaks. The indicator of the squares converges to zero for the ideal of density-zero sets, but renumbered on the squares it is constantly one.
 
 **Paper or page:** [Compactness with ideals](https://arxiv.org/abs/2107.00050v1). It says: “subsequence of an ideal convergent sequence may fail to be ideal convergent with respect to same ideal.”
 

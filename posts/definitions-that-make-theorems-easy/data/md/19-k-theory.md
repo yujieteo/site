@@ -293,9 +293,9 @@
 
 **Definition.** For a ring R, let GL(R) be the union of the groups GLₙ(R), and let BGL(R) be its classifying space. The K-theory space is BGL(R)⁺, where ⁺ is Quillen's plus construction. This construction kills the subgroup E(R) of elementary matrices in the fundamental group without changing homology; E(R) is perfect, which means that it equals its own commutator subgroup. Then Kₙ(R) is defined as πₙ(BGL(R)⁺) for n ≥ 1.
 
-**Problem.** Define higher K-groups Kₙ(R) for all n that come from one space. They should agree with the classical K₁(R) = GL(R)/E(R) and with Milnor's K₂.
+**Problem.** The groups Kₙ(R) = πₙ(BGL(R)⁺), for n ≥ 1, are homotopy groups of one space. They agree with the classical K₁(R) = GL(R)/E(R) and with Milnor's K₂(R).
 
-**How the definition helps.** The plus construction is built to give the right fundamental group, so K₁ is correct by construction. The construction kills exactly the perfect normal subgroup E(R) of π₁ and keeps the homology. By Whitehead's lemma, E(R) is the commutator subgroup of GL(R), so π₁(BGL(R)⁺) = GL(R)/E(R) = K₁(R). The group π₂(BGL(R)⁺) agrees with Milnor's K₂(R), which is a short theorem, so all K-groups are homotopy groups of one space. Long exact sequences of K-groups are hard to get from this definition. They come more easily from Quillen's Q-construction. The real content is then Quillen's theorem that the two definitions agree.
+**How the definition helps.** The plus construction is built to give the right fundamental group, so K₁ is correct by construction. By Whitehead's lemma, E(R) is the commutator subgroup of GL(R), so π₁(BGL(R)⁺) = GL(R)/E(R). Agreement with Milnor's K₂ is a short theorem. Long exact sequences come more easily from Quillen's Q-construction, and the real content is Quillen's theorem that the two definitions agree.
 
 **nLab:** [Quillen plus construction](https://ncatlab.org/nlab/show/Quillen+plus+construction), [algebraic K-theory](https://ncatlab.org/nlab/show/algebraic+K-theory), [Steinberg group](https://ncatlab.org/nlab/show/Steinberg+group). It says: “The plus construction doesn't change the homology of the space but 'kills' a perfect normal subgroup of G within the classifying space BG.”
 
@@ -508,11 +508,11 @@
 
 *True by definition. Confidence: medium.* MSC 19D99 (Higher algebraic \\(K\\)-theory), 55P42. arXiv math.KT, math.AT. Level 3: graduate.
 
-**Definition.** A K-theory spectrum packages all the K-groups of a ring into one object. For m ≥ 2, form the cofiber of multiplication by m, which attaches a null homotopy to that map. The homotopy groups of this new spectrum define K-theory with coefficients modulo m.
+**Definition.** For a ring R and m ≥ 2, take the cofiber of multiplication by m on the K-theory spectrum K(R). Its homotopy groups Kₙ(R; ℤ/m) are the K-groups of R with coefficients modulo m.
 
-**Problem.** For n ≥ 1, the integral group in degree n modulo m injects into the finite-coefficient group. The quotient is the subgroup killed by m in degree n − 1.
+**Problem.** For n ≥ 1 there is a short exact sequence 0 → Kₙ(R)/m → Kₙ(R; ℤ/m) → Kₙ₋₁(R)\[m\] → 0, where Kₙ₋₁(R)\[m\] is the subgroup killed by m.
 
-**How the definition helps.** Taking the cofiber before taking groups retains torsion that ordinary reduction modulo m misses, in our own explanation. The exact sequence of the cofiber identifies the subgroup and quotient. This construction agrees with smashing the K-theory spectrum with the Moore spectrum, the cofiber of multiplication by m on the sphere spectrum.
+**How the definition helps.** Taking the cofiber before taking groups keeps the m-torsion of the previous degree, which plain reduction modulo m loses (our own). The long exact sequence of the cofiber gives the subgroup and the quotient at once. This cofiber is the smash product of K(R) with the Moore spectrum, the cofiber of m on the sphere spectrum.
 
 **nLab:** [Moore spectrum](https://ncatlab.org/nlab/show/Moore+spectrum). It says: “the Moore spectrum SG (often MG) of G”
 
@@ -524,11 +524,11 @@
 
 *True by definition.* MSC 19D99 (Higher algebraic \\(K\\)-theory), 19D25. arXiv math.KT. Level 3: graduate.
 
-**Definition.** For a ring R with identity, the polynomial d-simplex has d + 1 coordinates over R whose sum is one. Apply nonconnective K-theory, which includes negative degrees, to each simplex ring. Glue the resulting spectra along their faces and degeneracies to form Weibel’s homotopy K-theory KH(R). A spectrum packages groups in different degrees together with their homotopy information.
+**Definition.** Weibel's homotopy K-theory KH(R) applies nonconnective K-theory, which includes negative degrees, to the rings of polynomial simplices R\[t₀, …, t<sub>d</sub>\]/(t₀ + ⋯ + t<sub>d</sub> − 1). It then glues the resulting spectra along faces and degeneracies.
 
 **Problem.** Adjoining a polynomial variable induces an equivalence KH(R) → KH(R\[t\]). For a regular commutative Noetherian ring R, ordinary K-theory already agrees with KH.
 
-**How the definition helps.** The simplex construction turns polynomial paths into homotopies, in our own explanation. Multiplying t by a new variable s gives a path from evaluation at zero followed by inclusion to the identity. This makes evaluation a homotopy inverse to inclusion. For the comparison, Quillen proved polynomial invariance on regular rings, where finitely generated modules admit finite projective resolutions. Negative K-groups also vanish there.
+**How the definition helps.** The simplex construction turns polynomial homotopies into actual homotopies (our own). The map t ↦ st is a polynomial homotopy from evaluation at zero followed by inclusion to the identity, so evaluation is a homotopy inverse to inclusion. For regular Noetherian R, Quillen's polynomial invariance and the vanishing of negative K-groups give K(R) ≃ KH(R).
 
 **nLab:** [algebraic K-theory spectrum](https://ncatlab.org/nlab/show/algebraic+K-theory+spectrum). It says: “it represents Weibel's homotopy invariant version of algebraic K-theory”
 
@@ -562,7 +562,7 @@
 
 **Problem.** On a scheme, a space locally described by commutative rings, exterior powers extend to formal differences of vector bundles. Their series carries addition to multiplication.
 
-**How the definition helps.** In our own argument, constant term one makes the series invertible, so subtraction becomes division. The coefficient of degree r is the class of the rth exterior power, which records alternating products of r vectors. The exterior powers of an extension have successive pieces built from the subbundle and quotient. This proves that the series respects the defining exact sequence relations. For the negative trivial line the series is 1/(1 + t), which is no longer a polynomial.
+**How the definition helps.** Constant term one makes the series invertible, so subtraction becomes division (our own). For a short exact sequence of bundles, the exterior powers of the middle bundle are built from those of the subbundle and the quotient, so the series is multiplicative on the defining relations. The counterexample is the negative of the trivial line, whose series is 1/(1 + t): its exterior powers never stop, so no bundle has them.
 
 **Paper or page:** [Weil](https://stacks.math.columbia.edu/tag/0FIC). It says: “Let X be a scheme. There are maps λʳ : K₀(Vect(X)) → K₀(Vect(X))”
 
@@ -574,11 +574,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 19E20. arXiv math.KT. Level 3: graduate.
 
-**Definition.** For a smooth variety X over a field, attach the algebraic K-group in degree q to each open subset U. Glue these groups locally to form the K-sheaf. Its Gersten complex in degree c takes the direct sum of the groups in degree q − c of the residue fields at codimension-c points.
+**Definition.** For a smooth variety X over a field, let 𝒦<sub>q</sub> be the Zariski sheaf of algebraic K-groups in degree q. Its Gersten complex has, in degree c, the sum of K\_(q−c)(k(x)) over the points x of codimension c.
 
-**Problem.** For q ≥ 0, degree-q cohomology of the K-sheaf is the codimension-q Chow group. This group records formal integer sums of codimension-q subvarieties modulo divisors of rational functions.
+**Problem.** For q ≥ 0, the cohomology group H<sup>q</sup>(X, 𝒦<sub>q</sub>) is the Chow group CH<sup>q</sup>(X) of codimension-q cycles modulo rational equivalence.
 
-**How the definition helps.** The Gersten complex places the divisor map immediately before the cycle group, in our own explanation. Quillen proved that this complex computes sheaf cohomology, which usually requires a resolution by acyclic sheaves. Its degree-q term has one copy of ℤ per codimension-q point, and the next term vanishes. For q ≥ 1, the preceding term consists of rational functions on codimension-(q − 1) subvarieties, written multiplicatively. The boundary takes their divisors, so its cokernel imposes exactly rational equivalence. For q = 0 there is no preceding term.
+**How the definition helps.** The Gersten complex ends with the divisor map into the cycle group, so its last cohomology group is the Chow group (our own). Quillen proved that the complex resolves the sheaf 𝒦<sub>q</sub> and computes its cohomology. In degree q it has one copy of ℤ per codimension-q point, and the next term vanishes. The term before is the sum of the multiplicative groups k(x)<sup>×</sup> over codimension-(q − 1) points, and the boundary takes divisors.
 
 **Wikipedia:** [Bloch's formula](https://en.wikipedia.org/wiki/Bloch%27s_formula). It says: “The general case is due to Quillen.”
 
@@ -592,11 +592,11 @@
 
 *True by definition.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT. Level 3: graduate.
 
-**Definition.** Chow groups record algebraic cycles modulo divisors of rational functions. For a projective map f between smooth quasi-projective varieties over a field, form its relative tangent class. Subtract the pulled-back target tangent bundle from the source tangent bundle to obtain this class. Define corrected pushforward on rational Chow groups by multiplying first by its Todd class, a multiplicative characteristic class, then pushing cycles forward.
+**Definition.** For a projective map f : X → Y of smooth quasi-projective varieties over a field, let T<sub>f</sub> = T<sub>X</sub> − f\*T<sub>Y</sub> be its relative tangent class. The corrected pushforward on rational Chow groups sends x to f∗(td(T<sub>f</sub>) · x), where td is the Todd class.
 
-**Problem.** Corrected pushforwards compose. The Chern character, which assigns a rational cycle class to each vector bundle class, takes ordinary K₀ pushforwards to these corrected pushforwards.
+**Problem.** Corrected pushforwards compose. The Chern character takes the K₀ pushforward to the corrected pushforward, so ch(f∗α) = f∗(td(T<sub>f</sub>) · ch(α)).
 
-**How the definition helps.** The correction absorbs the Todd factor that otherwise appears at every application of Riemann–Roch, in our own explanation. Relative tangent classes add under composition after pulling the second class back. Their Todd classes multiply, and the projection formula moves the pulled-back factor through the first pushforward. Grothendieck–Riemann–Roch gives the comparison with the usual K₀ pushforward.
+**How the definition helps.** The correction absorbs the Todd factor that otherwise appears at every use of Riemann–Roch (our own). Relative tangent classes add under composition, after the second is pulled back. So their Todd classes multiply, and the projection formula moves the pulled-back factor through the first pushforward. Grothendieck–Riemann–Roch gives the comparison with the K₀ pushforward.
 
 **Paper or page:** [The Riemann-Roch theorem for the Adams operations](https://arxiv.org/abs/2211.10178). It says: “endowed with the modified direct images”
 
@@ -686,7 +686,7 @@
 
 **Problem.** For f ≠ 0, 1, the tame symbol of (f,1 − f) is 1. It therefore defines a map from K₂ of F to k×.
 
-**How the definition helps.** The sign cancels the unwanted factor at a common pole of odd order. In our own check, f = 1/t over ℚ(t) gives an unsigned value of −1 at t = 0. If either f or 1 − f has positive order, the other reduces to 1. If both have order zero, both exponents vanish. At a common pole, the two orders agree and f/(1 − f) reduces to −1. The formula is multiplicative in each argument, so Matsumoto’s presentation gives the map on K₂.
+**How the definition helps.** The sign cancels the factor −1 that appears at a common pole of odd order. If f or 1 − f has positive order, the other reduces to 1, and if both have order zero the symbol is 1 at once. At a common pole the orders agree and (1 − f)/f reduces to −1; for example f = 1/t at t = 0 gives −1 without the sign (our own). The symbol is multiplicative in each argument, so Matsumoto's presentation gives the map on K₂.
 
 **Paper or page:** [A full-rank subgroup of Bloch Groups of CM Fields](https://arxiv.org/abs/2507.05792v2). It says: “{a,b} ↦ (−1)<sup>(v(a)v(b))</sup> a<sup>(v(b))</sup> b<sup>(−v(a))</sup> mod v”
 
@@ -823,7 +823,7 @@
 
 **Problem.** A continuous Fredholm family over a compact Hausdorff space has a K-theory index whose rank gives each ordinary index. The definition does not require constant kernel dimension.
 
-**How the definition helps.** Enlarging the target values from zero to V makes the inverse images into a vector bundle even when the kernels jump (our own explanation). Quotienting the target by V gives a surjective family, whose kernels form this bundle. For each operator, subtracting dim V from its inverse image dimension gives kernel dimension minus cokernel dimension. Compactness of the parameter space supplies a common V. Enlarging V adds the same constant bundle to both terms, so taking the sum of two choices proves independence. For example, multiply one coordinate by a real parameter and leave the other coordinates fixed. The kernel gains a dimension at zero.
+**How the definition helps.** Enlarging the target from zero to V makes the inverse images a vector bundle even when the kernels jump (our own explanation). Compactness supplies a common V, and the fiber dimension minus dim V is the ordinary index. Enlarging V adds the same trivial bundle to both terms, so the class does not depend on V. For example, multiplying one coordinate by a real parameter t gives kernels that jump at t = 0, so the kernels alone do not form a bundle.
 
 **nLab:** [Atiyah-Jänich theorem](https://ncatlab.org/nlab/show/Atiyah-J%C3%A4nich+theorem). It says: “forms the index bundle, an X-parameterized enhancement of the Fredholm index”
 
@@ -841,7 +841,7 @@
 
 **Problem.** The boundary maps identify K₀(A) with K₁ of its suspension and K₁(A) with K₀ of its suspension.
 
-**How the definition helps.** In our own proof, the kernel description puts the suspension into an exact sequence with the cone and A. Shrinking the path parameter contracts the cone, so its K-groups vanish. The six-term exact sequence for operator K-theory now places zeros on both sides of each boundary map. Exactness makes both maps isomorphisms. The six-term theorem incorporates Bott periodicity, the repetition of K-groups every two degrees. A description using loops of matrices still needs this periodicity to recover both maps.
+**How the definition helps.** The suspension is the kernel of evaluation, so it sits in an exact sequence with the cone and A (our own). Shrinking the path parameter contracts the cone, so its K-groups vanish. In the six-term exact sequence, zeros then lie on both sides of each boundary map. Exactness makes both boundary maps isomorphisms.
 
 **Paper or page:** [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1), [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1). It says: “The cone CA is contractible. Hence K₀(CA) = 0 and K₁(CA) = 0.”
 
@@ -871,7 +871,7 @@
 
 **Definition.** For a unital complex C\*-algebra A, an algebra of bounded operators closed under adjoints and norm limits, use unitary matrices to define K₁(A). A unitary has its adjoint as inverse. Identify matrices joined by a continuous path after enlargement by identity blocks.
 
-**Problem.** Every class in K₁(A) comes from the circle coordinate z under a unital map preserving products, sums, complex scalars and adjoints. The target may be a matrix algebra over A.
+**Problem.** Every class in K₁(A) is the image of the class of the coordinate z in K₁(C(𝕋)) under a unital \*-homomorphism from C(𝕋) to a matrix algebra over A.
 
 **How the definition helps.** In our own proof, a unitary representative specifies exactly where the circle coordinate must go. The theorem on continuous functions of a unitary extends this assignment to the entire algebra of continuous functions on the circle. Matrix enlargement identifies the resulting K₁ class with the original one. Starting with invertible matrices would first require deforming the representative to a unitary.
 
@@ -921,7 +921,7 @@
 
 **Definition.** The circle’s representation ring records formal differences of finite-dimensional continuous complex representations. Let I consist of differences of dimension zero. Completion records compatible residues modulo all positive powers of I.
 
-**Problem.** The circle’s classifying space is infinite complex projective space. Its degree-zero complex K-ring is ℤ\[\[c\]\], where c is the universal line bundle minus the trivial line.
+**Problem.** The degree-zero complex K-ring of the classifying space BS¹ = ℂP<sup>∞</sup> is the I-adic completion of the representation ring of the circle. This completion is the power series ring ℤ\[\[c\]\], where c is the universal line bundle minus the trivial line.
 
 **How the definition helps.** Completion turns a Laurent polynomial calculation into a power series calculation. Write x for the circle’s action on a complex line by scalar multiplication. Its representation ring is ℤ\[x, x⁻¹\], and I is generated by c = x − 1. Modulo every power of c, the geometric series gives an inverse for 1 + c. The Atiyah–Segal completion theorem identifies the resulting power series ring with the required K-ring.
 
@@ -959,7 +959,7 @@
 
 **Problem.** For a finite group acting freely on a compact Hausdorff space, equivariant K⁰ equals ordinary K⁰ of the orbit space.
 
-**How the definition helps.** In our own proof, freeness lets each orbit of fibers become one vector space over the orbit space. A finite free action on a Hausdorff space gives each point a neighborhood disjoint from its nonidentity translates. Local bundle coordinates there give local coordinates on the quotient bundle. Pullback reverses this construction, so taking formal differences gives Segal’s isomorphism. Over a fixed point, the group of order two has distinct trivial and sign lines, although both underlying lines are identical.
+**How the definition helps.** Freeness lets each orbit of fibers become one vector space over the orbit space (our own proof). A free action of a finite group on a Hausdorff space gives each point a neighborhood disjoint from its other translates, so the quotient bundle is locally trivial. Pullback reverses this construction, which gives Segal's isomorphism. Without freeness it fails: over a fixed point, the group of order two has distinct trivial and sign lines with the same underlying line.
 
 **nLab:** [equivariant K-theory](https://ncatlab.org/nlab/show/equivariant+K-theory). It says: “equivariant K-theory is given by equivalence classes of virtual equivariant bundles”
 
@@ -977,7 +977,7 @@
 
 **Problem.** For a closed subgroup H, the G-equivariant K-ring of G∕H is the complex representation ring of H.
 
-**How the definition helps.** Equivariance makes one fiber and its stabilizer action determine the entire bundle (our own explanation). The G-action transports the identity fiber to every other fiber. Conversely, for an H-representation V, identify (gh, v) with (g, hv) in G × V. Local sections of G → G∕H make the resulting space a vector bundle. These constructions are inverse up to isomorphism and preserve direct sums and tensor products. Passing to formal differences gives the ring isomorphism.
+**How the definition helps.** Equivariance makes one fiber with its H-action determine the whole bundle (our own explanation). The G-action carries the identity fiber to every other fiber. Conversely, an H-representation V gives the bundle G ×<sub>H</sub> V, the quotient of G × V by (gh, v) \~ (g, hv). These constructions are inverse and respect direct sums and tensor products, which gives the ring isomorphism.
 
 **nLab:** [equivariant K-theory](https://ncatlab.org/nlab/show/equivariant+K-theory). It says: “The G-equivariant K-theory of a coset space G/H, for H ⊂ G a closed subgroup, is isomorphic to the H-equivariant K-theory of the point”
 
@@ -1063,7 +1063,7 @@
 
 **Problem.** Let I be an ideal in a commutative ring R such that some power of I is zero. Reduction gives K₀(R) ≅ K₀(R/I).
 
-**How the definition helps.** In our own proof, the matrix description turns the problem of lifting a module into lifting one idempotent. The idempotent lifting theorem supplies this step. To compare two lifts, projectivity lets us lift an isomorphism and its inverse as module maps. Each composite differs from the identity by a map with image in I times the module. Such a map has a power equal to zero, so each composite is invertible. Reduction therefore identifies the direct sum classes before taking formal differences.
+**How the definition helps.** The matrix description turns lifting a module into lifting one idempotent, which the idempotent lifting theorem supplies (our own proof). To compare two lifts, projectivity lifts an isomorphism and its inverse. Each composite differs from the identity by a map into I times the module, which is nilpotent, so each composite is invertible. So reduction is a bijection on module classes and hence on K₀.
 
 **Paper or page:** [Algebra](https://stacks.math.columbia.edu/tag/0D47). It says: “Then there exists a finite projective R-module P such that P/IP ≅ P̄.”
 
@@ -1095,9 +1095,9 @@
 
 **Definition.** A map is acyclic when its homotopy fibers have the integral homology of a point. The plus construction X → X⁺ is the acyclic map that kills the largest perfect subgroup of the fundamental group of X. An E₁-group is a space with a multiplication that is associative up to coherent homotopy and has inverses up to homotopy.
 
-**Problem.** Recognize when a given map is a model of the plus construction. The paper uses this to compare its construction of the group completion with other ones.
+**Problem.** If X → Y is an acyclic map and Y is an E₁-group, then Y is a model for the plus construction X⁺.
 
-**How the definition helps.** An acyclic map X → Y is onto on fundamental groups, and its kernel is perfect (a group equal to its own commutator subgroup). An E₁-group has abelian fundamental group, so the largest perfect subgroup of π₁(X) must go to zero in it. So the kernel is exactly that subgroup, and Y is X⁺. This argument is our own. The corollary also says that an acyclic map between E₁-groups is an equivalence. The main theorem, on a version of Quillen's S⁻¹S construction for n ≥ 2, stays hard.
+**How the definition helps.** An acyclic map is onto on fundamental groups, and its kernel is perfect, that is, equal to its own commutator subgroup. An E₁-group has abelian fundamental group, so the largest perfect subgroup of π₁(X) goes to zero. So the kernel is exactly that subgroup, and Y is X⁺ (our own argument). The paper uses this to compare its group completion with other constructions.
 
 **Paper or page:** [Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118). It says: “Let X → Y be an acyclic map with Y an E₁-group. Then Y is a model for the plus construction of X.”
 
@@ -1286,7 +1286,7 @@
 
 **Problem.** Gluing spaces by a homotopy pushout gives a homotopy pushout in excisive A-theory. The homotopy groups fit into the long exact sequence for the two pieces, their overlap and their union.
 
-**How the definition helps.** In our own proof, both operations in the formula preserve homotopy pushouts, which describe gluing up to homotopy. Passing to homotopy groups gives the Mayer–Vietoris exact sequence. The geometric description requires a comparison theorem. For finite polyhedra, it identifies a construction using families of constructible sheaves with the source of assembly. These sheaves have locally constant data on each piece of a subdivision.
+**How the definition helps.** Both steps of the formula, taking the suspension spectrum and smashing with A(∗), preserve homotopy pushouts (our own proof). Passing to homotopy groups gives the Mayer–Vietoris exact sequence. A separate comparison theorem matches this with the geometric source of assembly, built from constructible sheaves on finite polyhedra.
 
 **Wikipedia:** [Algebraic K-theory](https://en.wikipedia.org/wiki/Algebraic_K-theory). It says: “Consideration of these questions led Waldhausen to introduce his algebraic K-theory of spaces.”
 
@@ -1306,7 +1306,7 @@
 
 **Problem.** The constant sphere local system on the classifying space of the group C₂ of order two is not compact. Its value at every point is a finite spectrum.
 
-**How the definition helps.** In our own proof, compactness of the whole system forces its colimit over the base to be compact. Taking that colimit is left adjoint to forming a constant system, which preserves filtered colimits. For the constant sphere system, the colimit is the suspension spectrum of BC₂ with a disjoint basepoint. The space BC₂ has infinite real projective space as a model. Its homology with coefficients in ℤ/2ℤ is nonzero in every positive degree. A compact spectrum has bounded homology, so this local system fails the compactness test.
+**How the definition helps.** If the system were compact, its colimit over the base would be a compact spectrum, because taking the colimit is left adjoint to forming constant systems, which preserves filtered colimits (our own proof). For the constant sphere system, this colimit is the suspension spectrum of BC₂ with a disjoint basepoint. BC₂ is infinite real projective space, whose homology modulo two is nonzero in every degree. A compact spectrum has bounded homology, so the system is not compact.
 
 **nLab:** [A-theory](https://ncatlab.org/nlab/show/A-theory). It says: “hence is the K-theory of the parametrized spectra over X”
 
@@ -1342,9 +1342,9 @@
 
 **Definition.** Nonconnective K-theory K∞ is the spectrum of algebraic K-theory with negative K-groups added, built by a delooping construction. A full subcategory is cofinal when every object of the larger category is a direct summand of an object of the smaller one.
 
-**Problem.** The Bass–Heller–Swan decomposition splits the K-theory of a twisted Laurent extension into a mapping torus and two Nil-terms. For connective K-theory, the paper needs the additive category to be idempotent complete.
+**Problem.** For every additive category 𝒜, the nonconnective K-theory K∞ of a twisted Laurent extension of 𝒜 splits as a mapping torus term plus two Nil-terms. No idempotent completeness is needed, unlike the connective version.
 
-**How the definition helps.** Since K∞ does not change under a cofinal inclusion (Lemma 2.2), one can replace any additive category by its idempotent completion. So the decomposition for K∞, Theorem 3.1, holds for all additive categories. The same lemma gives only that the connective K-groups Kₙ agree for n ≥ 1, so K₀ can change. This is why the connective version, Theorem 3.3, needs idempotent completeness. The reduction to the idempotent complete case is our own reading of how the two theorems fit. The hard part is the proof of the decomposition itself (our own).
+**How the definition helps.** K∞ does not change under a cofinal inclusion (Lemma 2.2), so one can replace 𝒜 by its idempotent completion. The same lemma gives only that connective Kₙ agree for n ≥ 1, so K₀ can change. That is why the connective version, Theorem 3.3, needs idempotent completeness. This reading of how the theorems fit is our own; the hard part is the decomposition itself.
 
 **Paper or page:** [Vanishing of Nil-terms and negative K-theory for additive categories](https://arxiv.org/abs/2002.03412), [Vanishing of Nil-terms and negative K-theory for additive categories](https://arxiv.org/abs/2002.03412), [Vanishing of Nil-terms and negative K-theory for additive categories](https://arxiv.org/abs/2002.03412). It says: “Let I : 𝒜 → 𝒜′ be the inclusion of a full cofinal additive subcategory. … The induced map K∞(I) : K∞(𝒜) → K∞(𝒜′) is a weak homotopy equivalence.”
 
@@ -1360,9 +1360,9 @@
 
 **Definition.** An additive category is regular coherent when, roughly, its finitely presented modules form an abelian category. Each such module must also have a finite resolution by finitely generated projective modules. This extends regular coherence for rings to additive categories.
 
-**Problem.** Negative K-groups and Nil-groups are the error terms in the Bass–Heller–Swan formula and in the Farrell–Jones conjecture. One wants simple conditions under which they vanish.
+**Problem.** If an additive category 𝒜 and all its polynomial extensions 𝒜\[t₁, …, tₘ\] are regular coherent, then the negative K-groups of 𝒜 and all its twisted Nil-groups vanish.
 
-**How the definition helps.** Regular coherence lets the classical resolution argument work for additive categories (our own). So the vanishing follows as it does for regular rings. The precise theorem for negative K-groups, Theorem 11.1, asks that every polynomial extension 𝒜\[t₁, …, tₘ\] is regular coherent, not only 𝒜. For coherent rings this is a real extra condition, because coherence need not pass to polynomial rings (our own). This matters for the Farrell–Jones conjecture, where coefficients are additive categories, not rings (our own). The hard part is the passage from rings to additive categories with twisted polynomial extensions.
+**How the definition helps.** Regular coherence lets the classical resolution argument for regular rings work for additive categories (our own). The precise theorem for negative K-groups, Theorem 11.1, needs every polynomial extension to be regular coherent, because coherence need not pass to polynomial rings (our own). These groups are the error terms in the Bass–Heller–Swan formula and the Farrell–Jones conjecture, whose coefficients are additive categories. The hard part is the passage from rings to additive categories with twisted polynomial extensions.
 
 **Paper or page:** [Vanishing of Nil-terms and negative K-theory for additive categories](https://arxiv.org/abs/2002.03412). It says: “For instance the negative K-groups and all twisted Nil-groups vanish for an additive category if it is regular coherent.”
 
@@ -1380,7 +1380,7 @@
 
 **Problem.** If A is a complete discrete valuation ring with finite residue field, improved Milnor K-theory injects into Milnor K-theory of its fraction field.
 
-**How the definition helps.** The extra variable gives an infinite residue field, and requiring equal images keeps only classes independent of that variable. Our own example uses ℤ₂, the ring of 2-adic integers. No unit there has a unit complement, so the tensor presentation of ordinary Milnor K₂ imposes no Steinberg relations. Modulo 16, the units have a cyclic factor of order four generated by 5. Projection onto its tensor square detects 2{5,5}. Over ℚ₂, interchanging the two entries changes the sign, so this class vanishes. Dahlhausen’s injectivity theorem applies to the improved group.
+**How the definition helps.** The extra variable gives an infinite residue field, and the equal-image condition keeps only the classes that do not depend on it. Our own example: in ℤ₂ no unit has a unit complement, so ordinary Milnor K₂ is the tensor square of the units. There 2{5,5} is nonzero, as the projection onto the order-four quotient of the units shows, but over ℚ₂ antisymmetry makes 2{5,5} = 0. Dahlhausen's theorem gives injectivity for the improved group.
 
 **Paper or page:** [Ramified class field theory and duality over finite fields](https://arxiv.org/abs/2104.03029v1). It says: “These two maps are isomorphisms if A is either a field or a local ring with infinite residue field.”
 
@@ -1399,7 +1399,7 @@
 
 **Problem.** If F is of degree pᵈ over its subfield of p-th powers, its Milnor groups modulo p vanish in degrees greater than d. The group in degree d is nonzero.
 
-**How the definition helps.** In the differential description an alternating product vanishes as soon as its length exceeds the dimension. Our own argument chooses a p-basis of F. Its monomials with exponents below p form a basis over the subfield of p-th powers. The differentials of these d elements form a basis of the one-forms. Dividing each by its nonzero entry preserves independence, so their degree d product survives. For d = 0, the empty product is 1. The Bloch–Gabber–Kato theorem identifies this differential description with the group defined by generators and relations.
+**How the definition helps.** In the differential description, an alternating product vanishes as soon as its length exceeds the dimension of the one-forms. Our own argument chooses a p-basis b₁, …, b<sub>d</sub> of F, so that db₁, …, db<sub>d</sub> form a basis of the one-forms. Then all forms of degree above d vanish, and the product of the db<sub>i</sub>/b<sub>i</sub> is nonzero in degree d. The Bloch–Gabber–Kato theorem identifies this differential description with Milnor K-theory modulo p.
 
 **Paper or page:** [Brauer p-dimension of henselian discretely valued fields over characteristic p &gt; 0](https://arxiv.org/abs/2410.02938v1). It says: “\\phi ^n<sub>F</sub>:K<sup>M<sub>n</sub></sup>(F)/p\\rightarrow H<sup>n</sup>(F,\\mathbb {Z}/p(n))\\cong \\Omega ^n<sub>F,\\log </sub>”
 
@@ -1492,7 +1492,7 @@
 
 **Problem.** Multiplying the binary classes gives a graded surjection from the Milnor K-ring modulo two onto the graded Witt ring. This map is an isomorphism.
 
-**How the definition helps.** Passing to the next quotient removes exactly the product term that spoils additivity in a symbol entry. In our own calculation, write b(a) = 1 − ⟨a⟩ for the binary form. Then b(ac) = b(a) + b(c) − b(a)b(c), and the last term lies in I². Since 2 lies in I, doubling kills every graded quotient. The product b(a)b(1 − a) is hyperbolic for a ≠ 0, 1, so it gives zero in the Witt ring. Binary classes generate I additively, which gives surjectivity. The theorem of Orlov, Vishik and Voevodsky supplies injectivity.
+**How the definition helps.** Passing to the next quotient removes exactly the product term that spoils additivity in a symbol entry (our own). With b(a) = 1 − ⟨a⟩, one has b(ac) = b(a) + b(c) − b(a)b(c), and the last term lies in I². The form b(a)b(1 − a) is hyperbolic and 2 lies in I, so the map is defined on Milnor K modulo two. Binary classes generate I, which gives surjectivity, and the theorem of Orlov, Vishik and Voevodsky gives injectivity.
 
 **Paper or page:** [Notes on Milnor-Witt K-theory](https://arxiv.org/abs/2305.18609v2). It says: “the map K× → I(K), u ↦ ⟨⟨u⟩⟩ induces a ring morphism”
 
@@ -1509,7 +1509,7 @@
 
 **Definition.** A commutative local ring has one maximal ideal, and its quotient by that ideal is the residue field. Call the ring Henselian if every coprime monic factorization of a reduced monic polynomial lifts to a monic factorization of the original. Take coefficients modulo an integer m ≥ 2 that is a unit in the ring.
 
-**Problem.** Reduction to the residue field preserves every nonnegative K-group with coefficients modulo m. For the p-adic integers with m = p odd, reduction fails to be injective in degree one.
+**Problem.** For a Henselian local ring R with residue field k and m invertible in R, reduction gives isomorphisms Kₙ(R; ℤ/m) ≅ Kₙ(k; ℤ/m) for all n ≥ 0. For the p-adic integers with m = p odd, the map in degree one is not injective.
 
 **How the definition helps.** The invertibility condition lets Hensel lifting extract mth roots of units congruent to one, in our own explanation. Without it, 1 + p need not have a pth root. In our own example, such a root would equal one modulo p, so its pth power would equal one modulo p². Gabber’s rigidity theorem supplies the result in all degrees.
 
@@ -1546,7 +1546,7 @@
 
 **Definition.** A c-category is a category whose behaviour is controlled by connective ring spectra. Any c-category has a resolution in finitely many steps by categories of compact modules over connective ring spectra. A truncating invariant is one that does not change when a connective ring spectrum is replaced by its zeroth homotopy ring.
 
-**Problem.** The Dundas–Goodwillie–McCarthy theorem says that the fiber of the cyclotomic trace from K-theory to TC is unchanged by nilpotent extensions of connective rings. The aim is to extend it to perfect complexes on stacks.
+**Problem.** Nilpotent extensions of c-categories induce isomorphisms on truncating invariants, such as the fiber of the cyclotomic trace from K-theory to TC. Since perfect complexes on many stacks form c-categories, the Dundas–Goodwillie–McCarthy theorem extends to them.
 
 **How the definition helps.** The finite resolution by compact modules lets the theorem for connective rings pass to every c-category, step by step (our own). The paper shows that perfect complexes on many stacks form a c-category. So the generalization follows from that fact. The hard part is showing that a given category is a c-category.
 
@@ -1600,7 +1600,7 @@
 
 **Definition.** A spectrum represents a stable homotopy type. A cyclotomic spectrum X has a circle action and one compatible map, called Frobenius, for each prime p. Its target is the Tate spectrum for the order-p rotations, the cofiber of the norm from homotopy orbits to homotopy fixed points. Topological cyclic homology is the spectrum of structure-preserving maps from the cyclotomic sphere to X.
 
-**Problem.** Compute integral topological cyclic homology from the circle action and the Frobenius maps. Circle homotopy fixed points record points together with coherent identifications under rotation.
+**Problem.** For a cyclotomic spectrum X that is bounded below, TC(X) is the homotopy equalizer of two maps from X<sup>(hS¹)</sup> to the product over primes p of (X<sup>(tCₚ)</sup>)<sup>(hS¹)</sup>. One map comes from the Frobenius maps of X, and the other is the canonical map.
 
 **How the definition helps.** A map from the sphere specifies a circle homotopy fixed point and a homotopy expressing compatibility with each Frobenius (our own). These data form a homotopy equalizer, which remembers how the two maps agree (our own). Both maps land in the product of the residual circle homotopy fixed points of the Tate spectra (our own). One uses Frobenius on X, and the other uses Frobenius on the sphere and functoriality of Tate (our own). Nikolaus and Scholze compare this description with classical topological cyclic homology for bounded-below spectra (our own).
 
@@ -1654,7 +1654,7 @@
 
 **Definition.** A pointed monoid has an absorbing zero. Its pointed monoid algebra sets the basis element for zero equal to zero. Its cyclic bar construction uses circular lists of monoid elements and collapses every list containing zero to one base point. Multiplying neighbors gives its face maps.
 
-**Problem.** For a unital ring A and integer n ≥ 1, use the pointed monoid of powers 1, x, …, xⁿ⁻¹ with xⁿ = 0. Its pointed algebra is A\[x\]/(xⁿ). How does topological Hochschild homology, the spectrum built from cyclic lists of ring factors, depend on the coefficients and the powers separately?
+**Problem.** For a unital ring A and n ≥ 1, THH(A\[x\]/(xⁿ)) is equivalent, compatibly with rotation, to THH(A) smashed with the pointed cyclic bar construction of the pointed monoid {0, 1, x, …, xⁿ⁻¹} with xⁿ = 0.
 
 **How the definition helps.** The pointed presentation separates each cyclic list into coefficient factors and monomial labels (our own). Multiplying neighbors and rotating lists respects this separation (our own). Hesselholt and Madsen identify the resulting spectrum with the smash product of the coefficient spectrum and the pointed cyclic bar (our own). Here smashing means tensoring with the based space after suspension, and the equivalence respects rotation (our own).
 
@@ -1690,9 +1690,9 @@
 
 **Definition.** For a unital ring A and n ≥ 1, represent monomials of A\[x\]/(xⁿ) by the powers of x below degree n and an absorbing zero. The pointed cyclic bar consists of circular lists of these monomials, with lists containing zero collapsed to a base point. The weight of any other list is its total exponent.
 
-**Problem.** Topological Hochschild homology assigns a spectrum to a ring by forming cyclic products of its factors. What is the fiber, or relative part, of its map from A\[x\]/(xⁿ) to A at x = 0?
+**Problem.** For a unital ring A and n ≥ 1, the fiber of THH(A\[x\]/(xⁿ)) → THH(A) at x = 0 is the sum over positive weights w of THH(A) smashed with the weight-w part of the pointed cyclic bar.
 
-**How the definition helps.** Rotation preserves weight, and multiplying neighbors preserves weight unless the product becomes zero (our own). Thus the bar splits into weight spaces joined at their base points (our own). Evaluation projects onto weight zero, with a section given by constants (our own). Its fiber is the direct sum over positive weights of the coefficient spectrum smashed with each weight space (our own). Smashing here means tensoring a spectrum with a based space (our own). Hesselholt and Madsen justify replacing the original ring construction by this pointed bar model (our own).
+**How the definition helps.** Rotation and multiplication of neighbors preserve weight, unless the product becomes zero, so the bar splits into weight spaces joined at their base points (our own). Evaluation at x = 0 projects onto weight zero, and constants give a section (our own). So the fiber is the part of positive weight (our own). Hesselholt and Madsen justify replacing the ring construction by this pointed bar model.
 
 **Paper or page:** [From manifolds to invariants of Eₙ-algebras](https://arxiv.org/abs/1210.7909v1). It says: “Both maps in the zig-zag are weak equivalences if the unit map of A, S → A, is a cofibration in Sp.”
 
@@ -1838,7 +1838,7 @@
 
 **Problem.** For a Noetherian scheme, a closed subscheme, the whole scheme, and the open complement fit into a long exact sequence in G-theory.
 
-**How the definition helps.** Coherent sheaves allow both restriction to the open set and extension from the closed subscheme (our own explanation). Restriction kills exactly the sheaves supported on the closed subset. Quillen’s localization theorem gives a long exact sequence involving these supported sheaves. Filtering each such sheaf by powers of the defining ideal gives layers annihilated by that ideal. Those layers are sheaves on the closed subscheme. Quillen’s filtration theorem therefore identifies the supported term with the G-theory of that subscheme.
+**How the definition helps.** Coherent sheaves allow both restriction to the open set and extension from the closed subscheme (our own explanation). Restriction kills exactly the sheaves supported on the closed subset, and Quillen's localization theorem gives a long exact sequence with these supported sheaves. Filtering a supported sheaf by powers of the ideal gives layers that are sheaves on the closed subscheme. So Quillen's filtration theorem identifies the supported term with the G-theory of that subscheme.
 
 **Wikipedia:** [Algebraic K-theory](https://en.wikipedia.org/wiki/Algebraic_K-theory). It says: “He was, however, able to prove its existence for a related theory called G-theory”
 
@@ -1870,9 +1870,9 @@
 
 **Definition.** The Thomason–Trobaugh K-theory of a scheme X is the Waldhausen K-theory of the category of perfect complexes on X. Waldhausen K-theory is a K-theory construction for categories with cofibrations and weak equivalences. A perfect complex is a complex that is locally quasi-isomorphic to a bounded complex of vector bundles. The weak equivalences are the quasi-isomorphisms, which are the maps that induce isomorphisms on cohomology.
 
-**Problem.** Prove that K-theory of schemes has a localization sequence and a Mayer–Vietoris sequence for open covers (Zariski descent). This should hold for all quasi-compact quasi-separated schemes.
+**Problem.** For every quasi-compact quasi-separated scheme, Thomason–Trobaugh K-theory has a localization sequence and a Mayer–Vietoris sequence for open covers.
 
-**How the definition helps.** Perfect complexes restrict and extend well along open immersions (inclusions of open subschemes), and descent needs exactly this. Quillen's K-theory of vector bundles is defined on all schemes. But a scheme without an ample family of line bundles may have too few vector bundles, and then the descent and localization theorems are not available. With perfect complexes, Thomason and Trobaugh prove a localization sequence and Mayer–Vietoris for open covers of quasi-compact quasi-separated schemes. The nLab credits them with Zariski descent for finite-dimensional noetherian schemes; the wider statement is from their paper. On schemes with an ample family of line bundles, the two K-theories agree, so nothing is lost. The descent proofs are still long.
+**How the definition helps.** Perfect complexes restrict and extend well along open immersions, and descent needs exactly this. A scheme without an ample family of line bundles may have too few vector bundles, so the descent and localization theorems are not available for Quillen's K-theory of vector bundles. On schemes with an ample family of line bundles the two K-theories agree, so nothing is lost. The descent proofs are still long.
 
 **nLab:** [algebraic K-theory](https://ncatlab.org/nlab/show/algebraic+K-theory), [Waldhausen S-construction](https://ncatlab.org/nlab/show/Waldhausen+S-construction). It says: “Thomason-Trobaugh K-theory coincides with Quillen K-theory for schemes that admit an ample family of line bundles, but has the advantage of better global descent properties.”
 
@@ -1976,9 +1976,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT. Level 4: research.
 
-**Definition.** Let E be a line bundle over a smooth quasi-projective variety, and let i include its zero section. Its conormal line L is the dual of E. For j ≥ 1, define θʲ(L) in K₀ by adding the tensor powers of L from exponent zero through j − 1. K₀ records vector bundles with addition given by short exact sequences.
+**Definition.** Let E be a line bundle over a smooth quasi-projective variety, let i include its zero section, and let L be the conormal line, the dual of E. For j ≥ 1, put θʲ(L) = 1 + \[L\] + \[L\]² + ⋯ + \[L\]ʲ⁻¹ in K₀.
 
-**Problem.** The Adams operation ψʲ raises line bundles to their jth powers. To apply it after pushing x along i, first apply ψʲ to x, multiply by θʲ(L), then push along i.
+**Problem.** For the Adams operation ψʲ, which raises line bundles to their jth powers, ψʲ(i∗x) = i∗(θʲ(L) · ψʲ(x)) for every class x in K₀.
 
 **How the definition helps.** The finite sum packages the exact correction to the pushforward, in our own explanation. Pulling the pushforward back along i multiplies by 1 − \[L\], by the two-term resolution of the zero section. Applying ψʲ changes this factor to 1 − \[L\]ʲ, which equals (1 − \[L\])θʲ(L). Pullback along the zero section is an isomorphism by homotopy invariance.
 
@@ -2014,7 +2014,7 @@
 
 **Definition.** Fix an odd prime ℓ. Start with connective K-theory, which has no negative homotopy groups, with coefficients modulo ℓ. Form its étale hypersheaf by enforcing gluing along all levels of étale covers, the algebraic analogues of local coordinate covers. Take global sections of this hypersheaf to define étale K-theory.
 
-**Problem.** Let X be regular and Noetherian, with ℓ invertible and a finite bound on degrees of nonzero étale ℓ-cohomology. In row 2j, column s of the second page gives étale cohomology in degree s with coefficients in μℓ tensor-powered j times. Here j ≥ 0, μℓ is the sheaf of ℓth roots of unity, and odd rows vanish.
+**Problem.** Let X be regular and Noetherian, with ℓ invertible and finite étale ℓ-cohomological dimension. There is a spectral sequence with E₂ term H<sup>s\_ét</sup>(X, μ\_ℓ<sup>⊗j</sup>) in row 2j and column s, zero in odd rows, converging to étale K-theory modulo ℓ in degree 2j − s.
 
 **How the definition helps.** Defining the theory by gluing lets each homotopy degree contribute one row of ordinary sheaf cohomology, in our own explanation. Rigidity and the calculation at separably closed fields identify those rows. The resulting spectral sequence calculates the global groups in degree 2j − s. Comparing them with ordinary algebraic K-groups in high degrees requires the proved Quillen–Lichtenbaum theorem.
 
@@ -2194,7 +2194,7 @@
 
 **Definition.** Let F be a number field and n ≥ 2 an integer. Give each embedding of F into ℂ a real coordinate. Require complex conjugation to preserve its coordinate for odd n and reverse its sign for even n.
 
-**Problem.** What is the rank of the algebraic K-group in degree 2n−1 of the ring of integers of F? This rank counts independent elements after ignoring torsion, the elements of finite order.
+**Problem.** For n ≥ 2, the rank of the algebraic K-group K\_(2n−1) of the ring of integers of F is r₁ + r₂ for odd n and r₂ for even n. Here r₁ counts real embeddings and r₂ counts pairs of nonreal embeddings.
 
 **How the definition helps.** The sign rule reduces the rank formula to counting coordinates, in our own explanation. Borel’s regulator identifies the K-group, after extending scalars to ℝ, with this coordinate space. Each pair of nonreal embeddings contributes one dimension. A real embedding contributes one for odd n and zero for even n.
 
@@ -2309,7 +2309,7 @@
 
 **Problem.** For each n ≥ 0, this map identifies degree n Milnor K-theory modulo ℓ with degree n Galois cohomology with those coefficients.
 
-**How the definition helps.** The tensor power records how field automorphisms act on the roots in all n slots. Our own example takes F = 𝔽₂ and ℓ = 3. The multiplicative group is trivial, so the degree-one Milnor quotient vanishes. With constant coefficients, the Frobenius automorphism generates the absolute Galois group topologically and can map to any element of ℤ/3. Thus constant coefficients give the wrong answer. Kummer theory proves the degree-one identification, and the norm-residue theorem proves the higher-degree statement.
+**How the definition helps.** The tensor power records how field automorphisms act on the roots in all n slots. Our own example takes F = 𝔽₂ and ℓ = 3, where the multiplicative group is trivial, so Milnor K₁ modulo 3 vanishes. With constant coefficients ℤ/3, the Frobenius can map to any element, so the degree-one group is ℤ/3 and the map fails. Kummer theory proves the degree-one case, and the norm-residue theorem proves the higher degrees.
 
 **nLab:** [Milnor K-theory](https://ncatlab.org/nlab/show/Milnor+K-theory). It says: “the sheaf of lth roots of unity to the n (i.e. tensored with itself n times).”
 
@@ -2440,7 +2440,7 @@
 
 **Problem.** Set η = log\|f\| d arg g − log\|g\| d arg f, where d arg measures angular change. Its integral around a small counterclockwise circle about P equals 2π log\|s\|. If every tame symbol has modulus one, these integrals define periods on the complete curve.
 
-**How the definition helps.** In our own calculation, the tame symbol records precisely the terms that survive integration around the missing point. The log\|t\| terms cancel, and the remaining terms give 2π times the logarithm of its modulus. The form is closed away from zeros and poles, so shrinking the circle preserves its integral. Filling the punctures kills their circles in homology, the group of cycles modulo boundaries. Roots of unity suffice because they have modulus one. Our own example f = t and g = 2 gives a nonzero period of −2π log 2.
+**How the definition helps.** In our own calculation, the tame symbol records exactly the terms that survive integration around the missing point. The log\|t\| terms cancel, and the rest give 2π log\|s\|. The form is closed away from zeros and poles, and filling the punctures kills their circles in homology. Our own example f = t and g = 2 gives the nonzero integral −2π log 2.
 
 **Paper or page:** [A shifted Mahler measure identity for Boyd's family](https://arxiv.org/abs/2202.09974). It says: “Let f,g ∈ ℚ(E) and {f,g} ∈ K₂(E).”
 
@@ -2513,7 +2513,7 @@
 
 **Problem.** If f and 1−f are both nowhere zero, the regulator character of (f,1−f) equals one on every loop. This is the Steinberg relation for the regulator.
 
-**How the definition helps.** The bundle construction reduces every such pair to (z,1−z) on the sphere punctured at zero, one and infinity by pullback along f. Our own proof avoids choosing logarithms by checking tame symbols. These are the local factors in Deligne’s formula for transport around each puncture. They equal one at zero and one. At infinity both functions have simple poles, and the sign cancels the limiting ratio of −1. The puncture loops generate first homology, so the character is trivial.
+**How the definition helps.** By pullback along f, the bundle construction reduces every such pair to (z, 1 − z) on the sphere punctured at zero, one and infinity. Our own proof checks the tame symbols, which are the local factors in Deligne's formula for transport around each puncture. They equal one at zero and at one, and at infinity the sign cancels the limiting ratio −1. The puncture loops generate first homology, so the character is trivial.
 
 **nLab:** [Higher regulators and values of L-functions](https://ncatlab.org/nlab/show/Higher+regulators+and+values+of+L-functions). It says: “one has the Steinberg identity t ∪ (1−t) = 0”
 
@@ -2638,7 +2638,7 @@
 
 **Definition.** A spectrum packages groups in all degrees with the maps relating them. Operator K-theory assigns an algebra A a spectrum K(A) with an action of periodic complex K-theory, denoted KU. This action makes K(A) a module over KU and allows two such modules to be tensored over KU.
 
-**Problem.** Work in the stable version of Kasparov’s category KK, which allows generalized maps between operator algebras. Suppose A belongs to the smallest stable subcategory containing ℂ and closed under all colimits, which assemble diagrams of objects. For any B in KK, the comparison from K(A) tensored over KU with K(B) to K(A ⊗ B) is an equivalence.
+**Problem.** Let A lie in the UCT class, the smallest stable subcategory of KK that contains ℂ and is closed under colimits. Then for every B in KK, the canonical map K(A) ⊗<sub>KU</sub> K(B) → K(A ⊗ B) is an equivalence.
 
 **How the definition helps.** In our own formulation, the tensor product of modules over KU packages the entire product formula into one map. An equivalence means the map induces isomorphisms on homotopy groups in every degree. The cited theorem proves this comparison for the stated category. Tensoring only the graded abelian groups can miss contributions from torsion.
 
@@ -2765,7 +2765,7 @@
 
 **Problem.** The cofiber of multiplication by β on ku represents ordinary integral cohomology. Here the cofiber is the homotopy version of the quotient by a map.
 
-**How the definition helps.** In our own calculation, removing the negative groups leaves no class in degree minus two that can map onto degree zero. By Bott periodicity the homotopy ring of ku is the polynomial ring ℤ\[β\]. Multiplication by β is injective, with cokernel ℤ in degree zero. The cofiber exact sequence gives those same groups for the cofiber. A spectrum with only ℤ in degree zero represents ordinary integral cohomology. In periodic K-theory, β is invertible and the cofiber vanishes.
+**How the definition helps.** Removing the negative groups leaves the homotopy ring of ku as the polynomial ring ℤ\[β\], by Bott periodicity (our own calculation). Multiplication by β is injective there, with cokernel ℤ in degree zero, so the cofiber has only ℤ in degree zero. A spectrum with only ℤ in degree zero represents ordinary integral cohomology. In periodic K-theory β is invertible, so the cofiber vanishes instead.
 
 **nLab:** [ku](https://ncatlab.org/nlab/show/ku), [Bott periodicity](https://ncatlab.org/nlab/show/Bott+periodicity). It says: “The ring spectrum commonly denoted ku is the connective cover of the spectrum KU, which represents complex topological K-theory.”
 
@@ -2795,9 +2795,9 @@
 
 **Definition.** On a finite cell complex X, a degree-three integral cohomology class specifies a projective unitary bundle. Its changes of coordinates are unitary operators on an infinite-dimensional complex Hilbert space, defined up to scalar phase. They act by conjugation on Fredholm operators, bounded operators with closed range and finite-dimensional kernel and cokernel. Degree-zero twisted K-theory uses continuous sections of the resulting operator bundle, up to continuous deformation.
 
-**Problem.** On a finite complex built by attaching cells, the Fredholm model defines twisted K-theory for every twist. Finite-rank twisted bundles cannot do this.
+**Problem.** On a finite cell complex, the Fredholm model defines twisted K-theory for every degree-three integral class. Twisted bundles of finite positive rank exist only when the class has finite order.
 
-**How the definition helps.** Scalar phases cancel in conjugation, so the Fredholm construction works for every twist (our own explanation). For a twisted bundle of constant positive rank r, taking determinants raises each scalar phase to its rth power. The determinants therefore trivialize r times the twisting class. On the three-sphere, a generator of degree-three integral cohomology has infinite order and rules out every positive rank. The projective unitary bundle classification supplies the operator bundle for each class.
+**How the definition helps.** Scalar phases cancel in conjugation, so the Fredholm construction works for every twist (our own explanation). For a twisted bundle of constant rank r, taking determinants raises each phase to its rth power, so r times the twisting class is zero. On the three-sphere, a generator of degree-three cohomology has infinite order, so no positive rank works.
 
 **nLab:** [twisted K-theory](https://ncatlab.org/nlab/show/twisted+K-theory). It says: “then the corresponding χ-twisted cohomology spectrum is that consisting of the spaces of sections”
 

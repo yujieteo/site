@@ -268,11 +268,11 @@
 
 *True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups), 14F25. arXiv math.CV, math.AG. Level 3: graduate.
 
-**Definition.** A complex manifold has ordinary and conjugate coordinate differentials. Compute complex cohomology using all smooth differential forms. Compute cohomology of holomorphic functions using only conjugate differentials and the part of the derivative that adds one such differential.
+**Definition.** On a complex manifold X, de Rham cohomology Hᵏ(X, ℂ) is computed from all smooth forms with the full derivative d. The cohomology Hᵏ(X, 𝒪) of holomorphic functions is computed from forms of type (0, k) with ∂̄, by the Dolbeault theorem.
 
-**Problem.** On a compact Kähler manifold, inclusion of constants into holomorphic functions induces projection onto the component with only conjugate differentials. Kähler means the manifold has a Hermitian metric whose associated two-form is closed.
+**Problem.** Let X be a compact Kähler manifold. Include the constants into the holomorphic functions. The induced map Hᵏ(X, ℂ) → Hᵏ(X, 𝒪) is the Hodge projection onto H⁰˒ᵏ(X).
 
-**How the definition helps.** The two descriptions by differential forms turn inclusion of constants into a projection in every degree. In our own calculation, discard each term containing an ordinary differential. Differentiating a discarded term cannot remove that differential, so the projection respects derivatives. The de Rham and Dolbeault theorems justify these two ways to compute cohomology. Hodge decomposition identifies the resulting map with projection onto a direct summand.
+**How the definition helps.** The two descriptions by differential forms turn the inclusion of constants into a projection in every degree. In our own calculation, discard each term that contains a holomorphic differential dzⱼ. Differentiating a discarded term cannot remove that differential, so the projection respects derivatives. Hodge decomposition identifies the resulting map with projection onto a direct summand.
 
 **Paper or page:** [Generic vanishing theorem for Fujiki class C](https://arxiv.org/abs/2309.09738v1). It says: “coincides with the projection Hᵏ(X, ℂ) → H⁰˒ᵏ(X) given by the Hodge decomposition”
 
@@ -360,7 +360,7 @@
 
 **Problem.** Let a compact set lie inside a domain in ℂⁿ and have connected complement there. If n≥2, every holomorphic function on that complement extends to the whole domain.
 
-**How the definition helps.** Compactly supported cohomology states exactly when a derivative error has a correction that vanishes far away (our own). Choose a smooth cutoff vanishing near the compact set and equal to one outside a compact neighborhood inside the domain (our own). Multiply by the cutoff, extend by zero across the missing set and extend its derivative error by zero to ℂⁿ (our own). In dimension at least two, the first compactly supported Dolbeault group of ℂⁿ vanishes, providing the required correction (our own). Outside the cutoff neighborhood, the correction is holomorphic and vanishes on the unbounded exterior component by the identity theorem (our own). Subtracting it gives a holomorphic function agreeing with the original on an open set, hence throughout the connected complement (our own).
+**How the definition helps.** Compactly supported cohomology states exactly when a ∂̄-error has a correction that vanishes far away (our own). Multiply the given holomorphic function by a cutoff that vanishes near the compact set and equals one outside a compact neighborhood of it (our own). For n ≥ 2 the first compactly supported Dolbeault group of ℂⁿ vanishes, so the ∂̄-error has a compactly supported correction (our own). The correction is holomorphic and zero on the unbounded exterior part, so subtracting it gives the extension by the identity theorem (our own).
 
 **Wikipedia:** [Hartogs's extension theorem](https://en.wikipedia.org/wiki/Hartogs%27s_extension_theorem). It says: “there exists a smooth and compactly supported function η on ℂⁿ with ∂̄η = ω.”
 
@@ -408,11 +408,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 32E40 (The Levi problem), 32U05, 32U10. arXiv math.CV. Level 3: graduate.
 
-**Definition.** A function is plurisubharmonic if it is upper semicontinuous and subharmonic on every complex line. Upper semicontinuous means that its value at each point is at least the lim sup of nearby values. A domain G in ℂⁿ is pseudoconvex if it has a continuous plurisubharmonic exhaustion, a function whose sublevel sets are relatively compact in G. For a domain with C² boundary, this is the same as the Levi condition on the boundary.
+**Definition.** A function is plurisubharmonic if it is upper semicontinuous and subharmonic on every complex line. A domain G in ℂⁿ is pseudoconvex if it has a continuous plurisubharmonic exhaustion, a function whose sublevel sets are relatively compact in G. For a domain with C² boundary, this is the same as the Levi condition on the boundary.
 
-**Problem.** A domain of holomorphy is a domain with a holomorphic function that cannot be continued beyond it. The Levi problem asks whether every pseudoconvex domain in ℂⁿ is a domain of holomorphy. The answer is yes, so the two classes are the same (Oka, 1942 to 1953, our own dating).
+**Problem.** A domain of holomorphy is a domain with a holomorphic function that cannot be continued beyond it. A domain in ℂⁿ is a domain of holomorphy exactly when it is pseudoconvex.
 
-**How the definition helps.** Being a domain of holomorphy is a global property, but pseudoconvexity can be checked near each boundary point. In one variable every open set is a domain of holomorphy, so no such notion is needed. For n ≥ 2, Hartogs's extension theorem shows that U minus a compact set K is not one, when U minus K is connected. So a geometric test was needed, and plurisubharmonic exhaustions give it. The easy direction is that −log of the distance to the boundary is plurisubharmonic on a domain of holomorphy. The hard direction, from pseudoconvex to domain of holomorphy, was proved by Oka, and later by Hörmander's L² methods (our own).
+**How the definition helps.** Being a domain of holomorphy is a global property, but pseudoconvexity can be checked near each boundary point. For n ≥ 2, Hartogs's extension theorem shows that some domains are not domains of holomorphy, so a geometric test is needed. The easy direction is that −log of the distance to the boundary is plurisubharmonic on a domain of holomorphy. The hard direction, the Levi problem, was proved by Oka, and later by Hörmander's L² methods (our own).
 
 **Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity), [Domain of holomorphy](https://en.wikipedia.org/wiki/Domain_of_holomorphy), [Plurisubharmonic function](https://en.wikipedia.org/wiki/Plurisubharmonic_function). It says: “Pseudoconvex sets are important, as they allow for classification of domains of holomorphy.”
 
@@ -431,7 +431,7 @@
 
 **Problem.** Consider a holomorphic covering between connected complex manifolds, locally a collection of disjoint copies of the base. Fix a lift of the starting point. The distance downstairs equals the infimum of distances from this lift to all lifts of the endpoint.
 
-**How the definition helps.** The chain definition lets each disk lift with its original cost because the unit disk is simply connected (our own). Starting each lift where the previous one ends gives a chain upstairs (our own). Projecting any chain back down also preserves its cost, giving the opposite inequality (our own). Equivalently, this is the largest pseudodistance for which disks decrease distance (our own). The equivalence follows by bounding each link and then summing along the chain (our own).
+**How the definition helps.** The chain definition lets each disk lift with its original cost because the unit disk is simply connected (our own). Starting each lift where the previous one ends gives a chain upstairs (our own). Projecting any chain back down also preserves its cost, giving the opposite inequality (our own).
 
 **Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “A complex space is Kobayashi hyperbolic if and only if its universal covering space is Kobayashi hyperbolic.”
 
@@ -466,7 +466,7 @@
 
 **Problem.** Every holomorphic map between complex spaces is distance-decreasing for their Kobayashi pseudometrics. So every holomorphic map from ℂ to a hyperbolic space is constant.
 
-**How the definition helps.** A disc mapped into X and then on to Y is a disc mapped into Y, so the distance-decreasing property follows from the definition. Schwarz's lemma says that the Kobayashi metric on the unit disc is the Poincaré metric. The Kobayashi pseudometric of ℂ is zero, because ℂ contains arbitrarily large discs. The work moves to showing that particular spaces are hyperbolic. For example, ℂ minus two points is hyperbolic, and this gives Picard's theorem. Brody's theorem says that a compact space is hyperbolic exactly when every holomorphic map from ℂ into it is constant.
+**How the definition helps.** A disc mapped into X and then on to Y is a disc mapped into Y, so the distance-decreasing property follows from the definition. The Kobayashi pseudometric of ℂ is zero, because ℂ contains arbitrarily large discs, which gives the second claim. Schwarz's lemma says that the Kobayashi metric on the unit disc is the Poincaré metric. The work moves to showing that particular spaces, such as ℂ minus two points, are hyperbolic.
 
 **Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “the Kobayashi pseudometric dₓ is defined as the largest pseudometric on X such that dₓ(f(x),f(y)) ≤ ρ(x,y), for all holomorphic maps f from the unit disc D to X”
 
@@ -548,9 +548,9 @@
 
 *True by definition.* MSC 32L05 (Holomorphic bundles and generalizations), 32Q40. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A holomorphic line bundle has one complex dimension in each fiber and holomorphic changes of local frame. A Hermitian metric assigns each fiber a squared norm. The bundle is positive if some such metric has curvature that becomes positive in every complex direction after multiplication by i. On compact complex manifolds, ampleness asks whether sections of a tensor power give a projective embedding.
+**Definition.** A holomorphic line bundle is positive if it has a Hermitian metric whose curvature form, multiplied by i, is a positive definite (1,1)-form.
 
-**Problem.** The tensor product of positive holomorphic line bundles is positive. A line bundle is positive if some positive tensor power has positive curvature for a suitable metric.
+**Problem.** The tensor product of two positive holomorphic line bundles is positive. A line bundle with a positive tensor power is itself positive.
 
 **How the definition helps.** Curvature adds under tensor products because local squared norms multiply and curvature differentiates their logarithms (our own). The sum of positive curvature forms stays positive (our own). Taking the positive root of squared norms on a tensor power divides curvature by the exponent (our own). Kodaira’s theorem relates this test to ampleness on compact complex manifolds.
 
@@ -564,11 +564,11 @@
 
 *True by definition.* MSC 32L10 (Sheaves and cohomology of sections of holomorphic vector bundles, general results), 55R40. arXiv math.CV, math.AT. Level 3: graduate.
 
-**Definition.** On a complex manifold M, the exponential sends local holomorphic functions to nowhere-zero ones. Every such function has a local logarithm, and logarithms differ by multiples of 2πi. This short exact sequence of sheaves, which track functions and their restrictions, induces a map from line bundles to H²(M, ℤ). Define the first Chern class c₁ to be this map.
+**Definition.** On a complex manifold M, the exponential sequence 0 → ℤ → 𝒪 → 𝒪\* → 0 sends a holomorphic function f to exp(2πif). Holomorphic line bundles are classes in H¹(M, 𝒪\*). Define the first Chern class c₁ as the connecting map H¹(M, 𝒪\*) → H²(M, ℤ).
 
-**Problem.** Show that the first Chern class turns tensor products of holomorphic line bundles into sums. Determine which bundles have first Chern class zero.
+**Problem.** The first Chern class turns tensor products of holomorphic line bundles into sums. A line bundle has first Chern class zero exactly when it lies in the image of H¹(M, 𝒪).
 
-**How the definition helps.** The exponential-sequence definition makes additivity immediate because the connecting map is a group homomorphism. The group law on line bundles is tensor product, which multiplies the functions used to glue their local pieces. Exactness says the kernel is the image of H¹(M, O), where O records local holomorphic functions. In our own comparison, the Euler-class definition needs a separate proof of additivity for complex line bundles. The work shifts to establishing the sequence and proving that its class agrees with the Euler class.
+**How the definition helps.** The exponential-sequence definition makes additivity immediate because the connecting map is a group homomorphism. Tensor product of line bundles multiplies their transition functions, which is the group law on H¹(M, 𝒪\*). Exactness of the long sequence identifies the kernel of c₁ with the image of H¹(M, 𝒪). The work shifts to proving that this class agrees with the topological Euler class (our own comparison).
 
 **Wikipedia:** [Exponential sheaf sequence](https://en.wikipedia.org/wiki/Exponential_sheaf_sequence). It says: “Here H¹(O<sub>M</sub>\*) can be identified with the Picard group of holomorphic line bundles on M. The connecting homomorphism sends a line bundle to its first Chern class.”
 
@@ -584,7 +584,7 @@
 
 **Problem.** Every connected component of the complement of a polynomial amoeba is convex.
 
-**How the definition helps.** Logarithms turn the absolute values of monomials into exponentials of linear functions. In our own proof, lift one complementary component back to complex coordinates. There the reciprocal polynomial has a single Laurent expansion because the domain is invariant under coordinate rotations. Hölder’s inequality makes the open region of absolute convergence convex in logarithmic coordinates. Multiplying the series by the polynomial gives one throughout that region, so it cannot meet the amoeba. The region therefore equals the chosen component in logarithmic coordinates.
+**How the definition helps.** Logarithms turn the absolute values of monomials into exponentials of linear functions. In our own proof, the reciprocal of the polynomial has one Laurent expansion over each complementary component. Hölder’s inequality makes the region where such a series converges absolutely convex in logarithmic coordinates. This region misses the amoeba, so it equals the component.
 
 **Wikipedia:** [Amoeba (mathematics)](https://en.wikipedia.org/wiki/Amoeba_%28mathematics%29). It says: “Any connected component of the complement ℝⁿ ∖ 𝒜ₚ is convex.”
 
@@ -614,9 +614,9 @@
 
 **Definition.** A Kähler manifold is a complex manifold with a Hermitian metric whose associated 2-form ω is closed. Equivalently, the complex structure is parallel for the Levi-Civita connection.
 
-**Problem.** The Hodge decomposition: on a compact Kähler manifold, each cohomology group with complex coefficients splits. The r-th group is the direct sum of the Dolbeault groups of type (p, q) with p + q = r. Dolbeault groups are the cohomology of the complex-differential operator ∂̄.
+**Problem.** On a compact Kähler manifold, the r-th cohomology group with complex coefficients splits. It is the direct sum of the Dolbeault groups of type (p, q) with p + q = r.
 
-**How the definition helps.** The Kähler condition gives the Kähler identities, so the de Rham Laplacian is twice each of the two Dolbeault Laplacians. Then a form is harmonic exactly when each of its (p, q) parts is harmonic. Hodge theory gives each cohomology class a unique harmonic representative, so the splitting passes to cohomology. On a general compact complex manifold, the Laplacians differ and the splitting can fail. Our own example is the Hopf surface, which is S¹ × S³ with a complex structure. Its first Betti number is 1, which is odd, so it cannot be Kähler. Every smooth complex projective variety is Kähler, which is why Hodge theory is central to algebraic geometry.
+**How the definition helps.** The Kähler condition gives the Kähler identities, so the de Rham Laplacian is twice each Dolbeault Laplacian. Then a form is harmonic exactly when each of its (p, q) parts is harmonic. Hodge theory gives each class a unique harmonic representative, so the splitting passes to cohomology. On a general compact complex manifold the splitting can fail, as on the Hopf surface S¹ × S³ with first Betti number 1 (our own example).
 
 **Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “If X is Kähler, the Kähler identities imply these Laplacians are all the same up to a constant”
 
@@ -650,7 +650,7 @@
 
 **Problem.** The first Cousin problem gives meromorphic functions fᵢ on open sets Uᵢ, with each fᵢ − fⱼ holomorphic on the overlap. It asks for one global meromorphic f with f − fᵢ holomorphic on each Uᵢ. On a Stein manifold this problem always has a solution.
 
-**How the definition helps.** Sheaf cohomology rewrites the gluing problem as one obstruction class in H¹(M, O), where O is the sheaf of holomorphic functions. By a long exact sequence, a solution exists as soon as that group is zero. The work moves into Cartan's theorem B. On a Stein manifold, coherent sheaves, which are locally given by finitely many generators and relations, have no cohomology in positive degrees. The Stein conditions exclude compact manifolds, where only constants are holomorphic. On a compact complex torus the problem can fail, since no elliptic function has only one simple pole (our own example).
+**How the definition helps.** Sheaf cohomology rewrites the gluing problem as one obstruction class in H¹(M, 𝒪), where 𝒪 is the sheaf of holomorphic functions. A solution exists as soon as that group is zero. The work moves into Cartan's theorem B, which gives this vanishing on a Stein manifold. On a compact complex torus the problem can fail, since no elliptic function has only one simple pole (our own example).
 
 **Wikipedia:** [Cousin problems](https://en.wikipedia.org/wiki/Cousin_problems), [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “the first Cousin problem is always solvable provided that the first cohomology group H¹(M,O) vanishes. In particular, by Cartan's theorem B, the Cousin problem is always solvable if M is a Stein manifold.”
 
@@ -668,7 +668,7 @@
 
 **Problem.** A Stein manifold of complex dimension n has the homotopy type of a space built by attaching balls of real dimension at most n.
 
-**How the definition helps.** The exhaustion definition gives a function whose curvature bounds the dimensions of the balls in Morse theory (our own). Grauert’s characterization allows a Morse exhaustion, whose real Hessian is nonsingular at each critical point. Strict positivity prevents the real Hessian from being negative on both a vector and its complex rotation (our own). Any real subspace of dimension above n meets its complex rotation nontrivially (our own). The negative subspace therefore has dimension at most n (our own). Morse theory attaches a ball of precisely that dimension when the exhaustion passes the critical point (our own).
+**How the definition helps.** The exhaustion definition gives a Morse function whose positive complex Hessian bounds the indices of its critical points (our own). The real Hessian cannot be negative on both a vector and its complex rotation (our own). A real subspace of dimension above n meets its complex rotation, so each index is at most n (our own). Morse theory then attaches one ball of that dimension at each critical point (our own).
 
 **Wikipedia:** [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “Being a Stein manifold is equivalent to being a (complex) strongly pseudoconvex manifold.”
 
@@ -759,7 +759,7 @@
 
 **Problem.** For compact complex manifolds, Brody hyperbolicity and Kobayashi hyperbolicity agree. The equivalence can fail without compactness.
 
-**How the definition helps.** On a compact target, Brody’s theorem replaces every disk-chain distance test with one test for entire curves. Its hard step rescales disks and extracts a convergent subsequence when the distance fails to separate points. For our own counterexample, join the unit bidisk to the domain where 0 &lt; \|w\| &lt; 1 and \|zw\| &lt; 1. Every entire curve has constant w by boundedness, then constant z because each slice is bounded. Fix 0 &lt; a &lt; 1 and use disks ζ ↦ (Nζ, ζ(ζ − a/N)/(2N)) for positive integers N. These disks join (0,0) to (a,0) at parameters 0 and a/N. The parameter distance tends to zero, so the target distance between those distinct points vanishes.
+**How the definition helps.** On a compact target, Brody’s theorem replaces the disk-chain distance test with one test for entire curves. For our own counterexample, take the union of the unit bidisk with the domain 0 &lt; \|w\| &lt; 1, \|zw\| &lt; 1. Every entire curve in it is constant, because w and then z is bounded. For 0 &lt; a &lt; 1 and each positive integer N, the disk ζ ↦ (Nζ, ζ(ζ − a/N)/(2N)) joins (0,0) to (a,0) at parameters 0 and a/N, so the Kobayashi distance between these points is zero.
 
 **Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “a compact complex space X is Kobayashi hyperbolic if and only if every holomorphic map ℂ → X is constant.”
 
@@ -775,9 +775,9 @@
 
 **Definition.** An almost complex structure on a manifold is a smooth field J of linear maps on tangent spaces with J² = −1. It is integrable if its Nijenhuis tensor, built from J and Lie brackets of vector fields, is zero. A complex manifold has charts to ℂⁿ whose transition maps are holomorphic.
 
-**Problem.** Decide whether a manifold with an almost complex structure J is a complex manifold with J as its multiplication by i. To find holomorphic charts, one must solve differential equations. A tensor, in contrast, can be computed pointwise.
+**Problem.** A manifold with an almost complex structure J has holomorphic charts in which J is multiplication by i exactly when J is integrable.
 
-**How the definition helps.** If 'complex structure' means 'almost complex structure with zero Nijenhuis tensor', checking it is a local computation. The hard analytic work moves into the Newlander–Nirenberg theorem (1957), which builds holomorphic coordinates from the tensor condition. The definition does not make every question easy. The page notes that it is still unknown whether the 6-sphere, which has an almost complex structure from the octonions, has an integrable one.
+**How the definition helps.** With this definition, checking for a complex structure is a pointwise tensor computation, not the solution of differential equations. The hard analytic work moves into the Newlander–Nirenberg theorem (1957), which builds holomorphic coordinates from the tensor condition. The definition does not make every question easy. It is still unknown whether the 6-sphere, which has an almost complex structure from the octonions, has an integrable one.
 
 **Wikipedia:** [Almost complex manifold](https://en.wikipedia.org/wiki/Almost_complex_manifold). It says: “Since the existence of an integrable almost complex structure is equivalent to the existence of a complex structure, this is sometimes taken as the definition of a complex structure.”
 
@@ -795,7 +795,7 @@
 
 **Problem.** Verdier duality, the duality exchanging ordinary restriction and restriction with support, preserves middle perverse sheaves on a complex analytic space.
 
-**How the definition helps.** The two restriction tests exchange places under duality, so their combination gives a symmetric definition. In our own argument, duality on a smooth stratum reverses degrees and shifts by its real dimension 2d. Thus a degree k corresponds to −2d − k, which exchanges the two sides of −d. The usual bounds on dimensions of supports give these local tests after choosing strata. The equivalence of those tests and the exchange identities for Verdier duality supply the work.
+**How the definition helps.** The two restriction tests exchange places under duality, so their combination gives a symmetric definition. In our own argument, duality on a stratum of complex dimension d sends degree k to −2d − k. This exchanges the two sides of −d. The exchange identities for Verdier duality supply the work.
 
 **Paper or page:** [A note on the support and cosupport conditions for a perverse sheaf](https://arxiv.org/abs/2207.02566v1). It says: “(new support) for all m ≥ 0, for all k &gt; −m, Hᵏ(uₘ\* A•) = 0.”
 
@@ -903,11 +903,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 32A45 (Hyperfunctions). arXiv math.CV. Level 4: research.
 
-**Definition.** Take an open set U of ℝ and a complex neighbourhood of U. A hyperfunction on U is a pair of holomorphic functions on the upper and lower parts of that neighbourhood. Two pairs are equal when they differ by one holomorphic function on the whole neighbourhood. Sato introduced them in 1958, and the page also writes them as a local cohomology group of holomorphic functions.
+**Definition.** Take an open set U of ℝ and a complex neighbourhood of U. A hyperfunction on U is a pair of holomorphic functions on the upper and lower parts of that neighbourhood. Two pairs are equal when they differ by one holomorphic function on the whole neighbourhood.
 
-**Problem.** A sheaf is flabby when every section on an open set extends to the whole space. One wants generalized functions that can be cut and glued freely, and that include distributions of infinite order.
+**Problem.** Hyperfunctions on the open subsets of ℝ form a flabby sheaf. So every hyperfunction on an open set U extends to a hyperfunction on all of ℝ.
 
-**How the definition helps.** Defining hyperfunctions by holomorphic functions turns flabbiness into a fact about ℂ, whose open sets have no first cohomology for holomorphic functions (our own summary). Distributions are not flabby. On (0, 1), take the sum of the n-th derivatives of the delta functions at the points 1/n (our own example). This is a distribution, but it has no extension to ℝ, because its order grows without bound near 0 (our own example). The page calls hyperfunctions distributions of infinite order, so this obstruction does not arise. The page also says that distributions embed into hyperfunctions. What stays hard is the theory in several variables, which needs more sheaf cohomology.
+**How the definition helps.** Defining hyperfunctions by holomorphic functions turns flabbiness into a fact about ℂ, whose open sets have no first cohomology for holomorphic functions (our own summary). Distributions are not flabby (our own example). On (0, 1), take the sum of the n-th derivatives of the delta functions at the points 1/n. It has no extension to ℝ, because its order grows without bound near 0 (our own example).
 
 **Wikipedia:** [Hyperfunction](https://en.wikipedia.org/wiki/Hyperfunction). It says: “The obvious restriction maps turn ℬ into a sheaf (which is in fact flabby).”
 
@@ -962,9 +962,9 @@
 
 **Definition.** On a complex manifold, ∂ and ∂̄ are the two parts of the exterior derivative. Consider compactly supported forms with one ordinary and one conjugate differential, killed by both operators. Their Bott–Chern group identifies forms differing by ∂∂̄ of a compactly supported function.
 
-**Problem.** Let Ω be a domain in a Stein manifold of complex dimension at least two. Stein manifolds admit closed holomorphic embeddings into complex coordinate space. If K is compact in Ω and Ω ∖ K is connected, every pluriharmonic function there extends uniquely to Ω.
+**Problem.** Let Ω be a domain in a Stein manifold of complex dimension at least two. Let K be a compact subset of Ω with Ω ∖ K connected. Every pluriharmonic function on Ω ∖ K extends uniquely to a pluriharmonic function on Ω.
 
-**How the definition helps.** The quotient measures exactly the error that a compactly supported correcting function can cancel. A real pluriharmonic function locally equals the real part of a holomorphic function and satisfies ∂∂̄u = 0. In our own account, cut the function off near K and take ∂∂̄. The resulting error extends by zero to a compactly supported form on the ambient manifold. The paper’s vanishing theorem gives a compactly supported function with precisely that derivative. Subtracting it gives the extension, with agreement following by continuation from an open set where the correction vanishes.
+**How the definition helps.** The quotient measures exactly the error that a compactly supported correcting function can cancel. In our own account, cut the function off near K and take ∂∂̄, which gives a compactly supported error form. The paper’s vanishing theorem gives a compactly supported function with exactly that ∂∂̄. Subtracting it gives the extension, which agrees with the original function by continuation from an open set where the correction vanishes.
 
 **Paper or page:** [Bott-Chern cohomology and the Hartogs extension theorem for pluriharmonic functions](https://arxiv.org/abs/2205.02494v2). It says: “Then every pluriharmonic function on Ω ∖ K has a unique pluriharmonic extension to Ω.”
 
@@ -997,9 +997,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 32G20 (Period matrices, variation of Hodge structure; degenerations), 14D07, 33B30. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Set f₀ = 1 and choose functions f₁ through fₙ vanishing at zero, with n ≥ 2. Require df₁ = dz/(1 − z) and dfₖ = fₖ₋₁ dz/z for 2 ≤ k ≤ n. At a singular endpoint, a tangential value uses the approach direction to fix the logarithm and removes the resulting logarithmic factor.
+**Definition.** Consider the polylogarithms as solutions of a differential system on the line. Li₁ has differential dz/(1 − z), and for k ≥ 2, Liₖ has differential Liₖ₋₁ dz/z, all vanishing at 0. At a singular endpoint, a tangential value uses the approach direction to fix the logarithm and removes the resulting logarithmic factor.
 
-**Problem.** For transport along the real interval from 0 to 1 with inward endpoint tangents, entries 2 through n are ζ(2) through ζ(n). Here ζ(k) is the sum of reciprocal kth powers of the positive integers.
+**Problem.** Transport the solution along the real interval from 0 to 1, with inward tangent vectors at both endpoints. Then the tangential values at 1 of Li₂ through Liₙ are ζ(2) through ζ(n), where ζ(k) is the sum of the reciprocal kth powers of the positive integers.
 
 **How the definition helps.** The tangential value defines the whole endpoint vector even though its first varying entry diverges (our own). Near 1 only the first differential equation has a pole, and its residue correction affects only f₁ (our own). For k ≥ 2 the power series for fₖ sums zʲ/jᵏ over positive j, giving ζ(k) at one (our own). Hain identifies these entries as periods, the comparison numbers for the limiting Hodge structure.
 
@@ -1037,7 +1037,7 @@
 
 **Problem.** The first map in Stein factorization has connected fibers.
 
-**How the definition helps.** In our own proof, every holomorphic function over a neighborhood in the intermediate space comes from that neighborhood. If a fiber splits, surround its two closed parts by disjoint open sets. Properness of the first map lets us shrink the neighborhood until these sets cover its inverse image. Assign zero on one part and one on the other. A function from the neighborhood would have a single value on that fiber. The construction theorem supplies the intermediate space and the stated correspondence of functions.
+**How the definition helps.** In our own proof, every holomorphic function over a neighborhood in the intermediate space comes from that neighborhood. If a fiber splits, properness lets us surround its two closed parts by disjoint open sets that cover the inverse image of a small neighborhood. The function equal to zero on one part and one on the other would then come from the neighborhood, so it would be constant on the fiber. The construction theorem supplies the intermediate space and this correspondence of functions.
 
 **Wikipedia:** [Stein factorization](https://en.wikipedia.org/wiki/Stein_factorization). It says: “Roughly speaking, Stein factorization contracts the connected components of the fibers of a mapping to points.”
 
@@ -1053,9 +1053,9 @@
 
 **Definition.** For a complex algebraic variety X, the analytic space X(ℂ) is compact only when X is proper. Poineau adds at infinity a Berkovich space over ℂ with the trivial absolute value. The result is a canonical compact space X⌝, functorial for proper morphisms.
 
-**Problem.** Serre's GAGA says that for a proper variety, coherent analytic sheaves are the same as coherent algebraic sheaves. For a non-proper variety, can a compactification restore this?
+**Problem.** For a complex algebraic variety X, coherent sheaves on X and on its compactification X⌝ form equivalent categories. The equivalence gives bijections on global sections, which is a partial GAGA theorem.
 
-**How the definition helps.** The boundary keeps track of growth at infinity, so coherent sheaves on the compactification are algebraic (our own reading). Without it, GAGA fails. On the affine line, the exponential function is analytic but is not a polynomial (our own). Poineau proves that coherent sheaves on X and on X⌝ form equivalent categories, with the same global sections. The construction keeps properties such as normality, regularity and the Cohen–Macaulay property. The paper calls the theorem partial, and it states it for coherent sheaves and global sections only.
+**How the definition helps.** The boundary keeps track of growth at infinity, so coherent sheaves on the compactification are algebraic (our own reading). Without it, GAGA fails. On the affine line, the exponential function is analytic but is not a polynomial (our own). The paper calls the theorem partial, because it treats only coherent sheaves and global sections.
 
 **Paper or page:** [Valuative compactifications of analytic varieties](https://arxiv.org/abs/2503.18643v2), [Valuative compactifications of analytic varieties](https://arxiv.org/abs/2503.18643v2). It says: “We prove a partial GAGA theorem in this setting : there is an equivalence between the categories of coherent sheaves on X and X⌝, and it induces bijections on global sections.”
 
@@ -1073,7 +1073,7 @@
 
 **Problem.** Consider a holomorphic line bundle on the punctured disk with an acceptable metric, meaning its curvature is bounded near zero in the hyperbolic metric. Dualizing the extension at weight a gives the extension of the dual at weight 1 − a − ε for all sufficiently small positive ε.
 
-**How the definition helps.** The growth definition detects integer pole orders, which explains the correction when dualizing a weight. In our own example, give the trivial line its constant metric. At weight one-half, the bound allows exactly the sections without poles. Their dual again allows constants, whereas weight minus one-half requires a zero. The corrected weight just below one-half gives exactly the required extension. The theorem for arbitrary acceptable metrics uses growth estimates beyond this example.
+**How the definition helps.** The growth definition detects integer pole orders, which explains the correction when dualizing a weight. In our own example, give the trivial line its constant metric. At weight one-half, the bound allows exactly the sections without poles, and their dual again allows constants, whereas weight minus one-half requires a zero. The corrected weight just below one-half gives exactly the required extension.
 
 **Paper or page:** [Notes on acceptable bundles](https://arxiv.org/abs/2511.00760v1). It says: “\\left({}\_\\alpha L\\right)<sup>\\vee</sup> ={}<sub>-\\alpha +1-\\varepsilon </sub>\\left(L<sup>\\vee</sup> \\right)”
 
@@ -1103,9 +1103,9 @@
 
 **Definition.** A polarized manifold is a complex manifold with a chosen positive line bundle L. An extremal Kähler metric is one whose scalar curvature has a holomorphic gradient. K-polystability tests a polarized manifold against degenerations to simpler spaces, using a number called the Donaldson–Futaki invariant. The uniform and relative version asks that this number grow at least like a norm of the degeneration, after removing symmetries.
 
-**Problem.** The Yau–Tian–Donaldson conjecture asks for an algebraic condition that is equivalent to the existence of a canonical Kähler metric. The paper proves a uniform version for polarized toric manifolds, which have a large torus symmetry.
+**Problem.** A polarized toric manifold (X, L) admits an S-invariant extremal Kähler metric exactly when it is uniformly relatively K-polystable. This is a uniform version of the Yau–Tian–Donaldson conjecture for toric manifolds.
 
-**How the definition helps.** The uniform condition is chosen to match coercivity of the K-energy, so the equivalence can be stated and proved. Coercive means that this energy, whose minima are the metrics, grows at least like a distance. The paper's corollary treats toric Fano manifolds, those whose anticanonical bundle is positive. There, several stability notions are equivalent to the vanishing of the Futaki invariant. All are equivalent to the barycenter of the moment polytope being at the origin. The hardest step, from coercivity to the existence of a metric, rests on earlier existence theorems (our own).
+**How the definition helps.** The uniform condition is chosen to match coercivity of the K-energy, so the equivalence can be stated and proved. Coercive means that this energy, whose minima are the extremal metrics, grows at least like a distance. For toric Fano manifolds, the paper's corollary shows that several stability notions are equivalent to the barycenter of the moment polytope being at the origin. The hardest step, from coercivity to the existence of a metric, rests on earlier existence theorems (our own).
 
 **Paper or page:** [A uniform version of the Yau-Tian-Donaldson correspondence for extremal Kähler metrics on polarized toric manifolds](https://arxiv.org/abs/2110.10386), [A uniform version of the Yau-Tian-Donaldson correspondence for extremal Kähler metrics on polarized toric manifolds](https://arxiv.org/abs/2110.10386). It says: “Then the followings are equivalent. (1) (X, L) admits an S-invariant extremal Kähler metric. (2) (X, L) is uniformly relatively K-polystable. (3) The relative K-energy of (X, L) is T-coercive.”
 
@@ -1121,9 +1121,9 @@
 
 **Definition.** An orbifold looks locally like a smooth space divided by a finite group. It is polarized if it carries an ample line bundle. In weighted projective space, the coordinates scale by different powers of one parameter. Embedding an orbifold there gives a notion of K-semistability that sees its finite groups.
 
-**Problem.** Donaldson proved that a constant scalar curvature Kähler metric on a manifold implies K-semistability. Does this hold for orbifolds with cyclic stabilizer groups?
+**Problem.** A polarized orbifold with cyclic stabilizer groups that carries an orbifold Kähler metric of constant scalar curvature is K-semistable. Here K-semistability is the notion given by weighted projective embeddings.
 
-**How the definition helps.** The weighted embedding gives orbifolds a K-semistability notion, so Donaldson’s theorem has an orbifold statement. The paper proves that an orbifold metric of constant scalar curvature implies this K-semistability. With slope stability for orbifolds, this gives an explicit obstruction to such metrics. The abstract says that results of Troyanov, Ghigi–Kollár, Rollin–Singer and others fit this frame. Our own explanation is that ordinary projective embeddings lose the information of the finite groups.
+**How the definition helps.** The weighted embedding gives orbifolds a K-semistability notion, so Donaldson’s theorem for manifolds has an orbifold statement. With slope stability for orbifolds, this gives an explicit obstruction to such metrics. Our own explanation is that ordinary projective embeddings lose the information of the finite groups.
 
 **Paper or page:** [Weighted projective embeddings, stability of orbifolds and constant scalar curvature Kähler metrics](https://arxiv.org/abs/0907.5214v2). It says: “We then prove an orbifold version of Donaldson's theorem: the existence of an orbifold Kahler metric of constant scalar curvature implies K-semistability.”
 
@@ -1139,9 +1139,9 @@
 
 **Definition.** The Kobayashi distance is a distance on a complex domain that holomorphic maps never increase. A domain has a visibility property when near-geodesics between two different boundary points all pass through one compact set inside it. So such geodesics bend into the interior, as in the hyperbolic disc. Complex visibility and essential visibility are versions of this idea.
 
-**Problem.** The Denjoy–Wolff property says that for every holomorphic self-map without fixed points, all orbits converge to one boundary point. The theorem in the data gives it for some bounded convex domains in ℂᴺ. Their boundary must contain no non-trivial analytic discs, and they must be complex visible or essentially visible.
+**Problem.** Let D be a bounded convex domain in ℂᴺ whose boundary contains no non-trivial analytic disc, and suppose D is complex visible or essentially visible. Then for every holomorphic self-map of D without fixed points, all orbits converge to one boundary point.
 
-**How the definition helps.** Visibility stops an orbit from accumulating at two different boundary points. The theorem says this directly: every other limit point of the orbit is non-visible from the first one. Our own reason is that the Kobayashi geodesic between two such points would have to pass through a fixed compact set. Our own example of the failure is the bidisc, which is convex but has discs in its boundary. Take a parabolic automorphism φ of the disc and the map (z, w) ↦ (φ(z), w). Each orbit tends to a boundary point that depends on w. The 2021 paper notes that the proof needs a form of visibility between two of the notions it compares.
+**How the definition helps.** Visibility stops an orbit from accumulating at two different boundary points. Our own reason is that the Kobayashi geodesic between two such points would have to pass through a fixed compact set. The bidisc shows the failure, since it is convex but has discs in its boundary (our own example). For a parabolic disc automorphism φ, the orbits of (z, w) ↦ (φ(z), w) tend to a boundary point that depends on w.
 
 **Paper or page:** [Some open questions and conjectures about visibility and iteration in bounded convex domains in ℂᴺ](https://arxiv.org/abs/2507.19967v2), [Notions of Visibility with respect to the Kobayashi distance: Comparison and Applications](https://arxiv.org/abs/2111.00549v2). It says: “In particular, if Ω is complex visible or essentially visible then it enjoys the Denjoy-Wolff property.”
 
@@ -1175,9 +1175,9 @@
 
 **Definition.** A complex manifold Y has the convex approximation property (CAP) when the following holds for every compact convex set K in ℂⁿ. Every holomorphic map to Y from a neighbourhood of K is a uniform limit on K of holomorphic maps from all of ℂⁿ. Manifolds with this property are called Oka manifolds.
 
-**Problem.** Let X be a Stein space, a complex space with many holomorphic functions, such as a closed complex submanifold of ℂⁿ. For maps from X to a manifold Y with CAP, every continuous map is homotopic to a holomorphic one, also with approximation, interpolation and parameters. All these versions of the Oka principle are equivalent to each other.
+**Problem.** Let X be a Stein space and Y a manifold with CAP. Then every continuous map from X to Y is homotopic to a holomorphic map. The versions of this Oka principle with approximation, interpolation and parameters also hold, and they are all equivalent to each other.
 
-**How the definition helps.** CAP is one simple test on convex sets in ℂⁿ, and the quoted theorem derives all the global Oka properties from it. So, in our own words, once Oka manifolds are defined by CAP, a new example needs only this one test. The work moves into that theorem, due to Forstnerič. Our own example of a manifold without CAP is the unit disc. A holomorphic map from ℂⁿ into the disc is constant by Liouville's theorem, so a nonconstant map on a small ball cannot be approximated. The survey also gives a homotopy form. Holomorphic maps from X into an Oka manifold Y form a space weakly homotopy equivalent to the continuous maps.
+**How the definition helps.** CAP is one simple test on convex sets in ℂⁿ, and the quoted theorem derives all the global Oka properties from it. So, in our own words, a new example of an Oka manifold needs only this one test. The work moves into that theorem, due to Forstnerič. The unit disc lacks CAP, because by Liouville's theorem every holomorphic map from ℂⁿ into it is constant (our own example).
 
 **Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “A complex manifold Y which enjoys CAP has all Oka properties in Def. for maps X → Y from any Stein space X. Furthermore, all these Oka properties are pairwise equivalent.”
 
@@ -1210,11 +1210,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 32S60 (Stratifications; constructible sheaves; intersection cohomology (complex-analytic aspects)), 14F08. arXiv math.AG, math.AT. Level 4: research.
 
-**Definition.** A perverse sheaf is usually a complex of constructible sheaves with support conditions. Such complexes form the heart of a t-structure, the objects that lie in both halves of a chosen splitting of the derived category. Dyckerhoff, Kapranov and Soibelman describe perverse sheaves on a stratified surface as functors on the Milnor disks of the surface's paracyclic category. A Milnor disk is a pair of a closed disk and a part of its boundary.
+**Definition.** A Milnor disk of a stratified surface is a closed disk together with a part of its boundary. Dyckerhoff, Kapranov and Soibelman use the Milnor disks of the surface's paracyclic category. A representation is a functor on these disks that satisfies simple gluing conditions.
 
-**Problem.** Constructible sheaves on a stratified space are exactly the representations of the exit-path category. Is there a similar description of perverse sheaves?
+**Problem.** On a stratified surface, perverse sheaves are equivalent to the representations of the Milnor disks of its paracyclic category.
 
-**How the definition helps.** Only functors on Milnor disks with simple gluing conditions are needed, so perverse sheaves form an abelian category with no derived categories. Usually the abelian structure comes from a theorem about the heart of a t-structure (our own). The key step is a purity property. A constructible complex is perverse exactly when its relative cohomology on every Milnor disk is zero outside degree 0. These degree-0 groups are the values of the functor. The method is for stratified surfaces only.
+**How the definition helps.** Only functors on Milnor disks with simple gluing conditions are needed, so perverse sheaves form an abelian category with no derived categories. Usually the abelian structure comes from a theorem about the heart of a t-structure (our own). The key step is purity. A constructible complex is perverse exactly when its relative cohomology on every Milnor disk is zero outside degree 0.
 
 **Paper or page:** [Perverse sheaves on Riemann surfaces as Milnor sheaves](https://arxiv.org/abs/2012.11388v2). It says: “In particular, this perspective yields an intrinsic definition of perverse sheaves as an abelian category without reference to derived categories and t-structures.”
 
@@ -1228,11 +1228,11 @@
 
 *True by definition.* MSC 32U05 (Plurisubharmonic functions and generalizations). arXiv math.CV. Level 4: research.
 
-**Definition.** An upper semicontinuous function has value at least its upper limit at each point. Call it q-plurisubharmonic if it passes this test on each complex affine plane of dimension q + 1. Whenever a real affine function bounds it above on the boundary of a closed ball in the domain slice, that bound holds throughout.
+**Definition.** Call an upper semicontinuous function q-plurisubharmonic if it satisfies affine comparison on every complex affine plane of dimension q + 1. Affine comparison means the following. Take a closed ball in a slice of the domain by such a plane. If a real affine function bounds the function above on the boundary of the ball, then that bound holds on the whole ball.
 
 **Problem.** Take a nonempty bounded open set in ℂⁿ and an integer q between zero and n − 1 inclusive. A q-plurisubharmonic function there, upper semicontinuous on the closure, attains its maximum on the boundary.
 
-**How the definition helps.** Affine comparison rules out a strict interior peak even when derivatives do not exist. In our own proof, suppose an interior value exceeds every boundary value. Adding a sufficiently small positive multiple of squared distance to the origin preserves this gap. At an interior maximum of the sum, a constant minus that quadratic bounds the original function above with equality. Its tangent affine function lies strictly higher on every small sphere in a test plane through the maximum. Lowering the tangent function slightly contradicts comparison there. For smooth functions, equivalence with the usual test on complex second derivatives takes a separate theorem.
+**How the definition helps.** Affine comparison rules out a strict interior peak even when derivatives do not exist. In our own proof, suppose an interior value exceeds every boundary value, and add a small multiple of \|z\|² without losing the gap. At an interior maximum of the sum, a tangent affine function lies strictly above the original function on small spheres in a test plane. Lowering it slightly contradicts comparison.
 
 **Paper or page:** [On rigid q-plurisubharmonic functions and q-pseudoconvex tube domains in ℂⁿ](https://arxiv.org/abs/2510.05009v2). It says: “Then any function $u$ which is upper semi-continuous on $\\overline{\\Omega }$ and $q$-plurisubharmonic on $\\Omega $ fulfills\\\[ \\max \\{ \\psi (z) : z \\in \\overline{\\Omega }\\} = \\max \\{ \\psi (z) : z \\in \\partial \\Omega \\} . \\\]”
 
@@ -1244,11 +1244,11 @@
 
 *True by definition.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 31C15. arXiv math.CV. Level 4: research.
 
-**Definition.** On a compact Kähler manifold, the metric has smooth local potentials h whose complex second derivatives give the metric. Call u admissible if u+h is upper semicontinuous and satisfies the circle mean inequality on complex lines in each coordinate chart. For u+h, each value bounds nearby upper limits and cannot exceed its average around any small circle in a complex line. A polar set lies where an admissible function, finite somewhere on the connected manifold, equals minus infinity.
+**Definition.** On a compact Kähler manifold with Kähler form ω, call u admissible if u + h is plurisubharmonic for each smooth local potential h of ω. A polar set lies in the −∞ set of an admissible function that is not identically −∞.
 
 **Problem.** Take the supremum of admissible functions nonpositive on E, then replace each value by the limit of the suprema on shrinking neighborhoods. Adding a polar set to E leaves this corrected supremum unchanged.
 
-**How the definition helps.** Our own proof uses the defining polar function to enforce every added constraint at once. Subtract a constant so this function is everywhere nonpositive. Mix any competitor with a small positive proportion of this function. The mixture stays admissible and equals minus infinity on the polar set. As the proportion shrinks, the mixtures recover the competitor wherever the polar function is finite. The work lies in recovering admissible functions from nearby values outside their exceptional sets of measure zero. Taking the corrected supremum, instead of the raw supremum, permits this recovery.
+**How the definition helps.** Our own proof uses the defining polar function to enforce every added constraint at once. Shift it to be nonpositive and mix any competitor with a small positive proportion of it. The mixture stays admissible and equals −∞ on the polar set. As the proportion shrinks, the mixtures recover the competitor outside a set of measure zero, and the corrected supremum ignores such sets.
 
 **Paper or page:** [Polar sets for m-subharmonic functions on compact Hermitian manifolds](https://arxiv.org/abs/2511.01159). It says: “Let E ⊂ X and P be a m-polar set. Then, V₍E ∪ P₎⋆ = V₍E₎⋆.”
 
@@ -1296,9 +1296,9 @@
 
 **Definition.** At a smooth boundary point, test each nonconstant holomorphic curve through the point. Divide the vanishing order of a local boundary equation along the curve by the least vanishing order of its coordinate differences. D’Angelo type is the supremum of these ratios. Regular type considers only curves with nonzero derivative.
 
-**Problem.** Consider a smooth bounded domain with pseudoconvex boundary, meaning its complex curvature is nonnegative from the domain side along complex tangent directions. For forms with one conjugate differential, the local ∂̄-Neumann boundary estimate gains a positive fraction of a derivative exactly at points of finite D’Angelo type.
+**Problem.** Let Ω be a smooth bounded pseudoconvex domain. The ∂̄-Neumann problem for forms with one conjugate differential satisfies a local estimate that gains a positive fraction of a derivative. This holds exactly at boundary points of finite D’Angelo type.
 
-**How the definition helps.** Testing curves with zero derivative detects contact that regular curves miss (our own). The boundary Re w + \|x² − y³\|² = 0 contains the curve (t³,t²,0) (our own). A regular curve with nonzero w derivative has contact one (our own). Otherwise x or y has order one, so the two powers cannot cancel their leading terms and contact is at most six (our own). In complex dimension at least three, Kamimoto gives an infinite-type example with finite regular type and no single infinitely tangent holomorphic curve. Catlin proves the connection with the boundary estimate (our own).
+**How the definition helps.** Testing curves with zero derivative detects contact that regular curves miss (our own). The boundary Re w + \|x² − y³\|² = 0 contains the singular curve (t³, t², 0), while every regular curve has contact at most six there (our own). In complex dimension at least three, Kamimoto gives an infinite-type example with finite regular type and no single infinitely tangent holomorphic curve. Catlin proves the connection with the boundary estimate (our own).
 
 **Paper or page:** [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044v1). It says: “Let n≥2. There exists a smooth pseudoconvex real hypersurface M in ℂⁿ⁺¹ with Δ₁(M,p)=∞ and Δ₁ʳᵉᵍ(M,p)&lt;∞”
 

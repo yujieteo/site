@@ -24,7 +24,7 @@
 
 **Problem.** Von Neumann's minimax theorem (1928): max over x of min over y of xᵀAy equals min over y of max over x. This common number is the value of the game. With pure strategies only, the two sides can differ.
 
-**How the definition helps.** Mixed strategies make the strategy sets compact convex simplices and the payoff bilinear, and those are exactly the conditions a minimax theorem needs. Our own example: in matching pennies, with payoffs ±1, the pure max-min is −1 and the pure min-max is +1. With fifty-fifty mixing both equal 0. The page states the theorem in general, for compact convex sets and continuous concave-convex functions. The theorem is equivalent to linear programming duality (our own). What stays hard is infinite games, where the theorem can fail without compactness or continuity (our own).
+**How the definition helps.** Mixed strategies make the strategy sets compact convex simplices and the payoff bilinear, which is what a minimax theorem needs. In our own example, matching pennies with payoffs ±1, the pure max-min is −1 and the pure min-max is +1. With fifty-fifty mixing both equal 0. The theorem is equivalent to linear programming duality (our own).
 
 **Wikipedia:** [Minimax theorem](https://en.wikipedia.org/wiki/Minimax_theorem). It says: “In the context of two-player zero-sum games, the sets X and Y correspond to the strategy sets of the first and second player, respectively, which consist of lotteries over their actions (so-called mixed strategies)”
 
@@ -42,7 +42,7 @@
 
 **Problem.** Every finite game in normal form (a game given by a table of payoffs) has at least one Nash equilibrium.
 
-**How the definition helps.** Mixed strategies make the set of strategies compact and convex, so a fixed-point theorem applies. With pure strategies only, some finite games have no equilibrium. The article shows a 2×2 game in which, in each of the 4 cells, some player gains by a change of strategy. With mixed strategies, each player's set of strategies is a simplex, which is compact and convex. Expected payoffs are continuous, so the Kakutani or Brouwer fixed-point theorem applies. Von Neumann and Morgenstern had used mixed strategies only for zero-sum games; Nash defined the equilibrium for every finite game. What stays hard: the fixed-point proof does not say how to find an equilibrium.
+**How the definition helps.** Mixed strategies make each player's set of strategies a simplex, which is compact and convex, so a fixed-point theorem applies. Expected payoffs are continuous, so the Kakutani or Brouwer fixed-point theorem gives an equilibrium. With pure strategies only, the article shows a 2×2 game in which some player gains by changing strategy in each of the 4 cells. What stays hard is that the fixed-point proof does not say how to find an equilibrium.
 
 **Wikipedia:** [Nash equilibrium](https://en.wikipedia.org/wiki/Nash_equilibrium). It says: “The key to Nash's ability to prove existence far more generally than von Neumann lay in his definition of equilibrium.”
 
@@ -56,11 +56,11 @@
 
 *Rules out counterexamples.* MSC 91A11 (Equilibrium refinements), 91A18. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** A subgame is the part of a game tree that starts at one decision point and contains everything after it. A strategy profile is a subgame perfect equilibrium if it is a Nash equilibrium in every subgame. Reinhard Selten introduced the idea in 1965.
+**Definition.** A subgame is the part of a game tree that starts at one decision point and contains everything after it. A strategy profile is a subgame perfect equilibrium if it is a Nash equilibrium in every subgame.
 
 **Problem.** Every finite game with perfect information has a subgame perfect equilibrium, and backward induction computes it. Plain Nash equilibrium does not give this result, because some Nash equilibria rest on threats that a player would never carry out.
 
-**How the definition helps.** Subgame perfection tests a plan in every subgame, so a threat that a player would not carry out fails the test. Nash equilibrium tests a plan only along the path that is played, so such a threat costs nothing. Our own example: an incumbent firm threatens a price war if a rival enters. The profile 'rival stays out, incumbent fights after entry' is a Nash equilibrium, but fighting is worse for the incumbent once entry has happened. Subgame perfection excludes it, and backward induction then fixes the last mover's best choice first and works backwards. The page notes that backward induction does not apply to infinite horizons or imperfect information. For infinite horizons it names the one-shot deviation principle instead.
+**How the definition helps.** Subgame perfection tests a plan in every subgame, so a threat that a player would not carry out fails the test. Nash equilibrium tests a plan only along the path that is played, so such a threat costs nothing. In our own example, 'rival stays out, incumbent fights after entry' is a Nash equilibrium, but fighting is worse for the incumbent once entry happens. Backward induction fixes the last mover's best choice first and so excludes such threats.
 
 **Wikipedia:** [Subgame perfect equilibrium](https://en.wikipedia.org/wiki/Subgame_perfect_equilibrium). It says: “This ensures that strategies are credible and rational throughout the entire game, eliminating non-credible threats.”
 
@@ -79,7 +79,7 @@
 
 **Problem.** A nonempty finite election always has exactly one least nonempty dominating set, even when no candidate beats all others.
 
-**How the definition helps.** Allowing a set of winners makes the full candidate set a possible answer even in a cycle. Our own proof shows that any two dominating sets are nested. Otherwise, take a candidate belonging only to each set. Each would have to beat the other. A finite nested family of nonempty sets has a least member. In our own example, A beats B, B beats C, and C beats A. Only the full set dominates.
+**How the definition helps.** Allowing a set of winners makes the full candidate set a possible answer even in a cycle. Our own proof shows that any two dominating sets are nested: otherwise a member of each set outside the other would have to beat the other. A finite nested family of nonempty sets has a least member. In our own example, A beats B, B beats C and C beats A, so only the full set dominates.
 
 **Wikipedia:** [Smith set](https://en.wikipedia.org/wiki/Smith_set). It says: “It follows that the Smith set is the smallest non-empty dominating set, and that it is well defined.”
 
@@ -97,7 +97,7 @@
 
 **Problem.** Gibbard–Satterthwaite theorem: every voting rule with at least three possible outcomes is dictatorial or manipulable. A rule is dictatorial if it always picks the top choice of one fixed voter.
 
-**How the definition helps.** With only two possible outcomes, majority vote between them, with a fixed rule for ties, is neither dictatorial nor manipulable (our own). A false ranking can only help the candidate the voter likes less. So the theorem must exclude rules with two outcomes. The page stresses that the condition is on possible outcomes, not on the number of candidates. Candidates who can never win do not matter, so the theorem applies whenever at least three can win. Some books assume instead at least three candidates and that every candidate can win; that version is less general. What stays hard is the proof, which goes through Arrow's theorem or a direct pivotal-voter argument.
+**How the definition helps.** With only two possible outcomes, majority vote between them, with a fixed rule for ties, is neither dictatorial nor manipulable (our own). A false ranking can only help the candidate the voter likes less. So the theorem must exclude rules with two outcomes. The condition is on possible outcomes, not on candidates, since candidates who can never win do not matter.
 
 **Wikipedia:** [Gibbard–Satterthwaite theorem](https://en.wikipedia.org/wiki/Gibbard%E2%80%93Satterthwaite_theorem). It says: “It is only assumed that at least three of them can win, i.e. are possible outcomes of the voting rule.”
 
@@ -114,9 +114,9 @@
 
 **Definition.** A group of voters has single-peaked preferences if the alternatives can be put in one order, like points on a line, with this property. Each voter has an ideal point. Between two alternatives on the same side of that point, the voter prefers the closer one.
 
-**Problem.** Majority rule can produce cycles, where A beats B, B beats C and C beats A (Condorcet's paradox). Arrow's theorem says that no ranked voting rule meets all of his conditions on the unrestricted domain. On that domain, every profile (one ranking for each voter) is allowed.
+**Problem.** If all voters have single-peaked preferences on one line, majority preferences have no cycles. The ideal point of the median voter is then the Condorcet winner. With an odd number of voters, majority rule meets all of Arrow's conditions on this domain (Black).
 
-**How the definition helps.** Arrow's theorem needs every profile to be allowed, and single-peaked preferences remove the profiles that cause cycles. The standard bad profile is the Condorcet cycle, with voters ranking A-B-C, B-C-A and C-A-B. It is not single-peaked on any line, because each alternative is ranked last by some voter. When preferences are single-peaked, majority preferences have no cycles. The ideal point of the median voter is then the Condorcet winner, the alternative that beats every other alternative in a majority vote. With an odd number of voters, majority rule meets all of Arrow's conditions (Black). What stays hard: in two or more dimensions a Condorcet winner usually does not exist and cycles come back (the McKelvey–Schofield chaos theorem).
+**How the definition helps.** Arrow's theorem needs every profile to be allowed, and single-peaked preferences remove the profiles that cause cycles. The standard bad profile is the Condorcet cycle, with voters ranking A-B-C, B-C-A and C-A-B. It is not single-peaked on any line, because each alternative is ranked last by some voter. In two or more dimensions a Condorcet winner usually does not exist, and cycles come back.
 
 **Wikipedia:** [Single peaked preferences](https://en.wikipedia.org/wiki/Single_peaked_preferences), [Arrow's impossibility theorem](https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem), [Median voter theorem](https://en.wikipedia.org/wiki/Median_voter_theorem). It says: “If the domain is restricted to profiles where every individual has a single-peaked preference with respect to the linear ordering, then social preferences are acyclic.”
 
@@ -135,7 +135,7 @@
 
 **Problem.** Arrow's theorem: with at least three alternatives, every social welfare function with unanimity and independence of irrelevant alternatives is a dictatorship. With two alternatives this is false, since majority rule satisfies every condition. May's theorem shows that for two alternatives, majority rule is the only rule that is anonymous, neutral and positively responsive.
 
-**How the definition helps.** With two alternatives there is no third alternative to be irrelevant, so independence says nothing and majority rule passes every test. The condition of three alternatives in Arrow's theorem excludes exactly this case. A Condorcet cycle needs three alternatives: majorities can prefer A to B, B to C and C to A. Arrow's proof uses such patterns (our own). May's theorem is the matching positive result for two alternatives, with anonymity, a condition stronger than non-dictatorship. What stays hard is the case of three or more, where only restrictions on the preferences, such as single-peakedness, restore a possibility result.
+**How the definition helps.** With two alternatives there is no third alternative to be irrelevant, so independence says nothing and majority rule passes every test. The condition of three alternatives in Arrow's theorem excludes exactly this case. A Condorcet cycle, where majorities prefer A to B, B to C and C to A, needs three alternatives (our own). May's theorem is the matching positive result for two alternatives.
 
 **Wikipedia:** [May's theorem](https://en.wikipedia.org/wiki/May%27s_theorem), [Arrow's impossibility theorem](https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem). It says: “Arrow's theorem does not apply to the case of two candidates (when there are trivially no "independent alternatives"), so this possibility result can be seen as the mirror analogue of that theorem.”
 
@@ -152,9 +152,9 @@
 
 **Definition.** A lottery is a probability distribution over outcomes. The continuity axiom says the following. If lottery L is weakly worse than M, and M is weakly worse than N, then some probability p makes M exactly as good as a mixture of L and N. The mixture gives weight p to L and weight 1 − p to N.
 
-**Problem.** The von Neumann–Morgenstern theorem: preferences over lotteries that satisfy the axioms can be represented by the expected value of a real-valued utility function. That is, one lottery is at least as good as another exactly when its expected utility is at least as large.
+**Problem.** The von Neumann–Morgenstern theorem: if preferences over lotteries are complete, transitive, continuous and independent, some real-valued utility function represents them by expected value. That is, one lottery is at least as good as another exactly when its expected utility is at least as large.
 
-**How the definition helps.** The continuity axiom removes lexicographic preferences, so that the theorem can give a real number. Lexicographic preferences rank by a first criterion and use a second criterion only to break ties. They can be complete and transitive, but no real-valued utility function represents them at all. The reason is that each value of the first good would need its own interval of utility values, and there are uncountably many such values. Over lotteries, lexicographic preferences break continuity. Take a bad outcome L, a middle outcome M that ties L on the first criterion and beats it on the second, and a good outcome N that beats both on the first criterion. Every mixture that gives N a positive weight is better than M, and the mixture with weight 0 on N is worse, so no mixture balances M (our own example).
+**How the definition helps.** The continuity axiom removes lexicographic preferences, so that the theorem can give a real number. Lexicographic preferences rank by a first criterion and use a second criterion only to break ties. Take M that ties L on the first criterion and beats it on the second, and N that beats both on the first (our own example). Every mixture giving N positive weight beats M, and the mixture with weight 0 on N is worse, so no mixture balances M.
 
 **Wikipedia:** [Von Neumann–Morgenstern utility theorem](https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem), [Lexicographic preferences](https://en.wikipedia.org/wiki/Lexicographic_preferences). It says: “These axioms, apart from continuity, are often justified using the Dutch book theorems (whereas continuity is used to set aside lexicographic or infinitesimal utilities).”
 
@@ -204,7 +204,7 @@
 
 **Problem.** Two equally sized sides with strict, complete rankings of the opposite side always admit a stable matching.
 
-**How the definition helps.** Two sides let one group propose while the other holds its best offers. When proposers try partners in order, a receiver who rejects one eventually gets a preferred partner. This proves stability when proposals end. In the roommates example, A ranks B then C, B ranks C then A, and C ranks A then B (our own). All three rank D last, and D may rank the others in any strict order (our own). Whoever pairs with D can find a mutually preferred partner among the other two (our own).
+**How the definition helps.** Two sides let one group propose while the other holds its best offers. When proposals end, any receiver who rejected a proposer already holds someone preferred, so no pair blocks. In our own roommates example, A ranks B then C, B ranks C then A, C ranks A then B, and all three rank D last. Whoever pairs with D can find a mutually preferred partner among the other two.
 
 **Wikipedia:** [Stable roommates problem](https://en.wikipedia.org/wiki/Stable_roommates_problem), [Gale–Shapley algorithm](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm). It says: “Unlike the stable marriage problem, a stable matching may fail to exist for certain sets of participants and their preferences.”
 
@@ -222,7 +222,7 @@
 
 **Problem.** Suppose successive wealth multipliers are independent, identically distributed, positive, and have integrable logarithms. Log wealth gained per round converges with probability one to the expected one-round log return.
 
-**How the definition helps.** The logarithm turns compounded wealth into a sum of one-round log returns. In our own proof the strong law of large numbers gives the limit of their average. Comparing expected wealth instead gives a different decision. In our own even-odds example, a player wins with probability 60%. Betting everything maximizes expected one-round wealth but loses everything at the first defeat.
+**How the definition helps.** The logarithm turns compounded wealth into a sum of one-round log returns. In our own proof the strong law of large numbers gives the limit of their average. Comparing expected wealth instead gives a different decision. In our own even-odds example with a 60% chance of winning, betting everything maximizes expected wealth but loses everything at the first defeat.
 
 **Wikipedia:** [Kelly criterion](https://en.wikipedia.org/wiki/Kelly_criterion). It says: “maximizing the long-term expected value of the logarithm of wealth”
 
@@ -348,9 +348,9 @@
 
 **Definition.** A correlated equilibrium is a probability distribution over action profiles (choices of one action for each player). A mediator draws a profile and tells each player only their own action. The distribution is an equilibrium if no player then gains by deviating from the recommended action. These conditions are linear inequalities in the probabilities.
 
-**Problem.** Find an equilibrium of a game efficiently.
+**Problem.** In a finite game, the correlated equilibria form a nonempty convex polytope. So a linear program, of size polynomial in the payoff table, finds a correlated equilibrium efficiently.
 
-**How the definition helps.** The equilibrium conditions are linear in the unknown distribution, so a linear program finds a correlated equilibrium. In our own words, the set of correlated equilibria is a convex polytope (a bounded region cut out by finitely many linear inequalities). A Nash equilibrium instead needs a fixed point of a nonlinear map. Every Nash equilibrium is a correlated equilibrium, so the set is never empty (our own remark). What stays hard is games given in a compact form with many players. For them the linear program is exponentially large, and Papadimitriou and Roughgarden treat that case separately.
+**How the definition helps.** The equilibrium conditions are linear in the unknown distribution, so a linear program finds a correlated equilibrium. Every Nash equilibrium is a correlated equilibrium, so the set is never empty (our own remark). A Nash equilibrium instead needs a fixed point of a nonlinear map. For games given compactly with many players, the linear program is exponentially large.
 
 **Wikipedia:** [Correlated equilibrium](https://en.wikipedia.org/wiki/Correlated_equilibrium). It says: “computing a correlated equilibrium only requires solving a linear program whereas solving a Nash equilibrium requires finding its fixed point completely.”
 
@@ -365,7 +365,7 @@
 
 *Rules out counterexamples.* MSC 91A11 (Equilibrium refinements), 91A10. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** In a perturbed game each player must play every strategy with some small positive probability, called a tremble. An equilibrium is trembling-hand perfect if it is a limit of equilibria of perturbed games as the trembles go to zero. Selten introduced it in 1975.
+**Definition.** In a perturbed game each player must play every strategy with some small positive probability, called a tremble. An equilibrium is trembling-hand perfect if it is a limit of equilibria of perturbed games as the trembles go to zero.
 
 **Problem.** In 2×2 games, the perfect equilibria are exactly the Nash equilibria in which both players use undominated strategies. A strategy is weakly dominated if another strategy is never worse and sometimes better. Every finite game has at least one perfect equilibrium.
 
@@ -388,7 +388,7 @@
 
 **Problem.** The Shapley values sum to the worth of the group of all players. This property is called efficiency.
 
-**How the definition helps.** The order formula makes efficiency a telescoping sum, since the group’s worth after each arrival is its worth before the next. Only the final worth and the empty group’s zero worth remain. Our own comparison is that the weighted formula hides this cancellation in its coefficients. To show the formulas agree, count the orders in which exactly a given group precedes a particular player. The separate uniqueness theorem shows that the Shapley value is the only rule that satisfies its four axioms.
+**How the definition helps.** The order formula makes efficiency a telescoping sum, since the group's worth after each arrival is its worth before the next. Only the final worth and the empty group's zero worth remain. The weighted formula hides this cancellation in its coefficients (our own comparison). To show the formulas agree, count the orders in which exactly a given group precedes a particular player.
 
 **Wikipedia:** [Shapley value](https://en.wikipedia.org/wiki/Shapley_value). It says: “The sum of the Shapley values of all agents equals the value of the grand coalition, so that all the gain is distributed among the agents:”
 
@@ -406,7 +406,7 @@
 
 **Problem.** Bondareva–Shapley theorem: the core of a game is nonempty exactly when the game is balanced. It follows that market games and convex games have nonempty cores.
 
-**How the definition helps.** Balancedness is the dual linear program of 'find the cheapest payment that satisfies every coalition', so the theorem is linear programming duality read off. The primal problem minimizes the total payment Σ xᵢ, subject to each coalition S getting at least v(S). The core is nonempty when this minimum is at most v(N), and the dual maximizes Σ α(S) v(S) over balanced weights (our own explanation). Our own example of an empty core: with n odd, any coalition of at least (n+1)/2 players can split one unit. Suitable equal weights on all coalitions of size (n+1)/2 are balanced and give a total of 2n/(n+1) &gt; 1. So this game is not balanced. What stays hard is checking balancedness in practice, since it needs one inequality for each minimal balanced family, and there are very many.
+**How the definition helps.** Balancedness is the dual linear program of finding the cheapest payment that satisfies every coalition, so the theorem is linear programming duality. The primal minimizes Σ xᵢ subject to each coalition S getting at least v(S), and the core is nonempty when this minimum is at most v(N) (our own explanation). Our own example of an empty core: for odd n, any coalition of at least (n+1)/2 players can split one unit. Equal weights on all coalitions of size (n+1)/2 are balanced and give a total of 2n/(n+1) &gt; 1.
 
 **Wikipedia:** [Bondareva–Shapley theorem](https://en.wikipedia.org/wiki/Bondareva%E2%80%93Shapley_theorem), [Core (game theory)](https://en.wikipedia.org/wiki/Core_%28game_theory%29). It says: “Specifically, the game's core is non-empty if and only if the game is balanced.”
 
@@ -424,7 +424,7 @@
 
 **Problem.** The Shapley value distributes the full worth, adds across games, treats interchangeable players equally, and pays nothing to players who never add worth.
 
-**How the definition helps.** Equal shares make full distribution immediate, and the dividend recursion respects addition and relabeling. Our own check of the last axiom uses induction. If a player adds nothing, compare each group containing that player with the same group without them. Their worths agree, and all smaller dividends involving that player vanish, so the group’s dividend is zero. Our own proof of the formula comparison uses the fact that each dividend goes to the last member to join in the arrival-order formula. Each member is equally likely to join last.
+**How the definition helps.** Equal shares make full distribution immediate, and the dividend recursion respects addition and relabeling. For the last axiom, our own induction compares each group containing a null player with the same group without them. Their worths agree and all smaller dividends involving that player vanish, so the group's dividend is zero. To compare formulas, note that each dividend goes to the last member to arrive, and each member is equally likely to arrive last (our own).
 
 **Wikipedia:** [Shapley value](https://en.wikipedia.org/wiki/Shapley_value). It says: “In other words, the synergy of each coalition is divided equally between all members.”
 
@@ -438,9 +438,9 @@
 
 **Definition.** A strategy profile is a choice of one strategy for each player. A game is a potential game if there is one function on strategy profiles, the potential, with this property. Whenever one player changes strategy, the change in the potential equals the change in that player's payoff, or at least has the same sign.
 
-**Problem.** A pure-strategy Nash equilibrium should exist: a strategy profile where no single player gains by changing strategy. Improvement dynamics, where players one at a time make moves that raise their own payoff, should also converge.
+**Problem.** Every finite potential game has a pure-strategy Nash equilibrium. Improvement dynamics, in which one player at a time makes a move that raises their own payoff, always stop at one.
 
-**How the definition helps.** Each improving move strictly raises the potential, so an improvement path cannot cycle. In a finite game the path must stop. Where it stops no player can improve, so the stopping point is a pure Nash equilibrium, and a maximizer of the potential is an equilibrium by definition. Rosenthal (1973) proved that congestion games have pure equilibria by building such a function, and Monderer and Shapley (1996) made the potential the definition. In a congestion game, players choose resources, and the cost of a resource depends on how many players use it. What stays hard (our own summary): the path can be exponentially long. Fabrikant, Papadimitriou and Talwar proved that finding a pure equilibrium of a congestion game is PLS-complete (as hard as any local search problem whose single steps are easy to compute).
+**How the definition helps.** Each improving move strictly raises the potential, so an improvement path cannot cycle. In a finite game the path must stop, and where it stops no player can improve. Rosenthal (1973) proved that congestion games have pure equilibria by building such a function, and Monderer and Shapley (1996) made the potential the definition. What stays hard is that the path can be exponentially long (our own summary).
 
 **Wikipedia:** [Potential game](https://en.wikipedia.org/wiki/Potential_game). It says: “We have just proved that every finite generalized-ordinal-potential game has the FIP.”
 
@@ -460,7 +460,7 @@
 
 **Problem.** Kuhn's theorem (1953): in a finite game with perfect recall, every mixed strategy has a behavior strategy with the same outcome probabilities, and conversely. So one can work with the much smaller behavior strategies.
 
-**How the definition helps.** With perfect recall, each information set is reached through one known history of the player's own moves (our own explanation). So the conditional probabilities of a mixed strategy at each information set define a behavior strategy. Without perfect recall this fails, as in the absent-minded driver of Piccione and Rubinstein (our own example). The driver cannot tell two exits apart, so his only plans are 'always exit' and 'always continue'. No mixed strategy passes the first exit and takes the second. With the usual payoffs, a behavior strategy that continues with probability 2/3 often does this, and it earns more. Aumann extended Kuhn's theorem to infinite games in 1964.
+**How the definition helps.** With perfect recall, each information set is reached through one known history of the player's own moves (our own explanation). So the conditional probabilities of a mixed strategy at each information set define a behavior strategy. Without perfect recall this fails for the absent-minded driver of Piccione and Rubinstein, who cannot tell two exits apart (our own example). No mixed strategy passes the first exit and takes the second, but a behavior strategy that continues with probability 2/3 often does and earns more.
 
 **Wikipedia:** [Kuhn's theorem](https://en.wikipedia.org/wiki/Kuhn%27s_theorem). It says: “in any finite extensive-form game where players have perfect recall (the ability to remember all of their previous moves and information), every mixed strategy has an equivalent behavior strategy that yields the same outcome probabilities, and vice versa.”
 
@@ -479,7 +479,7 @@
 
 **Problem.** In a finite symmetric two-player game, an evolutionarily stable strategy is a symmetric Nash equilibrium. If a mutant ties against the resident, the resident must earn more against the mutant than the mutant does against itself.
 
-**How the definition helps.** Testing positive mutant shares distinguishes strategies that tie when everyone plays the resident strategy. Our own proof writes the resident’s payoff advantage as an affine function of the mutant share. At zero, the advantage must be nonnegative. If it vanishes there, the slope must be positive. In the article’s example, B ties A against residents playing A, yet B earns more than A against B.
+**How the definition helps.** Testing positive mutant shares distinguishes strategies that tie when everyone plays the resident strategy. Our own proof writes the resident's payoff advantage as an affine function of the mutant share. At zero the advantage must be nonnegative, and if it vanishes there, the slope must be positive. In the article's example, B ties A against residents playing A, yet B earns more than A against B.
 
 **Wikipedia:** [Evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy). It says: “only B is an ESS”
 
@@ -497,7 +497,7 @@
 
 **Problem.** Aumann's agreement theorem: if the agents' posterior probabilities of an event are common knowledge, then the posteriors are equal. Agents with a common prior cannot agree to disagree.
 
-**How the definition helps.** The partition definition turns the proof into one short computation with conditional probabilities (our own summary). The part of the meet that holds the true state is a union of each agent's own parts. Each agent has the same posterior on all her parts inside it, so that posterior equals the probability conditional on the whole part. That number does not depend on the agent, so the posteriors agree. The set definition replaces the endless hierarchy 'I know that you know that I know' by one partition. The page gives Aumann's example in which the agents know each other's posteriors, 1/2 and 1/3, but these are not common knowledge. What stays hard is how agents reach common knowledge, for example by announcing their posteriors back and forth (our own).
+**How the definition helps.** The partition definition turns the proof into one short computation with conditional probabilities (our own summary). The part of the meet that holds the true state is a union of each agent's own parts. Each agent has the same posterior on all her parts inside it, so that posterior equals the probability conditional on the whole part. That number does not depend on the agent, so the posteriors agree.
 
 **Wikipedia:** [Aumann's agreement theorem](https://en.wikipedia.org/wiki/Aumann%27s_agreement_theorem). It says: “The theorem was proved by Robert Aumann in his 1976 paper "Agreeing to Disagree", which also introduced the formal, set-theoretic definition of common knowledge.”
 
@@ -513,9 +513,9 @@
 
 **Definition.** In a Bayesian game each player has a type, which is private information such as the player's own payoffs. The types are drawn by a chance move, 'Nature', from a common prior distribution that all players know. A strategy maps each type to an action. In a Bayesian Nash equilibrium, each type maximizes its expected payoff, given its beliefs about the other players' types.
 
-**Problem.** Every finite Bayesian game has a Bayesian Nash equilibrium in mixed strategies. Without types, players would have to reason about beliefs about beliefs without end, and it is unclear what an equilibrium would be.
+**Problem.** Every finite Bayesian game has a Bayesian Nash equilibrium in mixed strategies.
 
-**How the definition helps.** With a common prior, the game becomes an ordinary game with imperfect information in which Nature moves first. So Nash's existence theorem applies, for example by treating each type as a separate player (our own). The page says that Bayesian games avoid the endless chain 'I expect that you expect that I expect'. They do this by putting probability weights on all outcomes at once. Harsanyi introduced the model in three papers in 1967 and 1968. What stays hard is the common prior itself, which is a strong assumption; without it one needs universal type spaces (our own).
+**How the definition helps.** With a common prior, the game becomes an ordinary game with imperfect information in which Nature moves first. So Nash's existence theorem applies, for example by treating each type as a separate player (our own). Without types, players would reason about beliefs about beliefs without end. What stays hard is the common prior itself, which is a strong assumption (our own).
 
 **Wikipedia:** [Bayesian game](https://en.wikipedia.org/wiki/Bayesian_game). It says: “both players are aware of this probability (common prior assumption, which can be converted into a complete-information game with imperfect information).”
 
@@ -533,7 +533,7 @@
 
 **Problem.** In every VCG mechanism, reporting one's true values is a dominant strategy, best whatever the others report. The Vickrey second-price auction is a special case.
 
-**How the definition helps.** With quasilinear utility, an agent's payoff under VCG equals the total welfare of society minus a term she cannot affect. The mechanism maximizes the reported total welfare, so a true report gives her the maximum. Without quasilinearity, money and value do not simply add, and this alignment can fail (our own). What stays hard is money: VCG payments need not balance (our own). In bilateral trade, the Myerson–Satterthwaite theorem shows that no mechanism is efficient, truthful, voluntary and budget-balanced at once (our own link).
+**How the definition helps.** With quasilinear utility, an agent's payoff under VCG equals the total welfare of society minus a term she cannot affect. The mechanism maximizes the reported total welfare, so a true report gives her the maximum. Without quasilinearity, money and value do not simply add, and this alignment can fail (our own). What stays hard is that VCG payments need not balance (our own).
 
 **Wikipedia:** [Vickrey–Clarke–Groves mechanism](https://en.wikipedia.org/wiki/Vickrey%E2%80%93Clarke%E2%80%93Groves_mechanism), [Quasilinear utility](https://en.wikipedia.org/wiki/Quasilinear_utility). It says: “The agent is paid the total value of the other agents; hence, together with its own value, the total welfare of the agent is exactly equal to the total welfare of society.”
 
@@ -549,11 +549,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B03 (Mechanism design theory), 91B14. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** A mechanism is a game that a designer sets up to pick an outcome from the players' actions. A direct mechanism is one in which each player's only action is to report a preference. A direct mechanism is incentive-compatible if telling the truth is an equilibrium.
+**Definition.** A mechanism is a game that a designer sets up to pick an outcome from the players' actions. A social choice function picks an outcome for each list of the players' preferences. A direct mechanism asks each player only to report a preference, and it is incentive-compatible if telling the truth is an equilibrium.
 
-**Problem.** The problem is to find which social choice functions some mechanism can implement. A social choice function picks an outcome for each list of the players' preferences.
+**Problem.** If some mechanism implements a social choice function in dominant strategies or in Bayesian Nash equilibrium, then a direct incentive-compatible mechanism implements it too.
 
-**How the definition helps.** The revelation principle replaces the huge space of all mechanisms with a small one. Suppose some mechanism implements a social choice function in dominant strategies, or in Bayesian Nash equilibrium. Then the principle says that a direct incentive-compatible mechanism also implements it. That direct mechanism takes the players' reports and plays their equilibrium strategies for them. So a designer can study only truthful direct mechanisms. An impossibility result for those is an impossibility result for all mechanisms. What remains hard (our own remark): the truthful mechanism may also have other, untruthful equilibria.
+**How the definition helps.** The revelation principle replaces the huge space of all mechanisms with the small space of truthful direct ones. The direct mechanism takes the players' reports and plays their equilibrium strategies for them. So an impossibility result for truthful direct mechanisms is one for all mechanisms. What remains hard is that the truthful mechanism may also have other, untruthful equilibria (our own remark).
 
 **Wikipedia:** [Revelation principle](https://en.wikipedia.org/wiki/Revelation_principle). It says: “By narrowing the area needed to be searched, the problem of finding a mechanism becomes much easier.”
 
@@ -588,9 +588,9 @@
 
 **Definition.** A bundle is a list of amounts of each good. A preference is locally nonsatiated if, for every bundle and every distance ε &gt; 0, there is a strictly preferred bundle within distance ε. In words, near every bundle there is a slightly better one.
 
-**Problem.** The first fundamental theorem of welfare economics says that every competitive equilibrium allocation is Pareto optimal. (In a competitive equilibrium, each consumer buys the best bundle they can afford at the given prices. Pareto optimal means that no feasible allocation makes someone better off and nobody worse off.)
+**Problem.** The first fundamental theorem of welfare economics: if preferences are locally nonsatiated, every competitive equilibrium allocation is Pareto optimal. Pareto optimal means that no feasible allocation makes someone better off and nobody worse off.
 
-**How the definition helps.** Local nonsatiation gives a simple price inequality for each consumer, and the theorem follows by adding these up. The inequality says that any bundle at least as good as the chosen one costs at least as much. Summing over consumers shows at once that no feasible allocation can make everyone weakly better off and someone strictly better off. So the proof takes a few lines and needs no convexity or differentiability. The condition rules out consumers with a satiation point (a bundle they like best of all), who may leave money unspent inside the budget set. The article says that Arrow and Debreu (1951) replaced the older tangency arguments with this style of proof, which also covers equilibria on the boundary.
+**How the definition helps.** Local nonsatiation gives a simple price inequality for each consumer, and the theorem follows by adding these up. The inequality says that any bundle at least as good as the chosen one costs at least as much. Summing over consumers shows that no feasible allocation can make everyone weakly better off and someone strictly better off. The condition rules out consumers with a satiation point, who may leave money unspent.
 
 **Wikipedia:** [Fundamental theorems of welfare economics](https://en.wikipedia.org/wiki/Fundamental_theorems_of_welfare_economics). It says: “If preferences are locally nonsatiated, and if (X\*, Y\*, p) is a price equilibrium with transfers, then the allocation (X\*, Y\*) is Pareto optimal.”
 
@@ -626,7 +626,7 @@
 
 **Problem.** Suppose bidders have independent private values on closed intervals and maximize expected value received minus payment. In each auction, truthful reporting maximizes this expectation when others report truthfully. If win probabilities agree at each value and expected payments agree at each bidder’s lowest value, expected payments agree throughout.
 
-**How the definition helps.** The win probability gives the slope of expected surplus as the bidder’s value varies (our own). Surplus means expected value received minus expected payment. Truthful reporting bounds the change in surplus between the two endpoint win probabilities times the change in value (our own). Integrating the win probability therefore recovers surplus up to its starting value (our own). Subtracting surplus from value times win probability then gives the expected payment (our own).
+**How the definition helps.** The win probability gives the slope of expected surplus, value received minus payment, as the bidder's value varies (our own). Truthful reporting bounds each change in surplus between the endpoint win probabilities times the change in value (our own). Integrating the win probability therefore recovers surplus up to its starting value (our own). Subtracting surplus from value times win probability then gives the expected payment (our own).
 
 **Wikipedia:** [Revenue equivalence](https://en.wikipedia.org/wiki/Revenue_equivalence). It says: “The expected payments of all types are the same in both mechanisms, and hence:”
 
@@ -644,7 +644,7 @@
 
 **Problem.** Suppose each bidder’s virtual valuation is nondecreasing in their value. Allocate the single item to a bidder whose virtual valuation is highest and positive, and break ties in a fixed order. With threshold payments, this rule maximizes expected revenue among truthful auctions that give bidders nonnegative expected utility at value zero.
 
-**How the definition helps.** Virtual valuations make the choice pointwise once Myerson’s identity rewrites expected payments as expected virtual surplus. The highest positive virtual valuation then gives the best feasible choice at each list of bids. With fixed tie-breaking, raising a bid cannot turn a win into a loss, so threshold payments make truthful bidding optimal. The real work is the revenue identity and the payment rule for truthful auctions. Without the identity, the seller faces an optimization over allocation and payment rules constrained by truthful bidding.
+**How the definition helps.** Virtual valuations make the choice pointwise once Myerson's identity rewrites expected payments as expected virtual surplus. The highest positive virtual valuation then gives the best choice at each list of bids. With fixed tie-breaking, raising a bid cannot turn a win into a loss, so threshold payments make truthful bidding optimal. Without the identity, the seller faces an optimization over allocation and payment rules together.
 
 **Wikipedia:** [Virtual valuation](https://en.wikipedia.org/wiki/Virtual_valuation). It says: “The expected profit of any truthful mechanism is equal to its expected virtual surplus.”
 
@@ -662,7 +662,7 @@
 
 **Problem.** Every competitive equilibrium with equal incomes is envy-free.
 
-**How the definition helps.** Equal budgets make every other buyer’s bundle affordable, so choosing a best bundle rules out envy. Our own example with unequal budgets uses one divisible good at price one. With three units for sale, two buyers with budgets one and two buy one and two units respectively. If both prefer more of the good, the first buyer envies the second. To get an equal-budget equilibrium, start with equal shares of divisible goods and use a competitive equilibrium existence theorem under its usual assumptions. The first welfare theorem supplies efficiency separately, when buyers can always find a better bundle arbitrarily close by.
+**How the definition helps.** Equal budgets make every other buyer's bundle affordable, so choosing a best bundle rules out envy. Our own example with unequal budgets has three units of one divisible good at price one. Two buyers with budgets one and two buy one and two units. If both prefer more of the good, the first buyer envies the second.
 
 **Wikipedia:** [Competitive equilibrium](https://en.wikipedia.org/wiki/Competitive_equilibrium), [Efficient envy-free division](https://en.wikipedia.org/wiki/Efficient_envy-free_division). It says: “Furthermore, by Varian's theorems, a CE allocation in which all agents have the same income is also envy-free.”
 
@@ -678,9 +678,9 @@
 
 **Definition.** Each person owns one house and ranks the houses. A group blocks an assignment if it can redistribute its original houses and help someone without hurting any member. The strict core consists of assignments that no group can block.
 
-**Problem.** With finitely many owners and strict rankings, exactly one assignment belongs to the strict core. Each round, owners point to the owners of their favorite remaining houses, trade along the resulting cycles, and leave if they traded.
+**Problem.** With finitely many owners and strict rankings, the strict core has exactly one assignment, the one found by top trading cycles. In each round, owners point to the owners of their favorite remaining houses, trade along the resulting cycles, and leave.
 
-**How the definition helps.** Any different assignment on a top-choice cycle lets its members block by trading with one another (our own). Remove that cycle and repeat (our own). To prove existence, start with the earliest round represented in a proposed blocking group (our own). Those members already got their best available houses, so the group must give them the same houses (our own). Repeating leaves no member better off (our own). With two owners indifferent between both houses, both assignments are in the strict core (our own).
+**How the definition helps.** Any different assignment on a top-choice cycle lets its members block by trading with one another, so the cycle is forced (our own). Remove that cycle and repeat (our own). For the core property, the members of a blocking group from the earliest round already got their best available houses, so the group cannot help them (our own). With two owners indifferent between both houses, both assignments are in the strict core (our own).
 
 **Wikipedia:** [Top trading cycle](https://en.wikipedia.org/wiki/Top_trading_cycle). It says: “Moreover, with strict preferences, there is a unique core-stable allocation, and it is the one found by TTC.”
 
@@ -699,7 +699,7 @@
 
 **Problem.** An allocation of finitely many goods with additive values is fractionally Pareto efficient exactly when it maximizes a strictly positive weighted sum of utilities.
 
-**How the definition helps.** Allowing fractions makes the attainable utility vectors a convex polytope, so linear programming gives every efficient point strictly positive supporting weights (our own). Conversely, improving someone without hurting anyone increases every strictly positive weighted sum (our own). Give Alice values 3 and 2 for two goods, and George values 4 and 1 (our own). Give Alice the first good and George the second (our own). No whole-item reassignment improves either without hurting the other (our own). Give Alice half the first and all the second instead (our own). Her value rises to 3.5 and George’s to 2 (our own).
+**How the definition helps.** Allowing fractions makes the attainable utility vectors a convex polytope, so every efficient point has strictly positive supporting weights (our own). Conversely, improving someone without hurting anyone raises every strictly positive weighted sum (our own). In our own example, Alice values two goods at 3 and 2, and George at 4 and 1, and Alice gets the first good and George the second. No whole-item swap helps, but giving Alice half the first good and all the second raises her value to 3.5 and George's to 2.
 
 **Wikipedia:** [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_efficiency). It says: “it is not Pareto dominated even by an allocation in which some items are split between agents.”
 
@@ -717,7 +717,7 @@
 
 **Problem.** The profit function is convex and positively homogeneous in prices. If profit-maximizing plans y(p) and y(q) exist, then (p − q)·(y(p) − y(q)) ≥ 0.
 
-**How the definition helps.** The support-function formula makes profit convex because it takes the supremum of linear functions of price. Scaling prices by a positive constant scales that supremum by the same amount. Our own comparison is with defining profit through a chosen supply plan, which requires a maximizer and hides both facts. Our own check of the supply inequality compares the two chosen plans at each price and adds the inequalities. The separate work in Hotelling’s lemma is to recover supply from derivatives of profit where those derivatives exist.
+**How the definition helps.** The support-function formula makes profit convex because it takes the supremum of linear functions of price. Scaling prices by a positive constant scales that supremum by the same amount. Defining profit through a chosen supply plan would need a maximizer and hide both facts (our own comparison). For the supply inequality, our own check compares the two chosen plans at each price and adds the inequalities.
 
 **Wikipedia:** [Support function](https://en.wikipedia.org/wiki/Support_function), [Hotelling's lemma](https://en.wikipedia.org/wiki/Hotelling%27s_lemma). It says: “It follows directly from its definition that the support function is positive homogeneous”
 
@@ -733,7 +733,7 @@
 
 **Problem.** Scaling prices and income together by a positive number leaves indirect utility unchanged. Indirect utility is quasiconvex in prices and income, so its value at a mixture is at most the larger endpoint value.
 
-**How the definition helps.** The budget-set definition makes scale invariance immediate because joint rescaling leaves every affordability inequality unchanged. Our own quasiconvexity proof uses the fact that a bundle affordable at a mixture must be affordable at one endpoint. Otherwise its cost exceeds income at both endpoints, and therefore at the mixture. The demand formula hides this argument and requires an optimizer to exist. Separate work goes into Roy’s identity, which under differentiability and a nonzero income derivative recovers demand from derivatives of indirect utility.
+**How the definition helps.** The budget-set definition makes scale invariance immediate because joint rescaling leaves every affordability inequality unchanged. Our own quasiconvexity proof uses the fact that a bundle affordable at a mixture is affordable at one endpoint. Otherwise its cost exceeds income at both endpoints, and therefore at the mixture. The demand formula hides this argument and requires an optimizer to exist.
 
 **Wikipedia:** [Indirect utility function](https://en.wikipedia.org/wiki/Indirect_utility_function). It says: “if prices and income are all multiplied by a given constant the same bundle of consumption represents a maximum, so optimal utility does not change”
 
@@ -783,7 +783,7 @@
 
 **Problem.** Suppose finitely many buyers have gross substitutes valuations for finitely many distinct goods, and adding goods never lowers value. Some nonnegative item prices let each buyer receive a best bundle, with each unassigned item priced at zero.
 
-**How the definition helps.** Gross substitutes allows price adjustment while retaining demand for goods whose prices stay fixed (our own). Three buyers each value bundles containing their own designated pair at one and all other bundles at zero (our own). With three distinct pairs from three goods, at most one buyer can receive a designated pair (our own). Only items in a received pair can have positive prices, since buyers can discard other items without losing value (our own). If nobody receives a pair, zero prices make every buyer demand one (our own). Otherwise each losing buyer’s pair must cost at least one, forcing both items in the winning pair to cost at least one each (our own). Its buyer would prefer the empty bundle, contradicting equilibrium (our own).
+**How the definition helps.** Gross substitutes allows prices to rise while demand stays for goods whose prices did not change (our own). In our own counterexample, three buyers each value only their own pair from three goods, at one. At most one buyer can receive a pair, and each losing buyer's pair must cost at least one. This forces both items in the winning pair to cost at least one each, so its buyer prefers the empty bundle.
 
 **Wikipedia:** [Gross substitutes (indivisible items)](https://en.wikipedia.org/wiki/Gross_substitutes_%28indivisible_items%29). It says: “The GS property means that when the price of some items increases, the demand for other items does not decrease.”
 
@@ -799,9 +799,9 @@
 
 **Definition.** A bundle is a list of amounts of each good. A price quasi-equilibrium with transfers asks only that any bundle a consumer strictly prefers costs at least the consumer's wealth. A price equilibrium asks that such a bundle cost strictly more than the wealth.
 
-**Problem.** The second fundamental theorem of welfare economics. Assume convex production sets and preferences that are convex and locally nonsatiated (near any bundle there is a bundle the consumer prefers). Then a market equilibrium after lump-sum transfers can reach every Pareto-efficient allocation (an allocation where no consumer can gain unless another consumer loses).
+**Problem.** The second fundamental theorem of welfare economics, quasi-equilibrium form: assume convex production sets and convex, locally nonsatiated preferences. Then every Pareto-efficient allocation can be supported as a price quasi-equilibrium with transfers.
 
-**How the definition helps.** The definition separates the geometric part of the theorem from the boundary cases. The proof uses a hyperplane to separate two convex sets of total bundles. The first set holds the sums of bundles that each consumer strictly prefers. The second set holds the bundles that production and endowments make feasible. The hyperplane gives the prices, and with only convexity and local nonsatiation these prices support the allocation in the weaker quasi-equilibrium sense. So the theorem stated for quasi-equilibria needs no further conditions. A genuine price equilibrium needs extra conditions, such as convex consumption sets, continuous preferences and a cheaper bundle for each consumer, for example strictly positive wealth.
+**How the definition helps.** The definition separates the geometric part of the theorem from the boundary cases. A hyperplane separates the sums of strictly preferred bundles from the feasible total bundles, and it gives the prices. With only convexity and local nonsatiation, these prices support the allocation in the weaker quasi-equilibrium sense. A genuine price equilibrium needs extra conditions, such as a cheaper bundle for each consumer.
 
 **Wikipedia:** [Fundamental theorems of welfare economics](https://en.wikipedia.org/wiki/Fundamental_theorems_of_welfare_economics). It says: “any desired Pareto-efficient allocation can be supported as a price quasi-equilibrium with transfers.”
 
@@ -907,7 +907,7 @@
 
 **Problem.** Assume the capital requirement is finite for every position. A convex acceptance set gives a convex capital requirement.
 
-**How the definition helps.** Our own proof mixes the deposits in the same proportions as the positions. Convexity keeps the resulting position safe. Take deposits arbitrarily close to their infima to get the convexity inequality for capital. Starting from a capital formula would require checking that inequality for every pair of positions. Here the work lies in checking which mixtures the safety rule accepts.
+**How the definition helps.** Our own proof mixes the deposits in the same proportions as the positions, and convexity keeps the mixed position safe. Taking deposits arbitrarily close to their infima gives the convexity inequality for capital. Starting from a capital formula would require checking that inequality for every pair of positions. Here the work lies in checking which mixtures the safety rule accepts.
 
 **Paper or page:** [A note on the induction of comonotonic additive risk measures from acceptance sets](https://arxiv.org/abs/2307.04647v2). It says: “If A is convex, then ρₐ is convex.”
 
@@ -955,9 +955,9 @@
 
 **Definition.** At probability p between zero and one, the loss quantile is the smallest value with cumulative probability at least p. For a tail fraction t strictly between zero and one, define expected shortfall as the average quantile over levels between 1 − t and one.
 
-**Problem.** For an integrable loss, choose a real threshold and add to it the expected excess divided by t. Excess is the amount by which the loss exceeds the threshold, or zero if it falls below. Expected shortfall is the minimum of this expression over all thresholds.
+**Problem.** For an integrable loss X and tail fraction t, expected shortfall equals the minimum over real thresholds c of c + E\[max(X − c, 0)\]/t.
 
-**How the definition helps.** Quantile averaging takes exactly the required tail mass, even when several outcomes share the cutoff loss. In our own proof, choose the cutoff quantile as threshold. Integrating the upper quantiles above that threshold gives the expected excess. The probability strictly above it is at most t. The probability at or above it is at least t, so neither direction improves the objective. In our own example, loss is zero with probability 0.95 and otherwise 100. The upper tenth averages 50, while conditioning on strictly positive loss gives 100.
+**How the definition helps.** Quantile averaging takes exactly the required tail mass, even when several outcomes share the cutoff loss. In our own proof, the cutoff quantile is a minimizing threshold, because at most t of the probability lies above it and at least t at or above it. In our own example, loss is zero with probability 0.95 and otherwise 100. The upper tenth averages 50, while conditioning on strictly positive loss gives 100.
 
 **Paper or page:** [Risk-Adaptive Approaches to Stochastic Optimization: A Survey](https://arxiv.org/abs/2212.00856v3). It says: “expectation of the α-tail distribution of ξ”
 
@@ -993,7 +993,7 @@
 
 **Problem.** For two integrable losses, expected shortfall of their sum is at most the sum of their expected shortfalls.
 
-**How the definition helps.** Our own proof uses the same weights for both losses, so their weighted averages add. Each average is at most its separate maximum. The representation theorem shows that this maximum equals the tail average. In our own example, two independent losses each equal one with probability 4% and zero otherwise. Each has a 95th percentile of zero, but their sum has a 95th percentile of one.
+**How the definition helps.** Our own proof uses the same weights for both losses, so their weighted averages add, and each average is at most its separate maximum. The representation theorem shows that this maximum equals the tail average. In our own example, two independent losses each equal one with probability 4% and zero otherwise. Each has a 95th percentile of zero, but their sum has a 95th percentile of one.
 
 **Wikipedia:** [Value at risk](https://en.wikipedia.org/wiki/Value_at_risk). It says: “VaR of a combined portfolio can be larger than the sum of the VaRs of its components.”
 
@@ -1013,7 +1013,7 @@
 
 **Problem.** Take M large enough. Then every max-min strategy of the enlarged game either gives optimal solutions of both programs or shows that one of them is infeasible.
 
-**How the definition helps.** The extra row lets the maximizing player punish weight on the program variables that comes without enough weight t. So optimal play cannot sit at t = 0 when both programs are feasible. Our own example: if A, b and c are all zero, Dantzig's game is all zeros. Then every strategy is optimal, including those with t = 0, which give no solution. Theorem 7 first bounds the size of some optimal solutions to choose M. The rest of its proof checks that each max-min strategy decodes correctly.
+**How the definition helps.** The extra row lets the maximizing player punish weight on the program variables that comes without enough weight t. So optimal play cannot sit at t = 0 when both programs are feasible. In our own example, if A, b and c are all zero, Dantzig's game is all zeros, and strategies with t = 0 are optimal but give no solution. Theorem 7 first bounds the size of some optimal solutions to choose M.
 
 **Paper or page:** [Zero-Sum Games and Linear Programming Duality](https://arxiv.org/abs/2205.11196v6). It says: “We also extend Dantzig's game so that any max-min strategy gives either an optimal LP solution or shows that none exists.”
 
@@ -1031,7 +1031,7 @@
 
 **Problem.** Take a binary game whose payoff functions have finite Vapnik–Chervonenkis dimension. Every subgame then has equal upper and lower values exactly when there is no infinite triangular subgame. This stays true even with mixed strategies of finite support.
 
-**How the definition helps.** The definition names the one pattern that breaks minimax, so the theorem can say it is the only obstruction. In the larger-number game, each player can beat any fixed mixed strategy of the other with probability close to one. So its upper value is 1 and its lower value is 0 (Proposition 10 of the paper). The hard direction is the converse, which must handle infinitely many actions. That direction uses the finite dimension.
+**How the definition helps.** The definition names the one pattern that breaks minimax, so the theorem can say it is the only obstruction. In the larger-number game, each player can beat any fixed mixed strategy of the other with probability close to one. So its upper value is 1 and its lower value is 0 (Proposition 10 of the paper). The hard direction is the converse, which uses the finite dimension to handle infinitely many actions.
 
 **Paper or page:** [Online Learning with Simple Predictors and a Combinatorial Characterization of Minimax in 0/1 Games](https://arxiv.org/abs/2102.01646v1). It says: “for all subgames (𝒜′, ℬ′, val) if and only if it has no infinite triangular subgame.”
 
@@ -1085,7 +1085,7 @@
 
 **Problem.** A random partition gives the potential as its expected total group worth exactly under one condition. Each nonempty coalition T must be a group with probability (t − 1)!(n − t)!/n!. Here t and n count the players in T and in the game.
 
-**How the definition helps.** The expected total worth is linear in the worths, so the potential reduces to the chance that each coalition is a group. This form also makes sense for games with externalities, where a coalition’s worth depends on how the other players group. The paper shows that exactly one such extension also generalizes the old potential and gives a value with the null player property. A null player adds nothing to any coalition. Our own example is the cycles of a uniform random permutation. A set of t players is one cycle in exactly (t − 1)!(n − t)! of the n! permutations.
+**How the definition helps.** The expected total worth is linear in the worths, so the potential reduces to the chance that each coalition is a group. This form also makes sense for games with externalities, where a coalition's worth depends on how the other players group. Our own example is the cycles of a uniform random permutation. A set of t players is one cycle in exactly (t − 1)!(n − t)! of the n! permutations.
 
 **Paper or page:** [Random partitions, potential, value, and externalities](https://arxiv.org/abs/2402.00394v2). It says: “the expected accumulated worth of a random partition of the players.”
 
@@ -1103,7 +1103,7 @@
 
 **Problem.** Take a stochastic game and discount factors γ and λ in \[0, 1). The game with both discounts has 1/(1 − γλ) times the value of the ordinary λ-discounted game.
 
-**How the definition helps.** Both discounts are geometric, so swapping the order of the two sums is a one-line calculation. Our own calculation: the reward rₖ appears at each later step k + m with total weight λᵏ⁺ᵐ γᵐ. Summing over m ≥ 0 gives λᵏ/(1 − γλ). So each play's payoff is 1/(1 − γλ) times its ordinary discounted payoff, for every pair of strategies. The values therefore scale by the same factor. Computing the ordinary discounted value still requires solving that game.
+**How the definition helps.** Both discounts are geometric, so swapping the order of the two sums is a one-line calculation. In our own calculation, the reward rₖ appears at each later step k + m with total weight λᵏ⁺ᵐ γᵐ. Summing over m ≥ 0 gives λᵏ/(1 − γλ). So every play's payoff, and hence the value, scales by 1/(1 − γλ).
 
 **Paper or page:** [Discounting the Past](https://arxiv.org/abs/2102.06985v2). It says: “the values of these games may be computed via reductions to standard discounted and mean-payoff games.”
 
@@ -1121,7 +1121,7 @@
 
 **Problem.** If each player has swap regret at most R(T) in T rounds, the recorded actions, sampled uniformly, form an R(T)/T-approximate correlated equilibrium.
 
-**How the definition helps.** The rule-based definition turns the equilibrium error into swap regret divided by the number of rounds. Here the error is the greatest expected gain from any one replacement rule. The usual exact test checks one recommended action and one possible replacement at a time. Our own comparison is that the rule-based test groups these changes and therefore directly matches the regret bound. The hard part is finding algorithms that keep swap regret small, which is the paper’s main task.
+**How the definition helps.** The rule-based definition turns the equilibrium error into swap regret divided by the number of rounds. Here the error is the greatest expected gain from any one replacement rule. The usual exact test checks one recommended action and one replacement at a time; the rule-based test groups these changes to match the regret bound (our own comparison). The hard part is finding algorithms that keep swap regret small.
 
 **Paper or page:** [Fast swap regret minimization and applications to approximate correlated equilibria](https://arxiv.org/abs/2310.19647v2). It says: “If an m-player normal-form game is played repeatedly for T days, and each player incurs no more than R(T) swap regret over the T days, then the empirical distribution of the joint actions by the players is an R(T)/T-correlated equilibrium.”
 
@@ -1137,7 +1137,7 @@
 
 **Definition.** A rationality notion says when a player's strategy is acceptable, given which strategies remain available. It is monotone if a strategy acceptable in a smaller restriction of the game stays acceptable in any larger one. Iterated elimination repeatedly deletes unacceptable strategies and takes intersections at limit stages.
 
-**Problem.** This holds in any strategic game, finite or infinite. Common knowledge of a monotone kind of rationality implies that players choose only strategies that survive the elimination for that notion. The elimination may need transfinitely many steps.
+**Problem.** In any strategic game, finite or infinite, common knowledge of a monotone rationality notion implies that players choose only strategies that survive the elimination for that notion. The elimination may need transfinitely many steps.
 
 **How the definition helps.** Monotonicity makes the elimination step an order-preserving map on the restrictions of the game, so Tarski's fixed-point theorem applies. Iterating from the whole game then reaches the largest fixed point, possibly after transfinitely many steps. Our own remark is that one argument thus covers every monotone notion and every game. The paper separately explains what follows for customary dominance notions that are not monotone.
 
@@ -1157,7 +1157,7 @@
 
 **Problem.** A complete type structure that is compact and has continuous belief maps represents all hierarchies of conditional beliefs; the paper calls this terminal. A complete Souslin structure satisfies a weaker finite version. Souslin is a mild regularity condition on the spaces.
 
-**How the definition helps.** Completeness is a condition on the type structure alone, so one can check it without writing down infinite belief hierarchies. The abstract stresses this point. Our own explanation is that onto belief maps supply a type for every belief needed at each finite level of a hierarchy. Passing from all finite levels to whole hierarchies is where compactness and continuity enter. The result extends Friedenberg's 2010 theorem to conditional beliefs.
+**How the definition helps.** Completeness is a condition on the type structure alone, so one can check it without writing down infinite belief hierarchies. Our own explanation is that onto belief maps supply a type for every belief needed at each finite level of a hierarchy. Passing from all finite levels to whole hierarchies is where compactness and continuity enter. The result extends Friedenberg's 2010 theorem to conditional beliefs.
 
 **Paper or page:** [Complete Conditional Type Structures (Extended Abstract)](https://arxiv.org/abs/2307.05630v1). It says: “We provide sufficient conditions under which a complete type structure represents all hierarchies of conditional beliefs.”
 
@@ -1175,7 +1175,7 @@
 
 **Problem.** In the paper's finite model, a disclosure rule is credible exactly when its distribution over states and actions is cyclically monotone for the sender's payoff.
 
-**How the definition helps.** Keeping message frequencies fixed turns the sender's possible deviations into couplings with fixed marginals, the objects of optimal transport. A coupling is a joint distribution with given marginal distributions. So credibility says the sender's current coupling of states and messages already maximizes her expected payoff. The paper's Lemma 2 is the classical fact that, on finite sets, a coupling is optimal exactly when its support is cyclically monotone. Our own remark is that the hard step is this classical lemma, which the new definition makes available.
+**How the definition helps.** Keeping message frequencies fixed turns the sender's deviations into couplings with fixed marginals, the objects of optimal transport. A coupling is a joint distribution with given marginal distributions. So credibility says that the current coupling of states and messages already maximizes the sender's expected payoff. The paper's Lemma 2 is the classical fact that, on finite sets, a coupling is optimal exactly when its support is cyclically monotone.
 
 **Paper or page:** [Credible Persuasion](https://arxiv.org/abs/2205.03495v1). It says: “We show that the credibility of a disclosure policy is equivalent to a cyclical monotonicity condition on its induced distribution over states and actions.”
 
@@ -1189,11 +1189,11 @@
 
 *True by definition.* MSC 91A68 (Algorithmic game theory and complexity), 91A10. arXiv cs.GT. Level 4: research.
 
-**Definition.** Let C(a) be the sum of all players’ costs at outcome a. A game is (λ, μ)-smooth if the costs from individual switches from a to parts of b total at most λC(b) + μC(a). This must hold for every pair of outcomes a and b, with λ ≥ 0 and μ &lt; 1. Each switch changes only the action of the player whose cost is counted.
+**Definition.** Let C(a) be the total cost of all players at outcome a. A game is (λ, μ)-smooth, with λ ≥ 0 and μ &lt; 1, if for every pair of outcomes a and b the following holds. The sum over players i of i's cost when i alone switches from aᵢ to bᵢ is at most λC(b) + μC(a).
 
-**Problem.** The price of anarchy is the worst ratio of equilibrium cost to optimal cost, when the optimal cost is positive. In a smooth game, every pure Nash equilibrium costs at most λ/(1 − μ) times the optimum. A pure Nash equilibrium is an outcome at which no player can cut their cost by switching alone.
+**Problem.** In a (λ, μ)-smooth game with positive optimal cost, every pure Nash equilibrium costs at most λ/(1 − μ) times the optimum. So the price of anarchy for pure equilibria is at most λ/(1 − μ).
 
-**How the definition helps.** Smoothness gives exactly the bound on individual switching costs that the equilibrium proof needs. Choose b to minimize total cost. At equilibrium a, the current total cost cannot exceed the sum of the costs from switching alone toward b. Apply smoothness to this sum and collect the two terms involving C(a). Our own comparison is with bounding the worst equilibrium-to-optimum cost ratio directly for each game. The work now lies in finding and proving a useful smoothness inequality for the class of games.
+**How the definition helps.** Smoothness gives exactly the bound on individual switching costs that the equilibrium proof needs. Let b be optimal and a an equilibrium; then C(a) is at most the sum of the costs of switching alone toward b. Smoothness bounds this sum by λC(b) + μC(a), and rearranging gives the bound. The work now lies in proving a useful smoothness inequality for the class of games.
 
 **Wikipedia:** [Price of anarchy](https://en.wikipedia.org/wiki/Price_of_anarchy). It says: “PoA upper bounds can be obtained if the game is shown to satisfy a so-called smoothness inequality.”
 
@@ -1229,7 +1229,7 @@
 
 **Problem.** If the reference agent sees at least k further predictions, with k chosen as in the paper, truthful reporting is a strict perfect Bayesian equilibrium. In such an equilibrium, no agent gains by deviating, given the others' strategies and beliefs updated by Bayes' rule.
 
-**How the definition helps.** A better-informed later report replaces the unobservable outcome as the target, so truthfulness can be proved without the truth. Our own explanation: the payment is linear in the reference probabilities. Under truthful play, the agent expects the reference report to equal her own current belief. So the payment acts like the logarithmic scoring rule, which rewards honest reports. The paper must still handle how a report changes later reports, which is why the reference agent needs enough extra information.
+**How the definition helps.** A better-informed later report replaces the unobservable outcome as the target, so truthfulness can be proved without the truth. In our own explanation, the payment is linear in the reference probabilities. Under truthful play the agent expects the reference report to equal her current belief, so the payment acts like the logarithmic scoring rule. The paper must still handle how a report changes later reports, which is why the reference agent needs enough extra information.
 
 **Paper or page:** [Self-Resolving Prediction Markets for Unverifiable Outcomes](https://arxiv.org/abs/2306.04305v2). It says: “Our key insight is that a reference agent with access to more information can serve as a reasonable proxy for the ground truth.”
 
@@ -1245,7 +1245,7 @@
 
 **Definition.** A single player has an information partition of a finite state space and a belief, a probability distribution, at each state. A distribution p is disintegrable if it is a weighted average of these beliefs. Roughly, p is a money pump if some bet looks acceptable under each of the player's beliefs but has negative expected value under p.
 
-**Problem.** For one player with finitely many states, every distribution is either disintegrable or a money pump, and never both. So disintegrability is the right definition of a prior.
+**Problem.** For one player with finitely many states, every distribution is either disintegrable or a money pump, and never both.
 
 **How the definition helps.** Asking that a prior average the beliefs is what rules out money pumps. Our own explanation: an average of nonnegative expected payoffs cannot be negative. The paper's Lemma 6 shows that disintegrable means lying in the convex hull of the beliefs. Our own reading of the converse is that a separating hyperplane gives a bet that every belief accepts but p rejects.
 
@@ -1281,9 +1281,9 @@
 
 **Definition.** A proxy for the state space S is an auxiliary random variable T used to learn about the state. The agent has no stakes in T given S if, once the state is known, her utility does not depend on the value of T.
 
-**Problem.** If the agent has no stakes in the proxy given the state, her choices determine her beliefs about the states uniquely. This holds even when her utility depends on the state. Ordinary choice data cannot then separate beliefs from utilities.
+**Problem.** If the agent has no stakes in the proxy given the state, her choices determine her beliefs about the states uniquely. This holds even when her utility depends on the state.
 
-**How the definition helps.** With no stakes in the proxy, bets on the proxy conditional on each state reveal beliefs without utility getting in the way. The abstract says these conditional beliefs can be elicited with existing tools. Theorem 1 then gives an explicit formula for the belief about each state from the joint distribution of state and proxy. Our own remark is that the work moves to finding a usable proxy. The paper shows that one can almost always be found.
+**How the definition helps.** With no stakes in the proxy, bets on the proxy conditional on each state reveal beliefs without utility getting in the way. Ordinary choice data cannot separate beliefs from state-dependent utilities (our own). Theorem 1 gives an explicit formula for the belief about each state from the joint distribution of state and proxy. The work moves to finding a usable proxy, and the paper shows that one can almost always be found.
 
 **Paper or page:** [Belief identification with state-dependent utilities](https://arxiv.org/abs/2203.10505v3). It says: “The crucial property is that the agent does not have any stakes in the proxy conditional on the realization of the original state space.”
 
@@ -1317,9 +1317,9 @@
 
 **Definition.** An allocation gives each item, which cannot be divided, to one agent. The allocation is EF1 (envy-free up to one item) if the following holds for every two agents A and B. If we remove at most one item from the bundle of B, then A does not envy B.
 
-**Problem.** In fair division of indivisible goods, an envy-free allocation of all items need not exist.
+**Problem.** For indivisible goods and monotone utilities, an allocation of all items that is EF1 always exists, although an envy-free one need not.
 
-**How the definition helps.** EF1 is weakened just enough to remove the simplest counterexample. With one item and two agents, the agent who does not get the item envies the other. So no allocation of all items is exactly envy-free. But an EF1 allocation always exists. For additive utilities, round-robin picking finds one: the agents take turns to choose an item. For monotone utilities, the envy-graph procedure finds one. What stays hard: nobody knows if the stronger EFX notion always exists, where removing any one item removes the envy.
+**How the definition helps.** EF1 is weakened just enough to remove the simplest counterexample. With one item and two agents, the agent who does not get it envies the other, so no exact envy-free allocation exists. For additive utilities, round-robin picking finds an EF1 allocation, and for monotone utilities the envy-graph procedure finds one. Whether the stronger EFX notion always exists is still open.
 
 **Wikipedia:** [Envy-free item allocation](https://en.wikipedia.org/wiki/Envy-free_item_allocation). It says: “An EF1 allocation always exists and can be found efficiently by various procedures”
 
@@ -1338,7 +1338,7 @@
 
 **Problem.** In the paper's general fair-division setting, some lottery is both ex-ante envy-free and Pareto optimal (Cole and Tao, 2021). Pareto optimal means no other lottery makes some agent better off and no agent worse off. Without randomness, envy-free allocations need not exist.
 
-**How the definition helps.** Judging envy in expectation lets an existence theorem hold where every deterministic allocation causes envy. Our own example: two people both want one indivisible item. Whoever does not get it envies the other, but a fair coin gives both the same expected value. The general existence theorem is still a real result, due to Cole and Tao. This paper shows that finding such a lottery lies in PPAD, a class of search problems solved by fixed-point style arguments. It also gives a polynomial-time algorithm when the number of agents is fixed.
+**How the definition helps.** Judging envy in expectation lets an existence theorem hold where every deterministic allocation causes envy. In our own example, two people both want one indivisible item, and a fair coin gives both the same expected value. The general existence theorem is a real result, due to Cole and Tao. This paper shows that finding such a lottery lies in PPAD, a class of problems solved by fixed-point style arguments.
 
 **Paper or page:** [On the complexity of Pareto-optimal and envy-free lotteries](https://arxiv.org/abs/2307.12605v1). It says: “Cole and Tao (2021) have proved that an ex-ante envy-free and Pareto-optimal allocation lottery is always guaranteed to exist.”
 
@@ -1410,7 +1410,7 @@
 
 **Problem.** If the measure space of agents is saturated, the core equals the fuzzy core, with commodities in any Banach space and minimal assumptions on preferences.
 
-**How the definition helps.** Saturation is exactly what makes Lyapunov's convexity theorem hold for vector measures with values in infinite-dimensional spaces. That theorem says each fractional participation profile has the same vector integral as some ordinary coalition. Our own summary is that a fuzzy coalition's blocking trade can therefore be copied by an ordinary coalition. The paper quotes Khan and Sagara's converse: for infinite-dimensional values, this convexity for all measures forces saturation. Without saturation, earlier results needed extra structure on commodities and preferences.
+**How the definition helps.** Saturation is exactly what makes Lyapunov's convexity theorem hold for vector measures with values in infinite-dimensional spaces. That theorem says that each fractional participation profile has the same vector integral as some ordinary coalition. So a fuzzy coalition's blocking trade can be copied by an ordinary coalition (our own summary). Without saturation, earlier results needed extra structure on commodities and preferences.
 
 **Paper or page:** [Fuzzy Core Equivalence in Large Economies: A Role for the Infinite-Dimensional Lyapunov Theorem](https://arxiv.org/abs/2112.15539v1). It says: “Due to the exact version of the Lyapunov convexity theorem in Banach spaces, we clarify that the additional structure of commodity spaces and preferences is unnecessary whenever the measure space of agents is "saturated".”
 
@@ -1442,11 +1442,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B68 (Matching models). arXiv econ.TH. Level 4: research.
 
-**Definition.** A worker and firm block a matching if the worker prefers the firm and the firm would choose the worker from its enlarged staff. A stable matching has no such pair, and each participant accepts their assignment. A worker-quasi-stable matching requires acceptable assignments but permits blocking pairs involving unemployed workers only.
+**Definition.** A worker and firm block a matching if the worker prefers the firm and the firm would choose the worker from its enlarged staff. A stable matching has no such pair, and each participant accepts their assignment. A worker-quasi-stable matching has acceptable assignments, and only unemployed workers may be in blocking pairs.
 
-**Problem.** Consider finitely many workers and firms, strict preferences, and substitutable firm choices. Substitutability means a firm still selects a chosen worker from any smaller pool containing that worker. The paper’s repair round preserves worker-quasi-stability and leaves a matching unchanged exactly when it is stable.
+**Problem.** Assume finitely many workers and firms, strict preferences, and substitutable firm choices. The paper's repair round maps worker-quasi-stable matchings to worker-quasi-stable matchings, and its fixed points are exactly the stable matchings.
 
-**How the definition helps.** Our own explanation uses the restriction on blocking pairs to identify all workers who can start a repair. Each unemployed worker with a blocking firm applies to their favorite such firm. Firms choose from their applicants and current workers. The hard step proves that no employed worker can block after the round. The paper shows that the rounds improve the matching in the firms’ ordering until it becomes stable.
+**How the definition helps.** The restriction on blocking pairs identifies all workers who can start a repair (our own explanation). Each unemployed worker with a blocking firm applies to their favorite such firm, and firms choose from applicants and current workers. The hard step proves that no employed worker can block after the round. The paper shows that the rounds improve the matching in the firms' ordering until it becomes stable.
 
 **Paper or page:** [The lattice of worker-quasi-stable matchings](https://arxiv.org/abs/2103.16330v4). It says: “T(μ) = μ if and only if μ is stable.”
 
@@ -1464,7 +1464,7 @@
 
 **Problem.** With strict preferences on both sides and incomplete lists, M is popular exactly when it is a maximum-weight matching for these weights. This test is due to Biró, Irving and Manlove (2010). The paper derives the separate graph-structural tests for popularity from it, and back.
 
-**How the definition helps.** The weights are chosen so that the weight of any matching N equals N's vote margin against M. Our own explanation: M has weight 0 against itself, so M is popular exactly when no matching has positive weight. Applying the definition directly means checking exponentially many rivals. The weights replace this with one maximum-weight matching problem, which takes polynomial time. The paper's own work is to connect this test with the graph-structural tests.
+**How the definition helps.** The weights are chosen so that the weight of any matching N equals N's vote margin against M. M has weight 0, so M is popular exactly when no matching has positive weight (our own explanation). This replaces checking exponentially many rivals with one maximum-weight matching problem, which takes polynomial time. The paper's own work is to connect this test with the graph-structural tests.
 
 **Paper or page:** [On the Equivalence of the Graph-Structural and Optimization-Based Characterizations of Popular Matchings](https://arxiv.org/abs/2508.00349v1). It says: “an optimization-based characterization described by maximum-weight matchings.”
 
@@ -1501,7 +1501,7 @@
 
 **Problem.** Assume the paper’s continuity, convexity and law-invariance conditions. Then the problem is well-posed in every market exactly when utility or risk is sensitive to large losses. Roughly, well-posed means the investor cannot keep gaining by taking ever larger positions (our own gloss).
 
-**How the definition helps.** The axiom gives one either-or test, instead of a separate analysis for each pair of utility and risk functionals. Without either axiom, some market lets the investor improve by scaling up a risky position without end (our own). With a sensitive utility, the utility itself rejects very large positions, even if the risk bound allows them (our own). The hard part is the converse direction. The paper needs extra conditions for a unique optimal portfolio.
+**How the definition helps.** The axiom gives one either-or test, instead of a separate analysis for each pair of utility and risk functionals. Without either axiom, some market lets the investor improve by scaling up a risky position without end (our own). With a sensitive utility, the utility itself rejects very large positions, even if the risk bound allows them (our own). The hard part is the converse direction.
 
 **Paper or page:** [The Interplay between Utility and Risk in Portfolio Selection](https://arxiv.org/abs/2509.10351v1). It says: “either the utility functional or the risk functional need to satisfy the axiom of sensitivity to large losses.”
 
@@ -1535,9 +1535,9 @@
 
 **Definition.** Start with bounded payoffs no greater than the final gains of zero-cost trades whose wealth stays bounded below. Include all limits in the essential supremum norm, which ignores events of probability zero. No free lunch with vanishing risk means that only zero among these payoffs is everywhere nonnegative, apart from events of probability zero.
 
-**Problem.** Consider finitely many discounted prices over a finite horizon. Suitable stopping makes them bounded, and they decompose into fluctuations satisfying conditional averaging after suitable stopping and parts with finite total variation. The closure condition holds exactly when some probability preserving null events makes suitably stopped prices equal their conditional future averages.
+**Problem.** Let finitely many discounted prices over a finite horizon be locally bounded semimartingales. There is no free lunch with vanishing risk exactly when some probability with the same null events makes the prices local martingales.
 
-**How the definition helps.** Taking limits detects gains that individual trades can only approximate (our own). For illustration, allow finite portfolios of countably many zero-cost bets (our own). Bet n pays one on a common event and loses 1/n on its own separate event, paying zero elsewhere (our own). Give each event positive probability (our own). Avoiding losses on separate events requires nonpositive holdings, while avoiding loss on the common event requires their sum to be nonnegative (our own). Thus only zero holdings avoid loss, yet individual bets converge uniformly to the common event’s indicator (our own). The fundamental theorem proves the probability characterization for finitely many assets.
+**How the definition helps.** Taking limits detects gains that individual trades can only approximate (our own). In our own illustration, bet n pays one on a common event and loses 1/n on its own separate event. No finite portfolio of these bets avoids all losses unless it is zero. Yet the bets converge uniformly to the indicator of the common event, a free lunch in the closure.
 
 **Paper or page:** [The Golden Age of the Mathematical Finance](https://arxiv.org/abs/2102.06693v2). It says: “There are not free lunches with vanishing risk if and only if there is probability ℙ∗ ∼ ℙ under which S̃ is a local martingale.”
 
@@ -1555,7 +1555,7 @@
 
 **Problem.** For bounded measurable payoffs, a monotone pricing rule satisfies the paper’s put–call parity exactly when it is comonotonic additive.
 
-**How the definition helps.** Our own explanation uses the fact that both option payoffs increase or stay constant as the underlying payoff rises. At strike k ≥ 0, the call pays the excess above k, or zero. The short put pays minus the shortfall below k, or zero. Together with cash k, these payoffs sum to the underlying payoff. Additivity prices the pieces separately. The converse must recover additivity for every comonotonic pair from these special decompositions.
+**How the definition helps.** Both option payoffs increase or stay constant as the underlying payoff rises (our own explanation). At strike k ≥ 0, the call pays the excess above k, the short put pays minus the shortfall below k, and with cash k these sum to the underlying payoff. Additivity prices the pieces separately. The converse must recover additivity for every comonotonic pair from these special decompositions.
 
 **Paper or page:** [Put-Call Parities, absence of arbitrage opportunities and non-linear pricing rules](https://arxiv.org/abs/2203.16292v1). It says: “satisfies PCP if and only if it is Comonotonic Additive.”
 
@@ -1591,7 +1591,7 @@
 
 **Problem.** Required capital is the infimum price of trades making a position safe. Fix any real budget m. Directional closure holds exactly when every position requiring at most m admits a trade costing m that makes it safe.
 
-**How the definition helps.** Directional closure includes the boundary reached by trades costing arbitrarily little above the budget. Our own argument writes every trade of price m as mU plus a zero-price trade. Thus a trade at price m works exactly when the position plus mU belongs to B. In our own cash example only positive balances are safe. Starting from zero, every positive deposit works, but depositing the infimum of zero fails.
+**How the definition helps.** Directional closure includes the boundary reached by trades costing arbitrarily little above the budget. Our own argument writes every trade of price m as mU plus a zero-price trade, so a trade at price m works exactly when the position plus mU belongs to B. In our own cash example only positive balances are safe. Starting from zero, every positive deposit works, but depositing the infimum of zero fails.
 
 **Paper or page:** [A new view on risk measures associated with acceptance sets](https://arxiv.org/abs/2109.12320v2). It says: “holds if and only if A + ker π is (−U)-directionally closed.”
 

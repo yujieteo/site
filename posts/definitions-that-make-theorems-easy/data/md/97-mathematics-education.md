@@ -140,7 +140,7 @@
 
 *True by definition.* MSC 97G60 (Plane and spherical trigonometry (educational aspects)), 51M09. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Define a great circle as the intersection of a sphere with a plane through its center. On a sphere, use distinct nonantipodal endpoints for the unique great circle test. Antipodal points lie at opposite ends of a diameter.
+**Definition.** A great circle is the intersection of a sphere with a plane through its center. Antipodal points lie at opposite ends of a diameter.
 
 **Problem.** Two distinct nonantipodal points determine exactly one great circle.
 

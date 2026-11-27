@@ -4,9 +4,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 00A08 (Recreational mathematics), 01A55, 11A07. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** For a Gregorian date, number March through February from 3 through 14. Use the preceding year for January and February. Write the adjusted year as 100j + k, with 0 ≤ k &lt; 100. Let m be the month number and d the day of the month.
+**Definition.** Zeller's congruence numbers the months from March (3) to February (14). It counts January and February as months 13 and 14 of the previous year, so the leap day falls at the end of the year.
 
-**Problem.** Find the remainder of d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 through 6 give Saturday through Friday.
+**Problem.** For a Gregorian date with day d, month number m and adjusted year 100j + k (0 ≤ k &lt; 100), the weekday is d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 through 6 give Saturday through Friday.
 
 **How the definition helps.** Starting in March puts the variable day after every fixed month start (our own). The year term can then count past leap days and the month term can use only fixed offsets (our own). In our own check, the work is to match the offsets to the fixed month lengths and include the Gregorian century rule.
 

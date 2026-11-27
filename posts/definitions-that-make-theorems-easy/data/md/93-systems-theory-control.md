@@ -156,9 +156,9 @@
 
 **Definition.** A flat output is a signal computed locally from the state, input, and finitely many input derivatives. One may choose the signal freely within its domain. The signal and finitely many of its derivatives then determine the state and input.
 
-**Problem.** A sufficiently smooth choice of flat output gives a system trajectory. Its derivatives must stay in the domain of the reconstruction formulas.
+**Problem.** Every sufficiently smooth choice of flat output gives a system trajectory, provided its derivatives stay in the domain of the reconstruction formulas.
 
-**How the definition helps.** The reconstruction formulas produce a solution for every sufficiently smooth local choice of flat output (our own). Ordinary measured outputs need not determine the motion this way (our own). Finding the formulas and their domain replaces integrating the equations for each new trajectory (our own). The bicycle example checks endpoint and safety constraints separately.
+**How the definition helps.** The reconstruction formulas produce a solution for every sufficiently smooth local choice of flat output (our own). Ordinary measured outputs need not determine the motion this way (our own). Finding the formulas and their domain replaces integrating the equations for each new trajectory (our own).
 
 **Paper or page:** [Optimal Control for Kinematic Bicycle Model with Continuous-time Safety Guarantees: A Sequential Second-order Cone Programming Approach](https://arxiv.org/abs/2204.08980v1). It says: “obtained by passing the parameterized flat outputs”
 
@@ -312,7 +312,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 93D15 (Stabilization of systems by feedback), 93B45. arXiv math.OC, eess.SY. Level 3: graduate.
 
-**Definition.** Suppose a‖x‖² ≤ V(x) ≤ b‖x‖² for positive constants a and b. From each allowed state x, require a feasible block of m moves ending with V below or equal to qV(x). The block length m and factor q strictly between zero and one are fixed. Intermediate state norms must stay below c‖x‖ for a common constant c.
+**Definition.** A generalized Lyapunov function V satisfies a‖x‖² ≤ V(x) ≤ b‖x‖² for positive constants a and b. From each allowed state x, some feasible block of m moves ends with V at most qV(x), where m and 0 &lt; q &lt; 1 are fixed. Intermediate state norms stay below c‖x‖ for a common constant c.
 
 **Problem.** Under these bounds, every allowed initial state has a trajectory that obeys the constraints and converges to zero.
 
@@ -364,9 +364,9 @@
 
 **Definition.** A control system x′ = f(x, u) is input-to-state stable if there are comparison functions β and γ with this property. For all starts, inputs and times, \|x(t)\| ≤ β(\|x₀\|, t) + γ(‖u‖∞). Here β(r, t) grows in r and tends to 0 in t, and γ grows from γ(0) = 0.
 
-**Problem.** If each subsystem is stable, is a chain of them stable, where each one drives the next? Sontag's theorem says yes for input-to-state stable systems. For systems that are only globally asymptotically stable with zero input, the answer is no.
+**Problem.** A cascade of input-to-state stable systems, where each one drives the next, is input-to-state stable. A cascade of systems that are only globally asymptotically stable with zero input need not be stable.
 
-**How the definition helps.** The estimate bounds the state by the size of the input. So the state of one stable system is a bounded input to the next, and the bounds compose (our own). Mere stability with zero input says nothing about what a nonzero input does. The page's counterexample is x′ = −x + yx², y′ = −y. Each part is stable alone, but for large starts x reaches infinity in finite time. Here the x-part is not input-to-state stable with y as its input, so the cascade theorem does not apply (our own). The hard parts are the Lyapunov characterization by Sontag and Wang, and small-gain theorems for feedback loops.
+**How the definition helps.** The estimate bounds each state by the size of its input, so the state of one system is a bounded input to the next and the bounds compose (our own). Stability with zero input says nothing about what a nonzero input does. In the page's counterexample x′ = −x + yx², y′ = −y, each part is stable alone, but x reaches infinity in finite time for large starts. The x-part is not input-to-state stable with y as its input (our own).
 
 **Wikipedia:** [Input-to-state stability](https://en.wikipedia.org/wiki/Input-to-state_stability). It says: “In contrast to cascades of ISS systems, the cascade interconnection of 0-GAS systems is in general not 0-GAS.”
 
@@ -492,7 +492,7 @@
 
 **Problem.** Suppose a homeomorphism H carries the trajectories of one control system onto those of another. Then E is a strong chain control set of the first system exactly when H(E) is one of the second.
 
-**How the definition helps.** A jump allowance that varies continuously with position can absorb the uneven stretching of a homeomorphism. Lemma 1 of the paper supplies the needed matching allowance. For each continuous ε on the target, it gives a continuous δ on the source. A jump smaller than δ(x) then maps to a jump smaller than ε(H(x)). With one constant allowance this fails on noncompact spaces, because H need not be uniformly continuous, by our own account. The paper derives the result from a matching statement for flows (Theorem 1).
+**How the definition helps.** A jump allowance that varies continuously with position can absorb the uneven stretching of a homeomorphism. For each continuous ε on the target there is a continuous δ on the source, so that a jump smaller than δ(x) maps to a jump smaller than ε(H(x)). With one constant allowance this fails on noncompact spaces, because H need not be uniformly continuous (our own).
 
 **Paper or page:** [Strong chain control sets and affine control systems](https://arxiv.org/abs/2407.18765v1), [Strong chain control sets and affine control systems](https://arxiv.org/abs/2407.18765v1). It says: “Then E⋆ is a strong chain control set in M if and only if H(E⋆) is a strong chain control set in N.”
 
@@ -508,9 +508,9 @@
 
 **Definition.** A hybrid system follows differential equations between instantaneous resets. Glue each switching surface to its image under the reset. A hybrid Filippov solution is an absolutely continuous curve in the glued space. At a jump in velocity, it uses the closed convex hull of essential nearby velocities.
 
-**Problem.** Under the paper's crossing assumptions, the hybrid Filippov solution is unique. The smooth approximations converge to it uniformly in time, with error at most a constant times the smoothing width. The distance uses the paper's glued spaces that include the smoothing strips.
+**Problem.** Under the paper's crossing assumptions, the hybrid Filippov solution is unique. Smooth approximations of the hybrid system converge to it uniformly in time, with error at most a constant times the smoothing width.
 
-**How the definition helps.** Treating a reset as a crossing lets the convergence theorem compare whole curves, including at switch times. In our own explanation, the glued space identifies the two states on either side of an instantaneous reset. The proof still needs uniqueness and an error bound for the smoothing.
+**How the definition helps.** Treating a reset as a crossing lets the convergence theorem compare whole curves in one space, including at switch times. The glued space identifies the states just before and just after each reset (our own). The proof still needs uniqueness and an error bound for the smoothing.
 
 **Paper or page:** [A New Solution Concept and Family of Relaxations for Hybrid Dynamical Systems](https://arxiv.org/abs/1803.08092v5), [A New Solution Concept and Family of Relaxations for Hybrid Dynamical Systems](https://arxiv.org/abs/1803.08092v5), [A New Solution Concept and Family of Relaxations for Hybrid Dynamical Systems](https://arxiv.org/abs/1803.08092v5). It says: “The resulting hybrid Filippov solutions greatly simplify the mathematical description of hybrid executions, providing a unifying solution concept with which to work.”
 
@@ -544,9 +544,9 @@
 
 **Definition.** A seminorm p acts like a norm but can be zero on nonzero vectors. Its kernel is the subspace where p is zero. Here the system xₖ₊₁ = Axₖ is stable in p if p(Aᵏx) ≤ cρᵏp(x) for some constants c and ρ &lt; 1.
 
-**Problem.** The paper characterizes stability in a seminorm completely through a Lyapunov equation with positive semidefinite matrices. In our own formulation, stability holds exactly when A maps the kernel into itself and the kernel holds every generalized eigenvector for eigenvalues with \|λ\| ≥ 1.
+**Problem.** The system is stable in p exactly when A maps the kernel into itself and the kernel contains every generalized eigenvector for eigenvalues with \|λ\| ≥ 1 (our own). The paper characterizes this stability through a Lyapunov equation with positive semidefinite matrices.
 
-**How the definition helps.** A seminorm ignores the directions in its kernel, so a system can be stable even when some modes never decay. Our own example is A = diag(2, ½) with p(x) = \|x₂\|. The first coordinate grows, but p(Aᵏx) = 2⁻ᵏp(x). Our own proof of the eigenvalue condition passes to the quotient by the kernel, where p becomes a norm. The paper uses seminorm stability for reinforcement learning algorithms in the average-reward setting.
+**How the definition helps.** A seminorm ignores the directions in its kernel, so a system can be stable even when some modes never decay. For A = diag(2, ½) with p(x) = \|x₂\|, the first coordinate grows, but p(Aᵏx) = 2⁻ᵏp(x) (our own). The eigenvalue condition follows by passing to the quotient by the kernel, where p becomes a norm (our own).
 
 **Paper or page:** [A Non-Asymptotic Theory of Seminorm Lyapunov Stability: From Deterministic to Stochastic Iterative Algorithms](https://arxiv.org/abs/2502.14208v1). It says: “In this special case, our results provide a complete characterization of system stability with respect to a seminorm, linking it to the solution of a Lyapunov equation in terms of positive semi-definite matrices.”
 
@@ -560,7 +560,7 @@
 
 *True by definition.* MSC 93D30 (Lyapunov and storage functions), 93D25. arXiv math.OC, eess.SY. Level 4: research.
 
-**Definition.** For the paper’s energy balance, M is the damping operator. Its monotonicity means that the inner product of a state difference with the corresponding damping difference is nonnegative. At a steady state, measure stored energy by half the squared distance from that state.
+**Definition.** Shifted energy measures stored energy by half the squared distance from a fixed steady state. The damping operator M is monotone: the inner product of a state difference with the corresponding damping difference is nonnegative.
 
 **Problem.** Consider the paper’s system with a maximally monotone damping operator, meaning its graph has no proper monotone extension. Take an absolutely continuous input with integrable derivative and a steady state with its steady input and output. At almost every time, the stored energy grows no faster than the inner product of the input and output deviations.
 

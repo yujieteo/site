@@ -52,7 +52,7 @@
 
 *True by definition.* MSC 86A30 (Geodesy, mapping problems). arXiv physics.geo-ph. Level 2: later undergraduate.
 
-**Definition.** Use an ellipsoid of revolution, obtained by rotating an ellipse about its polar axis, and a sphere of the same total area. Keep longitude unchanged. Choose the latitude on the sphere in the same hemisphere that gives equal area between the equator and the latitude circle. This area-based latitude replaces the usual angle of the ellipsoid’s surface normal to the equatorial plane.
+**Definition.** The authalic latitude of a point on an ellipsoid of revolution is a latitude on the sphere of the same total area. It is the latitude, in the same hemisphere, at which the band from the equator has the same area as on the ellipsoid. Longitude stays the same.
 
 **Problem.** The authalic latitude map preserves area, so composing it with a spherical equal-area projection gives an equal-area ellipsoid map.
 
@@ -74,7 +74,7 @@
 
 **Problem.** The spherical Lambert azimuthal map preserves area away from the point opposite its center.
 
-**How the definition helps.** Using chord length makes each map disk equal in area to its spherical cap (our own). On a sphere of radius R, a cap of angular radius θ has area 2πR²(1 − cos θ) (our own). This equals π times the squared chord length (our own). Preserving bearing gives equal areas for sectors, and subtracting nested sectors gives equal areas for polar rectangles (our own). Those rectangles determine the area measure (our own).
+**How the definition helps.** Using chord length makes each map disk equal in area to its spherical cap (our own). On a sphere of radius R, a cap of angular radius θ has area 2πR²(1 − cos θ), which is π times the squared chord length (our own). Preserving bearing gives equal areas for sectors of caps (our own). Subtracting nested sectors then gives equal areas for the polar rectangles that determine area (our own).
 
 **Wikipedia:** [Lambert azimuthal equal-area projection](https://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection). It says: “It accurately represents area in all regions of the sphere, but it does not accurately represent angles.”
 
@@ -204,9 +204,9 @@
 
 *True by definition.* MSC 86A05 (Hydrology, hydrography, oceanography). arXiv physics.geo-ph. Level 4: research.
 
-**Definition.** In a binary river tree, headwaters have order one. At a junction take the higher incoming order, adding one only when both orders agree. Among trees of fixed maximum order, count order-i side branches joining order-j branches, with i &lt; j. Divide their expected count by the expected number of order-j branches.
+**Definition.** In the Horton–Strahler order of a binary river tree, headwaters have order one. At a junction the order is the larger incoming order, plus one if the two orders are equal. The ratio T(i, j), for i &lt; j, is the expected number of order-i side branches joining order-j branches, divided by the expected number of order-j branches.
 
-**Problem.** Assume this ratio for each order pair agrees across all admissible maximum orders, a property called coordination. Pruning removes headwaters and joins segments left with only one input. The ratios are invariant under pruning exactly when they depend only on the order difference j − i.
+**Problem.** Pruning removes the headwaters and joins segments left with one input. For a coordinated random tree, where T(i, j) does not depend on the maximum order, the ratios are unchanged by pruning exactly when they depend only on j − i.
 
 **How the definition helps.** The order gap stays the same when pruning lowers each surviving order by one (our own). Thus the expected counts are invariant exactly when they are constant along each diagonal of the table of counts (our own). The work is to prove the order shift and use coordination to identify the table entries across tree sizes (our own).
 
@@ -223,9 +223,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 86A05 (Hydrology, hydrography, oceanography), 65M08. arXiv physics.ao-ph. Level 4: research.
 
-**Definition.** For shallow water flowing over a fixed bed, let h denote depth, u velocity, b bed height, and g gravitational acceleration. Discharge per unit width is q = hu. Total head in energy units is E = u²/2 + g(h + b). The numerical method uses q and E to reconstruct the flow between stored values.
+**Definition.** For shallow water over a fixed bed, discharge per unit width is q = hu, and total head is E = u²/2 + g(h + b). Here h is depth, u velocity, b bed height and g gravity. The scheme reconstructs the flow from q and E instead of from depth and velocity.
 
-**Problem.** Consider the paper’s frictionless schemes for one-dimensional flow with positive depth. If q and E are constant across both cell and point data, every stored value has zero time derivative.
+**Problem.** In the paper's frictionless schemes for one-dimensional flow of positive depth, suppose q and E are constant across all cell and point data. Then every stored value has zero time derivative.
 
 **How the definition helps.** For smooth flow, discharge and head turn a spatially varying steady flow into constant data for reconstruction (our own). The proof checks that the discrete transport and bed-slope terms then cancel in both update equations (our own).
 
@@ -241,9 +241,9 @@
 
 *Rules out counterexamples.* MSC 86A22 (Inverse problems in geophysics). arXiv physics.geo-ph. Level 4: research.
 
-**Definition.** A density contrast is the difference between a region’s density and its background density. Fix a bounded region whose closure has connected exterior and a known integrable contrast function strictly positive throughout the region. The unknown mass occupies a convex domain with piecewise smooth boundary inside that region. Only that domain contributes the specified contrast.
+**Definition.** A density contrast is the difference between a body's density and the background density. The unknown body D lies in a known bounded region Ω whose closure has connected exterior. D is convex with piecewise smooth boundary, and its contrast f is known, integrable and positive on Ω.
 
-**Problem.** Enclose the known region in a convex domain with regular analytic boundary, locally described by convergent power series. Exact measurements of gravitational force on a nonempty surface patch of that boundary uniquely determine the unknown domain.
+**Problem.** Enclose Ω in a convex domain with analytic boundary. Exact gravity measurements on any nonempty patch of that boundary determine D uniquely.
 
 **How the definition helps.** Convexity rules out hollow shells, so a basic exterior-gravity ambiguity disappears (our own). A uniform ball and a concentric hollow spherical shell of equal mass have identical exterior gravity by Newton’s shell theorem (our own). The paper’s Theorem 0.1 does the harder work of proving uniqueness for the whole convex class.
 

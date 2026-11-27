@@ -52,9 +52,9 @@
 
 *True by definition.* MSC 41A10 (Approximation by polynomials), 41A25. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For a nonnegative integer n, approximate the nth power of x by keeping its Chebyshev terms up to a chosen degree. The jth Chebyshev polynomial takes the value cos(jθ) at x = cos θ. This replaces truncation in powers of x.
+**Definition.** Expand xⁿ in the Chebyshev polynomials Tⱼ, where Tⱼ(cos θ) = cos(jθ). Truncate this expansion at a chosen degree, in place of truncating in powers of x.
 
-**Problem.** On \[−1,1\], the maximum absolute truncation error for a monomial is the sum of the discarded Chebyshev coefficients.
+**Problem.** On \[−1, 1\], the maximum absolute error of this truncation of xⁿ equals the sum of the discarded Chebyshev coefficients.
 
 **How the definition helps.** In our own argument, all discarded terms have absolute value at most their coefficients and reach that bound together at x = 1. In our own words, expanding an integer power of cosine as a sum of cosines gives nonnegative coefficients by the binomial theorem. That expansion carries the work.
 
@@ -174,7 +174,7 @@
 
 **Problem.** For n ≥ 1 and all real a and b, the Bernstein polynomial of a + bx is a + bx on \[0, 1\].
 
-**How the definition helps.** Expectation is linear, so the claim reduces to two facts. The expectation of a constant is that constant, and the expected value of K/n is x. With the sum formula, the same claim needs the binomial identities for the total weight and for the mean. The work moves to checking that the expectation equals the sum, which is the formula for the binomial distribution. This fact is the first step of Bernstein’s proof of the Weierstrass approximation theorem. The proof steps are our own; the Wikipedia text notes only that Bernstein polynomials look like binomial expectations.
+**How the definition helps.** Expectation is linear, so the claim reduces to two facts: the expectation of a constant is that constant, and the expected value of K/n is x. With the sum formula, the same claim needs binomial identities for the total weight and for the mean. The work moves to checking that the expectation equals the sum, which is the binomial distribution formula. The proof steps are our own; the source notes only that Bernstein polynomials look like binomial expectations.
 
 **Wikipedia:** [Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial). It says: “Here, we take advantage of the fact that Bernstein polynomials look like Binomial expectations.”
 
@@ -206,7 +206,7 @@
 
 **Problem.** Let g be smooth near c and f smooth near g(c). Let Q and P be their order n Taylor polynomials at c and at g(c). Then the order n Taylor polynomial of f ∘ g at c is P(Q(x)) with powers of (x − c) above n dropped.
 
-**How the definition helps.** With the approximation definition, one only checks that the truncated P(Q(x)) approximates f(g(x)) to order n (our own). Since g is differentiable at c, \|g(x) − g(c)\| ≤ C\|x − c\| near c (our own). So f(g(x)) − P(g(x)) is negligible against \|x − c\|ⁿ (our own). P has bounded slope near g(c), so P(g(x)) − P(Q(x)) is also negligible (our own). Dropping powers above n changes the result by at most a constant times \|x − c\|ⁿ⁺¹ (our own). The work moves into Taylor's theorem with the Peano remainder. It shows that the derivative polynomial is this unique best approximation.
+**How the definition helps.** With the approximation definition, one only checks that the truncated P(Q(x)) approximates f(g(x)) to order n (our own). Since g is Lipschitz near c, f(g(x)) − P(g(x)) is negligible against \|x − c\|ⁿ, and since P has bounded slope, so is P(g(x)) − P(Q(x)) (our own). Dropping powers above n changes the result by O(\|x − c\|ⁿ⁺¹) (our own). The work moves into Taylor's theorem with the Peano remainder, which shows that the derivative polynomial is this unique best approximation.
 
 **nLab:** [Taylor's theorem](https://ncatlab.org/nlab/show/Taylor%27s+theorem). It says: “whose derivatives at c match those of f up to order k.”
 
@@ -224,7 +224,7 @@
 
 **Problem.** Let f and g be smooth near c. Multiply their order n Taylor polynomials at c and drop the powers above n. The result is the order n Taylor polynomial of fg.
 
-**How the definition helps.** With classes, the claim says that multiplication respects the equivalence, which takes one line (our own). Suppose f − P and g − Q are multiples of (x − c)ⁿ⁺¹ (our own). Then so is fg − PQ = f(g − Q) + Q(f − P) (our own). Dropping powers above n from PQ changes it by another such multiple (our own). The work moves into Hadamard's lemma. It says that the remainder after the usual Taylor polynomial is (x − c)ⁿ⁺¹ times a smooth function. With the usual definition, one instead matches coefficients by the general Leibniz rule (our own).
+**How the definition helps.** With classes, the claim says that multiplication respects the equivalence, which takes one line (our own). If f − P and g − Q are multiples of (x − c)ⁿ⁺¹, then so is fg − PQ = f(g − Q) + Q(f − P), and dropping powers above n from PQ adds another such multiple (our own). The work moves into Hadamard's lemma, which says that the remainder after the usual Taylor polynomial is (x − c)ⁿ⁺¹ times a smooth function. With the usual definition, one instead matches coefficients by the general Leibniz rule (our own).
 
 **nLab:** [Hadamard lemma](https://ncatlab.org/nlab/show/Hadamard+lemma). It says: “the Taylor series of a smooth function on the real line around the origin has a remainder at order n”
 
@@ -296,7 +296,7 @@
 
 **Problem.** Each Lagrange basis polynomial for Fekete points has maximum absolute value one on the interval.
 
-**How the definition helps.** The determinant definition bounds every ratio obtained by replacing one row. The usual interval definition maximizes the product of pairwise distances. The Vandermonde determinant formula identifies that product with the absolute determinant in the monomial basis. Changing basis multiplies every determinant by the same nonzero factor. In our own proof, move point i to x and divide the new determinant by the original. The ratio has degree below r and takes the defining values of the ith Lagrange polynomial. Its absolute value reaches one at point i.
+**How the definition helps.** Maximality means that moving one point can never raise the absolute determinant. In our own proof, move point i to x and divide the new determinant by the original. The ratio has degree below r, equals one at point i and zero at the other points, so it is the ith Lagrange polynomial. Maximality bounds its absolute value by one, and it reaches one at point i.
 
 **Paper or page:** [The Fekete problem in segmental polynomial interpolation](https://arxiv.org/abs/2403.09378v1). It says: “Then ‖ℓ\[ξᵢ\]‖ = max (x ∈ I) \|ℓ\[ξᵢ\](x)\| = 1 for each i ∈ {1, …, r}.”
 
@@ -314,7 +314,7 @@
 
 **Problem.** This constant equals the largest possible maximum absolute value of the interpolant when the continuous input function has absolute value at most one.
 
-**How the definition helps.** The sum formula gives the largest contribution the samples can make at any point (our own). The triangle inequality bounds every interpolant by this sum (our own). At a maximizing point, give each sample the sign of its basis polynomial there, choosing either sign at zero (our own). Join the samples by straight lines and extend constantly to the interval ends (our own). This continuous input attains the bound, identifying the sum formula with the operator norm (our own).
+**How the definition helps.** The triangle inequality bounds every interpolant by the sum of absolute basis values (our own). At a point where the sum is largest, give each sample the sign of its basis polynomial there (our own). Join these samples by straight lines and extend them constantly to the interval ends (our own). This continuous input of maximum one attains the bound (our own).
 
 **Paper or page:** [Order of uniform approximation by polynomial interpolation in the complex plane and beyond](https://arxiv.org/abs/2209.07101v3). It says: “L\_{{\\bf {z}}<sub>n</sub>}= \\max <sub>z\\in X</sub> \\, \\sum <sup>n</sup><sub>j=0</sub> \|\\ell \_ {n,j}(z)\|”
 
@@ -332,7 +332,7 @@
 
 **Problem.** For 1 ≤ p &lt; ∞, every function in Lᵖ(\[0, 1\]) has polynomial averages that converge to it in the Lᵖ norm.
 
-**How the definition helps.** Every difference x − y from our own interval lies within the polynomial part of the kernel. Integrating against f(y) gives the coefficients of a polynomial in x (our own). The kernels have unit mass and their mass outside every neighborhood of zero tends to zero. Continuity of translations in Lᵖ then gives convergence (our own). Using polynomial kernels replaces a separate polynomial approximation of each smoothed function (our own).
+**How the definition helps.** For x and y in \[0, 1\], the difference x − y lies in \[−1, 1\], where the kernel is a polynomial, so the average is a polynomial in x (our own). The kernels have unit mass, and their mass outside every neighborhood of zero tends to zero. Continuity of translation in Lᵖ then gives convergence (our own). Polynomial kernels remove the need for a separate polynomial approximation of each smoothed function (our own).
 
 **nLab:** [approximation of the identity](https://ncatlab.org/nlab/show/approximation+of+the+identity). It says: “Hence f ∗ pₙ is polynomial.”
 
@@ -382,7 +382,7 @@
 
 **Problem.** B(x) equals 2 raised to −p times the sum over j from 0 to p + 1 of C(p + 1, j)·B(2x − j).
 
-**How the definition helps.** With the convolution definition, the relation follows from one splitting of the box and the binomial theorem. Write χ(x) = χ(2x) + χ(2x − 1), a sum of two half boxes. Convolution is commutative, so the (p + 1)-fold convolution of this sum expands by the binomial theorem. Each term is a shifted (p + 1)-fold convolution of the half box, which equals 2 raised to −p times B(2x − j). From the Cox–de Boor recursion, the relation needs an induction on the degree. The work moves to showing that the convolution powers satisfy the recursion. These steps are our own; Wikipedia only links cardinal B-splines with convolution.
+**How the definition helps.** With the convolution definition, the relation follows from one splitting of the box and the binomial theorem. Write χ(x) = χ(2x) + χ(2x − 1), a sum of two half boxes, and expand the (p + 1)-fold convolution of this sum. Each term is a shifted convolution power of the half box, which equals 2⁻ᵖB(2x − j). From the Cox–de Boor recursion, the relation needs an induction on the degree; these steps are our own.
 
 **Wikipedia:** [B-spline](https://en.wikipedia.org/wiki/B-spline). It says: “A cardinal B-spline has uniformly spaced knots, therefore interpolation between the knots equals convolution with a smoothing kernel.”
 
@@ -398,7 +398,7 @@
 
 **Problem.** The minimizer s has zero second derivative at x₀ and at xₙ.
 
-**How the definition helps.** The data do not fix the end slopes, so a minimizer must not improve when an end slope changes. So the integral of s″h″ is zero for every allowed h that vanishes at the nodes. On each piece between nodes, s is a cubic, and integration by parts leaves only boundary terms. At x₀ the remaining term is s″(x₀)h′(x₀), and h′(x₀) is arbitrary, so s″(x₀) = 0. The usual definition puts this condition in by hand, and the work moves to existence and to proving that the pieces are cubics. Holladay’s 1957 theorem connects the two definitions. These proof steps are our own.
+**How the definition helps.** The data do not fix the end slopes, so a minimizer cannot improve when an end slope changes. So the integral of s″h″ is zero for every allowed h that vanishes at the nodes. Integration by parts on each cubic piece leaves the boundary term s″(x₀)h′(x₀), and h′(x₀) is arbitrary, so s″(x₀) = 0. The usual definition imposes this condition by hand; these proof steps are our own.
 
 **Wikipedia:** [Spline (mathematics)](https://en.wikipedia.org/wiki/Spline_%28mathematics%29). It says: “Spline functions for interpolation are normally determined as the minimizers of suitable measures of roughness (for example integral squared curvature) subject to the interpolation constraints.”
 
@@ -460,7 +460,7 @@
 
 *True by definition. Confidence: medium.* MSC 41A50 (Best approximation, Chebyshev systems). arXiv math.NA. Level 3: graduate.
 
-**Definition.** Fix n ≥ 0 and a finite positive measure with infinite support on a compact real interval. Choose real polynomials of degrees zero through n, normalized so their pairwise product integrals vanish for different degrees and equal one for matching degrees. Form K(a, x) by summing each polynomial’s value at a times its value at x. At a fixed real point a, divide by K(a, a), which is positive because the constant term contributes.
+**Definition.** Let p₀, …, pₙ be the orthonormal polynomials of a finite positive measure with infinite support on a compact real interval. The kernel is K(a, x) = p₀(a)p₀(x) + ⋯ + pₙ(a)pₙ(x). At a real point a, the normalized kernel is K(a, x)/K(a, a), and K(a, a) &gt; 0.
 
 **Problem.** Among polynomials of degree at most n that have value 1 at a, the normalized kernel uniquely minimizes the integral of the squared polynomial.
 
@@ -496,7 +496,7 @@
 
 **Problem.** For a real Haar matrix, every data vector has a unique fit that minimizes the largest absolute residual.
 
-**How the definition helps.** The Haar condition lets any r rows with maximum error determine the coefficients (our own argument). Suppose two best fits exist and take their midpoint, also a best fit. Both fits must agree wherever the midpoint reaches its maximum absolute error. With fewer than r such rows, one could interpolate their errors and move slightly toward the data, improving the fit. Thus the fits agree on enough rows to coincide. For an exact fit, full column rank gives uniqueness directly. Without the Haar condition, the column (1, 0) fits (0, 1) equally well with any coefficient between −1 and 1.
+**How the definition helps.** The Haar condition lets any r rows determine the coefficients (our own argument). The midpoint of two best fits is also a best fit, and both fits agree on every row where the midpoint reaches its maximum error. If fewer than r rows did so, one could move slightly toward the data and improve the fit, so both fits agree on r rows and coincide. Without the Haar condition, the column (1, 0) fits (0, 1) equally well with any coefficient between −1 and 1.
 
 **Paper or page:** [On the algorithm of best approximation by low rank matrices in the Chebyshev norm](https://arxiv.org/abs/2201.12301v1). It says: “Then, for any vector a ∈ ℂⁿ the solution is unique if and only if the columns of the matrix V form a Chebyshev system.”
 
@@ -530,7 +530,7 @@
 
 **Problem.** Among continuous inputs of maximum absolute value at most one, take the supremum of the maximum absolute fitted value. It equals the largest pointwise sum of absolute basis values.
 
-**How the definition helps.** Disjoint interiors let continuous inputs approximate a separate sign on each triangle. In our own proof, choose a point maximizing the sum and use the basis signs there. Taper each sign to zero near the triangle edges. The averages approach the required signs, while the triangle inequality gives the upper bound. In our own example, fitting a line to averages on \[0,2\] and \[1,3\] gives a basis sum of three at either endpoint. The overlap cancels opposite contributions, reducing the maximum amplification to two.
+**How the definition helps.** Disjoint interiors let continuous inputs take a separate sign on each triangle. In our own proof, choose a point where the sum is largest, give each triangle the sign of its basis polynomial there, and taper the signs to zero near the edges. The averages approach those signs, and the triangle inequality gives the upper bound. In our own example, fitting a line to averages on \[0, 2\] and \[1, 3\] gives a basis sum of three at either endpoint, but the overlap limits the amplification to two.
 
 **Paper or page:** [Bivariate polynomial histopolation techniques on Padua, Fekete and Leja triangles](https://arxiv.org/abs/2506.03025v1). It says: “Then, the operator norm of the respective histopolation operator Πₘ satisfies ‖Πₘ‖ₒₚ = ℒₘ(𝒯ₘ).”
 
@@ -618,7 +618,7 @@
 
 **Definition.** Measure error on the positive half-line by the supremum of its absolute value times a fixed positive weight. In a Laguerre polynomial expansion, replace a sharp cutoff by a linear filter T that tapers the higher coefficients. Choose integers 1 ≤ m &lt; n. The filter fixes degrees through n − m and returns polynomials of degree below n + m.
 
-**Problem.** For any input in the filter’s normed space, the output error is at least the least achievable error through degree n + m − 1. It is at most the least error through degree n − m times 1 + ‖T‖. Here ‖T‖ is the largest amplification of the weighted norm, understood as a supremum.
+**Problem.** Let Eₖ(f) be the least weighted error of f by polynomials of degree at most k, and let ‖T‖ be the operator norm of T. Then E<sub>n+m−1</sub>(f) ≤ ‖f − Tf‖ ≤ (1 + ‖T‖)E<sub>n−m</sub>(f) for every f in the weighted space.
 
 **How the definition helps.** The two degree cutoffs give comparison polynomials for opposite sides of the estimate (our own). The output itself gives the lower bound (our own). Subtracting any preserved polynomial leaves the output error unchanged, so the triangle inequality gives the upper bound (our own). The paper proves a bound on ‖T‖ independent of n and m under additional weight and bandwidth conditions (our own).
 

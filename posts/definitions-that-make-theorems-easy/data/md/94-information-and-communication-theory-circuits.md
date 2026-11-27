@@ -24,7 +24,7 @@
 
 **Problem.** The joint entropy splits as H(X,Y) = H(X) + H(Y\|X). For many variables, the joint entropy is the sum of each entropy conditioned on the ones before.
 
-**How the definition helps.** Because p(x,y) = p(x)p(y\|x), the logarithm splits into two terms, and taking expectations gives the chain rule at once. The page says that the chain rule follows from the definition. The page also notes that it has the same form as the chain rule of probability, with addition in place of multiplication. Our own: the entropy of Y given one fixed value of X satisfies no such rule. The page also warns that this one-value entropy can be larger than H(Y). Only the average behaves well, and the page says it never exceeds H(Y).
+**How the definition helps.** Because p(x,y) = p(x)p(y\|x), the logarithm splits into two terms, and taking expectations gives the chain rule at once. The entropy of Y given one fixed value of X satisfies no such rule (our own). The page warns that this one-value entropy can exceed H(Y), while the average never does.
 
 **Wikipedia:** [Conditional entropy](https://en.wikipedia.org/wiki/Conditional_entropy). It says: “The chain rule follows from the above definition of conditional entropy”
 
@@ -38,9 +38,9 @@
 
 **Definition.** The information content, or surprisal, of an event with probability p is I(p) = −log p. Entropy is the expected information content of a random outcome.
 
-**Problem.** The information from two independent events is the sum of their information, and the entropy of independent random variables is additive. Conversely, the logarithm is the only twice continuously differentiable decreasing choice of I with I(1) = 0 and this additivity.
+**Problem.** The information from two independent events is the sum of their information, and the entropy of independent random variables is additive. Conversely, every twice continuously differentiable decreasing I with I(1) = 0 and this additivity is a constant multiple of −log p.
 
-**How the definition helps.** Independent probabilities multiply, and the logarithm turns products into sums, so additivity holds by definition. The page lists the required properties: I decreases, I(1) = 0, information from independent events adds, and I is twice continuously differentiable. It then says that these force I(u) = k log u. So the definition is not one choice among many but the only one. The choice of k is only the choice of unit, such as bits or nats. What stays hard is to justify the axioms themselves, which the page motivates by counting the bits needed to encode outcomes.
+**How the definition helps.** Independent probabilities multiply, and the logarithm turns products into sums, so additivity holds by definition. The page shows that the listed properties force I(u) = k log u with k &lt; 0. So the definition is the only choice, and k only fixes the unit, such as bits or nats.
 
 **Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “In fact, the only possible values of I are I(u) = k log u for k&lt;0.”
 
@@ -120,11 +120,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 94A17 (Measures of information, entropy), 62B10. arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** Mutual information I(X;Y) is the relative entropy (Kullback–Leibler divergence) of the joint distribution of X and Y from the product of their marginal distributions. Relative entropy measures how far one probability distribution is from another. For continuous variables, mutual information equals the limit of discrete mutual information over finer and finer partitions.
+**Definition.** Mutual information I(X;Y) is the relative entropy (Kullback–Leibler divergence) of the joint distribution of X and Y from the product of their marginal distributions. Relative entropy measures how far one probability distribution is from another.
 
-**Problem.** Carry the information measures of discrete variables over to continuous variables, and keep their meaning.
+**Problem.** For continuous variables, mutual information is the limit of discrete mutual information over finer and finer partitions, and it is unchanged by homeomorphisms of each variable. Differential entropy is not invariant: a change of units shifts it, and it can be negative.
 
-**How the definition helps.** Mutual information compares two distributions, so it does not depend on how you measure each variable. Differential entropy, the naive analogue of Shannon entropy, changes when the units change: it shifts by log 1000 from metres to millimetres. It can also be negative. Mutual information is the limit of discrete values, and it is invariant under homeomorphisms (continuous maps with continuous inverses) of each variable. So, in our own words, theorems such as channel capacity for continuous channels can be stated with mutual information. Relative entropy needs absolute continuity of one distribution with respect to the other: every set of probability zero under the second must have probability zero under the first.
+**How the definition helps.** Mutual information compares two distributions, so it does not depend on how you measure each variable. Differential entropy, the naive analogue of Shannon entropy, shifts by log 1000 when metres become millimetres. So, in our own words, theorems such as channel capacity for continuous channels can be stated with mutual information.
 
 **Wikipedia:** [Differential entropy](https://en.wikipedia.org/wiki/Differential_entropy), [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). It says: “Unlike the discrete analog, the differential entropy has an offset that depends on the units used to measure X.”
 
@@ -142,7 +142,7 @@
 
 **Problem.** With the convention, entropy is a continuous function on the whole set of probability distributions, including its boundary. Also, adding outcomes of probability zero does not change the entropy.
 
-**How the definition helps.** The convention fills the only gap in the formula with its limit value, so entropy has no exceptions at the edge of the simplex. The page says that the value 0 agrees with the limit. Our own: without it, the entropy of a point mass would be undefined. The fact that entropy is zero exactly for a certain outcome would then need special cases. Our own: the continuity axiom in the page's alternative characterization also needs this convention. What stays hard is the characterization itself, which shows that −Σ p log p is the only function with the listed properties.
+**How the definition helps.** The convention fills the only gap in the formula with its limit value, so entropy has no exceptions at the boundary of the simplex. Without it, the entropy of a point mass would be undefined (our own). The fact that entropy is zero exactly for a certain outcome would then need special cases (our own).
 
 **Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “the value of the corresponding summand ... is taken to be 0, which is consistent with the limit”
 
@@ -174,7 +174,7 @@
 
 **Problem.** For two independent channels used side by side, the capacity of the product channel equals the sum of the two capacities.
 
-**How the definition helps.** The formula turns capacity into an optimization of mutual information, and mutual information splits over independent parts, so additivity takes a short proof. The page proves one inequality with independent inputs. The other inequality uses the fact that, for the product channel, the mutual information of the joint output is at most the sum. Our own: with the operational definition, as a best rate of reliable codes, the same fact would need a coding argument. The noisy-channel coding theorem shows that the two definitions agree, and that is where the work is.
+**How the definition helps.** The formula turns capacity into an optimization of mutual information, which splits over independent parts. Independent inputs give one inequality. For the other, the mutual information of the joint output of the product channel is at most the sum of the two. With the operational definition, as a best rate of reliable codes, the same fact would need a coding argument (our own).
 
 **Wikipedia:** [Channel capacity](https://en.wikipedia.org/wiki/Channel_capacity). It says: “Channel capacity is additive over independent channels. It means that using two independent channels in a combined manner provides the same theoretical capacity as using them independently.”
 
@@ -224,7 +224,7 @@
 
 **Definition.** Let H be the entropy of the source. The typical set is the set of length-n sequences x whose probability lies between 2 to the power −n(H+ε) and 2 to the power −n(H−ε).
 
-**Problem.** Shannon's source coding theorem: you can compress n symbols from a source of entropy H to about nH bits, and not fewer.
+**Problem.** Shannon's source coding theorem says that n independent symbols from a source of entropy H can be compressed into about nH bits with error probability tending to zero, and not into fewer.
 
 **How the definition helps.** The definition turns compression into counting. By the asymptotic equipartition property, the typical set has probability close to 1 and contains about 2 to the power nH sequences. So an index of the typical sequences takes about nH bits. You can code the other sequences crudely at little cost. For independent identically distributed symbols, the asymptotic equipartition property is just the weak law of large numbers. The harder step is to prove it for stationary ergodic sources (the Shannon–McMillan–Breiman theorem).
 
@@ -296,7 +296,7 @@
 
 **Problem.** Assume finitely many public values and perfect correctness, so every honest opening succeeds. Such a commitment cannot have both properties.
 
-**How the definition helps.** Equal distributions force the two bits to share possible public values, whereas binding requires disjoint sets. Our own proof picks a value of positive probability for bit zero. It also has positive probability for bit one, and correctness supplies both openings. Our own comparison starts with the guessing definition of hiding. No observer can guess a fair bit with advantage. The work there is showing that unequal probabilities for even one event give an observer an advantage.
+**How the definition helps.** Equal distributions force the two bits to share possible public values, whereas binding requires disjoint sets. Pick a public value of positive probability for bit zero (our own). It also has positive probability for bit one, and correctness supplies openings to both bits (our own).
 
 **Wikipedia:** [Commitment scheme](https://en.wikipedia.org/wiki/Commitment_scheme). It says: “no commitment scheme can be at the same time perfectly binding and perfectly hiding”
 
@@ -446,7 +446,7 @@
 
 *True by definition.* MSC 94B05 (Linear codes (general theory)), 94B65. arXiv math.IT. Level 2: later undergraduate.
 
-**Definition.** The minimum distance of a linear code is the fewest nonzero entries in any nonzero codeword. For length n and dimension k, the Singleton bound says this distance is at most n − k + 1. A code attaining equality is maximum distance separable. A generator matrix has the vectors of a code basis as its rows.
+**Definition.** A linear code of length n and dimension k is maximum distance separable when its minimum distance attains the Singleton bound n − k + 1. Equivalently, every k columns of a generator matrix are linearly independent.
 
 **Problem.** If 0 &lt; k &lt; n, the dual of a maximum distance separable linear code is also maximum distance separable. The dual consists of all words orthogonal to the code.
 
@@ -686,7 +686,7 @@
 
 **Problem.** For a stationary process on a finite set of symbols, the conditional entropies never increase and converge to a limit. The joint entropy per symbol tends to the same limit.
 
-**How the definition helps.** The conditional definition makes convergence follow from monotonicity (our own). Stationarity means that shifting every time index leaves the joint laws unchanged (our own). Drop X₁ from the conditioning data and shift the indices back by one to compare consecutive terms (our own). Since conditioning cannot raise average entropy, the terms decrease and stay nonnegative (our own). The entropy chain rule makes the joint entropy per symbol the running average of these terms (our own). The work shifts to showing that conditioning reduces entropy and proving the chain rule (our own).
+**How the definition helps.** The conditional definition makes convergence follow from monotonicity (our own). Dropping X₁ from the conditioning data and shifting the indices by stationarity compares consecutive terms (our own). Since conditioning cannot raise average entropy, the terms decrease and stay nonnegative (our own). The chain rule makes the joint entropy per symbol the running average of these terms, so it has the same limit (our own).
 
 **Wikipedia:** [Entropy rate](https://en.wikipedia.org/wiki/Entropy_rate). It says: “For strongly stationary stochastic processes, the entropy rate equals the limit of that sequence”
 
@@ -772,7 +772,7 @@
 
 **Problem.** Among densities with those same finite means and finite entropy, p\* uniquely maximizes entropy, provided its entropy is finite. Here entropy means the average of minus the log density.
 
-**How the definition helps.** The exponential form makes the entropy gap equal relative entropy, which cannot be negative (our own). Since log p\* is a constant plus a linear combination of the constrained functions, its average is the same under q and p\* (our own). Thus H(p\*) − H(q) = D(q‖p\*), the average under q of log(q/p\*) (our own). This is zero only when the densities agree almost everywhere, by Gibbs’ inequality (our own). The usual variation proof looks for a stationary density first. The work here shifts to finding coefficients that meet the means, which need not exist for arbitrary targets (our own).
+**How the definition helps.** The exponential form makes the entropy gap equal relative entropy, which cannot be negative (our own). Since log p\* is a constant plus a linear combination of the constrained functions, its average is the same under q and p\*, so H(p\*) − H(q) = D(q‖p\*) (our own). This is zero only when the densities agree almost everywhere, by Gibbs’ inequality (our own). The work shifts to finding coefficients that meet the means, which need not exist for arbitrary targets (our own).
 
 **Wikipedia:** [Maximum entropy probability distribution](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution). It says: “In the case of equality constraints, this theorem is proved with the calculus of variations and Lagrange multipliers.”
 
@@ -840,7 +840,7 @@
 
 **Problem.** Relative entropy is jointly convex in P and Q. On a complete separable metric space, it is also lower semicontinuous under weak convergence. This means the value at the limit cannot exceed the lower limit of the values when both laws converge against bounded continuous tests.
 
-**How the definition helps.** The supremum formula gives both properties from the corresponding properties of each term (our own). For fixed g, its term is linear in P and convex in Q because negative log is convex (our own). Bounded continuous functions suffice on this metric space, and for them each term is continuous under weak convergence (our own). The work shifts to proving equality with the density formula, including the restriction to bounded continuous functions (our own). The quoted paper uses a related supremum for its rate function, not the general two-law claim.
+**How the definition helps.** The supremum formula gives both properties from the corresponding properties of each term (our own). For fixed g, its term is linear in P and convex in Q because negative log is convex (our own). Bounded continuous functions suffice on this metric space, and for them each term is continuous under weak convergence (our own). The work shifts to proving equality with the density formula, including the restriction to bounded continuous functions (our own).
 
 **Wikipedia:** [F-divergence](https://en.wikipedia.org/wiki/F-divergence), [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). It says: “D<sub>KL</sub>(P; Q) = sup<sub>g</sub> E<sub>P</sub>\[g(X)\] − ln E<sub>Q</sub>\[e<sup>g(X)</sup>\].”
 
@@ -890,7 +890,7 @@
 
 **Definition.** A tree model chooses one variable as its root and gives every other variable one parent. Multiply the root probability by the probability of each child given its parent. Measure the approximation error by relative entropy. This is the mean log ratio of original probability to model probability, averaged under the original law.
 
-**Problem.** For a finite joint law, choose a tree connecting all variables with the largest total edge weight. Each edge weight is mutual information, the relative entropy of its pair’s law against the product of their individual laws. Use the original root and conditional probabilities wherever the parent has positive probability.
+**Problem.** For a finite joint law, a tree model has the least relative entropy error when its tree has the largest total edge weight, with each edge weighted by the mutual information of its pair. The model then uses the original root and conditional probabilities.
 
 **How the definition helps.** The tree product turns the log probability into a sum with one term per child and one for the root. Our own fixed-tree argument minimizes each term separately using nonnegativity of relative entropy. Substituting the optimal probabilities leaves a constant minus the sum of edge weights. Thus a tree with maximum weight gives minimum error.
 
@@ -1062,9 +1062,9 @@
 
 **Definition.** An encryption scheme is semantically secure if no efficient algorithm learns anything about a message from its ciphertext beyond its length. Efficient means probabilistic polynomial time. In the indistinguishability game, an adversary picks two messages of equal length and gets the encryption of one at random. The scheme is indistinguishable if no adversary guesses which one with probability much above one half.
 
-**Problem.** Show that a concrete scheme, such as Goldwasser–Micali or ElGamal, hides all partial information about its messages. Goldwasser and Micali proved that semantic security and indistinguishability are equivalent.
+**Problem.** Semantic security and indistinguishability are equivalent, as Goldwasser and Micali proved. So a proof that the indistinguishability game is hard for a scheme shows that it hides all partial information about its messages.
 
-**How the definition helps.** The indistinguishability game names one concrete task, so a security proof only has to show that this one task is hard. Semantic security speaks about every distribution of messages and every kind of partial information, which is hard to check directly. With the equivalence theorem, a reduction from a hard problem to the two-message game gives semantic security at once. The work moves into the equivalence theorem, which Goldwasser and Micali proved. The page also notes that the game forces encryption to use randomness. A deterministic public-key scheme fails, because the adversary can encrypt both messages itself and compare. Neither notion covers attackers who may ask for decryptions, which need stronger definitions.
+**How the definition helps.** The indistinguishability game names one concrete task, so a security proof only has to show that this one task is hard. Semantic security speaks about every distribution of messages and every kind of partial information, which is hard to check directly. The work moves into the equivalence theorem. The game also forces encryption to use randomness, because a deterministic public-key scheme fails when the adversary encrypts both messages itself.
 
 **Wikipedia:** [Semantic security](https://en.wikipedia.org/wiki/Semantic_security). It says: “This latter definition is more common than the original definition of semantic security because it better facilitates proving the security of practical cryptosystems.”
 
@@ -1080,9 +1080,9 @@
 
 **Definition.** A function μ on the natural numbers is negligible if, for every positive polynomial p, \|μ(n)\| &lt; 1/p(n) for all large n. Cryptography uses it to say that an attack succeeds with essentially zero probability, as a function of the key length n.
 
-**Problem.** A security proof often runs an attacker many times or adds up many small error terms. The total error must stay small in the same sense.
+**Problem.** If μ is negligible and p is a positive polynomial, then p(n)μ(n) is negligible. So an attack repeated polynomially many times still succeeds only with negligible probability.
 
-**How the definition helps.** The definition is matched to polynomial-time attackers, so negligible functions stay negligible when multiplied by any polynomial. Thus polynomially many repeats, or a sum of polynomially many negligible terms, are still negligible. A fixed bound such as 1/n² has no such closure property (our own example). For instance, n³ independent tries that each succeed with probability 1/n² succeed almost surely for large n (our own). This closure lets theorems say simply secure or not secure, with no constants to track. What stays hard is concrete security, because the asymptotic statement says nothing about one fixed key length, as the page notes.
+**How the definition helps.** The definition is matched to polynomial-time attackers, so negligible functions stay negligible after multiplication by any polynomial. A fixed bound such as 1/n² has no such closure property (our own example). For instance, n³ independent tries that each succeed with probability 1/n² succeed almost surely for large n (our own). This closure lets theorems say simply secure or not secure, with no constants to track.
 
 **Wikipedia:** [Negligible function](https://en.wikipedia.org/wiki/Negligible_function). It says: “if an attack succeeds in violating a security condition only with negligible probability, and the attack is repeated a polynomial number of times, the success probability of the overall attack still remains negligible.”
 
@@ -1098,9 +1098,9 @@
 
 **Definition.** A family of bit strings passes the next-bit test if no efficient algorithm predicts the next bit from the earlier bits noticeably better than chance. Yao's test, the general definition of pseudorandomness, asks that no efficient algorithm can tell the strings from truly random strings at all.
 
-**Problem.** To prove that a generator is pseudorandom, one must defeat every efficient distinguisher. That is a quantifier over all possible tests.
+**Problem.** A family of bit strings that passes the next-bit test also passes Yao's test. So no efficient algorithm can tell it from truly random strings.
 
-**How the definition helps.** The next-bit test speaks about one kind of attacker only, so a proof for a concrete generator rules out one prediction task. Yao's theorem says this is enough, so pseudorandomness reduces to unpredictability. The work moves into Yao's theorem, which uses a hybrid argument. One walks from the real string to a random one, one bit at a time (our own summary). A distinguisher must notice some step, and that step gives a predictor. Generators such as the Blum–Micali generator are then proved secure by showing each next bit is hard to predict (our own).
+**How the definition helps.** The next-bit test speaks about one kind of attacker only, so a proof for a concrete generator rules out one prediction task. The work moves into Yao's theorem, which uses a hybrid argument that walks from the real string to a random one, one bit at a time (our own summary). A distinguisher must notice some step, and that step gives a predictor.
 
 **Wikipedia:** [Next-bit test](https://en.wikipedia.org/wiki/Next-bit_test). It says: “The next-bit test is a particular case of Yao's test for random sequences, and passing it is therefore a necessary condition for passing Yao's test. However, it has also been shown a sufficient condition by Yao.”
 
@@ -1134,9 +1134,9 @@
 
 **Definition.** In a proof of an NP statement, the prover holds a witness, such as a satisfying assignment of a formula. A proof is witness indistinguishable if no verifier can tell which of two valid witnesses the prover used. Zero knowledge asks for more: an efficient simulator that knows no witness can produce everything the verifier sees.
 
-**Problem.** Proofs are often run many times at once to make cheating less likely. One wants the secrecy guarantee to hold for the combined protocol.
+**Problem.** Witness indistinguishability is preserved when a proof is run many times in parallel. Zero knowledge is not always preserved in this way.
 
-**How the definition helps.** Witness indistinguishability carries over from one run to many parallel runs, by changing one witness at a time. So parallel composition holds with no exception (our own sketch of the Feige–Shamir proof). Zero knowledge has no such theorem. Goldreich and Krawczyk showed that some zero-knowledge proofs stop being zero knowledge when run in parallel (our own; not on the page). The weaker definition gives something up. When the statement has only one witness, witness indistinguishability promises nothing, as the page notes. Feige and Shamir use statements with two independent witnesses to get witness hiding proofs from it.
+**How the definition helps.** Witness indistinguishability compares two runs that differ only in the witness, so many parallel runs can be changed one witness at a time (our own sketch of the Feige–Shamir proof). Zero knowledge has no such theorem. Goldreich and Krawczyk showed that some zero-knowledge proofs stop being zero knowledge when run in parallel (our own; not on the page). The price is that witness indistinguishability promises nothing when the statement has only one witness.
 
 **Wikipedia:** [Witness-indistinguishable proof](https://en.wikipedia.org/wiki/Witness-indistinguishable_proof). It says: “Unlike zero-knowledge proofs, they remain secure when multiple proofs are being performed in parallel.”
 
@@ -1152,9 +1152,9 @@
 
 **Definition.** An interactive proof is zero knowledge if, for each efficient verifier, an efficient simulator can produce the verifier's view from the true statement alone. No efficient test can tell the simulated view from the real one. In the auxiliary-input version, the verifier and the simulator also get an arbitrary string z, the verifier's prior knowledge. The simulation must work for every z.
 
-**Problem.** Proofs are often repeated one after another to reduce the chance of cheating. One wants the repeated proof to stay zero knowledge.
+**Problem.** If a proof is zero knowledge with auxiliary input, then running it polynomially many times in sequence is still zero knowledge.
 
-**How the definition helps.** A verifier in the second proof can treat all it saw in the first proof as prior knowledge (our own summary). So the auxiliary-input definition covers it, and the simulations can be chained. Goldreich and Oren proved that auxiliary-input zero knowledge is closed under sequential composition (our own; not on the page). They also showed that the original definition without auxiliary input is not closed in this way, under a reasonable assumption (our own). The page explains the point of z: a verifier cannot use prior knowledge to extract information, because the simulator gets it too. Parallel and concurrent composition stay hard and need other ideas (our own).
+**How the definition helps.** A verifier in a later run can treat everything it saw in earlier runs as prior knowledge (our own summary). So the auxiliary-input definition covers it, and the simulations can be chained. Goldreich and Oren proved this closure (our own; not on the page). They also showed that the definition without auxiliary input is not closed in this way, under a reasonable assumption (our own).
 
 **Wikipedia:** [Zero-knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof). It says: “The auxiliary string z in the definition plays the role of "prior knowledge" (including the random coins of V̂).”
 
@@ -1221,9 +1221,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 94B05 (Linear codes (general theory)). arXiv math.IT. Level 3: graduate.
 
-**Definition.** A binary code’s weight enumerator sums a monomial for each word. Give each zero a factor x and each one a factor y, reversing the source’s variable names. Regard the monomial as a product of one-bit functions.
+**Definition.** The weight enumerator of a binary code sums one monomial for each word. The monomial has a factor x for each zero and a factor y for each one, so it is a product of one-bit factors.
 
-**Problem.** If C is a binary linear code, substitute x + y and x − y for x and y in its enumerator. Divide by the size of C to get the enumerator of its dual, the words orthogonal to C.
+**Problem.** For a binary linear code C, substitute x + y for x and x − y for y in its weight enumerator, then divide by the size of C. The result is the weight enumerator of the dual code, the words orthogonal to C.
 
 **How the definition helps.** The polynomial records all weight counts in one substitution. Our own proof weights each binary word by multiplying x for every zero and y for every one. For a fixed word u, multiply each weight by the sign (−1) raised to the dot product with u. Summing over all words gives a factor x + y at each zero of u and x − y at each one. Averaging the signs over u in C leaves one on words orthogonal to C and zero elsewhere.
 
@@ -1363,9 +1363,9 @@
 
 **Definition.** A black-box obfuscator rewrites a program so that its code reveals nothing beyond what one learns by running it on inputs. An indistinguishability obfuscator asks for less. If two circuits of the same size compute the same function, no efficient algorithm can tell their obfuscations apart.
 
-**Problem.** One wants a notion of obfuscation that is not ruled out for all circuits and is still useful for building cryptography.
+**Problem.** Barak et al. showed that black-box obfuscation is impossible for some programs. Their counterexample does not apply to indistinguishability obfuscation, and an inefficient indistinguishability obfuscator exists for all circuits.
 
-**How the definition helps.** The weaker definition only compares programs with the same input–output behaviour, so the unobfuscatable programs of Barak et al. are no longer a counterexample. Those programs hide a secret that any code for them gives away, so black-box obfuscation is impossible in general. Indistinguishability obfuscation survives: Barak et al. noted that an inefficient one exists, namely the first circuit in a fixed order that computes the same function. Candidate constructions came much later. The first rested on an assumption about multilinear maps, a kind of encoding that allows limited multiplication, and that assumption was later broken. Jain, Lin and Sahai used well-studied assumptions in 2020. Using such a weak guarantee needed new proof techniques (our own).
+**How the definition helps.** The weaker definition only compares programs with the same input–output behaviour, so the unobfuscatable programs of Barak et al. are no longer a counterexample. Those programs hide a secret that any code for them gives away. The inefficient obfuscator outputs the first circuit, in a fixed order, that computes the same function. Efficient candidates came much later, and Jain, Lin and Sahai built one from well-studied assumptions in 2020.
 
 **Wikipedia:** [Indistinguishability obfuscation](https://en.wikipedia.org/wiki/Indistinguishability_obfuscation), [Black-box obfuscation](https://en.wikipedia.org/wiki/Black-box_obfuscation). It says: “Barak et al. constructed a family of unobfuscatable programs, for which an efficient attacker can always learn more from any obfuscated code than from black-box access.”
 
@@ -1383,7 +1383,7 @@
 
 **Problem.** The universal composition theorem says that a secure protocol stays secure as a part of any other protocol, next to any other protocols. Stand-alone definitions of security give no such guarantee.
 
-**How the definition helps.** Because the environment may be any efficient program, it can play the part of any larger system around the protocol. So a protocol that fools every environment also fools every surrounding system. Canetti's proof makes the rest of the system part of the environment (our own summary). The page notes that no bit commitment protocol is universally composable without set-up assumptions. Bit commitment lets a party fix a bit now and reveal it later. So extra assumptions are needed, such as a shared random string, which the page calls a common reference string.
+**How the definition helps.** Because the environment may be any efficient program, it can play the part of any larger system around the protocol. So a protocol that fools every environment also fools every surrounding system. Canetti's proof makes the rest of the system part of the environment (our own summary). The price is that some tasks, such as bit commitment, need set-up assumptions like a common reference string.
 
 **Wikipedia:** [Universal composability](https://en.wikipedia.org/wiki/Universal_composability). It says: “Protocols remain secure even if arbitrarily composed with other instances of the same or other protocols.”
 
@@ -1435,7 +1435,7 @@
 
 **Problem.** For two matrices of the same size, the subspace distance between their graphs is twice their rank distance. The subspace distance of two spaces is the sum of their dimensions minus twice the dimension of their intersection.
 
-**How the definition helps.** With the graph view, the intersection of two graphs is the graph over the kernel of A − B. Rank and nullity then give its dimension, and the distance formula gives twice the rank. The work goes into checking that the graph equals the row space of \[I A\]. The data set states the result as a proposition of Silva and coauthors. The proof is our own.
+**How the definition helps.** With the graph view, the intersection of two graphs is the graph over the kernel of A − B. Rank and nullity then give its dimension, and the distance formula gives twice the rank (our own). The work goes into checking that the graph equals the row space of \[I A\].
 
 **Paper or page:** [On the list decodability of rank-metric codes containing Gabidulin codes](https://arxiv.org/abs/2103.07547v1). It says: “is a constant dimension subspace code with parameters”
 

@@ -6,9 +6,9 @@
 
 **Definition.** In correct Boltzmann counting, states of identical particles that differ only by a permutation of the particles count as one state. For N particles, this divides the phase-space volume by N!.
 
-**Problem.** Entropy should be extensive, that is, proportional to the amount of gas. Two identical boxes of gas should have twice the entropy of one box, and opening a door between them should not change the entropy.
+**Problem.** With correct Boltzmann counting, the classical entropy of an ideal gas is extensive, that is, proportional to the amount of gas. Two identical boxes of gas have twice the entropy of one box, and opening a door between them does not change the entropy.
 
-**How the definition helps.** Dividing by N! removes an extra term from the entropy, so the entropy becomes extensive. Without the factor 1/N!, the classical entropy of an ideal gas has an extra N ln N term. Then mixing two identical gases raises the entropy, and closing the partition again lowers it, against the second law. Dividing by N! and using Stirling's formula gives the extensive Sackur–Tetrode entropy. Jaynes argues that a definition of entropy depends on what an experiment can distinguish. So, for Jaynes, the factor follows from the choice of macroscopic description, and quantum indistinguishability is a guarantee. What stays debated is whether the classical reason or the quantum reason is the right one.
+**How the definition helps.** Dividing by N! removes an extra N ln N term from the classical entropy of an ideal gas. Without the factor, mixing two identical gases raises the entropy, and closing the partition again lowers it, against the second law. With it, Stirling's formula gives the extensive Sackur–Tetrode entropy. Whether the factor rests on the choice of macroscopic description, as Jaynes argues, or on quantum indistinguishability is still debated.
 
 **Wikipedia:** [Gibbs paradox](https://en.wikipedia.org/wiki/Gibbs_paradox). It says: “The paradox is averted by assuming the indistinguishability (at least effective indistinguishability) of the particles in the volume.”
 
@@ -254,7 +254,7 @@
 
 **Problem.** On the full matrix algebra of a finite system, at β &gt; 0, the unique state satisfying this condition is the normalized exp(−βH).
 
-**How the definition helps.** Testing every pair of matrices fixes the energy weights that stationarity alone leaves free. In our own proof, write ω(A) = tr(ρA), where ρ is positive semidefinite with trace one. Setting A = I and cycling the trace shows that ρ commutes with exp(βH). Varying A and B then shows that exp(βH)ρ commutes with every matrix, so it is scalar. Normalizing gives the Gibbs matrix, and cycling the trace verifies the condition. Our own counterexample is the uniform state for H with two distinct energies. It stays stationary but gives both energies the same weight.
+**How the definition helps.** Testing every pair of matrices fixes the energy weights that stationarity alone leaves free. In our own proof, write ω(A) = tr(ρA); the condition then forces exp(βH)ρ to commute with every matrix, so it is scalar. Normalizing gives the Gibbs matrix. Our own counterexample is the uniform state for H with two distinct energies, which is stationary but gives both energies the same weight.
 
 **nLab:** [KMS state](https://ncatlab.org/nlab/show/KMS+state). It says: “The final formulation of the KMS condition, now widely accepted, is due to Haag-Hugenholtz-Winnink 67.”
 
@@ -345,9 +345,9 @@
 
 **Definition.** A Gibbs measure on an infinite lattice is a probability measure on configurations with one property. Inside every finite region, given the configuration outside, its conditional distribution is the finite-volume Boltzmann distribution. These are the Dobrushin–Lanford–Ruelle conditions. (The Boltzmann distribution gives a configuration of energy E the probability exp(−βE)/Z, where β is the inverse temperature and Z makes the total equal to 1.)
 
-**Problem.** We want to state what a phase transition is for an infinite system. There the total energy is infinite, and the usual Boltzmann formula has no meaning.
+**Problem.** For an infinite lattice system, a phase transition is the existence of more than one Gibbs measure for the same interaction. For a finite system there is always exactly one.
 
-**How the definition helps.** The definition uses only energies of finite regions, so it applies directly to the infinite system. The finite-volume formula exp(−βE)/Z cannot be used when E is infinite. A phase transition can then be stated as the existence of more than one Gibbs measure for the same interaction. For a finite system, there is always exactly one. Proving non-uniqueness for a given model remains hard.
+**How the definition helps.** The definition uses only energies of finite regions, so it applies even though the total energy of the infinite system is infinite. There the formula exp(−βE)/Z has no meaning. Proving non-uniqueness for a given model remains hard.
 
 **Wikipedia:** [Gibbs measure](https://en.wikipedia.org/wiki/Gibbs_measure). It says: “The existence of more than one Gibbs measure is associated with statistical phenomena such as symmetry breaking and phase coexistence.”
 
@@ -402,7 +402,7 @@
 
 **Problem.** The total variation distance between the two laws on a set of sites is at most the sum of the single-site distances. Total variation distance is the largest probability difference over events.
 
-**How the definition helps.** With ordered binary spins, disagreement at one site has probability equal to the difference between the two probabilities of +1 (our own). This equals the single-site total variation distance (our own). Any event on the region can differ only if some site disagrees (our own). Summing the site probabilities replaces a direct search over all regional events (our own). The existence of the ordered coupling uses the ordering theorem for ferromagnetic spins (our own).
+**How the definition helps.** With ordered binary spins, disagreement at one site has probability equal to the single-site total variation distance (our own). Any event on the region can differ only if some site disagrees (our own). Summing the site probabilities replaces a direct search over all regional events (our own). The existence of the ordered coupling uses the ordering theorem for ferromagnetic spins (our own).
 
 **Paper or page:** [Fast relaxation of the random field Ising dynamics](https://arxiv.org/abs/2311.06171v2). It says: “Consider two subsets of vertices Δ ⊂ Δ′ ⊆ V”
 
@@ -492,9 +492,9 @@
 
 **Definition.** A phase transition is a point where the thermodynamic free energy is not an analytic function of the thermodynamic variables, such as temperature. (An analytic function is one that is given near each point by a convergent power series.)
 
-**Problem.** Statistical mechanics should explain sharp phase transitions. But for a finite system, the partition function (the sum of the Boltzmann weights over all states) is smooth.
+**Problem.** For a finite system, the free energy is an analytic function of temperature. So a phase transition can occur only in the limit of infinitely many particles.
 
-**How the definition helps.** The definition makes clear that sharp transitions can appear only in the limit of infinitely many particles. Our own step: for a finite system, the partition function is a finite sum of exponentials. So the free energy is analytic and has no sharp transition. Lee and Yang made this precise. The zeros of the partition function in the complex plane can approach the real axis only in that limit. What stays hard is to prove that a given model has such a point, as Onsager did for the two-dimensional Ising model (a grid of spins that each point up or down).
+**How the definition helps.** The definition turns a sharp transition into a failure of analyticity, which a finite system cannot have. Our own step: the partition function of a finite system is a finite sum of positive exponentials, so its logarithm is analytic. Lee and Yang made this precise: the complex zeros of the partition function can approach the real axis only in that limit. What stays hard is to prove that a given model has such a point, as Onsager did for the two-dimensional Ising model.
 
 **Wikipedia:** [Phase transition](https://en.wikipedia.org/wiki/Phase_transition). It says: “Phase transitions occur when the thermodynamic free energy of a system is non-analytic for some choice of thermodynamic variables”
 
@@ -761,9 +761,9 @@
 
 **Definition.** Give each vertex of a regular tree an integer height. A boundary law assigns branch weights that agree with the weights obtained by summing over each child height. Call the law normalizable if the resulting weights at each vertex sum to a finite number.
 
-**Problem.** Suppose the edge weight is a positive summable function of the difference between the two heights. A constant positive boundary law solves the branch recursion up to scale but gives no probability distribution for the height at a vertex.
+**Problem.** A normalizable boundary law defines a unique tree-indexed Markov chain in the set of Gibbs measures. Normalizability is needed: when the edge weight is a positive summable function of the height difference, a constant positive boundary law solves the recursion but gives no probability distribution at a vertex.
 
-**How the definition helps.** The interaction and the constant message give the same positive weight to every integer height (our own). Those weights cannot be normalized, even though the constant message solves the recursion on a regular tree (our own). The boundary-law theorem carries the existence proof once the finite-sum condition holds (our own).
+**How the definition helps.** Normalizability gives a finite sum at each vertex, which turns branch weights into probabilities. The constant message gives the same positive weight to every integer height, so these weights cannot be normalized (our own). The boundary-law theorem carries the existence proof once the finite-sum condition holds (our own).
 
 **Paper or page:** [Gradient Gibbs measures with periodic boundary laws of a generalized SOS model on a Cayley tree](https://arxiv.org/abs/2309.00867v1). It says: “defines a unique tree-indexed Markov chain μ ∈ 𝒢(γ)”
 

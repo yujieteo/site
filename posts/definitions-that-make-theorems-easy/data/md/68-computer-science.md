@@ -24,7 +24,7 @@
 
 **Problem.** The graph of groups has no directed cycles.
 
-**How the definition helps.** In our own argument, a cycle of groups would make any two vertices on it mutually reachable. In our own argument, paths inside each group connect the ends of edges between groups. The work moves to finding the mutual reachability groups before ordering the groups so all edges go forward.
+**How the definition helps.** A cycle of groups would make any two vertices on it mutually reachable, because paths inside each group connect the ends of the edges between groups (our own). So all of them would lie in one group. The work moves to finding the groups before ordering them so that all edges go forward.
 
 **Wikipedia:** [Strongly connected component](https://en.wikipedia.org/wiki/Strongly_connected_component). It says: “If each strongly connected component is contracted to a single vertex, the resulting graph is a directed acyclic graph”
 
@@ -38,7 +38,7 @@
 
 **Definition.** Give every edge of a finite directed graph a nonnegative length. This allows zero-length edges and rules out paths that become cheaper when extended.
 
-**Problem.** Start at one source. Dijkstra’s algorithm tracks the shortest distance found so far to each vertex. Among unfinished vertices, it can permanently accept the smallest finite distance.
+**Problem.** With nonnegative edge lengths, Dijkstra’s algorithm can permanently accept the unfinished vertex with the smallest tentative distance from the source. That distance is the true shortest distance.
 
 **How the definition helps.** Nonnegative lengths make every prefix of a path cost at most the whole path. In our own proof, after accepting the source, consider a shorter competing path and its first unfinished vertex. Processing its finished predecessor would have offered that vertex a distance smaller than the chosen minimum. For our own counterexample, take edges from s to a and b of lengths 2 and 3. An edge of length −2 from b to a makes accepting distance 2 too early.
 
@@ -270,9 +270,9 @@
 
 **Definition.** The class L contains the decision problems that a deterministic Turing machine solves using a logarithmic amount of writable memory. The machine reads its input from a separate tape that it cannot write on. Only the cells used on the work tape count as space.
 
-**Problem.** One wants space classes below linear space, such as L and NL, and theorems about them, such as L ⊆ P. If the input sat on the work tape, every machine would use at least linear space.
+**Problem.** With a read-only input tape, space classes below linear space, such as L and NL, are meaningful, and L ⊆ P. If the input sat on the work tape, every machine would use at least linear space.
 
-**How the definition helps.** Separating the read-only input from the work tape means that space measures only memory the machine writes, so sublinear bounds make sense. A log-space machine can then hold a fixed number of pointers into the input, as the page says. It has only polynomially many configurations, so it runs in polynomial time. The page gives this argument for L ⊆ P. The same set-up defines log-space reductions, used for P-completeness and NL-completeness (our own). What stays hard is the separation questions, such as whether L equals P, which are open.
+**How the definition helps.** Space then measures only the memory the machine writes, so sublinear bounds make sense. A log-space machine holds a fixed number of pointers into the input. It has only polynomially many configurations, so it runs in polynomial time, which gives L ⊆ P. The same set-up defines log-space reductions (our own).
 
 **Wikipedia:** [L (complexity)](https://en.wikipedia.org/wiki/L_%28complexity%29). It says: “Formally, the Turing machine has two tapes, one of which encodes the input and can only be read, whereas the other tape has logarithmic size but can be written as well as read.”
 
@@ -304,7 +304,7 @@
 
 **Problem.** If one NP-complete problem has a polynomial-time algorithm, then every problem in NP has one. So P = NP exactly when a single NP-complete problem is in P.
 
-**How the definition helps.** The theorem follows at once from the definition, because polynomial-time reductions compose. To solve a problem in NP, reduce it to C and then run the fast algorithm for C. The P versus NP question itself is still open. The hard part is the Cook–Levin theorem, which shows that an NP-complete problem exists at all. That problem is Boolean satisfiability: decide whether some assignment of true and false makes a logical formula true. After the Cook–Levin theorem, each new NP-completeness proof needs only one reduction, as in Karp's list of 21 NP-complete problems.
+**How the definition helps.** The theorem follows at once from the definition, because polynomial-time reductions compose. To solve a problem in NP, reduce it to C and then run the fast algorithm for C. The hard part is the Cook–Levin theorem, which shows that an NP-complete problem, Boolean satisfiability, exists at all. After it, each new NP-completeness proof needs only one reduction.
 
 **Wikipedia:** [NP-completeness](https://en.wikipedia.org/wiki/NP-completeness). It says: “Hence, if we could find valid solutions of some NP-complete problem quickly (when they exist), we could quickly find valid solutions for every other problem in which a given solution can be easily verified.”
 
@@ -340,7 +340,7 @@
 
 **Problem.** If the grammar has m placeholders, take a word of length greater than 2ᵐ⁻¹. Some placeholder must occur twice along one path in its derivation tree.
 
-**How the definition helps.** The binary form bounds the number of letters a tree of a given height can produce (our own). A path with at most m placeholders has at most m − 1 branching steps before its final letter (our own). If every path is that short, the word has at most 2ᵐ⁻¹ letters (our own). A longer path repeats a placeholder, so the derivation between its two occurrences can be repeated. An unrestricted grammar can have rules with longer right-hand sides, so this binary bound does not apply (our own). The work moves to proving that context-free grammars can be converted to this form.
+**How the definition helps.** The binary form bounds the number of letters a tree of a given height can produce (our own). If no placeholder repeats on a path, the path has at most m − 1 branching steps, so the word has at most 2ᵐ⁻¹ letters (our own). A longer word therefore has a path that repeats a placeholder. The work moves to proving that context-free grammars can be converted to this form.
 
 **Wikipedia:** [Pumping lemma for context-free languages](https://en.wikipedia.org/wiki/Pumping_lemma_for_context-free_languages), [Chomsky normal form](https://en.wikipedia.org/wiki/Chomsky_normal_form). It says: “If s is sufficiently long, its derivation tree w.r.t. a Chomsky normal form grammar must contain some nonterminal N twice on some tree path”
 
@@ -358,7 +358,7 @@
 
 **Problem.** Context-free languages are closed under union, concatenation and Kleene star. The star operation takes all finite concatenations, including the empty word.
 
-**How the definition helps.** The grammar definition lets fresh start rules choose or join derivations (our own). First rename the placeholders so that the two grammars share none (our own). For union, let the new start S produce either old start S₁ or S₂ (our own). For concatenation, use S → S₁S₂ (our own). For star, use S → S₁S or S → ε, where ε is the empty word (our own). With pushdown automata, these constructions must also manage the stack at the boundaries (our own). The work moves into proving that pushdown automata and grammars give the same languages (our own).
+**How the definition helps.** The grammar definition lets a fresh start rule choose or join derivations (our own). After renaming the placeholders so the grammars share none, use S → S₁ \| S₂ for union, S → S₁S₂ for concatenation, and S → S₁S \| ε for star (our own). With pushdown automata, these constructions must also manage the stack at the boundaries (our own). The work moves into proving that pushdown automata and grammars give the same languages (our own).
 
 **Wikipedia:** [Context-free language](https://en.wikipedia.org/wiki/Context-free_language). It says: “the union of two context-free languages is always context-free.”
 
@@ -426,7 +426,7 @@
 
 **Problem.** The generating function for the number of accepted words of each length is rational for every regular language.
 
-**How the definition helps.** In our own proof, determinism makes each accepted word count exactly once among paths from the start to an accepting state. If M counts letters on transitions, its nth power counts paths of length n. Weight each path by one factor of z per letter. Summing all lengths gives the inverse of I − zM, whose entries are rational functions of z. The start row and accepting columns give the required series. The equivalence with deterministic automata lets this proof cover languages given by regular expressions.
+**How the definition helps.** Determinism makes each accepted word count exactly once among paths from the start to an accepting state (our own). If M counts letters on transitions, the nth power of M counts paths of length n. Summing zⁿMⁿ over all n gives the inverse of I − zM, whose entries are rational in z. The start row and accepting columns of this matrix give the series.
 
 **Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “The generating function of a language L is a rational function if L is regular.”
 
@@ -442,7 +442,7 @@
 
 **Problem.** The complement of every deterministic context-free language is deterministic context-free.
 
-**How the definition helps.** In our own explanation, determinism gives one decision to reverse once every run finishes. A normal-form theorem supplies an equivalent machine that reads through an end marker and always decides. Swapping its decisions then recognizes the complement. For our own counterexample without determinism, take all words over a, b and c except those of the form aⁿbⁿcⁿ for n ≥ 0. A stack machine can detect a wrong letter order or guess which adjacent block counts differ. Its complement is the standard example of a language no pushdown automaton recognizes.
+**How the definition helps.** Determinism gives one decision to reverse once every run finishes (our own). A normal-form theorem supplies an equivalent machine that reads to an end marker and always decides, so swapping its decisions recognizes the complement. Without determinism this fails (our own). All words over a, b and c except those of the form aⁿbⁿcⁿ form a context-free language whose complement is not context-free.
 
 **Wikipedia:** [Deterministic context-free language](https://en.wikipedia.org/wiki/Deterministic_context-free_language). It says: “The set of deterministic context-free languages is closed under the following operations: complement”
 
@@ -474,7 +474,7 @@
 
 **Problem.** The intersection of a context-free language and a regular language is context-free.
 
-**How the definition helps.** The automaton definition leaves room for a second machine in the finite control without adding a stack (our own). Pair each pushdown state with a state of a deterministic finite automaton for the regular language (our own). Update both states on a letter, but keep the finite automaton still on moves that read nothing (our own). Accept if both machines accept (our own). The grammar proof instead tracks the start and end automaton states for each placeholder’s output (our own). The work moves to proving that the two definitions of context-free language agree (our own).
+**How the definition helps.** The automaton definition leaves room for a second machine in the finite control without adding a stack (our own). Pair each pushdown state with a state of a deterministic finite automaton for the regular language, and accept when both accept (our own). On moves that read no letter, the finite automaton stays still (our own). The work moves to proving that the two definitions of context-free language agree (our own).
 
 **Wikipedia:** [Context-free language](https://en.wikipedia.org/wiki/Context-free_language). It says: “However, if L is a context-free language and D is a regular language then both their intersection L∩D and their difference L∖D are context-free languages.”
 
@@ -490,7 +490,7 @@
 
 **Problem.** The image of a regular language under any string homomorphism is regular.
 
-**How the definition helps.** Our own explanation is that replacing letters commutes with union, concatenation and taking all finite repetitions. Induction on the expression then identifies the new language with the image, by our own explanation. Kleene’s theorem carries the work of relating the expression proof to finite automata, by our own explanation.
+**How the definition helps.** Replacing letters commutes with union, concatenation and repetition (our own). So induction on the expression shows that the new expression describes the image (our own). Kleene’s theorem carries the work of relating this proof to finite automata (our own).
 
 **Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “the trio operations: string homomorphism, inverse string homomorphism, and intersection with regular languages.”
 
@@ -536,9 +536,9 @@
 
 **Definition.** Fix a language L, a set of strings. Two strings x and y are Nerode equivalent if, for every string z, xz is in L exactly when yz is in L. This is an equivalence relation defined from L alone, with no automaton in sight.
 
-**Problem.** The theorem says L is regular exactly when the Nerode relation has finitely many classes. The number of classes is the number of states of the minimal deterministic automaton, which is unique up to isomorphism.
+**Problem.** A language L is regular exactly when the Nerode relation has finitely many classes. The number of classes is then the number of states of the minimal deterministic automaton, which is unique up to isomorphism.
 
-**How the definition helps.** The classes are built to remember exactly what matters for the rest of the input, so they are the states of an automaton by definition. Reading a letter a moves the class of x to the class of xa, and the class of the empty string is the start state. Any deterministic automaton for L only puts strings with the same future in the same state, so it has at least as many states. This gives minimality and uniqueness. The theorem also gives a clean way to show a language is not regular: find infinitely many strings that are pairwise not equivalent (our own). Computing the classes fast still needs an algorithm such as Hopcroft's partition refinement (our own).
+**How the definition helps.** The classes remember exactly what matters for the rest of the input, so they are the states of an automaton by definition. Reading a letter a moves the class of x to the class of xa. Any deterministic automaton for L puts only equivalent strings in the same state, so it has at least as many states. This gives minimality and uniqueness.
 
 **Wikipedia:** [Myhill–Nerode theorem](https://en.wikipedia.org/wiki/Myhill%E2%80%93Nerode_theorem). It says: “The Myhill–Nerode theorem shows that finiteness is necessary and sufficient for language regularity.”
 
@@ -574,7 +574,7 @@
 
 **Problem.** If a property holds for the empty word and every word in L and survives concatenation, it holds throughout the star of L.
 
-**How the definition helps.** The words with the property form a set of the kind used in the definition, by our own explanation. The smallest such set lies inside it, by our own explanation. The work moves to proving that finite concatenations form precisely that smallest set, by our own explanation.
+**How the definition helps.** The words with the property form a set of the kind used in the definition (our own). The smallest such set, the star of L, lies inside it (our own). The work moves to proving that finite concatenations form exactly that smallest set (our own).
 
 **nLab:** [regular language](https://ncatlab.org/nlab/show/regular+language). It says: “is the smallest submonoid of V∗ that contains L(R).”
 
@@ -626,7 +626,7 @@
 
 **Problem.** In a linearizable register, a read that starts after a write completes cannot return the older value if there is no other write.
 
-**How the definition helps.** In our own argument, real-time order forces the read to follow the write in the sequential explanation. In our own example, one process finishes writing 1 and another then reads the initial 0. In our own argument, sequential consistency permits that result by placing the reader first. The work moves to proving that all operation results admit one sequential explanation within their time intervals.
+**How the definition helps.** Real-time order forces the read to follow the write in the sequential order (our own). For example, one process finishes writing 1 and another then reads the initial 0 (our own). Sequential consistency permits that result by placing the reader first. The work moves to proving that all results admit one sequential order within their time intervals.
 
 **Wikipedia:** [Linearizability](https://en.wikipedia.org/wiki/Linearizability), [Sequential consistency](https://en.wikipedia.org/wiki/Sequential_consistency). It says: “If an operation op₁ completes (gets a response) before op₂ begins (invokes), then op₁ precedes op₂ in σ.”
 
@@ -662,7 +662,7 @@
 
 **Problem.** A matching has maximum size exactly when it has no augmenting path.
 
-**How the definition helps.** An augmenting path turns a comparison with all larger matchings into a test involving only the current matching. Swapping membership along the path adds one edge. Conversely, compare the current matching with a larger one and keep only edges belonging to exactly one. Each remaining vertex has at most one edge from each matching. The edges split into alternating paths and even cycles. Some path must contain an extra edge from the larger matching, so it augments the current one.
+**How the definition helps.** An augmenting path turns a comparison with all larger matchings into a test on the current matching alone. Swapping membership along the path adds one edge. Conversely, keep the edges that lie in exactly one of the current matching and a larger one. These split into alternating paths and even cycles, and some path has an extra edge from the larger matching, so it augments the current one.
 
 **Wikipedia:** [Berge's theorem](https://en.wikipedia.org/wiki/Berge%27s_theorem). It says: “D consists of paths and even cycles”
 
@@ -676,9 +676,9 @@
 
 **Definition.** In a strongly connected directed graph, each vertex can reach every other by following arrows. For a finite such graph containing a cycle, its period is the greatest common divisor of its directed cycle lengths. Give each vertex k copies numbered modulo k. Each arrow goes from every copy of its tail to the next numbered copy of its head.
 
-**Problem.** Let k be a positive integer at most the number of vertices. Ignore the arrows between copies. The period is divisible by k exactly when copy zero of a fixed vertex cannot reach any other copy of itself.
+**Problem.** Let k be a positive integer at most the number of vertices. The period is divisible by k exactly when copy zero of a fixed vertex reaches no other copy of that vertex.
 
-**How the definition helps.** In our own proof, the copy number records the length of a directed walk modulo k. Suppose k divides every cycle length. Walks from the fixed vertex to the same destination then have equal remainders. Appending a common return walk proves this, since each closed walk splits into directed cycles. Subtracting the destination remainder from the copy number gives a quantity unchanged across each edge in either direction. Conversely, visit a cycle whose length has nonzero remainder and return to the fixed vertex. Traversing the cycle once more changes the final copy, so at least one walk finishes outside copy zero.
+**How the definition helps.** The copy number records the length of a directed walk modulo k (our own). If k divides every cycle length, every closed walk has length divisible by k, because it splits into cycles. So every walk back to the fixed vertex ends in copy zero. Conversely, walk to a cycle whose length k does not divide, go around it, and return; going around once more changes the final copy.
 
 **Paper or page:** [The complexity of computing the period and the exponent of a digraph](https://arxiv.org/abs/2408.05762v2). It says: “k divides the period of G if and only if there is no undirected path”
 
@@ -800,7 +800,7 @@
 
 **Definition.** Fix an integer k ≥ 1 and k + 1 planar points with distinct horizontal coordinates. Call them positive if a function through them has a nonnegative kth derivative everywhere. The alternative test reads the coefficient of xᵏ in the unique polynomial of degree at most k through the points.
 
-**Problem.** A nonnegative coefficient characterizes positive point sets. A nonpositive coefficient likewise characterizes sets admitting a function with everywhere nonpositive kth derivative.
+**Problem.** The points are positive exactly when the coefficient of xᵏ in their interpolating polynomial is nonnegative. Likewise, some function through them has a nonpositive kth derivative everywhere exactly when that coefficient is nonpositive.
 
 **How the definition helps.** In our own proof, a nonnegative coefficient immediately gives the required function because the polynomial’s kth derivative equals that coefficient times k factorial. Conversely, subtract the polynomial from any function witnessing positivity. The difference vanishes at all k + 1 coordinates. Applying Rolle’s theorem k times shows that the two kth derivatives agree somewhere between the extreme coordinates. This proves the coefficient test, and reversing the signs proves its negative counterpart.
 
@@ -854,7 +854,7 @@
 
 **Problem.** Each power cell is the set where one affine function attains the pointwise minimum of all the functions. An affine function is a linear function plus a constant.
 
-**How the definition helps.** In our own proof, squaring the distance gives the same quadratic term x · x for every center. Subtract it from every power and the function for center c becomes c · c − 2c · x − w. The dot denotes the usual inner product. Removing a common term preserves every comparison and tie. Using ordinary distance would leave square roots in the comparison. The remaining work is to construct the lower envelope, or pointwise minimum, of these affine functions.
+**How the definition helps.** Squaring the distance gives the same quadratic term x · x for every center (our own). Subtracting it leaves the affine function c · c − 2c · x − w for center c, and removing a common term preserves every comparison and tie. Ordinary distance would leave square roots in the comparison. The remaining work is to construct the pointwise minimum of these affine functions.
 
 **Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “The power diagram of n spheres in d dimensions is combinatorially equivalent to the intersection of a set of n upward-facing halfspaces”
 
@@ -1139,7 +1139,7 @@
 
 **Problem.** The last column of the sorted rotations determines the original string once a unique end marker is appended.
 
-**How the definition helps.** The marker distinguishes the original from its rotations. Our own counterexample without it is that abc and bca have the same rotations and the same last column. Our own explanation reconstructs the sorted prefixes from left to right. In our own argument, attaching the last column on the left and sorting extends each reconstructed prefix by one letter. Our own procedure then selects the reconstructed row ending with the marker.
+**How the definition helps.** The marker tells the original string apart from its rotations. Without it, abc and bca have the same rotations and the same last column (our own). To rebuild the rows, attach the last column on the left and sort; each round extends every sorted prefix by one letter (our own). The row that ends with the marker is the original string (our own).
 
 **Wikipedia:** [Burrows–Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform). It says: “all circular permutations of a string have the same Burrows–Wheeler transform.”
 
@@ -1173,7 +1173,7 @@
 
 **Problem.** For a nonempty pattern, all matching starting positions form one possibly empty interval in the suffix array. Two binary searches find its ends.
 
-**How the definition helps.** Dictionary order groups all suffixes with the same prefix, so searching for a pattern is searching for one interval. Our own proof compares any intervening suffix at its first difference from the prefix. Such a difference would place it outside the proposed interval in our own argument. Our own note is that building the sorted array is the preprocessing cost.
+**How the definition helps.** Dictionary order groups all suffixes that begin with the same prefix, so finding a pattern means finding one interval. A suffix between two matching suffixes must also match, because its first difference from the pattern would put it outside the interval (our own). Building the sorted array is the preprocessing cost (our own).
 
 **Wikipedia:** [Suffix array](https://en.wikipedia.org/wiki/Suffix_array). It says: “these suffixes will be grouped together in the suffix array and can be found efficiently with two binary searches.”
 
@@ -1209,7 +1209,7 @@
 
 **Problem.** If the potential starts at zero and stays nonnegative, total amortized cost bounds total actual cost from above.
 
-**How the definition helps.** In our own argument, the potential after one operation cancels the potential before the next. In our own argument, only the final nonnegative potential remains in the total charge. The work moves to finding a useful potential and bounding each operation's adjusted charge.
+**How the definition helps.** The potential after one operation cancels the potential before the next, so the sum of amortized costs telescopes (our own). Only the final potential minus the initial zero remains, and it is nonnegative (our own). The work moves to finding a useful potential and bounding each amortized cost.
 
 **Wikipedia:** [Amortized analysis](https://en.wikipedia.org/wiki/Amortized_analysis). It says: “The amortized cost is the immediate cost plus the change in potential.”
 
@@ -1225,7 +1225,7 @@
 
 **Problem.** Consider a finite history of completed operations, each on one object, with one outstanding call per process at most. The history is linearizable exactly when each object’s history is linearizable.
 
-**How the definition helps.** The real-time rule lets us place each object’s serial order inside the operations’ actual time intervals. In our own proof, assign each operation the latest call time among itself and its predecessors in that object’s order. This time cannot follow the operation’s reply, since then a predecessor would have to follow it. Merge the lists by assigned times, preserving each object’s order at ties. The merged order respects real time and gives the specified results on every object. Conversely, restricting a global order to one object preserves both conditions.
+**How the definition helps.** The real-time rule lets us place each object’s serial order inside the operations’ actual time intervals. In our own proof, give each operation the latest call time among itself and its predecessors in its object’s order. Merging all objects’ lists by these times, keeping each object’s order at ties, gives a global order that respects real time. Conversely, restricting a global order to one object keeps both conditions.
 
 **Wikipedia:** [Linearizability](https://en.wikipedia.org/wiki/Linearizability). It says: “If an operation op₁ completes (gets a response) before op₂ begins (invokes), then op₁ precedes op₂ in σ.”
 
@@ -1241,9 +1241,9 @@
 
 **Definition.** Gilbert and Lynch model a distributed data store as a shared object that clients read and write. Consistency means that every read receives the most recent write or an error. Availability means that every request to a non-failing node gets a response. Partition tolerance means that the system keeps working when the network drops or delays any number of messages between nodes.
 
-**Problem.** Brewer conjectured that a distributed store cannot be consistent, available and partition tolerant at once. Stated only in words, the claim was too vague to prove.
+**Problem.** No distributed store in this model can be consistent, available and partition tolerant at once. Brewer had stated this only in words, which was too vague to prove.
 
-**How the definition helps.** With these definitions the proof is short (our own summary of the proof). Split the nodes into two groups and drop every message between them. A write in one group must complete, by availability. A later read in the other group must also answer, but it cannot have heard of the write, so it breaks consistency. The strength of the theorem comes from the definitions, and so does its limit. The page notes that this consistency is not the consistency of ACID database transactions. It also says that the choice between consistency and availability arises when a partition happens.
+**How the definition helps.** With these definitions the proof is short (our own summary). Split the nodes into two groups and drop every message between them. A write in one group must complete, and a later read in the other group must answer without having heard of the write, which breaks consistency. The page notes that this consistency is not the consistency of ACID database transactions.
 
 **Wikipedia:** [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem). It says: “In 2002, Seth Gilbert and Nancy Lynch of MIT published a formal proof of Brewer's conjecture, elevating it to a theorem.”
 
@@ -1279,7 +1279,7 @@
 
 **Problem.** Every reduction step preserves the type of the term.
 
-**How the definition helps.** The type is part of the definition of a reduction step, so no preservation proof is needed. The PLFA chapter on de Bruijn terms says this directly. For the step that applies a function, preservation rests on substitution. That chapter builds type preservation into its definition of substitution. So the work moves into defining substitution on typed terms. Relating typed steps to raw steps needs a separate theorem, and that remark is our own.
+**How the definition helps.** The type is part of the definition of a reduction step, so no preservation proof is needed, as the PLFA chapter on de Bruijn terms says. For the step that applies a function, preservation rests on substitution. So the work moves into defining substitution on typed terms. Relating typed steps to raw steps needs a separate theorem (our own).
 
 **nLab:** [intrinsic and extrinsic views of typing](https://ncatlab.org/nlab/show/intrinsic+and+extrinsic+views+of+typing). It says: “Like the syntactician's parts of speech, as a way of defining the grammar of well-formed expressions.”
 
@@ -1295,9 +1295,9 @@
 
 **Definition.** In the Hindley–Milner type system, types may contain type variables, as in α → α. Only names bound by let may get a polymorphic type such as ∀α. α → α. Parameters of λ-abstractions must get a type without ∀.
 
-**Problem.** A compiler should infer the types of programs with no annotations. Hindley–Milner gives every typable program a principal type, a most general type of which all its other types are instances, and Algorithm W finds it.
+**Problem.** In Hindley–Milner, every typable program without annotations has a principal type, a most general type of which all its other types are instances. Algorithm W finds it.
 
-**How the definition helps.** Allowing ∀ only for let-bound names means inference only has to solve first-order unification problems, which have most general solutions. If λ-bound parameters could also be polymorphic, the system would be System F, the polymorphic lambda calculus. Wells proved that type inference in System F is undecidable, as the page notes. So the restriction removes the hard cases but keeps the useful idiom let id = λx.x in (id true, id 0). What stays hard is the worst case, because Hindley–Milner inference takes exponential time on some programs, as the page notes.
+**How the definition helps.** Allowing ∀ only for let-bound names means inference only has to solve first-order unification problems, which have most general solutions. If λ-bound parameters could also be polymorphic, the system would be System F, where Wells proved type inference undecidable, as the page notes. The restriction still keeps the useful idiom let id = λx.x in (id true, id 0). Inference still takes exponential time on some programs, as the page notes.
 
 **Wikipedia:** [Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system). It says: “the type system to allow only let-bound variable to have polymorphic types, while the parameters in lambda-abstractions must get a monomorphic type, type inference becomes decidable.”
 
@@ -1314,9 +1314,9 @@
 
 **Definition.** Wright and Felleisen define type soundness for a language given by step-by-step reduction rules. Progress says that a well-typed term is a value or can take a step. Preservation, also called subject reduction, says that a step keeps the type of a well-typed term.
 
-**Problem.** Type safety says a well-typed program never reaches a stuck state, such as using a number as a function. One wants a proof method that scales to real languages with references, exceptions and polymorphism.
+**Problem.** If progress and preservation hold, a well-typed program never reaches a stuck state, such as using a number as a function. Each lemma is proved by induction on typing derivations, and the method extends to references, exceptions and polymorphism.
 
-**How the definition helps.** Safety speaks about whole runs, but progress and preservation each speak about one step, so each is proved by induction on typing derivations. Chaining them shows that every reachable term is well typed and so not stuck. Earlier proofs often went through denotational models, which had to be rebuilt for each new feature (our own). The syntactic method needs no model, so it extends one feature at a time. What stays hard is the lemma for each feature, such as substitution lemmas and typing of the store (our own). The method proves only safety, not termination or correctness.
+**How the definition helps.** Safety speaks about whole runs, but progress and preservation each speak about one step. Chaining them shows that every reachable term is well typed and so not stuck. Earlier proofs often went through denotational models, which had to be rebuilt for each new feature (our own). The work moves into the lemma for each feature, such as substitution and store typing (our own).
 
 **Wikipedia:** [Type safety](https://en.wikipedia.org/wiki/Type_safety). It says: “Computer scientists Andrew K Wright and Matthias Felleisen formulate a definition and proof technique for type safety in languages defined by operational semantics.”
 
@@ -1332,9 +1332,9 @@
 
 **Definition.** In ML-style type inference, a name bound by let can get a polymorphic type ∀α. τ, usable at many types. Under the value restriction, the type is generalized only when the bound expression is a syntactic value. Syntactic values are constants, variables, λ-abstractions and constructors applied to values. Applications, such as ref (fn x =&gt; x), are not generalized.
 
-**Problem.** Type safety says that a well-typed program never applies an operation to a value of the wrong type. With mutable references and unrestricted let-polymorphism this fails.
+**Problem.** With the value restriction, ML with mutable references is type safe, so a well-typed program never applies an operation to a value of the wrong type. With unrestricted let-polymorphism over references, type safety fails.
 
-**How the definition helps.** Evaluating a syntactic value cannot create a reference cell, so giving it many types cannot let one cell be used at two types. The page gives the counterexample. The binding c = ref (fn x =&gt; x) gets the type ∀α. (α → α) ref. Then c := (fn x =&gt; x + 1) stores an integer function, and !c true applies it to a Boolean. Under the value restriction, c gets one unknown type, the assignment fixes it to int → int, and the checker rejects !c true. The cost is that some safe definitions, such as partial applications, lose their polymorphism (our own).
+**How the definition helps.** Evaluating a syntactic value cannot create a reference cell, so giving it many types cannot let one cell be used at two types. In the page’s counterexample, c = ref (fn x =&gt; x) gets the type ∀α. (α → α) ref. Then c := (fn x =&gt; x + 1) stores an integer function, and !c true applies it to a Boolean. Under the value restriction, c gets one unknown type, fixed by the assignment to int → int, so the checker rejects !c true.
 
 **Wikipedia:** [Value restriction](https://en.wikipedia.org/wiki/Value_restriction). It says: “The value restriction prevents reference cells from holding values of different types and preserves type safety.”
 
@@ -1352,7 +1352,7 @@
 
 **Problem.** A variable-free atomic formula follows from a set of definite Horn clauses exactly when it holds in their least Herbrand model.
 
-**How the definition helps.** An atomic formula lies in the intersection exactly when it holds in every Herbrand model, so one direction is by definition, in our own argument. Wikipedia credits van Emden and Kowalski with this least model and states the result. The rest of the work moves into two lemmas, in our own account. First, the intersection is itself a model, because each clause has one conclusion, in our own account. Second, any model gives a Herbrand model with the same true variable-free atomic formulas, so Herbrand models detect every countermodel, in our own account. This second lemma works because the clauses are universal sentences without existential quantifiers, in our own account.
+**How the definition helps.** An atomic formula lies in the intersection exactly when it holds in every Herbrand model, so one direction is by definition (our own). The rest of the work moves into two lemmas (our own). First, the intersection is itself a model, because each clause has one conclusion. Second, any model gives a Herbrand model with the same true variable-free atomic formulas, because the clauses are universal sentences.
 
 **Wikipedia:** [Horn clause](https://en.wikipedia.org/wiki/Horn_clause). It says: “An atomic formula A is logically implied by D if and only if A is true in M.”
 
@@ -1408,7 +1408,7 @@
 
 **Problem.** With n entries across k nonempty sorted lists, this structure uses O(n) space. It finds the first entry at least as large as a query in every list in O(log n + k) time.
 
-**How the definition helps.** Sampling every second entry lets a search move to the next list with at most one backward correction. In our own proof, treat the end as a sentinel larger than every query. Binary search finds the first qualifying entry in the first augmented list. At every list, the original-list link gives the answer directly. Follow its other link and check the preceding entry, since two skipped entries would include a sample. If S counts all augmented entries, at most S/2 are copies. Thus S ≤ n + S/2, so S ≤ 2n.
+**How the definition helps.** Sampling every second entry lets a search move to the next list with at most one backward correction. In our own proof, one binary search finds the answer in the first augmented list, and each original-list link then gives that list’s answer directly. Following the other link and checking the preceding entry finds the position in the next list, since two skipped entries would include a sample. If S counts all augmented entries, at most S/2 are copies, so S ≤ n + S/2 and S ≤ 2n.
 
 **Wikipedia:** [Fractional cascading](https://en.wikipedia.org/wiki/Fractional_cascading). It says: “each earlier list Mᵢ is formed by merging Lᵢ with every second item from Mᵢ₊₁.”
 
@@ -1460,9 +1460,9 @@
 
 **Definition.** A randomized mechanism is an algorithm that uses random choices to answer queries about a database. It is ε-differentially private if one person's record has little effect on its outputs. Precisely, take any two databases that differ in one person's record. Then the probability of any set of outputs changes by at most a factor exp(ε).
 
-**Problem.** Bound the total privacy loss of a system that is built from many queries and later processing.
+**Problem.** Differential privacy composes. t queries that are each ε-private and use independent randomness are together tε-private, and any processing of an ε-private output stays ε-private.
 
-**How the definition helps.** The guarantee is a worst-case bound on a ratio of probabilities, and such bounds combine simply. t queries that are each ε-private and use independent randomness are together tε-private. Queries on disjoint parts of the data, with parameters ε₁, ε₂, …, are together private with the largest εᵢ. Any processing of the output stays ε-private. So designers can build and analyse private systems in modules, and spend a total privacy budget across them. What stays hard is the trade-off between privacy and accuracy. The tight composition bounds for the (ε, δ) variant, which also allows a small failure probability δ, are also hard.
+**How the definition helps.** The guarantee is a worst-case bound on a ratio of probabilities, and such bounds multiply simply. Queries on disjoint parts of the data, with parameters ε₁, ε₂, …, are together private with the largest εᵢ. So designers can build private systems in modules and spend a total privacy budget across them. The trade-off between privacy and accuracy stays hard.
 
 **Wikipedia:** [Differential privacy](https://en.wikipedia.org/wiki/Differential_privacy). It says: “The property of composition permits modular construction and analysis of differentially private mechanisms”
 
@@ -1496,9 +1496,9 @@
 
 **Definition.** Take two data sets D and D′ that differ in one person. An algorithm M is ε-differentially private if Pr\[M(D) ∈ S\] ≤ eᵋ Pr\[M(D′) ∈ S\] for every set S of outputs. The condition is about the distribution of the output only, not about how the output looks.
 
-**Problem.** Analysts round, plot, and fit models to a private answer. One wants a guarantee that no such later processing leaks more about any person.
+**Problem.** If M is ε-differentially private and g is any function, possibly randomized, that does not look at the data again, then g(M(·)) is ε-differentially private.
 
-**How the definition helps.** Because the definition quantifies over every set of outputs, post-processing is covered at once. For a function g, the event g(M(D)) ∈ T is the event M(D) ∈ S, with S the preimage of T (our own proof). So the same inequality holds. A randomized g is a mixture of fixed functions, so it is covered too (our own). The only condition is that g does not look at the data again, as the quoted theorem says. The real work then moves to the composition theorems, which handle algorithms that do use the data again.
+**How the definition helps.** Because the definition quantifies over every set of outputs, post-processing is covered at once. For a function g, the event g(M(D)) ∈ T is the event M(D) ∈ S, with S the preimage of T (our own proof). A randomized g is a mixture of fixed functions, so it is covered too (our own). The real work moves to the composition theorems, which handle algorithms that use the data again.
 
 **Paper or page:** [Differentially Private Algorithms for Synthetic Power System Datasets](https://arxiv.org/abs/2303.11079v1). It says: “If query Q̃ satisfies ε-DP, then g∘Q̃(y), where g is an arbitrary, data-independent post-processing of the query answer, also satisfies ε-DP.”
 
@@ -1514,9 +1514,9 @@
 
 **Definition.** PostBQP is the class of problems that a polynomial-time quantum computer can solve with bounded error if it may postselect. Postselection means that the computer conditions on a chosen measurement outcome, which must have nonzero probability. PP is the class of problems where a probabilistic polynomial-time machine is right with probability more than one half.
 
-**Problem.** Show that PP is closed under intersection. Beigel, Reingold and Spielman first proved this with a hard argument about rational approximations (our own).
+**Problem.** PP is closed under intersection. Beigel, Reingold and Spielman first proved this with a hard argument about rational approximations (our own).
 
-**How the definition helps.** Some properties are easy to prove for PostBQP, and the equality with PP transfers them (our own). For example, closure under intersection is easy for PostBQP, because one can run two postselected computations together and postselect on both (our own). Aaronson used this to give a short new proof that PP is closed under intersection (our own; his paper makes this point). The work moves into the proof that PostBQP equals PP. The data-set theorem states that the equality holds relative to every classical oracle.
+**How the definition helps.** Closure under intersection is easy for PostBQP, because one can run two postselected computations together and postselect on both (our own). The equality PostBQP = PP then transfers this to PP. Aaronson used this to give a short new proof (our own; his paper makes this point). The work moves into the proof that PostBQP equals PP.
 
 **Paper or page:** [Quantum Computation with Correlated Measurements: Implications for the Complexity Landscape](https://arxiv.org/abs/2507.03692), [Quantum Computation with Correlated Measurements: Implications for the Complexity Landscape](https://arxiv.org/abs/2507.03692). It says: “In 2004, Aaronson introduced the complexity class PostBQP (BQP with postselection) and showed that it is equal to PP.”
 
@@ -1567,9 +1567,9 @@
 
 **Definition.** BPP is the class of decision problems that a probabilistic Turing machine solves in polynomial time. A probabilistic Turing machine is one that can flip fair coins while it runs. The machine may give a wrong answer, but with probability at most 1/3 on every input.
 
-**Problem.** We want a robust class of problems that randomized algorithms solve efficiently. The class should not depend on the arbitrary constant 1/3.
+**Problem.** Any constant error bound strictly between 0 and 1/2 in place of 1/3 defines the same class BPP.
 
-**How the definition helps.** The error stays a fixed distance below 1/2 on every input, so repeating the algorithm makes the error as small as we like. Run the algorithm k times and take the majority answer; the error then falls exponentially in k. So any constant between 0 and 1/2 in place of 1/3 defines the same class. An error bound such as 1/2¹⁰⁰, or one that depends on the input length, also defines the same class. The fixed gap is what makes this work: the class PP allows error just below 1/2, and it does not have this property (our own contrast). Whether BPP = P is still open (our own remark).
+**How the definition helps.** The error stays a fixed distance below 1/2 on every input, so repetition makes it as small as we like. Run the algorithm k times and take the majority answer; the error then falls exponentially in k. The fixed gap is what makes this work, since PP allows error just below 1/2 and lacks this property (our own contrast).
 
 **Wikipedia:** [BPP (complexity)](https://en.wikipedia.org/wiki/BPP_%28complexity%29). It says: “the choice of 1/3 in the definition is arbitrary.”
 
@@ -1585,9 +1585,9 @@
 
 **Definition.** A function f from natural numbers to natural numbers is time-constructible if some Turing machine, given n in unary (as a string of n ones), computes f(n) in O(f(n)) steps. A function f is fully time-constructible if some machine halts in exactly f(n) steps.
 
-**Problem.** The deterministic time hierarchy theorem: for a time-constructible f, DTIME(o(f(n)/log f(n))) is strictly contained in DTIME(f(n)). Here DTIME(t(n)) is the class of problems that a deterministic Turing machine solves in O(t(n)) steps. So more time solves strictly more problems.
+**Problem.** For a time-constructible f, DTIME(o(f(n)/log f(n))) is strictly contained in DTIME(f(n)). Here DTIME(t(n)) is the class of problems that a deterministic Turing machine solves in O(t(n)) steps.
 
-**How the definition helps.** The proof needs a clock, and constructibility lets a machine build that clock. The proof simulates machines and stops them after f(n) steps, which is impossible if f(n) cannot be computed in that time. The Borodin–Trakhtenbrot gap theorem shows that the condition is needed. For any computable g with g(x) ≥ x, there is a time bound T with DTIME(g(T(n))) = DTIME(T(n)), and such T are often not constructible. Linking the gap theorem to the constructibility condition as its counterexample is our own framing, though the gap theorem article notes that the gap bounds are often nonconstructible. All natural bounds such as n², 2ⁿ and n log n are constructible, so the theorem covers the cases of interest.
+**How the definition helps.** The proof simulates machines and stops them after f(n) steps, and constructibility lets a machine build that clock. The Borodin–Trakhtenbrot gap theorem shows that some condition is needed. For any computable g with g(x) ≥ x, there is a time bound T with DTIME(g(T(n))) = DTIME(T(n)), and such T are often not constructible. Using the gap theorem as the counterexample is our own framing.
 
 **Wikipedia:** [Constructible function](https://en.wikipedia.org/wiki/Constructible_function), [Gap theorem](https://en.wikipedia.org/wiki/Gap_theorem). It says: “To formulate them precisely, it is necessary to have a precise definition for a natural function f for which the theorem is true.”
 
@@ -1604,9 +1604,9 @@
 
 **Definition.** A problem in P is P-complete if every problem in P reduces to it. The reduction must be weaker than polynomial time. Usually it is computable in logarithmic space, or by a uniform family of fast parallel circuits (an NC reduction).
 
-**Problem.** One wants complete problems for P, such as the circuit value problem, that would give NC = P if they had fast parallel algorithms. NC is the class of problems solved fast by polynomially many parallel processors. Under polynomial-time reductions this notion is trivial.
+**Problem.** Under log-space reductions, the circuit value problem is P-complete, so a fast parallel algorithm for it would give NC = P. Under polynomial-time reductions, every problem in P other than the empty language and the language of all strings would be P-complete.
 
-**How the definition helps.** A weak reduction cannot solve the problem by itself, so completeness again means at least as hard as everything in P. A polynomial-time reduction can solve the first problem and then output a fixed yes-instance or no-instance of the second (our own explanation). So every problem in P except the empty language and the language of all strings would be P-complete. Log-space reductions rule this out. Then Ladner proved that the circuit value problem is P-complete, and a fast parallel algorithm for it would give NC = P. Whether NC equals P is still open.
+**How the definition helps.** A weak reduction cannot solve the problem by itself, so completeness again means at least as hard as everything in P. A polynomial-time reduction can solve the first problem and then output a fixed yes-instance or no-instance of the second (our own explanation). Log-space reductions rule this out. Ladner proved the circuit value problem P-complete, and whether NC equals P is still open.
 
 **Wikipedia:** [P-complete](https://en.wikipedia.org/wiki/P-complete), [Polynomial-time reduction](https://en.wikipedia.org/wiki/Polynomial-time_reduction). It says: “polynomial-time reductions cannot be used to define complete languages: if they were used in this way, every nontrivial problem in P would be complete.”
 
@@ -1622,9 +1622,9 @@
 
 **Definition.** A problem is strongly NP-complete if it stays NP-complete when every number in the input is at most a polynomial in the input length. An equivalent condition is that it stays NP-complete when the numbers are written in unary, so that the number n takes n symbols.
 
-**Problem.** Some problems, like knapsack, have pseudo-polynomial algorithms and good approximation schemes. Others, like bin packing, have neither unless P = NP, and we want a definition that separates the two kinds. (A pseudo-polynomial algorithm runs in time polynomial in the size of the numbers in the input, not in the number of their digits.)
+**Problem.** A strongly NP-hard optimization problem with a polynomially bounded objective has no fully polynomial-time approximation scheme unless P = NP. Knapsack, which is hard only because of large numbers, has a pseudo-polynomial algorithm and good approximation schemes.
 
-**How the definition helps.** The strong notion excludes hardness that comes only from large numbers. Knapsack is NP-complete only because its numbers can be exponentially large. Dynamic programming solves it in time polynomial in the numbers. With the strong notion, one can state a clean result. A strongly NP-hard optimization problem with a polynomially bounded objective has no fully polynomial-time approximation scheme unless P = NP. (Such a scheme comes within a factor 1 + ε of the best value, in time polynomial in the input length and in 1/ε.) What stays open is P versus NP itself, on which the result depends.
+**How the definition helps.** The strong notion excludes hardness that comes only from large numbers. Knapsack is NP-complete only because its numbers can be exponentially large, and dynamic programming solves it in time polynomial in the numbers. A fully polynomial-time approximation scheme comes within a factor 1 + ε of the best value, in time polynomial in the input length and in 1/ε. The result depends on P versus NP, which is open.
 
 **Wikipedia:** [Strong NP-completeness](https://en.wikipedia.org/wiki/Strong_NP-completeness). It says: “any strongly NP-hard optimization problem with a polynomially bounded objective function cannot have a fully polynomial-time approximation scheme (or FPTAS) unless P = NP.”
 
@@ -1640,9 +1640,9 @@
 
 **Definition.** First-order logic with a least fixed point operator, written FO\[LFP\], can define a relation by recursion, as the least solution of a monotone equation. An ordered structure is a finite structure, such as a graph, that comes with a linear order on its elements.
 
-**Problem.** The Immerman–Vardi theorem says that, on ordered finite structures, the properties definable in FO\[LFP\] are exactly those decidable in polynomial time.
+**Problem.** On ordered finite structures, the properties definable in FO\[LFP\] are exactly those decidable in polynomial time (the Immerman–Vardi theorem).
 
-**How the definition helps.** With an order, formulas can name positions as numbers and so simulate a polynomial-time Turing machine step by step. Without an order the theorem fails. A standard counterexample is the property that a set has an even number of elements (our own; not on the page). It is decidable in polynomial time, but no FO\[LFP\] formula defines it on sets with no other structure. The page notes a contrast, Fagin's theorem for NP, which needs no order. That logic may say that some relation exists, so it can guess an order (our own remark). Whether some logic captures polynomial time on unordered structures is still open.
+**How the definition helps.** With an order, formulas can name positions as numbers and so simulate a polynomial-time Turing machine step by step. Without an order the theorem fails (our own; not on the page). Having an even number of elements is decidable in polynomial time, but no FO\[LFP\] formula defines it on plain sets. Whether some logic captures polynomial time on unordered structures is still open.
 
 **Wikipedia:** [Descriptive complexity theory](https://en.wikipedia.org/wiki/Descriptive_complexity_theory). It says: “First-order logic with a least fixed point operator gives P, the problems solvable in deterministic polynomial time, but uniquely on ordered structures.”
 
@@ -1659,9 +1659,9 @@
 
 **Definition.** Monadic second-order logic (MSO) on graphs can quantify over vertices, edges, and sets of vertices or edges. Many graph properties, such as 3-colourability or having a Hamiltonian cycle, are MSO-definable. Treewidth measures how close a graph is to a tree.
 
-**Problem.** Show that a graph problem can be solved in linear time on graphs of bounded treewidth. Without a general tool, each problem needs its own dynamic program over a tree decomposition.
+**Problem.** For each fixed k, every MSO-definable graph property can be decided in linear time on graphs of treewidth at most k (Courcelle's theorem).
 
-**How the definition helps.** Courcelle's theorem moves the work from the algorithm to the definition: once a property is written in MSO, the linear-time algorithm comes for free. For example, 3-colourability says that three vertex sets cover all vertices and no edge lies inside any one of them (our own example). The proof turns the formula into a finite tree automaton that runs on a tree decomposition (our own). What stays hard is the size of F (our own). Frick and Grohe showed that, unless P = NP, no tower of exponentials of fixed height bounds F (our own).
+**How the definition helps.** Courcelle's theorem moves the work from the algorithm to the definition, so once a property is written in MSO, the linear-time algorithm comes for free. For example, 3-colourability says that three vertex sets cover all vertices and no edge lies inside any one of them (our own example). The proof turns the formula into a finite tree automaton that runs on a tree decomposition (our own). What stays hard is the constant factor, which Frick and Grohe showed no fixed tower of exponentials bounds unless P = NP (our own).
 
 **Paper or page:** [Quantum-Inspired Perfect Matching under Vertex-Color Constraints](https://arxiv.org/abs/2209.13063). It says: “Let f be a formula in extended MSO. Then there is an algorithm which, on every graphs with n vertices and treewidth tw, decides whether f holds in G in O(F(\|f\|, tw)·n), for some computable function F.”
 
@@ -1678,9 +1678,9 @@
 
 **Definition.** Levin's definition of average polynomial time bounds how fast slow inputs become rare. In the form on the page, there are constants c and ε &gt; 0 with this property. Among inputs of length n, at most a fraction nᶜ divided by t to the power ε need more than t steps. The naive definition asks only that the expected running time be polynomial.
 
-**Problem.** A definition of efficient on average should not depend on the machine model. In particular, if algorithm A is efficient on average, an algorithm B that takes the square of A's time should be too.
+**Problem.** Under Levin's definition, if A runs in average polynomial time, so does an algorithm B that takes the square of A's time. The naive definition by expected running time lacks this property.
 
-**How the definition helps.** Levin's condition is still a polynomial bound after the running time is squared, so it does not depend on polynomial changes of the machine model. In the page's counterexample, A takes n² steps on every input of length n except one, where it takes 2ⁿ steps. Under the uniform distribution A has polynomial expected time, but B, with squared time, has expected time about 2ⁿ. Levin's definition counts both as efficient. With it, Levin could define complete problems for NP problems paired with input distributions. Finding natural complete problems stays hard. Gurevich showed that distributions with no very likely input cannot give them, unless exponential time equals its nondeterministic version.
+**How the definition helps.** Levin's condition is still a polynomial bound after the running time is squared, so it does not depend on polynomial changes of the machine model. In the page's counterexample, A takes n² steps on every input of length n except one, where it takes 2ⁿ steps. Under the uniform distribution A has polynomial expected time, but B has expected time about 2ⁿ. Levin's definition counts both as efficient.
 
 **Wikipedia:** [Average-case complexity](https://en.wikipedia.org/wiki/Average-case_complexity). It says: “Such a definition has various shortcomings; in particular, it is not robust to changes in the computational model.”
 
@@ -1696,9 +1696,9 @@
 
 **Definition.** The smoothed complexity of an algorithm is the worst case, over all inputs, of the expected running time after small random noise is added. For linear programs, the noise is Gaussian with standard deviation σ, added to each entry of the constraint data.
 
-**Problem.** The simplex method is fast on practical linear programs. Yet for many common pivot rules, the rules that choose the next vertex, it takes exponentially many steps on some inputs. Spielman and Teng showed that its smoothed complexity is polynomial, with the shadow vertex pivot rule.
+**Problem.** The simplex method with the shadow vertex pivot rule has polynomial smoothed complexity (Spielman and Teng). In the worst case, many common pivot rules take exponentially many steps.
 
-**How the definition helps.** Worst-case analysis says the simplex method is slow, and average-case analysis depends on an input distribution that real inputs need not follow. Smoothed complexity keeps the adversary but gives it shaky hands, so isolated bad inputs no longer count. With this definition, the claim that simplex is fast can be stated and proved. The page gives a later bound, polynomial in the dimension d, in log n and in 1/σ. The bound holds for the shadow vertex rule, which is slower in practice than Dantzig's rule, as the page notes. The proof itself stays hard, a long probabilistic argument about random polytopes (our own).
+**How the definition helps.** Worst-case analysis says the simplex method is slow, and average-case analysis depends on an input distribution that real inputs need not follow. Smoothed complexity keeps the adversary but adds noise, so isolated bad inputs no longer count. The page gives a later bound, polynomial in the dimension d, in log n and in 1/σ. The proof itself stays hard, a long probabilistic argument about random polytopes (our own).
 
 **Wikipedia:** [Smoothed analysis](https://en.wikipedia.org/wiki/Smoothed_analysis). It says: “Smoothed analysis is a hybrid of worst-case and average-case analyses that inherits advantages of both.”
 
@@ -1714,9 +1714,9 @@
 
 **Definition.** A set of programs is prefix-free when no valid program is the start of another. The prefix-free Kolmogorov complexity K(x) is the length of the shortest program that produces x. The program runs on a universal machine whose valid programs form a prefix-free set.
 
-**Problem.** We want clean inequalities such as subadditivity, K(x, y) ≤ K(x) + K(y) + O(1). In words, describing x and y together costs at most the two separate costs plus a constant.
+**Problem.** Prefix-free complexity is subadditive, K(x, y) ≤ K(x) + K(y) + O(1). Describing x and y together costs at most the two separate costs plus a constant.
 
-**How the definition helps.** A prefix-free program marks its own end, so we can put two programs side by side and still read both. For plain complexity C, subadditivity fails. For any c there are strings x and y with C(xy) ≥ C(x) + C(y) + c. The reason is that a plain program also carries information in its length, and we must say where x ends. With prefix-free programs, the inequalities hold with only a constant error instead of logarithmic terms. The article credits this variant mainly to Levin (1974). Chaitin's 1975 paper, listed below, is our own addition as an independent source.
+**How the definition helps.** A prefix-free program marks its own end, so we can put two programs side by side and still read both. For plain complexity C, subadditivity fails, since for any c there are strings x and y with C(xy) ≥ C(x) + C(y) + c. A plain program also carries information in its length, and we must say where x ends. The article credits this variant mainly to Levin (1974).
 
 **Wikipedia:** [Kolmogorov complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity). It says: “To fix this defect, we introduce the prefix-free Kolmogorov complexity.”
 
@@ -1732,9 +1732,9 @@
 
 **Definition.** The Kolmogorov complexity of a string is the length of the shortest program that outputs it on a fixed universal machine. A universal machine is one that can simulate any other machine when it gets that machine's program. Statements about complexity are taken up to an additive constant.
 
-**Problem.** The information content of a single string should be a quantity that does not depend on the arbitrary choice of programming language.
+**Problem.** For a universal description language U and any other language L, there is a constant c such that every string x has complexity relative to U at most its complexity relative to L plus c. So complexity does not depend on the universal machine, up to an additive constant.
 
-**How the definition helps.** A universal language can run an interpreter for any other language, and the interpreter has a fixed length. This is the content of the invariance theorem. For a universal description language U and any other language L, there is a constant c such that, for every string x, the complexity of x relative to U is at most its complexity relative to L plus c. So if complexity is defined on a universal machine and every equation is read up to an additive constant, the theory does not depend on the machine. What remains (our own remark): the constant can be large, so the theory says little about any single short string. The complexity function itself is not computable.
+**How the definition helps.** A universal language can run an interpreter for any other language, and the interpreter has a fixed length. So if every equation is read up to an additive constant, the theory does not depend on the machine. The constant can be large, so the theory says little about any single short string (our own remark). The complexity function itself is not computable.
 
 **Wikipedia:** [Kolmogorov complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity). It says: “By default, all equations hold only up to an additive constant.”
 
@@ -1750,9 +1750,9 @@
 
 **Definition.** A concept class C is PAC (probably approximately correct) learnable if one algorithm works for every target concept in C and every distribution D. It uses a sample of size polynomial in 1/ε and 1/δ. With probability at least 1 − δ, it outputs a hypothesis with error at most ε under D. The VC dimension of C is the size of the largest set of points that C shatters, that is, on which C realizes every labelling.
 
-**Problem.** Which concept classes can be learned from few examples? Blumer, Ehrenfeucht, Haussler and Warmuth showed that, under mild measurability conditions, C is learnable in this sense exactly when its VC dimension is finite.
+**Problem.** Under mild measurability conditions, a concept class C is PAC learnable exactly when its VC dimension is finite (Blumer, Ehrenfeucht, Haussler and Warmuth).
 
-**How the definition helps.** Because the learner must succeed for every distribution, an adversary may put all the probability on any finite set of points (our own sketch). So a shattered set of size d forces about d examples, and infinite VC dimension rules out learning. Conversely, finite VC dimension bounds the number of labellings of a sample, by the Sauer–Shelah lemma. Then the error on the sample is close to the true error for all hypotheses at once. The result is a purely combinatorial test for learnability. Running time is a separate matter, and some classes with finite VC dimension are hard to learn efficiently under cryptographic assumptions (our own).
+**How the definition helps.** Because the learner must succeed for every distribution, an adversary may put all the probability on a shattered set, so a shattered set of size d forces about d examples (our own sketch). Conversely, finite VC dimension bounds the number of labellings of a sample, by the Sauer–Shelah lemma. Then the error on the sample is close to the true error for all hypotheses at once. Running time is a separate matter (our own).
 
 **Wikipedia:** [Probably approximately correct learning](https://en.wikipedia.org/wiki/Probably_approximately_correct_learning), [Vapnik–Chervonenkis dimension](https://en.wikipedia.org/wiki/Vapnik%E2%80%93Chervonenkis_dimension). It says: “Thus, the sample-complexity is a linear function of the VC dimension of the hypothesis space.”
 
@@ -1770,7 +1770,7 @@
 
 **Problem.** A class of sets, with suitable measurability, is a uniform Glivenko–Cantelli class if and only if its VC dimension is finite. The classical case is the class of half-lines, which gives the Glivenko–Cantelli theorem for distribution functions.
 
-**How the definition helps.** The VC dimension turns uniform convergence over an infinite class into a counting problem. Our own: by the Sauer–Shelah lemma, such a class cuts out only polynomially many subsets of n points, so a union bound works. The page gives the standard bad case, the class of all finite sets, which has infinite VC dimension. For a distribution with no atoms, the sample itself is a finite set with empirical frequency 1 and probability 0, so convergence fails. The page says that measurability conditions are also needed, so the theorem must exclude badly measurable classes. Our own: what stays hard is the symmetrization argument that replaces the true probability by a second sample.
+**How the definition helps.** The VC dimension turns uniform convergence over an infinite class into a counting problem. By the Sauer–Shelah lemma, such a class cuts out only polynomially many subsets of n points, so a union bound works (our own). The page gives the bad case, the class of all finite sets, which has infinite VC dimension. For a distribution with no atoms, the sample itself has empirical frequency 1 and probability 0, so convergence fails.
 
 **Wikipedia:** [Glivenko–Cantelli theorem](https://en.wikipedia.org/wiki/Glivenko%E2%80%93Cantelli_theorem). It says: “Under certain consistency conditions, a universally measurable class of sets 𝒞 is a uniform Glivenko-Cantelli class if and only if it is a Vapnik–Chervonenkis class.”
 
@@ -1895,9 +1895,9 @@
 
 **Definition.** An automaton on infinite words judges a run by the set of states it visits infinitely often. A Büchi automaton accepts if this set meets a given set of accepting states. A Muller automaton is given a family of state sets, and accepts if the set of states visited infinitely often is exactly one of them.
 
-**Problem.** Deterministic automata are needed to complement automata easily and to solve games on infinite words. McNaughton's theorem says every ω-regular language, that is, every language of a Büchi automaton, is recognized by a deterministic Muller automaton.
+**Problem.** Every ω-regular language, that is, every language of a Büchi automaton, is recognized by a deterministic Muller automaton (McNaughton's theorem).
 
-**How the definition helps.** The Muller condition can say that some states occur only finitely often, which the Büchi condition cannot say for a deterministic run. The page gives the counterexample it removes. No deterministic Büchi automaton recognizes the infinite words over 0 and 1 that contain only finitely many 1s. A deterministic Muller automaton does it with two states that remember the last letter, and accepts when only the state for 0 recurs (our own). So with Muller or Rabin acceptance, deterministic and nondeterministic automata have the same power. What stays hard is the construction, and Safra's construction is intricate with an exponential blow-up (our own).
+**How the definition helps.** The Muller condition can say that some states occur only finitely often, which the Büchi condition cannot say for a deterministic run. In the page’s counterexample, no deterministic Büchi automaton recognizes the infinite words over 0 and 1 with only finitely many 1s. A deterministic Muller automaton with two states that remember the last letter accepts when only the state for 0 recurs (our own). The construction stays hard, and Safra's construction has an exponential blow-up (our own).
 
 **Wikipedia:** [Büchi automaton](https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). It says: “But, McNaughton's Theorem and Safra's construction provide algorithms that can translate a Büchi automaton into a deterministic Muller automaton or deterministic Rabin automaton.”
 
@@ -1965,9 +1965,9 @@
 
 **Definition.** PCF is a small typed functional language with numbers, Booleans, a conditional and a fixed-point operator. A model of a language is fully abstract if two programs have equal meanings exactly when no program context can tell them apart. Parallel or returns true if either argument is true, even when the other argument runs forever.
 
-**Problem.** Plotkin showed that Scott's model of PCF, built from domains and continuous functions, is not fully abstract. Some programs behave the same in every PCF context but have different meanings in the model.
+**Problem.** Scott's model of PCF, built from domains and continuous functions, is not fully abstract (Plotkin). It becomes fully abstract once parallel or is added to the language.
 
-**How the definition helps.** The failure comes from elements of the model that no PCF program defines, and parallel or is such an element. PCF is very sequential, so it cannot define parallel or, as the Denotational semantics page says. Plotkin's counterexample uses two test programs that differ only when given a parallel or, so no PCF context separates them (our own summary). Once parallel or is added to the language, every finite element of the model is definable and full abstraction holds (our own summary of Plotkin). The change is to the language, not the model. Milner gave a fully abstract model of PCF itself in 1977, built from its syntax. Models not built from syntax came in the 1990s, as the page notes.
+**How the definition helps.** The failure comes from elements of the model that no PCF program defines, and parallel or is such an element. Plotkin's counterexample uses two programs that differ only when given a parallel or, so no PCF context separates them (our own summary). Once parallel or is in the language, every finite element of the model is definable and full abstraction holds (our own summary of Plotkin). The change is to the language, not the model.
 
 **Wikipedia:** [Programming Computable Functions](https://en.wikipedia.org/wiki/Programming_Computable_Functions), [Denotational semantics](https://en.wikipedia.org/wiki/Denotational_semantics). It says: “This model is not fully abstract for PCF; but it is fully abstract for the language obtained by adding a parallel or operator to PCF.”
 
@@ -2052,9 +2052,9 @@
 
 **Definition.** A property is a set of infinite executions, that is, sequences of program states. It is a safety property if every execution that violates it has a finite prefix that no continuation can repair. It is a liveness property if every finite prefix can be extended to an execution that has the property.
 
-**Problem.** Specifications of concurrent programs mix nothing bad happens with something good happens. Alpern and Schneider proved that every property is the intersection of a safety property and a liveness property.
+**Problem.** Every property is the intersection of a safety property and a liveness property (Alpern and Schneider).
 
-**How the definition helps.** With these definitions, safety properties are the closed sets in a natural topology on infinite sequences, as Plotkin observed. Liveness properties are the dense sets. Each set P is its closure, a closed set, intersected with a dense set: P joined with the outside of its closure (our own step). That one line is the decomposition theorem. Alpern and Schneider later showed how to prove each part: safety needs an invariant, and liveness needs a well-foundedness argument. What stays hard is proving such properties of actual programs (our own).
+**How the definition helps.** With these definitions, safety properties are the closed sets in a natural topology on infinite sequences, and liveness properties are the dense sets. Each set P is its closure intersected with the union of P and the outside of its closure, which is dense (our own step). That one line is the decomposition theorem. Proving each part for a program then needs an invariant for safety and a well-foundedness argument for liveness.
 
 **Wikipedia:** [Safety and liveness properties](https://en.wikipedia.org/wiki/Safety_and_liveness_properties). It says: “Alpern and Schneider gives the formal definition for liveness, accompanied by a proof that all properties can be constructed using safety properties and liveness properties.”
 
@@ -2070,9 +2070,9 @@
 
 **Definition.** Separation logic extends Hoare logic, which proves triples {P} C {Q}: if P holds before program C runs, then Q holds after. Its key connective is the separating conjunction P ∗ R. It holds of a heap that splits into two disjoint parts, one satisfying P and one satisfying R. A triple also promises that C does not fault, that is, never touches memory that P does not describe.
 
-**Problem.** Programs with pointers can change memory through aliases, which are two names for the same cell. One wants to verify each procedure using only the memory it uses, and reuse that proof in any larger context.
+**Problem.** If {P} C {Q} holds and C does not modify the variables in R, then {P ∗ R} C {Q ∗ R} holds. This frame rule lets a proof about the memory a procedure uses be reused in any larger context.
 
-**How the definition helps.** The frame rule infers {P ∗ R} C {Q ∗ R} from {P} C {Q}, when C does not modify the variables in R. It is sound because ∗ makes R describe memory apart from that of P. The no-fault promise means C only touches the memory of P. With ordinary conjunction the rule fails (our own example). If x and y may point to the same cell, writing to the cell at x can change the value read at y. The page calls the result local reasoning, where proofs mention only the memory a component uses. What stays hard is shared memory and concurrency, which need extensions such as fractional permissions.
+**How the definition helps.** The rule is sound because ∗ makes R describe memory apart from that of P, and the no-fault promise means C only touches the memory of P. With ordinary conjunction the rule fails (our own example). If x and y may point to the same cell, writing to the cell at x can change the value read at y. Shared memory and concurrency need extensions such as fractional permissions.
 
 **Wikipedia:** [Separation logic](https://en.wikipedia.org/wiki/Separation_logic). It says: “It says that a program that executes safely in a small state (satisfying P), can also execute in any bigger state (satisfying P ∗ R) and that its execution will not affect the additional part of the state”
 
@@ -2106,9 +2106,9 @@
 
 **Definition.** Abstract interpretation approximates the reachable states of a program by an element of a simpler ordered set, such as one integer interval per variable. A widening operator ∇ takes two elements x and y and returns an upper bound of both. Take any increasing sequence yₙ, and set x₀ = ⊥ and xₙ₊₁ = xₙ ∇ yₙ. Widening must make this sequence constant after finitely many steps.
 
-**Problem.** An analysis needs an over-approximation of the least fixed point of the program's transfer function f. Plain iteration from ⊥ need not stop if the ordered set has infinite increasing chains. An example is the intervals \[0,0\], \[0,1\], \[0,2\] and so on, for a counting loop.
+**Problem.** With a widening operator, the iteration xₙ₊₁ = xₙ ∇ f(xₙ) from ⊥ stops after finitely many steps, even when the ordered set has infinite increasing chains. For a monotone transfer function f, its final value over-approximates the least fixed point of f.
 
-**How the definition helps.** Stopping after finitely many steps is part of the definition of widening, so termination of the analysis holds by definition. When the iteration xₙ₊₁ = xₙ ∇ f(xₙ) stops at some x, then f(x) ≤ x. For a monotone f, the Knaster–Tarski theorem puts such an x above the least fixed point, as the page explains. For intervals, a standard widening sends an unstable bound to infinity (our own example). So a loop counter gets the interval from 0 to +∞ after a few steps. An ascending chain condition would also give termination, but it rules out useful domains such as intervals. What stays hard is precision, since widening loses information that narrowing only partly recovers (our own).
+**How the definition helps.** Stopping after finitely many steps is part of the definition of widening, so termination holds by definition. When the iteration stops at some x, then f(x) ≤ x, and the Knaster–Tarski theorem puts such an x above the least fixed point, as the page explains. Plain iteration on intervals for a counting loop gives \[0,0\], \[0,1\], \[0,2\] and so on without end. A standard widening sends an unstable bound to infinity, so the counter gets the interval from 0 to +∞ (our own example).
 
 **Wikipedia:** [Abstract interpretation](https://en.wikipedia.org/wiki/Abstract_interpretation). It says: “For any ascending sequence (y′ₙ)ₙ≥₀, the sequence defined by x′₀ := ⊥ and x′ₙ₊₁ := x′ₙ ∇ y′ₙ is ultimately stationary.”
 
@@ -2190,9 +2190,9 @@
 
 **Definition.** A Kleene algebra has + for union and · for concatenation, with the usual ring laws except subtraction, and a + a = a. It also has a star operation. Writing a ≤ b for a + b = b, star satisfies 1 + aa\* ≤ a\* and 1 + a\*a ≤ a\*. It also satisfies two implications, that ax ≤ x gives a\*x ≤ x, and xa ≤ x gives xa\* ≤ x.
 
-**Problem.** One wants a finite set of axioms from which every true equation between regular expressions can be derived. Kozen proved in 1994 that the Kleene algebra axioms are complete in this sense.
+**Problem.** The Kleene algebra axioms are complete, so every true equation between regular expressions can be derived from them (Kozen, 1994).
 
-**How the definition helps.** The implications say that a\* is the least solution of a linear inequality, and that pins down star with finitely many rules. Purely equational axioms cannot do this, because Redko proved that no finite set of equations is complete. Salomaa's complete systems used inference rules that the page calls problematic. Kozen's choice keeps the axioms finite and of a simple first-order form, so that Kleene algebras form a well-behaved class of structures (our own). The completeness proof is still hard (our own). It works with matrices over a Kleene algebra and carries out the construction and minimization of automata inside the axioms (our own summary).
+**How the definition helps.** The implications say that a\* is the least solution of a linear inequality, and that pins down star with finitely many rules. Purely equational axioms cannot do this, because Redko proved that no finite set of equations is complete. Salomaa's complete systems used inference rules that the page calls problematic. The completeness proof stays hard, and it carries out the construction and minimization of automata inside the axioms (our own summary).
 
 **Wikipedia:** [Kleene algebra](https://en.wikipedia.org/wiki/Kleene_algebra). It says: “Redko proved that no finite set of equational axioms can characterize the algebra of regular languages.”
 
@@ -2262,9 +2262,9 @@
 
 **Definition.** A bisimulation is a relation R on the states of a labelled transition system, whose steps are labelled by actions. If p R q and p does an action a to reach p′, then q does a to reach some q′ with p′ R q′. The same must hold with p and q swapped. Two states are bisimilar if some bisimulation relates them.
 
-**Problem.** One wants an equivalence of processes that is easy to establish. Showing that two processes with infinitely many behaviours act the same seems to need an infinite argument.
+**Problem.** Bisimilarity is the largest bisimulation, and it is an equivalence relation. So to prove two states bisimilar, it is enough to give one bisimulation that relates them.
 
-**How the definition helps.** Because bisimilarity is the union of all bisimulations, two states are bisimilar as soon as one bisimulation contains the pair. This is the coinduction proof principle, and it is true by definition. The union of bisimulations is again a bisimulation, so bisimilarity is the largest one, and it is an equivalence relation, as the page says. One needs no limit of approximations and no induction on time (our own). What stays hard is congruence (our own). One must show, separately for each process language, that bisimilarity is kept by its operators.
+**How the definition helps.** Because bisimilarity is the union of all bisimulations, two states are bisimilar as soon as one bisimulation contains the pair. This coinduction proof principle is true by definition, and it needs no limit of approximations or induction on time (our own). What stays hard is congruence (our own). One must show, separately for each process language, that its operators keep bisimilarity.
 
 **Wikipedia:** [Bisimulation](https://en.wikipedia.org/wiki/Bisimulation). It says: “Since it is the union of all bisimulations, it is the unique largest bisimulation.”
 
@@ -2348,9 +2348,9 @@
 
 **Definition.** A labelled transition system has states and labelled steps s → t between them. A bisimulation is a relation between states such that related states can match each other's steps and stay related. The system is finitely branching if each state has only finitely many successors for each label.
 
-**Problem.** Bisimilar states satisfy the same modal formulas. The converse asks whether states that satisfy the same formulas must be bisimilar.
+**Problem.** In a finitely branching labelled transition system, two states are bisimilar exactly when they satisfy the same modal formulas.
 
-**How the definition helps.** With finitely many successors, a step that cannot be matched is caught by one formula. Take one formula that separates the step from each other successor, and put their conjunction under a diamond (our own sketch). Infinite branching breaks this. Take a state with one path of each finite length n, and a second state that also has one infinite path (our own example). They satisfy the same modal formulas, but they are not bisimilar. The paper's Theorem 35 is the coalgebraic form, where 'finitely branching' becomes a finitary functor, which builds each element from finitely many parts. What stays hard is the quantitative version for metric and probabilistic systems, which needs the paper's density conditions.
+**How the definition helps.** With finitely many successors, a step that cannot be matched is caught by one formula. Take one formula that separates the step from each other successor, and put their conjunction under a diamond (our own sketch). Infinite branching breaks this (our own example). A state with one path of each finite length, and a second state that also has one infinite path, satisfy the same formulas but are not bisimilar.
 
 **Paper or page:** [Quantitative Hennessy-Milner Theorems via Notions of Density](https://arxiv.org/abs/2207.09187v2). It says: “The classical Hennessy-Milner theorem is an important tool in the analysis of concurrent processes; it guarantees that any two non-bisimilar states in finitely branching labelled transition systems can be distinguished by a modal formula.”
 
@@ -2385,7 +2385,7 @@
 
 **Problem.** Any nonempty set of vertices can be covered by at most α bags. Here α is the largest number of pairwise nonadjacent vertices in that set.
 
-**How the definition helps.** In our own proof, a bag cover becomes a set of tree nodes meeting every subtree for the chosen vertices. Root the tree and call each subtree’s node nearest the root its top. Choose a subtree with a deepest top, select that top, and discard every subtree containing it. Any subtree intersecting the chosen one contains the selected top, since both tops lie above an intersection node. Repeating gives one pairwise disjoint witness subtree per selected node. Their vertices are pairwise nonadjacent because each graph edge needs a shared bag. This gives α, improving the cited bound of 2α − 1.
+**How the definition helps.** In our own proof, a bag cover becomes a set of tree nodes meeting every subtree for the chosen vertices. Repeatedly select the top node of a subtree with the deepest top, and discard every subtree containing it. The selected subtrees are pairwise disjoint, so their vertices share no bag and are pairwise nonadjacent. This gives at most α bags, improving the cited bound of 2α − 1.
 
 **Paper or page:** [Computing Tree Decompositions with Small Independence Number](https://arxiv.org/abs/2207.09993v4). It says: “Then W is covered by a set of at most 2α(W)−1 bags of 𝒯.”
 
@@ -2421,7 +2421,7 @@
 
 **Problem.** Any algorithm whose only access to the feature vectors is through their pairwise inner products gives the same result from the kernel matrix.
 
-**How the definition helps.** The kernel values are the required inner products in the feature space. The work moves to constructing that space from the positive semidefinite kernel, by our own explanation. For a chosen algorithm, one must also show it needs only inner products, by our own explanation.
+**How the definition helps.** The kernel values are the required inner products in the feature space. The work moves to constructing that space from the positive semidefinite kernel (our own). For a chosen algorithm, one must also show it needs only inner products (our own).
 
 **nLab:** [kernel method](https://ncatlab.org/nlab/show/kernel+method). It says: “Many linear algebra techniques in H just involve the inner product, and so can be conducted as a form of nonlinear algebra back in X, using the 'kernel trick'.”
 
@@ -2489,7 +2489,7 @@
 
 **Problem.** The probability of a target of length U on T time steps can be computed with O(TU) operations for nonempty targets.
 
-**How the definition helps.** In our own explanation, inserting blanks before, between and after target labels lets each partial alignment end at a numbered position. At each step, a path may stay, advance one position or skip a blank between different labels. Start at the first blank or first label and finish at the last label or last blank. These rules give one path for each valid alignment. Multiply each incoming sum by the current symbol probability. Each position needs at most three predecessor values, giving the stated operation count.
+**How the definition helps.** Inserting blanks before, between and after the target labels lets each partial alignment end at a numbered position (our own explanation). At each step, a path may stay, advance one position, or skip a blank between different labels. These rules give exactly one path for each valid alignment. Each position then needs at most three predecessor values per step, which gives O(TU) operations.
 
 **Wikipedia:** [Connectionist temporal classification](https://en.wikipedia.org/wiki/Connectionist_temporal_classification). It says: “Equivalent label sequences can occur in many ways – which makes scoring a non-trivial task, but there is an efficient forward–backward algorithm for that.”
 
@@ -2559,7 +2559,7 @@
 
 **Problem.** Take a finite set of points in the plane, not all on one line. The lifted lower hull gives exactly one Delaunay subdivision. A circle with no points inside and exactly four on it gives one quadrilateral cell.
 
-**How the definition helps.** The convex hull of a finite set is unique, so the subdivision defined from it is unique by definition. Triangulations need a rule to split each cell with four or more points on one circle, and different rules give different answers. The work goes into two facts. First, the projected lower faces cover the convex hull of the points without overlaps. Second, a plane that touches the lifted points from below corresponds to a circle with no points inside it. That second fact links this definition to the empty-circle test. The page states uniqueness only when all lower faces are triangles, and the comparison is our own.
+**How the definition helps.** The convex hull of a finite set is unique, so the subdivision defined from it is unique by definition. Triangulations need a rule to split each cell with four or more points on one circle, and different rules give different answers. The work goes into showing that the projected lower faces cover the hull without overlaps, and that a plane touching the lifted points from below corresponds to an empty circle. The page states uniqueness only when all lower faces are triangles, and the comparison is our own.
 
 **Wikipedia:** [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation). It says: “As the convex hull is unique, so is the triangulation, assuming all facets of the convex hull are simplices.”
 
@@ -2627,9 +2627,9 @@
 
 **Definition.** In the consensus problem, each process starts with a value. Correct processes must all decide the same value (agreement), decide an input of some process (validity), and eventually decide (termination). In a fully asynchronous system, messages may take any finite time and processes may crash. Randomized consensus keeps agreement and validity always, but asks for termination only with probability one.
 
-**Problem.** Fischer, Lynch and Paterson proved that no deterministic protocol solves consensus in an asynchronous system if even one process may crash. Yet fault-tolerant systems need agreement.
+**Problem.** No deterministic protocol solves consensus in an asynchronous system if even one process may crash (Fischer, Lynch and Paterson). Randomized consensus, with termination only with probability one, can be solved there when fewer than half the processes may crash.
 
-**How the definition helps.** The FLP proof builds one infinite schedule in which the protocol never decides. With coin flips such a schedule has probability zero, so the weaker termination condition is no longer contradicted (our own). Ben-Or gave such a protocol in 1983, in which processes that see no clear majority flip a coin (our own detail). Agreement and validity are not weakened at all, only termination. Other ways out weaken the model instead, for example partial synchrony or failure detectors (our own). What stays hard is speed, since with private coins the expected number of rounds can be exponential (our own).
+**How the definition helps.** The FLP proof builds one infinite schedule in which the protocol never decides. With coin flips such a schedule has probability zero, so the weaker termination condition is no longer contradicted (our own). Ben-Or gave such a protocol in 1983, in which processes that see no clear majority flip a coin (our own detail). Agreement and validity are not weakened at all, only termination.
 
 **Wikipedia:** [Consensus (computer science)](https://en.wikipedia.org/wiki/Consensus_%28computer_science%29). It says: “Randomized consensus algorithms can circumvent the FLP impossibility result by achieving both safety and liveness with overwhelming probability”
 
@@ -2698,9 +2698,9 @@
 
 **Definition.** Take two data sets that differ in one person. A randomized algorithm is μ-GDP (Gaussian differentially private) if its two output distributions are never easier to tell apart than N(0, 1) and N(μ, 1). 'Telling apart' is measured by the trade-off between the two kinds of error of a statistical test. So the definition compares every algorithm with one Gaussian benchmark.
 
-**Problem.** When several private algorithms run on the same data, how much privacy is lost in total? For the usual (ε, δ) privacy, the exact total is hard to compute, and the simple bounds are loose.
+**Problem.** Running a μ₁-GDP and then a μ₂-GDP algorithm on the same data gives a √(μ₁² + μ₂²)-GDP algorithm. This stays true when each step chooses its parameter adaptively, provided the sum of squares stays below a budget B².
 
-**How the definition helps.** The Gaussian benchmark is closed under composition, so the rule for the total cost is exact and short. Running a μ₁-GDP and a μ₂-GDP algorithm gives a √(μ₁² + μ₂²)-GDP algorithm, as Lemma 2 of the PRECAD paper states. The reason is that testing two independent normal shifts is the same as testing one shift of length √(μ₁² + μ₂²) (our own explanation). The quoted theorem keeps this rule when each step chooses its parameter adaptively, provided the squares stay below a budget B². Group privacy is equally simple: μ-GDP gives Kμ-GDP for a group of K people (Lemma 3 of the PRECAD paper). The conversion back to (ε, δ) numbers stays outside the definition. It uses an explicit formula with the normal distribution function (Lemma 4 of the PRECAD paper).
+**How the definition helps.** The Gaussian benchmark is closed under composition, so the rule for the total cost is exact and short (Lemma 2 of the PRECAD paper). Testing two independent normal shifts is the same as testing one shift of length √(μ₁² + μ₂²) (our own explanation). For the usual (ε, δ) privacy, the exact total is hard to compute and the simple bounds are loose. Conversion back to (ε, δ) uses an explicit formula with the normal distribution function (Lemma 4 of the PRECAD paper).
 
 **Paper or page:** [Individual Privacy Accounting with Gaussian Differential Privacy](https://arxiv.org/abs/2209.15596v2), [PRECAD: Privacy-Preserving and Robust Federated Learning via Crypto-Aided Differential Privacy](https://arxiv.org/abs/2110.11578v1). It says: “Let k denote the maximum number of compositions. Suppose that, almost surely, ∑ₘ₌₁ᵏ μₘ² ≤ B². Then, 𝓜⁽ᵏ⁾(X) is B-GDP.”
 
@@ -2717,9 +2717,9 @@
 
 **Definition.** In local privacy, each user applies a randomizing channel K to their own data. K is (ε, δ)-locally private if K(S \| x) ≤ eᵋ K(S \| x′) + δ for all inputs x, x′ and output sets S. The Eγ-divergence of P from Q is the largest value of P(S) − γQ(S) over all sets S. The contraction coefficient ηγ(K) is the largest possible ratio of this divergence after K to the divergence before K.
 
-**Problem.** Lower bounds for estimation under local privacy need to know how much a private channel destroys information. One wants this loss in the language of divergences, where tools already exist.
+**Problem.** A channel K is (ε, δ)-locally private exactly when its contraction coefficient ηγ(K) is at most δ, with γ = eᵋ.
 
-**How the definition helps.** Local privacy is already a bound on the Eγ-divergence, with γ = eᵋ, between the outputs for any two inputs. Two different inputs, seen as point masses, have Eγ-divergence 1 (our own). So privacy says that K shrinks this divergence from 1 to at most δ on such pairs (our own). The quoted theorem says that this is the same as ηγ(K) ≤ δ, so point masses are the worst case (our own reading). Contraction coefficients are a standard tool for lower bounds on the error of estimators (our own). What stays hard is the estimation theory that uses these bounds.
+**How the definition helps.** Local privacy is already a bound on the Eγ-divergence, with γ = eᵋ, between the outputs for any two inputs. Two different inputs, seen as point masses, have Eγ-divergence 1, so privacy says that K shrinks this divergence from 1 to at most δ on such pairs (our own). The theorem says that point masses are the worst case (our own reading). Contraction coefficients are a standard tool for lower bounds on the error of estimators (our own).
 
 **Paper or page:** [Local Differential Privacy Is Equivalent to Contraction of Eγ-Divergence](https://arxiv.org/abs/2102.01258v1). It says: “A mechanism 𝖪 is (ε, δ)-LDP if and only if η\[eᵋ\](𝖪) ≤ δ”
 
@@ -2735,9 +2735,9 @@
 
 **Definition.** Take two data sets that differ in one person. An algorithm is (α, ε)-RDP (Rényi differentially private) if its two output distributions have Rényi divergence of order α at most ε. The Rényi divergence of order α &gt; 1 measures how far apart two distributions are. As α grows, it tends to the worst-case log ratio of the two densities.
 
-**Problem.** Training a model privately runs a noisy step thousands of times. The total privacy cost must be bounded tightly, or the guarantee becomes useless.
+**Problem.** If one step is (α, ε₁)-RDP and a second step, which may see the first output, is (α, ε₂)-RDP, then together they are (α, ε₁ + ε₂)-RDP.
 
-**How the definition helps.** The Rényi divergence of two product distributions is the sum over the factors, so composition becomes a plain sum (our own explanation). The quoted proposition states this sum rule, even when the second step sees the output of the first. The Gaussian mechanism also has a simple cost: it is (α, αΔ²/(2σ²))-RDP for every order α (Proposition 1 of the NIST paper). Here Δ is the sensitivity and σ is the noise scale. For each α, one adds these costs over all steps, and converts to (ε, δ) privacy only once at the end. What stays hard is this final conversion, which loses a little and needs a choice of α.
+**How the definition helps.** The Rényi divergence of two product distributions is the sum over the factors, so composition becomes a plain sum (our own explanation). The Gaussian mechanism is (α, αΔ²/(2σ²))-RDP for every order α, where Δ is the sensitivity and σ the noise scale (Proposition 1 of the NIST paper). So one adds the costs over thousands of training steps and converts to (ε, δ) privacy only once at the end. That final conversion loses a little and needs a choice of α.
 
 **Paper or page:** [Winning the NIST Contest: A scalable and general approach to differentially private synthetic data](https://arxiv.org/abs/2108.04978v1), [Shuffle Gaussian Mechanism for Differential Privacy](https://arxiv.org/abs/2206.09569v2). It says: “Let 𝓜₁ : 𝒟 → ℛ₁ be (α, γ₁)-RDP and 𝓜₂ : 𝒟 × ℛ₁ → ℛ₂ be (α, γ₂)-RDP. Then the mechanism 𝓜 = 𝓜₂(D, 𝓜₁(D)) is (α, γ₁ + γ₂)-RDP.”
 
@@ -2772,9 +2772,9 @@
 
 **Definition.** For an unsatisfiable CNF formula F, the search problem S(F) takes an assignment and asks for a clause of F that it falsifies. Such a clause always exists, so S(F) is a total search problem. PPADᵈᵗ is the decision-tree version of the class PPAD, a class of total search problems defined by an end-of-line principle.
 
-**Problem.** Relate the strength of algebraic proof systems to classes of total search problems. Examples are Nullstellensatz and Sherali–Adams proofs.
+**Problem.** For an unsatisfiable CNF formula F, short unary Nullstellensatz refutations of F correspond exactly to membership of S(F) in PPADᵈᵗ. Unary Sherali–Adams refutations correspond in the same way to PPADSᵈᵗ.
 
-**How the definition helps.** S(F) is total because F is unsatisfiable, so each proof system can be matched with a total search class. With this definition, short unary Nullstellensatz proofs correspond exactly to membership of S(F) in PPADᵈᵗ. A companion theorem in the same paper matches unary Sherali–Adams proofs with PPADSᵈᵗ. Separations between proof systems then give separations between search classes in the decision-tree model (our own reading of the title). The proofs of these correspondences and of the separations remain the work.
+**How the definition helps.** S(F) is total because F is unsatisfiable, so each proof system can be matched with a class of total search problems. Separations between proof systems then give separations between search classes in the decision-tree model (our own reading of the title). The proofs of these correspondences remain the work.
 
 **Paper or page:** [Separations in Proof Complexity and TFNP](https://arxiv.org/abs/2205.02168). It says: “For any sequence Fn of poly(log n)-width CNF formulas, Fn has a degree-poly(log n), size-nᵖᵒˡʸ⁽ˡᵒᵍ ⁿ⁾ unary Nullstellensatz proof if and only if S(F) ∈ PPADᵈᵗ.”
 
@@ -2790,9 +2790,9 @@
 
 **Definition.** ∃ℝ is the class of decision problems that reduce in polynomial time to the existential theory of the reals. That theory asks whether a system of polynomial equations and inequalities with integer coefficients has a real solution. It lies between NP and PSPACE.
 
-**Problem.** Find the exact complexity of the art gallery problem and its variant where guards must see only the walls. Membership in NP is not known, because optimal guards can need irrational coordinates (our own remark).
+**Problem.** The point-boundary art gallery problem, where guards must see only the walls of the polygon, is ∃ℝ-complete. So it is equivalent under polynomial-time reductions to deciding whether polynomial equations have a real solution.
 
-**How the definition helps.** NP is the wrong yardstick here, because a solution may not have a short exact description (our own). The class ∃ℝ is defined around real algebraic solutions, so geometric problems with that difficulty become complete for it (our own). With it, the point-boundary variant gets an exact classification, ∃ℝ-complete. The paper also gives simpler gadgets for the original point-point variant. The hardness proofs still need careful gadgets, though the abstract says they can now be built and checked by hand.
+**How the definition helps.** NP is the wrong yardstick here, because optimal guards can need irrational coordinates, so a solution may have no short exact description (our own). The class ∃ℝ is built around real solutions of polynomial systems, so such geometric problems can be complete for it (our own). The work is in the hardness gadgets, which the paper makes simple enough to build and check by hand.
 
 **Paper or page:** [The Point-Boundary Art Gallery Problem is ∃ℝ-hard](https://arxiv.org/abs/2210.12817). It says: “showing that it is ∃ℝ-complete, meaning that it is equivalent under polynomial time reductions to deciding whether a system of polynomial equations has a real solution.”
 
@@ -2809,9 +2809,9 @@
 
 **Definition.** A class of structures is treewidth-pliable when, for every error ε &gt; 0, each structure in it is ε-close to one of bounded treewidth. The bound may depend only on ε. The distance compares the optimal values of Max-CSP instances on the two structures. Treewidth measures how much a graph looks like a tree.
 
-**Problem.** Find classes of constraint graphs on which Max-2-CSP, maximising the number of satisfied two-variable constraints, has a polynomial-time approximation scheme. Such a scheme gets within any factor 1 + ε of the optimal value in polynomial time. Planar graphs and dense graphs were known cases, with unrelated proofs.
+**Problem.** For every treewidth-pliable class of structures of bounded arity, Max-CSP has a polynomial-time approximation scheme. Such a scheme gets within any factor 1 + ε of the optimal value in polynomial time.
 
-**How the definition helps.** Both known proofs replace the graph by a nearby structure of bounded treewidth, and pliability names that step (our own explanation). So one theorem gives the approximation scheme for every pliable class of bounded arity, and the abstract says it unifies both approaches. Baker's layering applies to sparse graphs such as planar graphs, and Szemerédi's regularity lemma applies to dense graphs. The paper shows that the notion has several equivalent forms, through size, treedepth or the Hadwiger number. The condition approximates the optimal value, but the paper shows that it cannot be used to find solutions in general.
+**How the definition helps.** Both known proofs, for planar graphs and for dense graphs, replace the graph by a nearby structure of bounded treewidth, and pliability names that step (our own explanation). So one theorem covers both cases, which the abstract says unifies Baker's layering for sparse graphs and Szemerédi's regularity lemma for dense graphs. The condition approximates the optimal value, but the paper shows that it cannot be used to find solutions in general.
 
 **Paper or page:** [Pliability and Approximating Max-CSPs](https://arxiv.org/abs/1911.03204), [Pliability and Approximating Max-CSPs](https://arxiv.org/abs/1911.03204). It says: “The condition unifies the two main approaches for designing a polynomial-time approximation scheme. One is Baker's layering technique, which applies to sparse graphs such as planar or excluded-minor graphs.”
 
@@ -2827,9 +2827,9 @@
 
 **Definition.** The time-bounded Kolmogorov complexity of a string is the length of the shortest program that prints it within a time bound. In probabilistic Kolmogorov complexity pK, the machine gets a random string, and the program may depend on it. The program needs to work only for most choices of the random string. Randomized complexity rK instead asks for one program that uses its own private random bits.
 
-**Problem.** A coding theorem says that a string sampled with probability p has a description of length about log(1/p). Such a theorem is the key to many average-case results, but for rK it was open.
+**Problem.** For probabilistic Kolmogorov complexity pK, a string that an efficient sampler outputs with probability p has complexity about log(1/p). For rK, the paper proves this coding theorem only if one-way functions do not exist.
 
-**How the definition helps.** With shared random bits, an encoder and a decoder can agree on a hash-based code (our own explanation). Earlier work proved a coding theorem for pK with no extra assumptions (our own). For this reason, earlier average-case results were proved for pK rather than rK, as the quoted abstract says. The paper proves the coding theorem for rK only under the assumption that one-way functions do not exist. So the choice of pK made the earlier theorems possible. The rK version stays conditional.
+**How the definition helps.** With shared random bits, an encoder and a decoder can agree on a hash-based code (our own explanation). So pK has an unconditional coding theorem, and earlier average-case results were proved for pK rather than rK, as the quoted abstract says. Without public randomness, the rK version stays conditional.
 
 **Paper or page:** [Optimal Coding for Randomized Kolmogorov Complexity and Its Applications](https://arxiv.org/abs/2409.12744). It says: “Previous works bypassed this issue by considering probabilistic Kolmogorov complexity (pKᵖᵒˡʸ), in which public random bits are assumed to be available.”
 
@@ -2845,9 +2845,9 @@
 
 **Definition.** A multiclass predictor gives a probability vector over k labels. A forecast is calibrated if, among cases with forecast v, the event happens a fraction v of the time. Projected smooth calibration asks for an approximate form of this for the summed probability of each label set T.
 
-**Problem.** The paper gives recalibration algorithms for this notion with time and sample costs polynomial in k. The guarantee covers every binary question of the form “is the label in T?”. Natural stronger notions meet information-theoretic or computational barriers.
+**Problem.** Projected smooth calibration can be reached by recalibration algorithms whose time and sample costs are polynomial in k. Then, for each label set T, the summed probability is close to a perfectly calibrated binary predictor for the question “is the label in T?”.
 
-**How the definition helps.** Weakening the definition to sums over label sets makes polynomial cost possible while keeping useful guarantees. The abstract states that each summed probability is close to a perfectly calibrated binary predictor for that question. The proofs rest on a tight connection between multiclass calibration and agnostic learning of binary predictions.
+**How the definition helps.** Weakening calibration to sums over label sets makes polynomial cost possible while keeping a useful guarantee for each binary question. Natural stronger notions meet information-theoretic or computational barriers. The proofs rest on a tight connection between multiclass calibration and agnostic learning of binary predictions.
 
 **Paper or page:** [On Computationally Efficient Multi-Class Calibration](https://arxiv.org/abs/2402.07821v2). It says: “It ensures that the probabilities predicted by summing the probabilities assigned to labels in T are close to some perfectly calibrated binary predictor for that task.”
 
@@ -2861,9 +2861,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 68Q32 (Computational learning theory), 62C05. arXiv cs.LG. Level 4: research.
 
-**Definition.** An omnipredictor is a probability forecast that works for a specified family of losses. For each loss, choose the best action as if the forecast were the true probability. The resulting loss must be near or below that of the best rule in a specified class.
+**Definition.** An omnipredictor for a class C and a family of losses is a probability forecast such that, for each loss, the best action under the forecast does nearly as well as the best rule in C. A predictor is multicalibrated for C when its forecast errors average near zero across forecast levels and groups defined by C.
 
-**Problem.** An approximately multicalibrated predictor can serve as an omnipredictor for the loss families covered by the paper. Multicalibration requires forecast errors to average near zero across forecast levels and test groups.
+**Problem.** An approximately multicalibrated predictor for C is an omnipredictor for C, for the loss families covered by the paper.
 
 **How the definition helps.** Omniprediction separates the forecast from the action, so the same theorem can cover many choices of loss. The action depends on one forecast value, with no need to retrain. The work is to prove that multicalibration suffices for this guarantee.
 
@@ -2883,7 +2883,7 @@
 
 **Problem.** For a class of finite Vapnik–Chervonenkis dimension, strong proper computable learning holds exactly when an algorithm performs empirical risk minimization. Empirical risk minimization returns a hypothesis in the class with least error on the given sample. The dimension is the size of the largest set on which the class realizes every labeling by 0 and 1.
 
-**How the definition helps.** The computable sample bound makes learning a finite search, and the search yields an exact minimizer. In our own sketch, use the uniform distribution on a sample of n points and an accuracy below 1/n. Run the learner on every sequence of the required length drawn from the sample, and keep the output with least sample error. Sample errors are multiples of 1/n, so this output has the least possible error. Conversely, finite dimension gives a sample bound that one can compute from the dimension. The paper quotes this theorem from earlier work by other authors.
+**How the definition helps.** The computable sample bound makes learning a finite search, and the search yields an exact minimizer. In our own sketch, take the uniform distribution on n sample points and accuracy below 1/n, run the learner on every sample sequence of the required length, and keep the output with least sample error. Sample errors are multiples of 1/n, so this output is a minimizer. Conversely, finite dimension gives a computable sample bound, and the paper quotes the theorem from earlier work.
 
 **Paper or page:** [Computable learning of natural hypothesis classes](https://arxiv.org/abs/2407.16663v2). It says: “proper SCPAC learnable ⇔ there is a computable ERM for ℋ”
 
@@ -2915,11 +2915,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 68Q42 (Grammars and rewriting systems), 18D40. arXiv math.CT, cs.LO. Level 4: research.
 
-**Definition.** Rewriting theory studies terms up to rules that turn one term into another. The paper defines termination, local confluence and confluence for objects of any category 𝒞 with some mild properties. It uses reduction strategies, which choose how each element rewrites.
+**Definition.** Internal abstract rewriting defines termination, local confluence and confluence for rewriting on an object of a category 𝒞, using reduction strategies that choose how each element rewrites. Terminating means that no rewriting chain is infinite. Confluent means that any two rewriting paths from one term meet again.
 
-**Problem.** Newman's lemma says that a terminating, locally confluent rewriting system is confluent. Terminating means that no rewriting chain is infinite; confluent means that any two rewriting paths from one term meet again. Sets of terms and vector spaces of terms needed separate proofs.
+**Problem.** In any category 𝒞 that meets the paper's mild conditions, a terminating, locally confluent rewriting system is confluent. Taking 𝒞 to be sets or vector spaces recovers both classical forms of Newman's lemma.
 
-**How the definition helps.** Once the notions live inside a general category, one proof of Newman's lemma covers both settings. The abstract says that the paper proves an analogue of Newman's lemma in this general setting. Theorem 33 in the data set is one form of it. With 𝒞 the category of sets or of vector spaces, it recovers the classical results in a slightly more general form. Our own remark: the vector space case is harder because a linear combination can rewrite in many ways at once. The category 𝒞 must still satisfy the mild conditions of the paper.
+**How the definition helps.** Once the notions live inside a general category, one proof of Newman's lemma covers both settings, which before needed separate proofs. Our own remark: the vector space case is harder because a linear combination can rewrite in many ways at once. The category 𝒞 must still satisfy the mild conditions of the paper.
 
 **Paper or page:** [Abstract rewriting internalized](https://arxiv.org/abs/2002.06004), [Abstract rewriting internalized](https://arxiv.org/abs/2002.06004). It says: “Strikingly, although both theories are very similar, most results (such as Newman's Lemma) require different proofs in these two settings.”
 
@@ -2951,11 +2951,11 @@
 
 *True by definition. Confidence: medium.* MSC 68Q45 (Formal languages and automata), 20M35. arXiv cs.FL, cs.CC. Level 4: research.
 
-**Definition.** A program over a finite monoid M reads input letters at chosen positions and maps each one to an element of M, then multiplies them. Programs over a class V of monoids recognize a class P(V) of languages. The paper defines when V is tame, and proves that this holds exactly when every regular language in P(V) lies in L(QEV). That class is defined by classical recognition with morphisms.
+**Definition.** A program over a finite monoid M reads input letters at chosen positions, maps each to an element of M and multiplies them. The paper's tameness condition on a class V of monoids is equivalent to this: every regular language recognized by programs over V lies in L(QEV), the class recognized classically by morphisms.
 
-**Problem.** Barrington showed that programs of polynomial length over finite monoids capture the class NC¹. Which regular languages can programs over a given class of monoids recognize?
+**Problem.** Programs over monoids in DA recognize exactly the regular languages recognized by morphisms into QDA, because DA is tame. The class J is not tame.
 
-**How the definition helps.** Tameness is equivalent to the inclusion that the characterization needs, so for a tame class the characterization holds almost by definition. That equivalence is a proposition in the data set, not the definition itself. The work moves into showing that a given class is tame. The paper proves that the class DA is tame, so its programs recognize exactly the regular languages recognized by morphisms into QDA. It also shows that the class J is not tame. So the condition is a real restriction.
+**How the definition helps.** Tameness is equivalent to the inclusion that the characterization needs, so for a tame class the characterization holds almost by definition. That equivalence is a proposition in the data set, not the definition itself. The work moves into showing that a given class, such as DA, is tame, and the failure for J shows that the condition is a real restriction.
 
 **Paper or page:** [Tameness and the power of programs over monoids in DA](https://arxiv.org/abs/2101.07495), [Tameness and the power of programs over monoids in DA](https://arxiv.org/abs/2101.07495). It says: “First, we identify a new tameness condition on a class of monoids that entails a natural characterization of the regular languages recognizable by programs over monoids from the class.”
 
@@ -3023,11 +3023,11 @@
 
 *Rules out counterexamples.* MSC 68Q55 (Semantics in the theory of computing), 03B38, 03D65. arXiv cs.LO, math.LO. Level 4: research.
 
-**Definition.** Synthetic guarded domain theory has a type former ▷, called 'later'. ▷A is the type of things that are available one time step from now, and a map next : A → ▷A delays a value by one step. A map is contractive if it factors through next. For every f : ▷A → A there is a fixed point fix(f) : A with fix(f) = f(next(fix(f))): f, given fix(f) one step late, gives back fix(f).
+**Definition.** Synthetic guarded domain theory has a type former ▷, called later. ▷A is the type of values that are available one time step from now, and next : A → ▷A delays a value by one step.
 
-**Problem.** Synthetic domain theory wants every recursive definition to have a fixed point, and it wants continuity to come for free. But a fixed-point operator at all types, with no restriction, makes the logic inconsistent.
+**Problem.** In synthetic guarded domain theory, every f : ▷A → A, at every type A, has a fixed point fix(f) with fix(f) = f(next(fix(f))), and the theory stays consistent.
 
-**How the definition helps.** The later modality delays each recursive call by one step, and this delay keeps a fixed-point operator at all types consistent. The nLab says that this operator corresponds to Löb's theorem. In the topos of trees (presheaves on the natural numbers ω), the fixed point is built stage by stage, first at stage 0, then at stage 1, and so on. An unguarded definition such as x = ¬x has no counterpart. Only x = ¬▷x can be formed, and it is harmless (our own example). Finding models, such as presheaves on ω, is where the work lies.
+**How the definition helps.** The later modality delays each recursive call by one step, and this delay keeps a fixed-point operator at all types consistent. An unrestricted fixed-point operator at all types makes the logic inconsistent, as with x = ¬x. Only x = ¬▷x can be formed, and it is harmless (our own example). The work lies in finding models, such as the topos of trees (presheaves on ω), where fixed points are built stage by stage.
 
 **nLab:** [synthetic guarded domain theory](https://ncatlab.org/nlab/show/synthetic+guarded+domain+theory). It says: “yields a restricted fixed-point operator fix : (▷A → A) → A at all types A, which is consistent when viewing this theory as a logical framework.”
 
@@ -3059,9 +3059,9 @@
 
 **Definition.** The doubling dimension of a metric space is the smallest d such that 2ᵈ balls of radius r cover each ball of radius 2r. Euclidean space ℝᵏ has doubling dimension proportional to k. The definition uses only distances, with no coordinates.
 
-**Problem.** Find the closest pair among N points in O(N log N) expected time. Classical algorithms use coordinates and grids in the plane or in ℝᵏ.
+**Problem.** In a metric space of N points whose doubling dimension d does not depend on N, a randomised algorithm finds the closest-pair distance in O(N log N) expected time.
 
-**How the definition helps.** The only fact about dimension that the grid algorithm needs is a packing bound, and the doubling definition gives it directly (our own). The same paper proves this bound as a lemma. For R ≥ δ/2, a ball of radius R contains at most (4R/δ)ᵈ points, where δ is the closest-pair distance. With that bound, a randomised algorithm and its analysis work in any metric of bounded doubling dimension. The theorem says that the constant in the running time depends only on d. It grows exponentially in d, so the result is useful only for small d (our own).
+**How the definition helps.** The only fact about dimension that the grid algorithm needs is a packing bound, and the doubling definition gives it directly (our own). The paper proves that for R ≥ δ/2, a ball of radius R holds at most (4R/δ)ᵈ points, where δ is the closest-pair distance. The constant in the running time depends only on d and grows exponentially in d, so the result is useful only for small d (our own).
 
 **Paper or page:** [A Simple Randomized O(n log n)--Time Closest-Pair Algorithm in Doubling Metrics](https://arxiv.org/abs/2004.05883), [A Simple Randomized O(n log n)--Time Closest-Pair Algorithm in Doubling Metrics](https://arxiv.org/abs/2004.05883). It says: “Let (P,dist) be a metric space of size N ≥ 2, and let d be its doubling dimension. Assume that d does not depend on N. The closest-pair distance in P can be computed in O(N log N) expected time.”
 
@@ -3094,7 +3094,7 @@
 
 *True by definition.* MSC 68T05 (Learning and adaptive systems in artificial intelligence), 68T07, 46E22. arXiv cs.LG, stat.ML. Level 4: research.
 
-**Definition.** Each layer is a function in a Hilbert space, a complete inner product space. Evaluation of each output coordinate at each input is a continuous linear functional. Its representing vector gives that coordinate by an inner product. At each layer, use the span of these vectors for all coordinates at the finitely many inputs reaching that layer during training.
+**Definition.** Each layer is a function in a Hilbert space where evaluating an output coordinate at an input is a continuous linear functional, represented by a vector. The training evaluation span of a layer is the span of these vectors over all coordinates and the finitely many training inputs that reach the layer.
 
 **Problem.** Minimize a loss depending only on final training predictions plus a positive multiple of each layer’s squared norm. At any minimizer, each layer belongs to its training evaluation span.
 
@@ -3112,9 +3112,9 @@
 
 **Definition.** A predictor is multiaccurate for a collection of sets when its error averages to about zero on each set in the collection. It is multicalibrated when it is also calibrated on each set. That is, on the points of the set where it predicts v, the true average is about v.
 
-**Problem.** Impagliazzo's hardcore lemma says that a function that is mildly hard for small circuits is very hard on some large set of inputs. Its known proofs use boosting, the minimax theorem or a complexity-theoretic regularity lemma (our own).
+**Problem.** Multicalibration gives stronger versions of Impagliazzo's hardcore lemma, which says that a function mildly hard for small circuits is very hard on some large set of inputs. For example, every Boolean function has a small collection of disjoint hardcore sets, whose sizes depend on how balanced the function is on the parts.
 
-**How the definition helps.** Multicalibration splits the inputs into a few simple parts, and on each part the function looks like a biased coin to simple tests (our own reading). Hardcore sets can then be read off from the parts of the partition (our own). The abstract says that multiaccuracy is equivalent to the regularity notion of Trevisan, Tulsiani and Vadhan, and that the stronger notion gives stronger results. For example, every Boolean function has a small collection of disjoint hardcore sets. Their sizes depend on how balanced the function is on the parts.
+**How the definition helps.** Multicalibration splits the inputs into a few simple parts, and on each part the function looks like a biased coin to simple tests (our own reading). Hardcore sets can then be read off from the parts (our own). The abstract says that multiaccuracy is equivalent to the regularity notion of Trevisan, Tulsiani and Vadhan, and that the stronger notion gives stronger results.
 
 **Paper or page:** [Complexity-Theoretic Implications of Multicalibration](https://arxiv.org/abs/2312.17223). It says: “Starting from the stronger notion of multicalibration, we obtain stronger and more general versions of a number of applications of the Regularity Lemma, including the Hardcore Lemma, the Dense Model Theorem, and the equivalence of conditional pseudo-min-entropy and unpredictability.”
 
@@ -3131,9 +3131,9 @@
 
 **Definition.** An enhanced guard can see around a reflex corner, a corner with an interior angle above 180°, by an angle δ. A diminished guard has its view blocked by an extra angle δ at reflex corners. A polygon P has vision stability δ when the optimal number of enhanced guards equals the optimal number of diminished guards. So small changes of vision do not change the answer.
 
-**Problem.** The art gallery problem asks for the fewest points in a polygon that together see all of it. It is ∃ℝ-complete, that is, as hard as deciding whether polynomial equations have a real solution. So an exact algorithm seems to need algebraic methods.
+**Problem.** For every vision stable polygon, one polynomial-size integer program over a finite set of candidate points gives an optimal guard set.
 
-**How the definition helps.** The definition excludes polygons whose optimum depends on exact positions, so a finite set of candidate positions is enough (our own). The excluded cases include known polygons where every optimal guard set needs irrational coordinates, found by Abrahamsen, Adamaszek and Miltzow (our own example). For a vision stable polygon, a polynomial-size integer program over candidate points finds the optimum. The paper argues that most relevant polygons are vision stable. The integer program can still be slow, and the problem stays hard for polygons that are not stable (our own).
+**How the definition helps.** The definition excludes polygons whose optimum depends on exact positions, so a finite set of candidate positions is enough (our own). The general problem is ∃ℝ-complete, and the excluded cases include known polygons where every optimal guard set needs irrational coordinates (our own example). The paper argues that most relevant polygons are vision stable. The integer program can still be slow, and the problem stays hard for polygons that are not stable (our own).
 
 **Paper or page:** [A Practical Algorithm with Performance Guarantees for the Art Gallery Problem](https://arxiv.org/abs/2007.06920). It says: “We describe a one-shot vision stable algorithm that computes an optimal guard set for visionstable polygons using polynomial time and solving one integer program. It guarantees to find the optimal solution for every vision stable polygon.”
 

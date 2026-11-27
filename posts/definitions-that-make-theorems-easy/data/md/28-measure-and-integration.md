@@ -6,9 +6,9 @@
 
 **Definition.** A set of real numbers has measure zero if, for every ε &gt; 0, countably many intervals with total length less than ε cover it.
 
-**Problem.** Which bounded functions on \[a,b\] are Riemann integrable?
+**Problem.** Lebesgue–Vitali theorem: a bounded function on \[a,b\] is Riemann integrable exactly when its points of discontinuity form a set of measure zero.
 
-**How the definition helps.** With this definition, the answer fits in one short sentence. The Lebesgue–Vitali theorem says: exactly the functions that are continuous almost everywhere, that is, whose points of discontinuity form a set of measure zero. Vitali and Lebesgue proved it independently in 1907. The theorem uses only the notion of measure zero, not Lebesgue's full measure or integral. It shows at once that monotone functions are integrable, because they have only countably many discontinuities. It also shows that the indicator function of the rationals is not integrable. Countable covers matter: the rationals in \[0,1\] have measure zero, but finitely many intervals of small total length cannot cover them (our own remark).
+**How the definition helps.** With this definition, the answer fits in one short sentence and needs no full Lebesgue measure or integral. It shows at once that monotone functions are integrable, because they have only countably many discontinuities. Countable covers matter: the rationals in \[0,1\] have measure zero, but finitely many intervals of small total length cannot cover them (our own remark).
 
 **Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “A bounded function on a compact interval \[a, b\] is Riemann integrable if and only if it is continuous almost everywhere (the set of its points of discontinuity has measure zero, in the sense of Lebesgue measure).”
 
@@ -24,7 +24,7 @@
 
 **Problem.** Two probability measures that agree on a π-system agree on the σ-algebra it generates. So a law on the real line is fixed by its distribution function. Lebesgue measure is the only Borel measure that gives each interval its length.
 
-**How the definition helps.** The family of sets on which two probability measures agree is always a Dynkin system, so the π-λ theorem applies to it at once. This family need not be a σ-algebra, because agreement on A and B does not give agreement on A ∪ B. A direct proof that it contains all Borel sets therefore fails, and the Dynkin system is the right weaker structure. The page also uses the same method to check independence on generating π-systems only. What stays hard is the π-λ theorem itself, a short but careful set-theoretic argument. Standard measure texts prove the same results with monotone classes instead.
+**How the definition helps.** The family of sets on which two probability measures agree is always a Dynkin system, so the π-λ theorem applies to it at once. This family need not be a σ-algebra, because agreement on A and B does not give agreement on A ∪ B. So a direct proof that it contains all Borel sets fails. What stays hard is the π-λ theorem itself, a short but careful set-theoretic argument.
 
 **Wikipedia:** [Dynkin system](https://en.wikipedia.org/wiki/Dynkin_system), [Pi-system](https://en.wikipedia.org/wiki/Pi-system). It says: “One application of Sierpiński-Dynkin's π-λ theorem is the uniqueness of a measure that evaluates the length of an interval (known as the Lebesgue measure)”
 
@@ -56,9 +56,9 @@
 
 **Definition.** A signed measure is a countably additive set function on a σ-algebra that may take negative values. A finite signed measure takes only real values. An extended signed measure may take the value +∞ or the value −∞, but not both.
 
-**Problem.** Finite signed measures form a real vector space, and with the total variation norm a Banach space. So the Riesz representation theorem can identify a dual space with a space of measures. The dual of the continuous functions vanishing at infinity is the space of finite regular signed (or complex) measures.
+**Problem.** Finite signed measures form a real vector space, and a Banach space under the total variation norm. So the Riesz representation theorem can identify the dual of the continuous functions vanishing at infinity with the finite regular signed measures.
 
-**How the definition helps.** Finite values make the sum of two signed measures defined on every set, so the space is closed under addition. The definition excludes adding a measure with value +∞ on a set to one with value −∞ on the same set. There the sum would be ∞ − ∞, which is undefined. Even the extended definition forbids both infinite values in one measure for this reason. The Hahn and Jordan decompositions write each signed measure as a difference of two positive measures, which gives the total variation norm. What stays hard is the representation theorem, which needs regularity and the positive case first.
+**How the definition helps.** Finite values make the sum of two signed measures defined on every set, so the space is closed under addition. The definition excludes adding a measure with value +∞ on a set to one with value −∞ on the same set, where the sum would be ∞ − ∞. The Jordan decomposition writes each signed measure as a difference of two positive measures, which gives the total variation norm.
 
 **Wikipedia:** [Signed measure](https://en.wikipedia.org/wiki/Signed_measure). It says: “Finite signed measures form a real vector space, while extended signed measures do not because they are not closed under addition.”
 
@@ -106,11 +106,11 @@
 
 *True by definition.* MSC 28A12 (Contents, measures, outer measures, capacities), 28A05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let μ\* be an outer measure on a set X. An outer measure gives a size to every subset, gives the empty set size 0, and is monotone and countably subadditive (the size of a countable union is at most the sum of the sizes). A set E is measurable when μ\*(A) = μ\*(A ∩ E) + μ\*(A ∖ E) for every subset A of X. In words, E cuts every set A into two pieces whose sizes add up to the size of A.
+**Definition.** Let μ\* be an outer measure on X, a monotone and countably subadditive size function on all subsets with μ\*(∅) = 0. A set E is Carathéodory measurable when μ\*(A) = μ\*(A ∩ E) + μ\*(A ∖ E) for every subset A of X.
 
 **Problem.** The measurable sets form a σ-algebra (a family of sets closed under complements and countable unions). On these sets μ\* is countably additive, so it is a measure.
 
-**How the definition helps.** The definition keeps exactly the sets on which additivity holds, so additivity comes almost for free. Some sets must be left out. No length on all subsets of ℝ can give intervals their length and also be translation invariant and countably additive. Carathéodory's definition keeps exactly the sets that split every set additively. So finite additivity is almost the definition, and short arguments give countable additivity and closure under countable unions. What stays hard is to show that the sets you care about, such as intervals and Borel sets, pass the test. This is the work in Carathéodory's extension theorem.
+**How the definition helps.** The definition keeps exactly the sets that split every set additively, so finite additivity is almost the definition. Short arguments then give countable additivity and closure under countable unions. Some sets must be left out, because no translation-invariant countably additive length is defined on all subsets of ℝ. What stays hard is to show that intervals and Borel sets pass the test.
 
 **Wikipedia:** [Outer measure](https://en.wikipedia.org/wiki/Outer_measure), [Carathéodory's extension theorem](https://en.wikipedia.org/wiki/Carath%C3%A9odory%27s_extension_theorem). It says: “The purpose of constructing an outer measure on all subsets of X is to pick out a class of subsets (to be called measurable) in such a way as to satisfy the countable additivity property.”
 
@@ -128,7 +128,7 @@
 
 **Problem.** Two-dimensional Lebesgue measure is the completion of the product of one-dimensional Lebesgue measure with itself. In a complete space, any function equal almost everywhere to a measurable function is itself measurable.
 
-**How the definition helps.** Completeness builds the rule that subsets of null sets are null into the measure space. So statements up to null sets become true without extra checks. The page gives the counterexample. In the plain product, {0} × A, with A a Vitali set, lies inside the null set {0} × ℝ but is not measurable. Borel measure on the line is also not complete, since the Cantor set is null and has more subsets than there are Borel sets. The cost is that the completed product is not a product σ-algebra, so Fubini's theorem gives measurable sections only for almost every point (our own).
+**How the definition helps.** Completeness builds the rule that subsets of null sets are null into the measure space, so statements up to null sets need no extra checks. In the plain product, {0} × A, with A a Vitali set, lies inside the null set {0} × ℝ but is not measurable. The cost is that the completed product is not a product σ-algebra, so Fubini's theorem gives measurable sections only for almost every point (our own).
 
 **Wikipedia:** [Complete measure](https://en.wikipedia.org/wiki/Complete_measure). It says: “So this "two-dimensional Lebesgue measure" as just defined is not complete, and some kind of completion procedure is required.”
 
@@ -144,9 +144,9 @@
 
 **Definition.** Jordan content measures a bounded set by finite unions of boxes from inside and outside, and a set is Jordan measurable if the two agree. Lebesgue outer measure uses countable covers by intervals instead. Lebesgue measure agrees with Jordan content wherever the latter is defined.
 
-**Problem.** Countable sets have Lebesgue measure zero, and the Lebesgue measurable sets form a σ-algebra on which measure is countably additive. Jordan measurable sets are closed only under finite unions.
+**Problem.** Every countable set of reals has Lebesgue measure zero. The rationals in \[0, 1\] are such a set, but they are not Jordan measurable.
 
-**How the definition helps.** Countable covers let the n-th point get an interval of length ε/2ⁿ, so a countable set has outer measure at most ε for every ε (our own). Jordan content fails here. Each point has content zero, but the rationals in \[0, 1\] are not Jordan measurable, as their boundary is all of \[0, 1\]. So a countable union of Jordan measurable sets need not be Jordan measurable. The page says that for this reason Jordan content is not a true measure. What stays hard is to build Lebesgue measure on a σ-algebra, for example with Carathéodory's condition.
+**How the definition helps.** Countable covers let the n-th point get an interval of length ε/2ⁿ, so a countable set has outer measure at most ε for every ε (our own). Jordan content allows only finite covers. Each rational point has content zero, but the boundary of the rationals in \[0, 1\] is all of \[0, 1\], so they have no Jordan content. The page says that for this reason Jordan content is not a true measure.
 
 **Wikipedia:** [Peano–Jordan measure](https://en.wikipedia.org/wiki/Peano%E2%80%93Jordan_measure). It says: “Intuitively however, the set of rational numbers is a "small" set, as it is countable, and it should have "size" zero. That is indeed true, but only if one replaces the Jordan measure with the Lebesgue measure.”
 
@@ -164,7 +164,7 @@
 
 **Problem.** A countably additive function f with extended real values has f(∅) = 0, or f is constant +∞, or f is constant −∞.
 
-**How the definition helps.** The condition μ(∅) = 0 in the definition of a measure removes a single bad case. Writing ∅ as a countable union of copies of ∅ shows that f(∅) is 0 or infinite. Adding ∅ to any set A then shows that an infinite f(∅) makes f(A) infinite. So for nonnegative functions, the only excluded example is the function that is +∞ everywhere; this point is our own. Some books instead ask that one set has finite measure. In our own reading, this dichotomy shows that both choices give the same class.
+**How the definition helps.** The condition μ(∅) = 0 removes a single bad case. Writing ∅ as a countable union of copies of ∅ shows that f(∅) is 0 or infinite. Adding ∅ to any set A then shows that an infinite f(∅) makes f(A) infinite. So for nonnegative functions, the only excluded example is the function that is +∞ everywhere (our own).
 
 **Paper or page:** [Countably Additive Function Dichotomy by Empty Set](https://proofwiki.org/wiki/Countably_Additive_Function_Dichotomy_by_Empty_Set), [Measure of Empty Set is Zero](https://proofwiki.org/wiki/Measure_of_Empty_Set_is_Zero). It says: “Then the exactly one of the following is true: (1): f(∅) = 0 (2): f(∅) = +∞. Moreover, f(A) = +∞ for all A ∈ 𝒜.”
 
@@ -181,9 +181,9 @@
 
 **Definition.** A measure is defined only on a σ-algebra of measurable sets, not on every subset. (A σ-algebra is a family of sets that is closed under complements and countable unions.) Lebesgue measure λ is countably additive and translation invariant on its measurable sets. Countably additive means that the measure of a countable disjoint union is the sum of the measures.
 
-**Problem.** We want a notion of length on sets of real numbers. It must give b − a for an interval from a to b, stay the same under translation, and be countably additive.
+**Problem.** No function on all subsets of ℝ gives each interval its length, is translation invariant and is countably additive.
 
-**How the definition helps.** Vitali's set can have no length, so length can only be defined on some sets. Vitali (1905) chose one point in \[0,1\] from each class of reals that differ by a rational number; call this set V. Its translates by the rationals in \[−1,1\] are disjoint, cover \[0,1\] and lie inside \[−1,2\]. If V had a length λ(V), countable additivity would make a sum of infinitely many copies of λ(V) lie between 1 and 3, which is impossible. Restricting the measure to measurable sets leaves V out and keeps countable additivity. Whether the restriction is needed depends on the axiom of choice. Solovay built a model without choice in which every set of reals is Lebesgue measurable, assuming an inaccessible cardinal (a very large infinite cardinal whose existence ZFC cannot prove).
+**How the definition helps.** Vitali's set V has no possible length, so length can only be defined on some sets. V has one point in \[0, 1\] from each class of reals that differ by a rational. Its translates by the rationals in \[−1, 1\] are disjoint, cover \[0, 1\] and lie inside \[−1, 2\]. Countable additivity would make a sum of infinitely many copies of λ(V) lie between 1 and 3, which is impossible.
 
 **Wikipedia:** [Vitali set](https://en.wikipedia.org/wiki/Vitali_set), [Outer measure](https://en.wikipedia.org/wiki/Outer_measure). It says: “So V cannot have been measurable after all, i.e., the Lebesgue measure λ must not define any value for λ(V).”
 
@@ -219,7 +219,7 @@
 
 **Problem.** These masses determine a unique measure on the Borel sets of the line, the sets generated by open intervals. Every bounded interval has finite mass.
 
-**How the definition helps.** Right continuity makes the assigned masses of shrinking intervals (s, s + 1/n\] tend to zero (our own). It lets us trim a little from each left endpoint at arbitrarily small cost (our own). Compactness then gives countable additivity when disjoint intervals have an interval as their union (our own). The measure extension theorem gives the Borel measure and its uniqueness (our own). If g equals one on the positive reals and zero elsewhere, every interval (0, 1/n\] receives mass one (our own). Their intersection is empty, contradicting continuity of a finite measure on (0, 1\] (our own).
+**How the definition helps.** Right continuity makes the masses of shrinking intervals (s, s + 1/n\] tend to zero, as countable additivity requires (our own). With compactness, this gives countable additivity on intervals, and the extension theorem gives the unique Borel measure (our own). If g is one on the positive reals and zero elsewhere, every interval (0, 1/n\] gets mass one (our own). Their intersection is empty, which contradicts continuity of a finite measure (our own).
 
 **Wikipedia:** [Lebesgue–Stieltjes integration](https://en.wikipedia.org/wiki/Lebesgue%E2%80%93Stieltjes_integration). It says: “Define w((s, t\]) = g(t) − g(s) and w({a}) = 0.”
 
@@ -251,7 +251,7 @@
 
 **Problem.** On a finite measure space, suppose real measurable functions converge to a real measurable limit outside a set of measure zero. Then they converge almost uniformly.
 
-**How the definition helps.** Almost uniform convergence allows a single exceptional set to absorb errors at every accuracy (our own). For each positive integer k, collect points where some error after index N exceeds 1/k (our own). As N grows, these sets decrease to a set of measure zero (our own). Finite total measure makes their measures tend to zero (our own). Choose one N per k so the measures sum to less than ε (our own). Outside the union, the chosen indices give uniform convergence (our own).
+**How the definition helps.** Almost uniform convergence lets one exceptional set absorb the errors at every accuracy (our own). For each k, the points where some error after index N exceeds 1/k form sets that decrease to measure zero as N grows (our own). Finite total measure makes their measures tend to zero, so one N per k can be chosen with measures summing to less than ε (our own). Outside the union of these sets, convergence is uniform (our own).
 
 **Paper or page:** [Egorov's Theorem](https://proofwiki.org/wiki/Egorov's_Theorem). It says: “Then fₙ converges a.u. to f.”
 
@@ -267,7 +267,7 @@
 
 **Problem.** If f is Lebesgue measurable and g is Borel measurable, then g ∘ f is Lebesgue measurable. In particular, continuous functions of measurable functions, and sums and products of measurable functions, are measurable.
 
-**How the definition helps.** Composition is measurable when the σ-algebra pulled back by the outer function lies inside the one on which the inner function is measurable. With Borel sets on the target, this holds for every Borel outer function. The page states the general rule: composition needs Σ₃ ⊆ Σ₂. If both functions used Lebesgue sets on the target, the composition could fail to be measurable, as the page says. The standard construction uses the Cantor function to send a non-measurable set onto a null set (our own). The cost is asymmetry: a Lebesgue measurable function cannot always be used as the outer function.
+**How the definition helps.** Composition is measurable when the outer function pulls Borel sets back to sets on which the inner function is measurable. With Borel sets on the target, this holds for every Borel outer function. If both functions used Lebesgue sets on the target, the composition could fail to be measurable, as the page says. The standard example uses the Cantor function to send a non-measurable set onto a null set (our own).
 
 **Wikipedia:** [Measurable function](https://en.wikipedia.org/wiki/Measurable_function). It says: “Indeed, two Lebesgue-measurable functions may be constructed in such a way as to make their composition non-Lebesgue-measurable.”
 
@@ -283,7 +283,7 @@
 
 **Problem.** On a probability space, the p-norms of a measurable function tend to the essential supremum of its absolute value as p tends to infinity. Both norms and limit may equal infinity.
 
-**How the definition helps.** Ignoring sets of measure zero removes peaks that no integral can detect (our own). The indicator of one point in the unit interval has supremum one and every Lebesgue p-norm zero (our own). Each positive height below the essential supremum is exceeded on a set of positive measure (our own). The norm exceeds or equals that height times the pth root of the set’s measure (our own). This root tends to one (our own). The essential supremum itself bounds every norm because the space has measure one (our own).
+**How the definition helps.** Ignoring sets of measure zero removes peaks that no integral can detect (our own). For example, the indicator of one point in \[0, 1\] has supremum one but every p-norm zero (our own). Each height below the essential supremum is exceeded on a set of positive measure, and the pth root of that measure tends to one (our own). The essential supremum bounds every norm because the space has measure one (our own).
 
 **nLab:** [essential supremum](https://ncatlab.org/nlab/show/essential+supremum). It says: “But we ignore things that happen only on a null set.”
 
@@ -311,11 +311,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 28A25 (Integration with respect to measures and other set functions), 28A20. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The Lebesgue integral of a measurable function comes from the measures of the sets where the function takes given values. You build it by approximation with simple functions (functions that take finitely many values, each on a measurable set). A function is measurable when the preimage of every Borel set is measurable. A pointwise limit of measurable functions is measurable.
+**Definition.** The Lebesgue integral of a measurable function is built from the measures of the sets where the function takes given values, by approximation with simple functions. A pointwise limit of measurable functions is measurable, so it has a Lebesgue integral.
 
-**Problem.** Under mild conditions, the integral of a limit equals the limit of the integrals. The monotone convergence theorem and the dominated convergence theorem give these conditions.
+**Problem.** If nonnegative measurable functions increase to f, their integrals tend to the integral of f (monotone convergence). If fₙ → f pointwise and an integrable g bounds every \|fₙ\|, then the integrals of fₙ tend to that of f (dominated convergence).
 
-**How the definition helps.** In Lebesgue's theory, a limit of measurable functions is measurable, so the limit has an integral, and monotone and dominated convergence hold. For the Riemann integral the statement fails in general, because the limit need not be Riemann integrable. Our own example: the indicator functions of the first k rationals in \[0, 1\] increase, and each has Riemann integral 0. Their limit is the Dirichlet function, which the article notes has no Riemann integral. A condition is still needed: let fₙ = n on (0, 1/n\] and 0 elsewhere. Each fₙ has integral 1, but fₙ converges to 0, and no integrable function dominates all the fₙ. The hard work moves into the construction of Lebesgue measure.
+**How the definition helps.** A limit of measurable functions is measurable, so the limit always has an integral to compare with. For the Riemann integral this fails: the indicators of the first k rationals in \[0, 1\] each have Riemann integral 0, but their limit, the Dirichlet function, has none (our own example). A condition is still needed: fₙ = n on (0, 1/n\] has integral 1 for each n but tends to 0. The hard work moves into the construction of Lebesgue measure.
 
 **Wikipedia:** [Lebesgue integral](https://en.wikipedia.org/wiki/Lebesgue_integral), [Dominated convergence theorem](https://en.wikipedia.org/wiki/Dominated_convergence_theorem). It says: “The main purpose of the Lebesgue integral is to provide an integral notion where limits of integrals hold under mild assumptions.”
 
@@ -332,9 +332,9 @@
 
 **Definition.** A measure space is σ-finite when it is a countable union of sets of finite measure.
 
-**Problem.** Tonelli's theorem is about a non-negative measurable function on a product of two measure spaces. It says that the two iterated integrals are equal, and that they equal the integral for the product measure. (An iterated integral integrates over one factor first and then over the other.)
+**Problem.** For two σ-finite measure spaces and a non-negative measurable function on their product, the two iterated integrals are equal, and they equal the integral against the product measure.
 
-**How the definition helps.** σ-finiteness rules out examples like the following one, where the two iterated integrals differ. Take \[0,1\] with Lebesgue measure, and \[0,1\] with counting measure on all subsets, which gives each set its number of points and is not σ-finite. Integrate the function that is 1 on the diagonal x = y and 0 elsewhere. Integrating first over the Lebesgue factor gives 0, and integrating first over the counting factor gives 1. The two iterated integrals differ, so no product measure can make Tonelli's theorem hold. Requiring both spaces to be σ-finite excludes this case, and it also makes the product measure unique. Measurability of the function is still needed: assuming the continuum hypothesis, Sierpiński gave a bounded non-negative function on the unit square whose two iterated integrals exist and differ.
+**How the definition helps.** σ-finiteness rules out examples where the two iterated integrals differ. Take \[0, 1\] with Lebesgue measure and \[0, 1\] with counting measure, which is not σ-finite. The indicator of the diagonal x = y has iterated integral 0 in one order and 1 in the other. So no product measure can make Tonelli's theorem hold there.
 
 **Wikipedia:** [Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem). It says: “This shows that Tonelli's theorem can fail for spaces that are not σ-finite no matter which product measure is chosen.”
 
@@ -348,9 +348,9 @@
 
 **Definition.** A measurable space is standard Borel if its σ-algebra is the Borel σ-algebra of some Polish topology. A Polish topology is one given by a complete separable metric. Up to isomorphism, the standard Borel spaces are the countable discrete spaces and ℝ.
 
-**Problem.** Conditional probability needs two things. For a probability space and a sub-σ-algebra, there should be a regular conditional distribution (a measurable family of probability measures that gives the conditional probabilities). Also, every Markov kernel (a measurable map from points to probability measures) should have a Bayesian inverse, a kernel in the opposite direction that agrees with Bayes' rule.
+**Problem.** On a standard Borel probability space, every sub-σ-algebra has a regular conditional distribution. Every Markov kernel between standard Borel spaces has a Bayesian inverse, unique almost surely.
 
-**How the definition helps.** On standard Borel spaces, conditional distributions always exist, with no extra hypothesis. On a standard Borel probability space, a regular conditional distribution exists for every sub-σ-algebra, and the sub-σ-algebra does not need to be countably generated. Every Markov kernel between standard Borel spaces has a Bayesian inverse that is unique almost surely. In the language of Markov categories, the category BorelStoch has conditionals. The nLab notes that in the larger category Stoch of all measurable spaces, conditionals can fail to exist, and that is why one restricts to standard Borel spaces. Standard Borel spaces are also closed under countable products and under the Giry monad (which sends a space to its space of probability measures), so the restriction costs little.
+**How the definition helps.** On standard Borel spaces, conditional distributions exist with no extra hypothesis, and the sub-σ-algebra need not be countably generated. In the language of Markov categories, the category BorelStoch has conditionals. The nLab notes that in the larger category Stoch of all measurable spaces, conditionals can fail to exist. Standard Borel spaces are also closed under countable products and under the Giry monad, so the restriction costs little.
 
 **nLab:** [standard Borel space](https://ncatlab.org/nlab/show/standard+Borel+space), [Markov kernel](https://ncatlab.org/nlab/show/Markov+kernel), [Markov category](https://ncatlab.org/nlab/show/Markov+category). It says: “They provide a setting for many constructions in probability theory, including conditional probability, disintegration, and countable products.”
 
@@ -380,11 +380,11 @@
 
 *True by definition.* MSC 28A10 (Real- or complex-valued set functions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** A finite signed measure assigns real masses and adds them over disjoint countable unions. Split its space into regions P and N whose measurable subsets have nonnegative and nonpositive mass, respectively. On a measurable set A, define variation as μ(A ∩ P) − μ(A ∩ N). Alternatively, take the supremum of sums of absolute masses over finite measurable partitions of A.
+**Definition.** A finite signed measure μ has a Hahn decomposition into sets P and N, where measurable subsets of P have mass ≥ 0 and those of N have mass ≤ 0. The total variation is \|μ\|(A) = μ(A ∩ P) − μ(A ∩ N). Another definition takes the supremum of Σ\|μ(Aᵢ)\| over finite measurable partitions of A.
 
 **Problem.** The total variation of a finite signed measure is a nonnegative measure.
 
-**How the definition helps.** The formula adds two nonnegative measures, so it gives a measure. In our own comparison, the Hahn decomposition theorem supplies the two regions. The triangle inequality bounds every partition sum by their combined unsigned mass. Splitting A along the two regions attains the bound and proves independence of the split.
+**How the definition helps.** The formula adds two nonnegative measures, so it gives a measure. In our own comparison, the Hahn decomposition theorem supplies P and N. The triangle inequality bounds every partition sum by μ(A ∩ P) − μ(A ∩ N). Splitting A along P and N attains the bound, so the two definitions agree and the value does not depend on the choice of P and N.
 
 **Paper or page:** [Variation of Signed Measure is Measure](https://proofwiki.org/wiki/Variation_of_Signed_Measure_is_Measure). It says: “Then \|μ\| is a measure.”
 
@@ -398,9 +398,9 @@
 
 **Definition.** Let μ and ν be measures on the same measurable space, with ν finite. Absolute continuity means that ν vanishes on every measurable set of μ-mass zero.
 
-**Problem.** For every ε &gt; 0, some δ &gt; 0 works for all measurable sets A. If μ(A) &lt; δ, then ν(A) &lt; ε.
+**Problem.** If ν is finite and absolutely continuous with respect to μ, then for every ε &gt; 0 there is δ &gt; 0 with ν(A) &lt; ε whenever μ(A) &lt; δ.
 
-**How the definition helps.** Finite total mass makes ν continuous on decreasing sequences of sets. For our own proof, suppose the bound fails for some ε. Choose sets with μ-masses at most 2⁻ⁿ and ν-masses at least ε. The unions of the tails decrease to a set of μ-mass zero, since the geometric tails tend to zero. Each union has ν-mass at least ε, so their intersection does too, a contradiction. Our own counterexample takes ν as counting measure and assigns μ-mass 2⁻ⁿ to each positive integer n. The singletons disprove the uniform bound.
+**How the definition helps.** Finite total mass makes ν continuous on decreasing sequences of sets. In our own proof, if the bound fails for some ε, choose sets Aₙ with μ(Aₙ) ≤ 2⁻ⁿ and ν(Aₙ) ≥ ε. The unions of the tails decrease to a set of μ-measure zero but keep ν-measure at least ε, a contradiction. Our own counterexample without finiteness takes ν as counting measure on the positive integers and μ({n}) = 2⁻ⁿ.
 
 **Paper or page:** [Characterization of Absolutely Continuous Measures](https://proofwiki.org/wiki/Characterization_of_Absolutely_Continuous_Measures). It says: “for each ε &gt; 0 there exists δ &gt; 0 such that for each A ∈ Σ with μ(A) &lt; δ, we have ν(A) &lt; ε.”
 
@@ -414,9 +414,9 @@
 
 **Definition.** A measure is semifinite if every set of infinite measure contains a subset of finite positive measure. A measure is localizable if it is semifinite and every collection of measurable sets has an essential union. An essential union is a smallest measurable set that contains each set of the collection up to null sets. Equivalently, the Boolean algebra of measurable sets modulo null sets is complete (every subset of it has a least upper bound).
 
-**Problem.** Three theorems should hold without the usual σ-finiteness hypothesis. They are the Radon–Nikodym theorem, the Hahn decomposition, and the Riesz representation L∞ ≅ (L¹)\*. The last one says that L∞ is the dual space of L¹.
+**Problem.** For a semifinite measure, the Radon–Nikodym theorem, the Hahn decomposition and the duality L∞ ≅ (L¹)\* each hold exactly when the measure is localizable.
 
-**How the definition helps.** Localizability is exactly the condition that these theorems need, not just a sufficient one. Textbooks state the theorems for σ-finite measures, but they hold for every localizable measure. The Segal–Kelley theorem gives the converse: for a space with a faithful semifinite measure, each theorem is equivalent to localizability. So the real content is the Segal–Kelley equivalence. The nLab also says that localizability alone does not remove all pathologies. So it adds further conditions, strict localizability and compactness, to get a good category.
+**How the definition helps.** Localizability is exactly the condition that these theorems need, not just a sufficient one. Textbooks state them for σ-finite measures, but they hold for every localizable measure. The Segal–Kelley theorem gives the converse, and that equivalence is the real content.
 
 **nLab:** [localizable measure](https://ncatlab.org/nlab/show/localizable+measure), [categories of measure theory](https://ncatlab.org/nlab/show/categories+of+measure+theory), [Radon–Nikodym derivative](https://ncatlab.org/nlab/show/Radon%E2%80%93Nikodym+derivative). It says: “The takeaway from this result is that without the localizability property much of the measure theory as we know is false, so it is completely reasonable to require it from the start.”
 
@@ -433,9 +433,9 @@
 
 **Definition.** Let ν be a finitely additive set function and μ a measure. Then ν is truly continuous with respect to μ if, for every ε &gt; 0, there are a set E of finite μ-measure and a δ &gt; 0 with this property: \|ν(F)\| &lt; ε whenever μ(E ∩ F) &lt; δ. Equivalently, ν is countably additive and absolutely continuous, and every set of positive ν-measure contains a subset of finite μ-measure and positive ν-measure.
 
-**Problem.** Take any measure space (X, Σ, μ). For which ν is there an integrable function f such that ν(E) is the integral of f over E for all E? In words, when does ν have a density f?
+**Problem.** On any measure space, ν has a density with respect to μ, meaning ν(E) = ∫<sub>E</sub> f dμ for some integrable f and all measurable E, exactly when ν is truly continuous with respect to μ.
 
-**How the definition helps.** With this definition the Radon–Nikodym theorem becomes an exact 'if and only if' on every measure space, with no σ-finiteness hypothesis. Ordinary absolute continuity does not exclude the nLab's counterexample. Take counting measure on the countable–cocountable σ-algebra of an uncountable set (the sets that are countable or have a countable complement). Let ν be 0 on countable sets and 1 on the others. A localizable counterexample of the same kind exists exactly when real-valued-measurable cardinals exist. Such a cardinal κ carries a probability measure on all its subsets that is zero on single points and additive over unions of fewer than κ sets. In the σ-finite case, for countably additive ν, the new condition reduces to the usual absolute continuity.
+**How the definition helps.** With this definition the Radon–Nikodym theorem becomes an exact 'if and only if' on every measure space, with no σ-finiteness hypothesis. Ordinary absolute continuity is not enough, as the nLab's counterexample shows. Take counting measure on the countable–cocountable σ-algebra of an uncountable set, and let ν be 0 on countable sets and 1 on the others. In the σ-finite case, for countably additive ν, true continuity reduces to absolute continuity.
 
 **nLab:** [Radon–Nikodym derivative](https://ncatlab.org/nlab/show/Radon%E2%80%93Nikodym+derivative). It says: “The following example shows that the condition of being truly continuous is necessary in the non-σ-finite case.”
 
@@ -449,7 +449,7 @@
 
 *True by definition. Confidence: medium.* MSC 28A15 (Abstract differentiation theory, differentiation of set functions), 28A25. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A density dν/dμ is a nonnegative weight whose integral against μ on each measurable set equals its ν-measure. A measure is σ-finite if countably many sets of finite measure cover its space. The same integral formula describes both weights on individual points and densities spread over an interval.
+**Definition.** A density dν/dμ is a nonnegative function whose integral against μ over each measurable set equals its ν-measure. A measure is σ-finite if countably many sets of finite measure cover its space.
 
 **Problem.** Let ν, μ and λ be σ-finite positive measures on one measurable space. Suppose ν vanishes on every set of μ-measure zero and μ vanishes on every set of λ-measure zero. Then dν/dλ equals (dν/dμ)(dμ/dλ) outside a set of λ-measure zero, using finite versions of the densities.
 
@@ -469,7 +469,7 @@
 
 **Problem.** For each Lebesgue measurable map u from Ω into the space of y values, x ↦ W(x, u(x)) is Lebesgue measurable.
 
-**How the definition helps.** Continuity in y lets substitution preserve pointwise limits outside one set of measure zero (our own). Approximate u pointwise by measurable maps taking only countably many values (our own). Substitution into each approximation gives a measurable function by measurability in x (our own). Lebesgue measure includes every subset of a measurable set of measure zero, so the exceptional values preserve measurability (our own). For failure under separate measurability, take a nonmeasurable set A on the line (our own). Set W(x, y) to one if x = y belongs to A, and zero otherwise (our own). Each section is measurable, but W(x, x) is the indicator of A (our own).
+**How the definition helps.** Continuity in y lets substitution preserve pointwise limits outside one set of measure zero (our own). Approximate u pointwise by measurable maps with countably many values, and substitute into each (our own). For failure under separate measurability, take a nonmeasurable set A on the line, and let W(x, y) be one if x = y lies in A and zero otherwise (our own). Each section is measurable, but W(x, x) is the indicator of A (our own).
 
 **Wikipedia:** [Carathéodory function](https://en.wikipedia.org/wiki/Carath%C3%A9odory_function). It says: “the mapping ξ ↦ W(x, ξ) is continuous for almost every x ∈ Ω.”
 
@@ -533,7 +533,7 @@
 
 **Problem.** Suppose probability measures converge on all bounded Lipschitz tests. On each closed set, their masses have limit superior at most its mass under the limit measure.
 
-**How the definition helps.** Bounded Lipschitz tests include functions that decrease to the indicator of any nonempty closed set (our own). At x take the maximum of zero and one minus n times the distance from x to the set (our own). For fixed n the integral bounds the closed-set mass above and converges by hypothesis (our own). Let n grow and apply bounded convergence to the limit measure (our own). The empty set has mass zero throughout (our own). The equivalence with the other tests is part of the Portmanteau theorem (our own).
+**How the definition helps.** Bounded Lipschitz tests include functions that decrease to the indicator of any closed set C, such as max(0, 1 − n·dist(x, C)) (our own). For fixed n, the integral bounds the mass of C from above and converges by hypothesis (our own). Letting n grow and applying bounded convergence to the limit measure gives the bound (our own). The equivalence with all bounded continuous tests is part of the Portmanteau theorem (our own).
 
 **Wikipedia:** [Convergence of measures](https://en.wikipedia.org/wiki/Convergence_of_measures). It says: “lim sup Pₙ(C) ≤ P(C) for all closed sets C of space S”
 
@@ -549,7 +549,7 @@
 
 **Problem.** For two σ-finite measures, exactly one measure on the product σ-algebra assigns each rectangle the product of its side masses. Use zero for zero times infinity.
 
-**How the definition helps.** Finite-mass rectangles can exhaust the product, so the finite-measure uniqueness theorem applies on each rectangle. In our own account, the measure extension theorem gives existence. For our own counterexample, use length and counting measure on two copies of the Borel sets of \[0, 1\]. One measure sums the lengths of horizontal sections over the second coordinate. It gives the diagonal zero mass because each section is a singleton. Adding length along the diagonal changes its mass to one. Rectangle masses stay fixed because a positive-length first side and an infinite second side already give infinite mass.
+**How the definition helps.** Finite-mass rectangles exhaust the product, so the uniqueness theorem for finite measures applies on each of them; the extension theorem gives existence (our own). For our own counterexample, take length and counting measure on \[0, 1\]. Summing the lengths of horizontal sections gives the diagonal mass zero. Adding length along the diagonal gives it mass one but leaves every rectangle's mass unchanged.
 
 **Wikipedia:** [Product measure](https://en.wikipedia.org/wiki/Product_measure). It says: “In fact, when the spaces are σ-finite, the product measure is uniquely defined, and for every measurable set E,”
 
@@ -595,7 +595,7 @@
 
 **Definition.** A disintegration gives a conditional probability on almost every fiber of a map. Averaging these probabilities against the image law recovers the original probability. A probability density here means a nonnegative measurable function whose integral is one.
 
-**Problem.** Take a probability on a complete separable metric space and a Borel map into another such space. After reweighting by a probability density, the image density equals its fiber average almost everywhere. Where this average is positive and finite, multiply the old conditional law by the density and divide by the average.
+**Problem.** Let m be a probability on a complete separable metric space, φ a Borel map into another, and ρ a probability density. The image of ρm has density equal to the fiber average of ρ against the image of m. Where this average is positive and finite, the new conditional law is ρ times the old one, divided by the average.
 
 **How the definition helps.** The fiber description splits reweighting into two operations, changing the image law and normalizing each conditional probability. Our own proof substitutes this formula into the defining integral for disintegration. The normalizing factor cancels the new image density. Fibers with zero or infinite average have zero mass under the new image law. Uniqueness of disintegration identifies the result without constructing conditional laws afresh.
 
@@ -629,7 +629,7 @@
 
 **Problem.** On standard probability spaces, every homomorphism of measure algebras is induced by a measure-preserving map of points. So on these spaces one can pass between maps of events and maps of points, up to null sets.
 
-**How the definition helps.** A standard space has no missing points, so a map defined on events can be realized by a map on points. The definition excludes spaces such as the perforated interval, a set of inner measure 0 and outer measure 1 with the induced measure. Its events match those of the interval, but conditional measures given the identity map do not exist at missing points. On the perforated circle, rotations act on events but not on points. The definition is due to Rokhlin, after von Neumann. What stays hard is the criterion for standardness, which uses an injective generating map into a standard Borel space.
+**How the definition helps.** A standard space has no missing points, so a map defined on events can be realized by a map on points. The definition excludes spaces such as the perforated interval, a set of inner measure 0 and outer measure 1 with the induced measure. Its events match those of the interval, but some of its points are missing. On the perforated circle, rotations act on events but not on points.
 
 **Wikipedia:** [Standard probability space](https://en.wikipedia.org/wiki/Standard_probability_space). It says: “It may seem that every homomorphism of measure algebras has to correspond to some measure preserving map, but it is not so. However, for standard probability spaces each F corresponds to some f.”
 
@@ -863,9 +863,9 @@
 
 **Definition.** Daniell starts from a vector lattice T₀ of functions, closed under maximum and minimum, and a positive linear functional I on it. The functional must be continuous under monotone limits: if φₙ decreases to 0, then I(φₙ) tends to 0. Stone's condition asks that min(φ, 1) is in T₀ whenever φ is.
 
-**Problem.** Daniell's method builds an integral, with monotone and dominated convergence, without any measure. When is this integral an ordinary integral against a measure? The Daniell–Stone theorem says: whenever Stone's condition holds.
+**Problem.** Under Stone's condition, there are a σ-algebra 𝒜 on X and a measure μ on 𝒜 such that I(φ) is the integral of φ against μ for every φ in T₀. This is the Daniell–Stone theorem.
 
-**How the definition helps.** Stone's condition lets one cut functions off at height one, so indicator functions of sets can be reached as limits. Then the integral gives a measure on those sets. The paper's Theorem 4.4 shows the role of the condition. The measurable sets form a σ-ring, and a σ-algebra if the constant function 1 is measurable. The convergence theorems need no measure at all and are proved first. The paper's Proposition 4.9 checks the continuity condition for the Riemann integral of continuous functions with compact support. This route then gives Lebesgue measure (our own remark).
+**How the definition helps.** Stone's condition lets one cut functions off at height one, so indicator functions of sets can be reached as limits. The integral then gives a measure on those sets. The convergence theorems need no measure at all and are proved first. Applied to the Riemann integral of continuous functions with compact support, this route gives Lebesgue measure (our own remark).
 
 **Paper or page:** [The Daniell Integral: Integration without measure](https://arxiv.org/abs/2211.14964v1), [The Daniell Integral: Integration without measure](https://arxiv.org/abs/2211.14964v1). It says: “with the property that χX ∧ φ ∈ T₀ whenever φ ∈ T₀. Let I be an I-integral on T₀. Then there is a σ-algebra 𝒜 on X and a measure μ on 𝒜”
 
@@ -883,7 +883,7 @@
 
 **Problem.** These finite averages determine Haar probability measure on any profinite group, without using Haar’s general existence theorem.
 
-**How the definition helps.** The finite averages make translation invariance immediate because translations permute each finite quotient (our own). Passing to a finer quotient does not change the average, since each fibre has the same number of points (our own). Functions from finite quotients uniformly approximate continuous functions, since the cosets form an open basis and the group is compact (our own). The averages therefore extend to a positive linear functional on all continuous functions (our own). The Riesz representation theorem makes it integration against a regular Borel probability measure (our own). The work lies in that theorem and the density argument, not in applying Haar’s general construction (our own).
+**How the definition helps.** The finite averages make translation invariance immediate because translations permute each finite quotient (our own). Passing to a finer quotient does not change the average, since each fibre has the same number of points (our own). Functions from finite quotients are uniformly dense in the continuous functions, so the averages extend to a positive linear functional (our own). The Riesz representation theorem makes it integration against a regular Borel probability measure (our own).
 
 **Wikipedia:** [Compact group](https://en.wikipedia.org/wiki/Compact_group). It says: “In the profinite case there are many subgroups of finite index, and Haar measure of a coset will be the reciprocal of the index.”
 
@@ -899,7 +899,7 @@
 
 **Problem.** Every locally compact group has a left Haar measure, unique up to a positive constant. On the Baire sets this can be stated without any regularity condition.
 
-**How the definition helps.** Baire measures that are finite on compact sets are automatically regular, so on Baire sets the regularity part of the statement holds by itself. On Borel sets, regularity must be assumed. The page shows that the Haar measure itself can fail inner regularity on some Borel sets. Take the circle times the real line with the discrete topology, and the closed set {1} × \[0, 1\]. Its compact subsets are finite, so they have measure 0, but the set itself does not. The work moves into existence, built from counting covers by translates. Weil first proved existence and uniqueness in full generality, and Cartan gave a proof without the axiom of choice.
+**How the definition helps.** Baire measures that are finite on compact sets are automatically regular, so on Baire sets the regularity part holds by itself. On Borel sets, regularity must be assumed, and Haar measure can fail inner regularity. Take the circle times the real line with the discrete topology, and the closed set {1} × \[0, 1\]. Its compact subsets are finite and have measure 0, but the set itself does not.
 
 **Wikipedia:** [Haar measure](https://en.wikipedia.org/wiki/Haar_measure). It says: “Some authors define a Haar measure on Baire sets rather than Borel sets. This makes the regularity conditions unnecessary as Baire measures are automatically regular.”
 
@@ -935,7 +935,7 @@
 
 **Problem.** The modular function is multiplicative. Every compact Hausdorff group is unimodular.
 
-**How the definition helps.** Defining Δ by scaling makes its multiplicativity a composition law and lets us test unimodularity on the whole group. Applying two translations multiplies their scaling factors (our own). For compact G, the whole group has finite positive Haar measure and a translation leaves it unchanged. Thus Δ(g) = 1. The usual argument treats Δ as a continuous homomorphism into the positive reals, which have no nontrivial compact subgroup (our own). The scalar definition shifts the invariance check to uniqueness of right Haar measure up to scale and avoids proving continuity of Δ.
+**How the definition helps.** Defining Δ by scaling makes multiplicativity a composition law, since two translations multiply their scaling factors (our own). For compact G, the whole group has finite positive Haar measure, and a translation leaves it unchanged. So Δ(g) = 1. The usual argument instead needs Δ to be a continuous homomorphism into the positive reals, which have no nontrivial compact subgroup (our own).
 
 **Wikipedia:** [Haar measure](https://en.wikipedia.org/wiki/Haar_measure). It says: “Thus, by uniqueness up to a constant scaling factor of the Haar measure, there exists a function Δ from the group to the positive reals, called the Haar modulus, modular function or modular character”
 
@@ -949,9 +949,9 @@
 
 **Definition.** A measure on a topological space is inner regular if each set has measure equal to the supremum over the compact sets inside it. A consistent family gives a probability measure on each finite product. These measures agree under the projections between products.
 
-**Problem.** A consistent family of finite-dimensional laws extends to a unique probability measure on the infinite product. The page states this for inner regular laws on Hausdorff spaces. Borel probability measures on Polish spaces are automatically inner regular, so the classical Euclidean statement needs no extra condition.
+**Problem.** A consistent family of inner regular probability laws on the finite products of Hausdorff spaces extends to a unique probability measure on the product σ-algebra of the infinite product. Borel probability measures on Polish spaces are inner regular, so the Euclidean case needs no extra condition.
 
-**How the definition helps.** Inner regularity lets the proof use compact sets, and nested compact sets with the finite intersection property have a common point, which gives countable additivity. Without such a condition the extension can fail. A known example on non-regular spaces is due to Andersen and Jessen (our own). The page notes that Borel probability measures on Polish spaces are automatically Radon, which is why the condition is invisible for real-valued processes. The measure lives only on the product σ-algebra, which is coarse. Events that depend on uncountably many times stay outside it, and that problem needs separate work.
+**How the definition helps.** Inner regularity lets the proof use compact sets. Nested compact sets with the finite intersection property have a common point, which gives countable additivity. Without such a condition the extension can fail; a known example is due to Andersen and Jessen (our own). The measure lives only on the product σ-algebra, so events that depend on uncountably many coordinates stay outside it.
 
 **Wikipedia:** [Kolmogorov extension theorem](https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem). It says: “In fact, any collection of measurable spaces together with a collection of inner regular measures defined on the finite products of these spaces would suffice, provided that these measures satisfy a certain compatibility relation.”
 
@@ -965,11 +965,11 @@
 
 *True by definition.* MSC 28C15 (Set functions and measures on topological spaces (regularity of measures, etc.)), 28A12. arXiv math.FA, math.GN. Level 3: graduate.
 
-**Definition.** A Borel measure μ on a topological space is τ-additive if it has this property for every directed family of open sets: the measure of their union is the supremum of their measures. A directed family is one in which any two members are contained in a third member. A valuation gives a measure to open sets only. The same condition on a valuation (Scott continuity) defines a continuous valuation.
+**Definition.** A Borel measure μ on a topological space is τ-additive if, for every directed family of open sets, the measure of their union is the supremum of their measures. A family is directed if any two members are contained in a third member.
 
-**Problem.** Every measure should have a support: a smallest closed set of full measure.
+**Problem.** Every τ-additive Borel measure has a support, a smallest closed set of full measure.
 
-**How the definition helps.** τ-additivity says directly that the union of the null open sets is null. The null open sets form a directed family, so their union has measure zero, and its complement is the support. For a general Borel measure, the union of all null open sets can fail to be null, so the support need not have full measure. Every Radon measure on a Hausdorff space is τ-additive, so the definition covers the usual examples. Fritz, Perrone and Rezagholi show that the support is then a morphism of monads on the category Top of topological spaces.
+**How the definition helps.** τ-additivity says directly that the union of the null open sets is null, because the null open sets form a directed family. The complement of that union is the support. For a general Borel measure, the union of all null open sets can fail to be null. Every Radon measure on a Hausdorff space is τ-additive, so the definition covers the usual examples.
 
 **nLab:** [tau-additive measure](https://ncatlab.org/nlab/show/tau-additive+measure), [valuation (measure theory)](https://ncatlab.org/nlab/show/valuation+%28measure+theory%29), [correspondence between measure and valuation theory](https://ncatlab.org/nlab/show/correspondence+between+measure+and+valuation+theory). It says: “the union of all null open sets is null”
 
@@ -1019,7 +1019,7 @@
 
 **Problem.** Let X be a locally compact Hausdorff space. The Riesz–Markov–Kakutani theorem says that each positive linear functional on the compactly supported continuous functions on X is integration against a unique regular Borel measure. It also identifies the dual of C₀(X) with the regular complex Borel measures.
 
-**How the definition helps.** Regularity makes a measure depend only on its values on compact sets, and integrals of continuous functions fix those values (our own summary). The measure of a compact set K is the infimum of ∫f over compactly supported continuous f ≥ 1 on K (our own). The page gives a counterexample on the ordinals up to the first uncountable ordinal Ω, with the order topology. Evaluation at Ω is integration against the point mass at Ω. It is also integration against a non-regular measure, a form of the Dieudonné measure (our own name). That measure gives measure 1 to each Borel set that contains a closed unbounded set, and gives the point Ω measure 0. Existence still takes the whole construction of the measure from the functional through an outer measure.
+**How the definition helps.** Regularity makes a measure depend only on its values on compact sets, and integrals of continuous functions fix those values (our own summary). The page gives a counterexample on the ordinals up to the first uncountable ordinal Ω, with the order topology. Evaluation at Ω is integration against the point mass at Ω. It is also integration against the non-regular Dieudonné measure, which gives measure 1 to Borel sets containing a closed unbounded set and measure 0 to the point Ω.
 
 **Wikipedia:** [Riesz–Markov–Kakutani representation theorem](https://en.wikipedia.org/wiki/Riesz%E2%80%93Markov%E2%80%93Kakutani_representation_theorem). It says: “Without the condition of regularity the Borel measure need not be unique.”
 
@@ -1087,9 +1087,9 @@
 
 **Definition.** A zero-one measure is a measure that takes only the values 0 and 1. A measurable space X is sober if every zero-one measure on it is the Dirac measure of exactly one point. Equivalently, the map X → Sp(L∞(X)) that sends x to evaluation at x is an isomorphism. Here L∞(X) is the algebra of all bounded measurable functions on X, and Sp(L∞(X)) is its spectrum.
 
-**Problem.** Which measurable spaces are determined by their algebra of bounded measurable functions, as a σ-C\*-algebra? A σ-C\*-algebra is a C\*-algebra that is closed under countable bounded monotone suprema.
+**Problem.** The functors L∞ and Sp give a duality between sober measurable spaces and spatial σ-C\*-algebras, the commutative σ-C\*-algebras of the form L∞(X). A σ-C\*-algebra is a C\*-algebra closed under countable bounded monotone suprema.
 
-**How the definition helps.** Sober spaces are defined as exactly the spaces on which the duality holds, so the duality is automatic. The functor L∞ and the spectrum functor Sp form an idempotent adjunction between measurable spaces and commutative σ-C\*-algebras. (Idempotent means that going around the adjunction twice gives the same result as going around once.) For an idempotent adjunction, the objects on which the unit is an isomorphism form one side of an equivalence. Sober spaces are exactly these objects, so the duality between sober measurable spaces and spatial σ-C\*-algebras holds by definition. The work is in proving that the adjunction is idempotent, and in examples. Every standard Borel space is sober, while the invariant σ-algebra of an ergodic system is in general not.
+**How the definition helps.** Sober spaces are defined as exactly the spaces on which the duality holds, so the duality is automatic. The functors L∞ and Sp form an idempotent adjunction, and for such an adjunction the objects on which the unit is an isomorphism form one side of an equivalence. The work is in proving that the adjunction is idempotent. Every standard Borel space is sober, while the invariant σ-algebra of an ergodic system is in general not.
 
 **nLab:** [sober measurable space](https://ncatlab.org/nlab/show/sober+measurable+space), [measurable Gelfand duality](https://ncatlab.org/nlab/show/measurable+Gelfand+duality). It says: “As usual with idempotent adjunctions, we have that the center is equivalently given by”
 
@@ -1103,11 +1103,11 @@
 
 *True by definition. Confidence: medium.* MSC 28A10 (Real- or complex-valued set functions), 03F60. arXiv math.CA, math.LO. Level 4: research.
 
-**Definition.** Take the two-set inclusion-exclusion law μ(A ∪ B) + μ(A ∩ B) = μ(A) + μ(B) as an axiom of a measure, in place of additivity on disjoint sets. In words, the measure of the union plus the measure of the intersection equals the sum of the two measures. On a Cheng space, a positive measure is defined by this law, absolute continuity and countable subadditivity. A Cheng space is a set with a σ-algebra of complemented pairs (pairs of disjoint subsets that stand for a set and its complement).
+**Definition.** Take the two-set inclusion-exclusion law μ(A ∪ B) + μ(A ∩ B) = μ(A) + μ(B) as an axiom of a measure, in place of additivity on disjoint sets.
 
-**Problem.** In constructive mathematics (mathematics without excluded middle), additivity on disjoint sets does not imply the two-set inclusion-exclusion law. But a usable measure theory needs the inclusion-exclusion principle.
+**Problem.** In constructive mathematics, a measure with the two-set law as an axiom satisfies the inclusion-exclusion formula for every finite family of sets.
 
-**How the definition helps.** If the law you need is an axiom, its constructive proof is no longer a problem. Classically, the two-set law follows easily from additivity, and the general finite formula follows by induction. Constructively the proof of the two-set law fails, so the nLab proposes to make the two-set law itself a clause of the definition. The general finite formula then follows by the same induction. On Cheng spaces, inclusion-exclusion also follows from finite additivity and the rule that intersection with a full set keeps the measure, so there the choice of axiom makes no difference. The countable version of the law forces countable additivity. Counting measure satisfies the law constructively only on sets with decidable equality (where any two elements are provably equal or not equal).
+**How the definition helps.** If the law you need is an axiom, its constructive proof is no longer a problem. Classically the two-set law follows from additivity, but constructively that proof fails. With the two-set law as an axiom, the general finite formula follows by the usual induction. On Cheng spaces, the law also follows from finite additivity and one extra rule, so there the choice of axiom makes no difference.
 
 **nLab:** [inclusion-exclusion](https://ncatlab.org/nlab/show/inclusion-exclusion), [Cheng space](https://ncatlab.org/nlab/show/Cheng+space). It says: “On the other hand, we may adopt (\*) as the proper clause in the definition of measure.”
 
@@ -1124,9 +1124,9 @@
 
 **Definition.** A premeasure is a countably additive function on a Boolean algebra of sets. An outer measure is a monotone, countably subadditive function on all subsets. The paper treats both as transformations between poset-valued functors. Lax and colax transformations satisfy inequalities where strict transformations satisfy equalities.
 
-**Problem.** The Carathéodory extension theorem says that a premeasure on a generating Boolean algebra extends to a measure on the generated σ-algebra. So, to define a measure, one only needs its values on a generating Boolean algebra.
+**Problem.** A premeasure on a Boolean algebra of sets extends to a measure on the σ-algebra it generates. In the paper's language, this extension is a Kan extension of strict transformations.
 
-**How the definition helps.** A Kan extension is the best extension of a map along another map, so the extension of a premeasure becomes a universal construction. The abstract says that the Carathéodory extension corresponds to a Kan extension of strict transformations. The paper develops a general framework for extensions of transformations between poset-valued functors. It then shows that the functors and transformations that come from measures satisfy the conditions of this framework. That step proves the Carathéodory extension theorem. Our own remark: the measure-theoretic estimates do not disappear, but move into this last check.
+**How the definition helps.** A Kan extension is the best extension of a map along another map, so extending a premeasure becomes a universal construction. The paper proves a general extension result for transformations between poset-valued functors. It then checks that the transformations that come from measures satisfy its conditions. In our own remark, the measure-theoretic estimates do not disappear but move into this check.
 
 **Paper or page:** [A categorical proof of the Carathéodory extension theorem](https://arxiv.org/abs/2210.01720). It says: “To prove this result categorically, we represent (pre)measures and outer measures by certain (co)lax and strict transformations. The Carathéodory extension then corresponds to a Kan extension of strict transformations.”
 
@@ -1158,9 +1158,9 @@
 
 **Definition.** Finite signed measures μₙ on ℝ converge vaguely to μ when ∫ f dμₙ → ∫ f dμ for every continuous f with compact support. The distribution function of μ is F(x) = μ((−∞, x\]). The abstract's notion is convergence in Lebesgue measure up to constants: Fₙ + cₙ → F in measure for some constants cₙ.
 
-**Problem.** Corollary 3.14 says that μₙ converges vaguely to μ exactly when two things hold. The total variation of μₙ on each bounded interval is bounded uniformly in n. There are constants cₙ with Fₙ + cₙ → F in Lebesgue measure on each bounded interval.
+**Problem.** Finite signed measures μₙ on ℝ converge vaguely to μ exactly when two things hold. Their total variations on each bounded interval are bounded uniformly in n, and Fₙ + cₙ → F in Lebesgue measure on each bounded interval for some constants cₙ.
 
-**How the definition helps.** Vague convergence cannot see mass that escapes to infinity, and the free constants cₙ remove this blind spot from the distribution functions (our own). For example, the unit mass at −n converges vaguely to zero (our own). Its distribution function is 1 at each fixed point for large n, while the limit has distribution function 0 (our own). With cₙ = −1 the comparison succeeds (our own). Theorem 3.12 gives equivalent forms through basic and almost basic convergence, which the paper studies. Both directions of the proof use the local bound on total variation (our own).
+**How the definition helps.** Vague convergence cannot see mass that escapes to infinity, and the free constants cₙ remove this blind spot from the distribution functions (our own). For example, the unit mass at −n converges vaguely to zero (our own). Its distribution function is 1 at each fixed point for large n, while the limit has distribution function 0, so cₙ = −1 is needed (our own).
 
 **Paper or page:** [Vague and basic convergence of signed measures](https://arxiv.org/abs/2406.11377v1). It says: “it is locally uniformly bounded in variation and the corresponding sequence of distribution functions either converges in Lebesgue measure up to constants, converges basically, or converges almost basically.”
 
@@ -1176,9 +1176,9 @@
 
 **Definition.** Let f(x, y) be a measurable function on a product X × Y of two probability spaces. The function f is virtually continuous if it is continuous, for suitable metrics, on a product X′ × Y′ of large subsets. For any ε &gt; 0, each of X′ and Y′ may miss a set of measure ε, as in Theorem 3 of the paper. So what remains is always a product of two large sets, not an arbitrary large subset of X × Y.
 
-**Problem.** Luzin's theorem says that a measurable function of one variable is continuous off a set of small measure. For functions of several variables this is not enough, because values on the diagonal or other null sets are then undefined. The paper shows that bounded virtually continuous functions have well-defined integrals over such singular measures, for example on the diagonal x = y.
+**Problem.** Bounded virtually continuous functions on X × Y have well-defined integrals against singular measures, such as the measure on the diagonal x = y. Suitable Sobolev functions are virtually continuous, so this gives their traces.
 
-**How the definition helps.** Deleting sets in each coordinate separately respects the product structure, so restrictions to the diagonal still make sense. Theorem 10 of the paper shows that suitable Sobolev functions are virtually continuous. This turns Sobolev trace statements into statements about virtual continuity, as the abstract says. A function that is changed on the diagonal alone is the same element of L¹, so ordinary measurable functions have no trace (our own remark). The detailed analysis is left by the authors to another paper.
+**How the definition helps.** Deleting small sets in each coordinate separately respects the product structure, so restrictions to the diagonal still make sense. Luzin's theorem deletes an arbitrary small set of the product, which may contain the whole diagonal. A function changed on the diagonal alone is the same element of L¹, so ordinary measurable functions have no trace (our own remark).
 
 **Paper or page:** [Virtual continuity of the measurable functions of several variables, and Sobolev embedding theorems](https://arxiv.org/abs/1307.3523v2), [Virtual continuity of the measurable functions of several variables, and Sobolev embedding theorems](https://arxiv.org/abs/1307.3523v2), [Virtual continuity of the measurable functions of several variables, and Sobolev embedding theorems](https://arxiv.org/abs/1307.3523v2), [Virtual continuity of the measurable functions of several variables, and Sobolev embedding theorems](https://arxiv.org/abs/1307.3523v2). It says: “The search of right analogue of the Luzin theorem leads to a notion of virtually continuous functions of several variables. This probably new notion appears implicitly in the statements like embeddings theorems and traces theorems for Sobolev spaces.”
 
@@ -1194,9 +1194,9 @@
 
 **Definition.** An enhanced measurable space (X, M, N) is a set X with a σ-algebra M and a σ-ideal N ⊆ M of negligible sets. It is compact if some compact class K ⊆ M has a non-negligible member inside every non-negligible measurable set. A compact class is a family of sets in which every countable subfamily with the finite intersection property has a non-empty intersection. It is strictly localizable if it is a disjoint union (coproduct) of σ-finite enhanced measurable spaces.
 
-**Problem.** There should be a category of measure spaces with three properties. It is dual to the category of commutative von Neumann algebras, and the main theorems of measure theory hold in it. Also, every map has an essential image.
+**Problem.** The category of compact strictly localizable enhanced measurable spaces is equivalent to the opposite of the category of commutative von Neumann algebras.
 
-**How the definition helps.** Each of the two conditions removes one obstacle to the duality. Pavlov shows that the category of compact strictly localizable enhanced measurable spaces is equivalent to the opposite of the category of commutative von Neumann algebras. It is also equivalent to measurable locales and to hyperstonean spaces. Here maps reflect measurable and negligible sets, and maps are taken up to weak equality almost everywhere. Strict localizability lets maps of Boolean algebras of measurable sets lift to maps of spaces. Compactness excludes the nLab's counterexample: a set of real-valued-measurable cardinality with a probability measure on all subsets that is zero on points, where the identity map has no essential image. The deep step is a theorem of Fremlin: under these conditions on objects, all maps are localizable.
+**How the definition helps.** Each of the two conditions removes one obstacle to the duality. Strict localizability lets maps of Boolean algebras of measurable sets lift to maps of spaces. Compactness excludes the nLab's counterexample, a set of real-valued-measurable cardinality where the identity map has no essential image. The deep step is a theorem of Fremlin that, under these conditions, all maps are localizable.
 
 **nLab:** [categories of measure theory](https://ncatlab.org/nlab/show/categories+of+measure+theory), [commutative von Neumann algebra](https://ncatlab.org/nlab/show/commutative+von+Neumann+algebra), [measurable locale](https://ncatlab.org/nlab/show/measurable+locale). It says: “These properties eliminate pathologies and ensure the following desirable properties of objects and morphisms.”
 
@@ -1247,9 +1247,9 @@
 
 **Definition.** A Borel set S in a real topological vector space V is prevalent if some finite-dimensional subspace P works as a probe. That is, for every v in V, Lebesgue-almost every p in P has v + p in S. A set is shy if its complement is prevalent, and in ℝⁿ shy means Lebesgue measure zero.
 
-**Problem.** An infinite-dimensional space has no useful translation-invariant measure like Lebesgue measure (our own). So statements like almost every map has property X had no measure meaning. With prevalence one can prove, for example, that almost every Cᵏ map of ℝⁿ has only hyperbolic periodic points.
+**Problem.** Shy sets behave like null sets: subsets, translates and countable unions of shy sets are shy, and prevalent sets are dense. In this sense, almost every Cᵏ map of ℝⁿ has only hyperbolic periodic points.
 
-**How the definition helps.** The definition needs Lebesgue measure only on finite-dimensional slices, so it needs no measure on the big space. Shy sets keep the main facts about null sets. Subsets, translates and countable unions of shy sets are shy, and prevalent sets are dense. So almost every statements become theorems in the sense of measure, next to the older Baire category notion of generic. The two notions can disagree: the Liouville numbers form a residual set of Lebesgue measure zero. The work moves to finding a probe space for each property (our own).
+**How the definition helps.** The definition needs Lebesgue measure only on finite-dimensional slices, so it needs no measure on the big space. An infinite-dimensional space has no useful translation-invariant measure like Lebesgue measure (our own). Prevalence differs from the Baire category notion of generic: the Liouville numbers form a residual set of Lebesgue measure zero. The work moves to finding a probe space for each property (our own).
 
 **Wikipedia:** [Prevalent and shy sets](https://en.wikipedia.org/wiki/Prevalent_and_shy_sets), [Generic property](https://en.wikipedia.org/wiki/Generic_property). It says: “the notions of prevalence and shyness are notions of almost everywhere and measure zero that are well-suited to the study of infinite-dimensional spaces”
 

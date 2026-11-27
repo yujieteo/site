@@ -6,7 +6,7 @@
 
 **Definition.** Let a be a root of a polynomial p. The multiplicity of a is the largest k such that (x−a)ᵏ divides p.
 
-**Problem.** Over the complex numbers, every polynomial of degree n ≥ 1 has exactly n roots.
+**Problem.** Over the complex numbers, every polynomial of degree n ≥ 1 has exactly n roots, counted with multiplicity.
 
 **How the definition helps.** Counting with multiplicity lets the statement hold with no exceptions. Take x³ + 2x² − 7x + 4 = (x+4)(x−1)². As a set, its roots are only −4 and 1, so 'exactly n roots' would be false. With multiplicity, the root 1 counts twice, and the count is 3. The hard part does not become easier: a complex root must exist at all, and that is the fundamental theorem of algebra (our own remark).
 
@@ -80,7 +80,7 @@
 
 **Problem.** Every linear map from Fⁿ to itself, for n ≥ 1, has an eigenvector.
 
-**How the definition helps.** A linear map has an eigenvector exactly when its characteristic polynomial has a root. So over an algebraically closed field the theorem is immediate. The article shows that the converse also holds. So the eigenvector property is an equivalent definition of algebraic closure. The real numbers fail: our own example is a rotation of ℝ² by 90°, which has no eigenvector. What stays hard is the fundamental theorem of algebra, which says that ℂ is algebraically closed.
+**How the definition helps.** A linear map has an eigenvector exactly when its characteristic polynomial has a root, so over an algebraically closed field the theorem is immediate. The article shows that the converse also holds, so the eigenvector property is an equivalent definition of algebraic closure. The real numbers fail: our own example is a rotation of ℝ² by 90°, which has no eigenvector. What stays hard is the fundamental theorem of algebra, which says that ℂ is algebraically closed.
 
 **Wikipedia:** [Algebraically closed field](https://en.wikipedia.org/wiki/Algebraically_closed_field). It says: “The field F is algebraically closed if and only if, for each natural number n, every linear map from Fⁿ into itself has some eigenvector.”
 
@@ -130,7 +130,7 @@
 
 **Problem.** A field can be ordered exactly when −1 is not a sum of squares. Every formally real field also sits inside a real closed field, one with no larger formally real algebraic extension.
 
-**How the definition helps.** The sum-of-squares condition is purely algebraic, so it can be checked inside the field and stated as a list of first-order sentences. The definition by existence of an ordering quantifies over sets, as the page says. One direction is easy, because squares are positive in every ordering. The other direction uses Zorn's lemma to enlarge the sums of squares to a positive cone, the set of positive elements of an ordering. Artin used these fields in 1927 to solve Hilbert's seventeenth problem (our own).
+**How the definition helps.** The sum-of-squares condition is purely algebraic, so it can be checked inside the field and stated as a list of first-order sentences, while the definition by existence of an ordering quantifies over sets, as the page says. One direction is easy, because squares are positive in every ordering. The other direction uses Zorn's lemma to enlarge the sums of squares to a positive cone, the set of positive elements of an ordering. Artin used these fields in 1927 to solve Hilbert's seventeenth problem (our own).
 
 **Wikipedia:** [Formally real field](https://en.wikipedia.org/wiki/Formally_real_field). It says: “It is also easy to see that a field that admits an ordering must satisfy these three properties.”
 
@@ -146,9 +146,9 @@
 
 **Definition.** Over a field, a greatest common divisor of two polynomials is unique only up to a nonzero constant factor. The usual convention takes the monic one, with leading coefficient 1.
 
-**Problem.** Let E be an extension field of F, and let P and Q have coefficients in F. Then their greatest common divisor over E equals their greatest common divisor over F.
+**Problem.** Let E be an extension field of F, and let P and Q have coefficients in F. Then their monic greatest common divisor over E equals their monic greatest common divisor over F.
 
-**How the definition helps.** The theorem says R = S, and this equality only makes sense when the gcd is one fixed polynomial. In our own reading, the monic convention is what makes it one. Then the Euclidean algorithm, done in F, gives the same answer as in E, so the gcd lies in F\[X\]; this argument is our own. Without the convention, the statement could only say that R and S differ by a constant. A useful corollary, in our own reading, concerns common roots. Two polynomials over F have a common root in some extension exactly when their gcd over F is not constant.
+**How the definition helps.** The theorem says that the two greatest common divisors are equal, and this only makes sense when the gcd is one fixed polynomial, which the monic convention ensures (our own reading). Then the Euclidean algorithm, done in F, gives the same answer as in E, so the gcd lies in F\[X\]; this argument is our own. Without the convention, the statement could only say that the two differ by a constant. A useful corollary, in our own reading, is that two polynomials over F have a common root in some extension exactly when their gcd over F is not constant.
 
 **Paper or page:** [GCD of Polynomials does not depend on Base Field](https://proofwiki.org/wiki/GCD_of_Polynomials_does_not_depend_on_Base_Field). It says: “Let: gcd {P, Q} = R in F\[X\] gcd {P, Q} = S in E\[X\]. Then R = S. In particular, S ∈ F\[X\].”
 
@@ -166,7 +166,7 @@
 
 **Problem.** The discriminant of f is zero if and only if f has a repeated root. If f has real coefficients and all its roots are real and distinct, the discriminant is positive.
 
-**How the definition helps.** The product definition makes a repeated root exactly a zero factor. If all roots are real and distinct, the squared differences and the even power of a are positive. These facts are not visible directly in a coefficient formula. The work moves into proving that the product agrees with the coefficient formula. The root expression is symmetric, meaning that permuting the roots leaves it unchanged. The theorem on symmetric polynomials and the relations between roots and coefficients let one write the product in terms of the coefficients.
+**How the definition helps.** The product definition makes a repeated root exactly a zero factor, and for real distinct roots the squared differences and the even power of a are positive. These facts are not visible directly in a coefficient formula. The work moves into proving that the product agrees with the coefficient formula. The root expression is symmetric under permutations of the roots, so the theorem on symmetric polynomials and the relations between roots and coefficients write it in terms of the coefficients.
 
 **Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “This expression for the discriminant is often taken as a definition. It makes clear that if the polynomial has a multiple root, then its discriminant is zero,”
 
@@ -198,7 +198,7 @@
 
 **Problem.** A commutative ring with unity is a field exactly when its only ideals are {0} and the whole ring, and these two are different.
 
-**How the definition helps.** Because a field must have 1 ≠ 0, being a field matches having exactly two ideals. Our own sketch: if a ≠ 0, then Ra is not {0}, so Ra = R and 1 = ra. ProofWiki shows the converse, that a field has only the ideals {0} and F. Our own remark: the zero ring has only one ideal, so the rule 1 ≠ 0 is what makes the count exactly two. ProofWiki shows that commutativity is needed, since a noncommutative ring with unity and two ideals need not be a division ring. Our own example: the ring of 2 × 2 real matrices has only two two-sided ideals but has zero divisors.
+**How the definition helps.** Because a field must have 1 ≠ 0, being a field matches having exactly two ideals. Our own sketch: if a ≠ 0, then Ra is not {0}, so Ra = R and 1 = ra. Our own remark: the zero ring has only one ideal, so the rule 1 ≠ 0 makes the count exactly two. ProofWiki shows that commutativity is needed; the ring of 2 × 2 real matrices has only two two-sided ideals but has zero divisors (our own example).
 
 **Paper or page:** [Commutative and Unitary Ring with 2 Ideals is Field](https://proofwiki.org/wiki/Commutative_and_Unitary_Ring_with_2_Ideals_is_Field), [Field has 2 Ideals](https://proofwiki.org/wiki/Field_has_2_Ideals), [Non-Commutative Ring with Unity and 2 Ideals not necessarily Division Ring](https://proofwiki.org/wiki/Non-Commutative_Ring_with_Unity_and_2_Ideals_not_necessarily_Division_Ring). It says: “That is, such that (R, +, ∘) has no non-null proper ideals. Then (R, +, ∘) is a field.”
 
@@ -218,7 +218,7 @@
 
 **Problem.** Every homomorphism between fields that sends 1 to 1 is injective. So a surjective one is an isomorphism, and the Frobenius map x ↦ xᵖ is injective in characteristic p.
 
-**How the definition helps.** Asking that 1 goes to 1 rules out the zero map, which is the only field map that is not injective. The reason is that the kernel of a ring map is an ideal, and a field has only two ideals. The ProofWiki page keeps the zero map, the trivial homomorphism, as a second case. In our own reading, the condition that 1 goes to 1 removes this case, because 1 does not go to 0. The theorem then has no exceptions, and the surjective case and the Frobenius case follow at once. Our own remark is that the hard part of field theory, such as finding the embeddings, stays hard.
+**How the definition helps.** Asking that 1 goes to 1 rules out the zero map, which is the only field map that is not injective. The reason is that the kernel of a ring map is an ideal, and a field has only two ideals. The ProofWiki page keeps the zero map as a second case; in our own reading, the condition 1 ↦ 1 removes it. The theorem then has no exceptions, and the surjective case and the Frobenius case follow at once.
 
 **Paper or page:** [Field Homomorphism is either Trivial or Injection](https://proofwiki.org/wiki/Field_Homomorphism_is_either_Trivial_or_Injection), [Surjective Field Homomorphism is Field Isomorphism](https://proofwiki.org/wiki/Surjective_Field_Homomorphism_is_Field_Isomorphism), [Frobenius Endomorphism on Field is Injective](https://proofwiki.org/wiki/Frobenius_Endomorphism_on_Field_is_Injective). It says: “Then φ is either an injection or the trivial homomorphism.”
 
@@ -238,7 +238,7 @@
 
 **Problem.** Doubling the cube and trisecting a general angle are impossible with straightedge and compass (Wantzel, 1837).
 
-**How the definition helps.** The definition turns a question about geometry into a question about degrees of field extensions. The tower shows that a constructible number γ has \[ℚ(γ):ℚ\] = 2ʳ, where r is the number of steps. So the degree of γ over ℚ is always a power of 2. The number ∛2 has degree 3, so it is not constructible. To trisect 60°, you need cos 20°, which is a root of an irreducible cubic, so it has degree 3 and is not constructible either. Squaring the circle needed more: the proof that π is transcendental.
+**How the definition helps.** The definition turns a question about geometry into a question about degrees of field extensions. The tower gives \[ℚ(γ):ℚ\] = 2ʳ, so the degree of a constructible number is a power of 2. The number ∛2 has degree 3, so the cube cannot be doubled. Trisecting 60° needs cos 20°, a root of an irreducible cubic, so it has degree 3 too.
 
 **Wikipedia:** [Constructible number](https://en.wikipedia.org/wiki/Constructible_number). It says: “It follows from this decomposition that the degree of the field extension \[ℚ(γ):ℚ\] is 2ʳ, where r counts the number of quadratic extension steps.”
 
@@ -288,7 +288,7 @@
 
 **Problem.** Take finite separable extensions K ⊂ L ⊂ M. The norm from M to K is the norm from M to L followed by the norm from L to K.
 
-**How the definition helps.** With the embedding definition, transitivity is a regrouping of one product (our own). Sort the field maps from M by their restrictions τ to L (our own). The maps above one τ multiply to τ applied to the norm from M to L (our own). Multiplying over all τ gives the norm from L to K of that norm (our own). The work moves to counting the extensions of each τ, and to agreement with the determinant definition (our own). Stacks Lemma 9.20.5 proves the result even without separability.
+**How the definition helps.** With the embedding definition, transitivity is a regrouping of one product (our own). Sort the field maps from M by their restrictions τ to L; the maps above one τ multiply to τ applied to the norm from M to L (our own). Multiplying over all τ gives the norm from L to K of that norm (our own). The work moves to counting the extensions of each τ, and to agreement with the determinant definition (our own).
 
 **Paper or page:** [Lemma 9.20.5.](https://stacks.math.columbia.edu/tag/0BIJ). It says: “Let M/L/K be a tower of finite extensions of fields.”
 
@@ -304,7 +304,7 @@
 
 **Problem.** For each element α that is algebraic over K, there is exactly one minimal polynomial.
 
-**How the definition helps.** Without the word 'monic', any nonzero constant multiple of a smallest polynomial would also be smallest, so there would be many. The monic condition picks one polynomial from each such family. The slogan in the data set gives the monic condition and the constant-multiple point. In our own proof, two such monic polynomials differ by a polynomial of lower degree. That difference also vanishes at α, so it is 0. What stays hard is to find the minimal polynomial.
+**How the definition helps.** Without the word 'monic', every nonzero constant multiple of a smallest polynomial would also be smallest. The monic condition picks one polynomial from each such family. In our own proof, two monic minimal polynomials differ by a polynomial of lower degree that also vanishes at α, so the difference is 0.
 
 **Paper or page:** [Minimal Polynomial is Unique](https://proofwiki.org/wiki/Minimal_Polynomial_is_Unique). It says: “Let α ∈ L be algebraic over K. Then the minimal polynomial of α over K is unique.”
 
@@ -338,7 +338,7 @@
 
 **Problem.** Let E and F be normal extensions of K in a common field. Then E ∩ F is normal over K.
 
-**How the definition helps.** The root test gives the claim without finding generators for the intersection. An irreducible polynomial with a root in E ∩ F splits in E and in F. In a common algebraic closure, all its roots therefore lie in E ∩ F. This proof is our own. The splitting-field definition would ask which family of polynomials generates the intersection by its roots. The comparison theorem supplies the link between the two definitions. In the root-to-splitting-field direction, use the minimal polynomials of all elements of the extension (our own).
+**How the definition helps.** The root test gives the claim without finding generators for the intersection. An irreducible polynomial with a root in E ∩ F splits in E and in F, so in a common algebraic closure all its roots lie in E ∩ F (our own proof). The splitting-field definition would ask which family of polynomials generates the intersection. The work moves to the theorem that the two definitions agree.
 
 **Wikipedia:** [Normal extension](https://en.wikipedia.org/wiki/Normal_extension). It says: “If E and F are normal extensions of K contained in L, then the compositum EF and E ∩ F are also normal extensions of K.”
 
@@ -354,7 +354,7 @@
 
 **Problem.** Every Galois extension of degree p of a field of characteristic p is the splitting field of an Artin–Schreier polynomial.
 
-**How the definition helps.** The additive map x ↦ xᵖ − x has kernel 𝔽ₚ, so it plays the part that the n-th power map plays in Kummer theory. Kummer theory fails in degree p because xᵖ − 1 = (x − 1)ᵖ, so there are no nontrivial p-th roots of unity (our own). Also xᵖ − a gives only inseparable extensions (our own). The proof uses the additive form of Hilbert's Theorem 90 in place of the multiplicative one, as the page says. Witt later used Witt vectors for cyclic degree pⁿ.
+**How the definition helps.** The additive map x ↦ xᵖ − x has kernel 𝔽ₚ, so it plays the part that the n-th power map plays in Kummer theory. Kummer theory fails in degree p because xᵖ − 1 = (x − 1)ᵖ, so there are no nontrivial p-th roots of unity, and xᵖ − a gives only inseparable extensions (our own). The proof uses the additive form of Hilbert's Theorem 90 in place of the multiplicative one, as the page says.
 
 **Wikipedia:** [Artin–Schreier theory](https://en.wikipedia.org/wiki/Artin%E2%80%93Schreier_theory), [Kummer theory](https://en.wikipedia.org/wiki/Kummer_theory). It says: “Artin–Schreier theory is a branch of Galois theory, specifically a positive characteristic analogue of Kummer theory, for Galois extensions of degree equal to the characteristic p.”
 
@@ -371,9 +371,9 @@
 
 **Definition.** An algebraic extension E/F is separable if the minimal polynomial of every element of E has distinct roots. An extension is normal if every irreducible polynomial over F that has one root in E splits into linear factors in E. A Galois extension is one that is both normal and separable.
 
-**Problem.** The fundamental theorem of Galois theory is about a finite Galois extension. It says that the intermediate fields correspond one to one with the subgroups of the Galois group (the automorphisms of E that fix F). It also says that the degree of the extension equals the order of this group.
+**Problem.** For a finite Galois extension E/F, the intermediate fields correspond one to one with the subgroups of the Galois group, and \[E : F\] equals the order of the group.
 
-**How the definition helps.** Separability excludes the purely inseparable cases, which have too few automorphisms for the correspondence. In characteristic 0 every extension is separable, so the condition does not show. In characteristic p, our own example is E = 𝔽ₚ(x) over F = 𝔽ₚ(xᵖ), where x is a variable. The degree is p, and the minimal polynomial of x is Xᵖ − xᵖ = (X − x)ᵖ, so x is its only root. So E is the splitting field of this polynomial and is normal, but x has only one conjugate and the automorphism group is trivial. Because p is prime, there are two intermediate fields (E and F) but only one subgroup, so the correspondence fails. The primitive element theorem also uses separability.
+**How the definition helps.** Separability excludes the purely inseparable cases, which have too few automorphisms for the correspondence. In characteristic 0 every extension is separable, so the condition does not show. Our own example: E = 𝔽ₚ(x) over F = 𝔽ₚ(xᵖ) is normal of degree p, since x is the only root of Xᵖ − xᵖ = (X − x)ᵖ. Its automorphism group is trivial, so its two intermediate fields E and F cannot match the one subgroup.
 
 **Wikipedia:** [Separable extension](https://en.wikipedia.org/wiki/Separable_extension). It says: “the fundamental theorem of Galois theory is a theorem about normal extensions, which remains true in non-zero characteristic only if the extensions are also assumed to be separable.”
 
@@ -405,7 +405,7 @@
 
 **Problem.** If G is a finite group of automorphisms of E with fixed field F, then E over F is a Galois extension. Its degree equals the order of G, and its Galois group is G.
 
-**How the definition helps.** Starting from a group and its fixed field turns the main count into linear algebra. The page states the result of Artin that such an extension is always Galois. The proof that the degree equals the order of G uses the linear independence of distinct field homomorphisms (our own). The older approach first wrote the field as F(α) for one primitive element and then counted the roots of the minimal polynomial of α. Artin's route needs no primitive element, so it works in the same form for all fields (our own). What stays hard is to show that a given splitting field has enough automorphisms.
+**How the definition helps.** Starting from a group and its fixed field turns the main count into linear algebra. The proof that the degree equals the order of G uses the linear independence of distinct field homomorphisms (our own). The older approach wrote the field as F(α) for one primitive element and counted the roots of the minimal polynomial of α. Artin's route needs no primitive element, so it works in the same form for all fields (our own).
 
 **Wikipedia:** [Primitive element theorem](https://en.wikipedia.org/wiki/Primitive_element_theorem), [Galois extension](https://en.wikipedia.org/wiki/Galois_extension). It says: “Emil Artin reformulated Galois theory in the 1930s without relying on primitive elements.”
 
@@ -437,9 +437,9 @@
 
 **Definition.** An algebraic extension L of K is normal when every irreducible polynomial over K with one root in L has all its roots in L. For a finite extension, this means that L is the splitting field of a polynomial. An extension is separable if each element's minimal polynomial has distinct roots, and Galois if it is both normal and separable.
 
-**Problem.** For a separable extension L of K, the automorphisms of L that fix K should fix exactly K and nothing more. Then the Galois correspondence between subgroups and intermediate fields holds.
+**Problem.** An algebraic extension L of K is normal and separable exactly when the field fixed by all automorphisms of L over K is K itself.
 
-**How the definition helps.** Normality makes sure that each root has its partner roots in the field, so automorphisms have somewhere to send it. The bad case is ℚ(∛2) over ℚ. It is separable, but it holds only the real cube root of 2. Its only automorphism is the identity, so the fixed field is ℚ(∛2) itself, not ℚ. The page gives this example and shows that the embedding to the complex cube roots is not an automorphism. Normality alone is not enough: a purely inseparable extension is normal but has only the identity automorphism (our own). What stays hard is the proof that a normal and separable extension has as many automorphisms as its degree.
+**How the definition helps.** Normality makes sure that each root has its partner roots in the field, so automorphisms have somewhere to send it. The bad case, from the page, is ℚ(∛2) over ℚ: it is separable but holds only the real cube root of 2. Its only automorphism is the identity, so the fixed field is ℚ(∛2), not ℚ. Normality alone is not enough either: a purely inseparable extension is normal but has only the identity automorphism (our own).
 
 **Wikipedia:** [Galois extension](https://en.wikipedia.org/wiki/Galois_extension), [Normal extension](https://en.wikipedia.org/wiki/Normal_extension). It says: “a Galois extension is an algebraic field extension E/F that is normal and separable; or equivalently, E/F is algebraic, and the field fixed by the automorphism group Aut(E/F) is precisely the base field F.”
 
@@ -451,7 +451,7 @@
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory), 12F15. arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** A field K is perfect if every irreducible polynomial over K has distinct roots. An extension is separable if the minimal polynomial of each of its elements has distinct roots. Equivalently, K has characteristic 0, or K has characteristic p and every element of K is a p-th power.
+**Definition.** A field K is perfect if every irreducible polynomial over K has distinct roots. Equivalently, K has characteristic 0, or K has characteristic p and every element of K is a p-th power. An extension is separable if the minimal polynomial of each of its elements has distinct roots.
 
 **Problem.** Over a perfect field, every algebraic extension is separable. So for Galois theory over such a field, only normality needs checking.
 
@@ -491,7 +491,7 @@
 
 **Problem.** Let F ⊆ M ⊆ E be fields of characteristic p. If E is purely inseparable over M and M is purely inseparable over F, then E is purely inseparable over F.
 
-**How the definition helps.** The power test makes the tower claim a rule for multiplying exponents. For α in E choose n so that β = α raised to pⁿ lies in M. Then choose m so that β raised to pᵐ lies in F. This is α raised to pⁿ⁺ᵐ, which proves the claim (our own). The minimal-polynomial test does not directly say how to combine the two extensions. In the comparison theorem, the key step is that some such power has a minimal polynomial without repeated roots. Pure inseparability then forces that power to lie in the base field.
+**How the definition helps.** The power test makes the tower claim a rule for multiplying exponents. For α in E choose n so that β = α<sup>(pⁿ)</sup> lies in M, then m so that β<sup>(pᵐ)</sup> lies in F. Then α<sup>(pⁿ⁺ᵐ)</sup> lies in F, which proves the claim (our own). The minimal-polynomial test does not directly say how to combine the two extensions.
 
 **Wikipedia:** [Purely inseparable extension](https://en.wikipedia.org/wiki/Purely_inseparable_extension). It says: “For each element α ∈ E, there exists n ≥ 0 such that \\(\\alpha<sup>p<sup>n</sup>\\in</sup> F\\).”
 
@@ -525,7 +525,7 @@
 
 **Problem.** In ℚₚ, a series converges exactly when its terms tend to 0.
 
-**How the definition helps.** With the strong triangle inequality, the sum of a block of consecutive terms is no larger than its largest term (our own). So if the terms tend to 0, the partial sums form a Cauchy sequence, and completeness of ℚₚ gives a limit (our own). Over the real numbers this test fails: the terms of the harmonic series tend to 0, but the series diverges (our own). The converse direction holds in every field with an absolute value (our own). What stays hard is to build ℚₚ as a complete field (our own).
+**How the definition helps.** With the strong triangle inequality, the sum of a block of consecutive terms is no larger than its largest term (our own). So if the terms tend to 0, the partial sums form a Cauchy sequence, and completeness of ℚₚ gives a limit (our own). Over the real numbers this test fails: the terms of the harmonic series tend to 0, but the series diverges (our own).
 
 **Paper or page:** [An Infinitely Large Napkin: Calculus: P Adic](https://venhance.github.io/napkin/Napkin.pdf). It says: “A series ∑ xₖ (k = 1 to ∞) in ℚₚ converges to some limit if and only if lim (k → ∞) \|xₖ\|ₚ = 0.”
 
@@ -543,7 +543,7 @@
 
 **Problem.** The product formula: for every nonzero rational r, \|r\| · ∏ₚ \|r\|ₚ = 1. In words, the ordinary size of r times all its p-adic sizes is exactly 1.
 
-**How the definition helps.** In our own words: base p is the one base that makes the sizes cancel exactly. Any base greater than 1 gives an absolute value with the same topology. But only base p gives each prime power pᵏ the p-adic size 1/pᵏ, which cancels its ordinary size pᵏ. So the product formula follows from unique factorization. The article notes that a similar product formula can be used to define global fields by axioms. (Global fields are the finite extensions of ℚ and of the field of rational functions over a finite field.)
+**How the definition helps.** In our own words: base p is the one base that makes the sizes cancel exactly. Any base greater than 1 gives an absolute value with the same topology. But only base p gives pᵏ the p-adic size 1/pᵏ, which cancels its ordinary size pᵏ. So the product formula follows from unique factorization.
 
 **Wikipedia:** [P-adic valuation](https://en.wikipedia.org/wiki/P-adic_valuation). It says: “The choice of base p in the exponentiation p<sup>(−νₚ(r))</sup> makes no difference for most of the properties, but supports the product formula”
 
@@ -555,9 +555,9 @@
 
 *True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)). arXiv math.NT. Level 3: graduate.
 
-**Definition.** Let g be a monic polynomial without repeated factors over a field with q elements. Factor g into monic irreducible polynomials over a larger finite field. The Frobenius map raises each coefficient to its qth power. For each factor, multiply the distinct factors reached by repeating this map.
+**Definition.** Let g be a squarefree monic polynomial over the field 𝔽<sub>q</sub>, and factor it into monic irreducibles over a larger finite field. The Frobenius map raises each coefficient to its qth power. A Frobenius orbit is the set of distinct factors that repeated use of this map reaches from one factor.
 
-**Problem.** These products, taken once per orbit, give precisely the monic irreducible factors of g over the smaller field. An orbit is the set reached from one factor.
+**Problem.** The products of the Frobenius orbits, one product per orbit, are exactly the monic irreducible factors of g over 𝔽<sub>q</sub>.
 
 **How the definition helps.** In our own proof, taking a whole orbit makes its product fixed by Frobenius. The fixed coefficients belong to the smaller field. Finding factors directly there would require ruling out every proper factor. Unique factorization over the larger field reduces this to ruling out a nonempty proper subset of the orbit preserved by Frobenius. Repeated application reaches every member, so no such subset exists.
 
@@ -577,7 +577,7 @@
 
 **Problem.** Every finite extension of a C₁ field is again C₁.
 
-**How the definition helps.** The C₁ inequality survives taking the norm because the degree and the number of variables grow by the same factor. In our own proof, write each of m variables in a basis of the extension of degree n. Taking the norm of the polynomial gives a homogeneous polynomial of degree nd in nm coordinates. Since m exceeds d, the base field supplies a nonzero coordinate vector where that norm vanishes. The basis turns this vector into a nonzero tuple over the extension. Only zero has norm zero, so the original polynomial vanishes there.
+**How the definition helps.** The C₁ inequality survives taking the norm because the degree and the number of variables grow by the same factor. In our own proof, take f of degree d in m &gt; d variables over an extension of degree n, and write each variable in a basis. The norm of f is then a form of degree nd in nm &gt; nd coordinates over the base field, so it has a nonzero zero. Only zero has norm zero, so f vanishes at the corresponding nonzero tuple.
 
 **Wikipedia:** [Quasi-algebraically closed field](https://en.wikipedia.org/wiki/Quasi-algebraically_closed_field). It says: “Any algebraic extension of a quasi-algebraically closed field is quasi-algebraically closed.”
 
@@ -595,7 +595,7 @@
 
 **Problem.** The norm from every finite extension of a pseudo-finite field is onto the nonzero elements of the base field.
 
-**How the definition helps.** The first-order definition transfers the finite-field norm theorem one extension degree at a time. In our own proof, fix the degree and describe a simple extension by the coefficients of an irreducible polynomial. Irreducibility in fixed degree can be tested by quantifying over possible factors. The norm is the determinant of multiplication in the quotient, so surjectivity also has a first-order formula. Pseudo-finite fields are perfect, meaning their finite extensions are separable. The primitive element theorem then gives one generator for each finite extension. Ax’s characterization supplies the equivalent description using unique extensions of each degree and rational points on varieties that remain integral over an algebraic closure.
+**How the definition helps.** The first-order definition transfers the finite-field norm theorem one extension degree at a time. In our own proof, fix the degree and describe a simple extension by the coefficients of an irreducible polynomial. Irreducibility and the norm as a determinant both have first-order formulas, so surjectivity in that degree is one sentence. Pseudo-finite fields are perfect, so the primitive element theorem makes every finite extension simple.
 
 **Wikipedia:** [Pseudo-finite field](https://en.wikipedia.org/wiki/Pseudo-finite_field). It says: “an infinite model of the first-order theory of finite fields.”
 
@@ -611,7 +611,7 @@
 
 **Definition.** A pseudo-algebraically closed field supplies a rational point on every geometrically integral variety over it. Such a variety stays irreducible and has no nilpotent functions after extending to an algebraic closure. A rational point has coordinates in the original field.
 
-**Problem.** Over a pseudo-algebraically closed field, every finite-dimensional central simple algebra is a matrix algebra. Equivalently, the field has trivial Brauer group. A central simple algebra has center equal to the field and no proper nonzero two-sided ideal.
+**Problem.** Over a pseudo-algebraically closed field, every finite-dimensional central simple algebra is a matrix algebra. Equivalently, the Brauer group of the field is trivial.
 
 **How the definition helps.** The rational-point axiom applies to the variety that detects whether a given algebra is a matrix algebra. The Severi–Brauer theorem constructs this variety and identifies its rational points as the test for splitting. Over an algebraic closure the variety becomes projective space, so it is geometrically integral.
 
@@ -629,7 +629,7 @@
 
 **Problem.** Let K be a finite separable extension of k, and let k′ be any extension field of k. Then K ⊗ₖ k′ is a finite product of finite separable extensions of k′.
 
-**How the definition helps.** With the tensor definition, the test for each factor is already one of the original tests (our own). The ring K ⊗ₖ k′ is reduced and finite over k′, so it is a product of fields (our own). For a further extension k″ of k′, each factor tensored with k″ is a factor of K ⊗ₖ k″, which is reduced (our own). The work moves to Stacks Lemma 10.44.2, which proves that the tensor test agrees with the usual definition in characteristic p. It also moves to the splitting of finite reduced algebras into fields (our own).
+**How the definition helps.** With the tensor definition, the test for each factor is already one of the original tests (our own). The ring K ⊗ₖ k′ is reduced and finite over k′, so it is a product of fields (our own). For a further extension k″ of k′, each factor tensored with k″ is a factor of K ⊗ₖ k″, which is reduced (our own). The work moves to Stacks Lemma 10.44.2, which proves that the tensor test agrees with the usual definition.
 
 **Paper or page:** [Lemma 10.44.2.](https://stacks.math.columbia.edu/tag/030W). It says: “K is geometrically reduced over k.”
 
@@ -645,7 +645,7 @@
 
 **Problem.** The absolute Galois group of a field is the Galois group of its separable closure. For a finite field with q elements, it is the profinite integers, the limit of all the groups ℤ/n. The map that sends x to x raised to the power q generates it topologically.
 
-**How the definition helps.** The profinite group is uncountable, so no single element generates it as an abstract group; topological generation is the right sense. The powers of Frobenius form only a copy of ℤ inside it (our own). With the Krull topology, this copy is dense, so Frobenius determines every continuous action. The page on Weil groups says that the Weil group of a finite field is exactly this infinite cyclic group. Krull introduced the topology in 1928 (our own).
+**How the definition helps.** The profinite group is uncountable, so no single element generates it as an abstract group; topological generation is the right sense. The powers of Frobenius form only a copy of ℤ inside it (our own). With the Krull topology, this copy is dense, so Frobenius determines every continuous action.
 
 **Wikipedia:** [Absolute Galois group](https://en.wikipedia.org/wiki/Absolute_Galois_group), [Weil group](https://en.wikipedia.org/wiki/Weil_group). It says: “The Frobenius automorphism is a canonical (topological) generator of GK.”
 
@@ -659,11 +659,11 @@
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory), 20E18. arXiv math.AC, math.GR. Level 3: graduate.
 
-**Definition.** Let L/K be an infinite Galois extension. Its Galois group Gal(L/K) is the inverse limit of the finite groups Gal(E/K), over all finite Galois subextensions E. It carries the resulting profinite topology, also called the Krull topology. This is the topology that the inverse limit gets from the product of the finite groups, each with the discrete topology.
+**Definition.** Let L/K be a Galois extension, possibly infinite. Its Galois group Gal(L/K) is the inverse limit of the finite groups Gal(E/K), over all finite Galois subextensions E. The Krull topology on it is the inverse-limit topology, with each finite group discrete.
 
-**Problem.** Extend the fundamental theorem of Galois theory to infinite algebraic extensions, such as the algebraic closure of a finite field.
+**Problem.** The intermediate fields of L/K correspond one to one with the closed subgroups of Gal(L/K) in the Krull topology. Under this correspondence, finite subextensions match open subgroups.
 
-**How the definition helps.** The topology picks out the subgroups that come from fields, so the bijection holds again. For infinite extensions there are more subgroups than intermediate fields, so the naive bijection fails. For example, Gal(F̄ₚ/Fₚ) ≅ Ẑ, the profinite completion of ℤ, and the subgroup ℤ generated by Frobenius is dense in it. So ℤ has the same fixed field Fₚ as the whole group Ẑ (this example is ours, not from the nLab). With the Krull topology, the theorem holds again if 'subgroup' is replaced by 'closed subgroup'. Finite subextensions then correspond exactly to open subgroups. The finite theorem is still needed as input.
+**How the definition helps.** The topology picks out the subgroups that come from fields, so the bijection holds again. For infinite extensions there are more subgroups than intermediate fields. For example, Gal(F̄ₚ/Fₚ) ≅ Ẑ, and the subgroup ℤ generated by Frobenius is dense, so it has the same fixed field Fₚ as Ẑ (this example is ours, not from the nLab). The finite theorem is still needed as input.
 
 **nLab:** [Galois theory](https://ncatlab.org/nlab/show/Galois+theory). It says: “correspond bijectively to the closed subgroups of”
 
@@ -680,9 +680,9 @@
 
 **Definition.** For a finite field extension L of K, the trace of z is the matrix trace of multiplication by z on L over K. Pair x and y by taking the trace of xy. The extension is separable if every minimal polynomial over K of an element of L has distinct roots.
 
-**Problem.** The pairing detects every nonzero x exactly when L is separable. Detection means that some y gives a nonzero trace of xy.
+**Problem.** The trace pairing (x, y) ↦ trace of xy is nondegenerate exactly when L is separable over K. Nondegenerate means that each nonzero x has some y with trace of xy nonzero.
 
-**How the definition helps.** In our own proof, separability excludes precisely the extensions whose trace vanishes everywhere. If z has nonzero trace, take y = z/x for each nonzero x. The main field theorem identifies separability with the existence of such a z. For our own counterexample, adjoin a square root u of t to the rational function field over the two-element field. In the basis 1,u, multiplication by a + bu has diagonal entries a,a. Their sum is zero.
+**How the definition helps.** Separability excludes precisely the extensions whose trace vanishes everywhere (our own). If z has nonzero trace, take y = z/x for each nonzero x. For our own counterexample, adjoin a square root u of t to 𝔽₂(t). In the basis 1, u, multiplication by a + bu has diagonal entries a, a, so every trace is 2a = 0.
 
 **Paper or page:** [Lemma 9.20.7.](https://stacks.math.columbia.edu/tag/0BIL). It says: “L/K is separable, Traceₗ⁄ₖ is not identically zero, and the trace pairing Qₗ⁄ₖ is nondegenerate.”
 
@@ -728,7 +728,7 @@
 
 *True by definition.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 3: graduate.
 
-**Definition.** One can test whether a field extension L of k is regular by taking its tensor product with an algebraic closure of k. The product must be a domain, a ring without zero divisors.
+**Definition.** A field extension L of k is regular if L ⊗ₖ k̄ is a domain, where k̄ is an algebraic closure of k. A domain is a ring without zero divisors.
 
 **Problem.** For a regular extension L of k and any field extension E of k, E ⊗ₖ L is a domain.
 
@@ -766,7 +766,7 @@
 
 **Problem.** For a finite Galois extension L of K with group G, the first cohomology group H¹(G, L×) is trivial. For a cyclic group this says that each element of norm 1 has the form σ(b)/b.
 
-**How the definition helps.** The cohomology definition turns the special statement about norm-one elements into one vanishing statement that makes sense for any Galois group. Kummer and Hilbert stated it for cyclic groups. There a cocycle is fixed by its value at a generator, which is an element of norm 1. Noether gave the general form in 1933. The proof is short: average a cocycle against independent characters to find b (our own). For ℚ(i) the theorem gives every rational point on the unit circle, as the page shows. The same form then extends to GLₙ and to Picard groups of schemes.
+**How the definition helps.** The cohomology definition turns the special statement about norm-one elements into one vanishing statement that makes sense for any Galois group. For a cyclic group, a cocycle is fixed by its value at a generator, which is an element of norm 1. Noether gave the general form in 1933. The proof is short: average a cocycle against independent characters to find b (our own).
 
 **Wikipedia:** [Hilbert's Theorem 90](https://en.wikipedia.org/wiki/Hilbert%27s_Theorem_90). It says: “the first cohomology group of G, with coefficients in the multiplicative group of L, is trivial”
 
@@ -783,9 +783,9 @@
 
 **Definition.** A differentially closed field solves any finite system of differential equations and inequations that has a solution in a differential field extension. A differential equation can involve the unknown and its repeated derivatives. Unlike ordinary algebraic closedness, this definition tests only extensions that admit the original derivative.
 
-**Problem.** Every differentially closed field is separably closed, meaning that every nonconstant polynomial with distinct roots in an algebraic closure has a root in the field. In positive characteristic some polynomials have no root in the field.
+**Problem.** Every differentially closed field is separably closed: each nonconstant separable polynomial has a root in it. In characteristic p it is not perfect, so it is not algebraically closed.
 
-**How the definition helps.** Testing differential extensions gives roots of separable polynomials because the derivative extends to every separable algebraic extension. In our own argument, adjoin a variable with derivative one. Differential closedness then gives an element a of the original field with derivative one. In characteristic p, every pth power has derivative zero, so a has no pth root. The extension theorem for derivatives supplies the first step.
+**How the definition helps.** Testing differential extensions gives roots of separable polynomials because the derivative extends to every separable algebraic extension. In our own argument, adjoin a variable with derivative one. Differential closedness then gives an element a of the field with derivative one. In characteristic p, every pth power has derivative zero, so a has no pth root.
 
 **Wikipedia:** [Differentially closed field](https://en.wikipedia.org/wiki/Differentially_closed_field). It says: “Taking g=1 and f any ordinary separable polynomial shows that any differentially closed field is separably closed.”
 
@@ -813,7 +813,7 @@
 
 *True by definition.* MSC 12J10 (Valued fields), 13J15. arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** A valuation sends products to sums and measures how divisible an element is. Call a valued field K henselian if its valuation extends uniquely, up to equivalence, to an algebraic closure. The usual definition asks that simple roots modulo the maximal ideal of the valuation ring lift to roots. Wikipedia states that the two definitions agree.
+**Definition.** Call a valued field K henselian if its valuation extends uniquely, up to equivalence, to an algebraic closure. The usual definition asks that simple roots modulo the maximal ideal of the valuation ring lift to roots.
 
 **Problem.** Let K be a henselian field with a real-valued valuation v, extended to an algebraic closure. Conjugate elements, which are roots of the same irreducible polynomial over K, have equal values.
 
@@ -833,7 +833,7 @@
 
 **Problem.** Every local field is ℝ, ℂ, a finite extension of a p-adic field ℚₚ, or a field 𝔽q((t)) of Laurent series over a finite field.
 
-**How the definition helps.** The non-discrete condition rules out the trivial case and leaves only fields whose topology comes from an absolute value. Any field with the discrete topology is locally compact, so without the condition every field would count (our own). The page builds that absolute value from Haar measure, the translation-invariant measure on the field. Sorting the resulting complete fields into the four types is the remaining work (our own). The topological definition treats real and p-adic fields together. That is what lets Haar measure and Fourier analysis work the same way at every place (our own). Some authors use the name only for non-archimedean local fields, as the page notes.
+**How the definition helps.** The non-discrete condition rules out the trivial case and leaves only fields whose topology comes from an absolute value. Any field with the discrete topology is locally compact, so without the condition every field would count (our own). The page builds that absolute value from Haar measure, the translation-invariant measure on the field. Sorting the resulting complete fields into the four types is the remaining work (our own).
 
 **Wikipedia:** [Local field](https://en.wikipedia.org/wiki/Local_field). It says: “In mathematics, a local field is a locally compact Hausdorff non-discrete topological field.”
 
@@ -847,11 +847,11 @@
 
 *Rules out counterexamples.* MSC 12J10 (Valued fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A discrete valuation ring has a maximal ideal generated by one uniformizer, an element of least positive value. Its residue field is the quotient by that ideal. The ring is henselian if relatively prime monic factors of a monic polynomial modulo the maximal ideal lift to factors over the ring. A finite field extension is unramified here if its degree equals its residue degree and its residue extension is separable.
+**Definition.** A discrete valuation ring is henselian if coprime monic factors of a monic polynomial modulo the maximal ideal lift to factors over the ring. A finite extension of its fraction field is unramified if its degree equals its residue degree and its residue extension is separable.
 
-**Problem.** For a henselian discrete valuation ring, reduction classifies finite unramified extensions of its fraction field by finite separable extensions of its residue field. It also gives a bijection between the corresponding embeddings.
+**Problem.** For a henselian discrete valuation ring, taking residue fields gives a one-to-one correspondence between finite unramified extensions of the fraction field and finite separable extensions of the residue field. It also matches their embeddings.
 
-**How the definition helps.** The henselian lifting property recovers separable residue extensions and their embeddings from lifted polynomial factors. The cited theorem proves this for finite étale algebras, which here are finite free algebras with separable field products as fibers. Its connected algebras, those without a nontrivial product decomposition, give the unramified fields. In our own counterexample, adjoin √6 to the integers localized at five, where denominators are prime to five. The result is a domain, but its reduction splits because X² − 6 has two distinct roots modulo five.
+**How the definition helps.** The henselian lifting property recovers separable residue extensions and their embeddings from lifted polynomial factors. The cited theorem proves this for finite étale algebras, and the connected ones give the unramified fields. In our own counterexample, adjoin √6 to the integers localized at 5, which is not henselian. The result is a domain, but its reduction splits because X² − 6 has two distinct roots modulo 5.
 
 **Paper or page:** [Lemma 10.153.7.](https://stacks.math.columbia.edu/tag/04GK). It says: “The category of finite étale ring extensions R → S is equivalent to the category of finite étale algebras κ → S̄ via the functor S ↦ S/𝔪S.”
 
@@ -943,11 +943,11 @@
 
 *True by definition.* MSC 12J20 (General valuation theory for fields), 12F15. arXiv math.AC. Level 3: graduate.
 
-**Definition.** Let A be a valuation ring of K. This means A contains x or its inverse for every nonzero x in K. In characteristic p &gt; 0, an extension L of K is purely inseparable if each element has some p-power in K. A p-power means the result of repeatedly raising an element to the power p.
+**Definition.** A valuation ring A of a field K contains x or its inverse for every nonzero x in K. In characteristic p &gt; 0, an extension L of K is purely inseparable if each element of L has some power x<sup>(pⁿ)</sup> in K.
 
-**Problem.** Exactly one valuation ring of L meets K in A. It is the integral closure of A in L, the elements satisfying a monic polynomial over A.
+**Problem.** If L is purely inseparable over K, exactly one valuation ring of L meets K in A. It is the integral closure of A in L.
 
-**How the definition helps.** In our own proof, the power description forces membership in any extending valuation ring B. For x in L choose a p-power y of x in K. If x belongs to B, then y belongs to A. Conversely, if y belongs to A, then x satisfies a monic equation over B and belongs to B because valuation rings are integrally closed. The cited lemma proves that the integral closure gives one such ring. The power description is equivalent to requiring each minimal polynomial over K to have just one distinct root.
+**How the definition helps.** In our own proof, the power description forces membership in any extending valuation ring B. For x in L choose a power y = x<sup>(pⁿ)</sup> in K. If x belongs to B, then y belongs to A. Conversely, if y belongs to A, then x satisfies a monic equation over B and belongs to B because valuation rings are integrally closed.
 
 **Paper or page:** [Lemma 15.124.3.](https://stacks.math.columbia.edu/tag/0H37). It says: “Then the integral closure B of A in L is a valuation ring with fraction field L and A ⊂ B is an extension of valuation rings.”
 
@@ -961,7 +961,7 @@
 
 **Definition.** A valuation ring in a field is a subring containing x or its inverse for each nonzero field element x. Its elements have size at most one for the corresponding valuation. Alternatively, a valuation assigns values in an ordered group.
 
-**Problem.** Restricting a valuation from a field L to a subfield K pulls its valuation ring back to K. These restrictions compose in towers.
+**Problem.** Restricting a valuation from a field L to a subfield K corresponds to intersecting its valuation ring with K. So restrictions compose in towers.
 
 **How the definition helps.** The ring definition turns restriction to a subfield K into intersection with K. In our own proof, the intersection still contains x or its inverse for every nonzero x in K. Taking two successive intersections gives the same ring as restricting directly. The correspondence with ordered-group valuations requires recovering the group of values by dividing the multiplicative group by the units of the ring.
 
@@ -979,7 +979,7 @@
 
 **Problem.** The module is multiplicative. On ℚₚ, the field of p-adic numbers, \|p\| = 1/p for the prime p.
 
-**How the definition helps.** The scaling definition makes multiplication of field elements into composition of volume changes. Each scaling factor is well defined because μ(aS) gives another translation invariant measure for a ≠ 0, and Haar measure is unique up to scale. The p-adic integers ℤₚ split into p translates of pℤₚ, which all have the same measure (our own). This gives \|p\| = 1/p (our own). A chosen absolute value already assumes multiplicativity, whereas this proof recovers a natural normalization from the additive group alone (our own).
+**How the definition helps.** The scaling definition makes multiplication of field elements into composition of volume changes. Each scaling factor is well defined because a ↦ μ(aS) gives another translation-invariant measure, and Haar measure is unique up to scale. The p-adic integers ℤₚ split into p translates of pℤₚ, which all have the same measure, so \|p\| = 1/p (our own). A chosen absolute value already assumes multiplicativity, whereas this proof recovers it from the additive group alone (our own).
 
 **Wikipedia:** [Local field](https://en.wikipedia.org/wiki/Local_field). It says: “The module of an element a of F is defined so as to measure the change in size of a set after multiplying it by a.”
 
@@ -1013,7 +1013,7 @@
 
 **Problem.** The Hasse–Minkowski theorem: a quadratic form over ℚ represents 0 nontrivially (it is 0 at some nonzero point) if and only if this holds over ℝ and over every ℚₚ. The same is true for the equivalence of two quadratic forms.
 
-**How the definition helps.** The field ℚₚ packs the congruence conditions modulo every power of p into one complete field. In ℚₚ, Hensel's lemma lets you solve equations as in analysis. Hensel's lemma turns a root modulo p into an exact root when the derivative there is not 0 modulo p. With these fields, the theorem has the form 'global if and only if everywhere local'. The theorem fails for cubic forms, for example Selmer's 3x³ + 4y³ + 5z³ = 0 (our own example, not from the article). So the local–global principle is not a general fact.
+**How the definition helps.** The field ℚₚ packs the congruence conditions modulo every power of p into one complete field. In ℚₚ, Hensel's lemma turns a root modulo p into an exact root when the derivative there is not 0 modulo p. With these fields, the theorem has the form 'global if and only if everywhere local'. The theorem fails for cubic forms, for example Selmer's 3x³ + 4y³ + 5z³ = 0 (our own example, not from the article).
 
 **Wikipedia:** [Hasse–Minkowski theorem](https://en.wikipedia.org/wiki/Hasse%E2%80%93Minkowski_theorem). It says: “in order to determine whether an equation of a certain type has a solution in rational numbers, it is sufficient to test whether it has solutions over complete fields of real and p-adic numbers”
 
@@ -1061,11 +1061,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 03F60. arXiv math.AC, math.LO. Level 4: research.
 
-**Definition.** Richman builds a complete metric space of multisets of n complex numbers. A multiset is a set in which an element can occur more than once. Constructively, this space is the completion of the space of such multisets. The roots of a polynomial of degree n are then one point of this space, not a list of n separate numbers.
+**Definition.** Richman uses the complete metric space of multisets of n complex numbers. A multiset is a set in which an element can occur more than once. The roots of a polynomial of degree n are then one point of this space, not a list of n separate numbers.
 
-**Problem.** Prove the fundamental theorem of algebra in constructive mathematics (mathematics without the law of excluded middle) without the axiom of choice.
+**Problem.** In constructive mathematics without the axiom of choice, every monic complex polynomial of degree n has its roots as one multiset of n complex numbers (Richman 2000).
 
-**How the definition helps.** Stated for the multiset of roots, the theorem becomes provable without choice (Richman 2000). Constructively, one cannot pick out the individual roots. To factor every monic polynomial into linear factors, one needs a weak choice principle, because the complex numbers are not a discrete field. A discrete field is a field in which one can decide whether two elements are equal. The nLab notes the same reformulation for the Weierstrass factorization of entire functions.
+**How the definition helps.** Stated for the multiset of roots, the theorem becomes provable without choice. Constructively, one cannot pick out the individual roots, because one cannot decide whether two complex numbers are equal. To factor every monic polynomial into linear factors, one needs a weak choice principle. The nLab notes the same reformulation for the Weierstrass factorization of entire functions.
 
 **nLab:** [fundamental theorem of algebra](https://ncatlab.org/nlab/show/fundamental+theorem+of+algebra), [Weierstrass factorization theorem](https://ncatlab.org/nlab/show/Weierstrass+factorization+theorem). It says: “In light of this, one can instead interpret the constructive FTA as a statement about sets of roots rather than about individual roots, an interpretation that dates from Richman 2000.”
 
@@ -1081,9 +1081,9 @@
 
 **Definition.** A Hopf–Galois structure on a field extension L/K replaces the Galois group by a Hopf algebra H that acts on L. Every Galois extension has the classical structure, given by its Galois group. The extension is H-Kummer if eigenvectors of this action generate L over K.
 
-**Problem.** Classical Kummer theory describes radical extensions only over fields that contain the n-th roots of unity. The paper characterizes a class of H-Kummer extensions as radical extensions that are linearly disjoint from the n-th cyclotomic extension of K. Here the cyclotomic extension adds the n-th roots of unity to K, and linearly disjoint means, roughly, that the fields share only K.
+**Problem.** A class of H-Kummer extensions of K is exactly the class of radical extensions of K that are linearly disjoint from K(ζₙ), the field made by adding the n-th roots of unity to K. Linearly disjoint means, roughly, that the two fields share only K.
 
-**How the definition helps.** Our own reason: the new structure lets the eigenvector idea of Kummer theory work over fields without the roots of unity. The abstract says this extends the classical Kummer condition for the classical Galois structure. Our own example: ℚ(∛2)/ℚ is not Galois, so classical Kummer theory does not apply. It does have a Hopf–Galois structure (our own note). The main tool, says the abstract, is a product Hopf–Galois structure on a compositum.
+**How the definition helps.** Our own reason: the new structure lets the eigenvector idea of Kummer theory work over fields without the roots of unity. The abstract says this extends the classical Kummer condition for the classical Galois structure. Our own example: ℚ(∛2)/ℚ is not Galois, so classical Kummer theory does not apply, but it has a Hopf–Galois structure. The main tool, says the abstract, is a product Hopf–Galois structure on a compositum.
 
 **Paper or page:** [A generalization of Kummer theory to Hopf-Galois extensions](https://arxiv.org/abs/2305.08648). It says: “an H-Galois extension L/K is H-Kummer if L can be generated by adjoining to K a finite set S of eigenvectors for the action of the Hopf algebra H on L.”
 
@@ -1101,7 +1101,7 @@
 
 **Problem.** Let L over K be finite and purely inseparable of exponent 1. Its intermediate fields match the restricted Lie subalgebras of the K-derivations of L that are also L-subspaces.
 
-**How the definition helps.** Derivations detect inseparable structure that automorphisms miss, so they can replace the Galois group. A purely inseparable extension has only the identity automorphism over K (our own). So the classical Galois group sees no intermediate fields. Jacobson used derivations instead in 1937 and 1944. Later work by Sweedler and by Gerstenhaber and Zaromp used higher derivations for modular extensions. Extensions of higher exponent need these more complex objects.
+**How the definition helps.** Derivations detect inseparable structure that automorphisms miss, so they can replace the Galois group. A purely inseparable extension has only the identity automorphism over K, so the classical Galois group sees no intermediate fields (our own). Jacobson used derivations instead in 1937 and 1944. Extensions of higher exponent need higher derivations, as in later work by Sweedler and by Gerstenhaber and Zaromp.
 
 **Wikipedia:** [Purely inseparable extension](https://en.wikipedia.org/wiki/Purely_inseparable_extension). It says: “introduced a variation of Galois theory for purely inseparable extensions of exponent 1, where the Galois groups of field automorphisms in Galois theory are replaced by restricted Lie algebras of derivations.”
 
@@ -1149,11 +1149,11 @@
 
 *Rules out counterexamples.* MSC 12J20 (General valuation theory for fields). arXiv math.NT, math.AC. Level 4: research.
 
-**Definition.** A discrete valuation assigns integer orders to nonzero elements, with a uniformizer having order one. A henselian valuation extends uniquely to algebraic extensions. A finite extension is tame if its residue field extension is separable and its ramification index is invertible in the residue field. It must also have degree equal to the residue degree times that index, which measures how much the value group grows.
+**Definition.** A henselian discrete valuation extends uniquely to algebraic extensions. A finite extension is tame if its residue field extension is separable, its ramification index e is invertible in the residue field, and its degree is e times the residue degree.
 
-**Problem.** For a finite tame extension of henselian discretely valued fields, the relative logarithmic differentials of the valuation rings vanish. These record ordinary derivatives and symbols dlog x satisfying x dlog x = dx for nonzero x, with base elements held constant.
+**Problem.** For a finite tame extension of henselian discretely valued fields, the relative logarithmic differentials of the valuation rings vanish. These are the differentials together with symbols dlog x, where x dlog x = dx.
 
-**How the definition helps.** Tameness makes the coefficient of the new logarithmic derivative invertible. In our own explanation, first lift the separable residue extension, which contributes no relative differentials. The tame ramification theorem gives a uniformizer s such that s raised to the ramification index e belongs to the lifted base. Taking logarithmic derivatives gives e dlog s = 0, so dlog s vanishes. For our own wild example, take Laurent series in characteristic p and set t = sᵖ. The operator s times differentiation with respect to s kills every base series in t and sends dlog s to one.
+**How the definition helps.** Tameness makes the coefficient of the new logarithmic derivative invertible. In our own explanation, the lifted separable residue extension contributes nothing, and a uniformizer s has sᵉ in the lifted base. Taking logarithmic derivatives gives e dlog s = 0, so dlog s = 0. In our own wild example, t = sᵖ over Laurent series in characteristic p, and the operator s d/ds kills every series in t but sends dlog s to 1.
 
 **Paper or page:** [Logarithmic differentials on discretely ringed adic spaces](https://arxiv.org/abs/2009.14128). It says: “For any tame extension L\|K of valued fields the logarithmic cotangent complex is trivial.”
 

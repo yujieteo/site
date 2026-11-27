@@ -44,7 +44,7 @@
 
 **Problem.** The Lehmann–Scheffé theorem: let T be a complete sufficient statistic (a statistic that carries all the information in the sample about θ). Then an unbiased estimator that is a function of T is the unique uniformly minimum-variance unbiased estimator.
 
-**How the definition helps.** Completeness leaves only one unbiased function of T, so that function must be the best. The Rao–Blackwell theorem improves any unbiased estimator to one that is a function of T. But different starting estimators could give different improved estimators. If two unbiased functions h₁(T) and h₂(T) exist, their difference has mean zero for every θ, so completeness forces h₁(T) = h₂(T). What stays hard is to find a complete sufficient statistic. The article notes that most parametric models have a sufficient statistic that is not complete, and then the theorem cannot be applied.
+**How the definition helps.** Completeness leaves only one unbiased function of T, so that function must be the best. If h₁(T) and h₂(T) are both unbiased, their difference has mean zero for every θ, so completeness forces h₁(T) = h₂(T). The Rao–Blackwell theorem improves any unbiased estimator to one that is a function of T. What stays hard is to find a complete sufficient statistic.
 
 **Wikipedia:** [Completeness (statistics)](https://en.wikipedia.org/wiki/Completeness_%28statistics%29), [Lehmann–Scheffé theorem](https://en.wikipedia.org/wiki/Lehmann%E2%80%93Scheff%C3%A9_theorem). It says: “Most parametric models have a sufficient statistic which is not complete. This is important because the Lehmann–Scheffé theorem cannot be applied to such models.”
 
@@ -58,9 +58,9 @@
 
 **Definition.** A statistic T(X) is a function of the data X. It is sufficient for the parameter θ when the conditional distribution of X given T(X) does not depend on θ.
 
-**Problem.** The Rao–Blackwell theorem: replace an estimator δ(X) by its conditional expectation E(δ(X) \| T(X)). The new estimator never has a larger mean squared error.
+**Problem.** The Rao–Blackwell theorem. If T is sufficient, then E(δ(X) \| T(X)) is an estimator, and its mean squared error is never larger than that of δ(X).
 
-**How the definition helps.** Sufficiency is exactly what makes the improved estimator computable. The variance inequality is just the conditional Jensen inequality, and it holds for any T. The hard part is that E(δ(X) \| T(X)) usually depends on θ, so it is not an estimator at all. Sufficiency says, by definition, that this conditional expectation does not depend on θ, so one can compute it from the data. Fisher's factorization theorem, proved in general by Halmos and Savage, then gives a practical test for sufficiency.
+**How the definition helps.** Sufficiency is exactly what makes the improved estimator computable. The variance inequality is the conditional Jensen inequality, and it holds for any T. But E(δ(X) \| T(X)) usually depends on θ, so it is not an estimator at all. Sufficiency says, by definition, that it does not.
 
 **Wikipedia:** [Rao–Blackwell theorem](https://en.wikipedia.org/wiki/Rao%E2%80%93Blackwell_theorem), [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “Generally, the conditional expected value of one function of these data given another function of these data does depend on θ, but the very definition of sufficiency given above entails that this one does not.”
 
@@ -80,7 +80,7 @@
 
 **Problem.** For a regular model, every unbiased estimator of θ has variance at least one over the Fisher information. The estimator must also allow differentiation under the integral sign. This is the Cramér–Rao bound.
 
-**How the definition helps.** The regularity conditions let you swap differentiation and integration, and the bound then follows from the Cauchy–Schwarz inequality in a few lines. The bad case is the uniform distribution on the interval from 0 to θ. There the support moves with θ, and the Fisher information page says that this density fails the conditions. Our own: a multiple of the sample maximum is unbiased, with variance of order 1/n² for n observations. That beats the order 1/n that the bound would give. What stays hard is to check the swap of derivative and integral. The Cramér–Rao page says that a fixed bounded support or uniform convergence of the integral usually allows it.
+**How the definition helps.** The regularity conditions let you swap differentiation and integration, and the bound then follows from the Cauchy–Schwarz inequality in a few lines. The bad case is the uniform distribution on \[0, θ\], whose support moves with θ. There a multiple of the sample maximum is unbiased with variance of order 1/n², which beats the order 1/n that the bound would give (our own). What stays hard is to check the swap of derivative and integral.
 
 **Wikipedia:** [Fisher information](https://en.wikipedia.org/wiki/Fisher_information), [Cramér–Rao bound](https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound). It says: “It is easy to find an example of a density that does not satisfy the regularity conditions: The density of a Uniform(0, θ) variable fails to satisfy conditions 1 and 3.”
 
@@ -150,7 +150,7 @@
 
 **Problem.** As the degrees of freedom ν increase without bound, Student’s t law converges in distribution to the standard normal law.
 
-**How the definition helps.** The ratio definition reduces the limit to showing that the denominator tends to 1 (our own). The chi-squared law gives V/ν mean 1 and variance 2/ν, even for noninteger ν (our own). Chebyshev’s inequality bounds the probability of any fixed departure from 1 by a constant times that variance (our own). Slutsky’s theorem lets us replace a factor that tends in probability to 1 by 1 in a distributional limit (our own). The density proof instead studies both its normalizing constant and its power term (our own). The work shifts to the density equivalence, the chi-squared moments and those two general limit tools (our own).
+**How the definition helps.** The ratio definition reduces the limit to showing that the denominator tends to 1 (our own). V/ν has mean 1 and variance 2/ν, so Chebyshev's inequality makes it tend to 1 in probability (our own). Slutsky's theorem then replaces that factor by 1 in the limit (our own). The density proof instead studies both its normalizing constant and its power term (our own).
 
 **Wikipedia:** [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.”
 
@@ -182,7 +182,7 @@
 
 **Problem.** A strictly monotone transformation of a median-unbiased real estimate is median-unbiased for the transformed parameter.
 
-**How the definition helps.** A strictly monotone map preserves or swaps the events that the estimate lies above or below the truth (our own). Each event, including equality, still has probability at least one half (our own). The work lies in constructing an estimate with these two bounds (our own). For a positive estimate with finite, positive variance, squaring preserves order but adds the variance to the squared mean (our own).
+**How the definition helps.** A strictly monotone map preserves or swaps the events that the estimate lies above or below the truth (our own). So each of the two events, including equality, still has probability at least one half (our own). The work lies in constructing an estimate with these two bounds (our own). Mean-unbiasedness has no such invariance: squaring a positive estimate with positive variance adds that variance to the squared mean (our own).
 
 **Wikipedia:** [Median](https://en.wikipedia.org/wiki/Median). It says: “and has the additional property that it is invariant under one-to-one transformation.”
 
@@ -280,11 +280,11 @@
 
 *True by definition.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas), 62E15. arXiv math.ST, math.PR. Level 2: later undergraduate.
 
-**Definition.** Take independent gamma variables Y₁, …, Yₖ with positive shapes α₁, …, αₖ and common scale 1. A gamma variable of shape α and scale 1 has density proportional to y raised to α − 1 times exp(−y), for y &gt; 0. Divide each Yᵢ by their sum S to get a Dirichlet vector. The alternative definition uses a density on the simplex, the set of nonnegative vectors whose entries sum to 1.
+**Definition.** Define a Dirichlet vector as (Y₁/S, …, Yₖ/S), where Y₁, …, Yₖ are independent gamma variables with shapes α₁, …, αₖ and scale 1, and S is their sum. The alternative definition uses a density on the simplex of nonnegative vectors whose entries sum to 1.
 
 **Problem.** For a Dirichlet vector with at least three coordinates, replace Xᵢ and Xⱼ by Xᵢ + Xⱼ. The result is Dirichlet, with the two shape parameters replaced by αᵢ + αⱼ.
 
-**How the definition helps.** The gamma definition makes merging two coordinates the same as adding their gamma variables before division (our own). A sum of independent gamma variables with the same scale has their added shape, and this sum is independent of the remaining variables (our own). Their total does not change (our own). The density proof instead integrates over all splits of the merged coordinate (our own). The work shifts to proving gamma additivity and deriving the Dirichlet density from the normalized vector (our own).
+**How the definition helps.** The gamma definition makes merging two coordinates the same as adding their gamma variables before division (our own). A sum of independent gamma variables with scale 1 is gamma with the added shape, and it stays independent of the other variables (our own). The total S does not change (our own). The density proof instead integrates over all splits of the merged coordinate, and the work shifts to gamma additivity (our own).
 
 **Wikipedia:** [Dirichlet distribution](https://en.wikipedia.org/wiki/Dirichlet_distribution). It says: “This aggregation property may be used to derive the marginal distribution of Xᵢ mentioned above.”
 
@@ -312,9 +312,9 @@
 
 *Rules out counterexamples.* MSC 62P10 (Applications of statistics to biology and medical sciences; meta analysis). arXiv stat.AP, stat.ME. Level 2: later undergraduate.
 
-**Definition.** Choose a set of test readings. Let p and h be its known probabilities among diseased and healthy people, respectively. Require p ≠ h. Subtract h from the observed fraction in the set and divide by p − h.
+**Definition.** Estimate prevalence from a set of test readings whose known probabilities p among diseased people and h among healthy people differ. The estimate is (observed fraction of readings in the set − h)/(p − h).
 
-**Problem.** Draw independent readings from the same population. The estimate averages to the fraction of people with the disease, and its mean squared error tends to zero as the sample grows.
+**Problem.** For independent readings from one population, this estimate is unbiased for the fraction of people with the disease. Its mean squared error tends to zero as the sample grows.
 
 **How the definition helps.** The two different rates make the population fraction in the set an invertible linear function of prevalence (our own). If a test reports positive half the time in both groups, the positive rate cannot distinguish any two prevalences (our own). The work moves to learning the two rates and finding a set that separates them well (our own).
 
@@ -350,7 +350,7 @@
 
 **Problem.** A boundedly complete sufficient statistic is independent of every ancillary statistic. For example, the mean and variance of a normal sample are independent.
 
-**How the definition helps.** Completeness says that if an integral is zero for every parameter, then the integrand is zero. That is exactly what the proof needs. The function in question is the conditional probability of an event for the ancillary statistic, minus its unconditional probability. Without completeness the result fails: the completeness page gives a scale family of uniform distributions. There the minimum and maximum together are sufficient, but their ratio has a distribution free of the parameter. That ratio is ancillary and is a function of the sufficient pair, so it is not independent of it. What stays hard is to show completeness in a given model.
+**How the definition helps.** Completeness turns 'this integral is zero for every parameter' into 'the integrand is zero', which is exactly the step the proof needs. The integrand is the conditional probability of an ancillary event given T, minus its unconditional probability. Without completeness the result fails: in a scale family of uniform distributions, the minimum and maximum are jointly sufficient, and their ratio is ancillary but is a function of them. The hard part is showing completeness in a given model.
 
 **Wikipedia:** [Basu's theorem](https://en.wikipedia.org/wiki/Basu%27s_theorem), [Completeness (statistics)](https://en.wikipedia.org/wiki/Completeness_%28statistics%29), [Ancillary statistic](https://en.wikipedia.org/wiki/Ancillary_statistic). It says: “Basu's theorem states that any boundedly complete and sufficient statistic is independent of any ancillary statistic.”
 
@@ -400,9 +400,9 @@
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields). arXiv stat.TH. Level 3: graduate.
 
-**Definition.** Start with a finite family of strictly positive densities relative to one common measure. Divide each density by the same reference density from that family. Record the resulting ratios at the observed data point.
+**Definition.** For a finite family of strictly positive densities relative to one common measure, the likelihood ratio vector records each density divided by one fixed reference density of the family, at the observed data point.
 
-**Problem.** A statistic is sufficient if the conditional data distribution given that statistic is the same for every parameter. The ratio vector is minimal sufficient. This means it is sufficient and every other sufficient statistic determines it apart from events of probability zero.
+**Problem.** The likelihood ratio vector is minimal sufficient. That is, it is sufficient, and every other sufficient statistic determines it apart from events of probability zero.
 
 **How the definition helps.** Taking ratios cancels every common factor in the likelihood (our own). The factorization theorem says a sufficient statistic captures all parameter dependence in the density (our own). The reference density times each ratio recovers the original density, proving sufficiency by that theorem (our own). Conversely, factoring through any sufficient statistic shows that it determines each ratio (our own).
 
@@ -416,11 +416,11 @@
 
 *Rules out counterexamples.* MSC 62B05 (Sufficient statistics and fields), 62E10. arXiv math.ST. Level 3: graduate.
 
-**Definition.** The Pitman–Koopman–Darmois theorem considers only families of distributions whose support does not depend on the parameter. The support is the set where the density is positive.
+**Definition.** A family of distributions has fixed support when the set where the density is positive does not depend on the parameter. An exponential family has density h(x) exp(η(θ) · T(x) − A(θ)).
 
-**Problem.** Which families of distributions have a sufficient statistic whose dimension stays bounded as the sample size grows? A sufficient statistic is a summary of the sample that keeps all the information about the parameter.
+**Problem.** Among families with fixed support, and under technical regularity conditions, only exponential families have a sufficient statistic whose dimension stays bounded as the sample size grows.
 
-**How the definition helps.** The fixed-support condition excludes the counterexamples, so the answer becomes one clean class. Among families with a fixed support, the answer is exactly the exponential families. In an exponential family, the density has the form h(x) exp(η(θ) · T(x) − A(θ)), so the data meet the parameter only through a fixed function T. The uniform distribution on \[0, θ\] has the sample maximum as a one-dimensional sufficient statistic, as the article shows, but its support moves with θ. Our own remark: this family is not an exponential family, so without the fixed-support condition the theorem would be false. Technical regularity conditions are still needed.
+**How the definition helps.** The fixed-support condition excludes the counterexamples, so the answer becomes one clean class. The uniform distribution on \[0, θ\] has the sample maximum as a one-dimensional sufficient statistic, but its support moves with θ. Our own remark: this family is not an exponential family, so without the fixed-support condition the theorem would be false.
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “among families of probability distributions whose domain does not vary with the parameter being estimated, only in exponential families is there a sufficient statistic whose dimension remains bounded as sample size increases.”
 
@@ -474,7 +474,7 @@
 
 **Problem.** Under identifiability and further conditions, such as a compact parameter space, the maximum likelihood estimator converges to the true parameter as the sample grows. This property is called consistency.
 
-**How the definition helps.** Identifiability makes the limit of the average log-likelihood have exactly one maximum, at the true parameter, so the estimator has one place to go. Our own: let X be normal with mean θ₁ + θ₂. Every pair with the same sum gives the same data, so no estimator of the pair is consistent. The page shows why the definition is the right one: with infinitely many observations you learn the distribution, and identifiability then gives back the parameter. What stays hard is the rest of the proof, such as compactness and uniform convergence of the likelihood. The page says compactness stops the likelihood from approaching its maximum at another point.
+**How the definition helps.** Identifiability makes the limit of the average log-likelihood have exactly one maximum, at the true parameter, so the estimator has one place to go. Our own counterexample: if X is normal with mean θ₁ + θ₂, all pairs with the same sum give the same data, so no estimator of the pair is consistent. The remaining work is compactness and uniform convergence of the likelihood, which stop the maximum from drifting to another point.
 
 **Wikipedia:** [Identifiability](https://en.wikipedia.org/wiki/Identifiability), [Maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). It says: “The identification condition is absolutely necessary for the ML estimator to be consistent. When this condition holds, the limiting likelihood function ℓ(θ\|·) has unique global maximum at θ₀.”
 
@@ -488,7 +488,7 @@
 
 *True by definition.* MSC 62C05 (General considerations in statistical decision theory), 91B06. arXiv stat.TH, econ.TH. Level 3: graduate.
 
-**Definition.** A scoring rule pays S(p, ω) when the forecast is a probability vector p and the outcome is ω. The rule is proper if reporting the true probabilities maximizes the expected score. Take a convex function H of the probability vector with a supporting plane at each allowed forecast p. Evaluate that plane at the probability vector that places all mass on the observed outcome, and pay that value.
+**Definition.** A scoring rule is proper if reporting the true probabilities maximizes the expected score. Take a convex function H on probability vectors with a supporting plane at each forecast p. The plane score for forecast p pays the value of the plane at p, evaluated at the point mass on the observed outcome.
 
 **Problem.** This construction gives a proper score for finitely many outcomes. If H is strictly convex, no other report gives the same expected score.
 
@@ -541,11 +541,11 @@
 
 *True by definition.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME, stat.AP. Level 3: graduate.
 
-**Definition.** Pick one treatment and predict its mean outcome from each person’s pretreatment measurements. Start with the population average prediction. Among people receiving that treatment, weight each prediction error by the reciprocal of their predicted probability of receiving it. Add the weighted average error, dividing by the sum of weights when averaging a sample.
+**Definition.** The doubly robust estimate of a treatment mean starts from the population average of a model that predicts the outcome from pretreatment measurements. It adds the average prediction error among people who received the treatment. Each error is weighted by one over the predicted probability of receiving that treatment.
 
-**Problem.** Assume each observed outcome equals the outcome under the treatment received, and both treatments are possible given the measurements. Given those measurements, treatment must be independent of the outcomes each treatment would produce. With positive working probabilities and finite averages, the population formula recovers the treatment mean if either model is correct (our own).
+**Problem.** Assume each observed outcome is the outcome under the treatment received, and both treatments are possible given the measurements. Assume also that, given the measurements, treatment is independent of the potential outcomes. Then the population formula recovers the treatment mean if either the prediction model or the probability model is correct (our own).
 
-**How the definition helps.** Adding a weighted correction gives the prediction and probability models two ways to recover the mean (our own). With correct predictions, the average error at each measurement pattern is zero among recipients (our own). With correct probabilities, weighting recipients restores the population distribution of measurements (our own). Their weighted average error then supplies exactly what the population average prediction missed (our own). The paper proves consistency for estimated models, which requires controlling their estimation errors.
+**How the definition helps.** Adding a weighted correction gives the prediction and probability models two ways to recover the mean (our own). With correct predictions, the average error at each measurement pattern is zero among recipients (our own). With correct probabilities, weighting recipients restores the population distribution of measurements, so the correction supplies exactly what the predictions missed (our own). The paper proves consistency for estimated models, which requires controlling their estimation errors.
 
 **Paper or page:** [Normalized Augmented Inverse Probability Weighting with Neural Network Predictions](https://arxiv.org/abs/2108.01768v2). It says: “The $DR$ estimator \\eqref {nAIPW} is consistent if either $\\hat {Q}<sup>k\\xrightarrow</sup> {p}Q<sup>k$</sup>, $k=0, 1$, or $\\hat {g}\\xrightarrow {p}g$.”
 
@@ -563,7 +563,7 @@
 
 **Problem.** If Θ has nonempty interior, the sum of T over an independent sample is a complete statistic. So every unbiased estimator that is a function of it is the unique best unbiased estimator.
 
-**How the definition helps.** Our own: on an open set of parameters, E g(T) = 0 says that a Laplace transform vanishes, so g must be zero. The condition excludes curved families, whose parameters fill a lower-dimensional set. Our own: take normal data with mean θ and variance θ². The sample mean and sample variance together are sufficient but not complete. The function n·(mean)²/(n + 1) − (sample variance) has expectation zero for every θ but is not zero. Our own: what stays hard is the uniqueness theorem for Laplace transforms that the proof uses. The Lehmann–Scheffé theorem then gives the best unbiased estimator (our own).
+**How the definition helps.** Our own: on an open set of parameters, E g(T) = 0 says that a Laplace transform vanishes, so g must be zero. The condition excludes curved families, whose parameters fill a lower-dimensional set. Our own counterexample: for normal data with mean θ and variance θ², the function n·(mean)²/(n + 1) − (sample variance) has expectation zero for every θ but is not zero. The Lehmann–Scheffé theorem then gives the best unbiased estimator (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “If Θ has nonempty interior in ℝᵏ, then given any IID samples ... the statistic ... is a complete statistic for θ.”
 
@@ -579,7 +579,7 @@
 
 **Problem.** The mean of T is the gradient of A, and the covariance matrix of T is the Hessian of A. More generally, A(η + u) − A(η) is the cumulant generating function of T, the logarithm of its moment generating function.
 
-**How the definition helps.** Writing the density with A(η) in the exponent makes A the logarithm of a moment generating function, so its derivatives are cumulants almost by definition. The page says that this is the reason for choosing this functional form. Other forms, with a factor outside the exponential or with a different parameter, make the same formulas carry chain-rule factors. Our own: the Hessian formula also shows at once that A is convex, since a covariance matrix is positive semidefinite. What stays hard is to compute A in closed form, which many families do not allow.
+**How the definition helps.** Writing the density with A(η) in the exponent makes A the logarithm of a moment generating function, so its derivatives are cumulants almost by definition. The page says that this is the reason for choosing this functional form. Other forms, with a factor outside the exponential or a different parameter, make the same formulas carry chain-rule factors. What stays hard is to compute A in closed form.
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “The reason for this is so that the moments of the sufficient statistics can be calculated easily, simply by differentiating this function.”
 
@@ -607,7 +607,7 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62L10. arXiv math.ST, stat.ME. Level 3: graduate.
 
-**Definition.** An e-variable is a nonnegative statistic whose expected value is at most 1 under each law in the null hypothesis. The null hypothesis is the set of laws being tested. Large values count as evidence against it. A p-value takes values between 0 and 1, with probability at most α of falling at or below α under any null law.
+**Definition.** An e-variable is a nonnegative statistic whose expected value is at most 1 under every law in the null hypothesis. Large values count as evidence against the null hypothesis.
 
 **Problem.** Let E₁ be an e-variable based on the first data. Suppose that under every null law, E₂ is nonnegative and its conditional mean given the first data is at most 1. Then E₁E₂ is an e-variable, even if the choice of E₂ depends on the first data.
 
@@ -645,7 +645,7 @@
 
 **Definition.** Describe a test by its rejection probability at each possible observation, allowing any value from zero to one. An ordinary nonrandomized test allows only zero and one.
 
-**Problem.** Our own specialization considers two fixed probability laws, one for each hypothesis. The attainable pairs of false rejection and false acceptance probabilities form a convex set.
+**Problem.** Take two fixed probability laws, one for each hypothesis. Then the attainable pairs of false rejection and false acceptance probabilities of randomized tests form a convex set (our own specialization).
 
 **How the definition helps.** A weighted average of rejection probabilities is another test, and both error probabilities follow the same weighted average (our own). Without randomization, a test on a single possible observation gives only the two constant decisions (our own). The work moves to finding tests on the best attainable boundary, which likelihood ratios give for two fixed laws (our own).
 
@@ -719,9 +719,9 @@
 
 **Definition.** An estimator is regular when its limiting distribution, after scaling by √n, does not change under small local changes of the parameter. Here n is the sample size, and a local change moves the parameter by an amount of order 1/√n.
 
-**Problem.** The asymptotic efficiency claim says that no estimator should beat the efficient estimator, for example the maximum-likelihood estimator, in asymptotic variance.
+**Problem.** No regular estimator has smaller asymptotic variance than the efficient estimator, for example the maximum-likelihood estimator.
 
-**How the definition helps.** Regularity asks for the same behaviour at all nearby parameter values, and this excludes estimators that do better at one single point. Hodges' estimator equals the usual estimator, except that it is set to 0 when the estimate is close to 0. For θ ≠ 0 it has the same limit law as the usual estimator. At θ = 0 it converges arbitrarily fast, so it is 'superefficient' at that one point. The class of regular estimators was introduced to exclude such estimators. The article adds that superefficiency can only occur on a set of Lebesgue measure zero. Our own addition: for regular estimators, Hájek's convolution theorem shows that the limit law is the efficient normal law convolved with extra noise.
+**How the definition helps.** Regularity asks for the same behaviour at all nearby parameter values, and this excludes estimators that do better at one single point. Hodges' estimator equals the usual estimator but is set to 0 when the estimate is close to 0. At θ = 0 it converges arbitrarily fast, so it is 'superefficient' there, while for θ ≠ 0 it matches the usual estimator. Our own addition: for regular estimators, Hájek's convolution theorem shows that the limit law is the efficient normal law convolved with extra noise.
 
 **Wikipedia:** [Hodges' estimator](https://en.wikipedia.org/wiki/Hodges%27_estimator). It says: “The existence of such a counterexample is the reason for the introduction of the notion of regular estimators.”
 
@@ -755,9 +755,9 @@
 
 **Definition.** The Fisher information matrix I(θ) measures how much the data tell us about the parameter θ. The Jeffreys prior is the density proportional to √det I(θ), the square root of the determinant of that matrix.
 
-**Problem.** A 'non-informative' prior should give the same answers whatever parameter we use to describe the model.
+**Problem.** The Jeffreys prior does not depend on the parameterization. For a smooth one-to-one change of parameter φ = h(θ), the Jeffreys prior in φ is the image of the Jeffreys prior in θ.
 
-**How the definition helps.** The square root of Fisher information changes under a change of parameter exactly as a density does. A uniform prior on θ is not uniform on a new parameter φ = h(θ), so 'uniform' depends on the coordinates. Fisher information transforms with the square of the Jacobian, so its square root transforms like a density. So the Jeffreys prior in θ and the Jeffreys prior in φ give the same distribution, by definition. The prior can be improper, as for the mean of a normal distribution. In several dimensions it can give poor results (this point is our own). So invariance alone does not settle the choice of prior.
+**How the definition helps.** Fisher information transforms with the square of the Jacobian, so its square root transforms exactly as a density does. A uniform prior lacks this property, since a uniform prior on θ is not uniform on φ. The Jeffreys prior can be improper, as for the mean of a normal distribution. In several dimensions it can give poor results (this point is our own).
 
 **Wikipedia:** [Jeffreys prior](https://en.wikipedia.org/wiki/Jeffreys_prior). It says: “That is, the relative probability assigned to a volume of a probability space using a Jeffreys prior will be the same regardless of the parameterization used to define the Jeffreys prior.”
 
@@ -893,7 +893,7 @@
 
 **Problem.** For random vectors X and Y with finite first moments, distance covariance is zero exactly when X and Y are independent (Theorem 3.2).
 
-**How the definition helps.** Because the weight is positive, a zero integral forces the squared gap to vanish almost everywhere. Characteristic functions are continuous, so the gap then vanishes at every frequency, by our own reasoning. Equal characteristic functions give equal laws, so the joint law is the product of the marginals. Ordinary covariance can miss dependence. Our own example is a standard normal X with Y = X², where the covariance E\[X³\] is zero. By our own reading, the real work is to show that the integral equals a simple formula in pairwise distances.
+**How the definition helps.** Because the weight is positive, a zero integral forces the gap to vanish almost everywhere, and by continuity at every frequency (our own reasoning). Equal characteristic functions give equal laws, so the joint law is the product of the marginals. Ordinary covariance can miss dependence: for standard normal X and Y = X², the covariance E\[X³\] is zero (our own example). By our own reading, the real work is to show that the integral equals a simple formula in pairwise distances.
 
 **Paper or page:** [A Basic Treatment of the Distance Covariance](https://arxiv.org/abs/2206.10135v1). It says: “For all X and Y, 𝒱²(X,Y) = 0 if and only if X and Y are independent.”
 
@@ -910,7 +910,7 @@
 
 **Definition.** A forecast F based on inputs X is calibrated if E\[Y ∣ F\] = F almost surely, where Y is the outcome.
 
-**Problem.** Let Y and the forecasts be integrable. Among calibrated forecasts based on X, the conditional mean E\[Y ∣ X\] maximizes the expectation of every real-valued convex function.
+**Problem.** Let Y and the forecasts be integrable. For every calibrated forecast F based on X and every convex function φ, E φ(F) ≤ E φ(E\[Y ∣ X\]).
 
 **How the definition helps.** Calibration makes F the conditional average of E\[Y ∣ X\] given F, by our own use of iterated expectation. Jensen’s inequality then bounds the convex function of that average by the average of the convex function. In our own counterexample, Y is zero and the input takes values ±1 equally often. Forecasting the input gives a larger expected square than forecasting zero.
 
@@ -1019,7 +1019,7 @@
 
 **Problem.** Start the chains at distinct points. After t steps, their probability of still differing equals the largest difference between the probabilities they assign to any one event.
 
-**How the definition helps.** Shared draws keep both chains together once they meet, unlike independent draws (our own). Call the starting point with greater weight x, choosing either point in a tie (our own). Before meeting, the chain from x stays there and the other chain has weight at most w(x) (our own). Whenever the chain from x accepts, the other chain therefore accepts too (our own). Continuous proposals almost surely never hit x (our own). The probability difference at x therefore equals the probability of disagreement, which bounds the difference for every event (our own).
+**How the definition helps.** Shared draws keep both chains together once they meet, unlike independent draws (our own). Let x be the starting point with the greater weight; before meeting, whenever the chain from x accepts, the other chain accepts too (our own). So the chains differ exactly while the chain from x is still at x (our own). Continuous proposals almost surely never hit x, so the probability difference at x equals the probability of disagreement, which bounds every event (our own).
 
 **Paper or page:** [On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514v2). It says: “for all t ≥ 1, \|Pᵗ(𝐱,·) − Pᵗ(𝐲,·)\|ₜᵥ = ℙ(𝐱,𝐲)(τ &gt; t) = max(r(𝐱),r(𝐲))ᵗ.”
 
@@ -1161,9 +1161,9 @@
 
 **Definition.** Let μ be a probability measure on a metric space, and let B(x, r) be the closed ball of radius r about x. Put x below x′ when the upper limit, as r tends to zero, of μ(B(x, r)) / μ(B(x′, r)) is at most one. The paper fixes conventions for zero denominators. A weak mode is a point whose small balls carry, in this ratio sense, at least as much mass as those around any other point.
 
-**Problem.** On a separable metric space, a point is a weak mode exactly when it lies above every other point in this order (Lemma 5.3). Weak modes make precise the idea of a point of maximum probability.
+**Problem.** On a separable metric space, a point is a weak mode exactly when it lies above every other point in this order (Lemma 5.3).
 
-**How the definition helps.** The order uses the same ball ratios as the weak-mode condition, so the equivalence is close to a restatement. Its value is that order theory then separates the cases that cause trouble. A greatest element lies above every point, while a maximal element only has no point strictly above it. The abstract says that many pathologies come from this difference and from points that cannot be compared. The definition does not by itself give a greatest element. Existence still needs work, such as the Cantor and Kuratowski intersection theorems that the abstract mentions.
+**How the definition helps.** The order uses the same ball ratios as the weak-mode condition, so the equivalence is close to a restatement. Its value is that order theory then separates the cases that cause trouble: a greatest element lies above every point, while a maximal element only has no point strictly above it. The abstract says that many pathologies come from this difference and from points that cannot be compared. Existence of a greatest element still needs work, such as the Cantor and Kuratowski intersection theorems.
 
 **Paper or page:** [An order-theoretic perspective on modes and maximum a posteriori estimation in Bayesian inverse problems](https://arxiv.org/abs/2209.11517v4). It says: “Then the following are equivalent: (a) x⋆ ∈ X is a weak mode for μ; (b) x⋆ ∈ X is a ≼₀-greatest element;”
 
@@ -1197,7 +1197,7 @@
 
 **Definition.** A flip intervention keeps the treatment of each person who would have received the target treatment anyway. It switches each other person to the target with probability equal to a weight. The weight may depend on the person's history. Examples are overlap weights, largest where both treatments are common, and trimming indicators, which drop histories where one treatment is rare.
 
-**Problem.** In longitudinal data, treatments are given at several times. Positivity means every treatment has positive probability at every history. The abstract says flip interventions give effects that are identifiable, that is, determined by the law of the observed data, under arbitrary positivity violations.
+**Problem.** In longitudinal data, the effects of flip interventions are identifiable, that is, determined by the law of the observed data, under arbitrary violations of positivity. Positivity means that every treatment has positive probability at every history.
 
 **How the definition helps.** By our own explanation, overlap weights are zero where the target treatment never occurs, so the intervention never forces a treatment without data. A policy that always gives the target treatment, in contrast, needs outcomes under treatments that never occur at some histories. The abstract says other ways of weighting on later covariates fail to be identifiable in this way. By our own reading, the work is to carry identification through the whole sequence of treatment decisions.
 
@@ -1359,9 +1359,9 @@
 
 **Definition.** For each candidate value y of the next observation, take the conformal p-value of y as its plausibility. The conformal p-value measures, by ranks of scores, how typical y looks next to the past data. The plausibility of a set of values is the supremum of the plausibilities of its members. A plausibility measure built in this way from single points is called consonant.
 
-**Problem.** The resulting predictor has the paper's strong validity property (Theorem 1). By our own reading, this is a uniform bound. For each α, the chance that some set containing the next observation gets plausibility at most α is at most α.
+**Problem.** For each α, the chance that some set containing the next observation gets plausibility at most α is at most α. By our own reading, this is the paper's strong validity property (Theorem 1).
 
-**How the definition helps.** Taking a supremum means any set that contains the true value has plausibility at least that of the true value, by our own reasoning. So one bad event covers every set at once: the true value's own plausibility is at most α. Conformal prediction already bounds the chance of this event by α. Thus validity for all assertions follows from the ordinary validity of conformal p-values, by our own reading. The abstract also says that imprecise probability is required for this kind of validity.
+**How the definition helps.** Taking a supremum means any set that contains the true value has plausibility at least that of the true value, by our own reasoning. So one bad event covers every set at once: the true value's own plausibility is at most α. Conformal prediction already bounds the chance of this event by α.
 
 **Paper or page:** [Validity, consonant plausibility measures, and conformal prediction](https://arxiv.org/abs/2001.09225v3). It says: “We go on to show that both types of prediction validity can be achieved by interpreting the conformal prediction output as the contour function of a consonant plausibility measure.”
 
@@ -1451,7 +1451,7 @@
 
 **Problem.** Every finite measure has a generalized minimizing halfspace at every point. Call the measure smooth at x if every hyperplane through x has zero mass. Then some closed halfspace has mass equal to the depth.
 
-**How the definition helps.** Interior mass can only drop in a limit of halfspaces, so a minimizing sequence has a limit that works (our own unpacking). The proof also uses compactness of the sphere of directions. Our own example puts an atom of mass ¼ at each of (0, 1) and (0, −1). It spreads mass ¼ continuously along each curve (t², t) and (t², −t) for 0 &lt; t &lt; 1. Every closed halfspace through the origin has mass above ¼, but cuts close to the vertical axis have mass near ¼. So the depth ¼ is not attained, while the halfspace x ≤ 0 has interior mass 0.
+**How the definition helps.** Interior mass can only drop in a limit of halfspaces, so with compactness of the sphere of directions a minimizing sequence has a limit that works (our own unpacking). Our own example puts atoms of mass ¼ at (0, 1) and (0, −1), and spreads mass ¼ along each curve (t², t) and (t², −t) for 0 &lt; t &lt; 1. Every closed halfspace with the origin on its boundary has mass above ¼, but tilted cuts near the vertical axis approach ¼. So the depth ¼ is not attained, while the halfspace x ≤ 0 has interior mass 0.
 
 **Paper or page:** [Halfspace depth for general measures: The ray basis theorem and its consequences](https://arxiv.org/abs/2106.00616v1). It says: “For any μ ∈ ℳ(ℝᵈ) there exists a generalized minimizing halfspace of μ at any point x ∈ ℝᵈ. If μ is smooth at x, then there exists a minimizing halfspace of μ at x.”
 
@@ -1505,9 +1505,9 @@
 
 **Definition.** Replace the data of each variable by multivariate ranks, found by matching the data to a fixed reference distribution with optimal transport. For each subset S of at least two variables, there is a nonnegative rank distance covariance term for S. Rank joint distance covariance adds these terms over all subsets, with strictly positive weights.
 
-**Problem.** For any positive weights, rank joint distance covariance is zero exactly when the variables are mutually independent (Proposition 2.10). The term for S is zero when the variables in S are independent. The converse holds when every \|S\| − 1 of these variables are independent.
+**Problem.** For any positive weights, rank joint distance covariance is zero exactly when the variables are mutually independent (Proposition 2.10).
 
-**How the definition helps.** With positive weights, a zero sum forces every subset's term to be zero, by our own unpacking. The theorem then follows from the single-term result by induction on the size of the subset. Pairs give pairwise independence, then triples give independence of each triple, and so on. Our own example shows why higher terms are needed. Take two independent fair bits and their sum modulo two. Each pair is independent but the three are not, so only the triple term detects the dependence. The single-term result is the main work.
+**How the definition helps.** With positive weights, a zero sum forces every subset's term to be zero, by our own unpacking. Each term is zero for independent variables, and conversely a zero term gives independence of S when every \|S\| − 1 of its variables are independent; induction on \|S\| then gives the theorem. Our own example shows why higher terms are needed: two independent fair bits and their sum modulo two are pairwise independent but not mutually independent.
 
 **Paper or page:** [Distribution-free joint independence testing and robust independent component analysis using optimal transport](https://arxiv.org/abs/2211.15639v2). It says: “For any vector positive weights C, RJdCov²(X; C) = 0 if and only if (X₁, X₂, …, Xᵣ) are mutually independent.”
 
@@ -1615,7 +1615,7 @@
 
 **Problem.** The corrected product of bets is a valid e-value. If the original bets form a test supermartingale or an e-process, so do the corrected bets.
 
-**How the definition helps.** Averaging over the random request cancels the factor 1/π, so each corrected bet has the same conditional mean as the true bet (our own unpacking). Validity then follows at once from the validity of the original bets. Bad predictions do not break validity, because the correction removes their error on average. The corrected bet must stay nonnegative. If each bet lies between a and b, a request probability of at least 1 − a/b is enough (our own calculation; see Theorem 2.2). Proving that the corrected test keeps most of the original power takes more work.
+**How the definition helps.** Averaging over the random request cancels the factor 1/π, so each corrected bet has the same conditional mean as the true bet (our own unpacking). Validity then follows from the validity of the original bets, however bad the predictions are. The corrected bet must also stay nonnegative; if each bet lies between a and b, a request probability of at least 1 − a/b is enough (our own calculation; see Theorem 2.2). Proving that the corrected test keeps most of the original power takes more work.
 
 **Paper or page:** [Prediction-Powered E-Values](https://arxiv.org/abs/2502.04294v2). It says: “Eᵖᵖⁱₙ is a valid e-value for the null H₀.”
 
@@ -1647,7 +1647,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 62M20 (Inference from stochastic processes and prediction), 91A26. arXiv econ.TH, stat.ML. Level 4: research.
 
-**Definition.** The Brier score is the average squared difference between forecasts and outcomes. Group the days into bins by the forecast given on them. The refinement score is the average squared distance from each outcome to its bin's mean outcome. The calibration score does the same for each forecast, and the Brier score is the sum of the two scores.
+**Definition.** The Brier score is the average squared difference between forecasts and outcomes. Group the days into bins by the forecast given on them. The refinement score is the average squared distance from each outcome to its bin's mean outcome. The calibration score is the average squared distance from each forecast to its bin's mean outcome, and the Brier score is the sum of the two.
 
 **Problem.** Take any forecaster who uses finitely many forecast values. A new rule forecasts, for each bin, the average of past outcomes in that bin. Its Brier score is at most the forecaster's refinement score plus a term of order (log t)/t, for every sequence of outcomes and forecasts.
 

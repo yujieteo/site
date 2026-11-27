@@ -76,7 +76,7 @@
 
 **Problem.** The subalgebras of an algebra whose operations take finitely many inputs form an algebraic lattice. Its compact elements are exactly the finitely generated subalgebras.
 
-**How the definition helps.** The finitary closure definition lets one apply a general theorem rather than calculate compactness separately for each algebra. In that theorem, unions of directed families of closed sets are closed. A family is directed if it is nonempty and any two members have an upper bound within it. A finite set of generators in such a union lies inside one member, which proves compactness of its closure. Every closed set is the join of the closures of its finite subsets. The work lies in checking that subalgebra generation is finitary. Our own explanation is that each value is built from finitely many inputs using finitely many operations.
+**How the definition helps.** The finitary closure definition lets one apply a general theorem instead of checking compactness for each algebra. In that theorem, unions of directed families of closed sets are closed. So finitely many generators in such a union lie in one member, and every closed set is the join of the closures of its finite subsets. The work lies in checking that subalgebra generation is finitary, since each value is built from finitely many inputs (our own explanation).
 
 **Wikipedia:** [Closure operator](https://en.wikipedia.org/wiki/Closure_operator). It says: “Given a finitary closure operator on a set, the closures of finite sets are exactly the compact elements of the set C of closed sets. It follows that C is an algebraic poset.”
 
@@ -162,7 +162,7 @@
 
 **Problem.** Term equivalent algebras have the same subalgebras, congruences and endomorphisms. A congruence is an equivalence relation respected by the operations, and an endomorphism is a map from the algebra to itself that preserves them.
 
-**How the definition helps.** Using all term operations makes the conclusion immediate because closure under basic operations is equivalent to closure under all terms. Our own argument applies the same check to relations respected by the operations and to maps that preserve them. The work is to express each chosen operation using the other list. For example, Boolean complement and meet can be built from NAND, the negation of meet. Our own check gives ¬x = x NAND x and x ∧ y = ¬(x NAND y). Such a nonempty subset contains 1 because x NAND ¬x = 1, and then contains 0 by complement.
+**How the definition helps.** Using all term operations makes the conclusion immediate, because closure under basic operations is equivalent to closure under all terms. Our own argument applies the same check to relations respected by the operations and to maps that preserve them. The work is to express each chosen operation using the other list. For example, Boolean complement and meet come from NAND, with ¬x = x NAND x and x ∧ y = ¬(x NAND y) (our own check).
 
 **Wikipedia:** [Clone (algebra)](https://en.wikipedia.org/wiki/Clone_%28algebra%29), [Functional completeness](https://en.wikipedia.org/wiki/Functional_completeness). It says: “If A and B are algebras with the same carrier such that every basic function of A is a term function in B and vice versa, then A and B have the same clone.”
 
@@ -192,9 +192,9 @@
 
 **Definition.** A constraint satisfaction problem CSP(A) asks whether a given structure has a homomorphism to the fixed structure A. A relation is pp-definable (primitive positive definable) from A when a formula built only from relations of A, equality, conjunction and existential quantifiers defines it. A promise template (A,B) is a pair of structures with a homomorphism from A to B. PCSP(A,B) asks to tell apart inputs that map to A from inputs that do not even map to B.
 
-**Problem.** Show that adding a pp-definable relation to a template does not make its constraint problem harder. This is the first step of the algebraic approach to constraint satisfaction.
+**Problem.** If a template (A, B) pp-defines (A′, B′), then PCSP(A′, B′) reduces to PCSP(A, B) in logarithmic space. In particular, adding a pp-definable relation to A does not make CSP(A) harder.
 
-**How the definition helps.** A pp-formula is itself a small constraint instance with some hidden variables, so it replaces each new constraint by a gadget (our own). The reduction is therefore almost the definition read as an algorithm (our own). The CSP case is Jeavons's theorem, Theorem 5.1 in the second cited paper. The real work moves into a Galois connection due to Geiger and to Bodnarchuk and others (our own). For a finite structure A, it shows that the polymorphisms of A decide which relations are pp-definable (our own). So the complexity of CSP(A) depends only on its polymorphisms (our own).
+**How the definition helps.** A pp-formula is itself a small constraint instance with some hidden variables, so it replaces each new constraint by a gadget (our own). The reduction is therefore almost the definition read as an algorithm (our own). The real work moves into a Galois connection due to Geiger and to Bodnarchuk and others (our own). For a finite A, it shows that the polymorphisms of A decide the pp-definable relations, so they decide the complexity of CSP(A) (our own).
 
 **Paper or page:** [1-in-3 vs. Not-All-Equal: Dichotomy of a broken promise](https://arxiv.org/abs/2302.03456), [Generalisations of Matrix Partitions : Complexity and Obstructions](https://arxiv.org/abs/2107.13809). It says: “Suppose the template (A,B) pp-defines (A′, B′). Then PCSP(A′, B′) reduces to PCSP(A, B) in logarithmic space.”
 
@@ -211,9 +211,9 @@
 
 **Definition.** A Mal'cev operation in an algebraic theory is an operation t with three inputs such that t(x, y, y) = x and t(x, x, y) = y. In groups, t(x, y, z) = x y⁻¹ z is a Mal'cev operation.
 
-**Problem.** Take the variety of algebras of such a theory: all the algebras that satisfy its equations. Show that every reflexive relation that is a subalgebra is a congruence (an equivalence relation that the operations respect). Then show that any two congruences permute (R ∘ S = S ∘ R). Last, show that the lattice of congruences on each algebra is modular (a ≤ c implies a ∨ (b ∧ c) = (a ∨ b) ∧ c).
+**Problem.** In a variety with a Mal'cev operation, every reflexive relation that is a subalgebra is a congruence. Any two congruences permute, and the congruence lattice of each algebra is modular.
 
-**How the definition helps.** The two equations of t do the whole proof in one line. Let R be a reflexive relation that is closed under t. For transitivity, apply t to R(x, y), R(y, y) and R(y, z): the result is R(t(x, y, y), t(y, y, z)), which is R(x, z). For symmetry, apply t to R(x, x), R(x, y) and R(y, y): the result is R(t(x, x, y), t(x, y, y)), which is R(y, x). Permutability, and then modularity, follow by short formal steps. Conversely, if congruences permute, the theory has a Mal'cev operation. This is Mal'cev's theorem.
+**How the definition helps.** The two equations of t do the whole proof in one line. For transitivity, apply t to R(x, y), R(y, y) and R(y, z) to get R(t(x, y, y), t(y, y, z)), which is R(x, z). For symmetry, apply t to R(x, x), R(x, y) and R(y, y) to get R(t(x, x, y), t(x, y, y)), which is R(y, x). Permutability, and then modularity, follow by short formal steps.
 
 **nLab:** [Malcev variety](https://ncatlab.org/nlab/show/Malcev+variety). It says: “If T is a Malcev theory, then the lattice of congruences Equiv(X) on any T-algebra X is a modular lattice.”
 
@@ -283,7 +283,7 @@
 
 **Problem.** A finite monoid is a group exactly when the ω-power of each element equals 1. Ordinary monoid identities cannot give this test.
 
-**How the definition helps.** The factorial exponent gives one test that works for every finite group order (our own argument). Powers eventually cycle, and sufficiently large factorials exceed the starting index and are multiples of the period. In a finite group the resulting power is 1. Conversely, a positive power equal to 1 supplies an inverse. For the ordinary-identity obstruction, take the product of cyclic groups of all finite orders. Their standard generators form a tuple whose nonnegative powers are all distinct. This submonoid maps onto {0,1} under maximum, so every identity common to finite groups holds in that nongroup.
+**How the definition helps.** The factorial exponent gives one test that works for every finite group order (our own argument). Large factorials exceed the index where powers start to cycle and are multiples of the period, so in a finite group the ω-power is 1. For the obstruction, the generator tuple in the product of all finite cyclic groups generates a copy of the natural numbers, which satisfies every identity of finite groups. This monoid maps onto the finite non-group {0, 1} under maximum, so that non-group satisfies those identities too.
 
 **Wikipedia:** [Variety (universal algebra)](https://en.wikipedia.org/wiki/Variety_%28universal_algebra%29). It says: “Namely, a class of finite monoids is a variety of finite monoids if and only if it can be defined by a set of profinite identities.”
 
@@ -303,7 +303,7 @@
 
 **Problem.** Suppose intersections distribute over joins of congruences on A × B. Then every congruence on A × B compares the two coordinates by separate congruences on A and B.
 
-**How the definition helps.** Distributivity reconstructs a congruence from its two coordinate conditions (our own proof). Let P and Q identify pairs with equal first and second coordinates, respectively. Their intersection is equality, so distributivity gives C = (C ∨ P) ∩ (C ∨ Q). The quotient correspondence theorem identifies the first join with a congruence on A and the second with one on B. Without distributivity, the diagonal subgroup in ℤ/2 × ℤ/2 gives a counterexample (our own). Its cosets compare the sum of the coordinates modulo two.
+**How the definition helps.** Distributivity rebuilds a congruence C from its two coordinate conditions (our own proof). Let P and Q identify pairs with equal first and second coordinates, respectively. Their intersection is equality, so distributivity gives C = (C ∨ P) ∩ (C ∨ Q), and these two joins correspond to congruences on A and on B. Without distributivity, the diagonal subgroup of ℤ/2 × ℤ/2 gives a congruence that compares the sum of the coordinates modulo two (our own counterexample).
 
 **Paper or page:** [Cross-Relation is Congruence Relation](https://proofwiki.org/wiki/Cross-Relation_is_Congruence_Relation). It says: “The cross-relation ⊠ is a congruence relation on ⟨S₁ × S₂, ⊕⟩.”
 
@@ -321,7 +321,7 @@
 
 **Problem.** If an algebra has a majority term, its congruences satisfy R ∩ (S ∨ T) = (R ∩ S) ∨ (R ∩ T).
 
-**How the definition helps.** The majority equations move a path into the common R-class of its endpoints (our own proof). Given endpoints x and z in that class, replace each vertex y by m(x,y,z). This vertex is related by R to m(x,y,x) = x. Each step retains its S or T relation, and both endpoints stay fixed. The reverse inclusion follows from containment. Without majority, the three order-two subgroups of the Klein four-group give congruences violating this law (our own example).
+**How the definition helps.** The majority equations move a path into the common R-class of its endpoints (our own proof). Given endpoints x and z in that class, replace each vertex y by m(x, y, z), which is related by R to m(x, y, x) = x. Each step keeps its S or T relation, and both endpoints stay fixed. Without majority, the three subgroups of order two in the Klein four-group give congruences that violate this law (our own example).
 
 **Wikipedia:** [Quotient (universal algebra)](https://en.wikipedia.org/wiki/Quotient_%28universal_algebra%29). It says: “In 1967 Bjarni Jónsson found the conditions for varieties having congruence lattices that are distributive”
 
@@ -339,7 +339,7 @@
 
 **Problem.** Consider a nonempty class of nonempty algebras with fixed operations of finite arity. If it is closed under subalgebras, products and isomorphic copies, it has a free algebra on every nonempty set.
 
-**How the definition helps.** The closure description lets us build a free algebra inside one product, without first turning the class into equations. Our own proof lists, up to isomorphism, the algebras equipped with a generating map from S. There is only a set of these because every element is the value of a finite expression in the generators. Take the product and keep the subalgebra generated by the tuple of the listed maps. Every assignment into a member of the class generates a listed algebra up to isomorphism, so a projection gives its extension. The extension is unique because the chosen elements generate the subalgebra.
+**How the definition helps.** The closure description lets us build a free algebra inside one product, without first turning the class into equations. Our own proof lists, up to isomorphism, the members with a generating map from S, which form a set because each element is the value of a finite expression. Take their product and keep the subalgebra generated by the tuple of the listed maps. Each assignment into a member generates a listed algebra, so a projection gives its extension, and generation makes it unique.
 
 **Wikipedia:** [Variety (universal algebra)](https://en.wikipedia.org/wiki/Variety_%28universal_algebra%29). It says: “One can show that for every set S, the variety V contains a free algebra Fₛ on S.”
 
@@ -393,7 +393,7 @@
 
 **Problem.** The free Jónsson–Tarski algebras on any two nonempty finite sets are isomorphic.
 
-**How the definition helps.** Defining a free basis by arbitrary choices of images turns generator replacement into the pairing bijection (our own proof). Replace a generator by its two coordinates. Pairing recovers the old generator, and taking coordinates recovers both replacements. The defining property of a free algebra extends the assignments to inverse homomorphisms. This avoids building a separate correspondence between all expressions on the two bases. Repetition connects every positive finite number of generators.
+**How the definition helps.** The extension property of a free basis turns generator replacement into the pairing bijection (our own proof). Replace one generator by its two coordinates. Pairing recovers the old generator, and taking coordinates recovers both new ones, so the extended maps are inverse homomorphisms. Repeating this connects every positive finite number of generators.
 
 **nLab:** [Jónsson-Tarski algebra](https://ncatlab.org/nlab/show/J%C3%B3nsson-Tarski+algebra). It says: “Any two Jónsson-Tarski algebras freely generated from finite non empty sets are isomorphic.”
 
@@ -441,9 +441,9 @@
 
 **Definition.** A subdirect product is a subalgebra of a product whose projections reach both factors. A Malcev variety is a class defined by equations with an expression p satisfying p(x,x,z) = z and p(x,z,z) = x.
 
-**Problem.** Take a subdirect product of two algebras in a Malcev variety. Its pairs match exactly the classes that correspond under an isomorphism between quotients of the two factors.
+**Problem.** In a Malcev variety, every subdirect product R of two algebras A and B comes from an isomorphism between quotients A/α and B/β. A pair (a, b) lies in R exactly when this isomorphism sends the class of a to the class of b.
 
-**How the definition helps.** The Malcev equations fill a rectangle from three corners, forcing the subdirect product to match whole classes (our own proof). Apply p to (a,u), (b,u), and (b,v) to obtain (a,v). On each side, relate two elements if they share a partner. The rectangle rule makes this an equivalence and gives each class exactly one partner class. Closure under the operations ensures they pass to the classes and respect the matching. Thus the matching is an isomorphism.
+**How the definition helps.** The Malcev equations fill a rectangle from three corners, which forces the subdirect product to match whole classes (our own proof). Applying p to (a, u), (b, u) and (b, v) gives (a, v). On each side, relate two elements when they share a partner, and the rectangle rule makes this an equivalence with matching classes. Closure under the operations makes these equivalences congruences and the matching an isomorphism.
 
 **Wikipedia:** [Goursat's lemma](https://en.wikipedia.org/wiki/Goursat%27s_lemma). It says: “It can be stated more generally in a Goursat variety (and consequently it also holds in any Maltsev variety)”
 
@@ -557,11 +557,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 08A70 (Applications of universal algebra in computer science), 08A40, 68Q25. arXiv cs.CC, math.RA. Level 4: research.
 
-**Definition.** An L-ary polymorphism from H to H̃ is a map from Hᴸ to H̃ that keeps every relation, coordinate by coordinate. AIP, the affine integer programming relaxation, accepts an instance when a linear system over the integers, obtained from it, has a solution. A polymorphism of odd arity L is alternating when permuting odd positions among themselves, or even positions among themselves, does not change its value. Also, its value does not depend on y when the last two inputs are both y.
+**Definition.** A polymorphism from H to H̃ is a map from Hᴸ to H̃ that keeps every relation, coordinate by coordinate. A polymorphism of odd arity L is alternating when permuting the odd positions among themselves, or the even positions, leaves its value unchanged. Also, its value does not depend on y when the last two inputs are both y. AIP, the affine integer programming relaxation, accepts an instance when an integer linear system built from it has a solution.
 
-**Problem.** Decide for which promise templates the affine integer relaxation is a correct algorithm. A promise template (H, H̃) is a pair of structures with a homomorphism from H to H̃. AIP solves PCSP(H, H̃) when it accepts every input that maps to H and rejects every input that does not map to H̃.
+**Problem.** Let (H, H̃) be a promise template, with a homomorphism from H to H̃. AIP solves PCSP(H, H̃) exactly when there are L-ary alternating polymorphisms from H to H̃ for every odd L ≥ 3.
 
-**How the definition helps.** Alternating polymorphisms copy the alternating sum x₁ − x₂ + x₃ − …, which is how integer solutions of linear systems combine (our own). So the definition makes the correctness of AIP a property of the polymorphisms. The theorem is due to Barto, Bulín, Krokhin and Opršal, as the paper's citation shows. To use it, one must still find or exclude such polymorphisms for each template. That step is hard for approximate graph colouring, which the paper studies.
+**How the definition helps.** Alternating polymorphisms copy the alternating sum x₁ − x₂ + x₃ − …, which is how integer solutions of linear systems combine (our own). So the definition makes the correctness of AIP a property of the polymorphisms. The theorem is due to Barto, Bulín, Krokhin and Opršal. To use it, one must still find or exclude such polymorphisms for each template, which is hard for approximate graph colouring.
 
 **Paper or page:** [Approximate Graph Colouring and Crystals](https://arxiv.org/abs/2210.08293). It says: “AIP solves PCSP(H, H̃) if and only if there exist L-ary alternating polymorphisms from H to H̃ for any odd L ≥ 3.”
 
@@ -578,9 +578,9 @@
 
 **Definition.** A polymorphism of a structure A is a map from Aⁿ to A that preserves every relation of A, coordinate by coordinate. Pol(A) is the set of all polymorphisms. A polymorphism f is cyclic when f(x₁, x₂, …, xₙ) = f(x₂, …, xₙ, x₁) for all inputs.
 
-**Problem.** Classify every finite-template constraint satisfaction problem as solvable in polynomial time or NP-hard. Feder and Vardi conjectured this dichotomy.
+**Problem.** Let A be a finite relational structure. Then CSP(A) is solvable in polynomial time if Pol(A) contains a cyclic polymorphism of arity at least 2, and NP-hard otherwise.
 
-**How the definition helps.** Polymorphisms turn a question about all possible instances into a question about one algebraic object. So the dichotomy is the presence or absence of a single kind of operation. The same paper uses this form as a tool. For a group G, the problem Eqn(G) of solving equations over G has such a polymorphism exactly when G is Abelian (Theorem 9). With the dichotomy, this gives the Goldmann–Russell theorem that equations over a finite group are tractable exactly for Abelian groups (our own link). What stays hard is the dichotomy itself, which needed long proofs by Bulatov and by Zhuk. The step to cyclic polymorphisms uses work of Barto and Kozik (our own remark).
+**How the definition helps.** Polymorphisms turn a question about all instances into a question about one algebraic object, so the dichotomy is the presence or absence of one kind of operation. For example, equations over a finite group G have such a polymorphism exactly when G is Abelian. With the dichotomy, this gives the Goldmann–Russell theorem that equations over a finite group are tractable exactly for Abelian groups (our own link). What stays hard is the dichotomy itself, which needed long proofs by Bulatov and by Zhuk.
 
 **Paper or page:** [Solving promise equations over monoids and groups](https://arxiv.org/abs/2402.08434), [Solving promise equations over monoids and groups](https://arxiv.org/abs/2402.08434). It says: “Let A be a finite relational structure. Then CSP(A) is tractable if Pol(A) contains a cyclic polymorphism of arity at least 2. Otherwise CSP(A) is NP-hard.”
 
@@ -598,9 +598,9 @@
 
 **Definition.** A promise problem PCSP(A, A′) gets an input that maps into A, and asks for a map into the weaker A′. Pol(A, A′) is the set of maps from Aⁿ to A′ that send relations of A to relations of A′. A minion is a family of such sets closed under minors, which rename, merge or add dummy coordinates. A minion homomorphism is a map between minions that respects arity and commutes with minors.
 
-**Problem.** Find an algebraic test for when one promise constraint problem reduces to another. Promise problems include approximate graph colouring, such as colouring a 3-colourable graph with 5 colours.
+**Problem.** PCSP(A, A′) reduces to PCSP(B, B′) by a gadget reduction exactly when there is a minion homomorphism from Pol(B, B′) to Pol(A, A′).
 
-**How the definition helps.** For promise problems the polymorphisms do not compose, so they do not form a clone, a set of operations closed under composition (our own). Minions keep only the operation that survives, namely taking minors, and that is exactly enough to state the theorem (our own). With this definition, gadget reductions and minion homomorphisms are the same thing, as the quoted theorem states. The theorem is due to Barto, Bulín, Krokhin and Opršal, the second source (our own attribution). Hardness proofs for approximate colouring then become constructions of minion homomorphisms into simple minions such as projections (our own summary). Building those homomorphisms for specific templates stays hard (our own remark).
+**How the definition helps.** For promise problems the polymorphisms do not compose, so they do not form a clone (our own). Minions keep only the operation that survives, namely taking minors, and that is exactly enough to state the theorem (our own). Hardness proofs for approximate colouring then become constructions of minion homomorphisms into simple minions such as projections (our own summary). Building those homomorphisms for specific templates stays hard (our own remark).
 
 **Paper or page:** [An invitation to the promise constraint satisfaction problem](https://arxiv.org/abs/2208.13538). It says: “the following two statements are equivalent: PCSP(A, A′) is reducible to PCSP(B, B′) by a gadget reduction (and hence in log-space), there is a minion homomorphism Pol(B, B′) → Pol(A, A′).”
 
@@ -651,9 +651,9 @@
 
 **Definition.** Let V be a variety of algebras with a constant 0. V is subtractive if it has a binary term s with s(x, x) = 0 and s(x, 0) = x. In a subtractive variety, Ursini's ideals are exactly the classes 0/θ: the elements congruent to 0 under some congruence θ. In residuated lattices the constant is 1, and these ideals are the filters.
 
-**Problem.** A residuated lattice is a lattice with a product and a matching implication. Many papers define new kinds of filters on residuated lattices and similar algebras. They then prove lattice and correspondence properties for each kind separately.
+**Problem.** In a commutative integral residuated lattice with normal operators, the 1-ideals are exactly the filters that are closed under the operators. So these filters form a modular lattice, the image of the congruence lattice under θ ↦ 1/θ.
 
-**How the definition helps.** If the filters are the ideals of a subtractive variety, the general theory of such varieties gives their properties at once. The quoted theorem shows that the filters of residuated lattices with extra operators are 1-ideals in this sense. The data set also states that a variety is subtractive exactly when its congruences permute at 0. In a subtractive variety, θ ↦ 0/θ is a complete lattice homomorphism from congruences onto ideals, and the ideals form a modular lattice. So each new kind of filter inherits these lattice properties without a new proof (our own summary of the title's claim). Our own example: in residuated lattices s(x, y) = y → x works, since x → x = 1 and 1 → x = x.
+**How the definition helps.** If the filters are the ideals of a subtractive variety, the general theory of such varieties gives their properties at once. In a subtractive variety, θ ↦ 0/θ is a complete lattice homomorphism from congruences onto ideals, and the ideals form a modular lattice. So each new kind of filter inherits these lattice properties without a new proof (our own summary). In residuated lattices s(x, y) = y → x works, since x → x = 1 and 1 → x = x (our own example).
 
 **Paper or page:** [Why most papers on filters are really trivial (including this one)](https://arxiv.org/abs/2309.15022), [Why most papers on filters are really trivial (including this one)](https://arxiv.org/abs/2309.15022). It says: “If A is a commutative integral residuated lattice with normal operators, then the 1-ideals (which we may call the filters) of A are exactly the filters of the commutative residuated lattice reduct that are closed under fλ”
 
@@ -687,9 +687,9 @@
 
 **Definition.** An algebraic theory is a list of operations and equations, like the theory of groups. It is Malcev when it has a term p(x,y,z) with p(x,x,y) = y and p(x,y,y) = x. Groups have p(x,y,z) = x y⁻¹ z. A Kan complex is a simplicial set in which every horn has a filler.
 
-**Problem.** Simplicial groups are always Kan complexes, by a classical theorem of Moore. Which algebraic theories share this property?
+**Problem.** An algebraic theory is Malcev exactly when all its simplicial algebras are Kan complexes. For groups this is Moore's theorem that simplicial groups are Kan.
 
-**How the definition helps.** The Malcev term lets one build horn fillers by a formula (our own summary). So every simplicial algebra of the theory is a Kan complex. The corollary also gives the converse, so the Malcev condition is exactly right. The paper adds that the fillers can be chosen in a uniform, effective way. Moore's theorem for simplicial groups is a special case (our own).
+**How the definition helps.** The Malcev term lets one build horn fillers by a formula (our own summary). So every simplicial algebra of the theory is a Kan complex. The corollary also gives the converse, so the Malcev condition is exactly right. The paper adds that the fillers can be chosen in a uniform, effective way.
 
 **Paper or page:** [Examples and cofibrant generation of effective Kan fibrations](https://arxiv.org/abs/2402.10568). It says: “Let 𝒯 be an algebraic theory. The following are equivalent: (i) 𝒯 is a Malcev theory. … (iii) All simplicial algebras of 𝒯 are Kan complexes.”
 
@@ -725,7 +725,7 @@
 
 **Problem.** In an algebra with a Malcev term, permuting a list of congruences leaves its higher commutator unchanged.
 
-**How the definition helps.** The absorbing-polynomial description makes symmetry visible because each input obeys the same rule (our own proof). For a list of k congruences, take tuples a and b whose entries in each position satisfy the corresponding congruence. Form every pair (f(a),f(b)) for k-input polynomials f absorbing a. Theorem 7 identifies the higher commutator with the least congruence containing these pairs. It carries the work of proving agreement with the usual definition, which tests a cube of evaluations in one distinguished direction. Permuting the inputs and the congruences together leaves precisely the same pairs.
+**How the definition helps.** The absorbing-polynomial description makes symmetry visible, because each input obeys the same rule (our own proof). Theorem 7 says the higher commutator is generated by the pairs (f(a), f(b)), for k-input polynomials f absorbing a and tuples a, b related entrywise by the congruences. Permuting the inputs and the congruences together gives exactly the same pairs. The work lies in Theorem 7, which matches the usual definition by a cube of evaluations in one distinguished direction.
 
 **Paper or page:** [CSAT and CEQV for nilpotent Maltsev algebras of Fitting length &gt; 2](https://arxiv.org/abs/2105.00689v2). It says: “Then \[α₁,…,αₖ\] is generated as a congruence by the set”
 

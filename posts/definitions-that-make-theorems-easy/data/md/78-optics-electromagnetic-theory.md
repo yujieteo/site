@@ -172,7 +172,7 @@
 
 **Definition.** Write the electromagnetic field strength as F = dA. Here A is a potential 1-form, which assigns a linear measurement to each spacetime direction. The exterior derivative d turns A into a 2-form, which measures oriented area elements. The vector formulation instead starts with separate electric and magnetic fields.
 
-**Problem.** The homogeneous Maxwell equations say that magnetic fields have zero divergence and that a changing magnetic field induces electric circulation. Together they say dF = 0.
+**Problem.** Every field strength F = dA satisfies the homogeneous Maxwell equations dF = 0. In vector form, magnetic fields have zero divergence, and a changing magnetic field induces electric circulation.
 
 **How the definition helps.** The potential makes both equations automatic because dF = d(dA) = 0. The vector proof uses separate identities for divergence and curl. The converse takes the Poincaré lemma, which gives a potential for any closed form on a smoothly contractible region (our own). A global potential can fail to exist when there is nonzero magnetic flux through a closed surface (our own).
 
@@ -206,9 +206,9 @@
 
 **Definition.** The Lorenz gauge is the condition that the four-divergence of the electromagnetic four-potential is zero. In terms of the scalar potential φ and the vector potential A, this is ∇·A + (1/c²) ∂φ/∂t = 0.
 
-**Problem.** Show that in a suitable gauge, Maxwell's equations for the potentials become separate inhomogeneous wave equations. There is one for φ and one for each component of A, and the form is visibly Lorentz invariant.
+**Problem.** In the Lorenz gauge, Maxwell's equations for the potentials become separate inhomogeneous wave equations, one for φ and one for each component of A. Their sources are the charge density and the components of the current density, and the form is visibly Lorentz invariant.
 
-**How the definition helps.** The Lorenz gauge separates the equations and keeps Lorentz invariance in view. The potentials of electromagnetism are fixed only up to a gauge transformation, so we may add one condition. In the Lorenz gauge, each potential obeys its own inhomogeneous wave equation. The source of each equation is the charge density or a component of the current density. The condition itself is Lorentz invariant. The Coulomb gauge instead gives a scalar potential that responds instantly, and it is not Lorentz covariant. What remains: the Lorenz gauge leaves some gauge freedom (solutions of the wave equation), so it does not fix the gauge completely.
+**How the definition helps.** The potentials are fixed only up to a gauge transformation, so we may impose one condition, and the Lorenz condition separates the equations while staying Lorentz invariant. The Coulomb gauge instead gives a scalar potential that responds instantly and is not Lorentz covariant. The Lorenz gauge still leaves some gauge freedom, by solutions of the wave equation, so it does not fix the gauge completely.
 
 **Wikipedia:** [Gauge fixing](https://en.wikipedia.org/wiki/Gauge_fixing). It says: “It is unique among the constraint gauges in retaining manifest Lorentz invariance.”
 
@@ -423,7 +423,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 78A48 (Composite media; random media in optics and electromagnetic theory). arXiv physics.optics. Level 3: graduate.
 
-**Definition.** Start with two stacks of layers whose two-by-two transfer matrices have determinant one. Each matrix maps the field and its slope across its stack. Form each new stack by joining the previous two, most recent first. Let xₙ be the trace of the matrix for stack n.
+**Definition.** Start with two stacks of layers whose two-by-two transfer matrices have determinant one. Each new stack joins the previous two, most recent first. Let xₙ be the trace of the transfer matrix of stack n.
 
 **Problem.** The trace obeys xₙ₊₁ = xₙxₙ₋₁ − xₙ₋₂ for n ≥ 3.
 
@@ -495,9 +495,9 @@
 
 *True by definition.* MSC 78A45 (Diffraction, scattering), 78M10. arXiv math.NA. Level 4: research.
 
-**Definition.** Surround the obstacle by a sphere in a homogeneous medium. Use the exact exterior response in place of a local absorption rule. For an outgoing wave, map its electric field along the sphere to its corresponding magnetic boundary data.
+**Definition.** The transparent boundary map on a sphere around the obstacle sends the tangential electric field of an outgoing exterior wave to its magnetic boundary data. It is exact, unlike a local absorbing rule.
 
-**Problem.** For time-harmonic Maxwell scattering, apply the exact map to the scattered field on the sphere. The bounded problem then gives the restriction of the full solution.
+**Problem.** For time-harmonic Maxwell scattering, impose this map on the scattered field at the sphere. The resulting bounded problem has as its solution the restriction of the full solution.
 
 **How the definition helps.** The map enforces exactly the boundary data of an outgoing exterior field. In our own explanation, this replaces an approximate local rule and lets the inner and outer fields join. The work lies in solving the exterior problem uniquely and expressing its map as an infinite series.
 

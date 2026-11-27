@@ -40,7 +40,7 @@
 
 **Problem.** Consider smooth, steady flow of an inviscid fluid of constant density in a connected region, with a body force derived from a potential. Zero curl makes the Bernoulli quantity constant throughout the region. Otherwise it can vary between streamlines, the curves tangent to the velocity.
 
-**How the definition helps.** In our own words, the curl-free condition makes the velocity’s acceleration the gradient of half its squared speed. In our own words, the steady momentum equation then sets the gradient of the entire Bernoulli quantity to zero. The work, in our own account, goes into rewriting the acceleration by the product rule. In our own example, uniform solid-body rotation has pressure increasing away from the axis. Its speed also increases, so its Bernoulli quantity differs across concentric streamlines.
+**How the definition helps.** The curl-free condition makes the velocity's acceleration the gradient of half its squared speed, by the product rule (our own). The steady momentum equation then sets the gradient of the entire Bernoulli quantity to zero (our own). In our own example, uniform solid-body rotation has pressure and speed both increasing away from the axis, so its Bernoulli quantity differs across concentric streamlines.
 
 **Wikipedia:** [Bernoulli's principle](https://en.wikipedia.org/wiki/Bernoulli%27s_principle). It says: “If the fluid flow is irrotational, the total pressure is uniform”
 
@@ -86,7 +86,7 @@
 
 **Definition.** For positive mean density, define the Favre mean velocity as mean momentum per unit volume divided by mean density. Subtract this velocity from each sample to get its fluctuation.
 
-**Problem.** Momentum transport involves averages of density times two velocity components. Each average splits into a mean contribution and a fluctuation contribution.
+**Problem.** With Favre fluctuations, the mean of density times two velocity components equals mean density times the two Favre mean velocities, plus the mean of density times the two fluctuations. No mixed terms appear.
 
 **How the definition helps.** In our own expansion, each mixed term contains the mean of density times a fluctuation, which vanishes by construction. Subtracting the ordinary mean would only make the unweighted fluctuation average vanish. The remaining fluctuation product still needs a model.
 
@@ -394,7 +394,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 76F05 (Isotropic turbulence; homogeneous turbulence). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** Let ν be kinematic viscosity, the coefficient of velocity diffusion. Average the magnitude of vorticity, the curl of velocity. Add the mean squared speed divided by the product of √2 and ν.
+**Definition.** The weighted sum is the mean magnitude of vorticity, the curl of velocity, plus the mean squared speed divided by √2 ν. Here ν is the kinematic viscosity, the coefficient of velocity diffusion.
 
 **Problem.** Consider smooth unforced incompressible turbulence whose velocity statistics are unchanged by translations and rotations. The weighted sum cannot increase while the averages and their derivatives exist.
 
@@ -466,9 +466,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 76N30 (Waves in compressible fluids). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** In coordinates that flatten the moving water surface, take four derivatives of the field along the surface. Subtract the physical vertical derivative of the field times the same four derivatives of the coordinate map.
+**Definition.** In coordinates that flatten the moving water surface, the Alinhac good unknown of a field is four surface derivatives of the field minus a correction. The correction is the physical vertical derivative of the field times four surface derivatives of the coordinate map.
 
-**Problem.** Suppose the map’s vertical derivative stays above a positive constant. The integrated squared size of the original fourth derivative is bounded using the corrected derivative, four surface derivatives, and the largest first vertical derivative.
+**Problem.** Suppose the vertical derivative of the coordinate map stays above a positive constant. Then the integrated squared size of four surface derivatives of the field is bounded using its good unknown, four surface derivatives of the map, and the largest first vertical derivative of the field.
 
 **How the definition helps.** In our own calculation, the correction removes the fourth derivative caused by moving the coordinates. Adding the correction back gives the stated bound by the triangle inequality. The substantive estimates control the errors when the fluid equations differentiate this corrected quantity.
 
@@ -504,7 +504,7 @@
 
 **Definition.** Sort the density by height, with heavier fluid below lighter fluid. Keep the volume occupied by each density range unchanged. Define excess energy as the gravitational energy above that of the sorted density.
 
-**Problem.** Consider the incompressible porous flow in Park’s Theorem 1.1, near a density that decreases linearly with height. How does a bound on excess energy control the distance to the sorted density?
+**Problem.** For the incompressible porous flow of Park's Theorem 1.1, near a density that decreases linearly with height, the integrated squared difference from the sorted density is at most a constant times the excess energy. So decay of excess energy gives convergence to the sorted density.
 
 **How the definition helps.** Sorting provides one reference state for the whole motion because transport preserves the volume of each density range. Proposition 2.5 bounds the integrated squared density difference by a constant times the excess energy for these small perturbations. In our own account, taking square roots converts energy decay into density convergence. Proving the comparison and the energy decay requires separate estimates.
 
