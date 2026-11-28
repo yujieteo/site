@@ -264,8 +264,7 @@ def survival(pls: list[Place], report: Counter, omit_outlet: str | None = None) 
         floor = max(floors[pl.id], default=0.0)
         if ages and max(ages) < floor:
             # A dated guide shows the place before its earliest registration: a re-registration.
-            report[f"survival: ACRA date earlier than a guide, kept as a lower bound ({pl.kind})"] += 1
-            floors[pl.id].append(max(ages))
+            report[f"survival: ACRA date later than a guide, kept as a lower bound ({pl.kind})"] += 1
             ages = []
         if ages:
             y = max(ages)

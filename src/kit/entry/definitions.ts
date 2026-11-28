@@ -25,9 +25,9 @@ interface Row {
 }
 
 const KINDS = [
-  { key: "by-definition", label: "By definition", title: "True by definition" },
-  { key: "excludes-counterexamples", label: "Counterexamples", title: "Rules out counterexamples" },
-  { key: "makes-it-statable", label: "Clean statement", title: "Makes the theorem clean to state or prove" },
+  { label: "By definition", title: "True by definition" },
+  { label: "Counterexamples", title: "Rules out counterexamples" },
+  { label: "Clean statement", title: "Makes the theorem clean to state or prove" },
 ];
 const SOURCES = [
   { key: "nlab", label: "nLab", bit: 1 },
@@ -79,7 +79,7 @@ function option(value: string, label: string): HTMLOptionElement {
 }
 
 function clean(text: string): string {
-  return text.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/['’]/g, "").replace(/\s+/g, " ");
+  return text.toLowerCase().normalize("NFKD").replace(/\p{M}/gu, "").replace(/['’]/g, "").replace(/\s+/g, " ");
 }
 
 // The Markdown escapes <, > and & as HTML entities for the page. Notes are plain Markdown, so they get the characters back.

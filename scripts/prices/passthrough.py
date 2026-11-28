@@ -33,6 +33,7 @@ import gzip
 import json
 import math
 import os
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -95,9 +96,7 @@ def load_fx() -> dict[int, float]:
     out = {}
     for t, v in zip(raw["timestamp"], raw["indicators"]["quote"][0]["close"]):
         if v:
-            import datetime
-
-            d = datetime.datetime.fromtimestamp(t, datetime.UTC)
+            d = datetime.fromtimestamp(t, timezone.utc)
             out[mi(d.year, d.month)] = v
     return out
 
@@ -222,15 +221,17 @@ def backtest(price: dict[int, float], cost: dict[int, float] | None, h: int, edg
     return out
 
 
-def full_sample(price: dict[int, float], cost: dict[int, float], h: int = 12) -> dict:
+def full_sample(price: dict[int, float], cost: dict[int, float], h: int = 12, edges: tuple[int, ...] = WINDOWS["A"]) -> dict:
     """Long-run pass-through and best lag, on all months. Descriptive: not used to pick anything above."""
     lp = {k: math.log(v) for k, v in price.items()}
     X, Y = [], []
     for t in sorted(lp):
-        if t + h in lp and all(k in cost for k in (t, t - 6, t - 12)):
-            X.append([cost[t] - cost[t - 6], cost[t - 6] - cost[t - 12]])
-            Y.append(lp[t + h] - lp[t])
-    beta = np.linalg.lstsq(np.c_[np.ones(len(X)), np.array(X)], np.array(Y), rcond=None)[0] if len(X) > 24 else [math.nan] * 3
+        if t + h in lp:
+            f = features_at(cost, t, edges)
+            if f is not None:
+                X.append(f)
+                Y.append(lp[t + h] - lp[t])
+    beta = np.linalg.lstsq(np.c_[np.ones(len(X)), np.array(X)], np.array(Y), rcond=None)[0] if len(X) > 24 else [math.nan] * len(edges)
     best = (math.nan, None)
     for lag in range(0, 19):
         a, b = [], []
@@ -242,7 +243,7 @@ def full_sample(price: dict[int, float], cost: dict[int, float], h: int = 12) ->
             r = float(np.corrcoef(a, b)[0, 1])
             if best[1] is None or r > best[0]:
                 best = (r, lag)
-    return {"passthrough": float(beta[1] + beta[2]), "best_lag": best[1], "best_r": best[0], "pairs": len(X)}
+    return {"passthrough": float(sum(beta[1:])), "best_lag": best[1], "best_r": best[0], "pairs": len(X)}
 
 
 def main() -> None:
@@ -278,8 +279,8 @@ def main() -> None:
             if not parts:
                 continue
             cost, _ = composite(parts)
-            desc = full_sample(price, cost)
             for spec, edges in WINDOWS.items():
+                desc = full_sample(price, cost, edges=edges)
                 results = {h: backtest(price, cost, h, edges) for h in HORIZONS}
                 keep = all("cost" in r and r["cost"] < r["baseline_on_cost_months"] for r in results.values())
                 if keep and chosen is None:
@@ -412,8 +413,6 @@ def stack_table() -> str:
             # Egg packs give a count; Comtrade gives kg. Use packs that state grams too, at their stated weight.
             per = []
             for r in picks:
-                import re
-
                 m = re.search(r"(\d+)\s?g", r["pack"].lower()) or re.search(r"(\d+)\s?g", r["name"].lower())
                 if m:
                     per.append(float(r["paid"]) / (int(m.group(1)) / 1000))

@@ -14,7 +14,12 @@ const PLURAL = new Intl.PluralRules("en");
 let charts: Promise<Charts> | undefined;
 
 function loadCharts(): Promise<Charts> {
-  charts ??= import("../price-chart.ts");
+  if (charts === undefined) {
+    charts = import("../price-chart.ts");
+    charts.catch(() => {
+      charts = undefined;
+    });
+  }
   return charts;
 }
 

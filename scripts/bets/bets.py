@@ -80,7 +80,8 @@ def iso(t: float) -> str:
 
 
 def epoch(s: str) -> float:
-    return datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
+    dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+    return (dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)).timestamp()
 
 
 def day(t: float) -> str:
@@ -146,7 +147,7 @@ def item(url: str) -> dict:
 
 # --- Markets ----------------------------------------------------------------------------------------
 def market(url: str) -> dict | None:
-    """{platform, key, question, close, resolved, resolution, resolved_at, url} for a binary market."""
+    """{platform, key, question, close, resolution, resolved_at, url} for a binary market."""
     u = urllib.parse.urlparse(url)
     parts = [p for p in u.path.split("/") if p]
     if u.netloc.endswith("manifold.markets") and len(parts) >= 2:
@@ -178,7 +179,7 @@ def market(url: str) -> dict | None:
             res = "yes" if prices[0] == "1" else "no"
         return {"platform": "polymarket", "key": tokens[0] if tokens else "", "question": m["question"],
                 "close": epoch(m["endDate"]) if m.get("endDate") else 0, "resolution": res,
-                "resolved_at": epoch(m["closedTime"].replace(" ", "T").split("+")[0] + "Z") if res and m.get("closedTime") else 0,
+                "resolved_at": epoch(m["closedTime"].replace(" ", "T")) if res and m.get("closedTime") else 0,
                 "url": f"https://polymarket.com/event/{parts[1]}" + (f"/{parts[2]}" if len(parts) >= 3 else "")}
     return None
 

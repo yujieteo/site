@@ -2,10 +2,11 @@
 """Refuse Bash calls that deploy, use SSH, or run src/build.ts without --out."""
 
 import json
+import os
 import re
 import shlex
 import sys
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 
 SSH_COMMANDS = {"ssh", "scp", "sftp", "mosh", "ssh-copy-id"}
 SHELLS = {"bash", "sh", "zsh", "dash"}
@@ -18,8 +19,30 @@ WRAPPER_VALUE_OPTIONS = {
     "sudo": {"-u", "-g"},
 }
 SHELL_VALUE_OPTIONS = {"-o", "+o"}
+BUN_VALUE_OPTIONS = {
+    "-c",
+    "--config",
+    "--cwd",
+    "-e",
+    "--eval",
+    "--env-file",
+    "-r",
+    "--preload",
+    "--conditions",
+    "--main-fields",
+    "--extension-order",
+    "--tsconfig-override",
+    "--define",
+    "--loader",
+    "--origin",
+    "--port",
+    "--filter",
+}
 PUNCTUATION = set(";&|()<>")
 HEREDOC = re.compile(r"""<<-?\s*(['"]?)([A-Za-z_][A-Za-z0-9_]*)\1""")
+HEREDOC_OR_QUOTED = re.compile(
+    r"""<<-?\s*(['"]?)(?P<delim>[A-Za-z_][A-Za-z0-9_]*)\1|'[^']*'|"[^"\\]*(?:\\.[^"\\]*)*" """.strip()
+)
 MAX_DEPTH = 8
 
 
@@ -106,6 +129,19 @@ def shell_reads(line):
     return False
 
 
+def find_heredoc(line):
+    for match in HEREDOC_OR_QUOTED.finditer(line):
+        delim = match.group("delim")
+        if delim:
+            return delim
+        tok = match.group(0)
+        if tok.startswith('"') and "$(" in tok:
+            inner = HEREDOC.search(tok[tok.index("$(") :])
+            if inner:
+                return inner.group(2)
+    return None
+
+
 def without_data_heredocs(text):
     lines = text.split("\n")
     kept = []
@@ -114,11 +150,11 @@ def without_data_heredocs(text):
         line = lines[i]
         kept.append(line)
         i += 1
-        match = HEREDOC.search(line)
-        if match is None:
+        delim = find_heredoc(line)
+        if delim is None:
             continue
         body = []
-        while i < len(lines) and lines[i].strip() != match.group(2):
+        while i < len(lines) and lines[i].strip() != delim:
             body.append(lines[i])
             i += 1
         i += 1
@@ -135,13 +171,29 @@ def is_build_script(path):
     return path.endswith("src/build.ts")
 
 
-def has_out_flag(args):
+def is_dist_target(value):
+    base = Path(os.environ.get("CLAUDE_PROJECT_DIR", ".")).resolve()
+    p = Path(value)
+    target = p.resolve() if p.is_absolute() else (base / p).resolve()
+    dist = (base / "dist").resolve()
+    return target == dist or dist in target.parents
+
+
+def has_safe_out_flag(args):
+    out_val = None
     for i, arg in enumerate(args):
         if arg == "--out" and i + 1 < len(args) and args[i + 1]:
-            return True
-        if arg.startswith("--out=") and len(arg) > len("--out="):
-            return True
-    return False
+            out_val = args[i + 1]
+        elif arg.startswith("--out=") and len(arg) > len("--out="):
+            out_val = arg[len("--out=") :]
+    return out_val is not None and not is_dist_target(out_val)
+
+
+def strip_bun_flags(args):
+    i = 0
+    while i < len(args) and args[i].startswith("-"):
+        i += 2 if args[i] in BUN_VALUE_OPTIONS else 1
+    return args[i:]
 
 
 def reason(words):
@@ -159,9 +211,11 @@ def reason(words):
     if name in SSH_COMMANDS:
         return f"{name} reaches another machine over SSH; ask the owner to run it."
     if name == "bun":
-        rest = args[1:] if args and args[0] == "run" else args
-        if rest and is_build_script(rest[0]) and not has_out_flag(rest[1:]):
-            return 'A bare bun src/build.ts replaces dist/. Add --out "$(mktemp -d)".'
+        rest = strip_bun_flags(args)
+        if rest and rest[0] == "run":
+            rest = strip_bun_flags(rest[1:])
+        if rest and is_build_script(rest[0]) and not has_safe_out_flag(rest[1:]):
+            return 'A bare bun src/build.ts (or --out dist) replaces dist/. Add --out "$(mktemp -d)".'
     return None
 
 
