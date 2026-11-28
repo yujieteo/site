@@ -34,7 +34,7 @@ The scoring is the price rule of the frozen audit method:
 
 A bet's `fermi` field is `none`, or a key and the amount the claim implies. The page shows the ratio to the record.
 
-EDGAR (fab capacity) is not in the table yet: www.sec.gov refused requests that did not carry a contact address. See the open items below.
+EDGAR (fab capacity) is not in the table yet: www.sec.gov refused requests that did not carry a contact address.
 
 ## Files
 
