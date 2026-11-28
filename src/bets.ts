@@ -6,7 +6,7 @@ import { LIMITS } from "./kit/limits.ts";
 // writes api/bets.txt, which feed-update on the server turns into /forecasters.html each hour.
 
 // The 40 people of the two rankings, by the names they give themselves there.
-export const PEOPLE: readonly string[] = [
+const PEOPLE: readonly string[] = [
   "stcredzero", "wmf", "gojomo", "adventured", "jonnathanson", "earl", "Zigurd", "gbog", "nostrademons", "potatolicious",
   "dasil003", "snowwrestler", "nl", "jsjenkins168", "Samuel_Michon", "bane", "bryanlarsen", "SwellJoe", "tptacek", "btilly",
   "Zvi", "gwern", "Daniel Kokotajlo", "Matthew Barnett", "Rohin Shah", "Richard_Kennaway", "paulfchristiano", "knb", "Costanza",

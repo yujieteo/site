@@ -9,7 +9,7 @@ and writes michelin.tsv.
 Run:  uv run --with beautifulsoup4 python scripts/tampines/guides.py [--michelin] [--offline]
 Only facts are stored: names, dates, URLs, flags, numbers; evidence phrases are <= 10 words.
 """
-import csv, hashlib, json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
+import csv, hashlib, json, os, re, sys, time, unicodedata, urllib.error, urllib.parse, urllib.request
 from datetime import date
 from pathlib import Path
 

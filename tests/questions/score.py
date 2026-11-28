@@ -76,37 +76,42 @@ def correct(q, answer):
     return answer.strip().lower().rstrip(".") == str(q["answer"]).lower()
 
 
-table = collections.defaultdict(lambda: {"n": 0, "exact": 0, "bytes": 0, "tokens": 0, "fetches": 0, "dated": 0, "cited": 0, "errors": 0, "input": 0, "source_fetched": 0})
-for path in sorted(runs.glob("*/*.jsonl")):
-    for raw in path.read_text().splitlines():
-        row = json.loads(raw)
-        q = questions.get(row["id"])
-        if not q:
-            continue
-        t = table[(row["label"], row["vendor"], row["model"])]
-        t["n"] += 1
-        t["errors"] += row.get("error") is not None
-        t["exact"] += correct(q, line(row["reply"], "ANSWER"))
-        t["fetches"] += len(row["fetches"])
-        t["source_fetched"] += source_fetched(row["reply"], row["fetches"])
-        t["input"] += (row.get("usage") or {}).get("input", 0) or 0
-        t["bytes"] += sum(f["bytes"] for f in row["fetches"])
-        for fetched in row["fetches"]:
-            count = tokens(fetched.get("sha256"))
-            if count is None:
-                t["tokens"] = None
-            elif t["tokens"] is not None:
-                t["tokens"] += count
-        if q["as_of"]:
-            t["dated"] += 1
-            t["cited"] += line(row["reply"], "AS_OF").strip()[: len(q["as_of"])] == q["as_of"]
+def main():
+    table = collections.defaultdict(lambda: {"n": 0, "exact": 0, "bytes": 0, "tokens": 0, "fetches": 0, "dated": 0, "cited": 0, "errors": 0, "input": 0, "source_fetched": 0})
+    for path in sorted(runs.glob("*/*.jsonl")):
+        for raw in path.read_text().splitlines():
+            row = json.loads(raw)
+            q = questions.get(row["id"])
+            if not q:
+                continue
+            t = table[(row["label"], row["vendor"], row["model"])]
+            t["n"] += 1
+            t["errors"] += row.get("error") is not None
+            t["exact"] += correct(q, line(row["reply"], "ANSWER"))
+            t["fetches"] += len(row["fetches"])
+            t["source_fetched"] += source_fetched(row["reply"], row["fetches"])
+            t["input"] += (row.get("usage") or {}).get("input", 0) or 0
+            t["bytes"] += sum(f["bytes"] for f in row["fetches"])
+            for fetched in row["fetches"]:
+                count = tokens(fetched.get("sha256"))
+                if count is None:
+                    t["tokens"] = None
+                elif t["tokens"] is not None:
+                    t["tokens"] += count
+            if q["as_of"]:
+                t["dated"] += 1
+                t["cited"] += line(row["reply"], "AS_OF").strip()[: len(q["as_of"])] == q["as_of"]
 
-print(f"{'label':<10} {'vendor':<9} {'model':<28} {'n':>3} {'exact':>6} {'fetch/q':>8} {'kB/q':>7} {'o200k/q':>8} {'date cited':>10} {'in tok/q':>9} {'errors':>6} {'source fetched':>14}")
-for (label, vendor, model), t in sorted(table.items()):
-    n = t["n"] or 1
-    cited = f"{t['cited']}/{t['dated']}" if t["dated"] else "-"
-    per_question = f"{t['tokens'] / n:.0f}" if t["tokens"] is not None else "n/a"
-    fetched = f"{t['source_fetched']}/{t['n']}"
-    print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {per_question:>8} {cited:>10} {t['input'] / n:>9.0f} {t['errors']:>6} {fetched:>14}")
-if enc is None:
-    print("tiktoken is not installed: o200k counts are unavailable. Run with: uv run --with tiktoken python -I tests/questions/score.py")
+    print(f"{'label':<10} {'vendor':<9} {'model':<28} {'n':>3} {'exact':>6} {'fetch/q':>8} {'kB/q':>7} {'o200k/q':>8} {'date cited':>10} {'in tok/q':>9} {'errors':>6} {'source fetched':>14}")
+    for (label, vendor, model), t in sorted(table.items()):
+        n = t["n"] or 1
+        cited = f"{t['cited']}/{t['dated']}" if t["dated"] else "-"
+        per_question = f"{t['tokens'] / n:.0f}" if t["tokens"] is not None else "n/a"
+        fetched = f"{t['source_fetched']}/{t['n']}"
+        print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {per_question:>8} {cited:>10} {t['input'] / n:>9.0f} {t['errors']:>6} {fetched:>14}")
+    if enc is None:
+        print("tiktoken is not installed: o200k counts are unavailable. Run with: uv run --with tiktoken python -I tests/questions/score.py")
+
+
+if __name__ == "__main__":
+    main()

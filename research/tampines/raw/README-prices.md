@@ -1,6 +1,6 @@
 # Price inputs (prereg "Inputs" items 4 and 5)
 
-Fetched 15 November 2026 by `scripts/tampines/prices.py` (stdlib; HTTP through curl). The script caches downloads in `$PRICES_CACHE`, outside the repo. `python3 scripts/tampines/prices.py A B C D` rebuilds every file below.
+Fetched 15 November 2026 by `scripts/tampines/prices.py` (stdlib; HTTP through curl). The script caches downloads in `$PRICES_CACHE`, outside the repo. `python3 scripts/tampines/prices.py A B C` rebuilds every file below.
 
 ## cpi.tsv: 180 rows
 

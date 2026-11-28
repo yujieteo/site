@@ -1,6 +1,6 @@
 # Deeper Singapore prices post
 
-The spec for the rewrite of `posts/singapore-value-buys/post.md` from 15 November 2026. Paste it into a Claude session in this repo to continue the work.
+The spec for the rewrite of `posts/singapore-value-buys/post.md` from 15 November 2026. Paste it into an agent session in this repo to continue the work.
 
 ```text
 Make the Singapore prices post (posts/singapore-value-buys/post.md) deeper, not bigger.

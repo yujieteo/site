@@ -3,11 +3,10 @@
   A  SingStat M213751 CPI series            -> research/tampines/raw/cpi.tsv
   B  SingStat average retail prices, dishes -> research/tampines/raw/singstat_dishes.tsv
   C  GST audit of items dated 2023          -> research/tampines/raw/gst2023.tsv
-  D  HPB food composition database probe    -> research/tampines/raw/hpb.tsv only if reachable
 
 Stdlib only; HTTP goes through curl (SingStat refuses urllib's default client).
 Downloads are cached in $PRICES_CACHE (default: <tmpdir>/tampines-prices-cache), never in the repo.
-Usage: python3 scripts/tampines/prices.py [A] [B] [C] [D]   (no argument runs all four)
+Usage: python3 scripts/tampines/prices.py [A] [B] [C]   (no argument runs all three)
 """
 import csv, html, json, os, re, subprocess, sys, tempfile
 from datetime import date

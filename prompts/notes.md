@@ -1,6 +1,6 @@
 # Write notes
 
-Paste this into a Claude session in this repo. Replace PART with `policy`, `reading`, `forecasts`, `prices`, `products`, `checks` or `advice`.
+Paste this into an agent session in this repo. Replace PART with `policy`, `reading`, `forecasts`, `prices`, `products`, `checks` or `advice`.
 
 ```text
 Read https://teoyujie.org/api/notes.txt and write notes for PART.
