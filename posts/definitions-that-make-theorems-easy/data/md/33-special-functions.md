@@ -596,7 +596,7 @@
 
 **Remember:** A derivative raises every Gauss hypergeometric parameter by one.
 
-*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \_2F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For \|z\| &lt; 1 and c not a nonpositive integer, ₂F₁(a,b;c;z) is the power series with coefficient (a)ₙ(b)ₙ/((c)ₙ n!) at degree n. Here (a)ₙ = a(a + 1)⋯(a + n − 1), with (a)₀ = 1, so (a)ₙ = a·(a + 1)ₙ₋₁.
 
@@ -612,7 +612,7 @@
 
 **Remember:** At one, Euler’s hypergeometric integral is just another beta integral.
 
-*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \_2F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For real a and c &gt; b &gt; 0, Euler’s integral defines ₂F₁(a,b;c;z) as the average of (1 − zt)⁻ᵃ for t drawn from the density proportional to tᵇ⁻¹(1 − t)ᶜ⁻ᵇ⁻¹ on (0,1), for real z ≤ 1 where it converges.
 
@@ -628,7 +628,7 @@
 
 **Remember:** Divide by sin πν so the Wronskian never vanishes.
 
-*Rules out counterexamples.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For noninteger ν, Y(ν,x) = \[cos(πν)J(ν,x) − J(−ν,x)\]/sin(πν), where J is the first-kind Bessel function, and at integer ν take the limit in ν. This choice makes the Wronskian JY′ − J′Y equal 2/(πx) for every ν (our own).
 
@@ -644,7 +644,7 @@
 
 **Remember:** Differentiate in t to bring down the order n.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For integer n, Jₙ(x) is the coefficient of tⁿ in the Laurent expansion of the generating function exp((x/2)(t − 1/t)).
 
@@ -662,7 +662,7 @@
 
 **Remember:** Put the coefficient variable on the unit circle and rotate it.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For integer n, Jₙ(x) is the coefficient of tⁿ, with negative powers allowed, in the Laurent expansion of exp((x/2)(t − 1/t)).
 
@@ -678,7 +678,7 @@
 
 **Remember:** Replacing t by −1/t swaps the orders.
 
-*True by definition. Confidence: medium.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition. Confidence: medium.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For integer n, Jₙ(x) is the coefficient of tⁿ, with negative powers allowed, in the Laurent series of exp((x/2)(t − 1/t)). This function does not change when t is replaced by −1/t.
 
@@ -694,7 +694,7 @@
 
 **Remember:** An average of cosines has absolute value at most one.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For integer n, Jₙ(x) is the average of cos(nθ − x sin θ) over θ in \[0, π\], an average of values between −1 and 1.
 
@@ -712,7 +712,7 @@
 
 **Remember:** Half-integer gammas turn the Bessel series into the sine series.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>), 33B15. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** The first-kind Bessel function of order ½ is the sum over m ≥ 0 of (−1)ᵐ(x/2) to the power 2m + ½, divided by m! Γ(m + 3/2). Its gamma values at half integers are rational multiples of √π (our own).
 
@@ -730,7 +730,7 @@
 
 **Remember:** Weight by xⁿ, and the derivative eats one factor of (m+n)!.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For an integer n ≥ 0, the Bessel function Jₙ(x) is the everywhere convergent series of (−1)ᵐ(x/2)²ᵐ⁺ⁿ/(m!(m+n)!) over m ≥ 0. Multiplied by xⁿ, each term is a constant times the power x²ᵐ⁺²ⁿ divided by (m+n)!.
 
@@ -922,7 +922,7 @@
 
 **Remember:** Shifting x by one removes the first denominator factor.
 
-*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals), 39A10. arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33D05 (q-gamma functions, q-beta functions and integrals), 39A10. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For 0 &lt; q &lt; 1 and x &gt; 0, the q-gamma function is (1 − q) to the power 1 − x times the infinite product of (1 − qⁿ⁺¹)/(1 − qⁿ⁺ˣ) over n ≥ 0. Replacing x by x + 1 shifts the denominator factors one place, so only the first factor 1 − qˣ is lost.
 
@@ -938,7 +938,7 @@
 
 **Remember:** A unit shift drops the first denominator factor of the q-gamma product.
 
-*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 33D05 (q-gamma functions, q-beta functions and integrals). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** Fix 0 &lt; q &lt; 1 and x &gt; 0. Γ₍q₎(x) is (1 − q)¹⁻ˣ times the product of (1 − qⁿ⁺¹)/(1 − qⁿ⁺ˣ) over integers n ≥ 0, so replacing x by x + 1 shifts the denominator factors one place and loses only 1 − qˣ (our own).
 
@@ -1233,7 +1233,7 @@
 
 **Remember:** Reflect the averaging density, then factor out one minus z.
 
-*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \_2F<sub>1</sub>). arXiv math.CA. Level 3: graduate.
 
 **Definition.** For complex a, real z &lt; 1 and real 0 &lt; b &lt; c, Euler’s integral makes F(a,b;c;z) the average of (1 − zt)⁻ᵃ over 0 &lt; t &lt; 1, with the beta density proportional to tᵇ⁻¹(1 − t)ᶜ⁻ᵇ⁻¹. Reflecting t to 1 − t swaps the two exponents of the density, which turns b into c − b.
 
@@ -1249,7 +1249,7 @@
 
 **Remember:** Divide by Γ(c + n), whose zeros swallow the poles.
 
-*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CV. Level 3: graduate.
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \_2F<sub>1</sub>). arXiv math.CV. Level 3: graduate.
 
 **Definition.** For \|z\| &lt; 1 and complex a, b, c, the regularized Gauss series has coefficient (a)ₙ(b)ₙ/(n!·Γ(c + n)) at zⁿ, where (a)ₙ = a(a + 1)⋯(a + n − 1) and (a)₀ = 1. It divides by the gamma function, whose reciprocal is entire, so no coefficient has a pole in c.
 
@@ -1265,7 +1265,7 @@
 
 **Remember:** Ai integrates exp(t³/3 − zt) between two rapidly decaying ends.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CV. Level 3: graduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CV. Level 3: graduate.
 
 **Definition.** Ai(z) is 1/(2πi) times the integral of exp(t³/3 − zt) along a path that comes in from infinity at angle −π/3 and goes out at angle π/3. On both rays t³ is negative real, so the integrand decays fast at both ends.
 
@@ -1283,7 +1283,7 @@
 
 **Remember:** A positive integral of exponentials is log-convex in their order parameter.
 
-*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \_0F<sub>1</sub>). arXiv math.CA. Level 3: graduate.
 
 **Definition.** For x &gt; 0 and real ν, the modified Bessel function K of order ν at x is half the integral over all real t of exp(−x cosh t + νt). The order ν enters only through the factor exp(νt) of a positive integrand.
 
@@ -1299,7 +1299,7 @@
 
 **Remember:** Reflecting the beta variable swaps its two parameters.
 
-*True by definition.* MSC 33C15 (Confluent hypergeometric functions, Whittaker functions, \\(\_1F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33C15 (Confluent hypergeometric functions, Whittaker functions, \_1F<sub>1</sub>). arXiv math.CA. Level 3: graduate.
 
 **Definition.** For real 0 &lt; a &lt; b, Kummer’s function M(a,b,z) is the mean of exp(zt) under the beta density on (0,1) proportional to tᵃ⁻¹(1 − t)ᵇ⁻ᵃ⁻¹. Reflecting t to 1 − t swaps the exponents a − 1 and b − a − 1 and turns exp(zt) into exp(z)exp(−zt).
 
@@ -1381,7 +1381,7 @@
 
 **Remember:** Every parameter sits beside s, so shifting s shifts them all.
 
-*True by definition.* MSC 33C60 (Hypergeometric integrals and functions defined by them (\\(E\\), \\(G\\), \\(H\\) and \\(I\\) functions)). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33C60 (Hypergeometric integrals and functions defined by them (E, G, H and I functions)). arXiv math.CA. Level 3: graduate.
 
 **Definition.** Meijer’s G-function is 1/(2πi) times an integral over s, along an admissible contour, of exp(s log z) times a gamma quotient. The numerator multiplies Γ(bⱼ − s) for j ≤ m and Γ(1 − aⱼ + s) for j ≤ n, and the denominator multiplies Γ(1 − bⱼ + s) for j &gt; m and Γ(aⱼ − s) for j &gt; n. So each parameter appears only through its difference with s.
 
@@ -1415,7 +1415,7 @@
 
 **Remember:** Split the product into residue classes to change the base to qⁿ.
 
-*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals), 39A13. arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33D05 (q-gamma functions, q-beta functions and integrals), 39A13. arXiv math.CA. Level 3: graduate.
 
 **Definition.** For 0 &lt; q &lt; 1 and x &gt; 0, Γ<sub>q</sub>(x) is (1 − q)⁽¹⁻ˣ⁾ times the infinite product of (1 − qᵏ⁺¹)/(1 − qᵏ⁺ˣ) over k ≥ 0. Splitting k by its residue modulo n turns powers of q into powers of r = qⁿ.
 
@@ -1431,7 +1431,7 @@
 
 **Remember:** Shifting z to qz drops just the first factor.
 
-*True by definition.* MSC 33D15 (Basic hypergeometric functions in one variable, \\(\_r\\phi<sub>s</sub>\\)). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 33D15 (Basic hypergeometric functions in one variable, \_rφ<sub>s</sub>). arXiv math.CA. Level 3: graduate.
 
 **Definition.** For complex a and q with 0 &lt; \|q\| &lt; 1, F(z) on \|z\| &lt; 1 is the infinite product of (1 − aqʲz)/(1 − qʲz) over j ≥ 0. Replacing z by qz shifts every factor one place, so F(z) and F(qz) differ only by the first factor (1 − az)/(1 − z).
 
@@ -1818,7 +1818,7 @@
 
 **Remember:** Multiply coefficients, then divide out the shared binomial once.
 
-*True by definition.* MSC 33C20 (Generalized hypergeometric series, \\(\_pF<sub>q</sub>\\)). arXiv math.CA. Level 4: research.
+*True by definition.* MSC 33C20 (Generalized hypergeometric series, \_pF<sub>q</sub>). arXiv math.CA. Level 4: research.
 
 **Definition.** For polynomials of degree at most n with constant term one, their finite free multiplicative convolution multiplies the coefficients of xᵏ and divides by Bₖ = (−1)ᵏ binom(n,k), for 0 ≤ k ≤ n. The division removes one copy of the binomial factor when both coefficients contain it.
 

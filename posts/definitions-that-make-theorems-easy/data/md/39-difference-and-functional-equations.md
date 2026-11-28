@@ -188,7 +188,7 @@
 
 **Remember:** Scaling x by q removes exactly one factor.
 
-*True by definition.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 39A13 (Difference equations, scaling (q-differences)). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** Fix 0 &lt; q &lt; 1. For \|(1 − q)x\| &lt; 1, let E(x) be the infinite product of 1/(1 − (1 − q)xqᵏ) over k ≥ 0. Replacing x by qx drops exactly the k = 0 factor.
 
@@ -204,7 +204,7 @@
 
 **Remember:** Match the integral weights to the gaps in the grid.
 
-*True by definition.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 39A13 (Difference equations, scaling (q-differences)). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For 0 &lt; q &lt; 1 and x &gt; 0, the Jackson integral of f from 0 to x is ∑ₖ≥₀ (1 − q)xqᵏ f(xqᵏ), a sum over the grid x, qx, q²x, … with each point weighted by the gap below it. At x = 0 its value is zero.
 

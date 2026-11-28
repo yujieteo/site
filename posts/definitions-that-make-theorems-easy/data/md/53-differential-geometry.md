@@ -1741,6 +1741,101 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A nonzero moment-map level resolves ℂ²/±1 into the Eguchi–Hanson space
+
+**Remember:** Move the level off zero and the singular point disappears.
+
+*Rules out counterexamples.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53D20, 14E15. arXiv math.DG, math.SG. Level 3: graduate.
+
+**Definition.** Let the circle U(1) act on ℍ² = ℂ² × ℂ² by (z, w) ↦ (λz, λ⁻¹w), with hyperkähler moment map μ. The hyperkähler quotient at level ζ ∈ ℝ³ is μ⁻¹(ζ)/U(1). Take the level ζ to be nonzero.
+
+**Problem.** For every nonzero level ζ, the quotient is smooth: it is T\*S² with the Eguchi–Hanson metric. At ζ = 0 the quotient is ℂ²/{±1}, which has a singular point at the origin.
+
+**How the definition helps.** At a nonzero level the circle acts freely on μ⁻¹(ζ), so the hyperkähler quotient theorem applies (our own). Only the origin has a nontrivial stabilizer, the whole circle, and it lies on μ⁻¹(0), where the quotient is ℍ/ℤ₂ (our own). Moving the level replaces this singular point by a 2-sphere (our own).
+
+**Wikipedia:** [Eguchi–Hanson space](https://en.wikipedia.org/wiki/Eguchi%E2%80%93Hanson_space). It says: “It may be regarded as a resolution of the A₁ singularity according to the ADE classification which is the singularity at the fixed point of the C²/Z₂ orbifold”
+
+**Paper or page:** [Concentrating Local Solutions of the Two-Spinor Seiberg-Witten Equations on 3-Manifolds](https://arxiv.org/abs/2210.08148). It says: “Consequently, the hyperkähler quotient is given by μ⁻¹(0)/U(1) ≃ ℍ/ℤ₂.”
+
+**Sources:**
+
+- [E. Calabi, Métriques kählériennes et fibrés holomorphes, Ann. Sci. École Norm. Sup. 12 (1979) 269–294](https://doi.org/10.24033/asens.1367)
+- [N. J. Hitchin, A. Karlhede, U. Lindström, M. Roček, Hyperkähler metrics and supersymmetry, Comm. Math. Phys. 108 (1987) 535–589](https://doi.org/10.1007/BF01214418)
+
+### Excluding the non-Kähler Hopf surface makes odd Betti numbers multiples of four
+
+**Remember:** One metric Kähler for all three structures makes cohomology quaternionic.
+
+*Rules out counterexamples.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 32Q15. arXiv math.DG, math.AG. Level 3: graduate.
+
+**Definition.** A hypercomplex manifold has integrable complex structures I, J, K with IJ = K. It is hyperkähler when, in addition, one Riemannian metric is Kähler for all three, so that I, J and K are parallel.
+
+**Problem.** On a compact hyperkähler manifold, every odd Betti number is divisible by four. The Hopf surface, diffeomorphic to S¹ × S³, is hypercomplex but has first Betti number one.
+
+**How the definition helps.** Because I, J and K are parallel, the unit quaternions act on harmonic forms, and −1 acts as −1 in odd degree (our own). Such a representation is a quaternionic vector space, of real dimension divisible by four, and harmonic forms represent cohomology by Hodge theory (our own). The Hopf surface is not Kähler, because its odd cohomology is odd-dimensional, so the metric condition removes this counterexample (our own).
+
+**Wikipedia:** [Hypercomplex manifold](https://en.wikipedia.org/wiki/Hypercomplex_manifold). It says: “In fact Hidekiyo Wakakuwa proved that on a compact hyperkähler manifold b₂ₚ₊₁ ≡ 0 mod 4.”
+
+**Sources:**
+
+- [H. Wakakuwa, On Riemannian manifolds with homogeneous holonomy group Sp(n), Tôhoku Math. J. 10 (1958) 274–303](https://doi.org/10.2748/tmj/1178244665)
+
+### Holonomy in Sp(n) makes every hyperkähler manifold Ricci-flat
+
+**Remember:** Holonomy that respects all three quaternion units already lies inside SU(2n).
+
+*True by definition.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53C29. arXiv math.DG, math.AG. Level 3: graduate.
+
+**Definition.** A hyperkähler manifold is a Riemannian manifold of dimension 4n whose holonomy group lies in the compact symplectic group Sp(n). The holonomy group is the group of rotations obtained by parallel transport around loops. Sp(n) is the group of rotations of ℍⁿ that commute with the quaternion units i, j and k.
+
+**Problem.** Every hyperkähler manifold has zero Ricci curvature. So it is a Calabi–Yau manifold for each of its complex structures.
+
+**How the definition helps.** Sp(n) is a subgroup of SU(2n), so for each complex structure the holonomy lies in SU(2n) (our own). Holonomy in SU(m) gives the canonical line bundle (the bundle of holomorphic volume forms) a parallel section, so its curvature, the Ricci form, vanishes (our own). Under the other definition, by Kähler structures I, J, K with IJ = K, the work moves into proving that holonomy lies in Sp(n) (our own).
+
+**Wikipedia:** [Hyperkähler manifold](https://en.wikipedia.org/wiki/Hyperk%C3%A4hler_manifold). It says: “All hyperkähler manifolds are Ricci-flat and are thus Calabi–Yau manifolds.”
+
+**Sources:**
+
+- [E. Calabi, Métriques kählériennes et fibrés holomorphes, Ann. Sci. École Norm. Sup. 12 (1979) 269–294](https://doi.org/10.24033/asens.1367)
+
+### Since Sp(1) equals SU(2), four-dimensional Calabi–Yau manifolds are hyperkähler
+
+**Remember:** In four dimensions the two holonomy groups are the same group.
+
+*True by definition.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 14J28, 53C29. arXiv math.DG, math.AG. Level 3: graduate.
+
+**Definition.** Call a Riemannian manifold of dimension 4n hyperkähler when its holonomy group (the rotations obtained by parallel transport around loops) lies in Sp(n). Call a Kähler manifold of complex dimension m Calabi–Yau when its holonomy group lies in SU(m).
+
+**Problem.** In real dimension four, every Kähler metric with holonomy in SU(2) is hyperkähler. So every K3 surface with its Ricci-flat Kähler metric is a hyperkähler manifold.
+
+**How the definition helps.** For n = 1 the two holonomy conditions agree, because SU(2) is isomorphic to Sp(1), and both sit in SO(4) as the same subgroup (our own). Under the definition by three Kähler structures I, J, K, one would instead have to build J and K from a parallel holomorphic 2-form (our own). For K3 surfaces the work moves into Yau's solution of the Calabi conjecture, which gives the Ricci-flat Kähler metric (our own).
+
+**Wikipedia:** [Hyperkähler manifold](https://en.wikipedia.org/wiki/Hyperk%C3%A4hler_manifold). It says: “Every Calabi–Yau manifold in 4 (real) dimensions is a hyperkähler manifold, because SU(2) is isomorphic to Sp(1).”
+
+**Sources:**
+
+- [E. Calabi, Métriques kählériennes et fibrés holomorphes, Ann. Sci. École Norm. Sup. 12 (1979) 269–294](https://doi.org/10.24033/asens.1367)
+
+### Three moment maps at once make the hyperkähler quotient hyperkähler
+
+**Remember:** Reduce by all three Kähler forms at once, and keep all three.
+
+*True by definition.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53D20. arXiv math.DG, math.SG. Level 3: graduate.
+
+**Definition.** A moment map for symmetries of a Kähler form is a map to the dual of the Lie algebra whose components generate the action. A hyperkähler moment map for a compact group G is a triple μ = (μ₁, μ₂, μ₃) of equivariant moment maps for ω₁, ω₂, ω₃. The hyperkähler quotient is μ⁻¹(0)/G.
+
+**Problem.** If G acts freely on μ⁻¹(0), then the hyperkähler quotient μ⁻¹(0)/G is a hyperkähler manifold of dimension dim M − 4 dim G.
+
+**How the definition helps.** Since μ₂ + iμ₃ is I-holomorphic, the quotient is the Kähler quotient by μ₁ of an I-complex submanifold, and likewise for J and K (our own). So the work moves into the Kähler reduction theorem, used three times on one quotient metric with IJ = K (our own). Reduction by one moment map alone gives dimension dim M − 2 dim G and only one complex structure (our own).
+
+**Wikipedia:** [Hyperkähler quotient](https://en.wikipedia.org/wiki/Hyperk%C3%A4hler_quotient). It says: “the hyperkähler quotient of a hyperkähler manifold acted on by a Lie group G is the quotient of a fiber of a hyperkähler moment map M → 𝔤 ⊗ ℝ³ over a G-fixed point by the action of G.”
+
+**Paper or page:** [Trihyperkahler reduction and instanton bundles on CP<sup>3</sup>](https://arxiv.org/abs/1103.4431). It says: “Let M be a hyperkähler manifold, and G a compact Lie group acting on M by hyperkähler automorphisms, and admitting a hyperkähler moment map. Then the hyperkähler quotient M///G is equipped with a natural hyperkähler structure.”
+
+**Sources:**
+
+- [N. J. Hitchin, A. Karlhede, U. Lindström, M. Roček, Hyperkähler metrics and supersymmetry, Comm. Math. Phys. 108 (1987) 535–589](https://doi.org/10.1007/BF01214418)
+
 ### Using only contractible loops makes flatness equal to trivial holonomy
 
 **Remember:** Shrinkable loops feel curvature; other loops also feel the topology.
@@ -2026,7 +2121,7 @@
 
 **Remember:** Convex distance makes sliding points toward a common base point continuous.
 
-*True by definition. Confidence: medium.* MSC 53C70 (Direct methods (\\(G\\)-spaces of Busemann, etc.)), 53C23. arXiv math.MG. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 53C70 (Direct methods (G-spaces of Busemann, etc.)), 53C23. arXiv math.MG. Level 3: graduate.
 
 **Definition.** A geodesic space is Busemann convex if, for any two constant-speed geodesics c and c′ on \[0,1\], the distance d(c(t), c′(t)) is a convex function of t. For geodesics from a common start, this gives d(c(t), c′(t)) ≤ t·d(c(1), c′(1)) (our own).
 
@@ -2072,6 +2167,58 @@
 
 - [G. Darboux, Sur le problème de Pfaff, Bulletin des Sciences Mathématiques 6 (1882) 14–36, 49–68](http://gallica.bnf.fr/ark:/12148/bpt6k68005v)
 
+### Closedness of ω excludes the six-sphere's nondegenerate two-forms
+
+**Remember:** A closed symplectic form leaves a cohomology class that cannot vanish.
+
+*Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 53D15. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic form is a nondegenerate 2-form that is also closed. Closedness gives ω a de Rham cohomology class \[ω\], and nondegeneracy makes ωⁿ a volume form on a 2n-manifold.
+
+**Problem.** On a compact 2n-manifold without boundary, every symplectic form has \[ω\]ᵏ ≠ 0 in H²ᵏ(M; ℝ) for 1 ≤ k ≤ n (our own). So no such form is exact, and no sphere of dimension 4 or more is symplectic.
+
+**How the definition helps.** The volume form ωⁿ has nonzero integral, so \[ω\]ⁿ ≠ 0 by Stokes' theorem, and hence each \[ω\]ᵏ ≠ 0 (our own). The 6-sphere is the counterexample that closedness removes, since it has a nondegenerate 2-form from the octonions but no second cohomology (our own). The Hopf surface S¹ × S³ is another, as a compact complex surface with zero second cohomology (our own).
+
+**Wikipedia:** [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold), [Almost symplectic manifold](https://en.wikipedia.org/wiki/Almost_symplectic_manifold). It says: “The symplectic form on any compact symplectic manifold without boundary is inexact, by Stokes' theorem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closedness of ω is exactly the Jacobi identity for the Poisson bracket
+
+**Remember:** The bracket obeys Jacobi because the form is closed.
+
+*True by definition. Confidence: medium.* MSC 53D05 (Symplectic manifolds (general theory)), 53D17. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let ω be a nondegenerate 2-form. The Hamiltonian vector field of a function f is the field X with ω(X, ·) = df. The Poisson bracket {f, g} is ω evaluated on the Hamiltonian vector fields of f and g.
+
+**Problem.** For a nondegenerate 2-form ω, the Poisson bracket satisfies the Jacobi identity exactly when ω is closed (our own). In particular, the smooth functions on a symplectic manifold form a Lie algebra under the Poisson bracket.
+
+**How the definition helps.** On the Hamiltonian fields of f, g and h, dω equals {f, {g, h}} + {g, {h, f}} + {h, {f, g}} (our own). These vector fields span every tangent space, so the Jacobi identity holds exactly when dω = 0 (our own). So a nondegenerate Poisson bracket is an equivalent definition of a symplectic structure, and the quoted proposition covers the closed case (our own).
+
+**Wikipedia:** [Poisson bracket](https://en.wikipedia.org/wiki/Poisson_bracket). It says: “Thus, the Poisson bracket on functions corresponds to the Lie bracket of the associated Hamiltonian vector fields.”
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662). It says: “If X and Y are symplectic vector fields on a symplectic manifold (M,ω), then \[X,Y\] is a Hamiltonian vector field with Hamiltonian function ω(Y,X).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compatible complex structures give symplectic manifolds well-defined Chern classes
+
+**Remember:** Any compatible choice of J gives the same Chern classes.
+
+*True by definition.* MSC 53D05 (Symplectic manifolds (general theory)), 57R20. arXiv math.SG, math.AT. Level 3: graduate.
+
+**Definition.** The Chern classes of a symplectic manifold (M, ω), one with a closed nondegenerate 2-form ω, are those of the complex vector bundle (TM, J). Here J is any almost complex structure, a field of maps with J² = −1, that is compatible with ω. Compatible means that ω(u, Jv) is a Riemannian metric.
+
+**Problem.** The Chern classes of (M, ω) do not depend on the chosen compatible J. They also stay the same along any continuous path of symplectic forms, so they are deformation invariants (our own).
+
+**How the definition helps.** Any two compatible structures are joined by a path, because their space is contractible, and homotopic complex structures give isomorphic complex bundles (our own). The same argument works along a path of symplectic forms (our own). The work went into that contractibility, and it replaces a reduction of the structure group of TM from Sp(2n, ℝ) to U(n) (our own).
+
+**Wikipedia:** [Almost complex manifold](https://en.wikipedia.org/wiki/Almost_complex_manifold). It says: “The bundle on M whose sections are the almost complex structures compatible to ω has contractible fibres”
+
+**Sources:**
+
+- [Dusa McDuff and Dietmar Salamon, Introduction to Symplectic Topology, Oxford University Press (2017)](https://doi.org/10.1093/oso/9780198794899.001.0001)
+
 ### Constant rank gives a closed two-form a Darboux normal form
 
 **Remember:** Fix the rank, and every closed two-form looks standard near each point.
@@ -2089,6 +2236,44 @@
 **Sources:**
 
 - [R. Izquierdo-López, M. de León, L. Schiavone and P. Soto, A zoo of coisotropic embeddings, arXiv:2509.19039 (2025)](https://arxiv.org/abs/2509.19039)
+
+### Defining compatibility through a metric makes compatible complex structures contractible
+
+**Remember:** Every metric points to a compatible complex structure.
+
+*True by definition.* MSC 53D05 (Symplectic manifolds (general theory)), 53C15. arXiv math.SG. Level 3: graduate.
+
+**Definition.** An almost complex structure J is a field of linear maps on the tangent spaces with J² = −1. It is compatible with a symplectic form ω when ω(u, Jv) is a Riemannian metric. Each metric g gives one compatible J, the orthogonal polar factor of the map A with ω(u, v) = g(Au, v) (our own).
+
+**Problem.** The space of almost complex structures that are compatible with a given symplectic form is non-empty and contractible.
+
+**How the definition helps.** The metric condition gives a continuous map from metrics to compatible structures, which sends the metric ω(·, J·) back to J (our own). So the compatible structures form a retract of the convex, hence contractible, space of metrics (our own). The work is checking that the polar factor is compatible, and for tamed J, with only ω(v, Jv) &gt; 0, this retraction fails (our own).
+
+**Wikipedia:** [Almost complex manifold](https://en.wikipedia.org/wiki/Almost_complex_manifold). It says: “For example, ω and J are compatible if and only if ω(•, J•) is a Riemannian metric.”
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255). It says: “The space 𝒥\_ω = 𝒥(M,ω) of all compatible almost complex structures on a symplectic manifold (M,ω) is non-empty and contractible.”
+
+**Sources:**
+
+- [Dusa McDuff and Dietmar Salamon, Introduction to Symplectic Topology, Oxford University Press (2017)](https://doi.org/10.1093/oso/9780198794899.001.0001)
+
+### Defining symplectic eigenvalues through ΩM makes Williamson's normal form unique
+
+**Remember:** Symplectic eigenvalues are eigenvalues of ΩM, not of M.
+
+*True by definition. Confidence: medium.* MSC 53D05 (Symplectic manifolds (general theory)), 15A21. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let M be a positive definite symmetric 2n × 2n matrix, and let Ω be the block matrix with rows (0, I) and (−I, 0). The eigenvalues of ΩM are ±i d₁, …, ±i dₙ, with each dⱼ &gt; 0. The numbers dⱼ are the symplectic eigenvalues of M (our own).
+
+**Problem.** By Williamson's theorem, some symplectic matrix S, one with SᵀΩS = Ω, gives SMSᵀ = D ⊕ D with D positive and diagonal. The entries of D are the symplectic eigenvalues of M, so this normal form is unique up to order (our own).
+
+**How the definition helps.** For symplectic S, the matrix Ω(SMSᵀ) equals S⁻ᵀ(ΩM)Sᵀ, so it is similar to ΩM and keeps its eigenvalues (our own). The matrix Ω(D ⊕ D) has eigenvalues ±i dⱼ, so D is read off from M (our own). If the dⱼ were defined as the entries of D, uniqueness would need its own proof, while existence still needs Williamson's theorem (our own).
+
+**Wikipedia:** [Williamson theorem](https://en.wikipedia.org/wiki/Williamson_theorem). It says: “the theorem ensures the existence of a real symplectic matrix S ∈ Sp(2n,ℝ), and a diagonal positive real matrix D ∈ ℝⁿˣⁿ, such that SMSᵀ = I₂⊗D ≡ D⊕D,”
+
+**Sources:**
+
+- [John Williamson, On the Algebraic Problem Concerning the Normal Forms of Linear Dynamical Systems, American Journal of Mathematics 58 (1936), 141](https://doi.org/10.2307/2371062)
 
 ### Exactness excludes torus translations
 
@@ -2122,6 +2307,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Lagrangian normal bundles are cotangent bundles, so Lagrangian neighbourhoods are standard
+
+**Remember:** The directions leaving a Lagrangian are exactly its covectors.
+
+*Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic manifold (M, ω) is a 2n-dimensional manifold with a closed 2-form ω that is nondegenerate at every point. A submanifold L is Lagrangian when it has dimension n and ω vanishes on its tangent spaces. Then v ↦ ω(v, ·) identifies the normal bundle of L with its cotangent bundle T\*L (our own).
+
+**Problem.** A diffeomorphism maps a neighbourhood of each compact Lagrangian L onto a neighbourhood of the zero section in T\*L, taking ω to the canonical form. So near L, the symplectic geometry depends only on L as a manifold.
+
+**How the definition helps.** The Lagrangian condition makes the normal bundle of L equal to T\*L, so T\*L is the natural local model (our own). A tubular neighbourhood map then matches the two forms at each point of L (our own). The real work is the relative Moser theorem, which makes two forms that agree along L equal near L (our own).
+
+**Wikipedia:** [Weinstein's neighbourhood theorem](https://en.wikipedia.org/wiki/Weinstein%27s_neighbourhood_theorem). It says: “While Darboux's theorem identifies locally a symplectic manifold M with T\*L, Weinstein's theorem identifies locally a Lagrangian L with the zero section of T\*L.”
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662), [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662). It says: “Then there exist neighborhoods 𝒰₀ of X in T\*X, 𝒰 of X in M and a diffeomorphism φ: 𝒰₀ → 𝒰 such that φ\*ω = ω₀”
+
+**Sources:**
+
+- [Alan Weinstein, Symplectic manifolds and their Lagrangian submanifolds, Advances in Mathematics 6 (1971), 329–346](https://doi.org/10.1016/0001-8708(71)90020-X)
+
+### Positivity of ω(v, Jv) makes complex submanifolds of Kähler manifolds symplectic
+
+**Remember:** Each complex line inside a Kähler manifold has positive area.
+
+*Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 32Q15. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A Kähler manifold is a symplectic manifold (M, ω), with ω a closed nondegenerate 2-form, that has an integrable compatible complex structure J. Compatible means that ω(u, Jv) is a Riemannian metric, so ω(v, Jv) &gt; 0 for every nonzero tangent vector v.
+
+**Problem.** Every complex submanifold of a Kähler manifold is symplectic, which means that ω stays nondegenerate on it (our own). In particular, every smooth complex projective variety is symplectic, with the restriction of the Fubini–Study form.
+
+**How the definition helps.** A complex submanifold has J-invariant tangent spaces, so for tangent v the vector Jv is tangent too, and ω(v, Jv) &gt; 0 (our own). For ω = dx₁∧dy₁ + dx₂∧dy₂, setting J∂x₁ = ∂x₂ and J∂y₁ = ∂y₂ makes the x₁x₂-plane complex, though ω vanishes there (our own). The restricted form stays closed, because pullback commutes with d (our own).
+
+**Wikipedia:** [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold). It says: “Any smooth complex projective variety V ⊂ ℂℙⁿ has a symplectic form which is the restriction of the Fubini—Study form on the projective space ℂℙⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Quotienting null directions removes degeneracy
 
 **Remember:** Remove precisely the directions that pair to zero.
@@ -2137,6 +2358,24 @@
 **nLab:** [presymplectic structure](https://ncatlab.org/nlab/show/presymplectic+structure). It says: “the quotient of X by the flow of the vector fields in the kernel of ω is, if it exists in a reasonable way, a symplectic manifold.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Symplectic normal bundles make neighbourhoods of symplectic submanifolds standard
+
+**Remember:** A symplectic submanifold carries its own symplectic normal directions.
+
+*Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A submanifold Q of a symplectic manifold (M, ω), one with a closed nondegenerate 2-form ω, is symplectic when ω stays nondegenerate on TQ. Then the ω-orthogonal of TQ, the vectors v with ω(v, TQ) = 0, is a complement of TQ. With ω, this complement is a symplectic vector bundle, the symplectic normal bundle of Q.
+
+**Problem.** A neighbourhood of a compact symplectic submanifold is fixed, up to a form-preserving diffeomorphism, by ω on the submanifold and its symplectic normal bundle. So near a closed symplectic surface in a symplectic 4-manifold, only the genus, the area and the self-intersection number matter (our own).
+
+**How the definition helps.** Nondegeneracy on TQ makes TQ meet its ω-orthogonal only in zero, so the normal data of Q is a symplectic vector bundle (our own). A neighbourhood map built from this splitting matches the two forms along Q, and the relative Moser theorem makes them equal nearby (our own). For a surface, that bundle is fixed by its Euler number, which is the self-intersection number (our own).
+
+**Paper or page:** [Lagrangian Spheres and Cyclic Quotient T-singularities](https://arxiv.org/abs/2509.18976), [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662). It says: “Then, by the symplectic neighbourhood theorem, W has a neighbourhood symplectomorphic to its symplectic normal bundle (νW,ω).”
+
+**Sources:**
+
+- [Dusa McDuff and Dietmar Salamon, Introduction to Symplectic Topology, Oxford University Press (2017)](https://doi.org/10.1093/oso/9780198794899.001.0001)
 
 ### The coordinate-free tautological form makes cotangent lifts preserve the symplectic form
 
@@ -2154,6 +2393,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Unitary frames make the Lagrangian Grassmannian U(n)/O(n), and det² detects its loops
+
+**Remember:** A Lagrangian plane is a unitary matrix modulo real orthogonal ones.
+
+*True by definition.* MSC 53D05 (Symplectic manifolds (general theory)), 53D12, 14M15. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Identify ℝ²ⁿ with ℂⁿ, so that the symplectic form ω is the imaginary part of the Hermitian inner product, up to sign. A Lagrangian subspace is a real n-dimensional subspace on which ω vanishes. A real subspace is Lagrangian exactly when its real orthonormal bases are unitary bases of ℂⁿ.
+
+**Problem.** The Lagrangian Grassmannian Λ(n), the space of Lagrangian subspaces of ℂⁿ, is diffeomorphic to U(n)/O(n). The map that sends U·ℝⁿ to det(U)² induces an isomorphism from the fundamental group of Λ(n) to ℤ.
+
+**How the definition helps.** Because Lagrangian planes are the spans of unitary bases, U(n) acts transitively on them, and the stabilizer of ℝⁿ is O(n). The map det² is well defined on the quotient, because elements of O(n) have determinant ±1. Its fibre SU(n)/SO(n) is simply connected, so π₁ = ℤ, and the bare vanishing of ω gives no such group action (our own).
+
+**nLab:** [Lagrangian Grassmannian](https://ncatlab.org/nlab/show/Lagrangian+Grassmannian). It says: “This map passes to the quotient U(n)/O(n) because the determinant of an element of O(n) can only be ±1.”
+
+**Wikipedia:** [Lagrangian Grassmannian](https://en.wikipedia.org/wiki/Lagrangian_Grassmannian). It says: “The unitary group U(n) acts transitively on the set of these subspaces, and the stabilizer of ℝⁿ is the orthogonal group O(n) ⊆ U(n).”
+
+**Sources:**
+
+- [Dusa McDuff and Dietmar Salamon, Introduction to Symplectic Topology, Oxford University Press (2017)](https://doi.org/10.1093/oso/9780198794899.001.0001)
+
 ### Contact maps lift by rescaling covectors
 
 **Remember:** Lift the covectors and their evaluation rule stays the same.
@@ -2169,6 +2428,24 @@
 **Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “This construction does not depend on the choice of contact form.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Contact-type hypersurfaces have symplectization collars
+
+**Remember:** Flowing out along Y is the symplectization's radial direction.
+
+*True by definition. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 53D05. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A compact hypersurface M of (P, ω) has contact type when some Liouville field Y near M is transverse to it. Liouville means that the flow φₜ of Y rescales the form: φₜ\*ω = eᵗω. The restriction α of ω(Y, ·) to M is then a contact form.
+
+**Problem.** A compact contact-type hypersurface M has a neighbourhood symplectomorphic to a neighbourhood of M × {1} in the symplectization ((0, ∞) × M, d(rα)).
+
+**How the definition helps.** Flowing M along Y gives coordinates (t, x) near M, in which ω(Y, ·) = eᵗα, so ω = d(rα) with r = eᵗ (our own). The other definition asks only for a 1-form α on M with dα = ω there, nonzero on the null direction (our own). Proving that the two definitions agree takes the work (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Then there exists a neighborhood of M ⊂ P and a neighborhood of M × {1} ⊂ P⁺ that are symplectically isomorphic.”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, Introduction to Symplectic Topology, 3rd ed., Oxford University Press, 2017](https://doi.org/10.1093/oso/9780198794899.001.0001)
 
 ### Defining coorientability by a trivial quotient line makes hyperplane fields kernels
 
@@ -2188,6 +2465,171 @@
 
 - [Hansjörg Geiges, An Introduction to Contact Topology (2008), Lemma 1.1.1](https://doi.org/10.1017/CBO9780511611438)
 
+### Gray stability holds for contact structures, not forms
+
+**Remember:** A contact structure forgets the size of its defining form.
+
+*Rules out counterexamples.* MSC 53D10 (Contact manifolds (general theory)), 57R17. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A contact structure on a (2n + 1)-manifold is a field ξ of tangent hyperplanes, locally ξ = ker α with α∧(dα)ⁿ nowhere zero. Only the hyperplanes count, so α is fixed only up to multiplication by a nowhere-zero function.
+
+**Problem.** On a closed manifold, every smooth path ξₜ of contact structures comes from an isotopy φₜ of diffeomorphisms carrying ξ₀ onto ξₜ. So deforming a contact structure never changes it up to isotopy.
+
+**How the definition helps.** Gray's proof looks for the velocity Xₜ of φₜ inside ξₜ, and solves dαₜ(Xₜ, ·) = −α̇ₜ on ξₜ because dαₜ is nondegenerate there (our own). The leftover multiple of αₜ is harmless, since only the hyperplanes must match (our own). Forms fail because a form fixes a flow, its Reeb flow, and isotopic kernels on ellipsoids in ℂ² carry different closed orbits (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “If M is a closed manifold, and αₜ is a smooth 1-parameter family of contact forms on M, then there exists an isotopy φₜ of M such that φₜ\*(ker αₜ) = ker α₀. The theorem does not hold for contact forms.”
+
+**Sources:**
+
+- [J. W. Gray, Some global properties of contact structures, Annals of Mathematics 69 (1959) 421–450](https://doi.org/10.2307/1970192)
+- [H. Geiges, An Introduction to Contact Topology, Cambridge Studies in Advanced Mathematics 109, Cambridge University Press, 2008](https://doi.org/10.1017/CBO9780511611438)
+
+### Legendrian isotopies extend to contact isotopies
+
+**Remember:** In contact geometry every function generates a symmetry.
+
+*True by definition. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 57R17. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A contact vector field X has a flow that preserves the contact structure ξ = ker α; its contact Hamiltonian is H = α(X). Since dα is nondegenerate on ξ, every smooth function is the contact Hamiltonian of exactly one contact vector field.
+
+**Problem.** Let Lₜ be an isotopy of closed Legendrian submanifolds, which have maximal dimension among submanifolds tangent to ξ. Then Lₜ extends to an isotopy of the whole manifold through contactomorphisms, supported near Lₜ.
+
+**How the definition helps.** Extending a function is easy, so the proof sets Hₜ = α(velocity of Lₜ) on Lₜ, extends it by a cut-off, and flows (our own). This works because along a Legendrian, the values of H alone fix its field up to vectors tangent to the Legendrian (our own). The work went into the bijection between functions and contact fields, which has no symplectic analogue without a vanishing flux condition (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “It turns out that K(p) = α(vₚ), or more succinctly, K = α(v). The flow preserves an integral submanifold iff K = 0 on the submanifold.”
+
+**Sources:**
+
+- [H. Geiges, An Introduction to Contact Topology, Cambridge Studies in Advanced Mathematics 109, Cambridge University Press, 2008](https://doi.org/10.1017/CBO9780511611438)
+
+### Legendrian lifts of wavefronts stay smooth
+
+**Remember:** The front may break, but its Legendrian lift never does.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 53D25, 78A05. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A wavefront in a complete Riemannian manifold M is the projection to M of a Legendrian submanifold of the unit cotangent bundle. A hypersurface with a chosen unit normal lifts to the Legendrian of its unit conormal covectors. The Reeb flow of the canonical contact form there is the cogeodesic flow.
+
+**Problem.** The front reached at time t by unit-speed normal geodesics from a hypersurface is the projection of its conormal lift moved by the Reeb flow. The lift stays smooth and embedded for all t, while the front develops cusps and other caustics.
+
+**How the definition helps.** The Reeb flow moves by contactomorphisms, so it carries the smooth Legendrian lift to smooth Legendrians for all time (our own). Only the projection to M becomes singular, at the focal set, where nearby normal geodesics meet (our own). So the front at time s + t is the front at time s moved for time t, caustics included (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Legendrian submanifolds in UT\*(M) correspond to wavefront surfaces in M, and wave propagation over time corresponds to applying Reeb flow to the wavefront Legendrian submanifold.”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd ed., Graduate Texts in Mathematics 60, Springer, 1989](https://doi.org/10.1007/978-1-4757-2063-1)
+
+### Legendrian submanifolds have no local invariants
+
+**Remember:** A Legendrian's neighbourhood is decided by the Legendrian alone.
+
+*True by definition. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 57R17. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Legendrian submanifold of a (2n + 1)-dimensional contact manifold is a submanifold tangent to ξ of the maximal dimension n. Its tangent spaces are then Lagrangian, of half dimension, in the symplectic planes (ξ, dα). So the extra normal data that a smaller submanifold tangent to ξ carries, a symplectic vector bundle, is zero.
+
+**Problem.** Every diffeomorphism between closed Legendrian submanifolds of two equal-dimensional contact manifolds extends to a contactomorphism, a map preserving contact structures, between neighbourhoods. In particular every closed Legendrian L has a neighbourhood contactomorphic to a neighbourhood of the zero section in the 1-jet space J¹L.
+
+**How the definition helps.** The isotropic neighbourhood theorem says that a submanifold tangent to ξ and its symplectic normal bundle fix its neighbourhood (our own). For a Legendrian that bundle is zero, so only the diffeomorphism type remains, and the normal bundle is T\*L ⊕ ℝ (our own). The work went into proving that theorem, by Moser's method of deforming one form into another along a path (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “if there exists a diffeomorphism mapping L₀ to L₁, then it can be extended to a contactomorphism from a neighborhood of L₀ ⊂ M₀ to a neighborhood of L₁ ⊂ M₁.”
+
+**Sources:**
+
+- [H. Geiges, An Introduction to Contact Topology, Cambridge Studies in Advanced Mathematics 109, Cambridge University Press, 2008](https://doi.org/10.1017/CBO9780511611438)
+
+### Line-element duality makes the double dual the curve
+
+**Remember:** Duality swaps points and lines but keeps line elements.
+
+*True by definition. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 53A20, 14N05. arXiv math.SG, math.AG. Level 3: graduate.
+
+**Definition.** A line element of the plane is a point together with a line through it. Line elements form a 3-dimensional contact manifold, and a path is tangent to its contact planes when its point moves along its line. A curve lifts to the Legendrian curve, one tangent to the contact planes, of its pairs (point, tangent line).
+
+**Problem.** Polar reciprocation in a conic swaps points with their polar lines, and it sends the lift of a curve to the lift of its dual. So the dual of the dual curve is the original curve, and envelopes of lines become loci of points.
+
+**How the definition helps.** Polar reciprocation is an involutive contactomorphism of line elements, so it carries Legendrian lifts to Legendrian lifts, here of the dual curve (our own). So duality is defined on every lift, even at inflections and cusps, and doing it twice gives the identity (our own). On the plane alone, biduality needs the classical check that the polar of a point is tangent to the dual curve (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Given a conic section in the plane, the polar reciprocation operation is an involutive contact transformation of the contact manifold of line elements in the plane C(ℝ²).”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd ed., Graduate Texts in Mathematics 60, Springer, 1989](https://doi.org/10.1007/978-1-4757-2063-1)
+
+### Maximal nonintegrability caps integral submanifolds at half dimension
+
+**Remember:** Contact planes twist too much to contain anything bigger than half.
+
+*True by definition.* MSC 53D10 (Contact manifolds (general theory)), 58A30. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A contact structure on a (2n + 1)-manifold is a hyperplane field ξ = ker α on which dα is nondegenerate. This is equivalent to the usual condition α∧(dα)ⁿ ≠ 0. So each hyperplane ξₚ with dα is a symplectic vector space, one with a nondegenerate antisymmetric form, of dimension 2n.
+
+**Problem.** Every submanifold tangent to a contact structure on a (2n + 1)-manifold has dimension at most n. In particular, in dimension 3 no surface is tangent to the contact planes, even locally.
+
+**How the definition helps.** If L is tangent to ξ, then α and hence dα vanish on L. So each tangent space of L is a subspace of ξ on which dα vanishes, and such subspaces have dimension at most n. The work sits in the equivalence of α∧(dα)ⁿ ≠ 0 with nondegeneracy of dα on ξ (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “dαₚ is a symplectic form on the hyperplane at p. Yet, we must also have dα\|<sub>L</sub> = 0, so TₚL is a null space in the local hyperplane, which must have dimension at most n.”
+
+**Sources:**
+
+- [H. Geiges, An Introduction to Contact Topology, Cambridge Studies in Advanced Mathematics 109, Cambridge University Press, 2008](https://doi.org/10.1017/CBO9780511611438)
+
+### Maximal nonintegrability joins points by Legendrian curves
+
+**Remember:** One bracket of contact directions reaches every direction.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 53C17, 58A30. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A contact structure ξ = ker α is maximally nonintegrable: dα is nondegenerate on ξ. For fields X, Y tangent to ξ, α(\[X, Y\]) = −dα(X, Y), so at every point some bracket leaves ξ. Thus ξ is bracket-generating in one step: ξ + \[ξ, ξ\] = TM.
+
+**Problem.** On a connected contact manifold, any two points are joined by a smooth curve tangent to the contact structure.
+
+**How the definition helps.** Chow's theorem joins points by tangent curves for every bracket-generating hyperplane field, and the contact condition is bracket generation in one step (our own). So the real work is Chow's theorem, and the contact definition only supplies its hypothesis (our own). The condition rules out integrable fields such as ker dz on ℝ³, whose tangent curves stay in one plane z = constant (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry), [Chow–Rashevsky theorem](https://en.wikipedia.org/wiki/Chow%E2%80%93Rashevsky_theorem). It says: “Another perspective on non-integrability is through the Chow–Rashevskii connectivity theorem, which states that any two points in a contact manifold can be connected by a smooth curve tangent to the contact structure.”
+
+**Sources:**
+
+- [W.-L. Chow, Über Systeme von linearen partiellen Differentialgleichungen erster Ordnung, Mathematische Annalen 117 (1940) 98–105](https://doi.org/10.1007/BF01450011)
+
+### Normal ray pencils are Legendrian, giving Malus–Dupin
+
+**Remember:** Rays are normal to a surface exactly when a Legendrian emits them.
+
+*True by definition. Confidence: medium.* MSC 53D10 (Contact manifolds (general theory)), 78A05. arXiv math.SG, physics.optics. Level 3: graduate.
+
+**Definition.** A ray element is a pair (x, u) of a point x in ℝ³ and a unit direction u. Ray elements form the contact manifold ℝ³ × S² with contact form u·dx. A pencil, a two-parameter family of rays, is normal to a surface exactly when it passes through a Legendrian surface, one on which u·dx vanishes.
+
+**Problem.** A pencil of light rays perpendicular to some surface stays perpendicular to some surface after any number of reflections and refractions (Malus–Dupin). So rays from a point source stay normal to wavefronts through any optical system.
+
+**How the definition helps.** Reflections and refractions act on ray elements by contactomorphisms, maps that preserve the contact planes, and these carry Legendrian surfaces to Legendrian surfaces. Free propagation is the Reeb flow, also a contactomorphism, so the outgoing pencil is again normal to a surface, away from focal points (our own). The classical proof compares optical path lengths with Fermat's principle; here the work moves into checking that each reflection and refraction is a contactomorphism (our own).
+
+**Wikipedia:** [Malus–Dupin theorem](https://en.wikipedia.org/wiki/Malus%E2%80%93Dupin_theorem). It says: “If a pencil of light rays is perpendicular to a surface, then this pencil is a Legendrian submanifold, and vice versa. Every refractive and reflective surface is a contactomorphism on the manifold. Contactomorphisms preserve Legendrian submanifolds.”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd ed., Graduate Texts in Mathematics 60, Springer, 1989](https://doi.org/10.1007/978-1-4757-2063-1)
+- [C.-M. Marle, The works of William Rowan Hamilton in geometrical optics and the Malus–Dupin theorem, Banach Center Publications 110 (2016) 177–191](https://doi.org/10.4064/bc110-0-12)
+
+### Regular contact forms come from prequantization bundles
+
+**Remember:** When every Reeb orbit is a circle, contact means circle bundle.
+
+*True by definition.* MSC 53D10 (Contact manifolds (general theory)), 53D05. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The Reeb field R of a contact form α is fixed by α(R) = 1 and dα(R, ·) = 0. The weak definition calls α regular when the space of Reeb orbits is a manifold. The strong definition asks that R generate a free circle action.
+
+**Problem.** If R generates a free circle action on P, then M = P/S¹ has a unique symplectic form ω with dα = π\*ω. This ω is integral, with integer periods, and every integral symplectic manifold arises this way, as the base of a prequantization circle bundle.
+
+**How the definition helps.** The strong definition makes the Reeb flow a free circle action that preserves α, so dα descends to a closed form ω on M (our own). This ω is nondegenerate because ker α maps isomorphically onto TM, and Chern–Weil theory gives integrality (our own). The weak definition needs P compact to make all Reeb orbits circles of one period (our own).
+
+**Wikipedia:** [Boothby-Wang construction](https://en.wikipedia.org/wiki/Boothby-Wang_construction). It says: “Let (P,α) be a compact regular contact manifold. Then π: P → M:= P/S¹ is a principal S¹-bundle and there is a unique integral symplectic form ω ∈ Ω²(M) such that dα = π\*ω. If one adopts the stronger condition of regularity, i.e. requires that the Reeb vector field generates a free S¹-action, the compactness hypothesis is not needed.”
+
+**Sources:**
+
+- [W. M. Boothby and H. C. Wang, On contact manifolds, Annals of Mathematics 68 (1958) 721–734](https://doi.org/10.2307/1970165)
+- [H. Geiges, An Introduction to Contact Topology, Cambridge Studies in Advanced Mathematics 109, Cambridge University Press, 2008](https://doi.org/10.1017/CBO9780511611438)
+
 ### Transverse Liouville fields give contact forms
 
 **Remember:** A transverse expanding field makes λ a contact form.
@@ -2205,6 +2647,24 @@
 **Sources:**
 
 - [A note on the geometry of the two-body problem on S², Theorem 4.2](https://arxiv.org/abs/2310.02659v2)
+
+### Clean intersection makes reduced Lagrangians and composed correspondences Lagrangian
+
+**Remember:** Clean means the intersection is as smooth as its tangent spaces.
+
+*Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D20. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Submanifolds L and N intersect cleanly if L ∩ N is a submanifold whose tangent spaces are the intersections of those of L and N. This is weaker than transversality and allows L to lie inside N.
+
+**Problem.** Let N be coisotropic, so each tangent space contains its own ω-orthogonal complement, and let L be a Lagrangian meeting N cleanly. If the image of L ∩ N in the leaf space of the null foliation of N is a submanifold, it is Lagrangian.
+
+**How the definition helps.** Cleanness reduces the statement to linear algebra at each point, where the reduction of a Lagrangian subspace is always Lagrangian (our own). Composing two correspondences is the case where N is the product of M₀, the diagonal of M₁ × M₁, and M₂ (our own). So a clean composition is locally a Lagrangian submanifold, even when transversality fails (our own).
+
+**Paper or page:** [A review on coisotropic reduction in Symplectic, Cosymplectic, Contact and Co-contact Hamiltonian systems](https://arxiv.org/abs/2308.07637v3). It says: “Let L ↪︎ M be a Lagrangian submanifold and N ↪︎ M a coisotropic submanifold. If they have clean intersection and L<sub>N</sub>:= π(L ∩ N) is a submanifold of N/ℱ, L<sub>N</sub> is Lagrangian.”
+
+**Sources:**
+
+- [A. Weinstein, Symplectic manifolds and their Lagrangian submanifolds, Adv. Math. 6 (1971) 329–346](https://doi.org/10.1016/0001-8708(71)90020-X)
 
 ### Conormal bundles are Lagrangian
 
@@ -2256,6 +2716,58 @@
 
 - [Normal invariant of nearby Lagrangians via twisted derivative, Corollary 3.34](https://arxiv.org/abs/2505.12515v2)
 
+### Graphs as Lagrangians turn fixed points of near-identity maps into critical points
+
+**Remember:** A fixed point is where the graph meets the diagonal.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 37J11. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The graph of a symplectomorphism φ of (M, ω) is a Lagrangian submanifold of M⁻ × M, where M⁻ has the form −ω. Its intersections with the diagonal are the fixed points of φ. Weinstein's theorem identifies a neighbourhood of the diagonal with one of the zero section in T\*M.
+
+**Problem.** Let φ be a Hamiltonian diffeomorphism of a closed symplectic manifold M, joined to the identity by a Hamiltonian isotopy of C¹-small maps. Then the fixed points of φ are the critical points of a function on M, so they number at least cup-length(M) + 1.
+
+**How the definition helps.** Near the diagonal, the graph of φ becomes the graph of a closed 1-form, which is exact because the isotopy is Hamiltonian (our own). So the 1-form is dS, and the fixed points of φ are the critical points of S, which Lusternik–Schnirelmann theory counts (our own). For maps far from the identity, such bounds need Floer theory, and the general cup-length bound is still open (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “Lagrangian Floer homology in which the ambient manifold is M crossed with M and the Lagrangian submanifolds are the diagonal and the graph of the symplectomorphism.”
+
+**Sources:**
+
+- [A. Weinstein, Lectures on Symplectic Manifolds, CBMS Regional Conference Series in Mathematics 29 (1977)](https://doi.org/10.1090/cbms/029)
+
+### Half weights at endpoints make the Maslov index defined for every path
+
+**Remember:** Endpoints count half, so paths split without loss.
+
+*True by definition. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
+
+**Definition.** Fix a Lagrangian plane V. At each time where a path Λ(t) of Lagrangian planes meets V, the crossing form is a quadratic form on Λ(t) ∩ V. The Robbin–Salamon index sums the signatures of these forms, and crossings at the two endpoints count with weight one half.
+
+**Problem.** The Robbin–Salamon index is defined for every path, also when the endpoints are not transverse to V, and it is additive under concatenation. For the graphs of a path A(t) of symmetric matrices, relative to the horizontal plane, it equals ½ sign A(b) − ½ sign A(a).
+
+**How the definition helps.** A crossing at the junction of two paths counts half in each, so the indices add with no transversality condition there (our own). Arnold's older definition needs transverse endpoints, and the work moves into proving the new sum homotopy invariant with fixed endpoints (our own). For graphs of symmetric matrices, each crossing form is the derivative of A on the kernel of A, which gives the formula (our own).
+
+**Wikipedia:** [Maslov index](https://en.wikipedia.org/wiki/Maslov_index). It says: “Additivity under concatenation: if two paths can be concatenated, the Maslov index of the concatenated path is the sum of the indices.”
+
+**Sources:**
+
+- [J. Robbin and D. Salamon, The Maslov index for paths, Topology 32 (1993) 827–844](https://doi.org/10.1016/0040-9383(93)90052-W)
+
+### Lagrangian normal bundles turn self-intersection into minus the Euler characteristic
+
+**Remember:** Pushing a Lagrangian off itself is choosing a one-form.
+
+*True by definition. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 57R20, 57K43. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Lagrangian surface L in a symplectic 4-manifold, one with a closed nondegenerate 2-form ω, is a surface on which ω vanishes. The map v ↦ ω(v, ·), restricted to TL, identifies the normal bundle of L with the cotangent bundle T\*L (our own).
+
+**Problem.** A closed oriented Lagrangian surface L in a symplectic 4-manifold has self-intersection number \[L\]·\[L\] = −χ(L) (our own). So the torus is the only closed orientable Lagrangian surface in ℂ², and ℂP² contains no Lagrangian sphere (our own).
+
+**How the definition helps.** Self-intersection is the normal Euler number, as the quote says, and the Lagrangian condition makes the normal bundle T\*L (our own). A generic one-form on L has χ(L) signed zeros, and the orientation of T\*L as a normal bundle flips the sign (our own). Without the Lagrangian condition the normal bundle is not tied to TL, and the work sits in the general fact and Poincaré–Hopf (our own).
+
+**Wikipedia:** [Euler class](https://en.wikipedia.org/wiki/Euler_class), [Weinstein's neighbourhood theorem](https://en.wikipedia.org/wiki/Weinstein%27s_neighbourhood_theorem). It says: “if Y is a compact submanifold, then the Euler class of the normal bundle of Y in X is naturally identified with the self-intersection of Y in X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Loop classes make the Maslov index invariant under deformation
 
 **Remember:** The index is the loop’s homotopy class, read as an integer.
@@ -2273,6 +2785,42 @@
 **Sources:**
 
 - [Robbin, J.; Salamon, D. (1993). The Maslov index for paths. Topology 32(4), 827–844.](https://doi.org/10.1016/0040-9383(93)90052-W)
+
+### The boundary Maslov index makes Riemann–Roch hold on surfaces with boundary
+
+**Remember:** The Maslov index is the first Chern number for boundary conditions.
+
+*Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 32Q65. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let E be a complex vector bundle over a compact Riemann surface Σ with boundary. Let F be a totally real subbundle over the boundary, a real subbundle with F ⊕ iF = E. The boundary Maslov index μ(E, F) measures how F winds along the boundary circles, in a trivialization of E.
+
+**Problem.** Every real Cauchy–Riemann operator on E with boundary values in F has Fredholm index rχ(Σ) + μ(E, F), where r is the rank of E. So parametrized holomorphic disks with boundary on a Lagrangian in a 2n-manifold have expected dimension n + μ.
+
+**How the definition helps.** The boundary Maslov index plays the role that twice the first Chern number plays on closed surfaces, so one formula covers both cases (our own). Both sides add under gluing along boundary circles, so the formula reduces to the disk and to closed surfaces (our own). This is why the Maslov index sets the dimension counts in Lagrangian Floer theory (our own).
+
+**Paper or page:** [Free-Boundary Problems for Holomorphic Curves in the 6-Sphere](https://arxiv.org/abs/2105.10562v2). It says: “Then the real Fredholm index of 𝒟<sub>F</sub> is Ind(𝒟<sub>F</sub>) = rχ(Σ) + μ(E,F), where χ(Σ) is the Euler characteristic and μ(E,F) is the boundary Maslov index.”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004), Appendix C](https://doi.org/10.1090/coll/052)
+
+### The Maslov correction makes torus quantization coordinate-free and exact for oscillators
+
+**Remember:** Every turning point costs a quarter of a quantum.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 81Q20. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** The action Iᵢ of a Lagrangian torus is the integral of p dq over its i-th basic loop, divided by 2π. EBK quantization asks that Iᵢ = ħ(nᵢ + μᵢ/4) for integers nᵢ. Here μᵢ, the Maslov index of the loop, counts turning points where the torus folds over position space.
+
+**Problem.** The EBK rule depends only on the Lagrangian torus, not on the chosen loops or position coordinates, because each μᵢ comes from the Maslov class. For the harmonic oscillator μ = 2, and the rule gives the exact levels E = ħω(n + 1/2).
+
+**How the definition helps.** The Maslov term records the phase jump at each turning point, where the WKB short-wavelength approximation breaks down. The old Bohr–Sommerfeld rule I = nħ leaves out this term, so it gives E = nħω and loses the zero-point energy (our own). The work moves into Maslov's construction of global semiclassical states from local WKB pieces (our own).
+
+**Wikipedia:** [Einstein–Brillouin–Keller method](https://en.wikipedia.org/wiki/Einstein%E2%80%93Brillouin%E2%80%93Keller_method). It says: “EBK quantization is an improvement from Bohr–Sommerfeld quantization which did not consider the caustic phase jumps at classical turning points.”
+
+**Sources:**
+
+- [J. B. Keller, Corrected Bohr–Sommerfeld quantum conditions for nonseparable systems, Ann. Physics 4 (1958) 180–188](https://doi.org/10.1016/0003-4916(58)90032-0)
 
 ### The tautological 1-form makes graphs of closed 1-forms Lagrangian
 
@@ -2292,6 +2840,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Treating conjugate points as Maslov crossings makes the Morse index theorem topological
+
+**Remember:** Conjugate points are where the moving plane hits the vertical plane.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 58E10, 53C22. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** Along a geodesic, the linearized geodesic flow moves the vertical plane σ to a path λ(t) of Lagrangian planes. Here σ holds the variations that vanish at the start. A conjugate point is a time when λ(t) meets σ nontrivially, with multiplicity dim(λ(t) ∩ σ).
+
+**Problem.** The Morse index of a geodesic segment, or of a Sturm–Liouville problem, equals the number of conjugate points inside the interval, counted with multiplicity. Both numbers equal a Maslov index of the path λ, with a suitable rule at the start point.
+
+**How the definition helps.** Positive kinetic energy makes every crossing of λ with σ positive, so the Maslov index is the plain count of conjugate points (our own). The Maslov index is a homotopy invariant, so Arnold deforms the problem to one where the index is known (our own). The work moves into showing that the Morse index also equals this Maslov index (our own).
+
+**Paper or page:** [Revisiting Arnold's topological proof of the Morse index theorem](https://arxiv.org/abs/2307.00655v1), [Revisiting Arnold's topological proof of the Morse index theorem](https://arxiv.org/abs/2307.00655v1). It says: “if we also assume that λ(a), λ(b) ∈ Λ⁰(σ), then Ind(λ) = ∑<sub>t ∈ (a,b)</sub> dim(λ(t) ∩ σ), where the sum above has finitely many non-zero terms.”
+
+**Sources:**
+
+- [J. J. Duistermaat, On the Morse index in variational calculus, Adv. Math. 21 (1976) 173–195](https://doi.org/10.1016/0001-8708(76)90074-8)
+- [V. I. Arnold, Characteristic class entering in quantization conditions, Funct. Anal. Appl. 1 (1967) 1–13](https://doi.org/10.1007/BF01075861)
+
 ### Vanishing first cohomology forces Lagrangian intersections
 
 **Remember:** A global primitive reaches extrema, where the nearby graph meets the original.
@@ -2305,6 +2872,42 @@
 **How the definition helps.** A function on a compact manifold has a maximum and a minimum; they are distinct critical points unless f is constant, when every point is an intersection (our own). The Lagrangian neighborhood theorem gives the graph description (our own). On a torus, the graph of a small nonzero constant one-form misses the zero section (our own).
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “every Lagrangian submanifold of M which is C¹-close to X intersects X in at least two points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A nondegenerate two-form exists exactly when an almost complex structure exists
+
+**Remember:** Sp(2n, ℝ) and GL(n, ℂ) both shrink onto the same U(n).
+
+*True by definition.* MSC 53D15 (Almost contact and almost symplectic manifolds), 53D05, 32Q60. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** An almost symplectic structure on a 2n-manifold is a nondegenerate 2-form, with no closedness condition. Equivalently, the tangent bundle gets transition maps in Sp(2n, ℝ), the group of linear maps that preserve a fixed nondegenerate 2-form. The groups Sp(2n, ℝ) and GL(n, ℂ) share the maximal compact subgroup U(n).
+
+**Problem.** A 2n-manifold carries a nondegenerate 2-form if and only if it carries an almost complex structure, a field of maps J with J² = −1. For example, the 4-sphere carries neither (our own).
+
+**How the definition helps.** Both groups deformation retract onto U(n), so a structure with either group is, up to homotopy, the same as one with group U(n) (our own). Concretely, polar decomposition turns ω and a metric into a J, and a J-invariant metric g turns J into the form g(Ju, v) (our own). The work is in these retractions, and the 4-sphere fact is a theorem of Ehresmann and Hopf (our own).
+
+**nLab:** [almost Hermitian structure](https://ncatlab.org/nlab/show/almost+Hermitian+structure). It says: “Conversely, since the maximal compact subgroup inclusion is a homotopy equivalence, there is no obstruction to lifting an almost complex structure to an almost Hermitian structure.”
+
+**Wikipedia:** [Almost symplectic manifold](https://en.wikipedia.org/wiki/Almost_symplectic_manifold). It says: “Almost symplectic manifolds. Can always be extended to an almost Hermitian structure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brackets of fibrewise linear functions turn Lie algebroids into linear Poisson structures
+
+**Remember:** Sections of A are the linear functions on its dual.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.DG, math.SG. Level 3: graduate.
+
+**Definition.** A Poisson structure on a vector bundle's total space is fibrewise linear when brackets of fibrewise linear functions are again fibrewise linear.
+
+**Problem.** The dual of a Lie algebroid A carries a unique fibrewise linear Poisson structure whose bracket on linear functions is the bracket of sections. Every fibrewise linear Poisson structure on a vector bundle arises this way from a unique Lie algebroid on the dual bundle.
+
+**How the definition helps.** Linear functions on the dual are sections of A, and the Leibniz rule fixes their brackets with base functions through the anchor (our own). So the Lie algebroid is read off from the bracket, and Jacobi for linear functions is Jacobi for sections (our own). The usual coordinate definition, with coefficients linear in the fibre variables, hides this; the work sits in showing that the two agree (our own).
+
+**nLab:** [Lie-Poisson structure](https://ncatlab.org/nlab/show/Lie-Poisson+structure). It says: “More generally, for 𝔞 a Lie algebroid the fiberwise dual 𝔞\* inherits such a Poisson manifold structure.”
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “The class of vector bundles with linear Poisson structures coincides actually with that of (dual of) Lie algebroids.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2323,6 +2926,26 @@
 **Wikipedia:** [Hamiltonian vector field](https://en.wikipedia.org/wiki/Hamiltonian_vector_field). It says: “which means that the vector space of differentiable functions on M, endowed with the Poisson bracket, has the structure of a Lie algebra over ℝ”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Defining leaves by Hamiltonian vector fields splits Poisson manifolds into symplectic leaves
+
+**Remember:** Wherever Hamiltonian flows can carry you, you stay inside one leaf.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53C12. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A symplectic leaf of a Poisson manifold is a maximal connected immersed submanifold. At each point, its tangent space is spanned by the Hamiltonian vector fields there. The Hamiltonian vector field of f is the derivation g ↦ {f, g}.
+
+**Problem.** Every Poisson manifold is a disjoint union of symplectic leaves, which may have different dimensions. On each leaf the Poisson bracket is the bracket of a symplectic form.
+
+**How the definition helps.** Hamiltonian flows preserve the bracket, so they carry the span of Hamiltonian fields to itself; the Stefan–Sussmann theorem then makes this span integrable (our own). The leaf form must give {f, g} on Hamiltonian vectors, and it is nondegenerate because these vectors fill the leaf (our own). So the work sits in the Stefan–Sussmann theorem, or locally in the Weinstein splitting theorem (our own).
+
+**nLab:** [symplectic leaf](https://ncatlab.org/nlab/show/symplectic+leaf). It says: “For (X, {-,-}) a Poisson manifold, a symplectic leaf is a maximal connected submanifold Y ↪︎ X on which the Poisson bracket restricts to a symplectic manifold structure.”
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “A Poisson manifold is naturally partitioned into regularly immersed symplectic manifolds of possibly different dimensions, called its symplectic leaves. These arise as the maximal integral submanifolds of the completely integrable singular distribution spanned by the Hamiltonian vector fields.”
+
+**Sources:**
+
+- [A. Weinstein, The local structure of Poisson manifolds, J. Differential Geom. 18 (1983) 523–557](https://doi.org/10.4310/jdg/1214437787)
 
 ### Defining Poisson bivectors by \[π,π\] = 0 makes \[π,−\] square to zero
 
@@ -2358,6 +2981,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Left minus right invariant extensions of r are automatically multiplicative
+
+**Remember:** Left and right translations commute, so the cross terms cancel.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 17B62. arXiv math.SG, math.QA. Level 3: graduate.
+
+**Definition.** For r in 𝔤 ∧ 𝔤, the Sklyanin bivector on a Lie group G is rᴸ − rᴿ. Here rᴸ and rᴿ are the left-invariant and right-invariant bivectors equal to r at the identity.
+
+**Problem.** The Sklyanin bivector is always multiplicative. On a connected group it is Poisson, making G a Poisson–Lie group, exactly when \[r, r\] is invariant under the adjoint action (Drinfeld).
+
+**How the definition helps.** In the multiplicativity formula, the cross terms mix left and right translations, and they cancel because left and right translations commute (our own). rᴸ alone is never multiplicative for r ≠ 0, since it does not vanish at e (our own). So only the Poisson condition is left: \[π, π\] = \[r, r\]ᴸ − \[r, r\]ᴿ, which vanishes exactly when \[r, r\] is adjoint-invariant (our own).
+
+**Paper or page:** [On the classical and quantum momentum map](https://arxiv.org/abs/1203.4112v1). It says: “Then (G,π<sub>G</sub>) is a Poisson Lie group if and only if \[r, r\] ∈ 𝔤∧𝔤∧𝔤 is Ad-invariant. In particular, when r satisfies the Yang-Baxter equation, it defines a multiplicative Poisson structure on G.”
+
+**Sources:**
+
+- [On the classical and quantum momentum map, arXiv:1203.4112v1](https://arxiv.org/abs/1203.4112v1)
+- [V. G. Drinfel'd, Hamiltonian structures on Lie groups, Lie bialgebras and the geometric meaning of the classical Yang–Baxter equations, in Yang–Baxter Equation in Integrable Systems, World Scientific (1990) 222–225](https://doi.org/10.1142/9789812798336_0009)
+
 ### Multiplicativity makes inversion antisymplectic
 
 **Remember:** Composing an arrow with its inverse adds their forms to zero.
@@ -2373,6 +3015,47 @@
 **nLab:** [symplectic groupoid](https://ncatlab.org/nlab/show/symplectic+groupoid). It says: “the alternating sum of its canonical pullbacks to the space X₂ of composable morphisms vanishes”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicativity makes the tangent space of a Poisson–Lie group a Lie bialgebra
+
+**Remember:** The cocycle condition is multiplicativity differentiated at the identity.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 17B62. arXiv math.SG, math.QA. Level 3: graduate.
+
+**Definition.** A Lie bialgebra is a Lie algebra 𝔤 with a Lie bracket on its dual 𝔤\*. Let δ: 𝔤 → 𝔤 ∧ 𝔤 be the transpose of that bracket. It must satisfy δ(\[x, y\]) = x · δ(y) − y · δ(x), where 𝔤 acts on 𝔤 ∧ 𝔤 by the adjoint action.
+
+**Problem.** The Lie algebra of a Poisson–Lie group is a Lie bialgebra, whose cobracket is the derivative of the bivector at the identity. For connected, simply connected groups, every Lie bialgebra comes from exactly one Poisson–Lie structure (Drinfeld).
+
+**How the definition helps.** Multiplicativity makes the right-translated bivector a group 1-cocycle; its derivative at e is a Lie algebra 1-cocycle, the bialgebra condition (our own). The dual bracket satisfies Jacobi because it is the linear part of π at a zero (our own). The converse integrates the cocycle back to the group, which needs simple connectivity.
+
+**Wikipedia:** [Lie bialgebra](https://en.wikipedia.org/wiki/Lie_bialgebra). It says: “The Lie algebra 𝔤 of a Poisson–Lie group G has a natural structure of Lie bialgebra.”
+
+**Paper or page:** [On the classical and quantum momentum map](https://arxiv.org/abs/1203.4112v1). It says: “If (G,π<sub>G</sub>) is a Poisson Lie group, then the linearization of π<sub>G</sub> at e defines a Lie algebra structure on 𝔤\* such that (𝔤,𝔤\*) form a Lie bialgebra over 𝔤, called the tangent Lie bialgebra to (G,π<sub>G</sub>). Conversely, if G is connected and simply connected, then every Lie bialgebra (𝔤,𝔤\*) over 𝔤 defines a unique multiplicative Poisson structure π<sub>G</sub> on G such that (𝔤,𝔤\*) is the tangent Lie bialgebra to the Poisson Lie group (G,π<sub>G</sub>).”
+
+**Sources:**
+
+- [On the classical and quantum momentum map, arXiv:1203.4112v1](https://arxiv.org/abs/1203.4112v1)
+- [V. G. Drinfel'd, Hamiltonian structures on Lie groups, Lie bialgebras and the geometric meaning of the classical Yang–Baxter equations, in Yang–Baxter Equation in Integrable Systems, World Scientific (1990) 222–225](https://doi.org/10.1142/9789812798336_0009)
+
+### On a symplectic manifold Poisson cohomology is de Rham cohomology
+
+**Remember:** Poisson cohomology is the de Rham theory of the cotangent algebroid.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53D05. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** Poisson cohomology is the cohomology of multivector fields under the differential \[π, −\]. Here \[π, −\] is the Schouten bracket with the Poisson bivector π, the tensor with {f, g} = π(df, dg). Equivalently, it is the Lie algebroid cohomology of the cotangent bundle.
+
+**Problem.** For a symplectic manifold, Poisson cohomology is isomorphic to de Rham cohomology in every degree. The map π♯, which sends a covector α to the vector π(α, −), gives the isomorphism.
+
+**How the definition helps.** Defined as Lie algebroid cohomology of T\*M, it is carried by the algebroid isomorphism π♯ onto TM, whose cohomology is de Rham cohomology (our own). With the multivector definition one must check that π♯ turns d into \[π, −\], up to sign (our own). So the work sits in the theorem that the two definitions agree, which uses \[π, π\] = 0 (our own).
+
+**nLab:** [Poisson cohomology](https://ncatlab.org/nlab/show/Poisson+cohomology). It says: “its Poisson cohomology (Lichnerowicz) is equivalently the Lie algebroid cohomology H•(CE(𝔓)) of the corresponding Poisson Lie algebroid 𝔓”
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “In the nondegenerate case, this becomes an isomorphism, so that the Poisson cohomology of a symplectic manifold fully recovers its de Rham cohomology.”
+
+**Sources:**
+
+- [A. Lichnerowicz, Les variétés de Poisson et leurs algèbres de Lie associées, J. Differential Geom. 12 (1977) 253–300](https://doi.org/10.4310/jdg/1214433987)
 
 ### Poisson maps have coisotropic graphs
 
@@ -2391,6 +3074,60 @@
 **Sources:**
 
 - [Lie groups of Poisson diffeomorphisms, Proposition 1.2](https://arxiv.org/abs/2108.11490v2)
+
+### A momentum map is exactly an equivariantly closed extension of ω
+
+**Remember:** Add the momentum map, and ω becomes equivariantly closed.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 55N91. arXiv math.SG, math.AT. Level 3: graduate.
+
+**Definition.** In the Cartan model of equivariant cohomology, an equivariant form is a G-equivariant polynomial map from 𝔤 to differential forms. Its differential is (Dα)(ξ) = d(α(ξ)) − ξ⌟α(ξ), where ξ⌟ inserts the vector field of ξ. The candidate extension of ω is ξ ↦ ω + ⟨μ, ξ⟩ for a map μ from M to 𝔤\*.
+
+**Problem.** A map μ: M → 𝔤\* is an equivariant momentum map exactly when ω + ⟨μ, ·⟩ is equivariantly closed in the Cartan model. So a symplectic action is Hamiltonian if and only if ω has an equivariantly closed extension.
+
+**How the definition helps.** Since dω = 0, D(ω + ⟨μ, ξ⟩) equals d⟨μ, ξ⟩ − ξ⌟ω, so being closed is exactly the momentum map equation (our own). Membership in the Cartan complex means equivariance in ξ, which is equivariance of μ (our own). So the usual definition of a momentum map becomes a cohomology condition, and localization formulas apply to ω + μ (our own).
+
+**nLab:** [Hamiltonian action](https://ncatlab.org/nlab/show/Hamiltonian+action). It says: “By Atiyah &amp; Bott, the action of a Lie algebra on a symplectic manifold is Hamiltonian if and only if the symplectic form has a (basic, closed) extension to equivariant de Rham cohomology.”
+
+**Sources:**
+
+- [M. Atiyah and R. Bott, The moment map and equivariant cohomology, Topology 23 (1984) 1–28](https://doi.org/10.1016/0040-9383(84)90021-1)
+
+### A perfect Lie algebra makes every symplectic action Hamiltonian
+
+**Remember:** A perfect Lie algebra is made of brackets, and brackets are Hamiltonian.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 17B56. arXiv math.SG, math.RT. Level 3: graduate.
+
+**Definition.** A Lie algebra 𝔤 is perfect when 𝔤 = \[𝔤, 𝔤\], that is, when every element is a sum of brackets. This says that the first Lie algebra cohomology H¹(𝔤; ℝ) vanishes, and Whitehead's first lemma gives it for every semisimple 𝔤.
+
+**Problem.** A symplectic action of a Lie group with perfect Lie algebra always has a momentum map. That is, the vector field ξ·p of each ξ in 𝔤 is Hamiltonian, whatever the topology of the manifold.
+
+**How the definition helps.** The map sending ξ to the de Rham class of ω(ξ·p, ·) kills brackets, since brackets of symplectic vector fields are Hamiltonian (our own). On a perfect Lie algebra this map is therefore zero, and Hamiltonians chosen on a basis give μ (our own). The 2-torus translating itself with its area form is symplectic but not Hamiltonian, and its Lie algebra is not perfect (our own).
+
+**Wikipedia:** [Whitehead's lemma (Lie algebra)](https://en.wikipedia.org/wiki/Whitehead%27s_lemma_%28Lie_algebra%29). It says: “In terms of Lie algebra cohomology, this is, by definition, equivalent to the fact that H¹(𝔤,V) = 0 for every such representation.”
+
+**Sources:**
+
+- [A. Cannas da Silva, Lectures on Symplectic Geometry, Lecture Notes in Mathematics 1764, Springer (2001), Part X, Moment maps revisited](https://doi.org/10.1007/11310822_11)
+
+### Building toric manifolds as reductions of ℂᵈ makes them Kähler
+
+**Remember:** Divide flat ℂᵈ by a unitary subtorus and Kähler survives.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 14M25, 53C55. arXiv math.SG, math.AG. Level 3: graduate.
+
+**Definition.** Delzant's construction realizes a Delzant polytope with d facets as the symplectic reduction of ℂᵈ by a subtorus K of the d-torus. K is the kernel of the map sending the i-th circle to the i-th facet normal, and it acts by unitary maps.
+
+**Problem.** Every compact symplectic toric manifold has a torus-invariant integrable complex structure compatible with ω, so it is Kähler. As a complex manifold it is the smooth projective toric variety of the polytope.
+
+**How the definition helps.** Built as a reduction of flat ℂᵈ, not from the action alone, the model is Kähler at once, as holomorphic isometries keep Kähler (our own). Delzant's uniqueness theorem carries this to every toric manifold with the same polytope, and that is where the work went (our own). The second claim also needs the theorem that this reduction agrees with the algebraic quotient that builds the toric variety (our own).
+
+**Paper or page:** [Monotone Symplectic Six-Manifolds that admit a Hamiltonian GKM Action are diffeomorphic to Smooth Fano Threefolds](https://arxiv.org/abs/2308.10541). It says: “Let (M,ω,T,φ) be a compact symplectic toric manifold. The space admits an integrable almost complex structure that is T-invariant and compatible with ω and the moment map polytope is a smooth polytope.”
+
+**Sources:**
+
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
 
 ### Curvature is the moment map, so flat connections form a symplectic quotient
 
@@ -2411,6 +3148,79 @@
 - [A. Thomas, Higher Complex Structures and Higher Teichmüller Theory, arXiv:2007.00382 (2020)](https://arxiv.org/abs/2007.00382)
 - [A. Thomas, A Gentle Introduction to the Non-Abelian Hodge Correspondence, arXiv:2208.05940 (2022)](https://arxiv.org/abs/2208.05940)
 - [M. F. Atiyah and R. Bott, The Yang–Mills equations over Riemann surfaces, Philosophical Transactions of the Royal Society A 308 (1983) 523–615](https://doi.org/10.1098/rsta.1983.0017)
+
+### Defining the symplectic cut as a reduction makes it symplectic automatically
+
+**Remember:** Cut by reducing X × ℂ, not by gluing by hand.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 3: graduate.
+
+**Definition.** Lerman's symplectic cut of a Hamiltonian circle space (X, ω, μ) at level ε is the symplectic reduction of X × ℂ at level ε. Here the circle acts on both factors, with moment map μ(x) − \|z\|².
+
+**Problem.** If the circle acts freely on the level set μ = ε, the cut space is a symplectic manifold. It contains the region μ &gt; ε as an open dense part, and the reduced space at ε as a symplectic submanifold of codimension two.
+
+**How the definition helps.** The cut is a reduced space, so the Marsden–Weinstein–Meyer theorem gives its symplectic form at once (our own). Where z ≠ 0 one rotates z to be positive, so that part is the region μ &gt; ε (our own). Where z = 0 one gets the reduced space at ε, with no hand-built model for the form near the boundary (our own).
+
+**Wikipedia:** [Symplectic cut](https://en.wikipedia.org/wiki/Symplectic_cut). It says: “The symplectic cut is an elegant means of making the neighborhood-deletion/boundary-collapse process symplectically rigorous.”
+
+**Sources:**
+
+- [E. Lerman, Symplectic cuts, Mathematical Research Letters 2 (1995) 247–258](https://doi.org/10.4310/MRL.1995.v2.n3.a2)
+
+### Dividing by the level's stabilizer makes reduction at nonzero values work
+
+**Remember:** Divide only by the symmetries that keep the level in place.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let μ be an equivariant momentum map, a map to 𝔤\* that generates the action and satisfies μ(g·p) = Ad\*(g)μ(p). The reduced space at α in 𝔤\* is μ⁻¹(α)/Gα, where Gα is the subgroup of G that fixes α under the coadjoint action Ad\*. By equivariance, Gα is exactly the part of G that preserves the level μ⁻¹(α).
+
+**Problem.** If Gα acts freely and properly on μ⁻¹(α), then μ⁻¹(α)/Gα is a symplectic manifold. Its form pulls back to the restriction of ω to μ⁻¹(α).
+
+**How the definition helps.** On the level, the directions that ω pairs to zero with the level are the Gα-orbit directions, so ω descends (our own). Dividing by all of G fails, since g carries μ⁻¹(α) onto μ⁻¹(g·α) (our own). For rotations of space, only the rotations about a nonzero angular momentum vector preserve its level (our own).
+
+**Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1), [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “Suppose that G\_α acts freely and properly on μ⁻¹(α). Then there is a unique symplectic structure ω\_α on M//\_αG := μ⁻¹(α)/G\_α such that i\*ω = π\*ω\_α”
+
+**Sources:**
+
+- [J. Marsden and A. Weinstein, Reduction of symplectic manifolds with symmetry, Reports on Mathematical Physics 5 (1974) 121–130](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Equivariance makes the zero level invariant, unlike plane translations
+
+**Remember:** An equivariant momentum map moves exactly as the group moves.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A momentum map μ: M → 𝔤\* for an action of G on (M, ω) satisfies d⟨μ, ξ⟩ = ω(ξ·p, ·) for each ξ in 𝔤. Here ξ·p is the velocity of p under the flow of ξ. The map μ is equivariant when μ(g·p) = Ad\*(g)μ(p), where Ad\* is the coadjoint action of G on 𝔤\*.
+
+**Problem.** For an equivariant momentum map, the zero level μ⁻¹(0) is invariant under G. So the reduced space μ⁻¹(0)/G is defined.
+
+**How the definition helps.** The coadjoint action fixes 0, so equivariance gives μ(g·p) = 0 whenever μ(p) = 0. With dx∧dy, plane translations have momentum maps μ(x, y) = (y, −x) + c, whose levels are points that translations move (our own). The coadjoint action of this abelian group is trivial, so equivariance would force μ to be constant, and no choice of c helps (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map). It says: “with equivariant momentum map μ : M → 𝔤\*. From the Hamiltonian condition, it follows that μ⁻¹(0) is invariant under G.”
+
+**Sources:**
+
+- [J. Marsden and A. Weinstein, Reduction of symplectic manifolds with symmetry, Reports on Mathematical Physics 5 (1974) 121–130](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Equivariant closedness makes the Duistermaat–Heckman formula a case of localization
+
+**Remember:** Exponentiate the equivariant symplectic form, then integrate over fixed points.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 55N91. arXiv math.SG. Level 3: graduate.
+
+**Definition.** For a circle action with Hamiltonian H, the equivariant symplectic form adds tH to ω, up to sign, where t is the Lie algebra coordinate. It is equivariantly closed because H is a moment map, so its exponential is too.
+
+**Problem.** Let a circle of length 2π act on a compact symplectic 2n-manifold with Hamiltonian H and isolated fixed points. Then ∫ e⁻ᵗᴴ ωⁿ/n! is (2π)ⁿ times the sum over fixed points p of e⁻ᵗᴴ⁽ᵖ⁾/(tⁿ w(p)), where w(p) multiplies the weights at p.
+
+**How the definition helps.** Because the exponential of the equivariant symplectic form is equivariantly closed, the Atiyah–Bott–Berline–Vergne localization formula reduces its integral to the fixed points. At a fixed point p the form restricts to e⁻ᵗᴴ⁽ᵖ⁾, and the equivariant Euler class there is tⁿ w(p) (our own). The work went into the localization theorem; Duistermaat and Heckman's own proof studied how reduced spaces vary (our own).
+
+**Wikipedia:** [Duistermaat–Heckman formula](https://en.wikipedia.org/wiki/Duistermaat%E2%80%93Heckman_formula), [Localization formula for equivariant cohomology](https://en.wikipedia.org/wiki/Localization_formula_for_equivariant_cohomology). It says: “showed how to deduce the Duistermaat–Heckman formula from a localization theorem for equivariant cohomology.”
+
+**Sources:**
+
+- [J. J. Duistermaat and G. J. Heckman, On the variation in the cohomology of the symplectic form of the reduced phase space, Inventiones Mathematicae 69 (1982) 259–268](https://doi.org/10.1007/BF01399506)
+- [M. F. Atiyah and R. Bott, The moment map and equivariant cohomology, Topology 23 (1984) 1–28](https://doi.org/10.1016/0040-9383(84)90021-1)
 
 ### Equivariant momentum maps preserve brackets
 
@@ -2464,6 +3274,44 @@
 
 - [Jerrold Marsden and Alan Weinstein, Reduction of symplectic manifolds with symmetry (1974)](https://doi.org/10.1016/0034-4877(74)90021-4)
 
+### Projection to a Cartan subalgebra is a moment map, giving Kostant convexity
+
+**Remember:** Projecting an orbit onto the torus is the torus moment map.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 22E46, 52B15. arXiv math.SG, math.RT. Level 3: graduate.
+
+**Definition.** For a compact connected Lie group K with maximal torus T, an adjoint orbit Ad(K)·X is a symplectic manifold. Orthogonal projection from it to the Lie algebra 𝔱 of T is a moment map for the action of T.
+
+**Problem.** For X in 𝔱, the projection of the orbit Ad(K)·X to 𝔱 is the convex polytope whose vertices are the Weyl group images of X. For the unitary group this is Schur–Horn.
+
+**How the definition helps.** Once projection is a moment map, the Atiyah–Guillemin–Sternberg theorem makes its image the convex hull of the images of the T-fixed points. The fixed points in the orbit are its points in 𝔱, which form the Weyl group orbit of X. Kostant's 1973 proof used Lie theory directly; the work now sits in the convexity theorem (our own).
+
+**Wikipedia:** [Kostant's convexity theorem](https://en.wikipedia.org/wiki/Kostant%27s_convexity_theorem). It says: “the fixed points of T in the orbit Ad(K)⋅X are just the orbit under the Weyl group, W(X). So the convexity properties of the moment map imply that the image is the convex polytope with these vertices.”
+
+**Sources:**
+
+- [M. F. Atiyah, Convexity and commuting Hamiltonians, Bulletin of the London Mathematical Society 14 (1982) 1–15](https://doi.org/10.1112/blms/14.1.1)
+- [V. Guillemin and S. Sternberg, Convexity properties of the moment mapping, Inventiones Mathematicae 67 (1982) 491–513](https://doi.org/10.1007/BF01398933)
+
+### Pushing Liouville measure forward makes toric volume the polytope's volume
+
+**Remember:** Measure a region of the polytope by the volume sitting above it.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B11. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The Duistermaat–Heckman measure of a Hamiltonian torus space is the pushforward of the Liouville measure ωⁿ/n! by the moment map μ. So the measure of a set A in the dual Lie algebra is the symplectic volume of the preimage of A.
+
+**Problem.** For a compact symplectic toric 2n-manifold with polytope Δ, and circles of length 2π, the Duistermaat–Heckman measure is (2π)ⁿ times Lebesgue measure on Δ. So the symplectic volume of M is (2π)ⁿ times the Euclidean volume of Δ.
+
+**How the definition helps.** The pushforward lets one compare the volume of M with Δ region by region, and its total mass is the volume of M (our own). Over the interior of Δ, action–angle coordinates make ω the sum of dμᵢ ∧ dθᵢ, so the density is (2π)ⁿ (our own). The work went into these coordinates; for the rotating unit sphere this is Archimedes' theorem, area 4π being 2π times height 2 (our own).
+
+**Wikipedia:** [Duistermaat–Heckman formula](https://en.wikipedia.org/wiki/Duistermaat%E2%80%93Heckman_formula). It says: “pushforward of the canonical (Liouville) measure on a symplectic manifold under the moment map is a piecewise polynomial measure.”
+
+**Sources:**
+
+- [J. J. Duistermaat and G. J. Heckman, On the variation in the cohomology of the symplectic form of the reduced phase space, Inventiones Mathematicae 69 (1982) 259–268](https://doi.org/10.1007/BF01399506)
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
+
 ### Reduced forms carry Hamiltonian flows
 
 **Remember:** Pull back the form and energy to see that their flows agree.
@@ -2481,6 +3329,177 @@
 **Sources:**
 
 - [Jerrold Marsden and Alan Weinstein, Reduction of symplectic manifolds with symmetry (1974)](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Requiring an effective half-dimensional torus lets the polytope classify
+
+**Remember:** Toric means a faithful torus of exactly half the dimension.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B20. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic toric manifold is a compact connected symplectic 2n-manifold with an effective Hamiltonian action of an n-dimensional torus. Effective means only the identity acts trivially; n is the largest torus dimension that fits.
+
+**Problem.** Two symplectic toric manifolds with the same moment polytope are equivariantly symplectomorphic, by Delzant's theorem. Both conditions are needed: without them, different spaces share one polytope.
+
+**How the definition helps.** Both conditions stop the polytope from losing data: rotating only the sphere in S² × Σ gives one interval for every surface Σ (our own). Without effectiveness, a speed-two circle on a sphere of area 2πL gives the same interval as the standard circle on area 4πL (our own). With a torus one dimension short, Karshon and Tolman need invariants beyond the moment image, such as genera.
+
+**Wikipedia:** [Delzant's theorem](https://en.wikipedia.org/wiki/Delzant%27s_theorem). It says: “A symplectic toric manifold is a compact connected symplectic manifold (M²ⁿ,ω) together with an effective Hamiltonian action of the n-dimensional torus 𝕋ⁿ”
+
+**Paper or page:** [Compact monotone tall complexity one T-spaces](https://arxiv.org/abs/2307.04198). It says: “Two compact tall complexity one T-spaces are isomorphic if and only if they have equal genera, equal Duistermaat-Heckman measures, and equivalent paintings.”
+
+**Sources:**
+
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
+- [Y. Karshon and S. Tolman, Classification of Hamiltonian torus actions with two-dimensional quotients, Geometry &amp; Topology 18 (2014) 669–716](https://doi.org/10.2140/gt.2014.18.669)
+
+### Requiring proper actions excludes irrational flows from symplectic reduction
+
+**Remember:** Proper actions keep orbits apart, so quotients stay Hausdorff.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 57S20. arXiv math.SG. Level 3: graduate.
+
+**Definition.** An action of G on a manifold is proper when the map (g, p) ↦ (g·p, p) has compact preimages of compact sets. Proper actions have Hausdorff orbit spaces, and each orbit has a neighbourhood of standard form, by the slice theorem.
+
+**Problem.** Let μ be an equivariant momentum map, and let G act freely and properly on μ⁻¹(0). Then μ⁻¹(0)/G is a Hausdorff symplectic manifold of dimension dim M − 2 dim G.
+
+**How the definition helps.** Properness makes the orbit space Hausdorff and gives slices, so a free quotient is a manifold (our own). Without it the theorem fails for ℝ turning z at speed 1 and w at an irrational speed, on (ℂ∖{0})² (our own). This action is free and Hamiltonian, but each level is a union of tori with dense orbits, so the quotient is not Hausdorff (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map). It says: “Assume now that G acts freely and properly on μ⁻¹(0). It follows that 0 is a regular value of μ, so μ⁻¹(0) and its quotient μ⁻¹(0) / G are both smooth manifolds.”
+
+**Sources:**
+
+- [J. Marsden and A. Weinstein, Reduction of symplectic manifolds with symmetry, Reports on Mathematical Physics 5 (1974) 121–130](https://doi.org/10.1016/0034-4877(74)90021-4)
+
+### Seeing the diagonal as a moment map makes Schur–Horn a convexity theorem
+
+**Remember:** The diagonal of a Hermitian matrix is a torus moment map.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 15A42. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The Hermitian n × n matrices with eigenvalues λ₁, …, λₙ form a coadjoint orbit of the unitary group, so they form a symplectic manifold. For the torus of diagonal unitary matrices acting on it by conjugation, the moment map sends a matrix to its diagonal.
+
+**Problem.** The diagonals of the Hermitian matrices with eigenvalues λ₁, …, λₙ fill exactly the convex hull of all rearrangements of (λ₁, …, λₙ). This is the Schur–Horn theorem.
+
+**How the definition helps.** Once the diagonal is a moment map, the Atiyah–Guillemin–Sternberg theorem says its image is the convex hull of the images of the fixed points. A matrix is fixed by all diagonal unitaries exactly when it is diagonal, so the fixed points carry the eigenvalues in some order. The work went into the convexity theorem, and the matrix proof needs a separate construction for Horn's half (our own).
+
+**Wikipedia:** [Schur–Horn theorem](https://en.wikipedia.org/wiki/Schur%E2%80%93Horn_theorem). It says: “The Schur–Horn theorem may be viewed as a corollary of the Atiyah–Guillemin–Sternberg convexity theorem in the following manner.”
+
+**Sources:**
+
+- [M. F. Atiyah, Convexity and commuting Hamiltonians, Bulletin of the London Mathematical Society 14 (1982) 1–15](https://doi.org/10.1112/blms/14.1.1)
+- [V. Guillemin and S. Sternberg, Convexity properties of the moment mapping, Inventiones Mathematicae 67 (1982) 491–513](https://doi.org/10.1007/BF01398933)
+
+### Souriau's affine action makes every momentum map equivariant
+
+**Remember:** Shift the coadjoint action by the cocycle, and equivariance holds.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 20J06. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let μ be a momentum map, a map to 𝔤\* whose components ⟨μ, ξ⟩ generate the action as Hamiltonian flows. On a connected manifold, Souriau's cocycle σ(g) = μ(g·p) − Ad\*(g)μ(p) does not depend on p, where Ad\* is the coadjoint action. The affine action of G on 𝔤\* is g·α = Ad\*(g)α + σ(g).
+
+**Problem.** Every momentum map on a connected symplectic manifold is equivariant for Souriau's affine action of G on 𝔤\*. For translations of the plane with dx∧dy, the cocycle is σ(a, b) = (b, −a).
+
+**How the definition helps.** Equivariance for the affine action is the definition of σ, so unlike equivariance for the coadjoint action it never fails (our own). The work moves into showing that σ is constant in p, since g preserves ω, and that σ(gh) = σ(g) + Ad\*(g)σ(h) (our own). Reduction then works at any α, dividing by the subgroup that fixes α under the affine action (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map). It says: “However, in general the coadjoint action must be modified to make the map equivariant (this is the case for example for the Euclidean group). The modification is by a 1-cocycle on the group with values in 𝔤\*, as first described by Souriau (1970).”
+
+**Sources:**
+
+- [J.-M. Souriau, Structure of Dynamical Systems, A Symplectic View of Physics, Birkhäuser (1997), translation of Structure des systèmes dynamiques, Dunod (1970)](https://doi.org/10.1007/978-1-4612-0281-3)
+
+### Testing convexity on lines turns connected moment fibres into convexity
+
+**Remember:** A set is convex when every line meets it in one piece.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52A20. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A set in a vector space is convex exactly when every line meets it in a connected set. This replaces the segment definition by a connectedness property, which Morse theory can check.
+
+**Problem.** For a Hamiltonian action of a torus on a compact connected symplectic manifold, the image of the moment map is a convex polytope. It is the convex hull of the images of the fixed points.
+
+**How the definition helps.** Read on lines, convexity of the image needs only that the preimage of each line is connected, because then its image is connected (our own). A line cut out by rational linear equations has as preimage a fibre of a codimension-one subtorus moment map; density covers other lines (our own). The work went into connected fibres, which Atiyah proves by Morse theory, since moment components have only even indices (our own).
+
+**Paper or page:** [Compact monotone tall complexity one T-spaces](https://arxiv.org/abs/2307.04198). It says: “(Connectedness) The fibers of the moment map are connected. (Stability) The moment map is open as a map onto its image. (Convexity) The moment map image is the convex hull of the images of the fixed submanifolds.”
+
+**Sources:**
+
+- [M. F. Atiyah, Convexity and commuting Hamiltonians, Bulletin of the London Mathematical Society 14 (1982) 1–15](https://doi.org/10.1112/blms/14.1.1)
+- [V. Guillemin and S. Sternberg, Convexity properties of the moment mapping, Inventiones Mathematicae 67 (1982) 491–513](https://doi.org/10.1007/BF01398933)
+
+### The Delzant smoothness condition keeps toric spaces free of orbifold points
+
+**Remember:** At every corner, the edge vectors must generate the whole lattice.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B20, 14M25. arXiv math.SG, math.CO. Level 3: graduate.
+
+**Definition.** A Delzant polytope is a simple rational polytope that is smooth. At each vertex the primitive edge vectors form a basis of the lattice ℤⁿ, not just of a sublattice of finite index.
+
+**Problem.** Every compact symplectic toric manifold has a Delzant moment polytope, and Delzant's construction turns every Delzant polytope into one. A simple rational polytope that is not smooth comes only from an orbifold, a space locally like ℂⁿ divided by a finite group.
+
+**How the definition helps.** Over a vertex, the reducing subtorus has stabilizer ℤⁿ modulo the span of the facet normals there, which is trivial exactly at smooth vertices (our own). The triangle with vertices (0,0), (1,0) and (0,2) is rational and simple; at (1,0) its normals (0,1) and (−2,−1) span an index-2 sublattice (our own). Its toric space is the weighted projective plane ℂP(1,1,2), with a ℤ/2 orbifold point over (1,0) (our own).
+
+**Wikipedia:** [Delzant's theorem](https://en.wikipedia.org/wiki/Delzant%27s_theorem). It says: “it is smooth polytope, i.e. for each vertex x, the corresponding vectors uᵢˣ form a ℤ-basis of ℤⁿ.”
+
+**Sources:**
+
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
+- [E. Lerman and S. Tolman, Hamiltonian torus actions on symplectic orbifolds and toric varieties, Transactions of the American Mathematical Society 349 (1997) 4201–4230](https://doi.org/10.1090/S0002-9947-97-01821-7)
+
+### The Kirillov–Kostant–Souriau form makes homogeneous Hamiltonian spaces cover coadjoint orbits
+
+**Remember:** On a coadjoint orbit, each point is its own momentum.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 22E60. arXiv math.SG, math.RT. Level 3: graduate.
+
+**Definition.** A coadjoint orbit O is an orbit of G in 𝔤\* under the coadjoint action, the dual of conjugation. Its Kirillov–Kostant–Souriau form is the unique symplectic form making the inclusion of O into 𝔤\* a momentum map. A momentum map μ for an action on (M, ω) satisfies d⟨μ, ξ⟩ = ω(ξ·p, ·), where ξ·p is the velocity of p under ξ.
+
+**Problem.** If G acts transitively on (M, ω) with a momentum map μ satisfying μ(g·p) = Ad\*(g)μ(p), then μ covers a coadjoint orbit. It pulls the orbit's form back to ω.
+
+**How the definition helps.** With this definition, ω and the pulled-back orbit form obey the same momentum map equation, so they agree on orbit directions, which span (our own). Equivariance puts the image in one coadjoint orbit, and nondegeneracy of ω makes dμ injective, so μ is a covering (our own). The usual formula ω(ξ·λ, η·λ) = ±⟨λ, \[ξ, η\]⟩ needs separate checks that it is well defined and closed (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map), [Coadjoint representation](https://en.wikipedia.org/wiki/Coadjoint_representation). It says: “Then there exists a unique symplectic structure on 𝒪(F) such that inclusion map 𝒪(F) ↪︎ 𝔤\* is a momentum map.”
+
+**Sources:**
+
+- [B. Kostant, Quantization and unitary representations, Lecture Notes in Mathematics 170 (1970)](https://doi.org/10.1007/bfb0079068)
+
+### The momentum map equation makes Hamiltonian torus orbits isotropic
+
+**Remember:** Commuting symmetries move points along directions that ω cannot see.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 57S15. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A torus action on (M, ω) is Hamiltonian when it has a momentum map μ with d⟨μ, ξ⟩ = ω(ξ·p, ·), for ξ·p the velocity of p. Equivariance of μ then gives ω(ξ·p, η·p) = ±⟨μ(p), \[ξ, η\]⟩. A submanifold is isotropic when ω vanishes on its tangent vectors.
+
+**Problem.** Every orbit of a Hamiltonian torus action is isotropic. So an effective Hamiltonian torus action, where only the identity acts trivially, on a connected manifold of dimension 2n has torus dimension at most n.
+
+**How the definition helps.** For an abelian Lie algebra the bracket term vanishes, so ω(ξ·p, η·p) = 0 and orbits are isotropic (our own). An effective torus action has orbits of full dimension on a dense open set, and isotropic subspaces have at most half the dimension (our own). The 2-torus translating itself with its area form is symplectic but not Hamiltonian, and its single orbit is the whole symplectic torus (our own).
+
+**Paper or page:** [Reduction principles for proper actions](https://arxiv.org/abs/2212.06715v2). It says: “Let G be a Lie group acting in a Hamiltonian fashion on (M, ω). If G° is Abelian, then any G orbit is isotropic.”
+
+**Sources:**
+
+- [L. Biliotti, Reduction principles for proper actions (2025)](https://arxiv.org/abs/2212.06715v2)
+
+### Vanishing second Lie algebra cohomology makes momentum maps equivariant
+
+**Remember:** The failure of equivariance is a cohomology class, nothing more.
+
+*Makes the theorem clean to state or prove.* MSC 53D20 (Momentum maps; symplectic reduction), 17B56. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let μ be a momentum map, a map to 𝔤\* whose components ⟨μ, ξ⟩ are Hamiltonian functions for the action. The cocycle c(ξ, η) = {⟨μ, ξ⟩, ⟨μ, η⟩} − ⟨μ, \[ξ, η\]⟩, with { , } the Poisson bracket, measures the failure of equivariance. On a connected manifold c is a constant 2-cocycle on 𝔤, and adding a constant λ to μ changes c by ±λ(\[ξ, η\]), a coboundary.
+
+**Problem.** If H²(𝔤; ℝ) = 0, as for semisimple 𝔤, then each momentum map of a connected group on a connected manifold becomes equivariant after a constant shift. If also H¹(𝔤; ℝ) = 0, the equivariant momentum map is unique.
+
+**How the definition helps.** For a connected group, equivariance means c = 0, so the class of c is the only obstruction (our own). Two equivariant momentum maps differ by a constant vanishing on \[𝔤, 𝔤\], which is zero when H¹ = 0 (our own). For translations of the plane with dx∧dy, c(e₁, e₂) = ±1, and the abelian algebra ℝ² has no nonzero coboundaries (our own).
+
+**Wikipedia:** [Whitehead's lemma (Lie algebra)](https://en.wikipedia.org/wiki/Whitehead%27s_lemma_%28Lie_algebra%29). It says: “Similarly, Whitehead's second lemma states that under the conditions of the first lemma, also H²(𝔤,V) = 0.”
+
+**Paper or page:** [Uniqueness of the Momentum map](https://arxiv.org/abs/1208.1486v3). It says: “The element c(ξ,η) = { H\_ξ, H\_η } − H\_\[ξ,η\] is a two cocycle c on 𝔤 with values in ℝ.”
+
+**Sources:**
+
+- [C. Esposito and R. Nest, Uniqueness of the momentum map, Journal of Geometry and Physics 106 (2016)](https://arxiv.org/abs/1208.1486v3)
+- [A. Cannas da Silva, Lectures on Symplectic Geometry, Lecture Notes in Mathematics 1764, Springer (2001), Part X, Moment maps revisited](https://doi.org/10.1007/11310822_11)
 
 ### With Hamiltonian actions, Noether's theorem takes one line
 
@@ -2550,6 +3569,43 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The contact Legendre transform needs no convexity
+
+**Remember:** Swap position and slope, and the Legendrian survives.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D22 (Canonical transformations in symplectic and contact geometry), 53D10. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The Legendre transform is the map (q, p, z) ↦ (p, q, p·q − z) of the 1-jet space ℝ²ⁿ⁺¹. That space carries the contact form dz − p·dq. The map acts on a function f through its Legendrian lift {(q, df(q), f(q))}, an n-dimensional submanifold on which the contact form vanishes.
+
+**Problem.** The Legendre transform of every smooth function f is a smooth Legendrian submanifold; only its projection to the new (q, z) coordinates may have cusps. When f has positive-definite Hessian, the image is the 1-jet graph of the classical transform f\*, and f\*\* = f.
+
+**How the definition helps.** The map pulls dz − p·dq back to its negative, so it preserves the contact planes and carries Legendrians to Legendrians (our own). It is an involution, so the transform is defined for every function and applying it twice gives back f (our own). Convexity is needed only to make the image a graph again, by making q ↦ df(q) invertible (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Since a differentiable function F: ℝⁿ → ℝ can be lifted uniquely to a Legendrian submanifold, and any contactomorphism preserves Legendrian submanifolds, this defines a Legendre transformation on the function F itself.”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd ed., Graduate Texts in Mathematics 60, Springer, 1989](https://doi.org/10.1007/978-1-4757-2063-1)
+
+### Capacities make uniform limits of symplectomorphisms symplectic
+
+**Remember:** A capacity only sees which sets fit inside which.
+
+*True by definition. Confidence: medium.* MSC 53D35 (Global theory of symplectic and contact manifolds), 57R17. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic capacity gives each open set U a number c(U) that never increases under symplectic embeddings and scales as c(λU) = λ²c(U). It equals π on the unit ball and on the cylinder of radius 1. Its main axiom, monotonicity, refers only to which sets embed in which.
+
+**Problem.** If symplectic diffeomorphisms converge uniformly to a diffeomorphism, then the limit is also symplectic. This is the Eliashberg–Gromov theorem, one of the first signs of symplectic rigidity.
+
+**How the definition helps.** Uniform convergence traps images of small ellipsoids between images of shrunk and enlarged copies, so the limit keeps their capacities (our own). So its derivative keeps ellipsoid capacities and is symplectic or antisymplectic, which means it keeps or reverses the sign of ω; a product with ℝ² rules out reversal (our own). Eliashberg's proof used wave fronts, while this proof moves the work into the existence of a capacity, which is Gromov's non-squeezing theorem (our own).
+
+**Wikipedia:** [Yakov Eliashberg](https://en.wikipedia.org/wiki/Yakov_Eliashberg). It says: “He developed a combinatorial technique which he used to prove that the group of symplectomorphisms is 𝒞⁰-closed in the diffeomorphism group.”
+
+**Sources:**
+
+- [Y. Eliashberg, A theorem on the structure of wave fronts and its applications in symplectic topology, Funct. Anal. Appl. 21 (1987), 227–232](https://doi.org/10.1007/bf02577138)
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985), 307–347](https://doi.org/10.1007/BF01388806)
+
 ### Capacity normalization gives non-squeezing
 
 **Remember:** Volume misses the narrow cylinder, but a normalized capacity sees it.
@@ -2566,6 +3622,489 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Defining flux on isotopies makes Ham the kernel of a homomorphism
+
+**Remember:** Flux records how much area an isotopy sweeps across loops.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D35 (Global theory of symplectic and contact manifolds), 53D22. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The flux of a symplectic isotopy ψₜ with vector fields Xₜ is the class in H¹(M; ℝ) of the time integral of ω(Xₜ, ·). An isotopy is Hamiltonian when every ω(Xₜ, ·) is exact, so every Hamiltonian isotopy has zero flux.
+
+**Problem.** On a closed symplectic manifold, a symplectomorphism isotopic to the identity is Hamiltonian exactly when some symplectic isotopy to it has zero flux. So Ham(M) is a normal subgroup of Symp₀(M), the identity component, with abelian quotient.
+
+**How the definition helps.** A Hamiltonian isotopy has zero flux because each ω(Xₜ, ·) is exact, which is the easy direction (our own). Flux is a homomorphism from the universal cover of Symp₀(M) to H¹(M; ℝ), so Symp₀(M)/Ham(M) is a quotient of this abelian group (our own). The converse, that zero flux makes ψ Hamiltonian, is due to Banyaga (our own); the quoted paper states it for maps that preserve a submanifold L.
+
+**Paper or page:** [On relative Hamiltonian diffeomorphisms](https://arxiv.org/abs/2510.13663). It says: “ψ ∈ Symp₀(M,L) is a Hamiltonian symplectomorphism if and only if there exists a symplectic isotopy ψₜ:\[0,1\]→Symp₀(M,L) such that ψ₀=id, ψ₁=ψ and Flux({ψₜ})=0.”
+
+**Sources:**
+
+- [A. Banyaga, Sur la structure du groupe des difféomorphismes qui préservent une forme symplectique, Comment. Math. Helv. 53 (1978), 174–227](https://doi.org/10.1007/bf02566074)
+
+### Defining Gromov width by embedded balls makes it the smallest capacity
+
+**Remember:** Gromov width measures the biggest ball that fits inside.
+
+*True by definition. Confidence: medium.* MSC 53D35 (Global theory of symplectic and contact manifolds). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A normalized symplectic capacity c is monotone under symplectic embeddings, scales like area and equals π on the unit ball and on the unit cylinder. The Gromov width of M is the supremum of πr² over all balls of radius r that embed symplectically into M. The cylindrical capacity of M is the infimum of πR² over all R such that M embeds symplectically into the cylinder of radius R.
+
+**Problem.** Every normalized symplectic capacity c satisfies Gromov width(M) ≤ c(M) ≤ cylindrical capacity(M). So the Gromov width is the smallest normalized capacity and the cylindrical capacity is the largest.
+
+**How the definition helps.** If the ball of radius r embeds in M, monotonicity and normalization give πr² ≤ c(M), and the supremum gives the lower bound (our own). The upper bound follows in the same way from embeddings of M into cylinders (our own). The work went into showing that these two numbers are capacities at all, which needs Gromov's non-squeezing theorem (our own for the cylindrical capacity).
+
+**Wikipedia:** [Non-squeezing theorem](https://en.wikipedia.org/wiki/Non-squeezing_theorem). It says: “Given such a capacity, one can verify the non-squeezing theorem, and given the non-squeezing theorem, the Gromov width w<sub>G</sub>(M, ω) = sup{πr² : there exists a symplectic embedding B²ⁿ(r) → (M,ω)} is such a capacity.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985), 307–347](https://doi.org/10.1007/BF01388806)
+- [I. Ekeland and H. Hofer, Symplectic topology and Hamiltonian dynamics, Math. Z. 200 (1989), 355–378](https://doi.org/10.1007/BF01215653)
+
+### Displacement energy makes Hofer's distance a true metric on ℝ²ⁿ
+
+**Remember:** Pushing a ball off itself always costs a definite energy.
+
+*True by definition.* MSC 53D35 (Global theory of symplectic and contact manifolds), 53D22. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Hamiltonian diffeomorphism is the time-one map of the flow of a compactly supported, time-dependent function H. Its Hofer norm is the infimum, over all such H, of the time integral of max H − min H. The displacement energy e(A) of a set A is the infimum of the Hofer norms of maps that move A completely off itself.
+
+**Problem.** On compactly supported Hamiltonian diffeomorphisms of ℝ²ⁿ, the Hofer distance from φ₀ to φ₁ is the Hofer norm of φ₁φ₀⁻¹. It is zero only when φ₀ = φ₁, so it is a genuine metric.
+
+**How the definition helps.** A map φ other than the identity moves some small ball B off itself, so ‖φ‖ ≥ e(B) by the definition of e (our own). Every set with nonempty interior has positive displacement energy, so the Hofer norm of φ is positive. The work thus moves from each map to one inequality about sets, e(B) &gt; 0, which needs variational or holomorphic-curve methods (our own).
+
+**Paper or page:** [On a Theorem by Schlenk](https://arxiv.org/abs/2401.03456), [On a Theorem by Schlenk](https://arxiv.org/abs/2401.03456). It says: “For any subset A ⊆ ℝ²ⁿ with nonempty interior we have that e(A) &gt; 0.”
+
+**Sources:**
+
+- [H. Hofer, On the topological properties of symplectic maps, Proc. Roy. Soc. Edinburgh Sect. A 115 (1990), 25–38](https://doi.org/10.1017/S0308210500024549)
+- [F. Lalonde and D. McDuff, The geometry of symplectic energy, Ann. of Math. 141 (1995), 349](https://doi.org/10.2307/2118524)
+
+### Taking the cylinder over a symplectic plane keeps non-squeezing true
+
+**Remember:** The narrow waist must lie in a symplectic plane.
+
+*Rules out counterexamples.* MSC 53D35 (Global theory of symplectic and contact manifolds). arXiv math.SG. Level 3: graduate.
+
+**Definition.** In Gromov's non-squeezing theorem the cylinder Z(R) is the set of points of ℝ²ⁿ with x₁² + y₁² &lt; R². The coordinates x₁ and y₁ pair under the symplectic form ω = Σ dxᵢ ∧ dyᵢ. So the round cross-section lies in a symplectic plane, on which ω is not zero.
+
+**Problem.** The ball of radius r embeds symplectically into Z(R) only when r ≤ R. For n ≥ 2 the cylinder x₁² + x₂² &lt; R², over a plane on which ω vanishes, contains a symplectic image of every ball.
+
+**How the definition helps.** The cross-section of Z(R) lies in a symplectic plane, so the stretch that defeats other cylinders cannot shrink it (our own). The symplectic map (x, y) ↦ (εx, y/ε) puts any ball inside x₁² + x₂² &lt; R², but it stretches y₁ (our own). That no other map shrinks the ball into Z(R) is the hard part, which Gromov proved with holomorphic curves (our own).
+
+**Wikipedia:** [Non-squeezing theorem](https://en.wikipedia.org/wiki/Non-squeezing_theorem). It says: “The choice of axes for the cylinder are not arbitrary given the fixed symplectic form above; the circles of the cylinder each lie in a symplectic subspace of ℝ²ⁿ.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985), 307–347](https://doi.org/10.1007/BF01388806)
+
+### The capacity axioms make every capacity continuous on convex bodies
+
+**Remember:** Two axioms pin a capacity between two scaled copies.
+
+*True by definition. Confidence: medium.* MSC 53D35 (Global theory of symplectic and contact manifolds). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic capacity c is monotone, so a symplectic embedding of U into V gives c(U) ≤ c(V). It is conformal, so scaling a domain of ℝ²ⁿ by λ &gt; 0, which multiplies the symplectic form by λ², multiplies c by λ². It is finite on bounded domains, which fit inside cylinders.
+
+**Problem.** Every symplectic capacity is continuous in the Hausdorff distance on convex bodies in ℝ²ⁿ that contain the origin in their interior.
+
+**How the definition helps.** A convex body L near K lies between (1 − δ/ρ)K and (1 + δ/ρ)K, so monotonicity and conformality give (1 − δ/ρ)²c(K) ≤ c(L) ≤ (1 + δ/ρ)²c(K) (our own). Here ρ is the radius of a ball about the origin inside K, and δ is the Hausdorff distance from K to L (our own). So even a capacity built from dynamics, such as the least action of a closed orbit, is continuous for free (our own).
+
+**Wikipedia:** [Non-squeezing theorem](https://en.wikipedia.org/wiki/Non-squeezing_theorem). It says: “(Monotonicity) If there is a symplectic embedding (M, ω) → (N,η) and dim M = dim N, then c(M,ω) ≤ c(N,η), (Conformality) c(M, λω) = λ c(M, ω),”
+
+**Sources:**
+
+- [I. Ekeland and H. Hofer, Symplectic topology and Hamiltonian dynamics, Math. Z. 200 (1989), 355–378](https://doi.org/10.1007/BF01215653)
+
+### A∞ relations make the Floer product associative
+
+**Remember:** Each A∞ relation is the boundary of a space of polygons.
+
+*True by definition. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 18G70. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The Fukaya category is an A∞ category whose objects are Lagrangian submanifolds and whose maps μᵈ count holomorphic polygons with d + 1 corners. Lagrangian submanifolds are half-dimensional submanifolds on which the symplectic form vanishes. The A∞ relations are identities among the μᵈ, with one term for each way a family of polygons can break in two.
+
+**Problem.** The product on Lagrangian Floer cohomology, which counts holomorphic triangles, is associative.
+
+**How the definition helps.** The A∞ relation with three inputs says that μ² is associative up to terms that contain μ¹, and these terms vanish on cohomology (our own). A direct proof on cohomology needs the same count of holomorphic 4-gons, so the A∞ definition moves that work rather than removing it (our own). The work goes into showing that the boundaries of the moduli spaces of polygons consist of broken polygons, which gives the relations.
+
+**Wikipedia:** [Fukaya category](https://en.wikipedia.org/wiki/Fukaya_category). It says: “The sequence of higher compositions μ₁, μ₂, …, satisfy the A∞ relations because the boundaries of various moduli spaces of holomorphic polygons correspond to configurations of degenerate polygons.”
+
+**Sources:**
+
+- [P. Seidel, Fukaya Categories and Picard–Lefschetz Theory, Zurich Lectures in Advanced Mathematics, EMS, 2008](https://doi.org/10.4171/063)
+
+### Exactness makes strip energy an action difference
+
+**Remember:** On an exact Lagrangian, area is read off from a function.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Lagrangian in (M, dθ), a half-dimensional submanifold on which dθ vanishes, is exact when θ restricted to it equals df for a function f. Then each intersection point p of exact Lagrangians L₀ and L₁ has an action f₁(p) − f₀(p). The weaker condition of weak exactness asks only that dθ integrate to zero over every disk with boundary on the Lagrangian.
+
+**Problem.** For exact Lagrangians L₀ and L₁, every holomorphic strip from p to q has energy equal to the action difference of p and q. So all strips with the same ends have the same energy.
+
+**How the definition helps.** Stokes' theorem turns the area of a strip into differences of f at its ends, so the energy depends only on p and q (our own). In T\*S¹, the graph of (a + cos θ)dθ, for small a ≠ 0, is weakly exact but not exact (our own). It and the zero section bound two strips with equal ends whose areas differ by 2π\|a\|, so weak exactness does not fix the energy (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2). It says: “Then the energy of any J-holomorphic strip defining CF(L₀,L₁) is constant.”
+
+**Sources:**
+
+- [P. Seidel, Fukaya Categories and Picard–Lefschetz Theory, Zurich Lectures in Advanced Mathematics, EMS, 2008](https://doi.org/10.4171/063)
+
+### Split-closure reduces mirror symmetry to generators
+
+**Remember:** Close under cones and summands, and generators determine everything.
+
+*Makes the theorem clean to state or prove.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 14J33, 18G80. arXiv math.SG, math.AG. Level 3: graduate.
+
+**Definition.** The split-closed derived category of an A∞ category is its smallest envelope that is closed under cones, shifts and direct summands. It is unique up to equivalence, so it is determined by any full subcategory that split-generates it.
+
+**Problem.** Let 𝒜 and ℬ be c-unital A∞ categories, which means that their cohomology categories have identities. If split-generating full subcategories of 𝒜 and ℬ are quasi-equivalent, then their split-closed derived categories are equivalent.
+
+**How the definition helps.** Both split-closed derived categories are the envelope of the same generating subcategory, and this envelope is unique up to equivalence (our own). So generators decide everything; for example, a longitude and a meridian split-generate the Fukaya category of the 2-torus. Homological mirror symmetry is stated for these categories, so many proofs compare the A∞ algebras of finitely many generators (our own).
+
+**Wikipedia:** [Homological mirror symmetry](https://en.wikipedia.org/wiki/Homological_mirror_symmetry). It says: “could be explained as an equivalence of a triangulated category constructed from the algebraic geometry of X (the derived category of coherent sheaves on X) and another triangulated category constructed from the symplectic geometry of Y (the derived Fukaya category).”
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2), [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2). It says: “Let 𝒜 and ℬ be c-unital A∞-categories split-generated by full A∞-subcategories 𝒜̃ ⊂ 𝒜 respectively ℬ̃ ⊂ ℬ which are quasi-equivalent. Then D<sup>π</sup>(𝒜) and D<sup>π</sup>(ℬ) are equivalent split-closed triangulated categories.”
+
+**Sources:**
+
+- [P. Seidel, Fukaya Categories and Picard–Lefschetz Theory, Zurich Lectures in Advanced Mathematics, EMS, 2008](https://doi.org/10.4171/063)
+
+### Broken cylinders compactify moduli spaces, so Floer's differential squares to zero
+
+**Remember:** The boundary of a family of cylinders is a broken cylinder.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 57R58. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A broken Floer trajectory is a chain of Floer cylinders, each ending at the orbit where the next one starts. Take the cylinders whose end orbits differ by 2 in index, and divide by translation along ℝ. This one-dimensional space is compactified by adding the once-broken trajectories as boundary points.
+
+**Problem.** On a semipositive manifold, where sphere bubbles cannot spoil the counts, the Floer differential mod 2 satisfies ∂∘∂ = 0. So Floer homology is defined.
+
+**How the definition helps.** The broken pairs counted by ∂∂x are the boundary points of compact one-dimensional spaces, so mod 2 their number is zero (our own). The work goes into gluing and Gromov compactness, which say that limits of Floer cylinders are broken trajectories, possibly with sphere bubbles (our own). Semipositivity keeps sphere bubbles out of these one-dimensional spaces (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The Gromov compactness theorem is then used to show that the counts of flow lines defining the differential are finite, so that the differential is well-defined and squares to zero.”
+
+**Sources:**
+
+- [A. Floer, Symplectic fixed points and holomorphic spheres, Comm. Math. Phys. 120 (1989) 575–611](https://doi.org/10.1007/BF01260388)
+
+### Capping loops by disks makes the action single-valued and grades Floer homology
+
+**Remember:** A cap on each loop fixes its area and its index.
+
+*True by definition. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 57R58. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A capped orbit is a contractible periodic orbit together with a disk that it bounds, called a cap. On capped orbits the action is a real number. The Conley–Zehnder index, an integer that measures how the linearised flow winds along the orbit, gives a grading.
+
+**Problem.** Changing the cap by a sphere A shifts the action by ω(A), up to sign, and the index by 2c₁(A). So without caps the grading is defined only modulo 2N, where N is the smallest positive value of c₁ on spheres.
+
+**How the definition helps.** Gluing a sphere A onto a cap adds ω(A) to the disk area, so the action shift holds by definition, up to sign (our own). Without caps, the rival choice, the action of a loop is defined only up to sphere areas, so it is not a function (our own). The work moves into the index's loop property, which gives the shift 2c₁(A), and into a Novikov ring of sphere classes (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “If the symplectomorphism is Hamiltonian, the homology arises from studying the symplectic action functional on the (universal cover of the) free loop space of a symplectic manifold.”
+
+**Sources:**
+
+- [H. Hofer and D. Salamon, Floer homology and Novikov rings, in The Floer Memorial Volume, Birkhäuser (1995) 483–524](https://doi.org/10.1007/978-3-0348-9217-9_20)
+
+### Counting connecting cylinders replaces the ill-posed gradient flow of the action
+
+**Remember:** Count cylinders between orbits instead of flowing the loop space.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 57R58. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Floer cylinder is a map from ℝ × S¹ to M that solves a Cauchy–Riemann equation perturbed by the Hamiltonian vector field. The equation uses an almost complex structure, which is a complex structure on each tangent space compatible with ω. Formally a Floer cylinder is a downward gradient line of the action that converges to periodic orbits at both ends.
+
+**Problem.** For a generic almost complex structure, the Floer cylinders between two nondegenerate orbits form a finite-dimensional manifold. The energy of each cylinder equals the action difference of its two ends.
+
+**How the definition helps.** The connecting-cylinder equation is elliptic, unlike the ill-posed gradient flow on loops, so its solution spaces are finite-dimensional (our own). The energy is the integral of the squared gradient along the cylinder, so it equals the total drop in action (our own). The remaining work is transversality, which needs the generic almost complex structure (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “the gradient flow equation for a path in the loopspace is (a perturbed version of) the Cauchy–Riemann equation for a map of a cylinder (the total space of the path of loops) to the symplectic manifold of interest”
+
+**Sources:**
+
+- [A. Floer, The unregularized gradient flow of the symplectic action, Comm. Pure Appl. Math. 41 (1988) 775–813](https://doi.org/10.1002/cpa.3160410603)
+
+### Defining the action on loops makes periodic orbits its critical points
+
+**Remember:** Periodic orbits are the stationary points of one function on loops.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 37J46, 58E05. arXiv math.SG, math.DS. Level 3: graduate.
+
+**Definition.** The action functional of a Hamiltonian H is a function on contractible loops in M, each with a chosen disk that it bounds. Its value is minus the symplectic area of the disk minus the time integral of H along the loop, up to sign conventions. Its derivative vanishes exactly at loops that solve Hamilton's equation with period 1.
+
+**Problem.** The contractible 1-periodic orbits of a Hamiltonian flow are exactly the critical points of the action functional. So counting fixed points of the time-1 map becomes counting critical points, as in Morse theory.
+
+**How the definition helps.** The first variation of the action vanishes in every direction exactly when the loop's velocity equals the Hamiltonian vector field (our own). Conley and Zehnder used the same functional on the torus, but first reduced it to finite dimensions (our own). The work now goes into a Morse theory for critical points with infinitely many downward and upward directions, which is Floer homology (our own).
+
+**Wikipedia:** [Spectral invariants](https://en.wikipedia.org/wiki/Spectral_invariants). It says: “so that the fixed points of the Hamiltonian diffeomorphism correspond to the critical points of the action functional.”
+
+**Sources:**
+
+- [A. Floer, Symplectic fixed points and holomorphic spheres, Comm. Math. Phys. 120 (1989) 575–611](https://doi.org/10.1007/BF01260388)
+- [C. C. Conley and E. Zehnder, The Birkhoff–Lewis fixed point theorem and a conjecture of V. I. Arnol'd, Invent. Math. 73 (1983) 33–49](https://doi.org/10.1007/BF01393824)
+
+### Defining the spectral norm from spectral invariants bounds it by Hofer's norm
+
+**Remember:** Two spectral invariants, one of the map and one of its inverse.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D35. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The spectral norm of φ is the infimum of c(\[M\], H) + c(\[M\], H̄) over Hamiltonians H that generate φ. Here c(\[M\], ·) is the spectral invariant of the fundamental class, and H̄ generates the inverse flow. The Hofer norm of φ is the infimum over the same H of the time integral of max H − min H.
+
+**Problem.** Every Hamiltonian diffeomorphism φ has spectral norm at most its Hofer norm. So any lower bound for the spectral norm is a lower bound for Hofer's distance.
+
+**How the definition helps.** Comparing with the zero Hamiltonian, the Lipschitz property gives c(\[M\], H) ≤ ∫ max H and c(\[M\], H̄) ≤ −∫ min H (our own). The rival c(\[M\], H) alone is not symmetric under inverses, while pairing H with H̄ makes the bounds sum to Hofer's length (our own). The work went into the Lipschitz property, an energy estimate for continuation maps, and into proving that the spectral norm is nondegenerate (our own).
+
+**Paper or page:** [Hamiltonian Floer theory on surfaces](https://arxiv.org/abs/2102.11231). It says: “Moreover, for all φ ∈ Ham(M,ω), νOS(φ) ≤ νim(φ) ≤ ‖φ‖Hof, where νOS denotes the Oh-Schwarz spectral norm and ‖·‖Hof denotes the Hofer norm.”
+
+**Sources:**
+
+- [Y.-G. Oh, Construction of spectral invariants of Hamiltonian paths on closed symplectic manifolds, in The Breadth of Symplectic and Poisson Geometry, Progr. Math. 232, Birkhäuser (2005) 525–570](https://doi.org/10.1007/0-8176-4419-9_18)
+- [M. Schwarz, On the action spectrum for closed symplectically aspherical manifolds, Pacific J. Math. 193 (2000) 419–461](https://doi.org/10.2140/pjm.2000.193.419)
+
+### Forbidding disks of nonzero area excludes the displaceable circle
+
+**Remember:** No area on disks means no disks to bubble off.
+
+*Rules out counterexamples.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Lagrangian L is symplectically aspherical when ω has zero integral over every disk in M with boundary on L. Then every holomorphic disk on L has zero energy, so it is constant and cannot bubble off.
+
+**Problem.** For a closed aspherical Lagrangian L, HF(L,L) ≅ H(L), so each transverse Hamiltonian image meets L in at least Σ dim H(L; ℤ₂) points. In particular ℂⁿ contains no closed exact Lagrangian, a theorem of Gromov.
+
+**How the definition helps.** With no disk bubbles, a C¹-small Hamiltonian turns Floer strips into gradient lines of a function on L, so HF(L,L) is Morse cohomology (our own). This excludes the round circle in ℂ, which has H(S¹) ≠ 0 yet is displaceable, because it bounds a disk of positive area (our own). A closed exact L in ℂⁿ is aspherical and displaced by a translation, so H(L) = HF(L,L) = 0, which is impossible (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931), [Lagrangian intersections and cuplength in generalised cohomology theories](https://arxiv.org/abs/2211.07559). It says: “Let (M²ⁿ,ω) be a symplectic manifold, Lⁿ ⊂ M a Lagrangian submanifold such that ⟨ω⟩ · π₂(M,L) = 0. Then HF(L,L) ≅ H(L;Λ<sub>K</sub>) (singular cohomology with coefficients in the Novikov field).”
+
+**Sources:**
+
+- [A. Floer, Morse theory for Lagrangian intersections, J. Differential Geom. 28 (1988) 513–547](https://doi.org/10.4310/jdg/1214442477)
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+
+### Graphs and the diagonal make Hamiltonian Floer theory a Lagrangian case
+
+**Remember:** A fixed point is where a graph crosses the diagonal.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** In M × M with the form (−ω) ⊕ ω, the graph Γ of a symplectomorphism φ is Lagrangian. So is the diagonal Δ. Their intersection points are the pairs (x, x) with φ(x) = x.
+
+**Problem.** The Floer cohomology of a Hamiltonian diffeomorphism φ of M is isomorphic to the Lagrangian Floer cohomology HF(Δ, Γ) in M × M. So bounds on fixed points become bounds on Lagrangian intersections.
+
+**How the definition helps.** The generators match by definition, since Δ ∩ Γ is the fixed point set of φ (our own). A strip in M × M with edges on Δ and Γ unfolds into a wider strip in M with edges glued by φ (our own). These are Floer's original twisted cylinders, so the work moves into matching the two moduli spaces (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “can be thought of as a case of Lagrangian Floer homology in which the ambient manifold is M crossed with M and the Lagrangian submanifolds are the diagonal and the graph of the symplectomorphism.”
+
+**Sources:**
+
+- [A. Floer, Symplectic fixed points and holomorphic spheres, Comm. Math. Phys. 120 (1989) 575–611](https://doi.org/10.1007/BF01260388)
+
+### Intersection-point generators make Floer cohomology of displaceable Lagrangians vanish
+
+**Remember:** No intersection points, no generators, no Floer cohomology.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Lagrangian Floer cohomology HF(L₀,L₁) is the homology of a complex generated by the intersection points of L₀ and L₁. Its differential counts holomorphic strips, maps of ℝ × \[0,1\] with one edge on each Lagrangian. It does not change when either Lagrangian moves by a Hamiltonian isotopy.
+
+**Problem.** If an unobstructed Lagrangian L, one whose Floer differential squares to zero, has HF(L,L) ≠ 0, no Hamiltonian diffeomorphism displaces L. When φ(L) meets L transversally, they meet in at least rank HF(L,L) points.
+
+**How the definition helps.** If φ(L) misses L, the complex CF(L, φ(L)) has no generators, so HF(L, φ(L)) = 0 and invariance gives HF(L,L) = 0 (our own). The count bound holds because a complex has at least as many generators as its homology has rank (our own). Generating functions prove such bounds only in special cases such as cotangent bundles; here the work moves into Hamiltonian invariance, proved by continuation maps (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The Floer homology of a pair of Lagrangian submanifolds may not always exist; when it does, it provides an obstruction to isotoping one Lagrangian away from the other using a Hamiltonian isotopy.”
+
+**Paper or page:** [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703). It says: “Let ψ : X → X be a Hamiltonian diffeomorphism such that ψ(L) is transversal to L′. Then we have \#(ψ(L) ∩ L′) ≥ rank\_Λnov HF((L,b),(L′,b′);Λnov).”
+
+**Sources:**
+
+- [A. Floer, Morse theory for Lagrangian intersections, J. Differential Geom. 28 (1988) 513–547](https://doi.org/10.4310/jdg/1214442477)
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Intersection Floer Theory: Anomaly and Obstruction, AMS/IP Studies in Advanced Mathematics 46 (2009)](https://doi.org/10.1090/amsip/046.1)
+
+### Nondegeneracy excludes torus maps with fewer fixed points than Betti numbers
+
+**Remember:** Transverse to the diagonal, every fixed point counts as one.
+
+*Rules out counterexamples.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 37J11, 37C25. arXiv math.SG, math.DS. Level 3: graduate.
+
+**Definition.** A Hamiltonian diffeomorphism φ is nondegenerate when its graph meets the diagonal of M × M transversely. Equivalently, 1 is not an eigenvalue of the derivative of φ at any fixed point. Then the fixed points are isolated and finite in number.
+
+**Problem.** On the torus T²ⁿ, a nondegenerate Hamiltonian diffeomorphism has at least 2²ⁿ fixed points, the total rank of homology. Without nondegeneracy the bound is only 2n + 1, one plus the cup-length, the largest number of positive-degree classes with nonzero cup product.
+
+**How the definition helps.** Nondegeneracy makes each fixed point a nondegenerate critical point of the action, so a Morse-type count reaches the sum of Betti numbers (our own). The time-1 map of a small multiple of a function on T² with exactly three critical points has only three fixed points (our own). For degenerate maps Conley and Zehnder proved only the bound 2n + 1.
+
+**Wikipedia:** [Conley–Zehnder theorem](https://en.wikipedia.org/wiki/Conley%E2%80%93Zehnder_theorem), [Arnold conjecture](https://en.wikipedia.org/wiki/Arnold_conjecture). It says: “it can be strengthen to the rank of the homology of the torus (which is 2²ⁿ) provided all the fixed points are non-degenerate, this latter condition being generic in the C¹-topology.”
+
+**Sources:**
+
+- [C. C. Conley and E. Zehnder, The Birkhoff–Lewis fixed point theorem and a conjecture of V. I. Arnol'd, Invent. Math. 73 (1983) 33–49](https://doi.org/10.1007/BF01393824)
+
+### Normalizing Hamiltonians removes the constant shift from spectral invariants
+
+**Remember:** Fix the free constant, and the invariant belongs to the flow.
+
+*Rules out counterexamples.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 37J11. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Hamiltonian H is normalized when its integral over M is zero at every time. Adding a function of time λ(t) to H keeps its flow, so each Hamiltonian isotopy has exactly one normalized generator. The spectral invariant c(A, H) is the action level at which a class A first appears in filtered Floer homology.
+
+**Problem.** For normalized Hamiltonians, c(A, H) depends only on the homotopy class, with fixed end points, of the isotopy that H generates. That is, c is a function on the universal cover of Ham(M), the group of Hamiltonian diffeomorphisms.
+
+**How the definition helps.** Adding λ(t) keeps the flow but shifts c by ∫λ, so without normalization c is not a function of the isotopy (our own). Normalization removes this counterexample by fixing the free constant (our own). The remaining work is the theorem of Schwarz and Oh that homotopic normalized isotopies have the same action spectrum, plus a continuity argument (our own).
+
+**Paper or page:** [Spectral diameter of negatively monotone manifolds](https://arxiv.org/abs/2410.21416). It says: “(Homotopy invariance) c(A, H₁) = c(A, H₂) for any two normalized Hamiltonian functions generating the same element in H̃am(M).”
+
+**Sources:**
+
+- [M. Schwarz, On the action spectrum for closed symplectically aspherical manifolds, Pacific J. Math. 193 (2000) 419–461](https://doi.org/10.2140/pjm.2000.193.419)
+- [Y.-G. Oh, Construction of spectral invariants of Hamiltonian paths on closed symplectic manifolds, in The Breadth of Symplectic and Poisson Geometry, Progr. Math. 232, Birkhäuser (2005) 525–570](https://doi.org/10.1007/0-8176-4419-9_18)
+
+### Requiring Hamiltonian isotopy excludes the translated circle on the cylinder
+
+**Remember:** Hamiltonian motion sweeps no net area across any loop.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A Hamiltonian isotopy is the flow of a time-dependent function through Hamilton's equations. The flux of a symplectic isotopy is a class in H¹(M; ℝ) that measures the area swept by loops. A symplectic isotopy deforms, with fixed ends, to a Hamiltonian one exactly when its flux is zero.
+
+**Problem.** Lagrangian Floer cohomology is invariant under Hamiltonian isotopy of either Lagrangian, but not under all symplectic isotopies. On the cylinder T\*S¹ = S¹ × ℝ, the zero circle has HF ≅ H(S¹) ≠ 0, yet a symplectic translation moves it off itself.
+
+**How the definition helps.** The invariance proof bounds the energy of continuation strips by the Hamiltonian function, and a motion with nonzero flux has no such function (our own). The translation (q, p) ↦ (q, p + c) displaces the zero circle, but its flux is c times a generator (our own). So it is not Hamiltonian, and the circle stays nondisplaceable by Hamiltonian maps, as its Floer cohomology says (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The Floer homology of a pair of Lagrangian submanifolds may not always exist; when it does, it provides an obstruction to isotoping one Lagrangian away from the other using a Hamiltonian isotopy.”
+
+**Sources:**
+
+- [A. Floer, Morse theory for Lagrangian intersections, J. Differential Geom. 28 (1988) 513–547](https://doi.org/10.4310/jdg/1214442477)
+
+### Semipositivity keeps bad sphere bubbles out of Floer moduli spaces
+
+**Remember:** No positive-area spheres with slightly negative Chern number allowed.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D45. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A closed 2n-dimensional symplectic manifold is semipositive when no sphere class A has ω(A) &gt; 0 and 3 − n ≤ c₁(A) &lt; 0. Here c₁ is the first Chern class of the tangent bundle. Monotone manifolds, where ω and c₁ are positively proportional on spheres, and all manifolds of dimension at most 6 are semipositive.
+
+**Problem.** On a closed semipositive manifold, Floer homology can be built by directly counting Floer cylinders, which solve a perturbed Cauchy–Riemann equation. It equals homology over a Novikov ring of sphere classes, so a nondegenerate H has at least as many 1-periodic orbits as the Betti sum.
+
+**How the definition helps.** Semipositivity rules out holomorphic spheres of negative Chern number that could bubble off in the low-dimensional families used to define the differential (our own). Such spheres and their multiple covers cannot be made regular by any choice of almost complex structure, and they break the classical construction (our own). On general closed manifolds, Fukaya and Ono proved the rational bound with virtual counting techniques (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The Floer cohomology groups of the loop space of a semi-positive symplectic manifold (M,ω) are naturally isomorphic to the ordinary cohomology of M, tensored by a suitable Novikov ring associated the group of covering transformations.”
+
+**Sources:**
+
+- [H. Hofer and D. Salamon, Floer homology and Novikov rings, in The Floer Memorial Volume, Birkhäuser (1995) 483–524](https://doi.org/10.1007/978-3-0348-9217-9_20)
+- [K. Ono, On the Arnold conjecture for weakly monotone symplectic manifolds, Invent. Math. 119 (1995) 519–537](https://doi.org/10.1007/BF01245191)
+- [A. Floer, Symplectic fixed points and holomorphic spheres, Comm. Math. Phys. 120 (1989) 575–611](https://doi.org/10.1007/BF01260388)
+
+### Expanding Liouville flows bound Weinstein handle indices by half
+
+**Remember:** A flow that inflates ω must crush it on what it contracts.
+
+*True by definition.* MSC 53D42 (Symplectic field theory; contact homology), 57R17. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Weinstein domain is a compact symplectic manifold with a Liouville vector field X, whose time-t flow multiplies the symplectic form ω by eᵗ. The field X is gradient-like for a Morse function Ψ. So the flow expands ω while it climbs Ψ.
+
+**Problem.** Every critical point of Ψ on a 2n-dimensional Weinstein domain has Morse index at most n. So the domain has handles of index at most n only, and its core is an isotropic complex of dimension at most n.
+
+**How the definition helps.** On a stable manifold the flow shrinks vectors but scales ω by eᵗ, so ω vanishes there (our own). So the stable manifold is isotropic, and its dimension, the Morse index, is at most n (our own). For Stein manifolds, closed complex submanifolds of ℂᴺ, the usual proof needs a plurisubharmonic function, one subharmonic on complex lines (our own).
+
+**Paper or page:** [Tight Contact Structures on Contact Mapping Tori and their Folded Sums](https://arxiv.org/abs/2312.05823). It says: “Any Weinstein domain (Σ,ω,X,Ψ) of dimension 2n admits a (Weinstein) handle decomposition whose handles have indices at most n, and so, its core Core(Σ,ω,X,Ψ) is a compact isotropic subcomplex of (Σ,ω) of dimension n.”
+
+**Sources:**
+
+- [K. Cieliebak and Y. Eliashberg, From Stein to Weinstein and Back, AMS Colloquium Publications 59 (2012)](https://doi.org/10.1090/coll/059)
+
+### Giving eᴬ degree 2c₁(A) makes the quantum product preserve degree
+
+**Remember:** Each curve class pays its Chern number in degree.
+
+*True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG, math.AG. Level 3: graduate.
+
+**Definition.** In the Novikov ring, the formal variable eᴬ of a class A in H₂(X) gets degree 2c₁(A). Here c₁(A) is the first Chern number of the tangent bundle on A.
+
+**Problem.** The small quantum product is homogeneous: deg(a∗b) = deg a + deg b for classes a, b of pure degree.
+
+**How the definition helps.** Each coefficient (a∗b)(A) has degree deg a + deg b − 2c₁(A), and eᴬ of degree 2c₁(A) restores exactly the missing degree (our own). If eᴬ had degree zero, the product would mix degrees, since ℓ∗ℓ² = q in the projective plane (our own). The work went into the dimension formula for three-point invariants, which comes from the Riemann–Roch theorem (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The variable eᴬ is considered to be of degree 2∫<sub>A</sub> c₁(TX), where c₁ is the first Chern class of the tangent bundle TX”
+
+**Sources:**
+
+- [Y. Ruan and G. Tian, A mathematical theory of quantum cohomology, J. Differential Geom. 42 (1995) 259–367](https://doi.org/10.4310/jdg/1214457234)
+
+### Monotonicity makes the quantum product a finite polynomial sum
+
+**Remember:** In a monotone manifold, degree controls area.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic manifold is monotone when ω(A) = λc₁(A) for every sphere class A, with one constant λ &gt; 0. So the area of a sphere is fixed by its first Chern number.
+
+**Problem.** For a closed monotone symplectic manifold, each quantum product a∗b is a finite sum, so quantum cohomology is defined over a polynomial ring Z\[q\]. For example, the quantum cohomology of the projective plane is Z\[ℓ, q\]/(ℓ³ = q).
+
+**How the definition helps.** Degree counting bounds c₁(A) for every class A that contributes to a∗b, and monotonicity turns this into a bound on the area ω(A) (our own). Gromov compactness then leaves only finitely many classes, and q of degree twice the minimal Chern number records them (our own). Without monotonicity the quintic threefold has infinitely many contributing classes, so a power series is needed (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “In this case it is convenient to rename eᴸ as q and use the simpler coefficient ring Z\[q\]. This q is of degree 6 = 2 c₁(L).”
+
+**Sources:**
+
+- [Y. Ruan and G. Tian, A mathematical theory of quantum cohomology, J. Differential Geom. 42 (1995) 259–367](https://doi.org/10.4310/jdg/1214457234)
+
+### Semipositivity excludes negative multiple covers, so Gromov–Witten pseudocycles exist
+
+**Remember:** No sphere of small negative Chern number may carry positive area.
+
+*Rules out counterexamples.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 32Q65. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A closed symplectic 2n-manifold is semipositive when no sphere class A has ω(A) &gt; 0 and 3 − n ≤ c₁(A) &lt; 0. Monotone manifolds and all manifolds of dimension at most six are semipositive.
+
+**Problem.** For semipositive X and generic J, evaluation on simple J-spheres with marked points is a pseudocycle, a map whose limit set has codimension two. Simple means not multiply covered, and the result makes genus-zero invariants integer counts without virtual techniques.
+
+**How the definition helps.** For generic J no simple sphere has c₁ &lt; 3 − n, so semipositivity forces c₁ ≥ 0 on every J-sphere (our own). Then replacing a multiple cover by its simple image never raises dimension, and the boundary has codimension two (our own). Excluded is a multiply covered bubble of negative Chern number, whose moduli space can be too large for every J (our own).
+
+**Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “When X is semipositive, M<sub>g</sub>,n(J, ν, β) has a natural compactification, called the Gromov-Uhlenbeck compactification.”
+
+**Sources:**
+
+- [Y. Ruan and G. Tian, A mathematical theory of quantum cohomology, J. Differential Geom. 42 (1995) 259–367](https://doi.org/10.4310/jdg/1214457234)
+
+### Tame almost complex structures make Gromov–Witten invariants deformation invariants
+
+**Remember:** Use any tame J; all of them lie in one contractible family.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 32Q65. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Gromov–Witten invariants are defined with an almost complex structure J that is ω-tame, meaning ω(v, Jv) &gt; 0 for every nonzero tangent vector v. J need not be integrable, and the set of such J is nonempty and contractible.
+
+**Problem.** Gromov–Witten invariants of a closed symplectic manifold do not depend on the choice of J. They depend only on the deformation class of the symplectic form.
+
+**How the definition helps.** Two tame structures are joined by a path of tame ones, and the moduli spaces over a generic path form a cobordism (our own). A deformation of ω works the same way, because tameness is an open condition (our own). Integrable structures would not do this, since some symplectic manifolds, such as the Kodaira–Thurston manifold, carry no Kähler structure (our own).
+
+**Wikipedia:** [Pseudoholomorphic curve](https://en.wikipedia.org/wiki/Pseudoholomorphic_curve), [Gromov–Witten invariant](https://en.wikipedia.org/wiki/Gromov%E2%80%93Witten_invariant). It says: “Gromov showed that, for a given ω, the space of ω-tame J is nonempty and contractible.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+- [Y. Ruan and G. Tian, A mathematical theory of quantum cohomology, J. Differential Geom. 42 (1995) 259–367](https://doi.org/10.4310/jdg/1214457234)
+
+### The Novikov finiteness condition makes the quantum product well defined
+
+**Remember:** Allow infinitely many curve classes, but only finitely many below each energy.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG, math.AG. Level 3: graduate.
+
+**Definition.** The Novikov ring of a closed symplectic manifold X, with symplectic form ω, consists of formal sums Σ λ(A)eᴬ over classes A in H₂(X). For every real number C, only finitely many classes A with ω(A) ≤ C may have a nonzero coefficient λ(A).
+
+**Problem.** The quantum product a∗b = Σ (a∗b)(A) eᴬ, summed over all classes A, is a well-defined element of cohomology with Novikov coefficients. This holds even when infinitely many classes A contribute, as for the quintic threefold.
+
+**How the definition helps.** Gromov compactness gives exactly this finiteness: below each area C, only finitely many classes contain J-holomorphic spheres (our own). So only finitely many terms of a∗b have area at most C, and the sum is an element of the Novikov ring (our own). A polynomial ring would fail, since the quintic threefold has rational curves in every degree (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “for every real number C, only finitely many A with ω(A) less than or equal to C have nonzero coefficients λ<sub>A</sub>.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+- [Y. Ruan and G. Tian, A mathematical theory of quantum cohomology, J. Differential Geom. 42 (1995) 259–367](https://doi.org/10.4310/jdg/1214457234)
+
 ### Zero area recovers cup multiplication
 
 **Remember:** Discard positive area to recover the cup product.
@@ -2581,6 +4120,24 @@
 **Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The only pseudoholomorphic curves in class A = 0 are constant maps, whose images are points.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A Kähler polarization makes the Heisenberg representation irreducible
+
+**Remember:** Holomorphy halves the variables, from phase space to configuration space.
+
+*Rules out counterexamples.* MSC 53D50 (Geometric quantization), 81S10, 81R30. arXiv math-ph, math.SG. Level 3: graduate.
+
+**Definition.** The Kähler polarization of ℂⁿ keeps only the holomorphic prequantum states. Its quantum space is the Segal–Bargmann space of holomorphic functions that are square-integrable against a Gaussian weight.
+
+**Problem.** The position and momentum operators act irreducibly on the Segal–Bargmann space, so it is unitarily equivalent to L²(ℝⁿ) by the Stone–von Neumann theorem. On the prequantum space L²(ℝ²ⁿ) the same commutation relations act reducibly (our own).
+
+**How the definition helps.** Holomorphy leaves only the constants killed by every lowering operator ∂/∂zⱼ, so a commuting operator maps 1 to a constant (our own). If it also commutes with every zⱼ, it is a scalar on all polynomials, which are dense, so the representation is irreducible (our own). The removed counterexample is the prequantum space L²(ℝ²ⁿ), a sum of infinitely many copies of the Schrödinger representation (our own).
+
+**Wikipedia:** [Segal–Bargmann space](https://en.wikipedia.org/wiki/Segal%E2%80%93Bargmann_space). It says: “Since the operators Aj and Bj from the previous section satisfy the Weyl relations and act irreducibly on the Segal–Bargmann space, the Stone–von Neumann theorem applies.”
+
+**Sources:**
+
+- [V. Bargmann, On a Hilbert space of analytic functions and an associated integral transform, Part I, Communications on Pure and Applied Mathematics 14 (1961), 187–214](https://doi.org/10.1002/cpa.3160140303)
 
 ### Berezin quantization is positive, Weyl quantization is not
 
@@ -2601,6 +4158,119 @@
 **Sources:**
 
 - [F. A. Berezin, Quantization, Mathematics of the USSR-Izvestiya 8 (1974) 1109–1165](https://doi.org/10.1070/IM1974v008n05ABEH002140)
+
+### Bohr–Sommerfeld leaves turn the old quantum rule into trivial holonomy
+
+**Remember:** A Bohr–Sommerfeld leaf is where the prequantum phase closes up.
+
+*True by definition. Confidence: medium.* MSC 53D50 (Geometric quantization), 53D12, 37J35. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** A Bohr–Sommerfeld leaf is a Lagrangian submanifold on which the prequantum connection has trivial holonomy. On a Lagrangian submanifold this connection is flat, so its holonomy is its only invariant.
+
+**Problem.** Take the standard model ℝⁿ × Tⁿ of a Lagrangian torus fibration, with action–angle coordinates (x, y), and the N-th power of the prequantum bundle. Its Bohr–Sommerfeld fibres lie over the points x in (1/N)ℤⁿ, the old rule that each action is a multiple of Planck's constant (our own).
+
+**How the definition helps.** On a Lagrangian torus the holonomy around the i-th circle is exp(2πiNxᵢ), so trivial holonomy is the old rule written without coordinates (our own). The old rule asks that each action integral of p dq be a multiple of Planck's constant, here 1/N, and it needs coordinates (our own). The work went into the Arnold–Liouville theorem, which gives the action–angle coordinates (our own).
+
+**nLab:** [Bohr-Sommerfeld leaf](https://ncatlab.org/nlab/show/Bohr-Sommerfeld+leaf). It says: “Therefore given a real polarization of (X,ω), hence a foliation by Lagrangian submanifolds, the Bohr-Sommerfeld leaves form a discrete subset of the leaf space.”
+
+**Paper or page:** [Adiabatic Limit, Theta Function, and Geometric Quantization](https://arxiv.org/abs/1904.04076). It says: “x ∈ ℝⁿ is a Bohr-Sommerfeld if and only if x lies in (1/N)ℤⁿ”
+
+**Sources:**
+
+- [T. Yoshida, Adiabatic limit, theta function, and geometric quantization, SIGMA 20 (2024), 065](https://doi.org/10.3842/SIGMA.2024.065)
+
+### Defining metaplectic operators by intertwining makes them a circle extension
+
+**Remember:** A metaplectic operator turns W into W twisted by g.
+
+*True by definition.* MSC 53D50 (Geometric quantization), 81S10, 22E46. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** Let W be the irreducible unitary representation of the Heisenberg group of a symplectic vector space V. This group is made of phase-space translations together with phases. A metaplectic operator for a linear symplectic map g is a unitary U with U W(v) U⁻¹ = W(gv) for all v.
+
+**Problem.** Metaplectic operators for g and h compose to one for gh, and two of them for the same g differ only by a phase. So they form a group, Mpᶜ, which extends the symplectic group by the circle.
+
+**How the definition helps.** Composition follows from the defining identity, and the phase claim is Schur's lemma, since W is irreducible (our own). The usual alternative writes the operators by explicit integral kernels, and then the group law needs Gaussian-integral computations (our own). The real work is existence for every g, which the Stone–von Neumann theorem gives (our own).
+
+**nLab:** [metaplectic representation](https://ncatlab.org/nlab/show/metaplectic+representation). It says: “there is a unique (up to multiplication by a constant of modulus one) unitary operator U<sub>g</sub> such that for all v ∈ V W(g(v)) = U<sub>g</sub> W(v) U⁻¹<sub>g</sub>”
+
+**Sources:**
+
+- [A. Weil, Sur certains groupes d'opérateurs unitaires, Acta Mathematica 111 (1964), 143–211](https://doi.org/10.1007/BF02391012)
+- [G. B. Folland, Harmonic Analysis in Phase Space, Annals of Mathematics Studies 122, Princeton University Press, 1989](https://doi.org/10.1515/9781400882427)
+
+### Half-forms give real polarizations a nonzero Hilbert space
+
+**Remember:** Integrate states over the leaf space, not over phase space.
+
+*Rules out counterexamples.* MSC 53D50 (Geometric quantization), 81S10. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** A real polarization is a foliation of phase space by Lagrangian leaves, such as the vertical lines x = constant in the plane. A half-form state is a section that is covariantly constant along the leaves, times a half-form on the leaf space, for example f(x)√dx. The product of two such states is a density on the leaf space, so it is integrated there.
+
+**Problem.** With half-forms, the vertical polarization of the plane gives the quantum Hilbert space L²(ℝ) of states f(x)√dx. Without half-forms, the same polarization has no nonzero square-integrable states.
+
+**How the definition helps.** The norm of a half-form state is an integral over x alone, so it is finite for f in L²(ℝ) (our own). Without half-forms a polarized section is a function f(x) that does not depend on p (our own). Its norm, the integral of \|f(x)\|² over the whole plane, is infinite unless f is zero, and half-forms remove this empty quantization (our own).
+
+**nLab:** [metaplectic correction (in geometric quantization)](https://ncatlab.org/nlab/show/metaplectic+correction+%28in+geometric+quantization%29). It says: “In the context of geometric quantization a metaplectic correction is a choice of metaplectic structure on the given symplectic manifold. It allows to make the space of states into a Hilbert space.”
+
+**Wikipedia:** [Geometric quantization](https://en.wikipedia.org/wiki/Geometric_quantization). It says: “The half-form correction—also known as the metaplectic correction—is a technical modification to the above procedure that is necessary in the case of real polarizations to obtain a nonzero quantum Hilbert space”
+
+**Sources:**
+
+- [B. C. Hall, Quantum Theory for Mathematicians, Graduate Texts in Mathematics 267, Springer, 2013](https://doi.org/10.1007/978-1-4614-7116-5)
+
+### Half-forms give the quantum harmonic oscillator its ground-state energy
+
+**Remember:** A square root of dz carries the missing half quantum.
+
+*Rules out counterexamples.* MSC 53D50 (Geometric quantization), 81S10. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** A polarization picks half of the phase-space directions, and a quantum state must be constant along them. The half-form correction tensors the prequantum bundle by a square root of the polarization's canonical bundle, a bundle of n-forms on 2n-dimensional phase space. In the Kähler polarization of the plane this bundle is spanned by dz, and a quantum state becomes a holomorphic section times √dz.
+
+**Problem.** With the half-form correction, the Kähler quantization of the harmonic oscillator with frequency ν has energy levels (n + ½)ħν. These are the levels that the Schrödinger equation gives.
+
+**How the definition helps.** The oscillator's flow rotates the half-form √dz, and this rotation adds ħν/2 to every eigenvalue (our own). Without half-forms the same quantization gives the levels nħν, so the ground state wrongly has energy zero (our own). The correction removes this wrong ground state and changes nothing else in the method (our own).
+
+**Wikipedia:** [Geometric quantization](https://en.wikipedia.org/wiki/Geometric_quantization). It says: “the half-form correction allows the quantization of the harmonic oscillator to reproduce the standard quantum mechanical formula for the energies, (n+1/2)ħω, with the "+1/2" coming courtesy of the half-forms.”
+
+**Sources:**
+
+- [B. C. Hall, Quantum Theory for Mathematicians, Graduate Texts in Mathematics 267, Springer, 2013](https://doi.org/10.1007/978-1-4614-7116-5)
+
+### Holomorphic sections make the Borel–Weil representations visibly irreducible
+
+**Remember:** Holomorphic sections are pinned down by one open orbit.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D50 (Geometric quantization), 22E46, 14M15. arXiv math.RT, math.SG. Level 3: graduate.
+
+**Definition.** The Kähler quantization attached to an integral weight λ is the space of holomorphic sections of a line bundle L(λ) on the flag manifold G/B. For regular λ this manifold is the coadjoint orbit of λ. A highest-weight vector in it is a section fixed by the unipotent group N.
+
+**Problem.** For a dominant integral weight λ, the holomorphic sections of L(λ) form the irreducible representation with highest weight λ. Every irreducible representation of the compact connected Lie group arises in this way, for exactly one λ.
+
+**How the definition helps.** An N-fixed section is determined by its value at one point of the open N-orbit, so highest-weight vectors span at most one line (our own). The representation is completely reducible and each summand has a highest-weight vector, so there is only one summand (our own). The work went into the Bruhat decomposition, which gives the open orbit, and into finding a nonzero section for dominant λ (our own).
+
+**Wikipedia:** [Borel–Weil–Bott theorem](https://en.wikipedia.org/wiki/Borel%E2%80%93Weil%E2%80%93Bott_theorem). It says: “The Borel–Weil theorem states that if λ is a dominant integral weight then this representation is a holomorphic irreducible highest weight representation of G with highest weight λ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrality on the sphere makes spin come in half-integers
+
+**Remember:** Each 2πħ of area on the sphere buys one more state.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D50 (Geometric quantization), 81S10, 22E46. arXiv math.SG, math-ph. Level 3: graduate.
+
+**Definition.** The Kähler quantization of a symplectic sphere is the space of holomorphic sections of its prequantum line bundle. That bundle's curvature is the area form divided by ħ, so it exists only when the area is 2πħk for an integer k.
+
+**Problem.** A sphere of area 2πħk, for a positive integer k, quantizes to the irreducible representation of SU(2) of dimension k + 1 (our own). So the possible spins are exactly the positive multiples k/2 of one half (our own).
+
+**How the definition helps.** By Chern–Weil, the degree of the prequantum bundle is the area divided by 2πħ, and line bundles on the sphere have integer degrees (our own). The holomorphic sections of the degree-k bundle are the homogeneous polynomials of degree k in two variables (our own). These polynomials form the irreducible SU(2) representation of dimension k + 1 (our own).
+
+**nLab:** [geometric quantization of the 2-sphere](https://ncatlab.org/nlab/show/geometric+quantization+of+the+2-sphere). It says: “More abstractly in mathematics, the 2-sphere is naturally identified with a coadjoint orbit of the special unitary Lie algebra/special unitary group 𝔰𝔲(2)/SU(2)”
+
+**Wikipedia:** [Geometric quantization](https://en.wikipedia.org/wiki/Geometric_quantization). It says: “Assuming that the area of the sphere is an integer multiple of 2πħ, we can perform geometric quantization and the resulting Hilbert space carries an irreducible representation of SU(2).”
+
+**Sources:**
+
+- [B. Kostant, Quantization and unitary representations, Lectures in Modern Analysis and Applications III, Lecture Notes in Mathematics 170, Springer, 1970, 87–208](https://doi.org/10.1007/BFb0079068)
 
 ### Prequantum curvature turns Poisson brackets into operator commutators
 
@@ -3656,6 +5326,155 @@
 
 - [Barrett O’Neill, The fundamental equations of a submersion (1966)](https://doi.org/10.1307/mmj/1028999604)
 
+### Hyperkähler cones make 3-Sasakian manifolds Einstein
+
+**Remember:** Put the geometry on the cone, and the link inherits it.
+
+*True by definition.* MSC 53C25 (Special Riemannian manifolds (Einstein, Sasakian, etc.)), 53D10. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A Riemannian manifold (M, g) is Sasakian when its metric cone (0, ∞) × M, with metric dr² + r²g, is Kähler. It is 3-Sasakian when the cone is hyperkähler, Kähler for three complex structures I, J, K with IJ = K.
+
+**Problem.** Every 3-Sasakian manifold of dimension 4n + 3 is an Einstein manifold, with Ricci curvature (4n + 2)g.
+
+**How the definition helps.** Hyperkähler metrics are Ricci-flat, and a cone over an m-manifold is Ricci-flat exactly when Ric(g) = (m − 1)g (our own). So the Einstein property is read off the definition, and the work sits in the curvature formula for cones (our own). The older definition, by identities among three contact metric tensors, needs a direct curvature computation instead (our own).
+
+**nLab:** [Sasakian manifold](https://ncatlab.org/nlab/show/Sasakian+manifold). It says: “When the Riemannian cone is a hyper-Kähler manifold, then one talks of a 3-Sasakian manifold. Such a manifold is then automatically Einstein and spin.”
+
+**Wikipedia:** [Sasakian manifold](https://en.wikipedia.org/wiki/Sasakian_manifold). It says: “Any 3-Sasakian manifold is both an Einstein manifold and a spin manifold.”
+
+**Sources:**
+
+- [C. P. Boyer and K. Galicki, Sasakian Geometry, Oxford Mathematical Monographs, Oxford University Press, 2007](https://doi.org/10.1093/acprof:oso/9780198564959.001.0001)
+
+### ADHM equations are a hyperkähler moment map, so instanton moduli are hyperkähler
+
+**Remember:** Instantons become matrices, and the matrix equations are moment maps.
+
+*True by definition.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 14D21, 81T13. arXiv math.DG, math.AG. Level 4: research.
+
+**Definition.** ADHM data are complex matrices B₁, B₂ (k × k), I (k × N) and J (N × k). They form a flat quaternionic vector space with an action of U(k). The maps \[B₁, B₁†\] + \[B₂, B₂†\] + II† − J†J and \[B₁, B₂\] + IJ form its hyperkähler moment map.
+
+**Problem.** Framed SU(N) instantons on ℝ⁴ of charge k, with a frame fixed at infinity, correspond to regular ADHM solutions up to the U(k) action. So their moduli space is a hyperkähler quotient of flat space, with the metric inherited from the flat metric on the data.
+
+**How the definition helps.** The ADHM equations are the vanishing of a hyperkähler moment map, so the quotient theorem makes the moduli space hyperkähler at once (our own). Without this view one would compute the curvature of the natural metric on instantons directly (our own). The work moves into the ADHM theorem itself, which matches instantons with linear-algebra data (our own).
+
+**Wikipedia:** [ADHM construction](https://en.wikipedia.org/wiki/ADHM_construction). It says: “The metric on the moduli space of instantons is that inherited from the flat metric on B, I and J.”
+
+**Sources:**
+
+- [M. F. Atiyah, N. J. Hitchin, V. G. Drinfeld, Yu. I. Manin, Construction of instantons, Phys. Lett. A 65 (1978) 185–187](https://doi.org/10.1016/0375-9601(78)90141-X)
+
+### Generic quotient levels avoid walls, so Kronheimer's ALE quotients are smooth
+
+**Remember:** Generic levels keep every stabilizer trivial, so no singular points survive.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 14E15, 16G20. arXiv math.DG, math.AG. Level 4: research.
+
+**Definition.** For a finite group Γ ⊂ SU(2), Kronheimer forms a hyperkähler quotient of a flat space built from Γ by a product of unitary groups. The level ζ lies in the centre of that group's Lie algebra, tensored with ℝ³. Call ζ generic when it avoids finitely many walls, one for each root that the McKay correspondence attaches to Γ.
+
+**Problem.** For a generic level, Kronheimer's quotient is a smooth complete hyperkähler 4-manifold that looks like ℂ²/Γ at infinity. It is diffeomorphic to the minimal resolution of ℂ²/Γ (the smallest smooth surface over it), and level zero gives ℂ²/Γ.
+
+**How the definition helps.** A generic level makes the group act freely on the level set, so the hyperkähler quotient theorem applies with no exceptions (our own). On a wall, such as level zero, some points have larger stabilizers and the quotient keeps singular points (our own). The walls have codimension three, so the generic levels form a connected set (our own).
+
+**Wikipedia:** [Gravitational instanton](https://en.wikipedia.org/wiki/Gravitational_instanton). It says: “There are many methods for constructing gravitational instantons, including the Gibbons–Hawking Ansatz, twistor theory, and the hyperkähler quotient construction.”
+
+**Paper or page:** [A Combinatorial Study on Quiver Varieties](https://arxiv.org/abs/math/0510455). It says: “(i) 𝓜<sub>e₀</sub>(δ)₀ is isomorphic to the simple singularity ℂ²/Γ. (ii) π : 𝓜<sub>e₀</sub>(δ) → 𝓜<sub>e₀</sub>(δ)₀ is the minimal resolution.”
+
+**Sources:**
+
+- [P. B. Kronheimer, The construction of ALE spaces as hyper-Kähler quotients, J. Differential Geom. 29 (1989) 665–683](https://doi.org/10.4310/jdg/1214443066)
+- [H. Nakajima, Instantons on ALE spaces, quiver varieties, and Kac–Moody algebras, Duke Math. J. 76 (1994) 365–416](https://doi.org/10.1215/S0012-7094-94-07613-8)
+
+### Hitchin's equations are a hyperkähler moment map, giving hyperkähler moduli
+
+**Remember:** Hitchin's three real equations are three moment maps set to zero.
+
+*True by definition. Confidence: medium.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 14H60, 53C07. arXiv math.DG, math.AG. Level 4: research.
+
+**Definition.** On a compact Riemann surface, take pairs (A, Φ) of a unitary connection A and a Higgs field Φ, an adjoint-valued (1,0)-form. These pairs form a flat hyperkähler space, and the gauge group acts on it with a hyperkähler moment map. Its parts are F + \[Φ, Φ\*\] and the two parts of ∂̄Φ, for F the curvature and ∂̄ the (0,1) derivative of A.
+
+**Problem.** Hitchin's equations F + \[Φ, Φ\*\] = 0 and ∂̄Φ = 0 say that this moment map vanishes. So the moduli space of irreducible solutions modulo gauge is a hyperkähler manifold.
+
+**How the definition helps.** The equations are the vanishing of the three moment maps, so the hyperkähler quotient theorem gives the metric (our own). Without this view one would have to check by hand that the natural metric is Kähler for three complex structures (our own). The work moves into analysis: elliptic theory makes the quotient a smooth finite-dimensional manifold (our own).
+
+**Wikipedia:** [Hitchin's equations](https://en.wikipedia.org/wiki/Hitchin%27s_equations). It says: “The moduli space of solutions to Hitchin's equations was constructed by Hitchin in the rank two case on a compact Riemann surface and was one of the first examples of a hyperkähler manifold constructed.”
+
+**Sources:**
+
+- [N. J. Hitchin, The self-duality equations on a Riemann surface, Proc. London Math. Soc. 55 (1987) 59–126](https://doi.org/10.1112/plms/s3-55.1.59)
+
+### Holomorphic symplectic Kähler manifolds are hyperkähler, so Hilbert schemes of K3 qualify
+
+**Remember:** A holomorphic symplectic form plus a Kähler class yields the whole metric.
+
+*Makes the theorem clean to state or prove.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 14J42, 14C05. arXiv math.AG, math.DG. Level 4: research.
+
+**Definition.** A holomorphic symplectic form on a complex manifold is a closed holomorphic 2-form that is nondegenerate at every point. For compact manifolds, the Calabi–Yau theorem lets one define hyperkähler as Kähler with a holomorphic symplectic form. This definition contains no metric equation.
+
+**Problem.** For a K3 surface S and every n ≥ 1, the Hilbert scheme of n points on S is compact hyperkähler of dimension 4n. It is the smooth space of length-n finite subschemes of S, which lets points collide.
+
+**How the definition helps.** With the metric-free definition, one only has to show that the Hilbert scheme is Kähler and carries a holomorphic symplectic form (our own). Beauville extends the symplectic form of Sⁿ over the Hilbert scheme with a blow-up and Hartogs' extension theorem (our own). The analysis moves into the Calabi–Yau theorem, which supplies the metric.
+
+**Wikipedia:** [Hilbert scheme](https://en.wikipedia.org/wiki/Hilbert_scheme). It says: “A holomorphically symplectic, Kähler manifold is hyperkähler, as follows from the Calabi–Yau theorem.”
+
+**Sources:**
+
+- [A. Beauville, Variétés kählériennes dont la première classe de Chern est nulle, J. Differential Geom. 18 (1983) 755–782](https://doi.org/10.4310/jdg/1214438181)
+
+### Hyperkähler metrics become holomorphic data on the twistor space
+
+**Remember:** Package the whole sphere of complex structures into one complex manifold.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53C28. arXiv math.DG, math.AG. Level 4: research.
+
+**Definition.** The twistor space Z of a hyperkähler 4k-manifold M is M × S², where S² is the sphere of structures aI + bJ + cK. Its complex structure is L on the fibre over L and the standard one on S² = ℂP¹. On ℂP¹, O(m) is the line bundle whose sections are polynomials of degree m in the coordinate ζ.
+
+**Problem.** By a theorem of Hitchin, Karlhede, Lindström and Roček, a hyperkähler metric on M is equivalent to holomorphic data on Z. The data are the fibration over ℂP¹, real sections with normal bundle 2k copies of O(1), an O(2)-twisted fibrewise symplectic form, and a real structure.
+
+**How the definition helps.** The twistor space packs the three Kähler forms into one holomorphic form (ω₂ + iω₃) + 2ζω₁ − ζ²(ω₂ − iω₃), which is O(2)-twisted (our own). The complex structure on Z is integrable, as follows from Obata's theorem. Conversely, the points of M are the real sections, and the metric is read off from the twisted form (our own).
+
+**Wikipedia:** [Hypercomplex manifold](https://en.wikipedia.org/wiki/Hypercomplex_manifold). It says: “This defines an almost complex structure on the manifold M×S², which is fibered over ℂP¹=S² with fibers identified with (M, L). This complex structure is integrable, as follows from Obata's theorem”
+
+**Sources:**
+
+- [N. J. Hitchin, A. Karlhede, U. Lindström, M. Roček, Hyperkähler metrics and supersymmetry, Comm. Math. Phys. 108 (1987) 535–589](https://doi.org/10.1007/BF01214418)
+
+### Nahm's equations are a hyperkähler moment map, giving hyperkähler adjoint orbits
+
+**Remember:** Nahm's ordinary differential equations are three moment maps for gauge symmetry.
+
+*True by definition. Confidence: medium.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53C07. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** Quadruples (T₀, T₁, T₂, T₃) of functions on an interval with values in the Lie algebra of a compact group form a flat hyperkähler space. Gauge transformations act on it with a hyperkähler moment map. Its three parts are dTᵢ/dt + \[T₀, Tᵢ\] + \[Tⱼ, Tₖ\], for (i, j, k) a cyclic order of (1, 2, 3).
+
+**Problem.** Moduli spaces of solutions of Nahm's equations are hyperkähler. In particular, Kronheimer showed that every regular semisimple adjoint orbit, such as the trace-free matrices with fixed distinct eigenvalues, carries a hyperkähler metric.
+
+**How the definition helps.** Nahm's equations say that this moment map vanishes, so their moduli space is a hyperkähler quotient by the gauge group (our own). Without this view one would build three complex structures on the orbit and check one metric against all three (our own). The work moves into the analysis of solutions on a half-line with suitable limits, which Kronheimer did (our own).
+
+**Wikipedia:** [Nahm equations](https://en.wikipedia.org/wiki/Nahm_equations). It says: “Conceptually, the equations arise in the process of infinite-dimensional hyperkähler reduction.”
+
+**Sources:**
+
+- [P. B. Kronheimer, A hyper-Kählerian structure on coadjoint orbits of a semisimple complex group, J. London Math. Soc. 42 (1990) 193–208](https://doi.org/10.1112/jlms/s2-42.2.193)
+
+### Splitting off a holomorphic moment map makes hyperkähler quotients algebraic
+
+**Remember:** The real equation needs analysis; the complex equation is algebra.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C26 (Hyper-Kähler and quaternionic Kähler geometry, \`\`special'' geometry), 53D20, 14L24. arXiv math.AG, math.SG. Level 4: research.
+
+**Definition.** Fix the complex structure I. Split the hyperkähler moment map into its real part μ₁ and its complex part μ₂ + iμ₃. The complex part is a holomorphic moment map for the complexified group.
+
+**Problem.** For a linear action on flat quaternionic space, the quotient μ⁻¹(0)/G in structure I is homeomorphic to the affine quotient of (μ₂ + iμ₃)⁻¹(0). This affine quotient, by the complexified group, is the variety whose functions are the invariant polynomials.
+
+**How the definition helps.** Since μ₂ + iμ₃ is holomorphic and equivariant, its zero set is an affine variety preserved by the complexified group (our own). The hyperkähler quotient is the Kähler quotient of this variety by μ₁ (our own). The Kempf–Ness theorem relates that Kähler quotient to the affine quotient of geometric invariant theory, so the work moves into Kempf–Ness (our own).
+
+**Wikipedia:** [Kähler quotient](https://en.wikipedia.org/wiki/K%C3%A4hler_quotient). It says: “By the Kempf-Ness theorem, a Kähler quotient by a compact Lie group G is closely related to a geometric invariant theory quotient by the complexification of G.”
+
+**Sources:**
+
+- [H. Nakajima, Instantons on ALE spaces, quiver varieties, and Kac–Moody algebras, Duke Math. J. 76 (1994) 365–416](https://doi.org/10.1215/S0012-7094-94-07613-8)
+
 ### Curvature as a measure lets any total 2πχ be realized
 
 **Remember:** Let curvature be a measure, and cone points join smooth surfaces.
@@ -3818,6 +5637,24 @@
 
 - [A. Papadopoulos and M. Troyanov, Weak Finsler structures and the Funk metric, arXiv:0804.0705 (2008)](https://arxiv.org/abs/0804.0705)
 
+### Clean intersection gives two Lagrangians a common linear Darboux chart
+
+**Remember:** Clean means the intersection looks like its tangent spaces.
+
+*Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** Two submanifolds L₀ and L₁ intersect cleanly when L₀ ∩ L₁ is a submanifold whose tangent space at each point is TL₀ ∩ TL₁. For two Lagrangians, submanifolds of half dimension on which the closed nondegenerate 2-form ω vanishes, a clean intersection of dimension zero is a transverse one.
+
+**Problem.** If two Lagrangian submanifolds intersect cleanly, then each intersection point has Darboux coordinates, coordinates in which ω is standard, adapted to both. In ℂⁿ one can take L₀ = ℝⁿ and L₁ = ℝᵏ × iℝⁿ⁻ᵏ, where k = dim(L₀ ∩ L₁) (our own).
+
+**How the definition helps.** Clean intersection makes the intersection match the intersection of tangent spaces, which is what a linear chart needs (our own). It excludes tangencies, such as the x-axis and the parabola y = x², which meet only at 0 but share a tangent there (our own). The work is in Poźniak's proposition, which the quoted paper restates.
+
+**Paper or page:** [Removal of singularities in Morse-Bott symplectizations](https://arxiv.org/abs/2509.17772). It says: “Suppose L₀, L₁ are cleanly intersecting Lagrangian submanifolds in a symplectic manifold (X,ω). Any p ∈ L₀ ∩ L₁ has a Darboux chart adapted to L₀, L₁.”
+
+**Sources:**
+
+- [Marcin Poźniak, Floer homology, Novikov rings and clean intersections, in Northern California Symplectic Geometry Seminar, AMS Translations Series 2, 196 (1999), 119–181](https://doi.org/10.1090/trans2/196/08)
+
 ### Defining Zoll by a loop index makes Zoll bodies closed under limits
 
 **Remember:** Shortest orbits with circle index at least n make Zoll.
@@ -3836,6 +5673,44 @@
 
 - [Stefan Matijević, Systolic S¹-index and characterization of non-smooth Zoll convex bodies, arXiv:2501.13856v3 (2025)](https://arxiv.org/abs/2501.13856v3)
 
+### Duality with null directions lets the restricted form fix coisotropic neighbourhoods
+
+**Remember:** The null directions of C determine the directions leaving C.
+
+*Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** A submanifold C of a symplectic manifold (M, ω), with ω a closed nondegenerate 2-form, is coisotropic when each TC contains its ω-orthogonal. That ω-orthogonal is then the kernel of ω restricted to C (our own). The map v ↦ ω(v, ·) identifies the normal bundle of C with the dual of this kernel (our own).
+
+**Problem.** Let C be a compact submanifold that is coisotropic for two symplectic forms ω₁ and ω₂ with the same restriction to C. Then some diffeomorphism between neighbourhoods of C fixes C pointwise and pulls ω₂ back to ω₁ (Gotay).
+
+**How the definition helps.** Coisotropy lets the restricted form fix both the null directions of C and, through them, the normal bundle of C (our own). Hence a neighbourhood map can match ω₁ and ω₂ at every point of C, and the relative Moser theorem makes them agree nearby (our own). The Lagrangian case is the one where the restricted form is zero (our own).
+
+**Wikipedia:** [Weinstein's neighbourhood theorem](https://en.wikipedia.org/wiki/Weinstein%27s_neighbourhood_theorem). It says: “Consider a compact submanifold i: L ↪︎ M of dimension k which is a coisotropic submanifold of both (M,ω₁) and (M, ω₂), and such that i\*ω₁ = i\*ω₂.”
+
+**Paper or page:** [On deformations of coisotropic submanifolds with fixed characteristic foliation](https://arxiv.org/abs/2212.04442). It says: “If C ⊂ (M,ω) is a coisotropic submanifold, then a neighborhood of C in M is symplectomorphic with the local model (U,Ω<sub>G</sub>). This symplectomorphism can be chosen such that it restricts to the identity map on C.”
+
+**Sources:**
+
+- [Mark J. Gotay, On coisotropic imbeddings of presymplectic manifolds, Proceedings of the American Mathematical Society 84 (1982), 111–114](https://doi.org/10.1090/S0002-9939-1982-0633290-X)
+
+### Isotropic and coisotropic subspaces are exactly the compact orbits under Sp(V)
+
+**Remember:** Count the null directions and the symplectic pairs, nothing more.
+
+*Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)), 15A63, 14M15. arXiv math.SG. Level 4: research.
+
+**Definition.** Let V be a 2n-dimensional symplectic vector space, with a nondegenerate antisymmetric form ω, and let W be a subspace. Let Wω be the set of vectors ω-orthogonal to W. Its type is (n₀, n₊, n₋), with n₀ = dim(W ∩ Wω), and 2n₊, 2n₋ the ranks of ω on W and Wω.
+
+**Problem.** Two subspaces lie in the same orbit of the symplectic group exactly when they have the same type (our own). One type is compact exactly when n₊n₋ = 0, so when W is isotropic (ω is zero on W) or coisotropic (Wω ⊆ W).
+
+**How the definition helps.** A Darboux basis adapted to W, in which ω is standard, puts every subspace of one type in the same position (our own). A type is compact exactly when its closure holds no type with smaller n₊, that is, when n₊ or n₋ is zero (our own). For example, the symplectic planes in ℝ⁴ form an open set whose closure contains the Lagrangian planes (our own).
+
+**Paper or page:** [Simultaneous linear symplectic reduction and orbit fibrations](https://arxiv.org/abs/2410.16869), [Simultaneous linear symplectic reduction and orbit fibrations](https://arxiv.org/abs/2410.16869). It says: “Gr(n⃗; V) is compact if and only if n₊n₋ = 0.”
+
+**Sources:**
+
+- [Hyunmoon Kim, Simultaneous linear symplectic reduction and orbit fibrations, arXiv:2410.16869 (2024)](https://arxiv.org/abs/2410.16869)
+
 ### Loose charts make formal isotopy sufficient
 
 **Remember:** A loose chart lets formal tangent data classify actual embeddings.
@@ -3853,6 +5728,135 @@
 **Sources:**
 
 - [Loose Legendrian embeddings in high dimensional contact manifolds, Theorem 1.2](https://arxiv.org/abs/1201.2245v5)
+
+### Chains of Lagrangian correspondences make the symplectic category a true category
+
+**Remember:** Compose correspondences by writing them side by side.
+
+*True by definition.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian correspondence from M₀ to M₁ is a Lagrangian submanifold of M₀⁻ × M₁, the product with the sign of the first form reversed. A generalized correspondence is a finite chain of them through intermediate manifolds, and chains compose by joining them end to end.
+
+**Problem.** Generalized Lagrangian correspondences form a category, after identifying two neighbours with their geometric composition whenever that composition is transverse and embedded (Wehrheim–Woodward). Every symplectomorphism gives a morphism through its graph.
+
+**How the definition helps.** Joining chains is always defined and associative, so the category axioms hold by definition, with no transversality condition (our own). The usual definition composes correspondences directly, and that composition exists only for transverse intersections, as the nLab notes. The work moves into the theorem that quilted Floer cohomology is unchanged by an embedded composition, under monotonicity conditions (our own).
+
+**nLab:** [Weinstein symplectic category](https://ncatlab.org/nlab/show/Weinstein+symplectic+category). It says: “However, take at face value, symplectic manifolds with Lagrangian correspondences between them do not quite form a category, since the usual composition is only well-defined when the intersection of L₁ × L₂ ∩ X₁ × Δ(X₂) × X₃ is transverse.”
+
+**Sources:**
+
+- [K. Wehrheim and C. T. Woodward, Functoriality for Lagrangian correspondences in Floer theory, Quantum Topol. 1 (2010) 129–170](https://doi.org/10.4171/QT/4)
+
+### Cylindrical ends let Lagrangian cobordisms give cone decompositions in Fukaya categories
+
+**Remember:** Far away, a cobordism is just half-lines times Lagrangians.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D37. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian cobordism with ends L₀, …, Lₙ is a Lagrangian submanifold V of ℂ × W. Outside a compact set, V is a union of pieces γⱼ × Lⱼ. Each γⱼ is a horizontal half-line in ℂ at its own height, and each Lⱼ is a Lagrangian in W.
+
+**Problem.** Let V be a monotone cobordism (Biran–Cornea) or an exact one in a Liouville manifold. Then L₀ is an iterated cone of L₁, …, Lₙ in the derived (wrapped) Fukaya category, so cobordisms give relations in its Grothendieck group.
+
+**How the definition helps.** With straight ends, projection to ℂ is holomorphic near infinity, so holomorphic curves with boundary on V cannot escape along the ends (our own). This compactness makes the Floer theory of V well defined (our own). Bending the ends lets V pair with each end in turn, and this gives the exact triangles, which is where the work is (our own).
+
+**nLab:** [Lagrangian cobordism](https://ncatlab.org/nlab/show/Lagrangian+cobordism). It says: “A Lagrangian cobordism is roughly a cobordism between Lagrangian submanifolds which is itself a Lagrangian submanifold in a suitable sense.”
+
+**Paper or page:** [Lagrangian Cobordisms in Liouville manifolds](https://arxiv.org/abs/2105.14821v2). It says: “Let V ⊂ ℂ × W be a Lagrangian cobordism with ends L₀, …, Lₙ (ordered counterclockwise). Then there is an iterated cone decomposition L₀ ≅ \[Lₙ → Lₙ₋₁ → ⋯ → L₂ → L₁\]”
+
+**Sources:**
+
+- [P. Biran and O. Cornea, Lagrangian cobordism. I, J. Amer. Math. Soc. 26 (2013) 295–340](https://doi.org/10.1090/S0894-0347-2012-00756-5)
+
+### Disk potentials distinguish monotone tori that no symplectomorphism relates
+
+**Remember:** Count the smallest disks, and the torus shows its fingerprint.
+
+*Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A monotone Lagrangian torus L is one whose disk area is proportional to Maslov index. Its disk potential is a Laurent polynomial in variables for H₁(L; ℤ), whose coefficients count Maslov-index-2 holomorphic disks through a point. The count does not depend on the almost complex structure.
+
+**Problem.** A symplectomorphism that carries one monotone torus to another carries its disk potential to the other's, up to an integral change of variables. So no symplectomorphism of ℂPⁿ relates lifted Vianna tori whose Markov triples differ, where a Markov triple solves a² + b² + c² = 3abc.
+
+**How the definition helps.** A symplectomorphism carries holomorphic disks for J to disks for the pushed-forward structure, so it carries counts to counts (our own). The counts do not depend on J, because monotonicity rules out bubbles of Maslov index zero or less (our own). The affine edge lengths of the Newton polytope then record the triple, which separates the tori (our own).
+
+**Paper or page:** [Infinitely many monotone Lagrangian tori in higher projective spaces](https://arxiv.org/abs/2307.06934), [Exotic Lagrangian tori in Grassmannians](https://arxiv.org/abs/1910.10888). It says: “In particular, if {a,b,c} ≠ {a′,b′,c′}, then there is no symplectomorphism of ℙⁿ that maps the lifted Vianna torus T̄\_(a,b,c) to T̄\_(a′,b′,c′).”
+
+**Sources:**
+
+- [R. Vianna, Infinitely many exotic monotone Lagrangian tori in CP², J. Topol. 9 (2016) 535–551](https://doi.org/10.1112/jtopol/jtw002)
+- [Infinitely many monotone Lagrangian tori in higher projective spaces, arXiv:2307.06934](https://arxiv.org/abs/2307.06934)
+
+### Focal points as Maslov crossings extend Sturm theory to Hamiltonian systems
+
+**Remember:** A zero of a solution is a crossing of the vertical plane.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 34C10. arXiv math.SG, math.CA. Level 4: research.
+
+**Definition.** For a linear Hamiltonian system in ℝ²ⁿ, a solution Y(t) = (X(t), U(t)) with n columns spans a Lagrangian plane at each time. Its focal points are the times when the upper block X(t) loses rank, and the oscillation number counts them with multiplicity. The paper extends this count to all continuous Lagrangian paths.
+
+**Problem.** The oscillation number of any continuous Lagrangian path equals its Maslov index relative to the vertical path. So for two solutions of the same system, the oscillation numbers differ by comparative indices, integers computed from their values at the two endpoints.
+
+**How the definition helps.** Counted as a Maslov index, focal points give a homotopy invariant with fixed endpoints, so comparing two solutions reduces to endpoint data (our own). For n = 1 the planes are lines in the (y, y′)-plane, and the count is the number of zeros of y (our own). This recovers Sturm's classical separation theorem (our own).
+
+**Paper or page:** [Oscillation numbers for continuous Lagrangian paths and Maslov index](https://arxiv.org/abs/2107.01928v1), [Oscillation numbers for continuous Lagrangian paths and Maslov index](https://arxiv.org/abs/2107.01928v1). It says: “Let Y be a continuous Lagrangian path on \[a,b\]. Then 𝒩(Y,\[a,b\]) = Mas(E,Y,\[a,b\]), where the matrix E defined in represents the constant vertical Lagrangian path.”
+
+**Sources:**
+
+- [V. I. Arnold, Sturm theorems and symplectic geometry, Funct. Anal. Appl. 19 (1985) 251–259](https://doi.org/10.1007/BF01077289)
+
+### Formal Lagrangian immersions reduce Lagrangian immersion problems to bundle theory
+
+**Remember:** First solve the problem for tangent planes, then integrate.
+
+*Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 57R42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A formal Lagrangian immersion of an n-manifold L into a symplectic 2n-manifold M is a map f covered by an injective bundle map TL → TM. The bundle map must send each tangent space to a Lagrangian subspace. It need not be the derivative of f.
+
+**Problem.** If f\*ω is zero in cohomology, every formal Lagrangian immersion is homotopic to a genuine one (Gromov; Lees). So an n-manifold L has a Lagrangian immersion into ℂⁿ exactly when TL ⊗ ℂ is trivial.
+
+**How the definition helps.** A Lagrangian plane in ℂⁿ spans ℂⁿ over ℂ, so a formal Lagrangian immersion into ℂⁿ is a trivialization of TL ⊗ ℂ (our own). The h-principle, a theorem that deforms formal solutions to genuine ones, does all the work (our own). For example, the sphere Sⁿ passes the test, and its Lagrangian immersion is the Whitney sphere (our own).
+
+**Paper or page:** [On cobordism groups of Lagrangian immersions](https://arxiv.org/abs/2409.14651v1). It says: “Let φ : TL → TM be a Lagrangian bundle map covering a map f: L → M. If \[f\*ω\] = 0 ∈ H²(L; ℝ), then φ is homotopic to a holonomic solution.”
+
+**Sources:**
+
+- [J. A. Lees, On the classification of Lagrange immersions, Duke Math. J. 43 (1976) 217–224](https://doi.org/10.1215/S0012-7094-76-04319-2)
+
+### Generating functions quadratic at infinity turn Lagrangian intersections into critical points
+
+**Remember:** Far out, the function is just a fixed quadratic form.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 58E05. arXiv math.SG. Level 4: research.
+
+**Definition.** A generating function for a Lagrangian L in T\*N is a function S(q, ξ) on N × ℝᵏ. The map (q, ξ) ↦ (q, ∂S/∂q) sends the set where ∂S/∂ξ = 0 one-to-one onto L. S is quadratic at infinity if it equals a fixed nondegenerate quadratic form in ξ outside a compact set.
+
+**Problem.** Let L be Hamiltonian isotopic to the zero section of T\*N, with N closed. Then L meets the zero section in at least cup-length(N) + 1 points (Hofer; Laudenbach–Sikorav).
+
+**How the definition helps.** Points of L on the zero section are exactly the critical points of S, by the definition (our own). Being quadratic at infinity lets Lusternik–Schnirelmann theory on N × ℝᵏ work as on a compact manifold, which gives the bound (our own). The work moves into Sikorav's theorem that Hamiltonian isotopy keeps a generating function quadratic at infinity.
+
+**Paper or page:** [Lagrangian intersections and cuplength in generalised cohomology theories](https://arxiv.org/abs/2211.07559v2), [Hamiltonian Braids via Generating Functions](https://arxiv.org/abs/2410.06495v2). It says: “If X = T\*L is a cotangent bundle with L the zero section, there is a lower bound \# L ∩ L′ ≥ c\_ℤ(L).”
+
+**Sources:**
+
+- [F. Laudenbach and J.-C. Sikorav, Persistance d'intersection avec la section nulle au cours d'une isotopie hamiltonienne dans un fibré cotangent, Invent. Math. 82 (1985) 349–357](https://doi.org/10.1007/BF01388807)
+
+### Gradings on Lagrangians give Floer complexes integer degrees
+
+**Remember:** A grading lifts each tangent plane's phase to a real number.
+
+*Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** Suppose 2c₁(M) = 0, and fix a quadratic complex volume form; it gives each Lagrangian tangent plane a phase in the circle. A grading of L is a real-valued lift of this phase map. It exists exactly when the Maslov class of L, the winding of the phase around loops, vanishes.
+
+**Problem.** If L₀ and L₁ are graded, each intersection point has a degree, and a strip from p to q has index deg(q) − deg(p). So HF(L₀,L₁) is ℤ-graded, and the differential raises degree by one.
+
+**How the definition helps.** A strip's index is the winding of its boundary tangent planes, and the real lifts split that winding into numbers at the two ends (our own). Without gradings the index depends on the strip, so only a ℤ/2 grading survives in general (our own). The condition excludes the circle in ℂ: its Maslov index is 2, so it has no grading (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931). It says: “Then: ind(\[u\]) = deg(q) − deg(p). In particular, ind(\[u\]) only depends on the two generators p, q connected by u, so that CF(L₀,L₁) can be equipped with a ℤ-grading”
+
+**Sources:**
+
+- [P. Seidel, Graded Lagrangian submanifolds, Bull. Soc. Math. France 128 (2000) 103–149](https://doi.org/10.24033/bsmf.2365)
 
 ### Higher crossing forms compute the Maslov index at degenerate crossings
 
@@ -3891,6 +5895,229 @@
 - [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2)
 - [Auroux, Mirror symmetry and T-duality in the complement of an anticanonical divisor](https://people.math.harvard.edu/~auroux/papers/slagmirror.pdf)
 
+### Self-adjoint extensions as Lagrangian planes make spectral flow a Maslov index
+
+**Remember:** Self-adjoint boundary conditions are Lagrangian planes.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 58J30, 47B25. arXiv math.SP, math.SG. Level 4: research.
+
+**Definition.** Let A be a symmetric operator with equal finite deficiency indices. On the domain of A\* modulo that of the closure of A, the boundary form ⟨A\*u, v⟩ − ⟨u, A\*v⟩ is nondegenerate and skew-Hermitian. The self-adjoint extensions of A are exactly the restrictions of A\* to the Lagrangian subspaces for this form.
+
+**Problem.** Let A(t) be the self-adjoint extensions given by a path L(t) of Lagrangian planes. Under mild conditions, their spectral flow, the net number of eigenvalues that cross 0, equals a Maslov index of L(t), up to sign.
+
+**How the definition helps.** Zero is an eigenvalue of the extension for L exactly when L meets K, the boundary values of solutions of A\*u = 0 (our own). So eigenvalue crossings are Maslov crossings relative to K, and comparing crossing forms with eigenvalue derivatives shows that the signs agree (our own). This turns eigenvalue counts for Schrödinger operators on intervals and quantum graphs into topology (our own).
+
+**Paper or page:** [First-order asymptotic perturbation theory for extensions of symmetric operators](https://arxiv.org/abs/2012.00247v3). It says: “The latter, in turn, gives a general infinitesimal version of the celebrated formula equating the spectral flow of a path of self-adjoint extensions and the Maslov index of the corresponding path of Lagrangian planes.”
+
+**Sources:**
+
+- [B. Booss-Bavnbek and K. Furutani, The Maslov index: a functional analytical definition and the spectral flow formula, Tokyo J. Math. 21 (1998) 1–34](https://doi.org/10.3836/tjm/1270041982)
+- [Y. Latushkin and S. Sukhtaiev, First-order asymptotic perturbation theory for extensions of symmetric operators, arXiv:2012.00247](https://arxiv.org/abs/2012.00247v3)
+
+### The Kashiwara form makes the triple Maslov index a symplectic cocycle
+
+**Remember:** The triple index is the signature of a cyclic sum of ω.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 11E81. arXiv math.SG. Level 4: research.
+
+**Definition.** The Kashiwara index τ(L₁, L₂, L₃) of three Lagrangian subspaces is the signature of a quadratic form on L₁ ⊕ L₂ ⊕ L₃. The form is ω(x₁, x₂) + ω(x₂, x₃) + ω(x₃, x₁), so it uses only the symplectic form.
+
+**Problem.** The Kashiwara index is invariant under the symplectic group and changes sign when two arguments swap. It is also a cocycle, τ(L₂,L₃,L₄) − τ(L₁,L₃,L₄) + τ(L₁,L₂,L₄) − τ(L₁,L₂,L₃) = 0.
+
+**How the definition helps.** Symplectic maps preserve ω, and swapping two arguments negates the form, so invariance and antisymmetry hold by definition (our own). The cocycle identity becomes a computation in linear algebra, with no paths or homotopies (our own). The same formula works over any field, where Wall's index gives a cocycle with values in the Witt group of quadratic forms.
+
+**Wikipedia:** [Maslov index](https://en.wikipedia.org/wiki/Maslov_index). It says: “Given a cycle of Lagrangian subspaces A₁→A₂…→A<sub>k</sub>→A₁, the Kashiwara form is the quadratic form on A₁⊕A₂⊕⋯⊕A<sub>k</sub>”
+
+**Paper or page:** [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3). It says: “The Maslov index is a 2-cocycle; if Λ₀,Λ₁,Λ₂,Λ₃ are 4 Lagrangiens then μ<sub>BL</sub>(Λ₁,Λ₂,Λ₃) − μ<sub>BL</sub>(Λ₀,Λ₂,Λ₃) + μ<sub>BL</sub>(Λ₀,Λ₁,Λ₃) − μ<sub>BL</sub>(Λ₀,Λ₁,Λ₂) = 0”
+
+**Sources:**
+
+- [G. Lion and M. Vergne, The Weil Representation, Maslov Index and Theta Series, Progress in Mathematics 6, Birkhäuser (1980)](https://doi.org/10.1007/978-1-4684-9154-8)
+
+### The Maslov line bundle makes principal symbols of Fourier integral operators global
+
+**Remember:** The bundle absorbs the eighth-roots of unity from stationary phase.
+
+*Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 35S30. arXiv math.SG, math.AP. Level 4: research.
+
+**Definition.** Near each point, a phase function φ(x, θ) with extra variables θ describes a Lagrangian Λ in T\*X. For two such functions, half the difference σ − σ′ of the signatures of their Hessians in θ is locally constant. The Keller–Maslov bundle is the flat line bundle on Λ with transition functions exp(iπ(σ − σ′)/4).
+
+**Problem.** The principal symbol of a Fourier integral operator for Λ is a global section of the half-densities on Λ twisted by the Maslov bundle (Hörmander).
+
+**How the definition helps.** Stationary phase shows that a change of phase function multiplies the amplitude by exactly these factors, so local symbols glue by construction (our own). Without the twist, symbols are defined only locally, or globally when the bundle is trivial, as when the Maslov class is zero (our own). The work sits in the stationary phase computation, which shows that only the change of signature matters (our own).
+
+**Wikipedia:** [Maslov index](https://en.wikipedia.org/wiki/Maslov_index). It says: “Globally, these local phase ambiguities are encoded by the Keller–Maslov bundle, and the principal symbol of a Fourier integral operator is naturally a half-density twisted by that bundle.”
+
+**Sources:**
+
+- [L. Hörmander, Fourier integral operators. I, Acta Math. 127 (1971) 79–183](https://doi.org/10.1007/BF02392052)
+
+### Topologically unobstructed immersions bound no teardrops
+
+**Remember:** Lift to the universal cover; if it embeds, no teardrops.
+
+*Rules out counterexamples. Confidence: low.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D37. arXiv math.SG. Level 4: research.
+
+**Definition.** An immersed Lagrangian is topologically unobstructed, in the working form used here, when its lifts to the universal cover M̃ are proper embeddings. For compact immersions, a lemma in the source proves this equivalent to the source's own definition. A teardrop is a holomorphic disk on it with exactly one corner, at a self-intersection point.
+
+**Problem.** Let M be symplectically aspherical, so ω integrates to zero over every sphere. A topologically unobstructed Lagrangian cobordism in ℂ × M with embedded ends and generic self-intersections bounds no holomorphic disks with at most one corner.
+
+**How the definition helps.** A disk lifts to ℂ × M̃, where a single corner would join two branches of V that the embedded lift keeps apart (our own). A disk without corners caps off to a sphere, which has zero area by asphericity (our own). The source proves the theorem in two steps, through a notion called quasi-exactness, and a figure-eight curve shows what is excluded (our own).
+
+**Paper or page:** [Unobstructed Lagrangian cobordism groups of surfaces](https://arxiv.org/abs/2307.03124v2), [Unobstructed Lagrangian cobordism groups of surfaces](https://arxiv.org/abs/2307.03124v2), [Unobstructed Lagrangian cobordism groups of surfaces](https://arxiv.org/abs/2307.03124v2). It says: “An immersion ι: L → M is topologically unobstructed if and only if its lifts to M̃ are proper embeddings.”
+
+**Sources:**
+
+- [Unobstructed Lagrangian cobordism groups of surfaces, arXiv:2307.03124 (2023)](https://arxiv.org/abs/2307.03124v2)
+
+### Uniqueness of generating functions makes their minimax values Lagrangian invariants
+
+**Remember:** Only the equivalence class of the generating function matters.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D35. arXiv math.SG. Level 4: research.
+
+**Definition.** The elementary operations on a generating function are adding a constant, a fibre-preserving change of variables, and adding a nondegenerate quadratic form in new variables. Two generating functions are equivalent if such operations connect them. Each operation moves all critical values by the same constant.
+
+**Problem.** All generating functions quadratic at infinity of a Lagrangian Hamiltonian isotopic to the zero section are equivalent (Viterbo; Théret). So minimax values, the critical values that cohomology classes pick out, are invariants of L up to one common constant.
+
+**How the definition helps.** The elementary operations shift all minimax values by one common constant, by their definition (our own). Uniqueness then makes these values invariants of L up to that constant, and the work sits in the uniqueness theorem (our own). Their differences, such as Viterbo's γ(L), give his distance on Lagrangians and his symplectic capacities (our own).
+
+**Paper or page:** [Hamiltonian Braids via Generating Functions](https://arxiv.org/abs/2410.06495v2). It says: “If L has the GFQI-uniqueness property, and φ ∈ Ham(T\*M), then so does φ(L); The zero section 0<sub>M</sub> has the GFQI-uniqueness property.”
+
+**Sources:**
+
+- [C. Viterbo, Symplectic topology as the geometry of generating functions, Math. Ann. 292 (1992) 685–710](https://doi.org/10.1007/BF01444643)
+
+### With zero Maslov class, Lagrangian mean curvature flow is a Hamiltonian isotopy
+
+**Remember:** The Lagrangian angle is a Hamiltonian for mean curvature flow.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53E10. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** In a Calabi–Yau manifold with holomorphic volume form Ω, each Lagrangian L has Ω\|L = exp(iθ) vol, with phase exp(iθ): L → S¹. The function θ is the Lagrangian angle, and the class of dθ is π times the Maslov class. The mean curvature vector of L is then H = J∇θ.
+
+**Problem.** Lagrangian mean curvature flow changes the Lagrangian flux, the class that measures swept symplectic area, at the rate \[dθ\]. So if the Maslov class is zero, the flow is a Hamiltonian isotopy generated by the angle θ.
+
+**How the definition helps.** With zero Maslov class, θ is a single-valued function, so ω(H, ·) = ±dθ is exact on L and the motion is Hamiltonian (our own). The angle θ gives the Hamiltonian function, so the statement needs the Lagrangian angle, not only the squared determinant (our own). The work sits in the formula H = J∇θ (our own).
+
+**Paper or page:** [Short-time existence of Lagrangian mean curvature flow](https://arxiv.org/abs/2507.10341v2). It says: “Then, we have that d/dt\[α<sub>t</sub>\] = \[dθ\] in H¹<sub>dR</sub>(L), for all times t ∈ (−ε,ε). Note that the Maslov class is preserved since {L<sub>t</sub>} is a Lagrangian isotopy.”
+
+**Sources:**
+
+- [R. P. Thomas and S.-T. Yau, Special Lagrangians, stable bundles and mean curvature flow, Comm. Anal. Geom. 10 (2002) 1075–1113](https://doi.org/10.4310/CAG.2002.v10.n5.a8)
+- [S. Ghosh, Short-time existence of Lagrangian mean curvature flow, arXiv:2507.10341](https://arxiv.org/abs/2507.10341v2)
+
+### A non-exact Lee class removes the volume obstruction to conformal symplectic forms
+
+**Remember:** Twisting by a non-exact 1-form frees ω from cohomology.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D15 (Almost contact and almost symplectic manifolds), 53D05. arXiv math.SG. Level 4: research.
+
+**Definition.** Fix a closed 1-form η. An η-symplectic form, also called locally conformally symplectic, is a nondegenerate 2-form ω with dω = η ∧ ω. The class of η is the Lee class, and the theorem needs it to be nonzero.
+
+**Problem.** On a closed manifold, let η be a closed non-exact 1-form. Then every nondegenerate 2-form is homotopic through nondegenerate forms to an η-symplectic form, in any prescribed Novikov cohomology class.
+
+**How the definition helps.** For non-exact η the twisted cohomology in top degree is zero, so the class of ω need not have a nonzero top power (our own). If η = df were exact, exp(−f)ω would be symplectic, which is impossible on S⁶ although S⁶ has nondegenerate 2-forms (our own). The real work is the h-principle proof of Bertelson and Meigniez (our own).
+
+**Paper or page:** [Conformal Symplectic structures, Foliations and Contact Structures](https://arxiv.org/abs/2107.08839v2). It says: “On a closed connected manifold M of dimension 2n ≥ 2, let η be a closed, non-exact 1-form; and let ω be a nondegenerate 2-form. Then, ω is homotopic to a η-symplectic form”
+
+**Sources:**
+
+- [M. Bertelson and G. Meigniez, Conformal symplectic structures, foliations and contact structures (arXiv 2107.08839); published as Conformal symplectic, foliated and contact structures, J. Symplectic Geom. 22 (2024) 393–439](https://arxiv.org/abs/2107.08839v2)
+
+### A b-symplectic form gives its singular hypersurface a cosymplectic structure
+
+**Remember:** The pole of ω along Z leaves two closed forms behind.
+
+*True by definition. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53D15. arXiv math.SG. Level 4: research.
+
+**Definition.** A b-symplectic form on a manifold M with a hypersurface Z is a symplectic form on the b-tangent bundle. This is the Lie algebroid of vector fields tangent to Z. Near Z, ω = (dz/z) ∧ α + β with smooth forms α and β, where z is a defining function of Z.
+
+**Problem.** The hypersurface Z of a b-symplectic manifold of dimension 2n carries a cosymplectic structure. This is a closed 1-form θ and a closed 2-form η on Z with θ ∧ ηⁿ⁻¹ nowhere zero.
+
+**How the definition helps.** The b-form gives θ and η directly, as the restrictions of α and β to Z, and the Poisson picture hides both forms (our own). Here θ does not depend on z, and η changes only by an exact term (our own). Closedness of ω makes θ and η closed, and nondegeneracy on the b-tangent bundle makes θ ∧ ηⁿ⁻¹ nonzero (our own).
+
+**Paper or page:** [Regularisation of Lie algebroids and Applications](https://arxiv.org/abs/2211.14891v1). It says: “Let (M,Z,ω) be a b-symplectic manifold. Then, there is an induced cosymplectic structure (θ,η) on Z.”
+
+**Sources:**
+
+- [V. Guillemin, E. Miranda and A. R. Pires, Symplectic and Poisson geometry on b-manifolds, Adv. Math. 264 (2014) 864–896](https://doi.org/10.1016/j.aim.2014.07.032)
+- [Á. del Pino and A. Witte, Regularisation of Lie algebroids and applications (arXiv 2211.14891)](https://arxiv.org/abs/2211.14891v1)
+
+### A symplectic form on a bᵏ-tangent bundle forces a Stiefel–Whitney relation
+
+**Remember:** A symplectic form orients its bundle, wherever that bundle lives.
+
+*True by definition. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 57R17. arXiv math.SG. Level 4: research.
+
+**Definition.** A symplectic Lie algebroid is a Lie algebroid A with a closed 2-form ω on A that is nondegenerate on every fibre. For the bᵏ-tangent bundle of a hypersurface Z, the anchor is an isomorphism away from Z. Along Z it degenerates to order k.
+
+**Problem.** If the bᵏ-tangent bundle of a hypersurface Z in X has a symplectic form, then w₁(TX) + k PD\[Z\] = 0 with ℤ₂ coefficients. For example, a compact b-symplectic manifold is orientable exactly when Z is zero in mod 2 homology.
+
+**How the definition helps.** The top power of ω is a nowhere-zero section of the determinant line of A\*, so A is orientable (our own). In the bivector picture there is no such section, because πⁿ vanishes on Z (our own). The work is to show that w₁(A) = w₁(TX) + k PD\[Z\], because the anchor degenerates to order k along Z (our own).
+
+**Paper or page:** [Obstructions for Symplectic Lie Algebroids](https://arxiv.org/abs/1811.05084v2). It says: “Let 𝒜 → Xⁿ be a symplectic Lie algebroid. Then in H₁(X;ℤ₂) we have: w₁(TX) + k PD\_ℤ₂\[Z\] = 0 if 𝒜 = 𝒜<sub>Z</sub>ᵏ, the bᵏ-tangent bundle”
+
+**Sources:**
+
+- [R. L. Klaasse, Obstructions for symplectic Lie algebroids, SIGMA (2020) 121](https://doi.org/10.3842/SIGMA.2020.121)
+
+### Complete symplectic realizations characterize integrable Poisson manifolds
+
+**Remember:** Complete realizations never let lifted Hamiltonian flows run off.
+
+*Rules out counterexamples.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A symplectic realization of a Poisson manifold M is a surjective submersion from a symplectic manifold to M that is a Poisson map. It is complete when f on M having a complete Hamiltonian vector field implies the same for the pulled-back function.
+
+**Problem.** A Poisson manifold is integrable, the base of a symplectic groupoid, exactly when it has a complete symplectic realization (Crainic–Fernandes).
+
+**How the definition helps.** Every Poisson manifold has symplectic realizations, even a non-integrable one, so completeness is the condition that excludes these (our own). For a symplectic groupoid, the Poisson one of source and target is complete, since Hamiltonian fields of pulled-back functions are invariant (our own). The converse uses the Crainic–Fernandes obstructions, which completeness forces to vanish (our own).
+
+**nLab:** [symplectic realization](https://ncatlab.org/nlab/show/symplectic+realization). It says: “For any symplectic groupoid Σ with base a Poisson manifold P the target map is a symplectic realization of P and the source map is a symplectic realization of the opposite structure.”
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “Indeed, using the topological obstructions to the integrability of Lie algebroids, one can show that a Poisson manifold is integrable if and only if it admits a complete symplectic realisation.”
+
+**Sources:**
+
+- [M. Crainic, R. L. Fernandes, Integrability of Poisson brackets, J. Differential Geom. 66 (2004) 71–137](https://doi.org/10.4310/jdg/1090415030)
+
+### Defining the modular class in Poisson cohomology makes it volume independent
+
+**Remember:** The class records how Hamiltonian flows fail to preserve volume.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** Fix a volume form λ on an oriented Poisson manifold. The modular vector field sends f to the divergence, for λ, of the Hamiltonian vector field of f. The modular class is its class in first Poisson cohomology, Poisson vector fields modulo Hamiltonian ones.
+
+**Problem.** The modular class does not depend on the chosen volume form, so it is an invariant of the Poisson manifold. It vanishes exactly when some volume form is preserved by every Hamiltonian flow.
+
+**How the definition helps.** Replacing λ by eʰλ changes the modular field by the Hamiltonian field of h, up to sign, and first cohomology divides these out (our own). Conversely, if the modular field of λ is Hamiltonian, a rescaling of λ has modular field zero, so that volume is invariant (our own). The modular vector field itself depends on λ; only its class is an invariant.
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “Moreover, given two volume forms λ₁ and λ₂, the difference X\_λ₁ − X\_λ₂ is a Hamiltonian vector field. Accordingly, the Poisson cohomology class \[X\_λ\]\_π ∈ H¹(M,π) does not depend on the original choice of the volume form λ, and it is called the modular class of the Poisson manifold. An orientable Poisson manifold is called unimodular if its modular class vanishes. Notice that this happens if and only if there exists a volume form λ such that the modular vector field X\_λ vanishes, i.e. div\_λ(X<sub>f</sub>) = 0 for every f; in other words, λ is invariant under the flow of any Hamiltonian vector field.”
+
+**Sources:**
+
+- [A. Weinstein, The modular automorphism group of a Poisson manifold, J. Geom. Phys. 23 (1997) 379–394](https://doi.org/10.1016/S0393-0440(97)80011-3)
+
+### Dirac structures make closed forms and Poisson bivectors one notion
+
+**Remember:** Half of the doubled tangent bundle, isotropic and closed under brackets.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53D05. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A Dirac structure on M is a subbundle of TM ⊕ T\*M, maximal isotropic for ⟨(v, α), (w, β)⟩ = α(w) + β(v). It must also be closed under the Courant bracket. This bracket on pairs combines the Lie bracket of vector fields with Lie derivatives of forms.
+
+**Problem.** The graph of a 2-form ω is a Dirac structure exactly when dω = 0. The graph of a bivector π is a Dirac structure exactly when \[π, π\] = 0, that is, when π is Poisson.
+
+**How the definition helps.** Skew-symmetry makes the graph of ω or π isotropic of half dimension, so maximal isotropy is automatic (our own). For such subbundles, closure under the Courant bracket is measured by one 3-tensor (our own). It is dω on the graph of ω and a multiple of \[π, π\] on the graph of π (our own).
+
+**Wikipedia:** [Dirac structure](https://en.wikipedia.org/wiki/Dirac_structure). It says: “Let ω be a symplectic form on a manifold M, then its graph is a (closed) Dirac structure. More generally, this is true for any closed 2-form.”
+
+**Sources:**
+
+- [T. J. Courant, Dirac manifolds, Trans. Amer. Math. Soc. 319 (1990) 631–661](https://doi.org/10.1090/S0002-9947-1990-0998124-1)
+
 ### Dual maps detect Lie algebroid morphisms
 
 **Remember:** The Poisson bracket reads the original bracket and anchor from linear functions.
@@ -3906,6 +6133,98 @@
 **Paper or page:** [Comomentum sections and Poisson maps in Hamiltonian Lie algebroids](https://arxiv.org/abs/2405.03533v2). It says: “the dual map ψ: A₂∗ → A₁∗ is a Poisson map.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Gauge transformations by closed 2-forms keep the symplectic leaves
+
+**Remember:** Shift every covector by B and the tangent directions stay put.
+
+*True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53D18. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** For a closed 2-form B, the gauge transformation replaces each pair (v, α) of a Dirac structure by (v, α + B(v, −)). It preserves the Courant bracket, the bracket on pairs of vector fields and forms used for Dirac structures, because dB = 0. The quoted source uses the opposite sign for B.
+
+**Problem.** Let π be Poisson, B closed, and suppose the map α ↦ α + B(π♯α, −) is invertible, where π♯α = π(α, −). Then the gauge transform of π is again Poisson, with the same leaves, and each leaf form gains the pullback of B.
+
+**How the definition helps.** On Dirac structures the transformation keeps the tangent parts, so the leaves stay the same and each leaf form gains B (our own). The bivector formula, π♯ composed with the inverse of that map, hides this; the work sits in Courant invariance under closed B (our own). The invertibility condition is needed: B = −ω on a symplectic surface gives TM ⊕ 0, the graph of no bivector (our own).
+
+**Paper or page:** [G-Invariant Deformations of Almost-Coupling Poisson Structures](https://arxiv.org/abs/1610.09898v2). It says: “If the endomorphism (Id − B♭ ∘ Π♮): T\*M → T\*M is invertible, then the Dirac structure τ<sub>B</sub>(GraphΠ) is the graph of the Poisson tensor τ<sub>B</sub>(Π)”
+
+**Sources:**
+
+- [P. Ševera, A. Weinstein, Poisson geometry with a 3-form background, Prog. Theor. Phys. Suppl. 144 (2001) 145–154](https://doi.org/10.1143/PTPS.144.145)
+
+### Isotropy and involutivity make every Dirac structure a Lie algebroid
+
+**Remember:** On an isotropic subbundle the Courant bracket's defects all vanish.
+
+*Rules out counterexamples.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A Dirac structure on M is a subbundle of TM ⊕ T\*M, maximal isotropic for ⟨(v, α), (w, β)⟩ = α(w) + β(v). It must also be closed under the Courant bracket. This bracket on pairs combines the Lie bracket of vector fields with Lie derivatives of forms.
+
+**Problem.** Every Dirac structure is a Lie algebroid, with the restricted Courant bracket and the projection to TM as anchor. So M splits into leaves, each with a closed 2-form; for a Poisson graph these are the symplectic leaves.
+
+**How the definition helps.** The Courant bracket fails the Jacobi identity only by a term built from the pairing, and that term vanishes on isotropic subbundles (our own). Without isotropy the claim fails: all of TM ⊕ T\*M is closed under the Courant bracket, which fails Jacobi there (our own). The leaves are the orbits of the anchor, with leaf form ω(v, w) = α(w) for (v, α) in the Dirac structure (our own).
+
+**Paper or page:** [Comomentum sections and Poisson maps in Hamiltonian Lie algebroids](https://arxiv.org/abs/2405.03533v2). It says: “A Dirac structure L is a Lie algebroid.”
+
+**Sources:**
+
+- [T. J. Courant, Dirac manifolds, Trans. Amer. Math. Soc. 319 (1990) 631–661](https://doi.org/10.1090/S0002-9947-1990-0998124-1)
+
+### Leafwise nondegeneracy makes tangential Poisson cohomology foliated de Rham cohomology
+
+**Remember:** A regular Poisson structure is a foliation whose leaves are symplectic.
+
+*True by definition. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53C12. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A regular Poisson structure is one of constant rank; equivalently, it is a foliation with a closed leafwise 2-form that is nondegenerate on each leaf. Its tangential Poisson cohomology uses only multivector fields tangent to the leaves.
+
+**Problem.** For a regular Poisson manifold, tangential Poisson cohomology in degree one is isomorphic to the foliated de Rham cohomology of its symplectic foliation. The same holds in every degree (our own).
+
+**How the definition helps.** Leafwise nondegeneracy makes π♯ an isomorphism from the leafwise cotangent bundle to the leafwise tangent bundle that respects brackets, in every degree (our own). So it identifies the two complexes, and the leafwise symplectic forms drop out of the answer. The constant-rank definition hides the leaf forms; the work sits in the check that π♯ turns the foliated differential into the Poisson differential (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “This uniquely determines a regular Poisson structure on M by requiring the symplectic leaves of π to be the leaves S of F equipped with the induced symplectic form ω\|S.”
+
+**Paper or page:** [Geometrical Aspects of the Hamiltonization Problem of Dynamical Systems](https://arxiv.org/abs/2103.00458v2). It says: “The tangential Poisson cohomology in degree one of a regular Poisson manifold is isomorphic to the foliated de Rham cohomology of its symplectic foliation and, in particular, independent of the leaf-wise symplectic form.”
+
+**Sources:**
+
+- [Geometrical Aspects of the Hamiltonization Problem of Dynamical Systems, arXiv:2103.00458v2](https://arxiv.org/abs/2103.00458v2)
+
+### Lie algebroid cohomology lets one van Est theorem cover groups and manifolds
+
+**Remember:** One complex, many cohomologies: de Rham, Lie algebra, Poisson.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 58H05. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A Lie algebroid is a vector bundle with a Lie bracket on its sections and a bundle map to the tangent bundle, the anchor. The two obey a Leibniz rule. Its cohomology comes from the Chevalley–Eilenberg complex of alternating forms on the bundle.
+
+**Problem.** Suppose the source fibres of a Lie groupoid, the sets of arrows with a fixed starting point, are homologically n-connected. Then the van Est map, from differentiable groupoid cohomology to Lie algebroid cohomology, is an isomorphism up to degree n (Crainic).
+
+**How the definition helps.** Lie algebroid cohomology is Lie algebra cohomology for a Lie group and de Rham cohomology for a manifold, so one statement covers both (our own). For a Lie group the theorem is the classical van Est theorem (our own). The work went into Crainic's comparison of the two complexes along the source fibres (our own).
+
+**Wikipedia:** [Lie algebroid](https://en.wikipedia.org/wiki/Lie_algebroid). It says: “Moreover, if the s-fibres of G are homologically n-connected, then VEᵏ is an isomorphism for k ≤ n, and is injective for k = n+1.”
+
+**Sources:**
+
+- [M. Crainic, Differentiable and algebroid cohomology, van Est isomorphisms, and characteristic classes, Comment. Math. Helv. 78 (2003) 681–721](https://doi.org/10.1007/s00014-001-0766-9)
+
+### Lie algebroids as square-zero derivations make all axioms one equation
+
+**Remember:** One square-zero operator holds the anchor, the bracket and Jacobi.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 58A50. arXiv math.DG. Level 4: research.
+
+**Definition.** A Lie algebroid structure on a vector bundle E is a derivation d of degree one with d² = 0. It acts on the algebra of sections of the exterior powers of E\*.
+
+**Problem.** An anchor and a bracket with the Leibniz rule form a Lie algebroid exactly when their Chevalley–Eilenberg operator squares to zero (Vaintrob). So Lie algebroids are degree-one vector fields Q with Q² = 0 on the graded manifold whose functions are these forms.
+
+**How the definition helps.** The anchor fixes d on functions and the bracket fixes it in degree one; the derivation rule builds in the Leibniz rule (our own). Then d² = 0 on functions says the anchor preserves brackets, and d² = 0 in degree one is the Jacobi identity (our own). So Lie algebroid cohomology needs no separate check that d² = 0 (our own).
+
+**nLab:** [Lie algebroid](https://ncatlab.org/nlab/show/Lie+algebroid). It says: “vector bundle E → X equipped with a degree +1 derivation d on the free (over C∞(X)) graded-commutative algebra ∧•C∞(X) Γ(E)\* (where the dual is over C∞), such that d² = 0.”
+
+**Sources:**
+
+- [A. Yu. Vaintrob, Lie algebroids and homological vector fields, Russian Math. Surveys 52 (1997) 428–429](https://doi.org/10.1070/RM1997v052n02ABEH001802)
 
 ### Multiplicative forms reverse under inversion
 
@@ -3923,6 +6242,673 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Multiplicativity makes the base of a symplectic groupoid Poisson
+
+**Remember:** Additive forms force the source and target fibres to be orthogonal.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 22A22. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A symplectic groupoid is a Lie groupoid with a symplectic form on its arrows that is multiplicative. On composable pairs, its pullback by multiplication is the sum of its pullbacks by the two projections. An anti-Poisson map reverses the sign of brackets.
+
+**Problem.** The base of a symplectic groupoid has a unique Poisson structure making the source map Poisson and the target map anti-Poisson. The groupoid's Lie algebroid, its infinitesimal version, is then the cotangent algebroid of this structure.
+
+**How the definition helps.** Multiplicativity forces each target fibre to be the ω-orthogonal complement of the source fibre through the same point (our own). Then target pullbacks are locally the functions commuting with all source pullbacks, and by Jacobi this set is closed under brackets (our own). Hence the bracket descends; authors with the opposite sign convention swap source and target (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “base space of any symplectic groupoid admits a unique Poisson structure π such that the source map s: (𝒢, ω) → (M,π) and the target map t: (𝒢, ω) → (M,π) are, respectively, a Poisson map and an anti-Poisson map.”
+
+**Sources:**
+
+- [A. Weinstein, Symplectic groupoids and Poisson manifolds, Bull. Amer. Math. Soc. 16 (1987) 101–104](https://doi.org/10.1090/S0273-0979-1987-15473-5)
+
+### Paths modulo homotopy reduce integrability of Lie algebroids to smoothness
+
+**Remember:** Build the groupoid from paths first; worry about smoothness later.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 58H05, 22A22. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** The Weinstein groupoid of a Lie algebroid A is the set of A-paths modulo A-homotopy, with concatenation as product. An A-path is a path in A whose anchor image is the velocity of its base path. The monodromy group at x is the set of central elements v of the anchor's kernel at x whose constant A-path is A-homotopic to zero.
+
+**Problem.** A Lie algebroid is integrable, that is, the Lie algebroid of a Lie groupoid, exactly when its monodromy groups are uniformly discrete (Crainic–Fernandes). Uniformly discrete means that, locally on the base, the nonzero monodromy elements stay a fixed distance from zero.
+
+**How the definition helps.** The quotient is always a source-simply-connected topological groupoid, so the only question is whether it is smooth; when it is, it is the source-simply-connected integration. Crainic and Fernandes measure smoothness by the monodromy groups, which come from second homotopy groups of the orbits (our own). The work sits in their analysis of A-homotopies on the Banach manifold of A-paths (our own).
+
+**Wikipedia:** [Lie algebroid](https://en.wikipedia.org/wiki/Lie_algebroid). It says: “Indeed, one can show that G(A) is an s-simply connected topological groupoid, with the multiplication induced by the concatenation of paths. Moreover, if A is integrable, G(A) admits a smooth structure such that it coincides with the unique s-simply connected Lie groupoid integrating A. Accordingly, the only obstruction to integrability lies in the smoothness of G(A). This approach led to the introduction of objects called monodromy groups, associated to any Lie algebroid, and to the following fundamental result: A Lie algebroid is integrable if and only if its monodromy groups are uniformly discrete.”
+
+**Sources:**
+
+- [M. Crainic, R. L. Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620](https://doi.org/10.4007/annals.2003.157.575)
+
+### Poisson transversals inherit Poisson structures and give Weinstein splitting
+
+**Remember:** Cut across the leaves so that each cut is still symplectic.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A Poisson transversal is a submanifold that meets every symplectic leaf transversally, with each intersection a symplectic submanifold of that leaf.
+
+**Problem.** A Poisson transversal inherits a canonical Poisson structure. Near the transversal, π is fixed up to isomorphism by this structure and the normal bundle, a symplectic vector bundle (Frejlich–Mărcuț).
+
+**How the definition helps.** The symplectic condition lets each leaf form restrict to a nondegenerate form on each cut, so the induced bracket exists (our own). One normal form theorem then covers all Poisson transversals at once (our own). Weinstein splitting is the case of a transversal of complementary dimension through one point, where the neighbourhood is a product (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “It follows that any Poisson transversal X ⊆ (M,π) inherits a canonical Poisson structure π<sub>X</sub> from π.”
+
+**Sources:**
+
+- [P. Frejlich, I. Mărcuţ, The normal form theorem around Poisson transversals, Pacific J. Math. 287 (2017) 371–391](https://doi.org/10.2140/pjm.2017.287.371)
+- [A. Weinstein, The local structure of Poisson manifolds, J. Differential Geom. 18 (1983) 523–557](https://doi.org/10.4310/jdg/1214437787)
+
+### Poisson transversals pull back under Poisson maps, unlike Poisson submanifolds
+
+**Remember:** Transversals ask for symplectic cuts, and cuts survive pullback.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A Poisson transversal is a submanifold that meets every symplectic leaf transversally, with each intersection a symplectic submanifold of that leaf.
+
+**Problem.** If a Poisson map is transverse to a Poisson transversal of its target, the preimage is a Poisson transversal of the source (Frejlich–Mărcuț). The same statement for Poisson submanifolds is false.
+
+**How the definition helps.** A Poisson map carries π♯ of conormal covectors to π♯ on the target, so the transversal's splitting pulls back to the preimage (our own). For Poisson submanifolds the statement fails, as the quote says. Project the symplectic plane onto a line with zero bracket: the point 0 is a Poisson submanifold, but its preimage line is not (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “if Φ: (M,π<sub>M</sub>) → (N,π<sub>N</sub>) is a Poisson map transverse to a Poisson submanifold Q ⊆ N, the submanifold Φ⁻¹(Q) ⊆ M is not necessarily Poisson. In order to overcome this problem, one can use the notion of Poisson transversals”
+
+**Sources:**
+
+- [P. Frejlich, I. Mărcuţ, The normal form theorem around Poisson transversals, Pacific J. Math. 287 (2017) 371–391](https://doi.org/10.2140/pjm.2017.287.371)
+
+### Spherical periods decide whether a twisted tangent algebroid integrates
+
+**Remember:** Spheres measure the twist, and dense measurements block integration.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 58H05. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** For a closed 2-form ω on a connected manifold M, the Lie algebroid TM ⊕ ℝ has a bracket twisted by ω. Its anchor is the projection to TM. Its monodromy group is the group of spherical periods of ω, its integrals over spheres.
+
+**Problem.** This Lie algebroid is integrable, the Lie algebroid of a Lie groupoid, exactly when the spherical periods of ω form a discrete subgroup of ℝ. On S² × S² with ω the first unit area form plus √2 times the second, the periods ℤ + √2ℤ are dense.
+
+**How the definition helps.** The anchor is onto, and for such algebroids Crainic and Fernandes show integrability is equivalent to discrete monodromy groups (our own). Here the monodromy group is the period group, so the test is on one subgroup of ℝ (our own). The S² × S² example is an explicit failure of Lie's third theorem for algebroids (our own).
+
+**Wikipedia:** [Lie algebroid](https://en.wikipedia.org/wiki/Lie_algebroid). It says: “a careful analysis shows that this happens if and only if the subgroup Λ ⊆ ℝ is a lattice, i.e. it is discrete. An explicit example where such condition fails is given by taking M = S² × S²”
+
+**Sources:**
+
+- [M. Crainic, R. L. Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620](https://doi.org/10.4007/annals.2003.157.575)
+
+### The isotropy Lie algebra at a zero makes the linearization problem statable
+
+**Remember:** At a zero, the bracket's first-order part is a Lie algebra.
+
+*Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** Let x be a zero of π. The isotropy Lie algebra at x is the cotangent space at x with bracket \[df, dg\] = d{f, g} at x. By duality it gives a linear Poisson structure on the tangent space at x.
+
+**Problem.** Near a zero of π whose isotropy Lie algebra is semisimple of compact type, π is isomorphic to this linear Poisson structure (Conn). For the noncompact algebra sl(2, ℝ) there are smooth Poisson structures that are not linearizable (Weinstein).
+
+**How the definition helps.** At a zero, d{f, g} depends only on df and dg, so π has an intrinsic linear model (our own). The definition only frames the question; Conn's proof needs hard analysis with the Nash–Moser theorem. The sl(2, ℝ) case shows that semisimplicity alone is not enough in the smooth setting.
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “If the isotropy Lie algebra 𝔤ₓ is semisimple and compact, then (M, π) is linearisable around x. In the previous counterexample, indeed, 𝔰𝔩(2,ℝ) is semisimple but not compact. The original proof of Conn involves several estimates from analysis in order to apply the Nash-Moser theorem”
+
+**Sources:**
+
+- [J. F. Conn, Normal forms for smooth Poisson structures, Ann. of Math. 121 (1985) 565–593](https://doi.org/10.2307/1971210)
+- [A. Weinstein, The local structure of Poisson manifolds, J. Differential Geom. 18 (1983) 523–557](https://doi.org/10.4310/jdg/1214437787)
+
+### Transversality excludes higher-order zeros, so log-symplectic bivectors invert to b-forms
+
+**Remember:** Simple zeros of πⁿ become simple poles of ω.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 53D05. arXiv math.SG. Level 4: research.
+
+**Definition.** A log-symplectic structure on a manifold of dimension 2n is a Poisson bivector π whose top power πⁿ meets the zero section transversally. Then the zero set Z of πⁿ is a smooth hypersurface. Along Z the rank of π drops by two, and πⁿ vanishes only to first order.
+
+**Problem.** Log-symplectic bivectors correspond one-to-one to b-symplectic forms. The inverse of π is a closed nondegenerate 2-form on the b-tangent bundle of Z.
+
+**How the definition helps.** Transversality makes πⁿ vanish to first order on Z, so the inverse of π has only a simple pole, as b-forms allow (our own). The condition excludes x² ∂x ∧ ∂y on ℝ², whose inverse x⁻² dx ∧ dy has a double pole (our own). Guillemin, Miranda and Pires prove that the inverse extends as a smooth b-form (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “called log-symplectic or b-symplectic, which have a "logarithmic singularity'' concentrated along a submanifold Z ⊆ M of codimension 1 (also called the singular locus of π), but are nondegenerate outside of Z.”
+
+**Sources:**
+
+- [V. Guillemin, E. Miranda and A. R. Pires, Symplectic and Poisson geometry on b-manifolds, Adv. Math. 264 (2014) 864–896](https://doi.org/10.1016/j.aim.2014.07.032)
+
+### Unimodularity gives Poincaré duality between Poisson cohomology and homology
+
+**Remember:** Unimodular means some volume survives every Hamiltonian flow unchanged.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 17B63. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A Poisson manifold is unimodular when its modular class vanishes, that is, when some volume form is preserved by every Hamiltonian flow.
+
+**Problem.** On an oriented unimodular Poisson manifold of dimension n, Poisson cohomology in degree k is isomorphic to Poisson homology in degree n − k. Poisson homology is the homology of forms under the boundary \[d, contraction with π\].
+
+**How the definition helps.** Contracting with an invariant volume form turns the Poisson differential into the Poisson homology boundary (our own). For a general volume form a term from the modular field appears, and unimodularity removes it (our own). Without unimodularity duality fails: for {x, y} = y on the plane, H⁰ is the constants but H₂ is zero (our own).
+
+**Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “For instance, for orientable unimodular Poisson manifolds, Poisson homology turns out to be isomorphic to Poisson cohomology: this was proved independently by Xu and Evans-Lu-Weinstein.”
+
+**Sources:**
+
+- [P. Xu, Gerstenhaber algebras and BV-algebras in Poisson geometry, Comm. Math. Phys. 200 (1999) 545–560](https://doi.org/10.1007/s002200050540)
+- [S. Evens, J.-H. Lu, A. Weinstein, Transverse measures, the modular class and a cohomology pairing for Lie algebroids, Quart. J. Math. 50 (1999) 417–436](https://doi.org/10.1093/qjmath/50.200.417)
+
+### As graded symplectic manifolds, Courant algebroids have Dirac structures as Lagrangian submanifolds
+
+**Remember:** Courant algebroids are symplectic manifolds in disguise, Dirac structures their Lagrangians.
+
+*True by definition. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 58A50. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** Roytenberg describes a Courant algebroid as a degree-2 graded manifold with a symplectic form and a degree-3 function Θ with {Θ,Θ} = 0. A graded manifold is a space whose local coordinates have integer degrees, here 0, 1 and 2. Sections are degree-1 functions, the pairing is the Poisson bracket, and the Courant bracket is the derived bracket {{a,Θ},b}.
+
+**Problem.** The Dirac structures of a Courant algebroid are exactly the Lagrangian graded submanifolds over the base to which the vector field {Θ, −} is tangent. All the Courant algebroid axioms follow from the single equation {Θ,Θ} = 0.
+
+**How the definition helps.** In the graded picture the Courant axioms become the single equation {Θ,Θ} = 0, and maximal isotropic subbundles become Lagrangian submanifolds (our own). Closure under the derived bracket then means that the vector field {Θ, −} is tangent to the Lagrangian submanifold (our own). The work is Roytenberg's theorem that these graded manifolds are the same as Courant algebroids (our own).
+
+**nLab:** [Courant algebroid](https://ncatlab.org/nlab/show/Courant+algebroid). It says: “The Lagrangian dg-submanifolds of a Courant Lie 2-algebroid corespond to its Dirac structures.”
+
+**Sources:**
+
+- [D. Roytenberg, On the structure of graded symplectic supermanifolds and Courant algebroids, Contemp. Math. 315 (2002) 169–185](https://doi.org/10.1090/conm/315/05479)
+
+### Closed B-fields act as symmetries of the Courant bracket
+
+**Remember:** A closed 2-form shears TM ⊕ T\*M without changing the bracket.
+
+*Makes the theorem clean to state or prove.* MSC 53D18 (Generalized geometries (à la Hitchin)). arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A B-field transform is the bundle map X + ξ ↦ X + ξ + ι(X)B of TM ⊕ T\*M, given by a 2-form B. It always preserves the pairing. It preserves the Courant bracket exactly when dB = 0.
+
+**Problem.** For a closed 2-form B, the B-field transform carries Dirac structures to Dirac structures and generalized complex structures to generalized complex structures. It keeps their type, the codimension of their projection to the tangent bundle.
+
+**How the definition helps.** Integrability is closure under the Courant bracket, and a closed B-field transform is an automorphism of that bracket, so integrability is kept (our own). The only computation is that the bracket changes by the term ι(X)ι(Y)dB, which is zero when B is closed (our own). Closed 2-forms are not symmetries of ordinary complex or symplectic structures, so the statement needs the generalized definitions (our own).
+
+**Wikipedia:** [Courant bracket](https://en.wikipedia.org/wiki/Courant_bracket). It says: “It also enjoys an additional symmetry under the vector bundle automorphism X+ξ ↦ X+ξ+i(X)α where α is a closed (p+1)-form.”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+
+### Counting B-field shifts as equivalences gives a generalized Darboux theorem
+
+**Remember:** Allow closed B-fields, and every regular point looks standard.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)). arXiv math.DG. Level 4: research.
+
+**Definition.** Call two generalized complex structures equivalent when a diffeomorphism followed by a B-field transform by a closed 2-form carries one to the other. A regular point is a point near which the type is constant.
+
+**Problem.** Near a regular point of type k, a generalized complex structure is equivalent to a standard model. This model is the product of the complex structure on ℂᵏ and the standard symplectic structure on ℝ²ⁿ⁻²ᵏ.
+
+**How the definition helps.** Closed B-field transforms are symmetries of the Courant bracket, so the definition of equivalence can include them (our own). Without them the theorem is false, because no diffeomorphism removes a nonzero closed B from the type-zero pure spinor exp(B+iω) (our own). The rest of the proof combines the Darboux and Newlander–Nirenberg theorems for a Poisson structure inside 𝒥 (our own).
+
+**Wikipedia:** [Generalized complex structure](https://en.wikipedia.org/wiki/Generalized_complex_structure). It says: “Every regular point in a generalized complex manifold has an open neighborhood which, after a diffeomorphism and shift of the B-field, has the same generalized complex structure as the Cartesian product of the complex vector space ℂᵏ”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+
+### Dirac pullback gives every suitable submanifold of a Poisson manifold a structure
+
+**Remember:** Poisson structures cannot be restricted; Dirac structures can be pulled back.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.SG. Level 4: research.
+
+**Definition.** The pullback of a Dirac structure L to a submanifold N keeps each X + ξ in L with X tangent to N. It then restricts ξ to TN, and the result is maximal isotropic at every point. A Poisson bivector, by contrast, has no restriction to a general submanifold.
+
+**Problem.** Let N be a submanifold of a Poisson manifold (M,π), where the covectors that vanish on TN and are killed by π have constant rank. Then N inherits a Dirac structure.
+
+**How the definition helps.** Pullback keeps maximal isotropy, so the rank condition is only needed to make the pullback a smooth subbundle (our own). A lemma of Dirac geometry shows that a smooth pullback of a Dirac structure is again closed under the Courant bracket (our own). For a symplectic manifold the condition always holds, and the pullback is the graph of the restricted 2-form (our own).
+
+**Wikipedia:** [Dirac structure](https://en.wikipedia.org/wiki/Dirac_structure). It says: “Any submanifold of a Poisson manifold induces a Dirac structure.”
+
+**Sources:**
+
+- [T. Courant, Dirac manifolds, Trans. Amer. Math. Soc. 319 (1990) 631–661](https://doi.org/10.1090/S0002-9947-1990-0998124-1)
+
+### Exact Courant algebroids are classified by one degree-three cohomology class
+
+**Remember:** Every exact Courant algebroid is TM ⊕ T\*M twisted by one class.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** An exact Courant algebroid over M is a Courant algebroid E with an exact sequence 0 → T\*M → E → TM → 0. A Courant algebroid is a bundle with a pairing, a bracket and an anchor map to TM that obey the axioms of TM ⊕ T\*M. In the sequence the map to TM is the anchor.
+
+**Problem.** Every exact Courant algebroid is isomorphic to TM ⊕ T\*M with the Courant bracket twisted by a closed 3-form H. Two of them are isomorphic by a map over the identity of M exactly when their classes \[H\] in H³(M; ℝ) are equal.
+
+**How the definition helps.** Exactness leaves only one choice, an isotropic splitting of the sequence, and such splittings exist by a partition of unity argument (our own). In a splitting the bracket is twisted by a closed 3-form H, which measures how far the splitting is from bracket-closed (our own). Two splittings differ by a 2-form B, which changes H to H + dB, as the quote says, so only \[H\] is well defined.
+
+**Wikipedia:** [Courant bracket](https://en.wikipedia.org/wiki/Courant_bracket). It says: “It remains antisymmetric and invariant under the addition of the interior product with a (p+1)-form B. When B is not closed then this invariance is still preserved if one adds dB to the final H.”
+
+**Sources:**
+
+- [P. Ševera and A. Weinstein, Poisson geometry with a 3-form background, Prog. Theor. Phys. Suppl. 144 (2001) 145–154](https://doi.org/10.1143/ptps.144.145)
+
+### Generalized almost complex structures exist exactly when almost complex structures exist
+
+**Remember:** The doubled tangent bundle hides two copies of TM.
+
+*True by definition. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53C15. arXiv math.DG. Level 4: research.
+
+**Definition.** A generalized almost complex structure on a manifold M of dimension 2n is a map 𝒥 of TM ⊕ T\*M with 𝒥² = −1. It must preserve the pairing, which has signature (2n, 2n). Equivalently, it is a reduction of the structure group of TM ⊕ T\*M from O(2n,2n) to U(n,n).
+
+**Problem.** A manifold has a generalized almost complex structure exactly when it has an almost complex structure. In particular, it must be even-dimensional.
+
+**How the definition helps.** A reduction to U(n,n) reduces further to its maximal compact subgroup U(n) × U(n), since their quotient is contractible (our own). This splits TM ⊕ T\*M into two complex subbundles, each isomorphic to TM by projection, so TM is almost complex (our own). Conversely J gives 𝒥(J), and with 𝒥 seen only as an endomorphism the compact reduction must be built by hand (our own).
+
+**nLab:** [generalized complex geometry](https://ncatlab.org/nlab/show/generalized+complex+geometry). It says: “A generalized complex structure on V ⊕ V\* is equivalently a reduction of the structure group along the inclusion U(n,n) ↪︎ O(2n,2n)”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+
+### Generalized complex structures contain complex and symplectic structures as special cases
+
+**Remember:** One bracket condition hides both dω = 0 and integrability of J.
+
+*Makes the theorem clean to state or prove.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D05. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A generalized complex structure is a map 𝒥 of TM ⊕ T\*M with 𝒥² = −1 that preserves the pairing. Its +i eigenbundle L, a subbundle of the complexified bundle, must be closed under the Courant bracket. So integrability is one bracket condition on L, whatever kind of structure 𝒥 comes from.
+
+**Problem.** A nondegenerate 2-form ω gives a generalized complex structure 𝒥(ω) exactly when dω = 0. An almost complex structure J gives a generalized complex structure 𝒥(J) exactly when J is integrable.
+
+**How the definition helps.** For both examples the classical integrability condition is the Courant condition on L (our own). The +i eigenbundle of 𝒥(ω) is a graph of a multiple of iω, which is bracket-closed exactly when dω = 0 (our own). For 𝒥(J), closure means that the (0,1) vectors are closed under the Lie bracket, which is integrability of J (our own).
+
+**nLab:** [generalized complex geometry](https://ncatlab.org/nlab/show/generalized+complex+geometry). It says: “The following shows that this is indeed a joint generalization of complex and symplectic structures.”
+
+**Wikipedia:** [Generalized complex structure](https://en.wikipedia.org/wiki/Generalized_complex_structure). It says: “Thus symplectic manifolds are also generalized complex manifolds.”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+- [N. Hitchin, Generalized Calabi–Yau manifolds, Q. J. Math. 54 (2003) 281–308](https://doi.org/10.1093/qmath/hag025)
+
+### Generalized Kähler structures repackage bihermitian geometry as two commuting structures
+
+**Remember:** Two commuting generalized complex structures make one generalized metric.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53C55. arXiv math.DG. Level 4: research.
+
+**Definition.** A generalized Kähler structure is a pair of commuting generalized complex structures 𝒥₁ and 𝒥₂. The product −𝒥₁𝒥₂ must be a positive definite metric on TM ⊕ T\*M.
+
+**Problem.** A generalized Kähler structure is the same as a bihermitian structure. This is a metric g, a 2-form b and two g-orthogonal integrable complex structures that obey the Gates–Hull–Roček torsion equations involving db.
+
+**How the definition helps.** The two Courant integrability conditions become the torsion equations of Gates, Hull and Roček, by Gualtieri's theorem (our own). The metric −𝒥₁𝒥₂ splits TM ⊕ T\*M into two eigenbundles, the graphs of b + g and b − g over TM (our own). The structure 𝒥₁ preserves both, and its projections from them to TM are the two complex structures (our own).
+
+**Wikipedia:** [Generalized complex structure](https://en.wikipedia.org/wiki/Generalized_complex_structure). It says: “Generalized Kähler manifolds, and their twisted counterparts, are equivalent to the bihermitian manifolds discovered by Sylvester James Gates, Chris Hull and Martin Roček in the context of 2-dimensional supersymmetric quantum field theories in 1984.”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized Kähler geometry, Comm. Math. Phys. 331 (2014) 297–331](https://doi.org/10.1007/s00220-014-1926-z)
+- [S. J. Gates, C. M. Hull and M. Roček, Twisted multiplets and new supersymmetric non-linear σ-models, Nuclear Phys. B 248 (1984) 157–186](https://doi.org/10.1016/0550-3213(84)90592-3)
+
+### Pure spinors make the type jump only by even numbers
+
+**Remember:** A pure spinor is either even or odd, never both.
+
+*True by definition.* MSC 53D18 (Generalized geometries (à la Hitchin)). arXiv math.DG. Level 4: research.
+
+**Definition.** A generalized almost complex structure has a canonical line bundle of pure spinors. These are complex forms ρ killed by the +i eigenbundle under (X+ξ)·ρ = ι(X)ρ + ξ ∧ ρ. Locally ρ = exp(B+iω) ∧ θ₁ ∧ … ∧ θₖ with complex 1-forms θᵢ, and the type is k.
+
+**Problem.** The type of a generalized complex structure can change only by even integers. On a connected 4-manifold the type is either 1 everywhere or takes only the values 0 and 2.
+
+**How the definition helps.** By Chevalley's theorem a pure spinor is even or odd, and a continuous nonzero generator cannot switch parity (our own). The lowest-degree part of ρ is θ₁ ∧ … ∧ θₖ, so the type has the parity of ρ (our own). With the type defined as a codimension this parity is hidden, and the work is Chevalley's theorem and the local form of ρ (our own).
+
+**Wikipedia:** [Generalized complex structure](https://en.wikipedia.org/wiki/Generalized_complex_structure). It says: “The type of a generalized almost complex structure is in general not constant, it can jump by any even integer.”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+
+### Stable generalized complex structures are symplectic forms on a Lie algebroid
+
+**Remember:** Transverse vanishing turns a degenerating structure into a symplectic one.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A generalized complex structure is stable when the degree-zero part of its pure spinor vanishes transversally. Its zero set D then has real codimension two. The elliptic tangent bundle is the Lie algebroid of vector fields that preserve the ideal generated by r², the square of the distance to D.
+
+**Problem.** Stable generalized complex structures, up to diffeomorphisms and closed B-field transforms, correspond one-to-one to certain symplectic forms on the elliptic tangent bundle. These forms satisfy a co-orientation condition and a few residue conditions along D.
+
+**How the definition helps.** Transverse vanishing makes the Poisson bivector of the structure invertible as a map of the elliptic tangent bundle (our own). The inverse is the symplectic form, as the paper states. Moser's argument, normal forms and surgeries then work on this Lie algebroid (our own).
+
+**Paper or page:** [Non-principal T-duality, generalized complex geometry and blow-ups](https://arxiv.org/abs/2211.17173v3). It says: “There is a one-to-one correspondence between gauge equivalence classes \[(𝕁,H)\] of stable generalized complex structures on M and symplectic forms ω ∈ Ω²(𝒜\_\|D\|) on the elliptic tangent bundle with D\[1\] co-orientable and satisfying the following equations”
+
+**Sources:**
+
+- [G. R. Cavalcanti and A. Witte, Non-principal T-duality, generalized complex geometry and blow-ups (arXiv 2211.17173)](https://arxiv.org/abs/2211.17173v3)
+
+### Stable three-forms turn complex structures into critical points of a volume functional
+
+**Remember:** On six-manifolds, a generic 3-form already knows a complex structure.
+
+*Makes the theorem clean to state or prove.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53C15. arXiv math.DG. Level 4: research.
+
+**Definition.** A 3-form on a 6-manifold is stable when it lies in an open orbit of GL(6,ℝ). A stable 3-form Ω with λ(Ω) &lt; 0 determines an almost complex structure, a volume form and a second 3-form Ω̂. Hitchin's functional V(Ω) is the total volume.
+
+**Problem.** Let Ω be a closed stable 3-form with λ(Ω) &lt; 0 on a compact 6-manifold. Then Ω is critical for V in its cohomology class exactly when its almost complex structure is integrable and Ω + iΩ̂ is holomorphic.
+
+**How the definition helps.** Stability makes Ω̂ depend smoothly on Ω, and the first variation of V along dβ is a multiple of ∫ Ω̂ ∧ dβ (our own). This vanishes for all β exactly when dΩ̂ = 0 (our own). Then the nowhere-zero (3,0)-form Ω + iΩ̂ is closed, which is equivalent to integrability (our own).
+
+**nLab:** [Hitchin functional](https://ncatlab.org/nlab/show/Hitchin+functional). It says: “such that λ(Ω) &lt; 0 is a critical point of the above functional precisely if there is the structure of a complex manifold on X such that Ω is the real part of a non-vanishing holomorphic 3-form”
+
+**Sources:**
+
+- [N. Hitchin, The geometry of three-forms in six dimensions, J. Differential Geom. 55 (2000) 547–576](https://doi.org/10.4310/jdg/1090341263)
+
+### T-duality becomes an isomorphism of Courant algebroids that transports generalized structures
+
+**Remember:** Swap the circle and the flux; keep the Courant algebroid.
+
+*True by definition.* MSC 53D18 (Generalized geometries (à la Hitchin)), 81T30. arXiv math.DG. Level 4: research.
+
+**Definition.** Let M and M̂ be torus bundles over one base, with torus-invariant closed 3-forms H and Ĥ. They are T-dual when, on their fibre product, the pullbacks of H and Ĥ differ by dF. Here F is a 2-form that pairs the two fibres nondegenerately.
+
+**Problem.** For a T-dual pair, the torus-invariant parts of the twisted Courant algebroids of M and M̂ are isomorphic. So every invariant generalized complex structure on M has a T-dual on M̂, which can have a different type.
+
+**How the definition helps.** Generalized complex structures and generalized metrics are defined by the bracket and the pairing alone, so a Courant algebroid isomorphism transports them (our own). The usual approach applies the Buscher rules of physics to the metric and the B-field by hand (our own). The work is the construction of the isomorphism, and the type can change because the map mixes tangent and cotangent directions (our own).
+
+**Paper or page:** [T-dual branes on hyperkähler manifolds](https://arxiv.org/abs/2410.22027v1). It says: “Let (M,H) and (M̂,Ĥ) be a T-dual pair of affine torus bundles endowed with H-fluxes. Then, there exists an isomorphism of Courant algebroids T: E<sub>red</sub> → Ê<sub>red</sub> which we call the T-duality map.”
+
+**Sources:**
+
+- [G. Cavalcanti and M. Gualtieri, Generalized complex geometry and T-duality, in A Celebration of the Mathematical Legacy of Raoul Bott, CRM Proc. Lecture Notes 50 (2010) 341–365](https://doi.org/10.1090/crmp/050/25)
+- [M. A. Sisak, T-dual branes on hyperkähler manifolds, PhD thesis (arXiv 2410.22027)](https://arxiv.org/abs/2410.22027v1)
+
+### The Cartan three-form twist makes conjugacy classes into Dirac leaves
+
+**Remember:** Twisted leaves carry 2-forms whose derivative is the background 3-form.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.SG. Level 4: research.
+
+**Definition.** An H-twisted Dirac structure is a maximal isotropic subbundle of TM ⊕ T\*M closed under the Courant bracket twisted by a closed 3-form H. Let G be a Lie group with an invariant inner product. The Cartan–Dirac structure is such a structure on G for the Cartan 3-form H, given by ⟨X,\[Y,Z\]⟩ on left-invariant vector fields.
+
+**Problem.** The conjugacy classes of a Lie group G with an invariant inner product are the leaves of the Cartan–Dirac structure. So each conjugacy class carries a 2-form whose exterior derivative is the restriction of the Cartan 3-form.
+
+**How the definition helps.** An H-twisted Dirac structure is still a Lie algebroid, so its leaves carry 2-forms whose exterior derivative is the restriction of H (our own). For the Cartan–Dirac structure the image of the anchor is tangent to the conjugation orbits, so the leaves are the conjugacy classes (our own). The twist is needed because these 2-forms are not closed in general, for example on the generic conjugacy classes of SU(3) (our own).
+
+**nLab:** [Cartan-Dirac structure on a Lie group](https://ncatlab.org/nlab/show/Cartan-Dirac+structure+on+a+Lie+group). It says: “The leaves of this structure are the conjugacy classes of G. There is a differential 2-forms θ<sub>g</sub> on each conjugacy class ι: 𝒞 ↪︎ G, such that dθ<sub>g</sub> = ι\*⟨−,\[−,−\]⟩.”
+
+**Sources:**
+
+- [P. Ševera and A. Weinstein, Poisson geometry with a 3-form background, Prog. Theor. Phys. Suppl. 144 (2001) 145–154](https://doi.org/10.1143/ptps.144.145)
+
+### The Courant double makes Lie bialgebroids the same as Manin triples
+
+**Remember:** Two compatible Lie algebroids sit as transverse Dirac structures.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** A Lie bialgebroid is a pair of Lie algebroids A and A\* on dual vector bundles. The differential of A\* must be a derivation of the bracket of A. Its double is the bundle A ⊕ A\*, with the natural pairing and a bracket built from both structures.
+
+**Problem.** A pair (A, A\*) is a Lie bialgebroid exactly when its double is a Courant algebroid with A and A\* as Dirac structures. Conversely, every Courant algebroid with two transverse Dirac structures is such a double.
+
+**How the definition helps.** The compatibility condition is exactly what the bracket on the double needs to satisfy the Courant algebroid axioms (our own). This is the theorem of Liu, Weinstein and Xu (our own). With the double, the theory of Lie bialgebras, Drinfeld doubles and Manin triples carries over to Lie algebroids (our own).
+
+**nLab:** [Lie bialgebroid](https://ncatlab.org/nlab/show/Lie+bialgebroid). It says: “Every Lie bialgebroid (A,A\*) induces the structure of a Courant algebroid on E := A ⊕ A\*.”
+
+**Sources:**
+
+- [Z.-J. Liu, A. Weinstein and P. Xu, Manin triples for Lie bialgebroids, J. Differential Geom. 45 (1997) 547–574](https://doi.org/10.4310/jdg/1214459842)
+
+### Type zero generalized complex structures are B-field transforms of symplectic forms
+
+**Remember:** Type zero means the eigenbundle is a graph over TM.
+
+*True by definition. Confidence: medium.* MSC 53D18 (Generalized geometries (à la Hitchin)). arXiv math.DG, math.SG. Level 4: research.
+
+**Definition.** The type of a generalized complex structure measures its +i eigenbundle L. It is the complex codimension of the projection of L to the complexified tangent space. Type zero means that this projection is onto.
+
+**Problem.** If a generalized complex structure has type zero everywhere, its eigenbundle is the graph of B + iω. Here ω is symplectic and B is a closed real 2-form, so the structure is a B-field transform of a symplectic one.
+
+**How the definition helps.** Type zero makes L the graph of a complex 2-form B + iω, by linear algebra (our own). L meets its conjugate only in zero, so ω is nondegenerate, and the Courant condition gives dB = 0 and dω = 0 (our own). The usual approach writes the pure spinor and checks its degrees, but here the only work is the graph lemma (our own).
+
+**Wikipedia:** [Generalized complex structure](https://en.wikipedia.org/wiki/Generalized_complex_structure). It says: “Up to a shift of the B-field, which corresponds to multiplying the pure spinor by the exponential of a closed, real 2-form, symplectic manifolds are the only type 0 generalized complex manifolds.”
+
+**Sources:**
+
+- [M. Gualtieri, Generalized complex geometry, Ann. of Math. 174 (2011) 75–123](https://doi.org/10.4007/annals.2011.174.1.3)
+
+### Writing nearby Dirac structures as graphs makes deformation a Maurer–Cartan equation
+
+**Remember:** Near a Dirac structure, every Lagrangian neighbour is a graph.
+
+*Makes the theorem clean to state or prove.* MSC 53D18 (Generalized geometries (à la Hitchin)), 53D17. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** Fix a Dirac structure L and a complementary maximal isotropic subbundle R. The pairing identifies R with the dual bundle L\*. Every maximal isotropic subbundle near L is then the graph of a unique 2-form σ on L.
+
+**Problem.** The graph of a 2-form σ on L is a Dirac structure exactly when σ solves the Maurer–Cartan equation of an L∞ algebra. An L∞ algebra generalizes a differential graded Lie algebra, and this one has brackets with one, two and three inputs.
+
+**How the definition helps.** Maximal isotropy makes each nearby subbundle the graph of a skew form on L, so only the bracket condition is left (our own). This closure condition has terms of degree one, two and three in σ, which are the Maurer–Cartan equation (our own). The cubic term appears because R itself need not be closed under the bracket (our own).
+
+**Paper or page:** [Deformations of Pre-Symplectic Structures: a Dirac Geometry Approach](https://arxiv.org/abs/1807.10148v2). It says: “An element σ ∈ Γ(∧²L\*)\[2\] is a Maurer–Cartan element of the L∞\[1\]-algebra structure given in Proposition iff the graph Γσ := {(X − ι<sub>X</sub>σ): X ∈ L} ⊂ L ⊕ R is a Dirac structure.”
+
+**Sources:**
+
+- [F. Schätz and M. Zambon, Deformations of pre-symplectic structures: a Dirac geometry approach, SIGMA 14 (2018) 128](https://doi.org/10.3842/SIGMA.2018.128)
+
+### Blow-ups defined as cuts become corner chops of the moment polytope
+
+**Remember:** Blowing up a fixed point slices a corner off the polytope.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B20, 14M25. arXiv math.SG, math.CO. Level 4: research.
+
+**Definition.** The symplectic blow-up of a toric manifold at a fixed point is defined as a symplectic cut, with no hand-made adjustment of the form. The cut uses a circle whose weights at the point are all 1. It removes the matching vertex of the polytope by a hyperplane, a corner chop.
+
+**Problem.** Toric blow-up at a fixed point chops the matching vertex off the Delzant polytope. Hence every compact symplectic toric four-manifold comes from ℂP², S² × S² or a Hirzebruch surface by finitely many toric blow-ups.
+
+**How the definition helps.** Defined as a cut, the blow-up has as polytope the old one minus a small corner, so blow-ups match corner chops (our own). The Delzant condition gives a circle with all weights 1 at the fixed point, which the cut needs (our own). Fulton's theorem on Delzant polygons then classifies the four-manifolds, and the work went into it and into Delzant's theorem (our own).
+
+**Wikipedia:** [Symplectic cut](https://en.wikipedia.org/wiki/Symplectic_cut). It says: “which is formed by deleting a symplectic ε-neighborhood of Z and collapsing the boundary, is then the symplectic blow up of X along Z.”
+
+**Paper or page:** [Classifying Toric and Semitoric Fans by Lifting Equations from SL2(Z)](https://arxiv.org/abs/1502.07698). It says: “Up to the action of SL₂(ℤ), every Delzant polygon can be obtained from a Delzant triangle, rectangle, or Hirzebruch trapezoid by a finite number of corner chops.”
+
+**Sources:**
+
+- [E. Lerman, Symplectic cuts, Mathematical Research Letters 2 (1995) 247–258](https://doi.org/10.4310/MRL.1995.v2.n3.a2)
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
+
+### Borel's equivariant cohomology makes Kirwan's map a single restriction
+
+**Remember:** Equivariant cohomology is the cohomology the quotient ought to have.
+
+*Makes the theorem clean to state or prove.* MSC 53D20 (Momentum maps; symplectic reduction), 55N91. arXiv math.SG, math.AT. Level 4: research.
+
+**Definition.** The equivariant cohomology of a G-space X is the cohomology of (EG × X)/G, where EG is a contractible space with a free G-action. For a locally free action of a compact group it equals, rationally, the cohomology of X/G.
+
+**Problem.** Let a compact group G act on a compact symplectic manifold M with momentum map μ and 0 a regular value. Then the Kirwan map, restriction from the rational equivariant cohomology of M to that of μ⁻¹(0), which is H\*(μ⁻¹(0)/G; ℚ), is surjective.
+
+**How the definition helps.** With this definition the Kirwan map is just restriction to μ⁻¹(0), so surjectivity is a statement about one restriction map. The work goes into Kirwan's theorem that the norm square of μ is equivariantly perfect, a Morse-type function whose Morse inequalities are equalities (our own). Ordinary cohomology gives no such map, since μ⁻¹(0)/G is neither a subspace nor a quotient of M (our own).
+
+**Wikipedia:** [Kirwan map](https://en.wikipedia.org/wiki/Kirwan_map), [Equivariant cohomology](https://en.wikipedia.org/wiki/Equivariant_cohomology). It says: “It is defined as the map of equivariant cohomology induced by the inclusion μ⁻¹(p) ↪︎ M followed by the canonical isomorphism H\*<sub>G</sub>(μ⁻¹(p)) = H\*(M//<sub>pG</sub>).”
+
+**Sources:**
+
+- [F. C. Kirwan, Cohomology of Quotients in Complex and Algebraic Geometry, Mathematical Notes 31, Princeton University Press (1984)](https://books.google.com/books?id=4wfZBnlSaJ0C)
+
+### BRST cohomology turns symplectic reduction into a cohomology computation
+
+**Remember:** Impose the constraints and divide by symmetry in one differential.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 81T70. arXiv math.SG, math-ph. Level 4: research.
+
+**Definition.** The classical BRST complex combines the Koszul complex, which resolves the functions on μ⁻¹(0), with the Chevalley–Eilenberg complex, which computes invariants of 𝔤. Its extra odd variables are called ghosts, and its differential is the bracket with one element Ω satisfying {Ω, Ω} = 0.
+
+**Problem.** Let 0 be a regular value and let a connected G act freely and properly on μ⁻¹(0). Then the degree-zero BRST cohomology is the Poisson algebra of smooth functions on μ⁻¹(0)/G.
+
+**How the definition helps.** The Koszul part divides by the functions vanishing on μ⁻¹(0), and the ghost part takes invariants (our own). So degree zero sees exactly the invariant functions on the zero level, which are the functions on the reduced space (our own). The graded bracket descends to cohomology because the differential is a bracket with Ω, and this gives the reduced Poisson bracket (our own).
+
+**nLab:** [BV-BRST formalism](https://ncatlab.org/nlab/show/BV-BRST+formalism). It says: “In fact, if 0 is a regular value of μ then X<sub>red</sub> := μ⁻¹(0)/G is a submanifold and A<sub>red</sub> ≃ C<sup>∞</sup>(X<sub>red</sub>).”
+
+**Sources:**
+
+- [B. Kostant and S. Sternberg, Symplectic reduction, BRS cohomology, and infinite-dimensional Clifford algebras, Annals of Physics 176 (1987) 49–113](https://doi.org/10.1016/0003-4916(87)90178-3)
+
+### Coadjoint orbits as Hamiltonian spaces give Harish-Chandra's integral by localization
+
+**Remember:** A coadjoint orbit is a Hamiltonian torus space with Weyl-orbit fixed points.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 22E30. arXiv math.SG, math.RT. Level 4: research.
+
+**Definition.** A coadjoint orbit of a compact connected Lie group K carries the Kirillov–Kostant–Souriau symplectic form. For a maximal torus T, restricting from the full dual Lie algebra to the torus part gives a moment map. On a regular orbit through λ, the T-fixed points are the Weyl group images wλ.
+
+**Problem.** For regular λ and generic X in Lie(T), the orbit's Liouville measure has Fourier transform equal, up to a constant, to a Weyl group sum. The term for w is sign(w) exp⟨wλ, X⟩ divided by the product of the positive roots at X.
+
+**How the definition helps.** As a Hamiltonian torus space, the orbit makes the Fourier transform an integral of an equivariantly closed exponential, which localization reduces to the points wλ. At wλ the tangent weights are the w-images of the positive roots (our own). Their product is sign(w) times the product of the positive roots; Harish-Chandra's own proof used invariant differential equations instead (our own).
+
+**Wikipedia:** [Localization formula for equivariant cohomology](https://en.wikipedia.org/wiki/Localization_formula_for_equivariant_cohomology). It says: “The localization formula can also computes the Fourier transform of (Kostant's symplectic form on) coadjoint orbit, yielding the Harish-Chandra's integration formula, which in turns gives Kirillov's character formula.”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, The moment map and equivariant cohomology, Topology 23 (1984) 1–28](https://doi.org/10.1016/0040-9383(84)90021-1)
+- [J. J. Duistermaat and G. J. Heckman, On the variation in the cohomology of the symplectic form of the reduced phase space, Inventiones Mathematicae 69 (1982) 259–268](https://doi.org/10.1007/BF01399506)
+
+### Defining symplectic blow-up as a cut makes the blown-up form exist
+
+**Remember:** Blow up by cutting off a thin neighbourhood of Z.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 53D05. arXiv math.SG. Level 4: research.
+
+**Definition.** Let a circle act on X with proper momentum map μ, maximal exactly on a symplectic submanifold Z. Suppose the circle acts on each normal space of Z by complex scalar multiplication, that is, with all weights 1. For small ε, the symplectic blow-up along Z is the cut that keeps the side μ ≤ max μ − ε.
+
+**Problem.** For small ε the blow-up is a symplectic manifold. In it a neighbourhood of Z is replaced by a codimension-two symplectic submanifold, the exceptional divisor, and the rest of X keeps its form.
+
+**How the definition helps.** Weights 1 make the circle act freely on levels just below the maximum, so the cut is symplectic by reduction (our own). Deleting a neighbourhood of Z and collapsing its boundary by hand needs care, and the cut makes this process rigorous. The level set is a sphere bundle over Z, so the divisor is the projectivized normal bundle (our own).
+
+**Wikipedia:** [Symplectic cut](https://en.wikipedia.org/wiki/Symplectic_cut). It says: “The symplectic cut is an elegant means of making the neighborhood-deletion/boundary-collapse process symplectically rigorous.”
+
+**Sources:**
+
+- [E. Lerman, Symplectic cuts, Mathematical Research Letters 2 (1995) 247–258](https://doi.org/10.4310/mrl.1995.v2.n3.a2)
+
+### Labelling facets with integers lets polytopes classify toric orbifolds
+
+**Remember:** Each label records how far the torus is from acting freely.
+
+*Makes the theorem clean to state or prove.* MSC 53D20 (Momentum maps; symplectic reduction), 57R18, 52B20. arXiv math.SG. Level 4: research.
+
+**Definition.** A labeled polytope is a simple rational polytope with a positive integer on each facet. The label is the order of the finite isotropy group, the orbifold structure group, at points over the interior of that facet.
+
+**Problem.** Compact symplectic toric orbifolds correspond one to one, up to isomorphism, with labeled polytopes, and every labeled polytope occurs. The polytope alone is not enough: a smooth sphere and a teardrop orbifold both have an interval as image.
+
+**How the definition helps.** The bare polytope forgets the isotropy over each facet, and the label records exactly this, so the classification becomes a bijection (our own). Lerman and Tolman follow Delzant: they reduce ℂᵈ by a subtorus built from the labels times the primitive facet normals (our own). With all labels 1 and a smooth polytope one recovers Delzant's theorem (our own).
+
+**Paper or page:** [Seidel Representations and Quantum Cohomology of Toric Orbifolds](https://arxiv.org/abs/1211.3204). It says: “Two compact symplectic toric orbifolds are isomorphic if and only if their associated labeled polytopes are isomorphic.”
+
+**Sources:**
+
+- [E. Lerman and S. Tolman, Hamiltonian torus actions on symplectic orbifolds and toric varieties, Transactions of the American Mathematical Society 349 (1997) 4201–4230](https://doi.org/10.1090/S0002-9947-97-01821-7)
+
+### Orbit-closure convexity makes Grassmannian torus orbits matroid polytopes
+
+**Remember:** A matroid polytope is the hull of its bases' indicator vectors.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B40, 14M15. arXiv math.SG, math.CO. Level 4: research.
+
+**Definition.** The matroid base polytope of a matroid on {1, …, n} is the convex hull of the indicator vectors of its bases. A k-plane x in ℂⁿ has a matroid whose bases are the k-sets I with nonzero Plücker coordinate, the minor on columns I.
+
+**Problem.** Let x be a point of the Grassmannian of k-planes in ℂⁿ. The moment image of the closure of its complex torus orbit is the matroid base polytope of x.
+
+**How the definition helps.** By Atiyah's theorem on orbit closures, the image is the convex hull of the images of the torus-fixed points in the closure (our own). These are the coordinate planes for the k-sets I with nonzero Plücker coordinate, each mapping to the indicator vector of I (our own). So the image is the base polytope by definition, with no direct computation of the moment map; the work went into Atiyah's theorem (our own).
+
+**Wikipedia:** [Matroid polytope](https://en.wikipedia.org/wiki/Matroid_polytope). It says: “Every edge of a matroid polytope PM is a parallel translate of eᵢ−eⱼ for some i,j∈E, the ground set of the associated matroid.”
+
+**Paper or page:** [Irreducibility of Generalized Permutohedra, Supermodular Functions, and Balanced Multisets](https://arxiv.org/abs/2303.05751). It says: “Let P be a polytope in ℝⁿ with vertices in {0,1}ⁿ such that each edge is a translate of eᵢ−eⱼ for some i,j∈\[n\]. Then P is the matroid polytope of some matroid M on \[n\].”
+
+**Sources:**
+
+- [I. M. Gelfand, R. M. Goresky, R. D. MacPherson and V. V. Serganova, Combinatorial geometries, convex polyhedra, and Schubert cells, Advances in Mathematics 63 (1987) 301–316](https://doi.org/10.1016/0001-8708(87)90059-4)
+- [M. F. Atiyah, Convexity and commuting Hamiltonians, Bulletin of the London Mathematical Society 14 (1982) 1–15](https://doi.org/10.1112/blms/14.1.1)
+
+### Reading the h-vector as Betti numbers makes Dehn–Sommerville Poincaré duality
+
+**Remember:** Count vertices by how many edges run downhill from them.
+
+*True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 52B05, 52B20. arXiv math.SG, math.CO. Level 4: research.
+
+**Definition.** For a simple n-polytope, choose a generic linear height, so each edge points up or down. The h-vector entry hₖ counts the vertices with exactly k edges pointing down. This reads directly as Morse data, unlike the usual definition through face numbers.
+
+**Problem.** For a compact symplectic toric manifold with polytope Δ, the Betti number b₂ₖ equals hₖ(Δ), and the odd Betti numbers vanish. So Poincaré duality gives the Dehn–Sommerville equations hₖ = hₙ₋ₖ, and toric orbifolds extend this to all simple polytopes.
+
+**How the definition helps.** The height is a moment map component, a Morse function with one critical point per vertex, of index twice its downward edges (our own). All indices are even, so the Morse inequalities are equalities and b₂ₖ counts vertices with k downward edges, for every generic height (our own). The quoted orbifold version covers every rational simple polytope, and every simple polytope has a rational one with the same faces (our own).
+
+**Wikipedia:** [Dehn–Sommerville equations](https://en.wikipedia.org/wiki/Dehn%E2%80%93Sommerville_equations). It says: “In this language, the last form of the Dehn–Sommerville equations, the symmetry of the h-vector, is a manifestation of the Poincaré duality in the intersection cohomology of X.”
+
+**Paper or page:** [Covering Spaces of Symplectic Toric Orbifolds](https://arxiv.org/abs/2405.11994). It says: “Then if X is a toric orbifold with labeled rational polytope Δ, then b₂ᵢ=hᵢ(Δ) and b₂ᵢ₊₁=0 for all i∈ℤ.”
+
+**Sources:**
+
+- [R. P. Stanley, The number of faces of a simplicial convex polytope, Advances in Mathematics 35 (1980) 236–238](https://doi.org/10.1016/0001-8708(80)90050-X)
+
+### Reflexive moment polytopes make monotone toric manifolds finite in number
+
+**Remember:** Every facet stands one lattice step from the centre.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 52B20, 14M25. arXiv math.SG, math.CO. Level 4: research.
+
+**Definition.** A lattice polytope is reflexive when the origin is interior and each facet lies on a hyperplane ⟨x, u⟩ = −1. Here u is a primitive lattice vector, so each facet is one lattice step from the origin. A symplectic manifold is monotone when its first Chern class c₁ is a positive multiple of \[ω\].
+
+**Problem.** A compact symplectic toric manifold is monotone exactly when a rescaled, translated copy of its polytope is reflexive. Reflexive polytopes are finite in number in each dimension, so monotone toric manifolds are too, up to scaling.
+
+**How the definition helps.** In polytope terms monotonicity is reflexivity, because \[ω\] sums the classes over the facets weighted by facet distance, while c₁ sums them plainly (our own). So all facets sit at one lattice distance from some point, which gives the converse of the quoted result (our own). Delzant's theorem and Lagarias and Ziegler's bound give finiteness, and the work went into that bound (our own).
+
+**Paper or page:** [Compact monotone tall complexity one T-spaces](https://arxiv.org/abs/2307.04198). It says: “Let (M,ω,Φ) be a compact symplectic toric manifold. If Φ(M) is a reflexive Delzant polytope, then (M,ω,Φ) is normalized monotone.”
+
+**Sources:**
+
+- [T. Delzant, Hamiltoniens périodiques et images convexes de l'application moment, Bulletin de la Société Mathématique de France 116 (1988) 315–339](https://doi.org/10.24033/bsmf.2100)
+- [J. C. Lagarias and G. M. Ziegler, Bounds for lattice polytopes containing a fixed number of interior points in a sublattice, Canadian Journal of Mathematics 43 (1991) 1022–1035](https://doi.org/10.4153/CJM-1991-058-4)
+
+### Slices complementary to coadjoint orbits have symplectic preimages
+
+**Remember:** A slice transverse to the orbit pulls back to a symplectic piece.
+
+*Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 4: research.
+
+**Definition.** A transverse slice at λ in 𝔤\* is a submanifold Z whose tangent space at λ complements that of the coadjoint orbit G·λ. That is, the two tangent spaces meet only in 0 and together span 𝔤\*. Here μ is an equivariant momentum map, with ⟨dμ(v), ξ⟩ = ω(ξ·p, v).
+
+**Problem.** Let μ be an equivariant momentum map with μ(p) = λ, and let Z be a transverse slice at λ. Then near p the preimage μ⁻¹(Z) is a symplectic submanifold of M.
+
+**How the definition helps.** Spanning 𝔤\* makes μ transverse to Z, and meeting only in 0 makes ω nondegenerate on μ⁻¹(Z) (our own). By the equation, vectors ω-orthogonal to μ⁻¹(Z) have the form ξ·p, and dμ sends them into the tangent space of G·λ (our own). For Z = G·λ the condition fails, and orbit directions of the stabilizer of λ are tangent and ω-orthogonal to μ⁻¹(Z) (our own).
+
+**Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “Then, if p ∈ M with μ(p) = λ, there is a neighborhood U of p such that μ⁻¹(Z) ∩ U is a symplectic submanifold of M.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stratified symplectic spaces make singular reduced spaces symplectic piece by piece
+
+**Remember:** A singular quotient is symplectic stratum by stratum.
+
+*Makes the theorem clean to state or prove.* MSC 53D20 (Momentum maps; symplectic reduction), 58A35. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A stratified symplectic space is a space divided into manifolds, called strata, each with a symplectic form. It carries a Poisson algebra, an algebra of continuous functions with a bracket, whose restriction to each stratum gives that stratum's Poisson bracket.
+
+**Problem.** For a proper Hamiltonian action that need not be free, the reduced space μ⁻¹(0)/G is a stratified symplectic space. Its strata are the sets of orbits in μ⁻¹(0) whose stabilizers are conjugate to a fixed subgroup, and each is a symplectic manifold.
+
+**How the definition helps.** Without a free action μ⁻¹(0)/G is usually not a manifold, so the new notion is needed even to state that it is symplectic (our own). Sjamaar and Lerman show that each stratum is a Marsden–Weinstein quotient of a smaller manifold, using a local normal form (our own). For the circle turning z forward and w backward on ℂ², the reduced space is a plane whose origin is its own stratum (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map). It says: “M//G = μ⁻¹(0)/G is a stratified symplectic space, i.e. a stratified space with compatible symplectic structures on the strata.”
+
+**Sources:**
+
+- [R. Sjamaar and E. Lerman, Stratified symplectic spaces and reduction, Annals of Mathematics 134 (1991) 375–422](https://doi.org/10.2307/2944350)
+
+### The momentum map on spheres sums vectors, so polygon spaces are symplectic
+
+**Remember:** A polygon closes exactly when its total momentum vanishes.
+
+*True by definition. Confidence: medium.* MSC 53D20 (Momentum maps; symplectic reduction), 53D30. arXiv math.SG. Level 4: research.
+
+**Definition.** Give each sphere of radius rᵢ in ℝ³ its area form divided by rᵢ, so the inclusion is a momentum map for rotations. On the product of the spheres the momentum map is the sum of the n vectors, so its zero level is the closed polygons. The polygon space is this zero level divided by the rotation group SO(3).
+
+**Problem.** Suppose that no signs make ±r₁ ± … ± rₙ zero. Then the polygon space, when nonempty, is a compact symplectic manifold of dimension 2n − 6.
+
+**How the definition helps.** Defined as a zero level divided by a group, the polygon space is symplectic by Marsden–Weinstein reduction once rotations act freely (our own). The sign condition rules out polygons on a line, and only the identity rotation fixes two independent vectors (our own). Defined only as closed polygons up to rotation, the space has no evident symplectic form (our own).
+
+**Wikipedia:** [Momentum map](https://en.wikipedia.org/wiki/Momentum_map). It says: “Then the natural action of G × H on (M₁ × M₂, ω₁ × ω₂) is Hamiltonian, with momentum map the direct sum of the two momentum maps”
+
+**Paper or page:** [Disk potential functions for polygon spaces](https://arxiv.org/abs/2211.03558v2). It says: “Then the polygon space (ℳ<sub>r</sub>, ω<sub>r</sub>) is symplectomorphic to the symplectic reduction T //<sub>2r</sub> 𝒪\_λ of the coadjoint orbit (𝒪\_λ, ω\_λ).”
+
+**Sources:**
+
+- [M. Kapovich and J. J. Millson, The symplectic geometry of polygons in Euclidean space, Journal of Differential Geometry 44 (1996)](https://doi.org/10.4310/jdg/1214459218)
+- [J.-C. Hausmann and A. Knutson, The cohomology ring of polygon spaces, Annales de l'Institut Fourier 48 (1998)](https://doi.org/10.5802/aif.1619)
+
 ### Vanishing ideals give Poisson reduction
 
 **Remember:** Functions vanishing on S bracket to functions vanishing on S.
@@ -3938,6 +6924,661 @@
 **nLab:** [coisotropic submanifold](https://ncatlab.org/nlab/show/coisotropic+submanifold). It says: “S ↪︎ X is coisotropic if the subalgebra of C∞(X) consisting of functions vanishing on S is closed under the Poisson bracket.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Built-in minimal degeneracy makes quasi-Hamiltonian reductions symplectic
+
+**Remember:** The two-form may degenerate, but only along directions reduction removes.
+
+*True by definition.* MSC 53D30 (Symplectic structures of moduli spaces), 53D20. arXiv math.SG, math.AG. Level 4: research.
+
+**Definition.** A quasi-Hamiltonian G-space is a G-manifold with an invariant 2-form ω and an equivariant map Φ to G, called the moment map. Here dω is minus the pull-back of the Cartan 3-form (built from the Lie bracket), and Φ fixes how ω pairs with orbit directions. The form ω may degenerate, but its kernel at x is exactly the orbit directions ξ·x with Ad(Φ(x))ξ = −ξ.
+
+**Problem.** If G acts freely on Φ⁻¹(e), then ω descends to a symplectic form on Φ⁻¹(e)/G. The same holds for the preimage of a conjugacy class with a free action and a good quotient.
+
+**How the definition helps.** The kernel condition is chosen so that, on the level set, ω degenerates only along orbit directions, which the quotient removes (our own). On Φ⁻¹(e) the map Φ is constant, so the pull-back of the Cartan 3-form vanishes and the restricted form is closed (our own). With ordinary moment maps, the same spaces come only from reducing infinite-dimensional spaces of connections (our own).
+
+**Paper or page:** [Unfolding of wild character varieties](https://arxiv.org/abs/2511.01221). It says: “in particular, μ<sub>G</sub>⁻¹(𝒞)/G is a smooth symplectic variety if H = {1}”
+
+**Sources:**
+
+- [A. Alekseev, A. Malkin, E. Meinrenken, Lie group valued moment maps, J. Differential Geom. 48 (1998) 445–495](https://doi.org/10.4310/jdg/1214460860)
+
+### Fixing boundary conjugacy classes gives the symplectic leaves of character varieties
+
+**Remember:** Conjugacy classes do what coadjoint orbits do for ordinary moment maps.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D30 (Symplectic structures of moduli spaces), 53D17. arXiv math.SG, math.AG. Level 4: research.
+
+**Definition.** A conjugacy class 𝒞 of G, with its inclusion into G as moment map, is a quasi-Hamiltonian G-space. It is the group-valued analogue of a coadjoint orbit. For a surface with boundary, one fuses a fused double per handle and a conjugacy class per boundary circle, then reduces at e.
+
+**Problem.** The character variety of a compact oriented surface with boundary is a Poisson manifold. Its symplectic leaves (the largest pieces on which the bracket is nondegenerate) are the sets of representations with fixed boundary conjugacy classes.
+
+**How the definition helps.** Each choice of boundary classes gives a quasi-Hamiltonian reduction, which is symplectic by the reduction theorem, and these reductions fill the character variety (our own). The Poisson structure that joins the leaves comes from quasi-Poisson geometry, a further theory (our own). For SL(2, ℂ) on the four-punctured sphere, the boundary traces a, b, c, d Poisson-commute with every function, and the leaves are cubic surfaces.
+
+**Wikipedia:** [Character variety](https://en.wikipedia.org/wiki/Character_variety). It says: “has a natural Poisson structure such that a,b,c,d are Casimir functions, so the symplectic leaves are affine cubic surfaces of the form xyz + x² + y² + z² + c₁x + c₂y + c₃z = c₄.”
+
+**Paper or page:** [A Gentle Introduction to the Non-Abelian Hodge Correspondence](https://arxiv.org/abs/2208.05940). It says: “For a surface with boundary, the character variety Rep(π₁S, G) is a Poisson manifold whose symplectic leaves are flat connections with prescribed conjugacy class for the monodromy around each boundary component.”
+
+**Sources:**
+
+- [A. Alekseev, A. Malkin, E. Meinrenken, Lie group valued moment maps, J. Differential Geom. 48 (1998) 445–495](https://doi.org/10.4310/jdg/1214460860)
+
+### Fusing doubles of G turns surface character varieties into finite-dimensional reductions
+
+**Remember:** Each handle of the surface contributes one commutator to the moment map.
+
+*True by definition. Confidence: medium.* MSC 53D30 (Symplectic structures of moduli spaces), 57K20. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** Fusion makes the product of two quasi-Hamiltonian G-spaces into one quasi-Hamiltonian G-space whose moment map is the product Φ₁Φ₂. The fused double G × G, with G acting by conjugation and moment map (a, b) ↦ aba⁻¹b⁻¹, is a quasi-Hamiltonian G-space.
+
+**Problem.** For a closed oriented surface of genus g, representations of π₁ in G up to conjugation form the reduction at e of g fused doubles. So the irreducible ones form a symplectic manifold.
+
+**How the definition helps.** A representation of π₁ is a list of 2g elements aᵢ, bᵢ whose commutators multiply to e, which is the fused moment map (our own). So the character variety is Φ⁻¹(e)/G, and the reduction theorem makes it symplectic, with Goldman's form (our own). The work moves into the fusion and reduction theorems, which Alekseev, Malkin and Meinrenken proved for all such spaces (our own).
+
+**Paper or page:** [A Gentle Introduction to the Non-Abelian Hodge Correspondence](https://arxiv.org/abs/2208.05940). It says: “In particular for a closed surface S, the character variety Rep(π₁S, G) is a symplectic manifold.”
+
+**Sources:**
+
+- [A. Alekseev, A. Malkin, E. Meinrenken, Lie group valued moment maps, J. Differential Geom. 48 (1998) 445–495](https://doi.org/10.4310/jdg/1214460860)
+- [W. M. Goldman, The symplectic nature of fundamental groups of surfaces, Adv. Math. 54 (1984) 200–225](https://doi.org/10.1016/0001-8708(84)90040-9)
+
+### Goldman's loop bracket computes Poisson brackets of trace functions by intersections
+
+**Remember:** Bracket two loops by resolving their crossings with signs.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D30 (Symplectic structures of moduli spaces), 57K20. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** The Goldman bracket of two free loops α and β on an oriented surface is Σ ε(p) \[αₚβₚ\]. The sum runs over transverse crossings p, with crossing sign ε(p) = ±1, and αₚβₚ runs α then β from p. This bracket makes the free abelian group on free homotopy classes of loops into a Lie algebra.
+
+**Problem.** On the GL(n, ℂ) character variety of a closed surface, with the trace form, f(α)(ρ) = tr ρ(α) obeys {f(α), f(β)} = Σ ε(p) f(αₚβₚ). So sending loops to trace functions is a Lie homomorphism from the Goldman Lie algebra.
+
+**How the definition helps.** The loop bracket uses the signed sum over crossings of Goldman's product formula, so the formula says the trace map is a Lie homomorphism (our own). The work is in the product formula, which comes from the cup-product form of the symplectic structure and a local computation at each crossing (our own).
+
+**nLab:** [Goldman bracket](https://ncatlab.org/nlab/show/Goldman+bracket). It says: “The Goldman bracket of a compact closed surface Σ is a Lie algebra structure on the free abelian group generated from the isotopy classes of based loops in Σ.”
+
+**Paper or page:** [Generic Properties of Hitchin Representations](https://arxiv.org/abs/2407.08487). It says: “Then, at any point \[ρ\] ∈ Hit<sub>G</sub>(S), we have 𝕏<sub>g<sub>y</sub></sub>(f<sub>x</sub>)\|\[ρ\] = Σ<sub>p∈x♯y</sub> (sign p) 𝖡(f̂(ρ(x<sub>p</sub>)), ĝ(ρ(y<sub>p</sub>))).”
+
+**Sources:**
+
+- [W. M. Goldman, Invariant functions on Lie groups and Hamiltonian flows of surface group representations, Invent. Math. 85 (1986) 263–302](https://doi.org/10.1007/BF01389091)
+
+### Higgs fields as cotangent vectors make Hitchin's phase space symplectic
+
+**Remember:** Twisting by the canonical bundle turns endomorphisms into cotangent vectors.
+
+*True by definition.* MSC 53D30 (Symplectic structures of moduli spaces), 14H60, 37J35. arXiv math.AG, math.SG. Level 4: research.
+
+**Definition.** Over a Riemann surface of genus g ≥ 2, a Higgs field on a bundle F is a holomorphic section Φ of End(F) ⊗ K. Here K is the bundle of (1,0)-forms, and F is stable when proper subbundles have smaller degree per rank. Serre duality makes H⁰(End(F) ⊗ K) dual to H¹(End(F)), the tangent space of the stable moduli.
+
+**Problem.** A stable bundle F with a Higgs field Φ is a cotangent vector at F to the moduli space N of stable bundles. So T\*N, with its canonical symplectic form, is dense and open in the Higgs moduli space.
+
+**How the definition helps.** Because a Higgs field is an endomorphism twisted by K, Serre duality makes it a cotangent vector, and the canonical symplectic form comes free (our own). In the gauge-theory definition, Φ is part of a solution of Hitchin's equations, and this cotangent picture is hidden (our own). The hard part, that the coefficients of the characteristic polynomial of Φ Poisson commute, is Hitchin's theorem (our own).
+
+**Wikipedia:** [Hitchin system](https://en.wikipedia.org/wiki/Hitchin_system). It says: “which by Serre duality is dual to Φ ∈ H⁰(End(F) ⊗ K), where K is the canonical bundle, so a pair (F, Φ) called a Hitchin pair or Higgs bundle, defines a point in the cotangent bundle.”
+
+**Sources:**
+
+- [N. J. Hitchin, Stable bundles and integrable systems, Duke Math. J. 54 (1987) 91–114](https://doi.org/10.1215/S0012-7094-87-05408-1)
+
+### Moduli of sheaves on Calabi–Yau n-folds are (2 − n)-shifted symplectic
+
+**Remember:** Serre duality on a Calabi–Yau is already a shifted symplectic pairing.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D30 (Symplectic structures of moduli spaces), 14A30, 14D20. arXiv math.AG, math.SG. Level 4: research.
+
+**Definition.** An n-shifted symplectic structure on a derived stack is a closed 2-form of degree n. Its pairing identifies the tangent complex with the cotangent complex shifted by n. Its closedness is extra data given up to homotopy, not only a property.
+
+**Problem.** For a smooth projective Calabi–Yau variety X of dimension n, the derived stack of perfect complexes on X is (2 − n)-shifted symplectic. This covers sheaves, recovering Mukai's form on K3 surfaces and, for n = 3, the symmetric obstruction theories of Donaldson–Thomas theory.
+
+**How the definition helps.** The tangent complex at E is RHom(E, E)\[1\], and Serre duality pairs Extⁱ with Extⁿ⁻ⁱ, which is nondegeneracy in degree 2 − n (our own). The work moves into closedness, which Pantev, Toën, Vaquié and Vezzosi get by integrating a class over X (our own). The shifted definition lets one statement cover every n, where before K3 surfaces and threefolds were treated separately (our own).
+
+**Paper or page:** [Moduli of sheaves on fourfolds as derived Lagrangian intersections](https://arxiv.org/abs/2403.00727). It says: “Let X be a smooth Calabi-Yau variety of dimension n. Then the derived stack 𝓜<sup>d</sup>(X) has a canonical (2−n)-shifted symplectic structure.”
+
+**Sources:**
+
+- [T. Pantev, B. Toën, M. Vaquié, G. Vezzosi, Shifted symplectic structures, Publ. Math. IHÉS 117 (2013) 271–328](https://doi.org/10.1007/s10240-013-0054-1)
+- [S. Mukai, Symplectic structure of the moduli space of sheaves on an abelian or K3 surface, Invent. Math. 77 (1984) 101–116](https://doi.org/10.1007/BF01389137)
+
+### Shifted symplectic structures make Lagrangian intersections symplectic, one degree lower
+
+**Remember:** Up to homotopy, two Lagrangians always meet in a shifted symplectic space.
+
+*Makes the theorem clean to state or prove.* MSC 53D30 (Symplectic structures of moduli spaces), 14A30. arXiv math.AG, math.SG. Level 4: research.
+
+**Definition.** A derived stack is a space that keeps, in chain complexes, the data lost at non-transverse intersections. An n-shifted symplectic structure on it is a closed 2-form of degree n that identifies the tangent complex with the cotangent complex shifted by n. A Lagrangian structure on a map into it is a homotopy that trivialises the pulled-back form, with a similar nondegeneracy condition.
+
+**Problem.** The derived intersection of two Lagrangians in an n-shifted symplectic derived stack is (n − 1)-shifted symplectic. So two Lagrangian submanifolds of a symplectic manifold always meet in a (−1)-shifted symplectic derived space, even without transversality.
+
+**How the definition helps.** Closedness and nondegeneracy are asked only up to homotopy, so the two trivialising homotopies glue into a closed form on the fibre product (our own). Nondegeneracy is then a short check with exact triangles (our own). Classically a non-transverse intersection is a singular set with no symplectic form, so the theorem cannot even be stated (our own).
+
+**Paper or page:** [Moduli of sheaves on fourfolds as derived Lagrangian intersections](https://arxiv.org/abs/2403.00727). It says: “Let F be an n-shifted symplectic derived Artin stack and X → F, Y → F two morphisms of derived Artin stacks carrying Lagrangian structures. Then the derived stack X ×ʰ<sub>F</sub> Y has a canonical (n−1)-shifted symplectic structure.”
+
+**Sources:**
+
+- [T. Pantev, B. Toën, M. Vaquié, G. Vezzosi, Shifted symplectic structures, Publ. Math. IHÉS 117 (2013) 271–328](https://doi.org/10.1007/s10240-013-0054-1)
+
+### A circle-valued contact coordinate blocks the scaling that squeezes everything
+
+**Remember:** A periodic vertical coordinate cannot be rescaled.
+
+*Rules out counterexamples.* MSC 53D35 (Global theory of symplectic and contact manifolds), 53D10. arXiv math.SG. Level 4: research.
+
+**Definition.** Contact non-squeezing is posed in ℝ²ⁿ × S¹ with the contact form dz − Σ yᵢ dxᵢ, where the coordinate z is read modulo 1. A contact isotopy is a family of diffeomorphisms that keep the kernel of this form. Because z lives on a circle, no map can rescale z.
+
+**Problem.** If 1 ≤ πr² &lt; πR², no compactly supported contact isotopy moves B(R) × S¹ into B(r) × S¹, for balls B in ℝ²ⁿ. In ℝ²ⁿ × ℝ, by contrast, every bounded domain can be squeezed into any small ball.
+
+**How the definition helps.** On ℝ²ⁿ × ℝ the contact map (x, y, z) ↦ (εx, εy, ε²z) squeezes every bounded domain, but it is not defined when z is periodic (our own). With z on a circle, Chiu proved non-squeezing for 1 ≤ πr² &lt; πR². For n ≥ 2, Eliashberg, Kim and Polterovich squeezed balls with πR² &lt; 1, so some lower bound on the radii is needed (our own).
+
+**nLab:** [Gromov's non-squeezing theorem](https://ncatlab.org/nlab/show/Gromov%27s+non-squeezing+theorem). It says: “if R and r satisfy 1 ≤ πr² &lt; πR², then it is impossible to squeeze the contact ball B<sub>R</sub>×S¹ into B<sub>r</sub>×S¹ via compactly supported contact isotopies.”
+
+**Sources:**
+
+- [S.-F. Chiu, Nonsqueezing property of contact balls, Duke Math. J. 166 (2017), 605–655](https://doi.org/10.1215/00127094-3715517)
+- [Y. Eliashberg, S. S. Kim and L. Polterovich, Geometry of contact transformations and domains: orderability versus squeezing, Geom. Topol. 10 (2006), 1635–1747](https://doi.org/10.2140/gt.2006.10.1635)
+
+### Conjugation invariance makes a norm on Ham all or nothing
+
+**Remember:** Conjugation invariance makes the elements of norm zero a normal subgroup.
+
+*True by definition. Confidence: medium.* MSC 53D35 (Global theory of symplectic and contact manifolds), 53D22. arXiv math.SG. Level 4: research.
+
+**Definition.** A pseudo-norm on the group Ham(M) of Hamiltonian diffeomorphisms is a function ‖·‖ ≥ 0 with ‖id‖ = 0, ‖φ⁻¹‖ = ‖φ‖ and ‖φψ‖ ≤ ‖φ‖ + ‖ψ‖. It is conjugation invariant if ‖ψφψ⁻¹‖ = ‖φ‖ for every ψ, and a norm if it is positive away from the identity.
+
+**Problem.** On a closed symplectic manifold M, a conjugation-invariant pseudo-norm on Ham(M) either is a norm or vanishes everywhere. So one element of positive norm proves that it is a norm.
+
+**How the definition helps.** The elements of norm zero form a normal subgroup, by the triangle inequality, symmetry and conjugation invariance (our own). So the work moves from checking elements one by one into Banyaga's theorem that Ham(M) is simple, and this subgroup is trivial or everything. Eliashberg and Polterovich used this to show that the analogues of Hofer's norm built from Lᵖ norms with p finite vanish everywhere (our own).
+
+**Wikipedia:** [Symplectomorphism](https://en.wikipedia.org/wiki/Symplectomorphism). It says: “Groups of Hamiltonian diffeomorphisms are simple, by a theorem of Banyaga. They have natural geometry given by the Hofer norm.”
+
+**Sources:**
+
+- [Y. Eliashberg and L. Polterovich, Bi-invariant metrics on the group of Hamiltonian diffeomorphisms, Internat. J. Math. 4 (1993), 727–738](https://doi.org/10.1142/s0129167x93000352)
+- [A. Banyaga, Sur la structure du groupe des difféomorphismes qui préservent une forme symplectique, Comment. Math. Helv. 53 (1978), 174–227](https://doi.org/10.1007/bf02566074)
+
+### Cone twists give Seidel's exact sequence
+
+**Remember:** A cone comes with its exact triangle for free.
+
+*True by definition.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** Let S be a Lagrangian sphere. The algebraic twist of L along S is the mapping cone of the evaluation map HF(S, L) ⊗ S → L. The cone is formed among twisted complexes, which are formal iterated cones of Lagrangians.
+
+**Problem.** Let τ be the Dehn twist along an exact Lagrangian sphere S in an exact symplectic manifold, a symplectic map supported near S. For exact Lagrangians L and L̃, there is a long exact sequence HF(S, L) ⊗ HF(L̃, S) → HF(L̃, L) → HF(L̃, τ(L)) → ….
+
+**How the definition helps.** Every mapping cone sits in an exact triangle, and HF(L̃, −) turns an exact triangle into a long exact sequence (our own). So once τ(L) is known to be isomorphic to the algebraic twist, the sequence is formal (our own). Seidel's 2003 paper proved the sequence directly, and the cone statement, which needs more work with Lefschetz fibrations, is in his book (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2), [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2). It says: “Consequently, application of HF(L̃,□) respectively HF(□,L̃) yields long exact sequences”
+
+**Sources:**
+
+- [P. Seidel, A long exact sequence for symplectic Floer cohomology, Topology 42 (2003) 1003–1063](https://doi.org/10.1016/S0040-9383(02)00028-9)
+- [P. Seidel, Fukaya Categories and Picard–Lefschetz Theory, Zurich Lectures in Advanced Mathematics, EMS, 2008](https://doi.org/10.4171/063)
+
+### Convex collars keep null-homologous curves inside
+
+**Remember:** A convex boundary pushes holomorphic curves back inside.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A domain W in X has a convex collar when, near its boundary, it looks like part of a symplectization with radial coordinate r. A symplectization of a contact manifold (Y, α) is (0, ∞) × Y with the form d(rα). There J must be of contact type, which makes r plurisubharmonic.
+
+**Problem.** Let W ⊂ X have a convex collar. Then a J-holomorphic curve with boundary in W and zero class in H₂(X, W) lies entirely in W.
+
+**How the definition helps.** Since \[u\] = 0 in H₂(X, W), Stokes' theorem gives the area of u beyond a collar level as an integral on that level (our own). Convexity of J makes that boundary integral at most zero, so the part outside has zero energy and is constant (our own). Without a convex collar, disks with boundary in W can leave W, so the exact category of W inside X could depend on X (our own).
+
+**Paper or page:** [Constructing the relative Fukaya category](https://arxiv.org/abs/2203.15482v2). It says: “Suppose that (W ⊂ X,J) admits a convex collar, and u: (Σ,∂Σ) → (X,W) is a J-holomorphic curve such that \[u\] = 0 in H₂(X,W). Then u is contained in W.”
+
+**Sources:**
+
+- [T. Perutz and N. Sheridan, Constructing the relative Fukaya category, arXiv:2203.15482 (2023)](https://arxiv.org/abs/2203.15482v2)
+
+### Disk-count summands sit at eigenvalues of c₁
+
+**Remember:** Sort Lagrangians by how many small disks pass through each point.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D45. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian L is monotone when disk area is a fixed positive multiple of the Maslov index, a winding number of the disk's boundary. Then w(L), the count of Maslov index 2 disks through a point of L, is a well-defined number. The w-summand of the monotone Fukaya category contains the Lagrangians with w(L) = w.
+
+**Problem.** In a compact monotone symplectic manifold, a nonzero w-summand forces w to be an eigenvalue of quantum multiplication by the first Chern class c₁.
+
+**How the definition helps.** The closed–open map from quantum cohomology to HF(L, L) is a unital ring map that sends c₁ to w(L) times the unit (our own). If w were not an eigenvalue, c₁ − w would be invertible yet map to zero, killing the unit of HF(L, L) (our own). The real work is the computation that the closed–open map sends c₁ to the disk count (our own).
+
+**Paper or page:** [Disk potential functions for quadrics](https://arxiv.org/abs/2107.05839v2). It says: “The w-summand Fuk<sub>w</sub>(X) of the monotone Fukaya category is trivial if w is not an eigenvalue of the quantum cup product c₁(TX) ⋆ in QH(X).”
+
+**Sources:**
+
+- [N. Sheridan, On the Fukaya category of a Fano hypersurface in projective space, Publ. Math. IHÉS 124 (2016) 165–317](https://doi.org/10.1007/s10240-016-0082-8)
+
+### Divisor weights recover the affine Fukaya category
+
+**Remember:** Set the divisor variables to zero, and only disks avoiding D survive.
+
+*True by definition.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 14J33. arXiv math.SG, math.AG. Level 4: research.
+
+**Definition.** The relative Fukaya category of a smooth projective variety X with a divisor D weights each holomorphic disk u by rᵏ. Here k = u·D is the intersection number of u with D. The category is linear over a power series ring R, with maximal ideal 𝔪.
+
+**Problem.** Modulo 𝔪, the relative Fukaya category is strictly isomorphic to the exact Fukaya category of W, the complement of a neighbourhood of D.
+
+**How the definition helps.** Positivity of intersections gives u·D ≥ 0, with equality only if u misses D, so reduction modulo 𝔪 keeps only disks missing D (our own). A convex collar then keeps such disks inside W, so they are the disks of the exact category (our own). Over the Novikov ring, the same reduction would keep only disks of zero area, which is why the weights must come from D (our own).
+
+**Paper or page:** [Constructing the relative Fukaya category](https://arxiv.org/abs/2203.15482v2), [Constructing the relative Fukaya category](https://arxiv.org/abs/2203.15482v2). It says: “There is a strict isomorphism ℱ(W ⊂ X,ω,θ,V,J₀) ⊗<sub>R</sub> R/𝔪 ≃ ℱ(W,θ).”
+
+**Sources:**
+
+- [T. Perutz and N. Sheridan, Constructing the relative Fukaya category, arXiv:2203.15482 (2023)](https://arxiv.org/abs/2203.15482v2)
+
+### Immersed correspondences compose within the class
+
+**Remember:** Let compositions be immersed, and correspondences compose within the class.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian correspondence from X₁ to X₂ is a Lagrangian in X₁ × X₂ with the form of X₁ negated. Fukaya takes as morphisms immersed correspondences with clean self-intersection, each with a bounding cochain, a solution of the Maurer–Cartan equation that cancels disk bubbling.
+
+**Problem.** Let L₁ and the correspondence L₁₂ be unobstructed, and let their fibre product over X₁ be a self-clean immersion into X₂. Then the composition is unobstructed, with a bounding cochain built from those of L₁ and L₁₂.
+
+**How the definition helps.** The composition of two embedded correspondences is in general only immersed, so embedded correspondences are not closed under composition (our own). With immersed objects, Fukaya's theorem shows that a self-clean composition is again an unobstructed object. Wehrheim and Woodward avoid the same problem with formal chains of correspondences (our own).
+
+**nLab:** [Lagrangian correspondence](https://ncatlab.org/nlab/show/Lagrangian+correspondence). It says: “which is itself a Lagrangian correspondence in X⁻₀ × X₂ if everything is suitably smoothly embedded by π₀₂.”
+
+**Paper or page:** [Unobstructed Immersed Lagrangian Correspondence and Filtered A∞ Functor](https://arxiv.org/abs/1706.02131v6). It says: “If L₁ and L₁₂ are unobstructed and the immersion L̃₁ ×<sub>X</sub>₁ L̃₁₂ → X₂ is self-clean, then L₁ ×<sub>X</sub>₁ L₁₂ is also unobstructed.”
+
+**Sources:**
+
+- [K. Fukaya, Unobstructed immersed Lagrangian correspondence and filtered A∞ functor, SIGMA 21 (2025) 031](https://doi.org/10.3842/SIGMA.2025.031)
+- [K. Wehrheim and C. T. Woodward, Functoriality for Lagrangian correspondences in Floer theory, Quantum Topol. 1 (2010) 129–170](https://doi.org/10.4171/QT/4)
+
+### Liouville sectors make wrapped categories covariant
+
+**Remember:** Near its boundary, a sector looks like a half-plane times something.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Liouville sector is an exact symplectic manifold with boundary and a convex end at infinity, with a condition on its boundary. A proposition shows that near the boundary it splits as F times the right half-plane, for a Liouville manifold F. Its wrapped Fukaya category uses Lagrangians that go to infinity, with morphisms computed after pushing them along a flow at infinity.
+
+**Problem.** An inclusion of Liouville sectors X ⊂ Y induces a functor from the wrapped Fukaya category of X to that of Y.
+
+**How the definition helps.** The splitting lets one choose an almost complex structure for which the projection to the half-plane is holomorphic near the boundary (our own). The maximum principle keeps disks on Lagrangians in X away from the boundary, so Y counts the same disks and inclusion gives a functor (our own). For Liouville domains without such a boundary, inclusions give Viterbo restriction functors, which go in the opposite direction (our own).
+
+**Paper or page:** [Mirror Symmetry for Truncated Cluster Varieties](https://arxiv.org/abs/2103.12232v4), [Sectorial covers over fanifolds](https://arxiv.org/abs/2310.10084v2). It says: “The wrapped Fukaya category is covariantly functorial for inclusions of Liouville sectors: a Liouville subsector i: X ⊂ Y induces a functor i: 𝒲(X) → 𝒲(Y).”
+
+**Sources:**
+
+- [S. Ganatra, J. Pardon and V. Shende, Covariantly functorial wrapped Floer theory on Liouville sectors, Publ. Math. IHÉS 131 (2020) 73–200](https://doi.org/10.1007/s10240-019-00112-x)
+
+### Open–closed maps hitting the unit split-generate
+
+**Remember:** If the unit comes from 𝒞, every identity factors through 𝒞.
+
+*Makes the theorem clean to state or prove.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** The open–closed map sends the Hochschild homology of a subcategory 𝒞 to quantum cohomology, the cohomology of X with a product that counts holomorphic spheres. Hochschild homology is built from cyclic chains of composable morphisms. Split-generation means that every object is a direct summand of an iterated cone of objects of 𝒞.
+
+**Problem.** Let ℱ be the big relative Fukaya category of X relative to a divisor D, with bounding cochains, as built in the source. If the open–closed map on the Hochschild homology of a subcategory 𝒞 hits the unit of quantum cohomology, then 𝒞 split-generates ℱ.
+
+**How the definition helps.** The closed–open map sends the unit to the identity of each object L, and it is compatible with the open–closed map (our own). If the unit comes from 𝒞, the identity of L factors through 𝒞, so L is a summand of a twisted complex over 𝒞 (our own). This is Abouzaid's generation criterion, first proved for wrapped Fukaya categories, and its algebraic core appears as a lemma in the source (our own).
+
+**Paper or page:** [Constructing the big relative Fukaya category, and its open--closed maps](https://arxiv.org/abs/2511.01656v1), [Constructing the big relative Fukaya category, and its open--closed maps](https://arxiv.org/abs/2511.01656v1). It says: “If 𝒞 ⊂ ℱᵇⁱᵍ(X,D;S)ᵇᶜ is a subcategory such that the unit e ∈ QH⁰(X;S) lies in the image of 𝒪𝒞\|HH\_\*(𝒞), then 𝒞 split-generates ℱᵇⁱᵍ(X,D;S)ᵇᶜ.”
+
+**Sources:**
+
+- [M. Abouzaid, A geometric criterion for generating the Fukaya category, Publ. Math. IHÉS 112 (2010) 191–240](https://doi.org/10.1007/s10240-010-0028-5)
+
+### Sectorial covers glue wrapped Fukaya categories
+
+**Remember:** Cut a sector into sectors, and the categories glue back.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Weinstein sectorial cover of a Liouville sector X is a cover by Liouville subsectors U₁, …, Uₙ whose intersections are again Liouville sectors. The pieces must also be Weinstein, a condition on how they are built from handles (our own). Because every piece and every intersection is a sector, inclusions among them give a diagram of wrapped Fukaya categories.
+
+**Problem.** Take a Weinstein sectorial cover of X. Then the homotopy colimit of the wrapped Fukaya categories of all intersections of pieces maps by an equivalence to the wrapped Fukaya category of X.
+
+**How the definition helps.** Covariant functoriality for sectors turns the cover into a diagram of categories, so the gluing statement makes sense (our own). This makes precise the idea that the wrapped Fukaya category is local, like a cosheaf (our own). The work is the proof by Ganatra, Pardon and Shende that the colimit map is an equivalence.
+
+**Paper or page:** [Mirror Symmetry for Truncated Cluster Varieties](https://arxiv.org/abs/2103.12232v4). It says: “The wrapped Fukaya category satisfies descent for Weinstein sectorial covers”
+
+**Sources:**
+
+- [S. Ganatra, J. Pardon and V. Shende, Sectorial descent for wrapped Fukaya categories, J. Amer. Math. Soc. 37 (2024) 499–635](https://doi.org/10.1090/jams/1035)
+
+### Spin structures orient index bundles
+
+**Remember:** Trivialize TL on the 2-skeleton, and disk moduli get signs.
+
+*True by definition. Confidence: medium.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A spin structure on L is a stable trivialization of its tangent bundle over the 2-skeleton, up to homotopy. It exists exactly when the Stiefel–Whitney classes w₁(L) and w₂(L) vanish. Ind is the index bundle, kernels minus cokernels, of a family of Cauchy–Riemann operators on disks with boundary on L.
+
+**Problem.** If L is spin, the index bundle of the Cauchy–Riemann operators with boundary on L is orientable.
+
+**How the definition helps.** A spin structure stably trivializes TL over the 2-skeleton, and this trivializes the boundary data over each loop of disks, which decides orientability (our own). Proposition 3.13 of the source turns a stable trivialization of boundary data into one of the index bundle, and that is the real work (our own). Defining spin by w₁ = w₂ = 0 only says that such a trivialization exists (our own).
+
+**Paper or page:** [Families of relatively exact Lagrangians, free loop spaces and generalised homology](https://arxiv.org/abs/2202.09677v2), [Families of relatively exact Lagrangians, free loop spaces and generalised homology](https://arxiv.org/abs/2202.09677v2). It says: “If L admits a spin structure, Ind and Ind − π\*TL are orientable.”
+
+**Sources:**
+
+- [N. W. Porcelli, Families of relatively exact Lagrangians, free loop spaces and generalised homology, Selecta Math. 30 (2024)](https://doi.org/10.1007/s00029-023-00910-6)
+
+### Twists composing to a shift split-generate
+
+**Remember:** Split-generation counts an object as built when it is a summand.
+
+*Makes the theorem clean to state or prove.* MSC 53D37 (Symplectic aspects of mirror symmetry, homological mirror symmetry, and Fukaya category), 18G80. arXiv math.SG. Level 4: research.
+
+**Definition.** A triangulated A∞ category is one closed under shifts and cones. Objects Y₁, …, Yₘ split-generate it when every object is a direct summand of an iterated cone of them. The twist T along Y fits into an exact triangle hom(Y, X) ⊗ Y → X → T(X).
+
+**Problem.** Let 𝒜 be a split-closed triangulated A∞ category with finite-dimensional morphism spaces. If the composite of the twists along Y₁, …, Yₘ sends each object X to a nonzero shift of X, then the Yᵢ split-generate 𝒜.
+
+**How the definition helps.** The natural map f from X to its composite twist X\[σ\] has a cone built from the Yᵢ (our own). Finite-dimensional morphism spaces force some power of f to vanish, and the octahedral axiom then builds X\[1\] ⊕ X\[Nσ\] from the Yᵢ (our own). So X appears only as a direct summand, which is why the conclusion is split-generation (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931v2). It says: “Suppose 𝒜 is readily split-closed and there are Y₁,...,Yₘ ∈ obj(𝒜), σ ≠ 0 such that (T<sub>Y</sub>₁ ∘ ... ∘ T<sub>Y</sub>ₘ)(X) ≅ S<sup>σX</sup> ∈ obj(H⁰(𝒜)) for all X ∈ obj(𝒜). Then {Y₁,...,Yₘ} split-generates 𝒜.”
+
+**Sources:**
+
+- [P. Seidel, Fukaya Categories and Picard–Lefschetz Theory, Zurich Lectures in Advanced Mathematics, EMS, 2008](https://doi.org/10.4171/063)
+
+### Action-filtered Floer cohomology bounds the Lagrangian Hofer distance from below
+
+**Remember:** A spectral invariant records the action where a Floer class appears.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** The spectral invariant of a Floer class α is the least action level where a cycle representing α appears. Here the Floer complex of (L, L′) is filtered by action. The spectral norm γ(L, L′) is the difference between the invariants of the fundamental class and the point class.
+
+**Problem.** Let L and L′ be curves on the cylinder T\*S¹, Hamiltonian isotopic to the zero circle and meeting transversally in 2n points. Then γ(L, L′) ≤ d(L, L′) ≤ 2ⁿγ(L, L′), where d is the least Hofer length of a Hamiltonian carrying L to L′.
+
+**How the definition helps.** A continuation map for H moves each spectral invariant by at most the time integral of max H, or of −min H (our own). So γ changes by at most the Hofer length of H, and γ(L, L) = 0, which gives the lower bound (our own). The upper bound on the cylinder needs a separate argument with disks between curves (our own).
+
+**Paper or page:** [Bounding the Lagrangian Hofer metric via barcodes](https://arxiv.org/abs/2304.05628). It says: “For any L,L′ as above γ(L,L′) ≤ d<sub>H</sub>(L,L′) ≤ 2ⁿγ(L,L′).”
+
+**Sources:**
+
+- [Bounding the Lagrangian Hofer metric via barcodes, arXiv:2304.05628](https://arxiv.org/abs/2304.05628)
+
+### Boundary depth as the longest finite bar makes it Hofer-Lipschitz
+
+**Remember:** Boundary depth is how long the longest dying class lives.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 55N31. arXiv math.SG, math.AT. Level 4: research.
+
+**Definition.** The boundary depth β is the least number such that each boundary bounds a chain at most β higher in action level. Filtered homology is a persistence module, a vector space for each level with maps as the level grows. Its barcode lists when classes are born and die, and β is the length of the longest finite bar.
+
+**Problem.** If two persistence modules are δ-interleaved, their boundary depths differ by at most 2δ. So the boundary depth of Floer homology changes by at most twice the Hofer distance between the Hamiltonians (our own).
+
+**How the definition helps.** A δ-interleaving, made of maps both ways that shift levels by δ, changes the longest finite bar by at most 2δ (our own). Usher's chain-level definition needed a direct argument, and the barcode moves that work into the theorem that Floer–Novikov complexes have barcodes (our own). Usher also proved that boundary depth is always finite.
+
+**Paper or page:** [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991), [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991). It says: “Suppose V, W are δ-interleaved persistence modules. Suppose V has finite boundary depth. Then W has finite boundary depth and β(W) ≤ β(V) + 2δ.”
+
+**Sources:**
+
+- [M. Usher, Spectral numbers in Floer theories, Compositio Math. 144 (2008) 1581–1592](https://doi.org/10.1112/S0010437X08003564)
+- [M. Usher and J. Zhang, Persistent homology and Floer–Novikov theory, Geom. Topol. 20 (2016) 3333–3430](https://doi.org/10.2140/gt.2016.20.3333)
+
+### Bulk deformations find rigid Lagrangians that ordinary Floer cohomology misses
+
+**Remember:** Bulk deformations reweight disks by how they meet a cycle.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** A bulk deformation is a cycle 𝔟 in M with Novikov coefficients, inserted at interior marked points of the disks that define Floer operations. The bulk-deformed potential counts Maslov-index-2 disks with extra weights from their intersections with 𝔟.
+
+**Problem.** Suppose the bulk-deformed potential of a Lagrangian L has a critical point up to terms of order T to the E′. Then every Hamiltonian that displaces L has energy at least E′, in a weighted Hofer norm.
+
+**How the definition helps.** Such a critical point keeps the deformed Floer cohomology of L nonzero up to order T to the E′, and cheaper displacement kills it (our own). The extra weights add terms to the potential, which can create critical points where the ordinary potential has none (our own). FOOO used exact critical points of this kind to find a continuum of nondisplaceable torus fibres (our own).
+
+**Paper or page:** [Displacement energy of Lagrangian 3-spheres](https://arxiv.org/abs/1911.03516), [Displacement energy of Lagrangian 3-spheres](https://arxiv.org/abs/1911.03516). It says: “potential function PO<sup>(cy,b)</sup>(ρ) for L has a critical point for some (b, ρ) modulo T<sup>E′</sup>, E′ ≤ 2E. If there is a Hamiltonian G<sub>t</sub> with time-1 flow φ such that L∩φ(L)=∅ then it satisfies that \|\|G<sub>t</sub>\|\|<sub>X</sub> + 2\|\|G<sub>t</sub>\|\|<sub>S</sub> ≥ E′.”
+
+**Sources:**
+
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory on compact toric manifolds II: bulk deformations, Selecta Math. 17 (2011) 609–711](https://doi.org/10.1007/s00029-011-0057-z)
+- [Displacement energy of Lagrangian 3-spheres, arXiv:1911.03516](https://arxiv.org/abs/1911.03516)
+
+### Counting fixed points homologically extends the Hofer–Zehnder dichotomy to degenerate maps
+
+**Remember:** A fixed point counts as much as its local Floer homology.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 37J11, 37C25. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** The homological count of fixed points of φ adds, over its isolated fixed points, the dimension of local Floer homology. Local Floer homology is Floer homology built only from orbits near one fixed point. A nondegenerate fixed point counts once, and a degenerate one can count zero or several times.
+
+**Problem.** Let φ be a Hamiltonian diffeomorphism with isolated fixed points on a compact toric symplectic manifold. If the homological count exceeds the total rank of homology, φ has infinitely many simple periodic points.
+
+**How the definition helps.** In Bai and Xu's toric Floer theory, the homological count equals the number of endpoints of bars, which are birth–death intervals (our own). A count above the total rank therefore forces finite bars, and Shelukhin's barcode argument for prime iterates then gives infinitely many periodic points (our own). The homological count lets the theorem cover degenerate maps, for which a plain count is harder to control (our own).
+
+**Paper or page:** [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991), [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991). It says: “If the number of fixed points of φ, counted homologically, is greater than the total rank of homology of X, then φ has infinitely many simple periodic points.”
+
+**Sources:**
+
+- [S. Bai and G. Xu, Franks' dichotomy for toric manifolds, Hofer–Zehnder conjecture, and gauged linear sigma model, arXiv:2309.07991](https://arxiv.org/abs/2309.07991) (link not checked)
+- [E. Shelukhin, On the Hofer–Zehnder conjecture, Ann. of Math. 195 (2022) 775–839](https://doi.org/10.4007/annals.2022.195.3.1)
+
+### Critical points of the disk potential give torus fibres nonzero Floer cohomology
+
+**Remember:** A critical point of the potential pins its torus fibre down.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12, 14M25. arXiv math.SG. Level 4: research.
+
+**Definition.** The potential W of a torus fibre L is a function of b in H¹(L; Λ₀). Here Λ₀ holds series in powers of T with nonnegative exponents tending to infinity. W sums, over Maslov-index-2 disk classes β, the disk count through a point, times T to the area, times exp⟨∂β, b⟩.
+
+**Problem.** If b is a critical point of W, the deformed Floer cohomology HF((L,b),(L,b)) is isomorphic to H(Tⁿ), so no Hamiltonian diffeomorphism displaces L. In every compact toric manifold with a rational symplectic form, some fibre has this isomorphism modulo every power of T.
+
+**How the definition helps.** Differentiating the curvature Σ mₖ(b,…,b) in b gives the deformed differential on degree-one classes, so it is dW (our own). The product rule for the deformed operations then kills the differential on all of H(Tⁿ), which degree-one classes generate (our own). On S², a circle cutting areas a and c has W = Tᵃy + Tᶜy⁻¹, which has a valuation-zero critical point only if a = c (our own).
+
+**Paper or page:** [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703), [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703). It says: “Assume the Kähler form ω of X is rational. Then, there exists u ∈ Int P such that for any N ∈ ℝ₊ there exists x ∈ H¹(L(u);Λ₀<sup>ℝ</sup>) with HF((L(u),x),(L(u),x);Λ₀<sup>ℝ</sup>/(T<sup>N</sup>)) ≅ H(Tⁿ;ℝ) ⊗\_ℝ Λ₀<sup>ℝ</sup>/(T<sup>N</sup>).”
+
+**Sources:**
+
+- [C.-H. Cho, Y.-G. Oh, Floer cohomology and disc instantons of Lagrangian torus fibers in Fano toric manifolds, Asian J. Math. 10 (2006) 773–814](https://doi.org/10.4310/AJM.2006.v10.n4.a10)
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory on compact toric manifolds I, arXiv:0802.1703](https://arxiv.org/abs/0802.1703)
+
+### Defining the potential by disk counts makes toric mirror symmetry statable
+
+**Remember:** The symplectic disk count is the mirror's Landau–Ginzburg function.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D37, 14J33. arXiv math.SG, math.AG. Level 4: research.
+
+**Definition.** Let X be a compact toric manifold that is Fano, meaning its first Chern class is positive. The potential PO of its torus fibres L(u) is a function of the position u and of b in H¹(L(u); Λ₀). It counts Maslov-index-2 holomorphic disks, and for Fano X there is one such disk class per facet of the polytope.
+
+**Problem.** For a Fano compact toric manifold X, ring maps from QH(X) to the Novikov field match the pairs (L(u), b) with nonzero Floer cohomology. When QH(X) is semisimple, the number of such pairs equals the total Betti number of X.
+
+**How the definition helps.** The disk definition makes the critical points of PO exactly the pairs with nonzero Floer cohomology, so one side of the theorem is geometric (our own). The work moves into FOOO's isomorphism of QH(X) with the Jacobian ring of PO, whose points are the critical points (our own). Givental and Hori–Vafa wrote the same function from the polytope; the disk definition explains why it is the mirror potential (our own).
+
+**Paper or page:** [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703), [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703). It says: “If X is a Fano toric manifold then Spec(QH(X;Λ))(Λ<sup>ℂ</sup>) ≅ 𝔐(𝔏𝔞𝔤(X)).”
+
+**Sources:**
+
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory on compact toric manifolds I, Duke Math. J. 151 (2010) 23–175, arXiv:0802.1703](https://arxiv.org/abs/0802.1703)
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory and mirror symmetry on compact toric manifolds, Astérisque (2018)](https://doi.org/10.24033/ast.978)
+
+### Energy-weighted Novikov coefficients make Floer differentials converge
+
+**Remember:** Energy becomes the exponent, so high-energy strips count as small.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology). arXiv math.SG. Level 4: research.
+
+**Definition.** The universal Novikov field Λ consists of formal sums of terms aᵢ times T to the power λᵢ, with real λᵢ tending to infinity. The Floer differential weights each holomorphic strip by T raised to the strip's energy.
+
+**Problem.** Let L₀ and L₁ be Lagrangians such that every disk with boundary on L₀ or on L₁ has zero area. With coefficients in Λ, their Floer differential is well defined and squares to zero, even when infinitely many strip classes join two points.
+
+**How the definition helps.** Gromov compactness leaves only finitely many rigid strips below each energy level, which is exactly the finiteness condition that defines Λ (our own). With integer coefficients one needs a bound on energy, such as monotonicity gives (our own). The work moves into Gromov compactness for strips; asphericity then rules out the bubbles that would spoil ∂² = 0 (our own).
+
+**Paper or page:** [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931), [Towards Homological Mirror Symmetry](https://arxiv.org/abs/2108.03931). It says: “Let (M,ω) be a symplectic manifold, L₀,L₁ ⊂ M Lagrangian submanifolds such that ⟨ω⟩ · π₂(M,Lᵢ)=0 for i=0,1. Then ∂ is well defined and satisfies ∂²=0.”
+
+**Sources:**
+
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Intersection Floer Theory: Anomaly and Obstruction, AMS/IP Studies in Advanced Mathematics 46 (2009)](https://doi.org/10.1090/amsip/046.1)
+
+### Equal potential values make Floer cohomology of a pair well defined
+
+**Remember:** A weak bounding cochain leaves one number of curvature behind.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** A weak bounding cochain b on a Lagrangian L is an odd cochain of positive energy that makes Σₖ mₖ(b,…,b) a multiple of the unit. Here mₖ counts holomorphic disks on L with k inputs, and m₀ is the curvature. The multiple PO(b) is the potential value of b.
+
+**Problem.** For weak bounding cochains b on L and b′ on L′, the Floer operator on CF(L,L′) squares to ±(PO(b) − PO(b′)) times the identity. So the Floer cohomology of the pair is defined whenever PO(b) = PO(b′).
+
+**How the definition helps.** Each curvature is a multiple of the unit, so the bimodule A∞ relation makes the operator's square ±(PO(b) − PO(b′)) times the identity (our own). The strict Maurer–Cartan equation would demand zero curvature, which fails for most torus fibres; the weak equation leaves only one number (our own). For monotone Lagrangians, whose disk area is proportional to Maslov index, this is Oh's condition that the Maslov-two disk counts agree (our own).
+
+**Paper or page:** [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703). It says: “For each b ∈ M̂<sub>weak</sub>(L) and b′ ∈ M̂<sub>weak</sub>(L′), the map δ<sub>b</sub>,b′ defines a continuous map δ<sub>b</sub>,b′ : CF(L,L′) → CF(L,L′) that satisfies δ<sub>b</sub>,b′ δ<sub>b</sub>,b′ = 0, provided PO(b) = PO(b′).”
+
+**Sources:**
+
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Intersection Floer Theory: Anomaly and Obstruction, AMS/IP Studies in Advanced Mathematics 46 (2009)](https://doi.org/10.1090/amsip/046.1)
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory on compact toric manifolds I, arXiv:0802.1703](https://arxiv.org/abs/0802.1703)
+
+### Excluding nonpositive Maslov disks makes every degree-one class weakly unobstructed
+
+**Remember:** Degree counting leaves only Maslov-two disks, and they give multiples of one.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** Let Λ₊ be the Novikov ring of series in powers of T with positive exponents tending to infinity. A class b in H¹(L; Λ₊) is a weak bounding cochain when Σₖ mₖ(b,…,b) is a multiple of the unit. A disk of Maslov index μ, a winding number of its boundary tangent planes, contributes to this sum in degree 2 − μ.
+
+**Problem.** Let L be a closed Lagrangian that is relatively spin, a condition that gives disk counts signs. If L bounds no nonconstant holomorphic disk of Maslov index at most zero, every class in H¹(L; Λ₊) is a weak bounding cochain.
+
+**How the definition helps.** Degree counting does the work: disks of Maslov index four or more contribute in negative degree, so they give zero (our own). Maslov-two disks contribute in degree zero, which on a connected L means multiples of the unit; constant disks cancel by a separate symmetry argument (our own). The strict Maurer–Cartan equation would count the Maslov-two disks as obstructions, but the weak equation absorbs them into one number (our own).
+
+**Paper or page:** [Displacement energy of Lagrangian 3-spheres](https://arxiv.org/abs/1911.03516), [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703). It says: “For a closed smooth relative spin Lagrangian submanifold L, if L does not bound any non-constant J-holomorphic disk with non-positive Maslov index, then L is weakly unobstructed with respect to J.”
+
+**Sources:**
+
+- [Displacement energy of Lagrangian 3-spheres, arXiv:1911.03516](https://arxiv.org/abs/1911.03516)
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Floer theory on compact toric manifolds I, arXiv:0802.1703](https://arxiv.org/abs/0802.1703)
+
+### Free integral Floer complexes give a fixed-point bound that sees torsion
+
+**Remember:** Over the integers, each torsion generator costs two fixed points.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 37J11. arXiv math.SG. Level 4: research.
+
+**Definition.** An integral Floer complex of a nondegenerate Hamiltonian diffeomorphism φ is a cochain complex of free ℤ-modules with one generator per fixed point of φ. Its cohomology is H\*(M; ℤ). The minimal rank of M is the least total rank of a free ℤ-complex with cohomology H\*(M; ℤ).
+
+**Problem.** Every nondegenerate Hamiltonian diffeomorphism of a closed symplectic manifold M has at least as many fixed points as the minimal rank of M.
+
+**How the definition helps.** Once the Floer complex is free over ℤ with the right cohomology, the bound holds by the definition of minimal rank (our own). Each cyclic summand of the torsion needs one generator and one relation, so it adds two to the Betti sum (our own). The work is in building the integral complex, which needs smooth models of moduli spaces instead of rational virtual counts (our own).
+
+**Wikipedia:** [Arnold conjecture](https://en.wikipedia.org/wiki/Arnold_conjecture). It says: “Semon Rezchikov, Shaoyun Bai, and Guangbo Xu proved the case 𝔽=ℤ in 2022.”
+
+**Paper or page:** [Integral Arnol'd Conjecture](https://arxiv.org/abs/2209.11165), [Arnold conjecture over integers](https://arxiv.org/abs/2209.08599). It says: “is bounded below by the minimal rank of a cochain complex of free ℤ modules with cohomology isomorphic to H\*(M, ℤ).”
+
+**Sources:**
+
+- [S. Rezchikov, Integral Arnol'd conjecture, arXiv:2209.11165 (2022)](https://arxiv.org/abs/2209.11165)
+- [S. Bai and G. Xu, Arnold conjecture over integers, arXiv:2209.08599 (2022)](https://arxiv.org/abs/2209.08599)
+
+### Heavy and superheavy sets meet each other by definition
+
+**Remember:** A heavy set holds the averaged spectral invariant up from below.
+
+*True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D35. arXiv math.SG. Level 4: research.
+
+**Definition.** For an idempotent e in quantum cohomology, the spectral invariant c(e, H) is the action level where e appears in the Floer cohomology of H. Let ζ(H) be the limit of c(e, kH)/k. A closed set K is heavy if always ζ(H) ≥ min H on K, and superheavy if always ζ(H) ≤ max H on K.
+
+**Problem.** Every superheavy set meets every heavy set, so no Hamiltonian diffeomorphism displaces a superheavy set. A Lagrangian L with HF(L) ≠ 0 is heavy for e when CO(e) ≠ 0, where CO is the closed–open map into Floer cohomology.
+
+**How the definition helps.** Suppose a superheavy X and a heavy Y are disjoint, and H is 0 on X and 1 on Y; then 1 ≤ ζ(H) ≤ 0 (our own). Superheavy sets are heavy and ζ is invariant under Hamiltonian maps, so a superheavy set meets each of its images (our own). A direct proof needs a Floer argument for each set, but here the work moves into building ζ (our own).
+
+**Paper or page:** [Spectral invariants over the integers](https://arxiv.org/abs/2310.19033), [Spectral diameter of negatively monotone manifolds](https://arxiv.org/abs/2410.21416). It says: “Assume HF(L;R) ≠ 0. If CO⁰(e) ≠ 0 for an idempotent e ∈ QH(M,ω;R), then L is e-heavy.”
+
+**Sources:**
+
+- [M. Entov, L. Polterovich, Rigid subsets of symplectic manifolds, Compos. Math. 145 (2009) 773–826](https://doi.org/10.1112/S0010437X0900400X)
+
+### Homogenizing spectral invariants of a field idempotent gives a quasimorphism
+
+**Remember:** Average the invariant over iterates, and only the growth rate survives.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 20F65. arXiv math.SG, math.GR. Level 4: research.
+
+**Definition.** Suppose quantum homology, the homology of M with a deformed product, splits off a field summand with unit e. The asymptotic spectral invariant ζ(φ̃) is the limit of c(φ̃ᵏ, e)/k, where c is the action level at which e first appears in Floer homology. Here φ̃ lies in the universal cover of Ham(M), and dividing by k gives ζ(φ̃ᵏ) = kζ(φ̃).
+
+**Problem.** ζ is a homogeneous quasimorphism, which means that ζ(φ̃ψ̃) − ζ(φ̃) − ζ(ψ̃) is bounded over all φ̃ and ψ̃. When ζ is nonzero, as on the 2-sphere, commutator length is unbounded on the universal cover of Ham(M) (our own).
+
+**How the definition helps.** The triangle inequality with e \* e = e makes k ↦ c(φ̃ᵏ, e) subadditive, so the limit exists (our own). The field summand gives a reverse bound up to a constant, and that estimate is where the work went (our own). A nonzero homogeneous quasimorphism forces unbounded commutator length, the least number of commutators needed to write an element (our own).
+
+**Paper or page:** [Spectral invariants over the integers](https://arxiv.org/abs/2310.19033). It says: “Then, the asymptotic spectral invariant of φ̃ with respect to e defines a quasimorphism”
+
+**Sources:**
+
+- [M. Entov and L. Polterovich, Calabi quasimorphism and quantum homology, Int. Math. Res. Not. 2003, no. 30, 1635–1676](https://doi.org/10.1155/S1073792803210011)
+
+### Min-max spectral invariants are attained, so they are action values
+
+**Remember:** The cheapest cycle for a class sets the class's level.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology). arXiv math.SG. Level 4: research.
+
+**Definition.** The spectral invariant c(α, H) is a min-max value attached to a nonzero class α of Floer homology. Over all Floer cycles that represent α, take the largest action of an orbit in the cycle. Then take the infimum over these cycles.
+
+**Problem.** For a nondegenerate Hamiltonian, the infimum is attained whenever the Floer complex is defined, for example on semipositive manifolds. So c(α, H) is the action of some capped periodic orbit of H.
+
+**How the definition helps.** The min-max definition gives the action of a generator as soon as the infimum is attained (our own). When the areas of spheres form a discrete set, the action values are discrete and attainment is immediate (our own). When they are dense the infimum could escape, and the work is in Usher's theorem that it is attained in every Floer–Novikov complex.
+
+**Wikipedia:** [Spectral invariants](https://en.wikipedia.org/wiki/Spectral_invariants). It says: “the minimum is taken over all Floer cycles that represent the class α.”
+
+**Paper or page:** [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991). It says: “Given a Floer–Novikov package 𝔠 (over a Noetherian ring R) and α ∈ HF(𝔠) ∖ {0}, ρ(α) &gt; −∞ and α ∈ Im(ιρ(α))”
+
+**Sources:**
+
+- [Y.-G. Oh, Construction of spectral invariants of Hamiltonian paths on closed symplectic manifolds, in The Breadth of Symplectic and Poisson Geometry, Progr. Math. 232, Birkhäuser (2005) 525–570](https://doi.org/10.1007/0-8176-4419-9_18)
+- [M. Usher, Spectral numbers in Floer theories, Compositio Math. 144 (2008) 1581–1592](https://doi.org/10.1112/S0010437X08003564)
+
+### Pearl complexes filter by Maslov index, giving Oh's spectral sequence
+
+**Remember:** Pearls are holomorphic disks strung on Morse gradient lines.
+
+*True by definition. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** Let L be monotone, meaning disk area is proportional to Maslov index, with minimal Maslov number N. The pearl complex is the Morse complex of a function on L, tensored with ℤ₂\[t, t⁻¹\] where t has degree −N. Its differential is d₀ + d₁t + d₂t² + …, where dₖ counts gradient lines interrupted by disks of total Maslov index kN.
+
+**Problem.** Filtering by powers of t gives a spectral sequence from H(L; ℤ₂) ⊗ ℤ₂\[t, t⁻¹\] to the Floer cohomology of L. If N ≥ dim L + 2, it collapses, so L has nonzero Floer cohomology and no Hamiltonian diffeomorphism displaces L.
+
+**How the definition helps.** The filtration by powers of t is part of the definition, and d₀ is the Morse differential, so the first page is Morse cohomology (our own). For k ≥ 1, dₖ shifts Morse degree by kN − 1 &gt; dim L, so dₖ = 0 (our own). Oh filtered the Floer complex by energy instead; here the work moves into Biran and Cornea's proof that pearl and Floer cohomology agree (our own).
+
+**Paper or page:** [Zoo of monotone Lagrangians in ℂPⁿ](https://arxiv.org/abs/2110.11326). It says: “Suppose that p is odd and p&gt;1. Then QH(L(2p,p), ℤ₂\[T, T⁻¹\]) is isomorphic to H\*(L(2p,p), ℤ₂\[T,T⁻¹\]). This yields that the Lagrangians L(2p,p) are not displaceable.”
+
+**Sources:**
+
+- [P. Biran, O. Cornea, Rigidity and uniruling for Lagrangian submanifolds, Geom. Topol. 13 (2009) 2881–2989](https://doi.org/10.2140/gt.2009.13.2881)
+
+### Persistence modules make Hofer stability of Floer theory a barcode statement
+
+**Remember:** Floer homology becomes a list of bars with births and deaths.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 55N31. arXiv math.SG, math.AT. Level 4: research.
+
+**Definition.** Over a field, filtered Floer homology is a persistence module, a vector space for each action level with maps as the level grows. Usher and Zhang showed that it has a barcode, a list of intervals that record when classes are born and die. The bottleneck distance between barcodes is the largest endpoint shift in the best matching of their bars.
+
+**Problem.** For nondegenerate normalized H₁ and H₂, the barcodes lie within bottleneck distance at most twice the Hofer norm of H₁ − H₂ (our own). Normalized means mean zero over M at each time, and the Hofer norm is the time integral of max − min.
+
+**How the definition helps.** Continuation maps both ways shift action by at most the Hofer norm of H₁ − H₂, so the filtered complexes are close (our own). Usher and Zhang proved that close Floer–Novikov complexes have barcodes within twice that distance. One algebraic theorem then controls spectral invariants and boundary depth together (our own).
+
+**Paper or page:** [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991), [Franks' dichotomy for toric manifolds, Hofer-Zehnder conjecture, and gauged linear sigma model](https://arxiv.org/abs/2309.07991). It says: “Suppose the quasiequivalence distance between CF•(𝔠₁) and CF•(𝔠₂) is finite. Then d<sub>B</sub> (𝓑(𝔠₁), 𝓑 (𝔠₂)) ≤ 2 d<sub>Q</sub> ( CF•(𝔠₁), CF•(𝔠₂)).”
+
+**Sources:**
+
+- [M. Usher and J. Zhang, Persistent homology and Floer–Novikov theory, Geom. Topol. 20 (2016) 3333–3430](https://doi.org/10.2140/gt.2016.20.3333)
+
+### Relative spin structures orient disk moduli spaces, giving rational Floer theory
+
+**Remember:** Relative spin data tell every disk count which sign it carries.
+
+*Makes the theorem clean to state or prove.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D12. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian L in M is relatively spin when it is orientable and w₂(TL) extends to a class in H²(M; ℤ₂). Here w₂ is the obstruction to a spin structure. A choice of such data orients every moduli space of holomorphic disks on L, compatibly with gluing.
+
+**Problem.** For a compact relatively spin Lagrangian, the disk-counting operations form an A∞ algebra over the Novikov ring with rational coefficients, not only modulo 2. So potentials, local systems and characteristic-zero Floer cohomology make sense.
+
+**How the definition helps.** The data orient every disk moduli space compatibly with gluing, so disk counts have signs and the A∞ relations hold over ℚ (our own). The orientation comes from a spin structure on TL ⊕ V, for a bundle V on M with w₂(V) equal to that class (our own). Without such data the counts have no signs, so only ℤ₂ coefficients work, as for the non-orientable ℝP² in ℂP² (our own).
+
+**Paper or page:** [Lagrangian Floer theory on compact toric manifolds I](https://arxiv.org/abs/0802.1703), [Families of relatively exact Lagrangians, free loop spaces and generalised homology](https://arxiv.org/abs/2202.09677). It says: “Let L be an arbitrary compact relatively spin Lagrangian submanifold of an arbitrary tame symplectic manifold (M,ω). The coderivation d̂ is a continuous map that satisfies the A∞ relation d̂ d̂ = 0.”
+
+**Sources:**
+
+- [K. Fukaya, Y.-G. Oh, H. Ohta, K. Ono, Lagrangian Intersection Floer Theory: Anomaly and Obstruction, AMS/IP Studies in Advanced Mathematics 46 (2009)](https://doi.org/10.1090/amsip/046.1)
 
 ### Scalar curvature permits Floer differentials
 
@@ -3957,6 +7598,135 @@
 
 - [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1)
 
+### A dilation forbids exact aspherical Lagrangians
+
+**Remember:** A class that rotation turns into 1.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology), 53D12, 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A dilation on a Liouville manifold M is a class b in the degree-one symplectic cohomology of M. Its image under the BV operator, the operation that comes from rotating loops, is the unit 1.
+
+**Problem.** A Liouville manifold that admits a dilation contains no closed exact Lagrangian submanifold that is a K(π,1) space, a space whose universal cover is contractible.
+
+**How the definition helps.** Viterbo restriction keeps the unit and the BV operator, so the loop space of L gets a class that rotation sends to 1 (our own). That is impossible for a K(π,1) space, so no such L exists (our own). The work went into Viterbo's restriction map and the loop-space argument of Seidel and Solomon (our own).
+
+**Paper or page:** [Nonexistence of exact Lagrangian tori in affine conic bundles over $\\mathbb{C}<sup>n$</sup>](https://arxiv.org/abs/2104.10050). It says: “Let M be a Liouville manifold admitting a dilation. If L⊂M is a closed exact Lagrangian submanifold, then L cannot be a K(π,1) space.”
+
+**Sources:**
+
+- [P. Seidel and J. P. Solomon, Symplectic cohomology and q-intersection numbers, Geometric and Functional Analysis 22 (2012) 443–477](https://doi.org/10.1007/s00039-012-0159-6)
+
+### A Lagrange multiplier frees the period of closed orbits
+
+**Remember:** The multiplier becomes the period, so no period is fixed in advance.
+
+*True by definition.* MSC 53D42 (Symplectic field theory; contact homology), 53D40, 37J46. arXiv math.SG. Level 4: research.
+
+**Definition.** The Rabinowitz action functional takes a loop γ and a real number τ. Its value is the symplectic action of γ minus τ times the average of H along γ. So τ is a Lagrange multiplier for the constraint that γ lies on the energy surface H = 0.
+
+**Problem.** The critical points of the Rabinowitz functional are the pairs (γ, τ) with γ in H = 0 following τ times the Hamiltonian vector field. For τ ≠ 0 they are closed orbits of period \|τ\| on the energy surface, and τ = 0 gives constant loops.
+
+**How the definition helps.** Varying τ makes the average of H along γ zero (our own). Varying γ makes γ follow τ times the Hamiltonian field, so H is constant on γ and hence zero (our own). The usual fixed-period action functional finds orbits of one fixed period at any energy, not orbits of fixed energy (our own).
+
+**Paper or page:** [First Steps in Twisted Rabinowitz-Floer Homology](https://arxiv.org/abs/2105.13934). It says: “consists precisely of all (γ,τ) ∈ ℒ\_φM × ℝ such that γ(ℝ) ⊆ H⁻¹(0) and γ is an integral curve of τX<sub>H</sub>.”
+
+**Sources:**
+
+- [K. Cieliebak and U. Frauenfelder, A Floer homology for exact contact embeddings, Pacific Journal of Mathematics 239 (2009) 251–316](https://doi.org/10.2140/pjm.2009.239.251)
+
+### Discarding bad Reeb orbits makes orientations canonical
+
+**Remember:** Bad orbits flip their own sign when you turn them.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology). arXiv math.SG. Level 4: research.
+
+**Definition.** A Reeb orbit is bad if it is an even multiple cover of a simple orbit whose Conley–Zehnder index has the opposite parity. Other orbits are good. On a bad orbit, rotating the cover by one sheet reverses the orientation line of the orbit.
+
+**Problem.** If all asymptotic orbits are good, the orientation line of a moduli space of punctured holomorphic curves is canonically a product of orbit lines. So curves can be counted with consistent signs.
+
+**How the definition helps.** On a good orbit, rotating the cover acts trivially on the orientation line, so each orbit's orientation can be fixed once (our own). The removed counterexample is the double cover of a negative hyperbolic orbit in dimension three, where rotation reverses the line (our own). No choice is invariant there and curves would cancel in pairs, so such orbits are left out (our own).
+
+**Paper or page:** [A contact homotopy type](https://arxiv.org/abs/2511.01821). It says: “If Γ⁺ and Γ⁻ consist of good Reeb orbits, then the orientation line 𝔬\_𝒦 of 𝒦 is canonically isomorphic to”
+
+**Sources:**
+
+- [F. Bourgeois and K. Mohnke, Coherent orientations in symplectic field theory, Mathematische Zeitschrift 248 (2004)](https://doi.org/10.1007/s00209-004-0656-x)
+
+### Excluding trivial cylinders makes translation act freely
+
+**Remember:** The only curves that sliding cannot move are the vertical cylinders.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology), 32Q65. arXiv math.SG. Level 4: research.
+
+**Definition.** Take the symplectization ℝ × M with an almost complex structure invariant under translation in ℝ. A trivial cylinder is ℝ × γ over a closed Reeb orbit γ. Up to branched covers, trivial cylinders are the only holomorphic curves with zero dα-energy.
+
+**Problem.** Translation in ℝ acts freely on every moduli space of holomorphic curves in a symplectization that are not branched covers of trivial cylinders. So, for a generic almost complex structure, somewhere injective curves of Fredholm index 1 form one-parameter families whose quotient by translation is discrete.
+
+**How the definition helps.** A curve fixed by a nonzero translation consists of infinitely many translated copies of one piece, so finite dα-energy forces zero dα-energy (our own). So it covers trivial cylinders, which are the removed counterexample: every translation fixes them and they have index 0 (our own). They do not generally contribute to differentials, but they may appear as components of more complicated curves.
+
+**Wikipedia:** [Trivial cylinder](https://en.wikipedia.org/wiki/Trivial_cylinder). It says: “The product of a given embedded closed orbit with R is always a pseudoholomorphic curve, and such a curve is called a trivial cylinder. Trivial cylinders do not generally contribute to the aforementioned differentials, but they may appear as components of more complicated curves which do.”
+
+**Sources:**
+
+- [M. Hutchings, An index inequality for embedded pseudoholomorphic curves in symplectizations, Journal of the European Mathematical Society 4 (2002) 313–361](https://doi.org/10.1007/s100970100041)
+
+### Functoriality gives exactly fillable contact manifolds nonzero contact homology
+
+**Remember:** A filling is a map to ℚ, which needs 1 ≠ 0.
+
+*True by definition.* MSC 53D42 (Symplectic field theory; contact homology), 57R17. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** Contact homology is a functor from contact manifolds and exact symplectic cobordisms to unital algebras. The empty contact manifold has contact homology ℚ. So an exact filling, a cobordism down to the empty set, gives a unital algebra map from the contact homology to ℚ.
+
+**Problem.** An exactly fillable contact manifold has nonzero contact homology. So an overtwisted contact manifold, whose contact homology is zero, has no exact filling.
+
+**How the definition helps.** A unital algebra map to ℚ sends 1 to 1, so 1 ≠ 0 in the contact homology of an exactly fillable manifold (our own). In dimension three, the older proof that overtwisted manifolds have no filling follows a family of holomorphic disks (our own). The work went into the cobordism maps, built with virtual counts of holomorphic curves by Pardon and by Bao and Honda (our own).
+
+**Paper or page:** [Semi-global Kuranishi charts and the definition of contact homology](https://arxiv.org/abs/1512.00580), [Contact $(+1)$-surgeries and algebraic overtwistedness](https://arxiv.org/abs/2307.12635). It says: “Let W be a compact exact symplectic cobordism which restricts to (M₊,ξ₊) at the positive boundary and to (M₋,ξ₋) at the negative boundary. Then there is an algebra homomorphism Φ\_\*:HC(ξ₊)→HC(ξ₋).”
+
+**Sources:**
+
+- [J. Pardon, Contact homology and virtual fundamental cycles, Journal of the American Mathematical Society 32 (2019) 825–919](https://doi.org/10.1090/jams/924)
+- [E. Bao and K. Honda, Semi-global Kuranishi charts and the definition of contact homology (arXiv 1512.00580)](https://arxiv.org/abs/1512.00580)
+
+### Hofer energy makes finite-energy punctures converge to Reeb orbits
+
+**Remember:** Measure energy with a bounded ruler so cylinders count as finite.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 37J46. arXiv math.SG. Level 4: research.
+
+**Definition.** Let u = (a, f) be a holomorphic curve in the symplectization ℝ × M of a contact manifold with contact form α. Its Hofer energy is the supremum, over increasing functions φ from ℝ to \[0, 1\], of the integral of d(φ(a)α) over u. Unlike the area for d(eᵗα), it is finite on cylinders over closed Reeb orbits.
+
+**Problem.** A finite-Hofer-energy holomorphic half-cylinder in a symplectization either has a removable puncture or has loops converging along a sequence to a closed Reeb orbit. For Morse–Bott contact forms, the convergence is full and exponential.
+
+**How the definition helps.** The supremum over bounded φ removes the exponential growth of the form d(eᵗα), so the expected limit cylinders have finite energy (our own). Finite dα-energy on long cylinders then forces the loops near the puncture to be close to closed Reeb orbits (our own). The work went into the convergence analysis, which Hofer used to find closed Reeb orbits on the 3-sphere (our own).
+
+**Wikipedia:** [Weinstein conjecture](https://en.wikipedia.org/wiki/Weinstein_conjecture). It says: “A new approach without this assumption was discovered in dimension 3 by Hofer and is at the origin of contact homology.”
+
+**Paper or page:** [Removal of singularities in Morse-Bott symplectizations](https://arxiv.org/abs/2509.17772). It says: “be a J-holomorphic map with finite Hofer energy. Then, u either has a removable singularity at ∞ or there exist constants c, δ&gt;0, a ∈ ℝ, a period T ∈ ℝ and a periodic Reeb orbit γ”
+
+**Sources:**
+
+- [H. Hofer, Pseudoholomorphic curves in symplectizations with applications to the Weinstein conjecture in dimension three, Inventiones Mathematicae 114 (1993) 515–563](https://doi.org/10.1007/BF01232679)
+
+### Holomorphic buildings make neck-stretching limits compact
+
+**Remember:** Energy lost down the neck is caught in extra floors.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 32Q65. arXiv math.SG. Level 4: research.
+
+**Definition.** A holomorphic building is a finite stack of levels glued along matching Reeb orbits at their punctures. The levels are curves in the two halves of a manifold split along a contact hypersurface and curves in copies of the symplectization between them. It is stable if no symplectization level consists only of trivial cylinders, the cylinders over Reeb orbits.
+
+**Problem.** Stretch the neck of a symplectic manifold along a contact hypersurface. Then every sequence of holomorphic curves of fixed genus with bounded energy has a subsequence that converges to a stable holomorphic building.
+
+**How the definition helps.** The definition adds exactly the limits that appear: curve pieces that escape into the lengthening neck become symplectization levels (our own). Stability removes levels made only of trivial cylinders, which could be added without end and spoil uniqueness of the limit (our own). The analysis is the compactness theorem of Bourgeois, Eliashberg, Hofer, Wysocki and Zehnder (our own).
+
+**Paper or page:** [Lagrangian Spheres and Cyclic Quotient T-singularities](https://arxiv.org/abs/2509.18976). It says: “Given a neck stretching family J<sub>t</sub> and a sequence of J<sub>k</sub>-holomorphic curves f<sub>k</sub> : Σ → X<sub>k</sub> with uniformly bounded energy, there exists a subsequence converging to a stable J\*-holomorphic building F.”
+
+**Sources:**
+
+- [F. Bourgeois, Y. Eliashberg, H. Hofer, K. Wysocki and E. Zehnder, Compactness results in symplectic field theory, Geometry &amp; Topology 7 (2003) 799–888](https://doi.org/10.2140/gt.2003.7.799)
+
 ### Hypertight forms exclude holomorphic planes
 
 **Remember:** A plane would cap its orbit, and hypertight orbits have no caps.
@@ -3974,6 +7744,193 @@
 **Sources:**
 
 - [A contact homotopy type, Corollary 1.5](https://arxiv.org/abs/2511.01821v1)
+
+### Loose attaching spheres kill symplectic cohomology of flexible domains
+
+**Remember:** A loose chart kills the algebra that critical handles would contribute.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology), 57R17, 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Weinstein domain of dimension 2n ≥ 6 is flexible if its index-n handles are attached along loose Legendrian spheres. A loose sphere contains a standard stabilized chart, and that chart has a Reeb chord with differential 1. So the Legendrian contact homology algebra of a loose sphere is zero.
+
+**Problem.** Every flexible Weinstein domain has zero symplectic cohomology, and the same holds after twisting by any closed two-form.
+
+**How the definition helps.** The Bourgeois–Ekholm–Eliashberg surgery formula computes the change from each critical handle by its Legendrian contact homology, which is zero for loose spheres (our own). Subcritical domains have zero symplectic cohomology, so the total vanishes, but the surgery formula assumes transversality (our own). The removed counterexample is the cotangent disk bundle of a sphere, whose handle is attached along a non-loose sphere, with nonzero symplectic cohomology (our own).
+
+**Paper or page:** [Symplectic Criteria on Stratified Uniruledness of Affine Varieties and Applications](https://arxiv.org/abs/2201.10669). It says: “Let M be a flexible Weinstein domain, then, for any closed two-form on M, the twisted symplectic cohomology SH\*(M, Λ₂)=0.”
+
+**Sources:**
+
+- [F. Bourgeois, T. Ekholm and Y. Eliashberg, Effect of Legendrian surgery, Geometry &amp; Topology 16 (2012) 301–389](https://doi.org/10.2140/gt.2012.16.301)
+- [E. Murphy and K. Siegel, Subflexible symplectic manifolds, Geometry &amp; Topology 22 (2018) 2367–2401](https://doi.org/10.2140/gt.2018.22.2367)
+
+### Mayer–Vietoris forces a non-displaceable piece
+
+**Remember:** An invariant that vanishes on displaceable sets and glues exactly.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** Relative symplectic cohomology gives each compact set K in a symplectic manifold an invariant SH(K). With Novikov field coefficients, SH(K) is zero when K is stably displaceable, for example when a Hamiltonian diffeomorphism moves K off itself. For Poisson commuting sets, roughly sublevel sets of functions with zero Poisson bracket, it has a Mayer–Vietoris exact sequence.
+
+**Problem.** Suppose finitely many compact sets Poisson commute and their union has nonzero relative symplectic cohomology. Then at least one of the sets cannot be displaced from itself.
+
+**How the definition helps.** If every piece were displaceable, every piece and every intersection of pieces would have zero invariant (our own). Then the Mayer–Vietoris sequence would make the invariant of the union zero, which is a contradiction (our own). The work went into Varolgunes' Mayer–Vietoris property and his vanishing theorem for stably displaceable sets (our own).
+
+**Paper or page:** [Contact big fiber theorems](https://arxiv.org/abs/2503.04277), [Contact big fiber theorems](https://arxiv.org/abs/2503.04277), [Index bounded relative symplectic cohomology](https://arxiv.org/abs/2109.06146). It says: “Let K₁, ⋯, K<sub>N</sub> be a Poisson commuting collection of compact subsets of M. Let K:=K₁∪…∪K<sub>N</sub>. If SH\*<sub>M</sub>(K)≠0, then at least one of K₁, ⋯, K<sub>N</sub> is not displaceable from itself by a Hamiltonian diffeomorphism.”
+
+**Sources:**
+
+- [U. Varolgunes, Mayer–Vietoris property for relative symplectic cohomology, Geometry &amp; Topology 25 (2021) 547–642](https://doi.org/10.2140/gt.2021.25.547)
+
+### Rabinowitz Floer homology turns displaceability into Reeb orbits
+
+**Remember:** A Floer homology whose generators are Reeb orbits and constant loops.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 53D40, 37J46. arXiv math.SG. Level 4: research.
+
+**Definition.** A Liouville domain is a compact exact symplectic manifold whose Liouville vector field points out of the boundary Σ, so Σ is a contact manifold. Its Rabinowitz Floer homology is the Floer homology of the Rabinowitz functional. The critical points are the closed Reeb orbits on Σ and the constant loops on Σ.
+
+**Problem.** Suppose the boundary of a Liouville domain is simply connected and can be displaced from itself in the completion. Then the boundary carries a nonconstant closed Reeb orbit.
+
+**How the definition helps.** With no nonconstant Reeb orbits, only constant loops generate, so the homology is that of Σ and is not zero (our own). Displaceability makes the homology zero, so an orbit must exist (our own). The work went into the vanishing theorem for displaceable boundaries (our own).
+
+**Paper or page:** [First Steps in Twisted Rabinowitz-Floer Homology](https://arxiv.org/abs/2105.13934), [First Steps in Twisted Rabinowitz-Floer Homology](https://arxiv.org/abs/2105.13934). It says: “Let (W,λ) be a Liouville domain with displaceable boundary in the completion (M,λ) and φ ∈ Aut(W,λ). Then RFH<sup>φ</sup>(Σ,M) ≅ 0.”
+
+**Sources:**
+
+- [K. Cieliebak and U. Frauenfelder, A Floer homology for exact contact embeddings, Pacific Journal of Mathematics 239 (2009) 251–316](https://doi.org/10.2140/pjm.2009.239.251)
+
+### Selective symplectic homology turns contact non-squeezing into ranks
+
+**Remember:** Only the selected boundary may wind, so rank measures size.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 53D40, 53D10. arXiv math.SG. Level 4: research.
+
+**Definition.** Let Ω be an open set in the contact boundary of a Liouville domain W. Selective symplectic homology of Ω uses only Hamiltonians that grow at infinity over Ω. It has a continuation map to the full symplectic homology SH(W), natural for inclusions and for contact isotopies.
+
+**Problem.** Let A and B be open sets in the contact boundary of a Liouville domain W. If B's selective homology maps to SH(W) with larger rank than A's, no contact isotopy of the boundary squeezes B into A.
+
+**How the definition helps.** A squeeze of B into A would make B's map factor through A's map, and a composite has rank at most each factor's (our own). So the definition turns a geometric non-squeezing question into a comparison of ranks (our own). The work went into naturality under contact isotopies, Theorem 1.6 of the same paper (our own).
+
+**Paper or page:** [Selective symplectic homology with applications to contact non-squeezing](https://arxiv.org/abs/2205.14771). It says: “If the rank of the continuation map SH\_∗<sup>Ω<sub>b</sub></sup>(W)→SH\_∗(W) is (strictly) greater than the rank of the continuation map SH\_∗<sup>Ω<sub>a</sub></sup>(W)→SH\_∗(W), then Ω<sub>b</sub> cannot be contactly squeezed into Ω<sub>a</sub>.”
+
+**Sources:**
+
+- [I. Uljarević, Selective symplectic homology with applications to contact non-squeezing, Compositio Mathematica 159 (2023) 2458–2482](https://doi.org/10.1112/s0010437x23007480)
+
+### The ECH index forces index-one currents to be embedded
+
+**Remember:** A topological index that leaves no room for singular points.
+
+*Makes the theorem clean to state or prove.* MSC 53D42 (Symplectic field theory; contact homology), 57R58. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A holomorphic current C is a finite sum, with multiplicities, of holomorphic curves in the symplectization of a contact 3-manifold. Its ECH index I(C) combines a relative Chern class, a relative self-intersection and Conley–Zehnder indices. For a somewhere injective curve C, the index inequality says that the Fredholm index plus twice a weighted count of singularities is at most I(C).
+
+**Problem.** For a generic almost complex structure, every holomorphic current has ECH index at least 0, with equality only for sums of trivial cylinders. A current of ECH index 1 is a sum of trivial cylinders and one embedded curve of Fredholm index 1 disjoint from them.
+
+**How the definition helps.** With superadditivity of I under unions, the index inequality leaves no room for singular or multiply covered nontrivial pieces when I = 1 (our own). So the ECH differential, which counts currents of index 1, counts embedded curves (our own). The work went into Hutchings' index inequality, which uses the writhe of braids near the Reeb orbits (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “only those that also satisfy a topological condition given by the ECH index, which in particular implies that the curves considered are (mainly) embedded.”
+
+**Paper or page:** [Proof of Hofer-Wysocki-Zehnder's two or infinity conjecture](https://arxiv.org/abs/2310.07636). It says: “If I(𝒞)=1, then 𝒞 = 𝒞₀+C₁, where I(𝒞₀)=0, and C₁ is embedded and disjoint from 𝒞₀ and satisfies ind(C₁)=I(C₁)=1.”
+
+**Sources:**
+
+- [M. Hutchings, An index inequality for embedded pseudoholomorphic curves in symplectizations, Journal of the European Mathematical Society 4 (2002) 313–361](https://doi.org/10.1007/s100970100041)
+
+### The empty orbit set gives ECH a contact invariant
+
+**Remember:** Nothing at the top means nothing can flow down.
+
+*True by definition.* MSC 53D42 (Symplectic field theory; contact homology), 57R58, 57K33. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** Embedded contact homology (ECH) of a contact 3-manifold is generated by orbit sets, finite sets of simple Reeb orbits with multiplicities. The empty set counts as an orbit set. The differential counts holomorphic currents in the symplectization from one orbit set at the top to another at the bottom.
+
+**Problem.** The empty orbit set is a cycle in the ECH chain complex. Its class c(ξ) is an invariant of the contact structure, and Taubes's isomorphism carries it to the contact invariant in Seiberg–Witten Floer cohomology.
+
+**How the definition helps.** A current from the empty set has no positive ends, so it has no energy and is empty, and ∂∅ = 0 (our own). The Heegaard Floer contact invariant instead needs an open book, a fibration over the circle of the complement of a link (our own). The proof that the class depends only on the contact structure went into Taubes's isomorphism (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The contact element of ECH has a particularly nice form: it is the cycle associated to the empty collection of Reeb orbits.”
+
+**Paper or page:** [Properties of contact toric structures and concave boundaries of linear plumbings](https://arxiv.org/abs/2501.08451). It says: “which sends the ECH contact invariant c(ξ):=\[∅\] ∈ ECH(Y,ξ,0) to the contact invariant in Seiberg-Witten Floer (monopole) cohomology.”
+
+**Sources:**
+
+- [C. H. Taubes, Embedded contact homology and Seiberg–Witten Floer cohomology I, Geometry &amp; Topology 14 (2010) 2497–2581](https://doi.org/10.2140/gt.2010.14.2497)
+
+### A uniruled curve class bounds the Gromov width by its area
+
+**Remember:** A nonzero count forces a curve through every point.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 53D35. arXiv math.SG. Level 4: research.
+
+**Definition.** A class A in H₂(X) is uniruled when some genus-zero Gromov–Witten invariant of class A with a point constraint is nonzero. Then, for every tame almost complex structure J, a J-holomorphic stable map of class A passes through every point.
+
+**Problem.** If A is a uniruled class, the Gromov width of X is at most ω(A). The Gromov width is the supremum of πr² over symplectic embeddings of the ball of radius r into X.
+
+**How the definition helps.** Take J standard on an embedded ball of radius r; the nonzero invariant forces a curve of class A through the centre (our own). The monotonicity lemma says such a curve has area at least πr² inside the ball, so πr² ≤ ω(A) (our own). Gromov's non-squeezing theorem is the case of a sphere times a torus (our own).
+
+**Paper or page:** [Cohomologous symplectic forms with different Gromov widths](https://arxiv.org/abs/2505.09550v1). It says: “For any uniruled class A, w<sub>G</sub>(X,ω) ≤ ω(A).”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+
+### Global Kuranishi charts give integral splitting of Hamiltonian fibrations over spheres
+
+**Remember:** Present the whole moduli space as one zero set modulo one group.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 55N22. arXiv math.SG, math.AT. Level 4: research.
+
+**Definition.** A global Kuranishi chart is one manifold with a compact Lie group action, one equivariant bundle and one equivariant section. Its zero set modulo the group is the moduli space of stable maps. So one can define counts in generalized cohomology theories, such as Morava K-theories.
+
+**Problem.** A loop of Hamiltonian diffeomorphisms of X clutches a bundle P over the sphere. Its integral cohomology is additively H\*(X) ⊗ H\*(S²); Lalonde, McDuff and Polterovich had proved this only rationally.
+
+**How the definition helps.** With one chart, counts of holomorphic sections exist in Morava K-theories, which are certain generalized cohomology theories (our own). Splitting in all of them gives splitting in every complex-oriented theory, including integral cohomology, by chromatic homotopy theory (our own). The work went into building the chart, using an integral symplectic form and maps to a large projective space (our own).
+
+**Paper or page:** [Complex cobordism, Hamiltonian loops and global Kuranishi charts](https://arxiv.org/abs/2110.14320v2). It says: “The cohomology H\*(P\_φ;Z) splits additively as H\*(X;Z) ⊗ H\*(S²;Z).”
+
+**Sources:**
+
+- [M. Abouzaid, M. McLean and I. Smith, Complex cobordism, Hamiltonian loops and global Kuranishi charts, arXiv:2110.14320](https://arxiv.org/abs/2110.14320)
+- [F. Lalonde, D. McDuff and L. Polterovich, Topological rigidity of Hamiltonian loops and quantum homology, Invent. Math. 135 (1999) 369–385](https://doi.org/10.1007/s002220050289)
+
+### Global Kuranishi charts make the Gromov–Witten product formula straightforward
+
+**Remember:** Products of single charts are single charts for products.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
+
+**Definition.** A global Kuranishi chart is one manifold with a compact Lie group action, one equivariant bundle and one equivariant section. Its zero set modulo the group is the moduli space of stable maps, and the virtual class is an equivariant Euler class.
+
+**Problem.** For closed symplectic manifolds, Gromov–Witten classes of a product are products of the factors' classes, for stable (g, n) except (1, 1) and (2, 0). So the Künneth map is a ring isomorphism.
+
+**How the definition helps.** The product of two global charts is a global chart for the pair of moduli spaces (our own). The moduli space of the product is cut out of it over the diagonal, so the formula reduces to multiplicativity of Euler classes (our own). With atlases of many local charts, the same formula needs compatible choices on both factors and is much harder (our own).
+
+**Paper or page:** [Global Kuranishi charts and a product formula in symplectic Gromov-Witten theory](https://arxiv.org/abs/2212.11797v2), [Global Kuranishi charts and a product formula in symplectic Gromov-Witten theory](https://arxiv.org/abs/2212.11797v2). It says: “the moduli space of stable maps M̄<sub>g,n</sub>(X,A;J) admits an oriented global Kuranishi chart K = (G,T,E,s) of the correct virtual dimension”
+
+**Sources:**
+
+- [A. Hirschi and M. Swaminathan, Global Kuranishi charts and a product formula in symplectic Gromov–Witten theory, Selecta Math. 30 (2024)](https://doi.org/10.1007/s00029-024-00982-y)
+
+### Marking intersections with a Donaldson hypersurface stabilizes every domain
+
+**Remember:** Extra marked points from a hypersurface pin down every domain.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 32Q65. arXiv math.SG. Level 4: research.
+
+**Definition.** A Donaldson hypersurface Y of degree D is a symplectic hypersurface Poincaré dual to D times an integral symplectic class. Every nonconstant J-sphere of class A not inside Y meets Y in ℓ = Dω(A) points, counted with multiplicity. For large D, marking these points makes every domain stable.
+
+**Problem.** For a closed symplectic manifold with rational symplectic class, genus-zero Gromov–Witten invariants are defined by rational pseudocycles, with no virtual techniques. They agree with the invariants defined by Kuranishi structures.
+
+**How the definition helps.** With stable domains, J may depend on the point of the domain, so generic choices give transversality even for multiple covers (our own). Dividing by ℓ! removes the ordering of the added points (our own). The work went into Donaldson's existence theorem for such hypersurfaces and into Qin's comparison with Kuranishi structures (our own).
+
+**Paper or page:** [Equivalence between Gromov-Witten invariants: Domain dependent perturbation and Kuranishi structure approaches](https://arxiv.org/abs/2507.04798v1). It says: “the evaluation map ev<sub>k</sub>: M<sub>0,k+ℓ</sub>(K,A,Y) → M<sup>k</sup> represents a pseudocycle. Moreover, the rational pseudocycle (1/ℓ!) ev<sub>k</sub> is independent of auxiliary data.”
+
+**Sources:**
+
+- [K. Cieliebak and K. Mohnke, Symplectic hypersurfaces and transversality in Gromov–Witten theory, J. Symplectic Geom. 5 (2007) 281–356](https://doi.org/10.4310/JSG.2007.v5.n3.a2)
+- [Y. Qin, Equivalence between Gromov–Witten invariants: Domain dependent perturbation and Kuranishi structure approaches, arXiv:2507.04798](https://arxiv.org/abs/2507.04798)
 
 ### Minimum spherical area rules out splitting
 
@@ -3993,6 +7950,44 @@
 
 - [Shah Faisal, A proof of Gromov's non-squeezing theorem, Theorem 3.2](https://arxiv.org/abs/2412.18462v1)
 
+### Pseudocycles have well-defined intersection numbers
+
+**Remember:** A pseudocycle may be open, but only in codimension two.
+
+*True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 32Q65, 57R95. arXiv math.SG, math.AT. Level 4: research.
+
+**Definition.** A pseudocycle is a smooth map f from an oriented manifold V into M with a small limit set. The limit set is the set of limits of f along sequences that leave every compact part of V. It must be covered by smooth images of manifolds of dimension at most dim V − 2.
+
+**Problem.** Two pseudocycles of complementary dimension in general position meet in finitely many points. The signed count depends only on their bordism classes, and pseudocycles up to bordism are integral homology classes.
+
+**How the definition helps.** Codimension two makes generic bordisms miss the limit sets, so meeting points cannot escape and the count stays constant (our own). Closed manifolds would not do, since moduli spaces of curves are not compact (our own). The work moved to Zinger's theorem, which identifies pseudocycles up to equivalence with integral homology.
+
+**Paper or page:** [Equivalence between Gromov-Witten invariants: Domain dependent perturbation and Kuranishi structure approaches](https://arxiv.org/abs/2507.04798v1). It says: “there exist natural homomorphisms of graded ℤ-modules Ψ\_\*:H\_\*(X;ℤ)→ℋ\_\*(X) and Φ\_\*:ℋ\_\*(X)→H\_\*(X;ℤ), such that Ψ\_\*∘Φ\_\*=Id and Φ\_\*∘Ψ\_\*=Id.”
+
+**Sources:**
+
+- [A. Zinger, Pseudocycles and integral homology, Trans. Amer. Math. Soc. 360 (2008) 2741–2765](https://doi.org/10.1090/S0002-9947-07-04440-6)
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Seidel elements of facet circle actions give the quantum Stanley–Reisner relations
+
+**Remember:** Relations among circle actions become relations in quantum cohomology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14M25. arXiv math.SG. Level 4: research.
+
+**Definition.** The Seidel element of a loop of Hamiltonian diffeomorphisms is an invertible quantum cohomology class. It counts holomorphic sections of the bundle over the sphere built from the loop, and the Seidel map turns composition of loops into quantum product.
+
+**Problem.** For a Fano toric manifold, quantum cohomology is the polynomial ring on the facet divisors modulo linear relations and quantum Stanley–Reisner relations. These are deformed versions of the rule that facet divisors with empty common intersection multiply to zero.
+
+**How the definition helps.** Each facet gives a circle action whose Seidel element is its divisor class times a power of the quantum variable (our own). Integer relations among these circles then become product relations among the elements, because the Seidel map is a homomorphism (our own). These product relations are the quantum Stanley–Reisner relations, as McDuff and Tolman showed; the quoted paper extends this to toric orbifolds (our own).
+
+**Paper or page:** [Seidel Representations and Quantum Cohomology of Toric Orbifolds](https://arxiv.org/abs/1211.3204v1), [Seidel Representations and Quantum Cohomology of Toric Orbifolds](https://arxiv.org/abs/1211.3204v1). It says: “The reduced Seidel elements S̃<sub>k</sub>, k=1,...,M, satisfy the quantum Stanley-Reisner relations and the cone relations.”
+
+**Sources:**
+
+- [P. Seidel, π₁ of symplectic automorphism groups and invertibles in quantum homology rings, Geom. Funct. Anal. 7 (1997) 1046–1096](https://doi.org/10.1007/s000390050037)
+- [D. McDuff and S. Tolman, Topological properties of Hamiltonian circle actions, Int. Math. Res. Pap. 2006, 72826](https://doi.org/10.1155/imrp/2006/72826)
+
 ### Stable maps keep colliding marks distinct
 
 **Remember:** Colliding marks sprout a constant sphere with three special points.
@@ -4008,6 +8003,112 @@
 **Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “we attach a copy of ℙ¹ (a sphere), called a bubble, to the domain curve at the problematic point.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### The Dubrovin connection turns associativity into flatness
+
+**Remember:** Deform a flat connection by quantum multiplication; it stays flat.
+
+*Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG, math.AG. Level 4: research.
+
+**Definition.** The Dubrovin connection on the cohomology space H adds z times quantum multiplication to the flat connection. It sends Y along X to ∂Y/∂X + z X∗Y, where the product comes from a potential, the generating function of genus-zero invariants.
+
+**Problem.** The big quantum product is commutative and associative exactly when the Dubrovin connection is torsion-free and flat for every z.
+
+**How the definition helps.** The torsion is z times the commutator X∗Y − Y∗X, so it vanishes exactly when the product is commutative (our own). The curvature is z² times the associator, because its z term vanishes when the product comes from a potential (our own). The proof of associativity itself still uses the gluing of stable maps (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The quantum cup product can be viewed as a connection on the tangent bundle TH, called the Dubrovin connection. Commutativity and associativity of the quantum cup product then correspond to zero-torsion and zero-curvature conditions on this connection.”
+
+**Sources:**
+
+- [B. Dubrovin, Geometry of 2D topological field theories, Lecture Notes in Math. 1620 (1996) 120–348](https://doi.org/10.1007/BFb0094793)
+
+### The FOP transversality condition yields integer-valued Gromov–Witten type invariants
+
+**Remember:** Push all symmetric zeros into codimension two.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
+
+**Definition.** Fukaya–Ono–Parker transversality asks for sections of an orbifold bundle that are complex-linear in the directions normal to each set of points with extra symmetry. For such sections, the zeros at points with nontrivial symmetry have codimension at least two in the zero set.
+
+**Problem.** Every compact symplectic manifold has integer-valued Gromov–Witten type invariants in all genera, defined from the zeros at points with trivial symmetry group.
+
+**How the definition helps.** A zero with symmetry group Γ counts as 1/\|Γ\| in ordinary virtual counts, and FOP sections push such zeros into codimension two (our own). So the remaining zeros form an integral pseudocycle (our own). The work went into building such sections on the global Kuranishi charts of Abouzaid–McLean–Smith and Hirschi–Swaminathan (our own).
+
+**Paper or page:** [A new transversality condition on orbifolds and integer-valued Gromov-Witten type invariants](https://arxiv.org/abs/2201.02688v3). It says: “Then there exist normally complex smooth sections s: X → E which is strongly transverse such that s⁻¹(0) ∩ X<sup>free</sup> defines a pseudocycle.”
+
+**Sources:**
+
+- [S. Bai and G. Xu, A new transversality condition on orbifolds and integer-valued Gromov–Witten type invariants, arXiv:2201.02688](https://arxiv.org/abs/2201.02688)
+
+### Bohr–Sommerfeld fibres index a basis of holomorphic quantum states
+
+**Remember:** One quantum state sits on each Bohr–Sommerfeld fibre.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D50 (Geometric quantization), 14K25. arXiv math.SG, math-ph. Level 4: research.
+
+**Definition.** The real quantization of a Lagrangian torus fibration gives one state to each Bohr–Sommerfeld fibre, where the prequantum holonomy is trivial. Its quantum space is spanned by delta sections on these fibres.
+
+**Problem.** Under a technical condition, holomorphic sections of the prequantum bundle's N-th power on a nonsingular Lagrangian torus fibration have orthogonal bases indexed by Bohr–Sommerfeld points. Along a family Jᵗ of complex structures from an integrable J, each basis section tends to a delta section on its fibre as t grows.
+
+**How the definition helps.** With the real quantization defined fibre by fibre, agreement of real and Kähler quantization becomes a match of bases, which the quote states. On the standard torus of dimension 2n the basis sections are Jacobi's theta functions, and both quantizations have dimension Nⁿ (our own). Yoshida's adiabatic-limit analysis carries the work (our own).
+
+**Paper or page:** [Adiabatic Limit, Theta Function, and Geometric Quantization](https://arxiv.org/abs/1904.04076). It says: “orthogonal bases of holomorphic sections of L⊗N → (M,Nω,Jᵗ) indexed by B<sub>BS</sub> such that each ϑᵗ<sub>b</sub> converges as a delta-function section supported on π⁻¹(b) as t → ∞”
+
+**Sources:**
+
+- [T. Yoshida, Adiabatic limit, theta function, and geometric quantization, SIGMA 20 (2024), 065](https://doi.org/10.3842/SIGMA.2024.065)
+
+### Euler-characteristic quantization makes the number of states topological
+
+**Remember:** Count states by an alternating sum, and topology does the counting.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D50 (Geometric quantization), 32L10. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** The Euler quantization of a compact Kähler manifold is a virtual vector space, a formal difference of vector spaces. It is the alternating sum of the Dolbeault cohomology groups of L ⊗ √K. Here L is the prequantum bundle, and √K is a square root of the canonical bundle.
+
+**Problem.** The dimension of the Euler quantization is the integral of exp(c₁(L)) times the Â-class of M, a class built from Pontryagin classes (our own). So the dimension does not depend on the compatible complex structure (our own), and it counts holomorphic sections when higher cohomology vanishes.
+
+**How the definition helps.** The Riemann–Roch theorem computes alternating sums of cohomology dimensions, not the number of holomorphic sections, so this definition gives a characteristic-class integral (our own). The Todd class times ch(√K) is the Â-class, and c₁(L) is the class of ω, so the complex structure drops out (our own). By the nLab remark, Kodaira vanishing makes the sum equal the space of holomorphic sections for a positive bundle.
+
+**nLab:** [geometric quantization](https://ncatlab.org/nlab/show/geometric+quantization). It says: “then all the higher cohomology groups in the above expression vanish. Therefore in this case the definition coincides with that via polarizations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mpᶜ structures exist on every symplectic manifold, unlike metaplectic structures
+
+**Remember:** A circle of phases absorbs the sign that a double cover cannot.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D50 (Geometric quantization), 53C27. arXiv math.SG, math-ph. Level 4: research.
+
+**Definition.** An Mpᶜ structure is a lift of the symplectic frame bundle to Mpᶜ, a circle extension of the symplectic group. It takes the place of the double cover Mp that the metaplectic correction uses, and it supports half-form quantization in the same way.
+
+**Problem.** Every symplectic manifold has an Mpᶜ structure, so half-form quantization in this form needs no extra topological condition (our own). A metaplectic structure exists only when the first Chern class is even (our own).
+
+**How the definition helps.** The unitary group U(n) lifts to Mpᶜ as a group, so the unitary frame bundle of a compatible almost complex structure lifts directly (our own). For Mp no such lift of U(n) exists, and the obstruction is the second Stiefel–Whitney class, c₁ modulo 2 (our own). The removed counterexample is the complex projective plane, whose first Chern class is three times a generator and so is odd (our own).
+
+**nLab:** [metaplectic structure](https://ncatlab.org/nlab/show/metaplectic+structure). It says: “Every Sp-principal bundle has a lift to an Mpᶜ-principal bundle.”
+
+**Sources:**
+
+- [P. L. Robinson and J. H. Rawnsley, The metaplectic representation, Mpᶜ structures and geometric quantization, Memoirs of the American Mathematical Society 81 (1989), no. 410](https://doi.org/10.1090/memo/0410)
+
+### Quantomorphisms realize the Poisson algebra
+
+**Remember:** Fibre-invariant contact Hamiltonians are just functions on the base.
+
+*True by definition. Confidence: medium.* MSC 53D50 (Geometric quantization), 53D10. arXiv math.SG, math-ph. Level 4: research.
+
+**Definition.** A prequantization bundle over a symplectic manifold (X, ω) is a circle bundle P with a connection form α satisfying dα = π\*ω. A quantomorphism is a diffeomorphism of P that preserves α itself, not only its kernel. Infinitesimally, these are the contact vector fields V whose contact Hamiltonian α(V) is constant along the fibre circles.
+
+**Problem.** The Lie algebra of infinitesimal quantomorphisms is isomorphic to the Poisson algebra of smooth functions on X. For connected X, it is a central extension of the Hamiltonian vector fields on X by the constant functions (Kostant).
+
+**How the definition helps.** A contact field with Hamiltonian H changes α at the rate dH(R)·α, so it preserves α exactly when H comes from X (our own). The bracket of such fields matches the Poisson bracket on X, and the formula for that rate carries the work (our own). Constants give zero Hamiltonian fields on X but rotate the fibres, and these rotations form the central part (our own).
+
+**nLab:** [quantomorphism group](https://ncatlab.org/nlab/show/quantomorphism+group). It says: “Given a (pre)symplectic manifold (X,ω), its quantomorphism group is the Lie group that integrates the Lie bracket inside the Poisson algebra of (X, ω).”
+
+**Sources:**
+
+- [B. Kostant, Quantization and unitary representations, Lectures in Modern Analysis and Applications III, Lecture Notes in Mathematics 170 (1970) 87–208](https://doi.org/10.1007/BFb0079068)
 
 ### Spinᶜ quantization builds in the metaplectic correction
 
@@ -4045,6 +8146,25 @@
 
 - [Victor Guillemin, Shlomo Sternberg, Geometric quantization and multiplicities of group representations, Inventiones Mathematicae 67 (1982) 515–538](https://doi.org/10.1007/BF01398934)
 - [Eckhard Meinrenken, Symplectic surgery and the Spinᶜ–Dirac operator, Advances in Mathematics 134 (1998) 240–277](https://doi.org/10.1006/aima.1997.1701)
+
+### A flat moment map makes quantum reduction quantize classical reduction
+
+**Remember:** Flatness keeps the symbols of the constraints independent.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53D55 (Deformation quantization, star products), 53D20, 16S32. arXiv math.RT, math.SG. Level 4: research.
+
+**Definition.** Let a reductive group G act on a smooth affine variety X. Its moment map μ from T\*X to the dual of the Lie algebra is flat when it is a flat morphism. For this homogeneous map, that means the zero fibre μ⁻¹(0) has the expected dimension, dim T\*X − dim G (our own).
+
+**Problem.** Let μ be flat, and form the quantum Hamiltonian reduction, the invariant differential operators on X modulo the ideal generated by the action's vector fields. Its associated graded ring is the ring of G-invariant functions on μ⁻¹(0), so it quantizes the classical reduction.
+
+**How the definition helps.** Flatness makes the symbols of the ideal's generators a regular sequence, so they generate exactly the ideal of the zero fibre μ⁻¹(0) (our own). Taking G-invariants commutes with taking the associated graded algebra, because G is reductive (our own). Without flatness the symbol ideal can be larger, and then the graded ring is a proper quotient (our own).
+
+**Paper or page:** [Commutativity of Quantization and Reduction for Quiver Representations](https://arxiv.org/abs/2105.05440). It says: “Suppose that the moment map μ : T\*X → 𝔤\* is flat. Then gr(𝒟(E<sub>V</sub>)/𝒟(E<sub>V</sub>)(τ − χ)(𝔤)) ≅ gr(𝒟(E<sub>V</sub>))/(gr 𝒟(E<sub>V</sub>))𝔤 as 𝕂\[T\*X\]-modules.”
+
+**Sources:**
+
+- [M. P. Holland, Quantization of the Marsden–Weinstein reduction for extended Dynkin quivers, Annales Scientifiques de l'École Normale Supérieure 32 (1999), 813–834](https://doi.org/10.1016/S0012-9593(00)87719-8)
+- [H. Zhao, Commutativity of quantization and reduction for quiver representations, arXiv:2105.05440](https://arxiv.org/abs/2105.05440)
 
 ### Enveloping algebras quantize polynomial Poisson algebras to order three
 

@@ -575,7 +575,7 @@
 
 **Remember:** Euler forms live in the derived category, so derived equivalences preserve them.
 
-*True by definition.* MSC 16E20 (Grothendieck groups, \\(K\\)-theory, etc.), 16E35, 16E10. arXiv math.RT. Level 3: graduate.
+*True by definition.* MSC 16E20 (Grothendieck groups, K-theory, etc.), 16E35, 16E10. arXiv math.RT. Level 3: graduate.
 
 **Definition.** For a finite-dimensional k-algebra of finite global dimension, the Euler form pairs Grothendieck group classes by ⟨\[M\], \[N\]⟩ = ∑ᵢ (−1)ⁱ dimₖ Extⁱ(M, N). This is the alternating sum of the dimensions of maps from M to the shifts of N in the derived category.
 

@@ -1018,7 +1018,7 @@
 
 **Remember:** Mean square convergence means the expected squared error tends to zero.
 
-*True by definition.* MSC 60F25 (\\(L<sup>p\\</sup>)-limit theorems), 60F05. arXiv math.PR. Level 2: later undergraduate.
+*True by definition.* MSC 60F25 (L<sup>p-limit</sup> theorems), 60F05. arXiv math.PR. Level 2: later undergraduate.
 
 **Definition.** A sequence converges in mean square to a number when its expected squared distance from that number tends to zero.
 
@@ -1698,7 +1698,7 @@
 
 **Remember:** Uniformly integrable means no member hides mass far out in the tail.
 
-*Makes the theorem clean to state or prove.* MSC 60F25 (\\(L<sup>p\\</sup>)-limit theorems), 28A20. arXiv math.PR, math.CA. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 60F25 (L<sup>p-limit</sup> theorems), 28A20. arXiv math.PR, math.CA. Level 3: graduate.
 
 **Definition.** A family of random variables is uniformly integrable if the part of the mean coming from large values vanishes uniformly. That is, sup E(\|X\|·1{\|X\| ≥ K}) over the family tends to 0 as K → ∞.
 

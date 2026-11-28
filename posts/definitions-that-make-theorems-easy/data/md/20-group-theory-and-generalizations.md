@@ -367,7 +367,7 @@
 
 **Remember:** A Sylow subgroup is a p-subgroup with no room to grow.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 1: early undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 1: early undergraduate.
 
 **Definition.** For a prime p, a p-subgroup is a subgroup whose elements all have order a power of p. A Sylow p-subgroup of G is a maximal p-subgroup, one that lies in no larger p-subgroup.
 
@@ -1247,7 +1247,7 @@
 
 **Remember:** An abelian quotient with no room to refine has prime order.
 
-*True by definition.* MSC 20D10 (Finite solvable groups, theory of formations, Schunck classes, Fitting classes, \\(\\pi\\)-length, ranks). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D10 (Finite solvable groups, theory of formations, Schunck classes, Fitting classes, π-length, ranks). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** A finite group is solvable if it has a chain of subgroups from the identity to the group, each normal in the next, with abelian quotients. Its composition factors are the quotients of a composition series, a chain that cannot be refined. So each factor is simple, with no proper nontrivial normal subgroup.
 
@@ -1265,7 +1265,7 @@
 
 **Remember:** A nontrivial twist needs an automorphism of order p.
 
-*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure), 20E22. arXiv math.GR. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure), 20E22. arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** For primes p &lt; q, a homomorphism α from Cₚ to Aut(C<sub>q</sub>) twists C<sub>q</sub> × Cₚ into a semidirect product, with (x,a)(y,b) = (x·α(a)(y), ab). Since Aut(C<sub>q</sub>) has order q − 1, a nontrivial α exists only if p divides q − 1.
 
@@ -1281,7 +1281,7 @@
 
 **Remember:** Put every π-prime in the subgroup order and none in its index.
 
-*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure), 20D10. arXiv math.GR. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure), 20D10. arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** For a set of primes π, a Hall π-subgroup of a finite group G has order using only primes in π and index using none. So it contains the full power of each prime in π that divides \|G\|, as a Sylow subgroup does for one prime (our own).
 
@@ -1299,7 +1299,7 @@
 
 **Remember:** A coset fixed by Q places Q inside that conjugate of P.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** A Sylow p-subgroup P of a finite group G has order the largest power of p dividing \|G\|. So the number of its left cosets is prime to p (our own). A subgroup Q fixes the coset gP when qgP = gP for every q in Q, which says exactly that g⁻¹Qg ⊆ P (our own).
 
@@ -1317,7 +1317,7 @@
 
 **Remember:** Sylow means p-power order and index prime to p; images keep both.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** For a prime p, a Sylow p-subgroup of a finite group is a subgroup of p-power order whose index, the number of its cosets, is prime to p.
 
@@ -1333,7 +1333,7 @@
 
 **Remember:** Coprime order and index let a normal subgroup split off.
 
-*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure), 20E22. arXiv math.GR. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure), 20E22. arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** A normal Hall subgroup N of a finite group G is a normal subgroup whose order is coprime to its index. A complement of N is a subgroup K with N ∩ K trivial and NK = G, so that G is a semidirect product of N and K.
 
@@ -1349,7 +1349,7 @@
 
 **Remember:** Conjugates stay inside a normal subgroup, so one lands in P.
 
-*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** A subgroup N of G is normal if gNg⁻¹ = N for every g in G, so every conjugate of a subgroup of N stays inside N (our own). A Sylow p-subgroup has order the largest power of p dividing the group order.
 
@@ -1365,7 +1365,7 @@
 
 **Remember:** The normalizer is P’s stabilizer, so its cosets count P’s conjugates.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** The normalizer of a subgroup P of G is its stabilizer when G acts on subgroups by conjugation: the elements g with gPg⁻¹ = P. A Sylow p-subgroup has order the largest power of p dividing the group order.
 
@@ -1383,7 +1383,7 @@
 
 **Remember:** Rotation fixes only constant tuples, and p divides their number.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** For a prime p, take the ordered lists of p elements of G whose product is the identity. There are \|G\|ᵖ⁻¹ of them, since the first p − 1 entries fix the last (our own). Rotating a list keeps its product equal to the identity, and a list fixed by rotation is constant, (g, …, g) with gᵖ = 1 (our own).
 
@@ -1401,7 +1401,7 @@
 
 **Remember:** Find a q-element subset whose orbit size is prime to p.
 
-*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, π-groups, π-structure). arXiv math.GR. Level 2: later undergraduate.
 
 **Definition.** Let q be the largest power of a prime p dividing \|G\|, and let G act on its q-element subsets by left translation, S ↦ gS. The stabilizer of S, the elements g with gS = S, is a subgroup whose right cosets fill S, so its order divides q (our own).
 
@@ -2773,7 +2773,7 @@
 
 **Remember:** A simple reflection moves each double coset into at most two.
 
-*Makes the theorem clean to state or prove.* MSC 20E42 (Groups with a \\(BN\\)-pair; buildings), 20D06. arXiv math.GR. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 20E42 (Groups with a BN-pair; buildings), 20D06. arXiv math.GR. Level 3: graduate.
 
 **Definition.** A BN-pair in G is two subgroups B and N that generate G, with B ∩ N normal in N and W = N/(B ∩ N) generated by involutions S. Each s in S sends a double coset into at most two: sBw ⊆ BswB ∪ BwB for all w in W. Also sBs⁻¹ ⊈ B for every s in S.
 

@@ -854,7 +854,7 @@
 
 **Remember:** Small atoms cancel their means, and their coefficients sum absolutely.
 
-*Rules out counterexamples.* MSC 42B30 (\\(H<sup>p\\</sup>)-spaces), 42A50. arXiv math.CA, math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 42B30 (H<sup>p-spaces</sup>), 42A50. arXiv math.CA, math.FA. Level 3: graduate.
 
 **Definition.** An atom on ℝ is a function supported in a bounded interval I, bounded by 1/\|I\|, and of integral zero, so it cancels against any function that is nearly constant on I (our own). Atomic H¹ consists of sums ∑cⱼaⱼ of atoms with ∑\|cⱼ\| &lt; ∞, normed by the infimum of ∑\|cⱼ\|.
 
@@ -870,7 +870,7 @@
 
 **Remember:** Mean zero survives any sum that converges in the integral norm.
 
-*True by definition.* MSC 42B30 (\\(H<sup>p\\</sup>)-spaces). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 42B30 (H<sup>p-spaces</sup>). arXiv math.CA. Level 3: graduate.
 
 **Definition.** A real H¹ atom on Euclidean space is supported in a ball, bounded by one over the ball's volume, and has integral zero. Real H¹ is the set of sums ∑cⱼaⱼ of atoms with ∑\|cⱼ\| &lt; ∞, which converge in L¹ because each atom has L¹ norm at most one.
 

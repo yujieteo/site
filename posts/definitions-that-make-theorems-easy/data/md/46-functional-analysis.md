@@ -52,7 +52,7 @@
 
 **Remember:** Make the image part of the norm, then compare the two norms.
 
-*True by definition.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including \\(B\\)-, \\(B<sub>r</sub>\\)-completeness)), 47A05. arXiv math.FA. Level 2: later undergraduate.
+*True by definition.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including B-, B<sub>r</sub>-completeness)), 47A05. arXiv math.FA. Level 2: later undergraduate.
 
 **Definition.** The graph norm of a linear map T from a normed space X to a normed space Y is ‖x‖ + ‖Tx‖ on X. It is the norm of the pair (x,Tx), so for Banach X and Y the space X is complete in this norm exactly when the graph is closed in X × Y (our own).
 
@@ -299,7 +299,7 @@
 
 **Remember:** Complete the simple functions, then name the limits as functions.
 
-*True by definition.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 28A25. arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 28A25. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For 1 ≤ p &lt; ∞, take the simple functions that vanish outside a set of finite measure, with norm (∫\|f\|ᵖ)¹ᐟᵖ, identifying functions equal almost everywhere. Lᵖ is the completion of this normed space, so every Cauchy sequence has a limit by construction (our own).
 
@@ -315,7 +315,7 @@
 
 **Remember:** Use 1/p as the degree, and degrees add when you multiply.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 26D15. arXiv math.FA, math.CA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 26D15. arXiv math.FA, math.CA. Level 2: later undergraduate.
 
 **Definition.** On a fixed measure space, give the space M(a) = L¹⁄ᵃ degree a for each real a &gt; 0, and give M(0) = L∞ degree 0. So the degree of Lᵖ is the reciprocal exponent 1/p.
 
@@ -331,7 +331,7 @@
 
 **Remember:** In Lᵖ, what happens on a set of measure zero does not count.
 
-*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)). arXiv math.FA, math.CA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)). arXiv math.FA, math.CA. Level 2: later undergraduate.
 
 **Definition.** For 1 ≤ p &lt; ∞, Lᵖ(S,μ) consists of measurable functions f with ∫\|f\|ᵖ dμ finite, where two functions count as equal when they agree almost everywhere. This identification makes ∫\|f\|ᵖ = 0 happen only for f = 0.
 
@@ -349,7 +349,7 @@
 
 **Remember:** Measure the error by its energy, and Fourier series always converge.
 
-*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 42A20. arXiv math.FA, math.CA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 42A20. arXiv math.FA, math.CA. Level 2: later undergraduate.
 
 **Definition.** A sequence of functions gₙ converges to f in mean square, or in the L² norm, when the integral of the squared error ∫\|gₙ − f\|² tends to 0. This norm comes from an inner product, so projections and Pythagoras apply.
 
@@ -367,7 +367,7 @@
 
 **Remember:** Riemann lets Fourier limits fall out; Lebesgue keeps them.
 
-*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 46C05. arXiv math.FA, math.CA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 46C05. arXiv math.FA, math.CA. Level 2: later undergraduate.
 
 **Definition.** L² consists of the Lebesgue-measurable functions f with Lebesgue integral ∫\|f\|² finite, identified when they agree almost everywhere, with inner product ⟨f,g⟩ = ∫ f̄g. Using the Lebesgue integral admits limit functions that are not Riemann integrable.
 
@@ -523,7 +523,7 @@
 
 **Remember:** Without completeness, a bounded bijection can have an unbounded inverse.
 
-*Rules out counterexamples.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including \\(B\\)-, \\(B<sub>r</sub>\\)-completeness)), 47B01. arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including B-, B<sub>r</sub>-completeness)), 47B01. arXiv math.FA. Level 3: graduate.
 
 **Definition.** A Banach space is a normed space that is complete: every Cauchy sequence converges, so every series whose terms have summable norms has a sum. An open map sends open sets to open sets.
 
@@ -945,7 +945,7 @@
 
 **Remember:** Sort the values downward, and only level-set sizes survive.
 
-*True by definition.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 28A25. arXiv math.FA, math.CA. Level 3: graduate.
+*True by definition.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 28A25. arXiv math.FA, math.CA. Level 3: graduate.
 
 **Definition.** The decreasing rearrangement f\* of f is the right-continuous decreasing function on (0,∞) whose superlevel sets have the same measures as those of \|f\|. Explicitly, f\*(t) = inf{a ≥ 0 : μ{\|f\| &gt; a} ≤ t}, with inf ∅ = ∞. For 0 &lt; p &lt; ∞ and 0 &lt; q ≤ ∞, the Lorentz quasinorm of f is the Lᑫ norm of t¹⁄ᵖf\*(t) for the measure dt/t.
 
@@ -961,7 +961,7 @@
 
 **Remember:** Doubling means finite at one scale is finite at every scale.
 
-*Rules out counterexamples.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)). arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)). arXiv math.FA. Level 3: graduate.
 
 **Definition.** Let Φ be finite, convex and increasing on \[0,∞), with Φ(0) = 0 and Φ(t) → ∞. The Orlicz space holds the measurable f with ∫Φ(\|f\|/λ) ≤ 1 for some λ &gt; 0, normed by the least such λ. Φ is doubling if Φ(2t) ≤ CΦ(t) for one C and all t ≥ 0, so every f in the space has ∫Φ(c\|f\|) finite for every c &gt; 0.
 
@@ -1469,7 +1469,7 @@
 
 **Remember:** Adding a unit is adding a point at infinity.
 
-*Makes the theorem clean to state or prove.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** Adjoin a unit to a C\*-algebra A, the analogue of adding a point at infinity, by forming A⁺ = A ⊕ ℂ. Its product is (a, z)(b, w) = (ab + wa + zb, zw). Define K₀(A) as the kernel of the map K₀(A⁺) → ℤ induced by the scalar projection (a, z) ↦ z.
 
@@ -1485,7 +1485,7 @@
 
 **Remember:** Drop the zero character, and the space left over is locally compact.
 
-*True by definition.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras), 46J25. arXiv math.OA, math.FA. Level 3: graduate.
+*True by definition.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>), 46J25. arXiv math.OA, math.FA. Level 3: graduate.
 
 **Definition.** The spectrum of a commutative C\*-algebra A is the set of nonzero \*-homomorphisms from A to ℂ. It carries the weak-\* topology, the topology of pointwise convergence on A.
 
@@ -1501,7 +1501,7 @@
 
 **Remember:** A map that preserves adjoints sends b\*b to φ(b)\*φ(b).
 
-*True by definition. Confidence: medium.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras). arXiv math.OA. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>). arXiv math.OA. Level 3: graduate.
 
 **Definition.** Call an element of a C\*-algebra positive if it equals b\*b for some element b of the algebra.
 
@@ -1517,7 +1517,7 @@
 
 **Remember:** Once the star keeps the norm, the two identities coincide.
 
-*True by definition. Confidence: medium.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras). arXiv math.OA. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>). arXiv math.OA. Level 3: graduate.
 
 **Definition.** The involution of a Banach \*-algebra is isometric when ‖A\*‖ = ‖A‖ for every A. The two identities ask ‖A\*A‖ = ‖A\*‖‖A‖ and ‖A\*A‖ = ‖A‖² for every A, and with an isometric involution their right sides agree.
 
@@ -1535,7 +1535,7 @@
 
 **Remember:** The C\*-identity makes the norm equal the largest character value.
 
-*Rules out counterexamples.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras), 46J25. arXiv math.OA, math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>), 46J25. arXiv math.OA, math.FA. Level 3: graduate.
 
 **Definition.** A C\*-algebra is a Banach algebra with an involution such that ‖x\*x‖ = ‖x‖². In a commutative one this forces each norm to equal the spectral radius, the largest \|f(a)\| over characters f, the nonzero homomorphisms to ℂ. The Gelfand transform sends a to the function f ↦ f(a) on the character space.
 
@@ -1553,7 +1553,7 @@
 
 **Remember:** Multiplying every generator by the same unit scalar keeps the relations.
 
-*True by definition.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras), 46L55. arXiv math.OA. Level 3: graduate.
+*True by definition.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>), 46L55. arXiv math.OA. Level 3: graduate.
 
 **Definition.** For an integer n ≥ 2, the Cuntz algebra Oₙ has generators s₁,…,sₙ satisfying sᵢ\*sᵢ = 1 for every i and ∑ᵢ sᵢsᵢ\* = 1. Every family satisfying these relations in a unital C\*-algebra is the image of the generators under exactly one unital \*-homomorphism.
 
@@ -1571,7 +1571,7 @@
 
 **Remember:** If no element of D can ignore A, D embeds in M(A).
 
-*True by definition.* MSC 46L05 (General theory of \\(C<sup>\*\\</sup>)-algebras). arXiv math.OA. Level 3: graduate.
+*True by definition.* MSC 46L05 (General theory of C<sup>\*-algebras</sup>). arXiv math.OA. Level 3: graduate.
 
 **Definition.** A closed ideal A of a C\*-algebra D is essential if no nonzero element of D multiplies all of A to zero. The multiplier algebra M(A) contains A as an essential ideal. For each C\*-algebra D containing A as a closed ideal, exactly one adjoint-preserving homomorphism D → M(A) restricts to the identity on A.
 
@@ -1587,7 +1587,7 @@
 
 **Remember:** Nuclear means every tensor product with it has one C\*-norm.
 
-*True by definition. Confidence: medium.* MSC 46L06 (Tensor products of \\(C<sup>\*\\</sup>)-algebras). arXiv math.OA. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 46L06 (Tensor products of C<sup>\*-algebras</sup>). arXiv math.OA. Level 3: graduate.
 
 **Definition.** A C\*-algebra A is nuclear if, for every C\*-algebra B, the algebraic tensor product A ⊗ B has only one C\*-norm. Equivalently, its minimal and maximal completions agree: A ⊗min B = A ⊗max B.
 
@@ -1624,7 +1624,7 @@
 
 **Remember:** Countably many vectors generate a dense submodule.
 
-*Rules out counterexamples.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 19K35. arXiv math.OA. Level 3: graduate.
+*Rules out counterexamples.* MSC 46L08 (C<sup>\*-modules</sup>), 19K35. arXiv math.OA. Level 3: graduate.
 
 **Definition.** A Hilbert B-module E is countably generated when some countable subset spans a dense submodule. The standard module ℓ²(B) consists of the sequences (bᵢ) in B for which the sum of the bᵢ\*bᵢ converges in B.
 
@@ -1642,7 +1642,7 @@
 
 **Remember:** Compact operators on a full module are Morita equivalent to the coefficients.
 
-*True by definition.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 46L85. arXiv math.OA. Level 3: graduate.
+*True by definition.* MSC 46L08 (C<sup>\*-modules</sup>), 46L85. arXiv math.OA. Level 3: graduate.
 
 **Definition.** A Hilbert B-module E is full if the linear span of all inner products ⟨x,y⟩ is dense in B. Two C\*-algebras A and B are strongly Morita equivalent if A ≅ 𝒦(E) for some full Hilbert B-module E.
 
@@ -1696,7 +1696,7 @@
 
 **Remember:** Remember projection classes, their positive cone, and the unit.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L35 (Classifications of \\(C<sup>\*\\</sup>)-algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L35 (Classifications of C<sup>\*-algebras</sup>), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** A unital AF algebra is a unital C\*-algebra that is a sequential inductive limit of finite-dimensional C\*-algebras. Its ordered K₀ invariant is the group K₀, the positive cone of classes of projections in matrices over the algebra, and the class \[1\].
 
@@ -1866,7 +1866,7 @@
 
 **Remember:** Scalar evaluation becomes restriction to the point at infinity.
 
-*True by definition.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19K99, 55N15. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 19K99, 55N15. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a C\*-algebra A, K₀(A) is the kernel of the scalar map K₀(A⁺) → ℤ, where A⁺ is A with a new unit adjoined even if A already has one. This copies compactly supported K⁰(X), the kernel of restriction from K⁰(X⁺) to the added point at infinity.
 
@@ -1884,7 +1884,7 @@
 
 **Remember:** A path of homomorphisms sends each unitary to a path.
 
-*True by definition. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19K99. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 19K99. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a unital C\*-algebra A, K₁(A) is the set of classes of unitary matrices over A. Two unitaries have the same class when, after adding identity blocks to reach one size, a continuous path of unitaries joins them.
 
@@ -1900,7 +1900,7 @@
 
 **Remember:** Matrices over n × n matrices are just larger matrices.
 
-*True by definition. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19K99. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 19K99. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a unital C\*-algebra A, K₀(A) is built from projections p = p² = p\* in matrices of every finite size over A. Two projections are equivalent when p = v\*v and q = vv\* for a rectangular matrix v over A, and K₀(A) is the group completion of the classes under block sum.
 
@@ -2004,7 +2004,7 @@
 
 **Remember:** A countable tree of convex sets replaces Baire category in the target.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including \\(B\\)-, \\(B<sub>r</sub>\\)-completeness)). arXiv math.FA. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including B-, B<sub>r</sub>-completeness)). arXiv math.FA. Level 4: research.
 
 **Definition.** A webbed space carries a convex web of type C: absolutely convex sets C(s), indexed by nonempty finite lists s of positive integers, where the first level covers the space and the children of each set cover that set. Along every branch, some positive λₙ make ∑λₙxₙ converge for every choice of xₙ in the nth set.
 
@@ -2149,7 +2149,7 @@
 
 **Remember:** Small support means one small set holds all the mass.
 
-*True by definition.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 90C26. arXiv math.OC, math.FA. Level 4: research.
+*True by definition.* MSC 46E30 (Spaces of measurable functions (L<sup>p-spaces</sup>, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 90C26. arXiv math.OC, math.FA. Level 4: research.
 
 **Definition.** For u ∈ L¹(Ω), the largest-K norm \|u\|<sub>K</sub> is the most mass of \|u\| that one set of measure at most K can hold: the supremum of ∫<sub>A</sub> \|u\| over measurable A with μ(A) ≤ K.
 
@@ -2275,7 +2275,7 @@
 
 **Remember:** Countable approximate units keep Morita equivalent algebras inside one separable stabilization.
 
-*Rules out counterexamples.* MSC 46L08 (\\(C<sup>\*\\</sup>)-modules), 46L80. arXiv math.OA. Level 4: research.
+*Rules out counterexamples.* MSC 46L08 (C<sup>\*-modules</sup>), 46L80. arXiv math.OA. Level 4: research.
 
 **Definition.** A C\*-algebra A is σ-unital if it has a countable approximate unit: a sequence of positive contractions eₙ with ‖eₙa − a‖ → 0 for every a ∈ A.
 
@@ -2293,7 +2293,7 @@
 
 **Remember:** Its own ultrapower already holds free partners for A.
 
-*Makes the theorem clean to state or prove.* MSC 46L09 (Free products of \\(C<sup>\*\\</sup>)-algebras), 46L35, 46L54. arXiv math.OA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 46L09 (Free products of C<sup>\*-algebras</sup>), 46L35, 46L54. arXiv math.OA. Level 4: research.
 
 **Definition.** A C\*-probability space (A,ρ) is selfless if an ultrapower of it already contains a free partner for A. Precisely, with A ≠ ℂ and the GNS representation of ρ faithful, the reduced free product of (A,ρ) with (C\*ᵣ(F∞),τ) embeds state-preservingly into an ultrapower of (A,ρ), fixing the diagonal copy of A.
 
@@ -2804,7 +2804,7 @@
 
 **Remember:** Holomorphic functions turn near-idempotents into true idempotents inside the subalgebra.
 
-*Makes the theorem clean to state or prove.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 58B34, 46H30. arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 58B34, 46H30. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** A dense subalgebra 𝒜 of a C\*-algebra A is closed under holomorphic functional calculus if f(a) ∈ 𝒜 whenever a ∈ 𝒜 and f is holomorphic near the spectrum of a. So idempotents and inverses made from elements of 𝒜 by contour integrals stay in 𝒜 (our own), as for C∞(M) inside C(M).
 
@@ -2822,7 +2822,7 @@
 
 **Remember:** After stabilizing, the determinant disappears and the two K-theories agree.
 
-*Rules out counterexamples.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19D50. arXiv math.KT, math.OA. Level 4: research.
+*Rules out counterexamples.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 19D50. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** The stabilization of a C\*-algebra A is A ⊗ 𝒦, its spatial tensor product with the compact operators 𝒦 on a separable infinite-dimensional Hilbert space. The room for infinitely many copies of A removes algebraic invariants, such as the determinant, that topological K-theory cannot see (our own).
 
@@ -2841,7 +2841,7 @@
 
 **Remember:** A Toeplitz algebra that looks like A extends the crossed product.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 46L55. arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 46L55. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** The Pimsner–Voiculescu Toeplitz algebra of an automorphism α of A is generated by a ⊗ 1 and au ⊗ S for a ∈ A. Here u implements α and S is the unilateral shift. It is an extension of A ⋊α ℤ by A ⊗ 𝒦, and it has the same K-theory as A (our own).
 
@@ -2859,7 +2859,7 @@
 
 **Remember:** The correspondence is a KK class, and 1 − \[E\] drives everything.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (\\(K\\)-theory and operator algebras (including cyclic theory)), 19K35, 46L08. arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L80 (K-theory and operator algebras (including cyclic theory)), 19K35, 46L08. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** An A-correspondence is a right Hilbert A-module E with a left action of A by adjointable operators. When A is separable, E is countably generated and A acts by compact operators, the pair (E, 0) is a Kasparov cycle, so E itself gives a class \[E\] in KK(A,A).
 
@@ -2935,7 +2935,7 @@
 
 **Remember:** Up to almost zero, the unit ball remembers the norm exactly.
 
-*Rules out counterexamples. Confidence: medium.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 46H25, 13J10. arXiv math.NT, math.FA. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 46S10 (Functional analysis over fields other than ℝ or ℂ or the quaternions; non-Archimedean functional analysis), 46H25, 13J10. arXiv math.NT, math.FA. Level 4: research.
 
 **Definition.** Let A be a Banach ring with a norm-multiplicative, topologically nilpotent unit ϖ, ‖ϖ‖ ≤ 1, with compatible pⁿ-th roots of norm ‖ϖ‖<sup>(1/pⁿ)</sup>. The almost unit ball of a Banach A-module is its closed unit ball, with modules killed by all roots of ϖ treated as zero. This makes any two lattices with the same gauge norm equal.
 
@@ -2953,7 +2953,7 @@
 
 **Remember:** Solid tensor products of complete modules are complete, so ℤₚ ⊗ ℤₚ = ℤₚ.
 
-*Rules out counterexamples.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 13J10, 13D09. arXiv math.AG, math.AC. Level 4: research.
+*Rules out counterexamples.* MSC 46S10 (Functional analysis over fields other than ℝ or ℂ or the quaternions; non-Archimedean functional analysis), 13J10, 13D09. arXiv math.AG, math.AC. Level 4: research.
 
 **Definition.** The derived solid tensor product is the solidification of the derived condensed tensor product, so products of copies of ℤ tensor to products again (our own reading of the condensed notes). A solid A-module complex M is derived I-complete if M → Rlimₙ(M ⊗ᴸ<sub>A</sub> A/Iⁿ) is an equivalence, using solid tensors.
 
@@ -2972,7 +2972,7 @@
 
 **Remember:** Solid groups cannot tell a free group from its completion.
 
-*True by definition.* MSC 46S10 (Functional analysis over fields other than \\(\\mathbb\\) or \\(\\mathbb\\) or the quaternions; non-Archimedean functional analysis), 18F20. arXiv math.AG, math.FA. Level 4: research.
+*True by definition.* MSC 46S10 (Functional analysis over fields other than ℝ or ℂ or the quaternions; non-Archimedean functional analysis), 18F20. arXiv math.AG, math.FA. Level 4: research.
 
 **Definition.** For a profinite set S = lim Sᵢ, let ℤ\[S\]■ = lim ℤ\[Sᵢ\], the completed free group on S. A condensed abelian group, a sheaf of abelian groups on profinite sets, is solid if every map from S into it extends uniquely to a group map from ℤ\[S\]■.
 

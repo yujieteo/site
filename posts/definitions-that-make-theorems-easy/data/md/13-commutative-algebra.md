@@ -36,7 +36,7 @@
 
 **Remember:** In prime characteristic, the middle binomial terms vanish.
 
-*Rules out counterexamples.* MSC 13A35 (Characteristic \\(p\\) methods (Frobenius endomorphism) and reduction to characteristic \\(p\\); tight closure). arXiv math.AC. Level 1: early undergraduate.
+*Rules out counterexamples.* MSC 13A35 (Characteristic p methods (Frobenius endomorphism) and reduction to characteristic p; tight closure). arXiv math.AC. Level 1: early undergraduate.
 
 **Definition.** A ring has characteristic p when p copies of 1 add to zero and no fewer do, so p times any element is zero. The Frobenius map raises each element to the power p.
 

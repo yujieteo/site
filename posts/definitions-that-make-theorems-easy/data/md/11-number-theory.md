@@ -731,7 +731,7 @@
 
 **Remember:** Count multiples of p once more at every power of p.
 
-*True by definition.* MSC 11B65 (Binomial coefficients; factorials; \\(q\\)-identities), 11A51. arXiv math.NT. Level 1: early undergraduate.
+*True by definition.* MSC 11B65 (Binomial coefficients; factorials; q-identities), 11A51. arXiv math.NT. Level 1: early undergraduate.
 
 **Definition.** For a prime p, take the exponent of p in a positive integer a to be the number of powers p, p², p³, … that divide a. So a multiple of pⁱ is counted once at each level up to i.
 
@@ -747,7 +747,7 @@
 
 **Remember:** A nontrivial subset on a prime-sized circle has a full set of rotations.
 
-*True by definition.* MSC 11B65 (Binomial coefficients; factorials; \\(q\\)-identities), 05A19. arXiv math.NT, math.CO. Level 1: early undergraduate.
+*True by definition.* MSC 11B65 (Binomial coefficients; factorials; q-identities), 05A19. arXiv math.NT, math.CO. Level 1: early undergraduate.
 
 **Definition.** Define C(p,k) as the number of k-element subsets of p equally spaced points on a circle. Rotations sort these subsets into groups of rotated copies (our own).
 
@@ -1334,7 +1334,7 @@
 
 **Remember:** Read binomial coefficients as polynomial coefficients, then factor by base-p digits.
 
-*True by definition.* MSC 11B65 (Binomial coefficients; factorials; \\(q\\)-identities), 11A07. arXiv math.NT, math.CO. Level 2: later undergraduate.
+*True by definition.* MSC 11B65 (Binomial coefficients; factorials; q-identities), 11A07. arXiv math.NT, math.CO. Level 2: later undergraduate.
 
 **Definition.** Define C(m, n) as the coefficient of Xⁿ in (1 + X)ᵐ, for nonnegative integers m and n. Modulo p, (1 + X)ᵐ splits by the base-p digits mᵢ of m into the product of the factors (1 + X<sup>(pⁱ)</sup>)<sup>(mᵢ)</sup>.
 
@@ -1668,7 +1668,7 @@
 
 **Remember:** Test each wave, then approximate every continuous test by sums of waves.
 
-*Makes the theorem clean to state or prove.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 42A10. arXiv math.CA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 11K06 (General theory of distribution modulo 1), 42A10. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** A real sequence is equidistributed modulo one if, for every continuous 1-periodic function f, the average of f over the first N terms tends to the integral of f over \[0, 1\] as N tends to infinity. Because averages are linear and bounded by the maximum of \|f\|, it is enough to test a uniformly dense family of functions.
 
@@ -1721,7 +1721,7 @@
 
 **Remember:** A product of nonzero factors with summable logarithms is not zero.
 
-*True by definition. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 2: later undergraduate.
+*True by definition. Confidence: medium.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 2: later undergraduate.
 
 **Definition.** For Re s &gt; 1, write ζ(s) as the Euler product over primes p of 1/(1 − p⁻ˢ), which equals the usual sum of n⁻ˢ. Each factor is nonzero, and the logarithms of the factors are bounded in size by 2p<sup>(−Re s)</sup>, so they sum absolutely.
 
@@ -2685,7 +2685,7 @@
 
 **Remember:** Factorial powers keep units and kill the rest.
 
-*True by definition.* MSC 11F33 (Congruences for modular and \\(p\\)-adic modular forms), 11F85. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11F33 (Congruences for modular and p-adic modular forms), 11F85. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let U be a Hecke operator on a finite free module over the p-adic integers. Its ordinary part is the largest direct summand on which U is invertible, with a complement on which the powers of U tend to zero. The ordinary projector is the limit of U to the power n!, which modulo each power of p becomes the identity on the first summand and zero on the second (our own).
 
@@ -2789,7 +2789,7 @@
 
 **Remember:** One conductor tracks level, gamma shifts, and height.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a unitary cuspidal L-function on GL(d) over ℚ, d ≥ 2, let N denote its arithmetic conductor, which measures ramification at finite primes. Its gamma factors have the form Γℝ(s+κ), where Γℝ(z) = Γ(z/2) exp(−z log(π)/2). Define C(t) as N times the product of 3 + \|it+κ\| over these shifts.
 
@@ -2807,7 +2807,7 @@
 
 **Remember:** A symmetric kernel gives a symmetric integral.
 
-*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations), 11F67. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations), 11F67. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For normalized level-one cusp eigenforms f, g of weight k, the Rankin–Selberg integral is the integral over SL₂(ℤ)∖ℍ of yᵏ f(τ) times the conjugate of g(τ) times E\*(τ,s), with y = Im τ and hyperbolic area. Here E\* is the completed Eisenstein series, which satisfies E\*(τ,s) = E\*(τ,1−s) (our own).
 
@@ -2823,7 +2823,7 @@
 
 **Remember:** An even weight survives the reflection of the contour.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For an entire cusp-form completion satisfying Λ(s)=εΛ̃(1−s), an auxiliary weight is an even entire function G with G(0)=1. Require rapid decay as the imaginary part tends to either infinity, uniformly on each bounded vertical strip (our own).
 
@@ -2841,7 +2841,7 @@
 
 **Remember:** Inversion in y reflects the Mellin variable.
 
-*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let f be a holomorphic cusp form of weight k for SL₂(ℤ), so f has modular symmetry and vanishes at infinity. Its Fourier coefficients a(n) define L(s) = ∑ a(n)/nˢ. Define Λ(s) by integrating f(iy)yˢ dy/y over y &gt; 0.
 
@@ -2859,7 +2859,7 @@
 
 **Remember:** Removing scalar matrices removes the zeta factor.
 
-*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a level-one holomorphic cusp eigenform, let Aₚ have the two unitary-normalized local parameters on its diagonal. On complex two-by-two matrices set Cₚ(B)=AₚBAₚ⁻¹. The adjoint Euler factor is 1/det(I−p⁻ˢCₚ) on trace-zero matrices (our own).
 
@@ -2875,7 +2875,7 @@
 
 **Remember:** A negative sign allows only odd central Taylor powers.
 
-*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For an automorphic L-function, completion multiplies the series by the exponential and gamma factors in its functional equation. In the self-dual case, the same completed function Λ occurs on both sides. Its root number is the sign ε in Λ(s) = εΛ(1−s).
 
@@ -2891,7 +2891,7 @@
 
 **Remember:** The constant residue of E leaves precisely the inner product.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For weight k cusp forms f, g on SL₂(ℤ), set h(z) = yᵏ f(z) times the conjugate of g(z), where y = Im z. For Re s &gt; 1, the Eisenstein series E(z,s) sums (Im γz)ˢ over left cosets of the stabilizer of infinity. Define I(s) by integrating h(z)E(z,s) over the modular surface with hyperbolic area (our own).
 
@@ -2909,7 +2909,7 @@
 
 **Remember:** Shared endpoints cancel as terms of a divisor.
 
-*True by definition. Confidence: medium.* MSC 11F67 (Special values of automorphic \\(L\\)-series, periods of automorphic forms, cohomology, modular symbols), 11F75. arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11F67 (Special values of automorphic L-series, periods of automorphic forms, cohomology, modular symbols), 11F75. arXiv math.NT. Level 3: graduate.
 
 **Definition.** A degree-zero divisor of rational cusps is a formal integer sum of points in ℚ ∪ {∞} whose coefficients sum to zero. A weight two modular symbol is an additive map from these divisors to complex numbers, invariant when the modular group under consideration moves the cusps. It assigns the pair (α,β) the value on β − α.
 
@@ -3618,7 +3618,7 @@
 
 **Remember:** Invert integers, and the reverse isogeny becomes an inverse.
 
-*True by definition. Confidence: medium.* MSC 11G10 (Abelian varieties of dimension \\(&gt; 1\\)), 14K15. arXiv math.NT, math.AG. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11G10 (Abelian varieties of dimension &gt; 1), 14K15. arXiv math.NT, math.AG. Level 3: graduate.
 
 **Definition.** The rational Tate module of an abelian variety is its ℓ-adic Tate module, the compatible sequences of ℓ-power torsion points, tensored with ℚℓ, for ℓ invertible in the base field. In it every nonzero integer acts invertibly (our own).
 
@@ -3787,7 +3787,7 @@
 
 **Remember:** A path junction cuts the sequence of integration times once.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 3: graduate.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 3: graduate.
 
 **Definition.** An iterated integral of forms f₁(t) dt, …, fₙ(t) dt along a piecewise smooth path integrates f₁(t₁) ⋯ fₙ(tₙ) over the ordered times 0 &lt; t₁ &lt; ⋯ &lt; tₙ &lt; 1. For polylogarithms the forms are dz/(z − a), with a a puncture.
 
@@ -3982,7 +3982,7 @@
 
 **Remember:** Fractional parts spread evenly when every nonzero Fourier average dies.
 
-*True by definition.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K31. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11K06 (General theory of distribution modulo 1), 11K31. arXiv math.NT. Level 3: graduate.
 
 **Definition.** A sequence is uniformly distributed modulo 1 when its fractional parts land in each interval with frequency equal to the interval’s length. By Weyl’s criterion, this holds exactly when for every nonzero integer h the average of exp(2πihxₙ) over the first N terms tends to zero.
 
@@ -4312,7 +4312,7 @@
 
 **Remember:** Cut both sums at one point so their terms pair up.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT, math.CV. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Approximate ζ(½ + it) by two reflected Dirichlet sums cut off at the same point m = ⌊√(t/(2π))⌋. Multiplying by exp(iθ(t)), where θ(t) = Im log Γ(¼ + it/2) − (t/2)log π with the continuous logarithm real at t = 0, makes the two terms with each index n complex conjugates (our own).
 
@@ -4330,7 +4330,7 @@
 
 **Remember:** Integrate once and each zero gets a second denominator.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (ζ (s) and L(s, χ)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Integrate the prime-power count once: A(x) = ∫₁ˣ ψ(u) du, where ψ(x) sums log p over prime powers pᵏ ≤ x. This gives each nontrivial zero ρ of ζ the extra denominator ρ + 1, so the sum over zeros converges absolutely (our own).
 
@@ -4346,7 +4346,7 @@
 
 **Remember:** Logarithmic time places each prime power at its logarithm.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Put the prime count on a logarithmic time axis: A(y) = ψ(exp y) for y ≥ 0, where ψ(x) sums log p over prime powers pᵏ ≤ x. Then A is nondecreasing with Laplace transform −ζ′(s)/(sζ(s)) for Re s &gt; 1, the form that the Wiener–Ikehara theorem needs (our own).
 
@@ -4364,7 +4364,7 @@
 
 **Remember:** For an odd character, multiply by n so opposite integers add.
 
-*True by definition.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a nontrivial primitive character χ modulo q, take a ∈ {0,1} with χ(−1) = (−1)ᵃ, and for t &gt; 0 let Θ(t) sum nᵃχ(n)exp(−πn²t/q) over nonzero integers n. The factor nᵃ makes the terms at n and −n equal instead of cancelling (our own).
 
@@ -4380,7 +4380,7 @@
 
 **Remember:** A smooth cutoff makes the far zeros fade out.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M06 (ζ (s) and L(s, χ)), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Replace the sharp cutoff in a sum of Λ(n) by a smooth weight w with compact support in (1,∞), where Λ(n) = log p if n is a power of a prime p and zero otherwise. Its Mellin transform W(s) = ∫₁∞ w(u) exp((s−1) log u) du then decays faster than any power of the height on vertical lines, so the sum over zeros converges absolutely (our own).
 
@@ -4398,7 +4398,7 @@
 
 **Remember:** Strip a character to its true period before reflecting.
 
-*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11L05. arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11M06 (ζ (s) and L(s, χ)), 11L05. arXiv math.NT. Level 3: graduate.
 
 **Definition.** The conductor of a Dirichlet character χ modulo q is the least divisor d of q such that χ on units comes from a character modulo d. Call χ primitive if d = q, so that its L-function L(s,χ) = ∑ χ(n)n⁻ˢ (Re s &gt; 1) has no extra Euler factors at primes dividing q but not d (our own).
 
@@ -4417,7 +4417,7 @@
 
 **Remember:** A loop around zero keeps the formula alive where the series dies.
 
-*True by definition. Confidence: medium.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 30B40. arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11M06 (ζ (s) and L(s, χ)), 30B40. arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** For nonintegral s, Riemann's expression is iΓ(1−s)/(2π) times the integral of (−x)<sup>(s−1)</sup>/(exp x − 1) along a Hankel contour, with the principal branch of log(−x). The contour approaches zero above the positive axis, circles zero counterclockwise within \|x\| &lt; 2π, and returns below the axis. It stays away from zero and from the poles 2πik, so the integral is entire in s and only Γ(1−s) can create poles (our own).
 
@@ -4433,7 +4433,7 @@
 
 **Remember:** Add the shifted terms first, so their opposite poles cancel.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let X(s) = π<sup>(s−½)</sup>Γ((1−s)/2)/Γ(s/2), so that ζ(s) = X(s)ζ(1−s), and let s = ½ + it with t real. The combined shifted kernel is K(z,t) = ζ(1+z) + X(s+z)X(1−s)ζ(1−z). Its two terms have poles 1/z and −1/z at z = 0, so their sum stays finite (our own).
 
@@ -4451,7 +4451,7 @@
 
 **Remember:** Prime zeta equals log zeta up to a tail of higher powers.
 
-*True by definition.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** The prime zeta function is P(s) = ∑ p⁻ˢ over primes p, for Re s &gt; 1. The Euler product gives log ζ(s) = ∑ₚ∑ₖ p<sup>(−ks)</sup>/k, whose k = 1 terms are exactly P(s), so the remainder R(s) = P(s) − log ζ(s) keeps only the terms with k ≥ 2 (our own).
 
@@ -4469,7 +4469,7 @@
 
 **Remember:** Multiply zeta by its missing factors, and it becomes symmetric and entire.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11M26. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)), 11M26. arXiv math.NT. Level 3: graduate.
 
 **Definition.** The Riemann xi function ξ(s) = ½s(s−1)π<sup>(−s/2)</sup>Γ(s/2)ζ(s) multiplies ζ by exactly the factors that cancel its pole and trivial zeros and make its functional equation symmetric. Take limits at removable singularities.
 
@@ -4487,7 +4487,7 @@
 
 **Remember:** Multiply by zeta to turn character values into nonnegative divisor sums.
 
-*True by definition. Confidence: medium.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a real nonprincipal Dirichlet character χ, multiply L(s,χ) by ζ(s). For Re s &gt; 1 the product has coefficient a(n) = ∑<sub>d\|n</sub> χ(d) at n, and these are nonnegative and at least one when n is a square (our own).
 
@@ -4505,7 +4505,7 @@
 
 **Remember:** Dividing out zeta, which is negative on (0,1), leaves the character.
 
-*True by definition.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R11. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11R11. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a quadratic field K of discriminant D, the Dedekind zeta function factors as ζᴷ(s) = ζ(s)L(s,χᴰ), so the quotient ζᴷ/ζ is the L-function of the quadratic character χᴰ. On 0 &lt; s &lt; 1 the factor ζ(s) is negative, so it is never zero there (our own).
 
@@ -4521,7 +4521,7 @@
 
 **Remember:** Bound the primitive value first, then put back the missing factors.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M06. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11M06. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Every character χ modulo q comes from a primitive character χ∗ modulo some d dividing q, the least modulus that determines χ on units. Then L(s,χ) is L(s,χ∗) times the finite product of 1 − χ∗(p)p⁻ˢ over primes p dividing q (our own).
 
@@ -4537,7 +4537,7 @@
 
 **Remember:** Subtract the same harmonic tail from each residue class.
 
-*True by definition.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M35. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11M35. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Define H(u) = ∑ₘ₌₀∞ (1/(m+u) − 1/(m+1)) for 0 &lt; u ≤ 1. Each residue class alone gives a divergent harmonic sum, and H subtracts the same reference term 1/(m+1) from every class so that each converges.
 
@@ -4553,7 +4553,7 @@
 
 **Remember:** Measure each zero's gap from one in units of 1/log(qT).
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11M26. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11M26. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For an integer q ≥ 3 and a height T ≥ 2, measure the distance of a zero σ + it of a Dirichlet L-function modulo q from the line Re s = 1 in units of 1/log(qT). Its scaled distance is (1 − σ)log(qT).
 
@@ -4571,7 +4571,7 @@
 
 **Remember:** For an odd quadratic character, the first moment counts classes.
 
-*Rules out counterexamples.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R29. arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11R29. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Fix a prime q &gt; 3 with q ≡ 3 modulo 4, and let χ be the Legendre symbol modulo q: zero on multiples of q, one on nonzero squares, minus one otherwise. Then χ is odd, χ(−1) = −1, so its first moment ∑ aχ(a) over 1 ≤ a &lt; q equals −qL(0,χ) and is nonzero (our own).
 
@@ -4587,7 +4587,7 @@
 
 **Remember:** One quadratic factor can recur in many fields.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R42. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11R42. arXiv math.NT. Level 3: graduate.
 
 **Definition.** The zeta function of an abelian number field K is the product of the L-functions of the primitive Dirichlet characters attached to its Galois group, primitive meaning of least modulus agreeing on units. One primitive character gives the same L-factor in every field that uses it, so its zeros appear in all those fields at once (our own). The family is all such fields of absolute discriminant at most Q, for a fixed Q ≥ 10.
 
@@ -4603,7 +4603,7 @@
 
 **Remember:** The residue at one is one L-value for every quadratic field.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R29. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11R29. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a quadratic field K of discriminant D, let A(K) be the residue at s = 1 of its Dedekind zeta function, which treats real and imaginary fields alike. Since ζᴷ(s) = ζ(s)L(s,χ) for the quadratic character χ of K and ζ has residue one, A(K) = L(1,χ) (our own).
 
@@ -4621,7 +4621,7 @@
 
 **Remember:** Remove the exceptional zero before taking the logarithmic derivative.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Fix a real primitive nonprincipal character χ of conductor q and a small enough absolute constant c &gt; 0. If L(s,χ) has a real zero β &gt; 1 − c/log q, put F(s) = L(s,χ)/(s − β), extended by continuity, and otherwise F = L(s,χ). Then F′/F = L′/L − 1/(s − β), so the exceptional zero's term is gone (our own).
 
@@ -4637,7 +4637,7 @@
 
 **Remember:** Two zeros, one pole: positivity forbids both near one.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)), 11R11. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)), 11R11. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For distinct primitive quadratic characters χ₁ and χ₂, form F(s) = ζ(s)L(s,χ₁)L(s,χ₂)L(s,χ₁χ₂), where χ₁χ₂(n) = χ₁(n)χ₂(n). It contains both candidate zeros but has only one pole, at s = 1. Its −F′/F has the nonnegative coefficients Λ(n)(1+χ₁(n))(1+χ₂(n)) (our own).
 
@@ -4653,7 +4653,7 @@
 
 **Remember:** Follow the turn instead of resetting the angle.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Let T &gt; 0 avoid the heights of nontrivial zeta zeros. S(T) is the argument of ζ(½+iT) divided by π, followed continuously from argument zero at ζ(2) along the segments from 2 to 2+iT to ½+iT, so that it keeps every full turn (our own).
 
@@ -4669,7 +4669,7 @@
 
 **Remember:** The first cosine must outweigh the constant term.
 
-*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Use a cosine polynomial P(u) = ∑ⱼ₌₀ᵐ aⱼcos(ju) that is nonnegative on ℝ, with all aⱼ ≥ 0 and a₁ &gt; a₀ &gt; 0, for example (1 + cos u)² with a₀ = 3/2 and a₁ = 2. Then ∑ aⱼ Re(−ζ′/ζ)(σ + ijt) is a sum over prime powers n of Λ(n)n<sup>(−σ)</sup>P(t log n) ≥ 0 (our own).
 
@@ -4685,7 +4685,7 @@
 
 **Remember:** Fourth-power weights make every prime count nonnegatively.
 
-*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For Re s &gt; 1, let Φ(s) = ∑ₚ (log p)p⁻ˢ over primes. For real t ≠ 0, combine Φ(s+irt) for r = −2,…,2 with weights 1, 4, 6, 4, 1, the coefficients of a fourth power. Then each prime gets the nonnegative factor (2cos(t log(p)/2))⁴ for real s &gt; 1 (our own).
 
@@ -4701,7 +4701,7 @@
 
 **Remember:** Positive zeta at both Gram points means Z changed sign.
 
-*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Successive Gram points g &lt; h are heights where θ(t) = Im log Γ(¼ + it/2) − (t/2)log π, with the continuous logarithm real at t = 0, increases through nπ and (n+1)π. Retain (g,h) if ζ(½+ig) and ζ(½+ih) are both positive. Since exp(iθ) is +1 at one point and −1 at the other, the real function Z(t) = exp(iθ(t))ζ(½+it) then has opposite signs at g and h (our own).
 
@@ -4717,7 +4717,7 @@
 
 **Remember:** A missed zero leaves a gap throughout the later count.
 
-*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let N(t) count zeta zeros with heights in (0,t\], with multiplicity, and let M(t) count the zeros found so far, a fixed subset of those occurrences, up to height t. Write S(t) = N(t) − 1 − θ(t)/π, with θ(t) = Im log Γ(¼+it/2) − (t/2)log π for the continuous logarithm real at t = 0. A zero missed below A makes N − M at least one at every height in \[A, B\] (our own).
 
@@ -4736,7 +4736,7 @@
 
 **Remember:** Center xi so it is even, then pair opposite zeros.
 
-*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Center the xi function: Ξ(z) = ξ(½ + z), where ξ(s) = ½s(s−1)π<sup>(−s/2)</sup>Γ(s/2)ζ(s), taken by continuity at removable singularities. The functional equation makes Ξ even, so its zeros come in pairs ±a, and each pair gives a factor 1 − (z/a)² with no exponential (our own).
 
@@ -4754,7 +4754,7 @@
 
 **Remember:** Remove a constant phase speed without moving the zeros.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11M06. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses), 11M06. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let F(t) = ζ(½+it)A(½+it), where A is a nonzero Dirichlet polynomial. Twisting by a constant phase speed, exp(ict)F(t), keeps the zeros and changes the derivative's modulus to \|F′ + icF\|, so on \[a,b\] choose the real c that minimizes the integral of \|F′ + icF\|² (our own).
 
@@ -4772,7 +4772,7 @@
 
 **Remember:** Remove the phase so that a sign change detects a zero.
 
-*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Hardy’s function Z(t) = exp(iθ(t))ζ(½+it) rotates ζ on the critical line by the phase θ(t) = Im log Γ(¼+it/2) − (t/2)log π, with the continuous logarithm real at zero. The phase is chosen so that Z is real, and the factor exp(iθ(t)) has modulus one, so it never vanishes (our own).
 
@@ -4788,7 +4788,7 @@
 
 **Remember:** Leave a small gap between the contour and every zero.
 
-*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Fix a small enough absolute constant c &gt; 0. Call a height U separated at scale T if \|U − Im ρ\| ≥ c/log T for every zero ρ of ζ with 0 &lt; Re ρ &lt; 1. Then every term 1/(σ + iU − ρ) in the expansion of ζ′/ζ has size at most (log T)/c (our own).
 
@@ -4804,7 +4804,7 @@
 
 **Remember:** Remove the pole at one to test for other poles.
 
-*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Subtract the main term: E(x) = ψ(x) − x, where ψ(x) sums log p over prime powers pᵏ ≤ x. Its transform F(s) = ∫₁∞ E(x) exp(−(s + 1) log x) dx satisfies sF(s) = −(ζ′/ζ)(s) − s/(s − 1), so the pole at one is removed and any other pole must come from a zero of ζ (our own).
 
@@ -4820,7 +4820,7 @@
 
 **Remember:** Subtract at the same height to damp distant zeros.
 
-*True by definition. Confidence: medium.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 3: graduate.
 
 **Definition.** Subtract the value at the same height: D(s) = (ζ′/ζ)(σ + it) − (ζ′/ζ)(2 + it). In the Hadamard expansion, each zero ρ then contributes 1/(s − ρ) − 1/(2 + it − ρ), which is O(1/\|t − Im ρ\|²) for distant zeros (our own).
 
@@ -6624,7 +6624,7 @@
 
 **Remember:** Center the reflection at zero and paired zeros cancel exponentials.
 
-*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Center the completed Dedekind zeta function Λ, with its discriminant and gamma factors, on the critical line and clear its poles at s = 0 and s = 1: F(z) = (z² + ¼)Λ(½ + iz) (our own). Then F is entire of order one, and Λ(s) = Λ(1 − s) becomes F(z) = F(−z) (our own).
 
@@ -6640,7 +6640,7 @@
 
 **Remember:** Same zeta function, same residue at one.
 
-*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields), 11R29. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11R42 (Zeta functions and L-functions of number fields), 11R29. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Two number fields are arithmetically equivalent if their Dedekind zeta functions agree, so in particular they have the same residue at s = 1 (our own).
 
@@ -6656,7 +6656,7 @@
 
 **Remember:** Finite places enter the regulator with weight log N(v).
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** The S-regulator R(S) is the covolume, after dropping one coordinate, of the S-units under the log map with one coordinate per place v in S, using log\|x\|ᵥ (doubled at complex places), which at a finite prime is −ordᵥ(x) log N(v) (our own). Concretely, it is the absolute value of any maximal minor of this matrix for a basis of S-units modulo torsion (our own).
 
@@ -6672,7 +6672,7 @@
 
 **Remember:** One gamma factor per infinite place makes zeta symmetric.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** The completed Dedekind zeta function Λ(s) multiplies \|D\|ˢᐟ²ζꜰ(s), for a field of discriminant D, by one gamma factor per infinite place: π⁻ˢᐟ²Γ(s/2) for each real embedding and (2π)⁻ˢΓ(s) for each pair of complex embeddings (our own).
 
@@ -6688,7 +6688,7 @@
 
 **Remember:** Integrate test function, character and norm power over all ideles.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields), 11R56. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields), 11R56. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Tate’s zeta integral of a Schwartz–Bruhat function φ on the adeles and a unitary idele class character χ is ∫ φ(x)χ(x)\|x\|ˢ d×x over the ideles, for Re s &gt; 1 (our own). For a product test function it splits into local integrals that give the Euler and gamma factors of the Hecke L-function (our own).
 
@@ -6704,7 +6704,7 @@
 
 **Remember:** Induce nontrivial characters and no zeta pole appears.
 
-*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Here a monomial representation of a finite Galois group G is a direct sum of induced representations Indᴳₕ χ, where each χ: H → ℂ× is a nontrivial homomorphism on a subgroup H.
 
@@ -6720,7 +6720,7 @@
 
 **Remember:** Nontrivial on norm one means not a norm power.
 
-*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** A unitary Hecke character χ, a continuous homomorphism from the idele class group to the unit circle, is nontrivial on norm one if χ(x) ≠ 1 for some class x with \|x\| = 1 (our own). The characters that fail are exactly the norm powers x ↦ \|x\|ⁱᵗ with t real (our own).
 
@@ -6736,7 +6736,7 @@
 
 **Remember:** G permutes the cosets of the subgroup that fixes E.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For L/K finite Galois with group G and a subgroup H with fixed field E, the coset representation lets G permute a basis indexed by the cosets G/H by left multiplication (our own). It is the representation of G induced from the trivial representation of H.
 
@@ -6754,7 +6754,7 @@
 
 **Remember:** Weight prime powers by log norm times Frobenius trace.
 
-*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a finite-dimensional complex representation ρ on V of a finite Galois group of number fields, give each prime power 𝔭ᵐ the weight log N𝔭 · Tr(Fᵐ on Vᴵ), where F is arithmetic Frobenius acting on the inertia-fixed vectors Vᴵ (our own). Other ideals get weight zero (our own).
 
@@ -6773,7 +6773,7 @@
 
 **Remember:** The smallest modulus keeps every factor needed for reflection.
 
-*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Write a finite-order Hecke character χ at its conductor 𝔣, the smallest modulus through which it factors, so its L-function keeps the Euler factor at every prime outside 𝔣 (our own). Its completion Λ(s,χ) adds the archimedean gamma factors and the factor (D·N𝔣)ˢᐟ², with D the absolute discriminant (our own).
 
@@ -6791,7 +6791,7 @@
 
 **Remember:** Sum over ideals, factor over prime ideals.
 
-*True by definition. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** The Dedekind zeta function of a number field sums N(a)⁻ˢ over the nonzero ideals a of its ring of integers, where N(a), the size of the quotient ring, is multiplicative. The sum converges for Re s &gt; 1.
 
@@ -6807,7 +6807,7 @@
 
 **Remember:** Lifts differ by inertia, and inertia does nothing on fixed vectors.
 
-*Rules out counterexamples.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields), 11F80. arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11R42 (Zeta functions and L-functions of number fields), 11F80. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a representation ρ on V with finite image, the local Artin factor at a prime p is 1/det(1 − N(p)⁻ˢρ(F)), taken on the vectors fixed by the inertia group I (our own). Here F is any lift of the Frobenius x ↦ x<sup>N(p)</sup>, and two lifts differ by an element of I (our own).
 
@@ -6825,7 +6825,7 @@
 
 **Remember:** Allow negative multiplicities, so L-functions may divide.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 3: graduate.
 
 **Definition.** A virtual character of the group G of a finite Galois extension is an integer combination of characters of finite-dimensional complex representations. Its Artin L-function is the matching product of Artin L-functions, with negative exponents for negative coefficients (our own).
 
@@ -7157,7 +7157,7 @@
 
 **Remember:** Finite residue K-groups disappear when you tensor with the rationals.
 
-*Rules out counterexamples.* MSC 11R70 (\\(K\\)-theory of global fields), 19D50. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11R70 (K-theory of global fields), 19D50. arXiv math.KT. Level 3: graduate.
 
 **Definition.** The rational K-group Kₙ(R) ⊗ ℚ of a ring kills every element of finite order in its integral K-group, such as all of Kₘ(F) for a finite field F and m ≥ 1 (our own).
 
@@ -7475,7 +7475,7 @@
 
 **Remember:** Cup the two Kummer classes and read their local invariant as a root.
 
-*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; p-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a non-Archimedean local field K containing the nth roots of unity, with n prime to its characteristic, the Hilbert symbol (a, b) is the local invariant in μₙ of the cup product of the Kummer classes of a and b (our own). Cup products of degree-one classes are anticommutative (our own).
 
@@ -7493,7 +7493,7 @@
 
 **Remember:** Reciprocity is cup product with the class of invariant 1/\[E:K\].
 
-*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; p-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a finite Galois extension E/K of local fields with group G, the fundamental class is the class in H²(G,E×) with Brauer invariant 1/\[E:K\]. Cup product with it defines inverse reciprocity from Gᵃᵇ to K×/N(E×) (our own). Its restriction to a subgroup is again the fundamental class.
 
@@ -7512,7 +7512,7 @@
 
 **Remember:** Formal group torsion plays the role of roots of unity.
 
-*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a p-adic field K with integer ring O, uniformizer π and residue field of size q, a Lubin–Tate formal O-module has a π-series with linear term πX that reduces to Xᑫ modulo π (our own). Its division tower adjoins all πⁿ-torsion points for all n ≥ 1, and Galois acts on these points through O× (our own).
 
@@ -7530,7 +7530,7 @@
 
 **Remember:** O acts on torsion, so Galois acts through units.
 
-*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; p-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let O be a complete discrete valuation ring with uniformizer π and finite residue field of size q. A Lubin–Tate formal O-module for π is a one-dimensional commutative formal group with an action of O, where π acts by a series πX + ⋯ that reduces to Xᑫ modulo π (our own).
 
@@ -7548,7 +7548,7 @@
 
 **Remember:** Finite index is not enough; the subgroup must also be open.
 
-*Rules out counterexamples.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let K be a non-Archimedean local field with maximal ideal 𝔪. A subgroup H of K× is open exactly when it contains 1 + 𝔪ⁿ, the units congruent to 1 modulo 𝔪ⁿ, for some n ≥ 1 (our own).
 
@@ -7564,7 +7564,7 @@
 
 **Remember:** Divide out the earlier torsion and an Eisenstein polynomial remains.
 
-*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11S31 (Class field theory; p-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a local field with uniformizer π and residue field of size q, take f(X) = πX + Xᑫ and write fⁿ for its n-fold iterate, with f⁰(X) = X. A primitive point of level n ≥ 1 is a root of fⁿ that is not a root of fⁿ⁻¹ (our own).
 
@@ -7582,7 +7582,7 @@
 
 **Remember:** Changing coordinates changes torsion points but not their fields.
 
-*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Fix a uniformizer π of a non-Archimedean local field with integer ring O. A strict isomorphism between Lubin–Tate formal O-modules for π is a power series over O with linear term X that carries one group law and O-action to the other. Since its coefficients lie in O, it sends each torsion point into the field that point generates (our own).
 
@@ -7600,7 +7600,7 @@
 
 **Remember:** Level zero sees inertia, and level one sees wild inertia.
 
-*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; p-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a finite abelian extension of non-Archimedean local fields, the conductor exponent is the least n such that every unit at level n is a norm. Level zero is all units, and level n ≥ 1 is the units congruent to 1 modulo the nth power of the maximal ideal.
 
@@ -7618,7 +7618,7 @@
 
 **Remember:** Send each element to Frobenius raised to its valuation.
 
-*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 3: graduate.
 
 **Definition.** For an unramified extension of non-Archimedean local fields, the Artin map sends a to Frobᵛ⁽ᵃ⁾, where v is the normalized valuation and Frob raises residues to the power of the base residue field size.
 
@@ -7707,7 +7707,7 @@
 
 **Remember:** One difference lowers the binomial index by one.
 
-*True by definition.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+*True by definition.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, p-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** By Mahler’s theorem, every continuous f: ℤₚ → ℚₚ has a uniformly convergent expansion ∑ aₙ binom(x, n). The forward difference Δf(x) = f(x + 1) − f(x) sends binom(x, n) to binom(x, n − 1) by Pascal’s identity, and sends constants to zero (our own).
 
@@ -7725,7 +7725,7 @@
 
 **Remember:** Functions divisible by pᵐ get values divisible by pᵐ.
 
-*Makes the theorem clean to state or prove.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, p-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
 
 **Definition.** Let O be the valuation ring of ℂₚ, the completed algebraic closure of ℚₚ. An integral measure on ℤₚˣ is a continuous ℂₚ-linear functional on continuous functions ℤₚˣ → ℂₚ that sends every O-valued function into O. By linearity it then sends every pᵐO-valued function into pᵐO.
 
@@ -7743,7 +7743,7 @@
 
 **Remember:** The inverse different is the largest ideal the trace character kills.
 
-*True by definition. Confidence: medium.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)), 11S15. arXiv math.NT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, p-adic integration, etc.)), 11S15. arXiv math.NT. Level 3: graduate.
 
 **Definition.** For a finite separable extension L/K of non-Archimedean local fields with integer rings O<sub>L</sub> and O<sub>K</sub>, the inverse different is the set of x ∈ L with Tr(xy) ∈ O<sub>K</sub> for every y ∈ O<sub>L</sub>. It is the largest fractional ideal of L whose trace lies in O<sub>K</sub> (our own).
 
@@ -8388,7 +8388,7 @@
 
 **Remember:** Four copies of a real zero overwhelm three poles.
 
-*Rules out counterexamples.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For a unitary cuspidal π that is not self-dual, with central character trivial on positive real scalars, let D(s) be the product of the nine Rankin–Selberg functions L(s,a×b̃) with a and b in the list (1,π,π̃). D contains L(s,π) and L(s,π̃) twice each, so a real zero of L(s,π) is a fourfold zero of D, while only the three dual pairs give poles at s = 1 (our own explanation).
 
@@ -8404,7 +8404,7 @@
 
 **Remember:** Divide out ζ, the one factor that carries the pole.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For a full-level holomorphic cuspidal Hecke eigenform with normalized representation π and analytic conductor C, set R(s) = L(s,Symᵐπ × Symᵐπ)/ζ(s) for each m ≥ 1. Dividing by ζ(s) removes the trivial factor of the self-pairing, the factor that carries the pole at s = 1 (our own specialization).
 
@@ -8422,7 +8422,7 @@
 
 **Remember:** A rational additive twist records the cusp used in a transformation.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** The completed additive twist at a rational x of a Dirichlet series ∑a(n)n⁻ˢ, absolutely convergent on Re s &gt; 1, is T(s,x) = γ(s)∑a(n)exp(2πinx)n⁻ˢ. The phase exp(2πinx) shifts the nth Fourier term by x, so the twist records a cusp (our own explanation). Here γ(s) = Qˢ∏Γ(λs+μ), with Q, λ &gt; 0, ∑λ = 1 and Re μ &gt; −λ/2 for each factor.
 
@@ -8440,7 +8440,7 @@
 
 **Remember:** The square root of the conductor sets the central sum length.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For level-one Hecke–Maass cusp forms f and g, the central analytic conductor C of L(s,f×g) is its finite conductor times ∏(3+\|κ\|) over its gamma factors Γℝ(s+κ). It sets the length of the sum that captures the central value: about √C terms (our own explanation).
 
@@ -8458,7 +8458,7 @@
 
 **Remember:** The trace of a tensor with its conjugate is an absolute square.
 
-*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** At an unramified prime p, let A be the diagonal matrix of Satake parameters of a unitary cuspidal representation; its dual has the conjugate matrix Ā. The local Rankin–Selberg factor of the pair is 1/det(I−(A⊗Ā)p⁻ˢ), and every power of A⊗Ā has trace tr(Aʳ)tr(Āʳ) = \|tr(Aʳ)\|² (our own derivation).
 
@@ -8474,7 +8474,7 @@
 
 **Remember:** A critical integer avoids gamma poles on both sides.
 
-*True by definition. Confidence: medium.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For full-level holomorphic Hecke cusp forms of even weights k &gt; ℓ, normalize their Rankin–Selberg function so that the functional equation sends s to k+ℓ−1−s. An integer s is critical when the gamma factors, with arguments s and s−ℓ+1 and poles at the nonpositive integers, are finite at s and at k+ℓ−1−s (our own calculation).
 
@@ -8492,7 +8492,7 @@
 
 **Remember:** Each copy pairs with every dual copy of its block.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** An isobaric sum Π is a list of unitary cuspidal blocks, repeats allowed, with central characters trivial on positive real scalars. L(s,Π×Π̃) multiplies the Rankin–Selberg factors over all ordered pairs of a block of Π and a dual block of Π̃, so a block that occurs m times meets its own dual m² times (our own count).
 
@@ -8508,7 +8508,7 @@
 
 **Remember:** Cancel the pole without changing growth far from it.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For unitary cuspidal π and π′ over a number field, with central characters trivial on positive real scalars, let L(s) be their Rankin–Selberg function. Set R(s) = L(s)(s−1)/(s+1) when π′ is dual to π, the only case with a pole at 1, and R(s) = L(s) otherwise. The factor (s−1)/(s+1) kills the pole and stays bounded for Re s ≥ 0.
 
@@ -8526,7 +8526,7 @@
 
 **Remember:** A smooth twist at length X returns at length q²/X.
 
-*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11F66 (Langlands L-functions; one variable Dirichlet series and functional equations). arXiv math.NT. Level 4: research.
 
 **Definition.** For a level-one holomorphic Hecke cusp form of weight k with normalized coefficients λ(n), and a smooth weight v supported in \[1,2\], the Bessel transform of v is H(u) = ∫v(y)Jₖ₋₁(4π√(uy))dy over y &gt; 0. It is the weight that Voronoi summation puts on the dual sum, and it is negligible for large u, so the dual sum has length about q²/X (our own explanation).
 
@@ -9094,7 +9094,7 @@
 
 **Remember:** Alternating the relative product makes the Kummer tensors symmetric.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Over the affine line minus 0 and 1, with coordinate z, the Kummer motive K is the degree-one cohomology of the multiplicative line relative to the points 1 and 1/z. In its n-fold product, take degree-n cohomology relative to the faces where some coordinate equals 1 or 1/z, and keep the part where each swap of two coordinates acts by −1.
 
@@ -9112,7 +9112,7 @@
 
 **Remember:** Project away products before taking a single-valued period.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** A clean polylogarithm applies the Dynkin projection, which kills exactly the sums of products of positive-weight elements, to the de Rham image of the formal iterated integral of a multiple polylogarithm. Only then does it take the single-valued period, keeping the real part in odd weight and the imaginary part in even weight, where weight counts the integrations.
 
@@ -9130,7 +9130,7 @@
 
 **Remember:** After products vanish, reversal preserves odd lengths and negates even lengths.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** The clean value of a formal iterated integral with fixed endpoints applies the Dynkin projection, which kills all products, to its de Rham image and then takes the single-valued period. It keeps the real part in odd length and the imaginary part in even length.
 
@@ -9148,7 +9148,7 @@
 
 **Remember:** Remove all products, then fix the constant on real inputs.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 33B30. arXiv math.NT. Level 4: research.
 
 **Definition.** I₃,₁(x,y) is the clean value of the nested integral from 0 to 1 with successive poles x, 0, 0, y: project the weight-four formal integral away from products of lower-weight integrals, then take the imaginary part of its single-valued value. L₄ is the clean value of the fourth polylogarithm in the same way.
 
@@ -9166,7 +9166,7 @@
 
 **Remember:** A nonzero two-by-two split rules out a classical expression.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** On polylogarithm symbols modulo products, the (2,2) cobracket of a weight-four symbol splits it after its second letter, takes both halves modulo products, and subtracts the result with the halves exchanged. Weight means tensor length.
 
@@ -9184,7 +9184,7 @@
 
 **Remember:** Equal divisor differences give equal regulator periods without integrating twice.
 
-*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with K-theory), 19F27. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** On an elliptic curve, the diamond product of the divisors of two functions is the formal sum of the differences P−Q, with P a zero or pole of the first and Q of the second, weighted by the product of their multiplicities. It is taken modulo \[−P\] = −\[P\].
 
@@ -9202,7 +9202,7 @@
 
 **Remember:** The five-term identity lets the dilogarithm act on classes of symbols.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 19F27. arXiv math.NT. Level 4: research.
 
 **Definition.** The pre-Bloch group of a subfield F of ℂ is the free abelian group on symbols \[x\], for x in F other than 0 and 1, modulo the five-term relation \[x\]−\[y\]+\[y/x\]−\[(1−x⁻¹)/(1−y⁻¹)\]+\[(1−x)/(1−y)\] = 0 for distinct x, y.
 
@@ -9220,7 +9220,7 @@
 
 **Remember:** Adjacent wedge tests remove the local obstruction to path independence.
 
-*Rules out counterexamples. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.AG. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.AG. Level 4: research.
 
 **Definition.** On a smooth complex variety with the zeros and poles of the chosen rational functions removed, represent each function f by the form df/f and ordered lists of forms by tensors. A sum of tensors is integrable if, for each adjacent pair of positions, replacing the two forms by their wedge product and summing gives zero.
 
@@ -9238,7 +9238,7 @@
 
 **Remember:** The antipode inverts the whole variation matrix.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Arrange the formal coefficients of multiple polylogarithms in their variation matrix V, triangular with ones on the diagonal. The coproduct then acts as matrix multiplication: for the transpose W, it sends Wᵢⱼ to the sum of Wᵢₖ ⊗ Wₖⱼ over k.
 
@@ -9256,7 +9256,7 @@
 
 **Remember:** Multiplication sends torsion to zero and rescales each graded piece invertibly.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** For the fundamental group π of a complex elliptic curve at zero, take its rational group ring modulo the (n+1)st power of the ideal of sums whose coefficients add to zero. The pointed logarithm system transports this vector space along loops by multiplication and marks the element 1 at zero.
 
@@ -9274,7 +9274,7 @@
 
 **Remember:** Cut twice, and nested subsequences ignore which cut came first.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Goncharov’s coproduct cuts an iterated integral I(a₀; a₁,…,aₙ; aₙ₊₁) at every subsequence of its interior letters. Each term pairs the integral over the kept letters with the product of the integrals over the gaps between consecutive kept points, endpoints included.
 
@@ -9292,7 +9292,7 @@
 
 **Remember:** A dilogarithm sum counts in K₃ only when its boundary vanishes.
 
-*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** The rational Bloch group of an infinite field F consists of rational sums ∑aᵢ\[xᵢ\] with xᵢ ≠ 0, 1, taken modulo the five-term dilogarithm relation. A sum belongs to it when its boundary ∑aᵢ xᵢ ∧ (1 − xᵢ) in the rational exterior square of F× is zero.
 
@@ -9310,7 +9310,7 @@
 
 **Remember:** Sum over the whole orbit, so the representative does not matter.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT, math.CA. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 33B30. arXiv math.NT, math.CA. Level 4: research.
 
 **Definition.** The elliptic curve E = ℂ×/qℤ, with 0 &lt; \|q\| &lt; 1, identifies x with qx. Its elliptic dilogarithm sums the Bloch–Wigner dilogarithm over the whole orbit: Dᴱ(x) = ∑ₖ D(qᵏx), k ∈ ℤ.
 
@@ -9329,7 +9329,7 @@
 
 **Remember:** Each orbit term doubles classically, so the orbit sum doubles too.
 
-*True by definition. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14H52. arXiv math.NT, math.AG. Level 4: research.
+*True by definition. Confidence: medium.* MSC 11G55 (Polylogarithms and relations with K-theory), 14H52. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** On E = ℂ×/qℤ with 0 &lt; \|q\| &lt; 1, the elliptic dilogarithm sums the Bloch–Wigner dilogarithm over the orbit: Dᴱ(z) = ∑ₙ D(qⁿz), n ∈ ℤ. Here D(z) = Im Li₂(z) + arg(1 − z) log\|z\|.
 
@@ -9347,7 +9347,7 @@
 
 **Remember:** Truncate at degree n, and every loop minus one becomes nilpotent.
 
-*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.AG, math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Work on the projective line minus 0, 1 and ∞, with a tangential base point at 0. The degree-n truncation divides the rational group algebra of loops by Jⁿ⁺¹, where J is spanned by all γ − 1, so any n + 1 loop differences multiply to zero.
 
@@ -9366,7 +9366,7 @@
 
 **Remember:** Project products to zero before you evaluate.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 33B30. arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 33B30. arXiv math.NT. Level 4: research.
 
 **Definition.** Apply to a formal polylogarithm (a formal iterated integral, graded by its number of integrations) the projection Π, whose kernel is exactly the span of products of positive-weight elements. Then evaluate as a single-valued function, keeping its real part in odd weight and its imaginary part in even weight.
 
@@ -9384,7 +9384,7 @@
 
 **Remember:** Tensor with ℚ, and the dilogarithm map forgets nothing.
 
-*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19F27. arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11G55 (Polylogarithms and relations with K-theory), 19F27. arXiv math.NT. Level 4: research.
 
 **Definition.** For a number field F, the rational Bloch group consists of rational sums ∑a\[x\], x ∈ F outside {0, 1}, modulo the five-term relations. A sum belongs to it when its boundary ∑a x ∧ (1 − x) in Λ²(F× ⊗ ℚ) is zero, and rational coefficients erase all torsion.
 
@@ -9403,7 +9403,7 @@
 
 **Remember:** η(f, 1 − f) is exact, with the dilogarithm as primitive.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** On an open set U of a smooth complex curve where f and g have no zeros or poles, the regulator form is η(f,g) = log\|f\| d arg g − log\|g\| d arg f. Its class is taken modulo differentials of single-valued functions, and η(f, 1 − f) = dD(f) for the Bloch–Wigner dilogarithm D.
 
@@ -9421,7 +9421,7 @@
 
 **Remember:** Fix the residues at the torsion points, and the class is fixed.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** On a complex elliptic curve, remove the D² points of order dividing D, for D ≥ 2. The elliptic polylogarithm is the compatible sequence of degree-one classes, with coefficients in the logarithm sheaf, whose residue is D² − 1 at zero and −1 at each other removed point. The logarithm sheaf transports truncated power series in two loop variables along paths.
 
@@ -9439,7 +9439,7 @@
 
 **Remember:** Diamond the divisors of f and 1 − f, and get zero.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** For rational functions f and g on an elliptic curve, the diamond product (f) ⋄ (g) sums P − Q over each zero or pole P of f and Q of g, weighted by the product of signed multiplicities. A point and its negative carry opposite signs. Bloch’s formula says the regulator of the Steinberg symbol {f,g} is Dᴱ((f) ⋄ (g)).
 
@@ -9458,7 +9458,7 @@
 
 **Remember:** Next to the top degree, cohomology is a kernel modulo trilogarithm images.
 
-*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19E15. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11G55 (Polylogarithms and relations with K-theory), 19E15. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** For a field F of characteristic zero, m ≥ 3 and V = F× ⊗ ℚ, Goncharov’s complex has B₂(F) ⊗ Λᵐ⁻²V in degree m − 1, with B₂(F) the rational dilogarithm symbols modulo their relations. Its outgoing differential sends \[x\]₂ ⊗ β to (1 − x) ∧ x ∧ β. Its incoming boundaries are the trilogarithm images \[x\]₂ ⊗ (x ∧ α).
 
@@ -9478,7 +9478,7 @@
 
 **Remember:** The last differential’s image is exactly the Steinberg relations.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory), 19D45. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** For an infinite field F, V = F× ⊗ ℚ and m ≥ 2, Goncharov’s last differential maps B₂(F) ⊗ Λᵐ⁻²V to ΛᵐV by \[x\] ⊗ α ↦ (1 − x) ∧ x ∧ α. Here B₂(F) is the rational dilogarithm symbol space modulo five-term relations. Its image is the span of the wedges containing a pair 1 − x, x (our own).
 
@@ -9496,7 +9496,7 @@
 
 **Remember:** Each surviving factor must spend a nonzero letter.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** A formal iterated integral class has depth at most d if, modulo products, words with at most d nonzero interior letters represent it. The truncated cobracket drops every term of the cobracket with a weight-one factor, so each surviving factor needs a nonzero letter.
 
@@ -9514,7 +9514,7 @@
 
 **Remember:** One middle weight, one cut: log(1 − z) ⊗ log z.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Represent the dilogarithm by its framed period matrix, a triangular matrix whose entries next to the diagonal are, in units of the diagonal periods, log(1 − z) and log z. The reduced coproduct cuts the frame at each intermediate weight and pairs the two pieces, and the dilogarithm has only weight one in between.
 
@@ -9532,7 +9532,7 @@
 
 **Remember:** A symbol lists weight-one pieces, and products shuffle the lists.
 
-*True by definition.* MSC 11G55 (Polylogarithms and relations with \\(K\\)-theory). arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 11G55 (Polylogarithms and relations with K-theory). arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** The symbol of a weight-n formal polylogarithm is its iterated coproduct into n factors, each projected to weight one. The shuffle product of two tensors sums all interleavings that keep the order within each.
 
@@ -9763,7 +9763,7 @@
 
 **Remember:** At zero shift the density pairs with itself.
 
-*Makes the theorem clean to state or prove.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K38. arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11K06 (General theory of distribution modulo 1), 11K38. arXiv math.NT. Level 4: research.
 
 **Definition.** Count ordered pairs of distinct indices i, j ≤ N with xᵢ − xⱼ within circular distance s/N of a shift γ. A circle sequence has Poissonian pair correlation at γ if this count divided by N tends to 2s for every s &gt; 0.
 
@@ -10089,7 +10089,7 @@
 
 **Remember:** Differentiate independent shifts to get both derivative factors.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** Fix a Dirichlet polynomial A, a nonnegative integrable weight w of compact support, B(t) = \|A(½ + it)\|²w(t), and 0 &lt; r &lt; ¼. The shifted moment J(z₁,z₂) = ∫ ζ(½ + it + z₁)ζ(½ − it + z₂)B(t) dt over ℝ gives each zeta factor its own shift.
 
@@ -10107,7 +10107,7 @@
 
 **Remember:** Divide by a zeta power to cancel each prime term.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** For k &gt; 0, let μₖ(n) be the Dirichlet coefficients of ζ(s)⁻ᵏ on Re s &gt; 1, using the branch positive for real s &gt; 1. The normalized square sum is ζ(s) raised to −k² times ∑ μₖ(n)²n⁻ˢ, for real s &gt; 1, which cancels the prime term k²p⁻ˢ of every Euler factor.
 
@@ -10125,7 +10125,7 @@
 
 **Remember:** Keep the height cutoff when two shifts nearly coincide.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** For T ≥ 3 and real d, set K(T,d) = \|ζ(1 + 1/log T + id)\|. The shift 1/log T caps the pole of ζ at 1, so K stays of size about log T even when d is near zero (our own).
 
@@ -10143,7 +10143,7 @@
 
 **Remember:** Match the weight to the character’s gamma factor.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** For a primitive nonprincipal Dirichlet character χ modulo q, take h = ¼ for even χ and h = ¾ for odd χ, so Γ(h + u/2) is the gamma factor of L(½ + u, χ). For x &gt; 0, W(x) is 1/(2πi) times the integral along Re u = 2 of Γ(h + u/2)² exp(−u log x)/(uΓ(h)²).
 
@@ -10161,7 +10161,7 @@
 
 **Remember:** A logarithmic power becomes a higher pole.
 
-*Makes the theorem clean to state or prove.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 44A15. arXiv math.NT, math.CA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M06 (ζ (s) and L(s, χ)), 44A15. arXiv math.NT, math.CA. Level 4: research.
 
 **Definition.** For Re s &gt; 1, let Z(s) be the integral of \|ζ(½ + it)\|⁴ exp(−s log t) over 1 ≤ t &lt; ∞, the Mellin transform of the fourth moment. It turns each logarithmic power (log t)ʲ into a pole j!/(s − 1)ʲ⁺¹ at s = 1 (our own).
 
@@ -10179,7 +10179,7 @@
 
 **Remember:** Remove one prime to remove every multiple of the bad conductor.
 
-*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)), 11N13. arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11M06 (ζ (s) and L(s, χ)), 11N13. arXiv math.NT. Level 4: research.
 
 **Definition.** Fix Q ≥ 100 and a small absolute c &gt; 0. Call a Dirichlet character exceptional if its conductor is at most Q and its L-function has a real zero above 1 − c/log Q. Let B be the largest prime factor of the exceptional character's conductor, or B = 1 if there is none, so a modulus coprime to B is never a multiple of that conductor.
 
@@ -10195,7 +10195,7 @@
 
 **Remember:** Keep the shifts inside the contour rather than in separate denominators.
 
-*Rules out counterexamples.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11M06 (ζ (s) and L(s, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** Integrate G(z)Δ(z)²/∏ᵣP(zᵣ) over j copies of a positively oriented circle Γ that encloses all k shifts αₘ, and divide by (2πi)ʲ. Here P(w) = ∏ₘ(w−αₘ), Δ(z) = ∏<sub>r&lt;s</sub>(zₛ−zᵣ) is the Vandermonde product, and G is holomorphic near the j-fold product of the closed disk. The denominator never vanishes on Γ, so the integral stays holomorphic when shifts collide inside.
 
@@ -10213,7 +10213,7 @@
 
 **Remember:** A zero near one leaves less weight for the other zeros.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** Weight each zero β+iγ by exp(−323905(1−β)log Q), so a zero near one weighs almost one and a far zero almost nothing. The zeros are those of all primitive Dirichlet L-functions of conductor at most Q ≥ 10, with β ≥ ½ and \|γ\| ≤ Q, counted with multiplicity.
 
@@ -10231,7 +10231,7 @@
 
 **Remember:** Independent local signs turn each moment into a product over primes.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** Z is the random Euler product ∏ₚ 1/(1−X(p)/p), taken as a limit over primes in increasing order. The X(p) are independent and mimic a quadratic character at p: each sign ±1 has probability p/(2(p+1)), and zero has probability 1/(p+1).
 
@@ -10249,7 +10249,7 @@
 
 **Remember:** For most conductors, only small primes are needed at one.
 
-*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M20 (Real zeros of L(s, χ); results on L(1, χ)). arXiv math.NT. Level 4: research.
 
 **Definition.** The short Euler product P(y,χ) is the product of 1/(1−χ(p)/p) over primes p ≤ y, so it uses only the values of the quadratic character χ at small primes. For Q ≥ 3 and fixed α &gt; 2, take the cutoff y = exp(8α² log log Q), a power of log Q.
 
@@ -10267,7 +10267,7 @@
 
 **Remember:** Compact frequency support cuts the prime sum off exactly.
 
-*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 4: research.
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses), 11N05. arXiv math.NT, math.CV. Level 4: research.
 
 **Definition.** Choose a real even smooth function φ, rapidly decreasing with all its derivatives, whose Fourier transform φ̂(u) = ∫ φ(v)exp(−2πiuv) dv vanishes for \|u\| &gt; A. This compact support makes the prime side of the explicit formula stop at prime powers n ≤ exp(A log T).
 
@@ -10285,7 +10285,7 @@
 
 **Remember:** A Gaussian factor tames every vertical line without a cutoff.
 
-*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
 
 **Definition.** Set H(s) = ((s−1)/s)exp(α(s/T)²)ζ(s)M(s), where M(s) = ∑<sub>n≤X</sub> μ(n)n⁻ˢ uses the Möbius function μ, with α,T &gt; 0 and X &gt; 1. The factor s−1 removes the pole of ζ at one, and the Gaussian factor makes H decay along every vertical line (our own).
 
@@ -10303,7 +10303,7 @@
 
 **Remember:** The critical line becomes the unit circle; stray zeros fall inside.
 
-*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT. Level 4: research.
 
 **Definition.** Li's variable z = 1 − 1/s sends the critical line Re s = ½ to the unit circle, and the half-plane Re s &gt; ½ into the open unit disk (our own). Set φ(z) = ξ(1/(1−z)), where ξ is the entire completed zeta function whose zeros are the nontrivial zeta zeros, and expand φ′/φ in a Taylor series at zero.
 
@@ -10319,7 +10319,7 @@
 
 **Remember:** Minimize over height to find the scale of the error.
 
-*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses), 11N05. arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses), 11N05. arXiv math.NT. Level 4: research.
 
 **Definition.** Given a zero-free region σ &gt; 1 − η(\|t\|), with η continuous and decreasing from \[0,∞) into (0,½\], define ω(x) as the infimum over t ≥ 1 of η(t) log x + log t. It balances the saving from a zero's distance to the line σ = 1 against the loss from its height t (our own).
 
@@ -10337,7 +10337,7 @@
 
 **Remember:** Majorize coincidence with a weight whose frequencies are controlled.
 
-*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of ζ (s) and L(s, χ); Riemann and other hypotheses). arXiv math.NT, math.CV. Level 4: research.
 
 **Definition.** Weight each pair of zero heights by r(u) = (sin(πu)/(πu))², where u is their difference in units of 2π/log T, and r(0) = 1. This weight is at least one at equal heights, never negative, and its Fourier transform vanishes outside \[−1,1\] (our own), where Montgomery's pair correlation formula is known.
 
@@ -10736,7 +10736,7 @@
 
 **Remember:** Summing over each free coefficient kills high-degree terms at negative integers.
 
-*True by definition. Confidence: medium.* MSC 11M38 (Zeta and \\(L\\)-functions in characteristic \\(p\\)). arXiv math.NT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 11M38 (Zeta and L-functions in characteristic p). arXiv math.NT. Level 4: research.
 
 **Definition.** For polynomials over the field with q elements, the Goss zeta value at −k is a sum over degrees d. Its degree-d term sums the kth powers of all monic polynomials of degree d, which runs independently over d free coefficients in the field.
 
@@ -12336,7 +12336,7 @@
 
 **Remember:** Degree-one counts give the whole permutation character.
 
-*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** Embed both fields in one finite Galois extension L of ℚ with group G. The permutation character of K counts, for each g in G, the embeddings of K into L that g fixes. At the Frobenius of an unramified prime p, it counts the primes of K of norm p.
 
@@ -12355,7 +12355,7 @@
 
 **Remember:** Taking degree zero subtracts one trivial character.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** Let H/F be a finite abelian extension with group G, and S a finite set of places of F containing the infinite and ramified ones. Let Y have one basis vector per place of H above S, permuted by G, and let X be the vectors in Y whose coefficients sum to zero. So X is Y minus one trivial character, and Y contains χ once for each place in S whose decomposition group lies in the kernel of χ (our own count).
 
@@ -12373,7 +12373,7 @@
 
 **Remember:** Mixed signs put a gamma pole at every integer.
 
-*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** For a finite-order Hecke character of a totally real field, the L-function has one gamma factor Γ((s+ε)/2) per real place, times a nonvanishing factor, with ε = 0 or 1 by the character’s sign there. An integer m is critical when no gamma factor has a pole at m and no dual gamma factor has a pole at 1−m. The factor Γ((s+ε)/2) has a pole exactly where s+ε is an even integer at most zero.
 
@@ -12391,7 +12391,7 @@
 
 **Remember:** Count primes and places per unit of log discriminant.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** In a tower of number fields, measure counts against g = log√D, where D is the absolute discriminant. For each prime power q, φ(q) is the limit of the number of prime ideals with residue field of size q, divided by g. Likewise φ(ℝ) and φ(ℂ) are the limits of the numbers of real embeddings and of conjugate pairs of nonreal embeddings, divided by g.
 
@@ -12410,7 +12410,7 @@
 
 **Remember:** Exclude each prime-order subgroup from the character kernel.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** For a cyclic extension E/F of degree m, a character of its Galois group is primitive if it is injective, that is, trivial on no subgroup of prime order. For each divisor d of m, let E(d) be the field fixed by the subgroup of order d, so the characters trivial on that subgroup are the characters of Gal(E(d)/F).
 
@@ -12428,7 +12428,7 @@
 
 **Remember:** Reflect past zero to expose a positive discriminant power.
 
-*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** Complete the Dedekind zeta function ζ<sub>K</sub>(s) by multiplying by exp((s/2)log D), by A(s) = π⁻ˢ⁄²Γ(s/2) to the power r₁, and by B(s) = 2(2π)⁻ˢΓ(s) to the power r₂. Here D is the absolute discriminant and r₁, r₂ count real and complex places. The functional equation then gives ζ<sub>K</sub>(s) as ζ<sub>K</sub>(1−s) times exp((½−s)log D) times a gamma ratio.
 
@@ -12446,7 +12446,7 @@
 
 **Remember:** Smoothing multiplies by factors that clear denominators.
 
-*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields). arXiv math.NT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 11R42 (Zeta functions and L-functions of number fields). arXiv math.NT. Level 4: research.
 
 **Definition.** Let H/F be finite abelian with F totally real and H a CM field, and let S contain the infinite and ramified places. The Stickelberger element is the group-ring element whose χ-component is L(S,χ⁻¹,0), the L-value with Euler factors at S removed. Smoothing at a finite prime set T disjoint from S multiplies it by the factors 1 − Nv·σᵥ⁻¹ for v in T, with σᵥ the arithmetic Frobenius.
 
@@ -12520,7 +12520,7 @@
 
 **Remember:** Odd torsion cannot see an obstruction of order two.
 
-*Rules out counterexamples.* MSC 11R70 (\\(K\\)-theory of global fields), 19D50. arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 11R70 (K-theory of global fields), 19D50. arXiv math.KT. Level 4: research.
 
 **Definition.** For a finite extension L/F of number fields, the norm on K-groups comes from viewing L-vector spaces as F-vector spaces, and its p-primary part acts on the elements killed by a power of p. Real places of F can stop it from being onto, through classes of order two (our own explanation).
 
@@ -12574,7 +12574,7 @@
 
 **Remember:** The symbol is zero when β’s automorphism fixes the division point.
 
-*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 4: research.
 
 **Definition.** Over a local field L of positive characteristic, take a formal Drinfeld module, whose scalar multiplications are additive power series, with stable reduction of height one as in the cited proposition, and assume L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol is σ(ξ) − ξ, where σ is the automorphism that local reciprocity attaches to β.
 
@@ -12592,7 +12592,7 @@
 
 **Remember:** An Artin action upstairs restricts to the action of the norm downstairs.
 
-*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+*True by definition.* MSC 11S31 (Class field theory; p-adic formal groups). arXiv math.NT. Level 4: research.
 
 **Definition.** Over a local field L of positive characteristic, take a formal Drinfeld module, whose scalar multiplications are additive power series, with stable reduction of height one as in the cited proposition, and assume L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol is σ(ξ) − ξ, where σ is the automorphism that local reciprocity attaches to β.
 
@@ -12610,7 +12610,7 @@
 
 **Remember:** Drop the Euler factor at p; its power of p jumps.
 
-*Rules out counterexamples.* MSC 11S40 (Zeta functions and \\(L\\)-functions), 11M41. arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11S40 (Zeta functions and L-functions), 11M41. arXiv math.NT. Level 4: research.
 
 **Definition.** Fix an odd prime p, and for each positive multiple n of p−1 set A(n) = (1−pⁿ⁻¹)ζ(1−n), the zeta value with its Euler factor at p removed. The removed factor is the problem: along integers that tend p-adically to n, the power pⁿ⁻¹ tends to zero, not to its value at n.
 
@@ -12626,7 +12626,7 @@
 
 **Remember:** Subtract the rescaled Bernoulli weight to cancel the denominator N.
 
-*Rules out counterexamples.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, p-adic integration, etc.)). arXiv math.NT. Level 4: research.
 
 **Definition.** Fix an odd prime p and positive integers d and c, with c ≥ 2 coprime to dp. At level N = dpⁿ, the Bernoulli weight of a residue a, taken with 0 ≤ a &lt; N, is a/N − 1/2, which can be p-adically large because pⁿ divides N. The regularized weight subtracts c times the weight of b, the representative of c⁻¹a modulo N, which gives (a−cb)/N + (c−1)/2.
 

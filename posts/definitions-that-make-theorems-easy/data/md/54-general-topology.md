@@ -1025,7 +1025,7 @@
 
 **Remember:** Hausdorff means that 'equal' is a closed condition on pairs of points.
 
-*True by definition.* MSC 54D10 (Lower separation axioms (\\(T<sub>0</sub>\\)--\\(T<sub>3</sub>\\), etc.)). arXiv math.GN. Level 2: later undergraduate.
+*True by definition.* MSC 54D10 (Lower separation axioms (T<sub>0</sub>--T<sub>3</sub>, etc.)). arXiv math.GN. Level 2: later undergraduate.
 
 **Definition.** A space Y is Hausdorff if the diagonal, the set of pairs (y, y) of equal points, is closed in Y × Y. Equivalently, any two distinct points have disjoint open neighbourhoods.
 
@@ -1317,7 +1317,7 @@
 
 **Remember:** Add Hausdorff, and every version of local compactness says the same.
 
-*Rules out counterexamples.* MSC 54D45 (Local compactness, \\(\\sigma\\)-compactness), 54D10. arXiv math.GN. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 54D45 (Local compactness, σ-compactness), 54D10. arXiv math.GN. Level 2: later undergraduate.
 
 **Definition.** A compact neighborhood of x is a compact set containing an open neighborhood of x. A space is locally compact in the weak sense if every point has a compact neighborhood.
 
@@ -1886,7 +1886,7 @@
 
 **Remember:** A loop that never crosses itself has one inside and one outside.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54F50 (Topological spaces of dimension \\(\\leq 1\\); curves, dendrites), 54D05. arXiv math.GN, math.GT. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54F50 (Topological spaces of dimension ≤ 1; curves, dendrites), 54D05. arXiv math.GN, math.GT. Level 2: later undergraduate.
 
 **Definition.** A Jordan curve, or simple closed curve, is the image of a continuous injective map from the circle into the plane. So it is a closed loop that never crosses itself.
 
@@ -1904,7 +1904,7 @@
 
 **Remember:** A curve that never revisits a point cannot fill a square.
 
-*Rules out counterexamples.* MSC 54F50 (Topological spaces of dimension \\(\\leq 1\\); curves, dendrites), 54F45. arXiv math.GN. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 54F50 (Topological spaces of dimension ≤ 1; curves, dendrites), 54F45. arXiv math.GN. Level 2: later undergraduate.
 
 **Definition.** A simple curve is the image of an interval or a circle under an injective continuous map. So a simple curve does not cross itself.
 
@@ -2222,7 +2222,7 @@
 
 **Remember:** Points of a product locale are products of points.
 
-*True by definition.* MSC 54D10 (Lower separation axioms (\\(T<sub>0</sub>\\)--\\(T<sub>3</sub>\\), etc.)), 18F70, 54B10. arXiv math.GN, math.CT. Level 3: graduate.
+*True by definition.* MSC 54D10 (Lower separation axioms (T<sub>0</sub>--T<sub>3</sub>, etc.)), 18F70, 54B10. arXiv math.GN, math.CT. Level 3: graduate.
 
 **Definition.** A space is sober if it is homeomorphic to the space of points of some locale. The points are the frame maps to {0,1}, those preserving finite meets and arbitrary joins, and each frame element a gives the open set of points sending a to 1.
 
@@ -2270,7 +2270,7 @@
 
 **Remember:** Finitely many closures cover, and regularity shrinks closures back inside.
 
-*Rules out counterexamples.* MSC 54D25 (\`\`\\(P\\)-minimal'' and \`\`\\(P\\)-closed'' spaces). arXiv math.GN. Level 3: graduate.
+*Rules out counterexamples.* MSC 54D25 (\`\`P-minimal'' and \`\`P-closed'' spaces). arXiv math.GN. Level 3: graduate.
 
 **Definition.** A Hausdorff space is H-closed if every open cover has finitely many members whose closures cover the space. This is equivalent to being closed in every Hausdorff space that contains it.
 
@@ -2412,7 +2412,7 @@
 
 **Remember:** Every open set is a union of opens way below it.
 
-*Makes the theorem clean to state or prove.* MSC 54D45 (Local compactness, \\(\\sigma\\)-compactness), 18F60, 06B35. arXiv math.GN, math.CT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 54D45 (Local compactness, σ-compactness), 18F60, 06B35. arXiv math.GN, math.CT. Level 3: graduate.
 
 **Definition.** For open sets V ⊆ U, V is way below U, written V ≪ U, if every open cover of U has a finite subfamily covering V. A space is core-compact if every point x in every open U has an open neighborhood V with V ≪ U.
 
@@ -2431,7 +2431,7 @@
 
 **Remember:** Compact probes into X become compact probes into its quotient.
 
-*True by definition.* MSC 54D50 (\\(k\\)-spaces). arXiv math.GN. Level 3: graduate.
+*True by definition.* MSC 54D50 (k-spaces). arXiv math.GN. Level 3: graduate.
 
 **Definition.** Here a space is compactly generated if a set is open whenever its preimage under every continuous map from a compact Hausdorff space is open.
 
@@ -2447,7 +2447,7 @@
 
 **Remember:** Compact Hausdorff probes see every open set.
 
-*Makes the theorem clean to state or prove.* MSC 54D50 (\\(k\\)-spaces), 18F60, 55U40. arXiv math.GN, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 54D50 (k-spaces), 18F60, 55U40. arXiv math.GN, math.AT. Level 3: graduate.
 
 **Definition.** A space X is compactly generated if continuous maps from compact Hausdorff spaces detect its open sets. Specifically, U ⊆ X is open exactly when every such map into X has open preimage of U.
 
@@ -2466,7 +2466,7 @@
 
 **Remember:** In the compactly generated product, closed means closed on every compact piece.
 
-*True by definition.* MSC 54D50 (\\(k\\)-spaces), 18F60, 55U40. arXiv math.GN, math.AT. Level 3: graduate.
+*True by definition.* MSC 54D50 (k-spaces), 18F60, 55U40. arXiv math.GN, math.AT. Level 3: graduate.
 
 **Definition.** For Hausdorff compactly generated spaces X and Y, the compactly generated product is the set X × Y in which a subset is closed exactly when it meets every compact subset of the ordinary product in a closed set.
 
@@ -2834,7 +2834,7 @@
 
 **Remember:** Lift from the larger space, then restrict to its retract.
 
-*True by definition.* MSC 54G05 (Extremally disconnected spaces, \\(F\\)-spaces, etc.), 54B30. arXiv math.GN. Level 3: graduate.
+*True by definition.* MSC 54G05 (Extremally disconnected spaces, F-spaces, etc.), 54B30. arXiv math.GN. Level 3: graduate.
 
 **Definition.** Among compact Hausdorff spaces, call E extremally disconnected if it is projective: every continuous map from E lifts along every continuous surjection between compact Hausdorff spaces.
 
@@ -3027,7 +3027,7 @@
 
 **Remember:** Test the filter condition on open sets, not on compact sets.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54D10 (Lower separation axioms (\\(T<sub>0</sub>\\)--\\(T<sub>3</sub>\\), etc.)), 06B35. arXiv math.GN. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54D10 (Lower separation axioms (T<sub>0</sub>--T<sub>3</sub>, etc.)), 06B35. arXiv math.GN. Level 4: research.
 
 **Definition.** For open U and V, write U ≪ V if every directed open cover of V has a member containing U; core-compact means each open set is the union of the open sets way below it. A space is open well-filtered if every nonempty open family filtered for ≪, with any two members having a third ≪ both, has a member inside each open set containing its intersection.
 
@@ -3045,7 +3045,7 @@
 
 **Remember:** A separation axiom says: you lift against its simplest counterexample.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54D10 (Lower separation axioms (\\(T<sub>0</sub>\\)--\\(T<sub>3</sub>\\), etc.)), 54D15, 18A32. arXiv math.GN, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 54D10 (Lower separation axioms (T<sub>0</sub>--T<sub>3</sub>, etc.)), 54D15, 18A32. arXiv math.GN, math.CT. Level 4: research.
 
 **Definition.** A map i:A→B has the left lifting property against p:E→F if each square pu=vi admits a continuous diagonal. For u:A→E and v:B→F, this means some h:B→E satisfies hi=u and ph=v.
 

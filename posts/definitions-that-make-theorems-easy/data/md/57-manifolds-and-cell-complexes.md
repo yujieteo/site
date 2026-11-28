@@ -1552,6 +1552,277 @@
 - [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
 - [Fathi Ben Aribi and Ka Ho Wong, The Andersen-Kashaev volume conjecture for FAMED geometric triangulations (2024), ideal tetrahedron volume proposition](https://arxiv.org/abs/2410.10776v1)
 
+### A global frame of contact planes makes rotation a planar winding number
+
+**Remember:** One frame for all of space turns rotation into planar winding.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** In standard R³ the vector fields ∂x + y∂z and ∂y span every contact plane, so they form one frame over all of space. The rotation number of a Legendrian knot is the number of turns its tangent vector makes in this frame.
+
+**Problem.** The rotation number of a Legendrian knot equals the winding number of the tangent of its Lagrangian projection to the (x, y)-plane. In the front it equals half the difference between the numbers of downward and upward cusps.
+
+**How the definition helps.** The frame projects to the constant frame ∂x, ∂y of the plane, so both tangents turn alike (our own). In the front the tangent points along ±∂y only at cusps, so signed cusp counts give the turns (our own). The general definition uses a frame over a Seifert surface, and the work moves into noting that the global frame restricts to one (our own).
+
+**Wikipedia:** [Rotation number (knot theory)](https://en.wikipedia.org/wiki/Rotation_number_%28knot_theory%29). It says: “The rotation number of a Legendrian knot K can be computed combinatorially from the front projection. It is given by rot(K) = ½(\#downward cusps − \#upward cusps), where cusps are counted with respect to the orientation of the knot.”
+
+**Sources:**
+
+- [Geiges, An Introduction to Contact Topology, Cambridge University Press (2008)](https://doi.org/10.1017/CBO9780511611438)
+
+### Complex tangencies make the tightness of the standard 3-sphere immediate
+
+**Remember:** The 3-sphere's contact planes are the complex lines tangent to it.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 32T15. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** The standard contact structure on the 3-sphere is the field of complex tangent lines to the unit sphere in ℂ². With this definition the unit 4-ball is a symplectic filling, a symplectic 4-manifold whose boundary carries the structure.
+
+**Problem.** The standard contact structure on the 3-sphere is tight.
+
+**How the definition helps.** The 4-ball fills the sphere, and the Gromov–Eliashberg theorem says that fillable structures are tight, the principle the quote applies (our own). Bennequin's first proof started from the formula dz + x dy − y dx and needed a long study of braids (our own). The work moves into Gromov's holomorphic disks, which would fill an overtwisted disk and escape the filling (our own).
+
+**Paper or page:** [Transverse fibered knots and Taut Foliations](https://arxiv.org/abs/2509.04680). It says: “Contact structures, C⁰-close to a taut foliation, are symplectically semi-fillable, and therefore, tight.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+
+### Contact framings turn the Stein handle condition into a single number
+
+**Remember:** Count handle framings from the contact planes, not from the Seifert surface.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 32Q28, 57R65. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** The Thurston–Bennequin framing tb of a Legendrian knot is the framing given by the contact planes along it. Framings of 2-handles attached along Legendrian knots are measured against tb.
+
+**Problem.** Take a 4-dimensional handlebody with 0- and 1-handles, and attach 2-handles along Legendrian knots in its boundary with framing tb − 1. It carries a Stein structure, and every compact Stein surface arises this way (Eliashberg, Gompf).
+
+**How the definition helps.** A Weinstein 2-handle can be attached exactly with framing one less than the contact framing, so against tb the condition is one number (our own). Stabilizing a Legendrian knot lowers tb by one, so any framing below tb can be reached (our own). Gompf used this to draw Stein surfaces as Legendrian link diagrams (our own).
+
+**Wikipedia:** [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “when n = 2 the same holds provided the 2-handles are attached with certain framings (framing less than the Thurston–Bennequin framing).”
+
+**Sources:**
+
+- [Y. Eliashberg, Topological characterization of Stein manifolds of dimension &gt; 2, Internat. J. Math. 1 (1990) 29–46](https://doi.org/10.1142/S0129167X90000034)
+- [R. E. Gompf, Handlebody construction of Stein surfaces, Ann. of Math. 148 (1998) 619–693](https://doi.org/10.2307/121005)
+
+### Convex surfaces let the dividing set alone fix the contact structure nearby
+
+**Remember:** A transverse symmetry makes a surface forget everything but its dividing curves.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 53D10. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A surface is convex when some vector field that preserves the contact structure is transverse to it. Its dividing set Γ is where this field lies in the contact planes. A singular foliation is divided by Γ when a flow along it crosses Γ, expanding area on one side and contracting it on the other.
+
+**Problem.** Giroux flexibility: let Σ be convex with dividing set Γ. Then any foliation divided by Γ is the characteristic foliation, the line field the planes cut, of an isotopic copy of Σ.
+
+**How the definition helps.** The transverse field makes a neighbourhood of Σ look like Σ × ℝ with a translation-invariant contact structure, encoded by data on Σ (our own). In that data the contact condition only sees how the foliation sits relative to Γ, so the foliation can be changed freely (our own). With Giroux's result that the characteristic foliation fixes the nearby structure, the dividing set alone decides it up to isotopy (our own).
+
+**Paper or page:** [A proof of the classification theorem of overtwisted contact structures via convex surface theory](https://arxiv.org/abs/1102.5398). It says: “Assume Σ is convex with characteristic foliation Σξ, contact vector field v, and dividing set ΓΣ. Let 𝓕 be another singular foliation on Σ divided by ΓΣ. Then there exists an isotopy φt: M → M”
+
+**Sources:**
+
+- [E. Giroux, Convexité en topologie de contact, Comment. Math. Helv. 66 (1991) 637–677](https://doi.org/10.1007/BF02566670)
+
+### Defining support by positive pages gives every open book a contact form
+
+**Remember:** Positive pages let a large circle term make the form contact.
+
+*True by definition.* MSC 57K33 (Contact structures in 3 dimensions), 53D10. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** An open book is a link B, the binding, with a fibration of its complement over the circle by surfaces with boundary B, the pages. A contact form α is supported by it when α is positive on B and dα is positive on every page.
+
+**Problem.** Every open book on a closed oriented 3-manifold supports a contact structure (Thurston and Winkelnkemper). Since every such manifold has an open book, every one carries a contact structure.
+
+**How the definition helps.** The definition only asks for dβ &gt; 0 on pages, and adding K dφ for large K then gives a contact form (our own). Then d(β + K dφ) = dβ, and K dφ ∧ dβ dominates (β + K dφ) ∧ dβ for large K (our own). This replaces Martinet's proof by surgery on links, and the work moves into Alexander's theorem that open books exist (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Every connected compact orientable three-dimensional manifold admits a contact structure.”
+
+**Sources:**
+
+- [W. P. Thurston and H. E. Winkelnkemper, On the existence of contact forms, Proc. Amer. Math. Soc. 52 (1975) 345–347](https://doi.org/10.1090/S0002-9939-1975-0375366-7)
+
+### Dividing sets turn tightness near a surface into a check on curves
+
+**Remember:** Dividing curves are the fingerprint of the contact planes on a surface.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions). arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A convex surface Σ carries a dividing set Γ, the disjoint curves where a transverse field preserving the contact structure lies in the planes. Up to isotopy, Γ determines the contact structure near Σ.
+
+**Problem.** Giroux's criterion: a closed convex surface other than a sphere has a tight neighbourhood exactly when no dividing curve bounds a disk in it. A closed convex sphere has a tight neighbourhood exactly when its dividing set is connected.
+
+**How the definition helps.** Because Γ determines the structure near Σ, tightness near Σ must be a property of Γ alone, and the criterion names it (our own). A dividing curve bounding a disk lets one build an overtwisted disk by Legendrian realization (our own). Building a tight neighbourhood when no such curve exists is the hard direction, due to Giroux.
+
+**Paper or page:** [The homotopy type of the contactomorphism groups of tight contact 3-manifolds, part I](https://arxiv.org/abs/2012.14948). It says: “Let S ⊆ (M,ξ) be a convex surface in a tight contact 3–manifold. Then, if S is an sphere the dividing set is connected, if S is not an sphere the dividing set does not contain any homotopically trivial curve.”
+
+**Sources:**
+
+- [E. Giroux, Structures de contact en dimension trois et bifurcations des feuilletages de surfaces, Invent. Math. 141 (2000) 615–689](https://doi.org/10.1007/s002220000082)
+
+### Excluding overtwisted disks leaves exactly one contact structure on the 3-sphere
+
+**Remember:** Remove overtwisted disks and the 3-sphere keeps one contact structure.
+
+*Rules out counterexamples.* MSC 57K33 (Contact structures in 3 dimensions). arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A contact structure on a 3-manifold is tight when it contains no overtwisted disk. An overtwisted disk is an embedded disk whose boundary is tangent to the contact planes. Along that boundary the planes do not twist relative to the disk.
+
+**Problem.** Every tight contact structure on the 3-sphere with the standard orientation is isotopic to the standard one.
+
+**How the definition helps.** Tightness excludes the overtwisted structures, which fill every homotopy class of plane fields on the 3-sphere, one class per integer (our own). For a tight structure, one removes a standard ball and is left with a 3-ball (our own). The work is in Eliashberg's theorem that tight structures on the 3-ball with a fixed boundary germ are unique (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Any structure not overtwisted is called tight. The standard contact structure on the sphere is the only tight one possible up to isotopy.”
+
+**Sources:**
+
+- [Y. Eliashberg, Contact 3-manifolds twenty years since J. Martinet's work, Ann. Inst. Fourier 42 (1992) 165–192](https://doi.org/10.5802/aif.1288)
+
+### Excluding overtwisted disks makes the Bennequin inequality hold
+
+**Remember:** Tight means no disk where the contact planes stop twisting.
+
+*Rules out counterexamples.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A contact structure on a 3-manifold is tight when it contains no overtwisted disk. An overtwisted disk is an embedded disk whose boundary is tangent to the contact planes. Along that boundary the planes do not twist relative to the disk.
+
+**Problem.** Let L be a Legendrian knot, one tangent to the planes, with Seifert surface Σ in a tight contact 3-manifold. Then tb(L) + \|rot(L)\| ≤ −χ(Σ), where tb counts turns of the planes along L and rot counts turns of L's tangent in the planes.
+
+**How the definition helps.** Tightness excludes the overtwisted disk, whose boundary is the basic knot that breaks the bound (our own). That boundary is a Legendrian unknot with tb = 0, while the bound for a disk gives tb ≤ −1 (our own). The quote gives Bennequin's case of standard ℝ³, and Eliashberg's proof for all tight structures carries the real work (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “He proved that for all Legendrian knot K in the standard contact ℝ³ the following inequality is true: tb(K)+\|rot(K)\| ≤ −χ(Σ), where χ(Σ) denotes the Euler characteristic of a Seifert surface Σ of K”
+
+**Sources:**
+
+- [Y. Eliashberg, Contact 3-manifolds twenty years since J. Martinet's work, Ann. Inst. Fourier 42 (1992) 165–192](https://doi.org/10.5802/aif.1288)
+
+### Overtwisted contact structures are classified by their plane fields
+
+**Remember:** One floppy disk makes contact structures as flexible as plane fields.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57R17. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A contact structure on a 3-manifold is overtwisted when it contains an overtwisted disk. This is an embedded disk whose boundary is tangent to the contact planes, with zero twisting of the planes relative to the disk.
+
+**Problem.** On a closed oriented 3-manifold, two overtwisted contact structures are isotopic exactly when they are homotopic as plane fields. So their classification reduces to homotopy theory.
+
+**How the definition helps.** Overtwisted disks absorb every obstruction, so only the homotopy class of the plane field is left (our own). Tight structures fail this, since the 3-torus has infinitely many non-isotopic tight structures in one homotopy class (Kanda, Giroux) (our own). Eliashberg's proof extends over cells using the disk, and the quoted paper by Huang reproves it with convex surfaces (our own).
+
+**Paper or page:** [A proof of the classification theorem of overtwisted contact structures via convex surface theory](https://arxiv.org/abs/1102.5398). It says: “Let M be a closed, oriented 3-manifold. If ξ and ξ′ are two positive overtwisted contact structures on M, then they are isotopic if and only if they are homotopic as 2-plane fields.”
+
+**Sources:**
+
+- [Y. Eliashberg, Classification of overtwisted contact structures on 3-manifolds, Invent. Math. 98 (1989) 623–637](https://doi.org/10.1007/BF01393840)
+
+### Positive stabilization makes contact structures and open books correspond
+
+**Remember:** A new handle with a positive twist never changes the contact structure.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57K30. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** An open book supports a contact structure when a contact form is positive on the binding and its differential is positive on each page. A positive stabilization adds a 1-handle to the page and a right-handed Dehn twist along a curve crossing it once.
+
+**Problem.** On a closed oriented 3-manifold, the supporting relation gives a bijection between contact structures up to isotopy and open books up to positive stabilization (Giroux).
+
+**How the definition helps.** Positive stabilization is the move that keeps the supported structure, so the theorem can state a bijection after dividing out by it (our own). The move is a connected sum with the standard 3-sphere, whose open book has an annulus page (our own). The hard part is Giroux's theorem that two open books supporting one structure have a common positive stabilization (our own).
+
+**Wikipedia:** [Open book decomposition](https://en.wikipedia.org/wiki/Open_book_decomposition). It says: “Then there is a bijection between the set of oriented contact structures on M up to isotopy and the set of open book decompositions of M up to positive stabilization.”
+
+**Sources:**
+
+- [E. Giroux, Géométrie de contact: de la dimension trois vers les dimensions supérieures, Proceedings of the ICM, Beijing 2002, Vol. II, 405–414](https://arxiv.org/abs/math/0305129) (link not checked)
+
+### Pushing off vertically makes Thurston–Bennequin number the writhe of the Lagrangian projection
+
+**Remember:** Thurston–Bennequin number is how a knot links a copy floating above it.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Legendrian knot K is tangent to the contact planes everywhere. Its Thurston–Bennequin number tb(K) is its linking number with a copy pushed slightly off those planes. In standard R³ one can push along the vertical field ∂z, so the copy lies directly above K.
+
+**Problem.** For a Legendrian knot in standard contact R³, tb(K) equals the writhe of its Lagrangian projection to the (x, y)-plane. The writhe is the sum of the signs of the crossings of that diagram.
+
+**How the definition helps.** The copy pushed along ∂z has the same Lagrangian projection, so a tiny sideways shift makes it run parallel to K (our own). The two knots cross only near the crossings of K, twice at each with its sign, so their linking number is the writhe (our own). The other usual definition counts how the contact planes meet a Seifert surface, and the work moves into showing that both definitions agree (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “The Thurston-Bennequin number of a Legendrian knot K ⊂ ℝ³ is the writhe of its Lagrangian projection”
+
+**Sources:**
+
+- [Geiges, An Introduction to Contact Topology, Cambridge University Press (2008)](https://doi.org/10.1017/CBO9780511611438)
+
+### Self-linking of push-offs turns the transverse Bennequin bound into the Legendrian one
+
+**Remember:** Each push-off sees the Thurston–Bennequin number shifted by rotation.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** The self-linking number sl(T) of a transverse knot T is its linking number with a copy pushed along a nonvanishing field in the contact planes. That field is taken over a Seifert surface, an oriented surface bounded by T. With this definition, the two transverse push-offs of a Legendrian knot L satisfy sl(L±) = tb(L) ∓ rot(L).
+
+**Problem.** Wherever transverse knots satisfy the Bennequin bound sl(T) ≤ −χ(Σ), Legendrian knots satisfy tb(L) + \|rot(L)\| ≤ −χ(Σ). This holds in particular in standard contact R³.
+
+**How the definition helps.** The bound for both push-offs gives tb(L) − rot(L) ≤ −χ(Σ) and tb(L) + rot(L) ≤ −χ(Σ), hence the claim (our own). The push-offs lie in a thin tube around L, so they bound surfaces like Σ (our own). So the Legendrian bound needs no separate proof; the work is the transverse bound, which Bennequin proved with braids (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “He proved that for all Legendrian knot K in the standard contact ℝ³ the following inequality is true: tb(K) + \|rot(K)\| ≤ −χ(Σ),”
+
+**Paper or page:** [Non-looseness of boundaries of Legendrian ribbons](https://arxiv.org/abs/2307.06828). It says: “Let T be a non-loose, null-homologous transverse link. Then for any Seifert surface Σ we have sl(T, \[Σ\]) ≤ −χ(Σ).”
+
+**Sources:**
+
+- [Geiges, An Introduction to Contact Topology, Cambridge University Press (2008)](https://doi.org/10.1017/CBO9780511611438)
+
+### Slopes of the front recover a Legendrian knot completely
+
+**Remember:** In a front, the hidden coordinate is just the slope.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Legendrian knot in standard contact R³ is tangent everywhere to the planes where the 1-form dz − y dx vanishes. Along such a knot dz = y dx. So the coordinate y equals the slope dz/dx of the front, the projection to the (x, z)-plane.
+
+**Problem.** A Legendrian knot is determined by its front, a closed curve with cusps but no vertical tangents. At each crossing of the front, the two slopes alone decide which strand lies in front.
+
+**How the definition helps.** Since y = dz/dx along the knot away from cusps, the front gives back y at every point, and so the whole knot (our own). A vertical tangent would need infinite y, and two strands that cross with equal slopes would meet in R³ (our own). An ordinary knot diagram needs over and under marks, but here the contact condition supplies them (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “The front diagram of a Legendrian knot does not have vertical tangencies, however cusps can appear.”
+
+**Sources:**
+
+- [Geiges, An Introduction to Contact Topology, Cambridge University Press (2008)](https://doi.org/10.1017/CBO9780511611438)
+
+### The vertical push-off makes Thurston–Bennequin number writhe minus half the cusps
+
+**Remember:** Lift the front a little and count where it meets itself.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Legendrian knot K is tangent to the contact planes everywhere. Its Thurston–Bennequin number tb(K) is its linking number with a copy pushed slightly off those planes. In standard R³ the z direction leaves the contact planes, and pushing along it moves the front straight up.
+
+**Problem.** For a Legendrian knot with a generic front, tb(K) equals the writhe of the front minus half the number of its cusps. So tb(K) can be read off any front by counting.
+
+**How the definition helps.** The copy pushed along ∂z is the front moved up a little, so one front picture shows all its crossings with the knot (our own). Each front crossing gives two such crossings with its sign, and each cusp one of sign −1, so halving gives the formula (our own). With the Seifert-surface definition this count needs a surface, and the work moves into showing that the two definitions agree (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “In this case the Thurston-Bennequin number is tb(K) = writhe(Π(K)) − ½(\# number of cusps),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing Euler class makes the rotation number independent of the Seifert surface
+
+**Remember:** No Euler class means no hidden twist from the choice of surface.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions). arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** Fix a Seifert surface Σ for a Legendrian knot K, that is, an oriented surface with boundary K. The rotation number rot(K, Σ) counts the turns of the tangent of K in a frame of the contact planes over Σ. One writes rot(K) only when the Euler class e(ξ) of the contact planes is zero, so that frames exist over closed surfaces too.
+
+**Problem.** If e(ξ) = 0, the rotation number of a Legendrian knot that bounds a surface does not depend on the Seifert surface. It is then an invariant of the Legendrian isotopy class.
+
+**How the definition helps.** Two Seifert surfaces glue along K to a closed surface S, and their rotation numbers differ by e(ξ) evaluated on S (our own). Without the condition this can be nonzero: S¹ × S² has an overtwisted contact structure with Euler class 2 on the sphere (our own). Tubing that sphere onto Σ then changes rot(K, Σ) by 2 (our own).
+
+**Wikipedia:** [Rotation number (knot theory)](https://en.wikipedia.org/wiki/Rotation_number_%28knot_theory%29). It says: “Moreover, whenever the Euler class e(ξ) of the contact structure vanishes, the rotation number is independent of the above choice and is hence denoted rot(K).”
+
+**Sources:**
+
+- [Geiges, An Introduction to Contact Topology, Cambridge University Press (2008)](https://doi.org/10.1017/CBO9780511611438)
+
 ### In the topological category every unimodular form is an intersection form
 
 **Remember:** Drop smoothness, and every unimodular form is some 4-manifold's intersection form.
@@ -1586,6 +1857,119 @@
 **nLab:** [Wu formula](https://ncatlab.org/nlab/show/Wu+formula), [Wu class](https://ncatlab.org/nlab/show/Wu+class). It says: “The intersection form of a closed spin topological 4-manifold is even.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Blowing up base points turns a pencil into a fibration with sections
+
+**Remember:** A base point is a blow-up waiting to happen.
+
+*True by definition. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 14D06. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A Lefschetz pencil is a map from a closed 4-manifold to the 2-sphere, defined away from finitely many base points. Near each base point it is (z₁, z₂) ↦ \[z₁ : z₂\], which sends each complex line through the origin to its slope. Blowing up a point replaces it by the sphere of complex lines through it, the exceptional sphere.
+
+**Problem.** Blowing up the k base points of a Lefschetz pencil gives a Lefschetz fibration over the 2-sphere. The k exceptional spheres become disjoint sections of square −1, and the square of the fiber drops from k to 0.
+
+**How the definition helps.** The blow-up of ℂ² at the origin is defined as the closure of the graph of this very map, so the map extends (our own). Each exceptional sphere then maps one-to-one onto the base, so it is a section of square −1 (our own). A local model such as \[z₁ : z₂²\] needs two blow-ups and leaves a sphere of square −2 inside a fiber (our own).
+
+**Wikipedia:** [Lefschetz pencil](https://en.wikipedia.org/wiki/Lefschetz_pencil). It says: “which is in fact well-defined only outside the points on the intersection of J with V. To make a well-defined mapping, some blowing up must be applied to V.”
+
+**Sources:**
+
+- [S. K. Donaldson, Lefschetz pencils on symplectic manifolds, Journal of Differential Geometry 53 (1999) 205–236](https://doi.org/10.4310/jdg/1214425535)
+
+### Complex local models make Lefschetz monodromy a product of right-handed Dehn twists
+
+**Remember:** Each pinched circle twists the fiber once to the right.
+
+*Makes the theorem clean to state or prove.* MSC 57K43 (Symplectic structures in 4 dimensions), 14D05, 57K20. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A Lefschetz fibration maps a 4-manifold onto a surface. Near each critical point it is (z₁, z₂) ↦ z₁² + z₂² in complex charts that preserve orientation. The vanishing cycle is the circle in a nearby fiber that shrinks to the critical point.
+
+**Problem.** Going once around a critical value changes the fiber by a right-handed Dehn twist: cut along the vanishing cycle and reglue after one full turn. So over the disk, the monodromy around the boundary circle is the product of these twists, one for each critical point.
+
+**How the definition helps.** Every critical point has the same complex model, so its monodromy is the Picard–Lefschetz twist, right-handed because the charts preserve orientation (our own). Achiral fibrations also allow orientation-reversing charts, so they also get left-handed twists, and this positivity is lost (our own). For fiber genus at least 2 over the sphere, Kas showed that such words with product 1 determine the fibration (our own).
+
+**Wikipedia:** [Picard–Lefschetz theory](https://en.wikipedia.org/wiki/Picard%E2%80%93Lefschetz_theory). It says: “The Picard–Lefschetz formula describes the monodromy at a critical point.”
+
+**Paper or page:** [Monodromy factorizations of Seifert fibered spaces](https://arxiv.org/abs/2208.13924v1). It says: “Then the corresponding abstract open book (F, φ) has monodromy φ = Tγ₁⋯Tγₙ, where F is the general fiber and each γᵢ is a vanishing cycle in F.”
+
+**Sources:**
+
+- [A. Kas, On the handlebody decomposition associated to a Lefschetz fibration, Pacific Journal of Mathematics 89 (1980) 89–104](https://doi.org/10.2140/pjm.1980.89.89)
+
+### Defining blow-up by cutting a ball gives the exceptional sphere area πr²
+
+**Remember:** The exceptional sphere is the ball's boundary, quotiented by circles.
+
+*True by definition. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 53D35. arXiv math.SG. Level 3: graduate.
+
+**Definition.** The symplectic blow-up at an embedded ball of radius r removes the open ball. It then collapses to a point each Hopf circle, where a complex line through the center meets the boundary sphere. The collapsed boundary is the exceptional sphere.
+
+**Problem.** The exceptional sphere has area πr², and the volume drops by π²r⁴/2. So each ball embedding gives the blow-up a symplectic form in the class \[ω\] − πr²e, where e is Poincaré dual to the exceptional sphere.
+
+**How the definition helps.** The collapsed sphere is the radius-r sphere divided by the Hopf circles, with area πr², like a disk through the center (our own). For a complex blow-up with a glued-in Kähler form, the area is a free parameter, matched to a ball only by computation (our own). McDuff and Polterovich proved the converse, that suitable forms on blow-ups give ball embeddings, and that carries the hard work (our own).
+
+**Wikipedia:** [Symplectic cut](https://en.wikipedia.org/wiki/Symplectic_cut). It says: “Topologically, this operation may also be viewed as the removal of an ε-neighborhood of the blow up locus, followed by the collapse of the boundary by the Hopf map.”
+
+**Sources:**
+
+- [E. Lerman, Symplectic cuts, Mathematical Research Letters 2 (1995) 247–258](https://doi.org/10.4310/MRL.1995.v2.n3.a2)
+- [D. McDuff and L. Polterovich, Symplectic packings and algebraic geometry, Inventiones Mathematicae 115 (1994) 405–429](https://doi.org/10.1007/BF01231766)
+
+### Opposite normal Euler numbers let symplectic surfaces be glued symplectically
+
+**Remember:** Glue a neighborhood to its mirror image, inside out.
+
+*True by definition.* MSC 57K43 (Symplectic structures in 4 dimensions), 53D05. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** The symplectic sum glues two symplectic 4-manifolds along symplectic surfaces of equal genus and area. The surfaces must have opposite self-intersection numbers. Then the deleted neighborhoods match by a map that turns each normal disk inside out.
+
+**Problem.** By Gompf, the sum has a symplectic form equal to the given forms away from the surfaces, unique up to isotopy for each gluing. For example, the fiber sum of n copies of the rational elliptic surface E(1) is symplectic.
+
+**How the definition helps.** By the symplectic neighborhood theorem, a neighborhood of a symplectic surface depends only on its genus, area and normal Euler number (our own). Opposite Euler numbers make the two punctured neighborhoods mirror images, so they glue symplectically almost by definition (our own). The work moves into that neighborhood theorem, which Moser's deformation method proves (our own).
+
+**Wikipedia:** [Symplectic sum](https://en.wikipedia.org/wiki/Symplectic_sum). It says: “such that the Euler classes of the normal bundles are opposite”
+
+**Sources:**
+
+- [R. E. Gompf, A new construction of symplectic manifolds, Annals of Mathematics 142 (1995) 527–595](https://doi.org/10.2307/2118554)
+
+### Relative minimality makes genus-one Lefschetz fibrations have 12k singular fibers
+
+**Remember:** Forbid trivial twists, and every twist counts toward twelve.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 14J27, 57K20. arXiv math.GT, math.SG. Level 3: graduate.
+
+**Definition.** A genus-one Lefschetz fibration has tori as fibers. It is relatively minimal when no fiber contains a sphere of square −1. Equivalently, no vanishing cycle bounds a disk in the fiber.
+
+**Problem.** A relatively minimal genus-one Lefschetz fibration over the 2-sphere has 12k singular fibers for some k ≥ 0. So its total space has Euler characteristic 12k.
+
+**How the definition helps.** Relative minimality makes every vanishing cycle essential on the torus, so each monodromy is conjugate to one Dehn twist in SL(2,ℤ) (our own). The abelianization of SL(2,ℤ) is ℤ/12, the twist maps to a generator, and the product of all monodromies is 1 (our own). Without the condition it fails: blowing up a point on a smooth fiber of the rational elliptic surface E(1) gives 13 singular fibers (our own).
+
+**Wikipedia:** [Elliptic surface](https://en.wikipedia.org/wiki/Elliptic_surface). It says: “The monodromy around each singular fiber is a well-defined conjugacy class in the group SL(2,Z) of 2 × 2 integer matrices with determinant 1.”
+
+**Sources:**
+
+- [B. Moishezon, Complex Surfaces and Connected Sums of Complex Projective Planes, Lecture Notes in Mathematics 603, Springer (1977)](https://doi.org/10.1007/BFb0063355)
+- [R. E. Gompf and A. I. Stipsicz, 4-Manifolds and Kirby Calculus, Graduate Studies in Mathematics 20, American Mathematical Society (1999)](https://doi.org/10.1090/gsm/020)
+
+### Requiring base points makes every Lefschetz pencil carry a symplectic form
+
+**Remember:** Fibers forced through common points cannot hide in homology.
+
+*Rules out counterexamples.* MSC 57K43 (Symplectic structures in 4 dimensions), 53D35. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** A Lefschetz pencil on a closed 4-manifold is a map to the 2-sphere, defined away from a nonempty finite set of base points. Near each base point it is (z₁, z₂) ↦ \[z₁ : z₂\]. Near each critical point it is (z₁, z₂) ↦ z₁² + z₂² in orientation-preserving complex charts.
+
+**Problem.** Every closed 4-manifold with a Lefschetz pencil has a symplectic form, a closed nondegenerate 2-form, for which the fibers are symplectic surfaces. With Donaldson's converse, a closed 4-manifold is symplectic exactly when it has a Lefschetz pencil.
+
+**How the definition helps.** Two fibers of a pencil meet only at the base points, positively, so the fiber class has positive square (our own). So Gompf's theorem, which needs a nonzero fiber class, covers every pencil (our own). Without base points it fails: S¹ × S³ is a torus bundle over S² with zero second cohomology (our own).
+
+**Paper or page:** [Achiral Lefschetz fibrations and the moduli space of curves](https://arxiv.org/abs/2510.18593v1). It says: “Let f:X→S be a Lefschetz fibration such that the homology class of the fiber \[F\] does not vanish in H₂(X,ℝ). Then X admits a symplectic structure ω such that the regular fibers Fₓ = f⁻¹(x) are symplectic.”
+
+**Sources:**
+
+- [R. E. Gompf and A. I. Stipsicz, 4-Manifolds and Kirby Calculus, Graduate Studies in Mathematics 20, American Mathematical Society (1999)](https://doi.org/10.1090/gsm/020)
+- [S. K. Donaldson, Lefschetz pencils on symplectic manifolds, Journal of Differential Geometry 53 (1999) 205–236](https://doi.org/10.4310/jdg/1214425535)
 
 ### Locally flat spheres make the Schoenflies theorem true in every dimension
 
@@ -1734,6 +2118,26 @@
 
 - [John Milnor, Spin structures on manifolds, L'Enseignement Mathématique 9 (1963) 198–203](https://doi.org/10.5169/seals-38784)
 - [Michael K. Murray, Michael A. Singer, Gerbes, Clifford modules and the index theorem, 2003, arXiv:math/0302096](https://arxiv.org/abs/math/0302096)
+
+### Requiring an open manifold lets almost symplectic forms become symplectic
+
+**Remember:** Without a closed piece, topology is the only obstruction.
+
+*Rules out counterexamples.* MSC 57R17 (Symplectic and contact topology in high or arbitrary dimension), 53D35, 58A20. arXiv math.SG. Level 3: graduate.
+
+**Definition.** An open manifold is one with no compact component without boundary. On such manifolds every open condition on derivatives that diffeomorphisms preserve satisfies Gromov's h-principle. This means that any formal solution, with derivatives replaced by free variables, deforms to a true solution.
+
+**Problem.** On an open manifold, every nondegenerate 2-form deforms through nondegenerate 2-forms to an exact symplectic form dλ. On closed manifolds this fails: the sphere S⁶ carries a nondegenerate 2-form but no symplectic form.
+
+**How the definition helps.** Nondegeneracy of dλ is an open, diffeomorphism-invariant condition on first derivatives of λ, so Gromov's theorem applies, with nondegenerate 2-forms as formal solutions (our own). On a closed 2n-manifold a symplectic class has nonzero n-th power, which fails on S⁶ because its second cohomology vanishes (our own). S⁶ is still almost symplectic, since it has an almost complex structure, so openness removes a real counterexample (our own).
+
+**nLab:** [h-principle](https://ncatlab.org/nlab/show/h-principle). It says: “if B is an open n-manifold, and if R is open as a subspace of X⁽ʳ⁾ and is Diff(B)-invariant, then R satisfies the h-principle”
+
+**Wikipedia:** [Almost symplectic manifold](https://en.wikipedia.org/wiki/Almost_symplectic_manifold). It says: “An almost symplectic manifold is equivalent to an Sp-structure; requiring ω to be closed is an integrability condition.”
+
+**Sources:**
+
+- [M. Gromov, Stable mappings of foliations into manifolds, Math. USSR-Izv. 3 (1969), 671–694](https://doi.org/10.1070/im1969v003n04abeh000796)
 
 ### Fractional Euler characteristic decides the geometry of every 2-orbifold
 
@@ -2603,7 +3007,7 @@
 
 **Remember:** Bounding means zero, so classify manifolds up to bounding.
 
-*Makes the theorem clean to state or prove.* MSC 57R75 (\\(\\mathrm\\)- and \\(\\mathrm\\)-cobordism), 55N22. arXiv math.AT, math.GT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 57R75 (O- and SO-cobordism), 55N22. arXiv math.AT, math.GT. Level 3: graduate.
 
 **Definition.** Two closed smooth n-manifolds are unoriented cobordant if their disjoint union is the boundary of a compact smooth (n+1)-manifold, so a manifold represents zero exactly when it bounds. The classes form a graded ring under disjoint union and Cartesian product.
 
@@ -2621,7 +3025,7 @@
 
 **Remember:** A homotopy is a bordism on the cylinder.
 
-*True by definition. Confidence: medium.* MSC 57R75 (\\(\\mathrm\\)- and \\(\\mathrm\\)-cobordism), 55N22. arXiv math.AT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 57R75 (O- and SO-cobordism), 55N22. arXiv math.AT. Level 3: graduate.
 
 **Definition.** An oriented bordism class over X is represented by a closed oriented manifold M with a map f: M → X. Two such maps are bordant when a map from a compact oriented manifold W to X restricts on its boundary to the first map and to the second with reversed orientation.
 
@@ -2639,7 +3043,7 @@
 
 **Remember:** One factor per formal root turns bundle sums into products.
 
-*True by definition.* MSC 57R75 (\\(\\mathrm\\)- and \\(\\mathrm\\)-cobordism), 57R20, 55N22. arXiv math.AT. Level 3: graduate.
+*True by definition.* MSC 57R75 (O- and SO-cobordism), 57R20, 55N22. arXiv math.AT. Level 3: graduate.
 
 **Definition.** Write the total rational Pontryagin class as a formal product of factors (1 + zⱼ), and, for a rational power series Q with constant term 1, take ∏ Q(zⱼ) rewritten in Pontryagin classes. This class turns a direct sum of bundles into a product of classes. The genus of a closed oriented manifold is its top-degree part evaluated on the fundamental class.
 
@@ -3281,6 +3685,384 @@
 
 - [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
 
+### Algebra monodromy detects loops of Legendrian knots that are smoothly contractible
+
+**Remember:** Carry the algebra around the loop and see what changed.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A loop of Legendrian knots is a path of Legendrian knots that starts and ends at one knot K. Along each path the Chekanov–Eliashberg algebra, built on the crossings of the Lagrangian projection, changes by an explicit map. So a loop induces an automorphism of the algebra of K, its monodromy, well defined up to homotopy.
+
+**Problem.** A loop of Legendrian knots whose monodromy is not homotopic to the identity cannot be contracted through Legendrian knots. Kálmán found such loops that can be contracted through smooth knots, and some braid loops even have monodromy of infinite order.
+
+**How the definition helps.** A contractible loop has monodromy homotopic to the identity, so any other monodromy obstructs contraction (our own). The invariance proof already gives a map along each path, so the monodromy needs no new construction (our own). The work lies in showing that homotopic loops give homotopic maps, and in computing the map for a chosen loop (our own).
+
+**Wikipedia:** [Legendrian knot](https://en.wikipedia.org/wiki/Legendrian_knot). It says: “This Chekanov-Eliashberg invariant yields an invariant for loops of Legendrian knots by considering the monodromy of the loops. This has yielded noncontractible loops of Legendrian knots which are contractible in the space of all knots.”
+
+**Paper or page:** [Braid Loops with infinite monodromy on the Legendrian contact DGA](https://arxiv.org/abs/2101.02318). It says: “The purple-box Legendrian loop ϑ : S¹ → ℒ(Λ) induces a DGA map 𝒜(L\_ϑ) : 𝒜(Λ) → 𝒜(Λ) of infinite order.”
+
+**Sources:**
+
+- [Kálmán, Contact homology and one parameter families of Legendrian knots, Geometry &amp; Topology (2005)](https://doi.org/10.2140/gt.2005.9.2013)
+
+### Allowing stabilization by paired generators makes the Chekanov algebra a Legendrian invariant
+
+**Remember:** A pair of crossings born together cancels in homology.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** Two differential graded algebras are stable tame isomorphic when, after adding pairs of generators e, e′ with ∂e = e′, they become isomorphic. The isomorphism must be a composition of elementary changes, each altering one generator. The added pairs have zero homology.
+
+**Problem.** The Chekanov–Eliashberg algebra of a Legendrian knot, built on the crossings of its Lagrangian projection, is a Legendrian isotopy invariant up to stable tame isomorphism. Its homology is therefore an invariant too.
+
+**How the definition helps.** The Reidemeister move that creates two crossings adds two generators, which a change of generators turns into a pair with ∂e = e′ (our own). So the algebra is not invariant up to isomorphism, but it is once such pairs are allowed, and homology does not change (our own). The moves come from Theorem 2.3 of the paper: Lagrangian projections of Legendrian isotopic knots are related by Legendrian Reidemeister moves.
+
+**Paper or page:** [Persistent Legendrian contact homology in ℝ³](https://arxiv.org/abs/2312.09144), [Persistent Legendrian contact homology in ℝ³](https://arxiv.org/abs/2312.09144). It says: “Let (𝒜\_Λ, ∂\_Λ) be a filtered Chekanov-Eliashberg DGA, and let (S<sub>k</sub>𝒜\_Λ, ∂\_Λ) be its grading-k stabilization, with additional generators denoted e<sub>k</sub> and e<sub>k−1</sub>.”
+
+**Sources:**
+
+- [Chekanov, Differential algebra of Legendrian links, Inventiones Mathematicae (2002)](https://doi.org/10.1007/s002220200212)
+
+### An overtwisted complement makes classical invariants classify loose Legendrian knots
+
+**Remember:** A loose knot sits in flexible space, so only its numbers matter.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A Legendrian knot in an overtwisted contact 3-manifold is loose when its complement is also overtwisted, that is, when the complement contains an overtwisted disk. A knot whose complement is tight is called non-loose.
+
+**Problem.** Loose Legendrian knots in one contact 3-manifold, of one knot type and bounding surfaces, are determined up to contactomorphism by their Thurston–Bennequin and rotation numbers. This fails once non-loose knots are allowed.
+
+**How the definition helps.** A loose knot has an overtwisted complement, where Eliashberg's classification reduces the question to homotopy data that equal invariants make match (our own). Without the condition this fails: (S³, ξ₁) holds a non-loose and a loose unknot, both with tb = 2 and rot = 1 (our own). A contactomorphism keeps the complement overtwisted or tight, so none maps one knot to the other (our own).
+
+**Paper or page:** [Contact surgery numbers](https://arxiv.org/abs/2201.00157). It says: “U is the non-loose unknot with (tb(U), rot(U)) = (2, ±1)”
+
+**Sources:**
+
+- [Etnyre, On knots in overtwisted contact structures, Quantum Topology 4 (2013), 229–264](https://doi.org/10.4171/QT/39)
+- [Etnyre, Kegel, Onaran, Contact surgery numbers (2023)](https://arxiv.org/abs/2201.00157)
+
+### Augmentations linearize the Chekanov–Eliashberg algebra into finite invariants
+
+**Remember:** An augmentation is a base point that makes the algebra linear.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** The Chekanov–Eliashberg algebra 𝒜 is a differential graded algebra over ℤ/2 generated by the crossings of a Lagrangian projection. An augmentation is an algebra map ε from 𝒜 to ℤ/2 with ε(1) = 1 and ε∘∂ = 0, usually zero in nonzero degrees. Changing each generator a to a + ε(a) and keeping only the linear part of the differential gives a finite-dimensional chain complex.
+
+**Problem.** The set of linearized homologies, one for each augmentation, is a Legendrian isotopy invariant. Their Poincaré polynomials distinguish two Legendrian knots found by Chekanov, which have the same knot type and equal Thurston–Bennequin and rotation numbers.
+
+**How the definition helps.** The full homology is a noncommutative algebra and is hard to compare, but each linearized homology is a finite list of dimensions (our own). The condition ε∘∂ = 0 removes the constant term of the changed differential, so its linear part squares to zero (our own). The work is Chekanov's invariance theorem, which carries augmentations and linearized homologies along (our own).
+
+**Wikipedia:** [Relative contact homology](https://en.wikipedia.org/wiki/Relative_contact_homology). It says: “The relative contact homology has been shown to be a strictly more powerful invariant than the "classical invariants", namely Thurston-Bennequin number and rotation number (within a class of smooth knots).”
+
+**Paper or page:** [Persistent Legendrian contact homology in ℝ³](https://arxiv.org/abs/2312.09144). It says: “The collection of linearized Legendrian contact homologies {LCH\_\*<sup>ε</sup>(Λ) \| ε: 𝒜\_Λ → ℤ₂ is an augmentation} is a Legendrian isotopy invariant of Λ.”
+
+**Sources:**
+
+- [Chekanov, Differential algebra of Legendrian links, Inventiones Mathematicae (2002)](https://doi.org/10.1007/s002220200212)
+
+### Closed braids around the z-axis present every transverse link
+
+**Remember:** Spin around the axis fast enough and you are transverse.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** Write the standard contact structure as the kernel of the symmetric form dz + r² dθ in cylindrical coordinates. A closed braid around the z-axis is a link along which the angle θ always increases. Moved far from the axis through braids, it becomes transverse, because there r² dθ outweighs dz.
+
+**Problem.** Every transverse link in standard contact R³ is transversely isotopic to a closed braid. Two braids give the same transverse link exactly when conjugations and positive Markov stabilizations, which add one strand and one positive crossing, relate them.
+
+**How the definition helps.** With the symmetric form, braids are a natural supply of transverse links, and Bennequin's theorem says that they give all of them (our own). The transverse Markov theorem of Orevkov–Shevchishin and Wrinkle then drops only negative stabilization from the classical Markov theorem. That move must go, because it lowers the self-linking number, writhe minus strand count, by 2 (our own).
+
+**Paper or page:** [A Transverse Braiding Theorem with Rational Open Book Decomposition](https://arxiv.org/abs/2503.18106), [Grid Diagrams, Braids, and Contact Geometry](https://arxiv.org/abs/0812.3665). It says: “Any transverse link L in (ℝ³, ξ<sub>std</sub>) is transversely isotopic to a link braided about the z-axis.”
+
+**Sources:**
+
+- [Orevkov, Shevchishin, Markov theorem for transversal links, Journal of Knot Theory and Its Ramifications (2003)](https://doi.org/10.1142/S0218216503002846)
+- [Ng, Thurston, Grid diagrams, braids, and contact geometry (2009)](https://arxiv.org/abs/0812.3665)
+
+### Convex surfaces compute the Euler class from their dividing set
+
+**Remember:** The dividing set splits a convex surface into positive and negative halves.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D10. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A surface Σ is convex when a vector field preserving the contact structure is transverse to it. Then a dividing set Γ cuts Σ into parts R₊ and R₋. A Reeb field of a suitable contact form crosses R₊ positively and R₋ negatively.
+
+**Problem.** For a closed oriented convex surface Σ, the Euler class of the contact structure evaluated on Σ equals χ(R₊) − χ(R₋).
+
+**How the definition helps.** The Reeb definition reduces the theorem to the Poincaré–Hopf theorem (our own). Projecting along the Reeb field matches the planes with the tangent planes of Σ, keeping orientation over R₊ and reversing it over R₋ (our own). The work moves into the quoted lemma that this Reeb description is equivalent to convexity, which replaces the usual count of singular points (our own).
+
+**Paper or page:** [Sutured contact homology, conormal stops and hyperbolic knots](https://arxiv.org/abs/2206.07782). It says: “Γ splits Σ alternating parts R±, such R+ induces on Γ the previous orientation (ie Γ = ∂R+ = −∂R−). The Reeb vector field associated to λ is positively (resp. negatively) transverse to R±.”
+
+**Sources:**
+
+- [E. Giroux, Convexité en topologie de contact, Comment. Math. Helv. 66 (1991) 637–677](https://doi.org/10.1007/BF02566670)
+- [V. Colin, P. Ghiggini, K. Honda and M. Hutchings, Sutures and contact homology I, Geom. Topol. 15 (2011) 1749–1842](https://doi.org/10.2140/gt.2011.15.1749)
+
+### Crossing heights make the Chekanov–Eliashberg differential strictly lower height
+
+**Remember:** Area spent on a disk is height lost.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** The height of a crossing of the Lagrangian projection is the difference of the z-values of the two knot points above it. Because dz = y dx along the knot, a polygon bounded by the projection has area equal to a difference of corner heights. It is the height of its positive corner minus those of its negative corners.
+
+**Problem.** The differential of the Chekanov–Eliashberg algebra counts immersed polygons with corners at crossings, and it strictly lowers height, since they have positive area. So the algebra is filtered by height, and its linearized homology becomes a persistence module.
+
+**How the definition helps.** By Stokes' theorem a polygon's area is the integral of y dx around it, which along the knot is the change in z (our own). So each term of ∂a lies below a in height, and the generators below any height bound span a subcomplex (our own). These nested subcomplexes form the persistence module, which records how long each homology class lasts as the bound grows (our own).
+
+**Paper or page:** [Persistent Legendrian contact homology in ℝ³](https://arxiv.org/abs/2312.09144). It says: “The Chekanov-Eliashberg DGA with a height filtration is an example of a persistence module of DGAs.”
+
+**Sources:**
+
+- [Chekanov, Differential algebra of Legendrian links, Inventiones Mathematicae (2002)](https://doi.org/10.1007/s002220200212)
+
+### Defining Legendrian by vanishing integrals extends Legendrian knot theory to rough curves
+
+**Remember:** Integrals see a corner where derivatives fail.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 53D10. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A Lavrentiev curve is a rectifiable curve in which each arc is at most a fixed multiple longer than the distance between its endpoints. Such a curve is called Legendrian when the contact form integrates to zero over every subarc, a condition that needs no tangent vectors.
+
+**Problem.** Legendrian Lavrentiev links up to Legendrian isotopy fall into exactly the same classes as smooth Legendrian links. A locally Lavrentiev curve satisfies the integral condition exactly when its derivative, which exists almost everywhere, lies in the contact plane.
+
+**How the definition helps.** The integral condition makes sense for curves with corners, so piecewise smooth curves without cusps can be Legendrian (our own). Corollary 3.9 shows that it agrees with the tangent condition almost everywhere, and no new isotopy classes appear. So proofs may use curves with corners and still prove results about smooth Legendrian links (our own).
+
+**Paper or page:** [Legendrian Lavrentiev links](https://arxiv.org/abs/2404.13473). It says: “We define Legendrian isotopies of such curves and prove that the equivalence classes of Legendrian Lavrentiev links with respect to Legendrian isotopies coincide with smooth classes.”
+
+**Sources:**
+
+- [Prasolov, Legendrian Lavrentiev links (2024)](https://arxiv.org/abs/2404.13473)
+
+### Dividing slopes make tight solid tori paths in the Farey graph
+
+**Remember:** Dividing slopes are rational points, and tight structures are paths between them.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions). arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A solid torus with convex boundary has two parallel dividing curves on its boundary, and their slope is a rational number. In the Farey graph two slopes are joined when curves of those slopes can meet exactly once.
+
+**Problem.** Tight structures on a solid torus with two boundary dividing curves of given slope correspond to decorated Farey paths, up to shuffling in blocks. It is universally tight, meaning tight on the universal cover, exactly when all signs agree.
+
+**How the definition helps.** Recording a convex torus by one rational slope turns layers of bypasses into steps along Farey edges (our own). Each step carries a sign, the side of its bypass, and these signs are the decorations (our own). Giroux and Honda proved the correspondence, and it classifies tight lens spaces by continued fractions (our own).
+
+**Paper or page:** [Knotted solid tori in contact manifolds](https://arxiv.org/abs/2502.15165). It says: “Tight contact structure on the solid torus Sₘ with lower meridian m and convex boundary with two dividing curves of slope r are in one-to-one correspondence with partially decorated paths in the Farey graph”
+
+**Sources:**
+
+- [K. Honda, On the classification of tight contact structures I, Geom. Topol. 4 (2000) 309–368](https://doi.org/10.2140/gt.2000.4.309)
+- [E. Giroux, Structures de contact en dimension trois et bifurcations des feuilletages de surfaces, Invent. Math. 141 (2000) 615–689](https://doi.org/10.1007/s002220000082)
+
+### Fixing one overtwisted disk makes Eliashberg's theorem a homotopy equivalence
+
+**Remember:** Pin one overtwisted disk down, and whole families become flexible.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57R17. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** Fix an embedded disk Δ and a contact structure near Δ for which Δ is an overtwisted disk. Contact structures overtwisted along Δ are those that agree with this fixed structure near Δ.
+
+**Problem.** On a closed oriented 3-manifold, consider the contact structures overtwisted along a fixed disk Δ. Their inclusion into the plane fields that agree with the fixed structure near Δ is a homotopy equivalence.
+
+**How the definition helps.** Fixing the disk gives every member of a family the same overtwisted disk, so the extension argument works for whole families (our own). Without a common disk, different members could need different disks, and the argument would not run (our own). On connected components the theorem gives back the classification by homotopy classes of plane fields (our own).
+
+**Paper or page:** [A proof of the classification theorem of overtwisted contact structures via convex surface theory](https://arxiv.org/abs/1102.5398). It says: “Let M be a closed, oriented 3-manifold. Then the inclusion j: Contᵒᵗ(M,△) → Distr(M,△) is a homotopy equivalence.”
+
+**Sources:**
+
+- [Y. Eliashberg, Classification of overtwisted contact structures on 3-manifolds, Invent. Math. 98 (1989) 623–637](https://doi.org/10.1007/BF01393840)
+
+### Grid diagrams present Legendrian and transverse links by allowed stabilization types
+
+**Remember:** Which corners you may stabilize decides which kind of knot you see.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A grid diagram is a square grid with one X and one O in each row and column, joined by segments, verticals crossing over horizontals. Smoothing its northeast and southwest corners, turning it by 45 degrees and switching all crossings gives a Legendrian front. The other two corner types become cusps.
+
+**Problem.** Legendrian links correspond one to one with grid diagrams up to translation, commutation and stabilizations of types X:NE and X:SW. Transverse links correspond to the further quotient by X:SE stabilization.
+
+**How the definition helps.** X:NE and X:SW stabilizations keep the Legendrian link, so Legendrian links are grid diagrams up to these moves (our own). Proposition 3 says that an X:SE stabilization is a negative Legendrian stabilization, so allowing it too gives transverse links, as the approximation theorem predicts. One finite combinatorial object thus carries braids, Legendrian links and transverse links at once (our own).
+
+**Wikipedia:** [Thurston–Bennequin number](https://en.wikipedia.org/wiki/Thurston%E2%80%93Bennequin_number). It says: “By smoothing the 'northeast' and 'southwest' corners and rotating the diagram and switching all crossings, one can convert a grid diagram into the associated Legendrian knot.”
+
+**Paper or page:** [Grid Diagrams, Braids, and Contact Geometry](https://arxiv.org/abs/0812.3665), [Grid Diagrams, Braids, and Contact Geometry](https://arxiv.org/abs/0812.3665). It says: “Let 𝒢̃ denote the quotient set 𝒢/(translation, commutation). The maps 𝒢→ℬ, 𝒢→ℒ, and 𝒢→𝒯 induce bijections ℬ ⟷ 𝒢̃/(X:NE, X:SE (de)stabilization) ℒ ⟷ 𝒢̃/(X:NE, X:SW (de)stabilization) 𝒯 ⟷ 𝒢̃/(X:NE, X:SW, X:SE (de)stabilization).”
+
+**Sources:**
+
+- [Ng, Thurston, Grid diagrams, braids, and contact geometry (2009)](https://arxiv.org/abs/0812.3665)
+- [Ozsváth, Szabó, Thurston, Legendrian knots, transverse knots and combinatorial Floer homology, Geometry &amp; Topology (2008)](https://doi.org/10.2140/gt.2008.12.941)
+
+### Legendrian approximation turns negative-stabilization invariants into transverse knot invariants
+
+**Remember:** A transverse knot is a Legendrian knot that forgot its negative zigzags.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57K18. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A transverse knot is a knot that crosses the contact planes at every point. A Legendrian approximation of a transverse knot T is a Legendrian knot whose positive transverse push-off is transversely isotopic to T. The push-off is a nearby copy moved slightly off the contact planes in the positive direction.
+
+**Problem.** Transverse knots correspond one to one with Legendrian knots up to isotopy and negative stabilization, which adds a small zigzag to a front. So every Legendrian invariant unchanged by negative stabilization is a transverse invariant.
+
+**How the definition helps.** Two Legendrian approximations of one transverse knot differ only by isotopy and negative stabilizations, so such an invariant agrees on them. The Heegaard Floer invariant 𝔏 satisfies 𝔏(L⁻) = 𝔏(L), so its value on any approximation is a transverse invariant. The grid invariant θ arises the same way, and the work sits in the approximation theorem of Epstein, Fuchs and Meyer (our own).
+
+**Wikipedia:** [Transverse knot](https://en.wikipedia.org/wiki/Transverse_knot). It says: “This yields a bijection between the set of isomorphism classes of transverse knots and the set of isomorphism classes of Legendrian knots modulo negative Legendrian stabilization.”
+
+**Paper or page:** [Heegaard Floer invariants of Legendrian knots in contact three--manifolds](https://arxiv.org/abs/0802.0628), [Heegaard Floer invariants of Legendrian knots in contact three--manifolds](https://arxiv.org/abs/0802.0628), [Quasi-isomorphism of grid chain complexes for a connected sum of knots](https://arxiv.org/abs/2312.02610). It says: “Let L be a (compatibly oriented) Legendrian approximation of T. Then, 𝔗(T):= 𝔏(L) and 𝔗̂(T) := 𝔏̂(L) are invariants of the transverse knot type of T.”
+
+**Sources:**
+
+- [Epstein, Fuchs, Meyer, Chekanov–Eliashberg invariants and transverse approximations of Legendrian knots, Pacific Journal of Mathematics (2001)](https://doi.org/10.2140/pjm.2001.201.89)
+- [Lisca, Ozsváth, Stipsicz, Szabó, Heegaard Floer invariants of Legendrian knots in contact three-manifolds, Journal of the European Mathematical Society (2009)](https://doi.org/10.4171/JEMS/183)
+
+### Ng's resolution lets fronts compute the Chekanov–Eliashberg algebra
+
+**Remember:** Redraw the front by local rules, and it becomes a Lagrangian picture.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** The resolution of a front is a plane diagram made from it by local rules. Each left cusp is smoothed, each right cusp becomes a small loop with one crossing, and each crossing of the front stays a crossing.
+
+**Problem.** The resolution of a front is the Lagrangian projection of a Legendrian knot isotopic to the original one. So the Chekanov–Eliashberg algebra, built on the crossings of a Lagrangian projection, can be read from the front's crossings and right cusps.
+
+**How the definition helps.** The Chekanov–Eliashberg algebra, a differential graded algebra on the crossings of the Lagrangian projection, needs that hard-to-draw projection (our own). The crossings of the resolution are the front's crossings and right cusps, so generators and disks can be read from the front (our own). The work goes into showing that the rules give a knot Legendrian isotopic to the first one (our own).
+
+**Paper or page:** [Bordered Legendrian Rational Symplectic Field Theory](https://arxiv.org/abs/2509.07921). It says: “The resolution of Π<sub>xz</sub>(Λ) is the Lagrangian projection Π<sub>xy</sub>(Λ′) for another Legendrian knot Λ′ Legendrian isotopic to Λ.”
+
+**Sources:**
+
+- [Ng, Computable Legendrian invariants, Topology (2003)](https://doi.org/10.1016/S0040-9383(02)00010-1)
+
+### Non-isolating graphs on a page can be made Legendrian
+
+**Remember:** Every region cut out by the graph must reach the binding.
+
+*Rules out counterexamples.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** An open book cuts a 3-manifold minus a link, the binding, into surfaces called pages. A graph G in a page is non-isolating when every component of the page minus G reaches the boundary of the page.
+
+**Problem.** Let an open book support a contact structure, and let G be a connected non-isolating graph in a page. Then an isotopy of the open book, still supporting the structure, makes G Legendrian in its page.
+
+**How the definition helps.** Non-isolating is exactly the condition that Stokes' theorem forces, since dα &gt; 0 on pages and α vanishes on Legendrian curves (our own). Stokes would give 0 &lt; ∫ of dα over R = ∫ of α over ∂R = 0 for a region R bounded by G (our own). That the condition suffices is Honda's Legendrian realization principle adapted to pages (our own).
+
+**Paper or page:** [Non-looseness of boundaries of Legendrian ribbons](https://arxiv.org/abs/2307.06828). It says: “Given an open book supporting the contact 3-manifold (M,ξ) and containing a non-isolating connected graph G in the interior of a page, the open book may be isotoped so that it supports (M,ξ) with the graph G now Legendrian”
+
+**Sources:**
+
+- [K. Honda, On the classification of tight contact structures I, Geom. Topol. 4 (2000) 309–368](https://doi.org/10.2140/gt.2000.4.309)
+- [K. L. Baker and S. Onaran, Non-looseness of boundaries of Legendrian ribbons, arXiv:2307.06828](https://arxiv.org/abs/2307.06828)
+
+### Planar open books make every filling a Lefschetz fibration
+
+**Remember:** Planar pages are spheres with holes.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 53D35, 57K43. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** An open book is planar when its pages have genus zero, so each page is a sphere with holes. A contact 3-manifold is planar when some planar open book supports it.
+
+**Problem.** Let a contact 3-manifold be supported by a planar open book. Then every minimal strong filling of it is, up to deformation, a Lefschetz fibration inducing that open book on the boundary (Wendl).
+
+**How the definition helps.** Genus-zero pages lift to holomorphic curves of index two, and in genus zero such curves are automatically regular (our own). Positivity of intersections then makes them foliate the whole filling, which gives the Lefschetz fibration (our own). So fillings of planar contact manifolds correspond to factorizations of the monodromy into right-handed Dehn twists (our own).
+
+**Paper or page:** [Monodromy factorizations of Seifert fibered spaces](https://arxiv.org/abs/2208.13924). It says: “If (Y,ξ) is a contact 3-manifold supported by a planar open book 𝒪ℬ, then, up to symplectic deformation, every minimal symplectic filling (W,ω) of (Y,ξ) is supported by a Lefschetz fibration which induces 𝒪ℬ on its boundary.”
+
+**Sources:**
+
+- [C. Wendl, Strongly fillable contact manifolds and J-holomorphic foliations, Duke Math. J. 151 (2010) 337–384](https://doi.org/10.1215/00127094-2010-001)
+
+### Requiring a tight complement gives non-loose transverse links the Bennequin bound
+
+**Remember:** Tightness is needed only off the link itself.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 57K10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A transverse link T in a contact 3-manifold is non-loose when its complement is tight. Tight means that it contains no overtwisted disk, a disk with Legendrian boundary along which the contact planes do not twist relative to the disk.
+
+**Problem.** A non-loose transverse link T that bounds an oriented surface Σ satisfies sl(T, \[Σ\]) ≤ −χ(Σ). This holds even when the whole contact manifold is overtwisted.
+
+**How the definition helps.** In a tight manifold every null-homologous transverse link satisfies this bound, and the proof needs tightness only off the link (our own). Loose links can fail: an overtwisted 3-sphere holds a loose Legendrian unknot with tb = 0 and rot = 1 (our own). One of its transverse push-offs is loose with sl = 1, which is more than −χ(disk) = −1 (our own).
+
+**Paper or page:** [Non-looseness of boundaries of Legendrian ribbons](https://arxiv.org/abs/2307.06828), [Contact surgery numbers](https://arxiv.org/abs/2201.00157). It says: “Let T be a non-loose, null-homologous transverse link. Then for any Seifert surface Σ we have sl(T, \[Σ\]) ≤ −χ(Σ).”
+
+**Sources:**
+
+- [Baker, Onaran, Non-looseness of boundaries of Legendrian ribbons (2023)](https://arxiv.org/abs/2307.06828)
+- [Etnyre, Kegel, Onaran, Contact surgery numbers (2023)](https://arxiv.org/abs/2201.00157)
+
+### Right-veering monodromy characterizes tight contact structures
+
+**Remember:** Right-veering maps never push an arc to the left.
+
+*Makes the theorem clean to state or prove.* MSC 57K33 (Contact structures in 3 dimensions), 57K20. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A boundary-fixing surface diffeomorphism φ is right-veering when it moves every properly embedded arc to the right at its starting point, or fixes it. The notion depends only on the mapping class of φ.
+
+**Problem.** A contact 3-manifold is tight exactly when every open book supporting it has right-veering monodromy.
+
+**How the definition helps.** Through the Giroux correspondence, the definition turns a condition on the 3-manifold into a test on arcs in a surface (our own). If some arc moves to the left, Honda, Kazez and Matić build an overtwisted disk from the arc and its image (our own). Conversely, an overtwisted structure has a supporting open book with a left-moving arc (our own).
+
+**Paper or page:** [Floer homology and right-veering monodromy](https://arxiv.org/abs/2204.04093). It says: “A contact 3-manifold (Y,ξ) is tight if and only if every fibered link L ⊂ Y supporting (Y,ξ) has right-veering monodromy.”
+
+**Sources:**
+
+- [K. Honda, W. H. Kazez and G. Matić, Right-veering diffeomorphisms of compact surfaces with boundary, Invent. Math. 169 (2007) 427–449](https://doi.org/10.1007/s00222-007-0051-4)
+
+### Tightness keeps the Euler class inside the dual Thurston norm ball
+
+**Remember:** Without overtwisted disks, the planes cannot wrap too often around surfaces.
+
+*Rules out counterexamples.* MSC 57K33 (Contact structures in 3 dimensions), 57K31. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A contact structure on a 3-manifold is tight when it contains no overtwisted disk. An overtwisted disk is an embedded disk whose boundary is tangent to the contact planes. Along that boundary the planes do not twist relative to the disk.
+
+**Problem.** Let ξ be tight on a closed 3-manifold, and let Σ be an embedded closed surface of positive genus. Then the Euler class e(ξ) satisfies \|e(ξ)\[Σ\]\| ≤ −χ(Σ), and e(ξ) vanishes on embedded spheres.
+
+**How the definition helps.** Make Σ convex, so that e(ξ)\[Σ\] = χ(R₊) − χ(R₋) for the two sides of its dividing set (our own). Giroux's criterion forbids disk pieces in a tight manifold, and the other pieces have χ ≤ 0, which gives the bound (our own). Overtwisted structures occur in every homotopy class of plane fields, so they take every even Euler class and break the bound (our own).
+
+**Paper or page:** [On the Euler class one conjecture for fillable contact structures](https://arxiv.org/abs/2409.14504). It says: “Let M be an oriented closed 3–manifold. Then, the real Euler class e(ξ) ∈ H²(M;ℝ) of any tight contact structure ξ on M is an even lattice point in the dual Thurston norm unit ball”
+
+**Sources:**
+
+- [Y. Eliashberg, Contact 3-manifolds twenty years since J. Martinet's work, Ann. Inst. Fourier 42 (1992) 165–192](https://doi.org/10.5802/aif.1288)
+
+### Viewing a filling as a cobordism from nothing gives an augmentation
+
+**Remember:** A filling is a cobordism to nothing, whose algebra is trivial.
+
+*True by definition. Confidence: medium.* MSC 57K33 (Contact structures in 3 dimensions), 53D12, 53D42. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** An exact Lagrangian filling of Λ is a surface in the 4-ball, ending in the cylinder over Λ, on which the form λ is exact. Here dλ is the symplectic form. So it is an exact Lagrangian cobordism from the empty link to Λ, and such cobordisms induce maps of Chekanov–Eliashberg algebras.
+
+**Problem.** An exact Lagrangian filling with Maslov number 0, a condition that makes gradings work, induces an augmentation of the Chekanov–Eliashberg algebra of Λ. So a Legendrian link whose algebra has no augmentation has no such filling.
+
+**How the definition helps.** The empty link's algebra is a coefficient ring with zero differential, so any chain map to it satisfies ε∘∂ = 0 (our own). The work lies in functoriality, the theorem of Ekholm, Honda and Kálmán that exact cobordisms induce algebra maps (our own). For example, a stabilized Legendrian knot has no augmentation, so it has no such filling (our own).
+
+**Paper or page:** [Braid Loops with infinite monodromy on the Legendrian contact DGA](https://arxiv.org/abs/2101.02318). It says: “Then L induces a DGA map ε<sub>L</sub> : (𝒜\_Λ, ∂) → (ℤ\[H₁(L)\], 0) where ℤ\[H₁(L)\] lies entirely in grading 0. (The map ε<sub>L</sub> is referred to as an augmentation.)”
+
+**Sources:**
+
+- [Ekholm, Honda, Kálmán, Legendrian knots and exact Lagrangian cobordisms, Journal of the European Mathematical Society (2016)](https://doi.org/10.4171/JEMS/650)
+
+### Weak fillability is an open condition, so taut foliations give tight structures
+
+**Remember:** Weak fillings ask the symplectic form only to be positive on planes.
+
+*True by definition.* MSC 57K33 (Contact structures in 3 dimensions), 57R30. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A contact 3-manifold (M, ξ) is weakly semi-fillable when it is one boundary part of a compact symplectic 4-manifold. The symplectic form only has to be positive on the contact planes, which is an open condition.
+
+**Problem.** Contact structures C⁰-close to a taut foliation are weakly semi-fillable, and therefore tight. A foliation is taut when every leaf meets a closed curve transverse to all leaves.
+
+**How the definition helps.** Positivity on planes is an open condition, so a closed 2-form positive on the leaves stays positive on nearby contact planes (our own). By Sullivan's theorem tautness gives such a form, which plus a small exact term weakly fills ξ on M × \[−1, 1\] (our own). A strong filling, which needs an outward Liouville field, does not follow from openness, and the work moves into the Eliashberg–Thurston perturbation theorem (our own).
+
+**Wikipedia:** [Taut foliation](https://en.wikipedia.org/wiki/Taut_foliation). It says: “A taut foliation is a codimension 1 foliation of a closed manifold with the property that every leaf meets a transverse circle.”
+
+**Paper or page:** [Transverse fibered knots and Taut Foliations](https://arxiv.org/abs/2509.04680). It says: “Contact structures, C⁰-close to a taut foliation, are symplectically semi-fillable, and therefore, tight.”
+
+**Sources:**
+
+- [Y. Eliashberg and W. P. Thurston, Confoliations, University Lecture Series 13, AMS (1998)](https://doi.org/10.1090/ulect/013)
+
 ### Trisections give every smooth 4-manifold a surface picture, unique up to stabilization
 
 **Remember:** Three simple pieces and their spine hold the whole 4-manifold.
@@ -3353,6 +4135,140 @@
 **Sources:**
 
 - [S. K. Donaldson, An application of gauge theory to four-dimensional topology (1983).](https://doi.org/10.4310/jdg/1214437665)
+
+### A classifying map to moduli space makes Lefschetz signatures characteristic numbers
+
+**Remember:** The fibration draws a surface inside the moduli of curves.
+
+*Makes the theorem clean to state or prove.* MSC 57K43 (Symplectic structures in 4 dimensions), 14H10. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A relatively minimal Lefschetz fibration with fiber genus g ≥ 2 has a classifying map to the compactified moduli space of genus-g curves. The map sends each point to its fiber as a curve. Singular fibers go to curves with one node, which this space includes.
+
+**Problem.** The signature of the total space is four times the degree of the Hodge line bundle λ along that map, minus the singular fiber count. Over each curve, λ is the top exterior power of its space of holomorphic 1-forms.
+
+**How the definition helps.** Lefschetz singular fibers are exactly the one-node stable curves, so the classifying map is defined at every point of the base (our own). The signature then becomes a characteristic number of that map, and the correction −δ comes from the nodes (our own). The work moves into Smith's computation on the moduli space (our own).
+
+**Paper or page:** [Achiral Lefschetz fibrations and the moduli space of curves](https://arxiv.org/abs/2510.18593v1). It says: “Let f:X→S be a Lefschetz fibration giving rise to a classifying map φ<sub>f</sub>: S→M̄<sub>g</sub>. Then we have σ(X) = ⟨4c₁(λ), \[φ<sub>f</sub>\]⟩ − δ where δ is the number of vanishing cycles of f.”
+
+**Sources:**
+
+- [I. Smith, Lefschetz fibrations and the Hodge bundle, Geometry &amp; Topology 3 (1999) 211–233](https://doi.org/10.2140/gt.1999.3.211)
+
+### Allowable vanishing cycles make Lefschetz fibrations over the disk Stein
+
+**Remember:** Every vanishing circle must wrap something real in the fiber.
+
+*Rules out counterexamples.* MSC 57K43 (Symplectic structures in 4 dimensions), 32Q28, 57R65. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** Take a Lefschetz fibration over the disk whose fibers have boundary. It is allowable when every vanishing cycle is nonzero in the homology of the fiber. A vanishing cycle is the circle in a fiber that shrinks at a critical point.
+
+**Problem.** Every allowable Lefschetz fibration over the disk has a Stein domain as total space, a sublevel set of a strictly plurisubharmonic function on a complex surface. Conversely every 4-dimensional Stein domain has such a fibration (Loi–Piergallini, Akbulut–Ozbagci).
+
+**How the definition helps.** An allowable cycle can be drawn tangent to the boundary's contact planes, and its 2-handle has framing one below the contact framing (our own). That is exactly Eliashberg's condition for attaching Stein 2-handles (our own). A cycle that bounds a disk gives a sphere of square −1, which the Lisca–Matić adjunction inequality rules out in a Stein domain (our own).
+
+**Wikipedia:** [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “when n = 2 the same holds provided the 2-handles are attached with certain framings (framing less than the Thurston–Bennequin framing).”
+
+**Paper or page:** [The contact cut graph and a Weinstein L-invariant](https://arxiv.org/abs/2408.05340v1). It says: “Conversely, every 4-manifold W admitting an allowable Lefschetz fibration π:W→D² admits a compatible Weinstein structure which is unique up to Weinstein homotopy.”
+
+**Sources:**
+
+- [A. Loi and R. Piergallini, Compact Stein surfaces with boundary as branched covers of B⁴, Inventiones Mathematicae 143 (2001) 325–348](https://doi.org/10.1007/s002220000106)
+- [S. Akbulut and B. Ozbagci, Lefschetz fibrations on compact Stein surfaces, Geometry &amp; Topology 5 (2001) 319–334](https://doi.org/10.2140/gt.2001.5.319)
+- [P. Lisca and G. Matić, Tight contact structures and Seiberg–Witten invariants, Inventiones Mathematicae 129 (1997) 509–525](https://doi.org/10.1007/s002220050171)
+
+### Compatible almost complex structures pick the spinᶜ structure with Seiberg–Witten invariant one
+
+**Remember:** The symplectic form chooses the spinᶜ structure and its one solution.
+
+*Makes the theorem clean to state or prove.* MSC 57K43 (Symplectic structures in 4 dimensions), 57K41. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A compatible almost complex structure J on a symplectic 4-manifold gives a canonical spinᶜ structure, the extra data the Seiberg–Witten equations need. It does not depend on J, because the compatible J form a contractible space. Here b⁺ counts the positive directions of the intersection form.
+
+**Problem.** A closed symplectic 4-manifold with b⁺ ≥ 2 has Seiberg–Witten invariant ±1 on its canonical spinᶜ structure. So it is never a connected sum of two manifolds that both have b⁺ ≥ 1.
+
+**How the definition helps.** The canonical spinᶜ structure picks out one invariant, and J solves the equations perturbed by a large multiple of ω (our own). Taubes's estimates show it is the only solution, so the count is ±1, while such connected sums have zero invariants (our own). For example, CP² \# CP² \# CP² is almost complex but not symplectic (our own).
+
+**Wikipedia:** [Seiberg–Witten invariants](https://en.wikipedia.org/wiki/Seiberg%E2%80%93Witten_invariants). It says: “symplectic and b₂⁺(M) ≥ 2 then it has a spinᶜ structure s on which the Seiberg–Witten invariant is 1. In particular it cannot be split as a connected sum of manifolds with b₂⁺ ≥ 1.”
+
+**Sources:**
+
+- [C. H. Taubes, The Seiberg–Witten invariants and symplectic forms, Mathematical Research Letters 1 (1994) 809–822](https://doi.org/10.4310/MRL.1994.v1.n6.a15)
+
+### Complex normal bundles make symplectic surfaces of nonnegative square genus-minimizing
+
+**Remember:** A symplectic surface sits exactly on the adjunction line.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 57K41. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A symplectic surface in a symplectic 4-manifold is one on which the symplectic form is an area form. Its symplectic complement is then a complex line bundle, so the tangent bundle along the surface splits into two complex lines.
+
+**Problem.** Let the manifold have b⁺ ≥ 2 and let Σ be a symplectic surface of genus g with Σ·Σ ≥ 0. Then every embedded surface of genus at least 1 in the same class has genus at least g.
+
+**How the definition helps.** The complex splitting gives the adjunction equality 2g − 2 = Σ·Σ + K·Σ, with K minus the first Chern class (our own). Seiberg–Witten theory gives every competitor of genus g′ ≥ 1 the bound 2g′ − 2 ≥ Σ·Σ + \|K·Σ\|, so g′ ≥ g (our own). A surface with an extra handle lies in the same class but is never symplectic, because it misses the adjunction line (our own).
+
+**Wikipedia:** [Thom conjecture](https://en.wikipedia.org/wiki/Thom_conjecture), [Adjunction formula](https://en.wikipedia.org/wiki/Adjunction_formula). It says: “It states that a symplectic surface of a symplectic 4-manifold is genus minimizing within its homology class.”
+
+**Sources:**
+
+- [J. W. Morgan, Z. Szabó and C. H. Taubes, A product formula for the Seiberg–Witten invariants and the generalized Thom conjecture, Journal of Differential Geometry 44 (1996) 706–788](https://doi.org/10.4310/jdg/1214459408)
+- [P. Ozsváth and Z. Szabó, The symplectic Thom conjecture, Annals of Mathematics 151 (2000) 93–124](https://doi.org/10.2307/121113)
+
+### Defining minimality by exceptional spheres gives every symplectic 4-manifold a minimal model
+
+**Remember:** Minimal means nothing left to blow down.
+
+*True by definition.* MSC 57K43 (Symplectic structures in 4 dimensions), 14J26. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** A closed symplectic 4-manifold is minimal when it contains no exceptional sphere, that is, no symplectically embedded sphere of self-intersection −1.
+
+**Problem.** Every closed symplectic 4-manifold arises from a minimal one by symplectic blow-ups. The minimal model is unique unless the manifold is rational or ruled, a blow-up of CP² or of a sphere bundle over a surface.
+
+**How the definition helps.** An exceptional sphere has a standard neighborhood, so it can be blown down, and this lowers the second Betti number by one (our own). So repeated blow-downs stop at a minimal manifold, which gives existence almost by definition; the work moves into McDuff's uniqueness theorem (our own). Uniqueness does fail for rational manifolds: S² × S² blown up once is CP² blown up twice, so both are minimal models (our own).
+
+**Wikipedia:** [Enriques–Kodaira classification](https://en.wikipedia.org/wiki/Enriques%E2%80%93Kodaira_classification). It says: “For example, P¹ × P¹ blown up at a point is isomorphic to P² blown up twice.”
+
+**Paper or page:** [Cohomologous symplectic forms with different Gromov widths](https://arxiv.org/abs/2505.09550v1). It says: “Any symplectic 4-manifold has a minimal model. When X is not diffeomorphic to rational or ruled manifolds, the symplectomorphism type of the minimal model is unique.”
+
+**Sources:**
+
+- [D. McDuff, The structure of rational and ruled symplectic 4-manifolds, Journal of the American Mathematical Society 3 (1990) 679–712](https://doi.org/10.1090/S0894-0347-1990-1049697-8)
+
+### Knot surgery with a fibered knot is a symplectic sum
+
+**Remember:** A fibered knot complement times a circle is a surface bundle.
+
+*True by definition. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 57K41. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** Knot surgery on a square-zero torus T in a 4-manifold X removes a neighborhood of T. It glues in S¹ times the complement of a knot K in S³. Equivalently, it is the fiber sum of X with S¹ × M along tori, where M is 0-surgery on K.
+
+**Problem.** Let X be symplectic, T a symplectic torus of square zero, and K fibered, with complement fibering over the circle. Then knot surgery gives a symplectic manifold.
+
+**How the definition helps.** When K is fibered, S¹ × M is a surface bundle over the torus, which Thurston's construction makes symplectic (our own). S¹ times a meridian is a symplectic square-zero torus in it, so knot surgery is a Gompf symplectic sum (our own). Fintushel and Stern also showed that the Seiberg–Witten invariant gets multiplied by Δ(t²), with Δ the Alexander polynomial of K (our own).
+
+**Wikipedia:** [4-manifold](https://en.wikipedia.org/wiki/4-manifold). It says: “Fintushel and Stern showed how to use surgery to construct large numbers of different smooth structures (indexed by arbitrary integral polynomials) on many different manifolds, using Seiberg–Witten invariants to show that the smooth structures are different.”
+
+**Sources:**
+
+- [R. Fintushel and R. J. Stern, Knots, links, and 4-manifolds, Inventiones Mathematicae 134 (1998) 363–400](https://doi.org/10.1007/s002220050268)
+
+### Weighting multiply covered tori makes Taubes's Gromov invariant independent of J
+
+**Remember:** Tori get weighted votes, so the count never changes.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K43 (Symplectic structures in 4 dimensions), 53D45, 57K41. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** For a generic compatible J, Taubes's Gromov invariant of a class A counts embedded J-holomorphic curves in A, possibly disconnected. These are surfaces whose tangent planes J preserves. Square-zero tori and their multiple covers get special weights.
+
+**Problem.** On a closed symplectic 4-manifold with b⁺ ≥ 2, Taubes's Gromov invariant does not depend on J. It equals the Seiberg–Witten invariant of the matching spinᶜ structure.
+
+**How the definition helps.** As J varies, multiply covered square-zero tori can appear and disappear, and Taubes's weights are chosen so that these changes cancel (our own). With a plain count of embedded curves the number can jump, so no theorem of this form holds (our own). The work moves into Taubes's analysis that turns Seiberg–Witten solutions into holomorphic curves (our own).
+
+**Wikipedia:** [Taubes's Gromov invariant](https://en.wikipedia.org/wiki/Taubes%27s_Gromov_invariant). It says: “Much of the analytical complexity connected to this invariant comes from properly counting multiply covered pseudoholomorphic curves so that the result is invariant of the choice of almost complex structure.”
+
+**Sources:**
+
+- [C. H. Taubes, Counting pseudo-holomorphic submanifolds in dimension 4, Journal of Differential Geometry 44 (1996) 818–893](https://doi.org/10.4310/jdg/1214459411)
+- [C. H. Taubes, SW ⇒ Gr: from the Seiberg–Witten equations to pseudo-holomorphic curves, Journal of the American Mathematical Society 9 (1996) 845–918](https://doi.org/10.1090/S0894-0347-96-00211-1)
 
 ### Every continuum has a compact universal cover
 
@@ -3980,3 +4896,21 @@
 **Sources:**
 
 - [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1)
+
+### Pseudocycles represent exactly the integral homology classes
+
+**Remember:** A cycle allowed to fray, but only in codimension two.
+
+*Makes the theorem clean to state or prove.* MSC 57R95 (Realizing cycles by submanifolds), 53D45. arXiv math.GT, math.SG. Level 4: research.
+
+**Definition.** A pseudocycle is a smooth map from an oriented manifold whose limit set is covered by images of manifolds two dimensions smaller. The limit set is what the closure adds to the image, and evaluation maps on simple J-curves are pseudocycles.
+
+**Problem.** Equivalence classes of pseudocycles in a smooth manifold X correspond one-to-one to integral homology classes of X (Zinger). So Gromov–Witten invariants defined by pseudocycles are integral homology classes.
+
+**How the definition helps.** A generic pseudocycle of complementary dimension misses a codimension-two limit set, so intersection numbers are well defined (our own). Zinger's theorem identifies these numbers with integral homology, so no triangulation of moduli spaces is needed (our own). A limit set of codimension one would make the counts depend on choices (our own).
+
+**Paper or page:** [Equivalence between Gromov-Witten invariants: Domain dependent perturbation and Kuranishi structure approaches](https://arxiv.org/abs/2507.04798v1). It says: “there exist natural homomorphisms of graded Z-modules Ψ\_\*: H\_\*(X;Z) → ℋ\_\*(X) and Φ\_\*: ℋ\_\*(X) → H\_\*(X;Z), such that Ψ\_\* ∘ Φ\_\* = Id and Φ\_\* ∘ Ψ\_\* = Id.”
+
+**Sources:**
+
+- [A. Zinger, Pseudocycles and integral homology, Trans. Amer. Math. Soc. 360 (2008) 2741–2765](https://doi.org/10.1090/S0002-9947-07-04440-6)

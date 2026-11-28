@@ -265,7 +265,7 @@
 
 **Remember:** Translates fade pointwise but keep their size, impossible in finite dimensions.
 
-*Rules out counterexamples.* MSC 43A15 (\\(L<sup>p\\</sup>)-spaces and other function spaces on groups, semigroups, etc.), 43A60. arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 43A15 (L<sup>p-spaces</sup> and other function spaces on groups, semigroups, etc.), 43A60. arXiv math.FA. Level 3: graduate.
 
 **Definition.** A continuous function f on a locally compact group vanishes at infinity if, for every ε &gt; 0, the set where \|f\| ≥ ε is compact. Its translates by elements that escape to infinity then tend to zero at each point while keeping their supremum norm (our own).
 
@@ -283,7 +283,7 @@
 
 **Remember:** Invert the measure, not just the value of its density.
 
-*Rules out counterexamples.* MSC 43A20 (\\(L<sup>1\\</sup>)-algebras on groups, semigroups, etc.), 43A05. arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 43A20 (L<sup>1-algebras</sup> on groups, semigroups, etc.), 43A05. arXiv math.FA. Level 3: graduate.
 
 **Definition.** For left Haar measure μ and f ∈ L¹(G), let f\* be the density with respect to μ of the conjugate of the measure fμ reflected through inversion x ↦ x⁻¹. Reflection turns left Haar measure into right Haar measure, so f\*(x) = Δ(x⁻¹) times the conjugate of f(x⁻¹).
 
@@ -301,7 +301,7 @@
 
 **Remember:** An identity needs a point mass, not just a density.
 
-*Rules out counterexamples.* MSC 43A20 (\\(L<sup>1\\</sup>)-algebras on groups, semigroups, etc.), 43A10. arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 43A20 (L<sup>1-algebras</sup> on groups, semigroups, etc.), 43A10. arXiv math.FA. Level 3: graduate.
 
 **Definition.** The group algebra L¹(G) of a locally compact group consists of the integrable functions, as densities against left Haar measure, with convolution (f∗g)(x) = ∫ f(y)g(y⁻¹x) dy. A convolution identity must act like the point mass at the identity element, which has a density only when that point has positive Haar measure (our own).
 
@@ -631,7 +631,7 @@
 
 **Remember:** Keep joint preimages compact before trying to bound the product integral.
 
-*Rules out counterexamples.* MSC 43A15 (\\(L<sup>p\\</sup>)-spaces and other function spaces on groups, semigroups, etc.), 43A25. arXiv math.FA. Level 4: research.
+*Rules out counterexamples.* MSC 43A15 (L<sup>p-spaces</sup> and other function spaces on groups, semigroups, etc.), 43A25. arXiv math.FA. Level 4: research.
 
 **Definition.** A Brascamp–Lieb inequality bounds the integral over G of a product ∏ fⱼ(σⱼ(x)) by a constant times the product of the Lᵖʲ norms of the fⱼ. Each σⱼ is a homomorphism of locally compact abelian groups, and the joint map σ = (σ₁,…,σₘ) must be proper, so that compact sets pull back to compact sets.
 

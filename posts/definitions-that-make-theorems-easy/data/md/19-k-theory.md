@@ -18,7 +18,7 @@
 
 **Remember:** Every simple factor contributes one copy of the residue field.
 
-*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13D15. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19A49 (K<sub>0</sub> of other rings), 13D15. arXiv math.KT. Level 3: graduate.
 
 **Definition.** G₀(R) has one generator \[M\] for each finitely generated module up to isomorphism, and a relation \[M\] = \[N\] + \[M/N\] for every finitely generated submodule N. These relations peel a module into the classes of its composition factors.
 
@@ -34,7 +34,7 @@
 
 **Remember:** Bounded projective complexes tensor to bounded projective complexes.
 
-*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 18F25. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19A49 (K<sub>0</sub> of other rings), 18F25. arXiv math.KT. Level 3: graduate.
 
 **Definition.** A complex over a commutative ring is perfect if it is quasi-isomorphic to a bounded complex of finitely generated projective modules. The tensor product of two such bounded projective complexes is again one, so derived tensor product stays perfect.
 
@@ -50,7 +50,7 @@
 
 **Remember:** Each factor of a product ring gets its own projective summand.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings). arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19A49 (K<sub>0</sub> of other rings). arXiv math.KT. Level 3: graduate.
 
 **Definition.** K₀ of a ring is the group of formal differences of isomorphism classes of finitely generated projective modules, the direct summands of finite free modules, with direct sum as addition. Over R × S, the central idempotents (1,0) and (0,1) split every module into an R-part and an S-part.
 
@@ -66,7 +66,7 @@
 
 **Remember:** More chosen exact sequences mean more relations and a smaller K₀.
 
-*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 19D06. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19A49 (K<sub>0</sub> of other rings), 19D06. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For an exact category, a category with a chosen class of short exact sequences, K₀ has a generator \[M\] for each object up to isomorphism and the relation \[M\] = \[L\] + \[N\] for each chosen sequence L ↪︎ M ↠ N. The split exact structure chooses only the split sequences, so it imposes fewer relations.
 
@@ -84,7 +84,7 @@
 
 **Remember:** Over a local ring, projective means free and rank counts the generators.
 
-*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13C10. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19A49 (K<sub>0</sub> of other rings), 13C10. arXiv math.KT. Level 3: graduate.
 
 **Definition.** K₀ of a ring is the group of formal differences of finitely generated projective modules, the direct summands of finite free modules, with direct sum as addition.
 
@@ -100,7 +100,7 @@
 
 **Remember:** An object's class is its subobject's class plus its quotient's.
 
-*True by definition.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)), 18F30. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19A99 (Grothendieck groups and K<sub>0</sub>), 18F30. arXiv math.KT. Level 3: graduate.
 
 **Definition.** The Grothendieck group of an abelian category has one generator \[B\] for each object up to isomorphism and the relation \[B\] = \[A\] + \[B/A\] for every subobject A of B. So along any filtration, a class splits into the classes of the layers.
 
@@ -116,7 +116,7 @@
 
 **Remember:** An infinite sum absorbs one more copy of its summand.
 
-*Rules out counterexamples.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)), 18F25. arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19A99 (Grothendieck groups and K<sub>0</sub>), 18F25. arXiv math.KT. Level 3: graduate.
 
 **Definition.** The split Grothendieck group of an additive category has a generator \[A\] for each object up to isomorphism and the relations \[A ⊕ B\] = \[A\] + \[B\]. Ring K₀ applies this to finitely generated projective modules, a category with no infinite direct sums.
 
@@ -132,7 +132,7 @@
 
 **Remember:** Each ℤ/p counts as p, and shifting a complex inverts its value.
 
-*True by definition.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19A99 (Grothendieck groups and K<sub>0</sub>). arXiv math.KT. Level 3: graduate.
 
 **Definition.** Take bounded complexes of finite free abelian groups with finite cohomology, and their K₀ with additivity on exact triangles. By Hyslop’s lemma the classes \[ℤ/p\] form a basis of this K₀, so there is one homomorphism to the positive rationals under multiplication sending \[ℤ/p\] to p for every prime p: the multiplicative Euler characteristic.
 
@@ -150,7 +150,7 @@
 
 **Remember:** Taking homology never changes an alternating sum of classes.
 
-*True by definition.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)), 18G40. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19A99 (Grothendieck groups and K<sub>0</sub>), 18G40. arXiv math.KT. Level 3: graduate.
 
 **Definition.** Use the Grothendieck group in which \[B\] = \[A\] + \[B/A\] for every subobject A of B, so taking homology of a finite complex keeps its alternating sum. Each page of a spectral sequence is the homology of the previous page, and each entry is signed by the parity of its total degree p+q.
 
@@ -182,7 +182,7 @@
 
 **Remember:** K₁ is the largest abelian quotient of the stable matrix group.
 
-*True by definition.* MSC 19B99 (Whitehead groups and \\(K<sub>1</sub>\\)). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19B99 (Whitehead groups and K<sub>1</sub>). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a unital ring R, K₁(R) is the largest abelian quotient of GL(R), the union of the groups GLₙ(R) under A ↦ diag(A,1): GL(R) divided by its commutator subgroup.
 
@@ -198,7 +198,7 @@
 
 **Remember:** Degree two is wedges modulo the Steinberg relation, which is rational K₂.
 
-*True by definition.* MSC 19C20 (Symbols, presentations and stability of \\(K<sub>2</sub>\\)), 19E15. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19C20 (Symbols, presentations and stability of K<sub>2</sub>), 19E15. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a field F, the rational Bloch–Suslin complex sends a symbol \[x\], for x in F outside {0,1}, to x ∧ (1−x) in the exterior square of F× ⊗ ℚ. The symbols sit in degree one and obey the five-term relation \[x\]−\[y\]+\[y/x\]−\[(1−1/x)/(1−1/y)\]+\[(1−x)/(1−y)\] = 0 for distinct x, y outside {0,1}.
 
@@ -216,7 +216,7 @@
 
 **Remember:** Finite projective resolutions let projectives compute the module theory.
 
-*Makes the theorem clean to state or prove.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a right noetherian ring R, define G(R) as the connective K-theory of finitely generated right modules with their short exact sequences. Define K(R) by the same construction on finitely generated projective right modules.
 
@@ -234,7 +234,7 @@
 
 **Remember:** Kill a perfect kernel without changing first homology.
 
-*Rules out counterexamples.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a connected cell complex X and a perfect normal subgroup P of its fundamental group, one equal to its own commutator subgroup, a plus map X → X⁺ kills exactly P on fundamental groups and preserves homology with every local coefficient system on X⁺. Since P consists of products of commutators, killing it leaves the abelianized fundamental group, first homology, unchanged.
 
@@ -252,7 +252,7 @@
 
 **Remember:** A subquotient is a quotient of a sub, or vice versa.
 
-*True by definition.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
+*True by definition.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a small exact category E, an arrow X → Y in Q(E) is an isomorphism class of spans X ↞ U ↪︎ Y, an admissible epimorphism and an admissible monomorphism, which present X as a subquotient of Y. Spans compose by pullback, and connective K-theory is the loop space ΩBQ(E) at zero.
 
@@ -270,7 +270,7 @@
 
 **Remember:** Simple layers compute K-theory without tracking their extensions.
 
-*Makes the theorem clean to state or prove.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT. Level 3: graduate.
 
 **Definition.** A module has finite length if it has a finite filtration whose layers are simple, that is nonzero with no proper nonzero submodule. The semisimple ones, finite direct sums of simple modules, include all these layers and are closed under submodules, quotients and finite sums.
 
@@ -289,7 +289,7 @@
 
 **Remember:** Make π₁ abelian, keep homology, read K-groups as homotopy groups.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a unital ring R, let GL(R) be the union of the groups GLₙ(R) under A ↦ diag(A,1). The plus construction kills the perfect subgroup E(R) of elementary matrices in π₁ of BGL(R) without changing homology, and Kₙ(R) = πₙ(BGL(R)⁺) for n ≥ 1.
 
@@ -308,7 +308,7 @@
 
 **Remember:** At infinity, leading coefficients recover every constant unchanged.
 
-*True by definition. Confidence: medium.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** On F(t), the leading coefficient of a fraction is the leading coefficient of its numerator divided by that of its denominator, a multiplicative map that fixes constants. Specialize a Milnor symbol by taking the leading coefficient in every slot.
 
@@ -326,7 +326,7 @@
 
 **Remember:** Once the Steinberg relation holds, cup products give a map on symbols.
 
-*True by definition.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory), 12G05. arXiv math.KT, math.NT. Level 3: graduate.
+*True by definition.* MSC 19D45 (Higher symbols, Milnor K-theory), 12G05. arXiv math.KT, math.NT. Level 3: graduate.
 
 **Definition.** For a field F, Kₙᴹ(F) is generated by symbols {a₁,…,aₙ} with entries in F×, multiplicative in each slot, with one further relation: a symbol with adjacent entries a and 1−a is zero.
 
@@ -344,7 +344,7 @@
 
 **Remember:** Modulo an invertible integer, only the leading units and uniformizer matter.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a complete discretely valued field F with residue field k and a chosen uniformizer π, specialization replaces each entry a by the residue of the unit aπ<sup>(−v(a))</sup>. Tame residue kills symbols of units and sends {π,u₂,…,uₙ} to {ū₂,…,ūₙ}. Every symbol splits into unit symbols plus symbols starting with one π, and these two maps read off the two parts.
 
@@ -362,7 +362,7 @@
 
 **Remember:** Check bilinearity and one relation, and the universal symbol supplies the map.
 
-*True by definition.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a field F, the second Milnor K-group is the tensor square F× ⊗ F× over ℤ divided by the subgroup generated by a ⊗ (1 − a) for a ≠ 0, 1. Write {a,b} for the image of a ⊗ b.
 
@@ -380,7 +380,7 @@
 
 **Remember:** Opposite entries cancel, but equal entries need not.
 
-*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** The Milnor K-ring of a field F is the tensor algebra on F× with the Steinberg relation {a, 1 − a} = 0 for every a ≠ 0, 1, where {a,b} is the product of two generators.
 
@@ -398,7 +398,7 @@
 
 **Remember:** Subtract the identity from the Adams operation and take its fiber.
 
-*True by definition.* MSC 19D50 (Computations of higher \\(K\\)-theory of rings). arXiv math.KT, math.AT. Level 3: graduate.
+*True by definition.* MSC 19D50 (Computations of higher K-theory of rings). arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a finite field of order q, Quillen models the positive K-groups by the homotopy fiber of ψᵠ − 1 on BU, where the Adams operation ψᵠ sends each line bundle to its qth tensor power. On the copy of ℤ in degree 2i of BU, ψᵠ − 1 is multiplication by qⁱ − 1.
 
@@ -416,7 +416,7 @@
 
 **Remember:** Multiplying by u drops the constant column, whose chains are Hochschild chains.
 
-*True by definition. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
 
 **Definition.** A mixed complex has a boundary b of degree −1 and an operator B of degree +1 with b² = B² = bB + Bb = 0. Its cyclic complex is polynomials in u⁻¹ with chain coefficients and differential b + uB, where u has degree −2 and kills the constant term. Multiplying by u maps onto the complex shifted by two, with kernel the constant column, which is (C, b) (our own).
 
@@ -435,7 +435,7 @@
 
 **Remember:** Identifying rotations can erase every positive even class in characteristic two.
 
-*Rules out counterexamples.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a unital algebra A over a field, the Connes complex in degree n is A⊗⁽ⁿ⁺¹⁾ with its Hochschild boundary, divided by all differences c − tₙc. Here tₙ moves the last tensor factor to the front and multiplies by (−1)ⁿ, so the quotient forgets how rotations act (our own).
 
@@ -454,7 +454,7 @@
 
 **Remember:** Deleting each of five points gives the five terms.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
 
 **Definition.** Over an infinite field F, take the free abelian group on ordered quadruples of distinct points of the projective line, up to fractional linear transformations, labeling each by its fourth point after the first three move to 0, ∞, 1. For every ordered quintuple of distinct points, the alternating sum of its five faces, the quadruples left after deleting one point, is a relation.
 
@@ -472,7 +472,7 @@
 
 **Remember:** Power series give negative cyclic homology, and Laurent series give periodic cyclic homology.
 
-*True by definition. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 3: graduate.
 
 **Definition.** A mixed complex has two square-zero operators, b lowering degree and B raising degree, with bB + Bb = 0. Negative cyclic chains are power series in u with chain coefficients and differential b + uB, where u has degree −2. Periodic cyclic chains also allow finitely many negative powers of u, so they are the negative chains with u inverted.
 
@@ -490,7 +490,7 @@
 
 **Remember:** Functions on loops are Hochschild chains of functions.
 
-*True by definition. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 55P35, 16E40. arXiv math.KT, math.AT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 55P35, 16E40. arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For an E∞-algebra A over a field k, define derived Hochschild chains by the tensor S¹ ⊗ A. This tensor is the colimit of the constant diagram at A indexed by the circle in the ∞-category of E∞-algebras over k.
 
@@ -508,7 +508,7 @@
 
 **Remember:** Use exterior powers of the cotangent complex, and HKR always holds.
 
-*Rules out counterexamples.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 13D03, 16E40. arXiv math.KT, math.AG. Level 3: graduate.
+*Rules out counterexamples.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 13D03, 16E40. arXiv math.KT, math.AG. Level 3: graduate.
 
 **Definition.** The cotangent complex L of a commutative k-algebra A is a derived version of the Kähler forms: resolve A by simplicial polynomial k-algebras P•, base change Ω¹(P•/k) to A in each degree, and normalize. For smooth A it is just Ω¹(A/k) in degree zero.
 
@@ -528,7 +528,7 @@
 
 **Remember:** Same Hochschild homology, same cyclic homology, by the five lemma.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 3: graduate.
 
 **Definition.** A nonnegative mixed complex is a chain complex C with operators b of degree −1 and B of degree +1 satisfying b² = B² = bB + Bb = 0. Hochschild homology HH uses b alone, and cyclic homology HC uses C\[u⁻¹\] with differential b + uB, where u has degree −2 and kills the constant column.
 
@@ -548,7 +548,7 @@
 
 **Remember:** A homotopy fiber remembers how a class becomes zero.
 
-*True by definition.* MSC 19D99 (Higher algebraic \\(K\\)-theory), 19D06. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19D99 (Higher algebraic K-theory), 19D06. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a ring R with an ideal I, relative K-theory K(R, I) is the homotopy fiber of the map of K-theory spaces K(R) → K(R/I). Its points are points of K(R) together with a path from their image to the base point.
 
@@ -564,7 +564,7 @@
 
 **Remember:** Take coefficients before homotopy groups to retain the preceding torsion.
 
-*True by definition. Confidence: medium.* MSC 19D99 (Higher algebraic \\(K\\)-theory), 55P42. arXiv math.KT, math.AT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19D99 (Higher algebraic K-theory), 55P42. arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** For a ring R and m ≥ 2, K(R; ℤ/m) is the cofiber of multiplication by m on the K-theory spectrum K(R), so it sits in a cofiber sequence K(R) → K(R) → K(R; ℤ/m). Its homotopy groups Kₙ(R; ℤ/m) are the K-groups of R modulo m.
 
@@ -580,7 +580,7 @@
 
 **Remember:** Polynomial simplices turn polynomial homotopies into actual homotopies.
 
-*True by definition.* MSC 19D99 (Higher algebraic \\(K\\)-theory), 19D25. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19D99 (Higher algebraic K-theory), 19D25. arXiv math.KT. Level 3: graduate.
 
 **Definition.** KH(R) is the geometric realization of the simplicial spectrum whose d-simplices are the nonconnective K-theory of R\[t₀,…,t<sub>d</sub>\]/(t₀+⋯+t<sub>d</sub>−1), the polynomial functions on the algebraic d-simplex. Realization turns every polynomial homotopy into an actual homotopy (our own explanation).
 
@@ -598,7 +598,7 @@
 
 **Remember:** Compose the derived maps before taking their classes.
 
-*True by definition. Confidence: medium.* MSC 19E08 (\\(K\\)-theory of schemes), 14F06. arXiv math.AG, math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 19E08 (K-theory of schemes), 14F06. arXiv math.AG, math.KT. Level 3: graduate.
 
 **Definition.** Let G₀ of a Noetherian scheme be the Grothendieck group of coherent sheaves. For a proper map f, pushforward sends a sheaf F to the class of the single complex Rf∗F, which equals the alternating sum of the classes of the higher direct images Rⁱf∗F.
 
@@ -614,7 +614,7 @@
 
 **Remember:** Exterior powers of a difference come from dividing the two series.
 
-*True by definition.* MSC 19E08 (\\(K\\)-theory of schemes), 19A99. arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19E08 (K-theory of schemes), 19A99. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a vector bundle E on a scheme, put λₜ(E) = ∑ᵢ\[∧ⁱE\]tⁱ in K₀\[\[t\]\], which is multiplicative on short exact sequences and has constant term one. For a virtual class \[E\]−\[F\], put λₜ(\[E\]−\[F\]) = λₜ(E)/λₜ(F).
 
@@ -630,7 +630,7 @@
 
 **Remember:** At codimension q, the incoming boundary is the divisor map.
 
-*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 19E20. arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 19E20. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a smooth variety X over a field, the Gersten complex of the Zariski sheaf 𝒦<sub>q</sub> of K-groups has in degree c the sum of K\_(q−c)(k(x)) over points x of codimension c, with localization boundaries as differentials. It ends with the divisor map from the groups k(x)<sup>×</sup> at codimension-(q−1) points to one copy of ℤ per codimension-q point.
 
@@ -648,7 +648,7 @@
 
 **Remember:** Push forward after multiplying by the relative Todd class.
 
-*True by definition.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19E20 (Relations of K-theory with cohomology theories). arXiv math.KT. Level 3: graduate.
 
 **Definition.** Consider a projective map f between smooth quasi-projective varieties X and Y over a field. Its relative tangent class is T<sub>f</sub> = T<sub>X</sub> − f\*(T<sub>Y</sub>). Define corrected pushforward on rational Chow groups by x ↦ f∗(td(T<sub>f</sub>) · x), using the Todd class td.
 
@@ -666,7 +666,7 @@
 
 **Remember:** A class is integral exactly when every finite tame value is 1.
 
-*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
 
 **Definition.** For a number field F, the tame kernel is the set of classes in K₂(F) that every finite place, one for each nonzero prime ideal of the ring of integers, sends to 1 under its tame symbol to the residue field’s multiplicative group.
 
@@ -684,7 +684,7 @@
 
 **Remember:** Integral classes are exactly the classes with no tame residue.
 
-*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)), 19D50. arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)), 19D50. arXiv math.KT. Level 3: graduate.
 
 **Definition.** Let A be the ring of integers of a number field F. At a nonzero prime with local uniformizer π, write a = πʳu and b = πˢw with local units u and w; the tame residue sends {a,b} to the reduction of (−1)ʳˢuˢ/wʳ.
 
@@ -704,7 +704,7 @@
 
 **Remember:** Cancel the orders locally before taking the global product.
 
-*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
 
 **Definition.** At a point P of a smooth projective curve, let nonzero rational functions f and g have orders m and n, poles counted negatively. Their tame symbol is the value at P of (−1)ᵐⁿfⁿ/gᵐ, a function of order zero there, so the value is defined and nonzero.
 
@@ -722,7 +722,7 @@
 
 **Remember:** Keep only symbols unramified at every finite prime.
 
-*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.KT, math.NT. Level 3: graduate.
 
 **Definition.** For a number field F, the tame kernel consists of classes in K₂(F) with tame symbol one at every finite prime. At a prime of valuation v, the symbol of {x,y} is the residue of (−1)ᵛ⁽ˣ⁾ᵛ⁽ʸ⁾xᵛ⁽ʸ⁾/yᵛ⁽ˣ⁾.
 
@@ -738,7 +738,7 @@
 
 **Remember:** Keep the sign when both arguments have poles.
 
-*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 3: graduate.
 
 **Definition.** Let v be a discrete valuation on F with residue field k. For f,g ∈ F× with orders m,n, define their tame symbol as the reduction of the unit (−1)ᵐⁿfⁿ/gᵐ in k×.
 
@@ -757,7 +757,7 @@
 
 **Remember:** Nonreal pairs always count; real places count only for odd n.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11R70. arXiv math.NT, math.KT. Level 3: graduate.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11R70. arXiv math.NT, math.KT. Level 3: graduate.
 
 **Definition.** For a number field F and n ≥ 2, the regulator target has one coordinate in the real line ℂ/(2πi)ⁿℝ for each embedding of F into ℂ. Coordinates at conjugate embeddings must be complex conjugates, so at a real embedding the coordinate must be fixed by conjugation, which acts on that line by (−1)ⁿ⁻¹ (our own).
 
@@ -775,7 +775,7 @@
 
 **Remember:** On a curve every holomorphic connection is flat, so loops give scalars.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 3: graduate.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 3: graduate.
 
 **Definition.** On a smooth complex curve X, degree-two, weight-two Deligne classes are holomorphic line bundles with holomorphic connection, up to connection-preserving isomorphism, and the regulator of nowhere-zero holomorphic functions f and g is their Deligne cup product. Every such connection is flat, since a curve has no holomorphic two-forms.
 
@@ -843,7 +843,7 @@
 
 **Remember:** A rank-one projection counts one; the identity counts the size.
 
-*Rules out counterexamples.* MSC 19K14 (\\(K<sub>0</sub>\\) as an ordered group, traces), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19K14 (K<sub>0</sub> as an ordered group, traces), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a complex matrix algebra A, K₀ is built from projections p = p² = p\* in matrices over A, counted up to unitary conjugacy after adding zero blocks, and for A = Mₙ(ℂ) this class is just the rank. The ordered group has the projection classes as positive cone and marks the class of the identity of A.
 
@@ -859,7 +859,7 @@
 
 **Remember:** With F equal to zero, Morita's condition is Kasparov's condition.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L08. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)), 46L08. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** An A–B imprimitivity bimodule is a full Hilbert B-module E, one whose inner products span a dense subspace of B, on which A acts as exactly the compact operators. So every a ∈ A is compact on E, which is the Kasparov condition that (F²−1)a be compact when F = 0.
 
@@ -932,7 +932,7 @@
 
 **Remember:** A cone has no K-groups, so its boundary map is an isomorphism.
 
-*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition.* MSC 19K99 (K-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a C\*-algebra A, the cone CA is the algebra of continuous A-valued paths on \[0,1\] that vanish at 0, and shrinking the paths contracts it. The suspension SA is the kernel of evaluation at 1 from CA onto A.
 
@@ -948,7 +948,7 @@
 
 **Remember:** A complex unitary can rotate all its eigenvalues back to one.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19K99 (\\(K\\)-theory and operator algebras), 19B99. arXiv math.OA, math.KT. Level 3: graduate.
+*Rules out counterexamples. Confidence: medium.* MSC 19K99 (K-theory and operator algebras), 19B99. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** Operator K₁ of ℂ takes unitary matrices, enlarged by identity blocks, up to continuous paths, so a unitary joined to the identity by a path is zero. Algebraic K₁ of ℂ takes invertible matrices, enlarged the same way, modulo commutators, with no paths allowed.
 
@@ -964,7 +964,7 @@
 
 **Remember:** A class is one unitary, and z can go to any unitary.
 
-*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+*True by definition.* MSC 19K99 (K-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
 
 **Definition.** For a unital C\*-algebra A, K₁(A) consists of unitary matrices over A, those with adjoint as inverse, up to continuous paths after adding identity blocks. So each class is given by one unitary u ∈ Mₙ(A).
 
@@ -996,7 +996,7 @@
 
 **Remember:** An m-th tensor power of an n-th power is an mn-th power.
 
-*True by definition.* MSC 19L20 (\\(J\\)-homomorphism, Adams operations), 55S25. arXiv math.AT. Level 3: graduate.
+*True by definition.* MSC 19L20 (J-homomorphism, Adams operations), 55S25. arXiv math.AT. Level 3: graduate.
 
 **Definition.** For each positive integer k, define ψᵏ on complex K⁰ as the unique natural ring endomorphism sending every line bundle class \[L\] to \[L⊗ᵏ\].
 
@@ -1014,7 +1014,7 @@
 
 **Remember:** Complete the circle’s Laurent polynomials at the trivial character.
 
-*Makes the theorem clean to state or prove.* MSC 19L47 (Equivariant \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19L47 (Equivariant K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** The representation ring of the circle is ℤ\[x,x⁻¹\], where x is the standard character. Its ideal I of dimension-zero differences is generated by c = x − 1, and the I-adic completion is the inverse limit of the quotients modulo the powers of I.
 
@@ -1032,7 +1032,7 @@
 
 **Remember:** A bundle with a group action over one point is a representation.
 
-*True by definition.* MSC 19L47 (Equivariant \\(K\\)-theory), 19A22. arXiv math.AT, math.KT. Level 3: graduate.
+*True by definition.* MSC 19L47 (Equivariant K-theory), 19A22. arXiv math.AT, math.KT. Level 3: graduate.
 
 **Definition.** For a compact Lie group G acting on X, K⁰<sub>G</sub>(X) takes formal differences of complex G-bundles, finite-rank vector bundles on which G acts by linear maps between fibers, covering its action on X. Over a point, such a bundle is one vector space with a linear G-action, that is, a representation.
 
@@ -1050,7 +1050,7 @@
 
 **Remember:** A free orbit carries no extra representation on its fibers.
 
-*Rules out counterexamples.* MSC 19L47 (Equivariant \\(K\\)-theory), 55N91. arXiv math.AT, math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19L47 (Equivariant K-theory), 55N91. arXiv math.AT, math.KT. Level 3: graduate.
 
 **Definition.** An equivariant complex vector bundle has a group action by linear maps between fibers, covering the action on the base, and equivariant K⁰ takes formal differences of these bundles. An action is free when only the identity fixes any point, so no nonidentity element maps a fiber to itself.
 
@@ -1068,7 +1068,7 @@
 
 **Remember:** When the group moves every point, one fiber fixes the bundle.
 
-*Makes the theorem clean to state or prove.* MSC 19L47 (Equivariant \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19L47 (Equivariant K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a compact Lie group G and closed subgroup H, a G-equivariant complex vector bundle on G∕H has G acting linearly between fibers. G carries the identity fiber to every other fiber, and H acts on the identity fiber itself.
 
@@ -1086,7 +1086,7 @@
 
 **Remember:** Pullback is composition, and composition respects homotopy.
 
-*True by definition.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19L99 (Topological K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a connected pointed finite CW complex X, reduced complex K-theory is the set of based homotopy classes of based maps X → BU, the space that classifies stable complex bundles. A map f pulls a class back by composing with f (our own).
 
@@ -1102,7 +1102,7 @@
 
 **Remember:** The determinant of the equator loop counts the stable class.
 
-*Makes the theorem clean to state or prove.* MSC 19L99 (Topological \\(K\\)-theory), 55R50. arXiv math.AT, math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 19L99 (Topological K-theory), 55R50. arXiv math.AT, math.KT. Level 3: graduate.
 
 **Definition.** A stable complex bundle on the two-sphere comes from gluing trivial bundles over the two hemispheres along a loop of unitary matrices on the equator, up to homotopy of the loop and adding identity blocks. The determinant of the loop has a winding number, and block sums add winding numbers.
 
@@ -1120,7 +1120,7 @@
 
 **Remember:** Deleting points already collapsed does not change the quotient.
 
-*True by definition.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*True by definition.* MSC 19L99 (Topological K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** For compact Hausdorff X and a nonempty closed subset A, relative K-theory K(X,A) is the reduced K-theory of X/A, the space with A collapsed to one point.
 
@@ -1136,7 +1136,7 @@
 
 **Remember:** Fiber dimensions may jump between components, like projective module ranks.
 
-*Rules out counterexamples.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+*Rules out counterexamples.* MSC 19L99 (Topological K-theory). arXiv math.KT. Level 3: graduate.
 
 **Definition.** Over a compact Hausdorff space X, bundle K-theory uses complex vector bundles whose fiber dimension is locally constant, so it may change between components. Algebraic K₀ of C(X), the ring of continuous complex functions, uses finitely generated projective modules, the direct summands of finite free modules.
 
@@ -1154,7 +1154,7 @@
 
 **Remember:** Idempotents lift across nilpotent ideals, and their image modules lift with them.
 
-*True by definition.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13C10. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19A49 (K<sub>0</sub> of other rings), 13C10. arXiv math.KT. Level 4: research.
 
 **Definition.** A finite projective module over R is the image of an idempotent matrix, one with e² = e, and K₀ takes formal differences of these modules under direct sum. So lifting a module from R/I to R means lifting one idempotent matrix.
 
@@ -1188,7 +1188,7 @@
 
 **Remember:** Into a group-like space, an acyclic map kills exactly the perfect part.
 
-*True by definition. Confidence: medium.* MSC 19D06 (\\(Q\\)- and plus-constructions), 55P48. arXiv math.AT, math.KT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19D06 (Q- and plus-constructions), 55P48. arXiv math.AT, math.KT. Level 4: research.
 
 **Definition.** A map is acyclic when its homotopy fibers have the integral homology of a point, and such a map is onto on π₁ with perfect kernel, one equal to its own commutator subgroup. The plus construction X → X⁺ is the acyclic map whose kernel on π₁ is the largest perfect subgroup of π₁(X).
 
@@ -1206,7 +1206,7 @@
 
 **Remember:** Products preserve both local targets and acyclic fibers.
 
-*True by definition.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A map is acyclic if its homotopy fibers have the integral homology of a point, and a space is local if mapping into it turns acyclic maps into equivalences. The plus map X → X⁺ is the universal map to a local space, and any acyclic map to a local space is that map (our own).
 
@@ -1225,7 +1225,7 @@
 
 **Remember:** Localizing a space twice changes nothing the second time.
 
-*True by definition.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Call a map acyclic if its homotopy fibers have the integral homology of a point, and call a space local if mapping into it turns acyclic maps into equivalences. Define X⁺ by the universal map from X to a local space, so X⁺ is itself local.
 
@@ -1244,7 +1244,7 @@
 
 **Remember:** Group-ring coefficients see covers, so the plus cover looks like BP.
 
-*True by definition.* MSC 19D06 (\\(Q\\)- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D06 (Q- and plus-constructions). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Let BG have fundamental group G and contractible universal cover, and let P be a perfect normal subgroup, one generated by its own commutators. The relative plus map BG → BG⁺ induces the quotient G → G/P on π₁ and preserves homology with every local coefficient module over ℤ\[G/P\], including ℤ\[G/P\] itself.
 
@@ -1263,7 +1263,7 @@
 
 **Remember:** Finite domination makes the constant sphere compact, so it has a class.
 
-*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces), 19J05. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic K-theory of spaces), 19J05. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Let X be connected and finitely dominated, meaning a homotopy retract of a finite cell complex. Then the constant sphere system, with the sphere spectrum at every point and identity transport, is a compact local system (our own) and so has a class in π₀A(X).
 
@@ -1281,7 +1281,7 @@
 
 **Remember:** Left adjoints carry compact objects when pullback preserves filtered colimits.
 
-*True by definition.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A(X) is the algebraic K-theory of compact objects in Fun(X,Sp), the spectrum-valued local systems on X, where L is compact if Map(L,−) preserves filtered colimits. For f ∶ X → Y, pushforward is left Kan extension along f, the left adjoint of restriction, and restriction preserves filtered colimits.
 
@@ -1300,7 +1300,7 @@
 
 **Remember:** Separate components give independent compact local systems.
 
-*True by definition.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A local system of spectra on X is a functor from its fundamental ∞-groupoid to spectra, and L is compact if Map(L,−) preserves filtered colimits. A(X) is the algebraic K-theory of compact local systems, and on a disjoint union a local system is a tuple of systems on the parts.
 
@@ -1319,7 +1319,7 @@
 
 **Remember:** Pull back a cover and the same fibers compute pushforward.
 
-*True by definition. Confidence: medium.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Define A(X) as the K-theory of spectrum-valued local systems L on X for which Map(L,−) preserves filtered colimits. Transfer along a finite cover is restriction. Pushforward along a map takes the colimit over each homotopy fiber.
 
@@ -1338,7 +1338,7 @@
 
 **Remember:** The assembly cofiber removes signs and group elements from K₁.
 
-*True by definition.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Assembly is a map to A(X) from the generalized homology of X with coefficients in A(∗), the A-theory of a point. The piecewise linear Whitehead spectrum is its cofiber, so it divides A(X) by what comes from the point and the paths and loops of X.
 
@@ -1357,7 +1357,7 @@
 
 **Remember:** The basepoint generator has based loops as its endomorphisms.
 
-*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a connected based space X, A(X) is the K-theory of compact spectrum-valued local systems on X. Push the sphere spectrum forward from the basepoint by left Kan extension, so maps out of the result evaluate a system at the basepoint, which preserves filtered colimits and detects equivalences.
 
@@ -1377,7 +1377,7 @@
 
 **Remember:** Homology with fixed coefficients turns gluing into exact sequences.
 
-*True by definition.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Excisive A-theory of X is the smash product of A(∗), Waldhausen’s algebraic K-theory spectrum of a point, with the suspension spectrum Σ∞₊X. Both steps, taking Σ∞₊ and smashing with a fixed spectrum, preserve homotopy pushouts.
 
@@ -1397,7 +1397,7 @@
 
 **Remember:** A finite value at each point does not ensure compactness.
 
-*Rules out counterexamples.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*Rules out counterexamples.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A spectrum-valued local system L is compact if Map(L,−) preserves filtered colimits of local systems. Taking the colimit over the base then sends compact systems to compact spectra, since its right adjoint, the constant system, preserves filtered colimits (our own).
 
@@ -1416,7 +1416,7 @@
 
 **Remember:** Discard higher loop data without changing degrees zero and one.
 
-*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic \\(K\\)-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D10 (Algebraic K-theory of spaces). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a connected based space X, let R = Σ∞₊ΩX, a connective ring spectrum, one with no negative homotopy, whose degree-zero ring is ℤ\[π₁X\]. Linearization applies K-theory to the truncation R → Hℤ\[π₁X\], which keeps only degree zero.
 
@@ -1435,7 +1435,7 @@
 
 **Remember:** Nonconnective K-theory cannot see idempotent completion, so idempotent completeness is not needed.
 
-*Makes the theorem clean to state or prove.* MSC 19D35 (Negative \\(K\\)-theory, NK and Nil), 18F25. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D35 (Negative K-theory, NK and Nil), 18F25. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For an additive category 𝒜 with automorphism Φ, use the nonconnective K-theory K∞ from Bass delooping. It does not change when one adjoins the images of all idempotents, since that inclusion is cofinal.
 
@@ -1453,7 +1453,7 @@
 
 **Remember:** Finitely presented modules stay closed under kernels and admit finite projective resolutions.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D35 (Negative \\(K\\)-theory, NK and Nil), 18F25. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D35 (Negative K-theory, NK and Nil), 18F25. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A right module over an additive category 𝒜 is an additive functor from its opposite category to abelian groups. Call 𝒜 regular coherent if its finitely presented right modules form an abelian subcategory and each admits a finite resolution by finitely generated projectives.
 
@@ -1471,7 +1471,7 @@
 
 **Remember:** Keep the classes over A(t) that do not depend on t.
 
-*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** For a commutative local ring A, form A(t) and A(t₁,t₂) by inverting all polynomials whose coefficients generate the unit ideal. Improved Kₙᴹ(A) keeps the classes in Kₙᴹ(A(t)) that become equal under the two substitutions t ↦ t₁ and t ↦ t₂.
 
@@ -1490,7 +1490,7 @@
 
 **Remember:** A wedge of length greater than the differential dimension vanishes.
 
-*True by definition.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** In a field F of prime characteristic p, send a Milnor symbol {a₁,…,aₙ} modulo p to the wedge da₁/a₁ ∧ … ∧ daₙ/aₙ of logarithmic differentials. A wedge of n one-forms vanishes when n exceeds the dimension of the one-forms, which is d when \[F : Fᵖ\] = pᵈ.
 
@@ -1508,7 +1508,7 @@
 
 **Remember:** After inversion, every degree is a copy of degree zero.
 
-*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** For a field F of characteristic different from two, invert η, the central element of degree −1, in the graded Milnor–Witt ring. Multiplication by η then identifies every degree with degree zero.
 
@@ -1527,7 +1527,7 @@
 
 **Remember:** Kill eta, and the product rule becomes ordinary additivity.
 
-*True by definition.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** The Milnor–Witt ring of a field F is the graded ring generated by \[a\] in degree one for each a ∈ F× and a central η in degree −1. Its relations are \[ab\] = \[a\] + \[b\] + η\[a\]\[b\], \[a\]\[1−a\] = 0 for a ≠ 0, 1, and η(2 + η\[−1\]) = 0.
 
@@ -1546,7 +1546,7 @@
 
 **Remember:** Each symbol becomes a wedge of logarithmic differentials.
 
-*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** Let F have prime characteristic p, and call da/a, for nonzero a ∈ F, a logarithmic differential, where d is the Kähler differential over the prime field. In degree n ≥ 1, the logarithmic subgroup is the additive group of n-forms generated by wedges of n logarithmic differentials.
 
@@ -1564,7 +1564,7 @@
 
 **Remember:** The basis change and the square-class factor cancel.
 
-*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** For a discrete valuation with maximal ideal 𝔪 and residue field k, the twisted target uses the line L = (𝔪/𝔪²)∨. Its elements are x ⊗ ℓ for nonzero ℓ ∈ L, with x ⊗ uℓ = ⟨u⟩x ⊗ ℓ for each u ∈ k×, so rescaling ℓ costs the square class ⟨u⟩.
 
@@ -1583,7 +1583,7 @@
 
 **Remember:** Modulo the next power of I, binary forms add like symbols.
 
-*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D45 (Higher symbols, Milnor K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** In the Witt ring W of a field F of characteristic different from two, let I be the ideal of even-dimensional classes. The graded Witt ring has degree n part Iⁿ/Iⁿ⁺¹, with products taken in W and reduced modulo the next power of I.
 
@@ -1602,7 +1602,7 @@
 
 **Remember:** Modulo n, unit groups of algebraically closed fields look alike.
 
-*Rules out counterexamples.* MSC 19D50 (Computations of higher \\(K\\)-theory of rings), 19E08. arXiv math.KT, math.AG. Level 4: research.
+*Rules out counterexamples.* MSC 19D50 (Computations of higher K-theory of rings), 19E08. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** For n ≥ 2, the mod-n K-groups of coherent sheaves on X are the homotopy groups of G(X)/n, the cofiber of multiplication by n on the K-theory spectrum G(X) of coherent sheaves. They see only classes modulo n and n-torsion, so divisible groups such as unit groups of algebraically closed fields contribute only roots of unity (our own).
 
@@ -1620,7 +1620,7 @@
 
 **Remember:** Units near one have mth roots when m is invertible.
 
-*Rules out counterexamples.* MSC 19D50 (Computations of higher \\(K\\)-theory of rings). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19D50 (Computations of higher K-theory of rings). arXiv math.KT. Level 4: research.
 
 **Definition.** A local ring R is Henselian if, for every monic polynomial over R, every factorization of its reduction into coprime monic factors lifts to a monic factorization over R. Take K-theory with coefficients modulo an integer m ≥ 2 invertible in R, so that Hensel lifting gives an mth root of every unit congruent to one (our own).
 
@@ -1638,7 +1638,7 @@
 
 **Remember:** Kill the constant \[x\] + \[1−x\], and complements become negatives.
 
-*Rules out counterexamples.* MSC 19D50 (Computations of higher \\(K\\)-theory of rings). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19D50 (Computations of higher K-theory of rings). arXiv math.KT. Level 4: research.
 
 **Definition.** In the pre-Bloch group of a number field F, defined by the five-term relation, the sum c = \[x\] + \[1−x\] is the same for every x ∈ F ∖ {0,1}. The reduced presentation divides by the subgroup generated by c, so \[x\] + \[1−x\] = 0 there.
 
@@ -1657,7 +1657,7 @@
 
 **Remember:** Determinant one remembers square classes, and coinvariants forget them again.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
 
 **Definition.** Over an infinite field F, the refined pre-Bloch group is generated by ordered quadruples of distinct points of ℙ¹, up to determinant-one projective maps. Each ordered quintuple of distinct points gives the relation that the alternating sum of its four-point faces is zero. A projective map rescales to determinant one exactly when its determinant is a square, so the refinement remembers only square classes (our own).
 
@@ -1675,7 +1675,7 @@
 
 **Remember:** Completed tensor powers of C∞(M) are smooth functions on Mⁿ.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 58B34, 58A12. arXiv math.KT, math.OA. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 58B34, 58A12. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** For a compact smooth manifold M, give C∞(M) the topology of uniform convergence of all derivatives. Continuous Hochschild and cyclic homology replace each tensor power of C∞(M) by its completed projective tensor power, which is C∞(Mⁿ) (our own).
 
@@ -1693,7 +1693,7 @@
 
 **Remember:** Hochschild becomes forms, B becomes d, cyclic becomes de Rham.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 14F40, 16E40. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 14F40, 16E40. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** A mixed complex has a boundary b of degree −1 and an operator B of degree +1, with b² = B² = bB + Bb = 0. For a commutative algebra in characteristic 0, a₀ ⊗ ⋯ ⊗ aₙ ↦ a₀da₁⋯daₙ/n! sends Connes' B on Hochschild chains to de Rham d (our own summary).
 
@@ -1711,7 +1711,7 @@
 
 **Remember:** As an Ext group, cyclic cohomology is a module over k\[u\].
 
-*True by definition. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 18G90. arXiv math.KT, math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 18G90. arXiv math.KT, math.CT. Level 4: research.
 
 **Definition.** For a unital k-algebra A, its cyclic module A♯ has degree-n term A⊗⁽ⁿ⁺¹⁾, with faces from multiplication, degeneracies from the unit, and cyclic rotation. Define HCⁿ(A) as Extⁿ(A♯, k♯) in cyclic k-modules, where k♯ is constant with value k. As an Ext group, HC\*(A) is a module over the Ext ring of k♯ by composing extensions (our own).
 
@@ -1731,7 +1731,7 @@
 
 **Remember:** Cyclic homology belongs to the category of perfect complexes, not the scheme.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 18G80, 14F40. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 18G80, 14F40. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** Keller defines the cyclic homology of a dg category, one whose morphisms form chain complexes, by a mixed complex built from chains of composable morphisms. This cyclic homology is invariant under equivalences of dg categories (our own summary). For a scheme X, Perf(X) is the dg category of perfect complexes, those locally equivalent to bounded complexes of vector bundles.
 
@@ -1751,7 +1751,7 @@
 
 **Remember:** A shadow lets a tensor product rotate to the other ring.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A shadow on bimodules over ring spectra is a functor with a cyclic symmetry. For an R–S bimodule M and an S–R bimodule N, it naturally identifies its value on M ⊗ₛ N over R with that on N ⊗ᵣ M over S. Both tensors are derived.
 
@@ -1769,7 +1769,7 @@
 
 **Remember:** Cyclic cocycles are traces in many variables, so idempotents pair with them.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 46L80, 58B34. arXiv math.KT, math.OA. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 46L80, 58B34. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** A cyclic n-cocycle on an algebra A is an (n+1)-linear form φ with bφ = 0 for the Hochschild coboundary b. Rotating its arguments changes φ only by the sign (−1)ⁿ, so φ behaves like a trace, and in degree 0 it is one.
 
@@ -1789,7 +1789,7 @@
 
 **Remember:** A map from the cyclotomic sphere must commute with every Frobenius.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A cyclotomic spectrum is a spectrum X with a circle action and, for each prime p, an equivariant Frobenius map X → X<sup>(tCₚ)</sup>. The target has the residual circle action transported along S¹ ≅ S¹/Cₚ. Topological cyclic homology TC(X) is the spectrum of cyclotomic maps from the sphere to X, a circle fixed point compatible with every Frobenius (our own).
 
@@ -1807,7 +1807,7 @@
 
 **Remember:** Ainf maps uniquely to every complete thickening of R.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 14G45, 14F30. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 14G45, 14F30. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** For a perfectoid ring R, Ainf(R) = W(R♭) is the ring of Witt vectors of the tilt R♭, the limit of R/p along Frobenius. Fontaine's map θ: Ainf(R) → R is the initial surjection onto R from a ring complete both p-adically and for the kernel. So every such surjection D → R receives a unique ring map from Ainf(R) over R.
 
@@ -1826,7 +1826,7 @@
 
 **Remember:** Repletion pulls the group completion's cyclic bar back to M.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a commutative monoid M with group completion Mᵍᵖ, the cyclic bar Bᶜʸ(M) has n-simplices Mⁿ⁺¹, augmented to M by multiplication. The replete bar is the homotopy pullback of Bᶜʸ(Mᵍᵖ) → Mᵍᵖ along M → Mᵍᵖ. So it changes Bᶜʸ(M) only where M differs from its group completion (our own).
 
@@ -1844,7 +1844,7 @@
 
 **Remember:** An acyclic bar complex is a unit good enough for homology.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT, math.OA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** An algebra I over a field is H-unital if its reduced bar complex is acyclic, with terms I⊗ⁿ and differential summing adjacent products with signs. A unital algebra is H-unital, so H-unitality is a homological substitute for a unit (our own).
 
@@ -1862,7 +1862,7 @@
 
 **Remember:** Log Hochschild homology is a pushout, and base change passes through pushouts.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a commutative pre-log ring (A, M), the replete bar is the homotopy pullback of Bᶜʸ(Mᵍᵖ) → Mᵍᵖ along M → Mᵍᵖ. Derived log Hochschild homology tensors HH(A) with the group ring of the replete bar over the group ring of Bᶜʸ(M), in the derived sense. Log THH is the same pushout built from THH and spherical group rings (our own).
 
@@ -1880,7 +1880,7 @@
 
 **Remember:** Invert the periodicity operator, and whatever it kills disappears.
 
-*Rules out counterexamples. Confidence: low.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: low.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 4: research.
 
 **Definition.** Periodic cyclic homology HP is the homology of Hochschild chains in Laurent series C((u)), with u of degree −2 and differential b + uB. Since u is invertible here, Connes' periodicity operator S becomes invertible, so anything that S kills vanishes in HP (our own).
 
@@ -1898,7 +1898,7 @@
 
 **Remember:** Inverting the periodicity operator erases whatever a power of it kills.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 19D50. arXiv math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 19D50. arXiv math.KT. Level 4: research.
 
 **Definition.** Periodic cyclic homology HP is the homology of Hochschild chains in Laurent series C((u)), with u of degree −2 and differential b + uB. Inverting u makes Connes' periodicity operator S invertible, so a relative group on which a power of S is zero disappears (our own).
 
@@ -1916,7 +1916,7 @@
 
 **Remember:** Periodize the mixed complex by allowing Laurent series in u.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 16E40. arXiv math.KT. Level 4: research.
 
 **Definition.** Periodic cyclic homology HP is the homology of Hochschild chains in Laurent series C((u)), with u of degree −2 and differential b + uB. For an ideal I of A, relative HP(A, I) is the fiber of A → A/I on these complexes. HP(I) is the fiber of the augmentation from the unitization of I to k on these complexes.
 
@@ -1934,7 +1934,7 @@
 
 **Remember:** The coefficients and the monomials have separate cyclic bar factors.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a monoid with an absorbing zero, the pointed cyclic bar has the lists of q+1 elements in degree q, with lists containing zero collapsed. Faces multiply cyclic neighbors, degeneracies insert the unit, and the cyclic operator rotates lists. The ring A\[x\]/(xⁿ) is the pointed monoid ring of {0, 1, x, …, xⁿ⁻¹} over A, so coefficients and monomials multiply separately (our own).
 
@@ -1952,7 +1952,7 @@
 
 **Remember:** A nilpotent extension kills an ideal whose sufficiently long products all vanish.
 
-*Rules out counterexamples.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
 
 **Definition.** A nilpotent extension is a surjective ring map with kernel I such that Iᵏ = 0 for some k. Its relative groups are the homotopy fibers of the induced maps.
 
@@ -1970,7 +1970,7 @@
 
 **Remember:** Weight zero survives evaluation, and positive weights form its fiber.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For n ≥ 1, the pointed cyclic bar of the monomials of A\[x\]/(xⁿ) has circular lists of 1, x, …, xⁿ⁻¹ and zero. Lists containing zero collapse to a basepoint, and any other list has a weight, its total exponent. Faces and rotation preserve weight, so the bar is a wedge of weight pieces (our own).
 
@@ -1988,7 +1988,7 @@
 
 **Remember:** Kill each subset of variables, then take fibers in every direction.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a commutative ring A and positive exponents nᵢ, set each subset of the variables of A\[x₁, …, xᵣ\]/(x₁<sup>n₁</sup>, …, xᵣ<sup>nᵣ</sup>) to zero. This gives a cube of quotient rings in which each edge kills one variable, so its kernel is nilpotent (our own). Multi-relative K-theory or TC is the iterated homotopy fiber of the functor on this cube.
 
@@ -2007,7 +2007,7 @@
 
 **Remember:** The degree-two sphere is ℂ compactified, with conjugation remembered.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 55P91. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 55P91. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Let σ be the sign representation of ℤ/2 on ℝ. The representation sphere S¹⁺σ is the one-point compactification of ℂ with complex conjugation, so its underlying sphere is S² (our own).
 
@@ -2025,7 +2025,7 @@
 
 **Remember:** Frobenius pullback agrees with the module once E is inverted.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 14F30. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 14F30. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** Let K be a finite extension of ℚₚ with uniformizer ϖ and residue field k. Let 𝔖 = W(k)\[\[z\]\], with Frobenius φ extending the Witt Frobenius by z ↦ zᵖ. A Breuil–Kisin module is a finite 𝔖-module M with an isomorphism (φ\*M)\[1/E\] ≅ M\[1/E\], where E is the Eisenstein polynomial of ϖ.
 
@@ -2043,7 +2043,7 @@
 
 **Remember:** K-theory minus TC is the fiber of the cyclotomic trace.
 
-*Rules out counterexamples.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 19D50. arXiv math.KT, math.AG. Level 4: research.
+*Rules out counterexamples.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 19D50. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** For a commutative ring A, Kⁱⁿᵛ(A) is the homotopy fiber of the cyclotomic trace K(A) → TC(A), the part of K-theory that TC does not see. With coefficients, Kⁱⁿᵛ(A; ℤ/n) is the cofiber of multiplication by n on it.
 
@@ -2061,7 +2061,7 @@
 
 **Remember:** Periodic chains modulo negative cyclic chains are cyclic chains shifted by two.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT. Level 4: research.
 
 **Definition.** Negative cyclic chains are Hochschild chains with power series in u, of degree −2, and differential b + uB. Periodic chains also allow finitely many negative powers of u. Their quotient, the strictly negative powers, is the cyclic complex shifted up two degrees (our own).
 
@@ -2079,7 +2079,7 @@
 
 **Remember:** Filter by the Whitehead tower, and descent reduces to discrete graded rings.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 55P43. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 55P43. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a connective commutative ring spectrum A, filter A by its connective covers, the Whitehead tower. Filter each tensor power in the cyclic bar by adding the indices of the factors, and realize to get the May filtration on THH(A). Its associated graded is THH of π\*A viewed as a graded ring (our own summary).
 
@@ -2097,7 +2097,7 @@
 
 **Remember:** K-theory is maps out of finite spectra in noncommutative motives.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** An additive invariant ignores equivalences of module categories, preserves filtered colimits, and sends split exact sequences to direct sums. In the universal category of such invariants, connective K-theory is represented: it is the spectrum of maps out of the motive of finite spectra.
 
@@ -2115,7 +2115,7 @@
 
 **Remember:** TAQ is the module of differentials, and maps out are derivations.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology), 55P43. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology), 55P43. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a commutative ring spectrum A, TAQ(A) is the A-module of differentials over the sphere. For every A-module M, maps TAQ(A) → M match sections of the square-zero extension A ⊕ M → A as commutative ring spectra.
 
@@ -2133,7 +2133,7 @@
 
 **Remember:** TC is maps out of the cyclotomic sphere.
 
-*True by definition.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** A cyclotomic spectrum has a circle action and compatible maps to the Tate constructions for the prime-order rotation groups Cₚ. Topological cyclic homology is the spectrum of cyclotomic maps from the sphere, so it is maps out of a fixed object (our own).
 
@@ -2151,7 +2151,7 @@
 
 **Remember:** An unchanged trace fiber makes the relative trace an equivalence.
 
-*Makes the theorem clean to state or prove.* MSC 19D55 (\\(K\\)-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19D55 (K-theory and homology; cyclic homology and cohomology). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a ring R, the trace fiber is the homotopy fiber of the cyclotomic trace K(R) → TC(R), the part of K-theory that TC misses. For an ideal I, each relative theory is the fiber of its map from R to R/I.
 
@@ -2169,7 +2169,7 @@
 
 **Remember:** Scale the square-zero part down to zero along the affine line.
 
-*True by definition.* MSC 19D99 (Higher algebraic \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19D99 (Higher algebraic K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** The split square-zero extension of a complex algebra A by an A-bimodule I is A ⊕ I with product (a,i)(b,j) = (ab, aj+ib), so I² = 0. Scaling I by t, (a,i) ↦ (a,ti), is then an algebra map for every t, including t = 0 (our own).
 
@@ -2187,7 +2187,7 @@
 
 **Remember:** Coherent sheaves allow the pieces supported on a closed subset.
 
-*Makes the theorem clean to state or prove.* MSC 19E08 (\\(K\\)-theory of schemes). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E08 (K-theory of schemes). arXiv math.KT. Level 4: research.
 
 **Definition.** On a Noetherian scheme, G-theory is the algebraic K-theory of coherent sheaves, those locally given by modules with finitely many generators and relations. Unlike vector bundles, coherent sheaves include sheaves supported on a closed subset, such as sheaves pushed forward from a closed subscheme (our own).
 
@@ -2205,7 +2205,7 @@
 
 **Remember:** Perfect complexes act on coherent classes by derived tensor product.
 
-*True by definition.* MSC 19E08 (\\(K\\)-theory of schemes), 14C35. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19E08 (K-theory of schemes), 14C35. arXiv math.KT. Level 4: research.
 
 **Definition.** For a Noetherian scheme X, G₀(X) is generated by bounded complexes with coherent cohomology, and K₀(X) by perfect complexes. In both, \[B\] = \[A\] + \[C\] for each exact triangle A → B → C → A\[1\]. A perfect complex acts on G₀ by derived tensor product.
 
@@ -2221,7 +2221,7 @@
 
 **Remember:** Use perfect complexes, not vector bundles, and K-theory glues along open covers.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19E08 (\\(K\\)-theory of schemes), 18F25. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19E08 (K-theory of schemes), 18F25. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** A perfect complex on a scheme is locally quasi-isomorphic to a bounded complex of finite-rank vector bundles, so perfectness is local (our own). Thomason–Trobaugh nonconnective K-theory is the K-theory of perfect complexes, with quasi-isomorphisms as weak equivalences.
 
@@ -2239,7 +2239,7 @@
 
 **Remember:** Covers by Tate weight, slices as their cofibers, suspension shifts weight.
 
-*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 14F42. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 14F42. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** The weight-i effective cover of a motivic spectrum E is the universal map to E from i-fold Tate suspensions of effective spectra. The ith slice is the cofiber of the map from cover i+1 to cover i. Tate suspension carries slice i of E to slice i+1 of the suspension of E (our own).
 
@@ -2257,7 +2257,7 @@
 
 **Remember:** One extension, ℚ(2) inside and ℚ(0) on top, carries a period.
 
-*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 57K32, 19F27. arXiv math.KT, math.GT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 57K32, 19F27. arXiv math.KT, math.GT. Level 4: research.
 
 **Definition.** In mixed Tate motives over a number field k, an extension of ℚ(0) by ℚ(2) is an exact sequence 0 → ℚ(2) → M → ℚ(0) → 0. Two extensions are equal if an isomorphism between them is the identity on both ends. The Beilinson regulator assigns each class a complex number, its period (our own).
 
@@ -2275,7 +2275,7 @@
 
 **Remember:** The real projection forgets the argument of a unit.
 
-*True by definition.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 4: research.
+*True by definition.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 14F43. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** An algebraic unit f, a regular function with regular inverse, has a weight-one regulator class from local logarithms, which differ by integer multiples of 2πi. The real Deligne model reduces values modulo the imaginary line 2πiℝ, so it keeps only real parts (our own).
 
@@ -2293,7 +2293,7 @@
 
 **Remember:** Use the ranks the twisted modules actually have as coefficients.
 
-*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
 
 **Definition.** For an Azumaya algebra A on X, the reduced rank of a projective A-module is its rank as a vector bundle under local Morita equivalence. The rank sheaf is the Nisnevich sheafification of the images of reduced rank on K₀(A) over each open. It records which ranks A-modules actually have, such as multiples of d for a division algebra of dimension d² (our own).
 
@@ -2311,7 +2311,7 @@
 
 **Remember:** To recover algebraic K-theory, keep the whole tower of thickenings.
 
-*Rules out counterexamples.* MSC 19E15 (Algebraic cycles and motivic cohomology (\\(K\\)-theoretic aspects)), 14F42. arXiv math.KT, math.AG. Level 4: research.
+*Rules out counterexamples.* MSC 19E15 (Algebraic cycles and motivic cohomology (K-theoretic aspects)), 14F42. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** A procdh cover is a Nisnevich cover, or a proper modification, an isomorphism off a closed center, together with all thickenings of that center. Keeping the thickenings keeps nilpotent information, which K-theory sees (our own). The weight-n procdh motivic complex is the left Kan extension of the motivic complex from smooth schemes over a prime field, sheafified for this topology.
 
@@ -2329,7 +2329,7 @@
 
 **Remember:** After Bott inversion, a shift by two changes nothing.
 
-*True by definition.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19E20 (Relations of K-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Let ℓ ≥ 5 be a prime invertible in a commutative ring R that contains a primitive ℓth root of unity. Let β in K₂(R; ℤ/ℓ) be a Bott class with that root as boundary. The Bott-inverted group in degree n is the direct limit of Kₙ₊₂ⱼ(R; ℤ/ℓ) over j ≥ 0, along multiplication by β.
 
@@ -2347,7 +2347,7 @@
 
 **Remember:** θʲ(L) times 1 − \[L\] is 1 − \[L\]ʲ.
 
-*Makes the theorem clean to state or prove.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E20 (Relations of K-theory with cohomology theories). arXiv math.KT. Level 4: research.
 
 **Definition.** Let i be the zero section of a line bundle E on a smooth quasi-projective variety, with conormal line L = E∨. For j ≥ 1, define θʲ(L) = 1 + \[L\] + ⋯ + \[L\]ʲ⁻¹ in K₀, so (1 − \[L\])θʲ(L) = 1 − \[L\]ʲ (our own).
 
@@ -2365,7 +2365,7 @@
 
 **Remember:** Take cycles meeting all faces properly, alternate their restrictions, and take homology.
 
-*Makes the theorem clean to state or prove.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories), 19E15, 14C25. arXiv math.KT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19E20 (Relations of K-theory with cohomology theories), 19E15, 14C25. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** Bloch's cycle complex has, in degree r, the free abelian group on integral codimension-p subvarieties of X × Δʳ that meet every face properly. Its differential is the alternating sum of restrictions to faces, and its nth homology is the higher Chow group CHᵖ(X, n).
 
@@ -2385,7 +2385,7 @@
 
 **Remember:** Invert the projective-line class to shift degree and weight together.
 
-*True by definition.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 19E20 (Relations of K-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** Give the suspension spectrum of ℙ<sup>∞</sup> with a disjoint basepoint its product from tensor product of line bundles. Its Bott class, of bidegree (2,1), is the reduced class of ℙ¹ ⊂ ℙ<sup>∞</sup>, and Bott localization makes multiplication by it invertible.
 
@@ -2403,7 +2403,7 @@
 
 **Remember:** Feed the étale homotopy type to topological K-theory.
 
-*True by definition. Confidence: medium.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories), 14F35. arXiv math.KT, math.AG. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19E20 (Relations of K-theory with cohomology theories), 14F35. arXiv math.KT, math.AG. Level 4: research.
 
 **Definition.** Fix a prime ℓ invertible on X and v ≥ 1. Dwyer–Friedlander étale K-theory with ℤ/ℓᵛ coefficients applies topological K-theory mod ℓᵛ to the étale homotopy type of X. Topological K-theory mod ℓᵛ sees a space only through its ℓ-completion (our own).
 
@@ -2421,7 +2421,7 @@
 
 **Remember:** Filter the sheaf by homotopy degree to expose ordinary étale cohomology.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19E20 (Relations of \\(K\\)-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19E20 (Relations of K-theory with cohomology theories). arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For an odd prime ℓ invertible on X, étale K-theory mod ℓ is the global sections of the étale hypersheafification of connective K-theory mod ℓ. As a hypersheaf, each of its homotopy sheaves gives a row of étale cohomology in a descent spectral sequence (our own).
 
@@ -2439,7 +2439,7 @@
 
 **Remember:** Divisible elements are invisible to Galois groups, so divide them out first.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F05 (Generalized class field theory (\\(K\\)-theoretic aspects)), 11S70. arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F05 (Generalized class field theory (K-theoretic aspects)), 11S70. arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** An element of an abelian group is divisible if it is an m-th multiple for every m ≥ 1. The topological Milnor K-group of a higher local field F is Kₙ(F) modulo its divisible elements. Every map to a profinite group kills these elements (our own).
 
@@ -2457,7 +2457,7 @@
 
 **Remember:** Each residue drops one degree until only a Frobenius exponent remains.
 
-*Makes the theorem clean to state or prove.* MSC 19F05 (Generalized class field theory (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F05 (Generalized class field theory (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** An n-dimensional local field has a tower of n complete discrete valuations, each on the previous residue field, ending at a finite field. At each step the tame residue lowers Milnor degree by one. It kills symbols of units and sends {π, u₂, …, uₙ} to {ū₂, …, ūₙ} for a local parameter π.
 
@@ -2475,7 +2475,7 @@
 
 **Remember:** Let F act continuously on locally compact groups, and adeles appear.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F05 (Generalized class field theory (\\(K\\)-theoretic aspects)), 19F15. arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F05 (Generalized class field theory (K-theoretic aspects)), 19F15. arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** Give a number field F the discrete topology. Objects of LCA(F) are Hausdorff locally compact abelian groups with continuous F-vector space operations, such as F and its adeles (our own). Morphisms are continuous F-linear maps, and exact sequences use closed embeddings and open quotient maps.
 
@@ -2494,7 +2494,7 @@
 
 **Remember:** Dimension n needs n entries, so the multiplicative group becomes Kₙ.
 
-*Makes the theorem clean to state or prove.* MSC 19F05 (Generalized class field theory (\\(K\\)-theoretic aspects)), 11S70, 19D45. arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F05 (Generalized class field theory (K-theoretic aspects)), 11S70, 19D45. arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** An n-dimensional local field is a complete discretely valued field whose residue field is an (n − 1)-dimensional local field, ending at a finite field. Its Milnor K-group Kₙ(F) is generated by symbols {a₁, …, aₙ} of nonzero elements, one entry per dimension (our own). Symbols are multiplicative in each entry and vanish when two adjacent entries sum to 1.
 
@@ -2513,7 +2513,7 @@
 
 **Remember:** Keep a constant factor on the right through both residues.
 
-*True by definition. Confidence: medium.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** Let E = F\[t\]/(P) for a monic irreducible P over a field F. To take the norm of x in Kₙᴹ(E), lift x to Kₙ₊₁ᴹ(F(t)) with residue x at P and zero at every other finite point. The norm is minus the residue of the lift at infinity.
 
@@ -2532,7 +2532,7 @@
 
 **Remember:** Each finite residue contributes its negative residue at infinity.
 
-*True by definition. Confidence: medium.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** At each monic irreducible P, the residue map sends a Milnor class over F(t) to a class one degree lower over F\[t\]/(P). The norm of a class over F\[t\]/(P) is minus the residue at infinity of a lift with only that one finite residue.
 
@@ -2551,7 +2551,7 @@
 
 **Remember:** A pure degree-two symbol becomes one cyclic algebra.
 
-*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** Let ℓ be a prime invertible in F, with a primitive ℓth root of unity ζ in F. The symbol algebra of a, b ∈ F× is generated by x, y with x<sup>ℓ</sup> = a, y<sup>ℓ</sup> = b and yx = ζxy. It is the image of the Milnor symbol {a, b} in the Brauer group (our own explanation).
 
@@ -2569,7 +2569,7 @@
 
 **Remember:** Let the reciprocity element of a move an mth root of b.
 
-*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (\\(K\\)-theoretic aspects)), 11S70. arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F15 (Symbols and arithmetic (K-theoretic aspects)), 11S70. arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a local field F with m roots of unity, the Hilbert symbol of a, b ∈ F× is Art(a)(β)/β, where βᵐ = b. So it records how the reciprocity element of a moves an mth root of b. It is bilinear and equals one on every pair (a, 1−a) (our own).
 
@@ -2591,7 +2591,7 @@
 
 **Remember:** Taking the absolute value forgets the phase acquired around a loop.
 
-*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
 
 **Definition.** For two meromorphic functions on a smooth complex curve, the complex regulator gives each loop avoiding their zeros and poles a number χ ≠ 0. The real character is log\|χ\|, which keeps only the size of χ and forgets its phase.
 
@@ -2609,7 +2609,7 @@
 
 **Remember:** Dualize homotopy groups by mapping into the ℤₚ dualizing spectrum.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11R34, 55P42. arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11R34, 55P42. arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** The ℤₚ-Anderson dual of a spectrum X is the spectrum of maps from X into Iℤₚ. Here Iℤₚ is the fiber of I\_ℚₚ → I\_(ℚₚ/ℤₚ), and I<sub>J</sub> represents X ↦ Hom(π₀X, J) for injective J. Its homotopy groups are built from Hom and Ext of the homotopy groups of X into ℤₚ (our own).
 
@@ -2628,7 +2628,7 @@
 
 **Remember:** Dilogarithm symbols modulo five-term relations, in the kernel of x∧(1−x).
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** The rational Bloch group of a number field F is the kernel of \[x\] ↦ x ∧ (1−x), from rational sums of symbols \[x\] to ∧²F× ⊗ ℚ. Here x runs over F ∖ {0,1}, and symbols are taken modulo the five-term cross-ratio relations.
 
@@ -2644,7 +2644,7 @@
 
 **Remember:** Measure the lattice cell, not the generators that span it.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a number field F and i ≥ 2, the regulator covolume is the cell volume of the lattice that the Borel regulator makes from K₂ᵢ₋₁(F). The regulator has its usual normalization, with one coordinate per conjugate pair of nonreal embeddings, plus one per real embedding for odd i.
 
@@ -2662,7 +2662,7 @@
 
 **Remember:** Invert the Bott class and every degree can shift by two.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** Let F be a number field containing a primitive pth root of unity, p odd, and let R = 𝒪F\[1/p\]. The Bott-inverted group in degree n is the direct limit over j of Kₙ₊₂ⱼ(R; ℤ/p) under multiplication by the degree-two Bott class β. In this limit β becomes invertible.
 
@@ -2680,7 +2680,7 @@
 
 **Remember:** Cohomology stops at degree two, so only three columns survive.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11R70, 11R34. arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11R70, 11R34. arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** A scheme has étale ℓ-cohomological dimension at most two if every ℓ-primary torsion sheaf has zero étale cohomology above degree two. For ℓ odd, 𝒪F\[1/ℓ\] has this property (our own). So its cohomology with the Tate twists ℤℓ(i), limits of tensor powers of ℓ-power roots of unity, lives in degrees 0 to 2.
 
@@ -2698,7 +2698,7 @@
 
 **Remember:** A class, a closed form, and a path joining their regulator classes.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
 
 **Definition.** A degree-zero differential algebraic K-class is a K-class, a closed cochain called its curvature, and a path joining their two classes in the regulator target. It is a point of the homotopy pullback over the regulator target.
 
@@ -2716,7 +2716,7 @@
 
 **Remember:** Complex pairs always count, but real places count only in odd weight.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a number field F and n ≥ 2, take one real coordinate per embedding of F into ℂ. Keep the vectors fixed by complex conjugation acting with sign (−1)ⁿ⁻¹. A conjugate pair then gives one dimension, and a real embedding gives one only for odd n.
 
@@ -2736,7 +2736,7 @@
 
 **Remember:** Shrink to a common open subset to compare regulator classes.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 14F43. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 14F43. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Let F be the function field of a smooth integral variety X over ℚ. Its Deligne cohomology is the direct limit of the real Deligne cohomology of U\_ℝ over nonempty open U ⊂ X. Two classes become equal when they agree on some smaller open subset, so any closed subset can be discarded.
 
@@ -2754,7 +2754,7 @@
 
 **Remember:** A field automorphism permutes the regulator coordinates.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11R70. arXiv math.KT, math.NT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11R70. arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** Let F be a finite Galois extension of ℚ. The full regulator of a K-class x lists the Borel regulator of σ(x) for every embedding σ: F → ℂ. Both embeddings of each conjugate pair are kept.
 
@@ -2772,7 +2772,7 @@
 
 **Remember:** Symbols \[z\] modulo exactly the relations the dilogarithm satisfies.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** The rational pre-Bloch group of ℂ is the rational vector space on symbols \[z\], z ∈ ℂ ∖ {0,1}, modulo the five-term relations. Each relation is the alternating sum of the cross-ratios of the five four-point subsets of five distinct projective points.
 
@@ -2793,7 +2793,7 @@
 
 **Remember:** Count the copies of V that the K-group carries.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11R42. arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11R42. arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** Let F/K be a finite Galois extension of number fields with group G, and V a finite-dimensional complex G-representation. Form K₂ₙ₋₁(𝒪F) ⊗ℤ V, and take the complex dimension of the subspace fixed when G acts on both factors at once.
 
@@ -2811,7 +2811,7 @@
 
 **Remember:** Transport around a loop in a flat bundle multiplies by a scalar.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
 
 **Definition.** For nonzero meromorphic f, g on a compact connected Riemann surface, the Deligne cup product gives a flat line bundle off their zeros and poles. Its monodromy character gives each loop the scalar by which parallel transport around it acts on the fiber.
 
@@ -2829,7 +2829,7 @@
 
 **Remember:** Keep the Galois action on roots of unity in the coefficients.
 
-*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** For a field F and a prime ℓ invertible in F, the Kummer class of a ∈ F× is σ ↦ σ(α)/α, where α<sup>ℓ</sup> = a. Its values are ℓth roots of unity, so it lives in cohomology with coefficients μℓ carrying their Galois action. The norm-residue map sends {a₁,…,aₙ} to the cup product of their Kummer classes in Hⁿ(F, μℓ⊗ⁿ), and sends 1 to 1 when n = 0.
 
@@ -2849,7 +2849,7 @@
 
 **Remember:** Differentiate with an operator that kills every period ambiguity.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 14C15. arXiv math.AG, math.KT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 14C15. arXiv math.AG, math.KT. Level 4: research.
 
 **Definition.** In Sato’s family of Kummer surfaces, pairing a higher cycle’s regulator with the holomorphic two-form gives local functions defined only up to periods. Periods are integrals of the form over transported integral cycles, and a Picard–Fuchs operator is a differential operator that kills every period.
 
@@ -2867,7 +2867,7 @@
 
 **Remember:** Deleting a prime adds one finite residue K-group.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a finite set S of finite primes of a number field F, the S-integers may have denominators only at primes in S. Their zeta function omits those Euler factors, and their localization sequence adds one residue-field K-group for each prime in S (our own).
 
@@ -2885,7 +2885,7 @@
 
 **Remember:** Multiply then map equals map then multiply.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19E20. arXiv math.KT. Level 4: research.
 
 **Definition.** A map of commutative ring spectra preserves the unit and the multiplication, with all their coherence data. So multiplying and then mapping agrees, up to homotopy, with mapping both factors and then multiplying.
 
@@ -2904,7 +2904,7 @@
 
 **Remember:** Twist equals degree, so all the cohomology groups multiply into one ring.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.NT, math.KT. Level 4: research.
 
 **Definition.** For a field F and a prime ℓ invertible in F, the diagonal cohomology ring is ⊕ₙ Hⁿ(F, μℓ⊗ⁿ), n ≥ 0, under cup product. Matching the twist to the degree lets the product of two such groups land in a third.
 
@@ -2922,7 +2922,7 @@
 
 **Remember:** A tame symbol records what a loop around a missing point sees.
 
-*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
 
 **Definition.** At a point x of a smooth complex curve, write f = tᵐu and g = tⁿv with t a uniformizer and u, v units. The tame symbol of {f,g} at x is (−1)ᵐⁿv(x)ᵐ/u(x)ⁿ, extended multiplicatively to K₂ of the function field. A class is unramified at x if this symbol is one, and the symbol is what a small loop around x sees (our own).
 
@@ -2941,7 +2941,7 @@
 
 **Remember:** The modulus of the tame symbol measures the period around a puncture.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Near a point P of a smooth complex curve, write nonzero rational functions as f = tᵐa and g = tⁿb. Here t is a local coordinate at P, and a, b are regular and nonzero there. Their tame symbol is s = (−1)ᵐⁿa(P)ⁿ/b(P)ᵐ, the leading part that survives a loop around P (our own).
 
@@ -2960,7 +2960,7 @@
 
 **Remember:** A twist’s weight matters only modulo the order of the cyclotomic action.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a number field F and odd prime p, the weight-j mod-p Tate twist is μₚ⊗ʲ, a tensor power of the pth roots of unity. Galois acts on it by the jth power of its action on μₚ, which has order \[F(ζₚ)∶F\] (our own).
 
@@ -2978,7 +2978,7 @@
 
 **Remember:** Count the roots of unity fixed by the squared Galois action.
 
-*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a number field F, w₂(F) is the largest m such that each F-automorphism of F(ζₘ) sends ζₘ to some ζₘᵃ with a² ≡ 1 modulo m. So it counts roots of unity fixed by the squared Galois action, not by the action itself (our own).
 
@@ -2996,7 +2996,7 @@
 
 **Remember:** Keep only what the v₁-periodic telescope can see.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19D50, 55P42. arXiv math.KT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19D50, 55P42. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** At a prime p, T(1) is the telescope of a v₁-periodic self-map of a mod-p Moore spectrum. Localization at T(1) keeps only what T(1) detects: it universally inverts the maps that become equivalences after smashing with T(1).
 
@@ -3014,7 +3014,7 @@
 
 **Remember:** Replace each \[z\]₄ by \[z\]₃ ⊗ z, and the sum vanishes.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 11G55. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** A tetralogarithm cycle is a rational sum ∑ cᵢ\[zᵢ\]₄ of weight-four polylogarithm symbols, zᵢ ∉ {0,1}, whose image ∑ cᵢ\[zᵢ\]₃ ⊗ zᵢ is zero. The image lies in B₃(ℂ) ⊗ ℂ×, where B₃(ℂ) is the weight-three polylogarithm group.
 
@@ -3032,7 +3032,7 @@
 
 **Remember:** Transport scalars around loops of a flat bundle form the regulator.
 
-*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 19D45. arXiv math.KT. Level 4: research.
 
 **Definition.** For nowhere-zero holomorphic f, g on a smooth complex curve, the Deligne cup product gives a line bundle with a flat connection. The regulator character sends each loop to the scalar by which parallel transport around it multiplies the fiber.
 
@@ -3051,7 +3051,7 @@
 
 **Remember:** Holomorphic two-forms ignore the regulator terms supported on curves.
 
-*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)), 14C15. arXiv math.AG, math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)), 14C15. arXiv math.AG, math.KT. Level 4: research.
 
 **Definition.** On a smooth projective complex surface, a higher Chow cycle of type (2,1) is a sum of curves carrying rational functions whose divisors cancel. Its transcendental regulator tests the Deligne regulator only against holomorphic two-forms, modulo periods over closed integral two-cycles. A holomorphic two-form restricts to zero on any complex curve (our own).
 
@@ -3069,7 +3069,7 @@
 
 **Remember:** A twist selects the K-theory that the character can see.
 
-*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and \\(L\\)-functions (\\(K\\)-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19F27 (Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)). arXiv math.KT, math.NT. Level 4: research.
 
 **Definition.** For a finite Galois extension F/K of number fields with group G, n ≥ 1, and a finite-dimensional complex G-representation V, take K₂ₙ₋₁(𝒪F) ⊗ℤ V. Its fixed space consists of the tensors unchanged when every g ∈ G acts on both factors.
 
@@ -3088,7 +3088,7 @@
 
 **Remember:** The two-element residue field can hide a relation.
 
-*Rules out counterexamples.* MSC 19G38 (Hermitian \\(K\\)-theory, relations with \\(K\\)-theory of rings). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19G38 (Hermitian K-theory, relations with K-theory of rings). arXiv math.KT. Level 4: research.
 
 **Definition.** R is a commutative local ring whose residue field, the quotient by its unique maximal ideal, has more than two elements.
 
@@ -3106,7 +3106,7 @@
 
 **Remember:** Free modules count zero, so only projective defects obstruct finiteness.
 
-*Rules out counterexamples.* MSC 19J05 (Finiteness and other obstructions in \\(K<sub>0</sub>\\)), 57Q12. arXiv math.AT, math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19J05 (Finiteness and other obstructions in K<sub>0</sub>), 57Q12. arXiv math.AT, math.KT. Level 4: research.
 
 **Definition.** Let X be a connected finitely dominated cell complex, a homotopy retract of a finite one, and put R = ℤ\[π₁X\]. Take a bounded complex P of finitely generated projective R-modules chain equivalent to the cellular chains of the universal cover. Wall’s obstruction is ∑(−1)ⁱ\[Pᵢ\] in K₀(R) modulo the class of R, so free modules count zero.
 
@@ -3124,7 +3124,7 @@
 
 **Remember:** Keep only the extensions you can cancel, and Ext becomes KK¹.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19K33 (Ext and \\(K\\)-homology), 19K35. arXiv math.OA, math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19K33 (Ext and K-homology), 19K35. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** For C\*-algebras A and B, extensions of A by B ⊗ 𝒦, with 𝒦 the compact operators, form a semigroup under direct sum. Classes are taken up to stable unitary equivalence, with split extensions as zero. An extension is invertible if some extension adds to it to give zero.
 
@@ -3143,7 +3143,7 @@
 
 **Remember:** Homomorphisms only in the limit, so every extension gives one.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)). arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19K35 (Kasparov theory (KK-theory)). arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** An asymptotic morphism A → B is a family φₜ, t ≥ 1, with bounded continuous paths t ↦ φₜ(a), that is a \*-homomorphism only in the limit. For all a, b and scalars λ, its failures to respect sums, scalar multiples, products and adjoints tend to zero in norm. E(A,B) is homotopy classes of such families between the suspensions of A and B stabilized by compact operators.
 
@@ -3161,7 +3161,7 @@
 
 **Remember:** In Cuntz's picture, multiplying KK classes is just composing homomorphisms.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)). arXiv math.OA, math.KT. Level 4: research.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)). arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** For a separable C\*-algebra A, let qA be the kernel of the fold map A∗A → A from the full nonunital free product. Cuntz’s picture represents KK(A,B) by homotopy classes of \*-homomorphisms qA → 𝒦 ⊗ B, where 𝒦 denotes the compact operators.
 
@@ -3181,7 +3181,7 @@
 
 **Remember:** KK is the first stop for every stable split-exact homotopy functor.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** The canonical functor from separable C\*-algebras to KK is universal among homotopy-invariant, stable, split-exact functors to additive categories. Stability inverts corner embeddings into compact-operator stabilizations, and split exactness sends split extensions to direct sums. Universality means each such functor factors through KK uniquely up to natural isomorphism.
 
@@ -3200,7 +3200,7 @@
 
 **Remember:** Whatever ℂ cannot see is invisible to the whole bootstrap class.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 18G80. arXiv math.OA, math.KT. Level 4: research.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)), 18G80. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** The bootstrap class is the smallest class of separable C\*-algebras that contains ℂ and is closed under KK-equivalence, suspension, mapping cones and countable direct sums. In the language of triangulated categories, it is the localizing subcategory of KK generated by ℂ.
 
@@ -3218,7 +3218,7 @@
 
 **Remember:** An invertible KK-class acts invertibly on all of K-theory.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** A KK-equivalence between separable complex C\*-algebras A and B is an invertible class x ∈ KK(A,B): some y ∈ KK(B,A) makes both Kasparov products identities.
 
@@ -3234,7 +3234,7 @@
 
 **Remember:** The cone pairs each a with a path from f(a) to zero.
 
-*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 18G80. arXiv math.KT, math.OA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (KK-theory)), 18G80. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** For a \*-homomorphism f from A to B, its cone consists of pairs (a,g) with a ∈ A and g a continuous B-valued path. Require g(0) = f(a) and g(1) = 0, and use pointwise algebra operations. Its Puppe triangle is ΣB → cone(f) → A → B.
 
@@ -3252,7 +3252,7 @@
 
 **Remember:** Tensor the spectra so torsion is not lost in the product formula.
 
-*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (KK-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** K(A) is a module spectrum over KU = K(ℂ) through the external product. For two such modules M and N, their tensor product over KU is the realization of the bar construction M ⊗ KU⊗ⁿ ⊗ N. It keeps the torsion that tensoring homotopy groups loses.
 
@@ -3270,7 +3270,7 @@
 
 **Remember:** Projective sources admit no nonzero maps that the functor kills.
 
-*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 18G25, 18G80. arXiv math.KT, math.OA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (KK-theory)), 18G25, 18G80. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** A homological ideal 𝔍 consists of all maps that a given stable homological functor sends to zero. An object P is 𝔍-projective if every map in 𝔍 with source P is zero, so the functor detects every map out of P.
 
@@ -3289,7 +3289,7 @@
 
 **Remember:** A functor that factors through KK inherits its periodicity.
 
-*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.KT, math.OA. Level 4: research.
+*True by definition.* MSC 19K35 (Kasparov theory (KK-theory)), 46L80. arXiv math.KT, math.OA. Level 4: research.
 
 **Definition.** KK is universal among homotopy-invariant, stable, split-exact functors from separable C\*-algebras to abelian groups. Each such functor F factors uniquely as F = H ∘ J, with J the canonical functor to KK and H additive.
 
@@ -3308,7 +3308,7 @@
 
 **Remember:** Even coefficients preserve grading, while the odd Dirac operator has bounded commutators.
 
-*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 58B34. arXiv math.OA, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (KK-theory)), 58B34. arXiv math.OA, math.KT. Level 4: research.
 
 **Definition.** An even spectral triple represents a dense star subalgebra 𝒜 of a unital C\*-algebra by even operators on a graded Hilbert space. Its odd self-adjoint operator D has compact resolvent. Every a ∈ 𝒜 preserves the domain of D, and \[D,a\] extends to a bounded operator.
 
@@ -3514,7 +3514,7 @@
 
 **Remember:** Positive modulo compacts, so slide straight to the identity.
 
-*Makes the theorem clean to state or prove.* MSC 19K99 (\\(K\\)-theory and operator algebras), 47A53. arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19K99 (K-theory and operator algebras), 47A53. arXiv math.KT. Level 4: research.
 
 **Definition.** A self-adjoint Fredholm operator, one with closed range and finite-dimensional kernel and cokernel, is essentially positive if its image modulo compact operators has nonnegative spectrum. Fredholm means invertible modulo compacts by Atkinson’s theorem, so this image is positive and invertible, while finitely many negative eigenvalues stay allowed (our own).
 
@@ -3530,7 +3530,7 @@
 
 **Remember:** Maps that vanish in the quotient land in the kernel.
 
-*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19K99 (K-theory and operator algebras). arXiv math.KT. Level 4: research.
 
 **Definition.** The K-theory space of a graded C\*-algebra A is the space of graded star homomorphisms from C₀(ℝ), graded by reflection, into A stabilized by the graded compact operators whose even and odd parts are both infinite-dimensional. It has the topology of norm convergence on each input. So a point maps to zero in a quotient’s K-theory space exactly when its values lie in the stabilized kernel (our own).
 
@@ -3548,7 +3548,7 @@
 
 **Remember:** Split the input by x ↦ x⊗1 + 1⊗x, then tensor.
 
-*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19K99 (K-theory and operator algebras). arXiv math.KT. Level 4: research.
 
 **Definition.** The external product of graded star homomorphisms f and g from S = C₀(ℝ), graded by reflection, into stabilized algebras is (f ⊗ g) ∘ Δ, with graded tensor products. Here Δ sends the coordinate x to x ⊗ 1 + 1 ⊗ x by functional calculus, a splitting that is coassociative and fixed by the graded swap (our own).
 
@@ -3584,7 +3584,7 @@
 
 **Remember:** Kill negative degrees, and β stops being invertible.
 
-*Rules out counterexamples.* MSC 19L41 (Connective \\(K\\)-theory, cobordism), 55N20. arXiv math.AT, math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19L41 (Connective K-theory, cobordism), 55N20. arXiv math.AT, math.KT. Level 4: research.
 
 **Definition.** Connective K-theory ku is the connective cover of periodic K-theory KU, keeping its homotopy groups in degrees zero and up and removing the negative ones. So the homotopy ring of ku is ℤ\[β\], where the Bott element β in degree two is no longer invertible (our own).
 
@@ -3600,7 +3600,7 @@
 
 **Remember:** Average the product of characters; orthogonality reads off coefficients modulo integers.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
 
 **Definition.** For a finite group G, pair a virtual character χ with a class function f modulo virtual characters by averaging χ(g)f(g) over G and reducing modulo ℤ. By character orthogonality, an irreducible character paired with f gives the coefficient of its complex conjugate in f (our own).
 
@@ -3618,7 +3618,7 @@
 
 **Remember:** A connection change is paid for by its Chern–Simons form.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A differential K-cycle is a Hermitian bundle with unitary connection ∇ and an odd form φ modulo exact forms. Two cycles are equal if, after adding a common bundle with connection and choosing a unitary identification, φ₁ − φ₂ equals the Chern–Simons form CS(∇₁,∇₂), whose derivative is ch(∇₂) − ch(∇₁). So a change of connection is cancelled by the same change in the form (our own).
 
@@ -3636,7 +3636,7 @@
 
 **Remember:** Odd classes are circle integrals of even classes.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.AT. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory), 55N20. arXiv math.AT. Level 4: research.
 
 **Definition.** Circle integration on a smooth K-theory extension is a natural additive map K̂ʲ(S¹×M) → K̂ʲ⁻¹(M) that commutes with the underlying class, curvature and form maps. It kills pullbacks from M and changes sign under circle reversal. Every odd class on M is the circle integral of an even class on S¹×M (our own).
 
@@ -3654,7 +3654,7 @@
 
 **Remember:** A connection on a trivial bundle can store an odd form correction.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A structured bundle is a complex bundle with a connection, up to changes whose Chern–Simons form is exact, the odd form whose derivative is the difference of the Chern character forms. Differential K-classes are formal differences of structured bundles, so form corrections live in connections rather than in a separate form (our own).
 
@@ -3672,7 +3672,7 @@
 
 **Remember:** A character records the trace of every symmetry.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT, hep-th. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory), 19L47, 57R18. arXiv math.KT, hep-th. Level 4: research.
 
 **Definition.** For a finite group acting on a point, orbifold K-curvature records one number per conjugacy class. For a virtual representation, a formal difference of representations, that number is the difference of their traces, so the curvature is the full character (our own).
 
@@ -3691,7 +3691,7 @@
 
 **Remember:** Correct the top exterior power connection by subtracting 2πi times the one-form.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A degree-zero Freed–Lott representative is a Hermitian bundle with unitary connection and an odd form modulo exact forms. Its differential determinant is the top exterior power with the induced connection minus 2πi times the one-form part. This correction absorbs the change allowed in the representative, because the degree-one Chern–Simons form is a fixed multiple of the trace of the connection difference (our own).
 
@@ -3709,7 +3709,7 @@
 
 **Remember:** Fold the orientation’s correction into the Todd class, then integrate.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L10. arXiv math.KT, math.DG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory), 19L10. arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** For a smooth K-orientation with Spinᶜ connection ∇ and odd correction σ, the differential Todd class is T̂ = τ̂(∇) − a(σ), the differential Spinᶜ Todd class of ∇ minus σ viewed as a differential class. Todd-corrected integration sends y to the fiber integral of T̂ ∪ y, so one map carries all the orientation data.
 
@@ -3727,7 +3727,7 @@
 
 **Remember:** The derivative of the eta form supplies the missing curvature.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** For a geometric family whose kernels form a smooth graded bundle, the differential analytic index is the virtual kernel bundle with its projected connection. Its form part is the Bismut–Cheeger eta form plus the fiber integral of Todd(∇) ∧ φ, for input form φ. The derivative of the eta form is exactly the gap between the kernel’s Chern form and the integrated Todd form of the input (our own).
 
@@ -3745,7 +3745,7 @@
 
 **Remember:** An exact change contributes zero after differentiation.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** Two connections on a smooth complex bundle define the same structured connection exactly when their Chern–Simons form is exact. The derivative of that form is the difference of their Chern character forms (our own).
 
@@ -3761,7 +3761,7 @@
 
 **Remember:** Exact means zero integral around the circle.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C05. arXiv math.DG, math.AT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted K-theory; differential K-theory), 53C05. arXiv math.DG, math.AT. Level 4: research.
 
 **Definition.** A structured bundle is a complex bundle with connection, where two connections are equivalent when their Chern–Simons form is exact. This odd form integrates the Chern character along a path of connections, and on a circle an exact one-form has integral zero (our own).
 
@@ -3779,7 +3779,7 @@
 
 **Remember:** The matching line must pair the two fibers.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
 
 **Definition.** A T-duality correspondence of dual principal torus bundles is an isomorphism of their pulled-back twists on the fiber product over the base. On each fiber, its mixed first Chern class must equal the evaluation pairing of the two fiber lattices, so the matching line pairs the two tori perfectly (our own).
 
@@ -3797,7 +3797,7 @@
 
 **Remember:** A symmetry of the zero twist is a flat line acting by tensor product.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 53C08. arXiv math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted K-theory; differential K-theory), 53C08. arXiv math.KT. Level 4: research.
 
 **Definition.** A connection-preserving automorphism of the trivial gerbe with zero curving is a line bundle with flat connection, up to connection-preserving isomorphism. It acts on twisted differential K-theory by tensor product (our own).
 
@@ -3816,7 +3816,7 @@
 
 **Remember:** Flat classes keep the topological orientation and forget its differential choices.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory), 58J20, 57R18. arXiv math.KT. Level 4: research.
 
 **Definition.** A differential K-class is flat if its curvature form vanishes. Changing the differential refinement of a K-orientation changes the integral by a term that is a form times the curvature (our own).
 
@@ -3834,7 +3834,7 @@
 
 **Remember:** Finite rank forces torsion, while a Fredholm bundle can carry any twist.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT. Level 4: research.
 
 **Definition.** For a finite cell complex X and twist h ∈ H³(X;ℤ), choose a bundle P of projective unitary groups PU(H) of class h, for an infinite-dimensional separable Hilbert space H. Then Kʰ⁰(X) is the homotopy classes of sections of the bundle of Fredholm operators associated to P by conjugation, in the norm topology. Conjugation ignores scalar phases, so this works for every h (our own).
 
@@ -3852,7 +3852,7 @@
 
 **Remember:** Sections carry bundle, connection and Chern–Simons form together.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A cycle over C∞(X;ℂ) is a finitely generated projective module with connection ∇ and an odd complex form φ modulo exact forms. Two cycles agree if, after adding a common module and identifying, φ₁ − φ₂ = CS(∇₁,∇₂) modulo exact forms, where dCS = ch(∇₂) − ch(∇₁). This is the bundle definition with each bundle replaced by its module of smooth sections (our own).
 
@@ -3870,7 +3870,7 @@
 
 **Remember:** Invariant curvature survives averaging along the torus.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A twisted differential K-class on a torus bundle is geometrically invariant when translations along the fibers preserve its curvature form. T-duality pulls a class to the fiber product with the dual bundle, changes the twist and integrates over the original torus, which averages away non-invariant parts (our own).
 
@@ -3888,7 +3888,7 @@
 
 **Remember:** A point with symmetry contributes one function value per conjugacy class.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory), 19L47, 57R18. arXiv math.KT. Level 4: research.
 
 **Definition.** For a finite group G acting on a point, the inertia orbifold is G modulo conjugation, with stabilizers kept. So its complex-valued functions are the class functions on G, one value per conjugacy class (our own).
 
@@ -3906,7 +3906,7 @@
 
 **Remember:** The normal bundle supplies the twist needed for integration.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 19L50 (Twisted K-theory; differential K-theory), 81T30. arXiv math.KT, hep-th. Level 4: research.
 
 **Definition.** The K-theory orientation twist of an oriented real vector bundle N is W₃(N), the integral Bockstein of its second Stiefel–Whitney class. It is the obstruction to a Spinᶜ structure, so N has a Thom class in K-theory twisted by W₃(N) (our own).
 
@@ -3924,7 +3924,7 @@
 
 **Remember:** Pulled-back geometry is the old geometry over each point.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** The pullback of a smooth K-orientation along a map of bases pulls back the vertical Spinᶜ structure, metric, connection and correction form, and lifts tangent vectors by the original horizontal lift of their images. So over each new base point the geometry is the old geometry (our own).
 
@@ -3942,7 +3942,7 @@
 
 **Remember:** A constant carried around the circle must return with the opposite sign.
 
-*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 19L50 (Twisted K-theory; differential K-theory), 55N20. arXiv math.KT. Level 4: research.
 
 **Definition.** For the nontrivial degree-one twist of real K-theory on the circle, degree-zero curvature takes values in a flat real line whose parallel transport around the circle multiplies every value by −1.
 
@@ -3960,7 +3960,7 @@
 
 **Remember:** The correction cancels the change in the Todd form.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A smooth K-orientation refines a vertical Spinᶜ structure by a vertical metric, horizontal distribution, compatible Spinᶜ connection and odd form σ modulo exact forms. Equivalent refinements change σ by the Todd transgression between the two connections, so dσ changes exactly as the Todd form T does (our own).
 
@@ -3978,7 +3978,7 @@
 
 **Remember:** Glue the spectra first, then take classes.
 
-*True by definition. Confidence: medium.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 19L50 (Twisted K-theory; differential K-theory), 55N20. arXiv math.KT. Level 4: research.
 
 **Definition.** Twisted differential K-theory is a sheaf of spectra, so for a cover U ∪ V its spectrum is the homotopy pullback of the spectra on U and V over U ∩ V. A point of this pullback is a pair of local points with a path between their restrictions.
 
@@ -3996,7 +3996,7 @@
 
 **Remember:** Stabilize the operator family instead of trying to bundle its kernels.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** A finite-dimensional reduction splits both graded spaces of sections into a smooth finite-rank subbundle and a complementary Hilbert bundle. The positive Dirac family preserves the splittings and is an isomorphism on the complements, so the finite parts carry the whole index even where kernel dimensions jump (our own).
 
@@ -4015,7 +4015,7 @@
 
 **Remember:** Tensoring multiplies a connection difference by a closed Chern character form.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N15. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory), 55N15. arXiv math.AT. Level 4: research.
 
 **Definition.** A structured bundle is a complex bundle with connection, up to changes whose Chern–Simons form is exact. That odd form integrates the Chern character along a path of connections, so tensoring with a fixed bundle multiplies it by a closed Chern character form (our own). The Simons–Sullivan group consists of formal differences of structured bundles under direct sum.
 
@@ -4033,7 +4033,7 @@
 
 **Remember:** Suspend and desuspend in the same way for both indices.
 
-*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*True by definition.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** The odd index of an odd differential K-class x is defined by suspension: multiply x by the differential circle generator that integrates to one, apply the even index over the product with the circle, and integrate over the circle. The analytic and topological odd indices use these same circle operations.
 
@@ -4051,7 +4051,7 @@
 
 **Remember:** Multiply the classes by tensoring the twists.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 55N20. arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory), 55N20. arXiv math.KT. Level 4: research.
 
 **Definition.** Represent degree-three differential twists by circle gerbes with connection and curving. The sum of two twists is their tensor product gerbe, whose transition phases multiply and whose connection forms and curvings add.
 
@@ -4071,7 +4071,7 @@
 
 **Remember:** Divide determinant lines and shift their connection by the degree-one correction.
 
-*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 19L50 (Twisted K-theory; differential K-theory), 58J28. arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** The differential determinant of a differential K-class is the quotient of the two determinant lines of its virtual bundle. Its connection is the induced one shifted by −2πi times the degree-one part of the form correction, so it depends only on the differential K-class (our own).
 
@@ -4089,7 +4089,7 @@
 
 **Remember:** The orientation’s odd form shifts the index without changing topology.
 
-*Rules out counterexamples.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT, math.DG. Level 4: research.
+*Rules out counterexamples.* MSC 19L50 (Twisted K-theory; differential K-theory). arXiv math.KT, math.DG. Level 4: research.
 
 **Definition.** With vertical metric, horizontal distribution and compatible Spinᶜ connection fixed, a smooth K-orientation still carries an odd form σ modulo exact forms. This form enters the pushforward directly, through its integral against the curvature of the input (our own).
 
