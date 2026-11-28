@@ -726,6 +726,24 @@
 
 - [Lars Hörmander, Fourier integral operators. I (1971)](https://doi.org/10.1007/BF02392052)
 
+### Legendrian solutions are unions of characteristics
+
+**Remember:** Solve the equation by finding Legendrians inside its hypersurface.
+
+*True by definition.* MSC 35A30 (Geometric theory, characteristics, transformations in context of PDEs), 53D10, 35F20. arXiv math.AP, math.SG. Level 3: graduate.
+
+**Definition.** A generalized solution of a first-order equation F(x, ∂z/∂x, z) = 0 is a Legendrian submanifold of the 1-jet space lying in {F = 0}. J¹ℝⁿ has coordinates (x, p, z) and contact form α = dz − Σ pᵢ dxᵢ, and Legendrian means n-dimensional with α vanishing on it. A classical solution u gives the Legendrian 1-jet graph {(x, du(x), u(x))}.
+
+**Problem.** The contact vector field X with α(X) = F, whose flow preserves the contact planes, is tangent to every Legendrian inside {F = 0}. So generalized solutions are swept out by integral curves of X, the characteristics of Cauchy's method.
+
+**How the definition helps.** A contact field is tangent to a Legendrian exactly when its contact Hamiltonian vanishes there, and F vanishes on Legendrians inside {F = 0} (our own). Classically one derives the characteristic equations by differentiating the equation along a solution, but here the lemma on contact Hamiltonians carries the work (our own). Legendrians that are not graphs also let a solution continue through caustics, where the classical solution stops being single-valued (our own).
+
+**Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “Sophus Lie's idea was to lift the equation to 1-jet space J¹(ℝⁿ, ℝ), in which the equation F(x, y, z) = 0 specifies a 2n-dimensional hypersurface, and the problem reduces to finding Legendrian submanifolds within this hypersurface.”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd ed., Graduate Texts in Mathematics 60, Springer, 1989](https://doi.org/10.1007/978-1-4757-2063-1)
+
 ### Principal symbols turn composition into multiplication
 
 **Remember:** Every derivative that hits a coefficient lowers the order on the input.

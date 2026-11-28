@@ -1635,7 +1635,7 @@
 
 **Remember:** Take the zeros with nonzero coordinates, then log each coordinate’s modulus.
 
-*Makes the theorem clean to state or prove.* MSC 32Q02 (Special domains (Reinhardt, Hartogs, circular, tube, etc.) in \\(\\mathbb<sup>n\\</sup>) and complex manifolds), 32D10. arXiv math.CV, math.AG. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 32Q02 (Special domains (Reinhardt, Hartogs, circular, tube, etc.) in ℂ<sup>n</sup> and complex manifolds), 32D10. arXiv math.CV, math.AG. Level 3: graduate.
 
 **Definition.** The amoeba of a Laurent polynomial p, one that allows negative powers, is the image of its zeros with all coordinates nonzero under the map taking each coordinate z to log\|z\|. This map turns the absolute value of each monomial into the exponential of a linear function.
 
@@ -2106,6 +2106,191 @@
 **Sources:**
 
 - [A. Newlander and L. Nirenberg, Complex analytic coordinates in almost complex manifolds, Annals of Mathematics 65 (1957) 391–404](https://doi.org/10.2307/1970051)
+
+### Asphericity rules out sphere bubbles
+
+**Remember:** No symplectic area on spheres means no holomorphic spheres.
+
+*Rules out counterexamples.* MSC 32Q65 (Pseudoholomorphic curves), 53D35. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic manifold (M,ω) is symplectically aspherical when ω integrates to zero over every map of a 2-sphere into M. For tame J, a nonconstant J-holomorphic sphere has positive symplectic area. So such a manifold contains no nonconstant J-holomorphic sphere.
+
+**Problem.** Let M be closed and symplectically aspherical, with ω-tame J. Then every sequence of J-holomorphic maps from one fixed closed Riemann surface, in one homology class, has a smoothly convergent subsequence.
+
+**How the definition helps.** With a fixed domain, Gromov's theorem allows only bubbles as a failure of convergence. Each bubble is a nonconstant J-holomorphic sphere, so asphericity gives it zero area, which taming forbids (our own). Removed counterexample: in CP², the conics xy = εz² split into two lines as ε → 0, one a bubble (our own).
+
+**Wikipedia:** [Gromov's compactness theorem (topology)](https://en.wikipedia.org/wiki/Gromov%27s_compactness_theorem_%28topology%29). It says: “If the complex structures on the curves in the sequence do not vary, only bubbles can occur; nodes can occur only if the complex structures on the domain are allowed to vary.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+
+### Compatibility makes energy equal symplectic area
+
+**Remember:** On a holomorphic curve, metric area and symplectic area agree.
+
+*True by definition.* MSC 32Q65 (Pseudoholomorphic curves), 53D45. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** An almost complex structure J squares to −1 on each tangent space. It is compatible with ω when g(v,w) = ω(v,Jw) is a Riemannian metric. A J-holomorphic curve is a map u from a Riemann surface with complex linear differential, and its energy is ½∫\|du\|² in g.
+
+**Problem.** If J is compatible with ω, every closed J-holomorphic curve in the homology class A has energy ω(A). So all such curves in one class share one energy bound, the main hypothesis of Gromov's compactness theorem.
+
+**How the definition helps.** For every map, half of \|du\|² equals u\*ω plus the square of the part of du that is not complex linear (our own). On a J-curve that part vanishes, so the energy is ∫u\*ω, the pairing of \[ω\] with A. Without a taming form, curves in one class need not have bounded energy (our own).
+
+**Wikipedia:** [Gromov's compactness theorem (topology)](https://en.wikipedia.org/wiki/Gromov%27s_compactness_theorem_%28topology%29). It says: “the energy of such a pseudoholomorphic curve is given by the integral of the target symplectic form over the curve, and thus by evaluating the cohomology class of that symplectic form on the homology class of the curve.”
+
+**Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “Let u:S→X be J-holomorphic, then E(u)=∫<sub>S</sub> u\*ω=∫<sub>S</sub> ‖du‖²\_μ vol<sub>h</sub>. In particular, E(u)≥0 and the equality holds if and only if u is constant.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Complex orientations make J-curve intersections positive
+
+**Remember:** Complex lines can only cross each other positively.
+
+*Rules out counterexamples.* MSC 32Q65 (Pseudoholomorphic curves), 57K43. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** In an almost complex 4-manifold, each tangent plane of a J-holomorphic curve is a J-complex line, with the orientation given by J. Two different complex lines in ℂ² always meet with sign +1 for the complex orientations.
+
+**Problem.** Two closed J-holomorphic curves in a 4-manifold with no common component meet in finitely many points. Each point adds a positive integer to A·B, so A·B ≥ 0, and A·B = 0 exactly when the curves are disjoint.
+
+**How the definition helps.** At a transverse point, the two J-complex tangent planes span the tangent space with its complex orientation, so the sign is +1 (our own). At tangencies, McDuff and Micallef–White show that J-curves are holomorphic after a C¹ change of coordinates (our own). Removed case: the symplectic planes ℂ×{0} and {(2w, w̄)} in ℂ² meet with sign −1, and no ω-tame J makes both complex (our own).
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255v4). It says: “Then they intersect at only finitely many points and each point contributes positively to the intersection multiplicity \[A\]·\[B\]. Moreover, \[A\]·\[B\]=1 iff the curves intersect transversally at exactly one point, while \[A\]·\[B\]= 0 iff the curves are disjoint.”
+
+**Sources:**
+
+- [D. McDuff, The local behaviour of holomorphic curves in almost complex 4-manifolds, J. Differential Geom. 34 (1991) 143–164](https://doi.org/10.4310/jdg/1214446994)
+- [M. Micallef and B. White, The structure of branch points in minimal surfaces and in pseudoholomorphic curves, Ann. of Math. 141 (1995) 35–85](https://doi.org/10.2307/2118627)
+
+### Convexity makes the Cauchy–Riemann index topological
+
+**Remember:** All Cauchy–Riemann operators on one bundle lie on straight lines.
+
+*True by definition.* MSC 32Q65 (Pseudoholomorphic curves), 58J20. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A real linear Cauchy–Riemann operator on a complex bundle E over a Riemann surface has the form ∂̄ + a. Here ∂̄ comes from a holomorphic structure on E, and a is a real linear term with no derivatives. Any two such operators differ by such a term, so they form a convex space.
+
+**Problem.** Every real linear Cauchy–Riemann operator on a complex bundle E of rank n over a closed surface Σ is Fredholm with index n·χ(Σ) + 2c₁(E). For a J-curve of genus g in class A, this gives expected dimension n(2 − 2g) + 2c₁(A).
+
+**How the definition helps.** The Fredholm index stays constant along the straight path between two such operators, so it equals the index of a complex linear ∂̄ (our own). This matters because the linearized operators of J-curves are only real linear, so Riemann–Roch does not apply to them directly (our own). The work moves to the Riemann–Roch theorem, which gives the complex linear index n·χ(Σ) + 2c₁(E) (our own).
+
+**Paper or page:** [Families of relatively exact Lagrangians, free loop spaces and generalised homology](https://arxiv.org/abs/2202.09677v2). It says: “The space of Cauchy-Riemann operators on (E, F) is contractible (and in fact, convex).”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Cylindrical J makes Reeb cylinders holomorphic
+
+**Remember:** J turns the vertical direction into the Reeb direction.
+
+*True by definition. Confidence: medium.* MSC 32Q65 (Pseudoholomorphic curves), 53D42. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Let α be a contact form on M, with Reeb field R and contact planes ξ = ker α. A cylindrical J on the symplectization ℝ × M, with form d(eᵃα), is invariant under translation in ℝ. It sends the ℝ direction ∂ₐ to R, and it preserves ξ, where it is compatible with dα.
+
+**Problem.** For cylindrical J, the trivial cylinder (s,t) ↦ (Ts, γ(Tt)) over every T-periodic Reeb orbit γ is J-holomorphic. Every J-curve u has ∫u\*dα ≥ 0, with equality only when u lies in ℝ times one Reeb trajectory.
+
+**How the definition helps.** J sends ∂ₐ to R, and the trivial cylinder sends ∂ₛ and ∂ₜ to T∂ₐ and TR, so it is J-holomorphic (our own). On ξ, dα is positive on complex lines, and its kernel holds ∂ₐ and R, so u\*dα ≥ 0 (our own). For a general compatible J on ℝ × M, trivial cylinders need not be holomorphic (our own).
+
+**Wikipedia:** [Floer homology](https://en.wikipedia.org/wiki/Floer_homology). It says: “The differential counts certain holomorphic curves in the cylinder over the contact manifold, where the trivial examples are the branched coverings of (trivial) cylinders over closed Reeb orbits.”
+
+**Sources:**
+
+- [H. Hofer, Pseudoholomorphic curves in symplectizations with applications to the Weinstein conjecture in dimension three, Invent. Math. 114 (1993) 515–563](https://doi.org/10.1007/BF01232679)
+
+### Exponent above two makes maps continuous
+
+**Remember:** One derivative in Lᵖ, p above two, means continuous.
+
+*Rules out counterexamples. Confidence: medium.* MSC 32Q65 (Pseudoholomorphic curves), 46E35. arXiv math.SG, math.AP. Level 3: graduate.
+
+**Definition.** The analysis uses maps of class W¹ᵖ from a closed surface into M, with p &gt; 2. Such a map and its first weak derivatives lie in Lᵖ. Since p exceeds the surface dimension 2, Morrey's inequality makes every such map continuous.
+
+**Problem.** For p &gt; 2, the W¹ᵖ maps from a closed Riemann surface to M in a fixed homology class form a smooth Banach manifold. With j the complex structure of the surface, u ↦ ½(du + J du j) is a smooth Fredholm section of a Banach bundle.
+
+**How the definition helps.** Continuity lets one build charts from the exponential map, and it gives each map a homology class (our own). The excluded case is p = 2: log log(1/\|z\|) on a small disk has square-integrable derivative but is unbounded near 0 (our own). The Fredholm property then comes from Lᵖ estimates for the Cauchy–Riemann operator (our own).
+
+**Wikipedia:** [Sobolev inequality](https://en.wikipedia.org/wiki/Sobolev_inequality). It says: “if f has k derivatives in Lᵖ and pk&gt;n, then f will be continuous (and actually Hölder continuous with some positive exponent α)”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Regular values define regular J
+
+**Remember:** Regular J are regular values of one Fredholm projection.
+
+*True by definition.* MSC 32Q65 (Pseudoholomorphic curves), 58D27. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** The universal moduli space is the set of pairs (u, J), where J is ω-tame and u is a simple J-holomorphic sphere in class A. J is regular for A when it is a regular value of the projection (u, J) ↦ J.
+
+**Problem.** Regular J form a residual set, one that contains a countable intersection of open dense sets. For each regular J, the simple J-spheres in class A form a smooth manifold of the expected dimension.
+
+**How the definition helps.** The fibre over a regular value of a smooth Fredholm map is a manifold, and the Sard–Smale theorem makes regular values residual (our own). The usual definition asks the linearized operator to be onto at every simple J-sphere, and a lemma shows the two agree (our own). The work went into showing that the universal moduli space is a Banach manifold, using an injective point of each curve (our own).
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255v4). It says: “An almost complex structure is said to be regular for the class A if it is a regular value for the projection π<sub>A</sub>.”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Simple curves give smooth moduli spaces
+
+**Remember:** A simple curve has a sheet that only it covers.
+
+*Rules out counterexamples.* MSC 32Q65 (Pseudoholomorphic curves), 58D27. arXiv math.SG, math.DG. Level 3: graduate.
+
+**Definition.** A J-holomorphic curve is simple, or somewhere injective, when some point z has du(z) ≠ 0 and is the only point mapped to u(z). Every nonconstant closed J-curve is a simple curve composed with a branched cover of Riemann surfaces.
+
+**Problem.** Take J in a comeagre set, a countable intersection of open dense sets, of ω-tame structures on a closed 2n-manifold. Then the simple J-holomorphic spheres in class A form a smooth manifold of dimension 2n + 2c₁(A).
+
+**How the definition helps.** Near an injective point, a change of J moves one sheet only, so it can reach every direction the linearized operator misses (our own). The Sard–Smale theorem, Sard's theorem for Fredholm maps, then gives regularity for generic J (our own). Multiple covers fail: the double covers of an exceptional sphere in a 4-manifold form a 10-dimensional space, but the formula predicts 8 (our own).
+
+**Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “For every J∈𝒥reg, the moduli space ℳ̂ˢ(J,A) is a smooth oriented manifold of dimension 2n+2c₁(A), where c₁ denotes the first Chern number of the pullback bundle (u\*TW, J) for a representative u of the class A.”
+
+**Sources:**
+
+- [D. McDuff and D. Salamon, J-holomorphic Curves and Symplectic Topology, AMS Colloquium Publications 52 (2004)](https://doi.org/10.1090/coll/052)
+
+### Taming makes nonconstant J-curves have positive area
+
+**Remember:** Taming means every complex line has positive symplectic area.
+
+*True by definition.* MSC 32Q65 (Pseudoholomorphic curves), 53D05. arXiv math.SG. Level 3: graduate.
+
+**Definition.** A symplectic form ω tames an almost complex structure J when ω(v,Jv) &gt; 0 for every nonzero tangent vector v. So ω is positive on every J-complex line.
+
+**Problem.** If J is ω-tame and a nonconstant closed J-holomorphic curve represents the class A, then ω(A) &gt; 0. So an exact symplectic manifold, where ω = dλ, contains no nonconstant closed J-holomorphic curve.
+
+**How the definition helps.** Where du is nonzero, its image is a J-complex line, so taming makes u\*ω positive there (our own). A nonconstant curve has du ≠ 0 on an open set, so ω(A) = ∫u\*ω &gt; 0 (our own). The usual stronger condition, compatibility, is not needed, since the proof uses only ω(v,Jv) &gt; 0 (our own).
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255v4). It says: “If a homology class A ∈ H₂(M,ℤ) is represented by a nonconstant J-curves for some J ∈ 𝒥ω then ω(A) &gt; 0.”
+
+**Sources:**
+
+- [M. Gromov, Pseudo holomorphic curves in symplectic manifolds, Invent. Math. 82 (1985) 307–347](https://doi.org/10.1007/BF01388806)
+
+### Virtual genus detects embedded J-spheres
+
+**Remember:** Every singular point costs genus that homology can see.
+
+*Makes the theorem clean to state or prove.* MSC 32Q65 (Pseudoholomorphic curves), 57K43. arXiv math.SG, math.GT. Level 3: graduate.
+
+**Definition.** Let c₁ be the first Chern class of the complex bundle (TM, J) on an almost complex 4-manifold. The virtual genus of a class A is gᵥ(A) = 1 + (A·A − c₁(A))/2. It is the genus that an embedded J-curve in class A must have.
+
+**Problem.** A somewhere injective J-holomorphic sphere in class A, one that is not a multiple cover, satisfies gᵥ(A) ≥ 0. Equality holds exactly when the sphere is embedded.
+
+**How the definition helps.** For an embedded sphere, TM splits into tangent and normal line bundles, so c₁(A) = 2 + A·A and gᵥ(A) = 0 (our own). Each singular point adds a positive amount to A·A − c₁(A), by the local models of McDuff and Micallef–White (our own). So one number computed from homology detects embeddedness (our own).
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255v4). It says: “Define the virtual genus of A as gᵥ(A) = 1+½(\[A\]·\[A\]− c₁(A)) where c₁(A) = ⟨c₁(TM,J), A⟩. Then gᵥ(A)≥0 with equality if, and only if, the map u is an embedding.”
+
+**Sources:**
+
+- [D. McDuff, The local behaviour of holomorphic curves in almost complex 4-manifolds, J. Differential Geom. 34 (1991) 143–164](https://doi.org/10.4310/jdg/1214446994)
+- [M. Micallef and B. White, The structure of branch points in minimal surfaces and in pseudoholomorphic curves, Ann. of Math. 141 (1995) 35–85](https://doi.org/10.2307/2118627)
 
 ### Constant Milnor number prevents splitting
 
@@ -2976,7 +3161,7 @@
 
 **Remember:** A small energy term leaves only a compact error.
 
-*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** A compactness estimate gives, for each ε &gt; 0, a constant Cε with ‖u‖² ≤ εQ(u) + Cε‖u‖₋₁² for all u in the common L² domain of ∂̄ and its adjoint, where Q(u) = ‖∂̄u‖² + ‖∂̄\*u‖² is the energy. The weaker norm is the dual norm of the Sobolev space H₀¹, applied to each coefficient.
 
@@ -2992,7 +3177,7 @@
 
 **Remember:** The adjoint carries the weight's slope; the energy shows its Hessian.
 
-*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** For a smooth real weight ϕ on a domain in ℂⁿ, the weighted adjoint is the Hilbert adjoint of ∂̄ for the L² inner product with density exp(−ϕ). On smooth compactly supported forms it is the ordinary formal adjoint plus the term ∑ vⱼ ∂ϕ/∂zⱼ, which carries the first derivatives of ϕ (our own).
 
@@ -3010,7 +3195,7 @@
 
 **Remember:** Mixed derivatives must agree before a function can have the prescribed derivatives.
 
-*Rules out counterexamples.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Rules out counterexamples.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** A smooth (0,1)-form f = ∑ fⱼ dz̄ⱼ proposes the derivatives ∂u/∂z̄ⱼ of an unknown function u. It is ∂̄-closed when ∂fⱼ/∂z̄ₖ = ∂fₖ/∂z̄ⱼ for all j and k, the identities that mixed derivatives of u must satisfy.
 
@@ -3028,7 +3213,7 @@
 
 **Remember:** A Hankel operator is the least-norm solution of a ∂̄ equation.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** For a bounded symbol φ, the Bergman Hankel operator sends a square-integrable holomorphic function g to φg minus its orthogonal projection onto the holomorphic functions. When φ is C¹, the output solves ∂̄u = g∂̄φ and is orthogonal to holomorphic functions, so it is the least-norm solution (our own).
 
@@ -3046,7 +3231,7 @@
 
 **Remember:** Solve in one variable; holomorphic factors in the others ride along.
 
-*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** The canonical solution of ∂̄u = f is the square-integrable solution orthogonal to every square-integrable holomorphic function. It is unique, so any solution with this orthogonality is the canonical one (our own).
 
@@ -3064,7 +3249,7 @@
 
 **Remember:** The Neumann inverse is the energy inclusion times its adjoint.
 
-*True by definition.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*True by definition.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** On a bounded pseudoconvex domain, the energy space holds the (0,1)-forms in the domains of both ∂̄ and its Hilbert adjoint ∂̄\*. Its squared norm is Q(u) = ‖∂̄u‖² + ‖∂̄\*u‖². The ∂̄-Neumann inverse N sends an L² form f to the energy-space form Nf with Q(Nf,v) = ⟨f,v⟩ for every v in that space (our own).
 
@@ -3082,7 +3267,7 @@
 
 **Remember:** Test functions with free boundary values force the normal coefficient to vanish.
 
-*Rules out counterexamples.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Rules out counterexamples.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** The maximal ∂̄ acts on every L² function u whose distributional ∂̄u is in L², with no boundary condition. A (0,1)-form v in L² is in the adjoint domain when ⟨∂̄u,v⟩ = ⟨u,g⟩ for one L² function g and all such u. So the test functions may have any boundary values (our own).
 
@@ -3100,7 +3285,7 @@
 
 **Remember:** Both the form and its ∂̄ must pass the adjoint test.
 
-*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** On the forms in the domains of both ∂̄ and ∂̄\*, put Q(u,v) = ⟨∂̄u,∂̄v⟩ + ⟨∂̄\*u,∂̄\*v⟩. The ∂̄-Neumann Laplacian is defined at u when Q(u,v) = ⟨g,v⟩ for one L² form g and every such v, and it sends u to g.
 
@@ -3118,7 +3303,7 @@
 
 **Remember:** The Hessian measures tests and its inverse measures data.
 
-*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** Let ϕ be a smooth real weight whose complex Hessian H = (∂²ϕ/∂zⱼ∂z̄ₖ) is positive definite. The squared dual norm of a (0,1)-form f measures it by the inverse Hessian: it is ∫ ⟨H⁻¹f,f⟩ exp(−ϕ) dV. By Cauchy–Schwarz, \|⟨f,α⟩ϕ\|² is at most this times ∫ ⟨Hα,α⟩ exp(−ϕ) dV for every form α (our own).
 
@@ -3136,7 +3321,7 @@
 
 **Remember:** In top degree the normal condition kills the whole trace.
 
-*True by definition. Confidence: medium.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 3: graduate.
 
 **Definition.** In top degree a (0,n)-form is one function times dz̄₁∧…∧dz̄ₙ, and its ∂̄ is zero. The ∂̄-Neumann condition asks its complex normal contraction to vanish on the boundary, and since the normal is nonzero, the function itself must vanish there (our own).
 
@@ -4186,6 +4371,78 @@
 - [Franc Forstnerič, From Stein manifolds to Oka manifolds: the h-principle in complex analysis, arXiv:2509.21197 (2025)](https://arxiv.org/abs/2509.21197v1)
 - [Forstnerič, Runge approximation on convex sets implies the Oka property, Annals of Mathematics 163 (2006), 689–707](https://doi.org/10.4007/annals.2006.163.689)
 
+### Asymptotic terms make punctured intersections invariant
+
+**Remember:** Count the meeting points that might escape through the punctures.
+
+*Makes the theorem clean to state or prove.* MSC 32Q65 (Pseudoholomorphic curves), 53D42. arXiv math.SG. Level 4: research.
+
+**Definition.** Punctured J-curves in a symplectization have ends that approach periodic Reeb orbits. Siefring's intersection number of two such curves counts their actual meeting points, plus an asymptotic term for each pair of ends at the same orbit. That term comes from winding numbers of the ends around the orbit.
+
+**Problem.** This intersection number depends only on the relative homotopy classes of the curves. For curves without a common component it is nonnegative, and zero exactly when the curves are disjoint and stay disjoint under homotopy.
+
+**How the definition helps.** During a homotopy, meeting points can escape through punctures, so the plain count jumps (our own). The asymptotic terms record exactly what can escape, so the sum stays constant (our own). Positivity of intersections and winding bounds make each term nonnegative (our own).
+
+**Paper or page:** [Lagrangian Spheres and Cyclic Quotient T-singularities](https://arxiv.org/abs/2509.18976v1). It says: “Then i\_\*(f,g) ≥ 0, where the notation i\_\* indicates either the constrained or unconstrained intersection number. Moreover, equality occurs if, and only if, f and g are disjoint and remain so after homotopy.”
+
+**Sources:**
+
+- [R. Siefring, Intersection theory of punctured pseudoholomorphic curves, Geom. Topol. 15 (2011) 2351–2457](https://doi.org/10.2140/gt.2011.15.2351)
+
+### Complex hypersurfaces meet J-curves positively
+
+**Remember:** Complex hypersurfaces can only be crossed the positive way.
+
+*True by definition.* MSC 32Q65 (Pseudoholomorphic curves), 32Q60. arXiv math.SG, math.DG. Level 4: research.
+
+**Definition.** A codimension-two submanifold D of an almost complex manifold is J-complex when J maps its tangent spaces to themselves. Then its normal direction is a complex line, oriented by J. So a J-curve can only cross D in the positive direction.
+
+**Problem.** A closed J-holomorphic curve u in class A, not contained in a J-complex hypersurface D, meets D in finitely many points. Each point has positive local intersection number, so A·D ≥ 0, with equality only when u misses D.
+
+**How the definition helps.** A complex normal coordinate w along D makes w∘u solve a linear Cauchy–Riemann type equation, since J preserves the tangent spaces of D (our own). So the zeros of w∘u are isolated with positive order, which is the local intersection number (our own). A hypersurface that is only symplectic, not J-complex, can meet J-curves with sign −1 (our own).
+
+**Paper or page:** [Unknottedness of symplectic submanifold fillings](https://arxiv.org/abs/2506.06807v1). It says: “If im u ⊄ Ĥ, then we have u•H = ∑\_(p∈Σ, u(p)∈Ĥ) δ(p,u,H)+∑\_(p∈Γ⁺∪Γ⁻) δ<sub>∞</sub>(p,u,H), where δ(p,u,H)&gt;0 and δ<sub>∞</sub>(p,u,H) ≥ 0.”
+
+**Sources:**
+
+- [K. Cieliebak and K. Mohnke, Symplectic hypersurfaces and transversality in Gromov–Witten theory, J. Symplectic Geom. 5 (2007) 281–356](https://doi.org/10.4310/JSG.2007.v5.n3.a2)
+
+### Convex taming allows symplectic inflation
+
+**Remember:** Adding something nonnegative on complex lines keeps a form taming.
+
+*True by definition. Confidence: medium.* MSC 32Q65 (Pseudoholomorphic curves), 57K43. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** Taming, ω(v,Jv) &gt; 0 for v ≠ 0, is a convex condition on the form. If ω tames J and a closed 2-form ρ has ρ(v,Jv) ≥ 0, then ω + tρ tames J for all t ≥ 0. A taming form is nondegenerate, so ω + tρ is symplectic.
+
+**Problem.** Let S be an embedded J-holomorphic sphere with S·S ≥ 0 in a symplectic 4-manifold with compatible J. Then for all t ≥ 0 there are symplectic forms taming J in the class \[ω\] + t·PD(S), where PD means Poincaré dual.
+
+**How the definition helps.** Taming is a convex condition, so adding a closed form that is nonnegative on J-complex lines keeps J tamed (our own). Compatibility is not kept, since (ω + tρ)(·,J·) need not be symmetric (our own). The work went into building such a form ρ, Poincaré dual to S and supported near S (our own).
+
+**Paper or page:** [Packing Integral Tori in Del Pezzo Surfaces](https://arxiv.org/abs/2308.09334v3). It says: “Then there is a family {ωₜ} of symplectic forms on M, with t &lt; ω(S) when S·S = −1, which all tame J and satisfy \[ωₜ\] = \[ω\] +tPD(S)”
+
+**Sources:**
+
+- [F. Lalonde and D. McDuff, The classification of ruled symplectic 4-manifolds, Math. Res. Lett. 3 (1996) 769–778](https://doi.org/10.4310/mrl.1996.v3.n6.a5)
+
+### Square at least −1 gives automatic regularity
+
+**Remember:** A normal bundle of degree at least −1 never obstructs.
+
+*Rules out counterexamples.* MSC 32Q65 (Pseudoholomorphic curves), 57K43. arXiv math.SG, math.GT. Level 4: research.
+
+**Definition.** An embedded J-holomorphic sphere S is regular when its linearized Cauchy–Riemann operator is onto. In a 4-manifold, this depends only on a real Cauchy–Riemann operator on the normal line bundle of S. That bundle has degree S·S.
+
+**Problem.** In a symplectic 4-manifold, every embedded J-holomorphic sphere S with S·S ≥ −1 is regular, for every tame J. So such spheres survive every small change of J.
+
+**How the definition helps.** On a line bundle of degree at least −1 over the sphere, a real Cauchy–Riemann operator is onto (our own). A cokernel element would solve an adjoint equation on a bundle of negative degree, and such solutions vanish (our own). The removed case is S·S = −2: the exceptional curve of the resolved A₁ singularity has 2-dimensional cokernel and disappears for generic J (our own).
+
+**Paper or page:** [Centralizers of Hamiltonian circle actions on rational ruled surfaces](https://arxiv.org/abs/2202.08255v4). It says: “If J ∈ J\_ω is integrable and S is an embedded J-holomorphic sphere with self-intersection number \[S\]·\[S\] ≥ −1, then J is regular for the class \[S\]. In dimension 4, the same conclusion holds without the integrability assumption.”
+
+**Sources:**
+
+- [H. Hofer, V. Lizan and J.-C. Sikorav, On genericity for holomorphic curves in four-dimensional almost-complex manifolds, J. Geom. Anal. 7 (1997) 149–159](https://doi.org/10.1007/BF02921708)
+
 ### Integral closure preserves Łojasiewicz exponents
 
 **Remember:** Integral closure changes generators but not their least order along an arc.
@@ -4332,7 +4589,7 @@
 
 **Remember:** The functional equation shifts the singular integral to a more convergent one.
 
-*True by definition.* MSC 32S40 (Monodromy; relations with differential equations and \\(D\\)-modules (complex-analytic aspects)), 32S05. arXiv math.CV, math.AG. Level 4: research.
+*True by definition.* MSC 32S40 (Monodromy; relations with differential equations and D-modules (complex-analytic aspects)), 32S05. arXiv math.CV, math.AG. Level 4: research.
 
 **Definition.** The Bernstein–Sato polynomial of a nonzero holomorphic germ f is the monic polynomial b(s) of least degree with P(s)fˢ⁺¹ = b(s)fˢ for some holomorphic differential operator P(s) polynomial in s. The equation trades the power fˢ for the more regular power fˢ⁺¹ (our own).
 
@@ -4761,7 +5018,7 @@
 
 **Remember:** Bound the weight and let its curvature grow.
 
-*Makes the theorem clean to state or prove.* MSC 32W05 (\\(\\overline\\partial\\) and \\(\\overline\\partial\\)-Neumann operators). arXiv math.CV, math.AP. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 32W05 (∂̄ and ∂̄-Neumann operators). arXiv math.CV, math.AP. Level 4: research.
 
 **Definition.** A boundary has property P in degree q if, for each M &gt; 0, some smooth function with values in \[0,1\] on a boundary neighbourhood has complex Hessian whose every sum of q eigenvalues is at least M there.
 

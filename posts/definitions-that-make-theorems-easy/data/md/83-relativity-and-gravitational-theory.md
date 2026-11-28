@@ -274,7 +274,7 @@
 
 **Remember:** Shrink infinity to a boundary without tipping the light cones.
 
-*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory), 53C50. arXiv gr-qc, math.DG. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, H -spaces, etc.) in general relativity and gravitational theory), 53C50. arXiv gr-qc, math.DG. Level 3: graduate.
 
 **Definition.** A conformal diagram multiplies the metric by a positive function that brings infinity to a finite boundary, in coordinates where the new metric extends smoothly to that boundary. Light rays keep their directions, because the rescaling does not change which vectors are null.
 
@@ -548,7 +548,7 @@
 
 **Remember:** Energy leaves at the rate of the news squared.
 
-*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory), 83C40. arXiv gr-qc, math-ph. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, H -spaces, etc.) in general relativity and gravitational theory), 83C40. arXiv gr-qc, math-ph. Level 4: research.
 
 **Definition.** Near outgoing light infinity in Bondi coordinates, write the angular metric as r²q + rC + O(1), with q the unit sphere metric and C the trace-free shear. The Bondi news N = ∂ᵤC is the rate of change of that shear in retarded time u, and Bondi energy is the sphere average of the Bondi mass aspect (our own).
 
@@ -567,7 +567,7 @@
 
 **Remember:** A bulk symmetry preserves the boundary metric up to scale.
 
-*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, H -spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
 
 **Definition.** A smooth conformal compactification adds a boundary on which the rescaled metric h = Ω²g extends smoothly and nondegenerately, where Ω &gt; 0 inside, Ω = 0 on the boundary and dΩ ≠ 0 there. The boundary keeps only a conformal metric, the induced metric up to smooth positive rescaling.
 
@@ -585,7 +585,7 @@
 
 **Remember:** Cotton–York curvature is built to obey the boundary constraints.
 
-*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, H -spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
 
 **Definition.** On an oriented three-dimensional Lorentzian manifold, the Cotton–York tensor is the curl of Ric − (R/4)h: take its covariant derivative and contract the derivative index and first index with the volume form. It measures how curvature varies, and it is symmetric, trace-free and divergence-free for every metric h.
 

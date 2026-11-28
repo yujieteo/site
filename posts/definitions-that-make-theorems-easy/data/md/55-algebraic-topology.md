@@ -747,7 +747,7 @@
 
 **Remember:** Restriction to a point has a section given by trivial bundles.
 
-*True by definition.* MSC 55N15 (Topological \\(K\\)-theory). arXiv math.AT. Level 3: graduate.
+*True by definition.* MSC 55N15 (Topological K-theory). arXiv math.AT. Level 3: graduate.
 
 **Definition.** For a based compact Hausdorff space X, reduced complex K-theory K̃(X) is the kernel of restriction to the base point, K(X) → K(point) ≅ ℤ. Pulling back along the constant map from X to the point splits this restriction.
 
@@ -763,7 +763,7 @@
 
 **Remember:** Eight more real Clifford generators add only a matrix factor.
 
-*True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 15A66. arXiv math.AT, math.KT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 55N15 (Topological K-theory), 15A66. arXiv math.AT, math.KT. Level 3: graduate.
 
 **Definition.** Let Cℓₙ be the real Clifford algebra on n anticommuting generators with square +1. Karoubi’s degree −n group of X is built only from restricting Cℓₙ₊₁-module bundles on X to Cℓₙ-module bundles. Precisely, it is π₀ of the homotopy fiber of this restriction on topological K-theory spectra (our own).
 
@@ -781,7 +781,7 @@
 
 **Remember:** Every bundle on a compact base has a partner making it trivial.
 
-*Rules out counterexamples. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 55R50. arXiv math.KT, math.AT. Level 3: graduate.
+*Rules out counterexamples. Confidence: medium.* MSC 55N15 (Topological K-theory), 55R50. arXiv math.KT, math.AT. Level 3: graduate.
 
 **Definition.** Topological K-theory K(X) of a compact Hausdorff space X is the Grothendieck group of isomorphism classes of vector bundles under direct sum, whose elements are formal differences \[E\] − \[F\]. Over such a base every bundle F has a complement G with F ⊕ G trivial (our own), so any negative term can be traded for a trivial one.
 
@@ -799,7 +799,7 @@
 
 **Remember:** K-classes are maps to ℤ × BU, so homotopies pass through.
 
-*True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 55R50. arXiv math.AT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 55N15 (Topological K-theory), 55R50. arXiv math.AT. Level 3: graduate.
 
 **Definition.** For a compact Hausdorff space X, K⁰(X) is the set of homotopy classes of maps from X to ℤ × BU, the space that classifies complex bundles up to adding trivial ones. Pulling a class back along f : Y → X is composing its map with f.
 
@@ -815,7 +815,7 @@
 
 **Remember:** A based map out of a wedge is one map from each piece.
 
-*True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory). arXiv math.AT. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 55N15 (Topological K-theory). arXiv math.AT. Level 3: graduate.
 
 **Definition.** For a based finite CW complex X, reduced complex K-theory K̃(X) is the group of based homotopy classes of maps X → ℤ × BU that send the base point to zero. The group operation is pointwise in ℤ × BU.
 
@@ -1529,6 +1529,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Equivariant formality makes fixed points carry all the Betti numbers
+
+**Remember:** Formal means equivariant cohomology is free over the polynomial ring.
+
+*Rules out counterexamples. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 53D20. arXiv math.SG, math.AT. Level 3: graduate.
+
+**Definition.** A torus action on M is equivariantly formal when its rational equivariant cohomology is a free module over the polynomial ring H(BT). Equivalently, it is isomorphic as a module to H(M) tensored with H(BT).
+
+**Problem.** For an equivariantly formal torus action on a compact manifold, the total rational Betti number of the fixed point set equals that of M. Compact Hamiltonian torus actions are equivariantly formal, so this holds for them.
+
+**How the definition helps.** By localization, equivariant cohomology has module rank equal to the total Betti number of the fixed set; freeness makes it that of M (our own). Freeness excludes the circle rotating one factor of the 2-torus, which has no fixed points (our own). Its equivariant cohomology is that of the quotient circle, a torsion module (our own).
+
+**Paper or page:** [Equivariant formality in complex-oriented theories](https://arxiv.org/abs/2405.05821). It says: “Let (M,ω) be a compact symplectic manifold equipped with a Hamiltonian G-action. Then M is equivariantly formal over any ℚ-algebra R.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Grading by representations gives equivariant suspension isomorphisms
 
 **Remember:** Grade by representations, so that you can suspend by representation spheres.
@@ -1562,6 +1578,24 @@
 **nLab:** [Borel equivariant cohomology](https://ncatlab.org/nlab/show/Borel+equivariant+cohomology). It says: “For X a space and G a group acting on it, then the Borel equivariant cohomology of X is the cohomology of the homotopy quotient X//G.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Viewing equivariant cohomology as a module makes localization to fixed points statable
+
+**Remember:** Equivariant cohomology carries polynomial coefficients, so torsion can be thrown away.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 53D20. arXiv math.AT, math.SG. Level 3: graduate.
+
+**Definition.** For a torus T, rational equivariant cohomology is a module over the polynomial ring H(BT), the equivariant cohomology of a point. This lets one discard torsion, the classes killed by some nonzero polynomial.
+
+**Problem.** Let a torus act on a compact manifold M with fixed point set F. Restriction from M to F has torsion kernel and cokernel, so it becomes an isomorphism after inverting the nonzero polynomials.
+
+**How the definition helps.** The statement needs a coefficient ring that can be localized, and ordinary cohomology offers nothing to invert (our own). Away from F every stabilizer is a proper subgroup, and there are finitely many, so one nonzero polynomial kills the equivariant cohomology there (our own). Integrating the inverse map gives the Atiyah–Bott–Berline–Vergne formula (our own).
+
+**Wikipedia:** [Localization formula for equivariant cohomology](https://en.wikipedia.org/wiki/Localization_formula_for_equivariant_cohomology). It says: “The localization theorem states that the equivariant cohomology can be recovered, up to torsion elements, from the equivariant cohomology of the fixed point subset.”
+
+**Sources:**
+
+- [M. F. Atiyah and R. Bott, The moment map and equivariant cohomology, Topology 23 (1984) 1–28](https://doi.org/10.1016/0040-9383(84)90021-1)
 
 ### The path-space test makes Hurewicz cofibrations stable under pushout
 
@@ -1782,7 +1816,7 @@
 
 **Remember:** If E∗E is flat, E-homology carries a coaction of E∗E.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55T15, 16T05. arXiv math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55T15, 16T05. arXiv math.AT. Level 3: graduate.
 
 **Definition.** A homotopy commutative ring spectrum E is flat when E∗E = π∗(E ∧ E) is a flat module over E∗ = π∗E. Then E∗(E ∧ X) ≅ E∗E ⊗ E∗X over E∗, and this gives each E∗X a coaction of E∗E (our own).
 
@@ -1800,7 +1834,7 @@
 
 **Remember:** Homotopy only in degree zero, so HR-modules are chain complexes.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 18G80, 13D09. arXiv math.AT, math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 18G80, 13D09. arXiv math.AT, math.KT. Level 3: graduate.
 
 **Definition.** For a ring R, the Eilenberg–MacLane ring spectrum HR has π₀HR = R and no other homotopy groups. A left HR-module is a spectrum M with a unital, coherently associative action HR ∧ M → M.
 
@@ -2466,7 +2500,7 @@
 
 **Remember:** Once only lower groups matter, an earlier higher cutoff makes no difference.
 
-*True by definition.* MSC 55S45 (Postnikov systems, \\(k\\)-invariants), 55P15. arXiv math.AT. Level 3: graduate.
+*True by definition.* MSC 55S45 (Postnikov systems, k-invariants), 55P15. arXiv math.AT. Level 3: graduate.
 
 **Definition.** The n-truncation of a space is its universal map to an n-type, a space with no homotopy groups above degree n: every map to an n-type factors through it, uniquely up to homotopy.
 
@@ -3499,6 +3533,24 @@
 
 - [J. Peter May et al., Equivariant Homotopy and Cohomology Theory, CBMS Regional Conference Series in Mathematics 91, AMS (1996)](https://doi.org/10.1090/cbms/091)
 
+### The GKM condition turns equivariant cohomology into polynomials on a graph
+
+**Remember:** Fixed points are vertices, invariant spheres are edges, weights are labels.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 53D20, 14M15. arXiv math.AT, math.SG. Level 4: research.
+
+**Definition.** A torus action on a compact manifold is GKM when it is equivariantly formal, with finitely many fixed points and pairwise independent weights at each. Then the points with a codimension-one stabilizer lie on invariant 2-spheres, each joining two fixed points. These spheres are the edges of a graph on the fixed points.
+
+**Problem.** For a GKM action, rational equivariant cohomology is the ring of tuples of polynomials, one per fixed point, with the right divisibility across edges. Across each edge, the difference must be divisible by that edge's weight.
+
+**How the definition helps.** By localization, formality makes restriction to the fixed points injective, and the Chang–Skjelbred lemma cuts out the image using the one-dimensional orbits (our own). Pairwise independent weights make those orbits a union of 2-spheres with two fixed points each, so the condition becomes one divisibility per edge (our own). The work went into localization and the Chang–Skjelbred lemma; the GKM condition makes their output combinatorial (our own).
+
+**Wikipedia:** [GKM variety](https://en.wikipedia.org/wiki/GKM_variety). It says: “The torus action of a GKM variety must be skeletal: both the set of fixed points of the action, and the number of one-dimensional orbits of the action, must be finite.”
+
+**Sources:**
+
+- [M. Goresky, R. Kottwitz and R. MacPherson, Equivariant cohomology, Koszul duality, and the localization theorem, Inventiones Mathematicae 131 (1998) 25–83](https://doi.org/10.1007/s002220050197)
+
 ### Defining stabilization as a limit makes it commute with functor categories
 
 **Remember:** Loops in a functor category are taken pointwise, so stabilize pointwise.
@@ -3646,7 +3698,7 @@
 
 **Remember:** Commutative monoids: multiply the two images together, so smash is coproduct.
 
-*True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
+*True by definition.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
 
 **Definition.** A commutative S-algebra is a commutative monoid in S-modules under smash product: a unit and an associative, commutative multiplication (our own gloss).
 
@@ -3664,7 +3716,7 @@
 
 **Remember:** K-theory reads only compact modules, so equal module categories agree.
 
-*True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 19D10. arXiv math.KT, math.AT. Level 4: research.
+*True by definition.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 19D10. arXiv math.KT, math.AT. Level 4: research.
 
 **Definition.** For a ring spectrum R, K(R) is the algebraic K-theory of Perf(R), the compact objects of the ∞-category of R-modules. It depends only on the module ∞-category, because compactness is defined inside it (our own).
 
@@ -3683,7 +3735,7 @@
 
 **Remember:** Orient by trivializing the bundle's units in R, as spectrum maps.
 
-*True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N22, 55R25. arXiv math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55N22, 55R25. arXiv math.AT. Level 4: research.
 
 **Definition.** Let f, a map of connective spectra from bg to Σgl₁(S), classify a spherical bundle on BG. An E∞ R-orientation of f is a null-homotopy of its composite with Σgl₁(S) → Σgl₁(R) (our own). It trivializes the induced R-line bundle as a map of spectra (our own).
 
@@ -3702,7 +3754,7 @@
 
 **Remember:** Freely kill p as an E₂ ring, and 𝔽ₚ appears.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R25. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55R25. arXiv math.AT. Level 4: research.
 
 **Definition.** For a prime p, let f from Ω²S³ to BGL₁ of the p-complete sphere Sₚ^ extend the loop 1 − p as a double loop map. Its Thom spectrum Mf is the colimit of the Sₚ<sup>-lines</sup> that f classifies (our own). E₂ maps out of Mf are null-homotopies of p in the target (our own).
 
@@ -3720,7 +3772,7 @@
 
 **Remember:** Keep the cup product's higher homotopies, and you keep the space.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P15. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55P15. arXiv math.AT. Level 4: research.
 
 **Definition.** An E∞ cochain algebra is a cochain complex with an action of an E∞ operad (our own). The action keeps all higher homotopies for the commutativity of the cup product, and so the Steenrod operations (our own).
 
@@ -3738,7 +3790,7 @@
 
 **Remember:** Use commutative ring spectra so compatible local theories have a homotopy limit.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N34, 18N70. arXiv math.AT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55N34, 18N70. arXiv math.AT, math.AG. Level 4: research.
 
 **Definition.** An E∞-ring spectrum is a commutative algebra in the ∞-category of spectra under smash product, with commutativity holding up to all higher homotopies (our own). Unlike cohomology theories, such rings have homotopy limits, so a sheaf of them has global sections (our own).
 
@@ -3756,7 +3808,7 @@
 
 **Remember:** Faithful: extension to B kills no nonzero module.
 
-*Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)). arXiv math.AT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)). arXiv math.AT. Level 4: research.
 
 **Definition.** A finite G-Galois extension A → B is faithful if extension to B kills no nonzero module (our own). That is, B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
 
@@ -3774,7 +3826,7 @@
 
 **Remember:** Faithful means only the zero module becomes zero after extension to B.
 
-*Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 20C20. arXiv math.AT, math.RT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 20C20. arXiv math.AT, math.RT. Level 4: research.
 
 **Definition.** A finite G-Galois extension A → B is faithful if extension to B kills no nonzero module (our own). That is, B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
 
@@ -3793,7 +3845,7 @@
 
 **Remember:** Make Pic a spectrum, then descend it like any limit.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
 
 **Definition.** For an E∞ ring A, the Picard spectrum pic(A) is the connective spectrum of invertible A-modules and their equivalences, added by tensor product (our own). Taking it commutes with limits of symmetric monoidal module categories (our own).
 
@@ -3811,7 +3863,7 @@
 
 **Remember:** Fixed points recover the base; B ∧ₐ B splits into Γ copies.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R20. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55R20. arXiv math.AT. Level 4: research.
 
 **Definition.** Let a finite group Γ act on a commutative A-algebra B in spectra. B is Γ-Galois over A if A → BʰΓ is an equivalence and B ∧ₐ B splits as Γ copies of B (our own). The map to the copy for g multiplies the first factor by g applied to the second (our own).
 
@@ -3829,7 +3881,7 @@
 
 **Remember:** Build from finite Galois quotients, take their colimit, then localize.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P60. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55P60. arXiv math.AT. Level 4: research.
 
 **Definition.** A K(n)-local profinite G-Galois extension of A is a compatible system of faithful G/U-Galois extensions of A, one for each open normal subgroup U (our own). Its target B is the K(n)-localization of their colimit (our own).
 
@@ -3848,7 +3900,7 @@
 
 **Remember:** Mapping out preserves sums, and all shifts together detect zero.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55U35, 18G80. arXiv math.AT, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55U35, 18G80. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** An object P of a stable model category is a compact generator if \[P, −\] on the homotopy category preserves arbitrary coproducts (our own). It must also detect zero: X ≃ 0 whenever \[ΣⁿP, X\] = 0 for all integers n (our own). Its self-maps in all degrees form a ring spectrum End(P) (our own).
 
@@ -3866,7 +3918,7 @@
 
 **Remember:** Fixed points recover the base; B ∧ₐ B splits into G copies.
 
-*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N15. arXiv math.AT, math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55N15. arXiv math.AT, math.KT. Level 4: research.
 
 **Definition.** Let a finite group G act on a commutative A-algebra B in spectra. B is G-Galois over A if A → Bʰᴳ is an equivalence and B ∧ₐ B splits as G copies of B (our own). The map to the copy for g multiplies the first factor by g applied to the second (our own).
 
@@ -3884,7 +3936,7 @@
 
 **Remember:** Glue sphere lines by a colimit; colimits respect smash, so structure transfers.
 
-*True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R25, 55N22. arXiv math.AT. Level 4: research.
+*True by definition.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55R25, 55N22. arXiv math.AT. Level 4: research.
 
 **Definition.** For a map f from a space X to BGL₁(S), the Thom spectrum Mf is the colimit over X of the sphere lines that f classifies (our own). Smash products commute with colimits, so this construction turns products of maps into smash products (our own).
 
@@ -3903,7 +3955,7 @@
 
 **Remember:** Write HR as a Thom spectrum, and THH becomes loop-space homology.
 
-*True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 19D55, 14F30. arXiv math.AT, math.KT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 19D55, 14F30. arXiv math.AT, math.KT. Level 4: research.
 
 **Definition.** For an associative ring spectrum A, THH(A) is the realization of the cyclic bar construction, with n+1 copies of A smashed around a circle in degree n (our own). When A is the Thom spectrum of a loop map, THH(A) is again a Thom spectrum, over a free loop space (our own).
 
@@ -3923,7 +3975,7 @@
 
 **Remember:** A twisted spectrum is a section of spectra transported around B.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R70. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (E<sub>∞</sub>, A<sub>∞</sub>, ring spectra, etc.)), 55R70. arXiv math.AT. Level 4: research.
 
 **Definition.** A twist on B is a map σ from B to BPic(S), the delooping of the space Pic(S) of invertible spectra (our own). A σ-twisted spectrum is a section of the bundle of ∞-categories of spectra that σ classifies (our own).
 
@@ -4405,7 +4457,7 @@
 
 **Remember:** A prime containing a tensor product must contain a factor.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 18G80. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q51 (v<sub>n</sub>-periodicity), 18G80. arXiv math.AT. Level 4: research.
 
 **Definition.** A prime in an essentially small tensor triangulated category is a proper thick tensor ideal P that contains a factor of each product it contains (our own). That is, X ⊗ Y ∈ P forces X ∈ P or Y ∈ P (our own). The primes form the Balmer spectrum, with closed sets generated by the supports {P ∣ X ∉ P} (our own).
 
@@ -4425,7 +4477,7 @@
 
 **Remember:** Smashing localization means smashing every input with the localized sphere.
 
-*True by definition.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
+*True by definition.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
 **Definition.** A Bousfield localization L is smashing if it is smashing with the localized sphere: LX ≃ X ∧ LS for every spectrum X. Lₙ is localization at Johnson–Wilson theory E(n).
 
@@ -4443,7 +4495,7 @@
 
 **Remember:** An E(n)-equivalence is an E(n−1)-equivalence that is also a K(n)-equivalence.
 
-*True by definition. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
 **Definition.** E-localization universally inverts the maps f with E ∧ f an equivalence; Lₙ localizes at Johnson–Wilson E(n) and L<sub>K</sub>(n) at Morava K(n) (our own). E(n) has the Bousfield class of E(n−1) ∨ K(n) (our own). So a map is an E(n)-equivalence exactly when it is both an E(n−1)- and a K(n)-equivalence (our own).
 
@@ -4462,7 +4514,7 @@
 
 **Remember:** Finite spectra are seen by finite heights; H𝔽ₚ by none.
 
-*Rules out counterexamples.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
+*Rules out counterexamples.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
 **Definition.** A finite p-local spectrum is one built, up to retracts, from finitely many shifted p-local sphere cells (our own). Its chromatic tower is the sequence of localizations LₙX at Johnson–Wilson E(n), which see only heights up to n, with maps from height n+1 to n (our own).
 
@@ -4483,7 +4535,7 @@
 
 **Remember:** Thick means you keep every summand of what you contain.
 
-*Rules out counterexamples. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 18G80. arXiv math.AT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 55Q51 (v<sub>n</sub>-periodicity), 18G80. arXiv math.AT. Level 4: research.
 
 **Definition.** A thick subcategory is a full triangulated subcategory closed under retracts, so it contains every direct summand of each of its objects.
 
@@ -4502,7 +4554,7 @@
 
 **Remember:** Invertible at height n, nilpotent at every other height.
 
-*Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P42. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P42. arXiv math.AT. Level 4: research.
 
 **Definition.** For n ≥ 1, a vₙ self-map of a finite p-local spectrum X is a map ΣᵏX → X with k &gt; 0 that is an isomorphism on K(n)-homology and nilpotent on K(m)-homology for every m ≠ n (our own).
 
@@ -4520,7 +4572,7 @@
 
 **Remember:** A spectrum's Bousfield class is the set of spectra it kills.
 
-*Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
 **Definition.** The Bousfield class ⟨X⟩ of a spectrum X is the class of spectra Y that X kills, meaning X ∧ Y = 0. For a fixed Y, the finite spectra that kill Y form a thick subcategory, since smashing with Y keeps cofiber sequences and retracts (our own).
 
@@ -4539,7 +4591,7 @@
 
 **Remember:** Type at least n means invisible at every lower height.
 
-*Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P42. arXiv math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 55Q51 (v<sub>n</sub>-periodicity), 55P42. arXiv math.AT. Level 4: research.
 
 **Definition.** A finite p-local spectrum X has type at least n when every Morava K-theory below height n is blind to it: the K(m)-homology of X vanishes for all finite m &lt; n (our own). Each such class is thick, a full triangulated subcategory closed under retracts (our own).
 

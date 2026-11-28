@@ -143,7 +143,7 @@ a parallelogram.”
 
 **Remember:** Slide slices to preserve area, then average edges to save length.
 
-*Makes the theorem clean to state or prove.* MSC 52A10 (Convex sets in \\(2\\) dimensions (including convex curves)), 52A40. arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A10 (Convex sets in 2 dimensions (including convex curves)), 52A40. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** Steiner symmetrization about a line replaces each slice of a convex polygon perpendicular to the line by a segment of the same length centered on the line.
 
@@ -161,7 +161,7 @@ a parallelogram.”
 
 **Remember:** Opposite support values add to the same width in every direction.
 
-*True by definition.* MSC 52A10 (Convex sets in \\(2\\) dimensions (including convex curves)), 52A38. arXiv math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52A10 (Convex sets in 2 dimensions (including convex curves)), 52A38. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The width of a planar convex body K in a direction u is the distance h(u) + h(−u) between its two support lines perpendicular to u, where h(u) = max{x·u ∣ x ∈ K}. K has constant width w if this width is w in every direction.
 
@@ -177,7 +177,7 @@ a parallelogram.”
 
 **Remember:** The line to the nearest point gives the separating normal.
 
-*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
+*True by definition.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
 
 **Definition.** The normal cone of a convex set C at a point p consists of the vectors v with v·(z − p) ≤ 0 for all z ∈ C. So each such v gives a linear function z ↦ v·z that is largest on C at p.
 
@@ -193,7 +193,7 @@ a parallelogram.”
 
 **Remember:** Zero weights let every average use the same compact space.
 
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The convex hull of X ⊆ ℝᵈ is the set of finite weighted averages ∑ᵢλᵢxᵢ of points xᵢ ∈ X, with weights λᵢ ≥ 0 summing to one; zero weights are allowed.
 
@@ -211,7 +211,7 @@ a parallelogram.”
 
 **Remember:** A compact set cannot approach a disjoint closed set at infinity.
 
-*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
 
 **Definition.** A linear function separates two sets with a gap if its values on one set exceed its values on the other by at least a fixed positive amount. The gap must be uniform, so two sets that come arbitrarily close cannot be separated this way.
 
@@ -227,7 +227,7 @@ a parallelogram.”
 
 **Remember:** A direction you can travel forever from every point.
 
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The recession cone of a convex set C consists of the directions in which one can travel forever from every point: the vectors v with x + sv ∈ C for all x ∈ C and s ≥ 0.
 
@@ -243,7 +243,7 @@ a parallelogram.”
 
 **Remember:** A second polar recovers the closed hull with zero included.
 
-*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The one-sided polar of a set A in Euclidean space is the set of vectors y with x·y ≤ 1 for every x in A. It is an intersection of closed half-spaces that all contain the origin.
 
@@ -259,7 +259,7 @@ a parallelogram.”
 
 **Remember:** An upper bound on generators is the same bound on their averages.
 
-*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The one-sided polar of a Euclidean set A consists of all y satisfying x·y ≤ 1 for every x ∈ A.
 
@@ -275,7 +275,7 @@ a parallelogram.”
 
 **Remember:** A union pools the inequalities, so the polar intersects their solution sets.
 
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The one-sided polar of A is the set of vectors y with x·y ≤ 1 for all x in A. Each point of A adds one inequality, so the polar of a union is the intersection of the polars (our own).
 
@@ -291,7 +291,7 @@ a parallelogram.”
 
 **Remember:** Every ray from inside meets the boundary once.
 
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** Radial projection from an interior point p of a convex set sends each boundary point x to the unit vector (x − p)/‖x − p‖, its direction from p.
 
@@ -307,7 +307,7 @@ a parallelogram.”
 
 **Remember:** Look for an inside in the space the set actually spans.
 
-*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The relative interior of a set consists of its points that have a neighborhood, within the set's affine hull, lying entirely in the set. The affine hull is the smallest flat, a translated subspace, that contains the set.
 
@@ -323,7 +323,7 @@ a parallelogram.”
 
 **Remember:** One support bound per direction recovers the whole closed set.
 
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The support function of a set C gives, in each direction u, the least upper bound h(u) of u·x over x in C, possibly +∞. Each finite value gives a half-space u·x ≤ h(u) that contains C.
 
@@ -339,7 +339,7 @@ a parallelogram.”
 
 **Remember:** The intersection of all candidates lies inside each candidate.
 
-*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 52A05. arXiv math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)), 52A05. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The convex hull of a nonempty set X is the intersection of all convex sets that contain X.
 
@@ -359,7 +359,7 @@ a parallelogram.”
 
 **Remember:** A face swallows any segment it touches inside; apply that twice.
 
-*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG, math.OC. Level 2: later undergraduate.
+*True by definition.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)). arXiv math.MG, math.OC. Level 2: later undergraduate.
 
 **Definition.** A face of a convex set C is a convex subset F that swallows segments: if a point strictly inside a segment of C lies in F, both endpoints lie in F. An exposed face is the set where some linear function attains its maximum on C.
 
@@ -393,7 +393,7 @@ a parallelogram.”
 
 **Remember:** Apply ball polarity twice to recover the ball hull.
 
-*Rules out counterexamples.* MSC 52A30 (Variants of convex sets (star-shaped, (\\(m, n\\))-convex, etc.)). arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52A30 (Variants of convex sets (star-shaped, (m, n)-convex, etc.)). arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** The radius-r polar of a set consists of the centers of all closed radius-r balls that contain the set. A radius-r ball body is an intersection of closed radius-r balls.
 
@@ -411,7 +411,7 @@ a parallelogram.”
 
 **Remember:** A guard must stay on the inward side of every edge.
 
-*True by definition.* MSC 52A30 (Variants of convex sets (star-shaped, (\\(m, n\\))-convex, etc.)). arXiv cs.CG. Level 2: later undergraduate.
+*True by definition.* MSC 52A30 (Variants of convex sets (star-shaped, (m, n)-convex, etc.)). arXiv cs.CG. Level 2: later undergraduate.
 
 **Definition.** The kernel of a simple polygon is the set of points that see the whole polygon, where two points see each other if the segment between them stays in the closed polygon. Equivalently, it is the intersection of the closed half-planes to the left of the edges, traversed counterclockwise.
 
@@ -710,7 +710,7 @@ a parallelogram.”
 
 **Remember:** A finite convex hull cannot contain an infinite ray.
 
-*Rules out counterexamples.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52B05. arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52B11 (n-dimensional polytopes), 52B05. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** A polytope is a bounded intersection of finitely many closed half-spaces, so, unlike a general polyhedron, it contains no infinite ray.
 
@@ -726,7 +726,7 @@ a parallelogram.”
 
 **Remember:** Affine maps send hulls of points to hulls of their images.
 
-*True by definition.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52B55. arXiv math.CO, math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52B11 (n-dimensional polytopes), 52B55. arXiv math.CO, math.MG. Level 2: later undergraduate.
 
 **Definition.** Here a polytope is the convex hull of finitely many points, the set of their weighted averages with nonnegative weights that sum to 1.
 
@@ -742,7 +742,7 @@ a parallelogram.”
 
 **Remember:** Intersecting polytopes just pools their lists of inequalities.
 
-*True by definition.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52B55. arXiv math.CO, math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52B11 (n-dimensional polytopes), 52B55. arXiv math.CO, math.MG. Level 2: later undergraduate.
 
 **Definition.** Here a polytope is a nonempty bounded intersection of finitely many closed half-spaces, each given by a weak linear inequality.
 
@@ -758,7 +758,7 @@ a parallelogram.”
 
 **Remember:** A weighted combination proves membership, and one failed inequality proves nonmembership.
 
-*True by definition.* MSC 52B11 (\\(n\\)-dimensional polytopes), 90C05. arXiv math.OC, math.CO. Level 2: later undergraduate.
+*True by definition.* MSC 52B11 (n-dimensional polytopes), 90C05. arXiv math.OC, math.CO. Level 2: later undergraduate.
 
 **Definition.** By Minkowski–Weyl, a convex polytope is both the hull of finitely many vertices and the bounded solution set of finitely many weak linear inequalities. So a point lies in it exactly when it is a weighted average of vertices, and outside it exactly when it breaks a listed inequality.
 
@@ -945,7 +945,7 @@ a parallelogram.”
 
 **Remember:** At the volume threshold, the lattice point may sit on the boundary.
 
-*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in n dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** A convex body is a compact convex set with nonempty interior. Being closed, it contains its boundary, where a limiting lattice point can sit (our own).
 
@@ -961,7 +961,7 @@ a parallelogram.”
 
 **Remember:** Each coordinate splits into an integer and a remainder in \[0,1).
 
-*True by definition. Confidence: medium.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)), 11H06. arXiv math.MG, math.NT. Level 2: later undergraduate.
+*True by definition. Confidence: medium.* MSC 52C07 (Lattices and convex bodies in n dimensions (aspects of discrete geometry)), 11H06. arXiv math.MG, math.NT. Level 2: later undergraduate.
 
 **Definition.** For a lattice basis b₁, …, bₙ of ℝⁿ, the half-open parallelepiped is the set of points c₁b₁+⋯+cₙbₙ with each cᵢ in \[0, 1). Leaving out 1 stops neighbouring copies from sharing boundary faces.
 
@@ -977,7 +977,7 @@ a parallelogram.”
 
 **Remember:** A symmetric convex body contains the differences of its half-size copy.
 
-*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in n dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** An origin-symmetric convex body is a compact convex set with nonempty interior that contains −x whenever it contains x. Symmetry and convexity put u − v in the body whenever u and v lie in the half-size body (our own).
 
@@ -993,7 +993,7 @@ a parallelogram.”
 
 **Remember:** Every diagonal cuts the polygon in two, so no cycles.
 
-*Rules out counterexamples.* MSC 52C20 (Tilings in \\(2\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 52C20 (Tilings in 2 dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
 
 **Definition.** Triangulate a simple polygon, one bounded by a single closed chain with no crossings, without adding vertices. Every interior edge is then a diagonal that cuts the polygon into two pieces (our own). The dual graph joins two triangles when they share an interior edge.
 
@@ -1009,7 +1009,7 @@ a parallelogram.”
 
 **Remember:** One added height turns each weight into a squared distance.
 
-*True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+*True by definition.* MSC 52C22 (Tilings in n dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
 
 **Definition.** The power diagram of weighted sites gives each point x the sites p that minimize ‖x−p‖² − wₚ, a squared distance minus a weight. Lifting each p to height √(K − wₚ), with K at least every weight, turns this into an ordinary squared distance minus K (our own).
 
@@ -1027,7 +1027,7 @@ a parallelogram.”
 
 **Remember:** Power is a squared distance minus a weight, so ‖x‖² cancels.
 
-*True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
+*True by definition.* MSC 52C22 (Tilings in n dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
 
 **Definition.** Give each of finitely many distinct Euclidean sites p a real weight w. Its power cell holds the points x where ‖x−p‖² − w is smallest among the sites, and all these values share the term ‖x‖².
 
@@ -1045,7 +1045,7 @@ a parallelogram.”
 
 **Remember:** Each other site contributes one linear inequality.
 
-*True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)), 52B11. arXiv math.MG, cs.CG. Level 2: later undergraduate.
+*True by definition.* MSC 52C22 (Tilings in n dimensions (aspects of discrete geometry)), 52B11. arXiv math.MG, cs.CG. Level 2: later undergraduate.
 
 **Definition.** The Voronoi cell of a site p, among finitely many distinct Euclidean sites, is an intersection of closed half-spaces. Each other site q gives the half-space on p's side of the perpendicular bisector of p and q.
 
@@ -1115,7 +1115,7 @@ a parallelogram.”
 
 **Remember:** Nondegenerate means no flat direction at any equilibrium.
 
-*Rules out counterexamples.* MSC 52A15 (Convex sets in \\(3\\) dimensions (including convex surfaces)). arXiv math.MG. Level 3: graduate.
+*Rules out counterexamples.* MSC 52A15 (Convex sets in 3 dimensions (including convex surfaces)). arXiv math.MG. Level 3: graduate.
 
 **Definition.** Equilibria of a smooth convex body about an interior point c are the critical points on the boundary of the squared distance from c. One is nondegenerate if its second-derivative matrix in local surface coordinates has no zero eigenvalue, making it an isolated minimum (stable), maximum (unstable) or saddle.
 
@@ -1133,7 +1133,7 @@ a parallelogram.”
 
 **Remember:** Summands escape to infinity only along opposite recession directions.
 
-*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 49J53. arXiv math.OC. Level 3: graduate.
+*Rules out counterexamples.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)), 49J53. arXiv math.OC. Level 3: graduate.
 
 **Definition.** A recession direction d of a set keeps x + td in the set for every member x and every t ≥ 0. For a nonempty closed convex set, one such ray is enough.
 
@@ -1149,7 +1149,7 @@ a parallelogram.”
 
 **Remember:** Add sets by adding their support values in each direction.
 
-*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 52A41. arXiv math.MG. Level 3: graduate.
+*True by definition.* MSC 52A20 (Convex sets in n dimensions (including convex hypersurfaces)), 52A41. arXiv math.MG. Level 3: graduate.
 
 **Definition.** For nonempty A ⊆ ℝⁿ, the support function h(A,x) is the supremum of ⟨x,a⟩ over a in A, its farthest reach in direction x. A supremum over sums a + b splits into two suprema, so support functions add over Minkowski sums A + B.
 
@@ -1371,7 +1371,7 @@ a parallelogram.”
 
 **Remember:** Each facet plane becomes one corner of the polar.
 
-*True by definition. Confidence: medium.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52A20. arXiv math.MG. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 52B11 (n-dimensional polytopes), 52A20. arXiv math.MG. Level 3: graduate.
 
 **Definition.** Let P be a full-dimensional polytope with 0 in its interior. Then each facet lies on a unique plane a · x = 1, with P on the side a · x ≤ 1. The polar of P is the convex hull of these facet vectors a, one for each facet.
 
@@ -1387,7 +1387,7 @@ a parallelogram.”
 
 **Remember:** Maximize on the sum by maximizing on each summand.
 
-*Makes the theorem clean to state or prove.* MSC 52B11 (\\(n\\)-dimensional polytopes). arXiv cs.CG, math.MG. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 52B11 (n-dimensional polytopes). arXiv cs.CG, math.MG. Level 3: graduate.
 
 **Definition.** The normal cone of a face F of a polytope is the set of directions whose dot product is maximized on all of F, and these cones form the normal fan. In each direction, the top face of a Minkowski sum P + Q is the sum of the top faces of P and Q (our own).
 
@@ -1576,7 +1576,7 @@ a parallelogram.”
 
 **Remember:** Clip each ball to its own cell; the union stays the same.
 
-*Makes the theorem clean to state or prove.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 52C22 (Tilings in n dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 3: graduate.
 
 **Definition.** Take finitely many sites in Euclidean space and a radius r ≥ 0. Clip each closed ball of radius r to its site's Voronoi cell, the points at least as close to that site as to any other, and the clipped balls still cover the union (our own). The alpha complex has a simplex for each group of clipped balls with a common point.
 
@@ -1794,7 +1794,7 @@ a parallelogram.”
 
 **Remember:** A narrow span becomes a long central chord in the polar.
 
-*Makes the theorem clean to state or prove.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 52C07 (Lattices and convex bodies in n dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
 **Definition.** The lattice width of a convex body is its least span, the range of y · x over the body, over nonzero y in the dual lattice. The lattice diameter is its greatest chord length, counted in primitive lattice steps along the chord. In the polar of an origin-symmetric body, a span of 2h in direction y becomes a central chord of 2/h steps of y (our own).
 
@@ -1812,7 +1812,7 @@ a parallelogram.”
 
 **Remember:** A point is covered exactly when its radius ball contains a center.
 
-*True by definition.* MSC 52C17 (Packing and covering in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+*True by definition.* MSC 52C17 (Packing and covering in n dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
 **Definition.** A stationary packing by equal open balls of radius r in a homogeneous space is random, with a law unchanged by every isometry. Its density is the chance that a fixed point is covered, and its center intensity is the expected number of centers per unit of invariant volume. A point x is covered exactly when the ball of radius r around x contains a center, and then exactly one (our own).
 
@@ -1830,7 +1830,7 @@ a parallelogram.”
 
 **Remember:** A round unit ball lets every move break a tie.
 
-*Rules out counterexamples.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+*Rules out counterexamples.* MSC 52C22 (Tilings in n dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
 **Definition.** In a normed plane, each site p has a weight wₚ and claims the points x where ‖x − p‖ − wₚ is least, and it is nondegenerate if it wins strictly at p. A norm is strictly convex if its unit circle contains no segment. Then ‖a + b‖ &lt; ‖a‖ + ‖b‖ unless a and b point the same way.
 

@@ -3828,7 +3828,7 @@
 
 **Remember:** Derivatives that grow slowly enough pin a function to one point.
 
-*Rules out counterexamples.* MSC 26E10 (\\(C<sup>\\infty\\</sup>)-functions, quasi-analytic functions). arXiv math.CA. Level 4: research.
+*Rules out counterexamples.* MSC 26E10 (C<sup>∞</sup>-functions, quasi-analytic functions). arXiv math.CA. Level 4: research.
 
 **Definition.** A function lies in the Denjoy–Carleman class of the weights Mₖ when one constant C ≥ 1 bounds its kth derivative everywhere by Cᵏ⁺¹Mₖ, for every k. The weights are positive with M₀ = 1, their successive ratios Mₖ/Mₖ₋₁ increase to infinity, and the reciprocals of these ratios have divergent sum.
 

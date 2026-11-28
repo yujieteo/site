@@ -1498,7 +1498,7 @@ $$x + y = z$”
 
 **Remember:** Each coefficient counts partitions that fit inside a box.
 
-*True by definition.* MSC 05A30 (\\(q\\)-calculus and related topics), 05A17. arXiv math.CO. Level 2: later undergraduate.
+*True by definition.* MSC 05A30 (q-calculus and related topics), 05A17. arXiv math.CO. Level 2: later undergraduate.
 
 **Definition.** For integers m, n ≥ 0, the Gaussian binomial adds qˢ for each partition in an m × n box, where s is the partition’s size. A partition fits the box when it has at most m parts, each at most n.
 
@@ -3878,7 +3878,7 @@ $$x + y = z$”
 
 **Remember:** Track the same distance from the middle as the box grows.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 05A30 (\\(q\\)-calculus and related topics), 05A17. arXiv math.NT, math.CO. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 05A30 (q-calculus and related topics), 05A17. arXiv math.NT, math.CO. Level 4: research.
 
 **Definition.** The coefficient of qⁿ in a Gaussian polynomial counts partitions of n that fit in an m by N box. A perpendicular series fixes m and a distance A from the middle degree mN/2. Its coefficient of zᴺ is the count at degree mN/2 − A, or zero if that degree is not allowed.
 

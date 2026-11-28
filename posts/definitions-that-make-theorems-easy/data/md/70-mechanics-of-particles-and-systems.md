@@ -18,7 +18,7 @@
 
 **Remember:** Weight each position by mass, and mass times acceleration becomes force.
 
-*True by definition.* MSC 70F10 (\\(n\\)-body problems). arXiv physics.class-ph. Level 1: early undergraduate.
+*True by definition.* MSC 70F10 (n-body problems). arXiv physics.class-ph. Level 1: early undergraduate.
 
 **Definition.** The center of mass is the average of the particle positions, each weighted by its mass. So total mass times its acceleration is the sum of each mass times its acceleration (our own).
 
@@ -196,7 +196,7 @@
 
 **Remember:** Sum position dot momentum; a bounded quantity has zero average rate.
 
-*Makes the theorem clean to state or prove.* MSC 70F10 (\\(n\\)-body problems), 70H33. arXiv physics.class-ph, math-ph. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 70F10 (n-body problems), 70H33. arXiv physics.class-ph, math-ph. Level 2: later undergraduate.
 
 **Definition.** The virial G is the sum over particles of position dotted with momentum. Its time derivative is twice the kinetic energy plus the sum of position dotted with force (our own).
 
@@ -214,7 +214,7 @@
 
 **Remember:** One shared inward factor lets one scale govern every body.
 
-*Makes the theorem clean to state or prove.* MSC 70F10 (\\(n\\)-body problems). arXiv physics.class-ph, math.DS. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 70F10 (n-body problems). arXiv physics.class-ph, math.DS. Level 2: later undergraduate.
 
 **Definition.** In a central configuration, each body’s gravitational acceleration is the same negative multiple of its displacement from the center of mass, with one multiple for all bodies.
 
@@ -230,7 +230,7 @@
 
 **Remember:** Relative velocities have zero total momentum, so the kinetic energies add.
 
-*True by definition.* MSC 70F10 (\\(n\\)-body problems). arXiv physics.class-ph. Level 2: later undergraduate.
+*True by definition.* MSC 70F10 (n-body problems). arXiv physics.class-ph. Level 2: later undergraduate.
 
 **Definition.** For particles of constant positive mass, the center of mass moves at the mass-weighted mean velocity V. Each particle’s relative velocity is its velocity minus V, so the relative momenta sum to zero (our own).
 

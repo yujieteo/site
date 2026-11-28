@@ -2138,7 +2138,7 @@
 
 **Remember:** In each triangle, the middle class equals the sum of the outer classes.
 
-*True by definition.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)), 18G80. arXiv math.KT, math.CT. Level 3: graduate.
+*True by definition.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)), 18G80. arXiv math.KT, math.CT. Level 3: graduate.
 
 **Definition.** For an essentially small triangulated category, K₀ has one abelian group generator per isomorphism class of objects. Impose \[B\] = \[A\] + \[C\] for every distinguished triangle A → B → C → ΣA.
 
@@ -2154,7 +2154,7 @@
 
 **Remember:** Each cofiber sequence is a 2-simplex with faces sub, whole and quotient.
 
-*Makes the theorem clean to state or prove.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)), 18N45. arXiv math.KT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)), 18N45. arXiv math.KT. Level 3: graduate.
 
 **Definition.** For a Waldhausen category C, the n-simplices of S•C are chains of n cofibrations starting at 0, with chosen quotients, and K(C) is the loop space of the realization of wS•C (our own). The 2-simplices of S•C are cofiber sequences A₁ ↣ A₂ ↠ A₂/A₁, whose three faces are A₂/A₁, A₂ and A₁ (our own).
 
@@ -4368,7 +4368,7 @@
 
 **Remember:** Fibrations and path objects alone give a homotopy category of spans.
 
-*Makes the theorem clean to state or prove.* MSC 18N45 (Categories of fibrations, relations to \\(K\\)-theory, relations to type theory), 18N55. arXiv math.AT, math.CT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 18N45 (Categories of fibrations, relations to K-theory, relations to type theory), 18N55. arXiv math.AT, math.CT. Level 3: graduate.
 
 **Definition.** A category of fibrant objects (Brown) has finite products, weak equivalences that contain the isomorphisms and satisfy two-out-of-three, and fibrations that compose and include every map to the terminal object. Fibrations and acyclic fibrations have pullbacks along any map, and these are again fibrations and acyclic fibrations. Every diagonal X → X × X factors as a weak equivalence followed by a fibration, giving a path object.
 
@@ -4386,7 +4386,7 @@
 
 **Remember:** An isofibration lifts every isomorphism out of an image, exactly.
 
-*Rules out counterexamples.* MSC 18N45 (Categories of fibrations, relations to \\(K\\)-theory, relations to type theory), 18N40, 18A30. arXiv math.CT, math.AT. Level 3: graduate.
+*Rules out counterexamples.* MSC 18N45 (Categories of fibrations, relations to K-theory, relations to type theory), 18N40, 18A30. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A functor p: E → B is an isofibration if every isomorphism in B that starts at an image p(e) lifts to an isomorphism in E that starts at e. So every object of B isomorphic to p(e) is hit exactly, by an object isomorphic to e.
 
@@ -4530,7 +4530,7 @@
 
 **Remember:** Enough Cartesian lifts turn a correspondence into a functor.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18D30. arXiv math.CT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18D30. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A Cartesian fibration of ∞-categories is an inner fibration p in which every base arrow f : d₁ → d₂ has, at each object over d₂, a Cartesian lift, a universal arrow over f ending at that object. Universal means that maps into its source are, up to equivalence, maps into its target whose image factors through f.
 
@@ -4548,7 +4548,7 @@
 
 **Remember:** In an ∞-category, being idempotent is structure, not a property.
 
-*Rules out counterexamples.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18A30. arXiv math.CT, math.AT. Level 3: graduate.
+*Rules out counterexamples.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18A30. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** An idempotent in an ∞-category C is a functor Idem → C from the walking idempotent, the nerve of the free category on one idempotent map, so it carries e ∘ e ≃ e and all higher coherences. It is effective, or splits, if it extends to the walking retraction Idem⁺.
 
@@ -4567,7 +4567,7 @@
 
 **Remember:** Complete means every equivalence is a path in the space of objects.
 
-*Rules out counterexamples.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18N50. arXiv math.CT, math.AT. Level 3: graduate.
+*Rules out counterexamples.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18N50. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A Segal space is a Reedy-fibrant simplicial space X whose Segal maps identify each Xₙ, up to weak equivalence, with strings of n composable arrows. It is complete if the degeneracy from the space of objects X₀ to the space of equivalences in X₁ is a weak equivalence, so equivalent objects are joined by a path in X₀.
 
@@ -4585,7 +4585,7 @@
 
 **Remember:** In an ∞-topos, a family over a colimit equals compatible families over the pieces.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18A30. arXiv math.CT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18A30. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A colimit is van Kampen if an object over the colimit is the same as a compatible family of objects over its pieces. Precisely, the slice functor x ↦ C/x takes it to a limit of categories.
 
@@ -4604,7 +4604,7 @@
 
 **Remember:** Hypercomplete means homotopy sheaves see everything.
 
-*True by definition.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55P10. arXiv math.CT, math.AT. Level 3: graduate.
+*True by definition.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55P10. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** An ∞-topos is hypercomplete if no object can tell an ∞-connected map from an equivalence: precomposing with such a map gives an equivalence of mapping spaces into every object. An ∞-connected map is one that induces isomorphisms on all homotopy sheaves, at every component and local basepoint.
 
@@ -4622,7 +4622,7 @@
 
 **Remember:** Mark the edges that should be Cartesian, and the model structure can see them.
 
-*Makes the theorem clean to state or prove.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18N45, 18N50. arXiv math.CT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18N45, 18N50. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A marked simplicial set is a simplicial set with a chosen set of edges, the marked ones, that includes every degenerate edge. The marking records which edges should be Cartesian, so a lifting property can test them.
 
@@ -4640,7 +4640,7 @@
 
 **Remember:** In a stable ∞-category, fibre sequences and cofibre sequences are the same thing.
 
-*Makes the theorem clean to state or prove.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18G80. arXiv math.CT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18G80. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** A stable ∞-category has a zero object and all finite limits and colimits, and its pullback squares are exactly its pushout squares. So the cone of a map, its pushout along the map to 0, is functorial, and its defining square is also a pullback (our own).
 
@@ -4659,7 +4659,7 @@
 
 **Remember:** To test for an adjoint, remember the mapping spaces, not only their components.
 
-*Rules out counterexamples. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18D20, 18A40. arXiv math.CT, math.AT. Level 3: graduate.
+*Rules out counterexamples. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18D20, 18A40. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** The Ho-enriched homotopy category of an (∞,1)-category keeps each mapping space as an object of Ho, the homotopy category of spaces. The ordinary homotopy category keeps only its set of path components.
 
@@ -4677,7 +4677,7 @@
 
 **Remember:** A simplex of the coherent nerve is a diagram that commutes up to coherent homotopy.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18D20, 18N50. arXiv math.CT, math.AT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18D20, 18N50. arXiv math.CT, math.AT. Level 3: graduate.
 
 **Definition.** An n-simplex of the homotopy coherent nerve N(C) of a simplicial category C is an n-simplex diagram in C that commutes up to homotopies, which commute up to higher homotopies, and so on. Formally it is a simplicial functor S\[Δⁿ\] → C, where the maps from i to j in S\[Δⁿ\] form the nerve of the poset of subsets of \[i,j\] containing i and j.
 
@@ -6208,7 +6208,7 @@
 
 **Remember:** A flag determines its quotient data up to unique compatible isomorphism.
 
-*True by definition.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+*True by definition.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
 
 **Definition.** An n-step flag in a Waldhausen category is a chain of n cofibrations starting at zero. Its quotient data are chosen pushouts Aⱼ ⊔₍Aᵢ₎ 0 for all 0 ≤ i ≤ j ≤ n, each unique up to unique isomorphism (our own).
 
@@ -6227,7 +6227,7 @@
 
 **Remember:** A square is an equivalence exactly when its cone map is.
 
-*Makes the theorem clean to state or prove.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
 
 **Definition.** Fix an exact category with forms, weak equivalences and a strong symmetric cone in Schlichting’s sense. In its arrow category, a commuting square counts as a weak equivalence exactly when the map it induces between the two mapping cones is one.
 
@@ -6245,7 +6245,7 @@
 
 **Remember:** Gluing flags needs the shared quotient’s isomorphism, not only its class.
 
-*Rules out counterexamples.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
+*Rules out counterexamples.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)). arXiv math.KT. Level 4: research.
 
 **Definition.** Waldhausen’s construction records a flag 0 ⊂ A ⊂ B ⊂ X (equalities allowed) with all its quotients and chosen isomorphisms between them. To glue two quotient diagrams, one must specify an isomorphism between their copies of the common object.
 
@@ -6264,7 +6264,7 @@
 
 **Remember:** K-theory is the maps out of the motive of finite spectra.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F25 (Algebraic \\(K\\)-theory and \\(L\\)-theory (category-theoretic aspects)), 18N60. arXiv math.KT, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18F25 (Algebraic K-theory and L-theory (category-theoretic aspects)), 18N60. arXiv math.KT, math.CT. Level 4: research.
 
 **Definition.** An additive invariant of small stable ∞-categories is a functor that inverts Morita equivalences, preserves filtered colimits, and sends split exact sequences to cofiber sequences. The universal one, U, sends each category to its motive, and every additive invariant factors uniquely through U by a colimit-preserving functor.
 
@@ -7226,7 +7226,7 @@
 
 **Remember:** An A∞-functor is a dg functor from a built-in free resolution.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G70 (\\(A\_\\)-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18G70 (A<sub>∞</sub>-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
 
 **Definition.** An A∞-functor from A to B sends objects to objects and strings of n composable morphisms to morphisms by maps fₙ of degree 1−n, for n ≥ 1. Together these maps form a coalgebra map between bar constructions that commutes with their differentials. It is strictly unital if f₁ preserves identities and every fₙ with n &gt; 1 vanishes on strings containing an identity.
 
@@ -7245,7 +7245,7 @@
 
 **Remember:** Shifted objects glued by triangular twists are iterated cones.
 
-*Makes the theorem clean to state or prove.* MSC 18G70 (\\(A\_\\)-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 18G70 (A<sub>∞</sub>-categories, relations with homological mirror symmetry), 18G35. arXiv math.CT. Level 4: research.
 
 **Definition.** A twisted complex over an uncurved A∞-category A is a finite sum of shifted objects of A with a strictly triangular degree-one map δ that solves the Maurer–Cartan equation ∑ₙ≥₁ mₙ(δ,…,δ) = 0. Triangularity glues each summand onto the earlier ones by a cone (our own).
 
@@ -8358,7 +8358,7 @@
 
 **Remember:** Everything strict except sliding two 2-cells past each other.
 
-*Makes the theorem clean to state or prove.* MSC 18N20 (Tricategories, weak \\(n\\)-categories, coherence, semi-strictification). arXiv math.CT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 18N20 (Tricategories, weak n-categories, coherence, semi-strictification). arXiv math.CT. Level 4: research.
 
 **Definition.** A Gray-category is a 3-category that is strict except for interchange: two 2-cells side by side slide past each other only up to a coherent isomorphism. Formally, it is a category enriched in strict 2-categories with the Gray tensor product.
 
@@ -8778,7 +8778,7 @@
 
 **Remember:** Constant sheaves remember exactly the ∞-groupoids they came from.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55P55. arXiv math.CT, math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55P55. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** An (∞,1)-topos H is ∞-connected if its constant-sheaf functor LConst: ∞Grpd → H is fully faithful, so constant sheaves have the same mapping spaces as the ∞-groupoids they come from.
 
@@ -8796,7 +8796,7 @@
 
 **Remember:** Every square against a truncated map has a contractible space of lifts.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55U35. arXiv math.AT, math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55U35. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** In an ∞-topos, call a map n-connected if every square from it to an n-truncated map, one whose fibers have no homotopy above degree n, has a contractible space of diagonal fillers.
 
@@ -8814,7 +8814,7 @@
 
 **Remember:** Finite-limit functors preserve every diagonal in the truncation test.
 
-*True by definition.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories). arXiv math.CT, math.AT. Level 4: research.
+*True by definition.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories). arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** Truncation is defined by diagonals: a map is (−2)-truncated if it is an equivalence, and for k ≥ −1 a map X → Y is k-truncated if its diagonal X → X ×<sub>Y</sub> X is (k−1)-truncated. An object is k-truncated if its map to the terminal object is.
 
@@ -8832,7 +8832,7 @@
 
 **Remember:** The degree-one term of the quotient nerve is the loop object.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55R35, 55P35. arXiv math.AT, math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55R35, 55P35. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** A groupoid object U• in an ∞-topos is effective if it is the Čech nerve of its own quotient map U₀ → \|U•\|. A group object G gives a one-object groupoid with U₀ = ∗, U₁ = G and quotient BG.
 
@@ -8850,7 +8850,7 @@
 
 **Remember:** A G-∞-category is a presheaf of ∞-categories on the orbits G/H.
 
-*True by definition.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55P91. arXiv math.AT, math.CT. Level 4: research.
+*True by definition.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55P91. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** A G-∞-category is a presheaf of ∞-categories on the orbit category of G: one ∞-category for each orbit G/H, with restriction functors along the G-maps between orbits.
 
@@ -8868,7 +8868,7 @@
 
 **Remember:** Units and counits compose by the ordinary rules for a 2-category.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18N10, 18A40. arXiv math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18N10, 18A40. arXiv math.CT. Level 4: research.
 
 **Definition.** For functors F: A → B and U: B → A between quasi-categories, an adjunction consists of transformations id<sub>A</sub> ⇒ UF and FU ⇒ id<sub>B</sub>. Their two triangle composites must equal the respective identities in the homotopy categories of the functor quasi-categories.
 
@@ -8886,7 +8886,7 @@
 
 **Remember:** Up to homotopy, every small map is a pullback of one universal map.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 03B38. arXiv math.CT, math.LO. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 03B38. arXiv math.CT, math.LO. Level 4: research.
 
 **Definition.** For a pullback-stable class S, an S-classifier is one map p: Û → U in S such that pulling back p turns maps X → U into S-maps over X. Precisely, for every X it identifies Map(X,U) with the maximal ∞-groupoid of S-maps over X.
 
@@ -8904,7 +8904,7 @@
 
 **Remember:** A bundle is the homotopy fiber of its classifying map.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55R15, 55R35. arXiv math.AT, math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55R15, 55R35. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** For a group object G in an ∞-topos, a principal G-bundle over X is an object P with a G-action whose homotopy quotient P//G, the colimit of the action groupoid, is equivalent to X. The bundle map is the resulting map P → X.
 
@@ -8922,7 +8922,7 @@
 
 **Remember:** Every stable target is a double loop object, so maps into it add.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55P42. arXiv math.AT, math.CT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55P42. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** A pointed ∞-category with finite limits and colimits is stable if suspension, Y ↦ the pushout of 0 ← Y → 0, is an equivalence. Its inverse is then the loop functor.
 
@@ -8938,7 +8938,7 @@
 
 **Remember:** Test every mapping space into the object for homotopy above degree n.
 
-*True by definition.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55U35. arXiv math.AT, math.CT. Level 4: research.
+*True by definition.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55U35. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** For n ≥ 0, a space is n-truncated if its homotopy groups above degree n vanish at every base point. An object A of an ∞-category is n-truncated if every space of maps into A is n-truncated.
 
@@ -8956,7 +8956,7 @@
 
 **Remember:** Free and transitive together mean that the quotient is a point, up to homotopy.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55R35, 03B38. arXiv math.AT, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55R35, 03B38. arXiv math.AT, math.CT. Level 4: research.
 
 **Definition.** An action of an ∞-group G is a type family X over its classifying type BG. Call the action regular if its homotopy quotient, the total type ∑(b ∈ BG) X(b), is contractible.
 
@@ -8972,7 +8972,7 @@
 
 **Remember:** Cohomology is components of maps into A; looping A lowers degree.
 
-*True by definition.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 55U35, 18F20. arXiv math.CT, math.AT. Level 4: research.
+*True by definition.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 55U35, 18F20. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** In an ∞-category with finite limits, the cohomology of X with coefficients in a pointed object A is the set of path components of the mapping space Map(X, A). In degree −n, for n ≥ 0, replace A by its n-fold loop object, and Map(X, −) turns these loops and all fibers of coefficients into loops and fibers of mapping spaces.
 
@@ -8990,7 +8990,7 @@
 
 **Remember:** In stable categories, pullback squares and pushout squares are the same squares.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18G80. arXiv math.CT, math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18G80. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** An ∞-category, a category with spaces of maps, is stable if it has finite limits and colimits, a zero object that is both initial and terminal, and its pullback squares are exactly its pushout squares.
 
@@ -9006,7 +9006,7 @@
 
 **Remember:** Maps into a limit form a point, so limits do too.
 
-*True by definition. Confidence: medium.* MSC 18N60 (\\((\\infty,1)\\)-categories (quasi-categories, Segal spaces, etc.); \\(\\infty\\)-topoi, stable \\(\\infty\\)-categories), 18A30. arXiv math.CT, math.AT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 18N60 ((∞,1)-categories (quasi-categories, Segal spaces, etc.); ∞-topoi, stable ∞-categories), 18A30. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** In an ∞-category, a limit of a diagram is a terminal cone: an object with compatible maps to every entry of the diagram, such that the space of cone maps from any other cone into it is contractible, that is, equivalent to a point.
 
@@ -9024,7 +9024,7 @@
 
 **Remember:** Squash an (n+k)-category to one point below level k.
 
-*True by definition.* MSC 18N65 (\\((\\infty, n)\\)-categories and \\((\\infty,\\infty)\\)-categories), 18N70. arXiv math.CT, math.AT. Level 4: research.
+*True by definition.* MSC 18N65 ((∞, n)-categories and (∞,∞)-categories), 18N70. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** A k-tuply monoidal n-category is a pointed (n+k)-category that is trivial below level k: every object is equivalent to the base point, and any two parallel j-morphisms are equivalent for j &lt; k. This triviality below level k is what (k−1)-connected means.
 
@@ -9043,7 +9043,7 @@
 
 **Remember:** k monoidal products are k directions for placing cubes side by side.
 
-*Makes the theorem clean to state or prove.* MSC 18N65 (\\((\\infty, n)\\)-categories and \\((\\infty,\\infty)\\)-categories), 18N70. arXiv math.CT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 18N65 ((∞, n)-categories and (∞,∞)-categories), 18N70. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** A k-tuply monoidal n-category is an n-category with an action of the little k-cubes operad. Each way to place r disjoint, axis-aligned little cubes in the unit k-cube gives an r-fold product, and nesting configurations composes these products.
 
@@ -9063,7 +9063,7 @@
 
 **Remember:** Like the point: a dual, and adjoints in every dimension.
 
-*Makes the theorem clean to state or prove.* MSC 18N65 (\\((\\infty, n)\\)-categories and \\((\\infty,\\infty)\\)-categories), 57R56, 18M10. arXiv math.CT, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 18N65 ((∞, n)-categories and (∞,∞)-categories), 57R56, 18M10. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** In a symmetric monoidal (∞,n)-category, an object is fully dualizable if it has a dual whose evaluation and coevaluation maps have left and right adjoints, whose units and counits again have adjoints, and so on through dimension n. These are exactly the duals and adjoints that the framed point has among framed bordisms.
 
@@ -9082,7 +9082,7 @@
 
 **Remember:** Composition is Πₙ of path reparametrization, so paths compose automatically.
 
-*True by definition.* MSC 18N65 (\\((\\infty, n)\\)-categories and \\((\\infty,\\infty)\\)-categories), 18M75, 55P15. arXiv math.CT, math.AT. Level 4: research.
+*True by definition.* MSC 18N65 ((∞, n)-categories and (∞,∞)-categories), 18M75, 55P15. arXiv math.CT, math.AT. Level 4: research.
 
 **Definition.** Trimble n-categories are defined by induction: a 0-category is a set, and an (n+1)-category has objects and an n-category of arrows between each ordered pair, composed by the operad ΠₙT. Here T(r) is the space of endpoint-preserving maps \[0,1\] → \[0,r\], the ways to run one path through r consecutive paths.
 

@@ -1218,6 +1218,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Commuting flows make compact regular level sets tori
+
+**Remember:** n commuting flows turn each level set into one group orbit.
+
+*True by definition.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 70H06. arXiv math.DS, math.SG. Level 3: graduate.
+
+**Definition.** A Hamiltonian system on a 2n-dimensional symplectic manifold is Liouville integrable when it has n conserved functions with independent differentials whose pairwise Poisson brackets vanish. Vanishing brackets make their Hamiltonian flows commute. So the flows together give an action of the additive group ℝⁿ on each common level set.
+
+**Problem.** Every compact connected regular level set of a Liouville integrable system is an n-dimensional torus. On it the motion is a linear flow with constant velocity.
+
+**How the definition helps.** The commuting flows give an ℝⁿ action with open orbits, so a connected level set is ℝⁿ modulo the times that fix a point (our own). Compactness makes those times a lattice ℤⁿ, so the level set is an n-torus with straight-line flows (our own). Liouville solved the equations by quadratures, while the ℝⁿ action gives the shape, and the work moves into classifying discrete subgroups of ℝⁿ (our own).
+
+**Wikipedia:** [Liouville–Arnold theorem](https://en.wikipedia.org/wiki/Liouville%E2%80%93Arnold_theorem). It says: “is furthermore compact and connected, it is diffeomorphic to the N-torus 𝕋ⁿ.”
+
+**Paper or page:** [Deformational rigidity of integrable metrics on the torus](https://arxiv.org/abs/2210.02961). It says: “is diffeomorphic to an n-dimensional torus 𝕋ⁿ, called a Liouville torus.”
+
+**Sources:**
+
+- [V. I. Arnold, Mathematical Methods of Classical Mechanics, Graduate Texts in Mathematics, Springer (1989)](https://doi.org/10.1007/978-1-4757-2063-1)
+
 ### Commuting integrals give Lagrangian fibers
 
 **Remember:** Zero brackets mean zero pairings, so common levels are Lagrangian.
@@ -1233,6 +1253,24 @@
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “The corresponding level set f⁻¹(c) is a Lagrangian submanifold of M.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Extra noncommuting integrals shrink invariant tori, closing Kepler orbits
+
+**Remember:** More conserved quantities leave less room, so the tori shrink.
+
+*Makes the theorem clean to state or prove.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 70H06. arXiv math.DS, math.SG. Level 3: graduate.
+
+**Definition.** A system with n degrees of freedom is superintegrable when it has k &gt; n independent conserved quantities whose Poisson brackets are functions of them. The matrix of these brackets must have a kernel of constant dimension m = 2n − k. This m is also the dimension of the common level sets.
+
+**Problem.** Each compact connected common level set of a superintegrable system is a torus of dimension m = 2n − k, smaller than n. In the Kepler problem, five independent conserved quantities on a six-dimensional phase space make these tori circles, so every bounded orbit without collision is periodic.
+
+**How the definition helps.** The kernel of the bracket matrix gives m functions of the conserved quantities whose commuting flows sweep out each m-dimensional level set (our own). The Liouville–Arnold argument then makes each compact connected level set an m-torus, and k = n gives back the Liouville–Arnold theorem (our own). In the Kepler problem, energy, angular momentum and the Runge–Lenz vector, which points to the nearest approach, give m = 1 (our own).
+
+**Wikipedia:** [Superintegrable Hamiltonian system](https://en.wikipedia.org/wiki/Superintegrable_Hamiltonian_system). It says: “Then the fibered manifold F is a fiber bundle in tori Tᵐ.”
+
+**Sources:**
+
+- [A. S. Mishchenko and A. T. Fomenko, Generalized Liouville method of integration of Hamiltonian systems, Funct. Anal. Appl. 12 (1978) 113–121](https://doi.org/10.1007/BF01076254)
 
 ### Lax pairs preserve eigenvalues
 
@@ -1252,6 +1290,45 @@
 
 - [Peter D. Lax, Integrals of nonlinear equations of evolution and solitary waves (1968)](https://doi.org/10.1002/cpa.3160210503)
 - [Bruce Lionnel Lietap Ndi, Djagwa Dehainsala and Joseph Dongho, Linearization, separability and Lax pairs representation of a₄⁽²⁾ Toda lattice (2025)](https://arxiv.org/abs/2501.02164v1)
+
+### Isoenergetic nondegeneracy traps orbits between KAM tori
+
+**Remember:** Fix the energy, and the frequency ratios must still move.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J40 (Perturbations of finite-dimensional Hamiltonian systems, normal forms, small divisors, KAM theory, Arnol'd diffusion), 70H08, 37J25. arXiv math.DS. Level 3: graduate.
+
+**Definition.** An integrable Hamiltonian h(I) is isoenergetically nondegenerate when, on each energy level, the ratios of its frequencies change with the actions at a nonzero rate. Equivalently, the Hessian of h, with the gradient of h added as an extra row and column, has nonzero determinant.
+
+**Problem.** In two degrees of freedom, let h be isoenergetically nondegenerate. Then, under any small enough analytic perturbation, the actions of every orbit stay close to their initial values for all time.
+
+**How the definition helps.** The condition puts surviving invariant 2-tori close together on every 3-dimensional energy surface, and each torus traps the orbits beside it (our own). Kolmogorov's nonzero Hessian is not enough, since (I₁² − I₂²)/2 + ε sin(θ₁ + θ₂) has orbits whose actions drift at speed ε (our own). With three or more degrees of freedom the tori no longer separate the energy surfaces, so the actions can drift, which is called Arnold diffusion.
+
+**Wikipedia:** [Arnold diffusion](https://en.wikipedia.org/wiki/Arnold_diffusion). It says: “It occurs in systems with more than N=2 degrees of freedom, since the N-dimensional invariant tori do not separate the 2N-1 dimensional phase space any more.”
+
+**Sources:**
+
+- [V. I. Arnol'd, Small denominators and problems of stability of motion in classical and celestial mechanics, Russian Math. Surveys 18 (1963) 85–191](https://doi.org/10.1070/RM1963v018n06ABEH001143)
+
+### Area preservation excludes fixed-point-free twist maps
+
+**Remember:** A map that keeps area cannot push a loop off itself.
+
+*Rules out counterexamples.* MSC 37J46 (Periodic, homoclinic and heteroclinic orbits of finite-dimensional Hamiltonian systems), 37E40. arXiv math.DS, math.SG. Level 3: graduate.
+
+**Definition.** A twist map of the closed annulus is a homeomorphism, isotopic to the identity, that turns its two boundary circles in opposite directions. The Poincaré–Birkhoff theorem also asks that the map preserve area, or more generally a measure with positive density.
+
+**Problem.** Every area-preserving twist map of the closed annulus has at least two fixed points.
+
+**How the definition helps.** The elementary proof builds, from a twist map without fixed points, a loop mapped to one side of itself, which area preservation forbids. Without area preservation the theorem fails: let φ be an increasing bijection of \[0, 1\] with φ(r) &gt; r for 0 &lt; r &lt; 1 (our own). Then the twist map (r, θ) ↦ (φ(r), θ + (r − ½)/2), θ modulo 1, fixes no point (our own).
+
+**Wikipedia:** [Poincaré–Birkhoff theorem](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Birkhoff_theorem). It says: “every area-preserving, orientation-preserving homeomorphism of an annulus that rotates the two boundaries in opposite directions has at least two fixed points.”
+
+**Paper or page:** [An Elementary Proof of Poincaré's Last Geometric Theorem](https://arxiv.org/abs/2111.08855). It says: “Moreover, f(C) never crosses over C, and thus violates the existence of a positive integral invariant.”
+
+**Sources:**
+
+- [G. D. Birkhoff, Proof of Poincaré's geometric theorem, Trans. Amer. Math. Soc. 14 (1913) 14–22](https://doi.org/10.2307/1988766)
+- [An Elementary Proof of Poincaré's Last Geometric Theorem, arXiv:2111.08855](https://arxiv.org/abs/2111.08855)
 
 ### Rescaled contact forms expose Reeb motion
 
@@ -1697,6 +1774,98 @@
 
 - [Oliver D. Street and So Takao, Semimartingale driven mechanics and reduction by symmetry for stochastic and dissipative dynamical systems (2024)](https://arxiv.org/abs/2312.09769v3)
 
+### Algebraic complete integrability makes solutions meromorphic in time
+
+**Remember:** Flows run in straight lines on algebraic complex tori.
+
+*True by definition. Confidence: medium.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 37J38, 14H70. arXiv math.DS, math.AG. Level 4: research.
+
+**Definition.** A complex integrable system is algebraically completely integrable when each generic level set is an abelian variety with a divisor, a hypersurface, removed. An abelian variety is a compact complex torus cut out by polynomial equations. The Hamiltonian vector fields must be translation invariant on that torus.
+
+**Problem.** For an algebraically completely integrable system, each coordinate of a generic solution extends to a meromorphic function of complex time. Some coordinate has a pole exactly at the times when the solution meets the removed divisor.
+
+**How the definition helps.** Each flow is a straight line z₀ + tv on the torus, where each coordinate is meromorphic, so each coordinate is meromorphic in t (our own). This meromorphic dependence on complex time is the Painlevé property, which Kowalevski demanded when she found her top (our own). The work moves into proving that a given system, such as the Kowalevski top, is algebraically completely integrable (our own).
+
+**Wikipedia:** [Integrable system](https://en.wikipedia.org/wiki/Integrable_system). It says: “is an affine part of an abelian variety (usually the jacobian of a spectral curve)”
+
+**Sources:**
+
+- [M. Adler, P. van Moerbeke and P. Vanhaecke, Algebraic Integrability, Painlevé Geometry and Lie Algebras, Springer (2004)](https://doi.org/10.1007/978-3-662-05650-9)
+
+### Casimirs of two pencil brackets Poisson-commute
+
+**Remember:** Two compatible brackets give a whole line of brackets.
+
+*True by definition.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 53D17, 37J37. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A Poisson pencil is a family of brackets 𝒜 + λℬ in which every member, and ℬ itself, is a Poisson bracket. A Casimir of one member is a function whose bracket with every function vanishes for that member.
+
+**Problem.** Let f be a Casimir of 𝒜 + μℬ and g a Casimir of 𝒜 + νℬ, with μ ≠ ν. Then f and g Poisson-commute for every bracket of the pencil.
+
+**How the definition helps.** The bracket of f and g is affine in λ, and the Casimirs make it vanish at μ and ν, so it vanishes for every λ (our own). For the Lie–Poisson bracket and a constant bracket, this shows that Mishchenko and Fomenko's shifted integrals with different shifts commute (our own). The work moves to Casimirs of one bracket, which need a limit argument and a regular bracket, as in the paper's theorem (our own).
+
+**Paper or page:** [Integrability of bi-Hamiltonian systems using Casimir functions and characteristic polynomials](https://arxiv.org/abs/2410.11032). It says: “are in involution w.r.t. all brackets from the pencil 𝒜\_λ = 𝒜 + λℬ, λ ∈ ℂ̄.”
+
+**Sources:**
+
+- [Integrability of bi-Hamiltonian systems using Casimir functions and characteristic polynomials, arXiv:2410.11032](https://arxiv.org/abs/2410.11032)
+
+### Excluding hyperbolic blocks makes semitoric fibres connected
+
+**Remember:** A circle action and no saddles keep every fibre in one piece.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 53D20, 37J39. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A semitoric system on a 4-manifold is an integrable system (J, H) in which J generates a circle action and is proper. Proper means that preimages of compact sets are compact. Every singular point must be nondegenerate with only elliptic or focus-focus blocks, so no hyperbolic block occurs.
+
+**Problem.** Every fibre of a semitoric system is connected (Vũ Ngọc, 2007).
+
+**How the definition helps.** Without hyperbolic blocks, H has no saddles on the surfaces J⁻¹(α)/S¹, and Morse theory there gives connected fibres (our own). On T\*S¹ × S², take J the cylinder momentum p and H a function on S² with two maxima, one saddle and one minimum (our own). Then J is proper, yet for values of H between the saddle and the lower maximum each fibre is two disjoint tori (our own).
+
+**Paper or page:** [Connectedness of fibers beyond semitoric systems I: the non-degenerate case](https://arxiv.org/abs/2402.05814). It says: “Let (M, ω, 𝔱 × ℝ, f = (Φ, g)) be a semitoric system so that Φ is proper. Then the level set f⁻¹(α, c) = Φ⁻¹(α) ∩ g⁻¹(c) is connected for all (α, c) ∈ 𝔱\* × ℝ.”
+
+**Sources:**
+
+- [S. Vũ Ngọc, Moment polytopes for symplectic manifolds with monodromy, Adv. Math. 208 (2007) 909–934](https://doi.org/10.1016/j.aim.2006.04.004)
+- [Connectedness of fibers beyond semitoric systems I: the non-degenerate case, arXiv:2402.05814](https://arxiv.org/abs/2402.05814)
+
+### Nondegenerate singularities split into elliptic, hyperbolic and focus-focus blocks
+
+**Remember:** Ask the Hessians to fill a maximal commuting family.
+
+*True by definition. Confidence: medium.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 37J39, 70H06. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A critical point where all n integrals have zero differential is nondegenerate when their Hessians span a Cartan subalgebra of the quadratic forms. These forms make a Lie algebra under the Poisson bracket, and a Cartan subalgebra is a maximal commutative subalgebra of elements diagonalizable over ℂ. Points of higher rank are treated the same way after the regular directions are split off.
+
+**Problem.** At a nondegenerate critical point there are symplectic coordinates in which suitable combinations of the integrals agree, to second order, with standard blocks. Elliptic blocks are x² + ξ², hyperbolic blocks are xξ, and focus-focus pairs are x₁ξ₂ − x₂ξ₁ and x₁ξ₁ + x₂ξ₂.
+
+**How the definition helps.** Williamson's classification of the Cartan subalgebras of the symplectic Lie algebra lists exactly these blocks, so the second-order model is that classification restated (our own). Asking only that the Hessians be independent would allow nilpotent parts such as ξ², which match no block (our own). The hard work moves into Eliasson's theorem and its sequels, which upgrade the model to a smooth symplectic normal form (our own).
+
+**Paper or page:** [Asymptotics of action variables near semi-toric singularities](https://arxiv.org/abs/1412.2414). It says: “The theorem introduces three classes of possible “components” at a critical point (apart from the regular components ξᵢ) : elliptic (the eᵢ's), hyperbolic (the hᵢ's), and focus-focus (the couples fᵢ = (f¹ᵢ,f²ᵢ)).”
+
+**Sources:**
+
+- [J. Williamson, On the algebraic problem concerning the normal forms of linear dynamical systems, Amer. J. Math. 58 (1936) 141](https://doi.org/10.2307/2371062)
+- [L. H. Eliasson, Normal forms for Hamiltonian systems with Poisson commuting integrals—elliptic case, Comment. Math. Helv. 65 (1990) 4–35](https://doi.org/10.1007/BF02566590)
+
+### Period lattices make monodromy obstruct global action–angle coordinates
+
+**Remember:** Carry the period lattice around a loop and see what returns.
+
+*True by definition.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 37J39. arXiv math.DS, math.SG. Level 4: research.
+
+**Definition.** Take a regular value with a compact connected fibre. The times t in ℝⁿ at which the commuting flows return every point of the fibre to itself form the period lattice. Hamiltonian monodromy is the change of basis of the lattice after one trip around a loop of regular values.
+
+**Problem.** If the monodromy around a loop of regular values is not the identity, no action–angle coordinates exist over that loop. Such coordinates would make every motion a uniform rotation on its torus.
+
+**How the definition helps.** The flows of action variables have period 2π, so they would give a basis of the period lattice that returns unchanged around the loop (our own). Nontrivial monodromy rules them out at once, and Duistermaat found a second obstruction, a Chern class of the torus bundle (our own). The work moves into computing the monodromy of a given system, such as the spherical pendulum (our own).
+
+**Wikipedia:** [Hans Duistermaat](https://en.wikipedia.org/wiki/Hans_Duistermaat). It says: “Duistermaat introduced the notion of monodromy in Hamiltonian systems as obstruction to the existence of global action-angle coordinates”
+
+**Sources:**
+
+- [J. J. Duistermaat, On global action-angle coordinates, Comm. Pure Appl. Math. 33 (1980) 687–706](https://doi.org/10.1002/cpa.3160330602)
+
 ### Diophantine frequencies bound the small divisors, so KAM tori survive
 
 **Remember:** Keep every ω · k at least polynomially far from zero.
@@ -1712,3 +1881,99 @@
 **Wikipedia:** [Kolmogorov–Arnold–Moser theorem](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold%E2%80%93Moser_theorem). It says: “Surviving tori meet the non-resonance condition, i.e., they have sufficiently irrational frequencies.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Quasi-convexity gives exponentially long stability of actions
+
+**Remember:** Energy curves upward in every direction the actions could drift.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J40 (Perturbations of finite-dimensional Hamiltonian systems, normal forms, small divisors, KAM theory, Arnol'd diffusion), 70H08. arXiv math.DS. Level 4: research.
+
+**Definition.** Write an integrable Hamiltonian with n degrees of freedom as h(I), a function of the action variables I that label its invariant tori. It is quasi-convex when its Hessian is definite on directions orthogonal to its gradient ∇h, the frequency vector. So h changes quadratically when the actions move orthogonally to the frequencies.
+
+**Problem.** Take h analytic and quasi-convex, and perturb it to h(I) + εf(I, θ) with f analytic and ε small. Every orbit keeps its actions within Cε to the power 1/(2n) of their start for a time exp(cε to the power −1/(2n)).
+
+**How the definition helps.** Near a resonance the actions drift only orthogonally to the frequencies, where quasi-convexity makes h change quadratically, so energy conservation stops them (our own). Without it the estimate fails, for example for (I₁² − I₂²)/2 + ε sin(θ₁ + θ₂) (our own). From I₁ = I₂ and θ₁ + θ₂ = 0, both actions fall at speed ε and move far by time 1/ε (our own).
+
+**Wikipedia:** [Nekhoroshev estimates](https://en.wikipedia.org/wiki/Nekhoroshev_estimates). It says: “The Nekhoroshev estimates tell us that, nonetheless, all solutions stay close to their integrable counterparts for an exponentially long time.”
+
+**Sources:**
+
+- [J. Pöschel, Nekhoroshev estimates for quasi-convex Hamiltonian systems, Math. Z. 213 (1993) 187–216](https://doi.org/10.1007/BF03025718)
+
+### Contact type gives Viterbo's periodic-orbit theorem
+
+**Remember:** A transverse expanding field makes an energy surface contact.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J46 (Periodic, homoclinic and heteroclinic orbits of finite-dimensional Hamiltonian systems), 53D10. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A hypersurface S has contact type when some vector field Y near S crosses S transversally and expands the symplectic form ω at unit rate. Unit rate means that the rate of change of ω along the flow of Y equals ω. Star-shaped hypersurfaces in ℝ²ⁿ have contact type, with Y half the radial vector field.
+
+**Problem.** Every compact hypersurface of contact type in ℝ²ⁿ carries a closed characteristic. This is a periodic orbit of every Hamiltonian flow that has the hypersurface as a regular energy level.
+
+**How the definition helps.** The flow of Y carries S to nearby hypersurfaces with the same characteristic dynamics, so a closed characteristic on any of them gives one on S (our own). Contact type is Weinstein's version of Rabinowitz's star-shaped condition that symplectic maps preserve, and Viterbo's variational proof uses it (our own). Without it the theorem fails: smooth compact energy surfaces in ℝ⁶, and C² ones in ℝ⁴, may lack closed characteristics (our own).
+
+**Wikipedia:** [Weinstein conjecture](https://en.wikipedia.org/wiki/Weinstein_conjecture), [Seifert conjecture](https://en.wikipedia.org/wiki/Seifert_conjecture). It says: “The Weinstein conjecture was first proved for contact hypersurfaces in ℝ²ⁿ in 1986 by Viterbo”
+
+**Sources:**
+
+- [A. Weinstein, On the hypotheses of Rabinowitz' periodic orbit theorems, J. Differential Equations 33 (1979) 353–358](https://doi.org/10.1016/0022-0396(79)90070-6)
+- [C. Viterbo, A proof of Weinstein's conjecture in ℝ²ⁿ, Ann. Inst. H. Poincaré Anal. Non Linéaire 4 (1987) 337–356](https://doi.org/10.1016/s0294-1449(16)30363-8)
+- [V. L. Ginzburg and B. Z. Gürel, A C²-smooth counterexample to the Hamiltonian Seifert conjecture in ℝ⁴, Ann. of Math. 158 (2003) 953–976](https://doi.org/10.4007/annals.2003.158.953)
+- [V. L. Ginzburg, The Hamiltonian Seifert conjecture: examples and open problems, European Congress of Mathematics (2001) 547–555](https://doi.org/10.1007/978-3-0348-8266-8_47)
+
+### Dynamical convexity gives an invariant global surface of section
+
+**Remember:** Ask for the winding that convexity gives, not for convex shape.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 37J46 (Periodic, homoclinic and heteroclinic orbits of finite-dimensional Hamiltonian systems), 53D10, 37J55. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A star-shaped hypersurface in ℝ⁴ is dynamically convex when every periodic orbit of the Hamiltonian flow on it has Conley–Zehnder index at least 3. This index is an integer that measures how much nearby orbits wind around the orbit. Unlike convexity, the condition is unchanged by symplectomorphisms, the maps that preserve the symplectic form.
+
+**Problem.** Every dynamically convex star-shaped hypersurface in ℝ⁴ has a global surface of section, a disk bounded by one orbit that all others cross repeatedly. So the flow reduces to an area-preserving map of the open disk (Hofer, Wysocki and Zehnder, 1998).
+
+**How the definition helps.** The proof uses convexity only through this index bound, which controls the holomorphic curves, solutions of a Cauchy–Riemann equation, that sweep out the section (our own). A short index estimate shows that strictly convex hypersurfaces are dynamically convex, but the hard work stays in the analysis of the curves (our own).
+
+**Paper or page:** [On closed characteristics of minimal action on a convex three-sphere](https://arxiv.org/abs/2412.01777). It says: “Let X ⊂ ℝ⁴ be a nondegenerate dynamically convex domain and let γ be a simple periodic orbit whose underlying transverse knot type admits a positively immersed symplectic disk. Then γ bounds a global surface of section.”
+
+**Sources:**
+
+- [H. Hofer, K. Wysocki and E. Zehnder, The dynamics on three-dimensional strictly convex energy surfaces, Ann. of Math. 148 (1998) 197–289](https://doi.org/10.2307/120994)
+- [On closed characteristics of minimal action on a convex three-sphere, arXiv:2412.01777](https://arxiv.org/abs/2412.01777)
+
+### Non-resonant Hopf links force infinitely many periodic orbits
+
+**Remember:** Ellipsoid links are resonant, and breaking resonance creates many orbits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J46 (Periodic, homoclinic and heteroclinic orbits of finite-dimensional Hamiltonian systems), 53D10, 37J55. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** Two periodic orbits on a star-shaped hypersurface in ℝ⁴ form a Hopf link when they deform together, without crossing, into the two coordinate circles. Each orbit has a rotation number, which measures how fast nearby orbits turn around it. The link is non-resonant when the rotation numbers ρ₁ and ρ₂ satisfy (ρ₁ − 1)(ρ₂ − 1) ≠ 1.
+
+**Problem.** If the Hamiltonian flow on a star-shaped hypersurface in ℝ⁴ has a non-resonant Hopf link of periodic orbits, it has infinitely many periodic orbits. Hryniewicz, Momin and Salomão proved this in 2015.
+
+**How the definition helps.** Non-resonance means that the flow twists the region between the two orbits, so a Poincaré–Birkhoff argument finds orbits for many intermediate twists (our own). On an ellipsoid with axis-circle actions a and b, a/b irrational, these circles have rotation numbers 1 + a/b and 1 + b/a (our own). So the link is resonant, and the ellipsoid has no other periodic orbits, which shows that the theorem needs the condition (our own).
+
+**Paper or page:** [Non-resonant Hopf Links Near a Hamiltonian Equilibrium Point](https://arxiv.org/abs/2503.03226). It says: “carries a pair of periodic orbits γ₁,E, γ₂,E forming a non-resonant Hopf link. In particular, their respective rotation numbers ρ₁,E, ρ₂,E satisfy (ρ₁,E − 1)(ρ₂,E − 1) ≠ 1 and Σ<sub>E</sub> contains infinitely many periodic orbits.”
+
+**Sources:**
+
+- [U. Hryniewicz, A. Momin and P. A. S. Salomão, A Poincaré–Birkhoff theorem for tight Reeb flows on S³, Invent. Math. 199 (2015) 333–422](https://doi.org/10.1007/s00222-014-0515-2)
+- [Non-resonant Hopf Links Near a Hamiltonian Equilibrium Point, arXiv:2503.03226](https://arxiv.org/abs/2503.03226)
+
+### Symplectic asphericity excludes sphere rotations from the Conley conjecture
+
+**Remember:** Spheres carry no area, so the action of a loop is unambiguous.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37J46 (Periodic, homoclinic and heteroclinic orbits of finite-dimensional Hamiltonian systems), 37J12, 53D40. arXiv math.SG, math.DS. Level 4: research.
+
+**Definition.** A closed symplectic manifold is symplectically aspherical when the symplectic form and the first Chern class both integrate to zero over every sphere in it. The first Chern class measures how the tangent bundle twists. Tori and surfaces of positive genus qualify, but the two-sphere does not, since its symplectic form gives it positive area.
+
+**Problem.** Every Hamiltonian diffeomorphism, the time-one map of a time-dependent Hamiltonian flow, of a closed symplectically aspherical manifold has infinitely many periodic points (Ginzburg, 2010).
+
+**How the definition helps.** Asphericity makes the action and the index of a contractible periodic orbit independent of the disk it bounds, so both are well-defined numbers (our own). It also excludes the sphere, where an irrational rotation has only its two poles as periodic points. The proof stays hard, and the work lies in Ginzburg's argument with Floer homology (our own).
+
+**Wikipedia:** [Conley conjecture](https://en.wikipedia.org/wiki/Conley_conjecture). It says: “a rotation of a round sphere S² by an angle equal to an irrational multiple of π, which is a Hamiltonian diffeomorphism, has only 2 geometrically different periodic points.”
+
+**Sources:**
+
+- [V. L. Ginzburg, The Conley conjecture, Ann. of Math. 172 (2010) 1129–1183](https://doi.org/10.4007/annals.2010.172.1129)
+- [N. Hingston, Subharmonic solutions of Hamiltonian equations on tori, Ann. of Math. 170 (2009) 529–560](https://doi.org/10.4007/annals.2009.170.529)

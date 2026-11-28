@@ -1836,7 +1836,7 @@
 
 **Remember:** Any smooth presentation works, because the crystalline site does not see it.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.AG. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14F40. arXiv math.AG. Level 3: graduate.
 
 **Definition.** For X = Spec C over a divided power base S = Spec A, crystalline cohomology is derived global sections on the site Cris(X/S) of divided power thickenings of opens of X compatible with S. This site uses no presentation of C, so any de Rham complex needs to be compared only with it.
 
@@ -1854,7 +1854,7 @@
 
 **Remember:** Use all thickenings so Frobenius acts without choosing a lift.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 3: graduate.
 
 **Definition.** For X over 𝔽ₚ, crystalline cohomology over ℤₚ is the derived inverse limit over n of derived global sections of the structure sheaf on the crystalline site over ℤ/pⁿ, which uses all divided power thickenings of opens of X. Because no lift is chosen, every map of 𝔽ₚ-schemes acts on it by pullback.
 
@@ -1870,7 +1870,7 @@
 
 **Remember:** To kill a relation in an envelope, kill all its divided powers.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
 
 **Definition.** Divided powers on an ideal are operations γₙ that obey the rules of xⁿ/n!, even where n! cannot be inverted. The divided power envelope of an ideal J of B is the universal B-algebra in which J lands in a divided power ideal compatible with the base.
 
@@ -1888,7 +1888,7 @@
 
 **Remember:** Every monomial form x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾.
 
-*Rules out counterexamples.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13N05. arXiv math.AG, math.NT. Level 3: graduate.
+*Rules out counterexamples.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 13N05. arXiv math.AG, math.NT. Level 3: graduate.
 
 **Definition.** The divided power algebra k⟨x⟩ is free over k on symbols x⁽ⁿ⁾, standing for xⁿ/n!, with x⁽ⁿ⁾x⁽ᵐ⁾ = binom(n+m, n) x⁽ⁿ⁺ᵐ⁾. Its differential sends x⁽ⁿ⁾ to x⁽ⁿ⁻¹⁾dx for n ≥ 1 and kills x⁽⁰⁾ = 1, so every x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾.
 
@@ -1906,7 +1906,7 @@
 
 **Remember:** A crystal identifies the two pullbacks, and their difference is a derivative.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
 
 **Definition.** A crystal on Cris(X/S), the site of divided power thickenings of opens of X, is a sheaf ℱ whose comparison map from the pullback of ℱ on U to ℱ on U′ is an isomorphism for every morphism of thickenings U′ → U. In particular, it identifies the two pullbacks of ℱ to the first-order neighbourhood of the diagonal.
 
@@ -2864,7 +2864,7 @@ $$”
 
 **Remember:** Free coefficients, only the forced relations: that is the Lazard ring.
 
-*True by definition.* MSC 14L05 (Formal groups, \\(p\\)-divisible groups), 55N22. arXiv math.AG, math.AT. Level 3: graduate.
+*True by definition.* MSC 14L05 (Formal groups, p-divisible groups), 55N22. arXiv math.AG, math.AT. Level 3: graduate.
 
 **Definition.** The Lazard ring L is the polynomial ring on the coefficients aᵢⱼ of a general power series F(x,y) = x+y+∑ᵢ,ⱼ≥₁ aᵢⱼxⁱyʲ, divided by exactly the relations that make F commutative and associative.
 
@@ -3036,6 +3036,99 @@ $$”
 
 - [Michel Demazure, Sous-groupes algébriques de rang maximum du groupe de Cremona, Annales scientifiques de l'École Normale Supérieure 3 (1970) 507–588](https://doi.org/10.24033/asens.1201)
 - [G. Kempf, F. Knudsen, D. Mumford, B. Saint-Donat, Toroidal Embeddings I, Lecture Notes in Mathematics 339 (1973)](https://doi.org/10.1007/BFb0070318)
+
+### Toric line bundles turn lattice-point counts into Hilbert polynomials
+
+**Remember:** Each lattice point of the polytope is one section of the bundle.
+
+*True by definition.* MSC 14M25 (Toric varieties, Newton polyhedra, Okounkov bodies), 52B20. arXiv math.AG, math.CO. Level 3: graduate.
+
+**Definition.** A full-dimensional lattice polytope P gives an ample line bundle L on the toric variety X of its normal fan. Ample means that some power of L embeds X in projective space. The sections of Lᵏ have a basis of torus eigensections, one per lattice point of kP.
+
+**Problem.** For a full-dimensional lattice polytope P in ℝⁿ, the number of lattice points in kP is a polynomial in k for k ≥ 0. It has degree n, and its leading coefficient is the volume of P.
+
+**How the definition helps.** Since sections of Lᵏ match lattice points of kP, the count is the dimension of the space of sections of Lᵏ (our own). Higher cohomology of an ample toric line bundle vanishes, so this dimension is the Euler characteristic of Lᵏ, a polynomial in k (our own). The leading coefficient follows from a Riemann-sum count, and the work went into the vanishing theorem; the usual combinatorial proof triangulates P (our own).
+
+**Wikipedia:** [Ehrhart polynomial](https://en.wikipedia.org/wiki/Ehrhart_polynomial). It says: “If X is the toric variety corresponding to the normal fan of P, then P defines an ample line bundle on X, and the Ehrhart polynomial of P coincides with the Hilbert polynomial of this line bundle.”
+
+**Sources:**
+
+- [D. A. Cox, J. B. Little and H. K. Schenck, Toric Varieties, Graduate Studies in Mathematics 124, American Mathematical Society (2011)](https://doi.org/10.1090/gsm/124)
+
+### Convexity makes genus-zero stable map spaces smooth of expected dimension
+
+**Remember:** Convex targets leave genus-zero curves no room for obstructions.
+
+*Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14D23. arXiv math.AG. Level 3: graduate.
+
+**Definition.** A smooth projective variety X is convex when H¹(P¹, f\*TX) = 0 for every map f from the projective line to X. Homogeneous spaces such as projective spaces, Grassmannians and flag varieties are convex.
+
+**Problem.** For convex X, the space of genus-zero stable maps is a smooth proper orbifold of complex dimension dim X + c₁(β) + n − 3. Its Gromov–Witten invariants are ordinary intersection numbers.
+
+**How the definition helps.** Deformations of a stable map are obstructed in H¹(C, f\*TX), so vanishing makes the space smooth of expected dimension (our own). Excluded is a rigid rational curve in a Calabi–Yau threefold, whose degree-d covers form a family of dimension 2d − 2, not zero (our own). The work went into the deformation theory of stable maps (our own).
+
+**Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “However, when X is convex - that is, when h¹(C, f\*TX) = 0 for every genus 0 stable map (C, p₁, …, pₙ, f) - the space M̄<sub>0</sub>,n(X, β) is well-behaved”
+
+**Sources:**
+
+- [W. Fulton and R. Pandharipande, Notes on stable maps and quantum cohomology, Proc. Sympos. Pure Math. 62.2 (1997) 45–96](https://doi.org/10.1090/pspum/062.2/1492534)
+
+### Counting plane curves as stable maps gives Kontsevich's recursion
+
+**Remember:** Make curve counts coefficients of one associative product.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14N10, 53D45. arXiv math.AG, math.SG. Level 3: graduate.
+
+**Definition.** Define N(d), the number of rational plane curves of degree d through 3d − 1 general points, as a genus-zero Gromov–Witten invariant. It is an intersection number on the compact space of stable maps, which are maps from nodal curves with finitely many automorphisms. So N(d) is a coefficient of the Gromov–Witten potential.
+
+**Problem.** The numbers N(d) satisfy Kontsevich's recursion, which computes every N(d) from N(1) = 1. For example, N(2) = 1, N(3) = 12 and N(4) = 620.
+
+**How the definition helps.** The WDVV equation, which says that the quantum product is associative, becomes Kontsevich's recursion when read coefficient by coefficient (our own). Classical methods handled degenerate curves case by case and reached only small degrees (our own). The work went into associativity, and into showing that for the projective plane these invariants count actual curves (our own).
+
+**Wikipedia:** [Gromov–Witten invariant](https://en.wikipedia.org/wiki/Gromov%E2%80%93Witten_invariant). It says: “the rest of these numbers can be calculated using a recursive formula, obtained through intersection theory in the moduli space of stable maps”
+
+**Sources:**
+
+- [M. Kontsevich and Yu. Manin, Gromov–Witten classes, quantum cohomology, and enumerative geometry, Comm. Math. Phys. 164 (1994) 525–562](https://doi.org/10.1007/BF02101490)
+- [W. Fulton and R. Pandharipande, Notes on stable maps and quantum cohomology, Proc. Sympos. Pure Math. 62.2 (1997) 45–96](https://doi.org/10.1090/pspum/062.2/1492534)
+
+### Forgetful maps make the fundamental class the quantum identity
+
+**Remember:** Forgetting a point and contracting unstable parts keeps maps stable.
+
+*True by definition.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG, math.SG. Level 3: graduate.
+
+**Definition.** Gromov–Witten invariants are integrals over moduli spaces of stable maps, and these spaces carry forgetful maps that drop a marked point and stabilize the domain. Inserting the unit class 1 at a marked point means integrating a class pulled back along this map.
+
+**Problem.** A genus-zero invariant with the unit class inserted vanishes unless the curve class is zero and there are three marked points. So the unit class 1 is the identity element of the quantum product.
+
+**How the definition helps.** The integrand is pulled back along the forgetful map from a space of real dimension two less, so its integral is zero (our own). The usual proof counts curves through a cycle dual to the unit and needs general position; the forgetful map avoids this (our own). The exception is constant maps with three marked points, where the invariant is the cup product (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The identity element 1 ∈ H⁰(X) is also the identity element for small quantum cohomology.”
+
+**Paper or page:** [Gromov-Witten invariants in family and quantum cohomology](https://arxiv.org/abs/2408.06616v2). It says: “The following holds: T₀\*Tᵢ = Tᵢ = Tᵢ\*T₀ for all 0 ≤ i ≤ m.”
+
+**Sources:**
+
+- [M. Kontsevich and Yu. Manin, Gromov–Witten classes, quantum cohomology, and enumerative geometry, Comm. Math. Phys. 164 (1994) 525–562](https://doi.org/10.1007/BF02101490)
+
+### Forgetting a marked point gives the divisor axiom
+
+**Remember:** Forgetting a point and contracting unstable parts keeps maps stable.
+
+*True by definition.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG, math.SG. Level 3: graduate.
+
+**Definition.** Genus-zero Gromov–Witten invariants are integrals over moduli spaces of stable maps, which allow contracted sphere components with at least three special points. So there is a forgetful map that drops the last marked point and contracts any component that becomes unstable.
+
+**Problem.** For a degree-two class D and a nonzero curve class A, inserting D into a genus-zero invariant multiplies it by the intersection number D·A. So invariants with divisor insertions reduce to invariants with fewer marked points.
+
+**How the definition helps.** The fibre of the forgetful map over a stable map f is its domain curve, so integrating D over it gives D·A (our own). The usual count of points where each curve meets a cycle dual to D needs general position; the forgetful map avoids this (our own). The work went into showing that the virtual class pulls back along the forgetful map (our own).
+
+**Paper or page:** [On the quantum parameter in the quantum cohomology of a family of odd symplectic partial flag varieties](https://arxiv.org/abs/2502.15550v2). It says: “Then the divisor axiom states I<sub>d</sub>(τ\_λ, τ\_δ, τ<sub>Div</sub><sub>i</sub>) = (τ<sub>Div</sub><sub>i</sub>, d) I<sub>d</sub>(τ\_λ, τ\_δ).”
+
+**Sources:**
+
+- [M. Kontsevich and Yu. Manin, Gromov–Witten classes, quantum cohomology, and enumerative geometry, Comm. Math. Phys. 164 (1994) 525–562](https://doi.org/10.1007/BF02101490)
 
 ### Four marks give quantum associativity
 
@@ -4371,7 +4464,7 @@ $$”
 
 **Remember:** One infinitesimal symmetry of the chart gives one operator Θ.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Over R = ℤₚ\[\[λ\]\]/(λⁿ), a module with operator is an R-module complex M with a ℤₚ-linear operator Θ satisfying Θ(λx) = λx + λΘ(x). Liu’s chart ρ turns a sheaf on WCartₙ into such a pair, with Θ the derivative of the chart’s infinitesimal automorphism.
 
@@ -4390,7 +4483,7 @@ $$”
 
 **Remember:** One weakly final object and products give a Čech complex.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 18F10. arXiv math.AG, math.NT. Level 4: research.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 18F10. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** An object X is weakly final if every object Y admits a map Y → X.
 
@@ -4409,7 +4502,7 @@ $$”
 
 **Remember:** Décalage only rescales by powers of μ, so inverting μ undoes it.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Fix the integers 𝒪 of a complete algebraically closed extension of ℚₚ, and put μ = \[ε\] − 1 in Ainf = W(𝒪♭), with ε a compatible system of primitive p-power roots of unity. The relative Ainf complex AΩ is the décalage Lη(μ) of the derived pushforward of the pro-étale sheaf 𝔸inf along the relative period map. Décalage becomes an isomorphism once μ is inverted, so it changes nothing there.
 
@@ -4428,7 +4521,7 @@ $$”
 
 **Remember:** In a crystalline prism, p generates the prism ideal.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A crystalline prism is a pair (A,(p)) where A is a p-adically complete, p-torsion-free δ-ring. Since A has no p-torsion, the ideal (p) has divided powers, so A is a base for crystalline cohomology of A/p-algebras (our own).
 
@@ -4449,7 +4542,7 @@ $$”
 
 **Remember:** Décalage along ζₚ − 1 turns pro-étale cohomology into twisted forms.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** The relative Hodge–Tate complex Ω̃ is Lη(ζₚ − 1)Rν∗Ô⁺, the décalage along ζₚ − 1 of the integral completed structure sheaf pushed along the relative pro-étale period map ν. Here ζₚ is a primitive pth root of unity.
 
@@ -4468,7 +4561,7 @@ $$”
 
 **Remember:** Fractional exponents give μ-torsion, and décalage along μ deletes it.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** Décalage along μ keeps in degree i the elements divisible by μⁱ whose differential is divisible by μⁱ⁺¹: (ημK)ⁱ = {x ∈ μⁱKⁱ : dx ∈ μⁱ⁺¹Kⁱ⁺¹} for K without μ-torsion. Lη(μ) applies this to a torsion-free model, with μ = \[ε\] − 1 for compatible primitive p-power roots of unity ε.
 
@@ -4487,7 +4580,7 @@ $$”
 
 **Remember:** Décalage along fg is décalage along g, then along f.
 
-*True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13D09. arXiv math.AG, math.NT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 13D09. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** For a complex M without f-torsion, the décalage ηf M is the subcomplex of M\[1/f\] of elements x ∈ fⁱMⁱ with dx ∈ fⁱ⁺¹Mⁱ⁺¹. Ainf-cohomology is AΩ = Lη(μ)Rν∗Ainf, the décalage along μ = \[ε\] − 1 of the pro-étale period sheaf Ainf = W(𝒪♭) pushed to the Zariski site.
 
@@ -4506,7 +4599,7 @@ $$”
 
 **Remember:** A filtration is a sheaf on 𝔸¹/𝔾ₘ, so push forward.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Under the Rees equivalence, a filtered complex is the same as a quasi-coherent complex on 𝔸¹/𝔾ₘ, the line modulo scaling. The corresponding graded module has Filⁿ in degree n, and the coordinate acts by the filtration maps (our own description).
 
@@ -4527,7 +4620,7 @@ $$”
 
 **Remember:** First invert Frobenius, then complete so maps still land in prisms.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** For a prism (A,I) with Frobenius φ, form the direct limit of A → A → ⋯ using φ at every step. Its derived (p,I)-completion, with the extended ideal I, is the perfection of (A,I).
 
@@ -4546,7 +4639,7 @@ $$”
 
 **Remember:** One operator θ, so cohomology is the two-term complex of θ.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S25. arXiv math.NT, math.AG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 11S25. arXiv math.NT, math.AG. Level 4: research.
 
 **Definition.** A Hodge–Tate crystal on 𝒪 assigns a finite projective A/I-module to each prism (A,I) over 𝒪, with base-change isomorphisms compatible with composition. Its value M on a Breuil–Kisin prism carries one operator θ, which records all the gluing data (our own summary).
 
@@ -4564,7 +4657,7 @@ $$”
 
 **Remember:** Invert I, keep Frobenius invertible, and you get étale local systems.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11F80, 14G45. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 11F80, 14G45. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A Laurent F-crystal on X assigns each prism (A,I) over X a finite projective module over the p-adic completion of A\[1/I\]. It supplies compatible base-change isomorphisms and an isomorphism from the Frobenius pullback to the module.
 
@@ -4582,7 +4675,7 @@ $$”
 
 **Remember:** F-gauges are F-crystals whose Nygaard filtration has a local basis.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11F80. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 11F80. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A prismatic F-crystal is locally filtered free if its Nygaard-filtered Frobenius pullback locally splits as a finite sum of shifted filtered free lines. For the prism (A,I), the standard line has filtration Iⁿ for n ≥ 0 and A for n &lt; 0 (our own gloss).
 
@@ -4600,7 +4693,7 @@ $$”
 
 **Remember:** One décalage complex specializes to both étale and crystalline cohomology.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F20. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14F20. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Ainf-cohomology of a smooth proper formal scheme over 𝒪 is RΓ(Lη(μ)Rν∗𝔸inf), one complex that specializes both to étale and to crystalline cohomology. Here 𝒪 is the valuation ring of a complete algebraically closed extension of ℚₚ, and μ comes from compatible primitive p-power roots of unity.
 
@@ -4619,7 +4712,7 @@ $$”
 
 **Remember:** Extra radius absorbs the denominators from integration.
 
-*Rules out counterexamples. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S80. arXiv math.AG, math.NT. Level 4: research.
+*Rules out counterexamples. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 11S80. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A p-adic power series is overconvergent when it converges on some disc of radius greater than one, not only on the closed unit disc. Monsky–Washnitzer cohomology of the affine line over 𝔽ₚ uses such series over ℚₚ, so its first group is overconvergent forms f(x) dx modulo derivatives.
 
@@ -4637,7 +4730,7 @@ $$”
 
 **Remember:** A left adjoint carries a derived pushout to a derived pushout.
 
-*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
+*True by definition.* MSC 14F30 (p-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Fix a bounded prism (A,I). Derived prismatic cohomology of a derived A/I-algebra R is the universal derived (p,I)-complete δ-algebra P over A with a map R → P ⊗ᴸ<sub>A</sub> A/I, so it is left adjoint to reduction modulo I.
 
@@ -4655,7 +4748,7 @@ $$”
 
 **Remember:** One crystal on all prisms replaces many Dieudonné theories.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A prismatic Dieudonné crystal assigns a finite projective A-module M to every prism (A,I) over R, compatibly with base change. Its linearized Frobenius φ∗M → M becomes invertible after inverting I and has cokernel killed by I.
 
@@ -4675,7 +4768,7 @@ $$”
 
 **Remember:** For quasiregular semiperfectoid rings, prismatic cohomology is just one prism.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A quasiregular semiperfectoid ring is a p-complete quasisyntomic ring R that receives a map from a perfectoid ring and has Frobenius surjective on R/p. Quasisyntomic means bounded p-power torsion and L(R/ℤₚ) ⊗ᴸ<sub>R</sub> R/p of Tor amplitude in degrees −1 and 0.
 
@@ -4693,7 +4786,7 @@ $$”
 
 **Remember:** Each prism is a point of the stack, so sheaves are crystals.
 
-*Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23, 14A30. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14D23, 14A30. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** A prismatic crystal of complexes on X assigns a derived (p,I)-complete A-complex to each prism (A,I) over X. Each prism map identifies the target complex with completed derived base change of the source, coherently under composition.
 
@@ -4715,7 +4808,7 @@ $$”
 
 **Remember:** Syntomic cohomology: degree-zero sections where both routes to M\[1/t\] agree.
 
-*True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 19D55. arXiv math.AG, math.NT. Level 4: research.
+*True by definition. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 19D55. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** Over 𝔽ₚ, a perfect prismatic F-gauge is a perfect graded complex M over ℤₚ\[t,u\]/(tu − p), with t of degree −1 and u of degree 1, plus a Frobenius identification of the degree-zero parts of M\[1/u\] and M\[1/t\]. Its syntomic cohomology is its sections on the glued stack, which compare M⁰ along two routes into M\[1/t\]⁰: invert t, or invert u and apply Frobenius (our own description).
 
@@ -4733,7 +4826,7 @@ $$”
 
 **Remember:** Weights zero and one on the syntomic stack give truncated p-divisible groups.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (p-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
 
 **Definition.** An F-gauge on X is a vector bundle on its syntomification Xˢʸⁿ, one stack that holds Dieudonné-type data over every base. Modulo pⁿ, it has weights in {0,1} if its Hodge–Tate graded restriction vanishes in every other weight (our own description).
 
@@ -6353,6 +6446,24 @@ $$”
 
 - [R. Bott, Homogeneous vector bundles, Ann. of Math. 66 (1957) 203–248](https://doi.org/10.2307/1969996)
 
+### Betti-number h-vectors make unimodality a consequence of hard Lefschetz
+
+**Remember:** The h-vector of a polytope is its toric variety's Betti numbers.
+
+*True by definition.* MSC 14M25 (Toric varieties, Newton polyhedra, Okounkov bodies), 52B05, 52B20. arXiv math.AG, math.CO. Level 4: research.
+
+**Definition.** Stanley reads the h-vector of a rational simplicial polytope as the even Betti numbers of its projective toric variety X. So hₖ is the dimension of the degree-2k rational cohomology of X. The usual definition computes hₖ from face numbers, which gives no reason for inequalities.
+
+**Problem.** The h-vector of a simplicial n-polytope rises weakly up to its middle entry: h₀ ≤ h₁ ≤ … up to index ⌊n/2⌋. This is part of the necessity half of the g-theorem.
+
+**How the definition helps.** The h-vector rises because, by hard Lefschetz, a hyperplane class maps each even degree below the middle injectively into the next (our own). Moving the vertices slightly makes any simplicial polytope rational with the same faces, so rationality costs nothing (our own). The work went into hard Lefschetz for this mildly singular variety and into reading its Betti numbers off the polytope (our own).
+
+**Wikipedia:** [Dehn–Sommerville equations](https://en.wikipedia.org/wiki/Dehn%E2%80%93Sommerville_equations). It says: “Richard Stanley gave an interpretation of the components of the h-vector of a simplicial convex polytope P in terms of the projective toric variety X associated with (the dual of) P.”
+
+**Sources:**
+
+- [R. P. Stanley, The number of faces of a simplicial convex polytope, Advances in Mathematics 35 (1980) 236–238](https://doi.org/10.1016/0001-8708(80)90050-X)
+
 ### A scheme structure on cactus varieties compares them with catalecticant equations
 
 **Remember:** Take spans in families, including families over bases with nilpotents.
@@ -6388,6 +6499,25 @@ $$”
 **Sources:**
 
 - [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2)
+
+### Cohomological field theories let semisimple theories be rebuilt from genus zero
+
+**Remember:** Gromov–Witten theory without the target, only the gluing rules.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45, 14H10. arXiv math.AG. Level 4: research.
+
+**Definition.** A cohomological field theory on a vector space V with a pairing assigns classes to the moduli spaces of stable curves of every genus. The classes must be symmetric and compatible with the maps that glue curves at nodes. It is semisimple when its genus-zero product is semisimple.
+
+**Problem.** Every homogeneous semisimple cohomological field theory is determined by its genus-zero part, through Givental's translation and R-matrix actions (Teleman). So the higher-genus Gromov–Witten invariants of projective spaces are determined by genus-zero data.
+
+**How the definition helps.** The axioms ask only for compatibility with gluing, so Givental's group acts on all such theories (our own). Teleman showed that this action is free and transitive, so every target with semisimple quantum cohomology is covered (our own). The work went into Teleman's proof, which uses the Madsen–Weiss theorem on the stable cohomology of moduli of curves (our own).
+
+**Paper or page:** [Relations on $\\overline M<sub>g,n</sub>$ via equivariant Gromov-Witten theory of $\\mathbb P<sup>1$</sup>](https://arxiv.org/abs/1509.08421v3), [Shifted Witten classes and topological recursion](https://arxiv.org/abs/2203.16523v2). It says: “In cohomology, the R-matrix action is free and transitive on the space of semisimple CohFTs based on a given Frobenius algebra.”
+
+**Sources:**
+
+- [M. Kontsevich and Yu. Manin, Gromov–Witten classes, quantum cohomology, and enumerative geometry, Comm. Math. Phys. 164 (1994) 525–562](https://doi.org/10.1007/BF02101490)
+- [C. Teleman, The structure of 2D semi-simple field theories, Invent. Math. 188 (2012) 525–588](https://doi.org/10.1007/s00222-011-0352-5)
 
 ### Convexity removes genus-zero bundle obstructions
 
@@ -6426,6 +6556,42 @@ $$”
 - [The orbifold DT/PT vertex correspondence](https://arxiv.org/abs/2302.02342v4)
 - [Maulik, Nekrasov, Okounkov and Pandharipande, Gromov–Witten theory and Donaldson–Thomas theory, I](https://doi.org/10.1112/s0010437x06002302)
 
+### Givental's Lagrangian cone makes mirror theorems a membership statement
+
+**Remember:** All genus-zero invariants become one shape in a symplectic space.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14J33, 53D45. arXiv math.AG. Level 4: research.
+
+**Definition.** Givental's Lagrangian cone of X is the graph of the differential of the genus-zero descendant potential, inside a symplectic space of Laurent series in z. The string equation, dilaton equation and topological recursion make it a cone whose tangent spaces T satisfy zT ⊂ T.
+
+**Problem.** Mirror theorems take the form: an explicit hypergeometric series, the I-function, lies on the cone of X. In good cases the J-function, which carries the genus-zero invariants, then follows by a change of variables called the mirror map.
+
+**How the definition helps.** Three families of identities among invariants become properties of one cone, so one explicit point determines nearby points (our own). A mirror theorem thus becomes one membership check plus a change of variables; in general a Birkhoff factorization is also needed (our own). The work went into showing that the I-function lies on the cone, often by torus localization (our own).
+
+**Paper or page:** [Wall Crossing and the Fourier-Mukai Transform for Grassmann Flops](https://arxiv.org/abs/2404.12303v2), [Relative quantum cohomology under birational transformations](https://arxiv.org/abs/2204.00509v1). It says: “The function I<sub>X±</sub>(Q, q±, −z) lies in the 𝕋-equivariant Lagrangian cone L<sub>X±</sub>.”
+
+**Sources:**
+
+- [T. Coates and A. Givental, Quantum Riemann–Roch, Lefschetz and Serre, Ann. of Math. 165 (2007) 15–53](https://doi.org/10.4007/annals.2007.165.15)
+
+### Gopakumar–Vafa invariants are defined so that integrality becomes statable
+
+**Remember:** Subtract the multiple-cover noise and integers remain.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45, 14J32. arXiv math.AG, math.SG. Level 4: research.
+
+**Definition.** Gopakumar–Vafa invariants are defined from Gromov–Witten invariants by removing the known contributions of multiple covers and of ghost handles through one fixed universal formula. In genus zero this is the multiple-cover formula, which gives a degree-k cover of a rigid curve the weight 1/k³.
+
+**Problem.** Gopakumar–Vafa invariants are integers, although Gromov–Witten invariants are only rational. Ionel and Parker proved this in all genera for symplectic Calabi–Yau threefolds, and in genus zero for semi-positive targets.
+
+**How the definition helps.** The definition strips the multiple-cover contributions off by a fixed formula, so integrality is a clean statement about what remains (our own). The removed fractions are the Aspinwall–Morrison terms 1/k³ (our own). The work went into Ionel and Parker's cluster decomposition of the moduli spaces (our own).
+
+**Paper or page:** [Integrality of genus zero Gopakumar-Vafa type invariants of semi-positive varieties](https://arxiv.org/abs/2312.01413v2). It says: “Let X be a semi-positive variety and γᵢ ∈ H<sup>2\*</sup>(X;Z) be cohomology classes with even degree. The invariants GV\_β(γ₁,…,γₙ) are integers.”
+
+**Sources:**
+
+- [E.-N. Ionel and T. H. Parker, The Gopakumar–Vafa formula for symplectic manifolds, Ann. of Math. 187 (2018) 1–64](https://doi.org/10.4007/annals.2018.187.1.1)
+
 ### Logarithmic types split degeneration counts
 
 **Remember:** Keep contact orders to split a limiting count by type.
@@ -6463,6 +6629,24 @@ $$”
 - [Aspinwall and Morrison, Topological field theory and rational curves](https://doi.org/10.1007/bf02096768)
 - [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2)
 
+### Packaging intersection numbers in one generating function makes Witten's conjecture statable
+
+**Remember:** One function holds every intersection number of every genus.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14H10, 37K10. arXiv math.AG. Level 4: research.
+
+**Definition.** Witten's free energy F is the generating function of all intersection numbers of ψ-classes on the moduli spaces of stable curves, in all genera. The ψ-class at a marked point is the first Chern class of the line of cotangent vectors there.
+
+**Problem.** The function exp F is a tau function of the KdV hierarchy, a classical family of integrable differential equations; Kontsevich proved this. Together with the string equation, this determines every intersection number from ⟨τ₀³⟩ = 1.
+
+**How the definition helps.** With all numbers in one function, the whole family of recursions becomes a single classical integrable hierarchy (our own). The string and dilaton equations become simple linear differential equations for F (our own). The work went into Kontsevich's proof with ribbon graphs and a matrix integral (our own).
+
+**Wikipedia:** [Witten conjecture](https://en.wikipedia.org/wiki/Witten_conjecture). It says: “Witten's conjecture states that the partition function Z = exp F is a τ-function for the KdV hierarchy”
+
+**Sources:**
+
+- [M. Kontsevich, Intersection theory on the moduli space of curves and the matrix Airy function, Comm. Math. Phys. 147 (1992) 1–23](https://doi.org/10.1007/BF02099526)
+
 ### Purity excludes isolated stable-pair points
 
 **Remember:** Any points a stable pair records must lie on its curve.
@@ -6481,6 +6665,24 @@ $$”
 
 - [Pandharipande and Thomas, Curve counting via stable pairs in the derived category](https://doi.org/10.1007/s00222-009-0203-9)
 
+### Quadratically enriched curve counts recover complex and real counts at once
+
+**Remember:** Count curves with quadratic forms instead of numbers.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14F42, 14P25. arXiv math.AG. Level 4: research.
+
+**Definition.** A quadratically enriched count of rational curves on a del Pezzo surface over a field k weights each curve by a quadratic form. The weights add up in the Grothendieck–Witt group, the group of quadratic forms over k.
+
+**Problem.** The rank of the enriched count is the complex Gromov–Witten invariant. Over the real numbers its signature is Welschinger's signed count of real rational curves through real points.
+
+**How the definition helps.** A quadratic form has a rank and, over the real numbers, a signature, so one invariant holds both counts (our own). Without signs, the number of real curves through real points depends on the points, so no plain real count is invariant (our own). The work went into showing that the enriched count does not depend on the points, using motivic degree theory (our own).
+
+**Paper or page:** [Welschinger--Witt invariants](https://arxiv.org/abs/2509.04172v1). It says: “For any A ∈ Et<sub>n</sub>(K), the rank of Q̂<sub>X,D,K</sub>(A) is equal to the corresponding Gromov–Witten invariant GW<sub>X<sub>K</sub></sub>(D<sub>K</sub>) ∈ N.”
+
+**Sources:**
+
+- [J.-Y. Welschinger, Invariants of real symplectic 4-manifolds and lower bounds in real enumerative geometry, Invent. Math. 162 (2005) 195–234](https://doi.org/10.1007/s00222-005-0445-0)
+
 ### Representable maps exclude extra stabilizers
 
 **Remember:** The source cannot carry more symmetry than its image.
@@ -6498,6 +6700,24 @@ $$”
 **Sources:**
 
 - [Abramovich, Graber and Vistoli, Gromov-Witten theory of Deligne-Mumford stacks](https://doi.org/10.1353/ajm.0.0017)
+
+### Virtual classes make curve counts invariant under deformation of the target
+
+**Remember:** Count with the virtual class and special targets stop being special.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14D23. arXiv math.AG. Level 4: research.
+
+**Definition.** Algebraic Gromov–Witten invariants are integrals against the virtual fundamental class of the moduli space of stable maps. This class lives in the expected dimension and is built from a perfect obstruction theory that varies well in families.
+
+**Problem.** Gromov–Witten invariants of a smooth projective variety stay constant in smooth families. For example, the genus-zero degree-one invariant of every smooth quintic threefold is 2875, the number of lines on a general quintic.
+
+**How the definition helps.** A family of targets has a relative obstruction theory whose virtual class restricts to each fibre's class, so the integrals are constant (our own). Actual counts can jump: the Fermat quintic has infinitely many lines, yet its invariant is still 2875 (our own). The work went into constructing virtual classes and proving their compatibility with base change (our own).
+
+**Wikipedia:** [Gromov–Witten invariant](https://en.wikipedia.org/wiki/Gromov%E2%80%93Witten_invariant). It says: “However, the major advantage that GW invariants have over the classical enumerative counts is that they are invariant under deformations of the complex structure of the target.”
+
+**Sources:**
+
+- [K. Behrend and B. Fantechi, The intrinsic normal cone, Invent. Math. 128 (1997) 45–88](https://doi.org/10.1007/s002220050136)
 
 ### Extra coordinates descend exponential periods
 

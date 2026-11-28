@@ -732,7 +732,7 @@
 
 **Remember:** The nth singular value: distance to operators of rank below n.
 
-*True by definition.* MSC 47B06 (Riesz operators; eigenvalue distributions; approximation numbers, \\(s\\)-numbers, Kolmogorov numbers, entropy numbers, etc. of operators), 47B10. arXiv math.FA, math.SP. Level 3: graduate.
+*True by definition.* MSC 47B06 (Riesz operators; eigenvalue distributions; approximation numbers, s-numbers, Kolmogorov numbers, entropy numbers, etc. of operators), 47B10. arXiv math.FA, math.SP. Level 3: graduate.
 
 **Definition.** For a compact operator T between Hilbert spaces, the nth singular value sₙ(T) is the operator-norm distance from T to the operators of rank less than n.
 
@@ -764,7 +764,7 @@
 
 **Remember:** Taking the adjoint swaps rows and columns and preserves absolute values.
 
-*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
 
 **Definition.** A bounded operator between separable Hilbert spaces is Hilbert–Schmidt if the squared absolute values of its matrix entries in orthonormal bases have a finite sum. The square root of this sum is the Hilbert–Schmidt norm.
 
@@ -780,7 +780,7 @@
 
 **Remember:** Multiply 1 + λ over eigenvalues; zero exactly when some factor is.
 
-*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA, math.SP. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA, math.SP. Level 3: graduate.
 
 **Definition.** A trace-class operator T on a Hilbert space is one whose singular values have a finite sum. Its determinant det(I + T) is the product of 1 + λ over the nonzero eigenvalues λ of T, repeated by algebraic multiplicity.
 
@@ -799,7 +799,7 @@
 
 **Remember:** Trace class: limits of finite-rank operators in the trace norm.
 
-*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
 
 **Definition.** Define the trace-class operators on a Hilbert space as the completion of the finite-rank operators in the trace norm, the sum of the singular values. Define the trace by extending the finite-rank trace continuously.
 
@@ -815,7 +815,7 @@
 
 **Remember:** Coefficient n is the trace of K on the nth exterior power.
 
-*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
 
 **Definition.** For a trace-class operator K on a separable Hilbert space, det(I + zK) is the power series ∑ zⁿ tr(ΛⁿK) with constant term one. Here ΛⁿK is K acting on each factor of the nth exterior power.
 
@@ -833,7 +833,7 @@
 
 **Remember:** A nonzero analytic determinant can vanish only at isolated points.
 
-*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 47A53. arXiv math.FA. Level 3: graduate.
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 47A53. arXiv math.FA. Level 3: graduate.
 
 **Definition.** A trace-class operator A is one whose singular values have a finite sum. Its Fredholm determinant det(I − A) is the product of 1 − λ over the nonzero eigenvalues λ of A, with algebraic multiplicity. It is zero exactly when I − A is not invertible (our own).
 
@@ -849,7 +849,7 @@
 
 **Remember:** The determinant is the trace-norm limit of finite-dimensional determinants.
 
-*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
 
 **Definition.** For a finite-rank operator A on a Hilbert space, det(I + A) is the ordinary determinant on any finite-dimensional subspace containing the range of A. For a compact A of finite trace norm (summable singular values), det(I + A) is the extension of this function that is continuous in trace norm.
 
@@ -867,7 +867,7 @@
 
 **Remember:** If \|T\| has finite trace, the trace of T converges absolutely.
 
-*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 47B06. arXiv math.FA, math.SP. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 47B06. arXiv math.FA, math.SP. Level 3: graduate.
 
 **Definition.** A bounded operator T on a separable Hilbert space is trace class if, in some orthonormal basis (eₖ), the diagonal entries ⟨\|T\|eₖ, eₖ⟩ of its absolute value \|T\| = √(T\*T) have a finite sum.
 
@@ -883,7 +883,7 @@
 
 **Remember:** Two square sums give one absolute sum.
 
-*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
+*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
 
 **Definition.** A Hilbert–Schmidt operator is a compact operator on a Hilbert space whose singular values (the eigenvalues of √(A\*A)) have a finite sum of squares. Trace class asks for a finite sum, and compactness only for singular values tending to zero.
 
@@ -1226,7 +1226,7 @@
 
 **Remember:** Each averaged step loses distance unless it stays put.
 
-*True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, \\(A\\)-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
+*True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, A-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
 
 **Definition.** For 0 &lt; λ &lt; 1, a map T on a Hilbert space is λ-averaged if T = (1 − λ)I + λN for some nonexpansive N, one with ‖Nx − Ny‖ ≤ ‖x − y‖. Such a step moves closer to every fixed point p unless it stays put (our own). Precisely, ‖Tx − p‖² ≤ ‖x − p‖² − ((1 − λ)/λ)‖Tx − x‖².
 
@@ -1244,7 +1244,7 @@
 
 **Remember:** Double the map and subtract the identity to test firmness.
 
-*True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, \\(A\\)-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
+*True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, A-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
 
 **Definition.** A map T on a Hilbert space is firmly nonexpansive if ‖Tx − Ty‖² ≤ Re⟨Tx − Ty, x − y⟩ for all x and y.
 
@@ -1435,7 +1435,7 @@
 
 **Remember:** Cancel the linear term so square-summable singular values suffice.
 
-*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45P05. arXiv math.FA. Level 4: research.
+*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, p-summing, in the Schatten-von Neumann classes, etc.)), 45P05. arXiv math.FA. Level 4: research.
 
 **Definition.** For an integral operator K with square-integrable kernel, the regularized determinant D(λ) is the Fredholm determinant of (I + λK)exp(−λK). The exponential cancels the linear term, so this operator is the identity plus K² times a bounded factor. The singular values of K are square-summable, so those of K² are summable and the Fredholm determinant applies.
 

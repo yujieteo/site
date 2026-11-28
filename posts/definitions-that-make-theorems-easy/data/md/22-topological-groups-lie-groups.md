@@ -62,6 +62,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Source-simply-connected groupoids exclude the circle counterexample to Lie II
+
+**Remember:** Simply connected source fibres leave no loops to obstruct integration.
+
+*Rules out counterexamples.* MSC 22A22 (Topological groupoids (including differentiable and Lie groupoids)), 58H05. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A Lie groupoid is source-simply-connected when every source fibre, the set of arrows that start at one point, is connected and simply connected.
+
+**Problem.** Every morphism of Lie algebroids, the infinitesimal versions of Lie groupoids, from a source-simply-connected groupoid's algebroid integrates to a unique morphism of Lie groupoids.
+
+**How the definition helps.** Simple connectivity of the source fibres lets one integrate the morphism along paths with no monodromy, as for simply connected Lie groups (our own). Without it the theorem fails already for Lie groups (our own). The identity map, from the Lie algebra of the circle to that of ℝ, integrates to no homomorphism from the circle to ℝ (our own).
+
+**Paper or page:** [Graded Bundles in the Category of Lie Groupoids](https://arxiv.org/abs/1502.06092v2). It says: “Suppose that G is source simply-connected and that φ: A(G) → A(H) is a Lie algebroid morphism between the associated Lie algebroids. Then, φ integrates to a unique Lie groupoid morphisms Φ: G → H such that Φ′ = φ.”
+
+**Sources:**
+
+- [A. J. Bruce, K. Grabowska, J. Grabowski, Graded bundles in the category of Lie groupoids, arXiv:1502.06092](https://arxiv.org/abs/1502.06092v2)
+
 ### Analytically integral weights match representations of a compact group
 
 **Remember:** Integral on the torus periods means a genuine torus character.
@@ -423,7 +441,7 @@
 
 **Remember:** Take the largest norm any representation sees, so every one stays bounded.
 
-*True by definition.* MSC 22D25 (\\(C<sup>\*\\</sup>)-algebras and \\(W<sup>\*\\</sup>)-algebras in relation to group representations), 46L05. arXiv math.OA. Level 3: graduate.
+*True by definition.* MSC 22D25 (C<sup>\*-algebras</sup> and W<sup>\*-algebras</sup> in relation to group representations), 46L05. arXiv math.OA. Level 3: graduate.
 
 **Definition.** The full group C\*-algebra C\*(G) of a discrete group G completes its complex group algebra ℂ\[G\] in the largest norm any representation sees: ‖x‖ = sup ‖π(x)‖ over all unitary representations π, extended linearly. So every π satisfies ‖π(x)‖ ≤ ‖x‖ by construction.
 
