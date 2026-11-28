@@ -11,8 +11,6 @@ set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PYTHONDONTWRITEBYTECODE=1
 
-tmp=$(mktemp -d)
-trap 'rm -rf "$tmp"' EXIT
 failed=()
 
 if [ -n "${CHECK_PYTHON:-}" ]; then
@@ -41,11 +39,11 @@ python_tests() {
   if printf '%s\n' "$out" | grep -q 'skipped='; then echo "Some tests skipped."; return 1; fi
 }
 
-# TypeScript and the Bun types are pinned. They go into a temporary folder, not into the repository.
 type_check() {
-  printf '{"private":true,"dependencies":{"typescript":"5.9.3","@types/bun":"1.4.4","@types/node":"26.6.6","undici-types":"8.9.0"}}\n' >"$tmp/package.json"
-  (cd "$tmp" && bun install --silent) || return 1
-  bun "$tmp/node_modules/typescript/bin/tsc" -p tsconfig.json --typeRoots "$tmp/node_modules/@types"
+  if [ ! -x node_modules/.bin/tsc ]; then
+    bun install --frozen-lockfile --silent || return 1
+  fi
+  bun node_modules/.bin/tsc -p tsconfig.json
 }
 
 run "bun test" bun test
